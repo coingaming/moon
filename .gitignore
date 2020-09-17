@@ -21,3 +21,5 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 moon-*.tar
+
+/.elixir_ls
