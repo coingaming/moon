@@ -1,0 +1,12 @@
+{application,typable,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"Protocol which describes type identifier of Elixir term"},
+              {modules,['Elixir.Typable','Elixir.Typable.Any',
+                        'Elixir.Typable.Atom','Elixir.Typable.BitString',
+                        'Elixir.Typable.Float','Elixir.Typable.Function',
+                        'Elixir.Typable.Integer','Elixir.Typable.List',
+                        'Elixir.Typable.Map','Elixir.Typable.PID',
+                        'Elixir.Typable.Port','Elixir.Typable.Reference',
+                        'Elixir.Typable.Tuple','Elixir.Type']},
+              {registered,[]},
+              {vsn,"0.3.0"}]}.
