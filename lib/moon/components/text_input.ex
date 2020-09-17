@@ -9,7 +9,7 @@ defmodule Moon.Components.TextInput do
   property size, :integer, default: 14
 
   def render(assigns) do
-    class_name = get_classname("components-text-input-#{assigns.size}-#{assigns.style}")
+    class_name = get_class_name("components-text-input-#{assigns.size}-#{assigns.style}")
 
     ~H"""
     <style>

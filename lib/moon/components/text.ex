@@ -11,7 +11,7 @@ defmodule Moon.Components.Text do
 
   def render(assigns) do
     class_name =
-      get_classname(
+      get_class_name(
         "components-text-#{assigns.size}-#{assigns.weight || assigns.is_bold}-#{assigns.color}-#{
           assigns.padding
         }-#{assigns.margin}-#{assigns.style}"

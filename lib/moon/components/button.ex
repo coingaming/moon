@@ -10,7 +10,7 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     class_name =
-      get_classname(
+      get_class_name(
         "components-button-#{assigns.color}-#{assigns.background}-#{assigns.margin}-#{
           assigns.style
         }"

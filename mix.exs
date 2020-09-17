@@ -1,7 +1,7 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.0.2"
 
   def project do
     [
@@ -30,7 +30,9 @@ defmodule Moon.MixProject do
 
   defp deps do
     [
-      {:surface, github: "msaraiva/surface"},
+      #{:surface, github: "msaraiva/surface"},
+      {:surface, "~> 0.1.0-alpha.2"},
+      {:nimble_parsec, "~> 0.5", [only: [:dev, :test], env: :prod, hex: "nimble_parsec", repo: "hexpm", optional: false, override: true]}
     ]
   end
 

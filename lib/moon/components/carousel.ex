@@ -4,7 +4,7 @@ defmodule Moon.Components.Carousel do
   property style, :string, default: ""
 
   def render(assigns) do
-    class_name = get_classname("components-carousel-#{assigns.style}")
+    class_name = get_class_name("components-carousel-#{assigns.style}")
 
     ~H"""
     <style>

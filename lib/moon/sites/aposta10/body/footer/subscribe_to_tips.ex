@@ -6,7 +6,7 @@ defmodule Moon.Sites.Aposta10.Body.Footer.SubscribeToTips do
   alias Moon.Components.Button
 
   def render(assigns) do
-    class_name = get_classname("site-body-subscribe-to-tips")
+    class_name = get_class_name("site-body-subscribe-to-tips")
 
     ~H"""
     <style>

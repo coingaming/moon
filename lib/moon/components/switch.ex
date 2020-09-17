@@ -10,7 +10,7 @@ defmodule Moon.Components.Switch do
   property style, :string
 
   def render(assigns) do
-    class_name = get_classname("components-switch-#{assigns.style}")
+    class_name = get_class_name("components-switch-#{assigns.style}")
 
     next_value = %{
       assigns.left_value => assigns.right_value,

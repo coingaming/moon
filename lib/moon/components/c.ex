@@ -4,7 +4,7 @@ defmodule Moon.Components.C do
   property columns, :integer, default: 1
 
   def render(assigns) do
-    class_name = get_classname("components-c-#{assigns.columns}")
+    class_name = get_class_name("components-c-#{assigns.columns}")
 
     ~H"""
     <style>

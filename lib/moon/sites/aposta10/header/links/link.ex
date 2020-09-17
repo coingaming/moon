@@ -4,15 +4,17 @@ defmodule Moon.Sites.Aposta10.Header.Links.Link do
   alias Moon.Components.Text
 
   def render(assigns) do
+    class_name = get_class_name("site-header-links-link")
+
     ~H"""
     <style>
-      .site-header-links-link {
+      .{{ class_name }} {
         display: inline-block;
         margin-left: 10px;
         text-align: center;
       }
 
-      .site-header-links-link-logo {
+      .{{ class_name }}-logo {
         width: 56px;
         height: 56px;
         background-color: #EDEFF1;
@@ -23,16 +25,16 @@ defmodule Moon.Sites.Aposta10.Header.Links.Link do
         vertical-align: middle;
       }
 
-      .site-header-links-link-logo > img {
+      .{{ class_name }}-logo > img {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
       }
     </style>
 
-    <div class="site-header-links-link">
+    <div class={{ class_name }}>
 
-      <div class="site-header-links-link-logo">
+      <div class="{{ class_name }}-logo">
         <img src={{ "/uploads/img/site/icons/#{ @text }.svg" }} />
       </div>
 

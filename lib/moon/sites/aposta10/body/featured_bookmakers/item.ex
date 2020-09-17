@@ -9,7 +9,7 @@ defmodule Moon.Sites.Aposta10.Body.FeaturedBookmakers.Item do
   property action, :string
 
   def render(assigns) do
-    class_name = get_classname("site-body-featured-bookmakers-item")
+    class_name = get_class_name("site-body-featured-bookmakers-item")
 
     ~H"""
     <style>

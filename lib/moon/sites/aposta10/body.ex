@@ -14,7 +14,7 @@ defmodule Moon.Sites.Aposta10.Body do
   context get theme, from: Moon.Themed
 
   def render(assigns) do
-    class_name = get_classname("site-body")
+    class_name = get_class_name("site-body")
 
     ~H"""
     <style>
@@ -37,7 +37,7 @@ defmodule Moon.Sites.Aposta10.Body do
       }
     </style>
 
-    <div class="{{ class_name }}">
+    <div class={{ class_name }}>
       <div class="{{ class_name }}-inner">
         <BannerCarousel />
         <Picks />

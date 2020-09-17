@@ -11,7 +11,7 @@ defmodule Moon.Components.Label do
 
   def render(assigns) do
     classname =
-      get_classname("components-label-#{assigns.background}-#{assigns.style}-#{assigns.color}")
+      get_class_name("components-label-#{assigns.background}-#{assigns.style}-#{assigns.color}")
 
     ~H"""
     <style>

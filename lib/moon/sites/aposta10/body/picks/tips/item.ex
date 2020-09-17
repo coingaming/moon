@@ -7,7 +7,7 @@ defmodule Moon.Sites.Aposta10.Body.Picks.Tips.Item do
   alias Moon.Sites.Aposta10.Body.Picks.Tips.Item.Opponents
 
   def render(assigns) do
-    class_name = get_classname("site-body-picks-tips-item")
+    class_name = get_class_name("site-body-picks-tips-item")
 
     ~H"""
     <style>

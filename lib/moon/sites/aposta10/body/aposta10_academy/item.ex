@@ -10,9 +10,9 @@ defmodule Moon.Sites.Aposta10.Body.Aposta10Academy.Item do
   property image_url, :string
 
   def render(assigns) do
-    class_name = get_classname("site-body-aposta10-academy-item")
-    thumb_class_name = get_classname("site-body-aposta10-academy-item-thumb")
-    picture_class_name = get_classname("site-body-aposta10-academy-item-thumb-picture")
+    class_name = get_class_name("site-body-aposta10-academy-item")
+    thumb_class_name = get_class_name("site-body-aposta10-academy-item-thumb")
+    picture_class_name = get_class_name("site-body-aposta10-academy-item-thumb-picture")
 
     ~H"""
     <style>

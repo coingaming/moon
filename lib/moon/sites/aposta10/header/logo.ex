@@ -3,9 +3,11 @@ defmodule Moon.Sites.Aposta10.Header.Logo do
   alias Moon.Sites.Aposta10.Config
 
   def render(assigns) do
+    class_name = get_class_name("site-header-logo")
+
     ~H"""
     <style>
-      .site-header-logo {
+      .{{ class_name }} {
         position: absolute;
         top: 13px;
         width: 100%;
@@ -13,14 +15,14 @@ defmodule Moon.Sites.Aposta10.Header.Logo do
       }
 
       {{ for_desktop() }} {
-        .site-header-logo {
+        .{{ class_name }} {
           position: fixed;
           width: 232px;
         }
       }
     </style>
 
-    <div class="site-header-logo">
+    <div class={{ class_name }}>
       <img src={{ "/uploads/img/site/logo.svg" }} />
     </div>
     """

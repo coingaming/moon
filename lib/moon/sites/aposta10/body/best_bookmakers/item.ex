@@ -5,8 +5,8 @@ defmodule Moon.Sites.Aposta10.Body.BestBookmakers.Item do
   property image_url, :string
 
   def render(assigns) do
-    class_name = get_classname("site-body-best-bookmakers-item")
-    img_class_name = get_classname("site-body-best-bookmakers-item-img")
+    class_name = get_class_name("site-body-best-bookmakers-item")
+    img_class_name = get_class_name("site-body-best-bookmakers-item-img")
 
     ~H"""
     <style>

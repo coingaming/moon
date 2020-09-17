@@ -7,7 +7,7 @@ defmodule Moon.Sites.Aposta10.Body.BestBookmakers do
   alias Moon.Components.Button
 
   def render(assigns) do
-    class_name = get_classname("site-body-best-bookmakers")
+    class_name = get_class_name("site-body-best-bookmakers")
 
     ~H"""
     <style>

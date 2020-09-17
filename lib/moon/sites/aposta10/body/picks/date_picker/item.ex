@@ -7,7 +7,7 @@ defmodule Moon.Sites.Aposta10.Body.Picks.DatePicker.Item do
   property active, :boolean, required: false, default: false
 
   def render(assigns) do
-    class_name = get_classname("site-body-picks-date-picker-item-#{assigns.active}")
+    class_name = get_class_name("site-body-picks-date-picker-item-#{assigns.active}")
 
     ~H"""
     <style>

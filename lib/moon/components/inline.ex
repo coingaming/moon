@@ -4,7 +4,7 @@ defmodule Moon.Components.Inline do
   property style, :string
 
   def render(assigns) do
-    class_name = get_classname("components-inline-#{assigns.style}")
+    class_name = get_class_name("components-inline-#{assigns.style}")
 
     ~H"""
     <style>

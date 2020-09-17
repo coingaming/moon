@@ -6,7 +6,7 @@ defmodule Moon.Sites.Aposta10.Body.Footer.FollowUs do
   property style, :string
 
   def render(assigns) do
-    class_name = get_classname("site-footer-follow-us")
+    class_name = get_class_name("site-footer-follow-us")
 
     ~H"""
     <style>

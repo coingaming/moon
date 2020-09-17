@@ -4,7 +4,7 @@ defmodule Moon.Components.Stack do
   property style, :string, required: false, default: ""
 
   def render(assigns) do
-    class_name = get_classname("moon-components-stack-#{assigns.style}")
+    class_name = get_class_name("moon-components-stack-#{assigns.style}")
 
     ~H"""
     <style>
