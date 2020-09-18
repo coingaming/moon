@@ -9,6 +9,8 @@ defmodule Moon.Sites.Aposta10.Body.Aposta10Academy.Item do
   property title, :string
   property image_url, :string
 
+  context get theme, from: Moon.Themed
+
   def render(assigns) do
     class_name = get_class_name("site-body-aposta10-academy-item")
     thumb_class_name = get_class_name("site-body-aposta10-academy-item-thumb")
@@ -40,11 +42,11 @@ defmodule Moon.Sites.Aposta10.Body.Aposta10Academy.Item do
     <div class={{ class_name }}>
       <div class={{ thumb_class_name }}>
         <div style="position: absolute; left: 10px; top: 10px">
-          <Label background={{ Config.colors.color1 }}>{{ @label }}</Label>
+          <Label background={{ @theme.colors["color1.100"] }}>{{ @label }}</Label>
         </div>
 
         <div style="position: absolute; left: 10px; bottom: 40px">
-          <Label background={{ Config.colors.color2 }}>{{ @length }}</Label>
+          <Label background={{ @theme.colors["color2.100"] }}>{{ @length }}</Label>
         </div>
 
         <img class={{ picture_class_name }} src={{ "/uploads/img/site/#{ @image_url }" }} />

@@ -1,10 +1,12 @@
 defmodule Moon.Sites.Aposta10.Body.Picks.Tips.Item do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
+
   alias Moon.Components.Label
   alias Moon.Components.Text
   alias Moon.Components.Inline
   alias Moon.Sites.Aposta10.Body.Picks.Tips.Item.Opponents
+
+  context get theme, from: Moon.Themed
 
   def render(assigns) do
     class_name = get_class_name("site-body-picks-tips-item")
@@ -38,8 +40,8 @@ defmodule Moon.Sites.Aposta10.Body.Picks.Tips.Item do
     </style>
 
     <div class={{ class_name }}>
-      <Label background={{ Config.colors.color5 }}>Bundesliga</Label>
-      <Text style="position: absolute; top: 10px; right: 10px;" color={{ Config.colors.color6 }}>Feb 7 at 20:30</Text>
+      <Label background={{ @theme.colors["color1.100"] }}>Bundesliga</Label>
+      <Text style="position: absolute; top: 10px; right: 10px;" color={{ @theme.colors["color2.100"] }}>Feb 7 at 20:30</Text>
 
       <Inline>
         <img class="thumb" src={{ "/uploads/img/site/daniel.svg" }} />

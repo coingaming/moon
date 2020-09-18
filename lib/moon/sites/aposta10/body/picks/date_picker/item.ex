@@ -6,6 +6,8 @@ defmodule Moon.Sites.Aposta10.Body.Picks.DatePicker.Item do
   property day, :integer, required: true
   property active, :boolean, required: false, default: false
 
+  context get theme, from: Moon.Themed
+
   def render(assigns) do
     class_name = get_class_name("site-body-picks-date-picker-item-#{assigns.active}")
 
@@ -18,12 +20,12 @@ defmodule Moon.Sites.Aposta10.Body.Picks.DatePicker.Item do
         padding: 10px;
         padding-top: 0px;
         text-align: center;
-        border-bottom: {{ @active && "solid 2px #{Config.colors.color4}" || "none" }};
+        border-bottom: {{ @active && "solid 2px #{@theme.colors["color1.100"]}" || "none" }};
       }
     </style>
 
     <div class={{ class_name }}>
-      <Text size=18 weight=500 color={{ Config.colors.color4 }}>Feb 7</Text>
+      <Text size=18 weight=500 color={{ @theme.colors["color2.100"] }}>Feb 7</Text>
       <Text size=14>Today</Text>
     </div>
     """

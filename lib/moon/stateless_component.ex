@@ -5,7 +5,7 @@ defmodule Moon.StatelessComponent do
       import Plug.Conn
       import Moon.StatelessComponent
       import Moon.Helpers.ClassNameSupport
-      import Moon.Helpers.ResolutionSupport
+      import Moon.Helpers.ScreenSizeSupport
     end
   end
 end

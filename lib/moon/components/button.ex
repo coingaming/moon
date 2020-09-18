@@ -1,12 +1,12 @@
 defmodule Moon.Components.Button do
   use Moon.StatelessComponent
 
-  alias Moon.Sites.Aposta10.Config
-
   property color, :string
   property background, :string
   property margin, :string
   property style, :string
+
+  context get theme, from: Moon.Themed
 
   def render(assigns) do
     class_name =
@@ -24,8 +24,8 @@ defmodule Moon.Components.Button do
         padding-right: 20px;
         text-align: center;
         border-radius: 100px;
-        color: {{ @color || Config.colors.color7 }};
-        background-color: {{ @background || Config.colors.color4 }};
+        color: {{ @color || @theme.colors["some-test.100"] }};
+        background-color: {{ @background || @theme.colors["some-test.100"] }};
         {{ @style }};
         display: inline-block;
       }

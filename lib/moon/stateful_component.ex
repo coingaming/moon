@@ -4,7 +4,7 @@ defmodule Moon.StatefulComponent do
       use Surface.LiveComponent
       import Plug.Conn
       import Moon.Helpers.ClassNameSupport
-      import Moon.Helpers.ResolutionSupport
+      import Moon.Helpers.ScreenSizeSupport
     end
   end
 end
