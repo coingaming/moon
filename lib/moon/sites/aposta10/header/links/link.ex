@@ -1,7 +1,8 @@
 defmodule Moon.Sites.Aposta10.Header.Links.Link do
   use Moon.StatelessComponent
-
   alias Moon.Components.Text
+
+  property text, :string
 
   def render(assigns) do
     class_name = get_class_name("site-header-links-link")
