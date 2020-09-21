@@ -2,10 +2,8 @@ defmodule Moon.LiveView do
   defmacro __using__(_opts) do
     quote do
       use Surface.LiveView
-      import Plug.Conn
       import Moon.Helpers.ClassNameSupport
       import Moon.Helpers.ScreenSizeSupport
-      import Moon.LiveView
 
       def handle_event("toggle_theme", %{"new_value" => new_value}, socket) do
         themes_map = %{
