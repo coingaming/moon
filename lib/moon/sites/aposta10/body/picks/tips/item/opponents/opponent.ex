@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Body.Picks.Tips.Item.Opponents.Opponent do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
   alias Moon.Components.Text
   alias Moon.Components.Inline
 

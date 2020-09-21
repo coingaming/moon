@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Body.Footer.FollowUs.Link do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
 
   property brand, :string
 

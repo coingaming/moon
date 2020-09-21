@@ -3,7 +3,6 @@ defmodule Moon.Sites.Aposta10.Body.Picks do
 
   alias Moon.Components.Text
   alias Moon.Components.Button
-  alias Moon.Sites.Aposta10.Config
 
   alias Moon.Sites.Aposta10.Body.Picks
   alias Moon.Sites.Aposta10.Body.Picks.DatePicker

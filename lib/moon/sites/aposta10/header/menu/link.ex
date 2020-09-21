@@ -1,7 +1,5 @@
 defmodule Moon.Sites.Aposta10.Header.Menu.Link do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
-
   alias Moon.Components.Text
 
   property count, :integer

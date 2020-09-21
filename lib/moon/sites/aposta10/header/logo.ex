@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Header.Logo do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
 
   def render(assigns) do
     class_name = get_class_name("site-header-logo")

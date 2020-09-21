@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Body.BestBookmakers.Item do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
 
   property image_url, :string
 
@@ -35,9 +34,7 @@ defmodule Moon.Sites.Aposta10.Body.BestBookmakers.Item do
     </style>
 
     <div class={{ class_name }}>
-
       <img class={{ img_class_name }} src={{ "/uploads/img/site/#{ @image_url }" }} />
-
     </div>
     """
   end

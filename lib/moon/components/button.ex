@@ -1,12 +1,11 @@
 defmodule Moon.Components.Button do
   use Moon.StatelessComponent
+  use Moon.Components.Context
 
   property color, :string
   property background, :string
   property margin, :string
   property style, :string
-
-  context get theme, from: Moon.Themed
 
   def render(assigns) do
     class_name =
@@ -17,23 +16,25 @@ defmodule Moon.Components.Button do
       )
 
     ~H"""
-    <style>
-      .{{ class_name }} {
-        padding: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        text-align: center;
-        border-radius: 100px;
-        color: {{ @color || @theme.colors["some-test.100"] }};
-        background-color: {{ @background || @theme.colors["some-test.100"] }};
-        {{ @style }};
-        display: inline-block;
-      }
-    </style>
+    <Context get={{ :theme }}>
+      <style>
+        .{{ class_name }} {
+          padding: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
+          text-align: center;
+          border-radius: 100px;
+          color: {{ @color || @theme.colors["some-test.100"] }};
+          background-color: {{ @background || @theme.colors["some-test.100"] }};
+          {{ @style }};
+          display: inline-block;
+        }
+      </style>
 
-    <div class={{ class_name }}>
-      <slot />
-    </div>
+      <div class={{ class_name }}>
+        <slot />
+      </div>
+    </Context>
     """
   end
 end

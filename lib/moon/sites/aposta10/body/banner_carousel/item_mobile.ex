@@ -1,6 +1,6 @@
 defmodule Moon.Sites.Aposta10.Body.BannerCarousel.ItemMobile do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
+  use Moon.Components.Context
   alias Moon.Components.Label
   alias Moon.Components.Text
 
@@ -10,45 +10,45 @@ defmodule Moon.Sites.Aposta10.Body.BannerCarousel.ItemMobile do
   property desc, :string
   property image_url, :string
 
-  context get theme, from: Moon.Themed
-
   def render(assigns) do
     class_name = "site-body-banner-carousel-item-mobile"
 
     ~H"""
-    <style>
-      .{{ class_name }} {
-        display: inline-block;
-        width: 90vw;
-        padding-left: 10px;
-        scroll-snap-align: left;
-      }
-
-      .{{ class_name }}-thumb {
-        position: relative;
-      }
-
-      .{{ class_name }}-thumb-picture {
-        border-radius: 12px;
-      }
-
-      @media screen and (min-width: 1023px) {
+    <Context get={{ :theme }}>
+      <style>
         .{{ class_name }} {
-          display: none;
+          display: inline-block;
+          width: 90vw;
+          padding-left: 10px;
+          scroll-snap-align: left;
         }
-      }
-    </style>
 
-    <div class={{ class_name }}>
-      <div class="{{ class_name }}-thumb">
-        <Label background={{ @theme.colors["color1.100"] }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Label>
-        <Label background={{ @theme.colors["color2.100"] }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Label>
-        <img class="{{ class_name }}-thumb-picture" src={{ "/uploads/img/site/#{ @image_url }" }} />
+        .{{ class_name }}-thumb {
+          position: relative;
+        }
+
+        .{{ class_name }}-thumb-picture {
+          border-radius: 12px;
+        }
+
+        @media screen and (min-width: 1023px) {
+          .{{ class_name }} {
+            display: none;
+          }
+        }
+      </style>
+
+      <div class={{ class_name }}>
+        <div class="{{ class_name }}-thumb">
+          <Label background={{ @theme.colors["color1.100"] }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Label>
+          <Label background={{ @theme.colors["color2.100"] }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Label>
+          <img class="{{ class_name }}-thumb-picture" src={{ "/uploads/img/site/#{ @image_url }" }} />
+        </div>
+
+        <Text size=18 weight=500>{{ @title }}</Text>
+        <Text size=14>{{ @desc }}</Text>
       </div>
-
-      <Text size=18 weight=500>{{ @title }}</Text>
-      <Text size=14>{{ @desc }}</Text>
-    </div>
+    </Context>
     """
   end
 end

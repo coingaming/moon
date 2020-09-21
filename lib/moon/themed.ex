@@ -1,17 +1,14 @@
 defmodule Moon.Themed do
   use Moon.StatefulComponent
-
-  context set theme, :any, scope: :only_children
+  use Moon.Components.Context
 
   property theme, :any
 
-  def init_context(assigns) do
-    {:ok, %{theme: assigns.theme}}
-  end
-
   def render(assigns) do
     ~H"""
+    <Context set={{ :theme, assigns.theme }}
       <slot />
+    </Context>
     """
   end
 

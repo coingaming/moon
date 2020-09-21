@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Header.Menu do
   use Moon.StatelessComponent
-  alias Moon.Sites.Aposta10.Config
   alias Moon.Sites.Aposta10.Header.Menu.Link
   alias Moon.Sites.Aposta10.Header.Menu.Separator
   alias Moon.Sites.Aposta10.Body.Footer.FollowUs

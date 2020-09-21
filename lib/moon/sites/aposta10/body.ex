@@ -1,5 +1,6 @@
 defmodule Moon.Sites.Aposta10.Body do
   use Moon.StatelessComponent
+  use Moon.Components.Context
 
   alias Moon.Sites.Aposta10.Body
   alias Body.BannerCarousel
@@ -11,44 +12,44 @@ defmodule Moon.Sites.Aposta10.Body do
   alias Body.BestBookmakers
   alias Body.Footer
 
-  context get theme, from: Moon.Themed
-
   def render(assigns) do
     class_name = get_class_name("site-body")
 
     ~H"""
-    <style>
-      .{{ class_name }} {
-        background-color: {{ @theme.colors["some-test.100"] }};
-        color: #000;
-        padding-top: 200px;
-        z-index: 101;
-      }
-
-      {{ for_desktop() }} {
+    <Context get={{ :theme }}>
+      <style>
         .{{ class_name }} {
-          margin-left: 232px;
+          background-color: {{ @theme.colors["some-test.100"] }};
+          color: #000;
+          padding-top: 200px;
+          z-index: 101;
         }
 
-        .{{ class_name }}-inner {
-          margin: auto;
-          max-width: 1136px;
-        }
-      }
-    </style>
+        {{ for_desktop() }} {
+          .{{ class_name }} {
+            margin-left: 232px;
+          }
 
-    <div class={{ class_name }}>
-      <div class="{{ class_name }}-inner">
-        <BannerCarousel />
-        <Picks />
-        <FeaturedBookmakers />
-        <Aposta10Academy />
-        <BlogCarousel />
-        <Guides />
-        <BestBookmakers />
-        <Footer />
+          .{{ class_name }}-inner {
+            margin: auto;
+            max-width: 1136px;
+          }
+        }
+      </style>
+
+      <div class={{ class_name }}>
+        <div class="{{ class_name }}-inner">
+          <BannerCarousel />
+          <Picks />
+          <FeaturedBookmakers />
+          <Aposta10Academy />
+          <BlogCarousel />
+          <Guides />
+          <BestBookmakers />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </Context>
     """
   end
 end
