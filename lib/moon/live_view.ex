@@ -4,7 +4,7 @@ defmodule Moon.LiveView do
       use Surface.LiveView
       import Plug.Conn
       import Moon.Helpers.ClassNameSupport
-      import Moon.Helpers.ResolutionSupport
+      import Moon.Helpers.ScreenSizeSupport
       import Moon.LiveView
 
       def handle_event("toggle_theme", %{"new_value" => new_value}, socket) do
