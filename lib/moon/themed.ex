@@ -6,7 +6,7 @@ defmodule Moon.Themed do
 
   def render(assigns) do
     ~H"""
-    <Context set={{ :theme, assigns.theme }}
+    <Context set={{ :theme, assigns.theme }}>
       <slot />
     </Context>
     """
