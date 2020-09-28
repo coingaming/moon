@@ -1,6 +1,5 @@
 defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout do
   use Moon.StatefulComponent
-  alias MoonWeb.Router.Helpers, as: Routes
 
   alias Moon.Themed
   alias Moon.Sites.Aposta10.Layouts.DefaultLayout.Content
