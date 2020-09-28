@@ -1,0 +1,2 @@
+defmodule Moon do
+end

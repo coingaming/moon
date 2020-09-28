@@ -1,5 +1,5 @@
 defmodule Moon.Themed do
-  use Moon.StatefulComponent
+  use Moon.StatelessComponent
   use Moon.Components.Context
 
   property theme, :any

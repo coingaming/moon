@@ -18,10 +18,10 @@ defmodule Moon.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      mod: {Moon.Application, []},
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -30,6 +30,11 @@ defmodule Moon.MixProject do
 
   defp deps do
     [
+      {:phoenix, "~> 1.5.3"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:plug_cowboy, "~> 2.0"},
+      {:jason, "~> 1.0"},
       {:surface, git: "git@github.com:msaraiva/surface.git"}
     ]
   end

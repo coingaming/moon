@@ -4,9 +4,11 @@ defmodule Moon.Sites.Aposta10.Header.Links do
   alias Moon.Components.Carousel
 
   def render(assigns) do
+    class_name = get_class_name("site-header-links")
+
     ~H"""
     <style>
-      .site-header-links {
+      .{{ class_name }} {
         position: absolute;
         left: 0px;
         right: 0px;
@@ -17,7 +19,7 @@ defmodule Moon.Sites.Aposta10.Header.Links do
       }
 
       {{ for_desktop() }} {
-        .site-header-links {
+        .{{ class_name }} {
           position: fixed;
           top: 0px;
           padding-top: 20px;
@@ -26,7 +28,7 @@ defmodule Moon.Sites.Aposta10.Header.Links do
       }
     </style>
 
-    <div class="site-header-links">
+    <div class={{ class_name }}>
       <Carousel>
         <Link text="soccer" />
         <Link text="tennis" />
