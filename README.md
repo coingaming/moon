@@ -44,6 +44,13 @@ https://github.com/coingaming/moon
 * https://github.com/coingaming/moon (each subfolder in lib will contain linked documentation)
 * Moon is a design libary, that contain components and themes support. 
 
+## Storing data
+
+### Existing flasks 
+
+* Sitebuilder (nav, pages, env vars)
+* Articles (Page in SiteBuilder -> /path/:article -> Data loader in site app https://github.com/coingaming/gamblejp/blob/master/lib/gamblejp_web/components/articles/single.ex#L60 -> view component from Moon)
+
 
 ## Requirements for view components
 

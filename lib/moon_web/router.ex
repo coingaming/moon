@@ -10,8 +10,6 @@ defmodule MoonWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-
-    plug :put_root_layout, {Moon.Sites.Aposta10.Layouts.LayoutView, :root}
   end
 
   scope "/components/" do
@@ -22,5 +20,7 @@ defmodule MoonWeb.Router do
     pipe_through :browser
 
     live "/", Moon.Sites.Aposta10.Pages.MainPage
+    live "/tips/", Moon.Sites.Aposta10.Pages.TipsPage
+    live "/tips/:tips_filter", Moon.Sites.Aposta10.Pages.TipsPage
   end
 end
