@@ -1,4 +1,4 @@
-# MOON
+# Moon
 
 Moon is set of rules, that everybody knows about, are mostly happy about, and are welcome to improve.
 
@@ -8,26 +8,30 @@ Moon is set of rules, that everybody knows about, are mostly happy about, and ar
 * Implement Page=moom/sites/site_name/pages/main_page.ex
 * Page accepts props as data and triggers events from whoever is using it (meaning it knows nothing about data layer), but at the same time, it is touchable prototype 
 
-[ENTER VIDEO HERE OF CREATING A NEW SITE EXAMPLE + COMMANDS TO SETUP PROJECT]
+ENTER VIDEO HERE OF CREATING A NEW SITE EXAMPLE + COMMANDS TO SETUP PROJECT.
 
 ```
-# setup lab umbrella
+# Setup lab umbrella
 https://github.com/coingaming/lab_umbrella
 
-# create user in lab
+# Create user in lab
 LabAuth.simple_register(UsersFlask.Flask, 1, "username", "password")
 
-# setup domain, page, layout, site, path
+# Setup domain, page, layout, site, path
 http://localhost:4120/
 
-# visit domain at path
+# Visit domain at path
 http://aposta10.localhost:4130/
+
+# Setup new site and pages for moon with default fallbacks (so can be overdriven by sitebuilder, but usable in prototype when your run "cd /projects/moon && mix phx.server")
+https://github.com/coingaming/moon
 
 ```
 
 
-# MOON is system, that consists of elements
+# Moon is a system, that supports creating web
 
+* Written manual for devs to on-board quickly
 * Design libary (that is called Moon, yay!)
 * Lab Umbrella 
 * Site Builder
