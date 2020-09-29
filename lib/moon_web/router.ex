@@ -12,8 +12,8 @@ defmodule MoonWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  scope "/components/" do
-
+  scope "/" do
+    live "/", Moon.Sites.MoonDocs.Pages.MainPage
   end
 
   scope "/sites/aposta10" do

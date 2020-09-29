@@ -7,8 +7,10 @@ defmodule Moon.LiveView do
 
       def handle_event("toggle_theme", %{"new_value" => new_value}, socket) do
         themes_map = %{
-          "Elixir.Moon.Sites.Aposta10.Themes.Light" => Moon.Sites.Aposta10.Themes.Light,
-          "Elixir.Moon.Sites.Aposta10.Themes.Dark" => Moon.Sites.Aposta10.Themes.Dark
+          Moon.Sites.Aposta10.Themes.Light.id => Moon.Sites.Aposta10.Themes.Light,
+          Moon.Sites.Aposta10.Themes.Dark.id => Moon.Sites.Aposta10.Themes.Dark,
+          Moon.Sites.MoonDocs.Themes.Light.id => Moon.Sites.MoonDocs.Themes.Light,
+          Moon.Sites.MoonDocs.Themes.Dark.id => Moon.Sites.MoonDocs.Themes.Dark
         }
 
         new_theme = themes_map[new_value] || new_value

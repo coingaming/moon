@@ -1,4 +1,4 @@
-defmodule Moon.Sites.Aposta10.Layouts.Footer.ForDesktop do
+defmodule Moon.Sites.MoonDocs.Layouts.Footer.ForDesktop do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
@@ -7,7 +7,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.ForDesktop do
   alias Moon.Components.Inline
   alias Moon.Components.Stack
   alias Moon.Components.Switch
-  alias Moon.Sites.Aposta10.Layouts.Footer.FollowUs
+  alias Moon.Sites.MoonDocs.Layouts.Footer.FollowUs
 
   def render(assigns) do
     class_name = "site-body-footer-for-desktop"
@@ -80,9 +80,9 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.ForDesktop do
             <Switch
               on_click="toggle_theme"
               left_label="PM"
-              left_value="aposta10-light"
+              left_value="moondocs-light"
               right_label="AM"
-              right_value="aposta10-dark"
+              right_value="moondocs-dark"
               value={{ @theme.id }}
             />
           </Inline>

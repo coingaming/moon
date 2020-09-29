@@ -1,6 +1,6 @@
-defmodule Moon.Sites.Aposta10.Themes.Light do
+defmodule Moon.Sites.MoonDocs.Themes.Light do
   def id do
-    "aposta10-light"
+    "moondocs-light"
   end
 
   def colors do
