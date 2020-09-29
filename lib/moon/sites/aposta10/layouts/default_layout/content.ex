@@ -1,5 +1,3 @@
-
-
 defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout.Content do
   use Moon.StatelessComponent
 

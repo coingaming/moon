@@ -11,5 +11,4 @@ defmodule Moon.Themed do
     </Context>
     """
   end
-
 end

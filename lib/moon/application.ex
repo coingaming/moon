@@ -3,6 +3,7 @@ defmodule Moon.Application do
 
   def start(_type, _args) do
     children = [
+      {Phoenix.PubSub, name: Moon.PubSub},
       MoonWeb.Endpoint
     ]
 

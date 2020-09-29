@@ -23,3 +23,6 @@ erl_crash.dump
 moon-*.tar
 
 /.elixir_ls
+
+/assets/node_modules
+/js_deps

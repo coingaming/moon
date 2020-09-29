@@ -12,10 +12,11 @@ defmodule Moon.Components.Switch do
   def render(assigns) do
     class_name = get_class_name("components-switch-#{assigns.style}")
 
-    next_value = %{
-      assigns.left_value => assigns.right_value,
-      assigns.right_value => assigns.left_value
-    }[assigns.value]
+    next_value =
+      %{
+        assigns.left_value => assigns.right_value,
+        assigns.right_value => assigns.left_value
+      }[assigns.value]
 
     ~H"""
     <div class={{ class_name }} :on-phx-click={{ @on_click }} phx-value-new_value={{ next_value }}>

@@ -10,7 +10,8 @@ locals_without_parens = [
 ]
 
 [
+  import_deps: [:phoenix],
   locals_without_parens: locals_without_parens,
   export: [locals_without_parens: locals_without_parens],
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+  inputs: ["*.{ex,exs}", "{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
 ]

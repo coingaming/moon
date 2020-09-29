@@ -13,9 +13,7 @@ defmodule Moon.Components.Link do
   def render(assigns) do
     class_name =
       get_class_name(
-        "components-link-#{assigns.color}-#{assigns.background}-#{assigns.margin}-#{
-          assigns.style
-        }"
+        "components-link-#{assigns.color}-#{assigns.background}-#{assigns.margin}-#{assigns.style}"
       )
 
     ~H"""

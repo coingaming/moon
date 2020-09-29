@@ -4,10 +4,16 @@ defmodule Moon.Sites.MoonDocs.Pages.MainPage do
 
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
 
+  def mount(socket) do
+    socket = Surface.init(socket)
+    IO.puts(inspect(socket))
+    {:ok, socket}
+  end
+
   def render(assigns) do
     ~H"""
-    <DefaultLayout id="moondocs">
-      Hello
+    <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
+      {{ inspect(@socket) }}
     </DefaultLayout>
     """
   end

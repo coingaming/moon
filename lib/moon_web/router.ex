@@ -10,9 +10,22 @@ defmodule MoonWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_user_token
+  end
+
+  defp put_user_token(conn, _) do
+    if current_user = conn.assigns[:current_user] do
+      token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+      IO.puts("Generated user token: #{token}")
+      assign(conn, :user_token, token)
+    else
+      assign(conn, :user_token, "hello")
+    end
   end
 
   scope "/" do
+    pipe_through :browser
+
     live "/", Moon.Sites.MoonDocs.Pages.MainPage
   end
 

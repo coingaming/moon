@@ -7,7 +7,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
   alias Moon.Sites.MoonDocs.Layouts.Footer
 
   data theme, :any, default: Moon.Sites.MoonDocs.Themes.Light
-  property conn, :any
+  property user_token, :string
 
   def render(assigns) do
     ~H"""
@@ -19,13 +19,12 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
           <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <title>Surface App</title>
-          <link rel="stylesheet" href="/css/moon/moon.css" />
-          <script src="/js/phoenix-v1.4.16.min.js"></script>
-          <script src="/js/phoenix_live_view-v0.11.1.min.js"></script>
+          <script>window.userToken = "{{ @user_token }}";</script>
         </head>
         <body>
           <Header />
           <Content>
+            <p>Usertoken: {{ @user_token }}</p>
             <slot />
           </Content>
           <Footer />

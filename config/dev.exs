@@ -5,12 +5,20 @@ config :moon, MoonWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [],
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ],
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{lib/moon/(views|components)/.*(ex)$},
-      ~r{lib/moon_web/(views|components)/.*(ex)$}
+      ~r{lib/moon_web/(views|components|sites)/.*(ex)$}
     ]
   ]
 

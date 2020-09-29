@@ -20,8 +20,6 @@ defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout do
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <title>Surface App</title>
           <link rel="stylesheet" href="/css/moon/moon.css" />
-          <script src="/js/phoenix-v1.4.16.min.js"></script>
-          <script src="/js/phoenix_live_view-v0.11.1.min.js"></script>
         </head>
         <body>
           <Header />
