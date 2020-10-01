@@ -56,7 +56,8 @@ function toElixirStructs(
   let childrenStructs = [];
 
   tree.forEach(([k, v]) => {
-    if (v && v.isArray && v.isArray()) {
+    if (false) {
+
     } else if (typeof v == 'object') {
       currentStruct.push([k, `%${rootModule}.${toCapitalisedCamel(k)}{}`]);
       childrenStructs.push(
@@ -67,7 +68,12 @@ function toElixirStructs(
     }
   });
 
-  const elixirModule = currentStruct.map(([k, v]) => `"${k}": ${v}`).join(',\n    ');
+  const elixirModule = currentStruct.map(([k, v]) => {
+    if (parseInt(k)) {
+      return `s${k}: ${v}`;
+    }
+    return `${k}: ${v}`;
+  }).join(',\n    ');
 
   return `
 defmodule ${rootModule}${currentModule} do
