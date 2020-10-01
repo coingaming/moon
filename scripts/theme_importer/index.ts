@@ -31,7 +31,7 @@ const toCamel = (s) => {
   });
 };
 
-const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s))
+const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s));
 
 function toTree(obj) {
   let tree = [];
@@ -56,15 +56,18 @@ function toElixirStructs(
   let childrenStructs = [];
 
   tree.forEach(([k, v]) => {
-    if (typeof v == 'object') {
+    if (v && v.isArray && v.isArray()) {
+    } else if (typeof v == 'object') {
       currentStruct.push([k, `%${rootModule}.${toCapitalisedCamel(k)}{}`]);
-      childrenStructs.push(toElixirStructs(v, `${rootModule}.${toCapitalisedCamel(k)}`));
+      childrenStructs.push(
+        toElixirStructs(v, `${rootModule}.${toCapitalisedCamel(k)}`)
+      );
     } else {
       currentStruct.push([k, JSON.stringify(v)]);
     }
   });
 
-  const elixirModule = currentStruct.map((x) => x.join(': ')).join(',\n    ');
+  const elixirModule = currentStruct.map(([k, v]) => `"${k}": ${v}`).join(',\n    ');
 
   return `
 defmodule ${rootModule}${currentModule} do
@@ -78,6 +81,8 @@ ${childrenStructs.join('')}
 function writeTheme(jsTheme, exThemePath) {
   const exObj = jsKeysToElixirKeys(jsTheme);
   const tree = toTree(exObj);
+
+  console.log(toElixirStructs(tree));
 
   fs.writeFileSync(exThemePath, toElixirStructs(tree));
 }

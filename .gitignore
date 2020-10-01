@@ -27,3 +27,4 @@ moon-*.tar
 /assets/node_modules
 /js_deps
 /scripts/theme_importer/node_modules
+/node_modules

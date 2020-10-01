@@ -20,6 +20,7 @@
 # cp -a js_deps/sportsbet-design/packages/assets/raw/* assets/svgs
 # echo "* themes"
 cd scripts/theme_importer
+npm i
 npx ts-node index.ts
 cd ../..
 echo "Success."
