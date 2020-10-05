@@ -35,7 +35,7 @@ const toCamel = (s) => {
 
 const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s));
 
-const writeTheme = (jsTheme, exThemePath, moduleName) => {
+const writeTheme = (jsTheme, exThemePath, moduleName, moduleId) => {
   const exObj: any = jsKeysToElixirKeys(jsTheme);
 
   const s = JSON.stringify;
@@ -136,7 +136,7 @@ ${Object.keys(exObj.color)
 end
 
 defmodule ${moduleName} do 
-  defstruct id: ${s(`${exObj.brand}_${exObj.color_scheme}`.toLowerCase())},
+  defstruct id: ${s(moduleId)},
     base: %${moduleName}.Base{},
     border_style: ${s(exObj.border_style)},
     border_width: ${s(exObj.border_width)},
@@ -164,20 +164,25 @@ end
 writeTheme(
   aposta10Dark,
   '../../lib/moon/sites/aposta10/themes/dark',
-  'Moon.Sites.Aposta10.Themes.Dark'
+  'Moon.Sites.Aposta10.Themes.Dark',
+  "aposta10-dark"
+
 );
 writeTheme(
   aposta10Light,
   '../../lib/moon/sites/aposta10/themes/light',
-  'Moon.Sites.Aposta10.Themes.Light'
+  'Moon.Sites.Aposta10.Themes.Light',
+  "aposta10-light"
 );
 writeTheme(
   sportsbetDark,
   '../../lib/moon/sites/moon_docs/themes/dark',
-  'Moon.Sites.MoonDocs.Themes.Dark'
+  'Moon.Sites.MoonDocs.Themes.Dark',
+  "moondocs-dark"
 );
 writeTheme(
   sportsbetLight,
   '../../lib/moon/sites/moon_docs/themes/light',
-  'Moon.Sites.MoonDocs.Themes.Light'
+  'Moon.Sites.MoonDocs.Themes.Light',
+  "moondocs-light"
 );
