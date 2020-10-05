@@ -8,7 +8,7 @@ defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout.Content do
     <Context get={{ :theme }}>
       <style>
         .{{ class_name }} {
-          background-color: {{ @theme.colors["some-test.100"] }};
+          background-color: {{ @theme.color.background }};
           color: #000;
           padding-top: 200px;
           z-index: 101;

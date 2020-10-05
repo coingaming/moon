@@ -1,7 +1,7 @@
 defmodule Moon.Sites.Aposta10.Pages.MainPage.Aposta10Academy.Item do
   use Moon.StatelessComponent
   use Moon.Components.Context
-  alias Moon.Components.Label
+  alias Moon.Components.Badge
   alias Moon.Components.Text
 
   property label, :string
@@ -41,11 +41,11 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Aposta10Academy.Item do
       <div class={{ class_name }}>
         <div class={{ thumb_class_name }}>
           <div style="position: absolute; left: 10px; top: 10px">
-            <Label background={{ @theme.colors["color1.100"] }}>{{ @label }}</Label>
+            <Badge background={{ @theme.color.gohan_100 }}>{{ @label }}</Badge>
           </div>
 
           <div style="position: absolute; left: 10px; bottom: 40px">
-            <Label background={{ @theme.colors["color2.100"] }}>{{ @length }}</Label>
+            <Badge background={{ @theme.color.trunks_100 }}>{{ @length }}</Badge>
           </div>
 
           <img class={{ picture_class_name }} src={{ "/uploads/img/site/#{ @image_url }" }} />

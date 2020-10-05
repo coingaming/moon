@@ -1,4 +1,4 @@
-defmodule Moon.Components.Label do
+defmodule Moon.Components.Badge do
   use Moon.StatelessComponent
   alias Moon.Components.Text
 
@@ -11,19 +11,19 @@ defmodule Moon.Components.Label do
 
   def render(assigns) do
     classname =
-      get_class_name("components-label-#{assigns.background}-#{assigns.style}-#{assigns.color}")
+      get_class_name("components-badge-#{assigns.background}-#{assigns.style}-#{assigns.color}")
 
     ~H"""
     <style>
       .{{ classname }} {
-        background-color: {{ @background }};
+        background-color: {{ @background || @theme.color.gohan_100background }};
         border-radius: 4px;
         padding: 2px;
         padding-left: 5px;
         padding-right: 5px;
         display: inline-block;
         font-size: 12pt;
-        color: {{ @color || "#fff" }};
+        color: {{ @color || @theme.color.gohan_100text }};
         {{ @style }};
       }
     </style>

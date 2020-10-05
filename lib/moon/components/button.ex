@@ -19,15 +19,17 @@ defmodule Moon.Components.Button do
     <Context get={{ :theme }}>
       <style>
         .{{ class_name }} {
-          padding: 10px;
-          padding-left: 20px;
-          padding-right: 20px;
-          text-align: center;
-          border-radius: 100px;
-          color: {{ @color || @theme.colors["some-test.100"] }};
-          background-color: {{ @background || @theme.colors["some-test.100"] }};
-          {{ @style }};
           display: inline-block;
+          min-height: 1.5rem;
+          font-family: inherit;
+          font-weight: {{ @theme.font_weight.semibold }};
+          text-decoration: none;
+          curson: pointer;
+          border: {{ @theme.border }};
+          border-color: transparent;
+          border-radius: {{ @theme.radius.largest }};
+          transition: `background-color {{ @theme.transition_duration.default }}s`,
+          white-space: nowrap;
         }
       </style>
 

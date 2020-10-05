@@ -2,7 +2,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  alias Moon.Components.Label
+  alias Moon.Components.Badge
   alias Moon.Components.Text
   alias Moon.Components.Inline
   alias Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item.Opponents
@@ -40,8 +40,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item do
       </style>
 
       <div class={{ class_name }}>
-        <Label background={{ @theme.colors["color1.100"] }}>Bundesliga</Label>
-        <Text style="position: absolute; top: 10px; right: 10px;" color={{ @theme.colors["color2.100"] }}>Feb 7 at 20:30</Text>
+        <Badge background={{ @theme.color.gohan_100 }}>Bundesliga</Badge>
+        <Text style="position: absolute; top: 10px; right: 10px;" color={{ @theme.color.gohan_100 }}>Feb 7 at 20:30</Text>
 
         <Inline>
           <img class="thumb" src={{ "/uploads/img/site/daniel.svg" }} />

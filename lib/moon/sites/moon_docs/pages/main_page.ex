@@ -3,6 +3,7 @@ defmodule Moon.Sites.MoonDocs.Pages.MainPage do
   use Moon.Components.Context
 
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
+  alias Moon.Themed
 
   def mount(socket) do
     socket = Surface.init(socket)
@@ -12,9 +13,11 @@ defmodule Moon.Sites.MoonDocs.Pages.MainPage do
 
   def render(assigns) do
     ~H"""
-    <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-      {{ inspect(@socket) }}
-    </DefaultLayout>
+    <Themed theme={{ %Moon.Sites.MoonDocs.Themes.Light{} }}>
+      <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
+        {{ inspect(@socket) }}
+      </DefaultLayout>
+    </Themed>
     """
   end
 end

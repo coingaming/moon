@@ -1,6 +1,6 @@
 defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemDesktop do
   use Moon.StatelessComponent
-  alias Moon.Components.Label
+  alias Moon.Components.Badge
   alias Moon.Components.Text
   alias Moon.Components.Stack
   alias Moon.Components.Inline
@@ -60,8 +60,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemDesktop do
           <div class="{{ class_name }}-body">
             <Stack>
               <Inline>
-                <Label background={{ @theme.colors["color1.100"] }}>{{ @label }}</Label>
-                <Label background={{ "#EAEEF0" }} color={{ "#8697A2" }}>{{ @datetime }}</Label>
+                <Badge background={{ @theme.color.trunks_100 }}>{{ @label }}</Badge>
+                <Badge background={{ @theme.color.gohan_100 }} color={{ @theme.color.text }}>{{ @datetime }}</Badge>
               </Inline>
               <Text size=32 weight=500>{{ @title }}</Text>
               <Text size=14>{{ @desc }}</Text>

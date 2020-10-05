@@ -1,21 +1,23 @@
 import aposta10Dark from '../../js_deps/sportsbet-design/packages/themes/src/aposta10Dark/aposta10Dark';
 import aposta10Light from '../../js_deps/sportsbet-design/packages/themes/src/aposta10Light/aposta10Light';
-import bitcasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoDark/bitcasinoDark';
-import bitcasinoLight from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoLight/bitcasinoLight';
-import livecasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/livecasinoDark/livecasinoDark';
-import livecasinoLight from '../../js_deps/sportsbet-design/packages/themes/src/livecasinoLight/livecasinoLight';
+import sportsbetDark from '../../js_deps/sportsbet-design/packages/themes/src/sportsbetDark/sportsbetDark';
+import sportsbetLight from '../../js_deps/sportsbet-design/packages/themes/src/sportsbetLight/sportsbetLight';
+// import bitcasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoDark/bitcasinoDark';
+// import bitcasinoLight from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoLight/bitcasinoLight';
+// import livecasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/livecasinoDark/livecasinoDark';
+// import livecasinoLight from '../../js_deps/sportsbet-design/packages/themes/src/livecasinoLight/livecasinoLight';
 
 import * as fs from 'fs';
 
-function capitalizeFirstLetter(string) {
+const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
 const camelToSnakeCase = (str) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
-function jsKeysToElixirKeys(obj) {
-  let newObj = {};
+const jsKeysToElixirKeys = (obj) => {
+  let newObj = Array.isArray(obj) ? [] : {};
 
   for (const k in obj) {
     newObj[camelToSnakeCase(k)] =
@@ -23,7 +25,7 @@ function jsKeysToElixirKeys(obj) {
   }
 
   return newObj;
-}
+};
 
 const toCamel = (s) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -33,64 +35,149 @@ const toCamel = (s) => {
 
 const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s));
 
-function toTree(obj) {
-  let tree = [];
+const writeTheme = (jsTheme, exThemePath, moduleName) => {
+  const exObj: any = jsKeysToElixirKeys(jsTheme);
 
-  for (const k in obj) {
-    if (typeof obj[k] == 'object') {
-      tree.push([k, toTree(obj[k])]);
-    } else {
-      tree.push([k, obj[k]]);
-    }
-  }
+  const s = JSON.stringify;
 
-  return tree;
-}
+  fs.writeFileSync(
+    `${exThemePath}.json`,
+    JSON.stringify(exObj, null, 2).replace(/\\\"/g, "'")
+  );
 
-function toElixirStructs(
-  tree,
-  rootModule = 'Moon.Sites.Aposta10.Themes.Light',
-  currentModule = ''
-) {
-  let currentStruct = [];
-  let childrenStructs = [];
+  fs.writeFileSync(
+    `${exThemePath}.ex`,
+    `
 
-  tree.forEach(([k, v]) => {
-    if (false) {
-
-    } else if (typeof v == 'object') {
-      currentStruct.push([k, `%${rootModule}.${toCapitalisedCamel(k)}{}`]);
-      childrenStructs.push(
-        toElixirStructs(v, `${rootModule}.${toCapitalisedCamel(k)}`)
-      );
-    } else {
-      currentStruct.push([k, JSON.stringify(v)]);
-    }
-  });
-
-  const elixirModule = currentStruct.map(([k, v]) => {
-    if (parseInt(k)) {
-      return `s${k}: ${v}`;
-    }
-    return `${k}: ${v}`;
-  }).join(',\n    ');
-
-  return `
-defmodule ${rootModule}${currentModule} do
-  defstruct ${elixirModule}
+defmodule ${moduleName}.Base do 
+  defstruct space: ${s(exObj.base.space)},
+    font_size: ${s(exObj.base.font_size)},
+    line_height: ${s(exObj.base.line_height)}
 end
 
-${childrenStructs.join('')}
-`;
-}
+defmodule ${moduleName}.Breakpoint do 
+  defstruct small: ${s(exObj.breakpoint.small)},
+    medium: ${s(exObj.breakpoint.medium)},
+    large: ${s(exObj.breakpoint.large)},
+    xlarge: ${s(exObj.breakpoint.xlarge)}
+end
 
-function writeTheme(jsTheme, exThemePath) {
-  const exObj = jsKeysToElixirKeys(jsTheme);
-  const tree = toTree(exObj);
+defmodule ${moduleName}.FontFace.Normal do 
+  defstruct font_family: ${s(exObj.font_face[0]['@font-face'].font_family)},
+    font_style: ${s(exObj.font_face[0]['@font-face'].font_style)},
+    font_display: ${s(exObj.font_face[0]['@font-face'].font_display)},
+    unicode_range: ${s(exObj.font_face[0]['@font-face'].unicode_range)},
+    font_weight: ${s(exObj.font_face[0]['@font-face'].font_weight)},
+    src: ${s(exObj.font_face[0]['@font-face'].src)}
+end
 
-  console.log(toElixirStructs(tree));
+defmodule ${moduleName}.FontFace.Semibold do 
+  defstruct font_family: ${s(exObj.font_face[1]['@font-face'].font_family)},
+    font_style: ${s(exObj.font_face[1]['@font-face'].font_style)},
+    font_display: ${s(exObj.font_face[1]['@font-face'].font_display)},
+    unicode_range: ${s(exObj.font_face[1]['@font-face'].unicode_range)},
+    font_weight: ${s(exObj.font_face[1]['@font-face'].font_weight)},
+    src: ${s(exObj.font_face[1]['@font-face'].src)}
+end
 
-  fs.writeFileSync(exThemePath, toElixirStructs(tree));
-}
+defmodule ${moduleName}.FontFace do 
+  defstruct regular: %${moduleName}.FontFace.Normal{},
+    bold: %${moduleName}.FontFace.Semibold{}
+end
 
-writeTheme(aposta10Dark, '../../lib/moon/sites/aposta10/themes/dark.ex');
+defmodule ${moduleName}.FontWeight do 
+  defstruct normal: ${s(exObj.font_weight.normal)},
+    semibold: ${s(exObj.font_weight.semibold)}
+end
+
+defmodule ${moduleName}.MaxWidth do 
+  defstruct default: ${s(exObj.max_width.default)},
+    large: ${s(exObj.max_width.large)}
+end
+
+defmodule ${moduleName}.Opacity do 
+  defstruct disabled: ${s(exObj.opacity.disabled)}
+end
+
+defmodule ${moduleName}.Radius do 
+  defstruct small: ${s(exObj.radius.small)},
+    default: ${s(exObj.radius.default)},
+    largest: ${s(exObj.radius.largest)}
+end
+
+defmodule ${moduleName}.Space do 
+  defstruct xsmall: ${s(exObj.space.xsmall)},
+    small: ${s(exObj.space.small)},
+    default: ${s(exObj.space.default)},
+    medium: ${s(exObj.space.medium)},
+    large: ${s(exObj.space.large)},
+    xlarge: ${s(exObj.space.xlarge)}
+end
+
+defmodule ${moduleName}.TransitionDuration do 
+  defstruct slow: ${s(exObj.transition_duration.slow)},
+    default: ${s(exObj.transition_duration.default)}
+end
+
+defmodule ${moduleName}.ZIndex do 
+  defstruct carousel_control: ${s(exObj.z_index.carousel_control)},
+    dialog: ${s(exObj.z_index.carousel_control)},
+    toggle: ${s(exObj.z_index.toggle)}
+end
+
+defmodule ${moduleName}.Color do 
+  defstruct text: ${s(exObj.color.text)},
+    background: ${s(exObj.color.background)},
+${Object.keys(exObj.color)
+      .filter((x) => typeof exObj.color[x] === 'object')
+      .map((colorName) =>
+        Object.keys(exObj.color[colorName]).map((colorShade) => `    ${colorName}_${colorShade}: ${s(exObj.color[colorName][colorShade])}`).join(",    \n")
+      ).join(",    \n")}
+end
+
+defmodule ${moduleName} do 
+  defstruct id: ${s(`${exObj.brand}_${exObj.color_scheme}`.toLowerCase())},
+    base: %${moduleName}.Base{},
+    border_style: ${s(exObj.border_style)},
+    border_width: ${s(exObj.border_width)},
+    border: ${s(exObj.border)},
+    box_shadow: ${s(exObj.box_shadow)},
+    breakpoint: %${moduleName}.Breakpoint{},
+    font_face: %${moduleName}.FontFace{},
+    font_family: ${s(exObj.font_family)},
+    font_size: ${s(exObj.font_size.body)},
+    font_weight: %${moduleName}.FontWeight{},
+    max_width: %${moduleName}.MaxWidth{},
+    opacity: %${moduleName}.Opacity{},
+    radius: %${moduleName}.Radius{},
+    space: %${moduleName}.Space{},
+    transition_duration: %${moduleName}.TransitionDuration{},
+    z_index: %${moduleName}.ZIndex{},
+    brand: ${s(exObj.brand)},
+    color: %${moduleName}.Color{},
+    color_scheme: ${s(exObj.color_scheme)}
+end
+    `
+  );
+};
+
+writeTheme(
+  aposta10Dark,
+  '../../lib/moon/sites/aposta10/themes/dark',
+  'Moon.Sites.Aposta10.Themes.Dark'
+);
+writeTheme(
+  aposta10Light,
+  '../../lib/moon/sites/aposta10/themes/light',
+  'Moon.Sites.Aposta10.Themes.Light'
+);
+writeTheme(
+  sportsbetDark,
+  '../../lib/moon/sites/moon_docs/themes/dark',
+  'Moon.Sites.MoonDocs.Themes.Dark'
+);
+writeTheme(
+  sportsbetLight,
+  '../../lib/moon/sites/moon_docs/themes/light',
+  'Moon.Sites.MoonDocs.Themes.Light'
+);

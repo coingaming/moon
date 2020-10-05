@@ -20,7 +20,7 @@ defmodule Moon.Components.Link do
     <Context get={{ :theme }}>
       <style>
         .{{ class_name }} {
-          color: {{ @color || @theme.colors["some-test.100"] }};
+          color: {{ @color || @theme.color.text }};
           background: {{ @background }};
           margin: {{ @margin }};
           padding: {{ @padding }};

@@ -14,16 +14,16 @@
 # cd ../..
 # echo "Success."
 
-# echo "\n# Steal work from coingaming/sportsbet-design.git"
+echo "\n# Steal work from coingaming/sportsbet-design.git"
 # echo "* svgs"
 # mkdir -p assets/svgs
 # cp -a js_deps/sportsbet-design/packages/assets/raw/* assets/svgs
-# echo "* themes"
+echo "* themes"
 cd scripts/theme_importer
 npm i
 npx ts-node index.ts
 cd ../..
 echo "Success."
 
-# echo "\nRun server"
-# iex -S mix phx.server
+echo "\nRun server"
+iex -S mix phx.server

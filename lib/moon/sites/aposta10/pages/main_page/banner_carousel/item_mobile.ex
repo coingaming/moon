@@ -1,7 +1,7 @@
 defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemMobile do
   use Moon.StatelessComponent
   use Moon.Components.Context
-  alias Moon.Components.Label
+  alias Moon.Components.Badge
   alias Moon.Components.Text
 
   property label, :string
@@ -40,8 +40,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemMobile do
 
       <div class={{ class_name }}>
         <div class="{{ class_name }}-thumb">
-          <Label background={{ @theme.colors["color1.100"] }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Label>
-          <Label background={{ @theme.colors["color2.100"] }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Label>
+          <Badge background={{ @theme.color.gohan_100 }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Badge>
+          <Badge background={{ @theme.color.gohan_100 }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Badge>
           <img class="{{ class_name }}-thumb-picture" src={{ "/uploads/img/site/#{ @image_url }" }} />
         </div>
 

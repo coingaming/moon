@@ -14,7 +14,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage do
 
   def render(assigns) do
     ~H"""
-    <DefaultLayout id="fuck">
+    <DefaultLayout id="main-page">
       <BannerCarousel />
       <Picks />
       <FeaturedBookmakers />
