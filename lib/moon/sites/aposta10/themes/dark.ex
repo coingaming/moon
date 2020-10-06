@@ -118,7 +118,7 @@ defmodule Moon.Sites.Aposta10.Themes.Dark.Color do
 end
 
 defmodule Moon.Sites.Aposta10.Themes.Dark do 
-  defstruct id: "aposta10_dark",
+  defstruct id: "aposta10-dark",
     base: %Moon.Sites.Aposta10.Themes.Dark.Base{},
     border_style: "solid",
     border_width: 1,

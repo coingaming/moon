@@ -129,10 +129,18 @@ defmodule ${moduleName}.Color do
   defstruct text: ${s(exObj.color.text)},
     background: ${s(exObj.color.background)},
 ${Object.keys(exObj.color)
-      .filter((x) => typeof exObj.color[x] === 'object')
-      .map((colorName) =>
-        Object.keys(exObj.color[colorName]).map((colorShade) => `    ${colorName}_${colorShade}: ${s(exObj.color[colorName][colorShade])}`).join(",    \n")
-      ).join(",    \n")}
+  .filter((x) => typeof exObj.color[x] === 'object')
+  .map((colorName) =>
+    Object.keys(exObj.color[colorName])
+      .map(
+        (colorShade) =>
+          `    ${colorName}_${colorShade}: ${s(
+            exObj.color[colorName][colorShade]
+          )}`
+      )
+      .join(',    \n')
+  )
+  .join(',    \n')}
 end
 
 defmodule ${moduleName} do 
@@ -165,24 +173,23 @@ writeTheme(
   aposta10Dark,
   '../../lib/moon/sites/aposta10/themes/dark',
   'Moon.Sites.Aposta10.Themes.Dark',
-  "aposta10-dark"
-
+  'aposta10-dark'
 );
 writeTheme(
   aposta10Light,
   '../../lib/moon/sites/aposta10/themes/light',
   'Moon.Sites.Aposta10.Themes.Light',
-  "aposta10-light"
+  'aposta10-light'
 );
 writeTheme(
   sportsbetDark,
   '../../lib/moon/sites/moon_docs/themes/dark',
   'Moon.Sites.MoonDocs.Themes.Dark',
-  "moondocs-dark"
+  'moondocs-dark'
 );
 writeTheme(
   sportsbetLight,
   '../../lib/moon/sites/moon_docs/themes/light',
   'Moon.Sites.MoonDocs.Themes.Light',
-  "moondocs-light"
+  'moondocs-light'
 );

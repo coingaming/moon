@@ -10,7 +10,7 @@ defmodule Moon.LiveView do
           "aposta10-dark" => %Moon.Sites.Aposta10.Themes.Dark{},
           "aposta10-light" => %Moon.Sites.Aposta10.Themes.Light{},
           "moondocs-dark" => %Moon.Sites.MoonDocs.Themes.Dark{},
-          "moondocs-light" => %Moon.Sites.MoonDocs.Themes.Light{},
+          "moondocs-light" => %Moon.Sites.MoonDocs.Themes.Light{}
         }
 
         new_theme = themes_map[new_value] || new_value

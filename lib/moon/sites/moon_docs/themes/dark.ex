@@ -118,7 +118,7 @@ defmodule Moon.Sites.MoonDocs.Themes.Dark.Color do
 end
 
 defmodule Moon.Sites.MoonDocs.Themes.Dark do 
-  defstruct id: "sportsbet.io_dark",
+  defstruct id: "moondocs-dark",
     base: %Moon.Sites.MoonDocs.Themes.Dark.Base{},
     border_style: "solid",
     border_width: 1,

@@ -10,7 +10,6 @@ defmodule Moon.Sites.Aposta10.Pages.TipsPage do
   alias MainPage.BlogCarousel
   alias MainPage.Guides
   alias MainPage.BestBookmakers
-  alias MainPage.Footer
 
   def render(assigns) do
     class_name = get_class_name("tips-page")
@@ -19,7 +18,7 @@ defmodule Moon.Sites.Aposta10.Pages.TipsPage do
     <Context get={{ :theme }}>
       <style>
         .{{ class_name }} {
-          background-color: {{ @theme.color.gohan_100background }};
+          background-color: {{ @theme.color.gohan_100 }};
           color: #000;
           padding-top: 200px;
           z-index: 101;
@@ -46,7 +45,6 @@ defmodule Moon.Sites.Aposta10.Pages.TipsPage do
           <BlogCarousel />
           <Guides />
           <BestBookmakers />
-          <Footer />
         </div>
       </div>
     </Context>

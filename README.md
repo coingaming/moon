@@ -1,3 +1,25 @@
+# Installation 
+
+## for Moon developer
+
+```
+git clone git@github.com:coingaming/moon.git
+cd moon
+bash install.sh
+bash run-locally-dev.sh
+```
+
+## for Site Builder developer
+
+add into mix.exs deps:
+
+```
+  {:moon, git: "git@github.com:coingaming/moon.git"}
+```
+
+Note: Site Builder developer (who is connecting template with data layer) - should not write any HTML or CSS - only passing data (including handle_event-s) to components that will be available from moon/sites.
+
+
 # Moon
 
 Moon is set of rules, that everybody knows about, are mostly happy about, and are welcome to improve.
