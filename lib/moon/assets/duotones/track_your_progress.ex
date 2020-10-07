@@ -13,7 +13,7 @@ defmodule Moon.Assets.Duotones.TrackYourProgress do
     ~H"""
     <style>
       .{{ class_name }} {
-        vertical-align: 'middle';
+        vertical-align: middle;
         color: {{ @color }};
         background-color: {{ @background_color }};
       }

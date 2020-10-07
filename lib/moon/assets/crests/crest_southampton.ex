@@ -11,7 +11,7 @@ defmodule Moon.Assets.Crests.CrestSouthampton do
     ~H"""
     <style>
       .{{ class_name }} {
-        vertical-align: 'middle';
+        vertical-align: middle;
         color: {{ @color }};
         background-color: {{ @background_color }};
       }

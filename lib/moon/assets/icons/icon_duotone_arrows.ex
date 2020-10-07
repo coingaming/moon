@@ -11,7 +11,7 @@ defmodule Moon.Assets.Icons.IconDuotoneArrows do
     ~H"""
     <style>
       .{{ class_name }} {
-        vertical-align: 'middle';
+        vertical-align: middle;
         color: {{ @color }};
         background-color: {{ @background_color }};
       }

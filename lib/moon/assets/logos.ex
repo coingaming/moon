@@ -16,7 +16,7 @@ defmodule Moon.Assets.Logos do
 
   def render(assigns) do
     ~H"""
-    {{ @name && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color) }}
     """
   end
 end
