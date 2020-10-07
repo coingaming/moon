@@ -16,8 +16,8 @@ defmodule MoonWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :moon,
-    gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    gzip: true,
+    only: ~w(css fonts images js svgs favicon.ico robots.txt)
 
   if code_reloading? do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket

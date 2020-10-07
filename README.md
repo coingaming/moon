@@ -5,8 +5,9 @@
 ```
 git clone git@github.com:coingaming/moon.git
 cd moon
-bash install.sh
+bash run-install.sh
 bash run-locally-dev.sh
+open "http://localhost:4000"
 ```
 
 ## for Site Builder developer

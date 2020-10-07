@@ -6,6 +6,16 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links do
   def render(assigns) do
     class_name = get_class_name("site-header-links")
 
+    links = [
+      %{icon: "sports_foot_ball", text: "Soccer", color: "#D33030"},
+      %{icon: "sports_tennis", text: "Tennis", color: "#FFAB00"},
+      %{icon: "sports_basket_ball", text: "Basketball", color: "#B3804A"},
+      %{icon: "sports_volley_ball", text: "Volleyball", color: "#0F75BD"},
+      %{icon: "sports_base_ball", text: "Baseball", color: "#B8AAA7"},
+      %{icon: "sports_boxing", text: "Boxing", color: "#B8AAA7"},
+      %{icon: "sports_boxing", text: "UFC", color: "#D33030"}
+    ]
+
     ~H"""
     <style>
       .{{ class_name }} {
@@ -30,22 +40,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links do
 
     <div class={{ class_name }}>
       <Carousel>
-        <Link text="soccer" />
-        <Link text="tennis" />
-        <Link text="basketball" />
-        <Link text="volleyball" />
-        <Link text="baseball" />
-        <Link text="soccer" />
-        <Link text="tennis" />
-        <Link text="basketball" />
-        <Link text="soccer" />
-        <Link text="tennis" />
-        <Link text="basketball" />
-        <Link text="volleyball" />
-        <Link text="baseball" />
-        <Link text="soccer" />
-        <Link text="tennis" />
-        <Link text="basketball" />
+        <Link icon={{ link.icon }} text={{ link.text }} color={{ link.color }} :for={{ link <- links }}/>
       </Carousel>
     </div>
     """

@@ -2,11 +2,14 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links.Link do
   use Moon.StatelessComponent
   alias Moon.Components.Text
   alias Moon.Components.Link
+  alias Moon.Assets.Icons
 
   property text, :string
+  property color, :string
+  property icon, :string
 
   def render(assigns) do
-    class_name = get_class_name("site-header-links-link")
+    class_name = get_class_name("site-header-links-link-#{assigns.color}")
 
     ~H"""
     <style>
@@ -31,13 +34,14 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links.Link do
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
+        color: {{ @color }};
       }
     </style>
 
     <Link add_class={{ class_name }} to="/tips/{{ @text }}">
 
       <div class="{{ class_name }}-logo">
-        <img src={{ "/uploads/img/site/icons/#{ @text }.svg" }} />
+        <Icons name={{ @icon }} color={{ @color }} />
       </div>
 
       <Text size=12>{{ @text }}</Text>
