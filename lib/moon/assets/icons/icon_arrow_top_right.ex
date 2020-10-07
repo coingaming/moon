@@ -17,7 +17,7 @@ defmodule Moon.Assets.Icons.IconArrowTopRight do
       }
     </style>
 
-    <svg class={{ class_name }} width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M2 1H9V8" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M9 1L1 9" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+    <svg class={{ class_name }} width="1em" height="1em" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M2 1H9V8" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M9 1L1 9" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </svg>
     """
   end
 end

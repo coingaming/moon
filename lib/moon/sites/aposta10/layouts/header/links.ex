@@ -26,6 +26,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links do
         top: 100px;
         background-color: #fff;
         z-index: 100;
+        font-size: 5rem;
       }
 
       {{ for_desktop() }} {

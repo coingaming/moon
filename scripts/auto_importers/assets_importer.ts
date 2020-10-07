@@ -27,7 +27,27 @@ const camelToSnakeCase = (str) =>
 
 const getModuleName = (s) => capitalizeFirstLetter(toCamel(s));
 
-const writeSvgFile = (iconType, file, contents) =>
+const getProp = (contents, propName) => {
+  try {
+    return contents.split(`${propName}="`)[1].split('"')[0];
+  } catch (e) {}
+};
+
+const getIntProp = (contents, propName) =>
+  parseInt(getProp(contents, propName));
+
+const writeSvgFile = (iconType, file, contents) => {
+  const originalWidth = getProp(contents, 'width');
+  const originalHeight = getProp(contents, 'height');
+  const originalWidthInt = parseInt(originalWidth);
+  const originalHeightInt = parseInt(originalHeight);
+
+  const newWidth = originalWidthInt >= originalHeightInt ? '1em' : 'auto';
+  const newHeight =
+    originalWidthInt && originalHeightInt && originalHeight >= originalWidth
+      ? '1em'
+      : 'auto';
+
   fs.writeFileSync(
     `${exportDir}/${iconType}/${file
       .replace(/([-_])/gi, '_')
@@ -54,8 +74,9 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
     </style>
 
     ${contents
-      .toString()
       .replace('<svg', `<svg class={{ class_name }} `)
+      .replace(`width="${originalWidth}"`, `width="${newWidth}"`)
+      .replace(`height="${originalHeight}"`, `height="${newHeight}"`)
       .replace(/\n/gi, ' ')
       .replace(/\r/gi, ' ')
       .replace(/  /gi, ' ')
@@ -82,6 +103,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
 end
 `.replace('IconLoyalty-0', 'IconLoyalty0')
   );
+};
 
 const writeAssetsMapFile = (iconType, icons) => {
   fs.writeFileSync(
@@ -104,9 +126,10 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
             `${i
               .replace(/([-_])/gi, '_')
               .toLowerCase()
-              .replace(`${iconType.substring(0, iconType.length-1)}_`.toLowerCase(), '')}: ${getModuleName(
-              iconType
-            )}.${getModuleName(i)}`
+              .replace(
+                `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
+                ''
+              )}: ${getModuleName(iconType)}.${getModuleName(i)}`
         )
         .join(', ')}
       }[:"#{icon_name}"]
@@ -125,7 +148,7 @@ end
 ['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((iconType) => {
   getFiles(iconType).forEach((file) => {
     const contents = getContents(iconType, file);
-    writeSvgFile(iconType, file.replace('.svg', ''), contents);
+    writeSvgFile(iconType, file.replace('.svg', ''), contents.toString());
   });
 
   writeAssetsMapFile(

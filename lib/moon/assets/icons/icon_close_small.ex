@@ -17,7 +17,7 @@ defmodule Moon.Assets.Icons.IconCloseSmall do
       }
     </style>
 
-    <svg class={{ class_name }} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M12 6L6 12" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round"/> <path d="M6 6L12 12" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round"/> </svg>
+    <svg class={{ class_name }} width="1em" height="1em" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M12 6L6 12" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round"/> <path d="M6 6L12 12" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round"/> </svg>
     """
   end
 end

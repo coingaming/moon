@@ -17,7 +17,7 @@ defmodule Moon.Assets.Icons.IconLoyalty0 do
       }
     </style>
 
-    <svg class={{ class_name }} width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="21" cy="21" r="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="56 8"/> </svg>
+    <svg class={{ class_name }} width="1em" height="1em" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="21" cy="21" r="20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="56 8"/> </svg>
     """
   end
 end
