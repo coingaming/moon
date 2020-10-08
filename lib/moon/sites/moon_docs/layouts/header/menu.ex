@@ -51,7 +51,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
         <Title>Assets</Title>
         <Link to="/assets/crests">Crests</Link>
         <Link to="/assets/duotones">Duotones</Link>
-        <Link to="/assets/flags">Flags</Link>
         <Link to="/assets/icons">Icons</Link>
         <Link to="/assets/logos">Logos</Link>
         <Link to="/assets/patterns">Patterns</Link>

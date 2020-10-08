@@ -7,12 +7,6 @@ defmodule Moon.Sites.MoonDocs.Pages.MainPage do
 
   data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
 
-  def mount(socket) do
-    socket = Surface.init(socket)
-    IO.puts(inspect(socket))
-    {:ok, socket}
-  end
-
   def render(assigns) do
     ~H"""
     <Themed theme={{ @theme }}>

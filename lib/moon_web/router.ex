@@ -28,6 +28,10 @@ defmodule MoonWeb.Router do
 
     live "/", Moon.Sites.MoonDocs.Pages.MainPage
     live "/assets/crests", Moon.Sites.MoonDocs.Pages.Assets.CrestsPage
+    live "/assets/duotones", Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage
+    live "/assets/icons", Moon.Sites.MoonDocs.Pages.Assets.IconsPage
+    live "/assets/logos", Moon.Sites.MoonDocs.Pages.Assets.LogosPage
+    live "/assets/patterns", Moon.Sites.MoonDocs.Pages.Assets.PatternsPage
   end
 
   scope "/sites/aposta10" do

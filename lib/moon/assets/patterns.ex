@@ -7,15 +7,17 @@ defmodule Moon.Assets.Patterns do
   property color, :string
   property background_color, :string
 
+  @assets_map %{
+    circles: Patterns.PatternCircles,
+    lines: Patterns.PatternLines,
+    ripple: Patterns.PatternRipple,
+    speed: Patterns.PatternSpeed,
+    stars: Patterns.PatternStars,
+    wave: Patterns.PatternWave
+  }
+
   def icon_name_to_module(icon_name) do
-    %{
-      circles: Patterns.PatternCircles,
-      lines: Patterns.PatternLines,
-      ripple: Patterns.PatternRipple,
-      speed: Patterns.PatternSpeed,
-      stars: Patterns.PatternStars,
-      wave: Patterns.PatternWave
-    }[:"#{icon_name}"]
+    @assets_map[:"#{icon_name}"]
   end
 
   def render(assigns) do

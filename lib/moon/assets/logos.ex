@@ -7,11 +7,13 @@ defmodule Moon.Assets.Logos do
   property color, :string
   property background_color, :string
 
+  @assets_map %{
+    sportsbet_sponsor: Logos.LogoSportsbetSponsor,
+    sportsbet: Logos.LogoSportsbet
+  }
+
   def icon_name_to_module(icon_name) do
-    %{
-      sportsbet_sponsor: Logos.LogoSportsbetSponsor,
-      sportsbet: Logos.LogoSportsbet
-    }[:"#{icon_name}"]
+    @assets_map[:"#{icon_name}"]
   end
 
   def render(assigns) do

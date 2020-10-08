@@ -2,13 +2,15 @@ defmodule Moon.Components.Inline do
   use Moon.StatelessComponent
 
   property style, :string
+  property font_size, :string
 
   def render(assigns) do
-    class_name = get_class_name("components-inline-#{assigns.style}")
+    class_name = get_class_name("components-inline-#{assigns.style}-#{assigns.font_size}")
 
     ~H"""
     <style>
       .{{ class_name }} {
+        font-size: {{ @font_size }};
         {{ @style }};
       }
 

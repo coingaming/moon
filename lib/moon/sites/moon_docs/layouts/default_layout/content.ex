@@ -10,7 +10,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout.Content do
         .{{ class_name }} {
           background-color: {{ @theme.color.gohan_100 }};
           color: #000;
-          padding-top: 200px;
+          padding: 20px;
           z-index: 101;
         }
 

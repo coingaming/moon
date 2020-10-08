@@ -1,19 +1,39 @@
 defmodule Moon.Assets.Crests.CrestArsenal do
   use Moon.StatelessComponent
 
+  false
+
   property color, :string
-  property background_color, :string
+  property height, :string
+  property width, :string
+  property font_size, :string
+  property vertical_align, :string
 
   def render(assigns) do
+    false
+
     class_name =
-      get_class_name("Crests-CrestArsenal-#{assigns[:color]}-#{assigns[:background_color]}")
+      get_class_name(
+        "Crests-CrestArsenal-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
+          assigns[:font_size]
+        }-#{assigns[:vertical_align]}"
+      )
 
     ~H"""
     <style>
       .{{ class_name }} {
         vertical-align: middle;
+
+        
+
+        
         color: {{ @color }};
-        background-color: {{ @background_color }};
+        height: {{ @height }};
+        width: {{ @width }};
+        font-size: {{ @font_size }};
+        vertical-align: {{ @vertical_align }};
+        overflow: hidden;
+        
       }
     </style>
 

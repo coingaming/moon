@@ -7,13 +7,15 @@ defmodule Moon.Assets.Crests do
   property color, :string
   property background_color, :string
 
+  @assets_map %{
+    arsenal: Crests.CrestArsenal,
+    flamengo: Crests.CrestFlamengo,
+    southampton: Crests.CrestSouthampton,
+    watford: Crests.CrestWatford
+  }
+
   def icon_name_to_module(icon_name) do
-    %{
-      arsenal: Crests.CrestArsenal,
-      flamengo: Crests.CrestFlamengo,
-      southampton: Crests.CrestSouthampton,
-      watford: Crests.CrestWatford
-    }[:"#{icon_name}"]
+    @assets_map[:"#{icon_name}"]
   end
 
   def render(assigns) do

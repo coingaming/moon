@@ -1,0 +1,37 @@
+defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
+  use Moon.LiveView
+  use Moon.Components.Context
+
+  alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
+  alias Moon.Themed
+  alias Moon.Components.Inline
+
+  alias Moon.Assets.Logos
+  alias Logos.LogoSportsbetSponsor
+  alias Logos.LogoSportsbet
+
+  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+
+  def render(assigns) do
+    code_as_string = """
+      <Inline font_size="1rem">
+        
+        <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
+        <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+      </Inline>
+    """
+
+    ~H"""
+    <Themed theme={{ @theme }}>
+      <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
+        <Inline font_size="1rem">
+          
+          <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
+          <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+        </Inline>
+        <pre>{{ code_as_string }}</pre>
+      </DefaultLayout>
+    </Themed>
+    """
+  end
+end

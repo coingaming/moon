@@ -4,16 +4,27 @@ defmodule Moon.Assets.Icons.IconBombayClub do
   property color, :string
   property background_color, :string
 
+  false
+
   def render(assigns) do
     class_name =
       get_class_name("Icons-IconBombayClub-#{assigns[:color]}-#{assigns[:background_color]}")
+
+    false
 
     ~H"""
     <style>
       .{{ class_name }} {
         vertical-align: middle;
+
+        
         color: {{ @color }};
         background-color: {{ @background_color }};
+        display: inline-block;
+        overflow: hidden;
+        
+
+        
       }
     </style>
 

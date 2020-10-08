@@ -4,15 +4,26 @@ defmodule Moon.Assets.Icons.IconData do
   property color, :string
   property background_color, :string
 
+  false
+
   def render(assigns) do
     class_name = get_class_name("Icons-IconData-#{assigns[:color]}-#{assigns[:background_color]}")
+
+    false
 
     ~H"""
     <style>
       .{{ class_name }} {
         vertical-align: middle;
+
+        
         color: {{ @color }};
         background-color: {{ @background_color }};
+        display: inline-block;
+        overflow: hidden;
+        
+
+        
       }
     </style>
 
