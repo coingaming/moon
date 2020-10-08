@@ -14,7 +14,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
 
   def render(assigns) do
     code_as_string = """
-      <Inline font_size="1rem">
+      <Inline>
         
         <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
         <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
@@ -24,7 +24,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-        <Inline font_size="1rem">
+        <Inline>
           
           <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
           <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />

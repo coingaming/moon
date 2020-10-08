@@ -228,7 +228,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
 
   def render(assigns) do 
     code_as_string = """
-      <Inline font_size="1rem">
+      <Inline>
         ${
           (iconType === 'icons' &&
             icons
@@ -236,7 +236,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
                 (icon) =>
                   `<${getModuleName(
                     icon
-                  )} color="piccolo_100" height="1rem" width="1rem" />`
+                  )} color="piccolo_100" background_color="gohan_100" />`
               )
               .join('\n        ')) ||
           ''
@@ -259,7 +259,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-        <Inline font_size="1rem">
+        <Inline>
           ${
             (iconType === 'icons' &&
               icons
