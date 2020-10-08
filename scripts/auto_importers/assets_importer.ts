@@ -54,6 +54,7 @@ const writeSvgFile = (iconType, file, contents) => {
     `
 defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do 
   use Moon.StatelessComponent
+  use Moon.Components.Context
 
   ${
     iconType === 'icons' &&
@@ -94,6 +95,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
     }
 
     ~H"""
+    <Context get={{ :theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
@@ -101,8 +103,8 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         ${
           (iconType === 'icons' &&
             `
-        color: {{ @color }};
-        background-color: {{ @background_color }};
+        color: {{ get_color(@color, @theme) }};
+        background-color: {{ get_color(@background_color, @theme) }};
         display: inline-block;
         overflow: hidden;
         `) ||
@@ -112,7 +114,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         ${
           (iconType !== 'icons' &&
             `
-        color: {{ @color }};
+        color: {{ get_color(@color, @theme) }};
         height: {{ @height }};
         width: {{ @width }};
         font-size: {{ @font_size }};
@@ -149,6 +151,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         ''
       )
       .trim()}
+    </Context>
     """
   end
 end

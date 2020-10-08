@@ -1,5 +1,6 @@
 defmodule Moon.Assets.Icons.IconArrowTopRight do
   use Moon.StatelessComponent
+  use Moon.Components.Context
 
   property color, :string
   property background_color, :string
@@ -13,13 +14,14 @@ defmodule Moon.Assets.Icons.IconArrowTopRight do
     false
 
     ~H"""
+    <Context get={{ :theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
 
         
-        color: {{ @color }};
-        background-color: {{ @background_color }};
+        color: {{ get_color(@color, @theme) }};
+        background-color: {{ get_color(@background_color, @theme) }};
         display: inline-block;
         overflow: hidden;
         
@@ -29,6 +31,7 @@ defmodule Moon.Assets.Icons.IconArrowTopRight do
     </style>
 
     <svg class={{ class_name }} width="1em" height="1em" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">  <path d="M2 1H9V8" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>  <path d="M9 1L1 9" stroke="currentColor" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+    </Context>
     """
   end
 end

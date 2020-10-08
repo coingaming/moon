@@ -4,6 +4,7 @@ defmodule Moon.StatefulComponent do
       use Surface.LiveComponent
       import Moon.Helpers.ClassNameSupport
       import Moon.Helpers.ScreenSizeSupport
+      import Moon.Helpers.GetColorSupport
     end
   end
 end
