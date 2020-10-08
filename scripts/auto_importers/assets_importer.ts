@@ -43,10 +43,7 @@ const writeSvgFile = (iconType, file, contents) => {
   const originalHeightInt = parseInt(originalHeight);
 
   const newWidth = originalWidthInt >= originalHeightInt ? '1em' : 'auto';
-  const newHeight =
-    originalWidthInt && originalHeightInt && originalHeight >= originalWidth
-      ? '1em'
-      : 'auto';
+  const newHeight = originalHeightInt >= originalWidthInt ? '1em' : 'auto';
 
   fs.writeFileSync(
     `${exportDir}/${iconType}/${file
