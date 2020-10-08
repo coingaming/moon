@@ -3,7 +3,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header do
   alias Moon.Sites.MoonDocs.Layouts.Header
   alias Header.Menu
   alias Header.Logo
-  alias Header.Links
   alias Header.Search
 
   def render(assigns) do
@@ -20,7 +19,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header do
       <Menu />
       <Logo />
       <Search />
-      <Links />
     </div>
     """
   end

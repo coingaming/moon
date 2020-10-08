@@ -22,7 +22,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
       <body>
         <Header />
         <Content>
-          <p>Usertoken: {{ @user_token }}</p>
           <slot />
         </Content>
         <Footer />

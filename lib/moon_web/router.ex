@@ -27,6 +27,7 @@ defmodule MoonWeb.Router do
     pipe_through :browser
 
     live "/", Moon.Sites.MoonDocs.Pages.MainPage
+    live "/assets/crests", Moon.Sites.MoonDocs.Pages.Assets.CrestsPage
   end
 
   scope "/sites/aposta10" do

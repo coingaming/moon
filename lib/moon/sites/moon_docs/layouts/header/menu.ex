@@ -1,24 +1,29 @@
 defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
   use Moon.StatelessComponent
-  alias Moon.Sites.MoonDocs.Layouts.Header.Menu.Link
-  alias Moon.Sites.MoonDocs.Layouts.Header.Menu.Separator
+
+  alias Moon.Sites.MoonDocs.Layouts.Header.Menu
+  alias Menu.Link
+  alias Menu.Title
+  alias Menu.Separator
 
   def render(assigns) do
+    class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Header.Menu")
+
     ~H"""
     <style>
-      .site-header-menu {
+      .{{ class_name }} {
         position: absolute;
         left: 20px;
         top: 20px;
         display: block;
       }
 
-      .site-header-menu > .links {
+      .{{ class_name }} > .links {
         display: none;
       }
 
       {{ for_desktop() }} {
-        .site-header-menu {
+        .{{ class_name }} {
           position: fixed;
           background-color: #fff;
           top: 100px;
@@ -27,33 +32,37 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
           width: 232px;
         }
 
-        .site-header-menu > .hamburger {
+        .{{ class_name }} > .hamburger {
           display: none;
         }
 
-        .site-header-menu > .links {
+        .{{ class_name }} > .links {
           display: block;
         }
       }
     </style>
 
-    <div class="site-header-menu">
+    <div class={{ class_name }}>
       <div class="hamburger">
         <img src={{ "/uploads/img/site/menu.svg" }} />
       </div>
 
       <div class="links" style="padding: 20px;">
-        <Link>Betting tips</Link>
-        <Link>Bookmakers</Link>
+        <Title>Assets</Title>
+        <Link to="/assets/crests">Crests</Link>
+        <Link to="/assets/duotones">Duotones</Link>
+        <Link to="/assets/flags">Flags</Link>
+        <Link to="/assets/icons">Icons</Link>
+        <Link to="/assets/logos">Logos</Link>
+        <Link to="/assets/patterns">Patterns</Link>
         <Separator />
-        <Link>Academy classes</Link>
-        <Separator />
-        <Link count=12>Podcasts</Link>
-        <Link count=12>Videos</Link>
-        <Link count=12>Blog</Link>
-        <Separator />
-        <Link>About</Link>
-        <Link>Help centre</Link>
+        <Title>Components</Title>
+        <Link to="/components/badge">Badge</Link>
+        <Link to="/components/button">Button</Link>
+        <Link to="/components/inline">Inline</Link>
+        <Link to="/components/link">Link</Link>
+        <Link to="/components/link">Stack</Link>
+        <Link to="/components/text">Text</Link>
       </div>
 
     </div>

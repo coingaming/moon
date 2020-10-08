@@ -1,11 +1,9 @@
-defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu.Link do
+defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu.Title do
   use Moon.StatelessComponent
   alias Moon.Components.Text
 
-  property to, :string
-
   def render(assigns) do
-    class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Header.Menu.Link")
+    class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Header.Menu.Title")
 
     ~H"""
     <style>
@@ -17,7 +15,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu.Link do
     </style>
 
     <div class={{ class_name }}>
-      <Moon.Components.Link to={{ @to }}><Text size=12><slot /></Text></Moon.Components.Link>
+      <Text size=18><slot /></Text>
     </div>
     """
   end
