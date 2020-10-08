@@ -32,6 +32,13 @@ defmodule MoonWeb.Router do
     live "/assets/icons", Moon.Sites.MoonDocs.Pages.Assets.IconsPage
     live "/assets/logos", Moon.Sites.MoonDocs.Pages.Assets.LogosPage
     live "/assets/patterns", Moon.Sites.MoonDocs.Pages.Assets.PatternsPage
+
+    live "/components/badge", Moon.Sites.MoonDocs.Pages.Components.BadgePage
+    live "/components/button", Moon.Sites.MoonDocs.Pages.Components.ButtonPage
+    live "/components/inline", Moon.Sites.MoonDocs.Pages.Components.InlinePage
+    live "/components/link", Moon.Sites.MoonDocs.Pages.Components.LinkPage
+    live "/components/stack", Moon.Sites.MoonDocs.Pages.Components.StackPage
+    live "/components/text", Moon.Sites.MoonDocs.Pages.Components.TextPage
   end
 
   scope "/sites/aposta10" do
