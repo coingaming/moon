@@ -44,8 +44,8 @@ const writeSvgFile = (iconType, file, contents) => {
   const originalWidthInt = parseInt(originalWidth);
   const originalHeightInt = parseInt(originalHeight);
 
-  const newWidth = originalWidthInt >= originalHeightInt ? '1em' : 'auto';
-  const newHeight = originalHeightInt >= originalWidthInt ? '1em' : 'auto';
+  const newWidth = originalWidthInt < originalHeightInt ? 'auto' : '1em';
+  const newHeight = originalHeightInt < originalWidthInt ? 'auto' : '1em';
 
   fs.writeFileSync(
     `${exportDir}/${iconType}/${file
@@ -57,41 +57,45 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
   use Moon.Components.Context
 
   ${
-    iconType === 'icons' &&
-    `
+    (iconType === 'icons' &&
+      `
   property color, :string
   property background_color, :string
-  `
+  `) ||
+    ''
   }
 
   ${
-    iconType !== 'icons' &&
-    `
+    (iconType !== 'icons' &&
+      `
   property color, :string
   property height, :string
   property width, :string
   property font_size, :string
   property vertical_align, :string
-  `
+  `) ||
+    ''
   }
 
   def render(assigns) do 
     ${
-      iconType === 'icons' &&
-      `
+      (iconType === 'icons' &&
+        `
     class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
-        file
-      )}-#{assigns[:color]}-#{assigns[:background_color]}")
-    `
+          file
+        )}-#{assigns[:color]}-#{assigns[:background_color]}")
+    `) ||
+      ''
     }
 
     ${
-      iconType !== 'icons' &&
-      `
+      (iconType !== 'icons' &&
+        `
     class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
-        file
-      )}-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{assigns[:font_size]}-#{assigns[:vertical_align]}")
-    `
+          file
+        )}-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{assigns[:font_size]}-#{assigns[:vertical_align]}")
+    `) ||
+      ''
     }
 
     ~H"""
@@ -127,9 +131,11 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
     </style>
 
     ${contents
-      .replace('<svg', `<svg class={{ class_name }} `)
-      .replace(`width="${originalWidth}"`, `width="${newWidth}"`)
-      .replace(`height="${originalHeight}"`, `height="${newHeight}"`)
+      .replace('<svg', `<svg class={{ class_name }} NEW_WIDTH NEW_HEIGHT `)
+      .replace(`width="${originalWidth}"`, ``)
+      .replace(`height="${originalHeight}"`, ``)
+      .replace(`NEW_WIDTH`, `width="${newWidth}"`)
+      .replace(`NEW_HEIGHT`, `height="${newHeight}"`)
       .replace(/\n/gi, ' ')
       .replace(/\r/gi, ' ')
       .replace(/  /gi, ' ')
