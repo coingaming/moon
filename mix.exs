@@ -35,7 +35,8 @@ defmodule Moon.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.0"},
-      {:surface, git: "git@github.com:msaraiva/surface.git"}
+      {:surface, git: "git@github.com:msaraiva/surface.git"},
+      {:decimal, "~> 2.0"}
     ]
   end
 

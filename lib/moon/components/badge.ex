@@ -24,8 +24,8 @@ defmodule Moon.Components.Badge do
           background-color: {{ get_color(@background_color, @theme) }};
           font-weight: {{ @theme.font_weight.semibold }};
           text-transform: uppercase;
-          border-radius: {{ @theme.radius.largest }}rem;
-          letterSpacing: 1rem;
+          border-radius: {{ get_rem(@theme.radius.largest) }};
+          letter-spacing: {{ get_rem(1) }};
 
           {{ @style }};
         }
