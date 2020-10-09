@@ -3,14 +3,14 @@ defmodule Moon.Components.Button do
   use Moon.Components.Context
 
   property color, :string
-  property background, :string
+  property background_color, :string
   property margin, :string
   property style, :string
 
   def render(assigns) do
     class_name =
       get_class_name(
-        "components-button-#{assigns.color}-#{assigns.background}-#{assigns.margin}-#{
+        "components-button-#{assigns.color}-#{assigns.background_color}-#{assigns.margin}-#{
           assigns.style
         }"
       )

@@ -6,8 +6,7 @@ defmodule Moon.Assets.Icons.IconForward do
   property background_color, :string
 
   def render(assigns) do
-    class_name =
-      get_class_name("Icons-IconForward-#{assigns[:color]}-#{assigns[:background_color]}")
+    class_name = get_class_name("Icons-IconForward-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

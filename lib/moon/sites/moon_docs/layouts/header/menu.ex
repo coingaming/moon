@@ -62,6 +62,10 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
         <Link to="/components/link">Link</Link>
         <Link to="/components/link">Stack</Link>
         <Link to="/components/text">Text</Link>
+        <Separator />
+        <Title>Sites</Title>
+        <Link to="/">MoonDocs</Link>
+        <Link to="/sites/aposta10">Aposta10</Link>
       </div>
 
     </div>

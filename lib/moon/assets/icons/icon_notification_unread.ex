@@ -7,9 +7,7 @@ defmodule Moon.Assets.Icons.IconNotificationUnread do
 
   def render(assigns) do
     class_name =
-      get_class_name(
-        "Icons-IconNotificationUnread-#{assigns[:color]}-#{assigns[:background_color]}"
-      )
+      get_class_name("Icons-IconNotificationUnread-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

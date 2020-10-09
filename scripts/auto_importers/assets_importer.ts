@@ -83,7 +83,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         `
     class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
           file
-        )}-#{assigns[:color]}-#{assigns[:background_color]}")
+        )}-#{assigns.color}-#{assigns.background_color}")
     `) ||
       ''
     }
@@ -93,7 +93,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         `
     class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
           file
-        )}-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{assigns[:font_size]}-#{assigns[:vertical_align]}")
+        )}-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{assigns.font_size}-#{assigns.vertical_align}")
     `) ||
       ''
     }

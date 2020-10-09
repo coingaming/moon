@@ -11,9 +11,9 @@ defmodule Moon.Assets.Duotones.NoEvents do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Duotones-NoEvents-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Duotones-NoEvents-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""

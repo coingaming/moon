@@ -7,9 +7,7 @@ defmodule Moon.Assets.Icons.IconChevronLeftRounded do
 
   def render(assigns) do
     class_name =
-      get_class_name(
-        "Icons-IconChevronLeftRounded-#{assigns[:color]}-#{assigns[:background_color]}"
-      )
+      get_class_name("Icons-IconChevronLeftRounded-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

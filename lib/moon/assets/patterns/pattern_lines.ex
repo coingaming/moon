@@ -11,9 +11,9 @@ defmodule Moon.Assets.Patterns.PatternLines do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Patterns-PatternLines-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Patterns-PatternLines-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""

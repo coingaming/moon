@@ -7,7 +7,7 @@ defmodule Moon.Assets.Icons.IconHyperlink do
 
   def render(assigns) do
     class_name =
-      get_class_name("Icons-IconHyperlink-#{assigns[:color]}-#{assigns[:background_color]}")
+      get_class_name("Icons-IconHyperlink-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

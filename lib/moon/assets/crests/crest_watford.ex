@@ -11,9 +11,9 @@ defmodule Moon.Assets.Crests.CrestWatford do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Crests-CrestWatford-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Crests-CrestWatford-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""

@@ -6,7 +6,7 @@ defmodule Moon.Assets.Icons.IconUser do
   property background_color, :string
 
   def render(assigns) do
-    class_name = get_class_name("Icons-IconUser-#{assigns[:color]}-#{assigns[:background_color]}")
+    class_name = get_class_name("Icons-IconUser-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

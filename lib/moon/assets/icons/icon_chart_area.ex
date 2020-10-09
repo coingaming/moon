@@ -7,7 +7,7 @@ defmodule Moon.Assets.Icons.IconChartArea do
 
   def render(assigns) do
     class_name =
-      get_class_name("Icons-IconChartArea-#{assigns[:color]}-#{assigns[:background_color]}")
+      get_class_name("Icons-IconChartArea-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

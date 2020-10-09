@@ -8,7 +8,7 @@ defmodule Moon.Assets.Icons.IconSportsAmericanFootBall do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Icons-IconSportsAmericanFootBall-#{assigns[:color]}-#{assigns[:background_color]}"
+        "Icons-IconSportsAmericanFootBall-#{assigns.color}-#{assigns.background_color}"
       )
 
     ~H"""

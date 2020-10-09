@@ -7,7 +7,7 @@ defmodule Moon.Assets.Icons.IconSportsPopular do
 
   def render(assigns) do
     class_name =
-      get_class_name("Icons-IconSportsPopular-#{assigns[:color]}-#{assigns[:background_color]}")
+      get_class_name("Icons-IconSportsPopular-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
     <Context get={{ :theme }}>

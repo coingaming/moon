@@ -11,9 +11,9 @@ defmodule Moon.Assets.Logos.LogoSportsbet do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Logos-LogoSportsbet-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Logos-LogoSportsbet-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""

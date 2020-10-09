@@ -8,7 +8,7 @@ defmodule Moon.Assets.Icons.IconArrowDiagonalTopRight do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Icons-IconArrowDiagonalTopRight-#{assigns[:color]}-#{assigns[:background_color]}"
+        "Icons-IconArrowDiagonalTopRight-#{assigns.color}-#{assigns.background_color}"
       )
 
     ~H"""

@@ -11,9 +11,9 @@ defmodule Moon.Assets.Duotones.EmailNotVerified do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Duotones-EmailNotVerified-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Duotones-EmailNotVerified-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""

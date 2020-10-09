@@ -11,9 +11,9 @@ defmodule Moon.Assets.Patterns.PatternRipple do
   def render(assigns) do
     class_name =
       get_class_name(
-        "Patterns-PatternRipple-#{assigns[:color]}-#{assigns[:height]}-#{assigns[:width]}-#{
-          assigns[:font_size]
-        }-#{assigns[:vertical_align]}"
+        "Patterns-PatternRipple-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{
+          assigns.font_size
+        }-#{assigns.vertical_align}"
       )
 
     ~H"""
