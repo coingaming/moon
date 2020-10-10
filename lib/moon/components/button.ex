@@ -173,7 +173,7 @@ defmodule Moon.Components.Button do
       |> Enum.join("\n")
 
     """
-    .#{class_name} {
+    #{class_name} {
       #{css_body};
     }
 
@@ -183,7 +183,7 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     class_name =
-      get_class_name("components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}")
+      get_class_name("components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}-#{assigns.full_width}")
 
     ~H"""
     <Context get={{ :theme }}>
@@ -199,14 +199,14 @@ defmodule Moon.Components.Button do
           border: {{ @theme.border }};
           border-color: transparent;
           border-radius: {{ get_rem(@theme.radius.largest) }};
-          transition: `background-color {{ @theme.transition_duration.default }}s`;
+          transition: background-color {{ @theme.transition_duration.default }}s;
           white-space: nowrap;
 
           {{ @full_width && "position: relative" || "" }}
           {{ @style }}
         }
 
-        {{ get_css_maps(assigns, @theme) |> get_css_for_maps(class_name) }}
+        {{ get_css_maps(assigns, @theme) |> get_css_for_maps(".#{class_name}") }}
       </style>
 
       <button class="{{ class_name }} {{ @mock_state && "is-#{@mock_state}" }}">
