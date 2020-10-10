@@ -3,9 +3,13 @@ defmodule Moon.Components.Button do
   use Moon.Components.Context
 
   property href, :string
-  property variant, :string, default: "default", values: ["primary", "secondary", "tertiary", "highlight", "default"]
+
+  property variant, :string,
+    default: "default",
+    values: ["primary", "secondary", "tertiary", "highlight", "default"]
+
   property size, :string, default: "small", values: ["xsmall", "small", "medium", "large"]
-  property mock_state, :string
+  property mock_state, :string, values: ["active", "focus", "hover"]
   property full_width, :boolean
   property progress, :boolean
   property oops, :boolean
@@ -61,15 +65,18 @@ defmodule Moon.Components.Button do
   end
 
   def get_variant_css(%{variant: variant}, %{color: color}) do
+    hover = "&:hover, &.is-hover"
+    active = "&:active, &:focus, &.is-active, &.is-focus"
+
     case variant do
       "primary" ->
         %{
           :color => color.goten_100,
-          :background_color => "#ff0000", # "color.piccolo_100",
-          "&:hover" => %{
+          :background_color => color.piccolo_100,
+          hover => %{
             background_color: color.piccolo_80
           },
-          "&:active" => %{
+          active => %{
             background_color: color.piccolo_120,
             outline: "none"
           }
@@ -77,27 +84,55 @@ defmodule Moon.Components.Button do
 
       "secondary" ->
         %{
-          color: color.goten_100,
-          background_color: color.piccolo_100
+          :color => color.bulma_100,
+          :background_color => color.hit_100,
+          hover => %{
+            background_color: color.piccolo_80
+          },
+          active => %{
+            background_color: color.piccolo_120,
+            outline: "none"
+          }
         }
 
       "tertiary" ->
         %{
-          color: color.bulma_100,
-          background_color: "transparent",
-          border: "1px solid #{color.bulma_100}"
+          :color => color.bulma_100,
+          :background_color => "transparent",
+          :border => "1px solid #{color.bulma_100}",
+          hover => %{
+            background_color: color.hit_80
+          },
+          active => %{
+            background_color: color.piccolo_120,
+            outline: "none"
+          }
         }
 
       "highlight" ->
         %{
-          color: color.goten_100,
-          background_color: color.whis_100
+          :color => color.goten_100,
+          :background_color => color.whis_100,
+          hover => %{
+            opacity: 0.9
+          },
+          active => %{
+            opacity: 0.8,
+            outline: "none"
+          }
         }
 
       "default" ->
         %{
-          color: color.bulma_100,
-          background: "none"
+          :color => color.bulma_100,
+          :background => "none",
+          hover => %{
+            color: color.bulma_100
+          },
+          active => %{
+            color: color.bulma_100,
+            outline: "none"
+          }
         }
     end
   end
@@ -108,15 +143,13 @@ defmodule Moon.Components.Button do
     [size_css_map, variant_css_map]
   end
 
-  def get_css_map(assigns, theme) do
-    maps = get_css_maps(assigns, theme)
-
-    Enum.reduce(maps, %{}, fn x, acc ->
-      Map.merge(acc, x)
-    end)
+  def get_css_for_maps(css_maps, class_name) do
+    css_maps
+    |> Enum.map(fn css_map -> get_css_for_map(css_map, class_name) end)
+    |> Enum.join("\n")
   end
 
-  def get_css(css_map, class_name) do
+  def get_css_for_map(css_map, class_name) do
     css_body =
       css_map
       |> Enum.filter(fn {_k, v} ->
@@ -128,22 +161,36 @@ defmodule Moon.Components.Button do
       end)
       |> Enum.join(";")
 
+    css_tricks =
+      css_map
+      |> Enum.filter(fn {_k, v} ->
+        is_map(v)
+      end)
+      |> Enum.map(fn {k, v} ->
+        child_node_name = String.replace("#{k}", "&", "#{class_name}")
+        get_css_for_map(v, child_node_name)
+      end)
+      |> Enum.join("\n")
+
     """
-    .#{class_name} {
+    .#{class_name} {
       #{css_body};
     }
+
+    #{css_tricks}
     """
   end
 
   def render(assigns) do
-    class_name = get_class_name("components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}")
+    class_name =
+      get_class_name("components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}")
 
     ~H"""
     <Context get={{ :theme }}>
       <style>
         .{{ class_name }} {
           display: inline-block;
-          width: {{ @full_width && "100%" || "" }};
+          {{ @full_width && "width: 100%;" || "" }}
           min-height: {{ get_rem(24) }};
           font-family: inherit;
           font-weight: {{ @theme.font_weight.semibold }};
@@ -152,43 +199,19 @@ defmodule Moon.Components.Button do
           border: {{ @theme.border }};
           border-color: transparent;
           border-radius: {{ get_rem(@theme.radius.largest) }};
-          transition: `background-color {{ @theme.transition_duration.default }}s`,
+          transition: `background-color {{ @theme.transition_duration.default }}s`;
           white-space: nowrap;
 
           {{ @full_width && "position: relative" || "" }}
-          {{ @style }};
+          {{ @style }}
         }
 
-        {{ get_css_map(assigns, @theme) |> get_css(class_name) }}
+        {{ get_css_maps(assigns, @theme) |> get_css_for_maps(class_name) }}
       </style>
 
-      <b>
-        .{{ class_name }} {
-          display: inline-block;
-          width: {{ @full_width && "100%" || "" }};
-          min-height: {{ get_rem(24) }};
-          font-family: inherit;
-          font-weight: {{ @theme.font_weight.semibold }};
-          text-decoration: none;
-          curson: pointer;
-          border: {{ @theme.border }};
-          border-color: transparent;
-          border-radius: {{ get_rem(@theme.radius.largest) }};
-          transition: `background-color {{ @theme.transition_duration.default }}s`,
-          white-space: nowrap;
-
-          {{ @full_width && "position: relative" || "" }}
-          {{ @style }};
-        }
-
-        {{ get_css_map(assigns, @theme) |> get_css(class_name) }}
-      </b>
-
-      <div class={{ class_name }}>
+      <button class="{{ class_name }} {{ @mock_state && "is-#{@mock_state}" }}">
         <slot />
-      </div>
-
-      <br /><br /><br />
+      </button>
     </Context>
     """
   end

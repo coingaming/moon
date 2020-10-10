@@ -10,7 +10,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
   data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
 
   def render(assigns) do
-    code_as_string = """
+    example_1 = """
       <Inline>
         <Button variant="primary">Default</Button>
         <Button variant="secondary" size="small">Default</Button>
@@ -32,7 +32,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
 
         <Inline>
           <Button variant="primary">Default</Button>
-          <Button variant="secondary" size="small">Default</Button>
+          <Button variant="secondary" size="xsmall">Default</Button>
           <Button variant="primary" mock_state="hover">
             Hover
           </Button>
@@ -44,7 +44,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
           </Button>
         </Inline>
 
-        <pre>{{ code_as_string }}</pre>
+        <pre>{{ example_1 }}</pre>
       </DefaultLayout>
     </Themed>
     """
