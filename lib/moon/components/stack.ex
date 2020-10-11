@@ -8,10 +8,30 @@ defmodule Moon.Components.Stack do
 
     ~H"""
     <style>
-      .{{ class_name }} > div, .{{ class_name }} > img {
-        display: block;
-        margin-bottom: 10px;
-        {{ @style }};
+      @supports (grid-gap: 0) {
+        .{{ class_name }} {
+          display: grid;
+          grid-gap: space;
+        }
+      }
+
+      @supports not (grid-gap: 0) {
+        .{{ class_name }} > * + * {
+          margin-top: space;
+        }
+      }
+
+      .{{ class_name }}> li {
+        list-style-type: none;
+      }
+
+      .{{ class_name }}> li:before {
+        position: absolute;
+        content: "\\200B";
+      }
+
+      .{{ class_name }} {
+        {{ @style }}
       }
     </style>
 

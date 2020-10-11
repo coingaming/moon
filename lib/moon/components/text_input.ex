@@ -3,18 +3,34 @@ defmodule Moon.Components.TextInput do
 
   alias Surface.Components.Form.TextInput
 
-  property name, :string, required: true
-  property placeholder, :string
+  property name, :string
   property style, :string
-  property size, :integer, default: 14
+  property label, :string
+  property type, :string, default: "text",
+    values: [
+      "date",
+      "datetime-local",
+      "email",
+      "number",
+      "password",
+      "search",
+      "tel",
+      "text",
+      "url",
+      "time",
+      "url"
+    ]
+  property placeholder, :string
+  property error, :string
+  property rounded, :boolean
+  property disabled, :boolean
 
   def render(assigns) do
-    class_name = get_class_name("components-text-input-#{assigns.size}-#{assigns.style}")
+    class_name = get_class_name("components-text-input-#{assigns.style}")
 
     ~H"""
     <style>
       .{{ class_name }} {
-        font-size: {{ @size }}px;
         {{ @style }};
       }
     </style>

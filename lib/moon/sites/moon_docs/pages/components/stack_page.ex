@@ -4,19 +4,25 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.StackPage do
 
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
-  alias Moon.Components.Button
+  alias Moon.Components.Stack
 
   data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
 
   def render(assigns) do
     code_as_string = """
-      <Button>Hello<Button>
+      <Stack>
+        <div>a</div>
+        <div>b</div>
+      </Stack>
     """
 
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-        <Button>Hello</Button>
+        <Stack>
+          <div>a</div>
+          <div>b</div>
+        </Stack>
         <pre>{{ code_as_string }}</pre>
       </DefaultLayout>
     </Themed>

@@ -28,7 +28,7 @@ defmodule Moon.Components.Button do
 
   property style, :string
 
-  def get_size_css(%{size: size, variant: variant}) do
+  def get_size_css(%{size: size, variant: variant}, _theme) do
     case size do
       "xsmall" ->
         %{
@@ -138,7 +138,7 @@ defmodule Moon.Components.Button do
   end
 
   def get_css_maps(assigns, theme) do
-    size_css_map = get_size_css(assigns)
+    size_css_map = get_size_css(assigns, theme)
     variant_css_map = get_variant_css(assigns, theme)
     [size_css_map, variant_css_map]
   end
