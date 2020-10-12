@@ -26,7 +26,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Footer do
           left_value="moondocs-light"
           right_label="AM"
           right_value="moondocs-dark"
-          value={{ @theme.id }}
+          value={{ theme.id }}
         />
       </div>
 

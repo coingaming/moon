@@ -40,8 +40,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BlogCarousel.Item do
 
       <div class={{ class_name }}>
         <div class="{{ class_name }}-thumb">
-          <Badge background={{ @theme.color.gohan_100 }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Badge>
-          <Badge background={{ @theme.color.gohan_100 }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Badge>
+          <Badge background={{ theme.color.gohan_100 }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Badge>
+          <Badge background={{ theme.color.gohan_100 }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Badge>
           <img class="{{ class_name }}-thumb-picture" src={{ "/uploads/img/site/#{ @image_url }" }} />
         </div>
 

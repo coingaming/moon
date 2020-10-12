@@ -16,8 +16,8 @@ defmodule Moon.Assets.Icons.IconChevronDown do
         vertical-align: middle;
 
 
-        color: {{ get_color(@color, @theme) }};
-        background-color: {{ get_color(@background_color, @theme) }};
+        color: {{ get_color(@color, theme) }};
+        background-color: {{ get_color(@background_color, theme) }};
         display: inline-block;
         overflow: hidden;
 

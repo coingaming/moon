@@ -1,7 +1,7 @@
 defmodule Moon.Components.Switch do
   use Moon.StatelessComponent
 
-  prop(on_click, :event)
+  prop(on_click, :string)
   prop(left_label, :string)
   prop(left_value, :string)
   prop(right_label, :string)

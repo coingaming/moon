@@ -18,8 +18,8 @@ defmodule Moon.Components.Text do
       <style>
         .{{ class_name }} {
           font-size: {{ @size }}px;
-          font-weight: {{ @is_bold && @theme.font_weight.semibold }};
-          color:  {{ get_color(@color, @theme) }};
+          font-weight: {{ @is_bold && theme.font_weight.semibold }};
+          color:  {{ get_color(@color, theme) }};
           {{ @style }};
         }
       </style>

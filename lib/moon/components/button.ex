@@ -160,20 +160,20 @@ defmodule Moon.Components.Button do
           {{ @full_width && "width: 100%;" || "" }}
           min-height: {{ get_rem(24) }};
           font-family: inherit;
-          font-weight: {{ @theme.font_weight.semibold }};
+          font-weight: {{ theme.font_weight.semibold }};
           text-decoration: none;
           curson: pointer;
-          border: {{ @theme.border }};
+          border: {{ theme.border }};
           border-color: transparent;
-          border-radius: {{ get_rem(@theme.radius.largest) }};
-          transition: background-color {{ @theme.transition_duration.default }}s;
+          border-radius: {{ get_rem(theme.radius.largest) }};
+          transition: background-color {{ theme.transition_duration.default }}s;
           white-space: nowrap;
 
           {{ @full_width && "position: relative" || "" }}
           {{ @style }}
         }
 
-        {{ get_css_maps(assigns, @theme) |> get_css_for_maps(".#{class_name}") }}
+        {{ get_css_maps(assigns, theme) |> get_css_for_maps(".#{class_name}") }}
       </style>
 
       <button class="{{ class_name }} {{ @mock_state && "is-#{@mock_state}" }}">

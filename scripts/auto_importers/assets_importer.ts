@@ -107,8 +107,8 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         ${
           (iconType === 'icons' &&
             `
-        color: {{ get_color(@color, @theme) }};
-        background-color: {{ get_color(@background_color, @theme) }};
+        color: {{ get_color(@color, theme) }};
+        background-color: {{ get_color(@background_color, theme) }};
         display: inline-block;
         overflow: hidden;
         `) ||
@@ -118,7 +118,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         ${
           (iconType !== 'icons' &&
             `
-        color: {{ get_color(@color, @theme) }};
+        color: {{ get_color(@color, theme) }};
         height: {{ @height }};
         width: {{ @width }};
         font-size: {{ @font_size }};

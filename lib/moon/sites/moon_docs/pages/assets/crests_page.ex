@@ -17,7 +17,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
   def render(assigns) do
     code_as_string = """
       <Inline>
-        
+
         <CrestArsenal color="piccolo_100" height="1rem" width="1rem" />
         <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
         <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
@@ -29,7 +29,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
-          
+
           <CrestArsenal color="piccolo_100" height="1rem" width="1rem" />
           <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
           <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />

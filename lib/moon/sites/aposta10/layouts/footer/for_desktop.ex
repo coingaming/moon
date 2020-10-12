@@ -83,7 +83,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.ForDesktop do
               left_value="aposta10-light"
               right_label="AM"
               right_value="aposta10-dark"
-              value={{ @theme.id }}
+              value={{ theme.id }}
             />
           </Inline>
 

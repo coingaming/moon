@@ -40,7 +40,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage do
   def render(assigns) do
     code_as_string = """
       <Inline>
-        
+
         <CasinoBonus color="piccolo_100" height="1rem" width="1rem" />
         <ClaimedReward color="piccolo_100" height="1rem" width="1rem" />
         <DynamicRewards color="piccolo_100" height="1rem" width="1rem" />
@@ -75,7 +75,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
-          
+
           <CasinoBonus color="piccolo_100" height="1rem" width="1rem" />
           <ClaimedReward color="piccolo_100" height="1rem" width="1rem" />
           <DynamicRewards color="piccolo_100" height="1rem" width="1rem" />

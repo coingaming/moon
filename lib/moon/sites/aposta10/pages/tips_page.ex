@@ -18,7 +18,7 @@ defmodule Moon.Sites.Aposta10.Pages.TipsPage do
     <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
-          background-color: {{ @theme.color.gohan_100 }};
+          background-color: {{ theme.color.gohan_100 }};
           color: #000;
           padding-top: 200px;
           z-index: 101;

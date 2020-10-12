@@ -19,12 +19,12 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.DatePicker.Item do
           padding: 10px;
           padding-top: 0px;
           text-align: center;
-          border-bottom: {{ @active && "solid 2px #{@theme.color.gohan_100}" || "none" }};
+          border-bottom: {{ @active && "solid 2px #{theme.color.gohan_100}" || "none" }};
         }
       </style>
 
       <div class={{ class_name }}>
-        <Text size=18 weight=500 color={{ @theme.color.gohan_100}}>Feb 7</Text>
+        <Text size=18 weight=500 color={{ theme.color.gohan_100}}>Feb 7</Text>
         <Text size=14>Today</Text>
       </div>
     </Context>

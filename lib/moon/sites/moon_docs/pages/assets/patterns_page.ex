@@ -19,7 +19,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
   def render(assigns) do
     code_as_string = """
       <Inline>
-        
+
         <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
         <PatternLines color="piccolo_100" height="1rem" width="1rem" />
         <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
@@ -33,7 +33,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
-          
+
           <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
           <PatternLines color="piccolo_100" height="1rem" width="1rem" />
           <PatternRipple color="piccolo_100" height="1rem" width="1rem" />

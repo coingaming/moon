@@ -20,11 +20,11 @@ defmodule Moon.Components.Badge do
       <style>
         .{{ classname }} {
           display: inline-flex;
-          color: {{ get_color(@color, @theme) }};
-          background-color: {{ get_color(@background_color, @theme) }};
-          font-weight: {{ @theme.font_weight.semibold }};
+          color: {{ get_color(@color, theme) }};
+          background-color: {{ get_color(@background_color, theme) }};
+          font-weight: {{ theme.font_weight.semibold }};
           text-transform: uppercase;
-          border-radius: {{ get_rem(@theme.radius.largest) }};
+          border-radius: {{ get_rem(theme.radius.largest) }};
           letter-spacing: {{ get_rem(1) }};
 
           {{ @style }};

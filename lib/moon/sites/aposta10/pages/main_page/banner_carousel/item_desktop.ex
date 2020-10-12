@@ -60,8 +60,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemDesktop do
           <div class="{{ class_name }}-body">
             <Stack>
               <Inline>
-                <Badge background={{ @theme.color.trunks_100 }}>{{ @label }}</Badge>
-                <Badge background={{ @theme.color.gohan_100 }} color={{ @theme.color.text }}>{{ @datetime }}</Badge>
+                <Badge background={{ theme.color.trunks_100 }}>{{ @label }}</Badge>
+                <Badge background={{ theme.color.gohan_100 }} color={{ theme.color.text }}>{{ @datetime }}</Badge>
               </Inline>
               <Text size=32 weight=500>{{ @title }}</Text>
               <Text size=14>{{ @desc }}</Text>

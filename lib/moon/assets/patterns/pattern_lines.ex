@@ -25,7 +25,7 @@ defmodule Moon.Assets.Patterns.PatternLines do
 
 
 
-        color: {{ get_color(@color, @theme) }};
+        color: {{ get_color(@color, theme) }};
         height: {{ @height }};
         width: {{ @width }};
         font-size: {{ @font_size }};
