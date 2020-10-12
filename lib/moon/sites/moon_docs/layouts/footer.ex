@@ -8,7 +8,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Footer do
     class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Footer")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
 
       <style>
         {{ for_desktop() }} {

@@ -59,8 +59,8 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
   ${
     (iconType === 'icons' &&
       `
-  property color, :string
-  property background_color, :string
+  prop color, :string
+  prop background_color, :string
   `) ||
     ''
   }
@@ -68,11 +68,11 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
   ${
     (iconType !== 'icons' &&
       `
-  property color, :string
-  property height, :string
-  property width, :string
-  property font_size, :string
-  property vertical_align, :string
+  prop color, :string
+  prop height, :string
+  prop width, :string
+  prop font_size, :string
+  prop vertical_align, :string
   `) ||
     ''
   }
@@ -99,7 +99,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
     }
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
@@ -174,9 +174,9 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
 
   alias Moon.Assets.${getModuleName(iconType)}
 
-  property name, :string
-  property color, :string
-  property background_color, :string
+  prop name, :string
+  prop color, :string
+  prop background_color, :string
 
   @assets_map %{
     ${icons

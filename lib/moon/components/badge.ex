@@ -1,11 +1,11 @@
 defmodule Moon.Components.Badge do
   use Moon.StatelessComponent
 
-  property background_color, :string
-  property color, :string
-  property size, :string
-  property style, :string
-  property add_class, :string
+  prop(background_color, :string)
+  prop(color, :string)
+  prop(size, :string)
+  prop(style, :string)
+  prop(add_class, :string)
 
   def render(assigns) do
     classname =
@@ -16,7 +16,7 @@ defmodule Moon.Components.Badge do
       )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ classname }} {
           display: inline-flex;

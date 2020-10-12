@@ -4,9 +4,9 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.FeaturedBookmakers.Item do
   alias Moon.Components.Button
   alias Moon.Components.Inline
 
-  property logo, :string
-  property description, :string
-  property action, :string
+  prop(logo, :string)
+  prop(description, :string)
+  prop(action, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-body-featured-bookmakers-item")

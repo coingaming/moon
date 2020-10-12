@@ -2,31 +2,32 @@ defmodule Moon.Components.Button do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property href, :string
+  prop(href, :string)
 
-  property variant, :string,
+  prop(variant, :string,
     default: "default",
     values: ["primary", "secondary", "tertiary", "highlight", "default"]
+  )
 
-  property size, :string, default: "small", values: ["xsmall", "small", "medium", "large"]
-  property mock_state, :string, values: ["active", "focus", "hover"]
-  property full_width, :boolean
-  property progress, :boolean
-  property oops, :boolean
-  property success, :boolean
-  property pulse, :boolean
-  property disabled, :boolean
+  prop(size, :string, default: "small", values: ["xsmall", "small", "medium", "large"])
+  prop(mock_state, :string, values: ["active", "focus", "hover"])
+  prop(full_width, :boolean)
+  prop(progress, :boolean)
+  prop(oops, :boolean)
+  prop(success, :boolean)
+  prop(pulse, :boolean)
+  prop(disabled, :boolean)
 
-  property to, :string
-  property as, :string
-  property active_class_name, :string
-  property active_style, :string
-  property exact, :boolean
-  property string, :boolean
-  property is_active, :boolean
-  property location, :string
+  prop(to, :string)
+  prop(as, :string)
+  prop(active_class_name, :string)
+  prop(active_style, :string)
+  prop(exact, :boolean)
+  prop(string, :boolean)
+  prop(is_active, :boolean)
+  prop(location, :string)
 
-  property style, :string
+  prop(style, :string)
 
   def get_size_css(%{size: size, variant: variant}, _theme) do
     case size do
@@ -145,10 +146,14 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     class_name =
-      get_class_name("components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}-#{assigns.full_width}")
+      get_class_name(
+        "components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}-#{
+          assigns.full_width
+        }"
+      )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           display: inline-block;

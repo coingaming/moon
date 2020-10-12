@@ -5,7 +5,7 @@ defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout.Content do
     class_name = get_class_name("sites-aposta10-layouts-defaultlayout-content")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           background-color: {{ @theme.color.background }};

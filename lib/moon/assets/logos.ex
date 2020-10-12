@@ -3,9 +3,9 @@ defmodule Moon.Assets.Logos do
 
   alias Moon.Assets.Logos
 
-  property name, :string
-  property color, :string
-  property background_color, :string
+  prop(name, :string)
+  prop(color, :string)
+  prop(background_color, :string)
 
   @assets_map %{
     sportsbet_sponsor: Logos.LogoSportsbetSponsor,

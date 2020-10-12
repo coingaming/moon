@@ -2,7 +2,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Menu.Link do
   use Moon.StatelessComponent
   alias Moon.Components.Text
 
-  property count, :integer
+  prop(count, :integer)
 
   def render(assigns) do
     class_name = get_class_name("Moon.Sites.Aposta10.Layouts.Header.Menu.Link")

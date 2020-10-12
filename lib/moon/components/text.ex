@@ -2,20 +2,19 @@ defmodule Moon.Components.Text do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property size, :integer, required: false, default: 16
-  property is_bold, :boolean, required: false, default: false
-  property color, :string, default: "bulma_100"
-  property style, :string
+  prop(size, :integer, required: false, default: 16)
+  prop(is_bold, :boolean, required: false, default: false)
+  prop(color, :string, default: "bulma_100")
+  prop(style, :string)
 
   def render(assigns) do
     class_name =
       get_class_name(
-        "components-text-#{assigns.size}-#{assigns.is_bold}-#{assigns.color}-#{
-        }-#{assigns.style}"
+        "components-text-#{assigns.size}-#{assigns.is_bold}-#{assigns.color}-#{}-#{assigns.style}"
       )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           font-size: {{ @size }}px;

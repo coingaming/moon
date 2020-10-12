@@ -1,7 +1,7 @@
 defmodule Moon.Sites.Aposta10.Layouts.Footer.FollowUs.Link do
   use Moon.StatelessComponent
 
-  property brand, :string
+  prop(brand, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-follow-us-link")

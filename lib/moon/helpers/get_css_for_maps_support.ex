@@ -1,5 +1,4 @@
 defmodule Moon.Helpers.GetCssForMapsSupport do
-
   def get_css_for_maps(css_maps, class_name) do
     css_maps
     |> Enum.map(fn css_map -> get_css_for_map(css_map, class_name) end)
@@ -37,5 +36,4 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
     #{css_tricks}
     """
   end
-
 end

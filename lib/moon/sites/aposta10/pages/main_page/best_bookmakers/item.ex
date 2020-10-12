@@ -1,7 +1,7 @@
 defmodule Moon.Sites.Aposta10.Pages.MainPage.BestBookmakers.Item do
   use Moon.StatelessComponent
 
-  property image_url, :string
+  prop(image_url, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-body-best-bookmakers-item")

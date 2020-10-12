@@ -2,11 +2,11 @@ defmodule Moon.Themed do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property theme, :any
+  prop(theme, :any)
 
   def render(assigns) do
     ~H"""
-    <Context set={{ :theme, assigns.theme }}>
+    <Context put={{ theme: assigns.theme }}>
       <slot />
     </Context>
     """

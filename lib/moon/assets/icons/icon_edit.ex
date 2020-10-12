@@ -2,26 +2,26 @@ defmodule Moon.Assets.Icons.IconEdit do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property color, :string
-  property background_color, :string
+  prop(color, :string)
+  prop(background_color, :string)
 
   def render(assigns) do
     class_name = get_class_name("Icons-IconEdit-#{assigns.color}-#{assigns.background_color}")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
 
-        
+
         color: {{ get_color(@color, @theme) }};
         background-color: {{ get_color(@background_color, @theme) }};
         display: inline-block;
         overflow: hidden;
-        
 
-        
+
+
       }
     </style>
 

@@ -3,9 +3,9 @@ defmodule Moon.Assets.Duotones do
 
   alias Moon.Assets.Duotones
 
-  property name, :string
-  property color, :string
-  property background_color, :string
+  prop(name, :string)
+  prop(color, :string)
+  prop(background_color, :string)
 
   @assets_map %{
     casino_bonus: Duotones.CasinoBonus,

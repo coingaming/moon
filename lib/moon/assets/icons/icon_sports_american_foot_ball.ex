@@ -2,8 +2,8 @@ defmodule Moon.Assets.Icons.IconSportsAmericanFootBall do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property color, :string
-  property background_color, :string
+  prop(color, :string)
+  prop(background_color, :string)
 
   def render(assigns) do
     class_name =
@@ -12,19 +12,19 @@ defmodule Moon.Assets.Icons.IconSportsAmericanFootBall do
       )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
 
-        
+
         color: {{ get_color(@color, @theme) }};
         background-color: {{ get_color(@background_color, @theme) }};
         display: inline-block;
         overflow: hidden;
-        
 
-        
+
+
       }
     </style>
 

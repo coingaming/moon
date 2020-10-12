@@ -5,7 +5,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout.Content do
     class_name = get_class_name("sites-layouts-defaultlayout-content")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           background-color: {{ @theme.color.gohan_100 }};

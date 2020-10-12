@@ -3,10 +3,12 @@ defmodule Moon.Components.TextInput do
 
   alias Surface.Components.Form.TextInput
 
-  property name, :string
-  property style, :string
-  property label, :string
-  property type, :string, default: "text",
+  prop(name, :string)
+  prop(style, :string)
+  prop(label, :string)
+
+  prop(type, :string,
+    default: "text",
     values: [
       "date",
       "datetime-local",
@@ -20,10 +22,12 @@ defmodule Moon.Components.TextInput do
       "time",
       "url"
     ]
-  property placeholder, :string
-  property error, :string
-  property rounded, :boolean
-  property disabled, :boolean
+  )
+
+  prop(placeholder, :string)
+  prop(error, :string)
+  prop(rounded, :boolean)
+  prop(disabled, :boolean)
 
   def render(assigns) do
     class_name = get_class_name("components-text-input-#{assigns.style}")

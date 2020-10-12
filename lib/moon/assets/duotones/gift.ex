@@ -2,11 +2,11 @@ defmodule Moon.Assets.Duotones.Gift do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property color, :string
-  property height, :string
-  property width, :string
-  property font_size, :string
-  property vertical_align, :string
+  prop(color, :string)
+  prop(height, :string)
+  prop(width, :string)
+  prop(font_size, :string)
+  prop(vertical_align, :string)
 
   def render(assigns) do
     class_name =
@@ -17,21 +17,21 @@ defmodule Moon.Assets.Duotones.Gift do
       )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
     <style>
       .{{ class_name }} {
         vertical-align: middle;
 
-        
 
-        
+
+
         color: {{ get_color(@color, @theme) }};
         height: {{ @height }};
         width: {{ @width }};
         font-size: {{ @font_size }};
         vertical-align: {{ @vertical_align }};
         overflow: hidden;
-        
+
       }
     </style>
 

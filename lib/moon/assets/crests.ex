@@ -3,9 +3,9 @@ defmodule Moon.Assets.Crests do
 
   alias Moon.Assets.Crests
 
-  property name, :string
-  property color, :string
-  property background_color, :string
+  prop(name, :string)
+  prop(color, :string)
+  prop(background_color, :string)
 
   @assets_map %{
     arsenal: Crests.CrestArsenal,

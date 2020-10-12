@@ -15,7 +15,7 @@ defmodule Moon.Sites.Aposta10.Pages.TipsPage do
     class_name = get_class_name("tips-page")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           background-color: {{ @theme.color.gohan_100 }};

@@ -2,13 +2,13 @@ defmodule Moon.Components.Link do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  property add_class, :string
-  property color, :string
-  property background, :string
-  property margin, :string
-  property padding, :string
-  property style, :string
-  property to, :any
+  prop(add_class, :string)
+  prop(color, :string)
+  prop(background, :string)
+  prop(margin, :string)
+  prop(padding, :string)
+  prop(style, :string)
+  prop(to, :any)
 
   def render(assigns) do
     class_name =
@@ -17,7 +17,7 @@ defmodule Moon.Components.Link do
       )
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           color: {{ @color || @theme.color.text }};

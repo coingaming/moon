@@ -13,7 +13,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.ForDesktop do
     class_name = "site-body-footer-for-desktop"
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <div class={{ class_name }}>
         <style>
           .{{ class_name }} {

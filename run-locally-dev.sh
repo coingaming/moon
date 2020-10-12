@@ -1,5 +1,4 @@
-bash run-install.sh
-rm -rf _build
+mix deps.get
 
 echo "\nRun server"
 iex -S mix phx.server

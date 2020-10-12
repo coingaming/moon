@@ -3,9 +3,9 @@ defmodule Moon.Assets.Icons do
 
   alias Moon.Assets.Icons
 
-  property name, :string
-  property color, :string
-  property background_color, :string
+  prop(name, :string)
+  prop(color, :string)
+  prop(background_color, :string)
 
   @assets_map %{
     about: Icons.IconAbout,

@@ -11,7 +11,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item do
     class_name = get_class_name("site-body-picks-tips-item")
 
     ~H"""
-    <Context get={{ :theme }}>
+    <Context get={{ theme: theme }}>
       <style>
         .{{ class_name }} {
           position: relative;

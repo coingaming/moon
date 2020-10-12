@@ -5,7 +5,7 @@ defmodule Moon.Sites.Aposta10.Layouts.DefaultLayout do
   alias Moon.Sites.Aposta10.Layouts.Header
   alias Moon.Sites.Aposta10.Layouts.Footer
 
-  property conn, :any
+  prop(conn, :any)
 
   def render(assigns) do
     ~H"""
