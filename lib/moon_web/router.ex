@@ -31,6 +31,7 @@ defmodule MoonWeb.Router do
     live "/components/stack", Moon.Sites.MoonDocs.Pages.Components.StackPage
     live "/components/text", Moon.Sites.MoonDocs.Pages.Components.TextPage
     live "/components/text_input", Moon.Sites.MoonDocs.Pages.Components.TextInputPage
+    live "/themes/list-of-themes", Moon.Sites.MoonDocs.Pages.Themes.ListOfThemes
   end
 
   scope "/sites/aposta10" do
