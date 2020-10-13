@@ -1,5 +1,6 @@
 defmodule Moon.Sites.MoonDocs.Layouts.Header.Logo do
   use Moon.StatelessComponent
+  alias Moon.Assets.Icons.IconMoon
 
   def render(assigns) do
     class_name = get_class_name("site-header-logo")
@@ -22,7 +23,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Logo do
     </style>
 
     <div class={{ class_name }}>
-      <img src={{ "/uploads/img/site/logo.svg" }} />
+      <IconMoon color="piccolo_100" background_color="gohan_100" />
     </div>
     """
   end

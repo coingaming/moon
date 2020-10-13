@@ -1,38 +1,29 @@
 defmodule MoonWeb.Router do
-  use Phoenix.Router
-  import Plug.Conn
-  import Phoenix.Controller
-  import Phoenix.LiveView.Router
+  use MoonWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
+    # plug :put_root_layout, {MoonWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :put_user_token
   end
 
-  defp put_user_token(conn, _) do
-    if current_user = conn.assigns[:current_user] do
-      token = Phoenix.Token.sign(conn, "user socket", current_user.id)
-      IO.puts("Generated user token: #{token}")
-      assign(conn, :user_token, token)
-    else
-      assign(conn, :user_token, "hello")
-    end
+  pipeline :api do
+    plug :accepts, ["json"]
   end
 
   scope "/" do
     pipe_through :browser
 
     live "/", Moon.Sites.MoonDocs.Pages.MainPage
+    live "/tutorials/add-data-using-form", Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm
     live "/assets/crests", Moon.Sites.MoonDocs.Pages.Assets.CrestsPage
     live "/assets/duotones", Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage
     live "/assets/icons", Moon.Sites.MoonDocs.Pages.Assets.IconsPage
     live "/assets/logos", Moon.Sites.MoonDocs.Pages.Assets.LogosPage
     live "/assets/patterns", Moon.Sites.MoonDocs.Pages.Assets.PatternsPage
-
     live "/components/badge", Moon.Sites.MoonDocs.Pages.Components.BadgePage
     live "/components/button", Moon.Sites.MoonDocs.Pages.Components.ButtonPage
     live "/components/inline", Moon.Sites.MoonDocs.Pages.Components.InlinePage

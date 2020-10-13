@@ -15,7 +15,12 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
         position: absolute;
         left: 20px;
         top: 20px;
+        top: 0;
+        bottom: 0;
         display: block;
+        max-height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 200px;
       }
 
       .{{ class_name }} > .links {
@@ -28,7 +33,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
           background-color: #fff;
           top: 100px;
           left: 0px;
-          height: 100%;
           width: 232px;
         }
 
@@ -43,11 +47,10 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
     </style>
 
     <div class={{ class_name }}>
-      <div class="hamburger">
-        <img src={{ "/uploads/img/site/menu.svg" }} />
-      </div>
-
       <div class="links" style="padding: 20px;">
+        <Title>Concepts & Tutorials</Title>
+        <Link to="/">Overview</Link>
+        <Link to="/tutorials/add-data-using-form">Add data using form</Link>
         <Title>Assets</Title>
         <Link to="/assets/crests">Crests</Link>
         <Link to="/assets/duotones">Duotones</Link>

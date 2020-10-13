@@ -1,23 +1,22 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.0.3"
-
   def project do
     [
       app: :moon,
-      version: @version,
-      elixir: "~> 1.10.2",
-      description: "A component based library for Phoenix LiveView on top of Surface",
+      version: "0.1.0",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      docs: docs(),
-      package: package()
+      aliases: aliases(),
+      deps: deps()
     ]
   end
 
+  # Configuration for the OTP application.
+  #
+  # Type `mix help compile.app` for more information.
   def application do
     [
       mod: {Moon.Application, []},
@@ -25,33 +24,37 @@ defmodule Moon.MixProject do
     ]
   end
 
+  # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
+  # Specifies your project dependencies.
+  #
+  # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.5"},
-      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix, "~> 1.5.6"},
+      {:floki, ">= 0.27.0", only: :test},
+      {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:plug_cowboy, "~> 2.0"},
+      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
       {:decimal, "~> 2.0"}
     ]
   end
 
-  defp docs do
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to install project dependencies and perform other setup tasks, run:
+  #
+  #     $ mix setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
     [
-      main: "Moon",
-      source_ref: "v#{@version}",
-      source_url: "https://github.com/coingaming/moon"
+      setup: ["deps.get", "cmd npm install --prefix assets"]
     ]
-  end
-
-  defp package do
-    %{
-      licenses: ["Coingaming owned"],
-      links: %{"GitHub" => "https://github.com/coingaming/moon"}
-    }
   end
 end
