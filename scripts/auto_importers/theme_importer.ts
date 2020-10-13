@@ -171,25 +171,25 @@ end
 
 writeTheme(
   aposta10Dark,
-  '../../lib/moon/sites/aposta10/themes/dark',
-  'Moon.Sites.Aposta10.Themes.Dark',
+  '../../lib/moon/themes/aposta10_dark',
+  'Moon.Themes.Aposta10Dark',
   'aposta10-dark'
 );
 writeTheme(
   aposta10Light,
-  '../../lib/moon/sites/aposta10/themes/light',
-  'Moon.Sites.Aposta10.Themes.Light',
+  '../../lib/moon/themes/aposta10_light',
+  'Moon.Themes.Aposta10Light',
   'aposta10-light'
 );
 writeTheme(
   sportsbetDark,
-  '../../lib/moon/sites/moon_docs/themes/dark',
-  'Moon.Sites.MoonDocs.Themes.Dark',
-  'moondocs-dark'
+  '../../lib/moon/themes/sportsbet_dark',
+  'Moon.Themes.SportsbetDark',
+  'sportsbet-dark'
 );
 writeTheme(
   sportsbetLight,
-  '../../lib/moon/sites/moon_docs/themes/light',
-  'Moon.Sites.MoonDocs.Themes.Light',
-  'moondocs-light'
+  '../../lib/moon/themes/sportsbet_light',
+  'Moon.Themes.SportsbetLight',
+  'sportsbet-light'
 );
