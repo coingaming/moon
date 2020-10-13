@@ -14,14 +14,14 @@ defmodule Moon.Assets.Icons.IconGift do
       .{{ class_name }} {
         vertical-align: middle;
 
-
+        
         color: {{ get_color(@color, theme) }};
         background-color: {{ get_color(@background_color, theme) }};
         display: inline-block;
         overflow: hidden;
+        
 
-
-
+        
       }
     </style>
 

@@ -236,7 +236,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconSportsHorse
   alias Icons.IconVerify
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
 
   def render(assigns) do
     code_as_string = """
@@ -469,7 +469,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
         <IconSportsHarness color="piccolo_100" background_color="gohan_100" />
         <IconSportsHorse color="piccolo_100" background_color="gohan_100" />
         <IconVerify color="piccolo_100" background_color="gohan_100" />
-
+        
       </Inline>
     """
 
@@ -705,7 +705,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
           <IconSportsHarness color="piccolo_100" background_color="gohan_100" />
           <IconSportsHorse color="piccolo_100" background_color="gohan_100" />
           <IconVerify color="piccolo_100" background_color="gohan_100" />
-
+          
         </Inline>
         <pre>{{ code_as_string }}</pre>
       </DefaultLayout>

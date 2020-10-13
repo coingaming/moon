@@ -13,7 +13,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage do
   alias MainPage.Guides
   alias MainPage.BestBookmakers
 
-  data theme, :any, default: %Moon.Sites.Aposta10.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.Aposta10.Themes.Light{})
 
   def render(assigns) do
     ~H"""

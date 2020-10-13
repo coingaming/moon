@@ -5,7 +5,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
   alias Moon.Sites.MoonDocs.Layouts.Header
   alias Moon.Sites.MoonDocs.Layouts.Footer
 
-  data theme, :any, default: Moon.Sites.MoonDocs.Themes.Light
+  data(theme, :any, default: Moon.Sites.MoonDocs.Themes.Light)
   prop(user_token, :string)
 
   def render(assigns) do

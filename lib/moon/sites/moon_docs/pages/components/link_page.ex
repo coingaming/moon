@@ -6,7 +6,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.LinkPage do
   alias Moon.Themed
   alias Moon.Components.Link
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
 
   def render(assigns) do
     code_as_string = """

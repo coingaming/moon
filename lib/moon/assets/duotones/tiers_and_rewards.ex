@@ -22,16 +22,16 @@ defmodule Moon.Assets.Duotones.TiersAndRewards do
       .{{ class_name }} {
         vertical-align: middle;
 
+        
 
-
-
+        
         color: {{ get_color(@color, theme) }};
         height: {{ @height }};
         width: {{ @width }};
         font-size: {{ @font_size }};
         vertical-align: {{ @vertical_align }};
         overflow: hidden;
-
+        
       }
     </style>
 

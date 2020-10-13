@@ -7,7 +7,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.TextPage do
   alias Moon.Components.Stack
   alias Moon.Components.Text
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
 
   def render(assigns) do
     example_1_string = """

@@ -10,12 +10,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
   alias Logos.LogoSportsbetSponsor
   alias Logos.LogoSportsbet
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
 
   def render(assigns) do
     code_as_string = """
       <Inline>
-
+        
         <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
         <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
       </Inline>
@@ -25,7 +25,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
-
+          
           <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
           <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
         </Inline>

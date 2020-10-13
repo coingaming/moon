@@ -11,9 +11,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Surface.Components.Form.Field
   alias Moon.Components.TextInput
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
-  data name, :string
-  data email, :string
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
+  data(name, :string)
+  data(email, :string)
 
   def mount(assigns, socket) do
     {:ok, assign(socket, name: "default name", email: "hello@coingaming.io")}

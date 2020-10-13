@@ -7,7 +7,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
   alias Moon.Components.Badge
   alias Moon.Components.Inline
 
-  data theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{}
+  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
 
   def render(assigns) do
     code_as_string = """
