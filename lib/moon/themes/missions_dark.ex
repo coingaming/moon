@@ -18,7 +18,7 @@ defmodule Moon.Themes.MissionsDark do
         xlarge: 1200
       },
       font_face: %Moon.Theme.FontFace{
-        regular: %Moon.FontFace.Normal{
+        regular: %Moon.Theme.FontFace.Normal{
           font_family: "Averta Std",
           font_style: "normal",
           font_display: "swap",
@@ -28,7 +28,7 @@ defmodule Moon.Themes.MissionsDark do
           src:
             "local(\"AvertaStd-Regular\"), local(\"Averta Std Regular\"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format(\"woff2\")"
         },
-        semibold: %Moon.FontFace.Semibold{
+        semibold: %Moon.Theme.FontFace.Semibold{
           font_family: "Averta Std",
           font_style: "normal",
           font_display: "swap",
@@ -53,12 +53,12 @@ defmodule Moon.Themes.MissionsDark do
       opacity: %Moon.Theme.Opacity{
         disabled: 0.35
       },
-      radius: %Moon.Themes.MissionsDark.Radius{
+      radius: %Moon.Theme.Radius{
         small: 4,
         default: 8,
         largest: 100
       },
-      space: %Moon.Themes.MissionsDark.Space{
+      space: %Moon.Theme.Space{
         xsmall: 4,
         small: 8,
         default: 16,

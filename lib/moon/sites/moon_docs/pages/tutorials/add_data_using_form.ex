@@ -11,7 +11,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Surface.Components.Form.Field
   alias Moon.Components.TextInput
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
+  data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
   data(name, :string)
   data(email, :string)
 

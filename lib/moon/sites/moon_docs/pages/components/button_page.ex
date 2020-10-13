@@ -7,7 +7,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
   alias Moon.Components.Button
   alias Moon.Components.Inline
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
+  data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
   def render(assigns) do
     variants_primary = """

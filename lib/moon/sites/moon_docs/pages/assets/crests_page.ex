@@ -12,8 +12,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
   alias Crests.CrestSouthampton
   alias Crests.CrestWatford
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
-
   def render(assigns) do
     code_as_string = """
       <Inline>
@@ -26,7 +24,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
     """
 
     ~H"""
-    <Themed theme={{ @theme }}>
+    <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
           

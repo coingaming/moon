@@ -6,7 +6,7 @@ defmodule Moon.Sites.MoonDocs.Pages.MainPage do
   alias Moon.Themed
   alias Moon.Components.Link
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
+  data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
   def render(assigns) do
     ~H"""

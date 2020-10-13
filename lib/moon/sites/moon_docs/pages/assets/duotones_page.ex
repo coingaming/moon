@@ -35,8 +35,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage do
   alias Duotones.Trophy
   alias Duotones.YouPlayWePay
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
-
   def render(assigns) do
     code_as_string = """
       <Inline>
@@ -72,7 +70,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.DuotonesPage do
     """
 
     ~H"""
-    <Themed theme={{ @theme }}>
+    <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
           

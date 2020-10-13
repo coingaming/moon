@@ -236,8 +236,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconSportsHorse
   alias Icons.IconVerify
 
-  data(theme, :any, default: %Moon.Sites.MoonDocs.Themes.Light{})
-
   def render(assigns) do
     code_as_string = """
       <Inline>
@@ -474,7 +472,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
     """
 
     ~H"""
-    <Themed theme={{ @theme }}>
+    <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
           <IconAbout color="piccolo_100" background_color="gohan_100" />

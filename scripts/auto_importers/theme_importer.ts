@@ -69,7 +69,7 @@ defmodule ${moduleName} do
         xlarge: ${s(exObj.breakpoint.xlarge)}
       },
       font_face: %Moon.Theme.FontFace{
-        regular: %Moon.FontFace.Normal{
+        regular: %Moon.Theme.FontFace.Normal{
           font_family: ${s(exObj.font_face[0]['@font-face'].font_family)},
           font_style: ${s(exObj.font_face[0]['@font-face'].font_style)},
           font_display: ${s(exObj.font_face[0]['@font-face'].font_display)},
@@ -77,7 +77,7 @@ defmodule ${moduleName} do
           font_weight: ${s(exObj.font_face[0]['@font-face'].font_weight)},
           src: ${s(exObj.font_face[0]['@font-face'].src)}
         },
-        semibold: %Moon.FontFace.Semibold{
+        semibold: %Moon.Theme.FontFace.Semibold{
           font_family: ${s(exObj.font_face[1]['@font-face'].font_family)},
           font_style: ${s(exObj.font_face[1]['@font-face'].font_style)},
           font_display: ${s(exObj.font_face[1]['@font-face'].font_display)},
@@ -99,12 +99,12 @@ defmodule ${moduleName} do
       opacity: %Moon.Theme.Opacity{
         disabled: ${s(exObj.opacity.disabled)}
       },
-      radius: %${moduleName}.Radius{
+      radius: %Moon.Theme.Radius{
         small: ${s(exObj.radius.small)},
         default: ${s(exObj.radius.default)},
         largest: ${s(exObj.radius.largest)}
       },
-      space: %${moduleName}.Space{
+      space: %Moon.Theme.Space{
         xsmall: ${s(exObj.space.xsmall)},
         small: ${s(exObj.space.small)},
         default: ${s(exObj.space.default)},

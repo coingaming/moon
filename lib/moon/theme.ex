@@ -31,7 +31,7 @@ end
 
 defmodule Moon.Theme.FontFace do
   defstruct regular: %Moon.Theme.FontFace.Normal{},
-            bold: %Moon.Theme.FontFace.Semibold{}
+            semibold: %Moon.Theme.FontFace.Semibold{}
 end
 
 defmodule Moon.Theme.FontWeight do
