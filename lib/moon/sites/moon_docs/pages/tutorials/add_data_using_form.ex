@@ -62,7 +62,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
             end
 
             def render(assigns) do
-              ~H\"\"\"
+              ~H\\\
               <Form for={{ :user }} change="updated_user">
                 <TextInput name={{ :name }} value={{ @user.name }} autocomplete="off" />
                 <TextInput name={{ :email }} value={{ @user.email }} autocomplete="off" />
@@ -78,7 +78,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
               </Form>
 
               <pre>{{ inspect(@user) }}</pre>
-              \"\"\"
+              \\\
             end
 
             def handle_event("updated_user", %{"user" => %{"name" => name, "email" => email}}, socket) do

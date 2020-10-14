@@ -2,6 +2,7 @@ defmodule Moon.Components.TextInput do
   use Moon.StatelessComponent
 
   alias Surface.Components.Form.TextInput
+  alias Moon.Components.Label
 
   prop(name, :string)
   prop(label, :string)
@@ -31,7 +32,7 @@ defmodule Moon.Components.TextInput do
   prop(required, :boolean)
   prop(icon, :any)
 
-  def style(%{icon: icon, error: error}, theme) do
+  def shared_style(%{icon: icon, error: error}, theme) do
     [
       %{
         :width => "100%",
@@ -79,6 +80,15 @@ defmodule Moon.Components.TextInput do
     ]
   end
 
+  def style(%{icon: icon, error: error}, theme) do
+    shared_style(%{icon: icon, error: error}, theme) ++ [%{
+      "&:focus" => %{
+        border_color: !error && theme.color.piccolo_100 || theme.color.chi_chi_100,
+        outline: "none",
+      },
+    }]
+  end
+
   def render(assigns) do
     class_name = get_class_name("text-input-#{assigns.icon}-#{assigns.error}")
 
@@ -88,7 +98,11 @@ defmodule Moon.Components.TextInput do
         {{ style(assigns, theme) |> get_css_for_maps(".#{class_name}") }}
       </style>
 
-      <TextInput class={{ class_name }} field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
+      <TextInput class={{ class_name }} field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} :if={{ !@label }} />
+
+      <Label text={{ @label }} :if={{ @label }}>
+        <TextInput class={{ class_name }} field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
+      </Label>
     </Context>
     """
   end

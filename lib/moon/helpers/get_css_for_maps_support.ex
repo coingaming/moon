@@ -6,6 +6,14 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
     |> Enum.join("\n")
   end
 
+  def get_css_for_map(nil, class_name) do
+    ""
+  end
+
+  def get_css_for_map(false, class_name) do
+    ""
+  end
+
   def get_css_for_map(css_map, class_name) do
     css_body =
       css_map
@@ -18,14 +26,26 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
       end)
       |> Enum.join(";")
 
-    css_tricks =
+    css_tricks_1 =
       css_map
-      |> Enum.filter(fn {_k, v} ->
-        is_map(v)
+      |> Enum.filter(fn {k, v} ->
+        is_map(v) && String.contains?("#{k}", "&")
       end)
       |> Enum.map(fn {k, v} ->
         child_node_name = String.replace("#{k}", "&", "#{class_name}")
         get_css_for_map(v, child_node_name)
+      end)
+      |> Enum.join("\n")
+
+    css_tricks_2 =
+      css_map
+      |> Enum.filter(fn {k, v} ->
+        is_map(v) && String.contains?("#{k}", "@")
+      end)
+      |> Enum.map(fn {k, v} ->
+        child_node_name = String.replace("#{k}", "&", "#{class_name}")
+        css = get_css_for_map(v, class_name)
+        "#{k} {\n #{css} \n}"
       end)
       |> Enum.join("\n")
 
@@ -34,7 +54,9 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
       #{css_body};
     }
 
-    #{css_tricks}
+    #{css_tricks_1}
+
+    #{css_tricks_2}
     """
   end
 end
