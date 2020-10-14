@@ -19,6 +19,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
         <title>Surface App</title>
         <script>window.userToken = "{{ @user_token }}";</script>
+        <style>{{ Makeup.stylesheet() }}</style>
       </head>
       <body>
         <Header />

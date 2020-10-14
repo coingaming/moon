@@ -19,7 +19,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Footer do
         }
       </style>
 
-      <div class={{ class_name }}>
+      <!--div class={{ class_name }}>
         <Switch
           on_click="toggle_theme"
           left_label="PM"
@@ -28,7 +28,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Footer do
           right_value="moondocs-dark"
           value={{ theme.id }}
         />
-      </div>
+      </div-->
 
     </Context>
     """

@@ -1,13 +1,11 @@
-
 defmodule Moon.Components.CodePreview do
-  use Moon.StatelessComponent
+  use Surface.MacroComponent
 
-  prop(code, :string)
+  slot(default)
 
-  def render(assigns) do
-    ~H"""
-    {{ raw Makeup.highlight(@code) }}
-    <style>{{ Makeup.stylesheet() }}</style>
-    """
+  def expand(_attributes, children, _meta) do
+    %Surface.AST.Literal{
+      value: Makeup.highlight(List.to_string(children))
+    }
   end
 end

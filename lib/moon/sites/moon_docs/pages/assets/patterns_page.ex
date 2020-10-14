@@ -5,6 +5,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
   alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
 
   alias Moon.Assets.Patterns
   alias Patterns.PatternCircles
@@ -15,18 +16,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
   alias Patterns.PatternWave
 
   def render(assigns) do
-    code_as_string = """
-      <Inline>
-        
-        <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
-        <PatternLines color="piccolo_100" height="1rem" width="1rem" />
-        <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
-        <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
-        <PatternStars color="piccolo_100" height="1rem" width="1rem" />
-        <PatternWave color="piccolo_100" height="1rem" width="1rem" />
-      </Inline>
-    """
-
     ~H"""
     <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
@@ -39,7 +28,17 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
           <PatternStars color="piccolo_100" height="1rem" width="1rem" />
           <PatternWave color="piccolo_100" height="1rem" width="1rem" />
         </Inline>
-        <pre>{{ code_as_string }}</pre>
+        <#CodePreview>
+          <Inline>
+            
+            <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
+            <PatternLines color="piccolo_100" height="1rem" width="1rem" />
+            <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
+            <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
+            <PatternStars color="piccolo_100" height="1rem" width="1rem" />
+            <PatternWave color="piccolo_100" height="1rem" width="1rem" />
+          </Inline>
+        </#CodePreview>
       </DefaultLayout>
     </Themed>
     """

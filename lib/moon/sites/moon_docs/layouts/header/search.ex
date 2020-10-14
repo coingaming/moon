@@ -12,7 +12,6 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Search do
     </style>
 
     <div class="site-header-search">
-      <img src={{ "/uploads/img/site/search.svg" }} />
     </div>
     """
   end

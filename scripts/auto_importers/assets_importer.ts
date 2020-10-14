@@ -226,35 +226,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
     .join('\n  ')}
 
   def render(assigns) do 
-    code_as_string = """
-      <Inline>
-        ${
-          (iconType === 'icons' &&
-            icons
-              .map(
-                (icon) =>
-                  `<${getModuleName(
-                    icon
-                  )} color="piccolo_100" background_color="gohan_100" />`
-              )
-              .join('\n        ')) ||
-          ''
-        }
-        ${
-          (iconType !== 'icons' &&
-            icons
-              .map(
-                (icon) =>
-                  `<${getModuleName(
-                    icon
-                  )} color="piccolo_100" height="1rem" width="1rem" />`
-              )
-              .join('\n        ')) ||
-          ''
-        }
-      </Inline>
-    """
-
     ~H"""
     <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
@@ -284,7 +255,34 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
             ''
           }
         </Inline>
-        <CodePreview code={{ code_as_string }} />
+        <#CodePreview>
+          <Inline>
+            ${
+              (iconType === 'icons' &&
+                icons
+                  .map(
+                    (icon) =>
+                      `<${getModuleName(
+                        icon
+                      )} color="piccolo_100" background_color="gohan_100" />`
+                  )
+                  .join('\n          ')) ||
+              ''
+            }
+            ${
+              (iconType !== 'icons' &&
+                icons
+                  .map(
+                    (icon) =>
+                      `<${getModuleName(
+                        icon
+                      )} color="piccolo_100" height="1rem" width="1rem" />`
+                  )
+                  .join('\n          ')) ||
+              ''
+            }
+          </Inline>
+        </#CodePreview>
       </DefaultLayout>
     </Themed>
     """

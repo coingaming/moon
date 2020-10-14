@@ -2,7 +2,7 @@ defmodule Moon.LiveView do
   defmacro __using__(_opts) do
     quote do
       use Surface.LiveView
-      import Moon.Helpers.ClassNameSupport
+      import Moon.Helpers.GetClassNameSupport
       import Moon.Helpers.ScreenSizeSupport
       import Moon.Helpers.GetCssForMapsSupport
 

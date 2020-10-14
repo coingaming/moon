@@ -1,6 +1,7 @@
 defmodule Moon.Helpers.GetCssForMapsSupport do
   def get_css_for_maps(css_maps, class_name) do
     css_maps
+    |> Enum.filter(fn x -> x end)
     |> Enum.map(fn css_map -> get_css_for_map(css_map, class_name) end)
     |> Enum.join("\n")
   end

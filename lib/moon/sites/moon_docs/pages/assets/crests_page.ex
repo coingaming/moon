@@ -5,6 +5,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
   alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
 
   alias Moon.Assets.Crests
   alias Crests.CrestArsenal
@@ -13,16 +14,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
   alias Crests.CrestWatford
 
   def render(assigns) do
-    code_as_string = """
-      <Inline>
-        
-        <CrestArsenal color="piccolo_100" height="1rem" width="1rem" />
-        <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
-        <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
-        <CrestWatford color="piccolo_100" height="1rem" width="1rem" />
-      </Inline>
-    """
-
     ~H"""
     <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
@@ -33,7 +24,15 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
           <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
           <CrestWatford color="piccolo_100" height="1rem" width="1rem" />
         </Inline>
-        <pre>{{ code_as_string }}</pre>
+        <#CodePreview>
+          <Inline>
+            
+            <CrestArsenal color="piccolo_100" height="1rem" width="1rem" />
+            <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
+            <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
+            <CrestWatford color="piccolo_100" height="1rem" width="1rem" />
+          </Inline>
+        </#CodePreview>
       </DefaultLayout>
     </Themed>
     """

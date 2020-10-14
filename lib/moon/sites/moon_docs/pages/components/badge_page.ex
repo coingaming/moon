@@ -11,20 +11,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
   def render(assigns) do
-    code_as_string = """
-    <Inline>
-      <Badge color="bulma_100" background_color="piccolo_100">
-        Active
-      </Badge>
-      <Badge color="krillin_100" background_color="gohan_100">
-        Active
-      </Badge>
-      <Badge color="bulma_100" background_color="dodoria_100">
-        Active
-      </Badge>
-    </Inline>
-    """
-
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
@@ -40,7 +26,19 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
           </Badge>
         </Inline>
 
-        <CodePreview code={{ code_as_string }} />
+        <#CodePreview>
+          <Inline>
+            <Badge color="bulma_100" background_color="piccolo_100">
+              Active
+            </Badge>
+            <Badge color="krillin_100" background_color="gohan_100">
+              Active
+            </Badge>
+            <Badge color="bulma_100" background_color="dodoria_100">
+              Active
+            </Badge>
+          </Inline>
+        </#CodePreview>
       </DefaultLayout>
     </Themed>
     """
