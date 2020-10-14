@@ -10,6 +10,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Surface.Components.Form
   alias Surface.Components.Form.Field
   alias Moon.Components.TextInput
+  alias Moon.Components.CodePreview
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
   data(user, :any)
@@ -78,8 +79,8 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
         </Form>
 
         <pre>{{ inspect(@user) }}</pre>
-        {{ raw Makeup.highlight(code_as_string) }}
-        <style>{{ Makeup.stylesheet() }}</style>
+
+        <CodePreview code={{ code_as_string }}/>
       </DefaultLayout>
     </Themed>
     """

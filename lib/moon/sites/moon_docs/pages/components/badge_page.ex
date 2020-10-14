@@ -6,6 +6,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
   alias Moon.Themed
   alias Moon.Components.Badge
   alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
@@ -27,20 +28,19 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
+        <Inline>
+          <Badge color="bulma_100" background_color="piccolo_100">
+            Active
+          </Badge>
+          <Badge color="krillin_100" background_color="gohan_100">
+            Active
+          </Badge>
+          <Badge color="bulma_100" background_color="dodoria_100">
+            Active
+          </Badge>
+        </Inline>
 
-      <Inline>
-        <Badge color="bulma_100" background_color="piccolo_100">
-          Active
-        </Badge>
-        <Badge color="krillin_100" background_color="gohan_100">
-          Active
-        </Badge>
-        <Badge color="bulma_100" background_color="dodoria_100">
-          Active
-        </Badge>
-      </Inline>
-
-        <pre>{{ code_as_string }}</pre>
+        <CodePreview code={{ code_as_string }} />
       </DefaultLayout>
     </Themed>
     """

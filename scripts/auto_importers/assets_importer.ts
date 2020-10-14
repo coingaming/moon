@@ -218,6 +218,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
   alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
 
   alias Moon.Assets.${getModuleName(iconType)}
   ${icons
@@ -283,7 +284,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
             ''
           }
         </Inline>
-        <pre>{{ code_as_string }}</pre>
+        <CodePreview code={{ code_as_string }} />
       </DefaultLayout>
     </Themed>
     """

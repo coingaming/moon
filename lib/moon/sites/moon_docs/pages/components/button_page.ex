@@ -6,6 +6,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
   alias Moon.Themed
   alias Moon.Components.Button
   alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
@@ -70,7 +71,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Disabled
           </Button>
         </Inline>
-        <pre>{{ variants_primary }}</pre>
+        <CodePreview code={{ variants_primary }} />
 
         <h3>Secondary</h3>
         To be used where the the button would be the main call to action on the page.
@@ -86,7 +87,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Disabled
           </Button>
         </Inline>
-        <pre>{{ variants_primary |> String.replace("primary", "secondary") }}</pre>
+        <CodePreview code={{ variants_primary |> String.replace("primary", "secondary") }} />
 
         <h3>Tertiary</h3>
         To be used where the the button would be a optional call to action.
@@ -102,7 +103,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Disabled
           </Button>
         </Inline>
-        <pre>{{ variants_primary |> String.replace("primary", "tertiary") }}</pre>
+        <CodePreview code={{ variants_primary |> String.replace("primary", "tertiary") }} />
 
         <h3>Highlight</h3>
         To be used where the the button would be a optional call to action.
@@ -118,7 +119,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Disabled
           </Button>
         </Inline>
-        <pre>{{ variants_primary |> String.replace("primary", "highlight") }}</pre>
+        <CodePreview code={{ variants_primary |> String.replace("primary", "highlight") }} />
 
         <h3>Default</h3>
         To be used where the the button would be a default call to action.
@@ -134,7 +135,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Disabled
           </Button>
         </Inline>
-        <pre>{{ variants_primary |> String.replace(" variant=\"primary\"", "") }}</pre>
+        <CodePreview code={{ variants_primary |> String.replace(" variant=\"primary\"", "") }} />
 
         <h2>Sizing</h2>
 
@@ -153,13 +154,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
             Large
           </Button>
         </Inline>
-        <pre>{{ sizes_example }}</pre>
+        <CodePreview code={{ sizes_example }} />
 
         <h3>Full width</h3>
         <Button variant="secondary" full_width>
           Full Width
         </Button>
-        <pre>{{ full_width_example }}</pre>
+        <CodePreview code={{ full_width_example }} />
 
 
       </DefaultLayout>
