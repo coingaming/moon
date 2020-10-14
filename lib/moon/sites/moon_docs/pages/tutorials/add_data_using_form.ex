@@ -12,11 +12,10 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.TextInput
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
-  data(name, :string)
-  data(email, :string)
+  data(user, :any)
 
   def mount(assigns, socket) do
-    {:ok, assign(socket, name: "default name", email: "hello@coingaming.io")}
+    {:ok, assign(socket, user: %{name: "", email: ""})}
   end
 
   def render(assigns) do
@@ -27,14 +26,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
 
-        <Form change="updated_user" opts={{ autocomplete: "off" }}>
-          <TextInput name={{ :name }} value={{ @name }}/>
-          <TextInput name={{ :email }} value={{ @email }}/>
+        <Form for={{ :user }} change="updated_user" opts={{ autocomplete: "off" }}>
+          <TextInput name={{ :name }} value={{ @user.name }}/>
+          <TextInput name={{ :email }} value={{ @user.email }}/>
         </Form>
 
-        {{ @name }}
-        {{ @email }}
+        <pre>@user = {{ Jason.encode!(@user, pretty: true) }}</pre>
 
+        <pre>{{ inspect(@user) }}</pre>
 
         <pre>{{ code_as_string }}</pre>
       </DefaultLayout>
@@ -42,7 +41,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     """
   end
 
-  def handle_event("updated_user", params) do
-    IO.puts(inspect(params))
+  def handle_event("updated_user", %{"user" => %{"name" => name, "email" => email}}, socket) do
+    {:noreply, assign(socket, user: %{name: name, email: email})}
   end
 end

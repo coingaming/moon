@@ -17,7 +17,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Themes.ListOfThemes do
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <h1>Themes</h1>
 
-
         <p>
           <Link to="https://github.com/coingaming/moon/tree/master/lib/moon/themes">https://github.com/coingaming/moon/tree/master/lib/moon/themes</Link>
         </p>
@@ -30,9 +29,5 @@ defmodule Moon.Sites.MoonDocs.Pages.Themes.ListOfThemes do
       </DefaultLayout>
     </Themed>
     """
-  end
-
-  def handle_event("updated_user", params) do
-    IO.puts(inspect(params))
   end
 end

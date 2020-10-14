@@ -7,4 +7,3 @@ echo "# Build assets"
 cd assets
 yarn
 cd $root_dir
-
