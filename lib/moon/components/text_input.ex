@@ -24,6 +24,7 @@ defmodule Moon.Components.TextInput do
     ]
   )
 
+  prop(value, :string)
   prop(placeholder, :string)
   prop(error, :string)
   prop(rounded, :boolean)
@@ -39,7 +40,7 @@ defmodule Moon.Components.TextInput do
       }
     </style>
 
-    <TextInput class="{{ class_name }}" field={{ @name }} opts={{ [placeholder: @placeholder]}} />
+    <TextInput class="{{ class_name }}" field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
     """
   end
 end

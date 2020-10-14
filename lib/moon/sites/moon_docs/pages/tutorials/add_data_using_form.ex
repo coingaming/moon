@@ -10,11 +10,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Surface.Components.Form
   alias Surface.Components.Form.Field
   alias Moon.Components.TextInput
+  alias Moon.Components.Label
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
   data(user, :any)
 
-  def mount(assigns, socket) do
+  def mount(params, assigns, socket) do
+    IO.puts("mounted")
     {:ok, assign(socket, user: %{name: "", email: ""})}
   end
 
@@ -31,6 +33,27 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
           <TextInput name={{ :email }} value={{ @user.email }}/>
         </Form>
 
+        <Form for={{ :user }} change="updated_user" opts={{ autocomplete: "off" }}>
+          <Field name={{ :name }}>
+            <TextInput />
+          </Field>
+          <Field name={{ :email }}>
+            <TextInput />
+          </Field>
+        </Form>
+
+        {{ @user.name }}
+        {{ @user.email }}
+
+        <Form for={{ :user }} change="updated_user" opts={{ autocomplete: "off" }}>
+          <Field name="name">
+            <TextInput value={{ @user.name }}/>
+          </Field>
+          <Field name="email" class="field">
+            <TextInput value={{ @user.email }}/>
+          </Field>
+        </Form>
+
         <pre>@user = {{ Jason.encode!(@user, pretty: true) }}</pre>
 
         <pre>{{ inspect(@user) }}</pre>
@@ -42,6 +65,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   end
 
   def handle_event("updated_user", %{"user" => %{"name" => name, "email" => email}}, socket) do
+    IO.puts("#{name} #{email}")
     {:noreply, assign(socket, user: %{name: name, email: email})}
   end
 end
