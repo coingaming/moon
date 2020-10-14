@@ -33,7 +33,7 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.6"},
+      {:phoenix, "~> 1.5.3"},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -42,7 +42,10 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
-      {:decimal, "~> 2.0"}
+      {:decimal, "~> 2.0"},
+
+      {:makeup, "1.0.5"},
+      {:makeup_elixir, "~> 0.14.0"}
     ]
   end
 
