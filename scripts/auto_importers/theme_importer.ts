@@ -2,6 +2,8 @@ import aposta10Dark from '../../js_deps/sportsbet-design/packages/themes/src/apo
 import aposta10Light from '../../js_deps/sportsbet-design/packages/themes/src/aposta10Light/aposta10Light';
 import sportsbetDark from '../../js_deps/sportsbet-design/packages/themes/src/sportsbetDark/sportsbetDark';
 import sportsbetLight from '../../js_deps/sportsbet-design/packages/themes/src/sportsbetLight/sportsbetLight';
+import missionsToolDark from '../../js_deps/sportsbet-design/packages/themes/src/missionsToolDark/missionsToolDark';
+import missionsToolLight from '../../js_deps/sportsbet-design/packages/themes/src/missionsToolLight/missionsToolLight';
 // import bitcasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoDark/bitcasinoDark';
 // import bitcasinoLight from '../../js_deps/sportsbet-design/packages/themes/src/bitcasinoLight/bitcasinoLight';
 // import livecasinoDark from '../../js_deps/sportsbet-design/packages/themes/src/livecasinoDark/livecasinoDark';
@@ -174,13 +176,13 @@ writeTheme(
 );
 
 writeTheme(
-  sportsbetDark,
+  missionsToolDark,
   '../../lib/moon/themes/missions_dark',
   'Moon.Themes.MissionsDark',
   'missions-dark'
 );
 writeTheme(
-  sportsbetLight,
+  missionsToolLight,
   '../../lib/moon/themes/missions_light',
   'Moon.Themes.MissionsLight',
   'missions-light'
