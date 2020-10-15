@@ -28,9 +28,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.CrestsPage do
           <Inline>
             
             <CrestArsenal color="piccolo_100" height="1rem" width="1rem" />
-            <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
-            <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
-            <CrestWatford color="piccolo_100" height="1rem" width="1rem" />
+          <CrestFlamengo color="piccolo_100" height="1rem" width="1rem" />
+          <CrestSouthampton color="piccolo_100" height="1rem" width="1rem" />
+          <CrestWatford color="piccolo_100" height="1rem" width="1rem" />
           </Inline>
         </#CodePreview>
       </DefaultLayout>

@@ -4,11 +4,14 @@ defmodule Moon.Assets.Icons.IconArrowDiagonalBottomLeft do
 
   prop(color, :string)
   prop(background_color, :string)
+  prop(font_size, :string)
 
   def render(assigns) do
     class_name =
       get_class_name(
-        "Icons-IconArrowDiagonalBottomLeft-#{assigns.color}-#{assigns.background_color}"
+        "Icons-IconArrowDiagonalBottomLeft-#{assigns.color}-#{assigns.background_color}-#{
+          assigns.font_size
+        }"
       )
 
     ~H"""
@@ -20,6 +23,7 @@ defmodule Moon.Assets.Icons.IconArrowDiagonalBottomLeft do
         
         color: {{ get_color(@color, theme) }};
         background-color: {{ get_color(@background_color, theme) }};
+        font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
         

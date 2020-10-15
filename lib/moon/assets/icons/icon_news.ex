@@ -4,9 +4,13 @@ defmodule Moon.Assets.Icons.IconNews do
 
   prop(color, :string)
   prop(background_color, :string)
+  prop(font_size, :string)
 
   def render(assigns) do
-    class_name = get_class_name("Icons-IconNews-#{assigns.color}-#{assigns.background_color}")
+    class_name =
+      get_class_name(
+        "Icons-IconNews-#{assigns.color}-#{assigns.background_color}-#{assigns.font_size}"
+      )
 
     ~H"""
     <Context get={{ theme: theme }}>
@@ -17,6 +21,7 @@ defmodule Moon.Assets.Icons.IconNews do
         
         color: {{ get_color(@color, theme) }};
         background-color: {{ get_color(@background_color, theme) }};
+        font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
         
