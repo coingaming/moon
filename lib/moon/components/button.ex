@@ -90,10 +90,10 @@ defmodule Moon.Components.Button do
           :color => color.bulma_100,
           :background_color => color.hit_100,
           hover => %{
-            background_color: color.piccolo_80
+            background_color: color.hit_80
           },
           active => %{
-            background_color: color.piccolo_120,
+            background_color: color.hit_120,
             outline: "none"
           }
         }
@@ -107,7 +107,7 @@ defmodule Moon.Components.Button do
             background_color: color.hit_80
           },
           active => %{
-            background_color: color.piccolo_120,
+            background_color: color.hit_120,
             outline: "none"
           }
         }
