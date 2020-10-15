@@ -33,21 +33,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
 
       <h1>Add data using form</h1>
 
-        <Form for={{ :user }} change="update_user_changeset" submit="save_user_data">
-          <TextInput label="Name" name={{ :name }} value={{ @user.name }} autocomplete="off" />
-          <TextInput label="Email" name={{ :email }} value={{ @user.email }} autocomplete="off" />
-        </Form>
-
         <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" opts={{ autocomplete: "off" }}>
-          <Field name={{ :name }}>
-            <TextInput label="Name" value={{ @user.name }}/>
-          </Field>
-          <Field name={{ :email }}>
-            <TextInput label="Email" value={{ @user.email }}/>
-          </Field>
-
-          <Button variant="primary" full_width>Yay</Button>
+          <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
+          <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
         </Form>
+
+        <Button variant="primary" full_width>Yay</Button>
 
         <pre>{{ inspect(@user) }}</pre>
 
@@ -67,20 +58,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
 
             def render(assigns) do
               ~H\\\
-              <Form for={{ :user }} change="update_user_changeset" submit="save_user_data">
-                <TextInput label="Name" name={{ :name }} value={{ @user.name }} autocomplete="off" />
-                <TextInput label="Email" name={{ :email }} value={{ @user.email }} autocomplete="off" />
+              <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" opts={{ autocomplete: "off" }}>
+                <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
+                <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
               </Form>
 
-              <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" opts={{ autocomplete: "off" }}>
-                <Field name={{ :name }}>
-                  <TextInput label="Name" value={{ @user.name }}/>
-                </Field>
-                <Field name={{ :email }}>
-                  <TextInput label="Email" value={{ @user.email }}/>
-                </Field>
-
-                <Button variant="primary" full_width>Yay</Button>
+              <Button variant="primary" full_width>Yay</Button>
               </Form>
 
               <pre>{{ inspect(@user) }}</pre>
