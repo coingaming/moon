@@ -20,6 +20,11 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
         <title>Surface App</title>
         <script>window.userToken = "{{ @user_token }}";</script>
         <style>{{ Makeup.stylesheet() }}</style>
+        <style>
+          *, ::before, ::after {
+            box-sizing: inherit;
+          }
+        </style>
       </head>
       <body>
         <Header />

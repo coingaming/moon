@@ -61,6 +61,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
       `
   prop color, :string
   prop background_color, :string
+  prop font_size, :string
   `) ||
     ''
   }
@@ -83,7 +84,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         `
     class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
           file
-        )}-#{assigns.color}-#{assigns.background_color}")
+        )}-#{assigns.color}-#{assigns.background_color}-#{assigns.font_size}")
     `) ||
       ''
     }
@@ -109,6 +110,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
             `
         color: {{ get_color(@color, theme) }};
         background-color: {{ get_color(@background_color, theme) }};
+        font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
         `) ||

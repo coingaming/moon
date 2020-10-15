@@ -17,12 +17,12 @@ defmodule Moon.Components.Avatar do
       %{
         color: get_color(color, theme),
         background_color: get_color(background_color, theme),
-        borderRadius: "50%",
+        border_radius: "50%",
         overflow: "hidden",
         text_transform: "uppercase",
         font_weight: theme.font_weight.semibold,
         display: "flex",
-        align_ktems: "center",
+        align_items: "center",
         justify_content: "center",
         background_image: "url(#{image_url})",
         background_size: "cover",
@@ -60,8 +60,8 @@ defmodule Moon.Components.Avatar do
       </style>
 
       <div class={{ class_name }}>
-        <span :if={{ !@image_url }}>{{ @name }}</span>
-        <IconUser color={{ @color }} :if={{ @name && !@image_url }}/>
+        <span :if={{ @name && !@image_url }}>{{ @name }}</span>
+        <IconUser color={{ @color }} :if={{ !@name && !@image_url }}/>
       </div>
     </Context>
     """
