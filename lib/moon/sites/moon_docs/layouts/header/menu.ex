@@ -59,6 +59,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
         <Link to="/assets/patterns">Patterns</Link>
         <Separator />
         <Title>Components</Title>
+        <Link to="/components/avatar">Avatar</Link>
         <Link to="/components/badge">Badge</Link>
         <Link to="/components/button">Button</Link>
         <Link to="/components/inline">Inline</Link>

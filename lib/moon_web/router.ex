@@ -24,6 +24,7 @@ defmodule MoonWeb.Router do
     live "/assets/icons", Moon.Sites.MoonDocs.Pages.Assets.IconsPage
     live "/assets/logos", Moon.Sites.MoonDocs.Pages.Assets.LogosPage
     live "/assets/patterns", Moon.Sites.MoonDocs.Pages.Assets.PatternsPage
+    live "/components/avatar", Moon.Sites.MoonDocs.Pages.Components.AvatarPage
     live "/components/badge", Moon.Sites.MoonDocs.Pages.Components.BadgePage
     live "/components/button", Moon.Sites.MoonDocs.Pages.Components.ButtonPage
     live "/components/inline", Moon.Sites.MoonDocs.Pages.Components.InlinePage

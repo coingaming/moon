@@ -1,6 +1,8 @@
 defmodule Moon.Components.Badge do
   use Moon.StatelessComponent
 
+  import Moon.Utils.Rem
+
   prop(background_color, :string)
   prop(color, :string)
   prop(size, :string)
@@ -24,8 +26,8 @@ defmodule Moon.Components.Badge do
           background-color: {{ get_color(@background_color, theme) }};
           font-weight: {{ theme.font_weight.semibold }};
           text-transform: uppercase;
-          border-radius: {{ get_rem(theme.radius.largest) }};
-          letter-spacing: {{ get_rem(1) }};
+          border-radius: {{ rem(theme.radius.largest) }};
+          letter-spacing: {{ rem(1) }};
 
           {{ @style }};
         }

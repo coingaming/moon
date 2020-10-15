@@ -97,7 +97,11 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     """
   end
 
-  def handle_event("update_user_changeset", %{"user" => %{"name" => name, "email" => email}}, socket) do
+  def handle_event(
+        "update_user_changeset",
+        %{"user" => %{"name" => name, "email" => email}},
+        socket
+      ) do
     {:noreply, assign(socket, user: %{name: name, email: email})}
   end
 end

@@ -10,12 +10,13 @@ defmodule Moon.Components.Label.LabelFlex do
   prop(input_grow, :integer)
 
   def style(%{flex: flex, input_grow: input_grow}, %{breakpoint: breakpoint}) do
-    flex && %{
-      mq(breakpoint.small) => %{
-        display: "flex",
-        align_items: "center"
+    flex &&
+      %{
+        mq(breakpoint.small) => %{
+          display: "flex",
+          align_items: "center"
+        }
       }
-    }
   end
 
   def render(assigns) do
@@ -51,16 +52,18 @@ defmodule Moon.Components.Label.LabelContent do
         color: theme.color.trunks_100,
         font_size: rem(theme.space.default)
       },
-      flex && %{
-        mq(theme.breakpoint.small) => %{
-          flex: 1,
-          padding_right: Utils.rem(theme.space.default),
-          margin_bottom: 0
+      flex &&
+        %{
+          mq(theme.breakpoint.small) => %{
+            flex: 1,
+            padding_right: rem(theme.space.default),
+            margin_bottom: 0
+          }
+        },
+      disabled &&
+        %{
+          opacity: 0.5
         }
-      },
-      disabled && %{
-        opacity: 0.5
-      }
     ]
   end
 
@@ -84,12 +87,10 @@ end
 defmodule Moon.Components.Label do
   use Moon.StatelessComponent
 
-
   alias Moon.Components.Label.LabelFlex
   alias Moon.Components.Label.LabelContent
 
-
-  slot default
+  slot(default)
 
   prop(text, :string)
   prop(disabled, :boolean)

@@ -81,12 +81,15 @@ defmodule Moon.Components.TextInput do
   end
 
   def style(%{icon: icon, error: error}, theme) do
-    shared_style(%{icon: icon, error: error}, theme) ++ [%{
-      "&:focus" => %{
-        border_color: !error && theme.color.piccolo_100 || theme.color.chi_chi_100,
-        outline: "none",
-      },
-    }]
+    shared_style(%{icon: icon, error: error}, theme) ++
+      [
+        %{
+          "&:focus" => %{
+            border_color: (!error && theme.color.piccolo_100) || theme.color.chi_chi_100,
+            outline: "none"
+          }
+        }
+      ]
   end
 
   def render(assigns) do

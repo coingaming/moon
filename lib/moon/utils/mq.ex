@@ -2,7 +2,7 @@ defmodule Moon.Utils.Mq do
   import Moon.Utils.Em
 
   def mq(bp, direction) do
-    v = direction == "max-width" && em(bp - 1) || em(bp)
+    v = (direction == "max-width" && em(bp - 1)) || em(bp)
     "@media (#{direction}: #{v})"
   end
 
