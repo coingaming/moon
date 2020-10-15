@@ -18,13 +18,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
         <Inline>
           
           <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
-          <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+            <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
         </Inline>
         <#CodePreview>
           <Inline>
             
             <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
-          <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+            <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
           </Inline>
         </#CodePreview>
       </DefaultLayout>

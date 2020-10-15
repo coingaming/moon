@@ -1,6 +1,8 @@
 defmodule Moon.Components.TextInput do
   use Moon.StatelessComponent
 
+  import Moon.Utils.Rem
+
   alias Surface.Components.Form.TextInput
   alias Moon.Components.Label
 
@@ -37,15 +39,15 @@ defmodule Moon.Components.TextInput do
       %{
         :width => "100%",
         :max_width => "100%",
-        :padding => "#{get_rem(theme.space.small)} #{get_rem(theme.space.default)}",
+        :padding => "#{rem(theme.space.small)} #{rem(theme.space.default)}",
         :appearance => "none",
         :font => "inherit",
-        :font_size => get_rem(16),
+        :font_size => rem(16),
         :line_height => 1.5,
         :color => theme.color.bulma_100,
         :background_color => theme.color.gohan_100,
         :border => "#{theme.border_width}px solid #{theme.color.beerus_100}",
-        :border_radius => get_rem(12),
+        :border_radius => rem(12),
         :transition => "border-color #{theme.transition_duration.default}s ease",
         "&::placeholder" => %{
           color: theme.color.trunks_100,
@@ -67,11 +69,11 @@ defmodule Moon.Components.TextInput do
       },
       icon &&
         %{
-          padding_right: get_rem(theme.space.large),
+          padding_right: rem(theme.space.large),
           background_image: "...",
-          background_position: "right #{get_rem(theme.space.default)} center",
+          background_position: "right #{rem(theme.space.default)} center",
           background_repeat: "no-repeat",
-          background_size: get_rem(20)
+          background_size: rem(20)
         },
       error &&
         %{

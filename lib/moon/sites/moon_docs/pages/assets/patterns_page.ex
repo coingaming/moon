@@ -22,21 +22,21 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.PatternsPage do
         <Inline>
           
           <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
-          <PatternLines color="piccolo_100" height="1rem" width="1rem" />
-          <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
-          <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
-          <PatternStars color="piccolo_100" height="1rem" width="1rem" />
-          <PatternWave color="piccolo_100" height="1rem" width="1rem" />
+            <PatternLines color="piccolo_100" height="1rem" width="1rem" />
+            <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
+            <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
+            <PatternStars color="piccolo_100" height="1rem" width="1rem" />
+            <PatternWave color="piccolo_100" height="1rem" width="1rem" />
         </Inline>
         <#CodePreview>
           <Inline>
             
             <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
-          <PatternLines color="piccolo_100" height="1rem" width="1rem" />
-          <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
-          <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
-          <PatternStars color="piccolo_100" height="1rem" width="1rem" />
-          <PatternWave color="piccolo_100" height="1rem" width="1rem" />
+            <PatternLines color="piccolo_100" height="1rem" width="1rem" />
+            <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
+            <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
+            <PatternStars color="piccolo_100" height="1rem" width="1rem" />
+            <PatternWave color="piccolo_100" height="1rem" width="1rem" />
           </Inline>
         </#CodePreview>
       </DefaultLayout>

@@ -6,7 +6,6 @@ defmodule Moon.StatelessComponent do
       import Moon.Helpers.GetClassNameSupport
       import Moon.Helpers.ScreenSizeSupport
       import Moon.Helpers.GetColorSupport
-      import Moon.Helpers.GetRemSupport
       import Moon.Helpers.GetCssForMapsSupport
     end
   end

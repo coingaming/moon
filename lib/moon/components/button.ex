@@ -2,6 +2,8 @@ defmodule Moon.Components.Button do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
+  import Moon.Utils.Rem
+
   prop(href, :string)
 
   prop(variant, :string,
@@ -33,34 +35,34 @@ defmodule Moon.Components.Button do
     case size do
       "xsmall" ->
         %{
-          font_size: get_rem(12),
-          line_height: get_rem(16),
-          height: (variant == "default" && "") || get_rem(32),
-          padding: (variant == "default" && 0) || "0 #{get_rem(16)}"
+          font_size: rem(12),
+          line_height: rem(16),
+          height: (variant == "default" && "") || rem(32),
+          padding: (variant == "default" && 0) || "0 #{rem(16)}"
         }
 
       "small" ->
         %{
-          font_size: get_rem(14),
-          line_height: get_rem(20),
-          height: (variant == "default" && "") || get_rem(40),
-          padding: (variant == "default" && 0) || "0 #{get_rem(20)}"
+          font_size: rem(14),
+          line_height: rem(20),
+          height: (variant == "default" && "") || rem(40),
+          padding: (variant == "default" && 0) || "0 #{rem(20)}"
         }
 
       "medium" ->
         %{
-          font_size: get_rem(16),
-          line_height: get_rem(24),
-          height: (variant == "default" && "") || get_rem(48),
-          padding: (variant == "default" && 0) || "0 #{get_rem(24)}"
+          font_size: rem(16),
+          line_height: rem(24),
+          height: (variant == "default" && "") || rem(48),
+          padding: (variant == "default" && 0) || "0 #{rem(24)}"
         }
 
       "large" ->
         %{
-          font_size: get_rem(18),
-          line_height: get_rem(24),
-          height: (variant == "default" && "") || get_rem(56),
-          padding: (variant == "default" && 0) || "0 #{get_rem(32)}"
+          font_size: rem(18),
+          line_height: rem(24),
+          height: (variant == "default" && "") || rem(56),
+          padding: (variant == "default" && 0) || "0 #{rem(32)}"
         }
     end
   end
@@ -158,14 +160,14 @@ defmodule Moon.Components.Button do
         .{{ class_name }} {
           display: inline-block;
           {{ @full_width && "width: 100%;" || "" }}
-          min-height: {{ get_rem(24) }};
+          min-height: {{ rem(24) }};
           font-family: inherit;
           font-weight: {{ theme.font_weight.semibold }};
           text-decoration: none;
           curson: pointer;
           border: {{ theme.border }};
           border-color: transparent;
-          border-radius: {{ get_rem(theme.radius.largest) }};
+          border-radius: {{ rem(theme.radius.largest) }};
           transition: background-color {{ theme.transition_duration.default }}s;
           white-space: nowrap;
 

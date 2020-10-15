@@ -3,7 +3,11 @@ defmodule Moon.Components.Inline do
 
   import Moon.Utils.Rem
 
-  prop(space, :string, default: "default", values: ["xsmall", "small", "default", "medium", "large", "xlarge"])
+  prop(space, :string,
+    default: "default",
+    values: ["xsmall", "small", "default", "medium", "large", "xlarge"]
+  )
+
   prop(font_size, :string)
 
   def style(%{space: space, font_size: font_size}, theme) do

@@ -241,7 +241,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
                       icon
                     )} color="piccolo_100" background_color="gohan_100" />`
                 )
-                .join('\n          ')) ||
+                .join('\n            ')) ||
             ''
           }
           ${
@@ -253,7 +253,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
                       icon
                     )} color="piccolo_100" height="1rem" width="1rem" />`
                 )
-                .join('\n          ')) ||
+                .join('\n            ')) ||
             ''
           }
         </Inline>
@@ -268,7 +268,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
                         icon
                       )} color="piccolo_100" background_color="gohan_100" />`
                   )
-                  .join('\n          ')) ||
+                  .join('\n            ')) ||
               ''
             }
             ${
@@ -280,7 +280,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do
                         icon
                       )} color="piccolo_100" height="1rem" width="1rem" />`
                   )
-                  .join('\n          ')) ||
+                  .join('\n            ')) ||
               ''
             }
           </Inline>
