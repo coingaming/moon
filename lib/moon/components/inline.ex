@@ -1,19 +1,23 @@
 defmodule Moon.Components.Inline do
   use Moon.StatelessComponent
 
-  prop(space, :string)
+  import Moon.Utils.Rem
+
+  prop(space, :string, default: "default", values: ["xsmall", "small", "default", "medium", "large", "xlarge"])
   prop(font_size, :string)
 
   def style(%{space: space, font_size: font_size}, theme) do
+    space = rem(Map.get(theme.space, :"#{space}"))
+
     %{
       display: "flex",
       flex_wrap: "wrap",
       overflow: "hidden",
       justify_content: "flex-start",
       align_items: "center",
-      margin: (space && is_number(space) && space / 2 * -1) || "calc(${space} / 2 * -1)",
+      margin: (space && is_number(space) && space / 2 * -1) || "calc(#{space} / 2 * -1)",
       "& > *": %{
-        margin: (space && is_number(space) && space / 2) || "calc(${space} / 2)"
+        margin: (space && is_number(space) && space / 2) || "calc(#{space} / 2)"
       },
       "& > li": style_list_item_style_type_none,
       font_size: font_size
@@ -35,13 +39,11 @@ defmodule Moon.Components.Inline do
 
     ~H"""
     <Context get={{ theme: theme }}>
-      <style>
-        .{{ class_name }} {
-          {{ raw (style(assigns, theme) |> get_css_for_map(".#{class_name}")) }}
-        }
-      </style>
-
       <div class={{ class_name }}>
+        <style>
+          {{ raw (style(assigns, theme) |> get_css_for_map(".#{class_name}")) }}
+        </style>
+
         <slot />
       </div>
     </Context>
