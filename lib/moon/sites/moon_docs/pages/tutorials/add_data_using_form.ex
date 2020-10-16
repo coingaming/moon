@@ -5,8 +5,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
 
-  alias Moon.Components.Badge
-  alias Moon.Components.Inline
   alias Moon.Components.Form
   alias Moon.Components.TextInput
   alias Moon.Components.Button
@@ -15,7 +13,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
   data(user, :any)
 
-  def mount(params, assigns, socket) do
+  def mount(_params, _session, socket) do
     user = %{name: "", email: ""}
 
     {:ok,
@@ -44,9 +42,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
           defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
             use Moon.LiveView
 
-            alias Surface.Components.Form
-            alias Surface.Components.Form.Field
+            alias Moon.Components.Form
             alias Moon.Components.TextInput
+            alias Moon.Components.Button
 
             data(user, :any)
 
@@ -62,7 +60,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
               </Form>
 
               <Button variant="primary" full_width>Yay</Button>
-              </Form>
 
               <pre>{{ inspect(@user) }}</pre>
               \\\

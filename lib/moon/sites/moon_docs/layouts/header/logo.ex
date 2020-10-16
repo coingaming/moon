@@ -23,7 +23,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Logo do
     </style>
 
     <div class={{ class_name }}>
-      <IconMoon color="piccolo_100" background_color="gohan_100" />
+      <IconMoon color="piccolo_100" font_size="3em" />
     </div>
     """
   end
