@@ -5,11 +5,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
 
-  alias Surface.Components.Form
-  alias Surface.Components.Form.Field
-
   alias Moon.Components.Badge
   alias Moon.Components.Inline
+  alias Moon.Components.Form
   alias Moon.Components.TextInput
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
@@ -33,7 +31,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
 
       <h1>Add data using form</h1>
 
-        <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" opts={{ autocomplete: "off" }}>
+        <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" autocomplete="off">
           <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
           <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
         </Form>

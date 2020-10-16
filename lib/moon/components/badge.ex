@@ -9,11 +9,9 @@ defmodule Moon.Components.Badge do
   prop(background_color, :string)
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
 
-  @spec style(any(), %Moon.Theme{color: %Moon.Theme.Color{}}) :: any()
-
   def style(
         %{color: color, background_color: background_color, size: size},
-        theme
+        %Moon.Theme{} = theme
       ) do
     [
       %{
@@ -24,7 +22,7 @@ defmodule Moon.Components.Badge do
         letter_spacing: rem(1)
       },
       %{
-        size: "0 #{(size == "small" && rem(8)) || rem(4)}",
+        padding: "0 #{(size == "small" && rem(8)) || rem(4)}",
         font_size: (size == "small" && rem(10)) || rem(8),
         line_height: (size == "small" && rem(16)) || rem(12)
       },
