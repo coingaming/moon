@@ -7,6 +7,6 @@ defmodule Moon.Utils.Em do
   end
 
   def em(value) do
-    rem("#{value}", "16")
+    em("#{value}", "16")
   end
 end

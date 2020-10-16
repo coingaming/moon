@@ -4,12 +4,11 @@ defmodule Moon.Components.Label.LabelFlex do
   use Moon.StatelessComponent
   import Moon.Utils.Mq
   import Moon.Utils.Rem
-  import Moon.Utils.Em
 
   prop(flex, :boolean)
   prop(input_grow, :integer)
 
-  def style(%{flex: flex, input_grow: input_grow}, %{breakpoint: breakpoint}) do
+  def style(%{flex: flex}, %Moon.Theme{breakpoint: %Moon.Theme.Breakpoint{} = breakpoint}) do
     flex &&
       %{
         mq(breakpoint.small) => %{

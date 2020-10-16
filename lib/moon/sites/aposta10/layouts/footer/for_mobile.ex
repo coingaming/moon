@@ -25,7 +25,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.ForMobile do
     <div class={{ class_name }}>
       <SubscribeToTips />
       <Stack>
-        <Text size=14 weight=600>Follow us</Text>
+        <Text size=14>Follow us</Text>
         <FollowUs />
         <Text size=12 color="#AAB6BE">
           At Bet 10 you stay on top of the world of sports betting, with news, promotions, articles and betting tips that will help you profit.

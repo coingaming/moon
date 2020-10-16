@@ -116,6 +116,8 @@ defmodule Moon.Theme.Color do
 end
 
 defmodule Moon.Theme do
+  @type radius :: %Moon.Theme.Radius{}
+
   defstruct id: nil,
             base: %Moon.Theme.Base{},
             border_style: nil,

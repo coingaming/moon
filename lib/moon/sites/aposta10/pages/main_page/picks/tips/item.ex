@@ -40,7 +40,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item do
       </style>
 
       <div class={{ class_name }}>
-        <Badge background={{ theme.color.gohan_100 }}>Bundesliga</Badge>
+        <Badge background_color="gohan_100">Bundesliga</Badge>
         <Text style="position: absolute; top: 10px; right: 10px;" color={{ theme.color.gohan_100 }}>Feb 7 at 20:30</Text>
 
         <Inline>

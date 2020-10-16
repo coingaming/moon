@@ -5,8 +5,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks do
   alias Moon.Components.Button
 
   alias Moon.Sites.Aposta10.Pages.MainPage.Picks
-  alias Moon.Sites.Aposta10.Pages.MainPage.Picks.DatePicker
-  alias Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips
+  alias Picks.DatePicker
+  alias Picks.Tips
 
   def render(assigns) do
     ~H"""
@@ -16,11 +16,11 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks do
     </style>
 
     <div class="site-body-picks">
-      <Text size=20 weight=600 padding="20px" padding_top="30px">Picks & tips</Text>
+      <Text size=20>Picks & tips</Text>
       <DatePicker />
       <Tips />
       <div style="padding: 10px">
-        <Button margin="10px">See all tips</Button>
+        <Button>See all tips</Button>
       </div>
     </div>
     """

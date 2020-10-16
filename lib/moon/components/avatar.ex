@@ -59,7 +59,9 @@ defmodule Moon.Components.Avatar do
   def render(assigns) do
     class_name =
       get_class_name(
-        "avatar-#{assigns.size}-#{assigns.image_url}-#{assigns.color}-#{assigns.background_color}"
+        "components-avatar-#{assigns.size}-#{assigns.image_url}-#{assigns.color}-#{
+          assigns.background_color
+        }"
       )
 
     ~H"""
@@ -70,7 +72,7 @@ defmodule Moon.Components.Avatar do
 
       <div class={{ class_name }}>
         <span :if={{ @name && !@image_url }}>{{ @name }}</span>
-        <IconUser color={{ @color }} :if={{ !@name && !@image_url }}/>
+        <IconUser color={{ @color }} :if={{ !@name && !@image_url }} />
       </div>
     </Context>
     """

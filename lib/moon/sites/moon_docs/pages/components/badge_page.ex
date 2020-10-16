@@ -14,30 +14,19 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-        <Inline>
-          <Badge color="bulma_100" background_color="piccolo_100">
-            Active
-          </Badge>
-          <Badge color="krillin_100" background_color="gohan_100">
-            Active
-          </Badge>
+        <p>
+          <h1>Badge</h1>
+          Default size count and labeling component
+        </p>
+
+        <Badge color="bulma_100" background_color="dodoria_100">
+          Active
+        </Badge>
+
+        <#CodePreview>
           <Badge color="bulma_100" background_color="dodoria_100">
             Active
           </Badge>
-        </Inline>
-
-        <#CodePreview>
-          <Inline>
-            <Badge color="bulma_100" background_color="piccolo_100">
-              Active
-            </Badge>
-            <Badge color="krillin_100" background_color="gohan_100">
-              Active
-            </Badge>
-            <Badge color="bulma_100" background_color="dodoria_100">
-              Active
-            </Badge>
-          </Inline>
         </#CodePreview>
       </DefaultLayout>
     </Themed>
