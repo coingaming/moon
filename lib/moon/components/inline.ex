@@ -19,9 +19,19 @@ defmodule Moon.Components.Inline do
       overflow: "hidden",
       justify_content: "flex-start",
       align_items: "center",
-      margin: if is_number(space) do space / 2 * -1 else "calc(#{space} / 2 * -1)" end,
+      margin:
+        if is_number(space) do
+          space / 2 * -1
+        else
+          "calc(#{space} / 2 * -1)"
+        end,
       "& > *": %{
-        margin: if is_number(space) do space / 2 else "calc(#{space} / 2)" end
+        margin:
+          if is_number(space) do
+            space / 2
+          else
+            "calc(#{space} / 2)"
+          end
       },
       "& > li": style_list_item_style_type_none(),
       font_size: font_size

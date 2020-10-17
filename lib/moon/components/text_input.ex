@@ -34,37 +34,43 @@ defmodule Moon.Components.TextInput do
   prop(required, :boolean)
   prop(icon, :any)
 
-  def shared_style(%{icon: icon, error: error}, theme) do
+  def style(%{icon: icon, error: error, rounded: rounded}, %Moon.Theme{} = theme) do
     [
       %{
-        :width => "100%",
-        :max_width => "100%",
-        :padding => "#{rem(theme.space.small)} #{rem(theme.space.default)}",
-        :appearance => "none",
-        :font => "inherit",
-        :font_size => rem(16),
-        :line_height => 1.5,
-        :color => theme.color.bulma_100,
-        :background_color => theme.color.gohan_100,
-        :border => "#{theme.border_width}px solid #{theme.color.beerus_100}",
-        :border_radius => rem(12),
-        :transition => "border-color #{theme.transition_duration.default}s ease",
-        "&::placeholder" => %{
+        width: "100%",
+        max_width: "100%",
+        padding: "#{rem(theme.space.small)} #{rem(theme.space.default)}",
+        appearance: "none",
+        "-moz-appearance": "none",
+        "-webkit-appearance": "none",
+        font: "inherit",
+        font_size: rem(16),
+        line_height: 1.5,
+        color: theme.color.bulma_100,
+        background_color: theme.color.gohan_100,
+        border: "#{theme.border_width}px solid #{theme.color.beerus_100}",
+        border_radius: rem(12),
+        transition: "border-color #{theme.transition_duration.default}s ease",
+        "&::placeholder": %{
           color: theme.color.trunks_100,
           opacity: 1
         },
-        "&:hover:not(:focus):not([disabled])" => %{
+        "&:hover:not(:focus):not([disabled])": %{
           border_color: theme.color.goku_40
         },
-        "&:not(:placeholder-shown):not([type=\"date\"]):invalid" => %{
+        "&:not(:placeholder-shown):not([type='date']):invalid": %{
           border_color: theme.color.chi_chi_100
         },
-        "&:invalid, :-moz-ui-invalid" => %{
+        "&:invalid, :-moz-ui-invalid": %{
           box_shadow: "none"
         },
-        "&:disabled" => %{
+        "&:disabled": %{
           opacity: 0.5,
           cursor: "not-allowed"
+        },
+        "&:focus": %{
+          border_color: (!error && theme.color.piccolo_100) || theme.color.chi_chi_100,
+          outline: "none"
         }
       },
       icon &&
@@ -78,20 +84,12 @@ defmodule Moon.Components.TextInput do
       error &&
         %{
           border_color: theme.color.chi_chi_100
+        },
+      rounded &&
+        %{
+          border_radius: theme.radius.largest
         }
     ]
-  end
-
-  def style(%{icon: icon, error: error}, theme) do
-    shared_style(%{icon: icon, error: error}, theme) ++
-      [
-        %{
-          "&:focus" => %{
-            border_color: (!error && theme.color.piccolo_100) || theme.color.chi_chi_100,
-            outline: "none"
-          }
-        }
-      ]
   end
 
   def render(assigns) do

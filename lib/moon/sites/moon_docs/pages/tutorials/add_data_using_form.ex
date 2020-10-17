@@ -8,17 +8,29 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Form
   alias Moon.Components.TextInput
   alias Moon.Components.Button
-  alias Moon.Components.CodePreview
+  alias Moon.Components.Select
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
   data(user, :any)
+  data(gender_options, :any)
 
   def mount(_params, _session, socket) do
-    user = %{name: "", email: ""}
+    user = %{
+      name: "",
+      email: "",
+      gender: "f"
+    }
+
+    gender_options = [
+      [key: "Female", value: "f"],
+      [key: "Male", value: "m"],
+      [key: "I identify as God and this is not important", value: "god", disabled: true]
+    ]
 
     {:ok,
      assign(socket,
-       user: user
+       user: user,
+       gender_options: gender_options
      )}
   end
 
@@ -29,47 +41,28 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
 
       <h1>Add data using form</h1>
 
-        <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" autocomplete="off">
-          <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
-          <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
-        </Form>
+      <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
 
-        <Button variant="primary" full_width>Yay</Button>
+      TODO: switch this manual to changeset
 
-        <pre>{{ inspect(@user) }}</pre>
+      <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" autocomplete="off">
+        <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
+        <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
 
-        <#CodePreview>
-          defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
-            use Moon.LiveView
+        <Select
+          label="Gender"
+          name={{ :gender }}
+          options={{ @gender_options }}
+          prompt="Please select gender"
+        />
 
-            alias Moon.Components.Form
-            alias Moon.Components.TextInput
-            alias Moon.Components.Button
+        <Button variant="primary">Save</Button>
+        <Button variant="secondary">Cancel</Button>
+      </Form>
 
-            data(user, :any)
+      <pre>{{ inspect(@user) }}</pre>
 
-            def mount(params, assigns, socket) do
-              {:ok, assign(socket, user: %{name: "", email: ""})}
-            end
 
-            def render(assigns) do
-              ~H\\\
-              <Form for={{ :user }} change="update_user_changeset" submit="save_user_data" opts={{ autocomplete: "off" }}>
-                <TextInput label="Name" name={{ :name }} value={{ @user.name }} />
-                <TextInput label="Email" name={{ :email }} value={{ @user.email }} />
-              </Form>
-
-              <Button variant="primary" full_width>Yay</Button>
-
-              <pre>{{ inspect(@user) }}</pre>
-              \\\
-            end
-
-            def handle_event("updated_user", %{"user" => %{"name" => name, "email" => email}}, socket) do
-              {:noreply, assign(socket, user: %{name: name, email: email})}
-            end
-          end
-        </#CodePreview>
       </DefaultLayout>
     </Themed>
     """
@@ -77,9 +70,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
 
   def handle_event(
         "update_user_changeset",
-        %{"user" => %{"name" => name, "email" => email}},
+        %{"user" => %{"name" => name, "email" => email, "gender" => gender}},
         socket
       ) do
-    {:noreply, assign(socket, user: %{name: name, email: email})}
+    {:noreply, assign(socket, user: %{name: name, email: email, gender: gender})}
   end
 end
