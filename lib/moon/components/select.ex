@@ -5,7 +5,7 @@ defmodule Moon.Components.Select do
 
   alias Moon.Components.Label
 
-  prop(name, :string)
+  prop(field, :atom)
   prop(label, :string)
   prop(options, :any, default: [])
   prop(value, :any)
@@ -54,7 +54,7 @@ defmodule Moon.Components.Select do
 
       <Surface.Components.Form.Select
         class={{ class_name }}
-        field={{ @name }}
+        field={{ @field }}
         options={{ options_with_selected }}
         opts={{ [prompt: @prompt] }}
         :if={{ !@label }}
@@ -63,7 +63,7 @@ defmodule Moon.Components.Select do
       <Label text={{ @label }} :if={{ @label }}>
         <Surface.Components.Form.Select
           class={{ class_name }}
-          field={{ @name }}
+          field={{ @field }}
           options={{ options_with_selected }}
           opts={{ [prompt: @prompt] }}
         />

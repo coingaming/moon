@@ -15,7 +15,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm.User do
     |> cast(params, [:name, :email, :gender])
     |> validate_required([:name, :email, :gender])
     |> validate_format(:email, ~r/@/)
-    |> validate_inclusion(:gender, ["f", "m"])
+    |> validate_inclusion(:gender, ["female", "male"])
   end
 end
 
@@ -42,14 +42,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     user_map = %{
       name: "",
       email: "",
-      gender: "f"
+      gender: ""
     }
 
     user_changeset = User.changeset(%User{}, user_map)
 
     gender_options = [
-      [key: "Female", value: "f"],
-      [key: "Male", value: "m"],
+      [key: "Female", value: "female"],
+      [key: "Male", value: "male"],
       [key: "Invalid choice", value: "invalid"],
       [key: "I identify as God and this is not important", value: "god", disabled: true]
     ]
@@ -67,86 +67,96 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
 
-      <h1>Add data using form</h1>
+        <h1>Add data using form</h1>
 
-      Todo
+        Todo
 
-      <ul>
-        <li>Validation errors on form</li>
-      </ul>
+        <ul>
+          <li>Validation errors on form</li>
+        </ul>
 
-      <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
-
-
-      <h2>With changeset (recommended approach)</h2>
-
-      <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-        <TextInput label="Name" name={{ :name }} />
-        <TextInput label="Email" name={{ :email }} />
-
-        <Select
-          label="Gender"
-          name={{ :gender }}
-          options={{ @gender_options }}
-          prompt="Please select gender"
-        />
-
-        <pre>{{ inspect(@user_changeset) }}</pre>
-
-        <Button variant="primary">Save</Button>
-        <Button variant="secondary">Cancel</Button>
-      </Form>
+        <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
 
 
-      <h2>Without changeset (not recommended, only for edge cases - 99% cases DO NOT USE THIS)</h2>
+        <h2>With changeset (recommended approach)</h2>
 
-      <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-        <TextInput label="Name" name={{ :name }} value={{ @user_map.name }} />
-        <TextInput label="Email" name={{ :email }} value={{ @user_map.email }} />
-
-        <Select
-          label="Gender"
-          name={{ :gender }}
-          options={{ @gender_options }}
-          value={{ @user_map.gender }}
-          prompt="Please select gender"
-        />
-
-        <pre>{{ inspect(@user_map) }}</pre>
-
-        <Button variant="primary">Save</Button>
-        <Button variant="secondary">Cancel</Button>
-      </Form>
-
-      <#CodePreview>
-        <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-          <TextInput label="Name" name={{ :name }} value={{ @user_map.name }} />
-          <TextInput label="Email" name={{ :email }} value={{ @user_map.email }} />
+        <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+          <TextInput label="Name" field="name" />
+          <TextInput label="Email" field="email" />
 
           <Select
             label="Gender"
-            name={{ :gender }}
+            field={{ :gender }}
+            options={{ @gender_options }}
+            prompt="Please select gender"
+          />
+
+          <pre>{{ inspect(@user_changeset) }}</pre>
+
+          <Button variant="primary">Save</Button>
+          <Button variant="secondary">Cancel</Button>
+        </Form>
+
+        <#CodePreview>
+          <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+            <TextInput label="Name" field={{ :name }} />
+            <TextInput label="Email" field={{ :email }} />
+
+            <Select
+              label="Gender"
+              field={{ :gender }}
+              options={{ @gender_options }}
+              prompt="Please select gender"
+            />
+
+            <pre>{{ inspect(@user_changeset) }}</pre>
+
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary">Cancel</Button>
+          </Form>
+        </#CodePreview>
+
+        <h2>Without changeset (not recommended, only for edge cases - 99% cases DO NOT USE THIS)</h2>
+
+        <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+          <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
+          <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+
+          <Select
+            label="Gender"
+            field={{ :gender }}
             options={{ @gender_options }}
             value={{ @user_map.gender }}
             prompt="Please select gender"
           />
 
+          <pre>{{ inspect(@user_map) }}</pre>
+
           <Button variant="primary">Save</Button>
           <Button variant="secondary">Cancel</Button>
         </Form>
-      </#CodePreview>
+
+        <#CodePreview>
+          <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+            <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
+            <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+
+            <Select
+              label="Gender"
+              field={{ :gender }}
+              options={{ @gender_options }}
+              value={{ @user_map.gender }}
+              prompt="Please select gender"
+            />
+
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary">Cancel</Button>
+          </Form>
+        </#CodePreview>
 
       </DefaultLayout>
     </Themed>
     """
-  end
-
-  def handle_event(
-        "update_user_map",
-        %{"user_map" => %{"name" => name, "email" => email, "gender" => gender}},
-        socket
-      ) do
-    {:noreply, assign(socket, user_map: %{name: name, email: email, gender: gender})}
   end
 
   def handle_event(
@@ -158,4 +168,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
     user_changeset = User.changeset(%User{}, %{name: name, email: email, gender: gender})
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
+
+  def handle_event(
+        "update_user_map",
+        %{"user_map" => %{"name" => name, "email" => email, "gender" => gender}},
+        socket
+      ) do
+    {:noreply, assign(socket, user_map: %{name: name, email: email, gender: gender})}
+  end
+
 end

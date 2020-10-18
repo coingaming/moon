@@ -6,7 +6,7 @@ defmodule Moon.Components.TextInput do
   alias Surface.Components.Form.TextInput
   alias Moon.Components.Label
 
-  prop(name, :string)
+  prop(field, :atom)
   prop(label, :string)
 
   prop(type, :string,
@@ -101,10 +101,10 @@ defmodule Moon.Components.TextInput do
         {{ style(assigns, theme) |> get_css_for_maps(".#{class_name}") }}
       </style>
 
-      <TextInput class={{ class_name }} field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} :if={{ !@label }} />
+      <TextInput class={{ class_name }} field={{ @field }} opts={{ [placeholder: @placeholder]}} value={{ @value }} :if={{ !@label }} />
 
       <Label text={{ @label }} :if={{ @label }}>
-        <TextInput class={{ class_name }} field={{ @name }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
+        <TextInput class={{ class_name }} field={{ @field }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
       </Label>
     </Context>
     """
