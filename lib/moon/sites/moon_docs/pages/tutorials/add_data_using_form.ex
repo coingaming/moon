@@ -94,7 +94,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
           <pre>{{ inspect(@user_changeset) }}</pre>
 
           <Button variant="primary">Save</Button>
-          <Button variant="secondary">Cancel</Button>
+          <Button variant="secondary" on_click="go_other_page">Cancel</Button>
         </Form>
 
         <#CodePreview>
@@ -112,7 +112,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
             <pre>{{ inspect(@user_changeset) }}</pre>
 
             <Button variant="primary">Save</Button>
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" on_click="go_other_page">Cancel</Button>
           </Form>
         </#CodePreview>
 
@@ -133,7 +133,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
           <pre>{{ inspect(@user_map) }}</pre>
 
           <Button variant="primary">Save</Button>
-          <Button variant="secondary">Cancel</Button>
+          <Button variant="secondary" on_click="go_other_page">Cancel</Button>
         </Form>
 
         <#CodePreview>
@@ -150,7 +150,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
             />
 
             <Button variant="primary">Save</Button>
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" on_click="go_other_page">Cancel</Button>
           </Form>
         </#CodePreview>
 
@@ -175,6 +175,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
         socket
       ) do
     {:noreply, assign(socket, user_map: %{name: name, email: email, gender: gender})}
+  end
+
+  def handle_event(
+    "go_other_page",
+    _,
+    socket
+  ) do
+    {:noreply, push_redirect(socket, to: "/")}
   end
 
 end

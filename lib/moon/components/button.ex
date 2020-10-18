@@ -11,6 +11,8 @@ defmodule Moon.Components.Button do
     values: ["primary", "secondary", "tertiary", "highlight", "default"]
   )
 
+  prop(on_click, :string)
+
   prop(size, :string, default: "small", values: ["xsmall", "small", "medium", "large"])
   prop(mock_state, :string, values: ["active", "focus", "hover"])
   prop(full_width, :boolean)
@@ -178,7 +180,7 @@ defmodule Moon.Components.Button do
         {{ get_css_maps(assigns, theme) |> get_css_for_maps(".#{class_name}") }}
       </style>
 
-      <button class="{{ class_name }} {{ @mock_state && "is-#{@mock_state}" }}">
+      <button class="{{ class_name }} {{ @mock_state && "is-#{@mock_state}" }}" phx-click={{ @on_click }}>
         <slot />
       </button>
     </Context>
