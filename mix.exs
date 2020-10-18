@@ -41,8 +41,10 @@ defmodule Moon.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
       {:decimal, "~> 2.0"},
-      {:makeup, "1.0.5"},
-      {:makeup_elixir, "~> 0.14.0"}
+      {:makeup, "1.0.5", only: :dev},
+      {:makeup_elixir, "~> 0.14.0", only: :dev},
+      {:ecto_sql, "~> 3.1", only: :dev},
+      {:phoenix_ecto, "~> 4.0"},
     ]
   end
 

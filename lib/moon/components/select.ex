@@ -8,6 +8,7 @@ defmodule Moon.Components.Select do
   prop(name, :string)
   prop(label, :string)
   prop(options, :any, default: [])
+  prop(value, :any)
   prop(prompt, :string)
   prop(error, :string)
   prop(rounded, :boolean)
@@ -35,6 +36,16 @@ defmodule Moon.Components.Select do
     class_name =
       get_class_name("text-input-#{assigns.full_width}-#{assigns.icon}-#{assigns.error}")
 
+    options_with_selected =
+      Enum.map(assigns.options, fn row ->
+        [
+          key: row[:key],
+          value: row[:value],
+          selected: row[:value] == assigns.value,
+          disabled: row[:disabled]
+        ]
+      end)
+
     ~H"""
     <Context get={{ theme: theme }}>
       <style>
@@ -44,7 +55,7 @@ defmodule Moon.Components.Select do
       <Surface.Components.Form.Select
         class={{ class_name }}
         field={{ @name }}
-        options={{ @options }}
+        options={{ options_with_selected }}
         opts={{ [prompt: @prompt] }}
         :if={{ !@label }}
       />
@@ -53,7 +64,7 @@ defmodule Moon.Components.Select do
         <Surface.Components.Form.Select
           class={{ class_name }}
           field={{ @name }}
-          options={{ @options }}
+          options={{ options_with_selected }}
           opts={{ [prompt: @prompt] }}
         />
       </Label>
