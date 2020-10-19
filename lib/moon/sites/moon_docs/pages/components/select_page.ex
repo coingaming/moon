@@ -9,6 +9,20 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.SelectPage do
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
+  def mount(_params, _session, socket) do
+    gender_options = [
+      [key: "Female", value: "female"],
+      [key: "Male", value: "male"],
+      [key: "Invalid choice", value: "invalid"],
+      [key: "I identify as God and this is not important", value: "god", disabled: true]
+    ]
+
+    {:ok,
+    assign(socket,
+      gender_options: gender_options
+    )}
+  end
+
   def render(assigns) do
     ~H"""
     <Themed theme={{ @theme }}>
@@ -22,20 +36,20 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.SelectPage do
 
         </p>
 
-        <Select>
-          <option value="">Select an option</option>
-          <option value="never-gonna">Never gonna</option>
-          <option value="give-you-up">give you up</option>
-          <option value="let-you-down">let you down</option>
-        </Select>
+        <Select
+          label="Gender"
+          field={{ :gender }}
+          options={{ @gender_options }}
+          prompt="Please select gender"
+        />
 
         <#CodePreview>
-          <Select>
-            <option value="">Select an option</option>
-            <option value="never-gonna">Never gonna</option>
-            <option value="give-you-up">give you up</option>
-            <option value="let-you-down">let you down</option>
-          </Select>
+          <Select
+            label="Gender"
+            field={{ :gender }}
+            options={{ @gender_options }}
+            prompt="Please select gender"
+          />
         </#CodePreview>
 
       </DefaultLayout>
