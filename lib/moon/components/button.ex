@@ -166,7 +166,7 @@ defmodule Moon.Components.Button do
           font-family: inherit;
           font-weight: {{ theme.font_weight.semibold }};
           text-decoration: none;
-          curson: pointer;
+          cursor: pointer;
           border: {{ theme.border }};
           border-color: transparent;
           border-radius: {{ rem(theme.radius.largest) }};
