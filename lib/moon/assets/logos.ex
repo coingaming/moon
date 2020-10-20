@@ -8,8 +8,10 @@ defmodule Moon.Assets.Logos do
   prop(background_color, :string)
 
   @assets_map %{
+    missions: Logos.LogoMissions,
     sportsbet_sponsor: Logos.LogoSportsbetSponsor,
-    sportsbet: Logos.LogoSportsbet
+    sportsbet: Logos.LogoSportsbet,
+    moon_pay: Logos.MoonPay
   }
 
   def icon_name_to_module(icon_name) do

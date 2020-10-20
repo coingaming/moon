@@ -104,7 +104,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
     <style>
       .{{ class_name }} {
         vertical-align: middle;
-
+        width: 1em;
         ${
           (iconType === 'icons' &&
             `
@@ -113,10 +113,9 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
-        `) ||
+        `.trim()) ||
           ''
         }
-
         ${
           (iconType !== 'icons' &&
             `
@@ -126,7 +125,7 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
         font-size: {{ @font_size }};
         vertical-align: {{ @vertical_align }};
         overflow: hidden;
-        `) ||
+        `.trim()) ||
           ''
         }
       }

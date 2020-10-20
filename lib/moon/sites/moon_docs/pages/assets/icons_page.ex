@@ -54,6 +54,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconClose
   alias Icons.IconCode
   alias Icons.IconCopy
+  alias Icons.IconCrypto
   alias Icons.IconCurrencyARS
   alias Icons.IconCurrencyBDT
   alias Icons.IconCurrencyBOB
@@ -288,6 +289,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconClose color="piccolo_100" background_color="gohan_100" />
             <IconCode color="piccolo_100" background_color="gohan_100" />
             <IconCopy color="piccolo_100" background_color="gohan_100" />
+            <IconCrypto color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBOB color="piccolo_100" background_color="gohan_100" />
@@ -520,6 +522,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconClose color="piccolo_100" background_color="gohan_100" />
             <IconCode color="piccolo_100" background_color="gohan_100" />
             <IconCopy color="piccolo_100" background_color="gohan_100" />
+            <IconCrypto color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBOB color="piccolo_100" background_color="gohan_100" />

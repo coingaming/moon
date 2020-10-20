@@ -5,6 +5,7 @@ mkdir js_deps
 cd js_deps 
 git clone git@github.com:coingaming/sportsbet-design.git
 cd sportsbet-design
+git reset --hard HEAD
 git pull
 yarn 
 yarn build 

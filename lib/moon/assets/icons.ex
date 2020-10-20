@@ -54,6 +54,7 @@ defmodule Moon.Assets.Icons do
     close: Icons.IconClose,
     code: Icons.IconCode,
     copy: Icons.IconCopy,
+    crypto: Icons.IconCrypto,
     currency_ars: Icons.IconCurrencyARS,
     currency_bdt: Icons.IconCurrencyBDT,
     currency_bob: Icons.IconCurrencyBOB,

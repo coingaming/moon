@@ -21,9 +21,7 @@ defmodule Moon.Assets.Patterns.PatternSpeed do
     <style>
       .{{ class_name }} {
         vertical-align: middle;
-
-        
-
+        width: 1em;
         
         color: {{ get_color(@color, theme) }};
         height: {{ @height }};
@@ -31,7 +29,6 @@ defmodule Moon.Assets.Patterns.PatternSpeed do
         font-size: {{ @font_size }};
         vertical-align: {{ @vertical_align }};
         overflow: hidden;
-        
       }
     </style>
 

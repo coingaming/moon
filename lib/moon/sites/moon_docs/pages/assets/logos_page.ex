@@ -8,8 +8,10 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
+  alias Logos.LogoMissions
   alias Logos.LogoSportsbetSponsor
   alias Logos.LogoSportsbet
+  alias Logos.MoonPay
 
   def render(assigns) do
     ~H"""
@@ -17,14 +19,18 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.LogosPage do
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
         <Inline>
           
-          <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
+          <LogoMissions color="piccolo_100" height="1rem" width="1rem" />
+            <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
             <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+            <MoonPay color="piccolo_100" height="1rem" width="1rem" />
         </Inline>
         <#CodePreview>
           <Inline>
             
+            <LogoMissions color="piccolo_100" height="1rem" width="1rem" />
             <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
             <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
+            <MoonPay color="piccolo_100" height="1rem" width="1rem" />
           </Inline>
         </#CodePreview>
       </DefaultLayout>

@@ -17,15 +17,12 @@ defmodule Moon.Assets.Icons.IconCurrencyIQD do
     <style>
       .{{ class_name }} {
         vertical-align: middle;
-
-        
+        width: 1em;
         color: {{ get_color(@color, theme) }};
         background-color: {{ get_color(@background_color, theme) }};
         font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
-        
-
         
       }
     </style>
