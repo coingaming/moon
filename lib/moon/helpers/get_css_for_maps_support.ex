@@ -6,11 +6,11 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
     |> Enum.join("\n")
   end
 
-  def get_css_for_map(nil, class_name) do
+  def get_css_for_map(nil, _class_name) do
     ""
   end
 
-  def get_css_for_map(false, class_name) do
+  def get_css_for_map(false, _class_name) do
     ""
   end
 
@@ -43,7 +43,6 @@ defmodule Moon.Helpers.GetCssForMapsSupport do
         is_map(v) && String.contains?("#{k}", "@")
       end)
       |> Enum.map(fn {k, v} ->
-        child_node_name = String.replace("#{k}", "&", "#{class_name}")
         css = get_css_for_map(v, class_name)
         "#{k} {\n #{css} \n}"
       end)

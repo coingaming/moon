@@ -9,9 +9,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Themes.ListOfThemes do
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
   def render(assigns) do
-    code_as_string = """
-    """
-
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>

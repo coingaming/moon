@@ -5,7 +5,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout.Content do
     class_name = get_class_name("sites-layouts-defaultlayout-content")
 
     ~H"""
-    <Context get={{ theme: theme }}>
+    <Context get={{ theme: _theme }}>
       <style>
         .{{ class_name }} {
           padding-top: 100px;

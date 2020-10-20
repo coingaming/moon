@@ -19,7 +19,7 @@ defmodule Moon.Components.Select do
   prop(icon, :string)
   prop(full_width, :boolean)
 
-  def style(%{full_width: full_width, icon: icon, error: error}, %Moon.Theme{} = theme) do
+  def style(%{full_width: _full_width, icon: icon, error: error}, %Moon.Theme{} = theme) do
     Moon.Components.TextInput.style(%{icon: icon, error: error, rounded: false}, theme) ++
       [
         %{

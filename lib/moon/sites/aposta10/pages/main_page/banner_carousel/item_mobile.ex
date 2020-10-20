@@ -14,7 +14,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemMobile do
     class_name = "site-body-banner-carousel-item-mobile"
 
     ~H"""
-    <Context get={{ theme: theme }}>
+    <Context get={{ theme: _theme }}>
       <style>
         .{{ class_name }} {
           display: inline-block;
@@ -40,12 +40,12 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemMobile do
 
       <div class={{ class_name }}>
         <div class="{{ class_name }}-thumb">
-          <Badge background={{ theme.color.gohan_100 }} style="position: absolute; left: 10px; top: 10px">{{ @label }}</Badge>
-          <Badge background={{ theme.color.gohan_100 }} style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Badge>
+          <Badge background_color="gohan_100" style="position: absolute; left: 10px; top: 10px">{{ @label }}</Badge>
+          <Badge background_color="gohan_100" style="position: absolute; left: 10px; bottom: 10px">{{ @datetime }}</Badge>
           <img class="{{ class_name }}-thumb-picture" src={{ "/uploads/img/site/#{ @image_url }" }} />
         </div>
 
-        <Text size=18 weight=500>{{ @title }}</Text>
+        <Text size=18>{{ @title }}</Text>
         <Text size=14>{{ @desc }}</Text>
       </div>
     </Context>

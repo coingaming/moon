@@ -92,6 +92,9 @@ defmodule Moon.Components.TextInput do
     ]
   end
 
+  # as this object is already sent in React over network, why not ".classname[data-icon=true]"
+  # for not re-rendering class prop and letting browser to handle it?
+
   def render(assigns) do
     class_name = get_class_name("text-input-#{assigns.icon}-#{assigns.error}")
 

@@ -4,7 +4,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.TextInputPage do
 
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
-  alias Moon.Components.Stack
   alias Moon.Components.TextInput
   alias Moon.Components.CodePreview
 

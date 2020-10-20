@@ -2,13 +2,13 @@ defmodule Moon.Sites.MoonDocs.Layouts.Footer do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  alias Moon.Components.Switch
+  # alias Moon.Components.Switch
 
   def render(assigns) do
     class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Footer")
 
     ~H"""
-    <Context get={{ theme: theme }}>
+    <Context get={{ theme: _theme }}>
 
       <style>
         {{ for_desktop() }} {

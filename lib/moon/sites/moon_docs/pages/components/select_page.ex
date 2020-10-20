@@ -18,9 +18,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.SelectPage do
     ]
 
     {:ok,
-    assign(socket,
-      gender_options: gender_options
-    )}
+     assign(socket,
+       gender_options: gender_options
+     )}
   end
 
   def render(assigns) do
