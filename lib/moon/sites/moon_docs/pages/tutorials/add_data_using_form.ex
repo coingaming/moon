@@ -1,24 +1,3 @@
-defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm.User do
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  alias Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm.User
-
-  schema "users" do
-    field(:name)
-    field(:email)
-    field(:gender)
-  end
-
-  def changeset(%User{} = user, params \\ %{}) do
-    user
-    |> cast(params, [:name, :email, :gender])
-    |> validate_required([:name, :email, :gender])
-    |> validate_format(:email, ~r/@/)
-    |> validate_inclusion(:gender, ["female", "male"])
-  end
-end
-
 defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   use Moon.LiveView
   use Moon.Components.Context
@@ -165,6 +144,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
         %{"user" => %{"name" => name, "email" => email, "gender" => gender}},
         socket
       ) do
+
     user_changeset = User.changeset(%User{}, %{name: name, email: email, gender: gender})
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
@@ -178,10 +158,11 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   end
 
   def handle_event(
-        "go_other_page",
-        _,
-        socket
-      ) do
+    "go_other_page",
+    _,
+    socket
+  ) do
     {:noreply, push_redirect(socket, to: "/")}
   end
+
 end
