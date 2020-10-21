@@ -144,7 +144,6 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
         %{"user" => %{"name" => name, "email" => email, "gender" => gender}},
         socket
       ) do
-
     user_changeset = User.changeset(%User{}, %{name: name, email: email, gender: gender})
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
@@ -158,11 +157,10 @@ defmodule Moon.Sites.MoonDocs.Pages.Tutorials.AddDataUsingForm do
   end
 
   def handle_event(
-    "go_other_page",
-    _,
-    socket
-  ) do
+        "go_other_page",
+        _,
+        socket
+      ) do
     {:noreply, push_redirect(socket, to: "/")}
   end
-
 end
