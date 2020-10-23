@@ -2,9 +2,6 @@ defmodule Moon.Components.Button do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  import Moon.Utils.Rem
-  alias Moon.Theme
-
   prop(href, :string)
 
   prop(variant, :string,
@@ -34,6 +31,10 @@ defmodule Moon.Components.Button do
 
   prop(style, :string)
 
+  use MoonWeb.Assets
+  import MoonWeb.Assets.Files
+
+
   def render(assigns) do
     ~H"""
     <button
@@ -43,6 +44,9 @@ defmodule Moon.Components.Button do
       data-size={{ @size }}
       phx-click={{ @on_click }}
     >
+      {{ asset_styles() }}
+      {{ asset_scripts() }}
+
       <slot />
     </button>
     """

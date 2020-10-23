@@ -1,3 +1,5 @@
+@import "../themes/sportsbet_light";
+
 .moon-button {
   display: inline-block;
   min-height: rem(24);
@@ -88,12 +90,12 @@
 
     &:hover,
     &[data-mock-state='hover'] {
-      color: $theme--color--bulma-80;
+      color: $theme--color--bulma-100;
     }
 
     &:active,
     &[data-mock-state='active'] {
-      color: $theme--color--bulma-120;
+      color: $theme--color--bulma-100;
     }
   }
 
