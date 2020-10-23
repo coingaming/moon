@@ -30,3 +30,6 @@ moon-*.tar
 /node_modules
 /.DS_Store
 /.cache
+
+
+priv/static/assets/*
