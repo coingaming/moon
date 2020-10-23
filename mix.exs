@@ -44,7 +44,8 @@ defmodule Moon.MixProject do
       {:makeup, "1.0.5"},
       {:makeup_elixir, "~> 0.14.0"},
       {:ecto_sql, "~> 3.1"},
-      {:phoenix_ecto, "~> 4.0"}
+      {:phoenix_ecto, "~> 4.0"},
+      {:asset_import, "~> 0.4.10"}
     ]
   end
 

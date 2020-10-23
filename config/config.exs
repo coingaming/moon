@@ -23,6 +23,12 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :asset_import, MoonWeb.Assets,
+  assets_base_url: "/",
+  assets_path: Path.expand("assets"),
+  manifest_path: Path.expand("priv/static/manifest.json"),
+  entrypoints_path: Path.expand("assets/entrypoints.json")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

@@ -1,6 +1,9 @@
 defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
   use Moon.LiveView
   use Moon.Components.Context
+  use MoonWeb.Assets
+  import MoonWeb.Assets.Files
+
 
   alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
   alias Moon.Themed
@@ -14,6 +17,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
     ~H"""
     <Themed theme={{ @theme }}>
       <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
+
+        {{ asset_styles() }}
+        {{ preload_asset_styles() }}
+        {{ preload_asset_scripts() }}
+
+        {{ asset_import @socket, "js/components/button" }}
 
         <h1>Button</h1>
 
@@ -209,6 +218,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.ButtonPage do
         </#CodePreview>
 
 
+        {{ asset_scripts() }}
       </DefaultLayout>
     </Themed>
     """

@@ -8,3 +8,5 @@ config :moon, MoonWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :asset_import, entrypoints_path: :disabled
