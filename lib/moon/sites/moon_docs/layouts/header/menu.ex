@@ -62,6 +62,8 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu do
         <Link to="/components/avatar">Avatar</Link>
         <Link to="/components/badge">Badge</Link>
         <Link to="/components/button">Button</Link>
+        <Link to="/components/checkbox">Checkbox</Link>
+        <Link to="/components/checkbox-multiselect">Checkbox multiselect</Link>
         <Link to="/components/inline">Inline</Link>
         <Link to="/components/link">Link</Link>
         <Link to="/components/select">Select</Link>
