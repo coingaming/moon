@@ -17,6 +17,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+        <link rel="stylesheet" href="/css/app.css" />
         <title>Surface App</title>
         <script>window.userToken = "{{ @user_token }}";</script>
         <style>{{ Makeup.stylesheet() }}</style>

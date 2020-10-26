@@ -1,0 +1,97 @@
+
+$theme--base--space: 16;
+$theme--base--font-size: 16;
+$theme--base--line-height: 20;
+
+$theme--border-style: "solid";
+$theme--border_width: 1;
+$theme--border: "1px solid";
+$theme--box-shadow: "0px 2.4px 7.2px rgba(0, 0, 0, 0.18), 0px 12.8px 28.8px rgba(0, 0, 0, 0.22)";
+
+$theme--breakpoint--small: 500;
+$theme--breakpoint--medium: 800;
+$theme--breakpoint--large: 1080;
+$theme--breakpoint--xlarge: 1200;
+
+$theme--font-face--regular--font-family: "Averta Std";
+$theme--font-face--regular--font-style: "normal";
+$theme--font-face--regular--font-display: "swap";
+$theme--font-face--regular--unicode-range: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD";
+$theme--font-face--regular--font-weight: 400;
+$theme--font-face--regular--src: "local(\"AvertaStd-Regular\"), local(\"Averta Std Regular\"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format(\"woff2\")";
+
+$theme--font-face--semibold--font-family: "Averta Std";
+$theme--font-face--semibold--font-style: "normal";
+$theme--font-face--semibold--font-display: "swap";
+$theme--font-face--semibold--unicode-range: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD";
+$theme--font-face--semibold--font-weight: 500;
+$theme--font-face--semibold--src: "local(\"AvertaStd-Semibold\"), local(\"Averta Std Semibold\"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format(\"woff2\")";
+        
+$theme--font-family: "Averta Std, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif";
+$theme--font-size: 14;
+$theme--font-weight--normal: 400;
+$theme--font-weight--semibold: 500;
+
+$theme--max-width--default: 1024;
+$theme--max-width--large: 1440;
+
+$theme--opacity--disabled: 0.35;
+
+$theme--radius--small: 4;
+$theme--radius--default: 8;
+$theme--radius--largest: 100;
+
+$theme--space--xsmall: 4;
+$theme--space--small: 8;
+$theme--space--default: 16;
+$theme--space--medium: 24;
+$theme--space--large: 32;
+$theme--space--xlarge: 40;
+
+$theme--transition-duration--slow: 0.4;
+$theme--transition-duration--default: 0.2;
+
+$theme--z-index--carousel-control: 5;
+$theme--z-index--dialog: 5;
+$theme--z-index--toggle: 1;
+
+$theme--color--text: "#FFFFFF";
+$theme--color--background: "#232A33";
+        
+$theme--color--krillin-10: "#FFE4AD";
+$theme--color--krillin-100: "#FFB319";
+$theme--color--chi_chi-10: "#FFA7B2";
+$theme--color--chi_chi-100: "#FF4E64";
+$theme--color--roshi-10: "#B6F3D0";
+$theme--color--roshi-100: "#0CD664";
+$theme--color--dodoria-10: "#E99797";
+$theme--color--dodoria-100: "#D33030";
+$theme--color--cell-10: "#84DBAB";
+$theme--color--cell-100: "#0AB758";
+$theme--color--raditz-10: "#D9BFA4";
+$theme--color--raditz-100: "#B3804A";
+$theme--color--whis-10: "#87BADE";
+$theme--color--whis-100: "#0F75BD";
+$theme--color--frieza-10: "#B6A3E9";
+$theme--color--frieza-100: "#5C33CF";
+$theme--color--nappa-10: "#B8AAA7";
+$theme--color--nappa-100: "#725550";
+$theme--color--piccolo-80: "#19E170";
+$theme--color--piccolo-100: "#0CD463";
+$theme--color--piccolo-120: "#02C556";
+$theme--color--hit-80: "#242D38";
+$theme--color--hit-100: "#1A212A";
+$theme--color--hit-120: "#11161D";
+$theme--color--beerus-100: "#31373F";
+$theme--color--goku-10: "#62676D";
+$theme--color--goku-40: "#4C5159";
+$theme--color--goku-80: "#353C44";
+$theme--color--goku-100: "#232A33";
+$theme--color--gohan-10: "#8C9095";
+$theme--color--gohan-40: "#5F646A";
+$theme--color--gohan-80: "#31373F";
+$theme--color--gohan-100: "#1A212A";
+$theme--color--goten-100: "#FFFFFF";
+$theme--color--bulma-100: "#FFFFFF";
+$theme--color--trunks-100: "#8697A2";
+    
