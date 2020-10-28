@@ -1,13 +1,13 @@
 defmodule Moon.Components.Switch do
   use Moon.StatelessComponent
 
-  prop(on_click, :string)
-  prop(left_label, :string)
-  prop(left_value, :string)
-  prop(right_label, :string)
-  prop(right_value, :string)
-  prop(value, :string)
-  prop(style, :string)
+  property(on_click, :string)
+  property(left_label, :string)
+  property(left_value, :string)
+  property(right_label, :string)
+  property(right_value, :string)
+  property(value, :string)
+  property(style, :string)
 
   def render(assigns) do
     class_name = get_class_name("components-switch-#{assigns.style}")

@@ -2,8 +2,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item.Opponents do
   use Moon.StatelessComponent
   alias Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item.Opponents.Opponent
 
-  prop(a, :string, required: false)
-  prop(b, :string, required: false)
+  property(a, :string, required: false)
+  property(b, :string, required: false)
 
   def render(assigns) do
     ~H"""

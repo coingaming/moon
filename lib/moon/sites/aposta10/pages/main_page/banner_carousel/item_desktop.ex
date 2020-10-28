@@ -5,11 +5,11 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemDesktop do
   alias Moon.Components.Stack
   alias Moon.Components.Inline
 
-  prop(label, :string)
-  prop(datetime, :string)
-  prop(title, :string)
-  prop(desc, :string)
-  prop(image_url, :string)
+  property(label, :string)
+  property(datetime, :string)
+  property(title, :string)
+  property(desc, :string)
+  property(image_url, :string)
 
   def render(assigns) do
     class_name = "site-body-banner-carousel-item-desktop"

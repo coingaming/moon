@@ -6,10 +6,10 @@ defmodule Moon.Components.TextInput do
   alias Surface.Components.Form.TextInput
   alias Moon.Components.Label
 
-  prop(field, :atom)
-  prop(label, :string)
+  property(field, :atom)
+  property(label, :string)
 
-  prop(type, :string,
+  property(type, :string,
     default: "text",
     values: [
       "date",
@@ -26,13 +26,13 @@ defmodule Moon.Components.TextInput do
     ]
   )
 
-  prop(value, :string)
-  prop(placeholder, :string)
-  prop(error, :string)
-  prop(rounded, :boolean)
-  prop(disabled, :boolean)
-  prop(required, :boolean)
-  prop(icon, :any)
+  property(value, :string)
+  property(placeholder, :string)
+  property(error, :string)
+  property(rounded, :boolean)
+  property(disabled, :boolean)
+  property(required, :boolean)
+  property(icon, :any)
 
   def style(%{icon: icon, error: error, rounded: rounded}, %Moon.Theme{} = theme) do
     [

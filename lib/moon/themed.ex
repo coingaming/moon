@@ -2,7 +2,7 @@ defmodule Moon.Themed do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  prop(theme, :any)
+  property(theme, :any)
 
   def render(assigns) do
     ~H"""

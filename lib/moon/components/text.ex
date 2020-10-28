@@ -2,10 +2,10 @@ defmodule Moon.Components.Text do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  prop(size, :integer, required: false, default: 16)
-  prop(is_bold, :boolean, required: false, default: false)
-  prop(color, :string, default: "bulma_100")
-  prop(style, :string)
+  property(size, :integer, required: false, default: 16)
+  property(is_bold, :boolean, required: false, default: false)
+  property(color, :string, default: "bulma_100")
+  property(style, :string)
 
   def render(assigns) do
     class_name =

@@ -2,9 +2,9 @@ defmodule Moon.Assets.Icons.IconCursor do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  prop(color, :string)
-  prop(background_color, :string)
-  prop(font_size, :string)
+  property(color, :string)
+  property(background_color, :string)
+  property(font_size, :string)
 
   def render(assigns) do
     class_name =
@@ -23,7 +23,7 @@ defmodule Moon.Assets.Icons.IconCursor do
         font-size: {{ @font_size }};
         display: inline-block;
         overflow: hidden;
-        
+
       }
     </style>
 

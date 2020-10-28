@@ -3,9 +3,9 @@ defmodule Moon.Assets.Logos do
 
   alias Moon.Assets.Logos
 
-  prop(name, :string)
-  prop(color, :string)
-  prop(background_color, :string)
+  property(name, :string)
+  property(color, :string)
+  property(background_color, :string)
 
   @assets_map %{
     missions: Logos.LogoMissions,

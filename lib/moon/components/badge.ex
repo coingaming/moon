@@ -5,9 +5,9 @@ defmodule Moon.Components.Badge do
 
   import Moon.Utils.Rem
 
-  prop(color, :string)
-  prop(background_color, :string)
-  prop(size, :string, default: "xmall", values: ["xsmall", "small"])
+  property(color, :string)
+  property(background_color, :string)
+  property(size, :string, default: "xmall", values: ["xsmall", "small"])
 
   def style(
         %{color: color, background_color: background_color, size: size},

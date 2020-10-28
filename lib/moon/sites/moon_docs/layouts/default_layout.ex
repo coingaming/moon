@@ -6,7 +6,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
   alias Moon.Sites.MoonDocs.Layouts.Footer
 
   data(theme, :any, default: Moon.Sites.MoonDocs.Themes.Light)
-  prop(user_token, :string)
+  property(user_token, :string)
 
   def render(assigns) do
     ~H"""

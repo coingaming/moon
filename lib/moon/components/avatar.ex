@@ -5,11 +5,11 @@ defmodule Moon.Components.Avatar do
 
   import Moon.Utils.Rem
 
-  prop(image_url, :string)
-  prop(name, :string)
-  prop(color, :string)
-  prop(background_color, :string)
-  prop(size, :string, default: "medium", values: ["xsmall", "small", "medium", "large"])
+  property(image_url, :string)
+  property(name, :string)
+  property(color, :string)
+  property(background_color, :string)
+  property(size, :string, default: "medium", values: ["xsmall", "small", "medium", "large"])
 
   def style(
         %{size: size, image_url: image_url, color: color, background_color: background_color},

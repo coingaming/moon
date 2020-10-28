@@ -1,7 +1,7 @@
 defmodule Moon.Components.C do
   use Moon.StatelessComponent
 
-  prop(columns, :integer, default: 1)
+  property(columns, :integer, default: 1)
 
   def render(assigns) do
     class_name = get_class_name("components-c-#{assigns.columns}")

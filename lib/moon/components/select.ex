@@ -5,19 +5,19 @@ defmodule Moon.Components.Select do
 
   alias Moon.Components.Label
 
-  prop(field, :atom)
-  prop(label, :string)
-  prop(options, :any, default: [])
-  prop(value, :any)
-  prop(prompt, :string)
-  prop(error, :string)
-  prop(rounded, :boolean)
-  prop(disabled, :boolean)
-  prop(required, :boolean)
-  prop(flex, :boolean)
-  prop(input_grow, :boolean)
-  prop(icon, :string)
-  prop(full_width, :boolean)
+  property(field, :atom)
+  property(label, :string)
+  property(options, :any, default: [])
+  property(value, :any)
+  property(prompt, :string)
+  property(error, :string)
+  property(rounded, :boolean)
+  property(disabled, :boolean)
+  property(required, :boolean)
+  property(flex, :boolean)
+  property(input_grow, :boolean)
+  property(icon, :string)
+  property(full_width, :boolean)
 
   def style(%{full_width: _full_width, icon: icon, error: error}, %Moon.Theme{} = theme) do
     Moon.Components.TextInput.style(%{icon: icon, error: error, rounded: false}, theme) ++

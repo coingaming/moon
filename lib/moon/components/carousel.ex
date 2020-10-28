@@ -1,7 +1,7 @@
 defmodule Moon.Components.Carousel do
   use Moon.StatelessComponent
 
-  prop(style, :string, default: "")
+  property(style, :string, default: "")
 
   def render(assigns) do
     class_name = get_class_name("components-carousel-#{assigns.style}")

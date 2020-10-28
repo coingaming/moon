@@ -3,9 +3,9 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Guides.Item do
   alias Moon.Components.Button
   alias Moon.Components.Text
 
-  prop(label, :string)
-  prop(title, :string)
-  prop(image_url, :string)
+  property(label, :string)
+  property(title, :string)
+  property(image_url, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-body-guide-item")

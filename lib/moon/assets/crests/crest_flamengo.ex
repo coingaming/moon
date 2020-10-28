@@ -2,11 +2,11 @@ defmodule Moon.Assets.Crests.CrestFlamengo do
   use Moon.StatelessComponent
   use Moon.Components.Context
 
-  prop(color, :string)
-  prop(height, :string)
-  prop(width, :string)
-  prop(font_size, :string)
-  prop(vertical_align, :string)
+  property(color, :string)
+  property(height, :string)
+  property(width, :string)
+  property(font_size, :string)
+  property(vertical_align, :string)
 
   def render(assigns) do
     class_name =
@@ -22,7 +22,7 @@ defmodule Moon.Assets.Crests.CrestFlamengo do
       .{{ class_name }} {
         vertical-align: middle;
         width: 1em;
-        
+
         color: {{ get_color(@color, theme) }};
         height: {{ @height }};
         width: {{ @width }};

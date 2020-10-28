@@ -3,11 +3,11 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.Item do
   alias Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemMobile
   alias Moon.Sites.Aposta10.Pages.MainPage.BannerCarousel.ItemDesktop
 
-  prop(label, :string)
-  prop(datetime, :string)
-  prop(title, :string)
-  prop(desc, :string)
-  prop(image_url, :string)
+  property(label, :string)
+  property(datetime, :string)
+  property(title, :string)
+  property(desc, :string)
+  property(image_url, :string)
 
   def render(assigns) do
     ~H"""

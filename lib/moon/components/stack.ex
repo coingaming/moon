@@ -1,7 +1,7 @@
 defmodule Moon.Components.Stack do
   use Moon.StatelessComponent
 
-  prop(style, :string, required: false, default: "")
+  property(style, :string, required: false, default: "")
 
   def render(assigns) do
     class_name = get_class_name("moon-components-stack-#{assigns.style}")

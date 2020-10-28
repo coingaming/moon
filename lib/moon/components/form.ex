@@ -1,10 +1,10 @@
 defmodule Moon.Components.Form do
   use Moon.StatelessComponent
 
-  prop(for, :any)
-  prop(change, :string)
-  prop(submit, :string)
-  prop(autocomplete, :string, default: "on", values: ["on", "off"])
+  property(for, :any)
+  property(change, :string)
+  property(submit, :string)
+  property(autocomplete, :string, default: "on", values: ["on", "off"])
 
   def render(assigns) do
     ~H"""

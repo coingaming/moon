@@ -3,7 +3,7 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.Tips.Item.Opponents.Opponent 
   alias Moon.Components.Text
   alias Moon.Components.Inline
 
-  prop(name, :string, required: true)
+  property(name, :string, required: true)
 
   def render(assigns) do
     class_name = "site-body-picks-tips-item-opponents-opponent"

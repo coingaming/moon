@@ -5,8 +5,8 @@ defmodule Moon.Components.Label.LabelFlex do
   import Moon.Utils.Mq
   import Moon.Utils.Rem
 
-  prop(flex, :boolean)
-  prop(input_grow, :integer)
+  property(flex, :boolean)
+  property(input_grow, :integer)
 
   def style(%{flex: flex}, %Moon.Theme{breakpoint: %Moon.Theme.Breakpoint{} = breakpoint}) do
     flex &&
@@ -40,8 +40,8 @@ defmodule Moon.Components.Label.LabelContent do
   import Moon.Utils.Rem
   import Moon.Utils.Mq
 
-  prop(disabled, :boolean)
-  prop(flex, :boolean)
+  property(disabled, :boolean)
+  property(flex, :boolean)
 
   def style(%{disabled: disabled, flex: flex}, theme) do
     [
@@ -91,11 +91,11 @@ defmodule Moon.Components.Label do
 
   slot(default)
 
-  prop(text, :string)
-  prop(disabled, :boolean)
-  prop(flex, :boolean)
-  prop(inline, :boolean)
-  prop(input_grow, :integer, default: 1)
+  property(text, :string)
+  property(disabled, :boolean)
+  property(flex, :boolean)
+  property(inline, :boolean)
+  property(input_grow, :integer, default: 1)
 
   def render(assigns) do
     ~H"""

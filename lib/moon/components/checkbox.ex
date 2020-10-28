@@ -4,34 +4,34 @@ defmodule Moon.Components.Checkbox do
 
   import Moon.Utils.Rem
 
-  prop(href, :string)
+  property(href, :string)
 
-  prop(variant, :string,
+  property(variant, :string,
     default: "default",
     values: ["primary", "secondary", "tertiary", "highlight", "default"]
   )
 
-  prop(on_click, :string)
+  property(on_click, :string)
 
-  prop(size, :string, default: "small", values: ["xsmall", "small", "medium", "large"])
-  prop(mock_state, :string, values: ["active", "focus", "hover"])
-  prop(full_width, :boolean)
-  prop(progress, :boolean)
-  prop(oops, :boolean)
-  prop(success, :boolean)
-  prop(pulse, :boolean)
-  prop(disabled, :boolean)
+  property(size, :string, default: "small", values: ["xsmall", "small", "medium", "large"])
+  property(mock_state, :string, values: ["active", "focus", "hover"])
+  property(full_width, :boolean)
+  property(progress, :boolean)
+  property(oops, :boolean)
+  property(success, :boolean)
+  property(pulse, :boolean)
+  property(disabled, :boolean)
 
-  prop(to, :string)
-  prop(as, :string)
-  prop(active_class_name, :string)
-  prop(active_style, :string)
-  prop(exact, :boolean)
-  prop(string, :boolean)
-  prop(is_active, :boolean)
-  prop(location, :string)
+  property(to, :string)
+  property(as, :string)
+  property(active_class_name, :string)
+  property(active_style, :string)
+  property(exact, :boolean)
+  property(string, :boolean)
+  property(is_active, :boolean)
+  property(location, :string)
 
-  prop(style, :string)
+  property(style, :string)
 
   def style(assigns, %Moon.Theme{} = theme) do
     ~H"""

@@ -3,8 +3,8 @@ defmodule Moon.Sites.Aposta10.Pages.MainPage.Picks.DatePicker.Item do
   use Moon.Components.Context
   alias Moon.Components.Text
 
-  prop(day, :integer, required: true)
-  prop(active, :boolean, required: false, default: false)
+  property(day, :integer, required: true)
+  property(active, :boolean, required: false, default: false)
 
   def render(assigns) do
     class_name = get_class_name("site-body-picks-date-picker-item-#{assigns.active}")

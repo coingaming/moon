@@ -4,9 +4,9 @@ defmodule Moon.Sites.Aposta10.Layouts.Header.Links.Link do
   alias Moon.Components.Link
   alias Moon.Assets.Icons
 
-  prop(text, :string)
-  prop(color, :string)
-  prop(icon, :string)
+  property(text, :string)
+  property(color, :string)
+  property(icon, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-header-links-link-#{assigns.color}")

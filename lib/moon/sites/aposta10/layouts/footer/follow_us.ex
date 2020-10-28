@@ -3,7 +3,7 @@ defmodule Moon.Sites.Aposta10.Layouts.Footer.FollowUs do
   alias Moon.Sites.Aposta10.Layouts.Footer.FollowUs.Link
   alias Moon.Components.Carousel
 
-  prop(style, :string)
+  property(style, :string)
 
   def render(assigns) do
     class_name = get_class_name("site-footer-follow-us")

@@ -2,7 +2,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.Header.Menu.Link do
   use Moon.StatelessComponent
   alias Moon.Components.Text
 
-  prop(to, :string)
+  property(to, :string)
 
   def render(assigns) do
     class_name = get_class_name("Moon.Sites.MoonDocs.Layouts.Header.Menu.Link")
