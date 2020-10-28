@@ -29,6 +29,7 @@ defmodule Moon.Sites.MoonDocs.Layouts.DefaultLayout do
       <body>
         <Header />
         <Content>
+          <slot name="fuck">fuck</slot>
           <slot />
         </Content>
         <Footer />

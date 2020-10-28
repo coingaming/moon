@@ -6,6 +6,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.CheckboxPage do
   alias Moon.Themed
   alias Moon.Components.Stack
   alias Moon.Components.Checkbox
+  alias Moon.Components.Link
   alias Moon.Components.CodePreview
 
   data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
@@ -23,7 +24,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.CheckboxPage do
 
         <Stack>
           <Checkbox>
-            I confirm that I am at least 18 years of age, and accept the <Link href="#">Terms and Conditions</Link>.
+            I confirm that I am at least 18 years of age, and accept the <Link to="#">Terms and Conditions</Link>.
           </Checkbox>
 
           <Checkbox>

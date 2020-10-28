@@ -151,9 +151,10 @@ defmodule Moon.Components.Button do
   def render(assigns) do
     class_name =
       get_class_name(
-        "components-button-#{assigns.variant}-#{assigns.size}-#{assigns.style}-#{
-          assigns.full_width
-        }"
+        """
+        components-button-
+        #{assigns.variant}-#{assigns.size}-#{assigns.style}-#{assigns.full_width}
+        """
       )
 
     ~H"""
@@ -161,7 +162,7 @@ defmodule Moon.Components.Button do
       <style>
         .{{ class_name }} {
           display: inline-block;
-          {{ @full_width && "width: 100%;" || "" }}
+          width: {{ @full_width && "100%" || "auto" }};
           min-height: {{ rem(24) }};
           font-family: inherit;
           font-weight: {{ theme.font_weight.semibold }};
