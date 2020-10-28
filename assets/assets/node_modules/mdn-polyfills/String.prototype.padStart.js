@@ -1,0 +1,1 @@
+String.prototype.padStart||(String.prototype.padStart=function(t,n){return t>>=0,n=String(n||" "),this.length>t?String(this):((t-=this.length)>n.length&&(n+=n.repeat(t/n.length)),n.slice(0,t)+String(this))});

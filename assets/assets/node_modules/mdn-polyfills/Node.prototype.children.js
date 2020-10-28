@@ -1,0 +1,1 @@
+!function(){function e(){for(var e,o=0,t=this.childNodes,n=[];e=t[o++];)1===e.nodeType&&n.push(e);return n}var o;(o=window.Node||window.Element)&&o.prototype&&null==o.prototype.children&&Object.defineProperty(o.prototype,"children",{get:e})}();

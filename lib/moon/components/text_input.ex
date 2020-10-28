@@ -34,7 +34,6 @@ defmodule Moon.Components.TextInput do
   prop(required, :boolean)
   prop(icon, :any)
 
-
   def render(assigns) do
     ~H"""
     <Context get={{ theme: theme }}>

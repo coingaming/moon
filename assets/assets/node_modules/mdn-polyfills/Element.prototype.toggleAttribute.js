@@ -1,0 +1,1 @@
+window.Element&&!Element.prototype.toggleAttribute&&(Element.prototype.toggleAttribute=function(t,e){var r=!!e,i=2===arguments.length&&!e;return null!==this.getAttribute(t)?!!r||(this.removeAttribute(t),!1):!i&&(this.setAttribute(t,""),!0)});

@@ -1,0 +1,1 @@
+!function(){function e(){for(var e,t=this.childNodes,n=0;e=t[n++];)if(1===e.nodeType)return e;return null}var t;(t=window.Node||window.Element)&&t.prototype&&null==t.prototype.firstElementChild&&Object.defineProperty(t.prototype,"firstElementChild",{get:e})}();

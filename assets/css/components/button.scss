@@ -11,7 +11,7 @@
   border: $theme--border;
   border-color: transparent;
   border-radius: rem($theme--radius--largest);
-  transition: background-color $theme--transition-duration--default+s;
+  transition: background-color $theme--transition-duration--default + s;
   white-space: nowrap;
 
   &:active,

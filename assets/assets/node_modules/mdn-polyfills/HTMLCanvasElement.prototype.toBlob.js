@@ -1,0 +1,1 @@
+HTMLCanvasElement.prototype.toBlob||(HTMLCanvasElement.prototype.toBlob=function(a,r,t){var i=this.toDataURL(r,t).split(",")[1];setTimeout(function(){for(var t=atob(i),o=t.length,e=new Uint8Array(o),n=0;n<o;n++)e[n]=t.charCodeAt(n);a(new Blob([e],{type:r||"image/png"}))})});

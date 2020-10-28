@@ -40,7 +40,7 @@ const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s));
 const writeTheme = (jsTheme, exThemePath) => {
   const exObj: any = jsKeysToElixirKeys(jsTheme);
 
-  const s = x => x;
+  const s = JSON.stringify;
 
   // fs.writeFileSync(
   //   `${exThemePath}.json`,

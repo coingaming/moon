@@ -1,0 +1,1 @@
+!function(){var r,o;"function"!=typeof Object.create&&(Object.create=(o=function(){},function(t,e){if(t!==Object(t))throw TypeError("Argument must be an object, or null");o.prototype=t||{};var n=new o;return o.prototype=null,e!==r&&Object.defineProperties(n,e),null===t&&(n.__proto__=null),n}))}();
