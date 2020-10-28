@@ -1,5 +1,5 @@
-@import "../themes/theme.scss";
-@import "../utils/rem.scss";
+@import '../themes/theme.scss';
+@import '../utils/rem.scss';
 
 .moon-button {
   display: inline-block;
@@ -11,12 +11,15 @@
   border: $theme--border;
   border-color: transparent;
   border-radius: rem($theme--radius--largest);
-  transition: background-color $theme--transition-duration--default + s;
+  transition: background-color $theme--transition-duration--default+s;
   white-space: nowrap;
 
   &:active,
-  &[mock-state='active'] {
+  &[mock-state='active'],
+  &:focus,
+  &[mock-state='focus'] {
     outline: none;
+    -moz-outline: none;
   }
 
   &[data-full-width='true'] {
@@ -104,28 +107,27 @@
     font-size: rem(12);
     line-height: rem(16);
     height: rem(32);
-    padding: '0 ' + rem(16);
+    padding: 0 rem(16);
   }
 
   &[data-size='small'] {
     font-size: rem(14);
     line-height: rem(20);
     height: rem(40);
-    padding: '0 ' + rem(20);
+    padding: 0 rem(20);
   }
 
   &[data-size='medium'] {
     font-size: rem(16);
     line-height: rem(24);
     height: rem(48);
-    padding: '0 ' + rem(24);
+    padding: 0 rem(24);
   }
 
   &[data-size='large'] {
     font-size: rem(18);
     line-height: rem(24);
     height: rem(56);
-    padding: '0 ' + rem(32);
+    padding: 0 rem(32);
   }
-
 }

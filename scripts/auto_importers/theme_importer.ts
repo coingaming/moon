@@ -37,114 +37,91 @@ const toCamel = (s) => {
 
 const toCapitalisedCamel = (s) => capitalizeFirstLetter(toCamel(s));
 
-const writeTheme = (jsTheme, exThemePath, moduleName, moduleId) => {
+const writeTheme = (jsTheme, exThemePath) => {
   const exObj: any = jsKeysToElixirKeys(jsTheme);
 
-  const s = JSON.stringify;
+  const s = x => x;
+
+  // fs.writeFileSync(
+  //   `${exThemePath}.json`,
+  //   JSON.stringify(exObj, null, 2).replace(/\\\"/g, "'")
+  // );
 
   fs.writeFileSync(
-    `${exThemePath}.json`,
-    JSON.stringify(exObj, null, 2).replace(/\\\"/g, "'")
-  );
-
-  fs.writeFileSync(
-    `${exThemePath}.ex`,
+    `${exThemePath}.scss`,
     `
+$theme--base--space: ${s(exObj.base.space)};
+$theme--base--font-size: ${s(exObj.base.font_size)};
+$theme--base--line-height: ${s(exObj.base.line_height)};
 
-defmodule ${moduleName} do 
-  def get_config do 
-    %Moon.Theme{
-      id: ${s(moduleId)},
-      base: %Moon.Theme.Base{
-        space: ${s(exObj.base.space)},
-        font_size: ${s(exObj.base.font_size)},
-        line_height: ${s(exObj.base.line_height)}
-      },
-      border_style: ${s(exObj.border_style)},
-      border_width: ${s(exObj.border_width)},
-      border: ${s(exObj.border)},
-      box_shadow: ${s(exObj.box_shadow)},
-      breakpoint: %Moon.Theme.Breakpoint{
-        small: ${s(exObj.breakpoint.small)},
-        medium: ${s(exObj.breakpoint.medium)},
-        large: ${s(exObj.breakpoint.large)},
-        xlarge: ${s(exObj.breakpoint.xlarge)}
-      },
-      font_face: %Moon.Theme.FontFace{
-        regular: %Moon.Theme.FontFace.Normal{
-          font_family: ${s(exObj.font_face[0]['@font-face'].font_family)},
-          font_style: ${s(exObj.font_face[0]['@font-face'].font_style)},
-          font_display: ${s(exObj.font_face[0]['@font-face'].font_display)},
-          unicode_range: ${s(exObj.font_face[0]['@font-face'].unicode_range)},
-          font_weight: ${s(exObj.font_face[0]['@font-face'].font_weight)},
-          src: ${s(exObj.font_face[0]['@font-face'].src)}
-        },
-        semibold: %Moon.Theme.FontFace.Semibold{
-          font_family: ${s(exObj.font_face[1]['@font-face'].font_family)},
-          font_style: ${s(exObj.font_face[1]['@font-face'].font_style)},
-          font_display: ${s(exObj.font_face[1]['@font-face'].font_display)},
-          unicode_range: ${s(exObj.font_face[1]['@font-face'].unicode_range)},
-          font_weight: ${s(exObj.font_face[1]['@font-face'].font_weight)},
-          src: ${s(exObj.font_face[1]['@font-face'].src)}
-        }
-      },
-      font_family: ${s(exObj.font_family)},
-      font_size: ${s(exObj.font_size.body)},
-      font_weight: %Moon.Theme.FontWeight{
-        normal: ${s(exObj.font_weight.normal)},
-        semibold: ${s(exObj.font_weight.semibold)}
-      },
-      max_width: %Moon.Theme.MaxWidth{
-        default: ${s(exObj.max_width.default)},
-        large: ${s(exObj.max_width.large)}
-      },
-      opacity: %Moon.Theme.Opacity{
-        disabled: ${s(exObj.opacity.disabled)}
-      },
-      radius: %Moon.Theme.Radius{
-        small: ${s(exObj.radius.small)},
-        default: ${s(exObj.radius.default)},
-        largest: ${s(exObj.radius.largest)}
-      },
-      space: %Moon.Theme.Space{
-        xsmall: ${s(exObj.space.xsmall)},
-        small: ${s(exObj.space.small)},
-        default: ${s(exObj.space.default)},
-        medium: ${s(exObj.space.medium)},
-        large: ${s(exObj.space.large)},
-        xlarge: ${s(exObj.space.xlarge)}
-      },
-      transition_duration: %Moon.Theme.TransitionDuration{
-        slow: ${s(exObj.transition_duration.slow)},
-        default: ${s(exObj.transition_duration.default)}
-      },
-      z_index: %Moon.Theme.ZIndex{
-        carousel_control: ${s(exObj.z_index.carousel_control)},
-        dialog: ${s(exObj.z_index.carousel_control)},
-        toggle: ${s(exObj.z_index.toggle)}
-      },
-      brand: ${s(exObj.brand)},
-      color: %Moon.Theme.Color{
-        text: ${s(exObj.color.text)},
-    background: ${s(exObj.color.background)},
+$theme--border-style: ${s(exObj.border_style)};
+$theme--border_width: ${s(exObj.border_width)};
+$theme--border: ${s(exObj.border)};
+$theme--box-shadow: ${s(exObj.box_shadow)};
+
+$theme--breakpoint--small: ${s(exObj.breakpoint.small)};
+$theme--breakpoint--medium: ${s(exObj.breakpoint.medium)};
+$theme--breakpoint--large: ${s(exObj.breakpoint.large)};
+$theme--breakpoint--xlarge: ${s(exObj.breakpoint.xlarge)};
+
+$theme--font-face--regular--font-family: ${s(exObj.font_face[0]['@font-face'].font_family)};
+$theme--font-face--regular--font-style: ${s(exObj.font_face[0]['@font-face'].font_style)};
+$theme--font-face--regular--font-display: ${s(exObj.font_face[0]['@font-face'].font_display)};
+$theme--font-face--regular--unicode-range: ${s(exObj.font_face[0]['@font-face'].unicode_range)};
+$theme--font-face--regular--font-weight: ${s(exObj.font_face[0]['@font-face'].font_weight)};
+$theme--font-face--regular--src: ${s(exObj.font_face[0]['@font-face'].src)};
+
+$theme--font-face--semibold--font-family: ${s(exObj.font_face[1]['@font-face'].font_family)};
+$theme--font-face--semibold--font-style: ${s(exObj.font_face[1]['@font-face'].font_style)};
+$theme--font-face--semibold--font-display: ${s(exObj.font_face[1]['@font-face'].font_display)};
+$theme--font-face--semibold--unicode-range: ${s(exObj.font_face[1]['@font-face'].unicode_range)};
+$theme--font-face--semibold--font-weight: ${s(exObj.font_face[1]['@font-face'].font_weight)};
+$theme--font-face--semibold--src: ${s(exObj.font_face[1]['@font-face'].src)};
+        
+$theme--font-family: ${s(exObj.font_family)};
+$theme--font-size: ${s(exObj.font_size.body)};
+$theme--font-weight--normal: ${s(exObj.font_weight.normal)};
+$theme--font-weight--semibold: ${s(exObj.font_weight.semibold)};
+
+$theme--max-width--default: ${s(exObj.max_width.default)};
+$theme--max-width--large: ${s(exObj.max_width.large)};
+
+$theme--opacity--disabled: ${s(exObj.opacity.disabled)};
+
+$theme--radius--small: ${s(exObj.radius.small)};
+$theme--radius--default: ${s(exObj.radius.default)};
+$theme--radius--largest: ${s(exObj.radius.largest)};
+
+$theme--space--xsmall: ${s(exObj.space.xsmall)};
+$theme--space--small: ${s(exObj.space.small)};
+$theme--space--default: ${s(exObj.space.default)};
+$theme--space--medium: ${s(exObj.space.medium)};
+$theme--space--large: ${s(exObj.space.large)};
+$theme--space--xlarge: ${s(exObj.space.xlarge)};
+
+$theme--transition-duration--slow: ${s(exObj.transition_duration.slow)};
+$theme--transition-duration--default: ${s(exObj.transition_duration.default)};
+
+$theme--z-index--carousel-control: ${s(exObj.z_index.carousel_control)};
+$theme--z-index--dialog: ${s(exObj.z_index.carousel_control)};
+$theme--z-index--toggle: ${s(exObj.z_index.toggle)};
+
+$theme--color--text: ${s(exObj.color.text)};
+$theme--color--background: ${s(exObj.color.background)};
+        
 ${Object.keys(exObj.color)
   .filter((x) => typeof exObj.color[x] === 'object')
   .map((colorName) =>
     Object.keys(exObj.color[colorName])
       .map(
         (colorShade) =>
-          `    ${colorName}_${colorShade}: ${s(
+          `$theme--color--${colorName}-${colorShade}: ${s(
             exObj.color[colorName][colorShade]
-          )}`
+          )};`
       )
-      .join(',    \n')
+      .join('\n')
   )
-  .join(',    \n')}
-      },
-      color_scheme: ${s(exObj.color_scheme)}
-    }
-  end
-end
+  .join('\n')}
     `
   );
 };
@@ -152,38 +129,26 @@ end
 // these are themes that use this
 writeTheme(
   aposta10Dark,
-  '../../lib/moon/themes/aposta10_dark',
-  'Moon.Themes.Aposta10Dark',
-  'aposta10-dark'
+  '../../assets/css/themes/aposta10_dark'
 );
 writeTheme(
   aposta10Light,
-  '../../lib/moon/themes/aposta10_light',
-  'Moon.Themes.Aposta10Light',
-  'aposta10-light'
+  '../../assets/css/themes/aposta10_light'
 );
 writeTheme(
   sportsbetDark,
-  '../../lib/moon/themes/sportsbet_dark',
-  'Moon.Themes.SportsbetDark',
-  'sportsbet-dark'
+  '../../assets/css/themes/sportsbet_dark'
 );
 writeTheme(
   sportsbetLight,
-  '../../lib/moon/themes/sportsbet_light',
-  'Moon.Themes.SportsbetLight',
-  'sportsbet-light'
+  '../../assets/css/themes/sportsbet_light'
 );
 
 writeTheme(
   missionsToolDark,
-  '../../lib/moon/themes/missions_dark',
-  'Moon.Themes.MissionsDark',
-  'missions-dark'
+  '../../assets/css/themes/missions_dark'
 );
 writeTheme(
   missionsToolLight,
-  '../../lib/moon/themes/missions_light',
-  'Moon.Themes.MissionsLight',
-  'missions-light'
+  '../../assets/css/themes/missions_light'
 );

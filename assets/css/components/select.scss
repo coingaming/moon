@@ -1,0 +1,5 @@
+@import "./text_input.scss";
+
+.moon-select {
+  @extend .moon-text-input;
+}

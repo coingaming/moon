@@ -3,7 +3,6 @@ defmodule Moon.Components.Checkbox do
 
   import Moon.Utils.Rem
 
-
   def style(
         %{color: color, background_color: background_color, size: size},
         %Moon.Theme{} = theme

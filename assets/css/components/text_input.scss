@@ -4,16 +4,16 @@
 .moon-text-input {
   width: 100%;
   max-width: 100%;
-  padding: rem($theme--space--small) + ' ' + rem($theme--space--default);
+  padding: rem($theme--space--small) rem($theme--space--default);
   appearance: none;
   font: inherit;
   font-size: rem(16);
   line-height: 1.5;
   color: $theme--color--bulma-100;
   background-color: $theme--color--gohan-100;
-  border: $theme--border-width + 'px solid ' + $theme--color--beerus-100;
+  border: $theme--border-width+px solid+$theme--color--beerus-100;
   border-radius: rem(12);
-  transition: 'border-color ' + $theme--transition-duration--default + 's ease';
+  transition: border-color $theme--transition-duration--default+s ease;
 
   &::placeholder {
     color: $theme--color--trunks-100;

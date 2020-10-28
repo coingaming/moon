@@ -28,7 +28,10 @@ defmodule MoonWeb.Router do
     live "/components/badge", Moon.Sites.MoonDocs.Pages.Components.BadgePage
     live "/components/button", Moon.Sites.MoonDocs.Pages.Components.ButtonPage
     live "/components/checkbox", Moon.Sites.MoonDocs.Pages.Components.CheckboxPage
-    live "/components/checkbox-multiselect", Moon.Sites.MoonDocs.Pages.Components.CheckboxMultiselectPage
+
+    live "/components/checkbox-multiselect",
+         Moon.Sites.MoonDocs.Pages.Components.CheckboxMultiselectPage
+
     live "/components/inline", Moon.Sites.MoonDocs.Pages.Components.InlinePage
     live "/components/link", Moon.Sites.MoonDocs.Pages.Components.LinkPage
     live "/components/select", Moon.Sites.MoonDocs.Pages.Components.SelectPage

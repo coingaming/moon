@@ -13,9 +13,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconAlertCircle
   alias Icons.IconAlignLeft
   alias Icons.IconAllSports
-  alias Icons.IconArrowDiagonalBottomLeft
-  alias Icons.IconArrowDiagonalTopRight
+  alias Icons.IconArrowDiagonalDownLeft
+  alias Icons.IconArrowDiagonalUpRight
+  alias Icons.IconArrowDiagonals
   alias Icons.IconArrowDown
+  alias Icons.IconArrowLDown
+  alias Icons.IconArrowLUp
   alias Icons.IconArrowLeftRight
   alias Icons.IconArrowLeft
   alias Icons.IconArrowRight
@@ -23,6 +26,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconArrowUpDown
   alias Icons.IconArrowUp
   alias Icons.IconAsianView
+  alias Icons.IconAttache
   alias Icons.IconAward
   alias Icons.IconBannerInfo
   alias Icons.IconBell
@@ -31,6 +35,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconCalendarEmpty
   alias Icons.IconCalendar
   alias Icons.IconCard
+  alias Icons.IconCase
   alias Icons.IconCashOut
   alias Icons.IconCasino
   alias Icons.IconChartArea
@@ -53,7 +58,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconCloseSmall
   alias Icons.IconClose
   alias Icons.IconCode
+  alias Icons.IconCollapse
   alias Icons.IconCopy
+  alias Icons.IconCredit
   alias Icons.IconCrypto
   alias Icons.IconCurrencyARS
   alias Icons.IconCurrencyBDT
@@ -92,6 +99,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconCursor
   alias Icons.IconData
   alias Icons.IconDelete
+  alias Icons.IconDesktop
+  alias Icons.IconDetails
+  alias Icons.IconDouble
   alias Icons.IconDownload
   alias Icons.IconDuotoneArrows
   alias Icons.IconDuotoneChat
@@ -120,12 +130,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconFreebet
   alias Icons.IconGamepad
   alias Icons.IconGift
+  alias Icons.IconGlasses
   alias Icons.IconGlobe
   alias Icons.IconGoogle
   alias Icons.IconHamburger
   alias Icons.IconHelp
   alias Icons.IconHistory
   alias Icons.IconHome
+  alias Icons.IconHub88
   alias Icons.IconHyperlink
   alias Icons.IconInPlay
   alias Icons.IconInfoCircle
@@ -133,6 +145,8 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconInstagram
   alias Icons.IconLeftArrowCurveRight
   alias Icons.IconLifeRing
+  alias Icons.IconLightbulb
+  alias Icons.IconLimit
   alias Icons.IconLine
   alias Icons.IconLink
   alias Icons.IconListNumbered
@@ -144,8 +158,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconLoyalty0
   alias Icons.IconMail
   alias Icons.IconMenuHome
+  alias Icons.IconMenu
   alias Icons.IconMinus
+  alias Icons.IconMobile
+  alias Icons.IconMoney
+  alias Icons.IconMoneybag
   alias Icons.IconMoon
+  alias Icons.IconMore
   alias Icons.IconNews
   alias Icons.IconNotificationUnread
   alias Icons.IconNotification
@@ -161,6 +180,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconProfile
   alias Icons.IconPromotions
   alias Icons.IconRefresh
+  alias Icons.IconRow
   alias Icons.IconSbShield
   alias Icons.IconSearch
   alias Icons.IconSettings
@@ -222,12 +242,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
   alias Icons.IconUsers
   alias Icons.IconVirtualSports
   alias Icons.IconVkontakte
+  alias Icons.IconVolatility
   alias Icons.IconWalletRounded
   alias Icons.IconWallet
   alias Icons.IconWand
   alias Icons.IconWarning
   alias Icons.IconWhatsapp
   alias Icons.IconYoutube
+  alias Icons.IconZoom
   alias Icons.IconError
   alias Icons.IconGeneralInfo
   alias Icons.IconGoogleAuth
@@ -248,9 +270,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconAlertCircle color="piccolo_100" background_color="gohan_100" />
             <IconAlignLeft color="piccolo_100" background_color="gohan_100" />
             <IconAllSports color="piccolo_100" background_color="gohan_100" />
-            <IconArrowDiagonalBottomLeft color="piccolo_100" background_color="gohan_100" />
-            <IconArrowDiagonalTopRight color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonalDownLeft color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonalUpRight color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonals color="piccolo_100" background_color="gohan_100" />
             <IconArrowDown color="piccolo_100" background_color="gohan_100" />
+            <IconArrowLDown color="piccolo_100" background_color="gohan_100" />
+            <IconArrowLUp color="piccolo_100" background_color="gohan_100" />
             <IconArrowLeftRight color="piccolo_100" background_color="gohan_100" />
             <IconArrowLeft color="piccolo_100" background_color="gohan_100" />
             <IconArrowRight color="piccolo_100" background_color="gohan_100" />
@@ -258,6 +283,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconArrowUpDown color="piccolo_100" background_color="gohan_100" />
             <IconArrowUp color="piccolo_100" background_color="gohan_100" />
             <IconAsianView color="piccolo_100" background_color="gohan_100" />
+            <IconAttache color="piccolo_100" background_color="gohan_100" />
             <IconAward color="piccolo_100" background_color="gohan_100" />
             <IconBannerInfo color="piccolo_100" background_color="gohan_100" />
             <IconBell color="piccolo_100" background_color="gohan_100" />
@@ -266,6 +292,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCalendarEmpty color="piccolo_100" background_color="gohan_100" />
             <IconCalendar color="piccolo_100" background_color="gohan_100" />
             <IconCard color="piccolo_100" background_color="gohan_100" />
+            <IconCase color="piccolo_100" background_color="gohan_100" />
             <IconCashOut color="piccolo_100" background_color="gohan_100" />
             <IconCasino color="piccolo_100" background_color="gohan_100" />
             <IconChartArea color="piccolo_100" background_color="gohan_100" />
@@ -288,7 +315,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCloseSmall color="piccolo_100" background_color="gohan_100" />
             <IconClose color="piccolo_100" background_color="gohan_100" />
             <IconCode color="piccolo_100" background_color="gohan_100" />
+            <IconCollapse color="piccolo_100" background_color="gohan_100" />
             <IconCopy color="piccolo_100" background_color="gohan_100" />
+            <IconCredit color="piccolo_100" background_color="gohan_100" />
             <IconCrypto color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
@@ -327,6 +356,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCursor color="piccolo_100" background_color="gohan_100" />
             <IconData color="piccolo_100" background_color="gohan_100" />
             <IconDelete color="piccolo_100" background_color="gohan_100" />
+            <IconDesktop color="piccolo_100" background_color="gohan_100" />
+            <IconDetails color="piccolo_100" background_color="gohan_100" />
+            <IconDouble color="piccolo_100" background_color="gohan_100" />
             <IconDownload color="piccolo_100" background_color="gohan_100" />
             <IconDuotoneArrows color="piccolo_100" background_color="gohan_100" />
             <IconDuotoneChat color="piccolo_100" background_color="gohan_100" />
@@ -355,12 +387,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconFreebet color="piccolo_100" background_color="gohan_100" />
             <IconGamepad color="piccolo_100" background_color="gohan_100" />
             <IconGift color="piccolo_100" background_color="gohan_100" />
+            <IconGlasses color="piccolo_100" background_color="gohan_100" />
             <IconGlobe color="piccolo_100" background_color="gohan_100" />
             <IconGoogle color="piccolo_100" background_color="gohan_100" />
             <IconHamburger color="piccolo_100" background_color="gohan_100" />
             <IconHelp color="piccolo_100" background_color="gohan_100" />
             <IconHistory color="piccolo_100" background_color="gohan_100" />
             <IconHome color="piccolo_100" background_color="gohan_100" />
+            <IconHub88 color="piccolo_100" background_color="gohan_100" />
             <IconHyperlink color="piccolo_100" background_color="gohan_100" />
             <IconInPlay color="piccolo_100" background_color="gohan_100" />
             <IconInfoCircle color="piccolo_100" background_color="gohan_100" />
@@ -368,6 +402,8 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconInstagram color="piccolo_100" background_color="gohan_100" />
             <IconLeftArrowCurveRight color="piccolo_100" background_color="gohan_100" />
             <IconLifeRing color="piccolo_100" background_color="gohan_100" />
+            <IconLightbulb color="piccolo_100" background_color="gohan_100" />
+            <IconLimit color="piccolo_100" background_color="gohan_100" />
             <IconLine color="piccolo_100" background_color="gohan_100" />
             <IconLink color="piccolo_100" background_color="gohan_100" />
             <IconListNumbered color="piccolo_100" background_color="gohan_100" />
@@ -379,8 +415,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconLoyalty0 color="piccolo_100" background_color="gohan_100" />
             <IconMail color="piccolo_100" background_color="gohan_100" />
             <IconMenuHome color="piccolo_100" background_color="gohan_100" />
+            <IconMenu color="piccolo_100" background_color="gohan_100" />
             <IconMinus color="piccolo_100" background_color="gohan_100" />
+            <IconMobile color="piccolo_100" background_color="gohan_100" />
+            <IconMoney color="piccolo_100" background_color="gohan_100" />
+            <IconMoneybag color="piccolo_100" background_color="gohan_100" />
             <IconMoon color="piccolo_100" background_color="gohan_100" />
+            <IconMore color="piccolo_100" background_color="gohan_100" />
             <IconNews color="piccolo_100" background_color="gohan_100" />
             <IconNotificationUnread color="piccolo_100" background_color="gohan_100" />
             <IconNotification color="piccolo_100" background_color="gohan_100" />
@@ -396,6 +437,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconProfile color="piccolo_100" background_color="gohan_100" />
             <IconPromotions color="piccolo_100" background_color="gohan_100" />
             <IconRefresh color="piccolo_100" background_color="gohan_100" />
+            <IconRow color="piccolo_100" background_color="gohan_100" />
             <IconSbShield color="piccolo_100" background_color="gohan_100" />
             <IconSearch color="piccolo_100" background_color="gohan_100" />
             <IconSettings color="piccolo_100" background_color="gohan_100" />
@@ -457,12 +499,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconUsers color="piccolo_100" background_color="gohan_100" />
             <IconVirtualSports color="piccolo_100" background_color="gohan_100" />
             <IconVkontakte color="piccolo_100" background_color="gohan_100" />
+            <IconVolatility color="piccolo_100" background_color="gohan_100" />
             <IconWalletRounded color="piccolo_100" background_color="gohan_100" />
             <IconWallet color="piccolo_100" background_color="gohan_100" />
             <IconWand color="piccolo_100" background_color="gohan_100" />
             <IconWarning color="piccolo_100" background_color="gohan_100" />
             <IconWhatsapp color="piccolo_100" background_color="gohan_100" />
             <IconYoutube color="piccolo_100" background_color="gohan_100" />
+            <IconZoom color="piccolo_100" background_color="gohan_100" />
             <IconError color="piccolo_100" background_color="gohan_100" />
             <IconGeneralInfo color="piccolo_100" background_color="gohan_100" />
             <IconGoogleAuth color="piccolo_100" background_color="gohan_100" />
@@ -481,9 +525,12 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconAlertCircle color="piccolo_100" background_color="gohan_100" />
             <IconAlignLeft color="piccolo_100" background_color="gohan_100" />
             <IconAllSports color="piccolo_100" background_color="gohan_100" />
-            <IconArrowDiagonalBottomLeft color="piccolo_100" background_color="gohan_100" />
-            <IconArrowDiagonalTopRight color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonalDownLeft color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonalUpRight color="piccolo_100" background_color="gohan_100" />
+            <IconArrowDiagonals color="piccolo_100" background_color="gohan_100" />
             <IconArrowDown color="piccolo_100" background_color="gohan_100" />
+            <IconArrowLDown color="piccolo_100" background_color="gohan_100" />
+            <IconArrowLUp color="piccolo_100" background_color="gohan_100" />
             <IconArrowLeftRight color="piccolo_100" background_color="gohan_100" />
             <IconArrowLeft color="piccolo_100" background_color="gohan_100" />
             <IconArrowRight color="piccolo_100" background_color="gohan_100" />
@@ -491,6 +538,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconArrowUpDown color="piccolo_100" background_color="gohan_100" />
             <IconArrowUp color="piccolo_100" background_color="gohan_100" />
             <IconAsianView color="piccolo_100" background_color="gohan_100" />
+            <IconAttache color="piccolo_100" background_color="gohan_100" />
             <IconAward color="piccolo_100" background_color="gohan_100" />
             <IconBannerInfo color="piccolo_100" background_color="gohan_100" />
             <IconBell color="piccolo_100" background_color="gohan_100" />
@@ -499,6 +547,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCalendarEmpty color="piccolo_100" background_color="gohan_100" />
             <IconCalendar color="piccolo_100" background_color="gohan_100" />
             <IconCard color="piccolo_100" background_color="gohan_100" />
+            <IconCase color="piccolo_100" background_color="gohan_100" />
             <IconCashOut color="piccolo_100" background_color="gohan_100" />
             <IconCasino color="piccolo_100" background_color="gohan_100" />
             <IconChartArea color="piccolo_100" background_color="gohan_100" />
@@ -521,7 +570,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCloseSmall color="piccolo_100" background_color="gohan_100" />
             <IconClose color="piccolo_100" background_color="gohan_100" />
             <IconCode color="piccolo_100" background_color="gohan_100" />
+            <IconCollapse color="piccolo_100" background_color="gohan_100" />
             <IconCopy color="piccolo_100" background_color="gohan_100" />
+            <IconCredit color="piccolo_100" background_color="gohan_100" />
             <IconCrypto color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
             <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
@@ -560,6 +611,9 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconCursor color="piccolo_100" background_color="gohan_100" />
             <IconData color="piccolo_100" background_color="gohan_100" />
             <IconDelete color="piccolo_100" background_color="gohan_100" />
+            <IconDesktop color="piccolo_100" background_color="gohan_100" />
+            <IconDetails color="piccolo_100" background_color="gohan_100" />
+            <IconDouble color="piccolo_100" background_color="gohan_100" />
             <IconDownload color="piccolo_100" background_color="gohan_100" />
             <IconDuotoneArrows color="piccolo_100" background_color="gohan_100" />
             <IconDuotoneChat color="piccolo_100" background_color="gohan_100" />
@@ -588,12 +642,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconFreebet color="piccolo_100" background_color="gohan_100" />
             <IconGamepad color="piccolo_100" background_color="gohan_100" />
             <IconGift color="piccolo_100" background_color="gohan_100" />
+            <IconGlasses color="piccolo_100" background_color="gohan_100" />
             <IconGlobe color="piccolo_100" background_color="gohan_100" />
             <IconGoogle color="piccolo_100" background_color="gohan_100" />
             <IconHamburger color="piccolo_100" background_color="gohan_100" />
             <IconHelp color="piccolo_100" background_color="gohan_100" />
             <IconHistory color="piccolo_100" background_color="gohan_100" />
             <IconHome color="piccolo_100" background_color="gohan_100" />
+            <IconHub88 color="piccolo_100" background_color="gohan_100" />
             <IconHyperlink color="piccolo_100" background_color="gohan_100" />
             <IconInPlay color="piccolo_100" background_color="gohan_100" />
             <IconInfoCircle color="piccolo_100" background_color="gohan_100" />
@@ -601,6 +657,8 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconInstagram color="piccolo_100" background_color="gohan_100" />
             <IconLeftArrowCurveRight color="piccolo_100" background_color="gohan_100" />
             <IconLifeRing color="piccolo_100" background_color="gohan_100" />
+            <IconLightbulb color="piccolo_100" background_color="gohan_100" />
+            <IconLimit color="piccolo_100" background_color="gohan_100" />
             <IconLine color="piccolo_100" background_color="gohan_100" />
             <IconLink color="piccolo_100" background_color="gohan_100" />
             <IconListNumbered color="piccolo_100" background_color="gohan_100" />
@@ -612,8 +670,13 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconLoyalty0 color="piccolo_100" background_color="gohan_100" />
             <IconMail color="piccolo_100" background_color="gohan_100" />
             <IconMenuHome color="piccolo_100" background_color="gohan_100" />
+            <IconMenu color="piccolo_100" background_color="gohan_100" />
             <IconMinus color="piccolo_100" background_color="gohan_100" />
+            <IconMobile color="piccolo_100" background_color="gohan_100" />
+            <IconMoney color="piccolo_100" background_color="gohan_100" />
+            <IconMoneybag color="piccolo_100" background_color="gohan_100" />
             <IconMoon color="piccolo_100" background_color="gohan_100" />
+            <IconMore color="piccolo_100" background_color="gohan_100" />
             <IconNews color="piccolo_100" background_color="gohan_100" />
             <IconNotificationUnread color="piccolo_100" background_color="gohan_100" />
             <IconNotification color="piccolo_100" background_color="gohan_100" />
@@ -629,6 +692,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconProfile color="piccolo_100" background_color="gohan_100" />
             <IconPromotions color="piccolo_100" background_color="gohan_100" />
             <IconRefresh color="piccolo_100" background_color="gohan_100" />
+            <IconRow color="piccolo_100" background_color="gohan_100" />
             <IconSbShield color="piccolo_100" background_color="gohan_100" />
             <IconSearch color="piccolo_100" background_color="gohan_100" />
             <IconSettings color="piccolo_100" background_color="gohan_100" />
@@ -690,12 +754,14 @@ defmodule Moon.Sites.MoonDocs.Pages.Assets.IconsPage do
             <IconUsers color="piccolo_100" background_color="gohan_100" />
             <IconVirtualSports color="piccolo_100" background_color="gohan_100" />
             <IconVkontakte color="piccolo_100" background_color="gohan_100" />
+            <IconVolatility color="piccolo_100" background_color="gohan_100" />
             <IconWalletRounded color="piccolo_100" background_color="gohan_100" />
             <IconWallet color="piccolo_100" background_color="gohan_100" />
             <IconWand color="piccolo_100" background_color="gohan_100" />
             <IconWarning color="piccolo_100" background_color="gohan_100" />
             <IconWhatsapp color="piccolo_100" background_color="gohan_100" />
             <IconYoutube color="piccolo_100" background_color="gohan_100" />
+            <IconZoom color="piccolo_100" background_color="gohan_100" />
             <IconError color="piccolo_100" background_color="gohan_100" />
             <IconGeneralInfo color="piccolo_100" background_color="gohan_100" />
             <IconGoogleAuth color="piccolo_100" background_color="gohan_100" />
