@@ -12,12 +12,12 @@ defmodule Moon.Components.Inline do
     ~H"""
     {{ asset_import @socket, "js/components/inline" }}
 
-    <button
+    <div
       class="moon-inline"
       data-space={{ @space }}
     >
       <slot />
-    </button>
+    </div>
     """
   end
 end

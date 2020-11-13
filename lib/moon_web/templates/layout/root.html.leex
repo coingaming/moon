@@ -1,4 +1,6 @@
 <% asset_import(@conn, "js/app.js") %>
+<% asset_import(@conn, "js/themes/sportsbet-light.js") %>
+<% asset_import(@conn, "js/themes/sportsbet-dark.js") %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,22 +12,7 @@
     <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
     <%= asset_styles() %>
   </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
+  <body class="sportsbet-light">
     <%= @inner_content %>
     <%= asset_scripts() %>
   </body>
