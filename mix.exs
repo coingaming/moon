@@ -34,7 +34,8 @@ defmodule Moon.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.5.6"},
-      {:phoenix_live_view, "~> 0.14.6"},
+      # {:phoenix_live_view, "~> 0.14.6"},
+      {:phoenix_live_view, git: "git@github.com:phoenixframework/phoenix_live_view.git", override: true},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -44,7 +45,8 @@ defmodule Moon.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:asset_import, git: "git@github.com:coingaming/asset_import.git"}
+      {:asset_import, git: "git@github.com:coingaming/asset_import.git"},
+      {:surface, git: "git@github.com:msaraiva/surface.git"}
     ]
   end
 

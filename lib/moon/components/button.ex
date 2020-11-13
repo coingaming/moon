@@ -31,7 +31,7 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     ~H"""
-    {{ asset_import @socket, "js/moon/components/button" }}
+    {{ asset_import @socket, "js/components/button" }}
 
     <button
       class="moon-button"

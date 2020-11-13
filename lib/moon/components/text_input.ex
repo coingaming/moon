@@ -34,7 +34,7 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     ~H"""
-    {{ asset_import @socket, "js/moon/components/text_input" }}
+    {{ asset_import @socket, "js/components/text-input" }}
 
     <TextInput
       class="moon-text-input"

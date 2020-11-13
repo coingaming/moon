@@ -1,8 +1,8 @@
 defmodule MoonWeb.PageLive do
   use MoonWeb, :live_view
 
-  use MoonWeb.Assets
-  import MoonWeb.Assets.Files
+  use Moon.Assets
+  import Moon.Assets.Files
 
 
   @impl true
