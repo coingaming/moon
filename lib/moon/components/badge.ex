@@ -3,15 +3,13 @@
 defmodule Moon.Components.Badge do
   use Moon.StatelessComponent
 
-  import Moon.Utils.Rem
-
   prop(color, :string)
   prop(background_color, :string)
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
 
   def render(assigns) do
     ~H"""
-    {{ asset_import @socket, "js/moon/components/badge" }}
+    {{ asset_import @socket, "js/components/badge" }}
 
     <span
       class="moon-badge"

@@ -14,7 +14,7 @@ defmodule MoonWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MoonWeb do
+  scope "/" do
     pipe_through :browser
 
     live "/", MoonWeb.Pages.MainPage

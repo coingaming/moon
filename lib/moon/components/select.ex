@@ -1,8 +1,6 @@
 defmodule Moon.Components.Select do
   use Moon.StatelessComponent
 
-  import Moon.Utils.Rem
-
   alias Moon.Components.Label
 
   prop(field, :atom)
@@ -31,7 +29,7 @@ defmodule Moon.Components.Select do
       end)
 
     ~H"""
-    {{ asset_import @socket, "js/moon/components/select" }}
+    {{ asset_import @socket, "js/components/select" }}
 
     <Surface.Components.Form.Select
       class="moon-select"

@@ -1,14 +1,8 @@
 defmodule MoonWeb.Pages.Components.ButtonPage do
   use Moon.LiveView
-  use Moon.Components.Context
-
-  alias MoonWeb.Layouts.DefaultLayout
-  alias Moon.Themed
   alias Moon.Components.Button
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
-
-  data(theme, :any, default: Moon.Themes.SportsbetLight.get_config())
 
   def render(assigns) do
     ~H"""

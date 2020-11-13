@@ -2,83 +2,30 @@
 
 defmodule Moon.Components.Label.LabelFlex do
   use Moon.StatelessComponent
-  import Moon.Utils.Mq
-  import Moon.Utils.Rem
 
   prop(flex, :boolean)
   prop(input_grow, :integer)
 
-  def style(%{flex: flex}, %Moon.Theme{breakpoint: %Moon.Theme.Breakpoint{} = breakpoint}) do
-    flex &&
-      %{
-        mq(breakpoint.small) => %{
-          display: "flex",
-          align_items: "center"
-        }
-      }
-  end
-
   def render(assigns) do
-    class_name = get_class_name("label-flex-#{assigns.flex}-#{assigns.input_grow}")
-
     ~H"""
-    <Context get={{ theme: theme }}>
-      <style>
-        {{ style(assigns, theme) |> get_css_for_map(".#{class_name}") }}
-      </style>
-
-      <label class={{ class_name }}>
-        <slot />
-      </label>
-    </Context>
+    <label class="moon-label-flex">
+      <slot />
+    </label>
     """
   end
 end
 
 defmodule Moon.Components.Label.LabelContent do
   use Moon.StatelessComponent
-  import Moon.Utils.Rem
-  import Moon.Utils.Mq
 
   prop(disabled, :boolean)
   prop(flex, :boolean)
 
-  def style(%{disabled: disabled, flex: flex}, theme) do
-    [
-      %{
-        display: "block",
-        margin_bottom: rem(theme.space.small),
-        color: theme.color.trunks_100,
-        font_size: rem(theme.space.default)
-      },
-      flex &&
-        %{
-          mq(theme.breakpoint.small) => %{
-            flex: 1,
-            padding_right: rem(theme.space.default),
-            margin_bottom: 0
-          }
-        },
-      disabled &&
-        %{
-          opacity: 0.5
-        }
-    ]
-  end
-
   def render(assigns) do
-    class_name = get_class_name("label-content-#{assigns.disabled}-#{assigns.flex}")
-
     ~H"""
-    <Context get={{ theme: theme }}>
-      <style>
-        {{ style(assigns, theme) |> get_css_for_maps(".#{class_name}") }}
-      </style>
-
-      <span class={{ class_name }}>
-        <slot />
-      </span>
-    </Context>
+    <span class="moon-label-content">
+      <slot />
+    </span>
     """
   end
 end

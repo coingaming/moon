@@ -1,1 +1,15 @@
-{}
+{
+  "06EIPELu": "./js/components/link",
+  "4oZPmTkJ": "./js/components/badge",
+  "Fv9keEym": "./js/components/text",
+  "IswQ07CW": "./js/components/stack",
+  "KYSNsNZO": "./js/app.js",
+  "NE18S7qN": "./js/components/button",
+  "P75DVBOW": "./js/components/inline",
+  "PivHvw2o": "./js/components/avatar",
+  "RGLdZW8f": "./js/components/text-input",
+  "SZ3uBdtk": "./js/components/carousel",
+  "Sb6AI5AZ": "./js/login_form",
+  "jYMd9kaG": "./js/components/select",
+  "tgZ4flyW": "./js/components/checkbox"
+}

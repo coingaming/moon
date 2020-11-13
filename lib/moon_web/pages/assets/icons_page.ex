@@ -59,40 +59,40 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconCopy
   alias Icons.IconCredit
   alias Icons.IconCrypto
-  alias Icons.IconCurrencyARS
-  alias Icons.IconCurrencyBDT
-  alias Icons.IconCurrencyBOB
-  alias Icons.IconCurrencyBRL
-  alias Icons.IconCurrencyBTC
-  alias Icons.IconCurrencyCAD
-  alias Icons.IconCurrencyCLP
-  alias Icons.IconCurrencyCNY
-  alias Icons.IconCurrencyCRC
-  alias Icons.IconCurrencyETH
-  alias Icons.IconCurrencyEUR
-  alias Icons.IconCurrencyGEL
-  alias Icons.IconCurrencyHKD
-  alias Icons.IconCurrencyIDR
-  alias Icons.IconCurrencyINR
-  alias Icons.IconCurrencyIQD
-  alias Icons.IconCurrencyJPY
-  alias Icons.IconCurrencyKRW
-  alias Icons.IconCurrencyLTC
-  alias Icons.IconCurrencyMXN
-  alias Icons.IconCurrencyMYR
-  alias Icons.IconCurrencyPEN
-  alias Icons.IconCurrencyPKR
-  alias Icons.IconCurrencyRUB
-  alias Icons.IconCurrencySOC
-  alias Icons.IconCurrencyTHB
-  alias Icons.IconCurrencyTRX
-  alias Icons.IconCurrencyTRY
-  alias Icons.IconCurrencyUAH
-  alias Icons.IconCurrencyUSD
-  alias Icons.IconCurrencyUSDT
-  alias Icons.IconCurrencyVES
-  alias Icons.IconCurrencyVND
-  alias Icons.IconCurrencyXRP
+  alias Icons.IconCurrencyArs
+  alias Icons.IconCurrencyBdt
+  alias Icons.IconCurrencyBob
+  alias Icons.IconCurrencyBrl
+  alias Icons.IconCurrencyBtc
+  alias Icons.IconCurrencyCad
+  alias Icons.IconCurrencyClp
+  alias Icons.IconCurrencyCny
+  alias Icons.IconCurrencyCrc
+  alias Icons.IconCurrencyEth
+  alias Icons.IconCurrencyEur
+  alias Icons.IconCurrencyGel
+  alias Icons.IconCurrencyHkd
+  alias Icons.IconCurrencyIdr
+  alias Icons.IconCurrencyInr
+  alias Icons.IconCurrencyIqd
+  alias Icons.IconCurrencyJpy
+  alias Icons.IconCurrencyKrw
+  alias Icons.IconCurrencyLtc
+  alias Icons.IconCurrencyMxn
+  alias Icons.IconCurrencyMyr
+  alias Icons.IconCurrencyPen
+  alias Icons.IconCurrencyPkr
+  alias Icons.IconCurrencyRub
+  alias Icons.IconCurrencySoc
+  alias Icons.IconCurrencyThb
+  alias Icons.IconCurrencyTrx
+  alias Icons.IconCurrencyTry
+  alias Icons.IconCurrencyUah
+  alias Icons.IconCurrencyUsd
+  alias Icons.IconCurrencyUsdt
+  alias Icons.IconCurrencyVes
+  alias Icons.IconCurrencyVnd
+  alias Icons.IconCurrencyXrp
   alias Icons.IconCursor
   alias Icons.IconData
   alias Icons.IconDelete
@@ -314,40 +314,40 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconCopy color="piccolo_100" background_color="gohan_100" />
         <IconCredit color="piccolo_100" background_color="gohan_100" />
         <IconCrypto color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBOB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBRL color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBTC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCAD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCLP color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCNY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCRC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyETH color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyEUR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyGEL color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyHKD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIDR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyINR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIQD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyJPY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyKRW color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyLTC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMXN color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMYR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPEN color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPKR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyRUB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencySOC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTHB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTRX color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTRY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUAH color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUSD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUSDT color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVES color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVND color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyXRP color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyArs color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyBdt color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyBob color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyBrl color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyBtc color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyCad color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyClp color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyCny color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyCrc color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyEth color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyEur color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyGel color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyHkd color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyIdr color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyInr color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyIqd color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyJpy color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyKrw color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyLtc color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyMxn color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyMyr color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyPen color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyPkr color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyRub color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencySoc color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyThb color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyTrx color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyTry color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyUah color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyUsd color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyUsdt color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyVes color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyVnd color="piccolo_100" background_color="gohan_100" />
+        <IconCurrencyXrp color="piccolo_100" background_color="gohan_100" />
         <IconCursor color="piccolo_100" background_color="gohan_100" />
         <IconData color="piccolo_100" background_color="gohan_100" />
         <IconDelete color="piccolo_100" background_color="gohan_100" />
