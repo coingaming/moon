@@ -1,4 +1,4 @@
-defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
+defmodule MoonWeb.Pages.Components.BadgePage do
   use Moon.LiveView
   alias Moon.Components.Badge
   alias Moon.Components.Inline
@@ -11,7 +11,7 @@ defmodule Moon.Sites.MoonDocs.Pages.Components.BadgePage do
       Default size count and labeling component
     </p>
 
-    <Badge color="bulma_100" background_color="dodoria_100">
+    <Badge color="bulma-100" background_color="dodoria-100">
       Active
     </Badge>
 
