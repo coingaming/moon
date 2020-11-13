@@ -28,8 +28,7 @@ const camelToSnakeCase = (str) =>
 const getModuleName = (s) =>
   capitalizeFirstLetter(toCamel(s)).replace('IconLoyalty-0', 'IconLoyalty0');
 
-const createAssetComponentFile = ({assetsFolder, iconType, file}) => {
-
+const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
   fs.writeFileSync(
     `${exportDir}/${assetsFolder}/${file
       .replace(/([-_])/gi, '_')
@@ -76,7 +75,7 @@ end
   getFiles(assetsFolder).forEach((file) => {
     createAssetComponentFile({
       assetsFolder,
-      iconType: assetsFolder.substring(0, assetsFolder.length - 1), 
+      iconType: assetsFolder.substring(0, assetsFolder.length - 1),
       file: file.replace('.svg', ''),
     });
   });
