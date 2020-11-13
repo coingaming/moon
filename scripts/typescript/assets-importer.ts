@@ -36,7 +36,6 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
     `
 defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do 
   use Moon.StatelessComponent
-
   ${
     (iconType === 'icon' &&
       `
@@ -44,10 +43,7 @@ defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
   prop background_color, :string, values: Moon.colors
   prop font_size, :string
   `) ||
-    ''
-  }
-
-  ${
+    ''}${
     (iconType !== 'icon' &&
       `
   prop color, :string, values: Moon.colors
@@ -56,9 +52,7 @@ defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
   prop font_size, :string
   prop vertical_align, :string
   `) ||
-    ''
-  }
-
+    ''}
   def render(assigns) do 
     ~H"""
     <svg class="moon-${iconType}">

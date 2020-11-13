@@ -1,34 +1,16 @@
-defmodule Moon.Assets.Icons.IconError do
+
+defmodule Moon.Assets.Icons.IconError do 
   use Moon.StatelessComponent
-  use Moon.Components.Context
-
-  prop(color, :string)
-  prop(background_color, :string)
-  prop(font_size, :string)
-
-  def render(assigns) do
-    class_name =
-      get_class_name(
-        "Icons-IconError-#{assigns.color}-#{assigns.background_color}-#{assigns.font_size}"
-      )
-
+  
+  prop color, :string, values: Moon.colors
+  prop background_color, :string, values: Moon.colors
+  prop font_size, :string
+  
+  def render(assigns) do 
     ~H"""
-    <Context get={{ theme: theme }}>
-    <style>
-      .{{ class_name }} {
-        vertical-align: middle;
-        width: 1em;
-        color: {{ get_color(@color, theme) }};
-        background-color: {{ get_color(@background_color, theme) }};
-        font-size: {{ @font_size }};
-        display: inline-block;
-        overflow: hidden;
-        
-      }
-    </style>
-
-    <svg class={{ class_name }} width="1em" height="1em"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="2" y="2" width="20" height="20" rx="10" fill="#FF4E64"/> <rect x="6" y="10" width="12" height="4" rx="1" fill="white"/> </svg>
-    </Context>
+    <svg class="moon-icon">
+      <use href="/assets/icons/icon-error.svg#item"></use>
+    </svg>
     """
   end
 end
