@@ -1,6 +1,5 @@
 defmodule Moon.Components.Button do
   use Moon.StatelessComponent
-  use Moon.Components.Context
 
   prop(href, :string)
 
@@ -32,6 +31,8 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     ~H"""
+    {{ asset_import @socket, "js/moon/components/button" }}
+
     <button
       class="moon-button"
       data-mock-state={{ @mock_state }}

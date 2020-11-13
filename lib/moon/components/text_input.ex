@@ -1,8 +1,6 @@
 defmodule Moon.Components.TextInput do
   use Moon.StatelessComponent
 
-  import Moon.Utils.Rem
-
   alias Surface.Components.Form.TextInput
   alias Moon.Components.Label
 
@@ -36,13 +34,34 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     ~H"""
-    <Context get={{ theme: theme }}>
-      <TextInput class="moon-text-input" field={{ @field }} opts={{ [placeholder: @placeholder]}} value={{ @value }} :if={{ !@label }} />
+    {{ asset_import @socket, "js/moon/components/text_input" }}
 
-      <Label text={{ @label }} :if={{ @label }}>
-        <TextInput class="moon-text-input" field={{ @field }} opts={{ [placeholder: @placeholder]}} value={{ @value }} />
-      </Label>
-    </Context>
+    <TextInput
+      class="moon-text-input"
+      field={{ @field }}
+      opts={{
+        [
+          placeholder: @placeholder,
+          "data-error": @error && "true",
+          "data-rounded": @rounded && "true"
+        ]
+      }}
+      value={{ @value }}
+      :if={{ !@label }}
+    />
+
+    <Label text={{ @label }} :if={{ @label }}>
+      <TextInput
+        class="moon-text-input"
+        field={{ @field }}
+        opts={{ [
+          placeholder: @placeholder,
+          "data-error": @error && "true",
+          "data-rounded": @rounded && "true"
+        ]}}
+        value={{ @value }}
+      />
+    </Label>
     """
   end
 end

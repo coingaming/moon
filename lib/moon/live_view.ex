@@ -5,6 +5,8 @@ defmodule Moon.LiveView do
       import Moon.Helpers.GetClassNameSupport
       import Moon.Helpers.ScreenSizeSupport
       import Moon.Helpers.GetCssForMapsSupport
+      use Moon.Assets
+      import Moon.Assets.Files
 
       def handle_event("toggle_theme", %{"new_value" => new_value}, socket) do
         themes_map = %{

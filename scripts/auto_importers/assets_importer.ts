@@ -2,9 +2,8 @@ import * as fs from 'fs';
 
 console.log('Running assets importer');
 
-const rawDir = '../../js_deps/sportsbet-design/packages/assets/raw/';
+const rawDir = '../../assets/node_modules/moon-css/example/assets/';
 const exportDir = '../../lib/moon/assets/';
-const documentationDir = '../../lib/moon/sites/moon_docs/pages/assets';
 
 const getFiles = (iconType) => fs.readdirSync(`${rawDir}/${iconType}`);
 const getContents = (iconType, file) =>
@@ -29,47 +28,30 @@ const camelToSnakeCase = (str) =>
 const getModuleName = (s) =>
   capitalizeFirstLetter(toCamel(s)).replace('IconLoyalty-0', 'IconLoyalty0');
 
-const getProp = (contents, propName) => {
-  try {
-    return contents.split(`${propName}="`)[1].split('"')[0];
-  } catch (e) {}
-};
-
-const getIntProp = (contents, propName) =>
-  parseInt(getProp(contents, propName));
-
-const writeSvgFile = (iconType, file, contents) => {
-  const originalWidth = getProp(contents, 'width');
-  const originalHeight = getProp(contents, 'height');
-  const originalWidthInt = parseInt(originalWidth);
-  const originalHeightInt = parseInt(originalHeight);
-
-  const newWidth = originalWidthInt < originalHeightInt ? 'auto' : '1em';
-  const newHeight = originalHeightInt < originalWidthInt ? 'auto' : '1em';
+const createAssetComponentFile = ({assetsFolder, iconType, file}) => {
 
   fs.writeFileSync(
-    `${exportDir}/${iconType}/${file
+    `${exportDir}/${assetsFolder}/${file
       .replace(/([-_])/gi, '_')
       .toLowerCase()}.ex`,
     `
-defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do 
+defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do 
   use Moon.StatelessComponent
-  use Moon.Components.Context
 
   ${
-    (iconType === 'icons' &&
+    (iconType === 'icon' &&
       `
-  prop color, :string
-  prop background_color, :string
+  prop color, :string, values: Moon.colors
+  prop background_color, :string, values: Moon.colors
   prop font_size, :string
   `) ||
     ''
   }
 
   ${
-    (iconType !== 'icons' &&
+    (iconType !== 'icon' &&
       `
-  prop color, :string
+  prop color, :string, values: Moon.colors
   prop height, :string
   prop width, :string
   prop font_size, :string
@@ -79,86 +61,10 @@ defmodule Moon.Assets.${getModuleName(iconType)}.${getModuleName(file)} do
   }
 
   def render(assigns) do 
-    ${
-      (iconType === 'icons' &&
-        `
-    class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
-          file
-        )}-#{assigns.color}-#{assigns.background_color}-#{assigns.font_size}")
-    `) ||
-      ''
-    }
-
-    ${
-      (iconType !== 'icons' &&
-        `
-    class_name = get_class_name("${getModuleName(iconType)}-${getModuleName(
-          file
-        )}-#{assigns.color}-#{assigns.height}-#{assigns.width}-#{assigns.font_size}-#{assigns.vertical_align}")
-    `) ||
-      ''
-    }
-
     ~H"""
-    <Context get={{ theme: theme }}>
-    <style>
-      .{{ class_name }} {
-        vertical-align: middle;
-        width: 1em;
-        ${
-          (iconType === 'icons' &&
-            `
-        color: {{ get_color(@color, theme) }};
-        background-color: {{ get_color(@background_color, theme) }};
-        font-size: {{ @font_size }};
-        display: inline-block;
-        overflow: hidden;
-        `.trim()) ||
-          ''
-        }
-        ${
-          (iconType !== 'icons' &&
-            `
-        color: {{ get_color(@color, theme) }};
-        height: {{ @height }};
-        width: {{ @width }};
-        font-size: {{ @font_size }};
-        vertical-align: {{ @vertical_align }};
-        overflow: hidden;
-        `.trim()) ||
-          ''
-        }
-      }
-    </style>
-
-    ${contents
-      .replace('<svg', `<svg class={{ class_name }} NEW_WIDTH NEW_HEIGHT `)
-      .replace(`width="${originalWidth}"`, ``)
-      .replace(`height="${originalHeight}"`, ``)
-      .replace(`NEW_WIDTH`, `width="${newWidth}"`)
-      .replace(`NEW_HEIGHT`, `height="${newHeight}"`)
-      .replace(/\n/gi, ' ')
-      .replace(/\r/gi, ' ')
-      .replace(/  /gi, ' ')
-      .replace(/" >/gi, '">')
-      .replace(`	`, ' ')
-      .replace(
-        `<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->`,
-        ''
-      )
-      .replace(`xmlns:xlink="http://www.w3.org/1999/xlink"`, '')
-      .replace(`<?xml version="1.0" encoding="iso-8859-1"?>`, '')
-      .replace(`enable-background="new 0 0 16 16"`, '')
-      .replace(`xml:space="preserve"`, '')
-      .replace(`<?xml version="1.0" encoding="UTF-8"?>`, '')
-      .replace(`<?xml version="1.0" encoding="utf-8"?>`, '')
-      .replace(/#DE1E7E/gi, 'currentColor')
-      .replace(
-        `<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->`,
-        ''
-      )
-      .trim()}
-    </Context>
+    <svg class="moon-${iconType}">
+      <use href="/assets/${assetsFolder}/${file}.svg#item"></use>
+    </svg>
     """
   end
 end
@@ -166,146 +72,12 @@ end
   );
 };
 
-const writeAssetsMapFile = (iconType, icons) => {
-  fs.writeFileSync(
-    `${exportDir}/${iconType}.ex`,
-    `
-defmodule Moon.Assets.${getModuleName(iconType)} do 
-  use Moon.StatelessComponent
-
-  alias Moon.Assets.${getModuleName(iconType)}
-
-  prop name, :string
-  prop color, :string
-  prop background_color, :string
-
-  @assets_map %{
-    ${icons
-      .map(
-        (i) =>
-          `${i
-            .replace(/([-_])/gi, '_')
-            .toLowerCase()
-            .replace(
-              `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
-              ''
-            )}: ${getModuleName(iconType)}.${getModuleName(i)}`
-      )
-      .join(', ')}
-    }
-
-  def icon_name_to_module(icon_name) do 
-    @assets_map[:"#{icon_name}"]
-  end
-
-  def render(assigns) do 
-    ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color) }}
-    """
-  end
-end
-`.replace('IconLoyalty-0', 'IconLoyalty0')
-  );
-};
-
-const writeAssetsDocFile = (iconType, icons) => {
-  fs.writeFileSync(
-    `${documentationDir}/${iconType}_page.ex`,
-    `
-defmodule Moon.Sites.MoonDocs.Pages.Assets.${getModuleName(iconType)}Page do 
-  use Moon.LiveView
-  use Moon.Components.Context
-
-  alias Moon.Sites.MoonDocs.Layouts.DefaultLayout
-  alias Moon.Themed
-  alias Moon.Components.Inline
-  alias Moon.Components.CodePreview
-
-  alias Moon.Assets.${getModuleName(iconType)}
-  ${icons
-    .map((icon) => `alias ${getModuleName(iconType)}.${getModuleName(icon)}`)
-    .join('\n  ')}
-
-  def render(assigns) do 
-    ~H"""
-    <Themed theme={{ Moon.Themes.SportsbetLight.get_config }}>
-      <DefaultLayout id="moondocs" user_token={{ "user_token" }}>
-        <Inline>
-          ${
-            (iconType === 'icons' &&
-              icons
-                .map(
-                  (icon) =>
-                    `<${getModuleName(
-                      icon
-                    )} color="piccolo_100" background_color="gohan_100" />`
-                )
-                .join('\n            ')) ||
-            ''
-          }
-          ${
-            (iconType !== 'icons' &&
-              icons
-                .map(
-                  (icon) =>
-                    `<${getModuleName(
-                      icon
-                    )} color="piccolo_100" height="1rem" width="1rem" />`
-                )
-                .join('\n            ')) ||
-            ''
-          }
-        </Inline>
-        <#CodePreview>
-          <Inline>
-            ${
-              (iconType === 'icons' &&
-                icons
-                  .map(
-                    (icon) =>
-                      `<${getModuleName(
-                        icon
-                      )} color="piccolo_100" background_color="gohan_100" />`
-                  )
-                  .join('\n            ')) ||
-              ''
-            }
-            ${
-              (iconType !== 'icons' &&
-                icons
-                  .map(
-                    (icon) =>
-                      `<${getModuleName(
-                        icon
-                      )} color="piccolo_100" height="1rem" width="1rem" />`
-                  )
-                  .join('\n            ')) ||
-              ''
-            }
-          </Inline>
-        </#CodePreview>
-      </DefaultLayout>
-    </Themed>
-    """
-  end
-end
-`
-  );
-};
-
-['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((iconType) => {
-  getFiles(iconType).forEach((file) => {
-    const contents = getContents(iconType, file);
-    writeSvgFile(iconType, file.replace('.svg', ''), contents.toString());
+['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
+  getFiles(assetsFolder).forEach((file) => {
+    createAssetComponentFile({
+      assetsFolder,
+      iconType: assetsFolder.substring(0, assetsFolder.length - 1), 
+      file: file.replace('.svg', ''),
+    });
   });
-
-  writeAssetsMapFile(
-    iconType,
-    getFiles(iconType).map((i) => i.replace('.svg', ''))
-  );
-
-  writeAssetsDocFile(
-    iconType,
-    getFiles(iconType).map((i) => i.replace('.svg', ''))
-  );
 });

@@ -7,6 +7,8 @@ defmodule Moon.StatelessComponent do
       import Moon.Helpers.ScreenSizeSupport
       import Moon.Helpers.GetColorSupport
       import Moon.Helpers.GetCssForMapsSupport
+      use Moon.Assets
+      import Moon.Assets.Files
     end
   end
 end

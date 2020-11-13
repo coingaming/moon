@@ -7,7 +7,7 @@ defmodule MoonWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_moon_key",
-    signing_salt: "f3KtR3gf"
+    signing_salt: "brz+40r1"
   ]
 
   socket "/socket", MoonWeb.UserSocket,
@@ -33,6 +33,10 @@ defmodule MoonWeb.Endpoint do
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
   end
+
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]

@@ -1,9 +1,28 @@
 defmodule MoonWeb do
+  @moduledoc """
+  The entrypoint for defining your web interface, such
+  as controllers, views, channels and so on.
+
+  This can be used in your application as:
+
+      use MoonWeb, :controller
+      use MoonWeb, :view
+
+  The definitions below will be executed for every view,
+  controller, etc, so keep them short and clean, focused
+  on imports, uses and aliases.
+
+  Do NOT define functions inside the quoted expressions
+  below. Instead, define any helper function in modules
+  and import those modules here.
+  """
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: MoonWeb
 
       import Plug.Conn
+      import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
     end
   end
@@ -53,6 +72,7 @@ defmodule MoonWeb do
   def channel do
     quote do
       use Phoenix.Channel
+      import MoonWeb.Gettext
     end
   end
 
@@ -68,6 +88,7 @@ defmodule MoonWeb do
       import Phoenix.View
 
       import MoonWeb.ErrorHelpers
+      import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
     end
   end

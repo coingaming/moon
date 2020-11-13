@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html"
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "nprogress": "^0.2.0",
+    "asset_import_hook": "0.4.10"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -23,6 +26,10 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "terser-webpack-plugin": "^2.3.2",
     "webpack": "4.41.5",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "nodemon": "1.19.2",
+    "uglifyjs-webpack-plugin": "2.2.0",
+    "webpack-manifest-plugin": "2.0.4",
+    "moon-css": "git:git@github.com:coingaming/moon-css.git"
   }
 }

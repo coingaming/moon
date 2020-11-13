@@ -1,6 +1,10 @@
 defmodule MoonWeb.PageLive do
   use MoonWeb, :live_view
 
+  use MoonWeb.Assets
+  import MoonWeb.Assets.Files
+
+
   @impl true
   def mount(_params, _session, socket) do
     {:ok, assign(socket, query: "", results: %{})}

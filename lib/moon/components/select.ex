@@ -31,24 +31,24 @@ defmodule Moon.Components.Select do
       end)
 
     ~H"""
-    <Context get={{ theme: theme }}>
+    {{ asset_import @socket, "js/moon/components/select" }}
+
+    <Surface.Components.Form.Select
+      class="moon-select"
+      field={{ @field }}
+      options={{ options_with_selected }}
+      opts={{ [prompt: @prompt] }}
+      :if={{ !@label }}
+    />
+
+    <Label text={{ @label }} :if={{ @label }}>
       <Surface.Components.Form.Select
         class="moon-select"
         field={{ @field }}
         options={{ options_with_selected }}
         opts={{ [prompt: @prompt] }}
-        :if={{ !@label }}
       />
-
-      <Label text={{ @label }} :if={{ @label }}>
-        <Surface.Components.Form.Select
-          class="moon-select"
-          field={{ @field }}
-          options={{ options_with_selected }}
-          opts={{ [prompt: @prompt] }}
-        />
-      </Label>
-    </Context>
+    </Label>
     """
   end
 end
