@@ -6,7 +6,7 @@ defmodule Moon.MixProject do
   def project do
     [
       app: :moon,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
