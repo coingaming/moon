@@ -15,8 +15,6 @@ defmodule MoonWeb.Pages.Components.LinkPage do
       I'm an Optional link
     </Link>
 
-    <Link to="#" as="button">I look like a link, but really I'm a button</Link>
-
     <Link to="#" disabled>
       I'm a disabled link
     </Link>
@@ -31,8 +29,6 @@ defmodule MoonWeb.Pages.Components.LinkPage do
       <Link to="#" optional>
         I'm an Optional link
       </Link>
-
-      <Link to="#" as="button">I look like a link, but really I'm a button</Link>
 
       <Link to="#" disabled>
         I'm a disabled link

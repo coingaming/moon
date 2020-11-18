@@ -9,12 +9,16 @@ defmodule Moon.Components.Avatar do
   prop(background_color, :string)
   prop(size, :string, default: "medium", values: ["xsmall", "small", "medium", "large"])
 
+  def style(assigns) do
+    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
+  end
+
   def render(assigns) do
     ~H"""
     {{ asset_import @socket, "js/components/avatar" }}
 
     <div
-      class="moon-avatar" style="background-image: url({{ @image_url }});{{ @color && "color: var(--color--#{@color});" }}{{ @background_color && "color: var(--color--#{@background_color});" }}" data-size={{ @size }}>
+      class="moon-avatar" style={{ style(assigns) }} data-size={{ @size }}>
       <span :if={{ @name && !@image_url }}>{{ @name }}</span>
       <IconUser color={{ @color }} :if={{ !@name && !@image_url }} />
     </div>

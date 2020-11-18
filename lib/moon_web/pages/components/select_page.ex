@@ -3,6 +3,8 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   alias Moon.Components.Select
   alias Moon.Components.CodePreview
 
+  data gender_options, :any
+
   def mount(_params, _session, socket) do
     gender_options = [
       [key: "Female", value: "female"],

@@ -1,7 +1,5 @@
 defmodule MoonWeb.Pages.MainPage do
   use Moon.LiveView
-  use Moon.Components.Context
-
   alias Moon.Components.Link
 
   def render(assigns) do

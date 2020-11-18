@@ -11,9 +11,32 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
     <%= asset_styles() %>
+
+    <style>
+      #site-left-menu {
+        vertical-align: top;
+        width: 30%;
+        display: inline-block;
+      }
+
+      #site-content {
+        vertical-align: top;
+        width: 65%;
+        display: inline-block;
+      }
+
+    </style>
+
   </head>
   <body class="sportsbet-light">
-    <%= @inner_content %>
+
+    <div id="site-left-menu">
+      <%= live_render @conn, MoonWeb.Components.LeftMenu, id: "left-menu" %>
+    </div>
+    <div id="site-content">
+      <%= @inner_content %>
+    </div>
+
     <%= asset_scripts() %>
   </body>
 </html>

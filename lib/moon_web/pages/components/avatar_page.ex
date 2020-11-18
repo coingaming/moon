@@ -14,18 +14,18 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     <h2>With user image</h2>
 
     <Inline>
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="medium" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+      <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
+      <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
+      <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
+      <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
     </Inline>
 
     <#CodePreview>
       <Inline>
-        <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-        <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
-        <Avatar image_url="https://www.fillmurray.com/200/200" size="medium" />
-        <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+        <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
+        <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
+        <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
+        <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
       </Inline>
     </#CodePreview>
 
@@ -37,26 +37,26 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     <Inline>
       <Avatar
         name="JS"
-        color="gohan_100"
-        background_color="piccolo_100"
+        color="gohan-100"
+        background_color="piccolo-100"
         size="xsmall"
       />
       <Avatar
         name="JS"
-        color="gohan_100"
-        background_color="piccolo_100"
+        color="gohan-100"
+        background_color="piccolo-100"
         size="small"
       />
       <Avatar
         name="JS"
-        color="gohan_100"
-        background_color="piccolo_100"
+        color="gohan-100"
+        background_color="piccolo-100"
         size="medium"
       />
       <Avatar
         name="JS"
-        color="gohan_100"
-        background_color="piccolo_100"
+        color="gohan-100"
+        background_color="piccolo-100"
         size="large"
       />
     </Inline>
@@ -66,26 +66,26 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <Inline>
         <Avatar
           name="JS"
-          color="gohan_100"
-          background_color="piccolo_100"
+          color="gohan-100"
+          background_color="piccolo-100"
           size="xsmall"
         />
         <Avatar
           name="JS"
-          color="gohan_100"
-          background_color="piccolo_100"
+          color="gohan-100"
+          background_color="piccolo-100"
           size="small"
         />
         <Avatar
           name="JS"
-          color="gohan_100"
-          background_color="piccolo_100"
+          color="gohan-100"
+          background_color="piccolo-100"
           size="medium"
         />
         <Avatar
           name="JS"
-          color="gohan_100"
-          background_color="piccolo_100"
+          color="gohan-100"
+          background_color="piccolo-100"
           size="large"
         />
       </Inline>
@@ -94,18 +94,18 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     <h2>Without image and name</h2>
 
     <Inline>
-      <Avatar color="gohan_100" background_color="piccolo_100" size="xsmall" />
-      <Avatar color="gohan_100" background_color="piccolo_100" size="small" />
-      <Avatar color="gohan_100" background_color="piccolo_100" size="medium" />
-      <Avatar color="gohan_100" background_color="piccolo_100" size="large" />
+      <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
+      <Avatar color="gohan-100" background_color="piccolo-100" size="small" />
+      <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
+      <Avatar color="gohan-100" background_color="piccolo-100" size="large" />
     </Inline>
 
     <#CodePreview>
       <Inline>
-        <Avatar color="gohan_100" background_color="piccolo_100" size="xsmall" />
-        <Avatar color="gohan_100" background_color="piccolo_100" size="small" />
-        <Avatar color="gohan_100" background_color="piccolo_100" size="medium" />
-        <Avatar color="gohan_100" background_color="piccolo_100" size="large" />
+        <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
+        <Avatar color="gohan-100" background_color="piccolo-100" size="small" />
+        <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
+        <Avatar color="gohan-100" background_color="piccolo-100" size="large" />
       </Inline>
     </#CodePreview>
     """

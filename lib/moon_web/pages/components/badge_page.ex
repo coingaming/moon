@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     </Badge>
 
     <#CodePreview>
-      <Badge color="bulma_100" background_color="dodoria_100">
+      <Badge color="bulma-100" background_color="dodoria-100">
         Active
       </Badge>
     </#CodePreview>
@@ -27,26 +27,26 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     </p>
 
     <Inline>
-      <Badge color="bulma_100" background_color="piccolo_100">
+      <Badge color="bulma-100" background_color="piccolo-100">
         Active
       </Badge>
-      <Badge color="krillin_100" background_color="gohan_100">
+      <Badge color="krillin-100" background_color="gohan-100">
         Active
       </Badge>
-      <Badge color="bulma_100" background_color="dodoria_100">
+      <Badge color="bulma-100" background_color="dodoria-100">
         Active
       </Badge>
     </Inline>
 
     <#CodePreview>
       <Inline>
-        <Badge color="bulma_100" background_color="piccolo_100">
+        <Badge color="bulma-100" background_color="piccolo-100">
           Active
         </Badge>
-        <Badge color="krillin_100" background_color="gohan_100">
+        <Badge color="krillin-100" background_color="gohan-100">
           Active
         </Badge>
-        <Badge color="bulma_100" background_color="dodoria_100">
+        <Badge color="bulma-100" background_color="dodoria-100">
           Active
         </Badge>
       </Inline>
@@ -58,16 +58,16 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     </p>
 
     <Inline>
-      <Badge background_color="piccolo_100">xSmall size</Badge>
-      <Badge background_color="piccolo_100" size="small">
+      <Badge background_color="piccolo-100">xSmall size</Badge>
+      <Badge background_color="piccolo-100" size="small">
         small size
       </Badge>
     </Inline>
 
     <#CodePreview>
       <Inline>
-        <Badge background_color="piccolo_100">xSmall size</Badge>
-        <Badge background_color="piccolo_100" size="small">
+        <Badge background_color="piccolo-100">xSmall size</Badge>
+        <Badge background_color="piccolo-100" size="small">
           small size
         </Badge>
       </Inline>
