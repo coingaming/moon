@@ -10,8 +10,10 @@ defmodule Moon.Assets.Duotones.NoNotification do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/duotone" }}
+
     <svg class="moon-duotone">
-      <use href="/assets/duotones/no-notification.svg#item"></use>
+      <use href="/images/assets/duotones/no-notification.svg#item"></use>
     </svg>
     """
   end

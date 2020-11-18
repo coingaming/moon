@@ -1,0 +1,5 @@
+@import "../../src/assets/icon.scss";
+
+.moon-icon {
+  @include moon-icon;
+}

@@ -10,8 +10,10 @@ defmodule Moon.Assets.Duotones.NoParticipations do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/duotone" }}
+
     <svg class="moon-duotone">
-      <use href="/assets/duotones/no-participations.svg#item"></use>
+      <use href="/images/assets/duotones/no-participations.svg#item"></use>
     </svg>
     """
   end

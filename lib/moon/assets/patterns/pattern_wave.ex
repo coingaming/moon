@@ -10,8 +10,10 @@ defmodule Moon.Assets.Patterns.PatternWave do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/pattern" }}
+
     <svg class="moon-pattern">
-      <use href="/assets/patterns/pattern-wave.svg#item"></use>
+      <use href="/images/assets/patterns/pattern-wave.svg#item"></use>
     </svg>
     """
   end

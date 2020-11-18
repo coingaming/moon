@@ -10,8 +10,10 @@ defmodule Moon.Assets.Duotones.YouPlayWePay do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/duotone" }}
+
     <svg class="moon-duotone">
-      <use href="/assets/duotones/you-play-we-pay.svg#item"></use>
+      <use href="/images/assets/duotones/you-play-we-pay.svg#item"></use>
     </svg>
     """
   end

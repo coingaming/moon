@@ -1,1 +1,1 @@
-import "../../css/components/button.scss";
+import "moon-css/example/components/button.scss"

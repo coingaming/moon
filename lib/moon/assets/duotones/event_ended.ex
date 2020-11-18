@@ -10,8 +10,10 @@ defmodule Moon.Assets.Duotones.EventEnded do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/duotone" }}
+
     <svg class="moon-duotone">
-      <use href="/assets/duotones/event-ended.svg#item"></use>
+      <use href="/images/assets/duotones/event-ended.svg#item"></use>
     </svg>
     """
   end

@@ -10,8 +10,10 @@ defmodule Moon.Assets.Duotones.HustleToTop do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/duotone" }}
+
     <svg class="moon-duotone">
-      <use href="/assets/duotones/hustle-to-top.svg#item"></use>
+      <use href="/images/assets/duotones/hustle-to-top.svg#item"></use>
     </svg>
     """
   end

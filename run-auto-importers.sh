@@ -11,3 +11,5 @@ yarn
 npx ts-node assets-importer.ts
 
 cd $root_dir
+
+cp -a assets/node_modules/moon-css/example/assets assets/static/

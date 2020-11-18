@@ -8,8 +8,10 @@ defmodule Moon.Assets.Icons.IconChevronUpDown do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/icon" }}
+
     <svg class="moon-icon">
-      <use href="/assets/icons/icon-chevron-up-down.svg#item"></use>
+      <use href="/images/assets/icons/icon-chevron-up-down.svg#item"></use>
     </svg>
     """
   end

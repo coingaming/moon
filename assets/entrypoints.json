@@ -1,6 +1,8 @@
 {
   "06EIPELu": "./js/components/link",
   "4oZPmTkJ": "./js/components/badge",
+  "CuDuyV9D": "./js/assets/pattern",
+  "DarITsUM": "./js/assets/logo",
   "Fv9keEym": "./js/components/text",
   "IswQ07CW": "./js/components/stack",
   "KYSNsNZO": "./js/app.js",
@@ -11,7 +13,10 @@
   "SZ3uBdtk": "./js/components/carousel",
   "ZQEgbjC1": "./js/themes/sportsbet-light.js",
   "d5GN9sUL": "./js/themes/sportsbet-dark.js",
+  "eIAwS0ET": "./js/assets/crest",
   "jYMd9kaG": "./js/components/select",
+  "lWAbuUOP": "./js/assets/duotone",
+  "oKTWXly2": "./js/assets/icon",
   "tgZ4flyW": "./js/components/checkbox",
   "xIDNo6RP": "./js/components/heading"
 }

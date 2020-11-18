@@ -10,8 +10,10 @@ defmodule Moon.Assets.Crests.CrestSouthampton do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/crest" }}
+
     <svg class="moon-crest">
-      <use href="/assets/crests/crest-southampton.svg#item"></use>
+      <use href="/images/assets/crests/crest-southampton.svg#item"></use>
     </svg>
     """
   end

@@ -55,8 +55,10 @@ defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
     ''}
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/${iconType}" }}
+
     <svg class="moon-${iconType}">
-      <use href="/assets/${assetsFolder}/${file}.svg#item"></use>
+      <use href="/images/assets/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     """
   end

@@ -10,8 +10,10 @@ defmodule Moon.Assets.Logos.LogoMissions do
   
   def render(assigns) do 
     ~H"""
+    {{ asset_import @socket, "js/assets/logo" }}
+
     <svg class="moon-logo">
-      <use href="/assets/logos/logo-missions.svg#item"></use>
+      <use href="/images/assets/logos/logo-missions.svg#item"></use>
     </svg>
     """
   end
