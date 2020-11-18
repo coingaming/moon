@@ -1,35 +1,16 @@
 defmodule Moon.Components.Link do
   use Moon.StatelessComponent
-  use Moon.Components.Context
 
-  prop(add_class, :string)
-  prop(color, :string)
-  prop(background, :string)
-  prop(margin, :string)
-  prop(padding, :string)
-  prop(style, :string)
   prop(to, :any)
+  prop(secondary, :boolean)
+  prop(disabled, :boolean)
+  prop(optional, :boolean)
 
   def render(assigns) do
-    class_name =
-      get_class_name(
-        "components-link-#{assigns.color}-#{assigns.background}-#{assigns.margin}-#{assigns.style}"
-      )
-
     ~H"""
-    <Context get={{ theme: theme }}>
-      <style>
-        .{{ class_name }} {
-          color: {{ @color || theme.color.text }};
-          background: {{ @background }};
-          margin: {{ @margin }};
-          padding: {{ @padding }};
-          {{ @style }};
-        }
-      </style>
+    {{ asset_import @socket, "js/components/link" }}
 
-      <a class="{{ class_name }} {{ @add_class }}" href={{ @to }}><slot /></a>
-    </Context>
+    <a class="moon-link" href={{ @to }} data-secondary={{ @secondary && "true" }} data-optional={{ @optional && "true" }} data-disabled={{ @disabled && "true" }}><slot /></a>
     """
   end
 end

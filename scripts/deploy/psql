@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+ENV_NAME=${1:-$ENV_NAME}
+
+source "$(dirname "$0")/vars"
+
+ARGS="${@:2}"
+
+var="$(echo $ENV_NAME | awk '{print toupper($0)}')_POSTGRES_URL"
+POSTGRES_URL="${!var}"
+
+if [ "$POSTGRES_URL" == "" ]; then
+  echo "psql to environment $ENV_NAME is not supported"
+else
+  psql "${POSTGRES_URL}" $ARGS
+fi

@@ -1,13 +1,15 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
+  @version "0.0.1-moonsurface"
+
   def project do
     [
       app: :moon,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,18 +35,25 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.3"},
+      {:phoenix, "~> 1.5.6"},
+      # {:phoenix_live_view, "~> 0.14.6"},
+      {:phoenix_live_view, git: "git@github.com:phoenixframework/phoenix_live_view.git", override: true},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
+      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_poller, "~> 0.4"},
+      {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:asset_import, git: "git@github.com:coingaming/asset_import.git"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
-      {:decimal, "~> 2.0"},
       {:makeup, "1.0.5"},
       {:makeup_elixir, "~> 0.14.0"},
       {:ecto_sql, "~> 3.1"},
-      {:phoenix_ecto, "~> 4.0"}
+      {:phoenix_ecto, "~> 4.0"},
+      {:distillery, "~> 2.1"}
     ]
   end
 

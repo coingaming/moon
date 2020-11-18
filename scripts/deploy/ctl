@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+ENV_NAME=${1:-$ENV_NAME}
+
+source "$(dirname "$0")/vars"
+
+ARGS="${@:2}"
+
+echo -e "Getting ${GREEN}${ENV_NAME}${DEF} cluster nodes.."
+NODE_IPS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=node:$ECS_CLUSTER-asg" --query 'Reservations[].Instances[].PrivateIpAddress' --output text)
+NODE_COUNT=$(echo -n $(echo $NODE_IPS | wc -w))
+
+if [ "$NODE_COUNT" == "1" ]; then
+  ssh -t ec2-user@$NODE_IPS "docker exec -it \$(docker ps -q -f name=ecs-$ECS_SERVICE-) bin/$APP_NAME $ARGS"
+else
+  select NODE in $NODE_IPS; do
+    ssh -t ec2-user@$NODE "docker exec -it \$(docker ps -q -f name=ecs-$ECS_SERVICE-) bin/$APP_NAME $ARGS"
+  done
+fi

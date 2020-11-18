@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && cd ../ && pwd )"
+
+source "$PROJECT_DIR/.env"
+
+DEF="\033[0m"
+BOLD="\033[1;1m"
+GREEN="\033[1;32m"
+BLUE="\033[1;34m"
+RED="\033[1;91m"
+YELLOW="\033[1;93m"
+
+MIX_ENV=${MIX_ENV:-prod}
+
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+# ENV_NAME=${ENV_NAME:-$(git rev-parse --abbrev-ref HEAD)}
+
+if [ "$BRANCH_NAME" == "moon-css-rewrite" ]; then
+  ENV_NAME="live"
+  STACKS_BRACH="bitcasino-live"
+fi
+
+DOCKER_ORG=${DOCKER_ORG:-heathmont}
+HEX_ORG=${HEX_ORG:-coingaming}
+
+GITHUB_SSH_KEY=${ROBOT_SSH_KEY:-$(cat ~/.ssh/id_rsa | base64)}
+HEX_API_KEY=${HEX_API_KEY:-$(grep -A 1 hexpm:$HEX_ORG $HOME/.hex/hex.config | tail -n 1 | awk '{ print $3 }' | sed 's/[<">},]//g')}
+
+APP_NAME=${APP_NAME:-`grep 'app: :' "$PROJECT_DIR/mix.exs" | sed -e 's/app: ://g' -e 's/[", ]//g'`}
+APP_VSN=${APP_VSN:-`grep '@version ' "$PROJECT_DIR/mix.exs" | sed -e 's/@version //g' -e 's/[", ]//g'`}
+
+STACK_NAME="${STACK_NAME:-$APP_NAME}"
+SERVICE_NAME="${SERVICE_NAME:-$STACK_NAME}"
+
+ECS_CLUSTER="${ENV_NAME:0:1}-${ECS_CLUSTER:-web}"
+ECS_SERVICE="${ENV_NAME:0:1}-${ECS_SERVICE:-"${STACK_NAME}_${SERVICE_NAME}"}"
+
+AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-$(grep aws_access_key_id $HOME/.aws/credentials | awk '{ print $3 }' | head -n 1)}
+AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-$(grep aws_access_key_id $HOME/.aws/credentials | awk '{ print $3 }' | head -n 1)}

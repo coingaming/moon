@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+ENV_NAME=${1:-$ENV_NAME}
+
+source "$(dirname "$0")/vars"
+
+function usage {
+    echo "docker-deploy is a tool to deploy elixir project directly to aws ecs."
+    echo "Also checks if the docker image and service exists before deploy."
+    echo ""
+    echo "Usage: docker-deploy [env] [version]"
+    echo ""
+    echo "env:     Which env to deploy to. Defaults to branch name."
+    echo "version: Which exact version to deploy. Defaults to current git commit."
+    echo ""
+    echo "Examples:"
+    echo ""
+    echo "   docker-deploy               - Deploy current commit to branch env"
+    echo "   docker-deploy v0.1.0        - Deploy exact version to branch env"
+    echo "   docker-deploy v0.1.0 prod   - Deploy exact version to production env"
+    echo "   docker-deploy \$CIRCLE_TAG   - Deploy built image to branch env in CI"
+    echo ""
+    echo "Dependencies:"
+    echo ""
+    echo "   aws-cli     - https://docs.aws.amazon.com/cli/latest/userguide/tutorial-ec2-ubuntu.html#install-cli"
+    echo "   jq          - https://github.com/stedolan/jq/wiki/Installation"
+    echo "   ecs-deploy  - curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee /usr/local/bin/ecs-deploy"
+    echo "                 sudo chmod +x /usr/local/bin/ecs-deploy"
+    exit
+}
+
+if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  usage
+fi
+
+BUILD=`git rev-parse --short HEAD`
+
+TAG_ARG="$2"
+
+if [ "$TAG_ARG" = "v${APP_VSN}" ]; then
+  TAG="v${APP_VSN}"
+else
+  TAG="v${APP_VSN}-${BUILD}"
+fi
+
+IMAGE="$DOCKER_ORG/$APP_NAME:$TAG"
+
+if [ -z "$DOCKER_USER" ] || [ -z "$DOCKER_PASS" ]; then
+  read -p "Docker Hub username: " DOCKER_USER
+  read -s -p "Docker Hub password: " DOCKER_PASS
+fi
+
+echo ""
+echo "Logging in to docker..."
+
+TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'${DOCKER_USER}'", "password": "'${DOCKER_PASS}'"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
+
+if [ "$TOKEN" == "null" ]; then
+  echo "docker login failed"
+  exit
+fi
+
+function docker_image_exists() {
+  EXISTS=$(curl -s -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/$1/tags/?page_size=10000 | jq -r "[.results | .[] | .name == \"$2\"] | any")
+  test $EXISTS = true
+}
+
+function ecs_service_exists() {
+  EXISTS=$(aws ecs describe-services --cluster $1 --service $2 --query "services[0].status" --output json)
+  test $EXISTS != "null"
+}
+
+if docker_image_exists "$DOCKER_ORG/$APP_NAME" "$TAG"; then
+  if ecs_service_exists $ECS_CLUSTER $APP_NAME; then
+    ecs-deploy -c $ECS_CLUSTER -n $ECS_SERVICE -i $IMAGE -t 600 --enable-rollback
+  else
+    echo "service $SERVICE does not exists in $ECS_CLUSTER cluster"
+    exit 1
+  fi
+else
+  echo "$IMAGE does not exists in dockerhub"
+  exit 1
+fi

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+ENV_NAME=${1:-$ENV_NAME}
+
+source "$(dirname "$0")/vars"
+
+ARGS="${@:2}"
+
+echo -e "Getting ${GREEN}${ENV_NAME}${DEF} service status.."
+aws ecs describe-services --cluster $ECS_CLUSTER --service $ECS_SERVICE --query 'services[].deployments[].{running: runningCount, pending: pendingCount, status: status}' --output table

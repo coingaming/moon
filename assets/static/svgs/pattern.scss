@@ -1,0 +1,5 @@
+@import "../../src/assets/pattern.scss";
+
+.moon-pattern {
+  @include moon-pattern;
+}

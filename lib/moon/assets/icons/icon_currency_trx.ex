@@ -1,34 +1,19 @@
-defmodule Moon.Assets.Icons.IconCurrencyTRX do
+
+defmodule Moon.Assets.Icons.IconCurrencyTrx do 
   use Moon.StatelessComponent
-  use Moon.Components.Context
-
-  prop(color, :string)
-  prop(background_color, :string)
-  prop(font_size, :string)
-
-  def render(assigns) do
-    class_name =
-      get_class_name(
-        "Icons-IconCurrencyTRX-#{assigns.color}-#{assigns.background_color}-#{assigns.font_size}"
-      )
-
+  
+  prop color, :string, values: Moon.colors
+  prop background_color, :string, values: Moon.colors
+  prop font_size, :string
+  
+  def render(assigns) do 
     ~H"""
-    <Context get={{ theme: theme }}>
-    <style>
-      .{{ class_name }} {
-        vertical-align: middle;
-        width: 1em;
-        color: {{ get_color(@color, theme) }};
-        background-color: {{ get_color(@background_color, theme) }};
-        font-size: {{ @font_size }};
-        display: inline-block;
-        overflow: hidden;
-        
-      }
-    </style>
-
-    <svg class={{ class_name }} width="auto" height="1em"  viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M14.291 2.77933L0 0L7.52088 20L18 6.50716L14.291 2.77933ZM14.061 4.00397L16.2471 6.19982L10.2679 7.34408L14.061 4.00397ZM8.96958 7.11523L2.66743 1.59156L12.9676 3.5945L8.96958 7.11523ZM8.52038 8.09211L7.49314 17.0703L1.95248 2.33486L8.52038 8.09211ZM9.47156 8.56873L16.0923 7.30153L8.49801 17.0798L9.47156 8.56873Z" fill="currentColor"/> </svg>
-    </Context>
+    {{ asset_import @socket, "js/assets/icon" }}
+    
+    <svg class="moon-icon" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
+      <use href="/svgs/icons/icon-currency-trx.svg#item"></use>
+    </svg>
+    
     """
   end
 end

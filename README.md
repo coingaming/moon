@@ -1,22 +1,19 @@
-# Installation 
+# Moon
 
-## for Moon developer
+To start your Phoenix server:
 
-```
-git clone git@github.com:coingaming/moon.git
-cd moon
-bash run-install.sh
-bash run-locally-dev.sh
-open "http://localhost:4000"
-```
+  * Install dependencies with `mix deps.get`
+  * Install Node.js dependencies with `npm install` inside the `assets` directory
+  * Start Phoenix endpoint with `mix phx.server`
 
-## for Site Builder developer
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-add into mix.exs deps:
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-```
-  {:moon, git: "git@github.com:coingaming/moon.git"}
-```
+## Learn more
 
-Note: Site Builder developer (who is connecting template with data layer) - should not write any HTML or CSS - only passing data (including handle_event-s) to components that will be available from moon/sites.
-
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix
