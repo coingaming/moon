@@ -1,0 +1,118 @@
+version: 2
+jobs:
+  otp_release:
+    docker:
+      - image: heathmont/elixir-ci:1.10.2-alpine
+    environment:
+      MIX_ENV: prod
+    steps:
+    - checkout
+    - run:
+        name: Check variables
+        command: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
+    - run:
+        name: Setup robot SSH key
+        command: echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
+    - run:
+        name: Setup SSH config
+        command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+    - restore_cache:
+        keys:
+        - v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+        - v4-build-{{ checksum "mix.lock" }}-
+        - v4-build-
+    - run:
+        name: Update git submodules
+        command: git submodule update --init --recursive
+    - run:
+        name: Hex auth
+        command: mix hex.organization auth coingaming --key $HEX_API_KEY
+    - run:
+        name: ExEnv
+        command: mix archive.install hex ex_env 0.3.1 --force
+    - run:
+        name: Fetch dependencies
+        command: mix deps.get
+    - run:
+        name: Build release
+        command: scripts/deploy/build-release
+    - save_cache:
+        key: v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+        paths:
+        - .cache
+        - deps
+        - ~/.mix
+    - persist_to_workspace:
+        root: ./
+        paths:
+        - release.tar.gz
+  docker_image:
+    docker:
+      - image: heathmont/elixir-ci:1.10.2-alpine
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Docker login
+          command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
+  deploy:
+    docker:
+      - image: heathmont/elixir-ci:1.10.2-alpine
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Docker login
+          command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run:
+          name: Setup robot SSH key
+          command: |
+            echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
+            echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+      - run:
+          name: Setup deploy tool auth
+          command: echo "{\"user\":\"$DEPLOY_USER\", \"pass\":\"$DEPLOY_PASS\"}" > $HOME/.deploy_auth
+      - run:
+          name: Deploy
+          command: scripts/deploy/stacks-deploy $CIRCLE_TAG
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - otp_release:
+          context: global
+          filters:
+            branches:
+              only: 
+                - moon-css-rewrite
+            tags:
+              only: /^v.*/
+      - docker_image:
+          context: global
+          filters:
+            branches:
+              only: 
+                - moon-css-rewrite
+            tags:
+              only: /^v.*/
+          requires:
+            - otp_release
+      - deploy:
+          context: global
+          filters:
+            branches:
+              only: 
+                - moon-css-rewrite
+            tags:
+              only: /^v.*/
+          requires:
+            - docker_image
+      

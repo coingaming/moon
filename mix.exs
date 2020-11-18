@@ -1,6 +1,8 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
+  @version "0.0.1-moonsurface"
+
   def project do
     [
       app: :moon,
@@ -51,6 +53,7 @@ defmodule Moon.MixProject do
       {:makeup_elixir, "~> 0.14.0"},
       {:ecto_sql, "~> 3.1"},
       {:phoenix_ecto, "~> 4.0"},
+      {:distillery, "~> 2.1"}
     ]
   end
 

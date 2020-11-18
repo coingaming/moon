@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+ENV_NAME=${2:-$ENV_NAME}
+
+source "$(dirname "$0")/vars"
+
+function usage {
+    echo "stacks-deploy is a tool to deploy elixir project to aws ecs via stacks repo."
+    echo ""
+    echo "Usage: stacks-deploy [env] [version]"
+    echo ""
+    echo "env:     Which env to deploy to. Defaults to branch name."
+    echo "version: Which exact version to deploy. Defaults to current git commit."
+    echo ""
+    echo "Examples:"
+    echo ""
+    echo "   stacks-deploy               - Deploy current commit to branch env"
+    echo "   stacks-deploy prelive v0.1.0        - Deploy exact version to branch env"
+    echo "   stacks-deploy prelive v0.1.0   - Deploy exact version to production env"
+    echo "   stacks-deploy prelive \$CIRCLE_TAG   - Deploy built image to branch env in CI"
+    echo ""
+    echo "Dependencies:"
+    echo ""
+    echo "   jq          - https://github.com/stedolan/jq/wiki/Installation"
+    echo "   yq          - https://github.com/mikefarah/yq#install"
+    exit
+}
+
+# if [ "$ENV_NAME" == "live" ]; then
+#   echo "Skip auto-deploy to live"
+#   exit 0;
+# fi
+
+if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  usage
+fi
+
+BUILD=`git rev-parse --short HEAD`
+
+TAG_ARG="$1"
+
+if [ "$TAG_ARG" = "v${APP_VSN}" ]; then
+  TAG="v${APP_VSN}"
+else
+  TAG="v${APP_VSN}-${BUILD}"
+fi
+
+# Not containing env info
+# IMAGE="$DOCKER_ORG/$SERVICE_NAME:$TAG"
+
+# This is branch based env tag
+IMAGE="${DOCKER_ORG}/${SERVICE_NAME}:${TAG}-${ENV_NAME}"
+
+# change stacks
+git clone git@github.com:coingaming/stacks.git && cd stacks
+if [ -n "$ROBOT_EMAIL" ]; then
+  git config user.email "$ROBOT_EMAIL"
+fi
+if [ -n "$ROBOT_NAME" ]; then
+  git config user.name "$ROBOT_NAME"
+fi
+git checkout $STACKS_BRACH
+
+# update-image is shit - do not use it
+# scripts/update-image $STACK_NAME $SERVICE_NAME $IMAGE
+sed -E "s/(moon-surface:v)([0-9a-zA-Z.-]+)/moon-surface:${TAG}-${ENV_NAME}/g" docker-compose.design.yml
+sed -E "s/(moon-surface:v)([0-9a-zA-Z.-]+)/moon-surface:${TAG}-${ENV_NAME}/g" docker-compose.design.yml > docker-compose.design.yml.tmp
+mv docker-compose.design.yml.tmp docker-compose.bitcasino.yml
+git commit -am "upgraded $SERVICE_NAME to $TAG in $ENV_NAME"
+git tag $STACK_NAME-$TAG-$ENV_NAME
+git push origin $STACKS_BRACH && git push --tags
+
