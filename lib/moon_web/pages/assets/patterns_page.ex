@@ -14,23 +14,22 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~H"""
-    <Inline>
-      <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
-        <PatternLines color="piccolo_100" height="1rem" width="1rem" />
-        <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
-        <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
-        <PatternStars color="piccolo_100" height="1rem" width="1rem" />
-        <PatternWave color="piccolo_100" height="1rem" width="1rem" />
+    <Inline font_size="5em">
+      <PatternCircles color="piccolo-100" />
+      <PatternLines />
+      <PatternRipple />
+      <PatternSpeed />
+      <PatternStars />
+      <PatternWave />
     </Inline>
     <#CodePreview>
       <Inline>
-
-        <PatternCircles color="piccolo_100" height="1rem" width="1rem" />
-        <PatternLines color="piccolo_100" height="1rem" width="1rem" />
-        <PatternRipple color="piccolo_100" height="1rem" width="1rem" />
-        <PatternSpeed color="piccolo_100" height="1rem" width="1rem" />
-        <PatternStars color="piccolo_100" height="1rem" width="1rem" />
-        <PatternWave color="piccolo_100" height="1rem" width="1rem" />
+        <PatternCircles color="piccolo-100" />
+        <PatternLines />
+        <PatternRipple />
+        <PatternSpeed />
+        <PatternStars />
+        <PatternWave />
       </Inline>
     </#CodePreview>
     """

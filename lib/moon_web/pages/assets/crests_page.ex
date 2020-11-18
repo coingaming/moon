@@ -13,17 +13,17 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   def render(assigns) do
     ~H"""
     <Inline>
-      <CrestArsenal color="piccolo-100" height="1rem" width="1rem" />
-        <CrestFlamengo color="piccolo-100" height="1rem" width="1rem" />
-        <CrestSouthampton color="piccolo-100" height="1rem" width="1rem" />
-        <CrestWatford color="piccolo-100" height="1rem" width="1rem" />
+      <CrestArsenal font_size="10rem" />
+      <CrestFlamengo font_size="10rem" />
+      <CrestSouthampton font_size="10rem" />
+      <CrestWatford font_size="10rem" />
     </Inline>
     <#CodePreview>
       <Inline>
-        <CrestArsenal color="piccolo-100" height="1rem" width="1rem" />
-        <CrestFlamengo color="piccolo-100" height="1rem" width="1rem" />
-        <CrestSouthampton color="piccolo-100" height="1rem" width="1rem" />
-        <CrestWatford color="piccolo-100" height="1rem" width="1rem" />
+        <CrestArsenal font_size="10rem" />
+        <CrestFlamengo font_size="10rem" />
+        <CrestSouthampton font_size="10rem" />
+        <CrestWatford font_size="10rem" />
       </Inline>
     </#CodePreview>
     """

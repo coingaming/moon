@@ -260,512 +260,511 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   def render(assigns) do
     ~H"""
     <Inline>
-      <IconAbout color="piccolo_100" background_color="gohan_100" />
-        <IconAdd color="piccolo_100" background_color="gohan_100" />
-        <IconAlertCircle color="piccolo_100" background_color="gohan_100" />
-        <IconAlignLeft color="piccolo_100" background_color="gohan_100" />
-        <IconAllSports color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonalDownLeft color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonalUpRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonals color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLUp color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLeftRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLeft color="piccolo_100" background_color="gohan_100" />
-        <IconArrowRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowTopRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowUpDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowUp color="piccolo_100" background_color="gohan_100" />
-        <IconAsianView color="piccolo_100" background_color="gohan_100" />
-        <IconAttache color="piccolo_100" background_color="gohan_100" />
-        <IconAward color="piccolo_100" background_color="gohan_100" />
-        <IconBannerInfo color="piccolo_100" background_color="gohan_100" />
-        <IconBell color="piccolo_100" background_color="gohan_100" />
-        <IconBitcoinTalk color="piccolo_100" background_color="gohan_100" />
-        <IconBombayClub color="piccolo_100" background_color="gohan_100" />
-        <IconCalendarEmpty color="piccolo_100" background_color="gohan_100" />
-        <IconCalendar color="piccolo_100" background_color="gohan_100" />
-        <IconCard color="piccolo_100" background_color="gohan_100" />
-        <IconCase color="piccolo_100" background_color="gohan_100" />
-        <IconCashOut color="piccolo_100" background_color="gohan_100" />
-        <IconCasino color="piccolo_100" background_color="gohan_100" />
-        <IconChartArea color="piccolo_100" background_color="gohan_100" />
-        <IconChartBar color="piccolo_100" background_color="gohan_100" />
-        <IconChartPies color="piccolo_100" background_color="gohan_100" />
-        <IconChartRound color="piccolo_100" background_color="gohan_100" />
-        <IconChartSegment color="piccolo_100" background_color="gohan_100" />
-        <IconChevronDownRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronDown color="piccolo_100" background_color="gohan_100" />
-        <IconChevronLeftRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronLeft color="piccolo_100" background_color="gohan_100" />
-        <IconChevronRightRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronRight color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUpDown color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUpRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUp color="piccolo_100" background_color="gohan_100" />
-        <IconCircle color="piccolo_100" background_color="gohan_100" />
-        <IconClock color="piccolo_100" background_color="gohan_100" />
-        <IconCloseRounded color="piccolo_100" background_color="gohan_100" />
-        <IconCloseSmall color="piccolo_100" background_color="gohan_100" />
-        <IconClose color="piccolo_100" background_color="gohan_100" />
-        <IconCode color="piccolo_100" background_color="gohan_100" />
-        <IconCollapse color="piccolo_100" background_color="gohan_100" />
-        <IconCopy color="piccolo_100" background_color="gohan_100" />
-        <IconCredit color="piccolo_100" background_color="gohan_100" />
-        <IconCrypto color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyArs color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBdt color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBob color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBrl color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBtc color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCad color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyClp color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCny color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCrc color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyEth color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyEur color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyGel color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyHkd color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIdr color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyInr color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIqd color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyJpy color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyKrw color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyLtc color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMxn color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMyr color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPen color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPkr color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyRub color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencySoc color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyThb color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTrx color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTry color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUah color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUsd color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUsdt color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVes color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVnd color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyXrp color="piccolo_100" background_color="gohan_100" />
-        <IconCursor color="piccolo_100" background_color="gohan_100" />
-        <IconData color="piccolo_100" background_color="gohan_100" />
-        <IconDelete color="piccolo_100" background_color="gohan_100" />
-        <IconDesktop color="piccolo_100" background_color="gohan_100" />
-        <IconDetails color="piccolo_100" background_color="gohan_100" />
-        <IconDouble color="piccolo_100" background_color="gohan_100" />
-        <IconDownload color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneArrows color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneChat color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneCoins color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneMail color="piccolo_100" background_color="gohan_100" />
-        <IconESportsCallOfDuty color="piccolo_100" background_color="gohan_100" />
-        <IconESportsCounterStrike color="piccolo_100" background_color="gohan_100" />
-        <IconESportsDota2 color="piccolo_100" background_color="gohan_100" />
-        <IconESportsENba color="piccolo_100" background_color="gohan_100" />
-        <IconESportsESport color="piccolo_100" background_color="gohan_100" />
-        <IconESportsFootball color="piccolo_100" background_color="gohan_100" />
-        <IconESportsHearthstone color="piccolo_100" background_color="gohan_100" />
-        <IconESportsLeagueOfLegends color="piccolo_100" background_color="gohan_100" />
-        <IconESportsOverwatch color="piccolo_100" background_color="gohan_100" />
-        <IconESportsRainbow color="piccolo_100" background_color="gohan_100" />
-        <IconESportsRocketLeague color="piccolo_100" background_color="gohan_100" />
-        <IconESportsStarCraft color="piccolo_100" background_color="gohan_100" />
-        <IconEdit color="piccolo_100" background_color="gohan_100" />
-        <IconErrorCircle color="piccolo_100" background_color="gohan_100" />
-        <IconExpand color="piccolo_100" background_color="gohan_100" />
-        <IconEyeClosed color="piccolo_100" background_color="gohan_100" />
-        <IconEye color="piccolo_100" background_color="gohan_100" />
-        <IconFacebook color="piccolo_100" background_color="gohan_100" />
-        <IconFilter color="piccolo_100" background_color="gohan_100" />
-        <IconForward color="piccolo_100" background_color="gohan_100" />
-        <IconFreebet color="piccolo_100" background_color="gohan_100" />
-        <IconGamepad color="piccolo_100" background_color="gohan_100" />
-        <IconGift color="piccolo_100" background_color="gohan_100" />
-        <IconGlasses color="piccolo_100" background_color="gohan_100" />
-        <IconGlobe color="piccolo_100" background_color="gohan_100" />
-        <IconGoogle color="piccolo_100" background_color="gohan_100" />
-        <IconHamburger color="piccolo_100" background_color="gohan_100" />
-        <IconHelp color="piccolo_100" background_color="gohan_100" />
-        <IconHistory color="piccolo_100" background_color="gohan_100" />
-        <IconHome color="piccolo_100" background_color="gohan_100" />
-        <IconHub88 color="piccolo_100" background_color="gohan_100" />
-        <IconHyperlink color="piccolo_100" background_color="gohan_100" />
-        <IconInPlay color="piccolo_100" background_color="gohan_100" />
-        <IconInfoCircle color="piccolo_100" background_color="gohan_100" />
-        <IconInfo color="piccolo_100" background_color="gohan_100" />
-        <IconInstagram color="piccolo_100" background_color="gohan_100" />
-        <IconLeftArrowCurveRight color="piccolo_100" background_color="gohan_100" />
-        <IconLifeRing color="piccolo_100" background_color="gohan_100" />
-        <IconLightbulb color="piccolo_100" background_color="gohan_100" />
-        <IconLimit color="piccolo_100" background_color="gohan_100" />
-        <IconLine color="piccolo_100" background_color="gohan_100" />
-        <IconLink color="piccolo_100" background_color="gohan_100" />
-        <IconListNumbered color="piccolo_100" background_color="gohan_100" />
-        <IconLiveChat color="piccolo_100" background_color="gohan_100" />
-        <IconLiveStream color="piccolo_100" background_color="gohan_100" />
-        <IconLogin color="piccolo_100" background_color="gohan_100" />
-        <IconLogoPlain color="piccolo_100" background_color="gohan_100" />
-        <IconLogout color="piccolo_100" background_color="gohan_100" />
-        <IconLoyalty0 color="piccolo_100" background_color="gohan_100" />
-        <IconMail color="piccolo_100" background_color="gohan_100" />
-        <IconMenuHome color="piccolo_100" background_color="gohan_100" />
-        <IconMenu color="piccolo_100" background_color="gohan_100" />
-        <IconMinus color="piccolo_100" background_color="gohan_100" />
-        <IconMobile color="piccolo_100" background_color="gohan_100" />
-        <IconMoney color="piccolo_100" background_color="gohan_100" />
-        <IconMoneybag color="piccolo_100" background_color="gohan_100" />
-        <IconMoon color="piccolo_100" background_color="gohan_100" />
-        <IconMore color="piccolo_100" background_color="gohan_100" />
-        <IconNews color="piccolo_100" background_color="gohan_100" />
-        <IconNotificationUnread color="piccolo_100" background_color="gohan_100" />
-        <IconNotification color="piccolo_100" background_color="gohan_100" />
-        <IconPadlock color="piccolo_100" background_color="gohan_100" />
-        <IconPencil color="piccolo_100" background_color="gohan_100" />
-        <IconPhoto color="piccolo_100" background_color="gohan_100" />
-        <IconPicture color="piccolo_100" background_color="gohan_100" />
-        <IconPin color="piccolo_100" background_color="gohan_100" />
-        <IconPlay color="piccolo_100" background_color="gohan_100" />
-        <IconPlus color="piccolo_100" background_color="gohan_100" />
-        <IconPriceBoost color="piccolo_100" background_color="gohan_100" />
-        <IconPrint color="piccolo_100" background_color="gohan_100" />
-        <IconProfile color="piccolo_100" background_color="gohan_100" />
-        <IconPromotions color="piccolo_100" background_color="gohan_100" />
-        <IconRefresh color="piccolo_100" background_color="gohan_100" />
-        <IconRow color="piccolo_100" background_color="gohan_100" />
-        <IconSbShield color="piccolo_100" background_color="gohan_100" />
-        <IconSearch color="piccolo_100" background_color="gohan_100" />
-        <IconSettings color="piccolo_100" background_color="gohan_100" />
-        <IconShare color="piccolo_100" background_color="gohan_100" />
-        <IconSliders color="piccolo_100" background_color="gohan_100" />
-        <IconSlots color="piccolo_100" background_color="gohan_100" />
-        <IconSnackbarSuccess color="piccolo_100" background_color="gohan_100" />
-        <IconSportWidget color="piccolo_100" background_color="gohan_100" />
-        <IconSportsAmericanFootBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBadminton color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBaseBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBasketBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBiathlon color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBoxing color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCenter color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCricket color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCycling color="piccolo_100" background_color="gohan_100" />
-        <IconSportsDarts color="piccolo_100" background_color="gohan_100" />
-        <IconSportsESports color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFantasy color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFeatured color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFootBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsGolf color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHandBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHorseRacing color="piccolo_100" background_color="gohan_100" />
-        <IconSportsIceHockey color="piccolo_100" background_color="gohan_100" />
-        <IconSportsMma color="piccolo_100" background_color="gohan_100" />
-        <IconSportsMotorSports color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPoker color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPolitics color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPool color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPopular color="piccolo_100" background_color="gohan_100" />
-        <IconSportsRugby color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSki color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSnooker color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSpecial color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSquash color="piccolo_100" background_color="gohan_100" />
-        <IconSportsTableTennis color="piccolo_100" background_color="gohan_100" />
-        <IconSportsTennis color="piccolo_100" background_color="gohan_100" />
-        <IconSportsVolleyBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsWaterPolo color="piccolo_100" background_color="gohan_100" />
-        <IconStarEmpty color="piccolo_100" background_color="gohan_100" />
-        <IconStarFilled color="piccolo_100" background_color="gohan_100" />
-        <IconStarFlag color="piccolo_100" background_color="gohan_100" />
-        <IconStars color="piccolo_100" background_color="gohan_100" />
-        <IconStats color="piccolo_100" background_color="gohan_100" />
-        <IconStopwatch color="piccolo_100" background_color="gohan_100" />
-        <IconSuccessCircle color="piccolo_100" background_color="gohan_100" />
-        <IconSun color="piccolo_100" background_color="gohan_100" />
-        <IconSupport color="piccolo_100" background_color="gohan_100" />
-        <IconTable color="piccolo_100" background_color="gohan_100" />
-        <IconTag color="piccolo_100" background_color="gohan_100" />
-        <IconTelegram color="piccolo_100" background_color="gohan_100" />
-        <IconText color="piccolo_100" background_color="gohan_100" />
-        <IconTimer color="piccolo_100" background_color="gohan_100" />
-        <IconTwitter color="piccolo_100" background_color="gohan_100" />
-        <IconUpload color="piccolo_100" background_color="gohan_100" />
-        <IconUser color="piccolo_100" background_color="gohan_100" />
-        <IconUsers color="piccolo_100" background_color="gohan_100" />
-        <IconVirtualSports color="piccolo_100" background_color="gohan_100" />
-        <IconVkontakte color="piccolo_100" background_color="gohan_100" />
-        <IconVolatility color="piccolo_100" background_color="gohan_100" />
-        <IconWalletRounded color="piccolo_100" background_color="gohan_100" />
-        <IconWallet color="piccolo_100" background_color="gohan_100" />
-        <IconWand color="piccolo_100" background_color="gohan_100" />
-        <IconWarning color="piccolo_100" background_color="gohan_100" />
-        <IconWhatsapp color="piccolo_100" background_color="gohan_100" />
-        <IconYoutube color="piccolo_100" background_color="gohan_100" />
-        <IconZoom color="piccolo_100" background_color="gohan_100" />
-        <IconError color="piccolo_100" background_color="gohan_100" />
-        <IconGeneralInfo color="piccolo_100" background_color="gohan_100" />
-        <IconGoogleAuth color="piccolo_100" background_color="gohan_100" />
-        <IconLiveCasino color="piccolo_100" background_color="gohan_100" />
-        <IconLock color="piccolo_100" background_color="gohan_100" />
-        <IconSportsGreyhound color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHarness color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHorse color="piccolo_100" background_color="gohan_100" />
-        <IconVerify color="piccolo_100" background_color="gohan_100" />
-
+      <IconAbout />
+      <IconAdd />
+      <IconAlertCircle />
+      <IconAlignLeft />
+      <IconAllSports />
+      <IconArrowDiagonalDownLeft />
+      <IconArrowDiagonalUpRight />
+      <IconArrowDiagonals />
+      <IconArrowDown />
+      <IconArrowLDown />
+      <IconArrowLUp />
+      <IconArrowLeftRight />
+      <IconArrowLeft />
+      <IconArrowRight />
+      <IconArrowTopRight />
+      <IconArrowUpDown />
+      <IconArrowUp />
+      <IconAsianView />
+      <IconAttache />
+      <IconAward />
+      <IconBannerInfo />
+      <IconBell />
+      <IconBitcoinTalk />
+      <IconBombayClub />
+      <IconCalendarEmpty />
+      <IconCalendar />
+      <IconCard />
+      <IconCase />
+      <IconCashOut />
+      <IconCasino />
+      <IconChartArea />
+      <IconChartBar />
+      <IconChartPies />
+      <IconChartRound />
+      <IconChartSegment />
+      <IconChevronDownRounded />
+      <IconChevronDown />
+      <IconChevronLeftRounded />
+      <IconChevronLeft />
+      <IconChevronRightRounded />
+      <IconChevronRight />
+      <IconChevronUpDown />
+      <IconChevronUpRounded />
+      <IconChevronUp />
+      <IconCircle />
+      <IconClock />
+      <IconCloseRounded />
+      <IconCloseSmall />
+      <IconClose />
+      <IconCode />
+      <IconCollapse />
+      <IconCopy />
+      <IconCredit />
+      <IconCrypto />
+      <IconCurrencyArs />
+      <IconCurrencyBdt />
+      <IconCurrencyBob />
+      <IconCurrencyBrl />
+      <IconCurrencyBtc />
+      <IconCurrencyCad />
+      <IconCurrencyClp />
+      <IconCurrencyCny />
+      <IconCurrencyCrc />
+      <IconCurrencyEth />
+      <IconCurrencyEur />
+      <IconCurrencyGel />
+      <IconCurrencyHkd />
+      <IconCurrencyIdr />
+      <IconCurrencyInr />
+      <IconCurrencyIqd />
+      <IconCurrencyJpy />
+      <IconCurrencyKrw />
+      <IconCurrencyLtc />
+      <IconCurrencyMxn />
+      <IconCurrencyMyr />
+      <IconCurrencyPen />
+      <IconCurrencyPkr />
+      <IconCurrencyRub />
+      <IconCurrencySoc />
+      <IconCurrencyThb />
+      <IconCurrencyTrx />
+      <IconCurrencyTry />
+      <IconCurrencyUah />
+      <IconCurrencyUsd />
+      <IconCurrencyUsdt />
+      <IconCurrencyVes />
+      <IconCurrencyVnd />
+      <IconCurrencyXrp />
+      <IconCursor />
+      <IconData />
+      <IconDelete />
+      <IconDesktop />
+      <IconDetails />
+      <IconDouble />
+      <IconDownload />
+      <IconDuotoneArrows />
+      <IconDuotoneChat />
+      <IconDuotoneCoins />
+      <IconDuotoneMail />
+      <IconESportsCallOfDuty />
+      <IconESportsCounterStrike />
+      <IconESportsDota2 />
+      <IconESportsENba />
+      <IconESportsESport />
+      <IconESportsFootball />
+      <IconESportsHearthstone />
+      <IconESportsLeagueOfLegends />
+      <IconESportsOverwatch />
+      <IconESportsRainbow />
+      <IconESportsRocketLeague />
+      <IconESportsStarCraft />
+      <IconEdit />
+      <IconErrorCircle />
+      <IconExpand />
+      <IconEyeClosed />
+      <IconEye />
+      <IconFacebook />
+      <IconFilter />
+      <IconForward />
+      <IconFreebet />
+      <IconGamepad />
+      <IconGift />
+      <IconGlasses />
+      <IconGlobe />
+      <IconGoogle />
+      <IconHamburger />
+      <IconHelp />
+      <IconHistory />
+      <IconHome />
+      <IconHub88 />
+      <IconHyperlink />
+      <IconInPlay />
+      <IconInfoCircle />
+      <IconInfo />
+      <IconInstagram />
+      <IconLeftArrowCurveRight />
+      <IconLifeRing />
+      <IconLightbulb />
+      <IconLimit />
+      <IconLine />
+      <IconLink />
+      <IconListNumbered />
+      <IconLiveChat />
+      <IconLiveStream />
+      <IconLogin />
+      <IconLogoPlain />
+      <IconLogout />
+      <IconLoyalty0 />
+      <IconMail />
+      <IconMenuHome />
+      <IconMenu />
+      <IconMinus />
+      <IconMobile />
+      <IconMoney />
+      <IconMoneybag />
+      <IconMoon />
+      <IconMore />
+      <IconNews />
+      <IconNotificationUnread />
+      <IconNotification />
+      <IconPadlock />
+      <IconPencil />
+      <IconPhoto />
+      <IconPicture />
+      <IconPin />
+      <IconPlay />
+      <IconPlus />
+      <IconPriceBoost />
+      <IconPrint />
+      <IconProfile />
+      <IconPromotions />
+      <IconRefresh />
+      <IconRow />
+      <IconSbShield />
+      <IconSearch />
+      <IconSettings />
+      <IconShare />
+      <IconSliders />
+      <IconSlots />
+      <IconSnackbarSuccess />
+      <IconSportWidget />
+      <IconSportsAmericanFootBall />
+      <IconSportsBadminton />
+      <IconSportsBaseBall />
+      <IconSportsBasketBall />
+      <IconSportsBiathlon />
+      <IconSportsBoxing />
+      <IconSportsCenter />
+      <IconSportsCricket />
+      <IconSportsCycling />
+      <IconSportsDarts />
+      <IconSportsESports />
+      <IconSportsFantasy />
+      <IconSportsFeatured />
+      <IconSportsFootBall />
+      <IconSportsGolf />
+      <IconSportsHandBall />
+      <IconSportsHorseRacing />
+      <IconSportsIceHockey />
+      <IconSportsMma />
+      <IconSportsMotorSports />
+      <IconSportsPoker />
+      <IconSportsPolitics />
+      <IconSportsPool />
+      <IconSportsPopular />
+      <IconSportsRugby />
+      <IconSportsSki />
+      <IconSportsSnooker />
+      <IconSportsSpecial />
+      <IconSportsSquash />
+      <IconSportsTableTennis />
+      <IconSportsTennis />
+      <IconSportsVolleyBall />
+      <IconSportsWaterPolo />
+      <IconStarEmpty />
+      <IconStarFilled />
+      <IconStarFlag />
+      <IconStars />
+      <IconStats />
+      <IconStopwatch />
+      <IconSuccessCircle />
+      <IconSun />
+      <IconSupport />
+      <IconTable />
+      <IconTag />
+      <IconTelegram />
+      <IconText />
+      <IconTimer />
+      <IconTwitter />
+      <IconUpload />
+      <IconUser />
+      <IconUsers />
+      <IconVirtualSports />
+      <IconVkontakte />
+      <IconVolatility />
+      <IconWalletRounded />
+      <IconWallet />
+      <IconWand />
+      <IconWarning />
+      <IconWhatsapp />
+      <IconYoutube />
+      <IconZoom />
+      <IconError />
+      <IconGeneralInfo />
+      <IconGoogleAuth />
+      <IconLiveCasino />
+      <IconLock />
+      <IconSportsGreyhound />
+      <IconSportsHarness />
+      <IconSportsHorse />
+      <IconVerify />
     </Inline>
     <#CodePreview>
       <Inline>
-        <IconAbout color="piccolo_100" background_color="gohan_100" />
-        <IconAdd color="piccolo_100" background_color="gohan_100" />
-        <IconAlertCircle color="piccolo_100" background_color="gohan_100" />
-        <IconAlignLeft color="piccolo_100" background_color="gohan_100" />
-        <IconAllSports color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonalDownLeft color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonalUpRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDiagonals color="piccolo_100" background_color="gohan_100" />
-        <IconArrowDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLUp color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLeftRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowLeft color="piccolo_100" background_color="gohan_100" />
-        <IconArrowRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowTopRight color="piccolo_100" background_color="gohan_100" />
-        <IconArrowUpDown color="piccolo_100" background_color="gohan_100" />
-        <IconArrowUp color="piccolo_100" background_color="gohan_100" />
-        <IconAsianView color="piccolo_100" background_color="gohan_100" />
-        <IconAttache color="piccolo_100" background_color="gohan_100" />
-        <IconAward color="piccolo_100" background_color="gohan_100" />
-        <IconBannerInfo color="piccolo_100" background_color="gohan_100" />
-        <IconBell color="piccolo_100" background_color="gohan_100" />
-        <IconBitcoinTalk color="piccolo_100" background_color="gohan_100" />
-        <IconBombayClub color="piccolo_100" background_color="gohan_100" />
-        <IconCalendarEmpty color="piccolo_100" background_color="gohan_100" />
-        <IconCalendar color="piccolo_100" background_color="gohan_100" />
-        <IconCard color="piccolo_100" background_color="gohan_100" />
-        <IconCase color="piccolo_100" background_color="gohan_100" />
-        <IconCashOut color="piccolo_100" background_color="gohan_100" />
-        <IconCasino color="piccolo_100" background_color="gohan_100" />
-        <IconChartArea color="piccolo_100" background_color="gohan_100" />
-        <IconChartBar color="piccolo_100" background_color="gohan_100" />
-        <IconChartPies color="piccolo_100" background_color="gohan_100" />
-        <IconChartRound color="piccolo_100" background_color="gohan_100" />
-        <IconChartSegment color="piccolo_100" background_color="gohan_100" />
-        <IconChevronDownRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronDown color="piccolo_100" background_color="gohan_100" />
-        <IconChevronLeftRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronLeft color="piccolo_100" background_color="gohan_100" />
-        <IconChevronRightRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronRight color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUpDown color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUpRounded color="piccolo_100" background_color="gohan_100" />
-        <IconChevronUp color="piccolo_100" background_color="gohan_100" />
-        <IconCircle color="piccolo_100" background_color="gohan_100" />
-        <IconClock color="piccolo_100" background_color="gohan_100" />
-        <IconCloseRounded color="piccolo_100" background_color="gohan_100" />
-        <IconCloseSmall color="piccolo_100" background_color="gohan_100" />
-        <IconClose color="piccolo_100" background_color="gohan_100" />
-        <IconCode color="piccolo_100" background_color="gohan_100" />
-        <IconCollapse color="piccolo_100" background_color="gohan_100" />
-        <IconCopy color="piccolo_100" background_color="gohan_100" />
-        <IconCredit color="piccolo_100" background_color="gohan_100" />
-        <IconCrypto color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyARS color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBDT color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBOB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBRL color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyBTC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCAD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCLP color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCNY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyCRC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyETH color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyEUR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyGEL color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyHKD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIDR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyINR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyIQD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyJPY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyKRW color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyLTC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMXN color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyMYR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPEN color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyPKR color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyRUB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencySOC color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTHB color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTRX color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyTRY color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUAH color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUSD color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyUSDT color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVES color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyVND color="piccolo_100" background_color="gohan_100" />
-        <IconCurrencyXRP color="piccolo_100" background_color="gohan_100" />
-        <IconCursor color="piccolo_100" background_color="gohan_100" />
-        <IconData color="piccolo_100" background_color="gohan_100" />
-        <IconDelete color="piccolo_100" background_color="gohan_100" />
-        <IconDesktop color="piccolo_100" background_color="gohan_100" />
-        <IconDetails color="piccolo_100" background_color="gohan_100" />
-        <IconDouble color="piccolo_100" background_color="gohan_100" />
-        <IconDownload color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneArrows color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneChat color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneCoins color="piccolo_100" background_color="gohan_100" />
-        <IconDuotoneMail color="piccolo_100" background_color="gohan_100" />
-        <IconESportsCallOfDuty color="piccolo_100" background_color="gohan_100" />
-        <IconESportsCounterStrike color="piccolo_100" background_color="gohan_100" />
-        <IconESportsDota2 color="piccolo_100" background_color="gohan_100" />
-        <IconESportsENba color="piccolo_100" background_color="gohan_100" />
-        <IconESportsESport color="piccolo_100" background_color="gohan_100" />
-        <IconESportsFootball color="piccolo_100" background_color="gohan_100" />
-        <IconESportsHearthstone color="piccolo_100" background_color="gohan_100" />
-        <IconESportsLeagueOfLegends color="piccolo_100" background_color="gohan_100" />
-        <IconESportsOverwatch color="piccolo_100" background_color="gohan_100" />
-        <IconESportsRainbow color="piccolo_100" background_color="gohan_100" />
-        <IconESportsRocketLeague color="piccolo_100" background_color="gohan_100" />
-        <IconESportsStarCraft color="piccolo_100" background_color="gohan_100" />
-        <IconEdit color="piccolo_100" background_color="gohan_100" />
-        <IconErrorCircle color="piccolo_100" background_color="gohan_100" />
-        <IconExpand color="piccolo_100" background_color="gohan_100" />
-        <IconEyeClosed color="piccolo_100" background_color="gohan_100" />
-        <IconEye color="piccolo_100" background_color="gohan_100" />
-        <IconFacebook color="piccolo_100" background_color="gohan_100" />
-        <IconFilter color="piccolo_100" background_color="gohan_100" />
-        <IconForward color="piccolo_100" background_color="gohan_100" />
-        <IconFreebet color="piccolo_100" background_color="gohan_100" />
-        <IconGamepad color="piccolo_100" background_color="gohan_100" />
-        <IconGift color="piccolo_100" background_color="gohan_100" />
-        <IconGlasses color="piccolo_100" background_color="gohan_100" />
-        <IconGlobe color="piccolo_100" background_color="gohan_100" />
-        <IconGoogle color="piccolo_100" background_color="gohan_100" />
-        <IconHamburger color="piccolo_100" background_color="gohan_100" />
-        <IconHelp color="piccolo_100" background_color="gohan_100" />
-        <IconHistory color="piccolo_100" background_color="gohan_100" />
-        <IconHome color="piccolo_100" background_color="gohan_100" />
-        <IconHub88 color="piccolo_100" background_color="gohan_100" />
-        <IconHyperlink color="piccolo_100" background_color="gohan_100" />
-        <IconInPlay color="piccolo_100" background_color="gohan_100" />
-        <IconInfoCircle color="piccolo_100" background_color="gohan_100" />
-        <IconInfo color="piccolo_100" background_color="gohan_100" />
-        <IconInstagram color="piccolo_100" background_color="gohan_100" />
-        <IconLeftArrowCurveRight color="piccolo_100" background_color="gohan_100" />
-        <IconLifeRing color="piccolo_100" background_color="gohan_100" />
-        <IconLightbulb color="piccolo_100" background_color="gohan_100" />
-        <IconLimit color="piccolo_100" background_color="gohan_100" />
-        <IconLine color="piccolo_100" background_color="gohan_100" />
-        <IconLink color="piccolo_100" background_color="gohan_100" />
-        <IconListNumbered color="piccolo_100" background_color="gohan_100" />
-        <IconLiveChat color="piccolo_100" background_color="gohan_100" />
-        <IconLiveStream color="piccolo_100" background_color="gohan_100" />
-        <IconLogin color="piccolo_100" background_color="gohan_100" />
-        <IconLogoPlain color="piccolo_100" background_color="gohan_100" />
-        <IconLogout color="piccolo_100" background_color="gohan_100" />
-        <IconLoyalty0 color="piccolo_100" background_color="gohan_100" />
-        <IconMail color="piccolo_100" background_color="gohan_100" />
-        <IconMenuHome color="piccolo_100" background_color="gohan_100" />
-        <IconMenu color="piccolo_100" background_color="gohan_100" />
-        <IconMinus color="piccolo_100" background_color="gohan_100" />
-        <IconMobile color="piccolo_100" background_color="gohan_100" />
-        <IconMoney color="piccolo_100" background_color="gohan_100" />
-        <IconMoneybag color="piccolo_100" background_color="gohan_100" />
-        <IconMoon color="piccolo_100" background_color="gohan_100" />
-        <IconMore color="piccolo_100" background_color="gohan_100" />
-        <IconNews color="piccolo_100" background_color="gohan_100" />
-        <IconNotificationUnread color="piccolo_100" background_color="gohan_100" />
-        <IconNotification color="piccolo_100" background_color="gohan_100" />
-        <IconPadlock color="piccolo_100" background_color="gohan_100" />
-        <IconPencil color="piccolo_100" background_color="gohan_100" />
-        <IconPhoto color="piccolo_100" background_color="gohan_100" />
-        <IconPicture color="piccolo_100" background_color="gohan_100" />
-        <IconPin color="piccolo_100" background_color="gohan_100" />
-        <IconPlay color="piccolo_100" background_color="gohan_100" />
-        <IconPlus color="piccolo_100" background_color="gohan_100" />
-        <IconPriceBoost color="piccolo_100" background_color="gohan_100" />
-        <IconPrint color="piccolo_100" background_color="gohan_100" />
-        <IconProfile color="piccolo_100" background_color="gohan_100" />
-        <IconPromotions color="piccolo_100" background_color="gohan_100" />
-        <IconRefresh color="piccolo_100" background_color="gohan_100" />
-        <IconRow color="piccolo_100" background_color="gohan_100" />
-        <IconSbShield color="piccolo_100" background_color="gohan_100" />
-        <IconSearch color="piccolo_100" background_color="gohan_100" />
-        <IconSettings color="piccolo_100" background_color="gohan_100" />
-        <IconShare color="piccolo_100" background_color="gohan_100" />
-        <IconSliders color="piccolo_100" background_color="gohan_100" />
-        <IconSlots color="piccolo_100" background_color="gohan_100" />
-        <IconSnackbarSuccess color="piccolo_100" background_color="gohan_100" />
-        <IconSportWidget color="piccolo_100" background_color="gohan_100" />
-        <IconSportsAmericanFootBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBadminton color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBaseBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBasketBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBiathlon color="piccolo_100" background_color="gohan_100" />
-        <IconSportsBoxing color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCenter color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCricket color="piccolo_100" background_color="gohan_100" />
-        <IconSportsCycling color="piccolo_100" background_color="gohan_100" />
-        <IconSportsDarts color="piccolo_100" background_color="gohan_100" />
-        <IconSportsESports color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFantasy color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFeatured color="piccolo_100" background_color="gohan_100" />
-        <IconSportsFootBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsGolf color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHandBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHorseRacing color="piccolo_100" background_color="gohan_100" />
-        <IconSportsIceHockey color="piccolo_100" background_color="gohan_100" />
-        <IconSportsMma color="piccolo_100" background_color="gohan_100" />
-        <IconSportsMotorSports color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPoker color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPolitics color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPool color="piccolo_100" background_color="gohan_100" />
-        <IconSportsPopular color="piccolo_100" background_color="gohan_100" />
-        <IconSportsRugby color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSki color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSnooker color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSpecial color="piccolo_100" background_color="gohan_100" />
-        <IconSportsSquash color="piccolo_100" background_color="gohan_100" />
-        <IconSportsTableTennis color="piccolo_100" background_color="gohan_100" />
-        <IconSportsTennis color="piccolo_100" background_color="gohan_100" />
-        <IconSportsVolleyBall color="piccolo_100" background_color="gohan_100" />
-        <IconSportsWaterPolo color="piccolo_100" background_color="gohan_100" />
-        <IconStarEmpty color="piccolo_100" background_color="gohan_100" />
-        <IconStarFilled color="piccolo_100" background_color="gohan_100" />
-        <IconStarFlag color="piccolo_100" background_color="gohan_100" />
-        <IconStars color="piccolo_100" background_color="gohan_100" />
-        <IconStats color="piccolo_100" background_color="gohan_100" />
-        <IconStopwatch color="piccolo_100" background_color="gohan_100" />
-        <IconSuccessCircle color="piccolo_100" background_color="gohan_100" />
-        <IconSun color="piccolo_100" background_color="gohan_100" />
-        <IconSupport color="piccolo_100" background_color="gohan_100" />
-        <IconTable color="piccolo_100" background_color="gohan_100" />
-        <IconTag color="piccolo_100" background_color="gohan_100" />
-        <IconTelegram color="piccolo_100" background_color="gohan_100" />
-        <IconText color="piccolo_100" background_color="gohan_100" />
-        <IconTimer color="piccolo_100" background_color="gohan_100" />
-        <IconTwitter color="piccolo_100" background_color="gohan_100" />
-        <IconUpload color="piccolo_100" background_color="gohan_100" />
-        <IconUser color="piccolo_100" background_color="gohan_100" />
-        <IconUsers color="piccolo_100" background_color="gohan_100" />
-        <IconVirtualSports color="piccolo_100" background_color="gohan_100" />
-        <IconVkontakte color="piccolo_100" background_color="gohan_100" />
-        <IconVolatility color="piccolo_100" background_color="gohan_100" />
-        <IconWalletRounded color="piccolo_100" background_color="gohan_100" />
-        <IconWallet color="piccolo_100" background_color="gohan_100" />
-        <IconWand color="piccolo_100" background_color="gohan_100" />
-        <IconWarning color="piccolo_100" background_color="gohan_100" />
-        <IconWhatsapp color="piccolo_100" background_color="gohan_100" />
-        <IconYoutube color="piccolo_100" background_color="gohan_100" />
-        <IconZoom color="piccolo_100" background_color="gohan_100" />
-        <IconError color="piccolo_100" background_color="gohan_100" />
-        <IconGeneralInfo color="piccolo_100" background_color="gohan_100" />
-        <IconGoogleAuth color="piccolo_100" background_color="gohan_100" />
-        <IconLiveCasino color="piccolo_100" background_color="gohan_100" />
-        <IconLock color="piccolo_100" background_color="gohan_100" />
-        <IconSportsGreyhound color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHarness color="piccolo_100" background_color="gohan_100" />
-        <IconSportsHorse color="piccolo_100" background_color="gohan_100" />
-        <IconVerify color="piccolo_100" background_color="gohan_100" />
+        <IconAbout />
+        <IconAdd />
+        <IconAlertCircle />
+        <IconAlignLeft />
+        <IconAllSports />
+        <IconArrowDiagonalDownLeft />
+        <IconArrowDiagonalUpRight />
+        <IconArrowDiagonals />
+        <IconArrowDown />
+        <IconArrowLDown />
+        <IconArrowLUp />
+        <IconArrowLeftRight />
+        <IconArrowLeft />
+        <IconArrowRight />
+        <IconArrowTopRight />
+        <IconArrowUpDown />
+        <IconArrowUp />
+        <IconAsianView />
+        <IconAttache />
+        <IconAward />
+        <IconBannerInfo />
+        <IconBell />
+        <IconBitcoinTalk />
+        <IconBombayClub />
+        <IconCalendarEmpty />
+        <IconCalendar />
+        <IconCard />
+        <IconCase />
+        <IconCashOut />
+        <IconCasino />
+        <IconChartArea />
+        <IconChartBar />
+        <IconChartPies />
+        <IconChartRound />
+        <IconChartSegment />
+        <IconChevronDownRounded />
+        <IconChevronDown />
+        <IconChevronLeftRounded />
+        <IconChevronLeft />
+        <IconChevronRightRounded />
+        <IconChevronRight />
+        <IconChevronUpDown />
+        <IconChevronUpRounded />
+        <IconChevronUp />
+        <IconCircle />
+        <IconClock />
+        <IconCloseRounded />
+        <IconCloseSmall />
+        <IconClose />
+        <IconCode />
+        <IconCollapse />
+        <IconCopy />
+        <IconCredit />
+        <IconCrypto />
+        <IconCurrencyARS />
+        <IconCurrencyBDT />
+        <IconCurrencyBOB />
+        <IconCurrencyBRL />
+        <IconCurrencyBTC />
+        <IconCurrencyCAD />
+        <IconCurrencyCLP />
+        <IconCurrencyCNY />
+        <IconCurrencyCRC />
+        <IconCurrencyETH />
+        <IconCurrencyEUR />
+        <IconCurrencyGEL />
+        <IconCurrencyHKD />
+        <IconCurrencyIDR />
+        <IconCurrencyINR />
+        <IconCurrencyIQD />
+        <IconCurrencyJPY />
+        <IconCurrencyKRW />
+        <IconCurrencyLTC />
+        <IconCurrencyMXN />
+        <IconCurrencyMYR />
+        <IconCurrencyPEN />
+        <IconCurrencyPKR />
+        <IconCurrencyRUB />
+        <IconCurrencySOC />
+        <IconCurrencyTHB />
+        <IconCurrencyTRX />
+        <IconCurrencyTRY />
+        <IconCurrencyUAH />
+        <IconCurrencyUSD />
+        <IconCurrencyUSDT />
+        <IconCurrencyVES />
+        <IconCurrencyVND />
+        <IconCurrencyXRP />
+        <IconCursor />
+        <IconData />
+        <IconDelete />
+        <IconDesktop />
+        <IconDetails />
+        <IconDouble />
+        <IconDownload />
+        <IconDuotoneArrows />
+        <IconDuotoneChat />
+        <IconDuotoneCoins />
+        <IconDuotoneMail />
+        <IconESportsCallOfDuty />
+        <IconESportsCounterStrike />
+        <IconESportsDota2 />
+        <IconESportsENba />
+        <IconESportsESport />
+        <IconESportsFootball />
+        <IconESportsHearthstone />
+        <IconESportsLeagueOfLegends />
+        <IconESportsOverwatch />
+        <IconESportsRainbow />
+        <IconESportsRocketLeague />
+        <IconESportsStarCraft />
+        <IconEdit />
+        <IconErrorCircle />
+        <IconExpand />
+        <IconEyeClosed />
+        <IconEye />
+        <IconFacebook />
+        <IconFilter />
+        <IconForward />
+        <IconFreebet />
+        <IconGamepad />
+        <IconGift />
+        <IconGlasses />
+        <IconGlobe />
+        <IconGoogle />
+        <IconHamburger />
+        <IconHelp />
+        <IconHistory />
+        <IconHome />
+        <IconHub88 />
+        <IconHyperlink />
+        <IconInPlay />
+        <IconInfoCircle />
+        <IconInfo />
+        <IconInstagram />
+        <IconLeftArrowCurveRight />
+        <IconLifeRing />
+        <IconLightbulb />
+        <IconLimit />
+        <IconLine />
+        <IconLink />
+        <IconListNumbered />
+        <IconLiveChat />
+        <IconLiveStream />
+        <IconLogin />
+        <IconLogoPlain />
+        <IconLogout />
+        <IconLoyalty0 />
+        <IconMail />
+        <IconMenuHome />
+        <IconMenu />
+        <IconMinus />
+        <IconMobile />
+        <IconMoney />
+        <IconMoneybag />
+        <IconMoon />
+        <IconMore />
+        <IconNews />
+        <IconNotificationUnread />
+        <IconNotification />
+        <IconPadlock />
+        <IconPencil />
+        <IconPhoto />
+        <IconPicture />
+        <IconPin />
+        <IconPlay />
+        <IconPlus />
+        <IconPriceBoost />
+        <IconPrint />
+        <IconProfile />
+        <IconPromotions />
+        <IconRefresh />
+        <IconRow />
+        <IconSbShield />
+        <IconSearch />
+        <IconSettings />
+        <IconShare />
+        <IconSliders />
+        <IconSlots />
+        <IconSnackbarSuccess />
+        <IconSportWidget />
+        <IconSportsAmericanFootBall />
+        <IconSportsBadminton />
+        <IconSportsBaseBall />
+        <IconSportsBasketBall />
+        <IconSportsBiathlon />
+        <IconSportsBoxing />
+        <IconSportsCenter />
+        <IconSportsCricket />
+        <IconSportsCycling />
+        <IconSportsDarts />
+        <IconSportsESports />
+        <IconSportsFantasy />
+        <IconSportsFeatured />
+        <IconSportsFootBall />
+        <IconSportsGolf />
+        <IconSportsHandBall />
+        <IconSportsHorseRacing />
+        <IconSportsIceHockey />
+        <IconSportsMma />
+        <IconSportsMotorSports />
+        <IconSportsPoker />
+        <IconSportsPolitics />
+        <IconSportsPool />
+        <IconSportsPopular />
+        <IconSportsRugby />
+        <IconSportsSki />
+        <IconSportsSnooker />
+        <IconSportsSpecial />
+        <IconSportsSquash />
+        <IconSportsTableTennis />
+        <IconSportsTennis />
+        <IconSportsVolleyBall />
+        <IconSportsWaterPolo />
+        <IconStarEmpty />
+        <IconStarFilled />
+        <IconStarFlag />
+        <IconStars />
+        <IconStats />
+        <IconStopwatch />
+        <IconSuccessCircle />
+        <IconSun />
+        <IconSupport />
+        <IconTable />
+        <IconTag />
+        <IconTelegram />
+        <IconText />
+        <IconTimer />
+        <IconTwitter />
+        <IconUpload />
+        <IconUser />
+        <IconUsers />
+        <IconVirtualSports />
+        <IconVkontakte />
+        <IconVolatility />
+        <IconWalletRounded />
+        <IconWallet />
+        <IconWand />
+        <IconWarning />
+        <IconWhatsapp />
+        <IconYoutube />
+        <IconZoom />
+        <IconError />
+        <IconGeneralInfo />
+        <IconGoogleAuth />
+        <IconLiveCasino />
+        <IconLock />
+        <IconSportsGreyhound />
+        <IconSportsHarness />
+        <IconSportsHorse />
+        <IconVerify />
 
       </Inline>
     </#CodePreview>

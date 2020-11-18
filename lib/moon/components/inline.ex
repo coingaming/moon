@@ -14,6 +14,7 @@ defmodule Moon.Components.Inline do
 
     <div
       class="moon-inline"
+      style="font-size: {{ @font_size }};"
       data-space={{ @space }}
     >
       <slot />

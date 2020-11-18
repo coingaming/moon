@@ -36,64 +36,64 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
   def render(assigns) do
     ~H"""
     <Inline>
-      <CasinoBonus color="piccolo_100" height="1rem" width="1rem" />
-        <ClaimedReward color="piccolo_100" height="1rem" width="1rem" />
-        <DynamicRewards color="piccolo_100" height="1rem" width="1rem" />
-        <EmailNotVerified color="piccolo_100" height="1rem" width="1rem" />
-        <EmailVerification color="piccolo_100" height="1rem" width="1rem" />
-        <EventEnded color="piccolo_100" height="1rem" width="1rem" />
-        <Gift color="piccolo_100" height="1rem" width="1rem" />
-        <HustleToTop color="piccolo_100" height="1rem" width="1rem" />
-        <InviteFriends color="piccolo_100" height="1rem" width="1rem" />
-        <MoneyBack color="piccolo_100" height="1rem" width="1rem" />
-        <NoBets color="piccolo_100" height="1rem" width="1rem" />
-        <NoCasinoGames color="piccolo_100" height="1rem" width="1rem" />
-        <NoData color="piccolo_100" height="1rem" width="1rem" />
-        <NoEvents color="piccolo_100" height="1rem" width="1rem" />
-        <NoFavorite color="piccolo_100" height="1rem" width="1rem" />
-        <NoFreeBet color="piccolo_100" height="1rem" width="1rem" />
-        <NoInternet color="piccolo_100" height="1rem" width="1rem" />
-        <NoMarkets color="piccolo_100" height="1rem" width="1rem" />
-        <NoNotification color="piccolo_100" height="1rem" width="1rem" />
-        <NoParticipations color="piccolo_100" height="1rem" width="1rem" />
-        <NoReward color="piccolo_100" height="1rem" width="1rem" />
-        <NoWithdrawals color="piccolo_100" height="1rem" width="1rem" />
-        <PriceBoost color="piccolo_100" height="1rem" width="1rem" />
-        <TiersAndRewards color="piccolo_100" height="1rem" width="1rem" />
-        <TrackYourProgress color="piccolo_100" height="1rem" width="1rem" />
-        <Trophy color="piccolo_100" height="1rem" width="1rem" />
-        <YouPlayWePay color="piccolo_100" height="1rem" width="1rem" />
+      <CasinoBonus font_size="10rem" color="piccolo-100" />
+      <ClaimedReward font_size="10rem" color="piccolo-100" />
+      <DynamicRewards font_size="10rem" color="piccolo-100" />
+      <EmailNotVerified font_size="10rem" color="piccolo-100" />
+      <EmailVerification font_size="10rem" color="piccolo-100" />
+      <EventEnded font_size="10rem" color="piccolo-100" />
+      <Gift font_size="10rem" color="piccolo-100" />
+      <HustleToTop font_size="10rem" color="piccolo-100" />
+      <InviteFriends font_size="10rem" color="piccolo-100" />
+      <MoneyBack font_size="10rem" color="piccolo-100" />
+      <NoBets font_size="10rem" color="piccolo-100" />
+      <NoCasinoGames font_size="10rem" color="piccolo-100" />
+      <NoData font_size="10rem" color="piccolo-100" />
+      <NoEvents font_size="10rem" color="piccolo-100" />
+      <NoFavorite font_size="10rem" color="piccolo-100" />
+      <NoFreeBet font_size="10rem" color="piccolo-100" />
+      <NoInternet font_size="10rem" color="piccolo-100" />
+      <NoMarkets font_size="10rem" color="piccolo-100" />
+      <NoNotification font_size="10rem" color="piccolo-100" />
+      <NoParticipations font_size="10rem" color="piccolo-100" />
+      <NoReward font_size="10rem" color="piccolo-100" />
+      <NoWithdrawals font_size="10rem" color="piccolo-100" />
+      <PriceBoost font_size="10rem" color="piccolo-100" />
+      <TiersAndRewards font_size="10rem" color="piccolo-100" />
+      <TrackYourProgress font_size="10rem" color="piccolo-100" />
+      <Trophy font_size="10rem" color="piccolo-100" />
+      <YouPlayWePay font_size="10rem" color="piccolo-100" />
     </Inline>
 
     <#CodePreview>
       <Inline>
-        <CasinoBonus color="piccolo_100" height="1rem" width="1rem" />
-        <ClaimedReward color="piccolo_100" height="1rem" width="1rem" />
-        <DynamicRewards color="piccolo_100" height="1rem" width="1rem" />
-        <EmailNotVerified color="piccolo_100" height="1rem" width="1rem" />
-        <EmailVerification color="piccolo_100" height="1rem" width="1rem" />
-        <EventEnded color="piccolo_100" height="1rem" width="1rem" />
-        <Gift color="piccolo_100" height="1rem" width="1rem" />
-        <HustleToTop color="piccolo_100" height="1rem" width="1rem" />
-        <InviteFriends color="piccolo_100" height="1rem" width="1rem" />
-        <MoneyBack color="piccolo_100" height="1rem" width="1rem" />
-        <NoBets color="piccolo_100" height="1rem" width="1rem" />
-        <NoCasinoGames color="piccolo_100" height="1rem" width="1rem" />
-        <NoData color="piccolo_100" height="1rem" width="1rem" />
-        <NoEvents color="piccolo_100" height="1rem" width="1rem" />
-        <NoFavorite color="piccolo_100" height="1rem" width="1rem" />
-        <NoFreeBet color="piccolo_100" height="1rem" width="1rem" />
-        <NoInternet color="piccolo_100" height="1rem" width="1rem" />
-        <NoMarkets color="piccolo_100" height="1rem" width="1rem" />
-        <NoNotification color="piccolo_100" height="1rem" width="1rem" />
-        <NoParticipations color="piccolo_100" height="1rem" width="1rem" />
-        <NoReward color="piccolo_100" height="1rem" width="1rem" />
-        <NoWithdrawals color="piccolo_100" height="1rem" width="1rem" />
-        <PriceBoost color="piccolo_100" height="1rem" width="1rem" />
-        <TiersAndRewards color="piccolo_100" height="1rem" width="1rem" />
-        <TrackYourProgress color="piccolo_100" height="1rem" width="1rem" />
-        <Trophy color="piccolo_100" height="1rem" width="1rem" />
-        <YouPlayWePay color="piccolo_100" height="1rem" width="1rem" />
+        <CasinoBonus font_size="10rem" color="piccolo-100" />
+        <ClaimedReward font_size="10rem" color="piccolo-100" />
+        <DynamicRewards font_size="10rem" color="piccolo-100" />
+        <EmailNotVerified font_size="10rem" color="piccolo-100" />
+        <EmailVerification font_size="10rem" color="piccolo-100" />
+        <EventEnded font_size="10rem" color="piccolo-100" />
+        <Gift font_size="10rem" color="piccolo-100" />
+        <HustleToTop font_size="10rem" color="piccolo-100" />
+        <InviteFriends font_size="10rem" color="piccolo-100" />
+        <MoneyBack font_size="10rem" color="piccolo-100" />
+        <NoBets font_size="10rem" color="piccolo-100" />
+        <NoCasinoGames font_size="10rem" color="piccolo-100" />
+        <NoData font_size="10rem" color="piccolo-100" />
+        <NoEvents font_size="10rem" color="piccolo-100" />
+        <NoFavorite font_size="10rem" color="piccolo-100" />
+        <NoFreeBet font_size="10rem" color="piccolo-100" />
+        <NoInternet font_size="10rem" color="piccolo-100" />
+        <NoMarkets font_size="10rem" color="piccolo-100" />
+        <NoNotification font_size="10rem" color="piccolo-100" />
+        <NoParticipations font_size="10rem" color="piccolo-100" />
+        <NoReward font_size="10rem" color="piccolo-100" />
+        <NoWithdrawals font_size="10rem" color="piccolo-100" />
+        <PriceBoost font_size="10rem" color="piccolo-100" />
+        <TiersAndRewards font_size="10rem" color="piccolo-100" />
+        <TrackYourProgress font_size="10rem" color="piccolo-100" />
+        <Trophy font_size="10rem" color="piccolo-100" />
+        <YouPlayWePay font_size="10rem" color="piccolo-100" />
       </Inline>
     </#CodePreview>
     """

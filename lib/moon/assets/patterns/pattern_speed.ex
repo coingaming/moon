@@ -11,10 +11,11 @@ defmodule Moon.Assets.Patterns.PatternSpeed do
   def render(assigns) do 
     ~H"""
     {{ asset_import @socket, "js/assets/pattern" }}
-
-    <svg class="moon-pattern">
-      <use href="/images/assets/patterns/pattern-speed.svg#item"></use>
+    
+    <svg class="moon-pattern" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
+      <use href="/svgs/patterns/pattern-speed.svg#item"></use>
     </svg>
+    
     """
   end
 end

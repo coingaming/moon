@@ -29,37 +29,48 @@ const getModuleName = (s) =>
   capitalizeFirstLetter(toCamel(s)).replace('IconLoyalty-0', 'IconLoyalty0');
 
 const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
-  fs.writeFileSync(
-    `${exportDir}/${assetsFolder}/${file
-      .replace(/([-_])/gi, '_')
-      .toLowerCase()}.ex`,
-    `
-defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do 
-  use Moon.StatelessComponent
-  ${
-    (iconType === 'icon' &&
-      `
+  const newFilePath = `${exportDir}/${assetsFolder}/${file
+    .replace(/([-_])/gi, '_')
+    .toLowerCase()}.ex`;
+
+  const propsMap = {
+    icon: `
   prop color, :string, values: Moon.colors
   prop background_color, :string, values: Moon.colors
   prop font_size, :string
-  `) ||
-    ''}${
-    (iconType !== 'icon' &&
-      `
+  `,
+    default: `
   prop color, :string, values: Moon.colors
   prop height, :string
   prop width, :string
   prop font_size, :string
   prop vertical_align, :string
-  `) ||
-    ''}
+  `,
+  };
+
+  const svgMap = {
+    icon: `
+    <svg class="moon-${iconType}" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
+      <use href="/svgs/${assetsFolder}/${file}.svg#item"></use>
+    </svg>
+    `,
+    default: `
+    <svg class="moon-${iconType}" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
+      <use href="/svgs/${assetsFolder}/${file}.svg#item"></use>
+    </svg>
+    `
+  }
+
+  fs.writeFileSync(
+    newFilePath,
+    `
+defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do 
+  use Moon.StatelessComponent
+  ${propsMap[iconType] || propsMap.default}
   def render(assigns) do 
     ~H"""
     {{ asset_import @socket, "js/assets/${iconType}" }}
-
-    <svg class="moon-${iconType}">
-      <use href="/images/assets/${assetsFolder}/${file}.svg#item"></use>
-    </svg>
+    ${svgMap[iconType] || svgMap.default}
     """
   end
 end

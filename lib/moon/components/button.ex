@@ -35,6 +35,7 @@ defmodule Moon.Components.Button do
 
     <button
       class="moon-button"
+      disabled={{ @disabled }}
       data-mock-state={{ @mock_state }}
       data-variant={{ @variant }}
       data-size={{ @size }}

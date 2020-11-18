@@ -12,19 +12,18 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   def render(assigns) do
     ~H"""
-    <Inline>
-      <LogoMissions color="piccolo_100" height="1rem" width="1rem" />
-        <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
-        <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
-        <MoonPay color="piccolo_100" height="1rem" width="1rem" />
+    <Inline font_size="10em">
+      <LogoMissions />
+      <LogoSportsbetSponsor />
+      <LogoSportsbet />
+      <MoonPay />
     </Inline>
     <#CodePreview>
-      <Inline>
-
-        <LogoMissions color="piccolo_100" height="1rem" width="1rem" />
-        <LogoSportsbetSponsor color="piccolo_100" height="1rem" width="1rem" />
-        <LogoSportsbet color="piccolo_100" height="1rem" width="1rem" />
-        <MoonPay color="piccolo_100" height="1rem" width="1rem" />
+      <Inline font_size="10em">
+        <LogoMissions />
+        <LogoSportsbetSponsor />
+        <LogoSportsbet />
+        <MoonPay />
       </Inline>
     </#CodePreview>
     """

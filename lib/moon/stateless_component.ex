@@ -5,6 +5,7 @@ defmodule Moon.StatelessComponent do
       import Moon.StatelessComponent
       use Moon.Assets
       import Moon.Assets.Files
+      import Moon.Helpers.Styled
     end
   end
 end

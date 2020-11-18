@@ -4,6 +4,7 @@ defmodule Moon.LiveView do
       use Surface.LiveView
       use Moon.Assets
       import Moon.Assets.Files
+      import Moon.Helpers.Styled
     end
   end
 end
