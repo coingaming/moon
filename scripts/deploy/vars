@@ -31,7 +31,7 @@ APP_NAME=${APP_NAME:-`grep 'app: :' "$PROJECT_DIR/mix.exs" | sed -e 's/app: ://g
 APP_VSN=${APP_VSN:-`grep '@version ' "$PROJECT_DIR/mix.exs" | sed -e 's/@version //g' -e 's/[", ]//g'`}
 
 STACK_NAME="${STACK_NAME:-$APP_NAME}"
-SERVICE_NAME="${SERVICE_NAME:-$STACK_NAME}"
+SERVICE_NAME="moon-surface"
 
 ECS_CLUSTER="${ENV_NAME:0:1}-${ECS_CLUSTER:-web}"
 ECS_SERVICE="${ENV_NAME:0:1}-${ECS_SERVICE:-"${STACK_NAME}_${SERVICE_NAME}"}"
