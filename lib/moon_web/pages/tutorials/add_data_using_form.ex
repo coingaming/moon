@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Button
   alias Moon.Components.Select
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
@@ -37,7 +38,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def render(assigns) do
     ~H"""
-    <h1>Add data using form</h1>
+    <Heading size=32>Add data using form</Heading>
 
     Todo
 
@@ -49,7 +50,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
 
 
-    <h2>With changeset (recommended approach)</h2>
+    <Heading size=24>Add data using form</Heading>
 
     <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
       <TextInput label="Name" field="name" />

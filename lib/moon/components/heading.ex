@@ -9,7 +9,7 @@ defmodule Moon.Components.Heading do
     ~H"""
     {{ asset_import @socket, "js/components/heading" }}
 
-    <div class="moon-heading">
+    <div class="moon-heading" data-size={{ @size }}>
       <slot />
     </div>
     """
