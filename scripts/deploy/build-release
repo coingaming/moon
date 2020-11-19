@@ -5,4 +5,4 @@ source "$(dirname "$0")/vars"
 set -e
 
 mix distillery.release
-cp _build/${MIX_ENV}/rel/${APP_NAME}/releases/${APP_VSN}/${APP_NAME}.tar.gz ./release.tar.gz
+cp _build/${MIX_ENV}/rel/moon/releases/${APP_VSN}/${APP_NAME}.tar.gz ./release.tar.gz
