@@ -15,6 +15,11 @@ defmodule MoonWeb.Router do
   end
 
   scope "/" do
+    pipe_through(:api)
+    get("/healthcheck", MoonWeb.Controllers.HealthcheckController, :index)
+  end
+
+  scope "/" do
     pipe_through :browser
 
     live "/", MoonWeb.Pages.MainPage
