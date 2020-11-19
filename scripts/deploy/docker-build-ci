@@ -35,16 +35,11 @@ docker build \
     --build-arg MIX_ENV=$MIX_ENV \
     --build-arg APP_NAME=$APP_NAME \
     --build-arg SERVICE_NAME=$SERVICE_NAME \
-		-t ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD} \
-    -t ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD}-${ENV_NAME} \
-    $VERSION_TAG_BUILD \
-		-t ${DOCKER_ORG}/${SERVICE_NAME}:${ENV_NAME} \
-    -t ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${ENV_NAME} \
+		-t ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN} \
     --file ci.Dockerfile .
 
 if [ "$1" = "push" ]; then
-  docker push ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD}
-  docker push ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD}-${ENV_NAME}
+  docker push ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}
   if [ -n "$VERSION_TAG" ]; then
     docker push $VERSION_TAG
   fi
