@@ -17,6 +17,5 @@ WORKDIR /opt/app
 ADD release.tar.gz ./
 
 CMD trap 'exit' INT; \
-  /opt/app/bin/${APP_NAME} seed && \
   /opt/app/bin/${APP_NAME} foreground
   
