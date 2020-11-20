@@ -1,6 +1,15 @@
 <% asset_import(@conn, "js/app.js") %>
-<% asset_import(@conn, "js/themes/sportsbet-light.js") %>
+
+<% theme_name = "#{@conn.params["theme_name"] || "sportsbet-dark"}" %>
+
+<% asset_import(@conn, "js/themes/aposta10-dark.js") %>
+<% asset_import(@conn, "js/themes/aposta10-light.js") %>
+<% asset_import(@conn, "js/themes/missions-dark.js") %>
+<% asset_import(@conn, "js/themes/missions-light.js") %>
 <% asset_import(@conn, "js/themes/sportsbet-dark.js") %>
+<% asset_import(@conn, "js/themes/sportsbet-light.js") %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,16 +40,18 @@
         line-height: var(--base--line-height);
         color: var(--color--text);
         background-color: var(--color--background);
-        font-family: var(--font-face--regular--font-family);
-        font-display: var(--font-face--regular--font-display);
-        unicode-range: var(--font-face--regular--font-display);
+        font-family: var(--font-family);
         font-weight: var(--font-face--regular--font-weight);
+      }
+
+      pre {
+        font-size: 12px;
       }
 
     </style>
 
   </head>
-  <body class="sportsbet-dark">
+  <body class="<%= theme_name %>">
 
     <div id="site-left-menu">
       <%= live_render @conn, MoonWeb.Components.LeftMenu, id: "left-menu" %>

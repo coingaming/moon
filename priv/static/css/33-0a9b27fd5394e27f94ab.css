@@ -1,0 +1,9 @@
+.moon-carousel {
+  overflow: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+  width: 100%; }
+  .moon-carousel .carousel-inner {
+    width: auto;
+    white-space: nowrap; }
+

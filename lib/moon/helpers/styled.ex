@@ -1,15 +1,27 @@
 defmodule Moon.Helpers.Styled do
   def get_style(props) do
-    props |> Enum.map(fn {x, y} ->
-      if y do
-        x = String.replace("#{x}", "_", "-")
+    props
+    |> Enum.map(fn {x, y} ->
+      x = String.replace("#{x}", "_", "-")
 
-        if String.contains?(x, "color") do
+      cond do
+        String.contains?(x, "color") && y ->
           "#{x}: var(--color--#{y})"
-        else
+
+        x == "font-size" ->
+          "#{x}: #{y}px"
+
+        x == "is-bold" && y ->
+          "font-weight: var(--font-face--semibold--font-weight)"
+
+        y ->
           "#{x}: #{y}"
-        end
+
+        true ->
+          nil
       end
-    end) |> Enum.filter(fn x -> x end) |> Enum.join(";")
+    end)
+    |> Enum.filter(fn x -> x end)
+    |> Enum.join(";")
   end
 end

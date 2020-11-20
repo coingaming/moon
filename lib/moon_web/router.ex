@@ -19,31 +19,34 @@ defmodule MoonWeb.Router do
     get("/healthcheck", MoonWeb.Controllers.HealthcheckController, :index)
   end
 
-  scope "/" do
-    pipe_through :browser
+  Enum.each ["/", "/:theme_name"], fn theme_path ->
+    scope theme_path do
+      pipe_through :browser
 
-    live "/", MoonWeb.Pages.MainPage
-    live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
-    live "/assets/crests", MoonWeb.Pages.Assets.CrestsPage
-    live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
-    live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
-    live "/assets/logos", MoonWeb.Pages.Assets.LogosPage
-    live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
-    live "/components/avatar", MoonWeb.Pages.Components.AvatarPage
-    live "/components/badge", MoonWeb.Pages.Components.BadgePage
-    live "/components/button", MoonWeb.Pages.Components.ButtonPage
-    live "/components/checkbox", MoonWeb.Pages.Components.CheckboxPage
+      live "/", MoonWeb.Pages.MainPage
+      live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
+      live "/assets/crests", MoonWeb.Pages.Assets.CrestsPage
+      live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
+      live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
+      live "/assets/logos", MoonWeb.Pages.Assets.LogosPage
+      live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
+      live "/components/avatar", MoonWeb.Pages.Components.AvatarPage
+      live "/components/badge", MoonWeb.Pages.Components.BadgePage
+      live "/components/button", MoonWeb.Pages.Components.ButtonPage
+      live "/components/checkbox", MoonWeb.Pages.Components.CheckboxPage
 
-    live "/components/checkbox-multiselect",
-         MoonWeb.Pages.Components.CheckboxMultiselectPage
+      live "/components/checkbox-multiselect",
+           MoonWeb.Pages.Components.CheckboxMultiselectPage
 
-    live "/components/inline", MoonWeb.Pages.Components.InlinePage
-    live "/components/link", MoonWeb.Pages.Components.LinkPage
-    live "/components/select", MoonWeb.Pages.Components.SelectPage
-    live "/components/stack", MoonWeb.Pages.Components.StackPage
-    live "/components/text", MoonWeb.Pages.Components.TextPage
-    live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
+      live "/components/inline", MoonWeb.Pages.Components.InlinePage
+      live "/components/link", MoonWeb.Pages.Components.LinkPage
+      live "/components/select", MoonWeb.Pages.Components.SelectPage
+      live "/components/stack", MoonWeb.Pages.Components.StackPage
+      live "/components/text", MoonWeb.Pages.Components.TextPage
+      live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
+    end
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", MoonWeb do
