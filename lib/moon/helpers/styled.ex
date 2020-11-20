@@ -8,9 +8,6 @@ defmodule Moon.Helpers.Styled do
         String.contains?(x, "color") && y ->
           "#{x}: var(--color--#{y})"
 
-        x == "font-size" ->
-          "#{x}: #{y}px"
-
         x == "is-bold" && y ->
           "font-weight: var(--font-face--semibold--font-weight)"
 
