@@ -1,3 +1,4 @@
+
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   use Moon.LiveView
 
@@ -64,7 +65,6 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       <Trophy font_size="10rem" color="piccolo-100" />
       <YouPlayWePay font_size="10rem" color="piccolo-100" />
     </Inline>
-
     <#CodePreview>
       <Inline>
         <CasinoBonus font_size="10rem" color="piccolo-100" />
@@ -99,3 +99,4 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
     """
   end
 end
+    

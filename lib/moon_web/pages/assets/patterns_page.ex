@@ -1,3 +1,4 @@
+
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use Moon.LiveView
 
@@ -14,8 +15,8 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~H"""
-    <Inline font_size="5em">
-      <PatternCircles color="piccolo-100" />
+    <Inline font_size="10em">
+      <PatternCircles />
       <PatternLines />
       <PatternRipple />
       <PatternSpeed />
@@ -23,8 +24,8 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
       <PatternWave />
     </Inline>
     <#CodePreview>
-      <Inline>
-        <PatternCircles color="piccolo-100" />
+      <Inline font_size="10em">
+        <PatternCircles />
         <PatternLines />
         <PatternRipple />
         <PatternSpeed />
@@ -35,3 +36,4 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
     """
   end
 end
+    

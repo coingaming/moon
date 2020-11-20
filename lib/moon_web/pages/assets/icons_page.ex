@@ -1,3 +1,4 @@
+
 defmodule MoonWeb.Pages.Assets.IconsPage do
   use Moon.LiveView
 
@@ -118,6 +119,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconESportsStarCraft
   alias Icons.IconEdit
   alias Icons.IconErrorCircle
+  alias Icons.IconError
   alias Icons.IconExpand
   alias Icons.IconEyeClosed
   alias Icons.IconEye
@@ -126,9 +128,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconForward
   alias Icons.IconFreebet
   alias Icons.IconGamepad
+  alias Icons.IconGeneralInfo
   alias Icons.IconGift
   alias Icons.IconGlasses
   alias Icons.IconGlobe
+  alias Icons.IconGoogleAuth
   alias Icons.IconGoogle
   alias Icons.IconHamburger
   alias Icons.IconHelp
@@ -147,8 +151,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconLine
   alias Icons.IconLink
   alias Icons.IconListNumbered
+  alias Icons.IconLiveCasino
   alias Icons.IconLiveChat
   alias Icons.IconLiveStream
+  alias Icons.IconLock
   alias Icons.IconLogin
   alias Icons.IconLogoPlain
   alias Icons.IconLogout
@@ -201,8 +207,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconSportsFeatured
   alias Icons.IconSportsFootBall
   alias Icons.IconSportsGolf
+  alias Icons.IconSportsGreyhound
   alias Icons.IconSportsHandBall
+  alias Icons.IconSportsHarness
   alias Icons.IconSportsHorseRacing
+  alias Icons.IconSportsHorse
   alias Icons.IconSportsIceHockey
   alias Icons.IconSportsMma
   alias Icons.IconSportsMotorSports
@@ -237,6 +246,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconUpload
   alias Icons.IconUser
   alias Icons.IconUsers
+  alias Icons.IconVerify
   alias Icons.IconVirtualSports
   alias Icons.IconVkontakte
   alias Icons.IconVolatility
@@ -247,15 +257,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconWhatsapp
   alias Icons.IconYoutube
   alias Icons.IconZoom
-  alias Icons.IconError
-  alias Icons.IconGeneralInfo
-  alias Icons.IconGoogleAuth
-  alias Icons.IconLiveCasino
-  alias Icons.IconLock
-  alias Icons.IconSportsGreyhound
-  alias Icons.IconSportsHarness
-  alias Icons.IconSportsHorse
-  alias Icons.IconVerify
 
   def render(assigns) do
     ~H"""
@@ -373,6 +374,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconESportsStarCraft />
       <IconEdit />
       <IconErrorCircle />
+      <IconError />
       <IconExpand />
       <IconEyeClosed />
       <IconEye />
@@ -381,9 +383,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconForward />
       <IconFreebet />
       <IconGamepad />
+      <IconGeneralInfo />
       <IconGift />
       <IconGlasses />
       <IconGlobe />
+      <IconGoogleAuth />
       <IconGoogle />
       <IconHamburger />
       <IconHelp />
@@ -402,8 +406,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconLine />
       <IconLink />
       <IconListNumbered />
+      <IconLiveCasino />
       <IconLiveChat />
       <IconLiveStream />
+      <IconLock />
       <IconLogin />
       <IconLogoPlain />
       <IconLogout />
@@ -456,8 +462,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconSportsFeatured />
       <IconSportsFootBall />
       <IconSportsGolf />
+      <IconSportsGreyhound />
       <IconSportsHandBall />
+      <IconSportsHarness />
       <IconSportsHorseRacing />
+      <IconSportsHorse />
       <IconSportsIceHockey />
       <IconSportsMma />
       <IconSportsMotorSports />
@@ -492,6 +501,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconUpload />
       <IconUser />
       <IconUsers />
+      <IconVerify />
       <IconVirtualSports />
       <IconVkontakte />
       <IconVolatility />
@@ -502,15 +512,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconWhatsapp />
       <IconYoutube />
       <IconZoom />
-      <IconError />
-      <IconGeneralInfo />
-      <IconGoogleAuth />
-      <IconLiveCasino />
-      <IconLock />
-      <IconSportsGreyhound />
-      <IconSportsHarness />
-      <IconSportsHorse />
-      <IconVerify />
     </Inline>
     <#CodePreview>
       <Inline>
@@ -568,40 +569,40 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconCopy />
         <IconCredit />
         <IconCrypto />
-        <IconCurrencyARS />
-        <IconCurrencyBDT />
-        <IconCurrencyBOB />
-        <IconCurrencyBRL />
-        <IconCurrencyBTC />
-        <IconCurrencyCAD />
-        <IconCurrencyCLP />
-        <IconCurrencyCNY />
-        <IconCurrencyCRC />
-        <IconCurrencyETH />
-        <IconCurrencyEUR />
-        <IconCurrencyGEL />
-        <IconCurrencyHKD />
-        <IconCurrencyIDR />
-        <IconCurrencyINR />
-        <IconCurrencyIQD />
-        <IconCurrencyJPY />
-        <IconCurrencyKRW />
-        <IconCurrencyLTC />
-        <IconCurrencyMXN />
-        <IconCurrencyMYR />
-        <IconCurrencyPEN />
-        <IconCurrencyPKR />
-        <IconCurrencyRUB />
-        <IconCurrencySOC />
-        <IconCurrencyTHB />
-        <IconCurrencyTRX />
-        <IconCurrencyTRY />
-        <IconCurrencyUAH />
-        <IconCurrencyUSD />
-        <IconCurrencyUSDT />
-        <IconCurrencyVES />
-        <IconCurrencyVND />
-        <IconCurrencyXRP />
+        <IconCurrencyArs />
+        <IconCurrencyBdt />
+        <IconCurrencyBob />
+        <IconCurrencyBrl />
+        <IconCurrencyBtc />
+        <IconCurrencyCad />
+        <IconCurrencyClp />
+        <IconCurrencyCny />
+        <IconCurrencyCrc />
+        <IconCurrencyEth />
+        <IconCurrencyEur />
+        <IconCurrencyGel />
+        <IconCurrencyHkd />
+        <IconCurrencyIdr />
+        <IconCurrencyInr />
+        <IconCurrencyIqd />
+        <IconCurrencyJpy />
+        <IconCurrencyKrw />
+        <IconCurrencyLtc />
+        <IconCurrencyMxn />
+        <IconCurrencyMyr />
+        <IconCurrencyPen />
+        <IconCurrencyPkr />
+        <IconCurrencyRub />
+        <IconCurrencySoc />
+        <IconCurrencyThb />
+        <IconCurrencyTrx />
+        <IconCurrencyTry />
+        <IconCurrencyUah />
+        <IconCurrencyUsd />
+        <IconCurrencyUsdt />
+        <IconCurrencyVes />
+        <IconCurrencyVnd />
+        <IconCurrencyXrp />
         <IconCursor />
         <IconData />
         <IconDelete />
@@ -627,6 +628,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconESportsStarCraft />
         <IconEdit />
         <IconErrorCircle />
+        <IconError />
         <IconExpand />
         <IconEyeClosed />
         <IconEye />
@@ -635,9 +637,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconForward />
         <IconFreebet />
         <IconGamepad />
+        <IconGeneralInfo />
         <IconGift />
         <IconGlasses />
         <IconGlobe />
+        <IconGoogleAuth />
         <IconGoogle />
         <IconHamburger />
         <IconHelp />
@@ -656,8 +660,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconLine />
         <IconLink />
         <IconListNumbered />
+        <IconLiveCasino />
         <IconLiveChat />
         <IconLiveStream />
+        <IconLock />
         <IconLogin />
         <IconLogoPlain />
         <IconLogout />
@@ -710,8 +716,11 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconSportsFeatured />
         <IconSportsFootBall />
         <IconSportsGolf />
+        <IconSportsGreyhound />
         <IconSportsHandBall />
+        <IconSportsHarness />
         <IconSportsHorseRacing />
+        <IconSportsHorse />
         <IconSportsIceHockey />
         <IconSportsMma />
         <IconSportsMotorSports />
@@ -746,6 +755,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconUpload />
         <IconUser />
         <IconUsers />
+        <IconVerify />
         <IconVirtualSports />
         <IconVkontakte />
         <IconVolatility />
@@ -756,18 +766,9 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconWhatsapp />
         <IconYoutube />
         <IconZoom />
-        <IconError />
-        <IconGeneralInfo />
-        <IconGoogleAuth />
-        <IconLiveCasino />
-        <IconLock />
-        <IconSportsGreyhound />
-        <IconSportsHarness />
-        <IconSportsHorse />
-        <IconVerify />
-
       </Inline>
     </#CodePreview>
     """
   end
 end
+    

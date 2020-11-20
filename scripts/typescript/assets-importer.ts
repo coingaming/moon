@@ -26,7 +26,7 @@ const camelToSnakeCase = (str) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
 const getModuleName = (s) =>
-  capitalizeFirstLetter(toCamel(s)).replace('IconLoyalty-0', 'IconLoyalty0');
+  capitalizeFirstLetter(toCamel(s)).replace('IconLoyalty-0', 'IconLoyalty0').replace(".svg", "");
 
 const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
   const newFilePath = `${exportDir}/${assetsFolder}/${file
@@ -86,4 +86,160 @@ end
       file: file.replace('.svg', ''),
     });
   });
+});
+
+
+const assetsDocDir = '../../lib/moon_web/pages/assets/';
+
+const writeAssetsDocumentationPage = (type, pageContent) => {
+  fs.writeFileSync(assetsDocDir + type + "_page.ex", pageContent);
+}
+
+const generateAssetsDocumentationPageContent = (type, modules) => {
+  if (type == "crests") {
+    return `
+defmodule MoonWeb.Pages.Assets.CrestsPage do
+  use Moon.LiveView
+
+  alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Crests
+${modules.map(x => `  alias Crests.${x}`).join("\n")}
+
+  def render(assigns) do
+    ~H"""
+    <Inline>
+${modules.map(x => `      <${x} font_size="10rem" />`).join("\n")}
+    </Inline>
+    <#CodePreview>
+      <Inline>
+${modules.map(x => `        <${x} font_size="10rem" />`).join("\n")}
+      </Inline>
+    </#CodePreview>
+    """
+  end
+end
+    `
+  }
+
+  if (type == "duotones") {
+    return `
+defmodule MoonWeb.Pages.Assets.DuotonesPage do
+  use Moon.LiveView
+
+  alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Duotones
+${modules.map(x => `  alias Duotones.${x}`).join("\n")}
+
+  def render(assigns) do
+    ~H"""
+    <Inline>
+${modules.map(x => `      <${x} font_size="10rem" color="piccolo-100" />`).join("\n")}
+    </Inline>
+    <#CodePreview>
+      <Inline>
+${modules.map(x => `        <${x} font_size="10rem" color="piccolo-100" />`).join("\n")}
+      </Inline>
+    </#CodePreview>
+    """
+  end
+end
+    `
+  }
+
+  if (type == "icons") {
+    return `
+defmodule MoonWeb.Pages.Assets.IconsPage do
+  use Moon.LiveView
+
+  alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Icons
+${modules.map(x => `  alias Icons.${x}`).join("\n")}
+
+  def render(assigns) do
+    ~H"""
+    <Inline>
+${modules.map(x => `      <${x} />`).join("\n")}
+    </Inline>
+    <#CodePreview>
+      <Inline>
+${modules.map(x => `        <${x} />`).join("\n")}
+      </Inline>
+    </#CodePreview>
+    """
+  end
+end
+    `
+  }
+
+  if (type == "logos") {
+    return `
+defmodule MoonWeb.Pages.Assets.LogosPage do
+  use Moon.LiveView
+
+  alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Logos
+${modules.map(x => `  alias Logos.${x}`).join("\n")}
+
+  def render(assigns) do
+    ~H"""
+    <Inline font_size="10em">
+${modules.map(x => `      <${x} />`).join("\n")}
+    </Inline>
+    <#CodePreview>
+      <Inline font_size="10em">
+${modules.map(x => `        <${x} />`).join("\n")}
+      </Inline>
+    </#CodePreview>
+    """
+  end
+end
+    `
+  }
+
+  if (type == "patterns") {
+    return `
+defmodule MoonWeb.Pages.Assets.PatternsPage do
+  use Moon.LiveView
+
+  alias Moon.Components.Inline
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Patterns
+${modules.map(x => `  alias Patterns.${x}`).join("\n")}
+
+  def render(assigns) do
+    ~H"""
+    <Inline font_size="10em">
+${modules.map(x => `      <${x} />`).join("\n")}
+    </Inline>
+    <#CodePreview>
+      <Inline font_size="10em">
+${modules.map(x => `        <${x} />`).join("\n")}
+      </Inline>
+    </#CodePreview>
+    """
+  end
+end
+    `
+  }
+}
+
+const generateAssetsDocumentationPage = (type, files) => {
+  const modules = files.map(f => getModuleName(f));
+  const pageContent = generateAssetsDocumentationPageContent(type, modules);
+  
+  writeAssetsDocumentationPage(type, pageContent);
+}
+
+['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
+  const files = getFiles(assetsFolder); 
+  generateAssetsDocumentationPage(assetsFolder, files);
 });
