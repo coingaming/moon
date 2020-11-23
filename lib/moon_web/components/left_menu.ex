@@ -10,7 +10,9 @@ defmodule MoonWeb.Components.LeftMenu do
     <Stack>
       <Heading size=20>Concepts & Tutorials</Heading>
       <Link to="/">Overview</Link>
+      <Link to="/tutorials/usage">Usage</Link>
       <Link to="/tutorials/add-data-using-form">Add data using form</Link>
+
       <Heading size=20>Assets</Heading>
       <Link to="/assets/crests">Crests</Link>
       <Link to="/assets/duotones">Duotones</Link>

@@ -23,11 +23,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :asset_import, Moon.Assets,
-  assets_base_url: "/",
-  assets_path: Path.expand("assets"),
-  manifest_path: Path.expand("priv/static/manifest.json"),
-  entrypoints_path: Path.expand("assets/entrypoints.json")
+# config :asset_import, Moon.Assets,
+#   assets_base_url: "/",
+#   assets_path: Path.expand("assets"),
+#   manifest_path: Path.expand("priv/static/manifest.json"),
+#   entrypoints_path: Path.expand("assets/entrypoints.json")
 
 config :asset_import, MoonWeb.Assets,
   assets_base_url: "/",

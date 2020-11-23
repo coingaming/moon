@@ -3,8 +3,8 @@ defmodule Moon.StatelessComponent do
     quote do
       use Surface.Component
       import Moon.StatelessComponent
-      use Moon.Assets
-      import Moon.Assets.Files
+      use MoonWeb.Assets
+      import MoonWeb.Assets.Files
       import Moon.Helpers.Styled
     end
   end

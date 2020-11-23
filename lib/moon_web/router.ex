@@ -24,7 +24,6 @@ defmodule MoonWeb.Router do
       pipe_through :browser
 
       live "/", MoonWeb.Pages.MainPage
-      live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
       live "/assets/crests", MoonWeb.Pages.Assets.CrestsPage
       live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
       live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
@@ -44,6 +43,10 @@ defmodule MoonWeb.Router do
       live "/components/stack", MoonWeb.Pages.Components.StackPage
       live "/components/text", MoonWeb.Pages.Components.TextPage
       live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
+
+
+      live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
+      live "/tutorials/usage", MoonWeb.Pages.Tutorials.Usage
     end
   end
 
