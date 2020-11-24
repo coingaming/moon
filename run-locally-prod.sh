@@ -1,3 +1,5 @@
+rm -rf _build
+
 export MIX_ENV=prod
 export SERVICE_PORT=5000
 

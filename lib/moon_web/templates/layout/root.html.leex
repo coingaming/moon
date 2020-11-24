@@ -9,7 +9,7 @@
 <% asset_import(@conn, "js/themes/sportsbet-dark.js") %>
 <% asset_import(@conn, "js/themes/sportsbet-light.js") %>
 
-
+<% left_menu = live_render @conn, MoonWeb.Components.LeftMenu, id: "left-menu" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +54,7 @@
   <body class="<%= theme_name %>">
 
     <div id="site-left-menu">
-      <%= live_render @conn, MoonWeb.Components.LeftMenu, id: "left-menu" %>
+      <%= left_menu %>
     </div>
     <div id="site-content">
       <%= @inner_content %>

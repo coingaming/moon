@@ -4,15 +4,6 @@
 # remember to add this file to your .gitignore.
 use Mix.Config
 
-secret_key_base = System.get_env("SECRET_KEY_BASE") || "zMBKDyfVAWJLhzEomz2JktQhqVEH9GAnnmytbouvPqFKwbQBgN80QJb8/NbmGHgw"
-
-config :moon, MoonWeb.Endpoint,
-  http: [
-    port: String.to_integer(System.get_env("PORT") || "80"),
-    transport_options: [socket_opts: [:inet6]]
-  ],
-  secret_key_base: secret_key_base
-
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix
