@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Tutorials.Usage do
     # check diff https://github.com/coingaming/aposta10_design/commit/7889b319463ad68f3192a5dfe8c6d7414697b5cf
 
     # 3. Include Moon Surface
-    # check diff
+    # check diff https://github.com/coingaming/aposta10_design/commit/4f84046f273bf9b60d8278cbce76855ece62b572
 
     # 4. Install Moon Surface dependencies
     (cd deps/moon/ && mix deps.get)
