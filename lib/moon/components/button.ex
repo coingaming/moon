@@ -45,4 +45,21 @@ defmodule Moon.Components.Button do
     </button>
     """
   end
+
+  # def render(assigns) do
+  #   ~H"""
+  #   <button
+  #     class="moon-button"
+  #     disabled={{ @disabled }}
+  #     data-mock-state={{ @mock_state }}
+  #     data-variant={{ @variant }}
+  #     data-size={{ @size }}
+  #     phx-click={{ @on_click }}
+  #     phx-hook="AssetHook"
+  #     data-assets={{ asset_hook @socket, "js/components/button" }}
+  #   >
+  #     <slot />
+  #   </button>
+  #   """
+  # end
 end

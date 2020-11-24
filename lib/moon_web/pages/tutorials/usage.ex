@@ -17,10 +17,13 @@ defmodule MoonWeb.Pages.Tutorials.Usage do
     # 3. Include Moon Surface
     # check diff
 
-    # 4. Install Moon Surface Assets
-    cd deps/moon/assets/ && npm i
+    # 4. Install Moon Surface dependencies
+    (cd deps/moon/ && mix deps.get)
 
-    # 5. Run project
+    # 5. Install Moon Surface Assets
+    (cd deps/moon/assets/ && npm i)
+
+    # 6. Run project
     mix phx.server
 
     </pre>

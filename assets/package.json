@@ -11,7 +11,7 @@
     "phoenix_html": "file:../deps/phoenix_html",
     "phoenix_live_view": "file:../deps/phoenix_live_view",
     "nprogress": "^0.2.0",
-    "asset_import_hook": "0.4.10"
+    "asset_import_hook": "github:coingaming/asset_import"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
