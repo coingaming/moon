@@ -3,7 +3,6 @@ defmodule Moon.LiveView do
     quote do
       use Surface.LiveView, unquote(opts)
       use MoonWeb.Assets
-      import MoonWeb.Assets.Files
       import Moon.Helpers.Styled
     end
   end
