@@ -4,7 +4,6 @@ defmodule Moon.StatelessComponent do
       use Surface.Component
       import Moon.StatelessComponent
       use MoonWeb.Assets
-      import MoonWeb.Assets.Files
       import Moon.Helpers.Styled
     end
   end
