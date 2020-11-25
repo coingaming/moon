@@ -3,7 +3,9 @@
 <symbol id="item" 
 width="1em" 
 height="auto" 
-viewBox="0 0 28 2">
+viewBox="0 0 28 2"
+fill="none"
+>
   <path d="M27 2H1C-0.333333 2 -0.333333 0 1 0H27C28.3333 0 28.3333 2 27 2Z" fill="currentColor"/>  
 </symbol>
 </svg>

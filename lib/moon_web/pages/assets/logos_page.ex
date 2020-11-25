@@ -6,6 +6,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
+  alias Logos.LogoAposta10Full
+  alias Logos.LogoAposta10Short
   alias Logos.LogoBitcasinoFull
   alias Logos.LogoBitcasinoShort
   alias Logos.LogoBombayFull
@@ -17,6 +19,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoLuckyslotsShort
   alias Logos.LogoMissions
   alias Logos.LogoMoneyball
+  alias Logos.LogoMoonDesign
   alias Logos.LogoSlotsFull
   alias Logos.LogoSlotsShort
   alias Logos.LogoSportsbetFull
@@ -28,6 +31,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   def render(assigns) do
     ~H"""
     <Inline font_size="10em">
+      <LogoAposta10Full />
+      <LogoAposta10Short />
       <LogoBitcasinoFull />
       <LogoBitcasinoShort />
       <LogoBombayFull />
@@ -39,6 +44,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       <LogoLuckyslotsShort />
       <LogoMissions />
       <LogoMoneyball />
+      <LogoMoonDesign />
       <LogoSlotsFull />
       <LogoSlotsShort />
       <LogoSportsbetFull />
@@ -49,6 +55,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
     </Inline>
     <#CodePreview>
       <Inline font_size="10em">
+        <LogoAposta10Full />
+        <LogoAposta10Short />
         <LogoBitcasinoFull />
         <LogoBitcasinoShort />
         <LogoBombayFull />
@@ -60,6 +68,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         <LogoLuckyslotsShort />
         <LogoMissions />
         <LogoMoneyball />
+        <LogoMoonDesign />
         <LogoSlotsFull />
         <LogoSlotsShort />
         <LogoSportsbetFull />

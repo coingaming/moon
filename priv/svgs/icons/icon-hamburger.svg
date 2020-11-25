@@ -3,7 +3,9 @@
 <symbol id="item" 
 width="1em" 
 height="auto" 
-viewBox="0 0 16 14">
+viewBox="0 0 16 14"
+fill="none"
+>
  <rect width="16" height="2" rx="1" fill="currentColor"/> <rect y="6" width="16" height="2" rx="1" fill="currentColor"/> <rect y="12" width="16" height="2" rx="1" fill="currentColor"/>  
 </symbol>
 </svg>
