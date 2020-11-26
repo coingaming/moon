@@ -46,8 +46,15 @@ defmodule MoonWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {MoonWeb.LayoutView, "live.html"}
+      use Moon.LiveView, layout: {MoonWeb.LayoutView, "live.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
+  def stateful_component do
+    quote do
+      use Moon.StatefulComponent
 
       unquote(view_helpers())
     end

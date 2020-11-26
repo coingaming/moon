@@ -2,7 +2,6 @@ const path = require('path');
 const glob = require('glob');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -15,7 +14,6 @@ module.exports = (env, options) => {
   return {
     optimization: {
       minimizer: [
-        new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: false }),
         new OptimizeCSSAssetsPlugin({}),
       ],
       runtimeChunk: 'single',

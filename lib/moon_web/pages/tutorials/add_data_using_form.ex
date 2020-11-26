@@ -1,5 +1,5 @@
 defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
-  use Moon.LiveView
+  use MoonWeb, :live_view
   alias Moon.Components.Form
   alias Moon.Components.TextInput
   alias Moon.Components.Button
@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   data(user, :any)
   data(gender_options, :any)
 
-  def mount(_params, _session, socket) do
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
     user_map = %{
       name: "",
       email: "",
@@ -30,6 +30,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
     {:ok,
      assign(socket,
+       theme_name: theme_name,
        user_map: user_map,
        user_changeset: user_changeset,
        gender_options: gender_options

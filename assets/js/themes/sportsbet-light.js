@@ -1,1 +1,1 @@
-import "../../css/themes/sportsbet-light.scss";
+import "moon-css/example/themes/sportsbet-light.scss"

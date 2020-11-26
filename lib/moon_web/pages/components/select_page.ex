@@ -1,11 +1,11 @@
 defmodule MoonWeb.Pages.Components.SelectPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
   alias Moon.Components.Select
   alias Moon.Components.CodePreview
 
-  data gender_options, :any
+  data(gender_options, :any)
 
-  def mount(_params, _session, socket) do
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
     gender_options = [
       [key: "Female", value: "female"],
       [key: "Male", value: "male"],
@@ -15,7 +15,9 @@ defmodule MoonWeb.Pages.Components.SelectPage do
 
     {:ok,
      assign(socket,
-       gender_options: gender_options
+       gender_options: gender_options,
+       theme_name: theme_name,
+       active_page: __MODULE__
      )}
   end
 

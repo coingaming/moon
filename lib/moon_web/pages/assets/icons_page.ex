@@ -1,6 +1,6 @@
 
 defmodule MoonWeb.Pages.Assets.IconsPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
@@ -257,6 +257,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconWhatsapp
   alias Icons.IconYoutube
   alias Icons.IconZoom
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""

@@ -1,7 +1,11 @@
 defmodule MoonWeb.Pages.Components.TextInputPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
   alias Moon.Components.TextInput
   alias Moon.Components.CodePreview
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""

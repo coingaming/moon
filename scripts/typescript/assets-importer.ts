@@ -99,13 +99,17 @@ const generateAssetsDocumentationPageContent = (type, modules) => {
   if (type == "crests") {
     return `
 defmodule MoonWeb.Pages.Assets.CrestsPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Crests
 ${modules.map(x => `  alias Crests.${x}`).join("\n")}
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""
@@ -126,13 +130,17 @@ end
   if (type == "duotones") {
     return `
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Duotones
 ${modules.map(x => `  alias Duotones.${x}`).join("\n")}
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""
@@ -153,13 +161,17 @@ end
   if (type == "icons") {
     return `
 defmodule MoonWeb.Pages.Assets.IconsPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Icons
 ${modules.map(x => `  alias Icons.${x}`).join("\n")}
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""
@@ -180,13 +192,17 @@ end
   if (type == "logos") {
     return `
 defmodule MoonWeb.Pages.Assets.LogosPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
 ${modules.map(x => `  alias Logos.${x}`).join("\n")}
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""
@@ -207,13 +223,17 @@ end
   if (type == "patterns") {
     return `
 defmodule MoonWeb.Pages.Assets.PatternsPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
 
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Patterns
 ${modules.map(x => `  alias Patterns.${x}`).join("\n")}
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""

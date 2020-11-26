@@ -1,6 +1,10 @@
 defmodule MoonWeb.Pages.MainPage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
   alias Moon.Components.Link
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""
@@ -13,9 +17,6 @@ defmodule MoonWeb.Pages.MainPage do
 
     <h2>Components</h2>
     Elements of Moon (Badge, Button, Link, TextInput etc).
-
-    <h5>Pages</h5>
-    In this Elixir libary, Page is construction of Figma/Scetch file, that passes mock data to components it requires.
     """
   end
 end

@@ -1,11 +1,8 @@
 <main role="main" class="container">
-  <p class="alert alert-info" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
-
-  <p class="alert alert-danger" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="error"><%= live_flash(@flash, :error) %></p>
-
-  <%= @inner_content %>
+  <div id="site-left-menu">
+    <%= live_component @socket, MoonWeb.Components.LeftMenu, id: "left-menu", theme_name: assigns.theme_name, active_page: assigns.active_page %>
+  </div>
+  <div id="site-content">
+    <%= @inner_content %>
+  </div>
 </main>

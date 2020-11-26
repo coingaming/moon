@@ -1,8 +1,12 @@
 defmodule MoonWeb.Pages.Components.BadgePage do
-  use Moon.LiveView
+  use MoonWeb, :live_view
   alias Moon.Components.Badge
   alias Moon.Components.Inline
   alias Moon.Components.CodePreview
+
+  def mount(%{"theme_name" => theme_name}, _session, socket) do
+    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  end
 
   def render(assigns) do
     ~H"""

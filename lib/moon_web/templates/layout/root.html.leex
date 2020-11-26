@@ -4,12 +4,22 @@
 
 <% asset_import(@conn, "js/themes/aposta10-dark.js") %>
 <% asset_import(@conn, "js/themes/aposta10-light.js") %>
-<% asset_import(@conn, "js/themes/missions-dark.js") %>
-<% asset_import(@conn, "js/themes/missions-light.js") %>
+<% asset_import(@conn, "js/themes/bitcasino-dark.js") %>
+<% asset_import(@conn, "js/themes/bitcasino-light.js") %>
+<% asset_import(@conn, "js/themes/bombay-club.js") %>
+<% asset_import(@conn, "js/themes/btcxe.js") %>
+<% asset_import(@conn, "js/themes/hub88.js") %>
+<% asset_import(@conn, "js/themes/livecasino-dark.js") %>
+<% asset_import(@conn, "js/themes/livecasino-light.js") %>
+<% asset_import(@conn, "js/themes/luckyslots.js") %>
+<% asset_import(@conn, "js/themes/missions-tool-dark.js") %>
+<% asset_import(@conn, "js/themes/missions-tool-light.js") %>
+<% asset_import(@conn, "js/themes/moon-design-dark.js") %>
+<% asset_import(@conn, "js/themes/moon-design-light.js") %>
+<% asset_import(@conn, "js/themes/slots-dark.js") %>
+<% asset_import(@conn, "js/themes/slots-light.js") %>
 <% asset_import(@conn, "js/themes/sportsbet-dark.js") %>
 <% asset_import(@conn, "js/themes/sportsbet-light.js") %>
-
-<% left_menu = live_render @conn, MoonWeb.Components.LeftMenu, id: "left-menu" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +35,9 @@
       #site-left-menu {
         vertical-align: top;
         width: 30%;
+        max-width: 300px;
+        padding-right: 5%;
+        box-sizing: border-box;
         display: inline-block;
       }
 
@@ -43,12 +56,7 @@
   </head>
   <body class="<%= theme_name %>">
 
-    <div id="site-left-menu">
-      <%= left_menu %>
-    </div>
-    <div id="site-content">
-      <%= @inner_content %>
-    </div>
+    <%= @inner_content %>
 
     <%= asset_scripts() %>
   </body>
