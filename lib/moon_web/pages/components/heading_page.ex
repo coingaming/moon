@@ -56,10 +56,12 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
     </Stack>
 
     <#CodePreview>
-      <Heading size=24>Heading with default font weight</Heading>
-      <Heading size=24 is_regular=true>
-        Heading with font-weight: regular
-      </Heading>
+      <Stack>
+        <Heading size=24>Heading with default font weight</Heading>
+        <Heading size=24 is_regular=true>
+          Heading with font-weight: regular
+        </Heading>
+      </Stack>
     </#CodePreview>
 
     <h2>Color</h2>
