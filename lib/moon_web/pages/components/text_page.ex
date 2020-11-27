@@ -1,5 +1,6 @@
 defmodule MoonWeb.Pages.Components.TextPage do
   use MoonWeb, :live_view
+  alias Moon.Components.Link
   alias Moon.Components.Stack
   alias Moon.Components.Text
   alias Moon.Components.CodePreview
@@ -10,6 +11,14 @@ defmodule MoonWeb.Pages.Components.TextPage do
 
   def render(assigns) do
     ~H"""
+    <h1>Text</h1>
+    <p>We treat semantic and visual/cosmetic decisions as two totally <Link to="https://csswizardry.com/2016/02/managing-typography-on-large-apps/">separate</Link> things.</p>
+    <p>Our choice of p and span is a purely semantic decision, and doesn't impact cosmetics configured via the size prop.</p>
+
+    <h2>Sizes</h2>
+    <p>We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
+    <p>By default font size is 16. You can choose any size.</p>
+
     <Stack>
       <Text>Text with default font size</Text>
       <Text size=10>Text with font size 10</Text>
@@ -44,15 +53,27 @@ defmodule MoonWeb.Pages.Components.TextPage do
       </Stack>
     </#CodePreview>
 
+    <h2>Bold</h2>
+    <p>By default font weight is regular. You can make it bolder.</p>
+
+    <Stack>
+      <Text size=24>Text with default font weight</Text>
+      <Text size=24 is_bold=true>
+        Text with font-weight: semibold
+      </Text>
+    </Stack>
+
+    <h2>Color</h2>
+
     <Stack>
       <Text size=24>Text with default color</Text>
-      <Text size=24 color="trunks_100">
+      <Text size=24 color="trunks-100">
         Text with defined color
       </Text>
-      <Text size=24 color="piccolo_100">
+      <Text size=24 color="piccolo-100">
         Text with defined color
       </Text>
-      <Text size=24 color="krillin_100">
+      <Text size=24 color="krillin-100">
         Text with defined color
       </Text>
     </Stack>

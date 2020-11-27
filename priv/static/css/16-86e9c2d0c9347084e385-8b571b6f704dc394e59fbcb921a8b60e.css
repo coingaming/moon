@@ -1,0 +1,1 @@
+.moon-badge{display:inline-flex;font-weight:var(--font-weight--semibold);text-transform:uppercase;border-radius:var(--radius--largest);letter-spacing:.0625rem}.moon-badge,.moon-badge[data-size=xsmall]{padding:0 .25rem;font-size:.5rem;line-height:.75rem}.moon-badge[data-size=small]{padding:0 .5rem;font-size:.625rem;line-height:1rem}

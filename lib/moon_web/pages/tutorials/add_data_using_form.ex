@@ -31,6 +31,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     {:ok,
      assign(socket,
        theme_name: theme_name,
+       active_page: __MODULE__,
        user_map: user_map,
        user_changeset: user_changeset,
        gender_options: gender_options
