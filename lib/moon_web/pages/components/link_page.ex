@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.Components.LinkPage do
   alias Moon.Components.Link
   alias Moon.Components.CodePreview
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do

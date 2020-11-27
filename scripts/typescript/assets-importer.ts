@@ -107,8 +107,8 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   alias Moon.Assets.Crests
 ${modules.map(x => `  alias Crests.${x}`).join("\n")}
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
@@ -138,8 +138,8 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
   alias Moon.Assets.Duotones
 ${modules.map(x => `  alias Duotones.${x}`).join("\n")}
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
@@ -169,8 +169,8 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Moon.Assets.Icons
 ${modules.map(x => `  alias Icons.${x}`).join("\n")}
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
@@ -200,8 +200,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Moon.Assets.Logos
 ${modules.map(x => `  alias Logos.${x}`).join("\n")}
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
@@ -231,8 +231,8 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias Moon.Assets.Patterns
 ${modules.map(x => `  alias Patterns.${x}`).join("\n")}
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
-    {:ok, assign(socket, theme_name: theme_name, active_page: __MODULE__)}
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
