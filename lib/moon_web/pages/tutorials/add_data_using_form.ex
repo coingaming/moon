@@ -46,7 +46,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
     <ul>
       <li>Validation errors on form (end user API will remain same, validation errors will come automatically)</li>
-      <li>Check Network -> Websockets (on char update - 4kb of CSS is re-sent). this needs to be optimised. (end user api will remain?)</li>
     </ul>
 
     <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
