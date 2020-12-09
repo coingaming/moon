@@ -4,8 +4,6 @@ defmodule Moon.StatefulComponent do
       use Surface.LiveComponent
       use MoonWeb.Assets
       import Moon.Helpers.Styled
-
-      data(myself, :any)
     end
   end
 end

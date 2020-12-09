@@ -1,0 +1,27 @@
+/*
+<svg class="moon-icon">
+  <use href="/assets/icons/icon-forward.svg#item"></use>
+</svg>
+*/
+/*
+<svg class="moon-icon with-rounded-background" style="background-color: var(--colors--gohan-100); color: var(--colors--bulma-100)">
+  <use href="/assets/icons/icon-forward.svg#item"></use>
+</svg>
+*/
+/*
+<svg class="moon-icon with-circle" style="--circle-color: var(--colors--bulma-100)">
+  <use href="/assets/icons/icon-forward.svg#item"></use>
+</svg>
+*/
+.moon-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em; }
+  .moon-icon.with-rounded-background {
+    padding: 0.25em;
+    overflow: visible;
+    border-radius: 50%; }
+  .moon-icon.with-circle circle {
+    fill: var(--circle-color); }
+
