@@ -6,6 +6,7 @@ defmodule Moon.Components.Badge do
   prop(color, :string, values: Moon.colors)
   prop(background_color, :string, values: Moon.colors)
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
+  prop(style, :string)
 
   def render(assigns) do
     ~H"""
@@ -13,7 +14,7 @@ defmodule Moon.Components.Badge do
 
     <span
       class="moon-badge"
-      style="{{ @color && "color: var(--color--#{@color});" }}{{ @background_color && "background-color: var(--color--#{@background_color});" }}"
+      style="{{ @color && "color: var(--color--#{@color});" }}{{ @background_color && "background-color: var(--color--#{@background_color}); #{@style}" }}"
       data-size={{ @size }}
     >
       <slot />
