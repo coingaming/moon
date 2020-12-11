@@ -6,15 +6,16 @@ defmodule Moon.Components.Badge do
   prop(color, :string, values: Moon.colors)
   prop(background_color, :string, values: Moon.colors)
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
-  prop(style, :string)
 
   def render(assigns) do
+    style = get_style(color: assigns.color, background_color: assigns.background_color)
+
     ~H"""
     {{ asset_import @socket, "js/components/badge" }}
 
     <span
       class="moon-badge"
-      style="{{ @color && "color: var(--color--#{@color});" }}{{ @background_color && "background-color: var(--color--#{@background_color}); #{@style}" }}"
+      style={{ style }}
       data-size={{ @size }}
     >
       <slot />
