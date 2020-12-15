@@ -19,4 +19,6 @@ cd $root_dir
 rm -rf assets/static/svgs
 cp -a assets/node_modules/moon-css/example/assets assets/static/svgs
 
+
+mix format
 mix phx.digest

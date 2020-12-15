@@ -1,6 +1,6 @@
-defmodule Moon.Assets.Crest do
+defmodule Moon.Assets.Pattern do
   use Moon.StatelessComponent
-  alias Moon.Assets.Crest
+  alias Moon.Assets.Patterns
 
   prop(name, :string)
 
@@ -11,10 +11,12 @@ defmodule Moon.Assets.Crest do
   prop(vertical_align, :string)
 
   @assets_map %{
-    crest_arsenal: Crest.CrestArsenal,
-    crest_flamengo: Crest.CrestFlamengo,
-    crest_southampton: Crest.CrestSouthampton,
-    crest_watford: Crest.CrestWatford
+    pattern_circles: Patterns.PatternCircles,
+    pattern_lines: Patterns.PatternLines,
+    pattern_ripple: Patterns.PatternRipple,
+    pattern_speed: Patterns.PatternSpeed,
+    pattern_stars: Patterns.PatternStars,
+    pattern_wave: Patterns.PatternWave
   }
   def icon_name_to_module(icon_name) do
     @assets_map[:"#{icon_name}"]

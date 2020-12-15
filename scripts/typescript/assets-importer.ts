@@ -51,14 +51,14 @@ const propsMapKeys = {
 }
 
 const writeAssetsMapFile = ({ assetsFolder, iconType, files }) => {
-  const newFilePath = `${exportDir}/${assetsFolder}.ex`;
+  const newFilePath = `${exportDir}/${iconType}.ex`;
 
   fs.writeFileSync(
     newFilePath,
     `
 defmodule Moon.Assets.${getModuleName(iconType)} do 
   use Moon.StatelessComponent
-  alias Moon.Assets.${getModuleName(iconType)}
+  alias Moon.Assets.${getModuleName(iconType)}s
   
   prop name, :string
   ${propsMap[iconType] || propsMap.default}
@@ -73,7 +73,7 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
             .replace(
               `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
               ''
-            )}: ${getModuleName(iconType)}.${getModuleName(i)}`
+            )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
       )
       .join(', ')}
     }
