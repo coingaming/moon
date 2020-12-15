@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
@@ -14,7 +13,8 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias Patterns.PatternWave
 
   def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+    {:ok,
+     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do

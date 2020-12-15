@@ -6,7 +6,8 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
   alias Moon.Components.CodePreview
 
   def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+    {:ok,
+     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do

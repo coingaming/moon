@@ -19,7 +19,7 @@ defmodule MoonWeb.Router do
     get("/healthcheck", MoonWeb.Controllers.HealthcheckController, :index)
   end
 
-  Enum.each ["/:theme_name", "/"], fn theme_path ->
+  Enum.each(["/:theme_name", "/"], fn theme_path ->
     scope theme_path do
       pipe_through :browser
 
@@ -45,12 +45,10 @@ defmodule MoonWeb.Router do
       live "/components/text", MoonWeb.Pages.Components.TextPage
       live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
 
-
       live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
       live "/tutorials/installation", MoonWeb.Pages.Tutorials.Installation
     end
-  end
-
+  end)
 
   # Other scopes may use custom stacks.
   # scope "/api", MoonWeb do

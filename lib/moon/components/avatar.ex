@@ -10,7 +10,9 @@ defmodule Moon.Components.Avatar do
   prop(size, :string, default: "medium", values: ["xsmall", "small", "medium", "large"])
 
   def style(assigns) do
-    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
+    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{
+      assigns.background_color
+    });"
   end
 
   def render(assigns) do

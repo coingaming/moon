@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
@@ -29,7 +28,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.MoonPay
 
   def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+    {:ok,
+     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do

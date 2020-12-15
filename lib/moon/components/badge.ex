@@ -3,8 +3,8 @@
 defmodule Moon.Components.Badge do
   use Moon.StatelessComponent
 
-  prop(color, :string, values: Moon.colors)
-  prop(background_color, :string, values: Moon.colors)
+  prop(color, :string, values: Moon.colors())
+  prop(background_color, :string, values: Moon.colors())
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
 
   def render(assigns) do
