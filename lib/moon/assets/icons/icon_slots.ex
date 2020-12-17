@@ -10,7 +10,7 @@ defmodule Moon.Assets.Icons.IconSlots do
     {{ asset_import @socket, "js/assets/icon" }}
 
     <svg class="moon-icon" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
-      <use href="/svgs/icons/icon-slots.svg#item"></use>
+      <use href="/moon/svgs/icons/icon-slots.svg#item"></use>
     </svg>
 
     """

@@ -12,7 +12,7 @@ defmodule Moon.Assets.Duotones.MoneyBack do
     {{ asset_import @socket, "js/assets/duotone" }}
 
     <svg class="moon-duotone" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
-      <use href="/svgs/duotones/money-back.svg#item"></use>
+      <use href="/moon/svgs/duotones/money-back.svg#item"></use>
     </svg>
 
     """

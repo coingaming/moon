@@ -30,7 +30,7 @@ config :phoenix, :json_library, Jason
 #   entrypoints_path: Path.expand("assets/entrypoints.json")
 
 config :asset_import, MoonWeb.Assets,
-  assets_base_url: "/",
+  assets_base_url: "/moon/",
   assets_path: Path.expand("assets"),
   manifest_path: Path.expand("priv/static/manifest.json"),
   entrypoints_path: Path.expand("assets/entrypoints.json")

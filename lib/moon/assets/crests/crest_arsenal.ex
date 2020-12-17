@@ -12,7 +12,7 @@ defmodule Moon.Assets.Crests.CrestArsenal do
     {{ asset_import @socket, "js/assets/crest" }}
 
     <svg class="moon-crest" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
-      <use href="/svgs/crests/crest-arsenal.svg#item"></use>
+      <use href="/moon/svgs/crests/crest-arsenal.svg#item"></use>
     </svg>
 
     """

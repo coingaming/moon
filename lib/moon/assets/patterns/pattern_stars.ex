@@ -12,7 +12,7 @@ defmodule Moon.Assets.Patterns.PatternStars do
     {{ asset_import @socket, "js/assets/pattern" }}
 
     <svg class="moon-pattern" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
-      <use href="/svgs/patterns/pattern-stars.svg#item"></use>
+      <use href="/moon/svgs/patterns/pattern-stars.svg#item"></use>
     </svg>
 
     """
