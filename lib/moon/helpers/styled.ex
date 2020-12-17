@@ -6,7 +6,11 @@ defmodule Moon.Helpers.Styled do
 
       cond do
         String.contains?(x, "color") && y ->
-          "#{x}: var(--color--#{y})"
+          if String.starts_with?(y, "#") do
+            "#{x}: #{y}"
+          else
+            "#{x}: var(--color--#{y})"
+          end
 
         x == "is-bold" && y ->
           "font-weight: var(--font-face--semibold--font-weight)"
