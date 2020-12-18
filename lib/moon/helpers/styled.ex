@@ -1,4 +1,19 @@
 defmodule Moon.Helpers.Styled do
+
+  def get_style(string_style, props) do
+    props_style = get_style(props)
+
+    if string_style do
+      if props_style do
+        string_style <> props_style
+      else
+        string_style
+      end
+    else
+      props_style
+    end
+  end
+
   def get_style(props) do
     props
     |> Enum.map(fn {x, y} ->

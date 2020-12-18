@@ -11,7 +11,7 @@ defmodule Moon.Components.Text do
     ~H"""
     {{ asset_import @socket, "js/components/text" }}
 
-    <div class={{ "moon-text #{@add_class}" }} data-size={{ @size }} data-is-bold={{ @is_bold && "true" }} style={{ "#{@style}; #{get_style(color: @color)}" }}>
+    <div class={{ "moon-text #{@add_class}" }} data-size={{ @size }} data-is-bold={{ @is_bold && "true" }} style={{ get_style(@style, color: @color) }}>
       <slot />
     </div>
     """
