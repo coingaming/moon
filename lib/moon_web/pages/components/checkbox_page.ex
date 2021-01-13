@@ -27,6 +27,18 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         I agree to receive bonus & marketing emails.
       </Checkbox>
     </Stack>
+
+    <#CodePreview>
+      <Stack>
+        <Checkbox>
+          I confirm that I am at least 18 years of age, and accept the <Link href="#">Terms and Conditions</Link>.
+        </Checkbox>
+
+        <Checkbox>
+          I agree to receive bonus & marketing emails.
+        </Checkbox>
+      </Stack>
+    </#CodePreview>
     """
   end
 end
