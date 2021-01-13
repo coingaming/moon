@@ -29,11 +29,13 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconBell
   alias Icons.IconBitcoinTalk
   alias Icons.IconBombayClub
+  alias Icons.IconBurger
   alias Icons.IconCalendarEmpty
   alias Icons.IconCalendar
   alias Icons.IconCard
   alias Icons.IconCase
   alias Icons.IconCashOut
+  alias Icons.IconCasinoBell
   alias Icons.IconCasino
   alias Icons.IconChartArea
   alias Icons.IconChartBar
@@ -50,6 +52,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconChevronUpRounded
   alias Icons.IconChevronUp
   alias Icons.IconCircle
+  alias Icons.IconClaps
   alias Icons.IconClock
   alias Icons.IconCloseRounded
   alias Icons.IconCloseSmall
@@ -126,6 +129,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconFilter
   alias Icons.IconForward
   alias Icons.IconFreebet
+  alias Icons.IconFullScreen
   alias Icons.IconGamepad
   alias Icons.IconGeneralInfo
   alias Icons.IconGift
@@ -289,11 +293,13 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconBell />
       <IconBitcoinTalk />
       <IconBombayClub />
+      <IconBurger />
       <IconCalendarEmpty />
       <IconCalendar />
       <IconCard />
       <IconCase />
       <IconCashOut />
+      <IconCasinoBell />
       <IconCasino />
       <IconChartArea />
       <IconChartBar />
@@ -310,6 +316,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconChevronUpRounded />
       <IconChevronUp />
       <IconCircle />
+      <IconClaps />
       <IconClock />
       <IconCloseRounded />
       <IconCloseSmall />
@@ -386,6 +393,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <IconFilter />
       <IconForward />
       <IconFreebet />
+      <IconFullScreen />
       <IconGamepad />
       <IconGeneralInfo />
       <IconGift />
@@ -543,11 +551,13 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconBell />
         <IconBitcoinTalk />
         <IconBombayClub />
+        <IconBurger />
         <IconCalendarEmpty />
         <IconCalendar />
         <IconCard />
         <IconCase />
         <IconCashOut />
+        <IconCasinoBell />
         <IconCasino />
         <IconChartArea />
         <IconChartBar />
@@ -564,6 +574,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconChevronUpRounded />
         <IconChevronUp />
         <IconCircle />
+        <IconClaps />
         <IconClock />
         <IconCloseRounded />
         <IconCloseSmall />
@@ -640,6 +651,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         <IconFilter />
         <IconForward />
         <IconFreebet />
+        <IconFullScreen />
         <IconGamepad />
         <IconGeneralInfo />
         <IconGift />

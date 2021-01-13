@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoBitcasinoShort
   alias Logos.LogoBombayFull
   alias Logos.LogoBombayShort
+  alias Logos.LogoCommsFull
+  alias Logos.LogoCommsShort
   alias Logos.LogoHub88Full
   alias Logos.LogoHub88Short
   alias Logos.LogoLivecasinoFull
@@ -41,6 +43,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       <LogoBitcasinoShort />
       <LogoBombayFull />
       <LogoBombayShort />
+      <LogoCommsFull />
+      <LogoCommsShort />
       <LogoHub88Full />
       <LogoHub88Short />
       <LogoLivecasinoFull />
@@ -65,6 +69,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         <LogoBitcasinoShort />
         <LogoBombayFull />
         <LogoBombayShort />
+        <LogoCommsFull />
+        <LogoCommsShort />
         <LogoHub88Full />
         <LogoHub88Short />
         <LogoLivecasinoFull />

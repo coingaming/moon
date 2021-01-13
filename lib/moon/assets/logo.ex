@@ -17,6 +17,8 @@ defmodule Moon.Assets.Logo do
     logo_bitcasino_short: Logos.LogoBitcasinoShort,
     logo_bombay_full: Logos.LogoBombayFull,
     logo_bombay_short: Logos.LogoBombayShort,
+    logo_comms_full: Logos.LogoCommsFull,
+    logo_comms_short: Logos.LogoCommsShort,
     logo_hub88_full: Logos.LogoHub88Full,
     logo_hub88_short: Logos.LogoHub88Short,
     logo_livecasino_full: Logos.LogoLivecasinoFull,

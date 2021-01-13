@@ -1,5 +1,4 @@
 defmodule Moon.Helpers.Styled do
-
   def get_style(string_style, props) do
     props_style = get_style(props)
 
