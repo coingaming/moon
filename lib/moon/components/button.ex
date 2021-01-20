@@ -28,13 +28,14 @@ defmodule Moon.Components.Button do
   prop(is_active, :boolean)
   prop(location, :string)
   prop(style, :string)
+  prop(class, :string)
 
   def render(assigns) do
     ~H"""
     {{ asset_import @socket, "js/components/button" }}
 
     <button
-      class="moon-button"
+      class="moon-button {{ @class }}"
       disabled={{ @disabled }}
       data-mock-state={{ @mock_state }}
       data-variant={{ @variant }}

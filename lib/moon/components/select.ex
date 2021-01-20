@@ -16,6 +16,7 @@ defmodule Moon.Components.Select do
   prop(input_grow, :boolean)
   prop(icon, :string)
   prop(full_width, :boolean)
+  prop(class, :string)
 
   def render(assigns) do
     options_with_selected =
@@ -32,7 +33,7 @@ defmodule Moon.Components.Select do
     {{ asset_import @socket, "js/components/select" }}
 
     <Surface.Components.Form.Select
-      class="moon-select"
+      class="moon-select {{ @class }}"
       field={{ @field }}
       options={{ options_with_selected }}
       opts={{ [prompt: @prompt] }}
@@ -41,7 +42,7 @@ defmodule Moon.Components.Select do
 
     <Label text={{ @label }} :if={{ @label }}>
       <Surface.Components.Form.Select
-        class="moon-select"
+        class="moon-select {{ @class }}"
         field={{ @field }}
         options={{ options_with_selected }}
         opts={{ [prompt: @prompt] }}

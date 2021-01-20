@@ -8,6 +8,7 @@ defmodule Moon.Components.Avatar do
   prop(color, :string)
   prop(background_color, :string)
   prop(size, :string, default: "medium", values: ["xsmall", "small", "medium", "large"])
+  prop(class, :string)
 
   def style(assigns) do
     "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{
@@ -20,7 +21,7 @@ defmodule Moon.Components.Avatar do
     {{ asset_import @socket, "js/components/avatar" }}
 
     <div
-      class="moon-avatar" style={{ style(assigns) }} data-size={{ @size }}>
+      class="moon-avatar {{ @class }}" style={{ style(assigns) }} data-size={{ @size }}>
       <span :if={{ @name && !@image_url }}>{{ @name }}</span>
       <IconUser color={{ @color }} :if={{ !@name && !@image_url }} />
     </div>

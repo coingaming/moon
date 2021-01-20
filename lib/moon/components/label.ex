@@ -5,10 +5,11 @@ defmodule Moon.Components.Label.LabelFlex do
 
   prop(flex, :boolean)
   prop(input_grow, :integer)
+  prop(class, :string)
 
   def render(assigns) do
     ~H"""
-    <label class="moon-label-flex">
+    <label class="moon-label-flex {{ @class }}">
       <slot />
     </label>
     """
@@ -43,12 +44,13 @@ defmodule Moon.Components.Label do
   prop(flex, :boolean)
   prop(inline, :boolean)
   prop(input_grow, :integer, default: 1)
+  prop(class, :string)
 
   def render(assigns) do
     ~H"""
-    <label :if={{ @inline }}>{{ @text }}</label>
+    <label class={{ @class }} :if={{ @inline }}>{{ @text }}</label>
 
-    <LabelFlex flex={{ @flex }} input_grow={{ @input_grow }} :if={{ !@inline }}>
+    <LabelFlex class={{ @class }} flex={{ @flex }} input_grow={{ @input_grow }} :if={{ !@inline }}>
       <LabelContent disabled={{ @disabled }} flex={{ @flex }}>
         {{ @text }}
       </LabelContent>
