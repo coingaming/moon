@@ -3,14 +3,11 @@ defmodule Moon.Components.Button do
 
   prop(href, :string)
 
-  prop(variant, :string,
-    default: "default",
-    values: ["primary", "secondary", "tertiary", "highlight", "default"]
-  )
+  prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default"])
 
   prop(on_click, :string)
 
-  prop(size, :string, default: "small", values: ["xsmall", "small", "medium", "large"])
+  prop(size, :string, values: ["xsmall", "small", "medium", "large"])
   prop(mock_state, :string, values: ["active", "focus", "hover"])
   prop(full_width, :boolean)
   prop(progress, :boolean)
