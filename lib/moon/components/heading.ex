@@ -1,7 +1,7 @@
 defmodule Moon.Components.Heading do
   use Moon.StatelessComponent
 
-  prop(size, :integer, default: 16)
+  prop(size, :integer)
   prop(is_regular, :boolean)
   prop(color, :string)
   prop(class, :string)
