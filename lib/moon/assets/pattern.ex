@@ -9,6 +9,7 @@ defmodule Moon.Assets.Pattern do
   prop(width, :string)
   prop(font_size, :string)
   prop(vertical_align, :string)
+  prop(class, :string)
 
   @assets_map %{
     pattern_circles: Patterns.PatternCircles,
@@ -24,7 +25,7 @@ defmodule Moon.Assets.Pattern do
 
   def render(assigns) do
     ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, class: @class) }}
     """
   end
 end

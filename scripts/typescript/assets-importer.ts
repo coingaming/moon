@@ -35,6 +35,7 @@ const propsMap = {
     prop color, :string, values: Moon.colors
     prop background_color, :string, values: Moon.colors
     prop font_size, :string
+    prop class, :string
     `,
   default: `
     prop color, :string, values: Moon.colors
@@ -42,13 +43,14 @@ const propsMap = {
     prop width, :string
     prop font_size, :string
     prop vertical_align, :string
+    prop class, :string
     `,
 };
 
 const propsMapKeys = {
-  icon: ['color', 'background_color', 'font_size'],
-  default: ['color', 'height', 'width', 'font_size', 'vertical_align']
-}
+  icon: ['color', 'background_color', 'font_size', 'class'],
+  default: ['color', 'height', 'width', 'font_size', 'vertical_align', 'class'],
+};
 
 const writeAssetsMapFile = ({ assetsFolder, iconType, files }) => {
   const newFilePath = `${exportDir}/${iconType}.ex`;
@@ -69,7 +71,7 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
           `${i
             .replace(/([-_])/gi, '_')
             .toLowerCase()
-            .replace(".svg", "")
+            .replace('.svg', '')
             .replace(
               `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
               ''
@@ -82,14 +84,17 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
   end
   def render(assigns) do 
     ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(propsMapKeys[iconType] || propsMapKeys.default).map((x:string) => `${x}: @${x}`).join(", ")}) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
+      propsMapKeys[iconType] || propsMapKeys.default
+    )
+      .map((x: string) => `${x}: @${x}`)
+      .join(', ')}) }}
     """
   end
 end
 `.replace('IconLoyalty-0', 'IconLoyalty0')
   );
 };
-
 
 const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
   const newFilePath = `${exportDir}/${assetsFolder}/${file
@@ -98,12 +103,12 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
 
   const svgMap = {
     icon: `
-    <svg class="moon-${iconType}" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
+    <svg class="moon-${iconType} {{ @class }}" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
     default: `
-    <svg class="moon-${iconType}" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
+    <svg class="moon-${iconType} {{ @class }}" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
@@ -310,7 +315,6 @@ end
     `;
   }
 };
-
 
 const generateAssetsDocumentationPage = (type, files) => {
   const modules = files.map((f) => getModuleName(f));

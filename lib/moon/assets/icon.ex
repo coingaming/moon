@@ -7,6 +7,7 @@ defmodule Moon.Assets.Icon do
   prop(color, :string, values: Moon.colors())
   prop(background_color, :string, values: Moon.colors())
   prop(font_size, :string)
+  prop(class, :string)
 
   @assets_map %{
     icon_about: Icons.IconAbout,
@@ -271,7 +272,7 @@ defmodule Moon.Assets.Icon do
 
   def render(assigns) do
     ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color, font_size: @font_size) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color, font_size: @font_size, class: @class) }}
     """
   end
 end
