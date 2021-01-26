@@ -1,7 +1,7 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.1.11"
+  @version "0.1.12"
 
   def project do
     [
@@ -35,10 +35,8 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.6"},
-      # {:phoenix_live_view, "~> 0.14.6"},
-      {:phoenix_live_view,
-       git: "git@github.com:phoenixframework/phoenix_live_view.git", override: true},
+      {:phoenix, "~> 1.5.7"},
+      {:phoenix_live_view, "~> 0.15.3"},
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

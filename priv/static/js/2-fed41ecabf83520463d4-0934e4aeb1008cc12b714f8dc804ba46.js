@@ -1412,10 +1412,10 @@
             i && (x[i] = n), e(n), n = n.nextSibling;
           }
         }(t);
-        var _ = t,
-            D = _.nodeType,
-            R = n.nodeType;
-        if (!S) if (D === f) R === f ? l(t, n) || (E(t), _ = function (e, t) {
+        var D = t,
+            _ = D.nodeType,
+            N = n.nodeType;
+        if (!S) if (_ === f) N === f ? l(t, n) || (E(t), D = function (e, t) {
           for (var n = e.firstChild; n;) {
             var i = n.nextSibling;
             t.appendChild(n), n = i;
@@ -1424,18 +1424,18 @@
           return t;
         }(t, function (e, t) {
           return t && t !== o ? a.createElementNS(t, e) : a.createElement(e);
-        }(n.nodeName, n.namespaceURI))) : _ = n;else if (D === p || D === g) {
-          if (R === D) return _.nodeValue !== n.nodeValue && (_.nodeValue = n.nodeValue), _;
-          _ = n;
+        }(n.nodeName, n.namespaceURI))) : D = n;else if (_ === p || _ === g) {
+          if (N === _) return D.nodeValue !== n.nodeValue && (D.nodeValue = n.nodeValue), D;
+          D = n;
         }
-        if (_ === n) E(t);else {
-          if (n.isSameNode && n.isSameNode(_)) return;
-          if (T(_, n, S), C) for (var N = 0, O = C.length; N < O; N++) {
-            var H = x[C[N]];
-            H && L(H, H.parentNode, !1);
+        if (D === n) E(t);else {
+          if (n.isSameNode && n.isSameNode(D)) return;
+          if (T(D, n, S), C) for (var R = 0, O = C.length; R < O; R++) {
+            var j = x[C[R]];
+            j && L(j, j.parentNode, !1);
           }
         }
-        return !S && _ !== t && t.parentNode && (_.actualize && (_ = _.actualize(t.ownerDocument || a)), t.parentNode.replaceChild(_, t)), _;
+        return !S && D !== t && t.parentNode && (D.actualize && (D = D.actualize(t.ownerDocument || a)), t.parentNode.replaceChild(D, t)), D;
       };
     }(function (e, t) {
       var n,
@@ -1541,21 +1541,21 @@
       if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
     }
 
-    function _(e, t) {
+    function D(e, t) {
       for (var n = 0; n < t.length; n++) {
         var i = t[n];
         i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(e, i.key, i);
       }
     }
 
-    function D(e, t, n) {
-      return t && _(e.prototype, t), n && _(e, n), e;
+    function _(e, t, n) {
+      return t && D(e.prototype, t), n && D(e, n), e;
     }
 
-    function R(e) {
+    function N(e) {
       "@babel/helpers - typeof";
 
-      return (R = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
+      return (N = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
         return typeof e;
       } : function (e) {
         return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
@@ -1563,7 +1563,7 @@
     }
 
     n.d(t, "debug", function () {
-      return $;
+      return X;
     }), n.d(t, "Rendered", function () {
       return se;
     }), n.d(t, "LiveSocket", function () {
@@ -1576,10 +1576,10 @@
       return ve;
     });
 
-    var N = [1e3, 3e3],
+    var R = [1e3, 3e3],
         O = "data-phx-view",
-        H = ["phx-click-loading", "phx-change-loading", "phx-submit-loading", "phx-keydown-loading", "phx-keyup-loading", "phx-blur-loading", "phx-focus-loading"],
-        j = "data-phx-component",
+        j = ["phx-click-loading", "phx-change-loading", "phx-submit-loading", "phx-keydown-loading", "phx-keyup-loading", "phx-blur-loading", "phx-focus-loading"],
+        H = "data-phx-component",
         F = "data-phx-ref",
         M = "data-phx-upload-ref",
         U = "[".concat(O, "]"),
@@ -1596,10 +1596,10 @@
       return console.error && console.error(e, t);
     };
 
-    var $ = function (e, t, n, i) {
+    var X = function (e, t, n, i) {
       e.liveSocket.isDebugEnabled() && console.log("".concat(e.id, " ").concat(t, ": ").concat(n, " - "), i);
     },
-        X = function (e) {
+        $ = function (e) {
       return "function" == typeof e ? e : function () {
         return e;
       };
@@ -1616,7 +1616,7 @@
       return null;
     },
         Q = function (e) {
-      return null !== e && "object" === R(e) && !(e instanceof Array);
+      return null !== e && "object" === N(e) && !(e instanceof Array);
     },
         Z = function (e) {
       for (var t in e) return !1;
@@ -1631,7 +1631,7 @@
         T(this, e), this.ref = re.genFileRef(n), this.fileEl = t, this.file = n, this.view = i, this.meta = null, this._isCancelled = !1, this._isDone = !1, this._progress = 0, this._onDone = function () {};
       }
 
-      return D(e, null, [{
+      return _(e, null, [{
         key: "isActive",
         value: function (e, t) {
           var n = void 0 === t._phxRef,
@@ -1644,7 +1644,7 @@
           var n = e.getAttribute("data-phx-preflighted-refs").split(",").indexOf(re.genFileRef(t)) >= 0;
           return n && this.isActive(e, t);
         }
-      }]), D(e, [{
+      }]), _(e, [{
         key: "metadata",
         value: function () {
           return this.meta;
@@ -1749,7 +1749,7 @@
         }), this.numEntriesInProgress = this._entries.length;
       }
 
-      return D(e, null, [{
+      return _(e, null, [{
         key: "genFileRef",
         value: function (e) {
           var t = e._phxRef;
@@ -1846,7 +1846,7 @@
             return !te.isPreflighted(e, t);
           });
         }
-      }]), D(e, [{
+      }]), _(e, [{
         key: "entries",
         value: function () {
           return this._entries;
@@ -1890,7 +1890,7 @@
         });
       }
 
-      return D(e, [{
+      return _(e, [{
         key: "upload",
         value: function () {
           var e = this;
@@ -2013,7 +2013,7 @@
         T(this, e), this.viewId = t, this.rendered = {}, this.mergeDiff(n);
       }
 
-      return D(e, null, [{
+      return _(e, null, [{
         key: "extract",
         value: function (e) {
           var t = e.r,
@@ -2026,7 +2026,7 @@
             events: n || []
           };
         }
-      }]), D(e, [{
+      }]), _(e, [{
         key: "parentViewId",
         value: function () {
           return this.viewId;
@@ -2166,7 +2166,7 @@
             var a = x(e, 2),
                 s = a[0],
                 c = a[1];
-            return n.nodeType === Node.ELEMENT_NODE ? n.getAttribute(j) ? [s, !0] : (n.setAttribute(j, t), n.id || (n.id = "".concat(i.parentViewId(), "-").concat(t, "-").concat(r)), u && (n.setAttribute("data-phx-skip", ""), n.innerHTML = ""), [!0, c]) : "" !== n.nodeValue.trim() ? (K("only HTML element tags are allowed at the root of components.\n\n" + 'got: "'.concat(n.nodeValue.trim(), '"\n\n') + "within:\n", o.innerHTML.trim()), n.replaceWith(i.createSpan(n.nodeValue, t)), [!0, c]) : (n.remove(), [s, c]);
+            return n.nodeType === Node.ELEMENT_NODE ? n.getAttribute(H) ? [s, !0] : (n.setAttribute(H, t), n.id || (n.id = "".concat(i.parentViewId(), "-").concat(t, "-").concat(r)), u && (n.setAttribute("data-phx-skip", ""), n.innerHTML = ""), [!0, c]) : "" !== n.nodeValue.trim() ? (K("only HTML element tags are allowed at the root of components.\n\n" + 'got: "'.concat(n.nodeValue.trim(), '"\n\n') + "within:\n", o.innerHTML.trim()), n.replaceWith(i.createSpan(n.nodeValue, t)), [!0, c]) : (n.remove(), [s, c]);
           }, [!1, !1]), 2),
               c = s[0],
               l = s[1];
@@ -2176,7 +2176,7 @@
         key: "createSpan",
         value: function (e, t) {
           var n = document.createElement("span");
-          return n.innerText = e, n.setAttribute(j, t), n;
+          return n.innerText = e, n.setAttribute(H, t), n;
         }
       }]), e;
     }(),
@@ -2185,9 +2185,9 @@
         var i = this,
             r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : {};
         if (T(this, e), this.unloaded = !1, !n || "Object" === n.constructor.name) throw new Error('\n      a phoenix Socket must be provided as the second argument to the LiveSocket constructor. For example:\n\n          import {Socket} from "phoenix"\n          import {LiveSocket} from "phoenix_live_view"\n          let liveSocket = new LiveSocket("/live", Socket, {...})\n      ');
-        this.socket = new n(t, r), this.bindingPrefix = r.bindingPrefix || q, this.opts = r, this.params = X(r.params || {}), this.viewLogger = r.viewLogger, this.metadataCallbacks = r.metadata || {}, this.defaults = Object.assign(G(z), r.defaults || {}), this.activeElement = null, this.prevActive = null, this.silenced = !1, this.main = null, this.linkRef = 0, this.roots = {}, this.href = window.location.href, this.pendingLink = null, this.currentLocation = G(window.location), this.hooks = r.hooks || {}, this.uploaders = r.uploaders || {}, this.loaderTimeout = r.loaderTimeout || W, this.boundTopLevelEvents = !1, this.domCallbacks = Object.assign({
-          onNodeAdded: X(),
-          onBeforeElUpdated: X()
+        this.socket = new n(t, r), this.bindingPrefix = r.bindingPrefix || q, this.opts = r, this.params = $(r.params || {}), this.viewLogger = r.viewLogger, this.metadataCallbacks = r.metadata || {}, this.defaults = Object.assign(G(z), r.defaults || {}), this.activeElement = null, this.prevActive = null, this.silenced = !1, this.main = null, this.linkRef = 0, this.roots = {}, this.href = window.location.href, this.pendingLink = null, this.currentLocation = G(window.location), this.hooks = r.hooks || {}, this.uploaders = r.uploaders || {}, this.loaderTimeout = r.loaderTimeout || W, this.boundTopLevelEvents = !1, this.domCallbacks = Object.assign({
+          onNodeAdded: $(),
+          onBeforeElUpdated: $()
         }, r.dom || {}), window.addEventListener("unload", function (e) {
           i.unloaded = !0;
         }), this.socket.onOpen(function () {
@@ -2195,7 +2195,7 @@
         });
       }
 
-      return D(e, [{
+      return _(e, [{
         key: "isProfileEnabled",
         value: function () {
           return "true" === sessionStorage.getItem("phx:live-socket:profiling");
@@ -2289,7 +2289,7 @@
             var a = x(n(), 2),
                 u = a[0],
                 s = a[1];
-            $(e, t, u, s);
+            X(e, t, u, s);
           }
         }
       }, {
@@ -2307,37 +2307,38 @@
         key: "wrapPush",
         value: function (e, t, n) {
           var i = this,
-              r = this.getLatencySim();
+              r = this.getLatencySim(),
+              o = e.joinCount;
           if (!r) return t.timeout ? n().receive("timeout", function () {
-            e.isDestroyed() || i.reloadWithJitter(e, function () {
+            e.joinCount === o && i.reloadWithJitter(e, function () {
               i.log(e, "timeout", function () {
                 return ["received timeout while communicating with server. Falling back to hard refresh for recovery"];
               });
             });
           }) : n();
           console.log("simulating ".concat(r, "ms of latency from client to server"));
-          var o = {
+          var a = {
             receives: [],
             receive: function (e, t) {
               this.receives.push([e, t]);
             }
           };
           return setTimeout(function () {
-            o.receives.reduce(function (e, t) {
+            a.receives.reduce(function (e, t) {
               var n = x(t, 2),
                   i = n[0],
                   r = n[1];
               return e.receive(i, r);
             }, n());
-          }, r), o;
+          }, r), a;
         }
       }, {
         key: "reloadWithJitter",
         value: function (e, t) {
           var n = this;
           e.destroy(), this.disconnect();
-          var i = N[0],
-              r = N[1],
+          var i = R[0],
+              r = R[1],
               o = Math.floor(Math.random() * (r - i + 1)) + i,
               a = le.updateLocal(e.name(), "consecutive-reloads", 0, function (e) {
             return e + 1;
@@ -2622,13 +2623,15 @@
           var i = this,
               r = this.binding(t);
           window.addEventListener(e, function (e) {
-            var t = null,
-                o = (t = n ? e.target.matches("[".concat(r, "]")) ? e.target : e.target.querySelector("[".concat(r, "]")) : Y(e.target, r)) && t.getAttribute(r);
-            o && ("#" === t.getAttribute("href") && e.preventDefault(), i.debounce(t, e, function () {
-              i.withinOwners(t, function (n, r) {
-                n.pushEvent("click", t, r, o, i.eventMeta("click", e, t));
-              });
-            }));
+            if (i.isConnected()) {
+              var t = null,
+                  o = (t = n ? e.target.matches("[".concat(r, "]")) ? e.target : e.target.querySelector("[".concat(r, "]")) : Y(e.target, r)) && t.getAttribute(r);
+              o && ("#" === t.getAttribute("href") && e.preventDefault(), i.debounce(t, e, function () {
+                i.withinOwners(t, function (n, r) {
+                  n.pushEvent("click", t, r, o, i.eventMeta("click", e, t));
+                });
+              }));
+            }
           }, n);
         }
       }, {
@@ -2881,6 +2884,10 @@
         var i = Array.from(e.querySelectorAll(t));
         return n ? i.forEach(n) : i;
       },
+      childNodeLength: function (e) {
+        var t = document.createElement("template");
+        return t.innerHTML = e, t.content.childElementCount;
+      },
       isUploadInput: function (e) {
         return "file" === e.type && null !== e.getAttribute(M);
       },
@@ -2888,7 +2895,7 @@
         return this.all(e, 'input[type="file"]['.concat(M, "]"));
       },
       findComponentNodeList: function (e, t) {
-        return this.filterWithinSameLiveView(this.all(e, "[".concat(j, '="').concat(t, '"]')), e);
+        return this.filterWithinSameLiveView(this.all(e, "[".concat(H, '="').concat(t, '"]')), e);
       },
       findPhxChildrenInFragment: function (e, t) {
         var n = document.createElement("template");
@@ -2907,9 +2914,9 @@
         var n = this,
             i = new Set(t);
         return t.reduce(function (t, i) {
-          var r = "[".concat(j, '="').concat(i, '"] [').concat(j, "]");
+          var r = "[".concat(H, '="').concat(i, '"] [').concat(H, "]");
           return n.filterWithinSameLiveView(n.all(e, r), e).map(function (e) {
-            return parseInt(e.getAttribute(j));
+            return parseInt(e.getAttribute(H));
           }).forEach(function (e) {
             return t.delete(e);
           }), t;
@@ -3014,8 +3021,14 @@
       },
       discardError: function (e, t, n) {
         var i = t.getAttribute && t.getAttribute(n),
-            r = i && e.querySelector("#".concat(i));
+            r = i && e.querySelector("#".concat(i, ', [name="').concat(i, '"]'));
         r && (this.private(r, "phx-has-focused") || this.private(r.form, "phx-has-submitted") || t.classList.add("phx-no-feedback"));
+      },
+      showError: function (e, t) {
+        var n = this;
+        (e.id || e.name) && this.all(e.form, "[".concat(t, '="').concat(e.id, '"], [').concat(t, '="').concat(e.name, '"]'), function (e) {
+          n.removeClass(e, "phx-no-feedback");
+        });
       },
       isPhxChild: function (e) {
         return e.getAttribute && e.getAttribute("data-phx-parent-id");
@@ -3075,7 +3088,7 @@
         var i = e.getAttribute(F);
         return null === i || (de.isFormInput(e) || null !== e.getAttribute(n) ? (de.isUploadInput(e) && de.mergeAttrs(e, t, {
           isIgnored: !0
-        }), de.putPrivate(e, F, t), !1) : (H.forEach(function (n) {
+        }), de.putPrivate(e, F, t), !1) : (j.forEach(function (n) {
           e.classList.contains(n) && t.classList.add(n);
         }), t.setAttribute(F, i), !0));
       },
@@ -3111,7 +3124,7 @@
         });
       }
 
-      return D(e, [{
+      return _(e, [{
         key: "perform",
         value: function () {
           var e = de.byId(this.containerId);
@@ -3136,7 +3149,6 @@
         T(this, e), this.view = t, this.liveSocket = t.liveSocket, this.container = n, this.id = i, this.rootID = t.root.id, this.html = r, this.targetCID = o, this.cidPatch = "number" == typeof this.targetCID, this.callbacks = {
           beforeadded: [],
           beforeupdated: [],
-          beforediscarded: [],
           beforephxChildAdded: [],
           afteradded: [],
           afterupdated: [],
@@ -3145,7 +3157,7 @@
         };
       }
 
-      return D(e, null, [{
+      return _(e, null, [{
         key: "patchEl",
         value: function (e, t, n) {
           b(e, t, {
@@ -3155,7 +3167,7 @@
             }
           });
         }
-      }]), D(e, [{
+      }]), _(e, [{
         key: "before",
         value: function (e, t) {
           this.callbacks["before".concat(e)].push(t);
@@ -3198,7 +3210,7 @@
               n = this.liveSocket,
               i = this.container,
               r = this.html,
-              o = this.isCIDPatch() ? this.targetCIDContainer() : i;
+              o = this.isCIDPatch() ? this.targetCIDContainer(r) : i;
 
           if (!this.isCIDPatch() || o) {
             var a = n.getActiveElement(),
@@ -3218,7 +3230,10 @@
             });
             return this.trackBefore("added", i), this.trackBefore("updated", i, i), n.time("morphdom", function () {
               b(o, y, {
-                childrenOnly: null === o.getAttribute(j),
+                childrenOnly: null === o.getAttribute(H),
+                getNodeKey: function (e) {
+                  return e.id && e.id + (e.getAttribute("data-phx-session") || "");
+                },
                 onBeforeNodeAdded: function (t) {
                   return de.discardError(o, t, d), e.trackBefore("added", t), t;
                 },
@@ -3229,7 +3244,7 @@
                   de.isPhxChild(t) && n.destroyViewByEl(t), e.trackAfter("discarded", t);
                 },
                 onBeforeNodeDiscarded: function (t) {
-                  return !(!t.getAttribute || null === t.getAttribute("data-phx-remove")) || (null === t.parentNode || !de.isPhxUpdate(t.parentNode, l, ["append", "prepend"]) || !t.id) && !e.skipCIDSibling(t) && (e.trackBefore("discarded", t), !0);
+                  return !(!t.getAttribute || null === t.getAttribute("data-phx-remove")) || (null === t.parentNode || !de.isPhxUpdate(t.parentNode, l, ["append", "prepend"]) || !t.id) && !e.skipCIDSibling(t);
                 },
                 onElUpdated: function (e) {
                   de.isNowTriggerFormExternal(e, f) && (m = e), p.push(e);
@@ -3282,11 +3297,11 @@
         }
       }, {
         key: "targetCIDContainer",
-        value: function () {
+        value: function (e) {
           if (this.isCIDPatch()) {
-            var e = k(de.findComponentNodeList(this.container, this.targetCID)),
-                t = e[0];
-            return 0 === e.slice(1).length ? t : t && t.parentNode;
+            var t = k(de.findComponentNodeList(this.container, this.targetCID)),
+                n = t[0];
+            return 0 === t.slice(1).length && 1 === de.childNodeLength(e) ? n : n && n.parentNode;
           }
         }
       }, {
@@ -3294,7 +3309,7 @@
         value: function (e, t, n, i) {
           var r = this,
               o = this.isCIDPatch(),
-              a = o && i.getAttribute(j) === this.targetCID.toString();
+              a = o && i.getAttribute(H) === this.targetCID.toString();
           if (!o || a) return t;
           var u = null,
               s = document.createElement("template");
@@ -3305,7 +3320,7 @@
           return s.innerHTML = t, d.forEach(function (e) {
             return e.remove();
           }), Array.from(u.childNodes).forEach(function (e) {
-            e.id && e.nodeType === Node.ELEMENT_NODE && e.getAttribute(j) !== r.targetCID.toString() && (e.setAttribute("data-phx-skip", ""), e.innerHTML = "");
+            e.id && e.nodeType === Node.ELEMENT_NODE && e.getAttribute(H) !== r.targetCID.toString() && (e.setAttribute("data-phx-skip", ""), e.innerHTML = "");
           }), Array.from(s.content.childNodes).forEach(function (e) {
             return u.insertBefore(e, l);
           }), l.remove(), u.outerHTML;
@@ -3326,7 +3341,7 @@
         }), this.showLoader(this.liveSocket.loaderTimeout), this.bindChannel();
       }
 
-      return D(e, [{
+      return _(e, [{
         key: "isMain",
         value: function () {
           return this.liveSocket.main === this;
@@ -3371,7 +3386,7 @@
           this.destroyAllChildren(), this.destroyed = !0, delete this.root.children[this.id], this.parent && delete this.root.children[this.parent.id][this.id], clearTimeout(this.loaderTimer);
 
           var n = function () {
-            for (var n in t(), e.viewHooks) e.viewHooks[n].__trigger__("beforeDestroy"), e.destroyHook(e.viewHooks[n]);
+            for (var n in t(), e.viewHooks) e.destroyHook(e.viewHooks[n]);
           };
 
           this.log("destroyed", function () {
@@ -3396,7 +3411,7 @@
           if (clearTimeout(this.loaderTimer), e) this.loaderTimer = setTimeout(function () {
             return t.showLoader();
           }, e);else {
-            for (var n in this.viewHooks) this.viewHooks[n].__trigger__("disconnected");
+            for (var n in this.viewHooks) this.viewHooks[n].__disconnected();
 
             this.setContainerClasses("phx-disconnected");
           }
@@ -3409,7 +3424,7 @@
       }, {
         key: "triggerReconnected",
         value: function () {
-          for (var e in this.viewHooks) this.viewHooks[e].__trigger__("reconnected");
+          for (var e in this.viewHooks) this.viewHooks[e].__reconnected();
         }
       }, {
         key: "log",
@@ -3518,7 +3533,7 @@
 
           if (r.markPrunableContentForRemoval(), this.performPatch(r, !1), this.joinNewChildren(), de.all(this.el, "[".concat(this.binding("hook"), "], [data-phx-").concat("hook", "]"), function (e) {
             var t = i.addHook(e);
-            t && t.__trigger__("mounted");
+            t && t.__mounted();
           }), this.joinPending = !1, this.dispatchEvents(n), this.applyPendingUpdates(), e) {
             var o = e.kind,
                 a = e.to;
@@ -3535,12 +3550,7 @@
               i = n && de.isIgnored(e, this.binding("update"));
           if (n && !e.isEqualNode(t) && (!i || !function (e, t) {
             return JSON.stringify(e) === JSON.stringify(t);
-          }(e.dataset, t.dataset))) return n.__trigger__("beforeUpdate"), n;
-        }
-      }, {
-        key: "triggerUpdatedHook",
-        value: function (e) {
-          e.__trigger__("updated");
+          }(e.dataset, t.dataset))) return n.__beforeUpdate(), n;
         }
       }, {
         key: "performPatch",
@@ -3552,16 +3562,13 @@
           return e.after("added", function (e) {
             n.liveSocket.triggerDOM("onNodeAdded", [e]);
             var t = n.addHook(e);
-            t && t.__trigger__("mounted");
+            t && t.__mounted();
           }), e.after("phxChildAdded", function (e) {
             return r = !0;
           }), e.before("updated", function (e, t) {
             n.triggerBeforeUpdateHook(e, t) && o.add(e.id);
           }), e.after("updated", function (e) {
-            o.has(e.id) && n.triggerUpdatedHook(n.getHook(e));
-          }), e.before("discarded", function (e) {
-            var t = n.getHook(e);
-            t && t.__trigger__("beforeDestroy");
+            o.has(e.id) && n.getHook(e).__updated();
           }), e.after("discarded", function (e) {
             var t = n.componentID(e);
             "number" == typeof t && -1 === i.indexOf(t) && i.push(t);
@@ -3686,7 +3693,7 @@
       }, {
         key: "destroyHook",
         value: function (e) {
-          e.__trigger__("destroyed"), e.__cleanup__(), delete this.viewHooks[ge.elementID(e.el)];
+          e.__destroyed(), e.__cleanup__(), delete this.viewHooks[ge.elementID(e.el)];
         }
       }, {
         key: "applyPendingUpdates",
@@ -3857,7 +3864,7 @@
         value: function (e) {
           var t = this;
           de.all(this.el, "[".concat(F, '="').concat(e, '"]'), function (e) {
-            e.removeAttribute(F), null !== e.getAttribute("data-phx-readonly") && (e.readOnly = !1, e.removeAttribute("data-phx-readonly")), null !== e.getAttribute("data-phx-disabled") && (e.disabled = !1, e.removeAttribute("data-phx-disabled")), H.forEach(function (t) {
+            e.removeAttribute(F), null !== e.getAttribute("data-phx-readonly") && (e.readOnly = !1, e.removeAttribute("data-phx-readonly")), null !== e.getAttribute("data-phx-disabled") && (e.disabled = !1, e.removeAttribute("data-phx-disabled")), j.forEach(function (t) {
               return de.removeClass(e, t);
             });
             var n = e.getAttribute("data-phx-disable-with-restore");
@@ -3866,7 +3873,7 @@
 
             if (i) {
               var r = t.triggerBeforeUpdateHook(e, i);
-              fe.patchEl(e, i, t.liveSocket.getActiveElement()), r && t.triggerUpdatedHook(r), de.deletePrivate(e, F);
+              fe.patchEl(e, i, t.liveSocket.getActiveElement()), r && r.__updated(), de.deletePrivate(e, F);
             }
           });
         }
@@ -3884,7 +3891,7 @@
       }, {
         key: "componentID",
         value: function (e) {
-          var t = e.getAttribute && e.getAttribute(j);
+          var t = e.getAttribute && e.getAttribute(H);
           return t ? parseInt(t) : null;
         }
       }, {
@@ -3896,7 +3903,7 @@
         key: "closestComponentID",
         value: function (e) {
           var t = this;
-          return e ? ee(e.closest("[".concat(j, "]")), function (e) {
+          return e ? ee(e.closest("[".concat(H, "]")), function (e) {
             return t.ownsElement(e) && t.componentID(e);
           }) : null;
         }
@@ -3988,7 +3995,7 @@
             cid: a
           };
           this.pushWithReply(u, "event", c, function (n) {
-            if (de.isUploadInput(e) && null !== e.getAttribute("data-phx-auto-upload")) {
+            if (de.showError(e, o.liveSocket.binding("feedback-for")), de.isUploadInput(e) && null !== e.getAttribute("data-phx-auto-upload")) {
               if (re.filesAwaitingPreflight(e).length > 0) {
                 var i = x(u(), 2),
                     s = i[0];
@@ -4046,51 +4053,61 @@
               o = function (e) {
             return !(Y(e, "".concat(r.binding("update"), "=ignore"), e.form) || Y(e, "data-phx-update=ignore", e.form));
           },
-              a = function () {
-            var t = de.all(e, "[".concat(r.binding("disable-with"), "]")),
-                n = de.all(e, "button").filter(o),
-                i = de.all(e, "input,textarea,select").filter(o);
-            return n.forEach(function (e) {
-              e.setAttribute("data-phx-disabled", e.disabled), e.disabled = !0;
-            }), i.forEach(function (e) {
-              e.setAttribute("data-phx-readonly", e.readOnly), e.readOnly = !0, e.files && (e.setAttribute("data-phx-disabled", e.disabled), e.disabled = !0);
-            }), e.setAttribute(r.binding("page-loading"), ""), r.putRef([e].concat(t).concat(n).concat(i), "submit");
+              a = function (e) {
+            return e.hasAttribute(r.binding("disable-with"));
           },
-              u = this.targetComponentID(e, t);
+              u = function (e) {
+            return "BUTTON" == e.tagName;
+          },
+              s = function (e) {
+            return ["INPUT", "TEXTAREA", "SELECT"].includes(e.tagName);
+          },
+              c = function () {
+            var t = Array.from(e.elements),
+                n = t.filter(a),
+                i = t.filter(u).filter(o),
+                c = t.filter(s).filter(o);
+            return i.forEach(function (e) {
+              e.setAttribute("data-phx-disabled", e.disabled), e.disabled = !0;
+            }), c.forEach(function (e) {
+              e.setAttribute("data-phx-readonly", e.readOnly), e.readOnly = !0, e.files && (e.setAttribute("data-phx-disabled", e.disabled), e.disabled = !0);
+            }), e.setAttribute(r.binding("page-loading"), ""), r.putRef([e].concat(n).concat(i).concat(c), "submit");
+          },
+              l = this.targetComponentID(e, t);
 
           if (re.hasUploadsInProgress(e)) {
-            var s = x(a(), 2),
-                c = s[0];
-            s[1];
-            return this.scheduleSubmit(e, c, function () {
+            var d = x(c(), 2),
+                h = d[0];
+            d[1];
+            return this.scheduleSubmit(e, h, function () {
               return r.pushFormSubmit(e, t, n, i);
             });
           }
 
           if (re.inputsAwaitingPreflight(e).length > 0) {
-            var l = x(a(), 2),
-                d = l[0],
-                h = l[1],
-                f = function () {
-              return [d, h];
+            var f = x(c(), 2),
+                v = f[0],
+                p = f[1],
+                g = function () {
+              return [v, p];
             };
 
-            this.uploadFiles(e, t, d, u, function (t) {
+            this.uploadFiles(e, t, v, l, function (t) {
               var o = ue(e, {});
-              r.pushWithReply(f, "event", {
+              r.pushWithReply(g, "event", {
                 type: "form",
                 event: n,
                 value: o,
-                cid: u
+                cid: l
               }, i);
             });
           } else {
-            var v = ue(e);
-            this.pushWithReply(a, "event", {
+            var m = ue(e);
+            this.pushWithReply(c, "event", {
               type: "form",
               event: n,
-              value: v,
-              cid: u
+              value: m,
+              cid: l
             }, i);
           }
         }
@@ -4163,7 +4180,7 @@
         key: "formsForRecovery",
         value: function (e) {
           var t = this;
-          if (this.joinCount <= 1) return [];
+          if (0 === this.joinCount) return [];
           var n = this.binding("change"),
               i = document.createElement("template");
           return i.innerHTML = e, de.all(this.el, "form[".concat(n, "]")).filter(function (e) {
@@ -4225,10 +4242,10 @@
         pe = 1,
         ge = function () {
       function e(t, n, i) {
-        for (var r in T(this, e), this.__view = t, this.__liveSocket = t.liveSocket, this.__callbacks = i, this.__listeners = new Set(), this.el = n, this.viewName = t.name(), this.el.phxHookId = this.constructor.makeID(), this.__callbacks) this[r] = this.__callbacks[r];
+        for (var r in T(this, e), this.__view = t, this.__liveSocket = t.liveSocket, this.__callbacks = i, this.__listeners = new Set(), this.__isDisconnected = !1, this.el = n, this.viewName = t.name(), this.el.phxHookId = this.constructor.makeID(), this.__callbacks) this[r] = this.__callbacks[r];
       }
 
-      return D(e, null, [{
+      return _(e, null, [{
         key: "makeID",
         value: function () {
           return pe++;
@@ -4238,7 +4255,37 @@
         value: function (e) {
           return e.phxHookId;
         }
-      }]), D(e, [{
+      }]), _(e, [{
+        key: "__mounted",
+        value: function () {
+          this.mounted && this.mounted();
+        }
+      }, {
+        key: "__updated",
+        value: function () {
+          this.updated && this.updated();
+        }
+      }, {
+        key: "__beforeUpdate",
+        value: function () {
+          this.beforeUpdate && this.beforeUpdate();
+        }
+      }, {
+        key: "__destroyed",
+        value: function () {
+          this.destroyed && this.destroyed();
+        }
+      }, {
+        key: "__reconnected",
+        value: function () {
+          this.__isDisconnected && (this.__isDisconnected = !1, this.reconnected && this.reconnected());
+        }
+      }, {
+        key: "__disconnected",
+        value: function () {
+          this.__isDisconnected = !0, this.disconnected && this.disconnected();
+        }
+      }, {
         key: "pushEvent",
         value: function (e) {
           var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
@@ -4277,12 +4324,6 @@
           this.__listeners.forEach(function (t) {
             return e.removeHandleEvent(t);
           });
-        }
-      }, {
-        key: "__trigger__",
-        value: function (e) {
-          var t = this.__callbacks[e];
-          t && t.call(this);
         }
       }]), e;
     }();
