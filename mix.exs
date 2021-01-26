@@ -46,7 +46,7 @@ defmodule Moon.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:asset_import, git: "git@github.com:coingaming/asset_import.git"},
+      {:asset_import, "~> 0.4"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
       {:ecto_sql, "~> 3.1"},
       {:phoenix_ecto, "~> 4.0"},
