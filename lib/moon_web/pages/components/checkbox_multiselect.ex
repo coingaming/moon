@@ -1,8 +1,5 @@
 defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Stack
-  alias Moon.Components.Checkbox
-  alias Moon.Components.CodePreview
 
   def mount(params, _session, socket) do
     {:ok,
