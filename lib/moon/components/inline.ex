@@ -7,6 +7,7 @@ defmodule Moon.Components.Inline do
   )
 
   prop(font_size, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

@@ -5,6 +5,7 @@ defmodule Moon.Components.Heading do
   prop(is_regular, :boolean)
   prop(color, :string)
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

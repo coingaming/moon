@@ -6,6 +6,7 @@ defmodule Moon.Components.Text do
   prop(color, :string)
   prop(class, :string)
   prop(style, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

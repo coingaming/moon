@@ -7,6 +7,7 @@ defmodule Moon.Components.Badge do
   prop(background_color, :string, values: Moon.colors())
   prop(size, :string, default: "xmall", values: ["xsmall", "small"])
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     style = get_style(color: assigns.color, background_color: assigns.background_color)

@@ -6,6 +6,7 @@ defmodule Moon.Components.Link do
   prop(disabled, :boolean)
   prop(optional, :boolean)
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

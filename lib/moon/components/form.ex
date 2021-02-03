@@ -6,6 +6,7 @@ defmodule Moon.Components.Form do
   prop(submit, :string)
   prop(target, :any)
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
+  slot(default)
 
   def render(assigns) do
     ~H"""

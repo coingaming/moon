@@ -2,6 +2,7 @@ defmodule Moon.Components.Checkbox do
   use Moon.StatelessComponent
 
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

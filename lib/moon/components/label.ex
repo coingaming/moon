@@ -6,6 +6,7 @@ defmodule Moon.Components.Label.LabelFlex do
   prop(flex, :boolean)
   prop(input_grow, :integer)
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""
@@ -21,6 +22,7 @@ defmodule Moon.Components.Label.LabelContent do
 
   prop(disabled, :boolean)
   prop(flex, :boolean)
+  slot(default)
 
   def render(assigns) do
     ~H"""
@@ -37,14 +39,13 @@ defmodule Moon.Components.Label do
   alias Moon.Components.Label.LabelFlex
   alias Moon.Components.Label.LabelContent
 
-  slot(default)
-
   prop(text, :string)
   prop(disabled, :boolean)
   prop(flex, :boolean)
   prop(inline, :boolean)
   prop(input_grow, :integer, default: 1)
   prop(class, :string)
+  slot(default)
 
   def render(assigns) do
     ~H"""

@@ -27,6 +27,8 @@ defmodule Moon.Components.Button do
   prop(style, :string)
   prop(class, :string)
 
+  slot(default)
+
   def render(assigns) do
     ~H"""
     {{ asset_import @socket, "js/components/button" }}
