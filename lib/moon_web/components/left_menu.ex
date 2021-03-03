@@ -75,6 +75,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/assets/patterns">Patterns</Link>
 
       <Heading size=20>Components</Heading>
+      <Link to="/{{ @theme_name }}/components/accordion">Accordion</Link>
       <Link to="/{{ @theme_name }}/components/avatar">Avatar</Link>
       <Link to="/{{ @theme_name }}/components/badge">Badge</Link>
       <Link to="/{{ @theme_name }}/components/button">Button</Link>

@@ -9,4 +9,4 @@ cp -a priv/svgs priv/static/
 mix phx.digest
 
 mix distillery.release
-#_build/prod/rel/moon/bin/moon foreground
+_build/prod/rel/moon/bin/moon foreground

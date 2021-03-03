@@ -1,0 +1,14 @@
+/*
+<svg class="moon-asset">
+  <use href="/assets/icons/icon-forward.svg#item"></use>
+</svg>
+*/
+
+.moon-pattern {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  color: var(--color--piccolo-100);
+}
+

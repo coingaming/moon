@@ -1,7 +1,7 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.1.13"
+  @version "0.1.15"
 
   def project do
     [
