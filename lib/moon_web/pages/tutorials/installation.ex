@@ -28,8 +28,99 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     # 5. Install Moon Surface Assets
     (cd deps/moon/assets/ && npm i)
 
-    # 6. Run project
+    # 6. Tailwind configuration
+    # 6.1 Change assets/package.json to include "NODE_ENV=production" for deploy step (this purges un-needed CSS)
+    "deploy": "NODE_ENV=production webpack --mode production",
+
+    # 6.2 Ensure that you have required dependencies in assets/package.json
+    "postcss-import": "^14.0.0",
+    "postcss-loader": "^4.1.0",
+    "autoprefixer": "^10.2.1",
+    "postcss": "^8.2.4",
+    "tailwindcss": "^2.0.2",
+    "moon-css": "git:git@github.com:coingaming/moon-css.git",
+
+    # 6.3 Create file assets/postcss.config.js
+    module.exports = {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    };
+
+    # 6.4 Create file assets/tailwind.config.js
+    module.exports = {
+      purge: [
+        '../lib/**/*.ex',
+        '../lib/**/*.leex',
+        '../lib/**/*.eex',
+        './js/**/*.js',
+      ],
+      darkMode: false, // or 'media' or 'class'
+      theme: {
+        extend: {
+          // width: {
+          //   "66": "66px",
+          //   "88": "88px",
+          // },
+          // height: {
+          //   "66": "66px",
+          //   "88": "88px",
+          // }
+        },
+        colors: {
+          'transparent': 'transparent',
+          'text': 'var(--color-text)',
+          'background': 'var(--color-background)',
+          'krillin-10': 'var(--color--krillin-10)',
+          'krillin-100': 'var(--color--krillin-100)',
+          'chi_chi-10': 'var(--color--chi_chi-10)',
+          'chi_chi-100': 'var(--color--chi_chi-100)',
+          'roshi-10': 'var(--color--roshi-10)',
+          'roshi-100': 'var(--color--roshi-100)',
+          'dodoria-10': 'var(--color--dodoria-10)',
+          'dodoria-100': 'var(--color--dodoria-100)',
+          'dodoria-100': 'var(--color--cell-10)',
+          'cell-100': 'var(--color--cell-100)',
+          'raditz-10': 'var(--color--raditz-10)',
+          'raditz-100': 'var(--color--raditz-100)',
+          'whis-10': 'var(--color--whis-10)',
+          'whis-100': 'var(--color--whis-100)',
+          'frieza-10': 'var(--color--frieza-10)',
+          'frieza-100': 'var(--color--frieza-100)',
+          'nappa-10': 'var(--color--nappa-10)',
+          'nappa-100': 'var(--color--nappa-100)',
+          'piccolo-80': 'var(--color--piccolo-80)',
+          'piccolo-100': 'var(--color--piccolo-100)',
+          'piccolo-120': 'var(--color--piccolo-120)',
+          'hit-80': 'var(--color--hit-80)',
+          'hit-100': 'var(--color--hit-100)',
+          'hit-120': 'var(--color--hit-120)',
+          'goten-100': 'var(--color--goten-100)',
+          'goku-10': 'var(--color--goku-10)',
+          'goku-40': 'var(--color--goku-40)',
+          'goku-80': 'var(--color--goku-80)',
+          'goku-100': 'var(--color--goku-100)',
+          'gohan-10': 'var(--color--gohan-10)',
+          'gohan-40': 'var(--color--gohan-40)',
+          'gohan-80': 'var(--color--gohan-80)',
+          'gohan-100': 'var(--color--gohan-100)',
+          'beerus-100': 'var(--color--beerus-100)',
+          'bulma-100': 'var(--color--bulma-100)',
+          'trunks-100': 'var(--color--trunks-100)',
+        },
+      },
+      variants: {},
+      plugins: [],
+    };
+
+    # 6.5 Add postcss-loader into assets/webpack.config.js
+    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+
+    # 7. Run project
     mix phx.server
+
+
 
     </pre>
     """
