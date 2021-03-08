@@ -39,7 +39,7 @@ defmodule MoonWeb.Router do
       live "/components/checkbox-multiselect",
            MoonWeb.Pages.Components.CheckboxMultiselectPage
 
-      live "/components/inline", MoonWeb.Pages.Components.InlinePage
+      live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
       live "/components/link", MoonWeb.Pages.Components.LinkPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
@@ -49,6 +49,11 @@ defmodule MoonWeb.Router do
 
       live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
       live "/tutorials/installation", MoonWeb.Pages.Tutorials.Installation
+
+      live "/tutorials/process-description-and-team-interactions",
+           MoonWeb.Pages.Tutorials.Introduction
+
+      live "/tutorials/theming-and-visuals", MoonWeb.Pages.Tutorials.ThemingAndVisuals
     end
   end)
 

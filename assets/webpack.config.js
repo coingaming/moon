@@ -29,7 +29,7 @@ module.exports = (env, options) => {
     output: {
       filename: 'js/[id]-[contenthash].js',
       chunkFilename: 'js/[id]-[contenthash].js',
-      path: path.resolve(__dirname, '../priv/static'),
+      path: path.resolve(__dirname, '../priv/'),
     },
     devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
     module: {
@@ -53,7 +53,7 @@ module.exports = (env, options) => {
         chunkFilename: 'css/[id]-[contenthash].css',
       }),
       new ManifestPlugin({ fileName: 'manifest.json' }),
-      new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+      new CopyWebpackPlugin([{ from: 'static/', to: './' }]),
     ].concat(devMode ? [new HardSourceWebpackPlugin()] : []),
   };
 };

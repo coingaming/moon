@@ -27,13 +27,14 @@ end
 defmodule Moon.Components.Accordion do
   use Moon.StatelessComponent
 
+  prop(class, :string)
   slot(default)
 
   def render(assigns) do
     ~H"""
     {{ asset_import @socket, "js/tailwind" }}
 
-    <div>
+    <div class={{ @class }}>
       <slot />
     </div>
     """

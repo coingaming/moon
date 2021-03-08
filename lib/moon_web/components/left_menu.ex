@@ -64,8 +64,18 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/">Overview</Link>
 
       <Heading size=20>Tutorials</Heading>
+      <Link to="/{{ @theme_name }}/tutorials/process-description-and-team-interactions">Introduction</Link>
       <Link to="/{{ @theme_name }}/tutorials/installation">Installation</Link>
       <Link to="/{{ @theme_name }}/tutorials/add-data-using-form">Add data using form</Link>
+
+      <Heading size=20>Theming and visuals</Heading>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#text-color">Text color</Link>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#background-color">Background color</Link>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#border-radius">Border radius</Link>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#margin">Margin</Link>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#padding">Padding</Link>
+      <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#responsive-layout">Responsive layout</Link>
+
 
       <Heading size=20>Assets</Heading>
       <Link to="/{{ @theme_name }}/assets/crests">Crests</Link>
@@ -82,11 +92,10 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/components/carousel">Carousel</Link>
       <Link to="/{{ @theme_name }}/components/checkbox">Checkbox</Link>
       <Link to="/{{ @theme_name }}/components/checkbox-multiselect">Checkbox multiselect</Link>
-      <Link to="/{{ @theme_name }}/components/inline">Inline</Link>
+      <Link to="/{{ @theme_name }}/components/dropdown">Dropdown</Link>
       <Link to="/{{ @theme_name }}/components/heading">Heading</Link>
       <Link to="/{{ @theme_name }}/components/link">Link</Link>
       <Link to="/{{ @theme_name }}/components/select">Select</Link>
-      <Link to="/{{ @theme_name }}/components/stack">Stack</Link>
       <Link to="/{{ @theme_name }}/components/text">Text</Link>
       <Link to="/{{ @theme_name }}/components/text_input">Text input</Link>
 

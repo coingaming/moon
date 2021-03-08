@@ -52,6 +52,14 @@ defmodule MoonWeb do
     end
   end
 
+  def stateless_component do
+    quote do
+      use Moon.StatelessComponent
+
+      unquote(view_helpers())
+    end
+  end
+
   def stateful_component do
     quote do
       use Moon.StatefulComponent
@@ -99,6 +107,10 @@ defmodule MoonWeb do
       import MoonWeb.ErrorHelpers
       import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
+
+      def static_path(socket, path) do
+        Routes.static_path(socket, "/moon/#{path}")
+      end
     end
   end
 

@@ -16,35 +16,15 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~H"""
     <Heading size=32 class="mb-8">Accordion</Heading>
 
-    <Accordion>
-      <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-      </Item>
-      <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
-        Content
-      </Item>
-      <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-        Content <br />
-      </Item>
-    </Accordion>
-
-    <#CodePreview>
+    <div class="grid lg:grid-cols-2">
       <Accordion>
         <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+          Content <br />
+          Content <br />
+          Content <br />
+          Content <br />
+          Content <br />
+          Content <br />
           Content <br />
           Content <br />
         </Item>
@@ -56,9 +36,31 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           Content <br />
           Content <br />
           Content <br />
+          Content <br />
+          Content <br />
+          Content <br />
+          Content <br />
         </Item>
       </Accordion>
-    </#CodePreview>
+
+      <#CodePreview>
+        <Accordion>
+          <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+            Content <br />
+            Content <br />
+          </Item>
+          <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
+            Content
+          </Item>
+          <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
+            Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
+          </Item>
+        </Accordion>
+      </#CodePreview>
+    </div>
     """
   end
 

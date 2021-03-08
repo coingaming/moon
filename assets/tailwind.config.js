@@ -17,6 +17,9 @@ module.exports = {
       //   "88": "88px",
       // }
     },
+    boxShadow: {
+      DEFAULT: "0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 24px 24px -6px rgba(0, 0, 0, 0.1)"
+    },
     colors: {
       'transparent': 'transparent',
       'text': 'var(--color-text)',
@@ -57,8 +60,11 @@ module.exports = {
       'beerus-100': 'var(--color--beerus-100)',
       'bulma-100': 'var(--color--bulma-100)',
       'trunks-100': 'var(--color--trunks-100)',
+      'hover': 'rgba(0, 0, 0, 0.08)'
     },
   },
-  variants: {},
+  variants: {
+    width: ["responsive", "hover", "focus"]
+  },
   plugins: [],
 };

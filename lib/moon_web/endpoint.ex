@@ -22,9 +22,9 @@ defmodule MoonWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/moon/",
-    from: :moon,
+    from: {:moon, "/priv/"},
     gzip: false,
-    only: ~w(css fonts images svgs js favicon.ico robots.txt)
+    only: ~w(css gettext fonts images svgs js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
