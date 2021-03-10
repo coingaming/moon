@@ -51,7 +51,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   def render(assigns) do
     ~H"""
-    <Stack>
+    <Stack class="p-4 max-h-full bg-gohan-100 overflow-y-scroll">
       <Form for={{ :selected_theme }} change="update_selected_theme" target={{ @myself }}>
         <Select
           field={{ :value }}
