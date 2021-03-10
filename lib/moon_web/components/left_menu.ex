@@ -91,11 +91,12 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/components/button">Button</Link>
       <Link to="/{{ @theme_name }}/components/carousel">Carousel</Link>
       <Link to="/{{ @theme_name }}/components/checkbox">Checkbox</Link>
-      <Link to="/{{ @theme_name }}/components/checkbox-multiselect">Checkbox multiselect</Link>
+      <Link to="/{{ @theme_name }}/components/dropdown#checkbox-multiselect">Checkbox multiselect</Link>
       <Link to="/{{ @theme_name }}/components/dropdown">Dropdown</Link>
       <Link to="/{{ @theme_name }}/components/heading">Heading</Link>
       <Link to="/{{ @theme_name }}/components/link">Link</Link>
       <Link to="/{{ @theme_name }}/components/select">Select</Link>
+      <Link to="/{{ @theme_name }}/components/dropdown#single-element-select">SingleElementSelect</Link>
       <Link to="/{{ @theme_name }}/components/text">Text</Link>
       <Link to="/{{ @theme_name }}/components/text_input">Text input</Link>
 

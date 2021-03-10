@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   alias Moon.Components.Dropdown
   alias Moon.Components.Link
   alias Moon.Components.CheckboxMultiselect
+  alias Moon.Components.SingeItemSelect
 
   @default_games_list [
     %{label: "Game 1", value: "1"},
@@ -21,6 +22,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   data(selectable_game_options, :list, default: @default_games_list)
   data(selectable_filtered_game_options, :list, default: @default_games_list)
   data(game_search, :string, default: %{value: ""})
+  data(other_game_id, :string, default: "1")
 
   def mount(params, _session, socket) do
     {:ok,
@@ -47,7 +49,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
     </p>
 
     <Heading size=24 class="mt-8">
-      Using CheckboxMultiselect
+      <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
     </Heading>
 
     <ExampleAndCode class="mt-4" show_state={{ true }}>
@@ -117,10 +119,80 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
     @game_search = {{ inspect(@game_search) }}
       </template>
     </ExampleAndCode>
+
+    <Heading size=24 class="mt-8">
+      <a id="single-item-select">Using SingleItemSelect</a>
+    </Heading>
+
+    <ExampleAndCode class="mt-4" show_state={{ true }}>
+      <template slot="example">
+        <Dropdown>
+          <SingeItemSelect
+            on_change="handle_other_game_selected"
+            value={{ @other_game_id }}
+            options={{ @selectable_game_options }}
+          />
+        </Dropdown>
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <Dropdown>
+          <SingeItemSelect
+            on_change="handle_other_game_selected"
+            value={{ @other_game_id }}
+            options={{ @selectable_game_options }}
+          />
+        </Dropdown>
+        </#CodePreview>
+      </template>
+
+      <template slot="state">
+    @other_game_id = {{ inspect(@other_game_id) }}
+      </template>
+    </ExampleAndCode>
+
+    <ExampleAndCode class="mt-4" show_state={{ true }}>
+      <template slot="example">
+        <Dropdown
+          on_search_change="handle_search_changed"
+          search_placeholder="Search for a name ..."
+          search_name={{ :game_search }}
+        >
+          <SingeItemSelect
+            on_change="handle_other_game_selected"
+            value={{ @other_game_id }}
+            options={{ @selectable_filtered_game_options }}
+          />
+        </Dropdown>
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <Dropdown
+          on_search_change="handle_search_changed"
+          search_placeholder="Search for a name ..."
+          search_name={{ :game_search }}
+        >
+          <SingeItemSelect
+            class="max-h-32"
+            on_change="handle_other_game_selected"
+            value={{ @other_game_id }}
+            options={{ @selectable_filtered_game_options }}
+          />
+        </Dropdown>
+        </#CodePreview>
+      </template>
+
+      <template slot="state">
+    @other_game_id = {{ inspect(@other_game_id) }}
+    @game_search = {{ inspect(@game_search) }}
+      </template>
+    </ExampleAndCode>
+
     """
   end
 
-  @spec handle_event(<<_::168, _::_*64>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_event("handle_search_changed", %{"game_search" => %{"value" => value}}, socket) do
     {:noreply,
      assign(
@@ -147,6 +219,14 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       end
 
     {:noreply, assign(socket, selected_game_ids: new_ids)}
+  end
+
+  def handle_event(
+        "handle_other_game_selected",
+        %{"selected_item_id" => selected_item_id},
+        socket
+      ) do
+    {:noreply, assign(socket, other_game_id: selected_item_id)}
   end
 
   def get_fitered_game_options(search_value, selectable_game_options) do
