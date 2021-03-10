@@ -161,6 +161,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         >
           <SingeItemSelect
             on_change="handle_other_game_selected"
+            class="max-h-32"
             value={{ @other_game_id }}
             options={{ @selectable_filtered_game_options }}
           />
@@ -175,8 +176,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           search_name={{ :game_search }}
         >
           <SingeItemSelect
-            class="max-h-32"
             on_change="handle_other_game_selected"
+            class="max-h-32"
             value={{ @other_game_id }}
             options={{ @selectable_filtered_game_options }}
           />
