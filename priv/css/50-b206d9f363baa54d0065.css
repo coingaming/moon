@@ -1,0 +1,118 @@
+.moon-button {
+  display: inline-block;
+  min-height: 24px;
+  font-family: inherit;
+  font-weight: var(--font-weight--semibold);
+  text-decoration: none;
+  cursor: pointer;
+  border: var(--border);
+  border-color: transparent;
+  border-radius: var(--radius--largest);
+  transition: background-color var(--transition-duration--default);
+  white-space: nowrap;
+}
+
+.moon-button:active, .moon-button:focus, .moon-button[mock-state=active], .moon-button[mock-state=focus] {
+  outline: none;
+  -moz-outline: none;
+}
+
+.moon-button[data-full-width=true] {
+  width: 100%;
+  position: relative;
+}
+
+.moon-button[data-variant=primary] {
+  color: var(--color--goten-100);
+  background-color: var(--color--piccolo-100);
+}
+
+.moon-button[data-variant=primary]:hover, .moon-button[data-variant=primary][data-mock-state=hover] {
+  background-color: var(--color--piccolo-80);
+}
+
+.moon-button[data-variant=primary]:active, .moon-button[data-variant=primary][data-mock-state=active] {
+  background-color: var(--color--piccolo-120);
+}
+
+.moon-button[data-variant=secondary] {
+  color: var(--color--bulma-100);
+  background-color: var(--color--hit-100);
+}
+
+.moon-button[data-variant=secondary]:hover, .moon-button[data-variant=secondary][data-mock-state=hover] {
+  background-color: var(--color--hit-80);
+}
+
+.moon-button[data-variant=secondary]:active, .moon-button[data-variant=secondary][data-mock-state=active] {
+  background-color: var(--color--hit-120);
+}
+
+.moon-button[data-variant=tertiary] {
+  color: var(--color--bulma-100);
+  background-color: transparent;
+  border: 1px solid var(--color--bulma-100);
+}
+
+.moon-button[data-variant=tertiary]:hover, .moon-button[data-variant=tertiary][data-mock-state=hover] {
+  background-color: var(--color--hit-80);
+}
+
+.moon-button[data-variant=tertiary]:active, .moon-button[data-variant=tertiary][data-mock-state=active] {
+  background-color: var(--color--hit-120);
+}
+
+.moon-button[data-variant=highlight] {
+  color: var(--color--goten-100);
+  background-color: var(--color--whis-100);
+}
+
+.moon-button[data-variant=highlight]:hover, .moon-button[data-variant=highlight][data-mock-state=hover] {
+  opacity: 0.9;
+}
+
+.moon-button[data-variant=highlight]:active, .moon-button[data-variant=highlight][data-mock-state=active] {
+  opacity: 0.8;
+}
+
+.moon-button[data-variant=default] {
+  color: var(--color--bulma-100);
+  background-color: none;
+}
+
+.moon-button[data-variant=default]:hover, .moon-button[data-variant=default][data-mock-state=hover] {
+  color: var(--color--bulma-100);
+}
+
+.moon-button[data-variant=default]:active, .moon-button[data-variant=default][data-mock-state=active] {
+  color: var(--color--bulma-100);
+}
+
+.moon-button[data-size=xsmall] {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  height: 2rem;
+  padding: 0 1rem;
+}
+
+.moon-button[data-size=small], .moon-button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+}
+
+.moon-button[data-size=medium] {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+}
+
+.moon-button[data-size=large] {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  height: 3.5rem;
+  padding: 0 2rem;
+}
+

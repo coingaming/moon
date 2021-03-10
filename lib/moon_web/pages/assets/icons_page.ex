@@ -62,6 +62,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconCopy
   alias Icons.IconCredit
   alias Icons.IconCrypto
+  alias Icons.IconCurrencyAda
   alias Icons.IconCurrencyArs
   alias Icons.IconCurrencyBdt
   alias Icons.IconCurrencyBob
@@ -1005,6 +1006,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <template slot="code">
         <#CodePreview>
         <IconCrypto font_size="5rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <IconCurrencyAda font_size="5rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <IconCurrencyAda font_size="5rem" />
         </#CodePreview>
       </template>
     </ExampleAndCode>

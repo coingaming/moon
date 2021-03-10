@@ -131,7 +131,7 @@ end
   );
 };
 
-['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
+['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
   const files = getFiles(assetsFolder);
 
   writeAssetsMapFile({
@@ -173,7 +173,9 @@ ${modules.map((x) => `  alias Crests.${x}`).join('\n')}
 
   def render(assigns) do
     ~H"""
-${modules.map((x) => `
+${modules
+  .map(
+    (x) => `
     <ExampleAndCode class="mt-4">
       <template slot="example">
         <${x} font_size="10rem" />
@@ -185,7 +187,50 @@ ${modules.map((x) => `
         </#CodePreview>
       </template>
     </ExampleAndCode>
-`).join('\n')}
+`
+  )
+  .join('\n')}
+    """
+  end
+end
+    `;
+  }
+
+  if (type == 'currencies') {
+    console.log({modules})
+    return `
+defmodule MoonWeb.Pages.Assets.CurrenciesPage do
+  use MoonWeb, :live_view
+
+  alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Components.CodePreview
+
+  alias Moon.Assets.Currencies
+${modules.map((x) => `  alias Currencies.${x}`).join('\n')}
+
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+  end
+
+  def render(assigns) do
+    ~H"""
+${modules
+  .map(
+    (x) => `
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <${x} font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <${x} font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+`
+  )
+  .join('\n')}
     """
   end
 end
@@ -210,7 +255,8 @@ ${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
   def render(assigns) do
     ~H"""
 ${modules
-  .map((x) => `
+  .map(
+    (x) => `
     <ExampleAndCode class="mt-4">
       <template slot="example">
         <${x} font_size="10rem" color="piccolo-100" />
@@ -222,7 +268,8 @@ ${modules
         </#CodePreview>
       </template>
     </ExampleAndCode>
-`)
+`
+  )
   .join('\n')}
     """
   end
@@ -248,7 +295,8 @@ ${modules.map((x) => `  alias Icons.${x}`).join('\n')}
   def render(assigns) do
   ~H"""
   ${modules
-    .map((x) => `
+    .map(
+      (x) => `
       <ExampleAndCode class="mt-4">
         <template slot="example">
           <${x} font_size="5rem" />
@@ -260,7 +308,8 @@ ${modules.map((x) => `  alias Icons.${x}`).join('\n')}
           </#CodePreview>
         </template>
       </ExampleAndCode>
-  `)
+  `
+    )
     .join('\n')}
       """
   end
@@ -286,7 +335,8 @@ ${modules.map((x) => `  alias Logos.${x}`).join('\n')}
   def render(assigns) do
   ~H"""
   ${modules
-    .map((x) => `
+    .map(
+      (x) => `
       <ExampleAndCode class="mt-4">
         <template slot="example">
           <${x} font_size="10rem" />
@@ -298,7 +348,8 @@ ${modules.map((x) => `  alias Logos.${x}`).join('\n')}
           </#CodePreview>
         </template>
       </ExampleAndCode>
-  `)
+  `
+    )
     .join('\n')}
       """
   end
@@ -324,7 +375,8 @@ ${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
   def render(assigns) do
   ~H"""
   ${modules
-    .map((x) => `
+    .map(
+      (x) => `
       <ExampleAndCode class="mt-4">
         <template slot="example">
           <${x} font_size="10rem" />
@@ -336,13 +388,16 @@ ${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
           </#CodePreview>
         </template>
       </ExampleAndCode>
-  `)
+  `
+    )
     .join('\n')}
       """
   end
 end
     `;
   }
+
+  console.log({ error: 'unknown type', type });
 };
 
 const generateAssetsDocumentationPage = (type, files) => {
@@ -352,7 +407,9 @@ const generateAssetsDocumentationPage = (type, files) => {
   writeAssetsDocumentationPage(type, pageContent);
 };
 
-['crests', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
-  const files = getFiles(assetsFolder);
-  generateAssetsDocumentationPage(assetsFolder, files);
-});
+['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
+  (assetsFolder) => {
+    const files = getFiles(assetsFolder);
+    generateAssetsDocumentationPage(assetsFolder, files);
+  }
+);

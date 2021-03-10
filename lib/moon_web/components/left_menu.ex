@@ -79,6 +79,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
       <Heading size=20>Assets</Heading>
       <Link to="/{{ @theme_name }}/assets/crests">Crests</Link>
+      <Link to="/{{ @theme_name }}/assets/currencies">Currencies</Link>
       <Link to="/{{ @theme_name }}/assets/duotones">Duotones</Link>
       <Link to="/{{ @theme_name }}/assets/icons">Icons</Link>
       <Link to="/{{ @theme_name }}/assets/logos">Logos</Link>

@@ -1,0 +1,39 @@
+.moon-inline {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.moon-inline,
+  .moon-inline > *, .moon-inline[data-space='default'],
+  .moon-inline[data-space='default'] > * {
+  margin: calc(var(--space--default) / 2 - 1px);
+}
+
+.moon-inline[data-space='xsmall'],
+  .moon-inline[data-space='xsmall'] > * {
+  margin: calc(var(--space--xsmall) / 2 - 1px);
+}
+
+.moon-inline[data-space='small'],
+  .moon-inline[data-space='small'] > * {
+  margin: calc(var(--space--small) / 2 - 1px);
+}
+
+.moon-inline[data-space='medium'],
+  .moon-inline[data-space='medium'] > * {
+  margin: calc(var(--space--medium) / 2 - 1px);
+}
+
+.moon-inline[data-space='large'],
+  .moon-inline[data-space='large'] > * {
+  margin: calc(var(--space--large) / 2 - 1px);
+}
+
+.moon-inline[data-space='xlarge'],
+  .moon-inline[data-space='xlarge'] > * {
+  margin: calc(var(--space--xlarge) / 2 - 1px);
+}
+

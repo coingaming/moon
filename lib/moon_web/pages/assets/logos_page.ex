@@ -13,6 +13,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoBombayShort
   alias Logos.LogoCommsFull
   alias Logos.LogoCommsShort
+  alias Logos.LogoDrop
   alias Logos.LogoHub88Full
   alias Logos.LogoHub88Short
   alias Logos.LogoLivecasinoFull
@@ -20,7 +21,9 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoLuckyslotsShort
   alias Logos.LogoMissions
   alias Logos.LogoMoneyball
+  alias Logos.LogoMoonDesignShort
   alias Logos.LogoMoonDesign
+  alias Logos.LogoPoweredByHub88
   alias Logos.LogoSlotsFull
   alias Logos.LogoSlotsShort
   alias Logos.LogoSportsbetFull
@@ -143,6 +146,19 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
     <ExampleAndCode class="mt-4">
       <template slot="example">
+        <LogoDrop font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoDrop font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <LogoHub88Full font_size="10rem" />
       </template>
 
@@ -234,12 +250,38 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
     <ExampleAndCode class="mt-4">
       <template slot="example">
+        <LogoMoonDesignShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoMoonDesignShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <LogoMoonDesign font_size="10rem" />
       </template>
 
       <template slot="code">
         <#CodePreview>
         <LogoMoonDesign font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoPoweredByHub88 font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoPoweredByHub88 font_size="10rem" />
         </#CodePreview>
       </template>
     </ExampleAndCode>
