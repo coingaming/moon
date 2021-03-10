@@ -1,16 +1,20 @@
 defmodule MoonWeb.Pages.Components.DropdownPage do
+  require Logger
   use MoonWeb, :live_view
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Dropdown
-  alias Moon.Components.Dropdown.Item
-  alias Moon.Components.Dropdown.CheckboxItem
   alias Moon.Components.Link
-  alias Moon.Components.Checkbox
-  alias Moon.Components.TextInput
+  alias Moon.Components.CheckboxMultiselect
+
+  @default_games_list [%{ label: "Game 1", value: "1" }, %{ label: "Game 2", value: "2" }, %{ label: "Game 3", value: "3" }, %{ label: "Game 4", value: "4" }, %{ label: "Game 5", value: "5" }]
 
   data(item_id, :string, default: "1")
+  data(selected_game_ids, :list, default: ["1", "2"])
+  data(selectable_game_options, :list, default: @default_games_list)
+  data(selectable_filtered_game_options, :list, default: @default_games_list)
+  data(game_search, :string, default: %{value: ""})
 
   def mount(params, _session, socket) do
     {:ok,
@@ -32,58 +36,107 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
     <p class="mt-4">
       <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
     </p>
+    <p class="mt-4">
+      <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
+    </p>
+
+    <Heading size=24 class="mt-8">
+      Using CheckboxMultiselect
+    </Heading>
 
     <ExampleAndCode class="mt-4">
       <template slot="example">
         <Dropdown>
-          <Item click="select" item_id="1">List item</Item>
-          <Item click="select" item_id="2">List item</Item>
-          <Item click="select" item_id="3">List item</Item>
-          <Item click="select" item_id="4">List item</Item>
-          <Item click="select" item_id="5">List item</Item>
+          <CheckboxMultiselect
+            on_change="handle_game_selection_changed"
+            value={{ @selected_game_ids }}
+            options={{ @selectable_game_options }}
+          />
         </Dropdown>
       </template>
 
       <template slot="code">
         <#CodePreview>
-          <Dropdown>
-            <Item click="select" item_id="1">List item</Item>
-            <Item click="select" item_id="2">List item</Item>
-            <Item click="select" item_id="3">List item</Item>
-            <Item click="select" item_id="4">List item</Item>
-            <Item click="select" item_id="5">List item</Item>
-          </Dropdown>
+        <Dropdown>
+          <CheckboxMultiselect
+            on_change="handle_game_selection_changed"
+            value={{ @selected_game_ids }}
+            options={{ @selectable_game_options }}
+          />
+        </Dropdown>
         </#CodePreview>
+      </template>
+
+      <template slot="state">
+@selected_game_ids = {{ inspect(@selected_game_ids) }}
       </template>
     </ExampleAndCode>
 
+
     <ExampleAndCode class="mt-4">
       <template slot="example">
-        <Dropdown>
-          <CheckboxItem click="select" item_id="1" checked={{ @item_id == "1" }}>List item</CheckboxItem>
-          <CheckboxItem click="select" item_id="2" checked={{ @item_id == "2" }}>List item</CheckboxItem>
-          <CheckboxItem click="select" item_id="3" checked={{ @item_id == "3" }}>List item</CheckboxItem>
-          <CheckboxItem click="select" item_id="4" checked={{ @item_id == "4" }}>List item</CheckboxItem>
-          <CheckboxItem click="select" item_id="5" checked={{ @item_id == "5" }}>List item</CheckboxItem>
+        <Dropdown
+          on_search_change="handle_search_changed"
+          search_placeholder="Search for a name ..."
+          search_name={{ :game_search }}
+        >
+          <CheckboxMultiselect
+            on_change="handle_game_selection_changed"
+            class="max-h-32"
+            value={{ @selected_game_ids }}
+            options={{ @selectable_filtered_game_options }}
+          />
         </Dropdown>
       </template>
 
       <template slot="code">
         <#CodePreview>
-          <Dropdown>
-            <CheckboxItem click="select" item_id="1" checked={{ @item_id == "1" }}>List item</CheckboxItem>
-            <CheckboxItem click="select" item_id="2" checked={{ @item_id == "2" }}>List item</CheckboxItem>
-            <CheckboxItem click="select" item_id="3" checked={{ @item_id == "3" }}>List item</CheckboxItem>
-            <CheckboxItem click="select" item_id="4" checked={{ @item_id == "4" }}>List item</CheckboxItem>
-            <CheckboxItem click="select" item_id="5" checked={{ @item_id == "5" }}>List item</CheckboxItem>
-          </Dropdown>
+        <Dropdown
+          on_search_change="handle_search_changed"
+          search_placeholder="Search for a name ..."
+          search_name={{ :game_search }}
+        >
+          <CheckboxMultiselect
+            on_change="handle_game_selection_changed"
+            class="max-h-32"
+            value={{ @selected_game_ids }}
+            options={{ @selectable_filtered_game_options }}
+          />
+        </Dropdown>
         </#CodePreview>
+      </template>
+
+      <template slot="state">
+@selected_game_ids = {{ inspect(@selected_game_ids) }}
+@game_search = {{ inspect(@game_search) }}
       </template>
     </ExampleAndCode>
     """
   end
 
-  def handle_event("select", %{"item_id" => item_id}, socket) do
-    {:noreply, assign(socket, item_id: item_id)}
+  @spec handle_event(<<_::168, _::_*64>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
+  def handle_event("handle_search_changed", %{"game_search" => %{"value" => value}}, socket) do
+    {:noreply, assign(
+      socket,
+      game_search: %{value: value},
+      selectable_filtered_game_options: get_fitered_game_options(value, socket.assigns.selectable_game_options)
+      )
+    }
   end
+
+  def handle_event("handle_game_selection_changed", %{"toggled_item_id" => toggled_item_id}, socket) do
+    selected_game_ids = socket.assigns.selected_game_ids
+    enabled = Enum.member?(selected_game_ids, toggled_item_id)
+    new_ids = if enabled do
+      Enum.filter(selected_game_ids, fn x -> x != toggled_item_id end)
+    else
+      selected_game_ids ++ [toggled_item_id]
+    end
+    {:noreply, assign(socket, selected_game_ids: new_ids)}
+  end
+
+  def get_fitered_game_options(search_value, selectable_game_options) do
+    Enum.filter(selectable_game_options, fn x -> String.contains?(String.downcase(x.label), String.downcase(search_value)) end)
+  end
+
 end

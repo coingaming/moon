@@ -31,13 +31,15 @@ defmodule Moon.Components.TextInput do
   prop(disabled, :boolean)
   prop(required, :boolean)
   prop(icon, :any)
+  prop(class, :string)
+  prop(without_design, :boolean)
 
   def render(assigns) do
     ~H"""
     {{ asset_import @socket, "js/components/text-input" }}
 
     <TextInput
-      class="moon-text-input"
+      class="{{ !@without_design && "moon-text-input" }} {{ @class }}"
       field={{ @field }}
       opts={{
         [
