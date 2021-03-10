@@ -1,7 +1,7 @@
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
@@ -36,58 +36,305 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   def render(assigns) do
     ~H"""
-    <Inline font_size="10em">
-      <LogoAposta10Full />
-      <LogoAposta10Short />
-      <LogoBitcasinoFull />
-      <LogoBitcasinoShort />
-      <LogoBombayFull />
-      <LogoBombayShort />
-      <LogoCommsFull />
-      <LogoCommsShort />
-      <LogoHub88Full />
-      <LogoHub88Short />
-      <LogoLivecasinoFull />
-      <LogoLuckyslotsFull />
-      <LogoLuckyslotsShort />
-      <LogoMissions />
-      <LogoMoneyball />
-      <LogoMoonDesign />
-      <LogoSlotsFull />
-      <LogoSlotsShort />
-      <LogoSportsbetFull />
-      <LogoSportsbetShort />
-      <LogoSportsbetSponsor />
-      <LogoSportsbet />
-      <MoonPay />
-    </Inline>
-    <#CodePreview>
-      <Inline font_size="10em">
-        <LogoAposta10Full />
-        <LogoAposta10Short />
-        <LogoBitcasinoFull />
-        <LogoBitcasinoShort />
-        <LogoBombayFull />
-        <LogoBombayShort />
-        <LogoCommsFull />
-        <LogoCommsShort />
-        <LogoHub88Full />
-        <LogoHub88Short />
-        <LogoLivecasinoFull />
-        <LogoLuckyslotsFull />
-        <LogoLuckyslotsShort />
-        <LogoMissions />
-        <LogoMoneyball />
-        <LogoMoonDesign />
-        <LogoSlotsFull />
-        <LogoSlotsShort />
-        <LogoSportsbetFull />
-        <LogoSportsbetShort />
-        <LogoSportsbetSponsor />
-        <LogoSportsbet />
-        <MoonPay />
-      </Inline>
-    </#CodePreview>
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoAposta10Full font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoAposta10Full font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoAposta10Short font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoAposta10Short font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoBitcasinoFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoBitcasinoFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoBitcasinoShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoBitcasinoShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoBombayFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoBombayFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoBombayShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoBombayShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoCommsFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoCommsFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoCommsShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoCommsShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoHub88Full font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoHub88Full font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoHub88Short font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoHub88Short font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoLivecasinoFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoLivecasinoFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoLuckyslotsFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoLuckyslotsFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoLuckyslotsShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoLuckyslotsShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoMissions font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoMissions font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoMoneyball font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoMoneyball font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoMoonDesign font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoMoonDesign font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSlotsFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSlotsFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSlotsShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSlotsShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSportsbetFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSportsbetFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSportsbetShort font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSportsbetShort font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSportsbetSponsor font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSportsbetSponsor font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoSportsbet font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoSportsbet font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <MoonPay font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <MoonPay font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
     """
   end
 end

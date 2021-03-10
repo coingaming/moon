@@ -161,7 +161,7 @@ const generateAssetsDocumentationPageContent = (type, modules) => {
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Crests
@@ -173,14 +173,19 @@ ${modules.map((x) => `  alias Crests.${x}`).join('\n')}
 
   def render(assigns) do
     ~H"""
-    <Inline>
-${modules.map((x) => `      <${x} font_size="10rem" />`).join('\n')}
-    </Inline>
-    <#CodePreview>
-      <Inline>
-${modules.map((x) => `        <${x} font_size="10rem" />`).join('\n')}
-      </Inline>
-    </#CodePreview>
+${modules.map((x) => `
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <${x} font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <${x} font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+`).join('\n')}
     """
   end
 end
@@ -192,7 +197,7 @@ end
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Duotones
@@ -204,18 +209,21 @@ ${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
 
   def render(assigns) do
     ~H"""
-    <Inline>
 ${modules
-  .map((x) => `      <${x} font_size="10rem" color="piccolo-100" />`)
+  .map((x) => `
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <${x} font_size="10rem" color="piccolo-100" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <${x} font_size="10rem" color="piccolo-100" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+`)
   .join('\n')}
-    </Inline>
-    <#CodePreview>
-      <Inline>
-${modules
-  .map((x) => `        <${x} font_size="10rem" color="piccolo-100" />`)
-  .join('\n')}
-      </Inline>
-    </#CodePreview>
     """
   end
 end
@@ -227,7 +235,7 @@ end
 defmodule MoonWeb.Pages.Assets.IconsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Icons
@@ -238,16 +246,23 @@ ${modules.map((x) => `  alias Icons.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
-    <Inline>
-${modules.map((x) => `      <${x} />`).join('\n')}
-    </Inline>
-    <#CodePreview>
-      <Inline>
-${modules.map((x) => `        <${x} />`).join('\n')}
-      </Inline>
-    </#CodePreview>
-    """
+  ~H"""
+  ${modules
+    .map((x) => `
+      <ExampleAndCode class="mt-4">
+        <template slot="example">
+          <${x} font_size="5rem" />
+        </template>
+  
+        <template slot="code">
+          <#CodePreview>
+          <${x} font_size="5rem" />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
+  `)
+    .join('\n')}
+      """
   end
 end
     `;
@@ -258,7 +273,7 @@ end
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
@@ -269,16 +284,23 @@ ${modules.map((x) => `  alias Logos.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
-    <Inline font_size="10em">
-${modules.map((x) => `      <${x} />`).join('\n')}
-    </Inline>
-    <#CodePreview>
-      <Inline font_size="10em">
-${modules.map((x) => `        <${x} />`).join('\n')}
-      </Inline>
-    </#CodePreview>
-    """
+  ~H"""
+  ${modules
+    .map((x) => `
+      <ExampleAndCode class="mt-4">
+        <template slot="example">
+          <${x} font_size="10rem" />
+        </template>
+  
+        <template slot="code">
+          <#CodePreview>
+          <${x} font_size="10rem" />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
+  `)
+    .join('\n')}
+      """
   end
 end
     `;
@@ -289,7 +311,7 @@ end
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Patterns
@@ -300,16 +322,23 @@ ${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
-    <Inline font_size="10em">
-${modules.map((x) => `      <${x} />`).join('\n')}
-    </Inline>
-    <#CodePreview>
-      <Inline font_size="10em">
-${modules.map((x) => `        <${x} />`).join('\n')}
-      </Inline>
-    </#CodePreview>
-    """
+  ~H"""
+  ${modules
+    .map((x) => `
+      <ExampleAndCode class="mt-4">
+        <template slot="example">
+          <${x} font_size="10rem" />
+        </template>
+  
+        <template slot="code">
+          <#CodePreview>
+          <${x} font_size="10rem" />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
+  `)
+    .join('\n')}
+      """
   end
 end
     `;

@@ -8,7 +8,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   alias Moon.Components.Link
   alias Moon.Components.CheckboxMultiselect
 
-  @default_games_list [%{ label: "Game 1", value: "1" }, %{ label: "Game 2", value: "2" }, %{ label: "Game 3", value: "3" }, %{ label: "Game 4", value: "4" }, %{ label: "Game 5", value: "5" }]
+  @default_games_list [
+    %{label: "Game 1", value: "1"},
+    %{label: "Game 2", value: "2"},
+    %{label: "Game 3", value: "3"},
+    %{label: "Game 4", value: "4"},
+    %{label: "Game 5", value: "5"}
+  ]
 
   data(item_id, :string, default: "1")
   data(selected_game_ids, :list, default: ["1", "2"])
@@ -44,7 +50,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       Using CheckboxMultiselect
     </Heading>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode class="mt-4" show_state={{ true }}>
       <template slot="example">
         <Dropdown>
           <CheckboxMultiselect
@@ -68,12 +74,12 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       </template>
 
       <template slot="state">
-@selected_game_ids = {{ inspect(@selected_game_ids) }}
+    @selected_game_ids = {{ inspect(@selected_game_ids) }}
       </template>
     </ExampleAndCode>
 
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode class="mt-4" show_state={{ true }}>
       <template slot="example">
         <Dropdown
           on_search_change="handle_search_changed"
@@ -107,8 +113,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       </template>
 
       <template slot="state">
-@selected_game_ids = {{ inspect(@selected_game_ids) }}
-@game_search = {{ inspect(@game_search) }}
+    @selected_game_ids = {{ inspect(@selected_game_ids) }}
+    @game_search = {{ inspect(@game_search) }}
       </template>
     </ExampleAndCode>
     """
@@ -116,27 +122,36 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
 
   @spec handle_event(<<_::168, _::_*64>>, map, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_event("handle_search_changed", %{"game_search" => %{"value" => value}}, socket) do
-    {:noreply, assign(
-      socket,
-      game_search: %{value: value},
-      selectable_filtered_game_options: get_fitered_game_options(value, socket.assigns.selectable_game_options)
-      )
-    }
+    {:noreply,
+     assign(
+       socket,
+       game_search: %{value: value},
+       selectable_filtered_game_options:
+         get_fitered_game_options(value, socket.assigns.selectable_game_options)
+     )}
   end
 
-  def handle_event("handle_game_selection_changed", %{"toggled_item_id" => toggled_item_id}, socket) do
+  def handle_event(
+        "handle_game_selection_changed",
+        %{"toggled_item_id" => toggled_item_id},
+        socket
+      ) do
     selected_game_ids = socket.assigns.selected_game_ids
     enabled = Enum.member?(selected_game_ids, toggled_item_id)
-    new_ids = if enabled do
-      Enum.filter(selected_game_ids, fn x -> x != toggled_item_id end)
-    else
-      selected_game_ids ++ [toggled_item_id]
-    end
+
+    new_ids =
+      if enabled do
+        Enum.filter(selected_game_ids, fn x -> x != toggled_item_id end)
+      else
+        selected_game_ids ++ [toggled_item_id]
+      end
+
     {:noreply, assign(socket, selected_game_ids: new_ids)}
   end
 
   def get_fitered_game_options(search_value, selectable_game_options) do
-    Enum.filter(selectable_game_options, fn x -> String.contains?(String.downcase(x.label), String.downcase(search_value)) end)
+    Enum.filter(selectable_game_options, fn x ->
+      String.contains?(String.downcase(x.label), String.downcase(search_value))
+    end)
   end
-
 end

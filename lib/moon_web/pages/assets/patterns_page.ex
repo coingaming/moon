@@ -1,7 +1,7 @@
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Patterns
@@ -19,24 +19,84 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~H"""
-    <Inline font_size="10em">
-      <PatternCircles />
-      <PatternLines />
-      <PatternRipple />
-      <PatternSpeed />
-      <PatternStars />
-      <PatternWave />
-    </Inline>
-    <#CodePreview>
-      <Inline font_size="10em">
-        <PatternCircles />
-        <PatternLines />
-        <PatternRipple />
-        <PatternSpeed />
-        <PatternStars />
-        <PatternWave />
-      </Inline>
-    </#CodePreview>
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternCircles font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternCircles font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternLines font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternLines font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternRipple font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternRipple font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternSpeed font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternSpeed font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternStars font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternStars font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <PatternWave font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <PatternWave font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
     """
   end
 end

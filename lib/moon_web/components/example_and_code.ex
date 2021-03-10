@@ -6,6 +6,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   slot(example)
   slot(code)
   slot(state)
+  prop(show_state, :boolean)
 
   def render(assigns) do
     ~H"""
@@ -22,7 +23,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
           </slot>
         </div>
       </div>
-      <div class="p-4">
+      <div class="p-4" :if={{ @show_state }}>
         <Badge class="bg-piccolo-100 mb-4 mt-8">State:</Badge>
         <pre class="text-xs" style="opacity: 0.5"><slot name="state" /></pre>
       </div>

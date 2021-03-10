@@ -1,7 +1,7 @@
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Inline
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Crests
@@ -17,20 +17,58 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def render(assigns) do
     ~H"""
-    <Inline>
-      <CrestArsenal font_size="10rem" />
-      <CrestFlamengo font_size="10rem" />
-      <CrestSouthampton font_size="10rem" />
-      <CrestWatford font_size="10rem" />
-    </Inline>
-    <#CodePreview>
-      <Inline>
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <CrestArsenal font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <CrestArsenal font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <CrestFlamengo font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <CrestFlamengo font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <CrestSouthampton font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <CrestSouthampton font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <CrestWatford font_size="10rem" />
-      </Inline>
-    </#CodePreview>
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <CrestWatford font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
     """
   end
 end
