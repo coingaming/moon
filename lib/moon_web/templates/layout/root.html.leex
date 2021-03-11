@@ -55,12 +55,14 @@
 
       pre {
         font-size: 12px;
+        word-wrap: break-word;
+        overflow-x: scroll;
       }
 
     </style>
 
   </head>
-  <body class="<%= theme_name %>">
+  <body class="<%= theme_name %> break-words ">
 
     <%= @inner_content %>
 

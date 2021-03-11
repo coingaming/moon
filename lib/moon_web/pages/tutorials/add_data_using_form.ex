@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Select
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias MoonWeb.Components.ExampleAndCode
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
@@ -44,50 +45,57 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
     Todo
 
-    <ul>
+    <ul class="list-inside list-disc">
       <li>Validation errors on form (end user API will remain same, validation errors will come automatically)</li>
     </ul>
 
     <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
 
 
-    <Heading size=24>Add data using form</Heading>
+    <Heading size=24 class="mt-8 mb-4">Add data using form</Heading>
 
-    <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-      <TextInput label="Name" field="name" />
-      <TextInput label="Email" field="email" />
+    <ExampleAndCode show_state={{ true }}>
+      <template slot="example">
+        <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+          <TextInput label="Name" field="name" />
+          <TextInput label="Email" field="email" />
 
-      <Select
-        label="Gender"
-        field={{ :gender }}
-        options={{ @gender_options }}
-        prompt="Please select gender"
-      />
+          <Select
+            label="Gender"
+            field={{ :gender }}
+            options={{ @gender_options }}
+            prompt="Please select gender"
+          />
 
-      <pre>{{ inspect(@user_changeset) }}</pre>
+          <pre>{{ inspect(@user_changeset) }}</pre>
 
-      <Button variant="primary">Save</Button>
-      <Button variant="secondary" on_click="go_other_page">Cancel</Button>
-    </Form>
+          <Button variant="primary">Save</Button>
+          <Button variant="secondary" on_click="go_other_page">Cancel</Button>
+        </Form>
+      </template>
+      <template slot="code">
+        <#CodePreview>
+          <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+            <TextInput label="Name" field={{ :name }} />
+            <TextInput label="Email" field={{ :email }} />
 
-    <#CodePreview>
-      <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-        <TextInput label="Name" field={{ :name }} />
-        <TextInput label="Email" field={{ :email }} />
+            <Select
+              label="Gender"
+              field={{ :gender }}
+              options={{ @gender_options }}
+              prompt="Please select gender"
+            />
 
-        <Select
-          label="Gender"
-          field={{ :gender }}
-          options={{ @gender_options }}
-          prompt="Please select gender"
-        />
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary" on_click="go_other_page">Cancel</Button>
+          </Form>
+        </#CodePreview>
+      </template>
+      <template slot="state">
+        {{ inspect(@user_changeset) }}
+      </template>
+    </ExampleAndCode>
 
-        <pre>{{ inspect(@user_changeset) }}</pre>
-
-        <Button variant="primary">Save</Button>
-        <Button variant="secondary" on_click="go_other_page">Cancel</Button>
-      </Form>
-    </#CodePreview>
 
     <h2>Without changeset (not recommended, only for edge cases - 99% cases DO NOT USE THIS)</h2>
 

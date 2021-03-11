@@ -11,8 +11,16 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   def render(assigns) do
     ~H"""
     <Heading size=32>Usage</Heading>
+
+    <Heading size=24 class="mt-8 mb-4">Requirements</Heading>
     <pre>
-    # 1. Create empty project
+    * Can be used from any existing Phoenix project that uses LiveView 0.15 (Margus Pärt needs to deploy branch "render_block" lab to t1 to test it out)
+    * Moon Surface components can be used from SLIM and EEX, but recommended new format is Surface + Tailwind + Moon Surface Components
+    </pre>
+
+    <Heading size=24 class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
+    <pre>
+    # 1. Create empty project (skip this test if you already have project where you want to include)
     mix phx.new aposta10_design --live --no-ecto --no-dashboard
     cd aposta10_design
 

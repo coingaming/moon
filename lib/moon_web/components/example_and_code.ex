@@ -11,7 +11,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   def render(assigns) do
     ~H"""
     <div class="rounded-lg bg-hover p-4 {{ @class }}">
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2">
         <div>
           <slot name="example">
             Example not defined
@@ -25,7 +25,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
       </div>
       <div class="p-4" :if={{ @show_state }}>
         <Badge class="bg-piccolo-100 mb-4 mt-8">State:</Badge>
-        <pre class="text-xs" style="opacity: 0.5"><slot name="state" /></pre>
+        <pre class="text-xs break-all overflow-x-scroll w-full" style="opacity: 0.5"><slot name="state" /></pre>
       </div>
     </div>
     """
