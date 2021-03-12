@@ -45,6 +45,7 @@ defmodule MoonWeb.Router do
       live "/components/link", MoonWeb.Pages.Components.LinkPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
       live "/components/stack", MoonWeb.Pages.Components.StackPage
+      live "/components/switch", MoonWeb.Pages.Components.SwitchPage
       live "/components/tabs", MoonWeb.Pages.Components.TabsPage
       live "/components/text", MoonWeb.Pages.Components.TextPage
       live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
