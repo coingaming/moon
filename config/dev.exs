@@ -43,8 +43,9 @@ config :moon, MoonWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/moon_web/(live|views)/.*(ex)$",
-      ~r"lib/moon_web/templates/.*(eex)$"
+      ~r"lib/moon_web/(live|views|pages)/.*(ex)$",
+      ~r"lib/moon_web/templates/.*(eex)$",
+      ~r"lib/moon/components/.*(ex)$"
     ]
   ]
 

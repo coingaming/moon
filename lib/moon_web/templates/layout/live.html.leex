@@ -2,7 +2,7 @@
   <div id="site-left-menu">
     <%= live_component @socket, MoonWeb.Components.LeftMenu, id: "left-menu", theme_name: assigns.theme_name, active_page: assigns.active_page %>
   </div>
-  <div id="site-content">
+  <div id="site-content" class="max-w-5xl pr-8">
     <%= @inner_content %>
   </div>
 </main>
