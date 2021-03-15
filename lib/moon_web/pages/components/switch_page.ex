@@ -15,7 +15,8 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         small_switch_checked: false,
         medium_switch_checked: false,
         large_switch_checked: false,
-        icons_switch_checked: false
+        icons_switch_checked: false,
+        captions_switch_checked: false
       )
 
     {:ok, socket}
@@ -129,6 +130,54 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </#CodePreview>
         </template>
       </ExampleAndCode>
+
+      <Heading size=24 class="pt-4" is_regular>Captions</Heading>
+
+      <p>
+        Use <code class="bg-gohan-40">caption_unchecked</code> and <code class="bg-gohan-40">caption_checked</code> props.
+      </p>
+
+      <ExampleAndCode class="mt-3">
+        <template slot="example">
+          <Stack>
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ false }}
+              size="small"
+              caption_unchecked="AM"
+              caption_checked="PM"
+            />
+
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ true }}
+              size="medium"
+              caption_unchecked="OFF"
+              caption_checked="ON"
+            />
+
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ true }}
+              size="large"
+              caption_unchecked="Moon"
+              caption_checked="Sun"
+            />
+          </Stack>
+        </template>
+
+        <template slot="code">
+          <#CodePreview>
+            <Switch
+              caption_unchecked="OFF"
+              caption_checked="ON"
+            />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
     </Stack>
     """
   end
@@ -155,6 +204,11 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   def handle_event("handle_icons_switch", _, socket) do
     socket = assign(socket, icons_switch_checked: !socket.assigns.icons_switch_checked)
+    {:noreply, socket}
+  end
+
+  def handle_event("handle_captions_switch", _, socket) do
+    socket = assign(socket, captions_switch_checked: !socket.assigns.captions_switch_checked)
     {:noreply, socket}
   end
 end

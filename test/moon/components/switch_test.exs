@@ -77,5 +77,20 @@ defmodule Moon.Components.SwitchTest do
       refute html =~ "icon-moon.svg"
       refute html =~ "icon-sun.svg"
     end
+
+    test "with captions" do
+      assigns = %{caption_unchecked: "off", caption_checked: "on"}
+
+      html =
+        render_surface do
+          ~H"""
+          <Switch caption_unchecked={{ @caption_unchecked }} caption_checked={{ @caption_checked }} />
+          """
+        end
+
+      assert html =~ "<button"
+      assert html =~ "off"
+      assert html =~ "on"
+    end
   end
 end
