@@ -29,24 +29,26 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         An alternate checkbox appearance for simulating on/off state.
       </p>
 
-      <ExampleAndCode class="mt-3" show_state={{ true }}>
-        <template slot="example">
-          <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch"></Switch>
-        </template>
+      <div id="first_switch">
+        <ExampleAndCode class="mt-3" show_state={{ true }}>
+          <template slot="example">
+            <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch"></Switch>
+          </template>
 
-        <template slot="code">
-          <#CodePreview>
-            <Switch
-              checked={{ @checked }}
-              on_change="handle_switch"
-            ></Switch>
-          </#CodePreview>
-        </template>
+          <template slot="code">
+            <#CodePreview>
+              <Switch
+                checked={{ @checked }}
+                on_change="handle_switch"
+              ></Switch>
+            </#CodePreview>
+          </template>
 
-        <template slot="state">
-          @checked = {{ @first_switch_checked }}
-        </template>
-      </ExampleAndCode>
+          <template slot="state">
+            @checked = {{ @first_switch_checked }}
+          </template>
+        </ExampleAndCode>
+      </div>
 
       <Heading size=24 class="pt-4" is_regular>Size</Heading>
 
