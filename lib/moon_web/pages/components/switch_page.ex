@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <div id="first_switch">
         <ExampleAndCode class="mt-3" show_state={{ true }}>
           <template slot="example">
-            <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch"></Switch>
+            <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch" />
           </template>
 
           <template slot="code">
@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               <Switch
                 checked={{ @checked }}
                 on_change="handle_switch"
-              ></Switch>
+              />
             </#CodePreview>
           </template>
 
@@ -63,29 +63,29 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               size="small"
               checked={{ @small_switch_checked }}
               on_change="handle_small_switch"
-            ></Switch>
+            />
 
             <Switch
               size="medium"
               checked={{ @medium_switch_checked }}
               on_change="handle_medium_switch"
-            ></Switch>
+            />
 
             <Switch
               size="large"
               checked={{ @large_switch_checked }}
               on_change="handle_large_switch"
-            ></Switch>
+            />
           </Stack>
         </template>
 
         <template slot="code">
           <#CodePreview>
-            <Switch size="small"></Switch>
+            <Switch size="small" />
 
-            <Switch size="medium"></Switch>
+            <Switch size="medium" />
 
-            <Switch size="large"></Switch>
+            <Switch size="large" />
           </#CodePreview>
         </template>
       </ExampleAndCode>

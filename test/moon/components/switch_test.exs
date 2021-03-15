@@ -9,7 +9,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~H"""
-          <Switch size={{ @size }} checked={{ @checked }}></Switch>
+          <Switch size={{ @size }} checked={{ @checked }} />
           """
         end
 
@@ -24,7 +24,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~H"""
-          <Switch size={{ @size }} checked={{ @checked }}></Switch>
+          <Switch size={{ @size }} checked={{ @checked }} />
           """
         end
 
@@ -39,7 +39,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~H"""
-          <Switch size={{ @size }} checked={{ @checked }}></Switch>
+          <Switch size={{ @size }} checked={{ @checked }} />
           """
         end
 
