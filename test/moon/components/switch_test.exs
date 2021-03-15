@@ -47,5 +47,35 @@ defmodule Moon.Components.SwitchTest do
       refute html =~ "translate-x-3"
       assert html =~ "translate-x-4"
     end
+
+    test "with icons" do
+      assigns = %{icons: true}
+
+      html =
+        render_surface do
+          ~H"""
+          <Switch icons={{ @icons }} />
+          """
+        end
+
+      assert html =~ "<button"
+      assert html =~ "icon-moon.svg"
+      assert html =~ "icon-sun.svg"
+    end
+
+    test "without icons" do
+      assigns = %{icons: false}
+
+      html =
+        render_surface do
+          ~H"""
+          <Switch icons={{ @icons }} />
+          """
+        end
+
+      assert html =~ "<button"
+      refute html =~ "icon-moon.svg"
+      refute html =~ "icon-sun.svg"
+    end
   end
 end

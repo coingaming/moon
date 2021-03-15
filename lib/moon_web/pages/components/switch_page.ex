@@ -14,7 +14,8 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         first_switch_checked: false,
         small_switch_checked: false,
         medium_switch_checked: false,
-        large_switch_checked: false
+        large_switch_checked: false,
+        icons_switch_checked: false
       )
 
     {:ok, socket}
@@ -89,6 +90,45 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </#CodePreview>
         </template>
       </ExampleAndCode>
+
+      <Heading size=24 class="pt-4" is_regular>Icons</Heading>
+
+      <p>
+        Use <code class="bg-gohan-40">icons</code> prop. Default value is <code class="bg-gohan-40">false</code>.
+      </p>
+
+      <ExampleAndCode class="mt-3">
+        <template slot="example">
+          <Stack>
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="small"
+              on_change="handle_icons_switch"
+            />
+
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="medium"
+              on_change="handle_icons_switch"
+            />
+
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="large"
+              on_change="handle_icons_switch"
+            />
+          </Stack>
+        </template>
+
+        <template slot="code">
+          <#CodePreview>
+            <Switch icons={{ true }} />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
     </Stack>
     """
   end
@@ -110,6 +150,11 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   def handle_event("handle_large_switch", _, socket) do
     socket = assign(socket, large_switch_checked: !socket.assigns.large_switch_checked)
+    {:noreply, socket}
+  end
+
+  def handle_event("handle_icons_switch", _, socket) do
+    socket = assign(socket, icons_switch_checked: !socket.assigns.icons_switch_checked)
     {:noreply, socket}
   end
 end

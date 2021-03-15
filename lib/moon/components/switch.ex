@@ -1,7 +1,16 @@
 defmodule Moon.Components.Switch do
   use Moon.StatelessComponent
+  alias Moon.Assets.Icons.IconMoon
+  alias Moon.Assets.Icons.IconSun
+
+  @icons_sizes %{
+    "small" => "0.75rem",
+    "medium" => "1rem",
+    "large" => "1.5rem"
+  }
 
   prop checked, :boolean, default: false
+  prop icons, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large"], default: "medium"
   prop action, :string, default: "Toggle Setting"
   prop on_change, :event
@@ -22,6 +31,12 @@ defmodule Moon.Components.Switch do
       :on-click={{ @on_change }}
     >
       <span class="sr-only">{{ @action }}</span>
+
+      <div :if={{ @icons }} class="absolute flex">
+        <IconMoon class="transform scale-90" font_size={{ icon_size(@size) }} />
+        <IconSun class="transform scale-90" font_size={{ icon_size(@size) }} />
+      </div>
+
       <span
         aria-hidden="true"
         class={{
@@ -36,5 +51,9 @@ defmodule Moon.Components.Switch do
       ></span>
     </button>
     """
+  end
+
+  def icon_size(size) do
+    @icons_sizes[size]
   end
 end
