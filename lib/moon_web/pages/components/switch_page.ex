@@ -14,7 +14,9 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         first_switch_checked: false,
         small_switch_checked: false,
         medium_switch_checked: false,
-        large_switch_checked: false
+        large_switch_checked: false,
+        icons_switch_checked: false,
+        captions_switch_checked: false
       )
 
     {:ok, socket}
@@ -29,24 +31,26 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         An alternate checkbox appearance for simulating on/off state.
       </p>
 
-      <ExampleAndCode class="mt-3" show_state={{ true }}>
-        <template slot="example">
-          <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch"></Switch>
-        </template>
+      <div id="first_switch">
+        <ExampleAndCode class="mt-3" show_state={{ true }}>
+          <template slot="example">
+            <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch" />
+          </template>
 
-        <template slot="code">
-          <#CodePreview>
-            <Switch
-              checked={{ @checked }}
-              on_change="handle_switch"
-            ></Switch>
-          </#CodePreview>
-        </template>
+          <template slot="code">
+            <#CodePreview>
+              <Switch
+                checked={{ @checked }}
+                on_change="handle_switch"
+              />
+            </#CodePreview>
+          </template>
 
-        <template slot="state">
-          @checked = {{ @first_switch_checked }}
-        </template>
-      </ExampleAndCode>
+          <template slot="state">
+            @checked = {{ @first_switch_checked }}
+          </template>
+        </ExampleAndCode>
+      </div>
 
       <Heading size=24 class="pt-4" is_regular>Size</Heading>
 
@@ -61,29 +65,116 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               size="small"
               checked={{ @small_switch_checked }}
               on_change="handle_small_switch"
-            ></Switch>
+            />
 
             <Switch
               size="medium"
               checked={{ @medium_switch_checked }}
               on_change="handle_medium_switch"
-            ></Switch>
+            />
 
             <Switch
               size="large"
               checked={{ @large_switch_checked }}
               on_change="handle_large_switch"
-            ></Switch>
+            />
           </Stack>
         </template>
 
         <template slot="code">
           <#CodePreview>
-            <Switch size="small"></Switch>
+            <Switch size="small" />
 
-            <Switch size="medium"></Switch>
+            <Switch size="medium" />
 
-            <Switch size="large"></Switch>
+            <Switch size="large" />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="pt-4" is_regular>Icons</Heading>
+
+      <p>
+        Use <code class="bg-gohan-40">icons</code> prop. Default value is <code class="bg-gohan-40">false</code>.
+      </p>
+
+      <ExampleAndCode class="mt-3">
+        <template slot="example">
+          <Stack>
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="small"
+              on_change="handle_icons_switch"
+            />
+
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="medium"
+              on_change="handle_icons_switch"
+            />
+
+            <Switch
+              checked={{ @icons_switch_checked }}
+              icons={{ true }}
+              size="large"
+              on_change="handle_icons_switch"
+            />
+          </Stack>
+        </template>
+
+        <template slot="code">
+          <#CodePreview>
+            <Switch icons={{ true }} />
+          </#CodePreview>
+        </template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="pt-4" is_regular>Captions</Heading>
+
+      <p>
+        Use <code class="bg-gohan-40">caption_unchecked</code> and <code class="bg-gohan-40">caption_checked</code> props.
+      </p>
+
+      <ExampleAndCode class="mt-3">
+        <template slot="example">
+          <Stack>
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ false }}
+              size="small"
+              caption_unchecked="AM"
+              caption_checked="PM"
+            />
+
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ true }}
+              size="medium"
+              caption_unchecked="OFF"
+              caption_checked="ON"
+            />
+
+            <Switch
+              checked={{ @captions_switch_checked }}
+              on_change="handle_captions_switch"
+              icons={{ true }}
+              size="large"
+              caption_unchecked="Moon"
+              caption_checked="Sun"
+            />
+          </Stack>
+        </template>
+
+        <template slot="code">
+          <#CodePreview>
+            <Switch
+              caption_unchecked="OFF"
+              caption_checked="ON"
+            />
           </#CodePreview>
         </template>
       </ExampleAndCode>
@@ -108,6 +199,16 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   def handle_event("handle_large_switch", _, socket) do
     socket = assign(socket, large_switch_checked: !socket.assigns.large_switch_checked)
+    {:noreply, socket}
+  end
+
+  def handle_event("handle_icons_switch", _, socket) do
+    socket = assign(socket, icons_switch_checked: !socket.assigns.icons_switch_checked)
+    {:noreply, socket}
+  end
+
+  def handle_event("handle_captions_switch", _, socket) do
+    socket = assign(socket, captions_switch_checked: !socket.assigns.captions_switch_checked)
     {:noreply, socket}
   end
 end

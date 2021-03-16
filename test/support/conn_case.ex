@@ -20,9 +20,8 @@ defmodule MoonWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import MoonWeb.ConnCase
+      # import Plug.Conn
+      use Surface.LiveViewTest
 
       alias MoonWeb.Router.Helpers, as: Routes
 
