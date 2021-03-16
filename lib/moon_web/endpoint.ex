@@ -22,7 +22,7 @@ defmodule MoonWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/moon/",
-    from: {:moon, "/priv/"},
+    from: :moon,
     gzip: false,
     only: ~w(css gettext fonts images svgs js favicon.ico robots.txt)
 

@@ -32,7 +32,7 @@ config :phoenix, :json_library, Jason
 config :asset_import, MoonWeb.Assets,
   assets_base_url: "/moon/",
   assets_path: Path.expand("assets"),
-  manifest_path: Path.expand("priv/manifest.json"),
+  manifest_path: Path.expand("priv/static/manifest.json"),
   entrypoints_path: Path.expand("assets/entrypoints.json")
 
 # Import environment specific config. This must remain at the bottom
