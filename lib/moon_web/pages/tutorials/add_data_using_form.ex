@@ -59,18 +59,15 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
           <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
             <Stack>
               <div class="flex items-center">
-                <Switch checked={{ @lock_fields }} on_change="toggle_disabled" />
-                <span class="ml-3">
-                  Lock fields
-                </span>
+                <Switch checked={{ @lock_fields }} on_change="lock_form_fields" />
+                <span class="ml-3">Lock fields</span>
               </div>
 
-              <div class="flex items-center">
+              <!-- TODO: Add form validation -->
+              <!-- div class="flex items-center">
                 <Switch checked={{ @enable_validations }} />
-                <span class="ml-3">
-                  Enable form validations
-                </span>
-              </div>
+                <span class="ml-3">Enable validations (not implemented)</span>
+              </div -->
 
               <TextInput label="Name" field="name" disabled={{ @lock_fields }} />
               <TextInput label="Email" field="email" disabled={{ @lock_fields }} />
@@ -91,27 +88,32 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         </template>
 
         <template slot="code">
-          <#CodePreview>
-            <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-              <Stack>
-                <TextInput label="Name" field={{ :name }} />
-                <TextInput label="Email" field={{ :email }} />
+      <#CodePreview>
+        <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+          <Stack>
+            <div class="flex items-center">
+              <Switch checked={{ @lock_fields }} on_change="lock_form_fields" />
+              <span class="ml-3">Lock fields</span>
+            </div>
 
-                <Select
-                  label="Gender"
-                  field={{ :gender }}
-                  options={{ @gender_options }}
-                  prompt="Please select gender"
-                />
+            <TextInput label="Name" field={{ :name }} />
+            <TextInput label="Email" field={{ :email }} />
 
-                <Button variant="primary">Save</Button>
-                <Button variant="secondary" on_click="clear_form">Cancel</Button>
-              </Stack>
-            </Form>
-          </#CodePreview>
+            <Select
+              label="Gender"
+              field={{ :gender }}
+              options={{ @gender_options }}
+              prompt="Please select gender"
+            />
+
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary" on_click="clear_form">Cancel</Button>
+          </Stack>
+        </Form>
+      </#CodePreview>
         </template>
 
-        <template slot="state">@user_changeset = {{ inspect(@user_changeset, pretty: true) }}<br><br>@gender_options = {{ inspect(@gender_options, pretty: true) }}</template>
+        <template slot="state">@user_changeset = {{ inspect(@user_changeset, pretty: true) }}<br><br>@gender_options = {{ inspect(@gender_options, pretty: true) }}<br><br>@lock_fields = {{ @lock_fields }}</template>
       </ExampleAndCode>
 
       <Heading size=24 class="mt-4" is_regular>Without changeset</Heading>
@@ -141,23 +143,23 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         </template>
 
         <template slot="code">
-          <#CodePreview>
-            <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-              <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
-              <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+      <#CodePreview>
+        <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+          <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
+          <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
 
-              <Select
-                label="Gender"
-                field={{ :gender }}
-                options={{ @gender_options }}
-                value={{ @user_map.gender }}
-                prompt="Please select gender"
-              />
+          <Select
+            label="Gender"
+            field={{ :gender }}
+            options={{ @gender_options }}
+            value={{ @user_map.gender }}
+            prompt="Please select gender"
+          />
 
-              <Button variant="primary">Save</Button>
-              <Button variant="secondary" on_click="clear_form">Cancel</Button>
-            </Form>
-          </#CodePreview>
+          <Button variant="primary">Save</Button>
+          <Button variant="secondary" on_click="clear_form">Cancel</Button>
+        </Form>
+      </#CodePreview>
         </template>
 
         <template slot="state">@user_map = {{ inspect(@user_map) }}</template>
@@ -200,7 +202,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     {:noreply, assign(socket, user_map: @default_user_map)}
   end
 
-  def handle_event("toggle_disabled", _, socket) do
+  def handle_event("lock_form_fields", _, socket) do
     {:noreply, assign(socket, lock_fields: !socket.assigns.lock_fields)}
   end
 end
