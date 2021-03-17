@@ -4,6 +4,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias Moon.Components.Accordion
   alias Moon.Components.Accordion.Item
   alias Moon.Components.CodePreview
+  alias MoonWeb.Components.ExampleAndCode
 
   data(item_id, :string, default: "1")
 
@@ -16,36 +17,16 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~H"""
     <Heading size=32 class="mb-8">Accordion</Heading>
 
-    <div class="grid lg:grid-cols-2">
-      <Accordion>
-        <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-        </Item>
-        <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
-          Content
-        </Item>
-        <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-          Content <br />
-        </Item>
-      </Accordion>
-
-      <#CodePreview>
+    <ExampleAndCode show_state={{ true }}>
+      <template slot="example">
         <Accordion>
           <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+            Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
             Content <br />
             Content <br />
           </Item>
@@ -57,10 +38,36 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             Content <br />
             Content <br />
             Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
+            Content <br />
           </Item>
         </Accordion>
-      </#CodePreview>
-    </div>
+      </template>
+      <template slot="code">
+        <#CodePreview>
+          <Accordion>
+            <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+              Content <br />
+              Content <br />
+            </Item>
+            <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
+              Content
+            </Item>
+            <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
+              Content <br />
+              Content <br />
+              Content <br />
+              Content <br />
+            </Item>
+          </Accordion>
+        </#CodePreview>
+      </template>
+      <template slot="state">
+        <pre>@item_id = {{ @item_id }}</pre>
+      </template>
+    </ExampleAndCode>
     """
   end
 

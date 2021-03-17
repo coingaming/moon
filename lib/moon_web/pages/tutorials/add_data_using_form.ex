@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Select
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -41,18 +42,19 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def render(assigns) do
     ~H"""
-    <Heading size=32>Add data using form</Heading>
+    <Heading size=32>Mutate data using form</Heading>
 
-    Todo
+    <p>
+      Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms
+    </p>
 
-    <ul class="list-inside list-disc">
-      <li>Validation errors on form (end user API will remain same, validation errors will come automatically)</li>
-    </ul>
-
-    <a href="https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex">https://github.com/coingaming/moon/blob/master/lib/moon/sites/moon_docs/pages/tutorials/add_data_using_form.ex</a>
-
+    <p class="mt-4">
+      <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
+    </p>
 
     <Heading size=24 class="mt-8 mb-4">Add data using form</Heading>
+
+    <Heading size=18 class="mt-8 mb-4">Using changeset</Heading>
 
     <ExampleAndCode show_state={{ true }}>
       <template slot="example">
@@ -66,8 +68,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             options={{ @gender_options }}
             prompt="Please select gender"
           />
-
-          <pre>{{ inspect(@user_changeset) }}</pre>
 
           <Button variant="primary">Save</Button>
           <Button variant="secondary" on_click="go_other_page">Cancel</Button>
@@ -92,48 +92,61 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         </#CodePreview>
       </template>
       <template slot="state">
-        {{ inspect(@user_changeset) }}
+        <pre>@user_changeset = {{ inspect(@user_changeset) }}</pre>
+        <pre>@gender_options = {{ inspect(@gender_options) }}</pre>
       </template>
     </ExampleAndCode>
 
 
-    <h2>Without changeset (not recommended, only for edge cases - 99% cases DO NOT USE THIS)</h2>
+    <h2>Without changeset</h2>
 
-    <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-      <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
-      <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+    <p>(not recommended, only for edge cases - 99% cases DO NOT USE THIS)</p>
 
-      <Select
-        label="Gender"
-        field={{ :gender }}
-        options={{ @gender_options }}
-        value={{ @user_map.gender }}
-        prompt="Please select gender"
-      />
+    <ExampleAndCode show_state={{ true }}>
+      <template slot="example">
+        <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+          <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
+          <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
 
-      <pre>{{ inspect(@user_map) }}</pre>
+          <Select
+            label="Gender"
+            field={{ :gender }}
+            options={{ @gender_options }}
+            value={{ @user_map.gender }}
+            prompt="Please select gender"
+          />
 
-      <Button variant="primary">Save</Button>
-      <Button variant="secondary" on_click="go_other_page">Cancel</Button>
-    </Form>
+          <Button variant="primary">Save</Button>
+          <Button variant="secondary" on_click="go_other_page">Cancel</Button>
+        </Form>
+      </template>
 
-    <#CodePreview>
-      <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-        <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
-        <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+      <template slot="code">
+        <#CodePreview>
+          <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+            <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
+            <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
 
-        <Select
-          label="Gender"
-          field={{ :gender }}
-          options={{ @gender_options }}
-          value={{ @user_map.gender }}
-          prompt="Please select gender"
-        />
+            <Select
+              label="Gender"
+              field={{ :gender }}
+              options={{ @gender_options }}
+              value={{ @user_map.gender }}
+              prompt="Please select gender"
+            />
 
-        <Button variant="primary">Save</Button>
-        <Button variant="secondary" on_click="go_other_page">Cancel</Button>
-      </Form>
-    </#CodePreview>
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary" on_click="go_other_page">Cancel</Button>
+          </Form>
+        </#CodePreview>
+      </template>
+
+      <template slot="state">
+        <pre>@user_map = {{ inspect(@user_map) }}</pre>
+        <pre>@gender_options = {{ inspect(@gender_options) }}</pre>
+      </template>
+
+    </ExampleAndCode>
     """
   end
 
