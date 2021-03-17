@@ -29,7 +29,7 @@ module.exports = (env, options) => {
     output: {
       filename: 'js/[id]-[contenthash].js',
       chunkFilename: 'js/[id]-[contenthash].js',
-      path: path.resolve(__dirname, '../priv/'),
+      path: path.resolve(__dirname, '../priv/static'),
     },
     devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
     module: {

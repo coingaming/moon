@@ -15,6 +15,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     |> cast(params, [:name, :email, :gender])
     |> validate_required([:name, :email, :gender])
     |> validate_format(:email, ~r/@/)
-    |> validate_inclusion(:gender, ["female", "male"])
+    |> validate_inclusion(:gender, ["female", "male", "other"])
   end
 end
