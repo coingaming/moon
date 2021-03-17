@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   def render(assigns) do
     ~H"""
     <Stack>
-      <Heading size=32 class="">Switch</Heading>
+      <Heading size=32>Switch</Heading>
 
       <p>
         An alternate checkbox appearance for simulating on/off state.
@@ -46,13 +46,11 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
             </#CodePreview>
           </template>
 
-          <template slot="state">
-            @checked = {{ @first_switch_checked }}
-          </template>
+          <template slot="state">@checked = {{ @first_switch_checked }}</template>
         </ExampleAndCode>
       </div>
 
-      <Heading size=24 class="pt-4" is_regular>Size</Heading>
+      <Heading size=24 class="mt-4" is_regular>Size</Heading>
 
       <p>
         Use <code class="bg-gohan-40">size</code> prop. Default size is medium.
@@ -92,7 +90,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         </template>
       </ExampleAndCode>
 
-      <Heading size=24 class="pt-4" is_regular>Icons</Heading>
+      <Heading size=24 class="mt-4" is_regular>Icons</Heading>
 
       <p>
         Use <code class="bg-gohan-40">icons</code> prop. Default value is <code class="bg-gohan-40">false</code>.
@@ -131,7 +129,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         </template>
       </ExampleAndCode>
 
-      <Heading size=24 class="pt-4" is_regular>Captions</Heading>
+      <Heading size=24 class="mt-4" is_regular>Captions</Heading>
 
       <p>
         Use <code class="bg-gohan-40">caption_unchecked</code> and <code class="bg-gohan-40">caption_checked</code> props.

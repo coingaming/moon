@@ -43,8 +43,6 @@ defmodule MoonWeb.Components.LeftMenu do
         %{"selected_theme" => %{"value" => theme_name}},
         socket
       ) do
-    IO.puts("FUCK")
-
     new_path = Routes.live_path(socket, socket.assigns.active_page, theme_name: theme_name)
     {:noreply, redirect(socket, to: new_path)}
   end
