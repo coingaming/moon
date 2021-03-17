@@ -2,7 +2,7 @@ version: 2
 jobs:
   otp_release:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.10.2-alpine
     environment:
       MIX_ENV: prod
     steps:
@@ -51,7 +51,7 @@ jobs:
         - release.tar.gz
   docker_image:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.10.2-alpine
     steps:
       - checkout
       - setup_remote_docker:
