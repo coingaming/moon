@@ -42,10 +42,10 @@ defmodule Moon.Components.Select do
 
     <Label text={{ @label }} :if={{ @label }}>
       <Surface.Components.Form.Select
-        class="moon-select {{ @class }}"
+        class="moon-select mt-2 {{ @class }}"
         field={{ @field }}
         options={{ options_with_selected }}
-        opts={{ [prompt: @prompt] }}
+        opts={{ [prompt: @prompt, disabled: @disabled] }}
       />
     </Label>
     """

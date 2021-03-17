@@ -44,6 +44,7 @@ defmodule Moon.Components.TextInput do
       opts={{
         [
           placeholder: @placeholder,
+          disabled: @disabled,
           "data-error": @error && "true",
           "data-rounded": @rounded && "true"
         ]
@@ -54,10 +55,11 @@ defmodule Moon.Components.TextInput do
 
     <Label text={{ @label }} :if={{ @label }}>
       <TextInput
-        class="moon-text-input"
+        class="moon-text-input mt-2"
         field={{ @field }}
         opts={{ [
           placeholder: @placeholder,
+          disabled: @disabled,
           "data-error": @error && "true",
           "data-rounded": @rounded && "true"
         ]}}
