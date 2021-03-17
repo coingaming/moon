@@ -57,7 +57,7 @@ defmodule Moon.Components.Switch do
         class={{
           "relative inline-flex flex-shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none",
           "bg-piccolo-100": @checked,
-          "bg-gohan-40": !@checked,
+          "bg-hit-80": !@checked,
           "border-2 w-7 focus:ring-1 focus:ring-offset-1": @size == "small",
           "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
           "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"

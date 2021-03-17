@@ -25,7 +25,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
       </div>
       <div class="p-6 border-t border-beerus-100" :if={{ @show_state }}>
         <Badge size="small" class="bg-piccolo-100 mb-3">State:</Badge>
-        <pre class="text-xs break-all overflow-x-scroll" style="opacity: 0.5"><slot name="state" /></pre>
+        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><slot name="state" /></pre>
       </div>
     </div>
     """

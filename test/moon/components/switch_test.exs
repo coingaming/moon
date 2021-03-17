@@ -29,7 +29,7 @@ defmodule Moon.Components.SwitchTest do
         end
 
       assert html =~ "<button"
-      assert html =~ "bg-gohan-40"
+      assert html =~ "bg-hit-80"
       refute html =~ "translate-x-3"
     end
 

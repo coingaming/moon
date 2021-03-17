@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <Heading size=24 class="mt-4" is_regular>Size</Heading>
 
       <p>
-        Use <code class="bg-gohan-40">size</code> prop. Default size is medium.
+        Use <code class="bg-goku-40">size</code> prop. Default size is medium.
       </p>
 
       <ExampleAndCode class="mt-3">
@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <Heading size=24 class="mt-4" is_regular>Icons</Heading>
 
       <p>
-        Use <code class="bg-gohan-40">icons</code> prop. Default value is <code class="bg-gohan-40">false</code>.
+        Use <code class="bg-goku-40">icons</code> prop. Default value is <code class="bg-goku-40">false</code>.
       </p>
 
       <ExampleAndCode class="mt-3">
@@ -132,7 +132,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <Heading size=24 class="mt-4" is_regular>Captions</Heading>
 
       <p>
-        Use <code class="bg-gohan-40">caption_unchecked</code> and <code class="bg-gohan-40">caption_checked</code> props.
+        Use <code class="bg-goku-40">caption_unchecked</code> and <code class="bg-goku-40">caption_checked</code> props.
       </p>
 
       <ExampleAndCode class="mt-3">
