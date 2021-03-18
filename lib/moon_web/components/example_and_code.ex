@@ -10,7 +10,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~H"""
-    <div class="rounded-lg bg-gohan-100 p-0 {{ @class }}">
+    <div class="rounded-lg bg-gohan-100 hover:bg-background p-0 {{ @class }}">
       <div class="grid grid-cols-1 sm:grid-cols-2">
         <div class="p-6">
           <slot name="example">
@@ -24,7 +24,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         </div>
       </div>
       <div class="p-6 border-t border-beerus-100" :if={{ @show_state }}>
-        <Badge size="small" class="bg-piccolo-100 mb-3">State:</Badge>
+        <Badge size="small" class="bg-piccolo-100 mb-3">State</Badge>
         <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><slot name="state" /></pre>
       </div>
     </div>

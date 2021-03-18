@@ -111,6 +111,10 @@ defmodule MoonWeb do
       def static_path(socket, path) do
         Routes.static_path(socket, "/moon/#{path}")
       end
+
+      def live_path(socket, view, props) do
+        Routes.live_path(socket, view, props)
+      end
     end
   end
 
