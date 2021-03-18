@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       tab_id: params["tab_id"],
+       tab_id: params["tab_id"] || "1",
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__
      )}
