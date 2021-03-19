@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Components.Heading
   alias Moon.Components.Stack
   alias Moon.Components.Switch
+  alias Moon.Components.Link
 
   def mount(params, _session, socket) do
     socket =
@@ -29,6 +30,12 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
       <p>
         An alternate checkbox appearance for simulating on/off state.
+      </p>
+
+      <p class="mt-4">
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A31">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switch_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/switcher">React implementation</Link>
       </p>
 
       <div id="first_switch">

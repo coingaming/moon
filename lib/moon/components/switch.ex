@@ -40,9 +40,12 @@ defmodule Moon.Components.Switch do
   prop action, :string, default: "Toggle Setting"
   prop caption_unchecked, :string
   prop caption_checked, :string
+  prop target, :string
 
   def render(assigns) do
     ~H"""
+    {{ asset_import @socket, "js/tailwind" }}
+
     <div class={{ "inline-flex items-center", "space-x-1": @size != "large", "space-x-2": @size == "large" }}>
       <Caption
         :if={{ @caption_unchecked }}
@@ -63,6 +66,7 @@ defmodule Moon.Components.Switch do
           "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
         }}
         :on-click={{ @on_change }}
+        phx-target={{ @target }}
       >
         <span class="sr-only">{{ @action }}</span>
 

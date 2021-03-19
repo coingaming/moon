@@ -58,9 +58,6 @@ defmodule MoonWeb.Components.LeftMenu do
         />
       </Form>
 
-      <Heading size=20>Concepts</Heading>
-      <Link to="/{{ @theme_name }}/">Overview</Link>
-
       <Heading size=20>Tutorials</Heading>
       <Link to="/{{ @theme_name }}/tutorials/process-description-and-team-interactions">Introduction</Link>
       <Link to="/{{ @theme_name }}/tutorials/installation">Installation</Link>
