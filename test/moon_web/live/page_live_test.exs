@@ -5,7 +5,7 @@ defmodule MoonWeb.PageLiveTest do
 
   test "disconnected and connected render", %{conn: conn} do
     {:ok, page_live, disconnected_html} = live(conn, "/")
-    assert disconnected_html =~ "Moon Elixir"
-    assert render(page_live) =~ "Moon Elixir"
+    assert disconnected_html =~ "Design"
+    assert render(page_live) =~ "Design"
   end
 end

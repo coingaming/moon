@@ -2,11 +2,7 @@ defmodule Moon.Components.Button do
   use Moon.StatelessComponent
 
   prop(href, :string)
-
   prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default"])
-
-  prop(on_click, :string)
-
   prop(size, :string, values: ["xsmall", "small", "medium", "large"])
   prop(mock_state, :string, values: ["active", "focus", "hover"])
   prop(full_width, :boolean)
@@ -27,6 +23,9 @@ defmodule Moon.Components.Button do
   prop(style, :string)
   prop(class, :string)
 
+  prop(on_click, :event)
+  prop(value, :any)
+
   slot(default)
 
   def render(assigns) do
@@ -39,7 +38,8 @@ defmodule Moon.Components.Button do
       data-mock-state={{ @mock_state }}
       data-variant={{ @variant }}
       data-size={{ @size }}
-      phx-click={{ @on_click }}
+      :on-click={{ @on_click }}
+      phx-value-val={{ @value }}
     >
       <slot />
     </button>
