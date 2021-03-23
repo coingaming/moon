@@ -2,22 +2,23 @@ defmodule MoonWeb.Components.ExampleAndCode do
   use MoonWeb, :stateless_component
   alias Moon.Components.Badge
 
-  prop(class, :string)
-  slot(example)
-  slot(code)
-  slot(state)
-  prop(show_state, :boolean)
+  prop class, :string
+  prop show_state, :boolean
+  prop layout, :string, default: "grid"
+  slot example
+  slot code
+  slot state
 
   def render(assigns) do
     ~H"""
     <div class="rounded-lg bg-gohan-100 hover:bg-background p-0 {{ @class }}">
-      <div class="grid grid-cols-1 sm:grid-cols-2">
+      <div class={{ "grid grid-cols-1", "sm:grid-cols-2": @layout == "grid" }}>
         <div class="p-6">
           <slot name="example">
             Example not defined
           </slot>
         </div>
-        <div class="border-l border-beerus-100">
+        <div class={{ "border-beerus-100", "sm:border-l": @layout == "grid", "border-t": @layout == "column" }}>
           <slot name="code">
             Example code not defined
           </slot>
