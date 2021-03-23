@@ -3,9 +3,12 @@ defmodule Moon.Components.PaginationButton do
   alias Moon.Components.Button
 
   prop size, :string, required: true
-  prop variant, :string
   prop page_number, :integer, required: true
   prop current_page_number, :integer, required: true
+  prop label, :string
+  prop variant, :string
+  prop disabled, :boolean, default: false
+  prop class, :string
   prop on_click, :event
 
   def render(assigns) do
@@ -13,10 +16,12 @@ defmodule Moon.Components.PaginationButton do
     <Button
       size={{ @size }}
       variant={{ if @page_number == @current_page_number, do: "primary", else: @variant }}
-      class={{ "mx-2 font-semibold rounded-lg" }}
+      class="mx-2 font-semibold transition-none rounded-lg {{ @class }}"
       on_click={{ @on_click }}
+      value_name="page"
       value={{ @page_number }}
-    >{{ @page_number }}</Button>
+      disabled={{ @disabled }}
+    >{{ @label || @page_number }}</Button>
     """
   end
 end
@@ -24,35 +29,34 @@ end
 defmodule Moon.Components.Pagination do
   use Moon.StatelessComponent
   alias Moon.Components.PaginationButton
-  alias Moon.Components.Button
 
-  prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "xsmall"
-  prop variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default"]
   prop current_page_number, :integer, required: true
   prop total_pages, :integer, required: true
-  prop range_before, :integer, default: 2
-  prop range_after, :integer, default: 2
-  prop margin_pages_displayed, :integer, default: 1
+  prop range_before, :integer, default: 1
+  prop range_after, :integer, default: 1
+  prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "xsmall"
   prop previous_button_label, :string, default: "Previous"
   prop next_button_label, :string, default: "Next"
   prop on_change, :event
-  prop target, :string
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-wrap items-center justify-between">
-      <div class="flex-none">
-        <Button
+    {{ asset_import @socket, "js/tailwind" }}
+
+    <div class="flex flex-wrap items-center justify-center">
+      <div class="mb-4 w-full lg:w-auto">
+        <PaginationButton
           size={{ @size }}
-          class=""
+          page_number={{ @current_page_number - 1 }}
+          label={{ @previous_button_label }}
+          current_page_number={{ @current_page_number }}
           disabled={{ @current_page_number <= 1 }}
+          class="block mx-auto"
           on_click={{ @on_change }}
-          value={{ @current_page_number - 1 }}
-        >
-          {{ @previous_button_label }}
-        </Button>
+        />
       </div>
-      <div class="flex-grow flex items-center justify-center">
+
+      <div class="flex flex-grow items-center justify-center mb-4">
         <PaginationButton
           size={{ @size }}
           page_number={{ 1 }}
@@ -64,6 +68,7 @@ defmodule Moon.Components.Pagination do
         <div :if={{ @current_page_number - @range_before > 2 }} class="mx-2">…</div>
 
         <PaginationButton
+          :if={{ @total_pages > 2 }}
           :for={{ page <- page_range(@current_page_number, @range_before, @range_after, @total_pages) }}
           size={{ @size }}
           page_number={{ page }}
@@ -75,6 +80,7 @@ defmodule Moon.Components.Pagination do
         <div :if={{ @current_page_number + @range_after < @total_pages - 1 }} class="mx-2">…</div>
 
         <PaginationButton
+          :if={{ @total_pages > 1 }}
           size={{ @size }}
           page_number={{ @total_pages }}
           current_page_number={{ @current_page_number }}
@@ -83,16 +89,16 @@ defmodule Moon.Components.Pagination do
         />
       </div>
 
-      <div class="flex-none">
-        <Button
+      <div class="mb-4 w-full lg:w-auto">
+        <PaginationButton
           size={{ @size }}
-          class=""
+          page_number={{ @current_page_number + 1 }}
+          label={{ @next_button_label }}
+          current_page_number={{ @current_page_number }}
           disabled={{ @current_page_number >= @total_pages }}
+          class="block mx-auto"
           on_click={{ @on_change }}
-          value={{ @current_page_number + 1 }}
-        >
-          {{ @next_button_label }}
-        </Button>
+        />
       </div>
     </div>
     """
