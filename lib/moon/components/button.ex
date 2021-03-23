@@ -24,6 +24,7 @@ defmodule Moon.Components.Button do
   prop(class, :string)
 
   prop(on_click, :event)
+  prop(value_name, :string)
   prop(value, :any)
 
   slot(default)
@@ -39,7 +40,7 @@ defmodule Moon.Components.Button do
       data-variant={{ @variant }}
       data-size={{ @size }}
       :on-click={{ @on_click }}
-      phx-value-val={{ @value }}
+      :attrs={{ phx_val_tag(@value_name, @value) }}
     >
       <slot />
     </button>
@@ -62,4 +63,8 @@ defmodule Moon.Components.Button do
   #   </button>
   #   """
   # end
+
+  def phx_val_tag(nil, _), do: []
+
+  def phx_val_tag(name, value), do: [{:"phx-value-#{name}", value}]
 end
