@@ -91,6 +91,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/components/dropdown">Dropdown</Link>
       <Link to="/{{ @theme_name }}/components/heading">Heading</Link>
       <Link to="/{{ @theme_name }}/components/link">Link</Link>
+      <Link to="/{{ @theme_name }}/components/pagination">Pagination</Link>
       <Link to="/{{ @theme_name }}/components/select">Select</Link>
       <Link to="/{{ @theme_name }}/components/dropdown#single-item-select">SingleItemSelect</Link>
       <Link to="/{{ @theme_name }}/components/switch">Switch</Link>
