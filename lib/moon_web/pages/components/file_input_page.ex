@@ -4,14 +4,13 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
-        active_page: __MODULE__,
+        active_page: __MODULE__
       )
       |> allow_upload(:file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
 
@@ -29,10 +28,46 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
       <Heading size=24 class="mt-4" is_regular>Label</Heading>
 
-      <ExampleAndCode class="mt-3">
+      <ExampleAndCode>
         <template slot="example">
-          <FileInput conf={{ @uploads.file }} label="Upload your ID" />
+          <FileInput
+            conf={{ @uploads.file }}
+            label="Upload your ID"
+            placeholder="Choose a photo..."
+          />
         </template>
+
+    <template slot="code">
+      <#CodePreview>
+        alias Moon.Components.FileInput
+
+        <FileInput
+          conf={{ @uploads.file }}
+          label="Upload your ID"
+          placeholder="Choose a photo..."
+        />
+      </#CodePreview>
+    </template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="mt-4" is_regular>Error</Heading>
+
+      <ExampleAndCode>
+        <template slot="example">
+          <FileInput
+            conf={{ @uploads.file }}
+            error={{ true }}
+          />
+        </template>
+
+    <template slot="code">
+      <#CodePreview>
+        <FileInput
+          conf={{ @uploads.file }}
+          error={{ true }}
+        />
+      </#CodePreview>
+    </template>
       </ExampleAndCode>
     </Stack>
     """
