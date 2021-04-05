@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   use MoonWeb, :live_view
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
+  alias Moon.Components.FileInput
   alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.Link
@@ -15,7 +16,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   @default_user_map %{
     name: "",
     email: "",
-    gender: ""
+    gender: "",
+    document_filename: nil
   }
 
   def mount(%{"theme_name" => theme_name}, _session, socket) do
@@ -29,16 +31,21 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       [key: "I identify as God and this is not important", value: "god", disabled: true]
     ]
 
-    {:ok,
-     assign(socket,
-       theme_name: theme_name,
-       active_page: __MODULE__,
-       user_map: @default_user_map,
-       user_changeset: user_changeset,
-       gender_options: gender_options,
-       lock_fields: false,
-       enable_validations: false
-     )}
+    socket =
+      socket
+      |> assign(
+        theme_name: theme_name,
+        active_page: __MODULE__,
+        user_map: @default_user_map,
+        user_changeset: user_changeset,
+        gender_options: gender_options,
+        lock_fields: false,
+        uploaded_files: [],
+        enable_validations: false
+      )
+      |> allow_upload(:file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
+
+    {:ok, socket}
   end
 
   def render(assigns) do
@@ -81,6 +88,12 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 prompt="Please select gender"
               />
 
+              <FileInput
+                conf={{ @uploads.file }}
+                label="Upload your ID"
+                placeholder="Choose a document..."
+              />
+
               <Button variant="primary">Save</Button>
               <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
             </Stack>
@@ -106,6 +119,12 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               prompt="Please select gender"
             />
 
+            <FileInput
+              conf={{ @uploads.file }}
+              label="Upload your ID"
+              placeholder="Choose a document..."
+            />
+
             <Button variant="primary">Save</Button>
             <Button variant="secondary" on_click="clear_form">Cancel</Button>
           </Stack>
@@ -113,7 +132,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       </#CodePreview>
         </template>
 
-        <template slot="state">@user_changeset = {{ inspect(@user_changeset, pretty: true) }}<br><br>@gender_options = {{ inspect(@gender_options, pretty: true) }}<br><br>@lock_fields = {{ @lock_fields }}</template>
+        <template slot="state">@user_changeset = {{ inspect(@user_changeset, pretty: true) }}<br><br>@gender_options = {{ inspect(@gender_options, pretty: true) }}<br><br>@lock_fields = {{ @lock_fields }}<br><br>@uploads.file.entries = {{ inspect(@uploads.file.entries, pretty: true) }}</template>
       </ExampleAndCode>
 
       <Heading size=24 class="mt-4" is_regular>Without changeset</Heading>
@@ -173,7 +192,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         %{"user" => %{"name" => name, "email" => email, "gender" => gender}},
         socket
       ) do
-    user_changeset = User.changeset(%User{}, %{name: name, email: email, gender: gender})
+    file = List.first(socket.assigns.uploads.file.entries) || %Phoenix.LiveView.UploadEntry{}
+
+    user_changeset =
+      User.changeset(%User{}, %{
+        name: name,
+        email: email,
+        gender: gender,
+        document_filename: file.client_name
+      })
+
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 

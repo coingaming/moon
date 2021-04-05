@@ -10,9 +10,11 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
-        active_page: __MODULE__
+        active_page: __MODULE__,
+        uploaded_files: []
       )
       |> allow_upload(:file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
+      |> allow_upload(:error_file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
 
     {:ok, socket}
   end
@@ -41,10 +43,19 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       <#CodePreview>
         alias Moon.Components.FileInput
 
+        def mount(_params, _session, socket) do
+          socket =
+            socket
+            |> assign(uploaded_files: [])
+            |> allow_upload(:file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
+
+          {:ok, socket}
+        end
+
         <FileInput
           conf={{ @uploads.file }}
           label="Upload your ID"
-          placeholder="Choose a photo..."
+          placeholder="Choose a document..."
         />
       </#CodePreview>
     </template>
@@ -55,7 +66,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       <ExampleAndCode>
         <template slot="example">
           <FileInput
-            conf={{ @uploads.file }}
+            conf={{ @uploads.error_file }}
             error={{ true }}
           />
         </template>
