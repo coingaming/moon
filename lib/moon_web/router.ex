@@ -41,6 +41,7 @@ defmodule MoonWeb.Router do
            MoonWeb.Pages.Components.CheckboxMultiselectPage
 
       live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
+      live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
       live "/components/link", MoonWeb.Pages.Components.LinkPage
       live "/components/pagination", MoonWeb.Pages.Components.PaginationPage
