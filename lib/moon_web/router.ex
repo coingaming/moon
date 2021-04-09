@@ -52,6 +52,7 @@ defmodule MoonWeb.Router do
       live "/components/tabs/:tab_id", MoonWeb.Pages.Components.TabsPage
       live "/components/text", MoonWeb.Pages.Components.TextPage
       live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
+      live "/components/toast", MoonWeb.Pages.Components.ToastPage
 
       live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
       live "/tutorials/installation", MoonWeb.Pages.Tutorials.Installation

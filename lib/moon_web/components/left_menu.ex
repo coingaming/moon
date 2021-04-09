@@ -99,6 +99,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/components/tabs">Tabs</Link>
       <Link to="/{{ @theme_name }}/components/text">Text</Link>
       <Link to="/{{ @theme_name }}/components/text_input">Text input</Link>
+      <Link to="/{{ @theme_name }}/components/toast">Toast</Link>
 
     </Stack>
     """
