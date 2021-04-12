@@ -13,9 +13,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
-        message: "Hey! Your toast is ready.",
-        variant: "success",
-        hidden: true
+        message: "Hey! Your toast is ready."
       )
 
     {:ok, socket}
@@ -38,34 +36,197 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ExampleAndCode show_state={{ true }}>
         <template slot="example">
-          <Button variant="secondary" on_click="toggle_toast">Show toast</Button>
+          <Button
+            variant="secondary"
+            on_click="show_toast"
+            value_name="id"
+            value="default_toast"
+          >Show toast</Button>
 
           <Toast
+            id="default_toast"
             message={{ @message }}
-            variant={{ @variant }}
-            hidden={{ @hidden }}
-            on_show="toggle_toast"
+            variant="success"
+            closeable={{ true }}
           />
         </template>
 
         <template slot="code">
       <#CodePreview>
         <Toast
-          message={{ @message }}
-          variant={{ @variant }}
-          hidden={{ @hidden }}
-          on_show="toggle_toast"
+          message="Hey! Your toast is ready."
+          variant="success"
+          closeable={{ true }}
         />
       </#CodePreview>
         </template>
 
-        <template slot="state">@hidden = {{ @hidden }}</template>
+        <template slot="state"></template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="mt-4" is_regular>Variant</Heading>
+
+      <p>
+        Use <code class="bg-goku-40">variant</code> prop.
+      </p>
+
+      <ExampleAndCode>
+        <template slot="example">
+          <Stack>
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="error_toast"
+            >Error toast</Button>
+
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="warning_toast"
+            >Warning toast</Button>
+
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="info_toast"
+            >Info toast</Button>
+
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="success_toast"
+            >Success toast</Button>
+
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="no_icon_toast"
+            >Default toast</Button>
+          </Stack>
+
+          <Toast
+            id="error_toast"
+            message="Error!"
+            variant="error"
+          />
+          <Toast
+            id="warning_toast"
+            message="Warning."
+            variant="warning"
+          />
+          <Toast
+            id="info_toast"
+            message="Info."
+            variant="info"
+          />
+          <Toast
+            id="success_toast"
+            message="Success!"
+            variant="success"
+          />
+          <Toast
+            id="no_icon_toast"
+            message="Default."
+          />
+        </template>
+
+        <template slot="code">
+      <#CodePreview>
+        <Toast
+          id="error_toast"
+          message="Error!"
+          variant="error"
+        />
+        <Toast
+          id="warning_toast"
+          message="Warning."
+          variant="warning"
+        />
+        <Toast
+          id="info_toast"
+          message="Info."
+          variant="info"
+        />
+        <Toast
+          id="success_toast"
+          message="Success!"
+          variant="success"
+        />
+        <Toast
+          id="default_toast"
+          message="Default."
+        />
+      </#CodePreview>
+        </template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="mt-4" is_regular>Actions</Heading>
+
+      <p>
+        Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
+      </p>
+
+      <ExampleAndCode>
+        <template slot="example">
+          <Stack>
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="closeable_toast"
+            >Closeable toast</Button>
+
+            <Button
+              variant="secondary"
+              on_click="show_toast"
+              value_name="id"
+              value="not_closeable_toast"
+            >Not closeable toast</Button>
+          </Stack>
+
+          <Toast
+            id="closeable_toast"
+            message="You can close this toast."
+            variant="success"
+            closeable={{ true }}
+          />
+          <Toast
+            id="not_closeable_toast"
+            message="You cannot close this toast."
+            variant="warning"
+            closeable={{ false }}
+          />
+        </template>
+
+        <template slot="code">
+      <#CodePreview>
+        <Toast
+          id="closeable_toast"
+          message="You can close this toast."
+          variant="success"
+          closeable={{ true }}
+        />
+
+        <Toast
+          id="not_closeable_toast"
+          message="You cannot close this toast."
+          variant="warning"
+          closeable={{ false }}
+        />
+      </#CodePreview>
+        </template>
       </ExampleAndCode>
     </Stack>
     """
   end
 
-  def handle_event("toggle_toast", _, socket) do
-    {:noreply, assign(socket, hidden: !socket.assigns.hidden)}
+  def handle_event("show_toast", %{"id" => id}, socket) do
+    Toast.show(id, true)
+    {:noreply, socket}
   end
 end
