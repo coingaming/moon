@@ -9,7 +9,7 @@ defmodule Moon.Components.ToastStack do
 
   def render(assigns) do
     ~H"""
-    <div id="toasts" class="fixed md:top-0 md:right-0 bottom-0 flex flex-col max-w-sm md:max-w-md p-4 items-end overflow-y-scroll overflow-x-hidden mx-auto">
+    <div class="fixed md:top-0 md:right-0 bottom-0 flex flex-col max-w-sm md:max-w-md p-4 items-end overflow-y-scroll overflow-x-hidden mx-auto">
       <Toast
         :for={{ {id, toast} <- @toasts }}
         id={{ id }}
@@ -23,8 +23,6 @@ defmodule Moon.Components.ToastStack do
     </div>
     """
   end
-
-  def show(_, id \\ "toasts")
 
   def show(%Message{} = toast, id) do
     send_update(__MODULE__, id: id, toast: %{toast | id: generate_id()})

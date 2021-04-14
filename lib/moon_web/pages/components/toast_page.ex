@@ -301,7 +301,6 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
   def handle_info({:hide_toast, toast_id}, socket) do
     ToastStack.hide_toast(toast_id, "toasts")
-
     {:noreply, socket}
   end
 
