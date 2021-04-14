@@ -39,31 +39,97 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ExampleAndCode>
         <template slot="example">
-          <Toast
-            id="default"
-            message="Hey! Your toast is ready."
-            variant="success"
-          />
-
-          <Button
-            variant="secondary"
-            on_click="show_default_toast"
-            class="block mt-2"
-            size="xsmall"
-          >Show</Button>
+          <Toast id="minimal" message="Hey! Your toast is ready."/>
         </template>
 
         <template slot="code">
       <#CodePreview>
         <Toast
+          id="minimal"
           message="Hey! Your toast is ready."
-          variant="success"
-          closeable={{ true }}
         />
       </#CodePreview>
         </template>
+      </ExampleAndCode>
 
-        <template slot="state"></template>
+      <Heading size=24 class="mt-4" is_regular>Appearing and disappearing</Heading>
+
+      <p>
+        Toasts can be shown on top of the page and automatically disappear after a timeout.
+      </p>
+
+      <p>
+        You should use <code class="bg-goku-40">ToastStack</code> component for it.
+      </p>
+
+      <ExampleAndCode>
+        <template slot="example">
+          <Button
+            variant="secondary"
+            on_click="show_one_toast"
+            class="block mb-4"
+            size="xsmall"
+          >Show one toast</Button>
+
+          <Button
+            variant="secondary"
+            on_click="show_two_toasts"
+            class="block"
+            size="xsmall"
+          >Show two toasts</Button>
+        </template>
+
+        <template slot="code">
+      <#CodePreview>
+        alias Moon.Components.ToastStack
+        alias Moon.Components.Toast.Message
+
+        <ToastStack id="toasts" />
+
+        <Button on_click="show_one_toast">
+          Show one toast
+        </Button>
+
+        <Button on_click="show_two_toasts">
+          Show two toasts
+        </Button>
+
+        def handle_event("show_one_toast", _, socket) do
+          ToastStack.show(
+            %Message{
+              message: "Hey! Your toast is ready.",
+              variant: "success"
+            },
+            "toasts"
+          )
+
+          {:noreply, socket}
+        end
+
+        def handle_event("show_two_toasts", _, socket) do
+          ToastStack.show(
+            [
+              %Message{
+                message: "Hey! Another toast is ready.",
+                variant: "success"
+              },
+              %Message{
+                message: "And this is third one",
+                variant: "success"
+              }
+            ],
+            "toasts"
+          )
+
+          {:noreply, socket}
+        end
+
+        def handle_info({:hide_toast, toast_id}, socket) do
+          ToastStack.hide_toast(toast_id, "toasts")
+          {:noreply, socket}
+        end
+      </#CodePreview>
+        </template>
       </ExampleAndCode>
 
       <Heading size=24 class="mt-4" is_regular>Variant</Heading>
@@ -127,21 +193,27 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
       </p>
 
+      <p>
+        To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
+      </p>
+
       <ExampleAndCode>
         <template slot="example">
           <div class="flex flex-col items-start">
             <Toast
-              :for={{ toast <- closeable_toasts() }}
+              :for={{ toast <- action_toasts() }}
               id={{ toast.id }}
               message={{ toast.message }}
               variant={{ toast.variant }}
+              link_text={{ toast.link_text }}
+              link_href={{ toast.link_href }}
               closeable={{ toast.closeable }}
             />
           </div>
 
           <Button
             variant="secondary"
-            on_click="show_closeable_toasts"
+            on_click="show_action_toasts"
             class="block mt-2"
             size="xsmall"
           >Show all</Button>
@@ -162,6 +234,22 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           variant="warning"
           closeable={{ false }}
         />
+
+        <Toast
+          id="link_toast"
+          message="Allow this app to access your location?"
+          variant="info"
+          link_href="#"
+          link_text="Allow"
+        />
+
+        <Toast
+          id="simple_link_toast"
+          message="This toast has only text and a link."
+          link_href="#"
+          link_text="Why?"
+          closeable={{ false }}
+        />
       </#CodePreview>
         </template>
       </ExampleAndCode>
@@ -169,12 +257,30 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     """
   end
 
-  def handle_event("show_default_toast", _, socket) do
+  def handle_event("show_one_toast", _, socket) do
     ToastStack.show(
       %Message{
         message: "Hey! Your toast is ready.",
         variant: "success"
       },
+      "toasts"
+    )
+
+    {:noreply, socket}
+  end
+
+  def handle_event("show_two_toasts", _, socket) do
+    ToastStack.show(
+      [
+        %Message{
+          message: "Hey! Another toast is ready.",
+          variant: "success"
+        },
+        %Message{
+          message: "And this is third one",
+          variant: "success"
+        }
+      ],
       "toasts"
     )
 
@@ -187,8 +293,8 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     {:noreply, socket}
   end
 
-  def handle_event("show_closeable_toasts", _, socket) do
-    ToastStack.show(closeable_toasts(), "toasts")
+  def handle_event("show_action_toasts", _, socket) do
+    ToastStack.show(action_toasts(), "toasts")
 
     {:noreply, socket}
   end
@@ -209,7 +315,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     ]
   end
 
-  defp closeable_toasts do
+  defp action_toasts do
     [
       %Message{
         id: "closeable_toast",
@@ -221,6 +327,20 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         id: "not_closeable_toast",
         message: "You cannot close this toast.",
         variant: "warning",
+        closeable: false
+      },
+      %Message{
+        id: "link_toast",
+        message: "Allow this app to access your location?",
+        variant: "info",
+        link_href: "#",
+        link_text: "Allow"
+      },
+      %Message{
+        id: "simple_link_toast",
+        message: "This toast has only text and a link.",
+        link_href: "#",
+        link_text: "Why?",
         closeable: false
       }
     ]

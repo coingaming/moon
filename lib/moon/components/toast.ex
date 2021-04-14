@@ -1,5 +1,6 @@
 defmodule Moon.Components.Toast do
   use Moon.StatelessComponent
+  alias Moon.Components.Link
   alias Moon.Assets.Icons.IconBannerInfo
   alias Moon.Assets.Icons.IconError
   alias Moon.Assets.Icons.IconErrorCircle
@@ -10,10 +11,12 @@ defmodule Moon.Components.Toast do
   prop message, :string, required: true
   prop variant, :string, values: ~w(error warning info success)
   prop closeable, :boolean, default: true
+  prop link_text, :string
+  prop link_href, :string
   prop on_close, :event
 
   defmodule Message do
-    defstruct id: nil, message: nil, variant: nil, closeable: true
+    defstruct id: nil, message: nil, variant: nil, closeable: true, link_text: nil, link_href: nil
   end
 
   def render(assigns) do
@@ -47,10 +50,17 @@ defmodule Moon.Components.Toast do
         />
       </div>
 
-      <div class="flex justify-between flex-1">
-        <p class="flex-1 text-sm text-gray-900">
+      <div class="flex justify-between flex-1 text-sm">
+        <p class="flex-1 text-gray-900">
           {{ @message }}
         </p>
+        <Link
+          :if={{ @link_href && @link_text }}
+          class="ml-4 flex-shrink-0 font-medium"
+          to={{ @link_href }}
+        >
+          {{ @link_text }}
+        </Link>
       </div>
 
       <div :if={{ @closeable }} class="flex flex-shrink-0 ml-4">

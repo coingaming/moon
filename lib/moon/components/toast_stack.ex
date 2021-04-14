@@ -16,6 +16,8 @@ defmodule Moon.Components.ToastStack do
         message={{ toast.message }}
         variant={{ toast.variant }}
         closeable={{ toast.closeable }}
+        link_text={{ toast.link_text }}
+        link_href={{ toast.link_href }}
         on_close="hide_toast"
       />
     </div>
