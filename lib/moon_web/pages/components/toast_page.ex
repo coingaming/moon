@@ -7,13 +7,14 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   alias Moon.Components.Link
   alias Moon.Components.Stack
   alias Moon.Components.Toast
+  alias Moon.Components.Toast.Message
+  alias Moon.Components.ToastStack
 
   def mount(params, _session, socket) do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
-        active_page: __MODULE__,
-        message: "Hey! Your toast is ready."
+        active_page: __MODULE__
       )
 
     {:ok, socket}
@@ -34,21 +35,22 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         <Link to="https://moon.io/toolkit/toast">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state={{ true }}>
+      <ToastStack id="toasts" />
+
+      <ExampleAndCode>
         <template slot="example">
+          <Toast
+            id="default"
+            message="Hey! Your toast is ready."
+            variant="success"
+          />
+
           <Button
             variant="secondary"
-            on_click="show_toast"
-            value_name="id"
-            value="default_toast"
-          >Show toast</Button>
-
-          <Toast
-            id="default_toast"
-            message={{ @message }}
-            variant="success"
-            closeable={{ true }}
-          />
+            on_click="show_default_toast"
+            class="block mt-2"
+            size="xsmall"
+          >Show</Button>
         </template>
 
         <template slot="code">
@@ -72,67 +74,21 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ExampleAndCode>
         <template slot="example">
-          <Stack>
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="error_toast"
-            >Error toast</Button>
+          <div class="flex flex-col items-start">
+            <Toast
+              :for={{ toast <- variant_toasts() }}
+              id={{ toast.id }}
+              message={{ toast.message }}
+              variant={{ toast.variant }}
+            />
+          </div>
 
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="warning_toast"
-            >Warning toast</Button>
-
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="info_toast"
-            >Info toast</Button>
-
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="success_toast"
-            >Success toast</Button>
-
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="no_icon_toast"
-            >Default toast</Button>
-          </Stack>
-
-          <Toast
-            id="error_toast"
-            message="Error!"
-            variant="error"
-          />
-          <Toast
-            id="warning_toast"
-            message="Warning."
-            variant="warning"
-          />
-          <Toast
-            id="info_toast"
-            message="Info."
-            variant="info"
-          />
-          <Toast
-            id="success_toast"
-            message="Success!"
-            variant="success"
-          />
-          <Toast
-            id="no_icon_toast"
-            message="Default."
-          />
+          <Button
+            variant="secondary"
+            on_click="show_variant_toasts"
+            class="block mt-2"
+            size="xsmall"
+          >Show all</Button>
         </template>
 
         <template slot="code">
@@ -173,34 +129,22 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ExampleAndCode>
         <template slot="example">
-          <Stack>
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="closeable_toast"
-            >Closeable toast</Button>
+          <div class="flex flex-col items-start">
+            <Toast
+              :for={{ toast <- closeable_toasts() }}
+              id={{ toast.id }}
+              message={{ toast.message }}
+              variant={{ toast.variant }}
+              closeable={{ toast.closeable }}
+            />
+          </div>
 
-            <Button
-              variant="secondary"
-              on_click="show_toast"
-              value_name="id"
-              value="not_closeable_toast"
-            >Not closeable toast</Button>
-          </Stack>
-
-          <Toast
-            id="closeable_toast"
-            message="You can close this toast."
-            variant="success"
-            closeable={{ true }}
-          />
-          <Toast
-            id="not_closeable_toast"
-            message="You cannot close this toast."
-            variant="warning"
-            closeable={{ false }}
-          />
+          <Button
+            variant="secondary"
+            on_click="show_closeable_toasts"
+            class="block mt-2"
+            size="xsmall"
+          >Show all</Button>
         </template>
 
         <template slot="code">
@@ -225,8 +169,60 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     """
   end
 
-  def handle_event("show_toast", %{"id" => id}, socket) do
-    Toast.show(id, true)
+  def handle_event("show_default_toast", _, socket) do
+    ToastStack.show(
+      %Message{
+        message: "Hey! Your toast is ready.",
+        variant: "success"
+      },
+      "toasts"
+    )
+
     {:noreply, socket}
+  end
+
+  def handle_event("show_variant_toasts", _, socket) do
+    ToastStack.show(variant_toasts(), "toasts")
+
+    {:noreply, socket}
+  end
+
+  def handle_event("show_closeable_toasts", _, socket) do
+    ToastStack.show(closeable_toasts(), "toasts")
+
+    {:noreply, socket}
+  end
+
+  def handle_info({:hide_toast, toast_id}, socket) do
+    ToastStack.hide_toast(toast_id, "toasts")
+
+    {:noreply, socket}
+  end
+
+  defp variant_toasts do
+    [
+      %Message{id: "error_toast", message: "Error!", variant: "error"},
+      %Message{id: "warning_toast", message: "Warning.", variant: "warning"},
+      %Message{id: "info_toast", message: "Info.", variant: "info"},
+      %Message{id: "success_toast", message: "Success!", variant: "success"},
+      %Message{id: "no_icon_toast", message: "Default."}
+    ]
+  end
+
+  defp closeable_toasts do
+    [
+      %Message{
+        id: "closeable_toast",
+        message: "You can close this toast.",
+        variant: "success",
+        closeable: true
+      },
+      %Message{
+        id: "not_closeable_toast",
+        message: "You cannot close this toast.",
+        variant: "warning",
+        closeable: false
+      }
+    ]
   end
 end
