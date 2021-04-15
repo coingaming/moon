@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
     <Stack>
       <Checkbox>
-        I confirm that I am at least 18 years of age, and accept the <Link href="#">Terms and Conditions</Link>.
+        I confirm that I am at least 18 years of age, and accept the <Link to="#">Terms and Conditions</Link>.
       </Checkbox>
 
       <Checkbox>
@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     <#CodePreview>
       <Stack>
         <Checkbox>
-          I confirm that I am at least 18 years of age, and accept the <Link href="#">Terms and Conditions</Link>.
+          I confirm that I am at least 18 years of age, and accept the <Link to="#">Terms and Conditions</Link>.
         </Checkbox>
 
         <Checkbox>

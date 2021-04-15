@@ -10,6 +10,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Stack
   alias Moon.Components.Switch
   alias Moon.Components.TextInput
+  alias Moon.Components.Toast.Message
+  alias Moon.Components.ToastStack
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
@@ -63,6 +65,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <ExampleAndCode show_state={{ true }}>
         <template slot="example">
+          <ToastStack id="toasts" />
+
           <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
             <Stack>
               <div class="flex items-center">
@@ -102,6 +106,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
         <template slot="code">
       <#CodePreview>
+        <ToastStack id="toasts" />
+
         <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
           <Stack>
             <div class="flex items-center">
@@ -129,6 +135,19 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             <Button variant="secondary" on_click="clear_form">Cancel</Button>
           </Stack>
         </Form>
+
+        def handle_event("save_user_changeset", _, socket) do
+          ToastStack.show(
+            %Toast.Message{message: "Details saved.", variant: "success"},
+            "toasts"
+          )
+          {:noreply, socket}
+        end
+
+        def handle_info({:hide_toast, toast_id}, socket) do
+          ToastStack.hide_toast(toast_id, "toasts")
+          {:noreply, socket}
+        end
       </#CodePreview>
         </template>
 
@@ -206,6 +225,11 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   end
 
   def handle_event("save_user_changeset", _, socket) do
+    ToastStack.show(
+      %Message{message: "Details saved.", variant: "success"},
+      "toasts"
+    )
+
     {:noreply, socket}
   end
 
@@ -232,5 +256,10 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def handle_event("lock_form_fields", _, socket) do
     {:noreply, assign(socket, lock_fields: !socket.assigns.lock_fields)}
+  end
+
+  def handle_info({:hide_toast, toast_id}, socket) do
+    ToastStack.hide_toast(toast_id, "toasts")
+    {:noreply, socket}
   end
 end

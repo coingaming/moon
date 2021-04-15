@@ -1,6 +1,5 @@
 defmodule MoonWeb.Pages.Components.HeadingPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Link
   alias Moon.Components.Stack
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
