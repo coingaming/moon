@@ -88,6 +88,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <Link to="/{{ @theme_name }}/components/carousel">Carousel</Link>
       <Link to="/{{ @theme_name }}/components/checkbox">Checkbox</Link>
       <Link to="/{{ @theme_name }}/components/dropdown#checkbox-multiselect">Checkbox multiselect</Link>
+      <Link to="/{{ @theme_name }}/components/datepicker">Datepicker</Link>
       <Link to="/{{ @theme_name }}/components/dropdown">Dropdown</Link>
       <Link to="/{{ @theme_name }}/components/file-input">File Input</Link>
       <Link to="/{{ @theme_name }}/components/heading">Heading</Link>
