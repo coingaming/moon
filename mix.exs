@@ -37,10 +37,11 @@ defmodule Moon.MixProject do
     [
       {:phoenix, "~> 1.5"},
       {:phoenix_live_view, "~> 0.15.4", override: true},
-      {:floki, ">= 0.27.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:ecto_sql, "~> 3.1"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
@@ -48,9 +49,9 @@ defmodule Moon.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:asset_import, "~> 0.4"},
       {:surface, git: "git@github.com:msaraiva/surface.git"},
-      {:ecto_sql, "~> 3.1"},
-      {:phoenix_ecto, "~> 4.0"},
-      {:distillery, "~> 2.1"}
+      {:timex, "~> 3.7"},
+      {:distillery, "~> 2.1"},
+      {:floki, ">= 0.27.0", only: :test}
     ]
   end
 
