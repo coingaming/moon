@@ -26,6 +26,21 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/datepicker.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/components/datepicker">React implementation</Link>
       </p>
+
+      <ExampleAndCode>
+        <template slot="example">
+          <Datepicker
+            id="default_datepicker"
+            ranges={{ ["lastMonth", "lastWeek", "last24hours", "yesterday", "today", "tomorrow", "thisWeek", "nextWeek", "thisMonth", "nextMonth"] }}
+          />
+        </template>
+
+        <template slot="code">
+      <#CodePreview>
+        <Datepicker />
+      </#CodePreview>
+        </template>
+      </ExampleAndCode>
     </Stack>
     """
   end
