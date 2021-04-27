@@ -1,7 +1,9 @@
 defmodule Moon.Components.Datepicker.Month do
   use Moon.StatelessComponent
 
-  prop date, :datetime, required: true
+  prop date, :date, required: true
+  prop start_date, :date
+  prop end_date, :date
 
   def render(assigns) do
     ~H"""
@@ -16,8 +18,13 @@ defmodule Moon.Components.Datepicker.Month do
       >
         <div :for={{ _cell <- empty_cells(@date) }}></div>
 
-        <div :for={{ day <- month_days(@date) }} class="hover:bg-hover rounded-full h-8 w-8 flex items-center justify-center cursor-pointer">
-          {{ Timex.format!(day, "%-d", :strftime) }}
+        <div
+          :for={{ day <- month_days(@date) }}
+          class="cursor-pointer {{ day_container_class(day, @start_date, @end_date) }}"
+        >
+          <div class="border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center {{ day_class(day, @start_date, @end_date) }}">
+            {{ Timex.format!(day, "%-d", :strftime) }}
+          </div>
         </div>
       </div>
     </div>
@@ -40,5 +47,44 @@ defmodule Moon.Components.Datepicker.Month do
       left_open: false,
       right_open: false
     )
+  end
+
+  defp day_container_class(_day, nil, _), do: nil
+  defp day_container_class(_day, _, nil), do: nil
+
+  defp day_container_class(day, start_date, end_date) do
+    date_day = Timex.to_date(day)
+    start_day = Timex.to_date(start_date)
+    end_day = Timex.to_date(end_date)
+
+    cond do
+      date_day == start_day and date_day == end_day ->
+        nil
+
+      date_day == start_day ->
+        "bg-hover rounded-l-full"
+
+      date_day == end_day ->
+        "bg-hover rounded-r-full"
+
+      Timex.between?(day, start_date, end_date) ->
+        "bg-hover"
+
+      true ->
+        nil
+    end
+  end
+
+  defp day_class(_day, nil, _), do: nil
+  defp day_class(_day, _, nil), do: nil
+
+  defp day_class(day, start_date, end_date) do
+    cond do
+      Timex.to_date(day) in [Timex.to_date(start_date), Timex.to_date(end_date)] ->
+        "bg-piccolo-100 text-goten-100"
+
+      true ->
+        nil
+    end
   end
 end

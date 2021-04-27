@@ -70,22 +70,36 @@ defmodule Moon.Components.Datepicker do
           <div class="flex">
             <!-- First Month -->
             <div class="relative px-4">
-              <IconChevronLeft
-                class="absolute left-6 cursor-pointer"
-                font_size="1rem"
-              />
+              <button
+                class="absolute left-6 leading-none"
+                :on-click="shift_months"
+                phx-value-months={{ -2 }}
+              >
+                <IconChevronLeft class="block" font_size="1rem"/>
+              </button>
 
-              <Month date={{ @left_panel_date }} />
+              <Month
+                date={{ @left_panel_date }}
+                start_date={{ @start_date }}
+                end_date={{ @end_date }}
+              />
             </div>
 
             <!-- Second Month -->
             <div class="relative px-4">
-              <IconChevronRight
-                class="absolute right-6 cursor-pointer"
-                font_size="1rem"
-              />
+              <button
+                class="absolute right-6 leading-none"
+                :on-click="shift_months"
+                phx-value-months={{ 2 }}
+              >
+                <IconChevronRight class="block" font_size="1rem"/>
+              </button>
 
-              <Month date={{ Timex.shift(@left_panel_date, months: 1) }} />
+              <Month
+                date={{ Timex.shift(@left_panel_date, months: 1) }}
+                start_date={{ @start_date }}
+                end_date={{ @end_date }}
+              />
             </div>
           </div>
         </div>
@@ -174,10 +188,10 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("shift_months", %{"months" => months}, socket) do
-    start_date = Timex.shift(socket.assigns.start_date, months: months) |> IO.inspect
-    end_date = Timex.shift(socket.assigns.end_date, months: months) |> IO.inspect
+    months = String.to_integer(months)
+    left_panel_date = Timex.shift(socket.assigns.left_panel_date, months: months)
 
-    socket = assign(socket, start_date: start_date, end_date: end_date)
+    socket = assign(socket, left_panel_date: left_panel_date)
     {:noreply, socket}
   end
 end
