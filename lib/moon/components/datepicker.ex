@@ -3,6 +3,7 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Assets.Icons.IconChevronLeft
   alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
+  alias Moon.Components.Datepicker.Month
 
   @default_label "Select Dates"
 
@@ -30,6 +31,7 @@ defmodule Moon.Components.Datepicker do
 
   data show, :boolean, default: false
   data selected_range, :string, default: "thisWeek"
+  data left_panel_date, :datetime, default: Timex.today()
 
   def render(assigns) do
     ~H"""
@@ -67,55 +69,23 @@ defmodule Moon.Components.Datepicker do
           <!-- Months -->
           <div class="flex">
             <!-- First Month -->
-            <div class="px-4">
-              <div class="relative mb-3">
-                <IconChevronLeft
-                  class="absolute left-4 cursor-pointer"
-                  font_size="1rem"
-                />
+            <div class="relative px-4">
+              <IconChevronLeft
+                class="absolute left-6 cursor-pointer"
+                font_size="1rem"
+              />
 
-                <div class="text-center leading-4">
-                  {{ month_name(@start_date) }}
-                </div>
-              </div>
-
-              <div
-                class="grid text-xs text-center"
-                style="grid-template-columns: repeat(7, 1fr);"
-              >
-                <div :for={{ _cell <- empty_cells(@start_date) }}></div>
-
-                <div :for={{ day <- month_days(@start_date) }} class="hover:bg-hover rounded-full h-8 w-8 flex items-center justify-center cursor-pointer">
-                  {{ Timex.format!(day, "%-d", :strftime) }}
-                </div>
-              </div>
+              <Month date={{ @left_panel_date }} />
             </div>
 
             <!-- Second Month -->
-            <div class="px-4">
-              <div class="relative mb-3">
-                <IconChevronRight
-                  class="absolute right-4 cursor-pointer"
-                  font_size="1rem"
-                />
+            <div class="relative px-4">
+              <IconChevronRight
+                class="absolute right-6 cursor-pointer"
+                font_size="1rem"
+              />
 
-                <div class="text-center leading-4">
-                  {{ month_name(@start_date, @end_date) }}
-                </div>
-              </div>
-
-              <div
-                class="grid text-xs text-center"
-                style="grid-template-columns: repeat(7, 1fr);"
-              >
-                <div :for={{ _cell <- empty_cells(@start_date, @end_date) }} class="p-2">
-                  &nbsp;
-                </div>
-
-                <div :for={{ day <- month_days(@start_date, @end_date) }} class="p-2 cursor-pointer">
-                  {{ Timex.format!(day, "%-d", :strftime) }}
-                </div>
-              </div>
+              <Month date={{ Timex.shift(@left_panel_date, months: 1) }} />
             </div>
           </div>
         </div>
@@ -129,51 +99,6 @@ defmodule Moon.Components.Datepicker do
 
   defp label(_start_date, _end_date) do
     "Foo Bar"
-  end
-
-  defp month_name(date) do
-    Timex.format!(date, "%B %Y", :strftime)
-  end
-
-  defp month_name(date, _) do
-    date
-    |> Timex.shift(months: 1)
-    |> month_name()
-  end
-
-  defp month_days(date) do
-    Timex.Interval.new(
-      from: Timex.beginning_of_month(date),
-      until: Timex.end_of_month(date),
-      left_open: false,
-      right_open: false
-    )
-  end
-
-  defp month_days(date, _) do
-    date = Timex.shift(date, months: 1)
-
-    Timex.Interval.new(
-      from: Timex.beginning_of_month(date),
-      until: Timex.end_of_month(date),
-      left_open: false,
-      right_open: false
-    )
-  end
-
-  defp empty_cells(date) do
-    days_count =
-      date
-      |> Timex.beginning_of_month()
-      |> Timex.days_to_beginning_of_week()
-
-    if days_count == 0, do: [], else: 1..days_count
-  end
-
-  defp empty_cells(date, _) do
-    date
-    |> Timex.shift(months: 1)
-    |> empty_cells()
   end
 
   defp dates_from_range("lastMonth") do
@@ -240,6 +165,7 @@ defmodule Moon.Components.Datepicker do
     socket =
       assign(socket,
         selected_range: range,
+        left_panel_date: start_date,
         start_date: start_date,
         end_date: end_date
       )
