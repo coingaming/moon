@@ -32,6 +32,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
           <Datepicker
             id="default_datepicker"
             ranges={{ ["lastMonth", "lastWeek", "last24hours", "yesterday", "today", "tomorrow", "thisWeek", "nextWeek", "thisMonth", "nextMonth"] }}
+            on_date_change="on_date_change"
           />
         </template>
 
@@ -43,5 +44,9 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </ExampleAndCode>
     </Stack>
     """
+  end
+
+  def handle_event("on_date_change", params, socket) do
+    {:noreply, socket}
   end
 end

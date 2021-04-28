@@ -4,17 +4,24 @@ defmodule Moon.Components.Datepicker.Month do
   prop date, :date, required: true
   prop start_date, :date
   prop end_date, :date
+  prop on_click, :event
 
   def render(assigns) do
     ~H"""
-    <div class="">
-      <div class="text-center leading-4 mb-3">
+    <div>
+      <div class="text-center leading-4 mb-5">
         {{ Timex.format!(@date, "%B %Y", :strftime) }}
       </div>
 
+      <div class="flex text-center text-base font-medium">
+        <div :for={{ ch <- ~w(M T W T F S S) }} class="w-8 h-8">
+          {{ ch }}
+        </div>
+      </div>
+
       <div
-        class="grid text-xs text-center"
-        style="grid-template-columns: repeat(7, 1fr);"
+        class="grid text-xs"
+        style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
       >
         <div :for={{ _cell <- empty_cells(@date) }}></div>
 
@@ -22,7 +29,11 @@ defmodule Moon.Components.Datepicker.Month do
           :for={{ day <- month_days(@date) }}
           class="cursor-pointer {{ day_container_class(day, @start_date, @end_date) }}"
         >
-          <div class="border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center {{ day_class(day, @start_date, @end_date) }}">
+          <div
+            class="border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center {{ day_class(day, @start_date, @end_date) }}"
+            :on-click={{ @on_click }}
+            phx-value-date={{ day }}
+          >
             {{ Timex.format!(day, "%-d", :strftime) }}
           </div>
         </div>
@@ -50,7 +61,12 @@ defmodule Moon.Components.Datepicker.Month do
   end
 
   defp day_container_class(_day, nil, _), do: nil
-  defp day_container_class(_day, _, nil), do: nil
+
+  defp day_container_class(day, start_date, nil) do
+    if Timex.to_date(day) == Timex.to_date(start_date) do
+      "bg-hover rounded-l-full"
+    end
+  end
 
   defp day_container_class(day, start_date, end_date) do
     date_day = Timex.to_date(day)
@@ -58,7 +74,7 @@ defmodule Moon.Components.Datepicker.Month do
     end_day = Timex.to_date(end_date)
 
     cond do
-      date_day == start_day and date_day == end_day ->
+      date_day == start_day && date_day == end_day ->
         nil
 
       date_day == start_day ->
@@ -76,7 +92,6 @@ defmodule Moon.Components.Datepicker.Month do
   end
 
   defp day_class(_day, nil, _), do: nil
-  defp day_class(_day, _, nil), do: nil
 
   defp day_class(day, start_date, end_date) do
     cond do
