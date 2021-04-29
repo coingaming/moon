@@ -18,8 +18,17 @@ import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
 import {AssetImport, AssetHook} from "asset_import_hook"
 
+const FormChange = {
+  updated() {
+    this.el.dispatchEvent(new Event("change", { "bubbles": true }))
+  }
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {hooks: {AssetImport, AssetHook}, params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, {
+  hooks: { AssetImport, AssetHook, FormChange },
+  params: { _csrf_token: csrfToken }
+})
 
 // Show progress bar on live navigation and form submits
 window.addEventListener("phx:page-loading-start", info => NProgress.start())
