@@ -80,8 +80,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 <span class="ml-3">Enable validations (not implemented)</span>
               </div -->
 
-              <TextInput label="Name" field="name" disabled={{ @lock_fields }} />
-              <TextInput label="Email" field="email" disabled={{ @lock_fields }} />
+              <TextInput label="Name" field={{ :name }} disabled={{ @lock_fields }} />
+              <TextInput label="Email" field={{ :email }} disabled={{ @lock_fields }} />
 
               <Select
                 label="Gender"

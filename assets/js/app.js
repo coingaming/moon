@@ -16,17 +16,15 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
-import {AssetImport, AssetHook} from "asset_import_hook"
+import { AssetImport, AssetHook } from "asset_import_hook"
+import Hooks from "./_hooks"
 
-const FormChange = {
-  updated() {
-    this.el.dispatchEvent(new Event("change", { "bubbles": true }))
-  }
-}
+Hooks.AssetImport = AssetImport
+Hooks.AssetHook = AssetHook
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
-  hooks: { AssetImport, AssetHook, FormChange },
+  hooks: Hooks,
   params: { _csrf_token: csrfToken }
 })
 
