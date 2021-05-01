@@ -25,9 +25,9 @@ defmodule Moon.Components.Datepicker do
   prop with_time, :boolean, default: false
   prop week_starts_on, :integer, default: 1
 
-  prop model, :map, default: %{}
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
+  prop on_date_change, :string, default: "update_dates"
 
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
@@ -35,6 +35,9 @@ defmodule Moon.Components.Datepicker do
   data show, :boolean, default: true
   data selected_range, :string, default: "thisWeek"
   data left_panel_date, :datetime, default: Timex.today()
+
+  data start_date, :datetime, default: nil
+  data end_date, :datetime, default: nil
 
   def render(assigns) do
     ~H"""
@@ -47,7 +50,7 @@ defmodule Moon.Components.Datepicker do
         variant="tertiary"
         on_click="toggle_picker"
       >
-        {{ button_label(@model[@start_date_field], @model[@end_date_field], @selected_range) }}
+        {{ button_label(@start_date, @end_date, @selected_range) }}
       </Button>
 
       <div
@@ -78,6 +81,7 @@ defmodule Moon.Components.Datepicker do
             <!-- First Month -->
             <div class="relative flex flex-col items-center">
               <button
+                type="button"
                 class="absolute leading-none left-6"
                 :on-click="shift_months"
                 phx-value-months={{ -2 }}
@@ -88,20 +92,19 @@ defmodule Moon.Components.Datepicker do
               <div class="flex-grow">
                 <Month
                   date={{ @left_panel_date }}
-                  start_date={{ @model[@start_date_field] }}
-                  end_date={{ @model[@end_date_field] }}
+                  start_date={{ @start_date }}
+                  end_date={{ @end_date }}
                   on_click="select_date"
                 />
               </div>
 
               <DateTimeLocalInput
-                value={{ @model[@start_date_field] }}
                 field={{ @start_date_field }}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
-                  required: true,
-                  "phx-hook": "FormChange"
+                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "data-name": "start_date"
                 }}
               />
             </div>
@@ -109,6 +112,7 @@ defmodule Moon.Components.Datepicker do
             <!-- Second Month -->
             <div class="relative flex flex-col items-center">
               <button
+                type="button"
                 class="absolute leading-none right-6"
                 :on-click="shift_months"
                 phx-value-months={{ 2 }}
@@ -119,20 +123,19 @@ defmodule Moon.Components.Datepicker do
               <div class="flex-grow">
                 <Month
                   date={{ Timex.shift(@left_panel_date, months: 1) }}
-                  start_date={{ @model[@start_date_field] }}
-                  end_date={{ @model[@end_date_field] }}
+                  start_date={{ @start_date }}
+                  end_date={{ @end_date }}
                   on_click="select_date"
                 />
               </div>
 
               <DateTimeLocalInput
-                value={{ @model[@end_date_field] }}
                 field={{ @end_date_field }}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
-                  required: true,
-                  "phx-hook": "FormChange"
+                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "data-name": "end_date"
                 }}
               />
             </div>
@@ -243,6 +246,23 @@ defmodule Moon.Components.Datepicker do
     @ranges[String.to_atom(range_name)]
   end
 
+  defp update_dates(socket, start_date, end_date) do
+    Process.send_after(self(), {
+      socket.assigns.on_date_change,
+      %{
+        socket.assigns.start_date_field => start_date,
+        socket.assigns.end_date_field => end_date
+      }
+    }, 300)
+  end
+
+  defp parse_date(date) when is_binary(date) do
+    {:ok, date} = Timex.parse(date, "%Y-%0m-%0dT%R", :strftime)
+    date
+  end
+
+  defp parse_date(date), do: date
+
   def handle_event("toggle_picker", _, socket) do
     {:noreply, assign(socket, show: !socket.assigns.show)}
   end
@@ -250,18 +270,15 @@ defmodule Moon.Components.Datepicker do
   def handle_event("select_range", %{"range" => range}, socket) do
     {start_date, end_date} = dates_from_range(range)
 
-    model =
-      socket.assigns.model
-      |> Map.put(socket.assigns.start_date_field, start_date)
-      |> Map.put(socket.assigns.end_date_field, end_date)
-
     socket =
       assign(socket,
         selected_range: range,
         left_panel_date: Timex.to_date(start_date),
-        model: model
+        start_date: start_date,
+        end_date: end_date
       )
 
+    update_dates(socket, start_date, end_date)
     {:noreply, socket}
   end
 
@@ -274,24 +291,43 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_date", %{"date" => date}, socket) do
-    model = socket.assigns.model
-    start_date = model[socket.assigns.start_date_field]
-    end_date = model[socket.assigns.end_date_field]
-    {:ok, date} = Timex.parse(date, "%Y-%0m-%0d %T", :strftime)
+    start_date = socket.assigns.start_date
+    end_date = socket.assigns.end_date
+    date = parse_date(date)
 
-    socket =
+    {socket, start_date, end_date} =
       cond do
         start_date && is_nil(end_date) && Timex.after?(date, start_date) ->
-          assign(socket,
-            model: Map.put(model, socket.assigns.end_date_field, Timex.end_of_day(date)),
-            selected_range: nil
-          )
+          # Keep start, set end
+          end_date = Timex.end_of_day(date)
+          {assign(socket, end_date: end_date, selected_range: nil), start_date, end_date}
 
         true ->
-          assign(socket,
-            model: Map.put(model, socket.assigns.start_date_field, Timex.beginning_of_day(date)),
-            selected_range: nil
-          )
+          # Set start, reset end
+          start_date = Timex.beginning_of_day(date)
+
+          {assign(socket,
+             start_date: start_date,
+             end_date: nil,
+             selected_range: nil
+           ), start_date, nil}
+      end
+
+    update_dates(socket, start_date, end_date)
+    {:noreply, socket}
+  end
+
+  def handle_event("update_date", params, socket) do
+    socket =
+      case params do
+        %{"start_date" => date} ->
+          assign(socket, start_date: parse_date(date))
+
+        %{"end_date" => date} ->
+          assign(socket, end_date: parse_date(date))
+
+        _ ->
+          socket
       end
 
     {:noreply, socket}

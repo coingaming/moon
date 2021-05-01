@@ -32,7 +32,7 @@ defmodule Moon.Components.Datepicker.Month do
           <div
             class="border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center {{ day_class(day, @start_date, @end_date) }}"
             :on-click={{ @on_click }}
-            phx-value-date={{ day }}
+            phx-value-date={{ Timex.format!(day, "%Y-%0m-%0dT%R", :strftime) }}
           >
             {{ Timex.format!(day, "%-d", :strftime) }}
           </div>

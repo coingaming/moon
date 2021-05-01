@@ -30,7 +30,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
-        data: format_data(data),
         changeset: Contract.changeset(data)
       )
 
@@ -52,9 +51,9 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
           <Form for={{ @changeset }} change="validate">
             <Datepicker
               id="default_datepicker"
-              model={{ @data }}
               start_date_field={{ :started_at }}
               end_date_field={{ :ended_at }}
+              on_date_change="update_dates"
               ranges={{ ["lastMonth", "lastWeek", "last24hours", "yesterday", "today", "tomorrow", "thisWeek", "nextWeek", "thisMonth", "nextMonth"] }}
             />
           </Form>
@@ -66,27 +65,30 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </#CodePreview>
         </template>
 
-        <template slot="state">@data = {{ inspect(@data, pretty: true) }}<br><br>@changeset = {{ inspect(@changeset, pretty: true) }}</template>
+        <template slot="state">@data = {{ inspect(fetch_data(@changeset), pretty: true) }}<br><br>@changeset = {{ inspect(@changeset, pretty: true) }}</template>
       </ExampleAndCode>
     </Stack>
     """
   end
 
-  def handle_event("validate", %{"contract" => params}, socket) do
-    changeset = Contract.changeset(%Contract{}, params)
+  defp fetch_data(changeset) do
+    {_, started_at} = Ecto.Changeset.fetch_field(changeset, :started_at)
+    {_, ended_at} = Ecto.Changeset.fetch_field(changeset, :ended_at)
 
-    data =
-      changeset
-      |> Ecto.Changeset.apply_changes()
-      |> format_data()
-
-    {:noreply, assign(socket, changeset: changeset, data: data)}
+    %{started_at: started_at, ended_at: ended_at}
   end
 
-  defp format_data(data) do
-    data
-    |> Map.from_struct()
-    |> Map.delete(:__meta__)
-    |> Map.delete(:id)
+  def handle_info({"update_dates", params}, socket) do
+    changeset =
+      socket.assigns.changeset
+      |> Ecto.Changeset.put_change(:started_at, params.started_at)
+      |> Ecto.Changeset.put_change(:ended_at, params.ended_at)
+
+    {:noreply, assign(socket, changeset: changeset)}
+  end
+
+  def handle_event("validate", %{"contract" => params}, socket) do
+    changeset = Contract.changeset(%Contract{}, params)
+    {:noreply, assign(socket, changeset: changeset)}
   end
 end
