@@ -32,12 +32,12 @@ defmodule Moon.Components.Datepicker do
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
-  data show, :boolean, default: true
+  data show, :boolean, default: false
   data selected_range, :string, default: "thisWeek"
   data left_panel_date, :datetime, default: Timex.today()
 
-  data start_date, :datetime, default: nil
-  data end_date, :datetime, default: nil
+  prop start_date, :datetime, default: nil
+  prop end_date, :datetime, default: nil
 
   def render(assigns) do
     ~H"""
@@ -104,7 +104,7 @@ defmodule Moon.Components.Datepicker do
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
-                  "data-name": "start_date"
+                  "data-pending-val": format_date(@start_date)
                 }}
               />
             </div>
@@ -135,7 +135,7 @@ defmodule Moon.Components.Datepicker do
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
-                  "data-name": "end_date"
+                  "data-pending-val": format_date(@end_date)
                 }}
               />
             </div>
@@ -247,13 +247,13 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp update_dates(socket, start_date, end_date) do
-    Process.send_after(self(), {
+    send(self(), {
       socket.assigns.on_date_change,
       %{
         socket.assigns.start_date_field => start_date,
         socket.assigns.end_date_field => end_date
       }
-    }, 300)
+    })
   end
 
   defp parse_date(date) when is_binary(date) do
@@ -263,22 +263,29 @@ defmodule Moon.Components.Datepicker do
 
   defp parse_date(date), do: date
 
+  defp format_date(nil), do: nil
+  defp format_date(date), do: Timex.format!(date, "%Y-%0m-%0dT%R", :strftime)
+
+  def validate(start_date, end_date) do
+    parsed_start_date = parse_date(start_date)
+    parsed_end_date = parse_date(end_date)
+
+    if parsed_start_date && parsed_end_date && Timex.after?(parsed_start_date, parsed_end_date) do
+      {start_date, start_date}
+    else
+      {start_date, end_date}
+    end
+  end
+
   def handle_event("toggle_picker", _, socket) do
     {:noreply, assign(socket, show: !socket.assigns.show)}
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
     {start_date, end_date} = dates_from_range(range)
-
-    socket =
-      assign(socket,
-        selected_range: range,
-        left_panel_date: Timex.to_date(start_date),
-        start_date: start_date,
-        end_date: end_date
-      )
-
+    socket = assign(socket, selected_range: range, left_panel_date: Timex.to_date(start_date))
     update_dates(socket, start_date, end_date)
+
     {:noreply, socket}
   end
 
@@ -292,44 +299,22 @@ defmodule Moon.Components.Datepicker do
 
   def handle_event("select_date", %{"date" => date}, socket) do
     start_date = socket.assigns.start_date
-    end_date = socket.assigns.end_date
     date = parse_date(date)
 
-    {socket, start_date, end_date} =
+    {start_date, end_date} =
       cond do
-        start_date && is_nil(end_date) && Timex.after?(date, start_date) ->
+        start_date && is_nil(socket.assigns.end_date) && Timex.after?(date, start_date) ->
           # Keep start, set end
           end_date = Timex.end_of_day(date)
-          {assign(socket, end_date: end_date, selected_range: nil), start_date, end_date}
+          {start_date, end_date}
 
         true ->
           # Set start, reset end
           start_date = Timex.beginning_of_day(date)
-
-          {assign(socket,
-             start_date: start_date,
-             end_date: nil,
-             selected_range: nil
-           ), start_date, nil}
+          {start_date, nil}
       end
 
     update_dates(socket, start_date, end_date)
-    {:noreply, socket}
-  end
-
-  def handle_event("update_date", params, socket) do
-    socket =
-      case params do
-        %{"start_date" => date} ->
-          assign(socket, start_date: parse_date(date))
-
-        %{"end_date" => date} ->
-          assign(socket, end_date: parse_date(date))
-
-        _ ->
-          socket
-      end
-
-    {:noreply, socket}
+    {:noreply, assign(socket, selected_range: nil)}
   end
 end

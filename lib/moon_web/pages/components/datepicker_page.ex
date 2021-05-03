@@ -1,5 +1,6 @@
 defmodule MoonWeb.Pages.Components.DatepickerPage do
   use MoonWeb, :live_view
+  import Ecto.Changeset, only: [fetch_field: 2, put_change: 3]
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Datepicker
@@ -51,6 +52,8 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
           <Form for={{ @changeset }} change="validate">
             <Datepicker
               id="default_datepicker"
+              start_date={{ fetch_field(@changeset, :started_at) |> elem(1) }}
+              end_date={{ fetch_field(@changeset, :ended_at) |> elem(1) }}
               start_date_field={{ :started_at }}
               end_date_field={{ :ended_at }}
               on_date_change="update_dates"
@@ -72,22 +75,30 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   end
 
   defp fetch_data(changeset) do
-    {_, started_at} = Ecto.Changeset.fetch_field(changeset, :started_at)
-    {_, ended_at} = Ecto.Changeset.fetch_field(changeset, :ended_at)
+    {_, started_at} = fetch_field(changeset, :started_at)
+    {_, ended_at} = fetch_field(changeset, :ended_at)
 
     %{started_at: started_at, ended_at: ended_at}
   end
 
-  def handle_info({"update_dates", params}, socket) do
+  def handle_info({"update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
     changeset =
       socket.assigns.changeset
-      |> Ecto.Changeset.put_change(:started_at, params.started_at)
-      |> Ecto.Changeset.put_change(:ended_at, params.ended_at)
+      |> put_change(:started_at, start_date)
+      |> put_change(:ended_at, end_date)
 
     {:noreply, assign(socket, changeset: changeset)}
   end
 
+  # Form validation
   def handle_event("validate", %{"contract" => params}, socket) do
+    {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
+
+    params =
+      params
+      |> Map.put("started_at", start_date)
+      |> Map.put("ended_at", end_date)
+
     changeset = Contract.changeset(%Contract{}, params)
     {:noreply, assign(socket, changeset: changeset)}
   end
