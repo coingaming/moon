@@ -4,6 +4,7 @@ defmodule Moon.Components.Datepicker.Month do
   prop date, :date, required: true
   prop start_date, :date
   prop end_date, :date
+  prop week_starts_on, :integer
   prop on_click, :event
 
   def render(assigns) do
@@ -14,7 +15,7 @@ defmodule Moon.Components.Datepicker.Month do
       </div>
 
       <div class="flex text-center text-base font-medium">
-        <div :for={{ ch <- ~w(M T W T F S S) }} class="w-8 h-8">
+        <div :for={{ ch <- days_letters(@week_starts_on) }} class="w-8 h-8">
           {{ ch }}
         </div>
       </div>
@@ -23,7 +24,7 @@ defmodule Moon.Components.Datepicker.Month do
         class="grid text-xs"
         style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
       >
-        <div :for={{ _cell <- empty_cells(@date) }}></div>
+        <div :for={{ _cell <- empty_cells(@date, @week_starts_on) }}></div>
 
         <div
           :for={{ day <- month_days(@date) }}
@@ -42,11 +43,25 @@ defmodule Moon.Components.Datepicker.Month do
     """
   end
 
-  defp empty_cells(date) do
+  def days_letters(weekstart) do
+    date = Timex.today()
+
+    Timex.Interval.new(
+      from: Timex.beginning_of_week(date, weekstart),
+      until: Timex.end_of_week(date, weekstart),
+      left_open: false,
+      right_open: false
+    )
+    |> Enum.map(fn day ->
+      Timex.format!(day, "%a", :strftime) |> String.at(0)
+    end)
+  end
+
+  defp empty_cells(date, weekstart) do
     days_count =
       date
       |> Timex.beginning_of_month()
-      |> Timex.days_to_beginning_of_week()
+      |> Timex.days_to_beginning_of_week(weekstart)
 
     if days_count == 0, do: [], else: 1..days_count
   end

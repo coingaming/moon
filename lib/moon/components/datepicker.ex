@@ -23,8 +23,8 @@ defmodule Moon.Components.Datepicker do
 
   # TODO
   prop with_time, :boolean, default: false
-  prop week_starts_on, :integer, default: 1
 
+  prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
   prop on_date_change, :string, default: "update_dates"
@@ -94,6 +94,7 @@ defmodule Moon.Components.Datepicker do
                   date={{ @left_panel_date }}
                   start_date={{ @start_date }}
                   end_date={{ @end_date }}
+                  week_starts_on={{ @week_starts_on }}
                   on_click="select_date"
                 />
               </div>
@@ -125,6 +126,7 @@ defmodule Moon.Components.Datepicker do
                   date={{ Timex.shift(@left_panel_date, months: 1) }}
                   start_date={{ @start_date }}
                   end_date={{ @end_date }}
+                  week_starts_on={{ @week_starts_on }}
                   on_click="select_date"
                 />
               </div>
@@ -168,75 +170,75 @@ defmodule Moon.Components.Datepicker do
 
   defp button_label(_start_date, _end_date, range), do: range_label(range)
 
-  defp dates_from_range("lastMonth") do
+  defp dates_from_range("lastMonth", _) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(months: -1)
 
     {Timex.beginning_of_month(date), Timex.end_of_month(date)}
   end
 
-  defp dates_from_range("thisMonth") do
-    date = Timex.now() |> Timex.to_naive_datetime()
+  defp dates_from_range("thisMonth", _) do
+    date = Timex.local() |> truncate_date()
     {Timex.beginning_of_month(date), Timex.end_of_month(date)}
   end
 
-  defp dates_from_range("nextMonth") do
+  defp dates_from_range("nextMonth", _) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(months: 1)
 
     {Timex.beginning_of_month(date), Timex.end_of_month(date)}
   end
 
-  defp dates_from_range("lastWeek") do
+  defp dates_from_range("lastWeek", weekstart) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(weeks: -1)
 
-    {Timex.beginning_of_week(date), Timex.end_of_week(date)}
+    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
   end
 
-  defp dates_from_range("thisWeek") do
-    date = Timex.now() |> Timex.to_naive_datetime()
-    {Timex.beginning_of_week(date), Timex.end_of_week(date)}
+  defp dates_from_range("thisWeek", weekstart) do
+    date = Timex.local() |> truncate_date()
+    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
   end
 
-  defp dates_from_range("nextWeek") do
+  defp dates_from_range("nextWeek", weekstart) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(weeks: 1)
 
-    {Timex.beginning_of_week(date), Timex.end_of_week(date)}
+    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
   end
 
-  defp dates_from_range("last24hours") do
-    date = Timex.now() |> Timex.to_naive_datetime()
+  defp dates_from_range("last24hours", _) do
+    date = Timex.local() |> truncate_date()
     {Timex.shift(date, hours: -24), date}
   end
 
-  defp dates_from_range("yesterday") do
+  defp dates_from_range("yesterday", _) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(days: -1)
 
     {Timex.beginning_of_day(date), Timex.end_of_day(date)}
   end
 
-  defp dates_from_range("today") do
-    date = Timex.now() |> Timex.to_naive_datetime()
+  defp dates_from_range("today", _) do
+    date = Timex.local() |> truncate_date()
     {Timex.beginning_of_day(date), Timex.end_of_day(date)}
   end
 
-  defp dates_from_range("tomorrow") do
+  defp dates_from_range("tomorrow", _) do
     date =
-      Timex.now()
-      |> Timex.to_naive_datetime()
+      Timex.local()
+      |> truncate_date()
       |> Timex.shift(days: 1)
 
     {Timex.beginning_of_day(date), Timex.end_of_day(date)}
@@ -266,6 +268,12 @@ defmodule Moon.Components.Datepicker do
   defp format_date(nil), do: nil
   defp format_date(date), do: Timex.format!(date, "%Y-%0m-%0dT%R", :strftime)
 
+  defp truncate_date(date) do
+    date
+    |> Timex.to_naive_datetime()
+    |> NaiveDateTime.truncate(:second)
+  end
+
   def validate(start_date, end_date) do
     parsed_start_date = parse_date(start_date)
     parsed_end_date = parse_date(end_date)
@@ -282,7 +290,7 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
-    {start_date, end_date} = dates_from_range(range)
+    {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
     socket = assign(socket, selected_range: range, left_panel_date: Timex.to_date(start_date))
     update_dates(socket, start_date, end_date)
 
