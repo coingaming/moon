@@ -4,6 +4,7 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
   alias Moon.Components.Datepicker.Month
+  alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
 
   @default_label "Select Dates"
@@ -50,12 +51,12 @@ defmodule Moon.Components.Datepicker do
         variant="tertiary"
         on_click="toggle_picker"
       >
-        {{ button_label(@start_date, @end_date, @selected_range) }}
+        {{ button_label(@start_date, @end_date, @with_time, @selected_range) }}
       </Button>
 
       <div
         class={{
-          "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm",
+          "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm z-10",
           hidden: !@show
         }}
       >
@@ -100,12 +101,24 @@ defmodule Moon.Components.Datepicker do
               </div>
 
               <DateTimeLocalInput
+                :if={{ @with_time }}
                 field={{ @start_date_field }}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
-                  "data-pending-val": format_date(@start_date)
+                  "data-pending-val": format_date(@start_date, @with_time)
+                }}
+              />
+
+              <DateInput
+                :if={{ !@with_time }}
+                field={{ @start_date_field }}
+                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                opts={{
+                  placeholder: "dd/mm/yyyy",
+                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "data-pending-val": format_date(@start_date, @with_time)
                 }}
               />
             </div>
@@ -132,12 +145,24 @@ defmodule Moon.Components.Datepicker do
               </div>
 
               <DateTimeLocalInput
+                :if={{ @with_time }}
                 field={{ @end_date_field }}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={{
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
-                  "data-pending-val": format_date(@end_date)
+                  "data-pending-val": format_date(@end_date, @with_time)
+                }}
+              />
+
+              <DateInput
+                :if={{ !@with_time }}
+                field={{ @end_date_field }}
+                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                opts={{
+                  placeholder: "dd/mm/yyyy",
+                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "data-pending-val": format_date(@end_date, @with_time)
                 }}
               />
             </div>
@@ -158,17 +183,20 @@ defmodule Moon.Components.Datepicker do
     """
   end
 
-  defp button_label(nil, _, _), do: @default_label
-  defp button_label(_, nil, _), do: @default_label
+  defp button_label(nil, _, _, _), do: @default_label
+  defp button_label(_, nil, _, _), do: @default_label
 
-  defp button_label(start_date, end_date, nil) do
-    start_date_formatted = Timex.format!(start_date, "%0d/%0m/%Y, %R", :strftime)
-    end_date_formatted = Timex.format!(end_date, "%0d/%0m/%Y, %R", :strftime)
+  defp button_label(start_date, end_date, with_time, nil) do
+    date_format = "%0d/%0m/%Y"
+    date_format = if with_time, do: date_format <> ", %R", else: date_format
+
+    start_date_formatted = Timex.format!(start_date, date_format, :strftime)
+    end_date_formatted = Timex.format!(end_date, date_format, :strftime)
 
     "#{start_date_formatted} - #{end_date_formatted}"
   end
 
-  defp button_label(_start_date, _end_date, range), do: range_label(range)
+  defp button_label(_start_date, _end_date, _, range), do: range_label(range)
 
   defp dates_from_range("lastMonth", _) do
     date =
@@ -259,20 +287,30 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp parse_date(date) when is_binary(date) do
-    {:ok, date} = Timex.parse(date, "%Y-%0m-%0dT%R", :strftime)
-    date
+    case Timex.parse(date, "%Y-%0m-%0dT%R", :strftime) do
+      {:ok, datetime} ->
+        datetime
+
+      {:error, _} ->
+        {:ok, date} = Timex.parse(date, "%Y-%0m-%0d", :strftime)
+        date
+    end
   end
 
   defp parse_date(date), do: date
 
-  defp format_date(nil), do: nil
-  defp format_date(date), do: Timex.format!(date, "%Y-%0m-%0dT%R", :strftime)
+  defp format_date(nil, _), do: nil
+  defp format_date(date, true), do: Timex.format!(date, "%Y-%0m-%0dT%R", :strftime)
+  defp format_date(date, false), do: Timex.format!(date, "%Y-%0m-%0d", :strftime)
 
   defp truncate_date(date) do
     date
     |> Timex.to_naive_datetime()
     |> NaiveDateTime.truncate(:second)
   end
+
+  defp format_to_date(datetime, true), do: datetime
+  defp format_to_date(datetime, false), do: Timex.to_date(datetime)
 
   def validate(start_date, end_date) do
     parsed_start_date = parse_date(start_date)
@@ -306,19 +344,24 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_date", %{"date" => date}, socket) do
+    with_time = socket.assigns.with_time
     start_date = socket.assigns.start_date
-    date = parse_date(date)
+
+    date =
+      date
+      |> parse_date()
+      |> format_to_date(with_time)
 
     {start_date, end_date} =
       cond do
         start_date && is_nil(socket.assigns.end_date) && Timex.after?(date, start_date) ->
           # Keep start, set end
-          end_date = Timex.end_of_day(date)
+          end_date = if with_time, do: Timex.end_of_day(date), else: date
           {start_date, end_date}
 
         true ->
           # Set start, reset end
-          start_date = Timex.beginning_of_day(date)
+          start_date = if with_time, do: Timex.beginning_of_day(date), else: date
           {start_date, nil}
       end
 

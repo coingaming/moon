@@ -14,29 +14,34 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     import Ecto.Changeset
 
     schema "contracts" do
-      field(:started_at, :naive_datetime)
-      field(:ended_at, :naive_datetime)
+      field(:started_at, :date)
+      field(:ended_at, :date)
+
+      field(:datetime_started_at, :naive_datetime)
+      field(:datetime_ended_at, :naive_datetime)
     end
 
     def changeset(contract, attrs \\ %{}) do
       contract
-      |> cast(attrs, [:started_at, :ended_at])
+      |> cast(attrs, [:started_at, :ended_at, :datetime_started_at, :datetime_ended_at])
     end
   end
 
   def mount(params, _session, socket) do
-    data = %Contract{started_at: Timex.today() |> Timex.to_naive_datetime()}
+    data = %Contract{started_at: Timex.today()}
 
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
         changeset: Contract.changeset(data),
+        time_changeset: Contract.changeset(%Contract{}),
         range_changeset: Contract.changeset(%Contract{}),
-        weekstart_changeset: Contract.changeset(%Contract{
-          started_at: Timex.today() |> Timex.beginning_of_week(),
-          ended_at: Timex.today() |> Timex.end_of_week()
-        })
+        weekstart_changeset:
+          Contract.changeset(%Contract{
+            started_at: Timex.today() |> Timex.beginning_of_week(),
+            ended_at: Timex.today() |> Timex.end_of_week()
+          })
       )
 
     {:ok, socket}
@@ -111,6 +116,46 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         </template>
 
         <template slot="state">@data = {{ inspect(fetch_data(@changeset), pretty: true) }}<br><br>@changeset = {{ inspect(@changeset, pretty: true) }}</template>
+      </ExampleAndCode>
+
+      <Heading size=24 class="mt-4" is_regular>With time</Heading>
+
+      <p>
+        Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
+      </p>
+
+      <ExampleAndCode show_state={{ true }}>
+        <template slot="example">
+          <Form for={{ @time_changeset }} change="time_validate">
+            <Datepicker
+              id="time_datepicker"
+              start_date={{ fetch_field(@time_changeset, :datetime_started_at) |> elem(1) }}
+              end_date={{ fetch_field(@time_changeset, :datetime_ended_at) |> elem(1) }}
+              start_date_field={{ :datetime_started_at }}
+              end_date_field={{ :datetime_ended_at }}
+              on_date_change="time_update_dates"
+              with_time={{ true }}
+            />
+          </Form>
+        </template>
+
+        <template slot="code">
+      <#CodePreview>
+        <Form for={{ @changeset }} change="validate">
+          <Datepicker
+            id="time_datepicker"
+            start_date={{ fetch_field(@changeset, :datetime_started_at) |> elem(1) }}
+            end_date={{ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }}
+            start_date_field={{ :datetime_started_at }}
+            end_date_field={{ :datetime_ended_at }}
+            on_date_change="update_dates"
+            with_time={{ true }}
+          />
+        </Form>
+      </#CodePreview>
+        </template>
+
+        <template slot="state">@data = {{ inspect(fetch_time_data(@time_changeset), pretty: true) }}<br><br>@changeset = {{ inspect(@time_changeset, pretty: true) }}</template>
       </ExampleAndCode>
 
       <Heading size=24 class="mt-4" is_regular>Custom ranges</Heading>
@@ -202,8 +247,25 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     %{started_at: started_at, ended_at: ended_at}
   end
 
+  defp fetch_time_data(changeset) do
+    {_, started_at} = fetch_field(changeset, :datetime_started_at)
+    {_, ended_at} = fetch_field(changeset, :datetime_ended_at)
+
+    %{datetime_started_at: started_at, datetime_ended_at: ended_at}
+  end
+
   defp update_changeset(start_date, end_date) do
-    Contract.changeset(%Contract{}, %{"started_at" => start_date, "ended_at" => end_date})
+    Contract.changeset(%Contract{}, %{
+      "started_at" => start_date,
+      "ended_at" => end_date
+    })
+  end
+
+  defp update_time_changeset(start_date, end_date) do
+    Contract.changeset(%Contract{}, %{
+      "datetime_started_at" => start_date,
+      "datetime_ended_at" => end_date
+    })
   end
 
   # Handle date selection
@@ -212,12 +274,23 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     {:noreply, assign(socket, changeset: changeset)}
   end
 
+  def handle_info(
+        {"time_update_dates", %{datetime_started_at: start_date, datetime_ended_at: end_date}},
+        socket
+      ) do
+    changeset = update_time_changeset(start_date, end_date)
+    {:noreply, assign(socket, time_changeset: changeset)}
+  end
+
   def handle_info({"range_update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, range_changeset: changeset)}
   end
 
-  def handle_info({"weekstart_update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+  def handle_info(
+        {"weekstart_update_dates", %{started_at: start_date, ended_at: end_date}},
+        socket
+      ) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, weekstart_changeset: changeset)}
   end
@@ -227,6 +300,14 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, changeset: changeset)}
+  end
+
+  def handle_event("time_validate", %{"contract" => params}, socket) do
+    {start_date, end_date} =
+      Datepicker.validate(params["datetime_started_at"], params["datetime_ended_at"])
+
+    changeset = update_time_changeset(start_date, end_date)
+    {:noreply, assign(socket, time_changeset: changeset)}
   end
 
   def handle_event("range_validate", %{"contract" => params}, socket) do
