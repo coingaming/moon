@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       <Heading size=32>Datepicker</Heading>
 
       <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/datepicker.ex">Sourcecode of this page</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/datepicker_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/components/datepicker">React implementation</Link>
       </p>
 
