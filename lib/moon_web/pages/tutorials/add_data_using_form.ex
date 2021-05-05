@@ -98,7 +98,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 placeholder="Choose a document..."
               />
 
-              <Button variant="primary">Save</Button>
+              <Button variant="primary" type="submit">Save</Button>
               <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
             </Stack>
           </Form>
@@ -131,7 +131,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               placeholder="Choose a document..."
             />
 
-            <Button variant="primary">Save</Button>
+            <Button variant="primary" type="submit">Save</Button>
             <Button variant="secondary" on_click="clear_form">Cancel</Button>
           </Stack>
         </Form>
@@ -174,7 +174,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 prompt="Please select gender"
               />
 
-              <Button variant="primary">Save</Button>
+              <Button variant="primary" type="submit">Save</Button>
               <Button variant="secondary" on_click="clear_simple_form">Cancel</Button>
             </Stack>
           </Form>
@@ -194,7 +194,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             prompt="Please select gender"
           />
 
-          <Button variant="primary">Save</Button>
+          <Button variant="primary" type="submit">Save</Button>
           <Button variant="secondary" on_click="clear_form">Cancel</Button>
         </Form>
       </#CodePreview>
