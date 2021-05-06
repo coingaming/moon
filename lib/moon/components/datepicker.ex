@@ -200,7 +200,7 @@ defmodule Moon.Components.Datepicker do
 
   defp dates_from_range("lastMonth", _) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(months: -1)
 
@@ -208,13 +208,13 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp dates_from_range("thisMonth", _) do
-    date = Timex.local() |> truncate_date()
+    date = Timex.now() |> truncate_date()
     {Timex.beginning_of_month(date), Timex.end_of_month(date)}
   end
 
   defp dates_from_range("nextMonth", _) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(months: 1)
 
@@ -223,7 +223,7 @@ defmodule Moon.Components.Datepicker do
 
   defp dates_from_range("lastWeek", weekstart) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(weeks: -1)
 
@@ -231,13 +231,13 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp dates_from_range("thisWeek", weekstart) do
-    date = Timex.local() |> truncate_date()
+    date = Timex.now() |> truncate_date()
     {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
   end
 
   defp dates_from_range("nextWeek", weekstart) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(weeks: 1)
 
@@ -245,13 +245,13 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp dates_from_range("last24hours", _) do
-    date = Timex.local() |> truncate_date()
+    date = Timex.now() |> truncate_date()
     {Timex.shift(date, hours: -24), date}
   end
 
   defp dates_from_range("yesterday", _) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(days: -1)
 
@@ -259,13 +259,13 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp dates_from_range("today", _) do
-    date = Timex.local() |> truncate_date()
+    date = Timex.now() |> truncate_date()
     {Timex.beginning_of_day(date), Timex.end_of_day(date)}
   end
 
   defp dates_from_range("tomorrow", _) do
     date =
-      Timex.local()
+      Timex.now()
       |> truncate_date()
       |> Timex.shift(days: 1)
 
