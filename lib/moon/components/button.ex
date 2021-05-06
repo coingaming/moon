@@ -11,6 +11,7 @@ defmodule Moon.Components.Button do
   prop(success, :boolean)
   prop(pulse, :boolean)
   prop(disabled, :boolean)
+  prop(type, :string, default: "button")
 
   prop(to, :string)
   prop(as, :string)
@@ -36,6 +37,7 @@ defmodule Moon.Components.Button do
     <button
       class="moon-button {{ @class }}"
       disabled={{ @disabled }}
+      type={{ @type }}
       data-mock-state={{ @mock_state }}
       data-variant={{ @variant }}
       data-size={{ @size }}

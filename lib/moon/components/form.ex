@@ -6,12 +6,14 @@ defmodule Moon.Components.Form do
   prop(submit, :string)
   prop(target, :any)
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
-  slot(default)
+  slot(default, props: [:form])
 
   def render(assigns) do
     ~H"""
     <Surface.Components.Form for={{ @for }} change={{ @change }} submit={{ @submit }} opts={{ "phx-target": @target, autocomplete: @autocomplete }}>
-      <slot />
+      <Context get={{ Surface.Components.Form, form: form }}>
+        <slot :props={{ form: form }} />
+      </Context>
     </Surface.Components.Form>
     """
   end
