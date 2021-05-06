@@ -2,12 +2,12 @@ defmodule Moon.Assets.Icon do
   use Moon.StatelessComponent
   alias Moon.Assets.Icons
 
-  prop(name, :string)
+  prop name, :string
 
-  prop(color, :string, values: Moon.colors())
-  prop(background_color, :string, values: Moon.colors())
-  prop(font_size, :string)
-  prop(class, :string)
+  prop color, :string, values: Moon.colors()
+  prop background_color, :string, values: Moon.colors()
+  prop font_size, :string
+  prop class, :string
 
   @assets_map %{
     icon_about: Icons.IconAbout,

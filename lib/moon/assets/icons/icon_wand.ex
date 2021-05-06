@@ -1,10 +1,10 @@
 defmodule Moon.Assets.Icons.IconWand do
   use Moon.StatelessComponent
 
-  prop(color, :string, values: Moon.colors())
-  prop(background_color, :string, values: Moon.colors())
-  prop(font_size, :string)
-  prop(class, :string)
+  prop color, :string, values: Moon.colors()
+  prop background_color, :string, values: Moon.colors()
+  prop font_size, :string
+  prop class, :string
 
   def render(assigns) do
     ~H"""

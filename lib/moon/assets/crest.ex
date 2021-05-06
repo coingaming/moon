@@ -2,14 +2,14 @@ defmodule Moon.Assets.Crest do
   use Moon.StatelessComponent
   alias Moon.Assets.Crests
 
-  prop(name, :string)
+  prop name, :string
 
-  prop(color, :string, values: Moon.colors())
-  prop(height, :string)
-  prop(width, :string)
-  prop(font_size, :string)
-  prop(vertical_align, :string)
-  prop(class, :string)
+  prop color, :string, values: Moon.colors()
+  prop height, :string
+  prop width, :string
+  prop font_size, :string
+  prop vertical_align, :string
+  prop class, :string
 
   @assets_map %{
     crest_arsenal: Crests.CrestArsenal,

@@ -87,6 +87,9 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         %{"item_id" => item_id},
         socket
       ) do
-    {:noreply, redirect(socket, to: live_path(socket, __MODULE__, tab_id: item_id, theme_name: socket.assigns.theme_name))}
+    {:noreply,
+     redirect(socket,
+       to: live_path(socket, __MODULE__, tab_id: item_id, theme_name: socket.assigns.theme_name)
+     )}
   end
 end

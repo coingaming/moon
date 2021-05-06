@@ -2,14 +2,14 @@ defmodule Moon.Assets.Pattern do
   use Moon.StatelessComponent
   alias Moon.Assets.Patterns
 
-  prop(name, :string)
+  prop name, :string
 
-  prop(color, :string, values: Moon.colors())
-  prop(height, :string)
-  prop(width, :string)
-  prop(font_size, :string)
-  prop(vertical_align, :string)
-  prop(class, :string)
+  prop color, :string, values: Moon.colors()
+  prop height, :string
+  prop width, :string
+  prop font_size, :string
+  prop vertical_align, :string
+  prop class, :string
 
   @assets_map %{
     pattern_circles: Patterns.PatternCircles,
