@@ -38,4 +38,4 @@ node_modules
 
 .tool-versions
 
-/assets/js/_hooks/
+# /assets/js/_hooks/
