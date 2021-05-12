@@ -22,9 +22,7 @@ defmodule Moon.Components.Datepicker do
     nextMonth: 'Next month'
   }
 
-  # TODO
   prop with_time, :boolean, default: false
-
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
