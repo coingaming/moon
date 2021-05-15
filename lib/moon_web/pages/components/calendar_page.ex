@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state={{ true }}>
+      <ExampleAndCode show_state={{ true }} layout="column">
         <template slot="example">
           <Calendar />
         </template>
