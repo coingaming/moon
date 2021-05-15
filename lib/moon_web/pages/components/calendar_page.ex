@@ -31,12 +31,12 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
       <ExampleAndCode show_state={{ true }} layout="column">
         <template slot="example">
-          <Calendar />
+          <Calendar id="default_calendar" />
         </template>
 
         <template slot="code">
       <#CodePreview>
-        <Calendar />
+        <Calendar id="default_calendar" />
       </#CodePreview>
         </template>
 
