@@ -4,6 +4,7 @@ defmodule Moon.Components.Calendar do
   alias Moon.Assets.Icons.IconChevronRightRounded
   alias Moon.Components.Button
   alias Moon.Components.Calendar.Month
+  alias Moon.Components.Calendar.Week
 
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   data date, :datetime, default: Timex.today()
@@ -24,24 +25,24 @@ defmodule Moon.Components.Calendar do
 
         <button
           type="button"
-          class="leading-none ml-6"
-          :on-click="shift_months"
-          phx-value-months={{ -1 }}
+          class="ml-6 leading-none"
+          :on-click="shift_range"
+          phx-value-shift={{ -1 }}
         >
           <IconChevronLeftRounded class="block" font_size="1rem"/>
         </button>
 
         <button
           type="button"
-          class="leading-none ml-5 mr-6"
-          :on-click="shift_months"
-          phx-value-months={{ 1 }}
+          class="ml-5 mr-6 leading-none"
+          :on-click="shift_range"
+          phx-value-shift={{ 1 }}
         >
           <IconChevronRightRounded class="block" font_size="1rem"/>
         </button>
 
         <div>
-          {{ Timex.format!(@date, "%B %Y", :strftime) }}
+          {{ calendar_title(@date, @week_starts_on, @show_month) }}
         </div>
 
         <div class="flex-grow text-right">
@@ -72,6 +73,12 @@ defmodule Moon.Components.Calendar do
         date={{ @date }}
         week_starts_on={{ @week_starts_on }}
       />
+
+      <Week
+        :if={{ !@show_month }}
+        date={{ @date }}
+        week_starts_on={{ @week_starts_on }}
+      />
     </div>
     """
   end
@@ -90,16 +97,38 @@ defmodule Moon.Components.Calendar do
     end)
   end
 
+  defp calendar_title(date, _, true), do: Timex.format!(date, "%B %Y", :strftime)
+
+  defp calendar_title(date, weekstart, false) do
+    date
+    |> Timex.beginning_of_week(weekstart)
+    |> calendar_title(weekstart, true)
+  end
+
   def handle_event("set_today", _, socket) do
     {:noreply, assign(socket, date: Timex.today())}
   end
 
-  def handle_event("shift_months", %{"months" => months}, socket) do
-    months = String.to_integer(months)
-    {:noreply, update(socket, :date, &(Timex.shift(&1, months: months)))}
+  def handle_event("shift_range", %{"shift" => shift}, socket) do
+    shift = String.to_integer(shift)
+
+    if socket.assigns.show_month do
+      {:noreply, update(socket, :date, &Timex.shift(&1, months: shift))}
+    else
+      {:noreply, update(socket, :date, &Timex.shift(&1, weeks: shift))}
+    end
   end
 
   def handle_event("toggle_view", _, socket) do
-    {:noreply, assign(socket, show_month: !socket.assigns.show_month)}
+    date = socket.assigns.date
+
+    date =
+      if socket.assigns.show_month do
+        Timex.beginning_of_week(date, socket.assigns.week_starts_on)
+      else
+        date
+      end
+
+    {:noreply, assign(socket, show_month: !socket.assigns.show_month, date: date)}
   end
 end
