@@ -3,9 +3,11 @@ defmodule Moon.Components.Calendar do
   alias Moon.Assets.Icons.IconChevronLeftRounded
   alias Moon.Assets.Icons.IconChevronRightRounded
   alias Moon.Components.Button
+  alias Moon.Components.Calendar.Day
 
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   data date, :datetime, default: Timex.today()
+  data show_month, :boolean, default: true
 
   def render(assigns) do
     ~H"""
@@ -22,7 +24,7 @@ defmodule Moon.Components.Calendar do
 
         <button
           type="button"
-          class="leading-none"
+          class="leading-none ml-6"
           :on-click="shift_months"
           phx-value-months={{ -1 }}
         >
@@ -31,12 +33,32 @@ defmodule Moon.Components.Calendar do
 
         <button
           type="button"
-          class="leading-none"
+          class="leading-none ml-5 mr-6"
           :on-click="shift_months"
           phx-value-months={{ 1 }}
         >
           <IconChevronRightRounded class="block" font_size="1rem"/>
         </button>
+
+        <div>
+          {{ Timex.format!(@date, "%B %Y", :strftime) }}
+        </div>
+
+        <div class="flex-grow text-right">
+          <Button
+            class="font-semibold rounded-lg"
+            variant="secondary"
+            size="small"
+            on_click="toggle_view"
+          >
+            <span :if={{ @show_month }}>
+              Month
+            </span>
+            <span :if={{ !@show_month }}>
+              Week
+            </span>
+          </Button>
+        </div>
       </div>
 
       <div class="flex text-xs text-center text-trunks-100">
@@ -49,44 +71,24 @@ defmodule Moon.Components.Calendar do
         class="grid gap-1"
         style="grid-template-columns: repeat(7, auto);"
       >
-        <div
-          class="relative rounded-lg bg-goten-100"
-          style="padding-top: 100%;"
+        <Day
           :for={{ day <- previous_month_days(@date, @week_starts_on) }}
-        >
-          <div
-            class="absolute text-lg leading-none text-trunks-100 top-3 right-3"
-          >
-            {{ day_label(day) }}
-          </div>
-        </div>
+          day={{ day }}
+          text_color="text-trunks-100"
+        />
 
-        <div
+        <Day
           :for={{ day <- month_days(@date) }}
-          class="relative rounded-lg bg-goten-100"
-          style="padding-top: 100%;"
-        >
-          <div
-            class="absolute text-lg leading-none top-3 right-3"
-          >
-            {{ day_label(day) }}
-          </div>
-        </div>
+          day={{ day }}
+          text_color={{ if Timex.to_date(day) == Timex.today(), do: "text-piccolo-100" }}
+        />
 
-        <div
-          class="relative rounded-lg bg-goten-100"
-          style="padding-top: 100%;"
+        <Day
           :for={{ day <- next_month_days(@date, @week_starts_on) }}
-        >
-          <div
-            class="absolute text-lg leading-none text-trunks-100 top-3 right-3"
-          >
-            {{ day_label(day) }}
-          </div>
-        </div>
-
+          day={{ day }}
+          text_color="text-trunks-100"
+        />
       </div>
-
     </div>
     """
   end
@@ -146,11 +148,6 @@ defmodule Moon.Components.Calendar do
     end
   end
 
-  defp day_label(date) do
-    day = Timex.format!(date, "%-d", :strftime)
-    if day == "1", do: Timex.format!(date, "%b %-d", :strftime), else: day
-  end
-
   def handle_event("set_today", _, socket) do
     {:noreply, assign(socket, date: Timex.today())}
   end
@@ -158,5 +155,9 @@ defmodule Moon.Components.Calendar do
   def handle_event("shift_months", %{"months" => months}, socket) do
     months = String.to_integer(months)
     {:noreply, update(socket, :date, &(Timex.shift(&1, months: months)))}
+  end
+
+  def handle_event("toggle_view", _, socket) do
+    {:noreply, assign(socket, show_month: !socket.assigns.show_month)}
   end
 end
