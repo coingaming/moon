@@ -9,7 +9,7 @@ defmodule Moon.Components.Calendar.Month do
     ~H"""
     <div
       class="grid gap-1"
-      style="grid-template-columns: repeat(7, auto);"
+      style="grid-template-columns: repeat(7, minmax(2rem, auto));"
     >
       <Day
         :for={{ day <- previous_month_days(@date, @week_starts_on) }}

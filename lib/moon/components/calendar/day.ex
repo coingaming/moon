@@ -11,7 +11,7 @@ defmodule Moon.Components.Calendar.Day do
       style="padding-top: 100%;"
     >
       <div
-        class="absolute text-lg leading-none top-3 right-3 {{ @text_color }}"
+        class="absolute text-sm md:text-base lg:text-lg leading-none top-3 right-3 {{ @text_color }}"
       >
         {{ day_label(@day) }}
       </div>

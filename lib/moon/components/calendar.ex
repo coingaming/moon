@@ -11,7 +11,7 @@ defmodule Moon.Components.Calendar do
 
   def render(assigns) do
     ~H"""
-    <div class="w-full">
+    <div class="min-w-min">
       <div class="flex items-center mb-6">
         <Button
           class="font-semibold rounded-lg"
