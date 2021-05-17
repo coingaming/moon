@@ -34,6 +34,7 @@ defmodule MoonWeb.Router do
       live "/components/avatar", MoonWeb.Pages.Components.AvatarPage
       live "/components/badge", MoonWeb.Pages.Components.BadgePage
       live "/components/button", MoonWeb.Pages.Components.ButtonPage
+      live "/components/calendar", MoonWeb.Pages.Components.CalendarPage
       live "/components/carousel", MoonWeb.Pages.Components.CarouselPage
       live "/components/checkbox", MoonWeb.Pages.Components.CheckboxPage
 
