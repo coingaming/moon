@@ -1,6 +1,6 @@
-defmodule Moon.Assets.Currencie do
+defmodule Moon.Assets.Currency do
   use Moon.StatelessComponent
-  alias Moon.Assets.Currencies
+  alias Moon.Assets.Currencys
 
   prop name, :string
 
@@ -9,39 +9,40 @@ defmodule Moon.Assets.Currencie do
   prop width, :string
   prop font_size, :string
   prop vertical_align, :string
+  prop click, :event
   prop class, :string
 
   @assets_map %{
-    icon_australian_dollar: Currencies.IconAustralianDollar,
-    icon_bitcoin: Currencies.IconBitcoin,
-    icon_brazilian_real: Currencies.IconBrazilianReal,
-    icon_canadian_dollar: Currencies.IconCanadianDollar,
-    icon_cardano: Currencies.IconCardano,
-    icon_chiliean_peso: Currencies.IconChilieanPeso,
-    icon_chinese_yuan: Currencies.IconChineseYuan,
-    icon_danish_krone: Currencies.IconDanishKrone,
-    icon_ethereum: Currencies.IconEthereum,
-    icon_euro: Currencies.IconEuro,
-    icon_gb_pound_sterling: Currencies.IconGbPoundSterling,
-    icon_hong_kong_dollar: Currencies.IconHongKongDollar,
-    icon_icelandic_krona: Currencies.IconIcelandicKrona,
-    icon_indian_rupee: Currencies.IconIndianRupee,
-    icon_japanese_yen: Currencies.IconJapaneseYen,
-    icon_litecoin: Currencies.IconLitecoin,
-    icon_new_taiwan_dollar: Currencies.IconNewTaiwanDollar,
-    icon_new_zealand_dollar: Currencies.IconNewZealandDollar,
-    icon_poland_zloty: Currencies.IconPolandZloty,
-    icon_ripple: Currencies.IconRipple,
-    icon_russian_ruble: Currencies.IconRussianRuble,
-    icon_singapore_dollar: Currencies.IconSingaporeDollar,
-    icon_soc: Currencies.IconSoc,
-    icon_south_korean_won: Currencies.IconSouthKoreanWon,
-    icon_swedish_krona: Currencies.IconSwedishKrona,
-    icon_swiss_franc: Currencies.IconSwissFranc,
-    icon_thai_baht: Currencies.IconThaiBaht,
-    icon_tron: Currencies.IconTron,
-    icon_turkish_lira: Currencies.IconTurkishLira,
-    icon_usa_dollar: Currencies.IconUsaDollar
+    icon_australian_dollar: Currencys.IconAustralianDollar,
+    icon_bitcoin: Currencys.IconBitcoin,
+    icon_brazilian_real: Currencys.IconBrazilianReal,
+    icon_canadian_dollar: Currencys.IconCanadianDollar,
+    icon_cardano: Currencys.IconCardano,
+    icon_chiliean_peso: Currencys.IconChilieanPeso,
+    icon_chinese_yuan: Currencys.IconChineseYuan,
+    icon_danish_krone: Currencys.IconDanishKrone,
+    icon_ethereum: Currencys.IconEthereum,
+    icon_euro: Currencys.IconEuro,
+    icon_gb_pound_sterling: Currencys.IconGbPoundSterling,
+    icon_hong_kong_dollar: Currencys.IconHongKongDollar,
+    icon_icelandic_krona: Currencys.IconIcelandicKrona,
+    icon_indian_rupee: Currencys.IconIndianRupee,
+    icon_japanese_yen: Currencys.IconJapaneseYen,
+    icon_litecoin: Currencys.IconLitecoin,
+    icon_new_taiwan_dollar: Currencys.IconNewTaiwanDollar,
+    icon_new_zealand_dollar: Currencys.IconNewZealandDollar,
+    icon_poland_zloty: Currencys.IconPolandZloty,
+    icon_ripple: Currencys.IconRipple,
+    icon_russian_ruble: Currencys.IconRussianRuble,
+    icon_singapore_dollar: Currencys.IconSingaporeDollar,
+    icon_soc: Currencys.IconSoc,
+    icon_south_korean_won: Currencys.IconSouthKoreanWon,
+    icon_swedish_krona: Currencys.IconSwedishKrona,
+    icon_swiss_franc: Currencys.IconSwissFranc,
+    icon_thai_baht: Currencys.IconThaiBaht,
+    icon_tron: Currencys.IconTron,
+    icon_turkish_lira: Currencys.IconTurkishLira,
+    icon_usa_dollar: Currencys.IconUsaDollar
   }
   def icon_name_to_module(icon_name) do
     @assets_map[:"#{icon_name}"]
@@ -49,7 +50,7 @@ defmodule Moon.Assets.Currencie do
 
   def render(assigns) do
     ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, class: @class) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, click: @click, class: @class) }}
     """
   end
 end

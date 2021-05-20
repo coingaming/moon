@@ -3,6 +3,7 @@ defmodule Moon.Components.TextInput do
 
   alias Surface.Components.Form.TextInput
   alias Moon.Components.Label
+  alias Moon.Assets.Icon
 
   prop(field, :atom)
   prop(label, :string)
@@ -30,42 +31,55 @@ defmodule Moon.Components.TextInput do
   prop(rounded, :boolean)
   prop(disabled, :boolean)
   prop(required, :boolean)
-  prop(icon, :any)
+  prop(left_icon, :string)
+  prop(right_icon, :string)
+  prop(right_icon_click, :event)
   prop(class, :string)
   prop(without_design, :boolean)
+  prop(on_focus, :string)
+  prop(on_blur, :string)
 
   def render(assigns) do
     ~H"""
-    {{ asset_import @socket, "js/components/text-input" }}
+    <div class="relative">
+      {{ asset_import @socket, "js/components/text-input" }}
 
-    <TextInput
-      class="{{ !@without_design && "moon-text-input" }} {{ @class }}"
-      field={{ @field }}
-      opts={{
-        [
-          placeholder: @placeholder,
-          disabled: @disabled,
-          "data-error": @error && "true",
-          "data-rounded": @rounded && "true"
-        ]
-      }}
-      value={{ @value }}
-      :if={{ !@label }}
-    />
+      <Icon name={{ @left_icon }} :if={{ @left_icon }} class="absolute z-10 top-3 left-5" />
+      <Icon name={{ @right_icon }} click={{ @right_icon_click }} :if={{ @right_icon }} class="absolute z-10 top-3 right-5" />
 
-    <Label text={{ @label }} :if={{ @label }}>
       <TextInput
-        class="moon-text-input mt-2"
+        class="{{ !@without_design && "moon-text-input" }} {{ @class }} {{ @left_icon && "pl-12" }} {{ @right_icon && "pr-12" }} relative z-0"
         field={{ @field }}
-        opts={{ [
-          placeholder: @placeholder,
-          disabled: @disabled,
-          "data-error": @error && "true",
-          "data-rounded": @rounded && "true"
-        ]}}
+        opts={{
+          [
+            placeholder: @placeholder,
+            disabled: @disabled,
+            "data-error": @error && "true",
+            "data-rounded": @rounded && "true",
+            "phx-focus": @on_focus,
+            "phx-blur": @on_blur,
+          ]
+        }}
         value={{ @value }}
+        :if={{ !@label }}
       />
-    </Label>
+
+      <Label text={{ @label }} :if={{ @label }}>
+        <TextInput
+          class="moon-text-input mt-2 {{ @left_icon && "pl-12" }} {{ @right_icon && "pr-12" }} relative z-0"
+          field={{ @field }}
+          opts={{ [
+            placeholder: @placeholder,
+            disabled: @disabled,
+            "data-error": @error && "true",
+            "data-rounded": @rounded && "true",
+            "phx-focus": @on_focus,
+            "phx-blur": @on_blur,
+          ]}}
+          value={{ @value }}
+        />
+      </Label>
+    </div>
     """
   end
 end

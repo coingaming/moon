@@ -35,6 +35,7 @@ const propsMap = {
     prop color, :string, values: Moon.colors
     prop background_color, :string, values: Moon.colors
     prop font_size, :string
+    prop click, :event
     prop class, :string
     `,
   default: `
@@ -43,13 +44,22 @@ const propsMap = {
     prop width, :string
     prop font_size, :string
     prop vertical_align, :string
+    prop click, :event
     prop class, :string
     `,
 };
 
 const propsMapKeys = {
-  icon: ['color', 'background_color', 'font_size', 'class'],
-  default: ['color', 'height', 'width', 'font_size', 'vertical_align', 'class'],
+  icon: ['color', 'background_color', 'font_size', 'click', 'class'],
+  default: [
+    'color',
+    'height',
+    'width',
+    'font_size',
+    'vertical_align',
+    'click',
+    'class',
+  ],
 };
 
 const writeAssetsMapFile = ({ assetsFolder, iconType, files }) => {
@@ -103,12 +113,12 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }) => {
 
   const svgMap = {
     icon: `
-    <svg class="moon-${iconType} {{ @class }}" style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
+    <svg class="moon-${iconType} {{ @class }}" :on-click={{ @click }} style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
     default: `
-    <svg class="moon-${iconType} {{ @class }}" style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
+    <svg class="moon-${iconType} {{ @class }}" :on-click={{ @click }} style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
@@ -131,23 +141,30 @@ end
   );
 };
 
-['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach((assetsFolder) => {
-  const files = getFiles(assetsFolder);
+const singularMap = { currencies: 'currency' };
 
-  writeAssetsMapFile({
-    assetsFolder,
-    iconType: assetsFolder.substring(0, assetsFolder.length - 1),
-    files,
-  });
+const singularName = (pluralName: string) =>
+  singularMap[pluralName] || pluralName.substring(0, pluralName.length - 1);
 
-  files.forEach((file) => {
-    createAssetComponentFile({
+['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
+  (assetsFolder) => {
+    const files = getFiles(assetsFolder);
+
+    writeAssetsMapFile({
       assetsFolder,
-      iconType: assetsFolder.substring(0, assetsFolder.length - 1),
-      file: file.replace('.svg', ''),
+      iconType: singularName(assetsFolder),
+      files,
     });
-  });
-});
+
+    files.forEach((file) => {
+      createAssetComponentFile({
+        assetsFolder,
+        iconType: singularName(assetsFolder),
+        file: file.replace('.svg', ''),
+      });
+    });
+  }
+);
 
 const assetsDocDir = '../../lib/moon_web/pages/assets/';
 
@@ -197,7 +214,7 @@ end
   }
 
   if (type == 'currencies') {
-    console.log({modules})
+    console.log({ modules });
     return `
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   use MoonWeb, :live_view

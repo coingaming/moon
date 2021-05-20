@@ -9,6 +9,7 @@ defmodule Moon.Assets.Crest do
   prop width, :string
   prop font_size, :string
   prop vertical_align, :string
+  prop click, :event
   prop class, :string
 
   @assets_map %{
@@ -23,7 +24,7 @@ defmodule Moon.Assets.Crest do
 
   def render(assigns) do
     ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, class: @class) }}
+    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, click: @click, class: @class) }}
     """
   end
 end
