@@ -62,6 +62,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           <Calendar
             id="sunday_calendar"
             week_starts_on={{ 7 }}
+            events={{ @events }}
           />
         </template>
 
@@ -70,6 +71,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <Calendar
           id="sunday_calendar"
           week_starts_on={{ 7 }}
+          events={{ @events }}
         />
       </#CodePreview>
         </template>
@@ -84,8 +86,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
     [
       %{
         id: Ecto.UUID.generate(),
-        started_at: shifted_time(49),
-        ended_at: shifted_time(50),
+        started_at: shifted_time(-240),
+        ended_at: shifted_time(-238),
         description: "Syncronite Splitz™",
         location: "Yggdrasil"
       },
