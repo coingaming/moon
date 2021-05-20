@@ -4,6 +4,7 @@ defmodule Moon.Components.Calendar.Month do
 
   prop date, :datetime, required: true
   prop week_starts_on, :integer, default: 1
+  prop events, :list, default: []
 
   def render(assigns) do
     ~H"""

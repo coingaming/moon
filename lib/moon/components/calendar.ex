@@ -7,6 +7,7 @@ defmodule Moon.Components.Calendar do
   alias Moon.Components.Calendar.Week
 
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
+  prop events, :list, default: []
   data date, :datetime, default: Timex.today()
   data show_month, :boolean, default: true
 
@@ -72,6 +73,7 @@ defmodule Moon.Components.Calendar do
         :if={{ @show_month }}
         date={{ @date }}
         week_starts_on={{ @week_starts_on }}
+        events={{ @events }}
       />
 
       <Week
