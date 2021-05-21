@@ -4,6 +4,7 @@ defmodule Moon.Components.Calendar.Month do
 
   prop date, :datetime, required: true
   prop week_starts_on, :integer, default: 1
+  prop events, :list, default: []
 
   def render(assigns) do
     ~H"""
@@ -15,18 +16,21 @@ defmodule Moon.Components.Calendar.Month do
         :for={{ day <- previous_month_days(@date, @week_starts_on) }}
         day={{ day }}
         text_color="text-trunks-100"
+        events={{ filtered_events(@events, day) }}
       />
 
       <Day
         :for={{ day <- month_days(@date) }}
         day={{ day }}
         text_color={{ if Timex.to_date(day) == Timex.today(), do: "text-piccolo-100" }}
+        events={{ filtered_events(@events, day) }}
       />
 
       <Day
         :for={{ day <- next_month_days(@date, @week_starts_on) }}
         day={{ day }}
         text_color="text-trunks-100"
+        events={{ filtered_events(@events, day) }}
       />
     </div>
     """
@@ -71,5 +75,15 @@ defmodule Moon.Components.Calendar.Month do
         right_open: false
       )
     end
+  end
+
+  defp filtered_events([], _), do: []
+
+  defp filtered_events(events, day) do
+    events
+    |> Enum.filter(fn event ->
+      Timex.to_date(event.started_at) == Timex.to_date(day)
+    end)
+    |> Enum.sort_by(& &1.started_at, {:asc, NaiveDateTime})
   end
 end

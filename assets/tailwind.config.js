@@ -12,18 +12,18 @@ module.exports = {
         'xxs': '.625rem'
       }
       // width: {
-      //   "66": "66px",
-      //   "88": "88px",
+      //   '66': '66px',
+      //   '88': '88px',
       // },
       // height: {
-      //   "66": "66px",
-      //   "88": "88px",
+      //   '66': '66px',
+      //   '88': '88px',
       // }
     },
     boxShadow: {
-      DEFAULT: "0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 24px 24px -6px rgba(0, 0, 0, 0.1)",
-      lg: "0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4)",
-      xl: "0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2)"
+      DEFAULT: '0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 24px 24px -6px rgba(0, 0, 0, 0.1)',
+      lg: '0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4)',
+      xl: '0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2)'
     },
     colors: {
       'transparent': 'transparent',
@@ -69,7 +69,9 @@ module.exports = {
     },
   },
   variants: {
-    width: ["responsive", "hover", "focus"]
+    width: ['responsive', 'hover', 'focus']
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio')
+  ],
 };
