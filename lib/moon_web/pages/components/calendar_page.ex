@@ -40,6 +40,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <template slot="code">
       <#CodePreview>
+        alias Moon.Components.Calendar
+
         <Calendar
           id="default_calendar"
           week_starts_on={{ 1 }}
@@ -68,6 +70,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <template slot="code">
       <#CodePreview>
+        alias Moon.Components.Calendar
+
         <Calendar
           id="sunday_calendar"
           week_starts_on={{ 7 }}
