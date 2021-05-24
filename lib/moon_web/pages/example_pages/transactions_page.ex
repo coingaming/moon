@@ -1,152 +1,3 @@
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.MenuButton do
-  use MoonWeb, :stateless_component
-
-  slot default
-
-  def render(assigns) do
-    ~H"""
-    <div class="p-4"><slot /></div>
-    """
-  end
-end
-
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.SearchResults do
-  use MoonWeb, :stateful_component
-
-  alias Moon.Assets.Icon
-
-  prop search_text, :string
-  data search_results, :any
-
-  def mount(assigns) do
-    {:ok, assign(assigns, search_results: get_search_results(""))}
-  end
-
-  def render(assigns) do
-    ~H"""
-    <div class="p-4 bg-gohan-100 shadow rounded absolute w-full mt-4">
-      <div class="p-4" :for={{ section <- @search_results }}>
-        <div class="pb-4">{{ section.title }}</div>
-        <div class="pb-4" :for={{ child <- section.children }}>
-          <Icon name={{ child.icon }} class="mr-4" />
-          {{ child.text }}
-        </div>
-      </div>
-    </div>
-    """
-  end
-
-  def get_search_results(search_text) do
-    [
-      %{
-        title: "Transactions",
-        children: [
-          %{icon: "icon_arrow_diagonals", text: "Pending withdrawal"},
-          %{icon: "icon_arrow_diagonals", text: "Pending deposits"}
-        ]
-      },
-      %{
-        title: "Marketing",
-        children: [
-          %{icon: "icon_forward", text: "Rewards"},
-          %{icon: "icon_forward", text: "Freebet offers"},
-          %{icon: "icon_forward", text: "Reward instances"},
-          %{icon: "icon_forward", text: "Bonuses"},
-          %{icon: "icon_forward", text: "Bonus groups"}
-        ]
-      },
-      %{
-        title: "Sites",
-        children: []
-      },
-      %{
-        title: "Log audits",
-        children: [
-          %{icon: "icon_forward", text: "Records list"}
-        ]
-      }
-    ]
-  end
-end
-
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
-  use MoonWeb, :stateful_component
-
-  alias Moon.Assets.Icon
-
-  data transactions, :any
-
-  def mount(assigns) do
-    {:ok, assign(assigns, transactions: get_transactions())}
-  end
-
-  def render(assigns) do
-    ~H"""
-    <table class="table-auto">
-      <thead>
-        <th class="p-4">Aff username</th>
-        <th class="p-4">Aff id</th>
-        <th class="p-4">Brand</th>
-        <th class="p-4">Create time</th>
-        <th class="p-4">Process time</th>
-        <th class="p-4">Status</th>
-        <th class="p-4">Tags</th>
-      </thead>
-      <tbody>
-        <tr class={{ get_row_class(i) }} :for.with_index={{ {transaction, i} <- @transactions }}>
-          <td class="p-4">{{ transaction.aff_username }}</td>
-          <td class="p-4">{{ transaction.aff_id }}</td>
-          <td class="p-4">{{ transaction.brand }}</td>
-          <td class="p-4">{{ transaction.create_time }}</td>
-          <td class="p-4">{{ transaction.process_time }}</td>
-          <td class="p-4">{{ transaction.status }}</td>
-          <td class="p-4">{{ transaction.tags }}</td>
-        </tr>
-      </tbody>
-    </table>
-    """
-  end
-
-  def get_row_class(i) do
-    rem(i, 2) == 0 && "bg-gohan-100"
-  end
-
-  def get_transactions() do
-    [
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: "Asia"
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: "Asia"
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: "Asia"
-      }
-    ]
-  end
-end
-
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   use MoonWeb, :live_view
 
@@ -159,6 +10,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias __MODULE__.MenuButton
   alias __MODULE__.SearchResults
   alias __MODULE__.TransactionsList
+  alias __MODULE__.LeftMenu
 
   require Logger
 
@@ -198,7 +50,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <MenuButton><IconBell /></MenuButton>
         </div>
       </div>
-      <TransactionsList id="transactions" />
+      <div class="flex">
+        <LeftMenu id="left-menu"/>
+        <TransactionsList id="transactions" />
+      </div>
     </div>
     """
   end
