@@ -3,17 +3,41 @@ defmodule Moon.Components.Calendar.Day do
 
   prop day, :datetime, required: true
   prop text_color, :string
+  prop events, :list, default: []
 
   def render(assigns) do
     ~H"""
     <div
-      class="relative rounded-lg bg-gohan-100"
-      style="padding-top: 100%;"
+      class="rounded-lg bg-gohan-100 aspect-w-1 aspect-h-1"
     >
       <div
-        class="absolute text-sm md:text-base lg:text-lg leading-none top-3 right-3 {{ @text_color }}"
+        class="text-sm md:text-base lg:text-lg leading-none text-right pt-2 pr-3 {{ @text_color }}"
       >
         {{ day_label(@day) }}
+      </div>
+
+      <div class="p-3 mt-6 space-y-1 text-xs md:text-sm">
+        <div :for.with_index={{ {event, index} <- @events }}>
+          <div
+            :if={{ index < 2 }}
+            class="overflow-hidden leading-tight whitespace-nowrap overflow-ellipsis"
+            title={{ event.description }}
+          >
+            {{ event.description }}
+          </div>
+
+          <div
+            :if={{ index < 2 && event.location }}
+            class="overflow-hidden leading-tight text-trunks-100 whitespace-nowrap overflow-ellipsis"
+            title={{ event.location }}
+          >
+            {{ event.location }}
+          </div>
+        </div>
+
+        <div :if={{ length(@events) > 2 }} class="text-xs font-semibold">
+          {{ length(@events) - 2 }} more
+        </div>
       </div>
     </div>
     """
