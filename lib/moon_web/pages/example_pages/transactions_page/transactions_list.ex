@@ -1,7 +1,7 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Icon
+  alias Moon.Components.Badge
   alias Moon.Assets.Logo
 
   data transactions, :any
@@ -34,8 +34,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
           </td>
           <td class="p-4">{{ transaction.create_time }}</td>
           <td class="p-4">{{ transaction.process_time }}</td>
-          <td class="p-4">{{ transaction.status }}</td>
-          <td class="p-4">{{ transaction.tags }}</td>
+          <td class="p-4"><Badge background_color="krillin-100">{{ transaction.status }}</Badge></td>
+          <td class="p-4"><Badge background_color="krillin-100">{{ transaction.tags }}</Badge></td>
         </tr>
       </tbody>
     </table>
@@ -56,7 +56,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
-        tags: "Asia"
+        tags: ["Asia"]
       },
       %{
         aff_username: "123456",
@@ -66,7 +66,17 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
-        tags: "Asia"
+        tags: ["Asia"]
+      },
+      %{
+        aff_username: "123456",
+        aff_id: "123",
+        brand_logo: "logo_sportsbet_short",
+        brand: "Sportsbet",
+        create_time: "May 14, 2020, 12:45:57",
+        process_time: "May 14, 2020, 12:45:57",
+        status: "Confirmed",
+        tags: ["Asia"]
       },
       %{
         aff_username: "123456",
@@ -76,7 +86,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
-        tags: "Asia"
+        tags: ["Asia"]
       }
     ]
   end

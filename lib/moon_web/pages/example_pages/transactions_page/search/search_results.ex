@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.SearchResults do
+defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search.SearchResults do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icon
