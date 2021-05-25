@@ -57,7 +57,7 @@ defmodule Moon.Components.TextInput do
             "data-error": @error && "true",
             "data-rounded": @rounded && "true",
             "phx-focus": @on_focus,
-            "phx-blur": @on_blur,
+            "phx-blur": @on_blur
           ]
         }}
         value={{ @value }}
@@ -74,7 +74,7 @@ defmodule Moon.Components.TextInput do
             "data-error": @error && "true",
             "data-rounded": @rounded && "true",
             "phx-focus": @on_focus,
-            "phx-blur": @on_blur,
+            "phx-blur": @on_blur
           ]}}
           value={{ @value }}
         />
