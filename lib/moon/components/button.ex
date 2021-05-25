@@ -1,6 +1,8 @@
 defmodule Moon.Components.Button do
   use Moon.StatelessComponent
 
+  alias Moon.Assets.Icon
+
   prop(href, :string)
   prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default"])
   prop(size, :string, values: ["xsmall", "small", "medium", "large"])
@@ -28,6 +30,9 @@ defmodule Moon.Components.Button do
   prop(value_name, :string)
   prop(value, :any)
 
+  prop(left_icon, :string)
+  prop(right_icon, :string)
+
   slot(default)
 
   def render(assigns) do
@@ -35,7 +40,7 @@ defmodule Moon.Components.Button do
     {{ asset_import @socket, "js/components/button" }}
 
     <button
-      class="moon-button {{ @class }}"
+      class="moon-button relative {{ @class }}"
       disabled={{ @disabled }}
       type={{ @type }}
       data-mock-state={{ @mock_state }}
@@ -44,27 +49,17 @@ defmodule Moon.Components.Button do
       :on-click={{ @on_click }}
       :attrs={{ phx_val_tag(@value_name, @value) }}
     >
-      <slot />
+
+      <div class="flex gap-2 items-center">
+        <Icon name={{ @left_icon }} :if={{ @left_icon }} />
+        <slot />
+        <Icon name={{ @right_icon }} :if={{ @right_icon }} />
+      </div>
     </button>
     """
   end
 
-  # def render(assigns) do
-  #   ~H"""
-  #   <button
-  #     class="moon-button"
-  #     disabled={{ @disabled }}
-  #     data-mock-state={{ @mock_state }}
-  #     data-variant={{ @variant }}
-  #     data-size={{ @size }}
-  #     phx-click={{ @on_click }}
-  #     phx-hook="AssetHook"
-  #     data-assets={{ asset_hook @socket, "js/components/button" }}
-  #   >
-  #     <slot />
-  #   </button>
-  #   """
-  # end
+
 
   def phx_val_tag(nil, _), do: []
 

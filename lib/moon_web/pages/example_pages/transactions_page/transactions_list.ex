@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icon
+  alias Moon.Assets.Logo
 
   data transactions, :any
 
@@ -25,7 +26,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
         <tr class={{ get_row_class(i) }} :for.with_index={{ {transaction, i} <- @transactions }}>
           <td class="p-4">{{ transaction.aff_username }}</td>
           <td class="p-4">{{ transaction.aff_id }}</td>
-          <td class="p-4">{{ transaction.brand }}</td>
+          <td class="p-4">
+            <div class="flex gap-2">
+              <Logo name={{ transaction.brand_logo }} />
+              <div>{{ transaction.brand }}</div>
+            </div>
+          </td>
           <td class="p-4">{{ transaction.create_time }}</td>
           <td class="p-4">{{ transaction.process_time }}</td>
           <td class="p-4">{{ transaction.status }}</td>

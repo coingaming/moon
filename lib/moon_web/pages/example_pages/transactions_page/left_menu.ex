@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.LeftMenu do
     ~H"""
     <div>
       <div class="p-4" :for={{ segment <- @segments }}>
-        <div class="pb-4 pl-2">{{ segment.title }} • {{ segment.count }}</div>
+        <div class="pb-4 pl-2 text-trunks-100">{{ segment.title }} • {{ segment.count }}</div>
         <div class="pb-4" :for={{ item <- segment.items }}>
           <div class="p-2 inline-block"><Icon name={{ item.icon }} /></div>
           <div class="inline-block">{{ item.title }}</div>
