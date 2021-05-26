@@ -33,3 +33,7 @@
 .moon-table tr td {
   @apply p-3 px-4;
 }
+
+[x-cloak] {
+  display: none !important;
+}
