@@ -2,10 +2,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.MenuButton do
   use MoonWeb, :stateless_component
 
   slot default
+  prop class, :string
 
   def render(assigns) do
     ~H"""
-    <div class="p-4"><slot /></div>
+    <div class="p-2 m-2 rounded-lg {{ @class }}"><slot /></div>
     """
   end
 end

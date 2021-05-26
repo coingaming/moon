@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
 
   alias Moon.Components.Badge
   alias Moon.Assets.Logo
+  alias Moon.Components.Button
 
   data transactions, :any
 
@@ -12,33 +13,45 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
 
   def render(assigns) do
     ~H"""
-    <table class="table-auto">
-      <thead>
-        <th class="p-4">Aff username</th>
-        <th class="p-4">Aff id</th>
-        <th class="p-4">Brand</th>
-        <th class="p-4">Create time</th>
-        <th class="p-4">Process time</th>
-        <th class="p-4">Status</th>
-        <th class="p-4">Tags</th>
-      </thead>
-      <tbody>
-        <tr class={{ get_row_class(i) }} :for.with_index={{ {transaction, i} <- @transactions }}>
-          <td class="p-4">{{ transaction.aff_username }}</td>
-          <td class="p-4">{{ transaction.aff_id }}</td>
-          <td class="p-4">
-            <div class="flex gap-2">
-              <Logo name={{ transaction.brand_logo }} />
-              <div>{{ transaction.brand }}</div>
-            </div>
-          </td>
-          <td class="p-4">{{ transaction.create_time }}</td>
-          <td class="p-4">{{ transaction.process_time }}</td>
-          <td class="p-4"><Badge background_color="krillin-100">{{ transaction.status }}</Badge></td>
-          <td class="p-4"><Badge background_color="krillin-100">{{ transaction.tags }}</Badge></td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <div class="flex gap-2 relative z-10">
+        <Button left_icon="icon_zoom" class="bg-gohan-100">Search</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Last 7 days</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Brand · All</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Users · 1</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Country · All</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Range · All</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">Status · All</Button>
+        <Button right_icon="icon_chevron_down_rounded" class="bg-gohan-100">More filters</Button>
+      </div>
+      <table class="table-auto">
+        <thead>
+          <th class="p-4">Aff username</th>
+          <th class="p-4">Aff id</th>
+          <th class="p-4">Brand</th>
+          <th class="p-4">Create time</th>
+          <th class="p-4">Process time</th>
+          <th class="p-4">Status</th>
+          <th class="p-4">Tags</th>
+        </thead>
+        <tbody>
+          <tr class={{ get_row_class(i) }} :for.with_index={{ {transaction, i} <- @transactions }}>
+            <td class="p-4">{{ transaction.aff_username }}</td>
+            <td class="p-4">{{ transaction.aff_id }}</td>
+            <td class="p-4">
+              <div class="flex gap-2">
+                <Logo name={{ transaction.brand_logo }} />
+                <div>{{ transaction.brand }}</div>
+              </div>
+            </td>
+            <td class="p-4">{{ transaction.create_time }}</td>
+            <td class="p-4">{{ transaction.process_time }}</td>
+            <td class="p-4"><Badge background_color="krillin-100">{{ transaction.status }}</Badge></td>
+            <td class="p-4"><Badge background_color="krillin-100">{{ transaction.tags }}</Badge></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     """
   end
 
