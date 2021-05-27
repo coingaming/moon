@@ -25,3 +25,11 @@
 .border-radius-default {
   border-radius: var(--radius--default);
 }
+
+.moon-table tr th {
+  @apply p-3 px-4 text-trunks-100 text-left font-normal;
+}
+
+.moon-table tr td {
+  @apply p-3 px-4;
+}

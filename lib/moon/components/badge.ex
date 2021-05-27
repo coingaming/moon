@@ -10,14 +10,11 @@ defmodule Moon.Components.Badge do
   slot(default)
 
   def render(assigns) do
-    style = get_style(color: assigns.color, background_color: assigns.background_color)
-
     ~H"""
     {{ asset_import @socket, "js/components/badge" }}
 
     <span
-      class="moon-badge {{ @class }}"
-      style={{ style }}
+      class="moon-badge {{ @class }} bg-{{ @background_color }} text-{{ @color }} pl-2 pr-2"
       data-size={{ @size }}
     >
       <slot />

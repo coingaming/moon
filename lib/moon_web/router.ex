@@ -64,7 +64,7 @@ defmodule MoonWeb.Router do
 
       live "/tutorials/theming-and-visuals", MoonWeb.Pages.Tutorials.ThemingAndVisuals
 
-      live "/transactions", MoonWeb.Pages.ExamplePages.TransactionsPage
+      live "/example-pages/transactions", MoonWeb.Pages.ExamplePages.TransactionsPage
     end
   end)
 

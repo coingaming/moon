@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.LeftMenu do
 
   def render(assigns) do
     ~H"""
-    <div>
+    <div class="pt-4">
       <div class="p-4" :for={{ segment <- @segments }}>
         <div class="pb-4 pl-2 text-trunks-100">{{ segment.title }} • {{ segment.count }}</div>
         <div class="pb-4" :for={{ item <- segment.items }}>

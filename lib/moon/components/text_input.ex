@@ -36,8 +36,8 @@ defmodule Moon.Components.TextInput do
   prop(right_icon_click, :event)
   prop(class, :string)
   prop(without_design, :boolean)
-  prop(on_focus, :string)
-  prop(on_blur, :string)
+  prop(on_focus, :event)
+  prop(on_blur, :event)
 
   def render(assigns) do
     ~H"""
@@ -55,12 +55,12 @@ defmodule Moon.Components.TextInput do
             placeholder: @placeholder,
             disabled: @disabled,
             "data-error": @error && "true",
-            "data-rounded": @rounded && "true",
-            "phx-focus": @on_focus,
-            "phx-blur": @on_blur
+            "data-rounded": @rounded && "true"
           ]
         }}
         value={{ @value }}
+        focus={{ @on_focus }}
+        blur={{ @on_blur }}
         :if={{ !@label }}
       />
 
@@ -72,10 +72,10 @@ defmodule Moon.Components.TextInput do
             placeholder: @placeholder,
             disabled: @disabled,
             "data-error": @error && "true",
-            "data-rounded": @rounded && "true",
-            "phx-focus": @on_focus,
-            "phx-blur": @on_blur
+            "data-rounded": @rounded && "true"
           ]}}
+          focus={{ @on_focus }}
+          blur={{ @on_blur }}
           value={{ @value }}
         />
       </Label>
