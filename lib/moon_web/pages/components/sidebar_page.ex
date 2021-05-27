@@ -7,6 +7,11 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Components.Sidebar
   alias Moon.Components.Stack
 
+  alias Moon.Assets.Icons.IconSlots
+  alias Moon.Assets.Icons.IconSportsBaseBall
+  alias Moon.Assets.Logos.LogoBitcasinoFull
+  alias Moon.Assets.Logos.LogoBitcasinoShort
+
   def mount(params, _session, socket) do
     socket =
       assign(socket,
@@ -27,20 +32,91 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state={{ true }} layout="column">
+      <Heading size=24 class="mt-4" is_regular>Usage</Heading>
+
+      <p>
+        Wrap <code class="bg-goku-40">Sidebar</code> component inside fixed div.
+      </p>
+
+      <p>
+        Use <code class="bg-goku-40">open_width</code> prop to define sidebar width in an open mode. Default value is <code class="bg-goku-40">"14.5rem"</code>
+      </p>
+
+      <p>
+        Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
+      </p>
+
+      <ExampleAndCode>
         <template slot="example">
-          <Sidebar />
+          <Sidebar open_width="14rem">
+            <template slot="short_logo">
+              <div class="flex items-center h-10">
+                <LogoBitcasinoShort font_size="2.1rem" />
+              </div>
+            </template>
+
+            <template slot="full_logo">
+              <div class="pl-1">
+                <LogoBitcasinoFull font_size="10rem" class="h-10" />
+              </div>
+            </template>
+
+            <template slot="menu">
+              <nav class="mt-6">
+                <Stack>
+                  <a href="#" class="group flex items-center">
+                    <IconSlots font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                    <span class="group-hover:text-piccolo-100">Slots</span>
+                  </a>
+                  <a href="#" class="group flex items-center">
+                    <IconSportsBaseBall font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                    <span class="group-hover:text-piccolo-100">Baseball</span>
+                  </a>
+                </Stack>
+              </nav>
+            </template>
+          </Sidebar>
         </template>
 
         <template slot="code">
       <#CodePreview>
         alias Moon.Components.Sidebar
+        alias Moon.Components.Stack
+        alias Moon.Assets.Icons.IconSlots
+        alias Moon.Assets.Icons.IconSportsBaseBall
+        alias Moon.Assets.Logos.LogoBitcasinoFull
+        alias Moon.Assets.Logos.LogoBitcasinoShort
 
-        <Sidebar />
+        <Sidebar open_width="14rem">
+          <template slot="short_logo">
+            <div class="flex items-center h-10">
+              <LogoBitcasinoShort font_size="2.1rem" />
+            </div>
+          </template>
+
+          <template slot="full_logo">
+            <div class="pl-1">
+              <LogoBitcasinoFull font_size="10rem" class="h-10" />
+            </div>
+          </template>
+
+          <template slot="menu">
+            <nav class="mt-6">
+              <Stack>
+                <a href="#" class="group flex items-center">
+                  <IconSlots font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                  <span class="group-hover:text-piccolo-100">Slots</span>
+                </a>
+                <a href="#" class="group flex items-center">
+                  <IconSportsBaseBall font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                  <span class="group-hover:text-piccolo-100">Baseball</span>
+                </a>
+              </Stack>
+            </nav>
+          </template>
+        </Sidebar>
       </#CodePreview>
         </template>
-
-        <template slot="state"></template>
       </ExampleAndCode>
     </Stack>
     """
