@@ -21,10 +21,9 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search do
           field={{ :search_text }}
           value={{ @search_map.search_text }}
           on_focus="activate_search"
-          on_blur="deactivate_search"
           class="bg-goku-100"
         />
-        <SearchResults id="search" search_text={{ @search_map.search_text }} :if={{ @search_active }} />
+        <SearchResults id="search" close="deactivate_search" search_text={{ @search_map.search_text }} :if={{ @search_active }} />
       </Form>
     </div>
     """

@@ -2,8 +2,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search.SearchResults do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icon
+  alias Moon.Components.Popover
 
   prop search_text, :string
+  prop close, :event
   data search_results, :any
 
   def mount(assigns) do
@@ -12,7 +14,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search.SearchResults do
 
   def render(assigns) do
     ~H"""
-    <div class="p-4 bg-gohan-100 shadow rounded absolute w-full mt-4">
+    <Popover close={{ @close }} placement="under">
       <div class="p-4" :for={{ section <- @search_results }}>
         <div class="pb-4">{{ section.title }}</div>
         <div class="pb-4" :for={{ child <- section.children }}>
@@ -20,11 +22,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search.SearchResults do
           {{ child.text }}
         </div>
       </div>
-    </div>
+    </Popover>
     """
   end
 
-  def get_search_results(search_text) do
+  def get_search_results(_search_text) do
     [
       %{
         title: "Transactions",
