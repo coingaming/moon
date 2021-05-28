@@ -8,6 +8,7 @@ defmodule Moon.Components.Sidebar do
   slot menu
 
   prop open_width, :string, default: "14.5rem"
+  prop background_color, :string, default: ""
 
   def render(assigns) do
     ~H"""
@@ -20,7 +21,7 @@ defmodule Moon.Components.Sidebar do
       <div
         x-cloak
         x-show="collapsed"
-        class="p-5 flex items-center"
+        class="flex items-center p-5"
       >
         <!-- Short logo -->
         <slot name="short_logo" />
@@ -29,7 +30,7 @@ defmodule Moon.Components.Sidebar do
         <div class="ml-2">
           <button
             type="button"
-            class="flex items-center justify-center h-6 w-6 rounded-full focus:outline-none shadow-lg"
+            class="flex items-center justify-center w-6 h-6 rounded-full shadow-lg focus:outline-none"
             x-cloak
             @click="collapsed = false"
           >
@@ -46,12 +47,12 @@ defmodule Moon.Components.Sidebar do
         class="flex flex-col"
         style="width: {{ @open_width }};"
       >
-        <div class="relative flex flex-col flex-grow p-5">
+        <div class="relative flex flex-col flex-grow p-5 {{ @background_color }}">
           <!-- Collapse button -->
           <div class="absolute top-0 right-0">
             <button
               type="button"
-              class="mt-7 -mr-3 flex items-center justify-center h-6 w-6 rounded-full focus:outline-none shadow-lg transition"
+              class="flex items-center justify-center w-6 h-6 -mr-3 transition rounded-full shadow-lg mt-7 focus:outline-none bg-gohan-100"
               :class="{ 'opacity-100': showBtn, 'opacity-0': !showBtn }"
               x-cloak
               @click="collapsed = true"

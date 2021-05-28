@@ -43,12 +43,16 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       </p>
 
       <p>
+        Use <code class="bg-goku-40">background_color</code> prop to define background color of the sidebar.
+      </p>
+
+      <p>
         Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
       </p>
 
       <ExampleAndCode>
         <template slot="example">
-          <Sidebar open_width="14rem">
+          <Sidebar background_color="bg-gohan-100" open_width="14rem">
             <template slot="short_logo">
               <div class="flex items-center h-10">
                 <LogoBitcasinoShort font_size="2.1rem" />
@@ -64,12 +68,12 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
             <template slot="menu">
               <nav class="mt-6">
                 <Stack>
-                  <a href="#" class="group flex items-center">
-                    <IconSlots font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                  <a href="#" class="flex items-center group">
+                    <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                     <span class="group-hover:text-piccolo-100">Slots</span>
                   </a>
-                  <a href="#" class="group flex items-center">
-                    <IconSportsBaseBall font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                  <a href="#" class="flex items-center group">
+                    <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                     <span class="group-hover:text-piccolo-100">Baseball</span>
                   </a>
                 </Stack>
@@ -87,7 +91,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         alias Moon.Assets.Logos.LogoBitcasinoFull
         alias Moon.Assets.Logos.LogoBitcasinoShort
 
-        <Sidebar open_width="14rem">
+        <Sidebar background_color="bg-gohan-100" open_width="14rem">
           <template slot="short_logo">
             <div class="flex items-center h-10">
               <LogoBitcasinoShort font_size="2.1rem" />
@@ -103,12 +107,12 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           <template slot="menu">
             <nav class="mt-6">
               <Stack>
-                <a href="#" class="group flex items-center">
-                  <IconSlots font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                <a href="#" class="flex items-center group">
+                  <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Slots</span>
                 </a>
-                <a href="#" class="group flex items-center">
-                  <IconSportsBaseBall font_size="1.75rem" class="mr-3 flex-shrink-0 transition transform scale-100 group-hover:scale-110" />
+                <a href="#" class="flex items-center group">
+                  <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Baseball</span>
                 </a>
               </Stack>
