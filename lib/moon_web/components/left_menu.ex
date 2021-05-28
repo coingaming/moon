@@ -1,6 +1,7 @@
 defmodule MoonWeb.Components.LeftMenu do
   use MoonWeb, :stateful_component
 
+  alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Stack
@@ -50,17 +51,31 @@ defmodule MoonWeb.Components.LeftMenu do
   def render(assigns) do
     ~H"""
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
-      <template slot="menu">
-        <nav>
-          <Stack class="max-h-full overflow-y-scroll">
-            <Form for={{ :selected_theme }} change="update_selected_theme" target={{ @myself }}>
-              <Select
-                field={{ :value }}
-                options={{ available_themes() }}
-                value={{ @theme_name }}
-              />
-            </Form>
+      <template slot="short_logo">
+        <div class="flex items-center h-10">
+          <LogoMoonDesignShort font_size="2.5rem" />
+        </div>
+      </template>
 
+      <template slot="full_logo">
+        <div class="w-full">
+          <Form
+            for={{ :selected_theme }}
+            change="update_selected_theme"
+            target={{ @myself }}
+          >
+            <Select
+              field={{ :value }}
+              options={{ available_themes() }}
+              value={{ @theme_name }}
+            />
+          </Form>
+        </div>
+      </template>
+
+      <template slot="menu">
+        <nav class="mt-5">
+          <Stack class="">
             <Heading size=20>Tutorials</Heading>
             <Link to="/{{ @theme_name }}/tutorials/process-description-and-team-interactions">Introduction</Link>
             <Link to="/{{ @theme_name }}/tutorials/installation">Installation</Link>

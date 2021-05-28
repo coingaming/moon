@@ -47,7 +47,7 @@ defmodule Moon.Components.Sidebar do
         class="flex flex-col"
         style="width: {{ @open_width }};"
       >
-        <div class="relative flex flex-col flex-grow p-5 {{ @background_color }}">
+        <div class="relative flex flex-col h-screen py-5 {{ @background_color }}">
           <!-- Collapse button -->
           <div class="absolute top-0 right-0">
             <button
@@ -63,9 +63,11 @@ defmodule Moon.Components.Sidebar do
           </div>
 
           <!-- Full logo -->
-          <slot name="full_logo" />
+          <div class="flex items-center flex-shrink-0 px-5">
+            <slot name="full_logo" />
+          </div>
 
-          <div class="flex-grow">
+          <div class="flex-1 overflow-y-auto pl-5 pr-0">
             <!-- Menu -->
             <slot name="menu" />
           </div>

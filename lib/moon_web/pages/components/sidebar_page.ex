@@ -66,7 +66,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
             </template>
 
             <template slot="menu">
-              <nav class="mt-6">
+              <nav class="mt-5">
                 <Stack>
                   <a href="#" class="flex items-center group">
                     <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
@@ -105,7 +105,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           </template>
 
           <template slot="menu">
-            <nav class="mt-6">
+            <nav class="mt-5">
               <Stack>
                 <a href="#" class="flex items-center group">
                   <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
