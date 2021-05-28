@@ -35,7 +35,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       <Heading size=24 class="mt-4" is_regular>Usage</Heading>
 
       <p>
-        Wrap <code class="bg-goku-40">Sidebar</code> component inside fixed div.
+        Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
       </p>
 
       <p>
