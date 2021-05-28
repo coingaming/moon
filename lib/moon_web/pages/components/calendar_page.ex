@@ -118,7 +118,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         ended_at: shifted_time(28),
         description: "Formula 1 Monaco GP 2021",
         location: "Monaco"
-      },
+      }
     ]
   end
 

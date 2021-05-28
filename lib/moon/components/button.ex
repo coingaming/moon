@@ -59,7 +59,6 @@ defmodule Moon.Components.Button do
     """
   end
 
-
   def phx_val_tag(nil, _), do: []
 
   def phx_val_tag(name, value), do: [{:"phx-value-#{name}", value}]

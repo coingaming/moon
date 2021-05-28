@@ -121,10 +121,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   end
 
   def handle_event(
-    "close_popover",
-    _,
-    socket
-  ) do
+        "close_popover",
+        _,
+        socket
+      ) do
     {:noreply, assign(socket, clicked_name: nil)}
   end
 
