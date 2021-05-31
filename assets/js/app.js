@@ -12,6 +12,7 @@ import "../css/app.scss"
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
+import "alpinejs"
 import "phoenix_html"
 import {Socket} from "phoenix"
 import NProgress from "nprogress"
@@ -25,6 +26,13 @@ Hooks.AssetHook = AssetHook
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: Hooks,
+  dom: {
+    onBeforeElUpdated(from, to) {
+      if (from.__x) {
+        Alpine.clone(from.__x, to)
+      }
+    }
+  },
   params: { _csrf_token: csrfToken }
 })
 
