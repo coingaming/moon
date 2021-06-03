@@ -2,6 +2,13 @@ https://moon-surface.coingaming.io/tutorials/process-description-and-team-intera
 https://moon-surface.coingaming.io/tutorials/installation
 
 
+# Security issues
+
+Please do not publish this project, as it contains following security issues
+
+1. Figma importer contains Figma API token (for secret files)
+
+
 # Preferences to consider when writing code
 
 In writing code try to remember following rules:
