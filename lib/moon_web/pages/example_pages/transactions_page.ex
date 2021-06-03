@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Moon.Assets.Icons.IconBell
   alias Moon.Assets.Icons.IconLiveChat
   alias Moon.Assets.Icons.IconChevronRightRounded
+  alias Moon.Assets.Logos.LogoLabFull
 
   alias __MODULE__.MenuButton
   alias __MODULE__.TransactionsList
@@ -24,7 +25,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     ~H"""
     <div class="{{ @theme_name }}">
       <div class="flex gap-2 items-center p-4 bg-gohan-100">
-        <div class="p-2">LAB</div>
+        <div class="p-2"><LogoLabFull font_size="5rem" /></div>
         <Search id="search" />
         <div class="flex gap-2 items-center">
           <MenuButton><IconSettings /></MenuButton>

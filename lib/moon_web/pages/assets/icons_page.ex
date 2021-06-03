@@ -187,6 +187,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconProfile
   alias Icons.IconPromotions
   alias Icons.IconRefresh
+  alias Icons.IconReward
   alias Icons.IconRow
   alias Icons.IconSbShield
   alias Icons.IconSearch
@@ -196,6 +197,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconSlots
   alias Icons.IconSnackbarSuccess
   alias Icons.IconSportWidget
+  alias Icons.IconSportsAfl
   alias Icons.IconSportsAmericanFootBall
   alias Icons.IconSportsBadminton
   alias Icons.IconSportsBaseBall
@@ -2638,6 +2640,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
     <ExampleAndCode class="mt-4">
       <template slot="example">
+        <IconReward font_size="5rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <IconReward font_size="5rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <IconRow font_size="5rem" />
       </template>
 
@@ -2748,6 +2763,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <template slot="code">
         <#CodePreview>
         <IconSportWidget font_size="5rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <IconSportsAfl font_size="5rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <IconSportsAfl font_size="5rem" />
         </#CodePreview>
       </template>
     </ExampleAndCode>

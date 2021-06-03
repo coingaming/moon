@@ -162,6 +162,8 @@ const singularName = (pluralName: string) =>
   (assetsFolder) => {
     const files = getFiles(assetsFolder);
 
+    console.log(files)
+
     writeAssetsMapFile({
       assetsFolder,
       iconType: singularName(assetsFolder),
