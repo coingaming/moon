@@ -240,8 +240,8 @@ ${fontFaceCss}
   --z-index--dialog: 1000;
   --z-index--toggle: 1;
   
-  --color--text: ${figmaConfig['bulma-100']};
-  --color--background: ${figmaConfig['goku-100']};
+  --color--text: #${figmaConfig['color-bulma-100']};
+  --color--background: #${figmaConfig['color-goku-100']};
 
   ${colorIds
     .map(
@@ -321,8 +321,8 @@ ${fontFaceCss}
     --z-index--dialog: 1000;
     --z-index--toggle: 1;
     
-    --color--text: ${figmaConfig['bulma-100']};
-    --color--background: ${figmaConfig['goku-100']};
+    --color--text: #${figmaConfig['dark-color-bulma-100']};
+    --color--background: #${figmaConfig['dark-color-goku-100']};
   
     ${colorIds
       .map(
