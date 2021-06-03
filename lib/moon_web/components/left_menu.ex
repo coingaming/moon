@@ -20,6 +20,8 @@ defmodule MoonWeb.Components.LeftMenu do
     [key: "Bombay club", value: "bombay-club"],
     [key: "Btcxe", value: "btcxe"],
     [key: "Hub88", value: "hub88"],
+    [key: "Lab dark", value: "lab-dark"],
+    [key: "Lab light", value: "lab-light"],
     [key: "Livecasino dark", value: "livecasino-dark"],
     [key: "Livecasino light", value: "livecasino-light"],
     [key: "Hub88", value: "luckyslots"],

@@ -1,0 +1,129 @@
+
+
+@font-face {
+  font-family: Averta Std;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-weight: 400;
+  src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: Averta Std;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-weight: 500;
+  src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
+}
+  
+
+.lab-light {
+  --base--space: 16px;
+  --base--font-size: 14;
+  --base--line-height: 20px;
+  
+  --border-style: Solid;
+  --border-width: 1px;
+  --border: 1px solid;
+  --box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);;
+  
+  --breakpoint--small: 500px;
+  --breakpoint--medium: 800px;
+  --breakpoint--large: 1080px;
+  --breakpoint--xlarge: 1200px;
+  
+  --font-face--regular--font-family: Averta Std;
+  --font-face--regular--font-style: normal;
+  --font-face--regular--font-display: swap;
+  --font-face--regular--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  --font-face--regular--font-weight: 400;
+  --font-face--regular--src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
+  
+  --font-face--semibold--font-family: Averta Std;
+  --font-face--semibold--font-style: normal;
+  --font-face--semibold--font-display: swap;
+  --font-face--semibold--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  --font-face--semibold--font-weight: 500;
+  --font-face--semibold--src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
+          
+  --font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-size: 1200px;
+  --font-weight--normal: 400;
+  --font-weight--semibold: 500;
+  
+  --max-width--default: 1024;
+  --max-width--large: 1440;
+  
+  --opacity--disabled: 0.35;
+  
+  --radius--small: 8px;
+  --radius--medium: 12px;
+  --radius--large: 16px;
+  --radius--full: 100%;
+  
+  --space--xsmall: 4px;
+  --space--small: 8px;
+  --space--default: 16px;
+  --space--medium: 24px;
+  --space--large: 32px;
+  --space--xlarge: 40px;
+  
+  --transition-duration--slow: 0.4;
+  --transition-duration--default: 0.2;
+  
+  --z-index--carousel-control: 5;
+  --z-index--dialog: 1000;
+  --z-index--toggle: 1;
+  
+  --color--text: #202425;
+  --color--background: #F3F5F6;
+
+  
+  --color--krillin-100: #ffb319;
+  --color--krillin-10: #ffe4ad;
+  --color--chi-chi-100: #ff4e64;
+  --color--chi-chi-10: #ffa7b2;
+  --color--roshi-100: #0cd664;
+  --color--roshi-10: #b6f3d0;
+  --color--dodoria-100: #d33030;
+  --color--dodoria-10: #e99797;
+  --color--cell-100: #0ab758;
+  --color--cell-10: #84dbab;
+  --color--raditz-100: #b3804a;
+  --color--raditz-10: #d9Bfa4;
+  --color--whis-100: #0f75bd;
+  --color--whis-10: #87bade;
+  --color--frieza-100: #5c33cf;
+  --color--frieza-10: #b6a3e9;
+  --color--nappa-100: #725550;
+  --color--nappa-10: #b8aaa7;
+  --color--piccolo-120: #000000;
+  --color--piccolo-100: #202425;
+  --color--piccolo-80: #303638;
+  --color--hit-120: #636369;
+  --color--hit-100: #77777E;
+  --color--hit-80: #8B8B92;
+  --color--beerus-100: #DCE1E5;
+  --color--goku-100: #F3F5F6;
+  --color--goku-80: #E4E7E8;
+  --color--goku-40: #DBDFE0;
+  --color--goku-10: #D2D7D8;
+  --color--gohan-100: #FFFFFF;
+  --color--gohan-80: #31373f;
+  --color--gohan-40: #5f646a;
+  --color--gohan-10: #8c9095;
+  --color--goten-100: #FFFFFF;
+  --color--bulma-100: #202425;
+  --color--trunks-100: #8697A2;
+            
+  space: var(--base--space);
+  font-size: var(--base--font-size);
+  line-height: var(--base--line-height);
+  color: var(--color--text);
+  background-color: var(--color--background);
+  font-family: var(--font-family);
+  font-weight: var(--font-face--regular--font-weight);
+}
+  
