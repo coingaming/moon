@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.Search do
+defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Form

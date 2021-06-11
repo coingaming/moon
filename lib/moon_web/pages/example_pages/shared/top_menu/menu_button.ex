@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.MenuButton do
+defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.MenuButton do
   use MoonWeb, :stateless_component
 
   slot default

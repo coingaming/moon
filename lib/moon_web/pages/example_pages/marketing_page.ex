@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
+defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   use MoonWeb, :live_view
 
   alias Moon.Components.Heading
@@ -8,9 +8,9 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Shared.LeftMenu
   alias Shared.Breadcrumbs
 
-  alias __MODULE__.TransactionsList
+  alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList
 
-  data breadcrumbs, :any, default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
+  data breadcrumbs, :any, default: [%{name: "Marketing", to: "/lab-light/example-pages/marketing"}]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         <LeftMenu id="left-menu"/>
         <div class="p-4 pt-8">
           <Breadcrumbs breadcrumbs={{ @breadcrumbs }} />
-          <Heading size=32 class="pt-4 pb-8">Transactions</Heading>
+          <Heading size=32 class="pt-4 pb-8">Marketing</Heading>
           <TransactionsList id="transactions" />
         </div>
       </div>

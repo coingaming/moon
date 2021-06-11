@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Components.Popover
 
   data transactions, :any
-  data clicked_name, :string, default: "brand"
+  data clicked_name, :string, default: ""
 
   def mount(assigns) do
     {:ok, assign(assigns, transactions: get_transactions())}
