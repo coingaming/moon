@@ -14,7 +14,7 @@ defmodule Moon.Components.Badge do
     {{ asset_import @socket, "js/tailwind" }}
 
     <span
-      class="{{ @class }} inline-flex bg-{{ @background_color }} text-{{ @color }} pl-2 pr-2 rounded-full {{ @size == "xsmall" && "text-half" || "text-xs" }} uppercase"
+      class="{{ @class }} bg-{{ @background_color }} text-{{ @color }} p-px pl-2 pr-2 rounded-sm {{ @size == "xsmall" && "text-xxs" || "text-sm" }} uppercase"
     >
       <slot />
     </span>
