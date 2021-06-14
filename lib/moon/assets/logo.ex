@@ -24,6 +24,7 @@ defmodule Moon.Assets.Logo do
     logo_drop: Logos.LogoDrop,
     logo_hub88_full: Logos.LogoHub88Full,
     logo_hub88_short: Logos.LogoHub88Short,
+    logo_lab_full: Logos.LogoLabFull,
     logo_livecasino_full: Logos.LogoLivecasinoFull,
     logo_luckyslots_full: Logos.LogoLuckyslotsFull,
     logo_luckyslots_short: Logos.LogoLuckyslotsShort,
@@ -38,6 +39,7 @@ defmodule Moon.Assets.Logo do
     logo_sportsbet_short: Logos.LogoSportsbetShort,
     logo_sportsbet_sponsor: Logos.LogoSportsbetSponsor,
     logo_sportsbet: Logos.LogoSportsbet,
+    logo_utorg: Logos.LogoUtorg,
     moon_pay: Logos.MoonPay
   }
   def icon_name_to_module(icon_name) do

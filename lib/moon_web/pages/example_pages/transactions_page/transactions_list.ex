@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Components.Popover
 
   data transactions, :any
-  data clicked_name, :string, default: "brand"
+  data clicked_name, :string, default: ""
 
   def mount(assigns) do
     {:ok, assign(assigns, transactions: get_transactions())}
@@ -103,13 +103,21 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
             </td>
             <td>{{ transaction.create_time }}</td>
             <td>{{ transaction.process_time }}</td>
-            <td><Badge background_color="krillin-100">{{ transaction.status }}</Badge></td>
-            <td><Badge background_color="krillin-100">{{ transaction.tags }}</Badge></td>
+            <td><Badge background_color={{ bg_color(transaction.status) }} color={{ color(transaction.status) }}>{{ transaction.status }}</Badge></td>
+            <td><Badge background_color={{ bg_color(tag) }} color={{ color(tag) }} :for={{ tag <- transaction.tags }}>{{ tag }}</Badge></td>
           </tr>
         </tbody>
       </Table>
     </div>
     """
+  end
+
+  def bg_color(str) do
+    "roshi-10"
+  end
+
+  def color(str) do
+    "roshi-100"
   end
 
   def handle_event(

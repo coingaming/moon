@@ -15,7 +15,7 @@ defmodule Moon.Components.Chip do
     {{ asset_import @socket, "js/tailwind" }}
 
     <Button
-      class="bg-gohan-100 {{ @class }}"
+      class="bg-gohan-100 rounded-lg {{ @class }}"
       left_icon={{ @left_icon }}
       right_icon={{ @right_icon }}
       on_click={{ @on_click }}

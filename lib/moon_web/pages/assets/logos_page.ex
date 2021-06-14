@@ -16,6 +16,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoDrop
   alias Logos.LogoHub88Full
   alias Logos.LogoHub88Short
+  alias Logos.LogoLabFull
   alias Logos.LogoLivecasinoFull
   alias Logos.LogoLuckyslotsFull
   alias Logos.LogoLuckyslotsShort
@@ -30,6 +31,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoSportsbetShort
   alias Logos.LogoSportsbetSponsor
   alias Logos.LogoSportsbet
+  alias Logos.LogoUtorg
   alias Logos.MoonPay
 
   def mount(params, _session, socket) do
@@ -185,6 +187,19 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
     <ExampleAndCode class="mt-4">
       <template slot="example">
+        <LogoLabFull font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoLabFull font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
         <LogoLivecasinoFull font_size="10rem" />
       </template>
 
@@ -360,6 +375,19 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       <template slot="code">
         <#CodePreview>
         <LogoSportsbet font_size="10rem" />
+        </#CodePreview>
+      </template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <template slot="example">
+        <LogoUtorg font_size="10rem" />
+      </template>
+
+      <template slot="code">
+        <#CodePreview>
+        <LogoUtorg font_size="10rem" />
         </#CodePreview>
       </template>
     </ExampleAndCode>

@@ -20,6 +20,7 @@
   
 
 .lab-light {
+  
   --base--space: 16px;
   --base--font-size: 14;
   --base--line-height: 20px;
@@ -27,7 +28,6 @@
   --border-style: Solid;
   --border-width: 1px;
   --border: 1px solid;
-  --box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);;
   
   --breakpoint--small: 500px;
   --breakpoint--medium: 800px;
@@ -76,10 +76,26 @@
   --z-index--carousel-control: 5;
   --z-index--dialog: 1000;
   --z-index--toggle: 1;
-  
-  --color--text: #202425;
-  --color--background: #F3F5F6;
 
+  space: var(--base--space);
+  font-size: var(--base--font-size);
+  line-height: var(--base--line-height);
+  color: var(--color--text);
+  background-color: var(--color--background);
+  font-family: var(--font-family);
+  font-weight: var(--font-face--regular--font-weight);
+
+  --color--text: var(--color--bulma-100);
+  --color--background: var(--color--goku-100);
+  
+
+  --box-shadow--sm:  0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);;
+  --box-shadow:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);;
+  --box-shadow--md:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);;
+  --box-shadow--default:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);;
+  --box-shadow--lg:  0px 4.8px 14.4px rgba(0, 0, 0, 0.18), 0px 25.6px 57.6px rgba(0, 0, 0, 0.22);;
+  --box-shadow--xl:  undefined;
+  
   
   --color--krillin-100: #ffb319;
   --color--krillin-10: #ffe4ad;
@@ -117,13 +133,5 @@
   --color--goten-100: #FFFFFF;
   --color--bulma-100: #202425;
   --color--trunks-100: #8697A2;
-            
-  space: var(--base--space);
-  font-size: var(--base--font-size);
-  line-height: var(--base--line-height);
-  color: var(--color--text);
-  background-color: var(--color--background);
-  font-family: var(--font-family);
-  font-weight: var(--font-face--regular--font-weight);
 }
   

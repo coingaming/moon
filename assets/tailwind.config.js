@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'half': '.5rem',
-        'xxs': '.625rem'
-      }
+        xxs: '.5rem',
+        sm: '.625rem',
+      },
       // width: {
       //   '66': '66px',
       //   '88': '88px',
@@ -22,14 +22,24 @@ module.exports = {
       // }
     },
     boxShadow: {
-      DEFAULT: '0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 24px 24px -6px rgba(0, 0, 0, 0.1)',
-      lg: '0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4)',
-      xl: '0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2)'
+      sm: 'var(--box-shadow--sm)',
+      DEFAULT: 'var(--box-shadow--default)',
+      md: 'var(--box-shadow--default)',
+      lg: 'var(--box-shadow--lg)',
+      xl: 'var(--box-shadow--xl)',
+    },
+    borderRadius: {
+      sm: 'var(--radius--small)',
+      DEFAULT: 'var(--radius--medium)',
+      md: 'var(--radius--medium)',
+      lg: 'var(--radius--large)',
+      full: 'var(--radius--full)',
+      large: '12px',
     },
     colors: {
-      'transparent': 'transparent',
-      'text': 'var(--color-text)',
-      'background': 'var(--color-background)',
+      transparent: 'transparent',
+      text: 'var(--color-text)',
+      background: 'var(--color-background)',
       'krillin-10': 'var(--color--krillin-10)',
       'krillin-100': 'var(--color--krillin-100)',
       'chi_chi-10': 'var(--color--chi_chi-10)',
@@ -66,16 +76,14 @@ module.exports = {
       'beerus-100': 'var(--color--beerus-100)',
       'bulma-100': 'var(--color--bulma-100)',
       'trunks-100': 'var(--color--trunks-100)',
-      'hover': 'rgba(0, 0, 0, 0.08)'
+      hover: 'rgba(0, 0, 0, 0.08)',
     },
   },
   variants: {
     width: ['responsive', 'hover', 'focus'],
     extend: {
-      scale: ['group-hover']
-    }
+      scale: ['group-hover'],
+    },
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio')
-  ],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

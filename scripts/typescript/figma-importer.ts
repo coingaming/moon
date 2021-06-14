@@ -103,10 +103,10 @@ const colorIds = [
 ];
 
 const boxShadowIds = [
-  'box-shadow-4',
-  'box-shadow-8',
-  'box-shadow-16',
-  'box-shadow-64',
+  'box-shadow-sm',
+  'box-shadow-default',
+  'box-shadow-lg',
+  'box-shadow-xl',
 ];
 
 const extractIds = [
@@ -179,10 +179,7 @@ themes.map(async (theme: ThemeConf) => {
 }
   `;
 
-  const lightThemeCss = `
-${fontFaceCss}
-
-.${theme.name}-light {
+  const sharedCssVarsAndValues = `
   --base--space: ${figmaConfig['space-default']};
   --base--font-size: ${figmaConfig['font-size']};
   --base--line-height: 20px;
@@ -190,7 +187,6 @@ ${fontFaceCss}
   --border-style: ${figmaConfig['border-style']};
   --border-width: ${figmaConfig['border-width']};
   --border: ${figmaConfig['border']};
-  --box-shadow: ${figmaConfig['box-shadow-4']};
   
   --breakpoint--small: ${figmaConfig['breakpoint-small']};
   --breakpoint--medium: ${figmaConfig['breakpoint-medium']};
@@ -239,17 +235,7 @@ ${fontFaceCss}
   --z-index--carousel-control: 5;
   --z-index--dialog: 1000;
   --z-index--toggle: 1;
-  
-  --color--text: #${figmaConfig['color-bulma-100']};
-  --color--background: #${figmaConfig['color-goku-100']};
 
-  ${colorIds
-    .map(
-      (x) => `
-  --color--${x}: #${figmaConfig[`color-${x}`]};`
-    )
-    .join('')}
-            
   space: var(--base--space);
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
@@ -257,6 +243,30 @@ ${fontFaceCss}
   background-color: var(--color--background);
   font-family: var(--font-family);
   font-weight: var(--font-face--regular--font-weight);
+
+  --color--text: var(--color--bulma-100);
+  --color--background: var(--color--goku-100);
+  `
+
+  const lightThemeCss = `
+${fontFaceCss}
+
+.${theme.name}-light {
+  ${sharedCssVarsAndValues}
+
+  --box-shadow--sm:  ${figmaConfig['box-shadow-sm']};
+  --box-shadow:  ${figmaConfig['box-shadow-default']};
+  --box-shadow--md:  ${figmaConfig['box-shadow-default']};
+  --box-shadow--default:  ${figmaConfig['box-shadow-default']};
+  --box-shadow--lg:  ${figmaConfig['box-shadow-lg']};
+  --box-shadow--xl:  ${figmaConfig['box-shadow-xl']};
+  
+  ${colorIds
+    .map(
+      (x) => `
+  --color--${x}: #${figmaConfig[`color-${x}`]};`
+    )
+    .join('')}
 }
   `;
 
@@ -264,108 +274,26 @@ ${fontFaceCss}
   ${fontFaceCss}
   
   .${theme.name}-dark {
-    --base--space: ${figmaConfig['space-default']};
-    --base--font-size: ${figmaConfig['font-size']};
-    --base--line-height: 20px;
-    
-    --border-style: ${figmaConfig['border-style']};
-    --border-width: ${figmaConfig['border-width']};
-    --border: ${figmaConfig['border']};
-    --box-shadow: ${figmaConfig['box-shadow-4']};
-    
-    --breakpoint--small: ${figmaConfig['breakpoint-small']};
-    --breakpoint--medium: ${figmaConfig['breakpoint-medium']};
-    --breakpoint--large: ${figmaConfig['breakpoint-large']};
-    --breakpoint--xlarge: ${figmaConfig['breakpoint-xlarge']};
-    
-    --font-face--regular--font-family: Averta Std;
-    --font-face--regular--font-style: normal;
-    --font-face--regular--font-display: swap;
-    --font-face--regular--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    --font-face--regular--font-weight: 400;
-    --font-face--regular--src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
-    
-    --font-face--semibold--font-family: Averta Std;
-    --font-face--semibold--font-style: normal;
-    --font-face--semibold--font-display: swap;
-    --font-face--semibold--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    --font-face--semibold--font-weight: 500;
-    --font-face--semibold--src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
-            
-    --font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --font-size: ${figmaConfig['breakpoint-xlarge']};
-    --font-weight--normal: 400;
-    --font-weight--semibold: 500;
-    
-    --max-width--default: 1024;
-    --max-width--large: 1440;
-    
-    --opacity--disabled: 0.35;
-    
-    --radius--small: ${figmaConfig['radius-small']};
-    --radius--medium: ${figmaConfig['radius-medium']};
-    --radius--large: ${figmaConfig['radius-large']};
-    --radius--full: ${figmaConfig['radius-full']};
-    
-    --space--xsmall: ${figmaConfig['space-xsmall']};
-    --space--small: ${figmaConfig['space-small']};
-    --space--default: ${figmaConfig['space-default']};
-    --space--medium: ${figmaConfig['space-medium']};
-    --space--large: ${figmaConfig['space-large']};
-    --space--xlarge: ${figmaConfig['space-xlarge']};
-    
-    --transition-duration--slow: ${figmaConfig['transition-slow']};
-    --transition-duration--default: ${figmaConfig['transition-default']};
-    
-    --z-index--carousel-control: 5;
-    --z-index--dialog: 1000;
-    --z-index--toggle: 1;
-    
-    --color--text: #${figmaConfig['dark-color-bulma-100']};
-    --color--background: #${figmaConfig['dark-color-goku-100']};
-  
+    ${sharedCssVarsAndValues}
+
+    --box-shadow--sm:  ${figmaConfig['dark-box-shadow-sm']};
+    --box-shadow:  ${figmaConfig['dark-box-shadow-default']};
+    --box-shadow--md:  ${figmaConfig['dark-box-shadow-default']};
+    --box-shadow--default:  ${figmaConfig['dark-box-shadow-default']};
+    --box-shadow--lg:  ${figmaConfig['dark-box-shadow-lg']};
+    --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
+
     ${colorIds
       .map(
         (x) => `
     --color--${x}: #${figmaConfig[`dark-color-${x}`]};`
       )
       .join('')}
-              
-    space: var(--base--space);
-    font-size: var(--base--font-size);
-    line-height: var(--base--line-height);
-    color: var(--color--text);
-    background-color: var(--color--background);
-    font-family: var(--font-family);
-    font-weight: var(--font-face--regular--font-weight);
+
   }
     `;
 
   writeThemeFile(`${theme.name}-light.scss`, lightThemeCss);
   writeThemeFile(`${theme.name}-dark.scss`, darkThemeCss);
 
-  // const tokensConfiguration = getChild(conf.document, 'Tokens configuration');
-  // const tokensTemplate = getChild(tokensConfiguration, 'Tokens template');
-  // const body = getChild(tokensTemplate, 'Body');
-  // const bodyRadiusAndBreakpoints = getChild(body, 'Border Radius & Breakpoint');
-  // const borderStyleAndSpacing = getChild(body, 'Border Style & Spacing');
-  // const transitionAndZIndex = getChild(body, 'Transition & Z-Index');
-  // const boxShadow = getChild(body, 'Box-Shadow');
-  // const opacity = getChild(body, 'Opacity');
-  // const font = getChild(body, 'Font');
-  // const color = getChild(body, 'Color');
-  // const colorContent = getChild(color, 'Content');
-  // const supportColors = getChild(colorContent, 'Supprotive Color');
-  // const brandColors = getChild(colorContent, 'Brand Colors');
-  // const validSupportColors = getValidColors(supportColors);
-  // const validBrandColors = getValidColors(brandColors);
-  // validSupportColors.map((validSupportColor: any) => {
-  //     console.log("---")
-  //     console.log(validSupportColor.name)
-  //     try {
-  //     console.log(validSupportColor.children[0].children[1].children[1].name);
-  //     } catch (e) {
-  //     console.error(e);
-  //     }
-  // });
 });
