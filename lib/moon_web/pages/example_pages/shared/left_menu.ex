@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
           <div class="p-2">{{ item.title }}</div>
         </div>
         <div class="pb-4 flex">
-          <div class="bg-gohan-100 p-2"><Icon name="icon_plus" /></div>
+          <div><div class="bg-goku-80 rounded-sm p-2 pt-1 h-8 w-8 align-middle content-center"><Icon name="icon_plus" /></div></div>
           <div class="p-2">{{ segment.new_item }}</div>
         </div>
       </div>
