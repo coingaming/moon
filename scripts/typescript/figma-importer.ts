@@ -5,8 +5,10 @@ const exportDir = '../../assets/css/themes/';
 
 console.log('Running Figma importer');
 
+
 // tutorial https://blog.prototypr.io/design-tokens-with-figma-aef25c42430f
 // figma tokens file https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1%3A7
+// https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41 
 
 // https://www.figma.com/developers/api
 // TODO this is really not secure, especially when project goes public
@@ -130,12 +132,12 @@ const extractIds = [
   'space-xlarge',
   'transition-slow',
   'transition-default',
-  ...boxShadowIds,
+  ...boxShadowIds.map((x) => `light-${x}`),
   ...boxShadowIds.map((x) => `dark-${x}`),
   'opacity-disabled',
   'font-family',
   'font-size',
-  ...colorIds.map((x) => `color-${x}`),
+  ...colorIds.map((x) => `light-color-${x}`),
   ...colorIds.map((x) => `dark-color-${x}`),
 ];
 
@@ -254,17 +256,17 @@ ${fontFaceCss}
 .${theme.name}-light {
   ${sharedCssVarsAndValues}
 
-  --box-shadow--sm:  ${figmaConfig['box-shadow-sm']};
-  --box-shadow:  ${figmaConfig['box-shadow-default']};
-  --box-shadow--md:  ${figmaConfig['box-shadow-default']};
-  --box-shadow--default:  ${figmaConfig['box-shadow-default']};
-  --box-shadow--lg:  ${figmaConfig['box-shadow-lg']};
-  --box-shadow--xl:  ${figmaConfig['box-shadow-xl']};
+  --box-shadow--sm:  ${figmaConfig['light-box-shadow-sm']};
+  --box-shadow:  ${figmaConfig['light-box-shadow-default']};
+  --box-shadow--md:  ${figmaConfig['light-box-shadow-default']};
+  --box-shadow--default:  ${figmaConfig['light-box-shadow-default']};
+  --box-shadow--lg:  ${figmaConfig['light-box-shadow-lg']};
+  --box-shadow--xl:  ${figmaConfig['light-box-shadow-xl']};
   
   ${colorIds
     .map(
       (x) => `
-  --color--${x}: #${figmaConfig[`color-${x}`]};`
+  --color--${x}: #${figmaConfig[`light-color-${x}`]};`
     )
     .join('')}
 }

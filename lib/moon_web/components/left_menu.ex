@@ -82,6 +82,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to="/{{ @theme_name }}/tutorials/process-description-and-team-interactions">Introduction</Link>
             <Link to="/{{ @theme_name }}/tutorials/installation">Installation</Link>
             <Link to="/{{ @theme_name }}/tutorials/add-data-using-form">Add data using form</Link>
+            <Link to="/lab-light/example-pages/transactions">New site on Moon</Link>
 
             <Heading size=20>Theming and visuals</Heading>
             <Link to="/{{ @theme_name }}/tutorials/theming-and-visuals#text-color">Text color</Link>
