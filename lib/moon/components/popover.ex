@@ -19,3 +19,17 @@ defmodule Moon.Components.Popover do
     """
   end
 end
+
+defmodule Moon.Components.Popover.Outer do
+  use Moon.StatelessComponent
+
+  slot(default)
+
+  def render(assigns) do
+    ~H"""
+    <div class="relative">
+      <slot />
+    </div>
+    """
+  end
+end

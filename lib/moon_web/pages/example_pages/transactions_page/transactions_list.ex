@@ -7,6 +7,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Components.Chip
   alias Moon.Components.Table
   alias Moon.Components.Popover
+  alias Moon.Autolayouts.ButtonsList
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.ButtonsList
 
   data transactions, :any
   data clicked_name, :string, default: ""
@@ -17,71 +21,73 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
 
   def render(assigns) do
     ~H"""
-    <div>
-      <div class="flex gap-2 relative z-10 max-w-full flex-wrap">
-
-        <div class="relative">
-          <Chip on_click="open_popover" value="search" left_icon="icon_zoom">Search</Chip>
+    <TopToDown>
+      <ButtonsList>
+        <Popover.Outer>
+          <Chip value="search" left_icon="icon_zoom">
+            Search
+          </Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "search" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="timeframe" right_icon="icon_chevron_down_rounded">
             Last 7 days
           </Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "timeframe" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="brand" right_icon="icon_chevron_down_rounded">Brand · All</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "brand" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="users" right_icon="icon_chevron_down_rounded">Users · 1</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "users" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="country" right_icon="icon_chevron_down_rounded">Country · All</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "country" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "range" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="status" right_icon="icon_chevron_down_rounded">Status · All</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "status" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
-        <div class="relative">
+        <Popover.Outer>
           <Chip on_click="open_popover" value="more_filters" right_icon="icon_chevron_down_rounded">More filters</Chip>
           <Popover close="close_popover" placement="under" :if={{ @clicked_name == "more_filters" }}>
             Yay
           </Popover>
-        </div>
+        </Popover.Outer>
 
         <Button left_icon="icon_timer">Save segment</Button>
         <Button>Clear all</Button>
-      </div>
-      <Table class="mt-8">
+      </ButtonsList>
+
+      <Table>
         <thead>
           <th>Aff username</th>
           <th>Aff id</th>
@@ -96,19 +102,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
             <td>{{ transaction.aff_username }}</td>
             <td>{{ transaction.aff_id }}</td>
             <td>
-              <div class="flex gap-2">
+              <LeftToRight>
                 <Logo name={{ transaction.brand_logo }} />
                 <div>{{ transaction.brand }}</div>
-              </div>
+              </LeftToRight>
             </td>
             <td>{{ transaction.create_time }}</td>
             <td>{{ transaction.process_time }}</td>
             <td><Badge background_color={{ bg_color(transaction.status) }} color={{ color(transaction.status) }}>{{ transaction.status }}</Badge></td>
-            <td><Badge background_color={{ bg_color(tag) }} color={{ color(tag) }} :for={{ tag <- transaction.tags }}>{{ tag }}</Badge></td>
+            <td><LeftToRight><Badge background_color={{ bg_color(tag) }} color={{ color(tag) }} :for={{ tag <- transaction.tags }}>{{ tag }}</Badge></LeftToRight></td>
           </tr>
         </tbody>
       </Table>
-    </div>
+    </TopToDown>
     """
   end
 
@@ -146,7 +152,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
-        tags: ["Asia"]
+        tags: ["Asia", "Tag 2"]
       },
       %{
         aff_username: "123456",

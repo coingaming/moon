@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icon
+  alias Moon.Autolayouts.Sections
 
   data segments, :any
 
@@ -11,8 +12,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   def render(assigns) do
     ~H"""
-    <div class="pt-4">
-      <div class="p-4" :for={{ segment <- @segments }}>
+    <Sections class="p-4">
+      <div :for={{ segment <- @segments }}>
         <div class="pb-4 pl-2 text-trunks-100">{{ segment.title }} • {{ segment.count }}</div>
         <div class="flex" :for={{ item <- segment.items }}>
           <div class="p-2"><Icon name={{ item.icon }} /></div>
@@ -23,7 +24,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
           <div class="p-2">{{ segment.new_item }}</div>
         </div>
       </div>
-    </div>
+    </Sections>
     """
   end
 
