@@ -13,7 +13,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Autolayouts.ButtonsList
 
   data transactions, :any
-  data clicked_name, :string, default: ""
 
   def mount(assigns) do
     {:ok, assign(assigns, transactions: get_transactions())}
@@ -23,65 +22,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
     ~F"""
     <TopToDown>
       <ButtonsList>
-        <Popover.Outer>
-          <Chip value="search" left_icon="icon_zoom">
-            Search
-          </Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "search"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
+        <Popover id="search" placement="top-start">
+          <Popover.Trigger>
+            <Chip value="search" left_icon="icon_zoom">Search</Chip>
+          </Popover.Trigger>
+          <Popover.Content>
+            <div class="p-4 bg-gohan-100 shadow rounded">Yay</div>
+          </Popover.Content>
+        </Popover>
 
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="timeframe" right_icon="icon_chevron_down_rounded">
-            Last 7 days
-          </Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "timeframe"}>
-            Yay
+        {#for item <- [
+          "Last 7 days", "Brand · All", "Users · 1", "Country · All",
+          "Range · All", "Status · All", "More filters"
+        ]}
+          <Popover id={item} placement="bottom-start">
+            <Popover.Trigger>
+              <Chip value="search" right_icon="icon_chevron_down_rounded">{item}</Chip>
+            </Popover.Trigger>
+            <Popover.Content>
+              <div class="p-4 bg-gohan-100 shadow rounded">Yay</div>
+            </Popover.Content>
           </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="brand" right_icon="icon_chevron_down_rounded">Brand · All</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "brand"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="users" right_icon="icon_chevron_down_rounded">Users · 1</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "users"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="country" right_icon="icon_chevron_down_rounded">Country · All</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "country"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "range"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="status" right_icon="icon_chevron_down_rounded">Status · All</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "status"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
-
-        <Popover.Outer>
-          <Chip on_click="open_popover" value="more_filters" right_icon="icon_chevron_down_rounded">More filters</Chip>
-          <Popover close="close_popover" placement="under" :if={@clicked_name == "more_filters"}>
-            Yay
-          </Popover>
-        </Popover.Outer>
+        {/for}
 
         <Button left_icon="icon_timer">Save segment</Button>
         <Button>Clear all</Button>
@@ -124,22 +86,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
 
   def color(str) do
     "roshi-100"
-  end
-
-  def handle_event(
-        "open_popover",
-        %{"click_value" => click_value},
-        socket
-      ) do
-    {:noreply, assign(socket, clicked_name: click_value)}
-  end
-
-  def handle_event(
-        "close_popover",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, clicked_name: nil)}
   end
 
   def get_transactions() do

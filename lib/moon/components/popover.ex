@@ -1,35 +1,61 @@
 defmodule Moon.Components.Popover do
   use Moon.StatelessComponent
 
-  slot(default)
-  prop class, :css_class
-  prop placement, :string, values: ["under"]
-  prop close, :event
+  slot trigger,
+    required: true
+
+  slot content,
+    required: true
+
+  prop id, :string,
+    required: true
+
+  prop placement, :string,
+    required: true,
+    values: [
+      "top-start", "top", "top-end", "right-start", "right", "right-end",
+      "bottom-start", "bottom", "bottom-end", "left-start", "left", "left-end"
+    ]
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+      { asset_import @socket, "js/tailwind" }
+      { asset_import @socket, "js/popper" }
 
-    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gohan-100 z-30" style="opacity: 0;" :on-click={@close}>
-    </div>
+      <div
+        id={@id}
+        data-placement={@placement}
+        phx-update="ignore"
 
-    <div class={"p-4 bg-gohan-100 shadow rounded absolute w-full mt-4 #{@class} z-40"}>
-      <#slot />
-    </div>
+        x-data="{ showContent: false }"
+        x-init="() => createPopper($el.children[0], $el.children[1], {
+          placement: $el.getAttribute('data-placement'),
+          modifiers: [{
+            name: 'offset',
+            options: { offset: [0, 4] }
+          }]
+        })"
+        x-on:click.away="showContent = false"
+      >
+        <div x-on:click="showContent = !showContent">
+          <#slot name="trigger"/>
+        </div>
+
+        <div class="z-30 w-48" x-bind:class="{
+          'invisible': !showContent,
+          'pointer-events-none': !showContent
+        }">
+          <#slot name="content" />
+        </div>
+      </div>
     """
   end
 end
 
-defmodule Moon.Components.Popover.Outer do
-  use Moon.StatelessComponent
+defmodule Moon.Components.Popover.Trigger do
+  use Surface.Component, slot: "trigger"
+end
 
-  slot(default)
-
-  def render(assigns) do
-    ~F"""
-    <div class="relative">
-      <#slot />
-    </div>
-    """
-  end
+defmodule Moon.Components.Popover.Content do
+  use Surface.Component, slot: "content"
 end
