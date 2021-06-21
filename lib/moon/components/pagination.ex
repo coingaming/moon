@@ -12,16 +12,16 @@ defmodule Moon.Components.PaginationButton do
   prop on_click, :event
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Button
-      size={{ @size }}
-      variant={{ if @page_number == @current_page_number, do: "primary", else: @variant }}
-      class="mx-2 font-semibold transition-none rounded-lg {{ @class }}"
-      on_click={{ @on_click }}
+      size={@size}
+      variant={if @page_number == @current_page_number, do: "primary", else: @variant}
+      class={"mx-2 font-semibold transition-none rounded-lg #{@class}"}
+      on_click={@on_click}
       value_name="page"
-      value={{ @page_number }}
-      disabled={{ @disabled }}
-    >{{ @label || @page_number }}</Button>
+      value={@page_number}
+      disabled={@disabled}
+    >{@label || @page_number}</Button>
     """
   end
 end
@@ -40,64 +40,64 @@ defmodule Moon.Components.Pagination do
   prop on_change, :event
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
     <div class="flex flex-wrap items-center justify-center">
       <div class="mb-4 w-full lg:w-auto">
         <PaginationButton
-          size={{ @size }}
-          page_number={{ @current_page_number - 1 }}
-          label={{ @previous_button_label }}
-          current_page_number={{ @current_page_number }}
-          disabled={{ @current_page_number <= 1 }}
+          size={@size}
+          page_number={@current_page_number - 1}
+          label={@previous_button_label}
+          current_page_number={@current_page_number}
+          disabled={@current_page_number <= 1}
           class="block mx-auto"
-          on_click={{ @on_change }}
+          on_click={@on_change}
         />
       </div>
 
       <div class="flex flex-grow items-center justify-center mb-4">
         <PaginationButton
-          size={{ @size }}
-          page_number={{ 1 }}
-          current_page_number={{ @current_page_number }}
+          size={@size}
+          page_number={1}
+          current_page_number={@current_page_number}
           variant="tertiary"
-          on_click={{ @on_change }}
+          on_click={@on_change}
         />
 
-        <div :if={{ @current_page_number - @range_before > 2 }} class="mx-2">…</div>
+        <div :if={@current_page_number - @range_before > 2} class="mx-2">…</div>
 
         <PaginationButton
-          :if={{ @total_pages > 2 }}
-          :for={{ page <- page_range(@current_page_number, @range_before, @range_after, @total_pages) }}
-          size={{ @size }}
-          page_number={{ page }}
-          current_page_number={{ @current_page_number }}
+          :if={@total_pages > 2}
+          :for={page <- page_range(@current_page_number, @range_before, @range_after, @total_pages)}
+          size={@size}
+          page_number={page}
+          current_page_number={@current_page_number}
           variant="tertiary"
-          on_click={{ @on_change }}
+          on_click={@on_change}
         />
 
-        <div :if={{ @current_page_number + @range_after < @total_pages - 1 }} class="mx-2">…</div>
+        <div :if={@current_page_number + @range_after < @total_pages - 1} class="mx-2">…</div>
 
         <PaginationButton
-          :if={{ @total_pages > 1 }}
-          size={{ @size }}
-          page_number={{ @total_pages }}
-          current_page_number={{ @current_page_number }}
+          :if={@total_pages > 1}
+          size={@size}
+          page_number={@total_pages}
+          current_page_number={@current_page_number}
           variant="tertiary"
-          on_click={{ @on_change }}
+          on_click={@on_change}
         />
       </div>
 
       <div class="mb-4 w-full lg:w-auto">
         <PaginationButton
-          size={{ @size }}
-          page_number={{ @current_page_number + 1 }}
-          label={{ @next_button_label }}
-          current_page_number={{ @current_page_number }}
-          disabled={{ @current_page_number >= @total_pages }}
+          size={@size}
+          page_number={@current_page_number + 1}
+          label={@next_button_label}
+          current_page_number={@current_page_number}
+          disabled={@current_page_number >= @total_pages}
           class="block mx-auto"
-          on_click={{ @on_change }}
+          on_click={@on_change}
         />
       </div>
     </div>

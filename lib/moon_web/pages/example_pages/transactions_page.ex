@@ -21,14 +21,14 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   end
 
   def render(assigns) do
-    ~H"""
-    <div class="{{ @theme_name }}">
+    ~F"""
+    <div class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
         <LeftMenu id="left-menu" />
         <div class="p-4 pt-8">
-          <Breadcrumbs breadcrumbs={{ @breadcrumbs }} />
-          <Heading size=32 class="pt-4 pb-8">Transactions</Heading>
+          <Breadcrumbs breadcrumbs={@breadcrumbs} />
+          <Heading size={32} class="pt-4 pb-8">Transactions</Heading>
           <TransactionsList id="transactions" />
         </div>
       </div>

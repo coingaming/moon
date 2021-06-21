@@ -9,9 +9,9 @@ defmodule Moon.Components.Label.LabelFlex do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    <label class="moon-label-flex {{ @class }}">
-      <slot />
+    ~F"""
+    <label class={"moon-label-flex #{@class}"}>
+      <#slot />
     </label>
     """
   end
@@ -25,9 +25,9 @@ defmodule Moon.Components.Label.LabelContent do
   slot(default)
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <span class="moon-label-content">
-      <slot />
+      <#slot />
     </span>
     """
   end
@@ -48,14 +48,14 @@ defmodule Moon.Components.Label do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    <label class={{ @class }} :if={{ @inline }}>{{ @text }}</label>
+    ~F"""
+    <label class={@class} :if={@inline}>{@text}</label>
 
-    <LabelFlex class={{ @class }} flex={{ @flex }} input_grow={{ @input_grow }} :if={{ !@inline }}>
-      <LabelContent disabled={{ @disabled }} flex={{ @flex }}>
-        {{ @text }}
+    <LabelFlex class={@class} flex={@flex} input_grow={@input_grow} :if={!@inline}>
+      <LabelContent disabled={@disabled} flex={@flex}>
+        {@text}
       </LabelContent>
-      <slot />
+      <#slot />
     </LabelFlex>
     """
   end

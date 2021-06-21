@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Components.InlinePage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Inline>
       <div>a</div>
       <div>b</div>

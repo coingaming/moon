@@ -12,7 +12,7 @@ defmodule Moon.Components.Calendar do
   data show_month, :boolean, default: true
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="min-w-min">
       <div class="flex items-center mb-6">
         <Button
@@ -28,7 +28,7 @@ defmodule Moon.Components.Calendar do
           type="button"
           class="ml-6 leading-none"
           :on-click="shift_range"
-          phx-value-shift={{ -1 }}
+          phx-value-shift={-1}
         >
           <IconChevronLeftRounded class="block" font_size="1rem"/>
         </button>
@@ -37,13 +37,13 @@ defmodule Moon.Components.Calendar do
           type="button"
           class="ml-5 mr-6 leading-none"
           :on-click="shift_range"
-          phx-value-shift={{ 1 }}
+          phx-value-shift={1}
         >
           <IconChevronRightRounded class="block" font_size="1rem"/>
         </button>
 
         <div>
-          {{ calendar_title(@date, @week_starts_on, @show_month) }}
+          {calendar_title(@date, @week_starts_on, @show_month)}
         </div>
 
         <div class="flex-grow text-right">
@@ -53,10 +53,10 @@ defmodule Moon.Components.Calendar do
             size="small"
             on_click="toggle_view"
           >
-            <span :if={{ @show_month }}>
+            <span :if={@show_month}>
               Month
             </span>
-            <span :if={{ !@show_month }}>
+            <span :if={!@show_month}>
               Week
             </span>
           </Button>
@@ -64,22 +64,22 @@ defmodule Moon.Components.Calendar do
       </div>
 
       <div class="flex text-xs text-center text-trunks-100">
-        <div :for={{ day_name <- days_names(@week_starts_on) }} class="flex-1 py-3">
-          {{ day_name }}
+        <div :for={day_name <- days_names(@week_starts_on)} class="flex-1 py-3">
+          {day_name}
         </div>
       </div>
 
       <Month
-        :if={{ @show_month }}
-        date={{ @date }}
-        week_starts_on={{ @week_starts_on }}
-        events={{ @events }}
+        :if={@show_month}
+        date={@date}
+        week_starts_on={@week_starts_on}
+        events={@events}
       />
 
       <Week
-        :if={{ !@show_month }}
-        date={{ @date }}
-        week_starts_on={{ @week_starts_on }}
+        :if={!@show_month}
+        date={@date}
+        week_starts_on={@week_starts_on}
       />
     </div>
     """

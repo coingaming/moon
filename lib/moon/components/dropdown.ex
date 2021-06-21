@@ -13,17 +13,17 @@ defmodule Moon.Components.Dropdown do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
-    <div class="bg-gohan-100 shadow rounded-lg p-1 {{ @class }}">
-      <div class="relative" :if={{ @on_search_change }}>
+    <div class={"bg-gohan-100 shadow rounded-lg p-1 #{@class}"}>
+      <div class="relative" :if={@on_search_change}>
         <IconZoom class="absolute top-4 left-4" />
-        <Form for={{ @search_name }} change={{ @on_search_change }}>
-          <TextInput without_design={{ true }} class="outline-none bg-transparent pl-12 p-4 w-full" type="search" placeholder={{ @search_placeholder }} field={{ :value }} value={{ @search_value }} />
+        <Form for={@search_name} change={@on_search_change}>
+          <TextInput without_design={true} class="outline-none bg-transparent pl-12 p-4 w-full" type="search" placeholder={@search_placeholder} field={:value} value={@search_value} />
         </Form>
       </div>
-      <slot />
+      <#slot />
     </div>
     """
   end
@@ -37,9 +37,9 @@ defmodule Moon.Components.Dropdown.Item do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md" :on-click={{ @click }} phx-value-item_id={{ @item_id }}>
-      <slot />
+    ~F"""
+    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md" :on-click={@click} phx-value-item_id={@item_id}>
+      <#slot />
     </div>
     """
   end
@@ -55,10 +55,10 @@ defmodule Moon.Components.Dropdown.CheckboxItem do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" :on-click={{ @click }} phx-value-item_id={{ @item_id }}>
-      <slot />
-      <Checkbox class="absolute right-0" checked={{ @checked }} />
+    ~F"""
+    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" :on-click={@click} phx-value-item_id={@item_id}>
+      <#slot />
+      <Checkbox class="absolute right-0" checked={@checked} />
     </div>
     """
   end

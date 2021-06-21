@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <p>
       <h1>Select</h1>
       A user-controlled menu of options for forms, navigation and more.
@@ -33,8 +33,8 @@ defmodule MoonWeb.Pages.Components.SelectPage do
 
     <Select
       label="Gender"
-      field={{ :gender }}
-      options={{ @gender_options }}
+      field={:gender}
+      options={@gender_options}
       prompt="Please select gender"
     />
 

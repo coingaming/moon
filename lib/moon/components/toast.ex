@@ -20,31 +20,31 @@ defmodule Moon.Components.Toast do
   end
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
-    <div id={{ @id }} class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4">
-      <div :if={{ @variant }} class="flex-shrink-0 mr-3">
+    <div id={@id} class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4">
+      <div :if={@variant} class="flex-shrink-0 mr-3">
         <IconError
-          :if={{ @variant == "error" }}
+          :if={@variant == "error"}
           class="block w-5 h-5"
           font_size="1.25rem"
         />
 
         <IconWarning
-          :if={{ @variant == "warning" }}
+          :if={@variant == "warning"}
           class="block w-5 h-5"
           font_size="1.25rem"
         />
 
         <IconBannerInfo
-          :if={{ @variant == "info" }}
+          :if={@variant == "info"}
           class="block w-5 h-5"
           font_size="1.25rem"
         />
 
         <IconSnackbarSuccess
-          :if={{ @variant == "success" }}
+          :if={@variant == "success"}
           class="block w-5 h-5"
           font_size="1.25rem"
         />
@@ -52,22 +52,22 @@ defmodule Moon.Components.Toast do
 
       <div class="flex justify-between flex-1 text-sm">
         <p class="flex-1 text-gray-900">
-          {{ @message }}
+          {@message}
         </p>
         <Link
-          :if={{ @link_href && @link_text }}
+          :if={@link_href && @link_text}
           class="ml-4 flex-shrink-0 font-medium"
-          to={{ @link_href }}
+          to={@link_href}
         >
-          {{ @link_text }}
+          {@link_text}
         </Link>
       </div>
 
-      <div :if={{ @closeable }} class="flex flex-shrink-0 ml-4">
+      <div :if={@closeable} class="flex flex-shrink-0 ml-4">
         <button
           class="inline-flex rounded-md hover:text-gray-500 focus:outline-none"
-          :on-click={{ @on_close }}
-          phx-value-id={{ @id }}
+          :on-click={@on_close}
+          phx-value-id={@id}
         >
           <span class="sr-only">Close</span>
           <IconErrorCircle

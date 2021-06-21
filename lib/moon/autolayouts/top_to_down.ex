@@ -5,9 +5,9 @@ defmodule Moon.Autolayouts.TopToDown do
   prop(class, :string, default: nil)
 
   def render(assigns) do
-    ~H"""
-    <div class="flex gap-2 flex-col {{ @class }}">
-      <slot />
+    ~F"""
+    <div class={"flex gap-2 flex-col #{@class}"}>
+      <#slot />
     </div>
     """
   end

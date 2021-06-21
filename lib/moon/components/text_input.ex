@@ -40,43 +40,43 @@ defmodule Moon.Components.TextInput do
   prop(on_blur, :event)
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="relative">
-      {{ asset_import @socket, "js/components/text-input" }}
+      {asset_import @socket, "js/components/text-input"}
 
-      <Icon name={{ @left_icon }} :if={{ @left_icon }} class="absolute z-10 top-3 left-5" />
-      <Icon name={{ @right_icon }} click={{ @right_icon_click }} :if={{ @right_icon }} class="absolute z-10 top-3 right-5" />
+      <Icon name={@left_icon} :if={@left_icon} class="absolute z-10 top-3 left-5" />
+      <Icon name={@right_icon} click={@right_icon_click} :if={@right_icon} class="absolute z-10 top-3 right-5" />
 
       <TextInput
-        class="{{ !@without_design && "moon-text-input" }} {{ @class }} {{ @left_icon && "pl-12" }} {{ @right_icon && "pr-12" }} relative z-0"
-        field={{ @field }}
-        opts={{
+        class={"#{!@without_design && "moon-text-input"} #{@class} #{@left_icon && "pl-12"} #{@right_icon && "pr-12"} relative z-0"}
+        field={@field}
+        opts={
           [
             placeholder: @placeholder,
             disabled: @disabled,
             "data-error": @error && "true",
             "data-rounded": @rounded && "true"
           ]
-        }}
-        value={{ @value }}
-        focus={{ @on_focus }}
-        blur={{ @on_blur }}
-        :if={{ !@label }}
+        }
+        value={@value}
+        focus={@on_focus}
+        blur={@on_blur}
+        :if={!@label}
       />
 
-      <Label text={{ @label }} :if={{ @label }}>
+      <Label text={@label} :if={@label}>
         <TextInput
-          class="moon-text-input mt-2 {{ @left_icon && "pl-12" }} {{ @right_icon && "pr-12" }} relative z-0"
-          field={{ @field }}
-          opts={{ [
+          class={"moon-text-input mt-2 #{@left_icon && "pl-12"} #{@right_icon && "pr-12"} relative z-0"}
+          field={@field}
+          opts={[
             placeholder: @placeholder,
             disabled: @disabled,
             "data-error": @error && "true",
             "data-rounded": @rounded && "true"
-          ]}}
-          focus={{ @on_focus }}
-          blur={{ @on_blur }}
-          value={{ @value }}
+          ]}
+          focus={@on_focus}
+          blur={@on_blur}
+          value={@value}
         />
       </Label>
     </div>

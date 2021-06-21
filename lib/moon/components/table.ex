@@ -5,11 +5,11 @@ defmodule Moon.Components.Table do
   prop class, :css_class
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
-    <table class="table-auto moon-table {{ @class }}">
-      <slot />
+    <table class={"table-auto moon-table #{@class}"}>
+      <#slot />
     </table>
     """
   end

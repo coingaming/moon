@@ -8,15 +8,15 @@ defmodule Moon.Components.Datepicker.Month do
   prop on_click, :event
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div>
       <div class="text-center leading-4 mb-5">
-        {{ Timex.format!(@date, "%B %Y", :strftime) }}
+        {Timex.format!(@date, "%B %Y", :strftime)}
       </div>
 
       <div class="flex text-center text-base font-medium">
-        <div :for={{ ch <- days_letters(@week_starts_on) }} class="w-8 h-8">
-          {{ ch }}
+        <div :for={ch <- days_letters(@week_starts_on)} class="w-8 h-8">
+          {ch}
         </div>
       </div>
 
@@ -24,18 +24,18 @@ defmodule Moon.Components.Datepicker.Month do
         class="grid text-xs"
         style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
       >
-        <div :for={{ _cell <- empty_cells(@date, @week_starts_on) }}></div>
+        <div :for={_cell <- empty_cells(@date, @week_starts_on)}></div>
 
         <div
-          :for={{ day <- month_days(@date) }}
-          class="cursor-pointer {{ day_container_class(day, @start_date, @end_date) }}"
+          :for={day <- month_days(@date)}
+          class={"cursor-pointer #{day_container_class(day, @start_date, @end_date)}"}
         >
           <div
-            class="border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center {{ day_class(day, @start_date, @end_date) }}"
-            :on-click={{ @on_click }}
-            phx-value-date={{ Timex.format!(day, "%Y-%0m-%0dT%R", :strftime) }}
+            class={"border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
+            :on-click={@on_click}
+            phx-value-date={Timex.format!(day, "%Y-%0m-%0dT%R", :strftime)}
           >
-            {{ Timex.format!(day, "%-d", :strftime) }}
+            {Timex.format!(day, "%-d", :strftime)}
           </div>
         </div>
       </div>

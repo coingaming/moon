@@ -30,10 +30,10 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   end
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
-    <Heading size=32 class="mb-8">Dropdown</Heading>
+    <Heading size={32} class="mb-8">Dropdown</Heading>
 
     <p>
       Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
@@ -48,22 +48,22 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
     </p>
 
-    <Heading size=24 class="mt-8">
+    <Heading size={24} class="mt-8">
       <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state={{ true }}>
-      <template slot="example">
+    <ExampleAndCode class="mt-4" show_state={true}>
+      <#template slot="example">
         <Dropdown>
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
-            value={{ @selected_game_ids }}
-            options={{ @selectable_game_options }}
+            value={@selected_game_ids}
+            options={@selectable_game_options}
           />
         </Dropdown>
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <Dropdown>
           <CheckboxMultiselect
@@ -73,16 +73,32 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </template>
+      </#template>
 
-      <template slot="state">
-    @selected_game_ids = {{ inspect(@selected_game_ids) }}
-      </template>
+      <#template slot="state">
+    @selected_game_ids = {inspect(@selected_game_ids)}
+      </#template>
     </ExampleAndCode>
 
 
-    <ExampleAndCode class="mt-4" show_state={{ true }}>
-      <template slot="example">
+    <ExampleAndCode class="mt-4" show_state={true}>
+      <#template slot="example">
+        <Dropdown
+          on_search_change="handle_search_changed"
+          search_placeholder="Search for a name ..."
+          search_name={:game_search}
+        >
+          <CheckboxMultiselect
+            on_change="handle_game_selection_changed"
+            class="max-h-32"
+            value={@selected_game_ids}
+            options={@selectable_filtered_game_options}
+          />
+        </Dropdown>
+      </#template>
+
+      <#template slot="code">
+        <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -95,47 +111,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             options={{ @selectable_filtered_game_options }}
           />
         </Dropdown>
-      </template>
-
-      <template slot="code">
-        <#CodePreview>
-        <Dropdown
-          on_search_change="handle_search_changed"
-          search_placeholder="Search for a name ..."
-          search_name={{ :game_search }}
-        >
-          <CheckboxMultiselect
-            on_change="handle_game_selection_changed"
-            class="max-h-32"
-            value={{ @selected_game_ids }}
-            options={{ @selectable_filtered_game_options }}
-          />
-        </Dropdown>
         </#CodePreview>
-      </template>
+      </#template>
 
-      <template slot="state">
-    @selected_game_ids = {{ inspect(@selected_game_ids) }}
-    @game_search = {{ inspect(@game_search) }}
-      </template>
+      <#template slot="state">
+    @selected_game_ids = {inspect(@selected_game_ids)}
+    @game_search = {inspect(@game_search)}
+      </#template>
     </ExampleAndCode>
 
-    <Heading size=24 class="mt-8">
+    <Heading size={24} class="mt-8">
       <a id="single-item-select">Using SingleItemSelect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state={{ true }}>
-      <template slot="example">
+    <ExampleAndCode class="mt-4" show_state={true}>
+      <#template slot="example">
         <Dropdown>
           <SingeItemSelect
             on_change="handle_other_game_selected"
-            value={{ @other_game_id }}
-            options={{ @selectable_game_options }}
+            value={@other_game_id}
+            options={@selectable_game_options}
           />
         </Dropdown>
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <Dropdown>
           <SingeItemSelect
@@ -145,30 +145,30 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </template>
+      </#template>
 
-      <template slot="state">
-    @other_game_id = {{ inspect(@other_game_id) }}
-      </template>
+      <#template slot="state">
+    @other_game_id = {inspect(@other_game_id)}
+      </#template>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state={{ true }}>
-      <template slot="example">
+    <ExampleAndCode class="mt-4" show_state={true}>
+      <#template slot="example">
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
-          search_name={{ :game_search }}
+          search_name={:game_search}
         >
           <SingeItemSelect
             on_change="handle_other_game_selected"
             class="max-h-32"
-            value={{ @other_game_id }}
-            options={{ @selectable_filtered_game_options }}
+            value={@other_game_id}
+            options={@selectable_filtered_game_options}
           />
         </Dropdown>
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
@@ -183,12 +183,12 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </template>
+      </#template>
 
-      <template slot="state">
-    @other_game_id = {{ inspect(@other_game_id) }}
-    @game_search = {{ inspect(@game_search) }}
-      </template>
+      <#template slot="state">
+    @other_game_id = {inspect(@other_game_id)}
+    @game_search = {inspect(@game_search)}
+      </#template>
     </ExampleAndCode>
 
     """

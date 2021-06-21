@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Text</h1>
     <p>We treat semantic and visual/cosmetic decisions as two totally <Link to="https://csswizardry.com/2016/02/managing-typography-on-large-apps/">separate</Link> things.</p>
     <p>Our choice of p and span is a purely semantic decision, and doesn't impact cosmetics configured via the size prop.</p>
@@ -22,18 +22,18 @@ defmodule MoonWeb.Pages.Components.TextPage do
 
     <Stack>
       <Text>Text with default font size</Text>
-      <Text size=10>Text with font size 10</Text>
-      <Text size=12>Text with font size 12</Text>
-      <Text size=14>Text with font size 14</Text>
-      <Text size=16>Text with font size 16</Text>
-      <Text size=18>Text with font size 18</Text>
-      <Text size=20>Text with font size 20</Text>
-      <Text size=24>Text with font size 24</Text>
-      <Text size=32>Text with font size 32</Text>
-      <Text size=48>font size 48</Text>
-      <Text size=56>font size 56</Text>
-      <Text size=64>font size 64</Text>
-      <Text size=72>font size 72</Text>
+      <Text size={10}>Text with font size 10</Text>
+      <Text size={12}>Text with font size 12</Text>
+      <Text size={14}>Text with font size 14</Text>
+      <Text size={16}>Text with font size 16</Text>
+      <Text size={18}>Text with font size 18</Text>
+      <Text size={20}>Text with font size 20</Text>
+      <Text size={24}>Text with font size 24</Text>
+      <Text size={32}>Text with font size 32</Text>
+      <Text size={48}>font size 48</Text>
+      <Text size={56}>font size 56</Text>
+      <Text size={64}>font size 64</Text>
+      <Text size={72}>font size 72</Text>
     </Stack>
 
     <#CodePreview>
@@ -58,8 +58,8 @@ defmodule MoonWeb.Pages.Components.TextPage do
     <p>By default font weight is regular. You can make it bolder.</p>
 
     <Stack>
-      <Text size=24>Text with default font weight</Text>
-      <Text size=24 is_bold=true>
+      <Text size={24}>Text with default font weight</Text>
+      <Text size={24} is_bold={true}>
         Text with font-weight: semibold
       </Text>
     </Stack>
@@ -76,14 +76,14 @@ defmodule MoonWeb.Pages.Components.TextPage do
     <h2>Color</h2>
 
     <Stack>
-      <Text size=24>Text with default color</Text>
-      <Text size=24 color="trunks-100">
+      <Text size={24}>Text with default color</Text>
+      <Text size={24} color="trunks-100">
         Text with defined color
       </Text>
-      <Text size=24 color="piccolo-100">
+      <Text size={24} color="piccolo-100">
         Text with defined color
       </Text>
-      <Text size=24 color="krillin-100">
+      <Text size={24} color="krillin-100">
         Text with defined color
       </Text>
     </Stack>

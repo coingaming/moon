@@ -8,10 +8,10 @@ defmodule Moon.Components.CheckboxMultiselect.Item do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" :on-click={{ @on_click }} phx-value-toggled_item_id={{ @item_id }}>
-      <slot />
-      <Checkbox class="absolute right-0" checked={{ @checked }} />
+    ~F"""
+    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" :on-click={@on_click} phx-value-toggled_item_id={@item_id}>
+      <#slot />
+      <Checkbox class="absolute right-0" checked={@checked} />
     </div>
     """
   end
@@ -32,14 +32,14 @@ defmodule Moon.Components.CheckboxMultiselect do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
-    <div class="bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll {{ @class }}" style={{ @style || "" }}>
-      <slot />
-      <div :for={{ option <- @options }}>
-        <Item item_id={{ option.value }} checked={{ Enum.member?(@value, option.value) }} on_click={{ @on_change }}>
-          {{ option.label }}
+    <div class={"bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll #{@class}"} style={@style || ""}>
+      <#slot />
+      <div :for={option <- @options}>
+        <Item item_id={option.value} checked={Enum.member?(@value, option.value)} on_click={@on_change}>
+          {option.label}
         </Item>
       </div>
     </div>

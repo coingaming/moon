@@ -20,26 +20,26 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>File Input</Heading>
+      <Heading size={32}>File Input</Heading>
 
       <p>
         Enabling users to upload one or more files inside a form.
       </p>
 
-      <Heading size=24 class="mt-4" is_regular>Label</Heading>
+      <Heading size={24} class="mt-4" is_regular>Label</Heading>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <FileInput
-            conf={{ @uploads.file }}
+            conf={@uploads.file}
             label="Upload your ID"
             placeholder="Choose a photo..."
           />
-        </template>
+        </#template>
 
-    <template slot="code">
+    <#template slot="code">
       <#CodePreview>
         alias Moon.Components.FileInput
 
@@ -58,27 +58,27 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           placeholder="Choose a document..."
         />
       </#CodePreview>
-    </template>
+    </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Error</Heading>
+      <Heading size={24} class="mt-4" is_regular>Error</Heading>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <FileInput
-            conf={{ @uploads.error_file }}
-            error={{ true }}
+            conf={@uploads.error_file}
+            error={true}
           />
-        </template>
+        </#template>
 
-    <template slot="code">
+    <#template slot="code">
       <#CodePreview>
         <FileInput
           conf={{ @uploads.file }}
           error={{ true }}
         />
       </#CodePreview>
-    </template>
+    </#template>
       </ExampleAndCode>
     </Stack>
     """

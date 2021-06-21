@@ -11,16 +11,16 @@ defmodule Moon.Components.Chip do
   prop value, :string
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
     <Button
-      class="bg-gohan-100 rounded-lg {{ @class }}"
-      left_icon={{ @left_icon }}
-      right_icon={{ @right_icon }}
-      on_click={{ @on_click }}
-      value={{ @value }}
-    ><slot /></Button>
+      class={"bg-gohan-100 rounded-lg #{@class}"}
+      left_icon={@left_icon}
+      right_icon={@right_icon}
+      on_click={@on_click}
+      value={@value}
+    ><#slot /></Button>
     """
   end
 end

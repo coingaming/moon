@@ -11,17 +11,17 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Sections class="p-4">
-      <div :for={{ segment <- @segments }}>
-        <div class="pb-4 pl-2 text-trunks-100">{{ segment.title }} • {{ segment.count }}</div>
-        <div class="flex" :for={{ item <- segment.items }}>
-          <div class="p-2"><Icon name={{ item.icon }} /></div>
-          <div class="p-2">{{ item.title }}</div>
+      <div :for={segment <- @segments}>
+        <div class="pb-4 pl-2 text-trunks-100">{segment.title} • {segment.count}</div>
+        <div class="flex" :for={item <- segment.items}>
+          <div class="p-2"><Icon name={item.icon} /></div>
+          <div class="p-2">{item.title}</div>
         </div>
         <div class="pb-4 flex">
           <div><div class="bg-goku-80 rounded-sm p-2 pt-1 h-8 w-8 align-middle content-center"><Icon name="icon_plus" /></div></div>
-          <div class="p-2">{{ segment.new_item }}</div>
+          <div class="p-2">{segment.new_item}</div>
         </div>
       </div>
     </Sections>

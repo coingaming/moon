@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   alias Moon.Assets.Logos.LogoLabFull
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="flex gap-2 items-center p-4 bg-gohan-100">
       <div class="p-2"><LogoLabFull font_size="5rem" /></div>
       <Search id="search" />

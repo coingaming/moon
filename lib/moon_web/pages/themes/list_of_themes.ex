@@ -3,7 +3,7 @@ defmodule MoonWeb.Pages.Themes.ListOfThemes do
   alias Moon.Components.Link
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Themes</h1>
 
     <p>

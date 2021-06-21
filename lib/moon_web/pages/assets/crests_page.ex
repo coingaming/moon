@@ -16,57 +16,57 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <CrestArsenal font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <CrestArsenal font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <CrestFlamengo font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <CrestFlamengo font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <CrestSouthampton font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <CrestSouthampton font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <CrestWatford font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <CrestWatford font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
     """

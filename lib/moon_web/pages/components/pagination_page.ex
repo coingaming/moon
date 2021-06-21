@@ -23,29 +23,29 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Pagination</Heading>
+      <Heading size={32}>Pagination</Heading>
 
       <p>
         Pagination component.
       </p>
 
-      <ExampleAndCode show_state={{ true }} layout="column">
-        <template slot="example">
+      <ExampleAndCode show_state={true} layout="column">
+        <#template slot="example">
           <Pagination
-            current_page_number={{ @current_page_number }}
-            total_pages={{ @total_pages }}
-            range_before={{ 1 }}
-            range_after={{ 2 }}
+            current_page_number={@current_page_number}
+            total_pages={@total_pages}
+            range_before={1}
+            range_after={2}
             size="xsmall"
             previous_button_label="Previous"
             next_button_label="Next"
             on_change="change_current_page"
           />
-        </template>
+        </#template>
 
-    <template slot="code">
+    <#template slot="code">
       <#CodePreview>
         alias Moon.Components.Pagination
 
@@ -65,51 +65,51 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           {:noreply, socket}
         end
       </#CodePreview>
-    </template>
+    </#template>
 
-        <template slot="state">@current_page_number = {{ @current_page_number }}</template>
+        <#template slot="state">@current_page_number = {@current_page_number}</#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Size</Heading>
+      <Heading size={24} class="mt-4" is_regular>Size</Heading>
 
       <p>
         Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
       </p>
 
       <ExampleAndCode layout="column">
-        <template slot="example">
+        <#template slot="example">
           <Stack>
             <Pagination
               size="xsmall"
-              current_page_number={{ @size_page_number }}
-              total_pages={{ @total_pages }}
+              current_page_number={@size_page_number}
+              total_pages={@total_pages}
               on_change="change_size_page"
             />
 
             <Pagination
               size="small"
-              current_page_number={{ @size_page_number }}
-              total_pages={{ @total_pages }}
+              current_page_number={@size_page_number}
+              total_pages={@total_pages}
               on_change="change_size_page"
             />
 
             <Pagination
               size="medium"
-              current_page_number={{ @size_page_number }}
-              total_pages={{ @total_pages }}
+              current_page_number={@size_page_number}
+              total_pages={@total_pages}
               on_change="change_size_page"
             />
 
             <Pagination
               size="large"
-              current_page_number={{ @size_page_number }}
-              total_pages={{ @total_pages }}
+              current_page_number={@size_page_number}
+              total_pages={@total_pages}
               on_change="change_size_page"
             />
           </Stack>
-        </template>
+        </#template>
 
-    <template slot="code">
+    <#template slot="code">
       <#CodePreview>
         <Pagination size="xsmall" />
 
@@ -119,30 +119,30 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
         <Pagination size="large" />
       </#CodePreview>
-    </template>
+    </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Example with a side section</Heading>
+      <Heading size={24} class="mt-4" is_regular>Example with a side section</Heading>
 
-      <ExampleAndCode show_state={{ true }} layout="column">
-        <template slot="example">
+      <ExampleAndCode show_state={true} layout="column">
+        <#template slot="example">
           <Stack>
             <div class="flex flex-wrap items-center">
-              <div class="w-1/4 mb-4 text-sm">{{ side_text(@section_page_number, @section_per_page, @section_total_entries) }}</div>
+              <div class="w-1/4 mb-4 text-sm">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
 
               <div class="w-3/4">
                 <Pagination
-                  current_page_number={{ @section_page_number }}
-                  total_pages={{ @total_pages }}
+                  current_page_number={@section_page_number}
+                  total_pages={@total_pages}
                   size="small"
                   on_change="change_section_page"
                 />
               </div>
             </div>
           </Stack>
-        </template>
+        </#template>
 
-    <template slot="code">
+    <#template slot="code">
       <#CodePreview>
         <div class="flex flex-wrap items-center">
           <div class="w-1/4 mb-4 text-sm">
@@ -166,9 +166,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           "Showing #{min_entry} – #{max_entry} of #{total_entries}"
         end
       </#CodePreview>
-    </template>
+    </#template>
 
-        <template slot="state">@page_number = {{ @section_page_number }}<br>@per_page = {{ @section_per_page }}<br>@total_entries = {{ @section_total_entries }}</template>
+        <#template slot="state">@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</#template>
       </ExampleAndCode>
     </Stack>
     """

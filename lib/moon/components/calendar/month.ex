@@ -7,30 +7,30 @@ defmodule Moon.Components.Calendar.Month do
   prop events, :list, default: []
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div
       class="grid gap-1"
       style="grid-template-columns: repeat(7, minmax(2rem, auto));"
     >
       <Day
-        :for={{ day <- previous_month_days(@date, @week_starts_on) }}
-        day={{ day }}
+        :for={day <- previous_month_days(@date, @week_starts_on)}
+        day={day}
         text_color="text-trunks-100"
-        events={{ filtered_events(@events, day) }}
+        events={filtered_events(@events, day)}
       />
 
       <Day
-        :for={{ day <- month_days(@date) }}
-        day={{ day }}
-        text_color={{ if Timex.to_date(day) == Timex.today(), do: "text-piccolo-100" }}
-        events={{ filtered_events(@events, day) }}
+        :for={day <- month_days(@date)}
+        day={day}
+        text_color={if Timex.to_date(day) == Timex.today(), do: "text-piccolo-100"}
+        events={filtered_events(@events, day)}
       />
 
       <Day
-        :for={{ day <- next_month_days(@date, @week_starts_on) }}
-        day={{ day }}
+        :for={day <- next_month_days(@date, @week_starts_on)}
+        day={day}
         text_color="text-trunks-100"
-        events={{ filtered_events(@events, day) }}
+        events={filtered_events(@events, day)}
       />
     </div>
     """

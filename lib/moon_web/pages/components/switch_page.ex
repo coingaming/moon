@@ -24,9 +24,9 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Switch</Heading>
+      <Heading size={32}>Switch</Heading>
 
       <p>
         An alternate checkbox appearance for simulating on/off state.
@@ -39,54 +39,54 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <div id="first_switch">
-        <ExampleAndCode class="mt-3" show_state={{ true }}>
-          <template slot="example">
-            <Switch checked={{ @first_switch_checked }} on_change="handle_first_switch" />
-          </template>
+        <ExampleAndCode class="mt-3" show_state={true}>
+          <#template slot="example">
+            <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
+          </#template>
 
-          <template slot="code">
+          <#template slot="code">
             <#CodePreview>
               <Switch
                 checked={{ @checked }}
                 on_change="handle_switch"
               />
             </#CodePreview>
-          </template>
+          </#template>
 
-          <template slot="state">@checked = {{ @first_switch_checked }}</template>
+          <#template slot="state">@checked = {@first_switch_checked}</#template>
         </ExampleAndCode>
       </div>
 
-      <Heading size=24 class="mt-4" is_regular>Size</Heading>
+      <Heading size={24} class="mt-4" is_regular>Size</Heading>
 
       <p>
         Use <code class="bg-goku-40">size</code> prop. Default size is medium.
       </p>
 
       <ExampleAndCode class="mt-3">
-        <template slot="example">
+        <#template slot="example">
           <Stack>
             <Switch
               size="small"
-              checked={{ @small_switch_checked }}
+              checked={@small_switch_checked}
               on_change="handle_small_switch"
             />
 
             <Switch
               size="medium"
-              checked={{ @medium_switch_checked }}
+              checked={@medium_switch_checked}
               on_change="handle_medium_switch"
             />
 
             <Switch
               size="large"
-              checked={{ @large_switch_checked }}
+              checked={@large_switch_checked}
               on_change="handle_large_switch"
             />
           </Stack>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
             <Switch size="small" />
 
@@ -94,94 +94,94 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
             <Switch size="large" />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Icons</Heading>
+      <Heading size={24} class="mt-4" is_regular>Icons</Heading>
 
       <p>
         Use <code class="bg-goku-40">icons</code> prop. Default value is <code class="bg-goku-40">false</code>.
       </p>
 
       <ExampleAndCode class="mt-3">
-        <template slot="example">
+        <#template slot="example">
           <Stack>
             <Switch
-              checked={{ @icons_switch_checked }}
-              icons={{ true }}
+              checked={@icons_switch_checked}
+              icons={true}
               size="small"
               on_change="handle_icons_switch"
             />
 
             <Switch
-              checked={{ @icons_switch_checked }}
-              icons={{ true }}
+              checked={@icons_switch_checked}
+              icons={true}
               size="medium"
               on_change="handle_icons_switch"
             />
 
             <Switch
-              checked={{ @icons_switch_checked }}
-              icons={{ true }}
+              checked={@icons_switch_checked}
+              icons={true}
               size="large"
               on_change="handle_icons_switch"
             />
           </Stack>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
             <Switch icons={{ true }} />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Captions</Heading>
+      <Heading size={24} class="mt-4" is_regular>Captions</Heading>
 
       <p>
         Use <code class="bg-goku-40">caption_unchecked</code> and <code class="bg-goku-40">caption_checked</code> props.
       </p>
 
       <ExampleAndCode class="mt-3">
-        <template slot="example">
+        <#template slot="example">
           <Stack>
             <Switch
-              checked={{ @captions_switch_checked }}
+              checked={@captions_switch_checked}
               on_change="handle_captions_switch"
-              icons={{ false }}
+              icons={false}
               size="small"
               caption_unchecked="AM"
               caption_checked="PM"
             />
 
             <Switch
-              checked={{ @captions_switch_checked }}
+              checked={@captions_switch_checked}
               on_change="handle_captions_switch"
-              icons={{ true }}
+              icons={true}
               size="medium"
               caption_unchecked="OFF"
               caption_checked="ON"
             />
 
             <Switch
-              checked={{ @captions_switch_checked }}
+              checked={@captions_switch_checked}
               on_change="handle_captions_switch"
-              icons={{ true }}
+              icons={true}
               size="large"
               caption_unchecked="Moon"
               caption_checked="Sun"
             />
           </Stack>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
             <Switch
               caption_unchecked="OFF"
               caption_checked="ON"
             />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
     </Stack>
     """

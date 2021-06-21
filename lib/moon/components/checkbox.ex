@@ -7,13 +7,13 @@ defmodule Moon.Components.Checkbox do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/components/checkbox" }}
+    ~F"""
+    {asset_import @socket, "js/components/checkbox"}
 
-    <label class="moon-checkbox {{ @class }}">
-      <input class="moon-checkbox-input" type="checkbox" checked={{ @checked }} />
+    <label class={"moon-checkbox #{@class}"}>
+      <input class="moon-checkbox-input" type="checkbox" checked={@checked} />
       <span class="moon-checkbox-caption">
-        <slot />
+        <#slot />
       </span>
     </label>
     """

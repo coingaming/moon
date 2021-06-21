@@ -48,9 +48,9 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Datepicker</Heading>
+      <Heading size={32}>Datepicker</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A0">Figma design</Link>
@@ -58,35 +58,35 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <Link to="https://moon.io/components/datepicker">React implementation</Link>
       </p>
 
-      <Heading size=24 class="mt-4" is_regular>Usage</Heading>
+      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
 
       <p>
         <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
       </p>
 
-      <ExampleAndCode show_state={{ true }}>
-        <template slot="example">
-          <Form for={{ @changeset }} change="validate">
+      <ExampleAndCode show_state={true}>
+        <#template slot="example">
+          <Form for={@changeset} change="validate">
             <Datepicker
               id="default_datepicker"
-              start_date={{ fetch_field(@changeset, :started_at) |> elem(1) }}
-              end_date={{ fetch_field(@changeset, :ended_at) |> elem(1) }}
-              start_date_field={{ :started_at }}
-              end_date_field={{ :ended_at }}
+              start_date={fetch_field(@changeset, :started_at) |> elem(1)}
+              end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
+              start_date_field={:started_at}
+              end_date_field={:ended_at}
               on_date_change="update_dates"
             />
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
-        <Form for={{ @changeset }} change="validate">
+        <Form for={ @changeset } change="validate">
           <Datepicker
             id="default_datepicker"
-            start_date={{ fetch_field(@changeset, :started_at) |> elem(1) }}
-            end_date={{ fetch_field(@changeset, :ended_at) |> elem(1) }}
-            start_date_field={{ :started_at }}
-            end_date_field={{ :ended_at }}
+            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+            start_date_field={ :started_at }}
+            end_date_field={ :ended_at }}
             on_date_change="update_dates"
           />
         </Form>
@@ -114,127 +114,127 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
           {:noreply, assign(socket, changeset: changeset)}
         end
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@data = {{ inspect(fetch_data(@changeset), pretty: true) }}<br><br>@changeset = {{ inspect(@changeset, pretty: true) }}</template>
+        <#template slot="state">@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>With time</Heading>
+      <Heading size={24} class="mt-4" is_regular>With time</Heading>
 
       <p>
         Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
       </p>
 
-      <ExampleAndCode show_state={{ true }}>
-        <template slot="example">
-          <Form for={{ @time_changeset }} change="time_validate">
+      <ExampleAndCode show_state={true}>
+        <#template slot="example">
+          <Form for={@time_changeset} change="time_validate">
             <Datepicker
               id="time_datepicker"
-              start_date={{ fetch_field(@time_changeset, :datetime_started_at) |> elem(1) }}
-              end_date={{ fetch_field(@time_changeset, :datetime_ended_at) |> elem(1) }}
-              start_date_field={{ :datetime_started_at }}
-              end_date_field={{ :datetime_ended_at }}
+              start_date={fetch_field(@time_changeset, :datetime_started_at) |> elem(1)}
+              end_date={fetch_field(@time_changeset, :datetime_ended_at) |> elem(1)}
+              start_date_field={:datetime_started_at}
+              end_date_field={:datetime_ended_at}
               on_date_change="time_update_dates"
-              with_time={{ true }}
+              with_time={true}
             />
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
-        <Form for={{ @changeset }} change="validate">
+        <Form for={ @changeset } change="validate">
           <Datepicker
             id="time_datepicker"
-            start_date={{ fetch_field(@changeset, :datetime_started_at) |> elem(1) }}
-            end_date={{ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }}
-            start_date_field={{ :datetime_started_at }}
-            end_date_field={{ :datetime_ended_at }}
+            start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
+            end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
+            start_date_field={ :datetime_started_at }
+            end_date_field={ :datetime_ended_at }
             on_date_change="update_dates"
-            with_time={{ true }}
+            with_time={ true }
           />
         </Form>
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@data = {{ inspect(fetch_time_data(@time_changeset), pretty: true) }}<br><br>@changeset = {{ inspect(@time_changeset, pretty: true) }}</template>
+        <#template slot="state">@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Custom ranges</Heading>
+      <Heading size={24} class="mt-4" is_regular>Custom ranges</Heading>
 
       <p>
         Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
-          <Form for={{ @range_changeset }} change="range_validate">
+        <#template slot="example">
+          <Form for={@range_changeset} change="range_validate">
             <Datepicker
               id="range_datepicker"
-              start_date={{ fetch_field(@range_changeset, :started_at) |> elem(1) }}
-              end_date={{ fetch_field(@range_changeset, :ended_at) |> elem(1) }}
-              start_date_field={{ :started_at }}
-              end_date_field={{ :ended_at }}
+              start_date={fetch_field(@range_changeset, :started_at) |> elem(1)}
+              end_date={fetch_field(@range_changeset, :ended_at) |> elem(1)}
+              start_date_field={:started_at}
+              end_date_field={:ended_at}
               on_date_change="range_update_dates"
-              ranges={{ ~w(lastWeek yesterday today nextWeek) }}
+              ranges={ ~w(lastWeek yesterday today nextWeek) }
             />
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
-        <Form for={{ @changeset }} change="validate">
+        <Form for={ @changeset } change="validate">
           <Datepicker
             id="range_datepicker"
-            start_date={{ fetch_field(@changeset, :started_at) |> elem(1) }}
-            end_date={{ fetch_field(@changeset, :ended_at) |> elem(1) }}
-            start_date_field={{ :started_at }}
-            end_date_field={{ :ended_at }}
+            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+            start_date_field={ :started_at }
+            end_date_field={ :ended_at }
             on_date_change="update_dates"
-            ranges={{ ~w(lastWeek yesterday today nextWeek) }}
+            ranges={ ~w(lastWeek yesterday today nextWeek) }
           />
         </Form>
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Custom weekstart</Heading>
+      <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
 
       <p>
         Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
-          <Form for={{ @weekstart_changeset }} change="weekstart_validate">
+        <#template slot="example">
+          <Form for={@weekstart_changeset} change="weekstart_validate">
             <Datepicker
               id="weekstart_datepicker"
-              start_date={{ fetch_field(@weekstart_changeset, :started_at) |> elem(1) }}
-              end_date={{ fetch_field(@weekstart_changeset, :ended_at) |> elem(1) }}
-              start_date_field={{ :started_at }}
-              end_date_field={{ :ended_at }}
-              week_starts_on={{ 7 }}
+              start_date={fetch_field(@weekstart_changeset, :started_at) |> elem(1)}
+              end_date={fetch_field(@weekstart_changeset, :ended_at) |> elem(1)}
+              start_date_field={:started_at}
+              end_date_field={:ended_at}
+              week_starts_on={7}
               on_date_change="weekstart_update_dates"
-              ranges={{ ~w(lastWeek today thisWeek nextWeek) }}
+              ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
             />
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
-        <Form for={{ @changeset }} change="validate">
+        <Form for={ @changeset } change="validate">
           <Datepicker
             id="weekstart_datepicker"
-            start_date={{ fetch_field(@changeset, :started_at) |> elem(1) }}
-            end_date={{ fetch_field(@changeset, :ended_at) |> elem(1) }}
-            start_date_field={{ :started_at }}
-            end_date_field={{ :ended_at }}
+            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+            start_date_field={ :started_at }
+            end_date_field={ :ended_at }
             on_date_change="update_dates"
-            week_starts_on={{ 7 }}
-            ranges={{ ~w(lastWeek today thisWeek nextWeek) }}
+            week_starts_on={ 7 }
+            ranges={ ~w(lastWeek today thisWeek nextWeek) }
           />
         </Form>
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
     </Stack>

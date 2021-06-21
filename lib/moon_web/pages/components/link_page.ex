@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Link to="#">I'm a link</Link>
 
     <Link to="#" secondary>

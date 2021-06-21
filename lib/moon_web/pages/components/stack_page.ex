@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Components.StackPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
       <div>a</div>
       <div>b</div>

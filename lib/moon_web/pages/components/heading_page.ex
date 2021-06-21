@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Heading</h1>
 
     <h2>Sizes</h2>
@@ -19,15 +19,15 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
 
     <Stack>
       <Heading>Heading with default font size</Heading>
-      <Heading size=16>Heading with font size 16</Heading>
-      <Heading size=18>Heading with font size 18</Heading>
-      <Heading size=20>Heading with font size 20</Heading>
-      <Heading size=24>Heading with font size 24</Heading>
-      <Heading size=32>Heading with font size 32</Heading>
-      <Heading size=48>font size 48</Heading>
-      <Heading size=56>font size 56</Heading>
-      <Heading size=64>font size 64</Heading>
-      <Heading size=72>font size 72</Heading>
+      <Heading size={16}>Heading with font size 16</Heading>
+      <Heading size={18}>Heading with font size 18</Heading>
+      <Heading size={20}>Heading with font size 20</Heading>
+      <Heading size={24}>Heading with font size 24</Heading>
+      <Heading size={32}>Heading with font size 32</Heading>
+      <Heading size={48}>font size 48</Heading>
+      <Heading size={56}>font size 56</Heading>
+      <Heading size={64}>font size 64</Heading>
+      <Heading size={72}>font size 72</Heading>
     </Stack>
 
     <#CodePreview>
@@ -49,8 +49,8 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
     <p>By default font weight is bold. You can make it thiner.</p>
 
     <Stack>
-      <Heading size=24>Heading with default font weight</Heading>
-      <Heading size=24 is_regular=true>
+      <Heading size={24}>Heading with default font weight</Heading>
+      <Heading size={24} is_regular={true}>
         Heading with font-weight: regular
       </Heading>
     </Stack>
@@ -69,14 +69,14 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
     <p>By default Heading color is bulma.100. You can use any color.</p>
 
     <Stack>
-      <Heading size=24>Heading with default color</Heading>
-      <Heading size=24 color="trunks-100">
+      <Heading size={24}>Heading with default color</Heading>
+      <Heading size={24} color="trunks-100">
         Heading with defined color
       </Heading>
-      <Heading size=24 color="piccolo-100">
+      <Heading size={24} color="piccolo-100">
         Heading with defined color
       </Heading>
-      <Heading size=24 color="krillin-100">
+      <Heading size={24} color="krillin-100">
         Heading with defined color
       </Heading>
     </Stack>

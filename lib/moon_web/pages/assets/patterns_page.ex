@@ -18,83 +18,83 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternCircles font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternCircles font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternLines font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternLines font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternRipple font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternRipple font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternSpeed font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternSpeed font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternStars font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternStars font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
 
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <PatternWave font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <PatternWave font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 
     """
