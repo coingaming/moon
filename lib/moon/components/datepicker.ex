@@ -39,9 +39,9 @@ defmodule Moon.Components.Datepicker do
   prop end_date, :datetime, default: nil
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/components/text-input" }}
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/components/text-input"}
+    {asset_import @socket, "js/tailwind"}
 
     <div class="relative block">
       <Button
@@ -49,27 +49,27 @@ defmodule Moon.Components.Datepicker do
         variant="tertiary"
         on_click="toggle_picker"
       >
-        {{ button_label(@start_date, @end_date, @with_time, @selected_range) }}
+        {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Button>
 
       <div
-        class={{
+        class={
           "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm z-10",
           hidden: !@show
-        }}
+        }
       >
         <!-- Ranges -->
-        <div :if={{ length(@ranges) >0 }} class="space-y-1 w-44">
+        <div :if={length(@ranges) >0} class="space-y-1 w-44">
           <div
-            :for={{ range <- @ranges }}
-            class={{
+            :for={range <- @ranges}
+            class={
               "py-2 px-3 hover:bg-hover rounded-lg cursor-pointer",
               "bg-hover": range == @selected_range
-            }}
+            }
             :on-click="select_range"
-            phx-value-range={{ range }}
+            phx-value-range={range}
           >
-            {{ range_label(range) }}
+            {range_label(range)}
           </div>
         </div>
 
@@ -83,41 +83,41 @@ defmodule Moon.Components.Datepicker do
                 type="button"
                 class="absolute leading-none left-6"
                 :on-click="shift_months"
-                phx-value-months={{ -2 }}
+                phx-value-months={-2}
               >
                 <IconChevronLeft class="block" font_size="1rem"/>
               </button>
 
               <div class="flex-grow">
                 <Month
-                  date={{ @left_panel_date }}
-                  start_date={{ @start_date }}
-                  end_date={{ @end_date }}
-                  week_starts_on={{ @week_starts_on }}
+                  date={@left_panel_date}
+                  start_date={@start_date}
+                  end_date={@end_date}
+                  week_starts_on={@week_starts_on}
                   on_click="select_date"
                 />
               </div>
 
               <DateTimeLocalInput
-                :if={{ @with_time }}
-                field={{ @start_date_field }}
+                :if={@with_time}
+                field={@start_date_field}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
-                opts={{
+                opts={
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
                   "data-pending-val": format_date(@start_date, @with_time)
-                }}
+                }
               />
 
               <DateInput
-                :if={{ !@with_time }}
-                field={{ @start_date_field }}
+                :if={!@with_time}
+                field={@start_date_field}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
-                opts={{
+                opts={
                   placeholder: "dd/mm/yyyy",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
                   "data-pending-val": format_date(@start_date, @with_time)
-                }}
+                }
               />
             </div>
 
@@ -127,41 +127,41 @@ defmodule Moon.Components.Datepicker do
                 type="button"
                 class="absolute leading-none right-6"
                 :on-click="shift_months"
-                phx-value-months={{ 2 }}
+                phx-value-months={2}
               >
                 <IconChevronRight class="block" font_size="1rem"/>
               </button>
 
               <div class="flex-grow">
                 <Month
-                  date={{ Timex.shift(@left_panel_date, months: 1) }}
-                  start_date={{ @start_date }}
-                  end_date={{ @end_date }}
-                  week_starts_on={{ @week_starts_on }}
+                  date={Timex.shift(@left_panel_date, months: 1)}
+                  start_date={@start_date}
+                  end_date={@end_date}
+                  week_starts_on={@week_starts_on}
                   on_click="select_date"
                 />
               </div>
 
               <DateTimeLocalInput
-                :if={{ @with_time }}
-                field={{ @end_date_field }}
+                :if={@with_time}
+                field={@end_date_field}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
-                opts={{
+                opts={
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
                   "data-pending-val": format_date(@end_date, @with_time)
-                }}
+                }
               />
 
               <DateInput
-                :if={{ !@with_time }}
-                field={{ @end_date_field }}
+                :if={!@with_time}
+                field={@end_date_field}
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
-                opts={{
+                opts={
                   placeholder: "dd/mm/yyyy",
                   "phx-hook": "Moon.Components.Datepicker#Datepicker",
                   "data-pending-val": format_date(@end_date, @with_time)
-                }}
+                }
               />
             </div>
           </div>

@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.MainPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Moon Elixir</h1>
 
     <Link to="https://github.com/coingaming/moon">https://github.com/coingaming/moon</Link>

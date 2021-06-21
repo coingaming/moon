@@ -48,7 +48,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:asset_import, "~> 0.4"},
-      {:surface, git: "git@github.com:msaraiva/surface.git"},
+      {:surface, "~> 0.5.0"},
       {:timex, "~> 3.7"},
       {:distillery, "~> 2.1"},
       {:floki, ">= 0.27.0", only: :test}

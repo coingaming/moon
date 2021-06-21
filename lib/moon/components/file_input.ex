@@ -8,20 +8,20 @@ defmodule Moon.Components.FileInput do
   prop error, :boolean, default: false
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
     <div>
-      <span :if={{ @label }} class="block mb-2">{{ @label }}</span>
+      <span :if={@label} class="block mb-2">{@label}</span>
       <label
-        class={{
+        class={
           "flex justify-between items-center relative px-4 py-2 transition duration-200 border rounded-lg cursor-pointer text-trunks-100 hover:border-goku-40 leading-normal overflow-hidden",
           "border-chi_chi-100": @error,
           "border-beerus-100": !@error
-        }}
+        }
       >
-        {{ live_file_input @conf, class: "opacity-0 absolute top-0 right-0 h-0.5 w-0.5" }}
-        <span class="z-10 cursor-pointer">{{ @placeholder }}</span>
+        {live_file_input @conf, class: "opacity-0 absolute top-0 right-0 h-0.5 w-0.5"}
+        <span class="z-10 cursor-pointer">{@placeholder}</span>
         <span class="flex items-center m-1">
           <IconUpload />
         </span>

@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Checkbox</h1>
 
     <p>

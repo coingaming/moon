@@ -10,8 +10,7 @@ defmodule Moon.Components.CodePreview do
   end
 
   def colorify(children) do
-    str = List.to_string(children)
-    str = str |> Phoenix.HTML.html_escape() |> Phoenix.HTML.safe_to_string()
+    str = children |> Phoenix.HTML.html_escape() |> Phoenix.HTML.safe_to_string()
 
     "<pre><code>#{str}</code></pre>"
   end

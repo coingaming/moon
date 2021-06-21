@@ -36,24 +36,24 @@ defmodule Moon.Components.Button do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/components/button" }}
+    ~F"""
+    {asset_import @socket, "js/components/button"}
 
     <button
-      class="moon-button relative {{ @class }}"
-      disabled={{ @disabled }}
-      type={{ @type }}
-      data-mock-state={{ @mock_state }}
-      data-variant={{ @variant }}
-      data-size={{ @size }}
-      :on-click={{ @on_click }}
-      :attrs={{ phx_val_tag(@value_name || (@value && "click_value") || nil, @value) }}
+      class={"moon-button relative #{@class}"}
+      disabled={@disabled}
+      type={@type}
+      data-mock-state={@mock_state}
+      data-variant={@variant}
+      data-size={@size}
+      :on-click={@on_click}
+      :attrs={phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
 
       <div class="flex gap-2 items-center">
-        <Icon name={{ @left_icon }} :if={{ @left_icon }} />
-        <slot />
-        <Icon name={{ @right_icon }} :if={{ @right_icon }} />
+        <Icon name={@left_icon} :if={@left_icon} />
+        <#slot />
+        <Icon name={@right_icon} :if={@right_icon} />
       </div>
     </button>
     """

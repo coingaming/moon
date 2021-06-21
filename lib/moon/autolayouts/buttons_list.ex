@@ -4,9 +4,9 @@ defmodule Moon.Autolayouts.ButtonsList do
   slot(default)
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="flex gap-2 relative z-10 max-w-full flex-wrap">
-      <slot />
+      <#slot />
     </div>
     """
   end

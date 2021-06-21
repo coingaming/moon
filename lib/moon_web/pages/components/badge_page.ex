@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <p>
       <h1>Badge</h1>
       Default size count and labeling component

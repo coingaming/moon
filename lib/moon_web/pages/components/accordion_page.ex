@@ -14,13 +14,13 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   end
 
   def render(assigns) do
-    ~H"""
-    <Heading size=32 class="mb-8">Accordion</Heading>
+    ~F"""
+    <Heading size={32} class="mb-8">Accordion</Heading>
 
-    <ExampleAndCode show_state={{ true }}>
-      <template slot="example">
+    <ExampleAndCode show_state={true}>
+      <#template slot="example">
         <Accordion>
-          <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+          <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">
             Content <br />
             Content <br />
             Content <br />
@@ -30,10 +30,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             Content <br />
             Content <br />
           </Item>
-          <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
+          <Item click="open" item_id="2" is_open={@item_id == "2"} title="Customer support">
             Content
           </Item>
-          <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
+          <Item click="open" item_id="3" is_open={@item_id == "3"} title="Deposit & Withdrawals">
             Content <br />
             Content <br />
             Content <br />
@@ -44,8 +44,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             Content <br />
           </Item>
         </Accordion>
-      </template>
-      <template slot="code">
+      </#template>
+      <#template slot="code">
         <#CodePreview>
           <Accordion>
             <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
@@ -63,10 +63,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             </Item>
           </Accordion>
         </#CodePreview>
-      </template>
-      <template slot="state">
-        <pre>@item_id = {{ @item_id }}</pre>
-      </template>
+      </#template>
+      <#template slot="state">
+        <pre>@item_id = {@item_id}</pre>
+      </#template>
     </ExampleAndCode>
     """
   end

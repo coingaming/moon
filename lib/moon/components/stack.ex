@@ -4,11 +4,11 @@ defmodule Moon.Components.Stack do
   prop(class, :string)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/components/stack" }}
+    ~F"""
+    {asset_import @socket, "js/components/stack"}
 
-    <div class="moon-stack {{ @class }}">
-      <slot />
+    <div class={"moon-stack #{@class}"}>
+      <#slot />
     </div>
     """
   end

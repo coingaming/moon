@@ -19,9 +19,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Calendar</Heading>
+      <Heading size={32}>Calendar</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A3454">Figma design</Link>
@@ -29,16 +29,16 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state={{ true }} layout="column">
-        <template slot="example">
+      <ExampleAndCode show_state={true} layout="column">
+        <#template slot="example">
           <Calendar
             id="default_calendar"
-            week_starts_on={{ 1 }}
-            events={{ @events }}
+            week_starts_on={1}
+            events={@events}
           />
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         alias Moon.Components.Calendar
 
@@ -48,27 +48,27 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={{ @events }}
         />
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@events = {{ inspect(@events, pretty: true) }}</template>
+        <#template slot="state">@events = {inspect(@events, pretty: true)}</#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Custom weekstart</Heading>
+      <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
 
       <p>
         Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
       </p>
 
-      <ExampleAndCode show_state={{ true }} layout="column">
-        <template slot="example">
+      <ExampleAndCode show_state={true} layout="column">
+        <#template slot="example">
           <Calendar
             id="sunday_calendar"
-            week_starts_on={{ 7 }}
-            events={{ @events }}
+            week_starts_on={7}
+            events={@events}
           />
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         alias Moon.Components.Calendar
 
@@ -78,9 +78,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={{ @events }}
         />
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@events = {{ inspect(@events, pretty: true) }}</template>
+        <#template slot="state">@events = {inspect(@events, pretty: true)}</#template>
       </ExampleAndCode>
     </Stack>
     """

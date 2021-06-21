@@ -23,16 +23,16 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Sidebar</Heading>
+      <Heading size={32}>Sidebar</Heading>
 
       <p>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
       </p>
 
-      <Heading size=24 class="mt-4" is_regular>Usage</Heading>
+      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
 
       <p>
         Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
@@ -51,21 +51,21 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <Sidebar background_color="bg-gohan-100" open_width="14rem">
-            <template slot="short_logo">
+            <#template slot="short_logo">
               <div class="flex items-center h-10">
                 <LogoBitcasinoShort font_size="2.1rem" />
               </div>
-            </template>
+            </#template>
 
-            <template slot="full_logo">
+            <#template slot="full_logo">
               <div class="pl-1">
                 <LogoBitcasinoFull font_size="10rem" class="h-10" />
               </div>
-            </template>
+            </#template>
 
-            <template slot="menu">
+            <#template slot="menu">
               <nav class="mt-5">
                 <Stack>
                   <a href="#" class="flex items-center group">
@@ -78,11 +78,11 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                   </a>
                 </Stack>
               </nav>
-            </template>
+            </#template>
           </Sidebar>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         alias Moon.Components.Sidebar
         alias Moon.Components.Stack
@@ -120,7 +120,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           </template>
         </Sidebar>
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
     </Stack>
     """

@@ -11,8 +11,8 @@ defmodule Moon.Components.Sidebar do
   prop background_color, :string, default: ""
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
     <div
       x-data="{ collapsed: false, showBtn: false }"
@@ -24,7 +24,7 @@ defmodule Moon.Components.Sidebar do
         class="flex items-center p-5"
       >
         <!-- Short logo -->
-        <slot name="short_logo" />
+        <#slot name="short_logo" />
 
         <!-- Expand button -->
         <div class="ml-2">
@@ -45,9 +45,9 @@ defmodule Moon.Components.Sidebar do
         @mouseout="showBtn = false"
         x-show="!collapsed"
         class="flex flex-col"
-        style="width: {{ @open_width }};"
+        style={"width: #{@open_width};"}
       >
-        <div class="relative flex flex-col h-screen py-5 {{ @background_color }}">
+        <div class={"relative flex flex-col h-screen py-5 #{@background_color}"}>
           <!-- Collapse button -->
           <div class="absolute top-0 right-0">
             <button
@@ -64,12 +64,12 @@ defmodule Moon.Components.Sidebar do
 
           <!-- Full logo -->
           <div class="flex items-center flex-shrink-0 px-5">
-            <slot name="full_logo" />
+            <#slot name="full_logo" />
           </div>
 
           <div class="flex-1 overflow-y-auto pl-5 pr-0">
             <!-- Menu -->
-            <slot name="menu" />
+            <#slot name="menu" />
           </div>
         </div>
       </div>

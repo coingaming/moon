@@ -23,8 +23,8 @@ defmodule Moon.Assets.Crest do
   end
 
   def render(assigns) do
-    ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, click: @click, class: @class) }}
+    ~F"""
+    {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align, click: @click, class: @class)}
     """
   end
 end

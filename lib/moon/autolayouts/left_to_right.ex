@@ -5,9 +5,9 @@ defmodule Moon.Autolayouts.LeftToRight do
   prop(class, :string, default: nil)
 
   def render(assigns) do
-    ~H"""
-    <div class="flex gap-2 {{ @class }}">
-      <slot />
+    ~F"""
+    <div class={"flex gap-2 #{@class}"}>
+      <#slot />
     </div>
     """
   end

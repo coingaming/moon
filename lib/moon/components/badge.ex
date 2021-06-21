@@ -10,13 +10,13 @@ defmodule Moon.Components.Badge do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/tailwind" }}
+    ~F"""
+    {asset_import @socket, "js/tailwind"}
 
     <span
-      class="{{ @class }} bg-{{ @background_color }} text-{{ @color }} p-px pl-2 pr-2 rounded-sm {{ @size == "xsmall" && "text-xxs" || "text-sm" }} uppercase"
+      class={"#{@class} bg-#{@background_color} text-#{@color} p-px pl-2 pr-2 rounded-sm #{@size == "xsmall" && "text-xxs" || "text-sm"} uppercase"}
     >
-      <slot />
+      <#slot />
     </span>
     """
   end

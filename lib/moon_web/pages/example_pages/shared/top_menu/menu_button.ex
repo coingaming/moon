@@ -5,8 +5,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.MenuButton do
   prop class, :string
 
   def render(assigns) do
-    ~H"""
-    <div class="p-2 m-2 rounded-sm {{ @class }}"><slot /></div>
+    ~F"""
+    <div class={"p-2 m-2 rounded-sm #{@class}"}><#slot /></div>
     """
   end
 end

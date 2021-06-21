@@ -10,23 +10,23 @@ defmodule MoonWeb.Components.ExampleAndCode do
   slot state
 
   def render(assigns) do
-    ~H"""
-    <div class="rounded-lg bg-gohan-100 hover:bg-background p-0 {{ @class }}">
-      <div class={{ "grid grid-cols-1", "sm:grid-cols-2": @layout == "grid" }}>
+    ~F"""
+    <div class={"rounded-lg bg-gohan-100 hover:bg-background p-0 #{@class}"}>
+      <div class={"grid grid-cols-1", "sm:grid-cols-2": @layout == "grid"}>
         <div class="p-6">
-          <slot name="example">
+          <#slot name="example">
             Example not defined
-          </slot>
+          </#slot>
         </div>
-        <div class={{ "border-beerus-100", "sm:border-l": @layout == "grid", "border-t": @layout == "column" }}>
-          <slot name="code">
+        <div class={"border-beerus-100", "sm:border-l": @layout == "grid", "border-t": @layout == "column"}>
+          <#slot name="code">
             Example code not defined
-          </slot>
+          </#slot>
         </div>
       </div>
-      <div class="p-6 border-t border-beerus-100" :if={{ @show_state }}>
+      <div class="p-6 border-t border-beerus-100" :if={@show_state}>
         <Badge size="small" class="bg-piccolo-100 mb-3">State</Badge>
-        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><slot name="state" /></pre>
+        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
       </div>
     </div>
     """

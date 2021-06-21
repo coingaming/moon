@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Avatar</h1>
     Component for displaying user profile image or placeholder if no image
 

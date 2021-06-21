@@ -16,16 +16,16 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
   end
 
   def render(assigns) do
-    ~H"""
-    <Popover close={{ @close }} placement="under">
+    ~F"""
+    <Popover close={@close} placement="under">
       <Sections class="gap-8 p-4">
-        <div :for={{ section <- @search_results }}>
-          <div class="pb-4">{{ section.title }}</div>
+        <div :for={section <- @search_results}>
+          <div class="pb-4">{section.title}</div>
           <TopToDown>
-            <div :for={{ child <- section.children }}>
-              <Link to={{ child.to }}>
-                <Icon name={{ child.icon }} class="mr-4" />
-                {{ child.text }}
+            <div :for={child <- section.children}>
+              <Link to={child.to}>
+                <Icon name={child.icon} class="mr-4" />
+                {child.text}
               </Link>
             </div>
           </TopToDown>

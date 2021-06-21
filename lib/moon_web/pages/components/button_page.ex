@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Button</h1>
 
     <h2>Variants</h2>

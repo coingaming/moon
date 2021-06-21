@@ -9,16 +9,16 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   end
 
   def render(assigns) do
-    ~H"""
-    <Heading size=32>Usage</Heading>
+    ~F"""
+    <Heading size={32}>Usage</Heading>
 
-    <Heading size=24 class="mt-8 mb-4">Requirements</Heading>
+    <Heading size={24} class="mt-8 mb-4">Requirements</Heading>
     <pre>
     * Can be used from any existing Phoenix project that uses LiveView 0.15 (Margus Pärt needs to deploy branch "render_block" lab to t1 to test it out)
     * Moon Surface components can be used from SLIM and EEX, but recommended new format is Surface + Tailwind + Moon Surface Components
     </pre>
 
-    <Heading size=24 class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
+    <Heading size={24} class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
     <pre>
     # 1. Create empty project (skip this test if you already have project where you want to include)
     mix phx.new aposta10_design --live --no-ecto --no-dashboard
@@ -49,34 +49,34 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     "moon-css": "git:git@github.com:coingaming/moon-css.git",
 
     # 6.3 Create file assets/postcss.config.js
-    module.exports = {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {},
-      },
-    };
+    module.exports = &#123;
+      plugins: &#123;
+        tailwindcss: &#123;&#125;,
+        autoprefixer: &#123;&#125;,
+      &#125;,
+    &#125;
 
     # 6.4 Create file assets/tailwind.config.js
-    module.exports = {
+    module.exports = &#123;
       purge: [
         '../lib/**/*.ex',
         '../lib/**/*.leex',
         '../lib/**/*.eex',
         './js/**/*.js',
       ],
-      darkMode: false, // or 'media' or 'class'
-      theme: {
-        extend: {
-          // width: {
+      darkMode: false,
+      theme: &#123;
+        extend:	&#123;
+          // width:	&#123;
           //   "66": "66px",
           //   "88": "88px",
-          // },
-          // height: {
+          // &#125;,
+          // height: &#123;
           //   "66": "66px",
           //   "88": "88px",
-          // }
-        },
-        colors: {
+          // &#125;
+        &#125;,
+        colors:	&#123;
           'transparent': 'transparent',
           'text': 'var(--color-text)',
           'background': 'var(--color-background)',
@@ -116,19 +116,17 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
           'beerus-100': 'var(--color--beerus-100)',
           'bulma-100': 'var(--color--bulma-100)',
           'trunks-100': 'var(--color--trunks-100)',
-        },
-      },
-      variants: {},
+        &#125;,
+      &#125;,
+      variants:	&#123;&#125;,
       plugins: [],
-    };
+    &#125;
 
     # 6.5 Add postcss-loader into assets/webpack.config.js
     use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
 
     # 7. Run project
     mix phx.server
-
-
 
     </pre>
     """

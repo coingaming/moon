@@ -8,16 +8,16 @@ defmodule Moon.Components.ToastStack do
   data toasts, :keyword, default: Keyword.new()
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="fixed md:top-0 md:right-0 bottom-0 flex flex-col max-w-sm md:max-w-md p-4 items-end overflow-y-scroll overflow-x-hidden mx-auto">
       <Toast
-        :for={{ {id, toast} <- @toasts }}
-        id={{ id }}
-        message={{ toast.message }}
-        variant={{ toast.variant }}
-        closeable={{ toast.closeable }}
-        link_text={{ toast.link_text }}
-        link_href={{ toast.link_href }}
+        :for={{id, toast} <- @toasts}
+        id={id}
+        message={toast.message}
+        variant={toast.variant}
+        closeable={toast.closeable}
+        link_text={toast.link_text}
+        link_href={toast.link_href}
         on_close="hide_toast"
       />
     </div>

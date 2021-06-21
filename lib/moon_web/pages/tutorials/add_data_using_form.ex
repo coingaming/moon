@@ -51,9 +51,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Mutate data using form</Heading>
+      <Heading size={32}>Mutate data using form</Heading>
 
       <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
 
@@ -61,16 +61,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Source code of this page</Link>
       </p>
 
-      <Heading size=24 class="mt-4" is_regular>With changeset</Heading>
+      <Heading size={24} class="mt-4" is_regular>With changeset</Heading>
 
-      <ExampleAndCode show_state={{ true }}>
-        <template slot="example">
+      <ExampleAndCode show_state={true}>
+        <#template slot="example">
           <ToastStack id="toasts" />
 
-          <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+          <Form for={@user_changeset} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
             <Stack>
               <div class="flex items-center">
-                <Switch checked={{ @lock_fields }} on_change="lock_form_fields" />
+                <Switch checked={@lock_fields} on_change="lock_form_fields" />
                 <span class="ml-3">Lock fields</span>
               </div>
 
@@ -80,20 +80,20 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 <span class="ml-3">Enable validations (not implemented)</span>
               </div -->
 
-              <TextInput label="Name" field={{ :name }} disabled={{ @lock_fields }} />
-              <TextInput label="Email" field={{ :email }} disabled={{ @lock_fields }} />
+              <TextInput label="Name" field={:name} disabled={@lock_fields} />
+              <TextInput label="Email" field={:email} disabled={@lock_fields} />
 
               <Select
                 label="Gender"
                 class="rounded-xl"
-                disabled={{ @lock_fields }}
-                field={{ :gender }}
-                options={{ @gender_options }}
+                disabled={@lock_fields}
+                field={:gender}
+                options={@gender_options}
                 prompt="Please select gender"
               />
 
               <FileInput
-                conf={{ @uploads.file }}
+                conf={@uploads.file}
                 label="Upload your ID"
                 placeholder="Choose a document..."
               />
@@ -102,9 +102,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
             </Stack>
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         <ToastStack id="toasts" />
 
@@ -149,28 +149,28 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
           {:noreply, socket}
         end
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@user_changeset = {{ inspect(@user_changeset, pretty: true) }}<br><br>@gender_options = {{ inspect(@gender_options, pretty: true) }}<br><br>@lock_fields = {{ @lock_fields }}<br><br>@uploads.file.entries = {{ inspect(@uploads.file.entries, pretty: true) }}</template>
+        <#template slot="state">@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@gender_options = {inspect(@gender_options, pretty: true)}<br><br>@lock_fields = {@lock_fields}<br><br>@uploads.file.entries = {inspect(@uploads.file.entries, pretty: true)}</#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Without changeset</Heading>
+      <Heading size={24} class="mt-4" is_regular>Without changeset</Heading>
 
       <p>Not recommended, only for edge cases - 99% cases DO NOT USE THIS</p>
 
-      <ExampleAndCode show_state={{ true }}>
-        <template slot="example">
-          <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
+      <ExampleAndCode show_state={true}>
+        <#template slot="example">
+          <Form for={:user_map} change="update_user_map" submit="save_user_map" autocomplete="off">
             <Stack>
-              <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
-              <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+              <TextInput label="Name" field={:name} value={@user_map.name} />
+              <TextInput label="Email" field={:email} value={@user_map.email} />
 
               <Select
                 label="Gender"
                 class="rounded-xl"
-                field={{ :gender }}
-                options={{ @gender_options }}
-                value={{ @user_map.gender }}
+                field={:gender}
+                options={@gender_options}
+                value={@user_map.gender}
                 prompt="Please select gender"
               />
 
@@ -178,9 +178,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               <Button variant="secondary" on_click="clear_simple_form">Cancel</Button>
             </Stack>
           </Form>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
           <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
@@ -198,9 +198,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
           <Button variant="secondary" on_click="clear_form">Cancel</Button>
         </Form>
       </#CodePreview>
-        </template>
+        </#template>
 
-        <template slot="state">@user_map = {{ inspect(@user_map) }}</template>
+        <#template slot="state">@user_map = {inspect(@user_map)}</#template>
       </ExampleAndCode>
     </Stack>
     """

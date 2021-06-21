@@ -10,20 +10,20 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   data search_map, :any, default: %{search_text: ""}
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="w-full relative z-20">
-      <Form for={{ :search_map }} change="update_search_map" submit="close_search" target={{ @myself }} autocomplete="off" class="max-w-md relative m-auto">
+      <Form for={:search_map} change="update_search_map" submit="close_search" target={@myself} autocomplete="off" class="max-w-md relative m-auto">
         <TextInput
           left_icon="icon_zoom"
-          right_icon={{ should_show_close_search(@search_map) && "icon_close_rounded" }}
+          right_icon={should_show_close_search(@search_map) && "icon_close_rounded"}
           right_icon_click="clear_search"
           placeholder="Search for dashboard, segments and more"
-          field={{ :search_text }}
-          value={{ @search_map.search_text }}
+          field={:search_text}
+          value={@search_map.search_text}
           on_focus="activate_search"
           class="bg-goku-100"
         />
-        <SearchResults id="search" close="deactivate_search" search_text={{ @search_map.search_text }} :if={{ @search_active }} />
+        <SearchResults id="search" close="deactivate_search" search_text={@search_map.search_text} :if={@search_active} />
       </Form>
     </div>
     """

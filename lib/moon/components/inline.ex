@@ -10,15 +10,15 @@ defmodule Moon.Components.Inline do
   slot(default)
 
   def render(assigns) do
-    ~H"""
-    {{ asset_import @socket, "js/components/inline" }}
+    ~F"""
+    {asset_import @socket, "js/components/inline"}
 
     <div
       class="moon-inline"
-      style="font-size: {{ @font_size }};"
-      data-space={{ @space }}
+      style={"font-size: #{@font_size};"}
+      data-space={@space}
     >
-      <slot />
+      <#slot />
     </div>
     """
   end

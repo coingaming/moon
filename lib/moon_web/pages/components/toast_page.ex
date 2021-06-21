@@ -21,9 +21,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <Stack>
-      <Heading size=32>Toast</Heading>
+      <Heading size={32}>Toast</Heading>
 
       <p>
         Short, time-based messages that slide in and out of a page.
@@ -38,21 +38,21 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       <ToastStack id="toasts" />
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <Toast id="minimal" message="Hey! Your toast is ready."/>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         <Toast
           id="minimal"
           message="Hey! Your toast is ready."
         />
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Appearing and disappearing</Heading>
+      <Heading size={24} class="mt-4" is_regular>Appearing and disappearing</Heading>
 
       <p>
         Toasts can be shown on top of the page and automatically disappear after a timeout.
@@ -63,7 +63,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <Button
             variant="secondary"
             on_click="show_one_toast"
@@ -77,9 +77,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             class="block"
             size="xsmall"
           >Show two toasts</Button>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         alias Moon.Components.ToastStack
         alias Moon.Components.Toast.Message
@@ -129,23 +129,23 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           {:noreply, socket}
         end
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Variant</Heading>
+      <Heading size={24} class="mt-4" is_regular>Variant</Heading>
 
       <p>
         Use <code class="bg-goku-40">variant</code> prop.
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <div class="flex flex-col items-start">
             <Toast
-              :for={{ toast <- variant_toasts() }}
-              id={{ toast.id }}
-              message={{ toast.message }}
-              variant={{ toast.variant }}
+              :for={toast <- variant_toasts()}
+              id={toast.id}
+              message={toast.message}
+              variant={toast.variant}
             />
           </div>
 
@@ -155,9 +155,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             class="block mt-2"
             size="xsmall"
           >Show all</Button>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         <Toast
           id="error_toast"
@@ -184,10 +184,10 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           message="Default."
         />
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
 
-      <Heading size=24 class="mt-4" is_regular>Actions</Heading>
+      <Heading size={24} class="mt-4" is_regular>Actions</Heading>
 
       <p>
         Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
@@ -198,16 +198,16 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </p>
 
       <ExampleAndCode>
-        <template slot="example">
+        <#template slot="example">
           <div class="flex flex-col items-start">
             <Toast
-              :for={{ toast <- action_toasts() }}
-              id={{ toast.id }}
-              message={{ toast.message }}
-              variant={{ toast.variant }}
-              link_text={{ toast.link_text }}
-              link_href={{ toast.link_href }}
-              closeable={{ toast.closeable }}
+              :for={toast <- action_toasts()}
+              id={toast.id}
+              message={toast.message}
+              variant={toast.variant}
+              link_text={toast.link_text}
+              link_href={toast.link_href}
+              closeable={toast.closeable}
             />
           </div>
 
@@ -217,9 +217,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             class="block mt-2"
             size="xsmall"
           >Show all</Button>
-        </template>
+        </#template>
 
-        <template slot="code">
+        <#template slot="code">
       <#CodePreview>
         <Toast
           id="closeable_toast"
@@ -251,7 +251,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           closeable={{ false }}
         />
       </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
     </Stack>
     """

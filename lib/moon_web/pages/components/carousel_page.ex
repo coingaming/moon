@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <h1>Carousel</h1>
 
     <p>
