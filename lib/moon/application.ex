@@ -12,9 +12,10 @@ defmodule Moon.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Moon.PubSub},
       # Start the Endpoint (http/https)
-      MoonWeb.Endpoint
+      MoonWeb.Endpoint,
       # Start a worker by calling: Moon.Worker.start_link(arg)
       # {Moon.Worker, arg}
+      %{id: :mock_db, start: {MoonWeb.MockDB, :start_link, []}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
