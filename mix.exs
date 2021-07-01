@@ -12,7 +12,14 @@ defmodule Moon.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers() ++ [:surface],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -38,7 +45,6 @@ defmodule Moon.MixProject do
       {:phoenix, "~> 1.5"},
       {:phoenix_live_view, "~> 0.15.5"},
       {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
@@ -51,7 +57,15 @@ defmodule Moon.MixProject do
       {:surface, "~> 0.5.0"},
       {:timex, "~> 3.7"},
       {:distillery, "~> 2.1"},
-      {:floki, ">= 0.27.0", only: :test}
+
+      # test
+      {:excoveralls, "~> 0.10", only: :test},
+      {:floki, ">= 0.27.0", only: :test},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+
+      # dev
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 

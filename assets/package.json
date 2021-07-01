@@ -7,7 +7,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@heathmont/moon-css": "git+ssh://git@github.com/coingaming/moon-css.git",
+    "@heathmont/moon-css": "github:coingaming/moon-css",
     "alpinejs": "^2.8.2",
     "asset_import_hook": "github:coingaming/asset_import",
     "nprogress": "^0.2.0",
@@ -25,7 +25,7 @@
     "css-loader": "^3.4.2",
     "hard-source-webpack-plugin": "^0.13.1",
     "mini-css-extract-plugin": "^0.9.0",
-    "moon-css": "git:git@github.com:coingaming/moon-css.git",
+    "moon-css": "github:coingaming/moon-css",
     "node-sass": "^4.13.1",
     "nodemon": "1.19.2",
     "optimize-css-assets-webpack-plugin": "^5.0.6",
