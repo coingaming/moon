@@ -7,7 +7,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Autolayouts.LeftToRight
 
   prop transactions, :list, required: true
-  data filters, :list, default: []
 
   def mount(assigns) do
     {:ok, assigns}
