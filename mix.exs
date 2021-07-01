@@ -61,9 +61,11 @@ defmodule Moon.MixProject do
       # test
       {:excoveralls, "~> 0.10", only: :test},
       {:floki, ">= 0.27.0", only: :test},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
 
       # dev
-      {:phoenix_live_reload, "~> 1.2", only: :dev}
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 

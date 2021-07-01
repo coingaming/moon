@@ -6,7 +6,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.Popover
   alias Moon.Autolayouts.ButtonsList
 
-  prop transaction_id, :string, required: true
   data clicked_name, :string, default: ""
 
   def render(assigns) do
@@ -83,6 +82,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         %{"click_value" => click_value},
         socket
       ) do
+    send(self(), {:upsert_filter, click_value})
     {:noreply, assign(socket, clicked_name: click_value)}
   end
 
@@ -91,6 +91,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
+    send(self(), :remove_filters)
     {:noreply, assign(socket, clicked_name: nil)}
   end
 end

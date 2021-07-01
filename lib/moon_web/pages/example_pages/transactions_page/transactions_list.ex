@@ -6,11 +6,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
   alias Moon.Components.Table
   alias Moon.Autolayouts.LeftToRight
 
-  data transactions, :any
+  prop transactions, :list, required: true
   data filters, :list, default: []
 
   def mount(assigns) do
-    {:ok, assign(assigns, transactions: get_transactions())}
+    {:ok, assigns}
   end
 
   def render(assigns) do
@@ -51,50 +51,5 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
 
   def color(_str) do
     "roshi-100"
-  end
-
-  def get_transactions() do
-    [
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia", "Tag 2"]
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_sportsbet_short",
-        brand: "Sportsbet",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      }
-    ]
   end
 end

@@ -18,7 +18,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
-       active_page: __MODULE__
+       active_page: __MODULE__,
+       transactions: get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
@@ -33,11 +34,65 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <Heading size={32} class="pt-4 pb-8">Transactions</Heading>
           <TopToDown>
             <TransactionsFilters id="transaction_filters" />
-            <TransactionsList id="transactions" />
+            <TransactionsList id="transactions" transactions={@transactions} />
           </TopToDown>
         </div>
       </div>
     </div>
     """
+  end
+
+  def handle_info({:upsert_filter, filter_value}, socket) do
+    {:noreply,
+     assign(socket, filters: [filter_value], transactions: [List.first(get_transactions())])}
+  end
+
+  def handle_info(:remove_filters, socket) do
+    {:noreply, assign(socket, filters: [], transactions: get_transactions())}
+  end
+
+  def get_transactions() do
+    [
+      %{
+        aff_username: "123456",
+        aff_id: "123",
+        brand_logo: "logo_bitcasino_short",
+        brand: "Bitcasino",
+        create_time: "May 14, 2020, 12:45:57",
+        process_time: "May 14, 2020, 12:45:57",
+        status: "Confirmed",
+        tags: ["Asia", "Tag 2"]
+      },
+      %{
+        aff_username: "123456",
+        aff_id: "123",
+        brand_logo: "logo_bitcasino_short",
+        brand: "Bitcasino",
+        create_time: "May 14, 2020, 12:45:57",
+        process_time: "May 14, 2020, 12:45:57",
+        status: "Confirmed",
+        tags: ["Asia"]
+      },
+      %{
+        aff_username: "123456",
+        aff_id: "123",
+        brand_logo: "logo_sportsbet_short",
+        brand: "Sportsbet",
+        create_time: "May 14, 2020, 12:45:57",
+        process_time: "May 14, 2020, 12:45:57",
+        status: "Confirmed",
+        tags: ["Asia"]
+      },
+      %{
+        aff_username: "123456",
+        aff_id: "123",
+        brand_logo: "logo_bitcasino_short",
+        brand: "Bitcasino",
+        create_time: "May 14, 2020, 12:45:57",
+        process_time: "May 14, 2020, 12:45:57",
+        status: "Confirmed",
+        tags: ["Asia"]
+      }
+    ]
   end
 end
