@@ -13,10 +13,11 @@ defmodule MoonWeb.MockDB.Affiliates do
   end
 
   def list(%{
-    filter: %{ user: _ }
+    filter: %{ user: _ },
+    pagination: %{ offset: _, limit: _ }
   } = args) do
     this_process()
-    |> Genserver.call({:list, args})
+    |> GenServer.call({:list, args})
   end
 
   def list_all() do
@@ -49,10 +50,15 @@ defmodule MoonWeb.MockDB.Affiliates do
   end
 
   def handle_call({:list, args}, _from, state) do
-    %{filter: %{user: user_filter}} = args
+    %{
+      filter: %{ user: user_filter },
+      pagination: %{ offset: offset, limit: limit }
+    } = args
 
     users = Users.list(%{filter: user_filter})
-    results = state.all |> Enum.filter(&(Enum.member?(users, &1.user)))
+    results = state.all
+      |> Enum.filter(&(Enum.member?(users, &1.user)))
+      |> Utils.take_page(offset, limit)
 
     {:reply, results, state}
   end

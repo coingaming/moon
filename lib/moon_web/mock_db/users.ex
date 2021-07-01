@@ -12,7 +12,7 @@ defmodule MoonWeb.MockDB.Users do
   end
 
   def list(args = %{
-    filters: %{ id: _, country: _ },
+    filter: %{ id: _, country: _ },
   }) do
     this_process()
     |> GenServer.call({:list, args})
@@ -51,10 +51,10 @@ defmodule MoonWeb.MockDB.Users do
   end
 
   def handle_call({:list, args}, _from, state) do
-    %{filters: %{id: id, country: country}} = args
+    %{filter: %{id: id, country: country}} = args
     results = state.all
       |> Enum.filter(fn user ->
-        (length(id) == 0 or Enum.member?(id, user.id)) or
+        (length(id) == 0 or Enum.member?(id, user.id)) and
         (length(country) == 0 or Enum.member?(country, user.country))
       end)
 
