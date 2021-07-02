@@ -76,7 +76,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
               target="#transactions-page"
             />
           </Dropdown>
-          <Button>Clear</Button>
+          <Button phx_click="handle_currency_selection_cleared" target="#transactions-page">Clear</Button>
+          <Button phx_click="handle_currency_selection_apply" target="#transactions-page">Apply</Button>
         </Popover>
       </Popover.Outer>
 

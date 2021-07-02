@@ -23,12 +23,37 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   def get_currency_options do
     [
-      %{label: "Currency 1", value: "1"},
-      %{label: "Currency 2", value: "2"},
-      %{label: "Currency 3", value: "3"},
-      %{label: "Currency 4", value: "4"},
-      %{label: "Currency 5", value: "5"}
+      %{label: "EUR", value: "1"},
+      %{label: "BTC", value: "2"}
     ]
+  end
+
+  def get_filtered_transactions(assigns) do
+    get_transactions()
+    |> get_filtered_transactions_by_brand(assigns.selected_brand_ids)
+    |> get_filtered_transactions_by_currency(assigns.selected_currency_ids)
+  end
+
+  def get_filtered_transactions_by_brand(transactions, selected_brand_ids) do
+    case selected_brand_ids do
+      [] ->
+        transactions
+      _ ->
+        Enum.filter(transactions, fn x ->
+          Enum.member?(selected_brand_ids, x.brand_id)
+        end)
+    end
+  end
+
+  def get_filtered_transactions_by_currency(transactions, selected_currency_ids) do
+    case selected_currency_ids do
+      [] ->
+        transactions
+      _ ->
+        Enum.filter(transactions, fn x ->
+          Enum.member?(selected_currency_ids, x.currency_id)
+        end)
+    end
   end
 
   def mount(params, _session, socket) do
@@ -119,9 +144,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         _,
         socket
       ) do
-    {:noreply, assign(socket, transactions: Enum.filter(get_transactions(), fn x ->
-      Enum.member?(socket.assigns.selected_brand_ids, x.brand_id)
-    end))}
+    {:noreply, assign(socket, transactions: get_filtered_transactions(socket.assigns))}
   end
 
   def handle_event(
@@ -154,11 +177,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     {:noreply, assign(socket, selected_currency_ids: [])}
   end
 
-  defp prepare_filters(_transactions) do
-    [
-      %{label: "Bitcasino", value: "1"},
-      %{label: "Sportsbet", value: "2"}
-    ]
+  def handle_event(
+        "handle_currency_selection_apply",
+        _,
+        socket
+      ) do
+    {:noreply, assign(socket, transactions: get_filtered_transactions(socket.assigns))}
   end
 
   def get_transactions() do
@@ -170,6 +194,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         brand: "Bitcasino",
         brand_id: "1",
         currency: "EUR",
+        currency_id: "1",
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -182,6 +207,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         brand: "Bitcasino",
         brand_id: "1",
         currency: "EUR",
+        currency_id: "1",
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -194,6 +220,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         brand: "Sportsbet",
         brand_id: "2",
         currency: "BTC",
+        currency_id: "2",
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -206,6 +233,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         brand: "Bitcasino",
         brand_id: "1",
         currency: "EUR",
+        currency_id: "1",
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
