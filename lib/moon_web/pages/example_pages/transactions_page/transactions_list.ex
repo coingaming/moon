@@ -1,5 +1,5 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList do
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
   alias Moon.Components.Badge
   alias Moon.Assets.Logo
