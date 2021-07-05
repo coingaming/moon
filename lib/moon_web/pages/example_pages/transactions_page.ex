@@ -28,10 +28,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     ]
   end
 
+  def get_users_options do
+    [
+      %{label: "123456", value: "123"},
+      %{label: "abcdefg", value: "124"}
+    ]
+  end
+
   def get_filtered_transactions(assigns) do
     get_transactions()
     |> get_filtered_transactions_by_brand(assigns.selected_brand_ids)
     |> get_filtered_transactions_by_currency(assigns.selected_currency_ids)
+    |> get_filtered_transactions_by_users(assigns[:selected_users_ids])
+  end
+
+  defp get_filtered_transactions_by_users([], _), do: []
+  defp get_filtered_transactions_by_users(transactions, nil),  do: transactions
+  defp get_filtered_transactions_by_users(transactions, []),  do: transactions
+  defp get_filtered_transactions_by_users(transactions, selected_users_ids) do
+    transactions
+    |> Enum.filter(fn x ->
+      Enum.member?(selected_users_ids, x.aff_id)
+    end)
   end
 
   def get_filtered_transactions_by_brand(transactions, selected_brand_ids) do
@@ -64,8 +82,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
        transactions: get_transactions(),
        brand_options: get_brand_options(),
        currency_options: get_currency_options(),
+       users_options: get_users_options(),
        selected_brand_ids: [],
        selected_currency_ids: [],
+       selected_users_ids: [],
        brand_search: %{value: ""},
        currency_search: %{value: ""}
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
@@ -81,22 +101,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Transactions</Heading>
           <TopToDown>
-            <TransactionsFilters id="transaction_filters" {=@selected_currency_ids} {=@selected_brand_ids} {=@brand_options} {=@currency_options} />
+            <TransactionsFilters id="transaction_filters" {=@selected_currency_ids} {=@selected_brand_ids} {=@brand_options} {=@currency_options} {=@users_options} />
             <TransactionsList transactions={@transactions} />
           </TopToDown>
         </div>
       </div>
     </div>
     """
-  end
-
-  def handle_info({:upsert_filter, filter_value}, socket) do
-    {:noreply,
-     assign(socket, filters: [filter_value], transactions: [List.first(get_transactions())])}
-  end
-
-  def handle_info(:remove_filters, socket) do
-    {:noreply, assign(socket, filters: [], transactions: get_transactions())}
   end
 
   def toggle_id_in_list(list_ids, toggled_item_id) do
@@ -187,6 +198,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     {:noreply, assign(socket, transactions: get_filtered_transactions(socket.assigns))}
   end
 
+  def handle_info(
+    {:apply_filter, filters},
+    %{ assigns: assigns} = socket
+  ) do
+    %{ selected_users_ids: selected_users_ids } = filters
+
+    transactions = assigns
+      |> Map.put(:selected_users_ids, selected_users_ids)
+      |> get_filtered_transactions()
+
+    {:noreply, assign(socket, transactions: transactions, selected_users_ids: selected_users_ids)}
+  end
+
   def get_transactions() do
     [
       %{
@@ -203,8 +227,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         tags: ["Asia", "Tag 2"]
       },
       %{
-        aff_username: "123456",
-        aff_id: "123",
+        aff_username: "abcdefg",
+        aff_id: "124",
         brand_logo: "logo_bitcasino_short",
         brand: "Bitcasino",
         brand_id: "1",
