@@ -12,7 +12,7 @@ defmodule Moon.Components.CheckboxMultiselect.Item do
     ~F"""
     <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" phx-click={@on_click} phx-value-toggled_item_id={@item_id} phx-target={@target}>
       <#slot />
-      <Checkbox class="absolute right-0 pointer-events-none" checked={@checked} />
+      <Checkbox class="absolute right-0" checked={@checked} />
     </div>
     """
   end
