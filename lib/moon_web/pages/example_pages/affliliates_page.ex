@@ -99,7 +99,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
                 Save Segment
               </Button>
               <Divider orientation="vertical" />
-              <Button variant="danger" size="small">Clear All</Button>
+              <Button variant="danger" size="small" on_click="clear_all_filters">
+                Clear All
+              </Button>
             </ButtonsList>
 
             <AffiliatesListPagination
