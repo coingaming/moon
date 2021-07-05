@@ -16,7 +16,8 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
-       active_page: __MODULE__
+       active_page: __MODULE__,
+       transactions: MoonWeb.Pages.ExamplePages.TransactionsPage.get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
@@ -29,7 +30,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
         <div class="p-4 pt-8">
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
-          <TransactionsList id="transactions" />
+          <TransactionsList id="transactions" transactions={@transactions} />
         </div>
       </div>
     </div>
