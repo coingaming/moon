@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   purge: [
     '../lib/**/*.ex',
@@ -12,9 +14,10 @@ module.exports = {
         xxs: '.5rem',
         sm: '.625rem',
       },
-      // width: {
-      //   '66': '66px',
-      //   '88': '88px',
+      width: {
+        '80': '20rem',
+        '96': '24rem'
+      }
       // },
       // height: {
       //   '66': '66px',
@@ -85,5 +88,18 @@ module.exports = {
       scale: ['group-hover'],
     },
   },
-  plugins: [require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".no-scrollbar::-webkit-scrollbar": {
+          "display": "none"
+        },
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none"
+        }
+      })
+    })
+  ],
 };

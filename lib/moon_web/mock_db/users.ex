@@ -23,6 +23,10 @@ defmodule MoonWeb.MockDB.Users do
     |> GenServer.call(:list_all)
   end
 
+  def search_by_usernames("") do
+    []
+  end
+
   def search_by_usernames(search_text) do
     this_process()
     |> GenServer.call({:search_usernames, search_text})
