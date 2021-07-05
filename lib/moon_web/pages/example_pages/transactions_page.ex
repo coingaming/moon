@@ -114,6 +114,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         %{"brand_search" => %{"value" => value}},
         socket
       ) do
+    # TODO: Implement proper search for brand options
     {:noreply,
      assign(
        socket,
@@ -152,6 +153,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         %{"currency_search" => %{"value" => value}},
         socket
       ) do
+    # TODO: Implement proper search for currency options
     {:noreply,
      assign(
        socket,

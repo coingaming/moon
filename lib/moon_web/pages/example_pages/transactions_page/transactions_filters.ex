@@ -41,21 +41,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         <Chip on_click="open_popover" value="brand" right_icon="icon_chevron_down_rounded">Brand · All</Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "brand"}>
           <Dropdown
-            on_search_change="handle_brand_search_changed"
+            on_search_change={"handle_brand_search_changed", target: :live_view}
             search_placeholder="Search for a brand ..."
             search_name={:brand_search}
-            target="#transactions-page"
           >
             <CheckboxMultiselect
-              on_change="handle_brand_selection_changed"
+              on_change={"handle_brand_selection_changed", target: :live_view}
               class="max-h-32"
               value={@selected_brand_ids}
               options={@brand_options}
-              target="#transactions-page"
             />
           </Dropdown>
-          <Button phx_click="handle_brand_selection_cleared" target="#transactions-page">Clear</Button>
-          <Button phx_click="handle_brand_selection_apply" target="#transactions-page">Apply</Button>
+          <Button on_click={"handle_brand_selection_cleared", target: :live_view}>Clear</Button>
+          <Button on_click={"handle_brand_selection_apply", target: :live_view}>Apply</Button>
         </Popover>
       </Popover.Outer>
 
@@ -63,21 +61,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         <Chip on_click="open_popover" value="currency" right_icon="icon_chevron_down_rounded">Currency · All</Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "currency"}>
           <Dropdown
-            on_search_change="handle_currency_search_changed"
+            on_search_change={"handle_currency_search_changed", target: :live_view}
             search_placeholder="Search for a currency ..."
             search_name={:currency_search}
-            target="#transactions-page"
           >
             <CheckboxMultiselect
-              on_change="handle_currency_selection_changed"
+              on_change={"handle_currency_selection_changed", target: :live_view}
               class="max-h-32"
               value={@selected_currency_ids}
               options={@currency_options}
-              target="#transactions-page"
             />
           </Dropdown>
-          <Button phx_click="handle_currency_selection_cleared" target="#transactions-page">Clear</Button>
-          <Button phx_click="handle_currency_selection_apply" target="#transactions-page">Apply</Button>
+          <Button on_click={"handle_currency_selection_cleared", target: :live_view}>Clear</Button>
+          <Button on_click={"handle_currency_selection_apply", target: :live_view}>Apply</Button>
         </Popover>
       </Popover.Outer>
 

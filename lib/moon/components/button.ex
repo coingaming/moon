@@ -27,8 +27,6 @@ defmodule Moon.Components.Button do
   prop(class, :string)
 
   prop(on_click, :event)
-  prop(phx_click, :string)
-  prop(target, :string)
   prop(value_name, :string)
   prop(value, :any)
 
@@ -49,8 +47,6 @@ defmodule Moon.Components.Button do
       data-variant={@variant}
       data-size={@size}
       :on-click={@on_click}
-      phx-click={@phx_click}
-      phx-target={@target}
       :attrs={phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
       <div class="flex gap-2 items-center">
