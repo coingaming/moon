@@ -109,23 +109,21 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   end
 
   def handle_event("goto_prev_page", _, socket) do
-    %{ affiliates_pagination: pagination } = socket.assigns
-    %{ page: page } = pagination
+    %{ page: page } = socket.assigns
     prev_page = if page > 1, do: page - 1, else: page
 
     {:noreply, socket
-      |> assign(affiliates_pagination: %{ pagination | page: prev_page })
+      |> assign(page: prev_page)
       |> filter_affiliates()
     }
   end
 
   def handle_event("goto_next_page", _, socket) do
-    %{ affiliates_pagination: pagination } = socket.assigns
-    %{ page: page } = pagination
+    %{ page: page } = socket.assigns
     next_page = page + 1
 
     {:noreply, socket
-      |> assign(affiliates_pagination: %{ pagination | page: next_page })
+      |> assign(page: next_page)
       |> filter_affiliates()
     }
   end
