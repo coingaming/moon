@@ -7,15 +7,16 @@ defmodule Moon.Application do
 
   def start(_type, _args) do
     children = [
+      # Start Mock DB
+      %{id: :mock_db, start: {MoonWeb.MockDB, :start_link, []}},
       # Start the Telemetry supervisor
       MoonWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Moon.PubSub},
       # Start the Endpoint (http/https)
-      MoonWeb.Endpoint,
+      MoonWeb.Endpoint
       # Start a worker by calling: Moon.Worker.start_link(arg)
       # {Moon.Worker, arg}
-      %{id: :mock_db, start: {MoonWeb.MockDB, :start_link, []}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
