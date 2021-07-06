@@ -1,4 +1,4 @@
-let Datepicker = {
+const Datepicker = {
   updated() {
     if (this.el.value) {
       const newVal = this.el.dataset.pendingVal
@@ -9,4 +9,4 @@ let Datepicker = {
   }
 }
 
-export { Datepicker }
+export default Datepicker

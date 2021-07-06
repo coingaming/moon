@@ -57,6 +57,8 @@ defmodule MoonWeb.Router do
       live "/components/text_input", MoonWeb.Pages.Components.TextInputPage
       live "/components/toast", MoonWeb.Pages.Components.ToastPage
 
+      live "/charts/line-chart", MoonWeb.Pages.Components.LineChartPage
+
       live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
       live "/tutorials/installation", MoonWeb.Pages.Tutorials.Installation
 
