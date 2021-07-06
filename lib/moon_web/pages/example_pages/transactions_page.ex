@@ -14,32 +14,48 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
 
-  def get_brand_options do
-    [
-      %{label: "Bitcasino", value: "1"},
-      %{label: "Sportsbet", value: "2"}
-    ]
+  defp prepare_options(transactions) do
+    %{}
+    |> get_brand_options(transactions)
+    |> get_currency_options(transactions)
+    |> get_user_options(transactions)
   end
 
-  def get_currency_options do
-    [
-      %{label: "EUR", value: "1"},
-      %{label: "BTC", value: "2"}
-    ]
+  defp get_brand_options(options, transactions) do
+    transaction_options = transactions
+    |> Enum.reduce([], fn %{ brand: label, brand_id: value }, acc ->
+      [%{ label: label, value: value } | acc]
+    end)
+    |> Enum.uniq_by(fn %{value: value} -> value end)
+
+    Map.put(options, :brand, transaction_options)
   end
 
-  def get_users_options do
-    [
-      %{label: "123456", value: "123"},
-      %{label: "abcdefg", value: "124"}
-    ]
+  defp get_currency_options(options, transactions) do
+    transaction_options = transactions
+    |> Enum.reduce([], fn %{ currency: label, currency_id: value }, acc ->
+      [%{ label: label, value: value } | acc]
+    end)
+    |> Enum.uniq_by(fn %{value: value} -> value end)
+
+    Map.put(options, :currency, transaction_options)
   end
 
-  def get_filtered_transactions(assigns) do
+  defp get_user_options(options, transactions) do
+    transaction_options = transactions
+    |> Enum.reduce([], fn %{ aff_username: label, aff_id: value }, acc ->
+      [%{ label: label, value: value } | acc]
+    end)
+    |> Enum.uniq_by(fn %{value: value} -> value end)
+
+    Map.put(options, :user, transaction_options)
+  end
+
+  def get_filtered_transactions(selected_option_ids) do
     get_transactions()
-    |> get_filtered_transactions_by_brand(assigns.selected_brand_ids)
-    |> get_filtered_transactions_by_currency(assigns.selected_currency_ids)
-    |> get_filtered_transactions_by_users(assigns[:selected_users_ids])
+    |> get_filtered_transactions_by_brand(selected_option_ids.brand)
+    |> get_filtered_transactions_by_currency(selected_option_ids.currency)
+    |> get_filtered_transactions_by_users(selected_option_ids.user)
   end
 
   defp get_filtered_transactions_by_users([], _), do: []
@@ -75,19 +91,14 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   end
 
   def mount(params, _session, socket) do
+    transactions = get_transactions()
+    filter_options = prepare_options(transactions)
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__,
        transactions: get_transactions(),
-       brand_options: get_brand_options(),
-       currency_options: get_currency_options(),
-       users_options: get_users_options(),
-       selected_brand_ids: [],
-       selected_currency_ids: [],
-       selected_users_ids: [],
-       brand_search: %{value: ""},
-       currency_search: %{value: ""}
+       filter_options: filter_options,
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
@@ -101,7 +112,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Transactions</Heading>
           <TopToDown>
-            <TransactionsFilters id="transaction_filters" {=@selected_currency_ids} {=@selected_brand_ids} {=@brand_options} {=@currency_options} {=@users_options} />
+            <TransactionsFilters id="transaction_filters" {=@filter_options} />
             <TransactionsList transactions={@transactions} />
           </TopToDown>
         </div>
@@ -120,95 +131,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end
   end
 
-  def handle_event(
-        "handle_brand_search_changed",
-        %{"brand_search" => %{"value" => value}},
-        socket
-      ) do
-    # TODO: Implement proper search for brand options
-    {:noreply,
-     assign(
-       socket,
-       brand_search: %{value: value}
-     )}
-  end
-
-  def handle_event(
-        "handle_brand_selection_changed",
-        %{"toggled_item_id" => toggled_item_id},
-        socket
-      ) do
-    new_ids = toggle_id_in_list(socket.assigns.selected_brand_ids, toggled_item_id)
-
-    {:noreply, assign(socket, selected_brand_ids: new_ids)}
-  end
-
-  def handle_event(
-        "handle_brand_selection_cleared",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, selected_brand_ids: [])}
-  end
-
-  def handle_event(
-        "handle_brand_selection_apply",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, transactions: get_filtered_transactions(socket.assigns))}
-  end
-
-  def handle_event(
-        "handle_currency_search_changed",
-        %{"currency_search" => %{"value" => value}},
-        socket
-      ) do
-    # TODO: Implement proper search for currency options
-    {:noreply,
-     assign(
-       socket,
-       currency_search: %{value: value}
-     )}
-  end
-
-  def handle_event(
-        "handle_currency_selection_changed",
-        %{"toggled_item_id" => toggled_item_id},
-        socket
-      ) do
-    new_ids = toggle_id_in_list(socket.assigns.selected_currency_ids, toggled_item_id)
-
-    {:noreply, assign(socket, selected_currency_ids: new_ids)}
-  end
-
-  def handle_event(
-        "handle_currency_selection_cleared",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, selected_currency_ids: [])}
-  end
-
-  def handle_event(
-        "handle_currency_selection_apply",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, transactions: get_filtered_transactions(socket.assigns))}
-  end
-
   def handle_info(
-    {:apply_filter, filters},
-    %{ assigns: assigns} = socket
+    {:apply_filter, selected_option_ids},
+    socket
   ) do
-    %{ selected_users_ids: selected_users_ids } = filters
-
-    transactions = assigns
-      |> Map.put(:selected_users_ids, selected_users_ids)
+    transactions = selected_option_ids
       |> get_filtered_transactions()
 
-    {:noreply, assign(socket, transactions: transactions, selected_users_ids: selected_users_ids)}
+    # It's possible to change filter_options values based on transactions
+    {:noreply, assign(socket, transactions: transactions)}
   end
 
   def get_transactions() do
