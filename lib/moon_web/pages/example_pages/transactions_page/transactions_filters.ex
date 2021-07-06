@@ -11,14 +11,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
 
   data clicked_name, :string, default: ""
   prop filter_options, :map
-  data selected_option_ids, :map, default: %{
-    brand: [],
-    user: [],
-    currency: []
-  }
+
+  data selected_option_ids, :map,
+    default: %{
+      brand: [],
+      user: [],
+      currency: [],
+      country: []
+    }
+
   data user_search, :map, default: %{value: ""}
   data brand_search, :map, default: %{value: ""}
   data currency_search, :map, default: %{value: ""}
+  data country_search, :map, default: %{value: ""}
 
   def render(assigns) do
     ~F"""
@@ -138,22 +143,40 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       </Popover.Outer>
 
       <Popover.Outer>
-        <Chip on_click="open_popover" value="country" right_icon="icon_chevron_down_rounded">Country · All</Chip>
+        <Chip on_click="open_popover" value="country" right_icon="icon_chevron_down_rounded">
+          Country ·
+          {#if @selected_option_ids.country == []}
+            All
+          {#else}
+            {length(@selected_option_ids.country)}
+          {/if}
+        </Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "country"}>
-          Yay
+          <Dropdown
+            on_search_change="handle_search_changed"
+            search_placeholder="Search for a users ..."
+            search_name={:country_search}
+          >
+            <CheckboxMultiselect
+              on_change="handle_country_selection_changed"
+              class="max-h-32"
+              value={@selected_option_ids.country}
+              options={@filter_options.country |> handle_search(@country_search.value) }
+            />
+            <LeftToRight class="justify-between p-2">
+              <Button on_click="handle_country_selection_cleared">Clear</Button>
+              <LeftToRight>
+                <Button on_click="handle_country_selection_discard">Discard</Button>
+                <Button on_click="handle_filter_apply">Apply</Button>
+              </LeftToRight>
+            </LeftToRight>
+          </Dropdown>
         </Popover>
       </Popover.Outer>
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "range"}>
-          Yay
-        </Popover>
-      </Popover.Outer>
-
-      <Popover.Outer>
-        <Chip on_click="open_popover" value="status" right_icon="icon_chevron_down_rounded">Status · All</Chip>
-        <Popover close="close_popover" placement="under" :if={@clicked_name == "status"}>
           Yay
         </Popover>
       </Popover.Outer>
@@ -211,7 +234,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         socket
       ) do
     search_value = get_in(payload, [key, value])
-    search_value = [{String.to_existing_atom(key), %{ String.to_existing_atom(value) => search_value }}]
+
+    search_value = [
+      {String.to_existing_atom(key), %{String.to_existing_atom(value) => search_value}}
+    ]
+
     {:noreply, assign(socket, search_value)}
   end
 
@@ -288,7 +315,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     selected_option_ids = socket.assigns.selected_option_ids
     new_ids = toggle_id_in_list(selected_option_ids.currency, toggled_item_id)
 
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :currency, new_ids))}
+    {:noreply,
+     assign(socket, selected_option_ids: Map.put(selected_option_ids, :currency, new_ids))}
   end
 
   def handle_event(
@@ -307,6 +335,39 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       ) do
     selected_option_ids = socket.assigns.selected_option_ids
     selected_option_ids = Map.put(selected_option_ids, :currency, [])
+    send(self(), {:apply_filter, selected_option_ids})
+    {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
+  end
+
+  def handle_event(
+        "handle_country_selection_changed",
+        assigns,
+        socket
+      ) do
+    %{"toggled_item_id" => toggled_item_id} = assigns
+    selected_option_ids = socket.assigns.selected_option_ids
+    new_ids = toggle_id_in_list(selected_option_ids.country, toggled_item_id)
+
+    {:noreply,
+     assign(socket, selected_option_ids: Map.put(selected_option_ids, :country, new_ids))}
+  end
+
+  def handle_event(
+        "handle_country_selection_cleared",
+        _,
+        socket
+      ) do
+    selected_option_ids = socket.assigns.selected_option_ids
+    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :country, []))}
+  end
+
+  def handle_event(
+        "handle_country_selection_discard",
+        _,
+        socket
+      ) do
+    selected_option_ids = socket.assigns.selected_option_ids
+    selected_option_ids = Map.put(selected_option_ids, :country, [])
     send(self(), {:apply_filter, selected_option_ids})
     {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
   end
