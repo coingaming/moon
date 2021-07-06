@@ -48,14 +48,14 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       <#template slot="code">
         <#CodePreview>
           <Accordion>
-            <Item click="open" item_id="1" is_open={{ @item_id == "1" }} title="Welcome bonus">
+            <Item click="open" item_id="1" is_open={ @item_id == "1" } title="Welcome bonus">
               Content <br />
               Content <br />
             </Item>
-            <Item click="open" item_id="2" is_open={{ @item_id == "2" }} title="Customer support">
+            <Item click="open" item_id="2" is_open={ @item_id == "2" } title="Customer support">
               Content
             </Item>
-            <Item click="open" item_id="3" is_open={{ @item_id == "3" }} title="Deposit & Withdrawals">
+            <Item click="open" item_id="3" is_open={ @item_id == "3" } title="Deposit & Withdrawals">
               Content <br />
               Content <br />
               Content <br />

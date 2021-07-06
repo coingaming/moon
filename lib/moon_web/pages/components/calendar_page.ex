@@ -44,8 +44,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <Calendar
           id="default_calendar"
-          week_starts_on={{ 1 }}
-          events={{ @events }}
+          week_starts_on={ 1 }
+          events={ @events }
         />
       </#CodePreview>
         </#template>
@@ -74,8 +74,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <Calendar
           id="sunday_calendar"
-          week_starts_on={{ 7 }}
-          events={{ @events }}
+          week_starts_on={ 7 }
+          events={ @events }
         />
       </#CodePreview>
         </#template>

@@ -47,7 +47,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <#template slot="code">
             <#CodePreview>
               <Switch
-                checked={{ @checked }}
+                checked={ @checked }
                 on_change="handle_switch"
               />
             </#CodePreview>
@@ -131,7 +131,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
         <#template slot="code">
           <#CodePreview>
-            <Switch icons={{ true }} />
+            <Switch icons={ true } />
           </#CodePreview>
         </#template>
       </ExampleAndCode>
