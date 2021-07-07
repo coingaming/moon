@@ -7,6 +7,8 @@ defmodule Moon.Application do
 
   def start(_type, _args) do
     children = [
+      # Start Mock DB
+      %{id: :mock_db, start: {MoonWeb.MockDB, :start_link, []}},
       # Start the Telemetry supervisor
       MoonWeb.Telemetry,
       # Start the PubSub system
