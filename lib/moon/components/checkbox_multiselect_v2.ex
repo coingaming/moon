@@ -16,7 +16,7 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
       <div
         :on-click={@on_select}
         phx-value-toggled_item_id={option.value}
-        class="flex justify-between py-2 pl-4 pr-2 mx-1 hover:bg-hover rounded-sm"
+        class="flex justify-between py-2 pl-2 mx-1 hover:bg-goku-100 rounded-sm cursor-pointer"
       >
         {option.label}
         <Checkbox class="absolute right-0 pointer-events-none" checked={Enum.member?(@values, option.value)} />

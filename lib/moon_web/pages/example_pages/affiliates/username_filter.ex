@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter do
   data all_items, :list, default: []
   data selected_items, :list, default: []
 
-  prop filter_usernames, :list, required: true
+  prop active_items, :list, required: true
 
   def render(assigns) do
     ~F"""
@@ -21,14 +21,15 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter do
       {=@search_text}
       {=@all_items}
       {=@selected_items}
+      {=@active_items}
       on_apply="apply_filter"
-      on_toggle="toggle_filter"
+      on_discard="discard_filter"
       on_clear="clear_filter"
       on_search="handle_filter_search"
       on_select="handle_filter_select"
     >
       <Chip on_click="toggle_filter" value="users" right_icon="icon_chevron_down_rounded">
-        {"Users #{length(@filter_usernames) |> Helpers.format_filter_count()}"}
+        {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </MultiFilterPopover>
     """
@@ -40,7 +41,6 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter do
   def clear(id \\ "username_filter") do
     send_update(__MODULE__, id: id,
       show_filter: false,
-      search_text: "",
       selected_items: []
     )
   end
@@ -60,7 +60,22 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter do
     apply_filter(items)
     {:noreply, socket
       |> assign(show_filter: false)
-      |> assign(search_text: "")
+    }
+  end
+
+  def handle_event("discard_filter", _, socket) do
+    {:noreply, socket
+      |> assign(show_filter: false)
+      |> assign(selected_items: socket.assigns.active_items)
+    }
+  end
+
+  def handle_event("clear_filter", _, socket) do
+    %{ all_items: all_items, active_items: active_items } = socket.assigns
+
+    {:noreply, socket
+      |> assign(all_items: (if length(all_items) > 0, do: all_items, else: active_items))
+      |> assign(selected_items: [])
     }
   end
 
@@ -68,14 +83,6 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter do
     %{ show_filter: show_filter } = socket.assigns
 
     {:noreply, socket |> assign(show_filter: !show_filter)}
-  end
-
-  def handle_event("clear_filter", _, socket) do
-    apply_filter([])
-    socket
-      |> assign(show_filter: false)
-      |> assign(search_text: "")
-      |> assign(selected_items: [])
   end
 
   def handle_event("handle_filter_search", %{"search" => %{"search_text" => search_text}}, socket) do

@@ -41,8 +41,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter id="username_filter" filter_usernames={@username_filter} />
-              <CountryFilter id="country_filter" filter_countries={@country_filter} />
+              <UsernameFilter id="username_filter" active_items={@username_filter} />
+              <CountryFilter id="country_filter" active_items={@country_filter} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -68,9 +68,6 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     """
   end
 
-  #
-  # Event Handlers
-  #
   def mount(params, _session, socket) do
     socket = socket
       |> assign(theme_name: params["theme_name"] || "sportsbet-dark")
@@ -87,14 +84,11 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
       _                  -> socket
     end
 
-    {:noreply, socket
-      |> assign(page: 1)
-      |> filter_affiliates()
-    }
+    {:noreply, socket |> filter_affiliates()}
   end
 
   #
-  # event handlers
+  # Event Handlers
   #
   def handle_event("clear_all_filters", _, socket) do
     UsernameFilter.clear()
@@ -103,7 +97,6 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     {:noreply, socket
       |> assign(username_filter: [])
       |> assign(country_filter: [])
-      |> assign(page: 1)
       |> filter_affiliates()
     }
   end
@@ -129,7 +122,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   end
 
   #
-  # helpers
+  # Helpers
   #
   defp filter_affiliates(socket) do
     %{
@@ -139,6 +132,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     } = socket.assigns
 
     socket
+      |> assign(page: 1)
       |> assign(affiliates: Affiliates.list(%{
         filter: %{
           user: %{

@@ -4,14 +4,14 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
   alias Moon.Components.Chip
   alias MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopover
   alias MoonWeb.Pages.ExamplePages.Helpers
-
   alias MoonWeb.MockDB.Countries
 
   data show_filter, :boolean, default: false
   data search_text, :string, default: ""
   data all_items, :list, default: []
   data selected_items, :list, default: []
-  prop filter_countries, :list, required: true
+
+  prop active_items, :list, required: true
 
   def render(assigns) do
     ~F"""
@@ -20,14 +20,15 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
       {=@search_text}
       all_items={@all_items |> Helpers.search_by_labels(@search_text)}
       {=@selected_items}
+      {=@active_items}
       on_apply="apply_filter"
-      on_toggle="toggle_filter"
+      on_discard="toggle_filter"
       on_clear="clear_filter"
       on_search="handle_filter_search"
       on_select="handle_filter_select"
     >
       <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
-        {"Country #{length(@filter_countries) |> Helpers.format_filter_count()}"}
+        {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </MultiFilterPopover>
     """
