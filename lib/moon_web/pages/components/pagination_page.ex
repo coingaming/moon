@@ -50,10 +50,10 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         alias Moon.Components.Pagination
 
         <Pagination
-          current_page_number={{ @current_page_number }}
-          total_pages={{ @total_pages }}
-          range_before={{ 1 }}
-          range_after={{ 2 }}
+          current_page_number={ @current_page_number }
+          total_pages={ @total_pages }
+          range_before={ 1 }
+          range_after={ 2 }
           size="xsmall"
           previous_button_label="Previous"
           next_button_label="Next"
@@ -146,13 +146,13 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
       <#CodePreview>
         <div class="flex flex-wrap items-center">
           <div class="w-1/4 mb-4 text-sm">
-            {{ side_text(@page_number, @per_page, @total_entries) }}
+            { side_text(@page_number, @per_page, @total_entries) }
           </div>
 
           <div class="w-3/4">
             <Pagination
-              current_page_number={{ @page_number }}
-              total_pages={{ @total_pages }}
+              current_page_number={ @page_number }}
+             total_pages={ @total_pages }
               size="small"
               on_change="change_current_page"
             />

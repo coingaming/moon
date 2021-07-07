@@ -99,12 +99,12 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
     @assets_map[:"#{icon_name}"]
   end
   def render(assigns) do 
-    ~H"""
-    {{ @name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
+    ~F"""
+    {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
       (propsMapKeys as any)[iconType] || propsMapKeys.default
     )
       .map((x: string) => `${x}: @${x}`)
-      .join(', ')}) }}
+      .join(', ')})}
     """
   end
 end
@@ -125,12 +125,12 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }:CreateAssetsC
 
   const svgMap = {
     icon: `
-    <svg class="moon-${iconType} {{ @class }}" :on-click={{ @click }} style={{ get_style(color: @color, background_color: @background_color, font_size: @font_size) }}>
+    <svg class={"moon-${iconType} #{@class}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
     default: `
-    <svg class="moon-${iconType} {{ @class }}" :on-click={{ @click }} style={{ get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align) }}>
+    <svg class={"moon-${iconType} #{@class}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
@@ -143,8 +143,8 @@ defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
   use Moon.StatelessComponent
   ${(propsMap as any)[iconType] || propsMap.default}
   def render(assigns) do 
-    ~H"""
-    {{ asset_import @socket, "js/assets/${iconType}" }}
+    ~F"""
+    {asset_import @socket, "js/assets/${iconType}"}
     ${(svgMap as any)[iconType] || svgMap.default}
     """
   end
@@ -206,20 +206,20 @@ ${modules.map((x:string) => `  alias Crests.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
 ${modules
   .map(
     (x:string) => `
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <${x} font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <${x} font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 `
   )
@@ -247,20 +247,20 @@ ${modules.map((x:string) => `  alias Currencies.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
 ${modules
   .map(
     (x:string) => `
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <${x} font_size="10rem" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <${x} font_size="10rem" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 `
   )
@@ -287,20 +287,20 @@ ${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
   end
 
   def render(assigns) do
-    ~H"""
+    ~F"""
 ${modules
   .map(
     (x:string) => `
     <ExampleAndCode class="mt-4">
-      <template slot="example">
+      <#template slot="example">
         <${x} font_size="10rem" color="piccolo-100" />
-      </template>
+      </#template>
 
-      <template slot="code">
+      <#template slot="code">
         <#CodePreview>
         <${x} font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </template>
+      </#template>
     </ExampleAndCode>
 `
   )
@@ -327,20 +327,20 @@ ${modules.map((x) => `  alias Icons.${x}`).join('\n')}
   end
 
   def render(assigns) do
-  ~H"""
+  ~F"""
   ${modules
     .map(
       (x:string) => `
       <ExampleAndCode class="mt-4">
-        <template slot="example">
+        <#template slot="example">
           <${x} font_size="5rem" />
-        </template>
+        </#template>
   
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
           <${x} font_size="5rem" />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
   `
     )
@@ -367,20 +367,20 @@ ${modules.map((x:string) => `  alias Logos.${x}`).join('\n')}
   end
 
   def render(assigns) do
-  ~H"""
+  ~F"""
   ${modules
     .map(
       (x) => `
       <ExampleAndCode class="mt-4">
-        <template slot="example">
+        <#template slot="example">
           <${x} font_size="10rem" />
-        </template>
+        </#template>
   
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
           <${x} font_size="10rem" />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
   `
     )
@@ -407,20 +407,20 @@ ${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
   end
 
   def render(assigns) do
-  ~H"""
+  ~F"""
   ${modules
     .map(
       (x:string) => `
       <ExampleAndCode class="mt-4">
-        <template slot="example">
+        <#template slot="example">
           <${x} font_size="10rem" />
-        </template>
+        </#template>
   
-        <template slot="code">
+        <#template slot="code">
           <#CodePreview>
           <${x} font_size="10rem" />
           </#CodePreview>
-        </template>
+        </#template>
       </ExampleAndCode>
   `
     )

@@ -68,8 +68,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <Dropdown>
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
-            value={{ @selected_game_ids }}
-            options={{ @selectable_game_options }}
+            value={ @selected_game_ids }
+            options={ @selectable_game_options }
           />
         </Dropdown>
         </#CodePreview>
@@ -102,13 +102,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
-          search_name={{ :game_search }}
+          search_name={ :game_search }
         >
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
             class="max-h-32"
-            value={{ @selected_game_ids }}
-            options={{ @selectable_filtered_game_options }}
+            value={ @selected_game_ids }
+            options={ @selectable_filtered_game_ptions }}
           />
         </Dropdown>
         </#CodePreview>
@@ -140,8 +140,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <Dropdown>
           <SingeItemSelect
             on_change="handle_other_game_selected"
-            value={{ @other_game_id }}
-            options={{ @selectable_game_options }}
+            value={ @other_game_id }}
+           options={ @selectable_game_options }
           />
         </Dropdown>
         </#CodePreview>
@@ -173,13 +173,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
-          search_name={{ :game_search }}
+          search_name={ :game_search }
         >
           <SingeItemSelect
             on_change="handle_other_game_selected"
             class="max-h-32"
-            value={{ @other_game_id }}
-            options={{ @selectable_filtered_game_options }}
+            value={ @other_game_id }}
+           options={ @selectable_filtered_game_ptions }}
           />
         </Dropdown>
         </#CodePreview>

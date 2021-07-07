@@ -59,10 +59,10 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       alias Moon.Components.Tabs.TabLink
 
       <Tabs>
-        <TabLink active={{ @tab_id == "1" }} to={{ live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name) }}>Link 1</TabLink>
-        <TabLink active={{ @tab_id == "2" }} to={{ live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name) }}>Link 2</TabLink>
-        <TabLink active={{ @tab_id == "3" }} on_click="clicked_tab" item_id="3">Link 3</TabLink>
-        <TabLink active={{ @tab_id == "4" }} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+        <TabLink active={ @tab_id == "1" } to={ live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name) }>Link 1</TabLink>
+        <TabLink active={ @tab_id == "2" } to={ live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name) }>Link 2</TabLink>
+        <TabLink active={ @tab_id == "3" } on_click="clicked_tab" item_id="3">Link 3</TabLink>
+        <TabLink active={ @tab_id == "4" } on_click="clicked_tab" item_id="4">Link 4</TabLink>
       </Tabs>
 
       def handle_event(

@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
               <!-- TODO: Add form validation -->
               <!-- div class="flex items-center">
-                <Switch checked={{ @enable_validations }} />
+                <Switch checked={ @enable_validations } />
                 <span class="ml-3">Enable validations (not implemented)</span>
               </div -->
 
@@ -108,25 +108,25 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       <#CodePreview>
         <ToastStack id="toasts" />
 
-        <Form for={{ @user_changeset }} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+        <Form for={ @user_changeset } change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
           <Stack>
             <div class="flex items-center">
-              <Switch checked={{ @lock_fields }} on_change="lock_form_fields" />
+              <Switch checked={ @lock_fields }} on_change="lock_form_fields" />
               <span class="ml-3">Lock fields</span>
             </div>
 
-            <TextInput label="Name" field={{ :name }} />
-            <TextInput label="Email" field={{ :email }} />
+            <TextInput label="Name" field={ :name } />
+            <TextInput label="Email" field={ :email } />
 
             <Select
               label="Gender"
-              field={{ :gender }}
-              options={{ @gender_options }}
+              field={ :gender }
+              options={ @gender_options }
               prompt="Please select gender"
             />
 
             <FileInput
-              conf={{ @uploads.file }}
+              conf={ @uploads.file }
               label="Upload your ID"
               placeholder="Choose a document..."
             />
@@ -182,15 +182,15 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
         <#template slot="code">
       <#CodePreview>
-        <Form for={{ :user_map }} change="update_user_map" submit="save_user_map" autocomplete="off">
-          <TextInput label="Name" field={{ :name }} value={{ @user_map.name }} />
-          <TextInput label="Email" field={{ :email }} value={{ @user_map.email }} />
+        <Form for={ :user_map } chane="update_user_map" submit="save_user_map" autocomplete="off">
+          <TextInput label="Name" field={ :name } value={ @user_map.name } />
+          <TextInput label="Email" field={ :email } value={ @user_map.email } />
 
           <Select
             label="Gender"
-            field={{ :gender }}
-            options={{ @gender_options }}
-            value={{ @user_map.gender }}
+            field={ :gender }
+            options={ @gender_options }
+            value={ @user_map.gender }
             prompt="Please select gender"
           />
 

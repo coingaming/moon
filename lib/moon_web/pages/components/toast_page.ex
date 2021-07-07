@@ -225,14 +225,14 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           id="closeable_toast"
           message="You can close this toast."
           variant="success"
-          closeable={{ true }}
+          closeable={ true }
         />
 
         <Toast
           id="not_closeable_toast"
           message="You cannot close this toast."
           variant="warning"
-          closeable={{ false }}
+          closeable={ false }
         />
 
         <Toast
@@ -248,7 +248,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           message="This toast has only text and a link."
           link_href="#"
           link_text="Why?"
-          closeable={{ false }}
+          closeable={ false }
         />
       </#CodePreview>
         </#template>

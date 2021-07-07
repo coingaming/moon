@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         end
 
         <FileInput
-          conf={{ @uploads.file }}
+          conf={ @uploads.file }
           label="Upload your ID"
           placeholder="Choose a document..."
         />
@@ -74,8 +74,8 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     <#template slot="code">
       <#CodePreview>
         <FileInput
-          conf={{ @uploads.file }}
-          error={{ true }}
+          conf={ @uploads.file }
+          error={ true }
         />
       </#CodePreview>
     </#template>
