@@ -20,6 +20,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     |> get_filtered_transactions_by_currency(selected_option_ids.currency)
     |> get_filtered_transactions_by_users(selected_option_ids.user)
     |> get_filtered_transactions_by_country(selected_option_ids.country)
+    |> get_filtered_transactions_by_amount(selected_option_ids.amount_range)
   end
 
   defp get_filtered_transactions_by_users([], _), do: []
@@ -63,6 +64,22 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     transactions
     |> Enum.filter(fn x ->
       Enum.member?(selected_country_ids, x.country_id)
+    end)
+  end
+
+  defp get_filtered_transactions_by_amount([], _), do: []
+  defp get_filtered_transactions_by_amount(transactions, nil), do: transactions
+  defp get_filtered_transactions_by_amount(transactions, %{min: 0, max: 0}), do: transactions
+  defp get_filtered_transactions_by_amount(transactions, %{min: "0", max: "0"}), do: transactions
+  defp get_filtered_transactions_by_amount(transactions, %{min: "", max: ""}), do: transactions
+
+  defp get_filtered_transactions_by_amount(transactions, %{min: min, max: max}) do
+    min = String.to_integer(min)
+    max = String.to_integer(max)
+
+    transactions
+    |> Enum.filter(fn x ->
+      min <= x.amount && x.amount <= max
     end)
   end
 
@@ -149,6 +166,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         currency_id: "1",
         country: "Japan",
         country_id: "101",
+        amount: 100,
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -164,6 +182,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         currency_id: "1",
         country: "Estonia",
         country_id: "100",
+        amount: 200,
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -179,6 +198,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         currency_id: "2",
         country: "Japan",
         country_id: "101",
+        amount: 400,
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",
@@ -194,6 +214,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         currency_id: "1",
         country: "Japan",
         country_id: "101",
+        amount: 800,
         create_time: "May 14, 2020, 12:45:57",
         process_time: "May 14, 2020, 12:45:57",
         status: "Confirmed",

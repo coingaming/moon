@@ -2,16 +2,15 @@ defmodule Moon.Components.Form do
   use Moon.StatelessComponent
 
   prop(for, :any)
-  prop(change, :string)
-  prop(submit, :string)
+  prop(change, :event)
+  prop(submit, :event)
   prop(class, :string)
-  prop(target, :any)
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
   slot(default, args: [:form])
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form for={@for} change={@change} submit={@submit} opts={"phx-target": @target, autocomplete: @autocomplete, class: @class}>
+    <Surface.Components.Form for={@for} change={@change} submit={@submit} opts={autocomplete: @autocomplete, class: @class}>
       <Context get={Surface.Components.Form, form: form}>
         <#slot :args={form: form} />
       </Context>

@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
         <div class="p-4 pt-8">
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
-          <TransactionsList id="transactions" transactions={@transactions} />
+          <TransactionsList transactions={@transactions} />
         </div>
       </div>
     </div>

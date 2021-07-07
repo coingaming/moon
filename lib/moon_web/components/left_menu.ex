@@ -64,7 +64,6 @@ defmodule MoonWeb.Components.LeftMenu do
           <Form
             for={:selected_theme}
             change="update_selected_theme"
-            target={@myself}
           >
             <Select
               field={:value}
