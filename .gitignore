@@ -37,5 +37,3 @@ node_modules
 .DS_Store
 
 .tool-versions
-
-# /assets/js/_hooks/

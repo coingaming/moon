@@ -104,7 +104,7 @@ defmodule Moon.Components.Datepicker do
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "phx-hook": "Datepicker",
                   "data-pending-val": format_date(@start_date, @with_time)
                 }
               />
@@ -115,7 +115,7 @@ defmodule Moon.Components.Datepicker do
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "phx-hook": "Datepicker",
                   "data-pending-val": format_date(@start_date, @with_time)
                 }
               />
@@ -148,7 +148,7 @@ defmodule Moon.Components.Datepicker do
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "phx-hook": "Datepicker",
                   "data-pending-val": format_date(@end_date, @with_time)
                 }
               />
@@ -159,7 +159,7 @@ defmodule Moon.Components.Datepicker do
                 class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Moon.Components.Datepicker#Datepicker",
+                  "phx-hook": "Datepicker",
                   "data-pending-val": format_date(@end_date, @with_time)
                 }
               />

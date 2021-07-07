@@ -1,7 +1,7 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.1.44"
+  @version "0.1.45"
 
   def project do
     [
@@ -9,7 +9,7 @@ defmodule Moon.MixProject do
       version: @version,
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers() ++ [:surface],
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -53,6 +53,7 @@ defmodule Moon.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:vega_lite, "~> 0.1.0"},
       {:asset_import, "~> 0.4"},
       {:surface, "~> 0.5.0"},
       {:timex, "~> 3.7"},

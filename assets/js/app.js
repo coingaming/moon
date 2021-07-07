@@ -18,14 +18,20 @@ import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
 import { AssetImport, AssetHook } from "asset_import_hook"
-import Hooks from "./_hooks"
 
-Hooks.AssetImport = AssetImport
-Hooks.AssetHook = AssetHook
+import Datepicker from "./hooks/datepicker"
+import VegaLite from "./hooks/vega_lite"
+
+const hooks = {
+  AssetImport,
+  AssetHook,
+  Datepicker,
+  VegaLite
+}
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
-  hooks: Hooks,
+  hooks: hooks,
   dom: {
     onBeforeElUpdated(from, to) {
       if (from.__x) {
