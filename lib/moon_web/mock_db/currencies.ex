@@ -1,6 +1,8 @@
 defmodule MoonWeb.MockDB.Currencies do
   use GenServer
 
+  alias MoonWeb.MockDB.Utils
+
   @process_name :mock_currencies
 
   # client
@@ -9,6 +11,10 @@ defmodule MoonWeb.MockDB.Currencies do
   end
 
   def list_all(), do: this_process() |> GenServer.call(:list_all)
+
+  def random() do
+    list_all() |> Utils.get_random_item()
+  end
 
   # server
   def init(_args) do

@@ -1,7 +1,7 @@
 defmodule MoonWeb.MockDB.Users do
   use GenServer
 
-  alias MoonWeb.MockDB.Countries
+  alias MoonWeb.MockDB.{ Countries, Sites }
   alias MoonWeb.MockDB.Utils
 
   @process_name :mock_users
@@ -31,14 +31,18 @@ defmodule MoonWeb.MockDB.Users do
 
     {:ok, %{
       all: 0..1000
-        |> Enum.map(fn _ ->
-          %{
-            id: Utils.random_id(),
-            name: Faker.Person.name(),
-            email: Faker.Internet.email(),
-            country: Faker.Util.pick(countries).name,
-            username: Faker.Internet.user_name()
-          }
+        |> Enum.flat_map(fn _ ->
+          Sites.random_list()
+          |> Enum.map(fn site ->
+            %{
+              id: Utils.random_id(),
+              name: Faker.Person.name(),
+              email: Faker.Internet.email(),
+              country: Faker.Util.pick(countries).name,
+              username: Faker.Internet.user_name(),
+              site: site.name
+            }
+          end)
         end)
     }}
   end

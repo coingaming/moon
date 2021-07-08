@@ -2,7 +2,6 @@ defmodule MoonWeb.MockDB.Affiliates do
   use GenServer
 
   alias MoonWeb.MockDB.Users
-  alias MoonWeb.MockDB.Sites
   alias MoonWeb.MockDB.Utils
 
   @process_name :mock_affliates
@@ -17,13 +16,11 @@ defmodule MoonWeb.MockDB.Affiliates do
     filter: %{ user: _ },
     pagination: %{ offset: _, limit: _ }
   } = args) do
-    this_process()
-    |> GenServer.call({:list, args})
+    this_process() |> GenServer.call({:list, args})
   end
 
   def list_all() do
-    this_process()
-    |> GenServer.call(:list_all)
+    this_process() |> GenServer.call(:list_all)
   end
 
   # server
@@ -31,17 +28,13 @@ defmodule MoonWeb.MockDB.Affiliates do
     users = Users.list_all()
     {:ok, %{
       all: users
-        |> Enum.flat_map(fn user ->
-          Sites.random_sites()
-          |> Enum.map(fn site ->
-            %{
-              id: Utils.random_id(),
-              user: user,
-              site: site,
-              tags: random_tags(),
-              signup_at: Faker.DateTime.backward(120)
-            }
-          end)
+        |> Enum.map(fn user ->
+          %{
+            id: Utils.random_id(),
+            user: user,
+            tags: random_tags(),
+            signup_at: Faker.DateTime.backward(120)
+          }
         end)
     }}
   end

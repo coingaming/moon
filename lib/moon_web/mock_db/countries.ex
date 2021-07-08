@@ -9,8 +9,7 @@ defmodule MoonWeb.MockDB.Countries do
   end
 
   def list_all() do
-    this_process()
-    |> GenServer.call(:list_all)
+    this_process() |> GenServer.call(:list_all)
   end
 
   # server

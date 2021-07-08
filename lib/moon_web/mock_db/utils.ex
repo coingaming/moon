@@ -3,6 +3,10 @@ defmodule MoonWeb.MockDB.Utils do
     Faker.random_between(100000, 999999)
   end
 
+  def get_random_item(items) do
+    Enum.fetch!(items, Faker.random_between(0, length(items) - 1))
+  end
+
   def take_page(list, offset, limit) do
     if length(list) - (limit * offset) > 0 do
       l = list |> Enum.take(limit * (offset + 1))

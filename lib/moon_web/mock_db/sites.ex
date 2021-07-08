@@ -1,6 +1,8 @@
 defmodule MoonWeb.MockDB.Sites do
   use GenServer
 
+  alias MoonWeb.MockDB.Utils
+
   @process_name :mock_sites
 
   # client
@@ -10,11 +12,15 @@ defmodule MoonWeb.MockDB.Sites do
 
   def list_all(), do: this_process() |> GenServer.call(:list_all)
 
-  def random_sites() do
+  def random_list() do
     sites = list_all()
 
     0..Faker.random_between(0, length(sites) - 1)
       |> Enum.map(&(Enum.fetch!(sites, &1)))
+  end
+
+  def random() do
+    list_all() |> Utils.get_random_item()
   end
 
   # server
