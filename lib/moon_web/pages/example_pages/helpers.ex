@@ -25,7 +25,9 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
     end
   end
 
-  def to_integer(str, default \\ 0) do
+  @spec to_integer(String.t() | integer(), any()) :: any()
+  def to_integer(int, _default) when is_integer(int), do: int
+  def to_integer(str, default) do
     String.to_integer(str)
   rescue
     ArgumentError ->

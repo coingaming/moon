@@ -1,4 +1,21 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
+  @moduledoc """
+  Sample page for transactions based on https://www.figma.com/file/vn8wTPWLxL2Yy936qo3m6k/Master-DEV?node-id=12%3A8036
+  Data generated and filtered on liveview, so you need to delete these methods while using this as a template
+  if you use;
+  ```
+    <TransactionsFilters id="transaction_filters" {=@filter_options} />
+  ```
+  Only required functions is;
+  ```
+    def handle_info({:apply_filter, selected_option_ids}, socket) do
+      ...
+    end
+    ...
+  ```
+  because TransactionFilters sends selected filters to liveview, liveview is responsible to filter with cnts & models.
+  """
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
@@ -17,71 +34,39 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   defp get_filtered_transactions(selected_option_ids) do
     get_transactions()
-    |> get_filtered_transactions_by_brand(selected_option_ids.brand)
-    |> get_filtered_transactions_by_currency(selected_option_ids.currency)
-    |> get_filtered_transactions_by_users(selected_option_ids.user)
-    |> get_filtered_transactions_by_country(selected_option_ids.country)
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids.brand)
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids.currency)
+    |> get_filtered_transactions_by(:aff_id, selected_option_ids.user)
+    |> get_filtered_transactions_by(:country_id, selected_option_ids.country)
     |> get_filtered_transactions_by_amount(selected_option_ids.amount_range)
   end
 
-  defp get_filtered_transactions_by_users([], _), do: []
-  defp get_filtered_transactions_by_users(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_users(transactions, []), do: transactions
+  defp get_filtered_transactions_by([], _, _), do: []
+  defp get_filtered_transactions_by(transactions, _, nil), do: transactions
+  defp get_filtered_transactions_by(transactions, _, []), do: transactions
 
-  defp get_filtered_transactions_by_users(transactions, selected_users_ids) do
+  defp get_filtered_transactions_by(transactions, field, selected_ids) do
     transactions
     |> Enum.filter(fn x ->
-      Enum.member?(selected_users_ids, x.aff_id)
-    end)
-  end
-
-  defp get_filtered_transactions_by_brand([], _), do: []
-  defp get_filtered_transactions_by_brand(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_brand(transactions, []), do: transactions
-
-  defp get_filtered_transactions_by_brand(transactions, selected_brand_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_brand_ids, x.brand_id)
-    end)
-  end
-
-  defp get_filtered_transactions_by_currency([], _), do: []
-  defp get_filtered_transactions_by_currency(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_currency(transactions, []), do: transactions
-
-  defp get_filtered_transactions_by_currency(transactions, selected_currency_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_currency_ids, x.currency_id)
-    end)
-  end
-
-  defp get_filtered_transactions_by_country([], _), do: []
-  defp get_filtered_transactions_by_country(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_country(transactions, []), do: transactions
-
-  defp get_filtered_transactions_by_country(transactions, selected_country_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_country_ids, x.country_id)
+      Enum.member?(selected_ids, x[field])
     end)
   end
 
   defp get_filtered_transactions_by_amount([], _), do: []
   defp get_filtered_transactions_by_amount(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_amount(transactions, %{min: 0, max: 0}), do: transactions
-  defp get_filtered_transactions_by_amount(transactions, %{min: "0", max: "0"}), do: transactions
-  defp get_filtered_transactions_by_amount(transactions, %{min: "", max: ""}), do: transactions
 
   defp get_filtered_transactions_by_amount(transactions, %{min: min, max: max}) do
     min = Helpers.to_integer(min, nil)
     max = Helpers.to_integer(max, nil)
 
-    transactions
-    |> Enum.filter(fn x ->
-      (min == nil || min <= x.amount) && (max == nil || x.amount <= max)
-    end)
+    if min == nil && max == nil do
+      transactions
+    else
+      transactions
+      |> Enum.filter(fn x ->
+        min <= x.amount && x.amount <= max
+      end)
+    end
   end
 
   def mount(params, _session, socket) do
@@ -116,10 +101,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     """
   end
 
-  def handle_info(
-        {:apply_filter, selected_option_ids},
-        socket
-      ) do
+  def handle_info({:apply_filter, selected_option_ids}, socket) do
     transactions =
       selected_option_ids
       |> get_filtered_transactions()

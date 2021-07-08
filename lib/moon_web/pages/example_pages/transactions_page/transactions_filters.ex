@@ -1,4 +1,18 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
+  @moduledoc """
+  Generic filter implementations, can be used for any model or any data which required included filters
+  respective liveview must provide filter options and must handle `:apply_filter, filters` info message.
+  ```
+    <TransactionsFilters id="transaction_filters" {=@filter_options} />
+  ```
+  Liveview must have
+  ```
+    def handle_info({:apply_filter, selected_option_ids}, socket) do
+      ...
+    end
+    ...
+  ```
+  """
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Button
