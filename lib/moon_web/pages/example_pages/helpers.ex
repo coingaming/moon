@@ -24,4 +24,11 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
       "• All"
     end
   end
+
+  def to_integer(str, default \\ 0) do
+    String.to_integer(str)
+  rescue
+    ArgumentError ->
+      default
+  end
 end

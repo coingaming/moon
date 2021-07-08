@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Shared.Breadcrumbs
   alias __MODULE__.TransactionsFilters
   alias __MODULE__.TransactionsList
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
@@ -74,12 +75,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   defp get_filtered_transactions_by_amount(transactions, %{min: "", max: ""}), do: transactions
 
   defp get_filtered_transactions_by_amount(transactions, %{min: min, max: max}) do
-    min = String.to_integer(min)
-    max = String.to_integer(max)
+    min = Helpers.to_integer(min, nil)
+    max = Helpers.to_integer(max, nil)
 
     transactions
     |> Enum.filter(fn x ->
-      min <= x.amount && x.amount <= max
+      (min == nil || min <= x.amount) && (max == nil || x.amount <= max)
     end)
   end
 

@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.Form
   alias Moon.Components.TextInput
+  alias Moon.Components.Divider
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.ButtonsList
 
@@ -19,7 +20,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   data currency_search, :map, default: %{value: ""}
   data country_search, :map, default: %{value: ""}
 
-  data amount_range_values, :map, default: %{min: 0, max: 0}
+  @default_amount_range_value %{min: "", max: ""}
+  data amount_range_values, :map, default: @default_amount_range_value
   data selected_brand_option_ids, :list, default: []
   data selected_user_option_ids, :list, default: []
   data selected_currency_option_ids, :list, default: []
@@ -68,13 +70,14 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
               options={@filter_options.brand |> handle_search(@brand_search.value)}
             />
           </Dropdown>
+          <Divider/>
           <LeftToRight class="justify-between p-2">
-          <Button on_click="handle_brand_selection_cleared">Clear</Button>
-          <LeftToRight>
-            <Button on_click="handle_brand_selection_discard">Discard</Button>
-            <Button on_click="handle_filter_apply">Apply</Button>
+            <Button on_click="handle_brand_selection_cleared">Clear</Button>
+            <LeftToRight>
+              <Button on_click="handle_brand_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
+            </LeftToRight>
           </LeftToRight>
-        </LeftToRight>
         </Popover>
       </Popover.Outer>
 
@@ -101,12 +104,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
             />
           </Dropdown>
           <LeftToRight class="justify-between p-2">
-          <Button on_click="handle_currency_selection_cleared">Clear</Button>
-          <LeftToRight>
-            <Button on_click="handle_currency_selection_discard">Discard</Button>
-            <Button on_click="handle_filter_apply">Apply</Button>
+            <Button on_click="handle_currency_selection_cleared">Clear</Button>
+            <LeftToRight>
+              <Button on_click="handle_currency_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
+            </LeftToRight>
           </LeftToRight>
-        </LeftToRight>
         </Popover>
       </Popover.Outer>
 
@@ -134,8 +137,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
             <LeftToRight class="justify-between p-2">
               <Button on_click="handle_user_selection_cleared">Clear</Button>
               <LeftToRight>
-                <Button on_click="handle_user_selection_discard">Discard</Button>
-                <Button on_click="handle_filter_apply">Apply</Button>
+                <Button on_click="handle_user_selection_discard" variant="tertiary">Discard</Button>
+                <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
               </LeftToRight>
             </LeftToRight>
           </Dropdown>
@@ -166,8 +169,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
             <LeftToRight class="justify-between p-2">
               <Button on_click="handle_country_selection_cleared">Clear</Button>
               <LeftToRight>
-                <Button on_click="handle_country_selection_discard">Discard</Button>
-                <Button on_click="handle_filter_apply">Apply</Button>
+                <Button on_click="handle_country_selection_discard" variant="tertiary">Discard</Button>
+                <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
               </LeftToRight>
             </LeftToRight>
           </Dropdown>
@@ -178,14 +181,16 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "range"}>
           <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
+            <LeftToRight class="justify-between p-2">
               <TextInput type="number" field={:min} placeholder="Min" value={@amount_range_values.min} />
               <TextInput type="number" field={:max} placeholder="Max" value={@amount_range_values.max} />
+            </LeftToRight>
           </Form>
           <LeftToRight class="justify-between p-2">
             <Button on_click="handle_amount_range_selection_cleared">Clear</Button>
             <LeftToRight>
-              <Button on_click="handle_amount_range_selection_discard">Discard</Button>
-              <Button on_click="handle_filter_apply">Apply</Button>
+              <Button on_click="handle_amount_range_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
             </LeftToRight>
           </LeftToRight>
         </Popover>
@@ -389,7 +394,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    {:noreply, assign(socket, :amount_range_values, %{min: 0, max: 0})}
+    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
   end
 
   def handle_event(
@@ -400,10 +405,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     filter_ids =
       socket.assigns
       |> prepare_selected_filters()
-      |> Map.put(:amount_range, %{min: 0, max: 0})
+      |> Map.put(:amount_range, @default_amount_range_value)
 
     send(self(), {:apply_filter, filter_ids})
-    {:noreply, assign(socket, :amount_range_values, %{min: 0, max: 0})}
+    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
   end
 
   def handle_event(
