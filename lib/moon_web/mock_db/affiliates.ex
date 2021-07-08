@@ -2,6 +2,7 @@ defmodule MoonWeb.MockDB.Affiliates do
   use GenServer
 
   alias MoonWeb.MockDB.Users
+  alias MoonWeb.MockDB.Sites
   alias MoonWeb.MockDB.Utils
 
   @process_name :mock_affliates
@@ -31,7 +32,7 @@ defmodule MoonWeb.MockDB.Affiliates do
     {:ok, %{
       all: users
         |> Enum.flat_map(fn user ->
-          Utils.random_sites()
+          Sites.random_sites()
           |> Enum.map(fn site ->
             %{
               id: Utils.random_id(),

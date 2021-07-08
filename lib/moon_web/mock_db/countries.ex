@@ -13,11 +13,6 @@ defmodule MoonWeb.MockDB.Countries do
     |> GenServer.call(:list_all)
   end
 
-  def search_names(search_text) do
-    this_process()
-    |> GenServer.call({:search_names, search_text})
-  end
-
   # server
   def init(_args) do
     {:ok, %{
@@ -26,20 +21,22 @@ defmodule MoonWeb.MockDB.Countries do
         %{name: "France"},
         %{name: "Germany"},
         %{name: "Ukraine"},
-        %{name: "United Kingdom"}
+        %{name: "United Kingdom"},
+        %{name: "Italy"},
+        %{name: "Span"},
+        %{name: "Poland"},
+        %{name: "Romania"},
+        %{name: "Greece"},
+        %{name: "Austria"},
+        %{name: "Serbia"},
+        %{name: "Bulgaria"},
+        %{name: "Finland"}
       ]
     }}
   end
 
   def handle_call(:list_all, _from, state) do
     {:reply, state.all, state}
-  end
-
-  def handle_call({:search_names, search_text}, _from, state) do
-    results = state.all
-      |> Enum.filter(&(String.contains?(&1.name, search_text)))
-      |> Enum.map(&(&1.name))
-    {:reply, results, state}
   end
 
   # helpers

@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
   alias Moon.Autolayouts.LeftToRight
 
   prop show_filter, :boolean, required: true
-  prop search_text, :string, required: true
+  prop search_text, :string
   prop all_items, :list, required: true
   prop selected_items, :list, required: true
   prop active_items, :list, required: true
@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
   prop on_apply, :event, required: true
   prop on_discard, :event, required: true
   prop on_clear, :event, required: true
-  prop on_search, :event, required: true
+  prop on_search, :event
   prop on_select, :event, required: true
 
   slot default, required: true
@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
 
       <:content>
         <div class="w-80 bg-gohan-100 shadow rounded">
-          <div :if={not is_nil(@on_search)} class="p-3">
+          <div :if={@on_search != nil} class="p-3">
             <Form
               for={:search}
               change={@on_search}
@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
             </Form>
           </div>
 
-          <div class="h-80 pl-2 pr-1 overflow-y-auto no-scrollbar">
+          <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar #{is_nil(@on_search) && "pt-4"}"}>
             {#if length(@all_items) > 0}
               <CheckboxMultiselectV2
                 values={@selected_items |> Enum.map(&(&1.value))}
@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
             {/if}
           </div>
 
-          <Divider/>
+          <Divider class="mt-2"/>
           <LeftToRight class="justify-between p-2">
             {#if can_clear_filters?(@selected_items)}
               <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>

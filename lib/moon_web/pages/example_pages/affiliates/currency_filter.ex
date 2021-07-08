@@ -1,13 +1,12 @@
-defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
+defmodule MoonWeb.Pages.ExamplePages.Affiliates.CurrencyFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
   alias MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopover
   alias MoonWeb.Pages.ExamplePages.Helpers
-  alias MoonWeb.MockDB.Countries
+  alias MoonWeb.MockDB.Currencies
 
   data show_filter, :boolean, default: false
-  data search_text, :string, default: ""
   data all_items, :list, default: []
   data selected_items, :list, default: []
 
@@ -17,25 +16,23 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
     ~F"""
     <MultiFilterPopover
       {=@show_filter}
-      {=@search_text}
       {=@all_items}
       {=@selected_items}
       {=@active_items}
       on_apply="apply_filter"
       on_discard="discard_filter"
       on_clear="clear_filter"
-      on_search="handle_filter_search"
       on_select="handle_filter_select"
     >
       <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
-        {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"Currency #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </MultiFilterPopover>
     """
   end
 
   def mount(socket) do
-    all_items = Countries.list_all() |> Enum.map(&(%{label: &1.name, value: &1.name}))
+    all_items = Currencies.list_all() |> Enum.map(&(%{label: &1.name, value: &1.name}))
 
     {:ok, socket |> assign(all_items: all_items)}
   end
@@ -43,7 +40,7 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
   #
   # Public API
   #
-  def clear(id \\ "country_filter") do
+  def clear(id \\ "sites_filter") do
     send_update(__MODULE__, id: id,
       show_filter: false,
       search_text: "",
@@ -51,7 +48,7 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
     )
   end
 
-  def close(id \\ "country_filter") do
+  def close(id \\ "sites_filter") do
     send_update(__MODULE__, id: id,
       show_filter: false
     )
@@ -64,10 +61,7 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
     %{ selected_items: items } = socket.assigns
 
     apply_filter(items)
-    {:noreply, socket
-      |> assign(show_filter: false)
-      |> assign(search_text: "")
-    }
+    {:noreply, socket |> assign(show_filter: false)}
   end
 
   def handle_event("discard_filter", _, socket) do
@@ -87,17 +81,6 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
     {:noreply, socket |> assign(show_filter: !show_filter)}
   end
 
-  def handle_event("handle_filter_search", %{"search" => %{"search_text" => search_text}}, socket) do
-    all_items = Countries.list_all()
-      |> Enum.map(&(%{label: &1.name, value: &1.name}))
-      |> Helpers.search_by_labels(search_text)
-
-    {:noreply, socket
-      |> assign(all_items: all_items)
-      |> assign(search_text: search_text)
-    }
-  end
-
   def handle_event("handle_filter_select", %{"toggled_item_id" => id}, socket) do
     %{ all_items: all, selected_items: selected } = socket.assigns
     {:noreply, socket
@@ -106,6 +89,6 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter do
   end
 
   defp apply_filter(items) do
-    send(self(), {:apply_filter, {:country, items}})
+    send(self(), {:apply_filter, {:site, items}})
   end
 end

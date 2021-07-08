@@ -14,19 +14,12 @@ defmodule MoonWeb.MockDB.Users do
   def list(args = %{
     filter: %{ id: _, country: _ },
   }) do
-    this_process()
-    |> GenServer.call({:list, args})
+    this_process() |> GenServer.call({:list, args})
   end
 
-  def list_all() do
-    this_process()
-    |> GenServer.call(:list_all)
-  end
+  def list_all(), do: this_process() |> GenServer.call(:list_all)
 
-  def search_by_usernames("") do
-    []
-  end
-
+  def search_by_usernames(""), do: []
   def search_by_usernames(search_text) do
     this_process()
     |> GenServer.call({:search_usernames, search_text})
