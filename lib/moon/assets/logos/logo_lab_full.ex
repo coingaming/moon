@@ -13,7 +13,7 @@ defmodule Moon.Assets.Logos.LogoLabFull do
     ~F"""
     {asset_import @socket, "js/assets/logo"}
 
-    <svg class={"moon-logo #{@class}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
+    <svg class={"moon-logo #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
       <use href="/moon/svgs/logos/logo-lab-full.svg#item"></use>
     </svg>
 

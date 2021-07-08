@@ -13,7 +13,7 @@ defmodule Moon.Assets.Crests.CrestFlamengo do
     ~F"""
     {asset_import @socket, "js/assets/crest"}
 
-    <svg class={"moon-crest #{@class}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
+    <svg class={"moon-crest #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
       <use href="/moon/svgs/crests/crest-flamengo.svg#item"></use>
     </svg>
 
