@@ -22,7 +22,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.Form
   alias Moon.Components.TextInput
-  alias Moon.Components.Divider
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.ButtonsList
 
@@ -79,12 +78,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change={"handle_brand_selection_changed"}
-              class="max-h-32"
+              class="h-48"
               value={@selected_brand_option_ids}
               options={@filter_options.brand |> handle_search(@brand_search.value)}
             />
           </Dropdown>
-          <Divider/>
           <LeftToRight class="justify-between p-2">
             <Button on_click="handle_brand_selection_cleared">Clear</Button>
             <LeftToRight>
@@ -112,7 +110,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change={"handle_currency_selection_changed"}
-              class="max-h-32"
+              class="h-48"
               value={@selected_currency_option_ids}
               options={@filter_options.currency |> handle_search(@currency_search.value)}
             />
@@ -144,7 +142,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change="handle_user_selection_changed"
-              class="max-h-32"
+              class="h-48"
               value={@selected_user_option_ids}
               options={@filter_options.user |> handle_search(@user_search.value) }
             />
@@ -176,7 +174,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change="handle_country_selection_changed"
-              class="max-h-32"
+              class="h-48"
               value={@selected_country_option_ids}
               options={@filter_options.country |> handle_search(@country_search.value) }
             />
@@ -193,7 +191,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
-        <Popover close="close_popover" placement="under" :if={@clicked_name == "range"}>
+        <Popover close="close_popover" class="h-auto" placement="under" :if={@clicked_name == "range"}>
           <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
             <LeftToRight class="justify-between p-2">
               <TextInput type="number" field={:min} placeholder="Min" value={@amount_range_values.min} />

@@ -11,7 +11,7 @@ defmodule Moon.Components.CheckboxMultiselect.Item do
     ~F"""
     <div class="flex justify-between py-2 pl-4 pr-2 mx-1 hover:bg-hover rounded-sm" :on-click={@on_click} phx-value-toggled_item_id={@item_id}>
       <#slot />
-      <Checkbox class="absolute right-0 pointer-events-none" checked={@checked} />
+      <Checkbox class="right-0 pointer-events-none" checked={@checked} />
     </div>
     """
   end
