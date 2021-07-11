@@ -6,7 +6,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.MenuButton do
 
   def render(assigns) do
     ~F"""
-    <div class={"p-2 m-2 rounded-sm #{@class}"}><#slot /></div>
+    <div
+      class={"h-10 w-10 flex items-center justify-center cursor-pointer #{@class}"}
+    >
+      <#slot />
+    </div>
     """
   end
 end
