@@ -2,10 +2,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Pages.ExamplePages.Shared
-  alias MoonWeb.Pages.ExamplePages.Affiliates.UsernameFilter
-  alias MoonWeb.Pages.ExamplePages.Affiliates.CountryFilter
-  alias MoonWeb.Pages.ExamplePages.Affiliates.SiteFilter
-  alias MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesListPagination
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
+  alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
 
   alias Shared.TopMenu
   alias Shared.LeftMenu
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
 
-            <AffiliatesListPagination
+            <ListPagination
               {=@page}
               page_count={20}
               total_count={10056}

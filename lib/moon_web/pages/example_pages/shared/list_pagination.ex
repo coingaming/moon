@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesListPagination do
+defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Divider
