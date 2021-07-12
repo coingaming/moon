@@ -9,9 +9,9 @@ defmodule Moon.Components.CheckboxMultiselect.Item do
 
   def render(assigns) do
     ~F"""
-    <div class="p-2 pl-3 pr-3 hover:bg-hover rounded-md relative" :on-click={@on_click} phx-value-toggled_item_id={@item_id}>
+    <div class="flex justify-between py-2 pl-4 pr-2 mx-1 hover:bg-hover rounded-sm" :on-click={@on_click} phx-value-toggled_item_id={@item_id}>
       <#slot />
-      <Checkbox class="absolute right-0" checked={@checked} />
+      <Checkbox class="right-0 pointer-events-none" checked={@checked} />
     </div>
     """
   end
@@ -37,11 +37,17 @@ defmodule Moon.Components.CheckboxMultiselect do
 
     <div class={"bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll #{@class}"} style={@style || ""}>
       <#slot />
+      {#if length(@options) > 0}
       <div :for={option <- @options}>
         <Item item_id={option.value} checked={Enum.member?(@value, option.value)} on_click={@on_change}>
           {option.label}
         </Item>
       </div>
+      {#else}
+      <div class="h-full flex items-center justify-around">
+        <div>No results found</div>
+      </div>
+      {/if}
     </div>
     """
   end

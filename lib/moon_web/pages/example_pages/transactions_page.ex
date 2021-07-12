@@ -1,4 +1,21 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
+  @moduledoc """
+  Sample page for transactions based on https://www.figma.com/file/vn8wTPWLxL2Yy936qo3m6k/Master-DEV?node-id=12%3A8036
+  Data generated and filtered on liveview, so you need to delete these methods while using this as a template
+  if you use;
+  ```
+    <TransactionsFilters id="transaction_filters" {=@filter_options} />
+  ```
+  Only required functions is;
+  ```
+    def handle_info({:apply_filter, selected_option_ids}, socket) do
+      ...
+    end
+    ...
+  ```
+  because TransactionFilters sends selected filters to liveview, liveview is responsible to filter with cnts & models.
+  """
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
@@ -10,71 +27,66 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Shared.Breadcrumbs
   alias __MODULE__.TransactionsFilters
   alias __MODULE__.TransactionsList
+  alias MoonWeb.Pages.ExamplePages.Helpers
+
+  require Logger
+
+  @max_record 100
 
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
 
-  defp get_filtered_transactions(selected_option_ids) do
-    get_transactions()
-    |> get_filtered_transactions_by_brand(selected_option_ids.brand)
-    |> get_filtered_transactions_by_currency(selected_option_ids.currency)
-    |> get_filtered_transactions_by_users(selected_option_ids.user)
-    |> get_filtered_transactions_by_country(selected_option_ids.country)
+  defp get_filtered_transactions(selected_option_ids, assigns) do
+    get_transactions(assigns)
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids.brand)
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids.currency)
+    |> get_filtered_transactions_by(:aff_id, selected_option_ids.user)
+    |> get_filtered_transactions_by(:country_id, selected_option_ids.country)
+    |> get_filtered_transactions_by_amount(selected_option_ids.amount_range)
   end
 
-  defp get_filtered_transactions_by_users([], _), do: []
-  defp get_filtered_transactions_by_users(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_users(transactions, []), do: transactions
+  defp get_filtered_transactions_by([], _, _), do: []
+  defp get_filtered_transactions_by(transactions, _, nil), do: transactions
+  defp get_filtered_transactions_by(transactions, _, []), do: transactions
 
-  defp get_filtered_transactions_by_users(transactions, selected_users_ids) do
+  defp get_filtered_transactions_by(transactions, field, selected_ids) do
     transactions
     |> Enum.filter(fn x ->
-      Enum.member?(selected_users_ids, x.aff_id)
+      Enum.member?(selected_ids, x[field])
     end)
   end
 
-  defp get_filtered_transactions_by_brand([], _), do: []
-  defp get_filtered_transactions_by_brand(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_brand(transactions, []), do: transactions
+  defp get_filtered_transactions_by_amount([], _), do: []
+  defp get_filtered_transactions_by_amount(transactions, nil), do: transactions
 
-  defp get_filtered_transactions_by_brand(transactions, selected_brand_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_brand_ids, x.brand_id)
-    end)
-  end
+  defp get_filtered_transactions_by_amount(transactions, %{min: min, max: max}) do
+    min = Helpers.to_integer(min, nil)
+    max = Helpers.to_integer(max, nil)
 
-  defp get_filtered_transactions_by_currency([], _), do: []
-  defp get_filtered_transactions_by_currency(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_currency(transactions, []), do: transactions
-
-  defp get_filtered_transactions_by_currency(transactions, selected_currency_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_currency_ids, x.currency_id)
-    end)
-  end
-
-  defp get_filtered_transactions_by_country([], _), do: []
-  defp get_filtered_transactions_by_country(transactions, nil), do: transactions
-  defp get_filtered_transactions_by_country(transactions, []), do: transactions
-
-  defp get_filtered_transactions_by_country(transactions, selected_country_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_country_ids, x.country_id)
-    end)
+    if min == nil && max == nil do
+      transactions
+    else
+      transactions
+      |> Enum.filter(fn x ->
+        min <= x.amount && x.amount <= max
+      end)
+    end
   end
 
   def mount(params, _session, socket) do
-    transactions = get_transactions()
+    transactions = if socket.transport_pid != nil do
+      get_transactions(socket.assigns)
+    else
+      []
+    end
     filter_options = prepare_options(transactions)
 
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__,
-       transactions: get_transactions(),
+       transactions: transactions,
+       original_transactions: transactions,
        filter_options: filter_options
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
@@ -98,13 +110,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     """
   end
 
-  def handle_info(
-        {:apply_filter, selected_option_ids},
-        socket
-      ) do
+  def handle_info({:apply_filter, selected_option_ids}, socket) do
     transactions =
       selected_option_ids
-      |> get_filtered_transactions()
+      |> get_filtered_transactions(socket.assigns)
 
     # It's possible to change filter_options values based on transactions
     {:noreply, assign(socket, transactions: transactions)}
@@ -137,68 +146,51 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end)
   end
 
+  defp get_transactions(%{ original_transactions: transactions }), do: transactions
+  defp get_transactions(_), do: get_transactions()
   def get_transactions() do
-    [
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        brand_id: "1",
-        currency: "EUR",
-        currency_id: "1",
-        country: "Japan",
-        country_id: "101",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia", "Tag 2"]
-      },
-      %{
-        aff_username: "abcdefg",
-        aff_id: "124",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        brand_id: "1",
-        currency: "EUR",
-        currency_id: "1",
-        country: "Estonia",
-        country_id: "100",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_sportsbet_short",
-        brand: "Sportsbet",
-        brand_id: "2",
-        currency: "BTC",
-        currency_id: "2",
-        country: "Japan",
-        country_id: "101",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      },
-      %{
-        aff_username: "123456",
-        aff_id: "123",
-        brand_logo: "logo_bitcasino_short",
-        brand: "Bitcasino",
-        brand_id: "1",
-        currency: "EUR",
-        currency_id: "1",
-        country: "Japan",
-        country_id: "101",
-        create_time: "May 14, 2020, 12:45:57",
-        process_time: "May 14, 2020, 12:45:57",
-        status: "Confirmed",
-        tags: ["Asia"]
-      }
+    Logger.info("Preparing mock data set..!")
+    brand_list = ["aposta10", "bitcasino", "bombay", "comms", "hub88", "luckyslots", "moon_design", "slots", "sportsbet"]
+    brand_list_len = length(brand_list)
+    currency_list = ["ada", "ars", "bdt", "bob", "brl", "btc", "cad", "clp", "cny", "crc", "eth", "eur", "gel", "hkd", "usd", "usdt"]
+    currency_list_len = length(currency_list)
+    country_list = [
+      %{id: "1", name: "Estonia"},
+      %{id: "2", name: "France"},
+      %{id: "3", name: "Germany"},
+      %{id: "4", name: "Ukraine"},
+      %{id: "5", name: "United Kingdom"}
     ]
+    country_list_len = length(country_list)
+
+    user_count = Faker.random_between(1, @max_record)
+
+    (1..user_count)
+    |> Enum.to_list()
+    |> Enum.map(fn x ->
+      brand_id = Faker.random_between(1, brand_list_len)
+      brand_name = Enum.at(brand_list, brand_id-1)
+      currency_id = Faker.random_between(1, currency_list_len)
+      currency_name = String.upcase(Enum.at(currency_list, currency_id-1))
+      %{id: country_id, name: country_name} = Enum.at(country_list, Faker.random_between(1, country_list_len-1))
+      tag_list = [["Asia"], ["Asia", "Tag 1"], ["Asia", "Tag 2", "Tag 3"], ["Asia", "Tag 2", "Tag 3", "Tag 4"]]
+
+      %{
+        aff_username: "#{Faker.Person.En.first_name()} #{Faker.Person.En.last_name()}",
+        aff_id: x |> Integer.to_string(),
+        brand_id: brand_id |> Integer.to_string(),
+        brand: brand_name,
+        brand_logo: "logo_#{brand_name}_short",
+        currency: currency_name,
+        currency_id: currency_id |> Integer.to_string(),
+        country_id: country_id,
+        country: country_name,
+        amount: Faker.random_between(200, 1000),
+        create_time: Faker.DateTime.backward(100),
+        process_time: Faker.DateTime.backward(100),
+        status: "Confirmed",
+        tags: Enum.random(tag_list)
+      }
+    end)
   end
 end

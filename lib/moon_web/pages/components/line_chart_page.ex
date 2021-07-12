@@ -109,7 +109,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
   end
 
   defp generate_data(filters) do
-    1..25//2
+    1..25
     |> Enum.to_list()
     |> Enum.flat_map(fn day ->
       filters

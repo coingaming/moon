@@ -1,4 +1,18 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
+  @moduledoc """
+  Generic filter implementations, can be used for any model or any data which required included filters
+  respective liveview must provide filter options and must handle `:apply_filter, filters` info message.
+  ```
+    <TransactionsFilters id="transaction_filters" {=@filter_options} />
+  ```
+  Liveview must have
+  ```
+    def handle_info({:apply_filter, selected_option_ids}, socket) do
+      ...
+    end
+    ...
+  ```
+  """
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Button
@@ -6,24 +20,25 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.Popover
   alias Moon.Components.Dropdown
   alias Moon.Components.CheckboxMultiselect
+  alias Moon.Components.Form
+  alias Moon.Components.TextInput
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.ButtonsList
 
   data clicked_name, :string, default: ""
   prop filter_options, :map
 
-  data selected_option_ids, :map,
-    default: %{
-      brand: [],
-      user: [],
-      currency: [],
-      country: []
-    }
-
   data user_search, :map, default: %{value: ""}
   data brand_search, :map, default: %{value: ""}
   data currency_search, :map, default: %{value: ""}
   data country_search, :map, default: %{value: ""}
+
+  @default_amount_range_value %{min: "", max: ""}
+  data amount_range_values, :map, default: @default_amount_range_value
+  data selected_brand_option_ids, :list, default: []
+  data selected_user_option_ids, :list, default: []
+  data selected_currency_option_ids, :list, default: []
+  data selected_country_option_ids, :list, default: []
 
   def render(assigns) do
     ~F"""
@@ -49,10 +64,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       <Popover.Outer>
         <Chip on_click="open_popover" value="brand" right_icon="icon_chevron_down_rounded">
           Brand ·
-          {#if @selected_option_ids.brand == []}
+          {#if @selected_brand_option_ids == []}
             All
           {#else}
-            {length(@selected_option_ids.brand)}
+            {length(@selected_brand_option_ids)}
           {/if}
         </Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "brand"}>
@@ -63,28 +78,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change={"handle_brand_selection_changed"}
-              class="max-h-32"
-              value={@selected_option_ids.brand}
+              class="h-48"
+              value={@selected_brand_option_ids}
               options={@filter_options.brand |> handle_search(@brand_search.value)}
             />
           </Dropdown>
           <LeftToRight class="justify-between p-2">
-          <Button on_click="handle_brand_selection_cleared">Clear</Button>
-          <LeftToRight>
-            <Button on_click="handle_brand_selection_discard">Discard</Button>
-            <Button on_click="handle_filter_apply">Apply</Button>
+            <Button on_click="handle_brand_selection_cleared">Clear</Button>
+            <LeftToRight>
+              <Button on_click="handle_brand_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
+            </LeftToRight>
           </LeftToRight>
-        </LeftToRight>
         </Popover>
       </Popover.Outer>
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="currency" right_icon="icon_chevron_down_rounded">
           Currency ·
-          {#if @selected_option_ids.currency == []}
+          {#if @selected_currency_option_ids == []}
             All
           {#else}
-            {length(@selected_option_ids.currency)}
+            {length(@selected_currency_option_ids)}
           {/if}
         </Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "currency"}>
@@ -95,28 +110,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change={"handle_currency_selection_changed"}
-              class="max-h-32"
-              value={@selected_option_ids.currency}
+              class="h-48"
+              value={@selected_currency_option_ids}
               options={@filter_options.currency |> handle_search(@currency_search.value)}
             />
           </Dropdown>
           <LeftToRight class="justify-between p-2">
-          <Button on_click="handle_currency_selection_cleared">Clear</Button>
-          <LeftToRight>
-            <Button on_click="handle_currency_selection_discard">Discard</Button>
-            <Button on_click="handle_filter_apply">Apply</Button>
+            <Button on_click="handle_currency_selection_cleared">Clear</Button>
+            <LeftToRight>
+              <Button on_click="handle_currency_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
+            </LeftToRight>
           </LeftToRight>
-        </LeftToRight>
         </Popover>
       </Popover.Outer>
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="users" right_icon="icon_chevron_down_rounded">
           Users ·
-          {#if @selected_option_ids.user == []}
+          {#if @selected_user_option_ids == []}
             All
           {#else}
-            {length(@selected_option_ids.user)}
+            {length(@selected_user_option_ids)}
           {/if}
         </Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "users"}>
@@ -127,15 +142,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change="handle_user_selection_changed"
-              class="max-h-32"
-              value={@selected_option_ids.user}
+              class="h-48"
+              value={@selected_user_option_ids}
               options={@filter_options.user |> handle_search(@user_search.value) }
             />
             <LeftToRight class="justify-between p-2">
               <Button on_click="handle_user_selection_cleared">Clear</Button>
               <LeftToRight>
-                <Button on_click="handle_user_selection_discard">Discard</Button>
-                <Button on_click="handle_filter_apply">Apply</Button>
+                <Button on_click="handle_user_selection_discard" variant="tertiary">Discard</Button>
+                <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
               </LeftToRight>
             </LeftToRight>
           </Dropdown>
@@ -145,10 +160,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       <Popover.Outer>
         <Chip on_click="open_popover" value="country" right_icon="icon_chevron_down_rounded">
           Country ·
-          {#if @selected_option_ids.country == []}
+          {#if @selected_country_option_ids == []}
             All
           {#else}
-            {length(@selected_option_ids.country)}
+            {length(@selected_country_option_ids)}
           {/if}
         </Chip>
         <Popover close="close_popover" placement="under" :if={@clicked_name == "country"}>
@@ -159,15 +174,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
           >
             <CheckboxMultiselect
               on_change="handle_country_selection_changed"
-              class="max-h-32"
-              value={@selected_option_ids.country}
+              class="h-48"
+              value={@selected_country_option_ids}
               options={@filter_options.country |> handle_search(@country_search.value) }
             />
             <LeftToRight class="justify-between p-2">
               <Button on_click="handle_country_selection_cleared">Clear</Button>
               <LeftToRight>
-                <Button on_click="handle_country_selection_discard">Discard</Button>
-                <Button on_click="handle_filter_apply">Apply</Button>
+                <Button on_click="handle_country_selection_discard" variant="tertiary">Discard</Button>
+                <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
               </LeftToRight>
             </LeftToRight>
           </Dropdown>
@@ -176,8 +191,20 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
-        <Popover close="close_popover" placement="under" :if={@clicked_name == "range"}>
-          Yay
+        <Popover close="close_popover" class="h-auto" placement="under" :if={@clicked_name == "range"}>
+          <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
+            <LeftToRight class="justify-between p-2">
+              <TextInput type="number" field={:min} placeholder="Min" value={@amount_range_values.min} />
+              <TextInput type="number" field={:max} placeholder="Max" value={@amount_range_values.max} />
+            </LeftToRight>
+          </Form>
+          <LeftToRight class="justify-between p-2">
+            <Button on_click="handle_amount_range_selection_cleared">Clear</Button>
+            <LeftToRight>
+              <Button on_click="handle_amount_range_selection_discard" variant="tertiary">Discard</Button>
+              <Button on_click="handle_filter_apply" variant="primary">Apply</Button>
+            </LeftToRight>
+          </LeftToRight>
         </Popover>
       </Popover.Outer>
 
@@ -244,14 +271,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
 
   def handle_event(
         "handle_user_selection_changed",
-        assigns,
+        %{"toggled_item_id" => toggled_item_id},
         socket
       ) do
-    %{"toggled_item_id" => toggled_item_id} = assigns
-    selected_option_ids = socket.assigns.selected_option_ids
-    new_ids = toggle_id_in_list(selected_option_ids.user, toggled_item_id)
-
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :user, new_ids))}
+    new_ids = toggle_id_in_list(socket.assigns.selected_user_option_ids, toggled_item_id)
+    {:noreply, assign(socket, selected_user_option_ids: new_ids)}
   end
 
   def handle_event(
@@ -259,8 +283,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :user, []))}
+    {:noreply, assign(socket, :selected_user_option_ids, [])}
   end
 
   def handle_event(
@@ -268,22 +291,22 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    selected_option_ids = Map.put(selected_option_ids, :user, [])
-    send(self(), {:apply_filter, selected_option_ids})
-    {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
+    filter_ids =
+      socket.assigns
+      |> prepare_selected_filters()
+      |> Map.put(:user, [])
+
+    send(self(), {:apply_filter, filter_ids})
+    {:noreply, assign(socket, selected_user_option_ids: [])}
   end
 
   def handle_event(
         "handle_brand_selection_changed",
-        assigns,
+        %{"toggled_item_id" => toggled_item_id},
         socket
       ) do
-    %{"toggled_item_id" => toggled_item_id} = assigns
-    selected_option_ids = socket.assigns.selected_option_ids
-    new_ids = toggle_id_in_list(selected_option_ids.brand, toggled_item_id)
-
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :brand, new_ids))}
+    new_ids = toggle_id_in_list(socket.assigns.selected_brand_option_ids, toggled_item_id)
+    {:noreply, assign(socket, selected_brand_option_ids: new_ids)}
   end
 
   def handle_event(
@@ -291,8 +314,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :brand, []))}
+    {:noreply, assign(socket, :selected_brand_option_ids, [])}
   end
 
   def handle_event(
@@ -300,23 +322,22 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    selected_option_ids = Map.put(selected_option_ids, :brand, [])
-    send(self(), {:apply_filter, selected_option_ids})
-    {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
+    filter_ids =
+      socket.assigns
+      |> prepare_selected_filters()
+      |> Map.put(:brand, [])
+
+    send(self(), {:apply_filter, filter_ids})
+    {:noreply, assign(socket, selected_brand_option_ids: [])}
   end
 
   def handle_event(
         "handle_currency_selection_changed",
-        assigns,
+        %{"toggled_item_id" => toggled_item_id},
         socket
       ) do
-    %{"toggled_item_id" => toggled_item_id} = assigns
-    selected_option_ids = socket.assigns.selected_option_ids
-    new_ids = toggle_id_in_list(selected_option_ids.currency, toggled_item_id)
-
-    {:noreply,
-     assign(socket, selected_option_ids: Map.put(selected_option_ids, :currency, new_ids))}
+    new_ids = toggle_id_in_list(socket.assigns.selected_currency_option_ids, toggled_item_id)
+    {:noreply, assign(socket, selected_currency_option_ids: new_ids)}
   end
 
   def handle_event(
@@ -324,8 +345,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :currency, []))}
+    {:noreply, assign(socket, :selected_currency_option_ids, [])}
   end
 
   def handle_event(
@@ -333,23 +353,22 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    selected_option_ids = Map.put(selected_option_ids, :currency, [])
-    send(self(), {:apply_filter, selected_option_ids})
-    {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
+    filter_ids =
+      socket.assigns
+      |> prepare_selected_filters()
+      |> Map.put(:currency, [])
+
+    send(self(), {:apply_filter, filter_ids})
+    {:noreply, assign(socket, selected_currency_option_ids: [])}
   end
 
   def handle_event(
         "handle_country_selection_changed",
-        assigns,
+        %{"toggled_item_id" => toggled_item_id},
         socket
       ) do
-    %{"toggled_item_id" => toggled_item_id} = assigns
-    selected_option_ids = socket.assigns.selected_option_ids
-    new_ids = toggle_id_in_list(selected_option_ids.country, toggled_item_id)
-
-    {:noreply,
-     assign(socket, selected_option_ids: Map.put(selected_option_ids, :country, new_ids))}
+    new_ids = toggle_id_in_list(socket.assigns.selected_country_option_ids, toggled_item_id)
+    {:noreply, assign(socket, selected_country_option_ids: new_ids)}
   end
 
   def handle_event(
@@ -357,8 +376,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    {:noreply, assign(socket, selected_option_ids: Map.put(selected_option_ids, :country, []))}
+    {:noreply, assign(socket, :selected_country_option_ids, [])}
   end
 
   def handle_event(
@@ -366,10 +384,43 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    selected_option_ids = Map.put(selected_option_ids, :country, [])
-    send(self(), {:apply_filter, selected_option_ids})
-    {:noreply, assign(socket, selected_option_ids: selected_option_ids)}
+    filter_ids =
+      socket.assigns
+      |> prepare_selected_filters()
+      |> Map.put(:country, [])
+
+    send(self(), {:apply_filter, filter_ids})
+    {:noreply, assign(socket, selected_country_option_ids: [])}
+  end
+
+  def handle_event(
+        "handle_amount_range_selection_changed",
+        %{"amount_range_values" => %{"min" => min, "max" => max}},
+        socket
+      ) do
+    {:noreply, assign(socket, amount_range_values: %{min: min, max: max})}
+  end
+
+  def handle_event(
+        "handle_amount_range_selection_cleared",
+        _,
+        socket
+      ) do
+    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
+  end
+
+  def handle_event(
+        "handle_amount_range_selection_discard",
+        _,
+        socket
+      ) do
+    filter_ids =
+      socket.assigns
+      |> prepare_selected_filters()
+      |> Map.put(:amount_range, @default_amount_range_value)
+
+    send(self(), {:apply_filter, filter_ids})
+    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
   end
 
   def handle_event(
@@ -377,8 +428,18 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    selected_option_ids = socket.assigns.selected_option_ids
-    send(self(), {:apply_filter, selected_option_ids})
+    filter_ids = prepare_selected_filters(socket.assigns)
+    send(self(), {:apply_filter, filter_ids})
     {:noreply, socket}
+  end
+
+  defp prepare_selected_filters(assigns) do
+    %{
+      brand: assigns.selected_brand_option_ids,
+      currency: assigns.selected_currency_option_ids,
+      country: assigns.selected_country_option_ids,
+      user: assigns.selected_user_option_ids,
+      amount_range: assigns.amount_range_values
+    }
   end
 end
