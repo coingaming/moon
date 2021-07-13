@@ -85,7 +85,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
               <Select
                 label="Gender"
-                class="rounded-xl"
                 disabled={@lock_fields}
                 field={:gender}
                 options={@gender_options}
@@ -167,7 +166,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
               <Select
                 label="Gender"
-                class="rounded-xl"
                 field={:gender}
                 options={@gender_options}
                 value={@user_map.gender}
