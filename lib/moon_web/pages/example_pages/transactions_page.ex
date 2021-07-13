@@ -97,10 +97,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       <TopMenu id="top-menu" />
       <div class="flex">
         <LeftMenu id="left-menu" />
-        <div class="p-4 pt-8">
-          <Breadcrumbs breadcrumbs={@breadcrumbs} />
-          <Heading size={32} class="pt-4 pb-8">Transactions</Heading>
-          <TopToDown>
+
+        <div class="px-14 py-6">
+          <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+          <Heading size={32}>Transactions</Heading>
+          <TopToDown class="mt-6">
             <TransactionsFilters id="transaction_filters" {=@filter_options} />
             <TransactionsList transactions={@transactions} />
           </TopToDown>
