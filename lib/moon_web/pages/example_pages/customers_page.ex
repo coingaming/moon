@@ -23,12 +23,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.MockDB.Users
   alias MoonWeb.MockDB.Utils
 
-  alias __MODULE__.{CustomersList}
+  alias __MODULE__.{CustomersList, CustomerPreview}
 
-  @active_customer_placeholder %{ id: -11011 }
 
   data customers, :list
-  data active_customer, :map, default: @active_customer_placeholder
+  data active_customer, :map, default: %{id: nil}
   data username_filter, :list, default: []
   data country_filter, :list, default: []
   data site_filter, :list, default: []
@@ -77,6 +76,20 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
         </div>
       </div>
     </div>
+
+    {#if @active_customer.id != nil}
+      <div
+        :on-click="close_customer_preview"
+        class="fixed top-0 left-0 right-0 bottom-0 z-20"
+      />
+      <div class={"fixed top-0 right-0 bottom-0 w-1/2 z-20 bg-gohan-100 shadow"}>
+        <CustomerPreview
+          id="customer-preview"
+          customer={@active_customer}
+          on_close="close_customer_preview"
+        />
+      </div>
+    {/if}
     """
   end
 
@@ -124,22 +137,22 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     }
   end
 
-  def handle_event("goto_prev_page", _, socket) do
-    %{ page: page } = socket.assigns
-    prev_page = if page > 1, do: page - 1, else: page
-
+  def handle_event("close_customer_preview", _, socket) do
     {:noreply, socket
-      |> assign(page: prev_page)
+      |> assign(active_customer: %{id: nil})
+    }
+  end
+
+  def handle_event("goto_prev_page", _, socket = %{page: page}) do
+    {:noreply, socket
+      |> assign(page: (if page > 1, do: page - 1, else: page))
       |> filter_customers()
     }
   end
 
-  def handle_event("goto_next_page", _, socket) do
-    %{ page: page } = socket.assigns
-    next_page = page + 1
-
+  def handle_event("goto_next_page", _, socket = %{page: page}) do
     {:noreply, socket
-      |> assign(page: next_page)
+      |> assign(page: page + 1)
       |> filter_customers()
     }
   end
@@ -167,6 +180,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
     socket
       |> assign(customers: customers)
-      |> assign(active_customer: @active_customer_placeholder)
+      |> assign(active_customer: %{ id: nil })
   end
 end
