@@ -11,12 +11,12 @@ defmodule Moon.Components.Calendar.Day do
       class="rounded-lg bg-gohan-100 aspect-w-1 aspect-h-1"
     >
       <div
-        class={"text-sm md:text-base lg:text-lg leading-none text-right pt-2 pr-3 #{@text_color}"}
+        class={"text-xxs md:text-base lg:text-lg leading-none text-right pt-2 pr-3 #{@text_color}"}
       >
         {day_label(@day)}
       </div>
 
-      <div class="p-3 mt-6 space-y-1 text-xs md:text-sm">
+      <div class="p-3 mt-6 space-y-1 text-xxs md:text-xs">
         <div :for.with_index={{event, index} <- @events}>
           <div
             :if={index < 2}

@@ -65,14 +65,14 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       <ExampleAndCode>
         <#template slot="example">
           <Button
-            variant="secondary"
+            variant="primary"
             on_click="show_one_toast"
             class="block mb-4"
             size="xsmall"
           >Show one toast</Button>
 
           <Button
-            variant="secondary"
+            variant="primary"
             on_click="show_two_toasts"
             class="block"
             size="xsmall"
@@ -150,7 +150,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           </div>
 
           <Button
-            variant="secondary"
+            variant="primary"
             on_click="show_variant_toasts"
             class="block mt-2"
             size="xsmall"
@@ -212,7 +212,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           </div>
 
           <Button
-            variant="secondary"
+            variant="primary"
             on_click="show_action_toasts"
             class="block mt-2"
             size="xsmall"

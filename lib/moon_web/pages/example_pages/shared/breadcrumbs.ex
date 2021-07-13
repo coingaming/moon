@@ -8,8 +8,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Breadcrumbs do
 
   def render(assigns) do
     ~F"""
-    <div class="flex gap-2 text-sm">
-      <Link to="/">
+    <div class="flex gap-2 text-xs">
+      <Link to="/" class="text-trunks-100">
         Home
       </Link>
       <div :for={breadcrumb <- @breadcrumbs}>
