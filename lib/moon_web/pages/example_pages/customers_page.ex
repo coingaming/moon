@@ -25,7 +25,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   alias __MODULE__.{CustomersList}
 
+  @active_customer_placeholder %{ id: -11011 }
+
   data customers, :list
+  data active_customer, :map, default: @active_customer_placeholder
   data username_filter, :list, default: []
   data country_filter, :list, default: []
   data site_filter, :list, default: []
@@ -65,7 +68,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               on_next_page="goto_next_page"
             />
 
-            <CustomersList customers={@customers}/>
+            <CustomersList
+              id="customers_list"
+              customers={@customers}
+              active_customer_id={@active_customer.id}
+            />
           </TopToDown>
         </div>
       </div>
@@ -94,6 +101,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(page: 1)
       |> filter_customers()
     }
+  end
+
+  def handle_info({:select_customer, customer}, socket) do
+    {:noreply, socket |> assign(active_customer: customer)}
   end
 
   #
@@ -154,6 +165,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       })
       |> Utils.take_page((page - 1) * 20, 20)
 
-    socket |> assign(customers: customers)
+    socket
+      |> assign(customers: customers)
+      |> assign(active_customer: @active_customer_placeholder)
   end
 end

@@ -1,5 +1,5 @@
 defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
-  use MoonWeb, :stateless_component
+  use MoonWeb, :stateful_component
 
   alias Moon.Components.Table
   alias Moon.Assets.Logos.LogoBitcasinoShort
@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
   alias Moon.Autolayouts.LeftToRight
 
   prop customers, :list
+  prop active_customer_id, :integer
 
   def render(assigns) do
     ~F"""
@@ -22,7 +23,17 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
         <th>Signup time</th>
       </thead>
       <tbody>
-        <tr class={Table.get_row_class(i)} :for.with_index={{customer, i} <- @customers}>
+        <tr
+          :for.with_index={{customer, i} <- @customers}
+          :on-click={"select_customer:#{customer.id}"}
+          class={"cursor-pointer #{Table.get_row_class(i)} #{
+            if @active_customer_id != customer.id do
+              "hover:bg-beerus-100"
+            else
+              "border-2 border-hit-120"
+            end
+          }"}
+        >
           <td>{customer.username}</td>
           <td>{customer.id}</td>
           <td>{customer.email}</td>
@@ -53,5 +64,19 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
       </tbody>
     </Table>
     """
+  end
+
+  def handle_event(event, _, socket) do
+    case String.split(event, ":") do
+      ["select_customer", customer_id_str] ->
+        {customer_id, _} = customer_id_str |> Integer.parse()
+        customer = socket.assigns.customers |> Enum.find(nil, &(&1.id == customer_id))
+
+        if customer != nil, do: send(self(), {:select_customer, customer})
+        {:noreply, socket}
+
+      _ ->
+        {:noreply, socket}
+    end
   end
 end
