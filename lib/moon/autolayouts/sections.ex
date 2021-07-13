@@ -6,7 +6,7 @@ defmodule Moon.Autolayouts.Sections do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex gap-4 flex-col #{@class}"}>
+    <div class={"flex-shrink-0 flex flex-col gap-4 #{@class}"}>
       <#slot />
     </div>
     """

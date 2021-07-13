@@ -5,10 +5,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Breadcrumbs do
   alias Moon.Assets.Icons.IconChevronRightRounded
 
   prop breadcrumbs, :any
+  prop class, :string, default: nil
 
   def render(assigns) do
     ~F"""
-    <div class="flex gap-2 text-xs">
+    <div class={"flex gap-2 text-xs #{@class}"}>
       <Link to="/" class="text-trunks-100">
         Home
       </Link>
