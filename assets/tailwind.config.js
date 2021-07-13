@@ -36,8 +36,8 @@ module.exports = {
       DEFAULT: 'var(--radius--medium)',
       md: 'var(--radius--medium)',
       lg: 'var(--radius--large)',
-      full: 'var(--radius--full)',
-      large: '12px',
+      xl: 'var(--radius--xlarge)',
+      full: 'var(--radius--full)'
     },
     colors: {
       transparent: 'transparent',
