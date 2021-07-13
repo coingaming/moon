@@ -225,6 +225,7 @@ themes.map(async (theme: ThemeConf) => {
   --radius--large: ${figmaConfig['radius-large']};
   --radius--xlarge: ${figmaConfig['radius-xlarge']};
   --radius--full: ${figmaConfig['radius-full']};
+  --radius--default: ${figmaConfig['radius-medium']};
 
   --space--xsmall: ${figmaConfig['space-xsmall']};
   --space--small: ${figmaConfig['space-small']};

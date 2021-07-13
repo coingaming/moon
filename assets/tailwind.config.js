@@ -11,8 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        xxs: '.5rem',
-        sm: '.625rem',
+        xxxs: '.5rem', // 8px
+        xxs: '.625rem', // 10px
       },
       width: {
         '80': '20rem',
@@ -33,7 +33,7 @@ module.exports = {
     },
     borderRadius: {
       sm: 'var(--radius--small)',
-      DEFAULT: 'var(--radius--medium)',
+      DEFAULT: 'var(--radius--default)',
       md: 'var(--radius--medium)',
       lg: 'var(--radius--large)',
       xl: 'var(--radius--xlarge)',
