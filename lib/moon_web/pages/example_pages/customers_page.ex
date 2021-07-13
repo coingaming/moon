@@ -25,7 +25,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   alias __MODULE__.{CustomersList, CustomerPreview}
 
-
   data customers, :list
   data active_customer, :map, default: %{id: nil}
   data username_filter, :list, default: []
@@ -35,7 +34,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   def render(assigns) do
     ~F"""
-    <div class={"#{@theme_name}"}>
+    <div class={"#{@theme_name} #{@active_customer.id != nil && "h-screen overflow-hidden"}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
         <LeftMenu id="left-menu" />
@@ -82,13 +81,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
         :on-click="close_customer_preview"
         class="fixed top-0 left-0 right-0 bottom-0 z-20"
       />
-      <div class={"fixed top-0 right-0 bottom-0 w-1/2 z-20 bg-gohan-100 shadow"}>
-        <CustomerPreview
-          id="customer-preview"
-          customer={@active_customer}
-          on_close="close_customer_preview"
-        />
-      </div>
+      <CustomerPreview
+        id="customer-preview"
+        customer={@active_customer}
+        on_close="close_customer_preview"
+      />
     {/if}
     """
   end
@@ -98,6 +95,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(theme_name: params["theme_name"] || "sportsbet-dark")
       |> assign(active_page: __MODULE__)
       |> filter_customers()
+
+    [customer | _] = socket.assigns.customers
+    socket = socket
+      |> assign(active_customer: customer)
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
@@ -143,14 +144,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     }
   end
 
-  def handle_event("goto_prev_page", _, socket = %{page: page}) do
+  def handle_event("goto_prev_page", _, socket = %{assigns: %{page: page}}) do
     {:noreply, socket
       |> assign(page: (if page > 1, do: page - 1, else: page))
       |> filter_customers()
     }
   end
 
-  def handle_event("goto_next_page", _, socket = %{page: page}) do
+  def handle_event("goto_next_page", _, socket = %{assigns: %{page: page}}) do
     {:noreply, socket
       |> assign(page: page + 1)
       |> filter_customers()
