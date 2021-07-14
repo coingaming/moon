@@ -57,7 +57,7 @@ defmodule Moon.MixProject do
       {:vega_lite, "~> 0.1.0"},
       {:asset_import, "~> 0.4"},
       {:surface, "~> 0.5.0"},
-      {:timex, "~> 3.7"},
+      {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
 
       # test
