@@ -1,16 +1,18 @@
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.{Accordion, Divider}
+  alias Moon.Components.{Accordion, Divider, Button, Text}
+  alias Moon.Autolayouts.LeftToRight
 
-  alias Moon.Assets.Icons.{IconUser, IconText, IconGlobe, IconMail, IconGeneralInfo, IconPencil, IconAbout, IconSbShield, IconData, IconSettings, IconLightbulb, IconCalendarEmpty}
+  alias Moon.Assets.Icons.{IconUser, IconText, IconGlobe, IconMail, IconGeneralInfo, IconWalletRounded, IconPencil, IconAbout, IconSbShield, IconData, IconSettings, IconLightbulb, IconCalendarEmpty}
 
   data show_account_details, :boolean, default: true
   data show_security, :boolean, default: true
+  data show_wallets, :boolean, default: true
+  data wallets_active_tab, :string, default: "BTC · 156,45"
 
   prop customer, :map, required: true
 
-  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
     <div>
@@ -21,7 +23,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
               <IconUser font_size="1rem"/> &nbsp;&nbsp;Name
             </div>
             <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
-              {@customer.name}
+              {@customer.name} &nbsp;&nbsp;({@customer.username})
             </div>
           </div>
 
@@ -183,6 +185,68 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
           </div>
         </Accordion.Item>
 
+        <Divider class="mb-2"/>
+
+        <Accordion.Item title="Wallets · 3" click="toggle_wallets" is_open={@show_wallets}>
+          <LeftToRight class="mt-2 mb-6">
+            {#for tab <- ["BTC · 156,45", "ETH · 600.23", "EUR · 1220.45"]}
+              <Button
+                :if={tab == @wallets_active_tab}
+                on_click={"select_wallets_tab:#{tab}"}
+                size="xsmall"
+                class="rounded bg-goku-100 py-2"
+              >
+                <Text size="14" class="capitalize text-gohan-80">{tab}</Text>
+              </Button>
+
+              <Button
+                :if={tab != @wallets_active_tab}
+                on_click={"select_wallets_tab:#{tab}"}
+                variant="danger"
+                size="xsmall"
+                class="rounded py-2"
+              >
+                <Text size="14" class="capitalize text-hit-80">{tab}</Text>
+              </Button>
+            {/for}
+          </LeftToRight>
+
+          <div class="flex my-5">
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              <IconWalletRounded font_size="1rem"/> &nbsp;&nbsp;Real Money Wallet
+            </div>
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              {get_money(@wallets_active_tab)}
+            </div>
+          </div>
+
+          <div class="flex my-5">
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              <IconWalletRounded font_size="1rem"/> &nbsp;&nbsp;Locked Wallet
+            </div>
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              0
+            </div>
+          </div>
+
+          <div class="flex my-5">
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              <IconWalletRounded font_size="1rem"/> &nbsp;&nbsp;Reward Wallet
+            </div>
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              0
+            </div>
+          </div>
+
+          <div class="flex my-5">
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              <IconWalletRounded font_size="1rem"/> &nbsp;&nbsp;Capped Wallet
+            </div>
+            <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
+              0
+            </div>
+          </div>
+        </Accordion.Item>
       </Accordion>
     </div>
     """
@@ -198,5 +262,28 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
     %{ show_security: show } = socket.assigns
 
     {:noreply, socket |> assign(show_security: !show)}
+  end
+
+  def handle_event("toggle_wallets", _, socket) do
+    %{ show_wallets: show } = socket.assigns
+
+    {:noreply, socket |> assign(show_wallets: !show)}
+  end
+
+  def handle_event(event, _, socket) do
+    case String.split(event, ":") do
+      ["select_wallets_tab", tab] ->
+        {:noreply, socket |> assign(wallets_active_tab: tab)}
+
+      _ ->
+        {:noreply, socket}
+    end
+  end
+
+  def get_money(tab) do
+    case String.split(tab, " · ") do
+      [_, money] -> money
+      _          -> "0"
+    end
   end
 end

@@ -6,8 +6,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomerPreview do
   alias Moon.Assets.Icons.{IconUser, IconShare, IconCloseRounded}
 
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab
+  alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab
 
-  data active_tab, :string, default: "overview"
+  data active_tab, :string, default: "rewards"
 
   prop customer, :map, required: true
   prop on_close, :event, required: true
@@ -54,19 +55,33 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomerPreview do
         {#match "overview"}
           <OverviewTab id="overview_tab" customer={@customer} />
         {#match "rewards"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <RewardsTab id="rewards_tab" />
+          </div>
         {#match "KPI"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
         {#match "cashier"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
         {#match "TXN"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
         {#match "comms"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
         {#match "fraud"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
         {#match "notes"}
-          <div>Nothing here</div>
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">No notes found</Text>
+          </div>
       {/case}
     </div>
     """
