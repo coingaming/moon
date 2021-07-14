@@ -8,7 +8,7 @@ console.log('Running Figma importer');
 
 // tutorial https://blog.prototypr.io/design-tokens-with-figma-aef25c42430f
 // figma tokens file https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1%3A7
-// https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41 
+// https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41
 
 // https://www.figma.com/developers/api
 // TODO this is really not secure, especially when project goes public
@@ -115,6 +115,7 @@ const extractIds = [
   'radius-small',
   'radius-medium',
   'radius-large',
+  'radius-xlarge',
   'radius-full',
   'breakpoint-small',
   'breakpoint-medium',
@@ -185,55 +186,57 @@ themes.map(async (theme: ThemeConf) => {
   --base--space: ${figmaConfig['space-default']};
   --base--font-size: ${figmaConfig['font-size']};
   --base--line-height: 20px;
-  
+
   --border-style: ${figmaConfig['border-style']};
   --border-width: ${figmaConfig['border-width']};
   --border: ${figmaConfig['border']};
-  
+
   --breakpoint--small: ${figmaConfig['breakpoint-small']};
   --breakpoint--medium: ${figmaConfig['breakpoint-medium']};
   --breakpoint--large: ${figmaConfig['breakpoint-large']};
   --breakpoint--xlarge: ${figmaConfig['breakpoint-xlarge']};
-  
+
   --font-face--regular--font-family: Averta Std;
   --font-face--regular--font-style: normal;
   --font-face--regular--font-display: swap;
   --font-face--regular--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   --font-face--regular--font-weight: 400;
   --font-face--regular--src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
-  
+
   --font-face--semibold--font-family: Averta Std;
   --font-face--semibold--font-style: normal;
   --font-face--semibold--font-display: swap;
   --font-face--semibold--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   --font-face--semibold--font-weight: 500;
   --font-face--semibold--src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
-          
+
   --font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --font-size: ${figmaConfig['breakpoint-xlarge']};
   --font-weight--normal: 400;
   --font-weight--semibold: 500;
-  
+
   --max-width--default: 1024;
   --max-width--large: 1440;
-  
+
   --opacity--disabled: 0.35;
-  
+
   --radius--small: ${figmaConfig['radius-small']};
   --radius--medium: ${figmaConfig['radius-medium']};
   --radius--large: ${figmaConfig['radius-large']};
+  --radius--xlarge: ${figmaConfig['radius-xlarge']};
   --radius--full: ${figmaConfig['radius-full']};
-  
+  --radius--default: ${figmaConfig['radius-medium']};
+
   --space--xsmall: ${figmaConfig['space-xsmall']};
   --space--small: ${figmaConfig['space-small']};
   --space--default: ${figmaConfig['space-default']};
   --space--medium: ${figmaConfig['space-medium']};
   --space--large: ${figmaConfig['space-large']};
   --space--xlarge: ${figmaConfig['space-xlarge']};
-  
+
   --transition-duration--slow: ${figmaConfig['transition-slow']};
   --transition-duration--default: ${figmaConfig['transition-default']};
-  
+
   --z-index--carousel-control: 5;
   --z-index--dialog: 1000;
   --z-index--toggle: 1;
@@ -262,7 +265,7 @@ ${fontFaceCss}
   --box-shadow--default:  ${figmaConfig['light-box-shadow-default']};
   --box-shadow--lg:  ${figmaConfig['light-box-shadow-lg']};
   --box-shadow--xl:  ${figmaConfig['light-box-shadow-xl']};
-  
+
   ${colorIds
     .map(
       (x) => `
@@ -274,7 +277,7 @@ ${fontFaceCss}
 
   const darkThemeCss = `
   ${fontFaceCss}
-  
+
   .${theme.name}-dark {
     ${sharedCssVarsAndValues}
 

@@ -14,6 +14,7 @@ defmodule Moon.Components.Button do
   prop(pulse, :boolean)
   prop(disabled, :boolean)
   prop(type, :string, default: "button")
+  prop(rounded, :boolean, default: true)
 
   prop(to, :string)
   prop(as, :string)
@@ -40,7 +41,7 @@ defmodule Moon.Components.Button do
     {asset_import @socket, "js/components/button"}
 
     <button
-      class={"moon-button relative #{@class}"}
+      class={"moon-button relative #{@class}", rounded: @rounded}
       disabled={@disabled}
       type={@type}
       data-mock-state={@mock_state}

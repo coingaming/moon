@@ -16,7 +16,7 @@ defmodule Moon.Components.Calendar.Week do
       >
         <div
           class={
-            "absolute text-sm md:text-base lg:text-lg leading-none top-2 right-3",
+            "absolute text-xxs md:text-base lg:text-lg leading-none top-2 right-3",
             "text-piccolo-100": Timex.to_date(day) == Timex.today()
           }
         >

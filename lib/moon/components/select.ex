@@ -9,7 +9,7 @@ defmodule Moon.Components.Select do
   prop(value, :any)
   prop(prompt, :string)
   prop(error, :string)
-  prop(rounded, :boolean)
+  prop(rounded, :boolean, default: true)
   prop(disabled, :boolean)
   prop(required, :boolean)
   prop(flex, :boolean)
@@ -33,7 +33,7 @@ defmodule Moon.Components.Select do
     {asset_import @socket, "js/components/select"}
 
     <Surface.Components.Form.Select
-      class={"moon-select #{@class}"}
+      class={"moon-select #{@class}", rounded: @rounded}
       field={@field}
       options={options_with_selected}
       opts={[prompt: @prompt]}
@@ -42,7 +42,7 @@ defmodule Moon.Components.Select do
 
     <Label text={@label} :if={@label}>
       <Surface.Components.Form.Select
-        class={"moon-select mt-2 #{@class}"}
+        class={"moon-select mt-2 #{@class}", rounded: @rounded}
         field={@field}
         options={options_with_selected}
         opts={[prompt: @prompt, disabled: @disabled]}

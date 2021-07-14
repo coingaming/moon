@@ -128,7 +128,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         <#template slot="example">
           <Stack>
             <div class="flex flex-wrap items-center">
-              <div class="w-1/4 mb-4 text-sm">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
+              <div class="w-1/4 mb-4 text-xs">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
 
               <div class="w-3/4">
                 <Pagination
@@ -145,7 +145,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     <#template slot="code">
       <#CodePreview>
         <div class="flex flex-wrap items-center">
-          <div class="w-1/4 mb-4 text-sm">
+          <div class="w-1/4 mb-4 text-xxs">
             { side_text(@page_number, @per_page, @total_entries) }
           </div>
 

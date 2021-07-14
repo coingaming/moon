@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
           field={:search_text}
           value={@search_map.search_text}
           on_focus="activate_search"
-          class="bg-goku-100"
+          class="bg-goku-100 h-10 border-transparent"
         />
         <SearchResults id="search" close="deactivate_search" search_text={@search_map.search_text} :if={@search_active} />
       </Form>

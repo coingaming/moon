@@ -203,6 +203,28 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         Full Width
       </Button>
     </#CodePreview>
+
+    <h3>Rounded</h3>
+    <p>True by default</p>
+    <Inline>
+      <Button variant="primary" rounded>
+        Rounded
+      </Button>
+      <Button variant="primary" rounded={false}>
+        Not Rounded
+      </Button>
+    </Inline>
+
+    <#CodePreview>
+      <Inline>
+        <Button variant="primary" rounded>
+          Rounded
+        </Button>
+        <Button variant="primary" rounded={false}>
+          Not Rounded
+        </Button>
+      </Inline>
+    </#CodePreview>
     """
   end
 end

@@ -9,9 +9,9 @@ defmodule Moon.Components.Switch.Caption do
     ~F"""
     <span class={
       "leading-none transition-colors duration-200 ease-in-out",
-      "text-xxs": @size == "small",
-      "text-xs": @size == "medium",
-      "text-sm": @size == "large",
+      "text-xxxs": @size == "small",
+      "text-xxs": @size == "medium",
+      "text-xs": @size == "large",
       "text-bulma-100": @active,
       "text-trunks-100": !@active
     }>

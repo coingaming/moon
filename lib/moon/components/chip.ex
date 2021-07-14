@@ -4,7 +4,7 @@ defmodule Moon.Components.Chip do
   alias Moon.Components.Button
 
   slot(default)
-  prop class, :css_class
+  prop class, :string
   prop left_icon, :string
   prop right_icon, :string
   prop on_click, :event
@@ -15,11 +15,12 @@ defmodule Moon.Components.Chip do
     {asset_import @socket, "js/tailwind"}
 
     <Button
-      class={"bg-gohan-100 rounded-lg #{@class}"}
+      class={"bg-gohan-100 #{@class}"}
       left_icon={@left_icon}
       right_icon={@right_icon}
       on_click={@on_click}
       value={@value}
+      rounded
     ><#slot /></Button>
     """
   end
