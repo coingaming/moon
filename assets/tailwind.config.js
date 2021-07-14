@@ -15,6 +15,7 @@ module.exports = {
         xxs: '.625rem', // 10px
       },
       width: {
+        '50': '12.5rem',
         '80': '20rem',
         '96': '24rem'
       },
