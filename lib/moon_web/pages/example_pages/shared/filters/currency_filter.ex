@@ -2,7 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover
+  alias Moon.Components.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.Currencies
 
@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
 
   def render(assigns) do
     ~F"""
-    <MultiFilterPopover
+    <DropdownMultiFilter
       {=@show_filter}
       {=@all_items}
       {=@selected_items}
@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
       <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
         {"Currency #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
-    </MultiFilterPopover>
+    </DropdownMultiFilter>
     """
   end
 

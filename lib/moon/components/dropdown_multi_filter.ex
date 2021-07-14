@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover do
+defmodule Moon.Components.DropdownMultiFilter do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.PopoverV2
