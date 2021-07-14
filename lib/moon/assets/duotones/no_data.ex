@@ -13,7 +13,7 @@ defmodule Moon.Assets.Duotones.NoData do
     ~F"""
     {asset_import @socket, "js/assets/duotone"}
 
-    <svg class={"moon-duotone #{@class}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
+    <svg class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
       <use href="/moon/svgs/duotones/no-data.svg#item"></use>
     </svg>
 

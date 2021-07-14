@@ -125,12 +125,12 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }:CreateAssetsC
 
   const svgMap = {
     icon: `
-    <svg class={"moon-${iconType} #{@class}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
+    <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
     default: `
-    <svg class={"moon-${iconType} #{@class}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
+    <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
       <use href="/moon/svgs/${assetsFolder}/${file}.svg#item"></use>
     </svg>
     `,
