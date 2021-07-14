@@ -1,10 +1,10 @@
-defmodule MoonWeb.Pages.ExamplePages.Affiliates.SiteFilter do
+defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopover
+  alias MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover
   alias MoonWeb.Pages.ExamplePages.Helpers
-  alias MoonWeb.MockDB.Sites
+  alias MoonWeb.MockDB.Currencies
 
   data show_filter, :boolean, default: false
   data all_items, :list, default: []
@@ -25,14 +25,14 @@ defmodule MoonWeb.Pages.ExamplePages.Affiliates.SiteFilter do
       on_select="handle_filter_select"
     >
       <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
-        {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"Currency #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </MultiFilterPopover>
     """
   end
 
   def mount(socket) do
-    all_items = Sites.list_all() |> Enum.map(&(%{label: &1.name, value: &1.name}))
+    all_items = Currencies.list_all() |> Enum.map(&(%{label: &1.name, value: &1.name}))
 
     {:ok, socket |> assign(all_items: all_items)}
   end
