@@ -20,13 +20,13 @@ import {LiveSocket} from "phoenix_live_view"
 import { AssetImport, AssetHook } from "asset_import_hook"
 
 import Datepicker from "./hooks/datepicker"
-import VegaLite from "./hooks/vega_lite"
+//import VegaLite from "./hooks/vega_lite"
 
 const hooks = {
   AssetImport,
   AssetHook,
   Datepicker,
-  VegaLite
+  //VegaLite
 }
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
