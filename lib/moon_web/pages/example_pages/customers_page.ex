@@ -96,10 +96,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(active_page: __MODULE__)
       |> filter_customers()
 
-    [customer | _] = socket.assigns.customers
-    socket = socket
-      |> assign(active_customer: customer)
-
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 

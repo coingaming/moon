@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomerPreview do
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab
 
-  data active_tab, :string, default: "rewards"
+  data active_tab, :string, default: "overview"
 
   prop customer, :map, required: true
   prop on_close, :event, required: true
