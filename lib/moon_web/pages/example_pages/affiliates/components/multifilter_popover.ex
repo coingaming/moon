@@ -10,14 +10,15 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
   alias Moon.Autolayouts.LeftToRight
 
   prop show_filter, :boolean, required: true
-  prop search_text, :string, required: true
+  prop search_text, :string
   prop all_items, :list, required: true
   prop selected_items, :list, required: true
+  prop active_items, :list, required: true
 
   prop on_apply, :event, required: true
-  prop on_toggle, :event, required: true
+  prop on_discard, :event, required: true
   prop on_clear, :event, required: true
-  prop on_search, :event, required: true
+  prop on_search, :event
   prop on_select, :event, required: true
 
   slot default, required: true
@@ -29,19 +30,24 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
 
       <:content>
         <div class="w-80 bg-gohan-100 shadow rounded">
-          <Form for={:search} change={@on_search} autocomplete="off">
-            <TextInput
-              right_icon="icon_zoom"
-              placeholder="Search..."
-              field={:search_text}
-              value={@search_text}
-              class="border-none"
-            />
-          </Form>
+          <div :if={@on_search != nil} class="p-3">
+            <Form
+              for={:search}
+              change={@on_search}
+              autocomplete="off"
+            >
+              <TextInput
+                left_icon="icon_zoom"
+                placeholder=" Type here..."
+                field={:search_text}
+                value={@search_text}
+                class="border-none bg-goku-100"
+              />
+            </Form>
+          </div>
 
-          <Divider/>
-          <div class="h-64 overflow-y-auto no-scrollbar">
-            {#if @search_text != "" and length(@all_items) > 0}
+          <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar #{is_nil(@on_search) && "pt-4"}"}>
+            {#if length(@all_items) > 0}
               <CheckboxMultiselectV2
                 values={@selected_items |> Enum.map(&(&1.value))}
                 options={@all_items}
@@ -53,6 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
                 <div>No results found</div>
               </div>
 
+
             {#elseif length(@selected_items) > 0}
               <CheckboxMultiselectV2
                 values={@selected_items |> Enum.map(&(&1.value))}
@@ -61,31 +68,59 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.Components.MultiFilterPopove
               />
 
             {#else}
-              <div class="h-full flex items-center justify-around">
+              <div class="h-full flex items-center beerus-100 justify-around">
                 <div>No filters applied</div>
               </div>
 
             {/if}
           </div>
-          <Divider/>
 
+          <Divider class="mt-2"/>
           <LeftToRight class="justify-between p-2">
-            <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>
-              Clear
-            </Button>
+            {#if can_clear_filters?(@selected_items)}
+              <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>
+                Clear
+              </Button>
+            {#else}
+              <Button variant="danger" size="xsmall" class="rounded">
+                <span class="text-beerus-100">Clear</span>
+              </Button>
+            {/if}
+
 
             <LeftToRight>
-              <Button variant="danger" size="xsmall" class="rounded border-beerus-100" on_click={@on_toggle}>
+              <Button variant="danger" size="xsmall" class="rounded border-bulma-100" on_click={@on_discard}>
                 Discard
               </Button>
-              <Button variant="primary" size="xsmall" class="rounded" on_click={@on_apply}>
-                Apply
-              </Button>
+
+              {#if can_apply_filters?(@selected_items, @active_items)}
+                <Button variant="primary" size="xsmall" class="rounded" on_click={@on_apply}>
+                  &nbspApply&nbsp
+                </Button>
+              {#else}
+                <Button size="xsmall" class="rounded bg-hit-80">
+                  <span class="text-goten-100">&nbspApply&nbsp</span>
+                </Button>
+              {/if}
             </LeftToRight>
           </LeftToRight>
         </div>
       </:content>
     </PopoverV2>
     """
+  end
+
+  defp can_clear_filters?(selected_items) do
+    length(selected_items) > 0
+  end
+
+  defp can_apply_filters?([], []), do: false
+  defp can_apply_filters?(selected_items, active_items) when length(selected_items) != length(active_items), do: true
+  defp can_apply_filters?(selected_items, active_items) do
+    selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
+    active_items_sorted = Enum.sort(active_items, &(&1.value < &2.value))
+    selected_items_sorted
+      |> Enum.zip(active_items_sorted)
+      |> Enum.any?(fn ({a, b}) -> a.value != b.value end)
   end
 end

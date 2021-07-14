@@ -11,9 +11,9 @@ defmodule Moon.Components.Divider do
     {asset_import @socket, "js/tailwind"}
 
     {#if @orientation == "horizontal"}
-      <hr class={"border-beerus-100 #{@class}"}/>
+      <hr class={"border-goku-100 #{@class}"}/>
     {#elseif @orientation == "vertical"}
-      <div class={"border-beerus-100 border #{@class}"} />
+      <div class={"border-goku-100 border #{@class}"} />
     {/if}
     """
   end
