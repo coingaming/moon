@@ -2,11 +2,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   use MoonWeb, :stateful_component
 
   alias __MODULE__.Search
-  alias __MODULE__.MenuButton
   alias Moon.Assets.Icons.IconSettings
   alias Moon.Assets.Icons.IconBell
   alias Moon.Assets.Icons.IconLiveChat
   alias Moon.Assets.Logos.LogoLabFull
+  alias Moon.Components.MenuButton
 
   def render(assigns) do
     ~F"""
