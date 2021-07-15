@@ -6,14 +6,15 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.ButtonsList
 
-  alias Moon.Components.Heading
+  alias Moon.Components.Card
   alias Moon.Components.Chip
+  alias Moon.Components.Heading
+  alias Moon.Components.MenuButton
   alias Moon.Components.Popover
 
   alias MoonWeb.Pages.ExamplePages.Shared
   alias Shared.TopMenu
   alias Shared.LeftMenu
-  alias Shared.TopMenu.MenuButton
 
   def mount(params, _session, socket) do
     socket =
@@ -132,6 +133,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               </div>
               <div class="text-sm whitespace-nowrap">Add metric</div>
             </div>
+          </div>
+
+          <div class="grid grid-cols-2 mt-6 gap-x-4 gap-y-6">
+            <Card title="Depositors">
+              <:content>Bar Chart</:content>
+            </Card>
+
+            <Card title="Winers">
+              <:content>Bar Chart</:content>
+            </Card>
           </div>
         </div>
       </div>
