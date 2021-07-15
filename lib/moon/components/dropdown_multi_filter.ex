@@ -39,7 +39,7 @@ defmodule Moon.Components.DropdownMultiFilter do
             >
               <TextInput
                 left_icon="icon_zoom"
-                placeholder=" Type here..."
+                placeholder="Type here..."
                 field={:search_text}
                 value={@search_text}
                 class="border-none bg-goku-100"
