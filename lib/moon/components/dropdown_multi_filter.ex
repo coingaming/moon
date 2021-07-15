@@ -20,12 +20,13 @@ defmodule Moon.Components.DropdownMultiFilter do
   prop on_clear, :event, required: true
   prop on_search, :event
   prop on_select, :event, required: true
+  prop on_close, :event, required: true
 
   slot default, required: true
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 show={@show_filter}>
+    <PopoverV2 show={@show_filter} on_close={@on_close}>
       <#slot/>
 
       <:content>
