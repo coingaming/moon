@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.ButtonsList
 
+  alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Divider
   alias Moon.Components.Heading
@@ -14,10 +15,32 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias MoonWeb.Pages.ExamplePages.Shared
   alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
+  alias MoonWeb.Pages.ExamplePages.Components.Switcher
   alias Shared.TopMenu
   alias Shared.LeftMenu
 
-  @colors ~w(krillin-100 frieza-100 roshi-100 raditz-100 chi_chi-100 whis-100)
+  @colors ~w(
+    krillin-100 frieza-100 roshi-100
+    raditz-100 chi_chi-100 whis-100
+    cell-100 dodoria-100 nappa-100
+  )
+
+  @metrics [
+    "Total deposits, EUR",
+    "Total withdrawals, EUR",
+    "Casino NGR, EUR",
+    "Sports NGR, EUR",
+    "Total NGR, EUR"
+  ]
+
+  @widget_names ~w(
+    Depositors Winers Losers
+    Wages Demographic Geo
+    Currency Device\u00a0&\u00a0OS Products
+  )
+
+  data colors, :list, default: @colors
+  data widget_names, :list, default: @widget_names
 
   def mount(params, _session, socket) do
     socket =
@@ -25,10 +48,22 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         theme_name: params["theme_name"] || "lab-light",
         active_page: __MODULE__,
         title: "Starter dashboard",
-        clicked_name: "",
-        metrics: get_metrics(),
-        widgets: get_widgets()
+        clicked_filter_name: "",
+        tabs: get_tabs(),
+        selected_tab: "total",
+        metrics: [],
+        widgets: []
       )
+
+    socket =
+      if connected?(socket) do
+        assign(socket,
+          metrics: get_metrics(),
+          widgets: get_widgets()
+        )
+      else
+        socket
+      end
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
@@ -54,63 +89,72 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </MenuButton>
           </div>
 
-          <ButtonsList>
-            <Popover.Outer>
-              <Chip
-                on_click="open_popover"
-                value="timeframe"
-                right_icon="icon_chevron_down_rounded"
-                class="px-3 text-trunks-100"
-              >
-                This month
-              </Chip>
-              <Popover
-                close="close_popover"
-                placement="under"
-                :if={@clicked_name == "timeframe"}
-              >
-                TODO
-              </Popover>
-            </Popover.Outer>
+          <div class="flex flex-wrap gap-x-6">
+            <!-- TODO: Replace with Tabs component -->
+            <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
 
-            <Popover.Outer>
-              <Chip
-                on_click="open_popover"
-                value="platform"
-                right_icon="icon_chevron_down_rounded"
-                class="px-3 text-trunks-100"
-              >
-                Platform · All
-              </Chip>
-              <Popover
-                close="close_popover"
-                placement="under"
-                :if={@clicked_name == "platform"}
-              >
-                TODO
-              </Popover>
-            </Popover.Outer>
+            <ButtonsList>
+              <Popover.Outer>
+                <Chip
+                  on_click="open_popover"
+                  value="timeframe"
+                  right_icon="icon_chevron_down_rounded"
+                  class="px-3 text-trunks-100"
+                >
+                  This month
+                </Chip>
+                <Popover
+                  close="close_popover"
+                  placement="under"
+                  :if={@clicked_filter_name == "timeframe"}
+                >
+                  TODO
+                </Popover>
+              </Popover.Outer>
 
-            <Popover.Outer>
-              <Chip
-                on_click="open_popover"
-                value="brand"
-                right_icon="icon_chevron_down_rounded"
-                class="px-3 text-trunks-100"
-              >
-                Brand · 2
-              </Chip>
-              <Popover
-                close="close_popover"
-                placement="under"
-                :if={@clicked_name == "brand"}
-              >
-                TODO
-              </Popover>
-            </Popover.Outer>
+              <Popover.Outer>
+                <Chip
+                  on_click="open_popover"
+                  value="platform"
+                  right_icon="icon_chevron_down_rounded"
+                  class="px-3 text-trunks-100"
+                >
+                  Platform · All
+                </Chip>
+                <Popover
+                  close="close_popover"
+                  placement="under"
+                  :if={@clicked_filter_name == "platform"}
+                >
+                  TODO
+                </Popover>
+              </Popover.Outer>
 
-            <Divider orientation="vertical" color="beerus-100" />
-          </ButtonsList>
+              <Popover.Outer>
+                <Chip
+                  on_click="open_popover"
+                  value="brand"
+                  right_icon="icon_chevron_down_rounded"
+                  class="px-3 text-trunks-100"
+                >
+                  Brand · 2
+                </Chip>
+                <Popover
+                  close="close_popover"
+                  placement="under"
+                  :if={@clicked_filter_name == "brand"}
+                >
+                  TODO
+                </Popover>
+              </Popover.Outer>
+
+              <Divider orientation="vertical" color="beerus-100" />
+
+              <Button class="px-2 text-trunks-100">
+                Clear all
+              </Button>
+            </ButtonsList>
+          </div>
 
           <Divider color="beerus-100" class="my-6" />
 
@@ -140,12 +184,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 mt-6 gap-x-4 gap-y-6">
+          <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
             <BarChartWidget
-              :for={widget <- Enum.sort_by(@widgets, & &1.index)}
+              :for.with_index={{widget, index} <- Enum.sort_by(@widgets, & &1.index)}
               title={widget.title}
               lines={widget.data}
-              bar_bg_color={"bg-#{get_random_color()}"}
+              bar_bg_color={"bg-#{Enum.at(@colors, index)}"}
             />
           </div>
         </div>
@@ -160,7 +204,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         %{"click_value" => click_value},
         socket
       ) do
-    {:noreply, assign(socket, clicked_name: click_value)}
+    {:noreply, assign(socket, clicked_filter_name: click_value)}
   end
 
   # TODO: Refactor
@@ -169,78 +213,67 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         _,
         socket
       ) do
-    {:noreply, assign(socket, clicked_name: nil)}
+    {:noreply, assign(socket, clicked_filter_name: nil)}
+  end
+
+  def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
+    socket =
+      assign(socket,
+        selected_tab: selected_item,
+        metrics: get_metrics(),
+        widgets: get_widgets()
+      )
+
+    {:noreply, socket}
   end
 
   defp get_metrics() do
-    [
+    @metrics
+    |> Enum.map(fn name ->
       %{
-        name: "Total deposits, EUR",
-        value: "23,787,750",
-        change: 14
-      },
-      %{
-        name: "Total withdrawals, EUR",
-        value: "19,616,700",
-        change: -4
-      },
-      %{
-        name: "Casino NGR, EUR",
-        value: "4,107,850.45",
-        change: -1
-      },
-      %{
-        name: "Sports NGR, EUR",
-        value: "1,055,410.45",
-        change: 2
-      },
-      %{
-        name: "Total NGR, EUR",
-        value: "5,163,258",
-        change: 8
+        name: name,
+        value: Enum.random(1_000_000..21_000_000) + Enum.random(1..99) / 100,
+        change: Enum.random(-20..20)
       }
-    ]
+    end)
   end
 
   defp get_widgets() do
-    ~w(Depositors Winers Losers Wages Demographic Geo Currency Device\u00a0&\u00a0OS Products)
+    @widget_names
     |> Enum.with_index()
     |> Enum.map(fn {name, index} ->
       %{
         index: index,
         title: name,
-        data: [
-          %{
-            name: "Charlibobby",
-            value: Enum.random(2_000_000..6_500_000),
-            change: Enum.random(-20..20)
-          },
-          %{
-            name: "Hima0919",
-            value: Enum.random(2_000_000..6_500_000),
-            change: Enum.random(-20..20)
-          },
-          %{
-            name: "Fox14445",
-            value: Enum.random(2_000_000..6_500_000),
-            change: Enum.random(-20..20)
-          },
-          %{
-            name: "Latuim",
-            value: Enum.random(2_000_000..6_500_000),
-            change: Enum.random(-20..20)
-          },
-          %{
-            name: "Killbgx",
-            value: Enum.random(2_000_000..6_500_000),
-            change: Enum.random(-20..20)
-          }
-        ]
+        data:
+          Enum.map(
+            ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
+            fn line ->
+              %{
+                name: line,
+                value: Enum.random(1_000..9_900) + Enum.random(1..99) / 100,
+                change: Enum.random(-20..20)
+              }
+            end
+          )
       }
     end)
   end
 
-  defp get_random_color() do
-    Enum.random(@colors)
+  defp get_tabs() do
+    [
+      %{
+        name: "Total",
+        value: "total"
+      },
+      %{
+        name: "Real",
+        value: "real"
+      },
+      %{
+        name: "Bonus",
+        value: "bonus"
+      }
+    ]
   end
 end

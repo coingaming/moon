@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
             </div>
 
             <div class="flex-shrink-0 w-16 text-right">
-              {number_to_delimited(line.value)}
+              {line.value}
             </div>
           </div>
         </div>
@@ -61,11 +61,6 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
 
   defp sorted_lines(lines) do
     Enum.sort_by(lines, & &1.value, :desc)
-  end
-
-  # TODO: Implement it
-  defp number_to_delimited(number) do
-    number
   end
 
   defp calc_bar_width(value, lines) do
