@@ -5,15 +5,21 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
   alias Moon.Components.Card
   alias Moon.Components.MenuButton
 
-  prop title, :string, required: true
-  prop lines, :list, default: []
+  prop widget, :map, required: true
   prop bar_bg_color, :string, default: "bg-roshi-100"
+  prop on_refresh, :event
 
   def render(assigns) do
     ~F"""
-    <Card title={@title}>
+    <Card title={@widget.title}>
       <:buttons>
-        <MenuButton height={8} width={8}>
+        <MenuButton
+          height={8}
+          width={8}
+          click={@on_refresh}
+          value_name="index"
+          value={@widget.index}
+        >
           <Icon name="icon_refresh" />
         </MenuButton>
 
@@ -24,9 +30,9 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
 
       <:content>
         <div class="space-y-6">
-          <div :for.with_index={{line, index} <- sorted_lines(@lines)} class="flex py-2 gap-x-4">
+          <div :for.with_index={{line, line_index} <- sorted_lines(@widget.data)} class="flex py-2 gap-x-4">
             <div class="text-trunks-100">
-              {index + 1}
+              {line_index + 1}
             </div>
 
             <div class="flex-grow">
@@ -36,7 +42,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
             <div class="flex-shrink-0 flex items-center justify-end w-56">
               <div
                 class={"h-2 rounded-l #{@bar_bg_color}"}
-                style={"width: #{calc_bar_width(line.value, @lines)}%;"}
+                style={"width: #{calc_bar_width(line.value, @widget.data)}%;"}
               ></div>
             </div>
 

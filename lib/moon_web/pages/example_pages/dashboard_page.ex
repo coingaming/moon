@@ -186,10 +186,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
           <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
             <BarChartWidget
-              :for.with_index={{widget, index} <- Enum.sort_by(@widgets, & &1.index)}
-              title={widget.title}
-              lines={widget.data}
-              bar_bg_color={"bg-#{Enum.at(@colors, index)}"}
+              :for={widget <- Enum.sort_by(@widgets, & &1.index)}
+              widget={widget}
+              bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
+              on_refresh="refresh_widget_data"
             />
           </div>
         </div>
@@ -227,6 +227,18 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
+  def handle_event("refresh_widget_data", %{"index" => index}, socket) do
+    widgets = socket.assigns.widgets
+    widget = Enum.find(widgets, &(&1.index == String.to_integer(index)))
+
+    widgets =
+      List.update_at(widgets, widget.index, fn item ->
+        %{item | data: generate_widget_data()}
+      end)
+
+    {:noreply, assign(socket, widgets: widgets)}
+  end
+
   defp get_metrics() do
     @metrics
     |> Enum.map(fn name ->
@@ -245,19 +257,22 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       %{
         index: index,
         title: name,
-        data:
-          Enum.map(
-            ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
-            fn line ->
-              %{
-                name: line,
-                value: Enum.random(1_000..9_900) + Enum.random(1..99) / 100,
-                change: Enum.random(-20..20)
-              }
-            end
-          )
+        data: generate_widget_data()
       }
     end)
+  end
+
+  def generate_widget_data() do
+    Enum.map(
+      ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
+      fn line ->
+        %{
+          name: line,
+          value: Enum.random(1_000..9_900) + Enum.random(1..99) / 100,
+          change: Enum.random(-20..20)
+        }
+      end
+    )
   end
 
   defp get_tabs() do
