@@ -18,7 +18,7 @@ defmodule Moon.Components.PopoverV2 do
       <div
         :if={@show}
         :on-click={@on_close}
-        class="fixed top-0 left-0 right-0 bottom-0 z-40"
+        class="fixed inset-0 z-40"
       />
       <div
         :if={@show}
