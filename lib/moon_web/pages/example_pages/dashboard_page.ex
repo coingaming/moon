@@ -13,8 +13,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.Popover
 
   alias MoonWeb.Pages.ExamplePages.Shared
+  alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
   alias Shared.TopMenu
   alias Shared.LeftMenu
+
+  @colors ~w(krillin-100 frieza-100 roshi-100 raditz-100 chi_chi-100 whis-100)
 
   def mount(params, _session, socket) do
     socket =
@@ -23,7 +26,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         active_page: __MODULE__,
         title: "Starter dashboard",
         clicked_name: "",
-        metrics: get_metrics()
+        metrics: get_metrics(),
+        widgets: get_widgets()
       )
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
@@ -119,7 +123,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </div>
                 <div class={
                   "text-sm",
-                  "text-cell-100": metric.change > 0,
+                  "text-roshi-100": metric.change > 0,
                   "text-chi_chi-100": metric.change <= 0
                 }>
                   <span :if={metric.change > 0}>+</span>{metric.change}%
@@ -135,14 +139,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </div>
           </div>
 
-          <div class="grid grid-cols-2 mt-6 gap-x-4 gap-y-6">
-            <Card title="Depositors">
-              <:content>Bar Chart</:content>
-            </Card>
-
-            <Card title="Winers">
-              <:content>Bar Chart</:content>
-            </Card>
+          <div class="grid grid-cols-1 lg:grid-cols-2 mt-6 gap-x-4 gap-y-6">
+            <BarChartWidget
+              :for={widget <- Enum.sort_by(@widgets, & &1.index)}
+              title={widget.title}
+              lines={widget.data}
+              bar_bg_color={"bg-#{get_random_color()}"}
+            />
           </div>
         </div>
       </div>
@@ -196,5 +199,47 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         change: 8
       }
     ]
+  end
+
+  defp get_widgets() do
+    ~w(Depositors Winers Losers Wages Demographic Geo Currency Device\u00a0&\u00a0OS Products)
+    |> Enum.with_index()
+    |> Enum.map(fn {name, index} ->
+      %{
+        index: index,
+        title: name,
+        data: [
+          %{
+            name: "Charlibobby",
+            value: Enum.random(2_000_000..6_500_000),
+            change: Enum.random(-20..20)
+          },
+          %{
+            name: "Hima0919",
+            value: Enum.random(2_000_000..6_500_000),
+            change: Enum.random(-20..20)
+          },
+          %{
+            name: "Fox14445",
+            value: Enum.random(2_000_000..6_500_000),
+            change: Enum.random(-20..20)
+          },
+          %{
+            name: "Latuim",
+            value: Enum.random(2_000_000..6_500_000),
+            change: Enum.random(-20..20)
+          },
+          %{
+            name: "Killbgx",
+            value: Enum.random(2_000_000..6_500_000),
+            change: Enum.random(-20..20)
+          }
+        ]
+      }
+    end)
+  end
+
+  defp get_random_color() do
+    Enum.random(@colors)
   end
 end
