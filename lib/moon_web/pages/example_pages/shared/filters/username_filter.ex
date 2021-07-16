@@ -27,6 +27,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
       on_clear="clear_filter"
       on_search="handle_filter_search"
       on_select="handle_filter_select"
+      on_close="toggle_filter"
     >
       <Chip on_click="toggle_filter" value="users" right_icon="icon_chevron_down_rounded">
         {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
