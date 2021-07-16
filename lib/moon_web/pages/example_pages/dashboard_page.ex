@@ -6,8 +6,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.ButtonsList
 
-  alias Moon.Components.Card
   alias Moon.Components.Chip
+  alias Moon.Components.Divider
   alias Moon.Components.Heading
   alias Moon.Components.MenuButton
   alias Moon.Components.Popover
@@ -108,10 +108,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 TODO
               </Popover>
             </Popover.Outer>
+
+            <Divider orientation="vertical" color="beerus-100" />
           </ButtonsList>
 
-          <!-- TODO: Replace with divider -->
-          <hr class="my-6 border-beerus-100" />
+          <Divider color="beerus-100" class="my-6" />
 
           <!-- TODO: Create a shared component -->
           <div class="flex p-6 overflow-x-scroll rounded bg-gohan-100 gap-x-4 no-scrollbar">
