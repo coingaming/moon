@@ -2,7 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover
+  alias Moon.Components.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.Sites
 
@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
 
   def render(assigns) do
     ~F"""
-    <MultiFilterPopover
+    <DropdownMultiFilter
       {=@show_filter}
       {=@all_items}
       {=@selected_items}
@@ -23,11 +23,12 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
       on_discard="discard_filter"
       on_clear="clear_filter"
       on_select="handle_filter_select"
+      on_close="toggle_filter"
     >
       <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
         {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
-    </MultiFilterPopover>
+    </DropdownMultiFilter>
     """
   end
 

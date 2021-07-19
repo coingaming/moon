@@ -26,11 +26,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
         <tr
           :for.with_index={{customer, i} <- @customers}
           :on-click={"select_customer:#{customer.id}"}
-          class={"cursor-pointer #{Table.get_row_class(i)} #{
+          class={"cursor-pointer rounded #{Table.get_row_class(i)} #{
             if @active_customer_id != customer.id do
               "hover:bg-beerus-100"
             else
-              "border-2 border-hit-120"
+              "border border-hit-120 bg-beerus-100 border-collapse"
             end
           }"}
         >

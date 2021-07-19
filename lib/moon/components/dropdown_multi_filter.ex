@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover do
+defmodule Moon.Components.DropdownMultiFilter do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.PopoverV2
@@ -20,12 +20,13 @@ defmodule MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover do
   prop on_clear, :event, required: true
   prop on_search, :event
   prop on_select, :event, required: true
+  prop on_close, :event, required: true
 
   slot default, required: true
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 show={@show_filter}>
+    <PopoverV2 show={@show_filter} on_close={@on_close}>
       <#slot/>
 
       <:content>
@@ -38,7 +39,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover do
             >
               <TextInput
                 left_icon="icon_zoom"
-                placeholder=" Type here..."
+                placeholder="Type here..."
                 field={:search_text}
                 value={@search_text}
                 class="border-none bg-goku-100"

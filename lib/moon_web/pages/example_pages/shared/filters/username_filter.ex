@@ -2,7 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Components.MultiFilterPopover
+  alias Moon.Components.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   alias MoonWeb.MockDB.Users
@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
 
   def render(assigns) do
     ~F"""
-    <MultiFilterPopover
+    <DropdownMultiFilter
       {=@show_filter}
       {=@search_text}
       {=@all_items}
@@ -27,11 +27,12 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
       on_clear="clear_filter"
       on_search="handle_filter_search"
       on_select="handle_filter_select"
+      on_close="toggle_filter"
     >
       <Chip on_click="toggle_filter" value="users" right_icon="icon_chevron_down_rounded">
         {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
-    </MultiFilterPopover>
+    </DropdownMultiFilter>
     """
   end
 

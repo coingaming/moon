@@ -13,7 +13,7 @@ defmodule Moon.Components.Divider do
     {#if @orientation == "horizontal"}
       <hr class={"border-goku-100 #{@class}"}/>
     {#elseif @orientation == "vertical"}
-      <div class={"border-goku-100 border #{@class}"} />
+      <div class={"h-full border-goku-100 border #{@class}"} />
     {/if}
     """
   end
