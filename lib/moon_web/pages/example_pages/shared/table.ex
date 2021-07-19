@@ -1,6 +1,12 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   use Moon.StatelessComponent
 
+  alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Assets.Logos.LogoSlotsShort
+  alias Moon.Assets.Logos.LogoAposta10Short
+  alias Moon.Autolayouts.LeftToRight
+
   prop columns, :list          # [%{ field: :id, label: 'Id' }...]
   prop items, :list            # [%{ id: 12, name: 'pavan', brand: 'aposta10' }...]
 
@@ -8,7 +14,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   prop active_item_id, :any    # integer | string
 
   def render(assigns) do
-    fields = assigns.columns |> Enum.map(&(&1.field))
+    fields = assigns.columns
+      |> Enum.map(&({Map.get(&1, :field), Map.get(&1, :type)}))
 
     ~F"""
     <table class="table-auto moon-table">
@@ -20,8 +27,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       <tbody>
         {#for {item, ind} <- @items |> Enum.with_index()}
           <tr {...get_row_attrs(item, ind, assigns)}>
-            {#for field <- fields}
-              <td>{item[field]}</td>
+            {#for {field, type} <- fields}
+              <td>{render_content(item[field], type, assigns)}</td>
             {/for}
           </tr>
         {/for}
@@ -54,6 +61,33 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
+    end
+  end
+
+  defp render_content(value, type, assigns) do
+    case type do
+      :date ->
+        value |> Timex.format!("%b %d, %Y", :strftime)
+
+      :brand ->
+        ~F"""
+        <LeftToRight class="flex items-center">
+          {#case value}
+            {#match "Bitcasino"}
+              <LogoBitcasinoShort font_size="1rem" />
+            {#match "Sportsbet"}
+              <LogoSportsbetShort font_size="1rem" />
+            {#match "Slots"}
+              <LogoSlotsShort font_size="1rem" />
+            {#match "Aposta10"}
+              <LogoAposta10Short font_size="1rem" />
+          {/case}
+          {value}
+        </LeftToRight>
+        """
+
+      _ ->
+        value
     end
   end
 end
