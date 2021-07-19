@@ -18,11 +18,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       |> Enum.map(&({Map.get(&1, :field), Map.get(&1, :type)}))
 
     ~F"""
-    <table>
+    <table class="border-t border-goku-40">
       <thead>
-        <tr class="divide-x divide-hit-100">
+        <tr class="divide-x divide-goku-40">
           {#for column <- @columns}
-            <th class="px-6 py-3 text-left text-sm text-trunks-100 font-normal">
+            <th class="px-6 py-4 text-left text-sm text-trunks-100 font-normal">
               {column.label}
             </th>
           {/for}
@@ -53,17 +53,17 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
 
     case {assigns.on_select, is_active} do
       {nil, _} -> %{
-        class: "divide-x divide-hit-100 #{bg_color}"
+        class: "divide-x divide-goku-40 #{bg_color}"
       }
 
       {e, false} -> %{
-        class: "cursor-pointer rounded hover:bg-beerus-100 divide-x divide-hit-100 #{bg_color}",
+        class: "cursor-pointer rounded hover:bg-goku-100 divide-x divide-goku-40 #{bg_color}",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
 
       {e, true} -> %{
-        class: "cursor-pointer rounded border border-hit-120 bg-beerus-100 divide-x divide-hit-100 border-collapse",
+        class: "cursor-pointer rounded bg-gohan-100 divide-x divide-goku-40",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
@@ -74,7 +74,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   defp render_content(value, type, assigns) do
     case type do
       :date ->
-        value |> Timex.format!("%b %d, %Y", :strftime)
+        ~F"""
+        {value |> Timex.format!("%b %d, %Y", :strftime)}
+        """
 
       :brand ->
         ~F"""
@@ -94,7 +96,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
         """
 
       _ ->
-        value
+        ~F"""
+        {value}
+        """
     end
   end
 end
