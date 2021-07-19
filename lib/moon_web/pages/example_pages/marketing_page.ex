@@ -8,8 +8,6 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   alias Shared.LeftMenu
   alias Shared.Breadcrumbs
 
-  alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList
-
   data breadcrumbs, :any,
     default: [%{name: "Marketing", to: "/lab-light/example-pages/marketing"}]
 
@@ -31,7 +29,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
         <div class="p-4 pt-8">
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
-          <TransactionsList transactions={@transactions} />
+          <!-- <TransactionsList transactions={@transactions} /> -->
         </div>
       </div>
     </div>
