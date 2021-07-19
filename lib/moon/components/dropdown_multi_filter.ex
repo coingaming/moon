@@ -116,12 +116,17 @@ defmodule Moon.Components.DropdownMultiFilter do
   end
 
   defp can_apply_filters?([], []), do: false
-  defp can_apply_filters?(selected_items, active_items) when length(selected_items) != length(active_items), do: true
+
+  defp can_apply_filters?(selected_items, active_items)
+       when length(selected_items) != length(active_items),
+       do: true
+
   defp can_apply_filters?(selected_items, active_items) do
     selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
     active_items_sorted = Enum.sort(active_items, &(&1.value < &2.value))
+
     selected_items_sorted
-      |> Enum.zip(active_items_sorted)
-      |> Enum.any?(fn ({a, b}) -> a.value != b.value end)
+    |> Enum.zip(active_items_sorted)
+    |> Enum.any?(fn {a, b} -> a.value != b.value end)
   end
 end

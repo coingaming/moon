@@ -18,16 +18,17 @@ defmodule MoonWeb.MockDB.Currencies do
 
   # server
   def init(_args) do
-    {:ok, %{
-      all: [
-        %{name: "EUR"},
-        %{name: "BTC"},
-        %{name: "ETC"},
-        %{name: "USD"},
-        %{name: "UAH"},
-        %{name: "JPY"}
-      ]
-    }}
+    {:ok,
+     %{
+       all: [
+         %{name: "EUR"},
+         %{name: "BTC"},
+         %{name: "ETC"},
+         %{name: "USD"},
+         %{name: "UAH"},
+         %{name: "JPY"}
+       ]
+     }}
   end
 
   def handle_call(:list_all, _from, state) do

@@ -12,10 +12,12 @@ defmodule MoonWeb.MockDB.Affiliates do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
-  def list(%{
-    filter: %{ user: _ },
-    pagination: %{ offset: _, limit: _ }
-  } = args) do
+  def list(
+        %{
+          filter: %{user: _},
+          pagination: %{offset: _, limit: _}
+        } = args
+      ) do
     this_process() |> GenServer.call({:list, args})
   end
 
@@ -26,17 +28,20 @@ defmodule MoonWeb.MockDB.Affiliates do
   # server
   def init(_args) do
     users = Users.list_all()
-    {:ok, %{
-      all: users
-        |> Enum.map(fn user ->
-          %{
-            id: Utils.random_id(),
-            user: user,
-            tags: random_tags(),
-            signup_at: Faker.DateTime.backward(120)
-          }
-        end)
-    }}
+
+    {:ok,
+     %{
+       all:
+         users
+         |> Enum.map(fn user ->
+           %{
+             id: Utils.random_id(),
+             user: user,
+             tags: random_tags(),
+             signup_at: Faker.DateTime.backward(120)
+           }
+         end)
+     }}
   end
 
   def handle_call(:list_all, _from, state) do
@@ -45,13 +50,15 @@ defmodule MoonWeb.MockDB.Affiliates do
 
   def handle_call({:list, args}, _from, state) do
     %{
-      filter: %{ user: user_filter },
-      pagination: %{ offset: offset, limit: limit }
+      filter: %{user: user_filter},
+      pagination: %{offset: offset, limit: limit}
     } = args
 
     users = Users.list(%{filter: user_filter})
-    results = state.all
-      |> Enum.filter(&(Enum.member?(users, &1.user)))
+
+    results =
+      state.all
+      |> Enum.filter(&Enum.member?(users, &1.user))
       |> Utils.take_page(offset, limit)
 
     {:reply, results, state}
@@ -64,6 +71,6 @@ defmodule MoonWeb.MockDB.Affiliates do
 
   defp random_tags() do
     0..Faker.random_between(0, length(@tags) - 1)
-    |> Enum.map(&(Enum.fetch!(@tags, &1)))
+    |> Enum.map(&Enum.fetch!(@tags, &1))
   end
 end

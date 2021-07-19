@@ -40,16 +40,32 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
       %{
         title: "Transactions",
         children: [
-          %{icon: "icon_arrow_diagonals", text: "Pending withdrawal", to: "/lab-light/example-pages/transactions"},
-          %{icon: "icon_arrow_diagonals", text: "Pending deposits", to: "/lab-light/example-pages/transactions"},
+          %{
+            icon: "icon_arrow_diagonals",
+            text: "Pending withdrawal",
+            to: "/lab-light/example-pages/transactions"
+          },
+          %{
+            icon: "icon_arrow_diagonals",
+            text: "Pending deposits",
+            to: "/lab-light/example-pages/transactions"
+          }
         ]
       },
       %{
         title: "Marketing",
         children: [
           %{icon: "icon_forward", text: "Rewards", to: "/lab-light/example-pages/marketing"},
-          %{icon: "icon_forward", text: "Freebet offers", to: "/lab-light/example-pages/marketing"},
-          %{icon: "icon_forward", text: "Reward instances", to: "/lab-light/example-pages/marketing"},
+          %{
+            icon: "icon_forward",
+            text: "Freebet offers",
+            to: "/lab-light/example-pages/marketing"
+          },
+          %{
+            icon: "icon_forward",
+            text: "Reward instances",
+            to: "/lab-light/example-pages/marketing"
+          },
           %{icon: "icon_forward", text: "Bonuses", to: "/lab-light/example-pages/marketing"},
           %{icon: "icon_forward", text: "Bonus groups", to: "/lab-light/example-pages/marketing"}
         ]

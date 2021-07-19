@@ -15,6 +15,7 @@ defmodule Moon.Assets.Crest do
   @assets_map %{
     crest_arsenal: Crests.CrestArsenal,
     crest_flamengo: Crests.CrestFlamengo,
+    crest_sao_paulo: Crests.CrestSaoPaulo,
     crest_southampton: Crests.CrestSouthampton,
     crest_watford: Crests.CrestWatford
   }

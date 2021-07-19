@@ -17,6 +17,7 @@ defmodule MoonWeb.MockDB do
       %{id: :affiliates, start: {Affiliates, :start_link, []}},
       %{id: :transactions, start: {Transactions, :start_link, []}}
     ]
+
     Supervisor.init(children, strategy: :one_for_one)
   end
 end

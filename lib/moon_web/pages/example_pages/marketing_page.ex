@@ -10,7 +10,8 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
 
   alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsList
 
-  data breadcrumbs, :any, default: [%{name: "Marketing", to: "/lab-light/example-pages/marketing"}]
+  data breadcrumbs, :any,
+    default: [%{name: "Marketing", to: "/lab-light/example-pages/marketing"}]
 
   def mount(params, _session, socket) do
     {:ok,

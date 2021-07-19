@@ -6,7 +6,6 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
 
   alias Moon.Assets.Icons.{IconChevronLeftRounded, IconChevronRightRounded}
 
-
   def render(assigns) do
     ~F"""
       <div class="flex-1 h-full w-full">

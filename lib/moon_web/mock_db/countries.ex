@@ -14,24 +14,25 @@ defmodule MoonWeb.MockDB.Countries do
 
   # server
   def init(_args) do
-    {:ok, %{
-      all: [
-        %{name: "Estonia"},
-        %{name: "France"},
-        %{name: "Germany"},
-        %{name: "Ukraine"},
-        %{name: "United Kingdom"},
-        %{name: "Italy"},
-        %{name: "Span"},
-        %{name: "Poland"},
-        %{name: "Romania"},
-        %{name: "Greece"},
-        %{name: "Austria"},
-        %{name: "Serbia"},
-        %{name: "Bulgaria"},
-        %{name: "Finland"}
-      ]
-    }}
+    {:ok,
+     %{
+       all: [
+         %{name: "Estonia"},
+         %{name: "France"},
+         %{name: "Germany"},
+         %{name: "Ukraine"},
+         %{name: "United Kingdom"},
+         %{name: "Italy"},
+         %{name: "Span"},
+         %{name: "Poland"},
+         %{name: "Romania"},
+         %{name: "Greece"},
+         %{name: "Austria"},
+         %{name: "Serbia"},
+         %{name: "Bulgaria"},
+         %{name: "Finland"}
+       ]
+     }}
   end
 
   def handle_call(:list_all, _from, state) do

@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   alias Moon.Assets.Crests
   alias Crests.CrestArsenal
   alias Crests.CrestFlamengo
+  alias Crests.CrestSaoPaulo
   alias Crests.CrestSouthampton
   alias Crests.CrestWatford
 
@@ -39,6 +40,19 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       <#template slot="code">
         <#CodePreview>
         <CrestFlamengo font_size="10rem" />
+        </#CodePreview>
+      </#template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <#template slot="example">
+        <CrestSaoPaulo font_size="10rem" />
+      </#template>
+
+      <#template slot="code">
+        <#CodePreview>
+        <CrestSaoPaulo font_size="10rem" />
         </#CodePreview>
       </#template>
     </ExampleAndCode>

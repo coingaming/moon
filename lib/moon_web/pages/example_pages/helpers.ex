@@ -4,9 +4,9 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
     item_in_selected = Enum.find(selected_items, &(&1.value == toggle_item_value))
 
     case {item_in_all, item_in_selected} do
-      {nil, nil}  -> selected_items
-      {item, nil} -> [ item | selected_items ]
-      {_, item}   -> List.delete(selected_items, item)
+      {nil, nil} -> selected_items
+      {item, nil} -> [item | selected_items]
+      {_, item} -> List.delete(selected_items, item)
     end
   end
 
@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
     search_text = String.upcase(search_text)
 
     all_items
-      |> Enum.filter(&(String.contains?(String.upcase(&1.label), search_text)))
+    |> Enum.filter(&String.contains?(String.upcase(&1.label), search_text))
   end
 
   def format_filter_count(count) do
@@ -27,6 +27,7 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
 
   @spec to_integer(String.t() | integer(), any()) :: any()
   def to_integer(int, _default) when is_integer(int), do: int
+
   def to_integer(str, default) do
     String.to_integer(str)
   rescue

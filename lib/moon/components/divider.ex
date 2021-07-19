@@ -2,6 +2,7 @@ defmodule Moon.Components.Divider do
   use Moon.StatelessComponent
 
   prop class, :string
+
   prop orientation, :string,
     values: ["vertical", "horizontal"],
     default: "horizontal"

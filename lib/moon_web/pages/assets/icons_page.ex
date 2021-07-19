@@ -238,7 +238,9 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconStarFilled
   alias Icons.IconStarFlag
   alias Icons.IconStars
+  alias Icons.IconStart
   alias Icons.IconStats
+  alias Icons.IconStop
   alias Icons.IconStopwatch
   alias Icons.IconSuccessCircle
   alias Icons.IconSun
@@ -3303,12 +3305,38 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
     <ExampleAndCode class="mt-4">
       <#template slot="example">
+        <IconStart font_size="5rem" />
+      </#template>
+
+      <#template slot="code">
+        <#CodePreview>
+        <IconStart font_size="5rem" />
+        </#CodePreview>
+      </#template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <#template slot="example">
         <IconStats font_size="5rem" />
       </#template>
 
       <#template slot="code">
         <#CodePreview>
         <IconStats font_size="5rem" />
+        </#CodePreview>
+      </#template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <#template slot="example">
+        <IconStop font_size="5rem" />
+      </#template>
+
+      <#template slot="code">
+        <#CodePreview>
+        <IconStop font_size="5rem" />
         </#CodePreview>
       </#template>
     </ExampleAndCode>

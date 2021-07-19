@@ -91,7 +91,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   end
 
   def mount(params, _session, socket) do
-    socket = socket
+    socket =
+      socket
       |> assign(theme_name: params["theme_name"] || "sportsbet-dark")
       |> assign(active_page: __MODULE__)
       |> filter_customers()
@@ -100,17 +101,18 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   end
 
   def handle_info({:apply_filter, filter}, socket) do
-    socket = case filter do
-      {:username, items} -> socket |> assign(username_filter: items)
-      {:country, items}  -> socket |> assign(country_filter: items)
-      {:site, items}     -> socket |> assign(site_filter: items)
-      _                  -> socket
-    end
+    socket =
+      case filter do
+        {:username, items} -> socket |> assign(username_filter: items)
+        {:country, items} -> socket |> assign(country_filter: items)
+        {:site, items} -> socket |> assign(site_filter: items)
+        _ -> socket
+      end
 
-    {:noreply, socket
-      |> assign(page: 1)
-      |> filter_customers()
-    }
+    {:noreply,
+     socket
+     |> assign(page: 1)
+     |> filter_customers()}
   end
 
   def handle_info({:select_customer, customer}, socket) do
@@ -125,33 +127,33 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     CountryFilter.clear()
     SiteFilter.clear()
 
-    {:noreply, socket
-      |> assign(username_filter: [])
-      |> assign(country_filter: [])
-      |> assign(site_filter: [])
-      |> assign(page: 1)
-      |> filter_customers()
-    }
+    {:noreply,
+     socket
+     |> assign(username_filter: [])
+     |> assign(country_filter: [])
+     |> assign(site_filter: [])
+     |> assign(page: 1)
+     |> filter_customers()}
   end
 
   def handle_event("close_customer_preview", _, socket) do
-    {:noreply, socket
-      |> assign(active_customer: %{id: nil})
-    }
+    {:noreply,
+     socket
+     |> assign(active_customer: %{id: nil})}
   end
 
   def handle_event("goto_prev_page", _, socket = %{assigns: %{page: page}}) do
-    {:noreply, socket
-      |> assign(page: (if page > 1, do: page - 1, else: page))
-      |> filter_customers()
-    }
+    {:noreply,
+     socket
+     |> assign(page: if(page > 1, do: page - 1, else: page))
+     |> filter_customers()}
   end
 
   def handle_event("goto_next_page", _, socket = %{assigns: %{page: page}}) do
-    {:noreply, socket
-      |> assign(page: page + 1)
-      |> filter_customers()
-    }
+    {:noreply,
+     socket
+     |> assign(page: page + 1)
+     |> filter_customers()}
   end
 
   #
@@ -169,14 +171,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       Users.list(%{
         filter: %{
           id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
-          site: Enum.map(site_filter, &(&1.value)),
-          country: Enum.map(country_filter, &(&1.value))
+          site: Enum.map(site_filter, & &1.value),
+          country: Enum.map(country_filter, & &1.value)
         }
       })
       |> Utils.take_page((page - 1) * 20, 20)
 
     socket
-      |> assign(customers: customers)
-      |> assign(active_customer: %{ id: nil })
+    |> assign(customers: customers)
+    |> assign(active_customer: %{id: nil})
   end
 end

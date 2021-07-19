@@ -70,7 +70,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   end
 
   def mount(params, _session, socket) do
-    socket = socket
+    socket =
+      socket
       |> assign(theme_name: params["theme_name"] || "sportsbet-dark")
       |> assign(active_page: __MODULE__)
       |> filter_affiliates()
@@ -79,16 +80,17 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   end
 
   def handle_info({:apply_filter, filter}, socket) do
-    socket = case filter do
-      {:username, items} -> socket |> assign(username_filter: items)
-      {:country, items}  -> socket |> assign(country_filter: items)
-      _                  -> socket
-    end
+    socket =
+      case filter do
+        {:username, items} -> socket |> assign(username_filter: items)
+        {:country, items} -> socket |> assign(country_filter: items)
+        _ -> socket
+      end
 
-    {:noreply, socket
-      |> assign(page: 1)
-      |> filter_affiliates()
-    }
+    {:noreply,
+     socket
+     |> assign(page: 1)
+     |> filter_affiliates()}
   end
 
   #
@@ -98,32 +100,32 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     UsernameFilter.clear()
     CountryFilter.clear()
 
-    {:noreply, socket
-      |> assign(username_filter: [])
-      |> assign(country_filter: [])
-      |> assign(page: 1)
-      |> filter_affiliates()
-    }
+    {:noreply,
+     socket
+     |> assign(username_filter: [])
+     |> assign(country_filter: [])
+     |> assign(page: 1)
+     |> filter_affiliates()}
   end
 
   def handle_event("goto_prev_page", _, socket) do
-    %{ page: page } = socket.assigns
+    %{page: page} = socket.assigns
     prev_page = if page > 1, do: page - 1, else: page
 
-    {:noreply, socket
-      |> assign(page: prev_page)
-      |> filter_affiliates()
-    }
+    {:noreply,
+     socket
+     |> assign(page: prev_page)
+     |> filter_affiliates()}
   end
 
   def handle_event("goto_next_page", _, socket) do
-    %{ page: page } = socket.assigns
+    %{page: page} = socket.assigns
     next_page = page + 1
 
-    {:noreply, socket
-      |> assign(page: next_page)
-      |> filter_affiliates()
-    }
+    {:noreply,
+     socket
+     |> assign(page: next_page)
+     |> filter_affiliates()}
   end
 
   #
@@ -137,17 +139,20 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     } = socket.assigns
 
     socket
-      |> assign(affiliates: Affiliates.list(%{
-        filter: %{
-          user: %{
-            id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
-            country: Enum.map(country_filter, &(&1.value))
+    |> assign(
+      affiliates:
+        Affiliates.list(%{
+          filter: %{
+            user: %{
+              id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
+              country: Enum.map(country_filter, & &1.value)
+            }
+          },
+          pagination: %{
+            offset: (page - 1) * 20,
+            limit: 20
           }
-        },
-        pagination: %{
-          offset: (page - 1) * 20,
-          limit: 20
-        }
-      }))
+        })
+    )
   end
 end

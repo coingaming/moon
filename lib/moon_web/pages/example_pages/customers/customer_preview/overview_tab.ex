@@ -23,11 +23,23 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
 
   alias Moon.Components.{Accordion, Divider, Button, Text}
   alias Moon.Autolayouts.LeftToRight
+
   alias Moon.Assets.Icons.{
-    IconUser, IconText, IconGlobe, IconMail, IconGeneralInfo,
-    IconWalletRounded, IconPencil, IconAbout, IconSbShield,
-    IconData, IconSettings, IconLightbulb, IconCalendarEmpty
+    IconUser,
+    IconText,
+    IconGlobe,
+    IconMail,
+    IconGeneralInfo,
+    IconWalletRounded,
+    IconPencil,
+    IconAbout,
+    IconSbShield,
+    IconData,
+    IconSettings,
+    IconLightbulb,
+    IconCalendarEmpty
   }
+
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row
 
   data show_account_details, :boolean, default: true
@@ -189,19 +201,19 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   end
 
   def handle_event("toggle_account_details", _, socket) do
-    %{ show_account_details: show } = socket.assigns
+    %{show_account_details: show} = socket.assigns
 
     {:noreply, socket |> assign(show_account_details: !show)}
   end
 
   def handle_event("toggle_security", _, socket) do
-    %{ show_security: show } = socket.assigns
+    %{show_security: show} = socket.assigns
 
     {:noreply, socket |> assign(show_security: !show)}
   end
 
   def handle_event("toggle_wallets", _, socket) do
-    %{ show_wallets: show } = socket.assigns
+    %{show_wallets: show} = socket.assigns
 
     {:noreply, socket |> assign(show_wallets: !show)}
   end
@@ -219,7 +231,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   def get_money(tab) do
     case String.split(tab, " · ") do
       [_, money] -> money
-      _          -> "0"
+      _ -> "0"
     end
   end
 end

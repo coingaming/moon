@@ -91,11 +91,12 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   end
 
   def handle_info({:apply_filter, filter}, socket) do
-    socket = case filter do
-      {:country, items}  -> socket |> assign(country_filter: items)
-      {:site, items}     -> socket |> assign(site_filter: items)
-      _                  -> socket
-    end
+    socket =
+      case filter do
+        {:country, items} -> socket |> assign(country_filter: items)
+        {:site, items} -> socket |> assign(site_filter: items)
+        _ -> socket
+      end
 
     {:noreply, socket}
   end

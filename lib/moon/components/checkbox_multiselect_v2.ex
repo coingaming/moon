@@ -3,8 +3,10 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
 
   alias Moon.Components.Checkbox
 
-  prop options, :list, required: true  # [%{ label: :string, value: :string }, ...]
-  prop values, :list, required: true   # [:string]
+  # [%{ label: :string, value: :string }, ...]
+  prop options, :list, required: true
+  # [:string]
+  prop values, :list, required: true
 
   prop on_select, :event
 

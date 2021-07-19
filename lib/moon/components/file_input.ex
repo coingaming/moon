@@ -16,7 +16,7 @@ defmodule Moon.Components.FileInput do
       <label
         class={
           "flex justify-between items-center relative px-4 py-2 transition duration-200 border rounded cursor-pointer text-trunks-100 hover:border-goku-40 leading-normal overflow-hidden",
-          "border-chi_chi-100": @error,
+          "border-chi-chi-100": @error,
           "border-beerus-100": !@error
         }
       >

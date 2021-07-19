@@ -74,11 +74,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   end
 
   def mount(params, _session, socket) do
-    transactions = if socket.transport_pid != nil do
-      get_transactions(socket.assigns)
-    else
-      []
-    end
+    transactions =
+      if socket.transport_pid != nil do
+        get_transactions(socket.assigns)
+      else
+        []
+      end
+
     filter_options = prepare_options(transactions)
 
     {:ok,
@@ -147,14 +149,47 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end)
   end
 
-  defp get_transactions(%{ original_transactions: transactions }), do: transactions
+  defp get_transactions(%{original_transactions: transactions}), do: transactions
   defp get_transactions(_), do: get_transactions()
+
   def get_transactions() do
     Logger.info("Preparing mock data set..!")
-    brand_list = ["aposta10", "bitcasino", "bombay", "comms", "hub88", "luckyslots", "moon_design", "slots", "sportsbet"]
+
+    brand_list = [
+      "aposta10",
+      "bitcasino",
+      "bombay",
+      "comms",
+      "hub88",
+      "luckyslots",
+      "moon_design",
+      "slots",
+      "sportsbet"
+    ]
+
     brand_list_len = length(brand_list)
-    currency_list = ["ada", "ars", "bdt", "bob", "brl", "btc", "cad", "clp", "cny", "crc", "eth", "eur", "gel", "hkd", "usd", "usdt"]
+
+    currency_list = [
+      "ada",
+      "ars",
+      "bdt",
+      "bob",
+      "brl",
+      "btc",
+      "cad",
+      "clp",
+      "cny",
+      "crc",
+      "eth",
+      "eur",
+      "gel",
+      "hkd",
+      "usd",
+      "usdt"
+    ]
+
     currency_list_len = length(currency_list)
+
     country_list = [
       %{id: "1", name: "Estonia"},
       %{id: "2", name: "France"},
@@ -162,19 +197,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       %{id: "4", name: "Ukraine"},
       %{id: "5", name: "United Kingdom"}
     ]
+
     country_list_len = length(country_list)
 
     user_count = Faker.random_between(1, @max_record)
 
-    (1..user_count)
+    1..user_count
     |> Enum.to_list()
     |> Enum.map(fn x ->
       brand_id = Faker.random_between(1, brand_list_len)
-      brand_name = Enum.at(brand_list, brand_id-1)
+      brand_name = Enum.at(brand_list, brand_id - 1)
       currency_id = Faker.random_between(1, currency_list_len)
-      currency_name = String.upcase(Enum.at(currency_list, currency_id-1))
-      %{id: country_id, name: country_name} = Enum.at(country_list, Faker.random_between(1, country_list_len-1))
-      tag_list = [["Asia"], ["Asia", "Tag 1"], ["Asia", "Tag 2", "Tag 3"], ["Asia", "Tag 2", "Tag 3", "Tag 4"]]
+      currency_name = String.upcase(Enum.at(currency_list, currency_id - 1))
+
+      %{id: country_id, name: country_name} =
+        Enum.at(country_list, Faker.random_between(1, country_list_len - 1))
+
+      tag_list = [
+        ["Asia"],
+        ["Asia", "Tag 1"],
+        ["Asia", "Tag 2", "Tag 3"],
+        ["Asia", "Tag 2", "Tag 3", "Tag 4"]
+      ]
 
       %{
         aff_username: "#{Faker.Person.En.first_name()} #{Faker.Person.En.last_name()}",

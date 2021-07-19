@@ -16,7 +16,7 @@ defmodule MoonWeb.MockDB.Sites do
     sites = list_all()
 
     0..Faker.random_between(0, length(sites) - 1)
-      |> Enum.map(&(Enum.fetch!(sites, &1)))
+    |> Enum.map(&Enum.fetch!(sites, &1))
   end
 
   def random() do
@@ -25,14 +25,15 @@ defmodule MoonWeb.MockDB.Sites do
 
   # server
   def init(_args) do
-    {:ok, %{
-      all: [
-        %{name: "Bitcasino"},
-        %{name: "Sportsbet"},
-        %{name: "Slots"},
-        %{name: "Aposta10"}
-      ]
-    }}
+    {:ok,
+     %{
+       all: [
+         %{name: "Bitcasino"},
+         %{name: "Sportsbet"},
+         %{name: "Slots"},
+         %{name: "Aposta10"}
+       ]
+     }}
   end
 
   def handle_call(:list_all, _from, state) do
@@ -42,7 +43,7 @@ defmodule MoonWeb.MockDB.Sites do
   def handle_call(:random, _from, state) do
     site =
       0..Faker.random_between(0, length(state.all) - 1)
-      |> Enum.map(&(Enum.fetch!(state.all, &1)))
+      |> Enum.map(&Enum.fetch!(state.all, &1))
 
     {:reply, site, state}
   end
