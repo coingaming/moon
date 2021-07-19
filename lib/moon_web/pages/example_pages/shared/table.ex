@@ -18,17 +18,23 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       |> Enum.map(&({Map.get(&1, :field), Map.get(&1, :type)}))
 
     ~F"""
-    <table class="table-auto moon-table">
+    <table>
       <thead>
-        {#for column <- @columns}
-          <th>{column.label}</th>
-        {/for}
+        <tr class="divide-x divide-hit-100">
+          {#for column <- @columns}
+            <th class="px-6 py-3 text-left text-sm text-trunks-100 font-normal">
+              {column.label}
+            </th>
+          {/for}
+        </tr>
       </thead>
       <tbody>
         {#for {item, ind} <- @items |> Enum.with_index()}
           <tr {...get_row_attrs(item, ind, assigns)}>
             {#for {field, type} <- fields}
-              <td>{render_content(item[field], type, assigns)}</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                {render_content(item[field], type, assigns)}
+              </td>
             {/for}
           </tr>
         {/for}
@@ -43,27 +49,28 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   #   so directly setting phx-click and phx-target manually here
   defp get_row_attrs(item, ind, assigns) do
     is_active = "#{item.id}" == "#{assigns.active_item_id}"
-    bg_color = "#{rem(ind, 2) != 0 && "bg-gohan-100"}"
+    bg_color = if rem(ind, 2) != 0, do: "bg-gohan-100", else: "bg-goku-100"
 
     case {assigns.on_select, is_active} do
       {nil, _} -> %{
-        class: bg_color
+        class: "divide-x divide-hit-100 #{bg_color}"
       }
 
       {e, false} -> %{
-        class: "cursor-pointer rounded hover:bg-beerus-100 #{bg_color}",
+        class: "cursor-pointer rounded hover:bg-beerus-100 divide-x divide-hit-100 #{bg_color}",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
 
       {e, true} -> %{
-        class: "cursor-pointer rounded border border-hit-120 bg-beerus-100 border-collapse",
+        class: "cursor-pointer rounded border border-hit-120 bg-beerus-100 divide-x divide-hit-100 border-collapse",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
     end
   end
 
+  # NOTE: assigns is required for ~F sigil to work
   defp render_content(value, type, assigns) do
     case type do
       :date ->
