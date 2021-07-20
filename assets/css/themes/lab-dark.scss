@@ -1,5 +1,5 @@
 
-
+  
 @font-face {
   font-family: Averta Std;
   font-style: normal;
@@ -17,10 +17,10 @@
   font-weight: 500;
   src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
 }
-
+  
 
   .lab-dark {
-
+    
   --base--space: 16px;
   --base--font-size: 14;
   --base--line-height: 20px;
@@ -89,7 +89,7 @@
 
   --color--text: var(--color--bulma-100);
   --color--background: var(--color--goku-100);
-
+  
 
     --box-shadow--sm:  0px 0.3px 0.9px rgba(0, 0, 0, 0.4), 0px 1.6px 3.6px rgba(0, 0, 0, 0.52);;
     --box-shadow:  0px 0.6px 1.8px rgba(0, 0, 0, 0.4), 0px 3.2px 7.2px rgba(0, 0, 0, 0.52);;
@@ -98,11 +98,11 @@
     --box-shadow--lg:  0px 4.8px 14.4px rgba(0, 0, 0, 0.72), 0px 25.6px 57.6px rgba(0, 0, 0, 0.88);;
     --box-shadow--xl:  undefined;
 
-
+    
     --color--krillin-100: #ffb319;
     --color--krillin-10: #ffe4ad;
-    --color--chi_chi-100: #ff4e64;
-    --color--chi_chi-10: #ffa7b2;
+    --color--chi-chi-100: #ff4e64;
+    --color--chi-chi-10: #ffa7b2;
     --color--roshi-100: #0cd664;
     --color--roshi-10: #b6f3d0;
     --color--dodoria-100: #d33030;
@@ -137,3 +137,4 @@
     --color--trunks-100: #8697a2;
 
   }
+    
