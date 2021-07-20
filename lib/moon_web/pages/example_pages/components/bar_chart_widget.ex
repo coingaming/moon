@@ -22,7 +22,12 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           value={@widget.index}
         />
 
-        <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} />
+        <IconButton
+          icon_name="icon_arrow_diagonals"
+          height={8}
+          width={8}
+          title="TODO: Expand"
+        />
       </:buttons>
 
       <:content>

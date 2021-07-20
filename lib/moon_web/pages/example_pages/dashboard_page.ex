@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias Moon.Components.Button
   alias Moon.Components.Chip
+  alias Moon.Components.Datepicker
   alias Moon.Components.Divider
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
@@ -55,7 +56,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         selected_tab: "total",
         saved: true,
         metrics: [],
-        widgets: []
+        widgets: [],
+        start_date: Timex.beginning_of_month(Timex.today()),
+        end_date: Timex.end_of_month(Timex.today())
       )
 
     socket =
@@ -83,7 +86,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <div class="flex items-center mb-6 gap-x-4">
             <Heading size={32} class="flex-grow">{@title}</Heading>
 
-            <IconButton icon_name="icon_notification" />
+            <IconButton icon_name="icon_notification" title="TODO: Notifications" />
 
             <DropdownMenuButton id="dashboard-menu-button">
               <IconMore />
@@ -106,23 +109,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             <Divider orientation="vertical" color="beerus-100" height="10" />
 
             <ButtonsList>
-              <Popover.Outer>
-                <Chip
-                  on_click="open_popover"
-                  value="timeframe"
-                  right_icon="icon_chevron_down_rounded"
-                  class="px-3 text-trunks-100"
-                >
-                  This month
-                </Chip>
-                <Popover
-                  close="close_popover"
-                  placement="under"
-                  :if={@clicked_filter_name == "timeframe"}
-                >
-                  TODO
-                </Popover>
-              </Popover.Outer>
+              <!-- TODO: Tweak styles -->
+              <Datepicker
+                id="filter_datepicker"
+                start_date={@start_date}
+                end_date={@end_date}
+                start_date_field={:start_date}
+                end_date_field={:end_date}
+                button_class="font-semibold px-3 text-trunks-100 bg-gohan-100"
+                on_date_change="update_filter_dates"
+              />
 
               <Popover.Outer>
                 <Chip
@@ -251,6 +247,18 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       end)
 
     {:noreply, assign(socket, widgets: widgets)}
+  end
+
+  def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
+    socket =
+      assign(socket,
+        start_date: start_date,
+        end_date: end_date,
+        metrics: get_metrics(),
+        widgets: get_widgets()
+      )
+
+    {:noreply, socket}
   end
 
   defp get_metrics() do
