@@ -9,13 +9,13 @@ defmodule MoonWeb.Pages.ExamplePages.Components.Switcher do
     ~F"""
     <div
       :if={length(@items) > 0}
-      class="flex items-center px-2 gap-x-2 border rounded border-beerus-100"
+      class="flex items-center p-1 border rounded gap-x-2 border-beerus-100"
     >
       <button
         :for={item <- @items}
         class={
-          "px-2 py-1 text-sm rounded",
-          "font-semibold bg-bulma-100 text-gohan-100": item.value == @selected_item,
+          "px-2 py-1 text-sm leading-6 rounded",
+          "bg-piccolo-100 text-goten-100": item.value == @selected_item,
           "text-trunks-100": item.value != @selected_item
         }
         :on-click={@click}
