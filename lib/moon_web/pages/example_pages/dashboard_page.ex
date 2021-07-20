@@ -2,15 +2,17 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons.IconMore
-  alias Moon.Assets.Icons.IconNotification
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.ButtonsList
 
   alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Divider
+  alias Moon.Components.DropdownMenuButton
+  alias Moon.Components.DropdownMenuItem
+  alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
-  alias Moon.Components.MenuButton
+  alias Moon.Components.IconButton
   alias Moon.Components.Popover
   alias Moon.Components.Switcher
 
@@ -51,6 +53,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         clicked_filter_name: "",
         tabs: get_tabs(),
         selected_tab: "total",
+        saved: true,
         metrics: [],
         widgets: []
       )
@@ -80,13 +83,21 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <div class="flex items-center mb-6 gap-x-4">
             <Heading size={32} class="flex-grow">{@title}</Heading>
 
-            <MenuButton>
-              <IconNotification />
-            </MenuButton>
+            <IconButton icon_name="icon_notification" />
 
-            <MenuButton>
+            <DropdownMenuButton id="dashboard-menu-button">
               <IconMore />
-            </MenuButton>
+
+              <:menu>
+                <DropdownMenuItems>
+                  <DropdownMenuItem>Edit</DropdownMenuItem>
+                  <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
+                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem>Share</DropdownMenuItem>
+                  <DropdownMenuItem>Delete</DropdownMenuItem>
+                </DropdownMenuItems>
+              </:menu>
+            </DropdownMenuButton>
           </div>
 
           <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
@@ -150,11 +161,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </Popover>
               </Popover.Outer>
 
-              <Divider orientation="vertical" color="beerus-100" height="10" />
+              {#unless @saved}
+                <Divider orientation="vertical" color="beerus-100" height="10" />
 
-              <Button class="px-2 text-trunks-100">
-                Clear all
-              </Button>
+                <Button class="px-2 text-trunks-100">
+                  Clear all
+                </Button>
+              {/unless}
             </ButtonsList>
           </div>
 

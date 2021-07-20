@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.MenuButton
+  alias Moon.Components.IconButton
   alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
@@ -28,13 +28,8 @@ defmodule MoonWeb.Pages.Components.CardPage do
         <#template slot="example">
           <Card title="Winers">
             <:buttons>
-              <MenuButton height={8} width={8} hover_bg_color="bg-goku-100">
-                <Icon name="icon_refresh" />
-              </MenuButton>
-
-              <MenuButton height={8} width={8} hover_bg_color="bg-goku-100">
-                <Icon name="icon_arrow_diagonals" />
-              </MenuButton>
+              <IconButton icon_name="icon_refresh" height={8} width={8} hover_bg_color="bg-goku-100" />
+              <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} hover_bg_color="bg-goku-100" />
             </:buttons>
 
             <:content>
@@ -47,17 +42,12 @@ defmodule MoonWeb.Pages.Components.CardPage do
       <#CodePreview>
         alias Moon.Assets.Icon
         alias Moon.Components.Card
-        alias Moon.Components.MenuButton
+        alias Moon.Components.IconButton
 
         <Card title="Winers">
           <:buttons>
-            <MenuButton height={8} width={8} hover_bg_color="bg-goku-100">
-              <Icon name="icon_refresh" />
-            </MenuButton>
-
-            <MenuButton height={8} width={8} hover_bg_color="bg-goku-100">
-              <Icon name="icon_arrow_diagonals" />
-            </MenuButton>
+            <IconButton icon_name="icon_refresh" height={8} width={8} hover_bg_color="bg-goku-100" />
+            <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} hover_bg_color="bg-goku-100" />
           </:buttons>
           <:content>
             {Faker.Lorem.paragraph()}

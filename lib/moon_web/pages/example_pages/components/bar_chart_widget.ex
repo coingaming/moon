@@ -1,9 +1,8 @@
 defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
   use MoonWeb, :stateless_component
 
-  alias Moon.Assets.Icon
   alias Moon.Components.Card
-  alias Moon.Components.MenuButton
+  alias Moon.Components.IconButton
 
   prop widget, :map, required: true
   prop bar_bg_color, :string, default: "bg-roshi-100"
@@ -13,19 +12,16 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
     ~F"""
     <Card title={@widget.title}>
       <:buttons>
-        <MenuButton
+        <IconButton
+          icon_name="icon_refresh"
           height={8}
           width={8}
           click={@on_refresh}
           value_name="index"
           value={@widget.index}
-        >
-          <Icon name="icon_refresh" />
-        </MenuButton>
+        />
 
-        <MenuButton height={8} width={8}>
-          <Icon name="icon_arrow_diagonals" />
-        </MenuButton>
+        <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} />
       </:buttons>
 
       <:content>

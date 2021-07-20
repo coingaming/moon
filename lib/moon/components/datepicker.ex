@@ -48,6 +48,7 @@ defmodule Moon.Components.Datepicker do
         class="font-normal mt-4"
         variant="tertiary"
         on_click="toggle_picker"
+        rounded
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Button>
