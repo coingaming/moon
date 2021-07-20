@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   alias Shared.TopMenu
   alias Shared.LeftMenu
@@ -30,6 +31,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   data username_filter, :list, default: []
   data country_filter, :list, default: []
   data site_filter, :list, default: []
+  data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
   def render(assigns) do
@@ -69,6 +71,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
             <CustomersList
               id="customers_list"
               customers={@customers}
+              sorted_by={@sort_by}
               active_customer_id={@active_customer.id}
             />
           </TopToDown>
@@ -100,23 +103,26 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
-  def handle_info({:apply_filter, filter}, socket) do
+  def handle_info(msg, socket) do
     socket =
-      case filter do
-        {:username, items} -> socket |> assign(username_filter: items)
-        {:country, items} -> socket |> assign(country_filter: items)
-        {:site, items} -> socket |> assign(site_filter: items)
-        _ -> socket
+      case msg do
+        {:apply_filter, filter_event} -> case filter_event do
+          {:username, items} -> socket |> assign(username_filter: items)
+          {:country, items}  -> socket |> assign(country_filter: items)
+          {:site, items}     -> socket |> assign(site_filter: items)
+          _                  -> socket
+        end
+
+        {:table, table_event} -> case table_event do
+          {:select, customer} -> socket |> assign(active_customer: customer)
+          {:sort, sort_by}    -> socket |> assign(sort_by: sort_by)
+        end
       end
 
-    {:noreply,
-     socket
-     |> assign(page: 1)
-     |> filter_customers()}
-  end
 
-  def handle_info({:select_customer, customer}, socket) do
-    {:noreply, socket |> assign(active_customer: customer)}
+    {:noreply, socket
+    |> assign(page: 1)
+    |> filter_customers()}
   end
 
   #
@@ -162,6 +168,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   defp filter_customers(socket) do
     %{
       page: page,
+      sort_by: sort,
       country_filter: country_filter,
       username_filter: username_filter,
       site_filter: site_filter
@@ -173,7 +180,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
           id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
           site: Enum.map(site_filter, & &1.value),
           country: Enum.map(country_filter, & &1.value)
-        }
+        },
+        sort: Helpers.tuple_to_map(sort)
       })
       |> Utils.take_page((page - 1) * 20, 20)
 

@@ -1,68 +1,29 @@
 defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.Table
-  alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
-  alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoAposta10Short
-  alias Moon.Autolayouts.LeftToRight
+  alias MoonWeb.Pages.ExamplePages.Shared.Table
 
-  prop customers, :list
-  prop active_customer_id, :integer
+  prop customers, :list, required: true
+  prop sorted_by, :tuple, required: true
+  prop active_customer_id, :integer, required: true
 
   def render(assigns) do
     ~F"""
-    <Table>
-      <thead>
-        <th>Customer</th>
-        <th>Profile ID</th>
-        <th>Email</th>
-        <th>Country</th>
-        <th>Site</th>
-        <th>Signup time</th>
-      </thead>
-      <tbody>
-        <tr
-          :for.with_index={{customer, i} <- @customers}
-          :on-click={"select_customer:#{customer.id}"}
-          class={"cursor-pointer rounded #{Table.get_row_class(i)} #{
-            if @active_customer_id != customer.id do
-              "hover:bg-beerus-100"
-            else
-              "border border-hit-120 bg-beerus-100 border-collapse"
-            end
-          }"}
-        >
-          <td>{customer.username}</td>
-          <td>{customer.id}</td>
-          <td>{customer.email}</td>
-          <td>{customer.country}</td>
-          <td>
-            <LeftToRight :if={customer.site == "Bitcasino"} class="flex items-center">
-              <LogoBitcasinoShort font_size="1rem" />
-              Bitcasino
-            </LeftToRight>
-
-            <LeftToRight :if={customer.site == "Sportsbet"} class="flex items-center">
-              <LogoSportsbetShort font_size="1rem" />
-              Sportsbet
-            </LeftToRight>
-
-            <LeftToRight :if={customer.site == "Slots"} class="flex items-center">
-              <LogoSlotsShort font_size="1rem" />
-              Slots
-            </LeftToRight>
-
-            <LeftToRight :if={customer.site == "Aposta10"} class="flex items-center">
-              <LogoAposta10Short font_size="1rem" />
-              Aposta10
-            </LeftToRight>
-          </td>
-          <td>{customer.signup_at |> Timex.format!("%b %d, %Y", :strftime)}</td>
-        </tr>
-      </tbody>
-    </Table>
+    <Table
+      columns={[
+        %{label: "Customer", field: :username, sortable: true},
+        %{label: "Profile ID", field: :id, sortable: true},
+        %{label: "Email", field: :email},
+        %{label: "Country", field: :country},
+        %{label: "Brand", field: :site, type: :brand},
+        %{label: "Signup time", field: :signup_at, type: :date}
+      ]}
+      items={@customers}
+      active_item_id={@active_customer_id}
+      sorted_by={@sorted_by}
+      on_select="select_customer"
+      on_sort="sort_customers"
+    />
     """
   end
 
@@ -72,10 +33,18 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
         {customer_id, _} = customer_id_str |> Integer.parse()
         customer = socket.assigns.customers |> Enum.find(nil, &(&1.id == customer_id))
 
-        if customer != nil, do: send(self(), {:select_customer, customer})
+        if customer != nil, do: send(self(), {:table, {:select, customer}})
         {:noreply, socket}
 
-      _ ->
+      ["sort_customers", field_str] ->
+        field = field_str |> String.to_atom
+        sort_by = case socket.assigns.sorted_by do
+          {^field, :asc}  -> {field, :desc}
+          {^field, :desc} -> {field, :asc}
+          _               -> {field, :asc}
+        end
+
+        send(self(), {:table, {:sort, sort_by}})
         {:noreply, socket}
     end
   end

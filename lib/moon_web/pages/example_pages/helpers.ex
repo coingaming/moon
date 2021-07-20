@@ -25,6 +25,9 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
     end
   end
 
+  def tuple_to_map({nil, nil}), do: %{}
+  def tuple_to_map({x, y}), do: %{x => y}
+
   @spec to_integer(String.t() | integer(), any()) :: any()
   def to_integer(int, _default) when is_integer(int), do: int
 
