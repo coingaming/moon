@@ -44,6 +44,7 @@ defmodule MoonWeb.Router do
 
       live "/components/datepicker", MoonWeb.Pages.Components.DatepickerPage
       live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
+      live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
       live "/components/dropdown_multi_filter", MoonWeb.Pages.Components.DropdownMultiFilterPage
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
