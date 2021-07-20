@@ -60,17 +60,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
 
-            <ListPagination
-              {=@page}
-              page_count={20}
-              total_count={10056}
-              on_prev_page="goto_prev_page"
-              on_next_page="goto_next_page"
-            />
 
             <CustomersList
               id="customers_list"
               customers={@customers}
+              page={@page}
               sorted_by={@sort_by}
               active_customer_id={@active_customer.id}
             />
@@ -114,6 +108,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
         end
 
         {:table, table_event} -> case table_event do
+          {:paginate, page}   -> socket |> assign(page: page)
           {:select, customer} -> socket |> assign(active_customer: customer)
           {:sort, sort_by}    -> socket |> assign(sort_by: sort_by)
         end
@@ -146,20 +141,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     {:noreply,
      socket
      |> assign(active_customer: %{id: nil})}
-  end
-
-  def handle_event("goto_prev_page", _, socket = %{assigns: %{page: page}}) do
-    {:noreply,
-     socket
-     |> assign(page: if(page > 1, do: page - 1, else: page))
-     |> filter_customers()}
-  end
-
-  def handle_event("goto_next_page", _, socket = %{assigns: %{page: page}}) do
-    {:noreply,
-     socket
-     |> assign(page: page + 1)
-     |> filter_customers()}
   end
 
   #

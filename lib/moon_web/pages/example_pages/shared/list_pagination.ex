@@ -17,8 +17,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
 
   def render(assigns) do
     ~F"""
-    <Divider class="my-2"/>
-    <div class="flex justify-between items-center">
+    <Divider class="mt-2"/>
+    <div class="h-14 max-w-full flex justify-between items-center">
       <LeftToRight>
         {"#{1 + @page_count * (@page - 1)}-#{@page_count * @page} of #{@total_count}"}
         <IconRefresh font_size="1.2rem" class="ml-2" />
@@ -31,7 +31,6 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
         <IconRow font_size="1.2rem" class="mr-4"/>
       </LeftToRight>
     </div>
-    <Divider class="my-2"/>
     """
   end
 end
