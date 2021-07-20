@@ -12,10 +12,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.Heading
   alias Moon.Components.MenuButton
   alias Moon.Components.Popover
+  alias Moon.Components.Switcher
 
   alias MoonWeb.Pages.ExamplePages.Shared
   alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
-  alias MoonWeb.Pages.ExamplePages.Components.Switcher
   alias Shared.TopMenu
   alias Shared.LeftMenu
 
@@ -89,9 +89,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </MenuButton>
           </div>
 
-          <div class="flex flex-wrap gap-x-6">
+          <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
             <!-- TODO: Replace with Tabs component -->
             <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+
+            <Divider orientation="vertical" color="beerus-100" height="10" />
 
             <ButtonsList>
               <Popover.Outer>
@@ -148,7 +150,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </Popover>
               </Popover.Outer>
 
-              <Divider orientation="vertical" color="beerus-100" />
+              <Divider orientation="vertical" color="beerus-100" height="10" />
 
               <Button class="px-2 text-trunks-100">
                 Clear all

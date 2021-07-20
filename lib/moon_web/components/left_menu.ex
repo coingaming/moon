@@ -121,6 +121,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/components/sidebar"}>Sidebar</Link>
             <Link to={"/#{@theme_name}/components/dropdown#single-item-select"}>SingleItemSelect</Link>
             <Link to={"/#{@theme_name}/components/switch"}>Switch</Link>
+            <Link to={"/#{@theme_name}/components/switcher"}>Switcher</Link>
             <Link to={"/#{@theme_name}/components/tabs"}>Tabs</Link>
             <Link to={"/#{@theme_name}/components/text"}>Text</Link>
             <Link to={"/#{@theme_name}/components/text_input"}>Text input</Link>
