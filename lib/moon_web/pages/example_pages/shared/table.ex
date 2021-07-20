@@ -92,15 +92,15 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
         {#match {true, true}}
           <div
             :on-click={%{@on_sort | name: "#{@on_sort.name}:#{col.field |> Atom.to_string()}"}}
-            class="inline-flex justify-start items-center px-3 py-2 text-trunks-100 hover:bg-goku-80 rounded cursor-pointer"
+            class="inline-flex justify-start items-center px-3 py-2 text-trunks-100 hover:bg-goku-80 rounded select-none cursor-pointer"
           >
             <div class="text-sm font-normal mr-2">{col.field}</div>
             {#case column_sort_order(col.field, @sorted_by)}
               {#match :asc}
-                <IconArrowLDown font_size="5rem" />
+                <IconArrowLDown font_size="1.2rem" />
 
               {#match :desc}
-                <IconArrowLUp font_size="5rem" />
+                <IconArrowLUp font_size="1.2rem" />
 
               {#match nil}
                 <IconArrowLUp font_size="1.2rem" class="invisible" />
