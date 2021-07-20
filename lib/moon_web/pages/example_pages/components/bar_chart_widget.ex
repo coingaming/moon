@@ -6,11 +6,12 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
 
   prop widget, :map, required: true
   prop bar_bg_color, :string, default: "bg-roshi-100"
+  prop class, :string
   prop on_refresh, :event
 
   def render(assigns) do
     ~F"""
-    <Card title={@widget.title}>
+    <Card title={@widget.title} class={@class}>
       <:buttons>
         <IconButton
           icon_name="icon_refresh"
@@ -27,21 +28,20 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
       <:content>
         <div class="space-y-6">
           <div :for.with_index={{line, line_index} <- sorted_lines(@widget.data)} class="flex py-2 gap-x-4">
-            <div class="text-trunks-100">
+            <div class="flex-shrink-0 text-trunks-100">
               {line_index + 1}
             </div>
 
-            <div class="flex-grow">
+            <div class="w-48">
               {line.name}
             </div>
 
-            <div class="flex-shrink-0 flex items-center justify-end w-56">
+            <div class="flex-1 flex items-center justify-end">
               <div
                 class={"h-2 rounded-l #{@bar_bg_color}"}
                 style={"width: #{calc_bar_width(line.value, @widget.data)}%;"}
               ></div>
             </div>
-
 
             <div class={
               "w-10 flex-shrink-0 text-right whitespace-nowrap",

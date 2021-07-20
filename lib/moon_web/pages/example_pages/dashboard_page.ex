@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   @colors ~w(
     krillin-100 frieza-100 roshi-100
-    raditz-100 chi_chi-100 whis-100
+    raditz-100 chi-chi-100 whis-100
     cell-100 dodoria-100 nappa-100
   )
 
@@ -101,7 +101,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </div>
 
           <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
-            <!-- TODO: Replace with Tabs component -->
             <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
 
             <Divider orientation="vertical" color="beerus-100" height="10" />
