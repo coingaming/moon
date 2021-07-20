@@ -7,11 +7,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   alias Moon.Assets.Logos.LogoAposta10Short
   alias Moon.Autolayouts.LeftToRight
 
-  prop columns, :list          # [%{ field: :id, label: 'Id' }...]
-  prop items, :list            # [%{ id: 12, name: 'pavan', brand: 'aposta10' }...]
+  prop columns, :list, required: true # [%{ field: atom, label: string, type: nil | :brand | :date }, ...]
+  prop items, :list, required: true   # [%{ id: integer | string, ...}, ...]
 
   prop on_select, :event
-  prop active_item_id, :any    # integer | string
+  prop active_item_id, :any # integer | string
 
   def render(assigns) do
     fields = assigns.columns
@@ -35,10 +35,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
           <tr {...get_row_attrs(item, ind, assigns)}>
             <!-- This is used to render overlay on top of a row -->
             <td>
-              <div
-                :if={is_active(item, assigns.active_item_id)}
-                class="absolute inset-0 z-30 rounded border-2 border-tap-100"
-              />
+              {#if is_active(item, assigns.active_item_id)}
+                <div class="absolute inset-0 z-10 rounded border-2 border-tap-100"/>
+              {#elseif is_nil(assigns.active_item_id)}
+                <div class="absolute inset-0 z-10 rounded group-hover:border-2 group-hover:border-tap-100"/>
+              {/if}
             </td>
             {#for {field, type} <- fields}
               <td class="border-r last:border-r-0 border-goku-40">
@@ -58,7 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   #   so directly setting phx-click and phx-target manually here
   defp get_row_attrs(item, ind, assigns) do
     bg_color = if rem(ind, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"
-    base_classes = "relative"
+    base_classes = "relative group"
 
     case {assigns.on_select, is_active(item, assigns.active_item_id)} do
       {nil, _} -> %{
@@ -66,7 +67,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       }
 
       {e, false} -> %{
-        class: "#{base_classes} cursor-pointer hover:bg-goku-100 #{bg_color}",
+        class: "#{base_classes} cursor-pointer #{bg_color}",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }

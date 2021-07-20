@@ -88,7 +88,7 @@ module.exports = {
     width: ['responsive', 'hover', 'focus'],
     extend: {
       scale: ['group-hover'],
-      borderWidth: ['last']
+      borderWidth: ['group-hover', 'last']
     },
   },
   plugins: [
