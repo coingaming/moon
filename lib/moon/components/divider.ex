@@ -3,6 +3,7 @@ defmodule Moon.Components.Divider do
 
   prop class, :string
   prop color, :string, default: "goku-100"
+  prop height, :string, default: "full"
 
   prop orientation, :string,
     values: ["vertical", "horizontal"],
@@ -15,7 +16,7 @@ defmodule Moon.Components.Divider do
     {#if @orientation == "horizontal"}
       <hr class={"border-#{@color} #{@class}"}/>
     {#elseif @orientation == "vertical"}
-      <div class={"h-full border-#{@color} border-r #{@class}"} />
+      <div class={"h-#{@height} border-#{@color} border-r #{@class}"} />
     {/if}
     """
   end
