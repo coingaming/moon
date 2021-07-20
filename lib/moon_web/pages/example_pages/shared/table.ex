@@ -18,11 +18,13 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       |> Enum.map(&({Map.get(&1, :field), Map.get(&1, :type)}))
 
     ~F"""
-    <table class="border-t border-goku-40">
+    <table class="min-w-full border-collapse border-t border-goku-40 overflow-scroll">
       <thead>
-        <tr class="divide-x divide-goku-40">
+        <tr>
+          <!-- This is used to render overlay on top of a row -->
+          <th class="w-0"/>
           {#for column <- @columns}
-            <th class="px-6 py-4 text-left text-sm text-trunks-100 font-normal">
+            <th class="w-64 p-4 text-left text-sm text-trunks-100 font-normal border-r last:border-r-0 border-goku-40">
               {column.label}
             </th>
           {/for}
@@ -31,9 +33,16 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
       <tbody>
         {#for {item, ind} <- @items |> Enum.with_index()}
           <tr {...get_row_attrs(item, ind, assigns)}>
+            <!-- This is used to render overlay on top of a row -->
+            <td>
+              <div
+                :if={is_active(item, assigns.active_item_id)}
+                class="absolute inset-0 z-30 rounded border-2 border-tap-100"
+              />
+            </td>
             {#for {field, type} <- fields}
-              <td class="px-6 py-4 whitespace-nowrap">
-                {render_content(item[field], type, assigns)}
+              <td class="border-r last:border-r-0 border-goku-40">
+                {render_field(item[field], type, assigns)}
               </td>
             {/for}
           </tr>
@@ -48,22 +57,22 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   #   an error, ex: %{ ":on-click": ${e | name: "#{e.name}:#{item.id}"}}.
   #   so directly setting phx-click and phx-target manually here
   defp get_row_attrs(item, ind, assigns) do
-    is_active = "#{item.id}" == "#{assigns.active_item_id}"
-    bg_color = if rem(ind, 2) != 0, do: "bg-gohan-100", else: "bg-goku-100"
+    bg_color = if rem(ind, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"
+    base_classes = "relative"
 
-    case {assigns.on_select, is_active} do
+    case {assigns.on_select, is_active(item, assigns.active_item_id)} do
       {nil, _} -> %{
-        class: "divide-x divide-goku-40 #{bg_color}"
+        class: "#{base_classes} #{bg_color}"
       }
 
       {e, false} -> %{
-        class: "cursor-pointer rounded hover:bg-goku-100 divide-x divide-goku-40 #{bg_color}",
+        class: "#{base_classes} cursor-pointer hover:bg-goku-100 #{bg_color}",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
 
       {e, true} -> %{
-        class: "cursor-pointer rounded bg-gohan-100 divide-x divide-goku-40",
+        class: "#{base_classes} cursor-pointer bg-gohan-100",
         "phx-click": "#{e.name}:#{item.id}",
         "phx-target": e.target
       }
@@ -71,34 +80,46 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   end
 
   # NOTE: assigns is required for ~F sigil to work
-  defp render_content(value, type, assigns) do
-    case type do
-      :date ->
-        ~F"""
-        {value |> Timex.format!("%b %d, %Y", :strftime)}
-        """
+  defp render_field(value, type, assigns) do
+    base_classes = "min-w-64 max-w-full px-4 py-4.5"
 
+    case type do
       :brand ->
         ~F"""
-        <LeftToRight class="flex items-center">
-          {#case value}
-            {#match "Bitcasino"}
-              <LogoBitcasinoShort font_size="1rem" />
-            {#match "Sportsbet"}
-              <LogoSportsbetShort font_size="1rem" />
-            {#match "Slots"}
-              <LogoSlotsShort font_size="1rem" />
-            {#match "Aposta10"}
-              <LogoAposta10Short font_size="1rem" />
-          {/case}
-          {value}
-        </LeftToRight>
+        <div class={"#{base_classes}"}>
+          <LeftToRight class="flex items-center">
+            {#case value}
+              {#match "Bitcasino"}
+                <LogoBitcasinoShort font_size="1rem" />
+              {#match "Sportsbet"}
+                <LogoSportsbetShort font_size="1rem" />
+              {#match "Slots"}
+                <LogoSlotsShort font_size="1rem" />
+              {#match "Aposta10"}
+                <LogoAposta10Short font_size="1rem" />
+            {/case}
+            {value}
+          </LeftToRight>
+        </div>
+        """
+
+      :date ->
+        ~F"""
+        <div class={"#{base_classes} truncate"}>
+          {value |> Timex.format!("%b %d, %Y", :strftime)}
+        </div>
         """
 
       _ ->
         ~F"""
-        {value}
+        <div class={"#{base_classes} truncate"}>
+          {value}
+        </div>
         """
     end
+  end
+
+  defp is_active(item, active_item_id) do
+    "#{item.id}" == "#{active_item_id}"
   end
 end
