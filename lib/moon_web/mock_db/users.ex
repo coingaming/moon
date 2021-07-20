@@ -13,7 +13,8 @@ defmodule MoonWeb.MockDB.Users do
 
   def list(
         args = %{
-          filter: %{id: _, country: _, site: _}
+          filter: %{id: _, country: _, site: _},
+          sort: _
         }
       ) do
     this_process() |> GenServer.call({:list, args})
@@ -58,10 +59,18 @@ defmodule MoonWeb.MockDB.Users do
   end
 
   def handle_call({:list, args}, _from, state) do
-    %{filter: %{id: id, country: country, site: site}} = args
+    %{filter: %{id: id, country: country, site: site}, sort: sort} = args
 
     results =
       state.all
+      |> Enum.sort(fn a, b -> case sort do
+          %{id: :asc}        -> a.id < b.id
+          %{id: :desc}       -> a.id >= b.id
+          %{username: :asc}  -> a.username < b.username
+          %{username: :desc} -> a.username >= b.username
+          _                  -> true
+        end
+      end)
       |> Enum.filter(fn user ->
         (length(id) == 0 or Enum.member?(id, user.id)) and
           (length(site) == 0 or Enum.member?(site, user.site)) and
