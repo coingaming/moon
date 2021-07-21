@@ -14,6 +14,9 @@ module.exports = {
         xxxs: '.5rem', // 8px
         xxs: '.625rem', // 10px
       },
+      padding: {
+        '4.5': '1.125rem'
+      },
       width: {
         '50': '12.5rem',
         '80': '20rem',
@@ -23,11 +26,6 @@ module.exports = {
         '80': '20rem',
         '96': '24rem'
       }
-      // },
-      // height: {
-      //   '66': '66px',
-      //   '88': '88px',
-      // }
     },
     boxShadow: {
       sm: 'var(--box-shadow--sm)',
@@ -91,6 +89,7 @@ module.exports = {
     width: ['responsive', 'hover', 'focus'],
     extend: {
       scale: ['group-hover'],
+      borderWidth: ['group-hover', 'last']
     },
   },
   plugins: [

@@ -15,7 +15,8 @@ defmodule MoonWeb.MockDB.Affiliates do
   def list(
         %{
           filter: %{user: _},
-          pagination: %{offset: _, limit: _}
+          pagination: %{offset: _, limit: _},
+          sort: _
         } = args
       ) do
     this_process() |> GenServer.call({:list, args})
@@ -51,10 +52,18 @@ defmodule MoonWeb.MockDB.Affiliates do
   def handle_call({:list, args}, _from, state) do
     %{
       filter: %{user: user_filter},
-      pagination: %{offset: offset, limit: limit}
+      pagination: %{offset: offset, limit: limit},
+      sort: sort
     } = args
 
-    users = Users.list(%{filter: user_filter})
+    users =
+      Users.list(%{
+        filter: user_filter,
+        sort: %{
+          id: sort |> Map.get(:userId),
+          username: sort |> Map.get(:username)
+        }
+      })
 
     results =
       state.all
