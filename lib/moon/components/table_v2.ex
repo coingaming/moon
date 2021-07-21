@@ -41,9 +41,9 @@ defmodule Moon.Components.TableV2 do
             <!-- This is used to render overlay on top of a row -->
             <td>
               {#if is_active_row?(item, assigns.active_item_id)}
-                <div class="absolute inset-0 z-10 rounded border-2 border-tap-100"/>
+                <div class="absolute inset-0 rounded border-2 border-tap-100"/>
               {#elseif is_nil(assigns.active_item_id)}
-                <div class="absolute inset-0 z-10 rounded group-hover:border-2 group-hover:border-tap-100"/>
+                <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100"/>
               {/if}
             </td>
             {#for {field, type} <- fields}

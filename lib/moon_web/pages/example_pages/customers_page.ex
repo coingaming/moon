@@ -34,6 +34,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   data page, :integer, default: 1
 
   def render(assigns) do
+    IO.inspect active: assigns.active_customer
     ~F"""
     <div class={"#{@theme_name} #{@active_customer.id != nil && "h-screen overflow-hidden"}"}>
       <TopMenu id="top-menu" />
@@ -97,26 +98,30 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   end
 
   def handle_info(msg, socket) do
-    socket =
+    {refresh_list, socket} =
       case msg do
         {:apply_filter, filter_event} -> case filter_event do
-          {:username, items} -> socket |> assign(username_filter: items)
-          {:country, items}  -> socket |> assign(country_filter: items)
-          {:site, items}     -> socket |> assign(site_filter: items)
-          _                  -> socket
+          {:username, items} -> {true, socket |> assign(username_filter: items)}
+          {:country, items}  -> {true, socket |> assign(country_filter: items)}
+          {:site, items}     -> {true, socket |> assign(site_filter: items)}
+          _                  -> {false, socket}
         end
 
         {:table, table_event} -> case table_event do
-          {:paginate, page}   -> socket |> assign(page: page)
-          {:select, customer} -> socket |> assign(active_customer: customer)
-          {:sort, sort_by}    -> socket |> assign(sort_by: sort_by)
+          {:paginate, page}   -> {true, socket |> assign(page: page)}
+          {:select, customer} -> {false, socket |> assign(active_customer: customer)}
+          {:sort, sort_by}    -> {true, socket |> assign(sort_by: sort_by)}
+          _                   -> {false, socket}
         end
+
+        _ -> {false, socket}
       end
 
-
-    {:noreply, socket
-    |> assign(page: 1)
-    |> filter_customers()}
+    if refresh_list do
+      {:noreply, socket |> assign(page: 1) |> filter_customers()}
+    else
+      {:noreply, socket}
+    end
   end
 
   #
