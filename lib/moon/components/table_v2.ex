@@ -10,7 +10,7 @@ defmodule Moon.Components.TableV2 do
   alias Moon.Autolayouts.LeftToRight
 
   # [
-  #   %{ field: atom
+  #   %{ field: :atom, [:atom, ...]
   #    , label: string
   #    , type: :brand | :date | :money_amount | :text | nil
   #    , sortable: true | false | nil
@@ -22,7 +22,7 @@ defmodule Moon.Components.TableV2 do
 
   # :event | nil
   prop on_sort, :event, default: nil
-  # {:atom | nil, :asc | :desc | nil}
+  # {:atom | [:atom, ...] | nil, :asc | :desc | nil}
   prop sort_by, :tuple
 
   # :event | nil
@@ -61,7 +61,7 @@ defmodule Moon.Components.TableV2 do
             </td>
             {#for {field, type} <- fields}
               <td class="border-r last:border-r-0 border-goku-40">
-                {render_field(item[field], type, assigns)}
+                {render_field(get_value(item, field), type, assigns)}
               </td>
             {/for}
           </tr>
@@ -113,7 +113,7 @@ defmodule Moon.Components.TableV2 do
       {#case {@on_sort |> is_truthy?(), Map.get(col, :sortable) |> is_truthy?()}}
         {#match {true, true}}
           <div
-            :on-click={%{@on_sort | name: "#{@on_sort.name}:#{Atom.to_string(col.field)}"}}
+            :on-click={on_click_column(col.field, @on_sort)}
             class={
               "inline-flex items-center px-3 py-2 hover:bg-goku-80 rounded select-none cursor-pointer",
               "flex-row-reverse": not align_left
@@ -191,11 +191,39 @@ defmodule Moon.Components.TableV2 do
     "#{item.id}" == "#{active_item_id}"
   end
 
-  defp column_sort_order(col_field, {sort_field, sort_order}) do
-    if col_field == sort_field, do: sort_order, else: nil
+  defp on_click_column(col_field, on_sort) do
+    field_str =
+      case col_field do
+        [_ | _] -> col_field |> Enum.map(&Atom.to_string(&1)) |> Enum.join("+")
+        _ -> Atom.to_string(col_field)
+      end
+
+    %{on_sort | name: "#{on_sort.name}:#{field_str}"}
   end
 
-  defp is_truthy?(nil), do: false
-  defp is_truthy?(false), do: false
-  defp is_truthy?(_), do: true
+  defp column_sort_order(col_field, {sort_field, sort_order}) do
+    isMatch =
+      case {col_field, sort_field} do
+        {[_ | _], [_ | _]} -> col_field == sort_field
+        {x, [y]} -> x == y
+        {[x], y} -> x == y
+        _ -> col_field == sort_field
+      end
+
+    if isMatch, do: sort_order, else: nil
+  end
+
+  defp get_value(nil, _), do: nil
+
+  defp get_value(m, key) do
+    case key do
+      [k] -> m |> Map.get(k)
+      [k | ks] -> get_value(m, k) |> get_value(ks)
+      _ -> m |> Map.get(key)
+    end
+  end
+
+  defp is_truthy?(x) do
+    x != nil && x != false
+  end
 end
