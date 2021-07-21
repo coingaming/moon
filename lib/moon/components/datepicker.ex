@@ -27,12 +27,13 @@ defmodule Moon.Components.Datepicker do
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
   prop on_date_change, :string, default: "update_dates"
+  prop button_class, :string, default: "mt-4"
 
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
   data show, :boolean, default: false
-  data selected_range, :string, default: "thisWeek"
+  data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
 
   prop start_date, :datetime, default: nil
@@ -45,16 +46,17 @@ defmodule Moon.Components.Datepicker do
 
     <div class="relative block">
       <Button
-        class="font-normal mt-4"
+        class={"font-normal #{@button_class}"}
         variant="tertiary"
         on_click="toggle_picker"
+        rounded
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Button>
 
       <div
         class={
-          "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm z-10",
+          "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm z-10 mt-2",
           hidden: !@show
         }
       >

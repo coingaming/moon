@@ -106,11 +106,13 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/components/badge"}>Badge</Link>
             <Link to={"/#{@theme_name}/components/button"}>Button</Link>
             <Link to={"/#{@theme_name}/components/calendar"}>Calendar</Link>
+            <Link to={"/#{@theme_name}/components/card"}>Card</Link>
             <Link to={"/#{@theme_name}/components/carousel"}>Carousel</Link>
             <Link to={"/#{@theme_name}/components/checkbox"}>Checkbox</Link>
             <Link to={"/#{@theme_name}/components/dropdown#checkbox-multiselect"}>Checkbox multiselect</Link>
             <Link to={"/#{@theme_name}/components/datepicker"}>Datepicker</Link>
             <Link to={"/#{@theme_name}/components/dropdown"}>Dropdown</Link>
+            <Link to={"/#{@theme_name}/components/dropdown_menu_button"}>Dropdown Menu Button</Link>
             <Link to={"/#{@theme_name}/components/dropdown_multi_filter"}>Dropdown MultiFilter</Link>
             <Link to={"/#{@theme_name}/components/file-input"}>File Input</Link>
             <Link to={"/#{@theme_name}/components/heading"}>Heading</Link>
@@ -120,6 +122,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/components/sidebar"}>Sidebar</Link>
             <Link to={"/#{@theme_name}/components/dropdown#single-item-select"}>SingleItemSelect</Link>
             <Link to={"/#{@theme_name}/components/switch"}>Switch</Link>
+            <Link to={"/#{@theme_name}/components/switcher"}>Switcher</Link>
             <Link to={"/#{@theme_name}/components/tabs"}>Tabs</Link>
             <Link to={"/#{@theme_name}/components/text"}>Text</Link>
             <Link to={"/#{@theme_name}/components/text_input"}>Text input</Link>

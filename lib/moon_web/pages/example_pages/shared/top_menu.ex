@@ -2,11 +2,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   use MoonWeb, :stateful_component
 
   alias __MODULE__.Search
-  alias __MODULE__.MenuButton
-  alias Moon.Assets.Icons.IconSettings
-  alias Moon.Assets.Icons.IconBell
-  alias Moon.Assets.Icons.IconLiveChat
   alias Moon.Assets.Logos.LogoLabFull
+  alias Moon.Components.IconButton
 
   def render(assigns) do
     ~F"""
@@ -18,15 +15,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
       <Search id="search" />
 
       <div class="flex items-center gap-x-4">
-        <MenuButton title="Settings">
-          <IconSettings />
-        </MenuButton>
-        <MenuButton title="Messages">
-          <IconLiveChat />
-        </MenuButton>
-        <MenuButton title="Notifications">
-          <IconBell />
-        </MenuButton>
+        <IconButton icon_name="icon_settings" title="Settings" />
+        <IconButton icon_name="icon_live_chat" title="Messages" />
+        <IconButton icon_name="icon_bell" title="Notifications" />
 
         <!-- TODO: Replace with avatar -->
         <div

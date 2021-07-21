@@ -4,8 +4,25 @@ defmodule Moon.Components.PopoverV2 do
   prop show, :boolean, required: true
   prop on_close, :event
 
+  prop placement, :string,
+    values: ~w(
+    top-left
+    top-center
+    top-right
+    bottom-left
+    bottom-center
+    bottom-right
+  ),
+    default: "bottom-right"
+
   slot default, required: true
   slot content, required: true
+
+  prop placement_class, :map,
+    default: %{
+      "bottom-left" => "right-0",
+      "bottom-right" => "left-0"
+    }
 
   # TODO: Add ability to position content to on top, left and right
 
@@ -22,7 +39,9 @@ defmodule Moon.Components.PopoverV2 do
       />
       <div
         :if={@show}
-        class="origin-top-left absolute left-0 mt-2 z-40"
+        class={
+          "absolute mt-2 z-40 #{@placement_class[@placement]}"
+        }
       >
         <#slot name="content"/>
       </div>

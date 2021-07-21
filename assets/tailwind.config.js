@@ -15,6 +15,7 @@ module.exports = {
         xxs: '.625rem', // 10px
       },
       width: {
+        '50': '12.5rem',
         '80': '20rem',
         '96': '24rem'
       },
@@ -55,7 +56,7 @@ module.exports = {
       'roshi-100': 'var(--color--roshi-100)',
       'dodoria-10': 'var(--color--dodoria-10)',
       'dodoria-100': 'var(--color--dodoria-100)',
-      'dodoria-100': 'var(--color--cell-10)',
+      'cell-10': 'var(--color--cell-10)',
       'cell-100': 'var(--color--cell-100)',
       'raditz-10': 'var(--color--raditz-10)',
       'raditz-100': 'var(--color--raditz-100)',
