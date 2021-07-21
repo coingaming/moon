@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   alias Shared.TopMenu
   alias Shared.LeftMenu
@@ -26,6 +27,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   data affiliates, :list
   data username_filter, :list, default: []
   data country_filter, :list, default: []
+  data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
   def render(assigns) do
@@ -134,6 +136,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   defp filter_affiliates(socket) do
     %{
       page: page,
+      sort_by: sort,
       country_filter: country_filter,
       username_filter: username_filter
     } = socket.assigns
@@ -146,8 +149,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
             user: %{
               id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
               country: Enum.map(country_filter, & &1.value)
-            }
+            },
           },
+          sort: Helpers.tuple_to_map(sort),
           pagination: %{
             offset: (page - 1) * 20,
             limit: 20

@@ -58,7 +58,7 @@ defmodule MoonWeb.MockDB.Affiliates do
 
     users =
       Users.list(%{
-        filter: user_filter,
+        filter: user_filter |> Map.put(:site, []),
         sort: %{
           id: sort |> Map.get(:userId),
           username: sort |> Map.get(:username)
