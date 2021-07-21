@@ -35,6 +35,7 @@ defmodule MoonWeb.Router do
       live "/components/badge", MoonWeb.Pages.Components.BadgePage
       live "/components/button", MoonWeb.Pages.Components.ButtonPage
       live "/components/calendar", MoonWeb.Pages.Components.CalendarPage
+      live "/components/card", MoonWeb.Pages.Components.CardPage
       live "/components/carousel", MoonWeb.Pages.Components.CarouselPage
       live "/components/checkbox", MoonWeb.Pages.Components.CheckboxPage
 
@@ -43,6 +44,7 @@ defmodule MoonWeb.Router do
 
       live "/components/datepicker", MoonWeb.Pages.Components.DatepickerPage
       live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
+      live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
       live "/components/dropdown_multi_filter", MoonWeb.Pages.Components.DropdownMultiFilterPage
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
@@ -52,6 +54,7 @@ defmodule MoonWeb.Router do
       live "/components/sidebar", MoonWeb.Pages.Components.SidebarPage
       live "/components/stack", MoonWeb.Pages.Components.StackPage
       live "/components/switch", MoonWeb.Pages.Components.SwitchPage
+      live "/components/switcher", MoonWeb.Pages.Components.SwitcherPage
       live "/components/tabs", MoonWeb.Pages.Components.TabsPage
       live "/components/tabs/:tab_id", MoonWeb.Pages.Components.TabsPage
       live "/components/text", MoonWeb.Pages.Components.TextPage
@@ -68,6 +71,7 @@ defmodule MoonWeb.Router do
 
       live "/tutorials/theming-and-visuals", MoonWeb.Pages.Tutorials.ThemingAndVisuals
 
+      live "/example-pages/dashboard", MoonWeb.Pages.ExamplePages.DashboardPage
       live "/example-pages/transactions", MoonWeb.Pages.ExamplePages.TransactionsPage
       live "/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage
       live "/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage

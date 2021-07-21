@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.Sections
+  alias Moon.Components.Divider
 
   data segments, :any
 
@@ -35,7 +36,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
             <div class="">{segment.new_item}</div>
           </div>
 
-          <div class="m-4 mb-0 border border-beerus-100"></div>
+          <Divider color="beerus-100" class="m-4 mb-0" />
         </div>
       </div>
     </Sections>
