@@ -25,7 +25,12 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
       on_select="handle_filter_select"
       on_close="toggle_filter"
     >
-      <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
+      <Chip
+        on_click="toggle_filter"
+        value="country"
+        right_icon="icon_chevron_down_rounded"
+        active={@show_filter or length(@active_items) > 0}
+      >
         {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
@@ -41,7 +46,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
   #
   # Public API
   #
-  def clear(id \\ "sites_filter") do
+  def clear(id \\ "site_filter") do
     send_update(__MODULE__,
       id: id,
       show_filter: false,
@@ -50,7 +55,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
     )
   end
 
-  def close(id \\ "sites_filter") do
+  def close(id \\ "site_filter") do
     send_update(__MODULE__,
       id: id,
       show_filter: false

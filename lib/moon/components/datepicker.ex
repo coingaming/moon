@@ -3,6 +3,7 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Assets.Icons.IconChevronLeft
   alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
+  alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month
   alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
@@ -45,27 +46,26 @@ defmodule Moon.Components.Datepicker do
     {asset_import @socket, "js/tailwind"}
 
     <div class="relative block">
-      <Button
-        class={"font-normal #{@button_class}"}
-        variant="tertiary"
+      <Chip
         on_click="toggle_picker"
-        rounded
+        right_icon="icon_chevron_down_rounded"
+        active={@start_date && @end_date}
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
-      </Button>
+      </Chip>
 
       <div
         class={
-          "py-4 px-5 origin-top-left absolute left-0 bg-goku-100 flex shadow-lg rounded-xl text-sm z-10 mt-2",
+          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
           hidden: !@show
         }
       >
         <!-- Ranges -->
-        <div :if={length(@ranges) >0} class="space-y-1 w-44">
+        <div :if={length(@ranges) >0} class="space-y-0.5 w-44">
           <div
             :for={range <- @ranges}
             class={
-              "py-2 px-3 hover:bg-hover rounded-lg cursor-pointer",
+              "py-2 px-3 hover:bg-goku-100 rounded cursor-pointer",
               "bg-hover": range == @selected_range
             }
             :on-click="select_range"
@@ -103,7 +103,7 @@ defmodule Moon.Components.Datepicker do
               <DateTimeLocalInput
                 :if={@with_time}
                 field={@start_date_field}
-                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Datepicker",
@@ -114,7 +114,7 @@ defmodule Moon.Components.Datepicker do
               <DateInput
                 :if={!@with_time}
                 field={@start_date_field}
-                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy",
                   "phx-hook": "Datepicker",
@@ -147,7 +147,7 @@ defmodule Moon.Components.Datepicker do
               <DateTimeLocalInput
                 :if={@with_time}
                 field={@end_date_field}
-                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy, --:--",
                   "phx-hook": "Datepicker",
@@ -158,7 +158,7 @@ defmodule Moon.Components.Datepicker do
               <DateInput
                 :if={!@with_time}
                 field={@end_date_field}
-                class="w-60 mt-4 rounded-lg moon-text-input border-beerus-100"
+                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
                 opts={
                   placeholder: "dd/mm/yyyy",
                   "phx-hook": "Datepicker",

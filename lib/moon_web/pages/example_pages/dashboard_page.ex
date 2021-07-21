@@ -6,7 +6,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Autolayouts.ButtonsList
 
   alias Moon.Components.Button
-  alias Moon.Components.Chip
   alias Moon.Components.Datepicker
   alias Moon.Components.Divider
   alias Moon.Components.DropdownMenuButton
@@ -14,11 +13,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
   alias Moon.Components.IconButton
-  alias Moon.Components.Popover
   alias Moon.Components.Switcher
 
-  alias MoonWeb.Pages.ExamplePages.Shared
   alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
+  alias MoonWeb.Pages.ExamplePages.Shared
+  alias Shared.Filters.CurrencyFilter
+  alias Shared.Filters.SiteFilter
   alias Shared.TopMenu
   alias Shared.LeftMenu
 
@@ -58,7 +58,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         metrics: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
-        end_date: Timex.end_of_month(Timex.today())
+        end_date: Timex.end_of_month(Timex.today()),
+        currency_filter: [],
+        site_filter: []
       )
 
     socket =
@@ -104,7 +106,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </div>
 
           <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
-            <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+            <Switcher
+              items={@tabs}
+              selected_item={@selected_tab}
+              click="tab_click"
+              class="h-10"
+            />
 
             <Divider orientation="vertical" color="beerus-100" height="10" />
 
@@ -120,46 +127,29 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 on_date_change="update_filter_dates"
               />
 
-              <Popover.Outer>
-                <Chip
-                  on_click="open_popover"
-                  value="platform"
-                  right_icon="icon_chevron_down_rounded"
-                  class="px-3 text-trunks-100"
-                >
-                  Platform · All
-                </Chip>
-                <Popover
-                  close="close_popover"
-                  placement="under"
-                  :if={@clicked_filter_name == "platform"}
-                >
-                  TODO
-                </Popover>
-              </Popover.Outer>
-
-              <Popover.Outer>
-                <Chip
-                  on_click="open_popover"
-                  value="brand"
-                  right_icon="icon_chevron_down_rounded"
-                  class="px-3 text-trunks-100"
-                >
-                  Brand · 2
-                </Chip>
-                <Popover
-                  close="close_popover"
-                  placement="under"
-                  :if={@clicked_filter_name == "brand"}
-                >
-                  TODO
-                </Popover>
-              </Popover.Outer>
+              <CurrencyFilter id="currency_filter" active_items={@currency_filter} />
+              <SiteFilter id="site_filter" active_items={@site_filter} />
 
               {#unless @saved}
-                <Divider orientation="vertical" color="beerus-100" height="10" />
+                <Button class="ml-1 px-3" variant="primary" on_click="save_dashboard">
+                  Save
+                </Button>
 
-                <Button class="px-2 text-trunks-100">
+                <Button class="px-3" variant="primary" on_click="save_dashboard">
+                  Save as new
+                </Button>
+
+                <Divider
+                  class="mx-1"
+                  orientation="vertical"
+                  color="beerus-100"
+                  height="10"
+                />
+
+                <Button
+                  class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-80"
+                  on_click="clear_all_filters"
+                >
                   Clear all
                 </Button>
               {/unless}
@@ -249,13 +239,61 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, widgets: widgets)}
   end
 
+  def handle_event("save_dashboard", _, socket) do
+    socket = assign(socket, saved: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("clear_all_filters", _, socket) do
+    CurrencyFilter.clear("currency_filter")
+    SiteFilter.clear("site_filter")
+
+    socket =
+      assign(socket,
+        start_date: nil,
+        end_date: nil,
+        currency_filter: [],
+        site_filter: [],
+        metrics: get_metrics(),
+        widgets: get_widgets(),
+        saved: true
+      )
+
+    {:noreply, socket}
+  end
+
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
     socket =
       assign(socket,
         start_date: start_date,
         end_date: end_date,
         metrics: get_metrics(),
-        widgets: get_widgets()
+        widgets: get_widgets(),
+        saved: false
+      )
+
+    {:noreply, socket}
+  end
+
+  def handle_info({:apply_filter, {:currency, items}}, socket) do
+    socket =
+      assign(socket,
+        currency_filter: items,
+        metrics: get_metrics(),
+        widgets: get_widgets(),
+        saved: false
+      )
+
+    {:noreply, socket}
+  end
+
+  def handle_info({:apply_filter, {:site, items}}, socket) do
+    socket =
+      assign(socket,
+        site_filter: items,
+        metrics: get_metrics(),
+        widgets: get_widgets(),
+        saved: false
       )
 
     {:noreply, socket}
