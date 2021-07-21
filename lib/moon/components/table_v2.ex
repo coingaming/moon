@@ -79,25 +79,14 @@ defmodule Moon.Components.TableV2 do
     bg_color = if rem(ind, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"
     base_classes = "relative group"
 
-    case {assigns.on_select, is_active_row?(item, assigns.active_item_id)} do
-      {nil, _} ->
-        %{
-          class: "#{base_classes} #{bg_color}"
-        }
-
-      {e, false} ->
-        %{
-          class: "#{base_classes} cursor-pointer #{bg_color}",
-          "phx-click": "#{e.name}:#{item.id}",
-          "phx-target": e.target
-        }
-
-      {e, true} ->
-        %{
-          class: "#{base_classes} cursor-pointer bg-gohan-100",
-          "phx-click": "#{e.name}:#{item.id}",
-          "phx-target": e.target
-        }
+    if assigns.on_select == nil do
+      %{ class: "#{base_classes} #{bg_color}" }
+    else
+      %{
+        class: "#{base_classes} #{bg_color} cursor-pointer",
+        "phx-click": "#{assigns.on_select.name}:#{item.id}",
+        "phx-target": assigns.on_select.target
+      }
     end
   end
 
