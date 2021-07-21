@@ -101,18 +101,32 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       case msg do
         {:apply_filter, filter_event} ->
           case filter_event do
-            {:username, items} -> {true, socket |> assign(username_filter: items)}
-            {:country, items} -> {true, socket |> assign(country_filter: items)}
-            {:site, items} -> {true, socket |> assign(site_filter: items)}
-            _ -> {false, socket}
+            {:username, items} ->
+              {true, socket |> assign(username_filter: items) |> assign(page: 1)}
+
+            {:country, items} ->
+              {true, socket |> assign(country_filter: items) |> assign(page: 1)}
+
+            {:site, items} ->
+              {true, socket |> assign(site_filter: items) |> assign(page: 1)}
+
+            _ ->
+              {false, socket}
           end
 
         {:table, table_event} ->
           case table_event do
-            {:paginate, page} -> {true, socket |> assign(page: page)}
-            {:select, customer} -> {false, socket |> assign(active_customer: customer)}
-            {:sort, sort_by} -> {true, socket |> assign(sort_by: sort_by)}
-            _ -> {false, socket}
+            {:paginate, page} ->
+              {true, socket |> assign(page: page)}
+
+            {:select, customer} ->
+              {false, socket |> assign(active_customer: customer)}
+
+            {:sort, sort_by} ->
+              {true, socket |> assign(sort_by: sort_by) |> assign(page: 1)}
+
+            _ ->
+              {false, socket}
           end
 
         _ ->
@@ -120,7 +134,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       end
 
     if refresh_list do
-      {:noreply, socket |> assign(page: 1) |> filter_customers()}
+      {:noreply, socket |> filter_customers()}
     else
       {:noreply, socket}
     end
