@@ -63,12 +63,13 @@ defmodule MoonWeb.MockDB.Users do
 
     results =
       state.all
-      |> Enum.sort(fn a, b -> case sort do
-          %{id: :asc}        -> a.id < b.id
-          %{id: :desc}       -> a.id >= b.id
-          %{username: :asc}  -> a.username < b.username
+      |> Enum.sort(fn a, b ->
+        case sort do
+          %{id: :asc} -> a.id < b.id
+          %{id: :desc} -> a.id >= b.id
+          %{username: :asc} -> a.username < b.username
           %{username: :desc} -> a.username >= b.username
-          _                  -> true
+          _ -> true
         end
       end)
       |> Enum.filter(fn user ->

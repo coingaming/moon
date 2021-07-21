@@ -56,13 +56,14 @@ defmodule MoonWeb.MockDB.Affiliates do
       sort: sort
     } = args
 
-    users = Users.list(%{
-      filter: user_filter,
-      sort: %{
-        id: sort |> Map.get(:userId),
-        username: sort |> Map.get(:username)
-      }
-    })
+    users =
+      Users.list(%{
+        filter: user_filter,
+        sort: %{
+          id: sort |> Map.get(:userId),
+          username: sort |> Map.get(:username)
+        }
+      })
 
     results =
       state.all

@@ -58,12 +58,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersTable do
         {:noreply, socket}
 
       ["sort_customers", field_str] ->
-        field = field_str |> String.to_atom
-        sort_by = case socket.assigns.sort_by do
-          {^field, :asc}  -> {field, :desc}
-          {^field, :desc} -> {field, :asc}
-          _               -> {field, :asc}
-        end
+        field = field_str |> String.to_atom()
+
+        sort_by =
+          case socket.assigns.sort_by do
+            {^field, :asc} -> {field, :desc}
+            {^field, :desc} -> {field, :asc}
+            _ -> {field, :asc}
+          end
 
         self() |> send({:table, {:sort, sort_by}})
         {:noreply, socket}

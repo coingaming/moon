@@ -9,18 +9,25 @@ defmodule Moon.Components.TableV2 do
   alias Moon.Assets.Icons.IconArrowLUp
   alias Moon.Autolayouts.LeftToRight
 
-  prop columns, :list, required: true # [%{ field: atom, label: string, type: :brand | :date | :text | nil, sortable: true | false | nil }, ...]
-  prop items, :list, required: true   # [%{ id: integer | string, ...}, ...]
+  # [%{ field: atom, label: string, type: :brand | :date | :text | nil, sortable: true | false | nil }, ...]
+  prop columns, :list, required: true
+  # [%{ id: integer | string, ...}, ...]
+  prop items, :list, required: true
 
-  prop on_sort, :event, default: nil # :event | nil
-  prop sort_by, :tuple               # {:atom | nil, :asc | :desc | nil}
+  # :event | nil
+  prop on_sort, :event, default: nil
+  # {:atom | nil, :asc | :desc | nil}
+  prop sort_by, :tuple
 
-  prop on_select, :event, default: nil # :event | nil
-  prop active_item_id, :any            # integer | string
+  # :event | nil
+  prop on_select, :event, default: nil
+  # integer | string
+  prop active_item_id, :any
 
   def render(assigns) do
-    fields = assigns.columns
-      |> Enum.map(&({Map.get(&1, :field), Map.get(&1, :type)}))
+    fields =
+      assigns.columns
+      |> Enum.map(&{Map.get(&1, :field), Map.get(&1, :type)})
 
     ~F"""
     <table class="min-w-full border-collapse border-t border-goku-40 overflow-scroll">
@@ -67,21 +74,24 @@ defmodule Moon.Components.TableV2 do
     base_classes = "relative group"
 
     case {assigns.on_select, is_active_row?(item, assigns.active_item_id)} do
-      {nil, _} -> %{
-        class: "#{base_classes} #{bg_color}"
-      }
+      {nil, _} ->
+        %{
+          class: "#{base_classes} #{bg_color}"
+        }
 
-      {e, false} -> %{
-        class: "#{base_classes} cursor-pointer #{bg_color}",
-        "phx-click": "#{e.name}:#{item.id}",
-        "phx-target": e.target
-      }
+      {e, false} ->
+        %{
+          class: "#{base_classes} cursor-pointer #{bg_color}",
+          "phx-click": "#{e.name}:#{item.id}",
+          "phx-target": e.target
+        }
 
-      {e, true} -> %{
-        class: "#{base_classes} cursor-pointer bg-gohan-100",
-        "phx-click": "#{e.name}:#{item.id}",
-        "phx-target": e.target
-      }
+      {e, true} ->
+        %{
+          class: "#{base_classes} cursor-pointer bg-gohan-100",
+          "phx-click": "#{e.name}:#{item.id}",
+          "phx-target": e.target
+        }
     end
   end
 
