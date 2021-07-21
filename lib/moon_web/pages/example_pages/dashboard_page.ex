@@ -15,10 +15,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.IconButton
   alias Moon.Components.Switcher
 
+  alias MoonWeb.MockDB.Currencies
+  alias MoonWeb.MockDB.Sites
   alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
   alias MoonWeb.Pages.ExamplePages.Shared
-  alias Shared.Filters.CurrencyFilter
-  alias Shared.Filters.SiteFilter
+  alias Shared.Filters.ContentFilter
   alias Shared.TopMenu
   alias Shared.LeftMenu
 
@@ -59,7 +60,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
         end_date: Timex.end_of_month(Timex.today()),
+        all_currencies: Enum.map(Currencies.list_all(), &%{label: &1.name, value: &1.name}),
         currency_filter: [],
+        all_sites: Enum.map(Sites.list_all(), &%{label: &1.name, value: &1.name}),
         site_filter: []
       )
 
@@ -127,8 +130,19 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 on_date_change="update_filter_dates"
               />
 
-              <CurrencyFilter id="currency_filter" active_items={@currency_filter} />
-              <SiteFilter id="site_filter" active_items={@site_filter} />
+              <ContentFilter
+                id="currency_filter"
+                filter_name="Currency"
+                active_items={@currency_filter}
+                all_items={@all_currencies}
+              />
+
+              <ContentFilter
+                id="site_filter"
+                filter_name="Brands"
+                active_items={@site_filter}
+                all_items={@all_sites}
+              />
 
               {#unless @saved}
                 <Button class="ml-1 px-3" variant="primary" on_click="save_dashboard">
@@ -245,8 +259,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   end
 
   def handle_event("clear_all_filters", _, socket) do
-    CurrencyFilter.clear("currency_filter")
-    SiteFilter.clear("site_filter")
+    ContentFilter.clear("currency_filter")
+    ContentFilter.clear("site_filter")
 
     socket =
       assign(socket,
@@ -275,22 +289,15 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
-  def handle_info({:apply_filter, {:currency, items}}, socket) do
+  def handle_info({:apply_filter, {filter_name, items}}, socket) do
+    socket =
+      case filter_name do
+        "Currency" -> assign(socket, currency_filter: items)
+        "Brands" -> assign(socket, site_filter: items)
+      end
+
     socket =
       assign(socket,
-        currency_filter: items,
-        metrics: get_metrics(),
-        widgets: get_widgets(),
-        saved: false
-      )
-
-    {:noreply, socket}
-  end
-
-  def handle_info({:apply_filter, {:site, items}}, socket) do
-    socket =
-      assign(socket,
-        site_filter: items,
         metrics: get_metrics(),
         widgets: get_widgets(),
         saved: false
