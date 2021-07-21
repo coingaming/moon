@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
-  alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   alias Shared.TopMenu
@@ -24,7 +23,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.MockDB.Users
   alias MoonWeb.MockDB.Utils
 
-  alias __MODULE__.{CustomersList, CustomerPreview}
+  alias __MODULE__.{CustomersTable, CustomerPreview}
 
   data customers, :list
   data active_customer, :map, default: %{id: nil}
@@ -61,11 +60,11 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
             </ButtonsList>
 
 
-            <CustomersList
+            <CustomersTable
               id="customers_list"
               customers={@customers}
               page={@page}
-              sorted_by={@sort_by}
+              sort_by={@sort_by}
               active_customer_id={@active_customer.id}
             />
           </TopToDown>

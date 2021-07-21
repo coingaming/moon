@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
+defmodule Moon.Components.TableV2 do
   use Moon.StatelessComponent
 
   alias Moon.Assets.Logos.LogoBitcasinoShort
@@ -12,8 +12,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
   prop columns, :list, required: true # [%{ field: atom, label: string, type: :brand | :date | :text | nil, sortable: true | false | nil }, ...]
   prop items, :list, required: true   # [%{ id: integer | string, ...}, ...]
 
-  prop on_sort, :event, default: nil   # :event | nil
-  prop sorted_by, :tuple               # {:atom | nil, :asc | :desc | nil}
+  prop on_sort, :event, default: nil # :event | nil
+  prop sort_by, :tuple               # {:atom | nil, :asc | :desc | nil}
 
   prop on_select, :event, default: nil # :event | nil
   prop active_item_id, :any            # integer | string
@@ -95,7 +95,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Table do
             class="inline-flex justify-start items-center px-3 py-2 text-trunks-100 hover:bg-goku-80 rounded select-none cursor-pointer"
           >
             <div class="text-sm font-normal mr-2">{col.field}</div>
-            {#case column_sort_order(col.field, @sorted_by)}
+            {#case column_sort_order(col.field, @sort_by)}
               {#match :asc}
                 <IconArrowLDown font_size="1.2rem" />
 

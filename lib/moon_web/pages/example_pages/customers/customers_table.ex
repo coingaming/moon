@@ -1,12 +1,12 @@
-defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
+defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersTable do
   use MoonWeb, :stateful_component
 
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
-  alias MoonWeb.Pages.ExamplePages.Shared.Table
+  alias Moon.Components.TableV2
 
   prop customers, :list, required: true
   prop page, :integer, required: true
-  prop sorted_by, :tuple, required: true
+  prop sort_by, :tuple, required: true
   prop active_customer_id, :integer, required: true
 
   def render(assigns) do
@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
         on_prev_page="goto_prev_page"
         on_next_page="goto_next_page"
       />
-      <Table
+      <TableV2
         columns={[
           %{label: "Customer", field: :username, sortable: true},
           %{label: "Profile ID", field: :id, sortable: true},
@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
         ]}
         items={@customers}
         active_item_id={@active_customer_id}
-        sorted_by={@sorted_by}
+        sort_by={@sort_by}
         on_select="select_customer"
         on_sort="sort_customers"
       />
@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersList do
 
       ["sort_customers", field_str] ->
         field = field_str |> String.to_atom
-        sort_by = case socket.assigns.sorted_by do
+        sort_by = case socket.assigns.sort_by do
           {^field, :asc}  -> {field, :desc}
           {^field, :desc} -> {field, :asc}
           _               -> {field, :asc}
