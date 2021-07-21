@@ -9,7 +9,13 @@ defmodule Moon.Components.TableV2 do
   alias Moon.Assets.Icons.IconArrowLUp
   alias Moon.Autolayouts.LeftToRight
 
-  # [%{ field: atom, label: string, type: :brand | :date | :text | nil, sortable: true | false | nil }, ...]
+  # [
+  #   %{ field: atom
+  #    , label: string
+  #    , type: :brand | :date | :money_amount | :text | nil
+  #    , sortable: true | false | nil
+  #    }
+  # , ...]
   prop columns, :list, required: true
   # [%{ id: integer | string, ...}, ...]
   prop items, :list, required: true
@@ -96,13 +102,22 @@ defmodule Moon.Components.TableV2 do
   end
 
   defp render_column(col, assigns) do
+    align_left = Map.get(col, :type) != :money_amount
+
     ~F"""
-    <div class="w-64 px-1 py-2 text-left text-sm text-trunks-100 font-normal">
+    <div class={
+      "w-64 px-1 py-2 text-trunks-100 text-sm font-normal",
+      "text-left": align_left,
+      "text-right": not align_left
+    }>
       {#case {@on_sort |> is_truthy?(), Map.get(col, :sortable) |> is_truthy?()}}
         {#match {true, true}}
           <div
-            :on-click={%{@on_sort | name: "#{@on_sort.name}:#{col.field |> Atom.to_string()}"}}
-            class="inline-flex justify-start items-center px-3 py-2 text-trunks-100 hover:bg-goku-80 rounded select-none cursor-pointer"
+            :on-click={%{@on_sort | name: "#{@on_sort.name}:#{Atom.to_string(col.field)}"}}
+            class={
+              "inline-flex items-center px-3 py-2 hover:bg-goku-80 rounded select-none cursor-pointer",
+              "flex-row-reverse": not align_left
+            }
           >
             <div class="text-sm font-normal mr-2">{col.label}</div>
             {#case column_sort_order(col.field, @sort_by)}
@@ -118,8 +133,8 @@ defmodule Moon.Components.TableV2 do
           </div>
 
         {#match _}
-          <div class="flex justify-start items-center p-2 text-trunks-100 cursor-default">
-            <div class="text-sm font-normal">{col.label}</div>
+          <div class="inline-block justify-start items-center p-2 cursor-default">
+            {col.label}
           </div>
       {/case}
     </div>
@@ -153,6 +168,13 @@ defmodule Moon.Components.TableV2 do
         ~F"""
         <div class={"#{base_classes} truncate"}>
           {value |> Timex.format!("%b %d, %Y", :strftime)}
+        </div>
+        """
+
+      :money_amount ->
+        ~F"""
+        <div class={"#{base_classes} text-right truncate"}>
+          {value}
         </div>
         """
 
