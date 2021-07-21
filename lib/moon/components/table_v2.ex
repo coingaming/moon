@@ -104,7 +104,7 @@ defmodule Moon.Components.TableV2 do
             :on-click={%{@on_sort | name: "#{@on_sort.name}:#{col.field |> Atom.to_string()}"}}
             class="inline-flex justify-start items-center px-3 py-2 text-trunks-100 hover:bg-goku-80 rounded select-none cursor-pointer"
           >
-            <div class="text-sm font-normal mr-2">{col.field}</div>
+            <div class="text-sm font-normal mr-2">{col.label}</div>
             {#case column_sort_order(col.field, @sort_by)}
               {#match :asc}
                 <IconArrowLDown font_size="1.2rem" />
@@ -119,7 +119,7 @@ defmodule Moon.Components.TableV2 do
 
         {#match _}
           <div class="flex justify-start items-center p-2 text-trunks-100 cursor-default">
-            <div class="text-sm font-normal">{col.field}</div>
+            <div class="text-sm font-normal">{col.label}</div>
           </div>
       {/case}
     </div>
