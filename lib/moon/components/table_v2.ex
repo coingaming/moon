@@ -30,6 +30,8 @@ defmodule Moon.Components.TableV2 do
   # integer | string
   prop active_item_id, :any
 
+  slot active_item_popover
+
   def render(assigns) do
     fields =
       assigns.columns
@@ -54,7 +56,12 @@ defmodule Moon.Components.TableV2 do
             <!-- This is used to render overlay on top of a row -->
             <td>
               {#if is_active_row?(item, assigns.active_item_id)}
-                <div class="absolute inset-0 rounded border-2 border-tap-100"/>
+                <div class="absolute inset-0 rounded border-2 border-tap-100">
+                  <div class="inline-block transform -translate-y-full pb-2">
+                    <slot name="active_item_popover" />
+                  </div>
+                </div>
+
               {#elseif is_nil(assigns.active_item_id)}
                 <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100"/>
               {/if}

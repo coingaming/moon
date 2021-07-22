@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
   use MoonWeb, :stateful_component
 
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
+  alias Moon.Assets.Icons.IconSettings
   alias Moon.Components.TableV2
 
   prop affiliates, :list, required: true
@@ -33,7 +34,13 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
         sort_by={@sort_by}
         on_select="select_affiliate"
         on_sort="sort_affiliates"
-      />
+      >
+        <:active_item_popover>
+          <div class="inline-flex py-2 px-3 rounded bg-hit-120">
+            <IconSettings color="goku-100" font_size="1.5rem" click="open_affiliate_settings"/>
+          </div>
+        </:active_item_popover>
+      </TableV2>
     </div>
     """
   end
