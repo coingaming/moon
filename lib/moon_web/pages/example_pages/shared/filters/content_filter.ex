@@ -1,41 +1,36 @@
-defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
+defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Chip
   alias Moon.Components.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
 
-  alias MoonWeb.MockDB.Users
-
   data show_filter, :boolean, default: false
-  data search_text, :string, default: ""
-  data all_items, :list, default: []
   data selected_items, :list, default: []
 
-  prop active_items, :list, required: true
+  prop filter_name, :string, required: true
+  prop active_items, :list
+  prop all_items, :list, default: []
 
   def render(assigns) do
     ~F"""
     <DropdownMultiFilter
       {=@show_filter}
-      {=@search_text}
       {=@all_items}
       {=@selected_items}
       {=@active_items}
       on_apply="apply_filter"
       on_discard="discard_filter"
       on_clear="clear_filter"
-      on_search="handle_filter_search"
       on_select="handle_filter_select"
       on_close="toggle_filter"
     >
       <Chip
         on_click="toggle_filter"
-        value="users"
         right_icon="icon_chevron_down_rounded"
         active={@show_filter or length(@active_items) > 0}
       >
-        {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"#{@filter_name} #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
     """
@@ -44,15 +39,16 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   #
   # Public API
   #
-  def clear(id \\ "username_filter") do
+  def clear(id) do
     send_update(__MODULE__,
       id: id,
       show_filter: false,
+      search_text: "",
       selected_items: []
     )
   end
 
-  def close(id \\ "username_filter") do
+  def close(id) do
     send_update(__MODULE__,
       id: id,
       show_filter: false
@@ -63,13 +59,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   # Event Handlers
   #
   def handle_event("apply_filter", _, socket) do
-    %{selected_items: items} = socket.assigns
-
-    apply_filter(items)
-
-    {:noreply,
-     socket
-     |> assign(show_filter: false)}
+    apply_filter(socket.assigns.selected_items, socket.assigns.filter_name)
+    {:noreply, assign(socket, show_filter: false)}
   end
 
   def handle_event("discard_filter", _, socket) do
@@ -80,41 +71,20 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   end
 
   def handle_event("clear_filter", _, socket) do
-    %{all_items: all_items, active_items: active_items} = socket.assigns
-
-    {:noreply,
-     socket
-     |> assign(all_items: if(length(all_items) > 0, do: all_items, else: active_items))
-     |> assign(selected_items: [])}
+    {:noreply, assign(socket, selected_items: [])}
   end
 
   def handle_event("toggle_filter", _, socket) do
-    %{show_filter: show_filter} = socket.assigns
-
-    {:noreply, socket |> assign(show_filter: !show_filter)}
-  end
-
-  def handle_event("handle_filter_search", %{"search" => %{"search_text" => search_text}}, socket) do
-    all_items =
-      Users.search_by_usernames(search_text)
-      |> Enum.map(&%{label: &1.username, value: to_string(&1.id)})
-      |> Enum.take(10)
-
-    {:noreply,
-     socket
-     |> assign(search_text: search_text)
-     |> assign(all_items: all_items)}
+    {:noreply, assign(socket, show_filter: !socket.assigns.show_filter)}
   end
 
   def handle_event("handle_filter_select", %{"toggled_item_id" => id}, socket) do
     %{all_items: all, selected_items: selected} = socket.assigns
 
-    {:noreply,
-     socket
-     |> assign(selected_items: Helpers.toggle_selected_item(all, selected, id))}
+    {:noreply, assign(socket, selected_items: Helpers.toggle_selected_item(all, selected, id))}
   end
 
-  defp apply_filter(items) do
-    send(self(), {:apply_filter, {:username, items}})
+  defp apply_filter(items, filter_name) do
+    send(self(), {:apply_filter, {filter_name, items}})
   end
 end

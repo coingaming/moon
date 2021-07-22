@@ -10,11 +10,11 @@ defmodule Moon.Components.Datepicker.Month do
   def render(assigns) do
     ~F"""
     <div>
-      <div class="text-center leading-4 mb-5">
+      <div class="mb-5 leading-4 text-center">
         {Timex.format!(@date, "%B %Y", :strftime)}
       </div>
 
-      <div class="flex text-center text-base font-medium">
+      <div class="flex text-xs font-semibold text-center text-trunks-100">
         <div :for={ch <- days_letters(@week_starts_on)} class="w-8 h-8">
           {ch}
         </div>

@@ -4,6 +4,7 @@ defmodule Moon.Components.Switcher do
   prop items, :list, default: []
   prop selected_item, :string
   prop click, :event, required: true
+  prop class, :string
 
   def render(assigns) do
     ~F"""
@@ -11,7 +12,7 @@ defmodule Moon.Components.Switcher do
 
     <div
       :if={length(@items) > 0}
-      class="flex items-center p-1 border rounded gap-x-2 border-beerus-100"
+      class={"flex items-center p-1 border rounded gap-x-2 border-beerus-100 #{@class}"}
     >
       <button
         :for={item <- @items}
