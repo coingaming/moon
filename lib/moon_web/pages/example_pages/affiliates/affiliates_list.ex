@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
 
   prop affiliates, :list, required: true
   prop page, :integer, required: true
+  prop sort_by, :tuple, required: true
   prop active_affiliate_id, :integer, required: true
 
   def render(assigns) do
@@ -20,8 +21,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
       />
       <TableV2
         columns={[
-          %{label: "Affiliate username", field: [:user, :username]},
-          %{label: "Affiliate ID", field: [:id]},
+          %{label: "Affiliate username", field: [:user, :username], sortable: true},
+          %{label: "Affiliate ID", field: [:id], sortable: true},
           %{label: "Email", field: [:user, :email]},
           %{label: "Site", field: [:user, :site]},
           %{label: "Signup time", field: [:signup_at]},
@@ -29,7 +30,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
         ]}
         items={@affiliates}
         active_item_id={@active_affiliate_id}
+        sort_by={@sort_by}
         on_select="select_affiliate"
+        on_sort="sort_affiliates"
       />
     </div>
     """
@@ -52,6 +55,26 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
         affiliate = socket.assigns.affiliates |> Enum.find(nil, &(&1.id == affiliate_id))
 
         if affiliate != nil, do: self() |> send({:table, {:select, affiliate}})
+        {:noreply, socket}
+
+      ["sort_affiliates", field_str] ->
+        field = field_str
+          |> String.split("+")
+          |> (fn strs -> case strs do
+            [str]   -> String.to_atom(str)
+            [_ | _] -> strs |> Enum.map(&(String.to_atom(&1)))
+            _       -> nil
+            end
+          end).()
+
+        sort_by =
+          case socket.assigns.sort_by do
+            {^field, :asc} -> {field, :desc}
+            {^field, :desc} -> {field, :asc}
+            _ -> {field, :asc}
+          end
+
+        self() |> send({:table, {:sort, sort_by}})
         {:noreply, socket}
 
       _ ->

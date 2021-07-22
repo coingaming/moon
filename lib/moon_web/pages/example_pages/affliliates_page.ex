@@ -59,6 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               id="affiliates_list"
               affiliates={@affiliates}
               page={@page}
+              sort_by={@sort_by}
               active_affiliate_id={@active_affiliate.id}
             />
           </TopToDown>
@@ -100,6 +101,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
 
             {:select, affiliate} ->
               {false, socket |> assign(active_affiliate: affiliate)}
+
+            {:sort, sort_by} ->
+              {true, socket |> assign(sort_by: sort_by) |> assign(page: 1)}
 
             _ ->
               {false, socket}

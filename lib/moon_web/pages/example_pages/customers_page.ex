@@ -59,7 +59,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
 
-
             <CustomersTable
               id="customers_list"
               customers={@customers}
