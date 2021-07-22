@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
 
   prop affiliates, :list, required: true
   prop page, :integer, required: true
+  prop active_affiliate_id, :integer, required: true
 
   def render(assigns) do
     ~F"""
@@ -27,6 +28,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
           %{label: "Country", field: [:user, :country]}
         ]}
         items={@affiliates}
+        active_item_id={@active_affiliate_id}
+        on_select="select_affiliate"
       />
     </div>
     """
@@ -40,5 +43,19 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
   def handle_event("goto_next_page", _, socket = %{assigns: %{page: page}}) do
     self() |> send({:table, {:paginate, page + 1}})
     {:noreply, socket}
+  end
+
+  def handle_event(event, _, socket) do
+    case String.split(event, ":") do
+      ["select_affiliate", affiliate_id_str] ->
+        {affiliate_id, _} = affiliate_id_str |> Integer.parse()
+        affiliate = socket.assigns.affiliates |> Enum.find(nil, &(&1.id == affiliate_id))
+
+        if affiliate != nil, do: self() |> send({:table, {:select, affiliate}})
+        {:noreply, socket}
+
+      _ ->
+        {:noreply, socket}
+    end
   end
 end

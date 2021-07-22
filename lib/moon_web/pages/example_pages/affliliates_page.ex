@@ -24,6 +24,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias __MODULE__.{AffiliatesList}
 
   data affiliates, :list
+  data active_affiliate, :map, default: %{id: nil}
   data username_filter, :list, default: []
   data country_filter, :list, default: []
   data sort_by, :tuple, default: {nil, nil}
@@ -58,6 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               id="affiliates_list"
               affiliates={@affiliates}
               page={@page}
+              active_affiliate_id={@active_affiliate.id}
             />
           </TopToDown>
         </div>
@@ -95,6 +97,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
           case table_event do
             {:paginate, page} ->
               {true, socket |> assign(page: page)}
+
+            {:select, affiliate} ->
+              {false, socket |> assign(active_affiliate: affiliate)}
 
             _ ->
               {false, socket}
