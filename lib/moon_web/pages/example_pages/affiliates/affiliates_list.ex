@@ -1,57 +1,44 @@
 defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
-  use MoonWeb, :stateless_component
+  use MoonWeb, :stateful_component
 
-  alias Moon.Components.Table
-  alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
-  alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoAposta10Short
-  alias Moon.Autolayouts.LeftToRight
+  alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
+  alias Moon.Components.TableV2
 
-  prop affiliates, :list
+  prop affiliates, :list, required: true
+  prop page, :integer, required: true
 
   def render(assigns) do
     ~F"""
-    <Table>
-      <thead>
-        <th>Affiliate username</th>
-        <th>Affiliate ID</th>
-        <th>Email</th>
-        <th>Site</th>
-        <th>Signup time</th>
-        <th>Country</th>
-      </thead>
-      <tbody>
-        <tr class={Table.get_row_class(i)} :for.with_index={{affiliate, i} <- @affiliates}>
-          <td>{affiliate.user.username}</td>
-          <td>{affiliate.id}</td>
-          <td>{affiliate.user.email}</td>
-          <td>
-            <LeftToRight :if={affiliate.user.site == "Bitcasino"} class="flex items-center">
-              <LogoBitcasinoShort font_size="1rem" />
-              Bitcasino
-            </LeftToRight>
-
-            <LeftToRight :if={affiliate.user.site == "Sportsbet"} class="flex items-center">
-              <LogoSportsbetShort font_size="1rem" />
-              Sportsbet
-            </LeftToRight>
-
-            <LeftToRight :if={affiliate.user.site == "Slots"} class="flex items-center">
-              <LogoSlotsShort font_size="1rem" />
-              Slots
-            </LeftToRight>
-
-            <LeftToRight :if={affiliate.user.site == "Aposta10"} class="flex items-center">
-              <LogoAposta10Short font_size="1rem" />
-              Aposta10
-            </LeftToRight>
-          </td>
-          <td>{affiliate.signup_at |> Timex.format!("%b %d, %Y", :strftime)}</td>
-          <td>{affiliate.user.country}</td>
-        </tr>
-      </tbody>
-    </Table>
+    <div class="max-w-full overflow-scroll">
+      <ListPagination
+        {=@page}
+        page_count={20}
+        total_count={10056}
+        on_prev_page="goto_prev_page"
+        on_next_page="goto_next_page"
+      />
+      <TableV2
+        columns={[
+          %{label: "Affiliate username", field: [:user, :username]},
+          %{label: "Affiliate ID", field: [:id]},
+          %{label: "Email", field: [:user, :email]},
+          %{label: "Site", field: [:user, :site]},
+          %{label: "Signup time", field: [:signup_at]},
+          %{label: "Country", field: [:user, :country]}
+        ]}
+        items={@affiliates}
+      />
+    </div>
     """
+  end
+
+  def handle_event("goto_prev_page", _, socket = %{assigns: %{page: page}}) do
+    self() |> send({:table, {:paginate, if(page > 1, do: page - 1, else: page)}})
+    {:noreply, socket}
+  end
+
+  def handle_event("goto_next_page", _, socket = %{assigns: %{page: page}}) do
+    self() |> send({:table, {:paginate, page + 1}})
+    {:noreply, socket}
   end
 end
