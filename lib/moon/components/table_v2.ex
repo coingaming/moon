@@ -9,6 +9,8 @@ defmodule Moon.Components.TableV2 do
   alias Moon.Assets.Icons.IconArrowLUp
   alias Moon.Autolayouts.LeftToRight
 
+  alias Elixir.Timex.Format.DateTime.Formatters.Relative
+
   # [
   #   %{ field: atom
   #    , label: string
@@ -123,10 +125,8 @@ defmodule Moon.Components.TableV2 do
             {#case column_sort_order(col.field, @sort_by)}
               {#match :asc}
                 <IconArrowLDown font_size="1.2rem" />
-
               {#match :desc}
                 <IconArrowLUp font_size="1.2rem" />
-
               {#match nil}
                 <IconArrowLUp font_size="1.2rem" class="invisible" />
             {/case}
@@ -161,6 +161,25 @@ defmodule Moon.Components.TableV2 do
             {/case}
             {value}
           </LeftToRight>
+        </div>
+        """
+
+      :datetime_relative ->
+        ~F"""
+        <div class={"flex flex-col justify-around h-full min-w-64 max-w-full px-4"}>
+          <div class="leading-6">
+            {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
+          </div>
+          <div class="text-sm text-trunks-100">
+            {value |> Relative.format!("{relative}")}
+          </div>
+        </div>
+        """
+
+      :datetime ->
+        ~F"""
+        <div class={"#{base_classes} truncate"}>
+          {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
         </div>
         """
 
