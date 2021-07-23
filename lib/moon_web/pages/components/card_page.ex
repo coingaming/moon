@@ -2,7 +2,6 @@ defmodule MoonWeb.Pages.Components.CardPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.ExampleAndCode
-  alias Moon.Assets.Icon
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -40,7 +39,6 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
         <#template slot="code">
       <#CodePreview>
-        alias Moon.Assets.Icon
         alias Moon.Components.Card
         alias Moon.Components.IconButton
 
@@ -59,5 +57,4 @@ defmodule MoonWeb.Pages.Components.CardPage do
     </Stack>
     """
   end
-
 end
