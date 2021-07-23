@@ -12,7 +12,7 @@ defmodule Moon.Components.TableV2 do
   alias Elixir.Timex.Format.DateTime.Formatters.Relative
 
   # [
-  #   %{ field: atom
+  #   %{ field: :atom, [:atom, ...]
   #    , label: string
   #    , type: :brand | :date | :money_amount | :text | nil
   #    , sortable: true | false | nil
@@ -24,13 +24,15 @@ defmodule Moon.Components.TableV2 do
 
   # :event | nil
   prop on_sort, :event, default: nil
-  # {:atom | nil, :asc | :desc | nil}
+  # {:atom | [:atom, ...] | nil, :asc | :desc | nil}
   prop sort_by, :tuple
 
   # :event | nil
   prop on_select, :event, default: nil
   # integer | string
   prop active_item_id, :any
+
+  slot active_item_popover
 
   def render(assigns) do
     fields =
@@ -56,14 +58,19 @@ defmodule Moon.Components.TableV2 do
             <!-- This is used to render overlay on top of a row -->
             <td>
               {#if is_active_row?(item, assigns.active_item_id)}
-                <div class="absolute inset-0 rounded border-2 border-tap-100"/>
+                <div class="absolute inset-0 rounded border-2 border-tap-100">
+                  <div class="inline-block transform -translate-y-full pb-2">
+                    <slot name="active_item_popover" />
+                  </div>
+                </div>
+
               {#elseif is_nil(assigns.active_item_id)}
                 <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100"/>
               {/if}
             </td>
             {#for {field, type} <- fields}
               <td class="border-r last:border-r-0 border-goku-40">
-                {render_field(item[field], type, assigns)}
+                {render_field(get_value(item, field), type, assigns)}
               </td>
             {/for}
           </tr>
@@ -81,25 +88,14 @@ defmodule Moon.Components.TableV2 do
     bg_color = if rem(ind, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"
     base_classes = "relative group"
 
-    case {assigns.on_select, is_active_row?(item, assigns.active_item_id)} do
-      {nil, _} ->
-        %{
-          class: "#{base_classes} #{bg_color}"
-        }
-
-      {e, false} ->
-        %{
-          class: "#{base_classes} cursor-pointer #{bg_color}",
-          "phx-click": "#{e.name}:#{item.id}",
-          "phx-target": e.target
-        }
-
-      {e, true} ->
-        %{
-          class: "#{base_classes} cursor-pointer bg-gohan-100",
-          "phx-click": "#{e.name}:#{item.id}",
-          "phx-target": e.target
-        }
+    if assigns.on_select == nil do
+      %{ class: "#{base_classes} #{bg_color}" }
+    else
+      %{
+        class: "#{base_classes} #{bg_color} cursor-pointer",
+        "phx-click": "#{assigns.on_select.name}:#{item.id}",
+        "phx-target": assigns.on_select.target
+      }
     end
   end
 
@@ -115,7 +111,7 @@ defmodule Moon.Components.TableV2 do
       {#case {@on_sort |> is_truthy?(), Map.get(col, :sortable) |> is_truthy?()}}
         {#match {true, true}}
           <div
-            :on-click={%{@on_sort | name: "#{@on_sort.name}:#{Atom.to_string(col.field)}"}}
+            :on-click={on_click_column(col.field, @on_sort)}
             class={
               "inline-flex items-center px-3 py-2 hover:bg-goku-80 rounded select-none cursor-pointer",
               "flex-row-reverse": not align_left
@@ -210,11 +206,39 @@ defmodule Moon.Components.TableV2 do
     "#{item.id}" == "#{active_item_id}"
   end
 
-  defp column_sort_order(col_field, {sort_field, sort_order}) do
-    if col_field == sort_field, do: sort_order, else: nil
+  defp on_click_column(col_field, on_sort) do
+    field_str =
+      case col_field do
+        [_ | _] -> col_field |> Enum.map(&Atom.to_string(&1)) |> Enum.join("+")
+        _ -> Atom.to_string(col_field)
+      end
+
+    %{on_sort | name: "#{on_sort.name}:#{field_str}"}
   end
 
-  defp is_truthy?(nil), do: false
-  defp is_truthy?(false), do: false
-  defp is_truthy?(_), do: true
+  defp column_sort_order(col_field, {sort_field, sort_order}) do
+    isMatch =
+      case {col_field, sort_field} do
+        {[_ | _], [_ | _]} -> col_field == sort_field
+        {x, [y]} -> x == y
+        {[x], y} -> x == y
+        _ -> col_field == sort_field
+      end
+
+    if isMatch, do: sort_order, else: nil
+  end
+
+  defp get_value(nil, _), do: nil
+
+  defp get_value(m, key) do
+    case key do
+      [k] -> m |> Map.get(k)
+      [k | ks] -> get_value(m, k) |> get_value(ks)
+      _ -> m |> Map.get(key)
+    end
+  end
+
+  defp is_truthy?(x) do
+    x != nil && x != false
+  end
 end
