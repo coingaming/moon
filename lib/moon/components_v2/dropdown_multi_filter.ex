@@ -127,7 +127,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
 
   prop all_items, :list
   prop active_items, :list, required: true
-  prop hide_search, :boolean, default: false
+  prop disable_search, :boolean, default: false
 
   slot default, required: true, args: [:toggle_filter, :is_open]
 
@@ -142,7 +142,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       on_apply="apply_filter"
       on_discard="discard_filter"
       on_clear="clear_filter"
-      on_search="search_filter_items"
+      on_search={if !@disable_search, do: "search_filter_items", else: nil}
       on_select="select_filter_item"
       on_close="toggle_filter"
     >
