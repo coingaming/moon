@@ -14,7 +14,7 @@ defmodule Moon.Assets.Currencies.IconNewZealandDollar do
     {asset_import @socket, "js/assets/currency"}
 
     <svg class={"moon-currency #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/svgs/currencies/icon-new-zealand-dollar.svg#item"></use>
+      <use href="/moon/assets/svgs/currencies/icon-new-zealand-dollar.svg#item"></use>
     </svg>
 
     """

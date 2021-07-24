@@ -24,5 +24,4 @@ defmodule Moon.Components.Card do
     </div>
     """
   end
-
 end

@@ -14,7 +14,7 @@ defmodule Moon.Assets.Duotones.NoReward do
     {asset_import @socket, "js/assets/duotone"}
 
     <svg class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/svgs/duotones/no-reward.svg#item"></use>
+      <use href="/moon/assets/svgs/duotones/no-reward.svg#item"></use>
     </svg>
 
     """

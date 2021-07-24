@@ -65,14 +65,16 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
         {:noreply, socket}
 
       ["sort_affiliates", field_str] ->
-        field = field_str
+        field =
+          field_str
           |> String.split("+")
-          |> (fn strs -> case strs do
-            [str]   -> String.to_atom(str)
-            [_ | _] -> strs |> Enum.map(&(String.to_atom(&1)))
-            _       -> nil
-            end
-          end).()
+          |> (fn strs ->
+                case strs do
+                  [str] -> String.to_atom(str)
+                  [_ | _] -> strs |> Enum.map(&String.to_atom(&1))
+                  _ -> nil
+                end
+              end).()
 
         sort_by =
           case socket.assigns.sort_by do

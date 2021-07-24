@@ -14,7 +14,7 @@ defmodule Moon.Assets.Patterns.PatternCircles do
     {asset_import @socket, "js/assets/pattern"}
 
     <svg class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/svgs/patterns/pattern-circles.svg#item"></use>
+      <use href="/moon/assets/svgs/patterns/pattern-circles.svg#item"></use>
     </svg>
 
     """

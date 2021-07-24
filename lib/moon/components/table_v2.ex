@@ -89,7 +89,7 @@ defmodule Moon.Components.TableV2 do
     base_classes = "relative group"
 
     if assigns.on_select == nil do
-      %{ class: "#{base_classes} #{bg_color}" }
+      %{class: "#{base_classes} #{bg_color}"}
     else
       %{
         class: "#{base_classes} #{bg_color} cursor-pointer",

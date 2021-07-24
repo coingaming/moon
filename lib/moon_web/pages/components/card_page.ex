@@ -59,5 +59,4 @@ defmodule MoonWeb.Pages.Components.CardPage do
     </Stack>
     """
   end
-
 end

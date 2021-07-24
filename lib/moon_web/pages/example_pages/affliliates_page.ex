@@ -154,7 +154,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
             user: %{
               id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
               country: Enum.map(country_filter, & &1.value)
-            },
+            }
           },
           sort: Helpers.tuple_to_map(sort),
           pagination: %{

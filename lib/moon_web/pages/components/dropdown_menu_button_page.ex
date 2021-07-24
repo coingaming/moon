@@ -65,5 +65,4 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
     </Stack>
     """
   end
-
 end

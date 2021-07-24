@@ -109,7 +109,7 @@ defmodule MoonWeb do
       alias MoonWeb.Router.Helpers, as: Routes
 
       def static_path(socket, path) do
-        Routes.static_path(socket, "/moon/#{path}")
+        Routes.static_path(socket, "/moon/assets/#{path}")
       end
 
       def live_path(socket, view, props) do
