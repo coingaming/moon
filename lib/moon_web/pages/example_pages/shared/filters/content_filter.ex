@@ -8,9 +8,14 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   data show_filter, :boolean, default: false
   data selected_items, :list, default: []
 
+  prop chip_class, :string
   prop filter_name, :string, required: true
   prop active_items, :list
   prop all_items, :list, default: []
+  prop left_icon, :string
+  prop right_icon, :string, default: "icon_chevron_down_rounded"
+
+  slot label
 
   def render(assigns) do
     ~F"""
@@ -26,11 +31,15 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
       on_close="toggle_filter"
     >
       <Chip
+        class={@chip_class}
         on_click="toggle_filter"
-        right_icon="icon_chevron_down_rounded"
+        left_icon={@left_icon}
+        right_icon={@right_icon}
         active={@show_filter or length(@active_items) > 0}
       >
-        {"#{@filter_name} #{length(@active_items) |> Helpers.format_filter_count()}"}
+        <#slot name="label">
+          {"#{@filter_name} #{length(@active_items) |> Helpers.format_filter_count()}"}
+        </#slot>
       </Chip>
     </DropdownMultiFilter>
     """
