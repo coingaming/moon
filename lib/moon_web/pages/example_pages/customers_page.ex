@@ -47,9 +47,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter id="username_filter" active_items={@username_filter} />
-              <CountryFilter id="country_filter" active_items={@country_filter} />
-              <SiteFilter id="site_filter" active_items={@site_filter} />
+              <UsernameFilter active_items={@username_filter} />
+              <CountryFilter active_items={@country_filter} />
+              <SiteFilter active_items={@site_filter} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -98,19 +98,16 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   def handle_info(msg, socket) do
     {refresh_list, socket} =
       case msg do
-        {:apply_filter, filter_event} ->
+        {:filters, filter_event} ->
           case filter_event do
-            {:username, items} ->
+            {:apply_username_filter, items} ->
               {true, socket |> assign(username_filter: items) |> assign(page: 1)}
 
-            {:country, items} ->
+            {:apply_country_filter, items} ->
               {true, socket |> assign(country_filter: items) |> assign(page: 1)}
 
-            {:site, items} ->
+            {:apply_site_filter, items} ->
               {true, socket |> assign(site_filter: items) |> assign(page: 1)}
-
-            _ ->
-              {false, socket}
           end
 
         {:table, table_event} ->

@@ -31,6 +31,10 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
     DropdownMultiFilter.clear(name)
   end
 
+  def close(name \\ @default_name) do
+    DropdownMultiFilter.close(name)
+  end
+
   # Cache this in memeory
   defp all_items() do
     Sites.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})

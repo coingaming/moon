@@ -30,6 +30,10 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
     DropdownMultiFilter.clear(name)
   end
 
+  def close(name \\ @default_name) do
+    DropdownMultiFilter.close(name)
+  end
+
   def search_users(search_text) do
     Users.search_by_usernames(search_text)
       |> Enum.map(&%{label: &1.username, value: to_string(&1.id)})

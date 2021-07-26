@@ -151,12 +151,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # Public API
   #
   def clear(id) do
-    send_update(__MODULE__,
-      id: id,
-      show_filter: false,
-      search_text: "",
-      selected_items: []
-    )
+    send_update(__MODULE__, id: id, search_text: "", selected_items: [])
+  end
+
+  def close(id) do
+    send_update(__MODULE__, id: id, show_filter: false)
   end
 
   #
