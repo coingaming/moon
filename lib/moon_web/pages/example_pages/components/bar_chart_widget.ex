@@ -51,7 +51,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
             <div class={
               "w-10 flex-shrink-0 text-right whitespace-nowrap",
               "text-roshi-100": line.change > 0,
-              "text-chi_chi-100": line.change <= 0
+              "text-chi-chi-100": line.change <= 0
             }>
               <span :if={line.change > 0}>+</span>{line.change}%
             </div>

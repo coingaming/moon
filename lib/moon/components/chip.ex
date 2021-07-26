@@ -10,13 +10,15 @@ defmodule Moon.Components.Chip do
   prop on_click, :event
   prop value, :string
   prop active, :boolean, default: false
+  prop active_class, :string, default: "text-bulma-100 bg-goku-80"
+  prop inactive_class, :string, default: "text-trunks-100 bg-gohan-100"
 
   def render(assigns) do
     ~F"""
     {asset_import @socket, "js/tailwind"}
 
     <Button
-      class={"hover:text-bulma-100 #{@class} #{active_btn_class(@active)}"}
+      class={"hover:text-bulma-100 #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}"}
       left_icon={@left_icon}
       right_icon={@right_icon}
       on_click={@on_click}
@@ -26,6 +28,6 @@ defmodule Moon.Components.Chip do
     """
   end
 
-  def active_btn_class(true), do: "text-bulma-100 bg-goku-80"
-  def active_btn_class(false), do: "text-trunks-100 bg-gohan-100"
+  def active_btn_class(true, active_class, _), do: active_class
+  def active_btn_class(false, _, inactive_class), do: inactive_class
 end

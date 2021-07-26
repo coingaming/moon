@@ -2,7 +2,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons.IconMore
-  alias Moon.Assets.Icon
   alias Moon.Autolayouts.ButtonsList
 
   alias Moon.Components.Button
@@ -56,20 +55,30 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         tabs: get_tabs(),
         selected_tab: "total",
         saved: true,
-        metrics: [],
+        page_metrics: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
         end_date: Timex.end_of_month(Timex.today()),
-        all_currencies: Enum.map(Currencies.list_all(), &%{label: &1.name, value: &1.name}),
         currency_filter: [],
-        all_sites: Enum.map(Sites.list_all(), &%{label: &1.name, value: &1.name}),
-        site_filter: []
+        site_filter: [],
+        all_currencies: [],
+        all_sites: [],
+        all_metrics: []
       )
 
     socket =
       if connected?(socket) do
+        all_metrics = Enum.map(@metrics, &%{name: &1})
+
         assign(socket,
-          metrics: get_metrics(),
+          all_metrics: prepare_filter_options(all_metrics),
+          all_currencies: prepare_filter_options(Currencies.list_all()),
+          all_sites: prepare_filter_options(Sites.list_all()),
+          page_metrics:
+            fetch_metrics_data([
+              %{name: "Total deposits, EUR"},
+              %{name: "Casino NGR, EUR"}
+            ]),
           widgets: get_widgets()
         )
       else
@@ -173,38 +182,57 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <Divider color="beerus-100" class="my-6" />
 
           <!-- TODO: Create a shared component -->
-          <div class="flex p-6 overflow-x-scroll rounded bg-gohan-100 gap-x-4 no-scrollbar">
-            <div :for={metric <- @metrics} class="flex-shrink-0 p-3 border-r pl-7 border-beerus-100 w-50">
-              <p class="text-xs text-trunks-100">{metric.name}</p>
-              <div class="flex gap-x-0.5 items-start">
-                <div class="text-xl text-bulma-100">
-                  {metric.value}
+          <div class="flex p-6 rounded bg-gohan-100">
+            <div class="flex overflow-x-scroll no-scrollbar">
+              {#for metric <- @page_metrics}
+                <div class="flex-shrink-0 mr-4 p-3 border-r pl-7 border-beerus-100 w-50">
+                  <p class="text-xs text-trunks-100">{metric.name}</p>
+                  <div class="flex gap-x-0.5 items-start">
+                    <div class="text-xl text-bulma-100">
+                      {metric.amount}
+                    </div>
+                    <div class={
+                      "text-sm",
+                      "text-roshi-100": metric.change > 0,
+                      "text-chi-chi-100": metric.change <= 0
+                    }>
+                      <span :if={metric.change > 0}>+</span>{metric.change}%
+                    </div>
+                  </div>
                 </div>
-                <div class={
-                  "text-sm",
-                  "text-roshi-100": metric.change > 0,
-                  "text-chi_chi-100": metric.change <= 0
-                }>
-                  <span :if={metric.change > 0}>+</span>{metric.change}%
-                </div>
-              </div>
+              {/for}
             </div>
 
-            <div class="flex items-center justify-center flex-shrink-0 cursor-pointer gap-x-2 w-50">
+            <!-- div class="flex items-center justify-center flex-shrink-0 cursor-pointer gap-x-2 w-50">
               <div class="flex items-center justify-center w-6 h-6 rounded-sm bg-goku-80">
                 <Icon name="icon_plus" />
               </div>
               <div class="text-sm whitespace-nowrap">Add metric</div>
+            </div -->
+
+            <div class="flex items-center justify-center w-50">
+              <ContentFilter
+                id="metric_filter"
+                filter_name="Metric"
+                left_icon="icon_plus"
+                chip_class="font-normal"
+                right_icon={nil}
+                active_items={prepare_filter_options(@page_metrics)}
+                all_items={@all_metrics}
+              >
+                <:label>Add metric</:label>
+              </ContentFilter>
             </div>
           </div>
 
           <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
-            <BarChartWidget
-              :for={widget <- Enum.sort_by(@widgets, & &1.index)}
-              widget={widget}
-              bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
-              on_refresh="refresh_widget_data"
-            />
+            {#for widget <- Enum.sort_by(@widgets, & &1.index)}
+              <BarChartWidget
+                widget={widget}
+                bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
+                on_refresh="refresh_widget_data"
+              />
+            {/for}
           </div>
         </div>
       </div>
@@ -234,7 +262,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     socket =
       assign(socket,
         selected_tab: selected_item,
-        metrics: get_metrics(),
+        page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         widgets: get_widgets()
       )
 
@@ -268,7 +296,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         end_date: nil,
         currency_filter: [],
         site_filter: [],
-        metrics: get_metrics(),
+        page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         widgets: get_widgets(),
         saved: true
       )
@@ -281,40 +309,41 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       assign(socket,
         start_date: start_date,
         end_date: end_date,
-        metrics: get_metrics(),
+        page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         widgets: get_widgets(),
         saved: false
       )
 
     {:noreply, socket}
+  end
+
+  def handle_info({:apply_filter, {"Metric", items}}, socket) do
+    page_metrics =
+      items
+      |> Enum.map(&%{name: &1.label})
+      |> fetch_metrics_data()
+
+    {:noreply, assign(socket, page_metrics: page_metrics)}
   end
 
   def handle_info({:apply_filter, {filter_name, items}}, socket) do
     socket =
       case filter_name do
-        "Currency" -> assign(socket, currency_filter: items)
-        "Brands" -> assign(socket, site_filter: items)
+        "Currency" ->
+          assign(socket, currency_filter: items)
+
+        "Brands" ->
+          assign(socket, site_filter: items)
       end
 
     socket =
       assign(socket,
-        metrics: get_metrics(),
+        page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         widgets: get_widgets(),
         saved: false
       )
 
     {:noreply, socket}
-  end
-
-  defp get_metrics() do
-    @metrics
-    |> Enum.map(fn name ->
-      %{
-        name: name,
-        value: Enum.random(1_000_000..21_000_000) + Enum.random(1..99) / 100,
-        change: Enum.random(-20..20)
-      }
-    end)
   end
 
   defp get_widgets() do
@@ -329,7 +358,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     end)
   end
 
-  def generate_widget_data() do
+  defp generate_widget_data() do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
       fn line ->
@@ -357,5 +386,22 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         value: "bonus"
       }
     ]
+  end
+
+  defp fetch_metrics_data(metrics) do
+    Enum.map(metrics, fn metric ->
+      Map.merge(metric, generate_metric_data())
+    end)
+  end
+
+  defp generate_metric_data() do
+    %{
+      amount: Enum.random(1_000_000..21_000_000) + Enum.random(1..99) / 100,
+      change: Enum.random(-20..20)
+    }
+  end
+
+  defp prepare_filter_options(items) do
+    Enum.map(items, &%{label: &1.name, value: &1.name})
   end
 end
