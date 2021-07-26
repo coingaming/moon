@@ -26,70 +26,45 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Shared.LeftMenu
   alias Shared.Breadcrumbs
   alias __MODULE__.TransactionsFilters
-  alias __MODULE__.TransactionsList
+  alias __MODULE__.TransactionsTable
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   require Logger
 
   @max_record 100
+  @default_page_count 10
 
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
 
-  defp get_filtered_transactions(selected_option_ids, assigns) do
-    get_transactions(assigns)
-    |> get_filtered_transactions_by(:brand_id, selected_option_ids.brand)
-    |> get_filtered_transactions_by(:currency_id, selected_option_ids.currency)
-    |> get_filtered_transactions_by(:aff_id, selected_option_ids.user)
-    |> get_filtered_transactions_by(:country_id, selected_option_ids.country)
-    |> get_filtered_transactions_by_amount(selected_option_ids.amount_range)
-  end
-
-  defp get_filtered_transactions_by([], _, _), do: []
-  defp get_filtered_transactions_by(transactions, _, nil), do: transactions
-  defp get_filtered_transactions_by(transactions, _, []), do: transactions
-
-  defp get_filtered_transactions_by(transactions, field, selected_ids) do
-    transactions
-    |> Enum.filter(fn x ->
-      Enum.member?(selected_ids, x[field])
-    end)
-  end
-
-  defp get_filtered_transactions_by_amount([], _), do: []
-  defp get_filtered_transactions_by_amount(transactions, nil), do: transactions
-
-  defp get_filtered_transactions_by_amount(transactions, %{min: min, max: max}) do
-    min = Helpers.to_integer(min, nil)
-    max = Helpers.to_integer(max, nil)
-
-    if min == nil && max == nil do
-      transactions
-    else
-      transactions
-      |> Enum.filter(fn x ->
-        min <= x.amount && x.amount <= max
-      end)
-    end
-  end
+  data filters, :map, default: %{}
+  data segments, :list, default: []
+  data sort_by, :tuple, default: {nil, nil}
+  data page, :integer, default: 1
+  data page_count, :integer, default: @default_page_count
+  data total_count, :integer, default: 0
+  data active_transaction, :map, default: %{id: nil}
+  data filter_options, :map, default: %{}
+  data transactions, :list, default: []
 
   def mount(params, _session, socket) do
-    transactions =
+    socket =
       if socket.transport_pid != nil do
-        get_transactions(socket.assigns)
+        original_transactions = get_transactions()
+        socket = assign(socket, original_transactions: original_transactions, total_count: length(original_transactions))
+        %{filters: filters} = assigns = socket.assigns
+        transactions = get_filtered_transactions(filters, assigns)
+        filter_options = prepare_options(original_transactions)
+        assign(socket, filter_options: filter_options, transactions: transactions)
       else
-        []
+        filter_options = prepare_options([])
+        assign(socket, filter_options: filter_options)
       end
 
-    filter_options = prepare_options(transactions)
-
     {:ok,
-     assign(socket,
+       assign(apply_paging(socket),
        theme_name: params["theme_name"] || "sportsbet-dark",
-       active_page: __MODULE__,
-       transactions: transactions,
-       original_transactions: transactions,
-       filter_options: filter_options
+       active_page: __MODULE__
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
@@ -105,7 +80,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <Heading size={32}>Transactions</Heading>
           <TopToDown class="mt-6">
             <TransactionsFilters id="transaction_filters" {=@filter_options} />
-            <TransactionsList transactions={@transactions} />
+            <TransactionsTable
+              id="transaction_list"
+              records={@transactions}
+              {=@total_count}
+              {=@page_count}
+              page={@page}
+              sort_by={@sort_by}
+              active_id={@active_transaction.id}
+            />
           </TopToDown>
         </div>
       </div>
@@ -113,40 +96,191 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     """
   end
 
-  def handle_info({:apply_filter, selected_option_ids}, socket) do
+  def handle_info(
+        {"update_create_date_filter",
+         %{end_date: _end_date, start_date: _start_date} = create_date_filter},
+        socket
+      ) do
+    IO.inspect(create_date_filter, label: "create_date_filter")
+    {:noreply, socket}
+  end
+
+  def handle_info({:table, table_event}, socket) do
+    {refresh_list, socket} = case table_event do
+      {:paginate, page} ->
+        {true, assign(socket, page: page)}
+
+      {:select, transaction} ->
+        {false, assign(socket, active_transaction: transaction)}
+
+      {:sort, sort_by} ->
+        {true, assign(socket, sort_by: sort_by, page: 1)}
+
+      _ ->
+        {false, socket}
+    end
+
+    if refresh_list do
+      transactions =
+        socket.assigns.filters
+        |> get_filtered_transactions(socket.assigns)
+
+      {:noreply, socket |> assign(transactions: transactions) |> apply_paging()}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  def handle_info({:apply_filter, {filter, selected_items}}, socket) do
+    filters =
+      socket.assigns.filters
+      |> Map.put(filter, selected_items)
+
     transactions =
-      selected_option_ids
+      filters
       |> get_filtered_transactions(socket.assigns)
 
-    # It's possible to change filter_options values based on transactions
-    {:noreply, assign(socket, transactions: transactions)}
+    {:noreply, socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
+  end
+
+  def handle_info({:clear_filter}, socket) do
+    filters = %{}
+
+    transactions =
+      filters
+      |> get_filtered_transactions(socket.assigns)
+
+    {:noreply, socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
+  end
+
+  def handle_info({:save_segment}, socket) do
+    filters = socket.assigns.filters
+
+    new_segment = %{
+      id: Faker.random_between(100, 10000),
+      name: Faker.Finance.Stock.ticker(),
+      filters: filters
+    }
+
+    segments = socket.assigns.segments ++ new_segment
+
+    send_update(MoonWeb.Pages.ExamplePages.Shared.LeftMenu, id: "left-menu", segments: segments)
+
+    {:noreply, assign(socket, segments: segments, filters: filters)}
+  end
+
+  defp get_filtered_transactions(selected_option_ids, assigns) do
+    get_transactions(assigns)
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids["brand_filter"])
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids["currency_filter"])
+    |> get_filtered_transactions_by(:customer_id, selected_option_ids["username_filter"])
+    |> get_filtered_transactions_by(:country_id, selected_option_ids["country_filter"])
+    |> get_filtered_transactions_by_amount(
+      :amount_eur,
+      selected_option_ids["amount_range_filter"]
+    )
+    |> get_filtered_transactions_by_date(:create_time, selected_option_ids["create_date_filter"])
+    |> Enum.sort(fn a, b ->
+      case assigns.sort_by do
+        {field, :asc} -> a[field] < b[field]
+        {field, :desc} -> a[field] >= b[field]
+        _ -> true
+      end
+    end)
+  end
+
+  defp apply_paging(socket) do
+    %{transactions: transactions, page: page} = socket.assigns
+    records_len = length(transactions)
+    total_paged = page * @default_page_count
+    item_count = if total_paged > records_len do
+      @default_page_count - (total_paged - records_len)
+    else
+      @default_page_count
+    end
+
+    IO.inspect({records_len, total_paged, item_count}, label: "paging")
+    transactions = transactions
+    |> Enum.take(total_paged)
+    |> Enum.take(-1 * item_count)
+
+    assign(socket, transactions: transactions, page_count: item_count, total_count: records_len)
+  end
+
+  defp get_filtered_transactions_by([], _, _), do: []
+  defp get_filtered_transactions_by(transactions, _, nil), do: transactions
+  defp get_filtered_transactions_by(transactions, _, []), do: transactions
+
+  defp get_filtered_transactions_by(transactions, field, selected_ids) do
+    selected_ids = Enum.map(selected_ids, fn %{label: _label, value: value} -> value end)
+
+    transactions
+    |> Enum.filter(fn x ->
+      Enum.member?(selected_ids, x[field])
+    end)
+  end
+
+  defp get_filtered_transactions_by_amount([], _, _), do: []
+  defp get_filtered_transactions_by_amount(transactions, _, nil), do: transactions
+
+  defp get_filtered_transactions_by_amount(transactions, field, %{min: min, max: max}) do
+    min = Helpers.to_integer(min, nil)
+    max = Helpers.to_integer(max, nil)
+
+    if min == nil && max == nil do
+      transactions
+    else
+      transactions
+      |> Enum.filter(fn x ->
+        (min == nil || min <= x[field]) && (x[field] <= max || max == nil)
+      end)
+    end
+  end
+
+  defp get_filtered_transactions_by_date([], _, _), do: []
+  defp get_filtered_transactions_by_date(transactions, _, nil), do: transactions
+
+  defp get_filtered_transactions_by_date(transactions, field, %{start_date: min, end_date: max}) do
+    if min == nil && max == nil do
+      transactions
+    else
+      transactions
+      |> Enum.filter(fn x ->
+        (min == nil || min <= x[field]) && (x[field] <= max || max == nil)
+      end)
+    end
   end
 
   defp prepare_options(transactions) do
     transactions
     |> Enum.reduce(
-      %{brand: [], currency: [], user: [], country: []},
+      %{brand: [], currency: [], customer: [], country: []},
       fn %{
-           brand: brand,
+           brand_name: brand_name,
            brand_id: brand_id,
-           currency: currency,
+           currency_name: currency_name,
            currency_id: currency_id,
-           aff_username: user_name,
-           aff_id: user_id,
-           country: country,
+           customer_name: customer_name,
+           customer_id: customer_id,
+           country_name: country_name,
            country_id: country_id
          },
-         %{brand: acc_brand, currency: acc_currency, user: acc_user, country: acc_country} = acc ->
+         %{brand: acc_brand, currency: acc_currency, customer: acc_customer, country: acc_country} =
+           acc ->
         acc
-        |> Map.put(:brand, [%{label: brand, value: brand_id} | acc_brand])
-        |> Map.put(:currency, [%{label: currency, value: currency_id} | acc_currency])
-        |> Map.put(:user, [%{label: user_name, value: user_id} | acc_user])
-        |> Map.put(:country, [%{label: country, value: country_id} | acc_country])
+        |> Map.put(:brand, [%{label: brand_name, value: brand_id} | acc_brand])
+        |> Map.put(:currency, [%{label: currency_name, value: currency_id} | acc_currency])
+        |> Map.put(:customer, [%{label: customer_name, value: customer_id} | acc_customer])
+        |> Map.put(:country, [%{label: country_name, value: country_id} | acc_country])
       end
     )
     |> Enum.map(fn {key, options} ->
       {key, Enum.uniq_by(options, fn %{value: value} -> value end)}
     end)
+    |> Keyword.put(:create_date, %{
+      start_date: DateTime.now!("UTC"),
+      end_date: DateTime.now!("UTC")
+    })
   end
 
   defp get_transactions(%{original_transactions: transactions}), do: transactions
@@ -156,15 +290,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     Logger.info("Preparing mock data set..!")
 
     brand_list = [
-      "aposta10",
-      "bitcasino",
-      "bombay",
-      "comms",
-      "hub88",
-      "luckyslots",
-      "moon_design",
-      "slots",
-      "sportsbet"
+      "Aposta10",
+      "Bitcasino",
+      "Slots",
+      "Sportsbet"
     ]
 
     brand_list_len = length(brand_list)
@@ -202,9 +331,9 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
     user_count = Faker.random_between(1, @max_record)
 
-    1..user_count
+    0..user_count
     |> Enum.to_list()
-    |> Enum.map(fn x ->
+    |> Enum.map(fn customer_id ->
       brand_id = Faker.random_between(1, brand_list_len)
       brand_name = Enum.at(brand_list, brand_id - 1)
       currency_id = Faker.random_between(1, currency_list_len)
@@ -214,27 +343,36 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         Enum.at(country_list, Faker.random_between(1, country_list_len - 1))
 
       tag_list = [
-        ["Asia"],
-        ["Asia", "Tag 1"],
-        ["Asia", "Tag 2", "Tag 3"],
-        ["Asia", "Tag 2", "Tag 3", "Tag 4"]
+        ["VIP"],
+        ["VIP", "DISABLE SERVICE"],
+        ["CLOSED", "PROMO"],
+        ["VIP", "PROMO EXCLUDED", "CLOSED", "MULTI ACCOUNTING"]
       ]
 
+      status_list = ["CONFIRMED", "DECLINED", "PROCESSING"]
+      amount = Faker.random_between(59, 59999)
+      amount_eur = (amount * (Faker.random_between(1, 199) / 100)) |> Float.round(2)
+
       %{
-        aff_username: "#{Faker.Person.En.first_name()} #{Faker.Person.En.last_name()}",
-        aff_id: x |> Integer.to_string(),
+        id: customer_id |> Integer.to_string(),
+        customer_name: "#{Faker.Person.En.first_name()} #{Faker.Person.En.last_name()}",
+        customer_id: customer_id |> Integer.to_string(),
         brand_id: brand_id |> Integer.to_string(),
-        brand: brand_name,
+        brand_name: brand_name,
         brand_logo: "logo_#{brand_name}_short",
-        currency: currency_name,
+        currency_name: currency_name,
         currency_id: currency_id |> Integer.to_string(),
         country_id: country_id,
-        country: country_name,
-        amount: Faker.random_between(200, 1000),
+        country_name: country_name,
+        amount: amount,
+        amount_eur: amount_eur,
+        ending_amount: amount,
+        ending_amount_eur: amount_eur,
         create_time: Faker.DateTime.backward(100),
         process_time: Faker.DateTime.backward(100),
-        status: "Confirmed",
-        tags: Enum.random(tag_list)
+        status: Enum.random(status_list),
+        tags: Enum.random(tag_list),
+        description: Faker.Lorem.sentence(4)
       }
     end)
   end
