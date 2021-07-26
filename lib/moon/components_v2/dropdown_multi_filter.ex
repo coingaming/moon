@@ -10,7 +10,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
   prop selected_items, :list, required: true
   prop active_items, :list, required: true
 
-  prop on_apply, :event, required: true
+  prop on_apply, :event
   prop on_discard, :event, required: true
   prop on_clear, :event, required: true
   prop on_search, :event
@@ -78,7 +78,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
               <Button variant="danger" size="xsmall" class="rounded border-bulma-100" on_click={@on_discard}>
                 Discard
               </Button>
-              {#if can_apply_filters?(@selected_items, @active_items)}
+              {#if @on_apply}
                 <Button variant="primary" size="xsmall" class="rounded" on_click={@on_apply}>
                   &nbspApply&nbsp
                 </Button>
@@ -97,21 +97,6 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
 
   defp can_clear_filters?(selected_items) do
     length(selected_items) > 0
-  end
-
-  defp can_apply_filters?([], []), do: false
-
-  defp can_apply_filters?(selected_items, active_items)
-       when length(selected_items) != length(active_items),
-       do: true
-
-  defp can_apply_filters?(selected_items, active_items) do
-    selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
-    active_items_sorted = Enum.sort(active_items, &(&1.value < &2.value))
-
-    selected_items_sorted
-    |> Enum.zip(active_items_sorted)
-    |> Enum.any?(fn {a, b} -> a.value != b.value end)
   end
 end
 
@@ -133,6 +118,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   slot default, required: true, args: [:toggle_filter, :is_open]
 
   def render(assigns) do
+    can_apply_filter = selection_modified?(
+      assigns.selected_items,
+      assigns.active_items
+    )
+
     ~F"""
     <DropdownMultiFilterView
       {=@show_filter}
@@ -140,7 +130,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       {=@onscreen_items}
       {=@selected_items}
       {=@active_items}
-      on_apply="apply_filter"
+      on_apply={if can_apply_filter, do: "apply_filter", else: nil}
       on_discard="discard_filter"
       on_clear="clear_filter"
       on_search={if @disable_search, do: nil, else: "search_filter_items"}
@@ -173,8 +163,8 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # Lifecycle methods
   #
   def update(assigns, socket) do
-    %{all_items: all_items} = assigns
-    %{onscreen_items: onscreen_items} = socket.assigns
+    %{all_items: all_items, active_items: active_items} = assigns
+    %{onscreen_items: onscreen_items, selected_items: selected_items} = socket.assigns
 
     updated_onscreen_items =
       case {all_items, onscreen_items} do
@@ -183,9 +173,17 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
         _ -> []
       end
 
+    updated_selected_items =
+      if selection_modified?(selected_items, active_items) do
+        active_items
+      else
+        selected_items
+      end
+
     {:ok, socket
       |> assign(assigns)
-      |> assign(onscreen_items: updated_onscreen_items)}
+      |> assign(onscreen_items: updated_onscreen_items)
+      |> assign(selected_items: updated_selected_items)}
   end
 
   #
@@ -276,5 +274,20 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       {item, nil} -> [item | selected_items]
       {_, item} -> List.delete(selected_items, item)
     end
+  end
+
+  defp selection_modified?([], []), do: false
+
+  defp selection_modified?(selected_items, active_items)
+       when length(selected_items) != length(active_items),
+       do: true
+
+  defp selection_modified?(selected_items, active_items) do
+    selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
+    active_items_sorted = Enum.sort(active_items, &(&1.value < &2.value))
+
+    selected_items_sorted
+    |> Enum.zip(active_items_sorted)
+    |> Enum.any?(fn {a, b} -> a.value != b.value end)
   end
 end
