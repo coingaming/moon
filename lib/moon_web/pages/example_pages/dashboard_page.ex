@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         tabs: get_tabs(),
         selected_tab: "total",
         saved: true,
-        edited: true,
+        edited: false,
         page_metrics: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
@@ -92,10 +92,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   def render(assigns) do
     ~F"""
     <div class={"#{@theme_name}"}>
-      <TopMenu id="top-menu" class={@edited && "opacity-30"} />
+      <TopMenu id="top-menu" class={if @edited, do: "opacity-30"} />
 
       <div class="flex">
-        <LeftMenu id="left-menu" class={@edited && "opacity-30"} />
+        <LeftMenu id="left-menu" class={if @edited, do: "opacity-30"} />
 
         <div class="flex-grow py-6 overflow-x-hidden px-14">
           <div class="flex items-center mb-6">
@@ -250,6 +250,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             {#for widget <- Enum.sort_by(@widgets, & &1.index)}
               <BarChartWidget
                 widget={widget}
+                edited={@edited}
                 bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
                 on_refresh="refresh_widget_data"
               />

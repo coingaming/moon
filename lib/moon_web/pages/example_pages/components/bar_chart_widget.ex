@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
   prop widget, :map, required: true
   prop bar_bg_color, :string, default: "bg-roshi-100"
   prop class, :string
+  prop edited, :boolean, default: false
   prop on_refresh, :event
 
   def render(assigns) do
@@ -20,6 +21,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           click={@on_refresh}
           value_name="index"
           value={@widget.index}
+          class={if @edited, do: "hidden"}
         />
 
         <IconButton
@@ -27,6 +29,23 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           height={8}
           width={8}
           title="TODO: Expand"
+          class={if @edited, do: "hidden"}
+        />
+
+        <IconButton
+          icon_name="icon_pencil"
+          height={8}
+          width={8}
+          title="TODO: Edit"
+          class={unless @edited, do: "hidden"}
+        />
+
+        <IconButton
+          icon_name="icon_delete"
+          height={8}
+          width={8}
+          title="TODO: Delete"
+          class={unless @edited, do: "hidden"}
         />
       </:buttons>
 
