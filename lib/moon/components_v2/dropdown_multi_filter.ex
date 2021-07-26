@@ -128,6 +128,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   prop all_items, :list
   prop active_items, :list, required: true
   prop disable_search, :boolean, default: false
+  prop fun_search_items, :fun
 
   slot default, required: true, args: [:toggle_filter, :is_open]
 
@@ -142,7 +143,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       on_apply="apply_filter"
       on_discard="discard_filter"
       on_clear="clear_filter"
-      on_search={if !@disable_search, do: "search_filter_items", else: nil}
+      on_search={if @disable_search, do: nil, else: "search_filter_items"}
       on_select="select_filter_item"
       on_close="toggle_filter"
     >
@@ -225,7 +226,17 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
     {:noreply, socket |> assign(show_filter: !show_filter)}
   end
 
-  def handle_event("search_filter_items", %{"search" => %{"search_text" => search_text}}, socket) do
+  def handle_event("search_filter_items", value, socket = %{assigns: %{fun_search_items: custom_search}}) do
+    %{"search" => %{"search_text" => search_text}} = value
+
+    {:noreply,
+     socket
+     |> assign(onscreen_items: custom_search.(search_text))
+     |> assign(search_text: search_text)}
+  end
+
+  def handle_event("search_filter_items", value, socket) do
+    %{"search" => %{"search_text" => search_text}} = value
     %{all_items: all_items} = socket.assigns
 
     {:noreply,
