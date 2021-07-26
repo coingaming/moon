@@ -244,10 +244,10 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   end
 
   def handle_event("select_filter_item", %{"toggled_item_id" => id}, socket) do
-    %{all_items: all_items, selected_items: selected_items} = socket.assigns
+    %{onscreen_items: onscreen_items, selected_items: selected_items} = socket.assigns
 
     {:noreply, socket
-      |> assign(selected_items: id |> update_selected_items(all_items, selected_items))}
+      |> assign(selected_items: id |> update_selected_items(onscreen_items, selected_items))}
   end
 
   #
