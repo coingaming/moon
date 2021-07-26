@@ -55,6 +55,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         tabs: get_tabs(),
         selected_tab: "total",
         saved: true,
+        edited: true,
         page_metrics: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
@@ -97,24 +98,44 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         <LeftMenu id="left-menu" />
 
         <div class="flex-grow py-6 overflow-x-hidden px-14">
-          <div class="flex items-center mb-6 gap-x-4">
+          <div class="flex items-center mb-6">
             <Heading size={32} class="flex-grow">{@title}</Heading>
 
-            <IconButton icon_name="icon_notification" title="TODO: Notifications" />
+            <div class={"space-x-2", hidden: !@edited}>
+              <Button
+                on_click="toggle_edit_mode"
+                class="p-3 leading-none rounded border-beerus-100"
+              >
+                Cancel
+              </Button>
+              <Button
+                on_click="toggle_edit_mode"
+                variant="primary"
+                class="p-3 leading-none"
+              >
+                Save
+              </Button>
+            </div>
 
-            <DropdownMenuButton id="dashboard-menu-button">
-              <IconMore />
+            <div class={"flex gap-x-4", hidden: @edited}>
+              <IconButton icon_name="icon_notification" title="TODO: Notifications" />
 
-              <:menu>
-                <DropdownMenuItems>
-                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                  <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
-                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                  <DropdownMenuItem>Share</DropdownMenuItem>
-                  <DropdownMenuItem>Delete</DropdownMenuItem>
-                </DropdownMenuItems>
-              </:menu>
-            </DropdownMenuButton>
+              <DropdownMenuButton id="dashboard-menu-button">
+                <IconMore />
+
+                <:menu>
+                  <DropdownMenuItems>
+                    <DropdownMenuItem>
+                      <div :on-click="toggle_edit_mode">Edit</div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
+                    <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                    <DropdownMenuItem>Share</DropdownMenuItem>
+                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                  </DropdownMenuItems>
+                </:menu>
+              </DropdownMenuButton>
+            </div>
           </div>
 
           <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
@@ -154,7 +175,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               />
 
               {#unless @saved}
-                <Button class="ml-1 px-3" variant="primary" on_click="save_dashboard">
+                <Button class="px-3 ml-1" variant="primary" on_click="save_dashboard">
                   Save
                 </Button>
 
@@ -185,7 +206,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <div class="flex p-6 rounded bg-gohan-100">
             <div class="flex overflow-x-scroll no-scrollbar">
               {#for metric <- @page_metrics}
-                <div class="flex-shrink-0 mr-4 p-3 border-r pl-7 border-beerus-100 w-50">
+                <div class="flex-shrink-0 p-3 mr-4 border-r pl-7 border-beerus-100 w-50">
                   <p class="text-xs text-trunks-100">{metric.name}</p>
                   <div class="flex gap-x-0.5 items-start">
                     <div class="text-xl text-bulma-100">
@@ -301,6 +322,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         saved: true
       )
 
+    {:noreply, socket}
+  end
+
+  def handle_event("toggle_edit_mode", _, socket) do
+    socket = assign(socket, edited: !socket.assigns.edited)
     {:noreply, socket}
   end
 
