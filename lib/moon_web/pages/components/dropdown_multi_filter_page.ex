@@ -35,24 +35,22 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <CountryFilter id="country_filter" active_items={@country_filter} />
+          <CountryFilter active_items={@country_filter} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
-              {=@show_filter}
-              {=@search_text}
-              {=@all_items}
-              {=@selected_items}
-              {=@active_items}
-              on_apply="apply_filter"
-              on_discard="discard_filter"
-              on_clear="clear_filter"
-              on_search="handle_filter_search"
-              on_select="handle_filter_select"
-              on_close="toggle_filter"
+              id={@name}
+              all_items={all_items()}
+              active_items={@active_items}
+              :let={toggle_filter: toggle_filter, is_open: is_open}
             >
-              <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
+              <Chip
+                on_click={toggle_filter}
+                value="country"
+                right_icon="icon_chevron_down_rounded"
+                active={is_open or length(@active_items) > 0}
+              >
                 {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>
@@ -63,22 +61,23 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <SiteFilter id="site_filter" active_items={@site_filter} />
+          <SiteFilter active_items={@site_filter} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
-              {=@show_filter}
-              {=@all_items}
-              {=@selected_items}
-              {=@active_items}
-              on_apply="apply_filter"
-              on_discard="discard_filter"
-              on_clear="clear_filter"
-              on_select="handle_filter_select"
-              on_close="toggle_filter"
+              id={@name}
+              all_items={all_items()}
+              active_items={@active_items}
+              disable_search={true}
+              :let={toggle_filter: toggle_filter, is_open: is_open}
             >
-              <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
+              <Chip
+                on_click={toggle_filter}
+                value="site"
+                right_icon="icon_chevron_down_rounded"
+                active={is_open or length(@active_items) > 0}
+              >
                 {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>

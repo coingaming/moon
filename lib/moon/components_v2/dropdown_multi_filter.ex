@@ -110,7 +110,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   data onscreen_items, :list, default: []
   data selected_items, :list, default: []
 
-  prop all_items, :list
+  prop all_items, :list, default: []
   prop active_items, :list, required: true
   prop disable_search, :boolean, default: false
   prop fun_search_items, :fun
@@ -254,7 +254,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   #
   defp apply_filter(filter_id, items) do
     action = "apply_#{filter_id}" |> String.to_atom()
-    self() |> send({:apply_filter, {action, items}})
+    self() |> send({:filters, {action, items}})
   end
 
   def search_by_labels(all_items, search_text) do

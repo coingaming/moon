@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
   use MoonWeb, :stateless_component
 
