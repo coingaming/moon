@@ -32,6 +32,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   require Logger
 
   @max_record 100
+  @default_page_count 10
 
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
@@ -40,7 +41,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   data segments, :list, default: []
   data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
-  data page_count, :integer, default: 10
+  data page_count, :integer, default: @default_page_count
   data total_count, :integer, default: 0
   data active_transaction, :map, default: %{id: nil}
   data filter_options, :map, default: %{}
@@ -189,13 +190,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   end
 
   defp apply_paging(socket) do
-    %{transactions: transactions, page: page, page_count: limit} = socket.assigns
+    %{transactions: transactions, page: page} = socket.assigns
     records_len = length(transactions)
-    total_paged = page * limit
+    total_paged = page * @default_page_count
     item_count = if total_paged > records_len do
-      limit - (total_paged - records_len)
+      @default_page_count - (total_paged - records_len)
     else
-      limit
+      @default_page_count
     end
 
     IO.inspect({records_len, total_paged, item_count}, label: "paging")
@@ -203,7 +204,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     |> Enum.take(total_paged)
     |> Enum.take(-1 * item_count)
 
-    assign(socket, transactions: transactions, page_count: item_count)
+    assign(socket, transactions: transactions, page_count: item_count, total_count: records_len)
   end
 
   defp get_filtered_transactions_by([], _, _), do: []
