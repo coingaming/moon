@@ -17,9 +17,14 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
       id={@name}
       all_items={all_items()}
       active_items={@active_items}
-      :let={toggle_filter: toggle_filter}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
-      <Chip on_click={toggle_filter} value="country" right_icon="icon_chevron_down_rounded">
+      <Chip
+        on_click={toggle_filter}
+        value="country"
+        right_icon="icon_chevron_down_rounded"
+        active={is_open or length(@active_items) > 0}
+      >
         {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>

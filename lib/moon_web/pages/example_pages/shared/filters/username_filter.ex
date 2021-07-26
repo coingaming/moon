@@ -17,9 +17,14 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
       id={@name}
       active_items={@active_items}
       fun_search_items={&search_users/1}
-      :let={toggle_filter: toggle_filter}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
-      <Chip on_click={toggle_filter} value="country" right_icon="icon_chevron_down_rounded">
+      <Chip
+        on_click={toggle_filter}
+        value="username"
+        right_icon="icon_chevron_down_rounded"
+        active={is_open or length(@active_items) > 0}
+      >
         {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>

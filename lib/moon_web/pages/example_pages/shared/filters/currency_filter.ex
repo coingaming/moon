@@ -19,9 +19,14 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
       all_items={all_items()}
       disable_search={true}
       active_items={@active_items}
-      :let={toggle_filter: toggle_filter}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
-      <Chip on_click={toggle_filter} value="currency" right_icon="icon_chevron_down_rounded">
+      <Chip
+        on_click={toggle_filter}
+        value="currency"
+        right_icon="icon_chevron_down_rounded"
+        active={is_open or length(@active_items) > 0}
+      >
         {"Currency #{length(@active_items) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
