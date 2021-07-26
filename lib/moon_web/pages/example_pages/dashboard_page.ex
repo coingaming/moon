@@ -92,10 +92,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   def render(assigns) do
     ~F"""
     <div class={"#{@theme_name}"}>
-      <TopMenu id="top-menu" />
+      <TopMenu id="top-menu" class={@edited && "opacity-30"} />
 
       <div class="flex">
-        <LeftMenu id="left-menu" />
+        <LeftMenu id="left-menu" class={@edited && "opacity-30"} />
 
         <div class="flex-grow py-6 overflow-x-hidden px-14">
           <div class="flex items-center mb-6">
@@ -138,7 +138,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-y-4 gap-x-6">
+          <div class={"flex flex-wrap items-center gap-y-4 gap-x-6", "opacity-30": @edited}>
             <Switcher
               items={@tabs}
               selected_item={@selected_tab}
