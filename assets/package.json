@@ -11,9 +11,9 @@
     "alpinejs": "^2.8.2",
     "asset_import_hook": "github:coingaming/asset_import",
     "nprogress": "^0.2.0",
-    "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html",
-    "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "phoenix": "^1.5.9",
+    "phoenix_html": "^2.14.3",
+    "phoenix_live_view": "^0.15.7",
     "vega": "^5.20.2",
     "vega-embed": "^6.18.2",
     "vega-lite": "5.0.0"
