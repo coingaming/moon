@@ -9,8 +9,8 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
 
-  data country_filter, :list, default: []
-  data site_filter, :list, default: []
+  data country_filter_values, :list, default: []
+  data site_filter_values, :list, default: []
 
   def mount(params, _session, socket) do
     {:ok,
@@ -35,40 +35,40 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <CountryFilter active_items={@country_filter} />
+          <CountryFilter active_values={@country_filter_values} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
               id={@name}
               all_items={all_items()}
-              active_items={@active_items}
+              active_values={@active_values}
               :let={toggle_filter: toggle_filter, is_open: is_open}
             >
               <Chip
                 on_click={toggle_filter}
                 value="country"
                 right_icon="icon_chevron_down_rounded"
-                active={is_open or length(@active_items) > 0}
+                active={is_open or length(@active_values) > 0}
               >
-                {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
+                {"Country #{length(@active_values) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>
           </#CodePreview>
         </:code>
-        <:state>@country_filters = {inspect(@country_filter)}</:state>
+        <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <SiteFilter active_items={@site_filter} />
+          <SiteFilter active_values={@site_filter_values} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
               id={@name}
               all_items={all_items()}
-              active_items={@active_items}
+              active_values={@active_values}
               disable_search={true}
               :let={toggle_filter: toggle_filter, is_open: is_open}
             >
@@ -76,24 +76,24 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
                 on_click={toggle_filter}
                 value="site"
                 right_icon="icon_chevron_down_rounded"
-                active={is_open or length(@active_items) > 0}
+                active={is_open or length(@active_values) > 0}
               >
-                {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
+                {"Brands #{length(@active_values) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>
           </#CodePreview>
         </:code>
-        <:state>@site_filters = {inspect(@site_filter)}</:state>
+        <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
       </ExampleAndCode>
     </TopToDown>
     """
   end
 
-  def handle_info({:apply_filter, filter}, socket) do
+  def handle_info({:filters, filter_event}, socket) do
     socket =
-      case filter do
-        {:country, items} -> socket |> assign(country_filter: items)
-        {:site, items} -> socket |> assign(site_filter: items)
+      case filter_event do
+        {:apply_country_filter, values} -> socket |> assign(country_filter_values: values)
+        {:apply_site_filter, values} -> socket |> assign(site_filter_values: values)
         _ -> socket
       end
 

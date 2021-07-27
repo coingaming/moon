@@ -73,11 +73,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
               </Button>
               {#if @on_apply}
                 <Button variant="primary" size="xsmall" class="rounded" on_click={@on_apply}>
-                  &nbspApply&nbsp
+                  <span class="px-2">Apply</span>
                 </Button>
               {#else}
                 <Button size="xsmall" class="rounded bg-hit-80">
-                  <span class="text-goten-100">&nbspApply&nbsp</span>
+                  <span class="px-2 text-goten-100">Apply</span>
                 </Button>
               {/if}
             </LeftToRight>
@@ -193,8 +193,6 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
 
   # load active items once they are queried asynchronously
   def update(%{active_items: active_items}, socket) do
-    IO.inspect("This is working as expected": active_items)
-
     update_item = fn item ->
       if item.label != nil,
         do: item,
@@ -225,7 +223,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
 
   # clear(), close()
   def update(assigns, socket) do
-    socket |> assign(assigns)
+    {:ok, socket |> assign(assigns)}
   end
 
   #
@@ -321,21 +319,21 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   #
   # Helpers
   #
-  def apply_filter(filter_id, items) do
+  defp apply_filter(filter_id, items) do
     action = "apply_#{filter_id}" |> String.to_atom()
     values = items |> Enum.map(& &1.value)
 
     self() |> send({:filters, {action, values}})
   end
 
-  def search_by_labels(all_items, search_text) do
+  defp search_by_labels(all_items, search_text) do
     search_text = String.upcase(search_text)
 
     all_items
     |> Enum.filter(&String.contains?(String.upcase(&1.label), search_text))
   end
 
-  def update_selected_items(selected_value, onscreen_items, selected_items) do
+  defp update_selected_items(selected_value, onscreen_items, selected_items) do
     in_onscreen_items = Enum.find(onscreen_items, &(&1.value == selected_value))
     in_selected_items = Enum.find(selected_items, &(&1.value == selected_value))
 
