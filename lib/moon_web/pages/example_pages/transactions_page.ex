@@ -199,7 +199,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       @default_page_count
     end
 
-    IO.inspect({records_len, total_paged, item_count}, label: "paging")
+    IO.inspect({records_len, page, total_paged, item_count}, label: "records_len, page, total_paged, item_count")
     transactions = transactions
     |> Enum.take(total_paged)
     |> Enum.take(-1 * item_count)

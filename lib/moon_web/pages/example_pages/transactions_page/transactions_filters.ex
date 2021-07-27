@@ -30,8 +30,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
 
   @default_amount_range_value %{min: "", max: ""}
   @default_create_date_values %{
-    end_date: DateTime.utc_now(),
-    start_date: Timex.shift(DateTime.utc_now(), days: -7)
+    start_date: Timex.beginning_of_week(Timex.today()),
+    end_date: Timex.end_of_week(Timex.today())
   }
   data amount_range_values, :map, default: @default_amount_range_value
   data create_date_values, :map, default: @default_create_date_values
