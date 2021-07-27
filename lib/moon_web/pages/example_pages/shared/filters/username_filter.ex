@@ -1,120 +1,58 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
+  alias Moon.ComponentsV2.DropdownMultiFilter
   alias Moon.Components.Chip
-  alias Moon.Components.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
-
   alias MoonWeb.MockDB.Users
 
-  data show_filter, :boolean, default: false
-  data search_text, :string, default: ""
-  data all_items, :list, default: []
-  data selected_items, :list, default: []
+  @default_name "username_filter"
 
-  prop active_items, :list, required: true
+  prop name, :string, default: @default_name
+  prop active_values, :list, required: true
 
   def render(assigns) do
     ~F"""
     <DropdownMultiFilter
-      {=@show_filter}
-      {=@search_text}
-      {=@all_items}
-      {=@selected_items}
-      {=@active_items}
-      on_apply="apply_filter"
-      on_discard="discard_filter"
-      on_clear="clear_filter"
-      on_search="handle_filter_search"
-      on_select="handle_filter_select"
-      on_close="toggle_filter"
+      id={@name}
+      active_values={@active_values}
+      func_query_items={&query_filter_items/1}
+      func_search_items={&search_users/1}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
       <Chip
-        on_click="toggle_filter"
+        on_click={toggle_filter}
         value="users"
         right_icon="icon_chevron_down_rounded"
-        active={@show_filter or length(@active_items) > 0}
+        active={is_open or length(@active_values) > 0}
       >
-        {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"Users #{length(@active_values) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
     """
   end
 
-  #
-  # Public API
-  #
-  def clear(id \\ "username_filter") do
-    send_update(__MODULE__,
-      id: id,
-      show_filter: false,
-      selected_items: []
-    )
+  def clear(name \\ @default_name) do
+    DropdownMultiFilter.clear(name)
   end
 
-  def close(id \\ "username_filter") do
-    send_update(__MODULE__,
-      id: id,
-      show_filter: false
-    )
+  def close(name \\ @default_name) do
+    DropdownMultiFilter.close(name)
   end
 
-  #
-  # Event Handlers
-  #
-  def handle_event("apply_filter", _, socket) do
-    %{selected_items: items} = socket.assigns
-
-    apply_filter(items)
-
-    {:noreply,
-     socket
-     |> assign(show_filter: false)}
+  def search_users(search_text) do
+    Users.search_by_usernames(search_text)
+    |> Enum.map(&%{label: &1.username, value: to_string(&1.id)})
+    |> Enum.take(10)
   end
 
-  def handle_event("discard_filter", _, socket) do
-    {:noreply,
-     socket
-     |> assign(show_filter: false)
-     |> assign(selected_items: socket.assigns.active_items)}
-  end
+  def query_filter_items(filter_values) do
+    user_ids = filter_values |> Enum.map(&String.to_integer/1)
 
-  def handle_event("clear_filter", _, socket) do
-    %{all_items: all_items, active_items: active_items} = socket.assigns
-
-    {:noreply,
-     socket
-     |> assign(all_items: if(length(all_items) > 0, do: all_items, else: active_items))
-     |> assign(selected_items: [])}
-  end
-
-  def handle_event("toggle_filter", _, socket) do
-    %{show_filter: show_filter} = socket.assigns
-
-    {:noreply, socket |> assign(show_filter: !show_filter)}
-  end
-
-  def handle_event("handle_filter_search", %{"search" => %{"search_text" => search_text}}, socket) do
-    all_items =
-      Users.search_by_usernames(search_text)
-      |> Enum.map(&%{label: &1.username, value: to_string(&1.id)})
-      |> Enum.take(10)
-
-    {:noreply,
-     socket
-     |> assign(search_text: search_text)
-     |> assign(all_items: all_items)}
-  end
-
-  def handle_event("handle_filter_select", %{"toggled_item_id" => id}, socket) do
-    %{all_items: all, selected_items: selected} = socket.assigns
-
-    {:noreply,
-     socket
-     |> assign(selected_items: Helpers.toggle_selected_item(all, selected, id))}
-  end
-
-  defp apply_filter(items) do
-    send(self(), {:apply_filter, {:username, items}})
+    Users.list(%{
+      filter: %{id: user_ids, site: [], country: []},
+      sort: %{}
+    })
+    |> Enum.map(&%{label: &1.username, value: "#{&1.id}"})
   end
 end

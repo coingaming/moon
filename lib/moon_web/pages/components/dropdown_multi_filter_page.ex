@@ -9,8 +9,8 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
 
-  data country_filter, :list, default: []
-  data site_filter, :list, default: []
+  data country_filter_values, :list, default: []
+  data site_filter_values, :list, default: []
 
   def mount(params, _session, socket) do
     {:ok,
@@ -35,66 +35,65 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <CountryFilter id="country_filter" active_items={@country_filter} />
+          <CountryFilter active_values={@country_filter_values} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
-              {=@show_filter}
-              {=@search_text}
-              {=@all_items}
-              {=@selected_items}
-              {=@active_items}
-              on_apply="apply_filter"
-              on_discard="discard_filter"
-              on_clear="clear_filter"
-              on_search="handle_filter_search"
-              on_select="handle_filter_select"
-              on_close="toggle_filter"
+              id={@name}
+              all_items={all_items()}
+              active_values={@active_values}
+              :let={toggle_filter: toggle_filter, is_open: is_open}
             >
-              <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
-                {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
+              <Chip
+                on_click={toggle_filter}
+                value="country"
+                right_icon="icon_chevron_down_rounded"
+                active={is_open or length(@active_values) > 0}
+              >
+                {"Country #{length(@active_values) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>
           </#CodePreview>
         </:code>
-        <:state>@country_filters = {inspect(@country_filter)}</:state>
+        <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode show_state={true}>
         <:example>
-          <SiteFilter id="site_filter" active_items={@site_filter} />
+          <SiteFilter active_values={@site_filter_values} />
         </:example>
         <:code>
           <#CodePreview>
             <DropdownMultiFilter
-              {=@show_filter}
-              {=@all_items}
-              {=@selected_items}
-              {=@active_items}
-              on_apply="apply_filter"
-              on_discard="discard_filter"
-              on_clear="clear_filter"
-              on_select="handle_filter_select"
-              on_close="toggle_filter"
+              id={@name}
+              all_items={all_items()}
+              active_values={@active_values}
+              disable_search={true}
+              :let={toggle_filter: toggle_filter, is_open: is_open}
             >
-              <Chip on_click="toggle_filter" value="country" right_icon="icon_chevron_down_rounded">
-                {"Brands #{length(@active_items) |> Helpers.format_filter_count()}"}
+              <Chip
+                on_click={toggle_filter}
+                value="site"
+                right_icon="icon_chevron_down_rounded"
+                active={is_open or length(@active_values) > 0}
+              >
+                {"Brands #{length(@active_values) |> Helpers.format_filter_count()}"}
               </Chip>
             </DropdownMultiFilter>
           </#CodePreview>
         </:code>
-        <:state>@site_filters = {inspect(@site_filter)}</:state>
+        <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
       </ExampleAndCode>
     </TopToDown>
     """
   end
 
-  def handle_info({:apply_filter, filter}, socket) do
+  def handle_info({:filters, filter_event}, socket) do
     socket =
-      case filter do
-        {:country, items} -> socket |> assign(country_filter: items)
-        {:site, items} -> socket |> assign(site_filter: items)
+      case filter_event do
+        {:apply_country_filter, values} -> socket |> assign(country_filter_values: values)
+        {:apply_site_filter, values} -> socket |> assign(site_filter_values: values)
         _ -> socket
       end
 

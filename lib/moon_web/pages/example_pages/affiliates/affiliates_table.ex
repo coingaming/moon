@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage.AffiliatesList do
+defmodule MoonWeb.Pages.ExamplePages.Affiliates.AffiliatesTable do
   use MoonWeb, :stateful_component
 
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination

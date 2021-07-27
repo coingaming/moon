@@ -45,7 +45,8 @@ config :moon, MoonWeb.Endpoint,
       ~r"priv/gettext/.*(po)$",
       ~r"lib/moon_web/(live|views|pages)/.*(ex)$",
       ~r"lib/moon_web/templates/.*(eex)$",
-      ~r"lib/moon/components/.*(ex)$"
+      ~r"lib/moon/components/.*(ex)$",
+      ~r"lib/moon/components_v2/.*(ex)$"
     ]
   ]
 

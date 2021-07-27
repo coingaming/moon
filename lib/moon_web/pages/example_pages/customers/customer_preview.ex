@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomerPreview do
+defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.{Text, Divider, Button}

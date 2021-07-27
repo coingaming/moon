@@ -1,122 +1,46 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip
-  alias Moon.Components.DropdownMultiFilter
+  alias Moon.ComponentsV2.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.Countries
 
-  data show_filter, :boolean, default: false
-  data search_text, :string, default: ""
-  data all_items, :list, default: []
-  data selected_items, :list, default: []
+  @default_name "country_filter"
 
-  prop active_items, :list, required: true
+  prop name, :string, default: @default_name
+  prop active_values, :list, required: true
 
   def render(assigns) do
     ~F"""
     <DropdownMultiFilter
-      {=@show_filter}
-      {=@search_text}
-      {=@all_items}
-      {=@selected_items}
-      {=@active_items}
-      on_apply="apply_filter"
-      on_discard="discard_filter"
-      on_clear="clear_filter"
-      on_search="handle_filter_search"
-      on_select="handle_filter_select"
-      on_close="toggle_filter"
+      id={@name}
+      all_items={all_items()}
+      active_values={@active_values}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
       <Chip
-        on_click="toggle_filter"
+        on_click={toggle_filter}
         value="country"
         right_icon="icon_chevron_down_rounded"
-        active={@show_filter or length(@active_items) > 0}
+        active={is_open or length(@active_values) > 0}
       >
-        {"Country #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"Country #{length(@active_values) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
     """
   end
 
-  def mount(socket) do
-    all_items = Countries.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
-
-    {:ok, socket |> assign(all_items: all_items)}
+  def clear(name \\ @default_name) do
+    DropdownMultiFilter.clear(name)
   end
 
-  #
-  # Public API
-  #
-  def clear(id \\ "country_filter") do
-    send_update(__MODULE__,
-      id: id,
-      show_filter: false,
-      search_text: "",
-      selected_items: []
-    )
+  def close(name \\ @default_name) do
+    DropdownMultiFilter.close(name)
   end
 
-  def close(id \\ "country_filter") do
-    send_update(__MODULE__,
-      id: id,
-      show_filter: false
-    )
-  end
-
-  #
-  # Event Handlers
-  #
-  def handle_event("apply_filter", _, socket) do
-    %{selected_items: items} = socket.assigns
-
-    apply_filter(items)
-
-    {:noreply,
-     socket
-     |> assign(show_filter: false)
-     |> assign(search_text: "")}
-  end
-
-  def handle_event("discard_filter", _, socket) do
-    {:noreply,
-     socket
-     |> assign(show_filter: false)
-     |> assign(selected_items: socket.assigns.active_items)}
-  end
-
-  def handle_event("clear_filter", _, socket) do
-    {:noreply, socket |> assign(selected_items: [])}
-  end
-
-  def handle_event("toggle_filter", _, socket) do
-    %{show_filter: show_filter} = socket.assigns
-
-    {:noreply, socket |> assign(show_filter: !show_filter)}
-  end
-
-  def handle_event("handle_filter_search", %{"search" => %{"search_text" => search_text}}, socket) do
-    all_items =
-      Countries.list_all()
-      |> Enum.map(&%{label: &1.name, value: &1.name})
-      |> Helpers.search_by_labels(search_text)
-
-    {:noreply,
-     socket
-     |> assign(all_items: all_items)
-     |> assign(search_text: search_text)}
-  end
-
-  def handle_event("handle_filter_select", %{"toggled_item_id" => id}, socket) do
-    %{all_items: all, selected_items: selected} = socket.assigns
-
-    {:noreply,
-     socket
-     |> assign(selected_items: Helpers.toggle_selected_item(all, selected, id))}
-  end
-
-  defp apply_filter(items) do
-    send(self(), {:apply_filter, {:country, items}})
+  # Cache this in memeory
+  defp all_items() do
+    Countries.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
   end
 end
