@@ -16,9 +16,13 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   data customers, :list
   data active_customer, :map, default: %{id: nil}
-  data username_filter, :list, default: []
-  data country_filter, :list, default: []
-  data site_filter, :list, default: []
+
+  # filters
+  data username_filter_values, :list, default: []
+  data country_filter_values, :list, default: []
+  data site_filter_values, :list, default: []
+
+  #  table
   data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
@@ -36,9 +40,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter active_items={@username_filter} />
-              <CountryFilter active_items={@country_filter} />
-              <SiteFilter active_items={@site_filter} />
+              <UsernameFilter active_items_values={@username_filter_values} />
+              <CountryFilter active_items_values={@country_filter_values} />
+              <SiteFilter active_items_values={@site_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -89,14 +93,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       case msg do
         {:filters, filter_event} ->
           case filter_event do
-            {:apply_username_filter, items} ->
-              {true, socket |> assign(username_filter: items) |> assign(page: 1)}
+            {:apply_username_filter, values} ->
+              {true, socket |> assign(username_filter_values: values) |> assign(page: 1)}
 
-            {:apply_country_filter, items} ->
-              {true, socket |> assign(country_filter: items) |> assign(page: 1)}
+            {:apply_country_filter, values} ->
+              {true, socket |> assign(country_filter_values: values) |> assign(page: 1)}
 
-            {:apply_site_filter, items} ->
-              {true, socket |> assign(site_filter: items) |> assign(page: 1)}
+            {:apply_site_filter, values} ->
+              {true, socket |> assign(site_filter_values: values) |> assign(page: 1)}
           end
 
         {:table, table_event} ->
@@ -155,17 +159,17 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     %{
       page: page,
       sort_by: sort,
-      country_filter: country_filter,
-      username_filter: username_filter,
-      site_filter: site_filter
+      country_filter_values: country_filter_values,
+      username_filter_values: username_filter_values,
+      site_filter_values: site_filter_values
     } = socket.assigns
 
     customers =
       Users.list(%{
         filter: %{
-          id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
-          site: Enum.map(site_filter, & &1.value),
-          country: Enum.map(country_filter, & &1.value)
+          id: Enum.map(username_filter_values, &String.to_integer/1),
+          site: site_filter_values,
+          country: country_filter_values
         },
         sort: Helpers.tuple_to_map(sort)
       })

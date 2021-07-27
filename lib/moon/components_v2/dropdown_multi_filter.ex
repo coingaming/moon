@@ -111,7 +111,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   data selected_items, :list, default: []
 
   prop all_items, :list, default: []
-  prop active_items, :list, required: true
+  prop active_values, :list, required: true
   prop disable_search, :boolean, default: false
   prop fun_search_items, :fun
 
@@ -120,7 +120,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def render(assigns) do
     can_apply_filter = selection_modified?(
       assigns.selected_items,
-      assigns.active_items
+      assigns.active_values
     )
 
     ~F"""
@@ -170,7 +170,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   end
 
   def update(assigns, socket) do
-    %{all_items: all_items, active_items: active_items} = assigns
+    %{all_items: all_items, active_values: active_values} = assigns
     %{onscreen_items: onscreen_items, selected_items: selected_items} = socket.assigns
 
     updated_onscreen_items =
@@ -181,8 +181,8 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       end
 
     updated_selected_items =
-      if selection_modified?(selected_items, active_items) do
-        active_items
+      if selection_modified?(selected_items, active_values) do
+        get_active_items(assigns)
       else
         selected_items
       end
@@ -212,12 +212,12 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
     {:noreply,
      socket
      |> assign(show_filter: false)
-     |> assign(selected_items: active_items)}
+     |> assign(selected_items: get_active_items(socket.assigns)))}
   end
 
   def handle_event("clear_filter", _, socket) do
-    %{onscreen_items: onscreen_items, active_items: active_items} = socket.assigns
-    onscreen_items = if length(onscreen_items) > 0, do: onscreen_items, else: active_items
+    %{onscreen_items: onscreen_items} = socket.assigns
+    onscreen_items = if length(onscreen_items) > 0, do: onscreen_items, else: get_active_items(socket.assigns)
 
     {:noreply,
      socket
@@ -240,10 +240,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
      |> assign(search_text: search_text)}
   end
 
-  def handle_event("search_filter_items", value, socket) do
-    %{"search" => %{"search_text" => search_text}} = value
-    %{all_items: all_items} = socket.assigns
-
+  def handle_event(
+        "search_filter_items",
+        %{"search" => %{"search_text" => search_text}},
+        socket = %{assigns: %{all_items: all_items}}
+      ) do
     {:noreply,
      socket
      |> assign(onscreen_items: all_items |> search_by_labels(search_text))
@@ -253,8 +254,15 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def handle_event("select_filter_item", %{"toggled_item_id" => id}, socket) do
     %{onscreen_items: onscreen_items, selected_items: selected_items} = socket.assigns
 
-    {:noreply, socket
-      |> assign(selected_items: id |> update_selected_items(onscreen_items, selected_items))}
+    IO.inspect before: selected_items
+
+    selected_items = id |> update_selected_items(onscreen_items, selected_items)
+
+    IO.inspect after: selected_items
+
+    {:noreply,
+     socket
+     |> assign(selected_items: selected_items)}
   end
 
   #
@@ -262,7 +270,9 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   #
   defp apply_filter(filter_id, items) do
     action = "apply_#{filter_id}" |> String.to_atom()
-    self() |> send({:filters, {action, items}})
+    values = items |> Enum.map(&(&1.value))
+
+    self() |> send({:filters, {action, values}})
   end
 
   def search_by_labels(all_items, search_text) do
@@ -285,16 +295,40 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
 
   defp selection_modified?([], []), do: false
 
-  defp selection_modified?(selected_items, active_items)
-       when length(selected_items) != length(active_items),
+  defp selection_modified?(selected_items, active_values)
+       when length(selected_items) != length(active_values),
        do: true
 
-  defp selection_modified?(selected_items, active_items) do
+  defp selection_modified?(selected_items, active_values) do
     selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
-    active_items_sorted = Enum.sort(active_items, &(&1.value < &2.value))
+    active_values_sorted = Enum.sort(active_values, &(&1.value < &2.value))
 
     selected_items_sorted
-    |> Enum.zip(active_items_sorted)
-    |> Enum.any?(fn {a, b} -> a.value != b.value end)
+    |> Enum.zip(active_values_sorted)
+    |> Enum.any?(fn {%{value: x}, y} -> x != y end)
+  end
+
+  # Depending on expected DropdownMultiFilter behaviour, Take current assigns and
+  # try to derive active_items from following
+  #  - Active (Search on demand): active_values, onscreen_items, func_query_items
+  #  - Static                   : active_values, all_items
+  defp get_active_items(%{active_values: active_values, onscreen_items: onscreen_items, func_query_items: func_query_items, id: id}) do
+    active_items = onscreen_items
+      |> Enum.filter(fn item -> Enum.find(active_values, &(&1 == item.value)) != nil end)
+
+    # this will only happen when parent component tries to seed dropdown with some filters
+    # without providing all_items (Search on demand)
+    if length(active_items) != length(active_values) do
+      Task.async(fn ->
+        items = func_query_items.(active_values)
+        send_update(__MODULE__, id: id, onscreen_items: items, selected_items: items)
+      end)
+    end
+
+    active_items
+  end
+
+  defp get_active_items(%{active_values: active_values, all_items: all_items}) do
+    all_items |> Enum.filter(fn item -> Enum.find(active_values, &(&1 == item.value)) != nil end)
   end
 end

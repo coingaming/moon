@@ -9,13 +9,13 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   @default_name "username_filter"
 
   prop name, :string, default: @default_name
-  prop active_items, :list, required: true
+  prop active_values, :list, required: true
 
   def render(assigns) do
     ~F"""
     <DropdownMultiFilter
       id={@name}
-      active_items={@active_items}
+      active_values={@active_values}
       fun_search_items={&search_users/1}
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >
@@ -23,9 +23,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
         on_click={toggle_filter}
         value="username"
         right_icon="icon_chevron_down_rounded"
-        active={is_open or length(@active_items) > 0}
+        active={is_open or length(@active_values) > 0}
       >
-        {"Users #{length(@active_items) |> Helpers.format_filter_count()}"}
+        {"Users #{length(@active_values) |> Helpers.format_filter_count()}"}
       </Chip>
     </DropdownMultiFilter>
     """
