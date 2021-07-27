@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   ]
 
   @widget_names ~w(
-    Depositors Winers Losers
+    Depositors Winners Losers
     Wages Demographic Geo
     Currency Device\u00a0&\u00a0OS Products
   )
@@ -57,6 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         saved: true,
         edited: false,
         page_metrics: [],
+        page_widgets: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
         end_date: Timex.end_of_month(Timex.today()),
@@ -70,6 +71,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     socket =
       if connected?(socket) do
         all_metrics = Enum.map(@metrics, &%{name: &1})
+        all_widgets = Enum.map(@widget_names, &%{name: &1})
 
         assign(socket,
           all_metrics: prepare_filter_options(all_metrics),
@@ -80,7 +82,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               %{name: "Total deposits, EUR"},
               %{name: "Casino NGR, EUR"}
             ]),
-          widgets: get_widgets()
+          page_widgets:
+            fetch_widgets_data([
+              %{name: "Depositors"},
+              %{name: "Winners"},
+              %{name: "Losers"}
+            ]),
+          widgets: prepare_filter_options(all_widgets)
         )
       else
         socket
@@ -247,12 +255,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </div>
 
           <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
-            {#for widget <- Enum.sort_by(@widgets, & &1.index)}
+            {#for widget <- Enum.sort_by(@page_widgets, & &1.index)}
               <BarChartWidget
                 widget={widget}
                 edited={@edited}
                 bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
                 on_refresh="refresh_widget_data"
+                on_remove="remove_widget"
               />
             {/for}
           </div>
@@ -292,15 +301,20 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   end
 
   def handle_event("refresh_widget_data", %{"index" => index}, socket) do
-    widgets = socket.assigns.widgets
+    widgets = socket.assigns.page_widgets
     widget = Enum.find(widgets, &(&1.index == String.to_integer(index)))
 
     widgets =
       List.update_at(widgets, widget.index, fn item ->
-        %{item | data: generate_widget_data()}
+        %{item | data: generate_widget_items()}
       end)
 
-    {:noreply, assign(socket, widgets: widgets)}
+    {:noreply, assign(socket, page_widgets: widgets)}
+  end
+
+  def handle_event("remove_widget", %{"index" => index}, socket) do
+    widgets = Enum.filter(socket.assigns.page_widgets, &(&1.index != String.to_integer(index)))
+    {:noreply, assign(socket, page_widgets: widgets)}
   end
 
   def handle_event("save_dashboard", _, socket) do
@@ -380,18 +394,18 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       %{
         index: index,
         title: name,
-        data: generate_widget_data()
+        data: generate_widget_items()
       }
     end)
   end
 
-  defp generate_widget_data() do
+  defp generate_widget_items() do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
       fn line ->
         %{
           name: line,
-          value: Enum.random(1_000..9_900) + Enum.random(1..99) / 100,
+          amount: Enum.random(1_000..9_900) + Enum.random(1..99) / 100,
           change: Enum.random(-20..20)
         }
       end
@@ -426,6 +440,17 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       amount: Enum.random(1_000_000..21_000_000) + Enum.random(1..99) / 100,
       change: Enum.random(-20..20)
     }
+  end
+
+  defp fetch_widgets_data(widgets) do
+    widgets
+    |> Enum.with_index()
+    |> Enum.map(fn {widget, index} ->
+      Map.merge(widget, %{
+        index: index,
+        data: generate_widget_items()
+      })
+    end)
   end
 
   defp prepare_filter_options(items) do
