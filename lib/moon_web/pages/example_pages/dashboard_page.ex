@@ -58,6 +58,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         edited: false,
         page_metrics: [],
         page_widgets: [],
+        temp_page_widgets: [],
         widgets: [],
         start_date: Timex.beginning_of_month(Timex.today()),
         end_date: Timex.end_of_month(Timex.today()),
@@ -111,13 +112,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
             <div class={"space-x-2", hidden: !@edited}>
               <Button
-                on_click="toggle_edit_mode"
+                on_click="discard_page_changes"
                 class="p-3 leading-none rounded border-beerus-100"
               >
                 Cancel
               </Button>
               <Button
-                on_click="toggle_edit_mode"
+                on_click="save_page_changes"
                 variant="primary"
                 class="p-3 leading-none"
               >
@@ -134,7 +135,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 <:menu>
                   <DropdownMenuItems>
                     <DropdownMenuItem>
-                      <div :on-click="toggle_edit_mode">Edit</div>
+                      <div :on-click="enter_edit_mode">Edit</div>
                     </DropdownMenuItem>
                     <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
                     <DropdownMenuItem>Duplicate</DropdownMenuItem>
@@ -340,9 +341,26 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
-  def handle_event("toggle_edit_mode", _, socket) do
-    socket = assign(socket, edited: !socket.assigns.edited)
-    {:noreply, socket}
+  def handle_event("enter_edit_mode", _, socket) do
+    {:noreply,
+     assign(socket,
+       edited: true,
+       temp_page_widgets: socket.assigns.page_widgets
+     )}
+  end
+
+  # TODO: Save updated dashboard widgets info to repo
+  def handle_event("save_page_changes", _, socket) do
+    {:noreply, assign(socket, edited: false, temp_page_widgets: [])}
+  end
+
+  def handle_event("discard_page_changes", _, socket) do
+    {:noreply,
+     assign(socket,
+       edited: false,
+       page_widgets: socket.assigns.temp_page_widgets,
+       temp_page_widgets: []
+     )}
   end
 
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
