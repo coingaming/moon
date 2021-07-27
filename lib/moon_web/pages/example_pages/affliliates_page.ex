@@ -9,13 +9,16 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
-
   alias MoonWeb.MockDB.Affiliates
 
   data affiliates, :list
   data active_affiliate, :map, default: %{id: nil}
-  data username_filter, :list, default: []
-  data country_filter, :list, default: []
+
+  # filters
+  data username_filter_values, :list, default: []
+  data country_filter_values, :list, default: []
+
+  # table
   data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
@@ -33,8 +36,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter active_items={@username_filter} />
-              <CountryFilter active_items={@country_filter} />
+              <UsernameFilter active_values={@username_filter_values} />
+              <CountryFilter active_values={@country_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -43,7 +46,6 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
-
             <AffiliatesTable
               id="affiliates_list"
               affiliates={@affiliates}
@@ -71,13 +73,13 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   def handle_info(msg, socket) do
     {refresh_list, socket} =
       case msg do
-        {:apply_filter, filter_event} ->
+        {:filters, filter_event} ->
           case filter_event do
-            {:username, items} ->
-              {true, socket |> assign(username_filter: items) |> assign(page: 1)}
+            {:apply_username_filter, values} ->
+              {true, socket |> assign(username_filter_values: values) |> assign(page: 1)}
 
-            {:country, items} ->
-              {true, socket |> assign(country_filter: items) |> assign(page: 1)}
+            {:apply_country_filter, values} ->
+              {true, socket |> assign(country_filter_values: values) |> assign(page: 1)}
 
             _ ->
               {false, socket}
@@ -118,8 +120,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
 
     {:noreply,
      socket
-     |> assign(username_filter: [])
-     |> assign(country_filter: [])
+     |> assign(username_filter_values: [])
+     |> assign(country_filter_values: [])
      |> assign(page: 1)
      |> filter_affiliates()}
   end
@@ -131,8 +133,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     %{
       page: page,
       sort_by: sort,
-      country_filter: country_filter,
-      username_filter: username_filter
+      country_filter_values: country_filter_values,
+      username_filter_values: username_filter_values
     } = socket.assigns
 
     socket
@@ -141,8 +143,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
         Affiliates.list(%{
           filter: %{
             user: %{
-              id: Enum.map(username_filter, &(&1.value |> String.to_integer())),
-              country: Enum.map(country_filter, & &1.value)
+              id: Enum.map(username_filter_values, &String.to_integer/1),
+              country: country_filter_values
             }
           },
           sort: Helpers.tuple_to_map(sort),

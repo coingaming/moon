@@ -11,9 +11,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.{Users, Utils}
 
-  alias MoonWeb.MockDB.Users
-  alias MoonWeb.MockDB.Utils
-
   data customers, :list
   data active_customer, :map, default: %{id: nil}
 
@@ -22,7 +19,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   data country_filter_values, :list, default: []
   data site_filter_values, :list, default: []
 
-  #  table
+  # table
   data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
@@ -40,9 +37,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter active_items_values={@username_filter_values} />
-              <CountryFilter active_items_values={@country_filter_values} />
-              <SiteFilter active_items_values={@site_filter_values} />
+              <UsernameFilter active_values={@username_filter_values} />
+              <CountryFilter active_values={@country_filter_values} />
+              <SiteFilter active_values={@site_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -51,7 +48,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
-
             <CustomersTable
               id="customers_list"
               customers={@customers}
@@ -63,7 +59,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
         </div>
       </div>
     </div>
-
     {#if @active_customer.id != nil}
       <div
         :on-click="close_customer_preview"
@@ -101,6 +96,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
             {:apply_site_filter, values} ->
               {true, socket |> assign(site_filter_values: values) |> assign(page: 1)}
+
+            _ ->
+              {false, socket}
           end
 
         {:table, table_event} ->
@@ -139,9 +137,9 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
     {:noreply,
      socket
-     |> assign(username_filter: [])
-     |> assign(country_filter: [])
-     |> assign(site_filter: [])
+     |> assign(username_filter_values: [])
+     |> assign(country_filter_values: [])
+     |> assign(site_filter_values: [])
      |> assign(page: 1)
      |> filter_customers()}
   end
