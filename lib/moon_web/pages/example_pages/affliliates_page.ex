@@ -1,27 +1,16 @@
 defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Pages.ExamplePages.Shared
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
+  alias Moon.Assets.Icons.IconChartSegment
+  alias Moon.Components.{Chip, Divider, Button, Heading}
+  alias Moon.Autolayouts.{ButtonsList, TopToDown}
+
+  alias MoonWeb.Pages.ExamplePages.Affiliates.AffiliatesTable
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
+  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
 
-  alias Shared.TopMenu
-  alias Shared.LeftMenu
-  alias Shared.Breadcrumbs
-
-  alias Moon.Components.Chip
-  alias Moon.Components.Divider
-  alias Moon.Components.Button
-  alias Moon.Components.Heading
-  alias Moon.Autolayouts.ButtonsList
-  alias Moon.Autolayouts.TopToDown
-
-  alias Moon.Assets.Icons.IconChartSegment
-
   alias MoonWeb.MockDB.Affiliates
-
-  alias __MODULE__.{AffiliatesList}
 
   data affiliates, :list
   data active_affiliate, :map, default: %{id: nil}
@@ -44,8 +33,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Chip left_icon="icon_zoom">Search</Chip>
               <Chip value="users" right_icon="icon_chevron_down_rounded">Past Month</Chip>
 
-              <UsernameFilter id="username_filter" active_items={@username_filter} />
-              <CountryFilter id="country_filter" active_items={@country_filter} />
+              <UsernameFilter active_items={@username_filter} />
+              <CountryFilter active_items={@country_filter} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
               <Button variant="danger" left_icon="chart_segment">
@@ -55,7 +44,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
 
-            <AffiliatesList
+            <AffiliatesTable
               id="affiliates_list"
               affiliates={@affiliates}
               page={@page}

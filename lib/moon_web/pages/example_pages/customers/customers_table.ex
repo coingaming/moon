@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.CustomersPage.CustomersTable do
+defmodule MoonWeb.Pages.ExamplePages.Customers.CustomersTable do
   use MoonWeb, :stateful_component
 
   alias MoonWeb.Pages.ExamplePages.Shared.ListPagination

@@ -161,6 +161,14 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   #
   # Lifecycle methods
   #
+  def update(assigns = %{search_text: _, selected_items: _}, socket) do
+    {:ok, socket |> assign(assigns)}
+  end
+
+  def update(assigns = %{show_filter: _}, socket) do
+    {:ok, socket |> assign(assigns)}
+  end
+
   def update(assigns, socket) do
     %{all_items: all_items, active_items: active_items} = assigns
     %{onscreen_items: onscreen_items, selected_items: selected_items} = socket.assigns

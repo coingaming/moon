@@ -1,29 +1,18 @@
 defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Pages.ExamplePages.Shared
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
-  alias MoonWeb.Pages.ExamplePages.Helpers
-
-  alias Shared.TopMenu
-  alias Shared.LeftMenu
-  alias Shared.Breadcrumbs
-
-  alias Moon.Components.Chip
-  alias Moon.Components.Divider
-  alias Moon.Components.Button
-  alias Moon.Components.Heading
-  alias Moon.Autolayouts.ButtonsList
-  alias Moon.Autolayouts.TopToDown
-
   alias Moon.Assets.Icons.IconChartSegment
+  alias Moon.Components.{Chip, Divider, Button, Heading}
+  alias Moon.Autolayouts.{ButtonsList, TopToDown}
+
+  alias MoonWeb.Pages.ExamplePages.Customers.{CustomersTable, CustomerPreview}
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter, SiteFilter}
+  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
+  alias MoonWeb.Pages.ExamplePages.Helpers
+  alias MoonWeb.MockDB.{Users, Utils}
 
   alias MoonWeb.MockDB.Users
   alias MoonWeb.MockDB.Utils
-
-  alias __MODULE__.{CustomersTable, CustomerPreview}
 
   data customers, :list
   data active_customer, :map, default: %{id: nil}
