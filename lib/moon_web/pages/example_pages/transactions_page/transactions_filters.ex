@@ -35,10 +35,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   }
   data amount_range_values, :map, default: @default_amount_range_value
   data create_date_values, :map, default: @default_create_date_values
-  prop selected_brand_option_ids, :list, default: []
-  prop selected_user_option_ids, :list, default: []
-  prop selected_currency_option_ids, :list, default: []
-  prop selected_country_option_ids, :list, default: []
+  prop apply_brand_filter, :list, default: []
+  prop apply_currency_filter, :list, default: []
+  prop apply_username_filter, :list, default: []
+  prop apply_country_filter, :list, default: []
 
   def render(assigns) do
     ~F"""
@@ -64,13 +64,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         />
       </Form>
 
-      <GenericDropdown id="brand_filter" label="Brand" all_items={@filter_options.brand} active_items={@selected_brand_option_ids} />
+      <GenericDropdown name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@apply_brand_filter} />
 
-      <GenericDropdown id="currency_filter" label="Currency" all_items={@filter_options.currency} active_items={@selected_currency_option_ids} />
+      <GenericDropdown name="currency_filter" label="Currency" options={@filter_options.currency} active_options={@apply_currency_filter} />
 
-      <GenericDropdown id="username_filter" label="User" all_items={@filter_options.customer} active_items={@selected_user_option_ids} />
+      <GenericDropdown name="username_filter" label="User" options={@filter_options.customer} active_options={@apply_username_filter} />
 
-      <GenericDropdown id="country_filter" label="Country" all_items={@filter_options.country} active_items={@selected_country_option_ids} />
+      <GenericDropdown name="country_filter" label="Country" options={@filter_options.country} active_options={@apply_country_filter} />
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
@@ -144,7 +144,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
+    {:noreply, assign(socket, amount_range_values: @default_amount_range_value)}
   end
 
   def handle_event(
@@ -152,8 +152,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    send(self(), {:apply_filter, {"amount_range_filter", @default_amount_range_value}})
-    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
+    send(self(), {:filters, {:amount_range_filter, @default_amount_range_value}})
+    {:noreply, assign(socket, amount_range_values: @default_amount_range_value)}
   end
 
   def handle_event(
@@ -162,7 +162,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         socket
       ) do
     filter_ids = socket.assigns.amount_range_values
-    send(self(), {:apply_filter, {"amount_range_filter", filter_ids}})
+    send(self(), {:filters, {:amount_range_filter, filter_ids}})
     {:noreply, socket}
   end
 
@@ -174,13 +174,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     send(self(), {:clear_filter})
 
     ["brand_filter", "country_filter", "username_filter", "currency_filter"]
-    |> Enum.each(fn id ->
-      send_update(GenericDropdown,
-        id: id,
-        selected_items: []
-      )
-    end)
-
+    |> Enum.each(fn id -> GenericDropdown.clear(id) end)
     {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
   end
 

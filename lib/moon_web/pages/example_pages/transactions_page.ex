@@ -131,14 +131,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end
   end
 
-  def handle_info({:apply_filter, {filter, selected_items}}, socket) do
+  def handle_info({:filters, {filter, selected_items}}, socket) do
     filters =
       socket.assigns.filters
       |> Map.put(filter, selected_items)
 
     transactions =
       filters
+      |> IO.inspect(label: "filters")
       |> get_filtered_transactions(socket.assigns)
+
+    Enum.each(filters, fn {filter, selected_items} ->
+    send_update(TransactionsFilters, id: "transaction_filters", "#{filter}": selected_items)
+    end)
 
     {:noreply, socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
   end
@@ -171,10 +176,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   defp get_filtered_transactions(selected_option_ids, assigns) do
     get_transactions(assigns)
-    |> get_filtered_transactions_by(:brand_id, selected_option_ids["brand_filter"])
-    |> get_filtered_transactions_by(:currency_id, selected_option_ids["currency_filter"])
-    |> get_filtered_transactions_by(:customer_id, selected_option_ids["username_filter"])
-    |> get_filtered_transactions_by(:country_id, selected_option_ids["country_filter"])
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids[:apply_brand_filter])
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids[:apply_currency_filter])
+    |> get_filtered_transactions_by(:customer_id, selected_option_ids[:apply_username_filter])
+    |> get_filtered_transactions_by(:country_id, selected_option_ids[:apply_country_filter])
     |> get_filtered_transactions_by_amount(
       :amount_eur,
       selected_option_ids["amount_range_filter"]
@@ -212,7 +217,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   defp get_filtered_transactions_by(transactions, _, []), do: transactions
 
   defp get_filtered_transactions_by(transactions, field, selected_ids) do
-    selected_ids = Enum.map(selected_ids, fn %{label: _label, value: value} -> value end)
+    IO.inspect({field, selected_ids}, label: "{field, selected_ids}")
+    #selected_ids = Enum.map(selected_ids, fn %{label: _label, value: value} -> value end)
 
     transactions
     |> Enum.filter(fn x ->
