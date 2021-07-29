@@ -1,10 +1,12 @@
 defmodule Moon.Components.Datepicker do
   use Moon.StatefulComponent
+
   alias Moon.Assets.Icons.IconChevronLeft
   alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month
+  alias Moon.Components.PopoverV2
   alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
 
@@ -33,7 +35,7 @@ defmodule Moon.Components.Datepicker do
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
-  data show, :boolean, default: false
+  data show, :boolean, default: true
   data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
 
@@ -45,7 +47,7 @@ defmodule Moon.Components.Datepicker do
     {asset_import @socket, "js/components/text-input"}
     {asset_import @socket, "js/tailwind"}
 
-    <div class="relative block">
+    <PopoverV2 show={@show} on_close="toggle_picker">
       <Chip
         on_click="toggle_picker"
         right_icon="icon_chevron_down_rounded"
@@ -54,132 +56,148 @@ defmodule Moon.Components.Datepicker do
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Chip>
 
-      <div
-        class={
-          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
-          hidden: !@show
-        }
-      >
-        <!-- Ranges -->
-        <div :if={length(@ranges) >0} class="space-y-0.5 w-44">
-          <div
-            :for={range <- @ranges}
-            class={
-              "py-2 px-3 hover:bg-goku-100 rounded cursor-pointer",
-              "bg-hover": range == @selected_range
-            }
-            :on-click="select_range"
-            phx-value-range={range}
-          >
-            {range_label(range)}
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="flex flex-col pt-2 pl-4">
-          <!-- Months -->
-          <div class="flex flex-grow space-x-6">
-            <!-- First Month -->
-            <div class="relative flex flex-col items-center">
-              <button
-                type="button"
-                class="absolute leading-none left-6"
-                :on-click="shift_months"
-                phx-value-months={-2}
-              >
-                <IconChevronLeft class="block" font_size="1rem"/>
-              </button>
-
-              <div class="flex-grow">
-                <Month
-                  date={@left_panel_date}
-                  start_date={@start_date}
-                  end_date={@end_date}
-                  week_starts_on={@week_starts_on}
-                  on_click="select_date"
-                />
-              </div>
-
-              <DateTimeLocalInput
-                :if={@with_time}
-                field={@start_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@start_date, @with_time)
-                }
-              />
-
-              <DateInput
-                :if={!@with_time}
-                field={@start_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@start_date, @with_time)
-                }
-              />
-            </div>
-
-            <!-- Second Month -->
-            <div class="relative flex flex-col items-center">
-              <button
-                type="button"
-                class="absolute leading-none right-6"
-                :on-click="shift_months"
-                phx-value-months={2}
-              >
-                <IconChevronRight class="block" font_size="1rem"/>
-              </button>
-
-              <div class="flex-grow">
-                <Month
-                  date={Timex.shift(@left_panel_date, months: 1)}
-                  start_date={@start_date}
-                  end_date={@end_date}
-                  week_starts_on={@week_starts_on}
-                  on_click="select_date"
-                />
-              </div>
-
-              <DateTimeLocalInput
-                :if={@with_time}
-                field={@end_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@end_date, @with_time)
-                }
-              />
-
-              <DateInput
-                :if={!@with_time}
-                field={@end_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@end_date, @with_time)
-                }
-              />
-            </div>
-          </div>
-
-          <div class="mt-4 text-right">
-            <Button
-              class="rounded-lg"
-              variant="primary"
-              on_click="toggle_picker"
+      <:content>
+        <div
+          class={
+            "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
+            hidden: !@show
+          }
+        >
+          <!-- Ranges -->
+          <div :if={length(@ranges) >0} class="space-y-0.5 w-48 mr-4">
+            <div
+              :for={range <- @ranges}
+              class={
+                "py-2 px-3 hover:bg-goku-100 rounded cursor-pointer",
+                "bg-goku-100": range == @selected_range
+              }
+              :on-click="select_range"
+              phx-value-range={range}
             >
-              Apply
-            </Button>
+              {range_label(range)}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="flex flex-col pt-2 pl-3">
+            <!-- Months -->
+            <div class="flex flex-grow space-x-6">
+              <!-- First Month -->
+              <div class="relative flex flex-col items-center">
+                <button
+                  type="button"
+                  class="absolute leading-none left-6"
+                  :on-click="shift_months"
+                  phx-value-months={-2}
+                >
+                  <IconChevronLeft class="block" font_size="1rem"/>
+                </button>
+
+                <div class="flex-grow">
+                  <Month
+                    date={@left_panel_date}
+                    start_date={@start_date}
+                    end_date={@end_date}
+                    week_starts_on={@week_starts_on}
+                    on_click="select_date"
+                  />
+                </div>
+              </div>
+
+              <!-- Second Month -->
+              <div class="relative flex flex-col items-center">
+                <button
+                  type="button"
+                  class="absolute leading-none right-6"
+                  :on-click="shift_months"
+                  phx-value-months={2}
+                >
+                  <IconChevronRight class="block" font_size="1rem"/>
+                </button>
+
+                <div class="flex-grow">
+                  <Month
+                    date={Timex.shift(@left_panel_date, months: 1)}
+                    start_date={@start_date}
+                    end_date={@end_date}
+                    week_starts_on={@week_starts_on}
+                    on_click="select_date"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-x-2 items-center justify-between mt-6">
+              <div class="flex flex-shrink-0 gap-x-2">
+                <DateTimeLocalInput
+                  :if={@with_time}
+                  field={@start_date_field}
+                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy, --:--",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@start_date, @with_time)
+                  }
+                />
+
+                <DateInput
+                  :if={!@with_time}
+                  field={@start_date_field}
+                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@start_date, @with_time)
+                  }
+                />
+
+                <DateTimeLocalInput
+                  :if={@with_time}
+                  field={@end_date_field}
+                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy, --:--",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@end_date, @with_time)
+                  }
+                />
+
+                <DateInput
+                  :if={!@with_time}
+                  field={@end_date_field}
+                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@end_date, @with_time)
+                  }
+                />
+              </div>
+
+              <div class="flex flex-shrink-0 gap-x-2">
+                <Button
+                  class="px-3 py-2 rounded"
+                  variant="tertiary"
+                  size="xsmall"
+                  on_click="toggle_picker"
+                >
+                  Discard
+                </Button>
+
+                <Button
+                  class="px-3 py-2 rounded"
+                  variant="primary"
+                  size="xsmall"
+                  on_click="toggle_picker"
+                >
+                  Apply
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </:content>
+    </PopoverV2>
     """
   end
 
