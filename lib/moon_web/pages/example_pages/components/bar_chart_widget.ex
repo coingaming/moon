@@ -20,8 +20,8 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           height={8}
           width={8}
           click={@on_refresh}
-          value_name="index"
-          value={@widget.index}
+          value_name="name"
+          value={@widget.name}
           class={if @edited, do: "hidden"}
         />
 
@@ -47,8 +47,8 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           width={8}
           title="TODO: Delete"
           click={@on_remove}
-          value_name="index"
-          value={@widget.index}
+          value_name="name"
+          value={@widget.name}
           class={unless @edited, do: "hidden"}
         />
       </:buttons>

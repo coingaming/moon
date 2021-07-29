@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     cell-100 dodoria-100 nappa-100
   )
 
-  @metrics [
+  @metrics_names [
     "Total deposits, EUR",
     "Total withdrawals, EUR",
     "Casino NGR, EUR",
@@ -36,64 +36,58 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     "Total NGR, EUR"
   ]
 
-  @widget_names ~w(
-    Depositors Winners Losers
-    Wages Demographic Geo
-    Currency Device\u00a0&\u00a0OS Products
-  )
+  # @widgets_names ~w(
+  #   Depositors Winners Losers
+  #   Wages Demographic Geo
+  #   Currency Device\u00a0&\u00a0OS Products
+  # )
 
-  data colors, :list, default: @colors
-  data widget_names, :list, default: @widget_names
+  # dashboard content
+  data page_title, :string
+  data page_metrics, :list, default: []
+  data page_widgets, :list, default: []
+  data temp_page_widgets, :list, default: []
+  data all_metrics, :list, default: []
+
+  # tabs
+  prop page_tabs, :list, default: []
+  data selected_tab, :string
+
+  # filters
+  prop all_currencies, :list, default: []
+  prop all_sites, :list, default: []
+  data currency_filter_values, :list, default: []
+  data site_filter_values, :list, default: []
+  data start_date, :naive_datetime, default: Timex.beginning_of_month(Timex.today())
+  data end_date, :naive_datetime, default: Timex.end_of_month(Timex.today())
+
+  # page state
+  data saved, :boolean, default: true
+  data edited, :boolean, default: false
 
   def mount(params, _session, socket) do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "lab-light",
         active_page: __MODULE__,
-        title: "Starter dashboard",
-        clicked_filter_name: "",
-        tabs: get_tabs(),
-        selected_tab: "total",
-        saved: true,
-        edited: false,
-        page_metrics: [],
-        page_widgets: [],
-        temp_page_widgets: [],
-        widgets: [],
-        start_date: Timex.beginning_of_month(Timex.today()),
-        end_date: Timex.end_of_month(Timex.today()),
-        currency_filter: [],
-        site_filter: [],
-        all_currencies: [],
-        all_sites: [],
-        all_metrics: []
+        page_title: "Starter dashboard",
+        page_tabs: ~w(Total Real Bonus),
+        selected_tab: "Total",
+        all_metrics: prepare_filter_options(@metrics_names),
+        all_currencies: prepare_filter_options(Currencies.list_all()),
+        all_sites: prepare_filter_options(Sites.list_all()),
+        page_metrics:
+          fetch_metrics_data([
+            %{name: "Total deposits, EUR"},
+            %{name: "Casino NGR, EUR"}
+          ]),
+        page_widgets:
+          fetch_widgets_data([
+            %{name: "Depositors"},
+            %{name: "Winners"},
+            %{name: "Losers"}
+          ])
       )
-
-    socket =
-      if connected?(socket) do
-        all_metrics = Enum.map(@metrics, &%{name: &1})
-        all_widgets = Enum.map(@widget_names, &%{name: &1})
-
-        assign(socket,
-          all_metrics: prepare_filter_options(all_metrics),
-          all_currencies: prepare_filter_options(Currencies.list_all()),
-          all_sites: prepare_filter_options(Sites.list_all()),
-          page_metrics:
-            fetch_metrics_data([
-              %{name: "Total deposits, EUR"},
-              %{name: "Casino NGR, EUR"}
-            ]),
-          page_widgets:
-            fetch_widgets_data([
-              %{name: "Depositors"},
-              %{name: "Winners"},
-              %{name: "Losers"}
-            ]),
-          widgets: prepare_filter_options(all_widgets)
-        )
-      else
-        socket
-      end
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
@@ -108,7 +102,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
         <div class="flex-grow py-6 overflow-x-hidden px-14">
           <div class="flex items-center mb-6">
-            <Heading size={32} class="flex-grow">{@title}</Heading>
+            <Heading size={32} class="flex-grow">{@page_title}</Heading>
 
             <div class={"space-x-2", hidden: !@edited}>
               <Button
@@ -149,7 +143,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
           <div class={"flex flex-wrap items-center gap-y-4 gap-x-6", "opacity-30": @edited}>
             <Switcher
-              items={@tabs}
+              items={@page_tabs}
               selected_item={@selected_tab}
               click="tab_click"
               class="h-10"
@@ -172,14 +166,14 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               <ContentFilter
                 id="currency_filter"
                 filter_name="Currency"
-                active_items={@currency_filter}
+                active_items={@currency_filter_values}
                 all_items={@all_currencies}
               />
 
               <ContentFilter
                 id="site_filter"
                 filter_name="Brands"
-                active_items={@site_filter}
+                active_items={@site_filter_values}
                 all_items={@all_sites}
               />
 
@@ -260,7 +254,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               <BarChartWidget
                 widget={widget}
                 edited={@edited}
-                bar_bg_color={"bg-#{Enum.at(@colors, widget.index)}"}
+                bar_bg_color={"bg-#{widget.color}"}
                 on_refresh="refresh_widget_data"
                 on_remove="remove_widget"
               />
@@ -272,38 +266,20 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     """
   end
 
-  # TODO: Refactor
-  def handle_event(
-        "open_popover",
-        %{"click_value" => click_value},
-        socket
-      ) do
-    {:noreply, assign(socket, clicked_filter_name: click_value)}
-  end
-
-  # TODO: Refactor
-  def handle_event(
-        "close_popover",
-        _,
-        socket
-      ) do
-    {:noreply, assign(socket, clicked_filter_name: nil)}
-  end
-
   def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
     socket =
       assign(socket,
         selected_tab: selected_item,
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
-        widgets: get_widgets()
+        page_widgets: fetch_widgets_data(socket.assigns.page_widgets)
       )
 
     {:noreply, socket}
   end
 
-  def handle_event("refresh_widget_data", %{"index" => index}, socket) do
+  def handle_event("refresh_widget_data", %{"name" => name}, socket) do
     widgets = socket.assigns.page_widgets
-    widget = Enum.find(widgets, &(&1.index == String.to_integer(index)))
+    widget = Enum.find(widgets, &(&1.name == name))
 
     widgets =
       List.update_at(widgets, widget.index, fn item ->
@@ -313,8 +289,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, page_widgets: widgets)}
   end
 
-  def handle_event("remove_widget", %{"index" => index}, socket) do
-    widgets = Enum.filter(socket.assigns.page_widgets, &(&1.index != String.to_integer(index)))
+  def handle_event("remove_widget", %{"name" => name}, socket) do
+    widgets = Enum.filter(socket.assigns.page_widgets, &(&1.name != name))
     {:noreply, assign(socket, page_widgets: widgets)}
   end
 
@@ -334,7 +310,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         currency_filter: [],
         site_filter: [],
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
-        widgets: get_widgets(),
+        page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
         saved: true
       )
 
@@ -369,7 +345,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         start_date: start_date,
         end_date: end_date,
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
-        widgets: get_widgets(),
+        page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
         saved: false
       )
 
@@ -398,23 +374,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     socket =
       assign(socket,
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
-        widgets: get_widgets(),
+        page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
         saved: false
       )
 
     {:noreply, socket}
-  end
-
-  defp get_widgets() do
-    @widget_names
-    |> Enum.with_index()
-    |> Enum.map(fn {name, index} ->
-      %{
-        index: index,
-        title: name,
-        data: generate_widget_items()
-      }
-    end)
   end
 
   defp generate_widget_items() do
@@ -428,23 +392,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         }
       end
     )
-  end
-
-  defp get_tabs() do
-    [
-      %{
-        name: "Total",
-        value: "total"
-      },
-      %{
-        name: "Real",
-        value: "real"
-      },
-      %{
-        name: "Bonus",
-        value: "bonus"
-      }
-    ]
   end
 
   defp fetch_metrics_data(metrics) do
@@ -466,12 +413,21 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     |> Enum.map(fn {widget, index} ->
       Map.merge(widget, %{
         index: index,
+        color: Enum.at(@colors, index),
         data: generate_widget_items()
       })
     end)
   end
 
   defp prepare_filter_options(items) do
-    Enum.map(items, &%{label: &1.name, value: &1.name})
+    Enum.map(items, fn item ->
+      name =
+        case item do
+          %{name: name} -> name
+          name when is_binary(name) -> name
+        end
+
+      %{label: name, value: name}
+    end)
   end
 end
