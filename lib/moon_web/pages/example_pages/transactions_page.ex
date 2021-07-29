@@ -34,6 +34,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   @max_record 100
   @default_page_count 10
 
+  @dropdown_filter_map %{
+    apply_brand_filter: :brand_filter_values,
+    apply_currency_filter: :currency_filter_values,
+    apply_country_filter: :country_filter_values,
+    apply_username_filter: :username_filter_values,
+    apply_create_date_filter: :create_date_values,
+    apply_amount_range_filter: :amount_range_values
+  }
+
   data breadcrumbs, :any,
     default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
 
@@ -51,7 +60,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     socket =
       if socket.transport_pid != nil do
         original_transactions = get_transactions()
-        socket = assign(socket, original_transactions: original_transactions, total_count: length(original_transactions))
+
+        socket =
+          assign(socket,
+            original_transactions: original_transactions,
+            total_count: length(original_transactions)
+          )
+
         %{filters: filters} = assigns = socket.assigns
         transactions = get_filtered_transactions(filters, assigns)
         filter_options = prepare_options(original_transactions)
@@ -62,7 +77,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       end
 
     {:ok,
-       assign(apply_paging(socket),
+     assign(apply_paging(socket),
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
@@ -106,19 +121,20 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   end
 
   def handle_info({:table, table_event}, socket) do
-    {refresh_list, socket} = case table_event do
-      {:paginate, page} ->
-        {true, assign(socket, page: page)}
+    {refresh_list, socket} =
+      case table_event do
+        {:paginate, page} ->
+          {true, assign(socket, page: page)}
 
-      {:select, transaction} ->
-        {false, assign(socket, active_transaction: transaction)}
+        {:select, transaction} ->
+          {false, assign(socket, active_transaction: transaction)}
 
-      {:sort, sort_by} ->
-        {true, assign(socket, sort_by: sort_by, page: 1)}
+        {:sort, sort_by} ->
+          {true, assign(socket, sort_by: sort_by, page: 1)}
 
-      _ ->
-        {false, socket}
-    end
+        _ ->
+          {false, socket}
+      end
 
     if refresh_list do
       transactions =
@@ -131,7 +147,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end
   end
 
-  def handle_info({:apply_filter, {filter, selected_items}}, socket) do
+  def handle_info({:filters, {filter, selected_items}}, socket) do
     filters =
       socket.assigns.filters
       |> Map.put(filter, selected_items)
@@ -140,17 +156,28 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       filters
       |> get_filtered_transactions(socket.assigns)
 
-    {:noreply, socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
+    # only changed filter's event sent is not work sometimes.. therefore I've sent all
+    Enum.each(filters, fn {filter, selected_items} ->
+      send_update(TransactionsFilters,
+        id: "transaction_filters",
+        "#{@dropdown_filter_map[filter]}": selected_items
+      )
+    end)
+
+    {:noreply,
+     socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
   end
 
   def handle_info({:clear_filter}, socket) do
+    # need to have defaults here
     filters = %{}
 
     transactions =
       filters
       |> get_filtered_transactions(socket.assigns)
 
-    {:noreply, socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
+    {:noreply,
+     socket |> assign(transactions: transactions, filters: filters, page: 1) |> apply_paging()}
   end
 
   def handle_info({:save_segment}, socket) do
@@ -171,13 +198,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   defp get_filtered_transactions(selected_option_ids, assigns) do
     get_transactions(assigns)
-    |> get_filtered_transactions_by(:brand_id, selected_option_ids["brand_filter"])
-    |> get_filtered_transactions_by(:currency_id, selected_option_ids["currency_filter"])
-    |> get_filtered_transactions_by(:customer_id, selected_option_ids["username_filter"])
-    |> get_filtered_transactions_by(:country_id, selected_option_ids["country_filter"])
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids[:apply_brand_filter])
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids[:apply_currency_filter])
+    |> get_filtered_transactions_by(:customer_id, selected_option_ids[:apply_username_filter])
+    |> get_filtered_transactions_by(:country_id, selected_option_ids[:apply_country_filter])
     |> get_filtered_transactions_by_amount(
       :amount_eur,
-      selected_option_ids["amount_range_filter"]
+      selected_option_ids[:amount_range_filter]
     )
     |> get_filtered_transactions_by_date(:create_time, selected_option_ids["create_date_filter"])
     |> Enum.sort(fn a, b ->
@@ -193,16 +220,18 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     %{transactions: transactions, page: page} = socket.assigns
     records_len = length(transactions)
     total_paged = page * @default_page_count
-    item_count = if total_paged > records_len do
-      @default_page_count - (total_paged - records_len)
-    else
-      @default_page_count
-    end
 
-    IO.inspect({records_len, total_paged, item_count}, label: "paging")
-    transactions = transactions
-    |> Enum.take(total_paged)
-    |> Enum.take(-1 * item_count)
+    item_count =
+      if total_paged > records_len do
+        @default_page_count - (total_paged - records_len)
+      else
+        @default_page_count
+      end
+
+    transactions =
+      transactions
+      |> Enum.take(total_paged)
+      |> Enum.take(-1 * item_count)
 
     assign(socket, transactions: transactions, page_count: item_count, total_count: records_len)
   end
@@ -212,8 +241,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   defp get_filtered_transactions_by(transactions, _, []), do: transactions
 
   defp get_filtered_transactions_by(transactions, field, selected_ids) do
-    selected_ids = Enum.map(selected_ids, fn %{label: _label, value: value} -> value end)
-
     transactions
     |> Enum.filter(fn x ->
       Enum.member?(selected_ids, x[field])
