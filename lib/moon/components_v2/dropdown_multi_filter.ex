@@ -257,14 +257,12 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def handle_event(
         "discard_filter",
         _value,
-        socket = %{assigns: %{id: id, active_items: _active_items}}
+        socket = %{assigns: %{active_items: active_items}}
       ) do
-    apply_filter(id, [])
-
     {:noreply,
      socket
      |> assign(show_filter: false)
-     |> assign(selected_items: [])}
+     |> assign(selected_items: active_items)}
   end
 
   def handle_event(
