@@ -1,4 +1,7 @@
-defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.GenericDropdown do
+defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
+  @moduledoc """
+  It's a obsolute module, I'm going to remove it with mock data generation on transaction page
+  """
   use MoonWeb, :stateless_component
 
   alias Moon.ComponentsV2.DropdownMultiFilter

@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.Datepicker
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.ButtonsList
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.GenericDropdown
+  alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter
 
   data clicked_name, :string, default: ""
   prop filter_options, :map
@@ -35,10 +35,10 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   }
   data amount_range_values, :map, default: @default_amount_range_value
   data create_date_values, :map, default: @default_create_date_values
-  prop apply_brand_filter, :list, default: []
-  prop apply_currency_filter, :list, default: []
-  prop apply_username_filter, :list, default: []
-  prop apply_country_filter, :list, default: []
+  prop brand_filter_values, :list, default: []
+  prop currency_filter_values, :list, default: []
+  prop username_filter_values, :list, default: []
+  prop country_filter_values, :list, default: []
 
   def render(assigns) do
     ~F"""
@@ -64,13 +64,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         />
       </Form>
 
-      <GenericDropdown name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@apply_brand_filter} />
+      <TransactionFilter name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@brand_filter_values} />
 
-      <GenericDropdown name="currency_filter" label="Currency" options={@filter_options.currency} active_options={@apply_currency_filter} />
+      <TransactionFilter name="currency_filter" label="Currency" options={@filter_options.currency} active_options={@currency_filter_values} />
 
-      <GenericDropdown name="username_filter" label="User" options={@filter_options.customer} active_options={@apply_username_filter} />
+      <TransactionFilter name="username_filter" label="User" options={@filter_options.customer} active_options={@username_filter_values} />
 
-      <GenericDropdown name="country_filter" label="Country" options={@filter_options.country} active_options={@apply_country_filter} />
+      <TransactionFilter name="country_filter" label="Country" options={@filter_options.country} active_options={@country_filter_values} />
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
@@ -104,14 +104,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     """
   end
 
-  def handle_event("handle_create_date_selection_changed", %{"create_date_values" => params}, socket) do
-    IO.inspect(params, label: "create_date_values")
+  def handle_event(
+        "handle_create_date_selection_changed",
+        %{"create_date_values" => params},
+        socket
+      ) do
     {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
     create_date_values = %{end_date: end_date, start_date: start_date}
 
-    IO.inspect(create_date_values, label: "create_date_values")
-
-    send(self(), {:apply_filter, {"create_date_filter", create_date_values}})
+    send(self(), {:filters, {:apply_create_date_filter, create_date_values}})
     {:noreply, assign(socket, create_date_values: create_date_values)}
   end
 
@@ -152,7 +153,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         _,
         socket
       ) do
-    send(self(), {:filters, {:amount_range_filter, @default_amount_range_value}})
     {:noreply, assign(socket, amount_range_values: @default_amount_range_value)}
   end
 
@@ -174,7 +174,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     send(self(), {:clear_filter})
 
     ["brand_filter", "country_filter", "username_filter", "currency_filter"]
-    |> Enum.each(fn id -> GenericDropdown.clear(id) end)
+    |> Enum.each(fn id -> TransactionFilter.clear(id) end)
+
     {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
   end
 
