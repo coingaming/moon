@@ -48,13 +48,19 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsTable do
     if page > 1 do
       self() |> send({:table, {:paginate, page - 1}})
     end
+
     {:noreply, socket}
   end
 
-  def handle_event("goto_next_page", _, socket = %{assigns: %{page: page, page_count: page_count, total_count: total_count}}) do
-    if ((page + 1) * page_count) < total_count do
+  def handle_event(
+        "goto_next_page",
+        _,
+        socket = %{assigns: %{page: page, page_count: page_count, total_count: total_count}}
+      ) do
+    if (page + 1) * page_count < total_count do
       self() |> send({:table, {:paginate, page + 1}})
     end
+
     {:noreply, socket}
   end
 

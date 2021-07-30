@@ -269,7 +269,7 @@ ${fontFaceCss}
   ${colorIds
     .map(
       (x) => `
-  --color--${x}: #${figmaConfig[`light-color-${x}`]};`
+  --color--${x}: #${`${figmaConfig[`light-color-${x}`]}`.replace("#", "")}; // light-color-${x}`
     )
     .join('')}
 }
@@ -291,7 +291,7 @@ ${fontFaceCss}
     ${colorIds
       .map(
         (x) => `
-    --color--${x}: #${figmaConfig[`dark-color-${x}`]};`
+    --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")}; // dark-color-${x} (fallover to light)`
       )
       .join('')}
 
