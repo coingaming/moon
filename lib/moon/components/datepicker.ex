@@ -35,12 +35,18 @@ defmodule Moon.Components.Datepicker do
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
+  # TODO: Revert to false
   data show, :boolean, default: true
   data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
 
-  prop start_date, :datetime, default: nil
-  prop end_date, :datetime, default: nil
+  data start_date, :datetime, default: Timex.today()
+  data end_date, :datetime, default: Timex.today()
+
+  data temp_range, :string, default: nil
+  data temp_start_date, :datetime, default: nil
+  data temp_end_date, :datetime, default: nil
+  data temp_dates_saved, :boolean, default: false
 
   def render(assigns) do
     ~F"""
@@ -132,7 +138,7 @@ defmodule Moon.Components.Datepicker do
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@start_date_field}
-                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  class="date-icon-hidden w-36 text-xs rounded moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
@@ -143,7 +149,7 @@ defmodule Moon.Components.Datepicker do
                 <DateInput
                   :if={!@with_time}
                   field={@start_date_field}
-                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  class="date-icon-hidden w-28 text-xs rounded moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",
@@ -154,7 +160,7 @@ defmodule Moon.Components.Datepicker do
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@end_date_field}
-                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  class="date-icon-hidden w-36 text-xs rounded moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
@@ -165,7 +171,7 @@ defmodule Moon.Components.Datepicker do
                 <DateInput
                   :if={!@with_time}
                   field={@end_date_field}
-                  class="w-40 text-xs rounded moon-text-input border-beerus-100"
+                  class="date-icon-hidden w-28 text-xs rounded moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",
@@ -176,10 +182,9 @@ defmodule Moon.Components.Datepicker do
 
               <div class="flex flex-shrink-0 gap-x-2">
                 <Button
-                  class="px-3 py-2 rounded"
-                  variant="tertiary"
+                  variant="outline"
                   size="xsmall"
-                  on_click="toggle_picker"
+                  on_click="discard_changes"
                 >
                   Discard
                 </Button>
@@ -346,9 +351,18 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
+    socket = backup_dates(socket, socket.assigns)
     {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
-    socket = assign(socket, selected_range: range, left_panel_date: Timex.to_date(start_date))
-    update_dates(socket, start_date, end_date)
+
+    socket =
+      assign(socket,
+        selected_range: range,
+        start_date: start_date,
+        end_date: end_date,
+        left_panel_date: Timex.to_date(start_date)
+      )
+
+    # update_dates(socket, start_date, end_date)
 
     {:noreply, socket}
   end
@@ -385,5 +399,28 @@ defmodule Moon.Components.Datepicker do
 
     update_dates(socket, start_date, end_date)
     {:noreply, assign(socket, selected_range: nil)}
+  end
+
+  def handle_event("discard_changes", _, socket) do
+    socket =
+      assign(socket,
+        selected_range: socket.assigns.temp_range,
+        start_date: socket.assigns.temp_start_date,
+        end_date: socket.assigns.temp_end_date,
+        show: false
+      )
+
+    {:noreply, socket}
+  end
+
+  defp backup_dates(socket, %{temp_dates_saved: true}), do: socket
+
+  defp backup_dates(socket, assigns) do
+    assign(socket,
+      temp_range: assigns.selected_range,
+      temp_start_date: assigns.start_date,
+      temp_end_date: assigns.end_date,
+      temp_dates_saved: true
+    )
   end
 end
