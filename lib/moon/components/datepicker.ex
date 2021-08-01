@@ -43,7 +43,7 @@ defmodule Moon.Components.Datepicker do
   data internal_end_date, :datetime, default: Timex.today()
   data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
-  data show, :boolean, default: true
+  data show, :boolean, default: false
 
   # Temporary values for the "Discard" feature
   data temp_range, :string, default: nil
@@ -65,6 +65,7 @@ defmodule Moon.Components.Datepicker do
 
     <PopoverV2 show={@show} on_close="toggle_picker">
       <Chip
+        class={@button_class}
         on_click="toggle_picker"
         right_icon="icon_chevron_down_rounded"
         active={@start_date && @end_date}
@@ -390,8 +391,11 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_date", %{"date" => date}, socket) do
-    with_time = socket.assigns.with_time
-    start_date = socket.assigns.start_date
+    %{
+      with_time: with_time,
+      internal_start_date: start_date,
+      internal_end_date: end_date
+    } = socket.assigns
 
     date =
       date
@@ -400,7 +404,7 @@ defmodule Moon.Components.Datepicker do
 
     {start_date, end_date} =
       cond do
-        start_date && is_nil(socket.assigns.end_date) && Timex.after?(date, start_date) ->
+        start_date && is_nil(end_date) && Timex.after?(date, start_date) ->
           # Keep start, set end
           end_date = if with_time, do: Timex.end_of_day(date), else: date
           {start_date, end_date}
@@ -411,8 +415,12 @@ defmodule Moon.Components.Datepicker do
           {start_date, nil}
       end
 
-    update_dates(socket, start_date, end_date)
-    {:noreply, assign(socket, selected_range: nil)}
+    {:noreply,
+     assign(socket,
+       selected_range: nil,
+       internal_start_date: start_date,
+       internal_end_date: end_date
+     )}
   end
 
   def handle_event("discard_changes", _, socket) do

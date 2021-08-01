@@ -159,7 +159,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 end_date={@end_date}
                 start_date_field={:start_date}
                 end_date_field={:end_date}
-                button_class="font-semibold px-3 text-trunks-100 bg-gohan-100"
+                button_class="font-semibold px-3"
                 on_date_change="update_filter_dates"
               />
 
@@ -300,8 +300,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       assign(socket,
         start_date: nil,
         end_date: nil,
-        currency_filter: [],
-        site_filter: [],
+        currency_filter_values: [],
+        site_filter_values: [],
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
         saved: true
@@ -358,10 +358,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     socket =
       case filter_name do
         "Currency" ->
-          assign(socket, currency_filter: items)
+          assign(socket, currency_filter_values: items)
 
         "Brands" ->
-          assign(socket, site_filter: items)
+          assign(socket, site_filter_values: items)
       end
 
     socket =
