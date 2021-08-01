@@ -35,18 +35,28 @@ defmodule Moon.Components.Datepicker do
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
-  # TODO: Revert to false
-  data show, :boolean, default: true
+  prop start_date, :datetime
+  prop end_date, :datetime
+
+  # Internal values
+  data internal_start_date, :datetime, default: Timex.today()
+  data internal_end_date, :datetime, default: Timex.today()
   data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
+  data show, :boolean, default: true
 
-  data start_date, :datetime, default: Timex.today()
-  data end_date, :datetime, default: Timex.today()
-
+  # Temporary values for the "Discard" feature
   data temp_range, :string, default: nil
-  data temp_start_date, :datetime, default: nil
-  data temp_end_date, :datetime, default: nil
-  data temp_dates_saved, :boolean, default: false
+  data temp_range_saved, :boolean, default: false
+
+  def update(assigns, socket) do
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(internal_start_date: assigns.start_date, internal_end_date: assigns.end_date)
+
+    {:ok, socket}
+  end
 
   def render(assigns) do
     ~F"""
@@ -102,8 +112,8 @@ defmodule Moon.Components.Datepicker do
                 <div class="flex-grow">
                   <Month
                     date={@left_panel_date}
-                    start_date={@start_date}
-                    end_date={@end_date}
+                    start_date={@internal_start_date}
+                    end_date={@internal_end_date}
                     week_starts_on={@week_starts_on}
                     on_click="select_date"
                   />
@@ -124,8 +134,8 @@ defmodule Moon.Components.Datepicker do
                 <div class="flex-grow">
                   <Month
                     date={Timex.shift(@left_panel_date, months: 1)}
-                    start_date={@start_date}
-                    end_date={@end_date}
+                    start_date={@internal_start_date}
+                    end_date={@internal_end_date}
                     week_starts_on={@week_starts_on}
                     on_click="select_date"
                   />
@@ -133,49 +143,49 @@ defmodule Moon.Components.Datepicker do
               </div>
             </div>
 
-            <div class="flex gap-x-2 items-center justify-between mt-6">
+            <div class="flex items-center justify-between mt-6 gap-x-2">
               <div class="flex flex-shrink-0 gap-x-2">
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@start_date_field}
-                  class="date-icon-hidden w-36 text-xs rounded moon-text-input border-beerus-100"
+                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@start_date, @with_time)
+                    "data-pending-val": format_date(@internal_start_date, @with_time)
                   }
                 />
 
                 <DateInput
                   :if={!@with_time}
                   field={@start_date_field}
-                  class="date-icon-hidden w-28 text-xs rounded moon-text-input border-beerus-100"
+                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@start_date, @with_time)
+                    "data-pending-val": format_date(@internal_start_date, @with_time)
                   }
                 />
 
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@end_date_field}
-                  class="date-icon-hidden w-36 text-xs rounded moon-text-input border-beerus-100"
+                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@end_date, @with_time)
+                    "data-pending-val": format_date(@internal_end_date, @with_time)
                   }
                 />
 
                 <DateInput
                   :if={!@with_time}
                   field={@end_date_field}
-                  class="date-icon-hidden w-28 text-xs rounded moon-text-input border-beerus-100"
+                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@end_date, @with_time)
+                    "data-pending-val": format_date(@internal_end_date, @with_time)
                   }
                 />
               </div>
@@ -193,7 +203,7 @@ defmodule Moon.Components.Datepicker do
                   class="px-3 py-2 rounded"
                   variant="primary"
                   size="xsmall"
-                  on_click="toggle_picker"
+                  on_click="update_dates"
                 >
                   Apply
                 </Button>
@@ -351,18 +361,22 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
-    socket = backup_dates(socket, socket.assigns)
+    socket =
+      backup_dates(
+        socket,
+        socket.assigns.temp_range_saved,
+        socket.assigns.selected_range
+      )
+
     {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
 
     socket =
       assign(socket,
         selected_range: range,
-        start_date: start_date,
-        end_date: end_date,
+        internal_start_date: start_date,
+        internal_end_date: end_date,
         left_panel_date: Timex.to_date(start_date)
       )
-
-    # update_dates(socket, start_date, end_date)
 
     {:noreply, socket}
   end
@@ -405,22 +419,27 @@ defmodule Moon.Components.Datepicker do
     socket =
       assign(socket,
         selected_range: socket.assigns.temp_range,
-        start_date: socket.assigns.temp_start_date,
-        end_date: socket.assigns.temp_end_date,
+        internal_start_date: socket.assigns.start_date,
+        internal_end_date: socket.assigns.end_date,
+        left_panel_date: Timex.to_date(socket.assigns.start_date),
         show: false
       )
 
     {:noreply, socket}
   end
 
-  defp backup_dates(socket, %{temp_dates_saved: true}), do: socket
+  def handle_event("update_dates", _, socket) do
+    update_dates(socket, socket.assigns.internal_start_date, socket.assigns.internal_end_date)
 
-  defp backup_dates(socket, assigns) do
+    {:noreply, assign(socket, show: false)}
+  end
+
+  defp backup_dates(socket, true, _), do: socket
+
+  defp backup_dates(socket, _, range) do
     assign(socket,
-      temp_range: assigns.selected_range,
-      temp_start_date: assigns.start_date,
-      temp_end_date: assigns.end_date,
-      temp_dates_saved: true
+      temp_range: range,
+      temp_range_saved: true
     )
   end
 end
