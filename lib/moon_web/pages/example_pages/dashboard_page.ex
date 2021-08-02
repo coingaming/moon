@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.IconButton
   alias Moon.Components.Switcher
@@ -58,8 +59,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   prop all_sites, :list, default: []
   data currency_filter_values, :list, default: []
   data site_filter_values, :list, default: []
-  data start_date, :naive_datetime, default: Timex.beginning_of_month(Timex.today())
-  data end_date, :naive_datetime, default: Timex.end_of_month(Timex.today())
+  data date_filter_values, :map, default: %{}
 
   # page state
   data saved, :boolean, default: true
@@ -76,6 +76,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         all_metrics: prepare_filter_options(@metrics_names),
         all_currencies: prepare_filter_options(Currencies.list_all()),
         all_sites: prepare_filter_options(Sites.list_all()),
+        date_filter_values: %{
+          start_date: Timex.beginning_of_month(Timex.today()),
+          end_date: Timex.end_of_month(Timex.today())
+        },
         page_metrics:
           fetch_metrics_data([
             %{name: "Total deposits, EUR"},
@@ -152,16 +156,18 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             <Divider orientation="vertical" color="beerus-100" height="10" />
 
             <ButtonsList>
-              <!-- TODO: Tweak styles -->
-              <Datepicker
-                id="filter_datepicker"
-                start_date={@start_date}
-                end_date={@end_date}
-                start_date_field={:start_date}
-                end_date_field={:end_date}
-                button_class="font-semibold px-3"
-                on_date_change="update_filter_dates"
-              />
+              <Form for={:date_filter_values} change="validate_filter_dates">
+                <Datepicker
+                  id="filter_datepicker"
+                  start_date={@date_filter_values.start_date}
+                  end_date={@date_filter_values.end_date}
+                  start_date_field={:start_date}
+                  end_date_field={:end_date}
+                  with_time={false}
+                  button_class="font-semibold px-3"
+                  on_date_change="update_filter_dates"
+                />
+              </Form>
 
               <ContentFilter
                 id="currency_filter"
@@ -298,8 +304,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
     socket =
       assign(socket,
-        start_date: nil,
-        end_date: nil,
+        date_filter_values: %{start_date: nil, end_date: nil},
         currency_filter_values: [],
         site_filter_values: [],
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
@@ -332,11 +337,31 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
      )}
   end
 
+  def handle_event(
+        "validate_filter_dates",
+        %{"date_filter_values" => %{"start_date" => start_date, "end_date" => end_date}},
+        socket
+      ) do
+    {start_date, end_date} = Datepicker.validate(start_date, end_date)
+
+    socket =
+      assign(socket,
+        date_filter_values: %{
+          start_date: start_date,
+          end_date: end_date
+        }
+      )
+
+    {:noreply, socket}
+  end
+
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
     socket =
       assign(socket,
-        start_date: start_date,
-        end_date: end_date,
+        date_filter_values: %{
+          start_date: start_date,
+          end_date: end_date
+        },
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
         saved: false

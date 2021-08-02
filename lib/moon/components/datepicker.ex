@@ -42,7 +42,7 @@ defmodule Moon.Components.Datepicker do
   data internal_start_date, :datetime, default: Timex.today()
   data internal_end_date, :datetime, default: Timex.today()
   data left_panel_date, :datetime, default: Timex.today()
-  data selected_range, :string, default: nil
+  data selected_range, :string, default: "thisMonth"
   data temp_range, :string, default: nil
   data show, :boolean, default: false
 
@@ -51,7 +51,10 @@ defmodule Moon.Components.Datepicker do
     socket =
       socket
       |> assign(assigns)
-      |> assign(internal_start_date: assigns.start_date, internal_end_date: assigns.end_date)
+      |> assign(
+        internal_start_date: parse_date(assigns.start_date),
+        internal_end_date: parse_date(assigns.end_date)
+      )
 
     {:ok, socket}
   end
