@@ -41,14 +41,12 @@ defmodule Moon.Components.Datepicker do
   # Internal values
   data internal_start_date, :datetime, default: Timex.today()
   data internal_end_date, :datetime, default: Timex.today()
-  data selected_range, :string, default: "thisMonth"
   data left_panel_date, :datetime, default: Timex.today()
+  data selected_range, :string, default: nil
+  data temp_range, :string, default: nil
   data show, :boolean, default: false
 
-  # Temporary values for the "Discard" feature
-  data temp_range, :string, default: nil
-  data temp_range_saved, :boolean, default: false
-
+  # Handle date-input fields updates
   def update(assigns, socket) do
     socket =
       socket
@@ -195,7 +193,7 @@ defmodule Moon.Components.Datepicker do
                 <Button
                   variant="outline"
                   size="xsmall"
-                  on_click="discard_changes"
+                  on_click="toggle_picker"
                 >
                   Discard
                 </Button>
@@ -310,15 +308,7 @@ defmodule Moon.Components.Datepicker do
     @ranges[String.to_atom(range_name)]
   end
 
-  defp update_dates(socket, start_date, end_date) do
-    send(self(), {
-      socket.assigns.on_date_change,
-      %{
-        socket.assigns.start_date_field => start_date,
-        socket.assigns.end_date_field => end_date
-      }
-    })
-  end
+  defp parse_date(""), do: nil
 
   defp parse_date(date) when is_binary(date) do
     case Timex.parse(date, "%Y-%0m-%0dT%R", :strftime) do
@@ -358,17 +348,36 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("toggle_picker", _, socket) do
-    {:noreply, assign(socket, show: !socket.assigns.show)}
+    %{
+      show: show,
+      start_date: start_date,
+      end_date: end_date
+    } = socket.assigns
+
+    left_panel_date = if start_date, do: Timex.to_date(start_date), else: Timex.today()
+
+    selected_range =
+      if show do
+        # Restore to an initial value on close
+        socket.assigns.temp_range
+      else
+        socket.assigns.selected_range
+      end
+
+    socket =
+      assign(socket,
+        internal_start_date: start_date,
+        internal_end_date: end_date,
+        left_panel_date: left_panel_date,
+        temp_range: selected_range,
+        selected_range: selected_range,
+        show: !show
+      )
+
+    {:noreply, socket}
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
-    socket =
-      backup_dates(
-        socket,
-        socket.assigns.temp_range_saved,
-        socket.assigns.selected_range
-      )
-
     {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
 
     socket =
@@ -386,8 +395,7 @@ defmodule Moon.Components.Datepicker do
     months = String.to_integer(months)
     left_panel_date = Timex.shift(socket.assigns.left_panel_date, months: months)
 
-    socket = assign(socket, left_panel_date: left_panel_date)
-    {:noreply, socket}
+    {:noreply, assign(socket, left_panel_date: left_panel_date)}
   end
 
   def handle_event("select_date", %{"date" => date}, socket) do
@@ -423,31 +431,23 @@ defmodule Moon.Components.Datepicker do
      )}
   end
 
-  def handle_event("discard_changes", _, socket) do
-    socket =
-      assign(socket,
-        selected_range: socket.assigns.temp_range,
-        internal_start_date: socket.assigns.start_date,
-        internal_end_date: socket.assigns.end_date,
-        left_panel_date: Timex.to_date(socket.assigns.start_date),
-        show: false
-      )
-
-    {:noreply, socket}
-  end
-
   def handle_event("update_dates", _, socket) do
-    update_dates(socket, socket.assigns.internal_start_date, socket.assigns.internal_end_date)
+    %{
+      on_date_change: on_date_change,
+      start_date_field: start_date_field,
+      end_date_field: end_date_field,
+      internal_start_date: start_date,
+      internal_end_date: end_date
+    } = socket.assigns
+
+    send(self(), {
+      on_date_change,
+      %{
+        start_date_field => start_date,
+        end_date_field => end_date
+      }
+    })
 
     {:noreply, assign(socket, show: false)}
-  end
-
-  defp backup_dates(socket, true, _), do: socket
-
-  defp backup_dates(socket, _, range) do
-    assign(socket,
-      temp_range: range,
-      temp_range_saved: true
-    )
   end
 end
