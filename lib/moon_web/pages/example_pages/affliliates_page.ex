@@ -1,11 +1,11 @@
 defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Icons.IconChartSegment
+  alias Moon.Assets.Icons.{IconChartSegment, IconSettings}
   alias Moon.Components.{Chip, Divider, Button, Heading}
+  alias Moon.ComponentsV2.Table
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
 
-  alias MoonWeb.Pages.ExamplePages.Affiliates.AffiliatesTable
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
@@ -46,13 +46,30 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
-            <AffiliatesTable
-              id="affiliates_list"
-              affiliates={@affiliates}
-              page={@page}
+
+            <Table
+              id="affiliates_table"
+              columns={[
+                %{label: "Affiliate username", field: [:user, :username], sortable: true},
+                %{label: "Affiliate ID", field: [:id], sortable: true},
+                %{label: "Email", field: [:user, :email]},
+                %{label: "Site", field: [:user, :site]},
+                %{label: "Signup time", field: [:signup_at]},
+                %{label: "Country", field: [:user, :country]}
+              ]}
+              items={@affiliates}
+              active_item_id={@active_affiliate.id}
               sort_by={@sort_by}
-              active_affiliate_id={@active_affiliate.id}
-            />
+              page={@page}
+              page_count={20}
+              total_count={1100}
+            >
+              <:active_item_popover>
+                <div class="inline-flex py-2 px-3 rounded bg-hit-120">
+                  <IconSettings color="goku-100" font_size="1.5rem" />
+                </div>
+              </:active_item_popover>
+            </Table>
           </TopToDown>
         </div>
       </div>
@@ -87,13 +104,13 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
 
         {:table, table_event} ->
           case table_event do
-            {:paginate, page} ->
+            {:affiliates_table, :paginate, page} ->
               {true, socket |> assign(page: page)}
 
-            {:select, affiliate} ->
+            {:affiliates_table, :select, affiliate} ->
               {false, socket |> assign(active_affiliate: affiliate)}
 
-            {:sort, sort_by} ->
+            {:affiliates_table, :sort, sort_by} ->
               {true, socket |> assign(sort_by: sort_by) |> assign(page: 1)}
 
             _ ->
