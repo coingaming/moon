@@ -86,15 +86,15 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   def handle_info(msg, socket) do
     {refresh_list, socket} =
       case msg do
-        {:filters, filter_event} ->
+        {:filter, filter_event} ->
           case filter_event do
-            {:apply_username_filter, values} ->
+            {:username_filter, :apply, values} ->
               {true, socket |> assign(username_filter_values: values) |> assign(page: 1)}
 
-            {:apply_country_filter, values} ->
+            {:country_filter, :apply, values} ->
               {true, socket |> assign(country_filter_values: values) |> assign(page: 1)}
 
-            {:apply_site_filter, values} ->
+            {:site_filter, :apply, values} ->
               {true, socket |> assign(site_filter_values: values) |> assign(page: 1)}
 
             _ ->
