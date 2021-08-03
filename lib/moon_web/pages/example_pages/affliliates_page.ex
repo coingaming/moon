@@ -60,16 +60,32 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  #
+  # Lifecycle methods
+  #
+  def mount(_params, _session, socket) do
     socket =
       socket
-      |> assign(theme_name: params["theme_name"] || "sportsbet-dark")
+      |> assign(theme_name: "lab-light")
       |> assign(active_page: __MODULE__)
       |> filter_affiliates()
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
+  def handle_params(params, _uri, socket) do
+    get = &(Map.get(params, &1) || &2)
+
+    {:noreply, socket
+      |> assign(username_filter_values: get.("usernames", []))
+      |> assign(country_filter_values: get.("countries", []))
+      |> assign(page: String.to_integer(get.("page", "1")))
+      |> filter_affiliates()}
+  end
+
+  #
+  # Message Handler
+  #
   def handle_info(msg, socket) do
     {refresh_list, socket} =
       case msg do
@@ -104,11 +120,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
           {false, socket}
       end
 
-    if refresh_list do
-      {:noreply, socket |> filter_affiliates()}
-    else
-      {:noreply, socket}
-    end
+    {:noreply, (if refresh_list, do: redirect(socket), else: socket)}
   end
 
   #
@@ -154,5 +166,15 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
           }
         })
     )
+  end
+
+  defp redirect(socket = %{assigns: assigns}) do
+    params = %{
+      "usernames" => assigns.username_filter_values,
+      "countries" => assigns.country_filter_values,
+      "page" => "#{assigns.page}"
+    }
+
+    socket |> push_patch(to: Routes.live_path(socket, __MODULE__, params))
   end
 end
