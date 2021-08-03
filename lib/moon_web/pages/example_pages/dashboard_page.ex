@@ -194,7 +194,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 />
 
                 <Button
-                  class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-80"
+                  class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-120"
                   on_click="clear_all_filters"
                 >
                   Clear all
@@ -226,13 +226,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </div>
               {/for}
             </div>
-
-            <!-- div class="flex items-center justify-center flex-shrink-0 cursor-pointer gap-x-2 w-50">
-              <div class="flex items-center justify-center w-6 h-6 rounded-sm bg-goku-80">
-                <Icon name="icon_plus" />
-              </div>
-              <div class="text-sm whitespace-nowrap">Add metric</div>
-            </div -->
 
             <div class="flex items-center justify-center w-50">
               <ContentFilter

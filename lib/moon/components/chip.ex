@@ -10,7 +10,7 @@ defmodule Moon.Components.Chip do
   prop on_click, :event
   prop value, :string
   prop active, :boolean, default: false
-  prop active_class, :string, default: "text-bulma-100 bg-goku-80"
+  prop active_class, :string, default: "text-bulma-100 bg-goku-120"
   prop inactive_class, :string, default: "text-trunks-100 bg-gohan-100"
 
   def render(assigns) do
