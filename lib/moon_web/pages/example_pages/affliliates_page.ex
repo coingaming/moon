@@ -80,6 +80,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
       |> assign(username_filter_values: get.("usernames", []))
       |> assign(country_filter_values: get.("countries", []))
       |> assign(page: String.to_integer(get.("page", "1")))
+      |> assign(sort_by: decode_sort_by(get.("sort_by_column", nil), get.("sort_by_order", nil)))
       |> filter_affiliates()}
   end
 
@@ -141,6 +142,16 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   #
   # Helpers
   #
+  defp decode_sort_by(nil, _), do: {nil, nil}
+
+  defp decode_sort_by(_, nil), do: {nil, nil}
+
+  defp decode_sort_by(nil, nil), do: {nil, nil}
+
+  defp decode_sort_by(sort_by_column, sort_by_order) do
+    {sort_by_column, sort_by_order |> String.to_atom()}
+  end
+
   defp filter_affiliates(socket) do
     %{
       page: page,
@@ -172,7 +183,9 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     params = %{
       "usernames" => assigns.username_filter_values,
       "countries" => assigns.country_filter_values,
-      "page" => "#{assigns.page}"
+      "page" => "#{assigns.page}",
+      "sort_by_column" => assigns.sort_by |> elem(0),
+      "sort_by_order" => assigns.sort_by |> elem(1) |> Atom.to_string()
     }
 
     socket |> push_patch(to: Routes.live_path(socket, __MODULE__, params))
