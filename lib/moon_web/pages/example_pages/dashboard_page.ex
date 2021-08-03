@@ -194,7 +194,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 />
 
                 <Button
-                  class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-80"
+                  class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-120"
                   on_click="clear_all_filters"
                 >
                   Clear all
