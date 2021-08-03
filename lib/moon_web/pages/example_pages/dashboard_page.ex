@@ -227,13 +227,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               {/for}
             </div>
 
-            <!-- div class="flex items-center justify-center flex-shrink-0 cursor-pointer gap-x-2 w-50">
-              <div class="flex items-center justify-center w-6 h-6 rounded-sm bg-goku-80">
-                <Icon name="icon_plus" />
-              </div>
-              <div class="text-sm whitespace-nowrap">Add metric</div>
-            </div -->
-
             <div class="flex items-center justify-center w-50">
               <ContentFilter
                 id="metric_filter"

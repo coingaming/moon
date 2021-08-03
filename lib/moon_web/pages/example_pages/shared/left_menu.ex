@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         </div>
 
         <div class="space-y-0.5 m-2">
-          <div class="flex items-center px-2 cursor-pointer" :for={item <- segment.items}>
+          <div class="flex items-center mx-2 rounded cursor-pointer hover:bg-goku-120" :for={item <- segment.items}>
             <div class="flex items-center justify-center w-6 h-6 m-2">
               <Icon name={item.icon} class="text-trunks-100" />
             </div>
@@ -30,8 +30,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         </div>
 
         <div class="m-2 mb-0" :if={segment.new_item}>
-          <div class="flex items-center px-2 cursor-pointer">
-            <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
+          <div class="flex items-center mx-2 cursor-pointer rounded hover:bg-goku-120">
+            <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm border border-beerus-100">
               <Icon name="icon_plus" />
             </div>
             <div class="">{segment.new_item}</div>
