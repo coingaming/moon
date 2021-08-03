@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter, SiteFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
-  alias MoonWeb.MockDB.{Users, Utils}
+  alias MoonWeb.MockDB.{Users, Segments, Utils}
 
   data customers, :list
   data active_customer, :map, default: %{id: nil}
@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <SiteFilter active_values={@site_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
-              <Button variant="danger" left_icon="chart_segment">
+              <Button variant="danger" left_icon="chart_segment" on_click="save_segment">
                 <IconChartSegment font_size="1.2rem" />Save Segment
               </Button>
               <Divider orientation="vertical" />
@@ -156,6 +156,25 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
      |> assign(site_filter_values: [])
      |> assign(page: 1)
      |> filter_customers()}
+  end
+
+  def handle_event("save_segment", _, socket = %{assigns: assigns}) do
+    params = %{
+      "usernames" => assigns.username_filter_values,
+      "countries" => assigns.country_filter_values,
+      "sites" => assigns.site_filter_values,
+      "page" => "#{assigns.page}",
+      "sort_by_column" => assigns.sort_by |> elem(0),
+      "sort_by_order" => assigns.sort_by |> elem(1) |> Atom.to_string()
+    }
+
+    Segments.save(%{
+      name: "test_segment",
+      params: params,
+      type: :customers
+    })
+
+    {:noreply, socket}
   end
 
   def handle_event("close_customer_preview", _, socket) do

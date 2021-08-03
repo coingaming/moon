@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
-  alias MoonWeb.MockDB.Affiliates
+  alias MoonWeb.MockDB.{Affiliates, Segments}
 
   data affiliates, :list
   data active_affiliate, :map, default: %{id: nil}
@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               <CountryFilter active_values={@country_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
-              <Button variant="danger" left_icon="chart_segment">
+              <Button variant="danger" left_icon="chart_segment" on_click="save_segment">
                 <IconChartSegment font_size="1.2rem" />Save Segment
               </Button>
               <Divider orientation="vertical" />
@@ -137,6 +137,25 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
      |> assign(country_filter_values: [])
      |> assign(page: 1)
      |> filter_affiliates()}
+  end
+
+
+  def handle_event("save_segment", _, socket = %{assigns: assigns}) do
+    params = %{
+      "usernames" => assigns.username_filter_values,
+      "countries" => assigns.country_filter_values,
+      "page" => "#{assigns.page}",
+      "sort_by_column" => assigns.sort_by |> elem(0),
+      "sort_by_order" => assigns.sort_by |> elem(1) |> Atom.to_string()
+    }
+
+    Segments.save(%{
+      name: "test_segment",
+      params: params,
+      type: :customers
+    })
+
+    {:noreply, socket}
   end
 
   #
