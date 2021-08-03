@@ -10,7 +10,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
-  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.IconButton
   alias Moon.Components.Switcher
@@ -156,18 +155,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             <Divider orientation="vertical" color="beerus-100" height="10" />
 
             <ButtonsList>
-              <Form for={:date_filter_values} change="validate_filter_dates">
-                <Datepicker
-                  id="filter_datepicker"
-                  start_date={@date_filter_values.start_date}
-                  end_date={@date_filter_values.end_date}
-                  start_date_field={:start_date}
-                  end_date_field={:end_date}
-                  with_time={false}
-                  button_class="font-semibold px-3"
-                  on_date_change="update_filter_dates"
-                />
-              </Form>
+              <Datepicker
+                id="filter_datepicker"
+                start_date={@date_filter_values.start_date}
+                end_date={@date_filter_values.end_date}
+                start_date_field={:start_date}
+                end_date_field={:end_date}
+                with_time={false}
+                button_class="font-semibold px-3"
+                on_date_change="update_filter_dates"
+              />
 
               <ContentFilter
                 id="currency_filter"
@@ -335,24 +332,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
        page_widgets: socket.assigns.temp_page_widgets,
        temp_page_widgets: []
      )}
-  end
-
-  def handle_event(
-        "validate_filter_dates",
-        %{"date_filter_values" => %{"start_date" => start_date, "end_date" => end_date}},
-        socket
-      ) do
-    {start_date, end_date} = Datepicker.validate(start_date, end_date)
-
-    socket =
-      assign(socket,
-        date_filter_values: %{
-          start_date: start_date,
-          end_date: end_date
-        }
-      )
-
-    {:noreply, socket}
   end
 
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do

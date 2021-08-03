@@ -31,6 +31,7 @@ defmodule Moon.Components.Datepicker do
   prop end_date_field, :atom, default: :end_date
   prop on_date_change, :string, default: "update_dates"
   prop button_class, :string, default: "mt-4"
+  prop show_date_inputs, :boolean, default: false
 
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
@@ -145,8 +146,13 @@ defmodule Moon.Components.Datepicker do
               </div>
             </div>
 
-            <div class="flex items-center justify-between mt-6 gap-x-2">
-              <div class="flex flex-shrink-0 gap-x-2">
+            <div
+              class={
+                "flex items-center mt-6 gap-x-2",
+                "justify-between": @show_date_inputs,
+                "justify-end": !@show_date_inputs
+              }>
+              <div :if={@show_date_inputs} class="flex flex-shrink-0 gap-x-2">
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@start_date_field}
@@ -228,7 +234,7 @@ defmodule Moon.Components.Datepicker do
     start_date_formatted = Timex.format!(start_date, date_format, :strftime)
     end_date_formatted = Timex.format!(end_date, date_format, :strftime)
 
-    "#{start_date_formatted} - #{end_date_formatted}"
+    "#{start_date_formatted}-#{end_date_formatted}"
   end
 
   defp button_label(_start_date, _end_date, _, range), do: range_label(range)
