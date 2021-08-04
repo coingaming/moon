@@ -322,7 +322,9 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   defp apply_filter(filter_id, items) do
     action = "apply_#{filter_id}" |> String.to_atom()
     values = items |> Enum.map(& &1.value)
+    filter_name = filter_id |> String.to_atom()
 
+    self() |> send({:filter, {filter_name, :apply, values}})
     self() |> send({:filters, {action, values}})
   end
 

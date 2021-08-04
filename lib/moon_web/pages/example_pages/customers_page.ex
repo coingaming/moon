@@ -4,9 +4,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias Moon.Assets.Icons.IconChartSegment
   alias Moon.Components.{Chip, Divider, Button, Heading}
   alias Moon.Components.{Form, TextInput, Button}
+  alias Moon.ComponentsV2.Table
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
 
-  alias MoonWeb.Pages.ExamplePages.Customers.{CustomersTable, CustomerPreview}
+  alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter, SiteFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
@@ -80,12 +81,22 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
-            <CustomersTable
-              id="customers_list"
-              customers={@customers}
-              page={@page}
+            <Table
+              id="customers_table"
+              columns={[
+                %{label: "Customer", field: :username, sortable: true},
+                %{label: "Profile ID", field: :id, sortable: true},
+                %{label: "Email", field: :email},
+                %{label: "Country", field: :country},
+                %{label: "Brand", field: :site, type: :brand},
+                %{label: "Signup time", field: :signup_at, type: :date}
+              ]}
+              items={@customers}
+              active_item_id={@active_customer.id}
               sort_by={@sort_by}
-              active_customer_id={@active_customer.id}
+              page={@page}
+              page_count={20}
+              total_count={10056}
             />
           </TopToDown>
         </div>
@@ -139,16 +150,16 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   def handle_info(msg, socket) do
     {patch_list, socket} =
       case msg do
-        {:filters, filter_event} ->
+        {:filter, filter_event} ->
           case filter_event do
-            {:apply_username_filter, values} ->
-              {true, socket |> assign(username_filter_values: values, page: 1)}
+            {:username_filter, :apply, values} ->
+              {true, socket |> assign(username_filter_values: values) |> assign(page: 1)}
 
-            {:apply_country_filter, values} ->
-              {true, socket |> assign(country_filter_values: values, page: 1)}
+            {:country_filter, :apply, values} ->
+              {true, socket |> assign(country_filter_values: values) |> assign(page: 1)}
 
-            {:apply_site_filter, values} ->
-              {true, socket |> assign(site_filter_values: values, page: 1)}
+            {:site_filter, :apply, values} ->
+              {true, socket |> assign(site_filter_values: values) |> assign(page: 1)}
 
             _ ->
               {false, socket}
@@ -156,14 +167,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
         {:table, table_event} ->
           case table_event do
-            {:paginate, page} ->
+            {:customers_table, :paginate, page} ->
               {true, socket |> assign(page: page)}
 
-            {:select, customer} ->
+            {:customers_table, :select, customer} ->
               {false, socket |> assign(active_customer: customer)}
 
-            {:sort, sort_by} ->
-              {true, socket |> assign(sort_by: sort_by, page: 1)}
+            {:customers_table, :sort, sort_by} ->
+              {true, socket |> assign(sort_by: sort_by) |> assign(page: 1)}
 
             _ ->
               {false, socket}
