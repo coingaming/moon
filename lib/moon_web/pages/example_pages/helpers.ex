@@ -25,6 +25,34 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
     end
   end
 
+  def encode_sort_by(sort_by) do
+    case sort_by do
+      {nil, nil} -> []
+      {field = [_ | _], order} -> %{
+        "field" => field |> Enum.map(&Atom.to_string/1),
+        "order" => order |> Atom.to_string()
+      }
+      {field, order} -> %{
+        "field" => field |> Atom.to_string(),
+        "order" => order |> Atom.to_string()
+      }
+    end
+  end
+
+  def decode_sort_by(sort_by) do
+    case sort_by do
+      nil -> {nil, nil}
+      %{"field" => f = [_ | _], "order" => o} -> {
+        f |> Enum.map(&String.to_atom/1),
+        o |> String.to_atom()
+      }
+      %{"field" => f, "order" => o} -> {
+        f |> String.to_atom(),
+        o |> String.to_atom()
+      }
+    end
+  end
+
   def tuple_to_map({nil, nil}), do: %{}
   def tuple_to_map({x, y}), do: %{x => y}
 
