@@ -70,9 +70,12 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <SiteFilter active_values={@site_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
-              <Button variant="danger" left_icon="chart_segment" on_click="save_segment_init">
-                <IconChartSegment font_size="1.2rem" />Save Segment
-              </Button>
+
+              {#if @segment_id == nil}
+                <Button variant="danger" left_icon="chart_segment" on_click="save_segment_init">
+                  <IconChartSegment font_size="1.2rem" />Save Segment
+                </Button>
+              {/if}
 
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
@@ -112,6 +115,16 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(active_page: __MODULE__)
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
+  end
+
+  def handle_params(%{ "segment_id" => segment_id }, _uri, socket) do
+    %{name: name, params: params} = Segments.get_by_id(segment_id |> String.to_integer())
+
+    {:noreply, socket
+      |> assign(segment_id: segment_id)
+      |> assign(segment_title: name)
+      |> load_params(params)
+      |> filter_customers()}
   end
 
   def handle_params(params, _uri, socket) do
@@ -188,10 +201,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     %{id: id} = Segments.save(%{
       name: socket.assigns.save_segment_form.title,
       type: :customers,
-      params: get_params(socket)
+      params: get_params(socket) |> Map.delete("page")
     })
 
-    {:noreply, push_patch(socket, to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))}
+    socket = socket
+      |> assign(save_segment_form: nil)
+      |> push_patch(to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))
+
+    {:noreply, socket}
   end
 
   def handle_event("clear_all_filters", _, socket) do
@@ -252,7 +269,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       "users" => assigns.username_filter_values,
       "countries" => assigns.country_filter_values,
       "sites" => assigns.site_filter_values,
-      "page" => (if assigns.page > 1, do: "#{assigns.page}", else: []),
+      "page" => "#{assigns.page}",
       "sort_by" => assigns.sort_by |> Helpers.encode_sort_by()
     }
   end

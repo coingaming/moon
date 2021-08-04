@@ -41,7 +41,6 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
 
   def decode_sort_by(sort_by) do
     case sort_by do
-      nil -> {nil, nil}
       %{"field" => f = [_ | _], "order" => o} -> {
         f |> Enum.map(&String.to_atom/1),
         o |> String.to_atom()
@@ -50,6 +49,7 @@ defmodule MoonWeb.Pages.ExamplePages.Helpers do
         f |> String.to_atom(),
         o |> String.to_atom()
       }
+      _ -> {nil, nil}
     end
   end
 
