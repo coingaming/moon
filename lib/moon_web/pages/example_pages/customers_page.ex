@@ -148,47 +148,64 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   # Message Handler
   #
   def handle_info(msg, socket) do
-    {patch_list, socket} =
-      case msg do
-        {:filter, filter_event} ->
-          case filter_event do
-            {:username_filter, :apply, values} ->
-              {true, socket |> assign(username_filter_values: values) |> assign(page: 1)}
+    is_segment = socket.assigns.segment_id != nil
 
-            {:country_filter, :apply, values} ->
-              {true, socket |> assign(country_filter_values: values) |> assign(page: 1)}
+    new_route = fn socket ->
+      route = Routes.live_path(socket, __MODULE__, get_params(socket))
+      {:noreply, socket
+        |> assign(segment_id: nil)
+        |> assign(segment_title: nil)
+        |> push_patch(to: route)}
+    end
 
-            {:site_filter, :apply, values} ->
-              {true, socket |> assign(site_filter_values: values) |> assign(page: 1)}
+    new_segment_route = fn socket ->
+      route = Routes.live_path(socket, __MODULE__, get_segment_params(socket))
+      {:noreply, socket |> push_patch(to: route)}
+    end
 
-            _ ->
-              {false, socket}
-          end
-
-        {:table, table_event} ->
-          case table_event do
-            {:customers_table, :paginate, page} ->
-              {true, socket |> assign(page: page)}
-
-            {:customers_table, :select, customer} ->
-              {false, socket |> assign(active_customer: customer)}
-
-            {:customers_table, :sort, sort_by} ->
-              {true, socket |> assign(sort_by: sort_by) |> assign(page: 1)}
-
-            _ ->
-              {false, socket}
-          end
-
-        _ ->
-          {false, socket}
-      end
-
-    if patch_list do
-      new_route = Routes.live_path(socket, __MODULE__, get_params(socket))
-      {:noreply, push_patch(socket, to: new_route)}
-    else
+    no_redirect = fn socket ->
       {:noreply, socket}
+    end
+
+    case msg do
+      {:filter, filter_event} ->
+        case filter_event do
+          {:username_filter, :apply, values} ->
+            socket = socket |> assign(username_filter_values: values, page: 1)
+            new_route.(socket)
+
+          {:country_filter, :apply, values} ->
+            socket = socket |> assign(country_filter_values: values, page: 1)
+            new_route.(socket)
+
+          {:site_filter, :apply, values} ->
+            socket = socket |> assign(site_filter_values: values, page: 1)
+            new_route.(socket)
+
+          _ ->
+            no_redirect.(socket)
+        end
+
+      {:table, table_event} ->
+        case table_event do
+          {:customers_table, :paginate, page} ->
+            socket = socket |> assign(page: page)
+            if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
+
+          {:customers_table, :select, customer} ->
+            socket = socket |> assign(active_customer: customer)
+            no_redirect.(socket)
+
+          {:customers_table, :sort, sort_by} ->
+            socket = socket |> assign(sort_by: sort_by, page: 1)
+            if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
+
+          _ ->
+            no_redirect.(socket)
+        end
+
+      _ ->
+        no_redirect.(socket)
     end
   end
 
@@ -228,6 +245,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(country_filter_values: [])
       |> assign(site_filter_values: [])
       |> assign(page: 1)
+      |> assign(segment_id: nil)
+      |> assign(segment_title: nil)
 
     {:noreply, push_patch(socket, to: Routes.live_path(socket, __MODULE__, get_params(socket)))}
   end
@@ -264,13 +283,13 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     |> assign(active_customer: %{id: nil})
   end
 
-  defp load_params(socket, params) do
+  defp load_params(socket = %{assigns: assigns}, params) do
     get = &(Map.get(params, &1) || &2)
 
     socket
-    |> assign(username_filter_values: get.("users", []))
-    |> assign(country_filter_values: get.("countries", []))
-    |> assign(site_filter_values: get.("sites", []))
+    |> assign(username_filter_values: get.("users", assigns.username_filter_values))
+    |> assign(country_filter_values: get.("countries", assigns.country_filter_values))
+    |> assign(site_filter_values: get.("sites", assigns.site_filter_values))
     |> assign(page: (get.("page", "1") |> String.to_integer()))
     |> assign(sort_by: (get.("sort_by", nil) |> Helpers.decode_sort_by()))
   end
@@ -282,6 +301,14 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       "sites" => assigns.site_filter_values,
       "page" => "#{assigns.page}",
       "sort_by" => assigns.sort_by |> Helpers.encode_sort_by()
+    }
+  end
+
+  defp get_segment_params(%{assigns: assigns}) do
+    %{
+      "page" => "#{assigns.page}",
+      "sort_by" => assigns.sort_by |> Helpers.encode_sort_by(),
+      "segment_id" => "#{assigns.segment_id}"
     }
   end
 end
