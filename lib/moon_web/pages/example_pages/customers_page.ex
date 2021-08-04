@@ -43,7 +43,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Customers"}</Heading>
           {#else}
-            <Form class="w-full flex py-2 items-center" for={:segment} change="save_segment_update" autocomplete="off">
+            <Form class="w-full flex py-2 items-center" for={:segment} change="save_segment_form_update" submit="save_segment_form_submit" autocomplete="off">
               <div class="flex-1">
                 <TextInput
                   field={:title}
@@ -51,10 +51,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
                   class="w-full bg-goku-80 h-10 text-3xl font-bold"
                 />
               </div>
-              <Button variant="danger" size="small" class="flex-none rounded border-bulma-100 mx-2" on_click="save_segment_cancel">
+              <Button variant="danger" size="small" class="flex-none rounded border-bulma-100 mx-2" on_click="save_segment_form_cancel">
                 Cancel
               </Button>
-              <Button variant="primary" size="small" class="flex-none rounded" on_click="save_segment_submit">
+              <Button type="submit" variant="primary" size="small" class="flex-none rounded">
                 <span class="px-2">Apply</span>
               </Button>
             </Form>
@@ -72,7 +72,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
 
               {#if @segment_id == nil}
-                <Button variant="danger" left_icon="chart_segment" on_click="save_segment_init">
+                <Button variant="danger" left_icon="chart_segment" on_click="save_segment_form_init">
                   <IconChartSegment font_size="1.2rem" />Save Segment
                 </Button>
               {/if}
@@ -184,20 +184,20 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   #
   # Event Handlers
   #
-  def handle_event("save_segment_init", _, socket) do
+  def handle_event("save_segment_form_init", _, socket) do
     {:noreply, socket |> assign(:save_segment_form, %{ title: "Customers" })}
   end
 
-  def handle_event("save_segment_update", value, socket) do
+  def handle_event("save_segment_form_update", value, socket) do
     %{"segment" => %{"title" => title}} = value
     {:noreply, socket |> assign(:save_segment_form, %{ title: title })}
   end
 
-  def handle_event("save_segment_cancel", _, socket) do
+  def handle_event("save_segment_form_cancel", _, socket) do
     {:noreply, socket |> assign(:save_segment_form, nil)}
   end
 
-  def handle_event("save_segment_submit", _, socket) do
+  def handle_event("save_segment_form_submit", _, socket) do
     %{id: id} = Segments.save(%{
       name: socket.assigns.save_segment_form.title,
       type: :customers,
@@ -206,7 +206,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
     socket = socket
       |> assign(save_segment_form: nil)
-      |> push_patch(to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))
+      |> push_patch(replace: true, to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))
 
     {:noreply, socket}
   end
