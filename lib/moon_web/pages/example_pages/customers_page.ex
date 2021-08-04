@@ -143,17 +143,13 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   # Event Handlers
   #
   def handle_event("clear_all_filters", _, socket) do
-    UsernameFilter.clear()
-    CountryFilter.clear()
-    SiteFilter.clear()
+    socket = socket
+      |> assign(username_filter_values: [])
+      |> assign(country_filter_values: [])
+      |> assign(site_filter_values: [])
+      |> assign(page: 1)
 
-    {:noreply,
-     socket
-     |> assign(username_filter_values: [])
-     |> assign(country_filter_values: [])
-     |> assign(site_filter_values: [])
-     |> assign(page: 1)
-     |> filter_customers()}
+    {:noreply, push_patch(socket, to: Routes.live_path(socket, __MODULE__, get_params(socket)))}
   end
 
   def handle_event("save_segment", _, socket) do
