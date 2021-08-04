@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
+defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Card
