@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   alias Moon.Assets.Icons.IconChartSegment
   alias Moon.Components.{Chip, Divider, Button, Heading}
+  alias Moon.Components.{Form, TextInput, Button}
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
 
   alias MoonWeb.Pages.ExamplePages.Customers.{CustomersTable, CustomerPreview}
@@ -23,6 +24,13 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   data sort_by, :tuple, default: {nil, nil}
   data page, :integer, default: 1
 
+  # segment
+  data segment_id, :string, default: nil
+  data segment_title, :string, default: nil
+
+  # ephimeral state
+  data save_segment_form, :map, default: nil
+
   def render(assigns) do
     ~F"""
     <div class={"#{@theme_name} #{@active_customer.id != nil && "h-screen overflow-hidden"}"}>
@@ -31,7 +39,27 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
         <LeftMenu id="left-menu" />
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Customers", to: "/lab-light/example-pages/customers"}]} />
-          <Heading size={32} class="my-2">Customers</Heading>
+
+          {#if @save_segment_form == nil}
+            <Heading size={32} class="my-2">{@segment_title || "Customers"}</Heading>
+          {#else}
+            <Form class="w-full flex py-2 items-center" for={:segment} change="save_segment_update" autocomplete="off">
+              <div class="flex-1">
+                <TextInput
+                  field={:title}
+                  value={@save_segment_form.title}
+                  class="w-full bg-goku-80 h-10 text-3xl font-bold"
+                />
+              </div>
+              <Button variant="danger" size="small" class="flex-none rounded border-bulma-100 mx-2" on_click="save_segment_cancel">
+                Cancel
+              </Button>
+              <Button variant="primary" size="small" class="flex-none rounded" on_click="save_segment_submit">
+                <span class="px-2">Apply</span>
+              </Button>
+            </Form>
+          {/if}
+
           <TopToDown>
             <ButtonsList>
               <Chip left_icon="icon_zoom">Search</Chip>
@@ -42,9 +70,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <SiteFilter active_values={@site_filter_values} />
 
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
-              <Button variant="danger" left_icon="chart_segment" on_click="save_segment">
+              <Button variant="danger" left_icon="chart_segment" on_click="save_segment_init">
                 <IconChartSegment font_size="1.2rem" />Save Segment
               </Button>
+
               <Divider orientation="vertical" />
               <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
@@ -142,6 +171,29 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   #
   # Event Handlers
   #
+  def handle_event("save_segment_init", _, socket) do
+    {:noreply, socket |> assign(:save_segment_form, %{ title: "Customers" })}
+  end
+
+  def handle_event("save_segment_update", value, socket) do
+    %{"segment" => %{"title" => title}} = value
+    {:noreply, socket |> assign(:save_segment_form, %{ title: title })}
+  end
+
+  def handle_event("save_segment_cancel", _, socket) do
+    {:noreply, socket |> assign(:save_segment_form, nil)}
+  end
+
+  def handle_event("save_segment_submit", _, socket) do
+    %{id: id} = Segments.save(%{
+      name: socket.assigns.save_segment_form.title,
+      type: :customers,
+      params: get_params(socket)
+    })
+
+    {:noreply, push_patch(socket, to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))}
+  end
+
   def handle_event("clear_all_filters", _, socket) do
     socket = socket
       |> assign(username_filter_values: [])
@@ -152,20 +204,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     {:noreply, push_patch(socket, to: Routes.live_path(socket, __MODULE__, get_params(socket)))}
   end
 
-  def handle_event("save_segment", _, socket) do
-    Segments.save(%{
-      name: "test_segment",
-      params: get_params(socket),
-      type: :customers
-    })
-
-    {:noreply, socket}
-  end
-
   def handle_event("close_customer_preview", _, socket) do
-    {:noreply,
-     socket
-     |> assign(active_customer: %{id: nil})}
+    {:noreply, socket |> assign(active_customer: %{id: nil})}
   end
 
   #
