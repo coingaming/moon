@@ -16,11 +16,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias MoonWeb.MockDB.Currencies
   alias MoonWeb.MockDB.Sites
-  alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
+  alias MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget
   alias MoonWeb.Pages.ExamplePages.Shared
   alias Shared.Filters.ContentFilter
   alias Shared.TopMenu
   alias Shared.LeftMenu
+  alias Shared.NewWidgetPanel
 
   @colors ~w(
     krillin-100 frieza-100 roshi-100
@@ -36,18 +37,17 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     "Total NGR, EUR"
   ]
 
-  # @widgets_names ~w(
-  #   Depositors Winners Losers
-  #   Wages Demographic Geo
-  #   Currency Device\u00a0&\u00a0OS Products
-  # )
-
   # dashboard content
   data page_title, :string
   data page_metrics, :list, default: []
   data page_widgets, :list, default: []
   data temp_page_widgets, :list, default: []
   data all_metrics, :list, default: []
+  data widgets_names, :list, default: ~w(
+    Depositors Winners Losers
+    Wages Demographic Geo
+    Currency Device\u00a0&\u00a0OS Products
+  )
 
   # tabs
   prop page_tabs, :list, default: []
@@ -63,6 +63,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   # page state
   data saved, :boolean, default: true
   data edited, :boolean, default: false
+  data show_new_widget_panel, :boolean, default: false
 
   def mount(params, _session, socket) do
     socket =
@@ -247,7 +248,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
           <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
             {#for widget <- Enum.sort_by(@page_widgets, & &1.index)}
-              <BarChartWidget
+              <LeaderboardWidget
                 widget={widget}
                 edited={@edited}
                 bar_bg_color={"bg-#{widget.color}"}
@@ -255,6 +256,23 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 on_remove="remove_widget"
               />
             {/for}
+
+            <IconButton
+              icon_name="icon_plus"
+              title="Add a widget"
+              height={8}
+              width={8}
+              class="bg-goku-120"
+              text_color="text-piccolo-100"
+              hover_bg_color="bg-trunks-100"
+              click="toggle_new_widget_panel"
+            />
+
+            <NewWidgetPanel
+              show={@show_new_widget_panel}
+              widgets={@widgets_names}
+              on_close="toggle_new_widget_panel"
+            />
           </div>
         </div>
       </div>
@@ -332,6 +350,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
        page_widgets: socket.assigns.temp_page_widgets,
        temp_page_widgets: []
      )}
+  end
+
+  def handle_event("toggle_new_widget_panel", _, socket) do
+    {:noreply, assign(socket, show_new_widget_panel: !socket.assigns.show_new_widget_panel)}
   end
 
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
