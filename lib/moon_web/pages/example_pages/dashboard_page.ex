@@ -37,17 +37,19 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     "Total NGR, EUR"
   ]
 
+  @widget_categories_names ~w(
+    Depositors Winners Losers
+    Wages Demographic Geo
+    Currency Device\u00a0&\u00a0OS Products
+  )
+
   # dashboard content
   data page_title, :string
   data page_metrics, :list, default: []
   data page_widgets, :list, default: []
   data temp_page_widgets, :list, default: []
   data all_metrics, :list, default: []
-  data widgets_names, :list, default: ~w(
-    Depositors Winners Losers
-    Wages Demographic Geo
-    Currency Device\u00a0&\u00a0OS Products
-  )
+  data widget_categories, :list, default: []
 
   # tabs
   prop page_tabs, :list, default: []
@@ -74,6 +76,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         page_tabs: ~w(Total Real Bonus),
         selected_tab: "Total",
         all_metrics: prepare_filter_options(@metrics_names),
+        widget_categories: fetch_widget_categories(),
         all_currencies: prepare_filter_options(Currencies.list_all()),
         all_sites: prepare_filter_options(Sites.list_all()),
         date_filter_values: %{
@@ -265,13 +268,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               class="bg-goku-120"
               text_color="text-piccolo-100"
               hover_bg_color="bg-trunks-100"
-              click="toggle_new_widget_panel"
+              click="open_new_widget_panel"
             />
 
             <NewWidgetPanel
+              id="new-widget-panel"
               show={@show_new_widget_panel}
-              widgets={@widgets_names}
-              on_close="toggle_new_widget_panel"
+              categories={@widget_categories}
             />
           </div>
         </div>
@@ -352,8 +355,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
      )}
   end
 
-  def handle_event("toggle_new_widget_panel", _, socket) do
-    {:noreply, assign(socket, show_new_widget_panel: !socket.assigns.show_new_widget_panel)}
+  def handle_event("open_new_widget_panel", _, socket) do
+    {:noreply, assign(socket, show_new_widget_panel: true)}
   end
 
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
@@ -400,6 +403,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
+  def handle_info({:new_widget_panel, :close}, socket) do
+    {:noreply, assign(socket, show_new_widget_panel: false)}
+  end
+
   defp generate_widget_items() do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
@@ -435,6 +442,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         color: Enum.at(@colors, index),
         data: generate_widget_items()
       })
+    end)
+  end
+
+  defp fetch_widget_categories() do
+    @widget_categories_names
+    |> Enum.map(fn category_name ->
+      %{
+        name: category_name,
+        widget_options: Enum.random([["Top"], ["Calendar", "Top"]])
+      }
     end)
   end
 
