@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   alias Moon.Autolayouts.Sections
   alias Moon.Components.Divider
 
-  alias MoonWeb.MockDB.{Users, Segments, Utils}
+  alias MoonWeb.MockDB.{Segments, Utils}
 
   def render(assigns) do
     segments = get_segments()

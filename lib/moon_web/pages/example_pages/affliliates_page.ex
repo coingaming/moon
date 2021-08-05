@@ -35,7 +35,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     <div class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu id="left-menu" />
+        <LeftMenu />
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]} />
           {#if @save_segment_form == nil}
@@ -120,13 +120,13 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
-  def handle_params(%{ "segment_id" => segment_id }, _uri, socket) do
-    %{name: name, params: params} = Segments.get_by_id(segment_id |> String.to_integer())
+  def handle_params(params = %{ "segment_id" => segment_id }, _uri, socket) do
+    %{name: name, params: params_saved} = Segments.get_by_id(segment_id |> String.to_integer())
 
     {:noreply, socket
       |> assign(segment_id: segment_id)
       |> assign(segment_title: name)
-      |> load_params(params)
+      |> load_params(Map.merge(params_saved, params, fn _, _, y -> y end))
       |> filter_affiliates()}
   end
 
