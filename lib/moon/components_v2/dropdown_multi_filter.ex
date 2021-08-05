@@ -320,12 +320,9 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # Helpers
   #
   defp apply_filter(filter_id, items) do
-    action = "apply_#{filter_id}" |> String.to_atom()
-    values = items |> Enum.map(& &1.value)
-    filter_name = filter_id |> String.to_atom()
+    values = Enum.map(items, & &1.value)
 
-    self() |> send({:filter, {filter_name, :apply, values}})
-    self() |> send({:filters, {action, values}})
+    send(self(), {:filter, {filter_id, :apply, values}})
   end
 
   defp search_by_labels(all_items, search_text) do

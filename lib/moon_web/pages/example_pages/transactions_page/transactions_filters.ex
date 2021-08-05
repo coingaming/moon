@@ -52,17 +52,16 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         </Popover>
       </Popover.Outer>
 
-      <Form for={:create_date_values} change="handle_create_date_selection_changed">
-        <Datepicker
-          id="createtime_filter"
-          start_date={@filter_options.create_date.start_date}
-          end_date={@filter_options.create_date.end_date}
-          start_date_field={:start_date}
-          end_date_field={:end_date}
-          button_class="font-semibold px-3 text-trunks-100 bg-gohan-100"
-          on_date_change="update_create_date_filter"
-        />
-      </Form>
+      <Datepicker
+        id="create_date_filter"
+        start_date={@create_date_values.start_date}
+        end_date={@create_date_values.end_date}
+        start_date_field={:start_date}
+        end_date_field={:end_date}
+        with_time={false}
+        button_class="font-semibold px-3"
+        on_date_change="update_createtime_filter_dates"
+      />
 
       <TransactionFilter name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@brand_filter_values} />
 
@@ -102,18 +101,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       <Button on_click="clear_all_filters">Clear all</Button>
     </ButtonsList>
     """
-  end
-
-  def handle_event(
-        "handle_create_date_selection_changed",
-        %{"create_date_values" => params},
-        socket
-      ) do
-    {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
-    create_date_values = %{end_date: end_date, start_date: start_date}
-
-    send(self(), {:filters, {:apply_create_date_filter, create_date_values}})
-    {:noreply, assign(socket, create_date_values: create_date_values)}
   end
 
   def handle_event(
