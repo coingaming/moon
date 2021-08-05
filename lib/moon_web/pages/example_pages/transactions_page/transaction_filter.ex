@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
   prop name, :string, default: @default_name
   prop active_options, :list, required: true
   prop options, :list, required: true
-  prop disable_search, :boolean, default: false
+  prop disable_search, :boolean, default: true
 
   def render(assigns) do
     ~F"""

@@ -314,7 +314,7 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp range_label(range_name) when is_binary(range_name) do
-    @ranges[String.to_atom(range_name)]
+    @ranges[String.to_existing_atom(range_name)]
   end
 
   defp parse_date(""), do: nil
@@ -343,7 +343,7 @@ defmodule Moon.Components.Datepicker do
   end
 
   defp format_to_date(datetime, true), do: datetime
-  defp format_to_date(datetime, false), do: Timex.to_date(datetime)
+  defp format_to_date(datetime, false), do: Timex.to_naive_datetime(datetime)
 
   def validate(start_date, end_date) do
     parsed_start_date = parse_date(start_date)
@@ -442,20 +442,25 @@ defmodule Moon.Components.Datepicker do
 
   def handle_event("update_dates", _, socket) do
     %{
-      on_date_change: on_date_change,
+      id: id,
       start_date_field: start_date_field,
       end_date_field: end_date_field,
       internal_start_date: start_date,
       internal_end_date: end_date
     } = socket.assigns
 
-    send(self(), {
-      on_date_change,
-      %{
-        start_date_field => start_date,
-        end_date_field => end_date
-      }
-    })
+    send(
+      self(),
+      {:filter,
+       {
+         id,
+         :apply,
+         %{
+           start_date_field => start_date,
+           end_date_field => end_date
+         }
+       }}
+    )
 
     {:noreply, assign(socket, show: false)}
   end
