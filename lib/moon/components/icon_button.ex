@@ -4,6 +4,7 @@ defmodule Moon.Components.IconButton do
   alias Moon.Assets.Icon
 
   prop icon_name, :string, required: true
+  prop icon_size, :string, default: "1rem"
   prop class, :string
   prop title, :string
   prop height, :integer, default: 10
@@ -22,7 +23,7 @@ defmodule Moon.Components.IconButton do
       :on-click={@click}
       :attrs={phx_val_tag(@value_name, @value)}
     >
-      <Icon name={@icon_name} />
+      <Icon name={@icon_name} font_size={@icon_size} />
     </button>
     """
   end
