@@ -58,9 +58,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         end_date={@create_date_values.end_date}
         start_date_field={:start_date}
         end_date_field={:end_date}
-        with_time={false}
         button_class="font-semibold px-3"
-        on_date_change="update_createtime_filter_dates"
       />
 
       <TransactionFilter name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@brand_filter_values} />
@@ -149,7 +147,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         socket
       ) do
     filter_ids = socket.assigns.amount_range_values
-    send(self(), {:filter, {:amount_range_filter, :apply, filter_ids}})
+    send(self(), {:filter, {"amount_range_filter", :apply, filter_ids}})
     {:noreply, socket}
   end
 

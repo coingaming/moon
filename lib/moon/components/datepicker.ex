@@ -29,7 +29,7 @@ defmodule Moon.Components.Datepicker do
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
-  prop on_date_change, :string, default: "update_dates"
+  prop on_date_change, :string, default: ""
   prop button_class, :string, default: "mt-4"
   prop show_date_inputs, :boolean, default: false
 
@@ -443,17 +443,20 @@ defmodule Moon.Components.Datepicker do
   def handle_event("update_dates", _, socket) do
     %{
       id: id,
+      on_date_change: on_date_change,
       start_date_field: start_date_field,
       end_date_field: end_date_field,
       internal_start_date: start_date,
       internal_end_date: end_date
     } = socket.assigns
 
+    filter_id = if on_date_change == "", do: id, else: on_date_change
+
     send(
       self(),
       {:filter,
        {
-         String.to_existing_atom(id),
+         filter_id,
          :apply,
          %{
            start_date_field => start_date,
