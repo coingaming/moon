@@ -453,7 +453,7 @@ defmodule Moon.Components.Datepicker do
       self(),
       {:filter,
        {
-         id,
+         String.to_existing_atom(id),
          :apply,
          %{
            start_date_field => start_date,

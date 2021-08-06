@@ -149,7 +149,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         socket
       ) do
     filter_ids = socket.assigns.amount_range_values
-    send(self(), {:filters, {:amount_range_filter, filter_ids}})
+    send(self(), {:filter, {:amount_range_filter, :apply, filter_ids}})
     {:noreply, socket}
   end
 
@@ -163,7 +163,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     ["brand_filter", "country_filter", "username_filter", "currency_filter"]
     |> Enum.each(fn id -> TransactionFilter.clear(id) end)
 
-    {:noreply, assign(socket, :amount_range_values, @default_amount_range_value)}
+    {:noreply,
+     assign(
+       socket,
+       amount_range_values: @default_amount_range_value,
+       create_date_values: @default_create_date_values
+     )}
   end
 
   def handle_event("save_segment", _, socket) do
