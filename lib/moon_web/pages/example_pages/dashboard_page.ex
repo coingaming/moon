@@ -90,9 +90,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           ]),
         page_widgets:
           fetch_widgets_data([
-            %{name: "Depositors"},
-            %{name: "Winners"},
-            %{name: "Losers"}
+            %{name: "Depositors", kind: :leaderboard},
+            %{name: "Winners", kind: :leaderboard},
+            %{name: "Losers", kind: :leaderboard}
           ])
       )
 
@@ -250,7 +250,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </div>
 
           <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
-            {#for widget <- Enum.sort_by(@page_widgets, & &1.index)}
+            {#for widget <- Enum.sort_by(@page_widgets, & &1.ordinal_number)}
               <LeaderboardWidget
                 widget={widget}
                 edited={@edited}
@@ -299,7 +299,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     widget = Enum.find(widgets, &(&1.name == name))
 
     widgets =
-      List.update_at(widgets, widget.index, fn item ->
+      List.update_at(widgets, widget.ordinal_number - 1, fn item ->
         %{item | data: generate_widget_items()}
       end)
 
@@ -407,6 +407,21 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, show_new_widget_panel: false)}
   end
 
+  def handle_info({:new_widget_panel, :add, {category_name, widget_kind}}, socket) do
+    page_widgets = socket.assigns.page_widgets
+    ordinal_number = length(page_widgets) + 1
+
+    widget = %{
+      name: category_name,
+      kind: widget_kind,
+      ordinal_number: ordinal_number,
+      color: Enum.at(@colors, ordinal_number - 1),
+      data: generate_widget_items()
+    }
+
+    {:noreply, assign(socket, page_widgets: page_widgets ++ [widget])}
+  end
+
   defp generate_widget_items() do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
@@ -435,11 +450,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   defp fetch_widgets_data(widgets) do
     widgets
-    |> Enum.with_index()
+    |> Enum.with_index(1)
     |> Enum.map(fn {widget, index} ->
       Map.merge(widget, %{
-        index: index,
-        color: Enum.at(@colors, index),
+        ordinal_number: index,
+        color: Enum.at(@colors, index - 1),
         data: generate_widget_items()
       })
     end)
@@ -450,7 +465,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     |> Enum.map(fn category_name ->
       %{
         name: category_name,
-        widget_options: Enum.random([["Top"], ["Calendar", "Top"]])
+        widget_kinds: Enum.random([["Top"], ["Calendar", "Top"]])
       }
     end)
   end
