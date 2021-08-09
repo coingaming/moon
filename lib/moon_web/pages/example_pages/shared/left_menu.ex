@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   alias Moon.Components.Divider
 
   prop class, :string
+  prop reduced_opacity, :boolean, default: false
   data segments, :any, default: []
 
   def mount(assigns) do
@@ -14,7 +15,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <Sections class={"py-6 text-sm w-60 #{@class}"}>
+    <Sections class={"py-6 text-sm w-60 #{@class} #{opacity_class(@reduced_opacity)}"}>
       <div :for={segment <- @segments}>
         <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">
           {segment.title} • {segment.count}
@@ -81,4 +82,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
       }
     ]
   end
+
+  defp opacity_class(true), do: "opacity-30"
+  defp opacity_class(false), do: nil
 end
