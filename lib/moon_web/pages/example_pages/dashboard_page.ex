@@ -294,12 +294,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
-  def handle_event("refresh_widget_data", %{"name" => name}, socket) do
-    widgets = socket.assigns.page_widgets
-    widget = Enum.find(widgets, &(&1.name == name))
-
+  def handle_event("refresh_widget_data", %{"ordinal_number" => ordinal_number}, socket) do
     widgets =
-      List.update_at(widgets, widget.ordinal_number - 1, fn item ->
+      List.update_at(socket.assigns.page_widgets, String.to_integer(ordinal_number) - 1, fn item ->
         %{item | data: generate_widget_items()}
       end)
 
