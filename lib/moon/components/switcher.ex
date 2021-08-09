@@ -18,13 +18,13 @@ defmodule Moon.Components.Switcher do
         :for={item <- @items}
         class={
           "px-2 py-1 text-sm leading-6 rounded",
-          "bg-piccolo-100 text-goten-100": item.value == @selected_item,
-          "text-trunks-100": item.value != @selected_item
+          "bg-piccolo-100 text-goten-100": item == @selected_item,
+          "text-trunks-100": item != @selected_item
         }
         :on-click={@click}
-        phx-value-selected-item={item.value}
+        phx-value-selected-item={item}
       >
-        {item.name}
+        {item}
       </button>
     </div>
     """

@@ -78,7 +78,6 @@ defmodule Moon.Assets.Icon do
     icon_currency_clp: Icons.IconCurrencyClp,
     icon_currency_cny: Icons.IconCurrencyCny,
     icon_currency_crc: Icons.IconCurrencyCrc,
-    icon_currency_doge: Icons.IconCurrencyDoge,
     icon_currency_eth: Icons.IconCurrencyEth,
     icon_currency_eur: Icons.IconCurrencyEur,
     icon_currency_gel: Icons.IconCurrencyGel,

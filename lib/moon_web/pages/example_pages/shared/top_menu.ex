@@ -5,9 +5,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   alias Moon.Assets.Logos.LogoLabFull
   alias Moon.Components.IconButton
 
+  prop class, :string
+
   def render(assigns) do
     ~F"""
-    <div class="flex items-center gap-4 px-6 py-4 bg-gohan-100">
+    <div class={"flex items-center gap-4 px-6 py-4 bg-gohan-100 #{@class}"}>
       <div>
         <LogoLabFull font_size="3.75rem" class="block h-5" />
       </div>

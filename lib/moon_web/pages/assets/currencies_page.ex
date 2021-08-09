@@ -13,6 +13,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   alias Currencies.IconChilieanPeso
   alias Currencies.IconChineseYuan
   alias Currencies.IconDanishKrone
+  alias Currencies.IconDogecoin
   alias Currencies.IconEthereum
   alias Currencies.IconEuro
   alias Currencies.IconGbPoundSterling
@@ -143,6 +144,19 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       <#template slot="code">
         <#CodePreview>
         <IconDanishKrone font_size="10rem" />
+        </#CodePreview>
+      </#template>
+    </ExampleAndCode>
+
+
+    <ExampleAndCode class="mt-4">
+      <#template slot="example">
+        <IconDogecoin font_size="10rem" />
+      </#template>
+
+      <#template slot="code">
+        <#CodePreview>
+        <IconDogecoin font_size="10rem" />
         </#CodePreview>
       </#template>
     </ExampleAndCode>

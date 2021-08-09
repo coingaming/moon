@@ -12,21 +12,8 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
-        tabs: [
-          %{
-            name: "One",
-            value: "one"
-          },
-          %{
-            name: "Two",
-            value: "two"
-          },
-          %{
-            name: "Three",
-            value: "three"
-          }
-        ],
-        selected_tab: "one"
+        tabs: ~w(One Two Three),
+        selected_tab: "One"
       )
 
     {:ok, socket}

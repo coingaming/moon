@@ -9,7 +9,7 @@ defmodule Moon.Components.IconButton do
   prop height, :integer, default: 10
   prop width, :integer, default: 10
   prop text_color, :string, default: "text-trunks-100"
-  prop hover_bg_color, :string, default: "bg-goku-80"
+  prop hover_bg_color, :string, default: "bg-hit-120"
   prop click, :event
   prop value_name, :string
   prop value, :any

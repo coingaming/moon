@@ -10,28 +10,28 @@ defmodule Moon.Components.Datepicker.Month do
   def render(assigns) do
     ~F"""
     <div>
-      <div class="mb-5 leading-4 text-center">
+      <div class="mb-4 leading-4 text-center">
         {Timex.format!(@date, "%B %Y", :strftime)}
       </div>
 
-      <div class="flex text-xs font-semibold text-center text-trunks-100">
-        <div :for={ch <- days_letters(@week_starts_on)} class="w-8 h-8">
+      <div class="flex mb-1 text-xs font-semibold text-center text-trunks-100">
+        <div :for={ch <- days_letters(@week_starts_on)} class="flex items-center justify-center w-8 h-8">
           {ch}
         </div>
       </div>
 
       <div
-        class="grid text-xs"
+        class="grid text-xs gap-y-1"
         style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
       >
         <div :for={_cell <- empty_cells(@date, @week_starts_on)}></div>
 
         <div
           :for={day <- month_days(@date)}
-          class={"cursor-pointer #{day_container_class(day, @start_date, @end_date)}"}
+          class={"cursor-pointer #{day_container_class(day, @start_date, @end_date, @week_starts_on)}"}
         >
           <div
-            class={"border border-transparent hover:border-trunks-100 rounded-full h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
+            class={"border border-transparent hover:border-trunks-100 rounded h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
             :on-click={@on_click}
             phx-value-date={Timex.format!(day, "%Y-%0m-%0dT%R", :strftime)}
           >
@@ -75,15 +75,15 @@ defmodule Moon.Components.Datepicker.Month do
     )
   end
 
-  defp day_container_class(_day, nil, _), do: nil
+  defp day_container_class(_day, nil, _, _), do: nil
 
-  defp day_container_class(day, start_date, nil) do
+  defp day_container_class(day, start_date, nil, _) do
     if Timex.to_date(day) == Timex.to_date(start_date) do
-      "bg-hover rounded-l-full"
+      "bg-goku-100 rounded"
     end
   end
 
-  defp day_container_class(day, start_date, end_date) do
+  defp day_container_class(day, start_date, end_date, week_starts_on) do
     date_day = Timex.to_date(day)
     start_day = Timex.to_date(start_date)
     end_day = Timex.to_date(end_date)
@@ -93,13 +93,17 @@ defmodule Moon.Components.Datepicker.Month do
         nil
 
       date_day == start_day ->
-        "bg-hover rounded-l-full"
+        "bg-goku-100 rounded"
 
       date_day == end_day ->
-        "bg-hover rounded-r-full"
+        "bg-goku-100 rounded"
 
       Timex.between?(day, start_date, end_date) ->
-        "bg-hover"
+        cond do
+          Timex.weekday(day) == week_starts_on -> "bg-goku-100 rounded-l"
+          Timex.weekday(day) == week_starts_on + 6 -> "bg-goku-100 rounded-r"
+          true -> "bg-goku-100"
+        end
 
       true ->
         nil

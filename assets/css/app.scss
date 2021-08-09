@@ -1,3 +1,11 @@
 [x-cloak] {
   display: none !important;
 }
+
+input.date-icon-hidden[type="date"]::-webkit-inner-spin-button,
+input.date-icon-hidden[type="date"]::-webkit-calendar-picker-indicator,
+input.date-icon-hidden[type="datetime-local"]::-webkit-inner-spin-button,
+input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

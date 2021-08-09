@@ -21,6 +21,7 @@ defmodule Moon.Assets.Currency do
     icon_chiliean_peso: Currencys.IconChilieanPeso,
     icon_chinese_yuan: Currencys.IconChineseYuan,
     icon_danish_krone: Currencys.IconDanishKrone,
+    icon_dogecoin: Currencys.IconDogecoin,
     icon_ethereum: Currencys.IconEthereum,
     icon_euro: Currencys.IconEuro,
     icon_gb_pound_sterling: Currencys.IconGbPoundSterling,
