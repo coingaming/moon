@@ -3,6 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias Moon.Assets.Icons.IconMore
   alias Moon.Autolayouts.ButtonsList
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.TopToDown
 
   alias Moon.Components.Button
   alias Moon.Components.Datepicker
@@ -102,13 +104,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   def render(assigns) do
     ~F"""
     <div class={"#{@theme_name}"}>
-      <TopMenu id="top-menu" class={if @edited, do: "opacity-30"} />
+      <TopMenu id="top-menu" reduced_opacity={@edited} />
 
-      <div class="flex">
-        <LeftMenu id="left-menu" class={if @edited, do: "opacity-30"} />
+      <LeftToRight gap={0}>
+        <LeftMenu id="left-menu" reduced_opacity={@edited} />
 
-        <div class="flex-grow py-6 overflow-x-hidden px-14">
-          <div class="flex items-center mb-6">
+        <TopToDown class="flex-grow py-6 px-14" gap={6}>
+          <div class="flex items-center">
             <Heading size={32} class="flex-grow">{@page_title}</Heading>
 
             <div class={"space-x-2", hidden: !@edited}>
@@ -210,7 +212,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </ButtonsList>
           </div>
 
-          <Divider color="beerus-100" class="my-6" />
+          <Divider color="beerus-100" />
 
           <!-- TODO: Create a shared component -->
           <div class="flex p-6 rounded bg-gohan-100">
@@ -249,7 +251,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </div>
           </div>
 
-          <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-6">
             {#for widget <- Enum.sort_by(@page_widgets, & &1.ordinal_number)}
               <LeaderboardWidget
                 widget={widget}
@@ -277,8 +279,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               categories={@widget_categories}
             />
           </div>
-        </div>
-      </div>
+        </TopToDown>
+      </LeftToRight>
     </div>
     """
   end
