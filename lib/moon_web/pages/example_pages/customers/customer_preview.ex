@@ -23,63 +23,61 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
         <Divider orientation="vertical" class="mx-4"/>
       </:options>
 
-      <div class="px-6 ">
-        <LeftToRight class="mb-4">
-          {#for tab <- ["overview", "rewards", "KPI", "cashier", "TXN", "comms", "fraud", "notes"]}
-            <Button
-              :if={tab == @active_tab}
-              on_click={"select_tab:#{tab}"}
-              size="xsmall"
-              class="rounded bg-goku-100"
-            >
-              <Text size="14" class="capitalize text-gohan-80">{tab}</Text>
-            </Button>
+      <LeftToRight class="mb-4">
+        {#for tab <- ["overview", "rewards", "KPI", "cashier", "TXN", "comms", "fraud", "notes"]}
+          <Button
+            :if={tab == @active_tab}
+            on_click={"select_tab:#{tab}"}
+            size="xsmall"
+            class="rounded bg-goku-100"
+          >
+            <Text size="14" class="capitalize text-gohan-80">{tab}</Text>
+          </Button>
 
-            <Button
-              :if={tab != @active_tab}
-              on_click={"select_tab:#{tab}"}
-              variant="danger"
-              size="xsmall"
-              class="rounded"
-            >
-              <Text size="14" class="capitalize text-hit-80">{tab}</Text>
-            </Button>
-          {/for}
-        </LeftToRight>
+          <Button
+            :if={tab != @active_tab}
+            on_click={"select_tab:#{tab}"}
+            variant="danger"
+            size="xsmall"
+            class="rounded"
+          >
+            <Text size="14" class="capitalize text-hit-80">{tab}</Text>
+          </Button>
+        {/for}
+      </LeftToRight>
 
-        {#case @active_tab}
-          {#match "overview"}
-            <OverviewTab id="overview_tab" customer={@customer} />
-          {#match "rewards"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <RewardsTab id="rewards_tab" />
-            </div>
-          {#match "KPI"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">TODO</Text>
-            </div>
-          {#match "cashier"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">TODO</Text>
-            </div>
-          {#match "TXN"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">TODO</Text>
-            </div>
-          {#match "comms"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">TODO</Text>
-            </div>
-          {#match "fraud"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">TODO</Text>
-            </div>
-          {#match "notes"}
-            <div class="flex items-center justify-around h-64 w-full">
-              <Text size="16">No notes found</Text>
-            </div>
-        {/case}
-      </div>
+      {#case @active_tab}
+        {#match "overview"}
+          <OverviewTab id="overview_tab" customer={@customer} />
+        {#match "rewards"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <RewardsTab id="rewards_tab" />
+          </div>
+        {#match "KPI"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
+        {#match "cashier"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
+        {#match "TXN"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
+        {#match "comms"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
+        {#match "fraud"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">TODO</Text>
+          </div>
+        {#match "notes"}
+          <div class="flex items-center justify-around h-64 w-full">
+            <Text size="16">No notes found</Text>
+          </div>
+      {/case}
     </SlideOver>
     """
   end

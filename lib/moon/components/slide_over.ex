@@ -15,8 +15,8 @@ defmodule Moon.Components.SlideOver do
       :on-click={@on_close}
       class="fixed inset-0 z-20"
     />
-    <div class="fixed top-0 right-0 bottom-0 w-1/2 z-20 bg-gohan-100 shadow overflow-y-auto">
-      <div class="flex p-6">
+    <div class="fixed top-0 right-0 bottom-0 w-1/2 p-6 z-20 bg-gohan-100 shadow overflow-y-auto">
+      <div class="flex mb-6">
         <div class="flex-1">
           <#slot name="header" />
         </div>
