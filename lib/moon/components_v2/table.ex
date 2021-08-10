@@ -56,7 +56,7 @@ defmodule Moon.ComponentsV2.Table do
 
     ~F"""
     <div>
-      <Divider class="mt-2" color="goku-80"/>
+      <Divider class="mt-2" />
       <div class="h-14 max-w-full flex justify-between items-center">
         <LeftToRight>
           {"#{1 + @page_count * (@page - 1)}-#{@page_count * @page} of #{@total_count}"}
@@ -70,13 +70,13 @@ defmodule Moon.ComponentsV2.Table do
           <IconRow font_size="1.2rem" class="mr-4"/>
         </LeftToRight>
       </div>
-      <table class="min-w-full border-collapse border-t border-goku-40 overflow-scroll">
+      <table class="min-w-full text-sm border-collapse border-t border-beerus-100 overflow-scroll">
         <thead>
           <tr>
             <!-- This is used to render overlay on top of a row -->
             <th class="w-0"/>
             {#for column <- @columns}
-              <th class="border-r last:border-r-0 border-goku-40">
+              <th class="border-r last:border-r-0 border-beerus-100">
                 {render_column(column, on_sort, assigns)}
               </th>
             {/for}
@@ -88,18 +88,18 @@ defmodule Moon.ComponentsV2.Table do
               <!-- This is used to render overlay on top of a row -->
               <td>
                 {#if "#{item.id}" == "#{assigns.active_item_id}"}
-                  <div class="absolute inset-0 rounded border-2 border-tap-100">
+                  <div class="absolute inset-0 rounded border border-piccolo-100">
                     <div class="inline-block transform -translate-y-full pb-2">
                       <slot name="active_item_popover" />
                     </div>
                   </div>
 
                 {#elseif is_nil(assigns.active_item_id)}
-                  <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100"/>
+                  <div class="absolute inset-0 rounded group-hover:border group-hover:border-piccolo-100"/>
                 {/if}
               </td>
               {#for {field, type} <- fields}
-                <td class="border-r last:border-r-0 border-goku-40">
+                <td class="border-r last:border-r-0 border-beerus-100">
                   {render_field(get_value(item, field), type, assigns)}
                 </td>
               {/for}
@@ -115,7 +115,7 @@ defmodule Moon.ComponentsV2.Table do
   # Helpers for render
   #
   defp get_row_attrs(item, ind, on_select) do
-    bg_color = if rem(ind, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"
+    bg_color = if rem(ind, 2) == 0, do: "bg-goku-100", else: "bg-gohan-100"
     base_classes = "relative group"
 
     %{
@@ -138,7 +138,7 @@ defmodule Moon.ComponentsV2.Table do
 
     ~F"""
     <div class={
-      "w-64 px-1 py-2 text-trunks-100 text-sm font-normal",
+      "w-64 px-1 py-2 text-trunks-100 text-xs font-normal",
       "text-left": align_left,
       "text-right": not align_left
     }>
@@ -150,7 +150,7 @@ defmodule Moon.ComponentsV2.Table do
             "flex-row-reverse": not align_left
           }
         >
-          <div class="text-sm font-normal mr-2">{col.label}</div>
+          <div class="text-xs font-normal mr-2">{col.label}</div>
           {#case column_sort_order(col.field, @sort_by)}
             {#match :asc}
               <IconArrowLDown font_size="1.2rem" />
@@ -199,7 +199,7 @@ defmodule Moon.ComponentsV2.Table do
           <div class="leading-6">
             {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
           </div>
-          <div class="text-sm text-trunks-100">
+          <div class="text-xs text-trunks-100">
             {value |> Relative.format!("{relative}")}
           </div>
         </div>

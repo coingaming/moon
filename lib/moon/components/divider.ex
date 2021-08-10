@@ -2,7 +2,7 @@ defmodule Moon.Components.Divider do
   use Moon.StatelessComponent
 
   prop class, :string
-  prop color, :string, default: "goku-100"
+  prop color, :string, default: "beerus-100"
   prop height, :string, default: "full"
 
   prop orientation, :string,
