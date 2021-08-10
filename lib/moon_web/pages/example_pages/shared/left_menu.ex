@@ -9,11 +9,13 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   alias MoonWeb.MockDB.{Segments, Utils}
 
+  prop class, :string
+
   def render(assigns) do
     segments = get_segments()
 
     ~F"""
-    <Sections class="py-6 text-sm w-60">
+    <Sections class={"py-6 text-sm w-60 #{@class}"}>
       <div :for={segment <- segments}>
         {#if segment.title == "Segments"}
           <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">

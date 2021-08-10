@@ -101,7 +101,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       <TopMenu id="top-menu" class={if @edited, do: "opacity-30"} />
 
       <div class="flex">
-        <LeftMenu id="left-menu" class={if @edited, do: "opacity-30"} />
+        <LeftMenu class={if @edited, do: "opacity-30"} />
 
         <div class="flex-grow py-6 overflow-x-hidden px-14">
           <div class="flex items-center mb-6">
