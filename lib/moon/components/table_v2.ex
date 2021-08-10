@@ -40,7 +40,7 @@ defmodule Moon.Components.TableV2 do
       |> Enum.map(&{Map.get(&1, :field), Map.get(&1, :type)})
 
     ~F"""
-    <table class="min-w-full border-collapse border-t border-goku-40 overflow-scroll">
+    <table class="min-w-full text-sm border-collapse border-t border-goku-40 overflow-scroll">
       <thead>
         <tr>
           <!-- This is used to render overlay on top of a row -->
@@ -117,7 +117,7 @@ defmodule Moon.Components.TableV2 do
               "flex-row-reverse": not align_left
             }
           >
-            <div class="text-sm font-normal mr-2">{col.label}</div>
+            <div class="text-xs font-normal mr-2">{col.label}</div>
             {#case column_sort_order(col.field, @sort_by)}
               {#match :asc}
                 <IconArrowLDown font_size="1.2rem" />
