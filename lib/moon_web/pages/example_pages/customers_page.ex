@@ -103,10 +103,6 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       </div>
     </div>
     {#if @active_customer.id != nil}
-      <div
-        :on-click="close_customer_preview"
-        class="fixed inset-0 z-20"
-      />
       <CustomerPreview
         id="customer-preview"
         customer={@active_customer}
