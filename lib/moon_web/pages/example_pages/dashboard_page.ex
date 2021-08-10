@@ -67,6 +67,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   # page state
   data saved, :boolean, default: true
   data edited, :boolean, default: false
+  data show_page_options, :boolean, default: false
   data show_new_widget_panel, :boolean, default: false
 
   def mount(params, _session, socket) do
@@ -110,47 +111,52 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         <LeftMenu id="left-menu" reduced_opacity={@edited} />
 
         <TopToDown class="flex-grow py-6 px-14" gap={6}>
-          <div class="flex items-center">
+          <LeftToRight gap={2}>
             <Heading size={32} class="flex-grow">{@page_title}</Heading>
 
-            <div class={"space-x-2", hidden: !@edited}>
-              <Button
-                on_click="discard_page_changes"
-                class="p-3 leading-none rounded border-beerus-100"
-              >
-                Cancel
-              </Button>
-              <Button
-                on_click="save_page_changes"
-                variant="primary"
-                class="p-3 leading-none"
-              >
-                Save
-              </Button>
-            </div>
+            <Button
+              on_click="discard_page_changes"
+              class={"p-3 leading-none rounded border-beerus-100 #{hidden_class_if(!@edited)}"}
+            >
+              Cancel
+            </Button>
 
-            <div class={"flex gap-x-4", hidden: @edited}>
-              <IconButton icon_name="icon_notification" title="TODO: Notifications" />
+            <Button
+              on_click="save_page_changes"
+              variant="primary"
+              class={"p-3 leading-none #{hidden_class_if(!@edited)}"}
+            >
+              Save
+            </Button>
 
-              <DropdownMenuButton id="dashboard-menu-button">
-                <IconMore />
+            <IconButton
+              icon_name="icon_notification"
+              title="TODO: Notifications"
+              class={hidden_class_if(@edited)}
+            />
 
-                <:menu>
-                  <DropdownMenuItems>
-                    <DropdownMenuItem>
-                      <div :on-click="enter_edit_mode">Edit</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
-                    <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                    <DropdownMenuItem>Share</DropdownMenuItem>
-                    <DropdownMenuItem>Delete</DropdownMenuItem>
-                  </DropdownMenuItems>
-                </:menu>
-              </DropdownMenuButton>
-            </div>
-          </div>
+            <DropdownMenuButton
+              class={"ml-2 #{hidden_class_if(@edited)}"}
+              show={@show_page_options}
+              on_toggle="toggle_page_options"
+            >
+              <IconMore />
 
-          <div class={"flex flex-wrap items-center gap-y-4 gap-x-6", "opacity-30": @edited}>
+              <:menu>
+                <DropdownMenuItems>
+                  <DropdownMenuItem>
+                    <div :on-click="enter_edit_mode">Edit</div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
+                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem>Share</DropdownMenuItem>
+                  <DropdownMenuItem>Delete</DropdownMenuItem>
+                </DropdownMenuItems>
+              </:menu>
+            </DropdownMenuButton>
+          </LeftToRight>
+
+          <LeftToRight gap={6} class={if @edited, do: "opacity-30", else: nil}>
             <Switcher
               items={@page_tabs}
               selected_item={@selected_tab}
@@ -158,7 +164,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               class="h-10"
             />
 
-            <Divider orientation="vertical" color="beerus-100" height="10" />
+            <Divider orientation="vertical" height="10" />
 
             <ButtonsList>
               <Datepicker
@@ -198,7 +204,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 <Divider
                   class="mx-1"
                   orientation="vertical"
-                  color="beerus-100"
                   height="10"
                 />
 
@@ -210,9 +215,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </Button>
               {/unless}
             </ButtonsList>
-          </div>
+          </LeftToRight>
 
-          <Divider color="beerus-100" />
+          <Divider />
 
           <!-- TODO: Create a shared component -->
           <div class="flex p-6 rounded bg-gohan-100">
@@ -298,9 +303,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   def handle_event("refresh_widget_data", %{"ordinal_number" => ordinal_number}, socket) do
     widgets =
-      List.update_at(socket.assigns.page_widgets, String.to_integer(ordinal_number) - 1, fn item ->
-        %{item | data: generate_widget_items()}
-      end)
+      List.update_at(
+        socket.assigns.page_widgets,
+        String.to_integer(ordinal_number) - 1,
+        fn item ->
+          %{item | data: generate_widget_items()}
+        end
+      )
 
     {:noreply, assign(socket, page_widgets: widgets)}
   end
@@ -332,11 +341,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
+  def handle_event("toggle_page_options", _, socket) do
+    {:noreply, assign(socket, show_page_options: !socket.assigns.show_page_options)}
+  end
+
   def handle_event("enter_edit_mode", _, socket) do
     {:noreply,
      assign(socket,
        edited: true,
-       temp_page_widgets: socket.assigns.page_widgets
+       temp_page_widgets: socket.assigns.page_widgets,
+       show_page_options: false
      )}
   end
 
@@ -480,4 +494,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       %{label: name, value: name}
     end)
   end
+
+  defp hidden_class_if(true), do: "hidden"
+  defp hidden_class_if(false), do: nil
 end
