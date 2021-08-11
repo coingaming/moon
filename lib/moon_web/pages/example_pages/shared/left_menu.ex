@@ -1,12 +1,17 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   use MoonWeb, :stateful_component
 
+  alias Surface.Components.LiveRedirect
+
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.Sections
   alias Moon.Components.Divider
 
+  alias MoonWeb.MockDB.{Segments, Utils}
+
   prop class, :string
   prop reduced_opacity, :boolean, default: false
+
   data segments, :any, default: []
 
   def mount(assigns) do
@@ -22,17 +27,39 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         </div>
 
         <div class="space-y-0.5 m-2">
-          <div class="flex items-center mx-2 rounded cursor-pointer hover:bg-goku-120" :for={item <- segment.items}>
-            <div class="flex items-center justify-center w-6 h-6 m-2">
-              <Icon name={item.icon} class="text-trunks-100" />
-            </div>
-            <div class="">{item.title}</div>
-          </div>
+          {#for item <- segment.items}
+            {#if segment.title == "Segments"}
+              <LiveRedirect :if={item.type == :customers} to={"/example-pages/customers?segment_id=#{item.id}"}>
+                <div class="flex items-center px-2 cursor-pointer">
+                  <div class="flex items-center justify-center w-6 h-6 m-2">
+                    <Icon name={:icon_user} class="text-trunks-100" />
+                  </div>
+                  <div class="">{item.name}</div>
+                </div>
+              </LiveRedirect>
+
+              <LiveRedirect :if={item.type == :affiliates} to={"/example-pages/affiliates?segment_id=#{item.id}"}>
+                <div class="flex items-center px-2 cursor-pointer">
+                  <div class="flex items-center justify-center w-6 h-6 m-2">
+                    <Icon name={:icon_expand} class="text-trunks-100" />
+                  </div>
+                  <div class="">{item.name}</div>
+                </div>
+              </LiveRedirect>
+            {#else}
+              <div class="flex items-center px-2 cursor-pointer">
+                <div class="flex items-center justify-center w-6 h-6 m-2">
+                  <Icon name={item.icon} class="text-trunks-100" />
+                </div>
+                <div class="">{item.title}</div>
+              </div>
+            {/if}
+          {/for}
         </div>
 
         <div class="m-2 mb-0" :if={segment.new_item}>
-          <div class="flex items-center mx-2 cursor-pointer rounded hover:bg-goku-120">
-            <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm border border-beerus-100">
+          <div class="flex items-center px-2 cursor-pointer">
+            <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
               <Icon name="icon_plus" />
             </div>
             <div class="">{segment.new_item}</div>
@@ -46,6 +73,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   end
 
   def get_segments() do
+    segments = Segments.list_all()
+      |> Utils.take_page(0, 6)
+
     [
       %{
         title: "Dashboards",
@@ -61,15 +91,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
       },
       %{
         title: "Segments",
-        count: 5,
+        count: length(segments),
         new_item: "New segment",
-        items: [
-          %{icon: :icon_expand, title: "Yggdrasil games"},
-          %{icon: :icon_expand, title: "Rage clicked recently"},
-          %{icon: :icon_user, title: "New last week"},
-          %{icon: :icon_user, title: "Players report"},
-          %{icon: :icon_expand, title: "May bet count"}
-        ]
+        items: segments
       },
       %{
         title: "Following",

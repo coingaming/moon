@@ -108,8 +108,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       <TopMenu id="top-menu" reduced_opacity={@edited} />
 
       <LeftToRight gap={0}>
-        <LeftMenu id="left-menu" reduced_opacity={@edited} />
-
+        <LeftMenu reduced_opacity={@edited} />
         <TopToDown class="flex-grow py-6 px-14" gap={6}>
           <LeftToRight gap={2}>
             <Heading size={32} class="flex-grow">{@page_title}</Heading>
