@@ -35,7 +35,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     <div class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu />
+        <LeftMenu id="left-menu"/>
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]} />
           {#if @save_segment_form == nil}
@@ -162,11 +162,11 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     case msg do
       {:filter, filter_event} ->
         case filter_event do
-          {:username_filter, :apply, values} ->
+          {"username_filter", :apply, values} ->
             socket = socket |> assign(username_filter_values: values, page: 1)
             new_route.(socket)
 
-          {:country_filter, :apply, values} ->
+          {"country_filter", :apply, values} ->
             socket = socket |> assign(country_filter_values: values, page: 1)
             new_route.(socket)
 
@@ -176,15 +176,15 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
 
       {:table, table_event} ->
         case table_event do
-          {:affiliates_table, :paginate, page} ->
+          {"affiliates_table", :paginate, page} ->
             socket = socket |> assign(page: page)
             if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 
-          {:affiliates_table, :select, affiliate} ->
+          {"affiliates_table", :select, affiliate} ->
             socket = socket |> assign(active_affiliate: affiliate)
             no_redirect.(socket)
 
-          {:affiliates_table, :sort, sort_by} ->
+          {"affiliates_table", :sort, sort_by} ->
             socket = socket |> assign(sort_by: sort_by, page: 1)
             if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 

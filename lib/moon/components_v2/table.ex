@@ -239,27 +239,23 @@ defmodule Moon.ComponentsV2.Table do
   # Event Handlers
   #
   def handle_event("goto_prev_page", _, socket = %{assigns: %{id: id, page: page}}) do
-    table_name = id |> String.to_atom()
-
-    self() |> send({:table, {table_name, :paginate, if(page > 1, do: page - 1, else: page)}})
+    self() |> send({:table, {id, :paginate, if(page > 1, do: page - 1, else: page)}})
     {:noreply, socket}
   end
 
   def handle_event("goto_next_page", _, socket = %{assigns: %{id: id, page: page}}) do
-    table_name = id |> String.to_atom()
-
-    self() |> send({:table, {table_name, :paginate, page + 1}})
+    self() |> send({:table, {id, :paginate, page + 1}})
     {:noreply, socket}
   end
 
   def handle_event(event, _, socket) do
-    table_name = socket.assigns.id |> String.to_atom()
+    %{id: id} = socket.assigns
 
     case String.split(event, ":") do
       ["select_item", id_str] ->
         item = socket.assigns.items |> Enum.find(nil, &("#{&1.id}" == id_str))
 
-        if item != nil, do: self() |> send({:table, {table_name, :select, item}})
+        if item != nil, do: self() |> send({:table, {id, :select, item}})
         {:noreply, socket}
 
       ["sort_items", field_str] ->
@@ -281,7 +277,7 @@ defmodule Moon.ComponentsV2.Table do
             _ -> {field, :asc}
           end
 
-        self() |> send({:table, {table_name, :sort, sort_by}})
+        self() |> send({:table, {id, :sort, sort_by}})
         {:noreply, socket}
 
       _ ->
