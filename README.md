@@ -37,12 +37,13 @@ alias Moon.Assets.Icons.IconCloseRounded
 alias Moon.Assets.Icons.IconZoom
 
 <TextInput placeholder="Search for dashboard, segments and more">
-  <template for="left_icon">
+  <:left_icon>
     <IconZoom>
-  </template>
-  <template for="right_icon">
+  </:left_icon>
+  <:right_icon>
     <IconCloseRounded on_click="clear_search">
-  </template>
+  </:right_icon>
 </TextInput>
 ```
 
+Second example is a bit longer, but has much better compiler error checks.
