@@ -35,12 +35,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   @default_page_count 10
 
   @dropdown_filter_map %{
-    brand_filter: :brand_filter_values,
-    currency_filter: :currency_filter_values,
-    country_filter: :country_filter_values,
-    username_filter: :username_filter_values,
-    create_date_filter: :create_date_values,
-    amount_range_filter: :amount_range_values
+    "brand_filter" => :brand_filter_values,
+    "currency_filter" => :currency_filter_values,
+    "country_filter" => :country_filter_values,
+    "username_filter" => :username_filter_values,
+    "create_date_filter" => :create_date_values,
+    "amount_range_filter" => :amount_range_values
   }
 
   data breadcrumbs, :any,
@@ -194,15 +194,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   defp get_filtered_transactions(selected_option_ids, assigns) do
     get_transactions(assigns)
-    |> get_filtered_transactions_by(:brand_id, selected_option_ids[:brand_filter])
-    |> get_filtered_transactions_by(:currency_id, selected_option_ids[:currency_filter])
-    |> get_filtered_transactions_by(:customer_id, selected_option_ids[:username_filter])
-    |> get_filtered_transactions_by(:country_id, selected_option_ids[:country_filter])
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids["brand_filter"])
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids["currency_filter"])
+    |> get_filtered_transactions_by(:customer_id, selected_option_ids["username_filter"])
+    |> get_filtered_transactions_by(:country_id, selected_option_ids["country_filter"])
     |> get_filtered_transactions_by_amount(
       :amount_eur,
-      selected_option_ids[:amount_range_filter]
+      selected_option_ids["amount_range_filter"]
     )
-    |> get_filtered_transactions_by_date(:create_time, selected_option_ids[:create_date_filter])
+    |> get_filtered_transactions_by_date(:create_time, selected_option_ids["create_date_filter"])
     |> Enum.sort(fn a, b ->
       case assigns.sort_by do
         {field, :asc} -> a[field] < b[field]
