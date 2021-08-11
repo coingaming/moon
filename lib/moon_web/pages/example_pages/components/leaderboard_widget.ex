@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
+defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Card
@@ -20,8 +20,8 @@ defmodule MoonWeb.Pages.ExamplePages.Components.BarChartWidget do
           height={8}
           width={8}
           click={@on_refresh}
-          value_name="name"
-          value={@widget.name}
+          value_name="ordinal_number"
+          value={@widget.ordinal_number}
           class={if @edited, do: "hidden"}
         />
 

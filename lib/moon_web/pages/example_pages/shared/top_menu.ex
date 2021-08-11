@@ -6,10 +6,14 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   alias Moon.Components.IconButton
 
   prop class, :string
+  prop reduced_opacity, :boolean, default: false
 
   def render(assigns) do
     ~F"""
-    <div class={"flex items-center gap-4 px-6 py-4 bg-gohan-100 #{@class}"}>
+    <div class={
+      "flex items-center gap-4 px-6 py-4 bg-gohan-100 #{@class}",
+      "opacity-30": @reduced_opacity
+    }>
       <div>
         <LogoLabFull font_size="3.75rem" class="block h-5" />
       </div>

@@ -14,7 +14,8 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "sportsbet-dark",
-        active_page: __MODULE__
+        active_page: __MODULE__,
+        show_options: false
       )
 
     {:ok, socket}
@@ -28,7 +29,11 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <ExampleAndCode>
         <#template slot="example">
           <div class="flex justify-center">
-            <DropdownMenuButton id="menu_button" placement="bottom-left">
+            <DropdownMenuButton
+              show={@show_options}
+              placement="bottom-left"
+              on_toggle="toggle_options"
+            >
               <IconMore />
 
               <:menu>
@@ -48,7 +53,11 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
         alias Moon.Components.DropdownMenuItem
         alias Moon.Components.DropdownMenuItems
 
-        <DropdownMenuButton id="menu_button" placement="bottom-left">
+        <DropdownMenuButton
+          show={@show_options}
+          placement="bottom-left"
+          on_toggle="toggle_options"
+        >
           <IconMore />
 
           <:menu>
@@ -59,10 +68,18 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
             </DropdownMenuItems>
           </:menu>
         </DropdownMenuButton>
+
+        def handle_event("toggle_options", _, socket) do
+          {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
+        end
           </#CodePreview>
         </#template>
       </ExampleAndCode>
     </Stack>
     """
+  end
+
+  def handle_event("toggle_options", _, socket) do
+    {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
   end
 end
