@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     <div id="transactions-page" class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu />
+        <LeftMenu id="left_menu"/>
 
         <div class="px-14 py-6">
           <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
@@ -377,7 +377,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       ]
 
       status_list = ["CONFIRMED", "DECLINED", "PROCESSING"]
-      amount = Faker.random_between(59, 59999)
+      amount = Faker.random_between(59, 59_999)
       amount_eur = (amount * (Faker.random_between(1, 199) / 100)) |> Float.round(2)
 
       %{
