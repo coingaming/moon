@@ -99,7 +99,7 @@ defmodule Moon.Components.DropdownMultiFilter do
                   &nbspApply&nbsp
                 </Button>
               {#else}
-                <Button size="xsmall" class="rounded bg-hit-80">
+                <Button size="xsmall" class="rounded bg-piccolo-100 opacity-30">
                   <span class="text-goten-100">&nbspApply&nbsp</span>
                 </Button>
               {/if}

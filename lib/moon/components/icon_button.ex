@@ -4,6 +4,7 @@ defmodule Moon.Components.IconButton do
   alias Moon.Assets.Icon
 
   prop icon_name, :string, required: true
+  prop icon_size, :string, default: "1rem"
   prop class, :string
   prop title, :string
   prop height, :integer, default: 10
@@ -17,12 +18,12 @@ defmodule Moon.Components.IconButton do
   def render(assigns) do
     ~F"""
     <button
-      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks-100 hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
+      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
       title={@title}
       :on-click={@click}
       :attrs={phx_val_tag(@value_name, @value)}
     >
-      <Icon name={@icon_name} />
+      <Icon name={@icon_name} font_size={@icon_size} />
     </button>
     """
   end

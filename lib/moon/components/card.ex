@@ -1,17 +1,20 @@
 defmodule Moon.Components.Card do
   use Moon.StatelessComponent
 
+  alias Moon.Components.Heading
+
   prop title, :string
   prop class, :string
+  prop rounded, :boolean, default: true
 
   slot buttons
   slot content, required: true
 
   def render(assigns) do
     ~F"""
-    <div class={"p-6 rounded bg-gohan-100 #{@class}"}>
+    <div class={"p-6 bg-gohan-100 #{@class}", rounded: @rounded}>
       <div class="flex items-center justify-between gap-4">
-        <h3 class="text-xl font-semibold">{@title}</h3>
+        <Heading size={20}>{@title}</Heading>
 
         <div class="flex flex-shrink-0 gap-2">
           <#slot name="buttons" />
