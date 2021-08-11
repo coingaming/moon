@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
     <div class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu id="left-menu"/>
+        <LeftMenu />
         <div class="p-4 pt-8">
           <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
