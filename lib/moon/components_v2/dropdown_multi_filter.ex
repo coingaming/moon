@@ -76,7 +76,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
                   <span class="px-2">Apply</span>
                 </Button>
               {#else}
-                <Button size="xsmall" class="rounded bg-hit-80">
+                <Button size="xsmall" class="rounded bg-piccolo-100 opacity-30">
                   <span class="px-2 text-goten-100">Apply</span>
                 </Button>
               {/if}

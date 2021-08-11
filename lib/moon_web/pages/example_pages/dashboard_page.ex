@@ -3,6 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias Moon.Assets.Icons.IconMore
   alias Moon.Autolayouts.ButtonsList
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.TopToDown
 
   alias Moon.Components.Button
   alias Moon.Components.Datepicker
@@ -16,11 +18,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   alias MoonWeb.MockDB.Currencies
   alias MoonWeb.MockDB.Sites
-  alias MoonWeb.Pages.ExamplePages.Components.BarChartWidget
+  alias MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget
   alias MoonWeb.Pages.ExamplePages.Shared
   alias Shared.Filters.ContentFilter
   alias Shared.TopMenu
   alias Shared.LeftMenu
+  alias Shared.NewWidgetPanel
 
   @colors ~w(
     krillin-100 frieza-100 roshi-100
@@ -36,11 +39,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     "Total NGR, EUR"
   ]
 
-  # @widgets_names ~w(
-  #   Depositors Winners Losers
-  #   Wages Demographic Geo
-  #   Currency Device\u00a0&\u00a0OS Products
-  # )
+  @widget_categories_names ~w(
+    Depositors Winners Losers
+    Wages Demographic Geo
+    Currency Device\u00a0&\u00a0OS Products
+  )
 
   # dashboard content
   data page_title, :string
@@ -48,6 +51,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   data page_widgets, :list, default: []
   data temp_page_widgets, :list, default: []
   data all_metrics, :list, default: []
+  data widget_categories, :list, default: []
 
   # tabs
   prop page_tabs, :list, default: []
@@ -63,6 +67,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   # page state
   data saved, :boolean, default: true
   data edited, :boolean, default: false
+  data show_page_options, :boolean, default: false
+  data show_new_widget_panel, :boolean, default: false
 
   def mount(params, _session, socket) do
     socket =
@@ -73,6 +79,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
         page_tabs: ~w(Total Real Bonus),
         selected_tab: "Total",
         all_metrics: prepare_filter_options(@metrics_names),
+        widget_categories: fetch_widget_categories(),
         all_currencies: prepare_filter_options(Currencies.list_all()),
         all_sites: prepare_filter_options(Sites.list_all()),
         date_filter_values: %{
@@ -86,9 +93,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           ]),
         page_widgets:
           fetch_widgets_data([
-            %{name: "Depositors"},
-            %{name: "Winners"},
-            %{name: "Losers"}
+            %{name: "Depositors", kind: :leaderboard},
+            %{name: "Winners", kind: :leaderboard},
+            %{name: "Losers", kind: :leaderboard}
           ])
       )
 
@@ -98,53 +105,58 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   def render(assigns) do
     ~F"""
     <div class={"#{@theme_name}"}>
-      <TopMenu id="top-menu" class={if @edited, do: "opacity-30"} />
+      <TopMenu id="top-menu" reduced_opacity={@edited} />
 
-      <div class="flex">
-        <LeftMenu id="left-menu" class={if @edited, do: "opacity-30"} />
+      <LeftToRight gap={0}>
+        <LeftMenu id="left-menu" reduced_opacity={@edited} />
 
-        <div class="flex-grow py-6 overflow-x-hidden px-14">
-          <div class="flex items-center mb-6">
+        <TopToDown class="flex-grow py-6 px-14" gap={6}>
+          <LeftToRight gap={2}>
             <Heading size={32} class="flex-grow">{@page_title}</Heading>
 
-            <div class={"space-x-2", hidden: !@edited}>
-              <Button
-                on_click="discard_page_changes"
-                class="p-3 leading-none rounded border-beerus-100"
-              >
-                Cancel
-              </Button>
-              <Button
-                on_click="save_page_changes"
-                variant="primary"
-                class="p-3 leading-none"
-              >
-                Save
-              </Button>
-            </div>
+            <Button
+              on_click="discard_page_changes"
+              class={"p-3 leading-none rounded border-beerus-100 #{hidden_class_if(!@edited)}"}
+            >
+              Cancel
+            </Button>
 
-            <div class={"flex gap-x-4", hidden: @edited}>
-              <IconButton icon_name="icon_notification" title="TODO: Notifications" />
+            <Button
+              on_click="save_page_changes"
+              variant="primary"
+              class={"p-3 leading-none #{hidden_class_if(!@edited)}"}
+            >
+              Save
+            </Button>
 
-              <DropdownMenuButton id="dashboard-menu-button">
-                <IconMore />
+            <IconButton
+              icon_name="icon_notification"
+              title="TODO: Notifications"
+              class={hidden_class_if(@edited)}
+            />
 
-                <:menu>
-                  <DropdownMenuItems>
-                    <DropdownMenuItem>
-                      <div :on-click="enter_edit_mode">Edit</div>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
-                    <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                    <DropdownMenuItem>Share</DropdownMenuItem>
-                    <DropdownMenuItem>Delete</DropdownMenuItem>
-                  </DropdownMenuItems>
-                </:menu>
-              </DropdownMenuButton>
-            </div>
-          </div>
+            <DropdownMenuButton
+              class={"ml-2 #{hidden_class_if(@edited)}"}
+              show={@show_page_options}
+              on_toggle="toggle_page_options"
+            >
+              <IconMore />
 
-          <div class={"flex flex-wrap items-center gap-y-4 gap-x-6", "opacity-30": @edited}>
+              <:menu>
+                <DropdownMenuItems>
+                  <DropdownMenuItem>
+                    <div :on-click="enter_edit_mode">Edit</div>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>Rearrange widget</DropdownMenuItem>
+                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
+                  <DropdownMenuItem>Share</DropdownMenuItem>
+                  <DropdownMenuItem>Delete</DropdownMenuItem>
+                </DropdownMenuItems>
+              </:menu>
+            </DropdownMenuButton>
+          </LeftToRight>
+
+          <LeftToRight gap={6} class={if @edited, do: "opacity-30", else: nil}>
             <Switcher
               items={@page_tabs}
               selected_item={@selected_tab}
@@ -152,7 +164,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               class="h-10"
             />
 
-            <Divider orientation="vertical" color="beerus-100" height="10" />
+            <Divider orientation="vertical" height="10" />
 
             <ButtonsList>
               <Datepicker
@@ -192,7 +204,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 <Divider
                   class="mx-1"
                   orientation="vertical"
-                  color="beerus-100"
                   height="10"
                 />
 
@@ -204,9 +215,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 </Button>
               {/unless}
             </ButtonsList>
-          </div>
+          </LeftToRight>
 
-          <Divider color="beerus-100" class="my-6" />
+          <Divider />
 
           <!-- TODO: Create a shared component -->
           <div class="flex p-6 rounded bg-gohan-100">
@@ -245,9 +256,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
             </div>
           </div>
 
-          <div class="grid grid-cols-1 mt-6 lg:grid-cols-2 gap-x-4 gap-y-6">
-            {#for widget <- Enum.sort_by(@page_widgets, & &1.index)}
-              <BarChartWidget
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 gap-y-6">
+            {#for widget <- Enum.sort_by(@page_widgets, & &1.ordinal_number)}
+              <LeaderboardWidget
                 widget={widget}
                 edited={@edited}
                 bar_bg_color={"bg-#{widget.color}"}
@@ -255,9 +266,26 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 on_remove="remove_widget"
               />
             {/for}
+
+            <IconButton
+              icon_name="icon_plus"
+              title="Add a widget"
+              height={8}
+              width={8}
+              class="bg-goku-120"
+              text_color="text-piccolo-100"
+              hover_bg_color="bg-trunks-100"
+              click="open_new_widget_panel"
+            />
+
+            <NewWidgetPanel
+              id="new-widget-panel"
+              show={@show_new_widget_panel}
+              categories={@widget_categories}
+            />
           </div>
-        </div>
-      </div>
+        </TopToDown>
+      </LeftToRight>
     </div>
     """
   end
@@ -273,14 +301,15 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
-  def handle_event("refresh_widget_data", %{"name" => name}, socket) do
-    widgets = socket.assigns.page_widgets
-    widget = Enum.find(widgets, &(&1.name == name))
-
+  def handle_event("refresh_widget_data", %{"ordinal_number" => ordinal_number}, socket) do
     widgets =
-      List.update_at(widgets, widget.index, fn item ->
-        %{item | data: generate_widget_items()}
-      end)
+      List.update_at(
+        socket.assigns.page_widgets,
+        String.to_integer(ordinal_number) - 1,
+        fn item ->
+          %{item | data: generate_widget_items()}
+        end
+      )
 
     {:noreply, assign(socket, page_widgets: widgets)}
   end
@@ -312,11 +341,16 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
+  def handle_event("toggle_page_options", _, socket) do
+    {:noreply, assign(socket, show_page_options: !socket.assigns.show_page_options)}
+  end
+
   def handle_event("enter_edit_mode", _, socket) do
     {:noreply,
      assign(socket,
        edited: true,
-       temp_page_widgets: socket.assigns.page_widgets
+       temp_page_widgets: socket.assigns.page_widgets,
+       show_page_options: false
      )}
   end
 
@@ -332,6 +366,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
        page_widgets: socket.assigns.temp_page_widgets,
        temp_page_widgets: []
      )}
+  end
+
+  def handle_event("open_new_widget_panel", _, socket) do
+    {:noreply, assign(socket, show_new_widget_panel: true)}
   end
 
   def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
@@ -378,6 +416,25 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
+  def handle_info({:new_widget_panel, :close}, socket) do
+    {:noreply, assign(socket, show_new_widget_panel: false)}
+  end
+
+  def handle_info({:new_widget_panel, :add, {category_name, widget_kind}}, socket) do
+    page_widgets = socket.assigns.page_widgets
+    ordinal_number = length(page_widgets) + 1
+
+    widget = %{
+      name: category_name,
+      kind: widget_kind,
+      ordinal_number: ordinal_number,
+      color: Enum.at(@colors, ordinal_number - 1),
+      data: generate_widget_items()
+    }
+
+    {:noreply, assign(socket, page_widgets: page_widgets ++ [widget])}
+  end
+
   defp generate_widget_items() do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
@@ -406,13 +463,23 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
   defp fetch_widgets_data(widgets) do
     widgets
-    |> Enum.with_index()
+    |> Enum.with_index(1)
     |> Enum.map(fn {widget, index} ->
       Map.merge(widget, %{
-        index: index,
-        color: Enum.at(@colors, index),
+        ordinal_number: index,
+        color: Enum.at(@colors, index - 1),
         data: generate_widget_items()
       })
+    end)
+  end
+
+  defp fetch_widget_categories() do
+    @widget_categories_names
+    |> Enum.map(fn category_name ->
+      %{
+        name: category_name,
+        widget_kinds: Enum.random([["Top"], ["Calendar", "Top"]])
+      }
     end)
   end
 
@@ -427,4 +494,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
       %{label: name, value: name}
     end)
   end
+
+  defp hidden_class_if(true), do: "hidden"
+  defp hidden_class_if(false), do: nil
 end
