@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   data show_filter, :boolean, default: false
   data selected_items, :list, default: []
 
-  prop chip_class, :string
+  prop chip_class, :string, default: "px-3"
   prop filter_name, :string, required: true
   prop active_items, :list
   prop all_items, :list, default: []

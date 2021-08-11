@@ -73,6 +73,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
               start_date_field={:started_at}
               end_date_field={:ended_at}
+              show_date_inputs={true}
               on_date_change="update_dates"
             />
           </Form>
@@ -87,6 +88,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
             start_date_field={ :started_at }}
             end_date_field={ :ended_at }}
+            show_date_inputs={true}
             on_date_change="update_dates"
           />
         </Form>
@@ -135,6 +137,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               start_date_field={:datetime_started_at}
               end_date_field={:datetime_ended_at}
               on_date_change="time_update_dates"
+              show_date_inputs={true}
               with_time={true}
             />
           </Form>
@@ -150,6 +153,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             start_date_field={ :datetime_started_at }
             end_date_field={ :datetime_ended_at }
             on_date_change="update_dates"
+            show_date_inputs={true}
             with_time={ true }
           />
         </Form>
@@ -174,6 +178,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date={fetch_field(@range_changeset, :ended_at) |> elem(1)}
               start_date_field={:started_at}
               end_date_field={:ended_at}
+              show_date_inputs={false}
               on_date_change="range_update_dates"
               ranges={ ~w(lastWeek yesterday today nextWeek) }
             />
@@ -189,6 +194,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
             start_date_field={ :started_at }
             end_date_field={ :ended_at }
+            show_date_inputs={false}
             on_date_change="update_dates"
             ranges={ ~w(lastWeek yesterday today nextWeek) }
           />
@@ -213,6 +219,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               start_date_field={:started_at}
               end_date_field={:ended_at}
               week_starts_on={7}
+              show_date_inputs={false}
               on_date_change="weekstart_update_dates"
               ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
             />
@@ -228,8 +235,9 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
             start_date_field={ :started_at }
             end_date_field={ :ended_at }
-            on_date_change="update_dates"
             week_starts_on={ 7 }
+            show_date_inputs={false}
+            on_date_change="update_dates"
             ranges={ ~w(lastWeek today thisWeek nextWeek) }
           />
         </Form>

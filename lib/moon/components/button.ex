@@ -4,7 +4,7 @@ defmodule Moon.Components.Button do
   alias Moon.Assets.Icon
 
   prop(href, :string)
-  prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default"])
+  prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default", "outline"])
   prop(size, :string, values: ["xsmall", "small", "medium", "large"])
   prop(mock_state, :string, values: ["active", "focus", "hover"])
   prop(full_width, :boolean)
@@ -41,7 +41,11 @@ defmodule Moon.Components.Button do
     {asset_import @socket, "js/components/button"}
 
     <button
-      class={"moon-button relative #{@class}", rounded: @rounded}
+      class={
+        "moon-button relative #{@class}",
+        rounded: @rounded,
+        "py-2 px-3 border-beerus-100 hover:border-piccolo-80": @variant == "outline"
+      }
       disabled={@disabled}
       type={@type}
       data-mock-state={@mock_state}

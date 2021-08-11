@@ -1,10 +1,12 @@
 defmodule Moon.Components.Datepicker do
   use Moon.StatefulComponent
+
   alias Moon.Assets.Icons.IconChevronLeft
   alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month
+  alias Moon.Components.PopoverV2
   alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
 
@@ -29,24 +31,43 @@ defmodule Moon.Components.Datepicker do
   prop end_date_field, :atom, default: :end_date
   prop on_date_change, :string, default: "update_dates"
   prop button_class, :string, default: "mt-4"
+  prop show_date_inputs, :boolean, default: false
 
   prop ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
 
-  data show, :boolean, default: false
-  data selected_range, :string, default: "thisMonth"
-  data left_panel_date, :datetime, default: Timex.today()
+  prop start_date, :datetime
+  prop end_date, :datetime
 
-  prop start_date, :datetime, default: nil
-  prop end_date, :datetime, default: nil
+  # Internal values
+  data internal_start_date, :datetime, default: Timex.today()
+  data internal_end_date, :datetime, default: Timex.today()
+  data left_panel_date, :datetime, default: Timex.today()
+  data selected_range, :string, default: "thisMonth"
+  data temp_range, :string, default: nil
+  data show, :boolean, default: false
+
+  # Handle date-input fields updates
+  def update(assigns, socket) do
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(
+        internal_start_date: parse_date(assigns.start_date),
+        internal_end_date: parse_date(assigns.end_date)
+      )
+
+    {:ok, socket}
+  end
 
   def render(assigns) do
     ~F"""
     {asset_import @socket, "js/components/text-input"}
     {asset_import @socket, "js/tailwind"}
 
-    <div class="relative block">
+    <PopoverV2 show={@show} on_close="toggle_picker">
       <Chip
+        class={@button_class}
         on_click="toggle_picker"
         right_icon="icon_chevron_down_rounded"
         active={@start_date && @end_date}
@@ -54,132 +75,152 @@ defmodule Moon.Components.Datepicker do
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Chip>
 
-      <div
-        class={
-          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
-          hidden: !@show
-        }
-      >
-        <!-- Ranges -->
-        <div :if={length(@ranges) >0} class="space-y-0.5 w-44">
-          <div
-            :for={range <- @ranges}
-            class={
-              "py-2 px-3 hover:bg-goku-100 rounded cursor-pointer",
-              "bg-hover": range == @selected_range
-            }
-            :on-click="select_range"
-            phx-value-range={range}
-          >
-            {range_label(range)}
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="flex flex-col pt-2 pl-4">
-          <!-- Months -->
-          <div class="flex flex-grow space-x-6">
-            <!-- First Month -->
-            <div class="relative flex flex-col items-center">
-              <button
-                type="button"
-                class="absolute leading-none left-6"
-                :on-click="shift_months"
-                phx-value-months={-2}
-              >
-                <IconChevronLeft class="block" font_size="1rem"/>
-              </button>
-
-              <div class="flex-grow">
-                <Month
-                  date={@left_panel_date}
-                  start_date={@start_date}
-                  end_date={@end_date}
-                  week_starts_on={@week_starts_on}
-                  on_click="select_date"
-                />
-              </div>
-
-              <DateTimeLocalInput
-                :if={@with_time}
-                field={@start_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@start_date, @with_time)
-                }
-              />
-
-              <DateInput
-                :if={!@with_time}
-                field={@start_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@start_date, @with_time)
-                }
-              />
-            </div>
-
-            <!-- Second Month -->
-            <div class="relative flex flex-col items-center">
-              <button
-                type="button"
-                class="absolute leading-none right-6"
-                :on-click="shift_months"
-                phx-value-months={2}
-              >
-                <IconChevronRight class="block" font_size="1rem"/>
-              </button>
-
-              <div class="flex-grow">
-                <Month
-                  date={Timex.shift(@left_panel_date, months: 1)}
-                  start_date={@start_date}
-                  end_date={@end_date}
-                  week_starts_on={@week_starts_on}
-                  on_click="select_date"
-                />
-              </div>
-
-              <DateTimeLocalInput
-                :if={@with_time}
-                field={@end_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy, --:--",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@end_date, @with_time)
-                }
-              />
-
-              <DateInput
-                :if={!@with_time}
-                field={@end_date_field}
-                class="mt-4 rounded-lg w-60 moon-text-input border-beerus-100"
-                opts={
-                  placeholder: "dd/mm/yyyy",
-                  "phx-hook": "Datepicker",
-                  "data-pending-val": format_date(@end_date, @with_time)
-                }
-              />
-            </div>
-          </div>
-
-          <div class="mt-4 text-right">
-            <Button
-              class="rounded-lg"
-              variant="primary"
-              on_click="toggle_picker"
+      <:content>
+        <div
+          class={
+            "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
+            hidden: !@show
+          }
+        >
+          <!-- Ranges -->
+          <div :if={length(@ranges) >0} class="space-y-0.5 w-48 mr-4">
+            <div
+              :for={range <- @ranges}
+              class={
+                "py-2 px-3 hover:bg-goku-100 rounded cursor-pointer",
+                "bg-goku-100": range == @selected_range
+              }
+              :on-click="select_range"
+              phx-value-range={range}
             >
-              Apply
-            </Button>
+              {range_label(range)}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="flex flex-col pt-2 pl-3">
+            <!-- Months -->
+            <div class="flex flex-grow space-x-6">
+              <!-- First Month -->
+              <div class="relative flex flex-col items-center">
+                <button
+                  type="button"
+                  class="absolute leading-none left-6"
+                  :on-click="shift_months"
+                  phx-value-months={-2}
+                >
+                  <IconChevronLeft class="block" font_size="1rem"/>
+                </button>
+
+                <div class="flex-grow">
+                  <Month
+                    date={@left_panel_date}
+                    start_date={@internal_start_date}
+                    end_date={@internal_end_date}
+                    week_starts_on={@week_starts_on}
+                    on_click="select_date"
+                  />
+                </div>
+              </div>
+
+              <!-- Second Month -->
+              <div class="relative flex flex-col items-center">
+                <button
+                  type="button"
+                  class="absolute leading-none right-6"
+                  :on-click="shift_months"
+                  phx-value-months={2}
+                >
+                  <IconChevronRight class="block" font_size="1rem"/>
+                </button>
+
+                <div class="flex-grow">
+                  <Month
+                    date={Timex.shift(@left_panel_date, months: 1)}
+                    start_date={@internal_start_date}
+                    end_date={@internal_end_date}
+                    week_starts_on={@week_starts_on}
+                    on_click="select_date"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class={
+                "flex items-center mt-6 gap-x-2",
+                "justify-between": @show_date_inputs,
+                "justify-end": !@show_date_inputs
+              }>
+              <div :if={@show_date_inputs} class="flex flex-shrink-0 gap-x-2">
+                <DateTimeLocalInput
+                  :if={@with_time}
+                  field={@start_date_field}
+                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy, --:--",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@internal_start_date, @with_time)
+                  }
+                />
+
+                <DateInput
+                  :if={!@with_time}
+                  field={@start_date_field}
+                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@internal_start_date, @with_time)
+                  }
+                />
+
+                <DateTimeLocalInput
+                  :if={@with_time}
+                  field={@end_date_field}
+                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy, --:--",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@internal_end_date, @with_time)
+                  }
+                />
+
+                <DateInput
+                  :if={!@with_time}
+                  field={@end_date_field}
+                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+                  opts={
+                    placeholder: "dd/mm/yyyy",
+                    "phx-hook": "Datepicker",
+                    "data-pending-val": format_date(@internal_end_date, @with_time)
+                  }
+                />
+              </div>
+
+              <div class="flex flex-shrink-0 gap-x-2">
+                <Button
+                  variant="outline"
+                  size="xsmall"
+                  on_click="toggle_picker"
+                >
+                  Discard
+                </Button>
+
+                <Button
+                  class="px-3 py-2 rounded"
+                  variant="primary"
+                  size="xsmall"
+                  on_click="update_dates"
+                >
+                  Apply
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </:content>
+    </PopoverV2>
     """
   end
 
@@ -193,7 +234,7 @@ defmodule Moon.Components.Datepicker do
     start_date_formatted = Timex.format!(start_date, date_format, :strftime)
     end_date_formatted = Timex.format!(end_date, date_format, :strftime)
 
-    "#{start_date_formatted} - #{end_date_formatted}"
+    "#{start_date_formatted}-#{end_date_formatted}"
   end
 
   defp button_label(_start_date, _end_date, _, range), do: range_label(range)
@@ -276,15 +317,7 @@ defmodule Moon.Components.Datepicker do
     @ranges[String.to_atom(range_name)]
   end
 
-  defp update_dates(socket, start_date, end_date) do
-    send(self(), {
-      socket.assigns.on_date_change,
-      %{
-        socket.assigns.start_date_field => start_date,
-        socket.assigns.end_date_field => end_date
-      }
-    })
-  end
+  defp parse_date(""), do: nil
 
   defp parse_date(date) when is_binary(date) do
     case Timex.parse(date, "%Y-%0m-%0dT%R", :strftime) do
@@ -324,13 +357,45 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("toggle_picker", _, socket) do
-    {:noreply, assign(socket, show: !socket.assigns.show)}
+    %{
+      show: show,
+      start_date: start_date,
+      end_date: end_date
+    } = socket.assigns
+
+    left_panel_date = if start_date, do: Timex.to_date(start_date), else: Timex.today()
+
+    selected_range =
+      if show do
+        # Restore to an initial value on close
+        socket.assigns.temp_range
+      else
+        socket.assigns.selected_range
+      end
+
+    socket =
+      assign(socket,
+        internal_start_date: start_date,
+        internal_end_date: end_date,
+        left_panel_date: left_panel_date,
+        temp_range: selected_range,
+        selected_range: selected_range,
+        show: !show
+      )
+
+    {:noreply, socket}
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
     {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
-    socket = assign(socket, selected_range: range, left_panel_date: Timex.to_date(start_date))
-    update_dates(socket, start_date, end_date)
+
+    socket =
+      assign(socket,
+        selected_range: range,
+        internal_start_date: start_date,
+        internal_end_date: end_date,
+        left_panel_date: Timex.to_date(start_date)
+      )
 
     {:noreply, socket}
   end
@@ -339,13 +404,15 @@ defmodule Moon.Components.Datepicker do
     months = String.to_integer(months)
     left_panel_date = Timex.shift(socket.assigns.left_panel_date, months: months)
 
-    socket = assign(socket, left_panel_date: left_panel_date)
-    {:noreply, socket}
+    {:noreply, assign(socket, left_panel_date: left_panel_date)}
   end
 
   def handle_event("select_date", %{"date" => date}, socket) do
-    with_time = socket.assigns.with_time
-    start_date = socket.assigns.start_date
+    %{
+      with_time: with_time,
+      internal_start_date: start_date,
+      internal_end_date: end_date
+    } = socket.assigns
 
     date =
       date
@@ -354,7 +421,7 @@ defmodule Moon.Components.Datepicker do
 
     {start_date, end_date} =
       cond do
-        start_date && is_nil(socket.assigns.end_date) && Timex.after?(date, start_date) ->
+        start_date && is_nil(end_date) && Timex.after?(date, start_date) ->
           # Keep start, set end
           end_date = if with_time, do: Timex.end_of_day(date), else: date
           {start_date, end_date}
@@ -365,7 +432,31 @@ defmodule Moon.Components.Datepicker do
           {start_date, nil}
       end
 
-    update_dates(socket, start_date, end_date)
-    {:noreply, assign(socket, selected_range: nil)}
+    {:noreply,
+     assign(socket,
+       selected_range: nil,
+       internal_start_date: start_date,
+       internal_end_date: end_date
+     )}
+  end
+
+  def handle_event("update_dates", _, socket) do
+    %{
+      on_date_change: on_date_change,
+      start_date_field: start_date_field,
+      end_date_field: end_date_field,
+      internal_start_date: start_date,
+      internal_end_date: end_date
+    } = socket.assigns
+
+    send(self(), {
+      on_date_change,
+      %{
+        start_date_field => start_date,
+        end_date_field => end_date
+      }
+    })
+
+    {:noreply, assign(socket, show: false)}
   end
 end
