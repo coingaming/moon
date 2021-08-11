@@ -26,8 +26,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsTable do
           %{label: "Customer", field: :customer_name, sortable: true},
           %{label: "Transaction ID", field: :id, sortable: true},
           %{label: "Brand", field: :brand_name, type: :brand},
-          %{label: "Create time", field: :create_time, type: :date},
-          %{label: "Process time", field: :process_time, type: :date},
+          %{label: "Create time", field: :create_time, type: :datetime_relative},
+          %{label: "Process time", field: :process_time, type: :datetime_relative},
           %{label: "Status", field: :status, type: :text},
           %{label: "Tags", field: :tags, type: :text},
           %{label: "Description", field: :description, type: :text},
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsTable do
         _,
         socket = %{assigns: %{page: page, page_count: page_count, total_count: total_count}}
       ) do
-    if (page + 1) * page_count < total_count do
+    if (page + 1) * page_count < total_count + page_count do
       self() |> send({:table, {:paginate, page + 1}})
     end
 
@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsTable do
         {:noreply, socket}
 
       ["sort_records", field_str] ->
-        field = field_str |> String.to_atom()
+        field = String.to_existing_atom(field_str)
 
         sort_by =
           case socket.assigns.sort_by do
