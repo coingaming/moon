@@ -74,7 +74,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               start_date_field={:started_at}
               end_date_field={:ended_at}
               show_date_inputs={true}
-              on_date_change="update_dates"
             />
           </Form>
         </#template>
@@ -89,12 +88,11 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             start_date_field={ :started_at }}
             end_date_field={ :ended_at }}
             show_date_inputs={true}
-            on_date_change="update_dates"
           />
         </Form>
 
         # Handle date selection
-        def handle_info({"update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+        def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
           changeset =
             socket.assigns.changeset
             |> put_change(:started_at, start_date)
@@ -136,7 +134,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date={fetch_field(@time_changeset, :datetime_ended_at) |> elem(1)}
               start_date_field={:datetime_started_at}
               end_date_field={:datetime_ended_at}
-              on_date_change="time_update_dates"
               show_date_inputs={true}
               with_time={true}
             />
@@ -152,7 +149,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
             start_date_field={ :datetime_started_at }
             end_date_field={ :datetime_ended_at }
-            on_date_change="update_dates"
             show_date_inputs={true}
             with_time={ true }
           />
@@ -179,7 +175,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               start_date_field={:started_at}
               end_date_field={:ended_at}
               show_date_inputs={false}
-              on_date_change="range_update_dates"
               ranges={ ~w(lastWeek yesterday today nextWeek) }
             />
           </Form>
@@ -195,7 +190,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             start_date_field={ :started_at }
             end_date_field={ :ended_at }
             show_date_inputs={false}
-            on_date_change="update_dates"
             ranges={ ~w(lastWeek yesterday today nextWeek) }
           />
         </Form>
@@ -220,7 +214,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date_field={:ended_at}
               week_starts_on={7}
               show_date_inputs={false}
-              on_date_change="weekstart_update_dates"
               ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
             />
           </Form>
@@ -237,7 +230,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date_field={ :ended_at }
             week_starts_on={ 7 }
             show_date_inputs={false}
-            on_date_change="update_dates"
             ranges={ ~w(lastWeek today thisWeek nextWeek) }
           />
         </Form>
@@ -278,26 +270,35 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   end
 
   # Handle date selection
-  def handle_info({"update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+  def handle_info(
+        {:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
+        socket
+      ) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, changeset: changeset)}
   end
 
   def handle_info(
-        {"time_update_dates", %{datetime_started_at: start_date, datetime_ended_at: end_date}},
+        {:filter,
+         {"time_datepicker", :apply,
+          %{datetime_started_at: start_date, datetime_ended_at: end_date}}},
         socket
       ) do
     changeset = update_time_changeset(start_date, end_date)
     {:noreply, assign(socket, time_changeset: changeset)}
   end
 
-  def handle_info({"range_update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+  def handle_info(
+        {:filter, {"range_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
+        socket
+      ) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, range_changeset: changeset)}
   end
 
   def handle_info(
-        {"weekstart_update_dates", %{started_at: start_date, ended_at: end_date}},
+        {:filter,
+         {"weekstart_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
         socket
       ) do
     changeset = update_changeset(start_date, end_date)
