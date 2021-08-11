@@ -1,5 +1,5 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
-  use MoonWeb, :stateless_component
+  use MoonWeb, :stateful_component
 
   alias Surface.Components.LiveRedirect
 
@@ -10,20 +10,25 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   alias MoonWeb.MockDB.{Segments, Utils}
 
   prop class, :string
+  prop reduced_opacity, :boolean, default: false
+
+  data segments, :any, default: []
+
+  def mount(assigns) do
+    {:ok, assign(assigns, segments: get_segments())}
+  end
 
   def render(assigns) do
-    segments = get_segments()
-
     ~F"""
-    <Sections class={"py-6 text-sm w-60 #{@class}"}>
-      <div :for={segment <- segments}>
-        {#if segment.title == "Segments"}
-          <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">
-            {segment.title} • {segment.count}
-          </div>
+    <Sections class={"py-6 text-sm w-60 #{@class} #{opacity_class(@reduced_opacity)}"}>
+      <div :for={segment <- @segments}>
+        <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">
+          {segment.title} • {segment.count}
+        </div>
 
-          <div class="space-y-0.5 m-2">
-            {#for item <- segment.items}
+        <div class="space-y-0.5 m-2">
+          {#for item <- segment.items}
+            {#if segment.title == "Segments"}
               <LiveRedirect :if={item.type == :customers} to={"/example-pages/customers?segment_id=#{item.id}"}>
                 <div class="flex items-center px-2 cursor-pointer">
                   <div class="flex items-center justify-center w-6 h-6 m-2">
@@ -41,46 +46,27 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
                   <div class="">{item.name}</div>
                 </div>
               </LiveRedirect>
-            {/for}
-
-          </div>
-
-          <div class="m-2 mb-0" :if={segment.new_item}>
-            <div class="flex items-center px-2 cursor-pointer">
-              <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
-                <Icon name="icon_plus" />
+            {#else}
+              <div class="flex items-center px-2 cursor-pointer">
+                <div class="flex items-center justify-center w-6 h-6 m-2">
+                  <Icon name={item.icon} class="text-trunks-100" />
+                </div>
+                <div class="">{item.title}</div>
               </div>
-              <div class="">{segment.new_item}</div>
+            {/if}
+          {/for}
+        </div>
+
+        <div class="m-2 mb-0" :if={segment.new_item}>
+          <div class="flex items-center px-2 cursor-pointer">
+            <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
+              <Icon name="icon_plus" />
             </div>
-
-            <Divider color="beerus-100" class="m-4 mb-0" />
+            <div class="">{segment.new_item}</div>
           </div>
 
-        {#else}
-          <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">
-            {segment.title} • {segment.count}
-          </div>
-
-          <div class="space-y-0.5 m-2">
-            <div class="flex items-center px-2 cursor-pointer" :for={item <- segment.items}>
-              <div class="flex items-center justify-center w-6 h-6 m-2">
-                <Icon name={item.icon} class="text-trunks-100" />
-              </div>
-              <div class="">{item.title}</div>
-            </div>
-          </div>
-
-          <div class="m-2 mb-0" :if={segment.new_item}>
-            <div class="flex items-center px-2 cursor-pointer">
-              <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
-                <Icon name="icon_plus" />
-              </div>
-              <div class="">{segment.new_item}</div>
-            </div>
-
-            <Divider color="beerus-100" class="m-4 mb-0" />
-          </div>
-        {/if}
+          <Divider color="beerus-100" class="m-4 mb-0" />
+        </div>
       </div>
     </Sections>
     """
@@ -120,4 +106,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
       }
     ]
   end
+
+  defp opacity_class(true), do: "opacity-30"
+  defp opacity_class(false), do: nil
 end
