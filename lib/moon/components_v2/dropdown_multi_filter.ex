@@ -322,7 +322,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   defp apply_filter(filter_id, items) do
     values = Enum.map(items, & &1.value)
 
-    send(self(), {:filter, {filter_id, :apply, values}})
+    send(self(), {:filter, {String.to_existing_atom(filter_id), :apply, values}})
   end
 
   defp search_by_labels(all_items, search_text) do
