@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     <div class={"#{@theme_name} #{@active_customer.id != nil && "h-screen overflow-hidden"}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu />
+        <LeftMenu id="left-menu"/>
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Customers", to: "/lab-light/example-pages/customers"}]} />
 
@@ -170,15 +170,15 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     case msg do
       {:filter, filter_event} ->
         case filter_event do
-          {:username_filter, :apply, values} ->
+          {"username_filter", :apply, values} ->
             socket = socket |> assign(username_filter_values: values, page: 1)
             new_route.(socket)
 
-          {:country_filter, :apply, values} ->
+          {"country_filter", :apply, values} ->
             socket = socket |> assign(country_filter_values: values, page: 1)
             new_route.(socket)
 
-          {:site_filter, :apply, values} ->
+          {"site_filter", :apply, values} ->
             socket = socket |> assign(site_filter_values: values, page: 1)
             new_route.(socket)
 
@@ -188,15 +188,15 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
       {:table, table_event} ->
         case table_event do
-          {:customers_table, :paginate, page} ->
+          {"customers_table", :paginate, page} ->
             socket = socket |> assign(page: page)
             if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 
-          {:customers_table, :select, customer} ->
+          {"customers_table", :select, customer} ->
             socket = socket |> assign(active_customer: customer)
             no_redirect.(socket)
 
-          {:customers_table, :sort, sort_by} ->
+          {"customers_table", :sort, sort_by} ->
             socket = socket |> assign(sort_by: sort_by, page: 1)
             if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 
