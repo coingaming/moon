@@ -35,12 +35,12 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   @default_page_count 10
 
   @dropdown_filter_map %{
-    apply_brand_filter: :brand_filter_values,
-    apply_currency_filter: :currency_filter_values,
-    apply_country_filter: :country_filter_values,
-    apply_username_filter: :username_filter_values,
-    apply_create_date_filter: :create_date_values,
-    apply_amount_range_filter: :amount_range_values
+    "brand_filter" => :brand_filter_values,
+    "currency_filter" => :currency_filter_values,
+    "country_filter" => :country_filter_values,
+    "username_filter" => :username_filter_values,
+    "create_date_filter" => :create_date_values,
+    "amount_range_filter" => :amount_range_values
   }
 
   data breadcrumbs, :any,
@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     <div id="transactions-page" class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu />
+        <LeftMenu id="left_menu"/>
 
         <div class="px-14 py-6">
           <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
@@ -109,15 +109,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       </div>
     </div>
     """
-  end
-
-  def handle_info(
-        {"update_create_date_filter",
-         %{end_date: _end_date, start_date: _start_date} = create_date_filter},
-        socket
-      ) do
-    IO.inspect(create_date_filter, label: "create_date_filter")
-    {:noreply, socket}
   end
 
   def handle_info({:table, table_event}, socket) do
@@ -147,10 +138,15 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end
   end
 
-  def handle_info({:filters, {filter, selected_items}}, socket) do
+  def handle_info({:filters, {filter, values}}, socket) do
+    IO.inspect({filter, values}, label: "old version of filter apply message received?")
+    {:noreply, socket}
+  end
+
+  def handle_info({:filter, {filter_id, :apply, selected_items}}, socket) do
     filters =
       socket.assigns.filters
-      |> Map.put(filter, selected_items)
+      |> Map.put(filter_id, selected_items)
 
     transactions =
       filters
@@ -198,13 +194,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   defp get_filtered_transactions(selected_option_ids, assigns) do
     get_transactions(assigns)
-    |> get_filtered_transactions_by(:brand_id, selected_option_ids[:apply_brand_filter])
-    |> get_filtered_transactions_by(:currency_id, selected_option_ids[:apply_currency_filter])
-    |> get_filtered_transactions_by(:customer_id, selected_option_ids[:apply_username_filter])
-    |> get_filtered_transactions_by(:country_id, selected_option_ids[:apply_country_filter])
+    |> get_filtered_transactions_by(:brand_id, selected_option_ids["brand_filter"])
+    |> get_filtered_transactions_by(:currency_id, selected_option_ids["currency_filter"])
+    |> get_filtered_transactions_by(:customer_id, selected_option_ids["username_filter"])
+    |> get_filtered_transactions_by(:country_id, selected_option_ids["country_filter"])
     |> get_filtered_transactions_by_amount(
       :amount_eur,
-      selected_option_ids[:amount_range_filter]
+      selected_option_ids["amount_range_filter"]
     )
     |> get_filtered_transactions_by_date(:create_time, selected_option_ids["create_date_filter"])
     |> Enum.sort(fn a, b ->
@@ -268,14 +264,18 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   defp get_filtered_transactions_by_date(transactions, _, nil), do: transactions
 
   defp get_filtered_transactions_by_date(transactions, field, %{start_date: min, end_date: max}) do
-    if min == nil && max == nil do
-      transactions
-    else
-      transactions
-      |> Enum.filter(fn x ->
-        (min == nil || min <= x[field]) && (x[field] <= max || max == nil)
-      end)
-    end
+    transactions
+    |> Enum.filter(fn x ->
+      date_field = x[field]
+
+      with :lt <- NaiveDateTime.compare(min, date_field),
+           :lt <- NaiveDateTime.compare(date_field, max) do
+        true
+      else
+        _ ->
+          false
+      end
+    end)
   end
 
   defp prepare_options(transactions) do
@@ -305,8 +305,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       {key, Enum.uniq_by(options, fn %{value: value} -> value end)}
     end)
     |> Keyword.put(:create_date, %{
-      start_date: DateTime.now!("UTC"),
-      end_date: DateTime.now!("UTC")
+      start_date: Timex.beginning_of_week(Timex.today()),
+      end_date: Timex.end_of_week(Timex.today())
     })
   end
 
@@ -377,7 +377,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
       ]
 
       status_list = ["CONFIRMED", "DECLINED", "PROCESSING"]
-      amount = Faker.random_between(59, 59999)
+      amount = Faker.random_between(59, 59_999)
       amount_eur = (amount * (Faker.random_between(1, 199) / 100)) |> Float.round(2)
 
       %{
@@ -395,8 +395,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         amount_eur: amount_eur,
         ending_amount: amount,
         ending_amount_eur: amount_eur,
-        create_time: Faker.DateTime.backward(100),
-        process_time: Faker.DateTime.backward(100),
+        create_time: Faker.NaiveDateTime.backward(30),
+        process_time: Faker.NaiveDateTime.backward(30),
         status: Enum.random(status_list),
         tags: Enum.random(tag_list),
         description: Faker.Lorem.sentence(4)
