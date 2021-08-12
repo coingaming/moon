@@ -103,6 +103,7 @@ module.exports = {
     boxShadow: ["responsive", "hover", "focus", "invalid"],
     backgroundColor: ["responsive", "hover", "focus", "invalid"],
     borderColor: ["responsive", "hover", "focus", "invalid"],
+    dataError: ["focus"],
     extend: {
       scale: ['group-hover'],
       borderWidth: ['group-hover', 'last']
@@ -119,6 +120,12 @@ module.exports = {
         ".no-scrollbar": {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none"
+        },
+        ".data-rounded": {
+          "border-radius": 'var(--radius--largest)'
+        },
+        ".data-error": {
+          "border-color": 'var(--color--chi-chi-100)'
         }
       })
     })
