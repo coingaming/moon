@@ -63,11 +63,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <Heading size={24} class="mt-4" is_regular>With changeset</Heading>
 
-      <ExampleAndCode show_state={true}>
-        <#template slot="example">
+      <ExampleAndCode show_state>
+        <:example>
           <ToastStack id="toasts" />
 
-          <Form for={@user_changeset} change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
+          <Form
+            for={@user_changeset}
+            change="update_user_changeset"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
             <Stack>
               <div class="flex items-center">
                 <Switch checked={@lock_fields} on_change="lock_form_fields" />
@@ -91,20 +96,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 prompt="Please select gender"
               />
 
-              <FileInput
-                conf={@uploads.file}
-                label="Upload your ID"
-                placeholder="Choose a document..."
-              />
+              <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
 
               <Button variant="primary" type="submit">Save</Button>
               <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
             </Stack>
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <ToastStack id="toasts" />
 
         <Form for={ @user_changeset } change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
@@ -148,17 +149,17 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
           {:noreply, socket}
         end
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@gender_options = {inspect(@gender_options, pretty: true)}<br><br>@lock_fields = {@lock_fields}<br><br>@uploads.file.entries = {inspect(@uploads.file.entries, pretty: true)}</#template>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@gender_options = {inspect(@gender_options, pretty: true)}<br><br>@lock_fields = {@lock_fields}<br><br>@uploads.file.entries = {inspect(@uploads.file.entries, pretty: true)}</:state>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Without changeset</Heading>
 
       <p>Not recommended, only for edge cases - 99% cases DO NOT USE THIS</p>
 
-      <ExampleAndCode show_state={true}>
-        <#template slot="example">
+      <ExampleAndCode show_state>
+        <:example>
           <Form for={:user_map} change="update_user_map" submit="save_user_map" autocomplete="off">
             <Stack>
               <TextInput label="Name" field={:name} value={@user_map.name} />
@@ -176,10 +177,10 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               <Button variant="secondary" on_click="clear_simple_form">Cancel</Button>
             </Stack>
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Form for={ :user_map } chane="update_user_map" submit="save_user_map" autocomplete="off">
           <TextInput label="Name" field={ :name } value={ @user_map.name } />
           <TextInput label="Email" field={ :email } value={ @user_map.email } />
@@ -196,9 +197,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
           <Button variant="secondary" on_click="clear_form">Cancel</Button>
         </Form>
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@user_map = {inspect(@user_map)}</#template>
+        <:state>@user_map = {inspect(@user_map)}</:state>
       </ExampleAndCode>
     </Stack>
     """

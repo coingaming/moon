@@ -24,7 +24,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
       <Heading size={32}>Card</Heading>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <Card title="Winers">
             <:buttons>
               <IconButton icon_name="icon_refresh" height={8} width={8} hover_bg_color="bg-goku-100" />
@@ -35,10 +35,10 @@ defmodule MoonWeb.Pages.Components.CardPage do
               {Faker.Lorem.paragraph()}
             </:content>
           </Card>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.Card
         alias Moon.Components.IconButton
 
@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
           </:content>
         </Card>
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

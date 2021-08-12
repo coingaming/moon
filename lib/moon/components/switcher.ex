@@ -8,7 +8,7 @@ defmodule Moon.Components.Switcher do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <div
       :if={length(@items) > 0}

@@ -21,44 +21,27 @@ defmodule Moon.Components.Toast do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
-    <div id={@id} class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4">
+    <div
+      id={@id}
+      class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4"
+    >
       <div :if={@variant} class="flex-shrink-0 mr-3">
-        <IconError
-          :if={@variant == "error"}
-          class="block w-5 h-5"
-          font_size="1.25rem"
-        />
+        <IconError :if={@variant == "error"} class="block w-5 h-5" font_size="1.25rem" />
 
-        <IconWarning
-          :if={@variant == "warning"}
-          class="block w-5 h-5"
-          font_size="1.25rem"
-        />
+        <IconWarning :if={@variant == "warning"} class="block w-5 h-5" font_size="1.25rem" />
 
-        <IconBannerInfo
-          :if={@variant == "info"}
-          class="block w-5 h-5"
-          font_size="1.25rem"
-        />
+        <IconBannerInfo :if={@variant == "info"} class="block w-5 h-5" font_size="1.25rem" />
 
-        <IconSnackbarSuccess
-          :if={@variant == "success"}
-          class="block w-5 h-5"
-          font_size="1.25rem"
-        />
+        <IconSnackbarSuccess :if={@variant == "success"} class="block w-5 h-5" font_size="1.25rem" />
       </div>
 
       <div class="flex justify-between flex-1 text-sm">
         <p class="flex-1 text-gray-900">
           {@message}
         </p>
-        <Link
-          :if={@link_href && @link_text}
-          class="ml-4 flex-shrink-0 font-medium"
-          to={@link_href}
-        >
+        <Link :if={@link_href && @link_text} class="ml-4 flex-shrink-0 font-semibold" to={@link_href}>
           {@link_text}
         </Link>
       </div>
@@ -70,11 +53,7 @@ defmodule Moon.Components.Toast do
           phx-value-id={@id}
         >
           <span class="sr-only">Close</span>
-          <IconErrorCircle
-            class="w-5 h-5"
-            font_size="1.25rem"
-            color="trunks-100"
-          />
+          <IconErrorCircle class="w-5 h-5" font_size="1.25rem" color="trunks-100" />
         </button>
       </div>
     </div>

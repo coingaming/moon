@@ -29,17 +29,13 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state={true} layout="column">
-        <#template slot="example">
-          <Calendar
-            id="default_calendar"
-            week_starts_on={1}
-            events={@events}
-          />
-        </#template>
+      <ExampleAndCode show_state layout="column">
+        <:example>
+          <Calendar id="default_calendar" week_starts_on={1} events={@events} />
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.Calendar
 
         <Calendar
@@ -48,9 +44,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={ @events }
         />
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@events = {inspect(@events, pretty: true)}</#template>
+        <:state>@events = {inspect(@events, pretty: true)}</:state>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
@@ -59,17 +55,13 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
       </p>
 
-      <ExampleAndCode show_state={true} layout="column">
-        <#template slot="example">
-          <Calendar
-            id="sunday_calendar"
-            week_starts_on={7}
-            events={@events}
-          />
-        </#template>
+      <ExampleAndCode show_state layout="column">
+        <:example>
+          <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.Calendar
 
         <Calendar
@@ -78,9 +70,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={ @events }
         />
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@events = {inspect(@events, pretty: true)}</#template>
+        <:state>@events = {inspect(@events, pretty: true)}</:state>
       </ExampleAndCode>
     </Stack>
     """

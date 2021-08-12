@@ -5,7 +5,7 @@ defmodule Moon.Components.Stack do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/stack"}
+    {asset_import(@socket, "js/components/stack")}
 
     <div class={"moon-stack #{@class}"}>
       <#slot />

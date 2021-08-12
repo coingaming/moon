@@ -16,12 +16,12 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
   def render(assigns) do
     ~F"""
     <div class="fixed top-0 right-0 bottom-0 w-1/2 flex flex-col px-6 z-20 bg-gohan-100 shadow overflow-y-auto">
-      <div class="flex-none flex justify-between py-5 ">
+      <div class="flex-none flex justify-between py-5">
         <Text size="24" class="block">Quick View</Text>
         <div class="flex items-center">
           <IconUser font_size="1.5rem" class="mr-4" />
           <IconShare font_size="1.5rem" />
-          <Divider orientation="vertical" class="mx-4"/>
+          <Divider orientation="vertical" class="mx-4" />
           <div class="p-2 rounded bg-goku-100 cursor-pointer" :on-click={@on_close}>
             <IconCloseRounded font_size="1.5rem" />
           </div>

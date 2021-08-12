@@ -27,16 +27,12 @@ defmodule Moon.Components.DropdownMultiFilter do
   def render(assigns) do
     ~F"""
     <PopoverV2 show={@show_filter} on_close={@on_close}>
-      <#slot/>
+      <#slot />
 
       <:content>
         <div class="w-80 bg-gohan-100 shadow rounded">
           <div :if={@on_search != nil} class="p-3">
-            <Form
-              for={:search}
-              change={@on_search}
-              autocomplete="off"
-            >
+            <Form for={:search} change={@on_search} autocomplete="off">
               <TextInput
                 left_icon="icon_zoom"
                 placeholder="Type here..."
@@ -50,33 +46,28 @@ defmodule Moon.Components.DropdownMultiFilter do
           <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar #{is_nil(@on_search) && "pt-4"}"}>
             {#if length(@all_items) > 0}
               <CheckboxMultiselectV2
-                values={@selected_items |> Enum.map(&(&1.value))}
+                values={@selected_items |> Enum.map(& &1.value)}
                 options={@all_items}
                 on_select={@on_select}
               />
-
             {#elseif @search_text != "" and length(@all_items) == 0}
               <div class="h-full flex items-center justify-around">
                 <div>No results found</div>
               </div>
-
-
             {#elseif length(@selected_items) > 0}
               <CheckboxMultiselectV2
-                values={@selected_items |> Enum.map(&(&1.value))}
+                values={@selected_items |> Enum.map(& &1.value)}
                 options={@selected_items}
                 on_select={@on_select}
               />
-
             {#else}
               <div class="h-full flex items-center beerus-100 justify-around">
                 <div>No filters applied</div>
               </div>
-
             {/if}
           </div>
 
-          <Divider class="mt-2"/>
+          <Divider class="mt-2" />
           <LeftToRight class="justify-between p-2">
             {#if can_clear_filters?(@selected_items)}
               <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>
@@ -87,7 +78,6 @@ defmodule Moon.Components.DropdownMultiFilter do
                 <span class="text-beerus-100">Clear</span>
               </Button>
             {/if}
-
 
             <LeftToRight>
               <Button variant="danger" size="xsmall" class="rounded border-bulma-100" on_click={@on_discard}>

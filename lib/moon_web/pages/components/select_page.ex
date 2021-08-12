@@ -28,15 +28,9 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       A user-controlled menu of options for forms, navigation and more.
 
       <a href="https://design.sportsbet.io/components/select">https://design.sportsbet.io/components/select</a>
-
     </p>
 
-    <Select
-      label="Gender"
-      field={:gender}
-      options={@gender_options}
-      prompt="Please select gender"
-    />
+    <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
 
     <#CodePreview>
       <Select

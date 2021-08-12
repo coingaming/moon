@@ -64,8 +64,8 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
       </p>
 
-      <ExampleAndCode show_state={true}>
-        <#template slot="example">
+      <ExampleAndCode show_state>
+        <:example>
           <Form for={@changeset} change="validate">
             <Datepicker
               id="default_datepicker"
@@ -73,14 +73,13 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
               start_date_field={:started_at}
               end_date_field={:ended_at}
-              show_date_inputs={true}
-              on_date_change="update_dates"
+              show_date_inputs
             />
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Form for={ @changeset } change="validate">
           <Datepicker
             id="default_datepicker"
@@ -89,12 +88,11 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             start_date_field={ :started_at }}
             end_date_field={ :ended_at }}
             show_date_inputs={true}
-            on_date_change="update_dates"
           />
         </Form>
 
         # Handle date selection
-        def handle_info({"update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+        def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
           changeset =
             socket.assigns.changeset
             |> put_change(:started_at, start_date)
@@ -116,9 +114,9 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
           {:noreply, assign(socket, changeset: changeset)}
         end
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</#template>
+        <:state>@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>With time</Heading>
@@ -127,8 +125,8 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
       </p>
 
-      <ExampleAndCode show_state={true}>
-        <#template slot="example">
+      <ExampleAndCode show_state>
+        <:example>
           <Form for={@time_changeset} change="time_validate">
             <Datepicker
               id="time_datepicker"
@@ -136,15 +134,14 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date={fetch_field(@time_changeset, :datetime_ended_at) |> elem(1)}
               start_date_field={:datetime_started_at}
               end_date_field={:datetime_ended_at}
-              on_date_change="time_update_dates"
-              show_date_inputs={true}
-              with_time={true}
+              show_date_inputs
+              with_time
             />
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Form for={ @changeset } change="validate">
           <Datepicker
             id="time_datepicker"
@@ -152,15 +149,14 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
             start_date_field={ :datetime_started_at }
             end_date_field={ :datetime_ended_at }
-            on_date_change="update_dates"
             show_date_inputs={true}
             with_time={ true }
           />
         </Form>
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</#template>
+        <:state>@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Custom ranges</Heading>
@@ -170,7 +166,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <Form for={@range_changeset} change="range_validate">
             <Datepicker
               id="range_datepicker"
@@ -179,14 +175,13 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               start_date_field={:started_at}
               end_date_field={:ended_at}
               show_date_inputs={false}
-              on_date_change="range_update_dates"
-              ranges={ ~w(lastWeek yesterday today nextWeek) }
+              ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
             />
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Form for={ @changeset } change="validate">
           <Datepicker
             id="range_datepicker"
@@ -195,12 +190,11 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             start_date_field={ :started_at }
             end_date_field={ :ended_at }
             show_date_inputs={false}
-            on_date_change="update_dates"
-            ranges={ ~w(lastWeek yesterday today nextWeek) }
+            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
           />
         </Form>
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
@@ -210,7 +204,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <Form for={@weekstart_changeset} change="weekstart_validate">
             <Datepicker
               id="weekstart_datepicker"
@@ -220,14 +214,13 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
               end_date_field={:ended_at}
               week_starts_on={7}
               show_date_inputs={false}
-              on_date_change="weekstart_update_dates"
               ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
             />
           </Form>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Form for={ @changeset } change="validate">
           <Datepicker
             id="weekstart_datepicker"
@@ -237,14 +230,12 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
             end_date_field={ :ended_at }
             week_starts_on={ 7 }
             show_date_inputs={false}
-            on_date_change="update_dates"
-            ranges={ ~w(lastWeek today thisWeek nextWeek) }
+            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
           />
         </Form>
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
-
     </Stack>
     """
   end
@@ -278,26 +269,35 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   end
 
   # Handle date selection
-  def handle_info({"update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+  def handle_info(
+        {:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
+        socket
+      ) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, changeset: changeset)}
   end
 
   def handle_info(
-        {"time_update_dates", %{datetime_started_at: start_date, datetime_ended_at: end_date}},
+        {:filter,
+         {"time_datepicker", :apply,
+          %{datetime_started_at: start_date, datetime_ended_at: end_date}}},
         socket
       ) do
     changeset = update_time_changeset(start_date, end_date)
     {:noreply, assign(socket, time_changeset: changeset)}
   end
 
-  def handle_info({"range_update_dates", %{started_at: start_date, ended_at: end_date}}, socket) do
+  def handle_info(
+        {:filter, {"range_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
+        socket
+      ) do
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, range_changeset: changeset)}
   end
 
   def handle_info(
-        {"weekstart_update_dates", %{started_at: start_date, ended_at: end_date}},
+        {:filter,
+         {"weekstart_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}},
         socket
       ) do
     changeset = update_changeset(start_date, end_date)

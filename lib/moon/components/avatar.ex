@@ -18,10 +18,9 @@ defmodule Moon.Components.Avatar do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/avatar"}
+    {asset_import(@socket, "js/components/avatar")}
 
-    <div
-      class={"moon-avatar #{@class}"} style={style(assigns)} data-size={@size}>
+    <div class={"moon-avatar #{@class}"} style={style(assigns)} data-size={@size}>
       <span :if={@name && !@image_url}>{@name}</span>
       <IconUser color={@color} :if={!@name && !@image_url} />
     </div>

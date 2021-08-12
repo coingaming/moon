@@ -19,20 +19,13 @@ defmodule Moon.Components.LineChartCard do
         </div>
 
         <div class="flex-none" :if={length(@select_options) > 0}>
-          <Select
-            options={@select_options}
-            class="pl-2 rounded-sm text-xs text-trunks-100 bg-goku-100"
-          />
+          <Select options={@select_options} class="pl-2 rounded-sm text-xs text-trunks-100 bg-goku-100" />
         </div>
 
-        <button
-          type="button"
-          class="leading-none flex-none ml-3 p-2"
-        >
+        <button type="button" class="leading-none flex-none ml-3 p-2">
           <IconRefresh class="block text-trunks-100" />
         </button>
       </div>
-
 
       {#if length(@filters) > 0}
         <div class="flex gap-x-3 mb-5 overflow-x-scroll">

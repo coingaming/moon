@@ -6,7 +6,7 @@ defmodule Moon.Components.Tabs do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <div class="border-b border-goku-40">
       <Reel>
@@ -29,11 +29,20 @@ defmodule Moon.Components.Tabs.TabLink do
 
   def render(assigns) do
     ~F"""
-    <Link to={@to} class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"} :if={@to}>
+    <Link
+      to={@to}
+      class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+      :if={@to}
+    >
       <#slot />
     </Link>
 
-    <div :on-click={@on_click} phx-value-item_id={@item_id} class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"} :if={!@to}>
+    <div
+      :on-click={@on_click}
+      phx-value-item_id={@item_id}
+      class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+      :if={!@to}
+    >
       <#slot />
     </div>
     """

@@ -30,6 +30,10 @@ module.exports = {
         '96': '24rem'
       }
     },
+    fontWeight: {
+      normal: 400,
+      semibold: 500
+    },
     boxShadow: {
       sm: 'var(--box-shadow--sm)',
       DEFAULT: 'var(--box-shadow--default)',

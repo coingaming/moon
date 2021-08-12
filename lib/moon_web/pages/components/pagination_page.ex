@@ -31,8 +31,8 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         Pagination component.
       </p>
 
-      <ExampleAndCode show_state={true} layout="column">
-        <#template slot="example">
+      <ExampleAndCode show_state layout="column">
+        <:example>
           <Pagination
             current_page_number={@current_page_number}
             total_pages={@total_pages}
@@ -43,10 +43,10 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
             next_button_label="Next"
             on_change="change_current_page"
           />
-        </#template>
+        </:example>
 
-    <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.Pagination
 
         <Pagination
@@ -65,9 +65,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           {:noreply, socket}
         end
       </#CodePreview>
-    </#template>
+        </:code>
 
-        <#template slot="state">@current_page_number = {@current_page_number}</#template>
+        <:state>@current_page_number = {@current_page_number}</:state>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Size</Heading>
@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
       </p>
 
       <ExampleAndCode layout="column">
-        <#template slot="example">
+        <:example>
           <Stack>
             <Pagination
               size="xsmall"
@@ -107,10 +107,10 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
               on_change="change_size_page"
             />
           </Stack>
-        </#template>
+        </:example>
 
-    <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Pagination size="xsmall" />
 
         <Pagination size="small" />
@@ -119,13 +119,13 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
         <Pagination size="large" />
       </#CodePreview>
-    </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Example with a side section</Heading>
 
-      <ExampleAndCode show_state={true} layout="column">
-        <#template slot="example">
+      <ExampleAndCode show_state layout="column">
+        <:example>
           <Stack>
             <div class="flex flex-wrap items-center">
               <div class="w-1/4 mb-4 text-xs">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
@@ -140,10 +140,10 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
               </div>
             </div>
           </Stack>
-        </#template>
+        </:example>
 
-    <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <div class="flex flex-wrap items-center">
           <div class="w-1/4 mb-4 text-xxs">
             { side_text(@page_number, @per_page, @total_entries) }
@@ -166,9 +166,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           "Showing #{min_entry} – #{max_entry} of #{total_entries}"
         end
       </#CodePreview>
-    </#template>
+        </:code>
 
-        <#template slot="state">@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</#template>
+        <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
       </ExampleAndCode>
     </Stack>
     """

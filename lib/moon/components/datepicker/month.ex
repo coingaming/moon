@@ -20,18 +20,17 @@ defmodule Moon.Components.Datepicker.Month do
         </div>
       </div>
 
-      <div
-        class="grid text-xs gap-y-1"
-        style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
-      >
-        <div :for={_cell <- empty_cells(@date, @week_starts_on)}></div>
+      <div class="grid text-xs gap-y-1" style="grid-template-columns: repeat(7, minmax(2rem, 2rem));">
+        <div :for={_cell <- empty_cells(@date, @week_starts_on)} />
 
         <div
           :for={day <- month_days(@date)}
           class={"cursor-pointer #{day_container_class(day, @start_date, @end_date, @week_starts_on)}"}
         >
           <div
-            class={"border border-transparent hover:border-trunks-100 rounded h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
+            class={"border border-transparent hover:border-trunks-100 rounded h-8 w-8 flex items-center justify-center #{
+              day_class(day, @start_date, @end_date)
+            }"}
             :on-click={@on_click}
             phx-value-date={Timex.format!(day, "%Y-%0m-%0dT%R", :strftime)}
           >

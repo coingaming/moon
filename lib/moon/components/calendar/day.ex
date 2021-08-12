@@ -7,12 +7,8 @@ defmodule Moon.Components.Calendar.Day do
 
   def render(assigns) do
     ~F"""
-    <div
-      class="rounded-lg bg-gohan-100 aspect-w-1 aspect-h-1"
-    >
-      <div
-        class={"text-xxs md:text-base lg:text-lg leading-none text-right pt-2 pr-3 #{@text_color}"}
-      >
+    <div class="rounded-lg bg-gohan-100 aspect-w-1 aspect-h-1">
+      <div class={"text-xxs md:text-base lg:text-lg leading-none text-right pt-2 pr-3 #{@text_color}"}>
         {day_label(@day)}
       </div>
 

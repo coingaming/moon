@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
 
     <Stack>
       <Text size={24}>Text with default font weight</Text>
-      <Text size={24} is_bold={true}>
+      <Text size={24} is_bold>
         Text with font-weight: semibold
       </Text>
     </Stack>

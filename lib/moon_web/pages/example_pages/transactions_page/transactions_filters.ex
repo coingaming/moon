@@ -61,13 +61,33 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         button_class="font-semibold px-3"
       />
 
-      <TransactionFilter name="brand_filter" label="Brand" options={@filter_options.brand} active_options={@brand_filter_values} />
+      <TransactionFilter
+        name="brand_filter"
+        label="Brand"
+        options={@filter_options.brand}
+        active_options={@brand_filter_values}
+      />
 
-      <TransactionFilter name="currency_filter" label="Currency" options={@filter_options.currency} active_options={@currency_filter_values} />
+      <TransactionFilter
+        name="currency_filter"
+        label="Currency"
+        options={@filter_options.currency}
+        active_options={@currency_filter_values}
+      />
 
-      <TransactionFilter name="username_filter" label="User" options={@filter_options.customer} active_options={@username_filter_values} />
+      <TransactionFilter
+        name="username_filter"
+        label="User"
+        options={@filter_options.customer}
+        active_options={@username_filter_values}
+      />
 
-      <TransactionFilter name="country_filter" label="Country" options={@filter_options.country} active_options={@country_filter_values} />
+      <TransactionFilter
+        name="country_filter"
+        label="Country"
+        options={@filter_options.country}
+        active_options={@country_filter_values}
+      />
 
       <Popover.Outer>
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>

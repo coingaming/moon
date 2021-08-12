@@ -10,9 +10,17 @@ defmodule Moon.Components.Link do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/link"}
+    {asset_import(@socket, "js/components/link")}
 
-    <a class={"moon-link #{@class}"} data-phx-link="patch" data-phx-link-state="push" href={@to} data-secondary={@secondary && "true"} data-optional={@optional && "true"} data-disabled={@disabled && "true"}><#slot /></a>
+    <a
+      class={"moon-link #{@class}"}
+      data-phx-link="patch"
+      data-phx-link-state="push"
+      href={@to}
+      data-secondary={@secondary && "true"}
+      data-optional={@optional && "true"}
+      data-disabled={@disabled && "true"}
+    ><#slot /></a>
     """
   end
 end

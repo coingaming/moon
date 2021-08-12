@@ -30,7 +30,7 @@ defmodule Moon.Components.Select do
       end)
 
     ~F"""
-    {asset_import @socket, "js/components/select"}
+    {asset_import(@socket, "js/components/select")}
 
     <Surface.Components.Form.Select
       class={"moon-select #{@class}", rounded: @rounded}

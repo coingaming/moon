@@ -35,13 +35,19 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
     <div class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu id="left-menu"/>
+        <LeftMenu id="left-menu" />
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]} />
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Affiliates"}</Heading>
           {#else}
-            <Form class="w-full flex py-2 items-center" for={:segment} change="save_segment_form_update" submit="save_segment_form_submit" autocomplete="off">
+            <Form
+              class="w-full flex py-2 items-center"
+              for={:segment}
+              change="save_segment_form_update"
+              submit="save_segment_form_submit"
+              autocomplete="off"
+            >
               <div class="flex-1">
                 <TextInput
                   field={:title}
@@ -49,7 +55,12 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
                   class="w-full bg-goku-80 h-10 text-3xl font-bold"
                 />
               </div>
-              <Button variant="danger" size="small" class="flex-none rounded border-bulma-100 mx-2" on_click="save_segment_form_cancel">
+              <Button
+                variant="danger"
+                size="small"
+                class="flex-none rounded border-bulma-100 mx-2"
+                on_click="save_segment_form_cancel"
+              >
                 Cancel
               </Button>
               <Button type="submit" variant="primary" size="small" class="flex-none rounded">

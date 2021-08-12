@@ -28,22 +28,13 @@ defmodule Moon.Components.PopoverV2 do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <div class="relative inline-block">
       <#slot />
-      <div
-        :if={@show}
-        :on-click={@on_close}
-        class="fixed inset-0 z-40"
-      />
-      <div
-        :if={@show}
-        class={
-          "absolute mt-2 z-40 #{@placement_class[@placement]}"
-        }
-      >
-        <#slot name="content"/>
+      <div :if={@show} :on-click={@on_close} class="fixed inset-0 z-40" />
+      <div :if={@show} class={"absolute mt-2 z-40 #{@placement_class[@placement]}"}>
+        <#slot name="content" />
       </div>
     </div>
     """

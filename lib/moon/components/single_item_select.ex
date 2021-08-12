@@ -8,7 +8,13 @@ defmodule Moon.Components.SingeItemSelect.Item do
 
   def render(assigns) do
     ~F"""
-    <div class={"p-2 pl-3 pr-3 hover:#{@selected && "bg-piccolo-120" || "bg-hover"} rounded-md relative #{@selected && "bg-piccolo-100"}"} :on-click={@on_click} phx-value-selected_item_id={@item_id}>
+    <div
+      class={"p-2 pl-3 pr-3 hover:#{(@selected && "bg-piccolo-120") || "bg-hover"} rounded-md relative #{
+        @selected && "bg-piccolo-100"
+      }"}
+      :on-click={@on_click}
+      phx-value-selected_item_id={@item_id}
+    >
       <#slot />
     </div>
     """
@@ -31,9 +37,12 @@ defmodule Moon.Components.SingeItemSelect do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
-    <div class={"bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll #{@class}"} style={@style || ""}>
+    <div
+      class={"bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll #{@class}"}
+      style={@style || ""}
+    >
       <#slot />
       <div :for={option <- @options}>
         <Item item_id={option.value} selected={@value == option.value} on_click={@on_change}>

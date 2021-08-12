@@ -11,13 +11,9 @@ defmodule Moon.Components.Inline do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/inline"}
+    {asset_import(@socket, "js/components/inline")}
 
-    <div
-      class="moon-inline"
-      style={"font-size: #{@font_size};"}
-      data-space={@space}
-    >
+    <div class="moon-inline" style={"font-size: #{@font_size};"} data-space={@space}>
       <#slot />
     </div>
     """

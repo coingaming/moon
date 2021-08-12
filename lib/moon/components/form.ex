@@ -10,7 +10,12 @@ defmodule Moon.Components.Form do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form {=@for} {=@change} {=@submit} opts={autocomplete: @autocomplete, class: @class}>
+    <Surface.Components.Form
+      {=@for}
+      {=@change}
+      {=@submit}
+      opts={autocomplete: @autocomplete, class: @class}
+    >
       <Context get={Surface.Components.Form, form: form}>
         <#slot :args={form: form} />
       </Context>

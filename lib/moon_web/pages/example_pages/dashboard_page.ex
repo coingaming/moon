@@ -156,25 +156,19 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </LeftToRight>
 
           <LeftToRight gap={6} class={if @edited, do: "opacity-30", else: nil}>
-            <Switcher
-              items={@page_tabs}
-              selected_item={@selected_tab}
-              click="tab_click"
-              class="h-10"
-            />
+            <Switcher items={@page_tabs} selected_item={@selected_tab} click="tab_click" class="h-10" />
 
             <Divider orientation="vertical" height="10" />
 
             <ButtonsList>
               <Datepicker
-                id="filter_datepicker"
+                id="dates_filter"
                 start_date={@date_filter_values.start_date}
                 end_date={@date_filter_values.end_date}
                 start_date_field={:start_date}
                 end_date_field={:end_date}
                 with_time={false}
                 button_class="font-semibold px-3"
-                on_date_change="update_filter_dates"
               />
 
               <ContentFilter
@@ -200,11 +194,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                   Save as new
                 </Button>
 
-                <Divider
-                  class="mx-1"
-                  orientation="vertical"
-                  height="10"
-                />
+                <Divider class="mx-1" orientation="vertical" height="10" />
 
                 <Button
                   class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-120"
@@ -371,12 +361,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, show_new_widget_panel: true)}
   end
 
-  def handle_info({"update_filter_dates", %{start_date: start_date, end_date: end_date}}, socket) do
+  def handle_info({:filter, {"dates_filter", :apply, dates}}, socket) do
     socket =
       assign(socket,
         date_filter_values: %{
-          start_date: start_date,
-          end_date: end_date
+          start_date: dates.start_date,
+          end_date: dates.end_date
         },
         page_metrics: fetch_metrics_data(socket.assigns.page_metrics),
         page_widgets: fetch_widgets_data(socket.assigns.page_widgets),
@@ -386,7 +376,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, socket}
   end
 
-  def handle_info({:apply_filter, {"Metric", items}}, socket) do
+  def handle_info({:filter, {"metric_filter", :apply, items}}, socket) do
     page_metrics =
       items
       |> Enum.map(&%{name: &1.label})
@@ -395,13 +385,13 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, page_metrics: page_metrics)}
   end
 
-  def handle_info({:apply_filter, {filter_name, items}}, socket) do
+  def handle_info({:filter, {filter_name, :apply, items}}, socket) do
     socket =
       case filter_name do
-        "Currency" ->
+        "currency_filter" ->
           assign(socket, currency_filter_values: items)
 
-        "Brands" ->
+        "site_filter" ->
           assign(socket, site_filter_values: items)
       end
 

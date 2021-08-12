@@ -68,7 +68,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
               <div
                 class={"h-2 rounded-l #{@bar_bg_color}"}
                 style={"width: #{calc_bar_width(line.amount, @widget.data)}%;"}
-              ></div>
+              />
             </div>
 
             <div class={

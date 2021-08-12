@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
       <Heading size={32} class="mb-8">Dropdown multifilter</Heading>
@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         Sourcecode of this page
       </Link>
 
-      <ExampleAndCode show_state={true}>
+      <ExampleAndCode show_state>
         <:example>
           <CountryFilter active_values={@country_filter_values} />
         </:example>
@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode show_state={true}>
+      <ExampleAndCode show_state>
         <:example>
           <SiteFilter active_values={@site_filter_values} />
         </:example>

@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
           <div
             class="absolute bottom-0 right-0 w-3 h-3 border-2 rounded-full"
             style="background-color: #0CD664;"
-          ></div>
+          />
         </div>
       </div>
     </div>

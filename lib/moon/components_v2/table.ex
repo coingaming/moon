@@ -65,16 +65,16 @@ defmodule Moon.ComponentsV2.Table do
 
         <LeftToRight>
           <IconChevronLeftRounded font_size="1.2rem" class="mr-2" click={on_prev_page} />
-          <IconChevronRightRounded font_size="1.2rem" click={on_next_page}/>
-          <Divider orientation="vertical" class="mx-4"/>
-          <IconRow font_size="1.2rem" class="mr-4"/>
+          <IconChevronRightRounded font_size="1.2rem" click={on_next_page} />
+          <Divider orientation="vertical" class="mx-4" />
+          <IconRow font_size="1.2rem" class="mr-4" />
         </LeftToRight>
       </div>
       <table class="min-w-full text-sm border-collapse border-t border-beerus-100 overflow-scroll">
         <thead>
           <tr>
             <!-- This is used to render overlay on top of a row -->
-            <th class="w-0"/>
+            <th class="w-0" />
             {#for column <- @columns}
               <th class="border-r last:border-r-0 border-beerus-100">
                 {render_column(column, on_sort, assigns)}
@@ -93,9 +93,8 @@ defmodule Moon.ComponentsV2.Table do
                       <slot name="active_item_popover" />
                     </div>
                   </div>
-
                 {#elseif is_nil(assigns.active_item_id)}
-                  <div class="absolute inset-0 rounded group-hover:border group-hover:border-piccolo-100"/>
+                  <div class="absolute inset-0 rounded group-hover:border group-hover:border-piccolo-100" />
                 {/if}
               </td>
               {#for {field, type} <- fields}
@@ -160,7 +159,6 @@ defmodule Moon.ComponentsV2.Table do
               <IconArrowLUp font_size="1.2rem" class="invisible" />
           {/case}
         </div>
-
       {#else}
         <div class="inline-block justify-start items-center p-2 cursor-default">
           {col.label}
@@ -195,7 +193,7 @@ defmodule Moon.ComponentsV2.Table do
 
       :datetime_relative ->
         ~F"""
-        <div class={"flex flex-col justify-around h-full min-w-64 max-w-full px-4"}>
+        <div class="flex flex-col justify-around h-full min-w-64 max-w-full px-4">
           <div class="leading-6">
             {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
           </div>

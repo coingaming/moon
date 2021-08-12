@@ -27,13 +27,9 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <Heading size={32}>DropdownMenuButton</Heading>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <div class="flex justify-center">
-            <DropdownMenuButton
-              show={@show_options}
-              placement="bottom-left"
-              on_toggle="toggle_options"
-            >
+            <DropdownMenuButton show={@show_options} placement="bottom-left" on_toggle="toggle_options">
               <IconMore />
 
               <:menu>
@@ -45,9 +41,9 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
               </:menu>
             </DropdownMenuButton>
           </div>
-        </#template>
+        </:example>
 
-        <#template slot="code">
+        <:code>
           <#CodePreview>
         alias Moon.Components.DropdownMenuButton
         alias Moon.Components.DropdownMenuItem
@@ -73,7 +69,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
           {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
         end
           </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

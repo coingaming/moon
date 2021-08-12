@@ -68,7 +68,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   # Event Handlers
   #
   def handle_event("apply_filter", _, socket) do
-    apply_filter(socket.assigns.selected_items, socket.assigns.filter_name)
+    apply_filter(socket.assigns.selected_items, socket.assigns.id)
     {:noreply, assign(socket, show_filter: false)}
   end
 
@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
     {:noreply, assign(socket, selected_items: Helpers.toggle_selected_item(all, selected, id))}
   end
 
-  defp apply_filter(items, filter_name) do
-    send(self(), {:apply_filter, {filter_name, items}})
+  defp apply_filter(items, id) do
+    send(self(), {:filter, {id, :apply, items}})
   end
 end

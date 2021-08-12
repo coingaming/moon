@@ -53,7 +53,7 @@ defmodule Moon.Components.TextInput do
         placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
         disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
         z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
-        "pl-12": @left_icon, "pr-12": @right_icon,"data-rounded": @rounded, "data-error": @error}
+        "pl-12": @left_icon, "pr-12": @right_icon,"data-rounded": @rounded, "border-chi-chi-100": @error}
         field={@field}
         opts={
           [

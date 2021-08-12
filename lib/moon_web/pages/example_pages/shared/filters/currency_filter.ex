@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
     <DropdownMultiFilter
       id={@name}
       all_items={all_items()}
-      disable_search={true}
+      disable_search
       active_values={@active_values}
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >

@@ -11,10 +11,10 @@ defmodule Moon.Components.Divider do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     {#if @orientation == "horizontal"}
-      <hr class={"border-#{@color} #{@class}"}/>
+      <hr class={"border-#{@color} #{@class}"}>
     {#elseif @orientation == "vertical"}
       <div class={"h-#{@height} border-#{@color} border-r #{@class}"} />
     {/if}

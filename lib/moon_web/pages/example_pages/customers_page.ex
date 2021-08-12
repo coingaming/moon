@@ -37,14 +37,20 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     <div class={"#{@theme_name} #{@active_customer.id != nil && "h-screen overflow-hidden"}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu id="left-menu"/>
+        <LeftMenu id="left-menu" />
         <div class="w-full p-4">
           <Breadcrumbs breadcrumbs={[%{name: "Customers", to: "/lab-light/example-pages/customers"}]} />
 
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Customers"}</Heading>
           {#else}
-            <Form class="w-full flex py-2 items-center" for={:segment} change="save_segment_form_update" submit="save_segment_form_submit" autocomplete="off">
+            <Form
+              class="w-full flex py-2 items-center"
+              for={:segment}
+              change="save_segment_form_update"
+              submit="save_segment_form_submit"
+              autocomplete="off"
+            >
               <div class="flex-1">
                 <TextInput
                   field={:title}
@@ -52,7 +58,12 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
                   class="w-full bg-goku-80 h-10 text-3xl font-bold"
                 />
               </div>
-              <Button variant="danger" size="small" class="flex-none rounded border-bulma-100 mx-2" on_click="save_segment_form_cancel">
+              <Button
+                variant="danger"
+                size="small"
+                class="flex-none rounded border-bulma-100 mx-2"
+                on_click="save_segment_form_cancel"
+              >
                 Cancel
               </Button>
               <Button type="submit" variant="primary" size="small" class="flex-none rounded">
@@ -103,10 +114,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       </div>
     </div>
     {#if @active_customer.id != nil}
-      <div
-        :on-click="close_customer_preview"
-        class="fixed inset-0 z-20"
-      />
+      <div :on-click="close_customer_preview" class="fixed inset-0 z-20" />
       <CustomerPreview
         id="customer-preview"
         customer={@active_customer}

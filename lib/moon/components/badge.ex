@@ -11,11 +11,11 @@ defmodule Moon.Components.Badge do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
-    <span
-      class={"#{@class} bg-#{@background_color} text-#{@color} p-px pl-2 pr-2 rounded-sm #{@size == "xsmall" && "text-xxxs" || "text-xxs"} uppercase"}
-    >
+    <span class={"#{@class} bg-#{@background_color} text-#{@color} p-px pl-2 pr-2 rounded-sm #{
+      (@size == "xsmall" && "text-xxxs") || "text-xxs"
+    } uppercase"}>
       <#slot />
     </span>
     """

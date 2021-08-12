@@ -75,8 +75,8 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
       </p>
 
-      <ExampleAndCode show_state={true} layout="column">
-        <#template slot="example">
+      <ExampleAndCode show_state layout="column">
+        <:example>
           <LineChartCard
             id="line-chart-card"
             title="KPI Overview"
@@ -85,10 +85,10 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
             {=@select_options}
             {=@values}
           />
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.ChartCard
 
         <LineChartCard
@@ -100,9 +100,9 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
           {=@values}
         />
       </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</#template>
+        <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
       </ExampleAndCode>
     </Stack>
     """

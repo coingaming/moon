@@ -26,9 +26,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
 
       <LeftToRight>
         <IconChevronLeftRounded font_size="1.2rem" class="mr-2" click={@on_prev_page} />
-        <IconChevronRightRounded font_size="1.2rem" click={@on_next_page}/>
-        <Divider orientation="vertical" class="mx-4"/>
-        <IconRow font_size="1.2rem" class="mr-4"/>
+        <IconChevronRightRounded font_size="1.2rem" click={@on_next_page} />
+        <Divider orientation="vertical" class="mx-4" />
+        <IconRow font_size="1.2rem" class="mr-4" />
       </LeftToRight>
     </div>
     """
