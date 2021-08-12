@@ -48,7 +48,11 @@ defmodule Moon.Components.TextInput do
       <Icon name={@right_icon} click={@right_icon_click} :if={@right_icon} class="absolute z-10 top-3 right-5" />
 
       <TextInput
-        class={"#{!@without_design && "moon-text-input"} #{@class} #{@left_icon && "pl-12"} #{@right_icon && "pr-12"} relative z-0"}
+        class={"w-full max-w-full px-4 py-2 mt-2 bg-gohan-100 appearance-none text-base leading-normal text-color-bulma-100
+        border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
+        placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
+        disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+        z-0 relative no-scrollbar #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
         field={@field}
         opts={
           [
@@ -66,7 +70,12 @@ defmodule Moon.Components.TextInput do
 
       <Label text={@label} :if={@label}>
         <TextInput
-          class={"moon-text-input mt-2 #{@left_icon && "pl-12"} #{@right_icon && "pr-12"} relative z-0"}
+        class={"w-full max-w-full px-4 py-2 mt-2 bg-gohan-100 appearance-none text-base leading-normal text-color-bulma-100
+        border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
+        placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
+        disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+        z-0 relative no-scrollbar #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
+
           field={@field}
           opts={[
             placeholder: @placeholder,
