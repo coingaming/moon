@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const invalidPlugin = require('./tailwind/variants/invalid')
 
 module.exports = {
   purge: [
@@ -111,7 +112,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
-    require("tailwindcss-invalid-variant-plugin"),
+    plugin(invalidPlugin),
     plugin(({ addUtilities }) => {
       addUtilities({
         ".no-scrollbar::-webkit-scrollbar": {
@@ -121,12 +122,12 @@ module.exports = {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none"
         },
-        ".data-rounded": {
-          "border-radius": 'var(--radius--largest)'
-        },
-        ".data-error": {
-          "border-color": 'var(--color--chi-chi-100)'
-        }
+        // ".data-rounded": {
+        //   "border-radius": 'var(--radius--largest)'
+        // },
+        // ".data-error": {
+        //   "border-color": 'var(--color--chi-chi-100)' // border-chi-chi-100
+        // }
       })
     })
   ],
