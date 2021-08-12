@@ -73,7 +73,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   end
 
   def get_segments() do
-    segments = Segments.list_all()
+    segments =
+      Segments.list_all()
       |> Utils.take_page(0, 6)
 
     [
