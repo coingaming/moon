@@ -1,11 +1,12 @@
 defmodule Moon.Components.SlideOver do
   use Moon.StatelessComponent
 
+  alias Moon.Components.Heading
   alias Moon.Assets.Icons.IconCloseRounded
 
   prop on_close, :event, required: true
 
-  slot header
+  slot heading
   slot options
   slot content, required: true
 
@@ -17,12 +18,12 @@ defmodule Moon.Components.SlideOver do
       class="fixed inset-0 z-20"
     />
 
-    <div class="fixed top-0 right-0 bottom-0 w-1/2 p-6 z-20 bg-gohan-100 shadow overflow-y-auto">
+    <div class="w-screen max-w-2xl fixed top-0 right-0 bottom-0 w-1/2 p-6 z-20 bg-gohan-100 shadow overflow-y-auto">
       {!-- SlideOver Header --}
-      <div class="flex mb-6">
-        <div class="flex-1">
-          <#slot name="header" />
-        </div>
+      <div class="flex items-center justify-between mb-6">
+        <Heading size="20">
+          <#slot name="heading" />
+        </Heading>
         <div class="flex items-center">
           <#slot name="options" />
           <div class="p-2 rounded bg-goku-100 cursor-pointer" :on-click={@on_close}>

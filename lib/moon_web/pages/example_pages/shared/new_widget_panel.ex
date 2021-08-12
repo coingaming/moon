@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
   alias Moon.Components.Button
   alias Moon.Components.IconButton
   alias Moon.Components.SlideOver
-  alias Moon.Components.Text
 
   prop categories, :list, default: []
 
@@ -22,7 +21,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
   def render(assigns) do
     ~F"""
     <SlideOver on_close="close">
-      <:header><Text size="24" class="block">Add new widget</Text></:header>
+      <:heading>Add new widget</:heading>
       <:content>
         <div class="flex flex-wrap items-center gap-1 mb-6">
           {#for category <- @categories}

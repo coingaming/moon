@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
   def render(assigns) do
     ~F"""
     <SlideOver on_close={@on_close}>
-      <:header><Text size="24" class="block">Quick View</Text></:header>
+      <:heading>Quick View</:heading>
       <:options>
         <IconUser font_size="1.5rem" class="mr-4" />
         <IconShare font_size="1.5rem" />
@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
       </:options>
 
       <:content>
-        <LeftToRight class="mb-4">
+        <LeftToRight class="mb-4 flex-wrap">
           {#for tab <- ["overview", "rewards", "KPI", "cashier", "TXN", "comms", "fraud", "notes"]}
             <Button
               size="xsmall"
