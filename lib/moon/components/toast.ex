@@ -56,7 +56,7 @@ defmodule Moon.Components.Toast do
         </p>
         <Link
           :if={@link_href && @link_text}
-          class="ml-4 flex-shrink-0 font-medium"
+          class="ml-4 flex-shrink-0 font-semibold"
           to={@link_href}
         >
           {@link_text}
