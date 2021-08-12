@@ -40,357 +40,329 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
   def render(assigns) do
     ~F"""
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <CasinoBonus font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <CasinoBonus font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <ClaimedReward font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <ClaimedReward font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <DynamicRewards font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <DynamicRewards font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <EmailNotVerified font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <EmailNotVerified font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <EmailVerification font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <EmailVerification font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <EventEnded font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <EventEnded font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <Gift font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Gift font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <HustleToTop font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <HustleToTop font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <InviteFriends font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <InviteFriends font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <MoneyBack font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <MoneyBack font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoBets font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoBets font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoCasinoGames font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoCasinoGames font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoData font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoData font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoEvents font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoEvents font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoFavorite font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoFavorite font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoFreeBet font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoFreeBet font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoInternet font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoInternet font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoMarkets font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoMarkets font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoNotification font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoNotification font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoParticipations font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoParticipations font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoReward font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoReward font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <NoWithdrawals font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <NoWithdrawals font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PriceBoost font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PriceBoost font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <TiersAndRewards font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <TiersAndRewards font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <TrackYourProgress font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <TrackYourProgress font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <Trophy font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Trophy font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <YouPlayWePay font_size="10rem" color="piccolo-100" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <YouPlayWePay font_size="10rem" color="piccolo-100" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
-
     """
   end
 end

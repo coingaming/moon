@@ -61,8 +61,8 @@ defmodule Moon.Components.Datepicker do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/text-input"}
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/components/text-input")}
+    {asset_import(@socket, "js/tailwind")}
 
     <PopoverV2 show={@show} on_close="toggle_picker">
       <Chip
@@ -75,14 +75,12 @@ defmodule Moon.Components.Datepicker do
       </Chip>
 
       <:content>
-        <div
-          class={
-            "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
-            hidden: !@show
-          }
-        >
+        <div class={
+          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
+          hidden: !@show
+        }>
           <!-- Ranges -->
-          <div :if={length(@ranges) >0} class="space-y-0.5 w-48 mr-4">
+          <div :if={length(@ranges) > 0} class="space-y-0.5 w-48 mr-4">
             <div
               :for={range <- @ranges}
               class={
@@ -108,7 +106,7 @@ defmodule Moon.Components.Datepicker do
                   :on-click="shift_months"
                   phx-value-months={-2}
                 >
-                  <IconChevronLeft class="block" font_size="1rem"/>
+                  <IconChevronLeft class="block" font_size="1rem" />
                 </button>
 
                 <div class="flex-grow">
@@ -130,7 +128,7 @@ defmodule Moon.Components.Datepicker do
                   :on-click="shift_months"
                   phx-value-months={2}
                 >
-                  <IconChevronRight class="block" font_size="1rem"/>
+                  <IconChevronRight class="block" font_size="1rem" />
                 </button>
 
                 <div class="flex-grow">
@@ -145,12 +143,11 @@ defmodule Moon.Components.Datepicker do
               </div>
             </div>
 
-            <div
-              class={
-                "flex items-center mt-6 gap-x-2",
-                "justify-between": @show_date_inputs,
-                "justify-end": !@show_date_inputs
-              }>
+            <div class={
+              "flex items-center mt-6 gap-x-2",
+              "justify-between": @show_date_inputs,
+              "justify-end": !@show_date_inputs
+            }>
               <div :if={@show_date_inputs} class="flex flex-shrink-0 gap-x-2">
                 <DateTimeLocalInput
                   :if={@with_time}
@@ -198,20 +195,11 @@ defmodule Moon.Components.Datepicker do
               </div>
 
               <div class="flex flex-shrink-0 gap-x-2">
-                <Button
-                  variant="outline"
-                  size="xsmall"
-                  on_click="toggle_picker"
-                >
+                <Button variant="outline" size="xsmall" on_click="toggle_picker">
                   Discard
                 </Button>
 
-                <Button
-                  class="px-3 py-2 rounded"
-                  variant="primary"
-                  size="xsmall"
-                  on_click="update_dates"
-                >
+                <Button class="px-3 py-2 rounded" variant="primary" size="xsmall" on_click="update_dates">
                   Apply
                 </Button>
               </div>

@@ -11,12 +11,21 @@ defmodule Moon.Assets.Duotones.EventEnded do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/assets/duotone"}
+    {asset_import(@socket, "js/assets/duotone")}
 
-    <svg class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/assets/svgs/duotones/event-ended.svg#item"></use>
+    <svg
+      class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"}
+      :on-click={@click}
+      style={get_style(
+        color: @color,
+        height: @height,
+        width: @width,
+        font_size: @font_size,
+        vertical_align: @vertical_align
+      )}
+    >
+      <use href="/moon/assets/svgs/duotones/event-ended.svg#item" />
     </svg>
-
     """
   end
 end

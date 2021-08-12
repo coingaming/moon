@@ -6,7 +6,7 @@ defmodule Moon.Components.Table do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <table class={"table-auto moon-table #{@class}"}>
       <#slot />

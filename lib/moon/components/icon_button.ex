@@ -18,10 +18,12 @@ defmodule Moon.Components.IconButton do
   def render(assigns) do
     ~F"""
     <button
-      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
+      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma-100 #{
+        @text_color
+      } hover:#{@hover_bg_color} #{@class}"}
       title={@title}
       :on-click={@click}
-      :attrs={phx_val_tag(@value_name, @value)}
+      {...phx_val_tag(@value_name, @value)}
     >
       <Icon name={@icon_name} font_size={@icon_size} />
     </button>

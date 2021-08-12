@@ -19,11 +19,11 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
     <div>
       <style>
         .item {
-          display: inline-block;
-          background-color: var(--color--gohan-100);
-          padding: 300px;
-          margin-right: 20px;
-          scroll-snap-align: start;
+        display: inline-block;
+        background-color: var(--color--gohan-100);
+        padding: 300px;
+        margin-right: 20px;
+        scroll-snap-align: start;
         }
       </style>
       <Carousel>

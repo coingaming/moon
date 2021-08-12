@@ -11,8 +11,8 @@ defmodule MoonWeb.Pages.Themes.ListOfThemes do
     </p>
 
     <p>
-      1. Values should not be hard-coded, but paddings, margings, colors come from theme. <br />
-      2. Themes should base on Moon.Theme for type hinting. <br />
+      1. Values should not be hard-coded, but paddings, margings, colors come from theme. <br>
+      2. Themes should base on Moon.Theme for type hinting. <br>
     </p>
     """
   end

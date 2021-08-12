@@ -31,16 +31,12 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       <Heading size={24} class="mt-4" is_regular>Label</Heading>
 
       <ExampleAndCode>
-        <#template slot="example">
-          <FileInput
-            conf={@uploads.file}
-            label="Upload your ID"
-            placeholder="Choose a photo..."
-          />
-        </#template>
+        <:example>
+          <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a photo..." />
+        </:example>
 
-    <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.FileInput
 
         def mount(_params, _session, socket) do
@@ -58,27 +54,24 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           placeholder="Choose a document..."
         />
       </#CodePreview>
-    </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Error</Heading>
 
       <ExampleAndCode>
-        <#template slot="example">
-          <FileInput
-            conf={@uploads.error_file}
-            error={true}
-          />
-        </#template>
+        <:example>
+          <FileInput conf={@uploads.error_file} error />
+        </:example>
 
-    <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <FileInput
           conf={ @uploads.file }
           error={ true }
         />
       </#CodePreview>
-    </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

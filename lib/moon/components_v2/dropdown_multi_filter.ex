@@ -21,15 +21,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
   def render(assigns) do
     ~F"""
     <PopoverV2 show={@show_filter} on_close={@on_close}>
-      <#slot/>
+      <#slot />
       <:content>
         <div class="w-80 bg-gohan-100 shadow rounded">
           <div :if={@on_search != nil} class="p-3">
-            <Form
-              for={:search}
-              change={@on_search}
-              autocomplete="off"
-            >
+            <Form for={:search} change={@on_search} autocomplete="off">
               <TextInput
                 left_icon="icon_zoom"
                 placeholder="Type here..."
@@ -39,10 +35,10 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
               />
             </Form>
           </div>
-          <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar", "pt-4": @on_search == nil}}>
+          <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar", "pt-4": @on_search == nil} }>
             {#if !Enum.empty?(@onscreen_items)}
               <CheckboxMultiselectV2
-                values={@selected_items |> Enum.map(&(&1.value))}
+                values={@selected_items |> Enum.map(& &1.value)}
                 options={@onscreen_items}
                 on_select={@on_select}
               />
@@ -56,7 +52,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
               </div>
             {/if}
           </div>
-          <Divider class="mt-2"/>
+          <Divider class="mt-2" />
           <LeftToRight class="justify-between p-2">
             {#if length(@selected_items) > 0}
               <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>
@@ -128,12 +124,10 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       on_select="select_filter_item"
       on_close="toggle_filter"
     >
-      <#slot
-        :args={
-          is_open: @show_filter,
-          toggle_filter: %{name: "toggle_filter", target: @myself}
-        }
-      />
+      <#slot :args={
+        is_open: @show_filter,
+        toggle_filter: %{name: "toggle_filter", target: @myself}
+      } />
     </DropdownMultiFilterView>
     """
   end

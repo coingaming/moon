@@ -51,39 +51,45 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <Sidebar background_color="bg-gohan-100" open_width="14rem">
-            <#template slot="short_logo">
+            <:short_logo>
               <div class="flex items-center h-10">
                 <LogoBitcasinoShort font_size="2.1rem" />
               </div>
-            </#template>
+            </:short_logo>
 
-            <#template slot="full_logo">
+            <:full_logo>
               <div class="pl-1">
                 <LogoBitcasinoFull font_size="10rem" class="h-10" />
               </div>
-            </#template>
+            </:full_logo>
 
-            <#template slot="menu">
+            <:menu>
               <nav class="mt-5">
                 <Stack>
                   <a href="#" class="flex items-center group">
-                    <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
+                    <IconSlots
+                      font_size="1.75rem"
+                      class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
+                    />
                     <span class="group-hover:text-piccolo-100">Slots</span>
                   </a>
                   <a href="#" class="flex items-center group">
-                    <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
+                    <IconSportsBaseBall
+                      font_size="1.75rem"
+                      class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
+                    />
                     <span class="group-hover:text-piccolo-100">Baseball</span>
                   </a>
                 </Stack>
               </nav>
-            </#template>
+            </:menu>
           </Sidebar>
-        </#template>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.Sidebar
         alias Moon.Components.Stack
         alias Moon.Assets.Icons.IconSlots
@@ -120,7 +126,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           </template>
         </Sidebar>
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

@@ -10,9 +10,14 @@ defmodule Moon.Components.Text do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/text"}
+    {asset_import(@socket, "js/components/text")}
 
-    <div class={"moon-text #{@class}"} data-size={@size} data-is-bold={@is_bold && "true"} style={get_style(@style, color: @color)}>
+    <div
+      class={"moon-text #{@class}"}
+      data-size={@size}
+      data-is-bold={@is_bold && "true"}
+      style={get_style(@style, color: @color)}
+    >
       <#slot />
     </div>
     """

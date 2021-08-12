@@ -21,16 +21,16 @@ defmodule MoonWeb.Pages.Components.TabsPage do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <Heading size={32} class="mb-8">Tabs</Heading>
 
     <p>
-    A menu of items for users to move between sections of the application.
+      A menu of items for users to move between sections of the application.
 
-    By default, tabs will provide an accessible skip link, and overflow with horizontal scrolling.
+      By default, tabs will provide an accessible skip link, and overflow with horizontal scrolling.
 
-    TabLink component provides the tab interaction.
+      TabLink component provides the tab interaction.
     </p>
 
     <p class="mt-4">
@@ -43,18 +43,24 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       <Link to="https://moon.io/components/tabs">React implementation</Link>
     </p>
 
-    <ExampleAndCode class="mt-4" show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode class="mt-4" show_state>
+      <:example>
         <Tabs>
-          <TabLink active={@tab_id == "1"} to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}>Link 1</TabLink>
-          <TabLink active={@tab_id == "2"} to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}>Link 2</TabLink>
+          <TabLink
+            active={@tab_id == "1"}
+            to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
+          >Link 1</TabLink>
+          <TabLink
+            active={@tab_id == "2"}
+            to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
+          >Link 2</TabLink>
           <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
           <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
         </Tabs>
-      </#template>
+      </:example>
 
-      <#template slot="code">
-      <#CodePreview>
+      <:code>
+        <#CodePreview>
       alias Moon.Components.Tabs
       alias Moon.Components.Tabs.TabLink
 
@@ -73,11 +79,11 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         {:noreply, redirect(socket, to: live_path(socket, __MODULE__, tab_id: item_id, theme_name: socket.assigns.theme_name))}
       end
       </#CodePreview>
-      </#template>
+      </:code>
 
-      <#template slot="state">
-      @tab_id = {@tab_id}
-      </#template>
+      <:state>
+        @tab_id = {@tab_id}
+      </:state>
     </ExampleAndCode>
     """
   end

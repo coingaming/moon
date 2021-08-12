@@ -44,409 +44,377 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
   def render(assigns) do
     ~F"""
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAustralianDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAustralianDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBitcoin font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBitcoin font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBrazilianReal font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBrazilianReal font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCanadianDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCanadianDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCardano font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCardano font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChilieanPeso font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChilieanPeso font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChineseYuan font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChineseYuan font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDanishKrone font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDanishKrone font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDogecoin font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDogecoin font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconEthereum font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconEthereum font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconEuro font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconEuro font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGbPoundSterling font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGbPoundSterling font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHongKongDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHongKongDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconIcelandicKrona font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconIcelandicKrona font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconIndianRupee font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconIndianRupee font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconJapaneseYen font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconJapaneseYen font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLitecoin font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLitecoin font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconNewTaiwanDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconNewTaiwanDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconNewZealandDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconNewZealandDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPolandZloty font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPolandZloty font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconRipple font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconRipple font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconRussianRuble font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconRussianRuble font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSingaporeDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSingaporeDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSoc font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSoc font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSouthKoreanWon font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSouthKoreanWon font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSwedishKrona font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSwedishKrona font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSwissFranc font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSwissFranc font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconThaiBaht font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconThaiBaht font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTron font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTron font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTurkishLira font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTurkishLira font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconUsaDollar font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconUsaDollar font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
-
     """
   end
 end

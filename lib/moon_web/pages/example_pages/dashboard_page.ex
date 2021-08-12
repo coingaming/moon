@@ -156,12 +156,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           </LeftToRight>
 
           <LeftToRight gap={6} class={if @edited, do: "opacity-30", else: nil}>
-            <Switcher
-              items={@page_tabs}
-              selected_item={@selected_tab}
-              click="tab_click"
-              class="h-10"
-            />
+            <Switcher items={@page_tabs} selected_item={@selected_tab} click="tab_click" class="h-10" />
 
             <Divider orientation="vertical" height="10" />
 
@@ -199,11 +194,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                   Save as new
                 </Button>
 
-                <Divider
-                  class="mx-1"
-                  orientation="vertical"
-                  height="10"
-                />
+                <Divider class="mx-1" orientation="vertical" height="10" />
 
                 <Button
                   class="px-2 text-trunks-100 hover:text-bulma-100 hover:bg-goku-120"

@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
       id={@name}
       all_items={all_items()}
       active_values={@active_values}
-      disable_search={true}
+      disable_search
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >
       <Chip

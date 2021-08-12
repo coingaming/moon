@@ -17,35 +17,35 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~F"""
     <Heading size={32} class="mb-8">Accordion</Heading>
 
-    <ExampleAndCode show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode show_state>
+      <:example>
         <Accordion>
           <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
           </Item>
           <Item click="open" item_id="2" is_open={@item_id == "2"} title="Customer support">
             Content
           </Item>
           <Item click="open" item_id="3" is_open={@item_id == "3"} title="Deposit & Withdrawals">
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
-            Content <br />
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
           </Item>
         </Accordion>
-      </#template>
-      <#template slot="code">
+      </:example>
+      <:code>
         <#CodePreview>
           <Accordion>
             <Item click="open" item_id="1" is_open={ @item_id == "1" } title="Welcome bonus">
@@ -63,10 +63,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             </Item>
           </Accordion>
         </#CodePreview>
-      </#template>
-      <#template slot="state">
+      </:code>
+      <:state>
         <pre>@item_id = {@item_id}</pre>
-      </#template>
+      </:state>
     </ExampleAndCode>
     """
   end

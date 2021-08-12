@@ -42,7 +42,7 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/components/button"}
+    {asset_import(@socket, "js/components/button")}
 
     <button
       class={
@@ -56,7 +56,7 @@ defmodule Moon.Components.Button do
       data-variant={@variant}
       data-size={@size}
       :on-click={@on_click}
-      :attrs={phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
+      {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
       <div class="flex gap-2 items-center">
         <Icon name={@left_icon} :if={@left_icon} />

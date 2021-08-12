@@ -53,28 +53,21 @@ defmodule MoonWeb.Components.LeftMenu do
   def render(assigns) do
     ~F"""
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
-      <#template slot="short_logo">
+      <:short_logo>
         <div class="flex items-center h-10">
           <LogoMoonDesignShort font_size="2.5rem" />
         </div>
-      </#template>
+      </:short_logo>
 
-      <#template slot="full_logo">
+      <:full_logo>
         <div class="w-full">
-          <Form
-            for={:selected_theme}
-            change="update_selected_theme"
-          >
-            <Select
-              field={:value}
-              options={available_themes()}
-              value={@theme_name}
-            />
+          <Form for={:selected_theme} change="update_selected_theme">
+            <Select field={:value} options={available_themes()} value={@theme_name} />
           </Form>
         </div>
-      </#template>
+      </:full_logo>
 
-      <#template slot="menu">
+      <:menu>
         <nav class="mt-5">
           <Stack class="">
             <Heading size={20}>Tutorials</Heading>
@@ -90,7 +83,6 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#margin"}>Margin</Link>
             <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#padding"}>Padding</Link>
             <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#responsive-layout"}>Responsive layout</Link>
-
 
             <Heading size={20}>Assets</Heading>
             <Link to={"/#{@theme_name}/assets/crests"}>Crests</Link>
@@ -132,7 +124,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/charts/line-chart"}>LineChart</Link>
           </Stack>
         </nav>
-      </#template>
+      </:menu>
     </Sidebar>
     """
   end

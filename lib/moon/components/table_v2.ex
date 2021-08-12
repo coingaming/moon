@@ -44,7 +44,7 @@ defmodule Moon.Components.TableV2 do
       <thead>
         <tr>
           <!-- This is used to render overlay on top of a row -->
-          <th class="w-0"/>
+          <th class="w-0" />
           {#for column <- @columns}
             <th class="border-r last:border-r-0 border-goku-40">
               {render_column(column, assigns)}
@@ -63,9 +63,8 @@ defmodule Moon.Components.TableV2 do
                     <slot name="active_item_popover" />
                   </div>
                 </div>
-
               {#elseif is_nil(assigns.active_item_id)}
-                <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100"/>
+                <div class="absolute inset-0 rounded group-hover:border-2 group-hover:border-tap-100" />
               {/if}
             </td>
             {#for {field, type} <- fields}
@@ -127,7 +126,6 @@ defmodule Moon.Components.TableV2 do
                 <IconArrowLUp font_size="1.2rem" class="invisible" />
             {/case}
           </div>
-
         {#match _}
           <div class="inline-block justify-start items-center p-2 cursor-default">
             {col.label}
@@ -162,7 +160,7 @@ defmodule Moon.Components.TableV2 do
 
       :datetime_relative ->
         ~F"""
-        <div class={"flex flex-col justify-around h-full min-w-64 max-w-full px-4"}>
+        <div class="flex flex-col justify-around h-full min-w-64 max-w-full px-4">
           <div class="leading-6">
             {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
           </div>

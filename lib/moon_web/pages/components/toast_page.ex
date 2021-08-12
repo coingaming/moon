@@ -38,18 +38,18 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       <ToastStack id="toasts" />
 
       <ExampleAndCode>
-        <#template slot="example">
-          <Toast id="minimal" message="Hey! Your toast is ready."/>
-        </#template>
+        <:example>
+          <Toast id="minimal" message="Hey! Your toast is ready." />
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Toast
           id="minimal"
           message="Hey! Your toast is ready."
         />
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Appearing and disappearing</Heading>
@@ -63,24 +63,14 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
-          <Button
-            variant="primary"
-            on_click="show_one_toast"
-            class="block mb-4"
-            size="xsmall"
-          >Show one toast</Button>
+        <:example>
+          <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
 
-          <Button
-            variant="primary"
-            on_click="show_two_toasts"
-            class="block"
-            size="xsmall"
-          >Show two toasts</Button>
-        </#template>
+          <Button variant="primary" on_click="show_two_toasts" class="block" size="xsmall">Show two toasts</Button>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         alias Moon.Components.ToastStack
         alias Moon.Components.Toast.Message
 
@@ -129,7 +119,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           {:noreply, socket}
         end
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Variant</Heading>
@@ -139,7 +129,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <div class="flex flex-col items-start">
             <Toast
               :for={toast <- variant_toasts()}
@@ -149,16 +139,11 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             />
           </div>
 
-          <Button
-            variant="primary"
-            on_click="show_variant_toasts"
-            class="block mt-2"
-            size="xsmall"
-          >Show all</Button>
-        </#template>
+          <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="xsmall">Show all</Button>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Toast
           id="error_toast"
           message="Error!"
@@ -184,7 +169,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           message="Default."
         />
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Actions</Heading>
@@ -198,7 +183,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </p>
 
       <ExampleAndCode>
-        <#template slot="example">
+        <:example>
           <div class="flex flex-col items-start">
             <Toast
               :for={toast <- action_toasts()}
@@ -211,16 +196,11 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             />
           </div>
 
-          <Button
-            variant="primary"
-            on_click="show_action_toasts"
-            class="block mt-2"
-            size="xsmall"
-          >Show all</Button>
-        </#template>
+          <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="xsmall">Show all</Button>
+        </:example>
 
-        <#template slot="code">
-      <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Toast
           id="closeable_toast"
           message="You can close this toast."
@@ -251,7 +231,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           closeable={ false }
         />
       </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

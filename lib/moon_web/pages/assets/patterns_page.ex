@@ -19,84 +19,77 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~F"""
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternCircles font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternCircles font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternLines font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternLines font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternRipple font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternRipple font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternSpeed font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternSpeed font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternStars font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternStars font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <PatternWave font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <PatternWave font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
-
     """
   end
 end

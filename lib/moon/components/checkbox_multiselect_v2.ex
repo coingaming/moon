@@ -12,7 +12,7 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     {#for option <- @options}
       <div
@@ -21,7 +21,10 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
         class="flex justify-between py-2 pl-2 mx-1 hover:bg-goku-100 rounded-sm cursor-pointer"
       >
         {option.label}
-        <Checkbox class="absolute right-0 pointer-events-none" checked={Enum.member?(@values, option.value)} />
+        <Checkbox
+          class="absolute right-0 pointer-events-none"
+          checked={Enum.member?(@values, option.value)}
+        />
       </div>
     {/for}
     """

@@ -24,16 +24,12 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
     <Stack>
       <Heading size={32}>Switcher</Heading>
 
-      <ExampleAndCode show_state={true}>
-        <#template slot="example">
-          <Switcher
-            items={@tabs}
-            selected_item={@selected_tab}
-            click="tab_click"
-          />
-        </#template>
+      <ExampleAndCode show_state>
+        <:example>
+          <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+        </:example>
 
-        <#template slot="code">
+        <:code>
           <#CodePreview>
         alias Moon.Components.Switcher
 
@@ -48,9 +44,9 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
           {:noreply, socket}
         end
           </#CodePreview>
-        </#template>
+        </:code>
 
-        <#template slot="state">@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</#template>
+        <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
       </ExampleAndCode>
     </Stack>
     """

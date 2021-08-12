@@ -12,7 +12,13 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   def render(assigns) do
     ~F"""
     <div class="w-full relative z-20">
-      <Form for={:search_map} change="update_search_map" submit="close_search" autocomplete="off" class="max-w-md relative m-auto">
+      <Form
+        for={:search_map}
+        change="update_search_map"
+        submit="close_search"
+        autocomplete="off"
+        class="max-w-md relative m-auto"
+      >
         <TextInput
           left_icon="icon_zoom"
           right_icon={should_show_close_search(@search_map) && "icon_close_rounded"}
@@ -23,7 +29,12 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
           on_focus="activate_search"
           class="bg-goku-100 h-10 border-transparent"
         />
-        <SearchResults id="search" close="deactivate_search" search_text={@search_map.search_text} :if={@search_active} />
+        <SearchResults
+          id="search"
+          close="deactivate_search"
+          search_text={@search_map.search_text}
+          :if={@search_active}
+        />
       </Form>
     </div>
     """

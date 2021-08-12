@@ -42,22 +42,27 @@ defmodule Moon.Components.TextInput do
   def render(assigns) do
     ~F"""
     <div class="relative">
-      {asset_import @socket, "js/components/text-input"}
+      {asset_import(@socket, "js/components/text-input")}
 
       <Icon name={@left_icon} :if={@left_icon} class="absolute z-10 top-3 left-5" />
-      <Icon name={@right_icon} click={@right_icon_click} :if={@right_icon} class="absolute z-10 top-3 right-5" />
+      <Icon
+        name={@right_icon}
+        click={@right_icon_click}
+        :if={@right_icon}
+        class="absolute z-10 top-3 right-5"
+      />
 
       <TextInput
-        class={"#{!@without_design && "moon-text-input"} #{@class} #{@left_icon && "pl-12"} #{@right_icon && "pr-12"} relative z-0"}
+        class={"#{!@without_design && "moon-text-input"} #{@class} #{@left_icon && "pl-12"} #{
+          @right_icon && "pr-12"
+        } relative z-0"}
         field={@field}
-        opts={
-          [
-            placeholder: @placeholder,
-            disabled: @disabled,
-            "data-error": @error && "true",
-            "data-rounded": @rounded && "true"
-          ]
-        }
+        opts={[
+          placeholder: @placeholder,
+          disabled: @disabled,
+          "data-error": @error && "true",
+          "data-rounded": @rounded && "true"
+        ]}
         value={@value}
         focus={@on_focus}
         blur={@on_blur}

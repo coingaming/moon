@@ -41,370 +41,341 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   def render(assigns) do
     ~F"""
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoAposta10Full font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoAposta10Full font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoAposta10Short font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoAposta10Short font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoBitcasinoFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoBitcasinoFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoBitcasinoShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoBitcasinoShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoBombayFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoBombayFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoBombayShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoBombayShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoCommsFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoCommsFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoCommsShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoCommsShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoDrop font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoDrop font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoHub88Full font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoHub88Full font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoHub88Short font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoHub88Short font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoLabFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoLabFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoLivecasinoFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoLivecasinoFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoLuckyslotsFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoLuckyslotsFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoLuckyslotsShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoLuckyslotsShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoMissions font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoMissions font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoMoneyball font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoMoneyball font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoMoonDesignShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoMoonDesignShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoMoonDesign font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoMoonDesign font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoPoweredByHub88 font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoPoweredByHub88 font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSlotsFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSlotsFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSlotsShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSlotsShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSportsbetFull font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSportsbetFull font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSportsbetShort font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSportsbetShort font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSportsbetSponsor font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSportsbetSponsor font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoSportsbet font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoSportsbet font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <LogoUtorg font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <LogoUtorg font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <MoonPay font_size="10rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <MoonPay font_size="10rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
-
     """
   end
 end

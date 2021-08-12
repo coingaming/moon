@@ -38,7 +38,10 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
                 </div>
               </LiveRedirect>
 
-              <LiveRedirect :if={item.type == :affiliates} to={"/example-pages/affiliates?segment_id=#{item.id}"}>
+              <LiveRedirect
+                :if={item.type == :affiliates}
+                to={"/example-pages/affiliates?segment_id=#{item.id}"}
+              >
                 <div class="flex items-center px-2 cursor-pointer">
                   <div class="flex items-center justify-center w-6 h-6 m-2">
                     <Icon name={:icon_expand} class="text-trunks-100" />

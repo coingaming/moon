@@ -39,21 +39,21 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <div id="first_switch">
-        <ExampleAndCode class="mt-3" show_state={true}>
-          <#template slot="example">
+        <ExampleAndCode class="mt-3" show_state>
+          <:example>
             <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Switch
                 checked={ @checked }
                 on_change="handle_switch"
               />
             </#CodePreview>
-          </#template>
+          </:code>
 
-          <#template slot="state">@checked = {@first_switch_checked}</#template>
+          <:state>@checked = {@first_switch_checked}</:state>
         </ExampleAndCode>
       </div>
 
@@ -64,29 +64,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <ExampleAndCode class="mt-3">
-        <#template slot="example">
+        <:example>
           <Stack>
-            <Switch
-              size="small"
-              checked={@small_switch_checked}
-              on_change="handle_small_switch"
-            />
+            <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
 
-            <Switch
-              size="medium"
-              checked={@medium_switch_checked}
-              on_change="handle_medium_switch"
-            />
+            <Switch size="medium" checked={@medium_switch_checked} on_change="handle_medium_switch" />
 
-            <Switch
-              size="large"
-              checked={@large_switch_checked}
-              on_change="handle_large_switch"
-            />
+            <Switch size="large" checked={@large_switch_checked} on_change="handle_large_switch" />
           </Stack>
-        </#template>
+        </:example>
 
-        <#template slot="code">
+        <:code>
           <#CodePreview>
             <Switch size="small" />
 
@@ -94,7 +82,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
             <Switch size="large" />
           </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Icons</Heading>
@@ -104,36 +92,21 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <ExampleAndCode class="mt-3">
-        <#template slot="example">
+        <:example>
           <Stack>
-            <Switch
-              checked={@icons_switch_checked}
-              icons={true}
-              size="small"
-              on_change="handle_icons_switch"
-            />
+            <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
 
-            <Switch
-              checked={@icons_switch_checked}
-              icons={true}
-              size="medium"
-              on_change="handle_icons_switch"
-            />
+            <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
 
-            <Switch
-              checked={@icons_switch_checked}
-              icons={true}
-              size="large"
-              on_change="handle_icons_switch"
-            />
+            <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
           </Stack>
-        </#template>
+        </:example>
 
-        <#template slot="code">
+        <:code>
           <#CodePreview>
             <Switch icons={ true } />
           </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Captions</Heading>
@@ -143,7 +116,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <ExampleAndCode class="mt-3">
-        <#template slot="example">
+        <:example>
           <Stack>
             <Switch
               checked={@captions_switch_checked}
@@ -157,7 +130,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
             <Switch
               checked={@captions_switch_checked}
               on_change="handle_captions_switch"
-              icons={true}
+              icons
               size="medium"
               caption_unchecked="OFF"
               caption_checked="ON"
@@ -166,22 +139,22 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
             <Switch
               checked={@captions_switch_checked}
               on_change="handle_captions_switch"
-              icons={true}
+              icons
               size="large"
               caption_unchecked="Moon"
               caption_checked="Sun"
             />
           </Stack>
-        </#template>
+        </:example>
 
-        <#template slot="code">
+        <:code>
           <#CodePreview>
             <Switch
               caption_unchecked="OFF"
               caption_checked="ON"
             />
           </#CodePreview>
-        </#template>
+        </:code>
       </ExampleAndCode>
     </Stack>
     """

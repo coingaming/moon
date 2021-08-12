@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <Heading size={32} class="mb-8">Dropdown</Heading>
 
@@ -52,8 +52,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode class="mt-4" show_state>
+      <:example>
         <Dropdown>
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
@@ -61,9 +61,9 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             options={@selectable_game_options}
           />
         </Dropdown>
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Dropdown>
           <CheckboxMultiselect
@@ -73,16 +73,15 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </#template>
+      </:code>
 
-      <#template slot="state">
-    @selected_game_ids = {inspect(@selected_game_ids)}
-      </#template>
+      <:state>
+        @selected_game_ids = {inspect(@selected_game_ids)}
+      </:state>
     </ExampleAndCode>
 
-
-    <ExampleAndCode class="mt-4" show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode class="mt-4" show_state>
+      <:example>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -95,9 +94,9 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             options={@selectable_filtered_game_options}
           />
         </Dropdown>
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
@@ -112,20 +111,20 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </#template>
+      </:code>
 
-      <#template slot="state">
-    @selected_game_ids = {inspect(@selected_game_ids)}
-    @game_search = {inspect(@game_search)}
-      </#template>
+      <:state>
+        @selected_game_ids = {inspect(@selected_game_ids)}
+        @game_search = {inspect(@game_search)}
+      </:state>
     </ExampleAndCode>
 
     <Heading size={24} class="mt-8">
       <a id="single-item-select">Using SingleItemSelect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode class="mt-4" show_state>
+      <:example>
         <Dropdown>
           <SingeItemSelect
             on_change="handle_other_game_selected"
@@ -133,9 +132,9 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             options={@selectable_game_options}
           />
         </Dropdown>
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Dropdown>
           <SingeItemSelect
@@ -145,15 +144,15 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </#template>
+      </:code>
 
-      <#template slot="state">
-    @other_game_id = {inspect(@other_game_id)}
-      </#template>
+      <:state>
+        @other_game_id = {inspect(@other_game_id)}
+      </:state>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state={true}>
-      <#template slot="example">
+    <ExampleAndCode class="mt-4" show_state>
+      <:example>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -166,9 +165,9 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             options={@selectable_filtered_game_options}
           />
         </Dropdown>
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
@@ -183,14 +182,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </#template>
+      </:code>
 
-      <#template slot="state">
-    @other_game_id = {inspect(@other_game_id)}
-    @game_search = {inspect(@game_search)}
-      </#template>
+      <:state>
+        @other_game_id = {inspect(@other_game_id)}
+        @game_search = {inspect(@game_search)}
+      </:state>
     </ExampleAndCode>
-
     """
   end
 

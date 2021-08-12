@@ -44,15 +44,10 @@ defmodule Moon.Components.Switch do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <div class={"inline-flex items-center", "space-x-1": @size != "large", "space-x-2": @size == "large"}>
-      <Caption
-        :if={@caption_unchecked}
-        label={@caption_unchecked}
-        size={@size}
-        active={!@checked}
-      />
+      <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
 
       <button
         type="button"
@@ -86,15 +81,10 @@ defmodule Moon.Components.Switch do
             "translate-x-4": @size == "medium" and @checked,
             "translate-x-6": @size == "large" and @checked
           }
-        ></span>
+        />
       </button>
 
-      <Caption
-        :if={@caption_checked}
-        label={@caption_checked}
-        size={@size}
-        active={@checked}
-      />
+      <Caption :if={@caption_checked} label={@caption_checked} size={@size} active={@checked} />
     </div>
     """
   end

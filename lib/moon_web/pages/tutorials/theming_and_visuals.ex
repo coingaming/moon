@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Tutorials.ThemingAndVisuals do
 
   def render(assigns) do
     ~F"""
-    {asset_import @socket, "js/tailwind"}
+    {asset_import(@socket, "js/tailwind")}
 
     <Heading size={32}>Theming and visuals</Heading>
     <Text>
@@ -35,8 +35,6 @@ defmodule MoonWeb.Pages.Tutorials.ThemingAndVisuals do
 
     <Heading size={24} class="mt-8" id="responsive-layout">Responsive layout</Heading>
     Read more: <Link to="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</Link>
-
-
     """
   end
 end

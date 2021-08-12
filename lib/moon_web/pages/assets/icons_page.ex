@@ -273,3386 +273,3125 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
   def render(assigns) do
     ~F"""
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAbout font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAbout font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAdd font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAdd font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAlertCircle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAlertCircle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAlignLeft font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAlignLeft font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAllSports font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAllSports font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowDiagonalDownLeft font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowDiagonalDownLeft font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowDiagonalUpRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowDiagonalUpRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowDiagonals font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowDiagonals font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowDown font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowDown font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowLDown font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowLDown font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowLUp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowLUp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowLeftRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowLeftRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowLeft font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowLeft font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowTopRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowTopRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowUpDown font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowUpDown font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconArrowUp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconArrowUp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAsianView font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAsianView font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAttache font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAttache font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconAward font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconAward font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBannerInfo font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBannerInfo font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBell font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBell font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBitcoinTalk font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBitcoinTalk font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBombayClub font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBombayClub font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconBurger font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconBurger font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCalendarEmpty font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCalendarEmpty font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCalendar font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCalendar font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCard font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCard font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCase font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCase font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCashOut font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCashOut font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCasinoBell font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCasinoBell font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCasino font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCasino font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChartArea font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChartArea font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChartBar font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChartBar font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChartPies font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChartPies font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChartRound font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChartRound font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChartSegment font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChartSegment font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronDownRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronDownRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronDown font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronDown font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronLeftRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronLeftRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronLeft font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronLeft font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronRightRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronRightRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronUpDown font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronUpDown font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronUpRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronUpRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconChevronUp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconChevronUp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCircle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCircle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconClaps font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconClaps font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconClock font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconClock font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCloseRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCloseRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCloseSmall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCloseSmall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconClose font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconClose font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCode font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCode font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCollapse font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCollapse font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCopy font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCopy font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCredit font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCredit font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCrypto font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCrypto font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyAda font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyAda font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyArs font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyArs font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyBdt font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyBdt font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyBob font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyBob font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyBrl font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyBrl font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyBtc font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyBtc font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyCad font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyCad font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyClp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyClp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyCny font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyCny font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyCrc font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyCrc font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyEth font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyEth font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyEur font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyEur font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyGel font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyGel font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyHkd font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyHkd font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyIdr font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyIdr font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyInr font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyInr font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyIqd font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyIqd font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyJpy font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyJpy font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyKrw font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyKrw font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyLtc font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyLtc font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyMxn font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyMxn font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyMyr font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyMyr font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyPen font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyPen font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyPkr font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyPkr font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyRub font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyRub font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencySoc font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencySoc font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyThb font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyThb font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyTrx font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyTrx font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyTry font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyTry font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyUah font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyUah font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyUsd font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyUsd font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyUsdt font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyUsdt font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyVes font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyVes font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyVnd font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyVnd font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCurrencyXrp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCurrencyXrp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconCursor font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconCursor font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconData font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconData font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDelete font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDelete font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDesktop font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDesktop font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDetails font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDetails font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDouble font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDouble font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDownload font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDownload font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDuotoneArrows font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDuotoneArrows font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDuotoneChat font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDuotoneChat font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDuotoneCoins font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDuotoneCoins font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconDuotoneMail font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconDuotoneMail font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsCallOfDuty font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsCallOfDuty font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsCounterStrike font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsCounterStrike font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsDota2 font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsDota2 font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsENba font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsENba font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsESport font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsESport font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsFootball font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsFootball font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsHearthstone font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsHearthstone font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsLeagueOfLegends font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsLeagueOfLegends font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsOverwatch font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsOverwatch font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsRainbow font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsRainbow font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsRocketLeague font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsRocketLeague font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconESportsStarCraft font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconESportsStarCraft font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconEdit font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconEdit font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconErrorCircle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconErrorCircle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconError font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconError font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconExpand font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconExpand font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconEyeClosed font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconEyeClosed font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconEye font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconEye font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconFacebook font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconFacebook font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconFilter font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconFilter font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconForward font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconForward font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconFreebet font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconFreebet font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconFullScreen font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconFullScreen font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGamepad font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGamepad font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGeneralInfo font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGeneralInfo font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGift font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGift font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGlasses font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGlasses font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGlobe font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGlobe font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGoogleAuth font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGoogleAuth font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconGoogle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconGoogle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHamburger font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHamburger font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHelp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHelp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHistory font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHistory font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHome font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHome font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHub88 font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHub88 font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconHyperlink font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconHyperlink font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconInPlay font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconInPlay font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconInfoCircle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconInfoCircle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconInfo font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconInfo font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconInstagram font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconInstagram font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLeftArrowCurveRight font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLeftArrowCurveRight font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLifeRing font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLifeRing font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLightbulb font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLightbulb font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLimit font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLimit font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLine font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLine font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLink font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLink font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconListNumbered font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconListNumbered font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLiveCasino font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLiveCasino font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLiveChat font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLiveChat font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLiveStream font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLiveStream font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLock font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLock font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLogin font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLogin font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLogoPlain font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLogoPlain font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLogout font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLogout font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconLoyalty0 font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconLoyalty0 font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMail font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMail font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMenuHome font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMenuHome font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMenu font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMenu font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMinus font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMinus font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMobile font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMobile font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMoney font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMoney font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMoneybag font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMoneybag font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMoon font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMoon font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconMore font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconMore font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconNews font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconNews font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconNotificationUnread font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconNotificationUnread font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconNotification font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconNotification font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPadlock font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPadlock font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPencil font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPencil font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPhoto font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPhoto font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPicture font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPicture font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPin font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPin font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPlay font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPlay font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPlus font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPlus font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPriceBoost font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPriceBoost font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPrint font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPrint font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconProfile font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconProfile font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconPromotions font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconPromotions font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconRefresh font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconRefresh font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconReward font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconReward font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconRow font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconRow font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSbShield font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSbShield font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSearch font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSearch font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSettings font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSettings font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconShare font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconShare font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSliders font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSliders font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSlots font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSlots font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSnackbarSuccess font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSnackbarSuccess font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportWidget font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportWidget font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsAfl font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsAfl font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsAmericanFootBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsAmericanFootBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsBadminton font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsBadminton font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsBaseBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsBaseBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsBasketBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsBasketBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsBiathlon font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsBiathlon font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsBoxing font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsBoxing font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsCenter font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsCenter font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsCricket font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsCricket font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsCycling font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsCycling font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsDarts font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsDarts font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsESports font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsESports font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsFantasy font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsFantasy font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsFeatured font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsFeatured font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsFootBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsFootBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsGolf font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsGolf font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsGreyhound font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsGreyhound font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsHandBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsHandBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsHarness font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsHarness font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsHorseRacing font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsHorseRacing font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsHorse font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsHorse font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsIceHockey font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsIceHockey font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsMma font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsMma font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsMotorSports font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsMotorSports font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsPoker font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsPoker font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsPolitics font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsPolitics font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsPool font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsPool font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsPopular font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsPopular font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsRugby font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsRugby font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsSki font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsSki font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsSnooker font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsSnooker font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsSpecial font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsSpecial font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsSquash font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsSquash font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsTableTennis font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsTableTennis font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsTennis font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsTennis font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsVolleyBall font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsVolleyBall font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSportsWaterPolo font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSportsWaterPolo font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStarEmpty font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStarEmpty font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStarFilled font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStarFilled font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStarFlag font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStarFlag font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStars font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStars font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStart font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStart font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStats font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStats font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStop font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStop font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconStopwatch font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconStopwatch font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSuccessCircle font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSuccessCircle font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSun font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSun font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconSupport font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconSupport font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTable font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTable font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTag font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTag font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTelegram font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTelegram font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconText font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconText font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTimer font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTimer font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconTwitter font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconTwitter font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconUpload font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconUpload font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconUser font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconUser font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconUsers font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconUsers font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconVerify font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconVerify font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconVirtualSports font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconVirtualSports font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconVkontakte font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconVkontakte font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconVolatility font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconVolatility font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconWalletRounded font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconWalletRounded font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconWallet font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconWallet font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconWand font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconWand font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconWarning font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconWarning font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconWhatsapp font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconWhatsapp font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconYoutube font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconYoutube font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
 
-
     <ExampleAndCode class="mt-4">
-      <#template slot="example">
+      <:example>
         <IconZoom font_size="5rem" />
-      </#template>
+      </:example>
 
-      <#template slot="code">
+      <:code>
         <#CodePreview>
         <IconZoom font_size="5rem" />
         </#CodePreview>
-      </#template>
+      </:code>
     </ExampleAndCode>
-
     """
   end
 end

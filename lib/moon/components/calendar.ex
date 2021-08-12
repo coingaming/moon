@@ -15,31 +15,16 @@ defmodule Moon.Components.Calendar do
     ~F"""
     <div class="min-w-min">
       <div class="flex items-center mb-6">
-        <Button
-          class="font-semibold rounded-lg"
-          variant="tertiary"
-          size="small"
-          on_click="set_today"
-        >
+        <Button class="font-semibold rounded-lg" variant="tertiary" size="small" on_click="set_today">
           Today
         </Button>
 
-        <button
-          type="button"
-          class="ml-6 leading-none"
-          :on-click="shift_range"
-          phx-value-shift={-1}
-        >
-          <IconChevronLeftRounded class="block" font_size="1rem"/>
+        <button type="button" class="ml-6 leading-none" :on-click="shift_range" phx-value-shift={-1}>
+          <IconChevronLeftRounded class="block" font_size="1rem" />
         </button>
 
-        <button
-          type="button"
-          class="ml-5 mr-6 leading-none"
-          :on-click="shift_range"
-          phx-value-shift={1}
-        >
-          <IconChevronRightRounded class="block" font_size="1rem"/>
+        <button type="button" class="ml-5 mr-6 leading-none" :on-click="shift_range" phx-value-shift={1}>
+          <IconChevronRightRounded class="block" font_size="1rem" />
         </button>
 
         <div>
@@ -47,12 +32,7 @@ defmodule Moon.Components.Calendar do
         </div>
 
         <div class="flex-grow text-right">
-          <Button
-            class="font-semibold rounded-lg"
-            variant="tertiary"
-            size="small"
-            on_click="toggle_view"
-          >
+          <Button class="font-semibold rounded-lg" variant="tertiary" size="small" on_click="toggle_view">
             <span :if={@show_month}>
               Month
             </span>
@@ -69,18 +49,9 @@ defmodule Moon.Components.Calendar do
         </div>
       </div>
 
-      <Month
-        :if={@show_month}
-        date={@date}
-        week_starts_on={@week_starts_on}
-        events={@events}
-      />
+      <Month :if={@show_month} date={@date} week_starts_on={@week_starts_on} events={@events} />
 
-      <Week
-        :if={!@show_month}
-        date={@date}
-        week_starts_on={@week_starts_on}
-      />
+      <Week :if={!@show_month} date={@date} week_starts_on={@week_starts_on} />
     </div>
     """
   end

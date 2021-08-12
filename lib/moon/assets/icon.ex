@@ -278,7 +278,14 @@ defmodule Moon.Assets.Icon do
 
   def render(assigns) do
     ~F"""
-    {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), color: @color, background_color: @background_color, font_size: @font_size, click: @click, class: @class)}
+    {@name && icon_name_to_module(@name) &&
+      live_component(@socket, icon_name_to_module(@name),
+        color: @color,
+        background_color: @background_color,
+        font_size: @font_size,
+        click: @click,
+        class: @class
+      )}
     """
   end
 end

@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     <div id="transactions-page" class={"#{@theme_name}"}>
       <TopMenu id="top-menu" />
       <div class="flex">
-        <LeftMenu id="left_menu"/>
+        <LeftMenu id="left_menu" />
 
         <div class="px-14 py-6">
           <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />

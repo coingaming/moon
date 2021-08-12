@@ -19,8 +19,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Breadcrumbs do
           <Link to={breadcrumb.to}>
             {breadcrumb.name}
           </Link>
-          </div>
         </div>
+      </div>
     </div>
     """
   end

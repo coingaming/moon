@@ -34,38 +34,16 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       </Inline>
     </#CodePreview>
 
-
     <h2>With user name</h2>
 
     Use name prop. No more than 2 / 3 characters
 
     <Inline>
-      <Avatar
-        name="JS"
-        color="gohan-100"
-        background_color="piccolo-100"
-        size="xsmall"
-      />
-      <Avatar
-        name="JS"
-        color="gohan-100"
-        background_color="piccolo-100"
-        size="small"
-      />
-      <Avatar
-        name="JS"
-        color="gohan-100"
-        background_color="piccolo-100"
-        size="medium"
-      />
-      <Avatar
-        name="JS"
-        color="gohan-100"
-        background_color="piccolo-100"
-        size="large"
-      />
+      <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
+      <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
+      <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
+      <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
     </Inline>
-
 
     <#CodePreview>
       <Inline>
