@@ -100,6 +100,9 @@ module.exports = {
   },
   variants: {
     width: ['responsive', 'hover', 'focus'],
+    boxShadow: ["responsive", "hover", "focus", "invalid"],
+    backgroundColor: ["responsive", "hover", "focus", "invalid"],
+    borderColor: ["responsive", "hover", "focus", "invalid"],
     extend: {
       scale: ['group-hover'],
       borderWidth: ['group-hover', 'last']
@@ -107,6 +110,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    require("tailwindcss-invalid-variant-plugin"),
     plugin(({ addUtilities }) => {
       addUtilities({
         ".no-scrollbar::-webkit-scrollbar": {

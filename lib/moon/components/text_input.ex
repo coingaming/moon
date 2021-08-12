@@ -52,7 +52,7 @@ defmodule Moon.Components.TextInput do
         border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
         placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
         disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-        z-0 relative no-scrollbar #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
+        z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
         field={@field}
         opts={
           [
@@ -74,7 +74,7 @@ defmodule Moon.Components.TextInput do
         border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
         placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
         disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-        z-0 relative no-scrollbar #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
+        z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@left_icon && "pl-12"} #{@right_icon && "pr-12"}"}
 
           field={@field}
           opts={[
