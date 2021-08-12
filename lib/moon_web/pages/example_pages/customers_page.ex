@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias Moon.ComponentsV2.Table
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
 
-  alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview
+  alias MoonWeb.Pages.ExamplePages.Customers.{CustomerPreview, MoreFilters}
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter, SiteFilter}
   alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
   alias MoonWeb.Pages.ExamplePages.Helpers
@@ -80,8 +80,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <UsernameFilter active_values={@username_filter_values} />
               <CountryFilter active_values={@country_filter_values} />
               <SiteFilter active_values={@site_filter_values} />
-
-              <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
+              <MoreFilters id="more_filters" />
 
               {#if @segment_id == nil}
                 <Button variant="danger" left_icon="chart_segment" on_click="save_segment_form_init">
