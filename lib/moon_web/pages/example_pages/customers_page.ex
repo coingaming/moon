@@ -128,20 +128,22 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
-  def handle_params(params = %{ "segment_id" => segment_id }, _uri, socket) do
+  def handle_params(params = %{"segment_id" => segment_id}, _uri, socket) do
     %{name: name, params: params_saved} = Segments.get_by_id(segment_id |> String.to_integer())
 
-    {:noreply, socket
-      |> assign(segment_id: segment_id)
-      |> assign(segment_title: name)
-      |> load_params(Map.merge(params_saved, params, fn _, _, y -> y end))
-      |> filter_customers()}
+    {:noreply,
+     socket
+     |> assign(segment_id: segment_id)
+     |> assign(segment_title: name)
+     |> load_params(Map.merge(params_saved, params, fn _, _, y -> y end))
+     |> filter_customers()}
   end
 
   def handle_params(params, _uri, socket) do
-    {:noreply, socket
-      |> load_params(params)
-      |> filter_customers()}
+    {:noreply,
+     socket
+     |> load_params(params)
+     |> filter_customers()}
   end
 
   #
@@ -152,10 +154,12 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
     new_route = fn socket ->
       route = Routes.live_path(socket, __MODULE__, get_params(socket))
-      {:noreply, socket
-        |> assign(segment_id: nil)
-        |> assign(segment_title: nil)
-        |> push_patch(to: route)}
+
+      {:noreply,
+       socket
+       |> assign(segment_id: nil)
+       |> assign(segment_title: nil)
+       |> push_patch(to: route)}
     end
 
     new_segment_route = fn socket ->
@@ -213,12 +217,12 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   # Event Handlers
   #
   def handle_event("save_segment_form_init", _, socket) do
-    {:noreply, socket |> assign(:save_segment_form, %{ title: "Customers" })}
+    {:noreply, socket |> assign(:save_segment_form, %{title: "Customers"})}
   end
 
   def handle_event("save_segment_form_update", value, socket) do
     %{"segment" => %{"title" => title}} = value
-    {:noreply, socket |> assign(:save_segment_form, %{ title: title })}
+    {:noreply, socket |> assign(:save_segment_form, %{title: title})}
   end
 
   def handle_event("save_segment_form_cancel", _, socket) do
@@ -226,21 +230,27 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   end
 
   def handle_event("save_segment_form_submit", _, socket) do
-    %{id: id} = Segments.save(%{
-      name: socket.assigns.save_segment_form.title,
-      type: :customers,
-      params: get_params(socket) |> Map.delete("page")
-    })
+    %{id: id} =
+      Segments.save(%{
+        name: socket.assigns.save_segment_form.title,
+        type: :customers,
+        params: get_params(socket) |> Map.delete("page")
+      })
 
-    socket = socket
+    socket =
+      socket
       |> assign(save_segment_form: nil)
-      |> push_patch(replace: true, to: Routes.live_path(socket, __MODULE__, %{ "segment_id" => id }))
+      |> push_patch(
+        replace: true,
+        to: Routes.live_path(socket, __MODULE__, %{"segment_id" => id})
+      )
 
     {:noreply, socket}
   end
 
   def handle_event("clear_all_filters", _, socket) do
-    socket = socket
+    socket =
+      socket
       |> assign(username_filter_values: [])
       |> assign(country_filter_values: [])
       |> assign(site_filter_values: [])
@@ -290,8 +300,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
     |> assign(username_filter_values: get.("users", assigns.username_filter_values))
     |> assign(country_filter_values: get.("countries", assigns.country_filter_values))
     |> assign(site_filter_values: get.("sites", assigns.site_filter_values))
-    |> assign(page: (get.("page", "1") |> String.to_integer()))
-    |> assign(sort_by: (get.("sort_by", nil) |> Helpers.decode_sort_by()))
+    |> assign(page: get.("page", "1") |> String.to_integer())
+    |> assign(sort_by: get.("sort_by", nil) |> Helpers.decode_sort_by())
   end
 
   defp get_params(%{assigns: assigns}) do

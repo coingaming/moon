@@ -4,7 +4,11 @@ defmodule Moon.Components.Button do
   alias Moon.Assets.Icon
 
   prop(href, :string)
-  prop(variant, :string, values: ["primary", "secondary", "tertiary", "highlight", "default", "outline"])
+
+  prop(variant, :string,
+    values: ["primary", "secondary", "tertiary", "highlight", "default", "outline"]
+  )
+
   prop(size, :string, values: ["xsmall", "small", "medium", "large"])
   prop(mock_state, :string, values: ["active", "focus", "hover"])
   prop(full_width, :boolean)

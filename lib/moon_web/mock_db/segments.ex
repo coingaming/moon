@@ -10,11 +10,13 @@ defmodule MoonWeb.MockDB.Segments do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
-  def save(segment = %{
-    name: _,
-    type: _,
-    params: _,
-  }) do
+  def save(
+        segment = %{
+          name: _,
+          type: _,
+          params: _
+        }
+      ) do
     this_process() |> GenServer.call({:save, segment})
   end
 
@@ -32,7 +34,7 @@ defmodule MoonWeb.MockDB.Segments do
 
   # server
   def init(_args) do
-    {:ok, %{ all: [] }}
+    {:ok, %{all: []}}
   end
 
   def handle_call(:list_all, _from, state) do
@@ -41,7 +43,7 @@ defmodule MoonWeb.MockDB.Segments do
 
   def handle_call({:save, segment}, _from, state) do
     segment = segment |> Map.put(:id, Utils.random_id())
-    {:reply, segment, %{ all: [ segment | state.all ]}}
+    {:reply, segment, %{all: [segment | state.all]}}
   end
 
   def handle_call({:get_by_id, id}, _form, state) do
