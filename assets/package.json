@@ -11,7 +11,7 @@
     "alpinejs": "^2.8.2",
     "asset_import_hook": "github:coingaming/asset_import",
     "nprogress": "^0.2.0",
-    "phoenix": "^1.5.9",
+    "phoenix": "^1.5.10",
     "phoenix_html": "^2.14.3",
     "phoenix_live_view": "^0.15.7",
     "vega": "^5.20.2",
@@ -19,8 +19,8 @@
     "vega-lite": "5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "autoprefixer": "^10.3.1",
     "babel-loader": "^8.2.2",

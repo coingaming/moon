@@ -18,6 +18,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Logos.LogoHub88Short
   alias Logos.LogoLabFull
   alias Logos.LogoLivecasinoFull
+  alias Logos.LogoLivecasinoShort
   alias Logos.LogoLuckyslotsFull
   alias Logos.LogoLuckyslotsShort
   alias Logos.LogoMissions
@@ -193,6 +194,18 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       <:code>
         <#CodePreview>
         <LogoLivecasinoFull font_size="10rem" />
+        </#CodePreview>
+      </:code>
+    </ExampleAndCode>
+
+    <ExampleAndCode class="mt-4">
+      <:example>
+        <LogoLivecasinoShort font_size="10rem" />
+      </:example>
+
+      <:code>
+        <#CodePreview>
+        <LogoLivecasinoShort font_size="10rem" />
         </#CodePreview>
       </:code>
     </ExampleAndCode>

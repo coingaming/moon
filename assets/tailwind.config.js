@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const invalidPlugin = require('./tailwind/variants/invalid')
 
 module.exports = {
   purge: [
@@ -104,6 +105,10 @@ module.exports = {
   },
   variants: {
     width: ['responsive', 'hover', 'focus'],
+    boxShadow: ["responsive", "hover", "focus", "invalid"],
+    backgroundColor: ["responsive", "hover", "focus", "invalid"],
+    borderColor: ["responsive", "hover", "focus", "invalid"],
+    dataError: ["focus"],
     extend: {
       scale: ['group-hover'],
       borderWidth: ['group-hover', 'last']
@@ -111,6 +116,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    plugin(invalidPlugin),
     plugin(({ addUtilities }) => {
       addUtilities({
         ".no-scrollbar::-webkit-scrollbar": {
@@ -119,7 +125,13 @@ module.exports = {
         ".no-scrollbar": {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none"
-        }
+        },
+        // ".data-rounded": {
+        //   "border-radius": 'var(--radius--largest)'
+        // },
+        // ".data-error": {
+        //   "border-color": 'var(--color--chi-chi-100)' // border-chi-chi-100
+        // }
       })
     })
   ],
