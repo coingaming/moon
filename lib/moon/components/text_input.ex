@@ -41,10 +41,10 @@ defmodule Moon.Components.TextInput.TextInputInternal do
     <TextInput
       class={
         "w-full max-w-full px-4 py-2 mt-2 bg-gohan-100 appearance-none text-base leading-normal text-color-bulma-100
-                              border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
-                              placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
-                              disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-                              z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
+                                          border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
+                                          placeholder-opacity-100 hover:boder hover:border-goku-40 hover:focus:border-none
+                                          disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+                                          z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
         "pl-12": @left_icon,
         "pr-12": @right_icon,
         "border-chi-chi-100": @error
@@ -127,6 +127,7 @@ defmodule Moon.Components.TextInput do
         {=@value}
         {=@on_focus}
         {=@on_blur}
+        :if={!@label}
       />
 
       <Label text={@label} :if={@label}>

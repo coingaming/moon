@@ -22,5 +22,5 @@ rm -rf assets/static/svgs
 cp -a assets/node_modules/moon-css/example/assets assets/static/svgs
 
 
-mix format
+bash run-formatters.sh
 mix phx.digest
