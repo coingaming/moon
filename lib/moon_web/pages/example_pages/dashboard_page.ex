@@ -267,9 +267,8 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               click="open_new_widget_panel"
             />
 
-            <NewWidgetPanel
+            <NewWidgetPanel :if={@show_new_widget_panel}
               id="new-widget-panel"
-              show={@show_new_widget_panel}
               categories={@widget_categories}
             />
           </div>
