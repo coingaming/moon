@@ -36,13 +36,13 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
       <TopMenu id="top-menu" />
       <div class="flex">
         <LeftMenu id="left-menu" />
-        <div class="w-full p-4">
+        <div class="pl-4 pt-4" style="width: calc(100vw - 260px)">
           <Breadcrumbs breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]} />
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Affiliates"}</Heading>
           {#else}
             <Form
-              class="w-full flex py-2 items-center"
+              class="w-full flex items-center mb-2"
               for={:segment}
               change="save_segment_form_update"
               submit="save_segment_form_submit"
@@ -52,19 +52,19 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
                 <TextInput
                   field={:title}
                   value={@save_segment_form.title}
-                  class="w-full bg-goku-80 h-10 text-3xl font-bold"
+                  class="mt-2 w-full bg-goku-80 h-10 text-3xl font-bold"
                 />
               </div>
               <Button
                 variant="danger"
                 size="small"
-                class="flex-none rounded border-bulma-100 mx-2"
+                class="flex-none rounded border-bulma-100 mt-2"
                 on_click="save_segment_form_cancel"
               >
                 Cancel
               </Button>
-              <Button type="submit" variant="primary" size="small" class="flex-none rounded">
-                <span class="px-2">Apply</span>
+              <Button type="submit" variant="primary" size="small" class="flex-none mt-2 rounded">
+                <span class="px-2">Save</span>
               </Button>
             </Form>
           {/if}

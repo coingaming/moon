@@ -70,42 +70,45 @@ defmodule Moon.ComponentsV2.Table do
           <IconRow font_size="1.2rem" class="mr-4" />
         </LeftToRight>
       </div>
-      <table class="min-w-full text-sm border-collapse border-t border-beerus-100 overflow-scroll">
-        <thead>
-          <tr>
-            <!-- This is used to render overlay on top of a row -->
-            <th class="w-0" />
-            {#for column <- @columns}
-              <th class="border-r last:border-r-0 border-beerus-100">
-                {render_column(column, on_sort, assigns)}
-              </th>
-            {/for}
-          </tr>
-        </thead>
-        <tbody>
-          {#for {item, ind} <- @items |> Enum.with_index()}
-            <tr {...get_row_attrs(item, ind, on_select)}>
+      <div class="w-full overflow-x-scroll">
+        <table class="text-sm border-collapse border-t border-beerus-100">
+          <thead>
+            <tr>
               <!-- This is used to render overlay on top of a row -->
-              <td>
-                {#if "#{item.id}" == "#{assigns.active_item_id}"}
-                  <div class="absolute inset-0 rounded border border-piccolo-100">
-                    <div class="inline-block transform -translate-y-full pb-2">
-                      <slot name="active_item_popover" />
-                    </div>
-                  </div>
-                {#elseif is_nil(assigns.active_item_id)}
-                  <div class="absolute inset-0 rounded group-hover:border group-hover:border-piccolo-100" />
-                {/if}
-              </td>
-              {#for {field, type} <- fields}
-                <td class="border-r last:border-r-0 border-beerus-100">
-                  {render_field(get_value(item, field), type, assigns)}
-                </td>
+              <th class="w-0" />
+              {#for column <- @columns}
+                <th class="border-r last:border-r-0 border-beerus-100">
+                  {render_column(column, on_sort, assigns)}
+                </th>
               {/for}
             </tr>
-          {/for}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {#for {item, ind} <- @items |> Enum.with_index()}
+              <tr {...get_row_attrs(item, ind, on_select)}>
+                <!-- This is used to render overlay on top of a row -->
+                <td>
+                  {#if "#{item.id}" == "#{assigns.active_item_id}"}
+                    <div class="absolute inset-0 rounded border border-piccolo-100">
+                      <div class="inline-block transform -translate-y-full pb-2">
+                        <slot name="active_item_popover" />
+                      </div>
+                    </div>
+                  {#elseif is_nil(assigns.active_item_id)}
+                    <div class="absolute inset-0 rounded group-hover:border group-hover:border-piccolo-100" />
+                  {/if}
+                </td>
+                {#for {field, type} <- fields}
+                  <td class="border-r last:border-r-0 border-beerus-100">
+                    {render_field(get_value(item, field), type, assigns)}
+                  </td>
+                {/for}
+              </tr>
+            {/for}
+          </tbody>
+        </table>
+      </div>
+
     </div>
     """
   end
