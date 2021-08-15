@@ -42,8 +42,8 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5"},
-      {:phoenix_live_view, "~> 0.15.5"},
+      {:phoenix, "~> 1.5.10"},
+      {:phoenix_live_view, "~> 0.15.7"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
       {:phoenix_ecto, "~> 4.0"},
@@ -56,7 +56,7 @@ defmodule Moon.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
       {:asset_import, "~> 0.4"},
-      {:surface, "~> 0.5.0"},
+      {:surface, "~> 0.5.2"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
 
