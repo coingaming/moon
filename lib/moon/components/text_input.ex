@@ -40,10 +40,10 @@ defmodule Moon.Components.TextInput.TextInputInternal do
     ~F"""
     <TextInput
       class={
-        "w-full max-w-full px-4 py-2 mt-2 bg-goku-100 hover:bg-goku-120 appearance-none text-base leading-normal text-color-bulma-100
-                                                                                 border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
-                                                                                 placeholder-opacity-100 disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-                                                                                 z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
+        "w-full max-w-full px-4 py-3 mt-2 top-2/4 flex flex-col flex-grow-0	items-start bg-goku-100 hover:bg-goku-120 my-2 mx-0 appearance-none
+                    text-base leading-normal text-color-bulma-100 box-border order-1 self-stretch static border border-solid border-beerus-100
+                     rounded-lg transition ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50 disabled:cursor-not-allowed
+                    focus:border-piccolo-100 focus:outline-none z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
         "pl-12": @left_icon,
         "pr-12": @right_icon,
         "border-chi-chi-100": @error
