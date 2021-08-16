@@ -41,9 +41,9 @@ defmodule Moon.Components.TextInput.TextInputInternal do
     <TextInput
       class={
         "w-full max-w-full px-4 py-2 mt-2 bg-goku-100 hover:bg-goku-120 appearance-none text-base leading-normal text-color-bulma-100
-                                             border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
-                                             placeholder-opacity-100 disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-                                             z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
+                                                                                 border border-solid border-beerus-100 rounded transition ease-in placeholder-trunks-100
+                                                                                 placeholder-opacity-100 disabled:opacity-50 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+                                                                                 z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
         "pl-12": @left_icon,
         "pr-12": @right_icon,
         "border-chi-chi-100": @error
@@ -66,8 +66,6 @@ defmodule Moon.Components.TextInput do
 
   alias __MODULE__.TextInputInternal
   alias Moon.Components.Label
-  alias Moon.Assets.Icons.IconZoom
-  alias Moon.Assets.Icons.IconEye
 
   prop(field, :atom)
   prop(label, :string)
@@ -95,30 +93,36 @@ defmodule Moon.Components.TextInput do
   prop(rounded, :boolean)
   prop(disabled, :boolean)
   prop(required, :boolean)
-  prop(left_icon, :string)
-  prop(right_icon, :string)
   prop(right_icon_click, :event)
   prop(class, :string)
   prop(without_design, :boolean)
   prop(on_focus, :event)
   prop(on_blur, :event)
 
+  slot left_icon
+  slot right_icon
+
   def render(assigns) do
     ~F"""
     <div class="relative">
       {asset_import(@socket, "js/components/text-input")}
 
-      <IconZoom :if={@left_icon} class="absolute z-10 top-10 left-5" />
-      <IconEye click={@right_icon_click} :if={@right_icon} class="absolute z-10 top-10 right-5" />
+      <div :if={slot_assigned?(:left_icon)} class="absolute z-10 top-10 left-5">
+        <#slot name="left_icon" />
+      </div>
+
+      <div :if={slot_assigned?(:right_icon)} class="absolute z-10 top-10 right-5">
+        <#slot name="right_icon" />
+      </div>
 
       <TextInputInternal
         {=@class}
         {=@field}
-        {=@left_icon}
-        {=@right_icon}
         {=@error}
         {=@placeholder}
         {=@disabled}
+        left_icon={slot_assigned?(:left_icon) == true}
+        right_icon={slot_assigned?(:right_icon) == true}
         {=@value}
         {=@on_focus}
         {=@on_blur}
@@ -129,11 +133,11 @@ defmodule Moon.Components.TextInput do
         <TextInputInternal
           {=@class}
           {=@field}
-          {=@left_icon}
-          {=@right_icon}
           {=@error}
           {=@placeholder}
           {=@disabled}
+          left_icon={slot_assigned?(:left_icon) == true}
+          right_icon={slot_assigned?(:right_icon) == true}
           {=@value}
           {=@on_focus}
           {=@on_blur}

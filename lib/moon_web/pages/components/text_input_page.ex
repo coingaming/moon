@@ -8,6 +8,8 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias Moon.Assets.Icons.IconZoom
+  alias Moon.Assets.Icons.IconEye
 
   @default_user_map %{
     name: "",
@@ -18,18 +20,15 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
-    user_changeset_disabled = User.changeset(%User{}, @default_user_map)
-    user_changeset_right_icon = User.changeset(%User{}, @default_user_map)
-    user_changeset_left_icon = User.changeset(%User{}, @default_user_map)
 
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__,
        user_changeset: user_changeset,
-       user_changeset_disabled: user_changeset_disabled,
-       user_changeset_right_icon: user_changeset_right_icon,
-       user_changeset_left_icon: user_changeset_left_icon
+       user_changeset_disabled: user_changeset,
+       user_changeset_right_icon: user_changeset,
+       user_changeset_left_icon: user_changeset
      )}
   end
 
@@ -130,12 +129,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <TextInput
-              left_icon="true"
-              label="Text Input with Left Icon"
-              placeholder="e.g. username"
-              field={:name}
-            />
+            <TextInput label="Text Input with Left Icon" placeholder="e.g. username" field={:name}><:left_icon><IconZoom /></:left_icon></TextInput>
           </Form>
         </:example>
 
@@ -150,7 +144,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         submit="save_user_changeset"
         autocomplete="off"
       >
-        <TextInput left_icon="true"  label="Text Input" placeholder="e.g. username" field={:name} />
+        <TextInput left_icon="true"  label="Text Input" placeholder="e.g. username" field={:name}>
+          <:left_icon><IconEye /></:left_icon>
+        </TextInput>
       </Form>
         </#CodePreview>
         </:code>
@@ -171,12 +167,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <TextInput
-              right_icon="true"
-              label="Text Input with Right Icon"
-              placeholder="e.g. username"
-              field={:name}
-            />
+            <TextInput label="Text Input with Right Icon" placeholder="e.g. username" field={:name}>
+              <:right_icon><IconEye /></:right_icon>
+            </TextInput>
           </Form>
         </:example>
 
@@ -191,7 +184,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         submit="save_user_changeset"
         autocomplete="off"
       >
-        <TextInput right_icon="true"  label="Text Input" placeholder="e.g. username" field={:name} />
+        <TextInput right_icon="true"  label="Text Input" placeholder="e.g. username" field={:name}>
+          <:right_icon><IconEye /></:right_icon>
+        </TextInput>
       </Form>
         </#CodePreview>
         </:code>
