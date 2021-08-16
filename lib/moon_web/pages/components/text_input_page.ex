@@ -1,35 +1,40 @@
 defmodule MoonWeb.Pages.Components.TextInputPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Form
-  alias Moon.Components.TextInput
-  alias Moon.Components.CodePreview
+  alias Moon.Assets.Icons.IconHamburger
+  alias Moon.Assets.Icons.IconMail
+  alias Moon.Assets.Icons.IconUser
+  alias Moon.Assets.Icons.IconZoom
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.Link
+  alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   @default_user_map %{
     name: "",
-    email: "",
-    gender: "",
-    document_filename: nil
+    email: ""
   }
 
   def mount(params, _session, socket) do
-    user_changeset = User.changeset(%User{}, @default_user_map)
+    user_changeset = User.changeset(%User{gender: "male"}, @default_user_map)
 
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__,
-       user_changeset: user_changeset
+       user_changeset: user_changeset,
+       user_changeset_disabled: user_changeset,
+       user_changeset_two_icons: user_changeset,
+       user_changeset_left_icon: user_changeset
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
+    <TopToDown gap={4}>
       <Heading size={32}>Text Input</Heading>
 
       <p>
@@ -37,6 +42,8 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/text_input_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/components/textInput">React implementation</Link>
       </p>
+
+      {!-- Regular text input --}
 
       <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
@@ -49,12 +56,16 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <TextInput label="Text Input" placeholder="e.g. username" field={:name} />
+            <TopToDown gap={4}>
+              <TextInput label="Username" placeholder="Username" required={true} field={:name} />
+              <TextInput type="email" placeholder="username@example.com" field={:email} />
+            </TopToDown>
           </Form>
         </:example>
 
         <:code>
           <#CodePreview>
+      alias Moon.Autolayouts.TopToDown
       alias Moon.Components.Form
       alias Moon.Components.TextInput
 
@@ -64,14 +75,157 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         submit="save_user_changeset"
         autocomplete="off"
       >
-        <TextInput label="Text Input" placeholder="e.g. username" field={:name} />
+        <TopToDown gap={4}>
+          <TextInput label="Username" placeholder="Username" required={true} field={:name} />
+          <TextInput type="email" placeholder="username@example.com" field={:email} />
+        </TopToDown>
       </Form>
         </#CodePreview>
         </:code>
 
-        <:state>
-          @user_changeset = {inspect(@user_changeset)}
-        </:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
+      </ExampleAndCode>
+
+      {!-- Disabled  text input --}
+
+      The input component in disabled state
+
+      <ExampleAndCode show_state>
+        <:example>
+          <Form
+            for={@user_changeset_disabled}
+            change="update_user_changeset_disabled"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
+            <TextInput disabled={true} label="Text Input" placeholder="e.g. username" field={:name} />
+          </Form>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+      alias Moon.Components.Form
+      alias Moon.Components.TextInput
+
+      <Form
+        for={@user_changeset_disabled}
+        change="update_user_changeset_disabled"
+        submit="save_user_changeset"
+        autocomplete="off"
+      >
+        <TextInput disabled={true} label="Text Input" placeholder="e.g. username" field={:name} />
+      </Form>
+        </#CodePreview>
+        </:code>
+
+        <:state>@user_changeset_disabled = {inspect(@user_changeset_disabled, pretty: true)}</:state>
+      </ExampleAndCode>
+
+      {!-- Text input with icon on the left --}
+      The input component with icon on the left
+
+      <ExampleAndCode show_state>
+        <:example>
+          <Form
+            for={@user_changeset_left_icon}
+            change="update_user_changeset_left_icon"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
+            <TopToDown gap={4}>
+              <TextInput
+                label="Text Input with Left Icon"
+                placeholder="Username"
+                field={:name}
+              >
+                <:left_icon><IconUser /></:left_icon>
+              </TextInput>
+
+              <TextInput
+                placeholder="Email"
+                type="email"
+                field={:email}
+              >
+                <:left_icon><IconMail /></:left_icon>
+              </TextInput>
+            </TopToDown>
+          </Form>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+      alias Moon.Assets.Icons.IconUser
+      alias Moon.Components.Form
+      alias Moon.Components.TextInput
+
+      <Form
+        for={@user_changeset_left_icon}
+        change="update_user_changeset_left_icon"
+        submit="save_user_changeset"
+        autocomplete="off"
+      >
+        <TextInput
+          label="Text Input with Left Icon"
+          placeholder="Username"
+          field={:name}
+        >
+          <:left_icon><IconUser /></:left_icon>
+        </TextInput>
+      </Form>
+        </#CodePreview>
+        </:code>
+
+        <:state>@user_changeset_left_icon = {inspect(@user_changeset_left_icon, pretty: true)}</:state>
+      </ExampleAndCode>
+
+      {!-- Text input with two icons --}
+      Input component with two icons
+
+      <ExampleAndCode show_state>
+        <:example>
+          <Form
+            for={@user_changeset_two_icons}
+            change="update_user_changeset_two_icons"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
+            <TextInput
+              label="Text Inputs with Two Icons"
+              placeholder="e.g. username"
+              field={:name}
+            >
+              <:left_icon><IconZoom /></:left_icon>
+              <:right_icon><IconHamburger /></:right_icon>
+            </TextInput>
+          </Form>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+      alias Moon.Assets.Icons.IconHamburger
+      alias Moon.Assets.Icons.IconZoom
+      alias Moon.Components.Form
+      alias Moon.Components.TextInput
+
+      <Form
+        for={@user_changeset_two_icons}
+        change="user_changeset_two_icons"
+        submit="save_user_changeset"
+        autocomplete="off"
+      >
+        <TextInput
+          label="Text Inputs with Two Icons"
+          placeholder="e.g. username"
+          field={:name}
+        >
+          <:left_icon><IconZoom /></:left_icon>
+          <:right_icon><IconHamburger /></:right_icon>
+        </TextInput>
+      </Form>
+        </#CodePreview>
+        </:code>
+
+        <:state>@user_changeset_two_icons = {inspect(@user_changeset_two_icons, pretty: true)}</:state>
       </ExampleAndCode>
     </TopToDown>
     """
@@ -79,14 +233,55 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def handle_event(
         "update_user_changeset",
+        %{"user" => %{"name" => name, "email" => email}},
+        socket
+      ) do
+    user_changeset =
+      User.changeset(%User{gender: "male"}, %{
+        name: name,
+        email: email
+      })
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event(
+        "update_user_changeset_disabled",
         %{"user" => %{"name" => name}},
         socket
       ) do
     user_changeset =
-      User.changeset(%User{}, %{
+      User.changeset(%User{gender: "male"}, %{
         name: name
       })
 
-    {:noreply, assign(socket, user_changeset: user_changeset)}
+    {:noreply, assign(socket, user_changeset_disabled: user_changeset)}
+  end
+
+  def handle_event(
+        "update_user_changeset_left_icon",
+        %{"user" => %{"name" => name, "email" => email}},
+        socket
+      ) do
+    user_changeset =
+      User.changeset(%User{gender: "male"}, %{
+        name: name,
+        email: email
+      })
+
+    {:noreply, assign(socket, user_changeset_left_icon: user_changeset)}
+  end
+
+  def handle_event(
+        "update_user_changeset_two_icons",
+        %{"user" => %{"name" => name}},
+        socket
+      ) do
+    user_changeset =
+      User.changeset(%User{email: "foo@bar.com", gender: "male"}, %{
+        name: name
+      })
+
+    {:noreply, assign(socket, user_changeset_two_icons: user_changeset)}
   end
 end

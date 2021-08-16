@@ -3,6 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
 
   alias Moon.Components.Form
   alias Moon.Components.TextInput
+  alias Moon.Assets.Icons.IconZoom
+  alias Moon.Assets.Icons.IconCloseRounded
 
   alias __MODULE__.SearchResults
 
@@ -20,15 +22,16 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
         class="max-w-md relative m-auto"
       >
         <TextInput
-          left_icon="icon_zoom"
-          right_icon={should_show_close_search(@search_map) && "icon_close_rounded"}
           right_icon_click="clear_search"
           placeholder="Search for dashboard, segments and more"
           field={:search_text}
           value={@search_map.search_text}
           on_focus="activate_search"
           class="bg-goku-100 h-10 border-transparent"
-        />
+        >
+          <:left_icon><IconZoom /></:left_icon>
+          <:right_icon :if={should_show_close_search(@search_map)}><IconCloseRounded /></:right_icon>
+        </TextInput>
         <SearchResults
           id="search"
           close="deactivate_search"
