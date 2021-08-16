@@ -9,7 +9,6 @@ defmodule Moon.Components.DropdownMultiFilter do
   alias Moon.Components.Divider
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Assets.Icons.IconZoom
-  alias Moon.Assets.Icons.IconCloseRounded
 
   prop show_filter, :boolean, required: true
   prop search_text, :string
