@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <ExampleAndCode>
         <:example>
           <div class="flex justify-center">
-            <DropdownMenuButton show={@show_options} placement="bottom-left" on_toggle="toggle_options">
+            <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
               <IconMore />
 
               <:menu>
@@ -51,7 +51,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
         <DropdownMenuButton
           show={@show_options}
-          placement="bottom-left"
+          placement="bottom-end"
           on_toggle="toggle_options"
         >
           <IconMore />
