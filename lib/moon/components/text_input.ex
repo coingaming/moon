@@ -30,9 +30,7 @@ defmodule Moon.Components.TextInput.TextInputInternal do
   prop(required, :boolean)
   prop(left_icon, :string)
   prop(right_icon, :string)
-  prop(right_icon_click, :event)
   prop(class, :string)
-  prop(without_design, :boolean)
   prop(on_focus, :event)
   prop(on_blur, :event)
 
@@ -40,18 +38,20 @@ defmodule Moon.Components.TextInput.TextInputInternal do
     ~F"""
     <TextInput
       class={
-        "w-full max-w-full px-4 py-3 mt-2 top-2/4 flex flex-col flex-grow-0	items-start bg-goku-100 hover:bg-goku-120 my-2 mx-0 appearance-none
-                    text-base leading-normal text-color-bulma-100 box-border order-1 self-stretch static border border-solid border-beerus-100
-                     rounded-lg transition ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50 disabled:cursor-not-allowed
-                    focus:border-piccolo-100 focus:outline-none z-0 relative no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
-        "pl-12": @left_icon,
-        "pr-12": @right_icon,
+        "w-full h-12 max-w-full px-4 bg-goku-100 hover:bg-goku-120 text-base leading-normal
+                    text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
+                    ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
+                    disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+                    no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+        "pl-11": @left_icon,
+        "pr-11": @right_icon,
         "border-chi-chi-100": @error
       }
       field={@field}
       opts={[
         placeholder: @placeholder,
-        disabled: @disabled
+        disabled: @disabled,
+        required: @required
       ]}
       value={@value}
       focus={@on_focus}
@@ -93,9 +93,7 @@ defmodule Moon.Components.TextInput do
   prop(rounded, :boolean)
   prop(disabled, :boolean)
   prop(required, :boolean)
-  prop(right_icon_click, :event)
   prop(class, :string)
-  prop(without_design, :boolean)
   prop(on_focus, :event)
   prop(on_blur, :event)
 
@@ -104,46 +102,72 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     ~F"""
-    <div class="relative">
-      {asset_import(@socket, "js/components/text-input")}
+    {asset_import(@socket, "js/components/text-input")}
 
-      <div :if={slot_assigned?(:left_icon)} class="absolute z-10 top-10 left-5">
-        <#slot name="left_icon" />
-      </div>
+    {#if @label}
+      <Label text={@label}>
+        <div class="mt-2 relative">
+          <div
+            :if={slot_assigned?(:left_icon)}
+            class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100"
+          >
+            <#slot name="left_icon" />
+          </div>
 
-      <div :if={slot_assigned?(:right_icon)} class="absolute z-10 top-10 right-5">
-        <#slot name="right_icon" />
-      </div>
+          <div
+            :if={slot_assigned?(:right_icon)}
+            class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100"
+          >
+            <#slot name="right_icon" />
+          </div>
 
-      <TextInputInternal
-        {=@class}
-        {=@field}
-        {=@error}
-        {=@placeholder}
-        {=@disabled}
-        left_icon={slot_assigned?(:left_icon) == true}
-        right_icon={slot_assigned?(:right_icon) == true}
-        {=@value}
-        {=@on_focus}
-        {=@on_blur}
-        :if={!@label}
-      />
+          <TextInputInternal
+            {=@class}
+            {=@field}
+            {=@error}
+            {=@placeholder}
+            {=@disabled}
+            {=@required}
+            left_icon={slot_assigned?(:left_icon)}
+            right_icon={slot_assigned?(:right_icon)}
+            {=@value}
+            {=@on_focus}
+            {=@on_blur}
+          />
+        </div>
+      </Label>
+    {#else}
+      <div class="relative">
+        <div
+          :if={slot_assigned?(:left_icon)}
+          class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100"
+        >
+          <#slot name="left_icon" />
+        </div>
 
-      <Label text={@label} :if={@label}>
+        <div
+          :if={slot_assigned?(:right_icon)}
+          class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100"
+        >
+          <#slot name="right_icon" />
+        </div>
+
         <TextInputInternal
           {=@class}
           {=@field}
           {=@error}
           {=@placeholder}
           {=@disabled}
-          left_icon={slot_assigned?(:left_icon) == true}
-          right_icon={slot_assigned?(:right_icon) == true}
+          {=@required}
+          left_icon={slot_assigned?(:left_icon)}
+          right_icon={slot_assigned?(:right_icon)}
           {=@value}
           {=@on_focus}
           {=@on_blur}
+          :if={!@label}
         />
-      </Label>
-    </div>
+      </div>
+    {/if}
     """
   end
 end
