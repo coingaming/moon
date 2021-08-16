@@ -1,8 +1,11 @@
 defmodule MoonWeb.Pages.Components.ButtonPage do
   use MoonWeb, :live_view
   alias Moon.Components.Button
-  alias Moon.Components.Inline
   alias Moon.Components.CodePreview
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias MoonWeb.Components.ExampleAndCode
 
   def mount(params, _session, socket) do
     {:ok,
@@ -11,220 +14,149 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
   def render(assigns) do
     ~F"""
-    <h1>Button</h1>
+    <TopToDown>
+      <Heading size={32}>Button</Heading>
+      <p>
+        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=305%3A2562">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/button_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/button">React implementation</Link>
+      </p>
 
-    <h2>Variants</h2>
+      <Heading size={18} class="mt-4" is_regular>Variants</Heading>
 
-    <h3>Primary</h3>
-    To be used where the the button would be the main call to action on the page.
-    <Inline>
-      <Button variant="primary">Default</Button>
-      <Button variant="primary" mock_state="hover">
-        Hover
-      </Button>
-      <Button variant="primary" mock_state="active">
-        Focus
-      </Button>
-      <Button variant="primary" disabled>
-        Disabled
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button variant="primary">Default</Button>
-        <Button variant="primary" mock_state="hover">
-          Hover
-        </Button>
-        <Button variant="primary" mock_state="active">
-          Focus
-        </Button>
-        <Button variant="primary" disabled>
-          Disabled
-        </Button>
-      </Inline>
-    </#CodePreview>
+      <Heading size={24} class="mt-4" is_regular>Button Fill</Heading>
 
-    <h3>Secondary</h3>
-    To be used where the the button would be the main call to action on the page.
-    <Inline>
-      <Button variant="secondary">Default</Button>
-      <Button variant="secondary" mock_state="hover">
-        Hover
-      </Button>
-      <Button variant="secondary" mock_state="active">
-        Focus
-      </Button>
-      <Button variant="secondary" disabled>
-        Disabled
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button variant="secondary">Default</Button>
-        <Button variant="secondary" mock_state="hover">
-          Hover
-        </Button>
-        <Button variant="secondary" mock_state="active">
-          Focus
-        </Button>
-        <Button variant="secondary" disabled>
-          Disabled
-        </Button>
-      </Inline>
-    </#CodePreview>
+      To be used where the the button would be the main call to action on the page.
+      <ExampleAndCode>
+        <:example>
+          <Button variant="fill">Fill</Button>
+        </:example>
 
-    <h3>Tertiary</h3>
-    To be used where the the button would be a optional call to action.
-    <Inline>
-      <Button variant="tertiary">Default</Button>
-      <Button variant="tertiary" mock_state="hover">
-        Hover
-      </Button>
-      <Button variant="tertiary" mock_state="active">
-        Focus
-      </Button>
-      <Button variant="tertiary" disabled>
-        Disabled
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button variant="tertiary">Default</Button>
-        <Button variant="tertiary" mock_state="hover">
-          Hover
-        </Button>
-        <Button variant="tertiary" mock_state="active">
-          Focus
-        </Button>
-        <Button variant="tertiary" disabled>
-          Disabled
-        </Button>
-      </Inline>
-    </#CodePreview>
+        <:code>
+          <#CodePreview>
+        <Button variant="fill">Fill</Button>
+        </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <h3>Highlight</h3>
-    To be used where the the button would be a optional call to action.
-    <Inline>
-      <Button variant="highlight">Default</Button>
-      <Button variant="highlight" mock_state="hover">
-        Hover
-      </Button>
-      <Button variant="highlight" mock_state="active">
-        Focus
-      </Button>
-      <Button variant="highlight" disabled>
-        Disabled
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button variant="highlight">Default</Button>
-        <Button variant="highlight" mock_state="hover">
-          Hover
-        </Button>
-        <Button variant="highlight" mock_state="active">
-          Focus
-        </Button>
-        <Button variant="highlight" disabled>
-          Disabled
-        </Button>
-      </Inline>
-    </#CodePreview>
+      <Heading size={24} class="mt-4" is_regular>Button Outline</Heading>
+      To be used where the the button would be a optional call to action.
+      <ExampleAndCode>
+        <:example>
+          <Button variant="outline">Outline</Button>
+        </:example>
 
-    <h3>Default</h3>
-    To be used where the the button would be a default call to action.
-    <Inline>
-      <Button>Default</Button>
-      <Button mock_state="hover">
-        Hover
-      </Button>
-      <Button mock_state="active">
-        Focus
-      </Button>
-      <Button disabled>
-        Disabled
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button>Default</Button>
-        <Button mock_state="hover">
-          Hover
-        </Button>
-        <Button mock_state="active">
-          Focus
-        </Button>
-        <Button disabled>
-          Disabled
-        </Button>
-      </Inline>
-    </#CodePreview>
+        <:code>
+          <#CodePreview>
+        <Button variant="outline">Outline</Button>
+        </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <h2>Sizing</h2>
+      <Heading size={24} class="mt-4" is_regular>Link</Heading>
+      To be used where the the button is a link
+      <ExampleAndCode>
+        <:example>
+          <Button variant="link">Link</Button>
+        </:example>
 
-    <h3>Sizes</h3>
-    <Inline>
-      <Button variant="primary" size="xsmall">
+        <:code>
+          <#CodePreview>
+        <Button variant="link">Link</Button>
+        </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+
+      <Heading size={24} class="mt-4" is_regular>Link+Icon</Heading>
+      To be used where the the button is a link
+      <ExampleAndCode>
+        <:example>
+          <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+        <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
+        </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+
+      <Heading size={24} class="mt-4" is_regular>Button Sizes</Heading>
+      <ExampleAndCode>
+        <:example>
+          Fill
+          <Button variant="fill" size="xsmall">
+            Xsmall
+          </Button>
+          <Button variant="fill" size="small">
+            Small
+          </Button>
+
+          <div class="my-8" />
+
+          Outline
+          <Button variant="outline" size="xsmall">
+            Xsmall
+          </Button>
+          <Button variant="outline" size="small">
+            Small
+          </Button>
+
+          <div class="my-8" />
+
+          Link
+          <Button variant="link" size="xsmall">
+            Xsmall
+          </Button>
+          <Button variant="link" size="small">
+            Small
+          </Button>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+        <Button variant="fill" size="xsmall">
         Xsmall
-      </Button>
-      <Button variant="primary" size="small">
+        </Button>
+        <Button variant="fill" size="small">
         Small
-      </Button>
-      <Button variant="primary" size="medium">
-        Medium
-      </Button>
-      <Button variant="primary" size="large">
-        Large
-      </Button>
-    </Inline>
-    <#CodePreview>
-      <Inline>
-        <Button variant="primary" size="xsmall">
+        </Button>
+
+        <Button variant="outline" size="xsmall">
           Xsmall
         </Button>
-        <Button variant="primary" size="small">
+        <Button variant="outline" size="small">
           Small
         </Button>
-        <Button variant="primary" size="medium">
-          Medium
-        </Button>
-        <Button variant="primary" size="large">
-          Large
-        </Button>
-      </Inline>
-    </#CodePreview>
 
-    <h3>Full width</h3>
-    <Button variant="secondary" full_width>
-      Full Width
-    </Button>
-    <#CodePreview>
-      <Button variant="secondary" full_width>
-        Full Width
-      </Button>
-    </#CodePreview>
-
-    <h3>Rounded</h3>
-    <p>True by default</p>
-    <Inline>
-      <Button variant="primary" rounded>
-        Rounded
-      </Button>
-      <Button variant="primary" rounded={false}>
-        Not Rounded
-      </Button>
-    </Inline>
-
-    <#CodePreview>
-      <Inline>
-        <Button variant="primary" rounded>
-          Rounded
+        <Button variant="link" size="xsmall">
+          Xsmall
         </Button>
-        <Button variant="primary" rounded={false}>
-          Not Rounded
+        <Button variant="link" size="small">
+          Small
         </Button>
-      </Inline>
-    </#CodePreview>
+      </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+
+      <Heading size={24} class="mt-4" is_regular>Full width</Heading>
+      <ExampleAndCode>
+        <:example>
+          <Button variant="fill" full_width="true">
+            Full Width
+          </Button>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+          <Button variant="fill" full_width="true">
+            Full Width
+          </Button>
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+
+    </TopToDown>
     """
   end
 end
