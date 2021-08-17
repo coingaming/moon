@@ -20,7 +20,7 @@ defmodule Moon.Components.PopoverV2 do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
 
-    <div class="relative">
+    <div class="relative inline-block">
       <#slot />
       <div :if={@show} :on-click={@on_close} class="fixed inset-0 z-40" />
 
@@ -55,7 +55,7 @@ defmodule Moon.Components.PopoverV2 do
 
         {#match "right"}
           <div :if={@show} class="absolute left-0 top-0 right-0">
-            <div class="transform translate-x-full -translate-y-1/2 pl-2">
+            <div class="transform translate-x-full -translate-y-1/3 pl-2">
               <#slot name="content" />
             </div>
           </div>
@@ -99,7 +99,7 @@ defmodule Moon.Components.PopoverV2 do
 
         {#match "left"}
           <div :if={@show} class="absolute left-0 bottom-0 right-0">
-            <div class="absolute transform -translate-x-full -translate-y-1/2">
+            <div class="absolute transform -translate-x-full -translate-y-1/3">
               <div class="top-0 right-0 pr-2">
                 <#slot name="content" />
               </div>
