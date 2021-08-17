@@ -3,6 +3,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
 
   alias Moon.Components.{PopoverV2, CheckboxMultiselectV2, Form, TextInput, Button, Divider}
   alias Moon.Autolayouts.{LeftToRight}
+  alias Moon.Assets.Icons.IconZoom
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true
@@ -27,12 +28,13 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
           <div :if={@on_search != nil} class="p-3">
             <Form for={:search} change={@on_search} autocomplete="off">
               <TextInput
-                left_icon="icon_zoom"
                 placeholder="Type here..."
                 field={:search_text}
                 value={@search_text}
                 class="border-none bg-goku-100"
-              />
+              >
+                <:left_icon><IconZoom /></:left_icon>
+              </TextInput>
             </Form>
           </div>
           <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar", "pt-4": @on_search == nil} }>
