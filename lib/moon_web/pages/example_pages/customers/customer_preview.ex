@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
       <:options>
         <IconUser font_size="1.5rem" class="mr-4" />
         <IconShare font_size="1.5rem" />
-        <Divider orientation="vertical" class="mx-4"/>
+        <Divider orientation="vertical" class="mx-4" />
       </:options>
       <:content>
         <LeftToRight class="mb-4 flex-wrap">
