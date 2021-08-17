@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             autocomplete="off"
           >
             <TopToDown gap={4}>
-              <TextInput label="Username" placeholder="Username" required={true} field={:name} />
+              <TextInput label="Username" placeholder="Username" required field={:name} />
               <TextInput type="email" placeholder="username@example.com" field={:email} />
             </TopToDown>
           </Form>
@@ -98,7 +98,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <TextInput disabled={true} label="Text Input" placeholder="e.g. username" field={:name} />
+            <TextInput disabled label="Text Input" placeholder="e.g. username" field={:name} />
           </Form>
         </:example>
 
@@ -133,19 +133,11 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             autocomplete="off"
           >
             <TopToDown gap={4}>
-              <TextInput
-                label="Text Input with Left Icon"
-                placeholder="Username"
-                field={:name}
-              >
+              <TextInput label="Text Input with Left Icon" placeholder="Username" field={:name}>
                 <:left_icon><IconUser /></:left_icon>
               </TextInput>
 
-              <TextInput
-                placeholder="Email"
-                type="email"
-                field={:email}
-              >
+              <TextInput placeholder="Email" type="email" field={:email}>
                 <:left_icon><IconMail /></:left_icon>
               </TextInput>
             </TopToDown>
@@ -189,11 +181,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <TextInput
-              label="Text Inputs with Two Icons"
-              placeholder="e.g. username"
-              field={:name}
-            >
+            <TextInput label="Text Inputs with Two Icons" placeholder="e.g. username" field={:name}>
               <:left_icon><IconZoom /></:left_icon>
               <:right_icon><IconHamburger /></:right_icon>
             </TextInput>

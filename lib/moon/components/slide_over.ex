@@ -13,10 +13,7 @@ defmodule Moon.Components.SlideOver do
   def render(assigns) do
     ~F"""
     {!-- Overlay --}
-    <div
-      :on-click={@on_close}
-      class="fixed inset-0 z-20"
-    />
+    <div :on-click={@on_close} class="fixed inset-0 z-20" />
     <div class="w-screen max-w-2xl fixed top-0 right-0 bottom-0 w-1/2 p-6 z-20 bg-gohan-100 shadow overflow-y-auto">
       {!-- SlideOver Header --}
       <div class="flex items-center justify-between mb-6">
