@@ -88,6 +88,7 @@ end
 defmodule Moon.ComponentsV2.DropdownMultiFilter do
   use Moon.StatefulComponent
 
+  alias Moon.Components.{Tooltip}
   alias Moon.ComponentsV2.DropdownMultiFilterView
 
   data show_filter, :boolean, default: false
@@ -105,6 +106,11 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   slot default, required: true, args: [:toggle_filter, :is_open]
 
   def render(assigns) do
+    tooltip_text =
+      assigns.active_items
+      |> Enum.map(&(&1.label))
+      |> Enum.join(", ")
+
     can_apply_filter =
       selection_modified?(
         assigns.selected_items,
@@ -124,10 +130,19 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       on_select="select_filter_item"
       on_close="toggle_filter"
     >
-      <#slot :args={
-        is_open: @show_filter,
-        toggle_filter: %{name: "toggle_filter", target: @myself}
-      } />
+      {#if length(@active_items) > 0}
+        <Tooltip placement="top" text={tooltip_text}>
+          <#slot :args={
+            is_open: @show_filter,
+            toggle_filter: %{name: "toggle_filter", target: @myself}
+          } />
+        </Tooltip>
+      {#else}
+        <#slot :args={
+          is_open: @show_filter,
+          toggle_filter: %{name: "toggle_filter", target: @myself}
+        } />
+      {/if}
     </DropdownMultiFilterView>
     """
   end
