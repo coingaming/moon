@@ -2,6 +2,7 @@ const plugin = require('tailwindcss/plugin')
 const invalidPlugin = require('./tailwind/variants/invalid')
 
 module.exports = {
+  mode: "jit",
   purge: [
     '../lib/**/*.ex',
     '../lib/**/*.leex',
