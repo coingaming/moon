@@ -28,6 +28,7 @@ defmodule Moon.Components.Tooltip do
             </div>
           </div>
 
+        {!-- TODO: right alignment is not perfect, need to find an another way --}
         {#match "right"}
           <div class="absolute left-0 top-0 right-0">
             <div class="flex items-center transform translate-x-full -translate-y-1/4">
@@ -52,6 +53,7 @@ defmodule Moon.Components.Tooltip do
             </div>
           </div>
 
+        {!-- TODO: left alignment is not perfect, need to find an another way --}
         {#match "left"}
           <div class="absolute left-0 bottom-0 right-0">
             <div class="absolute transform -translate-x-full -translate-y-full">
