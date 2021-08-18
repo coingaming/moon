@@ -119,6 +119,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/components/text"}>Text</Link>
             <Link to={"/#{@theme_name}/components/text_input"}>Text input</Link>
             <Link to={"/#{@theme_name}/components/toast"}>Toast</Link>
+            <Link to={"/#{@theme_name}/components/tooltip"}>Tooltip</Link>
 
             <Heading size={20}>Charts</Heading>
             <Link to={"/#{@theme_name}/charts/line-chart"}>LineChart</Link>
