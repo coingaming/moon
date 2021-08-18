@@ -30,7 +30,7 @@ defmodule Moon.Components.Tooltip do
 
         {!-- TODO: right alignment is not perfect, need to find an another way --}
         {#match "right"}
-          <div class="absolute left-0 top-0 right-0">
+          <div x-cloak x-show="tooltip" class="absolute left-0 top-0 right-0">
             <div class="flex items-center transform translate-x-full -translate-y-1/4">
               <div class="p-1 overflow-hidden">
                 <div class="h-4 w-4 bg-gohan-100 transform -rotate-45 translate-x-1/2 shadow" />
@@ -55,7 +55,7 @@ defmodule Moon.Components.Tooltip do
 
         {!-- TODO: left alignment is not perfect, need to find an another way --}
         {#match "left"}
-          <div class="absolute left-0 bottom-0 right-0">
+          <div x-cloak x-show="tooltip" class="absolute left-0 bottom-0 right-0">
             <div class="absolute transform -translate-x-full -translate-y-full">
               <div class="flex items-center top-0 right-0">
                 <div class="w-48 p-4 text-sm text-center bg-gohan-100 shadow rounded">
