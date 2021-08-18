@@ -104,14 +104,14 @@ module.exports = {
     },
   },
   variants: {
-    width: ['responsive', 'hover', 'focus'],
-    boxShadow: ["responsive", "hover", "focus", "invalid"],
-    backgroundColor: ["responsive", "hover", "focus", "invalid"],
-    borderColor: ["responsive", "hover", "focus", "invalid"],
     dataError: ["focus"],
     extend: {
       scale: ['group-hover'],
-      borderWidth: ['group-hover', 'last']
+      borderWidth: ['group-hover', 'last'],
+      boxShadow: ['invalid'],
+      backgroundColor: ['invalid'],
+      borderColor: ['invalid'],
+      width: ['hover', 'focus']
     },
   },
   plugins: [
