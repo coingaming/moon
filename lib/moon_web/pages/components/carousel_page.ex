@@ -2,6 +2,8 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   use MoonWeb, :live_view
   alias Moon.Components.Carousel
   alias Moon.Components.CodePreview
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
 
   def mount(params, _session, socket) do
     {:ok,
@@ -10,37 +12,43 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
   def render(assigns) do
     ~F"""
-    <h1>Carousel</h1>
+    <TopToDown>
+      <Heading size={32}>Carousel</Heading>
 
-    <p>
-      An interactive extension of the Reel component to cycle through content.
-    </p>
+      <p>
+        An interactive extension of the Reel component to cycle through content.
+      </p>
 
-    <div>
-      <style>
-        .item {
-        display: inline-block;
-        background-color: var(--color--gohan-100);
-        padding: 300px;
-        margin-right: 20px;
-        scroll-snap-align: start;
-        }
-      </style>
-      <Carousel>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-      </Carousel>
-    </div>
+      <div>
+        <Carousel>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+        </Carousel>
+      </div>
 
-    <#CodePreview>
+      <Heading size={16}>Source</Heading>
+      <#CodePreview>
+    <Carousel>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+    </Carousel>
     </#CodePreview>
+    </TopToDown>
     """
   end
 end

@@ -8,8 +8,8 @@ defmodule Moon.Components.Carousel do
     ~F"""
     {asset_import(@socket, "js/components/carousel")}
 
-    <div class={"moon-carousel #{@class}"}>
-      <div class="carousel-inner">
+    <div class={"overflow-hidden overflow-x-scroll scroll-snap-x-mandatory w-full #{@class}"}>
+      <div class="w-auto whitespace-nowrap">
         <#slot />
       </div>
     </div>
