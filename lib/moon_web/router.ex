@@ -50,6 +50,7 @@ defmodule MoonWeb.Router do
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
       live "/components/link", MoonWeb.Pages.Components.LinkPage
       live "/components/pagination", MoonWeb.Pages.Components.PaginationPage
+      live "/components/popover", MoonWeb.Pages.Components.PopoverPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
       live "/components/sidebar", MoonWeb.Pages.Components.SidebarPage
       live "/components/stack", MoonWeb.Pages.Components.StackPage
