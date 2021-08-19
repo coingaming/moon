@@ -109,13 +109,15 @@ module.exports = {
       scale: ['group-hover'],
       borderWidth: ['group-hover', 'last'],
       boxShadow: ['invalid'],
-      backgroundColor: ['invalid'],
-      borderColor: ['invalid'],
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
+      textColor: ['disabled'],
       width: ['hover', 'focus']
     },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
     plugin(invalidPlugin),
     plugin(({ addUtilities }) => {
       addUtilities({

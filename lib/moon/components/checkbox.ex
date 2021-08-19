@@ -3,6 +3,7 @@ defmodule Moon.Components.Checkbox do
 
   prop(on_click, :event)
   prop(checked, :boolean)
+  prop(disabled, :boolean)
   prop(class, :string)
   slot(default)
 
@@ -10,8 +11,13 @@ defmodule Moon.Components.Checkbox do
     ~F"""
     {asset_import(@socket, "js/components/checkbox")}
 
-    <label class={"moon-checkbox #{@class}"}>
-      <input class="moon-checkbox-input" type="checkbox" checked={@checked}>
+    <label class={"inline-flex items-center mt-3 #{@class}"}>
+      <input
+        type="checkbox"
+        checked={@checked}
+        disabled={@disabled}
+        class="border disabled:text-hit-120 disabled:border-trunks-100 border-solid border-beerus-100 text-piccolo-100 focus:ring-transparent"
+      />
       <span class="moon-checkbox-caption">
         <#slot />
       </span>
