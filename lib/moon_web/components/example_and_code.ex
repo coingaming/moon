@@ -11,14 +11,14 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~F"""
-    <div class={"rounded-lg bg-gohan-100 hover:bg-background p-0 #{@class}"}>
+    <div class={"rounded-lg bg-gohan-100 p-0 #{@class}"}>
       <div class={"grid grid-cols-1", "sm:grid-cols-2": @layout == "grid"}>
         <div class="p-6">
           <#slot name="example">
             Example not defined
           </#slot>
         </div>
-        <div class={"border-beerus-100", "sm:border-l": @layout == "grid", "border-t": @layout == "column"}>
+        <div class={"border-beerus-100 bg-piccolo-100 text-hit-80 justify-around", "sm:border-l": @layout == "grid", "border-t": @layout == "column"}>
           <#slot name="code">
             Example code not defined
           </#slot>
