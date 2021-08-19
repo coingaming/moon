@@ -20,7 +20,18 @@ defmodule Moon.Components.Avatar do
     ~F"""
     {asset_import(@socket, "js/components/avatar")}
 
-    <div class={"moon-avatar #{@class}"} style={style(assigns)} data-size={@size}>
+    <div
+      class={
+        "rounded-full bg-cover justify-center flex font-semibold items-center
+          overflow-hidden uppercase #{@class}",
+        "text-xs h-6 w-6": @size == "xsmall",
+        "text-sm h-8 w-8": @size == "small",
+        "text-base h-10 w-10": @size == "medium",
+        "text-lg h-12 w-12": @size == "large"
+      }
+      style={style(assigns)}
+      data-size={@size}
+    >
       <span :if={@name && !@image_url}>{@name}</span>
       <IconUser color={@color} :if={!@name && !@image_url} />
     </div>
