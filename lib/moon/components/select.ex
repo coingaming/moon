@@ -3,20 +3,20 @@ defmodule Moon.Components.Select do
 
   alias Moon.Components.Label
 
-  prop(field, :atom)
-  prop(label, :string)
-  prop(options, :any, default: [])
-  prop(value, :any)
-  prop(prompt, :string)
-  prop(error, :string)
-  prop(rounded, :boolean, default: true)
-  prop(disabled, :boolean)
-  prop(required, :boolean)
-  prop(flex, :boolean)
-  prop(input_grow, :boolean)
-  prop(icon, :string)
-  prop(full_width, :boolean)
-  prop(class, :string)
+  prop field, :atom
+  prop label, :string
+  prop options, :any, default: []
+  prop value, :any
+  prop prompt, :string
+  prop error, :string
+  prop rounded, :boolean, default: true
+  prop disabled, :boolean
+  prop required, :boolean
+  prop flex, :boolean
+  prop input_grow, :boolean
+  prop icon, :string
+  prop full_width, :boolean
+  prop class, :string
 
   def render(assigns) do
     options_with_selected =
@@ -33,7 +33,14 @@ defmodule Moon.Components.Select do
     {asset_import(@socket, "js/components/select")}
 
     <Surface.Components.Form.Select
-      class={"moon-select #{@class}", rounded: @rounded}
+      class={
+        "text-trunks-100 pr-3.5 rounded-md bg-no-repeat
+         hover:cursor-pointer focus:cursor-pointer border border-solid
+         border-beerus-100 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none #{
+          @class
+        }",
+        rounded: @rounded
+      }
       field={@field}
       options={options_with_selected}
       opts={[prompt: @prompt]}
@@ -42,7 +49,14 @@ defmodule Moon.Components.Select do
 
     <Label text={@label} :if={@label}>
       <Surface.Components.Form.Select
-        class={"moon-select mt-2 #{@class}", rounded: @rounded}
+        class={
+          "text-trunks-100 pr-3.5 rounded-md bg-no-repeat
+           hover:cursor-pointer focus:cursor-pointer border border-solid
+           border-beerus-100 disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none #{
+            @class
+          }",
+          rounded: @rounded
+        }
         field={@field}
         options={options_with_selected}
         opts={[prompt: @prompt, disabled: @disabled]}
