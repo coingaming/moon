@@ -155,7 +155,6 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
-
     </TopToDown>
     """
   end

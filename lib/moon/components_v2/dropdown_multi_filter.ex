@@ -110,7 +110,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def render(assigns) do
     tooltip_text =
       assigns.active_items
-      |> Enum.map(&(&1.label))
+      |> Enum.map(& &1.label)
       |> Enum.join(", ")
 
     can_apply_filter =
