@@ -18,7 +18,11 @@ defmodule MoonWeb.Components.ExampleAndCode do
             Example not defined
           </#slot>
         </div>
-        <div class={"border-beerus-100 bg-piccolo-100 text-hit-80 justify-around", "sm:border-l": @layout == "grid", "border-t": @layout == "column"}>
+        <div class={
+          "border-beerus-100 bg-piccolo-100 text-hit-80 justify-around",
+          "sm:border-l": @layout == "grid",
+          "border-t": @layout == "column"
+        }>
           <#slot name="code">
             Example code not defined
           </#slot>

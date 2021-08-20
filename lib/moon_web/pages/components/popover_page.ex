@@ -57,14 +57,22 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
       </Link>
 
       {#for placement <- [
-        "top-start", "top", "top-end",
-        "right-start", "right", "right-end",
-        "bottom-start", "bottom", "bottom-end",
-        "left-start", "left", "left-end"
-      ]}
+          "top-start",
+          "top",
+          "top-end",
+          "right-start",
+          "right",
+          "right-end",
+          "bottom-start",
+          "bottom",
+          "bottom-end",
+          "left-start",
+          "left",
+          "left-end"
+        ]}
         <ExampleAndCode class="my-12">
           <:example>
-              <PopoverExample id={placement} placement={placement}/>
+            <PopoverExample id={placement} placement={placement} />
           </:example>
           <:code>
             <#CodePreview>

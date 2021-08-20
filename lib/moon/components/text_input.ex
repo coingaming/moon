@@ -38,10 +38,10 @@ defmodule Moon.Components.TextInput.TextInputInternal do
     <TextInput
       class={
         "w-full h-12 max-w-full px-4 bg-goku-100 hover:bg-goku-120 text-base leading-normal
-                     text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
-                     ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
-                     disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-                     no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+         text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
+         ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
+         disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+         no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
         "pl-11": @left_icon,
         "pr-11": @right_icon,
         "border-chi-chi-100": @error
