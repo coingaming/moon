@@ -28,6 +28,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
        user_changeset: user_changeset,
        user_changeset_disabled: user_changeset,
        user_changeset_two_icons: user_changeset,
+       user_changeset_two_icons_with_events: user_changeset,
        user_changeset_left_icon: user_changeset
      )}
   end
@@ -215,6 +216,57 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
         <:state>@user_changeset_two_icons = {inspect(@user_changeset_two_icons, pretty: true)}</:state>
       </ExampleAndCode>
+
+      {!-- Text input with two icons with events --}
+      Input component with two icons with events
+
+      <ExampleAndCode show_state>
+        <:example>
+          <Form
+            for={@user_changeset_two_icons_with_events}
+            change="update_user_changeset_two_icons_with_events"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
+            <TextInput
+              label="Text Inputs with Two Icons with Events"
+              placeholder="e.g. username"
+              field={:name}
+            >
+              <:left_icon><IconZoom click="clear_search" /></:left_icon>
+              <:right_icon><IconHamburger click="clear_search" /></:right_icon>
+            </TextInput>
+          </Form>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+        alias Moon.Assets.Icons.IconHamburger
+        alias Moon.Assets.Icons.IconZoom
+        alias Moon.Components.Form
+        alias Moon.Components.TextInput
+
+        <Form
+          for={@user_changeset_two_icons}
+          change="update_user_changeset_two_icons_with_events"
+          submit="save_user_changeset"
+          autocomplete="off"
+        >
+          <TextInput
+            label="Text Inputs with Two Icons"
+            placeholder="e.g. username"
+            field={:name}
+
+          >
+            <:left_icon><IconZoom click="clear_search" /></:left_icon>
+            <:right_icon><IconHamburger click="clear_search" /></:right_icon>
+          </TextInput>
+        </Form>
+          </#CodePreview>
+        </:code>
+
+        <:state>@user_changeset_two_icons_with_events = {inspect(@user_changeset_two_icons_with_events, pretty: true)}</:state>
+      </ExampleAndCode>
     </TopToDown>
     """
   end
@@ -271,5 +323,27 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       })
 
     {:noreply, assign(socket, user_changeset_two_icons: user_changeset)}
+  end
+
+  def handle_event(
+        "update_user_changeset_two_icons_with_events",
+        %{"user" => %{"name" => name}},
+        socket
+      ) do
+    user_changeset =
+      User.changeset(%User{email: "foo@bar.com", gender: "male"}, %{
+        name: name
+      })
+
+    {:noreply, assign(socket, user_changeset_two_icons_with_events: user_changeset)}
+  end
+
+  def handle_event("clear_search", _, socket) do
+    user_changeset =
+      User.changeset(%User{email: "", gender: ""}, %{
+        name: ""
+      })
+
+    {:noreply, assign(socket, user_changeset_two_icons_with_events: user_changeset)}
   end
 end

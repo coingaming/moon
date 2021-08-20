@@ -3,39 +3,40 @@ defmodule Moon.Components.Button do
 
   alias Moon.Assets.Icon
 
-  prop(href, :string)
+  prop href, :string
 
-  prop(variant, :string, values: ["fill", "outline", "link"])
+  prop variant, :string, values: ["fill", "outline", "link"]
 
-  prop(size, :string, values: ["xsmall", "small"])
-  prop(full_width, :boolean)
-  prop(progress, :boolean)
-  prop(oops, :boolean)
-  prop(success, :boolean)
-  prop(pulse, :boolean)
-  prop(disabled, :boolean)
-  prop(type, :string, default: "button")
-  prop(rounded, :boolean, default: true)
+  prop size, :string, values: ["xsmall", "small", "medium", "large"]
+  prop mock_state, :string, values: ["active", "focus", "hover"]
+  prop full_width, :boolean
+  prop progress, :boolean
+  prop oops, :boolean
+  prop success, :boolean
+  prop pulse, :boolean
+  prop disabled, :boolean
+  prop type, :string, default: "button"
+  prop rounded, :boolean, default: true
 
-  prop(to, :string)
-  prop(as, :string)
-  prop(active_class_name, :string)
-  prop(active_style, :string)
-  prop(exact, :boolean)
-  prop(string, :boolean)
-  prop(is_active, :boolean)
-  prop(location, :string)
-  prop(style, :string)
-  prop(class, :string)
+  prop to, :string
+  prop as, :string
+  prop active_class_name, :string
+  prop active_style, :string
+  prop exact, :boolean
+  prop string, :boolean
+  prop is_active, :boolean
+  prop location, :string
+  prop style, :string
+  prop class, :string
 
-  prop(on_click, :event)
-  prop(value_name, :string)
-  prop(value, :any)
+  prop on_click, :event
+  prop value_name, :string
+  prop value, :any
 
-  prop(left_icon, :string)
-  prop(right_icon, :string)
+  prop left_icon, :string
+  prop right_icon, :string
 
-  slot(default)
+  slot default
 
   def render(assigns) do
     ~F"""

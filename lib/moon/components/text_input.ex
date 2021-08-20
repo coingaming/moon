@@ -3,9 +3,9 @@ defmodule Moon.Components.TextInput.TextInputInternal do
 
   alias Surface.Components.Form.TextInput
 
-  prop(field, :atom)
+  prop field, :atom
 
-  prop(type, :string,
+  prop type, :string,
     default: "text",
     values: [
       "date",
@@ -20,29 +20,28 @@ defmodule Moon.Components.TextInput.TextInputInternal do
       "time",
       "url"
     ]
-  )
 
-  prop(value, :string)
-  prop(placeholder, :string)
-  prop(error, :string)
-  prop(rounded, :boolean)
-  prop(disabled, :boolean)
-  prop(required, :boolean)
-  prop(left_icon, :string)
-  prop(right_icon, :string)
-  prop(class, :string)
-  prop(on_focus, :event)
-  prop(on_blur, :event)
+  prop value, :string
+  prop placeholder, :string
+  prop error, :string
+  prop rounded, :boolean
+  prop disabled, :boolean
+  prop required, :boolean
+  prop left_icon, :string
+  prop right_icon, :string
+  prop class, :string
+  prop on_focus, :event
+  prop on_blur, :event
 
   def render(assigns) do
     ~F"""
     <TextInput
       class={
         "w-full h-12 max-w-full px-4 bg-goku-100 hover:bg-goku-120 text-base leading-normal
-                                text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
-                                ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
-                                disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-                                no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+                     text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
+                     ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
+                     disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+                     no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
         "pl-11": @left_icon,
         "pr-11": @right_icon,
         "border-chi-chi-100": @error
@@ -67,10 +66,10 @@ defmodule Moon.Components.TextInput do
   alias __MODULE__.TextInputInternal
   alias Moon.Components.Label
 
-  prop(field, :atom)
-  prop(label, :string)
+  prop field, :atom
+  prop label, :string
 
-  prop(type, :string,
+  prop type, :string,
     default: "text",
     values: [
       "date",
@@ -85,17 +84,19 @@ defmodule Moon.Components.TextInput do
       "time",
       "url"
     ]
-  )
 
-  prop(value, :string)
-  prop(placeholder, :string)
-  prop(error, :string)
-  prop(rounded, :boolean)
-  prop(disabled, :boolean)
-  prop(required, :boolean)
-  prop(class, :string)
-  prop(on_focus, :event)
-  prop(on_blur, :event)
+  prop value, :string
+  prop placeholder, :string
+  prop error, :string
+  prop rounded, :boolean
+  prop disabled, :boolean
+  prop required, :boolean
+  prop class, :string
+  prop on_focus, :event
+  prop on_blur, :event
+  prop right_icon_click, :event
+  prop left_icon_click, :event
+  prop without_design, :boolean
 
   slot left_icon
   slot right_icon
