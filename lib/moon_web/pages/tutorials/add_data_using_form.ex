@@ -98,8 +98,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
 
-              <Button variant="primary" type="submit">Save</Button>
-              <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
             </Stack>
           </Form>
         </:example>
@@ -131,8 +131,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               placeholder="Choose a document..."
             />
 
-            <Button variant="primary" type="submit">Save</Button>
-            <Button variant="secondary" on_click="clear_form">Cancel</Button>
+            <Button variant="fill" type="submit" full_width>Save</Button>
+            <Button variant="outline" on_click="clear_form">Cancel</Button>
           </Stack>
         </Form>
 
@@ -173,8 +173,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 prompt="Please select gender"
               />
 
-              <Button variant="primary" type="submit">Save</Button>
-              <Button variant="secondary" on_click="clear_simple_form">Cancel</Button>
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_simple_form">Cancel</Button>
             </Stack>
           </Form>
         </:example>
@@ -193,8 +193,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             prompt="Please select gender"
           />
 
-          <Button variant="primary" type="submit">Save</Button>
-          <Button variant="secondary" on_click="clear_form">Cancel</Button>
+          <Button variant="fill" type="submit" full_width>Save</Button>
+          <Button variant="outline" on_click="clear_form">Cancel</Button>
         </Form>
       </#CodePreview>
         </:code>
