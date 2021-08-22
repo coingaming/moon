@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -85,32 +86,38 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       <ExampleAndCode>
         <:example>
           Fill
-          <Button variant="fill" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="fill" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="fill" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="fill" size="small">
+              Small
+            </Button>
+          </LeftToRight>
 
           <div class="my-8" />
 
           Outline
-          <Button variant="outline" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="outline" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="outline" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="outline" size="small">
+              Small
+            </Button>
+          </LeftToRight>
 
           <div class="my-8" />
 
           Link
-          <Button variant="link" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="link" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="link" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="link" size="small">
+              Small
+            </Button>
+          </LeftToRight>
         </:example>
 
         <:code>
