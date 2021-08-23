@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
       >
         <Heading size={24}>Icons</Heading>
         <img
-          class="max-w-full border-radius-default"
+          class="max-w-full rounded"
           src={static_path(@socket, "/images/tutorials/invision_moon_icons.png")}
         />
       </Link>
@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
       >
         <Heading size={24}>Components</Heading>
         <img
-          class="max-w-full border-radius-default"
+          class="max-w-full rounded"
           src={static_path(@socket, "/images/tutorials/invision_moon_dropdown.png")}
         />
       </Link>
@@ -48,14 +48,14 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
       >
         <Heading size={24}>Elixir (Phoenix & Surface)</Heading>
         <img
-          class="max-w-full border-radius-default"
+          class="max-w-full rounded"
           src={static_path(@socket, "/images/tutorials/moon_surface_icons.png")}
         />
       </Link>
       <Link class="w-10/12 overflow-hidden carousel-item" to="https://moon.io/assets/icons">
         <Heading size={24}>Typescript (React)</Heading>
         <img
-          class="max-w-full border-radius-default"
+          class="max-w-full rounded"
           src={static_path(@socket, "/images/tutorials/moon_react_icons.png")}
         />
       </Link>

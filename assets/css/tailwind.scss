@@ -3,29 +3,27 @@
 @tailwind utilities;
 @tailwind screens;
 
-.carousel-item {
-  scroll-snap-type: x;
-  scroll-snap-align: start;
-  overflow: hidden;
-  white-space: normal;
-  vertical-align: top;
-}
-
-.bg-image {
-  overflow: hidden;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-}
-
-.border-radius-default {
-  border-radius: var(--radius--default);
-}
-
-.moon-table tr th {
-  @apply p-3 px-4 text-trunks-100 text-left font-normal;
-}
-
-.moon-table tr td {
-  @apply p-3 px-4;
+@layer components {
+  .carousel-item {
+    scroll-snap-type: x;
+    scroll-snap-align: start;
+    overflow: hidden;
+    white-space: normal;
+    vertical-align: top;
+  }
+  .moon-logo {
+     @apply inline-block align-middle w-auto h-auto;
+  }
+  .moon-currency {
+    @apply inline-block align-middle w-auto h-auto;
+  }
+  .moon-asset {
+    @apply inline-block align-middle w-auto h-auto;
+  }    
+  .moon-duotone {
+    @apply inline-block align-middle w-auto h-auto text-piccolo-100;
+  }
+  .moon-pattern {
+    @apply inline-block align-middle w-auto h-auto text-piccolo-100;
+  }
 }
