@@ -71,7 +71,7 @@ defmodule Moon.Components.Tooltip do
         x-on:mouseover="!!timeout && clearTimeout(timeout)
           timeout = setTimeout(() => {
             tooltip = true
-          }, 250)"
+          }, 500)"
         x-on:mouseleave="!!timeout && clearTimeout(timeout)
           timeout = null
           tooltip = false"
