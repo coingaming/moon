@@ -1,6 +1,5 @@
 defmodule MoonWeb.Pages.Components.CheckboxPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Stack
   alias Moon.Components.Checkbox
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
@@ -31,20 +30,16 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <Heading size={16}>Checkbox</Heading>
       <ExampleAndCode>
         <:example>
-          <Stack>
-            <Checkbox>
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox>
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox>
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -52,20 +47,16 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <Heading size={16}>Disabled</Heading>
       <ExampleAndCode>
         <:example>
-          <Stack>
-            <Checkbox disabled="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox disabled="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox disabled="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -73,20 +64,16 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <Heading size={16}>Selected Disabled</Heading>
       <ExampleAndCode>
         <:example>
-          <Stack>
-            <Checkbox disabled="true" checked="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox disabled="true" checked="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox disabled="true" checked="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -94,20 +81,16 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <Heading size={16}>Checked</Heading>
       <ExampleAndCode>
         <:example>
-          <Stack>
-            <Checkbox checked="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox checked="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox checked="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
