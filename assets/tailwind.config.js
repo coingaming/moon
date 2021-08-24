@@ -117,6 +117,12 @@ module.exports = {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none"
         },
+        ".scroll-snap-x-mandatory": {
+          "scroll-snap-type": "x mandatory"
+        },
+        ".scroll-snap-align-start": {
+          "scroll-snap-align": "start"
+        }
         // ".data-rounded": {
         //   "border-radius": 'var(--radius--largest)'
         // },
