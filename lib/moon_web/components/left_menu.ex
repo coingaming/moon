@@ -109,6 +109,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <Link to={"/#{@theme_name}/components/file-input"}>File Input</Link>
             <Link to={"/#{@theme_name}/components/heading"}>Heading</Link>
             <Link to={"/#{@theme_name}/components/link"}>Link</Link>
+            <Link to={"/#{@theme_name}/components/list_items"}>List Items</Link>
             <Link to={"/#{@theme_name}/components/pagination"}>Pagination</Link>
             <Link to={"/#{@theme_name}/components/popover"}>Popover</Link>
             <Link to={"/#{@theme_name}/components/select"}>Select</Link>
