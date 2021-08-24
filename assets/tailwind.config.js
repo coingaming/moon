@@ -104,18 +104,6 @@ module.exports = {
       hover: 'rgba(0, 0, 0, 0.08)',
     },
   },
-  variants: {
-    dataError: ["focus"],
-    extend: {
-      scale: ['group-hover'],
-      borderWidth: ['group-hover', 'last'],
-      boxShadow: ['invalid'],
-      backgroundColor: ['checked'],
-      borderColor: ['checked'],
-      textColor: ['disabled'],
-      width: ['hover', 'focus']
-    },
-  },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
