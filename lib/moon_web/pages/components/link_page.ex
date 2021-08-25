@@ -2,6 +2,10 @@ defmodule MoonWeb.Pages.Components.LinkPage do
   use MoonWeb, :live_view
   alias Moon.Components.Link
   alias Moon.Components.CodePreview
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias MoonWeb.Components.ExampleAndCode
 
   def mount(params, _session, socket) do
     {:ok,
@@ -10,21 +14,33 @@ defmodule MoonWeb.Pages.Components.LinkPage do
 
   def render(assigns) do
     ~F"""
-    <Link to="#">I'm a link</Link>
+    <TopToDown>
+      <Heading size={32}>Link</Heading>
+      <p>
+        <Link to="#">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/link_page.ex">Sourcecode of this page</Link>
+        <Link to="#">React implementation</Link>
+      </p>
 
-    <Link to="#" secondary>
-      I'm a Secondary link
-    </Link>
+      <ExampleAndCode>
+        <:example>
+          <Link to="#">I'm a link</Link>
 
-    <Link to="#" optional>
-      I'm an Optional link
-    </Link>
+          <Link to="#" secondary>
+            I'm a Secondary link
+          </Link>
 
-    <Link to="#" disabled>
-      I'm a disabled link
-    </Link>
+          <Link to="#" optional>
+            I'm an Optional link
+          </Link>
 
-    <#CodePreview>
+          <Link to="#" disabled>
+            I'm a disabled link
+          </Link>
+        </:example>
+
+        <:code>
+          <#CodePreview>
       <Link to="#">I'm a link</Link>
 
       <Link to="#" secondary>
@@ -39,6 +55,9 @@ defmodule MoonWeb.Pages.Components.LinkPage do
         I'm a disabled link
       </Link>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end
