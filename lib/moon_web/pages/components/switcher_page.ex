@@ -1,10 +1,10 @@
 defmodule MoonWeb.Pages.Components.SwitcherPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
   alias Moon.Components.Switcher
 
   def mount(params, _session, socket) do
@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Switcher</Heading>
 
       <ExampleAndCode show_state>
@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
         <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

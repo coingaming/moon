@@ -1,11 +1,11 @@
 defmodule MoonWeb.Pages.Components.CalendarPage do
   use MoonWeb, :live_view
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Calendar
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
     socket =
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Calendar</Heading>
 
       <p>
@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <:state>@events = {inspect(@events, pretty: true)}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

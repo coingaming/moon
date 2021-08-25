@@ -1,6 +1,6 @@
 defmodule MoonWeb.Pages.Components.HeadingPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
 
       <ExampleAndCode>
         <:example>
-          <Stack>
+          <TopToDown>
             <Heading>Heading with default font size</Heading>
             <Heading size={16}>Heading with font size 16</Heading>
             <Heading size={18}>Heading with font size 18</Heading>
@@ -41,12 +41,12 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
             <Heading size={56}>font size 56</Heading>
             <Heading size={64}>font size 64</Heading>
             <Heading size={72}>font size 72</Heading>
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Heading>Heading with default font size</Heading>
         <Heading size=16>Heading with font size 16</Heading>
         <Heading size=18>Heading with font size 18</Heading>
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         <Heading size=56>font size 56</Heading>
         <Heading size=64>font size 64</Heading>
         <Heading size=72>font size 72</Heading>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -67,22 +67,22 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
 
       <ExampleAndCode>
         <:example>
-          <Stack>
+          <TopToDown>
             <Heading size={24}>Heading with default font weight</Heading>
             <Heading size={24} is_regular>
               Heading with font-weight: regular
             </Heading>
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Heading size=24>Heading with default font weight</Heading>
         <Heading size=24 is_regular=true>
           Heading with font-weight: regular
         </Heading>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
 
       <ExampleAndCode>
         <:example>
-          <Stack>
+          <TopToDown>
             <Heading size={24}>Heading with default color</Heading>
             <Heading size={24} color="trunks-100">
               Heading with defined color
@@ -104,12 +104,12 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
             <Heading size={24} color="krillin-100">
               Heading with defined color
             </Heading>
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Heading size=24>Heading with default color</Heading>
         <Heading size=24 color="trunks-100">
           Heading with defined color
@@ -120,7 +120,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         <Heading size=24 color="krillin-100">
           Heading with defined color
         </Heading>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>

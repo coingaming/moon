@@ -2,11 +2,11 @@ defmodule MoonWeb.Pages.Components.CardPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.IconButton
-  alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
     socket =
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Card</Heading>
 
       <ExampleAndCode>
@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end

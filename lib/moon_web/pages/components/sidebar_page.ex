@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Sidebar
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
 
   alias Moon.Assets.Icons.IconSlots
   alias Moon.Assets.Icons.IconSportsBaseBall
@@ -24,7 +24,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Sidebar</Heading>
 
       <p>
@@ -67,7 +67,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
             <:menu>
               <nav class="mt-5">
-                <Stack>
+                <TopToDown>
                   <a href="#" class="flex items-center group">
                     <IconSlots
                       font_size="1.75rem"
@@ -82,7 +82,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                     />
                     <span class="group-hover:text-piccolo-100">Baseball</span>
                   </a>
-                </Stack>
+                </TopToDown>
               </nav>
             </:menu>
           </Sidebar>
@@ -91,7 +91,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         <:code>
           <#CodePreview>
         alias Moon.Components.Sidebar
-        alias Moon.Components.Stack
+        alias Moon.Components.TopToDown
         alias Moon.Assets.Icons.IconSlots
         alias Moon.Assets.Icons.IconSportsBaseBall
         alias Moon.Assets.Logos.LogoBitcasinoFull
@@ -112,7 +112,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
           <template slot="menu">
             <nav class="mt-5">
-              <Stack>
+              <TopToDown>
                 <a href="#" class="flex items-center group">
                   <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Slots</span>
@@ -121,14 +121,14 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                   <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Baseball</span>
                 </a>
-              </Stack>
+              </TopToDown>
             </nav>
           </template>
         </Sidebar>
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end
