@@ -1,9 +1,9 @@
 defmodule MoonWeb.Pages.Components.SwitchPage do
   use MoonWeb, :live_view
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
   alias Moon.Components.Switch
   alias Moon.Components.Link
 
@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Switch</Heading>
 
       <p>
@@ -65,13 +65,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
       <ExampleAndCode class="mt-3">
         <:example>
-          <Stack>
+          <TopToDown>
             <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
 
             <Switch size="medium" checked={@medium_switch_checked} on_change="handle_medium_switch" />
 
             <Switch size="large" checked={@large_switch_checked} on_change="handle_large_switch" />
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
@@ -93,13 +93,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
       <ExampleAndCode class="mt-3">
         <:example>
-          <Stack>
+          <TopToDown>
             <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
 
             <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
 
             <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
@@ -117,7 +117,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
       <ExampleAndCode class="mt-3">
         <:example>
-          <Stack>
+          <TopToDown>
             <Switch
               checked={@captions_switch_checked}
               on_change="handle_captions_switch"
@@ -144,7 +144,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               caption_unchecked="Moon"
               caption_checked="Sun"
             />
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
@@ -156,7 +156,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

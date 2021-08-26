@@ -1,7 +1,7 @@
 defmodule MoonWeb.Pages.Components.BadgePage do
   use MoonWeb, :live_view
   alias Moon.Components.Badge
-  alias Moon.Components.Inline
+  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.CodePreview
 
   def mount(params, _session, socket) do
@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
       You coud simply use color and background_color props
     </p>
 
-    <Inline>
+    <LeftToRight>
       <Badge color="bulma-100" background_color="piccolo-100">
         Active
       </Badge>
@@ -41,10 +41,10 @@ defmodule MoonWeb.Pages.Components.BadgePage do
       <Badge color="bulma-100" background_color="dodoria-100">
         Active
       </Badge>
-    </Inline>
+    </LeftToRight>
 
     <#CodePreview>
-      <Inline>
+      <LeftToRight>
         <Badge color="bulma-100" background_color="piccolo-100">
           Active
         </Badge>
@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         <Badge color="bulma-100" background_color="dodoria-100">
           Active
         </Badge>
-      </Inline>
+      </LeftToRight>
     </#CodePreview>
 
     <p>
@@ -62,20 +62,20 @@ defmodule MoonWeb.Pages.Components.BadgePage do
       You coud simply use size prop. By default size is xSmall. You can change it to Small.
     </p>
 
-    <Inline>
+    <LeftToRight>
       <Badge background_color="piccolo-100">xSmall size</Badge>
       <Badge background_color="piccolo-100" size="small">
         small size
       </Badge>
-    </Inline>
+    </LeftToRight>
 
     <#CodePreview>
-      <Inline>
+      <LeftToRight>
         <Badge background_color="piccolo-100">xSmall size</Badge>
         <Badge background_color="piccolo-100" size="small">
           small size
         </Badge>
-      </Inline>
+      </LeftToRight>
     </#CodePreview>
     """
   end

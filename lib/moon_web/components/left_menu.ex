@@ -2,9 +2,9 @@ defmodule MoonWeb.Components.LeftMenu do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Logos.LogoMoonDesignShort
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Components.Stack
   alias Moon.Components.Sidebar
   alias Moon.Components.Form
   alias Moon.Components.Select
@@ -69,7 +69,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
       <:menu>
         <nav class="mt-5">
-          <Stack class="">
+          <TopToDown class="">
             <Heading size={20}>Tutorials</Heading>
             <Link to={"/#{@theme_name}/tutorials/process-description-and-team-interactions"}>Introduction</Link>
             <Link to={"/#{@theme_name}/tutorials/installation"}>Installation</Link>
@@ -125,7 +125,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
             <Heading size={20}>Charts</Heading>
             <Link to={"/#{@theme_name}/charts/line-chart"}>LineChart</Link>
-          </Stack>
+          </TopToDown>
         </nav>
       </:menu>
     </Sidebar>

@@ -1,12 +1,13 @@
 defmodule MoonWeb.Pages.Components.ToastPage do
   use MoonWeb, :live_view
+
+  alias Moon.Components.Toast
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Components.Stack
-  alias Moon.Components.Toast
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
 
@@ -22,7 +23,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Toast</Heading>
 
       <p>
@@ -233,7 +234,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

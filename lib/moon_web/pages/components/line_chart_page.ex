@@ -1,11 +1,11 @@
 defmodule MoonWeb.Pages.Components.LineChartPage do
   use MoonWeb, :live_view
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
-  alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
     filters = [
@@ -63,7 +63,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>LineChart</Heading>
 
       <p>
@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
         <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

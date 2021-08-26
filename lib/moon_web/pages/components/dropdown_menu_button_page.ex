@@ -1,6 +1,7 @@
 defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Assets.Icons.IconMore
   alias Moon.Components.CodePreview
@@ -8,7 +9,6 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
 
   def mount(params, _session, socket) do
     socket =
@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>DropdownMenuButton</Heading>
 
       <ExampleAndCode>
@@ -71,7 +71,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

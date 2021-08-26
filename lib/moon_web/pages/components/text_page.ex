@@ -1,9 +1,9 @@
 defmodule MoonWeb.Pages.Components.TextPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Stack
+
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Text
   alias Moon.Components.CodePreview
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -34,28 +34,26 @@ defmodule MoonWeb.Pages.Components.TextPage do
 
       <ExampleAndCode>
         <:example>
-          <Stack>
-            <Stack>
-              <Text>Text with default font size</Text>
-              <Text size={10}>Text with font size 10</Text>
-              <Text size={12}>Text with font size 12</Text>
-              <Text size={14}>Text with font size 14</Text>
-              <Text size={16}>Text with font size 16</Text>
-              <Text size={18}>Text with font size 18</Text>
-              <Text size={20}>Text with font size 20</Text>
-              <Text size={24}>Text with font size 24</Text>
-              <Text size={32}>Text with font size 32</Text>
-              <Text size={48}>font size 48</Text>
-              <Text size={56}>font size 56</Text>
-              <Text size={64}>font size 64</Text>
-              <Text size={72}>font size 72</Text>
-            </Stack>
-          </Stack>
+          <TopToDown>
+            <Text>Text with default font size</Text>
+            <Text size={10}>Text with font size 10</Text>
+            <Text size={12}>Text with font size 12</Text>
+            <Text size={14}>Text with font size 14</Text>
+            <Text size={16}>Text with font size 16</Text>
+            <Text size={18}>Text with font size 18</Text>
+            <Text size={20}>Text with font size 20</Text>
+            <Text size={24}>Text with font size 24</Text>
+            <Text size={32}>Text with font size 32</Text>
+            <Text size={48}>font size 48</Text>
+            <Text size={56}>font size 56</Text>
+            <Text size={64}>font size 64</Text>
+            <Text size={72}>font size 72</Text>
+          </TopToDown>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Text>Text with default font size</Text>
         <Text size=10>Text with font size 10</Text>
         <Text size=12>Text with font size 12</Text>
@@ -69,7 +67,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Text size=56>font size 56</Text>
         <Text size=64>font size 64</Text>
         <Text size=72>font size 72</Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -79,21 +77,21 @@ defmodule MoonWeb.Pages.Components.TextPage do
 
       <ExampleAndCode>
         <:example>
-          <Stack>
+          <TopToDown>
             <Text size={24}>Text with default font weight</Text>
             <Text size={24} is_bold>
               Text with font-weight: semibold
             </Text>
-          </Stack>
+          </TopToDown>
         </:example>
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Text size=24>Text with default font weight</Text>
         <Text size=24 is_bold=true>
           Text with font-weight: semibold
         </Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
@@ -101,7 +99,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
       <Heading size={20} class="mt-4">Color</Heading>
       <ExampleAndCode>
         <:example>
-          <Stack>
+          <TopToDown>
             <Text size={24}>Text with default color</Text>
             <Text size={24} color="trunks-100">
               Text with defined color
@@ -112,12 +110,12 @@ defmodule MoonWeb.Pages.Components.TextPage do
             <Text size={24} color="krillin-100">
               Text with defined color
             </Text>
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
+      <TopToDown>
         <Text size=24>Text with default color</Text>
         <Text size=24 color="trunks_100">
           Text with defined color
@@ -128,7 +126,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Text size=24 color="krillin_100">
           Text with defined color
         </Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>

@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   alias Moon.Components.Datepicker
   alias Moon.Components.Form
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
 
   defmodule Contract do
@@ -49,7 +49,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>Datepicker</Heading>
 
       <p>
@@ -236,7 +236,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

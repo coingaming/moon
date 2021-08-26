@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
 
   def mount(params, _session, socket) do
     socket =
@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
       <Heading size={32}>File Input</Heading>
 
       <p>
@@ -73,7 +73,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end
