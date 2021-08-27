@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
     <TopToDown>
       <Heading size={32}>Card</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="card_1">
         <:example>
           <Card title="Winers">
             <:buttons>

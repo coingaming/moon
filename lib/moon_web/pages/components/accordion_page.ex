@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~F"""
     <Heading size={32} class="mb-8">Accordion</Heading>
 
-    <ExampleAndCode show_state>
+    <ExampleAndCode show_state id="accordian_1">
       <:example>
         <Accordion>
           <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">

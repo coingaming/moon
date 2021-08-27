@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state>
+    <ExampleAndCode class="mt-4" show_state id="dropdown_1">
       <:example>
         <Dropdown>
           <CheckboxMultiselect
@@ -80,7 +80,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       </:state>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state>
+    <ExampleAndCode class="mt-4" show_state id="dropdown_2">
       <:example>
         <Dropdown
           on_search_change="handle_search_changed"
@@ -123,7 +123,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       <a id="single-item-select">Using SingleItemSelect</a>
     </Heading>
 
-    <ExampleAndCode class="mt-4" show_state>
+    <ExampleAndCode class="mt-4" show_state id="dropdown_3">
       <:example>
         <Dropdown>
           <SingeItemSelect
@@ -151,7 +151,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       </:state>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state>
+    <ExampleAndCode class="mt-4" show_state id="dropdown_4">
       <:example>
         <Dropdown
           on_search_change="handle_search_changed"

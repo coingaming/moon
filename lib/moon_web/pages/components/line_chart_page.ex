@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="line_chart_1">
         <:example>
           <LineChartCard
             id="line-chart-card"

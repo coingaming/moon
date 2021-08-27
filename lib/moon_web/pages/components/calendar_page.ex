@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="calendar_1">
         <:example>
           <Calendar id="default_calendar" week_starts_on={1} events={@events} />
         </:example>
@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="calendar_2">
         <:example>
           <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
         </:example>

@@ -44,7 +44,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
   def render(assigns) do
     ~F"""
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_1" class="mt-4">
       <:example>
         <IconAustralianDollar font_size="10rem" />
       </:example>
@@ -56,7 +56,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_2" class="mt-4">
       <:example>
         <IconBitcoin font_size="10rem" />
       </:example>
@@ -68,7 +68,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_3" class="mt-4">
       <:example>
         <IconBrazilianReal font_size="10rem" />
       </:example>
@@ -80,7 +80,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_4" class="mt-4">
       <:example>
         <IconCanadianDollar font_size="10rem" />
       </:example>
@@ -92,7 +92,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_5" class="mt-4">
       <:example>
         <IconCardano font_size="10rem" />
       </:example>
@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_6" class="mt-4">
       <:example>
         <IconChilieanPeso font_size="10rem" />
       </:example>
@@ -116,7 +116,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_7" class="mt-4">
       <:example>
         <IconChineseYuan font_size="10rem" />
       </:example>
@@ -128,7 +128,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_8" class="mt-4">
       <:example>
         <IconDanishKrone font_size="10rem" />
       </:example>
@@ -140,7 +140,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_9" class="mt-4">
       <:example>
         <IconDogecoin font_size="10rem" />
       </:example>
@@ -152,7 +152,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_10" class="mt-4">
       <:example>
         <IconEthereum font_size="10rem" />
       </:example>
@@ -164,7 +164,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_11" class="mt-4">
       <:example>
         <IconEuro font_size="10rem" />
       </:example>
@@ -176,7 +176,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_12" class="mt-4">
       <:example>
         <IconGbPoundSterling font_size="10rem" />
       </:example>
@@ -188,7 +188,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_13" class="mt-4">
       <:example>
         <IconHongKongDollar font_size="10rem" />
       </:example>
@@ -200,7 +200,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_14" class="mt-4">
       <:example>
         <IconIcelandicKrona font_size="10rem" />
       </:example>
@@ -212,7 +212,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_15" class="mt-4">
       <:example>
         <IconIndianRupee font_size="10rem" />
       </:example>
@@ -224,7 +224,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_16" class="mt-4">
       <:example>
         <IconJapaneseYen font_size="10rem" />
       </:example>
@@ -236,7 +236,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_17" class="mt-4">
       <:example>
         <IconLitecoin font_size="10rem" />
       </:example>
@@ -248,7 +248,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_18" class="mt-4">
       <:example>
         <IconNewTaiwanDollar font_size="10rem" />
       </:example>
@@ -260,7 +260,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_19" class="mt-4">
       <:example>
         <IconNewZealandDollar font_size="10rem" />
       </:example>
@@ -272,7 +272,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_20" class="mt-4">
       <:example>
         <IconPolandZloty font_size="10rem" />
       </:example>
@@ -284,7 +284,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_21" class="mt-4">
       <:example>
         <IconRipple font_size="10rem" />
       </:example>
@@ -296,7 +296,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_22" class="mt-4">
       <:example>
         <IconRussianRuble font_size="10rem" />
       </:example>
@@ -308,7 +308,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_23" class="mt-4">
       <:example>
         <IconSingaporeDollar font_size="10rem" />
       </:example>
@@ -320,7 +320,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_24" class="mt-4">
       <:example>
         <IconSoc font_size="10rem" />
       </:example>
@@ -332,7 +332,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_25" class="mt-4">
       <:example>
         <IconSouthKoreanWon font_size="10rem" />
       </:example>
@@ -344,7 +344,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_26" class="mt-4">
       <:example>
         <IconSwedishKrona font_size="10rem" />
       </:example>
@@ -356,7 +356,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_27" class="mt-4">
       <:example>
         <IconSwissFranc font_size="10rem" />
       </:example>
@@ -368,7 +368,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_28" class="mt-4">
       <:example>
         <IconThaiBaht font_size="10rem" />
       </:example>
@@ -380,7 +380,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_29" class="mt-4">
       <:example>
         <IconTron font_size="10rem" />
       </:example>
@@ -392,7 +392,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_30" class="mt-4">
       <:example>
         <IconTurkishLira font_size="10rem" />
       </:example>
@@ -404,7 +404,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="currency_31" class="mt-4">
       <:example>
         <IconUsaDollar font_size="10rem" />
       </:example>
