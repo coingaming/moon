@@ -8,7 +8,8 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
 
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
-  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
+  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu}
+  alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.{Affiliates, Segments}
 

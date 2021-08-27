@@ -11,6 +11,19 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Assets.Icons.IconSportsBaseBall
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/sidebar",
+        name: "Sidebar"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -25,6 +38,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Sidebar</Heading>
 
       <p>

@@ -5,6 +5,19 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/file-input",
+        name: "File Input"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -22,6 +35,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>File Input</Heading>
 
       <p>
