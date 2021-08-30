@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="sidebar_1">
         <:example>
           <Sidebar background_color="bg-gohan-100" open_width="14rem">
             <:short_logo>

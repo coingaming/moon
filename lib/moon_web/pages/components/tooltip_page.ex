@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         Sourcecode of this page
       </Link>
       {#for placement <- ["top", "right", "bottom", "left"]}
-        <ExampleAndCode class="my-12">
+        <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
           <:example>
             <Tooltip placement={placement} text={placement}>
               <Button variant="primary">Hover Me</Button>

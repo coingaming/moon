@@ -70,7 +70,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
           "left",
           "left-end"
         ]}
-        <ExampleAndCode class="my-12">
+        <ExampleAndCode id={"popover_#{placement}"} class="my-12">
           <:example>
             <PopoverExample id={placement} placement={placement} />
           </:example>

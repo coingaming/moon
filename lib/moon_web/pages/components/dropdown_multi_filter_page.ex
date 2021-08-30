@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         Sourcecode of this page
       </Link>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="dropdown_multi_filter_1">
         <:example>
           <CountryFilter active_values={@country_filter_values} />
         </:example>
@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="dropdown_multi_filter_2">
         <:example>
           <SiteFilter active_values={@site_filter_values} />
         </:example>

@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         Pagination component.
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="pagination_1">
         <:example>
           <Pagination
             current_page_number={@current_page_number}
@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
       </p>
 
-      <ExampleAndCode layout="column">
+      <ExampleAndCode layout="column" id="pagination_2">
         <:example>
           <TopToDown>
             <Pagination
@@ -124,7 +124,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
       <Heading size={24} class="mt-4" is_regular>Example with a side section</Heading>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="pagination_3">
         <:example>
           <TopToDown>
             <div class="flex flex-wrap items-center">

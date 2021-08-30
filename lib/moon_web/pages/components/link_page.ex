@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
         <Link to="#">React implementation</Link>
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="link_1">
         <:example>
           <Link to="#">I'm a link</Link>
 
