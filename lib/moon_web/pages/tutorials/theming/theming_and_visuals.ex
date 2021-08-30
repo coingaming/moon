@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Tutorials.ThemingAndVisuals do
+defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
