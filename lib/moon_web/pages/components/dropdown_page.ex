@@ -67,19 +67,19 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
       </Heading>
 
-    <ExampleAndCode class="mt-4" show_state id="dropdown_1">
-      <:example>
-        <Dropdown>
-          <CheckboxMultiselect
-            on_change="handle_game_selection_changed"
-            value={@selected_game_ids}
-            options={@selectable_game_options}
-          />
-        </Dropdown>
-      </:example>
+      <ExampleAndCode class="mt-4" show_state id="dropdown_1">
+        <:example>
+          <Dropdown>
+            <CheckboxMultiselect
+              on_change="handle_game_selection_changed"
+              value={@selected_game_ids}
+              options={@selectable_game_options}
+            />
+          </Dropdown>
+        </:example>
 
-      <:code>
-        <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Dropdown>
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
@@ -88,31 +88,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </:code>
+        </:code>
 
-      <:state>
-        @selected_game_ids = {inspect(@selected_game_ids)}
-      </:state>
-    </ExampleAndCode>
+        <:state>
+          @selected_game_ids = {inspect(@selected_game_ids)}
+        </:state>
+      </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state id="dropdown_2">
-      <:example>
-        <Dropdown
-          on_search_change="handle_search_changed"
-          search_placeholder="Search for a name ..."
-          search_name={:game_search}
-        >
-          <CheckboxMultiselect
-            on_change="handle_game_selection_changed"
-            class="max-h-32"
-            value={@selected_game_ids}
-            options={@selectable_filtered_game_options}
-          />
-        </Dropdown>
-      </:example>
+      <ExampleAndCode class="mt-4" show_state id="dropdown_2">
+        <:example>
+          <Dropdown
+            on_search_change="handle_search_changed"
+            search_placeholder="Search for a name ..."
+            search_name={:game_search}
+          >
+            <CheckboxMultiselect
+              on_change="handle_game_selection_changed"
+              class="max-h-32"
+              value={@selected_game_ids}
+              options={@selectable_filtered_game_options}
+            />
+          </Dropdown>
+        </:example>
 
-      <:code>
-        <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -126,31 +126,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </:code>
+        </:code>
 
-      <:state>
-        @selected_game_ids = {inspect(@selected_game_ids)}
-        @game_search = {inspect(@game_search)}
-      </:state>
-    </ExampleAndCode>
+        <:state>
+          @selected_game_ids = {inspect(@selected_game_ids)}
+          @game_search = {inspect(@game_search)}
+        </:state>
+      </ExampleAndCode>
 
-    <Heading size={24} class="mt-8">
-      <a id="single-item-select">Using SingleItemSelect</a>
-    </Heading>
+      <Heading size={24} class="mt-8">
+        <a id="single-item-select">Using SingleItemSelect</a>
+      </Heading>
 
-    <ExampleAndCode class="mt-4" show_state id="dropdown_3">
-      <:example>
-        <Dropdown>
-          <SingeItemSelect
-            on_change="handle_other_game_selected"
-            value={@other_game_id}
-            options={@selectable_game_options}
-          />
-        </Dropdown>
-      </:example>
+      <ExampleAndCode class="mt-4" show_state id="dropdown_3">
+        <:example>
+          <Dropdown>
+            <SingeItemSelect
+              on_change="handle_other_game_selected"
+              value={@other_game_id}
+              options={@selectable_game_options}
+            />
+          </Dropdown>
+        </:example>
 
-      <:code>
-        <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Dropdown>
           <SingeItemSelect
             on_change="handle_other_game_selected"
@@ -159,31 +159,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </:code>
+        </:code>
 
-      <:state>
-        @other_game_id = {inspect(@other_game_id)}
-      </:state>
-    </ExampleAndCode>
+        <:state>
+          @other_game_id = {inspect(@other_game_id)}
+        </:state>
+      </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4" show_state id="dropdown_4">
-      <:example>
-        <Dropdown
-          on_search_change="handle_search_changed"
-          search_placeholder="Search for a name ..."
-          search_name={:game_search}
-        >
-          <SingeItemSelect
-            on_change="handle_other_game_selected"
-            class="max-h-32"
-            value={@other_game_id}
-            options={@selectable_filtered_game_options}
-          />
-        </Dropdown>
-      </:example>
+      <ExampleAndCode class="mt-4" show_state id="dropdown_4">
+        <:example>
+          <Dropdown
+            on_search_change="handle_search_changed"
+            search_placeholder="Search for a name ..."
+            search_name={:game_search}
+          >
+            <SingeItemSelect
+              on_change="handle_other_game_selected"
+              class="max-h-32"
+              value={@other_game_id}
+              options={@selectable_filtered_game_options}
+            />
+          </Dropdown>
+        </:example>
 
-      <:code>
-        <#CodePreview>
+        <:code>
+          <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -197,14 +197,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-      </:code>
+        </:code>
 
-      <:state>
-        @other_game_id = {inspect(@other_game_id)}
-        @game_search = {inspect(@game_search)}
-      </:state>
-    </ExampleAndCode>
-
+        <:state>
+          @other_game_id = {inspect(@other_game_id)}
+          @game_search = {inspect(@game_search)}
+        </:state>
+      </ExampleAndCode>
     </TopToDown>
     """
   end
