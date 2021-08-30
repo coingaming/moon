@@ -1,6 +1,8 @@
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
@@ -18,65 +20,72 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def render(assigns) do
     ~F"""
-    <ExampleAndCode id="crest_1" class="mt-4">
-      <:example>
-        <CrestArsenal font_size="10rem" />
-      </:example>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_1" class="mt-4">
+        <:example>
+          <CrestArsenal font_size="10rem" />
+        </:example>
 
-      <:code>
-        <#CodePreview>
-        <CrestArsenal font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+        <:code>
+          <#CodePreview>
+            <CrestArsenal font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <ExampleAndCode id="crest_2" class="mt-4">
-      <:example>
-        <CrestFlamengo font_size="10rem" />
-      </:example>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_2" class="mt-4">
+        <:example>
+          <CrestFlamengo font_size="10rem" />
+        </:example>
 
-      <:code>
-        <#CodePreview>
-        <CrestFlamengo font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+        <:code>
+          <#CodePreview>
+            <CrestFlamengo font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <ExampleAndCode id="crest_3" class="mt-4">
-      <:example>
-        <CrestSaoPaulo font_size="10rem" />
-      </:example>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_3" class="mt-4">
+        <:example>
+          <CrestSaoPaulo font_size="10rem" />
+        </:example>
 
-      <:code>
-        <#CodePreview>
-        <CrestSaoPaulo font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+        <:code>
+          <#CodePreview>
+            <CrestSaoPaulo font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <ExampleAndCode id="crest_4" class="mt-4">
-      <:example>
-        <CrestSouthampton font_size="10rem" />
-      </:example>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_4" class="mt-4">
+        <:example>
+          <CrestSouthampton font_size="10rem" />
+        </:example>
 
-      <:code>
-        <#CodePreview>
-        <CrestSouthampton font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+        <:code>
+          <#CodePreview>
+            <CrestSouthampton font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <ExampleAndCode id="crest_5" class="mt-4">
-      <:example>
-        <CrestWatford font_size="10rem" />
-      </:example>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_5" class="mt-4">
+        <:example>
+          <CrestWatford font_size="10rem" />
+        </:example>
 
-      <:code>
-        <#CodePreview>
-        <CrestWatford font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+        <:code>
+          <#CodePreview>
+            <CrestWatford font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end

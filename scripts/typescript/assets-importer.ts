@@ -5,11 +5,11 @@ console.log('Running assets importer');
 const rawDir = '../../assets/node_modules/moon-css/example/assets/';
 const exportDir = '../../lib/moon/assets/';
 
-const getFiles = (iconType:string) => fs.readdirSync(`${rawDir}/${iconType}`);
-const getContents = (iconType:string, file:string) =>
+const getFiles = (iconType: string) => fs.readdirSync(`${rawDir}/${iconType}`);
+const getContents = (iconType: string, file: string) =>
   fs.readFileSync(`${rawDir}/${iconType}/${file}`);
 
-const toCamel = (s:string) => {
+const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
     return $1
       .toUpperCase()
@@ -18,14 +18,14 @@ const toCamel = (s:string) => {
   });
 };
 
-const capitalizeFirstLetter = (string:string) => {
+const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const camelToSnakeCase = (str:string) =>
+const camelToSnakeCase = (str: string) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
-const getModuleName = (s:string) =>
+const getModuleName = (s: string) =>
   capitalizeFirstLetter(toCamel(s))
     .replace('IconLoyalty-0', 'IconLoyalty0')
     .replace('.svg', '');
@@ -63,48 +63,48 @@ const propsMapKeys = {
 };
 
 type WriteAssetsMapFileProps = {
-  assetsFolder:string 
-  iconType:string 
-  files:string[]
+  assetsFolder: string
+  iconType: string
+  files: string[]
 }
 
-const writeAssetsMapFile = ({ assetsFolder, iconType, files }:WriteAssetsMapFileProps) => {
+const writeAssetsMapFile = ({ assetsFolder, iconType, files }: WriteAssetsMapFileProps) => {
   const newFilePath = `${exportDir}/${iconType}.ex`;
 
   fs.writeFileSync(
     newFilePath,
     `
-defmodule Moon.Assets.${getModuleName(iconType)} do 
+defmodule Moon.Assets.${getModuleName(iconType)} do
   use Moon.StatelessComponent
   alias Moon.Assets.${getModuleName(iconType)}s
-  
+
   prop name, :string
   ${(propsMap as any)[iconType] || propsMap.default}
   @assets_map %{
     ${files
-      .map(
-        (i) =>
-          `${i
-            .replace(/([-_])/gi, '_')
-            .toLowerCase()
-            .replace('.svg', '')
-            .replace(
-              `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
-              ''
-            )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
-      )
-      .join(', ')}
+        .map(
+          (i) =>
+            `${i
+              .replace(/([-_])/gi, '_')
+              .toLowerCase()
+              .replace('.svg', '')
+              .replace(
+                `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
+                ''
+              )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
+        )
+        .join(', ')}
     }
-  def icon_name_to_module(icon_name) do 
+  def icon_name_to_module(icon_name) do
     @assets_map[:"#{icon_name}"]
   end
-  def render(assigns) do 
+  def render(assigns) do
     ~F"""
     {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
-      (propsMapKeys as any)[iconType] || propsMapKeys.default
-    )
-      .map((x: string) => `${x}: @${x}`)
-      .join(', ')})}
+        (propsMapKeys as any)[iconType] || propsMapKeys.default
+      )
+        .map((x: string) => `${x}: @${x}`)
+        .join(', ')})}
     """
   end
 end
@@ -113,12 +113,12 @@ end
 };
 
 type CreateAssetsComponentFileProps = {
-  assetsFolder:string 
-  iconType:string 
-  file:string
+  assetsFolder: string
+  iconType: string
+  file: string
 }
 
-const createAssetComponentFile = ({ assetsFolder, iconType, file }:CreateAssetsComponentFileProps) => {
+const createAssetComponentFile = ({ assetsFolder, iconType, file }: CreateAssetsComponentFileProps) => {
   const newFilePath = `${exportDir}/${assetsFolder}/${file
     .replace(/([-_])/gi, '_')
     .toLowerCase()}.ex`;
@@ -139,10 +139,10 @@ const createAssetComponentFile = ({ assetsFolder, iconType, file }:CreateAssetsC
   fs.writeFileSync(
     newFilePath,
     `
-defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do 
+defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
   use Moon.StatelessComponent
   ${(propsMap as any)[iconType] || propsMap.default}
-  def render(assigns) do 
+  def render(assigns) do
     ~F"""
     {asset_import @socket, "js/assets/${iconType}"}
     ${(svgMap as any)[iconType] || svgMap.default}
@@ -170,7 +170,7 @@ const singularName = (pluralName: string) =>
       files,
     });
 
-    files.map((file:string) => {
+    files.map((file: string) => {
       createAssetComponentFile({
         assetsFolder,
         iconType: singularName(assetsFolder),
@@ -182,24 +182,26 @@ const singularName = (pluralName: string) =>
 
 const assetsDocDir = '../../lib/moon_web/pages/assets/';
 
-const writeAssetsDocumentationPage = (type:string, pageContent?:string) => {
+const writeAssetsDocumentationPage = (type: string, pageContent?: string) => {
   if (!pageContent) {
     return console.error("no content")
   }
   fs.writeFileSync(assetsDocDir + type + '_page.ex', pageContent);
 };
 
-const generateAssetsDocumentationPageContent = (type:string, modules:string[]):string => {
+const generateAssetsDocumentationPageContent = (type: string, modules: string[]): string => {
   if (type == 'crests') {
     return `
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Crests
-${modules.map((x:string) => `  alias Crests.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -207,23 +209,26 @@ ${modules.map((x:string) => `  alias Crests.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-${modules
-  .map(
-    (x:string, i:number) => `
-    <ExampleAndCode id="crest_${i+1}" class="mt-4">
-      <#template slot="example">
-        <${x} font_size="10rem" />
-      </#template>
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="crest_${i + 1}" class="mt-4">
+        <#template slot="example">
+          <${x} font_size="10rem" />
+        </#template>
 
-      <#template slot="code">
-        <#CodePreview>
-        <${x} font_size="10rem" />
-        </#CodePreview>
-      </#template>
-    </ExampleAndCode>
-`
-  )
-  .join('\n')}
+        <#template slot="code">
+          <#CodePreview>
+            <${x} font_size="10rem" />
+          </#CodePreview>
+        </#template>
+      </ExampleAndCode>
+    `
+          )
+          .join('\n')}
+    </TopToDown>
     """
   end
 end
@@ -236,11 +241,13 @@ end
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Currencies
-${modules.map((x:string) => `  alias Currencies.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -248,23 +255,26 @@ ${modules.map((x:string) => `  alias Currencies.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-${modules
-  .map(
-    (x:string, i:number) => `
-    <ExampleAndCode id="currency_${i+1}" class="mt-4">
-      <#template slot="example">
-        <${x} font_size="10rem" />
-      </#template>
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="currency_${i + 1}" class="mt-4">
+        <#template slot="example">
+          <${x} font_size="10rem" />
+        </#template>
 
-      <#template slot="code">
-        <#CodePreview>
-        <${x} font_size="10rem" />
-        </#CodePreview>
-      </#template>
-    </ExampleAndCode>
-`
-  )
-  .join('\n')}
+        <#template slot="code">
+          <#CodePreview>
+            <${x} font_size="10rem" />
+          </#CodePreview>
+        </#template>
+      </ExampleAndCode>
+    `
+          )
+          .join('\n')}
+    </TopToDown>
     """
   end
 end
@@ -276,11 +286,13 @@ end
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Duotones
-${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -288,23 +300,26 @@ ${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-${modules
-  .map(
-    (x:string, i:number) => `
-    <ExampleAndCode id="duotone_${i+1}"  class="mt-4">
-      <#template slot="example">
-        <${x} font_size="10rem" color="piccolo-100" />
-      </#template>
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
+        <#template slot="example">
+          <${x} font_size="10rem" color="piccolo-100" />
+        </#template>
 
-      <#template slot="code">
-        <#CodePreview>
-        <${x} font_size="10rem" color="piccolo-100" />
-        </#CodePreview>
-      </#template>
-    </ExampleAndCode>
-`
-  )
-  .join('\n')}
+        <#template slot="code">
+          <#CodePreview>
+            <${x} font_size="10rem" color="piccolo-100" />
+          </#CodePreview>
+        </#template>
+      </ExampleAndCode>
+    `
+          )
+          .join('\n')}
+    </TopToDown>
     """
   end
 end
@@ -316,36 +331,41 @@ end
 defmodule MoonWeb.Pages.Assets.IconsPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Icons
-${modules.map((x) => `  alias Icons.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
-  ~F"""
-  ${modules
-    .map(
-      (x:string, i:number) => `
-      <ExampleAndCode id="icon_${i+1}" class="mt-4">
+    ~F"""
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="icon_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="5rem" />
         </#template>
-  
+
         <#template slot="code">
           <#CodePreview>
-          <${x} font_size="5rem" />
+            <${x} font_size="5rem" />
           </#CodePreview>
         </#template>
       </ExampleAndCode>
-  `
-    )
-    .join('\n')}
-      """
+    `
+          )
+          .join('\n')}
+    </TopToDown>
+    """
   end
 end
     `;
@@ -356,36 +376,41 @@ end
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Logos
-${modules.map((x:string) => `  alias Logos.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
-  ~F"""
-  ${modules
-    .map(
-      (x:string, i:number) => `
-      <ExampleAndCode id="logo_${i+1}" class="mt-4">
+    ~F"""
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="logo_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
         </#template>
-  
+
         <#template slot="code">
           <#CodePreview>
-          <${x} font_size="10rem" />
+            <${x} font_size="10rem" />
           </#CodePreview>
         </#template>
       </ExampleAndCode>
-  `
-    )
-    .join('\n')}
-      """
+    `
+          )
+          .join('\n')}
+    </TopToDown>
+    """
   end
 end
     `;
@@ -396,36 +421,41 @@ end
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
 
   alias Moon.Assets.Patterns
-${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
+${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def render(assigns) do
-  ~F"""
-  ${modules
-    .map(
-      (x:string, i:number) => `
-      <ExampleAndCode id="pattern_${i+1}" class="mt-4">
+    ~F"""
+    <TopToDown>
+    ${modules
+        .map(
+          (x: string, i: number) => `
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
         </#template>
-  
+
         <#template slot="code">
           <#CodePreview>
-          <${x} font_size="10rem" />
+            <${x} font_size="10rem" />
           </#CodePreview>
         </#template>
       </ExampleAndCode>
-  `
-    )
-    .join('\n')}
-      """
+    `
+          )
+          .join('\n')}
+    </TopToDown>
+    """
   end
 end
     `;
@@ -435,15 +465,15 @@ end
   return ''
 };
 
-const generateAssetsDocumentationPage = (type:string, files:string[]) => {
-  const modules = files.map((f:string) => getModuleName(f));
+const generateAssetsDocumentationPage = (type: string, files: string[]) => {
+  const modules = files.map((f: string) => getModuleName(f));
   const pageContent = generateAssetsDocumentationPageContent(type, modules);
 
   writeAssetsDocumentationPage(type, pageContent);
 };
 
 ['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
-  (assetsFolder:string) => {
+  (assetsFolder: string) => {
     const files = getFiles(assetsFolder);
     generateAssetsDocumentationPage(assetsFolder, files);
   }
