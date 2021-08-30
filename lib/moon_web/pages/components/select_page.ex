@@ -6,8 +6,21 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
 
   data(gender_options, :any)
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/select",
+        name: "Select"
+      }
+    ]
 
   def mount(%{"theme_name" => theme_name}, _session, socket) do
     gender_options = [
@@ -28,6 +41,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Select</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=574%3A8496">Figma design</Link>
@@ -41,7 +55,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </p>
 
       <Heading size={16} class="mt-4">Example</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_1">
         <:example>
           <Select field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -58,7 +72,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </ExampleAndCode>
 
       <Heading size={16} class="mt-4">With Label</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_2">
         <:example>
           <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -76,7 +90,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </ExampleAndCode>
 
       <Heading size={16} class="mt-4">Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_3">
         <:example>
           <Select
             disabled

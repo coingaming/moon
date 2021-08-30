@@ -2,6 +2,20 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   use MoonWeb, :live_view
 
   alias Moon.Components.Heading
+  alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Tutorials"
+      },
+      %{
+        to: "/tutorials/installation",
+        name: "Installation"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -10,16 +24,18 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
 
   def render(assigns) do
     ~F"""
-    <Heading size={32}>Usage</Heading>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32}>Usage</Heading>
 
-    <Heading size={24} class="mt-8 mb-4">Requirements</Heading>
-    <pre>
+      <Heading size={24} class="mt-8 mb-4">Requirements</Heading>
+      <pre>
     * Can be used from any existing Phoenix project that uses LiveView 0.15 (Margus Pärt needs to deploy branch "render_block" lab to t1 to test it out)
     * Moon Surface components can be used from SLIM and EEX, but recommended new format is Surface + Tailwind + Moon Surface Components
     </pre>
 
-    <Heading size={24} class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
-    <pre>
+      <Heading size={24} class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
+      <pre>
     # 1. Create empty project (skip this test if you already have project where you want to include)
     mix phx.new aposta10_design --live --no-ecto --no-dashboard
     cd aposta10_design
@@ -66,8 +82,8 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
       ],
       darkMode: false,
       theme: &#123;
-        extend:	&#123;
-          // width:	&#123;
+        extend: &#123;
+          // width: &#123;
           //   "66": "66px",
           //   "88": "88px",
           // &#125;,
@@ -76,7 +92,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
           //   "88": "88px",
           // &#125;
         &#125;,
-        colors:	&#123;
+        colors: &#123;
           'transparent': 'transparent',
           'text': 'var(--color-text)',
           'background': 'var(--color-background)',
@@ -118,7 +134,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
           'trunks-100': 'var(--color--trunks-100)',
         &#125;,
       &#125;,
-      variants:	&#123;&#125;,
+      variants: &#123;&#125;,
       plugins: [],
     &#125;
 
@@ -129,6 +145,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     mix phx.server
 
     </pre>
+    </TopToDown>
     """
   end
 end

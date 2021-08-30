@@ -7,6 +7,19 @@ defmodule MoonWeb.Pages.Components.TextPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/text",
+        name: "Text"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -17,6 +30,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Text</Heading>
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=27856%3A9609">Figma design</Link>
@@ -32,7 +46,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
       <p>We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
       <p>By default font size is 16. You can choose any size.</p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="text_1">
         <:example>
           <TopToDown>
             <Text>Text with default font size</Text>
@@ -75,7 +89,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
       <Heading size={20} class="mt-4">Bold</Heading>
       <p>By default font weight is regular. You can make it bolder.</p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="text_2">
         <:example>
           <TopToDown>
             <Text size={24}>Text with default font weight</Text>
@@ -97,7 +111,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
       </ExampleAndCode>
 
       <Heading size={20} class="mt-4">Color</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="text_3">
         <:example>
           <TopToDown>
             <Text size={24}>Text with default color</Text>

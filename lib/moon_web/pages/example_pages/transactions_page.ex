@@ -24,7 +24,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias MoonWeb.Pages.ExamplePages.Shared
   alias Shared.TopMenu
   alias Shared.LeftMenu
-  alias Shared.Breadcrumbs
+  alias MoonWeb.Components.Breadcrumbs
   alias __MODULE__.TransactionsFilters
   alias __MODULE__.TransactionsTable
   alias MoonWeb.Pages.ExamplePages.Helpers

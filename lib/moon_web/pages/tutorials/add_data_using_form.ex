@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.ToastStack
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Breadcrumbs
 
   @default_user_map %{
     name: "",
@@ -21,6 +22,18 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     gender: "",
     document_filename: nil
   }
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Tutorials"
+      },
+      %{
+        to: "/tutorials/add-data-using-form",
+        name: "Add Data Using Form"
+      }
+    ]
 
   def mount(%{"theme_name" => theme_name}, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
@@ -53,6 +66,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Mutate data using form</Heading>
 
       <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>

@@ -6,6 +6,19 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Charts"
+      },
+      %{
+        to: "/components/line-chart",
+        name: "Line Chart"
+      }
+    ]
 
   def mount(params, _session, socket) do
     filters = [
@@ -64,6 +77,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>LineChart</Heading>
 
       <p>
@@ -75,7 +89,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode show_state layout="column" id="line_chart_1">
         <:example>
           <LineChartCard
             id="line-chart-card"

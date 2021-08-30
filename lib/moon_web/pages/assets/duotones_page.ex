@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
   def render(assigns) do
     ~F"""
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_1" class="mt-4">
       <:example>
         <CasinoBonus font_size="10rem" color="piccolo-100" />
       </:example>
@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_2" class="mt-4">
       <:example>
         <ClaimedReward font_size="10rem" color="piccolo-100" />
       </:example>
@@ -64,7 +64,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_3" class="mt-4">
       <:example>
         <DynamicRewards font_size="10rem" color="piccolo-100" />
       </:example>
@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_4" class="mt-4">
       <:example>
         <EmailNotVerified font_size="10rem" color="piccolo-100" />
       </:example>
@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_5" class="mt-4">
       <:example>
         <EmailVerification font_size="10rem" color="piccolo-100" />
       </:example>
@@ -100,7 +100,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_6" class="mt-4">
       <:example>
         <EventEnded font_size="10rem" color="piccolo-100" />
       </:example>
@@ -112,7 +112,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_7" class="mt-4">
       <:example>
         <Gift font_size="10rem" color="piccolo-100" />
       </:example>
@@ -124,7 +124,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_8" class="mt-4">
       <:example>
         <HustleToTop font_size="10rem" color="piccolo-100" />
       </:example>
@@ -136,7 +136,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_9" class="mt-4">
       <:example>
         <InviteFriends font_size="10rem" color="piccolo-100" />
       </:example>
@@ -148,7 +148,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_10" class="mt-4">
       <:example>
         <MoneyBack font_size="10rem" color="piccolo-100" />
       </:example>
@@ -160,7 +160,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_11" class="mt-4">
       <:example>
         <NoBets font_size="10rem" color="piccolo-100" />
       </:example>
@@ -172,7 +172,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_12" class="mt-4">
       <:example>
         <NoCasinoGames font_size="10rem" color="piccolo-100" />
       </:example>
@@ -184,7 +184,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_13" class="mt-4">
       <:example>
         <NoData font_size="10rem" color="piccolo-100" />
       </:example>
@@ -196,7 +196,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_14" class="mt-4">
       <:example>
         <NoEvents font_size="10rem" color="piccolo-100" />
       </:example>
@@ -208,7 +208,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_15" class="mt-4">
       <:example>
         <NoFavorite font_size="10rem" color="piccolo-100" />
       </:example>
@@ -220,7 +220,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_16" class="mt-4">
       <:example>
         <NoFreeBet font_size="10rem" color="piccolo-100" />
       </:example>
@@ -232,7 +232,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_17" class="mt-4">
       <:example>
         <NoInternet font_size="10rem" color="piccolo-100" />
       </:example>
@@ -244,7 +244,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_18" class="mt-4">
       <:example>
         <NoMarkets font_size="10rem" color="piccolo-100" />
       </:example>
@@ -256,7 +256,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_19" class="mt-4">
       <:example>
         <NoNotification font_size="10rem" color="piccolo-100" />
       </:example>
@@ -268,7 +268,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_20" class="mt-4">
       <:example>
         <NoParticipations font_size="10rem" color="piccolo-100" />
       </:example>
@@ -280,7 +280,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_21" class="mt-4">
       <:example>
         <NoReward font_size="10rem" color="piccolo-100" />
       </:example>
@@ -292,7 +292,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_22" class="mt-4">
       <:example>
         <NoWithdrawals font_size="10rem" color="piccolo-100" />
       </:example>
@@ -304,7 +304,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_23" class="mt-4">
       <:example>
         <PriceBoost font_size="10rem" color="piccolo-100" />
       </:example>
@@ -316,7 +316,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_24" class="mt-4">
       <:example>
         <TiersAndRewards font_size="10rem" color="piccolo-100" />
       </:example>
@@ -328,7 +328,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_25" class="mt-4">
       <:example>
         <TrackYourProgress font_size="10rem" color="piccolo-100" />
       </:example>
@@ -340,7 +340,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_26" class="mt-4">
       <:example>
         <Trophy font_size="10rem" color="piccolo-100" />
       </:example>
@@ -352,7 +352,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="duotone_27" class="mt-4">
       <:example>
         <YouPlayWePay font_size="10rem" color="piccolo-100" />
       </:example>

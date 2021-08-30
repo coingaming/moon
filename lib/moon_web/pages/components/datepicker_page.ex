@@ -8,6 +8,19 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/datepicker",
+        name: "Datepicker"
+      }
+    ]
 
   defmodule Contract do
     use Ecto.Schema
@@ -50,6 +63,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Datepicker</Heading>
 
       <p>
@@ -64,7 +78,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
       </p>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="datepicker_1">
         <:example>
           <Form for={@changeset} change="validate">
             <Datepicker
@@ -125,7 +139,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
       </p>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="datepicker_2">
         <:example>
           <Form for={@time_changeset} change="time_validate">
             <Datepicker
@@ -165,7 +179,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="datepicker_3">
         <:example>
           <Form for={@range_changeset} change="range_validate">
             <Datepicker
@@ -203,7 +217,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="datepicker_4">
         <:example>
           <Form for={@weekstart_changeset} change="weekstart_validate">
             <Datepicker

@@ -209,8 +209,8 @@ ${modules.map((x:string) => `  alias Crests.${x}`).join('\n')}
     ~F"""
 ${modules
   .map(
-    (x:string) => `
-    <ExampleAndCode class="mt-4">
+    (x:string, i:number) => `
+    <ExampleAndCode id="crest_${i+1}" class="mt-4">
       <#template slot="example">
         <${x} font_size="10rem" />
       </#template>
@@ -250,8 +250,8 @@ ${modules.map((x:string) => `  alias Currencies.${x}`).join('\n')}
     ~F"""
 ${modules
   .map(
-    (x:string) => `
-    <ExampleAndCode class="mt-4">
+    (x:string, i:number) => `
+    <ExampleAndCode id="currency_${i+1}" class="mt-4">
       <#template slot="example">
         <${x} font_size="10rem" />
       </#template>
@@ -290,8 +290,8 @@ ${modules.map((x) => `  alias Duotones.${x}`).join('\n')}
     ~F"""
 ${modules
   .map(
-    (x:string) => `
-    <ExampleAndCode class="mt-4">
+    (x:string, i:number) => `
+    <ExampleAndCode id="duotone_${i+1}"  class="mt-4">
       <#template slot="example">
         <${x} font_size="10rem" color="piccolo-100" />
       </#template>
@@ -330,8 +330,8 @@ ${modules.map((x) => `  alias Icons.${x}`).join('\n')}
   ~F"""
   ${modules
     .map(
-      (x:string) => `
-      <ExampleAndCode class="mt-4">
+      (x:string, i:number) => `
+      <ExampleAndCode id="icon_${i+1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="5rem" />
         </#template>
@@ -370,8 +370,8 @@ ${modules.map((x:string) => `  alias Logos.${x}`).join('\n')}
   ~F"""
   ${modules
     .map(
-      (x) => `
-      <ExampleAndCode class="mt-4">
+      (x:string, i:number) => `
+      <ExampleAndCode id="logo_${i+1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
         </#template>
@@ -410,8 +410,8 @@ ${modules.map((x) => `  alias Patterns.${x}`).join('\n')}
   ~F"""
   ${modules
     .map(
-      (x:string) => `
-      <ExampleAndCode class="mt-4">
+      (x:string, i:number) => `
+      <ExampleAndCode id="pattern_${i+1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
         </#template>

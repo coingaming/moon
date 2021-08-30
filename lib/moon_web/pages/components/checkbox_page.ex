@@ -6,6 +6,19 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/checkbox",
+        name: "Checkbox"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -15,6 +28,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Checkbox</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=929%3A12590">Figma design</Link>
@@ -28,7 +42,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </p>
 
       <Heading size={16}>Checkbox</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_1">
         <:example>
           <Checkbox>
             I agree to receive bonus & marketing emails.
@@ -45,7 +59,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_2">
         <:example>
           <Checkbox disabled="true">
             I agree to receive bonus & marketing emails.
@@ -62,7 +76,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Selected Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_3">
         <:example>
           <Checkbox disabled="true" checked="true">
             I agree to receive bonus & marketing emails.
@@ -79,7 +93,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Checked</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_4">
         <:example>
           <Checkbox checked="true">
             I agree to receive bonus & marketing emails.

@@ -10,6 +10,19 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/toast",
+        name: "Toast"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -24,6 +37,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Toast</Heading>
 
       <p>
@@ -38,7 +52,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ToastStack id="toasts" />
 
-      <ExampleAndCode>
+      <ExampleAndCode id="toast_1">
         <:example>
           <Toast id="minimal" message="Hey! Your toast is ready." />
         </:example>
@@ -63,7 +77,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         You should use <code class="bg-goku-40">ToastStack</code> component for it.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="toast_2">
         <:example>
           <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
 
@@ -129,7 +143,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         Use <code class="bg-goku-40">variant</code> prop.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="toast_3">
         <:example>
           <div class="flex flex-col items-start">
             <Toast
@@ -183,7 +197,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="toast_4">
         <:example>
           <div class="flex flex-col items-start">
             <Toast

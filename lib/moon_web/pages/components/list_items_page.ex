@@ -9,6 +9,19 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.ListItems.SingleLineItem
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/list_items",
+        name: "List Items"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -23,6 +36,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>List item component</Heading>
 
       <p>
@@ -34,7 +48,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
       Medium size (default)
 
-      <ExampleAndCode>
+      <ExampleAndCode id="line_items_1">
         <:example>
           <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
             <SingleLineItem>Single line item</SingleLineItem>
@@ -101,7 +115,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
       Large size
 
-      <ExampleAndCode>
+      <ExampleAndCode id="line_items_2">
         <:example>
           <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
             <SingleLineItem size="large">Single line item</SingleLineItem>

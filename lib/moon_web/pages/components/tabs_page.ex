@@ -2,13 +2,27 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   require Logger
   use MoonWeb, :live_view
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Link
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
+  alias MoonWeb.Components.Breadcrumbs
 
   data(tab_id, :string)
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/tabs",
+        name: "Tabs"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -22,28 +36,29 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32} class="mb-8">Tabs</Heading>
 
-    <Heading size={32} class="mb-8">Tabs</Heading>
+      <p>
+        A menu of items for users to move between sections of the application.
 
-    <p>
-      A menu of items for users to move between sections of the application.
+        By default, tabs will provide an accessible skip link, and overflow with horizontal scrolling.
 
-      By default, tabs will provide an accessible skip link, and overflow with horizontal scrolling.
+        TabLink component provides the tab interaction.
+      </p>
 
-      TabLink component provides the tab interaction.
-    </p>
+      <p class="mt-4">
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A16">Figma design</Link>
+      </p>
+      <p class="mt-4">
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/tabs_page.ex">Sourcecode of this page</Link>
+      </p>
+      <p class="mt-4">
+        <Link to="https://moon.io/components/tabs">React implementation</Link>
+      </p>
 
-    <p class="mt-4">
-      <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A16">Figma design</Link>
-    </p>
-    <p class="mt-4">
-      <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/tabs_page.ex">Sourcecode of this page</Link>
-    </p>
-    <p class="mt-4">
-      <Link to="https://moon.io/components/tabs">React implementation</Link>
-    </p>
-
-    <ExampleAndCode class="mt-4" show_state>
+    <ExampleAndCode id="tabs" class="mt-4" show_state>
       <:example>
         <Tabs>
           <TabLink
@@ -59,8 +74,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         </Tabs>
       </:example>
 
-      <:code>
-        <#CodePreview>
+        <:code>
+          <#CodePreview>
       alias Moon.Components.Tabs
       alias Moon.Components.Tabs.TabLink
 
@@ -79,12 +94,13 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         {:noreply, redirect(socket, to: live_path(socket, __MODULE__, tab_id: item_id, theme_name: socket.assigns.theme_name))}
       end
       </#CodePreview>
-      </:code>
+        </:code>
 
-      <:state>
-        @tab_id = {@tab_id}
-      </:state>
-    </ExampleAndCode>
+        <:state>
+          @tab_id = {@tab_id}
+        </:state>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 

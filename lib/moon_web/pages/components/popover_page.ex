@@ -35,8 +35,21 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
 
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/popover",
+        name: "Popover"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -48,6 +61,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
     {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Popover Component</Heading>
       <Link
         class="mb-4"
@@ -70,7 +84,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
           "left",
           "left-end"
         ]}
-        <ExampleAndCode class="my-12">
+        <ExampleAndCode id={"popover_#{placement}"} class="my-12">
           <:example>
             <PopoverExample id={placement} placement={placement} />
           </:example>
