@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>DropdownMenuButton</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="dropdown_menu_button_1">
         <:example>
           <div class="flex justify-center">
             <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">

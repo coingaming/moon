@@ -1,10 +1,14 @@
 defmodule MoonWeb.Components.ExampleAndCode do
-  use MoonWeb, :stateless_component
+  use Surface.LiveComponent
+
   alias Moon.Components.Badge
+  alias Moon.Components.Switcher
 
   prop class, :string
   prop show_state, :boolean
   prop layout, :string, default: "grid"
+  data tabs, :list, default: ["Preview", "Code"]
+  data selected_tab, :string, default: "Preview"
   slot example
   slot code
   slot state
@@ -12,8 +16,9 @@ defmodule MoonWeb.Components.ExampleAndCode do
   def render(assigns) do
     ~F"""
     <div class={"rounded-lg bg-gohan-100 p-0 #{@class}"}>
-      <div class={"grid grid-cols-1", "sm:grid-cols-2": @layout == "grid"}>
-        <div class="p-6">
+      <Switcher class="justify-end" items={@tabs} selected_item={@selected_tab} click="toggle" />
+      <div class="grid grid-cols-1">
+        <div class={"p-6", hidden: @selected_tab == "Code"}>
           <#slot name="example">
             Example not defined
           </#slot>
@@ -21,7 +26,8 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <div class={
           "border-beerus-100 bg-piccolo-100 text-hit-80 justify-around",
           "sm:border-l": @layout == "grid",
-          "border-t": @layout == "column"
+          "border-t": @layout == "column",
+          hidden: @selected_tab == "Preview"
         }>
           <#slot name="code">
             Example code not defined
@@ -34,5 +40,11 @@ defmodule MoonWeb.Components.ExampleAndCode do
       </div>
     </div>
     """
+  end
+
+  def handle_event("toggle", %{"selected-item" => selected_item}, socket) do
+    {:noreply,
+     socket
+     |> assign(selected_tab: selected_item)}
   end
 end

@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </p>
 
       <Heading size={16} class="mt-4">Example</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_1">
         <:example>
           <Select field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -72,7 +72,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </ExampleAndCode>
 
       <Heading size={16} class="mt-4">With Label</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_2">
         <:example>
           <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -90,7 +90,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       </ExampleAndCode>
 
       <Heading size={16} class="mt-4">Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="select_3">
         <:example>
           <Select
             disabled

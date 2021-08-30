@@ -43,7 +43,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
       <p>We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
       <p>By default font size is 16. You can choose any size.</p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="heading_1">
         <:example>
           <TopToDown>
             <Heading>Heading with default font size</Heading>
@@ -80,7 +80,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
       <Heading size={20} class="mt-4">Is regular</Heading>
       <p>By default font weight is bold. You can make it thiner.</p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="heading_2">
         <:example>
           <TopToDown>
             <Heading size={24}>Heading with default font weight</Heading>
@@ -106,7 +106,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
 
       <p>By default Heading color is bulma.100. You can use any color.</p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="heading_3">
         <:example>
           <TopToDown>
             <Heading size={24}>Heading with default color</Heading>

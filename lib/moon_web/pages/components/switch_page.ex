@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <div id="first_switch">
-        <ExampleAndCode class="mt-3" show_state>
+        <ExampleAndCode class="mt-3" show_state id="switch_1">
           <:example>
             <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
           </:example>
@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         Use <code class="bg-goku-40">size</code> prop. Default size is medium.
       </p>
 
-      <ExampleAndCode class="mt-3">
+      <ExampleAndCode class="mt-3" id="switch_2">
         <:example>
           <TopToDown>
             <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
@@ -105,7 +105,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         Use <code class="bg-goku-40">icons</code> prop. Default value is <code class="bg-goku-40">false</code>.
       </p>
 
-      <ExampleAndCode class="mt-3">
+      <ExampleAndCode class="mt-3" id="switch_3">
         <:example>
           <TopToDown>
             <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
@@ -129,7 +129,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         Use <code class="bg-goku-40">caption_unchecked</code> and <code class="bg-goku-40">caption_checked</code> props.
       </p>
 
-      <ExampleAndCode class="mt-3">
+      <ExampleAndCode class="mt-3" id="switch_4">
         <:example>
           <TopToDown>
             <Switch

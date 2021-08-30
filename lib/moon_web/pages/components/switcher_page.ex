@@ -38,7 +38,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Switcher</Heading>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="switcher">
         <:example>
           <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
         </:example>

@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </p>
 
       <Heading size={16}>Checkbox</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_1">
         <:example>
           <Checkbox>
             I agree to receive bonus & marketing emails.
@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_2">
         <:example>
           <Checkbox disabled="true">
             I agree to receive bonus & marketing emails.
@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Selected Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_3">
         <:example>
           <Checkbox disabled="true" checked="true">
             I agree to receive bonus & marketing emails.
@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </ExampleAndCode>
 
       <Heading size={16}>Checked</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_4">
         <:example>
           <Checkbox checked="true">
             I agree to receive bonus & marketing emails.

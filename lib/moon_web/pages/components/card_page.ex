@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Card</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="card_1">
         <:example>
           <Card title="Winers">
             <:buttons>

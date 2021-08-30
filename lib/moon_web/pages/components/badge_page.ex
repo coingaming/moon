@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         Small count and labeling component.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="badge1">
         <:example>
           <LeftToRight>
             <Badge>
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         You coud simply use color and background_color props
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="badge2">
         <:example>
           <LeftToRight>
             <Badge color="gohan-100" background_color="piccolo-100">
@@ -92,7 +92,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         You coud simply use size prop. By default size is xSmall. You can change it to Small.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="badge3">
         <:example>
           <LeftToRight>
             <Badge>Default</Badge>

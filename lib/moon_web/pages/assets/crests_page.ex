@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def render(assigns) do
     ~F"""
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="crest_1" class="mt-4">
       <:example>
         <CrestArsenal font_size="10rem" />
       </:example>
@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="crest_2" class="mt-4">
       <:example>
         <CrestFlamengo font_size="10rem" />
       </:example>
@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="crest_3" class="mt-4">
       <:example>
         <CrestSaoPaulo font_size="10rem" />
       </:example>
@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="crest_4" class="mt-4">
       <:example>
         <CrestSouthampton font_size="10rem" />
       </:example>
@@ -66,7 +66,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       </:code>
     </ExampleAndCode>
 
-    <ExampleAndCode class="mt-4">
+    <ExampleAndCode id="crest_5" class="mt-4">
       <:example>
         <CrestWatford font_size="10rem" />
       </:example>

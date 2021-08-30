@@ -63,7 +63,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="text_input_1">
         <:example>
           <Form
             for={@user_changeset}
@@ -105,7 +105,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
       The input component in disabled state
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="text_input_2">
         <:example>
           <Form
             for={@user_changeset_disabled}
@@ -139,7 +139,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       {!-- Text input with icon on the left --}
       The input component with icon on the left
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="text_input_3">
         <:example>
           <Form
             for={@user_changeset_left_icon}
@@ -188,7 +188,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       {!-- Text input with two icons --}
       Input component with two icons
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="text_input_4">
         <:example>
           <Form
             for={@user_changeset_two_icons}
@@ -234,7 +234,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       {!-- Text input with two icons with events --}
       Input component with two icons with events
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode show_state id="text_input_5">
         <:example>
           <Form
             for={@user_changeset_two_icons_with_events}

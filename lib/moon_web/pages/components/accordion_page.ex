@@ -33,37 +33,36 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Accordion</Heading>
-
-      <ExampleAndCode show_state>
-        <:example>
-          <Accordion>
-            <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-            </Item>
-            <Item click="open" item_id="2" is_open={@item_id == "2"} title="Customer support">
-              Content
-            </Item>
-            <Item click="open" item_id="3" is_open={@item_id == "3"} title="Deposit & Withdrawals">
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-            </Item>
-          </Accordion>
-        </:example>
-        <:code>
-          <#CodePreview>
+    <ExampleAndCode show_state id="accordian_1">
+      <:example>
+        <Accordion>
+          <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+          </Item>
+          <Item click="open" item_id="2" is_open={@item_id == "2"} title="Customer support">
+            Content
+          </Item>
+          <Item click="open" item_id="3" is_open={@item_id == "3"} title="Deposit & Withdrawals">
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+            Content <br>
+          </Item>
+        </Accordion>
+      </:example>
+      <:code>
+        <#CodePreview>
           <Accordion>
             <Item click="open" item_id="1" is_open={ @item_id == "1" } title="Welcome bonus">
               Content <br />
