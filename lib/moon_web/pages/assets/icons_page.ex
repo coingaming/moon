@@ -289,7 +289,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Icons</Heading>
 
       <ExampleAndCode id="icon_1" class="mt-4">

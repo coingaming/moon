@@ -23,7 +23,7 @@ defmodule MoonWeb.Components.LeftMenu do
         active_page: "MoonWeb.Pages.Tutorials",
         children: [
           %{
-            name: "Introudction",
+            name: "Introduction",
             url: "/theme_name/tutorials/process-description-and-team-interactions"
           },
           %{

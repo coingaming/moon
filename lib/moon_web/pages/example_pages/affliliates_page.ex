@@ -38,7 +38,10 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
       <div class="flex">
         <LeftMenu id="left-menu" />
         <div class="pl-4 pt-4" style="width: calc(100vw - 260px)">
-          <Breadcrumbs breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]} />
+          <Breadcrumbs
+            theme_name={@theme_name}
+            breadcrumbs={[%{name: "Affiliates", to: "/lab-light/example-pages/affiliates"}]}
+          />
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Affiliates"}</Heading>
           {#else}

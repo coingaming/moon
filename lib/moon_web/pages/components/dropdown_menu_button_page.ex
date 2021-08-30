@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>DropdownMenuButton</Heading>
 
       <ExampleAndCode id="dropdown_menu_button_1">

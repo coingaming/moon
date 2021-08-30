@@ -35,7 +35,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
     {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Dropdown multifilter</Heading>
       <Link to="https://www.figma.com/file/Ai0SGAAfoL0bXI88Zn0Eo3/MDS-UI-specs?node-id=1375%3A9769">
         Figma design

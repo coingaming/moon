@@ -222,7 +222,7 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Crests</Heading>
     ${modules
         .map(
@@ -281,7 +281,7 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Currencies</Heading>
     ${modules
         .map(
@@ -339,7 +339,7 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Duotones</Heading>
     ${modules
         .map(
@@ -397,7 +397,7 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Icons</Heading>
     ${modules
         .map(
@@ -455,7 +455,7 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Logos</Heading>
     ${modules
         .map(
@@ -513,7 +513,7 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
-    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
     <Heading size={32} class="mb-8">Patterns</Heading>
     ${modules
         .map(

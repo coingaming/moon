@@ -60,7 +60,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Currencies</Heading>
 
       <ExampleAndCode id="currency_1" class="mt-4">

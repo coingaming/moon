@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Popover Component</Heading>
       <Link
         class="mb-4"

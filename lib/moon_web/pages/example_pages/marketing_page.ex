@@ -8,8 +8,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   alias Shared.LeftMenu
   alias MoonWeb.Components.Breadcrumbs
 
-  data breadcrumbs, :any,
-    default: [%{name: "Marketing", to: "/lab-light/example-pages/marketing"}]
+  data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
 
   @spec mount(nil | maybe_improper_list | map, any, Phoenix.LiveView.Socket.t()) ::
           {:ok, any, [{:layout, {any, any}}, ...]}
@@ -29,7 +28,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
       <div class="flex">
         <LeftMenu id="left-menu" />
         <div class="p-4 pt-8">
-          <Breadcrumbs breadcrumbs={@breadcrumbs} />
+          <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
           <!-- <TransactionsList transactions={@transactions} /> -->
         </div>
