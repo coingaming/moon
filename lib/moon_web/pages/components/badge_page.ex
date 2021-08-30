@@ -6,6 +6,19 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/badge",
+        name: "Badge"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -15,6 +28,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Badge</Heading>
       <p>
         Small count and labeling component.

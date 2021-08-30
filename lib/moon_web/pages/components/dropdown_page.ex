@@ -2,12 +2,26 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   require Logger
   use MoonWeb, :live_view
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Dropdown
   alias Moon.Components.Link
   alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.SingeItemSelect
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/dropdown",
+        name: "Dropdown"
+      }
+    ]
 
   @default_games_list [
     %{label: "Game 1", value: "1"},
@@ -32,25 +46,26 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32} class="mb-8">Dropdown</Heading>
 
-    <Heading size={32} class="mb-8">Dropdown</Heading>
+      <p>
+        Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
+      </p>
+      <p class="mt-4">
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=15965%3A14977">Figma design</Link>
+      </p>
+      <p class="mt-4">
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
+      </p>
+      <p class="mt-4">
+        <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
+      </p>
 
-    <p>
-      Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
-    </p>
-    <p class="mt-4">
-      <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=15965%3A14977">Figma design</Link>
-    </p>
-    <p class="mt-4">
-      <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
-    </p>
-    <p class="mt-4">
-      <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
-    </p>
-
-    <Heading size={24} class="mt-8">
-      <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
-    </Heading>
+      <Heading size={24} class="mt-8">
+        <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
+      </Heading>
 
     <ExampleAndCode class="mt-4" show_state id="dropdown_1">
       <:example>
@@ -189,6 +204,8 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         @game_search = {inspect(@game_search)}
       </:state>
     </ExampleAndCode>
+
+    </TopToDown>
     """
   end
 

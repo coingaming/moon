@@ -7,6 +7,19 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/avatar",
+        name: "Avatar"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -17,6 +30,8 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+
       <Heading size={32}>Avatar</Heading>
 
       <p>

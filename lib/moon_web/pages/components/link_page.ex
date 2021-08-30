@@ -1,11 +1,24 @@
 defmodule MoonWeb.Pages.Components.LinkPage do
   use MoonWeb, :live_view
   alias Moon.Components.Link
-  alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/link",
+        name: "Link"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -15,6 +28,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Link</Heading>
       <p>
         <Link to="#">Figma design</Link>

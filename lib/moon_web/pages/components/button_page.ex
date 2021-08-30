@@ -7,6 +7,19 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/button",
+        name: "Button"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -16,6 +29,8 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+
       <Heading size={32}>Button</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=305%3A2562">Figma design</Link>

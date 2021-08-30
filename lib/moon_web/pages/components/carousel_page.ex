@@ -4,6 +4,19 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/carousel",
+        name: "Carousel"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -13,6 +26,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Carousel</Heading>
 
       <p>

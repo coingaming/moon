@@ -9,7 +9,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
 
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter, SiteFilter}
-  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu, Breadcrumbs}
+  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu}
+  alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.{Users, Segments, Utils}
 

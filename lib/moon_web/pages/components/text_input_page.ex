@@ -12,6 +12,19 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/text_input",
+        name: "Text Input"
+      }
+    ]
 
   @default_user_map %{
     name: "",
@@ -36,6 +49,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Text Input</Heading>
 
       <p>

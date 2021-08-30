@@ -8,6 +8,19 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/datepicker",
+        name: "Datepicker"
+      }
+    ]
 
   defmodule Contract do
     use Ecto.Schema
@@ -50,6 +63,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Datepicker</Heading>
 
       <p>

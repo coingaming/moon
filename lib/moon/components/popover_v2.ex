@@ -50,65 +50,77 @@ defmodule Moon.Components.PopoverV2 do
 
   def wrapper_classes(placement) do
     case placement do
-      "top-start" -> %{
-        outer: "absolute top-0 left-0",
-        inner: "transform -translate-y-full pb-2"
-      }
+      "top-start" ->
+        %{
+          outer: "absolute top-0 left-0",
+          inner: "transform -translate-y-full pb-2"
+        }
 
-      "top" -> %{
-        outer: "absolute left-0 top-0 right-0 flex flex-col items-center",
-        inner: "transform -translate-y-full pb-2"
-      }
+      "top" ->
+        %{
+          outer: "absolute left-0 top-0 right-0 flex flex-col items-center",
+          inner: "transform -translate-y-full pb-2"
+        }
 
-      "top-end" -> %{
-        outer: "absolute top-0 right-0",
-        inner: "transform -translate-y-full pb-2"
-      }
+      "top-end" ->
+        %{
+          outer: "absolute top-0 right-0",
+          inner: "transform -translate-y-full pb-2"
+        }
 
-      "right-start" -> %{
-        outer: "absolute left-0 top-0 right-0",
-        inner: "transform translate-x-full pl-2"
-      }
+      "right-start" ->
+        %{
+          outer: "absolute left-0 top-0 right-0",
+          inner: "transform translate-x-full pl-2"
+        }
 
-      "right" -> %{
-        outer: "absolute left-0 top-0 right-0",
-        inner: "transform translate-x-full -translate-y-1/2 pl-2"
-      }
+      "right" ->
+        %{
+          outer: "absolute left-0 top-0 right-0",
+          inner: "transform translate-x-full -translate-y-1/2 pl-2"
+        }
 
-      "right-end" -> %{
-        outer: "absolute left-0 bottom-0 right-0",
-        inner: "transform translate-x-full pl-2"
-      }
+      "right-end" ->
+        %{
+          outer: "absolute left-0 bottom-0 right-0",
+          inner: "transform translate-x-full pl-2"
+        }
 
-      "bottom-start" -> %{
-        outer: "absolute left-0 bottom-0",
-        inner: "transform translate-y-full pt-2"
-      }
+      "bottom-start" ->
+        %{
+          outer: "absolute left-0 bottom-0",
+          inner: "transform translate-y-full pt-2"
+        }
 
-      "bottom" -> %{
-        outer: "absolute left-0 bottom-0 right-0 flex flex-col items-center",
-        inner: "transform translate-y-full pt-2"
-      }
+      "bottom" ->
+        %{
+          outer: "absolute left-0 bottom-0 right-0 flex flex-col items-center",
+          inner: "transform translate-y-full pt-2"
+        }
 
-      "bottom-end" -> %{
-        outer: "absolute right-0 bottom-0",
-        inner: "transform translate-y-full pt-2"
-      }
+      "bottom-end" ->
+        %{
+          outer: "absolute right-0 bottom-0",
+          inner: "transform translate-y-full pt-2"
+        }
 
-      "left-start" -> %{
-        outer: "absolute left-0 top-0 right-0",
-        inner: "absolute transform -translate-x-full pr-2"
-      }
+      "left-start" ->
+        %{
+          outer: "absolute left-0 top-0 right-0",
+          inner: "absolute transform -translate-x-full pr-2"
+        }
 
-      "left" -> %{
-        outer: "absolute left-0 bottom-0 right-0",
-        inner: "absolute transform -translate-x-full -translate-y-1/2 pr-2"
-      }
+      "left" ->
+        %{
+          outer: "absolute left-0 bottom-0 right-0",
+          inner: "absolute transform -translate-x-full -translate-y-1/2 pr-2"
+        }
 
-      "left-end" -> %{
-        outer: "absolute left-0 bottom-0 right-0",
-        inner: "absolute transform -translate-x-full -translate-y-full pr-2"
-      }
+      "left-end" ->
+        %{
+          outer: "absolute left-0 bottom-0 right-0",
+          inner: "absolute transform -translate-x-full -translate-y-full pr-2"
+        }
     end
   end
 end

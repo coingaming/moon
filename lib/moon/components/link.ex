@@ -15,9 +15,9 @@ defmodule Moon.Components.Link do
     <a
       class={
         "inline-block p-0 bg-transparent border-none no-underline
-         #{@class}",
+               #{@class}",
         "text-piccolo-100 hover:text-piccolo-80 focus:text-piccolo-80 active:text-piccolo-80":
-         !@disabled and !@optional and !@secondary,
+          !@disabled and !@optional and !@secondary,
         "cursor-pointer": !@disabled,
         "cursor-not-allowed opacity-25": @disabled,
         "text-trunks-100": @secondary,

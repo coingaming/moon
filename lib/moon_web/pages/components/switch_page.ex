@@ -6,6 +6,19 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Components.Heading
   alias Moon.Components.Switch
   alias Moon.Components.Link
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/switch",
+        name: "Switch"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -26,6 +39,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Switch</Heading>
 
       <p>

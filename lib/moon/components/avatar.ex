@@ -23,7 +23,7 @@ defmodule Moon.Components.Avatar do
     <div
       class={
         "rounded-full bg-cover justify-center flex font-semibold items-center
-         overflow-hidden uppercase #{@class}",
+               overflow-hidden uppercase #{@class}",
         "text-xs h-6 w-6": @size == "xsmall",
         "text-sm h-8 w-8": @size == "small",
         "text-base h-10 w-10": @size == "medium",

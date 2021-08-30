@@ -6,6 +6,20 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data(breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/heading",
+        name: "Heading"
+      }
+    ]
+  )
 
   def mount(params, _session, socket) do
     {:ok,
@@ -15,6 +29,7 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Heading</Heading>
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=27856%3A9609">Figma design</Link>
