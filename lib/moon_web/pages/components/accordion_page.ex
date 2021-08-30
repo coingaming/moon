@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <Link to="https://moon.io/components/accordion">React implementation</Link>
       </p>
 
-      <ExampleAndCode show_state id="accordian_1">
+      <ExampleAndCode id="accordian_1">
         <:example>
           <Accordion>
             <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">

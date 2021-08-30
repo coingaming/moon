@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
       </p>
 
-      <ExampleAndCode show_state id="datepicker_1">
+      <ExampleAndCode id="datepicker_1">
         <:example>
           <Form for={@changeset} change="validate">
             <Datepicker
@@ -137,7 +137,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
       </p>
 
-      <ExampleAndCode show_state id="datepicker_2">
+      <ExampleAndCode id="datepicker_2">
         <:example>
           <Form for={@time_changeset} change="time_validate">
             <Datepicker

@@ -5,7 +5,6 @@ defmodule MoonWeb.Components.ExampleAndCode do
   alias Moon.Components.Switcher
 
   prop class, :string
-  prop show_state, :boolean
   prop layout, :string, default: "grid"
   data tabs, :list, default: ["Preview", "Code"]
   data selected_tab, :string, default: "Preview"
@@ -34,9 +33,11 @@ defmodule MoonWeb.Components.ExampleAndCode do
           </#slot>
         </div>
       </div>
-      <div class="p-6 border-t border-beerus-100" :if={@show_state}>
+      <div class="p-6 border-t border-beerus-100" :if={slot_assigned?(:state)}>
         <Badge size="small" class="bg-piccolo-100 mb-3">State</Badge>
-        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
+        <pre class="text-xs break-all overflow-x-scroll text-trunks-100">
+          <#slot name="state" />
+        </pre>
       </div>
     </div>
     """

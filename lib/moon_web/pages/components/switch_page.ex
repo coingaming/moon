@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </p>
 
       <div id="first_switch">
-        <ExampleAndCode class="mt-3" show_state id="switch_1">
+        <ExampleAndCode class="mt-3" id="switch_1">
           <:example>
             <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
           </:example>
