@@ -62,13 +62,15 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
 
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Popover Component</Heading>
-      <Link
-        class="mb-4"
-        to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
-      >
-        Sourcecode of this page
-      </Link>
+      <Heading size={32} class="mb-4">Popover Component</Heading>
+
+      <p>
+        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
+        <Link
+          class="mb-4"
+          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+        >Sourcecode of this page</Link>
+      </p>
 
       {#for placement <- [
           "top-start",

@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias Moon.Components.Switcher
   alias MoonWeb.Components.Breadcrumbs
 
@@ -37,6 +38,10 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Switcher</Heading>
+
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
+      </p>
 
       <ExampleAndCode show_state id="switcher">
         <:example>

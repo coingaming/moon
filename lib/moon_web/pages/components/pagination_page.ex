@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias Moon.Components.Pagination
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
@@ -43,6 +44,12 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
       <p>
         Pagination component.
+      </p>
+
+      <p class="m-8">
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=20306%3A0">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/pagination_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/pagination">React implementation</Link>
       </p>
 
       <ExampleAndCode show_state layout="column" id="pagination_1">

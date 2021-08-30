@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias Moon.Components.IconButton
   alias MoonWeb.Components.Breadcrumbs
 
@@ -36,6 +37,10 @@ defmodule MoonWeb.Pages.Components.CardPage do
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Card</Heading>
+
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/card_page.ex">Sourcecode of this page</Link>
+      </p>
 
       <ExampleAndCode id="card_1">
         <:example>

@@ -60,7 +60,6 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
       {!-- Regular text input --}
 
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
 
       <ExampleAndCode show_state id="text_input_1">

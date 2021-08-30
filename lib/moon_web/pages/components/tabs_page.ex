@@ -50,11 +50,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
 
       <p class="mt-4">
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A16">Figma design</Link>
-      </p>
-      <p class="mt-4">
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/tabs_page.ex">Sourcecode of this page</Link>
-      </p>
-      <p class="mt-4">
         <Link to="https://moon.io/components/tabs">React implementation</Link>
       </p>
 

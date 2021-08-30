@@ -55,11 +55,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
       </p>
       <p class="mt-4">
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=15965%3A14977">Figma design</Link>
-      </p>
-      <p class="mt-4">
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
-      </p>
-      <p class="mt-4">
         <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
       </p>
 
