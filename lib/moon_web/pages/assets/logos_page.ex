@@ -3,10 +3,23 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Logos
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/logos",
+        name: "Logos"
+      }
+    ]
+
   alias Logos.LogoAposta10Full
   alias Logos.LogoAposta10Short
   alias Logos.LogoBitcasinoFull
@@ -46,6 +59,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32} class="mb-8">Logos</Heading>
+
       <ExampleAndCode id="logo_1" class="mt-4">
         <:example>
           <LogoAposta10Full font_size="10rem" />
@@ -58,7 +73,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_2" class="mt-4">
         <:example>
           <LogoAposta10Short font_size="10rem" />
@@ -71,7 +85,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_3" class="mt-4">
         <:example>
           <LogoBitcasinoFull font_size="10rem" />
@@ -84,7 +97,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_4" class="mt-4">
         <:example>
           <LogoBitcasinoShort font_size="10rem" />
@@ -97,7 +109,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_5" class="mt-4">
         <:example>
           <LogoBombayFull font_size="10rem" />
@@ -110,7 +121,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_6" class="mt-4">
         <:example>
           <LogoBombayShort font_size="10rem" />
@@ -123,7 +133,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_7" class="mt-4">
         <:example>
           <LogoCommsFull font_size="10rem" />
@@ -136,7 +145,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_8" class="mt-4">
         <:example>
           <LogoCommsShort font_size="10rem" />
@@ -149,7 +157,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_9" class="mt-4">
         <:example>
           <LogoDrop font_size="10rem" />
@@ -162,7 +169,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_10" class="mt-4">
         <:example>
           <LogoHub88Full font_size="10rem" />
@@ -175,7 +181,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_11" class="mt-4">
         <:example>
           <LogoHub88Short font_size="10rem" />
@@ -188,7 +193,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_12" class="mt-4">
         <:example>
           <LogoLabFull font_size="10rem" />
@@ -201,7 +205,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_13" class="mt-4">
         <:example>
           <LogoLivecasinoFull font_size="10rem" />
@@ -214,7 +217,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_14" class="mt-4">
         <:example>
           <LogoLivecasinoShort font_size="10rem" />
@@ -227,7 +229,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_15" class="mt-4">
         <:example>
           <LogoLuckyslotsFull font_size="10rem" />
@@ -240,7 +241,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_16" class="mt-4">
         <:example>
           <LogoLuckyslotsShort font_size="10rem" />
@@ -253,7 +253,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_17" class="mt-4">
         <:example>
           <LogoMissions font_size="10rem" />
@@ -266,7 +265,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_18" class="mt-4">
         <:example>
           <LogoMoneyball font_size="10rem" />
@@ -279,7 +277,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_19" class="mt-4">
         <:example>
           <LogoMoonDesignShort font_size="10rem" />
@@ -292,7 +289,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_20" class="mt-4">
         <:example>
           <LogoMoonDesign font_size="10rem" />
@@ -305,7 +301,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_21" class="mt-4">
         <:example>
           <LogoPoweredByHub88 font_size="10rem" />
@@ -318,7 +313,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_22" class="mt-4">
         <:example>
           <LogoSlotsFull font_size="10rem" />
@@ -331,7 +325,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_23" class="mt-4">
         <:example>
           <LogoSlotsShort font_size="10rem" />
@@ -344,7 +337,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_24" class="mt-4">
         <:example>
           <LogoSportsbetFull font_size="10rem" />
@@ -357,7 +349,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_25" class="mt-4">
         <:example>
           <LogoSportsbetShort font_size="10rem" />
@@ -370,7 +361,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_26" class="mt-4">
         <:example>
           <LogoSportsbetSponsor font_size="10rem" />
@@ -383,7 +373,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_27" class="mt-4">
         <:example>
           <LogoSportsbet font_size="10rem" />
@@ -396,7 +385,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_28" class="mt-4">
         <:example>
           <LogoUtorg font_size="10rem" />
@@ -409,7 +397,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         </:code>
       </ExampleAndCode>
 
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_29" class="mt-4">
         <:example>
           <MoonPay font_size="10rem" />

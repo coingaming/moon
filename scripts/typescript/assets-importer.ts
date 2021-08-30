@@ -197,10 +197,22 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Crests
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/crests",
+        name: "Crests"
+      }
+    ]
 ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -210,10 +222,11 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Crests</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="crest_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
@@ -243,10 +256,22 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Currencies
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/currencies",
+        name: "Currencies"
+      }
+    ]
 ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -256,10 +281,11 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Currencies</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="currency_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
@@ -288,10 +314,22 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Duotones
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/duotones",
+        name: "Duotones"
+      }
+    ]
 ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -301,10 +339,11 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Duotones</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" color="piccolo-100" />
@@ -333,10 +372,22 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Icons
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/icons",
+        name: "Icons"
+      }
+    ]
 ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -346,10 +397,11 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Icons</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="icon_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="5rem" />
@@ -378,10 +430,22 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Logos
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/logos",
+        name: "Logos"
+      }
+    ]
 ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -391,10 +455,11 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Logos</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="logo_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
@@ -423,10 +488,22 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Patterns
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/patterns",
+        name: "Patterns"
+      }
+    ]
 ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
@@ -436,10 +513,11 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
   def render(assigns) do
     ~F"""
     <TopToDown>
+    <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Heading size={32} class="mb-8">Patterns</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
         <#template slot="example">
           <${x} font_size="10rem" />
