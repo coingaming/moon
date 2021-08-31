@@ -43,7 +43,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
       </p>
 
-      <ExampleAndCode show_state id="switcher">
+      <ExampleAndCode id="switcher">
         <:example>
           <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
         </:example>

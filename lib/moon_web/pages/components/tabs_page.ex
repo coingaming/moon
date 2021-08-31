@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         <Link to="https://moon.io/components/tabs">React implementation</Link>
       </p>
 
-      <ExampleAndCode id="tabs" class="mt-4" show_state>
+      <ExampleAndCode id="tabs" class="mt-4">
         <:example>
           <Tabs>
             <TabLink

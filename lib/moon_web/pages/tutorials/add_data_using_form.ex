@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <Heading size={24} class="mt-4" is_regular>With changeset</Heading>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode>
         <:example>
           <ToastStack id="toasts" />
 
@@ -172,7 +172,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <p>Not recommended, only for edge cases - 99% cases DO NOT USE THIS</p>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode>
         <:example>
           <Form for={:user_map} change="update_user_map" submit="save_user_map" autocomplete="off">
             <TopToDown>
