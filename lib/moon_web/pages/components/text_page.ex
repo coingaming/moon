@@ -38,7 +38,6 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Link to="https://moon.io/typography">React implementation</Link>
       </p>
 
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       <p>We treat semantic and visual/cosmetic decisions as two totally <Link to="https://csswizardry.com/2016/02/managing-typography-on-large-apps/">separate</Link> things.</p>
       <p>Our choice of p and span is a purely semantic decision, and doesn't impact cosmetics configured via the size prop.</p>
 

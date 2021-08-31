@@ -39,7 +39,6 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/components/avatar">React implementation</Link>
       </p>
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       Component for displaying user profile image or placeholder if no image
 
       <Heading size={16}>Image avatars</Heading>

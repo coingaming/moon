@@ -44,8 +44,6 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
       </p>
 
-      <Heading size={24} is_regular>Usage</Heading>
-
       Medium size (default)
 
       <ExampleAndCode id="line_items_1">

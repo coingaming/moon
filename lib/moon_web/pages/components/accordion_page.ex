@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias Moon.Components.Accordion.Item
   alias Moon.Components.CodePreview
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
 
   data(item_id, :string, default: "1")
@@ -32,7 +33,14 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Accordion</Heading>
+      <Heading size={32} class="mb-4">Accordion</Heading>
+
+      <p>
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/accordian_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/accordion">React implementation</Link>
+      </p>
+
       <ExampleAndCode show_state id="accordian_1">
         <:example>
           <Accordion>

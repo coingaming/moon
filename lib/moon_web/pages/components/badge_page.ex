@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
 
@@ -32,6 +33,11 @@ defmodule MoonWeb.Pages.Components.BadgePage do
       <Heading size={32}>Badge</Heading>
       <p>
         Small count and labeling component.
+      </p>
+
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/badge">React implementation</Link>
       </p>
 
       <ExampleAndCode id="badge1">

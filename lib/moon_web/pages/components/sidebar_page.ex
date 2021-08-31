@@ -41,12 +41,11 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Sidebar</Heading>
 
-      <p>
+      <p class="mb-8">
+        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
       </p>
-
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
 
       <p>
         Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.

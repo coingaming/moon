@@ -72,8 +72,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <Link to="https://moon.io/components/datepicker">React implementation</Link>
       </p>
 
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
-
       <p>
         <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
       </p>

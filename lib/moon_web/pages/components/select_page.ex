@@ -48,7 +48,6 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/select_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/components/select">React implementation</Link>
       </p>
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
       <p>
         <Heading size={20} class="mt-4">Select</Heading>
         A user-controlled menu of options for forms, navigation and more.

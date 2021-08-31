@@ -37,8 +37,6 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         <Link to="https://moon.io/typography">React implementation</Link>
       </p>
 
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
-
       <Heading size={20} class="mt-4">Sizes</Heading>
       <p>We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
       <p>By default font size is 16. You can choose any size.</p>
