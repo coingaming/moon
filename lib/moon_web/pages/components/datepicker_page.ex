@@ -72,10 +72,6 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         <Link to="https://moon.io/components/datepicker">React implementation</Link>
       </p>
 
-      <p>
-        <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
-      </p>
-
       <ExampleAndCode id="datepicker_1">
         <:example>
           <Form for={@changeset} change="validate">
@@ -128,16 +124,14 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
       </#CodePreview>
         </:code>
 
+        <:note>
+          <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
+        </:note>
+
         <:state>@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>With time</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
-      </p>
-
-      <ExampleAndCode id="datepicker_2">
+      <ExampleAndCode title="With time" id="datepicker_2">
         <:example>
           <Form for={@time_changeset} change="time_validate">
             <Datepicker
@@ -167,17 +161,16 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         </Form>
       </#CodePreview>
         </:code>
-
+        <:note>
+          Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
+        </:note>
         <:state>@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Custom ranges</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
-      </p>
-
-      <ExampleAndCode id="datepicker_3">
+      <ExampleAndCode title="Custom ranges" id="datepicker_3">
+        <:note>
+          Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
+        </:note>
         <:example>
           <Form for={@range_changeset} change="range_validate">
             <Datepicker
@@ -209,13 +202,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
-      </p>
-
-      <ExampleAndCode id="datepicker_4">
+      <ExampleAndCode title="Custom weekstart" id="datepicker_4">
         <:example>
           <Form for={@weekstart_changeset} change="weekstart_validate">
             <Datepicker
@@ -247,6 +234,10 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         </Form>
       </#CodePreview>
         </:code>
+
+        <:note>
+          Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+        </:note>
       </ExampleAndCode>
     </TopToDown>
     """

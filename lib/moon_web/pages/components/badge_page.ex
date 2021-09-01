@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         <Link to="https://moon.io/components/badge">React implementation</Link>
       </p>
 
-      <ExampleAndCode id="badge1">
+      <ExampleAndCode title="Badge" id="badge1">
         <:example>
           <LeftToRight>
             <Badge>
@@ -58,12 +58,10 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         </:code>
       </ExampleAndCode>
 
-      <p>
-        <Heading size={16}>Customize colours</Heading>
-        You coud simply use color and background_color props
-      </p>
-
-      <ExampleAndCode id="badge2">
+      <ExampleAndCode title="Customize colours" id="badge2">
+        <:note>
+          You coud simstly use color and background_color props
+        </:note>
         <:example>
           <LeftToRight>
             <Badge color="gohan-100" background_color="piccolo-100">
@@ -93,12 +91,10 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         </:code>
       </ExampleAndCode>
 
-      <p>
-        <Heading size={16}>Customize size</Heading>
-        You coud simply use size prop. By default size is xSmall. You can change it to Small.
-      </p>
-
-      <ExampleAndCode id="badge3">
+      <ExampleAndCode title="Customize size" id="badge3">
+        <:note>
+          You coud simply use size prop. By default size is xSmall. You can change it to Small.
+        </:note>
         <:example>
           <LeftToRight>
             <Badge>Default</Badge>

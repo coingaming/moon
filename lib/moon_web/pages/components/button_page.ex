@@ -40,10 +40,11 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <Heading size={18} class="mt-4" is_regular>Variants</Heading>
 
-      <Heading size={24} class="mt-4" is_regular>Button Fill</Heading>
+      <ExampleAndCode title="Button Fill" id="button1">
+        <:note>
+          To be used where the the button would be the main call to action on the page.
+        </:note>
 
-      To be used where the the button would be the main call to action on the page.
-      <ExampleAndCode id="button1">
         <:example>
           <Button variant="fill">Fill</Button>
         </:example>
@@ -55,9 +56,10 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Button Outline</Heading>
-      To be used where the the button would be a optional call to action.
-      <ExampleAndCode id="button2">
+      <ExampleAndCode title="Button Outline" id="button2">
+        <:note>
+          To be used where the the button would be a optional call to action.
+        </:note>
         <:example>
           <Button variant="outline">Outline</Button>
         </:example>
@@ -69,9 +71,10 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Link</Heading>
-      To be used where the the button is a link
-      <ExampleAndCode id="button3">
+      <ExampleAndCode title="Link" id="button3">
+        <:note>
+          To be used where the the button is a link
+        </:note>
         <:example>
           <Button variant="link">Link</Button>
         </:example>
@@ -83,9 +86,10 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Link+Icon</Heading>
-      To be used where the the button is a link
-      <ExampleAndCode id="button4">
+      <ExampleAndCode title="Link+Icon" id="button4">
+        <:note>
+          To be used where the the button is a link
+        </:note>
         <:example>
           <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
         </:example>
@@ -97,8 +101,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Button Sizes</Heading>
-      <ExampleAndCode id="button5">
+      <ExampleAndCode title="Button Sizes" id="button5">
         <:example>
           Fill
           <LeftToRight class="items-center">
@@ -161,8 +164,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Full width</Heading>
-      <ExampleAndCode id="button6">
+      <ExampleAndCode title="Full width" id="button6">
         <:example>
           <Button variant="fill" full_width="true">
             Full Width

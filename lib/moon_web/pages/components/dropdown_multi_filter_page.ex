@@ -53,21 +53,21 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         </:example>
         <:code>
           <#CodePreview>
-            <DropdownMultiFilter
-              id={@name}
-              all_items={all_items()}
-              active_values={@active_values}
-              :let={toggle_filter: toggle_filter, is_open: is_open}
+          <DropdownMultiFilter
+            id={@name}
+            all_items={all_items()}
+            active_values={@active_values}
+            :let={toggle_filter: toggle_filter, is_open: is_open}
+          >
+            <Chip
+              on_click={toggle_filter}
+              value="country"
+              right_icon="icon_chevron_down_rounded"
+              active={is_open or length(@active_values) > 0}
             >
-              <Chip
-                on_click={toggle_filter}
-                value="country"
-                right_icon="icon_chevron_down_rounded"
-                active={is_open or length(@active_values) > 0}
-              >
-                {"Country #{length(@active_values) |> Helpers.format_filter_count()}"}
-              </Chip>
-            </DropdownMultiFilter>
+              {"Country #{length(@active_values) |> Helpers.format_filter_count()}"}
+            </Chip>
+          </DropdownMultiFilter>
           </#CodePreview>
         </:code>
         <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
@@ -79,22 +79,22 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         </:example>
         <:code>
           <#CodePreview>
-            <DropdownMultiFilter
-              id={@name}
-              all_items={all_items()}
-              active_values={@active_values}
-              disable_search={true}
-              :let={toggle_filter: toggle_filter, is_open: is_open}
+          <DropdownMultiFilter
+            id={@name}
+            all_items={all_items()}
+            active_values={@active_values}
+            disable_search={true}
+            :let={toggle_filter: toggle_filter, is_open: is_open}
+          >
+            <Chip
+              on_click={toggle_filter}
+              value="site"
+              right_icon="icon_chevron_down_rounded"
+              active={is_open or length(@active_values) > 0}
             >
-              <Chip
-                on_click={toggle_filter}
-                value="site"
-                right_icon="icon_chevron_down_rounded"
-                active={is_open or length(@active_values) > 0}
-              >
-                {"Brands #{length(@active_values) |> Helpers.format_filter_count()}"}
-              </Chip>
-            </DropdownMultiFilter>
+              {"Brands #{length(@active_values) |> Helpers.format_filter_count()}"}
+            </Chip>
+          </DropdownMultiFilter>
           </#CodePreview>
         </:code>
         <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
