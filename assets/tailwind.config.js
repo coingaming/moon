@@ -1,5 +1,4 @@
 const plugin = require('tailwindcss/plugin')
-const invalidPlugin = require('./tailwind/variants/invalid')
 
 module.exports = {
   mode: "jit",
@@ -107,29 +106,8 @@ module.exports = {
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
-    plugin(invalidPlugin),
     plugin(({ addUtilities }) => {
-      addUtilities({
-        ".no-scrollbar::-webkit-scrollbar": {
-          "display": "none"
-        },
-        ".no-scrollbar": {
-          "-ms-overflow-style": "none",
-          "scrollbar-width": "none"
-        },
-        ".scroll-snap-x-mandatory": {
-          "scroll-snap-type": "x mandatory"
-        },
-        ".scroll-snap-align-start": {
-          "scroll-snap-align": "start"
-        }
-        // ".data-rounded": {
-        //   "border-radius": 'var(--radius--largest)'
-        // },
-        // ".data-error": {
-        //   "border-color": 'var(--color--chi-chi-100)' // border-chi-chi-100
-        // }
-      })
+      addUtilities({})
     })
   ],
 };

@@ -19,11 +19,24 @@
   }
   .moon-asset {
     @apply inline-block align-middle w-auto h-auto;
-  }    
+  }
   .moon-duotone {
     @apply inline-block align-middle w-auto h-auto text-piccolo-100;
   }
   .moon-pattern {
     @apply inline-block align-middle w-auto h-auto text-piccolo-100;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scroll-snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+  .scroll-snap-align-start {
+    scroll-snap-align: start;
   }
 }
