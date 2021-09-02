@@ -1,5 +1,5 @@
 <main role="main" class="flex items-start h-screen overflow-hidden">
-  <%= live_component @socket, MoonWeb.Components.LeftMenu, id: "left-menu", theme_name: assigns.theme_name, active_page: assigns.active_page %>
+  <%= live_component @socket, MoonWeb.Components.LeftMenu, id: "left-menu", theme_name: assigns.theme_name, active_page: assigns.active_page, uri: assigns[:uri] %>
 
   <div class="flex-1 h-screen overflow-auto">
     <div class="max-w-6xl px-4 md:px-8 py-6">

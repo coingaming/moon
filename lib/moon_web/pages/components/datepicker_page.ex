@@ -60,6 +60,10 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>

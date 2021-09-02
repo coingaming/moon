@@ -12,16 +12,16 @@
     vertical-align: top;
   }
   .moon-currency {
-    @apply inline-block align-middle w-auto h-auto;
+    @apply inline-block align-middle h-[1em] w-[1em];
   }
   .moon-asset {
-    @apply inline-block align-middle w-auto h-auto;
+    @apply inline-block align-middle h-[1em] w-[1em];
   }
   .moon-duotone {
-    @apply inline-block align-middle w-auto h-auto text-piccolo-100;
+    @apply inline-block align-middle h-[1em] w-[1em] text-piccolo-100;
   }
   .moon-pattern {
-    @apply inline-block align-middle w-auto h-auto text-piccolo-100;
+    @apply inline-block align-middle h-[1em] w-[1em] text-piccolo-100;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
