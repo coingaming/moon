@@ -2,15 +2,229 @@ defmodule MoonWeb.Components.LeftMenu do
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Logos.LogoMoonDesignShort
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
+  alias Surface.Components.LiveRedirect
   alias Moon.Components.Sidebar
   alias Moon.Components.Form
   alias Moon.Components.Select
+  alias Moon.Components.Accordion
+  alias Moon.Components.Accordion.Item
 
-  data(selected_theme, :any)
-  prop(theme_name, :any)
+  prop theme_name, :any
+  prop active_page, :any
+  data selected_theme, :any
+  data item_id, :string, default: "MoonWeb.Pages.Tutorials.Introduction"
+
+  data navigations, :any,
+    default: [
+      %{
+        name: "Tutorials",
+        url: "/",
+        active_page: "MoonWeb.Pages.Tutorials",
+        children: [
+          %{
+            name: "Introudction",
+            url: "/theme_name/tutorials/process-description-and-team-interactions"
+          },
+          %{
+            name: "Installation",
+            url: "/theme_name/tutorials/installation"
+          },
+          %{
+            name: "Add data using form",
+            url: "/theme_name/tutorials/add-data-using-form"
+          },
+          %{name: "New site on Moon", url: "/lab-light/example-pages/transactions"},
+          %{name: "", url: "/theme"}
+        ]
+      },
+      %{
+        name: "Theming & Visuals",
+        url: "/",
+        active_page: "MoonWeb.Pages.Theming.ThemingAndVisuals",
+        children: [
+          %{
+            name: "Text Color",
+            url: "/theme_name/tutorials/theming-and-visuals#text-color"
+          },
+          %{
+            name: "Background Color",
+            url: "/theme_name/tutorials/theming-and-visuals#background-color"
+          },
+          %{name: "", url: "theme/tutorials/theming-and-visuals#background-color"},
+          %{
+            name: "Border radius",
+            url: "/theme_name/tutorials/theming-and-visuals#border-radius"
+          },
+          %{
+            name: "Margin",
+            url: "/theme_name/tutorials/theming-and-visuals#margin"
+          },
+          %{
+            name: "Padding",
+            url: "/theme_name/tutorials/theming-and-visuals#padding"
+          },
+          %{
+            name: "Responsive Layout",
+            url: "/theme_name/tutorials/theming-and-visuals#responsive-layout"
+          }
+        ]
+      },
+      %{
+        name: "Assets",
+        url: "/",
+        active_page: "MoonWeb.Pages.Assets",
+        children: [
+          %{
+            name: "Crests",
+            url: "/theme_name/assets/crests"
+          },
+          %{
+            name: "Currencies",
+            url: "/theme_name/assets/currencies"
+          },
+          %{
+            name: "Duotones",
+            url: "/theme_name/assets/duotones"
+          },
+          %{
+            name: "Icons",
+            url: "/theme_name/assets/icons"
+          },
+          %{
+            name: "Logos",
+            url: "/theme_name/assets/logos"
+          },
+          %{
+            name: "Patterns",
+            url: "/theme_name/assets/patterns"
+          }
+        ]
+      },
+      %{
+        name: "Components",
+        url: "/",
+        active_page: "MoonWeb.Pages.Components",
+        children: [
+          %{
+            name: "Accordion",
+            url: "/theme_name/components/accordion"
+          },
+          %{
+            name: "Avatar",
+            url: "/theme_name/components/avatar"
+          },
+          %{
+            name: "Badge",
+            url: "/theme_name/components/badge"
+          },
+          %{
+            name: "Button",
+            url: "/theme_name/components/button"
+          },
+          %{
+            name: "Calendar",
+            url: "/theme_name/components/calendar"
+          },
+          %{
+            name: "Card",
+            url: "/theme_name/components/card"
+          },
+          %{
+            name: "Carousel",
+            url: "/theme_name/components/carousel"
+          },
+          %{
+            name: "Checkbox",
+            url: "/theme_name/components/checkbox"
+          },
+          %{
+            name: "Checkbox multiselect",
+            url: "/theme_name/components/dropdown#checkbox-multiselect"
+          },
+          %{
+            name: "Datepicker",
+            url: "/theme_name/components/datepicker"
+          },
+          %{
+            name: "Dropdown",
+            url: "/theme_name/components/dropdown"
+          },
+          %{
+            name: "Dropdown Menu Button",
+            url: "/theme_name/components/dropdown_menu_button"
+          },
+          %{
+            name: "Dropdown MultiFilter",
+            url: "/theme_name/components/dropdown_multi_filter"
+          },
+          %{
+            name: "File Input",
+            url: "/theme_name/components/file-input"
+          },
+          %{
+            name: "Heading",
+            url: "/theme_name/components/heading"
+          },
+          %{
+            name: "Link",
+            url: "/theme_name/components/link"
+          },
+          %{
+            name: "List Items",
+            url: "/theme_name/components/list_items"
+          },
+          %{
+            name: "Pagination",
+            url: "/theme_name/components/pagination"
+          },
+          %{
+            name: "Popover",
+            url: "/theme_name/components/popover"
+          },
+          %{
+            name: "Select",
+            url: "/theme_name/components/select"
+          },
+          %{
+            name: "Sidebar",
+            url: "/theme_name/components/sidebar"
+          },
+          %{
+            name: "SingleItemSelect",
+            url: "/theme_name/components/dropdown#single-item-select"
+          },
+          %{
+            name: "Switch",
+            url: "/theme_name/components/switch"
+          },
+          %{
+            name: "Switcher",
+            url: "/theme_name/components/switcher"
+          },
+          %{
+            name: "Tabs",
+            url: "/theme_name/components/tabs"
+          },
+          %{
+            name: "Text",
+            url: "/theme_name/components/text"
+          },
+          %{
+            name: "Text input",
+            url: "/theme_name/components/text_input"
+          },
+          %{
+            name: "Toast",
+            url: "/theme_name/components/toast"
+          },
+          %{
+            name: "Tooltip",
+            url: "/theme_name/components/tooltip"
+          }
+        ]
+      }
+    ]
 
   @available_themes [
     [key: "Aposta10 dark", value: "aposta10-dark"],
@@ -50,6 +264,10 @@ defmodule MoonWeb.Components.LeftMenu do
     {:noreply, redirect(socket, to: new_path)}
   end
 
+  def handle_event("open", %{"item_id" => item_id}, socket) do
+    {:noreply, assign(socket, item_id: item_id)}
+  end
+
   def render(assigns) do
     ~F"""
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
@@ -69,65 +287,33 @@ defmodule MoonWeb.Components.LeftMenu do
 
       <:menu>
         <nav class="mt-5">
-          <Stack class="">
-            <Heading size={20}>Tutorials</Heading>
-            <Link to={"/#{@theme_name}/tutorials/process-description-and-team-interactions"}>Introduction</Link>
-            <Link to={"/#{@theme_name}/tutorials/installation"}>Installation</Link>
-            <Link to={"/#{@theme_name}/tutorials/add-data-using-form"}>Add data using form</Link>
-            <Link to="/lab-light/example-pages/transactions">New site on Moon</Link>
-
-            <Heading size={20}>Theming and visuals</Heading>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#text-color"}>Text color</Link>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#background-color"}>Background color</Link>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#border-radius"}>Border radius</Link>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#margin"}>Margin</Link>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#padding"}>Padding</Link>
-            <Link to={"/#{@theme_name}/tutorials/theming-and-visuals#responsive-layout"}>Responsive layout</Link>
-
-            <Heading size={20}>Assets</Heading>
-            <Link to={"/#{@theme_name}/assets/crests"}>Crests</Link>
-            <Link to={"/#{@theme_name}/assets/currencies"}>Currencies</Link>
-            <Link to={"/#{@theme_name}/assets/duotones"}>Duotones</Link>
-            <Link to={"/#{@theme_name}/assets/icons"}>Icons</Link>
-            <Link to={"/#{@theme_name}/assets/logos"}>Logos</Link>
-            <Link to={"/#{@theme_name}/assets/patterns"}>Patterns</Link>
-
-            <Heading size={20}>Components</Heading>
-            <Link to={"/#{@theme_name}/components/accordion"}>Accordion</Link>
-            <Link to={"/#{@theme_name}/components/avatar"}>Avatar</Link>
-            <Link to={"/#{@theme_name}/components/badge"}>Badge</Link>
-            <Link to={"/#{@theme_name}/components/button"}>Button</Link>
-            <Link to={"/#{@theme_name}/components/calendar"}>Calendar</Link>
-            <Link to={"/#{@theme_name}/components/card"}>Card</Link>
-            <Link to={"/#{@theme_name}/components/carousel"}>Carousel</Link>
-            <Link to={"/#{@theme_name}/components/checkbox"}>Checkbox</Link>
-            <Link to={"/#{@theme_name}/components/dropdown#checkbox-multiselect"}>Checkbox multiselect</Link>
-            <Link to={"/#{@theme_name}/components/datepicker"}>Datepicker</Link>
-            <Link to={"/#{@theme_name}/components/dropdown"}>Dropdown</Link>
-            <Link to={"/#{@theme_name}/components/dropdown_menu_button"}>Dropdown Menu Button</Link>
-            <Link to={"/#{@theme_name}/components/dropdown_multi_filter"}>Dropdown MultiFilter</Link>
-            <Link to={"/#{@theme_name}/components/file-input"}>File Input</Link>
-            <Link to={"/#{@theme_name}/components/heading"}>Heading</Link>
-            <Link to={"/#{@theme_name}/components/link"}>Link</Link>
-            <Link to={"/#{@theme_name}/components/pagination"}>Pagination</Link>
-            <Link to={"/#{@theme_name}/components/popover"}>Popover</Link>
-            <Link to={"/#{@theme_name}/components/select"}>Select</Link>
-            <Link to={"/#{@theme_name}/components/sidebar"}>Sidebar</Link>
-            <Link to={"/#{@theme_name}/components/dropdown#single-item-select"}>SingleItemSelect</Link>
-            <Link to={"/#{@theme_name}/components/switch"}>Switch</Link>
-            <Link to={"/#{@theme_name}/components/switcher"}>Switcher</Link>
-            <Link to={"/#{@theme_name}/components/tabs"}>Tabs</Link>
-            <Link to={"/#{@theme_name}/components/text"}>Text</Link>
-            <Link to={"/#{@theme_name}/components/text_input"}>Text input</Link>
-            <Link to={"/#{@theme_name}/components/toast"}>Toast</Link>
-            <Link to={"/#{@theme_name}/components/tooltip"}>Tooltip</Link>
-
-            <Heading size={20}>Charts</Heading>
-            <Link to={"/#{@theme_name}/charts/line-chart"}>LineChart</Link>
-          </Stack>
+          <TopToDown class="">
+            <Accordion>
+              {#for nav <- @navigations}
+                <Item
+                  click="open"
+                  item_id={"#{nav.active_page}"}
+                  is_open={should_be_open(Atom.to_string(@active_page), nav.active_page, @item_id)}
+                  title={"#{nav.name}"}
+                >
+                  {#for nav_item <- nav.children}
+                    <LiveRedirect class="block mt-3" to={String.replace(nav_item.url, "theme_name", @theme_name)}>{nav_item.name}</LiveRedirect>
+                  {/for}
+                </Item>
+              {/for}
+            </Accordion>
+          </TopToDown>
         </nav>
       </:menu>
     </Sidebar>
     """
+  end
+
+  defp should_be_open(current_active_page, item_active_page, item_id) do
+    cond do
+      item_active_page == item_id -> true
+      String.contains?(current_active_page, item_active_page) -> true
+      true -> false
+    end
   end
 end

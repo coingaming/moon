@@ -8,6 +8,19 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/dropdown_multi_filter",
+        name: "DropdownMultiFilter"
+      }
+    ]
 
   data country_filter_values, :list, default: []
   data site_filter_values, :list, default: []
@@ -22,6 +35,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
     {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Dropdown multifilter</Heading>
       <Link to="https://www.figma.com/file/Ai0SGAAfoL0bXI88Zn0Eo3/MDS-UI-specs?node-id=1375%3A9769">
         Figma design
@@ -33,7 +47,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         Sourcecode of this page
       </Link>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode id="dropdown_multi_filter_1">
         <:example>
           <CountryFilter active_values={@country_filter_values} />
         </:example>
@@ -59,7 +73,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode id="dropdown_multi_filter_2">
         <:example>
           <SiteFilter active_values={@site_filter_values} />
         </:example>

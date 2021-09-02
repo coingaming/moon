@@ -1,5 +1,6 @@
 defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   use MoonWeb, :live_view
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
@@ -7,13 +8,13 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
-  alias Moon.Components.Stack
   alias Moon.Components.Switch
   alias Moon.Components.TextInput
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Breadcrumbs
 
   @default_user_map %{
     name: "",
@@ -21,6 +22,18 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     gender: "",
     document_filename: nil
   }
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Tutorials"
+      },
+      %{
+        to: "/tutorials/add-data-using-form",
+        name: "Add Data Using Form"
+      }
+    ]
 
   def mount(%{"theme_name" => theme_name}, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
@@ -52,7 +65,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Mutate data using form</Heading>
 
       <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
@@ -63,7 +77,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <Heading size={24} class="mt-4" is_regular>With changeset</Heading>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode id="add_data_using_form_1">
         <:example>
           <ToastStack id="toasts" />
 
@@ -73,7 +87,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             submit="save_user_changeset"
             autocomplete="off"
           >
-            <Stack>
+            <TopToDown>
               <div class="flex items-center">
                 <Switch checked={@lock_fields} on_change="lock_form_fields" />
                 <span class="ml-3">Lock fields</span>
@@ -98,9 +112,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
 
-              <Button variant="primary" type="submit">Save</Button>
-              <Button variant="secondary" on_click="clear_changeset_form">Cancel</Button>
-            </Stack>
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
+            </TopToDown>
           </Form>
         </:example>
 
@@ -109,7 +123,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         <ToastStack id="toasts" />
 
         <Form for={ @user_changeset } change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-          <Stack>
+          <TopToDown>
             <div class="flex items-center">
               <Switch checked={ @lock_fields }} on_change="lock_form_fields" />
               <span class="ml-3">Lock fields</span>
@@ -131,9 +145,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               placeholder="Choose a document..."
             />
 
-            <Button variant="primary" type="submit">Save</Button>
-            <Button variant="secondary" on_click="clear_form">Cancel</Button>
-          </Stack>
+            <Button variant="fill" type="submit" full_width>Save</Button>
+            <Button variant="outline" on_click="clear_form">Cancel</Button>
+          </TopToDown>
         </Form>
 
         def handle_event("save_user_changeset", _, socket) do
@@ -158,10 +172,10 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <p>Not recommended, only for edge cases - 99% cases DO NOT USE THIS</p>
 
-      <ExampleAndCode show_state>
+      <ExampleAndCode id="add_data_using_form_2">
         <:example>
           <Form for={:user_map} change="update_user_map" submit="save_user_map" autocomplete="off">
-            <Stack>
+            <TopToDown>
               <TextInput label="Name" field={:name} value={@user_map.name} />
               <TextInput label="Email" field={:email} value={@user_map.email} />
 
@@ -173,9 +187,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
                 prompt="Please select gender"
               />
 
-              <Button variant="primary" type="submit">Save</Button>
-              <Button variant="secondary" on_click="clear_simple_form">Cancel</Button>
-            </Stack>
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_simple_form">Cancel</Button>
+            </TopToDown>
           </Form>
         </:example>
 
@@ -193,15 +207,15 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
             prompt="Please select gender"
           />
 
-          <Button variant="primary" type="submit">Save</Button>
-          <Button variant="secondary" on_click="clear_form">Cancel</Button>
+          <Button variant="fill" type="submit" full_width>Save</Button>
+          <Button variant="outline" on_click="clear_form">Cancel</Button>
         </Form>
       </#CodePreview>
         </:code>
 
         <:state>@user_map = {inspect(@user_map)}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

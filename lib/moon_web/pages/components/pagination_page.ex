@@ -3,8 +3,22 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias Moon.Components.Pagination
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/pagination",
+        name: "Pagination"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -24,14 +38,21 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Pagination</Heading>
 
       <p>
         Pagination component.
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <p class="m-8">
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=20306%3A0">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/pagination_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/pagination">React implementation</Link>
+      </p>
+
+      <ExampleAndCode layout="column" id="pagination_1">
         <:example>
           <Pagination
             current_page_number={@current_page_number}
@@ -76,9 +97,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
       </p>
 
-      <ExampleAndCode layout="column">
+      <ExampleAndCode layout="column" id="pagination_2">
         <:example>
-          <Stack>
+          <TopToDown>
             <Pagination
               size="xsmall"
               current_page_number={@size_page_number}
@@ -106,7 +127,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
               total_pages={@total_pages}
               on_change="change_size_page"
             />
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
@@ -124,9 +145,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
       <Heading size={24} class="mt-4" is_regular>Example with a side section</Heading>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode layout="column" id="pagination_3">
         <:example>
-          <Stack>
+          <TopToDown>
             <div class="flex flex-wrap items-center">
               <div class="w-1/4 mb-4 text-xs">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
 
@@ -139,7 +160,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
                 />
               </div>
             </div>
-          </Stack>
+          </TopToDown>
         </:example>
 
         <:code>
@@ -170,7 +191,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
         <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

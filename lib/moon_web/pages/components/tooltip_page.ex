@@ -4,6 +4,19 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.{Heading, Button, CodePreview, Link, Tooltip}
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/tooltip",
+        name: "Tooltip"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -14,6 +27,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-8">Popover Component</Heading>
       <Link
         class="mb-4"
@@ -22,7 +36,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         Sourcecode of this page
       </Link>
       {#for placement <- ["top", "right", "bottom", "left"]}
-        <ExampleAndCode class="my-12">
+        <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
           <:example>
             <Tooltip placement={placement} text={placement}>
               <Button variant="primary">Hover Me</Button>

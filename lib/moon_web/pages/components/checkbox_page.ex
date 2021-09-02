@@ -1,12 +1,24 @@
 defmodule MoonWeb.Pages.Components.CheckboxPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Stack
   alias Moon.Components.Checkbox
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/checkbox",
+        name: "Checkbox"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -16,6 +28,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Checkbox</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=929%3A12590">Figma design</Link>
@@ -29,85 +42,69 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       </p>
 
       <Heading size={16}>Checkbox</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_1">
         <:example>
-          <Stack>
-            <Checkbox>
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox>
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox>
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
 
       <Heading size={16}>Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_2">
         <:example>
-          <Stack>
-            <Checkbox disabled="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox disabled="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox disabled="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
 
       <Heading size={16}>Selected Disabled</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_3">
         <:example>
-          <Stack>
-            <Checkbox disabled="true" checked="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox disabled="true" checked="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox disabled="true" checked="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
 
       <Heading size={16}>Checked</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="checkbox_4">
         <:example>
-          <Stack>
-            <Checkbox checked="true">
-              I agree to receive bonus & marketing emails.
-            </Checkbox>
-          </Stack>
+          <Checkbox checked="true">
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
         </:example>
 
         <:code>
           <#CodePreview>
-      <Stack>
         <Checkbox checked="true">
           I agree to receive bonus & marketing emails.
         </Checkbox>
-      </Stack>
     </#CodePreview>
         </:code>
       </ExampleAndCode>

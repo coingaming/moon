@@ -4,7 +4,20 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/file-input",
+        name: "File Input"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -21,7 +34,8 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>File Input</Heading>
 
       <p>
@@ -30,7 +44,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
       <Heading size={24} class="mt-4" is_regular>Label</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="file_input_1">
         <:example>
           <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a photo..." />
         </:example>
@@ -59,7 +73,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
       <Heading size={24} class="mt-4" is_regular>Error</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="file_input_2">
         <:example>
           <FileInput conf={@uploads.error_file} error />
         </:example>
@@ -73,7 +87,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end

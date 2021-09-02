@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin')
-const invalidPlugin = require('./tailwind/variants/invalid')
 
 module.exports = {
+  mode: "jit",
   purge: [
     '../lib/**/*.ex',
     '../lib/**/*.leex',
@@ -103,38 +103,11 @@ module.exports = {
       hover: 'rgba(0, 0, 0, 0.08)',
     },
   },
-  variants: {
-    dataError: ["focus"],
-    extend: {
-      scale: ['group-hover'],
-      borderWidth: ['group-hover', 'last'],
-      boxShadow: ['invalid'],
-      backgroundColor: ['checked'],
-      borderColor: ['checked'],
-      textColor: ['disabled'],
-      width: ['hover', 'focus']
-    },
-  },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
-    plugin(invalidPlugin),
     plugin(({ addUtilities }) => {
-      addUtilities({
-        ".no-scrollbar::-webkit-scrollbar": {
-          "display": "none"
-        },
-        ".no-scrollbar": {
-          "-ms-overflow-style": "none",
-          "scrollbar-width": "none"
-        },
-        // ".data-rounded": {
-        //   "border-radius": 'var(--radius--largest)'
-        // },
-        // ".data-error": {
-        //   "border-color": 'var(--color--chi-chi-100)' // border-chi-chi-100
-        // }
-      })
+      addUtilities({})
     })
   ],
 };

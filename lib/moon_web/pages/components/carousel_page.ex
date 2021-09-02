@@ -1,7 +1,24 @@
 defmodule MoonWeb.Pages.Components.CarouselPage do
   use MoonWeb, :live_view
   alias Moon.Components.Carousel
+  alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/carousel",
+        name: "Carousel"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -10,37 +27,55 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
   def render(assigns) do
     ~F"""
-    <h1>Carousel</h1>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32}>Carousel</Heading>
 
-    <p>
-      An interactive extension of the Reel component to cycle through content.
-    </p>
+      <p>
+        An interactive extension of the Reel component to cycle through content.
+      </p>
 
-    <div>
-      <style>
-        .item {
-        display: inline-block;
-        background-color: var(--color--gohan-100);
-        padding: 300px;
-        margin-right: 20px;
-        scroll-snap-align: start;
-        }
-      </style>
-      <Carousel>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-        <div class="item">Item</div>
-      </Carousel>
-    </div>
+      <p>
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/carousel_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/accordion">React implementation</Link>
+      </p>
 
-    <#CodePreview>
+      <ExampleAndCode id="carousel_1">
+        <:example>
+          <div>
+            <Carousel>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            </Carousel>
+          </div>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+    <Carousel>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+      <div class="item">Item</div>
+    </Carousel>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end

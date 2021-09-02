@@ -1,11 +1,25 @@
 defmodule MoonWeb.Pages.Components.SwitcherPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
+  alias Moon.Components.Link
   alias Moon.Components.Switcher
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/switcher",
+        name: "Switcher"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -21,10 +35,15 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Switcher</Heading>
 
-      <ExampleAndCode show_state>
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
+      </p>
+
+      <ExampleAndCode id="switcher">
         <:example>
           <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
         </:example>
@@ -48,7 +67,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
         <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

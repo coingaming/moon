@@ -5,12 +5,25 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Sidebar
-  alias Moon.Components.Stack
+  alias Moon.Autolayouts.TopToDown
 
   alias Moon.Assets.Icons.IconSlots
   alias Moon.Assets.Icons.IconSportsBaseBall
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/sidebar",
+        name: "Sidebar"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -24,15 +37,15 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Sidebar</Heading>
 
-      <p>
+      <p class="mb-8">
+        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
         <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
       </p>
-
-      <Heading size={24} class="mt-4" is_regular>Usage</Heading>
 
       <p>
         Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
@@ -50,7 +63,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
       </p>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="sidebar_1">
         <:example>
           <Sidebar background_color="bg-gohan-100" open_width="14rem">
             <:short_logo>
@@ -67,7 +80,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
             <:menu>
               <nav class="mt-5">
-                <Stack>
+                <TopToDown>
                   <a href="#" class="flex items-center group">
                     <IconSlots
                       font_size="1.75rem"
@@ -82,7 +95,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                     />
                     <span class="group-hover:text-piccolo-100">Baseball</span>
                   </a>
-                </Stack>
+                </TopToDown>
               </nav>
             </:menu>
           </Sidebar>
@@ -91,7 +104,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         <:code>
           <#CodePreview>
         alias Moon.Components.Sidebar
-        alias Moon.Components.Stack
+        alias Moon.Components.TopToDown
         alias Moon.Assets.Icons.IconSlots
         alias Moon.Assets.Icons.IconSportsBaseBall
         alias Moon.Assets.Logos.LogoBitcasinoFull
@@ -112,7 +125,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
           <template slot="menu">
             <nav class="mt-5">
-              <Stack>
+              <TopToDown>
                 <a href="#" class="flex items-center group">
                   <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Slots</span>
@@ -121,14 +134,14 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                   <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Baseball</span>
                 </a>
-              </Stack>
+              </TopToDown>
             </nav>
           </template>
         </Sidebar>
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end

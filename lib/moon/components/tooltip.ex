@@ -2,6 +2,7 @@ defmodule Moon.Components.Tooltip do
   use Moon.StatelessComponent
 
   prop text, :string, required: true
+
   prop placement, :string,
     values: ["top", "right", "bottom", "left"],
     required: true
@@ -11,10 +12,7 @@ defmodule Moon.Components.Tooltip do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
-    <div
-      class="relative inline-block"
-      x-data="{ tooltip: false, timeout: null }"
-    >
+    <div class="relative inline-block" x-data="{ tooltip: false, timeout: null }">
       {#case @placement}
         {#match "top"}
           <div x-cloak x-show="tooltip" class="absolute left-0 top-0 right-0 flex flex-col items-center">
@@ -28,7 +26,7 @@ defmodule Moon.Components.Tooltip do
             </div>
           </div>
 
-        {!-- TODO: right alignment is not perfect, need to find an another way --}
+          {!-- TODO: right alignment is not perfect, need to find an another way --}
         {#match "right"}
           <div x-cloak x-show="tooltip" class="absolute left-0 top-0 right-0">
             <div class="flex items-center transform translate-x-full -translate-y-1/4">
@@ -40,7 +38,6 @@ defmodule Moon.Components.Tooltip do
               </div>
             </div>
           </div>
-
         {#match "bottom"}
           <div x-cloak x-show="tooltip" class="absolute left-0 bottom-0 right-0 flex flex-col items-center">
             <div class="transform translate-y-full">
@@ -53,7 +50,7 @@ defmodule Moon.Components.Tooltip do
             </div>
           </div>
 
-        {!-- TODO: left alignment is not perfect, need to find an another way --}
+          {!-- TODO: left alignment is not perfect, need to find an another way --}
         {#match "left"}
           <div x-cloak x-show="tooltip" class="absolute left-0 bottom-0 right-0">
             <div class="absolute transform -translate-x-full -translate-y-full">
@@ -71,17 +68,13 @@ defmodule Moon.Components.Tooltip do
 
       <div
         class="inline-block"
-        x-on:mouseover="
-          !!timeout && clearTimeout(timeout)
+        x-on:mouseover="!!timeout && clearTimeout(timeout)
           timeout = setTimeout(() => {
             tooltip = true
-          }, 250)
-        "
-        x-on:mouseleave="
-          !!timeout && clearTimeout(timeout)
+          }, 500)"
+        x-on:mouseleave="!!timeout && clearTimeout(timeout)
           timeout = null
-          tooltip = false
-        "
+          tooltip = false"
       >
         <#slot />
       </div>

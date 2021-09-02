@@ -1,43 +1,72 @@
 defmodule MoonWeb.Pages.Components.TextPage do
   use MoonWeb, :live_view
-  alias Moon.Components.Link
-  alias Moon.Components.Stack
+
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Text
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/text",
+        name: "Text"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
-    <h1>Text</h1>
-    <p>We treat semantic and visual/cosmetic decisions as two totally <Link to="https://csswizardry.com/2016/02/managing-typography-on-large-apps/">separate</Link> things.</p>
-    <p>Our choice of p and span is a purely semantic decision, and doesn't impact cosmetics configured via the size prop.</p>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32}>Text</Heading>
+      <p>
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=27856%3A9609">Figma design</Link>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/text_page.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/typography">React implementation</Link>
+      </p>
 
-    <h2>Sizes</h2>
-    <p>We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
-    <p>By default font size is 16. You can choose any size.</p>
+      <p>We treat semantic and visual/cosmetic decisions as two totally <Link to="https://csswizardry.com/2016/02/managing-typography-on-large-apps/">separate</Link> things.</p>
+      <p>Our choice of p and span is a purely semantic decision, and doesn't impact cosmetics configured via the size prop.</p>
 
-    <Stack>
-      <Text>Text with default font size</Text>
-      <Text size={10}>Text with font size 10</Text>
-      <Text size={12}>Text with font size 12</Text>
-      <Text size={14}>Text with font size 14</Text>
-      <Text size={16}>Text with font size 16</Text>
-      <Text size={18}>Text with font size 18</Text>
-      <Text size={20}>Text with font size 20</Text>
-      <Text size={24}>Text with font size 24</Text>
-      <Text size={32}>Text with font size 32</Text>
-      <Text size={48}>font size 48</Text>
-      <Text size={56}>font size 56</Text>
-      <Text size={64}>font size 64</Text>
-      <Text size={72}>font size 72</Text>
-    </Stack>
+      <Heading size={20} class="mt-4">Sizes</Heading>
+      <p>We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
+      <p>By default font size is 16. You can choose any size.</p>
 
-    <#CodePreview>
-      <Stack>
+      <ExampleAndCode id="text_1">
+        <:example>
+          <TopToDown>
+            <Text>Text with default font size</Text>
+            <Text size={10}>Text with font size 10</Text>
+            <Text size={12}>Text with font size 12</Text>
+            <Text size={14}>Text with font size 14</Text>
+            <Text size={16}>Text with font size 16</Text>
+            <Text size={18}>Text with font size 18</Text>
+            <Text size={20}>Text with font size 20</Text>
+            <Text size={24}>Text with font size 24</Text>
+            <Text size={32}>Text with font size 32</Text>
+            <Text size={48}>font size 48</Text>
+            <Text size={56}>font size 56</Text>
+            <Text size={64}>font size 64</Text>
+            <Text size={72}>font size 72</Text>
+          </TopToDown>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+      <TopToDown>
         <Text>Text with default font size</Text>
         <Text size=10>Text with font size 10</Text>
         <Text size=12>Text with font size 12</Text>
@@ -51,45 +80,55 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Text size=56>font size 56</Text>
         <Text size=64>font size 64</Text>
         <Text size=72>font size 72</Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <h2>Bold</h2>
-    <p>By default font weight is regular. You can make it bolder.</p>
+      <Heading size={20} class="mt-4">Bold</Heading>
+      <p>By default font weight is regular. You can make it bolder.</p>
 
-    <Stack>
-      <Text size={24}>Text with default font weight</Text>
-      <Text size={24} is_bold>
-        Text with font-weight: semibold
-      </Text>
-    </Stack>
-
-    <#CodePreview>
-      <Stack>
+      <ExampleAndCode id="text_2">
+        <:example>
+          <TopToDown>
+            <Text size={24}>Text with default font weight</Text>
+            <Text size={24} is_bold>
+              Text with font-weight: semibold
+            </Text>
+          </TopToDown>
+        </:example>
+        <:code>
+          <#CodePreview>
+      <TopToDown>
         <Text size=24>Text with default font weight</Text>
         <Text size=24 is_bold=true>
           Text with font-weight: semibold
         </Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <h2>Color</h2>
+      <Heading size={20} class="mt-4">Color</Heading>
+      <ExampleAndCode id="text_3">
+        <:example>
+          <TopToDown>
+            <Text size={24}>Text with default color</Text>
+            <Text size={24} color="trunks-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="piccolo-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="krillin-100">
+              Text with defined color
+            </Text>
+          </TopToDown>
+        </:example>
 
-    <Stack>
-      <Text size={24}>Text with default color</Text>
-      <Text size={24} color="trunks-100">
-        Text with defined color
-      </Text>
-      <Text size={24} color="piccolo-100">
-        Text with defined color
-      </Text>
-      <Text size={24} color="krillin-100">
-        Text with defined color
-      </Text>
-    </Stack>
-
-    <#CodePreview>
-      <Stack>
+        <:code>
+          <#CodePreview>
+      <TopToDown>
         <Text size=24>Text with default color</Text>
         <Text size=24 color="trunks_100">
           Text with defined color
@@ -100,8 +139,11 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Text size=24 color="krillin_100">
           Text with defined color
         </Text>
-      </Stack>
+      </TopToDown>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end

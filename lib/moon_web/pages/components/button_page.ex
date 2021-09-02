@@ -3,9 +3,23 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/button",
+        name: "Button"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -15,6 +29,8 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+
       <Heading size={32}>Button</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=305%3A2562">Figma design</Link>
@@ -27,7 +43,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       <Heading size={24} class="mt-4" is_regular>Button Fill</Heading>
 
       To be used where the the button would be the main call to action on the page.
-      <ExampleAndCode>
+      <ExampleAndCode id="button1">
         <:example>
           <Button variant="fill">Fill</Button>
         </:example>
@@ -41,7 +57,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <Heading size={24} class="mt-4" is_regular>Button Outline</Heading>
       To be used where the the button would be a optional call to action.
-      <ExampleAndCode>
+      <ExampleAndCode id="button2">
         <:example>
           <Button variant="outline">Outline</Button>
         </:example>
@@ -55,7 +71,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <Heading size={24} class="mt-4" is_regular>Link</Heading>
       To be used where the the button is a link
-      <ExampleAndCode>
+      <ExampleAndCode id="button3">
         <:example>
           <Button variant="link">Link</Button>
         </:example>
@@ -69,7 +85,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <Heading size={24} class="mt-4" is_regular>Link+Icon</Heading>
       To be used where the the button is a link
-      <ExampleAndCode>
+      <ExampleAndCode id="button4">
         <:example>
           <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
         </:example>
@@ -82,35 +98,41 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Button Sizes</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="button5">
         <:example>
           Fill
-          <Button variant="fill" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="fill" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="fill" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="fill" size="small">
+              Small
+            </Button>
+          </LeftToRight>
 
           <div class="my-8" />
 
           Outline
-          <Button variant="outline" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="outline" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="outline" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="outline" size="small">
+              Small
+            </Button>
+          </LeftToRight>
 
           <div class="my-8" />
 
           Link
-          <Button variant="link" size="xsmall">
-            Xsmall
-          </Button>
-          <Button variant="link" size="small">
-            Small
-          </Button>
+          <LeftToRight class="items-center">
+            <Button variant="link" size="xsmall">
+              Xsmall
+            </Button>
+            <Button variant="link" size="small">
+              Small
+            </Button>
+          </LeftToRight>
         </:example>
 
         <:code>
@@ -140,7 +162,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       </ExampleAndCode>
 
       <Heading size={24} class="mt-4" is_regular>Full width</Heading>
-      <ExampleAndCode>
+      <ExampleAndCode id="button6">
         <:example>
           <Button variant="fill" full_width="true">
             Full Width
@@ -155,7 +177,6 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
-
     </TopToDown>
     """
   end

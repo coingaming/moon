@@ -1,8 +1,25 @@
 defmodule MoonWeb.Pages.Components.BadgePage do
   use MoonWeb, :live_view
   alias Moon.Components.Badge
-  alias Moon.Components.Inline
+  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.CodePreview
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/badge",
+        name: "Badge"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -11,72 +28,97 @@ defmodule MoonWeb.Pages.Components.BadgePage do
 
   def render(assigns) do
     ~F"""
-    <p>
-      <h1>Badge</h1>
-      Default size count and labeling component
-    </p>
+    <TopToDown gap={4}>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32}>Badge</Heading>
+      <p>
+        Small count and labeling component.
+      </p>
 
-    <Badge color="bulma-100" background_color="dodoria-100">
-      Active
-    </Badge>
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
+        <Link to="https://moon.io/components/badge">React implementation</Link>
+      </p>
 
-    <#CodePreview>
-      <Badge color="bulma-100" background_color="dodoria-100">
+      <ExampleAndCode id="badge1">
+        <:example>
+          <LeftToRight>
+            <Badge>
+              Active
+            </Badge>
+          </LeftToRight>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+      <Badge>
         Active
       </Badge>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <p>
-      <h2>Customize colours</h2>
-      You coud simply use color and background_color props
-    </p>
+      <p>
+        <Heading size={16}>Customize colours</Heading>
+        You coud simply use color and background_color props
+      </p>
 
-    <Inline>
-      <Badge color="bulma-100" background_color="piccolo-100">
-        Active
-      </Badge>
-      <Badge color="krillin-100" background_color="gohan-100">
-        Active
-      </Badge>
-      <Badge color="bulma-100" background_color="dodoria-100">
-        Active
-      </Badge>
-    </Inline>
+      <ExampleAndCode id="badge2">
+        <:example>
+          <LeftToRight>
+            <Badge color="gohan-100" background_color="piccolo-100">
+              Active
+            </Badge>
+            <Badge color="krillin-100" background_color="trunks-100">
+              Active
+            </Badge>
+            <Badge color="bulma-100" background_color="dodoria-100">
+              Active
+            </Badge>
+          </LeftToRight>
+        </:example>
 
-    <#CodePreview>
-      <Inline>
-        <Badge color="bulma-100" background_color="piccolo-100">
+        <:code>
+          <#CodePreview>
+        <Badge color="gohan-100" background_color="piccolo-100">
           Active
         </Badge>
-        <Badge color="krillin-100" background_color="gohan-100">
+        <Badge color="krillin-100" background_color="trunks-100">
           Active
         </Badge>
         <Badge color="bulma-100" background_color="dodoria-100">
           Active
         </Badge>
-      </Inline>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-    <p>
-      <h2>Customize size</h2>
-      You coud simply use size prop. By default size is xSmall. You can change it to Small.
-    </p>
+      <p>
+        <Heading size={16}>Customize size</Heading>
+        You coud simply use size prop. By default size is xSmall. You can change it to Small.
+      </p>
 
-    <Inline>
-      <Badge background_color="piccolo-100">xSmall size</Badge>
-      <Badge background_color="piccolo-100" size="small">
-        small size
-      </Badge>
-    </Inline>
+      <ExampleAndCode id="badge3">
+        <:example>
+          <LeftToRight>
+            <Badge>Default</Badge>
+            <Badge size="small">
+              small size
+            </Badge>
+          </LeftToRight>
+        </:example>
 
-    <#CodePreview>
-      <Inline>
-        <Badge background_color="piccolo-100">xSmall size</Badge>
-        <Badge background_color="piccolo-100" size="small">
+        <:code>
+          <#CodePreview>
+        <Badge>Default</Badge>
+        <Badge size="small">
           small size
         </Badge>
-      </Inline>
+      </LeftToRight>
     </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end

@@ -2,11 +2,25 @@ defmodule MoonWeb.Pages.Components.CardPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias Moon.Components.IconButton
-  alias Moon.Components.Stack
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/card",
+        name: "Card"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -20,10 +34,15 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Card</Heading>
 
-      <ExampleAndCode>
+      <p>
+        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/card_page.ex">Sourcecode of this page</Link>
+      </p>
+
+      <ExampleAndCode id="card_1">
         <:example>
           <Card title="Winers">
             <:buttons>
@@ -54,7 +73,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 end

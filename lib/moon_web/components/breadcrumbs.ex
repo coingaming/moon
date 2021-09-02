@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ExamplePages.Shared.Breadcrumbs do
+defmodule MoonWeb.Components.Breadcrumbs do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Link
@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Breadcrumbs do
       <div :for={breadcrumb <- @breadcrumbs}>
         <div class="flex gap-2 items-center">
           <div><IconChevronRightRounded /></div>
-          <Link class={[active: breadcrumb.active]} to={breadcrumb.to}>
+          <Link to={breadcrumb.to}>
             {breadcrumb.name}
           </Link>
         </div>

@@ -10,7 +10,7 @@ defmodule Moon.Components.Label.LabelFlex do
 
   def render(assigns) do
     ~F"""
-    <label class={"moon-label-flex #{@class}"}>
+    <label class={"#{@class}"}>
       <#slot />
     </label>
     """
@@ -26,7 +26,7 @@ defmodule Moon.Components.Label.LabelContent do
 
   def render(assigns) do
     ~F"""
-    <span class="moon-label-content">
+    <span>
       <#slot />
     </span>
     """

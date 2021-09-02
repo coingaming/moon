@@ -1,6 +1,5 @@
 const path = require('path');
 const glob = require('glob');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -54,6 +53,6 @@ module.exports = (env, options) => {
       }),
       new ManifestPlugin({ fileName: 'manifest.json' }),
       new CopyWebpackPlugin([{ from: 'static/', to: './' }]),
-    ].concat(devMode ? [new HardSourceWebpackPlugin()] : []),
+    ],
   };
 };

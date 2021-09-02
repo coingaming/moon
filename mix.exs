@@ -67,7 +67,7 @@ defmodule Moon.MixProject do
 
       # dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:surface_formatter, "~> 0.5.1", only: :dev},
+      {:surface_formatter, "~> 0.5.4", only: :dev},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end

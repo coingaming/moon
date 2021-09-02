@@ -1,6 +1,7 @@
 defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Assets.Icons.IconMore
   alias Moon.Components.CodePreview
@@ -8,7 +9,19 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
-  alias Moon.Components.Stack
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/dropdown_menu_button",
+        name: "DropdownMenuButton"
+      }
+    ]
 
   def mount(params, _session, socket) do
     socket =
@@ -23,10 +36,11 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>DropdownMenuButton</Heading>
 
-      <ExampleAndCode>
+      <ExampleAndCode id="dropdown_menu_button_1">
         <:example>
           <div class="flex justify-center">
             <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
@@ -71,7 +85,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 

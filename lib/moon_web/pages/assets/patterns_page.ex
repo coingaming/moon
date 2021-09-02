@@ -1,10 +1,25 @@
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Breadcrumbs
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
-
   alias Moon.Assets.Patterns
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Assets"
+      },
+      %{
+        to: "/assets/patterns",
+        name: "Patterns"
+      }
+    ]
+
   alias Patterns.PatternCircles
   alias Patterns.PatternLines
   alias Patterns.PatternRipple
@@ -19,77 +34,82 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~F"""
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternCircles font_size="10rem" />
-      </:example>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32} class="mb-8">Patterns</Heading>
 
-      <:code>
-        <#CodePreview>
-        <PatternCircles font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_1" class="mt-4">
+        <:example>
+          <PatternCircles font_size="10rem" />
+        </:example>
 
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternLines font_size="10rem" />
-      </:example>
+        <:code>
+          <#CodePreview>
+            <PatternCircles font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-      <:code>
-        <#CodePreview>
-        <PatternLines font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_2" class="mt-4">
+        <:example>
+          <PatternLines font_size="10rem" />
+        </:example>
 
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternRipple font_size="10rem" />
-      </:example>
+        <:code>
+          <#CodePreview>
+            <PatternLines font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-      <:code>
-        <#CodePreview>
-        <PatternRipple font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_3" class="mt-4">
+        <:example>
+          <PatternRipple font_size="10rem" />
+        </:example>
 
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternSpeed font_size="10rem" />
-      </:example>
+        <:code>
+          <#CodePreview>
+            <PatternRipple font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-      <:code>
-        <#CodePreview>
-        <PatternSpeed font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_4" class="mt-4">
+        <:example>
+          <PatternSpeed font_size="10rem" />
+        </:example>
 
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternStars font_size="10rem" />
-      </:example>
+        <:code>
+          <#CodePreview>
+            <PatternSpeed font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-      <:code>
-        <#CodePreview>
-        <PatternStars font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_5" class="mt-4">
+        <:example>
+          <PatternStars font_size="10rem" />
+        </:example>
 
-    <ExampleAndCode class="mt-4">
-      <:example>
-        <PatternWave font_size="10rem" />
-      </:example>
+        <:code>
+          <#CodePreview>
+            <PatternStars font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
-      <:code>
-        <#CodePreview>
-        <PatternWave font_size="10rem" />
-        </#CodePreview>
-      </:code>
-    </ExampleAndCode>
+      <ExampleAndCode id="pattern_6" class="mt-4">
+        <:example>
+          <PatternWave font_size="10rem" />
+        </:example>
+
+        <:code>
+          <#CodePreview>
+            <PatternWave font_size="10rem" />
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
+    </TopToDown>
     """
   end
 end

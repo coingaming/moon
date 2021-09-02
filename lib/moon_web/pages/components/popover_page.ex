@@ -35,8 +35,21 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Breadcrumbs
 
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/popover",
+        name: "Popover"
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -48,23 +61,34 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
     {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
-      <Heading size={32} class="mb-8">Popover Component</Heading>
-      <Link
-        class="mb-4"
-        to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
-      >
-        Sourcecode of this page
-      </Link>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Heading size={32} class="mb-4">Popover Component</Heading>
+
+      <p>
+        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
+        <Link
+          class="mb-4"
+          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+        >Sourcecode of this page</Link>
+      </p>
 
       {#for placement <- [
-        "top-start", "top", "top-end",
-        "right-start", "right", "right-end",
-        "bottom-start", "bottom", "bottom-end",
-        "left-start", "left", "left-end"
-      ]}
-        <ExampleAndCode class="my-12">
+          "top-start",
+          "top",
+          "top-end",
+          "right-start",
+          "right",
+          "right-end",
+          "bottom-start",
+          "bottom",
+          "bottom-end",
+          "left-start",
+          "left",
+          "left-end"
+        ]}
+        <ExampleAndCode id={"popover_#{placement}"} class="my-12">
           <:example>
-              <PopoverExample id={placement} placement={placement}/>
+            <PopoverExample id={placement} placement={placement} />
           </:example>
           <:code>
             <#CodePreview>

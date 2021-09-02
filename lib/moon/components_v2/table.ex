@@ -108,7 +108,6 @@ defmodule Moon.ComponentsV2.Table do
           </tbody>
         </table>
       </div>
-
     </div>
     """
   end

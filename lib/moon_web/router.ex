@@ -49,6 +49,7 @@ defmodule MoonWeb.Router do
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
       live "/components/link", MoonWeb.Pages.Components.LinkPage
+      live "/components/list_items", MoonWeb.Pages.Components.ListItemsPage
       live "/components/pagination", MoonWeb.Pages.Components.PaginationPage
       live "/components/popover", MoonWeb.Pages.Components.PopoverPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
@@ -71,7 +72,7 @@ defmodule MoonWeb.Router do
       live "/tutorials/process-description-and-team-interactions",
            MoonWeb.Pages.Tutorials.Introduction
 
-      live "/tutorials/theming-and-visuals", MoonWeb.Pages.Tutorials.ThemingAndVisuals
+      live "/tutorials/theming-and-visuals", MoonWeb.Pages.Theming.ThemingAndVisuals
 
       live "/example-pages/dashboard", MoonWeb.Pages.ExamplePages.DashboardPage
       live "/example-pages/transactions", MoonWeb.Pages.ExamplePages.TransactionsPage

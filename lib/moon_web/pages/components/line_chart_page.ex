@@ -1,11 +1,24 @@
 defmodule MoonWeb.Pages.Components.LineChartPage do
   use MoonWeb, :live_view
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
-  alias Moon.Components.Stack
+  alias MoonWeb.Components.Breadcrumbs
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Charts"
+      },
+      %{
+        to: "/components/line-chart",
+        name: "Line Chart"
+      }
+    ]
 
   def mount(params, _session, socket) do
     filters = [
@@ -63,7 +76,8 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
   def render(assigns) do
     ~F"""
-    <Stack>
+    <TopToDown>
+      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>LineChart</Heading>
 
       <p>
@@ -75,7 +89,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
       </p>
 
-      <ExampleAndCode show_state layout="column">
+      <ExampleAndCode layout="column" id="line_chart_1">
         <:example>
           <LineChartCard
             id="line-chart-card"
@@ -104,7 +118,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
         <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
       </ExampleAndCode>
-    </Stack>
+    </TopToDown>
     """
   end
 
