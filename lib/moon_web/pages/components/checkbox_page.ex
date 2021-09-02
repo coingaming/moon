@@ -41,8 +41,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         As each checkbox is independent, this means that additional checkboxes do not affect any other selections… or planets. .
       </p>
 
-      <Heading size={16}>Checkbox</Heading>
-      <ExampleAndCode id="checkbox_1">
+      <ExampleAndCode title="Checkbox" id="checkbox_1">
         <:example>
           <Checkbox>
             I agree to receive bonus & marketing emails.
@@ -58,8 +57,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Disabled</Heading>
-      <ExampleAndCode id="checkbox_2">
+      <ExampleAndCode title="Disabled" id="checkbox_2">
         <:example>
           <Checkbox disabled="true">
             I agree to receive bonus & marketing emails.
@@ -75,8 +73,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Selected Disabled</Heading>
-      <ExampleAndCode id="checkbox_3">
+      <ExampleAndCode title="Selected Disabled" id="checkbox_3">
         <:example>
           <Checkbox disabled="true" checked="true">
             I agree to receive bonus & marketing emails.
@@ -92,8 +89,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Checked</Heading>
-      <ExampleAndCode id="checkbox_4">
+      <ExampleAndCode title="Checked" id="checkbox_4">
         <:example>
           <Checkbox checked="true">
             I agree to receive bonus & marketing emails.

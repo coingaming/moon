@@ -63,13 +63,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         <:state>@events = {inspect(@events, pretty: true)}</:state>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Custom weekstart</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
-      </p>
-
-      <ExampleAndCode layout="column" id="calendar_2">
+      <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2">
         <:example>
           <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
         </:example>
@@ -87,6 +81,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
         </:code>
 
         <:state>@events = {inspect(@events, pretty: true)}</:state>
+        <:note>
+          Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+        </:note>
       </ExampleAndCode>
     </TopToDown>
     """

@@ -67,17 +67,12 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Appearing and disappearing</Heading>
+      <ExampleAndCode title="Appearing and disappearing" id="toast_2">
+        <:note>
+          Toasts can be shown on top of the page and automatically disappear after a timeout.
 
-      <p>
-        Toasts can be shown on top of the page and automatically disappear after a timeout.
-      </p>
-
-      <p>
-        You should use <code class="bg-goku-40">ToastStack</code> component for it.
-      </p>
-
-      <ExampleAndCode id="toast_2">
+          You should use <code class="bg-goku-40">ToastStack</code> component for it.
+        </:note>
         <:example>
           <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
 
@@ -137,13 +132,10 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Variant</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">variant</code> prop.
-      </p>
-
-      <ExampleAndCode id="toast_3">
+      <ExampleAndCode title="Variant" id="toast_3">
+        <:note>
+          Use <code class="bg-goku-40">variant</code> prop.
+        </:note>
         <:example>
           <div class="flex flex-col items-start">
             <Toast
@@ -187,17 +179,11 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Actions</Heading>
-
-      <p>
-        Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
-      </p>
-
-      <p>
-        To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
-      </p>
-
-      <ExampleAndCode id="toast_4">
+      <ExampleAndCode title="Actions" id="toast_4">
+        <:note>
+          Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
+          To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
+        </:note>
         <:example>
           <div class="flex flex-col items-start">
             <Toast

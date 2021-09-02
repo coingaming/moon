@@ -41,8 +41,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       </p>
       Component for displaying user profile image or placeholder if no image
 
-      <Heading size={16}>Image avatars</Heading>
-      <ExampleAndCode id="avatar_1">
+      <ExampleAndCode title="Image avatars" id="avatar_1">
         <:example>
           <div class="inline-flex">
             <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
@@ -62,10 +61,10 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Letter avatars</Heading>
-      Use name prop. No more than 2 / 3 characters
-
-      <ExampleAndCode id="avatar_2">
+      <ExampleAndCode title="Letter avatars" id="avatar_2">
+        <:note>
+          Use name prop. No more than 2 / 3 characters
+        </:note>
         <:example>
           <div class="inline-flex">
             <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
@@ -85,8 +84,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Without image and name (Fallback)</Heading>
-      <ExampleAndCode id="avatar_3">
+      <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
         <:example>
           <div class="inline-flex">
             <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
@@ -106,9 +104,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16}>Different colors</Heading>
-
-      <ExampleAndCode id="avatar_4">
+      <ExampleAndCode title="Different colors" id="avatar_4">
         <:example>
           <div class="inline-flex">
             <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />

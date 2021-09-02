@@ -37,11 +37,11 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         <Link to="https://moon.io/typography">React implementation</Link>
       </p>
 
-      <Heading size={20} class="mt-4">Sizes</Heading>
-      <p>We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
-      <p>By default font size is 16. You can choose any size.</p>
-
-      <ExampleAndCode id="heading_1">
+      <ExampleAndCode title="Sizes" id="heading_1">
+        <:note>
+          <p>We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
+          <p>By default font size is 16. You can choose any size.</p>
+        </:note>
         <:example>
           <TopToDown>
             <Heading>Heading with default font size</Heading>
@@ -75,10 +75,10 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={20} class="mt-4">Is regular</Heading>
-      <p>By default font weight is bold. You can make it thiner.</p>
-
-      <ExampleAndCode id="heading_2">
+      <ExampleAndCode title="Is regular" id="heading_2">
+        <:note>
+          By default font weight is bold. You can make it thiner.
+        </:note>
         <:example>
           <TopToDown>
             <Heading size={24}>Heading with default font weight</Heading>
@@ -100,11 +100,11 @@ defmodule MoonWeb.Pages.Components.HeadingPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={20} class="mt-4">Color</Heading>
+      <ExampleAndCode title="Color" id="heading_3">
+        <:note>
+          By default Heading color is bulma.100. You can use any color.
+        </:note>
 
-      <p>By default Heading color is bulma.100. You can use any color.</p>
-
-      <ExampleAndCode id="heading_3">
         <:example>
           <TopToDown>
             <Heading size={24}>Heading with default color</Heading>

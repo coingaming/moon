@@ -42,9 +42,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         Enabling users to upload one or more files inside a form.
       </p>
 
-      <Heading size={24} class="mt-4" is_regular>Label</Heading>
-
-      <ExampleAndCode id="file_input_1">
+      <ExampleAndCode title="Label" id="file_input_1">
         <:example>
           <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a photo..." />
         </:example>
@@ -71,9 +69,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-4" is_regular>Error</Heading>
-
-      <ExampleAndCode id="file_input_2">
+      <ExampleAndCode title="Error" id="file_input_2">
         <:example>
           <FileInput conf={@uploads.error_file} error />
         </:example>

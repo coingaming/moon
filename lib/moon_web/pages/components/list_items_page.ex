@@ -44,9 +44,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
       </p>
 
-      Medium size (default)
-
-      <ExampleAndCode id="line_items_1">
+      <ExampleAndCode title="Medium size (default)" id="line_items_1">
         <:example>
           <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
             <SingleLineItem>Single line item</SingleLineItem>
@@ -111,9 +109,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         </:code>
       </ExampleAndCode>
 
-      Large size
-
-      <ExampleAndCode id="line_items_2">
+      <ExampleAndCode title="Large size" id="line_items_2">
         <:example>
           <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
             <SingleLineItem size="large">Single line item</SingleLineItem>

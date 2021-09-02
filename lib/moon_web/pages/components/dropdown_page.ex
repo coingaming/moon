@@ -59,11 +59,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
       </p>
 
-      <Heading size={24} class="mt-8">
-        <a id="checkbox-multiselect">Using CheckboxMultiselect</a>
-      </Heading>
-
-      <ExampleAndCode class="mt-4" id="dropdown_1">
+      <ExampleAndCode title="Using CheckboxMultiselect" class="mt-4" id="dropdown_1">
         <:example>
           <Dropdown>
             <CheckboxMultiselect
@@ -130,11 +126,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         </:state>
       </ExampleAndCode>
 
-      <Heading size={24} class="mt-8">
-        <a id="single-item-select">Using SingleItemSelect</a>
-      </Heading>
-
-      <ExampleAndCode class="mt-4" id="dropdown_3">
+      <ExampleAndCode title="Using SingleItemSelect" class="mt-4" id="dropdown_3">
         <:example>
           <Dropdown>
             <SingeItemSelect

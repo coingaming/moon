@@ -53,8 +53,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         A user-controlled menu of options for forms, navigation and more.
       </p>
 
-      <Heading size={16} class="mt-4">Example</Heading>
-      <ExampleAndCode id="select_1">
+      <ExampleAndCode title="Example" id="select_1">
         <:example>
           <Select field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -70,8 +69,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16} class="mt-4">With Label</Heading>
-      <ExampleAndCode id="select_2">
+      <ExampleAndCode title="With Label" id="select_2">
         <:example>
           <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
         </:example>
@@ -88,8 +86,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         </:code>
       </ExampleAndCode>
 
-      <Heading size={16} class="mt-4">Disabled</Heading>
-      <ExampleAndCode id="select_3">
+      <ExampleAndCode title="Disabled" id="select_3">
         <:example>
           <Select
             disabled
