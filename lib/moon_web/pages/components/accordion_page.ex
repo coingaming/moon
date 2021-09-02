@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32} class="mb-4">Accordion</Heading>
 
       <p>

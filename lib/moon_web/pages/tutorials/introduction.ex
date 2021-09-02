@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Design team and design rules</Heading>
 
       <Carousel class="mt-4 mb-8">

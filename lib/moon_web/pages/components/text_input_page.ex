@@ -49,7 +49,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Text Input</Heading>
 
       <p>

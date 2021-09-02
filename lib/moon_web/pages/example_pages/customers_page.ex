@@ -40,7 +40,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       <div class="flex">
         <LeftMenu id="left-menu" />
         <div class="pl-4 pt-4" style="width: calc(100vw - 260px)">
-          <Breadcrumbs breadcrumbs={[%{name: "Customers", to: "/lab-light/example-pages/customers"}]} />
+          <Breadcrumbs
+            theme_name={@theme_name}
+            breadcrumbs={[%{name: "Customers", to: "/lab-light/example-pages/customers"}]}
+          />
 
           {#if @save_segment_form == nil}
             <Heading size={32} class="my-2">{@segment_title || "Customers"}</Heading>

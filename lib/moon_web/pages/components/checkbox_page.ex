@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Checkbox</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=929%3A12590">Figma design</Link>

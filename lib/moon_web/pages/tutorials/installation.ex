@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Usage</Heading>
 
       <Heading size={24} class="mt-8 mb-4">Requirements</Heading>

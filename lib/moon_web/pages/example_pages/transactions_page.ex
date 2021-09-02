@@ -43,8 +43,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     "amount_range_filter" => :amount_range_values
   }
 
-  data breadcrumbs, :any,
-    default: [%{name: "Transactions", to: "/lab-light/example-pages/transactions"}]
+  data breadcrumbs, :any, default: [%{name: "Transactions", to: "/example-pages/transactions"}]
 
   data filters, :map, default: %{}
   data segments, :list, default: []
@@ -91,7 +90,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         <LeftMenu id="left_menu" />
 
         <div class="px-14 py-6">
-          <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+          <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
           <Heading size={32}>Transactions</Heading>
           <TopToDown class="mt-6">
             <TransactionsFilters id="transaction_filters" {=@filter_options} />

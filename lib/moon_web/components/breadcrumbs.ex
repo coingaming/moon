@@ -5,6 +5,7 @@ defmodule MoonWeb.Components.Breadcrumbs do
   alias Moon.Assets.Icons.IconChevronRightRounded
 
   prop breadcrumbs, :any
+  prop theme_name, :string, default: "lab-light"
   prop class, :string, default: nil
 
   def render(assigns) do
@@ -16,7 +17,7 @@ defmodule MoonWeb.Components.Breadcrumbs do
       <div :for={breadcrumb <- @breadcrumbs}>
         <div class="flex gap-2 items-center">
           <div><IconChevronRightRounded /></div>
-          <Link to={breadcrumb.to}>
+          <Link to={"/#{@theme_name}#{breadcrumb.to}"}>
             {breadcrumb.name}
           </Link>
         </div>

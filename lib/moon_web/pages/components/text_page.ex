@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
   def render(assigns) do
     ~F"""
     <TopToDown>
-      <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
+      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Text</Heading>
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=27856%3A9609">Figma design</Link>
