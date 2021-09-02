@@ -11,6 +11,7 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Components.Accordion.Item
 
   prop theme_name, :any
+  prop uri, :any
   prop active_page, :any
   data selected_theme, :any
   data item_id, :string, default: "MoonWeb.Pages.Tutorials.Introduction"
@@ -51,7 +52,6 @@ defmodule MoonWeb.Components.LeftMenu do
             name: "Background Color",
             url: "/theme_name/tutorials/theming-and-visuals#background-color"
           },
-          %{name: "", url: "theme/tutorials/theming-and-visuals#background-color"},
           %{
             name: "Border radius",
             url: "/theme_name/tutorials/theming-and-visuals#border-radius"
@@ -221,6 +221,10 @@ defmodule MoonWeb.Components.LeftMenu do
           %{
             name: "Tooltip",
             url: "/theme_name/components/tooltip"
+          },
+          %{
+            name: "LineChart",
+            url: "/theme_name/charts/line-chart"
           }
         ]
       }
@@ -297,7 +301,15 @@ defmodule MoonWeb.Components.LeftMenu do
                   title={"#{nav.name}"}
                 >
                   {#for nav_item <- nav.children}
-                    <LiveRedirect class="block mt-3" to={String.replace(nav_item.url, "theme_name", @theme_name)}>{nav_item.name}</LiveRedirect>
+                    <LiveRedirect
+                      class={
+                        "block mt-3 pl-2 pr-4 items-center py-1",
+                        "bg-trunks-100 text-gohan-100": should_be_highlighted(@uri, nav_item.url, @theme_name)
+                      }
+                      to={String.replace(nav_item.url, "theme_name", @theme_name)}
+                    >
+                      {nav_item.name}
+                    </LiveRedirect>
                   {/for}
                 </Item>
               {/for}
@@ -307,6 +319,17 @@ defmodule MoonWeb.Components.LeftMenu do
       </:menu>
     </Sidebar>
     """
+  end
+
+  defp should_be_highlighted(nil, _url, _theme_name) do
+    false
+  end
+
+  defp should_be_highlighted(uri, url, theme_name) do
+    url = url |> String.replace("/theme_name/", "/")
+    path = uri |> URI.parse() |> Map.fetch!(:path)
+    path = path |> String.replace("/#{theme_name}/", "/")
+    path == url
   end
 
   defp should_be_open(current_active_page, item_active_page, item_id) do
