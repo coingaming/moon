@@ -85,6 +85,40 @@ jobs:
       - run:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
+  check_formatted:
+    docker:
+      - image: heathmont/elixir-ci:1.11.3-alpine
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          - v4-build-{{ checksum "mix.lock" }}-
+          - v4-build-
+      - run:
+          name: Mix format
+          command: mix format --check-formatted
+      - run:
+          name: Update git submodules
+          command: git submodule update --init --recursive
+      - run:
+          name: Hex auth
+          command: mix hex.organization auth coingaming --key $HEX_API_KEY
+      - run:
+          name: ExEnv
+          command: mix archive.install hex ex_env 0.3.1 --force
+      - run:
+          name: Fetch dependencies
+          command: mix deps.get
+      - run:
+          name: Surface format
+          command: mix surface.format --check-formatted
+      - save_cache:
+          key: v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          paths:
+          - .cache
+          - deps
+          - ~/.mix
 
 workflows:
   version: 2
@@ -118,4 +152,11 @@ workflows:
               only: /^v.*/
           requires:
             - docker_image
-      
+  test:
+    jobs:
+      - check_formatted:
+          context: global
+          filters:
+            branches:
+              ignore: 
+                - master
