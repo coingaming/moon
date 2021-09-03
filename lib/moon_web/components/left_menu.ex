@@ -293,18 +293,18 @@ defmodule MoonWeb.Components.LeftMenu do
         <nav class="mt-5">
           <TopToDown class="">
             <Accordion>
-              {#for nav <- @navigations}
+              {#for nav_section <- @navigations}
                 <Item
                   click="open"
-                  item_id={"#{nav.active_page}"}
-                  is_open={should_be_open(Atom.to_string(@active_page), nav.active_page, @item_id)}
-                  title={"#{nav.name}"}
+                  item_id={"#{nav_section.active_page}"}
+                  is_open={should_nav_section_be_open(nav_section, @uri, @item_id, @theme_name)}
+                  title={"#{nav_section.name}"}
                 >
-                  {#for nav_item <- nav.children}
+                  {#for nav_item <- nav_section.children}
                     <LiveRedirect
                       class={
                         "block mt-3 pl-2 pr-4 items-center py-1",
-                        "bg-trunks-100 text-gohan-100": should_be_highlighted(@uri, nav_item.url, @theme_name)
+                        "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_item.url, @theme_name)
                       }
                       to={String.replace(nav_item.url, "theme_name", @theme_name)}
                     >
@@ -321,22 +321,51 @@ defmodule MoonWeb.Components.LeftMenu do
     """
   end
 
-  defp should_be_highlighted(nil, _url, _theme_name) do
+  defp should_url_be_highlighted(nil, _nav_url, _theme_name) do
     false
   end
 
-  defp should_be_highlighted(uri, url, theme_name) do
-    url = url |> String.replace("/theme_name/", "/")
-    path = uri |> URI.parse() |> Map.fetch!(:path)
-    path = path |> String.replace("/#{theme_name}/", "/")
-    path == url
+  defp should_url_be_highlighted(uri, nav_url, theme_name) do
+    nav_url = remove_theme_name(nav_url, "theme_name")
+    nav_url == url_with_fragment(uri, theme_name)
   end
 
-  defp should_be_open(current_active_page, item_active_page, item_id) do
+  defp should_nav_section_be_open(nav_section, uri, item_id, theme_name) do
+    url_with_fragment = url_with_fragment(uri, theme_name)
+
     cond do
-      item_active_page == item_id -> true
-      String.contains?(current_active_page, item_active_page) -> true
+      is_nav_section_page_clicked?(item_id, nav_section.active_page) -> true
+      is_url_child_of_nav_section?(nav_section, url_with_fragment) -> true
       true -> false
     end
+  end
+
+  defp is_url_child_of_nav_section?(nav_section, url_with_fragment) do
+    Enum.any?(nav_section.children, fn nav_item ->
+      url = nav_item.url |> remove_theme_name("theme_name")
+      url == url_with_fragment
+    end)
+  end
+
+  defp is_nav_section_page_clicked?(clicked_item_id, current_nav_page) do
+    clicked_item_id == current_nav_page
+  end
+
+  defp remove_theme_name(url, theme_name) do
+    url |> String.replace("/#{theme_name}/", "/")
+  end
+
+  defp url_with_fragment(uri, theme_name) do
+    parsed_uri = uri |> URI.parse()
+    path = parsed_uri |> Map.fetch!(:path) |> remove_theme_name(theme_name)
+    fragment = parsed_uri |> Map.fetch!(:fragment)
+
+    path =
+      case fragment do
+        nil -> path
+        _ -> path <> "#" <> fragment
+      end
+
+    path
   end
 end
