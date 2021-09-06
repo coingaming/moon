@@ -15,6 +15,8 @@ defmodule Moon.Assets.Logo do
   @assets_map %{
     logo_aposta10_full: Logos.LogoAposta10Full,
     logo_aposta10_short: Logos.LogoAposta10Short,
+    logo_betadda_full: Logos.LogoBetaddaFull,
+    logo_betadda_short: Logos.LogoBetaddaShort,
     logo_bitcasino_full: Logos.LogoBitcasinoFull,
     logo_bitcasino_short: Logos.LogoBitcasinoShort,
     logo_bombay_full: Logos.LogoBombayFull,
