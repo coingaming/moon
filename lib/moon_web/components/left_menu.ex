@@ -21,7 +21,6 @@ defmodule MoonWeb.Components.LeftMenu do
       %{
         name: "Tutorials",
         url: "/",
-        active_page: "MoonWeb.Pages.Tutorials",
         children: [
           %{
             name: "Introduction",
@@ -34,15 +33,22 @@ defmodule MoonWeb.Components.LeftMenu do
           %{
             name: "Add data using form",
             url: "/theme_name/tutorials/add-data-using-form"
-          },
-          %{name: "New site on Moon", url: "/lab-light/example-pages/transactions"},
-          %{name: "", url: "/theme"}
+          }
+        ]
+      },
+      %{
+        name: "Examples",
+        url: "/",
+        children: [
+          %{
+            name: "New site on Moon",
+            url: "/lab-light/example-pages/transactions"
+          }
         ]
       },
       %{
         name: "Theming & Visuals",
         url: "/",
-        active_page: "MoonWeb.Pages.Theming.ThemingAndVisuals",
         children: [
           %{
             name: "Text Color",
@@ -73,7 +79,6 @@ defmodule MoonWeb.Components.LeftMenu do
       %{
         name: "Assets",
         url: "/",
-        active_page: "MoonWeb.Pages.Assets",
         children: [
           %{
             name: "Crests",
@@ -104,7 +109,6 @@ defmodule MoonWeb.Components.LeftMenu do
       %{
         name: "Components",
         url: "/",
-        active_page: "MoonWeb.Pages.Components",
         children: [
           %{
             name: "Accordion",
@@ -296,7 +300,7 @@ defmodule MoonWeb.Components.LeftMenu do
               {#for nav_section <- @navigations}
                 <Item
                   click="open"
-                  item_id={"#{nav_section.active_page}"}
+                  item_id={"#{nav_section.name}"}
                   is_open={should_nav_section_be_open(nav_section, @uri, @item_id, @theme_name)}
                   title={"#{nav_section.name}"}
                 >
@@ -334,7 +338,7 @@ defmodule MoonWeb.Components.LeftMenu do
     url_with_fragment = url_with_fragment(uri, theme_name)
 
     cond do
-      is_nav_section_page_clicked?(item_id, nav_section.active_page) -> true
+      is_nav_section_page_clicked?(item_id, nav_section.name) -> true
       is_url_child_of_nav_section?(nav_section, url_with_fragment) -> true
       true -> false
     end
@@ -347,8 +351,8 @@ defmodule MoonWeb.Components.LeftMenu do
     end)
   end
 
-  defp is_nav_section_page_clicked?(clicked_item_id, current_nav_page) do
-    clicked_item_id == current_nav_page
+  defp is_nav_section_page_clicked?(clicked_item_id, current_selected_section) do
+    clicked_item_id == current_selected_section
   end
 
   defp remove_theme_name(url, theme_name) do
