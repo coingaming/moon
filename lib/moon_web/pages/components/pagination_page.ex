@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   alias Moon.Components.Pagination
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -44,7 +45,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Pagination</Heading>
+      <Heading size={56} class="mb-4">Pagination</Heading>
 
       <p>
         Pagination component.
@@ -190,6 +191,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
         <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

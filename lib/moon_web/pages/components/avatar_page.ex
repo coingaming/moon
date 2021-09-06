@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -36,7 +37,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
 
-      <Heading size={32}>Avatar</Heading>
+      <Heading size={56} class="mb-4">Avatar</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=60%3A20">Figma design</Link>
@@ -123,6 +124,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

@@ -15,6 +15,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   @default_user_map %{
     name: "",
@@ -219,6 +220,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
         <:state>@user_map = {inspect(@user_map)}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

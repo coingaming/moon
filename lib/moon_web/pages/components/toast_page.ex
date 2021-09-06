@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -42,7 +43,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Toast</Heading>
+      <Heading size={56} class="mb-4">Toast</Heading>
 
       <p>
         Short, time-based messages that slide in and out of a page.
@@ -238,6 +239,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

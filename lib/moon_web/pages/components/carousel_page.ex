@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -33,7 +34,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Carousel</Heading>
+      <Heading size={56} class="mb-4">Carousel</Heading>
 
       <p>
         An interactive extension of the Reel component to cycle through content.
@@ -79,6 +80,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
     </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

@@ -10,7 +10,7 @@ defmodule MoonWeb.Components.Breadcrumbs do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex gap-2 text-xs #{@class}"}>
+    <div class={"flex mb-10 gap-2 text-xs #{@class}"}>
       <Link to="/" class="text-trunks-100">
         Home
       </Link>

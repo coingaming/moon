@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -40,7 +41,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Patterns</Heading>
+      <Heading size={56} class="mb-4">Patterns</Heading>
 
       <ExampleAndCode id="pattern_1" class="mt-4">
         <:example>
@@ -113,6 +114,8 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+
+      <Footer />
     </TopToDown>
     """
   end

@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.SingeItemSelect
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -52,7 +53,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Dropdown</Heading>
+      <Heading size={56} class="mb-4">Dropdown</Heading>
 
       <p>
         Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
@@ -196,6 +197,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           @game_search = {inspect(@game_search)}
         </:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

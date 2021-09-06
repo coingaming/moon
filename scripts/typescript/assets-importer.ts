@@ -201,6 +201,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -219,11 +220,15 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Crests</Heading>
+    <Heading size={56} class="mb-4">Crests</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -241,6 +246,7 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end
@@ -260,6 +266,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Currencies
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -278,11 +285,15 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Currencies</Heading>
+    <Heading size={56} class="mb-4">Currencies</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -300,6 +311,7 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end
@@ -318,6 +330,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Duotones
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -336,11 +349,15 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Duotones</Heading>
+    <Heading size={56} class="mb-4">Duotones</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -358,6 +375,7 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end
@@ -376,6 +394,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Icons
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -394,11 +413,15 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Icons</Heading>
+    <Heading size={56} class="mb-4">Icons</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -416,6 +439,7 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end
@@ -434,6 +458,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Logos
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -452,11 +477,15 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Logos</Heading>
+    <Heading size={56} class="mb-4">Logos</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -474,6 +503,7 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end
@@ -492,6 +522,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -510,11 +541,15 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
     <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={32} class="mb-8">Patterns</Heading>
+    <Heading size={56} class="mb-4">Patterns</Heading>
     ${modules
         .map(
           (x: string, i: number) => `
@@ -532,6 +567,7 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
     `
           )
           .join('\n')}
+      <Footer/>
     </TopToDown>
     """
   end

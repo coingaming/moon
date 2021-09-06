@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -40,7 +41,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
 
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Dropdown multifilter</Heading>
+      <Heading size={56} class="mb-4">Dropdown multifilter</Heading>
       <Link to="https://www.figma.com/file/Ai0SGAAfoL0bXI88Zn0Eo3/MDS-UI-specs?node-id=1375%3A9769">
         Figma design
       </Link>
@@ -103,6 +104,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         </:code>
         <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

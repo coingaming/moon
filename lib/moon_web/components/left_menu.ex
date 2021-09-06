@@ -307,7 +307,8 @@ defmodule MoonWeb.Components.LeftMenu do
                   {#for nav_item <- nav_section.children}
                     <LiveRedirect
                       class={
-                        "block mt-3 pl-2 pr-4 items-center py-1",
+                        "block m-1 text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
+                        leading-7 group w-full flex items-center py-2 rounded-md transition-colors ease-in-out duration-150",
                         "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_item.url, @theme_name)
                       }
                       to={String.replace(nav_item.url, "theme_name", @theme_name)}

@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   alias Moon.Components.{Heading, Button, CodePreview, Link, Tooltip}
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -32,7 +33,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Popover Component</Heading>
+      <Heading size={56} class="mb-4">Popover Component</Heading>
       <Link
         class="mb-4"
         to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
@@ -55,6 +56,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
           </:code>
         </ExampleAndCode>
       {/for}
+      <Footer />
     </TopToDown>
     """
   end

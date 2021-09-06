@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -34,7 +35,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     ~F"""
     <TopToDown gap={4}>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Badge</Heading>
+      <Heading size={56} class="mb-4">Badge</Heading>
       <p>
         Small count and labeling component.
       </p>
@@ -118,6 +119,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

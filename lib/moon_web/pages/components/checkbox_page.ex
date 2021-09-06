@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -33,7 +34,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Checkbox</Heading>
+      <Heading size={56} class="mb-4">Checkbox</Heading>
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=929%3A12590">Figma design</Link>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/checkbox_page.ex">Sourcecode of this page</Link>
@@ -108,6 +109,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

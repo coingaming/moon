@@ -4,6 +4,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -149,6 +150,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     mix phx.server
 
     </pre>
+      <Footer />
     </TopToDown>
     """
   end

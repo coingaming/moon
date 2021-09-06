@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -39,7 +40,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Calendar</Heading>
+      <Heading size={56} class="mb-4">Calendar</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A3454">Figma design</Link>
@@ -89,6 +90,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
         </:note>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

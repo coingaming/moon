@@ -13,6 +13,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -54,7 +55,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <TopToDown gap={4}>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Text Input</Heading>
+      <Heading size={56} class="mb-4">Text Input</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=5400%3A1634">Figma design</Link>
@@ -284,6 +285,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
         <:state>@user_changeset_two_icons_with_events = {inspect(@user_changeset_two_icons_with_events, pretty: true)}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data(item_id, :string, default: "1")
 
@@ -37,7 +38,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-4">Accordion</Heading>
+      <Heading size={56} class="mb-4">Accordion</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
@@ -96,6 +97,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <pre>@item_id = {@item_id}</pre>
         </:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

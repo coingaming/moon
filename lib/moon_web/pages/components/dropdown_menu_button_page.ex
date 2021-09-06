@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -42,7 +43,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>DropdownMenuButton</Heading>
+      <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
       <ExampleAndCode id="dropdown_menu_button_1">
         <:example>
@@ -89,6 +90,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

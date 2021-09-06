@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -39,7 +40,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Crests</Heading>
+      <Heading size={56} class="mb-4">Crests</Heading>
 
       <ExampleAndCode id="crest_1" class="mt-4">
         <:example>
@@ -100,6 +101,8 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+
+      <Footer />
     </TopToDown>
     """
   end

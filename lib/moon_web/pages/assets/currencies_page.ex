@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Currencies
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -65,7 +66,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Currencies</Heading>
+      <Heading size={56} class="mb-4">Currencies</Heading>
 
       <ExampleAndCode id="currency_1" class="mt-4">
         <:example>
@@ -438,6 +439,8 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+
+      <Footer />
     </TopToDown>
     """
   end
