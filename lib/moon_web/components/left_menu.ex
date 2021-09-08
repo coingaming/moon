@@ -14,7 +14,7 @@ defmodule MoonWeb.Components.LeftMenu do
   prop uri, :any
   prop active_page, :any
   data selected_theme, :any
-  data item_id, :string, default: "MoonWeb.Pages.Tutorials.Introduction"
+  data item_id, :string, default: ""
 
   data navigations, :any,
     default: [
@@ -277,6 +277,8 @@ defmodule MoonWeb.Components.LeftMenu do
   end
 
   def render(assigns) do
+    previous_item_id = assigns.item_id
+
     ~F"""
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
       <:short_logo>
@@ -301,7 +303,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 <Item
                   click="open"
                   item_id={"#{nav_section.name}"}
-                  is_open={should_nav_section_be_open(nav_section, @uri, @item_id, @theme_name)}
+                  is_open={should_nav_section_be_open(nav_section, @uri, @item_id, previous_item_id, @theme_name)}
                   title={"#{nav_section.name}"}
                 >
                   {#for nav_item <- nav_section.children}
@@ -326,22 +328,24 @@ defmodule MoonWeb.Components.LeftMenu do
     """
   end
 
-  defp should_url_be_highlighted(nil, _nav_url, _theme_name) do
-    false
-  end
-
   defp should_url_be_highlighted(uri, nav_url, theme_name) do
     nav_url = remove_theme_name(nav_url, "theme_name")
     nav_url == url_with_fragment(uri, theme_name)
   end
 
-  defp should_nav_section_be_open(nav_section, uri, item_id, theme_name) do
+  defp should_nav_section_be_open(nav_section, uri, item_id, previous_item_id, theme_name) do
     url_with_fragment = url_with_fragment(uri, theme_name)
+    no_previous_section_clicked = previous_item_id == ""
 
     cond do
-      is_nav_section_page_clicked?(item_id, nav_section.name) -> true
-      is_url_child_of_nav_section?(nav_section, url_with_fragment) -> true
-      true -> false
+      is_nav_section_page_clicked?(item_id, nav_section.name) ->
+        true
+
+      no_previous_section_clicked and is_url_child_of_nav_section?(nav_section, url_with_fragment) ->
+        true
+
+      true ->
+        false
     end
   end
 
