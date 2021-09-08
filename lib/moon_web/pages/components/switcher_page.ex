@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   alias Moon.Components.Switcher
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -73,6 +74,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
         <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

@@ -6,8 +6,6 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Autolayouts.TopToDown
   alias Surface.Components.LiveRedirect
   alias Moon.Components.Sidebar
-  alias Moon.Components.Form
-  alias Moon.Components.Select
   alias Moon.Components.Accordion
   alias Moon.Components.Accordion.Item
 
@@ -235,35 +233,6 @@ defmodule MoonWeb.Components.LeftMenu do
       }
     ]
 
-  @available_themes [
-    [key: "Aposta10 dark", value: "aposta10-dark"],
-    [key: "Aposta10 light", value: "aposta10-light"],
-    [key: "Bitcasino dark", value: "bitcasino-dark"],
-    [key: "Bitcasino light", value: "bitcasino-light"],
-    [key: "Bombay club", value: "bombay-club"],
-    [key: "Btcxe", value: "btcxe"],
-    [key: "Hub88", value: "hub88"],
-    [key: "Lab dark", value: "lab-dark"],
-    [key: "Lab light", value: "lab-light"],
-    [key: "Livecasino dark", value: "livecasino-dark"],
-    [key: "Livecasino light", value: "livecasino-light"],
-    [key: "Hub88", value: "luckyslots"],
-    [key: "MissionsTool dark", value: "missions-tool-dark"],
-    [key: "MissionsTool light", value: "missions-tool-light"],
-    [key: "Moneyball dark", value: "moneyball-dark"],
-    [key: "Moneyball light", value: "moneyball-light"],
-    [key: "Moon design dark", value: "moon-design-dark"],
-    [key: "Moon design light", value: "moon-design-light"],
-    [key: "Slots dark", value: "slots-dark"],
-    [key: "Slots light", value: "slots-light"],
-    [key: "Sportsbet dark", value: "sportsbet-dark"],
-    [key: "Sportsbet light", value: "sportsbet-light"]
-  ]
-
-  def available_themes do
-    @available_themes
-  end
-
   def handle_event(
         "update_selected_theme",
         %{"selected_theme" => %{"value" => theme_name}},
@@ -287,14 +256,6 @@ defmodule MoonWeb.Components.LeftMenu do
           <LogoMoonDesignShort font_size="2.5rem" />
         </div>
       </:short_logo>
-
-      <:full_logo>
-        <div class="w-full">
-          <Form for={:selected_theme} change="update_selected_theme">
-            <Select field={:value} options={available_themes()} value={@theme_name} />
-          </Form>
-        </div>
-      </:full_logo>
 
       <:menu>
         <nav class="mt-5">

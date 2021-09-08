@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -124,6 +125,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

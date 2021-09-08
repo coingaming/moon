@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data(item_id, :string, default: "1")
 
@@ -98,6 +99,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         </:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data(gender_options, :any)
 
@@ -115,6 +116,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         </:code>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

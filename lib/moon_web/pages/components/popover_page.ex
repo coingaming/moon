@@ -38,6 +38,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
 
@@ -109,6 +110,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
         </ExampleAndCode>
       {/for}
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

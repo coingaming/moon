@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -286,6 +287,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <:state>@user_changeset_two_icons_with_events = {inspect(@user_changeset_two_icons_with_events, pretty: true)}</:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

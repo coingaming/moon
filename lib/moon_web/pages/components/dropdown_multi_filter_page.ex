@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -105,6 +106,7 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
         <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

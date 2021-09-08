@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
   alias Moon.Components.IconButton
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -79,6 +80,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
         </:code>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

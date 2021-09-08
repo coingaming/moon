@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -192,6 +193,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
       </ExampleAndCode>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
