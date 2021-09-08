@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -116,6 +117,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
       </ExampleAndCode>
 
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

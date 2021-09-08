@@ -202,6 +202,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -247,6 +248,7 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
@@ -267,6 +269,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Currencies
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -312,6 +315,7 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
@@ -331,6 +335,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Duotones
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -376,6 +381,7 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
@@ -395,6 +401,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Icons
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -440,6 +447,7 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
@@ -459,6 +467,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Logos
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -504,6 +513,7 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
@@ -523,6 +533,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -568,6 +579,7 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
           )
           .join('\n')}
       <Footer/>
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
