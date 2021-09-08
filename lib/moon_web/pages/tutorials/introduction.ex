@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
         name: "Tutorials"
       },
       %{
-        to: "/tutorials/introduction",
+        to: "/tutorials/process-description-and-team-interactions",
         name: "Introduction"
       }
     ]
