@@ -4,9 +4,7 @@ defmodule Moon.Components.Button do
   alias Moon.Assets.Icon
 
   prop href, :string
-
-  prop variant, :string, values: ["fill", "outline", "link"]
-
+  prop variant, :string, values: ["fill", "outline", "link", "primary", "secondary", "tertiary"]
   prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "small"
   prop mock_state, :string, values: ["active", "focus", "hover"]
   prop full_width, :boolean
@@ -48,14 +46,15 @@ defmodule Moon.Components.Button do
       class={
         "flex justify-center items-center gap-2 py-2 rounded #{@class}",
         "border border-solid text-goten-100 border-piccolo-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120 hover:bg-piccolo-80 ":
-          @variant == "fill",
+          @variant in ["fill", "primary"],
         "border border-solid text-piccolo-80 border border-beerus-100 hover:border-piccolo-80 active:border-piccolo-80 focus-within:border-piccolo-80 border-beerus-100 ":
-          @variant == "outline",
+          @variant in ["outline", "tertiary"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
-          @variant == "link",
+          @variant in ["link", "secondary"],
         "text-xs h-8 px-3 leading-4": @size == "xsmall",
         "text-sm h-10 px-4 leading-6": @size == "small",
-        "w-full": @full_width
+        "w-full": @full_width,
+        "opacity-30": @disabled
       }
       disabled={@disabled}
       type={@type}

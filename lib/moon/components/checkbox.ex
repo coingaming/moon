@@ -11,7 +11,7 @@ defmodule Moon.Components.Checkbox do
     ~F"""
     {asset_import(@socket, "js/components/checkbox")}
 
-    <label class={"relative inline-flex items-center mt-3 #{@class}"}>
+    <label class={"relative inline-flex items-center #{@class}"}>
       <input
         type="checkbox"
         checked={@checked}
