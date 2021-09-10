@@ -32,16 +32,20 @@ defmodule Moon.Components.TextInput.TextInputInternal do
   prop class, :string
   prop on_focus, :event
   prop on_blur, :event
+  prop background_color, :string, values: Moon.colors(), default: "goku-100"
+  prop size, :string, values: ["medium", "large"], default: "large"
 
   def render(assigns) do
     ~F"""
     <TextInput
       class={
-        "w-full h-12 max-w-full px-4 bg-goku-100 hover:bg-goku-120 text-base leading-normal
-               text-color-bulma-100 box-border border border-solid border-beerus-100 rounded transition
-               ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
-               disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-               no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+        "w-full max-w-full bg-#{@background_color} hover:bg-goku-120 leading-normal
+         text-bulma-100 box-border border border-solid border-beerus-100 rounded transition
+         ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
+         disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+         no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+        "h-10 text-sm px-3": @size == "medium",
+        "h-12 text-base px-4": @size == "large",
         "pl-11": @left_icon,
         "pr-11": @right_icon,
         "border-chi-chi-100": @error
@@ -97,6 +101,8 @@ defmodule Moon.Components.TextInput do
   prop right_icon_click, :event
   prop left_icon_click, :event
   prop without_design, :boolean
+  prop background_color, :string, values: Moon.colors(), default: "goku-100"
+  prop size, :string, values: ["medium", "large"], default: "large"
 
   slot left_icon
   slot right_icon
@@ -134,6 +140,8 @@ defmodule Moon.Components.TextInput do
             {=@value}
             {=@on_focus}
             {=@on_blur}
+            {=@background_color}
+            {=@size}
           />
         </div>
       </Label>
@@ -165,6 +173,8 @@ defmodule Moon.Components.TextInput do
           {=@value}
           {=@on_focus}
           {=@on_blur}
+          {=@background_color}
+          {=@size}
           :if={!@label}
         />
       </div>

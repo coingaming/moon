@@ -2,7 +2,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
   use Moon.StatelessComponent
 
   alias Moon.Components.{PopoverV2, CheckboxMultiselectV2, Form, TextInput, Button, Divider}
-  alias Moon.Autolayouts.{LeftToRight}
+  alias Moon.Autolayouts.{LeftToRight, TopToDown}
   alias Moon.Assets.Icons.IconZoom
 
   prop show_filter, :boolean, required: true
@@ -24,26 +24,32 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
     <PopoverV2 show={@show_filter} on_close={@on_close}>
       <#slot />
       <:content>
-        <div class="w-80 bg-gohan-100 shadow rounded">
-          <div :if={@on_search != nil} class="p-3">
-            <Form for={:search} change={@on_search} autocomplete="off">
+        <div class="w-80 bg-gohan-100 shadow rounded-lg pt-2">
+          <div :if={@on_search != nil}>
+            <Form for={:search} change={@on_search} autocomplete="off" class="px-1">
               <TextInput
-                placeholder="Type here..."
+                placeholder="Search"
                 field={:search_text}
                 value={@search_text}
-                class="border-none bg-goku-100"
+                class="border-none"
+                background_color="gohan-100"
+                size="medium"
               >
                 <:left_icon><IconZoom /></:left_icon>
               </TextInput>
             </Form>
+            <Divider class="my-1" />
           </div>
-          <div class={"h-80 pl-2 pr-1 overflow-y-auto no-scrollbar", "pt-4": @on_search == nil} }>
+
+          <div class="h-80 overflow-y-auto no-scrollbar">
             {#if !Enum.empty?(@onscreen_items)}
-              <CheckboxMultiselectV2
-                values={@selected_items |> Enum.map(& &1.value)}
-                options={@onscreen_items}
-                on_select={@on_select}
-              />
+              <TopToDown gap={1} class="px-1">
+                <CheckboxMultiselectV2
+                  values={@selected_items |> Enum.map(& &1.value)}
+                  options={@onscreen_items}
+                  on_select={@on_select}
+                />
+              </TopToDown>
             {#elseif @search_text != "" and Enum.empty?(@onscreen_items)}
               <div class="h-full flex items-center justify-around">
                 <div>No results found</div>
@@ -54,28 +60,29 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
               </div>
             {/if}
           </div>
-          <Divider class="mt-2" />
+          <Divider class="mt-1" />
           <LeftToRight class="justify-between p-2">
             {#if length(@selected_items) > 0}
-              <Button variant="danger" size="xsmall" class="rounded" on_click={@on_clear}>
+              <Button size="xsmall" class="rounded" on_click={@on_clear}>
                 Clear
               </Button>
             {#else}
-              <Button variant="danger" size="xsmall" class="rounded">
-                <span class="text-beerus-100">Clear</span>
+              <Button size="xsmall" class="rounded" disabled>
+                Clear
               </Button>
             {/if}
+
             <LeftToRight>
-              <Button variant="danger" size="xsmall" class="rounded border-bulma-100" on_click={@on_discard}>
+              <Button variant="tertiary" size="xsmall" on_click={@on_discard}>
                 Discard
               </Button>
               {#if @on_apply}
-                <Button variant="primary" size="xsmall" class="rounded" on_click={@on_apply}>
-                  <span class="px-2">Apply</span>
+                <Button variant="primary" size="xsmall" on_click={@on_apply}>
+                  Apply
                 </Button>
               {#else}
-                <Button size="xsmall" class="rounded bg-piccolo-100 opacity-30">
-                  <span class="px-2 text-goten-100">Apply</span>
+                <Button variant="primary" size="xsmall" disabled>
+                  Apply
                 </Button>
               {/if}
             </LeftToRight>

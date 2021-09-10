@@ -2,6 +2,7 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
   use Moon.StatelessComponent
 
   alias Moon.Components.Checkbox
+  alias Moon.Components.ListItems.SingleLineItem
 
   # [%{ label: :string, value: :string }, ...]
   prop options, :list, required: true
@@ -15,16 +16,13 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
     {asset_import(@socket, "js/tailwind")}
 
     {#for option <- @options}
-      <div
-        :on-click={@on_select}
-        phx-value-toggled_item_id={option.value}
-        class="flex justify-between py-2 pl-2 mx-1 hover:bg-goku-100 rounded-sm cursor-pointer"
-      >
-        {option.label}
-        <Checkbox
-          class="absolute right-0 pointer-events-none"
-          checked={Enum.member?(@values, option.value)}
-        />
+      <div :on-click={@on_select} phx-value-toggled_item_id={option.value}>
+        <SingleLineItem size="large">
+          <:right_icon>
+            <Checkbox class="pointer-events-none" checked={Enum.member?(@values, option.value)} />
+          </:right_icon>
+          {option.label}
+        </SingleLineItem>
       </div>
     {/for}
     """

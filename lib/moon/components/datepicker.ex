@@ -195,7 +195,7 @@ defmodule Moon.Components.Datepicker do
               </div>
 
               <div class="flex flex-shrink-0 gap-x-2">
-                <Button variant="outline" size="xsmall" on_click="toggle_picker">
+                <Button variant="tertiary" size="xsmall" on_click="toggle_picker">
                   Discard
                 </Button>
 
