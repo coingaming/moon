@@ -1,6 +1,7 @@
 defmodule MoonWeb.Components.LeftMenu do
   use MoonWeb, :stateful_component
 
+  alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Autolayouts.TopToDown
   alias Surface.Components.LiveRedirect
@@ -298,6 +299,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <:menu>
         <nav class="mt-5">
           <TopToDown class="">
+            <LogoMoonDesign class="ml-4" font_size="5rem" />
             <Accordion>
               {#for nav_section <- @navigations}
                 <Item

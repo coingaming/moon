@@ -11,6 +11,9 @@
     white-space: normal;
     vertical-align: top;
   }
+  .moon-logo {
+    @apply inline-block align-middle h-[1em] w-[1em];
+  }
   .moon-currency {
     @apply inline-block align-middle h-[1em] w-[1em];
   }
