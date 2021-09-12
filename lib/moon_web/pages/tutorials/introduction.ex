@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
   alias Moon.Components.Link
   alias Moon.Components.Carousel
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -14,7 +15,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
         name: "Tutorials"
       },
       %{
-        to: "/tutorials/introduction",
+        to: "/tutorials/process-description-and-team-interactions",
         name: "Introduction"
       }
     ]
@@ -22,6 +23,10 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
@@ -75,6 +80,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
           />
         </Link>
       </Carousel>
+      <Footer />
     </TopToDown>
     """
   end

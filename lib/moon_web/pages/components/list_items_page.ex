@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   alias Moon.Components.Link
   alias Moon.Components.ListItems.SingleLineItem
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -33,11 +34,15 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>List item component</Heading>
+      <Heading size={56} class="mb-4">List item component</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=344%3A306">Figma design</Link>
@@ -173,6 +178,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

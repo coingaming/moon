@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -26,11 +27,15 @@ defmodule MoonWeb.Pages.Components.BadgePage do
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown gap={4}>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Badge</Heading>
+      <Heading size={56} class="mb-4">Badge</Heading>
       <p>
         Small count and labeling component.
       </p>
@@ -114,6 +119,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

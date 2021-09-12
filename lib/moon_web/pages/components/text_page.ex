@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.TextPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -26,12 +27,16 @@ defmodule MoonWeb.Pages.Components.TextPage do
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Text</Heading>
+      <Heading size={56} class="mb-4">Text</Heading>
       <p>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=27856%3A9609">Figma design</Link>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/text_page.ex">Sourcecode of this page</Link>
@@ -139,10 +144,12 @@ defmodule MoonWeb.Pages.Components.TextPage do
         <Text size=24 color="krillin_100">
           Text with defined color
         </Text>
+        <Footer/>
       </TopToDown>
     </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

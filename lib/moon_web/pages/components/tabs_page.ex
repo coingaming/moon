@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data(tab_id, :string)
 
@@ -33,12 +34,16 @@ defmodule MoonWeb.Pages.Components.TabsPage do
      )}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Tabs</Heading>
+      <Heading size={56} class="mb-4">Tabs</Heading>
 
       <p>
         A menu of items for users to move between sections of the application.
@@ -96,6 +101,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
           @tab_id = {@tab_id}
         </:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

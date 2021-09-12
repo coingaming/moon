@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   alias Moon.Components.Text
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -22,6 +23,10 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
@@ -51,6 +56,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
 
       <Heading size={24} class="mt-8" id="responsive-layout">Responsive layout</Heading>
       Read more: <Link to="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</Link>
+      <Footer />
     </TopToDown>
     """
   end

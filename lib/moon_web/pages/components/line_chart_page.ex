@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -74,11 +75,15 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>LineChart</Heading>
+      <Heading size={56} class="mb-4">LineChart</Heading>
 
       <p>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/line_chart_page.ex">Sourcecode of this page</Link>
@@ -118,6 +123,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
         <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

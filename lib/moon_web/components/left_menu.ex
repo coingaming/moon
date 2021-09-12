@@ -1,6 +1,7 @@
 defmodule MoonWeb.Components.LeftMenu do
   use MoonWeb, :stateful_component
 
+  alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Autolayouts.TopToDown
   alias Surface.Components.LiveRedirect
@@ -11,16 +12,16 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Components.Accordion.Item
 
   prop theme_name, :any
+  prop uri, :any
   prop active_page, :any
   data selected_theme, :any
-  data item_id, :string, default: "MoonWeb.Pages.Tutorials.Introduction"
+  data item_id, :string, default: ""
 
   data navigations, :any,
     default: [
       %{
         name: "Tutorials",
         url: "/",
-        active_page: "MoonWeb.Pages.Tutorials",
         children: [
           %{
             name: "Introduction",
@@ -33,15 +34,22 @@ defmodule MoonWeb.Components.LeftMenu do
           %{
             name: "Add data using form",
             url: "/theme_name/tutorials/add-data-using-form"
-          },
-          %{name: "New site on Moon", url: "/lab-light/example-pages/transactions"},
-          %{name: "", url: "/theme"}
+          }
+        ]
+      },
+      %{
+        name: "Examples",
+        url: "/",
+        children: [
+          %{
+            name: "New site on Moon",
+            url: "/lab-light/example-pages/transactions"
+          }
         ]
       },
       %{
         name: "Theming & Visuals",
         url: "/",
-        active_page: "MoonWeb.Pages.Theming.ThemingAndVisuals",
         children: [
           %{
             name: "Text Color",
@@ -51,7 +59,6 @@ defmodule MoonWeb.Components.LeftMenu do
             name: "Background Color",
             url: "/theme_name/tutorials/theming-and-visuals#background-color"
           },
-          %{name: "", url: "theme/tutorials/theming-and-visuals#background-color"},
           %{
             name: "Border radius",
             url: "/theme_name/tutorials/theming-and-visuals#border-radius"
@@ -73,7 +80,6 @@ defmodule MoonWeb.Components.LeftMenu do
       %{
         name: "Assets",
         url: "/",
-        active_page: "MoonWeb.Pages.Assets",
         children: [
           %{
             name: "Crests",
@@ -104,7 +110,6 @@ defmodule MoonWeb.Components.LeftMenu do
       %{
         name: "Components",
         url: "/",
-        active_page: "MoonWeb.Pages.Components",
         children: [
           %{
             name: "Accordion",
@@ -221,6 +226,10 @@ defmodule MoonWeb.Components.LeftMenu do
           %{
             name: "Tooltip",
             url: "/theme_name/components/tooltip"
+          },
+          %{
+            name: "LineChart",
+            url: "/theme_name/charts/line-chart"
           }
         ]
       }
@@ -269,6 +278,8 @@ defmodule MoonWeb.Components.LeftMenu do
   end
 
   def render(assigns) do
+    previous_item_id = assigns.item_id
+
     ~F"""
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
       <:short_logo>
@@ -288,16 +299,26 @@ defmodule MoonWeb.Components.LeftMenu do
       <:menu>
         <nav class="mt-5">
           <TopToDown class="">
+            <LogoMoonDesign class="ml-4" font_size="5rem" />
             <Accordion>
-              {#for nav <- @navigations}
+              {#for nav_section <- @navigations}
                 <Item
                   click="open"
-                  item_id={"#{nav.active_page}"}
-                  is_open={should_be_open(Atom.to_string(@active_page), nav.active_page, @item_id)}
-                  title={"#{nav.name}"}
+                  item_id={"#{nav_section.name}"}
+                  is_open={should_nav_section_be_open(nav_section, @uri, @item_id, previous_item_id, @theme_name)}
+                  title={"#{nav_section.name}"}
                 >
-                  {#for nav_item <- nav.children}
-                    <LiveRedirect class="block mt-3" to={String.replace(nav_item.url, "theme_name", @theme_name)}>{nav_item.name}</LiveRedirect>
+                  {#for nav_item <- nav_section.children}
+                    <LiveRedirect
+                      class={
+                        "block m-1 text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
+                        leading-7 group w-full flex items-center py-2 rounded-md transition-colors ease-in-out duration-150",
+                        "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_item.url, @theme_name)
+                      }
+                      to={String.replace(nav_item.url, "theme_name", @theme_name)}
+                    >
+                      {nav_item.name}
+                    </LiveRedirect>
                   {/for}
                 </Item>
               {/for}
@@ -309,11 +330,53 @@ defmodule MoonWeb.Components.LeftMenu do
     """
   end
 
-  defp should_be_open(current_active_page, item_active_page, item_id) do
+  defp should_url_be_highlighted(uri, nav_url, theme_name) do
+    nav_url = remove_theme_name(nav_url, "theme_name")
+    nav_url == url_with_fragment(uri, theme_name)
+  end
+
+  defp should_nav_section_be_open(nav_section, uri, item_id, previous_item_id, theme_name) do
+    url_with_fragment = url_with_fragment(uri, theme_name)
+    no_previous_section_clicked = previous_item_id == ""
+
     cond do
-      item_active_page == item_id -> true
-      String.contains?(current_active_page, item_active_page) -> true
-      true -> false
+      is_nav_section_page_clicked?(item_id, nav_section.name) ->
+        true
+
+      no_previous_section_clicked and is_url_child_of_nav_section?(nav_section, url_with_fragment) ->
+        true
+
+      true ->
+        false
     end
+  end
+
+  defp is_url_child_of_nav_section?(nav_section, url_with_fragment) do
+    Enum.any?(nav_section.children, fn nav_item ->
+      url = nav_item.url |> remove_theme_name("theme_name")
+      url == url_with_fragment
+    end)
+  end
+
+  defp is_nav_section_page_clicked?(clicked_item_id, current_selected_section) do
+    clicked_item_id == current_selected_section
+  end
+
+  defp remove_theme_name(url, theme_name) do
+    url |> String.replace("/#{theme_name}/", "/")
+  end
+
+  defp url_with_fragment(uri, theme_name) do
+    parsed_uri = uri |> URI.parse()
+    path = parsed_uri |> Map.fetch!(:path) |> remove_theme_name(theme_name)
+    fragment = parsed_uri |> Map.fetch!(:fragment)
+
+    path =
+      case fragment do
+        nil -> path
+        _ -> path <> "#" <> fragment
+      end
+
+    path
   end
 end

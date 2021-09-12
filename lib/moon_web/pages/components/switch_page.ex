@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Components.Switch
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -36,11 +37,15 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Switch</Heading>
+      <Heading size={56} class="mb-4">Switch</Heading>
 
       <p>
         An alternate checkbox appearance for simulating on/off state.
@@ -161,6 +166,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

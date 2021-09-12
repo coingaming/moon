@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -32,11 +33,15 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>File Input</Heading>
+      <Heading size={56} class="mb-4">File Input</Heading>
 
       <p>
         Enabling users to upload one or more files inside a form.
@@ -83,6 +88,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

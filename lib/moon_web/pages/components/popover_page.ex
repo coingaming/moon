@@ -36,6 +36,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
 
@@ -56,13 +57,17 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
 
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-4">Popover Component</Heading>
+      <Heading size={56} class="mb-4">Popover Component</Heading>
 
       <p>
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
@@ -100,6 +105,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
           </:code>
         </ExampleAndCode>
       {/for}
+      <Footer />
     </TopToDown>
     """
   end

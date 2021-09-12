@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   alias Moon.Components.Link
   alias Moon.Components.Switcher
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -33,11 +34,15 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Switcher</Heading>
+      <Heading size={56} class="mb-4">Switcher</Heading>
 
       <p>
         <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
@@ -67,6 +72,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
         <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

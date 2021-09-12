@@ -4,6 +4,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -20,6 +21,10 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
@@ -145,6 +150,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     mix phx.server
 
     </pre>
+      <Footer />
     </TopToDown>
     """
   end

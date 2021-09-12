@@ -12,6 +12,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -35,11 +36,15 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
     {:ok, socket}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Sidebar</Heading>
+      <Heading size={56} class="mb-4">Sidebar</Heading>
 
       <p class="mb-8">
         <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
@@ -139,6 +144,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       </#CodePreview>
         </:code>
       </ExampleAndCode>
+      <Footer />
     </TopToDown>
     """
   end

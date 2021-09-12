@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Logos
+  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -57,11 +58,15 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def render(assigns) do
     ~F"""
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32} class="mb-8">Logos</Heading>
+      <Heading size={56} class="mb-4">Logos</Heading>
 
       <ExampleAndCode id="logo_1" class="mt-4">
         <:example>
@@ -434,6 +439,8 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </#CodePreview>
         </:code>
       </ExampleAndCode>
+
+      <Footer />
     </TopToDown>
     """
   end
