@@ -1,7 +1,8 @@
 defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
   use MoonWeb, :live_view
+
+  alias MoonWeb.Components.Page
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Breadcrumbs
 
   data breadcrumbs, :any,
     default: [
@@ -26,14 +27,15 @@ defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <h1>Checkbox</h1>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <h1>Checkbox</h1>
 
-      <p>
-        Checkboxes offer users a 'yes' or 'no' choice. They can be used on their own, or as a multiple choice fieldset.
-      </p>
-    </TopToDown>
+        <p>
+          Checkboxes offer users a 'yes' or 'no' choice. They can be used on their own, or as a multiple choice fieldset.
+        </p>
+      </TopToDown>
+    </Page>
     """
   end
 end

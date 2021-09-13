@@ -10,11 +10,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.TextInput
+  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -54,37 +52,37 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown gap={4}>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Text Input</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown gap={4}>
+        <Heading size={56} class="mb-4">Text Input</Heading>
 
-      <p>
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=5400%3A1634">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/text_input_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/components/textInput">React implementation</Link>
-      </p>
+        <p>
+          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=5400%3A1634">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/text_input_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/components/textInput">React implementation</Link>
+        </p>
 
-      {!-- Regular text input --}
+        {!-- Regular text input --}
 
-      The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
+        The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
 
-      <ExampleAndCode id="text_input_1">
-        <:example>
-          <Form
-            for={@user_changeset}
-            change="update_user_changeset"
-            submit="save_user_changeset"
-            autocomplete="off"
-          >
-            <TopToDown gap={4}>
-              <TextInput label="Username" placeholder="Username" required field={:name} />
-              <TextInput type="email" placeholder="username@example.com" field={:email} />
-            </TopToDown>
-          </Form>
-        </:example>
+        <ExampleAndCode id="text_input_1">
+          <:example>
+            <Form
+              for={@user_changeset}
+              change="update_user_changeset"
+              submit="save_user_changeset"
+              autocomplete="off"
+            >
+              <TopToDown gap={4}>
+                <TextInput label="Username" placeholder="Username" required field={:name} />
+                <TextInput type="email" placeholder="username@example.com" field={:email} />
+              </TopToDown>
+            </Form>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       alias Moon.Autolayouts.TopToDown
       alias Moon.Components.Form
       alias Moon.Components.TextInput
@@ -101,29 +99,29 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         </TopToDown>
       </Form>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
-      </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
+        </ExampleAndCode>
 
-      {!-- Disabled  text input --}
+        {!-- Disabled  text input --}
 
-      The input component in disabled state
+        The input component in disabled state
 
-      <ExampleAndCode id="text_input_2">
-        <:example>
-          <Form
-            for={@user_changeset_disabled}
-            change="update_user_changeset_disabled"
-            submit="save_user_changeset"
-            autocomplete="off"
-          >
-            <TextInput disabled label="Text Input" placeholder="e.g. username" field={:name} />
-          </Form>
-        </:example>
+        <ExampleAndCode id="text_input_2">
+          <:example>
+            <Form
+              for={@user_changeset_disabled}
+              change="update_user_changeset_disabled"
+              submit="save_user_changeset"
+              autocomplete="off"
+            >
+              <TextInput disabled label="Text Input" placeholder="e.g. username" field={:name} />
+            </Form>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       alias Moon.Components.Form
       alias Moon.Components.TextInput
 
@@ -136,36 +134,36 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <TextInput disabled={true} label="Text Input" placeholder="e.g. username" field={:name} />
       </Form>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@user_changeset_disabled = {inspect(@user_changeset_disabled, pretty: true)}</:state>
-      </ExampleAndCode>
+          <:state>@user_changeset_disabled = {inspect(@user_changeset_disabled, pretty: true)}</:state>
+        </ExampleAndCode>
 
-      {!-- Text input with icon on the left --}
-      The input component with icon on the left
+        {!-- Text input with icon on the left --}
+        The input component with icon on the left
 
-      <ExampleAndCode id="text_input_3">
-        <:example>
-          <Form
-            for={@user_changeset_left_icon}
-            change="update_user_changeset_left_icon"
-            submit="save_user_changeset"
-            autocomplete="off"
-          >
-            <TopToDown gap={4}>
-              <TextInput label="Text Input with Left Icon" placeholder="Username" field={:name}>
-                <:left_icon><IconUser /></:left_icon>
-              </TextInput>
+        <ExampleAndCode id="text_input_3">
+          <:example>
+            <Form
+              for={@user_changeset_left_icon}
+              change="update_user_changeset_left_icon"
+              submit="save_user_changeset"
+              autocomplete="off"
+            >
+              <TopToDown gap={4}>
+                <TextInput label="Text Input with Left Icon" placeholder="Username" field={:name}>
+                  <:left_icon><IconUser /></:left_icon>
+                </TextInput>
 
-              <TextInput placeholder="Email" type="email" field={:email}>
-                <:left_icon><IconMail /></:left_icon>
-              </TextInput>
-            </TopToDown>
-          </Form>
-        </:example>
+                <TextInput placeholder="Email" type="email" field={:email}>
+                  <:left_icon><IconMail /></:left_icon>
+                </TextInput>
+              </TopToDown>
+            </Form>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       alias Moon.Assets.Icons.IconUser
       alias Moon.Components.Form
       alias Moon.Components.TextInput
@@ -185,31 +183,31 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         </TextInput>
       </Form>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@user_changeset_left_icon = {inspect(@user_changeset_left_icon, pretty: true)}</:state>
-      </ExampleAndCode>
+          <:state>@user_changeset_left_icon = {inspect(@user_changeset_left_icon, pretty: true)}</:state>
+        </ExampleAndCode>
 
-      {!-- Text input with two icons --}
-      Input component with two icons
+        {!-- Text input with two icons --}
+        Input component with two icons
 
-      <ExampleAndCode id="text_input_4">
-        <:example>
-          <Form
-            for={@user_changeset_two_icons}
-            change="update_user_changeset_two_icons"
-            submit="save_user_changeset"
-            autocomplete="off"
-          >
-            <TextInput label="Text Inputs with Two Icons" placeholder="e.g. username" field={:name}>
-              <:left_icon><IconZoom /></:left_icon>
-              <:right_icon><IconHamburger /></:right_icon>
-            </TextInput>
-          </Form>
-        </:example>
+        <ExampleAndCode id="text_input_4">
+          <:example>
+            <Form
+              for={@user_changeset_two_icons}
+              change="update_user_changeset_two_icons"
+              submit="save_user_changeset"
+              autocomplete="off"
+            >
+              <TextInput label="Text Inputs with Two Icons" placeholder="e.g. username" field={:name}>
+                <:left_icon><IconZoom /></:left_icon>
+                <:right_icon><IconHamburger /></:right_icon>
+              </TextInput>
+            </Form>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       alias Moon.Assets.Icons.IconHamburger
       alias Moon.Assets.Icons.IconZoom
       alias Moon.Components.Form
@@ -231,35 +229,35 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         </TextInput>
       </Form>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@user_changeset_two_icons = {inspect(@user_changeset_two_icons, pretty: true)}</:state>
-      </ExampleAndCode>
+          <:state>@user_changeset_two_icons = {inspect(@user_changeset_two_icons, pretty: true)}</:state>
+        </ExampleAndCode>
 
-      {!-- Text input with two icons with events --}
-      Input component with two icons with events
+        {!-- Text input with two icons with events --}
+        Input component with two icons with events
 
-      <ExampleAndCode id="text_input_5">
-        <:example>
-          <Form
-            for={@user_changeset_two_icons_with_events}
-            change="update_user_changeset_two_icons_with_events"
-            submit="save_user_changeset"
-            autocomplete="off"
-          >
-            <TextInput
-              label="Text Inputs with Two Icons with Events"
-              placeholder="e.g. username"
-              field={:name}
+        <ExampleAndCode id="text_input_5">
+          <:example>
+            <Form
+              for={@user_changeset_two_icons_with_events}
+              change="update_user_changeset_two_icons_with_events"
+              submit="save_user_changeset"
+              autocomplete="off"
             >
-              <:left_icon><IconZoom click="clear_search" /></:left_icon>
-              <:right_icon><IconHamburger click="clear_search" /></:right_icon>
-            </TextInput>
-          </Form>
-        </:example>
+              <TextInput
+                label="Text Inputs with Two Icons with Events"
+                placeholder="e.g. username"
+                field={:name}
+              >
+                <:left_icon><IconZoom click="clear_search" /></:left_icon>
+                <:right_icon><IconHamburger click="clear_search" /></:right_icon>
+              </TextInput>
+            </Form>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Assets.Icons.IconHamburger
         alias Moon.Assets.Icons.IconZoom
         alias Moon.Components.Form
@@ -282,13 +280,12 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
           </TextInput>
         </Form>
           </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@user_changeset_two_icons_with_events = {inspect(@user_changeset_two_icons_with_events, pretty: true)}</:state>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          <:state>@user_changeset_two_icons_with_events = {inspect(@user_changeset_two_icons_with_events, pretty: true)}</:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

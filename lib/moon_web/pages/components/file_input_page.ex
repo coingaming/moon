@@ -1,13 +1,12 @@
 defmodule MoonWeb.Pages.Components.FileInputPage do
   use MoonWeb, :live_view
-  alias MoonWeb.Components.ExampleAndCode
+
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -40,21 +39,21 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">File Input</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">File Input</Heading>
 
-      <p>
-        Enabling users to upload one or more files inside a form.
-      </p>
+        <p>
+          Enabling users to upload one or more files inside a form.
+        </p>
 
-      <ExampleAndCode title="Label" id="file_input_1">
-        <:example>
-          <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a photo..." />
-        </:example>
+        <ExampleAndCode title="Label" id="file_input_1">
+          <:example>
+            <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a photo..." />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.FileInput
 
         def mount(_params, _session, socket) do
@@ -72,26 +71,25 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           placeholder="Choose a document..."
         />
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Error" id="file_input_2">
-        <:example>
-          <FileInput conf={@uploads.error_file} error />
-        </:example>
+        <ExampleAndCode title="Error" id="file_input_2">
+          <:example>
+            <FileInput conf={@uploads.error_file} error />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <FileInput
           conf={ @uploads.file }
           error={ true }
         />
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

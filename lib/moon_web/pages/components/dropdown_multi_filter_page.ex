@@ -1,16 +1,15 @@
 defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   use MoonWeb, :live_view
-  alias MoonWeb.Components.ExampleAndCode
+
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -39,26 +38,25 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Dropdown multifilter</Heading>
+        <Link to="https://www.figma.com/file/Ai0SGAAfoL0bXI88Zn0Eo3/MDS-UI-specs?node-id=1375%3A9769">
+          Figma design
+        </Link>
+        <Link
+          class="mb-4"
+          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_multi_filter.ex"
+        >
+          Sourcecode of this page
+        </Link>
 
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Dropdown multifilter</Heading>
-      <Link to="https://www.figma.com/file/Ai0SGAAfoL0bXI88Zn0Eo3/MDS-UI-specs?node-id=1375%3A9769">
-        Figma design
-      </Link>
-      <Link
-        class="mb-4"
-        to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_multi_filter.ex"
-      >
-        Sourcecode of this page
-      </Link>
-
-      <ExampleAndCode id="dropdown_multi_filter_1">
-        <:example>
-          <CountryFilter active_values={@country_filter_values} />
-        </:example>
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="dropdown_multi_filter_1">
+          <:example>
+            <CountryFilter active_values={@country_filter_values} />
+          </:example>
+          <:code>
+            <#CodePreview>
           <DropdownMultiFilter
             id={@name}
             all_items={all_items()}
@@ -75,16 +73,16 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
             </Chip>
           </DropdownMultiFilter>
           </#CodePreview>
-        </:code>
-        <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
-      </ExampleAndCode>
+          </:code>
+          <:state>@country_filter_valuess = {inspect(@country_filter_values)}</:state>
+        </ExampleAndCode>
 
-      <ExampleAndCode id="dropdown_multi_filter_2">
-        <:example>
-          <SiteFilter active_values={@site_filter_values} />
-        </:example>
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="dropdown_multi_filter_2">
+          <:example>
+            <SiteFilter active_values={@site_filter_values} />
+          </:example>
+          <:code>
+            <#CodePreview>
           <DropdownMultiFilter
             id={@name}
             all_items={all_items()}
@@ -102,12 +100,11 @@ defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
             </Chip>
           </DropdownMultiFilter>
           </#CodePreview>
-        </:code>
-        <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          </:code>
+          <:state>@site_filter_valuess = {inspect(@site_filter_values)}</:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

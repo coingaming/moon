@@ -7,10 +7,8 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.Link
+  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -36,17 +34,26 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Avatar</Heading>
 
-      <Heading size={56} class="mb-4">Avatar</Heading>
+        <p>
+          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=60%3A20">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/components/avatar">React implementation</Link>
+        </p>
+        Component for displaying user profile image or placeholder if no image
 
-      <p>
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=60%3A20">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/components/avatar">React implementation</Link>
-      </p>
-      Component for displaying user profile image or placeholder if no image
+        <ExampleAndCode title="Image avatars" id="avatar_1">
+          <:example>
+            <div class="inline-flex">
+              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
+              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
+              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
+              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="large" />
+            </div>
+          </:example>
 
       <ExampleAndCode title="Image avatars" id="avatar_1">
         <:example>
@@ -60,13 +67,13 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
         <:code>
           <#CodePreview>
-        <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
-        <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
-        <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
-        <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
-    </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+            <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
+            <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
+            <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
+            <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
+        </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
       <ExampleAndCode title="Letter avatars" id="avatar_2">
         <:note>
@@ -80,17 +87,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
             <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
           </LeftToRight>
         </:example>
-
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
         <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
         <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
         <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
         </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-
+          </:code>
+        </ExampleAndCode>
       <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
         <:example>
           <LeftToRight>
@@ -100,17 +105,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
             <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="large" />
           </LeftToRight>
         </:example>
-
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
         <Avatar color="gohan-100" background_color="piccolo-100" size="small" />
         <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
         <Avatar color="gohan-100" background_color="piccolo-100" size="large" />
         </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-
+          </:code>
+        </ExampleAndCode>
       <ExampleAndCode title="Different colors" id="avatar_4">
         <:example>
           <LeftToRight>
@@ -118,17 +121,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
             <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
           </LeftToRight>
         </:example>
-
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
         <Avatar color="piccolo-100" background_color="gohan-100" size="medium" />
         </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

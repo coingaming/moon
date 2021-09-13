@@ -1,14 +1,13 @@
 defmodule MoonWeb.Pages.Components.LinkPage do
   use MoonWeb, :live_view
+
+  alias MoonWeb.Components.Page
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -33,34 +32,34 @@ defmodule MoonWeb.Pages.Components.LinkPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Link</Heading>
-      <p>
-        <Link to="#">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/link_page.ex">Sourcecode of this page</Link>
-        <Link to="#">React implementation</Link>
-      </p>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Link</Heading>
+        <p>
+          <Link to="#">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/link_page.ex">Sourcecode of this page</Link>
+          <Link to="#">React implementation</Link>
+        </p>
 
-      <ExampleAndCode id="link_1">
-        <:example>
-          <Link to="#">I'm a link</Link>
+        <ExampleAndCode id="link_1">
+          <:example>
+            <Link to="#">I'm a link</Link>
 
-          <Link to="#" secondary>
-            I'm a Secondary link
-          </Link>
+            <Link to="#" secondary>
+              I'm a Secondary link
+            </Link>
 
-          <Link to="#" optional>
-            I'm an Optional link
-          </Link>
+            <Link to="#" optional>
+              I'm an Optional link
+            </Link>
 
-          <Link to="#" disabled>
-            I'm a disabled link
-          </Link>
-        </:example>
+            <Link to="#" disabled>
+              I'm a disabled link
+            </Link>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       <Link to="#">I'm a link</Link>
 
       <Link to="#" secondary>
@@ -75,11 +74,10 @@ defmodule MoonWeb.Pages.Components.LinkPage do
         I'm a disabled link
       </Link>
     </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

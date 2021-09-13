@@ -1,14 +1,13 @@
 defmodule MoonWeb.Pages.Components.LineChartPage do
   use MoonWeb, :live_view
+
+  alias MoonWeb.Components.Page
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -82,33 +81,33 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">LineChart</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">LineChart</Heading>
 
-      <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/line_chart_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/charts/lineChart">React implementation</Link>
-      </p>
+        <p>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/line_chart_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/charts/lineChart">React implementation</Link>
+        </p>
 
-      <p>
-        Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
-      </p>
+        <p>
+          Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
+        </p>
 
-      <ExampleAndCode layout="column" id="line_chart_1">
-        <:example>
-          <LineChartCard
-            id="line-chart-card"
-            title="KPI Overview"
-            time_format="%d/%m"
-            {=@filters}
-            {=@select_options}
-            {=@values}
-          />
-        </:example>
+        <ExampleAndCode layout="column" id="line_chart_1">
+          <:example>
+            <LineChartCard
+              id="line-chart-card"
+              title="KPI Overview"
+              time_format="%d/%m"
+              {=@filters}
+              {=@select_options}
+              {=@values}
+            />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.ChartCard
 
         <LineChartCard
@@ -120,13 +119,12 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
           {=@values}
         />
       </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

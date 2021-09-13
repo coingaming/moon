@@ -2,7 +2,6 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   use MoonWeb, :live_view
 
   alias Moon.Components.Toast
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -10,9 +9,8 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -42,51 +40,51 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Toast</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Toast</Heading>
 
-      <p>
-        Short, time-based messages that slide in and out of a page.
-      </p>
+        <p>
+          Short, time-based messages that slide in and out of a page.
+        </p>
 
-      <p>
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=15488%3A332">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/toast.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/toolkit/toast">React implementation</Link>
-      </p>
+        <p>
+          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=15488%3A332">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/toast.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/toolkit/toast">React implementation</Link>
+        </p>
 
-      <ToastStack id="toasts" />
+        <ToastStack id="toasts" />
 
-      <ExampleAndCode id="toast_1">
-        <:example>
-          <Toast id="minimal" message="Hey! Your toast is ready." />
-        </:example>
+        <ExampleAndCode id="toast_1">
+          <:example>
+            <Toast id="minimal" message="Hey! Your toast is ready." />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Toast
           id="minimal"
           message="Hey! Your toast is ready."
         />
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Appearing and disappearing" id="toast_2">
-        <:note>
-          Toasts can be shown on top of the page and automatically disappear after a timeout.
+        <ExampleAndCode title="Appearing and disappearing" id="toast_2">
+          <:note>
+            Toasts can be shown on top of the page and automatically disappear after a timeout.
 
-          You should use <code class="bg-goku-40">ToastStack</code> component for it.
-        </:note>
-        <:example>
-          <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
+            You should use <code class="bg-goku-40">ToastStack</code> component for it.
+          </:note>
+          <:example>
+            <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
 
-          <Button variant="primary" on_click="show_two_toasts" class="block" size="xsmall">Show two toasts</Button>
-        </:example>
+            <Button variant="primary" on_click="show_two_toasts" class="block" size="xsmall">Show two toasts</Button>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.ToastStack
         alias Moon.Components.Toast.Message
 
@@ -135,28 +133,28 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           {:noreply, socket}
         end
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Variant" id="toast_3">
-        <:note>
-          Use <code class="bg-goku-40">variant</code> prop.
-        </:note>
-        <:example>
-          <div class="flex flex-col items-start">
-            <Toast
-              :for={toast <- variant_toasts()}
-              id={toast.id}
-              message={toast.message}
-              variant={toast.variant}
-            />
-          </div>
+        <ExampleAndCode title="Variant" id="toast_3">
+          <:note>
+            Use <code class="bg-goku-40">variant</code> prop.
+          </:note>
+          <:example>
+            <div class="flex flex-col items-start">
+              <Toast
+                :for={toast <- variant_toasts()}
+                id={toast.id}
+                message={toast.message}
+                variant={toast.variant}
+              />
+            </div>
 
-          <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="xsmall">Show all</Button>
-        </:example>
+            <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="xsmall">Show all</Button>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Toast
           id="error_toast"
           message="Error!"
@@ -182,32 +180,32 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           message="Default."
         />
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Actions" id="toast_4">
-        <:note>
-          Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
-          To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
-        </:note>
-        <:example>
-          <div class="flex flex-col items-start">
-            <Toast
-              :for={toast <- action_toasts()}
-              id={toast.id}
-              message={toast.message}
-              variant={toast.variant}
-              link_text={toast.link_text}
-              link_href={toast.link_href}
-              closeable={toast.closeable}
-            />
-          </div>
+        <ExampleAndCode title="Actions" id="toast_4">
+          <:note>
+            Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
+            To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
+          </:note>
+          <:example>
+            <div class="flex flex-col items-start">
+              <Toast
+                :for={toast <- action_toasts()}
+                id={toast.id}
+                message={toast.message}
+                variant={toast.variant}
+                link_text={toast.link_text}
+                link_href={toast.link_href}
+                closeable={toast.closeable}
+              />
+            </div>
 
-          <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="xsmall">Show all</Button>
-        </:example>
+            <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="xsmall">Show all</Button>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Toast
           id="closeable_toast"
           message="You can close this toast."
@@ -238,11 +236,10 @@ defmodule MoonWeb.Pages.Components.ToastPage do
           closeable={ false }
         />
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 
