@@ -1,14 +1,12 @@
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -40,85 +38,83 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Patterns</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Patterns</Heading>
 
-      <ExampleAndCode id="pattern_1" class="mt-4">
-        <:example>
-          <PatternCircles font_size="10rem" />
-        </:example>
-
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_1" class="mt-4">
+          <:example>
             <PatternCircles font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="pattern_2" class="mt-4">
-        <:example>
-          <PatternLines font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <PatternCircles font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_2" class="mt-4">
+          <:example>
             <PatternLines font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="pattern_3" class="mt-4">
-        <:example>
-          <PatternRipple font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <PatternLines font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_3" class="mt-4">
+          <:example>
             <PatternRipple font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="pattern_4" class="mt-4">
-        <:example>
-          <PatternSpeed font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <PatternRipple font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_4" class="mt-4">
+          <:example>
             <PatternSpeed font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="pattern_5" class="mt-4">
-        <:example>
-          <PatternStars font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <PatternSpeed font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_5" class="mt-4">
+          <:example>
             <PatternStars font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="pattern_6" class="mt-4">
-        <:example>
-          <PatternWave font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <PatternStars font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="pattern_6" class="mt-4">
+          <:example>
             <PatternWave font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          <:code>
+            <#CodePreview>
+              <PatternWave font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

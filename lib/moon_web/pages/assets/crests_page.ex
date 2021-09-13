@@ -1,14 +1,12 @@
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -39,73 +37,71 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Crests</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Crests</Heading>
 
-      <ExampleAndCode id="crest_1" class="mt-4">
-        <:example>
-          <CrestArsenal font_size="10rem" />
-        </:example>
-
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="crest_1" class="mt-4">
+          <:example>
             <CrestArsenal font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="crest_2" class="mt-4">
-        <:example>
-          <CrestFlamengo font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <CrestArsenal font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="crest_2" class="mt-4">
+          <:example>
             <CrestFlamengo font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="crest_3" class="mt-4">
-        <:example>
-          <CrestSaoPaulo font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <CrestFlamengo font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="crest_3" class="mt-4">
+          <:example>
             <CrestSaoPaulo font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="crest_4" class="mt-4">
-        <:example>
-          <CrestSouthampton font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <CrestSaoPaulo font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="crest_4" class="mt-4">
+          <:example>
             <CrestSouthampton font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <ExampleAndCode id="crest_5" class="mt-4">
-        <:example>
-          <CrestWatford font_size="10rem" />
-        </:example>
+          <:code>
+            <#CodePreview>
+              <CrestSouthampton font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
-        <:code>
-          <#CodePreview>
+        <ExampleAndCode id="crest_5" class="mt-4">
+          <:example>
             <CrestWatford font_size="10rem" />
-          </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:example>
 
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          <:code>
+            <#CodePreview>
+              <CrestWatford font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end
