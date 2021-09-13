@@ -8,6 +8,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoLivecasinoShort
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoMoonDesignShort
+  alias Moon.Assets.Logos.LogoLabFull
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
@@ -68,13 +69,11 @@ defmodule MoonWeb.Components.ThemesSelect do
             {#elseif theme[:value] == "livecasino"}
               <LogoLivecasinoShort />
             {#elseif theme[:value] == "lab"}
-              <LogoMoonDesignShort />
+              <LogoLabFull />
             {#elseif theme[:value] == "slots"}
               <LogoSlotsShort />
             {#elseif theme[:value] == "sportsbet"}
               <LogoSportsbetShort />
-            {#else}
-              <LogoMoonDesignShort />
             {/if}
           </button>
         {/for}
