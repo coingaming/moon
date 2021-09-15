@@ -7,7 +7,6 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoSportsbetShort
   alias Moon.Assets.Logos.LogoLivecasinoShort
   alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Assets.Logos.LogoLabFull
 
   prop class, :string, default: nil
