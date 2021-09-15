@@ -1,6 +1,7 @@
 defmodule MoonWeb.Pages.Components.TooltipPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.LeftToRight
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.{Heading, Button, CodePreview, Link, Tooltip}
   alias Moon.Autolayouts.TopToDown
@@ -43,9 +44,11 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       {#for placement <- ["top", "right", "bottom", "left"]}
         <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
           <:example>
-            <Tooltip placement={placement} text={placement}>
-              <Button variant="primary">Hover Me</Button>
-            </Tooltip>
+            <LeftToRight>
+              <Tooltip placement={placement} text={placement}>
+                <Button variant="primary">Hover Me</Button>
+              </Tooltip>
+            </LeftToRight>
           </:example>
           <:code>
             <#CodePreview>
