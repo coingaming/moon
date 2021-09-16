@@ -51,11 +51,12 @@ defmodule Moon.Components.TextInput.TextInputInternal do
         "border-chi-chi-100": @error
       }
       field={@field}
-      opts={[
+      opts={
         placeholder: @placeholder,
         disabled: @disabled,
-        required: @required
-      ]}
+        required: @required,
+        type: @type
+      }
       value={@value}
       focus={@on_focus}
       blur={@on_blur}
@@ -142,6 +143,7 @@ defmodule Moon.Components.TextInput do
             {=@on_blur}
             {=@background_color}
             {=@size}
+            {=@type}
           />
         </div>
       </Label>
@@ -176,6 +178,7 @@ defmodule Moon.Components.TextInput do
           {=@background_color}
           {=@size}
           :if={!@label}
+          {=@type}
         />
       </div>
     {/if}
