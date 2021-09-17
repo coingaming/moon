@@ -9,7 +9,7 @@ defmodule Moon.MixProject do
       version: @version,
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -42,7 +42,7 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.10"},
+      {:phoenix, "~> 1.5.12"},
       {:phoenix_live_view, "~> 0.15.7"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
