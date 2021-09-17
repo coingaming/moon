@@ -43,10 +43,10 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         {#for placement <- ["top", "right", "bottom", "left"]}
           <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
             <:example>
-            <LeftToRight>
-              <Tooltip placement={placement} text={placement}>
-                <Button variant="primary">Hover Me</Button>
-              </Tooltip>
+              <LeftToRight>
+                <Tooltip placement={placement} text={placement}>
+                  <Button variant="primary">Hover Me</Button>
+                </Tooltip>
               </LeftToRight>
             </:example>
             <:code>

@@ -47,26 +47,16 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
         <ExampleAndCode title="Image avatars" id="avatar_1">
           <:example>
-            <div class="inline-flex">
+            <LeftToRight>
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="large" />
-            </div>
+            </LeftToRight>
           </:example>
 
-      <ExampleAndCode title="Image avatars" id="avatar_1">
-        <:example>
-          <LeftToRight>
-            <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
-            <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
-            <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
-            <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="large" />
-          </LeftToRight>
-        </:example>
-
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
             <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
             <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
             <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
@@ -75,18 +65,18 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           </:code>
         </ExampleAndCode>
 
-      <ExampleAndCode title="Letter avatars" id="avatar_2">
-        <:note>
-          Use name prop. No more than 2 / 3 characters
-        </:note>
-        <:example>
-          <LeftToRight>
-            <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-            <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
-            <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
-            <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Letter avatars" id="avatar_2">
+          <:note>
+            Use name prop. No more than 2 / 3 characters
+          </:note>
+          <:example>
+            <LeftToRight>
+              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
+              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
+              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
+              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
+            </LeftToRight>
+          </:example>
           <:code>
             <#CodePreview>
         <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
@@ -96,15 +86,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </#CodePreview>
           </:code>
         </ExampleAndCode>
-      <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
-        <:example>
-          <LeftToRight>
-            <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-            <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="small" />
-            <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
-            <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="large" />
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
+          <:example>
+            <LeftToRight>
+              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
+              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="small" />
+              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
+              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="large" />
+            </LeftToRight>
+          </:example>
           <:code>
             <#CodePreview>
         <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
@@ -114,13 +104,13 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </#CodePreview>
           </:code>
         </ExampleAndCode>
-      <ExampleAndCode title="Different colors" id="avatar_4">
-        <:example>
-          <LeftToRight>
-            <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
-            <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Different colors" id="avatar_4">
+          <:example>
+            <LeftToRight>
+              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
+              <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
+            </LeftToRight>
+          </:example>
           <:code>
             <#CodePreview>
         <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
