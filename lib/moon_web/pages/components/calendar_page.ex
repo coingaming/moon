@@ -1,13 +1,13 @@
 defmodule MoonWeb.Pages.Components.CalendarPage do
   use MoonWeb, :live_view
+
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Calendar
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -38,23 +38,23 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Calendar</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Calendar</Heading>
 
-      <p>
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A3454">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/calendar_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
-      </p>
+        <p>
+          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A3454">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/calendar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
+        </p>
 
-      <ExampleAndCode layout="column" id="calendar_1">
-        <:example>
-          <Calendar id="default_calendar" week_starts_on={1} events={@events} />
-        </:example>
+        <ExampleAndCode layout="column" id="calendar_1">
+          <:example>
+            <Calendar id="default_calendar" week_starts_on={1} events={@events} />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.Calendar
 
         <Calendar
@@ -63,18 +63,18 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={ @events }
         />
       </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@events = {inspect(@events, pretty: true)}</:state>
-      </ExampleAndCode>
+          <:state>@events = {inspect(@events, pretty: true)}</:state>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2">
-        <:example>
-          <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
-        </:example>
+        <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2">
+          <:example>
+            <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.Calendar
 
         <Calendar
@@ -83,15 +83,15 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           events={ @events }
         />
       </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@events = {inspect(@events, pretty: true)}</:state>
-        <:note>
-          Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
-        </:note>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          <:state>@events = {inspect(@events, pretty: true)}</:state>
+          <:note>
+            Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+          </:note>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

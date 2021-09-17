@@ -2,15 +2,14 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Assets.Icons.IconMore
   alias Moon.Components.CodePreview
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -41,29 +40,29 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
-      <ExampleAndCode id="dropdown_menu_button_1">
-        <:example>
-          <div class="flex justify-center">
-            <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
-              <IconMore />
+        <ExampleAndCode id="dropdown_menu_button_1">
+          <:example>
+            <div class="flex justify-center">
+              <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+                <IconMore />
 
-              <:menu>
-                <DropdownMenuItems>
-                  <DropdownMenuItem>Edit</DropdownMenuItem>
-                  <DropdownMenuItem>Share</DropdownMenuItem>
-                  <DropdownMenuItem>Delete</DropdownMenuItem>
-                </DropdownMenuItems>
-              </:menu>
-            </DropdownMenuButton>
-          </div>
-        </:example>
+                <:menu>
+                  <DropdownMenuItems>
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuItem>Share</DropdownMenuItem>
+                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                  </DropdownMenuItems>
+                </:menu>
+              </DropdownMenuButton>
+            </div>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.DropdownMenuButton
         alias Moon.Components.DropdownMenuItem
         alias Moon.Components.DropdownMenuItems
@@ -88,10 +87,10 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
           {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
         end
           </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

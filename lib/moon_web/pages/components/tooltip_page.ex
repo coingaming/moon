@@ -2,11 +2,10 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.{Heading, Button, CodePreview, Link, Tooltip}
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -32,35 +31,35 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Popover Component</Heading>
-      <Link
-        class="mb-4"
-        to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
-      >
-        Sourcecode of this page
-      </Link>
-      {#for placement <- ["top", "right", "bottom", "left"]}
-        <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
-          <:example>
-            <LeftToRight>
-              <Tooltip placement={placement} text={placement}>
-                <Button variant="primary">Hover Me</Button>
-              </Tooltip>
-            </LeftToRight>
-          </:example>
-          <:code>
-            <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Popover Component</Heading>
+        <Link
+          class="mb-4"
+          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+        >
+          Sourcecode of this page
+        </Link>
+        {#for placement <- ["top", "right", "bottom", "left"]}
+          <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
+            <:example>
+              <LeftToRight>
+                <Tooltip placement={placement} text={placement}>
+                  <Button variant="primary">Hover Me</Button>
+                </Tooltip>
+              </LeftToRight>
+            </:example>
+            <:code>
+              <#CodePreview>
               <Tooltip placement={placement} text={placement}>
                 <Button variant="primary">Hover Me</Button>
               </Tooltip>
             </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-      {/for}
-      <Footer />
-    </TopToDown>
+            </:code>
+          </ExampleAndCode>
+        {/for}
+      </TopToDown>
+    </Page>
     """
   end
 end

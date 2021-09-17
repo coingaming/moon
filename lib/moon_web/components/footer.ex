@@ -4,6 +4,7 @@ defmodule MoonWeb.Components.Footer do
   alias Moon.Assets.Logos.LogoMoonDesign
 
   prop class, :string, default: nil
+  data show_themes, :boolean, default: false
 
   def render(assigns) do
     ~F"""

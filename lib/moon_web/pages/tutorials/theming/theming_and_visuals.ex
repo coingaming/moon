@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   alias Moon.Components.Link
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -57,6 +58,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
       <Heading size={24} class="mt-8" id="responsive-layout">Responsive layout</Heading>
       Read more: <Link to="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</Link>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

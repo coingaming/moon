@@ -195,13 +195,12 @@ const generateAssetsDocumentationPageContent = (type: string, modules: string[])
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -226,28 +225,28 @@ ${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Crests</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="crest_${i + 1}" class="mt-4">
-        <#template slot="example">
-          <${x} font_size="10rem" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Crests</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="crest_${i + 1}" class="mt-4">
+          <#template slot="example">
             <${x} font_size="10rem" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="10rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end
@@ -260,13 +259,12 @@ end
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Currencies
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -291,28 +289,28 @@ ${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Currencies</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="currency_${i + 1}" class="mt-4">
-        <#template slot="example">
-          <${x} font_size="10rem" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Currencies</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="currency_${i + 1}" class="mt-4">
+          <#template slot="example">
             <${x} font_size="10rem" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="10rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end
@@ -324,13 +322,12 @@ end
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Duotones
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -355,28 +352,28 @@ ${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Duotones</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
-        <#template slot="example">
-          <${x} font_size="10rem" color="piccolo-100" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Duotones</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
+          <#template slot="example">
             <${x} font_size="10rem" color="piccolo-100" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="10rem" color="piccolo-100" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end
@@ -388,13 +385,12 @@ end
 defmodule MoonWeb.Pages.Assets.IconsPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Icons
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -419,28 +415,28 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Icons</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="icon_${i + 1}" class="mt-4">
-        <#template slot="example">
-          <${x} font_size="5rem" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Icons</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="icon_${i + 1}" class="mt-4">
+          <#template slot="example">
             <${x} font_size="5rem" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="5rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end
@@ -452,13 +448,12 @@ end
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Logos
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -483,28 +478,28 @@ ${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Logos</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="logo_${i + 1}" class="mt-4">
-        <#template slot="example">
-          <${x} font_size="10rem" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Logos</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="logo_${i + 1}" class="mt-4">
+          <#template slot="example">
             <${x} font_size="10rem" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="10rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end
@@ -516,13 +511,12 @@ end
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Breadcrumbs
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -547,28 +541,28 @@ ${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-    <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-    <Heading size={56} class="mb-4">Patterns</Heading>
-    ${modules
-        .map(
-          (x: string, i: number) => `
-      <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
-        <#template slot="example">
-          <${x} font_size="10rem" />
-        </#template>
-
-        <#template slot="code">
-          <#CodePreview>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Patterns</Heading>
+      ${modules
+          .map(
+            (x: string, i: number) => `
+        <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
+          <#template slot="example">
             <${x} font_size="10rem" />
-          </#CodePreview>
-        </#template>
-      </ExampleAndCode>
-    `
-          )
-          .join('\n')}
-      <Footer/>
-    </TopToDown>
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <${x} font_size="10rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+            )
+            .join('\n')}
+      </TopToDown>
+    </Page>
     """
   end
 end

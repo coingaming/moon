@@ -2,13 +2,12 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Switcher
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -40,21 +39,21 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Switcher</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Switcher</Heading>
 
-      <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
-      </p>
+        <p>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
+        </p>
 
-      <ExampleAndCode id="switcher">
-        <:example>
-          <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
-        </:example>
+        <ExampleAndCode id="switcher">
+          <:example>
+            <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.Switcher
 
         <Switcher
@@ -68,12 +67,12 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
           {:noreply, socket}
         end
           </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

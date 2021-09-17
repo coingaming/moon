@@ -2,6 +2,12 @@ defmodule MoonWeb.Components.ThemesSelect do
   use MoonWeb, :stateful_component
   alias Moon.Components.Switch
   alias Moon.Assets.Icons.Mediatuner
+  alias Moon.Assets.Logos.LogoAposta10Short
+  alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Assets.Logos.LogoLivecasinoShort
+  alias Moon.Assets.Logos.LogoSlotsShort
+  alias Moon.Assets.Logos.LogoLabFull
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
@@ -14,15 +20,15 @@ defmodule MoonWeb.Components.ThemesSelect do
   @available_themes [
     [key: "Aposta10", value: "aposta10", modes: true],
     [key: "Bitcasino", value: "bitcasino", modes: true],
-    [key: "Bombay club", value: "bombay-club", modes: false],
-    [key: "Btcxe", value: "btcxe", modes: false],
-    [key: "Hub88", value: "hub88", modes: false],
+    # [key: "Bombay club", value: "bombay-club", modes: false],
+    # [key: "Btcxe", value: "btcxe", modes: false],
+    # [key: "Hub88", value: "hub88", modes: false],
     [key: "Lab", value: "lab", modes: true],
     [key: "Livecasino", value: "livecasino", modes: true],
-    [key: "Hub88", value: "luckyslots", modes: false],
-    [key: "MissionsTool", value: "missions-tool", modes: true],
-    [key: "Moneyball", value: "moneyball", modes: true],
-    [key: "Moon design", value: "moon-design", modes: true],
+    # [key: "Hub88", value: "luckyslots", modes: false],
+    # [key: "MissionsTool", value: "missions-tool", modes: true],
+    # [key: "Moneyball", value: "moneyball", modes: true],
+    # [key: "Moon design", value: "moon-design", modes: true],
     [key: "Slots", value: "slots", modes: true],
     [key: "Sportsbet", value: "sportsbet", modes: true]
   ]
@@ -38,7 +44,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         :on-click="toggle_themes"
         type="button"
         aria-pressed="false"
-        class="bg-gohan-100 hover:bg-gohan-120  fixed bottom-4 right-4 inline-flex flex-shrink-0
+        class="bg-gohan-100 text-piccolo-100 hover:bg-gohan-120  fixed bottom-4 right-4 inline-flex flex-shrink-0
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
                duration-200 focus:outline-none z-40"
       >
@@ -55,7 +61,19 @@ defmodule MoonWeb.Components.ThemesSelect do
               else: if(@dark_mode, do: "#{theme[:value]}-dark", else: "#{theme[:value]}-light")}
             class="p-2 rounded-full ml-4 text-piccolo-100 bg-gohan-100 hover:bg-gohan-120 inline-flex items-center justify-center"
           >
-            {theme[:key]}
+            {#if theme[:value] == "aposta10"}
+              <LogoAposta10Short />
+            {#elseif theme[:value] == "bitcasino"}
+              <LogoBitcasinoShort />
+            {#elseif theme[:value] == "livecasino"}
+              <LogoLivecasinoShort />
+            {#elseif theme[:value] == "lab"}
+              <LogoLabFull />
+            {#elseif theme[:value] == "slots"}
+              <LogoSlotsShort />
+            {#elseif theme[:value] == "sportsbet"}
+              <LogoSportsbetShort />
+            {/if}
           </button>
         {/for}
       </div>

@@ -30,14 +30,13 @@ end
 defmodule MoonWeb.Pages.Components.PopoverPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.LeftToRight
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.LeftToRight
+  alias MoonWeb.Components.ExampleAndCode
 
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
 
@@ -65,51 +64,50 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Popover Component</Heading>
 
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Popover Component</Heading>
+        <p>
+          <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
+          <Link
+            class="mb-4"
+            to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+          >Sourcecode of this page</Link>
+        </p>
 
-      <p>
-        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
-        <Link
-          class="mb-4"
-          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
-        >Sourcecode of this page</Link>
-      </p>
-
-      {#for placement <- [
-          "top-start",
-          "top",
-          "top-end",
-          "right-start",
-          "right",
-          "right-end",
-          "bottom-start",
-          "bottom",
-          "bottom-end",
-          "left-start",
-          "left",
-          "left-end"
-        ]}
-        <ExampleAndCode id={"popover_#{placement}"} class="my-12">
-          <:example>
-            <LeftToRight>
-              <PopoverExample id={placement} placement={placement} />
-            </LeftToRight>
-          </:example>
-          <:code>
-            <#CodePreview>
+        {#for placement <- [
+            "top-start",
+            "top",
+            "top-end",
+            "right-start",
+            "right",
+            "right-end",
+            "bottom-start",
+            "bottom",
+            "bottom-end",
+            "left-start",
+            "left",
+            "left-end"
+          ]}
+          <ExampleAndCode id={"popover_#{placement}"} class="my-12">
+            <:example>
+              <LeftToRight>
+                <PopoverExample id={placement} placement={placement} />
+              </LeftToRight>
+            </:example>
+            <:code>
+              <#CodePreview>
               <PopoverV2 show={@show} placement={placement} on_close="toogle_show">
                 <Chip on_click="toogle_show">Click Me</Chip>
                 <:content>...</:content>
               </PopoverV2>
             </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-      {/for}
-      <Footer />
-    </TopToDown>
+            </:code>
+          </ExampleAndCode>
+        {/for}
+      </TopToDown>
+    </Page>
     """
   end
 end

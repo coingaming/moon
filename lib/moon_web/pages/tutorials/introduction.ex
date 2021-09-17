@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
   alias Moon.Components.Carousel
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -81,6 +82,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
         </Link>
       </Carousel>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end

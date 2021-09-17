@@ -1,16 +1,16 @@
 defmodule MoonWeb.Pages.Components.DropdownPage do
   require Logger
   use MoonWeb, :live_view
-  alias MoonWeb.Components.ExampleAndCode
-  alias Moon.Autolayouts.TopToDown
+
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
   alias Moon.Components.Dropdown
   alias Moon.Components.Link
   alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.SingeItemSelect
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -51,32 +51,32 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/tailwind")}
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Dropdown</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Dropdown</Heading>
 
-      <p>
-        Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
-      </p>
-      <p class="mt-4">
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=15965%3A14977">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
-      </p>
+        <p>
+          Dropdowns showcase a list of options that allow users to make single or multiple selections. An option that’s been selected can represent a corresponding value in forms or be used to filter/sort content.
+        </p>
+        <p class="mt-4">
+          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=15965%3A14977">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/components/filterDropdown">React implementation</Link>
+        </p>
 
-      <ExampleAndCode title="Using CheckboxMultiselect" class="mt-4" id="dropdown_1">
-        <:example>
-          <Dropdown>
-            <CheckboxMultiselect
-              on_change="handle_game_selection_changed"
-              value={@selected_game_ids}
-              options={@selectable_game_options}
-            />
-          </Dropdown>
-        </:example>
+        <ExampleAndCode title="Using CheckboxMultiselect" class="mt-4" id="dropdown_1">
+          <:example>
+            <Dropdown>
+              <CheckboxMultiselect
+                on_change="handle_game_selection_changed"
+                value={@selected_game_ids}
+                options={@selectable_game_options}
+              />
+            </Dropdown>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Dropdown>
           <CheckboxMultiselect
             on_change="handle_game_selection_changed"
@@ -85,31 +85,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>
-          @selected_game_ids = {inspect(@selected_game_ids)}
-        </:state>
-      </ExampleAndCode>
+          <:state>
+            @selected_game_ids = {inspect(@selected_game_ids)}
+          </:state>
+        </ExampleAndCode>
 
-      <ExampleAndCode class="mt-4" id="dropdown_2">
-        <:example>
-          <Dropdown
-            on_search_change="handle_search_changed"
-            search_placeholder="Search for a name ..."
-            search_name={:game_search}
-          >
-            <CheckboxMultiselect
-              on_change="handle_game_selection_changed"
-              class="max-h-32"
-              value={@selected_game_ids}
-              options={@selectable_filtered_game_options}
-            />
-          </Dropdown>
-        </:example>
+        <ExampleAndCode class="mt-4" id="dropdown_2">
+          <:example>
+            <Dropdown
+              on_search_change="handle_search_changed"
+              search_placeholder="Search for a name ..."
+              search_name={:game_search}
+            >
+              <CheckboxMultiselect
+                on_change="handle_game_selection_changed"
+                class="max-h-32"
+                value={@selected_game_ids}
+                options={@selectable_filtered_game_options}
+              />
+            </Dropdown>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -123,27 +123,27 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>
-          @selected_game_ids = {inspect(@selected_game_ids)}
-          @game_search = {inspect(@game_search)}
-        </:state>
-      </ExampleAndCode>
+          <:state>
+            @selected_game_ids = {inspect(@selected_game_ids)}
+            @game_search = {inspect(@game_search)}
+          </:state>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Using SingleItemSelect" class="mt-4" id="dropdown_3">
-        <:example>
-          <Dropdown>
-            <SingeItemSelect
-              on_change="handle_other_game_selected"
-              value={@other_game_id}
-              options={@selectable_game_options}
-            />
-          </Dropdown>
-        </:example>
+        <ExampleAndCode title="Using SingleItemSelect" class="mt-4" id="dropdown_3">
+          <:example>
+            <Dropdown>
+              <SingeItemSelect
+                on_change="handle_other_game_selected"
+                value={@other_game_id}
+                options={@selectable_game_options}
+              />
+            </Dropdown>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Dropdown>
           <SingeItemSelect
             on_change="handle_other_game_selected"
@@ -152,31 +152,31 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>
-          @other_game_id = {inspect(@other_game_id)}
-        </:state>
-      </ExampleAndCode>
+          <:state>
+            @other_game_id = {inspect(@other_game_id)}
+          </:state>
+        </ExampleAndCode>
 
-      <ExampleAndCode class="mt-4" id="dropdown_4">
-        <:example>
-          <Dropdown
-            on_search_change="handle_search_changed"
-            search_placeholder="Search for a name ..."
-            search_name={:game_search}
-          >
-            <SingeItemSelect
-              on_change="handle_other_game_selected"
-              class="max-h-32"
-              value={@other_game_id}
-              options={@selectable_filtered_game_options}
-            />
-          </Dropdown>
-        </:example>
+        <ExampleAndCode class="mt-4" id="dropdown_4">
+          <:example>
+            <Dropdown
+              on_search_change="handle_search_changed"
+              search_placeholder="Search for a name ..."
+              search_name={:game_search}
+            >
+              <SingeItemSelect
+                on_change="handle_other_game_selected"
+                class="max-h-32"
+                value={@other_game_id}
+                options={@selectable_filtered_game_options}
+              />
+            </Dropdown>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Dropdown
           on_search_change="handle_search_changed"
           search_placeholder="Search for a name ..."
@@ -190,15 +190,15 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           />
         </Dropdown>
         </#CodePreview>
-        </:code>
+          </:code>
 
-        <:state>
-          @other_game_id = {inspect(@other_game_id)}
-          @game_search = {inspect(@game_search)}
-        </:state>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          <:state>
+            @other_game_id = {inspect(@other_game_id)}
+            @game_search = {inspect(@game_search)}
+          </:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

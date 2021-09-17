@@ -1,14 +1,14 @@
 defmodule MoonWeb.Pages.Components.BadgePage do
   use MoonWeb, :live_view
+
   alias Moon.Components.Badge
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.Link
+  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
 
   data breadcrumbs, :any,
     default: [
@@ -33,56 +33,56 @@ defmodule MoonWeb.Pages.Components.BadgePage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown gap={4}>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Badge</Heading>
-      <p>
-        Small count and labeling component.
-      </p>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown gap={4}>
+        <Heading size={56} class="mb-4">Badge</Heading>
+        <p>
+          Small count and labeling component.
+        </p>
 
-      <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/components/badge">React implementation</Link>
-      </p>
+        <p>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/components/badge">React implementation</Link>
+        </p>
 
-      <ExampleAndCode title="Badge" id="badge1">
-        <:example>
-          <LeftToRight>
-            <Badge>
-              Active
-            </Badge>
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Badge" id="badge1">
+          <:example>
+            <LeftToRight>
+              <Badge>
+                Active
+              </Badge>
+            </LeftToRight>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
       <Badge>
         Active
       </Badge>
     </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Customize colours" id="badge2">
-        <:note>
-          You coud simstly use color and background_color props
-        </:note>
-        <:example>
-          <LeftToRight>
-            <Badge color="gohan-100" background_color="piccolo-100">
-              Active
-            </Badge>
-            <Badge color="krillin-100" background_color="trunks-100">
-              Active
-            </Badge>
-            <Badge color="bulma-100" background_color="dodoria-100">
-              Active
-            </Badge>
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Customize colours" id="badge2">
+          <:note>
+            You coud simstly use color and background_color props
+          </:note>
+          <:example>
+            <LeftToRight>
+              <Badge color="gohan-100" background_color="piccolo-100">
+                Active
+              </Badge>
+              <Badge color="krillin-100" background_color="trunks-100">
+                Active
+              </Badge>
+              <Badge color="bulma-100" background_color="dodoria-100">
+                Active
+              </Badge>
+            </LeftToRight>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Badge color="gohan-100" background_color="piccolo-100">
           Active
         </Badge>
@@ -93,34 +93,34 @@ defmodule MoonWeb.Pages.Components.BadgePage do
           Active
         </Badge>
     </#CodePreview>
-        </:code>
-      </ExampleAndCode>
+          </:code>
+        </ExampleAndCode>
 
-      <ExampleAndCode title="Customize size" id="badge3">
-        <:note>
-          You coud simply use size prop. By default size is xSmall. You can change it to Small.
-        </:note>
-        <:example>
-          <LeftToRight>
-            <Badge>Default</Badge>
-            <Badge size="small">
-              small size
-            </Badge>
-          </LeftToRight>
-        </:example>
+        <ExampleAndCode title="Customize size" id="badge3">
+          <:note>
+            You coud simply use size prop. By default size is xSmall. You can change it to Small.
+          </:note>
+          <:example>
+            <LeftToRight>
+              <Badge>Default</Badge>
+              <Badge size="small">
+                small size
+              </Badge>
+            </LeftToRight>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         <Badge>Default</Badge>
         <Badge size="small">
           small size
         </Badge>
       </LeftToRight>
     </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

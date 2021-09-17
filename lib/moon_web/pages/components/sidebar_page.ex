@@ -1,6 +1,5 @@
 defmodule MoonWeb.Pages.Components.SidebarPage do
   use MoonWeb, :live_view
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
@@ -11,8 +10,8 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Assets.Icons.IconSportsBaseBall
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -42,70 +41,70 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={56} class="mb-4">Sidebar</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={56} class="mb-4">Sidebar</Heading>
 
-      <p class="mb-8">
-        <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
-        <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
-      </p>
+        <p class="mb-8">
+          <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
+          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
+        </p>
 
-      <ExampleAndCode id="sidebar_1">
-        <:note>
-          <p>
-            Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
-          </p>
-          <p>
-            Use <code class="bg-goku-40">open_width</code> prop to define sidebar width in an open mode. Default value is <code class="bg-goku-40">"14.5rem"</code>
-          </p>
-          <p>
-            Use <code class="bg-goku-40">background_color</code> prop to define background color of the sidebar.
-          </p>
-          <p>
-            Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
-          </p>
-        </:note>
-        <:example>
-          <Sidebar background_color="bg-gohan-100" open_width="14rem">
-            <:short_logo>
-              <div class="flex items-center h-10">
-                <LogoBitcasinoShort font_size="2.1rem" />
-              </div>
-            </:short_logo>
+        <ExampleAndCode id="sidebar_1">
+          <:note>
+            <p>
+              Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
+            </p>
+            <p>
+              Use <code class="bg-goku-40">open_width</code> prop to define sidebar width in an open mode. Default value is <code class="bg-goku-40">"14.5rem"</code>
+            </p>
+            <p>
+              Use <code class="bg-goku-40">background_color</code> prop to define background color of the sidebar.
+            </p>
+            <p>
+              Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
+            </p>
+          </:note>
+          <:example>
+            <Sidebar background_color="bg-gohan-100" open_width="14rem">
+              <:short_logo>
+                <div class="flex items-center h-10">
+                  <LogoBitcasinoShort font_size="2.1rem" />
+                </div>
+              </:short_logo>
 
-            <:full_logo>
-              <div class="pl-1">
-                <LogoBitcasinoFull font_size="10rem" class="h-10" />
-              </div>
-            </:full_logo>
+              <:full_logo>
+                <div class="pl-1">
+                  <LogoBitcasinoFull font_size="10rem" class="h-10" />
+                </div>
+              </:full_logo>
 
-            <:menu>
-              <nav class="mt-5">
-                <TopToDown>
-                  <a href="#" class="flex items-center group">
-                    <IconSlots
-                      font_size="1.75rem"
-                      class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
-                    />
-                    <span class="group-hover:text-piccolo-100">Slots</span>
-                  </a>
-                  <a href="#" class="flex items-center group">
-                    <IconSportsBaseBall
-                      font_size="1.75rem"
-                      class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
-                    />
-                    <span class="group-hover:text-piccolo-100">Baseball</span>
-                  </a>
-                </TopToDown>
-              </nav>
-            </:menu>
-          </Sidebar>
-        </:example>
+              <:menu>
+                <nav class="mt-5">
+                  <TopToDown>
+                    <a href="#" class="flex items-center group">
+                      <IconSlots
+                        font_size="1.75rem"
+                        class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
+                      />
+                      <span class="group-hover:text-piccolo-100">Slots</span>
+                    </a>
+                    <a href="#" class="flex items-center group">
+                      <IconSportsBaseBall
+                        font_size="1.75rem"
+                        class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
+                      />
+                      <span class="group-hover:text-piccolo-100">Baseball</span>
+                    </a>
+                  </TopToDown>
+                </nav>
+              </:menu>
+            </Sidebar>
+          </:example>
 
-        <:code>
-          <#CodePreview>
+          <:code>
+            <#CodePreview>
         alias Moon.Components.Sidebar
         alias Moon.Components.TopToDown
         alias Moon.Assets.Icons.IconSlots
@@ -142,10 +141,10 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           </template>
         </Sidebar>
       </#CodePreview>
-        </:code>
-      </ExampleAndCode>
-      <Footer />
-    </TopToDown>
+          </:code>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 end

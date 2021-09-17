@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
+  alias MoonWeb.Components.ThemesSelect
 
   data breadcrumbs, :any,
     default: [
@@ -151,6 +152,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
 
     </pre>
       <Footer />
+      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
     """
   end
