@@ -30,6 +30,7 @@ end
 defmodule MoonWeb.Pages.Components.PopoverPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.LeftToRight
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
@@ -93,7 +94,9 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
         ]}
         <ExampleAndCode id={"popover_#{placement}"} class="my-12">
           <:example>
-            <PopoverExample id={placement} placement={placement} />
+            <LeftToRight>
+              <PopoverExample id={placement} placement={placement} />
+            </LeftToRight>
           </:example>
           <:code>
             <#CodePreview>

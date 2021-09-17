@@ -109,7 +109,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       <ExampleAndCode title="Button Sizes" id="button5">
         <:example>
           Fill
-          <LeftToRight class="items-center">
+          <LeftToRight>
             <Button variant="fill" size="xsmall">
               Xsmall
             </Button>
@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <div class="my-8" />
 
           Outline
-          <LeftToRight class="items-center">
+          <LeftToRight>
             <Button variant="outline" size="xsmall">
               Xsmall
             </Button>
@@ -133,7 +133,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <div class="my-8" />
 
           Link
-          <LeftToRight class="items-center">
+          <LeftToRight>
             <Button variant="link" size="xsmall">
               Xsmall
             </Button>
