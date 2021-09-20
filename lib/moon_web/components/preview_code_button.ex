@@ -1,6 +1,6 @@
 defmodule MoonWeb.Components.PreviewCodeButton do
   use Moon.StatelessComponent
-  alias Moon.Assets.Icons.Softwarecode
+  alias Moon.Assets.Icons.IconSoftwareCode
   alias Moon.Assets.Icons.IconEye
   alias Moon.Components.Heading
 
@@ -39,7 +39,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           phx-value-selected-item="code"
         >
           <div class="p-1 mx-2">
-            <Softwarecode font_size="1.5rem" /> Code
+            <IconSoftwareCode font_size="1.5rem" /> Code
           </div>
         </button>
       </div>
