@@ -1,6 +1,6 @@
 defmodule MoonWeb.Components.PreviewCodeButton do
   use Moon.StatelessComponent
-  alias Moon.Assets.Icons.Softwarecode
+  alias Moon.Icons.SoftwareCode
   alias Moon.Assets.Icons.IconEye
   alias Moon.Components.Heading
 
@@ -11,7 +11,6 @@ defmodule MoonWeb.Components.PreviewCodeButton do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
     <div class="flex justify-between items-center my-4 #{@class}">
       <Heading class="items-center" size={20} is_regular>{@title}</Heading>
       <div class="bg-beerus-100 p-0.5 rounded place-content-center">
@@ -39,7 +38,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           phx-value-selected-item="code"
         >
           <div class="p-1 mx-2">
-            <Softwarecode font_size="1.5rem" /> Code
+            <SoftwareCode font_size="1.5rem" /> Code
           </div>
         </button>
       </div>

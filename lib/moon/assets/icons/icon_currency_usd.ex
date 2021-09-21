@@ -1,4 +1,4 @@
-defmodule Moon.Assets.Icons.IconCurrencyUsd do
+defmodule Moon.Assets.Icons.IconCurrencyUSD do
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()
@@ -9,14 +9,12 @@ defmodule Moon.Assets.Icons.IconCurrencyUsd do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/icon")}
-
     <svg
       class={"moon-icon #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/assets/svgs/icons/icon-currency-usd.svg#item" />
+      <use href="/moon/assets/svgs/icons/icon-currency-USD.svg#item" />
     </svg>
     """
   end

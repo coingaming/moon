@@ -11,8 +11,6 @@ defmodule Moon.Assets.Duotones.Gift do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/duotone")}
-
     <svg
       class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}

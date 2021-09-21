@@ -11,8 +11,6 @@ defmodule Moon.Assets.Logos.LogoSportsbetShort do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/logo")}
-
     <svg
       class={"moon-logo #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
