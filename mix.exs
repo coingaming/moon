@@ -42,7 +42,7 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.12"},
+      {:phoenix, "~> 1.5"},
       {:phoenix_live_view, "~> 0.15.7"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
