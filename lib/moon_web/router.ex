@@ -24,6 +24,7 @@ defmodule MoonWeb.Router do
       pipe_through :browser
 
       live "/", MoonWeb.Pages.Tutorials.Introduction
+      live "/icons", MoonWeb.Pages.IconsPage
       live "/assets/crests", MoonWeb.Pages.Assets.CrestsPage
       live "/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage
       live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage

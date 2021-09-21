@@ -11,8 +11,6 @@ defmodule Moon.Assets.Patterns.PatternRipple do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/pattern")}
-
     <svg
       class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}

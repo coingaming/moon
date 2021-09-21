@@ -9,8 +9,6 @@ defmodule Moon.Assets.Icons.IconUser do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/icon")}
-
     <svg
       class={"moon-icon #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}

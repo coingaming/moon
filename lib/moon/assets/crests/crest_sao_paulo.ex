@@ -11,8 +11,6 @@ defmodule Moon.Assets.Crests.CrestSaoPaulo do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/crest")}
-
     <svg
       class={"moon-crest #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}

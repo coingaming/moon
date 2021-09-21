@@ -11,8 +11,6 @@ defmodule Moon.Assets.Currencies.IconDogecoin do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/assets/currency")}
-
     <svg
       class={"moon-currency #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
