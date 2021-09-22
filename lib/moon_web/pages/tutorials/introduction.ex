@@ -32,7 +32,6 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
     <TopToDown>
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Design team and design rules</Heading>

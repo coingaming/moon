@@ -41,8 +41,6 @@ defmodule Moon.Components.Pagination do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class="flex flex-wrap items-center justify-center">
       <div class="mb-4 w-full lg:w-auto">
         <PaginationButton

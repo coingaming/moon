@@ -40,8 +40,6 @@ defmodule Moon.Components.Accordion do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class={@class}>
       <#slot />
     </div>

@@ -39,7 +39,6 @@ defmodule MoonWeb.Pages.Components.TabsPage do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">Tabs</Heading>

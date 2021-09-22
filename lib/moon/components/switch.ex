@@ -44,8 +44,6 @@ defmodule Moon.Components.Switch do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class={"inline-flex items-center", "space-x-1": @size != "large", "space-x-2": @size == "large"}>
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
 

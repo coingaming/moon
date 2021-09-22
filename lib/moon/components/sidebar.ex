@@ -12,8 +12,6 @@ defmodule Moon.Components.Sidebar do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div x-data="{ collapsed: false, showBtn: false }" class="flex flex-shrink-0">
       <div x-cloak x-show="collapsed" class="flex items-center p-5">
         <!-- Short logo -->

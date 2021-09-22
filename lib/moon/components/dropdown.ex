@@ -14,8 +14,6 @@ defmodule Moon.Components.Dropdown do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class="box-content bg-gohan-100 h-auto rounded-lg #{@class}">
       <div class="relative" :if={@on_search_change}>
         <IconZoom class="absolute top-4 left-4" />

@@ -62,8 +62,6 @@ defmodule Moon.Components.Datepicker do
   def render(assigns) do
     ~F"""
     {asset_import(@socket, "js/components/text-input")}
-    {asset_import(@socket, "js/tailwind")}
-
     <PopoverV2 show={@show} on_close="toggle_picker">
       <Chip
         class={@button_class}
