@@ -1,1 +1,1 @@
-import "moon-css/example/themes/hub88.scss"
+import "../../css/themes/hub88.scss"

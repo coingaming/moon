@@ -110,8 +110,6 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/text-input")}
-
     {#if @label}
       <Label text={@label}>
         <div class="mt-2 relative">

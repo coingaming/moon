@@ -11,8 +11,6 @@ defmodule Moon.Components.ListItems.SingleLineItem do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class={
       "relative rounded bg-#{@background_color} px-3 text-sm text-bulma-100 leading-6 cursor-pointer hover:bg-goku-120",
       "py-2": @size == "medium",

@@ -37,8 +37,6 @@ defmodule Moon.Components.SingeItemSelect do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div
       class={"bg-gohan-100 shadow rounded-lg p-1 overflow-y-scroll #{@class}"}
       style={@style || ""}

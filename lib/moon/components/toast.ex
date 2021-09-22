@@ -21,8 +21,6 @@ defmodule Moon.Components.Toast do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div
       id={@id}
       class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4"

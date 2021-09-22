@@ -30,8 +30,6 @@ defmodule Moon.Components.Select do
       end)
 
     ~F"""
-    {asset_import(@socket, "js/components/select")}
-
     <Surface.Components.Form.Select
       class={
         "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120

@@ -9,8 +9,6 @@ defmodule Moon.Components.FileInput do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div>
       <span :if={@label} class="block mb-2">{@label}</span>
       <label class={

@@ -10,8 +10,6 @@ defmodule Moon.Components.Link do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/link")}
-
     <a
       class={
         "inline-block p-0 bg-transparent border-none no-underline

@@ -1,1 +1,1 @@
-import "moon-css/example/themes/btcxe.scss"
+import "../../css/themes/btcxe.scss"

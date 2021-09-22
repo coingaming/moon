@@ -63,7 +63,6 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">Popover Component</Heading>

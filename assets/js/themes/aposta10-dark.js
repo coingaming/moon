@@ -1,1 +1,1 @@
-import "moon-css/example/themes/aposta10-dark.scss"
+import "../../css/themes/aposta10-dark.scss"

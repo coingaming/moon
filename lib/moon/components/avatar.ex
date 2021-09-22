@@ -18,8 +18,6 @@ defmodule Moon.Components.Avatar do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/avatar")}
-
     <div
       class={
         "rounded-full bg-cover justify-center flex font-semibold items-center

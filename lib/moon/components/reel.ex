@@ -6,8 +6,6 @@ defmodule Moon.Components.Reel do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/carousel")}
-
     <div class={"moon-carousel #{@class}"}>
       <div class="carousel-inner">
         <#slot />

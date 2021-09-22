@@ -1,1 +1,1 @@
-import "moon-css/example/themes/slots-light.scss"
+import "../../css/themes/slots-light.scss"

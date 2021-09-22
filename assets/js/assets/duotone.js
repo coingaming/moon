@@ -1,1 +1,0 @@
-import "moon-css/example/assets/duotone.scss"

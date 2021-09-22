@@ -1,1 +1,1 @@
-import "moon-css/example/themes/moneyball-light.scss"
+import "../../css/themes/moneyball-light.scss"

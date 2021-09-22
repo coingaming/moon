@@ -1,1 +1,1 @@
-import "moon-css/example/themes/bombay-club.scss"
+import "../../css/themes/bombay-club.scss"

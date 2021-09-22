@@ -40,8 +40,6 @@ defmodule Moon.Components.Button do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/button")}
-
     <button
       class={
         "flex justify-center items-center gap-2 py-2 rounded #{@class}",

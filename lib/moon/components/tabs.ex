@@ -6,8 +6,6 @@ defmodule Moon.Components.Tabs do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class="border-b border-goku-40">
       <Reel>
         <#slot />

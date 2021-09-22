@@ -1,1 +1,1 @@
-import "moon-css/example/themes/livecasino-dark.scss"
+import "../../css/themes/livecasino-dark.scss"

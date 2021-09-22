@@ -11,6 +11,9 @@
     white-space: normal;
     vertical-align: top;
   }
+  .moon-icon {
+    @apply inline-block align-middle h-4 w-4;
+  }
   .moon-logo {
     @apply inline-block align-middle h-[1em] w-[1em];
   }
@@ -21,10 +24,10 @@
     @apply inline-block align-middle h-[1em] w-[1em];
   }
   .moon-duotone {
-    @apply inline-block align-middle h-[1em] w-[1em] text-piccolo-100;
+    @apply inline-block align-middle text-piccolo-100;
   }
   .moon-pattern {
-    @apply inline-block align-middle h-[1em] w-[1em] text-piccolo-100;
+    @apply inline-block align-middle text-piccolo-100;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;

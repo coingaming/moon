@@ -8,8 +8,6 @@ defmodule Moon.Components.Popover do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div
       class="fixed top-0 left-0 right-0 bottom-0 bg-gohan-100 z-30"
       style="opacity: 0;"

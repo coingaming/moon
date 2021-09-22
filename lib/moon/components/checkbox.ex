@@ -9,8 +9,6 @@ defmodule Moon.Components.Checkbox do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/checkbox")}
-
     <label class={"relative inline-flex items-center #{@class}"}>
       <input
         type="checkbox"

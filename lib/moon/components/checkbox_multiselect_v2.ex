@@ -13,8 +13,6 @@ defmodule Moon.Components.CheckboxMultiselectV2 do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     {#for option <- @options}
       <div :on-click={@on_select} phx-value-toggled_item_id={option.value}>
         <SingleLineItem size="large">

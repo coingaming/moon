@@ -1,1 +1,1 @@
-import "moon-css/example/themes/missions-tool-light.scss"
+import "../../css/themes/missions-tool-light.scss"

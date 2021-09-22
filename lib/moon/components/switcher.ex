@@ -8,8 +8,6 @@ defmodule Moon.Components.Switcher do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div
       :if={length(@items) > 0}
       class={"flex items-center p-1 border rounded gap-x-2 border-beerus-100 #{@class}"}

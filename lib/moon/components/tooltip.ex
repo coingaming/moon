@@ -11,7 +11,6 @@ defmodule Moon.Components.Tooltip do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
     <div class="relative inline-block" x-data="{ tooltip: false, timeout: null }">
       {#case @placement}
         {#match "top"}

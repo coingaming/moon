@@ -10,8 +10,6 @@ defmodule Moon.Components.Heading do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/heading")}
-
     <div
       id={@id}
       class={

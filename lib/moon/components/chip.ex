@@ -15,8 +15,6 @@ defmodule Moon.Components.Chip do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <Button
       class={"hover:text-bulma-100 font-semibold #{@class} #{
         active_btn_class(@active, @active_class, @inactive_class)

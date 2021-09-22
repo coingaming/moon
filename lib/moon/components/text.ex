@@ -10,8 +10,6 @@ defmodule Moon.Components.Text do
 
   def render(assigns) do
     ~F"""
-    {asset_import(@socket, "js/components/text")}
-
     <div
       class={
         "#{@class}",

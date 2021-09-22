@@ -1,1 +1,1 @@
-import "moon-css/example/themes/bitcasino-light.scss"
+import "../../css/themes/bitcasino-light.scss"

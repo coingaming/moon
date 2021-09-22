@@ -29,8 +29,6 @@ defmodule Moon.Components.PopoverV2 do
     classes = wrapper_classes(assigns.placement)
 
     ~F"""
-    {asset_import(@socket, "js/tailwind")}
-
     <div class="relative inline-block">
       <#slot />
       {#if @show}

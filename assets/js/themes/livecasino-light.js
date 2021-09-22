@@ -1,1 +1,1 @@
-import "moon-css/example/themes/livecasino-light.scss"
+import "../../css/themes/livecasino-light.scss"
