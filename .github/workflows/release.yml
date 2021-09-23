@@ -1,0 +1,31 @@
+
+name: build
+
+on:
+  push:
+    branches: main
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    outputs:
+      release-version: ${{ steps.release-version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12
+
+      - name: Set up Conventional Commit preset
+        working-directory: .
+        run: npm install conventional-changelog-conventionalcommits
+
+      - name: Set version and  release
+        id: semver
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release@17
