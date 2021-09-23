@@ -1,30 +1,4 @@
-<% asset_import(@conn, "js/app.js") %>
-
 <% theme_name = "#{@conn.params["theme_name"] || "sportsbet-dark"}" %>
-
-<% asset_import(@conn, "js/themes/aposta10-dark.js") %>
-<% asset_import(@conn, "js/themes/aposta10-light.js") %>
-<% asset_import(@conn, "js/themes/bitcasino-dark.js") %>
-<% asset_import(@conn, "js/themes/bitcasino-light.js") %>
-<% asset_import(@conn, "js/themes/bombay-club.js") %>
-<% asset_import(@conn, "js/themes/btcxe.js") %>
-<% asset_import(@conn, "js/themes/hub88.js") %>
-<% asset_import(@conn, "js/themes/lab-dark.js") %>
-<% asset_import(@conn, "js/themes/lab-light.js") %>
-<% asset_import(@conn, "js/themes/hub88.js") %>
-<% asset_import(@conn, "js/themes/livecasino-dark.js") %>
-<% asset_import(@conn, "js/themes/livecasino-light.js") %>
-<% asset_import(@conn, "js/themes/luckyslots.js") %>
-<% asset_import(@conn, "js/themes/missions-tool-dark.js") %>
-<% asset_import(@conn, "js/themes/missions-tool-light.js") %>
-<% asset_import(@conn, "js/themes/moon-design-dark.js") %>
-<% asset_import(@conn, "js/themes/moon-design-light.js") %>
-<% asset_import(@conn, "js/themes/slots-dark.js") %>
-<% asset_import(@conn, "js/themes/slots-light.js") %>
-<% asset_import(@conn, "js/themes/sportsbet-dark.js") %>
-<% asset_import(@conn, "js/themes/sportsbet-light.js") %>
-<% asset_import(@conn, "js/tailwind.js") %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
-    <%= asset_styles() %>
+
+    <script defer type="text/javascript" src="<%= static_path(@conn, "js/app.js") %>"></script>
 
     <style>
       pre {
@@ -42,14 +17,33 @@
         word-wrap: break-word;
         overflow-x: scroll;
       }
-
     </style>
-
   </head>
   <body class="<%= theme_name %> break-words ">
 
     <%= @inner_content %>
 
-    <%= asset_scripts() %>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/app.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/aposta10-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/aposta10-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/bitcasino-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/bitcasino-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/bombay-club.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/btcxe.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/hub88.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/lab-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/lab-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/livecasino-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/livecasino-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/luckyslots.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/missions-tool-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/missions-tool-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/moon-design-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/moon-design-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/slots-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/slots-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/sportsbet-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/sportsbet-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "css/tailwind.css") %>"/>
   </body>
 </html>

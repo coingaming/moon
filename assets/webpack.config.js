@@ -3,7 +3,6 @@ const glob = require('glob');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 
 const entrypoints = require('./entrypoints.json') || {};
 
@@ -14,21 +13,12 @@ module.exports = (env, options) => {
     optimization: {
       minimizer: [
         new OptimizeCSSAssetsPlugin({}),
-      ],
-      runtimeChunk: 'single',
-      chunkIds: 'natural',
-      concatenateModules: true,
-      splitChunks: {
-        chunks: 'all',
-        minChunks: 1,
-        minSize: 0,
-      },
+      ]
     },
     entry: entrypoints,
     output: {
-      filename: 'js/[id]-[contenthash].js',
-      chunkFilename: 'js/[id]-[contenthash].js',
-      path: path.resolve(__dirname, '../priv/static'),
+      filename: 'js/[name].js',
+      path: path.resolve(__dirname, '../priv/static')
     },
     devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
     module: {
@@ -42,16 +32,17 @@ module.exports = (env, options) => {
         },
         {
           test: /\.[s]?css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ],
         },
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'css/[id]-[contenthash].css',
-        chunkFilename: 'css/[id]-[contenthash].css',
-      }),
-      new ManifestPlugin({ fileName: 'manifest.json' }),
+      new MiniCssExtractPlugin({ filename: 'css/[name].css' }),
       new CopyWebpackPlugin([{ from: 'static/', to: './' }]),
     ],
   };
