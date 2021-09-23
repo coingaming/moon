@@ -1,4 +1,3 @@
-
 name: build
 
 on:
@@ -14,6 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # Tag new release
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.4
         with:
@@ -29,3 +29,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release@17
+
+      # Get release version
+      - name: Get release tag
+        id: release-tag
+        uses: WyriHaximus/github-action-get-previous-tag@1.0.0
+
+      - name: Get release version
+        id: release-version
+        uses: actions/github-script@v3.1
+        with:
+          script: |
+            core.setOutput(
+              'version',
+              '${{ steps.release-tag.outputs.tag }}'.slice(1)
+            )
