@@ -37,8 +37,6 @@ defmodule MoonWeb do
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
-      use MoonWeb.Assets
-
       # Include shared imports and aliases for views
       unquote(view_helpers())
     end
@@ -107,10 +105,7 @@ defmodule MoonWeb do
       import MoonWeb.ErrorHelpers
       import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
-
-      def static_path(socket, path) do
-        Routes.static_path(socket, "/moon/assets/#{path}")
-      end
+      import Routes, only: [static_path: 2]
 
       def live_path(socket, view, props) do
         Routes.live_path(socket, view, props)

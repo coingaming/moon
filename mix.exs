@@ -55,7 +55,6 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:asset_import, "~> 0.4"},
       {:surface, "~> 0.5.2"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},

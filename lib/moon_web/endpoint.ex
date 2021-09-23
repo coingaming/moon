@@ -23,7 +23,7 @@ defmodule MoonWeb.Endpoint do
   plug Plug.Static,
     at: "/moon/assets/",
     from: :moon,
-    gzip: false,
+    gzip: true,
     only: ~w(css gettext fonts images svgs js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
