@@ -9,7 +9,28 @@
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
 
-    <script defer type="text/javascript" src="<%= static_path(@conn, "js/app.js") %>"></script>
+    <link phx-track-static rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/aposta10-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/aposta10-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bitcasino-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bitcasino-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bombay-club.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/btcxe.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/hub88.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/lab-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/lab-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/livecasino-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/livecasino-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/luckyslots.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/missions-tool-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/missions-tool-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/moon-design-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/moon-design-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/slots-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/slots-light.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/sportsbet-dark.css") %>"/>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/sportsbet-light.css") %>"/>
+    <link phx-track-static rel="stylesheet" href="<%= static_path(@conn, "/css/tailwind.css") %>"/>
 
     <style>
       pre {
@@ -18,32 +39,11 @@
         overflow-x: scroll;
       }
     </style>
+
+    <script defer type="text/javascript" src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body class="<%= theme_name %> break-words ">
 
     <%= @inner_content %>
-
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/app.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/aposta10-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/aposta10-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/bitcasino-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/bitcasino-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/bombay-club.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/btcxe.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/hub88.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/lab-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/lab-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/livecasino-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/livecasino-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/luckyslots.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/missions-tool-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/missions-tool-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/moon-design-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/moon-design-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/slots-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/slots-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/sportsbet-dark.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/sportsbet-light.css") %>"/>
-    <link rel="stylesheet" href="<%= static_path(@conn, "css/tailwind.css") %>"/>
   </body>
 </html>

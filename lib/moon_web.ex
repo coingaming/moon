@@ -105,10 +105,7 @@ defmodule MoonWeb do
       import MoonWeb.ErrorHelpers
       import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
-
-      def static_path(socket, path) do
-        Routes.static_path(socket, "/moon/assets/#{path}")
-      end
+      import Routes, only: [static_path: 2]
 
       def live_path(socket, view, props) do
         Routes.live_path(socket, view, props)

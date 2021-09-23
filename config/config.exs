@@ -10,6 +10,7 @@ use Mix.Config
 # Configures the endpoint
 config :moon, MoonWeb.Endpoint,
   url: [host: "localhost"],
+  static_url: [path: "/moon/assets"],
   secret_key_base: "QYBXKQhXTKhs/D4KK44Zm4d9brKEl88TxKWcI8BpdkYEXRMbne6uxElq9j+sP+Rh",
   render_errors: [view: MoonWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Moon.PubSub,
