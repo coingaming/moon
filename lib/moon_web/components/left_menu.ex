@@ -96,6 +96,10 @@ defmodule MoonWeb.Components.LeftMenu do
             url: "/theme_name/assets/icons"
           },
           %{
+            name: "New Icons",
+            url: "/theme_name/assets/new_icons"
+          },
+          %{
             name: "Logos",
             url: "/theme_name/assets/logos"
           },

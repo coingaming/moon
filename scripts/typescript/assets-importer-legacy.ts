@@ -5,10 +5,7 @@ console.log('Running assets importer');
 const rawDir = './node_modules/moon-design/packages/assets/raw/';
 const exportDir = '../../lib/moon/assets/';
 
-const getFiles = (iconType: string) => fs.readdirSync(`${rawDir}/${iconType}`);
-
-const getContents = (iconType: string, file: string) =>
-  fs.readFileSync(`${rawDir}/${iconType}/${file}`);
+const getFilesList = (iconType: string) => fs.readdirSync(`${rawDir}/${iconType}`);
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -22,9 +19,6 @@ const toCamel = (s: string) => {
 const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-
-const camelToSnakeCase = (str: string) =>
-  str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
 const getModuleName = (s: string) =>
   capitalizeFirstLetter(toCamel(s))
@@ -87,18 +81,18 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
   ${(propsMap as any)[iconType] || propsMap.default}
   @assets_map %{
     ${files
-      .map(
-        (i) =>
-          `${i
-            .replace(/([-_])/gi, '_')
-            .toLowerCase()
-            .replace('.svg', '')
-            .replace(
-              `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
-              ''
-            )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
-      )
-      .join(', ')}
+        .map(
+          (i) =>
+            `${i
+              .replace(/([-_])/gi, '_')
+              .toLowerCase()
+              .replace('.svg', '')
+              .replace(
+                `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
+                ''
+              )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
+        )
+        .join(', ')}
     }
   def icon_name_to_module(icon_name) do
     @assets_map[:"#{icon_name}"]
@@ -106,10 +100,10 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
   def render(assigns) do
     ~F"""
     {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
-      (propsMapKeys as any)[iconType] || propsMapKeys.default
-    )
-      .map((x: string) => `${x}: @${x}`)
-      .join(', ')})}
+        (propsMapKeys as any)[iconType] || propsMapKeys.default
+      )
+        .map((x: string) => `${x}: @${x}`)
+        .join(', ')})}
     """
   end
 end
@@ -129,7 +123,10 @@ const createAssetComponentFile = ({
   file,
 }: CreateAssetsComponentFileProps) => {
   const newFilePath = `${exportDir}/${assetsFolder}/${file
-    .replace(/([-_])/gi, '_')
+    .replace(
+      /-/g,
+      '_'
+    )
     .toLowerCase()}.ex`;
 
   const svgMap = {
@@ -169,7 +166,7 @@ const singularName = (pluralName: string) =>
 
 ['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
   (assetsFolder) => {
-    const files = getFiles(assetsFolder);
+    const files = getFilesList(assetsFolder);
 
     console.log(files);
 
@@ -594,8 +591,7 @@ const generateAssetsDocumentationPage = (type: string, files: string[]) => {
 
 ['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
   (assetsFolder: string) => {
-    const files = getFiles(assetsFolder);
+    const files = getFilesList(assetsFolder);
     generateAssetsDocumentationPage(assetsFolder, files);
   }
 );
-
