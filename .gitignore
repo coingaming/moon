@@ -36,6 +36,7 @@ npm-debug.log
 !/priv/static/css/aposta10-dark.css
 !/priv/static/css/lab-light.css
 !/priv/static/css/lab-dark.css
+!/priv/static/svgs
 
 node_modules
 .DS_Store

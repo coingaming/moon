@@ -1,0 +1,12 @@
+
+<svg width="1em" height="1em"    viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="item"
+width="1em"
+height="1em"
+viewBox="0 0 16 16"
+fill="none"
+>
+<path opacity=".3" d="M13.75 8a5.75 5.75 0 1 1-11.5 0 5.75 5.75 0 0 1 11.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".2" d="M14.75 8a6.75 6.75 0 1 1-13.5 0 6.75 6.75 0 0 1 13.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".1" d="M15.75 8A7.75 7.75 0 1 1 .25 8a7.75 7.75 0 0 1 15.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".4" d="M12.75 8a4.75 4.75 0 1 1-9.5 0 4.75 4.75 0 0 1 9.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".5" d="M11.75 8a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".6" d="M10.75 8a2.75 2.75 0 1 1-5.5 0 2.75 2.75 0 0 1 5.5 0Z" stroke="currentColor" stroke-width=".5"/><path opacity=".7" d="M9.75 8a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Z" stroke="currentColor" stroke-width=".5"/>
+</symbol>
+</svg>
+  

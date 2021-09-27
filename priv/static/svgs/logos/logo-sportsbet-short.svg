@@ -1,0 +1,12 @@
+
+<svg width="1em" height="auto"    viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="item"
+width="1em"
+height="auto"
+viewBox="0 0 24 23"
+fill="none"
+>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.364 22.452c6.2 0 11.226-5.026 11.226-11.226C23.59 5.026 18.564 0 12.364 0 6.164 0 1.138 5.026 1.138 11.226c0 6.2 5.026 11.226 11.226 11.226Zm0-2.3a8.926 8.926 0 1 0 0-17.852 8.926 8.926 0 0 0 0 17.852Z" fill="currentColor"/><path d="M6.222 10.855a5.427 5.427 0 1 0 0-10.854 5.427 5.427 0 0 0 0 10.854Z" fill="#0CD664"/>
+</symbol>
+</svg>
+  
