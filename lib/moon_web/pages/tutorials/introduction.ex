@@ -2,9 +2,9 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Carousel
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Components.Carousel
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect

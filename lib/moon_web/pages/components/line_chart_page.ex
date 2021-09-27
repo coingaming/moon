@@ -1,13 +1,13 @@
 defmodule MoonWeb.Pages.Components.LineChartPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Page
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
+  alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

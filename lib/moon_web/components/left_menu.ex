@@ -4,10 +4,10 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Autolayouts.TopToDown
-  alias Surface.Components.LiveRedirect
-  alias Moon.Components.Sidebar
   alias Moon.Components.Accordion
   alias Moon.Components.Accordion.Item
+  alias Moon.Components.Sidebar
+  alias Surface.Components.LiveRedirect
 
   prop theme_name, :any
   prop uri, :any

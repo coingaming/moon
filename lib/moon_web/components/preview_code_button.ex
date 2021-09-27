@@ -1,8 +1,9 @@
 defmodule MoonWeb.Components.PreviewCodeButton do
   use Moon.StatelessComponent
-  alias Moon.Icons.SoftwareCode
+
   alias Moon.Assets.Icons.IconEye
   alias Moon.Components.Heading
+  alias Moon.Icons.SoftwareCode
 
   prop title, :string, default: ""
   prop selected_button, :string

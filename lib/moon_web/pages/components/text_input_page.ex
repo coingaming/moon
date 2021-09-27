@@ -1,5 +1,6 @@
 defmodule MoonWeb.Pages.Components.TextInputPage do
   use MoonWeb, :live_view
+
   alias Moon.Assets.Icons.IconHamburger
   alias Moon.Assets.Icons.IconMail
   alias Moon.Assets.Icons.IconUser
@@ -10,8 +11,8 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.TextInput
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   data breadcrumbs, :any,

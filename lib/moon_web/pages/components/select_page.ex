@@ -1,13 +1,13 @@
 defmodule MoonWeb.Pages.Components.SelectPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Select
-  alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
+  alias Moon.Components.Select
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data(gender_options, :any)
 

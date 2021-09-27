@@ -1,8 +1,8 @@
 defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Page
   alias Moon.Autolayouts.TopToDown
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

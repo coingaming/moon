@@ -1,7 +1,7 @@
 defmodule MoonWeb.MockDB do
   use Supervisor
 
-  alias MoonWeb.MockDB.{Sites, Currencies, Countries, Users, Affiliates, Transactions, Segments}
+  alias MoonWeb.MockDB.{Affiliates, Countries, Currencies, Segments, Sites, Transactions, Users}
 
   def start_link() do
     Supervisor.start_link(__MODULE__, [], name: __MODULE__)

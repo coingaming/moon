@@ -1,5 +1,6 @@
 defmodule Moon.Components.ToastStack do
   use Moon.StatefulComponent
+
   alias Moon.Components.Toast
   alias Moon.Components.Toast.Message
 
@@ -58,7 +59,7 @@ defmodule Moon.Components.ToastStack do
     {:noreply, assign(socket, toasts: toasts)}
   end
 
-  defp generate_id() do
+  defp generate_id do
     12
     |> :crypto.strong_rand_bytes()
     |> Base.url_encode64()

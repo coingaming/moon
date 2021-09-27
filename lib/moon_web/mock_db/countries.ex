@@ -4,11 +4,11 @@ defmodule MoonWeb.MockDB.Countries do
   @process_name :mock_countries
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
-  def list_all() do
+  def list_all do
     this_process() |> GenServer.call(:list_all)
   end
 
@@ -40,7 +40,7 @@ defmodule MoonWeb.MockDB.Countries do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 end

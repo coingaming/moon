@@ -2,12 +2,12 @@ defmodule MoonWeb.Pages.Components.TextPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Text
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
+  alias Moon.Components.Text
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

@@ -1,14 +1,15 @@
 defmodule MoonWeb.Pages.Components.TabsPage do
   require Logger
   use MoonWeb, :live_view
+
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data(tab_id, :string)
 

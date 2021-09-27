@@ -1,11 +1,12 @@
 defmodule Moon.Components.Toast do
   use Moon.StatelessComponent
-  alias Moon.Components.Link
+
   alias Moon.Assets.Icons.IconBannerInfo
   alias Moon.Assets.Icons.IconError
   alias Moon.Assets.Icons.IconErrorCircle
   alias Moon.Assets.Icons.IconSnackbarSuccess
   alias Moon.Assets.Icons.IconWarning
+  alias Moon.Components.Link
 
   prop id, :string, required: true
   prop message, :string, required: true

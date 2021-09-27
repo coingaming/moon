@@ -1,10 +1,9 @@
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.{Text, Divider, Button, SlideOver}
-  alias Moon.Autolayouts.{LeftToRight}
-  alias Moon.Assets.Icons.{IconUser, IconShare}
-
+  alias Moon.Assets.Icons.{IconShare, IconUser}
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.{Button, Divider, SlideOver, Text}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.{OverviewTab, RewardsTab}
 
   data active_tab, :string, default: "overview"

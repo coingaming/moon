@@ -4,10 +4,10 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Switch
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
+  alias Moon.Components.Switch
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

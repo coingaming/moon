@@ -1,10 +1,10 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   use MoonWeb, :stateful_component
 
+  alias Moon.Assets.Icons.IconCloseRounded
+  alias Moon.Assets.Icons.IconZoom
   alias Moon.Components.Form
   alias Moon.Components.TextInput
-  alias Moon.Assets.Icons.IconZoom
-  alias Moon.Assets.Icons.IconCloseRounded
 
   alias __MODULE__.SearchResults
 

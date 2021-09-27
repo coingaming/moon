@@ -1,13 +1,13 @@
 defmodule MoonWeb.Pages.Components.HeadingPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data(breadcrumbs, :any,
     default: [

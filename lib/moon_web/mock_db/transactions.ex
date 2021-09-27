@@ -1,14 +1,14 @@
 defmodule MoonWeb.MockDB.Transactions do
   use GenServer
 
-  alias MoonWeb.MockDB.{Users, Sites, Currencies}
+  alias MoonWeb.MockDB.{Currencies, Sites, Users}
   alias MoonWeb.MockDB.Utils
 
   @process_name :mock_transactions
   @statuses ["COMPLETE", "CANCELLED", "PENDING"]
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
@@ -21,7 +21,7 @@ defmodule MoonWeb.MockDB.Transactions do
     this_process() |> GenServer.call({:list, args})
   end
 
-  def list_all(), do: this_process() |> GenServer.call(:list_all)
+  def list_all, do: this_process() |> GenServer.call(:list_all)
 
   # server
   def init(_args) do
@@ -64,8 +64,8 @@ defmodule MoonWeb.MockDB.Transactions do
       state.all
       |> Enum.filter(&Enum.member?(users, &1.user))
       |> Enum.filter(fn txn ->
-        (length(sites) == 0 or Enum.member?(sites, txn.site)) and
-          (length(currencies) == 0 or Enum.member?(sites, txn.currency))
+        (Enum.empty?(sites) or Enum.member?(sites, txn.site)) and
+          (Enum.empty?(currencies) or Enum.member?(sites, txn.currency))
       end)
       |> Utils.take_page(offset, limit)
 
@@ -73,7 +73,7 @@ defmodule MoonWeb.MockDB.Transactions do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 end

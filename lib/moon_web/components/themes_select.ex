@@ -1,13 +1,14 @@
 defmodule MoonWeb.Components.ThemesSelect do
   use MoonWeb, :stateful_component
-  alias Moon.Components.Switch
-  alias Moon.Icons.MediaTuner
+
   alias Moon.Assets.Logos.LogoAposta10Short
   alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Assets.Logos.LogoLabFull
   alias Moon.Assets.Logos.LogoLivecasinoShort
   alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoLabFull
+  alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Components.Switch
+  alias Moon.Icons.MediaTuner
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"

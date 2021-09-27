@@ -2,10 +2,10 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.{Heading, Button, CodePreview, Link, Tooltip}
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
+  alias Moon.Components.{Button, CodePreview, Heading, Link, Tooltip}
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

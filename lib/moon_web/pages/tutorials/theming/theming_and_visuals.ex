@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias Moon.Components.Text
   alias Moon.Components.Link
+  alias Moon.Components.Text
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect

@@ -1,8 +1,8 @@
 defmodule Moon.Components.SlideOver do
   use Moon.StatelessComponent
 
-  alias Moon.Components.Heading
   alias Moon.Assets.Icons.IconCloseRounded
+  alias Moon.Components.Heading
 
   prop on_close, :event, required: true
 

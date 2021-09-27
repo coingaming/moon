@@ -36,8 +36,8 @@ end
 defmodule Moon.Components.Label do
   use Moon.StatelessComponent
 
-  alias Moon.Components.Label.LabelFlex
   alias Moon.Components.Label.LabelContent
+  alias Moon.Components.Label.LabelFlex
 
   prop(text, :string)
   prop(disabled, :boolean)

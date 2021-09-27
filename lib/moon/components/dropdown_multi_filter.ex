@@ -1,14 +1,14 @@
 defmodule Moon.Components.DropdownMultiFilter do
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.PopoverV2
-  alias Moon.Components.CheckboxMultiselectV2
-  alias Moon.Components.Form
-  alias Moon.Components.TextInput
-  alias Moon.Components.Button
-  alias Moon.Components.Divider
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Assets.Icons.IconZoom
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.Button
+  alias Moon.Components.CheckboxMultiselectV2
+  alias Moon.Components.Divider
+  alias Moon.Components.Form
+  alias Moon.Components.PopoverV2
+  alias Moon.Components.TextInput
 
   prop show_filter, :boolean, required: true
   prop search_text, :string

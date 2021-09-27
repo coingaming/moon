@@ -2,14 +2,14 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
   use MoonWeb, :live_view
   import Ecto.Changeset, only: [fetch_field: 2, put_change: 3]
 
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Datepicker
   alias Moon.Components.Form
   alias Moon.Components.Heading
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

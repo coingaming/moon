@@ -2,15 +2,15 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
   require Logger
   use MoonWeb, :live_view
 
-  alias Moon.Components.Heading
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.CodePreview
   alias Moon.Components.Dropdown
+  alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias Moon.Components.CheckboxMultiselect
   alias Moon.Components.SingeItemSelect
-  alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

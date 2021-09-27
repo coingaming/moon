@@ -1,7 +1,8 @@
 defmodule MoonWeb.Components.Footer do
   use MoonWeb, :stateless_component
-  alias Moon.Components.Link
+
   alias Moon.Assets.Logos.LogoMoonDesign
+  alias Moon.Components.Link
 
   prop class, :string, default: nil
   data show_themes, :boolean, default: false

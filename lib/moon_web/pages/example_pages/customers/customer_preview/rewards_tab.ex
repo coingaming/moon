@@ -1,10 +1,9 @@
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.{Divider, Button, Text, Table}
-  alias Moon.Autolayouts.LeftToRight
-
   alias Moon.Assets.Icons.{IconChevronLeftRounded, IconChevronRightRounded}
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.{Button, Divider, Table, Text}
 
   def render(assigns) do
     ~F"""

@@ -2,11 +2,10 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   use MoonWeb, :live_view
 
   alias Moon.Components.Heading
-
-  alias MoonWeb.Pages.ExamplePages.Shared
-  alias Shared.TopMenu
-  alias Shared.LeftMenu
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Pages.ExamplePages.Shared
+  alias Shared.LeftMenu
+  alias Shared.TopMenu
 
   data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
 

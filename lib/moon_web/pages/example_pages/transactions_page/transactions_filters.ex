@@ -15,14 +15,14 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   """
   use MoonWeb, :stateful_component
 
+  alias Moon.Autolayouts.ButtonsList
+  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
   alias Moon.Components.Chip
-  alias Moon.Components.Popover
-  alias Moon.Components.Form
-  alias Moon.Components.TextInput
   alias Moon.Components.Datepicker
-  alias Moon.Autolayouts.LeftToRight
-  alias Moon.Autolayouts.ButtonsList
+  alias Moon.Components.Form
+  alias Moon.Components.Popover
+  alias Moon.Components.TextInput
   alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter
 
   data clicked_name, :string, default: ""

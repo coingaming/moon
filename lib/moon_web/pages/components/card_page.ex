@@ -5,10 +5,10 @@ defmodule MoonWeb.Pages.Components.CardPage do
   alias Moon.Components.Card
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias Moon.Components.IconButton
-  alias MoonWeb.Components.Page
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

@@ -1,21 +1,20 @@
 defmodule Moon.ComponentsV2.Table do
   use Moon.StatefulComponent
 
-  alias Moon.Components.Divider
-  alias Moon.Autolayouts.LeftToRight
+  alias Elixir.Timex.Format.DateTime.Formatters.Relative
 
-  alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
-  alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoAposta10Short
   alias Moon.Assets.Icons.IconArrowLDown
   alias Moon.Assets.Icons.IconArrowLUp
   alias Moon.Assets.Icons.IconChevronLeftRounded
   alias Moon.Assets.Icons.IconChevronRightRounded
-  alias Moon.Assets.Icons.IconRow
   alias Moon.Assets.Icons.IconRefresh
-
-  alias Elixir.Timex.Format.DateTime.Formatters.Relative
+  alias Moon.Assets.Icons.IconRow
+  alias Moon.Assets.Logos.LogoAposta10Short
+  alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias Moon.Assets.Logos.LogoSlotsShort
+  alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.Divider
 
   # list(%{
   #   field: atom() | list(atom()),
@@ -289,7 +288,7 @@ defmodule Moon.ComponentsV2.Table do
   # Helpers
   #
   defp column_sort_order(col_field, {sort_field, sort_order}) do
-    isMatch =
+    is_match =
       case {col_field, sort_field} do
         {[_ | _], [_ | _]} -> col_field == sort_field
         {x, [y]} -> x == y
@@ -297,7 +296,7 @@ defmodule Moon.ComponentsV2.Table do
         _ -> col_field == sort_field
       end
 
-    if isMatch, do: sort_order, else: nil
+    if is_match, do: sort_order, else: nil
   end
 
   defp get_value(nil, _), do: nil

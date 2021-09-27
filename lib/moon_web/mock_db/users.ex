@@ -7,7 +7,7 @@ defmodule MoonWeb.MockDB.Users do
   @process_name :mock_users
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
@@ -20,7 +20,7 @@ defmodule MoonWeb.MockDB.Users do
     this_process() |> GenServer.call({:list, args})
   end
 
-  def list_all(), do: this_process() |> GenServer.call(:list_all)
+  def list_all, do: this_process() |> GenServer.call(:list_all)
 
   def search_by_usernames(""), do: []
 
@@ -73,9 +73,9 @@ defmodule MoonWeb.MockDB.Users do
         end
       end)
       |> Enum.filter(fn user ->
-        (length(id) == 0 or Enum.member?(id, user.id)) and
-          (length(site) == 0 or Enum.member?(site, user.site)) and
-          (length(country) == 0 or Enum.member?(country, user.country))
+        (Enum.empty?(id) or Enum.member?(id, user.id)) and
+          (Enum.empty?(site) or Enum.member?(site, user.site)) and
+          (Enum.empty?(country) or Enum.member?(country, user.country))
       end)
 
     {:reply, results, state}
@@ -90,7 +90,7 @@ defmodule MoonWeb.MockDB.Users do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 end

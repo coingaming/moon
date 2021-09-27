@@ -154,11 +154,11 @@ defmodule MoonWeb.Pages.IconsPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias Moon.Icons
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

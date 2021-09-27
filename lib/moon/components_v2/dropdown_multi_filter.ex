@@ -1,9 +1,9 @@
 defmodule Moon.ComponentsV2.DropdownMultiFilterView do
   use Moon.StatelessComponent
 
-  alias Moon.Components.{PopoverV2, CheckboxMultiselectV2, Form, TextInput, Button, Divider}
-  alias Moon.Autolayouts.{LeftToRight, TopToDown}
   alias Moon.Assets.Icons.IconZoom
+  alias Moon.Autolayouts.{LeftToRight, TopToDown}
+  alias Moon.Components.{Button, CheckboxMultiselectV2, Divider, Form, PopoverV2, TextInput}
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true
@@ -97,7 +97,7 @@ end
 defmodule Moon.ComponentsV2.DropdownMultiFilter do
   use Moon.StatefulComponent
 
-  alias Moon.Components.{Tooltip}
+  alias Moon.Components.Tooltip
   alias Moon.ComponentsV2.DropdownMultiFilterView
 
   data show_filter, :boolean, default: false

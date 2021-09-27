@@ -2,13 +2,13 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.Accordion
   alias Moon.Components.Accordion.Item
   alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data(item_id, :string, default: "1")
 

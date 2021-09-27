@@ -21,25 +21,24 @@ end
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.{Accordion, Divider, Button, Text}
-  alias Moon.Autolayouts.LeftToRight
-
   alias Moon.Assets.Icons.{
-    IconUser,
-    IconText,
-    IconGlobe,
-    IconMail,
-    IconGeneralInfo,
-    IconWalletRounded,
-    IconPencil,
     IconAbout,
-    IconSbShield,
+    IconCalendarEmpty,
     IconData,
-    IconSettings,
+    IconGeneralInfo,
+    IconGlobe,
     IconLightbulb,
-    IconCalendarEmpty
+    IconMail,
+    IconPencil,
+    IconSbShield,
+    IconSettings,
+    IconText,
+    IconUser,
+    IconWalletRounded
   }
 
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.{Accordion, Button, Divider, Text}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row
 
   data show_account_details, :boolean, default: true

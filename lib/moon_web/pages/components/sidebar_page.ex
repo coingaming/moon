@@ -1,17 +1,17 @@
 defmodule MoonWeb.Pages.Components.SidebarPage do
   use MoonWeb, :live_view
-  alias Moon.Components.CodePreview
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
-  alias Moon.Components.Sidebar
-  alias Moon.Autolayouts.TopToDown
 
   alias Moon.Assets.Icons.IconSlots
   alias Moon.Assets.Icons.IconSportsBaseBall
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
+  alias Moon.Components.Sidebar
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

@@ -1,15 +1,15 @@
 defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Assets.Icons.IconMore
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
   alias Moon.Components.Heading
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
