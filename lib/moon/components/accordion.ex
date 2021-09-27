@@ -1,7 +1,7 @@
 defmodule Moon.Components.Accordion.Item do
   use Moon.StatelessComponent
   alias Moon.Components.Heading
-  alias Moon.Assets.Icons.IconChevronUp
+  alias Moon.Icons.ControlsChevronUp
 
   prop(click, :event)
   prop(item_id, :string)
@@ -14,9 +14,10 @@ defmodule Moon.Components.Accordion.Item do
     <div class="bg-gohan-100 p-4 mb-2 rounded-xl relative">
       <div :on-click={@click} phx-value-item_id={@item_id}>
         <Heading class="cursor-pointer">{@title}</Heading>
-        <IconChevronUp
+        <ControlsChevronUp
+          font_size="1.25rem"
           color={(@is_open && "piccolo-100") || "trunks-100"}
-          class={"absolute right-4 top-4 text-xs cursor-pointer transition-all transform #{
+          class={"absolute right-4 top-4 cursor-pointer transition-all transform #{
             (@is_open && "rotate-180") || "rotate-0"
           }"}
         />

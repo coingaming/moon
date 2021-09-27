@@ -2,12 +2,10 @@ import * as fs from 'fs';
 
 console.log('Running assets importer');
 
-const rawDir = '../../assets/static/svgs/icons_new';
-const exportDir = '../../lib/moon/';
+const rawDirIcons = '../../assets/static/svgs/icons_new';
+const exportDir = '../../lib/moon';
 
-const getFiles = () => fs.readdirSync(`${rawDir}`);
-
-const getContents = (file: string) => fs.readFileSync(`${rawDir}/${file}`);
+const getFilesList = () => fs.readdirSync(`${rawDirIcons}`);
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -21,9 +19,6 @@ const toCamel = (s: string) => {
 const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-
-const camelToSnakeCase = (str: string) =>
-  str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
 const getModuleName = (s: string) =>
   capitalizeFirstLetter(toCamel(s))
@@ -66,15 +61,15 @@ defmodule Moon.Icon do
   ${propsMap}
   @assets_map %{
     ${files
-      .map(
-        (i) =>
-          `${i
-            .replace(/([-_])/gi, '_')
-            .toLowerCase()
-            .replace('.svg', '')
+        .map(
+          (i) =>
+            `${i
+              .replace(/([-_])/gi, '_')
+              .toLowerCase()
+              .replace('.svg', '')
             }: Icons.${getModuleName(i)}`
-      )
-      .join(', ')}
+        )
+        .join(', ')}
     }
   def icon_name_to_module(icon_name) do
     @assets_map[:"#{icon_name}"]
@@ -82,8 +77,8 @@ defmodule Moon.Icon do
   def render(assigns) do
     ~F"""
     {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${propsMapKeys
-      .map((x: string) => `${x}: @${x}`)
-      .join(', ')})}
+        .map((x: string) => `${x}: @${x}`)
+        .join(', ')})}
     """
   end
 end
@@ -130,9 +125,7 @@ const singularName = (pluralName: string) =>
   (singularMap as any)[pluralName] ||
   pluralName.substring(0, pluralName.length - 1);
 
-const files = getFiles();
-
-console.log(files);
+const files = getFilesList();
 
 writeAssetsMapFile({
   files,
@@ -146,7 +139,7 @@ files.map((file: string) => {
 
 const assetsDocDir = '../../lib/moon_web/pages/';
 
-const writeAssetsDocumentationPage = (type: string, pageContent?: string) => {
+const writeAssetsDocumentationPage = (pageContent: string) => {
   if (!pageContent) {
     return console.error('no content');
   }
@@ -157,13 +150,13 @@ const generateAssetsDocumentationPageContent = (
   modules: string[]
 ): string => {
   return `
-defmodule MoonWeb.Pages.Assets.IconsPage do
+defmodule MoonWeb.Pages.IconsPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias Moon.Components.CodePreview
-  alias Moon.Assets.Icons
+  alias Moon.Icons
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
 
@@ -174,7 +167,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Assets"
       },
       %{
-        to: "/assets/icons",
+        to: "/icons",
         name: "Icons"
       }
     ]
@@ -194,8 +187,8 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
       <TopToDown>
       <Heading size={56} class="mb-4">Icons</Heading>
       ${modules
-        .map(
-          (x: string, i: number) => `
+      .map(
+        (x: string, i: number) => `
         <ExampleAndCode id="icon_${i + 1}" class="mt-4">
           <#template slot="example">
             <${x} font_size="5rem" />
@@ -208,8 +201,8 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
           </#template>
         </ExampleAndCode>
       `
-        )
-        .join('\n')}
+      )
+      .join('\n')}
       </TopToDown>
     </Page>
     """
@@ -221,11 +214,10 @@ end
 const generateAssetsDocumentationPage = (files: string[]) => {
   const modules = files.map((f: string) => getModuleName(f));
   const pageContent = generateAssetsDocumentationPageContent(modules);
-
   writeAssetsDocumentationPage(pageContent);
 };
 
 (() => {
-  const files = getFiles();
+  const files = getFilesList();
   generateAssetsDocumentationPage(files);
 })();
