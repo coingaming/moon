@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.IconsPage do
         name: "Assets"
       },
       %{
-        to: "/assets/new_icons",
+        to: "/icons",
         name: "Icons"
       }
     ]

@@ -28,7 +28,7 @@ defmodule MoonWeb.Router do
       live "/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage
       live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
       live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
-      live "/assets/new_icons", MoonWeb.Pages.IconsPage
+      live "/icons", MoonWeb.Pages.IconsPage
       live "/assets/logos", MoonWeb.Pages.Assets.LogosPage
       live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
       live "/components/accordion", MoonWeb.Pages.Components.AccordionPage
