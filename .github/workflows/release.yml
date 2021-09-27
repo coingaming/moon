@@ -1,0 +1,46 @@
+name: build
+
+on:
+  push:
+    branches: master
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    outputs:
+      release-version: ${{ steps.release-version.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Tag new release
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+
+      - name: Set up Conventional Commit preset
+        working-directory: .
+        run: npm install conventional-changelog-conventionalcommits
+
+      - name: Set version and  release
+        id: semver
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release@17
+
+      # Get release version
+      - name: Get release tag
+        id: release-tag
+        uses: WyriHaximus/github-action-get-previous-tag@1.0.0
+
+      - name: Get release version
+        id: release-version
+        uses: actions/github-script@v3.1
+        with:
+          script: |
+            core.setOutput(
+              'version',
+              '${{ steps.release-tag.outputs.tag }}'.slice(1)
+            )
