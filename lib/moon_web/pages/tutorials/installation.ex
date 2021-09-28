@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
   @moduledoc false
 
   use MoonWeb, :live_view
+  import Phoenix.HTML, only: [html_escape: 1]
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
@@ -36,43 +37,46 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
       <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
       <Heading size={32}>Usage</Heading>
 
-      <Heading size={24} class="mt-8 mb-4">Requirements</Heading>
+      <Heading size={24}>Requirements</Heading>
       <pre>
     * Can be used from any existing Phoenix project that uses LiveView 0.15 (Margus Pärt needs to deploy branch "render_block" lab to t1 to test it out)
     * Moon Surface components can be used from SLIM and EEX, but recommended new format is Surface + Tailwind + Moon Surface Components
-    </pre>
+      </pre>
 
-      <Heading size={24} class="mt-8 mb-4">Steps for including Moon Surface into new or old project</Heading>
+      <Heading size={24}>Steps for including Moon Surface into new or old project</Heading>
+
       <pre>
     # 1. Create empty project (skip this test if you already have project where you want to include)
     mix phx.new aposta10_design --live --no-ecto --no-dashboard
     cd aposta10_design
 
-    # 2. Configure https://github.com/coingaming/asset_import
-    # check diff https://github.com/coingaming/aposta10_design/commit/7889b319463ad68f3192a5dfe8c6d7414697b5cf
+    # 2. Include Moon Surface
+    # add {html_escape("{:moon, git: \"git@github.com:coingaming/moon.git\"}")} to mix.exs deps
 
-    # 3. Include Moon Surface
-    # check diff https://github.com/coingaming/aposta10_design/commit/4f84046f273bf9b60d8278cbce76855ece62b572
+    # 3. Add a Plug.Static plug to your endpoint.ex
+    plug Plug.Static,
+      at: "/moon/assets",
+      from: :moon,
+      gzip: true,
+      only: ~w(css svgs),
+      cache_control_for_etags: "public, max-age=86400"
 
-    # 4. Install Moon Surface dependencies
-    (cd deps/moon/ && mix deps.get)
+    # 4. Include Moon Surface themes to your layout
+    &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-dark.css") %&gt;" /&gt;
+    &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-light.css") %&gt;" /&gt;
 
-    # 5. Install Moon Surface Assets
-    (cd deps/moon/assets/ && npm i)
-
-    # 6. Tailwind configuration
-    # 6.1 Change assets/package.json to include "NODE_ENV=production" for deploy step (this purges un-needed CSS)
+    # 5. Tailwind configuration
+    # 5.1 Change assets/package.json to include "NODE_ENV=production" for deploy step (this purges un-needed CSS)
     "deploy": "NODE_ENV=production webpack --mode production",
 
-    # 6.2 Ensure that you have required dependencies in assets/package.json
+    # 5.2 Ensure that you have required dependencies in assets/package.json
     "postcss-import": "^14.0.0",
     "postcss-loader": "^4.1.0",
     "autoprefixer": "^10.2.1",
     "postcss": "^8.2.4",
-    "tailwindcss": "^2.0.2",
-    "moon-css": "git:git@github.com:coingaming/moon-css.git",
+    "tailwindcss": "^2.2.15"
 
-    # 6.3 Create file assets/postcss.config.js
+    # 5.3 Create file assets/postcss.config.js
     module.exports = &#123;
       plugins: &#123;
         tailwindcss: &#123;&#125;,
@@ -80,13 +84,15 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
       &#125;,
     &#125;
 
-    # 6.4 Create file assets/tailwind.config.js
+    # 5.4 Create file assets/tailwind.config.js
     module.exports = &#123;
+      mode: 'jit',
       purge: [
         '../lib/**/*.ex',
         '../lib/**/*.leex',
         '../lib/**/*.eex',
         './js/**/*.js',
+        '../deps/moon/lib/moon/**/*.ex'
       ],
       darkMode: false,
       theme: &#123;
@@ -146,13 +152,12 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
       plugins: [],
     &#125;
 
-    # 6.5 Add postcss-loader into assets/webpack.config.js
+    # 5.5 Add postcss-loader into assets/webpack.config.js
     use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
 
-    # 7. Run project
+    # 6. Run project
     mix phx.server
-
-    </pre>
+      </pre>
       <Footer />
       <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
     </TopToDown>
