@@ -1,4 +1,6 @@
 defmodule Moon.Components.Switch.Caption do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop label, :string
@@ -22,6 +24,8 @@ defmodule Moon.Components.Switch.Caption do
 end
 
 defmodule Moon.Components.Switch do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.Icons.IconMoon
   alias Moon.Assets.Icons.IconSun

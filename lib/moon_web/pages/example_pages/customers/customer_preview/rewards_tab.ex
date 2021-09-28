@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icons.{IconChevronLeftRounded, IconChevronRightRounded}

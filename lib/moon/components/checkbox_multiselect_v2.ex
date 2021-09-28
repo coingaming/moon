@@ -1,4 +1,6 @@
 defmodule Moon.Components.CheckboxMultiselectV2 do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Checkbox

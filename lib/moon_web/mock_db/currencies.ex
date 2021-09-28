@@ -1,4 +1,6 @@
 defmodule MoonWeb.MockDB.Currencies do
+  @moduledoc false
+
   use GenServer
 
   alias MoonWeb.MockDB.Utils

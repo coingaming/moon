@@ -1,4 +1,6 @@
 defmodule Moon.Components.Popover do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot(default)
@@ -23,6 +25,8 @@ defmodule Moon.Components.Popover do
 end
 
 defmodule Moon.Components.Popover.Outer do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot(default)

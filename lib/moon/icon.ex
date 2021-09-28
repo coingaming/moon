@@ -1,4 +1,6 @@
 defmodule Moon.Icon do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Icons
 

@@ -1,4 +1,6 @@
 defmodule Moon.Components.CheckboxMultiselect.Item do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.Checkbox
 
@@ -22,12 +24,15 @@ defmodule Moon.Components.CheckboxMultiselect.Item do
 end
 
 defmodule Moon.Components.CheckboxMultiselect do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.CheckboxMultiselect.Item
 
   prop(on_change, :event)
 
-  # this is list of Maps of label and value keys, for example: [%{ label: 'Game 1', value: 1 }, %{ label: 'Game 2', value: 2 }]
+  # this is list of Maps of label and value keys,
+  # for example: [%{ label: 'Game 1', value: 1 }, %{ label: 'Game 2', value: 2 }]
   prop(options, :list)
   # this is list of numeric ids, for example: [1, 2]
   prop(value, :list)

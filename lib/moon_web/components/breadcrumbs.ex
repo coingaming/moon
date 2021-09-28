@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.Breadcrumbs do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Assets.Icons.IconChevronRightRounded

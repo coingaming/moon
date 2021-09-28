@@ -1,4 +1,5 @@
 defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
+  @moduledoc false
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown

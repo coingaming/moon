@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias __MODULE__.Search

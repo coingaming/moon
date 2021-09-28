@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Assets.PatternsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Patterns

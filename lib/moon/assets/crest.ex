@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Crest do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.Crests
 

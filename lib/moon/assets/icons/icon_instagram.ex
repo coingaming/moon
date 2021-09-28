@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Icons.IconInstagram do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

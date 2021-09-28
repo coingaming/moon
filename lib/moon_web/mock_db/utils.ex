@@ -1,5 +1,7 @@
 defmodule MoonWeb.MockDB.Utils do
-  def random_id() do
+  @moduledoc false
+
+  def random_id do
     Faker.random_between(100_000, 999_999)
   end
 

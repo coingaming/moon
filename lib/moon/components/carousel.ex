@@ -1,4 +1,6 @@
 defmodule Moon.Components.Carousel do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(class, :string)

@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Themes.ListOfThemes do
+  @moduledoc false
+
   use Moon.LiveView
   alias Moon.Components.Link
 

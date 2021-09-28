@@ -1,4 +1,6 @@
 defmodule MoonWeb.MockDB.Affiliates do
+  @moduledoc false
+
   use GenServer
 
   alias MoonWeb.MockDB.Users

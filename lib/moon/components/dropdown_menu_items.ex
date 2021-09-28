@@ -1,4 +1,6 @@
 defmodule Moon.Components.DropdownMenuItems do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot default
@@ -16,6 +18,8 @@ defmodule Moon.Components.DropdownMenuItems do
 end
 
 defmodule Moon.Components.DropdownMenuItem do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot default

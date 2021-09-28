@@ -1,4 +1,6 @@
 defmodule Moon.Components.FileInput do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.Icons.IconUpload
 

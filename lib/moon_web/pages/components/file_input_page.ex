@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.FileInputPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown

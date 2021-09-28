@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Icons.IconCurrencyBOB do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

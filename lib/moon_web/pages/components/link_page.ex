@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.LinkPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown

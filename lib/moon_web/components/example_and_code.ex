@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.ExampleAndCode do
+  @moduledoc false
+
   use Surface.LiveComponent
 
   alias Moon.Components.Badge

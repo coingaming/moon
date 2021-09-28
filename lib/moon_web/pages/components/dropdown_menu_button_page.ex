@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons.IconMore

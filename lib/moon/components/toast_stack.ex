@@ -1,4 +1,6 @@
 defmodule Moon.Components.ToastStack do
+  @moduledoc false
+
   use Moon.StatefulComponent
 
   alias Moon.Components.Toast

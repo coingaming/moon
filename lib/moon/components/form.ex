@@ -1,4 +1,6 @@
 defmodule Moon.Components.Form do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(for, :any)

@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Logos.LogoAposta10Short do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

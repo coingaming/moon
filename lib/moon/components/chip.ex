@@ -1,4 +1,6 @@
 defmodule Moon.Components.Chip do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Button

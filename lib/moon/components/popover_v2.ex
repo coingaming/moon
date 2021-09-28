@@ -1,4 +1,6 @@
 defmodule Moon.Components.PopoverV2 do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop show, :boolean, required: true

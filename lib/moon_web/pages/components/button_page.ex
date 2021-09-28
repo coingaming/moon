@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.ButtonPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight

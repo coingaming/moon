@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.PreviewCodeButton do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Assets.Icons.IconEye

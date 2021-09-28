@@ -1,4 +1,6 @@
 defmodule Moon.Components.Toast do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Assets.Icons.IconBannerInfo
@@ -17,6 +19,8 @@ defmodule Moon.Components.Toast do
   prop on_close, :event
 
   defmodule Message do
+    @moduledoc false
+
     defstruct id: nil, message: nil, variant: nil, closeable: true, link_text: nil, link_href: nil
   end
 

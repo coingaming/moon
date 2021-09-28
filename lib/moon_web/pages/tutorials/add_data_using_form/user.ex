@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 
