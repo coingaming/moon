@@ -1,8 +1,8 @@
 defmodule MoonWeb.Components.Breadcrumbs do
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Link
   alias Moon.Assets.Icons.IconChevronRightRounded
+  alias Moon.Components.Link
 
   prop breadcrumbs, :any
   prop theme_name, :string, default: "lab-light"

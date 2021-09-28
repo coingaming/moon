@@ -6,8 +6,8 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

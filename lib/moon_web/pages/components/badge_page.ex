@@ -1,14 +1,14 @@
 defmodule MoonWeb.Pages.Components.BadgePage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Badge
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.CodePreview
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Badge
+  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

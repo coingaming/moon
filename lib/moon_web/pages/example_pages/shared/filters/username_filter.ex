@@ -1,10 +1,10 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   use MoonWeb, :stateless_component
 
-  alias Moon.ComponentsV2.DropdownMultiFilter
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Helpers
+  alias Moon.ComponentsV2.DropdownMultiFilter
   alias MoonWeb.MockDB.Users
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   @default_name "username_filter"
 

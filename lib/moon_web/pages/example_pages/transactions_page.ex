@@ -21,13 +21,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
 
-  alias MoonWeb.Pages.ExamplePages.Shared
-  alias Shared.TopMenu
-  alias Shared.LeftMenu
-  alias MoonWeb.Components.Breadcrumbs
   alias __MODULE__.TransactionsFilters
   alias __MODULE__.TransactionsTable
+  alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
+  alias MoonWeb.Pages.ExamplePages.Shared
+  alias Shared.LeftMenu
+  alias Shared.TopMenu
 
   require Logger
 
@@ -137,8 +137,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     end
   end
 
-  def handle_info({:filters, {filter, values}}, socket) do
-    IO.inspect({filter, values}, label: "old version of filter apply message received?")
+  def handle_info({:filters, {_filter, _values}}, socket) do
     {:noreply, socket}
   end
 
@@ -179,7 +178,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     filters = socket.assigns.filters
 
     new_segment = %{
-      id: Faker.random_between(100, 10000),
+      id: Faker.random_between(100, 10_000),
       name: Faker.Finance.Stock.ticker(),
       filters: filters
     }
@@ -312,7 +311,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   defp get_transactions(%{original_transactions: transactions}), do: transactions
   defp get_transactions(_), do: get_transactions()
 
-  def get_transactions() do
+  def get_transactions do
     Logger.info("Preparing mock data set..!")
 
     brand_list = [

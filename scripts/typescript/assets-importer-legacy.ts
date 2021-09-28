@@ -204,12 +204,12 @@ const generateAssetsDocumentationPageContent = (
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Crests
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -268,12 +268,12 @@ end
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Currencies
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -331,12 +331,12 @@ end
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Duotones
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -394,12 +394,12 @@ end
 defmodule MoonWeb.Pages.Assets.IconsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Icons
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -457,12 +457,12 @@ end
 defmodule MoonWeb.Pages.Assets.LogosPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Logos
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -520,12 +520,12 @@ end
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
   alias Moon.Assets.Patterns
-  alias MoonWeb.Components.Page
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

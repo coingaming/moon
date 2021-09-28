@@ -1,8 +1,8 @@
 defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsTable do
   use MoonWeb, :stateful_component
 
-  alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
   alias Moon.Components.TableV2
+  alias MoonWeb.Pages.ExamplePages.Shared.ListPagination
 
   prop records, :list, required: true
   prop page, :integer, required: true

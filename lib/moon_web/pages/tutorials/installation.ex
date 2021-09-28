@@ -1,8 +1,8 @@
 defmodule MoonWeb.Pages.Tutorials.Installation do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Heading
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect

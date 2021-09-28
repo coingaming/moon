@@ -6,7 +6,7 @@ defmodule MoonWeb.MockDB.Segments do
   alias MoonWeb.MockDB.Utils
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
@@ -24,7 +24,7 @@ defmodule MoonWeb.MockDB.Segments do
     this_process() |> GenServer.call({:get_by_id, id})
   end
 
-  def list_all() do
+  def list_all do
     this_process() |> GenServer.call(:list_all)
   end
 
@@ -58,7 +58,7 @@ defmodule MoonWeb.MockDB.Segments do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 end

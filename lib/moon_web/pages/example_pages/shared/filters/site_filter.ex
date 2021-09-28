@@ -1,10 +1,10 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
   use MoonWeb, :stateless_component
 
-  alias Moon.ComponentsV2.DropdownMultiFilter
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Helpers
+  alias Moon.ComponentsV2.DropdownMultiFilter
   alias MoonWeb.MockDB.Sites
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   @default_name "site_filter"
 
@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter do
   end
 
   # Cache this in memeory
-  defp all_items() do
+  defp all_items do
     Sites.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
   end
 end

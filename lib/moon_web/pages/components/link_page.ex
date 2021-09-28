@@ -1,13 +1,13 @@
 defmodule MoonWeb.Pages.Components.LinkPage do
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Page
-  alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

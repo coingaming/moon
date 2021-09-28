@@ -8,7 +8,7 @@ defmodule MoonWeb.MockDB.Affiliates do
   @tags ["SOCIAL MEDIA", "MEDIA BUY", "FACEBOOK", "TWITTER", "MARKETING"]
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
@@ -22,7 +22,7 @@ defmodule MoonWeb.MockDB.Affiliates do
     this_process() |> GenServer.call({:list, args})
   end
 
-  def list_all() do
+  def list_all do
     this_process() |> GenServer.call(:list_all)
   end
 
@@ -74,11 +74,11 @@ defmodule MoonWeb.MockDB.Affiliates do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 
-  defp random_tags() do
+  defp random_tags do
     0..Faker.random_between(0, length(@tags) - 1)
     |> Enum.map(&Enum.fetch!(@tags, &1))
   end

@@ -1,12 +1,12 @@
 defmodule MoonWeb.Pages.Components.FileInputPage do
   use MoonWeb, :live_view
 
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Heading
-  alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [

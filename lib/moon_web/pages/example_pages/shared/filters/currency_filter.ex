@@ -1,10 +1,10 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
   use MoonWeb, :stateless_component
 
-  alias Moon.ComponentsV2.DropdownMultiFilter
   alias Moon.Components.Chip
-  alias MoonWeb.Pages.ExamplePages.Helpers
+  alias Moon.ComponentsV2.DropdownMultiFilter
   alias MoonWeb.MockDB.Currencies
+  alias MoonWeb.Pages.ExamplePages.Helpers
 
   @default_name "currency_filter"
 
@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
   end
 
   # Cache this in memeory
-  defp all_items() do
+  defp all_items do
     Currencies.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
   end
 end

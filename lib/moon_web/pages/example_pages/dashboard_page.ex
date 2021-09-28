@@ -20,10 +20,11 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias MoonWeb.MockDB.Sites
   alias MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget
   alias MoonWeb.Pages.ExamplePages.Shared
+
   alias Shared.Filters.ContentFilter
-  alias Shared.TopMenu
   alias Shared.LeftMenu
   alias Shared.NewWidgetPanel
+  alias Shared.TopMenu
 
   @colors ~w(
     krillin-100 frieza-100 roshi-100
@@ -424,7 +425,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     {:noreply, assign(socket, page_widgets: page_widgets ++ [widget])}
   end
 
-  defp generate_widget_items() do
+  defp generate_widget_items do
     Enum.map(
       ~w(Charlibobby Hima0919 Fox14445 Latuim Killbgx),
       fn line ->
@@ -443,7 +444,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     end)
   end
 
-  defp generate_metric_data() do
+  defp generate_metric_data do
     %{
       amount: Enum.random(1_000_000..21_000_000) + Enum.random(1..99) / 100,
       change: Enum.random(-20..20)
@@ -462,7 +463,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
     end)
   end
 
-  defp fetch_widget_categories() do
+  defp fetch_widget_categories do
     @widget_categories_names
     |> Enum.map(fn category_name ->
       %{

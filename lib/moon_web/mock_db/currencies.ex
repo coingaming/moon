@@ -6,13 +6,13 @@ defmodule MoonWeb.MockDB.Currencies do
   @process_name :mock_currencies
 
   # client
-  def start_link() do
+  def start_link do
     GenServer.start_link(__MODULE__, [], name: @process_name)
   end
 
-  def list_all(), do: this_process() |> GenServer.call(:list_all)
+  def list_all, do: this_process() |> GenServer.call(:list_all)
 
-  def random() do
+  def random do
     list_all() |> Utils.get_random_item()
   end
 
@@ -36,7 +36,7 @@ defmodule MoonWeb.MockDB.Currencies do
   end
 
   # helpers
-  defp this_process() do
+  defp this_process do
     Process.whereis(@process_name)
   end
 end

@@ -2,16 +2,15 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons.{IconChartSegment, IconSettings}
-  alias Moon.Components.{Chip, Divider, Button, Heading}
-  alias Moon.Components.{Form, TextInput, Button}
-  alias Moon.ComponentsV2.Table
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
-
-  alias MoonWeb.Pages.ExamplePages.Shared.Filters.{UsernameFilter, CountryFilter}
-  alias MoonWeb.Pages.ExamplePages.Shared.{TopMenu, LeftMenu}
+  alias Moon.Components.{Button, Chip, Divider, Heading}
+  alias Moon.Components.{Button, Form, TextInput}
+  alias Moon.ComponentsV2.Table
   alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.MockDB.{Affiliates, Segments}
+  alias MoonWeb.Pages.ExamplePages.Helpers
+  alias MoonWeb.Pages.ExamplePages.Shared.{LeftMenu, TopMenu}
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.{CountryFilter, UsernameFilter}
 
   data affiliates, :list, default: []
   data active_affiliate, :map, default: %{id: nil}

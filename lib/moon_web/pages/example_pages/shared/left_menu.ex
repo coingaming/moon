@@ -1,13 +1,11 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   use MoonWeb, :stateful_component
 
-  alias Surface.Components.LiveRedirect
-
   alias Moon.Assets.Icon
   alias Moon.Autolayouts.Sections
   alias Moon.Components.Divider
-
   alias MoonWeb.MockDB.{Segments, Utils}
+  alias Surface.Components.LiveRedirect
 
   prop class, :string
   prop reduced_opacity, :boolean, default: false
@@ -75,7 +73,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
     """
   end
 
-  def get_segments() do
+  def get_segments do
     segments =
       Segments.list_all()
       |> Utils.take_page(0, 6)

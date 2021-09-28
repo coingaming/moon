@@ -1,9 +1,9 @@
 defmodule Moon.Components.Dropdown do
   use Moon.StatelessComponent
 
+  alias Moon.Assets.Icons.IconZoom
   alias Moon.Components.Form
   alias Moon.Components.TextInput
-  alias Moon.Assets.Icons.IconZoom
 
   prop(on_search_change, :event)
   prop(search_placeholder, :string)
@@ -56,6 +56,7 @@ end
 
 defmodule Moon.Components.Dropdown.CheckboxItem do
   use Moon.StatelessComponent
+
   alias Moon.Components.Checkbox
 
   prop(click, :event)

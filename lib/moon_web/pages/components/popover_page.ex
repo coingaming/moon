@@ -1,8 +1,8 @@
 defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
   use MoonWeb, :stateful_component
 
-  alias Moon.Components.PopoverV2
   alias Moon.Components.Button
+  alias Moon.Components.PopoverV2
 
   prop placement, :string, required: true
 
@@ -30,14 +30,13 @@ end
 defmodule MoonWeb.Pages.Components.PopoverPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
-  alias Moon.Components.Link
-  alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
   alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
-
+  alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
 
   data breadcrumbs, :any,

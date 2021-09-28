@@ -1,12 +1,12 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Divider
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Assets.Icons.IconChevronLeftRounded
   alias Moon.Assets.Icons.IconChevronRightRounded
-  alias Moon.Assets.Icons.IconRow
   alias Moon.Assets.Icons.IconRefresh
+  alias Moon.Assets.Icons.IconRow
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.Divider
 
   prop page, :number, required: true
   prop page_count, :number, required: true

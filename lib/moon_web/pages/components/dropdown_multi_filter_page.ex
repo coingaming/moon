@@ -1,13 +1,12 @@
 defmodule MoonWeb.Pages.Components.DropdownMultiFilterPage do
   use MoonWeb, :live_view
 
-  alias Moon.Components.Heading
-  alias Moon.Components.CodePreview
-  alias Moon.Components.Link
   alias Moon.Autolayouts.TopToDown
-  alias MoonWeb.Components.Page
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
-
+  alias MoonWeb.Components.Page
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.SiteFilter
 

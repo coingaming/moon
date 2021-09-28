@@ -1,8 +1,9 @@
 defmodule Moon.Components.LineChartCard do
   use Moon.StatefulComponent
+
+  alias Moon.Assets.Icons.IconRefresh
   alias Moon.Components.LineChart
   alias Moon.Components.Select
-  alias Moon.Assets.Icons.IconRefresh
 
   prop title, :string, required: true
   prop select_options, :list, default: []

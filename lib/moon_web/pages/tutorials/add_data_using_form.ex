@@ -1,5 +1,6 @@
 defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   use MoonWeb, :live_view
+
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
   alias Moon.Components.CodePreview
@@ -12,11 +13,11 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.TextInput
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
-  alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   @default_user_map %{
     name: "",

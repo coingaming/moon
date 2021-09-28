@@ -1,15 +1,15 @@
 defmodule Moon.Components.TableV2 do
   use Moon.StatelessComponent
 
-  alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
-  alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoAposta10Short
+  alias Elixir.Timex.Format.DateTime.Formatters.Relative
+
   alias Moon.Assets.Icons.IconArrowLDown
   alias Moon.Assets.Icons.IconArrowLUp
+  alias Moon.Assets.Logos.LogoAposta10Short
+  alias Moon.Assets.Logos.LogoBitcasinoShort
+  alias Moon.Assets.Logos.LogoSlotsShort
+  alias Moon.Assets.Logos.LogoSportsbetShort
   alias Moon.Autolayouts.LeftToRight
-
-  alias Elixir.Timex.Format.DateTime.Formatters.Relative
 
   # [
   #   %{ field: :atom, [:atom, ...]
@@ -215,7 +215,7 @@ defmodule Moon.Components.TableV2 do
   end
 
   defp column_sort_order(col_field, {sort_field, sort_order}) do
-    isMatch =
+    is_match =
       case {col_field, sort_field} do
         {[_ | _], [_ | _]} -> col_field == sort_field
         {x, [y]} -> x == y
@@ -223,7 +223,7 @@ defmodule Moon.Components.TableV2 do
         _ -> col_field == sort_field
       end
 
-    if isMatch, do: sort_order, else: nil
+    if is_match, do: sort_order, else: nil
   end
 
   defp get_value(nil, _), do: nil
