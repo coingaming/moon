@@ -2,7 +2,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip
-  alias Moon.ComponentsV2.DropdownMultiFilter
+  alias Moon.BackofficeComponents.DropdownMultiFilter
   alias MoonWeb.MockDB.Users
   alias MoonWeb.Pages.ExamplePages.Helpers
 
@@ -16,8 +16,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
     <DropdownMultiFilter
       id={@name}
       active_values={@active_values}
-      func_query_items={&query_filter_items/1}
-      func_search_items={&search_users/1}
+      func_query_options={&query_filter_items/1}
+      func_search_options={&search_users/1}
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >
       <Chip

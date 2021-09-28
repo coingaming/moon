@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip
-  alias Moon.ComponentsV2.DropdownMultiFilter
+  alias Moon.BackofficeComponents.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   @default_name "dropdown_filter"
@@ -21,8 +21,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
     ~F"""
     <DropdownMultiFilter
       id={@name}
-      all_items={@options}
       {=@disable_search}
+      all_options={@options}
       active_values={@active_options}
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >
