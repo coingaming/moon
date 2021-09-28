@@ -1,8 +1,8 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip
-  alias Moon.Components.DropdownMultiFilter
+  alias Moon.BackofficeComponents.DropdownMultiFilter
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   data show_filter, :boolean, default: false
@@ -20,22 +20,17 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   def render(assigns) do
     ~F"""
     <DropdownMultiFilter
-      {=@show_filter}
-      {=@all_items}
-      {=@selected_items}
-      {=@active_items}
-      on_apply="apply_filter"
-      on_discard="discard_filter"
-      on_clear="clear_filter"
-      on_select="handle_filter_select"
-      on_close="toggle_filter"
+      id={@filter_name}
+      all_options={@all_items}
+      active_values={@active_items}
+      :let={toggle_filter: toggle_filter, is_open: is_open}
     >
       <Chip
         class={@chip_class}
-        on_click="toggle_filter"
+        on_click={toggle_filter}
         left_icon={@left_icon}
         right_icon={@right_icon}
-        active={@show_filter or length(@active_items) > 0}
+        active={is_open or length(@active_items) > 0}
       >
         <#slot name="label">
           {"#{@filter_name} #{length(@active_items) |> Helpers.format_filter_count()}"}
@@ -62,38 +57,5 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
       id: id,
       show_filter: false
     )
-  end
-
-  #
-  # Event Handlers
-  #
-  def handle_event("apply_filter", _, socket) do
-    apply_filter(socket.assigns.selected_items, socket.assigns.id)
-    {:noreply, assign(socket, show_filter: false)}
-  end
-
-  def handle_event("discard_filter", _, socket) do
-    {:noreply,
-     socket
-     |> assign(show_filter: false)
-     |> assign(selected_items: socket.assigns.active_items)}
-  end
-
-  def handle_event("clear_filter", _, socket) do
-    {:noreply, assign(socket, selected_items: [])}
-  end
-
-  def handle_event("toggle_filter", _, socket) do
-    {:noreply, assign(socket, show_filter: !socket.assigns.show_filter)}
-  end
-
-  def handle_event("handle_filter_select", %{"toggled_item_id" => id}, socket) do
-    %{all_items: all, selected_items: selected} = socket.assigns
-
-    {:noreply, assign(socket, selected_items: Helpers.toggle_selected_item(all, selected, id))}
-  end
-
-  defp apply_filter(items, id) do
-    send(self(), {:filter, {id, :apply, items}})
   end
 end

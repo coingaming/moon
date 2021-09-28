@@ -1,4 +1,4 @@
-defmodule Moon.ComponentsV2.DropdownMultiFilterView do
+defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
   use Moon.StatelessComponent
 
   alias Moon.Components.{PopoverV2, CheckboxMultiselectV2, Form, TextInput, Button, Divider}
@@ -7,8 +7,8 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true
-  prop onscreen_items, :list, required: true
-  prop selected_items, :list, required: true
+  prop onscreen_options, :list, required: true
+  prop selected_options, :list, required: true
 
   prop on_apply, :event
   prop on_discard, :event, required: true
@@ -42,15 +42,15 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
           </div>
 
           <div class="h-80 overflow-y-auto no-scrollbar">
-            {#if !Enum.empty?(@onscreen_items)}
+            {#if !Enum.empty?(@onscreen_options)}
               <TopToDown gap={1} class="px-1">
                 <CheckboxMultiselectV2
-                  values={@selected_items |> Enum.map(& &1.value)}
-                  options={@onscreen_items}
+                  values={@selected_options |> Enum.map(& &1.value)}
+                  options={@onscreen_options}
                   on_select={@on_select}
                 />
               </TopToDown>
-            {#elseif @search_text != "" and Enum.empty?(@onscreen_items)}
+            {#elseif @search_text != "" and Enum.empty?(@onscreen_options)}
               <div class="h-full flex items-center justify-around">
                 <div>No results found</div>
               </div>
@@ -62,7 +62,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
           </div>
           <Divider class="mt-1" />
           <LeftToRight class="justify-between p-2">
-            {#if length(@selected_items) > 0}
+            {#if length(@selected_options) > 0}
               <Button size="xsmall" class="rounded" on_click={@on_clear}>
                 Clear
               </Button>
@@ -94,23 +94,23 @@ defmodule Moon.ComponentsV2.DropdownMultiFilterView do
   end
 end
 
-defmodule Moon.ComponentsV2.DropdownMultiFilter do
+defmodule Moon.BackofficeComponents.DropdownMultiFilter do
   use Moon.StatefulComponent
 
   alias Moon.Components.{Tooltip}
-  alias Moon.ComponentsV2.DropdownMultiFilterView
+  alias Moon.BackofficeComponents.DropdownMultiFilterView
 
   data show_filter, :boolean, default: false
   data search_text, :string, default: ""
   data active_items, :list, default: []
-  data onscreen_items, :list, default: []
-  data selected_items, :list, default: []
+  data onscreen_options, :list, default: []
+  data selected_options, :list, default: []
 
-  prop all_items, :list, default: []
+  prop all_options, :list, default: []
   prop active_values, :list, required: true
   prop disable_search, :boolean, default: false
-  prop func_query_items, :fun
-  prop func_search_items, :fun
+  prop func_query_options, :fun
+  prop func_search_options, :fun
 
   slot default, required: true, args: [:toggle_filter, :is_open]
 
@@ -122,7 +122,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
 
     can_apply_filter =
       selection_modified?(
-        assigns.selected_items,
+        assigns.selected_options,
         assigns.active_values
       )
 
@@ -130,8 +130,8 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
     <DropdownMultiFilterView
       {=@show_filter}
       {=@search_text}
-      {=@onscreen_items}
-      {=@selected_items}
+      {=@onscreen_options}
+      {=@selected_options}
       on_apply={if can_apply_filter, do: "apply_filter", else: nil}
       on_discard="discard_filter"
       on_clear="clear_filter"
@@ -160,7 +160,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # Public API
   #
   def clear(id) do
-    send_update(__MODULE__, id: id, search_text: "", selected_items: [])
+    send_update(__MODULE__, id: id, search_text: "", selected_options: [])
   end
 
   def close(id) do
@@ -171,42 +171,42 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # Lifecycle methods
   #
   def update(
-        assigns = %{all_items: all_items, active_values: active_values},
+        assigns = %{all_options: all_options, active_values: active_values},
         socket = %{
           assigns: %{
-            onscreen_items: onscreen_items,
-            selected_items: selected_items
+            onscreen_options: onscreen_options,
+            selected_options: selected_options
           }
         }
       ) do
-    query_active_values(assigns, socket.assigns)
+    query_active_options(assigns, socket.assigns)
 
     updated_active_items =
       active_values
       |> Enum.map(fn value ->
-        Enum.find(all_items, &(&1.value == value)) ||
-          Enum.find(selected_items, &(&1.value == value)) ||
+        Enum.find(all_options, &(&1.value == value)) ||
+          Enum.find(selected_options, &(&1.value == value)) ||
           %{label: nil, value: value}
       end)
 
-    updated_onscreen_items =
-      case {all_items, onscreen_items} do
-        {_, [_ | _]} -> onscreen_items
-        {[_ | _], _} -> all_items
+    updated_onscreen_options =
+      case {all_options, onscreen_options} do
+        {_, [_ | _]} -> onscreen_options
+        {[_ | _], _} -> all_options
         _ -> []
       end
 
-    updated_selected_items =
-      if Enum.empty?(selected_items),
+    updated_selected_options =
+      if Enum.empty?(selected_options),
         do: updated_active_items,
-        else: selected_items
+        else: selected_options
 
     {:ok,
      socket
      |> assign(assigns)
      |> assign(active_items: updated_active_items)
-     |> assign(onscreen_items: updated_onscreen_items)
-     |> assign(selected_items: updated_selected_items)}
+     |> assign(onscreen_options: updated_onscreen_options)
+     |> assign(selected_options: updated_selected_options)}
   end
 
   # load active items once they are queried asynchronously
@@ -222,21 +222,21 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
       |> Enum.map(update_item)
       |> Enum.filter(&(&1 != nil))
 
-    updated_selected_items =
-      socket.assigns.selected_items
+    updated_selected_options =
+      socket.assigns.selected_options
       |> Enum.map(update_item)
       |> Enum.filter(&(&1 != nil))
 
-    updated_onscreen_items =
-      if Enum.empty?(socket.assigns.onscreen_items),
-        do: updated_selected_items,
-        else: socket.assigns.onscreen_items
+    updated_onscreen_options =
+      if Enum.empty?(socket.assigns.onscreen_options),
+        do: updated_selected_options,
+        else: socket.assigns.onscreen_options
 
     {:ok,
      socket
      |> assign(active_items: updated_active_items)
-     |> assign(onscreen_items: updated_onscreen_items)
-     |> assign(selected_items: updated_selected_items)}
+     |> assign(onscreen_options: updated_onscreen_options)
+     |> assign(selected_options: updated_selected_options)}
   end
 
   # clear(), close()
@@ -250,7 +250,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def handle_event(
         "apply_filter",
         _value,
-        socket = %{assigns: %{id: id, selected_items: items}}
+        socket = %{assigns: %{id: id, selected_options: items}}
       ) do
     apply_filter(id, items)
 
@@ -262,14 +262,14 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def handle_event(
         "clear_filter",
         _value,
-        socket = %{assigns: %{onscreen_items: onscreen_items, active_items: active_items}}
+        socket = %{assigns: %{onscreen_options: onscreen_options, active_items: active_items}}
       ) do
-    onscreen_items = if Enum.empty?(onscreen_items), do: active_items, else: onscreen_items
+    onscreen_options = if Enum.empty?(onscreen_options), do: active_items, else: onscreen_options
 
     {:noreply,
      socket
-     |> assign(onscreen_items: onscreen_items)
-     |> assign(selected_items: [])}
+     |> assign(onscreen_options: onscreen_options)
+     |> assign(selected_options: [])}
   end
 
   def handle_event(
@@ -280,7 +280,7 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
     {:noreply,
      socket
      |> assign(show_filter: false)
-     |> assign(selected_items: active_items)}
+     |> assign(selected_options: active_items)}
   end
 
   def handle_event(
@@ -294,44 +294,44 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   def handle_event(
         "search_filter_items",
         %{"search" => %{"search_text" => ""}},
-        socket = %{assigns: %{all_items: all_items, selected_items: selected_items}}
+        socket = %{assigns: %{all_options: all_options, selected_options: selected_options}}
       ) do
     {:noreply,
      socket
-     |> assign(onscreen_items: all_items || Enum.filter(selected_items, & &1.field))
+     |> assign(onscreen_options: all_options || Enum.filter(selected_options, & &1.field))
      |> assign(search_text: "")}
   end
 
   def handle_event(
         "search_filter_items",
         %{"search" => %{"search_text" => search_text}},
-        socket = %{assigns: %{all_items: all_items, func_search_items: nil}}
+        socket = %{assigns: %{all_options: all_options, func_search_options: nil}}
       ) do
     {:noreply,
      socket
-     |> assign(onscreen_items: all_items |> search_by_labels(search_text))
+     |> assign(onscreen_options: all_options |> search_by_labels(search_text))
      |> assign(search_text: search_text)}
   end
 
   def handle_event(
         "search_filter_items",
         %{"search" => %{"search_text" => search_text}},
-        socket = %{assigns: %{func_search_items: custom_search}}
+        socket = %{assigns: %{func_search_options: custom_search}}
       ) do
     {:noreply,
      socket
-     |> assign(onscreen_items: custom_search.(search_text))
+     |> assign(onscreen_options: custom_search.(search_text))
      |> assign(search_text: search_text)}
   end
 
   def handle_event(
         "select_filter_item",
         %{"toggled_item_id" => id},
-        socket = %{assigns: %{onscreen_items: onscreen_items, selected_items: selected_items}}
+        socket = %{assigns: %{onscreen_options: onscreen_options, selected_options: selected_options}}
       ) do
     {:noreply,
      socket
-     |> assign(selected_items: update_selected_items(id, onscreen_items, selected_items))}
+     |> assign(selected_options: update_selected_options(id, onscreen_options, selected_options))}
   end
 
   #
@@ -343,21 +343,21 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
     send(self(), {:filter, {filter_id, :apply, values}})
   end
 
-  defp search_by_labels(all_items, search_text) do
+  defp search_by_labels(all_options, search_text) do
     search_text = String.upcase(search_text)
 
-    all_items
+    all_options
     |> Enum.filter(&String.contains?(String.upcase(&1.label), search_text))
   end
 
-  defp update_selected_items(selected_value, onscreen_items, selected_items) do
-    in_onscreen_items = Enum.find(onscreen_items, &(&1.value == selected_value))
-    in_selected_items = Enum.find(selected_items, &(&1.value == selected_value))
+  defp update_selected_options(selected_value, onscreen_options, selected_options) do
+    in_onscreen_options = Enum.find(onscreen_options, &(&1.value == selected_value))
+    in_selected_options = Enum.find(selected_options, &(&1.value == selected_value))
 
-    case {in_onscreen_items, in_selected_items} do
-      {nil, nil} -> selected_items
-      {item, nil} -> [item | selected_items]
-      {_, item} -> List.delete(selected_items, item)
+    case {in_onscreen_options, in_selected_options} do
+      {nil, nil} -> selected_options
+      {item, nil} -> [item | selected_options]
+      {_, item} -> List.delete(selected_options, item)
     end
   end
 
@@ -365,48 +365,48 @@ defmodule Moon.ComponentsV2.DropdownMultiFilter do
   # this is useful to apply filters only when necessary
   defp selection_modified?([], []), do: false
 
-  defp selection_modified?(selected_items, active_values)
-       when length(selected_items) != length(active_values),
+  defp selection_modified?(selected_options, active_values)
+       when length(selected_options) != length(active_values),
        do: true
 
-  defp selection_modified?(selected_items, active_values) do
-    selected_items_sorted = Enum.sort(selected_items, &(&1.value < &2.value))
+  defp selection_modified?(selected_options, active_values) do
+    selected_options_sorted = Enum.sort(selected_options, &(&1.value < &2.value))
     active_values_sorted = Enum.sort(active_values, &(&1 < &2))
 
-    selected_items_sorted
+    selected_options_sorted
     |> Enum.zip(active_values_sorted)
     |> Enum.any?(fn {%{value: x}, y} -> x != y end)
   end
 
-  # Take incoming & current assigns, asynchronously query active values if required and
+  # Take incoming & current assigns, asynchronously query active options if required and
   # then load them into component assigns
-  defp query_active_values(
+  defp query_active_options(
          %{
            id: id,
-           all_items: [],
+           all_options: [],
            active_values: active_values = [_ | _],
-           func_query_items: func_query_items
+           func_query_options: func_query_options
          },
          %{
            active_items: [],
-           onscreen_items: [],
-           selected_items: []
+           onscreen_options: [],
+           selected_options: []
          }
        ) do
     pid = self()
 
-    if func_query_items == nil do
-      IO.warn("Improper Usage of DropdownMultiFilter {#{id}}: func_query_items not provided")
+    if func_query_options == nil do
+      IO.warn("Improper Usage of DropdownMultiFilter {#{id}}: func_query_options not provided")
       apply_filter(id, [])
     else
       Task.async(fn ->
-        active_items = func_query_items.(active_values)
+        active_items = func_query_options.(active_values)
         send_update(pid, __MODULE__, id: id, active_items: active_items)
       end)
     end
   end
 
-  defp query_active_values(_incoming_assigns, _current_assigns) do
+  defp query_active_options(_incoming_assigns, _current_assigns) do
     nil
   end
 end
