@@ -327,7 +327,9 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
   def handle_event(
         "select_filter_item",
         %{"toggled_item_id" => id},
-        socket = %{assigns: %{onscreen_options: onscreen_options, selected_options: selected_options}}
+        socket = %{
+          assigns: %{onscreen_options: onscreen_options, selected_options: selected_options}
+        }
       ) do
     {:noreply,
      socket
