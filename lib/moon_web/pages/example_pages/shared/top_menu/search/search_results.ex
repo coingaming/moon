@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icon

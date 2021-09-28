@@ -1,4 +1,6 @@
 defmodule Moon.Components.Accordion.Item do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.Heading
   alias Moon.Icons.ControlsChevronUp
@@ -34,6 +36,8 @@ defmodule Moon.Components.Accordion.Item do
 end
 
 defmodule Moon.Components.Accordion do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(class, :string)

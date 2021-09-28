@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Components.Heading

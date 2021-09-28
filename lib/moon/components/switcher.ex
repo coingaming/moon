@@ -1,4 +1,6 @@
 defmodule Moon.Components.Switcher do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop items, :list, default: []

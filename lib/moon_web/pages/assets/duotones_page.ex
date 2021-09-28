@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Duotones

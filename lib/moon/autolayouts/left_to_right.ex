@@ -1,4 +1,6 @@
 defmodule Moon.Autolayouts.LeftToRight do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot default

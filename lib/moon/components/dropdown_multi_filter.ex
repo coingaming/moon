@@ -1,4 +1,6 @@
 defmodule Moon.Components.DropdownMultiFilter do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Assets.Icons.IconZoom

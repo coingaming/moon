@@ -1,4 +1,6 @@
 defmodule Moon.Components.SlideOver do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Assets.Icons.IconCloseRounded

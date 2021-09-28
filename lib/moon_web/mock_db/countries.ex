@@ -1,4 +1,6 @@
 defmodule MoonWeb.MockDB.Countries do
+  @moduledoc false
+
   use GenServer
 
   @process_name :mock_countries

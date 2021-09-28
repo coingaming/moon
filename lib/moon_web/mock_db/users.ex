@@ -1,4 +1,6 @@
 defmodule MoonWeb.MockDB.Users do
+  @moduledoc false
+
   use GenServer
 
   alias MoonWeb.MockDB.{Countries, Sites}

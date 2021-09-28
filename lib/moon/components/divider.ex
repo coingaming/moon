@@ -1,4 +1,6 @@
 defmodule Moon.Components.Divider do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop class, :string

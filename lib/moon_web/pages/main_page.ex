@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.MainPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
   alias Moon.Components.Link
 

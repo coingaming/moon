@@ -1,4 +1,6 @@
 defmodule Moon.Components.TextInput.TextInputInternal do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Surface.Components.Form.TextInput
@@ -66,6 +68,8 @@ defmodule Moon.Components.TextInput.TextInputInternal do
 end
 
 defmodule Moon.Components.TextInput do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias __MODULE__.TextInputInternal

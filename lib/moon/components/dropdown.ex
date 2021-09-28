@@ -1,4 +1,6 @@
 defmodule Moon.Components.Dropdown do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Assets.Icons.IconZoom
@@ -35,6 +37,7 @@ defmodule Moon.Components.Dropdown do
 end
 
 defmodule Moon.Components.Dropdown.Item do
+  @moduledoc false
   use Moon.StatelessComponent
 
   prop(click, :event)
@@ -55,6 +58,8 @@ defmodule Moon.Components.Dropdown.Item do
 end
 
 defmodule Moon.Components.Dropdown.CheckboxItem do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Checkbox

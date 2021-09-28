@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.DropdownPage do
+  @moduledoc false
+
   require Logger
   use MoonWeb, :live_view
 

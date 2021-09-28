@@ -1,4 +1,6 @@
 defmodule Moon.Components.LineChartCard do
+  @moduledoc false
+
   use Moon.StatefulComponent
 
   alias Moon.Assets.Icons.IconRefresh

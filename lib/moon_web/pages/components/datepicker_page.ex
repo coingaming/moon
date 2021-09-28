@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.DatepickerPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
   import Ecto.Changeset, only: [fetch_field: 2, put_change: 3]
 
@@ -24,6 +26,8 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
     ]
 
   defmodule Contract do
+    @moduledoc false
+
     use Ecto.Schema
     import Ecto.Changeset
 

@@ -1,4 +1,6 @@
 defmodule Moon.Components.Calendar.Month do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.Calendar.Day
 

@@ -1,4 +1,6 @@
 defmodule Moon.Components.Link do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop to, :any

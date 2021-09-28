@@ -1,4 +1,6 @@
 defmodule Moon.Components.Heading do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(id, :string)

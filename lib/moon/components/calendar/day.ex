@@ -1,4 +1,6 @@
 defmodule Moon.Components.Calendar.Day do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop day, :datetime, required: true

@@ -1,4 +1,6 @@
 defmodule Moon.Components.PaginationButton do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.Button
 
@@ -27,6 +29,8 @@ defmodule Moon.Components.PaginationButton do
 end
 
 defmodule Moon.Components.Pagination do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.PaginationButton
 

@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.ThemesSelect do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Logos.LogoAposta10Short

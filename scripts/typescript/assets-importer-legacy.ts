@@ -74,6 +74,8 @@ const writeAssetsMapFile = ({
     newFilePath,
     `
 defmodule Moon.Assets.${getModuleName(iconType)} do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.${getModuleName(iconType)}s
 
@@ -146,6 +148,8 @@ const createAssetComponentFile = ({
     newFilePath,
     `
 defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
+  @moduledoc false
+
   use Moon.StatelessComponent
   ${(propsMap as any)[iconType] || propsMap.default}
   def render(assigns) do
@@ -202,6 +206,8 @@ const generateAssetsDocumentationPageContent = (
   if (type == 'crests') {
     return `
 defmodule MoonWeb.Pages.Assets.CrestsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Crests
@@ -222,7 +228,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
         name: "Crests"
       }
     ]
-${modules.map((x: string) => `  alias Crests.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Crests.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -266,6 +272,8 @@ end
     console.log({ modules });
     return `
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Currencies
@@ -286,7 +294,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
         name: "Currencies"
       }
     ]
-${modules.map((x: string) => `  alias Currencies.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Currencies.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -329,6 +337,8 @@ end
   if (type == 'duotones') {
     return `
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Duotones
@@ -349,7 +359,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
         name: "Duotones"
       }
     ]
-${modules.map((x: string) => `  alias Duotones.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Duotones.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -392,6 +402,8 @@ end
   if (type == 'icons') {
     return `
 defmodule MoonWeb.Pages.Assets.IconsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons
@@ -412,7 +424,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Icons"
       }
     ]
-${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -455,6 +467,8 @@ end
   if (type == 'logos') {
     return `
 defmodule MoonWeb.Pages.Assets.LogosPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Logos
@@ -475,7 +489,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         name: "Logos"
       }
     ]
-${modules.map((x: string) => `  alias Logos.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Logos.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -518,6 +532,8 @@ end
   if (type == 'patterns') {
     return `
 defmodule MoonWeb.Pages.Assets.PatternsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Patterns
@@ -538,7 +554,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
         name: "Patterns"
       }
     ]
-${modules.map((x: string) => `  alias Patterns.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Patterns.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}

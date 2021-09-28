@@ -1,4 +1,6 @@
 defmodule Moon.Components.Datepicker do
+  @moduledoc false
+
   use Moon.StatefulComponent
 
   alias Moon.Assets.Icons.IconChevronLeft

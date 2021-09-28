@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Duotones.ClaimedReward do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

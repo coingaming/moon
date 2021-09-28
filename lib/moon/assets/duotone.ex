@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Duotone do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.Duotones
 

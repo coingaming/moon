@@ -1,4 +1,6 @@
 defmodule MoonWeb.MockDB.Segments do
+  @moduledoc false
+
   use GenServer
 
   @process_name :mock_segments

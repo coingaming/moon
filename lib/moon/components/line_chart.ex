@@ -1,4 +1,6 @@
 defmodule Moon.Components.LineChart do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias VegaLite, as: Vl
 
