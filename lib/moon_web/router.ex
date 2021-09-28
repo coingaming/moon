@@ -79,6 +79,8 @@ defmodule MoonWeb.Router do
       live "/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage
       live "/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage
       live "/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage
+      live "/example-pages/login", MoonWeb.Pages.ExamplePages.LoginPage
+      live "/example-pages/register", MoonWeb.Pages.ExamplePages.RegisterPage
     end
   end)
 
