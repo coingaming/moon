@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.LeftMenu do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Logos.LogoMoonDesign

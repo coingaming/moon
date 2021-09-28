@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CurrencyFilter do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip

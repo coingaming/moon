@@ -1,4 +1,6 @@
 defmodule Moon.Components.DropdownMenuButton do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
   alias Moon.Components.PopoverV2
 

@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.AvatarPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight

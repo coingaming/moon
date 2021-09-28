@@ -54,14 +54,15 @@ const writeAssetsMapFile = ({
     newFilePath,
     `
 defmodule Moon.Icon do
+  @moduledoc false
+  
   use Moon.StatelessComponent
   alias Moon.Icons
 
   prop name, :string
   ${propsMap}
   @assets_map %{
-    ${files
-        .map(
+    ${files.sort().map(
           (i) =>
             `${i
               .replace(/([-_])/gi, '_')
@@ -107,6 +108,7 @@ const createAssetComponentFile = ({
     newFilePath,
     `
 defmodule Moon.Icons.${getModuleName(file)} do
+  @moduledoc false
   use Moon.StatelessComponent
   ${propsMap}
   def render(assigns) do
@@ -151,6 +153,8 @@ const generateAssetsDocumentationPageContent = (
 ): string => {
   return `
 defmodule MoonWeb.Pages.IconsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
@@ -171,7 +175,7 @@ defmodule MoonWeb.Pages.IconsPage do
         name: "Icons"
       }
     ]
-${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
+${modules.sort().map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -186,8 +190,7 @@ ${modules.map((x: string) => `  alias Icons.${x}`).join('\n')}
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Icons</Heading>
-      ${modules
-      .map(
+      ${modules.sort().map(
         (x: string, i: number) => `
         <ExampleAndCode id="icon_${i + 1}" class="mt-4">
           <#template slot="example">
@@ -212,7 +215,7 @@ end
 };
 
 const generateAssetsDocumentationPage = (files: string[]) => {
-  const modules = files.map((f: string) => getModuleName(f));
+  const modules = files.sort().map((f: string) => getModuleName(f));
   const pageContent = generateAssetsDocumentationPageContent(modules);
   writeAssetsDocumentationPage(pageContent);
 };

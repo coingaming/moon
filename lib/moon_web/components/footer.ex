@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.Footer do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Assets.Logos.LogoMoonDesign

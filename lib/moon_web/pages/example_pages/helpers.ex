@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Helpers do
+  @moduledoc false
+
   def toggle_selected_item(all_items, selected_items, toggle_item_value) do
     item_in_all = Enum.find(all_items, &(&1.value == toggle_item_value))
     item_in_selected = Enum.find(selected_items, &(&1.value == toggle_item_value))

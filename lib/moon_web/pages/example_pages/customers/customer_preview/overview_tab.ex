@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   slot col1, required: true
@@ -19,6 +21,8 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row d
 end
 
 defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Assets.Icons.{

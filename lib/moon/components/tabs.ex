@@ -1,4 +1,6 @@
 defmodule Moon.Components.Tabs do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Components.Reel
 
@@ -16,6 +18,8 @@ defmodule Moon.Components.Tabs do
 end
 
 defmodule Moon.Components.Tabs.TabLink do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Surface.Components.Link
 

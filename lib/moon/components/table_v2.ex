@@ -1,4 +1,6 @@
 defmodule Moon.Components.TableV2 do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Elixir.Timex.Format.DateTime.Formatters.Relative

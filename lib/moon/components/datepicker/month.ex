@@ -1,4 +1,6 @@
 defmodule Moon.Components.Datepicker.Month do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop date, :date, required: true

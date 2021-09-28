@@ -1,4 +1,6 @@
 defmodule Moon.Autolayouts.TopToDown do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot default

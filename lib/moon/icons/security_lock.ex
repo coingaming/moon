@@ -1,4 +1,5 @@
 defmodule Moon.Icons.SecurityLock do
+  @moduledoc false
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

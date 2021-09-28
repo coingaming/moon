@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.IconsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
@@ -30,21 +32,21 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.ArrowsDiagonalsTlbr
   alias Icons.ArrowsDown
   alias Icons.ArrowsForward
-  alias Icons.ArrowsLeftCurved
   alias Icons.ArrowsLeft
+  alias Icons.ArrowsLeftCurved
   alias Icons.ArrowsRefresh
   alias Icons.ArrowsReply
-  alias Icons.ArrowsRightCurved
   alias Icons.ArrowsRight
+  alias Icons.ArrowsRightCurved
   alias Icons.ArrowsTopLeft
   alias Icons.ArrowsTopRight
   alias Icons.ArrowsTransfer
   alias Icons.ArrowsUp
   alias Icons.ArrowsUpdate
   alias Icons.ChartArea
+  alias Icons.ChartBar
   alias Icons.ChartBarAlternitive
   alias Icons.ChartBarVertical
-  alias Icons.ChartBar
   alias Icons.ChartDashboard
   alias Icons.ChartFin
   alias Icons.ChartLine
@@ -52,32 +54,32 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.ChartRelation
   alias Icons.ChartRound
   alias Icons.ChatChat
+  alias Icons.ChatComment
   alias Icons.ChatCommentAdd
+  alias Icons.ChatCommentBubble
   alias Icons.ChatCommentBubbleAlert
   alias Icons.ChatCommentBubbleQuestionMark
-  alias Icons.ChatCommentBubble
   alias Icons.ChatCommentRemove
   alias Icons.ChatCommentText
-  alias Icons.ChatComment
   alias Icons.ChatDoubleBubble
   alias Icons.ChatStatsChat
-  alias Icons.ControlsChevronDownSmall
   alias Icons.ControlsChevronDown
-  alias Icons.ControlsChevronLeftSmall
+  alias Icons.ControlsChevronDownSmall
   alias Icons.ControlsChevronLeft
-  alias Icons.ControlsChevronRightSmall
+  alias Icons.ControlsChevronLeftSmall
   alias Icons.ControlsChevronRight
-  alias Icons.ControlsChevronUpSmall
+  alias Icons.ControlsChevronRightSmall
   alias Icons.ControlsChevronUp
+  alias Icons.ControlsChevronUpSmall
   alias Icons.ControlsClear
-  alias Icons.ControlsCloseSmall
   alias Icons.ControlsClose
+  alias Icons.ControlsCloseSmall
   alias Icons.ControlsCollapse
   alias Icons.ControlsDiagonalsInsight
   alias Icons.ControlsDiagonalsOutsight
   alias Icons.ControlsExpand
-  alias Icons.ControlsEyeCrossed
   alias Icons.ControlsEye
+  alias Icons.ControlsEyeCrossed
   alias Icons.ControlsMinus
   alias Icons.ControlsPlus
   alias Icons.ControlsVerticalDoubleChevron
@@ -85,16 +87,16 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.DevicesJoystick
   alias Icons.DevicesKeyboard
   alias Icons.DevicesMac
-  alias Icons.DevicesMacbookAndIphone
   alias Icons.DevicesMacbook
+  alias Icons.DevicesMacbookAndIphone
   alias Icons.DevicesMouse
   alias Icons.DevicesPhone
   alias Icons.DevicesSmartphone
   alias Icons.DevicesTvBox
   alias Icons.FilesAdd
   alias Icons.FilesCase
-  alias Icons.FilesClipboardText
   alias Icons.FilesClipboard
+  alias Icons.FilesClipboardText
   alias Icons.FilesCode
   alias Icons.FilesCopy
   alias Icons.FilesDelete
@@ -103,8 +105,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.FilesExternalLink
   alias Icons.FilesFile
   alias Icons.FilesFolderClosed
-  alias Icons.FilesFolderOpenAlternative
   alias Icons.FilesFolderOpen
+  alias Icons.FilesFolderOpenAlternative
   alias Icons.FilesFolderZip
   alias Icons.FilesGlasses
   alias Icons.FilesImport
@@ -119,8 +121,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.FilesTable
   alias Icons.FilesText
   alias Icons.GenericAbout
-  alias Icons.GenericAlarmRound
   alias Icons.GenericAlarm
+  alias Icons.GenericAlarmRound
   alias Icons.GenericAmountNumber
   alias Icons.GenericBet
   alias Icons.GenericBlock
@@ -141,8 +143,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.GenericHelp
   alias Icons.GenericHome
   alias Icons.GenericIdea
-  alias Icons.GenericInfoAlternative
   alias Icons.GenericInfo
+  alias Icons.GenericInfoAlternative
   alias Icons.GenericLike
   alias Icons.GenericLink
   alias Icons.GenericLogIn
@@ -158,8 +160,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.GenericSearch
   alias Icons.GenericSettings
   alias Icons.GenericShareAndroid
-  alias Icons.GenericShareIosBig
   alias Icons.GenericShareIos
+  alias Icons.GenericShareIosBig
   alias Icons.GenericStar
   alias Icons.GenericTag
   alias Icons.GenericTicket
@@ -169,8 +171,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.MailBox
   alias Icons.MailEmailStats
   alias Icons.MailEnvelope
-  alias Icons.MailFilterCrossed
   alias Icons.MailFilter
+  alias Icons.MailFilterCrossed
   alias Icons.MailFlag
   alias Icons.MailLink
   alias Icons.MailSend
@@ -179,17 +181,17 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.MapsMap
   alias Icons.MapsMarker
   alias Icons.MapsPanorama
+  alias Icons.MapsPin
   alias Icons.MapsPinAdd
   alias Icons.MapsPinLocation
-  alias Icons.MapsPin
   alias Icons.MapsWorld
   alias Icons.MediaFastBack
   alias Icons.MediaFastForward
   alias Icons.MediaGif
   alias Icons.MediaHeadphones
   alias Icons.MediaMegaphone
-  alias Icons.MediaMiceAlternative
   alias Icons.MediaMice
+  alias Icons.MediaMiceAlternative
   alias Icons.MediaMonitor
   alias Icons.MediaMusic
   alias Icons.MediaNoVolume
@@ -198,23 +200,25 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.MediaPlay
   alias Icons.MediaSoundwave
   alias Icons.MediaStop
-  alias Icons.MediaTunerAlternative
   alias Icons.MediaTuner
+  alias Icons.MediaTunerAlternative
   alias Icons.MediaVideo
   alias Icons.MediaVolume
   alias Icons.NotificationsActivity
   alias Icons.NotificationsAddBell
   alias Icons.NotificationsAlert
   alias Icons.NotificationsApp
+  alias Icons.NotificationsBell
   alias Icons.NotificationsBellAlarm
   alias Icons.NotificationsBellCross
-  alias Icons.NotificationsBellRingingAlternative
   alias Icons.NotificationsBellRinging
-  alias Icons.NotificationsBell
+  alias Icons.NotificationsBellRingingAlternative
   alias Icons.NotificationsError
   alias Icons.NotificationsNotifications
   alias Icons.NotificationsQuestionMark
   alias Icons.NotificationsSettings
+  alias Icons.Other3Dots
+  alias Icons.Other3DotsHorizontal
   alias Icons.OtherFrame
   alias Icons.OtherId
   alias Icons.OtherLightning
@@ -226,23 +230,21 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.OtherSmile
   alias Icons.OtherSun
   alias Icons.OtherWater
-  alias Icons.Other3DotsHorizontal
-  alias Icons.Other3Dots
   alias Icons.SecurityKey
   alias Icons.SecurityLock
   alias Icons.SecurityMagnet
-  alias Icons.SecurityShieldSecured
   alias Icons.SecurityShield
+  alias Icons.SecurityShieldSecured
   alias Icons.SecurityUmbrella
   alias Icons.SecurityUnlock
-  alias Icons.SecurityVerifiedFace
   alias Icons.SecurityVerified
+  alias Icons.SecurityVerifiedFace
   alias Icons.ShopBag
   alias Icons.ShopBasket
   alias Icons.ShopCard
   alias Icons.ShopCart
-  alias Icons.ShopCryptoCoin
   alias Icons.ShopCrypto
+  alias Icons.ShopCryptoCoin
   alias Icons.ShopWallet
   alias Icons.ShopWirelessPay
   alias Icons.SoftwareBug
@@ -320,20 +322,20 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.TextSize
   alias Icons.TextStrikethrough
   alias Icons.TextStyle
-  alias Icons.TextTableAlternative
   alias Icons.TextTable
+  alias Icons.TextTableAlternative
   alias Icons.TextUnderline
   alias Icons.TimeAlarm
+  alias Icons.TimeCalendar
   alias Icons.TimeCalendarAdd
   alias Icons.TimeCalendarAlternative
   alias Icons.TimeCalendarDate
   alias Icons.TimeCalendarRemove
   alias Icons.TimeCalendarSucsess
-  alias Icons.TimeCalendar
   alias Icons.TimeClock
   alias Icons.TimeSandglass
-  alias Icons.TimeStopwatchTimer
   alias Icons.TimeStopwatch
+  alias Icons.TimeStopwatchTimer
   alias Icons.TimeTime
   alias Icons.TimeWatch
   alias Icons.TypeClosedHand
@@ -484,24 +486,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_11" class="mt-4">
           <:example>
-            <ArrowsLeftCurved font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ArrowsLeftCurved font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_12" class="mt-4">
-          <:example>
             <ArrowsLeft font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <ArrowsLeft font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_12" class="mt-4">
+          <:example>
+            <ArrowsLeftCurved font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ArrowsLeftCurved font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -532,24 +534,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_15" class="mt-4">
           <:example>
-            <ArrowsRightCurved font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ArrowsRightCurved font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_16" class="mt-4">
-          <:example>
             <ArrowsRight font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <ArrowsRight font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_16" class="mt-4">
+          <:example>
+            <ArrowsRightCurved font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ArrowsRightCurved font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -628,6 +630,18 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_23" class="mt-4">
           <:example>
+            <ChartBar font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ChartBar font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_24" class="mt-4">
+          <:example>
             <ChartBarAlternitive font_size="5rem" />
           </:example>
 
@@ -638,7 +652,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_24" class="mt-4">
+        <ExampleAndCode id="icon_25" class="mt-4">
           <:example>
             <ChartBarVertical font_size="5rem" />
           </:example>
@@ -646,18 +660,6 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <ChartBarVertical font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_25" class="mt-4">
-          <:example>
-            <ChartBar font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ChartBar font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -748,6 +750,18 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_33" class="mt-4">
           <:example>
+            <ChatComment font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ChatComment font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_34" class="mt-4">
+          <:example>
             <ChatCommentAdd font_size="5rem" />
           </:example>
 
@@ -758,31 +772,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_34" class="mt-4">
-          <:example>
-            <ChatCommentBubbleAlert font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ChatCommentBubbleAlert font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
         <ExampleAndCode id="icon_35" class="mt-4">
-          <:example>
-            <ChatCommentBubbleQuestionMark font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ChatCommentBubbleQuestionMark font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_36" class="mt-4">
           <:example>
             <ChatCommentBubble font_size="5rem" />
           </:example>
@@ -794,7 +784,31 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
+        <ExampleAndCode id="icon_36" class="mt-4">
+          <:example>
+            <ChatCommentBubbleAlert font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ChatCommentBubbleAlert font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
         <ExampleAndCode id="icon_37" class="mt-4">
+          <:example>
+            <ChatCommentBubbleQuestionMark font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ChatCommentBubbleQuestionMark font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_38" class="mt-4">
           <:example>
             <ChatCommentRemove font_size="5rem" />
           </:example>
@@ -806,7 +820,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_38" class="mt-4">
+        <ExampleAndCode id="icon_39" class="mt-4">
           <:example>
             <ChatCommentText font_size="5rem" />
           </:example>
@@ -814,18 +828,6 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <ChatCommentText font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_39" class="mt-4">
-          <:example>
-            <ChatComment font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ChatComment font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -856,18 +858,6 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_42" class="mt-4">
           <:example>
-            <ControlsChevronDownSmall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ControlsChevronDownSmall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_43" class="mt-4">
-          <:example>
             <ControlsChevronDown font_size="5rem" />
           </:example>
 
@@ -878,19 +868,19 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_44" class="mt-4">
+        <ExampleAndCode id="icon_43" class="mt-4">
           <:example>
-            <ControlsChevronLeftSmall font_size="5rem" />
+            <ControlsChevronDownSmall font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <ControlsChevronLeftSmall font_size="5rem" />
+              <ControlsChevronDownSmall font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_45" class="mt-4">
+        <ExampleAndCode id="icon_44" class="mt-4">
           <:example>
             <ControlsChevronLeft font_size="5rem" />
           </:example>
@@ -902,19 +892,19 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_46" class="mt-4">
+        <ExampleAndCode id="icon_45" class="mt-4">
           <:example>
-            <ControlsChevronRightSmall font_size="5rem" />
+            <ControlsChevronLeftSmall font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <ControlsChevronRightSmall font_size="5rem" />
+              <ControlsChevronLeftSmall font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_47" class="mt-4">
+        <ExampleAndCode id="icon_46" class="mt-4">
           <:example>
             <ControlsChevronRight font_size="5rem" />
           </:example>
@@ -926,19 +916,19 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_48" class="mt-4">
+        <ExampleAndCode id="icon_47" class="mt-4">
           <:example>
-            <ControlsChevronUpSmall font_size="5rem" />
+            <ControlsChevronRightSmall font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <ControlsChevronUpSmall font_size="5rem" />
+              <ControlsChevronRightSmall font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_49" class="mt-4">
+        <ExampleAndCode id="icon_48" class="mt-4">
           <:example>
             <ControlsChevronUp font_size="5rem" />
           </:example>
@@ -946,6 +936,18 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <ControlsChevronUp font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_49" class="mt-4">
+          <:example>
+            <ControlsChevronUpSmall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ControlsChevronUpSmall font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -964,24 +966,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_51" class="mt-4">
           <:example>
-            <ControlsCloseSmall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ControlsCloseSmall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_52" class="mt-4">
-          <:example>
             <ControlsClose font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <ControlsClose font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_52" class="mt-4">
+          <:example>
+            <ControlsCloseSmall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ControlsCloseSmall font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1036,24 +1038,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_57" class="mt-4">
           <:example>
-            <ControlsEyeCrossed font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ControlsEyeCrossed font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_58" class="mt-4">
-          <:example>
             <ControlsEye font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <ControlsEye font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_58" class="mt-4">
+          <:example>
+            <ControlsEyeCrossed font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ControlsEyeCrossed font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1144,24 +1146,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_66" class="mt-4">
           <:example>
-            <DevicesMacbookAndIphone font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <DevicesMacbookAndIphone font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_67" class="mt-4">
-          <:example>
             <DevicesMacbook font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <DevicesMacbook font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_67" class="mt-4">
+          <:example>
+            <DevicesMacbookAndIphone font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <DevicesMacbookAndIphone font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1240,24 +1242,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_74" class="mt-4">
           <:example>
-            <FilesClipboardText font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <FilesClipboardText font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_75" class="mt-4">
-          <:example>
             <FilesClipboard font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <FilesClipboard font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_75" class="mt-4">
+          <:example>
+            <FilesClipboardText font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <FilesClipboardText font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1360,24 +1362,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_84" class="mt-4">
           <:example>
-            <FilesFolderOpenAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <FilesFolderOpenAlternative font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_85" class="mt-4">
-          <:example>
             <FilesFolderOpen font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <FilesFolderOpen font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_85" class="mt-4">
+          <:example>
+            <FilesFolderOpenAlternative font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <FilesFolderOpenAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1552,24 +1554,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_100" class="mt-4">
           <:example>
-            <GenericAlarmRound font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <GenericAlarmRound font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_101" class="mt-4">
-          <:example>
             <GenericAlarm font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <GenericAlarm font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_101" class="mt-4">
+          <:example>
+            <GenericAlarmRound font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <GenericAlarmRound font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1816,24 +1818,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_122" class="mt-4">
           <:example>
-            <GenericInfoAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <GenericInfoAlternative font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_123" class="mt-4">
-          <:example>
             <GenericInfo font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <GenericInfo font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_123" class="mt-4">
+          <:example>
+            <GenericInfoAlternative font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <GenericInfoAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2020,24 +2022,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_139" class="mt-4">
           <:example>
-            <GenericShareIosBig font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <GenericShareIosBig font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_140" class="mt-4">
-          <:example>
             <GenericShareIos font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <GenericShareIos font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_140" class="mt-4">
+          <:example>
+            <GenericShareIosBig font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <GenericShareIosBig font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2152,24 +2154,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_150" class="mt-4">
           <:example>
-            <MailFilterCrossed font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <MailFilterCrossed font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_151" class="mt-4">
-          <:example>
             <MailFilter font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <MailFilter font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_151" class="mt-4">
+          <:example>
+            <MailFilterCrossed font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <MailFilterCrossed font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2272,6 +2274,18 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_160" class="mt-4">
           <:example>
+            <MapsPin font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <MapsPin font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_161" class="mt-4">
+          <:example>
             <MapsPinAdd font_size="5rem" />
           </:example>
 
@@ -2282,7 +2296,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_161" class="mt-4">
+        <ExampleAndCode id="icon_162" class="mt-4">
           <:example>
             <MapsPinLocation font_size="5rem" />
           </:example>
@@ -2290,18 +2304,6 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <MapsPinLocation font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_162" class="mt-4">
-          <:example>
-            <MapsPin font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <MapsPin font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2380,24 +2382,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_169" class="mt-4">
           <:example>
-            <MediaMiceAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <MediaMiceAlternative font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_170" class="mt-4">
-          <:example>
             <MediaMice font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <MediaMice font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_170" class="mt-4">
+          <:example>
+            <MediaMiceAlternative font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <MediaMiceAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2500,24 +2502,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_179" class="mt-4">
           <:example>
-            <MediaTunerAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <MediaTunerAlternative font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_180" class="mt-4">
-          <:example>
             <MediaTuner font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <MediaTuner font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_180" class="mt-4">
+          <:example>
+            <MediaTunerAlternative font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <MediaTunerAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2596,6 +2598,18 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_187" class="mt-4">
           <:example>
+            <NotificationsBell font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <NotificationsBell font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_188" class="mt-4">
+          <:example>
             <NotificationsBellAlarm font_size="5rem" />
           </:example>
 
@@ -2606,7 +2620,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_188" class="mt-4">
+        <ExampleAndCode id="icon_189" class="mt-4">
           <:example>
             <NotificationsBellCross font_size="5rem" />
           </:example>
@@ -2614,18 +2628,6 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <NotificationsBellCross font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_189" class="mt-4">
-          <:example>
-            <NotificationsBellRingingAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <NotificationsBellRingingAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2644,12 +2646,12 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_191" class="mt-4">
           <:example>
-            <NotificationsBell font_size="5rem" />
+            <NotificationsBellRingingAlternative font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <NotificationsBell font_size="5rem" />
+              <NotificationsBellRingingAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2704,137 +2706,17 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_196" class="mt-4">
           <:example>
-            <OtherFrame font_size="5rem" />
+            <Other3Dots font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <OtherFrame font_size="5rem" />
+              <Other3Dots font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="icon_197" class="mt-4">
-          <:example>
-            <OtherId font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherId font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_198" class="mt-4">
-          <:example>
-            <OtherLightning font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherLightning font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_199" class="mt-4">
-          <:example>
-            <OtherMoon font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherMoon font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_200" class="mt-4">
-          <:example>
-            <OtherOther font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherOther font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_201" class="mt-4">
-          <:example>
-            <OtherPlug font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherPlug font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_202" class="mt-4">
-          <:example>
-            <OtherRewards font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherRewards font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_203" class="mt-4">
-          <:example>
-            <OtherSad font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherSad font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_204" class="mt-4">
-          <:example>
-            <OtherSmile font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherSmile font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_205" class="mt-4">
-          <:example>
-            <OtherSun font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherSun font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_206" class="mt-4">
-          <:example>
-            <OtherWater font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <OtherWater font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_207" class="mt-4">
           <:example>
             <Other3DotsHorizontal font_size="5rem" />
           </:example>
@@ -2846,14 +2728,134 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_208" class="mt-4">
+        <ExampleAndCode id="icon_198" class="mt-4">
           <:example>
-            <Other3Dots font_size="5rem" />
+            <OtherFrame font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Other3Dots font_size="5rem" />
+              <OtherFrame font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_199" class="mt-4">
+          <:example>
+            <OtherId font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherId font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_200" class="mt-4">
+          <:example>
+            <OtherLightning font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherLightning font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_201" class="mt-4">
+          <:example>
+            <OtherMoon font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherMoon font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_202" class="mt-4">
+          <:example>
+            <OtherOther font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherOther font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_203" class="mt-4">
+          <:example>
+            <OtherPlug font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherPlug font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_204" class="mt-4">
+          <:example>
+            <OtherRewards font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherRewards font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_205" class="mt-4">
+          <:example>
+            <OtherSad font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherSad font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_206" class="mt-4">
+          <:example>
+            <OtherSmile font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherSmile font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_207" class="mt-4">
+          <:example>
+            <OtherSun font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherSun font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_208" class="mt-4">
+          <:example>
+            <OtherWater font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <OtherWater font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2896,24 +2898,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_212" class="mt-4">
           <:example>
-            <SecurityShieldSecured font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <SecurityShieldSecured font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_213" class="mt-4">
-          <:example>
             <SecurityShield font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <SecurityShield font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_213" class="mt-4">
+          <:example>
+            <SecurityShieldSecured font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <SecurityShieldSecured font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2944,24 +2946,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_216" class="mt-4">
           <:example>
-            <SecurityVerifiedFace font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <SecurityVerifiedFace font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_217" class="mt-4">
-          <:example>
             <SecurityVerified font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <SecurityVerified font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_217" class="mt-4">
+          <:example>
+            <SecurityVerifiedFace font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <SecurityVerifiedFace font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -3016,24 +3018,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_222" class="mt-4">
           <:example>
-            <ShopCryptoCoin font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <ShopCryptoCoin font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_223" class="mt-4">
-          <:example>
             <ShopCrypto font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <ShopCrypto font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_223" class="mt-4">
+          <:example>
+            <ShopCryptoCoin font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <ShopCryptoCoin font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -3964,24 +3966,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_301" class="mt-4">
           <:example>
-            <TextTableAlternative font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <TextTableAlternative font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_302" class="mt-4">
-          <:example>
             <TextTable font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <TextTable font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_302" class="mt-4">
+          <:example>
+            <TextTableAlternative font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <TextTableAlternative font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -4012,6 +4014,18 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_305" class="mt-4">
           <:example>
+            <TimeCalendar font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <TimeCalendar font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_306" class="mt-4">
+          <:example>
             <TimeCalendarAdd font_size="5rem" />
           </:example>
 
@@ -4022,7 +4036,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_306" class="mt-4">
+        <ExampleAndCode id="icon_307" class="mt-4">
           <:example>
             <TimeCalendarAlternative font_size="5rem" />
           </:example>
@@ -4034,7 +4048,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_307" class="mt-4">
+        <ExampleAndCode id="icon_308" class="mt-4">
           <:example>
             <TimeCalendarDate font_size="5rem" />
           </:example>
@@ -4046,7 +4060,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_308" class="mt-4">
+        <ExampleAndCode id="icon_309" class="mt-4">
           <:example>
             <TimeCalendarRemove font_size="5rem" />
           </:example>
@@ -4058,7 +4072,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_309" class="mt-4">
+        <ExampleAndCode id="icon_310" class="mt-4">
           <:example>
             <TimeCalendarSucsess font_size="5rem" />
           </:example>
@@ -4066,18 +4080,6 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <TimeCalendarSucsess font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_310" class="mt-4">
-          <:example>
-            <TimeCalendar font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <TimeCalendar font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -4108,24 +4110,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_313" class="mt-4">
           <:example>
-            <TimeStopwatchTimer font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <TimeStopwatchTimer font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_314" class="mt-4">
-          <:example>
             <TimeStopwatch font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <TimeStopwatch font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_314" class="mt-4">
+          <:example>
+            <TimeStopwatchTimer font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <TimeStopwatchTimer font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

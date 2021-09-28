@@ -1,4 +1,6 @@
 defmodule Moon.Components.IconButton do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Assets.Icon

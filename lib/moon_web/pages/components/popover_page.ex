@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Button
@@ -28,6 +30,8 @@ defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
 end
 
 defmodule MoonWeb.Pages.Components.PopoverPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight

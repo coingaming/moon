@@ -1,4 +1,6 @@
 defmodule Moon.Components.Select do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Label

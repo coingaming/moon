@@ -1,6 +1,8 @@
 # https://github.com/coingaming/sportsbet-design/blob/develop/packages/components/src/private/label/label.tsx
 
 defmodule Moon.Components.Label.LabelFlex do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(flex, :boolean)
@@ -18,6 +20,8 @@ defmodule Moon.Components.Label.LabelFlex do
 end
 
 defmodule Moon.Components.Label.LabelContent do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(disabled, :boolean)
@@ -34,6 +38,8 @@ defmodule Moon.Components.Label.LabelContent do
 end
 
 defmodule Moon.Components.Label do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Label.LabelContent

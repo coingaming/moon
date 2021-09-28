@@ -1,4 +1,5 @@
 defmodule Moon.Icons.SoftwareBug do
+  @moduledoc false
   use Moon.StatelessComponent
 
   prop color, :string, values: Moon.colors()

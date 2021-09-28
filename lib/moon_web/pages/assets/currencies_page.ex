@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Currencies

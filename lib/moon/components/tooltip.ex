@@ -1,4 +1,6 @@
 defmodule Moon.Components.Tooltip do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop text, :string, required: true

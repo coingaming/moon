@@ -1,4 +1,6 @@
 defmodule Moon.Assets.Pattern do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Assets.Patterns
 

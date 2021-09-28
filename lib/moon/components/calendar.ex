@@ -1,4 +1,6 @@
 defmodule Moon.Components.Calendar do
+  @moduledoc false
+
   use Moon.StatefulComponent
   alias Moon.Assets.Icons.IconChevronLeftRounded
   alias Moon.Assets.Icons.IconChevronRightRounded

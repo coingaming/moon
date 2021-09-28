@@ -1,4 +1,6 @@
 defmodule Moon.Components.Text do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(size, :integer)

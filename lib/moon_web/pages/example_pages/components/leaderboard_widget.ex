@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Card

@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Assets.IconsPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons
@@ -31,12 +33,12 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconArrowDown
   alias Icons.IconArrowLDown
   alias Icons.IconArrowLUp
-  alias Icons.IconArrowLeftRight
   alias Icons.IconArrowLeft
+  alias Icons.IconArrowLeftRight
   alias Icons.IconArrowRight
   alias Icons.IconArrowTopRight
-  alias Icons.IconArrowUpDown
   alias Icons.IconArrowUp
+  alias Icons.IconArrowUpDown
   alias Icons.IconAsianView
   alias Icons.IconAttache
   alias Icons.IconAward
@@ -45,33 +47,33 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconBitcoinTalk
   alias Icons.IconBombayClub
   alias Icons.IconBurger
-  alias Icons.IconCalendarEmpty
   alias Icons.IconCalendar
+  alias Icons.IconCalendarEmpty
   alias Icons.IconCard
   alias Icons.IconCase
   alias Icons.IconCashOut
-  alias Icons.IconCasinoBell
   alias Icons.IconCasino
+  alias Icons.IconCasinoBell
   alias Icons.IconChartArea
   alias Icons.IconChartBar
   alias Icons.IconChartPies
   alias Icons.IconChartRound
   alias Icons.IconChartSegment
-  alias Icons.IconChevronDownRounded
   alias Icons.IconChevronDown
-  alias Icons.IconChevronLeftRounded
+  alias Icons.IconChevronDownRounded
   alias Icons.IconChevronLeft
-  alias Icons.IconChevronRightRounded
+  alias Icons.IconChevronLeftRounded
   alias Icons.IconChevronRight
+  alias Icons.IconChevronRightRounded
+  alias Icons.IconChevronUp
   alias Icons.IconChevronUpDown
   alias Icons.IconChevronUpRounded
-  alias Icons.IconChevronUp
   alias Icons.IconCircle
   alias Icons.IconClaps
   alias Icons.IconClock
+  alias Icons.IconClose
   alias Icons.IconCloseRounded
   alias Icons.IconCloseSmall
-  alias Icons.IconClose
   alias Icons.IconCode
   alias Icons.IconCollapse
   alias Icons.IconCopy
@@ -136,20 +138,23 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconESportsRocketLeague
   alias Icons.IconESportsStarCraft
   alias Icons.IconEdit
+  alias Icons.IconError
   alias Icons.IconErrorCircle
   alias Icons.IconExpand
-  alias Icons.IconEyeClosed
   alias Icons.IconEye
+  alias Icons.IconEyeClosed
   alias Icons.IconFacebook
   alias Icons.IconFilter
   alias Icons.IconForward
   alias Icons.IconFreebet
   alias Icons.IconFullScreen
   alias Icons.IconGamepad
+  alias Icons.IconGeneralInfo
   alias Icons.IconGift
   alias Icons.IconGlasses
   alias Icons.IconGlobe
   alias Icons.IconGoogle
+  alias Icons.IconGoogleAuth
   alias Icons.IconHamburger
   alias Icons.IconHelp
   alias Icons.IconHistory
@@ -157,8 +162,8 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconHub88
   alias Icons.IconHyperlink
   alias Icons.IconInPlay
-  alias Icons.IconInfoCircle
   alias Icons.IconInfo
+  alias Icons.IconInfoCircle
   alias Icons.IconInstagram
   alias Icons.IconLeftArrowCurveRight
   alias Icons.IconLifeRing
@@ -167,15 +172,17 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconLine
   alias Icons.IconLink
   alias Icons.IconListNumbered
+  alias Icons.IconLiveCasino
   alias Icons.IconLiveChat
   alias Icons.IconLiveStream
+  alias Icons.IconLock
   alias Icons.IconLogin
   alias Icons.IconLogoPlain
   alias Icons.IconLogout
   alias Icons.IconLoyalty0
   alias Icons.IconMail
-  alias Icons.IconMenuHome
   alias Icons.IconMenu
+  alias Icons.IconMenuHome
   alias Icons.IconMinus
   alias Icons.IconMobile
   alias Icons.IconMoney
@@ -183,8 +190,8 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconMoon
   alias Icons.IconMore
   alias Icons.IconNews
-  alias Icons.IconNotificationUnread
   alias Icons.IconNotification
+  alias Icons.IconNotificationUnread
   alias Icons.IconPadlock
   alias Icons.IconPencil
   alias Icons.IconPhoto
@@ -223,7 +230,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconSportsFeatured
   alias Icons.IconSportsFootBall
   alias Icons.IconSportsGolf
+  alias Icons.IconSportsGreyhound
   alias Icons.IconSportsHandBall
+  alias Icons.IconSportsHarness
+  alias Icons.IconSportsHorse
   alias Icons.IconSportsHorseRacing
   alias Icons.IconSportsIceHockey
   alias Icons.IconSportsMma
@@ -261,25 +271,17 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconUpload
   alias Icons.IconUser
   alias Icons.IconUsers
+  alias Icons.IconVerify
   alias Icons.IconVirtualSports
   alias Icons.IconVkontakte
   alias Icons.IconVolatility
-  alias Icons.IconWalletRounded
   alias Icons.IconWallet
+  alias Icons.IconWalletRounded
   alias Icons.IconWand
   alias Icons.IconWarning
   alias Icons.IconWhatsapp
   alias Icons.IconYoutube
   alias Icons.IconZoom
-  alias Icons.IconError
-  alias Icons.IconGeneralInfo
-  alias Icons.IconGoogleAuth
-  alias Icons.IconLiveCasino
-  alias Icons.IconLock
-  alias Icons.IconSportsGreyhound
-  alias Icons.IconSportsHarness
-  alias Icons.IconSportsHorse
-  alias Icons.IconVerify
 
   def mount(params, _session, socket) do
     {:ok,
@@ -430,24 +432,24 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_12" class="mt-4">
           <:example>
-            <IconArrowLeftRight font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconArrowLeftRight font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_13" class="mt-4">
-          <:example>
             <IconArrowLeft font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <IconArrowLeft font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_13" class="mt-4">
+          <:example>
+            <IconArrowLeftRight font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconArrowLeftRight font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -478,24 +480,24 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_16" class="mt-4">
           <:example>
-            <IconArrowUpDown font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconArrowUpDown font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_17" class="mt-4">
-          <:example>
             <IconArrowUp font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <IconArrowUp font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_17" class="mt-4">
+          <:example>
+            <IconArrowUpDown font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconArrowUpDown font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -598,24 +600,24 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_26" class="mt-4">
           <:example>
-            <IconCalendarEmpty font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconCalendarEmpty font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_27" class="mt-4">
-          <:example>
             <IconCalendar font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <IconCalendar font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_27" class="mt-4">
+          <:example>
+            <IconCalendarEmpty font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconCalendarEmpty font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -658,24 +660,24 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_31" class="mt-4">
           <:example>
-            <IconCasinoBell font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconCasinoBell font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_32" class="mt-4">
-          <:example>
             <IconCasino font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <IconCasino font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_32" class="mt-4">
+          <:example>
+            <IconCasinoBell font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconCasinoBell font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -742,18 +744,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_38" class="mt-4">
           <:example>
-            <IconChevronDownRounded font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconChevronDownRounded font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_39" class="mt-4">
-          <:example>
             <IconChevronDown font_size="5rem" />
           </:example>
 
@@ -764,19 +754,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_40" class="mt-4">
+        <ExampleAndCode id="icon_39" class="mt-4">
           <:example>
-            <IconChevronLeftRounded font_size="5rem" />
+            <IconChevronDownRounded font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <IconChevronLeftRounded font_size="5rem" />
+              <IconChevronDownRounded font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_41" class="mt-4">
+        <ExampleAndCode id="icon_40" class="mt-4">
           <:example>
             <IconChevronLeft font_size="5rem" />
           </:example>
@@ -788,19 +778,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_42" class="mt-4">
+        <ExampleAndCode id="icon_41" class="mt-4">
           <:example>
-            <IconChevronRightRounded font_size="5rem" />
+            <IconChevronLeftRounded font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <IconChevronRightRounded font_size="5rem" />
+              <IconChevronLeftRounded font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_43" class="mt-4">
+        <ExampleAndCode id="icon_42" class="mt-4">
           <:example>
             <IconChevronRight font_size="5rem" />
           </:example>
@@ -812,7 +802,31 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
+        <ExampleAndCode id="icon_43" class="mt-4">
+          <:example>
+            <IconChevronRightRounded font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconChevronRightRounded font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
         <ExampleAndCode id="icon_44" class="mt-4">
+          <:example>
+            <IconChevronUp font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconChevronUp font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_45" class="mt-4">
           <:example>
             <IconChevronUpDown font_size="5rem" />
           </:example>
@@ -824,7 +838,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_45" class="mt-4">
+        <ExampleAndCode id="icon_46" class="mt-4">
           <:example>
             <IconChevronUpRounded font_size="5rem" />
           </:example>
@@ -832,18 +846,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconChevronUpRounded font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_46" class="mt-4">
-          <:example>
-            <IconChevronUp font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconChevronUp font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -886,6 +888,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_50" class="mt-4">
           <:example>
+            <IconClose font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconClose font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_51" class="mt-4">
+          <:example>
             <IconCloseRounded font_size="5rem" />
           </:example>
 
@@ -896,7 +910,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_51" class="mt-4">
+        <ExampleAndCode id="icon_52" class="mt-4">
           <:example>
             <IconCloseSmall font_size="5rem" />
           </:example>
@@ -904,18 +918,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconCloseSmall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_52" class="mt-4">
-          <:example>
-            <IconClose font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconClose font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1690,6 +1692,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_117" class="mt-4">
           <:example>
+            <IconError font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconError font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_118" class="mt-4">
+          <:example>
             <IconErrorCircle font_size="5rem" />
           </:example>
 
@@ -1700,7 +1714,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_118" class="mt-4">
+        <ExampleAndCode id="icon_119" class="mt-4">
           <:example>
             <IconExpand font_size="5rem" />
           </:example>
@@ -1708,18 +1722,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconExpand font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_119" class="mt-4">
-          <:example>
-            <IconEyeClosed font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconEyeClosed font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1738,6 +1740,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_121" class="mt-4">
           <:example>
+            <IconEyeClosed font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconEyeClosed font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_122" class="mt-4">
+          <:example>
             <IconFacebook font_size="5rem" />
           </:example>
 
@@ -1748,7 +1762,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_122" class="mt-4">
+        <ExampleAndCode id="icon_123" class="mt-4">
           <:example>
             <IconFilter font_size="5rem" />
           </:example>
@@ -1760,7 +1774,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_123" class="mt-4">
+        <ExampleAndCode id="icon_124" class="mt-4">
           <:example>
             <IconForward font_size="5rem" />
           </:example>
@@ -1772,7 +1786,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_124" class="mt-4">
+        <ExampleAndCode id="icon_125" class="mt-4">
           <:example>
             <IconFreebet font_size="5rem" />
           </:example>
@@ -1784,7 +1798,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_125" class="mt-4">
+        <ExampleAndCode id="icon_126" class="mt-4">
           <:example>
             <IconFullScreen font_size="5rem" />
           </:example>
@@ -1796,7 +1810,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_126" class="mt-4">
+        <ExampleAndCode id="icon_127" class="mt-4">
           <:example>
             <IconGamepad font_size="5rem" />
           </:example>
@@ -1808,1519 +1822,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_127" class="mt-4">
-          <:example>
-            <IconGift font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconGift font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
         <ExampleAndCode id="icon_128" class="mt-4">
-          <:example>
-            <IconGlasses font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconGlasses font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_129" class="mt-4">
-          <:example>
-            <IconGlobe font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconGlobe font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_130" class="mt-4">
-          <:example>
-            <IconGoogle font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconGoogle font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_131" class="mt-4">
-          <:example>
-            <IconHamburger font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHamburger font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_132" class="mt-4">
-          <:example>
-            <IconHelp font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHelp font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_133" class="mt-4">
-          <:example>
-            <IconHistory font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHistory font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_134" class="mt-4">
-          <:example>
-            <IconHome font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHome font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_135" class="mt-4">
-          <:example>
-            <IconHub88 font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHub88 font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_136" class="mt-4">
-          <:example>
-            <IconHyperlink font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconHyperlink font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_137" class="mt-4">
-          <:example>
-            <IconInPlay font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconInPlay font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_138" class="mt-4">
-          <:example>
-            <IconInfoCircle font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconInfoCircle font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_139" class="mt-4">
-          <:example>
-            <IconInfo font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconInfo font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_140" class="mt-4">
-          <:example>
-            <IconInstagram font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconInstagram font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_141" class="mt-4">
-          <:example>
-            <IconLeftArrowCurveRight font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLeftArrowCurveRight font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_142" class="mt-4">
-          <:example>
-            <IconLifeRing font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLifeRing font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_143" class="mt-4">
-          <:example>
-            <IconLightbulb font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLightbulb font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_144" class="mt-4">
-          <:example>
-            <IconLimit font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLimit font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_145" class="mt-4">
-          <:example>
-            <IconLine font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLine font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_146" class="mt-4">
-          <:example>
-            <IconLink font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLink font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_147" class="mt-4">
-          <:example>
-            <IconListNumbered font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconListNumbered font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_148" class="mt-4">
-          <:example>
-            <IconLiveChat font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLiveChat font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_149" class="mt-4">
-          <:example>
-            <IconLiveStream font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLiveStream font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_150" class="mt-4">
-          <:example>
-            <IconLogin font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLogin font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_151" class="mt-4">
-          <:example>
-            <IconLogoPlain font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLogoPlain font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_152" class="mt-4">
-          <:example>
-            <IconLogout font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLogout font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_153" class="mt-4">
-          <:example>
-            <IconLoyalty0 font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconLoyalty0 font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_154" class="mt-4">
-          <:example>
-            <IconMail font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMail font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_155" class="mt-4">
-          <:example>
-            <IconMenuHome font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMenuHome font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_156" class="mt-4">
-          <:example>
-            <IconMenu font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMenu font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_157" class="mt-4">
-          <:example>
-            <IconMinus font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMinus font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_158" class="mt-4">
-          <:example>
-            <IconMobile font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMobile font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_159" class="mt-4">
-          <:example>
-            <IconMoney font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMoney font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_160" class="mt-4">
-          <:example>
-            <IconMoneybag font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMoneybag font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_161" class="mt-4">
-          <:example>
-            <IconMoon font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMoon font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_162" class="mt-4">
-          <:example>
-            <IconMore font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconMore font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_163" class="mt-4">
-          <:example>
-            <IconNews font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconNews font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_164" class="mt-4">
-          <:example>
-            <IconNotificationUnread font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconNotificationUnread font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_165" class="mt-4">
-          <:example>
-            <IconNotification font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconNotification font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_166" class="mt-4">
-          <:example>
-            <IconPadlock font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPadlock font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_167" class="mt-4">
-          <:example>
-            <IconPencil font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPencil font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_168" class="mt-4">
-          <:example>
-            <IconPhoto font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPhoto font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_169" class="mt-4">
-          <:example>
-            <IconPicture font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPicture font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_170" class="mt-4">
-          <:example>
-            <IconPin font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPin font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_171" class="mt-4">
-          <:example>
-            <IconPlay font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPlay font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_172" class="mt-4">
-          <:example>
-            <IconPlus font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPlus font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_173" class="mt-4">
-          <:example>
-            <IconPriceBoost font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPriceBoost font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_174" class="mt-4">
-          <:example>
-            <IconPrint font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPrint font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_175" class="mt-4">
-          <:example>
-            <IconProfile font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconProfile font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_176" class="mt-4">
-          <:example>
-            <IconPromotions font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconPromotions font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_177" class="mt-4">
-          <:example>
-            <IconRefresh font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconRefresh font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_178" class="mt-4">
-          <:example>
-            <IconReward font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconReward font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_179" class="mt-4">
-          <:example>
-            <IconRow font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconRow font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_180" class="mt-4">
-          <:example>
-            <IconSbShield font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSbShield font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_181" class="mt-4">
-          <:example>
-            <IconSearch font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSearch font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_182" class="mt-4">
-          <:example>
-            <IconSettings font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSettings font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_183" class="mt-4">
-          <:example>
-            <IconShare font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconShare font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_184" class="mt-4">
-          <:example>
-            <IconSliders font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSliders font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_185" class="mt-4">
-          <:example>
-            <IconSlots font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSlots font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_186" class="mt-4">
-          <:example>
-            <IconSnackbarSuccess font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSnackbarSuccess font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_187" class="mt-4">
-          <:example>
-            <IconSportWidget font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportWidget font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_188" class="mt-4">
-          <:example>
-            <IconSportsAfl font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsAfl font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_189" class="mt-4">
-          <:example>
-            <IconSportsAmericanFootBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsAmericanFootBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_190" class="mt-4">
-          <:example>
-            <IconSportsBadminton font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsBadminton font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_191" class="mt-4">
-          <:example>
-            <IconSportsBaseBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsBaseBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_192" class="mt-4">
-          <:example>
-            <IconSportsBasketBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsBasketBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_193" class="mt-4">
-          <:example>
-            <IconSportsBiathlon font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsBiathlon font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_194" class="mt-4">
-          <:example>
-            <IconSportsBoxing font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsBoxing font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_195" class="mt-4">
-          <:example>
-            <IconSportsCenter font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsCenter font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_196" class="mt-4">
-          <:example>
-            <IconSportsCricket font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsCricket font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_197" class="mt-4">
-          <:example>
-            <IconSportsCycling font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsCycling font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_198" class="mt-4">
-          <:example>
-            <IconSportsDarts font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsDarts font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_199" class="mt-4">
-          <:example>
-            <IconSportsESports font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsESports font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_200" class="mt-4">
-          <:example>
-            <IconSportsFantasy font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsFantasy font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_201" class="mt-4">
-          <:example>
-            <IconSportsFeatured font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsFeatured font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_202" class="mt-4">
-          <:example>
-            <IconSportsFootBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsFootBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_203" class="mt-4">
-          <:example>
-            <IconSportsGolf font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsGolf font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_204" class="mt-4">
-          <:example>
-            <IconSportsHandBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsHandBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_205" class="mt-4">
-          <:example>
-            <IconSportsHorseRacing font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsHorseRacing font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_206" class="mt-4">
-          <:example>
-            <IconSportsIceHockey font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsIceHockey font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_207" class="mt-4">
-          <:example>
-            <IconSportsMma font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsMma font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_208" class="mt-4">
-          <:example>
-            <IconSportsMotorSports font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsMotorSports font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_209" class="mt-4">
-          <:example>
-            <IconSportsPoker font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsPoker font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_210" class="mt-4">
-          <:example>
-            <IconSportsPolitics font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsPolitics font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_211" class="mt-4">
-          <:example>
-            <IconSportsPool font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsPool font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_212" class="mt-4">
-          <:example>
-            <IconSportsPopular font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsPopular font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_213" class="mt-4">
-          <:example>
-            <IconSportsRugby font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsRugby font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_214" class="mt-4">
-          <:example>
-            <IconSportsSki font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsSki font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_215" class="mt-4">
-          <:example>
-            <IconSportsSnooker font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsSnooker font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_216" class="mt-4">
-          <:example>
-            <IconSportsSpecial font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsSpecial font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_217" class="mt-4">
-          <:example>
-            <IconSportsSquash font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsSquash font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_218" class="mt-4">
-          <:example>
-            <IconSportsTableTennis font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsTableTennis font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_219" class="mt-4">
-          <:example>
-            <IconSportsTennis font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsTennis font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_220" class="mt-4">
-          <:example>
-            <IconSportsVolleyBall font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsVolleyBall font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_221" class="mt-4">
-          <:example>
-            <IconSportsWaterPolo font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportsWaterPolo font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_222" class="mt-4">
-          <:example>
-            <IconStarEmpty font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStarEmpty font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_223" class="mt-4">
-          <:example>
-            <IconStarFilled font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStarFilled font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_224" class="mt-4">
-          <:example>
-            <IconStarFlag font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStarFlag font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_225" class="mt-4">
-          <:example>
-            <IconStars font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStars font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_226" class="mt-4">
-          <:example>
-            <IconStart font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStart font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_227" class="mt-4">
-          <:example>
-            <IconStats font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStats font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_228" class="mt-4">
-          <:example>
-            <IconStop font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStop font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_229" class="mt-4">
-          <:example>
-            <IconStopwatch font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconStopwatch font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_230" class="mt-4">
-          <:example>
-            <IconSuccessCircle font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSuccessCircle font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_231" class="mt-4">
-          <:example>
-            <IconSun font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSun font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_232" class="mt-4">
-          <:example>
-            <IconSupport font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSupport font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_233" class="mt-4">
-          <:example>
-            <IconTable font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconTable font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_234" class="mt-4">
-          <:example>
-            <IconTag font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconTag font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_235" class="mt-4">
-          <:example>
-            <IconTelegram font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconTelegram font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_236" class="mt-4">
-          <:example>
-            <IconText font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconText font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_237" class="mt-4">
-          <:example>
-            <IconTimer font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconTimer font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_238" class="mt-4">
-          <:example>
-            <IconTwitter font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconTwitter font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_239" class="mt-4">
-          <:example>
-            <IconUpload font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconUpload font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_240" class="mt-4">
-          <:example>
-            <IconUser font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconUser font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_241" class="mt-4">
-          <:example>
-            <IconUsers font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconUsers font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_242" class="mt-4">
-          <:example>
-            <IconVirtualSports font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconVirtualSports font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_243" class="mt-4">
-          <:example>
-            <IconVkontakte font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconVkontakte font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_244" class="mt-4">
-          <:example>
-            <IconVolatility font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconVolatility font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_245" class="mt-4">
-          <:example>
-            <IconWalletRounded font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconWalletRounded font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_246" class="mt-4">
-          <:example>
-            <IconWallet font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconWallet font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_247" class="mt-4">
-          <:example>
-            <IconWand font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconWand font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_248" class="mt-4">
-          <:example>
-            <IconWarning font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconWarning font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_249" class="mt-4">
-          <:example>
-            <IconWhatsapp font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconWhatsapp font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_250" class="mt-4">
-          <:example>
-            <IconYoutube font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconYoutube font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_251" class="mt-4">
-          <:example>
-            <IconZoom font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconZoom font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_252" class="mt-4">
-          <:example>
-            <IconError font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconError font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_253" class="mt-4">
           <:example>
             <IconGeneralInfo font_size="5rem" />
           </:example>
@@ -3332,7 +1834,55 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_254" class="mt-4">
+        <ExampleAndCode id="icon_129" class="mt-4">
+          <:example>
+            <IconGift font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconGift font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_130" class="mt-4">
+          <:example>
+            <IconGlasses font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconGlasses font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_131" class="mt-4">
+          <:example>
+            <IconGlobe font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconGlobe font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_132" class="mt-4">
+          <:example>
+            <IconGoogle font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconGoogle font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_133" class="mt-4">
           <:example>
             <IconGoogleAuth font_size="5rem" />
           </:example>
@@ -3344,7 +1894,211 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_255" class="mt-4">
+        <ExampleAndCode id="icon_134" class="mt-4">
+          <:example>
+            <IconHamburger font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHamburger font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_135" class="mt-4">
+          <:example>
+            <IconHelp font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHelp font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_136" class="mt-4">
+          <:example>
+            <IconHistory font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHistory font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_137" class="mt-4">
+          <:example>
+            <IconHome font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHome font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_138" class="mt-4">
+          <:example>
+            <IconHub88 font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHub88 font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_139" class="mt-4">
+          <:example>
+            <IconHyperlink font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconHyperlink font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_140" class="mt-4">
+          <:example>
+            <IconInPlay font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconInPlay font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_141" class="mt-4">
+          <:example>
+            <IconInfo font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconInfo font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_142" class="mt-4">
+          <:example>
+            <IconInfoCircle font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconInfoCircle font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_143" class="mt-4">
+          <:example>
+            <IconInstagram font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconInstagram font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_144" class="mt-4">
+          <:example>
+            <IconLeftArrowCurveRight font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLeftArrowCurveRight font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_145" class="mt-4">
+          <:example>
+            <IconLifeRing font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLifeRing font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_146" class="mt-4">
+          <:example>
+            <IconLightbulb font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLightbulb font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_147" class="mt-4">
+          <:example>
+            <IconLimit font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLimit font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_148" class="mt-4">
+          <:example>
+            <IconLine font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLine font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_149" class="mt-4">
+          <:example>
+            <IconLink font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLink font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_150" class="mt-4">
+          <:example>
+            <IconListNumbered font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconListNumbered font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_151" class="mt-4">
           <:example>
             <IconLiveCasino font_size="5rem" />
           </:example>
@@ -3356,7 +2110,31 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_256" class="mt-4">
+        <ExampleAndCode id="icon_152" class="mt-4">
+          <:example>
+            <IconLiveChat font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLiveChat font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_153" class="mt-4">
+          <:example>
+            <IconLiveStream font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLiveStream font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_154" class="mt-4">
           <:example>
             <IconLock font_size="5rem" />
           </:example>
@@ -3368,7 +2146,655 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_257" class="mt-4">
+        <ExampleAndCode id="icon_155" class="mt-4">
+          <:example>
+            <IconLogin font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLogin font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_156" class="mt-4">
+          <:example>
+            <IconLogoPlain font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLogoPlain font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_157" class="mt-4">
+          <:example>
+            <IconLogout font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLogout font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_158" class="mt-4">
+          <:example>
+            <IconLoyalty0 font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconLoyalty0 font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_159" class="mt-4">
+          <:example>
+            <IconMail font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMail font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_160" class="mt-4">
+          <:example>
+            <IconMenu font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMenu font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_161" class="mt-4">
+          <:example>
+            <IconMenuHome font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMenuHome font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_162" class="mt-4">
+          <:example>
+            <IconMinus font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMinus font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_163" class="mt-4">
+          <:example>
+            <IconMobile font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMobile font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_164" class="mt-4">
+          <:example>
+            <IconMoney font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMoney font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_165" class="mt-4">
+          <:example>
+            <IconMoneybag font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMoneybag font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_166" class="mt-4">
+          <:example>
+            <IconMoon font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMoon font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_167" class="mt-4">
+          <:example>
+            <IconMore font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconMore font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_168" class="mt-4">
+          <:example>
+            <IconNews font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconNews font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_169" class="mt-4">
+          <:example>
+            <IconNotification font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconNotification font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_170" class="mt-4">
+          <:example>
+            <IconNotificationUnread font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconNotificationUnread font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_171" class="mt-4">
+          <:example>
+            <IconPadlock font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPadlock font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_172" class="mt-4">
+          <:example>
+            <IconPencil font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPencil font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_173" class="mt-4">
+          <:example>
+            <IconPhoto font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPhoto font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_174" class="mt-4">
+          <:example>
+            <IconPicture font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPicture font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_175" class="mt-4">
+          <:example>
+            <IconPin font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPin font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_176" class="mt-4">
+          <:example>
+            <IconPlay font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPlay font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_177" class="mt-4">
+          <:example>
+            <IconPlus font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPlus font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_178" class="mt-4">
+          <:example>
+            <IconPriceBoost font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPriceBoost font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_179" class="mt-4">
+          <:example>
+            <IconPrint font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPrint font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_180" class="mt-4">
+          <:example>
+            <IconProfile font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconProfile font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_181" class="mt-4">
+          <:example>
+            <IconPromotions font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconPromotions font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_182" class="mt-4">
+          <:example>
+            <IconRefresh font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconRefresh font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_183" class="mt-4">
+          <:example>
+            <IconReward font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconReward font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_184" class="mt-4">
+          <:example>
+            <IconRow font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconRow font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_185" class="mt-4">
+          <:example>
+            <IconSbShield font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSbShield font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_186" class="mt-4">
+          <:example>
+            <IconSearch font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSearch font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_187" class="mt-4">
+          <:example>
+            <IconSettings font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSettings font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_188" class="mt-4">
+          <:example>
+            <IconShare font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconShare font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_189" class="mt-4">
+          <:example>
+            <IconSliders font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSliders font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_190" class="mt-4">
+          <:example>
+            <IconSlots font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSlots font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_191" class="mt-4">
+          <:example>
+            <IconSnackbarSuccess font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSnackbarSuccess font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_192" class="mt-4">
+          <:example>
+            <IconSportWidget font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportWidget font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_193" class="mt-4">
+          <:example>
+            <IconSportsAfl font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsAfl font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_194" class="mt-4">
+          <:example>
+            <IconSportsAmericanFootBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsAmericanFootBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_195" class="mt-4">
+          <:example>
+            <IconSportsBadminton font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsBadminton font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_196" class="mt-4">
+          <:example>
+            <IconSportsBaseBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsBaseBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_197" class="mt-4">
+          <:example>
+            <IconSportsBasketBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsBasketBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_198" class="mt-4">
+          <:example>
+            <IconSportsBiathlon font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsBiathlon font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_199" class="mt-4">
+          <:example>
+            <IconSportsBoxing font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsBoxing font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_200" class="mt-4">
+          <:example>
+            <IconSportsCenter font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsCenter font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_201" class="mt-4">
+          <:example>
+            <IconSportsCricket font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsCricket font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_202" class="mt-4">
+          <:example>
+            <IconSportsCycling font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsCycling font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_203" class="mt-4">
+          <:example>
+            <IconSportsDarts font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsDarts font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_204" class="mt-4">
+          <:example>
+            <IconSportsESports font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsESports font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_205" class="mt-4">
+          <:example>
+            <IconSportsFantasy font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsFantasy font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_206" class="mt-4">
+          <:example>
+            <IconSportsFeatured font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsFeatured font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_207" class="mt-4">
+          <:example>
+            <IconSportsFootBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsFootBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_208" class="mt-4">
+          <:example>
+            <IconSportsGolf font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsGolf font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_209" class="mt-4">
           <:example>
             <IconSportsGreyhound font_size="5rem" />
           </:example>
@@ -3380,7 +2806,19 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_258" class="mt-4">
+        <ExampleAndCode id="icon_210" class="mt-4">
+          <:example>
+            <IconSportsHandBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsHandBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_211" class="mt-4">
           <:example>
             <IconSportsHarness font_size="5rem" />
           </:example>
@@ -3392,7 +2830,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_259" class="mt-4">
+        <ExampleAndCode id="icon_212" class="mt-4">
           <:example>
             <IconSportsHorse font_size="5rem" />
           </:example>
@@ -3404,7 +2842,451 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_260" class="mt-4">
+        <ExampleAndCode id="icon_213" class="mt-4">
+          <:example>
+            <IconSportsHorseRacing font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsHorseRacing font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_214" class="mt-4">
+          <:example>
+            <IconSportsIceHockey font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsIceHockey font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_215" class="mt-4">
+          <:example>
+            <IconSportsMma font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsMma font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_216" class="mt-4">
+          <:example>
+            <IconSportsMotorSports font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsMotorSports font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_217" class="mt-4">
+          <:example>
+            <IconSportsPoker font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsPoker font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_218" class="mt-4">
+          <:example>
+            <IconSportsPolitics font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsPolitics font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_219" class="mt-4">
+          <:example>
+            <IconSportsPool font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsPool font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_220" class="mt-4">
+          <:example>
+            <IconSportsPopular font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsPopular font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_221" class="mt-4">
+          <:example>
+            <IconSportsRugby font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsRugby font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_222" class="mt-4">
+          <:example>
+            <IconSportsSki font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsSki font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_223" class="mt-4">
+          <:example>
+            <IconSportsSnooker font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsSnooker font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_224" class="mt-4">
+          <:example>
+            <IconSportsSpecial font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsSpecial font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_225" class="mt-4">
+          <:example>
+            <IconSportsSquash font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsSquash font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_226" class="mt-4">
+          <:example>
+            <IconSportsTableTennis font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsTableTennis font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_227" class="mt-4">
+          <:example>
+            <IconSportsTennis font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsTennis font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_228" class="mt-4">
+          <:example>
+            <IconSportsVolleyBall font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsVolleyBall font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_229" class="mt-4">
+          <:example>
+            <IconSportsWaterPolo font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportsWaterPolo font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_230" class="mt-4">
+          <:example>
+            <IconStarEmpty font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStarEmpty font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_231" class="mt-4">
+          <:example>
+            <IconStarFilled font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStarFilled font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_232" class="mt-4">
+          <:example>
+            <IconStarFlag font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStarFlag font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_233" class="mt-4">
+          <:example>
+            <IconStars font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStars font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_234" class="mt-4">
+          <:example>
+            <IconStart font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStart font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_235" class="mt-4">
+          <:example>
+            <IconStats font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStats font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_236" class="mt-4">
+          <:example>
+            <IconStop font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStop font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_237" class="mt-4">
+          <:example>
+            <IconStopwatch font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconStopwatch font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_238" class="mt-4">
+          <:example>
+            <IconSuccessCircle font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSuccessCircle font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_239" class="mt-4">
+          <:example>
+            <IconSun font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSun font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_240" class="mt-4">
+          <:example>
+            <IconSupport font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSupport font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_241" class="mt-4">
+          <:example>
+            <IconTable font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconTable font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_242" class="mt-4">
+          <:example>
+            <IconTag font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconTag font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_243" class="mt-4">
+          <:example>
+            <IconTelegram font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconTelegram font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_244" class="mt-4">
+          <:example>
+            <IconText font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconText font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_245" class="mt-4">
+          <:example>
+            <IconTimer font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconTimer font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_246" class="mt-4">
+          <:example>
+            <IconTwitter font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconTwitter font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_247" class="mt-4">
+          <:example>
+            <IconUpload font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconUpload font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_248" class="mt-4">
+          <:example>
+            <IconUser font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconUser font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_249" class="mt-4">
+          <:example>
+            <IconUsers font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconUsers font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_250" class="mt-4">
           <:example>
             <IconVerify font_size="5rem" />
           </:example>
@@ -3412,6 +3294,126 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconVerify font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_251" class="mt-4">
+          <:example>
+            <IconVirtualSports font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconVirtualSports font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_252" class="mt-4">
+          <:example>
+            <IconVkontakte font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconVkontakte font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_253" class="mt-4">
+          <:example>
+            <IconVolatility font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconVolatility font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_254" class="mt-4">
+          <:example>
+            <IconWallet font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconWallet font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_255" class="mt-4">
+          <:example>
+            <IconWalletRounded font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconWalletRounded font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_256" class="mt-4">
+          <:example>
+            <IconWand font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconWand font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_257" class="mt-4">
+          <:example>
+            <IconWarning font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconWarning font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_258" class="mt-4">
+          <:example>
+            <IconWhatsapp font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconWhatsapp font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_259" class="mt-4">
+          <:example>
+            <IconYoutube font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconYoutube font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_260" class="mt-4">
+          <:example>
+            <IconZoom font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconZoom font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

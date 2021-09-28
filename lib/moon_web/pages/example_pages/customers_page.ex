@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Assets.Icons.IconChartSegment

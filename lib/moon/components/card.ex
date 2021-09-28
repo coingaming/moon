@@ -1,4 +1,6 @@
 defmodule Moon.Components.Card do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   alias Moon.Components.Heading

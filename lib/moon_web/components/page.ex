@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.Page do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias MoonWeb.Components.Breadcrumbs

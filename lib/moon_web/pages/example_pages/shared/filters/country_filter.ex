@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip

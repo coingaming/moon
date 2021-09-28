@@ -1,4 +1,6 @@
 defmodule Moon.Components.ListItems.SingleLineItem do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   slot default

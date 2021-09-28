@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.Components.LineChartPage do
+  @moduledoc false
+
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown

@@ -1,6 +1,6 @@
-# https://github.com/coingaming/sportsbet-design/blob/develop/packages/components/src/badge/Badge.ts
-
 defmodule Moon.Components.Badge do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop color, :string, default: "gohan-100", values: Moon.colors()

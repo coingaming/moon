@@ -1,4 +1,6 @@
 defmodule Moon.Components.CodePreview do
+  @moduledoc false
+
   use Surface.MacroComponent
 
   slot(default)

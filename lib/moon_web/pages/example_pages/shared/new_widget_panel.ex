@@ -1,4 +1,6 @@
 defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
+  @moduledoc false
+
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Button

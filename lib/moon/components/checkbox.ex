@@ -1,4 +1,6 @@
 defmodule Moon.Components.Checkbox do
+  @moduledoc false
+
   use Moon.StatelessComponent
 
   prop(on_click, :event)
