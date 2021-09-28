@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Chip
-  alias Moon.ComponentsV2.DropdownMultiFilter
+  alias Moon.BackofficeComponents.DropdownMultiFilter
   alias MoonWeb.MockDB.Countries
   alias MoonWeb.Pages.ExamplePages.Helpers
 
@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
     ~F"""
     <DropdownMultiFilter
       id={@name}
-      all_items={all_items()}
+      all_options={all_options()}
       active_values={@active_values}
       :let={toggle_filter: toggle_filter, is_open: is_open}
     >
@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
   end
 
   # Cache this in memeory
-  defp all_items do
+  defp all_options() do
     Countries.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
   end
 end

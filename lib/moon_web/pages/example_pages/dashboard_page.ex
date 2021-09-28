@@ -22,6 +22,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   alias MoonWeb.MockDB.Sites
   alias MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget
   alias MoonWeb.Pages.ExamplePages.Shared
+  alias MoonWeb.Pages.ExamplePages.Shared.Filters.{CurrencyFilter, SiteFilter}
 
   alias Shared.Filters.ContentFilter
   alias Shared.LeftMenu
@@ -174,19 +175,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
                 button_class="font-semibold px-3"
               />
 
-              <ContentFilter
-                id="currency_filter"
-                filter_name="Currency"
-                active_items={@currency_filter_values}
-                all_items={@all_currencies}
-              />
+              <CurrencyFilter active_values={@currency_filter_values} />
 
-              <ContentFilter
-                id="site_filter"
-                filter_name="Brands"
-                active_items={@site_filter_values}
-                all_items={@all_sites}
-              />
+              <SiteFilter active_values={@site_filter_values} />
 
               {#unless @saved}
                 <Button class="px-3 ml-1" variant="primary" on_click="save_dashboard">
