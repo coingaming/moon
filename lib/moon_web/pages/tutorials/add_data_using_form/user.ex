@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:document_filename)
   end
 
-  def changeset(%User{} = user, params \\ %{}) do
+  def changeset(user = %User{}, params \\ %{}) do
     user
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)

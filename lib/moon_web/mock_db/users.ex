@@ -65,15 +65,7 @@ defmodule MoonWeb.MockDB.Users do
 
     results =
       state.all
-      |> Enum.sort(fn a, b ->
-        case sort do
-          %{id: :asc} -> a.id < b.id
-          %{id: :desc} -> a.id >= b.id
-          %{username: :asc} -> a.username < b.username
-          %{username: :desc} -> a.username >= b.username
-          _ -> true
-        end
-      end)
+      |> Enum.sort(fn a, b -> sort_users(a, b, sort) end)
       |> Enum.filter(fn user ->
         (Enum.empty?(id) or Enum.member?(id, user.id)) and
           (Enum.empty?(site) or Enum.member?(site, user.site)) and
@@ -89,6 +81,16 @@ defmodule MoonWeb.MockDB.Users do
       |> Enum.filter(&String.contains?(&1.username, search_text))
 
     {:reply, results, state}
+  end
+
+  defp sort_users(a, b, sort) do
+    case sort do
+      %{id: :asc} -> a.id < b.id
+      %{id: :desc} -> a.id >= b.id
+      %{username: :asc} -> a.username < b.username
+      %{username: :desc} -> a.username >= b.username
+      _ -> true
+    end
   end
 
   # helpers

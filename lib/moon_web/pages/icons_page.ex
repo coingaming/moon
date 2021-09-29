@@ -254,8 +254,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.SoftwareData
   alias Icons.SoftwareDownload
   alias Icons.SoftwareHand
-  alias Icons.SoftwareLogOut
   alias Icons.SoftwareLogin
+  alias Icons.SoftwareLogOut
   alias Icons.SoftwareNut
   alias Icons.SoftwarePlate
   alias Icons.SoftwarePuzzle
@@ -271,10 +271,10 @@ defmodule MoonWeb.Pages.IconsPage do
   alias Icons.SportBeachVolleyball
   alias Icons.SportBombay
   alias Icons.SportBoxing
-  alias Icons.SportCSGO
   alias Icons.SportCasino
   alias Icons.SportCricket
   alias Icons.SportCrossCountry
+  alias Icons.SportCSGO
   alias Icons.SportCycling
   alias Icons.SportDarts
   alias Icons.SportDota2
@@ -3150,24 +3150,24 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_233" class="mt-4">
           <:example>
-            <SoftwareLogOut font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <SoftwareLogOut font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_234" class="mt-4">
-          <:example>
             <SoftwareLogin font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <SoftwareLogin font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_234" class="mt-4">
+          <:example>
+            <SoftwareLogOut font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <SoftwareLogOut font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -3354,18 +3354,6 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <ExampleAndCode id="icon_250" class="mt-4">
           <:example>
-            <SportCSGO font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <SportCSGO font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_251" class="mt-4">
-          <:example>
             <SportCasino font_size="5rem" />
           </:example>
 
@@ -3376,7 +3364,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_252" class="mt-4">
+        <ExampleAndCode id="icon_251" class="mt-4">
           <:example>
             <SportCricket font_size="5rem" />
           </:example>
@@ -3388,7 +3376,7 @@ defmodule MoonWeb.Pages.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_253" class="mt-4">
+        <ExampleAndCode id="icon_252" class="mt-4">
           <:example>
             <SportCrossCountry font_size="5rem" />
           </:example>
@@ -3396,6 +3384,18 @@ defmodule MoonWeb.Pages.IconsPage do
           <:code>
             <#CodePreview>
               <SportCrossCountry font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_253" class="mt-4">
+          <:example>
+            <SportCSGO font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <SportCSGO font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

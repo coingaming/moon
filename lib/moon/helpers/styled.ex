@@ -22,11 +22,7 @@ defmodule Moon.Helpers.Styled do
 
       cond do
         String.contains?(x, "color") && y ->
-          if String.starts_with?(y, "#") do
-            "#{x}: #{y}"
-          else
-            "#{x}: var(--color--#{y})"
-          end
+          get_style_with_color(x, y)
 
         x == "is-bold" && y ->
           "font-weight: var(--font-face--semibold--font-weight)"
@@ -40,5 +36,13 @@ defmodule Moon.Helpers.Styled do
     end)
     |> Enum.filter(fn x -> x end)
     |> Enum.join(";")
+  end
+
+  defp get_style_with_color(x, y) do
+    if String.starts_with?(y, "#") do
+      "#{x}: #{y}"
+    else
+      "#{x}: var(--color--#{y})"
+    end
   end
 end

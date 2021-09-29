@@ -16,6 +16,9 @@ const toCamel = (s: string) => {
   });
 };
 
+const caseInsensitiveCompare = (a:string, b:string) =>
+  a.toLowerCase().localeCompare(b.toLowerCase());
+
 const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -62,7 +65,7 @@ defmodule Moon.Icon do
   prop name, :string
   ${propsMap}
   @assets_map %{
-    ${files.sort().map(
+    ${files.sort(caseInsensitiveCompare).map(
           (i) =>
             `${i
               .replace(/([-_])/gi, '_')
@@ -175,7 +178,7 @@ defmodule MoonWeb.Pages.IconsPage do
         name: "Icons"
       }
     ]
-${modules.sort().map((x: string) => `  alias Icons.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -190,7 +193,7 @@ ${modules.sort().map((x: string) => `  alias Icons.${x}`).join('\n')}
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Icons</Heading>
-      ${modules.sort().map(
+      ${modules.sort(caseInsensitiveCompare).map(
         (x: string, i: number) => `
         <ExampleAndCode id="icon_${i + 1}" class="mt-4">
           <#template slot="example">
@@ -215,7 +218,7 @@ end
 };
 
 const generateAssetsDocumentationPage = (files: string[]) => {
-  const modules = files.sort().map((f: string) => getModuleName(f));
+  const modules = files.sort(caseInsensitiveCompare).map((f: string) => getModuleName(f));
   const pageContent = generateAssetsDocumentationPageContent(modules);
   writeAssetsDocumentationPage(pageContent);
 };

@@ -28,13 +28,13 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconAlignLeft
   alias Icons.IconAllSports
   alias Icons.IconArrowDiagonalDownLeft
-  alias Icons.IconArrowDiagonalUpRight
   alias Icons.IconArrowDiagonals
+  alias Icons.IconArrowDiagonalUpRight
   alias Icons.IconArrowDown
   alias Icons.IconArrowLDown
-  alias Icons.IconArrowLUp
   alias Icons.IconArrowLeft
   alias Icons.IconArrowLeftRight
+  alias Icons.IconArrowLUp
   alias Icons.IconArrowRight
   alias Icons.IconArrowTopRight
   alias Icons.IconArrowUp
@@ -125,6 +125,9 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconDuotoneChat
   alias Icons.IconDuotoneCoins
   alias Icons.IconDuotoneMail
+  alias Icons.IconEdit
+  alias Icons.IconError
+  alias Icons.IconErrorCircle
   alias Icons.IconESportsCallOfDuty
   alias Icons.IconESportsCounterStrike
   alias Icons.IconESportsDota2
@@ -137,9 +140,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconESportsRainbow
   alias Icons.IconESportsRocketLeague
   alias Icons.IconESportsStarCraft
-  alias Icons.IconEdit
-  alias Icons.IconError
-  alias Icons.IconErrorCircle
   alias Icons.IconExpand
   alias Icons.IconEye
   alias Icons.IconEyeClosed
@@ -161,9 +161,9 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconHome
   alias Icons.IconHub88
   alias Icons.IconHyperlink
-  alias Icons.IconInPlay
   alias Icons.IconInfo
   alias Icons.IconInfoCircle
+  alias Icons.IconInPlay
   alias Icons.IconInstagram
   alias Icons.IconLeftArrowCurveRight
   alias Icons.IconLifeRing
@@ -213,7 +213,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconSliders
   alias Icons.IconSlots
   alias Icons.IconSnackbarSuccess
-  alias Icons.IconSportWidget
   alias Icons.IconSportsAfl
   alias Icons.IconSportsAmericanFootBall
   alias Icons.IconSportsBadminton
@@ -251,6 +250,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Icons.IconSportsTennis
   alias Icons.IconSportsVolleyBall
   alias Icons.IconSportsWaterPolo
+  alias Icons.IconSportWidget
   alias Icons.IconStarEmpty
   alias Icons.IconStarFilled
   alias Icons.IconStarFlag
@@ -372,24 +372,24 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_7" class="mt-4">
           <:example>
-            <IconArrowDiagonalUpRight font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconArrowDiagonalUpRight font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_8" class="mt-4">
-          <:example>
             <IconArrowDiagonals font_size="5rem" />
           </:example>
 
           <:code>
             <#CodePreview>
               <IconArrowDiagonals font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_8" class="mt-4">
+          <:example>
+            <IconArrowDiagonalUpRight font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconArrowDiagonalUpRight font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -420,18 +420,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_11" class="mt-4">
           <:example>
-            <IconArrowLUp font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconArrowLUp font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_12" class="mt-4">
-          <:example>
             <IconArrowLeft font_size="5rem" />
           </:example>
 
@@ -442,7 +430,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_13" class="mt-4">
+        <ExampleAndCode id="icon_12" class="mt-4">
           <:example>
             <IconArrowLeftRight font_size="5rem" />
           </:example>
@@ -450,6 +438,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconArrowLeftRight font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_13" class="mt-4">
+          <:example>
+            <IconArrowLUp font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconArrowLUp font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1536,150 +1536,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_104" class="mt-4">
           <:example>
-            <IconESportsCallOfDuty font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsCallOfDuty font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_105" class="mt-4">
-          <:example>
-            <IconESportsCounterStrike font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsCounterStrike font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_106" class="mt-4">
-          <:example>
-            <IconESportsDota2 font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsDota2 font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_107" class="mt-4">
-          <:example>
-            <IconESportsENba font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsENba font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_108" class="mt-4">
-          <:example>
-            <IconESportsESport font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsESport font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_109" class="mt-4">
-          <:example>
-            <IconESportsFootball font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsFootball font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_110" class="mt-4">
-          <:example>
-            <IconESportsHearthstone font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsHearthstone font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_111" class="mt-4">
-          <:example>
-            <IconESportsLeagueOfLegends font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsLeagueOfLegends font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_112" class="mt-4">
-          <:example>
-            <IconESportsOverwatch font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsOverwatch font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_113" class="mt-4">
-          <:example>
-            <IconESportsRainbow font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsRainbow font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_114" class="mt-4">
-          <:example>
-            <IconESportsRocketLeague font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsRocketLeague font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_115" class="mt-4">
-          <:example>
-            <IconESportsStarCraft font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconESportsStarCraft font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_116" class="mt-4">
-          <:example>
             <IconEdit font_size="5rem" />
           </:example>
 
@@ -1690,7 +1546,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_117" class="mt-4">
+        <ExampleAndCode id="icon_105" class="mt-4">
           <:example>
             <IconError font_size="5rem" />
           </:example>
@@ -1702,7 +1558,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_118" class="mt-4">
+        <ExampleAndCode id="icon_106" class="mt-4">
           <:example>
             <IconErrorCircle font_size="5rem" />
           </:example>
@@ -1710,6 +1566,150 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconErrorCircle font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_107" class="mt-4">
+          <:example>
+            <IconESportsCallOfDuty font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsCallOfDuty font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_108" class="mt-4">
+          <:example>
+            <IconESportsCounterStrike font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsCounterStrike font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_109" class="mt-4">
+          <:example>
+            <IconESportsDota2 font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsDota2 font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_110" class="mt-4">
+          <:example>
+            <IconESportsENba font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsENba font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_111" class="mt-4">
+          <:example>
+            <IconESportsESport font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsESport font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_112" class="mt-4">
+          <:example>
+            <IconESportsFootball font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsFootball font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_113" class="mt-4">
+          <:example>
+            <IconESportsHearthstone font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsHearthstone font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_114" class="mt-4">
+          <:example>
+            <IconESportsLeagueOfLegends font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsLeagueOfLegends font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_115" class="mt-4">
+          <:example>
+            <IconESportsOverwatch font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsOverwatch font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_116" class="mt-4">
+          <:example>
+            <IconESportsRainbow font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsRainbow font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_117" class="mt-4">
+          <:example>
+            <IconESportsRocketLeague font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsRocketLeague font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_118" class="mt-4">
+          <:example>
+            <IconESportsStarCraft font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconESportsStarCraft font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -1968,18 +1968,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_140" class="mt-4">
           <:example>
-            <IconInPlay font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconInPlay font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_141" class="mt-4">
-          <:example>
             <IconInfo font_size="5rem" />
           </:example>
 
@@ -1990,7 +1978,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_142" class="mt-4">
+        <ExampleAndCode id="icon_141" class="mt-4">
           <:example>
             <IconInfoCircle font_size="5rem" />
           </:example>
@@ -1998,6 +1986,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconInfoCircle font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_142" class="mt-4">
+          <:example>
+            <IconInPlay font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconInPlay font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -2592,18 +2592,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
         <ExampleAndCode id="icon_192" class="mt-4">
           <:example>
-            <IconSportWidget font_size="5rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <IconSportWidget font_size="5rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="icon_193" class="mt-4">
-          <:example>
             <IconSportsAfl font_size="5rem" />
           </:example>
 
@@ -2614,7 +2602,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_194" class="mt-4">
+        <ExampleAndCode id="icon_193" class="mt-4">
           <:example>
             <IconSportsAmericanFootBall font_size="5rem" />
           </:example>
@@ -2626,7 +2614,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_195" class="mt-4">
+        <ExampleAndCode id="icon_194" class="mt-4">
           <:example>
             <IconSportsBadminton font_size="5rem" />
           </:example>
@@ -2638,7 +2626,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_196" class="mt-4">
+        <ExampleAndCode id="icon_195" class="mt-4">
           <:example>
             <IconSportsBaseBall font_size="5rem" />
           </:example>
@@ -2650,7 +2638,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_197" class="mt-4">
+        <ExampleAndCode id="icon_196" class="mt-4">
           <:example>
             <IconSportsBasketBall font_size="5rem" />
           </:example>
@@ -2662,7 +2650,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_198" class="mt-4">
+        <ExampleAndCode id="icon_197" class="mt-4">
           <:example>
             <IconSportsBiathlon font_size="5rem" />
           </:example>
@@ -2674,7 +2662,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_199" class="mt-4">
+        <ExampleAndCode id="icon_198" class="mt-4">
           <:example>
             <IconSportsBoxing font_size="5rem" />
           </:example>
@@ -2686,7 +2674,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_200" class="mt-4">
+        <ExampleAndCode id="icon_199" class="mt-4">
           <:example>
             <IconSportsCenter font_size="5rem" />
           </:example>
@@ -2698,7 +2686,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_201" class="mt-4">
+        <ExampleAndCode id="icon_200" class="mt-4">
           <:example>
             <IconSportsCricket font_size="5rem" />
           </:example>
@@ -2710,7 +2698,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_202" class="mt-4">
+        <ExampleAndCode id="icon_201" class="mt-4">
           <:example>
             <IconSportsCycling font_size="5rem" />
           </:example>
@@ -2722,7 +2710,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_203" class="mt-4">
+        <ExampleAndCode id="icon_202" class="mt-4">
           <:example>
             <IconSportsDarts font_size="5rem" />
           </:example>
@@ -2734,7 +2722,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_204" class="mt-4">
+        <ExampleAndCode id="icon_203" class="mt-4">
           <:example>
             <IconSportsESports font_size="5rem" />
           </:example>
@@ -2746,7 +2734,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_205" class="mt-4">
+        <ExampleAndCode id="icon_204" class="mt-4">
           <:example>
             <IconSportsFantasy font_size="5rem" />
           </:example>
@@ -2758,7 +2746,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_206" class="mt-4">
+        <ExampleAndCode id="icon_205" class="mt-4">
           <:example>
             <IconSportsFeatured font_size="5rem" />
           </:example>
@@ -2770,7 +2758,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_207" class="mt-4">
+        <ExampleAndCode id="icon_206" class="mt-4">
           <:example>
             <IconSportsFootBall font_size="5rem" />
           </:example>
@@ -2782,7 +2770,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_208" class="mt-4">
+        <ExampleAndCode id="icon_207" class="mt-4">
           <:example>
             <IconSportsGolf font_size="5rem" />
           </:example>
@@ -2794,7 +2782,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_209" class="mt-4">
+        <ExampleAndCode id="icon_208" class="mt-4">
           <:example>
             <IconSportsGreyhound font_size="5rem" />
           </:example>
@@ -2806,7 +2794,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_210" class="mt-4">
+        <ExampleAndCode id="icon_209" class="mt-4">
           <:example>
             <IconSportsHandBall font_size="5rem" />
           </:example>
@@ -2818,7 +2806,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_211" class="mt-4">
+        <ExampleAndCode id="icon_210" class="mt-4">
           <:example>
             <IconSportsHarness font_size="5rem" />
           </:example>
@@ -2830,7 +2818,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_212" class="mt-4">
+        <ExampleAndCode id="icon_211" class="mt-4">
           <:example>
             <IconSportsHorse font_size="5rem" />
           </:example>
@@ -2842,7 +2830,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_213" class="mt-4">
+        <ExampleAndCode id="icon_212" class="mt-4">
           <:example>
             <IconSportsHorseRacing font_size="5rem" />
           </:example>
@@ -2854,7 +2842,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_214" class="mt-4">
+        <ExampleAndCode id="icon_213" class="mt-4">
           <:example>
             <IconSportsIceHockey font_size="5rem" />
           </:example>
@@ -2866,7 +2854,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_215" class="mt-4">
+        <ExampleAndCode id="icon_214" class="mt-4">
           <:example>
             <IconSportsMma font_size="5rem" />
           </:example>
@@ -2878,7 +2866,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_216" class="mt-4">
+        <ExampleAndCode id="icon_215" class="mt-4">
           <:example>
             <IconSportsMotorSports font_size="5rem" />
           </:example>
@@ -2890,7 +2878,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_217" class="mt-4">
+        <ExampleAndCode id="icon_216" class="mt-4">
           <:example>
             <IconSportsPoker font_size="5rem" />
           </:example>
@@ -2902,7 +2890,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_218" class="mt-4">
+        <ExampleAndCode id="icon_217" class="mt-4">
           <:example>
             <IconSportsPolitics font_size="5rem" />
           </:example>
@@ -2914,7 +2902,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_219" class="mt-4">
+        <ExampleAndCode id="icon_218" class="mt-4">
           <:example>
             <IconSportsPool font_size="5rem" />
           </:example>
@@ -2926,7 +2914,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_220" class="mt-4">
+        <ExampleAndCode id="icon_219" class="mt-4">
           <:example>
             <IconSportsPopular font_size="5rem" />
           </:example>
@@ -2938,7 +2926,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_221" class="mt-4">
+        <ExampleAndCode id="icon_220" class="mt-4">
           <:example>
             <IconSportsRugby font_size="5rem" />
           </:example>
@@ -2950,7 +2938,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_222" class="mt-4">
+        <ExampleAndCode id="icon_221" class="mt-4">
           <:example>
             <IconSportsSki font_size="5rem" />
           </:example>
@@ -2962,7 +2950,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_223" class="mt-4">
+        <ExampleAndCode id="icon_222" class="mt-4">
           <:example>
             <IconSportsSnooker font_size="5rem" />
           </:example>
@@ -2974,7 +2962,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_224" class="mt-4">
+        <ExampleAndCode id="icon_223" class="mt-4">
           <:example>
             <IconSportsSpecial font_size="5rem" />
           </:example>
@@ -2986,7 +2974,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_225" class="mt-4">
+        <ExampleAndCode id="icon_224" class="mt-4">
           <:example>
             <IconSportsSquash font_size="5rem" />
           </:example>
@@ -2998,7 +2986,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_226" class="mt-4">
+        <ExampleAndCode id="icon_225" class="mt-4">
           <:example>
             <IconSportsTableTennis font_size="5rem" />
           </:example>
@@ -3010,7 +2998,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_227" class="mt-4">
+        <ExampleAndCode id="icon_226" class="mt-4">
           <:example>
             <IconSportsTennis font_size="5rem" />
           </:example>
@@ -3022,7 +3010,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_228" class="mt-4">
+        <ExampleAndCode id="icon_227" class="mt-4">
           <:example>
             <IconSportsVolleyBall font_size="5rem" />
           </:example>
@@ -3034,7 +3022,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="icon_229" class="mt-4">
+        <ExampleAndCode id="icon_228" class="mt-4">
           <:example>
             <IconSportsWaterPolo font_size="5rem" />
           </:example>
@@ -3042,6 +3030,18 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
           <:code>
             <#CodePreview>
               <IconSportsWaterPolo font_size="5rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="icon_229" class="mt-4">
+          <:example>
+            <IconSportWidget font_size="5rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <IconSportWidget font_size="5rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

@@ -16,6 +16,9 @@ const toCamel = (s: string) => {
   });
 };
 
+const caseInsensitiveCompare = (a:string, b:string) =>
+  a.toLowerCase().localeCompare(b.toLowerCase());
+
 const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
@@ -228,7 +231,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
         name: "Crests"
       }
     ]
-${modules.sort().map((x: string) => `  alias Crests.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Crests.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -294,7 +297,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
         name: "Currencies"
       }
     ]
-${modules.sort().map((x: string) => `  alias Currencies.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Currencies.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -359,7 +362,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
         name: "Duotones"
       }
     ]
-${modules.sort().map((x: string) => `  alias Duotones.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Duotones.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -424,7 +427,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Icons"
       }
     ]
-${modules.sort().map((x: string) => `  alias Icons.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Icons.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -489,7 +492,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         name: "Logos"
       }
     ]
-${modules.sort().map((x: string) => `  alias Logos.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Logos.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -554,7 +557,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
         name: "Patterns"
       }
     ]
-${modules.sort().map((x: string) => `  alias Patterns.${x}`).join('\n')}
+${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Patterns.${x}`).join('\n')}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}

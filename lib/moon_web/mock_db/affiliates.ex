@@ -15,11 +15,11 @@ defmodule MoonWeb.MockDB.Affiliates do
   end
 
   def list(
-        %{
+        args = %{
           filter: %{user: _},
           pagination: %{offset: _, limit: _},
           sort: _
-        } = args
+        }
       ) do
     this_process() |> GenServer.call({:list, args})
   end
