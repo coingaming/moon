@@ -155,7 +155,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     # only changed filter's event sent is not work sometimes.. therefore I've sent all
     Enum.each(filters, fn {filter, selected_items} ->
       filter = [
-        {String.to_existing_atom(@dropdown_filter_map[filter]), selected_items},
+        {@dropdown_filter_map[filter], selected_items},
         {:id, "transaction_filters"}
       ]
 

@@ -22,10 +22,11 @@ defmodule Moon.Assets.Pattern do
     pattern_stars: Patterns.PatternStars,
     pattern_wave: Patterns.PatternWave
   }
-  def icon_name_to_module(icon_name) do
-    icon_name = String.to_existing_atom(icon_name)
-    @assets_map[icon_name]
-  end
+
+  defp icon_name_to_module(icon_name) when is_binary(icon_name),
+    do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
+
+  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
 
   def render(assigns) do
     ~F"""

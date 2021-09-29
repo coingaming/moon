@@ -35,7 +35,8 @@ defmodule Moon.Components.IconButton do
   def phx_val_tag(nil, _), do: []
 
   def phx_val_tag(name, value) do
-    key = String.to_existing_atom("phx-value-#{name}")
+    # credo:disable-for-next-line Credo.Check.Warning.UnsafeToAtom
+    key = String.to_atom("phx-value-#{name}")
     [{key, value}]
   end
 end
