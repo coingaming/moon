@@ -19,18 +19,22 @@ jobs:
         with:
           node-version: 14
 
-      - name: Set up Conventional Commit preset
+      - name: Install Semantic Release, plugins and preset
         working-directory: .
-        run: npm install conventional-changelog-conventionalcommits
+        run: |
+          npm install -g \
+            semantic-release@18.0.0 \
+            @semantic-release/git@10.0.0 \
+            @semantic-release/changelog@6.0.0 \
+            conventional-changelog-conventionalcommits@4.6.1
 
-      - name: Set version and  release
-        id: semver
+      - name: Run Sematic Release
         working-directory: .
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release@17
+        run: semantic-release
 
-      # Get release version
+      # Get new release version
       - name: Get release tag
         id: release-tag
         uses: WyriHaximus/github-action-get-previous-tag@v1.1
