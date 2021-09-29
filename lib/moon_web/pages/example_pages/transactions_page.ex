@@ -18,11 +18,13 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-
   alias __MODULE__.TransactionsFilters
   alias __MODULE__.TransactionsTable
+
+  alias Faker.Finance
+  alias Faker.Person
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Heading
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.Pages.ExamplePages.Shared
@@ -179,7 +181,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
     new_segment = %{
       id: Faker.random_between(100, 10_000),
-      name: Faker.Finance.Stock.ticker(),
+      name: Finance.Stock.ticker(),
       filters: filters
     }
 
@@ -380,7 +382,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
       %{
         id: customer_id |> Integer.to_string(),
-        customer_name: "#{Faker.Person.En.first_name()} #{Faker.Person.En.last_name()}",
+        customer_name: "#{Person.En.first_name()} #{Person.En.last_name()}",
         customer_id: customer_id |> Integer.to_string(),
         brand_id: brand_id |> Integer.to_string(),
         brand_name: brand_name,

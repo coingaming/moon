@@ -158,8 +158,6 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   # Message Handler
   #
   def handle_info(msg, socket) do
-    is_segment = socket.assigns.segment_id != nil
-
     new_route = fn socket ->
       route = Routes.live_path(socket, __MODULE__, get_params(socket))
 
@@ -170,50 +168,56 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
        |> push_patch(to: route)}
     end
 
+    case msg do
+      {:filter, filter_event} ->
+        filter_event_route(filter_event, socket, new_route)
+
+      {:table, table_event} ->
+        table_event_route(table_event, socket, new_route)
+
+      _ ->
+        {:noreply, socket}
+    end
+  end
+
+  defp filter_event_route(filter_event, socket, new_route) do
+    case filter_event do
+      {"username_filter", :apply, values} ->
+        socket = socket |> assign(username_filter_values: values, page: 1)
+        new_route.(socket)
+
+      {"country_filter", :apply, values} ->
+        socket = socket |> assign(country_filter_values: values, page: 1)
+        new_route.(socket)
+
+      _ ->
+        {:noreply, socket}
+    end
+  end
+
+  def table_event_route(table_event, socket, new_route) do
+    is_segment = socket.assigns.segment_id != nil
+
     new_segment_route = fn socket ->
       route = Routes.live_path(socket, __MODULE__, get_segment_params(socket))
       {:noreply, socket |> push_patch(to: route)}
     end
 
-    no_redirect = fn socket ->
-      {:noreply, socket}
-    end
+    case table_event do
+      {"affiliates_table", :paginate, page} ->
+        socket = socket |> assign(page: page)
+        if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 
-    case msg do
-      {:filter, filter_event} ->
-        case filter_event do
-          {"username_filter", :apply, values} ->
-            socket = socket |> assign(username_filter_values: values, page: 1)
-            new_route.(socket)
+      {"affiliates_table", :select, affiliate} ->
+        socket = socket |> assign(active_affiliate: affiliate)
+        {:noreply, socket}
 
-          {"country_filter", :apply, values} ->
-            socket = socket |> assign(country_filter_values: values, page: 1)
-            new_route.(socket)
-
-          _ ->
-            no_redirect.(socket)
-        end
-
-      {:table, table_event} ->
-        case table_event do
-          {"affiliates_table", :paginate, page} ->
-            socket = socket |> assign(page: page)
-            if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
-
-          {"affiliates_table", :select, affiliate} ->
-            socket = socket |> assign(active_affiliate: affiliate)
-            no_redirect.(socket)
-
-          {"affiliates_table", :sort, sort_by} ->
-            socket = socket |> assign(sort_by: sort_by, page: 1)
-            if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
-
-          _ ->
-            no_redirect.(socket)
-        end
+      {"affiliates_table", :sort, sort_by} ->
+        socket = socket |> assign(sort_by: sort_by, page: 1)
+        if is_segment, do: new_segment_route.(socket), else: new_route.(socket)
 
       _ ->
-        no_redirect.(socket)
+        {:noreply, socket}
     end
   end
 

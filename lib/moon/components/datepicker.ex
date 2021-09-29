@@ -406,16 +406,14 @@ defmodule Moon.Components.Datepicker do
       |> format_to_date(with_time)
 
     {start_date, end_date} =
-      cond do
-        start_date && is_nil(end_date) && Timex.after?(date, start_date) ->
-          # Keep start, set end
-          end_date = if with_time, do: Timex.end_of_day(date), else: date
-          {start_date, end_date}
-
-        true ->
-          # Set start, reset end
-          start_date = if with_time, do: Timex.beginning_of_day(date), else: date
-          {start_date, nil}
+      if start_date && is_nil(end_date) && Timex.after?(date, start_date) do
+        # Keep start, set end
+        end_date = if with_time, do: Timex.end_of_day(date), else: date
+        {start_date, end_date}
+      else
+        # Set start, reset end
+        start_date = if with_time, do: Timex.beginning_of_day(date), else: date
+        {start_date, nil}
       end
 
     {:noreply,

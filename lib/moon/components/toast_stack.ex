@@ -27,7 +27,7 @@ defmodule Moon.Components.ToastStack do
     """
   end
 
-  def show(%Message{} = toast, id) do
+  def show(toast, id = %Message{}) do
     send_update(__MODULE__, id: id, toast: %{toast | id: generate_id()})
   end
 

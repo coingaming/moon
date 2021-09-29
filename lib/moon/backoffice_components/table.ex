@@ -263,13 +263,7 @@ defmodule Moon.ComponentsV2.Table do
         field =
           field_str
           |> String.split("+")
-          |> (fn strs ->
-                case strs do
-                  [str] -> String.to_atom(str)
-                  [_ | _] -> strs |> Enum.map(&String.to_atom(&1))
-                  _ -> nil
-                end
-              end).()
+          |> atomize_strings
 
         sort_by =
           case socket.assigns.sort_by do
@@ -283,6 +277,14 @@ defmodule Moon.ComponentsV2.Table do
 
       _ ->
         {:noreply, socket}
+    end
+  end
+
+  defp atomize_strings(strs) do
+    case strs do
+      [str] -> String.to_atom(str)
+      [_ | _] -> strs |> Enum.map(&String.to_atom(&1))
+      _ -> nil
     end
   end
 

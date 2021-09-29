@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
 
   alias Moon.Components.Heading
   alias MoonWeb.Components.Breadcrumbs
+  alias MoonWeb.Pages.ExamplePages
   alias MoonWeb.Pages.ExamplePages.Shared
   alias Shared.LeftMenu
   alias Shared.TopMenu
@@ -18,7 +19,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
      assign(socket,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__,
-       transactions: MoonWeb.Pages.ExamplePages.TransactionsPage.get_transactions()
+       transactions: ExamplePages.TransactionsPage.get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 

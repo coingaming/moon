@@ -15,10 +15,10 @@ defmodule MoonWeb.MockDB.Transactions do
   end
 
   def list(
-        %{
+        args = %{
           filter: %{user: _, site: _, currency: _},
           pagination: %{offset: _, limit: _}
-        } = args
+        }
       ) do
     this_process() |> GenServer.call({:list, args})
   end
