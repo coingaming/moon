@@ -100,7 +100,8 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
         .join(', ')}
     }
   def icon_name_to_module(icon_name) do
-    @assets_map[:"#{icon_name}"]
+    icon_name = String.to_existing_atom((icon_name))
+    @assets_map[icon_name]
   end
   def render(assigns) do
     ~F"""

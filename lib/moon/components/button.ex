@@ -71,5 +71,8 @@ defmodule Moon.Components.Button do
 
   def phx_val_tag(nil, _), do: []
 
-  def phx_val_tag(name, value), do: [{:"phx-value-#{name}", value}]
+  def phx_val_tag(name, value) do
+    key = String.to_existing_atom("phx-value-#{name}")
+    [{key, value}]
+  end
 end

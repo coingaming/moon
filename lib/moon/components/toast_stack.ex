@@ -57,7 +57,7 @@ defmodule Moon.Components.ToastStack do
   def update(_assigns, socket), do: {:ok, socket}
 
   def handle_event("hide_toast", %{"id" => id}, socket) do
-    toasts = Keyword.delete(socket.assigns.toasts, String.to_atom(id))
+    toasts = Keyword.delete(socket.assigns.toasts, String.to_existing_atom(id))
     {:noreply, assign(socket, toasts: toasts)}
   end
 
