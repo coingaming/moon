@@ -282,8 +282,8 @@ defmodule Moon.ComponentsV2.Table do
 
   defp atomize_strings(strs) do
     case strs do
-      [str] -> String.to_atom(str)
-      [_ | _] -> strs |> Enum.map(&String.to_atom(&1))
+      [str] -> String.to_existing_atom(str)
+      [_ | _] -> strs |> Enum.map(&String.to_existing_atom(&1))
       _ -> nil
     end
   end

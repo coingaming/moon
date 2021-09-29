@@ -47,9 +47,11 @@ defmodule Moon.Assets.Currency do
     icon_turkish_lira: Currencys.IconTurkishLira,
     icon_usa_dollar: Currencys.IconUsaDollar
   }
-  def icon_name_to_module(icon_name) do
-    @assets_map[:"#{icon_name}"]
-  end
+
+  defp icon_name_to_module(icon_name) when is_binary(icon_name),
+    do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
+
+  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
 
   def render(assigns) do
     ~F"""

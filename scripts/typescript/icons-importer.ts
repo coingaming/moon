@@ -75,9 +75,10 @@ defmodule Moon.Icon do
         )
         .join(', ')}
     }
-  def icon_name_to_module(icon_name) do
-    @assets_map[:"#{icon_name}"]
-  end
+
+  defp icon_name_to_module(icon_name) when is_binary(icon_name), do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
+  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
+
   def render(assigns) do
     ~F"""
     {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${propsMapKeys

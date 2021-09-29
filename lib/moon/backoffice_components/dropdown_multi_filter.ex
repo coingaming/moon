@@ -97,8 +97,8 @@ end
 defmodule Moon.BackofficeComponents.DropdownMultiFilter do
   use Moon.StatefulComponent
 
-  alias Moon.Components.{Tooltip}
   alias Moon.BackofficeComponents.DropdownMultiFilterView
+  alias Moon.Components.Tooltip
 
   data show_filter, :boolean, default: false
   data search_text, :string, default: ""
