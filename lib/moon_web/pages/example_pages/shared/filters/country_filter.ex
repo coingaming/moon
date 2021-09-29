@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Chip
   alias Moon.BackofficeComponents.DropdownMultiFilter
+  alias Moon.Components.Chip
   alias MoonWeb.MockDB.Countries
   alias MoonWeb.Pages.ExamplePages.Helpers
 
@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.CountryFilter do
   end
 
   # Cache this in memeory
-  defp all_options() do
+  defp all_options do
     Countries.list_all() |> Enum.map(&%{label: &1.name, value: &1.name})
   end
 end

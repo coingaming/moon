@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Chip
   alias Moon.BackofficeComponents.DropdownMultiFilter
+  alias Moon.Components.Chip
   alias MoonWeb.MockDB.Users
   alias MoonWeb.Pages.ExamplePages.Helpers
 

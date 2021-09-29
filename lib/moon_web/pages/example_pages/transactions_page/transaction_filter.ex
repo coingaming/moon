@@ -4,8 +4,8 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
   """
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Chip
   alias Moon.BackofficeComponents.DropdownMultiFilter
+  alias Moon.Components.Chip
   alias MoonWeb.Pages.ExamplePages.Helpers
 
   @default_name "dropdown_filter"
