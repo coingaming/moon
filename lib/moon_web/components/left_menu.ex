@@ -164,10 +164,6 @@ defmodule MoonWeb.Components.LeftMenu do
             url: "/theme_name/components/dropdown_menu_button"
           },
           %{
-            name: "Dropdown MultiFilter",
-            url: "/theme_name/components/dropdown_multi_filter"
-          },
-          %{
             name: "File Input",
             url: "/theme_name/components/file-input"
           },
