@@ -3,7 +3,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
 
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Autolayouts.{LeftToRight, TopToDown}
-  alias Moon.Components.{Button, CheckboxMultiselectV2, Divider, Form, PopoverV2, TextInput}
+  alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, PopoverV2, TextInput}
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true
@@ -44,7 +44,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
           <div class="h-80 overflow-y-auto no-scrollbar">
             {#if !Enum.empty?(@onscreen_options)}
               <TopToDown gap={1} class="px-1">
-                <CheckboxMultiselectV2
+                <CheckboxMultiselect
                   values={@selected_options |> Enum.map(& &1.value)}
                   options={@onscreen_options}
                   on_select={@on_select}
