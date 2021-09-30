@@ -43,14 +43,16 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   def render(assigns) do
     ~F"""
     <ButtonsList>
-      <Popover.Outer>
+      <Popover show={@clicked_name == "search"} on_close="close_popover">
         <Chip value="search" left_icon="icon_zoom">
           Search
         </Chip>
-        <Popover close="close_popover" placement="under" :if={@clicked_name == "search"}>
-          Yay
-        </Popover>
-      </Popover.Outer>
+        <:content>
+          <div class="p-4 h-80 w-80 bg-gohan-100 shadow rounded">
+            Yay
+          </div>
+        </:content>
+      </Popover>
 
       <Datepicker
         id="create_date_filter"
@@ -89,31 +91,35 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         active_options={@country_filter_values}
       />
 
-      <Popover.Outer>
+      <Popover show={@clicked_name == "range"} on_close="close_popover" placement="bottom">
         <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
-        <Popover close="close_popover" class="h-auto" placement="under" :if={@clicked_name == "range"}>
-          <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
+        <:content>
+          <div class="h-auto">
+            <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
+              <LeftToRight class="justify-between p-2">
+                <TextInput type="number" field={:min} placeholder="Min" value={@amount_range_values.min} />
+                <TextInput type="number" field={:max} placeholder="Max" value={@amount_range_values.max} />
+              </LeftToRight>
+            </Form>
             <LeftToRight class="justify-between p-2">
-              <TextInput type="number" field={:min} placeholder="Min" value={@amount_range_values.min} />
-              <TextInput type="number" field={:max} placeholder="Max" value={@amount_range_values.max} />
+              <Button on_click="handle_amount_range_selection_cleared">Clear</Button>
+              <LeftToRight>
+                <Button on_click="handle_amount_range_selection_discard" variant="tertiary">Discard</Button>
+                <Button on_click="handle_amount_range_apply" variant="primary">Apply</Button>
+              </LeftToRight>
             </LeftToRight>
-          </Form>
-          <LeftToRight class="justify-between p-2">
-            <Button on_click="handle_amount_range_selection_cleared">Clear</Button>
-            <LeftToRight>
-              <Button on_click="handle_amount_range_selection_discard" variant="tertiary">Discard</Button>
-              <Button on_click="handle_amount_range_apply" variant="primary">Apply</Button>
-            </LeftToRight>
-          </LeftToRight>
-        </Popover>
-      </Popover.Outer>
+          </div>
+        </:content>
+      </Popover>
 
-      <Popover.Outer>
+      <Popover show={@clicked_name == "more_filters"} on_close="close_popover" placement="bottom">
         <Chip on_click="open_popover" value="more_filters" right_icon="icon_chevron_down_rounded">More filters</Chip>
-        <Popover close="close_popover" placement="under" :if={@clicked_name == "more_filters"}>
-          Yay
-        </Popover>
-      </Popover.Outer>
+        <:content>
+          <div class="p-4 h-80 w-80 bg-gohan-100 shadow rounded">
+            Yay
+          </div>
+        </:content>
+      </Popover>
 
       <Button on_click="save_segment" left_icon="icon_timer">Save segment</Button>
       <Button on_click="clear_all_filters">Clear all</Button>

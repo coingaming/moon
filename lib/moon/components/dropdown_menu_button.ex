@@ -2,7 +2,7 @@ defmodule Moon.Components.DropdownMenuButton do
   @moduledoc false
 
   use MoonWeb, :stateless_component
-  alias Moon.Components.PopoverV2
+  alias Moon.Components.Popover
 
   prop class, :string
   prop title, :string
@@ -19,7 +19,7 @@ defmodule Moon.Components.DropdownMenuButton do
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 {=@show} on_close={@on_toggle} {=@placement}>
+    <Popover {=@show} on_close={@on_toggle} {=@placement}>
       <button
         class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks-100 hover:text-bulma-100 #{
           @text_color
@@ -33,7 +33,7 @@ defmodule Moon.Components.DropdownMenuButton do
       <:content>
         <#slot name="menu" />
       </:content>
-    </PopoverV2>
+    </Popover>
     """
   end
 end

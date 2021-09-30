@@ -6,21 +6,23 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Components.Form
   alias Moon.Components.TextInput
+  alias Moon.Components.Popover
 
   alias __MODULE__.SearchResults
 
   data search_active, :boolean, default: false
   data search_map, :any, default: %{search_text: ""}
 
+  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
-    <div class="w-full relative z-20">
+    <Popover show={@search_active} on_close="deactivate_search" placement="bottom">
       <Form
         for={:search_map}
         change="update_search_map"
         submit="close_search"
         autocomplete="off"
-        class="max-w-md relative m-auto"
+        class="w-128 max-w-md"
       >
         <TextInput
           right_icon_click="clear_search"
@@ -33,14 +35,17 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
           <:left_icon><IconZoom /></:left_icon>
           <:right_icon :if={should_show_close_search(@search_map)}><IconCloseRounded /></:right_icon>
         </TextInput>
-        <SearchResults
-          id="search"
-          close="deactivate_search"
-          search_text={@search_map.search_text}
-          :if={@search_active}
-        />
       </Form>
-    </div>
+
+      <:content>
+        <div class="w-128 max-w-md">
+          <SearchResults
+            id="search"
+            search_text={@search_map.search_text}
+          />
+        </div>
+      </:content>
+    </Popover>
     """
   end
 

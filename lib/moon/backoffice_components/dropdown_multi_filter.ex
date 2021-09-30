@@ -3,7 +3,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
 
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Autolayouts.{LeftToRight, TopToDown}
-  alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, PopoverV2, TextInput}
+  alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, Popover, TextInput}
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true
@@ -21,7 +21,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 show={@show_filter} on_close={@on_close}>
+    <Popover show={@show_filter} on_close={@on_close}>
       <#slot />
       <:content>
         <div class="w-80 bg-gohan-100 shadow rounded-lg pt-2">
@@ -89,7 +89,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
           </LeftToRight>
         </div>
       </:content>
-    </PopoverV2>
+    </Popover>
     """
   end
 end

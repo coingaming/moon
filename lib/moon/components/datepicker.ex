@@ -8,7 +8,7 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month
-  alias Moon.Components.PopoverV2
+  alias Moon.Components.Popover
   alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
 
@@ -63,7 +63,7 @@ defmodule Moon.Components.Datepicker do
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 show={@show} on_close="toggle_picker">
+    <Popover show={@show} on_close="toggle_picker">
       <Chip
         class={@button_class}
         on_click="toggle_picker"
@@ -206,7 +206,7 @@ defmodule Moon.Components.Datepicker do
           </div>
         </div>
       </:content>
-    </PopoverV2>
+    </Popover>
     """
   end
 
