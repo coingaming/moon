@@ -39,10 +39,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
 
       <:content>
         <div class="w-128 max-w-md">
-          <SearchResults
-            id="search"
-            search_text={@search_map.search_text}
-          />
+          <SearchResults id="search" search_text={@search_map.search_text} />
         </div>
       </:content>
     </Popover>
