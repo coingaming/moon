@@ -1,4 +1,4 @@
-defmodule Moon.ComponentsV2.Table do
+defmodule Moon.BackofficeComponents.Table do
   @moduledoc false
 
   use Moon.StatefulComponent

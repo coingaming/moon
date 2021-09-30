@@ -19,7 +19,6 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   use MoonWeb, :live_view
 
   alias __MODULE__.TransactionsFilters
-  alias __MODULE__.TransactionsTable
 
   alias Faker.Finance
   alias Faker.Person
@@ -28,6 +27,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.Pages.ExamplePages.Shared
+  alias Moon.BackofficeComponents.Table
   alias Shared.LeftMenu
   alias Shared.TopMenu
 
@@ -96,14 +96,26 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
           <Heading size={32}>Transactions</Heading>
           <TopToDown class="mt-6">
             <TransactionsFilters id="transaction_filters" {=@filter_options} />
-            <TransactionsTable
-              id="transaction_list"
-              records={@transactions}
-              {=@total_count}
+            <Table
+              id="transactions_list"
+              columns={[
+                %{label: "Customer", field: :customer_name, sortable: true},
+                %{label: "Transaction ID", field: :id, sortable: true},
+                %{label: "Brand", field: :brand_name, type: :brand},
+                %{label: "Create time", field: :create_time, type: :datetime_relative},
+                %{label: "Process time", field: :process_time, type: :datetime_relative},
+                %{label: "Status", field: :status, type: :text},
+                %{label: "Tags", field: :tags, type: :text},
+                %{label: "Description", field: :description, type: :text},
+                %{label: "Amount, EUR", field: :amount_eur, type: :money_amount},
+                %{label: "Currency", field: :currency_name, type: :text}
+              ]}
+              {=@page}
               {=@page_count}
-              page={@page}
+              {=@total_count}
+              items={@transactions}
+              active_item_id={@active_transaction.id}
               sort_by={@sort_by}
-              active_id={@active_transaction.id}
             />
           </TopToDown>
         </div>
