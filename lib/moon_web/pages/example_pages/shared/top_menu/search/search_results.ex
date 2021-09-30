@@ -7,10 +7,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
   alias Moon.Autolayouts.Sections
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
-  alias Moon.Components.Popover
 
   prop search_text, :string
-  prop close, :event
   data search_results, :any
 
   def mount(assigns) do
@@ -19,21 +17,19 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
 
   def render(assigns) do
     ~F"""
-    <Popover close={@close} placement="under">
-      <Sections class="gap-8 p-4">
-        <div :for={section <- @search_results}>
-          <div class="pb-4">{section.title}</div>
-          <TopToDown>
-            <div :for={child <- section.children}>
-              <Link to={child.to}>
-                <Icon name={child.icon} class="mr-4" />
-                {child.text}
-              </Link>
-            </div>
-          </TopToDown>
-        </div>
-      </Sections>
-    </Popover>
+    <Sections class="w-full bg-gohan-100 shadow rounded-lg pt-2">
+      <div :for={section <- @search_results}>
+        <div class="pb-4">{section.title}</div>
+        <TopToDown>
+          <div :for={child <- section.children}>
+            <Link to={child.to}>
+              <Icon name={child.icon} class="mr-4" />
+              {child.text}
+            </Link>
+          </div>
+        </TopToDown>
+      </div>
+    </Sections>
     """
   end
 

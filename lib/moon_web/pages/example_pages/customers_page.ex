@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
   alias Moon.Components.{Button, Chip, Divider, Heading}
   alias Moon.Components.{Button, Form, TextInput}
-  alias Moon.ComponentsV2.Table
+  alias Moon.BackofficeComponents.Table
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.MockDB.{Segments, Users, Utils}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview
@@ -89,7 +89,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               <Chip value="more filters" right_icon="icon_chevron_down_rounded">More Filters</Chip>
 
               {#if @segment_id == nil}
-                <Button variant="danger" left_icon="chart_segment" on_click="save_segment_form_init">
+                <Button variant="danger" on_click="save_segment_form_init">
                   <IconChartSegment font_size="1.2rem" />Save Segment
                 </Button>
               {/if}

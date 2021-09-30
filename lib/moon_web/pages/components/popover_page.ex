@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
   use MoonWeb, :stateful_component
 
   alias Moon.Components.Button
-  alias Moon.Components.PopoverV2
+  alias Moon.Components.Popover
 
   prop placement, :string, required: true
 
@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
 
   def render(assigns) do
     ~F"""
-    <PopoverV2 show={@show} placement={@placement} on_close="toggle_show">
+    <Popover show={@show} placement={@placement} on_close="toggle_show">
       <Button on_click="toggle_show" variant="primary">Click Me</Button>
 
       <:content>
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
           <div class="capitalize">{"#{@placement}"}</div>
         </div>
       </:content>
-    </PopoverV2>
+    </Popover>
     """
   end
 
@@ -100,10 +100,10 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
             </:example>
             <:code>
               <#CodePreview>
-              <PopoverV2 show={@show} placement={placement} on_close="toogle_show">
+              <Popover show={@show} placement={placement} on_close="toogle_show">
                 <Chip on_click="toogle_show">Click Me</Chip>
                 <:content>...</:content>
-              </PopoverV2>
+              </Popover>
             </#CodePreview>
             </:code>
           </ExampleAndCode>

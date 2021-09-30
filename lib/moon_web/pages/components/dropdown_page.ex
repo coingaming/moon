@@ -31,7 +31,12 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
     %{label: "Game 2", value: "2"},
     %{label: "Game 3", value: "3"},
     %{label: "Game 4", value: "4"},
-    %{label: "Game 5", value: "5"}
+    %{label: "Game 5", value: "5"},
+    %{label: "Game 6", value: "6"},
+    %{label: "Game 7", value: "7"},
+    %{label: "Game 8", value: "8"},
+    %{label: "Game 9", value: "9"},
+    %{label: "Game 10", value: "10"}
   ]
 
   data(item_id, :string, default: "1")
@@ -68,24 +73,26 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
         <ExampleAndCode title="Using CheckboxMultiselect" class="mt-4" id="dropdown_1">
           <:example>
             <Dropdown>
-              <CheckboxMultiselect
-                on_change="handle_game_selection_changed"
-                value={@selected_game_ids}
-                options={@selectable_game_options}
-              />
+              <div class="max-h-48 p-1 overflow-y-scroll">
+                <CheckboxMultiselect
+                  on_select="handle_game_selection_changed"
+                  values={@selected_game_ids}
+                  options={@selectable_game_options}
+                />
+              </div>
             </Dropdown>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Dropdown>
-          <CheckboxMultiselect
-            on_change="handle_game_selection_changed"
-            value={ @selected_game_ids }
-            options={ @selectable_game_options }
-          />
-        </Dropdown>
-        </#CodePreview>
+              <Dropdown>
+                <CheckboxMultiselect
+                  on_select="handle_game_selection_changed"
+                  values={ @selected_game_ids }
+                  options={ @selectable_game_options }
+                />
+              </Dropdown>
+            </#CodePreview>
           </:code>
 
           <:state>
@@ -100,12 +107,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
               search_placeholder="Search for a name ..."
               search_name={:game_search}
             >
-              <CheckboxMultiselect
-                on_change="handle_game_selection_changed"
-                class="max-h-32"
-                value={@selected_game_ids}
-                options={@selectable_filtered_game_options}
-              />
+              <div class="max-h-48 p-1 overflow-y-scroll">
+                <CheckboxMultiselect
+                  on_select="handle_game_selection_changed"
+                  values={@selected_game_ids}
+                  options={@selectable_filtered_game_options}
+                />
+              </div>
             </Dropdown>
           </:example>
 
@@ -116,12 +124,13 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           search_placeholder="Search for a name ..."
           search_name={ :game_search }
         >
-          <CheckboxMultiselect
-            on_change="handle_game_selection_changed"
-            class="max-h-32"
-            value={ @selected_game_ids }
-            options={ @selectable_filtered_game_ptions }}
-          />
+          <div class="max-h-48 p-1 bg-gohan-100 overflow-y-scroll">
+            <CheckboxMultiselect
+              on_select="handle_game_selection_changed"
+              values={ @selected_game_ids }
+              options={ @selectable_filtered_game_ptions }}
+            />
+          </div>
         </Dropdown>
         </#CodePreview>
           </:code>
@@ -149,7 +158,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           <SingeItemSelect
             on_change="handle_other_game_selected"
             value={ @other_game_id }}
-           options={ @selectable_game_options }
+            options={ @selectable_game_options }
           />
         </Dropdown>
         </#CodePreview>
@@ -169,7 +178,7 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
             >
               <SingeItemSelect
                 on_change="handle_other_game_selected"
-                class="max-h-32"
+                class="max-h-48"
                 value={@other_game_id}
                 options={@selectable_filtered_game_options}
               />
@@ -184,10 +193,10 @@ defmodule MoonWeb.Pages.Components.DropdownPage do
           search_name={ :game_search }
         >
           <SingeItemSelect
-            on_change="handle_other_game_selected"
-            class="max-h-32"
-            value={ @other_game_id }}
-           options={ @selectable_filtered_game_ptions }}
+            on_select="handle_other_game_selected"
+            class="max-h-48"
+            values={ @other_game_id }}
+            options={ @selectable_filtered_game_ptions }}
           />
         </Dropdown>
         </#CodePreview>
