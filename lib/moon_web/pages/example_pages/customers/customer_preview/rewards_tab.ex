@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
 
   alias Moon.Assets.Icons.{IconChevronLeftRounded, IconChevronRightRounded}
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.{Button, Divider, Table, Text}
+  alias Moon.Components.{Button, Divider, Text}
 
   def render(assigns) do
     ~F"""
@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
       </div>
       <Divider class="my-4" />
 
-      <Table>
+      <table>
         <thead>
           <th>Reward type</th>
           <th>Create time</th>
@@ -65,7 +65,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
         </thead>
         <tbody>
         </tbody>
-      </Table>
+      </table>
 
       <div class="flex items-center justify-around w-full h-32">
         <Text size="16">No records found</Text>

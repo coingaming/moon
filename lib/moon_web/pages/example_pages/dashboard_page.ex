@@ -226,7 +226,6 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
             <div class="flex items-center justify-center w-50">
               <ContentFilter
-                id="metric_filter"
                 filter_name="Metric"
                 left_icon="icon_plus"
                 chip_class="font-normal"
