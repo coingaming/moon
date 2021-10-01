@@ -78,38 +78,9 @@ defmodule MoonWeb.Components.LeftMenu do
         ]
       },
       %{
-        name: "Assets",
-        url: "/",
-        children: [
-          %{
-            name: "Crests",
-            url: "/theme_name/assets/crests"
-          },
-          %{
-            name: "Currencies",
-            url: "/theme_name/assets/currencies"
-          },
-          %{
-            name: "Duotones",
-            url: "/theme_name/assets/duotones"
-          },
-          %{
-            name: "Icons",
-            url: "/theme_name/assets/icons"
-          },
-          %{
-            name: "New Icons",
-            url: "/theme_name/icons"
-          },
-          %{
-            name: "Logos",
-            url: "/theme_name/assets/logos"
-          },
-          %{
-            name: "Patterns",
-            url: "/theme_name/assets/patterns"
-          }
-        ]
+        name: "Icons",
+        url: "/theme_name/icons",
+        children: []
       },
       %{
         name: "Components",
@@ -265,25 +236,38 @@ defmodule MoonWeb.Components.LeftMenu do
             <LogoMoonDesign class="ml-4" font_size="5rem" />
             <Accordion>
               {#for nav_section <- @navigations}
-                <Item
-                  click="open"
-                  item_id={"#{nav_section.name}"}
-                  is_open={should_nav_section_be_open(nav_section, @uri, @item_id, previous_item_id, @theme_name)}
-                  title={"#{nav_section.name}"}
-                >
-                  {#for nav_item <- nav_section.children}
-                    <LiveRedirect
-                      class={
-                        "block m-1 text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
-                        leading-7 group w-full flex items-center py-2 rounded-md transition-colors ease-in-out duration-150",
-                        "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_item.url, @theme_name)
-                      }
-                      to={String.replace(nav_item.url, "theme_name", @theme_name)}
-                    >
-                      {nav_item.name}
-                    </LiveRedirect>
-                  {/for}
-                </Item>
+                {#if nav_section.children != []}
+                  <Item
+                    click="open"
+                    item_id={"#{nav_section.name}"}
+                    is_open={should_nav_section_be_open(nav_section, @uri, @item_id, previous_item_id, @theme_name)}
+                    title={"#{nav_section.name}"}
+                  >
+                    {#for nav_item <- nav_section.children}
+                      <LiveRedirect
+                        class={
+                          "block m-1 text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
+                           leading-7 group w-full flex items-center py-2 rounded-md transition-colors ease-in-out duration-150",
+                          "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_item.url, @theme_name)
+                        }
+                        to={String.replace(nav_item.url, "theme_name", @theme_name)}
+                      >
+                        {nav_item.name}
+                      </LiveRedirect>
+                    {/for}
+                  </Item>
+                {#else}
+                  <LiveRedirect
+                    class={
+                      "block m-1 ml-2 text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
+                       leading-7 group w-full flex items-center py-2 rounded-md transition-colors ease-in-out duration-150",
+                      "bg-trunks-100 text-gohan-100": should_url_be_highlighted(@uri, nav_section.url, @theme_name)
+                    }
+                    to={String.replace(nav_section.url, "theme_name", @theme_name)}
+                  >
+                    {nav_section.name}
+                  </LiveRedirect>
+                {/if}
               {/for}
             </Accordion>
           </TopToDown>
