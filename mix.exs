@@ -45,7 +45,7 @@ defmodule Moon.MixProject do
       {:phoenix, "~> 1.6"},
       {:phoenix_live_view, "~> 0.16"},
       {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_dashboard, "~> 0.3 or ~> 0.2.9"},
+      {:phoenix_live_dashboard, "~> 0.5.2"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:faker, "~> 0.16"},
