@@ -9,8 +9,6 @@ defmodule Moon.Application do
     children = [
       # Start Mock DB
       %{id: :mock_db, start: {MoonWeb.MockDB, :start_link, []}},
-      # Start the Telemetry supervisor
-      MoonWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Moon.PubSub},
       # Start the Endpoint (http/https)
