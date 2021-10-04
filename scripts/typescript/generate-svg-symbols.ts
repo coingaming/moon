@@ -4,7 +4,7 @@ console.log('Running assets importer');
 
 const rawDir = 'node_modules/moon-design/packages/assets/raw/';
 const rawDirIcons = 'node_modules/moon-design/packages/icons/raw/imported';
-const exportDir = '../../assets/static/svgs';
+const exportDir = '../../priv/static/svgs';
 
 const getFilesList = (iconType: string) => {
   // New icons are at different folder

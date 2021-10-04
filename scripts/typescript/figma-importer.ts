@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import fetch from 'node-fetch';
 
-const exportDir = '../../assets/css/themes/';
+const exportDir = '../../priv/static/themes/';
 
 console.log('Running Figma importer');
 
@@ -165,7 +165,7 @@ themes.map(async (theme: ThemeConf) => {
 
   const figmaConfig = getFigmaConfig(elements);
 
-  console.log(figmaConfig);
+  // console.log(figmaConfig);
 
   const fontFaceCss = `
 @font-face {
@@ -260,7 +260,6 @@ themes.map(async (theme: ThemeConf) => {
 
   const lightThemeCss = `
 ${fontFaceCss}
-
 .${theme.name}-light {
   ${sharedCssVarsAndValues}
 
@@ -274,36 +273,33 @@ ${fontFaceCss}
   ${colorIds
     .map(
       (x) => `
-  --color--${x}: #${`${figmaConfig[`light-color-${x}`]}`.replace("#", "")}; // light-color-${x}`
+  --color--${x}: #${`${figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
     )
     .join('')}
 }
-  `;
+`;
 
   const darkThemeCss = `
-  ${fontFaceCss}
+${fontFaceCss}
+.${theme.name}-dark {
+  ${sharedCssVarsAndValues}
 
-  .${theme.name}-dark {
-    ${sharedCssVarsAndValues}
+  --box-shadow--sm:  ${figmaConfig['dark-box-shadow-sm']};
+  --box-shadow:  ${figmaConfig['dark-box-shadow-default']};
+  --box-shadow--md:  ${figmaConfig['dark-box-shadow-default']};
+  --box-shadow--default:  ${figmaConfig['dark-box-shadow-default']};
+  --box-shadow--lg:  ${figmaConfig['dark-box-shadow-lg']};
+  --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
 
-    --box-shadow--sm:  ${figmaConfig['dark-box-shadow-sm']};
-    --box-shadow:  ${figmaConfig['dark-box-shadow-default']};
-    --box-shadow--md:  ${figmaConfig['dark-box-shadow-default']};
-    --box-shadow--default:  ${figmaConfig['dark-box-shadow-default']};
-    --box-shadow--lg:  ${figmaConfig['dark-box-shadow-lg']};
-    --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
+  ${colorIds
+    .map(
+      (x) => `
+  --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
+    )
+    .join('')}
+}
+`;
 
-    ${colorIds
-      .map(
-        (x) => `
-    --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")}; // dark-color-${x} (fallover to light)`
-      )
-      .join('')}
-
-  }
-    `;
-
-  writeThemeFile(`${theme.name}-light.scss`, lightThemeCss);
-  writeThemeFile(`${theme.name}-dark.scss`, darkThemeCss);
-
+  writeThemeFile(`${theme.name}-light.css`, lightThemeCss);
+  writeThemeFile(`${theme.name}-dark.css`, darkThemeCss);
 });

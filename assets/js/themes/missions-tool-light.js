@@ -1,1 +1,0 @@
-import "../../css/themes/missions-tool-light.scss"
