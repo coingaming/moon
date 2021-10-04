@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
+
+    <link phx-track-static rel="stylesheet" href={static_path(@conn, "/css/app.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/aposta10-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/aposta10-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/bitcasino-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/bitcasino-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/bombay-club.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/btcxe.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/hub88.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/lab-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/lab-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/livecasino-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/livecasino-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/luckyslots.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/missions-tool-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/missions-tool-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/moon-design-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/moon-design-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/slots-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/slots-light.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/sportsbet-dark.css")} />
+    <link rel="stylesheet" href={static_path(@conn, "/css/sportsbet-light.css")} />
+    <link phx-track-static rel="stylesheet" href={static_path(@conn, "/css/tailwind.css")} />
+
+    <style>
+      pre {
+        font-size: 12px;
+        word-wrap: break-word;
+        overflow-x: scroll;
+      }
+    </style>
+
+    <script defer type="text/javascript" src={static_path(@conn, "/js/app.js")}></script>
+  </head>
+  <body class={theme_name(@conn.params)}>
+    <%= @inner_content %>
+  </body>
+</html>

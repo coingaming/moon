@@ -5,7 +5,7 @@ module.exports = {
   purge: [
     './static/svgs/icons/*.svg',
     '../lib/**/*.ex',
-    '../lib/**/*.leex',
+    '../lib/**/*.heex',
     '../lib/**/*.eex',
     './js/**/*.js',
   ],
