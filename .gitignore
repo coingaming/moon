@@ -30,6 +30,7 @@ npm-debug.log
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
+!/priv/static/assets/hooks.js
 
 node_modules
 .DS_Store
