@@ -14,7 +14,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
 
   def render(assigns) do
     ~F"""
-    <div class="flex justify-between items-center my-4 #{@class}">
+    <div class={"flex justify-between items-center my-4 #{@class}"}>
       <Heading class="items-center" size={20} is_regular>{@title}</Heading>
       <div class="bg-beerus-100 p-0.5 rounded place-content-center">
         <button
