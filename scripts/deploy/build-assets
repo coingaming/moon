@@ -3,6 +3,4 @@
 set -e
 
 echo "Installing assets.." && \
-(cd assets
-npm i
-npm run deploy)
+mix assets.deploy

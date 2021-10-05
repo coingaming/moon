@@ -1,1 +1,0 @@
-import "../../css/themes/aposta10-light.scss"

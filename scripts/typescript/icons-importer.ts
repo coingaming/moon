@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 console.log('Running assets importer');
 
-const rawDirIcons = '../../assets/static/svgs/icons_new';
+const rawDirIcons = '../../priv/static/svgs/icons_new';
 const exportDir = '../../lib/moon';
 
 const getFilesList = () => fs.readdirSync(`${rawDirIcons}`);

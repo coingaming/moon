@@ -24,7 +24,8 @@ defmodule MoonWeb.Endpoint do
     at: "/moon/assets/",
     from: :moon,
     gzip: true,
-    only: ~w(css gettext fonts images svgs js favicon.ico robots.txt)
+    only: ~w(assets themes images svgs favicon.ico robots.txt),
+    cache_control_for_etags: "public, max-age=86400"
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

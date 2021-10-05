@@ -32,7 +32,7 @@ jobs:
         command: mix archive.install hex ex_env 0.3.1 --force
     - run:
         name: Fetch dependencies
-        command: mix deps.get
+        command: mix setup
     - run:
         name: Build assets
         command: scripts/deploy/build-assets

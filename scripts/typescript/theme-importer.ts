@@ -84,7 +84,7 @@ const writeTheme = (jsTheme:any, exThemePath:string) => {
   const themeName = exThemePath.split("/").splice(-1)[0];
 
   fs.writeFileSync(
-    `${exThemePath}.scss`,
+    `${exThemePath}.css`,
     `
 @font-face {
   font-family: ${s(exObj.font_face[0]['@font-face'].font_family)};
@@ -195,6 +195,6 @@ for (const k in themes) {
   const fileName = camelToSnakeCase(k).replace(/_/g, "-");
   writeTheme(
     v,
-    `../../assets/css/themes/${fileName}`
+    `../../priv/static/themes/${fileName}`
   );
 }
