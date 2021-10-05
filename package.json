@@ -1,0 +1,15 @@
+{
+  "name": "moon",
+  "version": "2.0.2",
+  "description": "Set of UI components built with Surface UI library",
+  "author": "Yolo Group",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coingaming/moon.git"
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "priv/static/*"
+  ]
+}
