@@ -25,7 +25,7 @@
 --border-style: solid;
 --border-width: 1px;
 --border: 1px solid;
---box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.108), 0px 6.4px 14.4px rgba(0, 0, 0, 0.132);
+--box-shadow: 0px 0px 1px 0px #00000066, 0px 8px 24px -6px #00000029;
 
 --breakpoint--small: 500px;
 --breakpoint--medium: 800px;
@@ -58,7 +58,7 @@
 
 --radius--small: 4px;
 --radius--default: 8px;
---radius--largest: 100px;
+--radius--largest: 8px;
 
 --space--xsmall: 4px;
 --space--small: 8px;
