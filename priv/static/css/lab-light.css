@@ -4,16 +4,16 @@
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-weight: 400;
-  src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
-}
+  src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2"); }
+
 @font-face {
   font-family: Averta Std;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-weight: 500;
-  src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
-}
+  src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2"); }
+
 .lab-light {
   --base--space: 16px;
   --base--font-size: 14;
@@ -70,12 +70,12 @@
   font-weight: var(--font-face--regular--font-weight);
   --color--text: var(--color--bulma-100);
   --color--background: var(--color--goku-100);
-  --box-shadow--sm: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
-  --box-shadow: 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
-  --box-shadow--md: 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
-  --box-shadow--default: 0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
-  --box-shadow--lg: 0px 4.8px 14.4px rgba(0, 0, 0, 0.18), 0px 25.6px 57.6px rgba(0, 0, 0, 0.22);
-  --box-shadow--xl: undefined;
+  --box-shadow--sm:  0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
+  --box-shadow:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
+  --box-shadow--md:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
+  --box-shadow--default:  0px 0.6px 1.8px rgba(0, 0, 0, 0.1), 0px 3.2px 7.2px rgba(0, 0, 0, 0.13);
+  --box-shadow--lg:  0px 4.8px 14.4px rgba(0, 0, 0, 0.18), 0px 25.6px 57.6px rgba(0, 0, 0, 0.22);
+  --box-shadow--xl:  undefined;
   --color--krillin-100: #F5A300;
   --color--krillin-60: #FFC95C;
   --color--krillin-10: #FDF5E2;
@@ -116,5 +116,5 @@
   --color--gohan-100: #FFFFFF;
   --color--goten-100: #FFFFFF;
   --color--bulma-100: #202426;
-  --color--trunks-100: #8697A2;
-}
+  --color--trunks-100: #8697A2; }
+
