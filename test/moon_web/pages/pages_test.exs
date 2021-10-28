@@ -6,8 +6,13 @@ defmodule MoonWeb.Pages.PagesTest do
     |> Enum.each(fn route ->
       path = String.replace(route.path, ":theme_name", "lab-light")
 
-      conn = get(conn, path)
-      assert response(conn, 200)
+      try do
+        conn = get(conn, path)
+        assert response(conn, 200)
+      rescue
+        e ->
+          flunk("Error on page #{path}:\n\n#{e.message}")
+      end
     end)
   end
 end
