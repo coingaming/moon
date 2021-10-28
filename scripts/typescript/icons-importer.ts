@@ -171,10 +171,6 @@ defmodule MoonWeb.Pages.IconsPage do
   data breadcrumbs, :any,
     default: [
       %{
-        to: "#",
-        name: "Assets"
-      },
-      %{
         to: "/icons",
         name: "Icons"
       }
