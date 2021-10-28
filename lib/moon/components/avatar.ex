@@ -13,9 +13,7 @@ defmodule Moon.Components.Avatar do
   prop class, :string
 
   def style(assigns) do
-    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{
-      assigns.background_color
-    });"
+    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
   end
 
   def render(assigns) do

@@ -36,9 +36,7 @@ defmodule Moon.Components.Select do
       class={
         "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120
                hover:cursor-pointer focus:cursor-pointer border border-solid
-               border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{
-          @class
-        }",
+               border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{@class}",
         rounded: @rounded
       }
       field={@field}
@@ -52,9 +50,7 @@ defmodule Moon.Components.Select do
         class={
           "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120
                    hover:cursor-pointer focus:cursor-pointer border border-solid
-                   border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{
-            @class
-          }",
+                   border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{@class}",
           rounded: @rounded
         }
         field={@field}
