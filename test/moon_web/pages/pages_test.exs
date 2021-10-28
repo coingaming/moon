@@ -1,5 +1,5 @@
 defmodule MoonWeb.Pages.PagesTest do
-  use MoonWeb.ConnCase, async: true
+  use MoonWeb.ConnCase
 
   test "all pages open", %{conn: conn} do
     MoonWeb.Router.__routes__()
@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.PagesTest do
         assert response(conn, 200)
       rescue
         e ->
-          flunk("Error on page #{path}:\n\n#{e.message}")
+          flunk("Error on page #{path}\n\n#{Map.get(e, :message, "Message not available")}")
       end
     end)
   end
