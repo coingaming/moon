@@ -3,7 +3,7 @@ defmodule Moon.Components.Button do
 
   use Moon.StatelessComponent
 
-  alias Moon.Assets.Icon
+  alias Moon.Icon
 
   prop href, :string
   prop variant, :string, values: ["fill", "outline", "link", "primary", "secondary", "tertiary"]
