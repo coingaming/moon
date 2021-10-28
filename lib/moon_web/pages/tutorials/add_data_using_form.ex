@@ -39,7 +39,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       }
     ]
 
-  def mount(%{"theme_name" => theme_name}, _session, socket) do
+  def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
 
     gender_options = [
@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     socket =
       socket
       |> assign(
-        theme_name: theme_name,
+        theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
         user_map: @default_user_map,
         user_changeset: user_changeset,
