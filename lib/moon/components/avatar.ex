@@ -30,12 +30,7 @@ defmodule Moon.Components.Avatar do
       data-size={@size}
     >
       <span :if={@name && !@image_url}>{@name}</span>
-      <Icon
-        name="generic_user"
-        color={@color}
-        class={icon_class(@size)}
-        :if={!@name && !@image_url}
-      />
+      <Icon name="generic_user" color={@color} class={icon_class(@size)} :if={!@name && !@image_url} />
     </div>
     """
   end

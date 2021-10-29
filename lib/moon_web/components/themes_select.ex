@@ -10,7 +10,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoSportsbetShort
   alias Moon.Components.Switch
-  alias Moon.Icons.MediaTuner
+  alias Moon.Icon
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
@@ -51,7 +51,7 @@ defmodule MoonWeb.Components.ThemesSelect do
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
                duration-200 focus:outline-none z-40"
       >
-        <MediaTuner color="krillin-100" font_size="2rem" />
+        <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>
 
       <div class={"fixed bottom-16 right-4", hidden: !@show_themes}>
