@@ -43,11 +43,13 @@ const getSvgPropValue = (content: string, propName: string): string => {
   return c.substring(sAt, eAt);
 }
 
-const symboliseSvg = (content: string): string => {
+const symboliseSvg = (content: string, newIcons: boolean): string => {
   const svgContentStartsAt = content.indexOf(">", content.indexOf("<svg"));
   const svgContentEndsAt = content.indexOf("</svg");
+  const strokeAttrs = newIcons && content.includes('stroke') ? 'stroke-width="1"' : ''
+
   const symbolised = `${content.substring(0, svgContentStartsAt + 1)}
-  <symbol id="item" viewBox="${getSvgPropValue(content, "viewbox")}" stroke="currentColor" fill="none">
+  <symbol id="item" viewBox="${getSvgPropValue(content, "viewbox")}" ${strokeAttrs} fill="none">
     ${content.substring(svgContentStartsAt + 1, svgContentEndsAt)}
   </symbol>
 </svg>
@@ -63,7 +65,7 @@ const writeSvgFile = (iconType: string, file: string, contents: string) => {
     .replace(/#fff/gi, 'currentColor')
     .trim();
 
-  svgNewContents = symboliseSvg(svgNewContents);
+  svgNewContents = symboliseSvg(svgNewContents, iconType == "icons_new");
 
   if (iconType == "icons_new") {
     var svgPath = `${exportDir}/icons_new/${camelToDashSnakeCase(file).toLowerCase()}.svg`;
