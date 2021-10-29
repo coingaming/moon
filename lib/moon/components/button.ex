@@ -2,7 +2,6 @@ defmodule Moon.Components.Button do
   @moduledoc false
 
   use Moon.StatelessComponent
-
   alias Moon.Icon
 
   prop href, :string
@@ -16,10 +15,6 @@ defmodule Moon.Components.Button do
   prop pulse, :boolean
   prop disabled, :boolean
   prop type, :string, default: "button"
-
-  # TODO: Remove this prop as we don't use non-rounded buttons anywhere
-  prop rounded, :boolean, default: true
-
   prop to, :string
   prop as, :string
   prop active_class_name, :string
@@ -53,6 +48,8 @@ defmodule Moon.Components.Button do
           @variant in ["link", "secondary"],
         "text-xs h-8 px-3 leading-4": @size == "xsmall",
         "text-sm h-10 px-4 leading-6": @size == "small",
+        "text-base h-12 px-5": @size == "medium",
+        "text-lg h-14 px-6": @size == "large",
         "w-full": @full_width,
         "opacity-30": @disabled
       }
@@ -62,9 +59,9 @@ defmodule Moon.Components.Button do
       :on-click={@on_click}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
-      <Icon name={@left_icon} :if={@left_icon} />
+      <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
       <#slot />
-      <Icon name={@right_icon} :if={@right_icon} />
+      <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
     </button>
     """
   end
@@ -76,4 +73,9 @@ defmodule Moon.Components.Button do
     key = String.to_atom("phx-value-#{name}")
     [{key, value}]
   end
+
+  defp icon_class("xsmall"), do: "h-4 w-4"
+  defp icon_class("small"), do: "h-5 w-5"
+  defp icon_class("medium"), do: "h-6 w-6"
+  defp icon_class("large"), do: "h-7 w-7"
 end

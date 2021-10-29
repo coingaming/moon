@@ -3,7 +3,7 @@ defmodule Moon.Components.IconButton do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Assets.Icon
+  alias Moon.Icon
 
   prop icon_name, :string, required: true
   prop icon_size, :string, default: "1rem"
