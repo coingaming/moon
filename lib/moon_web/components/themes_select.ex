@@ -18,7 +18,6 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   data show_themes, :boolean, default: false
   data dark_mode, :boolean, default: false
-  data switch_value, :boolean, default: false
 
   @available_themes [
     [key: "Aposta10", value: "aposta10", modes: true],
@@ -40,6 +39,15 @@ defmodule MoonWeb.Components.ThemesSelect do
     @available_themes
   end
 
+  def update(assigns, socket) do
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(dark_mode: String.contains?(assigns.theme_name, "dark"))
+
+    {:ok, socket}
+  end
+
   def render(assigns) do
     ~F"""
     <div>
@@ -59,9 +67,7 @@ defmodule MoonWeb.Components.ThemesSelect do
           <button
             :on-click="update_selected_theme"
             type="button"
-            value={if !theme[:modes],
-              do: theme[:value],
-              else: if(@dark_mode, do: "#{theme[:value]}-dark", else: "#{theme[:value]}-light")}
+            value={theme[:value]}
             class="p-2 rounded-full ml-4 text-piccolo-100 bg-gohan-100 hover:bg-gohan-120 inline-flex items-center justify-center"
           >
             {#if theme[:value] == "aposta10"}
@@ -81,7 +87,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         {/for}
       </div>
       <div class={"fixed bottom-28 right-4", hidden: !@show_themes}>
-        <Switch icons checked={@switch_value} on_change="toggle_theme_mode" />
+        <Switch icons checked={@dark_mode} on_change="toggle_dark_mode" />
       </div>
     </div>
     """
@@ -91,20 +97,21 @@ defmodule MoonWeb.Components.ThemesSelect do
     {:noreply, assign(socket, show_themes: !socket.assigns.show_themes)}
   end
 
-  def handle_event("toggle_theme_mode", _props, socket) do
-    {:noreply,
-     assign(socket,
-       switch_value: !socket.assigns.switch_value,
-       dark_mode: !socket.assigns.dark_mode
-     )}
+  def handle_event("toggle_dark_mode", _props, socket) do
+    %{active_page: active_page, dark_mode: dark_mode, theme_name: theme} = socket.assigns
+    theme = String.replace(theme, ["-light", "-dark"], "")
+    new_path = generate_path(socket, active_page, theme, !dark_mode)
+    {:noreply, redirect(socket, to: new_path)}
   end
 
-  def handle_event(
-        "update_selected_theme",
-        %{"value" => theme_name},
-        socket
-      ) do
-    new_path = Routes.live_path(socket, socket.assigns.active_page, theme_name, %{})
+  def handle_event("update_selected_theme", %{"value" => theme}, socket) do
+    %{active_page: active_page, dark_mode: dark_mode} = socket.assigns
+    new_path = generate_path(socket, active_page, theme, dark_mode)
     {:noreply, redirect(socket, to: new_path)}
+  end
+
+  defp generate_path(socket, active_page, theme, dark_mode) do
+    theme_name = "#{theme}-#{if dark_mode, do: "dark", else: "light"}"
+    Routes.live_path(socket, active_page, theme_name, %{})
   end
 end
