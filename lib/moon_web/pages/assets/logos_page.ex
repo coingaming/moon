@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   use MoonWeb, :live_view
 
+  alias Moon.Assets.Logo
   alias Moon.Assets.Logos
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
@@ -22,7 +23,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       }
     ]
 
-  alias Logos.LogoAposta10Full
   alias Logos.LogoAposta10Short
   alias Logos.LogoBetaddaFull
   alias Logos.LogoBetaddaShort
@@ -71,12 +71,12 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
         <ExampleAndCode id="logo_1" class="mt-4">
           <:example>
-            <LogoAposta10Full font_size="10rem" />
+            <Logo name="logo_aposta10_full" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <LogoAposta10Full font_size="10rem" />
+              <Logo name="logo_aposta10_full" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
