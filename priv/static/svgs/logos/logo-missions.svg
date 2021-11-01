@@ -1,12 +1,6 @@
-
-<svg width="1em" height="1em"    viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="item"
-width="1em"
-height="1em"
-viewBox="0 0 40 40"
-fill="none"
->
-<circle cx="27.192" cy="21.306" transform="rotate(-15 27.192 21.306)" fill="#FF385C" r="10.371"/><circle cx="13.702" cy="26.848" transform="rotate(-15 13.702 26.848)" fill="#6A36CA" r="10.371"/><circle cx="15.801" cy="13.702" r="10.371" transform="rotate(-15 15.801 13.702)" fill="#FFB319"/>
-</symbol>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 40 40"  fill="none">
+    <circle cx="27.192" cy="21.306" transform="rotate(-15 27.192 21.306)" fill="#FF385C" r="10.371"/><circle cx="13.702" cy="26.848" transform="rotate(-15 13.702 26.848)" fill="#6A36CA" r="10.371"/><circle cx="15.801" cy="13.702" r="10.371" transform="rotate(-15 15.801 13.702)" fill="#FFB319"/>
+  </symbol>
 </svg>
   

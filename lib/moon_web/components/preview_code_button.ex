@@ -3,12 +3,11 @@ defmodule MoonWeb.Components.PreviewCodeButton do
 
   use Moon.StatelessComponent
 
-  alias Moon.Assets.Icons.IconEye
+  alias Moon.Components.Button
   alias Moon.Components.Heading
-  alias Moon.Icons.SoftwareCode
 
   prop title, :string, default: ""
-  prop selected_button, :string
+  prop selected_button, :string, default: "preview"
   prop click, :event, required: true
   prop class, :string
 
@@ -16,34 +15,28 @@ defmodule MoonWeb.Components.PreviewCodeButton do
     ~F"""
     <div class={"flex justify-between items-center my-4 #{@class}"}>
       <Heading class="items-center" size={20} is_regular>{@title}</Heading>
-      <div class="bg-beerus-100 p-0.5 rounded place-content-center">
-        <button
-          class={
-            "text-sm p-1.5 h-10 rounded transition",
-            "text-piccolo-100 bg-gohan-100": "preview" == @selected_button,
-            "text-piccolo-100": "preview" != @selected_button
-          }
-          :on-click={@click}
-          phx-value-selected-item="preview"
+      <div class="flex bg-beerus-100 p-1 rounded place-content-center">
+        <Button
+          class={"px-2 #{if @selected_button == "preview", do: "bg-gohan-100"}"}
+          on_click={@click}
+          left_icon="controls_eye"
+          size="small"
+          value_name="selected-item"
+          value="preview"
         >
-          <div class="p-1 mx-2">
-            <IconEye font_size="1.5rem" /> Preview
-          </div>
-        </button>
+          Preview
+        </Button>
 
-        <button
-          class={
-            "text-sm p-1.5 h-10 rounded transition",
-            "text-piccolo-100 bg-gohan-100": "code" == @selected_button,
-            "text-piccolo-100": "code" != @selected_button
-          }
-          :on-click={@click}
-          phx-value-selected-item="code"
+        <Button
+          class={"px-2 #{if @selected_button == "code", do: "bg-gohan-100"}"}
+          on_click={@click}
+          left_icon="software_code"
+          size="small"
+          value_name="selected-item"
+          value="code"
         >
-          <div class="p-1 mx-2">
-            <SoftwareCode font_size="1.5rem" /> Code
-          </div>
-        </button>
+          Code
+        </Button>
       </div>
     </div>
     """

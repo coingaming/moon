@@ -49,7 +49,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
         <ExampleAndCode title="Image avatars" id="avatar_1">
           <:example>
-            <LeftToRight>
+            <LeftToRight class="items-center">
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
@@ -72,7 +72,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
             Use name prop. No more than 2 / 3 characters
           </:note>
           <:example>
-            <LeftToRight>
+            <LeftToRight class="items-center">
               <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
               <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
               <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
@@ -90,7 +90,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </ExampleAndCode>
         <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
           <:example>
-            <LeftToRight>
+            <LeftToRight class="items-center">
               <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
               <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="small" />
               <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
@@ -108,14 +108,16 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </ExampleAndCode>
         <ExampleAndCode title="Different colors" id="avatar_4">
           <:example>
-            <LeftToRight>
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
+            <LeftToRight class="items-center">
+              <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
+              <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
               <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
             </LeftToRight>
           </:example>
           <:code>
             <#CodePreview>
-        <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
+        <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
+        <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
         <Avatar color="piccolo-100" background_color="gohan-100" size="medium" />
         </#CodePreview>
           </:code>

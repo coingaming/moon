@@ -53,7 +53,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:surface, "~> 0.5.2"},
+      {:surface, "~> 0.6"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
 
@@ -64,9 +64,8 @@ defmodule Moon.MixProject do
 
       # dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:surface_formatter, "~> 0.5.4", only: :dev},
-      {:dialyxir, "~> 1.0", only: :dev, runtime: false},
-      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev}
+      {:surface_formatter, "~> 0.6", only: :dev},
+      {:dialyxir, "~> 1.0", only: :dev, runtime: false}
     ]
   end
 
@@ -79,11 +78,9 @@ defmodule Moon.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "cmd npm install --prefix assets"],
-      "assets.deploy": [
-        "cmd --cd assets npm run deploy",
-        "esbuild default --minify",
-        "phx.digest"
-      ]
+      "assets.setup": ["cmd --cd assets npm i"],
+      "assets.clean": ["cmd --cd assets rm -rf node_modules"],
+      "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"]
     ]
   end
 end

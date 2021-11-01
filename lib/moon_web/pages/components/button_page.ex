@@ -92,80 +92,63 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Link+Icon" id="button4">
-          <:note>
-            To be used where the the button is a link
-          </:note>
+        <ExampleAndCode title="Leading and trailing icons" id="button4">
           <:example>
-            <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
+            <LeftToRight class="items-center">
+              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+            </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Button left_icon="icon_profile" variant="link">Link+Icon</Button>
-        </#CodePreview>
+        <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+        <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Button Sizes" id="button5">
           <:example>
             Fill
-            <LeftToRight class="items-center">
-              <Button variant="fill" size="xsmall">
-                Xsmall
-              </Button>
-              <Button variant="fill" size="small">
-                Small
-              </Button>
+            <LeftToRight gap="gap-4" centered class="mb-6">
+              <Button variant="fill" size="xsmall">Xsmall</Button>
+              <Button variant="fill" size="small">Small</Button>
+              <Button variant="fill" size="medium">Medium</Button>
+              <Button variant="fill" size="large">Large</Button>
             </LeftToRight>
 
-            <div class="my-8" />
+            With icons
+            <LeftToRight gap="gap-4" centered class="mb-6">
+              <Button left_icon="chart_bar" variant="fill" size="xsmall">Xsmall</Button>
+              <Button left_icon="chart_line" variant="fill" size="small">Small</Button>
+              <Button left_icon="chart_pie_chart" variant="fill" size="medium">Medium</Button>
+              <Button left_icon="chart_round" variant="fill" size="large">Large</Button>
+            </LeftToRight>
 
             Outline
-            <LeftToRight class="items-center">
-              <Button variant="outline" size="xsmall">
-                Xsmall
-              </Button>
-              <Button variant="outline" size="small">
-                Small
-              </Button>
+            <LeftToRight gap="gap-4" centered class="mb-6">
+              <Button variant="outline" size="xsmall">Xsmall</Button>
+              <Button variant="outline" size="small">Small</Button>
+              <Button variant="outline" size="medium">Medium</Button>
+              <Button variant="outline" size="large">Large</Button>
             </LeftToRight>
 
-            <div class="my-8" />
-
             Link
-            <LeftToRight class="items-center">
-              <Button variant="link" size="xsmall">
-                Xsmall
-              </Button>
-              <Button variant="link" size="small">
-                Small
-              </Button>
+            <LeftToRight gap="gap-4" centered>
+              <Button variant="link" size="xsmall">Xsmall</Button>
+              <Button variant="link" size="small">Small</Button>
+              <Button variant="link" size="medium">Medium</Button>
+              <Button variant="link" size="large">Large</Button>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Button variant="fill" size="xsmall">
-        Xsmall
-        </Button>
-        <Button variant="fill" size="small">
-        Small
-        </Button>
-
-        <Button variant="outline" size="xsmall">
-          Xsmall
-        </Button>
-        <Button variant="outline" size="small">
-          Small
-        </Button>
-
-        <Button variant="link" size="xsmall">
-          Xsmall
-        </Button>
-        <Button variant="link" size="small">
-          Small
-        </Button>
+        <Button variant="fill" size="xsmall">Xsmall</Button>
+        <Button variant="fill" size="small">Small</Button>
+        <Button variant="fill" size="medium">Medium</Button>
+        <Button variant="fill" size="large">Large</Button>
       </#CodePreview>
           </:code>
         </ExampleAndCode>
