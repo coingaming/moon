@@ -23,7 +23,6 @@ defmodule Moon.Components.Chip do
       right_icon={@right_icon}
       on_click={@on_click}
       value={@value}
-      rounded
     ><#slot /></Button>
     """
   end
