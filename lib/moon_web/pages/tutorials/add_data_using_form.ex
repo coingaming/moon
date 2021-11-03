@@ -91,6 +91,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
           <Form
             for={@user_changeset}
+            as={:user}
             change="update_user_changeset"
             submit="save_user_changeset"
             autocomplete="off"
@@ -128,48 +129,44 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
         <:code>
           <#CodePreview>
-        <ToastStack id="toasts" />
+          <ToastStack id="toasts" />
 
-        <Form for={ @user_changeset } change="update_user_changeset" submit="save_user_changeset" autocomplete="off">
-          <TopToDown>
-            <div class="flex items-center">
-              <Switch checked={ @lock_fields }} on_change="lock_form_fields" />
-              <span class="ml-3">Lock fields</span>
-            </div>
+          <Form
+            for={@user_changeset}
+            as={:user}
+            change="update_user_changeset"
+            submit="save_user_changeset"
+            autocomplete="off"
+          >
+            <TopToDown>
+              <div class="flex items-center">
+                <Switch checked={@lock_fields} on_change="lock_form_fields" />
+                <span class="ml-3">Lock fields</span>
+              </div>
 
-            <TextInput label="Name" field={ :name } />
-            <TextInput label="Email" field={ :email } />
+              <!-- TODO: Add form validation -->
+              <!-- div class="flex items-center">
+                <Switch checked={ @enable_validations } />
+                <span class="ml-3">Enable validations (not implemented)</span>
+              </div -->
 
-            <Select
-              label="Gender"
-              field={ :gender }
-              options={ @gender_options }
-              prompt="Please select gender"
-            />
+              <TextInput label="Name" field={:name} disabled={@lock_fields} />
+              <TextInput label="Email" field={:email} disabled={@lock_fields} />
 
-            <FileInput
-              conf={ @uploads.file }
-              label="Upload your ID"
-              placeholder="Choose a document..."
-            />
+              <Select
+                label="Gender"
+                disabled={@lock_fields}
+                field={:gender}
+                options={@gender_options}
+                prompt="Please select gender"
+              />
 
-            <Button variant="fill" type="submit" full_width>Save</Button>
-            <Button variant="outline" on_click="clear_form">Cancel</Button>
-          </TopToDown>
-        </Form>
+              <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
 
-        def handle_event("save_user_changeset", _, socket) do
-          ToastStack.show(
-            %Toast.Message{message: "Details saved.", variant: "success"},
-            "toasts"
-          )
-          {:noreply, socket}
-        end
-
-        def handle_info({:hide_toast, toast_id}, socket) do
-          ToastStack.hide_toast(toast_id, "toasts")
-          {:noreply, socket}
-        end
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
+            </TopToDown>
+          </Form>
       </#CodePreview>
         </:code>
 
@@ -203,22 +200,24 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
         <:code>
           <#CodePreview>
-        <Form for={ :user_map } chane="update_user_map" submit="save_user_map" autocomplete="off">
-          <TextInput label="Name" field={ :name } value={ @user_map.name } />
-          <TextInput label="Email" field={ :email } value={ @user_map.email } />
+          <Form for={:user_map} change="update_user_map" submit="save_user_map" autocomplete="off">
+            <TopToDown>
+              <TextInput label="Name" field={:name} value={@user_map.name} />
+              <TextInput label="Email" field={:email} value={@user_map.email} />
 
-          <Select
-            label="Gender"
-            field={ :gender }
-            options={ @gender_options }
-            value={ @user_map.gender }
-            prompt="Please select gender"
-          />
+              <Select
+                label="Gender"
+                field={:gender}
+                options={@gender_options}
+                value={@user_map.gender}
+                prompt="Please select gender"
+              />
 
-          <Button variant="fill" type="submit" full_width>Save</Button>
-          <Button variant="outline" on_click="clear_form">Cancel</Button>
-        </Form>
-      </#CodePreview>
+              <Button variant="fill" type="submit" full_width>Save</Button>
+              <Button variant="outline" on_click="clear_simple_form">Cancel</Button>
+            </TopToDown>
+          </Form>
+          </#CodePreview>
         </:code>
 
         <:state>@user_map = {inspect(@user_map)}</:state>
