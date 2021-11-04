@@ -47,16 +47,18 @@ defmodule Moon.Components.TextInput.TextInputInternal do
 
       <TextInput
         class={
-          "w-full max-w-full bg-#{@background_color} hover:bg-goku-120 leading-normal
+          "w-full max-w-full hover:bg-goku-120 leading-normal
          text-bulma-100 box-border border border-solid border-beerus-100 rounded transition
          ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
          disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-         no-scrollbar invalid:shadow-none invalid:border-chi-chi-100 #{@class}",
+         no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
           "h-10 text-sm px-3": @size == "medium",
           "h-12 text-base px-4": @size == "large",
           "pl-11": @has_left_icon,
           "pr-11": @has_right_icon,
-          "border-chi-chi-100": @error
+          "border-chi-chi-100": @error,
+          "#{@class}": true,
+          "bg-#{@background_color}": true
         }
         field={@field}
         opts={
