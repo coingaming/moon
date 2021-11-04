@@ -70,7 +70,6 @@ defmodule MoonWeb.Router do
       live "/components/popover", MoonWeb.Pages.Components.PopoverPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
       live "/components/sidebar", MoonWeb.Pages.Components.SidebarPage
-      live "/components/stack", MoonWeb.Pages.Components.StackPage
       live "/components/switch", MoonWeb.Pages.Components.SwitchPage
       live "/components/switcher", MoonWeb.Pages.Components.SwitcherPage
       live "/components/tabs", MoonWeb.Pages.Components.TabsPage
@@ -97,9 +96,4 @@ defmodule MoonWeb.Router do
       live "/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage
     end
   end)
-
-  # Other scopes may use custom stacks.
-  # scope "/api", MoonWeb do
-  #   pipe_through :api
-  # end
 end

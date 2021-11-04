@@ -1,13 +1,7 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1em" height="auto"    viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<symbol id="item"
-width="1em"
-height="auto"
-viewBox="0 0 20 14"
-fill="none"
->
-
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <symbol id="item" viewBox="0 0 20 14"  fill="none">
+    
     <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
     <title>icon-price-boost</title>
     <desc>Created with Sketch.</desc>
@@ -16,13 +10,13 @@ fill="none"
     </defs>
     <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Price-Boost" transform="translate(0.000000, -3.000000)">
-            <mask id="mask-2" fill="var(--color--bulma-100)">
+            <mask id="mask-2" fill="currentColor">
                 <use xlink:href="#path-1"></use>
             </mask>
             <use id="icon-price-boost" fill="currentColor" fill-rule="nonzero" xlink:href="#path-1"></use>
         </g>
     </g>
 
-</symbol>
+  </symbol>
 </svg>
   

@@ -28,15 +28,9 @@ npm-debug.log
 # The directory NPM downloads your dependencies sources to.
 /assets/node_modules/
 
-# Since we are building assets from assets/,
-# we ignore priv/static. You may want to comment
-# this depending on your deployment strategy.
-/priv/static/
-!/priv/static/css/aposta10-light.css
-!/priv/static/css/aposta10-dark.css
-!/priv/static/css/lab-light.css
-!/priv/static/css/lab-dark.css
-!/priv/static/svgs
+# Ignore assets that are produced by build tools.
+/priv/static/assets/
+!/priv/static/assets/hooks.js
 
 node_modules
 .DS_Store

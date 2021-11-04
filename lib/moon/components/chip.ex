@@ -18,14 +18,11 @@ defmodule Moon.Components.Chip do
   def render(assigns) do
     ~F"""
     <Button
-      class={"hover:text-bulma-100 font-semibold #{@class} #{
-        active_btn_class(@active, @active_class, @inactive_class)
-      }"}
+      class={"hover:text-bulma-100 font-semibold #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}"}
       left_icon={@left_icon}
       right_icon={@right_icon}
       on_click={@on_click}
       value={@value}
-      rounded
     ><#slot /></Button>
     """
   end

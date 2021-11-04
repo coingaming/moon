@@ -27,8 +27,7 @@ defmodule Moon.Components.Switch do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Assets.Icons.IconMoon
-  alias Moon.Assets.Icons.IconSun
+  alias Moon.Assets.Icon
   alias Moon.Components.Switch.Caption
 
   @icons_sizes %{
@@ -68,8 +67,8 @@ defmodule Moon.Components.Switch do
         <span class="sr-only">{@action}</span>
 
         <div :if={@icons} class="absolute flex">
-          <IconMoon class="transform scale-90" font_size={icon_size(@size)} />
-          <IconSun class="transform scale-90" font_size={icon_size(@size)} />
+          <Icon name="icon_moon" class="transform scale-90" font_size={icon_size(@size)} />
+          <Icon name="icon_sun" class="transform scale-90" font_size={icon_size(@size)} />
         </div>
 
         <span

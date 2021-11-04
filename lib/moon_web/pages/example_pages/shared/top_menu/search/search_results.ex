@@ -3,10 +3,10 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Icon
   alias Moon.Autolayouts.Sections
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Link
+  alias Moon.Icon
 
   prop search_text, :string
   data search_results, :any

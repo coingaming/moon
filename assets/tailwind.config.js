@@ -3,9 +3,8 @@ const plugin = require('tailwindcss/plugin')
 module.exports = {
   mode: 'jit',
   purge: [
-    './static/svgs/icons/*.svg',
     '../lib/**/*.ex',
-    '../lib/**/*.leex',
+    '../lib/**/*.heex',
     '../lib/**/*.eex',
     './js/**/*.js',
   ],

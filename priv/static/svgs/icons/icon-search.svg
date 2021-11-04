@@ -1,13 +1,7 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1em" height="1em"    viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<symbol id="item"
-width="1em"
-height="1em"
-viewBox="0 0 20 20"
-fill="none"
->
-
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <symbol id="item" viewBox="0 0 20 20"  fill="none">
+    
     <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
     <title>icon-search</title>
     <desc>Created with Sketch.</desc>
@@ -16,13 +10,13 @@ fill="none"
     </defs>
     <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Search">
-            <mask id="mask-2" fill="var(--color--bulma-100)">
+            <mask id="mask-2" fill="currentColor">
                 <use xlink:href="#path-1"></use>
             </mask>
             <use id="icon-search" fill="currentColor" xlink:href="#path-1"></use>
         </g>
     </g>
 
-</symbol>
+  </symbol>
 </svg>
   

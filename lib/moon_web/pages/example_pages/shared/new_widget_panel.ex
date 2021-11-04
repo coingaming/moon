@@ -28,7 +28,6 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
         <div class="flex flex-wrap items-center gap-1 mb-6">
           {#for category <- @categories}
             <Button
-              rounded
               class={"p-2 text-sm font-normal #{active_btn_class(category.name == @active_category.name)}"}
               on_click="select_category"
               value_name="category_name"

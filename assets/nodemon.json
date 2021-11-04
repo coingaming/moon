@@ -1,4 +1,0 @@
-{
-  "watch": ["entrypoints.json", "webpack.config.js"],
-  "exec": "NODE_ENV=development node_modules/webpack/bin/webpack.js --color --mode development --watch --watch-options-stdin"
-}

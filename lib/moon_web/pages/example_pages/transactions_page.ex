@@ -23,11 +23,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   alias Faker.Finance
   alias Faker.Person
   alias Moon.Autolayouts.TopToDown
+  alias Moon.BackofficeComponents.Table
   alias Moon.Components.Heading
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Pages.ExamplePages.Helpers
   alias MoonWeb.Pages.ExamplePages.Shared
-  alias Moon.BackofficeComponents.Table
   alias Shared.LeftMenu
   alias Shared.TopMenu
 

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -11,7 +11,10 @@ config :moon, MoonWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/nodemon/bin/nodemon.js", cd: Path.expand("../assets", __DIR__)]]
+  watchers: [
+    npm: ["run", "watch_js", cd: Path.expand("../assets", __DIR__)],
+    npm: ["run", "watch_css", cd: Path.expand("../assets", __DIR__)]
+  ]
 
 # ## SSL Support
 #

@@ -89,7 +89,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
       mode: 'jit',
       purge: [
         '../lib/**/*.ex',
-        '../lib/**/*.leex',
+        '../lib/**/*.heex',
         '../lib/**/*.eex',
         './js/**/*.js',
         '../deps/moon/lib/moon/**/*.ex'

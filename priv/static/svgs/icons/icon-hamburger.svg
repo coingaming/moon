@@ -1,16 +1,10 @@
-
-<svg width="1em" height="auto"    viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="item"
-width="1em"
-height="auto"
-viewBox="0 0 16 14"
-fill="none"
->
-
+<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 16 14"  fill="none">
+    
 <rect width="16" height="2" rx="1" fill="currentColor"/>
 <rect y="6" width="16" height="2" rx="1" fill="currentColor"/>
 <rect y="12" width="16" height="2" rx="1" fill="currentColor"/>
 
-</symbol>
+  </symbol>
 </svg>
   

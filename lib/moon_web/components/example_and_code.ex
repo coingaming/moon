@@ -1,7 +1,7 @@
 defmodule MoonWeb.Components.ExampleAndCode do
   @moduledoc false
 
-  use Surface.LiveComponent
+  use Moon.StatefulComponent
 
   alias Moon.Components.Badge
   alias MoonWeb.Components.PreviewCodeButton
@@ -18,7 +18,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~F"""
-    <div class={"rounded-lg p-0  mb-8 #{@class}"}>
+    <div class={"rounded-lg p-0 mb-8 #{@class}"}>
       <PreviewCodeButton
         class="justify-end"
         title={@title}

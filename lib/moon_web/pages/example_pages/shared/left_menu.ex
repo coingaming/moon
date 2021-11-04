@@ -3,9 +3,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Icon
   alias Moon.Autolayouts.Sections
   alias Moon.Components.Divider
+  alias Moon.Icon
   alias MoonWeb.MockDB.{Segments, Utils}
   alias Surface.Components.LiveRedirect
 
@@ -86,11 +86,11 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         count: 5,
         new_item: "New dashboard",
         items: [
-          %{icon: :icon_chart_area, title: "Starter dashboard"},
-          %{icon: :icon_chart_area, title: "New users"},
-          %{icon: :icon_chart_area, title: "Wagers"},
-          %{icon: :icon_chart_area, title: "Custom metrics"},
-          %{icon: :icon_chart_area, title: "Untitled dashboard"}
+          %{icon: :chart_area, title: "Starter dashboard"},
+          %{icon: :chart_area, title: "New users"},
+          %{icon: :chart_area, title: "Wagers"},
+          %{icon: :chart_area, title: "Custom metrics"},
+          %{icon: :chart_area, title: "Untitled dashboard"}
         ]
       },
       %{

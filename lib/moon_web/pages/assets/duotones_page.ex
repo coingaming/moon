@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
   use MoonWeb, :live_view
 
+  alias Moon.Assets.Duotone
   alias Moon.Assets.Duotones
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
@@ -22,7 +23,6 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       }
     ]
 
-  alias Duotones.CasinoBonus
   alias Duotones.ClaimedReward
   alias Duotones.DynamicRewards
   alias Duotones.EmailNotVerified
@@ -67,12 +67,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_1" class="mt-4">
           <:example>
-            <CasinoBonus font_size="10rem" color="piccolo-100" />
+            <Duotone name="casino_bonus" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <CasinoBonus font_size="10rem" color="piccolo-100" />
+              <Duotone name="casino_bonus" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

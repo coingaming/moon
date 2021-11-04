@@ -1,12 +1,6 @@
-
-<svg width="1em" height="1em"    viewBox="0 0 174 174" fill="none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="item"
-width="1em"
-height="1em"
-viewBox="0 0 174 174"
-fill="none"
->
-<path opacity=".1" d="M111.915 117.009a5.93 5.93 0 0 0-.753-2.808c15.933-15.02 23.123-34.788 25.406-57.204H72.653c2.283 22.416 9.382 42.184 25.315 57.204a5.639 5.639 0 0 0 .434 6.277H87.81v10.843h33.441v-10.843h-10.523a5.883 5.883 0 0 0 1.187-3.469Z" fill="currentColor"/><path d="M90.915 102.787c17.873-15.316 25.68-35.997 28.031-59.646H55.031c2.283 23.649 10.158 44.33 28.009 59.646M78.154 114.292c0-4.2 17.668-4.2 17.668 0M67.152 126.801h39.513M50.626 91.716a4.68 4.68 0 0 0 6.62-6.62S27.478 69.69 28.14 55.56" stroke="var(--color--bulma-100)" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M35.012 62.43a6.87 6.87 0 1 0 0-13.742 6.87 6.87 0 0 0 0 13.742Z" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M123.397 91.716a4.68 4.68 0 0 1-6.62-6.62s29.675-15.407 29.082-29.537" stroke="var(--color--bulma-100)" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M138.988 62.43a6.871 6.871 0 1 0 0-13.743 6.871 6.871 0 0 0 0 13.743Z" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/>
-</symbol>
+<svg width="174" height="174" viewBox="0 0 174 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 174 174"  fill="none">
+    <path opacity=".1" d="M111.915 117.009a5.93 5.93 0 0 0-.753-2.808c15.933-15.02 23.123-34.788 25.406-57.204H72.653c2.283 22.416 9.382 42.184 25.315 57.204a5.639 5.639 0 0 0 .434 6.277H87.81v10.843h33.441v-10.843h-10.523a5.883 5.883 0 0 0 1.187-3.469Z" fill="currentColor"/><path d="M90.915 102.787c17.873-15.316 25.68-35.997 28.031-59.646H55.031c2.283 23.649 10.158 44.33 28.009 59.646M78.154 114.292c0-4.2 17.668-4.2 17.668 0M67.152 126.801h39.513M50.626 91.716a4.68 4.68 0 0 0 6.62-6.62S27.478 69.69 28.14 55.56" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M35.012 62.43a6.87 6.87 0 1 0 0-13.742 6.87 6.87 0 0 0 0 13.742Z" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M123.397 91.716a4.68 4.68 0 0 1-6.62-6.62s29.675-15.407 29.082-29.537" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/><path d="M138.988 62.43a6.871 6.871 0 1 0 0-13.743 6.871 6.871 0 0 0 0 13.743Z" stroke="currentColor" stroke-width="2.283" stroke-miterlimit="10" stroke-linecap="round"/>
+  </symbol>
 </svg>
   

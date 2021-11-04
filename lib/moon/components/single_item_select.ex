@@ -11,9 +11,7 @@ defmodule Moon.Components.SingeItemSelect.Item do
   def render(assigns) do
     ~F"""
     <div
-      class={"p-2 pl-3 pr-3 hover:#{(@selected && "bg-piccolo-120") || "bg-hover"} rounded-md relative #{
-        @selected && "bg-piccolo-100"
-      }"}
+      class={"p-2 pl-3 pr-3 hover:#{(@selected && "bg-piccolo-120") || "bg-hover"} rounded-md relative #{@selected && "bg-piccolo-100"}"}
       :on-click={@on_click}
       phx-value-selected_item_id={@item_id}
     >
