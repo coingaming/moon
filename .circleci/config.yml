@@ -136,6 +136,10 @@ workflows:
           context: global
       - docker_image:
           context: global
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - otp_release
       - deploy:
