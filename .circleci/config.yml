@@ -45,9 +45,6 @@ jobs:
           name: "Build apps assets"
           command: mix assets.deploy
       - run:
-          name: Mix test
-          command: mix test
-      - run:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
@@ -97,6 +94,8 @@ jobs:
           command: mix credo
       - run:
           command: mix surface.format --check-formatted
+      - run:
+          command: mix test
   docker_image:
     docker:
       - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
