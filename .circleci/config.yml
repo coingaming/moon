@@ -149,8 +149,12 @@ workflows:
           context: global
       - test:
           context: global
+          requires:
+            - otp_release
       - check_formatted:
           context: global
+          requires:
+            - otp_release
       - docker_image:
           context: global
           filters:
