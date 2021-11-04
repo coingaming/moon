@@ -94,7 +94,7 @@ jobs:
       - run:
           command: mix format --check-formatted
       - run:
-          command: mix credo --strict
+          command: mix credo
       - run:
           command: mix surface.format --check-formatted
   docker_image:
