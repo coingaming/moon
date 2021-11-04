@@ -61,7 +61,7 @@ jobs:
     docker:
       - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
     environment:
-      MIX_ENV: dev
+      MIX_ENV: test
     steps:
       - checkout
       - run:
