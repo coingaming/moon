@@ -2,7 +2,7 @@ version: 2
 jobs:
   otp_release:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
     environment:
       MIX_ENV: prod
     steps:
@@ -34,8 +34,11 @@ jobs:
         name: Fetch dependencies
         command: mix setup
     - run:
-        name: Build assets
-        command: scripts/deploy/build-assets
+        name: "Install apps dependencies"
+        command: mix assets.setup
+    - run:
+        name: "Build apps assets"
+        command: mix assets.deploy
     - run:
         name: Build release
         command: scripts/deploy/build-release
@@ -51,7 +54,7 @@ jobs:
         - release.tar.gz
   docker_image:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
     steps:
       - checkout
       - setup_remote_docker:
@@ -64,7 +67,7 @@ jobs:
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
     steps:
       - checkout
       - setup_remote_docker:
@@ -87,7 +90,7 @@ jobs:
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
   check_formatted:
     docker:
-      - image: heathmont/elixir-ci:1.11.3-alpine
+      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
     steps:
       - checkout
       - restore_cache:
