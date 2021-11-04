@@ -91,7 +91,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
           <Form
             for={@user_changeset}
-            as={:user}
             change="update_user_changeset"
             submit="save_user_changeset"
             autocomplete="off"

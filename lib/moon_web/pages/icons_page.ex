@@ -33,7 +33,10 @@ defmodule MoonWeb.Pages.IconsPage do
         <Heading size={56} class="mb-4">Icons</Heading>
 
         <div class="p-6 bg-gohan-100 rounded">
-          <div class="grid gap-4 overflow-hidden" style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));">
+          <div
+            class="grid gap-4 overflow-hidden"
+            style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"
+          >
             {#for icon_name <- Icons.list_all()}
               <div class="w-40 h-28 flex flex-col items-center">
                 <div class="flex flex-grow justify-center items-center">
