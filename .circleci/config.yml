@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+aliases:
+
 jobs:
   otp_release:
     docker:
@@ -6,55 +8,55 @@ jobs:
     environment:
       MIX_ENV: prod
     steps:
-    - checkout
-    - run:
-        name: Check variables
-        command: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
-    - run:
-        name: Setup robot SSH key
-        command: echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
-    - run:
-        name: Setup SSH config
-        command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
-    - restore_cache:
-        keys:
-        - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-        - v5-build-{{ checksum "mix.lock" }}-
-        - v5-build-
-    - run:
-        name: Update git submodules
-        command: git submodule update --init --recursive
-    - run:
-        name: Hex auth
-        command: mix hex.organization auth coingaming --key $HEX_API_KEY
-    - run:
-        name: ExEnv
-        command: mix archive.install hex ex_env 0.3.1 --force
-    - run:
-        name: Fetch dependencies
-        command: mix setup
-    - run:
-        name: "Clean assets"
-        command: mix phx.digest.clean --all && mix assets.clean
-    - run:
-        name: "Install apps dependencies"
-        command: mix assets.setup
-    - run:
-        name: "Build apps assets"
-        command: mix assets.deploy
-    - run:
-        name: Build release
-        command: scripts/deploy/build-release
-    - save_cache:
-        key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-        paths:
-        - .cache
-        - deps
-        - ~/.mix
-    - persist_to_workspace:
-        root: ./
-        paths:
-        - release.tar.gz
+      - checkout
+      - run:
+          name: Check variables
+          command: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
+      - run:
+          name: Setup robot SSH key
+          command: echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
+      - run:
+          name: Setup SSH config
+          command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+      - restore_cache:
+          keys:
+          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          - v5-build-{{ checksum "mix.lock" }}-
+          - v5-build-
+      - run:
+          name: Update git submodules
+          command: git submodule update --init --recursive
+      - run:
+          name: Hex auth
+          command: mix hex.organization auth coingaming --key $HEX_API_KEY
+      - run:
+          name: ExEnv
+          command: mix archive.install hex ex_env 0.3.1 --force
+      - run:
+          name: Fetch dependencies
+          command: mix setup
+      - run:
+          name: "Clean assets"
+          command: mix phx.digest.clean --all && mix assets.clean
+      - run:
+          name: "Install apps dependencies"
+          command: mix assets.setup
+      - run:
+          name: "Build apps assets"
+          command: mix assets.deploy
+      - run:
+          name: Build release
+          command: scripts/deploy/build-release
+      - save_cache:
+          key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          paths:
+          - .cache
+          - deps
+          - ~/.mix
+      - persist_to_workspace:
+          root: ./
+          paths:
+          - release.tar.gz
   docker_image:
     docker:
       - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
@@ -132,20 +134,8 @@ workflows:
     jobs:
       - otp_release:
           context: global
-          filters:
-            branches:
-              only: 
-                - master
-            tags:
-              only: /^v.*/
       - docker_image:
           context: global
-          filters:
-            branches:
-              only: 
-                - master
-            tags:
-              only: /^v.*/
           requires:
             - otp_release
       - deploy:
@@ -158,11 +148,4 @@ workflows:
               only: /^v.*/
           requires:
             - docker_image
-  test:
-    jobs:
-      - check_formatted:
-          context: global
-          filters:
-            branches:
-              ignore: 
-                - master
+  
