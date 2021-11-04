@@ -57,6 +57,45 @@ jobs:
           root: ./
           paths:
           - release.tar.gz
+  check_code_quality:
+    docker:
+      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
+    environment:
+      MIX_ENV: test
+    steps:
+      - checkout
+      - run:
+          name: Check variables
+          command: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
+      - run:
+          name: Setup robot SSH key
+          command: echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
+      - run:
+          name: Setup SSH config
+          command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+      - restore_cache:
+          keys:
+          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          - v5-build-{{ checksum "mix.lock" }}-
+          - v5-build-
+      - run:
+          command: git submodule update --init --recursive
+      - run:
+          command: mix hex.organization auth coingaming --key $HEX_API_KEY
+      - run:
+          command: mix archive.install hex ex_env 0.3.1 --force
+      - run:
+          command: mix setup
+      - run:
+          command: mix assets.setup
+      - run:
+          command: mix format --check-formatted
+      - run:
+          command: mix credo
+      - run:
+          command: mix surface.format --check-formatted
+      - run:
+          command: mix test
   docker_image:
     docker:
       - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
@@ -93,46 +132,15 @@ jobs:
       - run:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
-  check_formatted:
-    docker:
-      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v5-build-{{ checksum "mix.lock" }}-
-          - v5-build-
-      - run:
-          name: Mix format
-          command: mix format --check-formatted
-      - run:
-          name: Update git submodules
-          command: git submodule update --init --recursive
-      - run:
-          name: Hex auth
-          command: mix hex.organization auth coingaming --key $HEX_API_KEY
-      - run:
-          name: ExEnv
-          command: mix archive.install hex ex_env 0.3.1 --force
-      - run:
-          name: Fetch dependencies
-          command: mix deps.get
-      - run:
-          name: Surface format
-          command: mix surface.format --check-formatted
-      - save_cache:
-          key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          paths:
-          - .cache
-          - deps
-          - ~/.mix
+  
 
 workflows:
   version: 2
   workflow:
     jobs:
       - otp_release:
+          context: global
+      - check_code_quality:
           context: global
       - docker_image:
           context: global

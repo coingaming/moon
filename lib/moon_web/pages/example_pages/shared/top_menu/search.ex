@@ -25,7 +25,6 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
         class="w-128 max-w-md"
       >
         <TextInput
-          right_icon_click="clear_search"
           placeholder="Search for dashboard, segments and more"
           field={:search_text}
           value={@search_map.search_text}
@@ -33,7 +32,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
           class="bg-goku-100 h-10 border-transparent"
         >
           <:left_icon><IconZoom /></:left_icon>
-          <:right_icon :if={should_show_close_search(@search_map)}><IconCloseRounded /></:right_icon>
+          <:right_icon :if={should_show_close_search(@search_map)}><IconCloseRounded click="clear_search" /></:right_icon>
         </TextInput>
       </Form>
 
