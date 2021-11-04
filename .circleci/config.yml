@@ -95,6 +95,8 @@ jobs:
       - run:
           command: mix surface.format --check-formatted
       - run:
+          command: apk --no-cache add inotify-tools
+      - run:
           command: mix test
   docker_image:
     docker:
