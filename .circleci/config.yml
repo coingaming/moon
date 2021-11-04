@@ -18,9 +18,9 @@ jobs:
         command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
     - restore_cache:
         keys:
-        - v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-        - v4-build-{{ checksum "mix.lock" }}-
-        - v4-build-
+        - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+        - v5-build-{{ checksum "mix.lock" }}-
+        - v5-build-
     - run:
         name: Update git submodules
         command: git submodule update --init --recursive
@@ -40,7 +40,7 @@ jobs:
         name: Build release
         command: scripts/deploy/build-release
     - save_cache:
-        key: v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+        key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
         paths:
         - .cache
         - deps
@@ -92,9 +92,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v4-build-{{ checksum "mix.lock" }}-
-          - v4-build-
+          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          - v5-build-{{ checksum "mix.lock" }}-
+          - v5-build-
       - run:
           name: Mix format
           command: mix format --check-formatted
@@ -114,7 +114,7 @@ jobs:
           name: Surface format
           command: mix surface.format --check-formatted
       - save_cache:
-          key: v4-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
           paths:
           - .cache
           - deps
