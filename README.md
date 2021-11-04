@@ -29,21 +29,8 @@ In writing code try to remember following rules:
 
 1. Code should be as short and simple as possible (less lines is better)
 2. Code should be as explicit as possible (and compiler should catch as many errors as possible)
-
-So as an example, when considering following code approaches, which one you should pick?
-
-```
-alias Moon.Components.TextInput
-
-<TextInput
-  left_icon="icon_zoom"
-  right_icon="icon_close_rounded"
-  right_icon_click="clear_search"
-  placeholder="Search for dashboard, segments and more"
-/>
-```
-
-or 
+3. Use slots
+4. Run tests
 
 ```
 alias Moon.Components.TextInput
@@ -60,4 +47,7 @@ alias Moon.Assets.Icons.IconZoom
 </TextInput>
 ```
 
-Second example is a bit longer, but has much better compiler error checks.
+```bash
+mix test
+```
+
