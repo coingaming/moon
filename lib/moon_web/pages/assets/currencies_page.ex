@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Currency
   alias Moon.Assets.Currencies
+  alias Moon.Assets.Currency
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
