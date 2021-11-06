@@ -2,11 +2,9 @@ defmodule Moon.Components.TextInput do
   @moduledoc false
 
   use Moon.StatelessComponent
-
-  alias __MODULE__.TextInputInternal
   alias Moon.Components.Label
 
-  prop field, :atom
+  prop field, :any
   prop label, :string
 
   prop type, :string,
@@ -42,37 +40,8 @@ defmodule Moon.Components.TextInput do
   slot right_icon
 
   def render(assigns) do
-    ~F"""
-    {#if @label}
-      <Label text={@label}>
-        <div class="mt-2 relative">
-          {text_input_internal(assigns)}
-        </div>
-      </Label>
-    {#else}
-      {text_input_internal(assigns)}
-    {/if}
-    """
-  end
-
-  def text_input_internal(assigns) do
-    ~F"""
-    <TextInputInternal
-      {=@class}
-      {=@field}
-      {=@error}
-      {=@placeholder}
-      {=@disabled}
-      {=@required}
-      {=@value}
-      {=@on_focus}
-      {=@on_blur}
-      {=@background_color}
-      {=@size}
-      {=@type}
-      has_left_icon={slot_assigned?(:left_icon)}
-      has_right_icon={slot_assigned?(:right_icon)}
-    >
+    text_input = ~F"""
+    <div class="relative">
       {#if slot_assigned?(:left_icon)}
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100">
           <#slot name="left_icon" />
@@ -83,7 +52,46 @@ defmodule Moon.Components.TextInput do
           <#slot name="right_icon" />
         </div>
       {/if}
-    </TextInputInternal>
+
+      <Surface.Components.Form.TextInput
+        class={
+          "w-full max-w-full hover:bg-goku-120 leading-normal
+               text-bulma-100 box-border border border-solid border-beerus-100 rounded transition
+               ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
+               disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
+               no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
+          "h-10 text-sm px-3": @size == "medium",
+          "h-12 text-base px-4": @size == "large",
+          "pl-11": slot_assigned?(:left_icon),
+          "pr-11": slot_assigned?(:right_icon),
+          "border-chi-chi-100": @error,
+          "#{@class}": true,
+          "bg-#{@background_color}": true
+        }
+        field={String.to_atom("#{@field}")}
+        opts={
+          placeholder: @placeholder,
+          disabled: @disabled,
+          required: @required,
+          type: @type
+        }
+        value={@value}
+        focus={@on_focus}
+        blur={@on_blur}
+      />
+    </div>
+    """
+
+    ~F"""
+    {#if @label}
+      <Label text={@label}>
+        <div class="mt-2 relative">
+          {text_input}
+        </div>
+      </Label>
+    {#else}
+      {text_input}
+    {/if}
     """
   end
 end

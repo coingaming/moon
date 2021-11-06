@@ -30,29 +30,23 @@ defmodule MoonWeb.Components.ExampleAndCode do
       </div>
       <div class="grid grid-cols-1 bg-gohan-100 rounded-md shadow">
         <div class={"p-6", hidden: @selected_button == "code"}>
-          <#slot name="example">
-            Example not defined
-          </#slot>
+          <#slot name="example">Example not defined</#slot>
         </div>
         <div class={
-          "border-beerus-100 bg-piccolo-100 text-hit-80 rounded-md shadow justify-around",
+          "border-beerus-100 rounded-md shadow justify-around",
           "sm:border-l": @layout == "grid",
           "border-t": @layout == "column",
           hidden: @selected_button == "preview"
         }>
-          <#slot name="code">
-            Example code not defined
-          </#slot>
+          <pre class="p-4"><#slot name="code">Example code not defined</#slot></pre>
         </div>
       </div>
       <div
-        class="p-6 border-t border-beerus-100 bg-hit-100 rounded-md shadow"
+        class="p-6 border-t border-beerus-100 bg-hit-100 rounded-md shadow grid gap-4"
         :if={slot_assigned?(:state)}
       >
-        <Badge size="small" class="bg-piccolo-100 mb-3">State</Badge>
-        <pre class="text-xs break-all overflow-x-scroll text-trunks-100">
-          <#slot name="state" />
-        </pre>
+        <div><Badge size="small" class="bg-piccolo-100 mb-3">State</Badge></div>
+        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
       </div>
     </div>
     """
