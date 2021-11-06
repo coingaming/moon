@@ -10,7 +10,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
-  alias Moon.Components.Switch
   alias Moon.Components.TextInput
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
@@ -55,12 +54,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       |> assign(
         theme_name: params["theme_name"] || "sportsbet-dark",
         active_page: __MODULE__,
-        user_map: @default_user_map,
         user_changeset: user_changeset,
         gender_options: gender_options,
-        lock_fields: false,
-        uploaded_files: [],
-        enable_validations: false
+        uploaded_files: []
       )
       |> allow_upload(:file, accept: ~w(.jpg .jpeg .png .pdf), max_entries: 1)
 
@@ -128,7 +124,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
     @gender_options = {inspect(@gender_options, pretty: true)}
-    @lock_fields = {@lock_fields}
     @uploads.file.entries = {inspect(@uploads.file.entries, pretty: true)}
     """
   end
@@ -162,15 +157,11 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def handle_event("clear_changeset_form", _, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
-    {:noreply, assign(socket, user_changeset: user_changeset, lock_fields: false)}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event("clear_simple_form", _, socket) do
     {:noreply, assign(socket, user_map: @default_user_map)}
-  end
-
-  def handle_event("lock_form_fields", _, socket) do
-    {:noreply, assign(socket, lock_fields: !socket.assigns.lock_fields)}
   end
 
   def handle_info({:hide_toast, toast_id}, socket) do
