@@ -86,25 +86,12 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       <ExampleAndCode id="add_data_using_form_1">
         <:example>
           <ToastStack id="toast-stack-messages" />
-          <Form
-            for={@user_changeset}
-            change="update_user"
-            submit="save_user"
-            autocomplete="off"
-          >
+          <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
             <TopToDown>
               <TextInput label="Name" field="name" />
               <TextInput label="Email" field="email" />
-
-              <Select
-                label="Gender"
-                field="gender"
-                options={@gender_options}
-                prompt="Please select gender"
-              />
-
+              <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
-
               <Button variant="fill" type="submit" full_width>Save</Button>
               <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
             </TopToDown>
@@ -124,25 +111,12 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def example_code() do
     """
-    <Form
-      for={@user_changeset}
-      change="handle_user_update"
-      submit="handle_user_save"
-      autocomplete="off"
-    >
+    <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
       <TopToDown>
         <TextInput label="Name" field="name" />
         <TextInput label="Email" field="email" />
-
-        <Select
-          label="Gender"
-          field="gender"
-          options={@gender_options}
-          prompt="Please select gender"
-        />
-
+        <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
         <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
-
         <Button variant="fill" type="submit" full_width>Save</Button>
         <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
       </TopToDown>
