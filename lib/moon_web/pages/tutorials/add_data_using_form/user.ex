@@ -17,11 +17,12 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
   end
 
   def changeset(user = %User{}, params \\ %{}) do
-    user_changeset = user
-    |> cast(params, @required_fields ++ @optional_fields)
-    |> validate_required(@required_fields)
-    |> validate_format(:email, ~r/@/)
-    |> validate_inclusion(:gender, ["female", "male", "other"])
+    user_changeset =
+      user
+      |> cast(params, @required_fields ++ @optional_fields)
+      |> validate_required(@required_fields)
+      |> validate_format(:email, ~r/@/)
+      |> validate_inclusion(:gender, ["female", "male", "other"])
 
     Map.merge(user_changeset, %{action: :insert})
   end

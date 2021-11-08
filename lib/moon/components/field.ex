@@ -10,7 +10,7 @@ defmodule Moon.Components.Field do
     ~F"""
     <Surface.Components.Form.Field {=@name}>
       <#slot />
-      <Surface.Components.Form.ErrorTag  />
+      <Surface.Components.Form.ErrorTag />
     </Surface.Components.Form.Field>
     """
   end
