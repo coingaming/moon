@@ -5,7 +5,7 @@ defmodule Moon.Components.Select do
 
   alias Moon.Components.Label
 
-  prop field, :atom
+  prop field, :any
   prop label, :string
   prop options, :any, default: []
   prop value, :any
@@ -31,7 +31,7 @@ defmodule Moon.Components.Select do
         ]
       end)
 
-    ~F"""
+    select = ~F"""
     <Surface.Components.Form.Select
       class={
         "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120
@@ -39,25 +39,22 @@ defmodule Moon.Components.Select do
                border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{@class}",
         rounded: @rounded
       }
-      field={@field}
+      field={String.to_atom("#{@field}")}
       options={options_with_selected}
       opts={[prompt: @prompt]}
-      :if={!@label}
     />
+    """
 
-    <Label text={@label} :if={@label}>
-      <Surface.Components.Form.Select
-        class={
-          "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120
-                   hover:cursor-pointer focus:cursor-pointer border border-solid
-                   border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{@class}",
-          rounded: @rounded
-        }
-        field={@field}
-        options={options_with_selected}
-        opts={[prompt: @prompt, disabled: @disabled]}
-      />
-    </Label>
+    ~F"""
+    {#if @label}
+      <Label text={@label}>
+        <div class="mt-2 relative">
+          {select}
+        </div>
+      </Label>
+    {#else}
+      {select}
+    {/if}
     """
   end
 end
