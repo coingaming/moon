@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
           placeholder="Search for dashboard, segments and more"
           field={:search_text}
           value={@search_map.search_text}
-          on_focus="activate_search"
+          focus="activate_search"
           class="bg-goku-100 h-10 border-transparent"
         >
           <:left_icon><IconZoom /></:left_icon>

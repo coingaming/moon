@@ -3,6 +3,7 @@ defmodule Moon.Components.TextInput do
 
   use Moon.StatelessComponent
   alias Moon.Components.Label
+  alias Moon.Components.ErrorTag
 
   prop field, :any
   prop label, :string
@@ -30,8 +31,8 @@ defmodule Moon.Components.TextInput do
   prop disabled, :boolean
   prop required, :boolean
   prop class, :string
-  prop on_focus, :event
-  prop on_blur, :event
+  prop focus, :event
+  prop blur, :event
   prop without_design, :boolean
   prop background_color, :string, values: Moon.colors(), default: "goku-100"
   prop size, :string, values: ["medium", "large"], default: "large"
@@ -68,7 +69,7 @@ defmodule Moon.Components.TextInput do
           "#{@class}": true,
           "bg-#{@background_color}": true
         }
-        field={String.to_atom("#{@field}")}
+        field={@field && String.to_atom("#{@field}")}
         opts={
           placeholder: @placeholder,
           disabled: @disabled,
@@ -76,9 +77,10 @@ defmodule Moon.Components.TextInput do
           type: @type
         }
         value={@value}
-        focus={@on_focus}
-        blur={@on_blur}
+        focus={@focus}
+        blur={@blur}
       />
+      <ErrorTag field={@field} />
     </div>
     """
 
