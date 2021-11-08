@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Form
+  alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
@@ -18,6 +19,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias Surface.Components.Form.ErrorTag
 
   @default_user_map %{
     name: "",
@@ -89,7 +91,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
               <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
               <Button variant="fill" type="submit" full_width>Save</Button>
-              <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
+              <Button variant="outline" on_click="clear_form">Cancel</Button>
             </TopToDown>
           </Form>
         </:example>
@@ -114,7 +116,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
         <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
         <Button variant="fill" type="submit" full_width>Save</Button>
-        <Button variant="outline" on_click="clear_changeset_form">Cancel</Button>
+        <Button variant="outline" on_click="clear_form">Cancel</Button>
       </TopToDown>
     </Form>
     """
@@ -155,13 +157,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     {:noreply, socket}
   end
 
-  def handle_event("clear_changeset_form", _, socket) do
+  def handle_event("clear_form", _, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
     {:noreply, assign(socket, user_changeset: user_changeset)}
-  end
-
-  def handle_event("clear_simple_form", _, socket) do
-    {:noreply, assign(socket, user_map: @default_user_map)}
   end
 
   def handle_info({:hide_toast, toast_id}, socket) do
