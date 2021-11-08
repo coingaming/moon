@@ -6,7 +6,7 @@ defmodule Moon.Components.Select do
   alias Moon.Components.Label
   alias Moon.Components.ErrorTag
 
-  prop field, :any
+  prop field, :atom
   prop label, :string
   prop options, :any, default: []
   prop value, :any
@@ -41,7 +41,7 @@ defmodule Moon.Components.Select do
         rounded: @rounded,
         "#{@class}": true
       }
-      field={String.to_atom("#{@field}")}
+      field={@field}
       options={options_with_selected}
       opts={[prompt: @prompt]}
     />

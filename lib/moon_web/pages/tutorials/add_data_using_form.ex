@@ -83,9 +83,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         <:example>
           <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
             <TopToDown>
-              <TextInput label="Name" field="name" />
-              <TextInput label="Email" field="email" />
-              <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
+              <TextInput label="Name" field={:name} />
+              <TextInput label="Email" field={:email} />
+              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
               <Button variant="fill" type="submit" full_width>Save</Button>
               <Button variant="outline" on_click="clear_form">Cancel</Button>
@@ -108,9 +108,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     """
     <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
       <TopToDown>
-        <TextInput label="Name" field="name" />
-        <TextInput label="Email" field="email" />
-        <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
+        <TextInput label="Name" field={:name} />
+        <TextInput label="Email" field={:email} />
+        <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
         <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
         <Button variant="fill" type="submit" full_width>Save</Button>
         <Button variant="outline" on_click="clear_form">Cancel</Button>

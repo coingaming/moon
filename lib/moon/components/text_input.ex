@@ -5,7 +5,7 @@ defmodule Moon.Components.TextInput do
   alias Moon.Components.Label
   alias Moon.Components.ErrorTag
 
-  prop field, :any
+  prop field, :atom
   prop label, :string
 
   prop type, :string,
@@ -69,7 +69,7 @@ defmodule Moon.Components.TextInput do
           "#{@class}": true,
           "bg-#{@background_color}": true
         }
-        field={@field && String.to_atom("#{@field}")}
+        field={@field}
         opts={
           placeholder: @placeholder,
           disabled: @disabled,
