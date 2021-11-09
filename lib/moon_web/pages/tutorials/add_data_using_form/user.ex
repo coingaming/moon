@@ -25,10 +25,13 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> validate_length(:username, min: 4)
+    |> validate_inclusion(:password, ["password"],
+      message: "sorry, correct password is 'verysecret123'"
+    )
     |> validate_format(:email, ~r/@/)
     |> validate_inclusion(:gender, ["female", "male", "other"])
     |> validate_inclusion(:agrees_to_terms_of_service, [true],
-      message: "Please accept terms of service"
+      message: "please accept terms of service"
     )
   end
 end

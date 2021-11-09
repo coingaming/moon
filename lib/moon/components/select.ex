@@ -4,7 +4,6 @@ defmodule Moon.Components.Select do
   use Moon.StatelessComponent
 
   alias Moon.Components.Label
-  alias Moon.Components.ErrorTag
 
   prop field, :atom
   prop label, :string
