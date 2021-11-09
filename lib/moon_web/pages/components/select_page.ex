@@ -96,7 +96,6 @@ defmodule MoonWeb.Pages.Components.SelectPage do
                 prompt="Please select gender"
               />
             </Form>
-
           </:example>
 
           <:code>{select_3_code}</:code>
