@@ -50,27 +50,23 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Password Input</Heading>
 
-        <div>
-          The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
-        </div>
-
         <ExampleAndCode id="example_1">
           <:example>
             <Form
               for={@user_changeset}
-              change="register_form_update"
-              submit="register_form_submit"
+              change="login_form_update"
+              submit="login_form_submit"
               autocomplete="off"
             >
               <TopToDown>
                 <Field name={:password}>
-                  <PasswordInput label="Password" placeholder="Password" id="registration_password">
+                  <PasswordInput label="Password" placeholder="Password" id="login_password">
                     <:left_icon><Moon.Icons.SecurityLock /></:left_icon>
                   </PasswordInput>
                   <ErrorTag />
                 </Field>
                 <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Login</Button>
                 </div>
               </TopToDown>
             </Form>
@@ -86,7 +82,7 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
   end
 
   def handle_event(
-        "register_form_update",
+        "login_form_update",
         %{
           "user" => %{
             "password" => password
@@ -102,7 +98,7 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def handle_event("register_form_submit", _, socket) do
+  def handle_event("login_form_submit", _, socket) do
     user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
@@ -112,19 +108,19 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
     """
     <Form
       for={@user_changeset}
-      change="register_form_update"
-      submit="register_form_submit"
+      change="login_form_update"
+      submit="login_form_submit"
       autocomplete="off"
     >
       <TopToDown>
         <Field name={:password}>
-          <PasswordInput label="Password" placeholder="Password" id="registration_password">
-            <:left_icon><SecurityLock /></:left_icon>
+          <PasswordInput label="Password" placeholder="Password" id="login_password">
+            <:left_icon><Moon.Icons.SecurityLock /></:left_icon>
           </PasswordInput>
           <ErrorTag />
         </Field>
         <div>
-          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+          <Button type="submit" right_icon="arrows_right" variant="primary">Login</Button>
         </div>
       </TopToDown>
     </Form>
