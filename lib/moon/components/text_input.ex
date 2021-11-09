@@ -3,7 +3,6 @@ defmodule Moon.Components.TextInput do
 
   use Moon.StatelessComponent
   alias Moon.Components.Label
-  alias Moon.Components.ErrorTag
 
   prop field, :atom
   prop label, :string
@@ -73,14 +72,13 @@ defmodule Moon.Components.TextInput do
         opts={
           placeholder: @placeholder,
           disabled: @disabled,
-          required: @required,
+          required: @required && !@disabled,
           type: @type
         }
         value={@value}
         focus={@focus}
         blur={@blur}
       />
-      <ErrorTag field={@field} />
     </div>
     """
 

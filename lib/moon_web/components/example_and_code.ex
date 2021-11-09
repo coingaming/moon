@@ -18,7 +18,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~F"""
-    <div class={"rounded-lg p-0 mb-8 #{@class}"}>
+    <div class={"rounded p-0 mb-8", @class}>
       <PreviewCodeButton
         class="justify-end"
         title={@title}
