@@ -91,6 +91,8 @@ jobs:
       - run:
           command: mix format --check-formatted
       - run:
+          command: mix compile --all-warnings --warnings-as-errors
+      - run:
           command: mix credo
       - run:
           command: mix surface.format --check-formatted

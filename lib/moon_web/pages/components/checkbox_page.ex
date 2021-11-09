@@ -5,10 +5,8 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Checkbox
-  alias Moon.Components.CodePreview
   alias Moon.Components.Form
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -90,7 +88,6 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       User.changeset(%User{}, %{
         agrees_to_marketing_emails: agrees_to_marketing_emails
       })
-
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
