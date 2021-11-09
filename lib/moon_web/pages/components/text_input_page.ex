@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def mount(params, _session, socket) do
     user_changeset =
-      User.changeset(User.__struct__, %{
+      User.changeset(%User{}, %{
         username: "",
         email: ""
       })
@@ -81,7 +81,12 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                   <ErrorTag />
                 </Field>
                 <Field name={:email}>
-                  <TextInput label="Email" placeholder="Email" type="email" disabled={!get_has_valid_username(@user_changeset)}>
+                  <TextInput
+                    label="Email"
+                    placeholder="Email"
+                    type="email"
+                    disabled={!get_has_valid_username(@user_changeset)}
+                  >
                     <:left_icon><IconMail /></:left_icon>
                   </TextInput>
                   <ErrorTag />
