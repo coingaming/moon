@@ -45,7 +45,9 @@ defmodule Moon.Components.Select do
       options={options_with_selected}
       opts={[prompt: @prompt]}
     />
-    <ErrorTag field={@field} />
+    <Surface.Components.Context get={Surface.Components.Form, form: form}>
+      <ErrorTag field={@field} :if={form} />
+    </Surface.Components.Context>
     """
 
     ~F"""

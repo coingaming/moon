@@ -10,10 +10,10 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
   @optional_fields ~w(document_filename)a
 
   schema "users" do
-    field(:name, :string)
-    field(:email, :string)
-    field(:gender, :string)
-    field(:document_filename, :string)
+    field(:name)
+    field(:email)
+    field(:gender)
+    field(:document_filename)
   end
 
   def changeset(user = %User{}, params \\ %{}) do
