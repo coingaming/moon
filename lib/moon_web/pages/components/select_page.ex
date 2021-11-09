@@ -72,7 +72,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
             </Form>
           </:example>
 
-          <:code>{select_1_code}</:code>
+          <:code>{select_1_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="With Label" id="select_2">
@@ -82,7 +82,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
             </Form>
           </:example>
 
-          <:code>{select_2_code}</:code>
+          <:code>{select_2_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Disabled" id="select_3">
@@ -98,7 +98,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
             </Form>
           </:example>
 
-          <:code>{select_3_code}</:code>
+          <:code>{select_3_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
