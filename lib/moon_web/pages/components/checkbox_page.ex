@@ -4,8 +4,11 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Button
   alias Moon.Components.Checkbox
+  alias Moon.Components.ErrorTag
   alias Moon.Components.Form
+  alias Moon.Components.Field
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -24,7 +27,11 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     ]
 
   def mount(params, _session, socket) do
-    user_changeset = User.changeset(%User{})
+    user_changeset =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: false,
+        agrees_to_marketing_emails: true
+      })
 
     {:ok,
      assign(socket,
@@ -51,10 +58,27 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
         <ExampleAndCode title="Checkbox" id="checkbox_1">
           <:example>
-            <Form for={@user_changeset} change="update_user">
-              <Checkbox id="agrees_to_marketing_emails" field={:agrees_to_marketing_emails}>
-                I agree to receive bonus & marketing emails.
-              </Checkbox>
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+              <TopToDown>
+                <Field name={:agrees_to_terms_of_service}>
+                  <Checkbox id="agrees_to_terms_of_service">
+                    I agree to terms and services.
+                  </Checkbox>
+                  <ErrorTag />
+                </Field>
+                <Field name={:agrees_to_marketing_emails}>
+                  <Checkbox
+                    id="agrees_to_marketing_emails"
+                    disabled={!get_agrees_to_terms_of_service(@user_changeset)}
+                  >
+                    I agree to receive bonus & marketing emails.
+                  </Checkbox>
+                  <ErrorTag />
+                </Field>
+                <div>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </TopToDown>
             </Form>
           </:example>
 
@@ -62,42 +86,84 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
           <:state>{checkbox_1_state(assigns)}</:state>
         </ExampleAndCode>
-
-        <ExampleAndCode title="Disabled" id="checkbox_2">
-          <:example>
-            <Form for={@user_changeset} change="update_user">
-              <Checkbox id="agrees_to_marketing_emails" field={:agrees_to_marketing_emails} disabled>
-                I agree to receive bonus & marketing emails.
-              </Checkbox>
-            </Form>
-          </:example>
-
-          <:code>{checkbox_2_code()}</:code>
-        </ExampleAndCode>
       </TopToDown>
     </Page>
     """
   end
 
+  def get_agrees_to_terms_of_service(user_changeset) do
+    if user_changeset.changes[:agrees_to_terms_of_service] == false do
+      false
+    else
+      user_changeset.data.agrees_to_terms_of_service
+    end
+  end
+
   def handle_event(
-        "update_user",
-        %{"user" => %{"agrees_to_marketing_emails" => agrees_to_marketing_emails}},
+        "register_form_update",
+        %{
+          "user" => %{
+            "agrees_to_marketing_emails" => agrees_to_marketing_emails,
+            "agrees_to_terms_of_service" => agrees_to_terms_of_service
+          }
+        },
         socket
       ) do
     user_changeset =
       User.changeset(%User{}, %{
+        agrees_to_terms_of_service: agrees_to_terms_of_service,
         agrees_to_marketing_emails: agrees_to_marketing_emails
       })
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
+  def handle_event(
+        "register_form_update",
+        %{
+          "user" => %{
+            "agrees_to_terms_of_service" => agrees_to_terms_of_service
+          }
+        },
+        socket
+      ) do
+    user_changeset =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: agrees_to_terms_of_service
+      })
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("register_form_submit", _, socket) do
+    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
   def checkbox_1_code() do
     """
-    <Form for={@user_changeset} change="update_user">
-      <Checkbox id="agrees_to_marketing_emails" field={:agrees_to_marketing_emails}>
-        I agree to receive bonus & marketing emails.
-      </Checkbox>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <TopToDown>
+        <Field name={:agrees_to_terms_of_service}>
+          <Checkbox id="agrees_to_terms_of_service">
+            I agree to terms and services.
+          </Checkbox>
+          <ErrorTag />
+        </Field>
+        <Field name={:agrees_to_marketing_emails}>
+          <Checkbox
+            id="agrees_to_marketing_emails"
+            disabled={!get_agrees_to_terms_of_service(@user_changeset)}
+          >
+            I agree to receive bonus & marketing emails.
+          </Checkbox>
+          <ErrorTag />
+        </Field>
+        <div>
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
+      </TopToDown>
     </Form>
     """
   end
@@ -105,16 +171,6 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def checkbox_1_state(assigns) do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
-    """
-  end
-
-  def checkbox_2_code() do
-    """
-    <Form for={@user_changeset} change="update_user">
-      <Checkbox id="agrees_to_marketing_emails" field={:agrees_to_marketing_emails} disabled={true}>
-        I agree to receive bonus & marketing emails.
-      </Checkbox>
-    </Form>
     """
   end
 end

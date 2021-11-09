@@ -7,7 +7,9 @@ defmodule Moon.Components.ErrorTag do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.ErrorTag field={@field && String.to_atom("#{@field}")} />
+    <div class="text-chi-chi-100">
+      <Surface.Components.Form.ErrorTag field={@field} />
+    </div>
     """
   end
 end

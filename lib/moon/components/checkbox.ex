@@ -15,7 +15,7 @@ defmodule Moon.Components.Checkbox do
 
   def render(assigns) do
     ~F"""
-    <div class={"relative inline-flex items-center select-none", @class}>
+    <div class={"relative inline-flex items-center select-none", @class, "opacity-disabled": @disabled}>
       <Surface.Components.Form.Checkbox
         field={@field}
         click={@click}
@@ -25,8 +25,7 @@ defmodule Moon.Components.Checkbox do
       <InputContext assigns={assigns} :let={form: form, field: field}>
         {fake_checkbox(
           assigns,
-          selected: Phoenix.HTML.Form.input_value(form, field) || @checked,
-          disabled: @disabled
+          selected: Phoenix.HTML.Form.input_value(form, field) || @checked
         )}
       </InputContext>
 
@@ -35,13 +34,12 @@ defmodule Moon.Components.Checkbox do
     """
   end
 
-  def fake_checkbox(assigns, selected: selected, disabled: disabled) do
+  def fake_checkbox(assigns, selected: selected) do
     ~F"""
     <div class={
       "z-0 left-0 rounded-sm w-4 h-4 inline-block",
       "border border-trunks-100": !selected,
-      "border border-piccolo-100 bg-piccolo-100": selected,
-      "border-opacity-disabled bg-opacity-disabled": disabled
+      "border border-piccolo-100 bg-piccolo-100": selected
     }>
       {#if selected}
         <div style="padding-left: 2px; padding-top: 4px">
