@@ -50,11 +50,6 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">Checkbox</Heading>
-        <p>
-          Checkboxes are used as a list in our forms and signup pages so users can select options of their choice. Users are free to choose how many options to select, from zero to all of them.
-
-          As each checkbox is independent, this means that additional checkboxes do not affect any other selections… or planets. .
-        </p>
 
         <ExampleAndCode title="Checkbox" id="checkbox_1">
           <:example>
