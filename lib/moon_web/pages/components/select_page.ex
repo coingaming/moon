@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.Link

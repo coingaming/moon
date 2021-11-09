@@ -4,10 +4,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
-  alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Form
-  alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
@@ -17,7 +15,6 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias Surface.Components.Form.ErrorTag
 
   @default_user_map %{
     name: "",
