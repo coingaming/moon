@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             </Form>
           </:example>
 
-          <:code></:code>
+          <:code>{example_1_code()}</:code>
 
           <:state>{example_1_state(assigns)}</:state>
         </ExampleAndCode>
@@ -157,6 +157,40 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       })
 
     {:noreply, assign(socket, user_changeset: user_changeset, username: "")}
+  end
+
+  def example_1_code() do
+    """
+    <Form
+      for={@user_changeset}
+      change="register_form_update"
+      submit="register_form_submit"
+      autocomplete="off"
+    >
+      <TopToDown>
+        <Field name={:username}>
+          <TextInput label="Username" placeholder="Username">
+            <:left_icon><IconUser /></:left_icon>
+            <:right_icon>
+              {#if String.length(@username) > 0}
+                <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
+              {/if}
+            </:right_icon>
+          </TextInput>
+          <ErrorTag />
+        </Field>
+        <Field name={:email}>
+          <TextInput label="Email" placeholder="Email" type="email" disabled={!get_has_valid_username(@user_changeset)}>
+            <:left_icon><IconMail /></:left_icon>
+          </TextInput>
+          <ErrorTag />
+        </Field>
+        <div>
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
+      </TopToDown>
+    </Form>
+    """
   end
 
   def example_1_state(assigns) do
