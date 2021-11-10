@@ -4,22 +4,17 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
-  alias Moon.Components.CodePreview
   alias Moon.Components.FileInput
   alias Moon.Components.Form
-  alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
   alias Moon.Components.TextInput
-  alias Moon.Components.Toast.Message
-  alias Moon.Components.ToastStack
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Footer
   alias MoonWeb.Components.ThemesSelect
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias Surface.Components.Form.ErrorTag
 
   @default_user_map %{
     name: "",
@@ -83,12 +78,11 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
       <ExampleAndCode id="add_data_using_form_1">
         <:example>
-          <ToastStack id="toast-stack-messages" />
           <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
             <TopToDown>
-              <TextInput label="Name" field="name" />
-              <TextInput label="Email" field="email" />
-              <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
+              <TextInput label="Name" field={:name} />
+              <TextInput label="Email" field={:email} />
+              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
               <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
               <Button variant="fill" type="submit" full_width>Save</Button>
               <Button variant="outline" on_click="clear_form">Cancel</Button>
@@ -111,9 +105,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     """
     <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
       <TopToDown>
-        <TextInput label="Name" field="name" />
-        <TextInput label="Email" field="email" />
-        <Select label="Gender" field="gender" options={@gender_options} prompt="Please select gender" />
+        <TextInput label="Name" field={:name} />
+        <TextInput label="Email" field={:email} />
+        <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
         <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
         <Button variant="fill" type="submit" full_width>Save</Button>
         <Button variant="outline" on_click="clear_form">Cancel</Button>
@@ -149,21 +143,13 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   end
 
   def handle_event("save_user", _, socket) do
-    ToastStack.show(
-      %Message{message: "Details saved.", variant: "success"},
-      "toast-stack-messages"
-    )
+    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
 
-    {:noreply, socket}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event("clear_form", _, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
     {:noreply, assign(socket, user_changeset: user_changeset)}
-  end
-
-  def handle_info({:hide_toast, toast_id}, socket) do
-    ToastStack.hide_toast(toast_id, "toasts")
-    {:noreply, socket}
   end
 end

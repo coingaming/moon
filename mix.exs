@@ -80,7 +80,17 @@ defmodule Moon.MixProject do
       setup: ["deps.get", "cmd npm install --prefix assets"],
       "assets.setup": ["cmd --cd assets npm i"],
       "assets.clean": ["cmd --cd assets rm -rf node_modules"],
-      "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"]
+      "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
+      "ensure-quality": [
+        "format",
+        "surface.format"
+      ],
+      "check-quality": [
+        "format --check-formatted",
+        "compile --all-warnings --warnings-as-errors",
+        "credo",
+        "surface.format --check-formatted"
+      ]
     ]
   end
 end

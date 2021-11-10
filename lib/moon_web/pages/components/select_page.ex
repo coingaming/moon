@@ -4,12 +4,13 @@ defmodule MoonWeb.Pages.Components.SelectPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   data(gender_options, :any)
 
@@ -33,9 +34,12 @@ defmodule MoonWeb.Pages.Components.SelectPage do
       [key: "I identify as God and this is not important", value: "god", disabled: true]
     ]
 
+    user_changeset = User.changeset(%User{})
+
     {:ok,
      assign(socket,
        gender_options: gender_options,
+       user_changeset: user_changeset,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__
      )}
@@ -62,62 +66,69 @@ defmodule MoonWeb.Pages.Components.SelectPage do
 
         <ExampleAndCode title="Example" id="select_1">
           <:example>
-            <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+            <Form for={@user_changeset}>
+              <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+            </Form>
           </:example>
 
-          <:code>
-            <#CodePreview>
-      <Select
-        field={ :gender }
-        options={ @gender_options }
-        prompt="Please select gender"
-      />
-    </#CodePreview>
-          </:code>
+          <:code>{select_1_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="With Label" id="select_2">
           <:example>
-            <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+            <Form for={@user_changeset}>
+              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+            </Form>
           </:example>
 
-          <:code>
-            <#CodePreview>
-      <Select
-        label="Gender"
-        field={ :gender }
-        options={ @gender_options }
-        prompt="Please select gender"
-      />
-    </#CodePreview>
-          </:code>
+          <:code>{select_2_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Disabled" id="select_3">
           <:example>
-            <Select
-              disabled
-              label="Gender"
-              field={:gender}
-              options={@gender_options}
-              prompt="Please select gender"
-            />
+            <Form for={@user_changeset}>
+              <Select
+                disabled
+                label="Gender"
+                field={:gender}
+                options={@gender_options}
+                prompt="Please select gender"
+              />
+            </Form>
           </:example>
 
-          <:code>
-            <#CodePreview>
-      <Select
-        disabled={true}
-        label="Gender"
-        field={ :gender }
-        options={ @gender_options }
-        prompt="Please select gender"
-      />
-    </#CodePreview>
-          </:code>
+          <:code>{select_3_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def select_1_code do
+    """
+    <Form for={@user_changeset}>
+      <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+    </Form>
+    """
+  end
+
+  def select_2_code do
+    """
+    <Form for={@user_changeset}>
+      <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+    </Form>
+    """
+  end
+
+  def select_3_code do
+    """
+    <Select
+      disabled
+      label="Gender"
+      field={:gender}
+      options={@gender_options}
+      prompt="Please select gender"
+    />
     """
   end
 end

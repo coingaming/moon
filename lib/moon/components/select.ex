@@ -5,7 +5,7 @@ defmodule Moon.Components.Select do
 
   alias Moon.Components.Label
 
-  prop field, :any
+  prop field, :atom
   prop label, :string
   prop options, :any, default: []
   prop value, :any
@@ -34,12 +34,13 @@ defmodule Moon.Components.Select do
     select = ~F"""
     <Surface.Components.Form.Select
       class={
-        "text-trunks-100 pr-3.5 rounded-md bg-no-repeat bg-goku-100 hover:bg-goku-120
+        "text-trunks-100 pr-3.5 rounded bg-no-repeat bg-goku-100 hover:bg-goku-120
                hover:cursor-pointer focus:cursor-pointer border border-solid
-               border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none #{@class}",
-        rounded: @rounded
+               border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none",
+        rounded: @rounded,
+        "#{@class}": true
       }
-      field={String.to_atom("#{@field}")}
+      field={@field}
       options={options_with_selected}
       opts={[prompt: @prompt]}
     />

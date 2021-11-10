@@ -155,6 +155,10 @@ defmodule MoonWeb.Components.LeftMenu do
             url: "/theme_name/components/pagination"
           },
           %{
+            name: "Password input",
+            url: "/theme_name/components/password_input"
+          },
+          %{
             name: "Popover",
             url: "/theme_name/components/popover"
           },

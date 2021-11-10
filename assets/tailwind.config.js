@@ -29,6 +29,9 @@ module.exports = {
         '25': '6.25rem', // 100px
         '80': '20rem',
         '96': '24rem',
+      },
+      opacity: {
+        'disabled': 'var(--opacity--disabled)'
       }
     },
     fontWeight: {

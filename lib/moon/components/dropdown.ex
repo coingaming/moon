@@ -21,7 +21,6 @@ defmodule Moon.Components.Dropdown do
         <IconZoom class="absolute top-4 left-4" />
         <Form for={@search_name} change={@on_search_change}>
           <TextInput
-            without_design
             class="outline-none bg-transparent pl-12 p-4 w-full"
             type="search"
             placeholder={@search_placeholder}
