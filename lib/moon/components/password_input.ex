@@ -23,35 +23,71 @@ defmodule Moon.Components.PasswordInput do
   slot left_icon
 
   def render(assigns) do
-    ~F"""
-    <TextInput
-      type={@hidden && "password"}
-      {=@field}
-      {=@label}
-      {=@value}
-      {=@placeholder}
-      {=@error}
-      {=@rounded}
-      {=@disabled}
-      {=@required}
-      {=@class}
-      {=@focus}
-      {=@blur}
-      {=@background_color}
-      {=@size}
-    >
-      <:right_icon>
-        <div style="font-size: 1.2em">
-          {#if @hidden}
-            <Moon.Icons.ControlsEyeCrossed click="show" />
-          {/if}
-          {#if !@hidden}
-            <Moon.Icons.ControlsEye click="hide" />
-          {/if}
-        </div>
-      </:right_icon>
-    </TextInput>
-    """
+    # the reason for if else is left_icon, surface currently does not support conditionals on slots, but hopefully in 0.17 liveview it works
+    if slot_assigned?(:left_icon) do
+      ~F"""
+      <TextInput
+        type={@hidden && "password"}
+        {=@field}
+        {=@label}
+        {=@value}
+        {=@placeholder}
+        {=@error}
+        {=@rounded}
+        {=@disabled}
+        {=@required}
+        {=@class}
+        {=@focus}
+        {=@blur}
+        {=@background_color}
+        {=@size}
+      >
+        <:left_icon>
+          <#slot name="left_icon" />
+        </:left_icon>
+        <:right_icon>
+          <div style="font-size: 1.2em">
+            {#if @hidden}
+              <Moon.Icons.ControlsEyeCrossed click="show" />
+            {/if}
+            {#if !@hidden}
+              <Moon.Icons.ControlsEye click="hide" />
+            {/if}
+          </div>
+        </:right_icon>
+      </TextInput>
+      """
+    else
+      ~F"""
+      <TextInput
+        type={@hidden && "password"}
+        {=@field}
+        {=@label}
+        {=@value}
+        {=@placeholder}
+        {=@error}
+        {=@rounded}
+        {=@disabled}
+        {=@required}
+        {=@class}
+        {=@focus}
+        {=@blur}
+        {=@background_color}
+        {=@size}
+      >
+        <:right_icon>
+          <div style="font-size: 1.2em">
+            {#if @hidden}
+              <Moon.Icons.ControlsEyeCrossed click="show" />
+            {/if}
+            {#if !@hidden}
+              <Moon.Icons.ControlsEye click="hide" />
+            {/if}
+          </div>
+        </:right_icon>
+      </TextInput>
+      """
+    end
   end
 
   def handle_event("show", _, socket) do
