@@ -16,8 +16,8 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:email, :string, default: "joe@doe.com")
     field(:gender, :string, default: "male")
     field(:document_filename)
-    field(:agrees_to_terms_of_service, :boolean, default: false)
-    field(:agrees_to_marketing_emails, :boolean, default: false)
+    field(:agrees_to_terms_of_service, :boolean, default: true)
+    field(:agrees_to_marketing_emails, :boolean, default: true)
   end
 
   def changeset(user = %User{}, params \\ %{}) do

@@ -26,25 +26,6 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        agrees_to_terms_of_service: false,
-        agrees_to_marketing_emails: false
-      })
-
-    {:ok,
-     assign(socket,
-       user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
-       active_page: __MODULE__
-     )}
-  end
-
-  def handle_params(_params, uri, socket) do
-    {:noreply, assign(socket, uri: uri)}
-  end
-
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -85,6 +66,26 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     </Page>
     """
   end
+
+  def mount(params, _session, socket) do
+    user_changeset =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: false,
+        agrees_to_marketing_emails: true
+      })
+
+    {:ok,
+     assign(socket,
+       user_changeset: user_changeset,
+       theme_name: params["theme_name"] || "sportsbet-dark",
+       active_page: __MODULE__
+     )}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
 
   def get_agrees_to_terms_of_service(user_changeset) do
     Moon.Components.Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) || Moon.Components.Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
