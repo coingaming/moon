@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     user_changeset =
       User.changeset(%User{}, %{
         agrees_to_terms_of_service: false,
-        agrees_to_marketing_emails: true
+        agrees_to_marketing_emails: false
       })
 
     {:ok,
@@ -87,45 +87,18 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   end
 
   def get_agrees_to_terms_of_service(user_changeset) do
-    if user_changeset.changes[:agrees_to_terms_of_service] == false do
-      false
-    else
-      user_changeset.data.agrees_to_terms_of_service
-    end
+    Moon.Components.Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) || Moon.Components.Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
   end
 
   def handle_event(
         "register_form_update",
         %{
-          "user" => %{
-            "agrees_to_marketing_emails" => agrees_to_marketing_emails,
-            "agrees_to_terms_of_service" => agrees_to_terms_of_service
-          }
+          "user" => params
         },
         socket
       ) do
     user_changeset =
-      User.changeset(%User{}, %{
-        agrees_to_terms_of_service: agrees_to_terms_of_service,
-        agrees_to_marketing_emails: agrees_to_marketing_emails
-      })
-
-    {:noreply, assign(socket, user_changeset: user_changeset)}
-  end
-
-  def handle_event(
-        "register_form_update",
-        %{
-          "user" => %{
-            "agrees_to_terms_of_service" => agrees_to_terms_of_service
-          }
-        },
-        socket
-      ) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        agrees_to_terms_of_service: agrees_to_terms_of_service
-      })
+      User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
