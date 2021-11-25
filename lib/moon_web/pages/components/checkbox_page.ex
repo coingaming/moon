@@ -86,9 +86,9 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     {:noreply, assign(socket, uri: uri)}
   end
 
-
   def get_agrees_to_terms_of_service(user_changeset) do
-    Moon.Components.Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) || Moon.Components.Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
+    Moon.Components.Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) ||
+      Moon.Components.Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
   end
 
   def handle_event(
@@ -98,8 +98,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         },
         socket
       ) do
-    user_changeset =
-      User.changeset(%User{}, params)
+    user_changeset = User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
