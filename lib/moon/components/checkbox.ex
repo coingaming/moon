@@ -20,18 +20,24 @@ defmodule Moon.Components.Checkbox do
         field={@field}
         click={@click}
         class="z-10 absolute left-0 opacity-0"
+        checked_value="true"
+        unchecked_value="false"
         opts={disabled: @disabled}
       />
       <InputContext assigns={assigns} :let={form: form, field: field}>
         {fake_checkbox(
           assigns,
-          selected: Phoenix.HTML.Form.input_value(form, field) || @checked
+          selected: is_true(Phoenix.HTML.Form.input_value(form, field)) || is_true(@checked)
         )}
       </InputContext>
 
       <Label field={@field} class="bg-rochi-100 pl-2"><#slot /></Label>
     </div>
     """
+  end
+
+  def is_true(val) do
+    Enum.member?([true, "true"], val)
   end
 
   def fake_checkbox(assigns, selected: selected) do
