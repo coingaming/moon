@@ -48,7 +48,7 @@ defmodule Moon.MixProject do
       {:phoenix_live_dashboard, "~> 0.5.2"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
-      {:faker, github: "elixirs/faker"},
+      {:faker, "~> 0.16.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
