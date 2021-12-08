@@ -3,6 +3,7 @@ defmodule Moon.Components.Form do
 
   use Moon.StatelessComponent
 
+  prop(id, :string)
   prop(for, :any)
   prop(change, :event)
   prop(submit, :event)
@@ -13,6 +14,7 @@ defmodule Moon.Components.Form do
   def render(assigns) do
     ~F"""
     <Surface.Components.Form
+      {=@id}
       {=@for}
       {=@submit}
       {=@change}
