@@ -4,6 +4,7 @@ defmodule Moon.Components.Form do
   use Moon.StatelessComponent
 
   prop(id, :string)
+  prop(test_id, :string)
   prop(for, :any)
   prop(change, :event)
   prop(submit, :event)
@@ -14,12 +15,11 @@ defmodule Moon.Components.Form do
   def render(assigns) do
     ~F"""
     <Surface.Components.Form
-      {=@id}
       {=@for}
       {=@submit}
       {=@change}
       {=@class}
-      opts={autocomplete: @autocomplete}
+      opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id}
     >
       <#slot />
     </Surface.Components.Form>
