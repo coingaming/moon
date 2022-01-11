@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
       <Chip
         on_click={toggle_filter}
         value={@name}
-        right_icon="icon_chevron_down_rounded"
+        right_icon="controls_chevron_down"
         active={is_open or length(@active_options) > 0}
       >
         {"#{@label} #{length(@active_options) |> Helpers.format_filter_count()}"}

@@ -5,7 +5,7 @@ defmodule Moon.Components.Chip do
 
   alias Moon.Components.Button
 
-  slot(default)
+  slot default
   prop class, :string
   prop left_icon, :string
   prop right_icon, :string

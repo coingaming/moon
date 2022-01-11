@@ -40,9 +40,9 @@ defmodule Moon.Components.Button do
     <button
       class={
         "flex justify-center items-center gap-2 py-2 rounded #{@class}",
-        "border border-solid text-goten-100 border-piccolo-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120 hover:bg-piccolo-80 ":
+        "border border-solid text-goten-100 border-piccolo-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120 hover:bg-piccolo-80":
           @variant in ["fill", "primary"],
-        "border border-solid text-piccolo-80 border border-beerus-100 hover:border-piccolo-80 active:border-piccolo-80 focus-within:border-piccolo-80 border-beerus-100 ":
+        "border border-solid text-piccolo-80 border-beerus-100 hover:border-piccolo-80 active:border-piccolo-80 focus-within:border-piccolo-80":
           @variant in ["outline", "tertiary"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
           @variant in ["link", "secondary"],
