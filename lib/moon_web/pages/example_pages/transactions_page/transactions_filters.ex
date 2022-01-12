@@ -44,11 +44,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
     ~F"""
     <ButtonsList>
       <Popover show={@clicked_name == "search"} on_close="close_popover">
-        <Chip value="search" left_icon="icon_zoom">
+        <Chip value="search" left_icon="generic_search">
           Search
         </Chip>
         <:content>
-          <div class="p-4 h-80 w-80 bg-gohan-100 shadow rounded">
+          <div class="p-4 rounded shadow h-80 w-80 bg-gohan-100">
             Yay
           </div>
         </:content>
@@ -92,7 +92,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       />
 
       <Popover show={@clicked_name == "range"} on_close="close_popover" placement="bottom">
-        <Chip on_click="open_popover" value="range" right_icon="icon_chevron_down_rounded">Range · All</Chip>
+        <Chip on_click="open_popover" value="range" right_icon="controls_chevron_down">Range · All</Chip>
         <:content>
           <div class="h-auto">
             <Form for={:amount_range_values} change="handle_amount_range_selection_changed">
@@ -113,9 +113,9 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
       </Popover>
 
       <Popover show={@clicked_name == "more_filters"} on_close="close_popover" placement="bottom">
-        <Chip on_click="open_popover" value="more_filters" right_icon="icon_chevron_down_rounded">More filters</Chip>
+        <Chip on_click="open_popover" value="more_filters" right_icon="controls_chevron_down">More filters</Chip>
         <:content>
-          <div class="p-4 h-80 w-80 bg-gohan-100 shadow rounded">
+          <div class="p-4 rounded shadow h-80 w-80 bg-gohan-100">
             Yay
           </div>
         </:content>

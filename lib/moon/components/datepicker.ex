@@ -67,7 +67,7 @@ defmodule Moon.Components.Datepicker do
       <Chip
         class={@button_class}
         on_click="toggle_picker"
-        right_icon="icon_chevron_down_rounded"
+        right_icon="controls_chevron_down"
         active={@start_date && @end_date}
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}

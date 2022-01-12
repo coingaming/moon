@@ -52,8 +52,8 @@ defmodule MoonWeb.Pages.Components.CardPage do
           <:example>
             <Card title="Winers">
               <:buttons>
-                <IconButton icon_name="icon_refresh" height={8} width={8} hover_bg_color="bg-goku-100" />
-                <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} hover_bg_color="bg-goku-100" />
+                <IconButton icon_name="arrows_update" height={8} width={8} hover_bg_color="bg-goku-100" />
+                <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
               </:buttons>
 
               <:content>
@@ -69,8 +69,8 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
         <Card title="Winers">
           <:buttons>
-            <IconButton icon_name="icon_refresh" height={8} width={8} hover_bg_color="bg-goku-100" />
-            <IconButton icon_name="icon_arrow_diagonals" height={8} width={8} hover_bg_color="bg-goku-100" />
+            <IconButton icon_name="arrows_update" height={8} width={8} hover_bg_color="bg-goku-100" />
+            <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
           </:buttons>
           <:content>
             {Faker.Lorem.paragraph()}
