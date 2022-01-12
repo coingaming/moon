@@ -63,7 +63,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         <div class="m-2 mb-0" :if={segment.new_item}>
           <div class="flex items-center px-2 cursor-pointer">
             <div class="flex items-center justify-center w-6 h-6 m-2 rounded-sm bg-goku-80">
-              <Icon name="icon_plus" />
+              <Icon name="controls_plus" />
             </div>
             <div class="">{segment.new_item}</div>
           </div>
@@ -104,8 +104,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
         count: 2,
         new_item: nil,
         items: [
-          %{icon: :icon_user, title: "King Kong"},
-          %{icon: :icon_user, title: "God Zilla"}
+          %{icon: :generic_user, title: "King Kong"},
+          %{icon: :generic_user, title: "God Zilla"}
         ]
       }
     ]
