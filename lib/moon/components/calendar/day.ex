@@ -18,7 +18,7 @@ defmodule Moon.Components.Calendar.Day do
         <div :for.with_index={{event, index} <- @events}>
           <div
             :if={index < 2}
-            class="overflow-hidden leading-tight whitespace-nowrap overflow-ellipsis"
+            class="overflow-hidden leading-tight whitespace-nowrap text-ellipsis"
             title={event.description}
           >
             {event.description}
@@ -26,7 +26,7 @@ defmodule Moon.Components.Calendar.Day do
 
           <div
             :if={index < 2 && event.location}
-            class="overflow-hidden leading-tight text-trunks-100 whitespace-nowrap overflow-ellipsis"
+            class="overflow-hidden leading-tight text-trunks-100 whitespace-nowrap text-ellipsis"
             title={event.location}
           >
             {event.location}

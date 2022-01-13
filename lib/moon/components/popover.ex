@@ -51,72 +51,72 @@ defmodule Moon.Components.Popover do
   defp wrapper_classes("top-start"),
     do: %{
       outer: "absolute top-0 left-0",
-      inner: "transform -translate-y-full pb-2"
+      inner: "-translate-y-full pb-2"
     }
 
   defp wrapper_classes("top"),
     do: %{
       outer: "absolute left-0 top-0 right-0 flex flex-col items-center",
-      inner: "transform -translate-y-full pb-2"
+      inner: "-translate-y-full pb-2"
     }
 
   defp wrapper_classes("top-end"),
     do: %{
       outer: "absolute top-0 right-0",
-      inner: "transform -translate-y-full pb-2"
+      inner: "-translate-y-full pb-2"
     }
 
   defp wrapper_classes("right-start"),
     do: %{
       outer: "absolute left-0 top-0 right-0",
-      inner: "transform translate-x-full pl-2"
+      inner: "translate-x-full pl-2"
     }
 
   defp wrapper_classes("right"),
     do: %{
       outer: "absolute left-0 top-0 right-0",
-      inner: "transform translate-x-full -translate-y-1/2 pl-2"
+      inner: "translate-x-full -translate-y-1/2 pl-2"
     }
 
   defp wrapper_classes("right-end"),
     do: %{
       outer: "absolute left-0 bottom-0 right-0",
-      inner: "transform translate-x-full pl-2"
+      inner: "translate-x-full pl-2"
     }
 
   defp wrapper_classes("bottom-start"),
     do: %{
       outer: "absolute left-0 bottom-0",
-      inner: "transform translate-y-full pt-2"
+      inner: "translate-y-full pt-2"
     }
 
   defp wrapper_classes("bottom"),
     do: %{
       outer: "absolute left-0 bottom-0 right-0 flex flex-col items-center",
-      inner: "transform translate-y-full pt-2"
+      inner: "translate-y-full pt-2"
     }
 
   defp wrapper_classes("bottom-end"),
     do: %{
       outer: "absolute right-0 bottom-0",
-      inner: "transform translate-y-full pt-2"
+      inner: "translate-y-full pt-2"
     }
 
   defp wrapper_classes("left-start"),
     do: %{
       outer: "absolute left-0 top-0 right-0",
-      inner: "absolute transform -translate-x-full pr-2"
+      inner: "absolute -translate-x-full pr-2"
     }
 
   defp wrapper_classes("left"),
     do: %{
       outer: "absolute left-0 bottom-0 right-0",
-      inner: "absolute transform -translate-x-full -translate-y-1/2 pr-2"
+      inner: "absolute -translate-x-full -translate-y-1/2 pr-2"
     }
 
   defp wrapper_classes("left-end"),
     do: %{
       outer: "absolute left-0 bottom-0 right-0",
-      inner: "absolute transform -translate-x-full -translate-y-full pr-2"
+      inner: "absolute -translate-x-full -translate-y-full pr-2"
     }
 end

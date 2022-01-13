@@ -7,13 +7,13 @@
     "watch_js": "NODE_PATH=../deps esbuild js/app.js js/hooks.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.2.1",
-    "@tailwindcss/forms": "^0.3.3",
-    "autoprefixer": "^10.3.4",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "autoprefixer": "^10.4.2",
     "esbuild": "^0.13.9",
-    "postcss": "^8.3.6",
+    "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
-    "tailwindcss": "^2.2.15"
+    "tailwindcss": "^3.0.13"
   },
   "dependencies": {
     "alpinejs": "^2.8.2"

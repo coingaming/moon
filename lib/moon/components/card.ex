@@ -18,7 +18,7 @@ defmodule Moon.Components.Card do
       <div class="flex items-center justify-between gap-4">
         <Heading size={20}>{@title}</Heading>
 
-        <div class="flex flex-shrink-0 gap-2">
+        <div class="flex shrink-0 gap-2">
           <#slot name="buttons" />
         </div>
       </div>

@@ -86,16 +86,13 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                 <nav class="mt-5">
                   <TopToDown>
                     <a href="#" class="flex items-center group">
-                      <IconSlots
-                        font_size="1.75rem"
-                        class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
-                      />
+                      <IconSlots font_size="1.75rem" class="shrink-0 mr-3 transition scale-100 group-hover:scale-110" />
                       <span class="group-hover:text-piccolo-100">Slots</span>
                     </a>
                     <a href="#" class="flex items-center group">
                       <IconSportsBaseBall
                         font_size="1.75rem"
-                        class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110"
+                        class="shrink-0 mr-3 transition scale-100 group-hover:scale-110"
                       />
                       <span class="group-hover:text-piccolo-100">Baseball</span>
                     </a>
@@ -131,11 +128,11 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
             <nav class="mt-5">
               <TopToDown>
                 <a href="#" class="flex items-center group">
-                  <IconSlots font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
+                  <IconSlots font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Slots</span>
                 </a>
                 <a href="#" class="flex items-center group">
-                  <IconSportsBaseBall font_size="1.75rem" class="flex-shrink-0 mr-3 transition transform scale-100 group-hover:scale-110" />
+                  <IconSportsBaseBall font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
                   <span class="group-hover:text-piccolo-100">Baseball</span>
                 </a>
               </TopToDown>

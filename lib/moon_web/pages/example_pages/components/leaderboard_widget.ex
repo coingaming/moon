@@ -58,7 +58,7 @@ defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
       <:content>
         <div class="space-y-6">
           <div :for.with_index={{line, line_index} <- sorted_lines(@widget.data)} class="flex py-2 gap-x-4">
-            <div class="flex-shrink-0 text-trunks-100">
+            <div class="shrink-0 text-trunks-100">
               {line_index + 1}
             </div>
 
@@ -74,14 +74,14 @@ defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
             </div>
 
             <div class={
-              "w-10 flex-shrink-0 text-right whitespace-nowrap",
+              "w-10 shrink-0 text-right whitespace-nowrap",
               "text-roshi-100": line.change > 0,
               "text-chi-chi-100": line.change <= 0
             }>
               <span :if={line.change > 0}>+</span>{line.change}%
             </div>
 
-            <div class="flex-shrink-0 w-16 text-right">
+            <div class="shrink-0 w-16 text-right">
               {line.amount}
             </div>
           </div>

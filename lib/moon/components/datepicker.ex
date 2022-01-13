@@ -96,7 +96,7 @@ defmodule Moon.Components.Datepicker do
           <!-- Content -->
           <div class="flex flex-col pt-2 pl-3">
             <!-- Months -->
-            <div class="flex flex-grow space-x-6">
+            <div class="flex grow space-x-6">
               <!-- First Month -->
               <div class="relative flex flex-col items-center">
                 <button
@@ -108,7 +108,7 @@ defmodule Moon.Components.Datepicker do
                   <IconChevronLeft class="block" font_size="1rem" />
                 </button>
 
-                <div class="flex-grow">
+                <div class="grow">
                   <Month
                     date={@left_panel_date}
                     start_date={@internal_start_date}
@@ -130,7 +130,7 @@ defmodule Moon.Components.Datepicker do
                   <IconChevronRight class="block" font_size="1rem" />
                 </button>
 
-                <div class="flex-grow">
+                <div class="grow">
                   <Month
                     date={Timex.shift(@left_panel_date, months: 1)}
                     start_date={@internal_start_date}
@@ -147,7 +147,7 @@ defmodule Moon.Components.Datepicker do
               "justify-between": @show_date_inputs,
               "justify-end": !@show_date_inputs
             }>
-              <div :if={@show_date_inputs} class="flex flex-shrink-0 gap-x-2">
+              <div :if={@show_date_inputs} class="flex shrink-0 gap-x-2">
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@start_date_field}
@@ -193,7 +193,7 @@ defmodule Moon.Components.Datepicker do
                 />
               </div>
 
-              <div class="flex flex-shrink-0 gap-x-2">
+              <div class="flex shrink-0 gap-x-2">
                 <Button variant="tertiary" size="xsmall" on_click="toggle_picker">
                   Discard
                 </Button>

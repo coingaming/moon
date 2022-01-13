@@ -17,7 +17,7 @@ defmodule Moon.Components.LineChartCard do
     ~F"""
     <div class="bg-gohan-100 p-6 rounded-sm">
       <div class="flex items-center mt-0.5 mb-6">
-        <div class="flex-grow text-xl text-bulma-100">
+        <div class="grow text-xl text-bulma-100">
           {@title}
         </div>
 

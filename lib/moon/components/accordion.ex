@@ -20,7 +20,7 @@ defmodule Moon.Components.Accordion.Item do
           name="controls_chevron_up"
           font_size="1.25rem"
           color={(@is_open && "piccolo-100") || "trunks-100"}
-          class={"absolute right-4 top-4 cursor-pointer transition-all transform #{(@is_open && "rotate-180") || "rotate-0"}"}
+          class={"absolute right-4 top-4 cursor-pointer transition-all #{(@is_open && "rotate-180") || "rotate-0"}"}
         />
       </div>
       <div
