@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
         </:content>
       </Popover>
 
-      <Button on_click="save_segment" left_icon="icon_timer">Save segment</Button>
+      <Button on_click="save_segment" left_icon="time_clock">Save segment</Button>
       <Button on_click="clear_all_filters">Clear all</Button>
     </ButtonsList>
     """

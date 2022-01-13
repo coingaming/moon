@@ -27,9 +27,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
       </div>
 
       <div class="flex items-center gap-x-4">
-        <IconButton icon_name="icon_settings" title="Settings" />
-        <IconButton icon_name="icon_live_chat" title="Messages" />
-        <IconButton icon_name="icon_bell" title="Notifications" />
+        <IconButton icon_name="generic_settings" title="Settings" />
+        <IconButton icon_name="chat_chat" title="Messages" />
+        <IconButton icon_name="notifications_bell_ringing_alternative" title="Notifications" />
 
         <!-- TODO: Replace with avatar -->
         <div
