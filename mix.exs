@@ -43,9 +43,9 @@ defmodule Moon.MixProject do
   defp deps do
     deps_override([
       {:phoenix, "~> 1.6"},
-      {:phoenix_live_view, "~> 0.16"},
+      {:phoenix_live_view, "~> 0.17"},
       {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_dashboard, "~> 0.5.2"},
+      {:phoenix_live_dashboard, "~> 0.6"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:faker, "~> 0.17"},
@@ -53,7 +53,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:surface, "~> 0.6"},
+      {:surface, "~> 0.7"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
 
