@@ -55,7 +55,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         :on-click="toggle_themes"
         type="button"
         aria-pressed="false"
-        class="bg-gohan-100 text-piccolo-100 hover:bg-gohan-120  fixed bottom-4 right-4 inline-flex flex-shrink-0
+        class="bg-gohan-100 text-piccolo-100 hover:bg-gohan-120  fixed bottom-4 right-4 inline-flex shrink-0
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
                duration-200 focus:outline-none z-40"
       >

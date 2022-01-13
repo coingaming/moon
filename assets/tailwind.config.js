@@ -1,14 +1,12 @@
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     '../lib/**/*.ex',
     '../lib/**/*.heex',
     '../lib/**/*.eex',
     './js/**/*.js',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       fontSize: {

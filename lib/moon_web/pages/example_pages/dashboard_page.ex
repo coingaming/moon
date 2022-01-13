@@ -113,9 +113,9 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
       <LeftToRight gap={0}>
         <LeftMenu id="left-menu" reduced_opacity={@edited} />
-        <TopToDown class="flex-grow py-6 px-14" gap={6}>
+        <TopToDown class="grow py-6 px-14" gap={6}>
           <LeftToRight gap={2}>
-            <Heading size={32} class="flex-grow">{@page_title}</Heading>
+            <Heading size={32} class="grow">{@page_title}</Heading>
 
             <Button
               on_click="discard_page_changes"
@@ -206,7 +206,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <div class="flex p-6 rounded bg-gohan-100">
             <div class="flex overflow-x-scroll no-scrollbar">
               {#for metric <- @page_metrics}
-                <div class="flex-shrink-0 p-3 mr-4 border-r pl-7 border-beerus-100 w-50">
+                <div class="shrink-0 p-3 mr-4 border-r pl-7 border-beerus-100 w-50">
                   <p class="text-xs text-trunks-100">{metric.name}</p>
                   <div class="flex gap-x-0.5 items-start">
                     <div class="text-xl text-bulma-100">

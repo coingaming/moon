@@ -33,7 +33,7 @@ defmodule Moon.Components.Calendar do
           {calendar_title(@date, @week_starts_on, @show_month)}
         </div>
 
-        <div class="flex-grow text-right">
+        <div class="grow text-right">
           <Button class="font-semibold rounded-lg" variant="tertiary" size="small" on_click="toggle_view">
             <span :if={@show_month}>
               Month

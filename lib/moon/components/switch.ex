@@ -54,7 +54,7 @@ defmodule Moon.Components.Switch do
         type="button"
         aria-pressed="false"
         class={
-          "relative inline-flex flex-shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none",
+          "relative inline-flex shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none",
           "bg-piccolo-100": @checked,
           "bg-hit-80": !@checked,
           "border-2 w-7 focus:ring-1 focus:ring-offset-1": @size == "small",
@@ -67,14 +67,14 @@ defmodule Moon.Components.Switch do
         <span class="sr-only">{@action}</span>
 
         <div :if={@icons} class="absolute flex">
-          <Icon name="icon_moon" class="transform scale-90" font_size={icon_size(@size)} />
-          <Icon name="icon_sun" class="transform scale-90" font_size={icon_size(@size)} />
+          <Icon name="icon_moon" class="scale-90" font_size={icon_size(@size)} />
+          <Icon name="icon_sun" class="scale-90" font_size={icon_size(@size)} />
         </div>
 
         <span
           aria-hidden="true"
           class={
-            "inline-block transition duration-200 ease-in-out transform translate-x-0 bg-goten-100 rounded-full shadow pointer-events-none ring-0",
+            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goten-100 rounded-full shadow pointer-events-none ring-0",
             "w-3 h-3": @size == "small",
             "w-4 h-4": @size == "medium",
             "w-6 h-6": @size == "large",

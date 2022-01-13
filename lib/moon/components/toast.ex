@@ -30,7 +30,7 @@ defmodule Moon.Components.Toast do
       id={@id}
       class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4"
     >
-      <div :if={@variant} class="flex-shrink-0 mr-3">
+      <div :if={@variant} class="shrink-0 mr-3">
         <IconError :if={@variant == "error"} class="block w-5 h-5" font_size="1.25rem" />
 
         <IconWarning :if={@variant == "warning"} class="block w-5 h-5" font_size="1.25rem" />
@@ -44,12 +44,12 @@ defmodule Moon.Components.Toast do
         <p class="flex-1 text-gray-900">
           {@message}
         </p>
-        <Link :if={@link_href && @link_text} class="ml-4 flex-shrink-0 font-semibold" to={@link_href}>
+        <Link :if={@link_href && @link_text} class="ml-4 shrink-0 font-semibold" to={@link_href}>
           {@link_text}
         </Link>
       </div>
 
-      <div :if={@closeable} class="flex flex-shrink-0 ml-4">
+      <div :if={@closeable} class="flex shrink-0 ml-4">
         <button
           class="inline-flex rounded-md hover:text-gray-500 focus:outline-none"
           :on-click={@on_close}

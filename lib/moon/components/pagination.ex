@@ -58,7 +58,7 @@ defmodule Moon.Components.Pagination do
         />
       </div>
 
-      <div class="flex flex-grow items-center justify-center mb-4">
+      <div class="flex grow items-center justify-center mb-4">
         <PaginationButton
           size={@size}
           page_number={1}

@@ -91,7 +91,7 @@ defmodule Moon.BackofficeComponents.Table do
                 <td>
                   {#if "#{item.id}" == "#{assigns.active_item_id}"}
                     <div class="absolute inset-0 rounded border border-piccolo-100">
-                      <div class="inline-block transform -translate-y-full pb-2">
+                      <div class="inline-block -translate-y-full pb-2">
                         <slot name="active_item_popover" />
                       </div>
                     </div>

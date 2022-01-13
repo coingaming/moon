@@ -14,7 +14,7 @@ defmodule Moon.Components.Sidebar do
 
   def render(assigns) do
     ~F"""
-    <div x-data="{ collapsed: false, showBtn: false }" class="flex flex-shrink-0">
+    <div x-data="{ collapsed: false, showBtn: false }" class="flex shrink-0">
       <div x-cloak x-show="collapsed" class="flex items-center p-5">
         <!-- Short logo -->
         <#slot name="short_logo" />
@@ -56,7 +56,7 @@ defmodule Moon.Components.Sidebar do
           </div>
 
           <!-- Full logo -->
-          <div class="flex items-center flex-shrink-0 px-5">
+          <div class="flex items-center shrink-0 px-5">
             <#slot name="full_logo" />
           </div>
 
