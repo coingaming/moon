@@ -29,6 +29,7 @@ defmodule Moon.Components.Button do
   prop on_click, :event
   prop value_name, :string
   prop value, :any
+  prop values, :keyword, default: []
 
   prop left_icon, :string
   prop right_icon, :string
@@ -57,6 +58,7 @@ defmodule Moon.Components.Button do
       type={@type}
       data-size={@size}
       :on-click={@on_click}
+      :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
       <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
