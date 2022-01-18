@@ -213,7 +213,7 @@ defmodule Moon.Components.Datepicker do
                   class="px-3 py-2 rounded"
                   variant="primary"
                   size="xsmall"
-                  on_click={@submit}
+                  on_click={@submit || "update_dates"}
                   values={
                     start_date: format_date(@internal_start_date, @with_time),
                     end_date: format_date(@internal_end_date, @with_time)
@@ -444,31 +444,33 @@ defmodule Moon.Components.Datepicker do
      )}
   end
 
-  # def handle_event("update_dates", _, socket) do
-  #   %{
-  #     id: filter_id,
-  #     start_date_field: start_date_field,
-  #     end_date_field: end_date_field,
-  #     internal_start_date: start_date,
-  #     internal_end_date: end_date
-  #   } = socket.assigns
+  def handle_event("update_dates", _, socket) do
+    %{
+      id: filter_id,
+      start_date_field: start_date_field,
+      end_date_field: end_date_field,
+      internal_start_date: start_date,
+      internal_end_date: end_date
+    } = socket.assigns
 
-  #   # TODO this is too filters specific and needs to be removed.
-  #   # send(
-  #   #   self(),
-  #   #   {:filter,
-  #   #    {
-  #   #      filter_id,
-  #   #      :apply,
-  #   #      %{
-  #   #        start_date_field => start_date,
-  #   #        end_date_field => end_date
-  #   #      }
-  #   #    }}
-  #   # )
+    # TODO this is too filters specific and needs to be removed.
+    # this should use normal Surface Event with handle_callback
 
-  #   {:noreply, assign(socket, show: false)}
-  # end
+    send(
+      self(),
+      {:filter,
+       {
+         filter_id,
+         :apply,
+         %{
+           start_date_field => start_date,
+           end_date_field => end_date
+         }
+       }}
+    )
+
+    {:noreply, assign(socket, show: false)}
+  end
 
   def close(id: id) do
     send_update(__MODULE__, id: id, show: false)
