@@ -214,7 +214,10 @@ defmodule Moon.Components.Datepicker do
                   variant="primary"
                   size="xsmall"
                   on_click={@submit}
-                  values={start_date: format_date(@internal_start_date, @with_time), end_date: format_date(@internal_end_date, @with_time)}
+                  values={
+                    start_date: format_date(@internal_start_date, @with_time),
+                    end_date: format_date(@internal_end_date, @with_time)
+                  }
                 >
                   Apply
                 </Button>
