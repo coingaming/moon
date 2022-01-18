@@ -39,6 +39,7 @@ defmodule Moon.Components.Datepicker do
 
   prop start_date, :datetime
   prop end_date, :datetime
+  prop submit, :event
 
   # Internal values
   data internal_start_date, :datetime, default: Timex.today()
@@ -50,13 +51,23 @@ defmodule Moon.Components.Datepicker do
 
   # Handle date-input fields updates
   def update(assigns, socket) do
+    socket = assign(socket, assigns)
+
     socket =
-      socket
-      |> assign(assigns)
-      |> assign(
-        internal_start_date: parse_date(assigns.start_date),
-        internal_end_date: parse_date(assigns.end_date)
-      )
+      case assigns do
+        %{start_date: start_date, end_date: end_date} ->
+          assign(
+            socket,
+            start_date: parse_date(start_date),
+            end_date: parse_date(end_date),
+            internal_start_date: parse_date(start_date),
+            internal_end_date: parse_date(end_date)
+          )
+
+        _ ->
+          # this is required, because if someone uses LiveView.send_update, then start_date and end_date might be missing
+          socket
+      end
 
     {:ok, socket}
   end
@@ -198,7 +209,16 @@ defmodule Moon.Components.Datepicker do
                   Discard
                 </Button>
 
-                <Button class="px-3 py-2 rounded" variant="primary" size="xsmall" on_click="update_dates">
+                <Button
+                  class="px-3 py-2 rounded"
+                  variant="primary"
+                  size="xsmall"
+                  on_click={@submit || "update_dates"}
+                  values={
+                    start_date: format_date(@internal_start_date, @with_time),
+                    end_date: format_date(@internal_end_date, @with_time)
+                  }
+                >
                   Apply
                 </Button>
               </div>
@@ -433,6 +453,9 @@ defmodule Moon.Components.Datepicker do
       internal_end_date: end_date
     } = socket.assigns
 
+    # TODO this is too filters specific and needs to be removed.
+    # this should use normal Surface Event with handle_callback
+
     send(
       self(),
       {:filter,
@@ -447,5 +470,9 @@ defmodule Moon.Components.Datepicker do
     )
 
     {:noreply, assign(socket, show: false)}
+  end
+
+  def close(id: id) do
+    send_update(__MODULE__, id: id, show: false)
   end
 end
