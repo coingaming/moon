@@ -167,12 +167,12 @@ defmodule MoonWeb.Components.LeftMenu do
             url: "/theme_name/components/select"
           },
           %{
-            name: "Sidebar",
-            url: "/theme_name/components/sidebar"
+            name: "SingleSelect",
+            url: "/theme_name/components/dropdown#single_select_default"
           },
           %{
-            name: "SingleItemSelect",
-            url: "/theme_name/components/dropdown#single-item-select"
+            name: "Sidebar",
+            url: "/theme_name/components/sidebar"
           },
           %{
             name: "Switch",
