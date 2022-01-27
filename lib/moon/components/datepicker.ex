@@ -65,7 +65,8 @@ defmodule Moon.Components.Datepicker do
           )
 
         _ ->
-          # this is required, because if someone uses LiveView.send_update, then start_date and end_date might be missing
+          # this is required, because if someone uses LiveView.send_update
+          # then start_date and end_date might be missing
           socket
       end
 

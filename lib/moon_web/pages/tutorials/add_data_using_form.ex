@@ -101,7 +101,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     """
   end
 
-  def example_code() do
+  def example_code do
     """
     <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
       <TopToDown>

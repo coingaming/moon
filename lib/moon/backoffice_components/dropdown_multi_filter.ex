@@ -99,6 +99,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
 
   alias Moon.BackofficeComponents.DropdownMultiFilterView
   alias Moon.Components.Tooltip
+  require Logger
 
   data show_filter, :boolean, default: false
   data search_text, :string, default: ""
@@ -398,7 +399,8 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
     pid = self()
 
     if func_query_options == nil do
-      IO.warn("Improper Usage of DropdownMultiFilter {#{id}}: func_query_options not provided")
+      Logger.warn("Improper Usage of DropdownMultiFilter #{id}: func_query_options not provided")
+
       apply_filter(id, [])
     else
       Task.async(fn ->

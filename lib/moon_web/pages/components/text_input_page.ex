@@ -6,12 +6,12 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Assets.Icons.IconMail
   alias Moon.Assets.Icons.IconUser
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Button
   alias Moon.Components.ErrorTag
-  alias Moon.Components.Form
   alias Moon.Components.Field
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.TextInput
-  alias Moon.Components.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -164,7 +164,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     {:noreply, assign(socket, user_changeset: user_changeset, username: "")}
   end
 
-  def example_1_code() do
+  def example_1_code do
     """
     <Form
       for={@user_changeset}

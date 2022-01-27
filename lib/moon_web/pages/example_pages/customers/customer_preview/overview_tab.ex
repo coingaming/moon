@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   data show_account_details, :boolean, default: true
   data show_security, :boolean, default: true
   data show_wallets, :boolean, default: true
-  data wallets_active_tab, :string, default: "BTC · 156,45"
+  data wallets_active_tab, :string, default: "BTC · 156.45"
 
   prop customer, :map, required: true
 

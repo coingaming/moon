@@ -23,7 +23,9 @@ defmodule Moon.Components.PasswordInput do
   slot left_icon
 
   def render(assigns) do
-    # the reason for if else is left_icon, surface currently does not support conditionals on slots, but hopefully in 0.17 liveview it works
+    # the reason for if else is left_icon,
+    # surface currently does not support conditionals on slots,
+    # but hopefully in 0.17 liveview it works
     if slot_assigned?(:left_icon) do
       ~F"""
       <TextInput

@@ -7,8 +7,8 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias Moon.Components.Button
   alias Moon.Components.Checkbox
   alias Moon.Components.ErrorTag
-  alias Moon.Components.Form
   alias Moon.Components.Field
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -87,8 +87,8 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   end
 
   def get_agrees_to_terms_of_service(user_changeset) do
-    Moon.Components.Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) ||
-      Moon.Components.Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
+    Checkbox.is_true(user_changeset.changes[:agrees_to_terms_of_service]) ||
+      Checkbox.is_true(user_changeset.data.agrees_to_terms_of_service)
   end
 
   def handle_event(
@@ -109,7 +109,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def checkbox_1_code() do
+  def checkbox_1_code do
     """
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <TopToDown>
