@@ -2,8 +2,9 @@ defmodule Moon.Icon do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Helpers.Icons
 
-  prop name, :string, required: true, values: Moon.Helpers.Icons.list_all()
+  prop name, :string, required: true, values: Icons.list_all()
   prop color, :string, values: Moon.colors()
   prop background_color, :string, values: Moon.colors()
   prop font_size, :string

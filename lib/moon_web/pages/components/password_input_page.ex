@@ -4,12 +4,12 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Button
   alias Moon.Components.ErrorTag
-  alias Moon.Components.Form
   alias Moon.Components.Field
+  alias Moon.Components.Form
   alias Moon.Components.Heading
   alias Moon.Components.PasswordInput
-  alias Moon.Components.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def example_1_code() do
+  def example_1_code do
     """
     <Form
       for={@user_changeset}
