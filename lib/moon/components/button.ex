@@ -33,7 +33,7 @@ defmodule Moon.Components.Button do
 
   prop left_icon, :string
   prop right_icon, :string
-  
+
   prop testid, :string
 
   slot default
