@@ -33,6 +33,8 @@ defmodule Moon.Components.Button do
 
   prop left_icon, :string
   prop right_icon, :string
+  
+  prop testid, :string
 
   slot default
 
@@ -57,6 +59,7 @@ defmodule Moon.Components.Button do
       disabled={@disabled}
       type={@type}
       data-size={@size}
+      data-testid={@testid}
       :on-click={@on_click}
       :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
