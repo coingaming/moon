@@ -24,6 +24,8 @@ defmodule Moon.Components.Popover do
 
   prop on_close, :event
 
+  prop testid, :string
+
   slot default, required: true
   slot content, required: true
 
@@ -31,11 +33,11 @@ defmodule Moon.Components.Popover do
     classes = wrapper_classes(assigns.placement)
 
     ~F"""
-    <div class="relative inline-block">
+    <div class="relative inline-block" data-testid={@testid}>
       <#slot />
       {#if @show}
         {!-- This overlay is used to register click outside the `outer` wrapper --}
-        <div :on-click={@on_close} class="fixed inset-0 z-40" />
+        <div :on-click={@on_close} class="fixed inset-0 z-40" data-testid="close" />
         <div class={"#{classes.outer} z-40"}>
           {!-- This overlay is used to register click inside `outer` wrapper and outside `inner` wrapper --}
           <div :on-click={@on_close} class="absolute inset-0" />
