@@ -18,7 +18,7 @@ defmodule Moon.Components.CheckboxMultiselect do
       <div :on-click={@on_select} phx-value-toggled_item_id={get_value(option)}>
         <SingleLineItem size="large">
           <:right_icon>
-            <Checkbox class="pointer-events-none" checked={get_value(option)} />
+            <Checkbox class="pointer-events-none" checked={Enum.member?(@values, get_value(option))} />
           </:right_icon>
           {get_label(option)}
         </SingleLineItem>
