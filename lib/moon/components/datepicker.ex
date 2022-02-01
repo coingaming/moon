@@ -40,6 +40,7 @@ defmodule Moon.Components.Datepicker do
   prop start_date, :datetime
   prop end_date, :datetime
   prop submit, :event
+  prop testid, :string
 
   # Internal values
   data internal_start_date, :datetime, default: Timex.today()
@@ -75,12 +76,13 @@ defmodule Moon.Components.Datepicker do
 
   def render(assigns) do
     ~F"""
-    <Popover show={@show} on_close="toggle_picker">
+    <Popover show={@show} on_close="toggle_picker" testid={@testid}>
       <Chip
         class={@button_class}
         on_click="toggle_picker"
         right_icon="controls_chevron_down"
         active={@start_date && @end_date}
+        testid={"#{@testid}-chip"}
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Chip>
@@ -100,6 +102,7 @@ defmodule Moon.Components.Datepicker do
               }
               :on-click="select_range"
               phx-value-range={range}
+              data-testid={"#{@testid}-select-range-#{range}"}
             >
               {range_label(range)}
             </div>
@@ -219,6 +222,7 @@ defmodule Moon.Components.Datepicker do
                     start_date: format_date(@internal_start_date, @with_time),
                     end_date: format_date(@internal_end_date, @with_time)
                   }
+                  testid={"#{@testid}-apply"}
                 >
                   Apply
                 </Button>
