@@ -9,21 +9,24 @@ defmodule Moon.Components.CheckboxMultiselect do
   prop options, :list, required: true
   prop values, :list, required: true
   prop on_select, :event
+  prop testid, :string
 
   def render(assigns) do
     ~F"""
-    <div>
-      {#for option <- @options}
-        <div :on-click={@on_select} phx-value-toggled_item_id={get_value(option)}>
-          <SingleLineItem size="large">
-            <:right_icon>
-              <Checkbox class="pointer-events-none" checked={is_checked(@values, option)} />
-            </:right_icon>
-            {get_label(option)}
-          </SingleLineItem>
-        </div>
-      {/for}
-    </div>
+    {#for option <- @options}
+      <div
+        :on-click={@on_select}
+        phx-value-toggled_item_id={get_value(option)}
+        data-testid={"#{@testid}-value-#{get_value(option)}"}
+      >
+        <SingleLineItem size="large">
+          <:right_icon>
+            <Checkbox class="pointer-events-none" checked={is_checked(@values, option)} />
+          </:right_icon>
+          {get_label(option)}
+        </SingleLineItem>
+      </div>
+    {/for}
     """
   end
 
