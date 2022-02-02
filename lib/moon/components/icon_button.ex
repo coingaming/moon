@@ -5,6 +5,7 @@ defmodule Moon.Components.IconButton do
 
   alias Moon.Icon
 
+  prop id, :string, default: nil
   prop icon_name, :string, required: true
   prop icon_size, :string, default: "1rem"
   prop class, :string
@@ -20,6 +21,7 @@ defmodule Moon.Components.IconButton do
   def render(assigns) do
     ~F"""
     <button
+      {=@id}
       class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
       title={@title}
       :on-click={@click}
