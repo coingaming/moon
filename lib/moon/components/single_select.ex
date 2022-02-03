@@ -13,6 +13,7 @@ defmodule Moon.Components.SingleSelect do
 
   prop id, :string
   prop on_select, :string
+  prop target, :string
   prop size, :string, values: ~w(md lg xl), default: "md"
   prop class, :string
   prop trigger_class, :string
@@ -25,7 +26,7 @@ defmodule Moon.Components.SingleSelect do
 
   def render(assigns) do
     ~F"""
-    <div class={"relative mt-1 #{@class}"} phx-click-away={hide_listbox(@id)}>
+    <div class={"relative #{@class}"} phx-click-away={hide_listbox(@id)}>
       <SelectTrigger
         id={"#{@id}-trigger"}
         on_click={toggle_listbox(%JS{}, @id)}
@@ -49,7 +50,7 @@ defmodule Moon.Components.SingleSelect do
           <li
             class="relative p-3 py-2 pl-3 text-sm leading-6 rounded-sm cursor-pointer text-bulma-100 hover:bg-goku-100"
             role="option"
-            :on-click={select_option(@id, @on_select, option.value)}
+            :on-click={select_option(@id, @on_select, @target, option.value)}
           >
             <#slot name="items" :args={item: option}>
               {option.label}
@@ -73,9 +74,9 @@ defmodule Moon.Components.SingleSelect do
     |> SelectTrigger.reset_icons(id)
   end
 
-  defp select_option(id, event, value) do
-    %JS{}
-    |> JS.push(event, value: %{option_value: value})
+  defp select_option(id, event, target, value) do
+    event
+    |> JS.push(target: target, value: %{option_value: value})
     |> toggle_listbox(id)
   end
 end
