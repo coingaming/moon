@@ -7,7 +7,8 @@ defmodule MoonWeb.Router do
     plug :fetch_live_flash
     plug :put_root_layout, {MoonWeb.LayoutView, :root}
     plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    # plug :put_secure_browser_headers
+    plug CORSPlug, origin: "*"
   end
 
   pipeline :api do
@@ -95,6 +96,12 @@ defmodule MoonWeb.Router do
       live "/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage
       live "/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage
       live "/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage
+
+      live "/iframe/button/variants", MoonWeb.Pages.Iframe.ButtonVariants
+      live "/iframe/button/sizes", MoonWeb.Pages.Iframe.ButtonSizes
+      live "/iframe/button/icons", MoonWeb.Pages.Iframe.ButtonIcons
+      live "/iframe/button/fullwidth", MoonWeb.Pages.Iframe.ButtonFullWidth
+      live "/iframe/button/disabled", MoonWeb.Pages.Iframe.ButtonDisabled
     end
   end)
 end

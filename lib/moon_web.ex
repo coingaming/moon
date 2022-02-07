@@ -50,6 +50,14 @@ defmodule MoonWeb do
     end
   end
 
+  def clean_view do
+    quote do
+      use Moon.LiveView, layout: {MoonWeb.LayoutView, "clean.html"}
+
+      unquote(view_helpers())
+    end
+  end
+
   def stateless_component do
     quote do
       use Moon.StatelessComponent

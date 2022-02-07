@@ -37,6 +37,8 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
+        <h1>IFrame</h1>
+        <iframe src="https://fast-rat-41.loca.lt/aposta10-dark/iframe/button" />
         <Heading size={56} class="mb-4">Button</Heading>
         <p>
           <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=305%3A2562">Figma design</Link>
