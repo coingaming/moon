@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   @required_fields ~w(name email gender username password)a
-  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service)a
+  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service applied_roles)a
 
   schema "users" do
     field(:username, :string, default: "johndoe")
@@ -18,6 +18,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:document_filename)
     field(:agrees_to_terms_of_service, :boolean, default: true)
     field(:agrees_to_marketing_emails, :boolean, default: true)
+    field(:applied_roles, {:array, :integer}, default: [])
   end
 
   def changeset(user = %User{}, params \\ %{}) do

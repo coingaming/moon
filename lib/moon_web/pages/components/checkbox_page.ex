@@ -37,14 +37,13 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <TopToDown>
                 <Field name={:agrees_to_terms_of_service}>
-                  <Checkbox id="agrees_to_terms_of_service">
+                  <Checkbox>
                     I agree to terms and services.
                   </Checkbox>
                   <ErrorTag />
                 </Field>
                 <Field name={:agrees_to_marketing_emails}>
                   <Checkbox
-                    id="agrees_to_marketing_emails"
                     disabled={!get_agrees_to_terms_of_service(@user_changeset)}
                   >
                     I agree to receive bonus & marketing emails.
