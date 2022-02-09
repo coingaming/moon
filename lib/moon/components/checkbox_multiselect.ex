@@ -30,6 +30,7 @@ defmodule Moon.Components.CheckboxMultiselect do
                 name={get_checkbox_name(form, field, option)}
                 value={get_value(option)}
                 checked={is_checked(@values, option)}
+                class="pointer-events-none"
               />
             </InputContext>
           </:right_icon>

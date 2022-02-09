@@ -16,7 +16,7 @@ defmodule Moon.Components.ListItems.SingleLineItem do
 
   def render(assigns) do
     ~F"""
-    <div
+    <label
       data-testid={@testid}
       :on-click={@on_select}
       :values={@values}
@@ -58,7 +58,7 @@ defmodule Moon.Components.ListItems.SingleLineItem do
       </div>
 
       <#slot />
-    </div>
+    </label>
     """
   end
 end

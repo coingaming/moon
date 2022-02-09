@@ -48,9 +48,9 @@ defmodule Moon.Components.Checkbox do
   def fake_checkbox(assigns, input_value: input_value, checked: checked, value: value) do
     selected = if value do
       input_value && Enum.member?(input_value, value)
-    else
-      checked || is_true(input_value)
     end
+
+    selected = selected || checked || is_true(input_value)
 
     ~F"""
     <div class={
