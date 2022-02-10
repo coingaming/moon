@@ -18,6 +18,10 @@ defmodule MoonWeb.Pages.Iframe.ButtonSizes do
       </:example>
       <:code>
         <#CodePreview>
+          # import
+          alias Moon.Components.Button
+
+          # render
           <Button variant="fill" size="xsmall">XSmall</Button>
           <Button variant="fill" size="small">Small</Button>
           <Button variant="fill" size="medium">Medium</Button>

@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Iframe.ButtonDisabled do
 
   def render(assigns) do
     ~F"""
-      <ExampleAndCode id="button" title="Icons">
+      <ExampleAndCode id="button" title="Disabled">
       <:example>
         <div class="flex justify-around w-full items-center">
           <Button variant="fill" disabled="true">Disabled</Button>
@@ -15,6 +15,10 @@ defmodule MoonWeb.Pages.Iframe.ButtonDisabled do
       </:example>
       <:code>
         <#CodePreview>
+          # import
+          alias Moon.Components.Button
+
+          # render
           <Button variant="fill" disabled="true">Disabled</Button>
         </#CodePreview>
       </:code>

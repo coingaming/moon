@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Iframe.ButtonFullWidth do
 
   def render(assigns) do
     ~F"""
-      <ExampleAndCode id="button" title="Icons">
+      <ExampleAndCode id="button" title="Full Width">
       <:example>
         <div class="flex justify-around w-full items-center">
           <Button variant="fill" full_width="true">Full Width</Button>
@@ -15,6 +15,10 @@ defmodule MoonWeb.Pages.Iframe.ButtonFullWidth do
       </:example>
       <:code>
         <#CodePreview>
+          # import
+          alias Moon.Components.Button
+
+          # render
           <Button variant="fill" full_width="true">Full Width</Button>
         </#CodePreview>
       </:code>

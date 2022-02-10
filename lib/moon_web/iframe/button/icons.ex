@@ -18,6 +18,10 @@ defmodule MoonWeb.Pages.Iframe.ButtonIcons do
       </:example>
       <:code>
         <#CodePreview>
+          # import
+          alias Moon.Components.Button
+
+          # render
           <Button left_icon="chart_round" variant="fill">Icon Left</Button>
           <Button right_icon="chart_round" variant="fill">Icon Right</Button>
           <Button left_icon="chart_round" right_icon="chart_round" variant="fill">Icon Both</Button>

@@ -20,6 +20,10 @@ defmodule MoonWeb.Pages.Iframe.ButtonVariants do
       </:example>
       <:code>
         <#CodePreview>
+          # import
+          alias Moon.Components.Button
+
+          # render
           <Button variant="fill">Fill</Button>
           <Button variant="outline">Outline</Button>
           <Button variant="link">Link</Button>

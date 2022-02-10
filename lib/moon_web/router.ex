@@ -7,7 +7,15 @@ defmodule MoonWeb.Router do
     plug :fetch_live_flash
     plug :put_root_layout, {MoonWeb.LayoutView, :root}
     plug :protect_from_forgery
-    # plug :put_secure_browser_headers
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :iframe do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {MoonWeb.LayoutView, :root}
+    plug :protect_from_forgery
     plug CORSPlug, origin: "*"
   end
 
@@ -35,6 +43,29 @@ defmodule MoonWeb.Router do
       live_dashboard "/dashboard"
     end
   end
+
+  Enum.each(["/iframe/:theme_name"], fn theme_path ->
+    scope theme_path do
+      pipe_through :iframe
+
+      live "/button/variants", MoonWeb.Pages.Iframe.ButtonVariants
+      live "/button/sizes", MoonWeb.Pages.Iframe.ButtonSizes
+      live "/button/icons", MoonWeb.Pages.Iframe.ButtonIcons
+      live "/button/fullwidth", MoonWeb.Pages.Iframe.ButtonFullWidth
+      live "/button/disabled", MoonWeb.Pages.Iframe.ButtonDisabled
+
+      live "/accordion/accordion", MoonWeb.Pages.Iframe.AccordionAccordion
+
+      live "/avatar/image", MoonWeb.Pages.Iframe.AvatarImage
+      live "/avatar/letter", MoonWeb.Pages.Iframe.AvatarLetter
+      live "/avatar/fallback", MoonWeb.Pages.Iframe.AvatarFallback
+      live "/avatar/colors", MoonWeb.Pages.Iframe.AvatarColors
+
+      live "/checkbox/checkbox", MoonWeb.Pages.Iframe.CheckboxCheckbox
+      live "/checkbox/disabled", MoonWeb.Pages.Iframe.CheckboxDisabled
+      live "/checkbox/checked", MoonWeb.Pages.Iframe.CheckboxChecked
+    end
+  end)
 
   Enum.each(["/:theme_name", "/"], fn theme_path ->
     scope theme_path do
@@ -96,12 +127,6 @@ defmodule MoonWeb.Router do
       live "/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage
       live "/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage
       live "/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage
-
-      live "/iframe/button/variants", MoonWeb.Pages.Iframe.ButtonVariants
-      live "/iframe/button/sizes", MoonWeb.Pages.Iframe.ButtonSizes
-      live "/iframe/button/icons", MoonWeb.Pages.Iframe.ButtonIcons
-      live "/iframe/button/fullwidth", MoonWeb.Pages.Iframe.ButtonFullWidth
-      live "/iframe/button/disabled", MoonWeb.Pages.Iframe.ButtonDisabled
     end
   end)
 end
