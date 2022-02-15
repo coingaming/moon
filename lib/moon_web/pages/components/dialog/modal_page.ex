@@ -94,5 +94,4 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   def get_state(assigns) do
     inspect(%{modal_is_open: assigns.modal_is_open})
   end
-
 end
