@@ -131,6 +131,10 @@ defmodule MoonWeb.Components.LeftMenu do
             url: "/theme_name/components/dropdown"
           },
           %{
+            name: "Dialog Modal",
+            url: "/theme_name/components/dialog/modal"
+          },
+          %{
             name: "Dropdown Menu Button",
             url: "/theme_name/components/dropdown_menu_button"
           },
