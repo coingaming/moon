@@ -16,8 +16,8 @@ defmodule Moon.Autolayouts.PullAside do
       </div>
       <div>
         {#if slot_assigned?(:right)}
-            <#slot name="right" />
-          {/if}
+          <#slot name="right" />
+        {/if}
       </div>
     </div>
     """
