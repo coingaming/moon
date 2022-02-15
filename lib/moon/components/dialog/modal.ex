@@ -1,4 +1,6 @@
 defmodule Moon.Components.Dialog.Modal.BackgroundCover do
+  @moduledoc false
+
   use Moon.StatelessComponent
   prop close, :event
 
@@ -16,6 +18,7 @@ defmodule Moon.Components.Dialog.Modal.BackgroundCover do
 end
 
 defmodule Moon.Components.Dialog.Modal.Panel do
+  @moduledoc false
   use Moon.StatelessComponent
   prop close, :event
   slot default
@@ -33,6 +36,7 @@ defmodule Moon.Components.Dialog.Modal.Panel do
 end
 
 defmodule Moon.Components.Dialog.Modal do
+  @moduledoc false
   use Moon.StatelessComponent
 
   alias Moon.Autolayouts.PullAside
