@@ -80,6 +80,8 @@ defmodule MoonWeb.Router do
       live "/components/toast", MoonWeb.Pages.Components.ToastPage
       live "/components/tooltip", MoonWeb.Pages.Components.TooltipPage
 
+      live "/components/datetimepicker", MoonWeb.Pages.Components.DateTimePickerPage
+
       live "/charts/line-chart", MoonWeb.Pages.Components.LineChartPage
 
       live "/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm
