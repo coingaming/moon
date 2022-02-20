@@ -6,7 +6,11 @@ defmodule Moon.Components.Dialog.Modal.BackgroundCover do
 
   def render(assigns) do
     ~F"""
-    <div :on-click={@close} class="fixed inset-0 bg-black opacity-[.66] transition-opacity" aria-hidden="true"></div>
+    <div
+      :on-click={@close}
+      class="fixed inset-0 bg-black opacity-[.66] transition-opacity"
+      aria-hidden="true"
+    />
     """
   end
 end
@@ -19,9 +23,7 @@ defmodule Moon.Components.Dialog.Modal.Panel do
 
   def render(assigns) do
     ~F"""
-    <div
-      class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20"
-    >
+    <div class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20">
       <#slot />
     </div>
     """
@@ -45,7 +47,12 @@ defmodule Moon.Components.Dialog.Modal do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div
+      class="fixed z-10 inset-0 overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <BackgroundCover close={@close} />
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
