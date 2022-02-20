@@ -89,7 +89,23 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
 
   def get_example_code_1() do
     """
-    Code
+    <Modal close="close_modal" :if={@modal_is_open}>
+      <:title>Title text</:title>
+      <:content>Content here</:content>
+      <:footer>
+        <PullAside>
+          <:left>
+            <Button>Label</Button>
+          </:left>
+          <:right>
+            <LeftToRight>
+              <Button variant="tertiary">Label</Button>
+              <Button variant="primary">Label</Button>
+            </LeftToRight>
+          </:right>
+        </PullAside>
+      </:footer>
+    </Modal>
     """
   end
 

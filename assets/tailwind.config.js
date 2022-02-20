@@ -102,6 +102,7 @@ module.exports = {
       'beerus-100': 'var(--color--beerus-100)',
       'bulma-100': 'var(--color--bulma-100)',
       'trunks-100': 'var(--color--trunks-100)',
+      black: "#000",
       hover: 'rgba(0, 0, 0, 0.08)',
     },
   },

@@ -3,12 +3,13 @@ defmodule Moon.Autolayouts.PullAside do
 
   use Moon.StatelessComponent
 
+  prop class, :css_class
   slot left
   slot right
 
   def render(assigns) do
     ~F"""
-    <div class="flex justify-between">
+    <div class={"flex justify-between", @class}>
       <div>
         {#if slot_assigned?(:left)}
           <#slot name="left" />
