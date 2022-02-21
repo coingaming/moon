@@ -8,11 +8,9 @@ defmodule Moon.Components.Dialog.Modal.BackgroundCover do
     ~F"""
     <div
       :on-click={@close}
-      class="fixed inset-0 transition-opacity"
-      style="background-color: rgba(0, 0, 0, 0.56); z-index: 998"
+      class="fixed inset-0 bg-black opacity-[.66] transition-opacity"
       aria-hidden="true"
-    >
-    </div>
+    />
     """
   end
 end
@@ -25,10 +23,7 @@ defmodule Moon.Components.Dialog.Modal.Panel do
 
   def render(assigns) do
     ~F"""
-    <div
-      class="inline-block align-bottom rounded p-6 overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full sm:p-6 bg-gohan-100"
-      style="z-index: 999"
-    >
+    <div class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20">
       <#slot />
     </div>
     """
@@ -40,6 +35,7 @@ defmodule Moon.Components.Dialog.Modal do
   use Moon.StatelessComponent
 
   alias Moon.Autolayouts.PullAside
+  alias Moon.Components.Divider
   alias Moon.Icon
   alias __MODULE__.BackgroundCover
   alias __MODULE__.Panel
@@ -51,32 +47,39 @@ defmodule Moon.Components.Dialog.Modal do
 
   def render(assigns) do
     ~F"""
-    <BackgroundCover close={@close} />
     <div
-      class="fixed inset-0 overflow-y-auto"
+      class="fixed z-10 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
-      style="z-index: 999"
     >
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <BackgroundCover close={@close} />
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <Panel>
-          <PullAside>
+          <PullAside class="py-4 px-6">
             <:left>
               {#if slot_assigned?(:title)}
-                <#slot name="title" />
+                <div class="text-lg font-medium">
+                  <#slot name="title" />
+                </div>
               {/if}
             </:left>
             <:right>
-              <div :on-click={@close}><Icon name="controls_close_small" /></div>
+              <div :on-click={@close}><Icon name="controls_close" /></div>
             </:right>
           </PullAside>
+          <Divider />
           {#if slot_assigned?(:content)}
-            <#slot name="content" />
+            <div class="text-left p-6">
+              <#slot name="content" />
+            </div>
           {/if}
+          <Divider />
           {#if slot_assigned?(:footer)}
-            <#slot name="footer" />
+            <div class="p-6">
+              <#slot name="footer" />
+            </div>
           {/if}
         </Panel>
       </div>
