@@ -7,7 +7,6 @@ defmodule Moon.Components.Button do
   prop href, :string
   prop variant, :string, values: ["fill", "outline", "link", "primary", "secondary", "tertiary"]
   prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "small"
-  prop mock_state, :string, values: ["active", "focus", "hover"]
   prop full_width, :boolean
   prop progress, :boolean
   prop oops, :boolean
