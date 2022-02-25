@@ -47,7 +47,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
         <p>
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=344%3A306">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
         </p>
 
         <ExampleAndCode title="Medium size (default)" id="line_items_1">

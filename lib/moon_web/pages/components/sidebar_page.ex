@@ -49,7 +49,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
 
         <p class="mb-8">
           <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=28%3A6">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/sidebar_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/toolkit/sidebar">React implementation</Link>
         </p>
 

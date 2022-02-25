@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Themes.ListOfThemes do
     <h1>Themes</h1>
 
     <p>
-      <Link to="https://github.com/coingaming/moon/tree/master/lib/moon/themes">https://github.com/coingaming/moon/tree/master/lib/moon/themes</Link>
+      <Link to="https://github.com/coingaming/moon/tree/main/lib/moon/themes">https://github.com/coingaming/moon/tree/main/lib/moon/themes</Link>
     </p>
 
     <p>

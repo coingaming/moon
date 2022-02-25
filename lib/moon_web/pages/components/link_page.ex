@@ -39,7 +39,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
         <Heading size={56} class="mb-4">Link</Heading>
         <p>
           <Link to="#">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/link_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/link_page.ex">Sourcecode of this page</Link>
           <Link to="#">React implementation</Link>
         </p>
 

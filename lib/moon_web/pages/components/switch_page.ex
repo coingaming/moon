@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
         <p>
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A31">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switch_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/switch_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/switcher">React implementation</Link>
         </p>
 

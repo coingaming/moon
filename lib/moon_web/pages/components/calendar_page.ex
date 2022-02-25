@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
         <p>
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=26127%3A3454">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/calendar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/calendar_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
         </p>
 
