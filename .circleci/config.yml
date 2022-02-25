@@ -184,7 +184,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
           requires:
             - otp_release
       - deploy:
@@ -192,7 +192,7 @@ workflows:
           filters:
             branches:
               only: 
-                - master
+                - main
             tags:
               only: /^v.*/
           requires:
