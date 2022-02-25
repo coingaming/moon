@@ -56,7 +56,7 @@ jobs:
           - release.tar.gz
   check_code_quality:
     docker:
-      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
+      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
     environment:
       MIX_ENV: test
     steps:
@@ -97,7 +97,7 @@ jobs:
           command: mix test
   docker_image:
     docker:
-      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
+      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
     steps:
       - checkout
       - setup_remote_docker:
@@ -110,7 +110,7 @@ jobs:
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
-      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
+      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
     steps:
       - checkout
       - setup_remote_docker:
