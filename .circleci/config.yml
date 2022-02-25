@@ -4,7 +4,7 @@ aliases:
 jobs:
   otp_release:
     docker:
-      - image: heathmont/elixir-ci:1.12.3-otp-24-alpine
+      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
     environment:
       MIX_ENV: prod
     steps:
@@ -29,9 +29,6 @@ jobs:
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
-      - run:
-          name: ExEnv
-          command: mix archive.install hex ex_env 0.3.1 --force
       - run:
           name: Fetch dependencies
           command: mix setup
@@ -134,6 +131,42 @@ jobs:
       - run:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
+  release:
+    docker:
+      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+    environment:
+      MIX_ENV: test
+    resource_class: xlarge
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-test-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v1-test-{{ checksum "mix.lock" }}-
+            - v1-test-
+      - run:
+          name:       Hex auth
+          command:    mix hex.organization auth coingaming --key $HEX_API_KEY
+      - run:
+          name:       Fetch dependencies
+          command:    mix deps.get
+      - run:
+          name:       Compile dependencies
+          command:    mix deps.compile
+      - run:
+          name:       Compile protocols
+          command:    mix compile --warnings-as-errors
+      - run:
+          name:       Test
+          command:    mix test
+      - save_cache:
+          key: v1-test-{{ checksum "mix.lock" }}-{{ .Revision }}
+          paths:
+            - deps
+            - ~/.mix
+      - run:
+          name:       Semantic Release
+          command:    npx semantic-release --extends @heathmont/semantic-release-elixir-hex
   
 
 workflows:
@@ -143,6 +176,8 @@ workflows:
       - otp_release:
           context: global
       - check_code_quality:
+          context: global
+      - release:
           context: global
       - docker_image:
           context: global
