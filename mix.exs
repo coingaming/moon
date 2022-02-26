@@ -23,7 +23,7 @@ defmodule Moon.MixProject do
       package: package(version),
       # docs
       name: "Bennu",
-      source_url: "https://github.com/coingaming/moon/tree/v#{version}",
+      source_url: "https://github.com/coingaming/moon",
       homepage_url: "https://github.com/coingaming/moon/tree/v#{version}"
     ]
   end
@@ -49,7 +49,7 @@ defmodule Moon.MixProject do
     [
       organization: "coingaming",
       licenses: ["UNLICENSED"],
-      files: ["lib", "priv", "mix.exs", "README.md", "VERSION"],
+      files: ["lib", "priv", "mix.exs", "README.md", "CHANGELOG.md", "VERSION"],
       links: %{
         "GitHub" => "https://github.com/coingaming/moon/tree/v#{version}"
       }
