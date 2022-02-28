@@ -73,7 +73,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
 
       <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Source code of this page</Link>
+        <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/dropdown_page.ex">Source code of this page</Link>
       </p>
 
       <ExampleAndCode id="add_data_using_form_1">

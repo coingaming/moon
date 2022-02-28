@@ -56,7 +56,7 @@ defmodule MoonWeb.Pages.Components.SelectPage do
         <Heading size={56} class="mb-4">Select</Heading>
         <p>
           <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=574%3A8496">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/select_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/select_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/select">React implementation</Link>
         </p>
         <p>

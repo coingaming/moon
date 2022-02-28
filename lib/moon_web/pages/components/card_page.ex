@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
         <Heading size={56} class="mb-4">Card</Heading>
 
         <p>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/card_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/card_page.ex">Sourcecode of this page</Link>
         </p>
 
         <ExampleAndCode id="card_1">

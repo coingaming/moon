@@ -16,7 +16,7 @@ MIX_ENV=${MIX_ENV:-prod}
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 # ENV_NAME=${ENV_NAME:-$(git rev-parse --abbrev-ref HEAD)}
 
-if [ "$BRANCH_NAME" == "master" ]; then
+if [ "$BRANCH_NAME" == "main" ]; then
   ENV_NAME="live"
   STACKS_BRACH="bitcasino-live"
 fi
