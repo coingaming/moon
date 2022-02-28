@@ -1,12 +1,15 @@
 defmodule Moon.MixProject do
   use Mix.Project
+  
+  @version (case File.read("VERSION") do
+    {:ok, version} -> String.trim(version)
+    {:error, _} -> "0.0.0-development"
+  end)
 
   def project do
-    version = version()
-
     [
       app: :moon,
-      version: version,
+      version: @version,
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
@@ -20,11 +23,14 @@ defmodule Moon.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      package: package(version),
+      package: package(),
       # docs
-      name: "Bennu",
+      name: "Moon",
       source_url: "https://github.com/coingaming/moon",
-      homepage_url: "https://github.com/coingaming/moon/tree/v#{version}"
+      homepage_url: "https://github.com/coingaming/moon/tree/v#{@version}",
+      docs: [
+        source_ref: "v#{@version}"
+      ]
     ]
   end
 
@@ -38,20 +44,13 @@ defmodule Moon.MixProject do
     ]
   end
 
-  defp version do
-    case File.read("VERSION") do
-      {:ok, version} -> String.trim(version)
-      {:error, _} -> "0.0.0-development"
-    end
-  end
-
-  defp package(version) do
+  defp package do
     [
       organization: "coingaming",
       licenses: ["UNLICENSED"],
       files: ["lib", "priv", "mix.exs", "README.md", "CHANGELOG.md", "VERSION"],
       links: %{
-        "GitHub" => "https://github.com/coingaming/moon/tree/v#{version}"
+        "GitHub" => "https://github.com/coingaming/moon/tree/v#{@version}"
       }
     ]
   end
