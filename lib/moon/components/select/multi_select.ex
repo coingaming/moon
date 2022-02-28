@@ -70,7 +70,10 @@ defmodule Moon.Components.Select.MultiSelect do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options), class: "w-full", id: @id)}
+      {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options),
+        class: "w-full",
+        id: @id
+      )}
       <Chips
         multiple_select_id={@id}
         options={@options}
