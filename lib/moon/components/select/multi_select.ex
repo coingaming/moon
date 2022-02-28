@@ -3,6 +3,7 @@ defmodule Moon.Components.Select.MultiSelect.Chips.ChipOption do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Chip
   alias Moon.Icons.ControlsClose
+  alias Phoenix.LiveView.JS
   prop multiple_select_id, :string
   prop option, :any
 
@@ -12,7 +13,13 @@ defmodule Moon.Components.Select.MultiSelect.Chips.ChipOption do
       <Chip>
         <LeftToRight>
           <span>{@option.label}</span>
-          <span click={"MultiSelect_Unselect('#{@multiple_select_id}', '#{@option.value})'"}><ControlsClose /></span>
+          <span
+            class="cursor-pointer"
+            :on-click={JS.dispatch("moon:update-select",
+              detail: %{value: @option.value, selected: false},
+              to: "##{@multiple_select_id}"
+            )}
+          ><ControlsClose /></span>
         </LeftToRight>
       </Chip>
     </span>
