@@ -1,4 +1,6 @@
 defmodule Moon.Components.Select.MultiSelect.Chips.ChipOption do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Chip
@@ -28,6 +30,8 @@ defmodule Moon.Components.Select.MultiSelect.Chips.ChipOption do
 end
 
 defmodule Moon.Components.Select.MultiSelect.Chips do
+  @moduledoc false
+
   use Moon.StatelessComponent
   alias __MODULE__.ChipOption
 
