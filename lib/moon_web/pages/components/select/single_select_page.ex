@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
+defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.Label
-  alias Moon.Components.Select.MultiSelect
+  alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -20,8 +20,8 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         name: "Components"
       },
       %{
-        to: "/components/select/multi-select",
-        name: "Multi Select"
+        to: "/components/select/single-select",
+        name: "Single Select"
       }
     ]
 
@@ -46,14 +46,14 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Multi Select</Heading>
+        <Heading size={56} class="mb-4">Single Select</Heading>
 
-        <ExampleAndCode title="Multi Select with options as prop" id="multi_select_with_options_as_prop">
+        <ExampleAndCode title="Single Select with options as prop" id="single_select_with_options_as_prop">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <Label>Permissions</Label>
-                <MultiSelect id="user-permissions-example-2" options={User.permissions()} />
+              <Field name={:role}>
+                <Label>Role</Label>
+                <SingleSelect id="user-roles-example-1" options={User.roles()} />
               </Field>
             </Form>
           </:example>
@@ -94,9 +94,9 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   def code_for_multi_select_with_options_as_prop do
     """
     <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:permissions}>
+      <Field name={:role}>
         <Label>Permissions</Label>
-        <MultiSelect id="user-permissions" options={User.permissions()} />
+        <SingleSelect id="user-roles-example-1" options={User.roles()} />
       </Field>
     </Form>
     """
