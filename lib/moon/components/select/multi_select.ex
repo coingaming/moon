@@ -97,7 +97,7 @@ defmodule Moon.Components.Select.MultiSelect do
           select_id={@id}
           options={@options}
           value={@value || Phoenix.HTML.Form.input_value(form, field)}
-          is_multi={true}
+          is_multi
         />
       {/if}
     </InputContext>

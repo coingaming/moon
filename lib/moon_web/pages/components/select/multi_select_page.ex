@@ -60,7 +60,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
           <:code>{code_for_multi_select_with_options_as_prop()}</:code>
 
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br /><br />@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
       </TopToDown>
     </Page>

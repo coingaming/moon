@@ -48,7 +48,10 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Single Select</Heading>
 
-        <ExampleAndCode title="Single Select with options as prop" id="single_select_with_options_as_prop">
+        <ExampleAndCode
+          title="Single Select with options as prop"
+          id="single_select_with_options_as_prop"
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
@@ -60,7 +63,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:code>{code_for_multi_select_with_options_as_prop()}</:code>
 
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br /><br />@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
       </TopToDown>
     </Page>
