@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
           <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
           <Link
             class="mb-4"
-            to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+            to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/popover_v2.ex"
           >Sourcecode of this page</Link>
         </p>
 

@@ -60,7 +60,7 @@ defmodule Moon.Components.Sidebar do
             <#slot name="full_logo" />
           </div>
 
-          <div class="flex-1 overflow-y-auto pl-5 pr-0">
+          <div class="flex-1 overflow-y-auto">
             <!-- Menu -->
             <#slot name="menu" />
           </div>

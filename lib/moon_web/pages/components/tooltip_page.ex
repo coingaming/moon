@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         <Heading size={56} class="mb-4">Popover Component</Heading>
         <Link
           class="mb-4"
-          to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/popover_v2.ex"
+          to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/popover_v2.ex"
         >
           Sourcecode of this page
         </Link>
