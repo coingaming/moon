@@ -4,7 +4,7 @@ defmodule Moon.Components.Popover do
   use Moon.StatelessComponent
 
   prop class, :css_class
-  prop show, :boolean, required: true
+  prop show, :boolean
 
   prop placement, :string,
     values: [

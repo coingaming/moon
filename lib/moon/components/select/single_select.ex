@@ -63,8 +63,11 @@ defmodule Moon.Components.Select.SingleSelect do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Autolayouts.PullAside
+  alias Moon.Components.FieldBorder
   alias Moon.Components.Select.Dropdown
   alias Surface.Components.Form.Input.InputContext
+  alias Phoenix.LiveView.JS
   alias __MODULE__.Value
 
   prop id, :string
@@ -84,17 +87,30 @@ defmodule Moon.Components.Select.SingleSelect do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       {Phoenix.HTML.Form.select(form, field, get_formatted_options(@options),
-        class: "w-full",
+        class: "w-full hidden",
         id: @id
       )}
       {#if @options}
-        <Value
-          select_id={@id}
-          options={@options}
-          value={@value || Phoenix.HTML.Form.input_value(form, field)}
-          prompt={@prompt}
-        />
+        <FieldBorder click={JS.dispatch("moon:toggle-dropdown",
+          detail: %{select_id: @id},
+          to: "##{@id}"
+        )}>
+          <PullAside class="align-middle">
+            <:left>
+              <Value
+                select_id={@id}
+                options={@options}
+                value={@value || Phoenix.HTML.Form.input_value(form, field)}
+                prompt={@prompt}
+              />
+            </:left>
+            <:right>
+              <Moon.Icons.ControlsChevronDown />
+            </:right>
+          </PullAside>
+        </FieldBorder>
         <Dropdown
+          class="hidden"
           select_id={@id}
           options={@options}
           value={@value || Phoenix.HTML.Form.input_value(form, field)}

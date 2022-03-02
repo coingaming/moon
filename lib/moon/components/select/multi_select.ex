@@ -13,7 +13,7 @@ defmodule Moon.Components.Select.MultiSelect.Chips.SelectedChip do
     ~F"""
     {#if @option}
       <span>
-        <Chip>
+        <Chip active>
           <LeftToRight>
             <span>{@option.label}</span>
             <span
@@ -63,8 +63,11 @@ defmodule Moon.Components.Select.MultiSelect do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Autolayouts.PullAside
+  alias Moon.Components.FieldBorder
   alias Moon.Components.Select.Dropdown
   alias Surface.Components.Form.Input.InputContext
+  alias Phoenix.LiveView.JS
   alias __MODULE__.Chips
 
   prop id, :string
@@ -84,16 +87,29 @@ defmodule Moon.Components.Select.MultiSelect do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options),
-        class: "w-full",
+        class: "w-full hidden",
         id: @id
       )}
       {#if @options}
-        <Chips
-          select_id={@id}
-          options={@options}
-          value={@value || Phoenix.HTML.Form.input_value(form, field)}
-        />
+        <FieldBorder click={JS.dispatch("moon:toggle-dropdown",
+          detail: %{select_id: @id},
+          to: "##{@id}"
+        )}>
+          <PullAside class="align-middle">
+            <:left>
+              <Chips
+                select_id={@id}
+                options={@options}
+                value={@value || Phoenix.HTML.Form.input_value(form, field)}
+              />
+            </:left>
+            <:right>
+              <Moon.Icons.ControlsChevronDown />
+            </:right>
+          </PullAside>
+        </FieldBorder>
         <Dropdown
+          class="hidden"
           select_id={@id}
           options={@options}
           value={@value || Phoenix.HTML.Form.input_value(form, field)}
