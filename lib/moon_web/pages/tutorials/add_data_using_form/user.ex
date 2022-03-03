@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:role, :integer, default: nil)
   end
 
-  def permissions() do
+  def available_permissions() do
     [
       %{value: 1, label: "Read"},
       %{value: 2, label: "Write"},
@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     ]
   end
 
-  def roles() do
+  def available_roles() do
     [
       %{value: 1, label: "User"},
       %{value: 2, label: "Editor"},

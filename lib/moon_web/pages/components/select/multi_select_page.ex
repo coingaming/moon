@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <Label>Permissions</Label>
-                <MultiSelect id="user-permissions-example-2" options={User.permissions()} />
+                <MultiSelect id="user-permissions-example-2" options={User.available_permissions()} />
               </Field>
             </Form>
           </:example>
@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:permissions}>
         <Label>Permissions</Label>
-        <MultiSelect id="user-permissions" options={User.permissions()} />
+        <MultiSelect id="user-permissions" options={User.available_permissions()} />
       </Field>
     </Form>
     """
