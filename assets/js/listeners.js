@@ -12,7 +12,6 @@ window.addEventListener("moon:update-select", (event) => {
   )
 });
 
-
 window.addEventListener("moon:toggle-dropdown", (event) => {
   var detail = event.detail;
   var selectId = detail.select_id;
