@@ -20,4 +20,4 @@ window.addEventListener("moon:toggle-dropdown", (event) => {
   var dropdown = document.getElementById(dropdownId);
   dropdown.classList.toggle("hidden");
   dropdown.classList.toggle("absolute");
-})
+});
