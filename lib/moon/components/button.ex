@@ -13,7 +13,7 @@ defmodule Moon.Components.Button do
   prop success, :boolean
   prop pulse, :boolean
   prop disabled, :boolean
-  prop type, :string
+  prop type, :string, default: "button"
   prop to, :string
   prop as, :string
   prop active_class_name, :string
