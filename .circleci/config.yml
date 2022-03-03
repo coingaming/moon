@@ -50,10 +50,6 @@ jobs:
           - .cache
           - deps
           - ~/.mix
-      - persist_to_workspace:
-          root: ./
-          paths:
-          - release.tar.gz
   check_code_quality:
     docker:
       - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
