@@ -168,7 +168,13 @@ defmodule MoonWeb.Components.LeftMenu do
           },
           %{
             name: "Select",
-            url: "/theme_name/components/select"
+            url: "/theme_name/components/select",
+            children: [
+              %{
+                name: "Multi Select",
+                url: "/theme_name/components/select/multi-select"
+              }
+            ]
           },
           %{
             name: "SingleSelect",

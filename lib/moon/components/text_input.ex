@@ -54,11 +54,7 @@ defmodule Moon.Components.TextInput do
 
       <Surface.Components.Form.TextInput
         class={
-          "w-full max-w-full hover:bg-goku-120 leading-normal
-               text-bulma-100 box-border border border-solid border-beerus-100 rounded transition
-               ease-in placeholder-trunks-100 placeholder-opacity-100 disabled:opacity-50
-               disabled:cursor-not-allowed focus:border-piccolo-100 focus:outline-none
-               no-scrollbar invalid:shadow-none invalid:border-chi-chi-100",
+          Moon.Components.FieldBorder.get_default_class(),
           "h-10 text-sm px-3": @size == "medium",
           "h-12 text-base px-4": @size == "large",
           "pl-11": slot_assigned?(:left_icon),

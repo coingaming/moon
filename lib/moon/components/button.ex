@@ -24,6 +24,7 @@ defmodule Moon.Components.Button do
   prop location, :string
   prop style, :string
   prop class, :string
+  prop form, :string
 
   prop on_click, :event
   prop value_name, :string
@@ -57,6 +58,7 @@ defmodule Moon.Components.Button do
       }
       disabled={@disabled}
       type={@type}
+      form={@form}
       data-size={@size}
       data-testid={@testid}
       :on-click={@on_click}

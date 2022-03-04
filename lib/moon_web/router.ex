@@ -70,6 +70,8 @@ defmodule MoonWeb.Router do
       live "/components/password_input", MoonWeb.Pages.Components.PasswordInputPage
       live "/components/popover", MoonWeb.Pages.Components.PopoverPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
+      live "/components/select/multi-select", MoonWeb.Pages.Components.Select.MultiSelectPage
+      live "/components/select/single-select", MoonWeb.Pages.Components.Select.SingleSelectPage
       live "/components/sidebar", MoonWeb.Pages.Components.SidebarPage
       live "/components/switch", MoonWeb.Pages.Components.SwitchPage
       live "/components/switcher", MoonWeb.Pages.Components.SwitcherPage
