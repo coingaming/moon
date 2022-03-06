@@ -75,7 +75,15 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.CheckboxPage}>Checkbox</Link>
                   <Link route={Pages.Components.DatepickerPage}>Datepicker</Link>
                   <Link route={Pages.Components.DrawerPage}>Drawer</Link>
-                  <Link route={Pages.Components.Dialog.ModalPage}>Dialog Modal</Link>
+                  <Accordion
+                    id="left-menu-components-select"
+                    open_by_default={active_page_contains(@active_page, Pages.Components.Dialog)}
+                  >
+                    <:title>Dialog</:title>
+                    <:content>
+                      <Link route={Pages.Components.Dialog.ModalPage}>Dialog</Link>
+                    </:content>
+                  </Accordion>
                   <Link route={Pages.Components.FileInputPage}>File Input</Link>
                   <Link route={Pages.Components.HeadingPage}>Heading</Link>
                   <Link route={Pages.Components.LinkPage}>Link</Link>
