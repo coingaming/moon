@@ -60,6 +60,7 @@ defmodule MoonWeb.Router do
            MoonWeb.Pages.Components.CheckboxMultiselectPage
 
       live "/components/datepicker", MoonWeb.Pages.Components.DatepickerPage
+      live "/components/drawer", MoonWeb.Pages.Components.DrawerPage
       live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
       live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage

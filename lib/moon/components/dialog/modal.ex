@@ -36,7 +36,7 @@ defmodule Moon.Components.Dialog.Modal do
 
   alias Moon.Autolayouts.PullAside
   alias Moon.Components.Divider
-  alias Moon.Icon
+  alias Moon.Icons.ControlsClose
   alias __MODULE__.BackgroundCover
   alias __MODULE__.Panel
 
@@ -66,7 +66,7 @@ defmodule Moon.Components.Dialog.Modal do
               {/if}
             </:left>
             <:right>
-              <div :on-click={@close}><Icon name="controls_close" /></div>
+              <div :on-click={@close}><ControlsClose /></div>
             </:right>
           </PullAside>
           <Divider />
