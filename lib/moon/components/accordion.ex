@@ -1,3 +1,4 @@
+# https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=23452%3A7
 defmodule Moon.Components.Accordion do
   @moduledoc false
 
@@ -17,8 +18,8 @@ defmodule Moon.Components.Accordion do
 
   def render(assigns) do
     ~F"""
-    <div id={@id} class={"bg-gohan-100 p-4 mb-2 rounded-xl relative", @class}>
-      <PullAside class="py-4 px-6">
+    <div id={@id} class={"bg-gohan-100 rounded-xl relative", @class}>
+      <PullAside class="p-4">
         <:left>
           <div :on-click={toggle_content(@id)}>
             <Heading class="cursor-pointer"><#slot name="title" /></Heading>
@@ -33,7 +34,7 @@ defmodule Moon.Components.Accordion do
           </LeftToRight>
         </:right>
       </PullAside>
-      <div id={@id <> "-content"} class={hidden: !@open_by_default}>
+      <div id={@id <> "-content"} class={"p-4", hidden: !@open_by_default}>
         <#slot name="content" />
       </div>
     </div>

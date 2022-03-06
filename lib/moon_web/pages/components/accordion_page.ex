@@ -78,6 +78,33 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_1_code() do
     """
+    <Accordion id="customer-support">
+      <:title>Customer support</:title>
+      <:header_controls>Additional controls</:header_controls>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    <Accordion id="deposits-and-withdrawals" open_by_default>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
     """
   end
 end
