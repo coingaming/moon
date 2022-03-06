@@ -9,9 +9,10 @@ defmodule MoonWeb.Components.LeftMenu.Link do
     ~F"""
     <Context get={active_page: active_page, theme_name: theme_name}>
       <Link
+        optional
         class={
           get_class(),
-          "bg-trunks-100 text-gohan-100": active_page == @route
+          "bg-trunks-100": active_page == @route
         }
         to={live_path(MoonWeb.Endpoint, @route, theme_name: theme_name)}
       ><#slot name="default" /></Link>
@@ -20,7 +21,7 @@ defmodule MoonWeb.Components.LeftMenu.Link do
   end
 
   def get_class() do
-    "block text-piccolo-100 hover:text-gohan-100 hover:bg-trunks-100 text-lg px-3 py-2 w-min whitespace-nowrap
+    "block text-bulma-100 hover:text-gohan-100 hover:bg-trunks-100 px-3 py-2 w-min whitespace-nowrap
             leading-7 group w-full flex items-center py-2 rounded transition-colors ease-in-out duration-150 cursor-pointer"
   end
 end
@@ -55,7 +56,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <:menu>
         <nav class="mt-5">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
-            <TopToDown class="p-4">
+            <TopToDown class="p-4 text-lg">
               <LogoMoonDesign font_size="5rem" />
 
               <Link route={Pages.IconsPage}>Icons</Link>
