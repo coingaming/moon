@@ -1,3 +1,10 @@
+## [2.4.6](https://github.com/coingaming/moon/compare/v2.4.5...v2.4.6) (2022-03-07)
+
+
+### Bug Fixes
+
+* accordion, left menu for moon site, add drawer ([#222](https://github.com/coingaming/moon/issues/222)) ([3bc91a9](https://github.com/coingaming/moon/commit/3bc91a940d8fed83cbfe86fdfea96947117a19e8))
+
 ## [2.4.5](https://github.com/coingaming/moon/compare/v2.4.4...v2.4.5) (2022-02-28)
 
 
