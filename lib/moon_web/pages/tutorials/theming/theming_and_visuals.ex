@@ -7,9 +7,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Text
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -34,33 +32,31 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={32}>Theming and visuals</Heading>
+        <Text>
+          Theming and visuals is based on TailwindCSS rules.
+        </Text>
+        <Heading size={24} class="mt-8" id="text-color">Text color</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/text-color">https://tailwindcss.com/docs/text-color</Link>
 
-      <Heading size={32}>Theming and visuals</Heading>
-      <Text>
-        Theming and visuals is based on TailwindCSS rules.
-      </Text>
-      <Heading size={24} class="mt-8" id="text-color">Text color</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/text-color">https://tailwindcss.com/docs/text-color</Link>
+        <Heading size={24} class="mt-8" id="background-color">Background color</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/background-color">https://tailwindcss.com/docs/background-color</Link>
 
-      <Heading size={24} class="mt-8" id="background-color">Background color</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/background-color">https://tailwindcss.com/docs/background-color</Link>
+        <Heading size={24} class="mt-8" id="border-radius">Border radius</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/border-radius">https://tailwindcss.com/docs/border-radius</Link>
 
-      <Heading size={24} class="mt-8" id="border-radius">Border radius</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/border-radius">https://tailwindcss.com/docs/border-radius</Link>
+        <Heading size={24} class="mt-8" id="margin">Margin</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/margin">https://tailwindcss.com/docs/margin</Link>
 
-      <Heading size={24} class="mt-8" id="margin">Margin</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/margin">https://tailwindcss.com/docs/margin</Link>
+        <Heading size={24} class="mt-8" id="padding">Padding</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/padding">https://tailwindcss.com/docs/padding</Link>
 
-      <Heading size={24} class="mt-8" id="padding">Padding</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/padding">https://tailwindcss.com/docs/padding</Link>
-
-      <Heading size={24} class="mt-8" id="responsive-layout">Responsive layout</Heading>
-      Read more: <Link to="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</Link>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+        <Heading size={24} class="mt-8" id="responsive-layout">Responsive layout</Heading>
+        Read more: <Link to="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</Link>
+      </TopToDown>
+    </Page>
     """
   end
 end

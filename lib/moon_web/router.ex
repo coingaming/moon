@@ -35,7 +35,7 @@ defmodule MoonWeb.Router do
     end
   end
 
-  Enum.each(["/:theme_name", "/"], fn theme_path ->
+  Enum.each(["/", "/:theme_name"], fn theme_path ->
     scope theme_path do
       pipe_through :browser
 
@@ -60,6 +60,7 @@ defmodule MoonWeb.Router do
            MoonWeb.Pages.Components.CheckboxMultiselectPage
 
       live "/components/datepicker", MoonWeb.Pages.Components.DatepickerPage
+      live "/components/drawer", MoonWeb.Pages.Components.DrawerPage
       live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
       live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
