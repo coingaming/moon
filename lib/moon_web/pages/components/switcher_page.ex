@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
         <Heading size={56} class="mb-4">Switcher</Heading>
 
         <p>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
         </p>
 
         <ExampleAndCode id="switcher">

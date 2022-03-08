@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
         <p>
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=60%3A20">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/avatar">React implementation</Link>
         </p>
         Component for displaying user profile image or placeholder if no image

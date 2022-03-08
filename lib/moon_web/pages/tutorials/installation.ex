@@ -6,9 +6,7 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias MoonWeb.Components.Breadcrumbs
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
     default: [
@@ -33,19 +31,19 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Usage</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <Heading size={32}>Usage</Heading>
 
-      <Heading size={24}>Requirements</Heading>
-      <pre>
+        <Heading size={24}>Requirements</Heading>
+        <pre>
     * Can be used from any existing Phoenix project that uses LiveView 0.15 (Margus Pärt needs to deploy branch "render_block" lab to t1 to test it out)
     * Moon Surface components can be used from SLIM and EEX, but recommended new format is Surface + Tailwind + Moon Surface Components
       </pre>
 
-      <Heading size={24}>Steps for including Moon Surface into new or old project</Heading>
+        <Heading size={24}>Steps for including Moon Surface into new or old project</Heading>
 
-      <pre>
+        <pre>
     # 1. Create empty project (skip this test if you already have project where you want to include)
     mix phx.new aposta10_design --live --no-ecto --no-dashboard
     cd aposta10_design
@@ -158,9 +156,8 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
     # 6. Run project
     mix phx.server
       </pre>
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+      </TopToDown>
+    </Page>
     """
   end
 end

@@ -1,7 +1,10 @@
 defmodule Moon.MixProject do
   use Mix.Project
 
-  @version "0.1.55"
+  @version (case File.read("VERSION") do
+              {:ok, version} -> String.trim(version)
+              {:error, _} -> "0.0.0-development"
+            end)
 
   def project do
     [
@@ -19,6 +22,14 @@ defmodule Moon.MixProject do
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
+      ],
+      package: package(),
+      # docs
+      name: "Moon",
+      source_url: "https://github.com/coingaming/moon",
+      homepage_url: "https://github.com/coingaming/moon/tree/v#{@version}",
+      docs: [
+        source_ref: "v#{@version}"
       ]
     ]
   end
@@ -30,6 +41,17 @@ defmodule Moon.MixProject do
     [
       mod: {Moon.Application, []},
       extra_applications: [:logger, :runtime_tools]
+    ]
+  end
+
+  defp package do
+    [
+      organization: "coingaming",
+      licenses: ["UNLICENSED"],
+      files: ["lib", "priv", "mix.exs", "README.md", "CHANGELOG.md", "VERSION"],
+      links: %{
+        "GitHub" => "https://github.com/coingaming/moon/tree/v#{@version}"
+      }
     ]
   end
 
@@ -65,7 +87,8 @@ defmodule Moon.MixProject do
       # dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:surface_formatter, "~> 0.7", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: [:dev, :test], runtime: false}
     ])
   end
 

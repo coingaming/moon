@@ -6,14 +6,11 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Button
   alias Moon.Components.FileInput
   alias Moon.Components.Form
-  alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Select
   alias Moon.Components.TextInput
-  alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Components.Footer
-  alias MoonWeb.Components.ThemesSelect
+  alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   @default_user_map %{
@@ -66,38 +63,34 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def render(assigns) do
     ~F"""
-    <TopToDown>
-      <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
-      <Heading size={32}>Mutate data using form</Heading>
+    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+      <TopToDown>
+        <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
 
-      <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
+        <p>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/dropdown_page.ex">Source code of this page</Link>
+        </p>
 
-      <p>
-        <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/dropdown_page.ex">Source code of this page</Link>
-      </p>
+        <ExampleAndCode id="add_data_using_form_1">
+          <:example>
+            <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
+              <TopToDown>
+                <TextInput label="Name" field={:name} />
+                <TextInput label="Email" field={:email} />
+                <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+                <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
+                <Button variant="fill" type="submit" full_width>Save</Button>
+                <Button variant="outline" on_click="clear_form">Cancel</Button>
+              </TopToDown>
+            </Form>
+          </:example>
 
-      <ExampleAndCode id="add_data_using_form_1">
-        <:example>
-          <Form for={@user_changeset} change="update_user" submit="save_user" autocomplete="off">
-            <TopToDown>
-              <TextInput label="Name" field={:name} />
-              <TextInput label="Email" field={:email} />
-              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
-              <FileInput conf={@uploads.file} label="Upload your ID" placeholder="Choose a document..." />
-              <Button variant="fill" type="submit" full_width>Save</Button>
-              <Button variant="outline" on_click="clear_form">Cancel</Button>
-            </TopToDown>
-          </Form>
-        </:example>
+          <:code>{example_code()}</:code>
 
-        <:code>{example_code()}</:code>
-
-        <:state>{example_state(assigns)}</:state>
-      </ExampleAndCode>
-
-      <Footer />
-      <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
-    </TopToDown>
+          <:state>{example_state(assigns)}</:state>
+        </ExampleAndCode>
+      </TopToDown>
+    </Page>
     """
   end
 

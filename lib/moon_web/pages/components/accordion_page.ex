@@ -5,8 +5,6 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Accordion
-  alias Moon.Components.Accordion.Item
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -40,17 +38,13 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">Accordion</Heading>
-
-        <p>
-          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/accordion_page.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/components/accordion">React implementation</Link>
-        </p>
-
+        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
         <ExampleAndCode title="Accordion" id="accordion_1">
           <:example>
-            <Accordion>
-              <Item click="open" item_id="1" is_open={@item_id == "1"} title="Welcome bonus">
+            <Accordion id="customer-support">
+              <:title>Customer support</:title>
+              <:header_controls>Additional controls</:header_controls>
+              <:content>
                 Content <br>
                 Content <br>
                 Content <br>
@@ -59,11 +53,11 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
                 Content <br>
                 Content <br>
                 Content <br>
-              </Item>
-              <Item click="open" item_id="2" is_open={@item_id == "2"} title="Customer support">
-                Content
-              </Item>
-              <Item click="open" item_id="3" is_open={@item_id == "3"} title="Deposit & Withdrawals">
+              </:content>
+            </Accordion>
+            <Accordion id="deposits-and-withdrawals" open_by_default>
+              <:title>Deposit & Withdrawals</:title>
+              <:content>
                 Content <br>
                 Content <br>
                 Content <br>
@@ -72,38 +66,45 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
                 Content <br>
                 Content <br>
                 Content <br>
-              </Item>
+              </:content>
             </Accordion>
           </:example>
-          <:code>
-            <#CodePreview>
-          <Accordion>
-            <Item click="open" item_id="1" is_open={ @item_id == "1" } title="Welcome bonus">
-              Content <br />
-              Content <br />
-            </Item>
-            <Item click="open" item_id="2" is_open={ @item_id == "2" } title="Customer support">
-              Content
-            </Item>
-            <Item click="open" item_id="3" is_open={ @item_id == "3" } title="Deposit & Withdrawals">
-              Content <br />
-              Content <br />
-              Content <br />
-              Content <br />
-            </Item>
-          </Accordion>
-        </#CodePreview>
-          </:code>
-          <:state>
-            <pre>@item_id = {@item_id}</pre>
-          </:state>
+          <:code>{get_example_1_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
     """
   end
 
-  def handle_event("open", %{"item_id" => item_id}, socket) do
-    {:noreply, assign(socket, item_id: item_id)}
+  def get_example_1_code() do
+    """
+    <Accordion id="customer-support">
+      <:title>Customer support</:title>
+      <:header_controls>Additional controls</:header_controls>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    <Accordion id="deposits-and-withdrawals" open_by_default>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    """
   end
 end

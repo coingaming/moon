@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
         <p>
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=15488%3A332">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/toast.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/toast.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/toolkit/toast">React implementation</Link>
         </p>
 

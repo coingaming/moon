@@ -43,7 +43,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
         </p>
 
         <p>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/badge">React implementation</Link>
         </p>
 

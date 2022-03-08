@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         <Heading size={56} class="mb-4">Button</Heading>
         <p>
           <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=305%3A2562">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/button_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/button_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/button">React implementation</Link>
         </p>
 

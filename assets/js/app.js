@@ -3,6 +3,7 @@ import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import Alpine from 'alpinejs'
 import { hooks } from './hooks'
+import "./listeners"
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")

@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
         <p class="m-8">
           <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=20306%3A0">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/master/lib/moon_web/pages/components/pagination_page.ex">Sourcecode of this page</Link>
+          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/pagination_page.ex">Sourcecode of this page</Link>
           <Link to="https://moon.io/components/pagination">React implementation</Link>
         </p>
 

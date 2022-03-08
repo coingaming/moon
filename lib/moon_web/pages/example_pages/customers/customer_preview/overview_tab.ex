@@ -55,12 +55,9 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   def render(assigns) do
     ~F"""
     <div>
-      <Accordion>
-        <Accordion.Item
-          title="Account Details"
-          click="toggle_account_details"
-          is_open={@show_account_details}
-        >
+      <Accordion id="account-details">
+        <:title>Account Details</:title>
+        <:content>
           <Row>
             <:col1><IconUser font_size="1rem" class="mr-2" />Name</:col1>
             <:col2>{"#{@customer.name} (#{@customer.username})"}</:col2>
@@ -123,11 +120,14 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
             <:col2>
               HV90</:col2>
           </Row>
-        </Accordion.Item>
+        </:content>
+      </Accordion>
 
-        <Divider class="mb-2" />
+      <Divider class="mb-2" />
 
-        <Accordion.Item title="Security" click="toggle_security" is_open={@show_security}>
+      <Accordion id="security">
+        <:title>Security</:title>
+        <:content>
           <Row>
             <:col1><IconSbShield font_size="1rem" class="mr-2" />Chat Visits (last 30 days)</:col1>
             <:col2>
@@ -158,11 +158,14 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
             <:col1><IconSbShield font_size="1rem" class="mr-2" />Cashier</:col1>
             <:col2>Non-Depositor<IconAbout font_size="1rem" class="ml-1" /></:col2>
           </Row>
-        </Accordion.Item>
+        </:content>
+      </Accordion>
 
-        <Divider class="mb-2" />
+      <Divider class="mb-2" />
 
-        <Accordion.Item title="Wallets · 3" click="toggle_wallets" is_open={@show_wallets}>
+      <Accordion id="wallets">
+        <:title>Wallets · 3</:title>
+        <:content>
           <LeftToRight class="mt-2 mb-6">
             {#for tab <- ["BTC · 156,45", "ETH · 600.23", "EUR · 1220.45"]}
               <Button
@@ -205,28 +208,10 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
             <:col1><IconWalletRounded font_size="1rem" class="mr-2" />Capped Wallet</:col1>
             <:col2>0</:col2>
           </Row>
-        </Accordion.Item>
+        </:content>
       </Accordion>
     </div>
     """
-  end
-
-  def handle_event("toggle_account_details", _, socket) do
-    %{show_account_details: show} = socket.assigns
-
-    {:noreply, socket |> assign(show_account_details: !show)}
-  end
-
-  def handle_event("toggle_security", _, socket) do
-    %{show_security: show} = socket.assigns
-
-    {:noreply, socket |> assign(show_security: !show)}
-  end
-
-  def handle_event("toggle_wallets", _, socket) do
-    %{show_wallets: show} = socket.assigns
-
-    {:noreply, socket |> assign(show_wallets: !show)}
   end
 
   def handle_event(event, _, socket) do
