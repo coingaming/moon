@@ -42,7 +42,7 @@ defmodule Moon.Components.Select.SingleSelect.Value do
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap gap-2">
-      {#if @value}
+      {#if @value && @value != ""}
         <SelectedValue select_id={@select_id} option={get_option(@options, @value)} />
       {#else}
         {@prompt}
@@ -87,8 +87,9 @@ defmodule Moon.Components.Select.SingleSelect do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       {Phoenix.HTML.Form.select(form, field, get_formatted_options(@options),
-        class: "w-full hidden",
-        id: @id
+        class: "w-full",
+        id: @id,
+        prompt: [key: ""]
       )}
       {#if @options}
         <FieldBorder click={JS.dispatch("moon:toggle-dropdown",

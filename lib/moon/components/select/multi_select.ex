@@ -40,13 +40,18 @@ defmodule Moon.Components.Select.MultiSelect.Chips do
   prop select_id, :string
   prop options, :list, default: []
   prop value, :list, default: []
+  prop prompt, :string
 
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap gap-2">
-      {#for v <- @value}
-        <SelectedChip select_id={@select_id} option={get_option(@options, v)} />
-      {/for}
+      {#if @value && @value != []}
+        {#for v <- @value}
+          <SelectedChip select_id={@select_id} option={get_option(@options, v)} />
+        {/for}
+      {#else}
+        {@prompt}
+      {/if}
     </div>
     """
   end
@@ -101,6 +106,7 @@ defmodule Moon.Components.Select.MultiSelect do
                 select_id={@id}
                 options={@options}
                 value={@value || Phoenix.HTML.Form.input_value(form, field)}
+                prompt={@prompt}
               />
             </:left>
             <:right>
