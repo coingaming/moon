@@ -87,7 +87,7 @@ defmodule Moon.Components.Select.SingleSelect do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       {Phoenix.HTML.Form.select(form, field, get_formatted_options(@options),
-        class: "w-full",
+        class: "w-full hidden",
         id: @id,
         prompt: [key: ""]
       )}
