@@ -48,13 +48,19 @@ end
 defmodule Moon.Components.Drawer do
   @moduledoc false
   use Moon.StatelessComponent
+  prop id, :string
+  prop testid, :string
   prop class, :css_class
   prop close, :event
   slot default
 
   def render(assigns) do
     ~F"""
-    <div class={"fixed top-0 right-0 bottom-0 bg-gohan-100 z-[999]", @class}>
+    <div
+      id={@id}
+      class={"fixed top-0 right-0 bottom-0 bg-gohan-100 z-[999]", @class}
+      data-testid={@testid}
+    >
       <#slot />
     </div>
     """

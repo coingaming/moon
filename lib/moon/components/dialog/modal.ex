@@ -18,12 +18,18 @@ end
 defmodule Moon.Components.Dialog.Modal.Panel do
   @moduledoc false
   use Moon.StatelessComponent
+  prop id, :string
+  prop testid, :string
   prop close, :event
   slot default
 
   def render(assigns) do
     ~F"""
-    <div class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20">
+    <div
+      id={@id}
+      testid={@testid}
+      class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20"
+    >
       <#slot />
     </div>
     """
@@ -40,6 +46,8 @@ defmodule Moon.Components.Dialog.Modal do
   alias __MODULE__.BackgroundCover
   alias __MODULE__.Panel
 
+  prop id, :string
+  prop testid, :string
   prop close, :event
   slot title
   slot content
@@ -48,6 +56,8 @@ defmodule Moon.Components.Dialog.Modal do
   def render(assigns) do
     ~F"""
     <div
+      id={@id}
+      testid={@testid}
       class="fixed z-10 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
@@ -56,7 +66,7 @@ defmodule Moon.Components.Dialog.Modal do
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <BackgroundCover close={@close} />
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <Panel>
+        <Panel id={"#{@id}-panel"} testid={"#{@testid}-panel"}>
           <PullAside class="py-4 px-6">
             <:left>
               {#if slot_assigned?(:title)}
