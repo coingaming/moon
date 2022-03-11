@@ -1,11 +1,11 @@
-defmodule MoonWeb.Pages.Components.BadgePage do
+defmodule MoonWeb.Pages.Components.LabelPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Badge
+  alias Moon.Components.Label
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
       },
       %{
         to: "/components/badge",
-        name: "Badge"
+        name: "Label"
       }
     ]
 
@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.BadgePage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown gap={4}>
-        <Heading size={56} class="mb-4">Badge</Heading>
+        <Heading size={56} class="mb-4">Label</Heading>
         <p>
           Small count and labeling component.
         </p>
@@ -47,20 +47,20 @@ defmodule MoonWeb.Pages.Components.BadgePage do
           <Link to="https://moon.io/components/badge">React implementation</Link>
         </p>
 
-        <ExampleAndCode title="Badge" id="badge1">
+        <ExampleAndCode title="Label" id="badge1">
           <:example>
             <LeftToRight>
-              <Badge>
+              <Label>
                 Active
-              </Badge>
+              </Label>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-      <Badge>
+      <Label>
         Active
-      </Badge>
+      </Label>
     </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -71,29 +71,29 @@ defmodule MoonWeb.Pages.Components.BadgePage do
           </:note>
           <:example>
             <LeftToRight>
-              <Badge color="gohan-100" background_color="piccolo-100">
+              <Label color="gohan-100" background_color="piccolo-100">
                 Active
-              </Badge>
-              <Badge color="krillin-100" background_color="trunks-100">
+              </Label>
+              <Label color="krillin-100" background_color="trunks-100">
                 Active
-              </Badge>
-              <Badge color="bulma-100" background_color="dodoria-100">
+              </Label>
+              <Label color="bulma-100" background_color="dodoria-100">
                 Active
-              </Badge>
+              </Label>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Badge color="gohan-100" background_color="piccolo-100">
+        <Label color="gohan-100" background_color="piccolo-100">
           Active
-        </Badge>
-        <Badge color="krillin-100" background_color="trunks-100">
+        </Label>
+        <Label color="krillin-100" background_color="trunks-100">
           Active
-        </Badge>
-        <Badge color="bulma-100" background_color="dodoria-100">
+        </Label>
+        <Label color="bulma-100" background_color="dodoria-100">
           Active
-        </Badge>
+        </Label>
     </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -104,19 +104,19 @@ defmodule MoonWeb.Pages.Components.BadgePage do
           </:note>
           <:example>
             <LeftToRight>
-              <Badge>Default</Badge>
-              <Badge size="small">
+              <Label>Default</Label>
+              <Label size="small">
                 small size
-              </Badge>
+              </Label>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Badge>Default</Badge>
-        <Badge size="small">
+        <Label>Default</Label>
+        <Label size="small">
           small size
-        </Badge>
+        </Label>
       </LeftToRight>
     </#CodePreview>
           </:code>

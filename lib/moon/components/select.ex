@@ -3,7 +3,7 @@ defmodule Moon.Components.Select do
 
   use Moon.StatelessComponent
 
-  alias Moon.Components.Label
+  alias Moon.Components.FieldLabel
 
   prop field, :atom
   prop label, :string
@@ -48,11 +48,11 @@ defmodule Moon.Components.Select do
 
     ~F"""
     {#if @label}
-      <Label text={@label}>
+      <FieldLabel text={@label}>
         <div class="mt-2 relative">
           {select}
         </div>
-      </Label>
+      </FieldLabel>
     {#else}
       {select}
     {/if}
