@@ -22,8 +22,10 @@ defmodule Moon.Components.Tabs.TabLink do
 
   use Moon.StatelessComponent
   alias Surface.Components.Link
+  alias Surface.Components.LivePatch
 
   prop(active, :boolean, default: false)
+  prop(patch, :boolean, default: false)
   prop(to, :any)
   prop(on_click, :event)
   prop(item_id, :string)
@@ -31,14 +33,23 @@ defmodule Moon.Components.Tabs.TabLink do
 
   def render(assigns) do
     ~F"""
-    <Link
-      to={@to}
-      class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
-      :if={@to}
-    >
-      <#slot />
-    </Link>
-
+    {#if @patch}
+      <LivePatch
+        to={@to}
+        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+        :if={@to}
+      >
+        <#slot />
+      </LivePatch>
+    {#else}
+      <Link
+        to={@to}
+        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+        :if={@to}
+      >
+        <#slot />
+      </Link>
+    {/if}
     <div
       :on-click={@on_click}
       phx-value-item_id={@item_id}
