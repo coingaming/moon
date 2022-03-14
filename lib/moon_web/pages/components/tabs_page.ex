@@ -35,8 +35,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
      )}
   end
 
-  def handle_params(_params, uri, socket) do
-    {:noreply, assign(socket, uri: uri)}
+  def handle_params(params, uri, socket) do
+    {:noreply, assign(socket, uri: uri, tab_id: params["tab_id"] || "1")}
   end
 
   def render(assigns) do
@@ -69,7 +69,11 @@ defmodule MoonWeb.Pages.Components.TabsPage do
                 active={@tab_id == "2"}
                 to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
               >Link 2</TabLink>
-              <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
+              <TabLink
+                active={@tab_id == "3"}
+                patch
+                to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
+              >Link 3 with url patch, no page reload</TabLink>
               <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
             </Tabs>
           </:example>
