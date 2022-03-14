@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/coingaming/moon/compare/v2.4.8...v2.5.0) (2022-03-14)
+
+
+### Features
+
+* **components/tabs.ex:** tabs with url patch ([#228](https://github.com/coingaming/moon/issues/228)) ([db542b6](https://github.com/coingaming/moon/commit/db542b69ffd61849ce8def11eb89abdcc688ba80)), closes [#227](https://github.com/coingaming/moon/issues/227)
+
 ## [2.4.8](https://github.com/coingaming/moon/compare/v2.4.7...v2.4.8) (2022-03-14)
 
 
