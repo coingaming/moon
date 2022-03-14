@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias Moon.Components.Form
   alias Moon.Components.Field
   alias Moon.Components.Heading
-  alias Moon.Components.Label
+  alias Moon.Components.FieldLabel
   alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <Label>Role</Label>
+                <FieldLabel>Role</FieldLabel>
                 <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role" />
               </Field>
             </Form>
@@ -98,7 +98,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     """
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <Label>Permissions</Label>
+        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>

@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.MainPage do
     Wrappers for SVG-s (for simplier life).
 
     <h2>Components</h2>
-    Elements of Moon (Badge, Button, Link, TextInput etc).
+    Elements of Moon (Label, Button, Link, TextInput etc).
     """
   end
 end

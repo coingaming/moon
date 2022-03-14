@@ -68,7 +68,6 @@ defmodule MoonWeb.Components.LeftMenu do
                 <:content>
                   <Link route={Pages.Components.AccordionPage}>Accordion</Link>
                   <Link route={Pages.Components.AvatarPage}>Avatar</Link>
-                  <Link route={Pages.Components.BadgePage}>Badge</Link>
                   <Link route={Pages.Components.ButtonPage}>Button</Link>
                   <Link route={Pages.Components.CalendarPage}>Calendar</Link>
                   <Link route={Pages.Components.CardPage}>Card</Link>
@@ -87,6 +86,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   </Accordion>
                   <Link route={Pages.Components.FileInputPage}>File Input</Link>
                   <Link route={Pages.Components.HeadingPage}>Heading</Link>
+                  <Link route={Pages.Components.LabelPage}>Label</Link>
                   <Link route={Pages.Components.LinkPage}>Link</Link>
                   <Link route={Pages.Components.ListItemsPage}>List items</Link>
                   <Link route={Pages.Components.PaginationPage}>Pagination</Link>

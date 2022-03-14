@@ -49,7 +49,6 @@ defmodule MoonWeb.Router do
       live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
       live "/components/accordion", MoonWeb.Pages.Components.AccordionPage
       live "/components/avatar", MoonWeb.Pages.Components.AvatarPage
-      live "/components/badge", MoonWeb.Pages.Components.BadgePage
       live "/components/button", MoonWeb.Pages.Components.ButtonPage
       live "/components/calendar", MoonWeb.Pages.Components.CalendarPage
       live "/components/card", MoonWeb.Pages.Components.CardPage
@@ -65,6 +64,7 @@ defmodule MoonWeb.Router do
       live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
       live "/components/file-input", MoonWeb.Pages.Components.FileInputPage
       live "/components/heading", MoonWeb.Pages.Components.HeadingPage
+      live "/components/label", MoonWeb.Pages.Components.LabelPage
       live "/components/link", MoonWeb.Pages.Components.LinkPage
       live "/components/list_items", MoonWeb.Pages.Components.ListItemsPage
       live "/components/pagination", MoonWeb.Pages.Components.PaginationPage

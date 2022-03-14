@@ -2,7 +2,7 @@ defmodule Moon.Components.Checkbox do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Components.Label
+  alias Moon.Components.FieldLabel
   alias Surface.Components.Form.Input.InputContext
 
   prop(id, :string)
@@ -31,7 +31,7 @@ defmodule Moon.Components.Checkbox do
         )}
       </InputContext>
 
-      <Label field={@field} class="bg-rochi-100 pl-2"><#slot /></Label>
+      <FieldLabel field={@field} class="bg-rochi-100 pl-2"><#slot /></FieldLabel>
     </div>
     """
   end
