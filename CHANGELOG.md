@@ -1,3 +1,10 @@
+## [2.4.8](https://github.com/coingaming/moon/compare/v2.4.7...v2.4.8) (2022-03-14)
+
+
+### Bug Fixes
+
+* rename Badge Component to Label. Rename Label to FieldLabel. ([#226](https://github.com/coingaming/moon/issues/226)) ([6e0b401](https://github.com/coingaming/moon/commit/6e0b401fd04a335b580a6efe8ade96b4fb3c362a))
+
 ## [2.4.7](https://github.com/coingaming/moon/compare/v2.4.6...v2.4.7) (2022-03-10)
 
 
