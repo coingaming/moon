@@ -68,8 +68,8 @@ defmodule Moon.Components.Select.Dropdown do
     <InputContext assigns={assigns} :let={form: form, field: field}>
       {#if !@select_id}
         {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
-            class: "hidden",
-            id: @id
+          class: "hidden",
+          id: @id
         )}
       {/if}
       <ul

@@ -110,12 +110,7 @@ defmodule Moon.Components.Select.SingleSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <Dropdown
-            class="w-auto"
-            id={"#{@id}-dropdown"}
-            select_id={@id}
-            options={@options}
-          />
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} options={@options} />
         </:content>
       </Popover>
     </InputContext>

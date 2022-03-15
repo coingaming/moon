@@ -112,13 +112,7 @@ defmodule Moon.Components.Select.MultiSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <Dropdown
-            class="w-auto"
-            id={"#{@id}-dropdown"}
-            select_id={@id}
-            options={@options}
-            is_multi
-          />
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} options={@options} is_multi />
         </:content>
       </Popover>
     </InputContext>
