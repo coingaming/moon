@@ -1,9 +1,9 @@
-defmodule Moon.Components.Select.MultiSelect.Chips.SelectedChip do
+defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.Chip
+  alias Moon.Components.Label
   alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
   prop select_id, :string
@@ -12,30 +12,28 @@ defmodule Moon.Components.Select.MultiSelect.Chips.SelectedChip do
   def render(assigns) do
     ~F"""
     {#if @option}
-      <span>
-        <Chip active>
-          <LeftToRight>
-            <span>{@option.label}</span>
-            <span
-              class="cursor-pointer"
-              :on-click={JS.dispatch("moon:update-select",
-                detail: %{value: @option.value, selected: false},
-                to: "##{@select_id}"
-              )}
-            ><ControlsClose /></span>
-          </LeftToRight>
-        </Chip>
-      </span>
+      <Label>
+        <LeftToRight>
+          <div>{@option.label}</div>
+          <div
+            class="cursor-pointer"
+            :on-click={JS.dispatch("moon:update-select",
+              detail: %{value: @option.value, selected: false},
+              to: "##{@select_id}"
+            )}
+          ><ControlsClose /></div>
+        </LeftToRight>
+      </Label>
     {/if}
     """
   end
 end
 
-defmodule Moon.Components.Select.MultiSelect.Chips do
+defmodule Moon.Components.Select.MultiSelect.Labels do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias __MODULE__.SelectedChip
+  alias __MODULE__.SelectedLabel
 
   prop select_id, :string
   prop options, :list, default: []
@@ -44,10 +42,10 @@ defmodule Moon.Components.Select.MultiSelect.Chips do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-wrap gap-2">
+    <div>
       {#if @value && @value != []}
         {#for v <- @value}
-          <SelectedChip select_id={@select_id} option={get_option(@options, v)} />
+          <SelectedLabel select_id={@select_id} option={get_option(@options, v)} />
         {/for}
       {#else}
         {@prompt}
@@ -58,7 +56,7 @@ defmodule Moon.Components.Select.MultiSelect.Chips do
 
   def get_option(options, v) do
     Enum.find(options, fn option ->
-      option.value == v
+      "#{option.value}" == "#{v}"
     end)
   end
 end
@@ -72,8 +70,7 @@ defmodule Moon.Components.Select.MultiSelect do
   alias Moon.Components.FieldBorder
   alias Moon.Components.Select.Dropdown
   alias Surface.Components.Form.Input.InputContext
-  alias Phoenix.LiveView.JS
-  alias __MODULE__.Chips
+  alias __MODULE__.Labels
 
   prop id, :string
   prop field, :atom
@@ -90,39 +87,38 @@ defmodule Moon.Components.Select.MultiSelect do
 
   def render(assigns) do
     ~F"""
-    <InputContext assigns={assigns} :let={form: form, field: field}>
-      {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options),
-        class: "w-full hidden",
-        id: @id
-      )}
-      {#if @options}
-        <FieldBorder click={JS.dispatch("moon:toggle-dropdown",
-          detail: %{select_id: @id},
-          to: "##{@id}"
-        )}>
-          <PullAside class="align-middle">
-            <:left>
-              <Chips
-                select_id={@id}
-                options={@options}
-                value={@value || Phoenix.HTML.Form.input_value(form, field)}
-                prompt={@prompt}
-              />
-            </:left>
-            <:right>
-              <Moon.Icons.ControlsChevronDown />
-            </:right>
-          </PullAside>
-        </FieldBorder>
-        <Dropdown
-          class="hidden"
-          select_id={@id}
-          options={@options}
-          value={@value || Phoenix.HTML.Form.input_value(form, field)}
-          is_multi
-        />
-      {/if}
-    </InputContext>
+    <div class="relative">
+      <InputContext assigns={assigns} :let={form: form, field: field}>
+        {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options),
+          class: "hidden",
+          id: @id
+        )}
+        {#if @options}
+          <FieldBorder click={Dropdown.toggle_open("#{@id}-dropdown")}>
+            <PullAside class="align-middle">
+              <:left>
+                <Labels
+                  select_id={@id}
+                  options={@options}
+                  value={get_value(form, field, value: @value)}
+                  prompt={@prompt}
+                />
+              </:left>
+              <:right>
+                <Moon.Icons.ControlsChevronDown />
+              </:right>
+            </PullAside>
+          </FieldBorder>
+          <Dropdown
+            class="w-auto absolute hidden max-h-screen overflow-y-auto"
+            select_id={@id}
+            options={@options}
+            value={get_value(form, field, value: @value)}
+            is_multi
+          />
+        {/if}
+      </InputContext>
+    </div>
     """
   end
 
@@ -130,5 +126,24 @@ defmodule Moon.Components.Select.MultiSelect do
     Enum.map(options, fn option ->
       {option.label, option.value}
     end)
+  end
+
+  # this is copy-paste and a bit modified from: https://github.com/phoenixframework/phoenix_html/blob/v3.2.0/lib/phoenix_html/form.ex#L1272
+  def get_value(form, field, opts) do
+    {value, _opts} = Keyword.pop(opts, :value)
+
+    if value != nil do
+      value
+    else
+      param = "#{field}"
+
+      case form do
+        %{params: %{^param => sent}} ->
+          sent
+
+        _ ->
+          Phoenix.HTML.Form.input_value(form, field)
+      end
+    end
   end
 end

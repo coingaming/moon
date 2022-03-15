@@ -11,9 +11,9 @@ defmodule Moon.Components.Label do
 
   def render(assigns) do
     ~F"""
-    <span class={"#{@class} mx-2  bg-#{@background_color} text-#{@color} pl-2 pr-2 rounded-sm #{(@size == "small" && "text-xxxs") || "text-xxs"} uppercase"}>
+    <div class={"#{@class} bg-#{@background_color} text-#{@color} pl-2 pr-2 rounded-sm #{(@size == "small" && "text-xxxs") || "text-xxs"} uppercase inline-block"}>
       <#slot />
-    </span>
+    </div>
     """
   end
 end

@@ -69,11 +69,10 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
   def handle_event(
         "form_update",
-        %{
-          "user" => user_params
-        },
+        params,
         socket
       ) do
+    user_params = params["user"] || %{permissions: []}
     user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply, assign(socket, user_changeset: user_changeset, latest_params: user_params)}
@@ -93,12 +92,28 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
   def code_for_multi_select_with_options_as_prop do
     """
+    alias Moon.Components.Form
+    alias Moon.Components.Field
+    alias Moon.Components.FieldLabel
+    alias Moon.Components.Select.MultiSelect
+
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:permissions}>
         <FieldLabel>Permissions</FieldLabel>
         <MultiSelect id="user-permissions" options={User.available_permissions()} />
       </Field>
     </Form>
+
+    def handle_event(
+          "form_update",
+          params,
+          socket
+        ) do
+      user_params = params["user"] || %{permissions: []}
+      user_changeset = User.changeset(%User{}, user_params)
+
+      {:noreply, assign(socket, user_changeset: user_changeset, latest_params: user_params)}
+    end
     """
   end
 end
