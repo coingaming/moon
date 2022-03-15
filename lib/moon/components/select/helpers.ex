@@ -1,4 +1,6 @@
 defmodule Moon.Components.Select.Helpers do
+  @moduledoc false
+
   def get_formatted_options(options) do
     Enum.map(options, fn option ->
       {option.label, option.value}
