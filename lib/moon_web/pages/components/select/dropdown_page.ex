@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.Heading
   alias Moon.Components.FieldLabel
   alias Moon.Components.Select.Dropdown
+  alias Moon.Components.ListItems.SingleLineItem
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -46,18 +47,47 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Dropdown</Heading>
 
-        <ExampleAndCode title="Dropdown" id="dropdown">
+        <ExampleAndCode title="Dropdown options" id="dropdown-options-example">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="user-permissions" options={User.available_permissions()} is_multi />
+                <Dropdown
+                  id="dropdown-options-example-user-permissions"
+                  options={User.available_permissions()}
+                  is_multi
+                />
               </Field>
             </Form>
           </:example>
-
           <:code>{code_for_dropdown()}</:code>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        </ExampleAndCode>
 
+        <ExampleAndCode title="Dropdown with icons" id="dropdown-icons-example">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:permissions}>
+                <FieldLabel>Permissions</FieldLabel>
+                <Dropdown
+                  id="dropdown-icons-example-user-permissions"
+                  is_multi
+                  options={User.available_permissions()}
+                >
+                  {#for option <- User.available_permissions()}
+                    <Dropdown.Option value={option.value}>
+                      <SingleLineItem>
+                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                        {option.label}
+                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                      </SingleLineItem>
+                    </Dropdown.Option>
+                  {/for}
+                </Dropdown>
+              </Field>
+            </Form>
+          </:example>
+          <:code>{code_for_dropdown()}</:code>
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
       </TopToDown>
@@ -93,7 +123,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:permissions}>
         <FieldLabel>Permissions</FieldLabel>
-        <Dropdown id="user-permissions" options={User.available_permissions()} is_multi />
+        <Dropdown id="dropdown-options-example-user-permissions" options={User.available_permissions()} is_multi />
       </Field>
     </Form>
     """
