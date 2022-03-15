@@ -11,17 +11,13 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
   prop is_multi, :boolean
   prop is_selected, :boolean
 
-  slot default
+  slot default, args: [:is_selected]
   slot right_icon
   slot left_icon
 
   def render(assigns) do
     ~F"""
     <li
-      class={
-        "relative p-3 py-2 pl-3 text-sm leading-6 rounded-sm cursor-pointer text-bulma-100 hover:bg-goku-100",
-        "bg-goku-100": @is_selected
-      }
       role="option"
       :on-click={JS.dispatch("moon:update-select",
         detail: %{
@@ -31,7 +27,7 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
         to: "##{@select_id}"
       )}
     >
-      <#slot />
+      <#slot :args={is_selected: @is_selected} />
     </li>
     """
   end
@@ -51,7 +47,7 @@ defmodule Moon.Components.Select.Dropdown.Option do
   prop select_value, :any
   prop is_multi, :boolean
 
-  slot default
+  slot default, args: [:is_selected]
   slot right_icon
   slot left_icon
 
@@ -74,8 +70,9 @@ defmodule Moon.Components.Select.Dropdown.Option do
         value={@value || value}
         select_value={@select_value || select_value}
         is_multi={@is_multi || is_multi}
+        :let={is_selected: is_selected}
       >
-        <#slot />
+        <#slot :args={is_selected: is_selected} />
       </Renderer>
     </Context>
     """
@@ -95,6 +92,7 @@ defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.Select.Dropdown.Option
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Surface.Components.Context
@@ -131,8 +129,11 @@ defmodule Moon.Components.Select.Dropdown do
               select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
               is_multi={@is_multi}
               value={"#{option.value}"}
+              :let={is_selected: is_selected}
             >
-              {option.label}
+              <SingleLineItem current={is_selected}>
+                {option.label}
+              </SingleLineItem>
             </Option>
           {/for}
         {/if}
