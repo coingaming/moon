@@ -65,14 +65,15 @@ end
 defmodule Moon.Components.Select.MultiSelect do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
   alias Moon.Autolayouts.PullAside
   alias Moon.Components.FieldBorder
+  alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Surface.Components.Form.Input.InputContext
   alias __MODULE__.Labels
 
-  prop id, :string
   prop field, :atom
   prop label, :string
   prop options, :any, default: []
@@ -83,67 +84,54 @@ defmodule Moon.Components.Select.MultiSelect do
   prop required, :boolean
   prop class, :string
 
+  data open, :boolean, default: false
+
   slot default
 
   def render(assigns) do
     ~F"""
-    <div class="relative">
-      <InputContext assigns={assigns} :let={form: form, field: field}>
-        {Phoenix.HTML.Form.multiple_select(form, field, get_formatted_options(@options),
+    <InputContext assigns={assigns} :let={form: form, field: field}>
+      <Popover placement="bottom-start" show={@open} on_close="close">
+        {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id
         )}
-        {#if @options}
-          <FieldBorder click={Dropdown.toggle_open("#{@id}-dropdown")}>
-            <PullAside class="align-middle">
-              <:left>
-                <Labels
-                  select_id={@id}
-                  options={@options}
-                  value={get_value(form, field, value: @value)}
-                  prompt={@prompt}
-                />
-              </:left>
-              <:right>
-                <Moon.Icons.ControlsChevronDown />
-              </:right>
-            </PullAside>
-          </FieldBorder>
+        <FieldBorder click="toggle_open">
+          <PullAside class="align-middle">
+            <:left>
+              <Labels
+                select_id={@id}
+                options={@options}
+                value={SelectHelpers.get_value(form, field, value: @value)}
+                prompt={@prompt}
+              />
+            </:left>
+            <:right>
+              <Moon.Icons.ControlsChevronDown />
+            </:right>
+          </PullAside>
+        </FieldBorder>
+        <:content>
           <Dropdown
-            class="w-auto absolute hidden max-h-screen overflow-y-auto"
+            class="w-auto"
+            id={"#{@id}-dropdown"}
             select_id={@id}
             options={@options}
-            value={get_value(form, field, value: @value)}
             is_multi
           />
-        {/if}
-      </InputContext>
-    </div>
+        </:content>
+      </Popover>
+    </InputContext>
     """
   end
 
-  def get_formatted_options(options) do
-    Enum.map(options, fn option ->
-      {option.label, option.value}
-    end)
+  def handle_event("close", _params, socket) do
+    socket = assign(socket, open: false)
+    {:noreply, socket}
   end
 
-  # this is copy-paste and a bit modified from: https://github.com/phoenixframework/phoenix_html/blob/v3.2.0/lib/phoenix_html/form.ex#L1272
-  def get_value(form, field, opts) do
-    {value, _opts} = Keyword.pop(opts, :value)
-
-    if value != nil do
-      value
-    else
-      param = "#{field}"
-
-      case form do
-        %{params: %{^param => sent}} ->
-          sent
-
-        _ ->
-          Phoenix.HTML.Form.input_value(form, field)
-      end
-    end
+  def handle_event("toggle_open", _params, socket) do
+    socket = assign(socket, open: !socket.assigns.open)
+    {:noreply, socket}
   end
 end

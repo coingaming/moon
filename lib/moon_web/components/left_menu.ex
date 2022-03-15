@@ -98,6 +98,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   >
                     <:title>Select</:title>
                     <:content>
+                      <Link route={Pages.Components.Select.DropdownPage}>Dropdown</Link>
                       <Link route={Pages.Components.Select.MultiSelectPage}>Multi select</Link>
                       <Link route={Pages.Components.Select.SingleSelectPage}>Single select</Link>
                     </:content>

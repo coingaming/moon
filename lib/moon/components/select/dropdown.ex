@@ -19,7 +19,7 @@ defmodule Moon.Components.Select.Dropdown.Option do
     is_selected = get_is_selected(assigns)
 
     ~F"""
-    <div
+    <li
       class={
         "relative p-3 py-2 pl-3 text-sm leading-6 rounded-sm cursor-pointer text-bulma-100 hover:bg-goku-100",
         "bg-goku-100": is_selected
@@ -34,7 +34,7 @@ defmodule Moon.Components.Select.Dropdown.Option do
       )}
     >
       <#slot />
-    </div>
+    </li>
     """
   end
 
@@ -53,41 +53,43 @@ defmodule Moon.Components.Select.Dropdown do
 
   use Moon.StatelessComponent
   alias Moon.Components.Select.Dropdown.Option
-  alias Phoenix.LiveView.JS
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
+  alias Surface.Components.Form.Input.InputContext
 
   prop id, :string
-  prop class, :css_class
   prop select_id, :string
+  prop class, :css_class
   prop options, :any
   prop value, :any
   prop is_multi, :boolean
 
   def render(assigns) do
     ~F"""
-    <div
-      class={"z-10 px-1 py-2 space-y-1 rounded-lg shadow-lg bg-gohan-100 focus:outline-none", @class}
-      tabindex="-1"
-      role="listbox"
-      id={@id || "#{@select_id}-dropdown"}
-    >
-      {#for option <- @options}
-        <Option select_id={@select_id} select_value={normalize_select_value(@value, @is_multi)} is_multi={@is_multi} value={"#{option.value}"}>
-          {option.label}
-        </Option>
-      {/for}
-    </div>
+    <InputContext assigns={assigns} :let={form: form, field: field}>
+      {#if !@select_id}
+        {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
+            class: "hidden",
+            id: @id
+        )}
+      {/if}
+      <ul
+        class={"z-10 px-1 py-2 space-y-1 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}
+        tabindex="-1"
+        role="listbox"
+        id={"#{@id}-ul-list"}
+      >
+        {#for option <- @options}
+          <Option
+            select_id={@select_id || @id}
+            select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
+            is_multi={@is_multi}
+            value={"#{option.value}"}
+          >
+            {option.label}
+          </Option>
+        {/for}
+      </ul>
+    </InputContext>
     """
-  end
-
-  def normalize_select_value(value, is_multi) do
-    if is_multi do
-      Enum.map(value, fn x -> "#{x}" end)
-    else
-      "#{value}"
-    end
-  end
-
-  def toggle_open(id) do
-    JS.toggle(to: "##{id}")
   end
 end
