@@ -15,7 +15,11 @@ defmodule Moon.Components.Select.Helpers do
 
   def normalize_value(value, is_multi) do
     if is_multi do
-      Enum.map(value, fn x -> "#{x}" end)
+      if value do
+        Enum.map(value, fn x -> "#{x}" end)
+      else
+        []
+      end
     else
       "#{value}"
     end
