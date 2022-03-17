@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                   options={User.available_permissions()}
                 >
                   {#for option <- User.available_permissions()}
-                    <Dropdown.Option value={option.value} :let={is_selected: is_selected}>
+                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
