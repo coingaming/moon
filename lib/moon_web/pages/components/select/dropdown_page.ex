@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
+defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -8,7 +8,8 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.FieldLabel
-  alias Moon.Components.Select.MultiSelect
+  alias Moon.Components.Select.Dropdown
+  alias Moon.Components.ListItems.SingleLineItem
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -20,12 +21,10 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         name: "Components"
       },
       %{
-        to: "/components/select/multi-select",
+        to: "/components/select/dropdown",
         name: "Multi Select"
       }
     ]
-
-  data latest_params, :any, default: nil
 
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
@@ -46,21 +45,50 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Multi Select</Heading>
+        <Heading size={56} class="mb-4">Dropdown</Heading>
 
-        <ExampleAndCode title="Multi Select with options as prop" id="multi_select_with_options_as_prop">
+        <ExampleAndCode title="Dropdown options" id="dropdown-options-example">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <MultiSelect id="user-permissions-example-2" options={User.available_permissions()} />
+                <Dropdown
+                  id="dropdown-options-example-user-permissions"
+                  options={User.available_permissions()}
+                  is_multi
+                />
               </Field>
             </Form>
           </:example>
+          <:code>{code_for_dropdown()}</:code>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        </ExampleAndCode>
 
-          <:code>{code_for_multi_select_with_options_as_prop()}</:code>
-
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        <ExampleAndCode title="Dropdown with icons" id="dropdown-icons-example">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:permissions}>
+                <FieldLabel>Permissions</FieldLabel>
+                <Dropdown
+                  id="dropdown-icons-example-user-permissions"
+                  is_multi
+                  options={User.available_permissions()}
+                >
+                  {#for option <- User.available_permissions()}
+                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                      <SingleLineItem current={is_selected}>
+                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                        {option.label}
+                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                      </SingleLineItem>
+                    </Dropdown.Option>
+                  {/for}
+                </Dropdown>
+              </Field>
+            </Form>
+          </:example>
+          <:code>{code_for_dropdown()}</:code>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
       </TopToDown>
     </Page>
@@ -90,30 +118,14 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def code_for_multi_select_with_options_as_prop do
+  def code_for_dropdown do
     """
-    alias Moon.Components.Form
-    alias Moon.Components.Field
-    alias Moon.Components.FieldLabel
-    alias Moon.Components.Select.MultiSelect
-
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:permissions}>
         <FieldLabel>Permissions</FieldLabel>
-        <MultiSelect id="user-permissions" options={User.available_permissions()} />
+        <Dropdown id="dropdown-options-example-user-permissions" options={User.available_permissions()} is_multi />
       </Field>
     </Form>
-
-    def handle_event(
-          "form_update",
-          params,
-          socket
-        ) do
-      user_params = params["user"] || %{permissions: []}
-      user_changeset = User.changeset(%User{}, user_params)
-
-      {:noreply, assign(socket, user_changeset: user_changeset, latest_params: user_params)}
-    end
     """
   end
 end

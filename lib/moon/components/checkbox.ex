@@ -27,7 +27,7 @@ defmodule Moon.Components.Checkbox do
       <InputContext assigns={assigns} :let={form: form, field: field}>
         {fake_checkbox(
           assigns,
-          selected: is_true(Phoenix.HTML.Form.input_value(form, field)) || is_true(@checked)
+          selected: is_true(@checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
         )}
       </InputContext>
 

@@ -53,7 +53,7 @@ defmodule Moon.Components.Select.SingleSelect.Value do
 
   def get_option(options, v) do
     Enum.find(options, fn option ->
-      option.value == v
+      "#{option.value}" == "#{v}"
     end)
   end
 end
@@ -62,15 +62,15 @@ end
 defmodule Moon.Components.Select.SingleSelect do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
   alias Moon.Autolayouts.PullAside
   alias Moon.Components.FieldBorder
+  alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Surface.Components.Form.Input.InputContext
-  alias Phoenix.LiveView.JS
   alias __MODULE__.Value
 
-  prop id, :string
   prop field, :atom
   prop label, :string
   prop options, :any, default: []
@@ -81,27 +81,26 @@ defmodule Moon.Components.Select.SingleSelect do
   prop required, :boolean
   prop class, :string
 
+  data open, :boolean, default: false
+
   slot default
 
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      {Phoenix.HTML.Form.select(form, field, get_formatted_options(@options),
-        class: "w-full hidden",
-        id: @id,
-        prompt: [key: ""]
-      )}
-      {#if @options}
-        <FieldBorder click={JS.dispatch("moon:toggle-dropdown",
-          detail: %{select_id: @id},
-          to: "##{@id}"
-        )}>
+      <Popover placement="bottom-start" show={@open} on_close="close">
+        {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
+          class: "w-full hidden",
+          id: @id,
+          prompt: [key: ""]
+        )}
+        <FieldBorder click="toggle_open">
           <PullAside class="align-middle">
             <:left>
               <Value
                 select_id={@id}
                 options={@options}
-                value={@value || Phoenix.HTML.Form.input_value(form, field)}
+                value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
                 prompt={@prompt}
               />
             </:left>
@@ -110,20 +109,21 @@ defmodule Moon.Components.Select.SingleSelect do
             </:right>
           </PullAside>
         </FieldBorder>
-        <Dropdown
-          class="hidden"
-          select_id={@id}
-          options={@options}
-          value={@value || Phoenix.HTML.Form.input_value(form, field)}
-        />
-      {/if}
+        <:content>
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} options={@options} />
+        </:content>
+      </Popover>
     </InputContext>
     """
   end
 
-  def get_formatted_options(options) do
-    Enum.map(options, fn option ->
-      {option.label, option.value}
-    end)
+  def handle_event("close", _params, socket) do
+    socket = assign(socket, open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("toggle_open", _params, socket) do
+    socket = assign(socket, open: !socket.assigns.open)
+    {:noreply, socket}
   end
 end
