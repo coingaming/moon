@@ -4,6 +4,7 @@ defmodule Moon.Components.Button do
   use Moon.StatelessComponent
   alias Moon.Icon
 
+  prop id, :string
   prop href, :string
   prop variant, :string, values: ["fill", "outline", "link", "primary", "secondary", "tertiary"]
   prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "small"
@@ -41,6 +42,7 @@ defmodule Moon.Components.Button do
   def render(assigns) do
     ~F"""
     <button
+      id={@id}
       class={
         "flex justify-center items-center gap-2 py-2 rounded #{@class}",
         "border border-solid text-goten-100 border-piccolo-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120 hover:bg-piccolo-80":

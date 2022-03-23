@@ -6,6 +6,7 @@ defmodule Moon.Components.Chip do
   alias Moon.Components.Button
 
   slot default
+  prop id, :string
   prop class, :string
   prop left_icon, :string
   prop right_icon, :string
@@ -19,6 +20,7 @@ defmodule Moon.Components.Chip do
   def render(assigns) do
     ~F"""
     <Button
+      id={@id}
       class={"hover:text-bulma-100 font-semibold #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}"}
       left_icon={@left_icon}
       right_icon={@right_icon}
