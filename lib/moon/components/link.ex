@@ -3,6 +3,7 @@ defmodule Moon.Components.Link do
 
   use Moon.StatelessComponent
 
+  prop id, :string, default: nil
   prop to, :any
   prop secondary, :boolean
   prop disabled, :boolean
@@ -13,6 +14,7 @@ defmodule Moon.Components.Link do
   def render(assigns) do
     ~F"""
     <a
+      id={@id}
       class={
         "inline-block p-0 border-none no-underline",
         @class,
