@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/coingaming/moon/compare/v2.5.0...v2.6.0) (2022-03-30)
+
+
+### Features
+
+* create the Caption component [MDS-28] ([#232](https://github.com/coingaming/moon/issues/232)) ([5ccd5bc](https://github.com/coingaming/moon/commit/5ccd5bce9c0d5a72a9275260cb28611507193f6b))
+
 # [2.5.0](https://github.com/coingaming/moon/compare/v2.4.8...v2.5.0) (2022-03-14)
 
 
