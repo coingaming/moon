@@ -70,6 +70,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.AvatarPage}>Avatar</Link>
                   <Link route={Pages.Components.ButtonPage}>Button</Link>
                   <Link route={Pages.Components.CalendarPage}>Calendar</Link>
+                  <Link route={Pages.Components.CaptionPage}>Caption</Link>
                   <Link route={Pages.Components.CardPage}>Card</Link>
                   <Link route={Pages.Components.CarouselPage}>Carousel</Link>
                   <Link route={Pages.Components.CheckboxPage}>Checkbox</Link>
