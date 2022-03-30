@@ -60,8 +60,8 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
           <:example>
             <div class="flex justify-around w-full items-center">
               <Caption>Text-align is not specified</Caption>
-              <Caption text_align_class="text-center">Centered text</Caption>
-              <Caption text_align_class="text-right">Right alignment</Caption>
+              <Caption text_align_class="center">Centered text</Caption>
+              <Caption text_align_class="right">Right alignment</Caption>
             </div>
           </:example>
 
@@ -87,8 +87,8 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
     """
     <div class="flex justify-around w-full items-center">
       <Caption>Text-align is not specified</Caption>
-      <Caption text_align_class="text-center">Centered text</Caption>
-      <Caption text_align_class="text-right">Right alignment</Caption>
+      <Caption text_align_class="center">Centered text</Caption>
+      <Caption text_align_class="right">Right alignment</Caption>
     </div>
     """
   end

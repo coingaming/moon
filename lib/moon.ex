@@ -2,8 +2,8 @@ defmodule Moon do
   @moduledoc false
 
   @colors [
-    "krillin_10",
-    "krillin_100",
+    "krillin-10",
+    "krillin-100",
     "chi-chi-10",
     "chi-chi-100",
     "roshi-10",
