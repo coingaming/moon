@@ -47,9 +47,9 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
           <:example>
             <div class="flex justify-around w-full items-center">
               <Caption>Defaul color is Bulma</Caption>
-              <Caption color="piccolo-100">Piccolo</Caption>
-              <Caption color="trunks-100">Trunks</Caption>
-              <Caption color="krillin-100">Krillin</Caption>
+              <Caption color_class="piccolo-100">Piccolo</Caption>
+              <Caption color_class="trunks-100">Trunks</Caption>
+              <Caption color_class="krillin-100">Krillin</Caption>
             </div>
           </:example>
 
@@ -60,8 +60,8 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
           <:example>
             <div class="flex justify-around w-full items-center">
               <Caption>Text-align is not specified</Caption>
-              <Caption text_align="center">Centered text</Caption>
-              <Caption text_align="right">Right alignment</Caption>
+              <Caption text_align_class="text-center">Centered text</Caption>
+              <Caption text_align_class="text-right">Right alignment</Caption>
             </div>
           </:example>
 
@@ -76,9 +76,9 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
     """
     <div class="flex justify-around w-full items-center">
       <Caption>Defaul color is Bulma</Caption>
-      <Caption color="piccolo-100">Piccolo</Caption>
-      <Caption color="trunks-100">Trunks</Caption>
-      <Caption color="krillin-100">Krillin</Caption>
+      <Caption color_class="piccolo-100">Piccolo</Caption>
+      <Caption color_class="trunks-100">Trunks</Caption>
+      <Caption color_class="krillin-100">Krillin</Caption>
     </div>
     """
   end
@@ -87,8 +87,8 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
     """
     <div class="flex justify-around w-full items-center">
       <Caption>Text-align is not specified</Caption>
-      <Caption text_align="center">Centered text</Caption>
-      <Caption text_align="right">Right alignment</Caption>
+      <Caption text_align_class="text-center">Centered text</Caption>
+      <Caption text_align_class="text-right">Right alignment</Caption>
     </div>
     """
   end

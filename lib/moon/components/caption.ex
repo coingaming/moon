@@ -4,15 +4,12 @@ defmodule Moon.Components.Caption do
   use Moon.StatelessComponent
 
   slot default
-  prop text_align, :string
-  prop color, :string, default: "text-bulma-100"
+  prop text_align_class, :string
+  prop color_class, :string, default: "text-bulma-100"
 
   def render(assigns) do
     ~F"""
-    <span
-      style={get_style(color: @color, text_align: @text_align)}
-      class="text-[10px] leading-4 font-semibold uppercase tracking-[1px]"
-    >
+    <span class={"text-[10px] leading-4 font-semibold uppercase tracking-[1px]", @color_class, @text_align_class}>
       <#slot />
     </span>
     """
