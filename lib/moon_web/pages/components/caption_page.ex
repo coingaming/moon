@@ -54,20 +54,18 @@ defmodule MoonWeb.Pages.Components.CaptionPage do
           </:example>
 
           <:code>{example_1_code()}</:code>
-
         </ExampleAndCode>
 
         <ExampleAndCode title="Text Align" id="example_2">
           <:example>
-          <div class="flex justify-around w-full items-center">
-            <Caption>Text-align is not specified</Caption>
-            <Caption text_align="center">Centered text</Caption>
-            <Caption text_align="right">Right alignment</Caption>
-          </div>
+            <div class="flex justify-around w-full items-center">
+              <Caption>Text-align is not specified</Caption>
+              <Caption text_align="center">Centered text</Caption>
+              <Caption text_align="right">Right alignment</Caption>
+            </div>
           </:example>
 
           <:code>{example_2_code()}</:code>
-
         </ExampleAndCode>
       </TopToDown>
     </Page>

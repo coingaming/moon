@@ -11,7 +11,8 @@ defmodule Moon.Components.Caption do
     ~F"""
     <span
       style={get_style(color: @color, text_align: @text_align)}
-      class={"text-[10px] leading-4 font-semibold uppercase tracking-[1px]"}>
+      class="text-[10px] leading-4 font-semibold uppercase tracking-[1px]"
+    >
       <#slot />
     </span>
     """
