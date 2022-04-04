@@ -3,7 +3,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Crest
+  alias Moon.Assets.Crests
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -22,6 +22,12 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       }
     ]
 
+  alias Crests.CrestArsenal
+  alias Crests.CrestFlamengo
+  alias Crests.CrestSaoPaulo
+  alias Crests.CrestSouthampton
+  alias Crests.CrestWatford
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -39,60 +45,60 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
         <ExampleAndCode id="crest_1" class="mt-4">
           <:example>
-            <Crest name="crest_arsenal" font_size="10rem" />
+            <CrestArsenal font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_arsenal" font_size="10rem" />
+              <CrestArsenal font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_2" class="mt-4">
           <:example>
-            <Crest name="crest_flamengo" font_size="10rem" />
+            <CrestFlamengo font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_flamengo" font_size="10rem" />
+              <CrestFlamengo font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_3" class="mt-4">
           <:example>
-            <Crest name="crest_sao_paulo" font_size="10rem" />
+            <CrestSaoPaulo font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_sao_paulo" font_size="10rem" />
+              <CrestSaoPaulo font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_4" class="mt-4">
           <:example>
-            <Crest name="crest_southampton" font_size="10rem" />
+            <CrestSouthampton font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_southampton" font_size="10rem" />
+              <CrestSouthampton font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_5" class="mt-4">
           <:example>
-            <Crest name="crest_watford" font_size="10rem" />
+            <CrestWatford font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_watford" font_size="10rem" />
+              <CrestWatford font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

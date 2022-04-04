@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   use MoonWeb, :live_view
 
   alias Moon.Assets.Currencies
-  alias Moon.Assets.Currency
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -23,6 +22,7 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       }
     ]
 
+  alias Currencies.IconAustralianDollar
   alias Currencies.IconBitcoin
   alias Currencies.IconBrazilianReal
   alias Currencies.IconCanadianDollar
@@ -71,12 +71,12 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_1" class="mt-4">
           <:example>
-            <Currency name="icon_australian_dollar" font_size="10rem" />
+            <IconAustralianDollar font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_australian_dollar" font_size="10rem" />
+              <IconAustralianDollar font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

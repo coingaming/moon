@@ -2,9 +2,10 @@ defmodule Moon.Assets.Crest do
   @moduledoc false
 
   use Moon.StatelessComponent
-  import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
+  alias Moon.Assets.Crests
 
   prop name, :string
+
   prop color, :string, values: Moon.colors()
   prop height, :string
   prop width, :string
@@ -13,29 +14,31 @@ defmodule Moon.Assets.Crest do
   prop click, :event
   prop class, :string
 
-  # @assets_map %{
-  #   crest_arsenal: Crests.CrestArsenal,
-  #   crest_flamengo: Crests.CrestFlamengo,
-  #   crest_sao_paulo: Crests.CrestSaoPaulo,
-  #   crest_southampton: Crests.CrestSouthampton,
-  #   crest_watford: Crests.CrestWatford
-  # }
+  @assets_map %{
+    crest_arsenal: Crests.CrestArsenal,
+    crest_flamengo: Crests.CrestFlamengo,
+    crest_sao_paulo: Crests.CrestSaoPaulo,
+    crest_southampton: Crests.CrestSouthampton,
+    crest_watford: Crests.CrestWatford
+  }
+
+  defp icon_name_to_module(icon_name) when is_binary(icon_name),
+    do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
+
+  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
 
   def render(assigns) do
     ~F"""
-    <svg
-      class={"moon-crest #{@class} #{@click && "cursor-pointer"}"}
-      :on-click={@click}
-      style={get_style(
+    {@name && icon_name_to_module(@name) &&
+      live_component(@socket, icon_name_to_module(@name),
         color: @color,
         height: @height,
         width: @width,
         font_size: @font_size,
-        vertical_align: @vertical_align
+        vertical_align: @vertical_align,
+        click: @click,
+        class: @class
       )}
-    >
-      <use href={"/moon/assets/svgs/crests/#{asset_name_to_filename(@name)}.svg#item"} />
-    </svg>
     """
   end
 end
