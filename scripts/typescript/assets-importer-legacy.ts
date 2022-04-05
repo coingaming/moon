@@ -227,7 +227,7 @@ const writeAssetsDocumentationPage = (type: string, pageContent?: string) => {
 
 const generateAssetsDocumentationPageContent = (
   type: string,
-  modules: string[]
+  iconNames: string[]
 ): string => {
   if (type == "crests") {
     return `
@@ -236,7 +236,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Crests
+  alias Moon.Assets.Crest
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -254,10 +254,6 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
         name: "Crests"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Crests.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -272,17 +268,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Crests</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="crest_${i + 1}" class="mt-4">
           <#template slot="example">
-            <${x} font_size="10rem" />
+            <Crest name="${x}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="10rem" />
+              <Crest name="${x}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -298,14 +294,14 @@ end
   }
 
   if (type == "currencies") {
-    console.log({ modules });
+    console.log({ iconNames });
     return `
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Currencies
+  alias Moon.Assets.Currency
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -323,10 +319,6 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
         name: "Currencies"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Currencies.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -341,17 +333,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Currencies</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="currency_${i + 1}" class="mt-4">
           <#template slot="example">
-            <${x} font_size="10rem" />
+            <Currency name="${x}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="10rem" />
+              <Currency name="${x}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -373,7 +365,7 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Duotones
+  alias Moon.Assets.Duotone
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -391,10 +383,6 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
         name: "Duotones"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Duotones.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -409,17 +397,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Duotones</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
           <#template slot="example">
-            <${x} font_size="10rem" color="piccolo-100" />
+            <Duotone name="${x}" font_size="10rem" color="piccolo-100" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="10rem" color="piccolo-100" />
+              <Duotone name="${x}" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -441,7 +429,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Icons
+  alias Moon.Assets.Icon
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -459,10 +447,6 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Icons"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Icons.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -477,17 +461,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Icons</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="icon_${i + 1}" class="mt-4">
           <#template slot="example">
-            <${x} font_size="5rem" />
+            <Icon name="${x}" font_size="5rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="5rem" />
+              <Icon name="${x}" font_size="5rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -509,7 +493,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Logos
+  alias Moon.Assets.Logo
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -527,10 +511,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         name: "Logos"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Logos.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -545,17 +525,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Logos</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="logo_${i + 1}" class="mt-4">
           <#template slot="example">
-            <${x} font_size="10rem" />
+            <Logo name="${x}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="10rem" />
+              <Logo name="${x}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -577,7 +557,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Patterns
+  alias Moon.Assets.Pattern
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
@@ -595,10 +575,6 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
         name: "Patterns"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Patterns.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -613,17 +589,17 @@ ${modules
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
       <Heading size={56} class="mb-4">Patterns</Heading>
-      ${modules
+      ${iconNames
         .map(
           (x: string, i: number) => `
         <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
           <#template slot="example">
-            <${x} font_size="10rem" />
+            <Pattern name="${x}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <${x} font_size="10rem" />
+              <Pattern name="${x}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -643,8 +619,8 @@ end
 };
 
 const generateAssetsDocumentationPage = (type: string, files: string[]) => {
-  const modules = files.map((f: string) => getModuleName(f));
-  const pageContent = generateAssetsDocumentationPageContent(type, modules);
+  const iconNames = files.map((f: string) => f.replace(".svg", ""));
+  const pageContent = generateAssetsDocumentationPageContent(type, iconNames);
 
   writeAssetsDocumentationPage(type, pageContent);
 };
