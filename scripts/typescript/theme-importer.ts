@@ -179,8 +179,16 @@ const writeTheme = (jsTheme: any, exThemePath: string) => {
 --z-index--dialog: ${s(exObj.z_index.carousel_control)};
 --z-index--toggle: ${s(exObj.z_index.toggle)};
 
---color--text: ${s(exObj.color.text).toUpperCase()};
---color--background: ${s(exObj.color.background).toUpperCase()};
+--color--text: ${s(
+      exObj.color.text.startsWith("rgba")
+        ? exObj.color.text
+        : exObj.color.text.toUpperCase()
+    )};
+--color--background: ${s(
+      exObj.color.background.startsWith("rgba")
+        ? exObj.color.background
+        : exObj.color.background.toUpperCase()
+    )};
         
 ${Object.keys(exObj.color)
   .filter((x: any) => typeof exObj.color[x] === "object")
@@ -189,7 +197,9 @@ ${Object.keys(exObj.color)
       .map(
         (colorShade: string) =>
           `--color--${colorName.replace("_", "-")}-${colorShade}: ${s(
-            exObj.color[colorName][colorShade].toUpperCase()
+            exObj.color[colorName][colorShade].startsWith("rgba")
+              ? exObj.color[colorName][colorShade]
+              : exObj.color[colorName][colorShade].toUpperCase()
           )};`
       )
       .join("\n")
