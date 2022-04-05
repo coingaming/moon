@@ -179,8 +179,8 @@ const writeTheme = (jsTheme: any, exThemePath: string) => {
 --z-index--dialog: ${s(exObj.z_index.carousel_control)};
 --z-index--toggle: ${s(exObj.z_index.toggle)};
 
---color--text: ${s(exObj.color.text)};
---color--background: ${s(exObj.color.background)};
+--color--text: ${s(exObj.color.text).toUpperCase()};
+--color--background: ${s(exObj.color.background).toUpperCase()};
         
 ${Object.keys(exObj.color)
   .filter((x: any) => typeof exObj.color[x] === "object")
