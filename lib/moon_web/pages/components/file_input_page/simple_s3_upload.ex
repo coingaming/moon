@@ -1,3 +1,5 @@
+# credo:disable-for-this-file
+
 defmodule MoonWeb.Pages.Components.FileInputPage.SimpleS3Upload do
   @moduledoc """
   Dependency-free S3 Form Upload using HTTP POST sigv4
