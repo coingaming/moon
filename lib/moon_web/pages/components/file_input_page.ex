@@ -159,7 +159,6 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   def presign_upload(entry, socket) do
     uploads = socket.assigns.uploads
     s3_config = Application.get_env(:moon, :s3)
-    IO.puts(inspect(s3_config))
     bucket = s3_config[:bucket]
     key = "uploaded-file"
 
