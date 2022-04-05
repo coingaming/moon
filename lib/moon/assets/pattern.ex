@@ -2,7 +2,8 @@ defmodule Moon.Assets.Pattern do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Assets.Patterns
+
+  import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
 
   prop name, :string
 
@@ -14,32 +15,21 @@ defmodule Moon.Assets.Pattern do
   prop click, :event
   prop class, :string
 
-  @assets_map %{
-    pattern_circles: Patterns.PatternCircles,
-    pattern_lines: Patterns.PatternLines,
-    pattern_ripple: Patterns.PatternRipple,
-    pattern_speed: Patterns.PatternSpeed,
-    pattern_stars: Patterns.PatternStars,
-    pattern_wave: Patterns.PatternWave
-  }
-
-  defp icon_name_to_module(icon_name) when is_binary(icon_name),
-    do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
-
-  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
-
   def render(assigns) do
     ~F"""
-    {@name && icon_name_to_module(@name) &&
-      live_component(@socket, icon_name_to_module(@name),
+    <svg
+      class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+      :on-click={@click}
+      style={get_style(
         color: @color,
         height: @height,
         width: @width,
         font_size: @font_size,
-        vertical_align: @vertical_align,
-        click: @click,
-        class: @class
+        vertical_align: @vertical_align
       )}
+    >
+      <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+    </svg>
     """
   end
 end

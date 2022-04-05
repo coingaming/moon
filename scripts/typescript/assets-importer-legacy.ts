@@ -1,22 +1,23 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
-console.log('Running assets importer');
+console.log("Running assets importer");
 
-const rawDir = './node_modules/moon-design/packages/assets/raw/';
-const exportDir = '../../lib/moon/assets/';
+const rawDir = "./node_modules/moon-design/packages/assets/raw/";
+const exportDir = "../../lib/moon/assets/";
 
-const getFilesList = (iconType: string) => fs.readdirSync(`${rawDir}/${iconType}`);
+const getFilesList = (iconType: string) =>
+  fs.readdirSync(`${rawDir}/${iconType}`);
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
     return $1
       .toUpperCase()
-      .replace(/([-_])/gi, '')
-      .replace(/([-_])/gi, '');
+      .replace(/([-_])/gi, "")
+      .replace(/([-_])/gi, "");
   });
 };
 
-const caseInsensitiveCompare = (a:string, b:string) =>
+const caseInsensitiveCompare = (a: string, b: string) =>
   a.toLowerCase().localeCompare(b.toLowerCase());
 
 const capitalizeFirstLetter = (string: string) => {
@@ -25,8 +26,8 @@ const capitalizeFirstLetter = (string: string) => {
 
 const getModuleName = (s: string) =>
   capitalizeFirstLetter(toCamel(s))
-    .replace('IconLoyalty-0', 'IconLoyalty0')
-    .replace('.svg', '');
+    .replace("IconLoyalty-0", "IconLoyalty0")
+    .replace(".svg", "");
 
 const propsMap = {
   icon: `
@@ -48,17 +49,43 @@ const propsMap = {
 };
 
 const propsMapKeys = {
-  icon: ['color', 'background_color', 'font_size', 'click', 'class'],
+  icon: ["color", "background_color", "font_size", "click", "class"],
   default: [
-    'color',
-    'height',
-    'width',
-    'font_size',
-    'vertical_align',
-    'click',
-    'class',
+    "color",
+    "height",
+    "width",
+    "font_size",
+    "vertical_align",
+    "click",
+    "class",
   ],
 };
+
+const mapFileContentString = `
+  <svg
+    class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+    :on-click={@click}
+    style={get_style(
+      color: @color,
+      height: @height,
+      width: @width,
+      font_size: @font_size,
+      vertical_align: @vertical_align
+    )}
+  >
+    <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+  </svg>
+`;
+
+const mapFileIconContentString = `
+  <svg
+    class={"moon-icon #{@class} #{@click && "cursor-pointer"}"}
+    :on-click={@click}
+    style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
+  >
+    <use href={"/moon/assets/svgs/icons/#{asset_name_to_filename(@name)}.svg#item"} />
+  </svg>
+`;
 
 type WriteAssetsMapFileProps = {
   assetsFolder: string;
@@ -77,43 +104,30 @@ const writeAssetsMapFile = ({
     newFilePath,
     `
 defmodule Moon.Assets.${getModuleName(iconType)} do
-  @moduledoc false
+  ${
+    iconType !== "icon"
+      ? "@moduledoc false"
+      : `@moduledoc """
+  This module is deprecated. Please use \`Moon.Icon\` instead.
+  """`
+  }
 
   use Moon.StatelessComponent
-  alias Moon.Assets.${getModuleName(iconType)}s
 
+  import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
+   
   prop name, :string
   ${(propsMap as any)[iconType] || propsMap.default}
-  @assets_map %{
-    ${files
-        .map(
-          (i) =>
-            `${i
-              .replace(/([-_])/gi, '_')
-              .toLowerCase()
-              .replace('.svg', '')
-              .replace(
-                `${iconType.substring(0, iconType.length - 1)}_`.toLowerCase(),
-                ''
-              )}: ${getModuleName(iconType)}s.${getModuleName(i)}`
-        )
-        .join(', ')}
-    }
-
-  defp icon_name_to_module(icon_name) when is_binary(icon_name), do: icon_name |> String.to_existing_atom() |> icon_name_to_module()
-  defp icon_name_to_module(icon_name), do: @assets_map[icon_name]
 
   def render(assigns) do
     ~F"""
-    {@name && icon_name_to_module(@name) && live_component(@socket, icon_name_to_module(@name), ${(
-        (propsMapKeys as any)[iconType] || propsMapKeys.default
-      )
-        .map((x: string) => `${x}: @${x}`)
-        .join(', ')})}
+
+    ${iconType !== "icon" ? mapFileContentString : mapFileIconContentString}
+    
     """
   end
 end
-`.replace('IconLoyalty-0', 'IconLoyalty0')
+`.replace("IconLoyalty-0", "IconLoyalty0")
   );
 };
 
@@ -129,10 +143,7 @@ const createAssetComponentFile = ({
   file,
 }: CreateAssetsComponentFileProps) => {
   const newFilePath = `${exportDir}/${assetsFolder}/${file
-    .replace(
-      /-/g,
-      '_'
-    )
+    .replace(/-/g, "_")
     .toLowerCase()}.ex`;
 
   const svgMap = {
@@ -162,17 +173,17 @@ defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
     """
   end
 end
-`.replace('IconLoyalty-0', 'IconLoyalty0')
+`.replace("IconLoyalty-0", "IconLoyalty0")
   );
 };
 
-const singularMap = { currencies: 'currency' };
+const singularMap = { currencies: "currency" };
 
 const singularName = (pluralName: string) =>
   (singularMap as any)[pluralName] ||
   pluralName.substring(0, pluralName.length - 1);
 
-['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
+["crests", "currencies", "duotones", "icons", "logos", "patterns"].forEach(
   (assetsFolder) => {
     const files = getFilesList(assetsFolder);
 
@@ -188,26 +199,26 @@ const singularName = (pluralName: string) =>
       createAssetComponentFile({
         assetsFolder,
         iconType: singularName(assetsFolder),
-        file: file.replace('.svg', ''),
+        file: file.replace(".svg", ""),
       });
     });
   }
 );
 
-const assetsDocDir = '../../lib/moon_web/pages/assets/';
+const assetsDocDir = "../../lib/moon_web/pages/assets/";
 
 const writeAssetsDocumentationPage = (type: string, pageContent?: string) => {
   if (!pageContent) {
-    return console.error('no content');
+    return console.error("no content");
   }
-  fs.writeFileSync(assetsDocDir + type + '_page.ex', pageContent);
+  fs.writeFileSync(assetsDocDir + type + "_page.ex", pageContent);
 };
 
 const generateAssetsDocumentationPageContent = (
   type: string,
   modules: string[]
 ): string => {
-  if (type == 'crests') {
+  if (type == "crests") {
     return `
 defmodule MoonWeb.Pages.Assets.CrestsPage do
   @moduledoc false
@@ -232,7 +243,10 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
         name: "Crests"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Crests.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Crests.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -263,7 +277,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Crests.${x}`)
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -272,7 +286,7 @@ end
     `;
   }
 
-  if (type == 'currencies') {
+  if (type == "currencies") {
     console.log({ modules });
     return `
 defmodule MoonWeb.Pages.Assets.CurrenciesPage do
@@ -298,7 +312,10 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
         name: "Currencies"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Currencies.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Currencies.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -329,7 +346,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Currencies.${
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -338,7 +355,7 @@ end
     `;
   }
 
-  if (type == 'duotones') {
+  if (type == "duotones") {
     return `
 defmodule MoonWeb.Pages.Assets.DuotonesPage do
   @moduledoc false
@@ -363,7 +380,10 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
         name: "Duotones"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Duotones.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Duotones.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -394,7 +414,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Duotones.${x}
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -403,7 +423,7 @@ end
     `;
   }
 
-  if (type == 'icons') {
+  if (type == "icons") {
     return `
 defmodule MoonWeb.Pages.Assets.IconsPage do
   @moduledoc false
@@ -428,7 +448,10 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Icons"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Icons.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Icons.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -459,7 +482,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Icons.${x}`).
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -468,7 +491,7 @@ end
     `;
   }
 
-  if (type == 'logos') {
+  if (type == "logos") {
     return `
 defmodule MoonWeb.Pages.Assets.LogosPage do
   @moduledoc false
@@ -493,7 +516,10 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         name: "Logos"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Logos.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Logos.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -524,7 +550,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Logos.${x}`).
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -533,7 +559,7 @@ end
     `;
   }
 
-  if (type == 'patterns') {
+  if (type == "patterns") {
     return `
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   @moduledoc false
@@ -558,7 +584,10 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
         name: "Patterns"
       }
     ]
-${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Patterns.${x}`).join('\n')}
+${modules
+  .sort(caseInsensitiveCompare)
+  .map((x: string) => `  alias Patterns.${x}`)
+  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -589,7 +618,7 @@ ${modules.sort(caseInsensitiveCompare).map((x: string) => `  alias Patterns.${x}
         </ExampleAndCode>
       `
         )
-        .join('\n')}
+        .join("\n")}
       </TopToDown>
     </Page>
     """
@@ -598,8 +627,8 @@ end
     `;
   }
 
-  console.log({ error: 'unknown type', type });
-  return '';
+  console.log({ error: "unknown type", type });
+  return "";
 };
 
 const generateAssetsDocumentationPage = (type: string, files: string[]) => {
@@ -609,7 +638,7 @@ const generateAssetsDocumentationPage = (type: string, files: string[]) => {
   writeAssetsDocumentationPage(type, pageContent);
 };
 
-['crests', 'currencies', 'duotones', 'icons', 'logos', 'patterns'].forEach(
+["crests", "currencies", "duotones", "icons", "logos", "patterns"].forEach(
   (assetsFolder: string) => {
     const files = getFilesList(assetsFolder);
     generateAssetsDocumentationPage(assetsFolder, files);
