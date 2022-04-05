@@ -8,7 +8,6 @@ defmodule Moon.Assets.Icon do
   import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
 
   prop name, :string
-
   prop color, :string, values: Moon.colors()
   prop background_color, :string, values: Moon.colors()
   prop font_size, :string

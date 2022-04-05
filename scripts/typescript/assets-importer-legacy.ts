@@ -124,8 +124,7 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
 
   import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
    
-  prop name, :string
-  ${(propsMap as any)[iconType] || propsMap.default}
+  prop name, :string ${(propsMap as any)[iconType] || propsMap.default}
 
   def render(assigns) do
     ~F"""
