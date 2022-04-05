@@ -619,7 +619,7 @@ end
 
 const generateAssetsDocumentationPage = (type: string, files: string[]) => {
   const iconNames = files.map((f: string) =>
-    f.replace(".svg", "").replace("-", "_")
+    f.replace(".svg", "").replace(/([-])/gi, "_")
   );
   const pageContent = generateAssetsDocumentationPageContent(type, iconNames);
 

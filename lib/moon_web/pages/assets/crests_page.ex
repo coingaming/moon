@@ -63,12 +63,12 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
         <ExampleAndCode id="crest_3" class="mt-4">
           <:example>
-            <Crest name="crest_sao-paulo" font_size="10rem" />
+            <Crest name="crest_sao_paulo" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="crest_sao-paulo" font_size="10rem" />
+              <Crest name="crest_sao_paulo" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

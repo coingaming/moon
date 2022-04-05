@@ -39,12 +39,12 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_1" class="mt-4">
           <:example>
-            <Currency name="icon_australian-dollar" font_size="10rem" />
+            <Currency name="icon_australian_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_australian-dollar" font_size="10rem" />
+              <Currency name="icon_australian_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -63,24 +63,24 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_3" class="mt-4">
           <:example>
-            <Currency name="icon_brazilian-real" font_size="10rem" />
+            <Currency name="icon_brazilian_real" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_brazilian-real" font_size="10rem" />
+              <Currency name="icon_brazilian_real" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_4" class="mt-4">
           <:example>
-            <Currency name="icon_canadian-dollar" font_size="10rem" />
+            <Currency name="icon_canadian_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_canadian-dollar" font_size="10rem" />
+              <Currency name="icon_canadian_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -99,36 +99,36 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_6" class="mt-4">
           <:example>
-            <Currency name="icon_chiliean-peso" font_size="10rem" />
+            <Currency name="icon_chiliean_peso" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_chiliean-peso" font_size="10rem" />
+              <Currency name="icon_chiliean_peso" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_7" class="mt-4">
           <:example>
-            <Currency name="icon_chinese-yuan" font_size="10rem" />
+            <Currency name="icon_chinese_yuan" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_chinese-yuan" font_size="10rem" />
+              <Currency name="icon_chinese_yuan" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_8" class="mt-4">
           <:example>
-            <Currency name="icon_danish-krone" font_size="10rem" />
+            <Currency name="icon_danish_krone" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_danish-krone" font_size="10rem" />
+              <Currency name="icon_danish_krone" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -171,60 +171,60 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_12" class="mt-4">
           <:example>
-            <Currency name="icon_gb-pound-sterling" font_size="10rem" />
+            <Currency name="icon_gb_pound_sterling" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_gb-pound-sterling" font_size="10rem" />
+              <Currency name="icon_gb_pound_sterling" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_13" class="mt-4">
           <:example>
-            <Currency name="icon_hong-kong-dollar" font_size="10rem" />
+            <Currency name="icon_hong_kong_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_hong-kong-dollar" font_size="10rem" />
+              <Currency name="icon_hong_kong_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_14" class="mt-4">
           <:example>
-            <Currency name="icon_icelandic-krona" font_size="10rem" />
+            <Currency name="icon_icelandic_krona" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_icelandic-krona" font_size="10rem" />
+              <Currency name="icon_icelandic_krona" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_15" class="mt-4">
           <:example>
-            <Currency name="icon_indian-rupee" font_size="10rem" />
+            <Currency name="icon_indian_rupee" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_indian-rupee" font_size="10rem" />
+              <Currency name="icon_indian_rupee" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_16" class="mt-4">
           <:example>
-            <Currency name="icon_japanese-yen" font_size="10rem" />
+            <Currency name="icon_japanese_yen" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_japanese-yen" font_size="10rem" />
+              <Currency name="icon_japanese_yen" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -243,36 +243,36 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_18" class="mt-4">
           <:example>
-            <Currency name="icon_new-taiwan-dollar" font_size="10rem" />
+            <Currency name="icon_new_taiwan_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_new-taiwan-dollar" font_size="10rem" />
+              <Currency name="icon_new_taiwan_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_19" class="mt-4">
           <:example>
-            <Currency name="icon_new-zealand-dollar" font_size="10rem" />
+            <Currency name="icon_new_zealand_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_new-zealand-dollar" font_size="10rem" />
+              <Currency name="icon_new_zealand_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_20" class="mt-4">
           <:example>
-            <Currency name="icon_poland-zloty" font_size="10rem" />
+            <Currency name="icon_poland_zloty" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_poland-zloty" font_size="10rem" />
+              <Currency name="icon_poland_zloty" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -291,24 +291,24 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_22" class="mt-4">
           <:example>
-            <Currency name="icon_russian-ruble" font_size="10rem" />
+            <Currency name="icon_russian_ruble" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_russian-ruble" font_size="10rem" />
+              <Currency name="icon_russian_ruble" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_23" class="mt-4">
           <:example>
-            <Currency name="icon_singapore-dollar" font_size="10rem" />
+            <Currency name="icon_singapore_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_singapore-dollar" font_size="10rem" />
+              <Currency name="icon_singapore_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -327,48 +327,48 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_25" class="mt-4">
           <:example>
-            <Currency name="icon_south-korean-won" font_size="10rem" />
+            <Currency name="icon_south_korean_won" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_south-korean-won" font_size="10rem" />
+              <Currency name="icon_south_korean_won" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_26" class="mt-4">
           <:example>
-            <Currency name="icon_swedish-krona" font_size="10rem" />
+            <Currency name="icon_swedish_krona" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_swedish-krona" font_size="10rem" />
+              <Currency name="icon_swedish_krona" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_27" class="mt-4">
           <:example>
-            <Currency name="icon_swiss-franc" font_size="10rem" />
+            <Currency name="icon_swiss_franc" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_swiss-franc" font_size="10rem" />
+              <Currency name="icon_swiss_franc" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_28" class="mt-4">
           <:example>
-            <Currency name="icon_thai-baht" font_size="10rem" />
+            <Currency name="icon_thai_baht" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_thai-baht" font_size="10rem" />
+              <Currency name="icon_thai_baht" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -387,24 +387,24 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_30" class="mt-4">
           <:example>
-            <Currency name="icon_turkish-lira" font_size="10rem" />
+            <Currency name="icon_turkish_lira" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_turkish-lira" font_size="10rem" />
+              <Currency name="icon_turkish_lira" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_31" class="mt-4">
           <:example>
-            <Currency name="icon_usa-dollar" font_size="10rem" />
+            <Currency name="icon_usa_dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="icon_usa-dollar" font_size="10rem" />
+              <Currency name="icon_usa_dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

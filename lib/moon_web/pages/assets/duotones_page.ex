@@ -75,12 +75,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_4" class="mt-4">
           <:example>
-            <Duotone name="email_not-verified" font_size="10rem" color="piccolo-100" />
+            <Duotone name="email_not_verified" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="email_not-verified" font_size="10rem" color="piccolo-100" />
+              <Duotone name="email_not_verified" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -123,12 +123,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_8" class="mt-4">
           <:example>
-            <Duotone name="hustle_to-top" font_size="10rem" color="piccolo-100" />
+            <Duotone name="hustle_to_top" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="hustle_to-top" font_size="10rem" color="piccolo-100" />
+              <Duotone name="hustle_to_top" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -171,12 +171,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_12" class="mt-4">
           <:example>
-            <Duotone name="no_casino-games" font_size="10rem" color="piccolo-100" />
+            <Duotone name="no_casino_games" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="no_casino-games" font_size="10rem" color="piccolo-100" />
+              <Duotone name="no_casino_games" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -219,12 +219,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_16" class="mt-4">
           <:example>
-            <Duotone name="no_free-bet" font_size="10rem" color="piccolo-100" />
+            <Duotone name="no_free_bet" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="no_free-bet" font_size="10rem" color="piccolo-100" />
+              <Duotone name="no_free_bet" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -315,24 +315,24 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_24" class="mt-4">
           <:example>
-            <Duotone name="tiers_and-rewards" font_size="10rem" color="piccolo-100" />
+            <Duotone name="tiers_and_rewards" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="tiers_and-rewards" font_size="10rem" color="piccolo-100" />
+              <Duotone name="tiers_and_rewards" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="duotone_25" class="mt-4">
           <:example>
-            <Duotone name="track_your-progress" font_size="10rem" color="piccolo-100" />
+            <Duotone name="track_your_progress" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="track_your-progress" font_size="10rem" color="piccolo-100" />
+              <Duotone name="track_your_progress" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -351,12 +351,12 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
 
         <ExampleAndCode id="duotone_27" class="mt-4">
           <:example>
-            <Duotone name="you_play-we-pay" font_size="10rem" color="piccolo-100" />
+            <Duotone name="you_play_we_pay" font_size="10rem" color="piccolo-100" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Duotone name="you_play-we-pay" font_size="10rem" color="piccolo-100" />
+              <Duotone name="you_play_we_pay" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
