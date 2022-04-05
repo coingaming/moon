@@ -16,6 +16,12 @@ config :moon, MoonWeb.Endpoint,
   pubsub_server: Moon.PubSub,
   live_view: [signing_salt: "QAEMvs6P"]
 
+config :moon, :s3,
+  bucket: System.get_env("AWS_BUCKET"),
+  region: System.get_env("AWS_DEFAULT_REGION"),
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY")
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

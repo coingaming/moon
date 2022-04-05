@@ -4,13 +4,19 @@ import { LiveSocket } from 'phoenix_live_view'
 import Alpine from 'alpinejs'
 import { hooks } from './hooks'
 import "./listeners"
+import S3 from "./uploaders/s3"
+
+let uploaders = {
+  S3
+}
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute('content')
 
 let liveSocket = new LiveSocket('/live', Socket, {
-  hooks: hooks,
+  uploaders,
+  hooks,
   dom: {
     onBeforeElUpdated(from, to) {
       if (from.__x) {
