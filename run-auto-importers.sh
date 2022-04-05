@@ -1,7 +1,5 @@
 root_dir=`pwd`
 
-mix phx.digest.clean --all
-
 cd $root_dir/scripts/typescript/
 
 yarn
@@ -43,12 +41,10 @@ mkdir -p assets/static/svgs/icons_new
 mkdir -p assets/static/svgs/logos
 mkdir -p assets/static/svgs/patterns
 
-
 cd $root_dir/scripts/typescript/
 npx ts-node generate-svg-symbols.ts
 npx ts-node assets-importer-legacy.ts
 npx ts-node icons-importer.ts
-# npx ts-node icons-old-importer.ts
 mv node_modules/moon-design moon-design
 npx ts-node theme-importer.ts
 mv moon-design node_modules/moon-design
