@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         <Heading size={56} class="mb-4">File Input</Heading>
 
         <p>
-          Uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads.html">https://hexdocs.pm/phoenix_live_view/uploads.html</Link><br />
+          Uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads.html">https://hexdocs.pm/phoenix_live_view/uploads.html</Link><br>
           External uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads-external.html">https://hexdocs.pm/phoenix_live_view/uploads-external.html</Link>
         </p>
 
@@ -41,12 +41,19 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           <:example>
             <Form id="upload-form-1" for={:example_form} change="upload_changed" submit="upload_submitted">
               <TopToDown>
-                <FileInput conf={@uploads.some_picture_file} label="Upload your ID" placeholder="Choose a photo..." />
-                <section phx-drop-target={@uploads.some_picture_file.ref} class={"p-4", Moon.Components.FieldBorder.get_default_class()}>
+                <FileInput
+                  conf={@uploads.some_picture_file}
+                  label="Upload your ID"
+                  placeholder="Choose a photo..."
+                />
+                <section
+                  phx-drop-target={@uploads.some_picture_file.ref}
+                  class={"p-4", Moon.Components.FieldBorder.get_default_class()}
+                >
                   <h1>Drag and drop area</h1>
                   <div>
                     {#for entry <- @uploads.some_picture_file.entries}
-                      {live_img_preview entry, style: "max-width: 200px; max-height: 200px;"}
+                      {live_img_preview(entry, style: "max-width: 200px; max-height: 200px;")}
                       <progress value={entry.progress} max="100">{entry.progress}</progress>
                       <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
                       {#for err <- upload_errors(@uploads.some_picture_file, entry)}
@@ -68,14 +75,26 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
         <ExampleAndCode title="Upload directly from browser to S3" id="file_input_2">
           <:example>
-            <Form id="upload-form-2" for={:example_form_for_s3} change="upload_s3_changed" submit="upload_s3_submitted">
+            <Form
+              id="upload-form-2"
+              for={:example_form_for_s3}
+              change="upload_s3_changed"
+              submit="upload_s3_submitted"
+            >
               <TopToDown>
-                <FileInput conf={@uploads.some_picture_file_for_s3} label="Upload your ID" placeholder="Choose a photo..." />
-                <section phx-drop-target={@uploads.some_picture_file_for_s3.ref} class={"p-4", Moon.Components.FieldBorder.get_default_class()}>
+                <FileInput
+                  conf={@uploads.some_picture_file_for_s3}
+                  label="Upload your ID"
+                  placeholder="Choose a photo..."
+                />
+                <section
+                  phx-drop-target={@uploads.some_picture_file_for_s3.ref}
+                  class={"p-4", Moon.Components.FieldBorder.get_default_class()}
+                >
                   <h1>Drag and drop area</h1>
                   <div>
                     {#for entry <- @uploads.some_picture_file_for_s3.entries}
-                      {live_img_preview entry, style: "max-width: 200px; max-height: 200px;"}
+                      {live_img_preview(entry, style: "max-width: 200px; max-height: 200px;")}
                       <progress value={entry.progress} max="100">{entry.progress}</progress>
                       <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
                       {#for err <- upload_errors(@uploads.some_picture_file_for_s3, entry)}
