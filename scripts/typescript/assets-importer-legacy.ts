@@ -459,9 +459,9 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-      <Heading size={56} class="mb-4">Icons</Heading>
+        <Heading size={56} class="mb-4">Icons</Heading>
       
-      <div class="p-6 bg-gohan-100 rounded">
+        <div class="p-6 bg-gohan-100 rounded">
           <div
             class="grid gap-4 overflow-hidden"
             style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"

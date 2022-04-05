@@ -142,10 +142,9 @@ defmodule MoonWeb.Pages.IconsPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Icons
-  alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Helpers.Icons
+  alias Moon.Icon
   alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
@@ -155,10 +154,6 @@ defmodule MoonWeb.Pages.IconsPage do
         name: "Icons"
       }
     ]
-${modules
-  .sort(caseInsensitiveCompare)
-  .map((x: string) => `  alias Icons.${x}`)
-  .join("\n")}
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -172,25 +167,25 @@ ${modules
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-      <Heading size={56} class="mb-4">Icons</Heading>
-      ${modules
-        .sort(caseInsensitiveCompare)
-        .map(
-          (x: string, i: number) => `
-        <ExampleAndCode id="icon_${i + 1}" class="mt-4">
-          <#template slot="example">
-            <${x} font_size="5rem" />
-          </#template>
+        <Heading size={56} class="mb-4">Icons</Heading>
+        
 
-          <#template slot="code">
-            <#CodePreview>
-              <${x} font_size="5rem" />
-            </#CodePreview>
-          </#template>
-        </ExampleAndCode>
-      `
-        )
-        .join("\n")}
+        <div class="p-6 bg-gohan-100 rounded">
+          <div
+            class="grid gap-4 overflow-hidden"
+            style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"
+          >
+            {#for icon_name <- Icons.list_all()}
+              <div class="w-40 h-28 flex flex-col items-center">
+                <div class="flex grow justify-center items-center">
+                  <Icon name={icon_name} class="h-8 w-8" />
+                </div>
+                <h3 class="text-xs mx-2 mb-2 text-trunks-100" title={icon_name}>{icon_name}</h3>
+              </div>
+            {/for}
+          </div>
+        </div>
+
       </TopToDown>
     </Page>
     """
