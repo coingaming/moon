@@ -1,28 +1,26 @@
+import * as fs from "fs";
+import aposta10Dark from "./moon-design/packages/themes/src/aposta10Dark/aposta10Dark";
+import aposta10Light from "./moon-design/packages/themes/src/aposta10Light/aposta10Light";
+import bitcasinoDark from "./moon-design/packages/themes/src/bitcasinoDark/bitcasinoDark";
+import bitcasinoLight from "./moon-design/packages/themes/src/bitcasinoLight/bitcasinoLight";
+import bombayClub from "./moon-design/packages/themes/src/bombayClub/bombayClub";
+import btcxe from "./moon-design/packages/themes/src/btcxe/btcxe";
+import hub88 from "./moon-design/packages/themes/src/hub88/hub88";
+import livecasinoDark from "./moon-design/packages/themes/src/livecasinoDark/livecasinoDark";
+import livecasinoLight from "./moon-design/packages/themes/src/livecasinoLight/livecasinoLight";
+import luckyslots from "./moon-design/packages/themes/src/luckyslots/luckyslots";
+import missionsToolDark from "./moon-design/packages/themes/src/missionsToolDark/missionsToolDark";
+import missionsToolLight from "./moon-design/packages/themes/src/missionsToolLight/missionsToolLight";
+import moneyballDark from "./moon-design/packages/themes/src/moneyball/moneyballDark";
+import moneyballLight from "./moon-design/packages/themes/src/moneyball/moneyballLight";
+import moonDesignDark from "./moon-design/packages/themes/src/moonDesignDark/moonDesignDark";
+import moonDesignLight from "./moon-design/packages/themes/src/moonDesignLight/moonDesignLight";
+import slotsDark from "./moon-design/packages/themes/src/slotsDark/slotsDark";
+import slotsLight from "./moon-design/packages/themes/src/slotsLight/slotsLight";
+import sportsbetDark from "./moon-design/packages/themes/src/sportsbetDark/sportsbetDark";
+import sportsbetLight from "./moon-design/packages/themes/src/sportsbetLight/sportsbetLight";
 
-
-import * as fs from 'fs';
-import aposta10Dark from './moon-design/packages/themes/src/aposta10Dark/aposta10Dark';
-import aposta10Light from './moon-design/packages/themes/src/aposta10Light/aposta10Light';
-import bitcasinoDark from './moon-design/packages/themes/src/bitcasinoDark/bitcasinoDark';
-import bitcasinoLight from './moon-design/packages/themes/src/bitcasinoLight/bitcasinoLight';
-import bombayClub from './moon-design/packages/themes/src/bombayClub/bombayClub';
-import btcxe from './moon-design/packages/themes/src/btcxe/btcxe';
-import hub88 from './moon-design/packages/themes/src/hub88/hub88';
-import livecasinoDark from './moon-design/packages/themes/src/livecasinoDark/livecasinoDark';
-import livecasinoLight from './moon-design/packages/themes/src/livecasinoLight/livecasinoLight';
-import luckyslots from './moon-design/packages/themes/src/luckyslots/luckyslots';
-import missionsToolDark from './moon-design/packages/themes/src/missionsToolDark/missionsToolDark';
-import missionsToolLight from './moon-design/packages/themes/src/missionsToolLight/missionsToolLight';
-import moneyballDark from './moon-design/packages/themes/src/moneyball/moneyballDark';
-import moneyballLight from './moon-design/packages/themes/src/moneyball/moneyballLight';
-import moonDesignDark from './moon-design/packages/themes/src/moonDesignDark/moonDesignDark';
-import moonDesignLight from './moon-design/packages/themes/src/moonDesignLight/moonDesignLight';
-import slotsDark from './moon-design/packages/themes/src/slotsDark/slotsDark';
-import slotsLight from './moon-design/packages/themes/src/slotsLight/slotsLight';
-import sportsbetDark from './moon-design/packages/themes/src/sportsbetDark/sportsbetDark';
-import sportsbetLight from './moon-design/packages/themes/src/sportsbetLight/sportsbetLight';
-
-const themes:any = {
+const themes: any = {
   aposta10Dark,
   aposta10Light,
   bitcasinoDark,
@@ -42,39 +40,39 @@ const themes:any = {
   slotsDark,
   slotsLight,
   sportsbetDark,
-  sportsbetLight
+  sportsbetLight,
 };
 
-const capitalizeFirstLetter = (string:string) => {
+const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const camelToSnakeCase = (str:string) =>
+const camelToSnakeCase = (str: string) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
-const jsKeysToElixirKeys = (obj:any) => {
-  let newObj:any = Array.isArray(obj) ? [] : {};
+const jsKeysToElixirKeys = (obj: any) => {
+  let newObj: any = Array.isArray(obj) ? [] : {};
 
   for (const k in obj) {
     newObj[camelToSnakeCase(k)] =
-      typeof obj[k] == 'object' ? jsKeysToElixirKeys(obj[k]) : obj[k];
+      typeof obj[k] == "object" ? jsKeysToElixirKeys(obj[k]) : obj[k];
   }
 
   return newObj;
 };
 
-const toCamel = (s:string) => {
+const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
-    return $1.toUpperCase().replace('-', '').replace('_', '');
+    return $1.toUpperCase().replace("-", "").replace("_", "");
   });
 };
 
-const toCapitalisedCamel = (s:string) => capitalizeFirstLetter(toCamel(s));
+const toCapitalisedCamel = (s: string) => capitalizeFirstLetter(toCamel(s));
 
-const writeTheme = (jsTheme:any, exThemePath:string) => {
+const writeTheme = (jsTheme: any, exThemePath: string) => {
   const exObj: any = jsKeysToElixirKeys(jsTheme);
 
-  const s = (x:any) => x;
+  const s = (x: any) => x;
 
   // fs.writeFileSync(
   //   `${exThemePath}.json`,
@@ -87,21 +85,21 @@ const writeTheme = (jsTheme:any, exThemePath:string) => {
     `${exThemePath}.css`,
     `
 @font-face {
-  font-family: ${s(exObj.font_face[0]['@font-face'].font_family)};
-  font-style: ${s(exObj.font_face[0]['@font-face'].font_style)};
-  font-display: ${s(exObj.font_face[0]['@font-face'].font_display)};
-  unicode-range: ${s(exObj.font_face[0]['@font-face'].unicode_range)};
-  font-weight: ${s(exObj.font_face[0]['@font-face'].font_weight)};
-  src: ${s(exObj.font_face[0]['@font-face'].src)};
+  font-family: ${s(exObj.font_face[0]["@font-face"].font_family)};
+  font-style: ${s(exObj.font_face[0]["@font-face"].font_style)};
+  font-display: ${s(exObj.font_face[0]["@font-face"].font_display)};
+  unicode-range: ${s(exObj.font_face[0]["@font-face"].unicode_range)};
+  font-weight: ${s(exObj.font_face[0]["@font-face"].font_weight)};
+  src: ${s(exObj.font_face[0]["@font-face"].src)};
 }
 
 @font-face {
-  font-family: ${s(exObj.font_face[1]['@font-face'].font_family)};
-  font-style: ${s(exObj.font_face[1]['@font-face'].font_style)};
-  font-display: ${s(exObj.font_face[1]['@font-face'].font_display)};
-  unicode-range: ${s(exObj.font_face[1]['@font-face'].unicode_range)};
-  font-weight: ${s(exObj.font_face[1]['@font-face'].font_weight)};
-  src: ${s(exObj.font_face[1]['@font-face'].src)};
+  font-family: ${s(exObj.font_face[1]["@font-face"].font_family)};
+  font-style: ${s(exObj.font_face[1]["@font-face"].font_style)};
+  font-display: ${s(exObj.font_face[1]["@font-face"].font_display)};
+  unicode-range: ${s(exObj.font_face[1]["@font-face"].unicode_range)};
+  font-weight: ${s(exObj.font_face[1]["@font-face"].font_weight)};
+  src: ${s(exObj.font_face[1]["@font-face"].src)};
 }
 
 .${themeName} {
@@ -119,19 +117,39 @@ const writeTheme = (jsTheme:any, exThemePath:string) => {
 --breakpoint--large: ${s(exObj.breakpoint.large)}px;
 --breakpoint--xlarge: ${s(exObj.breakpoint.xlarge)}px;
 
---font-face--regular--font-family: ${s(exObj.font_face[0]['@font-face'].font_family)};
---font-face--regular--font-style: ${s(exObj.font_face[0]['@font-face'].font_style)};
---font-face--regular--font-display: ${s(exObj.font_face[0]['@font-face'].font_display)};
---font-face--regular--unicode-range: ${s(exObj.font_face[0]['@font-face'].unicode_range)};
---font-face--regular--font-weight: ${s(exObj.font_face[0]['@font-face'].font_weight)};
---font-face--regular--src: ${s(exObj.font_face[0]['@font-face'].src)};
+--font-face--regular--font-family: ${s(
+      exObj.font_face[0]["@font-face"].font_family
+    )};
+--font-face--regular--font-style: ${s(
+      exObj.font_face[0]["@font-face"].font_style
+    )};
+--font-face--regular--font-display: ${s(
+      exObj.font_face[0]["@font-face"].font_display
+    )};
+--font-face--regular--unicode-range: ${s(
+      exObj.font_face[0]["@font-face"].unicode_range
+    )};
+--font-face--regular--font-weight: ${s(
+      exObj.font_face[0]["@font-face"].font_weight
+    )};
+--font-face--regular--src: ${s(exObj.font_face[0]["@font-face"].src)};
 
---font-face--semibold--font-family: ${s(exObj.font_face[1]['@font-face'].font_family)};
---font-face--semibold--font-style: ${s(exObj.font_face[1]['@font-face'].font_style)};
---font-face--semibold--font-display: ${s(exObj.font_face[1]['@font-face'].font_display)};
---font-face--semibold--unicode-range: ${s(exObj.font_face[1]['@font-face'].unicode_range)};
---font-face--semibold--font-weight: ${s(exObj.font_face[1]['@font-face'].font_weight)};
---font-face--semibold--src: ${s(exObj.font_face[1]['@font-face'].src)};
+--font-face--semibold--font-family: ${s(
+      exObj.font_face[1]["@font-face"].font_family
+    )};
+--font-face--semibold--font-style: ${s(
+      exObj.font_face[1]["@font-face"].font_style
+    )};
+--font-face--semibold--font-display: ${s(
+      exObj.font_face[1]["@font-face"].font_display
+    )};
+--font-face--semibold--unicode-range: ${s(
+      exObj.font_face[1]["@font-face"].unicode_range
+    )};
+--font-face--semibold--font-weight: ${s(
+      exObj.font_face[1]["@font-face"].font_weight
+    )};
+--font-face--semibold--src: ${s(exObj.font_face[1]["@font-face"].src)};
         
 --font-family: ${s(exObj.font_family)};
 --font-size: ${s(exObj.font_size.body)};
@@ -165,18 +183,18 @@ const writeTheme = (jsTheme:any, exThemePath:string) => {
 --color--background: ${s(exObj.color.background)};
         
 ${Object.keys(exObj.color)
-  .filter((x:any) => typeof exObj.color[x] === 'object')
-  .map((colorName:string) =>
+  .filter((x: any) => typeof exObj.color[x] === "object")
+  .map((colorName: string) =>
     Object.keys(exObj.color[colorName])
       .map(
-        (colorShade:string) =>
+        (colorShade: string) =>
           `--color--${colorName.replace("_", "-")}-${colorShade}: ${s(
-            exObj.color[colorName][colorShade]
+            exObj.color[colorName][colorShade].toUpperCase()
           )};`
       )
-      .join('\n')
+      .join("\n")
   )
-  .join('\n')}
+  .join("\n")}
 
 space: var(--base--space);
 font-size: var(--base--font-size);
@@ -191,10 +209,7 @@ font-weight: var(--font-face--regular--font-weight);
 };
 
 for (const k in themes) {
-  const v:any = themes[k];
+  const v: any = themes[k];
   const fileName = camelToSnakeCase(k).replace(/_/g, "-");
-  writeTheme(
-    v,
-    `../../priv/static/themes/${fileName}`
-  );
+  writeTheme(v, `../../priv/static/themes/${fileName}`);
 }
