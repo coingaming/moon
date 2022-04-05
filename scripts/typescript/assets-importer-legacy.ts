@@ -61,9 +61,17 @@ const propsMapKeys = {
   ],
 };
 
-const mapFileContentString = `
+type MapFileContentParams = {
+  iconType: string;
+  assetsFolder: string;
+};
+
+const mapFileContentString = ({
+  iconType,
+  assetsFolder,
+}: MapFileContentParams) => `
   <svg
-    class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+    class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"}
     :on-click={@click}
     style={get_style(
       color: @color,
@@ -73,7 +81,7 @@ const mapFileContentString = `
       vertical_align: @vertical_align
     )}
   >
-    <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+    <use href={"/moon/assets/svgs/${assetsFolder}/#{asset_name_to_filename(@name)}.svg#item"} />
   </svg>
 `;
 
@@ -108,8 +116,8 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
     iconType !== "icon"
       ? "@moduledoc false"
       : `@moduledoc """
-  This module is deprecated. Please use \`Moon.Icon\` instead.
-  """`
+         This module is deprecated. Please use \`Moon.Icon\` instead.
+         """`
   }
 
   use Moon.StatelessComponent
@@ -122,7 +130,11 @@ defmodule Moon.Assets.${getModuleName(iconType)} do
   def render(assigns) do
     ~F"""
 
-    ${iconType !== "icon" ? mapFileContentString : mapFileIconContentString}
+    ${
+      iconType !== "icon"
+        ? mapFileContentString({ iconType, assetsFolder })
+        : mapFileIconContentString
+    }
     
     """
   end

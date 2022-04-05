@@ -18,7 +18,7 @@ defmodule Moon.Assets.Duotone do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+      class={"moon-duotone #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
       style={get_style(
         color: @color,
@@ -28,7 +28,7 @@ defmodule Moon.Assets.Duotone do
         vertical_align: @vertical_align
       )}
     >
-      <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+      <use href={"/moon/assets/svgs/duotones/#{asset_name_to_filename(@name)}.svg#item"} />
     </svg>
     """
   end
