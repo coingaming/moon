@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/coingaming/moon/compare/v2.6.0...v2.6.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* use the old icons importer for now [MDS-41] ([#234](https://github.com/coingaming/moon/issues/234)) ([c1c9436](https://github.com/coingaming/moon/commit/c1c943651d8832e0853c3ab020d03669776bc6bf))
+
 # [2.6.0](https://github.com/coingaming/moon/compare/v2.5.0...v2.6.0) (2022-03-30)
 
 
