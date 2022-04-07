@@ -1,11 +1,8 @@
-defmodule Moon.Assets.Pattern do
+defmodule Moon.Assets.Logos.LogoPaxful do
   @moduledoc false
 
   use Moon.StatelessComponent
 
-  import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
-
-  prop name, :string
   prop color, :string, values: Moon.colors()
   prop height, :string
   prop width, :string
@@ -17,7 +14,7 @@ defmodule Moon.Assets.Pattern do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+      class={"moon-logo #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
       style={get_style(
         color: @color,
@@ -27,7 +24,7 @@ defmodule Moon.Assets.Pattern do
         vertical_align: @vertical_align
       )}
     >
-      <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+      <use href="/moon/assets/svgs/logos/logo-paxful.svg#item" />
     </svg>
     """
   end

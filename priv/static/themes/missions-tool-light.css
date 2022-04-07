@@ -75,7 +75,7 @@
 --z-index--toggle: 1;
 
 --color--text: #010913;
---color--background: #f3f5f6;
+--color--background: #F3F5F6;
         
 --color--krillin-10: #FFE4AD;
 --color--krillin-100: #FFB319;
@@ -96,24 +96,24 @@
 --color--nappa-10: #B8AAA7;
 --color--nappa-100: #725550;
 --color--popo-100: #000;
---color--piccolo-80: #9573d4;
---color--piccolo-100: #875dd5;
---color--piccolo-120: #7946d8;
---color--hit-80: #b5bec5;
---color--hit-100: #abb7bf;
---color--hit-120: #a2b0b9;
---color--beerus-100: #e2e6e9;
---color--goku-10: #c4d2d9;
---color--goku-40: #d8e0e3;
---color--goku-80: #eaeef0;
---color--goku-100: #f3f5f6;
---color--gohan-10: #d9d9d9;
---color--gohan-40: #e8e8e8;
---color--gohan-80: #f7f7f7;
---color--gohan-100: #ffffff;
---color--goten-100: #ffffff;
+--color--piccolo-80: #9573D4;
+--color--piccolo-100: #875DD5;
+--color--piccolo-120: #7946D8;
+--color--hit-80: #B5BEC5;
+--color--hit-100: #ABB7BF;
+--color--hit-120: #A2B0B9;
+--color--beerus-100: #E2E6E9;
+--color--goku-10: #C4D2D9;
+--color--goku-40: #D8E0E3;
+--color--goku-80: #EAEEF0;
+--color--goku-100: #F3F5F6;
+--color--gohan-10: #D9D9D9;
+--color--gohan-40: #E8E8E8;
+--color--gohan-80: #F7F7F7;
+--color--gohan-100: #FFFFFF;
+--color--goten-100: #FFFFFF;
 --color--bulma-100: #010913;
---color--trunks-100: #8697a2;
+--color--trunks-100: #8697A2;
 
 space: var(--base--space);
 font-size: var(--base--font-size);

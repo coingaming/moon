@@ -2,6 +2,7 @@ defmodule Moon.Assets.Crest do
   @moduledoc false
 
   use Moon.StatelessComponent
+
   import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
 
   prop name, :string
@@ -12,14 +13,6 @@ defmodule Moon.Assets.Crest do
   prop vertical_align, :string
   prop click, :event
   prop class, :string
-
-  # @assets_map %{
-  #   crest_arsenal: Crests.CrestArsenal,
-  #   crest_flamengo: Crests.CrestFlamengo,
-  #   crest_sao_paulo: Crests.CrestSaoPaulo,
-  #   crest_southampton: Crests.CrestSouthampton,
-  #   crest_watford: Crests.CrestWatford
-  # }
 
   def render(assigns) do
     ~F"""
