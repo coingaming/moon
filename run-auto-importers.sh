@@ -53,4 +53,4 @@ cd $root_dir
 
 
 bash run-formatters.sh
-mix phx.digest
+# mix phx.digest
