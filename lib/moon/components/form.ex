@@ -10,6 +10,7 @@ defmodule Moon.Components.Form do
   prop(submit, :event)
   prop(class, :string)
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
+  prop(target, :any)
   slot(default)
 
   def render(assigns) do
@@ -19,7 +20,7 @@ defmodule Moon.Components.Form do
       {=@submit}
       {=@change}
       {=@class}
-      opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id}
+      opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id, "phx-target": @target}
     >
       <#slot />
     </Surface.Components.Form>
