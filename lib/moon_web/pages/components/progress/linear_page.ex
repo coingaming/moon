@@ -39,10 +39,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Linear Progress</Heading>
 
-        <ExampleAndCode
-          title="Progress Linear"
-          id="progress_linear"
-        >
+        <ExampleAndCode title="Progress Linear" id="progress_linear">
           <:example>
             <ProgressLinear value={30} />
           </:example>
