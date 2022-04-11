@@ -103,7 +103,7 @@ module.exports = {
       'bulma-100': 'var(--color--bulma-100)',
       'trunks-100': 'var(--color--trunks-100)',
       black: "#000",
-      hover: 'rgba(0, 0, 0, 0.08)',
+      hover: 'rgba(34, 34, 37, 0.12)',
     },
   },
   plugins: [
