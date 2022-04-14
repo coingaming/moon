@@ -36,20 +36,26 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <TopToDown>
-                <Field name={:meal_service}>
-                  <Radiobutton id="meal_service_dine_in" value="meal_service_dine_in">
-                    Dine In
+                <Field name={:role}>
+                  <Radiobutton id="role_admin" value={1}>
+                    Admin
                   </Radiobutton>
                   <ErrorTag />
                 </Field>
-                <Field name={:meal_service}>
-                  <Radiobutton id="meal_service_take_away" value="meal_service_take_away">
-                    Take Away
+                <Field name={:role}>
+                  <Radiobutton id="role_editor" value={2}>
+                    Editor
+                  </Radiobutton>
+                  <ErrorTag />
+                </Field>
+                <Field name={:role}>
+                  <Radiobutton id="role_user" value={3}>
+                    User
                   </Radiobutton>
                   <ErrorTag />
                 </Field>
                 <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Order</Button>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
                 </div>
               </TopToDown>
             </Form>
@@ -67,7 +73,7 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
   def mount(params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
-        meal_service: "meal_service_dine_in"
+        role: 1
       })
 
     {:ok,
@@ -102,7 +108,31 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
 
   def radiobutton_1_code do
     """
-
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <TopToDown>
+        <Field name={:role}>
+          <Radiobutton id="role_admin" value="Admin">
+            Admin
+          </Radiobutton>
+          <ErrorTag />
+        </Field>
+        <Field name={:role}>
+          <Radiobutton id="role_editor" value="Editor">
+            Editor
+          </Radiobutton>
+          <ErrorTag />
+        </Field>
+        <Field name={:role}>
+          <Radiobutton id="role_user" value="User">
+            User
+          </Radiobutton>
+          <ErrorTag />
+        </Field>
+        <div>
+          <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
+        </div>
+      </TopToDown>
+    </Form>
     """
   end
 
