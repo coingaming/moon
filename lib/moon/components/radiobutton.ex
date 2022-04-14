@@ -23,7 +23,7 @@ defmodule Moon.Components.Radiobutton do
         <Surface.Components.Form.RadioButton
           field={@field}
           click={@click}
-          class="hide-visually radio-button"
+          class="hide-visually radio-button disabled:opacity-[35]"
           value={@value}
           opts={
             disabled: @disabled

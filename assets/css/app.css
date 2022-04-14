@@ -57,6 +57,11 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
   -webkit-appearance: none;
 }
 
+.radio-button:disabled ~ * {
+  opacity: 0.35;
+  cursor: not-allowed;
+} 
+
 .radio-button:checked + span:hover {
   background-color: lighten(0.43, var(--color--piccolo-100));
 }

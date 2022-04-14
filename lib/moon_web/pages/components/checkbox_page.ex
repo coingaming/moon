@@ -62,6 +62,8 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
           <:state>{checkbox_1_state(assigns)}</:state>
         </ExampleAndCode>
+
+
       </TopToDown>
     </Page>
     """

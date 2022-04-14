@@ -49,8 +49,8 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
                   <ErrorTag />
                 </Field>
                 <Field name={:role}>
-                  <Radiobutton id="role_user" value={3}>
-                    User
+                  <Radiobutton id="role_user" value={3} disabled={true}>
+                    User (disabled)
                   </Radiobutton>
                   <ErrorTag />
                 </Field>
