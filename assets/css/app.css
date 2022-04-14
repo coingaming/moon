@@ -42,6 +42,7 @@
   .scroll-snap-align-start {
     scroll-snap-align: start;
   }
+  
 }
 
 [x-cloak] {
@@ -54,4 +55,76 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-inner-spin-button,
 input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+
+.radio-button:checked + span:hover {
+  background-color: lighten(0.43, var(--color--piccolo-100));
+}
+
+.radio-button:checked + span::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-button:checked + span::after {
+  box-shadow: inset 0 0 0 0.1rem var(--color--piccolo-100);   
+}
+
+.hide-visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.radio-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  position: relative;
+  transition: background-color 0.4s;
+  margin-right: 4px;
+  z-index: 2;
+}
+
+.radio-button-icon:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.radio-button-icon::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all .3s;
+  border-radius: 50%;
+  background-color: var(--color--piccolo-100);
+  z-index: 2;
+}
+
+.radio-button-icon::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  transition: 0.2s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);
+  border-radius: 50%;
+  background-color: transparent;
+  transition-property: border-color;
 }
