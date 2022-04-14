@@ -45,26 +45,8 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
                   conf={@uploads.some_picture_file}
                   label="Upload your ID"
                   placeholder="Choose a photo..."
+                  cancel_upload="cancel-upload"
                 />
-                <section
-                  phx-drop-target={@uploads.some_picture_file.ref}
-                  class={"p-4", Moon.Components.FieldBorder.get_default_class()}
-                >
-                  <h1>Drag and drop area</h1>
-                  <div>
-                    {#for entry <- @uploads.some_picture_file.entries}
-                      {live_img_preview(entry, style: "max-width: 200px; max-height: 200px;")}
-                      <progress value={entry.progress} max="100">{entry.progress}</progress>
-                      <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
-                      {#for err <- upload_errors(@uploads.some_picture_file, entry)}
-                        <p class="alert alert-danger">{inspect(err)}</p>
-                      {/for}
-                    {/for}
-                  </div>
-                  {#for err <- upload_errors(@uploads.some_picture_file)}
-                    <p class="alert alert-danger">{inspect(err)}</p>
-                  {/for}
-                </section>
                 <Button type="submit" variant="primary">Upload</Button>
               </TopToDown>
             </Form>
@@ -86,26 +68,8 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
                   conf={@uploads.some_picture_file_for_s3}
                   label="Upload your ID"
                   placeholder="Choose a photo..."
+                  cancel_upload="cancel-upload"
                 />
-                <section
-                  phx-drop-target={@uploads.some_picture_file_for_s3.ref}
-                  class={"p-4", Moon.Components.FieldBorder.get_default_class()}
-                >
-                  <h1>Drag and drop area</h1>
-                  <div>
-                    {#for entry <- @uploads.some_picture_file_for_s3.entries}
-                      {live_img_preview(entry, style: "max-width: 200px; max-height: 200px;")}
-                      <progress value={entry.progress} max="100">{entry.progress}</progress>
-                      <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
-                      {#for err <- upload_errors(@uploads.some_picture_file_for_s3, entry)}
-                        <p class="alert alert-danger">{inspect(err)}</p>
-                      {/for}
-                    {/for}
-                  </div>
-                  {#for err <- upload_errors(@uploads.some_picture_file_for_s3)}
-                    <p class="alert alert-danger">{inspect(err)}</p>
-                  {/for}
-                </section>
                 <Button type="submit" variant="primary">Upload</Button>
               </TopToDown>
             </Form>
@@ -153,7 +117,12 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   end
 
   def handle_event("upload_s3_submitted", _params, socket) do
+    consume_uploaded_entries(socket, :image, fn _meta, entry -> {:ok, entry} end)
     {:noreply, socket}
+  end
+
+  def handle_event("cancel_upload", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :image, ref)}
   end
 
   def presign_upload(entry, socket) do
