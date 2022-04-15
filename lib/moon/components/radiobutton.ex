@@ -29,9 +29,22 @@ defmodule Moon.Components.Radiobutton do
             disabled: @disabled
           }
         />
-        <span class="radio-button-icon text-trunks-100"></span>
-        <FieldLabel field={@field} class="bg-rochi-100 pl-2"><#slot /></FieldLabel>
+        <span class={"radio-button-icon text-trunks-100 hover:hover-piccolo", get_before_pseudo_styles(), get_after_pseudo_styles(), "opacity-[.35] cursor-not-allowed": @disabled}></span>
+        <FieldLabel field={@field} class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}><#slot /></FieldLabel>
       </label>
     """
+  end
+
+  defp get_before_pseudo_styles() do
+    "before:content-[''] before:bg-piccolo-100 before:h-2 before:w-2 before:absolute
+     before:top-1/2 before:left-1/2 before:circular before:z-[2]
+     before:-translate-x-1/2 before:-translate-y-1/2 before:scale-0
+     before:transition-all duration-300"
+  end
+
+  defp get_after_pseudo_styles() do
+    "after:content-[''] after:h-4 after:w-4 after:bg-transparent after:absolute
+    after:top-1/2 after:left-1/2 after:circular
+    before:-translate-x-1/2 before:-translate-y-1/2 "
   end
 end

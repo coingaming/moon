@@ -41,8 +41,27 @@
   }
   .scroll-snap-align-start {
     scroll-snap-align: start;
+  }  
+}
+
+@layer utilities {
+  .hide-visually {   
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
-  
+  .circular {
+    border-radius: 50%;
+  }
+  .hover-piccolo {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 [x-cloak] {
@@ -57,11 +76,6 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
   -webkit-appearance: none;
 }
 
-.radio-button:disabled ~ * {
-  opacity: 0.35;
-  cursor: not-allowed;
-} 
-
 .radio-button:checked + span:hover {
   background-color: lighten(0.43, var(--color--piccolo-100));
 }
@@ -72,18 +86,6 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
 
 .radio-button:checked + span::after {
   box-shadow: inset 0 0 0 0.1rem var(--color--piccolo-100);   
-}
-
-.hide-visually {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 }
 
 .radio-button-icon {
@@ -101,35 +103,9 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
   z-index: 2;
 }
 
-.radio-button-icon:hover {
-  background-color: rgba(0, 0, 0, 0.08);
-}
-
-.radio-button-icon::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: all .3s;
-  border-radius: 50%;
-  background-color: var(--color--piccolo-100);
-  z-index: 2;
-}
-
 .radio-button-icon::after {
-  content: '';
-  width: 16px;
-  height: 16px;
   transition: 0.2s ease-in-out;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);
-  border-radius: 50%;
-  background-color: transparent;
+  box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);  
   transition-property: border-color;
 }
