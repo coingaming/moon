@@ -12,14 +12,14 @@ defmodule Moon.Components.Avatar do
   prop class, :string
 
   def style(assigns) do
-    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
+    "border-radius: 50%; background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
   end
 
   def render(assigns) do
     ~F"""
     <div
       class={
-        "rounded-full bg-cover justify-center flex font-semibold items-center
+        "bg-cover justify-center flex font-semibold items-center
                overflow-hidden uppercase #{@class}",
         "text-xs h-6 w-6": @size == "xsmall",
         "text-sm h-8 w-8": @size == "small",

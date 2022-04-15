@@ -24,6 +24,8 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       }
     ]
 
+  data selected_button, :string, default: "preview"
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -47,7 +49,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
         Component for displaying user profile image or placeholder if no image
 
-        <ExampleAndCode title="Image avatars" id="avatar_1">
+        <ExampleAndCode title="Image avatars" id="avatar_1" selected_button={@selected_button}>
           <:example>
             <LeftToRight class="items-center">
               <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
@@ -67,7 +69,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Letter avatars" id="avatar_2">
+        <ExampleAndCode title="Letter avatars" id="avatar_2" selected_button={@selected_button}>
           <:note>
             Use name prop. No more than 2 / 3 characters
           </:note>
@@ -88,7 +90,11 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </#CodePreview>
           </:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
+        <ExampleAndCode
+          title="Without image and name (Fallback)"
+          id="avatar_3"
+          selected_button={@selected_button}
+        >
           <:example>
             <LeftToRight class="items-center">
               <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
@@ -106,7 +112,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </#CodePreview>
           </:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Different colors" id="avatar_4">
+        <ExampleAndCode title="Different colors" id="avatar_4" selected_button={@selected_button}>
           <:example>
             <LeftToRight class="items-center">
               <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
@@ -125,5 +131,11 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       </TopToDown>
     </Page>
     """
+  end
+
+  def handle_event(_event, %{"selected-item" => selected_button}, socket) do
+    {:noreply,
+     socket
+     |> assign(selected_button: selected_button)}
   end
 end
