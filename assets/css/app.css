@@ -76,10 +76,6 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
   -webkit-appearance: none;
 }
 
-.radio-button:checked + span:hover {
-  background-color: lighten(0.43, var(--color--piccolo-100));
-}
-
 .radio-button:checked + span::before {
   transform: translate(-50%, -50%) scale(1);
 }
@@ -88,24 +84,6 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator
   box-shadow: inset 0 0 0 0.1rem var(--color--piccolo-100);   
 }
 
-.radio-button-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
-  position: relative;
-  transition: background-color 0.4s;
-  margin-right: 4px;
-  z-index: 2;
-}
-
 .radio-button-icon::after {
-  transition: 0.2s ease-in-out;
-  transform: translate(-50%, -50%);
   box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);  
-  transition-property: border-color;
 }
