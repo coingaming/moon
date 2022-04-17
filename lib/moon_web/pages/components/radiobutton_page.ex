@@ -111,20 +111,20 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <TopToDown>
         <Field name={:role}>
-          <Radiobutton id="role_admin" value="Admin">
+          <Radiobutton id="role_admin" value={1}>
             Admin
           </Radiobutton>
           <ErrorTag />
         </Field>
         <Field name={:role}>
-          <Radiobutton id="role_editor" value="Editor">
+          <Radiobutton id="role_editor" value={2}>
             Editor
           </Radiobutton>
           <ErrorTag />
         </Field>
         <Field name={:role}>
-          <Radiobutton id="role_user" value="User">
-            User
+          <Radiobutton id="role_user" value={3} disabled>
+            User (disabled)
           </Radiobutton>
           <ErrorTag />
         </Field>
