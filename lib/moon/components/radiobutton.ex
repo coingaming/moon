@@ -32,8 +32,8 @@ defmodule Moon.Components.Radiobutton do
       />
       <span class={
         "radio-button-icon text-trunks-100 hover:hover-piccolo flex items-center
-                                        justify-center circular w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2
-                                        transition-[background-color] duration-[400ms]",
+                                              justify-center circular w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2
+                                              transition-[background-color] duration-[400ms]",
         get_before_pseudo_styles(),
         get_after_pseudo_styles(),
         "opacity-[.35] cursor-not-allowed": @disabled,
