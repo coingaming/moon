@@ -97,8 +97,6 @@ defmodule MoonWeb.Pages.Components.RadiobuttonPage do
       ) do
     user_changeset = User.changeset(%User{}, params)
 
-    IO.puts('======')
-    IO.inspect(@checked)
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
