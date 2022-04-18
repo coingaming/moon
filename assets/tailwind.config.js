@@ -49,7 +49,7 @@ module.exports = {
       md: 'var(--radius--medium)',
       lg: 'var(--radius--large)',
       xl: 'var(--radius--xlarge)',
-      full: 'var(--radius--full)'
+      full: '99%'
     },
     colors: {
       transparent: 'transparent',

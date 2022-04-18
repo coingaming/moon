@@ -6,6 +6,7 @@ defmodule Moon.Components.FieldLabel.LabelFlex do
   use Moon.StatelessComponent
 
   prop(field, :atom)
+  prop(for, :string)
   prop(flex, :boolean)
   prop(input_grow, :integer)
   prop(class, :css_class)
@@ -14,7 +15,7 @@ defmodule Moon.Components.FieldLabel.LabelFlex do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.Label field={@field} class={@class}>
+    <Surface.Components.Form.Label field={@field} class={@class} opts={for: @for}>
       <#slot />
     </Surface.Components.Form.Label>
     """
@@ -62,7 +63,7 @@ defmodule Moon.Components.FieldLabel do
     ~F"""
     <label class={@class} :if={@inline}>{@text}</label>
 
-    <LabelFlex field={@field} class={@class} flex={@flex} input_grow={@input_grow} :if={!@inline}>
+    <LabelFlex field={@field} for={@for} class={@class} flex={@flex} input_grow={@input_grow} :if={!@inline}>
       <LabelContent disabled={@disabled} flex={@flex}>
         {@text}
       </LabelContent>
