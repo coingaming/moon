@@ -85,11 +85,6 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     {:noreply, assign(socket, uri: uri)}
   end
 
-  def get_agrees_to_terms_of_service(user_changeset) do
-    RadioButton.is_true(user_changeset.changes[:agrees_to_terms_of_service]) ||
-      RadioButton.is_true(user_changeset.data.agrees_to_terms_of_service)
-  end
-
   def handle_event(
         "register_form_update",
         %{
