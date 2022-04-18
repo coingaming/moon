@@ -71,8 +71,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   end
 
   def mount(params, _session, socket) do
-    user_changeset =
-      User.changeset(%User{}, %{})
+    user_changeset = User.changeset(%User{}, %{})
 
     {:ok,
      assign(socket,

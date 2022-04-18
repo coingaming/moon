@@ -63,7 +63,14 @@ defmodule Moon.Components.FieldLabel do
     ~F"""
     <label class={@class} :if={@inline}>{@text}</label>
 
-    <LabelFlex field={@field} for={@for} class={@class} flex={@flex} input_grow={@input_grow} :if={!@inline}>
+    <LabelFlex
+      field={@field}
+      for={@for}
+      class={@class}
+      flex={@flex}
+      input_grow={@input_grow}
+      :if={!@inline}
+    >
       <LabelContent disabled={@disabled} flex={@flex}>
         {@text}
       </LabelContent>
