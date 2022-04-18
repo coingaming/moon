@@ -20,7 +20,7 @@ defmodule Moon.Components.Radiobutton do
 
   def render(assigns) do
     ~F"""
-    <label class={"flex flex-row items-center cursor-pointer", @class}>
+    <FieldLabel class={"flex flex-row items-center cursor-pointer", @class}>
       <RadioButton
         field={@field}
         click={@click}
@@ -37,11 +37,12 @@ defmodule Moon.Components.Radiobutton do
         "opacity-[.35] cursor-not-allowed": @disabled,
         "hover:brighten-[143] hover:bg-piccolo-100": @checked
       } />
-      <FieldLabel
-        field={@field}
-        class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}
-      ><#slot /></FieldLabel>
-    </label>
+
+      <span
+        class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
+        <#slot />
+      </span>
+    </FieldLabel>
     """
   end
 
