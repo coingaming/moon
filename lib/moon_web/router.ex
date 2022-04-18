@@ -71,6 +71,7 @@ defmodule MoonWeb.Router do
       live "/components/pagination", MoonWeb.Pages.Components.PaginationPage
       live "/components/password_input", MoonWeb.Pages.Components.PasswordInputPage
       live "/components/popover", MoonWeb.Pages.Components.PopoverPage
+      live "/components/radio-button", MoonWeb.Pages.Components.RadioButtonPage
       live "/components/progress/linear", MoonWeb.Pages.Components.Progress.LinearPage
       live "/components/select", MoonWeb.Pages.Components.SelectPage
       live "/components/select/dropdown", MoonWeb.Pages.Components.Select.DropdownPage
