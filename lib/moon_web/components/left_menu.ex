@@ -93,10 +93,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.PaginationPage}>Pagination</Link>
                   <Link route={Pages.Components.PasswordInputPage}>Password Input</Link>
                   <Link route={Pages.Components.PopoverPage}>Popover</Link>
-<<<<<<< Updated upstream
-=======
                   <Link route={Pages.Components.RadioButtonPage}>RadioButton</Link>
->>>>>>> Stashed changes
                   <Accordion
                     id="left-menu-components-select"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Select)}
