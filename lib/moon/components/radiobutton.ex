@@ -34,9 +34,10 @@ defmodule Moon.Components.Radiobutton do
 
       <InputContext assigns={assigns} :let={form: form, field: field}>
         <span class={
-          "radio-button-icon text-trunks-100 hover:hover-piccolo flex items-center justify-center rounded-full w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2 transition-[background-color] duration-[400ms]",
+          "radio-button-icon text-trunks-100 hover:bg-gray-transparent flex items-center justify-center rounded-full w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2 transition-[background-color] duration-[400ms]",
           get_before_pseudo_styles(),
           get_after_pseudo_styles(),
+          get_checked_css(@checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)),
           "opacity-[.35] cursor-not-allowed": @disabled,
           "hover:brighten-[143] hover:bg-piccolo-100": @checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)
         } />
@@ -54,7 +55,7 @@ defmodule Moon.Components.Radiobutton do
   defp get_before_pseudo_styles() do
     "before:content-[''] before:bg-piccolo-100 before:h-2 before:w-2 before:absolute
     before:top-1/2 before:left-1/2 before:rounded-full before:z-[2]
-    before:-translate-x-1/2 before:-translate-y-1/2 before:scale-0
+    before:-translate-x-1/2 before:-translate-y-1/2
     before:transition-all duration-300"
   end
 
@@ -63,5 +64,13 @@ defmodule Moon.Components.Radiobutton do
     after:top-1/2 after:left-1/2 after:rounded-full
     after:-translate-x-1/2 after:-translate-y-1/2
     after:transition-[border-color] after:ease-in-out after:duration-200"
+  end
+
+  defp get_checked_css(selected) do
+    if selected == true do
+      "before:scale-1 after:radio-button-checked-outline"
+    else
+      "before:scale-0 after:radio-button-unchecked-outline"
+    end
   end
 end
