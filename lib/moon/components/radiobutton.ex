@@ -39,13 +39,12 @@ defmodule Moon.Components.Radiobutton do
           get_after_pseudo_styles(),
           get_checked_css(@checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)),
           "opacity-[.35] cursor-not-allowed": @disabled,
-          "hover:brighten-[143] hover:bg-piccolo-100": @checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)
+          "hover:brighten-[143] hover:bg-piccolo-100":
+            @checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)
         } />
       </InputContext>
 
-
-      <span
-        class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
+      <span class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
         <#slot />
       </span>
     </FieldLabel>
