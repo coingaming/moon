@@ -16,6 +16,9 @@
     "tailwindcss": "^3.0.13"
   },
   "dependencies": {
-    "alpinejs": "^2.8.2"
+    "alpinejs": "^2.8.2",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view"
   }
 }
