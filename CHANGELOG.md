@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/coingaming/moon/compare/v2.6.1...v2.6.2) (2022-04-19)
+
+
+### Bug Fixes
+
+* **assets/package.json:** phoenix npm packages added ([#246](https://github.com/coingaming/moon/issues/246)) ([dcd91b6](https://github.com/coingaming/moon/commit/dcd91b678689b1c53ac575bff8ed49ac9e9b9118))
+
 ## [2.6.1](https://github.com/coingaming/moon/compare/v2.6.0...v2.6.1) (2022-04-07)
 
 
