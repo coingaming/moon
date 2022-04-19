@@ -80,6 +80,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop disabled, :boolean
   prop required, :boolean
   prop class, :string
+  prop popover_placement, :string, default: "bottom-start"
 
   data open, :boolean, default: false
 
@@ -88,7 +89,7 @@ defmodule Moon.Components.Select.SingleSelect do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      <Popover placement="bottom-start" show={@open} on_close="close">
+      <Popover placement={@popover_placement} show={@open} on_close="close">
         {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "w-full hidden",
           id: @id,
