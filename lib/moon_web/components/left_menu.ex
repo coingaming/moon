@@ -39,6 +39,7 @@ defmodule MoonWeb.Components.LeftMenu do
   alias MoonWeb.Pages
   alias Surface.Components.Context
   alias __MODULE__.Link
+  alias Moon.Components.Link, as: MoonLink
 
   prop theme_name, :any
   prop uri, :any
@@ -49,7 +50,12 @@ defmodule MoonWeb.Components.LeftMenu do
     <Sidebar background_color="bg-gohan-100" open_width="16rem">
       <:short_logo>
         <div class="flex items-center h-10">
-          <a href="/"><LogoMoonDesignShort font_size="2.5rem" /></a>
+          <MoonLink
+            to="/"
+            class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+          >
+            <LogoMoonDesignShort font_size="2.5rem" />
+          </MoonLink>
         </div>
       </:short_logo>
 
@@ -57,7 +63,12 @@ defmodule MoonWeb.Components.LeftMenu do
         <nav class="mt-5">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
             <TopToDown class="p-4 text-lg">
-              <a href="/"><LogoMoonDesign font_size="5rem" /></a>
+              <MoonLink
+                to="/"
+                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+              >
+                <LogoMoonDesign font_size="5rem" />
+              </MoonLink>
 
               <Link route={Pages.IconsPage}>Icons</Link>
               <Accordion
