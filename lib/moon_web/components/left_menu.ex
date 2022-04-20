@@ -10,6 +10,7 @@ defmodule MoonWeb.Components.LeftMenu.Link do
     <Context get={active_page: active_page, theme_name: theme_name}>
       <Link
         optional
+        active={active_page == @route}
         class={
           get_class(),
           "bg-trunks-100": active_page == @route
@@ -119,6 +120,14 @@ defmodule MoonWeb.Components.LeftMenu do
             </TopToDown>
           </Context>
         </nav>
+        <script>
+          window.addEventListener("phx:page-loading-stop", info => {
+            var activeLink = document.querySelectorAll('[data-moon-active]');
+            if (activeLink[0]) {
+              activeLink[0].scrollIntoView();
+            }
+          })
+        </script>
       </:menu>
     </Sidebar>
     """
