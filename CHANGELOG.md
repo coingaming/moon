@@ -1,3 +1,10 @@
+## [2.6.3](https://github.com/coingaming/moon/compare/v2.6.2...v2.6.3) (2022-04-20)
+
+
+### Bug Fixes
+
+* retain scroll position when clicking links in the sidebar [MDS-64] ([#248](https://github.com/coingaming/moon/issues/248)) ([aaede6d](https://github.com/coingaming/moon/commit/aaede6d063da85504fe0227cdaaa57a056aeb40f))
+
 ## [2.6.2](https://github.com/coingaming/moon/compare/v2.6.1...v2.6.2) (2022-04-19)
 
 
