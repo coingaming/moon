@@ -8,6 +8,7 @@ defmodule Moon.Components.Link do
   prop secondary, :boolean
   prop disabled, :boolean
   prop optional, :boolean
+  prop active, :boolean
   prop class, :css_class
   slot default
 
@@ -28,6 +29,7 @@ defmodule Moon.Components.Link do
       }
       data-phx-link="patch"
       data-phx-link-state="push"
+      data-moon-active={@active}
       href={@to}
     ><#slot /></a>
     """
