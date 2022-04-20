@@ -122,8 +122,10 @@ defmodule MoonWeb.Components.LeftMenu do
         </nav>
         <script>
           window.addEventListener("phx:page-loading-stop", info => {
-            var activeLink = document.querySelectorAll('[data-moon-active]')
-            activeLink[0].scrollIntoView()
+            var activeLink = document.querySelectorAll('[data-moon-active]');
+            if (activeLink[0]) {
+              activeLink[0].scrollIntoView();
+            }
           })
         </script>
       </:menu>
