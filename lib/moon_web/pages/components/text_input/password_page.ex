@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.PasswordInputPage do
+defmodule MoonWeb.Pages.Components.TextInput.PasswordPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -21,8 +21,8 @@ defmodule MoonWeb.Pages.Components.PasswordInputPage do
         name: "Components"
       },
       %{
-        to: "/components/text_input",
-        name: "Text Input"
+        to: "/components/text-input/password",
+        name: "Password"
       }
     ]
 

@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.TextPage do
+defmodule MoonWeb.Pages.Components.Typography.TextPage do
   @moduledoc false
 
   use MoonWeb, :live_view

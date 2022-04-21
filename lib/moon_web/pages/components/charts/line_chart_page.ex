@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.LineChartPage do
+defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Components.LineChartPage do
         name: "Charts"
       },
       %{
-        to: "/components/line-chart",
+        to: "/components/charts/line-chart",
         name: "Line Chart"
       }
     ]
