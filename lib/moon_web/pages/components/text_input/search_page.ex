@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.TextInput.SearchPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,

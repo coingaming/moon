@@ -4,9 +4,7 @@ defmodule MoonWeb.Pages.VisionPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Carousel
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
