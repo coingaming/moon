@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.FieldLabel
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.ListItems.SingleLineItem
+  alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -32,6 +33,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
+       options: User.available_permissions(),
+       searchable_options: User.available_permissions(),
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__
      )}
@@ -54,9 +57,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
                   id="dropdown-options-example-user-permissions"
-                  options={User.available_permissions()}
-                  is_multi
-                />
+                  options={@options}
+                  is_multi/>
               </Field>
             </Form>
           </:example>
@@ -72,9 +74,9 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Dropdown
                   id="dropdown-icons-example-user-permissions"
                   is_multi
-                  options={User.available_permissions()}
+                  options={@options}
                 >
-                  {#for option <- User.available_permissions()}
+                  {#for option <- @options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
@@ -88,6 +90,26 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             </Form>
           </:example>
           <:code>{code_for_dropdown()}</:code>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Dropdown with search" id="dropdown-search-example">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:permission}>
+                <FieldLabel>Permissions</FieldLabel>
+                <Dropdown
+                  id="dropdown-search-example-user-permissions"
+                  options={@options}
+                  is_multi >
+                  <:option_filters>
+                    <TextInput type="search" keyup="apply_filter" />
+                  </:option_filters>
+                </Dropdown>
+              </Field>
+            </Form>
+          </:example>
+          <:code>{code_for_dropdown_search()}</:code>
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
       </TopToDown>
@@ -118,6 +140,23 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
+  def handle_event("apply_filter", %{"value" => value}, %{assigns: %{options: options}} = socket) do
+    filtered_options =
+      options
+      |> Enum.filter(&String.contains?(String.downcase(&1.label), value))
+      |> case do
+        [] ->
+          options
+
+        filters ->
+          filters
+      end
+
+    filtered_options = if value === "", do: options, else: filtered_options
+
+    {:noreply, assign(socket, options: filtered_options)}
+  end
+
   def code_for_dropdown do
     """
     <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -126,6 +165,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <Dropdown id="dropdown-options-example-user-permissions" options={User.available_permissions()} is_multi />
       </Field>
     </Form>
+    """
+  end
+
+  def code_for_dropdown_search do
+    """
     """
   end
 end

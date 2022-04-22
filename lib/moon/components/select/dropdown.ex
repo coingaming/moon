@@ -106,6 +106,7 @@ defmodule Moon.Components.Select.Dropdown do
   prop is_multi, :boolean
 
   slot default
+  slot option_filters
 
   def render(assigns) do
     ~F"""
@@ -122,6 +123,11 @@ defmodule Moon.Components.Select.Dropdown do
         role="listbox"
         id={"#{@id}-ul-list"}
       >
+        {#if slot_assigned?(:option_filters)}
+          <Context put={__MODULE__, select_id: @select_id || @id}>
+            <#slot name="option_filters" />
+          </Context>
+        {/if}
         {#if @options && !slot_assigned?(:default)}
           {#for option <- @options}
             <Option
@@ -150,5 +156,10 @@ defmodule Moon.Components.Select.Dropdown do
       </ul>
     </InputContext>
     """
+  end
+
+  def apply_filter(assigns) do
+    IO.inspect(assigns.options)
+    "options_filter"
   end
 end

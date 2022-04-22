@@ -31,6 +31,8 @@ defmodule Moon.Components.TextInput do
   prop required, :boolean
   prop class, :string
   prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
   prop blur, :event
   prop background_color, :string, values: Moon.colors(), default: "goku-100"
   prop size, :string, values: ["medium", "large"], default: "large"
@@ -74,6 +76,8 @@ defmodule Moon.Components.TextInput do
         value={@value}
         focus={@focus}
         blur={@blur}
+        keydown={@keydown}
+        keyup={@keyup}
       />
     </div>
     """
