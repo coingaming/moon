@@ -213,7 +213,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       ```
       def handle_event("apply_filter", params, socket) do
         ## Logic to filter Options ans assign to socket
-        {:noreply, socket}
+        {:noreply, assign(socket)}
       end
       ```
     """
