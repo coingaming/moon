@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Charts.TablePage do
+defmodule MoonWeb.Pages.Components.Charts.TablePage do
   @moduledoc false
 
   use MoonWeb, :live_view

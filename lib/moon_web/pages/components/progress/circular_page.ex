@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Progress.CircularPage do
+defmodule MoonWeb.Pages.Components.Progress.CircularPage do
   @moduledoc false
 
   use MoonWeb, :live_view

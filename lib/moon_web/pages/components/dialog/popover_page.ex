@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
+defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
   @moduledoc false
 
   use MoonWeb, :stateful_component
@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
   end
 end
 
-defmodule MoonWeb.Pages.Components.PopoverPage do
+defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.Components.PopoverPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
+  alias MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample
 
   data breadcrumbs, :any,
     default: [

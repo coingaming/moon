@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Charts.GeoMapPage do
+defmodule MoonWeb.Pages.Components.Charts.GeoMapPage do
   @moduledoc false
 
   use MoonWeb, :live_view

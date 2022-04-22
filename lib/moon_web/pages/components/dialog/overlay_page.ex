@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Dialog.OverlayPage do
+defmodule MoonWeb.Pages.Components.Dialog.OverlayPage do
   @moduledoc false
 
   use MoonWeb, :live_view

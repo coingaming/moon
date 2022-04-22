@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Dialog.HeaderPage do
+defmodule MoonWeb.Pages.Components.Dialog.HeaderPage do
   @moduledoc false
 
   use MoonWeb, :live_view

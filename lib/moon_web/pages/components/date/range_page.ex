@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Date.RangeDatePage do
+defmodule MoonWeb.Pages.Components.Date.RangeDatePage do
   @moduledoc false
 
   use MoonWeb, :live_view

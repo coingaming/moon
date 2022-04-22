@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Charts.VerticalBarPage do
+defmodule MoonWeb.Pages.Components.Charts.VerticalBarPage do
   @moduledoc false
 
   use MoonWeb, :live_view

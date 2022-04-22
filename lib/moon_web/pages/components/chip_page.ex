@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ChipPage do
+defmodule MoonWeb.Pages.Components.ChipPage do
   @moduledoc false
 
   use MoonWeb, :live_view
