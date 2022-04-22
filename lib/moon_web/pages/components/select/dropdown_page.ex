@@ -100,11 +100,20 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
                   id="dropdown-search-example-user-permissions"
-                  options={@options}
+                  options={@searchable_options}
                   is_multi >
                   <:option_filters>
-                    <TextInput type="search" keyup="apply_filter" />
+                    <TextInput field={:option_filter} type="search" keyup="apply_filter" />
                   </:option_filters>
+                  {#for option <- @searchable_options}
+                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                      <SingleLineItem current={is_selected}>
+                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                        {option.label}
+                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                      </SingleLineItem>
+                    </Dropdown.Option>
+                  {/for}
                 </Dropdown>
               </Field>
             </Form>
@@ -154,7 +163,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
     filtered_options = if value === "", do: options, else: filtered_options
 
-    {:noreply, assign(socket, options: filtered_options)}
+    {:noreply, assign(socket, searchable_options: filtered_options)}
   end
 
   def code_for_dropdown do
@@ -170,6 +179,43 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def code_for_dropdown_search do
     """
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:permission}>
+        <FieldLabel>Permissions</FieldLabel>
+        <Dropdown
+          id="dropdown-search-example-user-permissions"
+          options={@searchable_options}
+          is_multi >
+          <:option_filters>
+            <TextInput field={:option_filter} type="search" keyup="apply_filter" />
+          </:option_filters>
+          {#for option <- @searchable_options}
+            <Dropdown.Option value={"option.value"} :let={is_selected: is_selected}>
+              <SingleLineItem current={is_selected}>
+                <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                {option.label}
+                <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+              </SingleLineItem>
+            </Dropdown.Option>
+          {/for}
+        </Dropdown>
+      </Field>
+    </Form>
+
+
+    NOTE:
+      `<TextInput field={:option_filter} type="search" keyup="apply_filter" />`
+      1. field={:option_filter} field attribute with field name should be added.
+      2. keyup="apply_filter" an Options filter event should be applied to handle the Dropdown options search.
+
+      For example: in the above Dropdown with search we do have an TextInput with keyup="apply_filter" event.
+
+      ```
+      def handle_event("apply_filter", params, socket) do
+        ## Logic to filter Options ans assign to socket
+        {:noreply, socket}
+      end
+      ```
     """
   end
 end

@@ -124,9 +124,7 @@ defmodule Moon.Components.Select.Dropdown do
         id={"#{@id}-ul-list"}
       >
         {#if slot_assigned?(:option_filters)}
-          <Context put={__MODULE__, select_id: @select_id || @id}>
-            <#slot name="option_filters" />
-          </Context>
+          <#slot name="option_filters" />
         {/if}
         {#if @options && !slot_assigned?(:default)}
           {#for option <- @options}
@@ -156,10 +154,5 @@ defmodule Moon.Components.Select.Dropdown do
       </ul>
     </InputContext>
     """
-  end
-
-  def apply_filter(assigns) do
-    IO.inspect(assigns.options)
-    "options_filter"
   end
 end
