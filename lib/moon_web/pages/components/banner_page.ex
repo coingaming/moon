@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.BannerPage do
+defmodule MoonWeb.Pages.Components.BannerPage do
   @moduledoc false
 
   use MoonWeb, :live_view
