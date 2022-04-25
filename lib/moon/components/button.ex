@@ -6,7 +6,13 @@ defmodule Moon.Components.Button do
 
   prop id, :string
   prop href, :string
-  prop variant, :string, values: ["fill", "outline", "link", "primary", "secondary", "tertiary"]
+
+  # TODO, none variant was added so as not to break PreviewCodeButton component
+  # Deprecate Link and None (they are not in Figma)
+  prop variant, :string,
+    values: ["primary", "secondary", "tertiary", "ghost", "none"],
+    default: "primary"
+
   prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "small"
   prop full_width, :boolean
   prop progress, :boolean
@@ -44,13 +50,17 @@ defmodule Moon.Components.Button do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 py-2 rounded #{@class}",
-        "border border-solid text-goten-100 border-piccolo-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120 hover:bg-piccolo-80":
-          @variant in ["fill", "primary"],
-        "border border-solid text-piccolo-80 border-beerus-100 hover:border-piccolo-80 active:border-piccolo-80 focus-within:border-piccolo-80":
-          @variant in ["outline", "tertiary"],
+        "flex justify-center items-center gap-2 py-2 rounded relative active:scale-90 transition-all #{@class}",
+        "text-goten-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120":
+          @variant in ["primary"],
+        "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
+          @variant in ["secondary"],
+        "bg-hit-100 text-goten-100":
+          @variant in ["tertiary"],
+        "bg-none text-trunks-100 hover:text-bulma-100":
+          @variant in ["ghost"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
-          @variant in ["link", "secondary"],
+          @variant in ["link"],
         "text-xs h-8 px-3 leading-4": @size == "xsmall",
         "text-sm h-10 px-4 leading-6": @size == "small",
         "text-base h-12 px-5": @size == "medium",
@@ -70,6 +80,7 @@ defmodule Moon.Components.Button do
       <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
       <#slot />
       <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+      <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded"></div>
     </button>
     """
   end

@@ -23,6 +23,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           size="small"
           value_name="selected-item"
           value="preview"
+          variant="none"
         >
           Preview
         </Button>
@@ -34,6 +35,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           size="small"
           value_name="selected-item"
           value="code"
+          variant="none"
         >
           Code
         </Button>

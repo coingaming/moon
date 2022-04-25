@@ -44,7 +44,27 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Link to="https://moon.io/components/button">React implementation</Link>
         </p>
 
-        <Heading size={18} class="mt-4" is_regular>Variants</Heading>
+        <ExampleAndCode title="Variants" id="button0">
+          <:note>
+            To be used where the the button would be the main call to action on the page.
+          </:note>
+
+          <:example>
+            <div class="flex gap-4 justify-items-center justify-evenly">
+              <Button>Primary (default)</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="tertiary">Tertiary</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <Button>Primary (default)</Button>
+              <Button variant="secondary">Secondary</Button>
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
 
         <ExampleAndCode title="Button Fill" id="button1">
           <:note>
@@ -57,25 +77,12 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
           <:code>
             <#CodePreview>
-        <Button variant="fill">Fill</Button>
+        <Button>Fill</Button>
         </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Button Outline" id="button2">
-          <:note>
-            To be used where the the button would be a optional call to action.
-          </:note>
-          <:example>
-            <Button variant="outline">Outline</Button>
-          </:example>
 
-          <:code>
-            <#CodePreview>
-        <Button variant="outline">Outline</Button>
-        </#CodePreview>
-          </:code>
-        </ExampleAndCode>
 
         <ExampleAndCode title="Link" id="button3">
           <:note>

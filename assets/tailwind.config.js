@@ -104,6 +104,7 @@ module.exports = {
       'trunks-100': 'var(--color--trunks-100)',
       black: "#000",
       hover: 'rgba(34, 34, 37, 0.12)',
+      'primary-hover': 'rgba(0, 0, 0, 0.08)' // TODO, this is supposed to be bulma, find a way to concat opacity with css variables
     },
   },
   plugins: [
