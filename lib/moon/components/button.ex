@@ -13,7 +13,7 @@ defmodule Moon.Components.Button do
     values: ["primary", "secondary", "tertiary", "ghost", "none"],
     default: "primary"
 
-  prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
+  prop size, :string, values: ["xsmall", "small", "medium", "large", "xlarge"], default: "medium"
   prop full_width, :boolean
   prop progress, :boolean
   prop oops, :boolean
