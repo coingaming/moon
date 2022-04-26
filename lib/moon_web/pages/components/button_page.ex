@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
         <ExampleAndCode title="Variants" id="button0">
           <:note>
-            To be used where the the button would be the main call to action on the page.
+            Primary variant is used where the the button would be the main call to action on the page.
           </:note>
 
           <:example>
