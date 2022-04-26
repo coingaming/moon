@@ -55,10 +55,8 @@ defmodule Moon.Components.Button do
           @variant in ["primary"],
         "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
           @variant in ["secondary"],
-        "bg-hit-100 text-goten-100":
-          @variant in ["tertiary"],
-        "bg-none text-trunks-100 hover:text-bulma-100":
-          @variant in ["ghost"],
+        "bg-hit-100 text-goten-100": @variant in ["tertiary"],
+        "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
           @variant in ["link"],
         "text-xs h-8 px-3 leading-4": @size == "xsmall",
@@ -80,7 +78,7 @@ defmodule Moon.Components.Button do
       <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
       <#slot />
       <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
-      <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded"></div>
+      <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded" />
     </button>
     """
   end
