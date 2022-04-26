@@ -63,25 +63,25 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
           <Divider class="mt-1" />
           <LeftToRight class="justify-between p-2">
             {#if length(@selected_options) > 0}
-              <Button size="xsmall" class="rounded" on_click={@on_clear}>
+              <Button size="small" class="rounded" on_click={@on_clear}>
                 Clear
               </Button>
             {#else}
-              <Button size="xsmall" class="rounded" disabled>
+              <Button size="small" class="rounded" disabled>
                 Clear
               </Button>
             {/if}
 
             <LeftToRight>
-              <Button variant="tertiary" size="xsmall" on_click={@on_discard}>
+              <Button variant="tertiary" size="small" on_click={@on_discard}>
                 Discard
               </Button>
               {#if @on_apply}
-                <Button variant="primary" size="xsmall" on_click={@on_apply}>
+                <Button variant="primary" size="small" on_click={@on_apply}>
                   Apply
                 </Button>
               {#else}
-                <Button variant="primary" size="xsmall" disabled>
+                <Button variant="primary" size="small" disabled>
                   Apply
                 </Button>
               {/if}

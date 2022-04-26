@@ -80,9 +80,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             You should use <code class="bg-goku-40">ToastStack</code> component for it.
           </:note>
           <:example>
-            <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="xsmall">Show one toast</Button>
+            <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
 
-            <Button variant="primary" on_click="show_two_toasts" class="block" size="xsmall">Show two toasts</Button>
+            <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
           </:example>
 
           <:code>
@@ -152,7 +152,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
               />
             </div>
 
-            <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="xsmall">Show all</Button>
+            <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
           </:example>
 
           <:code>
@@ -203,7 +203,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
               />
             </div>
 
-            <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="xsmall">Show all</Button>
+            <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
           </:example>
 
           <:code>

@@ -70,19 +70,19 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         <ExampleAndCode title="Sizes" id="button2">
           <:example>
             <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered class="mb-6">
-              <Button variant="primary" size="xsmall">Xsmall</Button>
               <Button variant="primary" size="small">Small</Button>
               <Button variant="primary" size="medium">Medium</Button>
               <Button variant="primary" size="large">Large</Button>
+              <Button variant="primary" size="xlarge">xLarge</Button>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-              <Button variant="fill" size="xsmall">Xsmall</Button>
               <Button variant="fill" size="small">Small</Button>
               <Button variant="fill" size="medium">Medium</Button>
               <Button variant="fill" size="large">Large</Button>
+              <Button variant="fill" size="xlarge">xLarge</Button>
             </#CodePreview>
           </:code>
         </ExampleAndCode>

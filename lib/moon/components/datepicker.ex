@@ -209,14 +209,14 @@ defmodule Moon.Components.Datepicker do
               </div>
 
               <div class="flex shrink-0 gap-x-2">
-                <Button variant="tertiary" size="xsmall" on_click="toggle_picker">
+                <Button variant="tertiary" size="small" on_click="toggle_picker">
                   Discard
                 </Button>
 
                 <Button
                   class="px-3 py-2 rounded"
                   variant="primary"
-                  size="xsmall"
+                  size="small"
                   on_click={@submit || "update_dates"}
                   values={
                     start_date: format_date(@internal_start_date, @with_time),

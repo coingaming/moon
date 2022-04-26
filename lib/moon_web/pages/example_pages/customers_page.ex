@@ -65,13 +65,13 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               </div>
               <Button
                 variant="danger"
-                size="small"
+                size="medium"
                 class="mt-2 flex-none rounded border-bulma-100 mx-2"
                 on_click="save_segment_form_cancel"
               >
                 Cancel
               </Button>
-              <Button type="submit" variant="primary" size="small" class="mt-2 flex-none rounded">
+              <Button type="submit" variant="primary" size="medium" class="mt-2 flex-none rounded">
                 <span class="px-2">Save</span>
               </Button>
             </Form>
@@ -95,7 +95,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
               {/if}
 
               <Divider orientation="vertical" />
-              <Button variant="danger" size="small" on_click="clear_all_filters">Clear All</Button>
+              <Button variant="danger" size="medium" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
             <Table
               id="customers_table"
