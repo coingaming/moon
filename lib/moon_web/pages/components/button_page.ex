@@ -68,7 +68,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
         <ExampleAndCode title="Sizes" id="button2">
           <:example>
-            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered class="mb-6">
+            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered>
               <Button variant="primary" size="small">Small</Button>
               <Button variant="primary" size="medium">Medium (Default)</Button>
               <Button variant="primary" size="large">Large</Button>
@@ -102,6 +102,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
               <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
               <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
               <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+              <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
               <Button variant="primary" right_icon="generic_settings" size="large"></Button>
             </#CodePreview>
           </:code>
@@ -116,12 +117,30 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
           <:code>
             <#CodePreview>
-          <Button variant="primary" full_width="true">
-            Full Width
-          </Button>
-          </#CodePreview>
+              <Button variant="primary" full_width="true">
+                Full Width
+              </Button>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Disabled" id="button7">
+        <:example>
+          <LeftToRight class="justify-items-center justify-evenly items-center">
+            <Button variant="primary" disabled="true">
+              Disabled
+            </Button>
+          </LeftToRight>
+        </:example>
+
+        <:code>
+          <#CodePreview>
+            <Button variant="primary" disabled="true">
+              Disabled
+            </Button>
+          </#CodePreview>
+        </:code>
+      </ExampleAndCode>
 
         <ExampleAndCode title="Animation" id="button5">
           <:example>
