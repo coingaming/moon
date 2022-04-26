@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.CaptionPage do
+defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   @moduledoc false
 
   use MoonWeb, :live_view

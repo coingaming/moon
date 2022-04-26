@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.DatepickerPage do
+defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.DatepickerPage do
         name: "Components"
       },
       %{
-        to: "/components/datepicker",
+        to: "/components/date/datepicker",
         name: "Datepicker"
       }
     ]

@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.SelectPage do
+defmodule MoonWeb.Pages.Components.Select.SelectPage do
   @moduledoc false
 
   use MoonWeb, :live_view

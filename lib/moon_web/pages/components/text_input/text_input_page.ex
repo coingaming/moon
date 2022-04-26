@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.TextInputPage do
+defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
   @moduledoc false
 
   use MoonWeb, :live_view
