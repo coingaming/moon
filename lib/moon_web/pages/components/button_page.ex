@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Icons.GenericSettings
 
   data breadcrumbs, :any,
     default: [
@@ -44,128 +45,95 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Link to="https://moon.io/components/button">React implementation</Link>
         </p>
 
-        <Heading size={18} class="mt-4" is_regular>Variants</Heading>
-
-        <ExampleAndCode title="Button Fill" id="button1">
+        <ExampleAndCode title="Variants" id="button0">
           <:note>
             To be used where the the button would be the main call to action on the page.
           </:note>
 
           <:example>
-            <Button variant="fill">Fill</Button>
+            <div class="flex gap-4 justify-items-center justify-evenly">
+              <Button>Primary (default)</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="tertiary">Tertiary</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Button variant="fill">Fill</Button>
-        </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Button Outline" id="button2">
-          <:note>
-            To be used where the the button would be a optional call to action.
-          </:note>
-          <:example>
-            <Button variant="outline">Outline</Button>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-        <Button variant="outline">Outline</Button>
-        </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Link" id="button3">
-          <:note>
-            To be used where the the button is a link
-          </:note>
-          <:example>
-            <Button variant="link">Link</Button>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-        <Button variant="link">Link</Button>
-        </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Leading and trailing icons" id="button4">
-          <:example>
-            <LeftToRight class="items-center">
-              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-            </LeftToRight>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-        <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-        <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+              <Button>Primary (default)</Button>
+              <Button variant="secondary">Secondary</Button>
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Button Sizes" id="button5">
+        <ExampleAndCode title="Sizes" id="button2">
           <:example>
-            Fill
-            <LeftToRight gap="gap-4" centered class="mb-6">
-              <Button variant="fill" size="xsmall">Xsmall</Button>
-              <Button variant="fill" size="small">Small</Button>
-              <Button variant="fill" size="medium">Medium</Button>
-              <Button variant="fill" size="large">Large</Button>
-            </LeftToRight>
-
-            With icons
-            <LeftToRight gap="gap-4" centered class="mb-6">
-              <Button left_icon="chart_bar" variant="fill" size="xsmall">Xsmall</Button>
-              <Button left_icon="chart_line" variant="fill" size="small">Small</Button>
-              <Button left_icon="chart_pie_chart" variant="fill" size="medium">Medium</Button>
-              <Button left_icon="chart_round" variant="fill" size="large">Large</Button>
-            </LeftToRight>
-
-            Outline
-            <LeftToRight gap="gap-4" centered class="mb-6">
-              <Button variant="outline" size="xsmall">Xsmall</Button>
-              <Button variant="outline" size="small">Small</Button>
-              <Button variant="outline" size="medium">Medium</Button>
-              <Button variant="outline" size="large">Large</Button>
-            </LeftToRight>
-
-            Link
-            <LeftToRight gap="gap-4" centered>
-              <Button variant="link" size="xsmall">Xsmall</Button>
-              <Button variant="link" size="small">Small</Button>
-              <Button variant="link" size="medium">Medium</Button>
-              <Button variant="link" size="large">Large</Button>
+            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered class="mb-6">
+              <Button variant="primary" size="xsmall">Xsmall</Button>
+              <Button variant="primary" size="small">Small</Button>
+              <Button variant="primary" size="medium">Medium</Button>
+              <Button variant="primary" size="large">Large</Button>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-        <Button variant="fill" size="xsmall">Xsmall</Button>
-        <Button variant="fill" size="small">Small</Button>
-        <Button variant="fill" size="medium">Medium</Button>
-        <Button variant="fill" size="large">Large</Button>
-      </#CodePreview>
+              <Button variant="fill" size="xsmall">Xsmall</Button>
+              <Button variant="fill" size="small">Small</Button>
+              <Button variant="fill" size="medium">Medium</Button>
+              <Button variant="fill" size="large">Large</Button>
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Icons" id="button4">
+          <:example>
+            <LeftToRight class="justify-items-center justify-evenly">
+              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+              <Button variant="primary"><GenericSettings /> Left Icon</Button>
+              <Button variant="primary">Right Icon <GenericSettings /></Button>
+            </LeftToRight>
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+              <Button variant="primary"><GenericSettings /> Left Icon</Button>
+              <Button variant="primary">Right Icon <GenericSettings /></Button>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Full width" id="button6">
           <:example>
-            <Button variant="fill" full_width="true">
+            <Button variant="primary" full_width="true">
               Full Width
             </Button>
           </:example>
 
           <:code>
             <#CodePreview>
-          <Button variant="fill" full_width="true">
+          <Button variant="primary" full_width="true">
             Full Width
           </Button>
           </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Animation" id="button5">
+          <:example>
+            Coming soon...
+            <LeftToRight gap="gap-4" centered class="mb-6">
+            </LeftToRight>
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              Coming soon...
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
       </TopToDown>
