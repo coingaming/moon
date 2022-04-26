@@ -1,3 +1,11 @@
+## [2.6.4](https://github.com/coingaming/moon/compare/v2.6.3...v2.6.4) (2022-04-26)
+
+
+### Bug Fixes
+
+* align the button component with the React version [MDS-38] ([#252](https://github.com/coingaming/moon/issues/252)) ([e762e75](https://github.com/coingaming/moon/commit/e762e752d45b2d94adf019c3d1ec29e4a83d660b))
+* align the sidebar links with the react version [MDS-65] ([#249](https://github.com/coingaming/moon/issues/249)) ([9193449](https://github.com/coingaming/moon/commit/9193449af0b9b68e6e7e86506277a36740c1f1eb))
+
 ## [2.6.3](https://github.com/coingaming/moon/compare/v2.6.2...v2.6.3) (2022-04-20)
 
 
