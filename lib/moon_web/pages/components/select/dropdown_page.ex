@@ -4,11 +4,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Button
   alias Moon.Components.Form
   alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.FieldLabel
   alias Moon.Components.Select.Dropdown
+  alias Moon.Components.Select.Dropdown.Footer
   alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
@@ -121,6 +123,48 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:code>{code_for_dropdown_search()}</:code>
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Dropdown with search and footer" id="dropdown-search-footer-example">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:permission}>
+                <FieldLabel>Permissions</FieldLabel>
+                <Dropdown
+                  id="dropdown-search-example-user-permissions"
+                  options={@searchable_options}
+                  is_multi >
+                  <:option_filters>
+                    <TextInput field={:option_filter} type="search" keyup="apply_filter" />
+                  </:option_filters>
+                  {#for option <- @searchable_options}
+                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                      <SingleLineItem current={is_selected}>
+                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                        {option.label}
+                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                      </SingleLineItem>
+                    </Dropdown.Option>
+                  {/for}
+                  <:options_footer>
+                    <Footer>
+                      <:cancel>
+                        <Button variant="fill" size="small">Cancel</Button>
+                      </:cancel>
+                      <:clear>
+                        <Button variant="fill" size="small">Clear</Button>
+                      </:clear>
+                      <:confirm>
+                        <Button variant="fill" size="small">Confirm</Button>
+                      </:confirm>
+                    </Footer>
+                  </:options_footer>
+                </Dropdown>
+              </Field>
+            </Form>
+          </:example>
+          <:code>{code_for_dropdown_search_footer()}</:code>
+          <:state>{}</:state>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """
@@ -149,7 +193,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def handle_event("apply_filter", %{"value" => value}, %{assigns: %{options: options}} = socket) do
+  def handle_event("apply_filter",
+    %{
+      "value" => value
+    },
+    %{assigns: %{options: options}} = socket) do
     filtered_options =
       options
       |> Enum.filter(&String.contains?(String.downcase(&1.label), value))
@@ -216,6 +264,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         {:noreply, assign(socket)}
       end
       ```
+    """
+  end
+
+  def code_for_dropdown_search_footer do
+    """
     """
   end
 end

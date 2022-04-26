@@ -87,6 +87,38 @@ defmodule Moon.Components.Select.Dropdown.Option do
   end
 end
 
+defmodule Moon.Components.Select.Dropdown.Footer do
+  @moduledoc false
+
+  use Moon.StatelessComponent
+
+  slot cancel
+  slot clear
+  slot confirm
+
+  def render(assigns) do
+    ~F"""
+    <div class="columns">
+      {#if slot_assigned?(:cancel)}
+        <div class="column is-two-thirds">
+          <#slot name="cancel" />
+        </div>
+      {/if}
+      {#if slot_assigned?(:clear)}
+        <div class="column">
+          <#slot name="clear" />
+        </div>
+      {/if}
+      {#if slot_assigned?(:confirm)}
+        <div class="column">
+          <#slot name="confirm" />
+        </div>
+      {/if}
+    </div>
+    """
+  end
+end
+
 # https://www.figma.com/file/aMBmdNX4cfv885xchXHIHo/Partners---Components-%7BMDS%7D?node-id=23443%3A818
 defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
@@ -107,6 +139,7 @@ defmodule Moon.Components.Select.Dropdown do
 
   slot default
   slot option_filters
+  slot options_footer
 
   def render(assigns) do
     ~F"""
@@ -150,6 +183,9 @@ defmodule Moon.Components.Select.Dropdown do
           }>
             <#slot name="default" />
           </Context>
+        {/if}
+        {#if slot_assigned?(:options_footer)}
+            <#slot name="options_footer" />
         {/if}
       </ul>
     </InputContext>
