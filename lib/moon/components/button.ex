@@ -59,7 +59,7 @@ defmodule Moon.Components.Button do
         "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
           @variant in ["link"],
-        "text-xs h-8 px-3 leading-4": @size == "xsmall" && slot_assigned?(:default),
+        "text-xs h-8 px-2 leading-4": @size == "xsmall" && slot_assigned?(:default),
         "text-sm h-8 px-3 leading-4": @size == "small" && slot_assigned?(:default),
         "text-sm h-10 px-4 leading-6": @size == "medium" && slot_assigned?(:default),
         "text-base h-12 px-5": @size == "large" && slot_assigned?(:default),
