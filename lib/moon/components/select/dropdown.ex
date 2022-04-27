@@ -98,19 +98,19 @@ defmodule Moon.Components.Select.Dropdown.Footer do
 
   def render(assigns) do
     ~F"""
-    <div class="columns">
+    <div class="flex flex-row">
       {#if slot_assigned?(:cancel)}
-        <div class="column is-two-thirds">
+        <div class="basis-1/4">
           <#slot name="cancel" />
         </div>
       {/if}
       {#if slot_assigned?(:clear)}
-        <div class="column">
+        <div class="basis-1/4">
           <#slot name="clear" />
         </div>
       {/if}
       {#if slot_assigned?(:confirm)}
-        <div class="column">
+        <div class="basis-1/4">
           <#slot name="confirm" />
         </div>
       {/if}
