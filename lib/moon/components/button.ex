@@ -13,7 +13,7 @@ defmodule Moon.Components.Button do
     values: ["primary", "secondary", "tertiary", "ghost", "none"],
     default: "primary"
 
-  prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "small"
+  prop size, :string, values: ["xsmall", "small", "medium", "large", "xlarge"], default: "medium"
   prop full_width, :boolean
   prop progress, :boolean
   prop oops, :boolean
@@ -59,10 +59,16 @@ defmodule Moon.Components.Button do
         "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
         "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
           @variant in ["link"],
-        "text-xs h-8 px-3 leading-4": @size == "xsmall",
-        "text-sm h-10 px-4 leading-6": @size == "small",
-        "text-base h-12 px-5": @size == "medium",
-        "text-lg h-14 px-6": @size == "large",
+        "text-xs h-8 px-2 leading-4": @size == "xsmall" && slot_assigned?(:default),
+        "text-sm h-8 px-3 leading-4": @size == "small" && slot_assigned?(:default),
+        "text-sm h-10 px-4 leading-6": @size == "medium" && slot_assigned?(:default),
+        "text-base h-12 px-5": @size == "large" && slot_assigned?(:default),
+        "text-base h-14 px-6": @size == "xlarge" && slot_assigned?(:default),
+        "p-1": @size == "xsmall" && !slot_assigned?(:default),
+        "p-1": @size == "small" && !slot_assigned?(:default),
+        "p-2": @size == "medium" && !slot_assigned?(:default),
+        "p-3": @size == "large" && !slot_assigned?(:default),
+        "p-4": @size == "xlarge" && !slot_assigned?(:default),
         "w-full": @full_width,
         "opacity-30": @disabled
       }
@@ -92,7 +98,8 @@ defmodule Moon.Components.Button do
   end
 
   defp icon_class("xsmall"), do: "h-4 w-4"
-  defp icon_class("small"), do: "h-5 w-5"
+  defp icon_class("small"), do: "h-4 w-4"
   defp icon_class("medium"), do: "h-6 w-6"
-  defp icon_class("large"), do: "h-7 w-7"
+  defp icon_class("large"), do: "h-6 w-6"
+  defp icon_class("xlarge"), do: "h-6 w-6"
 end

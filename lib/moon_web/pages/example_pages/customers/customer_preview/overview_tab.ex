@@ -171,7 +171,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
               <Button
                 :if={tab == @wallets_active_tab}
                 on_click={"select_wallets_tab:#{tab}"}
-                size="xsmall"
+                size="small"
                 class="rounded bg-goku-100 py-2"
               >
                 <Text size="14" class="capitalize text-gohan-80">{tab}</Text>
@@ -181,7 +181,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
                 :if={tab != @wallets_active_tab}
                 on_click={"select_wallets_tab:#{tab}"}
                 variant="danger"
-                size="xsmall"
+                size="small"
                 class="rounded py-2"
               >
                 <Text size="14" class="capitalize text-hit-80">{tab}</Text>

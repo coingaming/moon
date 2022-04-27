@@ -11,7 +11,6 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Icons.GenericSettings
 
   data breadcrumbs, :any,
     default: [
@@ -47,7 +46,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
         <ExampleAndCode title="Variants" id="button0">
           <:note>
-            To be used where the the button would be the main call to action on the page.
+            Primary variant is used where the the button would be the main call to action on the page.
           </:note>
 
           <:example>
@@ -69,31 +68,33 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
         <ExampleAndCode title="Sizes" id="button2">
           <:example>
-            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered class="mb-6">
-              <Button variant="primary" size="xsmall">Xsmall</Button>
+            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered>
+              <Button variant="primary" size="xsmall">xSmall</Button>
               <Button variant="primary" size="small">Small</Button>
-              <Button variant="primary" size="medium">Medium</Button>
+              <Button variant="primary" size="medium">Medium (Default)</Button>
               <Button variant="primary" size="large">Large</Button>
+              <Button variant="primary" size="xlarge">xLarge</Button>
             </LeftToRight>
           </:example>
 
           <:code>
             <#CodePreview>
-              <Button variant="fill" size="xsmall">Xsmall</Button>
               <Button variant="fill" size="small">Small</Button>
-              <Button variant="fill" size="medium">Medium</Button>
+              <Button variant="fill" size="medium">Medium  (Default)</Button>
               <Button variant="fill" size="large">Large</Button>
+              <Button variant="fill" size="xlarge">xLarge</Button>
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Icons" id="button4">
           <:example>
-            <LeftToRight class="justify-items-center justify-evenly">
+            <LeftToRight class="justify-items-center justify-evenly items-center">
               <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
               <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-              <Button variant="primary"><GenericSettings /> Left Icon</Button>
-              <Button variant="primary">Right Icon <GenericSettings /></Button>
+              <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+              <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+              <Button variant="primary" right_icon="generic_settings" size="large" />
             </LeftToRight>
           </:example>
 
@@ -101,8 +102,9 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
             <#CodePreview>
               <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
               <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-              <Button variant="primary"><GenericSettings /> Left Icon</Button>
-              <Button variant="primary">Right Icon <GenericSettings /></Button>
+              <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+              <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+              <Button variant="primary" right_icon="generic_settings" size="large"></Button>
             </#CodePreview>
           </:code>
         </ExampleAndCode>
@@ -116,9 +118,27 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
           <:code>
             <#CodePreview>
-          <Button variant="primary" full_width="true">
-            Full Width
-          </Button>
+              <Button variant="primary" full_width="true">
+                Full Width
+              </Button>
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Disabled" id="button7">
+          <:example>
+            <LeftToRight class="justify-items-center justify-evenly items-center">
+              <Button variant="primary" disabled="true">
+                Disabled
+              </Button>
+            </LeftToRight>
+          </:example>
+
+          <:code>
+            <#CodePreview>
+            <Button variant="primary" disabled="true">
+              Disabled
+            </Button>
           </#CodePreview>
           </:code>
         </ExampleAndCode>
