@@ -140,6 +140,7 @@ defmodule Moon.Components.Select.Dropdown do
   slot default
   slot option_filters
   slot options_footer
+  slot options_tabs
 
   def render(assigns) do
     ~F"""
@@ -158,6 +159,9 @@ defmodule Moon.Components.Select.Dropdown do
       >
         {#if slot_assigned?(:option_filters)}
           <#slot name="option_filters" />
+        {/if}
+        {#if slot_assigned?(:options_tabs)}
+          <#slot name="options_tabs" />
         {/if}
         {#if @options && !slot_assigned?(:default)}
           {#for option <- @options}

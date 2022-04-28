@@ -14,6 +14,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Dropdown.Footer
   alias Moon.Components.ListItems.SingleLineItem
+  alias Moon.Components.Tabs
+  alias Moon.Components.Tabs.TabLink
   alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -34,12 +36,16 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
+    user_permissions = User.available_permissions()
+
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       options: User.available_permissions(),
-       searchable_options: User.available_permissions(),
+       options: user_permissions,
+       searchable_options: user_permissions,
+       radio_options: user_permissions,
        theme_name: params["theme_name"] || "sportsbet-dark",
+       tab_id: "1",
        active_page: __MODULE__
      )}
   end
@@ -176,18 +182,15 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
                   id="dropdown-radio-example-user-permissions"
-                  options={@searchable_options}
+                  options={@radio_options}
                 >
-                  <:option_filters>
-                    <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-                  </:option_filters>
-                  {#for option <- @searchable_options}
+                  {#for option <- @radio_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
                         <:right_icon>
-                          <RadioButton checked={is_selected} />
+                          <RadioButton field={:user_options_selected} value={option.value} checked={is_selected} />
                         </:right_icon>
                       </SingleLineItem>
                     </Dropdown.Option>
@@ -215,7 +218,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
                         <:right_icon>
-                          <Checkbox checked={is_selected}/>
+                          <Checkbox id={"user_permissions_#{option.value}"} field={:user_permissions_options_checked} checked={is_selected}/>
                         </:right_icon>
                       </SingleLineItem>
                     </Dropdown.Option>
@@ -236,6 +239,14 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Dropdown
                   id="dropdown-tabs-example-user-permissions"
                   options={@options} >
+                  <:options_tabs>
+                    <Tabs>
+                      <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
+                      <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
+                      <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
+                      <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+                    </Tabs>
+                  </:options_tabs>
                 </Dropdown>
               </Field>
             </Form>
@@ -276,8 +287,10 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         %{
           "value" => value
         },
-        %{assigns: %{options: options}} = socket
+        socket
       ) do
+    options = socket.assigns.options
+
     filtered_options =
       options
       |> Enum.filter(&String.contains?(String.downcase(&1.label), value))
@@ -292,6 +305,10 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     filtered_options = if value === "", do: options, else: filtered_options
 
     {:noreply, assign(socket, searchable_options: filtered_options)}
+  end
+
+  def handle_event("clicked_tab", %{"item_id" => tab_id}, socket) do
+    {:noreply, assign(socket, tab_id: tab_id)}
   end
 
   def code_for_dropdown do
@@ -450,6 +467,14 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <Dropdown
           id="dropdown-tabs-example-user-permissions"
           options={@options} >
+          <:options_tabs>
+            <Tabs>
+              <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
+              <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
+              <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
+              <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+            </Tabs>
+          </:options_tabs>
         </Dropdown>
       </Field>
     </Form>
