@@ -41,6 +41,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
+       radio_form_changeset: user_changeset,
        options: user_permissions,
        searchable_options: user_permissions,
        radio_options: user_permissions,
@@ -125,7 +126,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <ExampleAndCode title="Dropdown with search and footer" id="dropdown-search-footer-example">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permission}>
+              <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
                   id="dropdown-search-footer-example-user-permissions"
@@ -167,10 +168,10 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
         <ExampleAndCode title="Dropdown with radio button" id="dropdown-radio-example">
           <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permission}>
+            <Form for={@radio_form_changeset} change="form_radio_update" submit="form_radio_submit">
+              <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options}>
+                <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options} is_multi>
                   {#for option <- @radio_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
@@ -187,13 +188,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             </Form>
           </:example>
           <:code>{code_for_dropdown_radio_button()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+          <:state>@radio_form_changeset = {inspect(@radio_form_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
         <ExampleAndCode title="Dropdown with checkbox" id="dropdown-checkbox-example">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permission}>
+              <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown id="dropdown-checkbox-example-user-permissions" options={@searchable_options} is_multi>
                   {#for option <- @searchable_options}
@@ -222,9 +223,9 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <ExampleAndCode title="Dropdown with Tabs" id="dropdown-tabs-example">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permission}>
+              <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-tabs-example-user-permissions" options={@options}>
+                <Dropdown id="dropdown-tabs-example-user-permissions" options={@options} is_multi>
                   <:options_tabs>
                     <Tabs>
                       <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
@@ -266,6 +267,32 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("form_radio_update", params, socket) do
+    user_params = params["user"] || %{"permissions" => []}
+
+    last_selected_options = if Map.has_key?(socket.assigns, :latest_params), do: socket.assigns.latest_params, else: %{"permissions" => []}
+
+    radio_drop_down_values = MapSet.difference(MapSet.new(user_params["permissions"]), MapSet.new(last_selected_options["permissions"]))
+
+    user_params = %{"permissions" => MapSet.to_list(radio_drop_down_values)}
+
+    user_changeset = User.changeset(%User{}, user_params)
+
+    {:noreply, assign(socket, radio_form_changeset: user_changeset, latest_params: user_params)}
+  end
+
+  def handle_event(
+        "form_radio_submit",
+        %{
+          "user" => user_params
+        },
+        socket
+      ) do
+    user_changeset = User.changeset(%User{}, user_params)
+
+    {:noreply, assign(socket, radio_form_changeset: user_changeset)}
   end
 
   def handle_event(

@@ -92,29 +92,32 @@ defmodule Moon.Components.Select.Dropdown.Footer do
 
   use Moon.StatelessComponent
 
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.PullAside
+
   slot cancel
   slot clear
   slot confirm
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-row">
-      {#if slot_assigned?(:cancel)}
-        <div class="basis-1/4">
-          <#slot name="cancel" />
-        </div>
-      {/if}
-      {#if slot_assigned?(:clear)}
-        <div class="basis-1/4">
+    <PullAside>
+      <:left>
+        {#if slot_assigned?(:clear)}
           <#slot name="clear" />
-        </div>
-      {/if}
-      {#if slot_assigned?(:confirm)}
-        <div class="basis-1/4">
-          <#slot name="confirm" />
-        </div>
-      {/if}
-    </div>
+        {/if}
+      </:left>
+      <:right>
+        <LeftToRight>
+          {#if slot_assigned?(:cancel)}
+            <#slot name="cancel" />
+          {/if}
+          {#if slot_assigned?(:confirm)}
+            <#slot name="confirm" />
+          {/if}
+        </LeftToRight>
+      </:right>
+    </PullAside>
     """
   end
 end
