@@ -87,6 +87,41 @@ defmodule Moon.Components.Select.Dropdown.Option do
   end
 end
 
+defmodule Moon.Components.Select.Dropdown.Footer do
+  @moduledoc false
+
+  use Moon.StatelessComponent
+
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Autolayouts.PullAside
+
+  slot cancel
+  slot clear
+  slot confirm
+
+  def render(assigns) do
+    ~F"""
+    <PullAside>
+      <:left>
+        {#if slot_assigned?(:clear)}
+          <#slot name="clear" />
+        {/if}
+      </:left>
+      <:right>
+        <LeftToRight>
+          {#if slot_assigned?(:cancel)}
+            <#slot name="cancel" />
+          {/if}
+          {#if slot_assigned?(:confirm)}
+            <#slot name="confirm" />
+          {/if}
+        </LeftToRight>
+      </:right>
+    </PullAside>
+    """
+  end
+end
+
 # https://www.figma.com/file/aMBmdNX4cfv885xchXHIHo/Partners---Components-%7BMDS%7D?node-id=23443%3A818
 defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
@@ -106,6 +141,9 @@ defmodule Moon.Components.Select.Dropdown do
   prop is_multi, :boolean
 
   slot default
+  slot option_filters
+  slot options_footer
+  slot options_tabs
 
   def render(assigns) do
     ~F"""
@@ -122,6 +160,12 @@ defmodule Moon.Components.Select.Dropdown do
         role="listbox"
         id={"#{@id}-ul-list"}
       >
+        {#if slot_assigned?(:option_filters)}
+          <#slot name="option_filters" />
+        {/if}
+        {#if slot_assigned?(:options_tabs)}
+          <#slot name="options_tabs" />
+        {/if}
         {#if @options && !slot_assigned?(:default)}
           {#for option <- @options}
             <Option
@@ -146,6 +190,9 @@ defmodule Moon.Components.Select.Dropdown do
           }>
             <#slot name="default" />
           </Context>
+        {/if}
+        {#if slot_assigned?(:options_footer)}
+          <#slot name="options_footer" />
         {/if}
       </ul>
     </InputContext>
