@@ -151,7 +151,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                         <Button variant="fill" size="small">Cancel</Button>
                       </:cancel>
                       <:clear>
-                        <Button variant="fill" size="small">Clear</Button>
+                        <Button variant="fill" size="small" on_click="clear_selections">Clear</Button>
                       </:clear>
                       <:confirm>
                         <Button variant="fill" size="small">Confirm</Button>
@@ -168,7 +168,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
         <ExampleAndCode title="Dropdown with radio button" id="dropdown-radio-example">
           <:example>
-            <Form for={@radio_form_changeset} change="form_radio_update" submit="form_radio_submit">
+            <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options} is_multi>
@@ -283,16 +283,10 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     {:noreply, assign(socket, radio_form_changeset: user_changeset, latest_params: user_params)}
   end
 
-  def handle_event(
-        "form_radio_submit",
-        %{
-          "user" => user_params
-        },
-        socket
-      ) do
-    user_changeset = User.changeset(%User{}, user_params)
+  def handle_event("clear_selections", _params, socket) do
+    user_changeset = User.changeset(%User{}, %{"permissions" => []})
 
-    {:noreply, assign(socket, radio_form_changeset: user_changeset)}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event(
