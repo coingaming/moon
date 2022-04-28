@@ -65,10 +65,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-options-example-user-permissions"
-                  options={@options}
-                  is_multi/>
+                <Dropdown id="dropdown-options-example-user-permissions" options={@options} is_multi />
               </Field>
             </Form>
           </:example>
@@ -81,11 +78,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-icons-example-user-permissions"
-                  is_multi
-                  options={@options}
-                >
+                <Dropdown id="dropdown-icons-example-user-permissions" is_multi options={@options}>
                   {#for option <- @options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
@@ -108,11 +101,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-search-example-user-permissions"
-                  is_multi
-                  options={@searchable_options}
-                >
+                <Dropdown id="dropdown-search-example-user-permissions" is_multi options={@searchable_options}>
                   <:option_filters>
                     <TextInput field={:option_filter} type="search" keyup="apply_filter" />
                   </:option_filters>
@@ -141,7 +130,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Dropdown
                   id="dropdown-search-footer-example-user-permissions"
                   options={@searchable_options}
-                  is_multi >
+                  is_multi
+                >
                   <:option_filters>
                     <TextInput field={:option_filter} type="search" keyup="apply_filter" />
                   </:option_filters>
@@ -180,10 +170,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permission}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-radio-example-user-permissions"
-                  options={@radio_options}
-                >
+                <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options}>
                   {#for option <- @radio_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
@@ -208,17 +195,18 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permission}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-checkbox-example-user-permissions"
-                  options={@searchable_options}
-                  is_multi >
+                <Dropdown id="dropdown-checkbox-example-user-permissions" options={@searchable_options} is_multi>
                   {#for option <- @searchable_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
                         <:right_icon>
-                          <Checkbox id={"user_permissions_#{option.value}"} field={:user_permissions_options_checked} checked={is_selected}/>
+                          <Checkbox
+                            id={"user_permissions_#{option.value}"}
+                            field={:user_permissions_options_checked}
+                            checked={is_selected}
+                          />
                         </:right_icon>
                       </SingleLineItem>
                     </Dropdown.Option>
@@ -236,9 +224,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permission}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-tabs-example-user-permissions"
-                  options={@options} >
+                <Dropdown id="dropdown-tabs-example-user-permissions" options={@options}>
                   <:options_tabs>
                     <Tabs>
                       <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>

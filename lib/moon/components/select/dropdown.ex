@@ -189,7 +189,7 @@ defmodule Moon.Components.Select.Dropdown do
           </Context>
         {/if}
         {#if slot_assigned?(:options_footer)}
-            <#slot name="options_footer" />
+          <#slot name="options_footer" />
         {/if}
       </ul>
     </InputContext>
