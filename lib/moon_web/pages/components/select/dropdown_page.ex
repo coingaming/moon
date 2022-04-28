@@ -272,9 +272,16 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   def handle_event("form_radio_update", params, socket) do
     user_params = params["user"] || %{"permissions" => []}
 
-    last_selected_options = if Map.has_key?(socket.assigns, :latest_params), do: socket.assigns.latest_params, else: %{"permissions" => []}
+    last_selected_options =
+      if Map.has_key?(socket.assigns, :latest_params),
+        do: socket.assigns.latest_params,
+        else: %{"permissions" => []}
 
-    radio_drop_down_values = MapSet.difference(MapSet.new(user_params["permissions"]), MapSet.new(last_selected_options["permissions"]))
+    radio_drop_down_values =
+      MapSet.difference(
+        MapSet.new(user_params["permissions"]),
+        MapSet.new(last_selected_options["permissions"])
+      )
 
     user_params = %{"permissions" => MapSet.to_list(radio_drop_down_values)}
 
