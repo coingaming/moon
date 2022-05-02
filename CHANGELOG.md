@@ -1,3 +1,16 @@
+# [2.7.0](https://github.com/coingaming/moon/compare/v2.6.4...v2.7.0) (2022-04-27)
+
+
+### Bug Fixes
+
+* **assets/package.json:** remove phoenix js dependencies ([#250](https://github.com/coingaming/moon/issues/250)) ([9519c82](https://github.com/coingaming/moon/commit/9519c821350579094480252812184c80a61c4580)), closes [#242](https://github.com/coingaming/moon/issues/242)
+
+
+### Features
+
+* add xsmall variant to button [MDS-73] ([#253](https://github.com/coingaming/moon/issues/253)) ([421cf52](https://github.com/coingaming/moon/commit/421cf524f6873d23b854d44937a4b3bd1dbaf134))
+* Make the logo on the sidebar as hyperlinks to the homepage [MDS-63] ([#245](https://github.com/coingaming/moon/issues/245)) ([5d09e06](https://github.com/coingaming/moon/commit/5d09e0695e952a83c0ab129aa9fe4408c7f9e1a3))
+
 ## [2.6.4](https://github.com/coingaming/moon/compare/v2.6.3...v2.6.4) (2022-04-26)
 
 
