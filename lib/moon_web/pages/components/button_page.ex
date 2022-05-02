@@ -185,7 +185,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
               :description => 'Disabled Button'
             }
           ]}>
-            <Column name="name" label="Name" :let={item: item}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>
             <Column name="type" label="Type" :let={item: item}>

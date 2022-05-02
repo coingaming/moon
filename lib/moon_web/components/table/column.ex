@@ -4,4 +4,5 @@ defmodule MoonWeb.Components.Table.Column do
   @doc "The title of the column"
   prop name, :string, required: true
   prop label, :string
+  prop is_row_header, :boolean, default: false
 end
