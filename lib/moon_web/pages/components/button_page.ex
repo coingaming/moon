@@ -11,7 +11,6 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Icons.GenericSettings
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
