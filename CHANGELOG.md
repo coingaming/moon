@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/coingaming/moon/compare/v2.7.0...v2.7.1) (2022-05-03)
+
+
+### Bug Fixes
+
+* align checkbox with React version [MDS-68] ([#254](https://github.com/coingaming/moon/issues/254)) ([13d027f](https://github.com/coingaming/moon/commit/13d027fd78807eca33bea1a9eb0e5fec537c1749))
+
 # [2.7.0](https://github.com/coingaming/moon/compare/v2.6.4...v2.7.0) (2022-04-27)
 
 
