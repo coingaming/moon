@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -156,6 +158,70 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
             </#CodePreview>
           </:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'variant',
+              :type => 'primary | secondary | tertiary | ghost | link (deprecated)',
+              :required => 'false',
+              :default => 'primary',
+              :description => 'Visual/Logical variant of Button'
+            },
+            %{
+              :name => 'size',
+              :type => 'xsmall | small | medium | large | xlarge',
+              :required => 'false',
+              :default => 'medium',
+              :description => 'Size of Button'
+            },
+            %{
+              :name => 'left_icon',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Asset name for the left icon'
+            },
+            %{
+              :name => 'right_icon',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Asset name for the right icon'
+            },
+            %{
+              :name => 'fullWidth',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Full width Button'
+            },
+            %{
+              :name => 'disabled',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Disabled Button'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

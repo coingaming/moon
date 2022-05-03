@@ -175,7 +175,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.SwitchPage}>Switch</Link>
                   <Link route={Pages.Components.SwitcherPage}>Switcher *</Link> <!-- Hide -->
                   <Link route={Pages.Components.TabsPage}>Tabs</Link>
-                  <Link route={Pages.Components.TablePage}>Table *</Link>
+                  <Link route={Pages.Components.TablePage}>Table</Link>
 
                   <Accordion
                     id="left-menu-components-text"

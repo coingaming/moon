@@ -13,6 +13,8 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -62,6 +64,114 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
           <:state>{checkbox_1_state(assigns)}</:state>
         </ExampleAndCode>
+
+        <ExampleAndCode title="No Label" id="checkbox_2">
+          <:example>
+            <div class="here flex items-centered justify-items-center justify-evenly">
+              <Form for={@user_changeset2} change="register_form_update2">
+                <TopToDown>
+                  <Field name={:agrees_to_terms_of_service}>
+                    <Checkbox id="agrees_to_terms_of_service" />
+                    <ErrorTag />
+                  </Field>
+                </TopToDown>
+              </Form>
+            </div>
+          </:example>
+
+          <:code>{checkbox_2_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Disabled" id="checkbox_3">
+          <:example>
+            <div class="here flex items-centered justify-items-center justify-evenly">
+              <Form for={@user_changeset}>
+                <TopToDown>
+                  <Field name={:agrees_to_terms_of_service}>
+                    <Checkbox id="agrees_to_terms_of_service" disabled>I agree to terms and services.</Checkbox>
+                    <ErrorTag />
+                  </Field>
+                </TopToDown>
+              </Form>
+            </div>
+          </:example>
+
+          <:code>{checkbox_3_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Readonly" id="checkbox_4">
+          <:example>
+            <div class="here flex items-centered justify-items-center justify-evenly">
+              <Form for={@user_changeset2} change="register_form_update2">
+                <TopToDown>
+                  <Field name={:agrees_to_terms_of_service}>
+                    <Checkbox id="agrees_to_terms_of_service" readonly checked>I agree to terms and services.</Checkbox>
+                    <ErrorTag />
+                  </Field>
+                </TopToDown>
+              </Form>
+            </div>
+          </:example>
+
+          <:code>{checkbox_4_code()}</:code>
+        </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'checked',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Preset value for checkbox state'
+            },
+            %{
+              :name => 'disabled',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Checkbox disabled state'
+            },
+            %{
+              :name => 'readonly',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => "Checkbox isn't disabled but its value can't be changed"
+            },
+            %{
+              :name => 'field',
+              :type => 'atom',
+              :required => 'true',
+              :default => '-',
+              :description => 'Field name for the inner input form control'
+            },
+            %{
+              :name => '#slot',
+              :type => 'element',
+              :required => 'true',
+              :default => '-',
+              :description => 'Label for the control'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item}>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """
@@ -74,9 +184,16 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         agrees_to_marketing_emails: true
       })
 
+    user_changeset2 =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: false,
+        agrees_to_marketing_emails: true
+      })
+
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
+       user_changeset2: user_changeset2,
        theme_name: params["theme_name"] || "sportsbet-dark",
        active_page: __MODULE__
      )}
@@ -101,6 +218,18 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     user_changeset = User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event(
+        "register_form_update2",
+        %{
+          "user" => params
+        },
+        socket
+      ) do
+    user_changeset2 = User.changeset(%User{}, params)
+
+    {:noreply, assign(socket, user_changeset2: user_changeset2)}
   end
 
   def handle_event("register_form_submit", _, socket) do
@@ -131,6 +260,45 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         <div>
           <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
         </div>
+      </TopToDown>
+    </Form>
+    """
+  end
+
+  def checkbox_2_code do
+    """
+    <Form for={@user_changeset2} change="register_form_update2">
+      <TopToDown>
+        <Field name={:agrees_to_terms_of_service}>
+          <Checkbox id="agrees_to_terms_of_service"/>
+          <ErrorTag />
+        </Field>
+      </TopToDown>
+    </Form>
+    """
+  end
+
+  def checkbox_3_code do
+    """
+    <Form for={@user_changeset}>
+      <TopToDown>
+        <Field name={:agrees_to_terms_of_service}>
+          <Checkbox id="agrees_to_terms_of_service" disabled={true}>I agree to terms and services.</Checkbox>
+          <ErrorTag />
+        </Field>
+      </TopToDown>
+    </Form>
+    """
+  end
+
+  def checkbox_4_code do
+    """
+    <Form for={@user_changeset}>
+      <TopToDown>
+        <Field name={:agrees_to_terms_of_service}>
+          <Checkbox id="agrees_to_terms_of_service" disabled={true}>I agree to terms and services.</Checkbox>
+          <ErrorTag />
+        </Field>
       </TopToDown>
     </Form>
     """
