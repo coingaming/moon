@@ -27,6 +27,7 @@ defmodule Moon.Components.Chip do
       on_click={@on_click}
       value={@value}
       testid={@testid}
+      variant="none"
     ><#slot /></Button>
     """
   end
