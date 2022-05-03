@@ -10,6 +10,7 @@ defmodule Moon.Components.Checkbox do
   prop(click, :event)
   prop(checked, :boolean)
   prop(disabled, :boolean)
+  prop(readonly, :boolean, default: false)
   prop(class, :string)
   slot(default)
 
@@ -18,11 +19,11 @@ defmodule Moon.Components.Checkbox do
     <div class={"relative inline-flex items-center select-none", @class, "opacity-disabled": @disabled}>
       <Surface.Components.Form.Checkbox
         field={@field}
-        click={@click}
-        class="z-10 absolute left-0 opacity-0"
+        click={!@readonly && @click}
+        class="z-10 absolute left-0 opacity-0 read-only:cursor-not-allowed read-only:select-none"
         checked_value="true"
         unchecked_value="false"
-        opts={disabled: @disabled}
+        opts={disabled: @disabled, readonly: @readonly}
       />
       <InputContext assigns={assigns} :let={form: form, field: field}>
         {fake_checkbox(
