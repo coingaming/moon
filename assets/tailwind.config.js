@@ -30,6 +30,9 @@ module.exports = {
       },
       opacity: {
         'disabled': 'var(--opacity--disabled)'
+      },
+      boxShadow: {
+        'border': '0 0 0 2px var(--color--piccolo-100) inset'
       }
     },
     fontWeight: {

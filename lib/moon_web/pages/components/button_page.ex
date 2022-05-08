@@ -164,7 +164,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Table items={[
             %{
               :name => 'variant',
-              :type => 'primary | secondary | tertiary | ghost | link (deprecated)',
+              :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
               :required => 'false',
               :default => 'primary',
               :description => 'Visual/Logical variant of Button'
