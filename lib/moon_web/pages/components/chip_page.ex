@@ -197,18 +197,8 @@ defmodule MoonWeb.Pages.Components.ChipPage do
 
   defp chip_3_code do
     """
-      <div class="flex justify-around w-full items-center">
-        <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
-        <Chip size="small" right_icon="arrows_right">Right Icon</Chip>
-        <Chip size="small" left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-        <Chip size="small" icon_only="generic_settings" />
-      </div>
-      <div class="flex justify-around w-full items-center">
-        <Chip left_icon="arrows_left">Left Icon</Chip>
-        <Chip right_icon="arrows_right">Right Icon</Chip>
-        <Chip left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-        <Chip icon_only="generic_settings" />
-      </div>
+      <Chip size="small" is_stroke>Stroke on Hover</Chip>
+      <Chip is_stroke>Stroke on Hover</Chip>
     """
   end
 
