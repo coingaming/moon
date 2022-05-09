@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/coingaming/moon/compare/v2.7.1...v2.7.2) (2022-05-09)
+
+
+### Bug Fixes
+
+* align the Chip component with the React version [MDS-39] ([#256](https://github.com/coingaming/moon/issues/256)) ([fec04cb](https://github.com/coingaming/moon/commit/fec04cb03ff0f16b311b352ca6951287d432066e))
+
 ## [2.7.1](https://github.com/coingaming/moon/compare/v2.7.0...v2.7.1) (2022-05-03)
 
 
