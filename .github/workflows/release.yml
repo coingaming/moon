@@ -31,7 +31,7 @@ jobs:
         working-directory: .
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: semantic-release
+        run: semantic-release --branches main
 
       # Get new release version
       - name: Get release tag
