@@ -28,7 +28,7 @@ GITHUB_SSH_KEY=${ROBOT_SSH_KEY:-$(cat ~/.ssh/id_rsa | base64)}
 HEX_API_KEY=${HEX_API_KEY:-$(grep -A 1 hexpm:$HEX_ORG $HOME/.hex/hex.config | tail -n 1 | awk '{ print $3 }' | sed 's/[<">},]//g')}
 
 APP_NAME=${APP_NAME:-`grep 'app: :' "$PROJECT_DIR/mix.exs" | sed -e 's/app: ://g' -e 's/[", ]//g'`}
-APP_VSN=${APP_VSN:-`grep '@version ' "$PROJECT_DIR/mix.exs" | sed -e 's/@version //g' -e 's/[", ]//g'`}
+APP_VSN=${APP_VSN:-`cat $PROJECT_DIR/VERSION`}
 
 STACK_NAME="${STACK_NAME:-$APP_NAME}"
 SERVICE_NAME="moon-surface"
