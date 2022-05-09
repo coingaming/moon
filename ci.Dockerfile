@@ -14,7 +14,7 @@ ENV REPLACE_OS_VARS=true \
 
 WORKDIR /opt/app
 
-ADD release.tar.gz ./
+# ADD release.tar.gz ./
 
 CMD trap 'exit' INT; \
   /opt/app/bin/${APP_NAME} foreground
