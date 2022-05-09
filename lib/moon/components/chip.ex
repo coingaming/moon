@@ -11,13 +11,12 @@ defmodule Moon.Components.Chip do
   prop left_icon, :string
   prop right_icon, :string
   prop on_click, :event
-  prop value, :any
+  prop value, :string
   prop active, :boolean, default: false
   prop active_class, :string, default: "text-bulma-100 bg-goku-120"
   prop inactive_class, :string, default: "text-trunks-100 bg-gohan-100"
   prop testid, :string
   prop size, :string, values: ["small", "medium"], default: "medium"
-
   prop is_stroke, :boolean, default: false
   prop icon_only, :string
 
