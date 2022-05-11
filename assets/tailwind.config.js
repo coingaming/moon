@@ -35,7 +35,7 @@ module.exports = {
         'border': '0 0 0 2px var(--color--piccolo-100) inset'
       },
       animation: {
-        loader: 'rotation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
+        loader: 'loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
       },
       keyframes: {
         loader: {
