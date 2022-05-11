@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/coingaming/moon/compare/v2.7.7...v2.8.0) (2022-05-11)
+
+
+### Features
+
+* create the Loader component [MDS-69] ([#259](https://github.com/coingaming/moon/issues/259)) ([85b61f4](https://github.com/coingaming/moon/commit/85b61f4ad3cb2f6913cf89b44af64233562c8175))
+
 ## [2.7.7](https://github.com/coingaming/moon/compare/v2.7.6...v2.7.7) (2022-05-09)
 
 
