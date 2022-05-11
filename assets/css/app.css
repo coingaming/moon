@@ -50,6 +50,18 @@ Please do not add CSS here. Instead use Tailwind classes!
   }
 }
 
+@layer utilities {
+  .animation-delay-minus-45 {
+    animation-delay: -0.45s;
+  }
+  .animation-delay-minus-30 {
+    animation-delay: -0.3s;
+  }
+  .animation-delay-minus-15 {
+    animation-delay: -0.15s;
+  }
+}
+
 [x-cloak] {
   display: none !important;
 }

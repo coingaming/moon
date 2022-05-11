@@ -33,7 +33,16 @@ module.exports = {
       },
       boxShadow: {
         'border': '0 0 0 2px var(--color--piccolo-100) inset'
-      }
+      },
+      animation: {
+        loader: 'loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite',
+      },
+      keyframes: {
+        loader: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
+        }
+      }   
     },
     fontWeight: {
       normal: 400,
