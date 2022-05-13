@@ -6,14 +6,19 @@ defmodule Moon.Components.Label do
   prop color, :string, default: "gohan-100", values: Moon.colors()
   prop background_color, :string, default: "piccolo-100", values: Moon.colors()
   prop size, :string, default: "default", values: ["small", "default"]
-  prop class, :string, default: "rounded-sm"
+  prop class, :string
+  prop border_radius_class, :string, default: "rounded-md"
   slot default
 
   def render(assigns) do
     ~F"""
     <div class={
-      @class,
-      "bg-#{@background_color} text-#{@color} pl-2 pr-2 #{(@size == "small" && "text-xxxs") || "text-xxs"} uppercase inline-block"
+      "#{@class} pl-2 pr-2 uppercase inline-block",
+      @border_radius_class,
+      "bg-#{@background_color}",
+      "text-#{@color}",
+      "text-xxxs": @size == "small",
+      "text-xxs": @size == "default"
     }>
       <#slot />
     </div>
