@@ -21,7 +21,9 @@ defmodule Moon.Components.Label do
       @border_radius_class,
       @class,
       set_letter_spacing(@size),
-      set_padding(@size, @left_icon, @right_icon),
+      set_y_padding(@size, @left_icon, @right_icon),
+      set_l_padding(@size, @left_icon),
+      set_r_padding(@size, @right_icon),
       set_font_size(@size, @is_uppercase),
       "bg-#{@background_color} text-#{@color}",
       uppercase: @is_uppercase
@@ -45,13 +47,33 @@ defmodule Moon.Components.Label do
     end
   end
 
-  defp set_padding(size, left_icon, right_icon) do
+  defp set_y_padding(size, left_icon, right_icon) do
     case size do
       "twoxsmall" ->
-        "py-0 #{(right_icon && "pr-1") || "pr-2"} #{(left_icon && "pl-1") || "pl-2"}"
+        "py-0"
 
       _ ->
-        "#{((right_icon || left_icon) && "py-0") || "py-1"} #{(right_icon && "pr-1") || "pr-2"} #{(left_icon && "pl-1") || "pl-2"}"
+        "#{((right_icon || left_icon) && "py-0") || "py-1"}"
+    end
+  end
+
+  defp set_l_padding(size, left_icon) do
+    case size do
+      "twoxsmall" ->
+        "#{(left_icon && "pl-1") || "pl-2"}"
+
+      _ ->
+        "#{(left_icon && "pl-1") || "pl-2"}"
+    end
+  end
+
+  defp set_r_padding(size, right_icon) do
+    case size do
+      "twoxsmall" ->
+        "#{(right_icon && "pr-1") || "pr-2"}"
+
+      _ ->
+        "#{(right_icon && "pr-1") || "pr-2"}"
     end
   end
 
