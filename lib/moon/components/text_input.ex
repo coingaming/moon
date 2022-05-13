@@ -39,6 +39,7 @@ defmodule Moon.Components.TextInput do
 
   slot left_icon
   slot right_icon
+  slot hint_text
 
   def render(assigns) do
     text_input = ~F"""
@@ -79,6 +80,12 @@ defmodule Moon.Components.TextInput do
         keydown={@keydown}
         keyup={@keyup}
       />
+
+      {#if slot_assigned?(:hint_text)}
+        <div class="mt-2 ml-2 relative text-trunks-100">
+          <#slot name="hint_text" />
+        </div>
+      {/if}
     </div>
     """
 
