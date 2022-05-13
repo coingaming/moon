@@ -7,7 +7,6 @@ defmodule Moon.Components.Label do
   prop background_color, :string, default: "piccolo-100", values: Moon.colors()
   prop size, :string, default: "default", values: ["small", "default"]
   prop class, :string, default: "rounded-sm"
-  prop block_style_class, :string, default: "rounded-sm"
   slot default
 
   def render(assigns) do
