@@ -200,15 +200,15 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   defp label_1_code do
     """
-    <Label color="gohan-100" background_color="piccolo-100">
-      Active
-    </Label>
-    <Label color="krillin-100" background_color="trunks-100">
-      Active
-    </Label>
-    <Label color="bulma-100" background_color="dodoria-100">
-      Active
-    </Label>
+      <Label color="gohan-100" background_color="piccolo-100">
+        Active
+      </Label>
+      <Label color="krillin-100" background_color="trunks-100">
+        Active
+      </Label>
+      <Label color="bulma-100" background_color="dodoria-100">
+        Active
+      </Label>
     """
   end
 
@@ -225,36 +225,36 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   defp label_3_code do
     """
-    <div class="flex justify-around w-full items-center">
-      <Label size="twoxsmall">
-        <:left_icon><ControlsClose class="h-4 w-4"/></:left_icon>
-        Left Icon
-      </Label>
-      <Label size="twoxsmall">
-        Right Icon
-        <:right_icon><ControlsClose class="h-4 w-4"  /></:right_icon>
-      </Label>
-      <Label size="twoxsmall">
-        Both Icons
-        <:left_icon><ControlsClose class="h-4 w-4" /></:left_icon>
-        <:right_icon><ControlsClose class="h-4 w-4" /></:right_icon>
-      </Label>
-    </div>
-    <div class="flex justify-around w-full items-center">
-      <Label>
-        <:left_icon><GenericSettings class="h-6 w-6" /></:left_icon>
-        Left Icon
-      </Label>
-      <Label>
-        Right Icon
-        <:right_icon><GenericSettings class="h-6 w-6" /></:right_icon>
-      </Label>
-      <Label>
-        Both Icons
-        <:left_icon><GenericSettings class="h-6 w-6"  /></:left_icon>
-        <:right_icon><GenericSettings class="h-6 w-6"  /></:right_icon>
-      </Label>
-    </div>
+      <div class="flex justify-around w-full items-center">
+        <Label size="twoxsmall">
+          <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+          Left Icon
+        </Label>
+        <Label size="twoxsmall">
+          Right Icon
+          <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+        </Label>
+        <Label size="twoxsmall">
+          Both Icons
+          <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+          <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+        </Label>
+      </div>
+      <div class="flex justify-around w-full items-center">
+        <Label>
+          <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+          Left Icon
+        </Label>
+        <Label>
+          Right Icon
+          <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+        </Label>
+        <Label>
+          Both Icons
+          <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+          <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+        </Label>
+      </div>
     """
   end
 

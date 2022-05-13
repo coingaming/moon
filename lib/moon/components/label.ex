@@ -8,7 +8,7 @@ defmodule Moon.Components.Label do
   prop size, :string, default: "xsmall", values: ["twoxsmall", "xsmall"]
   prop class, :string
   prop is_uppercase, :boolean, default: true
-  prop border_radius_class, :string, default: "rounded-md"
+  prop border_radius_class, :string, default: "rounded-sm"
 
   slot default
   slot left_icon
@@ -19,10 +19,11 @@ defmodule Moon.Components.Label do
     <span class={
       "flex rounded-sm items-center align-middle leading-4",
       @border_radius_class,
+      @class,
       set_letter_spacing(@size),
       set_padding(@size, @left_icon, @right_icon),
       set_font_size(@size, @is_uppercase),
-      "#{@class} bg-#{@background_color} text-#{@color}",
+      "bg-#{@background_color} text-#{@color}",
       uppercase: @is_uppercase
     }>
       <span class={"items-center mr-1": @left_icon}>

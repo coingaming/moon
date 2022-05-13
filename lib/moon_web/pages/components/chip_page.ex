@@ -118,10 +118,10 @@ defmodule MoonWeb.Pages.Components.ChipPage do
           <Table items={[
             %{
               :name => 'size',
-              :type => 'twoxsmall | xsmall',
+              :type => 'xsmall | small | medium | large | xlarge',
               :required => 'false',
               :default => 'medium',
-              :description => 'Size for label'
+              :description => 'Size for chip'
             },
             %{
               :name => 'left_icon',
