@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/coingaming/moon/compare/v2.8.0...v2.8.1) (2022-05-16)
+
+
+### Bug Fixes
+
+* align the Label component with React version [MDS-74] ([#262](https://github.com/coingaming/moon/issues/262)) ([1a664e1](https://github.com/coingaming/moon/commit/1a664e1b5d73dbbfd3a79951c241aff27b85d098))
+
 # [2.8.0](https://github.com/coingaming/moon/compare/v2.7.7...v2.8.0) (2022-05-11)
 
 
