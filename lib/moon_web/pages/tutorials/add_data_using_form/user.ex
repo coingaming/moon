@@ -7,13 +7,13 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   @required_fields ~w(name email gender username password)a
-  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role)a
+  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions reason_ids role)a
 
   schema "users" do
-    field(:username, :string, default: "johndoe")
+    field(:username, :string)
     field(:password, :string, default: "verysecret123")
     field(:name, :string, default: "First Last")
-    field(:email, :string, default: "joe@doe.com")
+    field(:email, :string)
     field(:gender, :string, default: "male")
     field(:document_filename)
     field(:agrees_to_terms_of_service, :boolean, default: true)

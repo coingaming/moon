@@ -29,9 +29,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
       }
     ]
 
-  data username, :string, default: ""
-  data email, :string, default: ""
-
   def mount(params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
@@ -75,9 +72,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
                   <TextInput label="Username" placeholder="Username">
                     <:left_icon><IconUser /></:left_icon>
                     <:right_icon>
-                      {#if String.length(@username) > 0}
-                        <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
-                      {/if}
+                      <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
                     </:right_icon>
                   </TextInput>
                   <ErrorTag />
@@ -119,32 +114,20 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
 
   def handle_event(
         "register_form_update",
-        form_data,
+        %{"user" => user_params},
         socket
       ) do
-    username = form_data["user"]["username"] || ""
-    email = form_data["user"]["email"] || ""
-    reason_ids = form_data["user"]["reason_ids"] || []
-
-    user_changeset =
-      User.changeset(%User{}, %{
-        username: username,
-        email: email,
-        reason_ids: reason_ids
-      })
+    user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply,
      assign(socket,
-       user_changeset: user_changeset,
-       username: username,
-       email: email,
-       reason_ids: reason_ids
+       user_changeset: user_changeset
      )}
   end
 
-  def handle_event("register_form_submit", _, socket) do
-    IO.inspect(">>> User changeset ->": socket.assigns.user_changeset)
-    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+  def handle_event("register_form_submit", %{"user" => user_params}, socket) do
+    user_changeset = User.changeset(%User{}, user_params)
+    user_changeset = Map.merge(user_changeset, %{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
@@ -156,7 +139,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
         email: socket.assigns.email
       })
 
-    {:noreply, assign(socket, user_changeset: user_changeset, username: "")}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def example_1_code do
@@ -172,9 +155,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
           <TextInput label="Username" placeholder="Username">
             <:left_icon><IconUser /></:left_icon>
             <:right_icon>
-              {#if String.length(@username) > 0}
-                <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
-              {/if}
+             <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
             </:right_icon>
           </TextInput>
           <ErrorTag />
@@ -196,7 +177,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
   def example_1_state(assigns) do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
-    @username = {inspect(@username, pretty: true)}
     """
   end
 end
