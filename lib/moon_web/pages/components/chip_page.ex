@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
               :type => 'xsmall | small | medium | large | xlarge',
               :required => 'false',
               :default => 'medium',
-              :description => 'Size of Button'
+              :description => 'Size for chip'
             },
             %{
               :name => 'left_icon',

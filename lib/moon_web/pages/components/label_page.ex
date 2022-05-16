@@ -3,14 +3,15 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Icons.GenericInfo
+  alias Moon.Icons.ControlsClose
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -42,35 +43,9 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           Small count and labeling component.
         </p>
 
-        <p>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/badge.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/components/badge">React implementation</Link>
-        </p>
-
-        <ExampleAndCode title="Label" id="badge1">
+        <ExampleAndCode title="Colours" id="label_1">
           <:example>
-            <LeftToRight>
-              <Label>
-                Active
-              </Label>
-            </LeftToRight>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-      <Label>
-        Active
-      </Label>
-    </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Customize colours" id="badge2">
-          <:note>
-            You coud simstly use color and background_color props
-          </:note>
-          <:example>
-            <LeftToRight>
+            <div class="flex justify-around w-full items-center">
               <Label color="gohan-100" background_color="piccolo-100">
                 Active
               </Label>
@@ -80,49 +55,217 @@ defmodule MoonWeb.Pages.Components.LabelPage do
               <Label color="bulma-100" background_color="dodoria-100">
                 Active
               </Label>
-            </LeftToRight>
+            </div>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        <Label color="gohan-100" background_color="piccolo-100">
-          Active
-        </Label>
-        <Label color="krillin-100" background_color="trunks-100">
-          Active
-        </Label>
-        <Label color="bulma-100" background_color="dodoria-100">
-          Active
-        </Label>
-    </#CodePreview>
-          </:code>
+          <:code>{label_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Customize size" id="badge3">
-          <:note>
-            You coud simply use size prop. By default size is xSmall. You can change it to Small.
-          </:note>
+        <ExampleAndCode title="Sizes" id="label_2">
           <:example>
-            <LeftToRight>
-              <Label>Default</Label>
-              <Label size="small">
-                small size
+            <div class="flex justify-around w-full items-center">
+              <Label size="xsmall">
+                xsmall (default)
               </Label>
-            </LeftToRight>
+              <Label size="twoxsmall">
+                twoxsmall
+              </Label>
+            </div>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        <Label>Default</Label>
-        <Label size="small">
-          small size
-        </Label>
-      </LeftToRight>
-    </#CodePreview>
-          </:code>
+          <:code>{label_2_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Label with Icons" id="label_3">
+          <:example>
+            <TopToDown gap={8}>
+              <div class="flex justify-around w-full items-center">
+                <Label size="twoxsmall">
+                  <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                  Left Icon
+                </Label>
+                <Label size="twoxsmall">
+                  Right Icon
+                  <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                </Label>
+                <Label size="twoxsmall">
+                  Both Icons
+                  <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                  <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                </Label>
+              </div>
+              <div class="flex justify-around w-full items-center">
+                <Label>
+                  <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                  Left Icon
+                </Label>
+                <Label>
+                  Right Icon
+                  <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+                </Label>
+                <Label>
+                  Both Icons
+                  <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                  <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+                </Label>
+              </div>
+            </TopToDown>
+          </:example>
+
+          <:code>{label_3_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Letter cases" id="label_4">
+          <:example>
+            <div class="flex justify-around w-full items-center">
+              <Label>
+                Uppercase (default)
+              </Label>
+              <Label is_uppercase={false}>
+                Lowercase
+              </Label>
+            </div>
+          </:example>
+
+          <:code>{label_4_code()}</:code>
+        </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'size',
+              :type => 'xsmall | small | medium | large | xlarge',
+              :required => 'false',
+              :default => 'medium',
+              :description => 'Size of Button'
+            },
+            %{
+              :name => 'left_icon',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Asset name for the left icon'
+            },
+            %{
+              :name => 'right_icon',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Asset name for the right icon'
+            },
+            %{
+              :name => 'color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'gohan.100',
+              :description => 'Asset name for the icon. Icon only and no text shown'
+            },
+            %{
+              :name => 'background_color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'bulma.100',
+              :description => 'Active state'
+            },
+            %{
+              :name => 'is_uppercase',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'true',
+              :description => 'Letter case'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp label_1_code do
+    """
+      <Label color="gohan-100" background_color="piccolo-100">
+        Active
+      </Label>
+      <Label color="krillin-100" background_color="trunks-100">
+        Active
+      </Label>
+      <Label color="bulma-100" background_color="dodoria-100">
+        Active
+      </Label>
+    """
+  end
+
+  defp label_2_code do
+    """
+      <Label size="xsmall">
+        xsmall (default)
+      </Label>
+      <Label size="twoxsmall">
+        twoxsmall
+      </Label>
+    """
+  end
+
+  defp label_3_code do
+    """
+      <div class="flex justify-around w-full items-center">
+        <Label size="twoxsmall">
+          <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+          Left Icon
+        </Label>
+        <Label size="twoxsmall">
+          Right Icon
+          <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+        </Label>
+        <Label size="twoxsmall">
+          Both Icons
+          <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+          <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+        </Label>
+      </div>
+      <div class="flex justify-around w-full items-center">
+        <Label>
+          <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+          Left Icon
+        </Label>
+        <Label>
+          Right Icon
+          <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+        </Label>
+        <Label>
+          Both Icons
+          <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+          <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+        </Label>
+      </div>
+    """
+  end
+
+  defp label_4_code do
+    """
+      <Label>
+        Uppercase (default)
+      </Label>
+      <Label is_uppercase={false}>
+        Lowercase
+      </Label>
     """
   end
 end
