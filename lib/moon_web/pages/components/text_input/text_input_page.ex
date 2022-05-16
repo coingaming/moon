@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
   alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Components.Select.MultiSelect
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   data breadcrumbs, :any,
@@ -35,7 +36,8 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
     user_changeset =
       User.changeset(%User{}, %{
         username: "",
-        email: ""
+        email: "",
+        reason_ids: []
       })
 
     {:ok,
@@ -91,6 +93,10 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
                   </TextInput>
                   <ErrorTag />
                 </Field>
+                <Field name={:reason_ids}>
+                  <MultiSelect id="available_reasons" options={User.available_reasons()} />
+                  <ErrorTag />
+                </Field>
                 <div>
                   <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
                 </div>
@@ -113,42 +119,31 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
 
   def handle_event(
         "register_form_update",
-        %{
-          "user" => %{
-            "username" => username,
-            "email" => email
-          }
-        },
+        form_data,
         socket
       ) do
+    username = form_data["user"]["username"] || ""
+    email = form_data["user"]["email"] || ""
+    reason_ids = form_data["user"]["reason_ids"] || []
+
     user_changeset =
       User.changeset(%User{}, %{
         username: username,
-        email: email
+        email: email,
+        reason_ids: reason_ids
       })
 
-    {:noreply, assign(socket, user_changeset: user_changeset, username: username, email: email)}
-  end
-
-  def handle_event(
-        "register_form_update",
-        %{
-          "user" => %{
-            "username" => username
-          }
-        },
-        socket
-      ) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        username: username,
-        email: socket.assigns.email
-      })
-
-    {:noreply, assign(socket, user_changeset: user_changeset, username: username)}
+    {:noreply,
+     assign(socket,
+       user_changeset: user_changeset,
+       username: username,
+       email: email,
+       reason_ids: reason_ids
+     )}
   end
 
   def handle_event("register_form_submit", _, socket) do
+    IO.inspect(">>> User changeset ->": socket.assigns.user_changeset)
     user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}

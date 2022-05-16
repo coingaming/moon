@@ -19,7 +19,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:agrees_to_terms_of_service, :boolean, default: true)
     field(:agrees_to_marketing_emails, :boolean, default: true)
     field(:permissions, {:array, :integer}, default: [1, 2])
+    field(:reason_ids, {:array, :integer}, default: [])
     field(:role, :integer, default: nil)
+  end
+
+  def available_reasons() do
+    [
+      %{value: 1, label: "Reason 1"},
+      %{value: 2, label: "Reason 2"},
+      %{value: 3, label: "Resaon 3"}
+    ]
   end
 
   def available_permissions() do
