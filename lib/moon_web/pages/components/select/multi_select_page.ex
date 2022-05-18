@@ -55,7 +55,6 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
                   id="user-permissions-example-2"
                   options={User.available_permissions()}
                   prompt="Permission"
-                  label_border_radius_class="rounded-lg"
                 />
               </Field>
             </Form>

@@ -2,7 +2,6 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Label
   alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
@@ -11,17 +10,18 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   prop option, :any
   prop label_text_size_class, :string
   prop label_text_color_class, :string
-  prop label_border_radius_class, :string
+  prop label_background_color_class, :string
 
   def render(assigns) do
     ~F"""
     {#if @option}
       <Label
-        class={"#{@label_text_size_class} #{@label_text_color_class}"}
-        border_radius_class={@label_border_radius_class}
+        class={@label_text_size_class}
+        background_color={@label_background_color_class}
+        color={@label_text_color_class}
       >
-        <LeftToRight>
-          <div>{@option.label}</div>
+        {@option.label}
+        <:right_icon>
           <div
             class="cursor-pointer"
             :on-click={JS.dispatch("moon:update-select",
@@ -29,7 +29,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
               to: "##{@select_id}"
             )}
           ><ControlsClose /></div>
-        </LeftToRight>
+        </:right_icon>
       </Label>
     {/if}
     """
@@ -50,30 +50,30 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   prop prompt_text_color_class, :string
   prop label_text_size_class, :string
   prop label_text_color_class, :string
-  prop label_border_radius_class, :string
+  prop label_background_color_class, :string
 
   def render(assigns) do
     ~F"""
-    <div>
-      {#if @value && @value != []}
-        <div class={@prompt_text_size_class, @prompt_text_color_class}>
-          {@prompt}
-        </div>
+    {#if @value && @value != []}
+      <div class={"w-full mb-2", @prompt_text_size_class, @prompt_text_color_class}>
+        {@prompt}
+      </div>
+      <div class="flex justify-start gap-1">
         {#for v <- @value}
           <SelectedLabel
             {=@select_id}
             option={get_option(@options, v)}
             {=@label_text_size_class}
             {=@label_text_color_class}
-            {=@label_border_radius_class}
+            {=@label_background_color_class}
           />
         {/for}
-      {#else}
-        <div class={@prompt_text_color_class}>
-          {@prompt}
-        </div>
-      {/if}
-    </div>
+      </div>
+    {#else}
+      <div class={@prompt_text_color_class}>
+        {@prompt}
+      </div>
+    {/if}
     """
   end
 
@@ -110,8 +110,8 @@ defmodule Moon.Components.Select.MultiSelect do
   prop prompt_text_size_class, :string, default: "text-xs"
   prop prompt_text_color_class, :string, default: "text-trunks-100"
   prop label_text_size_class, :string, default: "text-sm"
-  prop label_text_color_class, :string, default: "text-bulma-100"
-  prop label_border_radius_class, :string
+  prop label_text_color_class, :string, default: "white-100"
+  prop label_background_color_class, :string, default: "hit-100"
 
   data open, :boolean, default: false
 
@@ -137,7 +137,7 @@ defmodule Moon.Components.Select.MultiSelect do
                 {=@prompt_text_color_class}
                 {=@label_text_size_class}
                 {=@label_text_color_class}
-                {=@label_border_radius_class}
+                {=@label_background_color_class}
               />
             </:left>
             <:right>
