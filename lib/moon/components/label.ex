@@ -17,7 +17,7 @@ defmodule Moon.Components.Label do
   def render(assigns) do
     ~F"""
     <span class={
-      "flex rounded-sm items-center align-middle leading-4",
+      "flex items-center align-middle leading-4",
       @border_radius_class,
       @class,
       set_letter_spacing(@size),
