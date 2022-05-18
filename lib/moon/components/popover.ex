@@ -4,6 +4,7 @@ defmodule Moon.Components.Popover do
   use Moon.StatelessComponent
 
   prop class, :css_class
+  prop inline_class, :boolean
   prop show, :boolean
 
   prop placement, :string,
@@ -34,7 +35,13 @@ defmodule Moon.Components.Popover do
     classes = wrapper_classes(assigns.placement)
 
     ~F"""
-    <div class={"relative inline-block", @class} data-testid={@testid}>
+    <div class={
+        "relative",
+        @class,
+        "inline-block": @inline_class
+      }
+      data-testid={@testid}
+    >
       <#slot />
       {#if @show}
         {!-- This overlay is used to register click outside the `outer` wrapper --}
