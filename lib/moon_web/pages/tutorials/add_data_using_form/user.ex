@@ -34,9 +34,9 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
 
   def available_roles() do
     [
-      %{value: 1, label: "User"},
-      %{value: 2, label: "Editor"},
-      %{value: 3, label: "Admin"}
+      %{value: 1, label: "User", icon: "generic_user"},
+      %{value: 2, label: "Editor", icon: "generic_edit"},
+      %{value: 3, label: "Admin", icon: "generic_star"}
     ]
   end
 

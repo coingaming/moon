@@ -7,7 +7,6 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   alias Moon.Components.Form
   alias Moon.Components.Field
   alias Moon.Components.Heading
-  alias Moon.Components.FieldLabel
   alias Moon.Components.Select.MultiSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -52,8 +51,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <MultiSelect id="user-permissions-example-2" options={User.available_permissions()} />
+                <MultiSelect id="user-permissions-example-2" options={User.available_permissions()} prompt="Permission" label_border_radius_class="rounded-lg" />
               </Field>
             </Form>
           </:example>
@@ -94,13 +92,11 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     """
     alias Moon.Components.Form
     alias Moon.Components.Field
-    alias Moon.Components.FieldLabel
     alias Moon.Components.Select.MultiSelect
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:permissions}>
-        <FieldLabel>Permissions</FieldLabel>
-        <MultiSelect id="user-permissions" options={User.available_permissions()} />
+        <MultiSelect id="user-permissions" options={User.available_permissions()} border_radius_class="rounded-lg"/>
       </Field>
     </Form>
 
