@@ -39,7 +39,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
             detail: %{value: @option.value, selected: false},
             to: "##{@select_id}"
           )}
-        ></div>
+        />
       </div>
     {/if}
     """

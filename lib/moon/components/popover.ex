@@ -35,7 +35,8 @@ defmodule Moon.Components.Popover do
     classes = wrapper_classes(assigns.placement)
 
     ~F"""
-    <div class={
+    <div
+      class={
         "relative",
         @class,
         "inline-block": @inline_class

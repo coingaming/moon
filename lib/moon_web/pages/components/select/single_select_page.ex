@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role"/>
+                <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role" />
               </Field>
             </Form>
           </:example>
@@ -66,14 +66,16 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
         <Heading size={56} class="mb-4">Single Select (selected value with icon)</Heading>
 
-        <ExampleAndCode
-          title=""
-          id="single_select_with_options_as_prop_and_icon"
-        >
+        <ExampleAndCode title="" id="single_select_with_options_as_prop_and_icon">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-2" options={User.available_roles()} prompt="Select role" mode="icon"/>
+                <SingleSelect
+                  id="user-roles-example-2"
+                  options={User.available_roles()}
+                  prompt="Select role"
+                  mode="icon"
+                />
               </Field>
             </Form>
           </:example>
