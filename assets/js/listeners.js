@@ -11,3 +11,15 @@ window.addEventListener("moon:update-select", (event) => {
     new Event("input", { bubbles: true })
   )
 });
+
+window.addEventListener("moon:rotate-accordion-arrow", (event) => {
+  var element = event.target;
+  var hasClass = element.classList.contains("rotate-0");
+  if (hasClass) {
+    element.classList.add("rotate-180");
+    element.classList.remove("rotate-0");
+  } else {
+    element.classList.add("rotate-0");
+    element.classList.remove("rotate-180");
+  }
+});
