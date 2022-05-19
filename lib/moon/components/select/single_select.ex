@@ -2,27 +2,45 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Autolayouts.LeftToRight
-  alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
+  alias Moon.Icon
+
   prop select_id, :string
   prop option, :any
+  prop prompt, :string
+  prop mode, :string
+  prop icon_class, :string
+  prop prompt_text_size_class, :string
+  prop prompt_text_color_class, :string
+  prop label_text_size_class, :string
+  prop label_text_color_class, :string
 
   def render(assigns) do
+    # TODO: Create a right grid
     ~F"""
     {#if @option}
-      <span>
-        <LeftToRight>
-          <span>{@option.label}</span>
-          <span
-            class="cursor-pointer"
-            :on-click={JS.dispatch("moon:update-select",
-              detail: %{value: @option.value, selected: false},
-              to: "##{@select_id}"
-            )}
-          ><ControlsClose /></span>
-        </LeftToRight>
-      </span>
+      <div>
+        {#case @mode}
+          {#match "icon"}
+            <div class="relative top-2 flex items-center">
+              <Icon class={@icon_class} name={@option.icon} />
+            </div>
+          {#match "single"}
+        {/case}
+        <div class={@prompt_text_size_class, @prompt_text_color_class, "relative left-6 bottom-4": @mode == "icon"}>
+          {@prompt}
+        </div>
+        <div class={@label_text_size_class, @label_text_color_class, "relative left-6 bottom-4": @mode == "icon"}>
+          {@option.label}
+        </div>
+        <div
+          class="cursor-pointer"
+          :on-click={JS.dispatch("moon:update-select",
+            detail: %{value: @option.value, selected: false},
+            to: "##{@select_id}"
+          )}
+        />
+      </div>
     {/if}
     """
   end
@@ -38,23 +56,39 @@ defmodule Moon.Components.Select.SingleSelect.Value do
   prop options, :list, default: []
   prop value, :any
   prop prompt, :string
+  prop mode, :string
+  prop icon_class, :string
+  prop prompt_text_size_class, :string
+  prop prompt_text_color_class, :string
+  prop label_text_size_class, :string
+  prop label_text_color_class, :string
 
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap gap-2">
       {#if @value && @value != ""}
-        <SelectedValue select_id={@select_id} option={get_option(@options, @value)} />
+        <SelectedValue
+          {=@select_id}
+          option={get_option(@options, @value)}
+          {=@mode}
+          {=@icon_class}
+          {=@prompt}
+          {=@prompt_text_size_class}
+          {=@prompt_text_color_class}
+          {=@label_text_size_class}
+          {=@label_text_color_class}
+        />
       {#else}
-        {@prompt}
+        <div class={@prompt_text_color_class}>
+          {@prompt}
+        </div>
       {/if}
     </div>
     """
   end
 
   def get_option(options, v) do
-    Enum.find(options, fn option ->
-      "#{option.value}" == "#{v}"
-    end)
+    Enum.find(options, fn option -> "#{option.value}" == "#{v}" end)
   end
 end
 
@@ -81,6 +115,12 @@ defmodule Moon.Components.Select.SingleSelect do
   prop required, :boolean
   prop class, :string
   prop popover_placement, :string, default: "bottom-start"
+  prop mode, :string, default: "single"
+  prop icon_class, :string, default: ""
+  prop prompt_text_size_class, :string, default: "text-xs"
+  prop prompt_text_color_class, :string, default: "text-trunks-100"
+  prop label_text_size_class, :string, default: "text-sm"
+  prop label_text_color_class, :string, default: "text-bulma-100"
 
   data open, :boolean, default: false
 
@@ -88,21 +128,27 @@ defmodule Moon.Components.Select.SingleSelect do
 
   def render(assigns) do
     ~F"""
-    <InputContext assigns={assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close">
+    <InputContext {=assigns} :let={form: form, field: field}>
+      <Popover placement={@popover_placement} show={@open} on_close="close" class="p-4">
         {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "w-full hidden",
           id: @id,
           prompt: [key: ""]
         )}
         <FieldBorder click="toggle_open">
-          <PullAside class="align-middle">
+          <PullAside class="p-4 align-middle">
             <:left>
               <Value
                 select_id={@id}
-                options={@options}
+                {=@options}
                 value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
-                prompt={@prompt}
+                {=@mode}
+                {=@icon_class}
+                {=@prompt}
+                {=@prompt_text_size_class}
+                {=@prompt_text_color_class}
+                {=@label_text_size_class}
+                {=@label_text_color_class}
               />
             </:left>
             <:right>
@@ -111,7 +157,7 @@ defmodule Moon.Components.Select.SingleSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} options={@options} />
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} />
         </:content>
       </Popover>
     </InputContext>

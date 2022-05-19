@@ -7,7 +7,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias Moon.Components.Form
   alias Moon.Components.Field
   alias Moon.Components.Heading
-  alias Moon.Components.FieldLabel
   alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -55,13 +54,33 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <FieldLabel>Role</FieldLabel>
                 <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role" />
               </Field>
             </Form>
           </:example>
 
-          <:code>{code_for_multi_select_with_options_as_prop()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop()}</:code>
+
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
+
+        <Heading size={56} class="mb-4">Single Select (selected value with icon)</Heading>
+
+        <ExampleAndCode title="" id="single_select_with_options_as_prop_and_icon">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-2"
+                  options={User.available_roles()}
+                  prompt="Select role"
+                  mode="icon"
+                />
+              </Field>
+            </Form>
+          </:example>
+
+          <:code>{code_for_single_select_with_options_as_prop_and_icon()}</:code>
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
@@ -94,12 +113,23 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def code_for_multi_select_with_options_as_prop do
+  def code_for_single_select_with_options_as_prop do
     """
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <FieldLabel>Permissions</FieldLabel>
         <SingleSelect id="user-roles-example-1" options={User.available_roles()} />
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_single_select_with_options_as_prop_and_icon do
+    """
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <FieldLabel>Permissions</FieldLabel>
+        <SingleSelect id="user-roles-example-2" options={User.available_roles() mode="icon"} />
       </Field>
     </Form>
     """

@@ -2,19 +2,26 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Label
   alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
+
   prop select_id, :string
   prop option, :any
+  prop label_text_size_class, :string
+  prop label_text_color_class, :string
+  prop label_background_color_class, :string
 
   def render(assigns) do
     ~F"""
     {#if @option}
-      <Label>
-        <LeftToRight>
-          <div>{@option.label}</div>
+      <Label
+        class={@label_text_size_class}
+        background_color={@label_background_color_class}
+        color={@label_text_color_class}
+      >
+        {@option.label}
+        <:right_icon>
           <div
             class="cursor-pointer"
             :on-click={JS.dispatch("moon:update-select",
@@ -22,7 +29,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
               to: "##{@select_id}"
             )}
           ><ControlsClose /></div>
-        </LeftToRight>
+        </:right_icon>
       </Label>
     {/if}
     """
@@ -39,18 +46,34 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   prop options, :list, default: []
   prop value, :list, default: []
   prop prompt, :string
+  prop prompt_text_size_class, :string
+  prop prompt_text_color_class, :string
+  prop label_text_size_class, :string
+  prop label_text_color_class, :string
+  prop label_background_color_class, :string
 
   def render(assigns) do
     ~F"""
-    <div>
-      {#if @value && @value != []}
-        {#for v <- @value}
-          <SelectedLabel select_id={@select_id} option={get_option(@options, v)} />
-        {/for}
-      {#else}
+    {#if @value && @value != []}
+      <div class={"w-full mb-2", @prompt_text_size_class, @prompt_text_color_class}>
         {@prompt}
-      {/if}
-    </div>
+      </div>
+      <div class="flex justify-start gap-1">
+        {#for v <- @value}
+          <SelectedLabel
+            {=@select_id}
+            option={get_option(@options, v)}
+            {=@label_text_size_class}
+            {=@label_text_color_class}
+            {=@label_background_color_class}
+          />
+        {/for}
+      </div>
+    {#else}
+      <div class={@prompt_text_color_class}>
+        {@prompt}
+      </div>
+    {/if}
     """
   end
 
@@ -84,6 +107,11 @@ defmodule Moon.Components.Select.MultiSelect do
   prop required, :boolean
   prop class, :string
   prop popover_placement, :string, default: "bottom-start"
+  prop prompt_text_size_class, :string, default: "text-xs"
+  prop prompt_text_color_class, :string, default: "text-trunks-100"
+  prop label_text_size_class, :string, default: "text-sm"
+  prop label_text_color_class, :string, default: "white-100"
+  prop label_background_color_class, :string, default: "hit-100"
 
   data open, :boolean, default: false
 
@@ -92,19 +120,24 @@ defmodule Moon.Components.Select.MultiSelect do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close">
+      <Popover placement={@popover_placement} show={@open} on_close="close" class="p-4">
         {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id
         )}
         <FieldBorder click="toggle_open">
-          <PullAside class="align-middle">
+          <PullAside class="p-4 align-middle">
             <:left>
               <Labels
                 select_id={@id}
-                options={@options}
+                {=@options}
                 value={SelectHelpers.get_value(form, field, value: @value)}
-                prompt={@prompt}
+                {=@prompt}
+                {=@prompt_text_size_class}
+                {=@prompt_text_color_class}
+                {=@label_text_size_class}
+                {=@label_text_color_class}
+                {=@label_background_color_class}
               />
             </:left>
             <:right>
@@ -113,7 +146,7 @@ defmodule Moon.Components.Select.MultiSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} options={@options} is_multi />
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
         </:content>
       </Popover>
     </InputContext>
