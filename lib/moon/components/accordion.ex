@@ -49,7 +49,22 @@ defmodule Moon.Components.Accordion do
   end
 
   def toggle_content(id) do
-    JS.dispatch("moon:rotate-accordion-arrow", to: "#" <> id <> "-arrow")
-    |> JS.toggle(to: "#" <> id <> "-content")
+    JS.toggle(to: "#" <> id <> "-content")
+    |> JS.remove_class(
+      "rotate-0",
+      to: "#" <> id <> "-arrow.rotate-0"
+    )
+    |> JS.add_class(
+      "rotate-0",
+      to: "#" <> id <> "-arrow:not(.rotate-0)"
+    )
+    |> JS.remove_class(
+      "rotate-180",
+      to: "#" <> id <> "-arrow.rotate-180"
+    )
+    |> JS.add_class(
+      "rotate-180",
+      to: "#" <> id <> "-arrow:not(.rotate-180)"
+    )
   end
 end
