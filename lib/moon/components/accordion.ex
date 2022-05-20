@@ -28,7 +28,14 @@ defmodule Moon.Components.Accordion do
         <:right>
           <LeftToRight>
             <#slot name="header_controls" />
-            <div :on-click={toggle_content(@id)}>
+            <div
+              :on-click={toggle_content(@id)}
+              id={@id <> "-arrow"}
+              class={
+                "rotate-0": !@open_by_default,
+                "rotate-180": @open_by_default
+              }
+            >
               <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
             </div>
           </LeftToRight>
@@ -43,5 +50,21 @@ defmodule Moon.Components.Accordion do
 
   def toggle_content(id) do
     JS.toggle(to: "#" <> id <> "-content")
+    |> JS.remove_class(
+      "rotate-0",
+      to: "#" <> id <> "-arrow.rotate-0"
+    )
+    |> JS.add_class(
+      "rotate-0",
+      to: "#" <> id <> "-arrow:not(.rotate-0)"
+    )
+    |> JS.remove_class(
+      "rotate-180",
+      to: "#" <> id <> "-arrow.rotate-180"
+    )
+    |> JS.add_class(
+      "rotate-180",
+      to: "#" <> id <> "-arrow:not(.rotate-180)"
+    )
   end
 end
