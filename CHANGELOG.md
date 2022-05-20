@@ -1,3 +1,10 @@
+## [2.8.2](https://github.com/coingaming/moon/compare/v2.8.1...v2.8.2) (2022-05-20)
+
+
+### Bug Fixes
+
+* fix the accordion arrow and state [MDS-78] ([#265](https://github.com/coingaming/moon/issues/265)) ([e684f4d](https://github.com/coingaming/moon/commit/e684f4d3002588c3746dc073a4fc29201ffe1401))
+
 ## [2.8.1](https://github.com/coingaming/moon/compare/v2.8.0...v2.8.1) (2022-05-16)
 
 
