@@ -47,83 +47,150 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
         Component for displaying user profile image or placeholder if no image
 
-        <ExampleAndCode title="Image avatars" id="avatar_1">
+        <ExampleAndCode title="Variants" id="avatar_1">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="large" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar name="JS" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" />
+            </div>
           </:example>
 
-          <:code>
-            <#CodePreview>
-            <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
-        </#CodePreview>
-          </:code>
+          <:code>{avatar_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Letter avatars" id="avatar_2">
-          <:note>
-            Use name prop. No more than 2 / 3 characters
-          </:note>
+        <ExampleAndCode title="Different colours" id="avatar_2">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar color="frieza-100" background_color="chi-chi-100" />
+              <Avatar color="gohan-100" background_color="krillin-100" />
+              <Avatar color="chi-chi-100" background_color="frieza-100" />
+            </div>
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_2_code()}</:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
+
+        <ExampleAndCode title="Different sizes" id="avatar_3">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="small" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="large" />
-            </LeftToRight>
+            <TopToDown>
+              <div class="flex justify-around items-center w-full mb-4">
+                <Avatar size="xsmall" />
+                <Avatar size="small" />
+                <Avatar />
+                <Avatar size="large" />
+                <Avatar size="xlarge" />
+                <Avatar size="twoxlarge" />
+              </div>
+              <div class="flex justify-around items-center w-full mb-4">
+                <Avatar name="JS" size="xsmall" />
+                <Avatar name="JS" size="small" />
+                <Avatar name="JS" />
+                <Avatar name="JS" size="large" />
+                <Avatar name="JS" size="xlarge" />
+                <Avatar name="JS" size="twoxlarge" />
+              </div>
+              <div class="flex justify-around items-center w-full">
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+              </div>
+            </TopToDown>
+
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="small" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="large" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_3_code()}</:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Different colors" id="avatar_4">
+
+        <ExampleAndCode title="Active status" id="avatar_4">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
-              <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
-              <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar isStatusActive />
+              <Avatar image_url="https://www.fillmurray.com/200/200" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" isStatusActive />
+            </div>
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
-        <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
-        <Avatar color="piccolo-100" background_color="gohan-100" size="medium" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_4_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Status origin" id="avatar_5">
+          <:example>
+            <div class="flex justify-around w-full items-center">
+
+            </div>
+          </:example>
+
+          <:code>{avatar_5_code()}</:code>
+        </ExampleAndCode>
+
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp avatar_1_code do
+    """
+      <Avatar />
+      <Avatar name="JS" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+    """
+  end
+
+  defp avatar_2_code do
+    """
+      <Avatar />
+      <Avatar color="frieza-100" background_color="chi-chi-100" />
+      <Avatar color="gohan-100" background_color="krillin-100" />
+      <Avatar color="chi-chi-100" background_color="frieza-100" />
+    """
+  end
+
+  defp avatar_3_code do
+    """
+    <div class="flex justify-around items-center w-full mb-4">
+      <Avatar size="xsmall" />
+      <Avatar size="small" />
+      <Avatar />
+      <Avatar size="large" />
+      <Avatar size="xlarge" />
+      <Avatar size="twoxlarge" />
+    </div>
+    <div class="flex justify-around items-center w-full mb-4">
+      <Avatar name="JS" size="xsmall" />
+      <Avatar name="JS" size="small" />
+      <Avatar name="JS" />
+      <Avatar name="JS" size="large" />
+      <Avatar name="JS" size="xlarge" />
+      <Avatar name="JS" size="twoxlarge" />
+    </div>
+    <div class="flex justify-around items-center w-full">
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+    </div>
+    """
+  end
+
+  defp avatar_4_code do
+    """
+      <Chip size="small">Small</Chip>
+      <Chip>Medium (default)</Chip>
+    """
+  end
+
+  defp avatar_5_code do
+    """
+      <Chip size="small">Small</Chip>
+      <Chip>Medium (default)</Chip>
     """
   end
 end
