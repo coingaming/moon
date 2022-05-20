@@ -28,28 +28,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
       }
     ]
 
-  data username, :string, default: ""
-  data email, :string, default: ""
-
-  def mount(params, _session, socket) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        username: "",
-        email: ""
-      })
-
-    {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
-       active_page: __MODULE__,
-       user_changeset: user_changeset
-     )}
-  end
-
-  def handle_params(_params, uri, socket) do
-    {:noreply, assign(socket, uri: uri)}
-  end
-
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -73,7 +51,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
                   <TextInput label="Username" placeholder="Username">
                     <:left_icon><IconUser /></:left_icon>
                     <:right_icon>
-                      {#if String.length(@username) > 0}
+                      {#if String.length(@user_changeset.changes[:username] || @user.username || "") > 0}
                         <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
                       {/if}
                     </:right_icon>
@@ -107,61 +85,48 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
     """
   end
 
+  def mount(params, _session, socket) do
+    user = %User{}
+    user_changeset = User.changeset(user, %{})
+
+    {:ok,
+     assign(socket,
+       theme_name: params["theme_name"] || "sportsbet-dark",
+       active_page: __MODULE__,
+       user: user,
+       user_changeset: user_changeset
+     )}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def get_has_valid_username(user_changeset) do
     !Keyword.has_key?(user_changeset.errors, :username)
   end
 
-  def handle_event(
-        "register_form_update",
-        %{
-          "user" => %{
-            "username" => username,
-            "email" => email
-          }
-        },
-        socket
-      ) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        username: username,
-        email: email
-      })
+  def handle_event("register_form_update", params, socket) do
+    user_changeset = User.changeset(socket.assigns.user, params["user"])
 
-    {:noreply, assign(socket, user_changeset: user_changeset, username: username, email: email)}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def handle_event(
-        "register_form_update",
-        %{
-          "user" => %{
-            "username" => username
-          }
-        },
-        socket
-      ) do
+  def handle_event("register_form_submit", params, socket) do
     user_changeset =
-      User.changeset(%User{}, %{
-        username: username,
-        email: socket.assigns.email
-      })
-
-    {:noreply, assign(socket, user_changeset: user_changeset, username: username)}
-  end
-
-  def handle_event("register_form_submit", _, socket) do
-    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+      User.changeset(socket.assigns.user, params["user"]) |> Map.merge(%{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event("clear_username", _, socket) do
     user_changeset =
-      User.changeset(%User{}, %{
+      User.changeset(socket.assigns.user, %{
         username: "",
-        email: socket.assigns.email
+        email: socket.assigns.user_changeset.changes["email"]
       })
 
-    {:noreply, assign(socket, user_changeset: user_changeset, username: "")}
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def example_1_code do
@@ -201,7 +166,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
   def example_1_state(assigns) do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
-    @username = {inspect(@username, pretty: true)}
+    @user = {inspect(@user, pretty: true)}
     """
   end
 end
