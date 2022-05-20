@@ -28,9 +28,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
       }
     ]
 
-  data username, :string, default: ""
-  data email, :string, default: ""
-
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -54,7 +51,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
                   <TextInput label="Username" placeholder="Username">
                     <:left_icon><IconUser /></:left_icon>
                     <:right_icon>
-                      {#if String.length(@username) > 0}
+                      {#if String.length(@user_changeset.changes[:username] || @user.username || "") > 0}
                         <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
                       {/if}
                     </:right_icon>
@@ -89,11 +86,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
   end
 
   def mount(params, _session, socket) do
-    user = %User{
-      username: "",
-      email: ""
-    }
-
+    user = %User{}
     user_changeset = User.changeset(user, %{})
 
     {:ok,
