@@ -1,3 +1,5 @@
+# this component will be replaced by Moon.Components.Select.SingleSelect
+
 defmodule Moon.Components.SingleSelect.Item do
   @moduledoc false
 

@@ -2,23 +2,24 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
+
   alias Moon.Components.Label
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
 
   prop select_id, :string
   prop option, :any
-  prop label_text_size_class, :string
-  prop label_text_color_class, :string
-  prop label_background_color_class, :string
+  prop size, :string
+  prop background_color_class, :string, default: "hit-100"
 
   def render(assigns) do
     ~F"""
     {#if @option}
       <Label
-        class={@label_text_size_class}
-        background_color={@label_background_color_class}
-        color={@label_text_color_class}
+        class={SelectHelpers.innerlabel_font_class(@size)}
+        background_color={@background_color_class}
+        color="text-trunks-100"
       >
         {@option.label}
         <:right_icon>
@@ -40,47 +41,52 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   @moduledoc false
 
   use Moon.StatelessComponent
+
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias __MODULE__.SelectedLabel
 
   prop select_id, :string
   prop options, :list, default: []
   prop value, :list, default: []
+  prop size, :string
   prop prompt, :string
-  prop prompt_text_size_class, :string
-  prop prompt_text_color_class, :string
-  prop label_text_size_class, :string
-  prop label_text_color_class, :string
-  prop label_background_color_class, :string
 
   def render(assigns) do
     ~F"""
     {#if @value && @value != []}
-      <div class={"w-full mb-2", @prompt_text_size_class, @prompt_text_color_class}>
-        {@prompt}
-      </div>
-      <div class="flex justify-start gap-1">
-        {#for v <- @value}
-          <SelectedLabel
-            {=@select_id}
-            option={get_option(@options, v)}
-            {=@label_text_size_class}
-            {=@label_text_color_class}
-            {=@label_background_color_class}
-          />
-        {/for}
+      <div
+        class={"gap-1", "grid grid-cols-1": @prompt}
+        style={get_style("grid-auto-flow": if(@prompt, do: "row"))}
+      >
+        {#if @prompt}
+          <div
+            class={
+              "text-trunks-100",
+              SelectHelpers.innerlabel_font_class(@size)
+            }
+            style="grid-col: span 2 / span 2;"
+          >
+            {@prompt}
+          </div>
+        {/if}
+        <div
+          class="flex justify-start gap-1"
+          style={get_style("grid-col": if(@prompt, do: "span 2 / span 2"))}
+        >
+          {#for v <- @value}
+            <SelectedLabel {=@select_id} {=@size} option={SelectHelpers.get_option(@options, v)} />
+          {/for}
+        </div>
       </div>
     {#else}
-      <div class={@prompt_text_color_class}>
+      <div class={
+        "text-trunks-100",
+        SelectHelpers.prompt_font_class(@size)
+      }>
         {@prompt}
       </div>
     {/if}
     """
-  end
-
-  def get_option(options, v) do
-    Enum.find(options, fn option ->
-      "#{option.value}" == "#{v}"
-    end)
   end
 end
 
@@ -89,13 +95,15 @@ defmodule Moon.Components.Select.MultiSelect do
   @moduledoc false
 
   use Moon.StatefulComponent
+
   alias Moon.Autolayouts.PullAside
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias Surface.Components.Form.Input.InputContext
   alias __MODULE__.Labels
+  alias Surface.Components.Form.Input.InputContext
 
   prop field, :atom
   prop label, :string
@@ -106,13 +114,11 @@ defmodule Moon.Components.Select.MultiSelect do
   prop disabled, :boolean
   prop required, :boolean
   prop class, :string
+  prop size, :string, values: ~w(small medium large xlarge), default: "medium"
   prop popover_placement, :string, default: "bottom-start"
-  prop prompt_text_size_class, :string, default: "text-moon-12"
-  prop prompt_text_color_class, :string, default: "text-trunks-100"
-  prop label_text_size_class, :string, default: "text-moon-14"
-  prop label_text_color_class, :string, default: "white-100"
-  prop label_background_color_class, :string, default: "hit-100"
-  prop popover_class, :string, default: "pt-2"
+  prop popover_class, :string
+  prop field_border_class, :string, default: FieldBorder.get_default_states_class()
+  prop field_border_color_class, :string
 
   data open, :boolean, default: false
 
@@ -120,25 +126,27 @@ defmodule Moon.Components.Select.MultiSelect do
 
   def render(assigns) do
     ~F"""
-    <InputContext assigns={assigns} :let={form: form, field: field}>
+    <InputContext {=assigns} :let={form: form, field: field}>
       <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
         {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id
         )}
-        <FieldBorder click="toggle_open">
-          <PullAside class="p-4 align-middle">
+        <FieldBorder
+          states_class={@field_border_class}
+          border_color_class={if @open,
+            do: SelectHelpers.get_active_border_color(@field_border_class),
+            else: @field_border_color_class}
+          click="toggle_open"
+        >
+          <PullAside class={"px-4", SelectHelpers.get_padding(@size)}>
             <:left>
               <Labels
                 select_id={@id}
-                {=@options}
                 value={SelectHelpers.get_value(form, field, value: @value)}
+                {=@options}
                 {=@prompt}
-                {=@prompt_text_size_class}
-                {=@prompt_text_color_class}
-                {=@label_text_size_class}
-                {=@label_text_color_class}
-                {=@label_background_color_class}
+                {=@size}
               />
             </:left>
             <:right>
@@ -147,7 +155,14 @@ defmodule Moon.Components.Select.MultiSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
+          <TopToDown class="rounded bg-gohan-100 min-w-[20px]">
+            <div
+              class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
+              style="min-height: 20px; max-height: 200px"
+            >
+              <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
+            </div>
+          </TopToDown>
         </:content>
       </Popover>
     </InputContext>
