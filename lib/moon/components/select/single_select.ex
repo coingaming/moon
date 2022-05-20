@@ -14,16 +14,20 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop prompt_text_color_class, :string
   prop label_text_size_class, :string
   prop label_text_color_class, :string
+  prop flaged, :boolean
 
   def render(assigns) do
-    # TODO: Create a right grid
     ~F"""
     {#if @option}
       <div>
         {#case @mode}
           {#match "icon"}
             <div class="relative top-2 flex items-center">
-              <Icon class={@icon_class} name={@option.icon} />
+              {#if @flaged}
+                <Icon class={@icon_class} name={@option.icon} />
+              {#else}
+                <span class={"flag-icon #{@option.icon} flag-icon-squared rounded-md"} />
+              {/if}
             </div>
           {#match "single"}
         {/case}
@@ -62,6 +66,7 @@ defmodule Moon.Components.Select.SingleSelect.Value do
   prop prompt_text_color_class, :string
   prop label_text_size_class, :string
   prop label_text_color_class, :string
+  prop flaged, :boolean
 
   def render(assigns) do
     ~F"""
@@ -77,6 +82,7 @@ defmodule Moon.Components.Select.SingleSelect.Value do
           {=@prompt_text_color_class}
           {=@label_text_size_class}
           {=@label_text_color_class}
+          {=@flaged}
         />
       {#else}
         <div class={@prompt_text_color_class}>
@@ -121,6 +127,8 @@ defmodule Moon.Components.Select.SingleSelect do
   prop prompt_text_color_class, :string, default: "text-trunks-100"
   prop label_text_size_class, :string, default: "text-moon-14"
   prop label_text_color_class, :string, default: "text-bulma-100"
+  prop popover_class, :string, default: "pt-2"
+  prop flaged, :boolean, default: false
 
   data open, :boolean, default: false
 
@@ -129,7 +137,7 @@ defmodule Moon.Components.Select.SingleSelect do
   def render(assigns) do
     ~F"""
     <InputContext {=assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close" class="p-4">
+      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
         {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "w-full hidden",
           id: @id,
@@ -149,6 +157,7 @@ defmodule Moon.Components.Select.SingleSelect do
                 {=@prompt_text_color_class}
                 {=@label_text_size_class}
                 {=@label_text_color_class}
+                {=@flaged}
               />
             </:left>
             <:right>

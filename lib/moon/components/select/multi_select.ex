@@ -112,6 +112,7 @@ defmodule Moon.Components.Select.MultiSelect do
   prop label_text_size_class, :string, default: "text-moon-14"
   prop label_text_color_class, :string, default: "white-100"
   prop label_background_color_class, :string, default: "hit-100"
+  prop popover_class, :string, default: "pt-2"
 
   data open, :boolean, default: false
 
@@ -120,7 +121,7 @@ defmodule Moon.Components.Select.MultiSelect do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close" class="p-4">
+      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
         {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id
