@@ -27,23 +27,23 @@ jobs:
             semantic-release@18.0.0 \
             conventional-changelog-conventionalcommits@4.6.1
 
-      - name: Run Sematic Release
-        working-directory: .
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: semantic-release --branches fix-deploy
+      # - name: Run Sematic Release
+      #   working-directory: .
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: semantic-release --branches fix-deploy
 
-      # Get new release version
-      - name: Get release tag
-        id: release-tag
-        uses: WyriHaximus/github-action-get-previous-tag@v1.1
+      # # Get new release version
+      # - name: Get release tag
+      #   id: release-tag
+      #   uses: WyriHaximus/github-action-get-previous-tag@v1.1
 
-      - name: Get release version
-        id: release-version
-        uses: actions/github-script@v6
-        with:
-          script: |
-            core.setOutput(
-              'version',
-              '${{ steps.release-tag.outputs.tag }}'.slice(1)
-            )
+      # - name: Get release version
+      #   id: release-version
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       core.setOutput(
+      #         'version',
+      #         '${{ steps.release-tag.outputs.tag }}'.slice(1)
+      #       )
