@@ -103,6 +103,7 @@ jobs:
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run: scripts/deploy/build-release
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
