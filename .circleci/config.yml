@@ -20,9 +20,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-          - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v6-build-{{ checksum "mix.lock" }}-
-          - v6-build-
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -69,9 +69,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-          - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v6-build-{{ checksum "mix.lock" }}-
-          - v6-build-
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -101,6 +101,11 @@ jobs:
           docker_layer_caching: true
       - attach_workspace:
           at: ./
+      - restore_cache:
+          keys:
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
