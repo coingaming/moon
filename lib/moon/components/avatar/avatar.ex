@@ -28,7 +28,7 @@ defmodule Moon.Components.Avatar do
     ~F"""
     <div
       class={
-        "rounded-full bg-cover justify-center flex font-semibold items-center
+        "rounded-sm bg-cover justify-center flex font-semibold items-center
                overflow-hidden uppercase relative #{@class}",
         "text-xs h-6 w-6": @size == "xsmall",
         "text-sm h-8 w-8": @size == "small",
@@ -42,7 +42,19 @@ defmodule Moon.Components.Avatar do
     >
       <span :if={@name && !@image_url}>{@name}</span>
       <Icon name="generic_user" color={@color} class={icon_class(@size)} :if={!@name && !@image_url} />
-      <div :if={@status_origin && @is_status_active}></div>
+      <div
+        :if={@status_origin && @is_status_active}
+        class={
+          "absolute border-solid color-beerus-100 rounded-full bg-roshi-100",
+          "top-0": @status_origin.vertical == "top",
+          "bottom-0": @status_origin.vertical == "bottom",
+          "left-0": @status_origin.horizontal == "left",
+          "right-0": @status_origin.horizontal == "right",
+          "w-2 h-2 border": @size == "xsmall",
+          "w-3 h-3 border-2": @size == "small" || @size == "medium",
+          "w-4 h-4 border-2": @size == "large" || @size == "xlarge" || @size == "twoxlarge"
+        }
+      />
     </div>
     """
   end

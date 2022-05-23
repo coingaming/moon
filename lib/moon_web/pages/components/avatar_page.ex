@@ -3,14 +3,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Avatar
-  alias Moon.Components.CodePreview
+  alias Moon.Components.Avatar.StatusOrigin
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -100,7 +101,6 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
                 <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
               </div>
             </TopToDown>
-
           </:example>
 
           <:code>{avatar_3_code()}</:code>
@@ -110,9 +110,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           <:example>
             <div class="flex justify-around w-full items-center">
               <Avatar />
-              <Avatar isStatusActive />
+              <Avatar is_status_active />
               <Avatar image_url="https://www.fillmurray.com/200/200" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" isStatusActive />
+              <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
             </div>
           </:example>
 
@@ -122,13 +122,86 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <ExampleAndCode title="Status origin" id="avatar_5">
           <:example>
             <div class="flex justify-around w-full items-center">
-
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
+              <Avatar is_status_active />
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
             </div>
           </:example>
 
           <:code>{avatar_5_code()}</:code>
         </ExampleAndCode>
 
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'size',
+              :type => 'xsmall | small | medium | large | xlarge | twoxlarge',
+              :required => 'false',
+              :default => 'medium',
+              :description => 'Size for avatar'
+            },
+            %{
+              :name => 'name',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Capital letters of name'
+            },
+            %{
+              :name => 'image_url',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Path to the image'
+            },
+            %{
+              :name => 'status_origin',
+              :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
+              :required => 'false',
+              :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
+              :description => 'Position for status indication'
+            },
+            %{
+              :name => 'is_status_active',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Active state for status indication'
+            },
+            %{
+              :name => 'color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'piccolo-100',
+              :description => 'Text color'
+            },
+            %{
+              :name => 'background-color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'gohan-100',
+              :description => 'Background color'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """
@@ -182,15 +255,28 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   defp avatar_4_code do
     """
-      <Chip size="small">Small</Chip>
-      <Chip>Medium (default)</Chip>
+      <Avatar />
+      <Avatar is_status_active />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
     """
   end
 
   defp avatar_5_code do
     """
-      <Chip size="small">Small</Chip>
-      <Chip>Medium (default)</Chip>
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "top", horizontal: "right" }}
+      />
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "top", horizontal: "left" }}
+      />
+      <Avatar is_status_active />
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "bottom", horizontal: "left" }}
+      />
     """
   end
 end
