@@ -180,7 +180,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - fix-deploy
           requires:
             - otp_release
       - deploy:
@@ -188,7 +188,7 @@ workflows:
           filters:
             branches:
               only: 
-                - main
+                - fix-deploy
             tags:
               only: /^v.*/
           requires:
