@@ -14,8 +14,7 @@ ENV REPLACE_OS_VARS=true \
 
 WORKDIR /opt/app
 
-ADD ./_build/prod/rel/moon/ ./
+COPY _build ./_build
 
 
-CMD /opt/app/bin/${APP_NAME} start
-  
+CMD _build/prod/rel/moon/bin/moon start
