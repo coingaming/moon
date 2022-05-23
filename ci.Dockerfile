@@ -14,8 +14,8 @@ ENV REPLACE_OS_VARS=true \
 
 WORKDIR /opt/app
 
-# ADD release.tar.gz ./
+ADD ./_build/prod/rel/moon/ ./
 
-CMD trap 'exit' INT; \
-  /opt/app/bin/${APP_NAME} foreground
+
+CMD /opt/app/bin/${APP_NAME} start
   
