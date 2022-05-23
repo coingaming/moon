@@ -5,5 +5,3 @@ source "$(dirname "$0")/vars"
 set -e
 
 mix release
-# cp _build/${MIX_ENV}/rel/${APP_NAME}/releases/${APP_VSN}/${APP_NAME}.tar.gz ./release.tar.gz
-ls -laR _build

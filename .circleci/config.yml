@@ -20,9 +20,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v5-build-{{ checksum "mix.lock" }}-
-          - v5-build-
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -45,11 +45,12 @@ jobs:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
-          key: v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
           paths:
-          - .cache
-          - deps
-          - ~/.mix
+            - .cache
+            - deps
+            - _build
+            - ~/.mix
   check_code_quality:
     docker:
       - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
@@ -68,9 +69,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-          - v5-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-          - v5-build-{{ checksum "mix.lock" }}-
-          - v5-build-
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -100,6 +101,11 @@ jobs:
           docker_layer_caching: true
       - attach_workspace:
           at: ./
+      - restore_cache:
+          keys:
+            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v6-build-{{ checksum "mix.lock" }}-
+            - v6-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
