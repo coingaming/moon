@@ -3,14 +3,15 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Avatar
-  alias Moon.Components.CodePreview
+  alias Moon.Components.Avatar.StatusOrigin
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -47,83 +48,235 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
         Component for displaying user profile image or placeholder if no image
 
-        <ExampleAndCode title="Image avatars" id="avatar_1">
+        <ExampleAndCode title="Variants" id="avatar_1">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="xsmall" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="small" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="medium" />
-              <Avatar class="mx-10" image_url="//www.fillmurray.com/200/200" size="large" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar name="JS" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" />
+            </div>
           </:example>
 
-          <:code>
-            <#CodePreview>
-            <Avatar image_url="//www.fillmurray.com/200/200" size="xsmall" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="small" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="medium" />
-            <Avatar image_url="//www.fillmurray.com/200/200" size="large" />
-        </#CodePreview>
-          </:code>
+          <:code>{avatar_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Letter avatars" id="avatar_2">
-          <:note>
-            Use name prop. No more than 2 / 3 characters
-          </:note>
+        <ExampleAndCode title="Different colours" id="avatar_2">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
-              <Avatar class="mx-10" name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar color="frieza-100" background_color="chi-chi-100" />
+              <Avatar color="gohan-100" background_color="krillin-100" />
+              <Avatar color="chi-chi-100" background_color="frieza-100" />
+            </div>
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="small" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="medium" />
-        <Avatar name="JS" color="gohan-100" background_color="piccolo-100" size="large" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_2_code()}</:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Without image and name (Fallback)" id="avatar_3">
+
+        <ExampleAndCode title="Different sizes" id="avatar_3">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="xsmall" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="small" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="medium" />
-              <Avatar class="mx-10" color="gohan-100" background_color="piccolo-100" size="large" />
-            </LeftToRight>
+            <TopToDown>
+              <div class="flex justify-around items-center w-full mb-4">
+                <Avatar size="xsmall" />
+                <Avatar size="small" />
+                <Avatar />
+                <Avatar size="large" />
+                <Avatar size="xlarge" />
+                <Avatar size="twoxlarge" />
+              </div>
+              <div class="flex justify-around items-center w-full mb-4">
+                <Avatar name="JS" size="xsmall" />
+                <Avatar name="JS" size="small" />
+                <Avatar name="JS" />
+                <Avatar name="JS" size="large" />
+                <Avatar name="JS" size="xlarge" />
+                <Avatar name="JS" size="twoxlarge" />
+              </div>
+              <div class="flex justify-around items-center w-full">
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+                <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+              </div>
+            </TopToDown>
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar color="gohan-100" background_color="piccolo-100" size="xsmall" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="small" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="medium" />
-        <Avatar color="gohan-100" background_color="piccolo-100" size="large" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_3_code()}</:code>
         </ExampleAndCode>
-        <ExampleAndCode title="Different colors" id="avatar_4">
+
+        <ExampleAndCode title="Active status" id="avatar_4">
           <:example>
-            <LeftToRight class="items-center">
-              <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
-              <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
-              <Avatar class="mx-10" color="piccolo-100" background_color="gohan-100" size="medium" />
-            </LeftToRight>
+            <div class="flex justify-around w-full items-center">
+              <Avatar />
+              <Avatar is_status_active />
+              <Avatar image_url="https://www.fillmurray.com/200/200" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
+            </div>
           </:example>
-          <:code>
-            <#CodePreview>
-        <Avatar class="mx-10" color="chi-chi-100" background_color="frieza-100" size="medium" />
-        <Avatar class="mx-10" color="frieza-100" background_color="chi-chi-100" size="medium" />
-        <Avatar color="piccolo-100" background_color="gohan-100" size="medium" />
-        </#CodePreview>
-          </:code>
+
+          <:code>{avatar_4_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Status origin" id="avatar_5">
+          <:example>
+            <div class="flex justify-around w-full items-center">
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
+              <Avatar is_status_active />
+              <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
+            </div>
+          </:example>
+
+          <:code>{avatar_5_code()}</:code>
+        </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'size',
+              :type => 'xsmall | small | medium | large | xlarge | twoxlarge',
+              :required => 'false',
+              :default => 'medium',
+              :description => 'Size for avatar'
+            },
+            %{
+              :name => 'name',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Capital letters of name'
+            },
+            %{
+              :name => 'image_url',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Path to the image'
+            },
+            %{
+              :name => 'status_origin',
+              :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
+              :required => 'false',
+              :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
+              :description => 'Position for status indication'
+            },
+            %{
+              :name => 'is_status_active',
+              :type => 'boolean',
+              :required => 'false',
+              :default => 'false',
+              :description => 'Active state for status indication'
+            },
+            %{
+              :name => 'color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'piccolo-100',
+              :description => 'Text color'
+            },
+            %{
+              :name => 'background-color',
+              :type => 'string',
+              :required => 'false',
+              :default => 'gohan-100',
+              :description => 'Background color'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp avatar_1_code do
+    """
+      <Avatar />
+      <Avatar name="JS" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+    """
+  end
+
+  defp avatar_2_code do
+    """
+      <Avatar />
+      <Avatar color="frieza-100" background_color="chi-chi-100" />
+      <Avatar color="gohan-100" background_color="krillin-100" />
+      <Avatar color="chi-chi-100" background_color="frieza-100" />
+    """
+  end
+
+  defp avatar_3_code do
+    """
+    <div class="flex justify-around items-center w-full mb-4">
+      <Avatar size="xsmall" />
+      <Avatar size="small" />
+      <Avatar />
+      <Avatar size="large" />
+      <Avatar size="xlarge" />
+      <Avatar size="twoxlarge" />
+    </div>
+    <div class="flex justify-around items-center w-full mb-4">
+      <Avatar name="JS" size="xsmall" />
+      <Avatar name="JS" size="small" />
+      <Avatar name="JS" />
+      <Avatar name="JS" size="large" />
+      <Avatar name="JS" size="xlarge" />
+      <Avatar name="JS" size="twoxlarge" />
+    </div>
+    <div class="flex justify-around items-center w-full">
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+    </div>
+    """
+  end
+
+  defp avatar_4_code do
+    """
+      <Avatar />
+      <Avatar is_status_active />
+      <Avatar image_url="https://www.fillmurray.com/200/200" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
+    """
+  end
+
+  defp avatar_5_code do
+    """
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "top", horizontal: "right" }}
+      />
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "top", horizontal: "left" }}
+      />
+      <Avatar is_status_active />
+      <Avatar
+        is_status_active
+        status_origin={%StatusOrigin{ vertical: "bottom", horizontal: "left" }}
+      />
     """
   end
 end
