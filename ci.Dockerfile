@@ -11,6 +11,4 @@ ENV REPLACE_OS_VARS=true \
 WORKDIR /opt/app
 
 COPY _build ./_build
-
-
 CMD _build/prod/rel/moon/bin/moon start
