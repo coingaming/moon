@@ -1,12 +1,8 @@
 FROM alpine:3.11.5
+RUN apk upgrade --no-cache && apk add --no-cache postgresql-client bash openssl libgcc libstdc++ ncurses-libs bash
 
 ARG APP_NAME
 ARG MIX_ENV
-
-RUN apk update && \
-    apk add --no-cache \
-      bash \
-      openssl-dev
 
 ENV REPLACE_OS_VARS=true \
     MIX_ENV=${MIX_ENV} \
