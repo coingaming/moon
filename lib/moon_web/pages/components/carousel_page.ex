@@ -10,6 +10,8 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -68,20 +70,71 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
           <:code>
             <#CodePreview>
-    <Carousel>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-      <div class="item">Item</div>
-    </Carousel>
-    </#CodePreview>
+              <Carousel>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+                <div class="item">Item</div>
+              </Carousel>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={[
+            %{
+              :name => 'space',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO'
+            },
+            %{
+              :name => 'items',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Items to display inside carousel'
+            },
+            %{
+              :name => 'scroll_to_left_button',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Scroll to left button'
+            },
+            %{
+              :name => 'scroll_to_right_button',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Scroll to right button'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
+
       </TopToDown>
     </Page>
     """

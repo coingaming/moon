@@ -4,12 +4,13 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Pagination
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -73,27 +74,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
             />
           </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Components.Pagination
-
-        <Pagination
-          current_page_number={ @current_page_number }
-          total_pages={ @total_pages }
-          range_before={ 1 }
-          range_after={ 2 }
-          size="xsmall"
-          previous_button_label="Previous"
-          next_button_label="Next"
-          on_change="change_current_page"
-        />
-
-        def handle_event("change_current_page", %{"page" => page}, socket) do
-          socket = assign(socket, current_page_number: String.to_integer(page))
-          {:noreply, socket}
-        end
-      </#CodePreview>
-          </:code>
+          <:code>{get_pagination_1_code()}</:code>
 
           <:state>@current_page_number = {@current_page_number}</:state>
         </ExampleAndCode>
@@ -134,17 +115,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
             </TopToDown>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        <Pagination size="xsmall" />
-
-        <Pagination size="small" />
-
-        <Pagination size="medium" />
-
-        <Pagination size="large" />
-      </#CodePreview>
-          </:code>
+          <:code>{get_pagination_2_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Example with a side section" layout="column" id="pagination_3">
@@ -165,31 +136,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
             </TopToDown>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        <div class="flex flex-wrap items-center">
-          <div class="w-1/4 mb-4 text-xxs">
-            { side_text(@page_number, @per_page, @total_entries) }
-          </div>
-
-          <div class="w-3/4">
-            <Pagination
-              current_page_number={ @page_number }}
-             total_pages={ @total_pages }
-              size="small"
-              on_change="change_current_page"
-            />
-          </div>
-        </div>
-
-        def side_text(page_number, per_page, total_entries) do
-          min_entry = (page_number - 1) * per_page + 1
-          max_entry = min(min_entry + per_page - 1, total_entries)
-
-          "Showing #{min_entry} – #{max_entry} of #{total_entries}"
-        end
-      </#CodePreview>
-          </:code>
+          <:code>{get_pagination_3_code()}</:code>
 
           <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
         </ExampleAndCode>
@@ -218,5 +165,66 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     max_entry = min(min_entry + per_page - 1, total_entries)
 
     "Showing #{min_entry} – #{max_entry} of #{total_entries}"
+  end
+
+  def get_pagination_1_code() do
+    """
+      alias Moon.Components.Pagination
+
+      <Pagination
+        current_page_number={ @current_page_number }
+        total_pages={ @total_pages }
+        range_before={ 1 }
+        range_after={ 2 }
+        size="xsmall"
+        previous_button_label="Previous"
+        next_button_label="Next"
+        on_change="change_current_page"
+      />
+
+      def handle_event("change_current_page", %{"page" => page}, socket) do
+        socket = assign(socket, current_page_number: String.to_integer(page))
+        {:noreply, socket}
+      end
+    """
+  end
+
+  def get_pagination_2_code() do
+    """
+      alias Moon.Components.Pagination
+
+      <Pagination size="xsmall" />
+      <Pagination size="small" />
+      <Pagination size="medium" />
+      <Pagination size="large" />
+    """
+  end
+
+  def get_pagination_3_code() do
+    """
+      alias Moon.Components.Pagination
+
+      <div class="flex flex-wrap items-center">
+        <div class="w-1/4 mb-4 text-xxs">
+          { side_text(@page_number, @per_page, @total_entries) }
+        </div>
+
+        <div class="w-3/4">
+          <Pagination
+            current_page_number={ @page_number }}
+          total_pages={ @total_pages }
+            size="small"
+            on_change="change_current_page"
+          />
+        </div>
+      </div>
+
+      def side_text(page_number, per_page, total_entries) do
+        min_entry = (page_number - 1) * per_page + 1
+        max_entry = min(min_entry + per_page - 1, total_entries)
+
+        "Showing \#{min_entry} – \#{max_entry} of \#{total_entries}"
+      end
+    """
   end
 end
