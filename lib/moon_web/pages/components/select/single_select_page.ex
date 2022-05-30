@@ -187,7 +187,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               :required => 'false',
               :default => '-',
               :description => 'TODO - If the component is in error mode'
-            },
+            }
           ]}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}

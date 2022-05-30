@@ -104,7 +104,8 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
               :type => 'boolean',
               :required => 'false',
               :default => 'false',
-              :description => 'A Boolean indicating whether or not this radio button is the default-selected item in the group'
+              :description =>
+                'A Boolean indicating whether or not this radio button is the default-selected item in the group'
             },
             %{
               :name => 'click',

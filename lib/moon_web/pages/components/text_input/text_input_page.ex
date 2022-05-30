@@ -88,7 +88,8 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
           <Table items={[
             %{
               :name => 'type',
-              :type => 'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
+              :type =>
+                'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
               :required => 'false',
               :default => 'text',
               :description => 'Different types of input'
@@ -140,7 +141,8 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
               :type => '-',
               :required => '-',
               :default => '-',
-              :description => 'TODO - Only for input type password. Text for toggle button: show/hide password'
+              :description =>
+                'TODO - Only for input type password. Text for toggle button: show/hide password'
             },
             %{
               :name => 'background_color',
@@ -167,7 +169,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
             </Column>
           </Table>
         </div>
-
       </TopToDown>
     </Page>
     """

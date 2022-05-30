@@ -98,7 +98,6 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
           </:example>
 
           <:code>
-
             <#CodePreview>
               <TopToDown>
                 <Heading size=24>Heading with default font weight</Heading>
@@ -200,7 +199,6 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
               :default => '-',
               :description => 'TODO - Custom line height'
             }
-
           ]}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}

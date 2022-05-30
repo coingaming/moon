@@ -144,7 +144,6 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             </Column>
           </Table>
         </div>
-
       </TopToDown>
     </Page>
     """

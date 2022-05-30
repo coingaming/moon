@@ -134,7 +134,6 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
             </Column>
           </Table>
         </div>
-
       </TopToDown>
     </Page>
     """

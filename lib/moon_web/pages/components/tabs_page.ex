@@ -179,7 +179,6 @@ defmodule MoonWeb.Pages.Components.TabsPage do
             </Column>
           </Table>
         </div>
-
       </TopToDown>
     </Page>
     """
