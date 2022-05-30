@@ -140,6 +140,99 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
           <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <Table items={[
+            %{
+              :name => 'total_pages',
+              :type => 'number',
+              :required => 'true',
+              :default => '-',
+              :description => 'The total number of pages.'
+            },
+            %{
+              :name => 'range_before',
+              :type => 'number',
+              :required => 'false',
+              :default => '1',
+              :description => 'Beginning of displayed range'
+            },
+            %{
+              :name => 'range_after',
+              :type => 'number',
+              :required => 'false',
+              :default => '1',
+              :description => 'End of displayed range'
+            },
+            %{
+              :name => 'previous_button_label',
+              :type => 'string',
+              :required => 'false',
+              :default => 'Previous',
+              :description => 'Label for "previous" button'
+            },
+            %{
+              :name => 'next_button_label',
+              :type => 'string',
+              :required => 'false',
+              :default => 'Next',
+              :description => 'Label for "next" button'
+            },
+            %{
+              :name => 'on_change',
+              :type => 'event',
+              :required => 'false',
+              :default => '-',
+              :description =>
+                'The method to call when a page is clicked. Exposes the current page object as an argument.'
+            },
+            %{
+              :name => 'current_page_number',
+              :type => 'number',
+              :required => 'true',
+              :default => '-',
+              :description => 'Current selected page'
+            },
+            %{
+              :name => 'page_size_section',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Placeholder for "page size" component'
+            },
+            %{
+              :name => 'page_size_section',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Placeholder for "page size" component'
+            },
+            %{
+              :name => 'go_to_page_section',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Placeholder for "go to page" component'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

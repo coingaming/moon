@@ -36,7 +36,6 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
