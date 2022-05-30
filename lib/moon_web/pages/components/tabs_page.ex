@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   alias Moon.Components.Tabs.TabLink
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data(tab_id, :string)
 
@@ -84,6 +86,100 @@ defmodule MoonWeb.Pages.Components.TabsPage do
             @tab_id = {@tab_id}
           </:state>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Tab Props Tabs</div>
+          <Table items={[
+            %{
+              :name => 'default',
+              :type => 'slot ',
+              :required => 'true',
+              :default => '-',
+              :description => 'Content inside the tab'
+            },
+            %{
+              :name => 'size',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - size variant'
+            },
+            %{
+              :name => 'items',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - array of TabLink items'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <Table items={[
+            %{
+              :name => 'on_click',
+              :type => 'event ',
+              :required => 'false',
+              :default => '-',
+              :description => 'Event to happen when tab is clicked'
+            },
+            %{
+              :name => 'element_left',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Left element'
+            },
+            %{
+              :name => 'element_right',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Right element'
+            },
+            %{
+              :name => 'to',
+              :type => 'any',
+              :required => 'false',
+              :default => '-',
+              :description => 'Link\'s destination'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
+
       </TopToDown>
     </Page>
     """
