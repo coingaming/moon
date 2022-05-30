@@ -17,6 +17,7 @@ defmodule Moon.Components.IconButton do
   prop click, :event
   prop value_name, :string
   prop value, :any
+  prop type, :string, values!: ["button", "reset", "submit"], default: "submit"
 
   def render(assigns) do
     ~F"""
@@ -26,6 +27,7 @@ defmodule Moon.Components.IconButton do
       title={@title}
       :on-click={@click}
       {...phx_val_tag(@value_name, @value)}
+      type={@type}
     >
       <Icon name={@icon_name} font_size={@icon_size} />
     </button>
