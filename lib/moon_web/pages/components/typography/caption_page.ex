@@ -8,6 +8,8 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   alias Moon.Components.Caption
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -67,6 +69,56 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
 
           <:code>{example_2_code()}</:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <Table items={[
+            %{
+              :name => 'color_class',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'Component or element which Tooltip wraps around'
+            },
+            %{
+              :name => 'default',
+              :type => 'slot',
+              :required => 'true',
+              :default => '-',
+              :description => 'Content for caption'
+            },
+            %{
+              :name => 'text_align_class',
+              :type => 'string',
+              :required => 'false',
+              :default => '-',
+              :description => 'TODO - Text alignment (this should be an enum set of values)'
+            },
+            %{
+              :name => 'is_regular',
+              :type => '-',
+              :required => '-',
+              :default => '-',
+              :description => 'TODO - Is regular font weight'
+            }
+          ]}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

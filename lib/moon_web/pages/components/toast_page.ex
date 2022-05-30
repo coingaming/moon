@@ -280,7 +280,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
               :type => 'atom',
               :required => 'true',
               :default => '-',
-              :description => 'Field value for underlying pheonix text input component'
+              :description => 'Field value for underlying phoenix text input component'
             },
             %{
               :name => 'hint_text',
