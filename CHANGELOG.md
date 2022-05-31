@@ -1,3 +1,5 @@
+# [2.9.0](https://github.com/coingaming/moon/compare/v2.8.4...v2.9.0) (2022-05-31)
+
 ## [2.8.4](https://github.com/coingaming/moon/compare/v2.8.3...v2.8.4) (2022-05-24)
 
 
