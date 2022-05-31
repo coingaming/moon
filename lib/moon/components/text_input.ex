@@ -34,6 +34,7 @@ defmodule Moon.Components.TextInput do
   prop keydown, :event
   prop keyup, :event
   prop blur, :event
+  prop step, :string, default: "1"
   prop background_color, :string, values: Moon.colors(), default: "goku-100"
   prop size, :string, values: ["medium", "large"], default: "large"
 
@@ -72,7 +73,8 @@ defmodule Moon.Components.TextInput do
           disabled: @disabled,
           required: @required && !@disabled,
           type: @type,
-          "data-lpignore": "true"
+          "data-lpignore": "true",
+          step: @step
         }
         value={@value}
         focus={@focus}
