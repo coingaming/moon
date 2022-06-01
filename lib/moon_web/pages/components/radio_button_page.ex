@@ -13,6 +13,8 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -23,6 +25,53 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       %{
         to: "/components/radio-button",
         name: "RadioButton"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'id',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Unique element\'s identifier'
+      },
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Represent a caption for an item'
+      },
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field name for underlying surface radio button component'
+      },
+      %{
+        :name => 'aria_label',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Defines a string value that labels the current element'
+      },
+      %{
+        :name => 'checked',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description =>
+          'A Boolean indicating whether or not this radio button is the default-selected item in the group'
+      },
+      %{
+        :name => 'click',
+        :type => 'event',
+        :required => 'true',
+        :default => '-',
+        :description => 'Event handler'
       }
     ]
 
@@ -62,6 +111,27 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
           <:code>{radiobutton_1_code()}</:code>
           <:state>{radiobutton_1_state(assigns)}</:state>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

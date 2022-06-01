@@ -9,6 +9,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data(item_id, :string, default: "1")
 
@@ -21,6 +23,59 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       %{
         to: "/components/accordion",
         name: "Accordion"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'title',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Title of accordion'
+      },
+      %{
+        :name => 'open_by_default',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Expanded/collapsed accordion by default'
+      },
+      %{
+        :name => 'with_button',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Show expand/collapse chevron'
+      },
+      %{
+        :name => 'disable_open',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Disable expand/collapse accordion'
+      },
+      %{
+        :name => 'content',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content to show inside of accordion'
+      },
+      %{
+        :name => 'size',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Size variant of accordion'
+      },
+      %{
+        :name => 'is_content_inside',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether the content is displayed outside of the accordion header'
       }
     ]
 
@@ -71,6 +126,27 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           </:example>
           <:code>{get_example_1_code()}</:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

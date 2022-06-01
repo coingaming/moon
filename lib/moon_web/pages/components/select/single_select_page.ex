@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -21,6 +23,108 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       %{
         to: "/components/select/single-select",
         name: "Single Select"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'field',
+        :type => 'atom ',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field for the underlying phoenix select component'
+      },
+      %{
+        :name => 'size',
+        :type => '-',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - size variant'
+      },
+      %{
+        :name => 'options',
+        :type => 'list',
+        :required => 'true',
+        :default => '-',
+        :description => 'Options for the select'
+      },
+      %{
+        :name => 'prompt',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Placeholder text'
+      },
+      %{
+        :name => 'header',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - header element on the options popup'
+      },
+      %{
+        :name => 'footer',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - footer element on the options popup'
+      },
+      %{
+        :name => 'menu_width',
+        :type => 'number',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Minimum width of the popup menu containing options'
+      },
+      %{
+        :name => 'left',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Left content for selected option'
+      },
+      %{
+        :name => 'hint',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Inform message under select, can be used for error message'
+      },
+      %{
+        :name => 'items',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content template for displaying each of the options'
+      },
+      %{
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => '-',
+        :default => 'false',
+        :description => 'Whether the component is disabled'
+      },
+      %{
+        :name => 'value',
+        :type => 'any',
+        :required => 'false',
+        :default => '-',
+        :description => 'Default selected value'
+      },
+      %{
+        :name => 'on_select',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Name of the event handler function when an option is clicked'
+      },
+      %{
+        :name => 'is_error',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - If the component is in error mode'
       }
     ]
 
@@ -84,6 +188,27 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

@@ -5,9 +5,11 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.{Button, CodePreview, Heading, Link, Tooltip}
+  alias Moon.Components.{Button, CodePreview, Heading, Tooltip}
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -18,6 +20,52 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       %{
         to: "/components/tooltip",
         name: "Tooltip"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'children',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Component or element which Tooltip wraps around'
+      },
+      %{
+        :name => 'text',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Textual content for Tooltip'
+      },
+      %{
+        :name => 'icon',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'Icon shown in the Tooltip'
+      },
+      %{
+        :name => 'content',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Custom component shown in the Tooltip'
+      },
+      %{
+        :name => 'placement',
+        :type => 'top | bottom | left | right',
+        :required => 'true',
+        :default => '-',
+        :description => 'Where Tooltip will be shown'
+      },
+      %{
+        :name => 'show',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Should Tooltip be shown persistently'
       }
     ]
 
@@ -34,13 +82,8 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Popover Component</Heading>
-        <Link
-          class="mb-4"
-          to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/popover_v2.ex"
-        >
-          Sourcecode of this page
-        </Link>
+        <Heading size={56} class="mb-4">Tooltip Component</Heading>
+
         {#for placement <- ["top", "right", "bottom", "left"]}
           <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
             <:example>
@@ -59,6 +102,27 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
             </:code>
           </ExampleAndCode>
         {/for}
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

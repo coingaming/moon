@@ -6,12 +6,13 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   alias Moon.Assets.Icons.IconChartArea
   alias Moon.Assets.Icons.IconChevronDownRounded
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.ListItems.SingleLineItem
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -22,6 +23,52 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       %{
         to: "/components/list_items",
         name: "List Items"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'List item subtext'
+      },
+      %{
+        :name => 'size',
+        :type => 'medium | large',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'List item size'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'gohan-100',
+        :description => 'List item background color'
+      },
+      %{
+        :name => 'color',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - List item color'
+      },
+      %{
+        :name => 'left_icon',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Element on the left'
+      },
+      %{
+        :name => 'right_icon',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Element on the right'
       }
     ]
 
@@ -80,39 +127,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
             </TopToDown>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Autolayouts.TopToDown
-        alias Moon.Components.ListItems.SingleLineItem
-
-        <TopToDown>
-          <SingleLineItem>Single line item</SingleLineItem>
-
-          <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
-
-          <SingleLineItem current>
-            <:left_icon><IconChartArea /></:left_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem>
-            <:left_icon><IconChartArea /></:left_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem>
-            <:right_icon><IconChevronDownRounded /></:right_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem>
-            <:left_icon><IconChartArea /></:left_icon>
-            <:right_icon><IconChevronDownRounded /></:right_icon>
-            Single line item
-          </SingleLineItem>
-        </TopToDown>
-          </#CodePreview>
-          </:code>
+          <:code>{get_list_item_1_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode title="Large size" id="line_items_2">
@@ -145,42 +160,99 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
             </TopToDown>
           </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Autolayouts.TopToDown
-        alias Moon.Components.ListItems.SingleLineItem
-
-        <TopToDown>
-          <SingleLineItem size="large">Single line item</SingleLineItem>
-
-          <SingleLineItem size="large" background_color="goku-100">Single line item</SingleLineItem>
-
-          <SingleLineItem size="large" current>
-            <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem size="large">
-            <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem size="large">
-            <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
-            Single line item
-          </SingleLineItem>
-
-          <SingleLineItem size="large">
-            <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-            <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
-            Single line item
-          </SingleLineItem>
-        </TopToDown>
-          </#CodePreview>
-          </:code>
+          <:code>{get_list_item_2_code()}</:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def get_list_item_1_code() do
+    """
+      alias Moon.Autolayouts.TopToDown
+      alias Moon.Components.ListItems.SingleLineItem
+
+      <TopToDown>
+        <SingleLineItem>Single line item</SingleLineItem>
+
+        <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
+
+        <SingleLineItem current>
+          <:left_icon><IconChartArea /></:left_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem>
+          <:left_icon><IconChartArea /></:left_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem>
+          <:right_icon><IconChevronDownRounded /></:right_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem>
+          <:left_icon><IconChartArea /></:left_icon>
+          <:right_icon><IconChevronDownRounded /></:right_icon>
+          Single line item
+        </SingleLineItem>
+      </TopToDown>
+    """
+  end
+
+  def get_list_item_2_code() do
+    """
+      alias Moon.Autolayouts.TopToDown
+      alias Moon.Components.ListItems.SingleLineItem
+
+      <TopToDown>
+        <SingleLineItem size="large">Single line item</SingleLineItem>
+
+        <SingleLineItem size="large" background_color="goku-100">Single line item</SingleLineItem>
+
+        <SingleLineItem size="large" current>
+          <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem size="large">
+          <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem size="large">
+          <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
+          Single line item
+        </SingleLineItem>
+
+        <SingleLineItem size="large">
+          <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+          <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
+          Single line item
+        </SingleLineItem>
+      </TopToDown>
     """
   end
 end

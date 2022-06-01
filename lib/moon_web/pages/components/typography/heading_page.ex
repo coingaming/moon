@@ -10,6 +10,8 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data(breadcrumbs, :any,
     default: [
@@ -23,6 +25,59 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
       }
     ]
   )
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'text-bulma-100',
+        :description => 'Heading color'
+      },
+      %{
+        :name => 'size',
+        :type => '16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
+        :required => 'false',
+        :default => '16',
+        :description => 'Heading size'
+      },
+      %{
+        :name => 'is_regular',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Whether font weight is normal'
+      },
+      %{
+        :name => 'text_align',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Alignment'
+      },
+      %{
+        :name => 'is_uppercase',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether text is uppercase'
+      },
+      %{
+        :name => 'is_underline',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether text is underlined'
+      },
+      %{
+        :name => 'line_height',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Custom line height'
+      }
+    ]
 
   def mount(params, _session, socket) do
     {:ok,
@@ -66,19 +121,19 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
           <:code>
             <#CodePreview>
-      <TopToDown>
-        <Heading>Heading with default font size</Heading>
-        <Heading size=16>Heading with font size 16</Heading>
-        <Heading size=18>Heading with font size 18</Heading>
-        <Heading size=20>Heading with font size 20</Heading>
-        <Heading size=24>Heading with font size 24</Heading>
-        <Heading size=32>Heading with font size 32</Heading>
-        <Heading size=48>font size 48</Heading>
-        <Heading size=56>font size 56</Heading>
-        <Heading size=64>font size 64</Heading>
-        <Heading size=72>font size 72</Heading>
-      </TopToDown>
-    </#CodePreview>
+              <TopToDown>
+                <Heading>Heading with default font size</Heading>
+                <Heading size=16>Heading with font size 16</Heading>
+                <Heading size=18>Heading with font size 18</Heading>
+                <Heading size=20>Heading with font size 20</Heading>
+                <Heading size=24>Heading with font size 24</Heading>
+                <Heading size=32>Heading with font size 32</Heading>
+                <Heading size=48>font size 48</Heading>
+                <Heading size=56>font size 56</Heading>
+                <Heading size=64>font size 64</Heading>
+                <Heading size=72>font size 72</Heading>
+              </TopToDown>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
 
@@ -97,13 +152,13 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
           <:code>
             <#CodePreview>
-      <TopToDown>
-        <Heading size=24>Heading with default font weight</Heading>
-        <Heading size=24 is_regular=true>
-          Heading with font-weight: regular
-        </Heading>
-      </TopToDown>
-    </#CodePreview>
+              <TopToDown>
+                <Heading size=24>Heading with default font weight</Heading>
+                <Heading size=24 is_regular=true>
+                  Heading with font-weight: regular
+                </Heading>
+              </TopToDown>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
 
@@ -129,21 +184,42 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
           <:code>
             <#CodePreview>
-      <TopToDown>
-        <Heading size=24>Heading with default color</Heading>
-        <Heading size=24 color="trunks-100">
-          Heading with defined color
-        </Heading>
-        <Heading size=24 color="piccolo-100">
-          Heading with defined color
-        </Heading>
-        <Heading size=24 color="krillin-100">
-          Heading with defined color
-        </Heading>
-      </TopToDown>
-    </#CodePreview>
+              <TopToDown>
+                <Heading size=24>Heading with default color</Heading>
+                <Heading size=24 color="trunks-100">
+                  Heading with defined color
+                </Heading>
+                <Heading size=24 color="piccolo-100">
+                  Heading with defined color
+                </Heading>
+                <Heading size=24 color="krillin-100">
+                  Heading with defined color
+                </Heading>
+              </TopToDown>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

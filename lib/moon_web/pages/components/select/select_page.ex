@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data(gender_options, :any)
 
@@ -23,6 +25,38 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
       %{
         to: "/components/select",
         name: "Select"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field name for underlying surface select component'
+      },
+      %{
+        :name => 'label',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Label title'
+      },
+      %{
+        :name => 'prompt',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Placeholder'
+      },
+      %{
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the component is disabled'
       }
     ]
 
@@ -99,6 +133,27 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
           <:code>{select_3_code()}</:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

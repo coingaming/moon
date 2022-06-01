@@ -28,6 +28,45 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'checked',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Preset value for checkbox state'
+      },
+      %{
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Checkbox disabled state'
+      },
+      %{
+        :name => 'readonly',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => "Checkbox isn't disabled but its value can't be changed"
+      },
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field name for the inner input form control'
+      },
+      %{
+        :name => '#slot',
+        :type => 'element',
+        :required => 'true',
+        :default => '-',
+        :description => 'Label for the control'
+      }
+    ]
+
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -118,43 +157,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'checked',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description => 'Preset value for checkbox state'
-            },
-            %{
-              :name => 'disabled',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description => 'Checkbox disabled state'
-            },
-            %{
-              :name => 'readonly',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description => "Checkbox isn't disabled but its value can't be changed"
-            },
-            %{
-              :name => 'field',
-              :type => 'atom',
-              :required => 'true',
-              :default => '-',
-              :description => 'Field name for the inner input form control'
-            },
-            %{
-              :name => '#slot',
-              :type => 'element',
-              :required => 'true',
-              :default => '-',
-              :description => 'Label for the control'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item}>
               {item.name}
             </Column>

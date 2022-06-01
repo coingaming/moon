@@ -10,6 +10,8 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Components.Switch
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -20,6 +22,38 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       %{
         to: "/components/switch",
         name: "Switch"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'checked',
+        :type => 'boolean ',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Is switch checked/unchecked'
+      },
+      %{
+        :name => 'on_change',
+        :type => 'event',
+        :required => 'false',
+        :default => '-',
+        :description => 'Event that happens when you click on the switch'
+      },
+      %{
+        :name => 'caption_unchecked',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Displayed text when unchecked'
+      },
+      %{
+        :name => 'caption_checked',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Displayed text when checked'
       }
     ]
 
@@ -168,6 +202,27 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </#CodePreview>
           </:code>
         </ExampleAndCode>
+
+        <div>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """
