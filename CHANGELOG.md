@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/coingaming/moon/compare/v2.9.0...v2.10.0) (2022-06-01)
+
+
+### Features
+
+* add props table to the rest of the components [MDS-67] ([#274](https://github.com/coingaming/moon/issues/274)) ([194433b](https://github.com/coingaming/moon/commit/194433bbab6333598d7f83f23ae3895192e684b6))
+
 # [2.9.0](https://github.com/coingaming/moon/compare/v2.8.4...v2.9.0) (2022-05-31)
 
 ## [2.8.4](https://github.com/coingaming/moon/compare/v2.8.3...v2.8.4) (2022-05-24)
