@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.{Button, CodePreview, Heading, Link, Tooltip}
+  alias Moon.Components.{Button, CodePreview, Heading, Tooltip}
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.Table.Table
