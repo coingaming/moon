@@ -23,6 +23,38 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'color_class',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Component or element which Tooltip wraps around'
+      },
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content for caption'
+      },
+      %{
+        :name => 'text_align_class',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Text alignment (this should be an enum set of values)'
+      },
+      %{
+        :name => 'is_regular',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Is regular font weight'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
@@ -72,36 +104,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'color_class',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Component or element which Tooltip wraps around'
-            },
-            %{
-              :name => 'default',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content for caption'
-            },
-            %{
-              :name => 'text_align_class',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - Text alignment (this should be an enum set of values)'
-            },
-            %{
-              :name => 'is_regular',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Is regular font weight'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

@@ -28,6 +28,76 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'type',
+        :type =>
+          'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
+        :required => 'false',
+        :default => 'text',
+        :description => 'Different types of input'
+      },
+      %{
+        :name => 'size',
+        :type => 'medium | large | xlarge',
+        :required => '-',
+        :default => 'medium',
+        :description =>
+          'TODO - Size variant (currently only medium | large, with large as default)'
+      },
+      %{
+        :name => 'label',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'TODO - Should be required for medium size only'
+      },
+      %{
+        :name => 'placeholder',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Placeholder for input'
+      },
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field value for underlying phoenix text input component'
+      },
+      %{
+        :name => 'hint_text',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Informative or error message under input'
+      },
+      %{
+        :name => 'error',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Set error state for input'
+      },
+      %{
+        :name => 'show_password_text',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description =>
+          'TODO - Only for input type password. Text for toggle button: show/hide password'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Background color'
+      }
+    ]
+
   def mount(params, _session, socket) do
     socket =
       assign(socket,
@@ -244,74 +314,8 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         </ExampleAndCode>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'type',
-              :type =>
-                'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
-              :required => 'false',
-              :default => 'text',
-              :description => 'Different types of input'
-            },
-            %{
-              :name => 'size',
-              :type => 'medium | large | xlarge',
-              :required => '-',
-              :default => 'medium',
-              :description => 'TODO - Size variant (currently only medium | large, with large as default)'
-            },
-            %{
-              :name => 'label',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'TODO - Should be required for medium size only'
-            },
-            %{
-              :name => 'placeholder',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Placeholder for input'
-            },
-            %{
-              :name => 'field',
-              :type => 'atom',
-              :required => 'true',
-              :default => '-',
-              :description => 'Field value for underlying phoenix text input component'
-            },
-            %{
-              :name => 'hint_text',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'Informative or error message under input'
-            },
-            %{
-              :name => 'error',
-              :type => 'boolean',
-              :required => 'false',
-              :default => '-',
-              :description => 'Set error state for input'
-            },
-            %{
-              :name => 'show_password_text',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description =>
-                'TODO - Only for input type password. Text for toggle button: show/hide password'
-            },
-            %{
-              :name => 'background_color',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Background color'
-            }
-          ]}>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

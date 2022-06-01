@@ -26,6 +26,108 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'field',
+        :type => 'atom ',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field for the underlying phoenix select component'
+      },
+      %{
+        :name => 'size',
+        :type => '-',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - size variant'
+      },
+      %{
+        :name => 'options',
+        :type => 'list',
+        :required => 'true',
+        :default => '-',
+        :description => 'Options for the select'
+      },
+      %{
+        :name => 'prompt',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Placeholder text'
+      },
+      %{
+        :name => 'header',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - header element on the options popup'
+      },
+      %{
+        :name => 'footer',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - footer element on the options popup'
+      },
+      %{
+        :name => 'menu_width',
+        :type => 'number',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Minimum width of the popup menu containing options'
+      },
+      %{
+        :name => 'left',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Left content for selected option'
+      },
+      %{
+        :name => 'hint',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - Inform message under select, can be used for error message'
+      },
+      %{
+        :name => 'items',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content template for displaying each of the options'
+      },
+      %{
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => '-',
+        :default => 'false',
+        :description => 'Whether the component is disabled'
+      },
+      %{
+        :name => 'value',
+        :type => 'any',
+        :required => 'false',
+        :default => '-',
+        :description => 'Default selected value'
+      },
+      %{
+        :name => 'on_select',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Name of the event handler function when an option is clicked'
+      },
+      %{
+        :name => 'is_error',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'TODO - If the component is in error mode'
+      }
+    ]
+
   data latest_params, :any, default: nil
 
   def mount(params, _session, socket) do
@@ -69,106 +171,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'field',
-              :type => 'atom ',
-              :required => 'true',
-              :default => '-',
-              :description => 'Field for the underlying phoenix select component'
-            },
-            %{
-              :name => 'size',
-              :type => '-',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - size variant'
-            },
-            %{
-              :name => 'options',
-              :type => 'list',
-              :required => 'true',
-              :default => '-',
-              :description => 'Options for the select'
-            },
-            %{
-              :name => 'prompt',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Placeholder text'
-            },
-            %{
-              :name => 'header',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - header element on the options popup'
-            },
-            %{
-              :name => 'footer',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - footer element on the options popup'
-            },
-            %{
-              :name => 'menu_width',
-              :type => 'number',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - Minimum width of the popup menu containing options'
-            },
-            %{
-              :name => 'left',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - Left content for selected option'
-            },
-            %{
-              :name => 'hint',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - Inform message under select, can be used for error message'
-            },
-            %{
-              :name => 'items',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content template for displaying each of the options'
-            },
-            %{
-              :name => 'disabled',
-              :type => 'boolean',
-              :required => '-',
-              :default => 'false',
-              :description => 'Whether the component is disabled'
-            },
-            %{
-              :name => 'value',
-              :type => 'any',
-              :required => 'false',
-              :default => '-',
-              :description => 'Default selected value'
-            },
-            %{
-              :name => 'on_select',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Name of the event handler function when an option is clicked'
-            },
-            %{
-              :name => 'is_error',
-              :type => 'boolean',
-              :required => 'false',
-              :default => '-',
-              :description => 'TODO - If the component is in error mode'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

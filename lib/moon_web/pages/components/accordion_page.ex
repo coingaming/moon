@@ -26,6 +26,59 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'title',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Title of accordion'
+      },
+      %{
+        :name => 'open_by_default',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Expanded/collapsed accordion by default'
+      },
+      %{
+        :name => 'with_button',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Show expand/collapse chevron'
+      },
+      %{
+        :name => 'disable_open',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Disable expand/collapse accordion'
+      },
+      %{
+        :name => 'content',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content to show inside of accordion'
+      },
+      %{
+        :name => 'size',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Size variant of accordion'
+      },
+      %{
+        :name => 'is_content_inside',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether the content is displayed outside of the accordion header'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -76,57 +129,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'title',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Title of accordion'
-            },
-            %{
-              :name => 'open_by_default',
-              :type => 'boolean',
-              :required => 'false',
-              :default => '-',
-              :description => 'Expanded/collapsed accordion by default'
-            },
-            %{
-              :name => 'with_button',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Show expand/collapse chevron'
-            },
-            %{
-              :name => 'disable_open',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Disable expand/collapse accordion'
-            },
-            %{
-              :name => 'content',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content to show inside of accordion'
-            },
-            %{
-              :name => 'size',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Size variant of accordion'
-            },
-            %{
-              :name => 'is_content_inside',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Whether the content is displayed outside of the accordion header'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

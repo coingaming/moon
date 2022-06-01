@@ -25,6 +25,59 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'size',
+        :type => 'xsmall | small | medium | large | xlarge | twoxlarge',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'Size for avatar'
+      },
+      %{
+        :name => 'name',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Capital letters of name'
+      },
+      %{
+        :name => 'image_url',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Path to the image'
+      },
+      %{
+        :name => 'status_origin',
+        :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
+        :required => 'false',
+        :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
+        :description => 'Position for status indication'
+      },
+      %{
+        :name => 'is_status_active',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Active state for status indication'
+      },
+      %{
+        :name => 'color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'piccolo-100',
+        :description => 'Text color'
+      },
+      %{
+        :name => 'background-color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'gohan-100',
+        :description => 'Background color'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -134,57 +187,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'size',
-              :type => 'xsmall | small | medium | large | xlarge | twoxlarge',
-              :required => 'false',
-              :default => 'medium',
-              :description => 'Size for avatar'
-            },
-            %{
-              :name => 'name',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Capital letters of name'
-            },
-            %{
-              :name => 'image_url',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Path to the image'
-            },
-            %{
-              :name => 'status_origin',
-              :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
-              :required => 'false',
-              :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
-              :description => 'Position for status indication'
-            },
-            %{
-              :name => 'is_status_active',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description => 'Active state for status indication'
-            },
-            %{
-              :name => 'color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'piccolo-100',
-              :description => 'Text color'
-            },
-            %{
-              :name => 'background-color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'gohan-100',
-              :description => 'Background color'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

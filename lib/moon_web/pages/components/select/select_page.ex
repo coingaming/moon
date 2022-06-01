@@ -28,6 +28,38 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field name for underlying surface select component'
+      },
+      %{
+        :name => 'label',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Label title'
+      },
+      %{
+        :name => 'prompt',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Placeholder'
+      },
+      %{
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the component is disabled'
+      }
+    ]
+
   def mount(params, _session, socket) do
     gender_options = [
       [key: "Female", value: "female"],
@@ -104,36 +136,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'field',
-              :type => 'atom',
-              :required => 'true',
-              :default => '-',
-              :description => 'Field name for underlying surface select component'
-            },
-            %{
-              :name => 'label',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'Label title'
-            },
-            %{
-              :name => 'prompt',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Placeholder'
-            },
-            %{
-              :name => 'disabled',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description => 'Whether the component is disabled'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

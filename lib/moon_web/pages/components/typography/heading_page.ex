@@ -26,6 +26,59 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     ]
   )
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'text-bulma-100',
+        :description => 'Heading color'
+      },
+      %{
+        :name => 'size',
+        :type => '16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
+        :required => 'false',
+        :default => '16',
+        :description => 'Heading size'
+      },
+      %{
+        :name => 'is_regular',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Whether font weight is normal'
+      },
+      %{
+        :name => 'text_align',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Alignment'
+      },
+      %{
+        :name => 'is_uppercase',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether text is uppercase'
+      },
+      %{
+        :name => 'is_underline',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Whether text is underlined'
+      },
+      %{
+        :name => 'line_height',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Custom line height'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -149,57 +202,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'text-bulma-100',
-              :description => 'Heading color'
-            },
-            %{
-              :name => 'size',
-              :type => '16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
-              :required => 'false',
-              :default => '16',
-              :description => 'Heading size'
-            },
-            %{
-              :name => 'is_regular',
-              :type => 'boolean',
-              :required => 'false',
-              :default => '-',
-              :description => 'Whether font weight is normal'
-            },
-            %{
-              :name => 'text_align',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Alignment'
-            },
-            %{
-              :name => 'is_uppercase',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Whether text is uppercase'
-            },
-            %{
-              :name => 'is_underline',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Whether text is underlined'
-            },
-            %{
-              :name => 'line_height',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Custom line height'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

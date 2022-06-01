@@ -25,6 +25,38 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'space',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO'
+      },
+      %{
+        :name => 'items',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Items to display inside carousel'
+      },
+      %{
+        :name => 'scroll_to_left_button',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Scroll to left button'
+      },
+      %{
+        :name => 'scroll_to_right_button',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Scroll to right button'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -87,36 +119,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'space',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO'
-            },
-            %{
-              :name => 'items',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Items to display inside carousel'
-            },
-            %{
-              :name => 'scroll_to_left_button',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Scroll to left button'
-            },
-            %{
-              :name => 'scroll_to_right_button',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Scroll to right button'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

@@ -56,6 +56,60 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'content',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content of popover'
+      },
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content of popover toggle element'
+      },
+      %{
+        :name => 'default_state',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Open/Closed popover by default'
+      },
+      %{
+        :name => 'close_on_click_outside',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Close popover if clicked outside'
+      },
+      %{
+        :name => 'placement',
+        :type =>
+          'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
+        :required => 'false',
+        :default => 'bottom-start',
+        :description => 'TODO - Placement of popover'
+      },
+      %{
+        :name => 'min_width',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - min-width value of popover (px)min-width value of popover (px)'
+      },
+      %{
+        :name => 'max_width',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - max-width value of popover (px)'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -107,58 +161,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'content',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content of popover'
-            },
-            %{
-              :name => 'default',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content of popover toggle element'
-            },
-            %{
-              :name => 'default_state',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Open/Closed popover by default'
-            },
-            %{
-              :name => 'close_on_click_outside',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Close popover if clicked outside'
-            },
-            %{
-              :name => 'placement',
-              :type =>
-                'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
-              :required => 'false',
-              :default => 'bottom-start',
-              :description => 'TODO - Placement of popover'
-            },
-            %{
-              :name => 'min_width',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - min-width value of popover (px)min-width value of popover (px)'
-            },
-            %{
-              :name => 'max_width',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - max-width value of popover (px)'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

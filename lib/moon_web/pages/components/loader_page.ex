@@ -23,6 +23,24 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'bulma-100',
+        :description => 'Colour of Loader'
+      },
+      %{
+        :name => 'size',
+        :type => 'twoxsmall | xsmall | small | medium | large',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'Size of Loader'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -72,22 +90,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'bulma-100',
-              :description => 'Colour of Loader'
-            },
-            %{
-              :name => 'size',
-              :type => 'twoxsmall | xsmall | small | medium | large',
-              :required => 'false',
-              :default => 'medium',
-              :description => 'Size of Loader'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

@@ -28,6 +28,63 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       }
     ]
 
+  data props_info_array_tab, :list,
+    default: [
+      %{
+        :name => 'default',
+        :type => 'slot ',
+        :required => 'true',
+        :default => '-',
+        :description => 'Content inside the tab'
+      },
+      %{
+        :name => 'size',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - size variant'
+      },
+      %{
+        :name => 'items',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - array of TabLink items'
+      }
+    ]
+
+  data props_info_array_tab_link, :list,
+    default: [
+      %{
+        :name => 'on_click',
+        :type => 'event ',
+        :required => 'false',
+        :default => '-',
+        :description => 'Event to happen when tab is clicked'
+      },
+      %{
+        :name => 'element_left',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Left element'
+      },
+      %{
+        :name => 'element_right',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Right element'
+      },
+      %{
+        :name => 'to',
+        :type => 'any',
+        :required => 'false',
+        :default => '-',
+        :description => 'Link\'s destination'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
@@ -88,30 +145,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         </ExampleAndCode>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Tab Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'default',
-              :type => 'slot ',
-              :required => 'true',
-              :default => '-',
-              :description => 'Content inside the tab'
-            },
-            %{
-              :name => 'size',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - size variant'
-            },
-            %{
-              :name => 'items',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - array of TabLink items'
-            }
-          ]}>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Tab Props</div>
+          <Table items={@props_info_array_tab}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>
@@ -131,37 +166,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         </div>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'on_click',
-              :type => 'event ',
-              :required => 'false',
-              :default => '-',
-              :description => 'Event to happen when tab is clicked'
-            },
-            %{
-              :name => 'element_left',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Left element'
-            },
-            %{
-              :name => 'element_right',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Right element'
-            },
-            %{
-              :name => 'to',
-              :type => 'any',
-              :required => 'false',
-              :default => '-',
-              :description => 'Link\'s destination'
-            }
-          ]}>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props</div>
+          <Table items={@props_info_array_tab_link}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

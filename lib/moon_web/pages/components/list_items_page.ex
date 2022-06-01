@@ -26,6 +26,52 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'List item subtext'
+      },
+      %{
+        :name => 'size',
+        :type => 'medium | large',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'List item size'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'gohan-100',
+        :description => 'List item background color'
+      },
+      %{
+        :name => 'color',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - List item color'
+      },
+      %{
+        :name => 'left_icon',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Element on the left'
+      },
+      %{
+        :name => 'right_icon',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Element on the right'
+      }
+    ]
+
   def mount(params, _session, socket) do
     socket =
       assign(socket,
@@ -119,50 +165,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'default',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'List item subtext'
-            },
-            %{
-              :name => 'size',
-              :type => 'medium | large',
-              :required => 'false',
-              :default => 'medium',
-              :description => 'List item size'
-            },
-            %{
-              :name => 'background_color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'gohan-100',
-              :description => 'List item background color'
-            },
-            %{
-              :name => 'color',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - List item color'
-            },
-            %{
-              :name => 'left_icon',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'Element on the left'
-            },
-            %{
-              :name => 'right_icon',
-              :type => 'slot',
-              :required => 'false',
-              :default => '-',
-              :description => 'Element on the right'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

@@ -25,6 +25,52 @@ defmodule MoonWeb.Pages.Components.LabelPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'size',
+        :type => 'xsmall | small | medium | large | xlarge',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'Size of Button'
+      },
+      %{
+        :name => 'left_icon',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Asset name for the left icon'
+      },
+      %{
+        :name => 'right_icon',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Asset name for the right icon'
+      },
+      %{
+        :name => 'color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'gohan.100',
+        :description => 'Asset name for the icon. Icon only and no text shown'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string',
+        :required => 'false',
+        :default => 'bulma.100',
+        :description => 'Active state'
+      },
+      %{
+        :name => 'is_uppercase',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'true',
+        :description => 'Letter case'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -132,50 +178,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'size',
-              :type => 'xsmall | small | medium | large | xlarge',
-              :required => 'false',
-              :default => 'medium',
-              :description => 'Size of Button'
-            },
-            %{
-              :name => 'left_icon',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Asset name for the left icon'
-            },
-            %{
-              :name => 'right_icon',
-              :type => 'string',
-              :required => 'false',
-              :default => '-',
-              :description => 'Asset name for the right icon'
-            },
-            %{
-              :name => 'color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'gohan.100',
-              :description => 'Asset name for the icon. Icon only and no text shown'
-            },
-            %{
-              :name => 'background_color',
-              :type => 'string',
-              :required => 'false',
-              :default => 'bulma.100',
-              :description => 'Active state'
-            },
-            %{
-              :name => 'is_uppercase',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'true',
-              :description => 'Letter case'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

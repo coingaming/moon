@@ -28,6 +28,53 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'id',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Unique element\'s identifier'
+      },
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Represent a caption for an item'
+      },
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'true',
+        :default => '-',
+        :description => 'Field name for underlying surface radio button component'
+      },
+      %{
+        :name => 'aria_label',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Defines a string value that labels the current element'
+      },
+      %{
+        :name => 'checked',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description =>
+          'A Boolean indicating whether or not this radio button is the default-selected item in the group'
+      },
+      %{
+        :name => 'click',
+        :type => 'event',
+        :required => 'true',
+        :default => '-',
+        :description => 'Event handler'
+      }
+    ]
+
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -70,51 +117,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'id',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'Unique element\'s identifier'
-            },
-            %{
-              :name => 'default',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Represent a caption for an item'
-            },
-            %{
-              :name => 'field',
-              :type => 'atom',
-              :required => 'true',
-              :default => '-',
-              :description => 'Field name for underlying surface radio button component'
-            },
-            %{
-              :name => 'aria_label',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Defines a string value that labels the current element'
-            },
-            %{
-              :name => 'checked',
-              :type => 'boolean',
-              :required => 'false',
-              :default => 'false',
-              :description =>
-                'A Boolean indicating whether or not this radio button is the default-selected item in the group'
-            },
-            %{
-              :name => 'click',
-              :type => 'event',
-              :required => 'true',
-              :default => '-',
-              :description => 'Event handler'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

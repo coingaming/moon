@@ -23,6 +23,52 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'children',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Component or element which Tooltip wraps around'
+      },
+      %{
+        :name => 'text',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Textual content for Tooltip'
+      },
+      %{
+        :name => 'icon',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'Icon shown in the Tooltip'
+      },
+      %{
+        :name => 'content',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Custom component shown in the Tooltip'
+      },
+      %{
+        :name => 'placement',
+        :type => 'top | bottom | left | right',
+        :required => 'true',
+        :default => '-',
+        :description => 'Where Tooltip will be shown'
+      },
+      %{
+        :name => 'show',
+        :type => '-',
+        :required => '-',
+        :default => '-',
+        :description => 'TODO - Should Tooltip be shown persistently'
+      }
+    ]
+
   def mount(params, _session, socket) do
     {:ok,
      assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
@@ -36,13 +82,8 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Popover Component</Heading>
-        <Link
-          class="mb-4"
-          to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/popover_v2.ex"
-        >
-          Sourcecode of this page
-        </Link>
+        <Heading size={56} class="mb-4">Tooltip Component</Heading>
+
         {#for placement <- ["top", "right", "bottom", "left"]}
           <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
             <:example>
@@ -63,51 +104,8 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         {/for}
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={[
-            %{
-              :name => 'children',
-              :type => 'slot',
-              :required => 'true',
-              :default => '-',
-              :description => 'Component or element which Tooltip wraps around'
-            },
-            %{
-              :name => 'text',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'Textual content for Tooltip'
-            },
-            %{
-              :name => 'icon',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'Icon shown in the Tooltip'
-            },
-            %{
-              :name => 'content',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Custom component shown in the Tooltip'
-            },
-            %{
-              :name => 'placement',
-              :type => 'top | bottom | left | right',
-              :required => 'true',
-              :default => '-',
-              :description => 'Where Tooltip will be shown'
-            },
-            %{
-              :name => 'show',
-              :type => '-',
-              :required => '-',
-              :default => '-',
-              :description => 'TODO - Should Tooltip be shown persistently'
-            }
-          ]}>
+          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>

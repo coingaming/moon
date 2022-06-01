@@ -25,6 +25,38 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       }
     ]
 
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'checked',
+        :type => 'boolean ',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Is switch checked/unchecked'
+      },
+      %{
+        :name => 'on_change',
+        :type => 'event',
+        :required => 'false',
+        :default => '-',
+        :description => 'Event that happens when you click on the switch'
+      },
+      %{
+        :name => 'caption_unchecked',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Displayed text when unchecked'
+      },
+      %{
+        :name => 'caption_checked',
+        :type => 'string',
+        :required => 'true',
+        :default => '-',
+        :description => 'Displayed text when checked'
+      }
+    ]
+
   def mount(params, _session, socket) do
     socket =
       assign(socket,
@@ -173,36 +205,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
-          <Table items={[
-            %{
-              :name => 'checked',
-              :type => 'boolean ',
-              :required => 'false',
-              :default => 'false',
-              :description => 'Is switch checked/unchecked'
-            },
-            %{
-              :name => 'on_change',
-              :type => 'event',
-              :required => 'false',
-              :default => '-',
-              :description => 'Event that happens when you click on the switch'
-            },
-            %{
-              :name => 'caption_unchecked',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'Displayed text when unchecked'
-            },
-            %{
-              :name => 'caption_checked',
-              :type => 'string',
-              :required => 'true',
-              :default => '-',
-              :description => 'Displayed text when checked'
-            }
-          ]}>
+          <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
             </Column>
