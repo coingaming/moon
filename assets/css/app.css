@@ -48,6 +48,15 @@ Please do not add CSS here. Instead use Tailwind classes!
   .scroll-snap-align-start {
     scroll-snap-align: start;
   }
+  .radio-button-checked-outline {
+    box-shadow: inset 0 0 0 0.1rem var(--color--piccolo-100);   
+  }  
+  .radio-button-unchecked-outline {
+    box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);  
+  }
+  .radio-button-hover {
+    background-color: rgba(0, 0, 0, 0.08)
+  }
 }
 
 @layer utilities {
@@ -60,6 +69,17 @@ Please do not add CSS here. Instead use Tailwind classes!
   .animation-delay-minus-15 {
     animation-delay: -0.15s;
   }
+  .hide-visually {   
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  } 
 }
 
 [x-cloak] {

@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         name: "Components"
       },
       %{
-        to: "/components/radio_button",
+        to: "/components/radio-button",
         name: "RadioButton"
       }
     ]
@@ -31,8 +31,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">RadioButton</Heading>
-
-        <ExampleAndCode title="RadioButton" id="radio_button_1">
+        <ExampleAndCode title="RadioButton" id="radiobutton_1">
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <TopToDown>
@@ -60,10 +59,8 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
               </TopToDown>
             </Form>
           </:example>
-
-          <:code>{radio_button_1_code()}</:code>
-
-          <:state>{radio_button_1_state(assigns)}</:state>
+          <:code>{radiobutton_1_code()}</:code>
+          <:state>{radiobutton_1_state(assigns)}</:state>
         </ExampleAndCode>
       </TopToDown>
     </Page>
@@ -71,7 +68,10 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   end
 
   def mount(params, _session, socket) do
-    user_changeset = User.changeset(%User{}, %{})
+    user_changeset =
+      User.changeset(%User{}, %{
+        role: 1
+      })
 
     {:ok,
      assign(socket,
@@ -103,7 +103,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def radio_button_1_code do
+  def radiobutton_1_code do
     """
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <TopToDown>
@@ -133,7 +133,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     """
   end
 
-  def radio_button_1_state(assigns) do
+  def radiobutton_1_state(assigns) do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
     """
