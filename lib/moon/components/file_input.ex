@@ -37,6 +37,7 @@ defmodule Moon.Components.FileInput do
 
   use Moon.StatelessComponent
   alias Moon.Assets.Icons.IconUpload
+  alias Moon.Components.Button
   alias __MODULE__.ListOfFiles
 
   prop label, :string
@@ -44,23 +45,23 @@ defmodule Moon.Components.FileInput do
   prop conf, :any
   prop error, :boolean, default: false
   prop cancel_upload, :event
+  slot default
 
   def render(assigns) do
     ~F"""
-    <div>
+    <div class="relative">
+      {live_file_input(@conf, class: "opacity-0 absolute top-0 right-0 h-full w-full")}
       <span :if={@label} class="block mb-2">{@label}</span>
-      <label class={
-        "flex justify-between items-center relative px-4 py-2 transition duration-200 border rounded cursor-pointer text-trunks-100 hover:border-goku-40 leading-normal overflow-hidden",
-        "border-chi-chi-100": @error,
-        "border-beerus-100": !@error
-      }>
-        {live_file_input(@conf, class: "opacity-0 absolute top-0 right-0 h-0.5 w-0.5")}
-        <span class="z-10 cursor-pointer">{@placeholder}</span>
-        <span class="flex items-center m-1">
-          <IconUpload />
-        </span>
-      </label>
-      <ListOfFiles {=@conf} {=@cancel_upload} />
+      {#if slot_assigned?(:default)}
+        <#slot name="default" />
+      {/if}
+      {#if !slot_assigned?(:default)}
+        <Button>
+          {@placeholder}
+          <:right_icon_slot><IconUpload /></:right_icon_slot>
+        </Button>
+        <ListOfFiles {=@conf} {=@cancel_upload} />
+      {/if}
     </div>
     """
   end
