@@ -77,6 +77,21 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           <:code>{get_example_2_code()}</:code>
           <:state>{get_example_2_state(assigns)}</:state>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Custom design instead of button" id="file_input_3">
+          <:example>
+            <Form id="upload-form-3" for={:example_form} change="upload_changed" submit="upload_submitted">
+              <TopToDown>
+                <FileInput conf={@uploads.some_picture_file} cancel_upload="cancel-upload">
+                  .oOo.
+                </FileInput>
+                <Button type="submit" variant="primary">Upload</Button>
+              </TopToDown>
+            </Form>
+          </:example>
+          <:code>{get_example_3_code()}</:code>
+          <:state>{get_example_1_state(assigns)}</:state>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """
@@ -217,6 +232,24 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
             <p class="alert alert-danger">{inspect(err)}</p>
           {/for}
         </section>
+        <Button type="submit" variant="primary">Upload</Button>
+      </TopToDown>
+    </Form>
+    """
+  end
+
+  def get_example_3_code() do
+    """
+    <Form id="upload-form-3" for={:example_form} change="upload_changed" submit="upload_submitted">
+      <TopToDown>
+        <FileInput
+          conf={@uploads.some_picture_file}
+          label="Upload your ID"
+          placeholder="Choose a photo..."
+          cancel_upload="cancel-upload"
+        >
+          .oOo.
+        </FileInput>
         <Button type="submit" variant="primary">Upload</Button>
       </TopToDown>
     </Form>
