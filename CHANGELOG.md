@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/coingaming/moon/compare/v2.10.0...v2.10.1) (2022-06-02)
+
+
+### Bug Fixes
+
+* add feat for custom file input ([#278](https://github.com/coingaming/moon/issues/278)) ([118d66e](https://github.com/coingaming/moon/commit/118d66ed610f366802f384b1adc128b2bc8eb988))
+
 # [2.10.0](https://github.com/coingaming/moon/compare/v2.9.0...v2.10.0) (2022-06-01)
 
 
