@@ -1,3 +1,10 @@
+## [2.10.3](https://github.com/coingaming/moon/compare/v2.10.2...v2.10.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* theme switcher should only affect the components sample and make the default theme moon-design-light [MDS-111] ([#279](https://github.com/coingaming/moon/issues/279)) ([1baf62d](https://github.com/coingaming/moon/commit/1baf62db00ddaeacfd5ae322b2987f956ea38a04))
+
 ## [2.10.2](https://github.com/coingaming/moon/compare/v2.10.1...v2.10.2) (2022-06-06)
 
 
