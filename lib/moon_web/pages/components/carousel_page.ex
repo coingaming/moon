@@ -59,7 +59,10 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -82,7 +85,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
           <Link to="https://moon.io/components/accordion">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="carousel_1">
+        <ExampleAndCode id="carousel_1" theme_name={@theme_name}>
           <:example>
             <div>
               <Carousel>

@@ -43,16 +43,19 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={32}>Loader</Heading>
 
-        <ExampleAndCode title="Default" id="loader_1">
+        <ExampleAndCode title="Default" id="loader_1" theme_name={@theme_name}>
           <:example>
             <div class="flex gap-4 justify-center w-full items-center">
               <Loader />
@@ -62,7 +65,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
           <:code>{loader_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Colors" id="loader_2">
+        <ExampleAndCode title="Colors" id="loader_2" theme_name={@theme_name}>
           <:example>
             <div class="flex gap-4 justify-center w-full items-center">
               <Loader color="hit-100" />
@@ -74,7 +77,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
           <:code>{loader_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="loader_3">
+        <ExampleAndCode title="Sizes" id="loader_3" theme_name={@theme_name}>
           <:example>
             <div class="flex gap-4 justify-center w-full items-center">
               <Loader size="twoxsmall" />

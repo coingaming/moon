@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
 
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=33587%3A15713">Figma design</Link>
 
-        <ExampleAndCode title="Drawer on top right" id="drawer_1_example">
+        <ExampleAndCode title="Drawer on top right" id="drawer_1_example" theme_name={@theme_name}>
           <:example>
             <Button variant="primary" on_click="open_drawer_1">Open drawer</Button>
             <Drawer class="w-64" :if={@drawer_1_is_open}>
@@ -68,7 +68,11 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
           <:state>{get_example_1_state(assigns)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Drawer on right that moves content" id="drawer_2_example">
+        <ExampleAndCode
+          title="Drawer on right that moves content"
+          id="drawer_2_example"
+          theme_name={@theme_name}
+        >
           <:example>
             <Button variant="primary" on_click="open_drawer_2">Open drawer</Button>
             <Drawer class="w-64" :if={@drawer_2_is_open}>
@@ -101,7 +105,10 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do

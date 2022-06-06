@@ -80,7 +80,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={56} class="mb-4">RadioButton</Heading>
-        <ExampleAndCode title="RadioButton" id="radiobutton_1">
+        <ExampleAndCode title="RadioButton" id="radiobutton_1" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <TopToDown>
@@ -146,7 +146,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end

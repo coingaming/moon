@@ -80,7 +80,10 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -101,7 +104,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
         Component for displaying user profile image or placeholder if no image
 
-        <ExampleAndCode title="Variants" id="avatar_1">
+        <ExampleAndCode title="Variants" id="avatar_1" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Avatar />
@@ -113,7 +116,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           <:code>{avatar_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Different colours" id="avatar_2">
+        <ExampleAndCode title="Different colours" id="avatar_2" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Avatar />
@@ -126,7 +129,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           <:code>{avatar_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Different sizes" id="avatar_3">
+        <ExampleAndCode title="Different sizes" id="avatar_3" theme_name={@theme_name}>
           <:example>
             <TopToDown>
               <div class="flex justify-around items-center w-full mb-4">
@@ -159,7 +162,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           <:code>{avatar_3_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Active status" id="avatar_4">
+        <ExampleAndCode title="Active status" id="avatar_4" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Avatar />
@@ -172,7 +175,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
           <:code>{avatar_4_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Status origin" id="avatar_5">
+        <ExampleAndCode title="Status origin" id="avatar_5" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />

@@ -26,7 +26,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         tabs: ~w(One Two Three),
         selected_tab: "One"
@@ -49,26 +49,26 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <ExampleAndCode id="switcher">
+        <ExampleAndCode title="Default" id="switcher" theme_name={@theme_name}>
           <:example>
             <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
           </:example>
 
           <:code>
             <#CodePreview>
-        alias Moon.Components.Switcher
+              alias Moon.Components.Switcher
 
-        <Switcher
-          items={@tabs}
-          selected_item={@selected_tab}
-          click="tab_click"
-        />
+              <Switcher
+                items={@tabs}
+                selected_item={@selected_tab}
+                click="tab_click"
+              />
 
-        def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
-          socket = assign(socket, selected_tab: selected_item)
-          {:noreply, socket}
-        end
-          </#CodePreview>
+              def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
+                socket = assign(socket, selected_tab: selected_item)
+                {:noreply, socket}
+              end
+            </#CodePreview>
           </:code>
 
           <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>

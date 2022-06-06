@@ -136,7 +136,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -154,6 +154,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <ExampleAndCode
           title="Single Select with options as prop"
           id="single_select_with_options_as_prop"
+          theme_name={@theme_name}
         >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -170,7 +171,11 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
         <Heading size={56} class="mb-4">Single Select (selected value with icon)</Heading>
 
-        <ExampleAndCode title="" id="single_select_with_options_as_prop_and_icon">
+        <ExampleAndCode
+          title=""
+          id="single_select_with_options_as_prop_and_icon"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>

@@ -39,7 +39,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
 
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=60%3A25">Figma design</Link>
 
-        <ExampleAndCode title="Modal" id="modal_1">
+        <ExampleAndCode title="Modal" id="modal_1" theme_name={@theme_name}>
           <:example>
             <Button variant="primary" on_click="open_modal">Open modal</Button>
             <Modal close="close_modal" :if={@modal_is_open}>
@@ -70,7 +70,10 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do

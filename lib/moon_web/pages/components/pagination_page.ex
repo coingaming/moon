@@ -102,7 +102,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         total_pages: 10,
         current_page_number: 6,
@@ -135,7 +135,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           <Link to="https://moon.io/components/pagination">React implementation</Link>
         </p>
 
-        <ExampleAndCode layout="column" id="pagination_1">
+        <ExampleAndCode title="Default" layout="column" id="pagination_1" theme_name={@theme_name}>
           <:example>
             <Pagination
               current_page_number={@current_page_number}
@@ -154,7 +154,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           <:state>@current_page_number = {@current_page_number}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Size" layout="column" id="pagination_2">
+        <ExampleAndCode title="Size" layout="column" id="pagination_2" theme_name={@theme_name}>
           <:state>
             Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
           </:state>
@@ -193,7 +193,12 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
           <:code>{get_pagination_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Example with a side section" layout="column" id="pagination_3">
+        <ExampleAndCode
+          title="Example with a side section"
+          layout="column"
+          id="pagination_3"
+          theme_name={@theme_name}
+        >
           <:example>
             <TopToDown>
               <div class="flex flex-wrap items-center">

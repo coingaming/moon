@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     socket =
       socket
       |> assign(
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         user_changeset: user_changeset,
         gender_options: gender_options,

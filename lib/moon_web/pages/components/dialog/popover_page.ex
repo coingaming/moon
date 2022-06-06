@@ -112,7 +112,10 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -147,7 +150,12 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
             "left",
             "left-end"
           ]}
-          <ExampleAndCode id={"popover_#{placement}"} class="my-12">
+          <ExampleAndCode
+            id={"popover_#{placement}"}
+            class="my-12"
+            title={"Placement: #{placement}"}
+            theme_name={@theme_name}
+          >
             <:example>
               <LeftToRight>
                 <PopoverExample id={placement} placement={placement} />

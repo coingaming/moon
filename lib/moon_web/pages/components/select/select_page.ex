@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
      assign(socket,
        gender_options: gender_options,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -98,7 +98,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
           A user-controlled menu of options for forms, navigation and more.
         </p>
 
-        <ExampleAndCode title="Example" id="select_1">
+        <ExampleAndCode title="Example" id="select_1" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset}>
               <Select field={:gender} options={@gender_options} prompt="Please select gender" />
@@ -108,7 +108,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
           <:code>{select_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="With Label" id="select_2">
+        <ExampleAndCode title="With Label" id="select_2" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset}>
               <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
@@ -118,7 +118,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
           <:code>{select_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="select_3">
+        <ExampleAndCode title="Disabled" id="select_3" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset}>
               <Select

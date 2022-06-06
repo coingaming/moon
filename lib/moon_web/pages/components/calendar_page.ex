@@ -26,7 +26,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         events: generate_events()
       )
@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
         </p>
 
-        <ExampleAndCode layout="column" id="calendar_1">
+        <ExampleAndCode layout="column" id="calendar_1" theme_name={@theme_name}>
           <:example>
             <Calendar id="default_calendar" week_starts_on={1} events={@events} />
           </:example>
@@ -70,7 +70,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           <:state>@events = {inspect(@events, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2">
+        <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2" theme_name={@theme_name}>
           <:example>
             <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
           </:example>

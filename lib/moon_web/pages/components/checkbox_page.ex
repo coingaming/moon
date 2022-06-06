@@ -73,7 +73,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Checkbox</Heading>
 
-        <ExampleAndCode title="Checkbox" id="checkbox_1">
+        <ExampleAndCode title="Checkbox" id="checkbox_1" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <TopToDown>
@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
           <:state>{checkbox_1_state(assigns)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="No Label" id="checkbox_2">
+        <ExampleAndCode title="No Label" id="checkbox_2" theme_name={@theme_name}>
           <:example>
             <div class="here flex items-centered justify-items-center justify-evenly">
               <Form for={@user_changeset2} change="register_form_update2">
@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
           <:code>{checkbox_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="checkbox_3">
+        <ExampleAndCode title="Disabled" id="checkbox_3" theme_name={@theme_name}>
           <:example>
             <div class="here flex items-centered justify-items-center justify-evenly">
               <Form for={@user_changeset}>
@@ -138,7 +138,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
           <:code>{checkbox_3_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Readonly" id="checkbox_4">
+        <ExampleAndCode title="Readonly" id="checkbox_4" theme_name={@theme_name}>
           <:example>
             <div class="here flex items-centered justify-items-center justify-evenly">
               <Form for={@user_changeset2} change="register_form_update2">
@@ -197,7 +197,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
      assign(socket,
        user_changeset: user_changeset,
        user_changeset2: user_changeset2,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end

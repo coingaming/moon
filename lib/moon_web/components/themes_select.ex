@@ -9,6 +9,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoLivecasinoShort
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoSportsbetShort
+  alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Components.Switch
   alias Moon.Icon
 
@@ -30,7 +31,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     # [key: "Hub88", value: "luckyslots", modes: false],
     # [key: "MissionsTool", value: "missions-tool", modes: true],
     # [key: "Moneyball", value: "moneyball", modes: true],
-    # [key: "Moon design", value: "moon-design", modes: true],
+    [key: "Moon design", value: "moon-design", modes: true],
     [key: "Slots", value: "slots", modes: true],
     [key: "Sportsbet", value: "sportsbet", modes: true]
   ]
@@ -67,6 +68,7 @@ defmodule MoonWeb.Components.ThemesSelect do
           <button
             :on-click="update_selected_theme"
             type="button"
+            title={theme[:value]}
             value={theme[:value]}
             class="p-2 rounded-full ml-4 text-piccolo-100 bg-gohan-100 hover:bg-gohan-120 inline-flex items-center justify-center"
           >
@@ -78,6 +80,8 @@ defmodule MoonWeb.Components.ThemesSelect do
               <LogoLivecasinoShort />
             {#elseif theme[:value] == "lab"}
               <LogoLabFull />
+            {#elseif theme[:value] == "moon-design"}
+              <LogoMoonDesignShort />
             {#elseif theme[:value] == "slots"}
               <LogoSlotsShort />
             {#elseif theme[:value] == "sportsbet"}

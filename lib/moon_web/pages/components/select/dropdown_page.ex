@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        options: user_permissions,
        searchable_options: user_permissions,
        radio_options: user_permissions,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        tab_id: "1",
        active_page: __MODULE__
      )}
@@ -61,7 +61,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Dropdown</Heading>
 
-        <ExampleAndCode title="Dropdown options" id="dropdown-options-example">
+        <ExampleAndCode title="Dropdown options" id="dropdown-options-example" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with icons" id="dropdown-icons-example">
+        <ExampleAndCode title="Dropdown with icons" id="dropdown-icons-example" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
@@ -97,7 +97,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with search" id="dropdown-search-example">
+        <ExampleAndCode
+          title="Dropdown with search"
+          id="dropdown-search-example"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
@@ -123,7 +127,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with search and footer" id="dropdown-search-footer-example">
+        <ExampleAndCode
+          title="Dropdown with search and footer"
+          id="dropdown-search-footer-example"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
@@ -166,7 +174,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with radio button" id="dropdown-radio-example">
+        <ExampleAndCode
+          title="Dropdown with radio button"
+          id="dropdown-radio-example"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
               <Field name={:permissions}>
@@ -191,7 +203,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@radio_form_changeset = {inspect(@radio_form_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with checkbox" id="dropdown-checkbox-example">
+        <ExampleAndCode
+          title="Dropdown with checkbox"
+          id="dropdown-checkbox-example"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
@@ -220,7 +236,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Dropdown with Tabs" id="dropdown-tabs-example">
+        <ExampleAndCode title="Dropdown with Tabs" id="dropdown-tabs-example" theme_name={@theme_name}>
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>

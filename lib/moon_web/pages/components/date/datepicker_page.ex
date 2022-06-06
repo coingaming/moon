@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         changeset: Contract.changeset(data),
         time_changeset: Contract.changeset(%Contract{}),
@@ -81,7 +81,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
           <Link to="https://moon.io/components/datepicker">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="datepicker_1">
+        <ExampleAndCode id="datepicker_1" theme_name={@theme_name}>
           <:example>
             <Form for={@changeset} change="validate">
               <Datepicker
@@ -140,7 +140,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
           <:state>@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="With time" id="datepicker_2">
+        <ExampleAndCode title="With time" id="datepicker_2" theme_name={@theme_name}>
           <:example>
             <Form for={@time_changeset} change="time_validate">
               <Datepicker
@@ -157,18 +157,18 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
           <:code>
             <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="time_datepicker"
-            start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
-            start_date_field={ :datetime_started_at }
-            end_date_field={ :datetime_ended_at }
-            show_date_inputs={true}
-            with_time={ true }
-          />
-        </Form>
-      </#CodePreview>
+              <Form for={ @changeset } change="validate">
+                <Datepicker
+                  id="time_datepicker"
+                  start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
+                  end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
+                  start_date_field={ :datetime_started_at }
+                  end_date_field={ :datetime_ended_at }
+                  show_date_inputs={true}
+                  with_time={ true }
+                />
+              </Form>
+            </#CodePreview>
           </:code>
           <:note>
             Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
@@ -176,7 +176,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
           <:state>@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Custom ranges" id="datepicker_3">
+        <ExampleAndCode title="Custom ranges" id="datepicker_3" theme_name={@theme_name}>
           <:note>
             Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
           </:note>
@@ -196,22 +196,22 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
           <:code>
             <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="range_datepicker"
-            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-            start_date_field={ :started_at }
-            end_date_field={ :ended_at }
-            show_date_inputs={false}
-            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-          />
-        </Form>
-      </#CodePreview>
+              <Form for={ @changeset } change="validate">
+                <Datepicker
+                  id="range_datepicker"
+                  start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+                  end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+                  start_date_field={ :started_at }
+                  end_date_field={ :ended_at }
+                  show_date_inputs={false}
+                  ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                />
+              </Form>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Custom weekstart" id="datepicker_4">
+        <ExampleAndCode title="Custom weekstart" id="datepicker_4" theme_name={@theme_name}>
           <:example>
             <Form for={@weekstart_changeset} change="weekstart_validate">
               <Datepicker
@@ -229,19 +229,19 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
           <:code>
             <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="weekstart_datepicker"
-            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-            start_date_field={ :started_at }
-            end_date_field={ :ended_at }
-            week_starts_on={ 7 }
-            show_date_inputs={false}
-            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-          />
-        </Form>
-      </#CodePreview>
+              <Form for={ @changeset } change="validate">
+                <Datepicker
+                  id="weekstart_datepicker"
+                  start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+                  end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+                  start_date_field={ :started_at }
+                  end_date_field={ :ended_at }
+                  week_starts_on={ 7 }
+                  show_date_inputs={false}
+                  ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                />
+              </Form>
+            </#CodePreview>
           </:code>
 
           <:note>

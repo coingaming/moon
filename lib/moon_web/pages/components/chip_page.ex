@@ -71,7 +71,10 @@ defmodule MoonWeb.Pages.Components.ChipPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -84,7 +87,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
       <TopToDown>
         <Heading size={32}>Chip</Heading>
 
-        <ExampleAndCode title="Sizes" id="chip_1">
+        <ExampleAndCode title="Sizes" id="chip_1" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Chip size="small">Small</Chip>
@@ -95,7 +98,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
           <:code>{chip_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Active State" id="chip_2">
+        <ExampleAndCode title="Active State" id="chip_2" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Chip size="small" active>Small</Chip>
@@ -106,7 +109,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
           <:code>{chip_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="IsStroke" id="chip_3">
+        <ExampleAndCode title="IsStroke" id="chip_3" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Chip size="small" is_stroke>Stroke on Hover</Chip>
@@ -117,7 +120,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
           <:code>{chip_3_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" id="chip_4">
+        <ExampleAndCode title="Icons" id="chip_4" theme_name={@theme_name}>
           <:example>
             <TopToDown>
               <div class="flex justify-around w-full items-center">
@@ -138,7 +141,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
           <:code>{chip_4_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Icons with isStroke" id="chip_5">
+        <ExampleAndCode title="Icons with isStroke" id="chip_5" theme_name={@theme_name}>
           <:example>
             <TopToDown>
               <div class="flex justify-around w-full items-center">

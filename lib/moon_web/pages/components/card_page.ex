@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__
       )
 
@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/card_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <ExampleAndCode id="card_1">
+        <ExampleAndCode id="card_1" theme_name={@theme_name}>
           <:example>
             <Card title="Winers">
               <:buttons>
@@ -70,19 +70,19 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
           <:code>
             <#CodePreview>
-        alias Moon.Components.Card
-        alias Moon.Components.IconButton
+              alias Moon.Components.Card
+              alias Moon.Components.IconButton
 
-        <Card title="Winers">
-          <:buttons>
-            <IconButton icon_name="arrows_update" height={8} width={8} hover_bg_color="bg-goku-100" />
-            <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
-          </:buttons>
-          <:content>
-            {Faker.Lorem.paragraph()}
-          </:content>
-        </Card>
-      </#CodePreview>
+              <Card title="Winers">
+                <:buttons>
+                  <IconButton icon_name="arrows_update" height={8} width={8} hover_bg_color="bg-goku-100" />
+                  <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
+                </:buttons>
+                <:content>
+                  {Faker.Lorem.paragraph()}
+                </:content>
+              </Card>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
       </TopToDown>

@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Components.TextInput.PasswordPage do
 
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
        user_changeset: user_changeset
      )}
@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Components.TextInput.PasswordPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Password Input</Heading>
 
-        <ExampleAndCode id="example_1">
+        <ExampleAndCode id="example_1" theme_name={@theme_name}>
           <:example>
             <Form
               for={@user_changeset}

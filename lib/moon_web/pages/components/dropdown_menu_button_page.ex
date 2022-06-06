@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         show_options: false
       )
@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <TopToDown>
         <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
-        <ExampleAndCode id="dropdown_menu_button_1">
+        <ExampleAndCode id="dropdown_menu_button_1" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-center">
               <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">

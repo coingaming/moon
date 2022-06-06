@@ -81,7 +81,10 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -99,7 +102,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
           <Link to="https://moon.io/typography">React implementation</Link>
         </p>
 
-        <ExampleAndCode title="Sizes" id="heading_1">
+        <ExampleAndCode title="Sizes" id="heading_1" theme_name={@theme_name}>
           <:note>
             <p>We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.</p>
             <p>By default font size is 16. You can choose any size.</p>
@@ -137,7 +140,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Is regular" id="heading_2">
+        <ExampleAndCode title="Is regular" id="heading_2" theme_name={@theme_name}>
           <:note>
             By default font weight is bold. You can make it thiner.
           </:note>
@@ -162,7 +165,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Color" id="heading_3">
+        <ExampleAndCode title="Color" id="heading_3" theme_name={@theme_name}>
           <:note>
             By default Heading color is bulma.100. You can use any color.
           </:note>

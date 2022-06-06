@@ -73,7 +73,10 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -89,7 +92,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           Small count and labeling component.
         </p>
 
-        <ExampleAndCode title="Colours" id="label_1">
+        <ExampleAndCode title="Colours" id="label_1" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Label color="gohan-100" background_color="piccolo-100">
@@ -107,7 +110,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           <:code>{label_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="label_2">
+        <ExampleAndCode title="Sizes" id="label_2" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Label size="xsmall">
@@ -122,7 +125,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           <:code>{label_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Label with Icons" id="label_3">
+        <ExampleAndCode title="Label with Icons" id="label_3" theme_name={@theme_name}>
           <:example>
             <TopToDown gap={8}>
               <div class="flex justify-around w-full items-center">
@@ -161,7 +164,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           <:code>{label_3_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Letter cases" id="label_4">
+        <ExampleAndCode title="Letter cases" id="label_4" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Label>

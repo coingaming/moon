@@ -136,7 +136,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -151,7 +151,11 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Multi Select</Heading>
 
-        <ExampleAndCode title="Multi Select with options as prop" id="multi_select_with_options_as_prop">
+        <ExampleAndCode
+          title="Multi Select with options as prop"
+          id="multi_select_with_options_as_prop"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>

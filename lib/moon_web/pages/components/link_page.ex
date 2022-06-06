@@ -25,7 +25,10 @@ defmodule MoonWeb.Pages.Components.LinkPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -43,7 +46,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
           <Link to="#">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="link_1">
+        <ExampleAndCode id="link_1" theme_name={@theme_name}>
           <:example>
             <Link to="#">I'm a link</Link>
 
@@ -62,20 +65,20 @@ defmodule MoonWeb.Pages.Components.LinkPage do
 
           <:code>
             <#CodePreview>
-      <Link to="#">I'm a link</Link>
+              <Link to="#">I'm a link</Link>
 
-      <Link to="#" secondary>
-        I'm a Secondary link
-      </Link>
+              <Link to="#" secondary>
+                I'm a Secondary link
+              </Link>
 
-      <Link to="#" optional>
-        I'm an Optional link
-      </Link>
+              <Link to="#" optional>
+                I'm an Optional link
+              </Link>
 
-      <Link to="#" disabled>
-        I'm a disabled link
-      </Link>
-    </#CodePreview>
+              <Link to="#" disabled>
+                I'm a disabled link
+              </Link>
+            </#CodePreview>
           </:code>
         </ExampleAndCode>
       </TopToDown>

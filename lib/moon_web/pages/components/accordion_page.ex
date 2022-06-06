@@ -81,7 +81,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -94,7 +97,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Accordion</Heading>
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
-        <ExampleAndCode title="Accordion" id="accordion_1">
+        <ExampleAndCode title="Accordion" id="accordion_1" theme_name={@theme_name}>
           <:example>
             <Accordion id="customer-support">
               <:title>Customer support</:title>

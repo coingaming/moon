@@ -58,7 +58,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
           Component for presenting short info.
         </div>
 
-        <ExampleAndCode title="Colors" id="example_1">
+        <ExampleAndCode title="Colors" id="example_1" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Caption>Defaul color is Bulma</Caption>
@@ -90,7 +90,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
           <:code>{example_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Text Align" id="example_2">
+        <ExampleAndCode title="Text Align" id="example_2" theme_name={@theme_name}>
           <:example>
             <div class="flex justify-around w-full items-center">
               <Caption>Text-align is not specified</Caption>

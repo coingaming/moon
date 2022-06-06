@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           External uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads-external.html">https://hexdocs.pm/phoenix_live_view/uploads-external.html</Link>
         </p>
 
-        <ExampleAndCode title="Local upload" id="file_input_1">
+        <ExampleAndCode title="Local upload" id="file_input_1" theme_name={@theme_name}>
           <:example>
             <Form id="upload-form-1" for={:example_form} change="upload_changed" submit="upload_submitted">
               <TopToDown>
@@ -55,7 +55,11 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           <:state>{get_example_1_state(assigns)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Upload directly from browser to S3" id="file_input_2">
+        <ExampleAndCode
+          title="Upload directly from browser to S3"
+          id="file_input_2"
+          theme_name={@theme_name}
+        >
           <:example>
             <Form
               id="upload-form-2"
@@ -85,7 +89,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         uploaded_files: []
       )

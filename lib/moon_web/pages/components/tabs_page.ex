@@ -89,7 +89,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
     {:ok,
      assign(socket,
        tab_id: params["tab_id"] || "1",
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -117,7 +117,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
           <Link to="https://moon.io/components/tabs">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="tabs" class="mt-4">
+        <ExampleAndCode title="Default" id="tabs" class="mt-4" theme_name={@theme_name}>
           <:example>
             <Tabs>
               <TabLink

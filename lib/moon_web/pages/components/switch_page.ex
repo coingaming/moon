@@ -60,7 +60,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         first_switch_checked: false,
         small_switch_checked: false,
@@ -94,17 +94,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         </p>
 
         <div id="first_switch">
-          <ExampleAndCode class="mt-3" id="switch_1">
+          <ExampleAndCode title="Default" class="mt-3" id="switch_1" theme_name={@theme_name}>
             <:example>
               <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
             </:example>
 
             <:code>
               <#CodePreview>
-              <Switch
-                checked={ @checked }
-                on_change="handle_switch"
-              />
+                <Switch
+                  checked={ @checked }
+                  on_change="handle_switch"
+                />
             </#CodePreview>
             </:code>
 
@@ -112,7 +112,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           </ExampleAndCode>
         </div>
 
-        <ExampleAndCode title="Size" class="mt-3" id="switch_2">
+        <ExampleAndCode title="Size" class="mt-3" id="switch_2" theme_name={@theme_name}>
           <:note>
             Use <code class="bg-goku-40">size</code> prop. Default size is medium.
           </:note>
@@ -128,37 +128,33 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:code>
             <#CodePreview>
-            <Switch size="small" />
-
-            <Switch size="medium" />
-
-            <Switch size="large" />
+              <Switch size="small" />
+              <Switch size="medium" />
+              <Switch size="large" />
           </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" class="mt-3" id="switch_3">
+        <ExampleAndCode title="Icons" class="mt-3" id="switch_3" theme_name={@theme_name}>
           <:note>
             Use <code class="bg-goku-40">icons</code> prop. Default value is <code class="bg-goku-40">false</code>.
           </:note>
           <:example>
             <TopToDown>
               <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
-
               <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
-
               <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
             </TopToDown>
           </:example>
 
           <:code>
             <#CodePreview>
-            <Switch icons={ true } />
+              <Switch icons={ true } />
           </#CodePreview>
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Captions" class="mt-3" id="switch_4">
+        <ExampleAndCode title="Captions" class="mt-3" id="switch_4" theme_name={@theme_name}>
           <:note>
             Use <code class="bg-goku-40">caption_unchecked</code> and <code class="bg-goku-40">caption_checked</code> props.
           </:note>
@@ -195,10 +191,10 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:code>
             <#CodePreview>
-            <Switch
-              caption_unchecked="OFF"
-              caption_checked="ON"
-            />
+              <Switch
+                caption_unchecked="OFF"
+                caption_checked="ON"
+              />
           </#CodePreview>
           </:code>
         </ExampleAndCode>

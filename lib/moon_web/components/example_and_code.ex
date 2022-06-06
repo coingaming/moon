@@ -10,7 +10,8 @@ defmodule MoonWeb.Components.ExampleAndCode do
   prop layout, :string, default: "grid"
   data buttons, :list, default: ["preview", "code"]
   data selected_button, :string, default: "preview"
-  prop title, :string, default: ""
+  prop title, :string
+  prop theme_name, :any, default: "moon-design-light"
   slot example
   slot code
   slot state
@@ -18,7 +19,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~F"""
-    <div class={"rounded p-0 mb-8", @class}>
+    <div class={"rounded p-0 mb-8", @theme_name, @class}>
       <PreviewCodeButton
         class="justify-end"
         title={@title}

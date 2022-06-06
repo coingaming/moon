@@ -71,7 +71,10 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -85,7 +88,12 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         <Heading size={56} class="mb-4">Tooltip Component</Heading>
 
         {#for placement <- ["top", "right", "bottom", "left"]}
-          <ExampleAndCode class="my-12" id={"tooltip_#{placement}"}>
+          <ExampleAndCode
+            title={placement}
+            class="my-12"
+            id={"tooltip_#{placement}"}
+            theme_name={@theme_name}
+          >
             <:example>
               <LeftToRight>
                 <Tooltip placement={placement} text={placement}>

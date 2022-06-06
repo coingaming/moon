@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__
       )
 
@@ -97,7 +97,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <ExampleAndCode title="Medium size (default)" id="line_items_1">
+        <ExampleAndCode title="Medium size (default)" id="line_items_1" theme_name={@theme_name}>
           <:example>
             <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
               <SingleLineItem>Single line item</SingleLineItem>
@@ -130,7 +130,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
           <:code>{get_list_item_1_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Large size" id="line_items_2">
+        <ExampleAndCode title="Large size" id="line_items_2" theme_name={@theme_name}>
           <:example>
             <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
               <SingleLineItem size="large">Single line item</SingleLineItem>

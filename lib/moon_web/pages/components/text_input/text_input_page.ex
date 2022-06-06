@@ -110,7 +110,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
           The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
         </div>
 
-        <ExampleAndCode id="example_1">
+        <ExampleAndCode id="example_1" theme_name={@theme_name}>
           <:example>
             <Form
               for={@user_changeset}
@@ -184,7 +184,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
 
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
        user: user,
        user_changeset: user_changeset

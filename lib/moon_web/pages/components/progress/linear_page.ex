@@ -24,7 +24,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -39,7 +39,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Linear Progress</Heading>
 
-        <ExampleAndCode title="Progress Linear" id="progress_linear">
+        <ExampleAndCode title="Progress Linear" id="progress_linear" theme_name={@theme_name}>
           <:example>
             <ProgressLinear value={30} />
           </:example>

@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
        transactions: ExamplePages.TransactionsPage.get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}

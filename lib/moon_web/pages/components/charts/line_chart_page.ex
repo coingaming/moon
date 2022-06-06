@@ -64,7 +64,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
 
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         filters: filters,
         select_options: [
@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
           Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
         </p>
 
-        <ExampleAndCode layout="column" id="line_chart_1">
+        <ExampleAndCode layout="column" id="line_chart_1" theme_name={@theme_name}>
           <:example>
             <LineChartCard
               id="line-chart-card"

@@ -74,7 +74,10 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -92,7 +95,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Link to="https://moon.io/components/button">React implementation</Link>
         </p>
 
-        <ExampleAndCode title="Variants" id="button0">
+        <ExampleAndCode title="Variants" id="button0" theme_name={@theme_name}>
           <:note>
             Primary variant is used where the the button would be the main call to action on the page.
           </:note>
@@ -114,7 +117,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="button2">
+        <ExampleAndCode title="Sizes" id="button2" theme_name={@theme_name}>
           <:example>
             <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered>
               <Button variant="primary" size="xsmall">xSmall</Button>
@@ -135,7 +138,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" id="button4">
+        <ExampleAndCode title="Icons" id="button4" theme_name={@theme_name}>
           <:example>
             <LeftToRight class="justify-items-center justify-evenly items-center">
               <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
@@ -157,7 +160,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Full width" id="button6">
+        <ExampleAndCode title="Full width" id="button6" theme_name={@theme_name}>
           <:example>
             <Button variant="primary" full_width="true">
               Full Width
@@ -173,7 +176,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="button7">
+        <ExampleAndCode title="Disabled" id="button7" theme_name={@theme_name}>
           <:example>
             <LeftToRight class="justify-items-center justify-evenly items-center">
               <Button variant="primary" disabled="true">
@@ -191,7 +194,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Animation" id="button5">
+        <ExampleAndCode title="Animation" id="button5" theme_name={@theme_name}>
           <:example>
             Coming soon...
             <LeftToRight gap="gap-4" centered class="mb-6">
