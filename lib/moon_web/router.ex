@@ -85,9 +85,6 @@ defmodule MoonWeb.Router do
       live "/components/checkbox-multiselect",
            MoonWeb.Pages.Components.CheckboxMultiselectPage
 
-      #
-      live "/components/dropdown", MoonWeb.Pages.Components.DropdownPage
-      #
       live "/components/dropdown_menu_button", MoonWeb.Pages.Components.DropdownMenuButtonPage
 
       live "/components/drawer", MoonWeb.Pages.Components.DrawerPage

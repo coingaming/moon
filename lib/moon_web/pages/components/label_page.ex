@@ -73,7 +73,10 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -89,92 +92,94 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           Small count and labeling component.
         </p>
 
-        <ExampleAndCode title="Colours" id="label_1">
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Label color="gohan-100" background_color="piccolo-100">
-                Active
-              </Label>
-              <Label color="krillin-100" background_color="trunks-100">
-                Active
-              </Label>
-              <Label color="bulma-100" background_color="dodoria-100">
-                Active
-              </Label>
-            </div>
-          </:example>
-
-          <:code>{label_1_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Sizes" id="label_2">
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Label size="xsmall">
-                xsmall (default)
-              </Label>
-              <Label size="twoxsmall">
-                twoxsmall
-              </Label>
-            </div>
-          </:example>
-
-          <:code>{label_2_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Label with Icons" id="label_3">
-          <:example>
-            <TopToDown gap={8}>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Colours" id="label_1">
+            <:example>
               <div class="flex justify-around w-full items-center">
-                <Label size="twoxsmall">
-                  <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
-                  Left Icon
+                <Label color="gohan-100" background_color="piccolo-100">
+                  Active
                 </Label>
-                <Label size="twoxsmall">
-                  Right Icon
-                  <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                <Label color="krillin-100" background_color="trunks-100">
+                  Active
                 </Label>
-                <Label size="twoxsmall">
-                  Both Icons
-                  <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
-                  <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                <Label color="bulma-100" background_color="dodoria-100">
+                  Active
                 </Label>
               </div>
+            </:example>
+
+            <:code>{label_1_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Sizes" id="label_2">
+            <:example>
               <div class="flex justify-around w-full items-center">
-                <Label>
-                  <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
-                  Left Icon
+                <Label size="xsmall">
+                  xsmall (default)
                 </Label>
-                <Label>
-                  Right Icon
-                  <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
-                </Label>
-                <Label>
-                  Both Icons
-                  <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
-                  <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+                <Label size="twoxsmall">
+                  twoxsmall
                 </Label>
               </div>
-            </TopToDown>
-          </:example>
+            </:example>
 
-          <:code>{label_3_code()}</:code>
-        </ExampleAndCode>
+            <:code>{label_2_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Letter cases" id="label_4">
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Label>
-                Uppercase (default)
-              </Label>
-              <Label is_uppercase={false}>
-                Lowercase
-              </Label>
-            </div>
-          </:example>
+          <ExampleAndCode title="Label with Icons" id="label_3">
+            <:example>
+              <TopToDown gap={8}>
+                <div class="flex justify-around w-full items-center">
+                  <Label size="twoxsmall">
+                    <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                    Left Icon
+                  </Label>
+                  <Label size="twoxsmall">
+                    Right Icon
+                    <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                  </Label>
+                  <Label size="twoxsmall">
+                    Both Icons
+                    <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                    <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+                  </Label>
+                </div>
+                <div class="flex justify-around w-full items-center">
+                  <Label>
+                    <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                    Left Icon
+                  </Label>
+                  <Label>
+                    Right Icon
+                    <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+                  </Label>
+                  <Label>
+                    Both Icons
+                    <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                    <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+                  </Label>
+                </div>
+              </TopToDown>
+            </:example>
 
-          <:code>{label_4_code()}</:code>
-        </ExampleAndCode>
+            <:code>{label_3_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Letter cases" id="label_4">
+            <:example>
+              <div class="flex justify-around w-full items-center">
+                <Label>
+                  Uppercase (default)
+                </Label>
+                <Label is_uppercase={false}>
+                  Lowercase
+                </Label>
+              </div>
+            </:example>
+
+            <:code>{label_4_code()}</:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

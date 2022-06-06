@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         changeset: Contract.changeset(data),
         time_changeset: Contract.changeset(%Contract{}),
@@ -81,173 +81,175 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
           <Link to="https://moon.io/components/datepicker">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="datepicker_1">
-          <:example>
-            <Form for={@changeset} change="validate">
-              <Datepicker
-                id="default_datepicker"
-                start_date={fetch_field(@changeset, :started_at) |> elem(1)}
-                end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
-                start_date_field={:started_at}
-                end_date_field={:ended_at}
-                show_date_inputs
-              />
-            </Form>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="datepicker_1">
+            <:example>
+              <Form for={@changeset} change="validate">
+                <Datepicker
+                  id="default_datepicker"
+                  start_date={fetch_field(@changeset, :started_at) |> elem(1)}
+                  end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
+                  start_date_field={:started_at}
+                  end_date_field={:ended_at}
+                  show_date_inputs
+                />
+              </Form>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="default_datepicker"
-            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-            start_date_field={ :started_at }}
-            end_date_field={ :ended_at }}
-            show_date_inputs={true}
-          />
-        </Form>
+            <:code>
+              <#CodePreview>
+                <Form for={ @changeset } change="validate">
+                  <Datepicker
+                    id="default_datepicker"
+                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+                    start_date_field={ :started_at }}
+                    end_date_field={ :ended_at }}
+                    show_date_inputs={true}
+                  />
+                </Form>
 
-        # Handle date selection
-        def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
-          changeset =
-            socket.assigns.changeset
-            |> put_change(:started_at, start_date)
-            |> put_change(:ended_at, end_date)
+                # Handle date selection
+                def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
+                  changeset =
+                    socket.assigns.changeset
+                    |> put_change(:started_at, start_date)
+                    |> put_change(:ended_at, end_date)
 
-          {:noreply, assign(socket, changeset: changeset)}
-        end
+                  {:noreply, assign(socket, changeset: changeset)}
+                end
 
-        # Form validation
-        def handle_event("validate", %{"contract" => params}, socket) do
-          {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
+                # Form validation
+                def handle_event("validate", %{"contract" => params}, socket) do
+                  {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
 
-          params =
-            params
-            |> Map.put("started_at", start_date)
-            |> Map.put("ended_at", end_date)
+                  params =
+                    params
+                    |> Map.put("started_at", start_date)
+                    |> Map.put("ended_at", end_date)
 
-          changeset = Contract.changeset(%Contract{}, params)
-          {:noreply, assign(socket, changeset: changeset)}
-        end
-      </#CodePreview>
-          </:code>
+                  changeset = Contract.changeset(%Contract{}, params)
+                  {:noreply, assign(socket, changeset: changeset)}
+                end
+              </#CodePreview>
+            </:code>
 
-          <:note>
-            <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
-          </:note>
+            <:note>
+              <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
+            </:note>
 
-          <:state>@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@data = {inspect(fetch_data(@changeset), pretty: true)}<br><br>@changeset = {inspect(@changeset, pretty: true)}</:state>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="With time" id="datepicker_2">
-          <:example>
-            <Form for={@time_changeset} change="time_validate">
-              <Datepicker
-                id="time_datepicker"
-                start_date={fetch_field(@time_changeset, :datetime_started_at) |> elem(1)}
-                end_date={fetch_field(@time_changeset, :datetime_ended_at) |> elem(1)}
-                start_date_field={:datetime_started_at}
-                end_date_field={:datetime_ended_at}
-                show_date_inputs
-                with_time
-              />
-            </Form>
-          </:example>
+          <ExampleAndCode title="With time" id="datepicker_2">
+            <:example>
+              <Form for={@time_changeset} change="time_validate">
+                <Datepicker
+                  id="time_datepicker"
+                  start_date={fetch_field(@time_changeset, :datetime_started_at) |> elem(1)}
+                  end_date={fetch_field(@time_changeset, :datetime_ended_at) |> elem(1)}
+                  start_date_field={:datetime_started_at}
+                  end_date_field={:datetime_ended_at}
+                  show_date_inputs
+                  with_time
+                />
+              </Form>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="time_datepicker"
-            start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
-            start_date_field={ :datetime_started_at }
-            end_date_field={ :datetime_ended_at }
-            show_date_inputs={true}
-            with_time={ true }
-          />
-        </Form>
-      </#CodePreview>
-          </:code>
-          <:note>
-            Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
-          </:note>
-          <:state>@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Form for={ @changeset } change="validate">
+                  <Datepicker
+                    id="time_datepicker"
+                    start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
+                    end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
+                    start_date_field={ :datetime_started_at }
+                    end_date_field={ :datetime_ended_at }
+                    show_date_inputs={true}
+                    with_time={ true }
+                  />
+                </Form>
+              </#CodePreview>
+            </:code>
+            <:note>
+              Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
+            </:note>
+            <:state>@data = {inspect(fetch_time_data(@time_changeset), pretty: true)}<br><br>@changeset = {inspect(@time_changeset, pretty: true)}</:state>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Custom ranges" id="datepicker_3">
-          <:note>
-            Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
-          </:note>
-          <:example>
-            <Form for={@range_changeset} change="range_validate">
-              <Datepicker
-                id="range_datepicker"
-                start_date={fetch_field(@range_changeset, :started_at) |> elem(1)}
-                end_date={fetch_field(@range_changeset, :ended_at) |> elem(1)}
-                start_date_field={:started_at}
-                end_date_field={:ended_at}
-                show_date_inputs={false}
-                ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-              />
-            </Form>
-          </:example>
+          <ExampleAndCode title="Custom ranges" id="datepicker_3">
+            <:note>
+              Use <code class="bg-goku-40">ranges</code> (list) prop. Possible values are <code class="bg-goku-40">lastMonth, lastWeek, yesterday, last24hours, today, tomorrow, thisWeek, nextWeek, thisMonth, nextMonth</code>.
+            </:note>
+            <:example>
+              <Form for={@range_changeset} change="range_validate">
+                <Datepicker
+                  id="range_datepicker"
+                  start_date={fetch_field(@range_changeset, :started_at) |> elem(1)}
+                  end_date={fetch_field(@range_changeset, :ended_at) |> elem(1)}
+                  start_date_field={:started_at}
+                  end_date_field={:ended_at}
+                  show_date_inputs={false}
+                  ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                />
+              </Form>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="range_datepicker"
-            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-            start_date_field={ :started_at }
-            end_date_field={ :ended_at }
-            show_date_inputs={false}
-            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-          />
-        </Form>
-      </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Form for={ @changeset } change="validate">
+                  <Datepicker
+                    id="range_datepicker"
+                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+                    start_date_field={ :started_at }
+                    end_date_field={ :ended_at }
+                    show_date_inputs={false}
+                    ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                  />
+                </Form>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Custom weekstart" id="datepicker_4">
-          <:example>
-            <Form for={@weekstart_changeset} change="weekstart_validate">
-              <Datepicker
-                id="weekstart_datepicker"
-                start_date={fetch_field(@weekstart_changeset, :started_at) |> elem(1)}
-                end_date={fetch_field(@weekstart_changeset, :ended_at) |> elem(1)}
-                start_date_field={:started_at}
-                end_date_field={:ended_at}
-                week_starts_on={7}
-                show_date_inputs={false}
-                ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-              />
-            </Form>
-          </:example>
+          <ExampleAndCode title="Custom weekstart" id="datepicker_4">
+            <:example>
+              <Form for={@weekstart_changeset} change="weekstart_validate">
+                <Datepicker
+                  id="weekstart_datepicker"
+                  start_date={fetch_field(@weekstart_changeset, :started_at) |> elem(1)}
+                  end_date={fetch_field(@weekstart_changeset, :ended_at) |> elem(1)}
+                  start_date_field={:started_at}
+                  end_date_field={:ended_at}
+                  week_starts_on={7}
+                  show_date_inputs={false}
+                  ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                />
+              </Form>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        <Form for={ @changeset } change="validate">
-          <Datepicker
-            id="weekstart_datepicker"
-            start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-            end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-            start_date_field={ :started_at }
-            end_date_field={ :ended_at }
-            week_starts_on={ 7 }
-            show_date_inputs={false}
-            ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-          />
-        </Form>
-      </#CodePreview>
-          </:code>
+            <:code>
+              <#CodePreview>
+                <Form for={ @changeset } change="validate">
+                  <Datepicker
+                    id="weekstart_datepicker"
+                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+                    start_date_field={ :started_at }
+                    end_date_field={ :ended_at }
+                    week_starts_on={ 7 }
+                    show_date_inputs={false}
+                    ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+                  />
+                </Form>
+              </#CodePreview>
+            </:code>
 
-          <:note>
-            Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
-          </:note>
-        </ExampleAndCode>
+            <:note>
+              Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+            </:note>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

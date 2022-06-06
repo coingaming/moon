@@ -79,7 +79,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
 
     {:ok,
      assign(apply_paging(socket),
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end

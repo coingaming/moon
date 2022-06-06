@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   def mount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "sportsbet-dark",
+        theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
         show_options: false
       )
@@ -46,51 +46,53 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <TopToDown>
         <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
-        <ExampleAndCode id="dropdown_menu_button_1">
-          <:example>
-            <div class="flex justify-center">
-              <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
-                <IconMore />
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="dropdown_menu_button_1">
+            <:example>
+              <div class="flex justify-center">
+                <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+                  <IconMore />
 
-                <:menu>
-                  <DropdownMenuItems>
-                    <DropdownMenuItem>Edit</DropdownMenuItem>
-                    <DropdownMenuItem>Share</DropdownMenuItem>
-                    <DropdownMenuItem>Delete</DropdownMenuItem>
-                  </DropdownMenuItems>
-                </:menu>
-              </DropdownMenuButton>
-            </div>
-          </:example>
+                  <:menu>
+                    <DropdownMenuItems>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Share</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuItems>
+                  </:menu>
+                </DropdownMenuButton>
+              </div>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Components.DropdownMenuButton
-        alias Moon.Components.DropdownMenuItem
-        alias Moon.Components.DropdownMenuItems
+            <:code>
+              <#CodePreview>
+                alias Moon.Components.DropdownMenuButton
+                alias Moon.Components.DropdownMenuItem
+                alias Moon.Components.DropdownMenuItems
 
-        <DropdownMenuButton
-          show={@show_options}
-          placement="bottom-end"
-          on_toggle="toggle_options"
-        >
-          <IconMore />
+                <DropdownMenuButton
+                  show={@show_options}
+                  placement="bottom-end"
+                  on_toggle="toggle_options"
+              >
+                  <IconMore />
 
-          <:menu>
-            <DropdownMenuItems>
-              <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuItem>Share</DropdownMenuItem>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
-            </DropdownMenuItems>
-          </:menu>
-        </DropdownMenuButton>
+                  <:menu>
+                    <DropdownMenuItems>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Share</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuItems>
+                  </:menu>
+                </DropdownMenuButton>
 
-        def handle_event("toggle_options", _, socket) do
-          {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
-        end
-          </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+                def handle_event("toggle_options", _, socket) do
+                  {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
+                end
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

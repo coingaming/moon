@@ -136,7 +136,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -151,43 +151,43 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Single Select</Heading>
 
-        <ExampleAndCode
-          title="Single Select with options as prop"
-          id="single_select_with_options_as_prop"
-        >
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role" />
-              </Field>
-            </Form>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode
+            title="Single Select with options as prop"
+            id="single_select_with_options_as_prop"
+          >
+            <:example>
+              <Form for={@user_changeset} change="form_update" submit="form_submit">
+                <Field name={:role}>
+                  <SingleSelect id="user-roles-example-1" options={User.available_roles()} prompt="Select role" />
+                </Field>
+              </Form>
+            </:example>
 
-          <:code>{code_for_single_select_with_options_as_prop()}</:code>
+            <:code>{code_for_single_select_with_options_as_prop()}</:code>
 
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          </ExampleAndCode>
 
-        <Heading size={56} class="mb-4">Single Select (selected value with icon)</Heading>
+          <ExampleAndCode title="" id="single_select_with_options_as_prop_and_icon">
+            <:example>
+              <Form for={@user_changeset} change="form_update" submit="form_submit">
+                <Field name={:role}>
+                  <SingleSelect
+                    id="user-roles-example-2"
+                    options={User.available_roles()}
+                    prompt="Select role"
+                    mode="icon"
+                  />
+                </Field>
+              </Form>
+            </:example>
 
-        <ExampleAndCode title="" id="single_select_with_options_as_prop_and_icon">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect
-                  id="user-roles-example-2"
-                  options={User.available_roles()}
-                  prompt="Select role"
-                  mode="icon"
-                />
-              </Field>
-            </Form>
-          </:example>
+            <:code>{code_for_single_select_with_options_as_prop_and_icon()}</:code>
 
-          <:code>{code_for_single_select_with_options_as_prop_and_icon()}</:code>
-
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

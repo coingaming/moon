@@ -28,19 +28,21 @@ defmodule MoonWeb.Components.ExampleAndCode do
       <div class="my-2 text-sm" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
-      <div class="grid grid-cols-1 bg-gohan-100 rounded-md shadow">
-        <div class={"p-6", hidden: @selected_button == "code"}>
-          <#slot name="example">Example not defined</#slot>
+      <Context get={theme_class: theme_class}>
+        <div class={"grid grid-cols-1 bg-gohan-100 rounded-md shadow", theme_class}>
+          <div class={"p-6", hidden: @selected_button == "code"}>
+            <#slot name="example">Example not defined</#slot>
+          </div>
+          <div class={
+            "border-beerus-100 rounded-md shadow justify-around",
+            "sm:border-l": @layout == "grid",
+            "border-t": @layout == "column",
+            hidden: @selected_button == "preview"
+          }>
+            <pre class="p-4"><#slot name="code">Example code not defined</#slot></pre>
+          </div>
         </div>
-        <div class={
-          "border-beerus-100 rounded-md shadow justify-around",
-          "sm:border-l": @layout == "grid",
-          "border-t": @layout == "column",
-          hidden: @selected_button == "preview"
-        }>
-          <pre class="p-4"><#slot name="code">Example code not defined</#slot></pre>
-        </div>
-      </div>
+      </Context>
       <div
         class="p-6 border-t border-beerus-100 bg-hit-100 rounded-md shadow grid gap-4"
         :if={slot_assigned?(:state)}

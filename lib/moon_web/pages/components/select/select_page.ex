@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
      assign(socket,
        gender_options: gender_options,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -98,41 +98,43 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
           A user-controlled menu of options for forms, navigation and more.
         </p>
 
-        <ExampleAndCode title="Example" id="select_1">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Example" id="select_1">
+            <:example>
+              <Form for={@user_changeset}>
+                <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+              </Form>
+            </:example>
 
-          <:code>{select_1_code()}</:code>
-        </ExampleAndCode>
+            <:code>{select_1_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="With Label" id="select_2">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+          <ExampleAndCode title="With Label" id="select_2">
+            <:example>
+              <Form for={@user_changeset}>
+                <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+              </Form>
+            </:example>
 
-          <:code>{select_2_code()}</:code>
-        </ExampleAndCode>
+            <:code>{select_2_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="select_3">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select
-                disabled
-                label="Gender"
-                field={:gender}
-                options={@gender_options}
-                prompt="Please select gender"
-              />
-            </Form>
-          </:example>
+          <ExampleAndCode title="Disabled" id="select_3">
+            <:example>
+              <Form for={@user_changeset}>
+                <Select
+                  disabled
+                  label="Gender"
+                  field={:gender}
+                  options={@gender_options}
+                  prompt="Please select gender"
+                />
+              </Form>
+            </:example>
 
-          <:code>{select_3_code()}</:code>
-        </ExampleAndCode>
+            <:code>{select_3_code()}</:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

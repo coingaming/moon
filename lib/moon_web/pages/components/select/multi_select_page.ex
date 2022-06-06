@@ -136,7 +136,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "sportsbet-dark",
+       theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
   end
@@ -151,23 +151,25 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Multi Select</Heading>
 
-        <ExampleAndCode title="Multi Select with options as prop" id="multi_select_with_options_as_prop">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <MultiSelect
-                  id="user-permissions-example-2"
-                  options={User.available_permissions()}
-                  prompt="Permission"
-                />
-              </Field>
-            </Form>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Multi Select with options as prop" id="multi_select_with_options_as_prop">
+            <:example>
+              <Form for={@user_changeset} change="form_update" submit="form_submit">
+                <Field name={:permissions}>
+                  <MultiSelect
+                    id="user-permissions-example-2"
+                    options={User.available_permissions()}
+                    prompt="Permission"
+                  />
+                </Field>
+              </Form>
+            </:example>
 
-          <:code>{code_for_multi_select_with_options_as_prop()}</:code>
+            <:code>{code_for_multi_select_with_options_as_prop()}</:code>
 
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

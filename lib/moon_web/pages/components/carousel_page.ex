@@ -59,7 +59,10 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -82,40 +85,42 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
           <Link to="https://moon.io/components/accordion">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="carousel_1">
-          <:example>
-            <div>
-              <Carousel>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              </Carousel>
-            </div>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="carousel_1">
+            <:example>
+              <div>
+                <Carousel>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+                </Carousel>
+              </div>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-              <Carousel>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-                <div class="item">Item</div>
-              </Carousel>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Carousel>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                  <div class="item">Item</div>
+                </Carousel>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
