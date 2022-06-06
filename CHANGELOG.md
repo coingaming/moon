@@ -1,3 +1,15 @@
+# [2.11.0](https://github.com/coingaming/moon/compare/v2.10.3...v2.11.0) (2022-06-06)
+
+
+### Bug Fixes
+
+* Remove some links in the left menu ([#281](https://github.com/coingaming/moon/issues/281)) ([5648419](https://github.com/coingaming/moon/commit/564841902ef38951d34a203e60df20b03307c453))
+
+
+### Features
+
+* Add version indicator ([#280](https://github.com/coingaming/moon/issues/280)) ([9545af1](https://github.com/coingaming/moon/commit/9545af1327e61cd4956e53a132ac788981de5339))
+
 ## [2.10.3](https://github.com/coingaming/moon/compare/v2.10.2...v2.10.3) (2022-06-06)
 
 
