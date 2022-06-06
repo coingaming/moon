@@ -1,3 +1,5 @@
+# Please do not use this. Use Button instead.
+
 defmodule Moon.Components.IconButton do
   @moduledoc false
 

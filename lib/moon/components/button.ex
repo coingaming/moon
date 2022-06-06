@@ -44,6 +44,8 @@ defmodule Moon.Components.Button do
   prop testid, :string
 
   slot default
+  slot right_icon_slot
+  slot left_icon_slot
 
   def render(assigns) do
     ~F"""
@@ -81,9 +83,17 @@ defmodule Moon.Components.Button do
       :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
-      <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+      {#if slot_assigned?(:left_icon_slot)}
+        <#slot name="left_icon_slot" />
+      {#else}
+        <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+      {/if}
       <#slot />
-      <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+      {#if slot_assigned?(:right_icon_slot)}
+        <#slot name="right_icon_slot" />
+      {#else}
+        <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+      {/if}
       <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded" />
     </button>
     """
