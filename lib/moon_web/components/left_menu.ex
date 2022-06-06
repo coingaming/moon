@@ -37,6 +37,7 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
+  alias MoonWeb.Components.Version
   alias MoonWeb.Pages
   alias Surface.Components.Context
   alias __MODULE__.Link
@@ -213,6 +214,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   </Accordion>
                 </:content>
               </Accordion>
+              <Version />
             </TopToDown>
           </Context>
         </nav>
