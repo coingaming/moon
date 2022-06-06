@@ -89,8 +89,6 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.AvatarPage}>Avatar</Link>
                   <Link route={Pages.Components.BannerPage}>Banner</Link>
                   <Link route={Pages.Components.ButtonPage}>Button</Link>
-                  <Link route={Pages.Components.CalendarPage}>Calendar *</Link>
-                  <Link route={Pages.Components.CardPage}>Card *</Link>
                   <Link route={Pages.Components.CarouselPage}>Carousel</Link>
 
                   <Accordion
@@ -140,7 +138,6 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Link route={Pages.Components.DrawerPage}>Drawer *</Link>
                   <Link route={Pages.Components.FileInputPage}>File Input *</Link>
                   <Link route={Pages.Components.LabelPage}>Label</Link>
-                  <Link route={Pages.Components.LinkPage}>Link *</Link>
                   <Link route={Pages.Components.ListItemsPage}>List items</Link>
                   <Link route={Pages.Components.LoaderPage}>Loader</Link>
                   <Link route={Pages.Components.PaginationPage}>Pagination</Link>
@@ -172,9 +169,7 @@ defmodule MoonWeb.Components.LeftMenu do
                     </:content>
                   </Accordion>
 
-                  <Link route={Pages.Components.SidebarPage}>Sidebar *</Link> <!-- Hide -->
                   <Link route={Pages.Components.SwitchPage}>Switch</Link>
-                  <Link route={Pages.Components.SwitcherPage}>Switcher *</Link> <!-- Hide -->
                   <Link route={Pages.Components.TabsPage}>Tabs</Link>
                   <Link route={Pages.Components.TablePage}>Table</Link>
 
