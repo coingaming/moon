@@ -10,7 +10,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   prop layout, :string, default: "grid"
   data buttons, :list, default: ["preview", "code"]
   data selected_button, :string, default: "preview"
-  prop title, :string
+  prop title, :string, default: ""
   prop theme_name, :any, default: "moon-design-light"
   slot example
   slot code
