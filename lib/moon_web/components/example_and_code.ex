@@ -19,7 +19,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   def render(assigns) do
     ~F"""
-    <div class={"rounded p-0 mb-8", @theme_name, @class}>
+    <div class={"rounded p-0 mb-8", @class}>
       <PreviewCodeButton
         class="justify-end"
         title={@title}
@@ -29,7 +29,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
       <div class="my-2 text-sm" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
-      <div class="grid grid-cols-1 bg-gohan-100 rounded-md shadow">
+      <div class={"grid grid-cols-1 bg-gohan-100 rounded-md shadow", @theme_name}>
         <div class={"p-6", hidden: @selected_button == "code"}>
           <#slot name="example">Example not defined</#slot>
         </div>
