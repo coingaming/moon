@@ -136,36 +136,33 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
           >Sourcecode of this page</Link>
         </p>
 
-        {#for placement <- [
-            "top-start",
-            "top",
-            "top-end",
-            "right-start",
-            "right",
-            "right-end",
-            "bottom-start",
-            "bottom",
-            "bottom-end",
-            "left-start",
-            "left",
-            "left-end"
-          ]}
-          <ExampleAndCode
-            id={"popover_#{placement}"}
-            class="my-12"
-            title={"Placement: #{placement}"}
-            theme_name={@theme_name}
-          >
-            <:example>
-              <LeftToRight>
-                <PopoverExample id={placement} placement={placement} />
-              </LeftToRight>
-            </:example>
-            <:code>
-              {get_popover_code(placement)}
-            </:code>
-          </ExampleAndCode>
-        {/for}
+        <Context put={theme_class: @theme_name}>
+          {#for placement <- [
+              "top-start",
+              "top",
+              "top-end",
+              "right-start",
+              "right",
+              "right-end",
+              "bottom-start",
+              "bottom",
+              "bottom-end",
+              "left-start",
+              "left",
+              "left-end"
+            ]}
+            <ExampleAndCode id={"popover_#{placement}"} class="my-12" title={"Placement: #{placement}"}>
+              <:example>
+                <LeftToRight>
+                  <PopoverExample id={placement} placement={placement} />
+                </LeftToRight>
+              </:example>
+              <:code>
+                {get_popover_code(placement)}
+              </:code>
+            </ExampleAndCode>
+          {/for}
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

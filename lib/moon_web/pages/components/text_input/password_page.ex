@@ -50,32 +50,34 @@ defmodule MoonWeb.Pages.Components.TextInput.PasswordPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Password Input</Heading>
 
-        <ExampleAndCode id="example_1" theme_name={@theme_name}>
-          <:example>
-            <Form
-              for={@user_changeset}
-              change="login_form_update"
-              submit="login_form_submit"
-              autocomplete="off"
-            >
-              <TopToDown>
-                <Field name={:password}>
-                  <PasswordInput label="Password" placeholder="Password" id="login_password">
-                    <:left_icon><Moon.Icons.SecurityLock /></:left_icon>
-                  </PasswordInput>
-                  <ErrorTag />
-                </Field>
-                <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Login</Button>
-                </div>
-              </TopToDown>
-            </Form>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="example_1">
+            <:example>
+              <Form
+                for={@user_changeset}
+                change="login_form_update"
+                submit="login_form_submit"
+                autocomplete="off"
+              >
+                <TopToDown>
+                  <Field name={:password}>
+                    <PasswordInput label="Password" placeholder="Password" id="login_password">
+                      <:left_icon><Moon.Icons.SecurityLock /></:left_icon>
+                    </PasswordInput>
+                    <ErrorTag />
+                  </Field>
+                  <div>
+                    <Button type="submit" right_icon="arrows_right" variant="primary">Login</Button>
+                  </div>
+                </TopToDown>
+              </Form>
+            </:example>
 
-          <:code>{example_1_code()}</:code>
+            <:code>{example_1_code()}</:code>
 
-          <:state>{example_1_state(assigns)}</:state>
-        </ExampleAndCode>
+            <:state>{example_1_state(assigns)}</:state>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

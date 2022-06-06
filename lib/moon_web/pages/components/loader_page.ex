@@ -55,41 +55,43 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
       <TopToDown>
         <Heading size={32}>Loader</Heading>
 
-        <ExampleAndCode title="Default" id="loader_1" theme_name={@theme_name}>
-          <:example>
-            <div class="flex gap-4 justify-center w-full items-center">
-              <Loader />
-            </div>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Default" id="loader_1">
+            <:example>
+              <div class="flex gap-4 justify-center w-full items-center">
+                <Loader />
+              </div>
+            </:example>
 
-          <:code>{loader_1_code()}</:code>
-        </ExampleAndCode>
+            <:code>{loader_1_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Colors" id="loader_2" theme_name={@theme_name}>
-          <:example>
-            <div class="flex gap-4 justify-center w-full items-center">
-              <Loader color="hit-100" />
-              <Loader color="trunks-100" />
-              <Loader color="krillin-100" />
-            </div>
-          </:example>
+          <ExampleAndCode title="Colors" id="loader_2">
+            <:example>
+              <div class="flex gap-4 justify-center w-full items-center">
+                <Loader color="hit-100" />
+                <Loader color="trunks-100" />
+                <Loader color="krillin-100" />
+              </div>
+            </:example>
 
-          <:code>{loader_2_code()}</:code>
-        </ExampleAndCode>
+            <:code>{loader_2_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="loader_3" theme_name={@theme_name}>
-          <:example>
-            <div class="flex gap-4 justify-center w-full items-center">
-              <Loader size="twoxsmall" />
-              <Loader size="xsmall" />
-              <Loader size="small" />
-              <Loader />
-              <Loader size="large" />
-            </div>
-          </:example>
+          <ExampleAndCode title="Sizes" id="loader_3">
+            <:example>
+              <div class="flex gap-4 justify-center w-full items-center">
+                <Loader size="twoxsmall" />
+                <Loader size="xsmall" />
+                <Loader size="small" />
+                <Loader />
+                <Loader size="large" />
+              </div>
+            </:example>
 
-          <:code>{loader_3_code()}</:code>
-        </ExampleAndCode>
+            <:code>{loader_3_code()}</:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

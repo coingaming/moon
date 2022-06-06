@@ -87,29 +87,26 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Tooltip Component</Heading>
 
-        {#for placement <- ["top", "right", "bottom", "left"]}
-          <ExampleAndCode
-            title={placement}
-            class="my-12"
-            id={"tooltip_#{placement}"}
-            theme_name={@theme_name}
-          >
-            <:example>
-              <LeftToRight>
+        <Context put={theme_class: @theme_name}>
+          {#for placement <- ["top", "right", "bottom", "left"]}
+            <ExampleAndCode title={placement} class="my-12" id={"tooltip_#{placement}"}>
+              <:example>
+                <LeftToRight>
+                  <Tooltip placement={placement} text={placement}>
+                    <Button variant="primary">Hover Me</Button>
+                  </Tooltip>
+                </LeftToRight>
+              </:example>
+              <:code>
+                <#CodePreview>
                 <Tooltip placement={placement} text={placement}>
                   <Button variant="primary">Hover Me</Button>
                 </Tooltip>
-              </LeftToRight>
-            </:example>
-            <:code>
-              <#CodePreview>
-              <Tooltip placement={placement} text={placement}>
-                <Button variant="primary">Hover Me</Button>
-              </Tooltip>
-            </#CodePreview>
-            </:code>
-          </ExampleAndCode>
-        {/for}
+              </#CodePreview>
+              </:code>
+            </ExampleAndCode>
+          {/for}
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

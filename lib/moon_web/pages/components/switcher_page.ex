@@ -49,30 +49,32 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <ExampleAndCode title="Default" id="switcher" theme_name={@theme_name}>
-          <:example>
-            <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Default" id="switcher">
+            <:example>
+              <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+            </:example>
 
-          <:code>
-            <#CodePreview>
-              alias Moon.Components.Switcher
+            <:code>
+              <#CodePreview>
+                alias Moon.Components.Switcher
 
-              <Switcher
-                items={@tabs}
-                selected_item={@selected_tab}
-                click="tab_click"
-              />
+                <Switcher
+                  items={@tabs}
+                  selected_item={@selected_tab}
+                  click="tab_click"
+                />
 
-              def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
-                socket = assign(socket, selected_tab: selected_item)
-                {:noreply, socket}
-              end
-            </#CodePreview>
-          </:code>
+                def handle_event("tab_click", %{"selected-item" => selected_item}, socket) do
+                  socket = assign(socket, selected_tab: selected_item)
+                  {:noreply, socket}
+                end
+              </#CodePreview>
+            </:code>
 
-          <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
-        </ExampleAndCode>
+            <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

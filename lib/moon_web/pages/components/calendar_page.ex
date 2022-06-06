@@ -50,48 +50,50 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
           <Link to="https://moon.io/toolkit/calendar">React implementation</Link>
         </p>
 
-        <ExampleAndCode layout="column" id="calendar_1" theme_name={@theme_name}>
-          <:example>
-            <Calendar id="default_calendar" week_starts_on={1} events={@events} />
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode layout="column" id="calendar_1">
+            <:example>
+              <Calendar id="default_calendar" week_starts_on={1} events={@events} />
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Components.Calendar
+            <:code>
+              <#CodePreview>
+                alias Moon.Components.Calendar
 
-        <Calendar
-          id="default_calendar"
-          week_starts_on={ 1 }
-          events={ @events }
-        />
-      </#CodePreview>
-          </:code>
+                <Calendar
+                  id="default_calendar"
+                  week_starts_on={ 1 }
+                  events={ @events }
+                />
+              </#CodePreview>
+            </:code>
 
-          <:state>@events = {inspect(@events, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@events = {inspect(@events, pretty: true)}</:state>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2" theme_name={@theme_name}>
-          <:example>
-            <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
-          </:example>
+          <ExampleAndCode title="Custom weekstart" layout="column" id="calendar_2">
+            <:example>
+              <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Components.Calendar
+            <:code>
+              <#CodePreview>
+                alias Moon.Components.Calendar
 
-        <Calendar
-          id="sunday_calendar"
-          week_starts_on={ 7 }
-          events={ @events }
-        />
-      </#CodePreview>
-          </:code>
+                <Calendar
+                  id="sunday_calendar"
+                  week_starts_on={ 7 }
+                  events={ @events }
+                />
+              </#CodePreview>
+            </:code>
 
-          <:state>@events = {inspect(@events, pretty: true)}</:state>
-          <:note>
-            Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
-          </:note>
-        </ExampleAndCode>
+            <:state>@events = {inspect(@events, pretty: true)}</:state>
+            <:note>
+              Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+            </:note>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

@@ -97,71 +97,73 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/list_items_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <ExampleAndCode title="Medium size (default)" id="line_items_1" theme_name={@theme_name}>
-          <:example>
-            <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
-              <SingleLineItem>Single line item</SingleLineItem>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Medium size (default)" id="line_items_1">
+            <:example>
+              <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
+                <SingleLineItem>Single line item</SingleLineItem>
 
-              <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
+                <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
 
-              <SingleLineItem current>
-                <:left_icon><IconChartArea /></:left_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem current>
+                  <:left_icon><IconChartArea /></:left_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem>
-                <:left_icon><IconChartArea /></:left_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem>
+                  <:left_icon><IconChartArea /></:left_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem>
-                <:right_icon><IconChevronDownRounded /></:right_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem>
+                  <:right_icon><IconChevronDownRounded /></:right_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem>
-                <:left_icon><IconChartArea /></:left_icon>
-                <:right_icon><IconChevronDownRounded /></:right_icon>
-                Single line item
-              </SingleLineItem>
-            </TopToDown>
-          </:example>
+                <SingleLineItem>
+                  <:left_icon><IconChartArea /></:left_icon>
+                  <:right_icon><IconChevronDownRounded /></:right_icon>
+                  Single line item
+                </SingleLineItem>
+              </TopToDown>
+            </:example>
 
-          <:code>{get_list_item_1_code()}</:code>
-        </ExampleAndCode>
+            <:code>{get_list_item_1_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Large size" id="line_items_2" theme_name={@theme_name}>
-          <:example>
-            <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
-              <SingleLineItem size="large">Single line item</SingleLineItem>
+          <ExampleAndCode title="Large size" id="line_items_2">
+            <:example>
+              <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
+                <SingleLineItem size="large">Single line item</SingleLineItem>
 
-              <SingleLineItem size="large" background_color="goku-100">Single line item</SingleLineItem>
+                <SingleLineItem size="large" background_color="goku-100">Single line item</SingleLineItem>
 
-              <SingleLineItem size="large" current>
-                <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem size="large" current>
+                  <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem size="large">
-                <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem size="large">
+                  <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem size="large">
-                <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
-                Single line item
-              </SingleLineItem>
+                <SingleLineItem size="large">
+                  <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
+                  Single line item
+                </SingleLineItem>
 
-              <SingleLineItem size="large">
-                <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
-                <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
-                Single line item
-              </SingleLineItem>
-            </TopToDown>
-          </:example>
+                <SingleLineItem size="large">
+                  <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
+                  <:right_icon><IconChevronDownRounded font_size="1.25rem" /></:right_icon>
+                  Single line item
+                </SingleLineItem>
+              </TopToDown>
+            </:example>
 
-          <:code>{get_list_item_2_code()}</:code>
-        </ExampleAndCode>
+            <:code>{get_list_item_2_code()}</:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

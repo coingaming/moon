@@ -95,118 +95,120 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Link to="https://moon.io/components/button">React implementation</Link>
         </p>
 
-        <ExampleAndCode title="Variants" id="button0" theme_name={@theme_name}>
-          <:note>
-            Primary variant is used where the the button would be the main call to action on the page.
-          </:note>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Variants" id="button0">
+            <:note>
+              Primary variant is used where the the button would be the main call to action on the page.
+            </:note>
 
-          <:example>
-            <div class="flex gap-4 justify-items-center justify-evenly">
-              <Button>Primary (default)</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="tertiary">Tertiary</Button>
-              <Button variant="ghost">Ghost</Button>
-            </div>
-          </:example>
+            <:example>
+              <div class="flex gap-4 justify-items-center justify-evenly">
+                <Button>Primary (default)</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="tertiary">Tertiary</Button>
+                <Button variant="ghost">Ghost</Button>
+              </div>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-              <Button>Primary (default)</Button>
-              <Button variant="secondary">Secondary</Button>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Button>Primary (default)</Button>
+                <Button variant="secondary">Secondary</Button>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="button2" theme_name={@theme_name}>
-          <:example>
-            <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered>
-              <Button variant="primary" size="xsmall">xSmall</Button>
-              <Button variant="primary" size="small">Small</Button>
-              <Button variant="primary" size="medium">Medium (Default)</Button>
-              <Button variant="primary" size="large">Large</Button>
-              <Button variant="primary" size="xlarge">xLarge</Button>
-            </LeftToRight>
-          </:example>
+          <ExampleAndCode title="Sizes" id="button2">
+            <:example>
+              <LeftToRight gap="gap-4 justify-items-center justify-evenly" centered>
+                <Button variant="primary" size="xsmall">xSmall</Button>
+                <Button variant="primary" size="small">Small</Button>
+                <Button variant="primary" size="medium">Medium (Default)</Button>
+                <Button variant="primary" size="large">Large</Button>
+                <Button variant="primary" size="xlarge">xLarge</Button>
+              </LeftToRight>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-              <Button variant="fill" size="small">Small</Button>
-              <Button variant="fill" size="medium">Medium  (Default)</Button>
-              <Button variant="fill" size="large">Large</Button>
-              <Button variant="fill" size="xlarge">xLarge</Button>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Button variant="fill" size="small">Small</Button>
+                <Button variant="fill" size="medium">Medium  (Default)</Button>
+                <Button variant="fill" size="large">Large</Button>
+                <Button variant="fill" size="xlarge">xLarge</Button>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" id="button4" theme_name={@theme_name}>
-          <:example>
-            <LeftToRight class="justify-items-center justify-evenly items-center">
-              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-              <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-              <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-              <Button variant="primary" right_icon="generic_settings" size="large" />
-            </LeftToRight>
-          </:example>
+          <ExampleAndCode title="Icons" id="button4">
+            <:example>
+              <LeftToRight class="justify-items-center justify-evenly items-center">
+                <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+                <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+                <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+                <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+                <Button variant="primary" right_icon="generic_settings" size="large" />
+              </LeftToRight>
+            </:example>
 
-          <:code>
-            <#CodePreview>
-              <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-              <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-              <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-              <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-              <Button variant="primary" right_icon="generic_settings" size="large"></Button>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            <:code>
+              <#CodePreview>
+                <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+                <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+                <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+                <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+                <Button variant="primary" right_icon="generic_settings" size="large"></Button>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Full width" id="button6" theme_name={@theme_name}>
-          <:example>
-            <Button variant="primary" full_width="true">
-              Full Width
-            </Button>
-          </:example>
-
-          <:code>
-            <#CodePreview>
+          <ExampleAndCode title="Full width" id="button6">
+            <:example>
               <Button variant="primary" full_width="true">
                 Full Width
               </Button>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            </:example>
 
-        <ExampleAndCode title="Disabled" id="button7" theme_name={@theme_name}>
-          <:example>
-            <LeftToRight class="justify-items-center justify-evenly items-center">
+            <:code>
+              <#CodePreview>
+                <Button variant="primary" full_width="true">
+                  Full Width
+                </Button>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Disabled" id="button7">
+            <:example>
+              <LeftToRight class="justify-items-center justify-evenly items-center">
+                <Button variant="primary" disabled="true">
+                  Disabled
+                </Button>
+              </LeftToRight>
+            </:example>
+
+            <:code>
+              <#CodePreview>
               <Button variant="primary" disabled="true">
                 Disabled
               </Button>
-            </LeftToRight>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-            <Button variant="primary" disabled="true">
-              Disabled
-            </Button>
-          </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Animation" id="button5" theme_name={@theme_name}>
-          <:example>
-            Coming soon...
-            <LeftToRight gap="gap-4" centered class="mb-6">
-            </LeftToRight>
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              Coming soon...
             </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            </:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Animation" id="button5">
+            <:example>
+              Coming soon...
+              <LeftToRight gap="gap-4" centered class="mb-6">
+              </LeftToRight>
+            </:example>
+
+            <:code>
+              <#CodePreview>
+                Coming soon...
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>

@@ -46,25 +46,9 @@ defmodule MoonWeb.Pages.Components.LinkPage do
           <Link to="#">React implementation</Link>
         </p>
 
-        <ExampleAndCode id="link_1" theme_name={@theme_name}>
-          <:example>
-            <Link to="#">I'm a link</Link>
-
-            <Link to="#" secondary>
-              I'm a Secondary link
-            </Link>
-
-            <Link to="#" optional>
-              I'm an Optional link
-            </Link>
-
-            <Link to="#" disabled>
-              I'm a disabled link
-            </Link>
-          </:example>
-
-          <:code>
-            <#CodePreview>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="link_1">
+            <:example>
               <Link to="#">I'm a link</Link>
 
               <Link to="#" secondary>
@@ -78,9 +62,27 @@ defmodule MoonWeb.Pages.Components.LinkPage do
               <Link to="#" disabled>
                 I'm a disabled link
               </Link>
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+            </:example>
+
+            <:code>
+              <#CodePreview>
+                <Link to="#">I'm a link</Link>
+
+                <Link to="#" secondary>
+                  I'm a Secondary link
+                </Link>
+
+                <Link to="#" optional>
+                  I'm an Optional link
+                </Link>
+
+                <Link to="#" disabled>
+                  I'm a disabled link
+                </Link>
+              </#CodePreview>
+            </:code>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

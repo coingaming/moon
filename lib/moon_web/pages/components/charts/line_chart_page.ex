@@ -96,35 +96,37 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
           Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
         </p>
 
-        <ExampleAndCode layout="column" id="line_chart_1" theme_name={@theme_name}>
-          <:example>
-            <LineChartCard
-              id="line-chart-card"
-              title="KPI Overview"
-              time_format="%d/%m"
-              {=@filters}
-              {=@select_options}
-              {=@values}
-            />
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode layout="column" id="line_chart_1">
+            <:example>
+              <LineChartCard
+                id="line-chart-card"
+                title="KPI Overview"
+                time_format="%d/%m"
+                {=@filters}
+                {=@select_options}
+                {=@values}
+              />
+            </:example>
 
-          <:code>
-            <#CodePreview>
-        alias Moon.Components.ChartCard
+            <:code>
+              <#CodePreview>
+                alias Moon.Components.ChartCard
 
-        <LineChartCard
-          id="line-chart-card"
-          title="KPI Overview"
-          time_format="%d/%m"
-          {=@filters}
-          {=@select_options}
-          {=@values}
-        />
-      </#CodePreview>
-          </:code>
+                <LineChartCard
+                  id="line-chart-card"
+                  title="KPI Overview"
+                  time_format="%d/%m"
+                  {=@filters}
+                  {=@select_options}
+                  {=@values}
+                />
+              </#CodePreview>
+            </:code>
 
-          <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
-        </ExampleAndCode>
+            <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

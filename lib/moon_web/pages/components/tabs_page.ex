@@ -117,32 +117,34 @@ defmodule MoonWeb.Pages.Components.TabsPage do
           <Link to="https://moon.io/components/tabs">React implementation</Link>
         </p>
 
-        <ExampleAndCode title="Default" id="tabs" class="mt-4" theme_name={@theme_name}>
-          <:example>
-            <Tabs>
-              <TabLink
-                active={@tab_id == "1"}
-                to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
-              >Link 1</TabLink>
-              <TabLink
-                active={@tab_id == "2"}
-                to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
-              >Link 2</TabLink>
-              <TabLink
-                active={@tab_id == "3"}
-                patch
-                to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
-              >Link 3 with url patch, no page reload</TabLink>
-              <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
-            </Tabs>
-          </:example>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Default" id="tabs" class="mt-4">
+            <:example>
+              <Tabs>
+                <TabLink
+                  active={@tab_id == "1"}
+                  to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
+                >Link 1</TabLink>
+                <TabLink
+                  active={@tab_id == "2"}
+                  to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
+                >Link 2</TabLink>
+                <TabLink
+                  active={@tab_id == "3"}
+                  patch
+                  to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
+                >Link 3 with url patch, no page reload</TabLink>
+                <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+              </Tabs>
+            </:example>
 
-          <:code>{get_example_code()}</:code>
+            <:code>{get_example_code()}</:code>
 
-          <:state>
-            @tab_id = {@tab_id}
-          </:state>
-        </ExampleAndCode>
+            <:state>
+              @tab_id = {@tab_id}
+            </:state>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Tab Props</div>
@@ -210,11 +212,11 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       <TabLink
         active={@tab_id == "1"}
         to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
-      >Link 1</TabLink>
+     >Link 1</TabLink>
       <TabLink
         active={@tab_id == "2"}
         to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
-      >Link 2</TabLink>
+     >Link 2</TabLink>
       <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
       <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
     </Tabs>

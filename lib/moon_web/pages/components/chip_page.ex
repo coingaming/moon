@@ -87,80 +87,82 @@ defmodule MoonWeb.Pages.Components.ChipPage do
       <TopToDown>
         <Heading size={32}>Chip</Heading>
 
-        <ExampleAndCode title="Sizes" id="chip_1" theme_name={@theme_name}>
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Chip size="small">Small</Chip>
-              <Chip>Medium (default)</Chip>
-            </div>
-          </:example>
-
-          <:code>{chip_1_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Active State" id="chip_2" theme_name={@theme_name}>
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Chip size="small" active>Small</Chip>
-              <Chip active>Medium (default)</Chip>
-            </div>
-          </:example>
-
-          <:code>{chip_2_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="IsStroke" id="chip_3" theme_name={@theme_name}>
-          <:example>
-            <div class="flex justify-around w-full items-center">
-              <Chip size="small" is_stroke>Stroke on Hover</Chip>
-              <Chip is_stroke>Stroke on Hover</Chip>
-            </div>
-          </:example>
-
-          <:code>{chip_3_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Icons" id="chip_4" theme_name={@theme_name}>
-          <:example>
-            <TopToDown>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode title="Sizes" id="chip_1">
+            <:example>
               <div class="flex justify-around w-full items-center">
-                <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
-                <Chip size="small" right_icon="arrows_right">Right Icon</Chip>
-                <Chip size="small" left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-                <Chip size="small" icon_only="generic_settings" />
+                <Chip size="small">Small</Chip>
+                <Chip>Medium (default)</Chip>
               </div>
-              <div class="flex justify-around w-full items-center">
-                <Chip left_icon="arrows_left">Left Icon</Chip>
-                <Chip right_icon="arrows_right">Right Icon</Chip>
-                <Chip left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-                <Chip icon_only="generic_settings" />
-              </div>
-            </TopToDown>
-          </:example>
+            </:example>
 
-          <:code>{chip_4_code()}</:code>
-        </ExampleAndCode>
+            <:code>{chip_1_code()}</:code>
+          </ExampleAndCode>
 
-        <ExampleAndCode title="Icons with isStroke" id="chip_5" theme_name={@theme_name}>
-          <:example>
-            <TopToDown>
+          <ExampleAndCode title="Active State" id="chip_2">
+            <:example>
               <div class="flex justify-around w-full items-center">
-                <Chip size="small" left_icon="arrows_left" is_stroke>Left Icon</Chip>
-                <Chip size="small" right_icon="arrows_right" is_stroke>Right Icon</Chip>
-                <Chip size="small" left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
-                <Chip size="small" icon_only="generic_settings" is_stroke />
+                <Chip size="small" active>Small</Chip>
+                <Chip active>Medium (default)</Chip>
               </div>
-              <div class="flex justify-around w-full items-center">
-                <Chip left_icon="arrows_left" is_stroke>Left Icon</Chip>
-                <Chip right_icon="arrows_right" is_stroke>Right Icon</Chip>
-                <Chip left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
-                <Chip icon_only="generic_settings" is_stroke />
-              </div>
-            </TopToDown>
-          </:example>
+            </:example>
 
-          <:code>{chip_5_code()}</:code>
-        </ExampleAndCode>
+            <:code>{chip_2_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="IsStroke" id="chip_3">
+            <:example>
+              <div class="flex justify-around w-full items-center">
+                <Chip size="small" is_stroke>Stroke on Hover</Chip>
+                <Chip is_stroke>Stroke on Hover</Chip>
+              </div>
+            </:example>
+
+            <:code>{chip_3_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Icons" id="chip_4">
+            <:example>
+              <TopToDown>
+                <div class="flex justify-around w-full items-center">
+                  <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
+                  <Chip size="small" right_icon="arrows_right">Right Icon</Chip>
+                  <Chip size="small" left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
+                  <Chip size="small" icon_only="generic_settings" />
+                </div>
+                <div class="flex justify-around w-full items-center">
+                  <Chip left_icon="arrows_left">Left Icon</Chip>
+                  <Chip right_icon="arrows_right">Right Icon</Chip>
+                  <Chip left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
+                  <Chip icon_only="generic_settings" />
+                </div>
+              </TopToDown>
+            </:example>
+
+            <:code>{chip_4_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Icons with isStroke" id="chip_5">
+            <:example>
+              <TopToDown>
+                <div class="flex justify-around w-full items-center">
+                  <Chip size="small" left_icon="arrows_left" is_stroke>Left Icon</Chip>
+                  <Chip size="small" right_icon="arrows_right" is_stroke>Right Icon</Chip>
+                  <Chip size="small" left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
+                  <Chip size="small" icon_only="generic_settings" is_stroke />
+                </div>
+                <div class="flex justify-around w-full items-center">
+                  <Chip left_icon="arrows_left" is_stroke>Left Icon</Chip>
+                  <Chip right_icon="arrows_right" is_stroke>Right Icon</Chip>
+                  <Chip left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
+                  <Chip icon_only="generic_settings" is_stroke />
+                </div>
+              </TopToDown>
+            </:example>
+
+            <:code>{chip_5_code()}</:code>
+          </ExampleAndCode>
+        </Context>
 
         <div>
           <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
