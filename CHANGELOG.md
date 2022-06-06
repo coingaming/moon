@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/coingaming/moon/compare/v2.10.1...v2.10.2) (2022-06-06)
+
+
+### Bug Fixes
+
+* version build ([2c97cbe](https://github.com/coingaming/moon/commit/2c97cbe88d2d3cccc1bd525eb16e2eb7a6b152aa))
+
 ## [2.10.1](https://github.com/coingaming/moon/compare/v2.10.0...v2.10.1) (2022-06-02)
 
 
