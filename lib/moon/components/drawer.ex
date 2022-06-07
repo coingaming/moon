@@ -12,6 +12,8 @@ defmodule Moon.Components.Drawer.Dialog do
   slot footer
 
   def render(assigns) do
+    dialog_content_height = if slot_assigned?(:footer), do: "h-5/6", else: "h-screen"
+
     ~F"""
     <div class="relative w-full h-full bg-gohan-100">
       <PullAside class="py-4 px-6">
@@ -28,12 +30,12 @@ defmodule Moon.Components.Drawer.Dialog do
       </PullAside>
       <Divider />
       {#if slot_assigned?(:content)}
-        <div class="p-6">
+        <div class={"p-6 overflow-y-auto", dialog_content_height}>
           <#slot name="content" />
         </div>
       {/if}
       {#if slot_assigned?(:footer)}
-        <div class="absolute bottom-0 left-0 right-0">
+        <div class="absolute bottom-0 left-0 right-0 bg-gohan-100">
           <Divider />
           <div class="p-4">
             <#slot name="footer" />
