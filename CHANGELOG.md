@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/coingaming/moon/compare/v2.11.0...v2.11.1) (2022-06-07)
+
+
+### Bug Fixes
+
+* fixed drawer dialog heigh issues and set footer background color ([3f70759](https://github.com/coingaming/moon/commit/3f707599279aca50e78ad2289a59f632175a3c7c))
+
 # [2.11.0](https://github.com/coingaming/moon/compare/v2.10.3...v2.11.0) (2022-06-06)
 
 
