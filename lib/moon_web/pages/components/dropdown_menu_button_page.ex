@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   alias Moon.Assets.Icons.IconMore
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.DropdownMenuButton
   alias Moon.Components.DropdownMenuItem
   alias Moon.Components.DropdownMenuItems
@@ -64,33 +63,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
               </div>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.DropdownMenuButton
-                alias Moon.Components.DropdownMenuItem
-                alias Moon.Components.DropdownMenuItems
-
-                <DropdownMenuButton
-                  show={@show_options}
-                  placement="bottom-end"
-                  on_toggle="toggle_options"
-              >
-                  <IconMore />
-
-                  <:menu>
-                    <DropdownMenuItems>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Share</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuItems>
-                  </:menu>
-                </DropdownMenuButton>
-
-                def handle_event("toggle_options", _, socket) do
-                  {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
-                end
-              </#CodePreview>
-            </:code>
+            <:code>{dropdown_menu_button_1_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
@@ -100,5 +73,21 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   def handle_event("toggle_options", _, socket) do
     {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
+  end
+
+  def dropdown_menu_button_1_code do
+    """
+      <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+        <IconMore />
+
+        <:menu>
+          <DropdownMenuItems>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Share</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </DropdownMenuItems>
+        </:menu>
+      </DropdownMenuButton>
+    """
   end
 end

@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Components.LinkPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Link
@@ -64,27 +63,29 @@ defmodule MoonWeb.Pages.Components.LinkPage do
               </Link>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Link to="#">I'm a link</Link>
-
-                <Link to="#" secondary>
-                  I'm a Secondary link
-                </Link>
-
-                <Link to="#" optional>
-                  I'm an Optional link
-                </Link>
-
-                <Link to="#" disabled>
-                  I'm a disabled link
-                </Link>
-              </#CodePreview>
-            </:code>
+            <:code>{link_1_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def link_1_code do
+    """
+      <Link to="#">I'm a link</Link>
+
+      <Link to="#" secondary>
+        I'm a Secondary link
+      </Link>
+
+      <Link to="#" optional>
+        I'm an Optional link
+      </Link>
+
+      <Link to="#" disabled>
+        I'm a disabled link
+      </Link>
     """
   end
 end

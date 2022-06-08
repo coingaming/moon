@@ -118,13 +118,13 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     """
   end
 
-  defp loader_1_code do
+  def loader_1_code do
     """
       <Loader/>
     """
   end
 
-  defp loader_2_code do
+  def loader_2_code do
     """
       <Loader color="hit-100"/>
       <Loader color="trunks-100"/>
@@ -132,7 +132,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     """
   end
 
-  defp loader_3_code do
+  def loader_3_code do
     """
       <Loader size="twoxsmall"/>
       <Loader size="xsmall"/>

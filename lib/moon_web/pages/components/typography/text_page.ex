@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Text
@@ -129,25 +128,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Text>Text with default font size</Text>
-                  <Text size=10>Text with font size 10</Text>
-                  <Text size=12>Text with font size 12</Text>
-                  <Text size=14>Text with font size 14</Text>
-                  <Text size=16>Text with font size 16</Text>
-                  <Text size=18>Text with font size 18</Text>
-                  <Text size=20>Text with font size 20</Text>
-                  <Text size=24>Text with font size 24</Text>
-                  <Text size=32>Text with font size 32</Text>
-                  <Text size=48>font size 48</Text>
-                  <Text size=56>font size 56</Text>
-                  <Text size=64>font size 64</Text>
-                  <Text size=72>font size 72</Text>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{text_1_code()}</:code>
           </ExampleAndCode>
 
           <Heading size={20} class="mt-4">Bold</Heading>
@@ -162,16 +143,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
                 </Text>
               </TopToDown>
             </:example>
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Text size=24>Text with default font weight</Text>
-                  <Text size=24 is_bold=true>
-                    Text with font-weight: semibold
-                  </Text>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{text_2_code()}</:code>
           </ExampleAndCode>
 
           <Heading size={20} class="mt-4">Color</Heading>
@@ -191,23 +163,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Text size=24>Text with default color</Text>
-                  <Text size=24 color="trunks_100">
-                    Text with defined color
-                  </Text>
-                  <Text size=24 color="piccolo_100">
-                    Text with defined color
-                  </Text>
-                  <Text size=24 color="krillin_100">
-                    Text with defined color
-                  </Text>
-                  <Footer/>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{text_3_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -233,6 +189,48 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
         </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def text_1_code do
+    """
+      <Text>Text with default font size</Text>
+      <Text size={10}>Text with font size 10</Text>
+      <Text size={12}>Text with font size 12</Text>
+      <Text size={14}>Text with font size 14</Text>
+      <Text size={16}>Text with font size 16</Text>
+      <Text size={18}>Text with font size 18</Text>
+      <Text size={20}>Text with font size 20</Text>
+      <Text size={24}>Text with font size 24</Text>
+      <Text size={32}>Text with font size 32</Text>
+      <Text size={48}>font size 48</Text>
+      <Text size={56}>font size 56</Text>
+      <Text size={64}>font size 64</Text>
+      <Text size={72}>font size 72</Text>
+    """
+  end
+
+  def text_2_code do
+    """
+      <Text size=24>Text with default font weight</Text>
+      <Text size=24 is_bold=true>
+        Text with font-weight: semibold
+      </Text>
+    """
+  end
+
+  def text_3_code do
+    """
+      <Text size=24>Text with default color</Text>
+      <Text size=24 color="trunks_100">
+        Text with defined color
+      </Text>
+      <Text size=24 color="piccolo_100">
+        Text with defined color
+      </Text>
+      <Text size=24 color="krillin_100">
+        Text with defined color
+      </Text>
     """
   end
 end

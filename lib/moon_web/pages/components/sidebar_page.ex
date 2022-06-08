@@ -8,7 +8,6 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias Moon.Assets.Logos.LogoBitcasinoFull
   alias Moon.Assets.Logos.LogoBitcasinoShort
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Sidebar
@@ -103,49 +102,51 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
               </Sidebar>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.Sidebar
-                alias Moon.Components.TopToDown
-                alias Moon.Assets.Icons.IconSlots
-                alias Moon.Assets.Icons.IconSportsBaseBall
-                alias Moon.Assets.Logos.LogoBitcasinoFull
-                alias Moon.Assets.Logos.LogoBitcasinoShort
-
-                <Sidebar background_color="bg-gohan-100" open_width="14rem">
-                  <template slot="short_logo">
-                    <div class="flex items-center h-10">
-                      <LogoBitcasinoShort font_size="2.1rem" />
-                    </div>
-                  </template>
-
-                  <template slot="full_logo">
-                    <div class="pl-1">
-                      <LogoBitcasinoFull font_size="10rem" class="h-10" />
-                    </div>
-                  </template>
-
-                  <template slot="menu">
-                    <nav class="mt-5">
-                      <TopToDown>
-                        <a href="#" class="flex items-center group">
-                          <IconSlots font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
-                          <span class="group-hover:text-piccolo-100">Slots</span>
-                        </a>
-                        <a href="#" class="flex items-center group">
-                          <IconSportsBaseBall font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
-                          <span class="group-hover:text-piccolo-100">Baseball</span>
-                        </a>
-                      </TopToDown>
-                    </nav>
-                  </template>
-                </Sidebar>
-              </#CodePreview>
-            </:code>
+            <:code>{sidebar_1_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def sidebar_1_code do
+    """
+      alias Moon.Components.Sidebar
+      alias Moon.Components.TopToDown
+      alias Moon.Assets.Icons.IconSlots
+      alias Moon.Assets.Icons.IconSportsBaseBall
+      alias Moon.Assets.Logos.LogoBitcasinoFull
+      alias Moon.Assets.Logos.LogoBitcasinoShort
+
+      <Sidebar background_color="bg-gohan-100" open_width="14rem">
+        <template slot="short_logo">
+          <div class="flex items-center h-10">
+            <LogoBitcasinoShort font_size="2.1rem" />
+          </div>
+        </template>
+
+        <template slot="full_logo">
+          <div class="pl-1">
+            <LogoBitcasinoFull font_size="10rem" class="h-10" />
+          </div>
+        </template>
+
+        <template slot="menu">
+          <nav class="mt-5">
+            <TopToDown>
+              <a href="#" class="flex items-center group">
+                <IconSlots font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
+                <span class="group-hover:text-piccolo-100">Slots</span>
+              </a>
+              <a href="#" class="flex items-center group">
+                <IconSportsBaseBall font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
+                <span class="group-hover:text-piccolo-100">Baseball</span>
+              </a>
+            </TopToDown>
+          </nav>
+        </template>
+      </Sidebar>
     """
   end
 end

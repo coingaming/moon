@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -123,22 +122,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Heading>Heading with default font size</Heading>
-                  <Heading size=16>Heading with font size 16</Heading>
-                  <Heading size=18>Heading with font size 18</Heading>
-                  <Heading size=20>Heading with font size 20</Heading>
-                  <Heading size=24>Heading with font size 24</Heading>
-                  <Heading size=32>Heading with font size 32</Heading>
-                  <Heading size=48>font size 48</Heading>
-                  <Heading size=56>font size 56</Heading>
-                  <Heading size=64>font size 64</Heading>
-                  <Heading size=72>font size 72</Heading>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{heading_1_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Is regular" id="heading_2">
@@ -154,16 +138,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Heading size=24>Heading with default font weight</Heading>
-                  <Heading size=24 is_regular=true>
-                    Heading with font-weight: regular
-                  </Heading>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{heading_2_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Color" id="heading_3">
@@ -186,22 +161,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <TopToDown>
-                  <Heading size=24>Heading with default color</Heading>
-                  <Heading size=24 color="trunks-100">
-                    Heading with defined color
-                  </Heading>
-                  <Heading size=24 color="piccolo-100">
-                    Heading with defined color
-                  </Heading>
-                  <Heading size=24 color="krillin-100">
-                    Heading with defined color
-                  </Heading>
-                </TopToDown>
-              </#CodePreview>
-            </:code>
+            <:code>{heading_3_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -227,6 +187,45 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def heading_1_code do
+    """
+      <Heading>Heading with default font size</Heading>
+      <Heading size=16>Heading with font size 16</Heading>
+      <Heading size=18>Heading with font size 18</Heading>
+      <Heading size=20>Heading with font size 20</Heading>
+      <Heading size=24>Heading with font size 24</Heading>
+      <Heading size=32>Heading with font size 32</Heading>
+      <Heading size=48>font size 48</Heading>
+      <Heading size=56>font size 56</Heading>
+      <Heading size=64>font size 64</Heading>
+      <Heading size=72>font size 72</Heading>
+    """
+  end
+
+  def heading_2_code do
+    """
+      <Heading size=24>Heading with default font weight</Heading>
+      <Heading size=24 is_regular=true>
+        Heading with font-weight: regular
+      </Heading>
+    """
+  end
+
+  def heading_3_code do
+    """
+      <Heading size=24>Heading with default color</Heading>
+      <Heading size=24 color="trunks-100">
+        Heading with defined color
+      </Heading>
+      <Heading size=24 color="piccolo-100">
+        Heading with defined color
+      </Heading>
+      <Heading size=24 color="krillin-100">
+        Heading with defined color
+      </Heading>
     """
   end
 end

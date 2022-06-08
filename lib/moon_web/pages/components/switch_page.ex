@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias Moon.Components.Switch
@@ -100,14 +99,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
                 <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
               </:example>
 
-              <:code>
-                <#CodePreview>
-                  <Switch
-                    checked={ @checked }
-                    on_change="handle_switch"
-                  />
-              </#CodePreview>
-              </:code>
+              <:code>{switch_1_code()}</:code>
 
               <:state>@checked = {@first_switch_checked}</:state>
             </ExampleAndCode>
@@ -127,13 +119,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Switch size="small" />
-                <Switch size="medium" />
-                <Switch size="large" />
-            </#CodePreview>
-            </:code>
+            <:code>{switch_2_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Icons" class="mt-3" id="switch_3">
@@ -148,11 +134,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Switch icons={ true } />
-            </#CodePreview>
-            </:code>
+            <:code>{switch_3_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Captions" class="mt-3" id="switch_4">
@@ -190,14 +172,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               </TopToDown>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Switch
-                  caption_unchecked="OFF"
-                  caption_checked="ON"
-                />
-            </#CodePreview>
-            </:code>
+            <:code>{switch_4_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -254,5 +229,60 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   def handle_event("handle_captions_switch", _, socket) do
     socket = assign(socket, captions_switch_checked: !socket.assigns.captions_switch_checked)
     {:noreply, socket}
+  end
+
+  def switch_1_code do
+    """
+      <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
+    """
+  end
+
+  def switch_2_code do
+    """
+      <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
+
+      <Switch size="medium" checked={@medium_switch_checked} on_change="handle_medium_switch" />
+
+      <Switch size="large" checked={@large_switch_checked} on_change="handle_large_switch" />
+    """
+  end
+
+  def switch_3_code do
+    """
+      <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
+      <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
+      <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
+    """
+  end
+
+  def switch_4_code do
+    """
+      <Switch
+        checked={@captions_switch_checked}
+        on_change="handle_captions_switch"
+        icons={false}
+        size="small"
+        caption_unchecked="AM"
+        caption_checked="PM"
+      />
+
+      <Switch
+        checked={@captions_switch_checked}
+        on_change="handle_captions_switch"
+        icons
+        size="medium"
+        caption_unchecked="OFF"
+        caption_checked="ON"
+      />
+
+      <Switch
+        checked={@captions_switch_checked}
+        on_change="handle_captions_switch"
+        icons
+        size="large"
+        caption_unchecked="Moon"
+        caption_checked="Sun"
+      />
+    """
   end
 end

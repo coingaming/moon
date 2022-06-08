@@ -189,28 +189,28 @@ defmodule MoonWeb.Pages.Components.ChipPage do
     """
   end
 
-  defp chip_1_code do
+  def chip_1_code do
     """
       <Chip size="small">Small</Chip>
       <Chip>Medium (default)</Chip>
     """
   end
 
-  defp chip_2_code do
+  def chip_2_code do
     """
       <Chip size="small" active={true}>Small</Chip>
       <Chip active={true}>Medium (default)</Chip>
     """
   end
 
-  defp chip_3_code do
+  def chip_3_code do
     """
       <Chip size="small" is_stroke>Stroke on Hover</Chip>
       <Chip is_stroke>Stroke on Hover</Chip>
     """
   end
 
-  defp chip_4_code do
+  def chip_4_code do
     """
       <div class="flex justify-around w-full items-center">
         <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
@@ -227,7 +227,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
     """
   end
 
-  defp chip_5_code do
+  def chip_5_code do
     """
       <div class="flex justify-around w-full items-center">
         <Chip size="small" left_icon="arrows_left" is_stroke>Left Icon</Chip>
