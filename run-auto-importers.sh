@@ -40,6 +40,7 @@ mkdir -p assets/static/svgs/icons
 mkdir -p assets/static/svgs/icons_new
 mkdir -p assets/static/svgs/logos
 mkdir -p assets/static/svgs/patterns
+mkdir -p assets/static/svgs/country_flags
 
 cd $root_dir/scripts/typescript/
 npx ts-node generate-svg-symbols.ts

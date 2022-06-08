@@ -51,6 +51,7 @@ defmodule MoonWeb.Router do
       live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
       live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
       live "/icons", MoonWeb.Pages.IconsPage
+      live "/country-flags", MoonWeb.Pages.CountryFlagsPage
       live "/assets/logos", MoonWeb.Pages.Assets.LogosPage
       live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
 
