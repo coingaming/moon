@@ -139,7 +139,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
   def calendar_2_code do
     """
-    defalias Moon.Components.Calendar
+      alias Moon.Components.Calendar
 
       <Calendar
         id="sunday_calendar"
