@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   import Ecto.Changeset, only: [fetch_field: 2, put_change: 3]
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Datepicker
   alias Moon.Components.Form
   alias Moon.Components.Heading
@@ -82,7 +81,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
         </p>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="datepicker_1">
+          <ExampleAndCode title="Default" id="datepicker_1">
             <:example>
               <Form for={@changeset} change="validate">
                 <Datepicker
@@ -96,43 +95,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
               </Form>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Form for={ @changeset } change="validate">
-                  <Datepicker
-                    id="default_datepicker"
-                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-                    start_date_field={ :started_at }}
-                    end_date_field={ :ended_at }}
-                    show_date_inputs={true}
-                  />
-                </Form>
-
-                # Handle date selection
-                def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
-                  changeset =
-                    socket.assigns.changeset
-                    |> put_change(:started_at, start_date)
-                    |> put_change(:ended_at, end_date)
-
-                  {:noreply, assign(socket, changeset: changeset)}
-                end
-
-                # Form validation
-                def handle_event("validate", %{"contract" => params}, socket) do
-                  {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
-
-                  params =
-                    params
-                    |> Map.put("started_at", start_date)
-                    |> Map.put("ended_at", end_date)
-
-                  changeset = Contract.changeset(%Contract{}, params)
-                  {:noreply, assign(socket, changeset: changeset)}
-                end
-              </#CodePreview>
-            </:code>
+            <:code>{datepicker_1_code()}</:code>
 
             <:note>
               <code class="bg-goku-40">Datepicker</code> component has to be placed inside the <code class="bg-goku-40">Form</code> component.
@@ -156,21 +119,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
               </Form>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Form for={ @changeset } change="validate">
-                  <Datepicker
-                    id="time_datepicker"
-                    start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
-                    end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
-                    start_date_field={ :datetime_started_at }
-                    end_date_field={ :datetime_ended_at }
-                    show_date_inputs={true}
-                    with_time={ true }
-                  />
-                </Form>
-              </#CodePreview>
-            </:code>
+            <:code>{datepicker_2_code()}</:code>
             <:note>
               Use <code class="bg-goku-40">with_time</code> (list) prop. Default value is false.
             </:note>
@@ -195,21 +144,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
               </Form>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Form for={ @changeset } change="validate">
-                  <Datepicker
-                    id="range_datepicker"
-                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-                    start_date_field={ :started_at }
-                    end_date_field={ :ended_at }
-                    show_date_inputs={false}
-                    ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-                  />
-                </Form>
-              </#CodePreview>
-            </:code>
+            <:code>{datepicker_3_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Custom weekstart" id="datepicker_4">
@@ -228,22 +163,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
               </Form>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Form for={ @changeset } change="validate">
-                  <Datepicker
-                    id="weekstart_datepicker"
-                    start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-                    end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
-                    start_date_field={ :started_at }
-                    end_date_field={ :ended_at }
-                    week_starts_on={ 7 }
-                    show_date_inputs={false}
-                    ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
-                  />
-                </Form>
-              </#CodePreview>
-            </:code>
+            <:code>{datepicker_4_code()}</:code>
 
             <:note>
               Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
@@ -344,5 +264,92 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
     changeset = update_changeset(start_date, end_date)
     {:noreply, assign(socket, weekstart_changeset: changeset)}
+  end
+
+  defp datepicker_1_code do
+    """
+      <Form for={ @changeset } change="validate">
+        <Datepicker
+          id="default_datepicker"
+          start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+          end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+          start_date_field={ :started_at }}
+          end_date_field={ :ended_at }}
+          show_date_inputs={true}
+        />
+      </Form>
+
+      # Handle date selection
+      def handle_info({:filter, {"default_datepicker", :apply, %{started_at: start_date, ended_at: end_date}}}, socket) do
+        changeset =
+          socket.assigns.changeset
+          |> put_change(:started_at, start_date)
+          |> put_change(:ended_at, end_date)
+
+        {:noreply, assign(socket, changeset: changeset)}
+      end
+
+      # Form validation
+      def handle_event("validate", %{"contract" => params}, socket) do
+        {start_date, end_date} = Datepicker.validate(params["started_at"], params["ended_at"])
+
+        params =
+          params
+          |> Map.put("started_at", start_date)
+          |> Map.put("ended_at", end_date)
+
+        changeset = Contract.changeset(%Contract{}, params)
+        {:noreply, assign(socket, changeset: changeset)}
+      end
+    """
+  end
+
+  defp datepicker_2_code do
+    """
+      <Form for={ @changeset } change="validate">
+        <Datepicker
+          id="time_datepicker"
+          start_date={ fetch_field(@changeset, :datetime_started_at) |> elem(1) }
+          end_date={ fetch_field(@changeset, :datetime_ended_at) |> elem(1) }
+          start_date_field={ :datetime_started_at }
+          end_date_field={ :datetime_ended_at }
+          show_date_inputs={true}
+          with_time={ true }
+        />
+      </Form>
+    """
+  end
+
+  defp datepicker_3_code do
+    """
+      <Form for={ @changeset } change="validate">
+        <Datepicker
+          id="range_datepicker"
+          start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+          end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+          start_date_field={ :started_at }
+          end_date_field={ :ended_at }
+          show_date_inputs={false}
+          ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+        />
+      </Form>
+    """
+  end
+
+  defp datepicker_4_code do
+    """
+      <Form for={ @changeset } change="validate">
+        <Datepicker
+          id="weekstart_datepicker"
+          start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
+          end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+          start_date_field={ :started_at }
+          end_date_field={ :ended_at }
+          week_starts_on={ 7 }
+          show_date_inputs={false}
+          ranges={["lastWeek", "today", "thisWeek", "nextWeek"]}
+        />
+      </Form>
+    """
   end
 end

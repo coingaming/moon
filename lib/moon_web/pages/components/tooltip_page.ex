@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.{Button, CodePreview, Heading, Tooltip}
+  alias Moon.Components.{Button, Heading, Tooltip}
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.Table.Table
@@ -97,13 +97,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
                   </Tooltip>
                 </LeftToRight>
               </:example>
-              <:code>
-                <#CodePreview>
-                <Tooltip placement={placement} text={placement}>
-                  <Button variant="primary">Hover Me</Button>
-                </Tooltip>
-              </#CodePreview>
-              </:code>
+              <:code>{tooltip_1_code(placement)}</:code>
             </ExampleAndCode>
           {/for}
         </Context>
@@ -130,6 +124,14 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp tooltip_1_code(placement) do
+    """
+      <Tooltip placement="#{placement}" text="#{placement}">
+        <Button variant="primary">Hover Me</Button>
+      </Tooltip>
     """
   end
 end

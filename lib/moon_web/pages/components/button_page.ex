@@ -6,7 +6,6 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -96,7 +95,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </p>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Variants" id="button0">
+          <ExampleAndCode title="Variants" id="button1">
             <:note>
               Primary variant is used where the the button would be the main call to action on the page.
             </:note>
@@ -110,12 +109,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
               </div>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Button>Primary (default)</Button>
-                <Button variant="secondary">Secondary</Button>
-              </#CodePreview>
-            </:code>
+            <:code>{button_1_code()}</:code>
           </ExampleAndCode>
 
           <ExampleAndCode title="Sizes" id="button2">
@@ -129,17 +123,10 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
               </LeftToRight>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Button variant="fill" size="small">Small</Button>
-                <Button variant="fill" size="medium">Medium  (Default)</Button>
-                <Button variant="fill" size="large">Large</Button>
-                <Button variant="fill" size="xlarge">xLarge</Button>
-              </#CodePreview>
-            </:code>
+            <:code>{button_2_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Icons" id="button4">
+          <ExampleAndCode title="Icons" id="button3">
             <:example>
               <LeftToRight class="justify-items-center justify-evenly items-center">
                 <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
@@ -150,52 +137,30 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
               </LeftToRight>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-                <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-                <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-                <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-                <Button variant="primary" right_icon="generic_settings" size="large"></Button>
-              </#CodePreview>
-            </:code>
+            <:code>{button_3_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Full width" id="button6">
+          <ExampleAndCode title="Full width" id="button4">
             <:example>
               <Button variant="primary" full_width="true">
                 Full Width
               </Button>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                <Button variant="primary" full_width="true">
-                  Full Width
-                </Button>
-              </#CodePreview>
-            </:code>
+            <:code>{button_4_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Disabled" id="button7">
+          <ExampleAndCode title="Disabled" id="button5">
             <:example>
-              <LeftToRight class="justify-items-center justify-evenly items-center">
-                <Button variant="primary" disabled="true">
-                  Disabled
-                </Button>
-              </LeftToRight>
-            </:example>
-
-            <:code>
-              <#CodePreview>
               <Button variant="primary" disabled="true">
                 Disabled
               </Button>
-            </#CodePreview>
-            </:code>
+            </:example>
+
+            <:code>{button_5_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Animation" id="button5">
+          <ExampleAndCode title="Animation" id="button6">
             <:example>
               Coming soon...
               <LeftToRight gap="gap-4" centered class="mb-6">
@@ -203,9 +168,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
             </:example>
 
             <:code>
-              <#CodePreview>
-                Coming soon...
-              </#CodePreview>
+              Coming soon...
             </:code>
           </ExampleAndCode>
         </Context>
@@ -232,6 +195,51 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp button_1_code do
+    """
+      <Button>Primary (default)</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="tertiary">Tertiary</Button>
+      <Button variant="ghost">Ghost</Button>
+    """
+  end
+
+  defp button_2_code do
+    """
+      <Button variant="primary" size="xsmall">xSmall</Button>
+      <Button variant="primary" size="small">Small</Button>
+      <Button variant="primary" size="medium">Medium (Default)</Button>
+      <Button variant="primary" size="large">Large</Button>
+      <Button variant="primary" size="xlarge">xLarge</Button>
+    """
+  end
+
+  defp button_3_code do
+    """
+      <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+      <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+      <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+      <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+      <Button variant="primary" right_icon="generic_settings" size="large" />
+    """
+  end
+
+  defp button_4_code do
+    """
+    <Button variant="primary" full_width="true">
+      Full Width
+    </Button>
+    """
+  end
+
+  defp button_5_code do
+    """
+      <Button variant="primary" disabled="true">
+        Disabled
+      </Button>
     """
   end
 end

@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
@@ -109,20 +108,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
               />
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.ChartCard
-
-                <LineChartCard
-                  id="line-chart-card"
-                  title="KPI Overview"
-                  time_format="%d/%m"
-                  {=@filters}
-                  {=@select_options}
-                  {=@values}
-                />
-              </#CodePreview>
-            </:code>
+            <:code>{line_chard_1_code()}</:code>
 
             <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
           </ExampleAndCode>
@@ -145,5 +131,18 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
         }
       end)
     end)
+  end
+
+  defp line_chard_1_code do
+    """
+      <LineChartCard
+        id="line-chart-card"
+        title="KPI Overview"
+        time_format="%d/%m"
+        {=@filters}
+        {=@select_options}
+        {=@values}
+      />
+    """
   end
 end

@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Calendar
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
@@ -56,17 +55,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
               <Calendar id="default_calendar" week_starts_on={1} events={@events} />
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.Calendar
-
-                <Calendar
-                  id="default_calendar"
-                  week_starts_on={ 1 }
-                  events={ @events }
-                />
-              </#CodePreview>
-            </:code>
+            <:code>{calendar_1_code()}</:code>
 
             <:state>@events = {inspect(@events, pretty: true)}</:state>
           </ExampleAndCode>
@@ -76,17 +65,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
               <Calendar id="sunday_calendar" week_starts_on={7} events={@events} />
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.Calendar
-
-                <Calendar
-                  id="sunday_calendar"
-                  week_starts_on={ 7 }
-                  events={ @events }
-                />
-              </#CodePreview>
-            </:code>
+            <:code>{calendar_2_code()}</:code>
 
             <:state>@events = {inspect(@events, pretty: true)}</:state>
             <:note>
@@ -144,5 +123,29 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
     |> Timex.to_naive_datetime()
     |> NaiveDateTime.truncate(:second)
     |> Timex.shift(hours: hours)
+  end
+
+  defp calendar_1_code do
+    """
+      alias Moon.Components.Calendar
+
+      <Calendar
+        id="default_calendar"
+        week_starts_on={ 1 }
+        events={ @events }
+      />
+    """
+  end
+
+  defp calendar_2_code do
+    """
+      alias Moon.Components.Calendar
+
+      <Calendar
+        id="sunday_calendar"
+        week_starts_on={ 7 }
+        events={ @events }
+      />
+    """
   end
 end

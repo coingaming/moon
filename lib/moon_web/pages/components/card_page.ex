@@ -5,7 +5,6 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Card
-  alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias Moon.Components.IconButton
   alias Moon.Components.Link
@@ -69,26 +68,35 @@ defmodule MoonWeb.Pages.Components.CardPage do
               </Card>
             </:example>
 
-            <:code>
-              <#CodePreview>
-                alias Moon.Components.Card
-                alias Moon.Components.IconButton
-
-                <Card title="Winers">
-                  <:buttons>
-                    <IconButton icon_name="arrows_update" height={8} width={8} hover_bg_color="bg-goku-100" />
-                    <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
-                  </:buttons>
-                  <:content>
-                    {Faker.Lorem.paragraph()}
-                  </:content>
-                </Card>
-              </#CodePreview>
-            </:code>
+            <:code>{card_1_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
+    """
+  end
+
+  defp card_1_code do
+    """
+      alias Moon.Components.Card
+      alias Moon.Components.IconButton
+
+      <Card title="Winers">
+        <:buttons>
+          <IconButton
+            id="winers-arrows-update"
+            icon_name="arrows_update"
+            height={8}
+            width={8}
+            hover_bg_color="bg-goku-100"
+          />
+          <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
+        </:buttons>
+
+        <:content>
+          {Faker.Lorem.paragraph()}
+        </:content>
+      </Card>
     """
   end
 end
