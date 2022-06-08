@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage.SimpleS3Upload do
     {:ok, fields}
   end
 
-  defp amz_date(time) do
+  def amz_date(time) do
     time
     |> NaiveDateTime.to_iso8601()
     |> String.split(".")
@@ -87,18 +87,18 @@ defmodule MoonWeb.Pages.Components.FileInputPage.SimpleS3Upload do
     |> Kernel.<>("Z")
   end
 
-  defp credential(%{} = config, %DateTime{} = expires_at) do
+  def credential(%{} = config, %DateTime{} = expires_at) do
     "#{config.access_key_id}/#{short_date(expires_at)}/#{config.region}/s3/aws4_request"
   end
 
-  defp signature(config, %DateTime{} = expires_at, encoded_policy) do
+  def signature(config, %DateTime{} = expires_at, encoded_policy) do
     config
     |> signing_key(expires_at, "s3")
     |> sha256(encoded_policy)
     |> Base.encode16(case: :lower)
   end
 
-  defp signing_key(%{} = config, %DateTime{} = expires_at, service) when service in ["s3"] do
+  def signing_key(%{} = config, %DateTime{} = expires_at, service) when service in ["s3"] do
     amz_date = short_date(expires_at)
     %{secret_access_key: secret, region: region} = config
 
@@ -109,11 +109,11 @@ defmodule MoonWeb.Pages.Components.FileInputPage.SimpleS3Upload do
     |> sha256("aws4_request")
   end
 
-  defp short_date(%DateTime{} = expires_at) do
+  def short_date(%DateTime{} = expires_at) do
     expires_at
     |> amz_date()
     |> String.slice(0..7)
   end
 
-  defp sha256(secret, msg), do: :crypto.mac(:hmac, :sha256, secret, msg)
+  def sha256(secret, msg), do: :crypto.mac(:hmac, :sha256, secret, msg)
 end

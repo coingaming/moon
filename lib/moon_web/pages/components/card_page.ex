@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
     """
   end
 
-  defp card_1_code do
+  def card_1_code do
     """
       alias Moon.Components.Card
       alias Moon.Components.IconButton

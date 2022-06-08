@@ -175,28 +175,28 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     """
   end
 
-  defp fetch_data(changeset) do
+  def fetch_data(changeset) do
     {_, started_at} = fetch_field(changeset, :started_at)
     {_, ended_at} = fetch_field(changeset, :ended_at)
 
     %{started_at: started_at, ended_at: ended_at}
   end
 
-  defp fetch_time_data(changeset) do
+  def fetch_time_data(changeset) do
     {_, started_at} = fetch_field(changeset, :datetime_started_at)
     {_, ended_at} = fetch_field(changeset, :datetime_ended_at)
 
     %{datetime_started_at: started_at, datetime_ended_at: ended_at}
   end
 
-  defp update_changeset(start_date, end_date) do
+  def update_changeset(start_date, end_date) do
     Contract.changeset(%Contract{}, %{
       "started_at" => start_date,
       "ended_at" => end_date
     })
   end
 
-  defp update_time_changeset(start_date, end_date) do
+  def update_time_changeset(start_date, end_date) do
     Contract.changeset(%Contract{}, %{
       "datetime_started_at" => start_date,
       "datetime_ended_at" => end_date
@@ -266,13 +266,13 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     {:noreply, assign(socket, weekstart_changeset: changeset)}
   end
 
-  defp datepicker_1_code do
+  def datepicker_1_code do
     """
       <Form for={ @changeset } change="validate">
         <Datepicker
           id="default_datepicker"
-          start_date={ fetch_field(@changeset, :started_at) |> elem(1) }
-          end_date={ fetch_field(@changeset, :ended_at) |> elem(1) }
+          start_date={fetch_field(@changeset, :started_at) |> elem(1)}
+          end_date={fetch_field(@changeset, :ended_at) |> elem(1)}
           start_date_field={ :started_at }}
           end_date_field={ :ended_at }}
           show_date_inputs={true}
@@ -304,7 +304,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     """
   end
 
-  defp datepicker_2_code do
+  def datepicker_2_code do
     """
       <Form for={ @changeset } change="validate">
         <Datepicker
@@ -320,7 +320,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     """
   end
 
-  defp datepicker_3_code do
+  def datepicker_3_code do
     """
       <Form for={ @changeset } change="validate">
         <Datepicker
@@ -336,7 +336,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     """
   end
 
-  defp datepicker_4_code do
+  def datepicker_4_code do
     """
       <Form for={ @changeset } change="validate">
         <Datepicker

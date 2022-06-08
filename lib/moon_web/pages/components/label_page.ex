@@ -206,7 +206,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     """
   end
 
-  defp label_1_code do
+  def label_1_code do
     """
       <Label color="gohan-100" background_color="piccolo-100">
         Active
@@ -220,7 +220,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     """
   end
 
-  defp label_2_code do
+  def label_2_code do
     """
       <Label size="xsmall">
         xsmall (default)
@@ -231,7 +231,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     """
   end
 
-  defp label_3_code do
+  def label_3_code do
     """
       <div class="flex justify-around w-full items-center">
         <Label size="twoxsmall">
@@ -266,7 +266,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     """
   end
 
-  defp label_4_code do
+  def label_4_code do
     """
       <Label>
         Uppercase (default)

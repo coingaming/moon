@@ -192,25 +192,25 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
     """
   end
 
-  defp text_1_code do
+  def text_1_code do
     """
       <Text>Text with default font size</Text>
-      <Text size=10>Text with font size 10</Text>
-      <Text size=12>Text with font size 12</Text>
-      <Text size=14>Text with font size 14</Text>
-      <Text size=16>Text with font size 16</Text>
-      <Text size=18>Text with font size 18</Text>
-      <Text size=20>Text with font size 20</Text>
-      <Text size=24>Text with font size 24</Text>
-      <Text size=32>Text with font size 32</Text>
-      <Text size=48>font size 48</Text>
-      <Text size=56>font size 56</Text>
-      <Text size=64>font size 64</Text>
-      <Text size=72>font size 72</Text>
+      <Text size={10}>Text with font size 10</Text>
+      <Text size={12}>Text with font size 12</Text>
+      <Text size={14}>Text with font size 14</Text>
+      <Text size={16}>Text with font size 16</Text>
+      <Text size={18}>Text with font size 18</Text>
+      <Text size={20}>Text with font size 20</Text>
+      <Text size={24}>Text with font size 24</Text>
+      <Text size={32}>Text with font size 32</Text>
+      <Text size={48}>font size 48</Text>
+      <Text size={56}>font size 56</Text>
+      <Text size={64}>font size 64</Text>
+      <Text size={72}>font size 72</Text>
     """
   end
 
-  defp text_2_code do
+  def text_2_code do
     """
       <Text size=24>Text with default font weight</Text>
       <Text size=24 is_bold=true>
@@ -219,7 +219,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
     """
   end
 
-  defp text_3_code do
+  def text_3_code do
     """
       <Text size=24>Text with default color</Text>
       <Text size=24 color="trunks_100">

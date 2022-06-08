@@ -69,7 +69,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
     {:noreply, socket}
   end
 
-  defp switcher_1_code do
+  def switcher_1_code do
     """
       alias Moon.Components.Switcher
 

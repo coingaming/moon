@@ -110,7 +110,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
     """
   end
 
-  defp sidebar_1_code do
+  def sidebar_1_code do
     """
       alias Moon.Components.Sidebar
       alias Moon.Components.TopToDown

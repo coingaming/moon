@@ -190,7 +190,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     """
   end
 
-  defp heading_1_code do
+  def heading_1_code do
     """
       <Heading>Heading with default font size</Heading>
       <Heading size=16>Heading with font size 16</Heading>
@@ -205,7 +205,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     """
   end
 
-  defp heading_2_code do
+  def heading_2_code do
     """
       <Heading size=24>Heading with default font weight</Heading>
       <Heading size=24 is_regular=true>
@@ -214,7 +214,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     """
   end
 
-  defp heading_3_code do
+  def heading_3_code do
     """
       <Heading size=24>Heading with default color</Heading>
       <Heading size=24 color="trunks-100">

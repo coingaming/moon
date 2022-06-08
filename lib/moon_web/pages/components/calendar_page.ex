@@ -118,14 +118,14 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
     ]
   end
 
-  defp shifted_time(hours) do
+  def shifted_time(hours) do
     Timex.now()
     |> Timex.to_naive_datetime()
     |> NaiveDateTime.truncate(:second)
     |> Timex.shift(hours: hours)
   end
 
-  defp calendar_1_code do
+  def calendar_1_code do
     """
       alias Moon.Components.Calendar
 
@@ -137,9 +137,9 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
     """
   end
 
-  defp calendar_2_code do
+  def calendar_2_code do
     """
-      alias Moon.Components.Calendar
+    defalias Moon.Components.Calendar
 
       <Calendar
         id="sunday_calendar"

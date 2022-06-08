@@ -71,7 +71,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
     """
   end
 
-  defp link_1_code do
+  def link_1_code do
     """
       <Link to="#">I'm a link</Link>
 

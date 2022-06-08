@@ -270,7 +270,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     {:noreply, socket}
   end
 
-  defp variant_toasts do
+  def variant_toasts do
     [
       %Message{id: "error_toast", message: "Error!", variant: "error"},
       %Message{id: "warning_toast", message: "Warning.", variant: "warning"},
@@ -280,7 +280,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     ]
   end
 
-  defp action_toasts do
+  def action_toasts do
     [
       %Message{
         id: "closeable_toast",
@@ -311,13 +311,13 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     ]
   end
 
-  defp toast_1_code do
+  def toast_1_code do
     """
       <Toast id="minimal" message="Hey! Your toast is ready." />
     """
   end
 
-  defp toast_2_code do
+  def toast_2_code do
     """
       alias Moon.Components.ToastStack
       alias Moon.Components.Toast.Message
@@ -369,7 +369,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     """
   end
 
-  defp toast_3_code do
+  def toast_3_code do
     """
       <Toast
         id="error_toast"
@@ -398,7 +398,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
     """
   end
 
-  defp toast_4_code do
+  def toast_4_code do
     """
       <Toast
         id="closeable_toast"

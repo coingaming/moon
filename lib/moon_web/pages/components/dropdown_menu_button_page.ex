@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
     {:noreply, assign(socket, show_options: !socket.assigns.show_options)}
   end
 
-  defp dropdown_menu_button_1_code do
+  def dropdown_menu_button_1_code do
     """
       <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
         <IconMore />

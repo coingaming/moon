@@ -132,7 +132,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
     """
   end
 
-  defp carousel_1_code do
+  def carousel_1_code do
     """
       <Carousel>
         <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>

@@ -118,7 +118,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
     """
   end
 
-  defp generate_data(filters) do
+  def generate_data(filters) do
     1..25
     |> Enum.to_list()
     |> Enum.flat_map(fn day ->
@@ -133,7 +133,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
     end)
   end
 
-  defp line_chard_1_code do
+  def line_chard_1_code do
     """
       <LineChartCard
         id="line-chart-card"

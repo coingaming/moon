@@ -215,7 +215,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
   end
 
-  defp avatar_1_code do
+  def avatar_1_code do
     """
       <Avatar />
       <Avatar name="JS" />
@@ -223,7 +223,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
   end
 
-  defp avatar_2_code do
+  def avatar_2_code do
     """
       <Avatar />
       <Avatar color="frieza-100" background_color="chi-chi-100" />
@@ -232,7 +232,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
   end
 
-  defp avatar_3_code do
+  def avatar_3_code do
     """
     <div class="flex justify-around items-center w-full mb-4">
       <Avatar size="xsmall" />
@@ -261,7 +261,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
   end
 
-  defp avatar_4_code do
+  def avatar_4_code do
     """
       <Avatar />
       <Avatar is_status_active />
@@ -270,7 +270,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
   end
 
-  defp avatar_5_code do
+  def avatar_5_code do
     """
       <Avatar
         is_status_active

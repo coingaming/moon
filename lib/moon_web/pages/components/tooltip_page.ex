@@ -127,7 +127,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     """
   end
 
-  defp tooltip_1_code(placement) do
+  def tooltip_1_code(placement) do
     """
       <Tooltip placement="#{placement}" text="#{placement}">
         <Button variant="primary">Hover Me</Button>

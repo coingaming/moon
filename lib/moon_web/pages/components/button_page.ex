@@ -198,7 +198,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
-  defp button_1_code do
+  def button_1_code do
     """
       <Button>Primary (default)</Button>
       <Button variant="secondary">Secondary</Button>
@@ -207,7 +207,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
-  defp button_2_code do
+  def button_2_code do
     """
       <Button variant="primary" size="xsmall">xSmall</Button>
       <Button variant="primary" size="small">Small</Button>
@@ -217,7 +217,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
-  defp button_3_code do
+  def button_3_code do
     """
       <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
       <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
@@ -227,7 +227,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
-  defp button_4_code do
+  def button_4_code do
     """
     <Button variant="primary" full_width="true">
       Full Width
@@ -235,7 +235,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
-  defp button_5_code do
+  def button_5_code do
     """
       <Button variant="primary" disabled="true">
         Disabled

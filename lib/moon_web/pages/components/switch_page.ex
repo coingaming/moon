@@ -231,13 +231,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     {:noreply, socket}
   end
 
-  defp switch_1_code do
+  def switch_1_code do
     """
       <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
     """
   end
 
-  defp switch_2_code do
+  def switch_2_code do
     """
       <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
 
@@ -247,7 +247,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
-  defp switch_3_code do
+  def switch_3_code do
     """
       <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
       <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
@@ -255,7 +255,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
-  defp switch_4_code do
+  def switch_4_code do
     """
       <Switch
         checked={@captions_switch_checked}
