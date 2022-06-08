@@ -1,3 +1,10 @@
+## [2.11.2](https://github.com/coingaming/moon/compare/v2.11.1...v2.11.2) (2022-06-08)
+
+
+### Bug Fixes
+
+* fix broken code examples [MDS-123] ([#283](https://github.com/coingaming/moon/issues/283)) ([b7ee7e3](https://github.com/coingaming/moon/commit/b7ee7e36ab0d7586fc6466f1cb9043a7474b96eb))
+
 ## [2.11.1](https://github.com/coingaming/moon/compare/v2.11.0...v2.11.1) (2022-06-07)
 
 
