@@ -21,11 +21,11 @@ defmodule Moon.Components.Accordion do
 
   def render(assigns) do
     ~F"""
-    <div id={@id} class={
-      "rounded relative",
-      @class,
-      get_background(@is_content_inside)
-    }>
+    <div id={@id}>
+      <div class={
+        "rounded relative bg-gohan-100",
+        @class
+      }>
       <PullAside class="p-4" left_grow>
         <:left>
           <div :on-click={toggle_content(@id, @disable_open)}>
@@ -50,9 +50,18 @@ defmodule Moon.Components.Accordion do
           </div>
         </:right>
       </PullAside>
+      {#if @is_content_inside }
       <div id={@id <> "-content"} class={"p-4", hidden: !@open_by_default}>
         <#slot name="content" />
       </div>
+      {/if}
+      </div>
+
+      {#if !@is_content_inside }
+      <div id={@id <> "-content"} class={"p-4 bg-transparent", hidden: !@open_by_default}>
+        <#slot name="content" />
+      </div>
+      {/if}
     </div>
     """
   end
@@ -76,14 +85,6 @@ defmodule Moon.Components.Accordion do
         "rotate-180",
         to: "#" <> id <> "-arrow:not(.rotate-180)"
       )
-    end
-  end
-
-  defp get_background(is_content_inside) do
-    if is_content_inside do
-      "bg-gohan-100"
-    else
-      "bg-transparent"
     end
   end
 end

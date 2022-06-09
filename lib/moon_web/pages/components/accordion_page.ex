@@ -184,7 +184,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_4_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Accordion Content Inside" id="accordion_100" is_gray_bg={true}>
+          <ExampleAndCode title="Content outside" id="accordion-5" is_gray_bg={true}>
             <:example>
             <div class="flex flex-col gap-4">
                 <Accordion id="basket-items" open_by_default is_content_inside={false}>
@@ -202,7 +202,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
                 </Accordion>
               </div>
             </:example>
-            <:code>{get_example_11_code()}</:code>
+            <:code>{get_example_5_code()}</:code>
           </ExampleAndCode>
 
 
@@ -313,6 +313,25 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     """
     <Accordion id="deposits-and-withdrawals-4" disable_open>
       <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    """
+  end
+
+  def get_example_5_code() do
+    """
+    <Accordion id="customer-support">
+      <:title>Customer support</:title>
+      <:header_controls>Additional controls</:header_controls>
       <:content>
         Content <br>
         Content <br>
