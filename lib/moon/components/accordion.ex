@@ -13,6 +13,7 @@ defmodule Moon.Components.Accordion do
   prop class, :css_class
   prop open_by_default, :boolean, default: false
   prop is_content_inside, :boolean, default: true
+  prop with_button, :boolean, default: true
   slot title
   slot header_controls
   slot content
@@ -24,26 +25,28 @@ defmodule Moon.Components.Accordion do
       @class,
       get_background(@is_content_inside)
     }>
-      <PullAside class="p-4">
+      <PullAside class="p-4" left_grow>
         <:left>
           <div :on-click={toggle_content(@id)}>
             <Heading class="cursor-pointer"><#slot name="title" /></Heading>
           </div>
         </:left>
         <:right>
-          <LeftToRight>
-            <#slot name="header_controls" />
-            <div
-              :on-click={toggle_content(@id)}
-              id={@id <> "-arrow"}
-              class={
-                "rotate-0": !@open_by_default,
-                "rotate-180": @open_by_default
-              }
-            >
-              <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
-            </div>
-          </LeftToRight>
+          <div class={hidden: !@with_button}>
+            <LeftToRight>
+              <#slot name="header_controls" />
+              <div
+                :on-click={toggle_content(@id)}
+                id={@id <> "-arrow"}
+                class={
+                  "rotate-0": !@open_by_default,
+                  "rotate-180": @open_by_default
+                }
+              >
+                <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
+              </div>
+            </LeftToRight>
+          </div>
         </:right>
       </PullAside>
       <div id={@id <> "-content"} class={"p-4", hidden: !@open_by_default}>
