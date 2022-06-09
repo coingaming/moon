@@ -40,22 +40,22 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         :name => 'open_by_default',
         :type => 'boolean',
         :required => 'false',
-        :default => '-',
+        :default => 'false',
         :description => 'Expanded/collapsed accordion by default'
       },
       %{
         :name => 'with_button',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Show expand/collapse chevron'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'true',
+        :description => 'Show expand/collapse chevron'
       },
       %{
         :name => 'disable_open',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Disable expand/collapse accordion'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Disable expand/collapse accordion'
       },
       %{
         :name => 'content',
@@ -66,17 +66,17 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       },
       %{
         :name => 'size',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Size variant of accordion'
+        :type => 'small | medium | large | xlarge',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'Size variant of accordion'
       },
       %{
         :name => 'is_content_inside',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Whether the content is displayed outside of the accordion header'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the content is displayed outside of the accordion header'
       }
     ]
 
@@ -551,19 +551,58 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_8_code() do
     """
-    <Accordion id="deposits-and-withdrawals-1">
-      <:title>Deposit & Withdrawals</:title>
-      <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-      </:content>
-    </Accordion>
+      <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
+        <:title>X Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-3" size="large" is_content_inside={false}>
+        <:title>Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-2" is_content_inside={false}>
+        <:title>Medium (Default)</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-1" size="small" is_content_inside={false}>
+        <:title>Small</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
     """
   end
 end
