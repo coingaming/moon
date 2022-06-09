@@ -116,7 +116,8 @@ module.exports = {
       'trunks-100': 'var(--color--trunks-100)',
       black: "#000",
       hover: 'rgba(34, 34, 37, 0.12)',
-      'primary-hover': 'rgba(0, 0, 0, 0.08)'
+      'primary-hover': 'rgba(0, 0, 0, 0.08)',
+      'slate-200': 'rgb(226 232 240)'
     },
   },
   plugins: [

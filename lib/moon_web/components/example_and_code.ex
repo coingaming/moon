@@ -11,6 +11,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   data buttons, :list, default: ["preview", "code"]
   data selected_button, :string, default: "preview"
   prop title, :string, default: ""
+  prop is_gray_bg, :boolean, default: false
   slot example
   slot code
   slot state
@@ -29,9 +30,11 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <p><#slot name="note" /></p>
       </div>
       <Context get={theme_class: theme_class}>
-        <div class={"grid grid-cols-1 bg-gohan-100 rounded-md shadow", theme_class}>
+        <div class={"grid grid-cols-1 bg-gohan-100 rounded-md shadow", "bg-slate-200": @is_gray_bg}>
           <div class={"p-6", hidden: @selected_button == "code"}>
-            <#slot name="example">Example not defined</#slot>
+            <div class={"inline", theme_class}>
+              <#slot name="example">Example not defined</#slot>
+            </div>
           </div>
           <div class={
             "border-beerus-100 rounded-md shadow justify-around",

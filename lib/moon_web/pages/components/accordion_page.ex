@@ -99,37 +99,92 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Accordion" id="accordion_1">
+
+          <ExampleAndCode title="Default" id="accordion_1" is_gray_bg>
             <:example>
-              <Accordion id="customer-support">
-                <:title>Customer support</:title>
-                <:header_controls>Additional controls</:header_controls>
-                <:content>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                </:content>
-              </Accordion>
-              <Accordion id="deposits-and-withdrawals" open_by_default>
-                <:title>Deposit & Withdrawals</:title>
-                <:content>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                </:content>
-              </Accordion>
+            <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals">
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
             </:example>
             <:code>{get_example_1_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Open by default" id="accordion_2" is_gray_bg>
+            <:example>
+            <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals" open_by_default>
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_2_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Accordion Content Inside" id="accordion_3" is_gray_bg={true}>
+            <:example>
+            <div class="flex flex-col gap-4">
+                <Accordion id="basket-items" open_by_default is_content_inside={false}>
+                  <:title>Basket Items</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_3_code()}</:code>
+          </ExampleAndCode>
+
+
+
+          <ExampleAndCode title="Accordion additional controls" id="accordion_11" is_gray_bg={true}>
+            <:example>
+            <div class="flex flex-col gap-4">
+                <Accordion id="customer-support">
+                  <:title>Customer support</:title>
+                  <:header_controls>Additional controls</:header_controls>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_11_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -160,9 +215,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_1_code() do
     """
-    <Accordion id="customer-support">
-      <:title>Customer support</:title>
-      <:header_controls>Additional controls</:header_controls>
+    <Accordion id="deposits-and-withdrawals">
+      <:title>Deposit & Withdrawals</:title>
       <:content>
         Content <br>
         Content <br>
@@ -174,8 +228,50 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Content <br>
       </:content>
     </Accordion>
+    """
+  end
+
+  def get_example_2_code() do
+    """
     <Accordion id="deposits-and-withdrawals" open_by_default>
       <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    """
+  end
+
+  def get_example_3_code() do
+    """
+      <Accordion id="basket-items" open_by_default is_content_inside={false}>
+        <:title>Basket Items</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_11_code() do
+    """
+    <Accordion id="customer-support">
+      <:title>Customer support</:title>
+      <:header_controls>Additional controls</:header_controls>
       <:content>
         Content <br>
         Content <br>
