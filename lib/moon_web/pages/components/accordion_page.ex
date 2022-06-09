@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
+  alias Moon.Icons.{ChatChat, ChatComment, ChatCommentAdd, ChatDoubleBubble}
 
   data(item_id, :string, default: "1")
 
@@ -205,14 +206,17 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_5_code()}</:code>
           </ExampleAndCode>
 
-
-
-          <ExampleAndCode title="Accordion additional controls" id="accordion_11" is_gray_bg={true}>
+          <ExampleAndCode title="Additional controls" id="accordion-6" is_gray_bg={true}>
             <:example>
             <div class="flex flex-col gap-4">
                 <Accordion id="customer-support">
                   <:title>Customer support</:title>
-                  <:header_controls>Additional controls</:header_controls>
+                  <:header_controls>
+                    <ChatChat class="w-6 h-6"/>
+                    <ChatComment class="w-6 h-6" />
+                    <ChatCommentAdd class="w-6 h-6" />
+                    <ChatDoubleBubble class="w-6 h-6" />
+                  </:header_controls>
                   <:content>
                     Content <br>
                     Content <br>
@@ -226,7 +230,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
                 </Accordion>
               </div>
             </:example>
-            <:code>{get_example_11_code()}</:code>
+            <:code>{get_example_6_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -311,57 +315,61 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_4_code() do
     """
-    <Accordion id="deposits-and-withdrawals-4" disable_open>
-      <:title>Deposit & Withdrawals</:title>
-      <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-      </:content>
-    </Accordion>
+      <Accordion id="deposits-and-withdrawals-4" disable_open>
+        <:title>Deposit & Withdrawals</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
     """
   end
 
   def get_example_5_code() do
     """
-    <Accordion id="customer-support">
-      <:title>Customer support</:title>
-      <:header_controls>Additional controls</:header_controls>
-      <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-      </:content>
-    </Accordion>
+      <Accordion id="basket-items" open_by_default is_content_inside={false}>
+        <:title>Basket Items</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
     """
   end
 
-  def get_example_11_code() do
+  def get_example_6_code() do
     """
-    <Accordion id="customer-support">
-      <:title>Customer support</:title>
-      <:header_controls>Additional controls</:header_controls>
-      <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-      </:content>
-    </Accordion>
+      <Accordion id="customer-support">
+        <:title>Customer support</:title>
+        <:header_controls>
+          <ChatChat class="w-6 h-6"/>
+          <ChatComment class="w-6 h-6" />
+          <ChatCommentAdd class="w-6 h-6" />
+          <ChatDoubleBubble class="w-6 h-6" />
+        </:header_controls>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
     """
   end
 end
