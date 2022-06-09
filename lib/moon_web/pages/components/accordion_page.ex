@@ -100,10 +100,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
         <Context put={theme_class: @theme_name}>
 
-          <ExampleAndCode title="Default" id="accordion_1" is_gray_bg>
+          <ExampleAndCode title="Default" id="accordion-1" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals">
+                <Accordion id="deposits-and-withdrawals_1">
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -121,10 +121,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_1_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Open by default" id="accordion_2" is_gray_bg>
+          <ExampleAndCode title="Open by default" id="accordion-2" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals" open_by_default>
+                <Accordion id="deposits-and-withdrawals_2" open_by_default>
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -142,10 +142,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_2_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Without button" id="accordion_3" is_gray_bg>
+          <ExampleAndCode title="Without button" id="accordion-3" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals" with_button={false}>
+                <Accordion id="deposits-and-withdrawals_3" with_button={false}>
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -163,7 +163,28 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_3_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Accordion Content Inside" id="accordion_4" is_gray_bg={true}>
+          <ExampleAndCode title="Disable open" id="accordion-4" is_gray_bg>
+            <:example>
+            <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals_4" disable_open>
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_4_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Accordion Content Inside" id="accordion_100" is_gray_bg={true}>
             <:example>
             <div class="flex flex-col gap-4">
                 <Accordion id="basket-items" open_by_default is_content_inside={false}>
@@ -181,7 +202,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
                 </Accordion>
               </div>
             </:example>
-            <:code>{get_example_3_code()}</:code>
+            <:code>{get_example_11_code()}</:code>
           </ExampleAndCode>
 
 
@@ -236,7 +257,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_1_code() do
     """
-    <Accordion id="deposits-and-withdrawals">
+    <Accordion id="deposits-and-withdrawals-1">
       <:title>Deposit & Withdrawals</:title>
       <:content>
         Content <br>
@@ -254,7 +275,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_2_code() do
     """
-    <Accordion id="deposits-and-withdrawals" open_by_default>
+    <Accordion id="deposits-and-withdrawals-2" open_by_default>
       <:title>Deposit & Withdrawals</:title>
       <:content>
         Content <br>
@@ -272,7 +293,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_3_code() do
     """
-      <Accordion id="deposits-and-withdrawals" with_button={false}>
+      <Accordion id="deposits-and-withdrawals-3" with_button={false}>
         <:title>Deposit & Withdrawals</:title>
         <:content>
           Content <br>
@@ -285,6 +306,24 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           Content <br>
         </:content>
       </Accordion>
+    """
+  end
+
+  def get_example_4_code() do
+    """
+    <Accordion id="deposits-and-withdrawals-4" disable_open>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
     """
   end
 

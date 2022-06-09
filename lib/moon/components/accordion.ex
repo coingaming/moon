@@ -14,6 +14,7 @@ defmodule Moon.Components.Accordion do
   prop open_by_default, :boolean, default: false
   prop is_content_inside, :boolean, default: true
   prop with_button, :boolean, default: true
+  prop disable_open, :boolean, default: false
   slot title
   slot header_controls
   slot content
@@ -27,7 +28,7 @@ defmodule Moon.Components.Accordion do
     }>
       <PullAside class="p-4" left_grow>
         <:left>
-          <div :on-click={toggle_content(@id)}>
+          <div :on-click={toggle_content(@id, @disable_open)}>
             <Heading class="cursor-pointer"><#slot name="title" /></Heading>
           </div>
         </:left>
@@ -36,7 +37,7 @@ defmodule Moon.Components.Accordion do
             <LeftToRight>
               <#slot name="header_controls" />
               <div
-                :on-click={toggle_content(@id)}
+                :on-click={toggle_content(@id, @disable_open)}
                 id={@id <> "-arrow"}
                 class={
                   "rotate-0": !@open_by_default,
@@ -56,24 +57,26 @@ defmodule Moon.Components.Accordion do
     """
   end
 
-  def toggle_content(id) do
-    JS.toggle(to: "#" <> id <> "-content")
-    |> JS.remove_class(
-      "rotate-0",
-      to: "#" <> id <> "-arrow.rotate-0"
-    )
-    |> JS.add_class(
-      "rotate-0",
-      to: "#" <> id <> "-arrow:not(.rotate-0)"
-    )
-    |> JS.remove_class(
-      "rotate-180",
-      to: "#" <> id <> "-arrow.rotate-180"
-    )
-    |> JS.add_class(
-      "rotate-180",
-      to: "#" <> id <> "-arrow:not(.rotate-180)"
-    )
+  def toggle_content(id, disable_open) do
+    if !disable_open do
+      JS.toggle(to: "#" <> id <> "-content")
+      |> JS.remove_class(
+        "rotate-0",
+        to: "#" <> id <> "-arrow.rotate-0"
+      )
+      |> JS.add_class(
+        "rotate-0",
+        to: "#" <> id <> "-arrow:not(.rotate-0)"
+      )
+      |> JS.remove_class(
+        "rotate-180",
+        to: "#" <> id <> "-arrow.rotate-180"
+      )
+      |> JS.add_class(
+        "rotate-180",
+        to: "#" <> id <> "-arrow:not(.rotate-180)"
+      )
+    end
   end
 
   defp get_background(is_content_inside) do
