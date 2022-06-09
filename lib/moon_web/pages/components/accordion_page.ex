@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <ExampleAndCode title="Default" id="accordion-1" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals_1">
+                <Accordion id="deposits-and-withdrawals-1">
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -125,7 +125,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <ExampleAndCode title="Open by default" id="accordion-2" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals_2" open_by_default>
+                <Accordion id="deposits-and-withdrawals-2" open_by_default>
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -146,7 +146,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <ExampleAndCode title="Without button" id="accordion-3" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals_3" with_button={false}>
+                <Accordion id="deposits-and-withdrawals-3" with_button={false}>
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -167,7 +167,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <ExampleAndCode title="Disable open" id="accordion-4" is_gray_bg>
             <:example>
             <div class="flex flex-col gap-4">
-                <Accordion id="deposits-and-withdrawals_4" disable_open>
+                <Accordion id="deposits-and-withdrawals-4" disable_open>
                   <:title>Deposit & Withdrawals</:title>
                   <:content>
                     Content <br>
@@ -231,6 +231,66 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               </div>
             </:example>
             <:code>{get_example_6_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Sizes" id="accordion-7" is_gray_bg>
+            <:example>
+            <div class="flex flex-col gap-4">
+                <Accordion id="size-3" size="xlarge">
+                  <:title>X Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-3" size="large">
+                  <:title>Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-2">
+                  <:title>Medium (Default)</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-1" size="small">
+                  <:title>Small</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_7_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -370,6 +430,24 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           Content <br>
         </:content>
       </Accordion>
+    """
+  end
+
+  def get_example_7_code() do
+    """
+    <Accordion id="deposits-and-withdrawals-1">
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
     """
   end
 end

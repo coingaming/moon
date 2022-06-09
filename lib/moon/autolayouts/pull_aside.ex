@@ -11,7 +11,7 @@ defmodule Moon.Autolayouts.PullAside do
   def render(assigns) do
     ~F"""
     <div class={"flex justify-between", @class}>
-      <div class={grow: @left_grow}>
+      <div class={"flex items-center", grow: @left_grow}>
         {#if slot_assigned?(:left)}
           <#slot name="left" />
         {/if}

@@ -15,6 +15,7 @@ defmodule Moon.Components.Accordion do
   prop is_content_inside, :boolean, default: true
   prop with_button, :boolean, default: true
   prop disable_open, :boolean, default: false
+  prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
   slot title
   slot header_controls
   slot content
@@ -26,10 +27,10 @@ defmodule Moon.Components.Accordion do
         "rounded relative bg-gohan-100",
         @class
       }>
-      <PullAside class="p-4" left_grow>
+      <PullAside class={get_padding(@size)} left_grow>
         <:left>
-          <div :on-click={toggle_content(@id, @disable_open)}>
-            <Heading class="cursor-pointer"><#slot name="title" /></Heading>
+          <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center">
+            <Heading class={"cursor-pointer items-center #{font_class(@size)}"}><#slot name="title" /></Heading>
           </div>
         </:left>
         <:right>
@@ -51,14 +52,14 @@ defmodule Moon.Components.Accordion do
         </:right>
       </PullAside>
       {#if @is_content_inside }
-      <div id={@id <> "-content"} class={"p-4", hidden: !@open_by_default}>
+      <div id={@id <> "-content"} class={get_padding(@size), hidden: !@open_by_default}>
         <#slot name="content" />
       </div>
       {/if}
       </div>
 
       {#if !@is_content_inside }
-      <div id={@id <> "-content"} class={"p-4 bg-transparent", hidden: !@open_by_default}>
+      <div id={@id <> "-content"} class={get_padding(@size), "bg-transparent", hidden: !@open_by_default}>
         <#slot name="content" />
       </div>
       {/if}
@@ -85,6 +86,24 @@ defmodule Moon.Components.Accordion do
         "rotate-180",
         to: "#" <> id <> "-arrow:not(.rotate-180)"
       )
+    end
+  end
+
+  defp get_padding(size) do
+    case size do
+      "small" -> "p-2"
+      "large" -> "p-3"
+      "xlarge" -> "p-4"
+      _ -> "p-3"
+    end
+  end
+
+  defp font_class(size) do
+    case size do
+      "small" -> "uppercase text-[10px]"
+      "large" -> "text-sm"
+      "xlarge" -> "text-base"
+      _ -> "text-xs"
     end
   end
 end
