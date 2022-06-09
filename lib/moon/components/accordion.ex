@@ -27,41 +27,44 @@ defmodule Moon.Components.Accordion do
         "rounded relative bg-gohan-100",
         @class
       }>
-      <PullAside class={get_padding(@size)} left_grow>
-        <:left>
-          <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center">
-            <Heading class={"cursor-pointer items-center #{font_class(@size)}"}><#slot name="title" /></Heading>
+        <PullAside class={get_padding(@size)} left_grow>
+          <:left>
+            <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
+              <Heading class={"cursor-pointer items-center grow #{font_class(@size)}"}><#slot name="title" /></Heading>
+            </div>
+          </:left>
+          <:right>
+            <div class={hidden: !@with_button}>
+              <LeftToRight>
+                <#slot name="header_controls" />
+                <div
+                  :on-click={toggle_content(@id, @disable_open)}
+                  id={@id <> "-arrow"}
+                  class={
+                    "rotate-0": !@open_by_default,
+                    "rotate-180": @open_by_default
+                  }
+                >
+                  <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
+                </div>
+              </LeftToRight>
+            </div>
+          </:right>
+        </PullAside>
+        {#if @is_content_inside}
+          <div id={@id <> "-content"} class={get_padding(@size), hidden: !@open_by_default}>
+            <#slot name="content" />
           </div>
-        </:left>
-        <:right>
-          <div class={hidden: !@with_button}>
-            <LeftToRight>
-              <#slot name="header_controls" />
-              <div
-                :on-click={toggle_content(@id, @disable_open)}
-                id={@id <> "-arrow"}
-                class={
-                  "rotate-0": !@open_by_default,
-                  "rotate-180": @open_by_default
-                }
-              >
-                <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
-              </div>
-            </LeftToRight>
-          </div>
-        </:right>
-      </PullAside>
-      {#if @is_content_inside }
-      <div id={@id <> "-content"} class={get_padding(@size), hidden: !@open_by_default}>
-        <#slot name="content" />
-      </div>
-      {/if}
+        {/if}
       </div>
 
-      {#if !@is_content_inside }
-      <div id={@id <> "-content"} class={get_padding(@size), "bg-transparent", hidden: !@open_by_default}>
-        <#slot name="content" />
-      </div>
+      {#if !@is_content_inside}
+        <div
+          id={@id <> "-content"}
+          class={get_padding(@size), "bg-transparent", hidden: !@open_by_default}
+        >
+          <#slot name="content" />
+        </div>
       {/if}
     </div>
     """
@@ -91,10 +94,10 @@ defmodule Moon.Components.Accordion do
 
   defp get_padding(size) do
     case size do
-      "small" -> "p-2"
+      "small" -> "p-1"
       "large" -> "p-3"
       "xlarge" -> "p-4"
-      _ -> "p-3"
+      _ -> "p-2"
     end
   end
 
