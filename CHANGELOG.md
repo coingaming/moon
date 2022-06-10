@@ -1,3 +1,10 @@
+## [2.11.3](https://github.com/coingaming/moon/compare/v2.11.2...v2.11.3) (2022-06-10)
+
+
+### Bug Fixes
+
+* align the Accordion component with React [MDS-110] ([#285](https://github.com/coingaming/moon/issues/285)) ([f821eb1](https://github.com/coingaming/moon/commit/f821eb1f0eb2cf66f2db41b16368a41a6343e11a))
+
 ## [2.11.2](https://github.com/coingaming/moon/compare/v2.11.1...v2.11.2) (2022-06-08)
 
 
