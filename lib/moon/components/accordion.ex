@@ -12,59 +12,101 @@ defmodule Moon.Components.Accordion do
   prop id, :string
   prop class, :css_class
   prop open_by_default, :boolean, default: false
+  prop is_content_inside, :boolean, default: true
+  prop with_button, :boolean, default: true
+  prop disable_open, :boolean, default: false
+  prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
   slot title
   slot header_controls
   slot content
 
   def render(assigns) do
     ~F"""
-    <div id={@id} class={"bg-gohan-100 rounded-xl relative", @class}>
-      <PullAside class="p-4">
-        <:left>
-          <div :on-click={toggle_content(@id)}>
-            <Heading class="cursor-pointer"><#slot name="title" /></Heading>
-          </div>
-        </:left>
-        <:right>
-          <LeftToRight>
-            <#slot name="header_controls" />
-            <div
-              :on-click={toggle_content(@id)}
-              id={@id <> "-arrow"}
-              class={
-                "rotate-0": !@open_by_default,
-                "rotate-180": @open_by_default
-              }
-            >
-              <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
+    <div id={@id}>
+      <div class={
+        "rounded relative bg-gohan-100",
+        @class
+      }>
+        <PullAside class={get_padding(@size)} left_grow>
+          <:left>
+            <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
+              <Heading class={"cursor-pointer items-center grow #{font_class(@size)}"}><#slot name="title" /></Heading>
             </div>
-          </LeftToRight>
-        </:right>
-      </PullAside>
-      <div id={@id <> "-content"} class={"p-4", hidden: !@open_by_default}>
-        <#slot name="content" />
+          </:left>
+          <:right>
+            <div class={hidden: !@with_button}>
+              <LeftToRight>
+                <#slot name="header_controls" />
+                <div
+                  :on-click={toggle_content(@id, @disable_open)}
+                  id={@id <> "-arrow"}
+                  class={
+                    "rotate-0": !@open_by_default,
+                    "rotate-180": @open_by_default
+                  }
+                >
+                  <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
+                </div>
+              </LeftToRight>
+            </div>
+          </:right>
+        </PullAside>
+        {#if @is_content_inside}
+          <div id={@id <> "-content"} class={get_padding(@size), hidden: !@open_by_default}>
+            <#slot name="content" />
+          </div>
+        {/if}
       </div>
+
+      {#if !@is_content_inside}
+        <div
+          id={@id <> "-content"}
+          class={get_padding(@size), "bg-transparent", hidden: !@open_by_default}
+        >
+          <#slot name="content" />
+        </div>
+      {/if}
     </div>
     """
   end
 
-  def toggle_content(id) do
-    JS.toggle(to: "#" <> id <> "-content")
-    |> JS.remove_class(
-      "rotate-0",
-      to: "#" <> id <> "-arrow.rotate-0"
-    )
-    |> JS.add_class(
-      "rotate-0",
-      to: "#" <> id <> "-arrow:not(.rotate-0)"
-    )
-    |> JS.remove_class(
-      "rotate-180",
-      to: "#" <> id <> "-arrow.rotate-180"
-    )
-    |> JS.add_class(
-      "rotate-180",
-      to: "#" <> id <> "-arrow:not(.rotate-180)"
-    )
+  def toggle_content(id, disable_open) do
+    if !disable_open do
+      JS.toggle(to: "#" <> id <> "-content")
+      |> JS.remove_class(
+        "rotate-0",
+        to: "#" <> id <> "-arrow.rotate-0"
+      )
+      |> JS.add_class(
+        "rotate-0",
+        to: "#" <> id <> "-arrow:not(.rotate-0)"
+      )
+      |> JS.remove_class(
+        "rotate-180",
+        to: "#" <> id <> "-arrow.rotate-180"
+      )
+      |> JS.add_class(
+        "rotate-180",
+        to: "#" <> id <> "-arrow:not(.rotate-180)"
+      )
+    end
+  end
+
+  defp get_padding(size) do
+    case size do
+      "small" -> "p-1"
+      "large" -> "p-3"
+      "xlarge" -> "p-4"
+      _ -> "p-2"
+    end
+  end
+
+  defp font_class(size) do
+    case size do
+      "small" -> "uppercase text-[10px]"
+      "large" -> "text-sm"
+      "xlarge" -> "text-base"
+      _ -> "text-xs"
+    end
   end
 end

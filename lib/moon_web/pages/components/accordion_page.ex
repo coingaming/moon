@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
+  alias Moon.Icons.{ChatChat, ChatComment, ChatCommentAdd, ChatDoubleBubble}
 
   data(item_id, :string, default: "1")
 
@@ -39,22 +40,22 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         :name => 'open_by_default',
         :type => 'boolean',
         :required => 'false',
-        :default => '-',
+        :default => 'false',
         :description => 'Expanded/collapsed accordion by default'
       },
       %{
         :name => 'with_button',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Show expand/collapse chevron'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'true',
+        :description => 'Show expand/collapse chevron'
       },
       %{
         :name => 'disable_open',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Disable expand/collapse accordion'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Disable expand/collapse accordion'
       },
       %{
         :name => 'content',
@@ -65,17 +66,17 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       },
       %{
         :name => 'size',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Size variant of accordion'
+        :type => 'small | medium | large | xlarge',
+        :required => 'false',
+        :default => 'medium',
+        :description => 'Size variant of accordion'
       },
       %{
         :name => 'is_content_inside',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Whether the content is displayed outside of the accordion header'
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the content is displayed outside of the accordion header'
       }
     ]
 
@@ -99,37 +100,256 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Accordion" id="accordion_1">
+          <ExampleAndCode title="Default" id="accordion-1" is_gray_bg>
             <:example>
-              <Accordion id="customer-support">
-                <:title>Customer support</:title>
-                <:header_controls>Additional controls</:header_controls>
-                <:content>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                </:content>
-              </Accordion>
-              <Accordion id="deposits-and-withdrawals" open_by_default>
-                <:title>Deposit & Withdrawals</:title>
-                <:content>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                  Content <br>
-                </:content>
-              </Accordion>
+              <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals-1">
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
             </:example>
             <:code>{get_example_1_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Open by default" id="accordion-2" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals-2" open_by_default>
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_2_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Without button" id="accordion-3" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals-3" with_button={false}>
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_3_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Disable open" id="accordion-4" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="deposits-and-withdrawals-4" disable_open>
+                  <:title>Deposit & Withdrawals</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_4_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Content outside" id="accordion-5" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="basket-items" open_by_default is_content_inside={false}>
+                  <:title>Basket Items</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_5_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Additional controls" id="accordion-6" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="customer-support">
+                  <:title>Customer support</:title>
+                  <:header_controls>
+                    <ChatChat class="w-6 h-6" />
+                    <ChatComment class="w-6 h-6" />
+                    <ChatCommentAdd class="w-6 h-6" />
+                    <ChatDoubleBubble class="w-6 h-6" />
+                  </:header_controls>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_6_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Sizes" id="accordion-7" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="size-4" size="xlarge">
+                  <:title>X Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-3" size="large">
+                  <:title>Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-2">
+                  <:title>Medium (Default)</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-1" size="small">
+                  <:title>Small</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_7_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode title="Sizes: content outside" id="accordion-8" is_gray_bg>
+            <:example>
+              <div class="flex flex-col gap-4">
+                <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
+                  <:title>X Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-out-3" size="large" is_content_inside={false}>
+                  <:title>Large</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-out-2" is_content_inside={false}>
+                  <:title>Medium (Default)</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+                <Accordion id="size-out-1" size="small" is_content_inside={false}>
+                  <:title>Small</:title>
+                  <:content>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                    Content <br>
+                  </:content>
+                </Accordion>
+              </div>
+            </:example>
+            <:code>{get_example_8_code()}</:code>
           </ExampleAndCode>
         </Context>
 
@@ -160,21 +380,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_1_code() do
     """
-    <Accordion id="customer-support">
-      <:title>Customer support</:title>
-      <:header_controls>Additional controls</:header_controls>
-      <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-      </:content>
-    </Accordion>
-    <Accordion id="deposits-and-withdrawals" open_by_default>
+    <Accordion id="deposits-and-withdrawals-1">
       <:title>Deposit & Withdrawals</:title>
       <:content>
         Content <br>
@@ -187,6 +393,216 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Content <br>
       </:content>
     </Accordion>
+    """
+  end
+
+  def get_example_2_code() do
+    """
+    <Accordion id="deposits-and-withdrawals-2" open_by_default>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+        Content <br>
+      </:content>
+    </Accordion>
+    """
+  end
+
+  def get_example_3_code() do
+    """
+      <Accordion id="deposits-and-withdrawals-3" with_button={false}>
+        <:title>Deposit & Withdrawals</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_4_code() do
+    """
+      <Accordion id="deposits-and-withdrawals-4" disable_open>
+        <:title>Deposit & Withdrawals</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_5_code() do
+    """
+      <Accordion id="basket-items" open_by_default is_content_inside={false}>
+        <:title>Basket Items</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_6_code() do
+    """
+      <Accordion id="customer-support">
+        <:title>Customer support</:title>
+        <:header_controls>
+          <ChatChat class="w-6 h-6"/>
+          <ChatComment class="w-6 h-6" />
+          <ChatCommentAdd class="w-6 h-6" />
+          <ChatDoubleBubble class="w-6 h-6" />
+        </:header_controls>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_7_code() do
+    """
+      <Accordion id="size-3" size="xlarge">
+        <:title>X Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-3" size="large">
+        <:title>Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-2">
+        <:title>Medium (Default)</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-1" size="small">
+        <:title>Small</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+    """
+  end
+
+  def get_example_8_code() do
+    """
+      <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
+        <:title>X Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-3" size="large" is_content_inside={false}>
+        <:title>Large</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-2" is_content_inside={false}>
+        <:title>Medium (Default)</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
+      <Accordion id="size-out-1" size="small" is_content_inside={false}>
+        <:title>Small</:title>
+        <:content>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+          Content <br>
+        </:content>
+      </Accordion>
     """
   end
 end
