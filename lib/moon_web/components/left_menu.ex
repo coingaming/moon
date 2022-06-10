@@ -78,6 +78,7 @@ defmodule MoonWeb.Components.LeftMenu do
               <Link route={Pages.ColoursPalettePage}>Colours Palette</Link>
               <Link route={Pages.TokensPage}>Tokens</Link>
               <Link route={Pages.IconsPage}>Icons</Link>
+              <Link route={Pages.CountryFlagsPage}>CountryFlags</Link>
               <Link route={Pages.TransformSvgPage}>Transform SVG</Link>
               <Accordion
                 id="left-menu-components"

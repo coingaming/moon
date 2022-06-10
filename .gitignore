@@ -38,3 +38,4 @@ node_modules
 #.tool-versions
 /js_deps
 *.log
+/.elixir_ls
