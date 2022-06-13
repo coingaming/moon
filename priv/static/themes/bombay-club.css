@@ -77,43 +77,43 @@
 --color--text: #FFFFFF;
 --color--background: #0B0D0E;
         
---color--krillin-10: #FFE4AD;
---color--krillin-100: #FFB319;
---color--chi-chi-10: #FFA7B2;
---color--chi-chi-100: #FF4E64;
---color--roshi-10: #B6F3D0;
---color--roshi-100: #0CD664;
---color--dodoria-10: #E99797;
---color--dodoria-100: #D33030;
---color--cell-10: #84DBAB;
---color--cell-100: #0AB758;
---color--raditz-10: #D9BFA4;
---color--raditz-100: #B3804A;
---color--whis-10: #87BADE;
---color--whis-100: #0F75BD;
---color--frieza-10: #B6A3E9;
---color--frieza-100: #5C33CF;
---color--nappa-10: #B8AAA7;
---color--nappa-100: #725550;
---color--popo-100: #000;
---color--piccolo-80: #CEB48D;
---color--piccolo-100: #CDAE7E;
---color--piccolo-120: #CDA770;
---color--hit-80: #48423C;
---color--hit-100: #3B3530;
---color--hit-120: #2D2824;
---color--goten-100: #090E15;
---color--goku-10: #484C51;
---color--goku-40: #2F3337;
---color--goku-80: #17191C;
---color--goku-100: #0B0D0E;
---color--gohan-10: #6E6863;
---color--gohan-40: #554F4A;
---color--gohan-80: #3A3631;
---color--gohan-100: #2D2925;
---color--beerus-100: #443F3C;
---color--bulma-100: #FFFFFF;
---color--trunks-100: #9A8565;
+--color--krillin-10: 255 228 173; /* #ffe4ad */
+--color--krillin-100: 255 179 25; /* #ffb319 */
+--color--chi-chi-10: 255 167 178; /* #ffa7b2 */
+--color--chi-chi-100: 255 78 100; /* #ff4e64 */
+--color--roshi-10: 182 243 208; /* #b6f3d0 */
+--color--roshi-100: 12 214 100; /* #0cd664 */
+--color--dodoria-10: 233 151 151; /* #e99797 */
+--color--dodoria-100: 211 48 48; /* #d33030 */
+--color--cell-10: 132 219 171; /* #84dbab */
+--color--cell-100: 10 183 88; /* #0ab758 */
+--color--raditz-10: 217 191 164; /* #d9bfa4 */
+--color--raditz-100: 179 128 74; /* #b3804a */
+--color--whis-10: 135 186 222; /* #87bade */
+--color--whis-100: 15 117 189; /* #0f75bd */
+--color--frieza-10: 182 163 233; /* #b6a3e9 */
+--color--frieza-100: 92 51 207; /* #5c33cf */
+--color--nappa-10: 184 170 167; /* #b8aaa7 */
+--color--nappa-100: 114 85 80; /* #725550 */
+--color--popo-100: 0 0 0; /* #000 */
+--color--piccolo-80: 206 180 141; /* #ceb48d */
+--color--piccolo-100: 205 174 126; /* #cdae7e */
+--color--piccolo-120: 205 167 112; /* #cda770 */
+--color--hit-80: 72 66 60; /* #48423c */
+--color--hit-100: 59 53 48; /* #3b3530 */
+--color--hit-120: 45 40 36; /* #2d2824 */
+--color--goten-100: 9 14 21; /* #090e15 */
+--color--goku-10: 72 76 81; /* #484c51 */
+--color--goku-40: 47 51 55; /* #2f3337 */
+--color--goku-80: 23 25 28; /* #17191c */
+--color--goku-100: 11 13 14; /* #0b0d0e */
+--color--gohan-10: 110 104 99; /* #6e6863 */
+--color--gohan-40: 85 79 74; /* #554f4a */
+--color--gohan-80: 58 54 49; /* #3a3631 */
+--color--gohan-100: 45 41 37; /* #2d2925 */
+--color--beerus-100: 68 63 60; /* #443f3c */
+--color--bulma-100: 255 255 255; /* #ffffff */
+--color--trunks-100: 154 133 101; /* #9a8565 */
 
 space: var(--base--space);
 font-size: var(--base--font-size);

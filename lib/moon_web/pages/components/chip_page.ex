@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
         <Heading size={32}>Chip</Heading>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Sizes" id="chip_1">
+          <ExampleAndCode title="Sizes" id="chip_1" is_gray_bg>
             <:example>
               <div class="flex justify-around w-full items-center">
                 <Chip size="small">Small</Chip>
@@ -99,18 +99,18 @@ defmodule MoonWeb.Pages.Components.ChipPage do
             <:code>{chip_1_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Active State" id="chip_2">
+          <ExampleAndCode title="Active State" id="chip_2" is_gray_bg>
             <:example>
               <div class="flex justify-around w-full items-center">
                 <Chip size="small" active>Small</Chip>
-                <Chip active>Medium (default)</Chip>
+                <Chip active is_stroke>Medium (default)</Chip>
               </div>
             </:example>
 
             <:code>{chip_2_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="IsStroke" id="chip_3">
+          <ExampleAndCode title="IsStroke" id="chip_3" is_gray_bg>
             <:example>
               <div class="flex justify-around w-full items-center">
                 <Chip size="small" is_stroke>Stroke on Hover</Chip>
@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
             <:code>{chip_3_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Icons" id="chip_4">
+          <ExampleAndCode title="Icons" id="chip_4" is_gray_bg>
             <:example>
               <TopToDown>
                 <div class="flex justify-around w-full items-center">
@@ -142,7 +142,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
             <:code>{chip_4_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Icons with isStroke" id="chip_5">
+          <ExampleAndCode title="Icons with isStroke" id="chip_5" is_gray_bg>
             <:example>
               <TopToDown>
                 <div class="flex justify-around w-full items-center">
@@ -198,8 +198,8 @@ defmodule MoonWeb.Pages.Components.ChipPage do
 
   def chip_2_code do
     """
-      <Chip size="small" active={true}>Small</Chip>
-      <Chip active={true}>Medium (default)</Chip>
+      <Chip size="small" active>Small</Chip>
+      <Chip active is_stroke>Medium (default)</Chip>
     """
   end
 
