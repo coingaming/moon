@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
 
         <!-- TODO: Replace with avatar -->
         <div
-          class="h-10 w-10 rounded flex items-center justify-center cursor-pointer relative text-sm text-gohan-100 bg-bulma-100"
+          class="h-10 w-10 rounded flex items-center justify-center cursor-pointer relative text-moon-14 text-gohan-100 bg-bulma-100"
           title="Profile"
         >
           <span>DN</span>

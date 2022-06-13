@@ -12,17 +12,17 @@ defmodule Moon.Components.Datepicker.Month do
   def render(assigns) do
     ~F"""
     <div>
-      <div class="mb-4 leading-4 text-center">
+      <div class="mb-4 text-center">
         {Timex.format!(@date, "%B %Y", :strftime)}
       </div>
 
-      <div class="flex mb-1 text-xs font-semibold text-center text-trunks-100">
+      <div class="flex mb-1 text-moon-12 font-semibold text-center text-trunks-100">
         <div :for={ch <- days_letters(@week_starts_on)} class="flex items-center justify-center w-8 h-8">
           {ch}
         </div>
       </div>
 
-      <div class="grid text-xs gap-y-1" style="grid-template-columns: repeat(7, minmax(2rem, 2rem));">
+      <div class="grid text-moon-12 gap-y-1" style="grid-template-columns: repeat(7, minmax(2rem, 2rem));">
         <div :for={_cell <- empty_cells(@date, @week_starts_on)} />
 
         <div

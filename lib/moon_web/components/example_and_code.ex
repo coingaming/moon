@@ -11,7 +11,6 @@ defmodule MoonWeb.Components.ExampleAndCode do
   data buttons, :list, default: ["preview", "code"]
   data selected_button, :string, default: "preview"
   prop title, :string, default: ""
-  prop is_gray_bg, :boolean, default: false
   slot example
   slot code
   slot state
@@ -21,16 +20,15 @@ defmodule MoonWeb.Components.ExampleAndCode do
     ~F"""
     <div class={"rounded p-0 mb-8", @class}>
       <PreviewCodeButton
-        class="justify-end"
         title={@title}
         selected_button={@selected_button}
         click="toggle"
       />
-      <div class="my-2 text-sm" :if={slot_assigned?(:note)}>
+      <div class="my-2 text-moon-14" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
       <Context get={theme_class: theme_class}>
-        <div class={"grid grid-cols-1 bg-gohan-100 rounded-md shadow", "bg-slate-200": @is_gray_bg}>
+        <div class="theme-moon-light p-4 flex bg-goku text-moon-14 rounded-moon-s-sm">
           <div class={"p-6", hidden: @selected_button == "code"}>
             <div class={"inline", theme_class}>
               <#slot name="example">Example not defined</#slot>
@@ -51,7 +49,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         :if={slot_assigned?(:state)}
       >
         <div><Label size="medium" class="bg-piccolo-100 mb-3">State</Label></div>
-        <pre class="text-xs break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
+        <pre class="text-moon-12 break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
       </div>
     </div>
     """

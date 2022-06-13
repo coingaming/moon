@@ -23,7 +23,7 @@ defmodule Moon.Components.Card do
         </div>
       </div>
 
-      <div class="mt-6 text-sm">
+      <div class="mt-6 text-moon-14">
         <#slot name="content" />
       </div>
     </div>

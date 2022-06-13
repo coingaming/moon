@@ -17,7 +17,7 @@ defmodule Moon.Components.Switcher do
       <button
         :for={item <- @items}
         class={
-          "px-2 py-1 text-sm leading-6 rounded",
+          "px-2 py-1 text-moon-14 rounded",
           "bg-piccolo-100 text-goten-100": item == @selected_item,
           "text-trunks-100": item != @selected_item
         }

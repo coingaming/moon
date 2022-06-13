@@ -94,7 +94,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         </Context>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
           <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}

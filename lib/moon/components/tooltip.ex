@@ -22,7 +22,7 @@ defmodule Moon.Components.Tooltip do
         {#match "top"}
           <div x-cloak x-show="tooltip" class="absolute left-0 top-0 right-0 flex flex-col items-center">
             <div class="-translate-y-full">
-              <div class="w-48 p-4 text-sm text-center bg-gohan-100 shadow rounded">
+              <div class="w-48 p-4 text-moon-14 text-center bg-gohan-100 shadow rounded">
                 {@text}
               </div>
               <div class="w-full overflow-hidden">
@@ -36,7 +36,7 @@ defmodule Moon.Components.Tooltip do
               <div class="p-1 overflow-hidden">
                 <div class="h-4 w-4 bg-gohan-100 -rotate-45 translate-x-1/2 shadow" />
               </div>
-              <div class="w-48 p-4 text-sm text-center bg-gohan-100 shadow rounded">
+              <div class="w-48 p-4 text-moon-14 text-center bg-gohan-100 shadow rounded">
                 {@text}
               </div>
             </div>
@@ -47,7 +47,7 @@ defmodule Moon.Components.Tooltip do
               <div class="w-full overflow-hidden">
                 <div class="h-3 w-3 mx-auto bg-gohan-100 -rotate-45 translate-y-1/2 shadow" />
               </div>
-              <div class="w-48 p-4 text-sm text-center bg-gohan-100 shadow rounded">
+              <div class="w-48 p-4 text-moon-14 text-center bg-gohan-100 shadow rounded">
                 {@text}
               </div>
             </div>
@@ -56,7 +56,7 @@ defmodule Moon.Components.Tooltip do
           <div x-cloak x-show="tooltip" class="absolute left-0 bottom-0 right-0">
             <div class="absolute -translate-x-full -translate-y-full">
               <div class="flex items-center top-0 right-0">
-                <div class="w-48 p-4 text-sm text-center bg-gohan-100 shadow rounded">
+                <div class="w-48 p-4 text-moon-14 text-center bg-gohan-100 shadow rounded">
                   {@text}
                 </div>
                 <div class="py-1 overflow-hidden">

@@ -89,7 +89,7 @@ defmodule Moon.Components.Datepicker do
 
       <:content>
         <div class={
-          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-sm z-10 mt-2",
+          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan-100 flex shadow-lg rounded text-moon-14 z-10 mt-2",
           hidden: !@show
         }>
           <!-- Ranges -->
@@ -116,7 +116,7 @@ defmodule Moon.Components.Datepicker do
               <div class="relative flex flex-col items-center">
                 <button
                   type="button"
-                  class="absolute leading-none left-6"
+                  class="absolute left-6"
                   :on-click="shift_months"
                   phx-value-months={-2}
                 >
@@ -138,7 +138,7 @@ defmodule Moon.Components.Datepicker do
               <div class="relative flex flex-col items-center">
                 <button
                   type="button"
-                  class="absolute leading-none right-6"
+                  class="absolute right-6"
                   :on-click="shift_months"
                   phx-value-months={2}
                 >
@@ -166,7 +166,7 @@ defmodule Moon.Components.Datepicker do
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@start_date_field}
-                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
@@ -177,7 +177,7 @@ defmodule Moon.Components.Datepicker do
                 <DateInput
                   :if={!@with_time}
                   field={@start_date_field}
-                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",
@@ -188,7 +188,7 @@ defmodule Moon.Components.Datepicker do
                 <DateTimeLocalInput
                   :if={@with_time}
                   field={@end_date_field}
-                  class="text-xs rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy, --:--",
                     "phx-hook": "Datepicker",
@@ -199,7 +199,7 @@ defmodule Moon.Components.Datepicker do
                 <DateInput
                   :if={!@with_time}
                   field={@end_date_field}
-                  class="text-xs rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
                   opts={
                     placeholder: "dd/mm/yyyy",
                     "phx-hook": "Datepicker",

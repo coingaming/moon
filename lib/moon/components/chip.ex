@@ -27,8 +27,8 @@ defmodule Moon.Components.Chip do
       class={
         "flex justify-center items-center gap-2 rounded relative active:scale-90 transition-all",
         "hover:text-bulma-100 font-semibold #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
-        "text-sm h-8 px-3 py-2 leading-4": @size == "small" && slot_assigned?(:default),
-        "text-sm h-10 px-4 py-2 leading-6": @size == "medium" && slot_assigned?(:default),
+        "text-moon-14 h-8 px-3 py-2": @size == "small" && slot_assigned?(:default),
+        "text-moon-14 h-10 px-4 py-2": @size == "medium" && slot_assigned?(:default),
         "p-1 h-8 w-8": @size == "small" && !slot_assigned?(:default),
         "p-2 h-10 w-10": @size == "medium" && !slot_assigned?(:default),
         "shadow-border": @active,

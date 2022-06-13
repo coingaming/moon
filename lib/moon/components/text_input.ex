@@ -59,8 +59,8 @@ defmodule Moon.Components.TextInput do
       <Surface.Components.Form.TextInput
         class={
           Moon.Components.FieldBorder.get_default_class(),
-          "h-10 text-sm px-3": @size == "medium",
-          "h-12 text-base px-4": @size == "large",
+          "h-10 text-moon-14 px-3": @size == "medium",
+          "h-12 text-moon-16 px-4": @size == "large",
           "pl-11": slot_assigned?(:left_icon),
           "pr-11": slot_assigned?(:right_icon),
           "border-chi-chi-100": @error,

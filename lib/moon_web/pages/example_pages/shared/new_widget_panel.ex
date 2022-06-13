@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
         <div class="flex flex-wrap items-center gap-1 mb-6">
           {#for category <- @categories}
             <Button
-              class={"p-2 text-sm font-normal #{active_btn_class(category.name == @active_category.name)}"}
+              class={"p-2 text-moon-14 font-normal #{active_btn_class(category.name == @active_category.name)}"}
               on_click="select_category"
               value_name="category_name"
               value={category.name}
@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
                 value_name="widget"
                 value={"#{@active_category.name}:#{widget_kind}"}
               />
-              <div class="mt-6 text-sm font-semibold text-piccolo-100">
+              <div class="mt-6 text-moon-14 font-semibold text-piccolo-100">
                 {widget_kind}
               </div>
             </div>

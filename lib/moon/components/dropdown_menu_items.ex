@@ -26,7 +26,7 @@ defmodule Moon.Components.DropdownMenuItem do
 
   def render(assigns) do
     ~F"""
-    <div class="p-3 text-sm rounded cursor-pointer hover:bg-goku-100">
+    <div class="p-3 text-moon-14 rounded cursor-pointer hover:bg-goku-100">
       <#slot />
     </div>
     """

@@ -4,17 +4,15 @@ defmodule MoonWeb.Components.PreviewCodeButton do
   use Moon.StatelessComponent
 
   alias Moon.Components.Button
-  alias Moon.Components.Heading
 
   prop title, :string, default: ""
   prop selected_button, :string, default: "preview"
   prop click, :event, required: true
-  prop class, :string
 
   def render(assigns) do
     ~F"""
-    <div class={"flex justify-between items-center my-4 #{@class}"}>
-      <Heading class="items-center" size={20} is_regular>{@title}</Heading>
+    <div class="flex flex-row items-center justify-between">
+      <h3 class="text-moon-24 font-semibold">{@title}</h3>
       <div class="flex bg-beerus-100 p-1 rounded place-content-center">
         <Button
           class={"px-2 #{if @selected_button == "preview", do: "bg-gohan-100"}"}
