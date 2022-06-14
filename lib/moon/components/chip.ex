@@ -13,8 +13,8 @@ defmodule Moon.Components.Chip do
   prop on_click, :event
   prop value, :string
   prop active, :boolean, default: false
-  prop active_class, :string, default: "text-bulma-100 bg-goku-120"
-  prop inactive_class, :string, default: "text-trunks-100 bg-gohan-100"
+  prop active_class, :string, default: ""
+  prop inactive_class, :string, default: ""
   prop testid, :string
   prop size, :string, values: ["small", "medium"], default: "medium"
   prop is_stroke, :boolean, default: false
@@ -25,13 +25,12 @@ defmodule Moon.Components.Chip do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 rounded relative active:scale-90 transition-all",
-        "hover:text-bulma-100 font-semibold #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
-        "text-moon-14 h-8 px-3 py-2": @size == "small" && slot_assigned?(:default),
-        "text-moon-14 h-10 px-4 py-2": @size == "medium" && slot_assigned?(:default),
-        "p-1 h-8 w-8": @size == "small" && !slot_assigned?(:default),
-        "p-2 h-10 w-10": @size == "medium" && !slot_assigned?(:default),
-        "shadow-border": @active,
+        "flex justify-center items-center gap-2 rounded relative active:scale-90 transition-all text-moon-14",
+        "hover:text-piccolo-100 hover:bg-piccolo-100 hover:bg-opacity-12 #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
+        set_padding(@size, @left_icon, @right_icon, @icon_only),
+        "h-8 w-8": @size == "small" && !slot_assigned?(:default),
+        "h-10 w-10": @size == "medium" && !slot_assigned?(:default),
+        "shadow-border": @is_stroke && @active,
         "hover:shadow-border": @is_stroke
       }
       data-size={@size}
@@ -48,6 +47,22 @@ defmodule Moon.Components.Chip do
     """
   end
 
+  defp set_padding(size, left_icon, right_icon, icon_only) do
+    if size == "medium" do
+      if icon_only do
+        "p-2"
+      else
+        "py-2 #{if left_icon, do: "pl-2", else: "pl-3"} #{if right_icon, do: "pr-2", else: "pr-3"}"
+      end
+    else
+      if icon_only do
+        "p-1"
+      else
+        "py-1 #{if left_icon, do: "pl-1", else: "pl-2"} #{if right_icon, do: "pr-1", else: "pr-2"}"
+      end
+    end
+  end
+
   defp phx_val_tag(nil, _), do: []
 
   defp phx_val_tag(name, value) do
@@ -59,6 +74,9 @@ defmodule Moon.Components.Chip do
   defp icon_class("small"), do: "h-4 w-4"
   defp icon_class("medium"), do: "h-6 w-6"
 
-  defp active_btn_class(true, active_class, _), do: active_class
-  defp active_btn_class(false, _, inactive_class), do: inactive_class
+  defp active_btn_class(true, active_class, _),
+    do: "text-piccolo-100 bg-piccolo-100 bg-opacity-12 #{active_class}"
+
+  defp active_btn_class(false, _, inactive_class),
+    do: "text-bulma-100 bg-gohan-100 #{inactive_class}"
 end

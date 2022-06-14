@@ -69,6 +69,18 @@ const toCamel = (s: string) => {
 
 const toCapitalisedCamel = (s: string) => capitalizeFirstLetter(toCamel(s));
 
+const hexToRgb = (hex: string) => {
+  const hexValue = hex.trim().padEnd(7, "0");
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexValue);
+  if (result) {
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+    return r + " " + g + " " + b; //return 23,14,45 -> reformat if needed
+  }
+  return null;
+};
+
 const writeTheme = (jsTheme: any, exThemePath: string) => {
   const exObj: any = jsKeysToElixirKeys(jsTheme);
 
@@ -199,8 +211,8 @@ ${Object.keys(exObj.color)
           `--color--${colorName.replace("_", "-")}-${colorShade}: ${s(
             exObj.color[colorName][colorShade].startsWith("rgba")
               ? exObj.color[colorName][colorShade]
-              : exObj.color[colorName][colorShade].toUpperCase()
-          )};`
+              : hexToRgb(exObj.color[colorName][colorShade].toUpperCase())
+          )}; /* ${exObj.color[colorName][colorShade]} */`
       )
       .join("\n")
   )
