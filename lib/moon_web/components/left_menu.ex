@@ -3,7 +3,6 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar

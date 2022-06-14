@@ -2,8 +2,6 @@ defmodule Moon.Components.Sidebar do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Assets.Icons.IconChevronLeftRounded
-  alias Moon.Assets.Icons.IconChevronRightRounded
 
   slot full_logo
   slot short_logo
