@@ -1,3 +1,10 @@
+## [2.11.5](https://github.com/coingaming/moon/compare/v2.11.4...v2.11.5) (2022-06-14)
+
+
+### Bug Fixes
+
+* typography on entire project ([#288](https://github.com/coingaming/moon/issues/288)) ([cc8f527](https://github.com/coingaming/moon/commit/cc8f5278f8ea270bfa1fa1b1e74c40ffe00f9a0b))
+
 ## [2.11.4](https://github.com/coingaming/moon/compare/v2.11.3...v2.11.4) (2022-06-10)
 
 
