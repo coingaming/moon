@@ -1,3 +1,10 @@
+## [2.11.6](https://github.com/coingaming/moon/compare/v2.11.5...v2.11.6) (2022-06-14)
+
+
+### Bug Fixes
+
+* align the chip component [MDS-109] ([#289](https://github.com/coingaming/moon/issues/289)) ([31274eb](https://github.com/coingaming/moon/commit/31274eb2f0770a854d29e74f787ce3b9b2f8b905))
+
 ## [2.11.5](https://github.com/coingaming/moon/compare/v2.11.4...v2.11.5) (2022-06-14)
 
 
