@@ -11,7 +11,8 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   prop select_id, :string
   prop option, :any
   prop size, :string
-  prop background_color_class, :string, default: "hit-100"
+  prop background_color_class, :string, default: "bulma-100"
+  prop text_color_class, :string, default: "gohan-100"
 
   def render(assigns) do
     ~F"""
@@ -19,7 +20,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
       <Label
         class={SelectHelpers.innerlabel_font_class(@size)}
         background_color={@background_color_class}
-        color="text-trunks-100"
+        color={@text_color_class}
       >
         {@option.label}
         <:right_icon>

@@ -16,7 +16,7 @@ defmodule Moon.Components.Select.SelectedValue.Container do
     ~F"""
     {#if @is_icon or @is_prompt}
       <div
-        class={"grid grid-rows-2": @is_icon}
+        class={"grid grid-rows-1": @is_icon}
         style={get_style("grid-auto-flow": if(@is_icon, do: "column"))}
       >
         {#if @is_icon}
