@@ -32,11 +32,47 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     ]
   end
 
+  def available_permissions_with_left_icon() do
+    [
+      %{value: 1, label: "Read", left_icon: [Moon.Icon, %{name: "generic_user"}]},
+      %{value: 2, label: "Write", left_icon: [Moon.Icon, %{name: "generic_star"}]},
+      %{value: 3, label: "Update", left_icon: [Moon.Icon, %{name: "text_increase_indent"}]},
+      %{value: 4, label: "Delete", left_icon: [Moon.Icon, %{name: "generic_edit"}]},
+      %{value: 5, label: "Nuclear war", left_icon: [Moon.Icon, %{name: "files_file"}]}
+    ]
+  end
+
   def available_roles() do
     [
-      %{value: 1, label: "User", icon: "generic_user"},
-      %{value: 2, label: "Editor", icon: "generic_edit"},
-      %{value: 3, label: "Admin", icon: "generic_star"}
+      %{value: 1, label: "User"},
+      %{value: 2, label: "Editor"},
+      %{value: 3, label: "Admin"}
+    ]
+  end
+
+  def available_roles_with_left_icon() do
+    [
+      %{value: 1, label: "User", left_icon: [Moon.Icon, %{name: "generic_user"}]},
+      %{value: 2, label: "Editor", left_icon: [Moon.Icon, %{name: "generic_edit"}]},
+      %{value: 3, label: "Admin", left_icon: [Moon.Icon, %{name: "generic_star"}]}
+    ]
+  end
+
+  def available_roles_with_right_icon() do
+    [
+      %{value: 1, label: "User", right_icon: [Moon.Icon, %{name: "generic_user"}]},
+      %{value: 2, label: "Editor", right_icon: [Moon.Icon, %{name: "generic_edit"}]},
+      %{value: 3, label: "Admin", right_icon: [Moon.Icon, %{name: "generic_star"}]}
+    ]
+  end
+
+  def available_roles_with_left_icon_flag() do
+    [first, second, third] = Moon.Helpers.CountryFlags.list_all() |> Enum.take(3)
+
+    [
+      %{value: 1, label: "User", left_icon: [Moon.CountryFlag, %{name: first}]},
+      %{value: 2, label: "Editor", left_icon: [Moon.CountryFlag, %{name: second}]},
+      %{value: 3, label: "Admin", left_icon: [Moon.CountryFlag, %{name: third}]}
     ]
   end
 
