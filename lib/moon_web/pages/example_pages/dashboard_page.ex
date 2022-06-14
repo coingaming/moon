@@ -124,11 +124,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               Cancel
             </Button>
 
-            <Button
-              on_click="save_page_changes"
-              variant="primary"
-              class={"p-3 #{hidden_class_if(!@edited)}"}
-            >
+            <Button on_click="save_page_changes" variant="primary" class={"p-3 #{hidden_class_if(!@edited)}"}>
               Save
             </Button>
 

@@ -114,12 +114,7 @@ defmodule Moon.Components.Datepicker do
             <div class="flex grow space-x-6">
               <!-- First Month -->
               <div class="relative flex flex-col items-center">
-                <button
-                  type="button"
-                  class="absolute left-6"
-                  :on-click="shift_months"
-                  phx-value-months={-2}
-                >
+                <button type="button" class="absolute left-6" :on-click="shift_months" phx-value-months={-2}>
                   <IconChevronLeft class="block" font_size="1rem" />
                 </button>
 
@@ -136,12 +131,7 @@ defmodule Moon.Components.Datepicker do
 
               <!-- Second Month -->
               <div class="relative flex flex-col items-center">
-                <button
-                  type="button"
-                  class="absolute right-6"
-                  :on-click="shift_months"
-                  phx-value-months={2}
-                >
+                <button type="button" class="absolute right-6" :on-click="shift_months" phx-value-months={2}>
                   <IconChevronRight class="block" font_size="1rem" />
                 </button>
 

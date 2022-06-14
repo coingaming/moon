@@ -22,7 +22,10 @@ defmodule Moon.Components.Datepicker.Month do
         </div>
       </div>
 
-      <div class="grid text-moon-12 gap-y-1" style="grid-template-columns: repeat(7, minmax(2rem, 2rem));">
+      <div
+        class="grid text-moon-12 gap-y-1"
+        style="grid-template-columns: repeat(7, minmax(2rem, 2rem));"
+      >
         <div :for={_cell <- empty_cells(@date, @week_starts_on)} />
 
         <div

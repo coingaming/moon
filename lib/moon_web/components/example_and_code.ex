@@ -19,11 +19,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   def render(assigns) do
     ~F"""
     <div class={"rounded p-0 mb-8", @class}>
-      <PreviewCodeButton
-        title={@title}
-        selected_button={@selected_button}
-        click="toggle"
-      />
+      <PreviewCodeButton title={@title} selected_button={@selected_button} click="toggle" />
       <div class="my-2 text-moon-14" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
