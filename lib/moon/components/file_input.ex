@@ -50,13 +50,13 @@ defmodule Moon.Components.FileInput do
   def render(assigns) do
     ~F"""
     <div class="relative">
-      {live_file_input(@conf, class: "opacity-0 absolute top-0 right-0 h-full w-full")}
+      {live_file_input(@conf, class: "opacity-0 absolute top-0 right-0 h-full w-full z-40")}
       <span :if={@label} class="block mb-2">{@label}</span>
       {#if slot_assigned?(:default)}
         <#slot name="default" />
       {/if}
       {#if !slot_assigned?(:default)}
-        <Button>
+        <Button class="z-30">
           {@placeholder}
           <:right_icon_slot><IconUpload /></:right_icon_slot>
         </Button>
