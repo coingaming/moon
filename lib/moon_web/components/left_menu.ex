@@ -1,7 +1,9 @@
 defmodule MoonWeb.Components.LeftMenu.Link do
   @moduledoc false
   use MoonWeb, :stateless_component
+
   alias Moon.Components.Link
+
   prop route, :any
   slot default
 
@@ -42,6 +44,7 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Surface.Components.Context
   alias __MODULE__.Link
   alias Moon.Components.Link, as: MoonLink
+  alias MoonWeb.Components.SidebarLink
 
   prop theme_name, :any
   prop uri, :any
