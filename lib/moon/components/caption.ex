@@ -10,7 +10,7 @@ defmodule Moon.Components.Caption do
   def render(assigns) do
     ~F"""
     <span class={
-      "text-[10px] leading-4 font-semibold uppercase tracking-[1px]",
+      "text-moon-10-caption font-semibold uppercase",
       @color_class,
       @text_align_class
     }>

@@ -17,15 +17,18 @@ defmodule Moon.Components.LineChartCard do
     ~F"""
     <div class="bg-gohan-100 p-6 rounded-sm">
       <div class="flex items-center mt-0.5 mb-6">
-        <div class="grow text-xl text-bulma-100">
+        <div class="grow text-moon-20 text-bulma-100">
           {@title}
         </div>
 
         <div class="flex-none" :if={length(@select_options) > 0}>
-          <Select options={@select_options} class="pl-2 rounded-sm text-xs text-trunks-100 bg-goku-100" />
+          <Select
+            options={@select_options}
+            class="pl-2 rounded-sm text-moon-12 text-trunks-100 bg-goku-100"
+          />
         </div>
 
-        <button type="button" class="leading-none flex-none ml-3 p-2">
+        <button type="button" class="flex-none ml-3 p-2">
           <IconRefresh class="block text-trunks-100" />
         </button>
       </div>
@@ -44,8 +47,8 @@ defmodule Moon.Components.LineChartCard do
             :on-click="toggle_filter"
             phx-value-name={filter.data_key}
           >
-            <p class="text-trunks-100 text-xs">{filter.label}</p>
-            <p class="text-bulma-100 text-xl">{filter.value}</p>
+            <p class="text-trunks-100 text-moon-12">{filter.label}</p>
+            <p class="text-bulma-100 text-moon-20">{filter.value}</p>
           </button>
         </div>
       {/if}

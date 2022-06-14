@@ -107,9 +107,9 @@ defmodule Moon.Components.Select.MultiSelect do
   prop required, :boolean
   prop class, :string
   prop popover_placement, :string, default: "bottom-start"
-  prop prompt_text_size_class, :string, default: "text-xs"
+  prop prompt_text_size_class, :string, default: "text-moon-12"
   prop prompt_text_color_class, :string, default: "text-trunks-100"
-  prop label_text_size_class, :string, default: "text-sm"
+  prop label_text_size_class, :string, default: "text-moon-14"
   prop label_text_color_class, :string, default: "white-100"
   prop label_background_color_class, :string, default: "hit-100"
 

@@ -70,7 +70,7 @@ defmodule Moon.Components.Dialog.Modal do
           <PullAside class="py-4 px-6">
             <:left>
               {#if slot_assigned?(:title)}
-                <div class="text-lg font-medium">
+                <div class="text-moon-18 font-semibold">
                   <#slot name="title" />
                 </div>
               {/if}

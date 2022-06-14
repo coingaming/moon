@@ -103,10 +103,10 @@ defmodule Moon.Components.Accordion do
 
   defp font_class(size) do
     case size do
-      "small" -> "uppercase text-[10px]"
-      "large" -> "text-sm"
-      "xlarge" -> "text-base"
-      _ -> "text-xs"
+      "small" -> "uppercase text-moon-10"
+      "large" -> "text-moon-14"
+      "xlarge" -> "text-moon-16"
+      _ -> "text-moon-12"
     end
   end
 end

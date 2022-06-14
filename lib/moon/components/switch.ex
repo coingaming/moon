@@ -10,10 +10,10 @@ defmodule Moon.Components.Switch.Caption do
   def render(assigns) do
     ~F"""
     <span class={
-      "leading-none transition-colors duration-200 ease-in-out",
-      "text-xxxs": @size == "small",
-      "text-xxs": @size == "medium",
-      "text-xs": @size == "large",
+      "transition-colors duration-200 ease-in-out",
+      "text-moon-9": @size == "small",
+      "text-moon-10": @size == "medium",
+      "text-moon-12": @size == "large",
       "text-bulma-100": @active,
       "text-trunks-100": !@active
     }>

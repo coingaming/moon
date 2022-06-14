@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <Sections class={"py-6 text-sm w-60 #{@class} #{opacity_class(@reduced_opacity)}"}>
+    <Sections class={"py-6 text-moon-14 w-60 #{@class} #{opacity_class(@reduced_opacity)}"}>
       <div :for={segment <- @segments}>
         <div class="px-4 py-2 mx-2 mb-2 text-trunks-100">
           {segment.title} • {segment.count}

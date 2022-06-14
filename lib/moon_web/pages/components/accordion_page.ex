@@ -100,7 +100,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="accordion-1" is_gray_bg>
+          <ExampleAndCode title="Default" id="accordion-1">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="deposits-and-withdrawals-1">
@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_1_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Open by default" id="accordion-2" is_gray_bg>
+          <ExampleAndCode title="Open by default" id="accordion-2">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="deposits-and-withdrawals-2" open_by_default>
@@ -142,7 +142,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_2_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Without button" id="accordion-3" is_gray_bg>
+          <ExampleAndCode title="Without button" id="accordion-3">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="deposits-and-withdrawals-3" with_button={false}>
@@ -163,7 +163,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_3_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Disable open" id="accordion-4" is_gray_bg>
+          <ExampleAndCode title="Disable open" id="accordion-4">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="deposits-and-withdrawals-4" disable_open>
@@ -184,7 +184,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_4_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Content outside" id="accordion-5" is_gray_bg>
+          <ExampleAndCode title="Content outside" id="accordion-5">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="basket-items" open_by_default is_content_inside={false}>
@@ -205,7 +205,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_5_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Additional controls" id="accordion-6" is_gray_bg>
+          <ExampleAndCode title="Additional controls" id="accordion-6">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="customer-support">
@@ -232,7 +232,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_6_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Sizes" id="accordion-7" is_gray_bg>
+          <ExampleAndCode title="Sizes" id="accordion-7">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="size-4" size="xlarge">
@@ -292,7 +292,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             <:code>{get_example_7_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode title="Sizes: content outside" id="accordion-8" is_gray_bg>
+          <ExampleAndCode title="Sizes: content outside" id="accordion-8">
             <:example>
               <div class="flex flex-col gap-4">
                 <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
@@ -354,7 +354,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         </Context>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">Props</div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
           <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}

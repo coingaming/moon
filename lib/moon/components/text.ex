@@ -15,18 +15,18 @@ defmodule Moon.Components.Text do
     <div
       class={
         "#{@class}",
-        "text-xs leading-4": @size == 10,
-        "text-sm leading-4": @size == 12,
-        "text-sm leading-5": @size == 14,
-        "text-base leading-6": @size == 16,
-        "text-lg leading-7": @size == 18,
-        "text-xl leading-7": @size == 20,
-        "text-2xl leading-8": @size == 24,
-        "text-3xl leading-10": @size == 32,
-        "text-4xl leading-10": @size == 48,
-        "text-5xl leading-10": @size == 56,
-        "text-6xl leading-10": @size == 64,
-        "text-7xl leading-10": @size == 72,
+        "text-moon-10": @size == 10,
+        "text-moon-12": @size == 12,
+        "text-moon-14": @size == 14,
+        "text-moon-16": @size == 16,
+        "text-moon-18": @size == 18,
+        "text-moon-20": @size == 20,
+        "text-moon-24": @size == 24,
+        "text-moon-32": @size == 32,
+        "text-moon-48": @size == 48,
+        "text-moon-56": @size == 56,
+        "text-moon-64": @size == 64,
+        "text-moon-72": @size == 72,
         "font-semibold": @is_bold == true
       }
       style={get_style(@style, color: @color)}

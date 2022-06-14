@@ -168,7 +168,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
         </Context>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
           <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}

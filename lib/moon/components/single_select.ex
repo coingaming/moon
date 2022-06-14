@@ -48,7 +48,7 @@ defmodule Moon.Components.SingleSelect do
       >
         {#for option <- @options}
           <li
-            class="relative p-3 py-2 pl-3 text-sm leading-6 rounded-sm cursor-pointer text-bulma-100 hover:bg-goku-100"
+            class="relative p-3 py-2 pl-3 text-moon-14 rounded-sm cursor-pointer text-bulma-100 hover:bg-goku-100"
             role="option"
             :on-click={select_option(@id, @on_select, @target, option.value)}
           >

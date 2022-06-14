@@ -60,7 +60,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
                 <TextInput
                   field={:title}
                   value={@save_segment_form.title}
-                  class="w-full bg-goku-80 h-10 text-3xl font-bold"
+                  class="w-full bg-goku-80 h-10 text-moon-32 font-semibold"
                 />
               </div>
               <Button
