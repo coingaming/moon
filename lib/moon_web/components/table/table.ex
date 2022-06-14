@@ -20,7 +20,7 @@ defmodule MoonWeb.Components.Table.Table do
                 <tr>
                   {#for col <- @cols}
                     <th
-                      class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      class="px-4 py-3 text-left text-moon-12 font-semibold text-gray-500 uppercase tracking-wider"
                       style="min-width: 200px"
                       data-testid={"sort-column-#{col.name}"}
                     >
@@ -37,7 +37,10 @@ defmodule MoonWeb.Components.Table.Table do
                   >
                     {#for {_, col_index} <- Enum.with_index(@cols)}
                       <td
-                        class={"px-4 py-4 whitespace-nowrap text-sm text-left", "text-gray-900, font-medium": col_index == 0}
+                        class={
+                          "px-4 py-4 whitespace-nowrap text-moon-14 text-left",
+                          "text-gray-900, font-semibold": col_index == 0
+                        }
                         data-testid={"row-#{row_index}-col-#{col_index}"}
                       >
                         <#slot name="cols" index={col_index} :args={item: item} />

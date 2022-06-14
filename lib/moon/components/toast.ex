@@ -40,7 +40,7 @@ defmodule Moon.Components.Toast do
         <IconSnackbarSuccess :if={@variant == "success"} class="block w-5 h-5" font_size="1.25rem" />
       </div>
 
-      <div class="flex justify-between flex-1 text-sm">
+      <div class="flex justify-between flex-1 text-moon-14">
         <p class="flex-1 text-gray-900">
           {@message}
         </p>

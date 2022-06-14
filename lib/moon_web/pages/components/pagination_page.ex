@@ -198,7 +198,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
             <:example>
               <TopToDown>
                 <div class="flex flex-wrap items-center">
-                  <div class="w-1/4 mb-4 text-xs">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
+                  <div class="w-1/4 mb-4 text-moon-12">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
 
                   <div class="w-3/4">
                     <Pagination
@@ -219,7 +219,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         </Context>
 
         <div>
-          <div class="text-bulma-100 items-center text-xl leading-7 font-normal my-4">TabLink Props Tabs</div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
           <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
@@ -303,7 +303,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
       alias Moon.Components.Pagination
 
       <div class="flex flex-wrap items-center">
-        <div class="w-1/4 mb-4 text-xxs">
+        <div class="w-1/4 mb-4 text-moon-10">
           { side_text(@page_number, @per_page, @total_entries) }
         </div>
 

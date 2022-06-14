@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
       </Form>
 
       <:content>
-        <div class="w-128 max-w-md">
+        <div class="w-full max-w-md">
           <SearchResults id="search" search_text={@search_map.search_text} />
         </div>
       </:content>

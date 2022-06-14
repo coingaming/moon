@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
                 <div class="flex grow justify-center items-center">
                   <CountryFlag name={country_flag_name} class="h-8 w-8" />
                 </div>
-                <h3 class="text-xs mx-2 mb-2 text-trunks-100" title={country_flag_name}>{country_flag_name}</h3>
+                <h3 class="text-moon-12 mx-2 mb-2 text-trunks-100" title={country_flag_name}>{country_flag_name}</h3>
               </div>
             {/for}
           </div>

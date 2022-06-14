@@ -23,7 +23,7 @@ defmodule MoonWeb.Components.LeftMenu.Link do
 
   def get_class() do
     "block text-bulma-100 hover:text-gohan-100 hover:bg-trunks-100 px-3 py-2 w-min whitespace-nowrap
-            leading-7 group w-full flex items-center py-2 rounded transition-colors ease-in-out duration-150 cursor-pointer"
+            group w-full flex items-center py-2 rounded transition-colors ease-in-out duration-150 cursor-pointer"
   end
 end
 
@@ -64,7 +64,7 @@ defmodule MoonWeb.Components.LeftMenu do
       <:menu>
         <nav class="mt-5">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
-            <TopToDown class="p-4 text-lg">
+            <TopToDown class="p-4 text-moon-18">
               <MoonLink
                 to="/"
                 class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"

@@ -72,7 +72,7 @@ defmodule Moon.BackofficeComponents.Table do
         </LeftToRight>
       </div>
       <div class="w-full overflow-x-scroll">
-        <table class="text-sm border-collapse border-t border-beerus-100">
+        <table class="text-moon-14 border-collapse border-t border-beerus-100">
           <thead>
             <tr>
               <!-- This is used to render overlay on top of a row -->
@@ -140,7 +140,7 @@ defmodule Moon.BackofficeComponents.Table do
 
     ~F"""
     <div class={
-      "w-64 px-1 py-2 text-trunks-100 text-xs font-normal",
+      "w-64 px-1 py-2 text-trunks-100 text-moon-12 font-normal",
       "text-left": align_left,
       "text-right": not align_left
     }>
@@ -152,7 +152,7 @@ defmodule Moon.BackofficeComponents.Table do
             "flex-row-reverse": not align_left
           }
         >
-          <div class="text-xs font-normal mr-2">{col.label}</div>
+          <div class="text-moon-12 font-normal mr-2">{col.label}</div>
           {#case column_sort_order(col.field, @sort_by)}
             {#match :asc}
               <IconArrowLDown font_size="1.2rem" />
@@ -172,7 +172,7 @@ defmodule Moon.BackofficeComponents.Table do
   end
 
   defp render_field(value, type, assigns) do
-    base_classes = "min-w-64 max-w-full px-4 py-4.5"
+    base_classes = "min-w-64 max-w-full p-4"
 
     case type do
       :brand ->
@@ -197,10 +197,10 @@ defmodule Moon.BackofficeComponents.Table do
       :datetime_relative ->
         ~F"""
         <div class="flex flex-col justify-around h-full min-w-64 max-w-full px-4">
-          <div class="leading-6">
+          <div>
             {value |> Timex.format!("%b %d, %Y, %H:%M:%S", :strftime)}
           </div>
-          <div class="text-xs text-trunks-100">
+          <div class="text-moon-12 text-trunks-100">
             {value |> Relative.format!("{relative}")}
           </div>
         </div>

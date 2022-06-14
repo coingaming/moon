@@ -14,7 +14,7 @@ defmodule Moon.Components.Calendar.Week do
     >
       <div :for={day <- week_days(@date, @week_starts_on)} class="relative rounded-lg bg-gohan-100">
         <div class={
-          "absolute text-xxs md:text-base lg:text-lg leading-none top-2 right-3",
+          "absolute text-moon-10 md:text-moon-16 lg:text-moon-18 top-2 right-3",
           "text-piccolo-100": Timex.to_date(day) == Timex.today()
         }>
           {day_label(day)}

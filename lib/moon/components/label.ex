@@ -17,7 +17,7 @@ defmodule Moon.Components.Label do
   def render(assigns) do
     ~F"""
     <span class={
-      "flex items-center align-middle leading-4",
+      "flex items-center align-middle",
       @border_radius_class,
       @class,
       set_letter_spacing(@size),
@@ -80,13 +80,13 @@ defmodule Moon.Components.Label do
   defp set_font_size(size, is_uppercase) do
     if is_uppercase do
       case size do
-        "twoxsmall" -> "text-[9px]"
-        _ -> "text-[10px]"
+        "twoxsmall" -> "text-moon-9"
+        _ -> "text-moon-10"
       end
     else
       case size do
-        "twoxsmall" -> "text-[10px]"
-        _ -> "text-[12px]"
+        "twoxsmall" -> "text-moon-10"
+        _ -> "text-moon-12"
       end
     end
   end

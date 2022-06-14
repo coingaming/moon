@@ -119,16 +119,12 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
 
             <Button
               on_click="discard_page_changes"
-              class={"p-3 leading-none rounded border-beerus-100 #{hidden_class_if(!@edited)}"}
+              class={"p-3 rounded border-beerus-100 #{hidden_class_if(!@edited)}"}
             >
               Cancel
             </Button>
 
-            <Button
-              on_click="save_page_changes"
-              variant="primary"
-              class={"p-3 leading-none #{hidden_class_if(!@edited)}"}
-            >
+            <Button on_click="save_page_changes" variant="primary" class={"p-3 #{hidden_class_if(!@edited)}"}>
               Save
             </Button>
 
@@ -206,14 +202,14 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           <div class="flex p-6 rounded bg-gohan-100">
             <div class="flex overflow-x-scroll no-scrollbar">
               {#for metric <- @page_metrics}
-                <div class="shrink-0 p-3 mr-4 border-r pl-7 border-beerus-100 w-50">
-                  <p class="text-xs text-trunks-100">{metric.name}</p>
+                <div class="shrink-0 p-3 mr-4 border-r pl-7 border-beerus-100 w-48">
+                  <p class="text-moon-12 text-trunks-100">{metric.name}</p>
                   <div class="flex gap-x-0.5 items-start">
-                    <div class="text-xl text-bulma-100">
+                    <div class="text-moon-20 text-bulma-100">
                       {metric.amount}
                     </div>
                     <div class={
-                      "text-sm",
+                      "text-moon-14",
                       "text-roshi-100": metric.change > 0,
                       "text-chi-chi-100": metric.change <= 0
                     }>
@@ -224,7 +220,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
               {/for}
             </div>
 
-            <div class="flex items-center justify-center w-50">
+            <div class="flex items-center justify-center w-48">
               <ContentFilter
                 filter_name="Metric"
                 left_icon="icon_plus"

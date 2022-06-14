@@ -14,7 +14,7 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   def render(assigns) do
     ~F"""
     <div class={
-      "relative rounded bg-#{@background_color} px-3 text-sm text-bulma-100 leading-6 cursor-pointer hover:bg-goku-120",
+      "relative rounded bg-#{@background_color} px-3 text-moon-14 text-bulma-100 cursor-pointer hover:bg-goku-120",
       "py-2": @size == "medium",
       "py-3": @size == "large",
       "pl-10": @size == "medium" and slot_assigned?(:left_icon),

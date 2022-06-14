@@ -19,9 +19,9 @@ defmodule Moon.Components.SelectTrigger do
     <button
       class={
         "w-full text-left border border-solid rounded border-beerus-100 bg-gohan-100 flex items-center focus:border-piccolo-100 active:border-piccolo-100 #{@class}",
-        "text-sm h-10 leading-4 px-3": @size == "md",
-        "text-base h-12 leading-6 px-4": @size == "lg",
-        "text-base h-14 leading-6 px-4": @size == "xl",
+        "text-moon-14 h-10 px-3": @size == "md",
+        "text-moon-16 h-12 px-4": @size == "lg",
+        "text-moon-16 h-14 px-4": @size == "xl",
         "text-trunks-100": is_nil(@selected_option),
         "text-bulma-100": !is_nil(@selected_option)
       }

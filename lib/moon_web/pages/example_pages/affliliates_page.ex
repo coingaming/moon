@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
                 <TextInput
                   field={:title}
                   value={@save_segment_form.title}
-                  class="mt-2 w-full bg-goku-80 h-10 text-3xl font-bold"
+                  class="mt-2 w-full bg-goku-80 h-10 text-moon-32 font-semibold"
                 />
               </div>
               <Button

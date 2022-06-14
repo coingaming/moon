@@ -30,12 +30,12 @@ defmodule Moon.Components.Avatar do
       class={
         "rounded-sm bg-cover justify-center flex font-semibold items-center
                overflow-hidden uppercase relative #{@class}",
-        "text-xs h-6 w-6": @size == "xsmall",
-        "text-sm h-8 w-8": @size == "small",
-        "text-base h-10 w-10": @size == "medium",
-        "text-lg h-12 w-12": @size == "large",
-        "text-xl h-14 w-14": @size == "xlarge",
-        "text-2xl h-16 w-16": @size == "twoxlarge"
+        "text-moon-12 h-6 w-6": @size == "xsmall",
+        "text-moon-14 h-8 w-8": @size == "small",
+        "text-moon-16 h-10 w-10": @size == "medium",
+        "text-moon-18 h-12 w-12": @size == "large",
+        "text-moon-20 h-14 w-14": @size == "xlarge",
+        "text-moon-24 h-16 w-16": @size == "twoxlarge"
       }
       style={style(assigns)}
       data-size={@size}
