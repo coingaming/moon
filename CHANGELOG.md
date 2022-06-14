@@ -1,3 +1,10 @@
+## [2.11.7](https://github.com/coingaming/moon/compare/v2.11.6...v2.11.7) (2022-06-14)
+
+
+### Bug Fixes
+
+* file upload ([16e7ce6](https://github.com/coingaming/moon/commit/16e7ce637d14a5d90f9796bbf4a6351a66336fd3))
+
 ## [2.11.6](https://github.com/coingaming/moon/compare/v2.11.5...v2.11.6) (2022-06-14)
 
 
