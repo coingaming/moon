@@ -24,7 +24,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <p><#slot name="note" /></p>
       </div>
       <Context get={theme_class: theme_class}>
-        <div class="theme-moon-light p-4 flex bg-goku text-moon-14 rounded-moon-s-sm">
+        <div class="theme-moon-light p-4 bg-goku text-moon-14 rounded-moon-s-sm">
           <div class={"p-6", hidden: @selected_button == "code"}>
             <div class={"inline", theme_class}>
               <#slot name="example">Example not defined</#slot>

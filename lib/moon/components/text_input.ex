@@ -37,6 +37,8 @@ defmodule Moon.Components.TextInput do
   prop step, :string, default: "1"
   prop background_color, :string, values: Moon.colors(), default: "goku-100"
   prop size, :string, values: ["medium", "large"], default: "large"
+  prop border_color_class, :string
+  prop states_class, :string
 
   slot left_icon
   slot right_icon
@@ -59,6 +61,8 @@ defmodule Moon.Components.TextInput do
       <Surface.Components.Form.TextInput
         class={
           Moon.Components.FieldBorder.get_default_class(),
+          @border_color_class || Moon.Components.FieldBorder.get_default_border_color_class(),
+          @states_class || Moon.Components.FieldBorder.get_default_states_class(),
           "h-10 text-moon-14 px-3": @size == "medium",
           "h-12 text-moon-16 px-4": @size == "large",
           "pl-11": slot_assigned?(:left_icon),

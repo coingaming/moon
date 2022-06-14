@@ -1,6 +1,7 @@
 defmodule Moon.Components.Select.Dropdown.Option.Renderer do
   @moduledoc false
   use Moon.StatelessComponent
+
   alias Surface.Components.Context
   alias Phoenix.LiveView.JS
 
@@ -10,10 +11,10 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
   prop select_value, :any
   prop is_multi, :boolean
   prop is_selected, :boolean
+  prop left_icon, :any
+  prop right_icon, :any
 
   slot default, args: [:is_selected]
-  slot right_icon
-  slot left_icon
 
   def render(assigns) do
     ~F"""
@@ -42,14 +43,13 @@ defmodule Moon.Components.Select.Dropdown.Option do
 
   prop class, :css_class
   prop select_id, :string
-  prop label, :any
   prop value, :any
   prop select_value, :any
   prop is_multi, :boolean
+  prop left_icon, :any
+  prop right_icon, :any
 
   slot default, args: [:is_selected]
-  slot right_icon
-  slot left_icon
 
   def render(assigns) do
     ~F"""
@@ -66,6 +66,8 @@ defmodule Moon.Components.Select.Dropdown.Option do
           is_multi: @is_multi || is_multi,
           value: @value || value
         })}
+        {=@left_icon}
+        {=@right_icon}
         select_id={@select_id || select_id}
         value={@value || value}
         select_value={@select_value || select_value}
@@ -122,14 +124,42 @@ defmodule Moon.Components.Select.Dropdown.Footer do
   end
 end
 
+defmodule Moon.Components.Select.Dropdown.Icon do
+  @moduledoc false
+
+  use Moon.StatelessComponent
+
+  alias Moon.Components.Select.Helpers, as: SelectHelpers
+
+  prop icon, :any
+  prop class, :string, default: ""
+  prop style, :string, default: ""
+
+  slot default
+
+  def render(assigns) do
+    [icon_module, icon_custom_props] = assigns.icon
+    default_props = SelectHelpers.get_default_props(icon_module)
+    use_props = Map.merge(default_props, icon_custom_props)
+
+    ~F"""
+    <div class={@class} style={@style}>
+      {component(&icon_module.render/1, use_props)}
+    </div>
+    """
+  end
+end
+
 # https://www.figma.com/file/aMBmdNX4cfv885xchXHIHo/Partners---Components-%7BMDS%7D?node-id=23443%3A818
 defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
 
   use Moon.StatelessComponent
+
   alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.Select.Dropdown.Option
   alias Moon.Components.Select.Helpers, as: SelectHelpers
+  alias __MODULE__.Icon
   alias Surface.Components.Context
   alias Surface.Components.Form.Input.InputContext
 
@@ -155,7 +185,7 @@ defmodule Moon.Components.Select.Dropdown do
         )}
       {/if}
       <ul
-        class={"z-10 px-1 py-2 space-y-1 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}
+        class={"z-10 py-1 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}
         tabindex="-1"
         role="listbox"
         id={"#{@id}-ul-list"}
@@ -171,13 +201,41 @@ defmodule Moon.Components.Select.Dropdown do
             <Option
               select_id={@select_id || @id}
               select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
-              is_multi={@is_multi}
               value={"#{option.value}"}
+              left_icon={option[:left_icon]}
+              right_icon={option[:right_icon]}
+              {=@is_multi}
               :let={is_selected: is_selected}
             >
-              <SingleLineItem current={is_selected}>
-                {option.label}
-              </SingleLineItem>
+              {#if option[:left_icon] && option[:right_icon]}
+                <SingleLineItem current={is_selected}>
+                  <:left_icon>
+                    <Icon icon={option[:left_icon]} />
+                  </:left_icon>
+                  {option.label}
+                  <:right_icon>
+                    <Icon icon={option[:right_icon]} />
+                  </:right_icon>
+                </SingleLineItem>
+              {#elseif option[:left_icon]}
+                <SingleLineItem current={is_selected}>
+                  <:left_icon>
+                    <Icon icon={option[:left_icon]} />
+                  </:left_icon>
+                  {option.label}
+                </SingleLineItem>
+              {#elseif option[:right_icon]}
+                <SingleLineItem current={is_selected}>
+                  {option.label}
+                  <:right_icon>
+                    <Icon icon={option[:right_icon]} />
+                  </:right_icon>
+                </SingleLineItem>
+              {#else}
+                <SingleLineItem current={is_selected}>
+                  {option.label}
+                </SingleLineItem>
+              {/if}
             </Option>
           {/for}
         {/if}
