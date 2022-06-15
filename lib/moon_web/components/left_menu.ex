@@ -49,7 +49,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <Sidebar background_color="bg-gohan-100" open_width="16rem">
+    <Sidebar background_color="bg-goku-100" open_width="16rem">
       <:short_logo>
         <div class="flex items-center h-10">
           <MoonLink
@@ -83,6 +83,7 @@ defmodule MoonWeb.Components.LeftMenu do
               <Accordion
                 id="left-menu-components"
                 open_by_default={active_page_contains(@active_page, Pages.Components)}
+                is_content_inside={false}
               >
                 <:title>Components</:title>
                 <:content>
@@ -95,6 +96,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-select"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Charts)}
+                    is_content_inside={false}
                   >
                     <:title>Charts</:title>
                     <:content>
@@ -112,6 +114,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-date"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Date)}
+                    is_content_inside={false}
                   >
                     <:title>Datepicker</:title>
                     <:content>
@@ -124,6 +127,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-dialog"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Dialog)}
+                    is_content_inside={false}
                   >
                     <:title>Dialog</:title>
                     <:content>
@@ -146,6 +150,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-progress"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Progress)}
+                    is_content_inside={false}
                   >
                     <:title>Progress</:title>
                     <:content>
@@ -160,6 +165,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-select"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Select)}
+                    is_content_inside={false}
                   >
                     <:title>Select</:title>
                     <:content>
@@ -177,6 +183,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-text"
                     open_by_default={active_page_contains(@active_page, Pages.Components.TextInput)}
+                    is_content_inside={false}
                   >
                     <:title>Text Input</:title>
                     <:content>
@@ -200,6 +207,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion
                     id="left-menu-components-typography"
                     open_by_default={active_page_contains(@active_page, Pages.Components.Typography)}
+                    is_content_inside={false}
                   >
                     <:title>Typography</:title>
                     <:content>
