@@ -9,7 +9,7 @@ defmodule Moon.Autolayouts.TopToDown do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex flex-col #{@gap} #{@gap} #{@class}"}>
+    <div class={"flex flex-col #{@gap} #{@class}"}>
       <#slot />
     </div>
     """
