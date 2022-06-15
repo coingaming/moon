@@ -5,9 +5,7 @@ defmodule MoonWeb.Components.LargeLogo do
 
   def render(assigns) do
     ~F"""
-
-      <img src={"/moon/assets/svgs/moon_web/large_icon.svg"} />
-
+    <img src="/moon/assets/svgs/moon_web/large_icon.svg">
     """
   end
 end
