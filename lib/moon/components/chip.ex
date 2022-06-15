@@ -28,8 +28,8 @@ defmodule Moon.Components.Chip do
       class={
         "flex justify-center items-center gap-2 rounded relative active:scale-90 transition-all text-moon-14",
         "hover:text-piccolo-100 hover:bg-piccolo-100 hover:bg-opacity-12 #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
-        set_padding(@size, @left_icon, @right_icon, @icon_only),
-        set_bg_color(@active, @variant),
+        get_padding(@size, @left_icon, @right_icon, @icon_only),
+        get_bg_color(@active, @variant),
         "h-8 w-8": @size == "small" && !slot_assigned?(:default),
         "h-10 w-10": @size == "medium" && !slot_assigned?(:default),
         "shadow-border": @is_stroke && @active,
@@ -49,7 +49,7 @@ defmodule Moon.Components.Chip do
     """
   end
 
-  defp set_padding(size, left_icon, right_icon, icon_only) do
+  defp get_padding(size, left_icon, right_icon, icon_only) do
     if size == "medium" do
       if icon_only do
         "p-2"
@@ -82,7 +82,7 @@ defmodule Moon.Components.Chip do
   defp active_btn_class(false, _, inactive_class),
     do: "text-bulma-100 bg-gohan-100 #{inactive_class}"
 
-  defp set_bg_color(active, variant) do
+  defp get_bg_color(active, variant) do
     if variant == "default" do
       if active, do: "bg-piccolo-100", else: "bg-gohan-100"
     else
