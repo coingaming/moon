@@ -33,17 +33,17 @@ defmodule MoonWeb.Components.LeftMenu do
       </:short_logo>
 
       <:menu>
-        <nav class="mt-9">
+        <nav class="mt-9 px-5">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
             <TopToDown class="py-4 px-6 text-moon-18" gap="gap-10">
               <Link
                 to="/"
-                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100 px-6"
+                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100 px-2"
               >
                 <LargeLogo />
               </Link>
 
-              <TopToDown class="p-4 text-moon-18">
+              <TopToDown class="text-moon-18">
                 <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
                 <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
                 <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
