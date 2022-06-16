@@ -1,39 +1,8 @@
-defmodule MoonWeb.Components.LeftMenu.Link do
-  @moduledoc false
-  use MoonWeb, :stateless_component
-  alias Moon.Components.Link
-  prop route, :any
-  slot default
-
-  def render(assigns) do
-    ~F"""
-    <Context get={active_page: active_page, theme_name: theme_name}>
-      <Link
-        optional
-        active={active_page == @route}
-        class={
-          get_class(),
-          "bg-trunks-100": active_page == @route
-        }
-        to={live_path(MoonWeb.Endpoint, @route, theme_name: theme_name)}
-      ><#slot name="default" /></Link>
-    </Context>
-    """
-  end
-
-  def get_class() do
-    "block text-bulma-100 hover:text-gohan-100 hover:bg-trunks-100 px-3 py-2 w-min whitespace-nowrap
-            group w-full flex items-center py-2 rounded transition-colors ease-in-out duration-150 cursor-pointer"
-  end
-end
-
 defmodule MoonWeb.Components.LeftMenu do
   @moduledoc false
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Logos.LogoMoonDesign
-  alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
@@ -41,7 +10,9 @@ defmodule MoonWeb.Components.LeftMenu do
   alias MoonWeb.Pages
   alias Surface.Components.Context
   alias __MODULE__.Link
-  alias Moon.Components.Link, as: MoonLink
+  alias Moon.Components.Link
+  alias MoonWeb.Components.SidebarLink
+  alias MoonWeb.Components.LargeLogo
 
   prop theme_name, :any
   prop uri, :any
@@ -52,173 +23,177 @@ defmodule MoonWeb.Components.LeftMenu do
     <Sidebar background_color="bg-goku-100" open_width="16rem">
       <:short_logo>
         <div class="flex items-center h-10">
-          <MoonLink
+          <Link
             to="/"
             class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
           >
-            <LogoMoonDesignShort font_size="2.5rem" />
-          </MoonLink>
+            <LargeLogo />
+          </Link>
         </div>
       </:short_logo>
 
       <:menu>
-        <nav class="mt-5">
+        <nav class="mt-9 px-5">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
-            <TopToDown class="p-4 text-moon-18">
-              <MoonLink
+            <TopToDown class="py-4 px-6 text-moon-18" gap="gap-10">
+              <Link
                 to="/"
-                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100 px-2"
               >
-                <LogoMoonDesign font_size="5rem" />
-              </MoonLink>
+                <LargeLogo />
+              </Link>
 
-              <Link route={Pages.VisionPage}>Vision</Link>
-              <Link route={Pages.GettingStartedPage}>Getting Started</Link>
-              <Link route={Pages.ContributePage}>How to contribute</Link>
-              <Link route={Pages.ColoursPalettePage}>Colours Palette</Link>
-              <Link route={Pages.TokensPage}>Tokens</Link>
-              <Link route={Pages.IconsPage}>Icons</Link>
-              <Link route={Pages.CountryFlagsPage}>CountryFlags</Link>
-              <Link route={Pages.TransformSvgPage}>Transform SVG</Link>
-              <Accordion
-                id="left-menu-components"
-                open_by_default={active_page_contains(@active_page, Pages.Components)}
-                is_content_inside={false}
-              >
-                <:title>Components</:title>
-                <:content>
-                  <Link route={Pages.Components.AccordionPage}>Accordion</Link>
-                  <Link route={Pages.Components.AvatarPage}>Avatar</Link>
-                  <Link route={Pages.Components.BannerPage}>Banner</Link>
-                  <Link route={Pages.Components.ButtonPage}>Button</Link>
-                  <Link route={Pages.Components.CarouselPage}>Carousel</Link>
+              <TopToDown class="text-moon-18">
+                <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
+                <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
+                <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
+                <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
+                <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
+                <SidebarLink route={Pages.IconsPage}>Icons</SidebarLink>
+                <SidebarLink route={Pages.CountryFlagsPage}>CountryFlags</SidebarLink>
+                <SidebarLink route={Pages.TransformSvgPage}>Transform SVG</SidebarLink>
+                <Accordion
+                  is_content_inside={false}
+                  id="left-menu-components"
+                  open_by_default={active_page_contains(@active_page, Pages.Components)}
+                >
+                  <:title>Components</:title>
+                  <:content>
+                    <TopToDown class="p-4 text-moon-18">
+                      <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>
+                      <SidebarLink route={Pages.Components.AvatarPage}>Avatar</SidebarLink>
+                      <SidebarLink route={Pages.Components.BannerPage}>Banner</SidebarLink>
+                      <SidebarLink route={Pages.Components.ButtonPage}>Button</SidebarLink>
+                      <SidebarLink route={Pages.Components.CarouselPage}>Carousel</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-select"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Charts)}
-                    is_content_inside={false}
-                  >
-                    <:title>Charts</:title>
-                    <:content>
-                      <Link route={Pages.Components.Charts.GeoMapPage}>GeoMap</Link>
-                      <Link route={Pages.Components.Charts.LineChartPage}>LineChart</Link>
-                      <Link route={Pages.Components.Charts.PiePage}>Pie</Link>
-                      <Link route={Pages.Components.Charts.TablePage}>Table</Link>
-                      <Link route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-select"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Charts)}
+                      >
+                        <:title>Charts</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Charts.GeoMapPage}>GeoMap</SidebarLink>
+                          <SidebarLink route={Pages.Components.Charts.LineChartPage}>LineChart</SidebarLink>
+                          <SidebarLink route={Pages.Components.Charts.PiePage}>Pie</SidebarLink>
+                          <SidebarLink route={Pages.Components.Charts.TablePage}>Table</SidebarLink>
+                          <SidebarLink route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Link route={Pages.Components.CheckboxPage}>Checkbox</Link>
-                  <Link route={Pages.Components.ChipPage}>Chip</Link>
+                      <SidebarLink route={Pages.Components.CheckboxPage}>Checkbox</SidebarLink>
+                      <SidebarLink route={Pages.Components.ChipPage}>Chip</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-date"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Date)}
-                    is_content_inside={false}
-                  >
-                    <:title>Datepicker</:title>
-                    <:content>
-                      <Link route={Pages.Components.Date.DatepickerPage}>Datepicker</Link>
-                      <Link route={Pages.Components.Date.SingleDatePage}>Single Date</Link>
-                      <Link route={Pages.Components.Date.RangeDatePage}>Range</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-date"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Date)}
+                      >
+                        <:title>Datepicker</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Date.DatepickerPage}>Datepicker</SidebarLink>
+                          <SidebarLink route={Pages.Components.Date.SingleDatePage}>Single Date</SidebarLink>
+                          <SidebarLink route={Pages.Components.Date.RangeDatePage}>Range</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Accordion
-                    id="left-menu-components-dialog"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Dialog)}
-                    is_content_inside={false}
-                  >
-                    <:title>Dialog</:title>
-                    <:content>
-                      <Link route={Pages.Components.Dialog.ModalPage}>Dialog</Link>
-                      <Link route={Pages.Components.Dialog.ContentPage}>Dialog Content</Link>
-                      <Link route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</Link>
-                      <Link route={Pages.Components.Dialog.HeaderPage}>Dialog Header</Link>
-                      <Link route={Pages.Components.Dialog.FooterPage}>Dialog Footer</Link>
-                      <Link route={Pages.Components.Dialog.PopoverPage}>Popover</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-dialog"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Dialog)}
+                      >
+                        <:title>Dialog</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Dialog.ModalPage}>Dialog</SidebarLink>
+                          <SidebarLink route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
+                          <SidebarLink route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
+                          <SidebarLink route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
+                          <SidebarLink route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
+                          <SidebarLink route={Pages.Components.Dialog.PopoverPage}>Popover</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Link route={Pages.Components.DrawerPage}>Drawer *</Link>
-                  <Link route={Pages.Components.FileInputPage}>File Input *</Link>
-                  <Link route={Pages.Components.LabelPage}>Label</Link>
-                  <Link route={Pages.Components.ListItemsPage}>List items</Link>
-                  <Link route={Pages.Components.LoaderPage}>Loader</Link>
-                  <Link route={Pages.Components.PaginationPage}>Pagination</Link>
+                      <SidebarLink route={Pages.Components.DrawerPage}>Drawer *</SidebarLink>
+                      <SidebarLink route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
+                      <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
+                      <SidebarLink route={Pages.Components.ListItemsPage}>List items</SidebarLink>
+                      <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
+                      <SidebarLink route={Pages.Components.PaginationPage}>Pagination</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-progress"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Progress)}
-                    is_content_inside={false}
-                  >
-                    <:title>Progress</:title>
-                    <:content>
-                      <Link route={Pages.Components.Progress.CircularPage}>Circular</Link>
-                      <Link route={Pages.Components.Progress.LinearPage}>Linear</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-progress"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Progress)}
+                      >
+                        <:title>Progress</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Progress.CircularPage}>Circular</SidebarLink>
+                          <SidebarLink route={Pages.Components.Progress.LinearPage}>Linear</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Link route={Pages.Components.RadioButtonPage}>RadioButton</Link>
-                  <Link route={Pages.Components.SearchPage}>Search</Link>
+                      <SidebarLink route={Pages.Components.RadioButtonPage}>RadioButton</SidebarLink>
+                      <SidebarLink route={Pages.Components.SearchPage}>Search</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-select"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Select)}
-                    is_content_inside={false}
-                  >
-                    <:title>Select</:title>
-                    <:content>
-                      <Link route={Pages.Components.Select.DropdownPage}>Dropdown</Link>
-                      <Link route={Pages.Components.Select.SelectPage}>Select</Link>
-                      <Link route={Pages.Components.Select.SingleSelectPage}>Single select</Link>
-                      <Link route={Pages.Components.Select.MultiSelectPage}>Multi select</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-select"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Select)}
+                      >
+                        <:title>Select</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Select.DropdownPage}>Dropdown</SidebarLink>
+                          <SidebarLink route={Pages.Components.Select.SelectPage}>Select</SidebarLink>
+                          <SidebarLink route={Pages.Components.Select.SingleSelectPage}>Single select</SidebarLink>
+                          <SidebarLink route={Pages.Components.Select.MultiSelectPage}>Multi select</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Link route={Pages.Components.SwitchPage}>Switch</Link>
-                  <Link route={Pages.Components.TabsPage}>Tabs</Link>
-                  <Link route={Pages.Components.TablePage}>Table</Link>
+                      <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
+                      <SidebarLink route={Pages.Components.TabsPage}>Tabs</SidebarLink>
+                      <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-text"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.TextInput)}
-                    is_content_inside={false}
-                  >
-                    <:title>Text Input</:title>
-                    <:content>
-                      <Link route={Pages.Components.TextInput.TextInputPage}>Text input</Link>
-                      <Link route={Pages.Components.TextInput.NumberPage}>Number *</Link>
-                      <Link route={Pages.Components.TextInput.DatePage}>Date *</Link>
-                      <Link route={Pages.Components.TextInput.TimePage}>Time *</Link>
-                      <Link route={Pages.Components.TextInput.DateTimePage}>DateTime *</Link>
-                      <Link route={Pages.Components.TextInput.EmailPage}>Email *</Link>
-                      <Link route={Pages.Components.TextInput.PasswordPage}>Password</Link>
-                      <Link route={Pages.Components.TextInput.SearchPage}>Search *</Link>
-                      <Link route={Pages.Components.TextInput.TelephonePage}>Telephone *</Link>
-                      <Link route={Pages.Components.TextInput.UrlPage}>Url *</Link>
-                    </:content>
-                  </Accordion>
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-text"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.TextInput)}
+                      >
+                        <:title>Text Input</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.TextInput.TextInputPage}>Text input</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.NumberPage}>Number *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.DatePage}>Date *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.TimePage}>Time *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.DateTimePage}>DateTime *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.EmailPage}>Email *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.PasswordPage}>Password</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.SearchPage}>Search *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.TelephonePage}>Telephone *</SidebarLink>
+                          <SidebarLink route={Pages.Components.TextInput.UrlPage}>Url *</SidebarLink>
+                        </:content>
+                      </Accordion>
 
-                  <Link route={Pages.Components.TextInputGroupPage}>Text input group</Link>
-                  <Link route={Pages.Components.ToastPage}>Toast</Link>
-                  <Link route={Pages.Components.TooltipPage}>Tooltip</Link>
+                      <SidebarLink route={Pages.Components.TextInputGroupPage}>Text input group</SidebarLink>
+                      <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
+                      <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
 
-                  <Accordion
-                    id="left-menu-components-typography"
-                    open_by_default={active_page_contains(@active_page, Pages.Components.Typography)}
-                    is_content_inside={false}
-                  >
-                    <:title>Typography</:title>
-                    <:content>
-                      <Link route={Pages.Components.Typography.CaptionPage}>Caption</Link>
-                      <Link route={Pages.Components.Typography.HeadingPage}>Heading</Link>
-                      <Link route={Pages.Components.Typography.TextPage}>Text</Link>
-                    </:content>
-                  </Accordion>
-                </:content>
-              </Accordion>
-              <Version />
+                      <Accordion
+                        is_content_inside={false}
+                        id="left-menu-components-typography"
+                        open_by_default={active_page_contains(@active_page, Pages.Components.Typography)}
+                      >
+                        <:title>Typography</:title>
+                        <:content>
+                          <SidebarLink route={Pages.Components.Typography.CaptionPage}>Caption</SidebarLink>
+                          <SidebarLink route={Pages.Components.Typography.HeadingPage}>Heading</SidebarLink>
+                          <SidebarLink route={Pages.Components.Typography.TextPage}>Text</SidebarLink>
+                        </:content>
+                      </Accordion>
+                    </TopToDown>
+                  </:content>
+                </Accordion>
+                <Version />
+              </TopToDown>
             </TopToDown>
           </Context>
         </nav>
