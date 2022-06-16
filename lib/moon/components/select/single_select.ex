@@ -219,7 +219,7 @@ defmodule Moon.Components.Select.SingleSelect do
   end
 
   def handle_event("toggle_open", _params, socket) do
-    if !socket.assigns.disabled do
+    if socket.assigns.disabled == false do
       {:noreply, assign(socket, open: !socket.assigns.open)}
     else
       {:noreply, socket}
