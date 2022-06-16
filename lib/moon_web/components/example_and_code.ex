@@ -24,16 +24,14 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <p><#slot name="note" /></p>
       </div>
       <Context get={theme_class: theme_class}>
-        <div class={"p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm", "moon-design-dark": @selected_button == "code"}>
-          <div class={hidden: @selected_button == "code"}>
-            <#slot name="example">Example not defined</#slot>
-          </div>
-          <div class={
-            "overflow-scroll",
-            hidden: @selected_button == "preview"
-          }>
-            <pre><#slot name="code">Example code not defined</#slot></pre>
-          </div>
+        <div class={"p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm", "moon-design-dark hidden": @selected_button == "code"}>
+          <#slot name="example">Example not defined</#slot>
+        </div>
+        <div class={
+          "overflow-scroll",
+          hidden: @selected_button == "preview"
+        }>
+          <pre><#slot name="code">Example code not defined</#slot></pre>
         </div>
       </Context>
       <div

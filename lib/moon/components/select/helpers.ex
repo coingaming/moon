@@ -42,4 +42,62 @@ defmodule Moon.Components.Select.Helpers do
       end
     end
   end
+
+  def get_option(options, v) do
+    Enum.find(options, fn option -> "#{option.value}" == "#{v}" end)
+  end
+
+  def get_default_props(module) do
+    Enum.reduce(module.__props__(), %{}, fn
+      %{name: name, opts: opts, type: type}, acc ->
+        value = Keyword.get(opts, :values)
+
+        value =
+          if type == :string and not is_nil(value) do
+            Enum.join(value, " ")
+          else
+            value
+          end
+
+        Map.put(acc, name, value)
+    end)
+  end
+
+  def get_active_border_color(class) do
+    Regex.run(~r(\bfocus:border.*\b), class)
+    |> List.first()
+    |> String.split(" ")
+    |> List.first()
+    |> String.split(":")
+    |> List.last()
+  end
+
+  def get_padding(size) do
+    case size do
+      "small" -> "p-1 h-10 leading-3"
+      "medium" -> "p-2 h-12 leading-4"
+      "large" -> "p-3 h-14 leading-5"
+      "xlarge" -> "p-4 h-16 leading-6"
+    end
+  end
+
+  def innerlabel_font_class(size) do
+    case size do
+      "small" -> "uppercase text-moon-10"
+      "medium" -> "text-moon-12"
+      "large" -> "text-moon-14"
+      "xlarge" -> "text-moon-16"
+    end
+  end
+
+  def label_font_class(size) do
+    case size do
+      "small" -> "text-moon-12"
+      "medium" -> "text-moon-14"
+      "large" -> "text-moon-16"
+      "xlarge" -> "text-moon-18"
+    end
+  end
+
+  def prompt_font_class(size), do: label_font_class(size)
 end

@@ -5,6 +5,7 @@ defmodule Moon.Autolayouts.PullAside do
 
   prop class, :css_class
   prop left_grow, :boolean, default: false
+  prop right_grow, :boolean, default: false
   slot left
   slot right
 
@@ -16,7 +17,7 @@ defmodule Moon.Autolayouts.PullAside do
           <#slot name="left" />
         {/if}
       </div>
-      <div>
+      <div class={"flex items-center", grow: @right_grow}>
         {#if slot_assigned?(:right)}
           <#slot name="right" />
         {/if}

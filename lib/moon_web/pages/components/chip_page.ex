@@ -103,7 +103,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
             <:example>
               <div class="flex justify-around w-full items-center">
                 <Chip size="small" active>Small</Chip>
-                <Chip active>Medium (default)</Chip>
+                <Chip active is_stroke>Medium (default)</Chip>
               </div>
             </:example>
 
@@ -198,8 +198,8 @@ defmodule MoonWeb.Pages.Components.ChipPage do
 
   def chip_2_code do
     """
-      <Chip size="small" active={true}>Small</Chip>
-      <Chip active={true}>Medium (default)</Chip>
+      <Chip size="small" active>Small</Chip>
+      <Chip active is_stroke>Medium (default)</Chip>
     """
   end
 
