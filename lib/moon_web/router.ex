@@ -39,7 +39,7 @@ defmodule MoonWeb.Router do
     scope theme_path do
       pipe_through :browser
 
-      live "/", MoonWeb.Pages.Tutorials.Introduction
+      live "/", MoonWeb.Pages.MainPage
       live "/vision", MoonWeb.Pages.VisionPage
       live "/getting-started", MoonWeb.Pages.GettingStartedPage
       live "/contribute", MoonWeb.Pages.ContributePage
