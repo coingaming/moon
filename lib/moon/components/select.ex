@@ -42,7 +42,7 @@ defmodule Moon.Components.Select do
       }
       field={@field}
       options={options_with_selected}
-      opts={[prompt: @prompt]}
+      opts={[prompt: @prompt, disabled: @disabled]}
     />
     """
 

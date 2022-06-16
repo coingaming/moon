@@ -13,6 +13,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   prop size, :string
   prop background_color_class, :string, default: "bulma-100"
   prop text_color_class, :string, default: "gohan-100"
+  prop disabled, :boolean, default: false
 
   def render(assigns) do
     ~F"""
@@ -26,10 +27,11 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
         <:right_icon>
           <div
             class="cursor-pointer"
-            :on-click={JS.dispatch("moon:update-select",
-              detail: %{value: @option.value, selected: false},
-              to: "##{@select_id}"
-            )}
+            :on-click={!@disabled &&
+              JS.dispatch("moon:update-select",
+                detail: %{value: @option.value, selected: false},
+                to: "##{@select_id}"
+              )}
           ><ControlsClose /></div>
         </:right_icon>
       </Label>
@@ -51,6 +53,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   prop value, :list, default: []
   prop size, :string
   prop prompt, :string
+  prop disabled, :boolean, default: false
 
   def render(assigns) do
     ~F"""
@@ -75,7 +78,12 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
           style={get_style("grid-col": if(@prompt, do: "span 2 / span 2"))}
         >
           {#for v <- @value}
-            <SelectedLabel {=@select_id} {=@size} option={SelectHelpers.get_option(@options, v)} />
+            <SelectedLabel
+              {=@select_id}
+              {=@size}
+              {=@disabled}
+              option={SelectHelpers.get_option(@options, v)}
+            />
           {/for}
         </div>
       </div>
@@ -134,13 +142,13 @@ defmodule Moon.Components.Select.MultiSelect do
           id: @id
         )}
         <FieldBorder
-          states_class={@field_border_class}
+          states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
           border_color_class={if @open,
             do: SelectHelpers.get_active_border_color(@field_border_class),
             else: @field_border_color_class}
           click="toggle_open"
         >
-          <PullAside class={"px-4", SelectHelpers.get_padding(@size)}>
+          <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
             <:left>
               <Labels
                 select_id={@id}
@@ -148,6 +156,7 @@ defmodule Moon.Components.Select.MultiSelect do
                 {=@options}
                 {=@prompt}
                 {=@size}
+                {=@disabled}
               />
             </:left>
             <:right>
@@ -176,7 +185,16 @@ defmodule Moon.Components.Select.MultiSelect do
   end
 
   def handle_event("toggle_open", _params, socket) do
-    socket = assign(socket, open: !socket.assigns.open)
-    {:noreply, socket}
+    if socket.assigns.disabled == false do
+      {:noreply, assign(socket, open: !socket.assigns.open)}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  defp get_disabled_class(disabled) do
+    if disabled do
+      "opacity-30 cursor-not-allowed"
+    end
   end
 end

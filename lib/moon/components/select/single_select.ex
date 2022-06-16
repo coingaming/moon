@@ -155,7 +155,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop value, :any
   prop prompt, :string
   prop error, :string
-  prop disabled, :boolean
+  prop disabled, :boolean, default: false
   prop required, :boolean
   prop class, :string
   prop size, :string, values: ~w(small medium large xlarge), default: "medium"
@@ -177,13 +177,13 @@ defmodule Moon.Components.Select.SingleSelect do
           id: @id
         )}
         <FieldBorder
-          states_class={@field_border_class}
+          states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
           border_color_class={if @open,
             do: SelectHelpers.get_active_border_color(@field_border_class),
             else: @field_border_color_class}
           click="toggle_open"
         >
-          <PullAside class={"px-4", SelectHelpers.get_padding(@size)}>
+          <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
             <:left>
               <Value
                 select_id={@id}
@@ -204,7 +204,7 @@ defmodule Moon.Components.Select.SingleSelect do
               class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
               style="min-height: 20px; max-height: 200px"
             >
-              <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} />
+              <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />
             </div>
           </TopToDown>
         </:content>
@@ -219,7 +219,16 @@ defmodule Moon.Components.Select.SingleSelect do
   end
 
   def handle_event("toggle_open", _params, socket) do
-    socket = assign(socket, open: !socket.assigns.open)
-    {:noreply, socket}
+    if socket.assigns.disabled == false do
+      {:noreply, assign(socket, open: !socket.assigns.open)}
+    else
+      {:noreply, socket}
+    end
+  end
+
+  defp get_disabled_class(disabled) do
+    if disabled do
+      "opacity-30 cursor-not-allowed"
+    end
   end
 end

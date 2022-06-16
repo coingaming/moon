@@ -163,6 +163,8 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
   def select_1_code do
     """
+    alias Moon.Components.Select
+
     <Form for={@user_changeset}>
       <Select field={:gender} options={@gender_options} prompt="Please select gender" />
     </Form>
@@ -171,6 +173,8 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
   def select_2_code do
     """
+    alias Moon.Components.Select
+
     <Form for={@user_changeset}>
       <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
     </Form>
@@ -179,6 +183,8 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
   def select_3_code do
     """
+    alias Moon.Components.Select
+
     <Select
       disabled
       label="Gender"
