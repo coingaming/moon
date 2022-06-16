@@ -1,3 +1,10 @@
+## [2.11.10](https://github.com/coingaming/moon/compare/v2.11.9...v2.11.10) (2022-06-16)
+
+
+### Bug Fixes
+
+* update footer, sidebar and background colors [MDS-135] ([#291](https://github.com/coingaming/moon/issues/291)) ([6a9694b](https://github.com/coingaming/moon/commit/6a9694bd8715d3f85244c393d4dbc58de9a91ce7))
+
 ## [2.11.9](https://github.com/coingaming/moon/compare/v2.11.8...v2.11.9) (2022-06-16)
 
 
