@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/coingaming/moon/compare/v2.11.10...v2.12.0) (2022-06-16)
+
+
+### Features
+
+* add disabled prop support properly on all select components [MDS-137] ([#292](https://github.com/coingaming/moon/issues/292)) ([336be34](https://github.com/coingaming/moon/commit/336be34bec9651f0a6bb828ee83bef0707d5ab10))
+
 ## [2.11.10](https://github.com/coingaming/moon/compare/v2.11.9...v2.11.10) (2022-06-16)
 
 
