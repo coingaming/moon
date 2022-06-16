@@ -20,7 +20,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <Sidebar background_color="bg-goku-100" open_width="16rem">
+    <Sidebar background_color="bg-goku-100" open_width="20rem">
       <:short_logo>
         <div class="flex items-center h-10">
           <Link
@@ -33,17 +33,15 @@ defmodule MoonWeb.Components.LeftMenu do
       </:short_logo>
 
       <:menu>
-        <nav class="mt-9 px-5">
+        <nav class="flex flex-col grow gap-2">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
-            <TopToDown class="py-4 px-6 text-moon-18" gap="gap-10">
-              <Link
-                to="/"
-                class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100 px-2"
-              >
-                <LargeLogo />
-              </Link>
-
-              <TopToDown class="text-moon-18">
+            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
+              <div class="flex items-center flex-shrink-0 pl-3">
+                <Link to="/">
+                  <LargeLogo />
+                </Link>
+              </div>
+              <div class="flex-grow flex flex-col gap-2">
                 <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
                 <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
                 <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
@@ -192,9 +190,9 @@ defmodule MoonWeb.Components.LeftMenu do
                     </TopToDown>
                   </:content>
                 </Accordion>
-                <Version />
-              </TopToDown>
-            </TopToDown>
+              </div>
+              <Version />
+            </div>
           </Context>
         </nav>
         <script>
