@@ -6,18 +6,36 @@ defmodule MoonWeb.Components.Footer do
   alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Components.Link
 
-  prop class, :string, default: nil
   data show_themes, :boolean, default: false
 
   def render(assigns) do
     ~F"""
-    <div class={"mt-auto py-8 px-4 lg:pt-24 flex mt-10 gap-8 bottom-0 justify-start items-center #{@class}"}>
-      <LogoMoonDesign font_size="5rem" />
-      <Link to="https://github.com/coingaming/moon" class="text-trunks-100">
-        GitHub
-      </Link>
-      Moon with Elixir
-    </div>
+    <footer class="relative z-10 flex gap-x-8 gap-y-6 pt-16 flex-wrap items-center text-moon-16 justify-center md:justify-between">
+      <div class="flex gap-x-8 gap-y-6 flex-wrap justify-center items-center">
+        <LogoMoonDesign font_size="5rem" />
+        <div class="flex gap-x-8 gap-y-4 flex-wrap justify-center items-center">
+          <Link to="https://github.com/coingaming/moon" target="_blank" rel="noreferrer">
+            GitHub
+          </Link>
+          <Link
+            to="https://www.figma.com/community/file/1002945721703152933"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Figma
+          </Link>
+          <Link to="https://moonds.medium.com/" target="_blank" rel="noreferrer">
+            Medium
+          </Link>
+          <Link to="https://www.linkedin.com/company/moon-io/" target="_blank" rel="noreferrer">
+            LinkedIn
+          </Link>
+        </div>
+      </div>
+      <p>
+        With the help of <span class="font-semibold">Yolo Group</span>
+      </p>
+    </footer>
     """
   end
 end

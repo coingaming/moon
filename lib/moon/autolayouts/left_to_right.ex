@@ -10,7 +10,7 @@ defmodule Moon.Autolayouts.LeftToRight do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex gap-#{@gap} #{@gap} #{@class}", "items-center": @centered}>
+    <div class={"flex #{@gap} #{@class}", "items-center": @centered}>
       <#slot />
     </div>
     """

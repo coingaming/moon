@@ -121,6 +121,15 @@ module.exports = {
           },
         ],
       },
+      borderRadius: {
+        "moon-i-xs": "var(--radius-i-xs)",
+        "moon-i-sm": "var(--radius-i-sm)",
+        "moon-i-md": "var(--radius-i-md)",
+        "moon-s-xs": "var(--radius-s-xs)",
+        "moon-s-sm": "var(--radius-s-sm)",
+        "moon-s-md": "var(--radius-s-md)",
+        "moon-s-lg": "var(--radius-s-lg)",
+      },
       opacity: {
         disabled: "var(--opacity--disabled)",
       },
@@ -148,14 +157,12 @@ module.exports = {
       lg: "var(--box-shadow--lg)",
       xl: "var(--box-shadow--xl)",
     },
-    borderRadius: {
-      sm: "var(--radius--small)",
-      DEFAULT: "var(--radius--default)",
-      md: "var(--radius--medium)",
-      lg: "var(--radius--large)",
-      xl: "var(--radius--xlarge)",
-      full: "9999px",
-    }, //
+    // borderRadius: {
+    //   sm: "var(--radius--small)",
+    //   DEFAULT: "var(--radius--default)",
+    //   lg: "var(--radius--large)",
+    //   xl: "var(--radius--xlarge)",
+    // },
     colors: {
       transparent: "transparent",
       text: "var(--color-text)",
