@@ -1,9 +1,7 @@
-defmodule MoonWeb.Components.MainPage.FacingReel do
+defmodule MoonWeb.Components.Facing.SectionTitle do
   @moduledoc false
 
   use MoonWeb, :stateless_component
-
-  slot default
 
   def render(assigns) do
     ~F"""
