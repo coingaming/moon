@@ -169,6 +169,7 @@ defmodule Moon.Components.Select.Dropdown do
   prop options, :any
   prop value, :any
   prop is_multi, :boolean
+  prop disabled, :boolean, default: false
 
   slot default
   slot option_filters
@@ -181,7 +182,8 @@ defmodule Moon.Components.Select.Dropdown do
       {#if !@select_id}
         {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
-          id: @id
+          id: @id,
+          disabled: @disabled
         )}
       {/if}
       <ul

@@ -393,6 +393,24 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               </div>
             </:example>
           </ExampleAndCode>
+
+          <ExampleAndCode
+            title="Disabled"
+            id="single_select_disabled"
+          >
+            <:example>
+              <Form for={@user_changeset} change="form_update" submit="form_submit">
+                <Field name={:role}>
+                  <FieldLabel>Permissions</FieldLabel>
+                  <SingleSelect popover_class="pt-2" id="user-roles-example-disabled" options={User.available_roles()} disabled={true} />
+                </Field>
+              </Form>
+            </:example>
+
+            <:code>{code_for_disabled()}</:code>
+
+            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+          </ExampleAndCode>
         </Context>
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
@@ -445,6 +463,8 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   def code_for_single_select_with_options_as_prop do
     """
+    alias Moon.Components.Select.SingleSelect
+
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <FieldLabel>Permissions</FieldLabel>
@@ -456,6 +476,8 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   def code_for_single_select_with_options_as_prop_and_prompt_inside do
     """
+    alias Moon.Components.Select.SingleSelect
+
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect id="user-roles-example-2" options={User.available_roles()} prompt="Select role" />
@@ -466,6 +488,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   def code_for_single_select_with_options_as_prop_and_left_icon do
     """
+    alias Moon.Components.Select.SingleSelect
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
@@ -480,6 +503,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   def code_for_single_select_with_options_as_prop_and_right_icon do
     """
+    alias Moon.Components.Select.SingleSelect
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
@@ -494,6 +518,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   def code_for_single_select_with_options_as_prop_and_left_icon_flag do
     """
+    alias Moon.Components.Select.SingleSelect
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
@@ -501,6 +526,19 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           options={User.available_roles_with_left_icon_flag()}
           prompt="Select role"
         />
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_disabled do
+    """
+    alias Moon.Components.Select.SingleSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <FieldLabel>Permissions</FieldLabel>
+        <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>
     """
