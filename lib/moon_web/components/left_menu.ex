@@ -20,7 +20,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <Sidebar background_color="bg-goku-100" open_width="16rem">
+    <Sidebar background_color="bg-goku-100" open_width="20rem">
       <:short_logo>
         <div class="flex items-center h-10">
           <Link
@@ -33,7 +33,7 @@ defmodule MoonWeb.Components.LeftMenu do
       </:short_logo>
 
       <:menu>
-        <nav class="mt-9 px-5">
+        <nav class="mt-9 px-5 w-80">
           <Context put={active_page: @active_page, theme_name: @theme_name}>
             <TopToDown class="py-4 px-6 text-moon-18" gap="gap-10">
               <Link

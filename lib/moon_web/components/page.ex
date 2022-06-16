@@ -16,13 +16,14 @@ defmodule MoonWeb.Components.Page do
   def render(assigns) do
     ~F"""
     <div role="main" class={"flex items-start h-screen overflow-hidden", @class}>
-      <MoonWeb.Components.LeftMenu
-        id="left-menu"
-        theme_name={assigns.theme_name}
-        active_page={assigns.active_page}
-      />
-
-      <div class="flex-1 h-screen overflow-auto">
+      <div class="w-80">
+        <MoonWeb.Components.LeftMenu
+          id="left-menu"
+          theme_name={assigns.theme_name}
+          active_page={assigns.active_page}
+        />
+      </div>
+      <div class="flex-1 grow h-screen overflow-auto">
         <div class="w-full p-28 py-10">
           <div>
             <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
