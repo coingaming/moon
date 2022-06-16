@@ -6,7 +6,6 @@ defmodule Moon.Components.Accordion do
   alias Phoenix.LiveView.JS
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.PullAside
-  alias Moon.Components.Heading
   alias Moon.Icons.ControlsChevronUp
 
   prop id, :string
@@ -24,35 +23,40 @@ defmodule Moon.Components.Accordion do
     ~F"""
     <div id={@id}>
       <div class={
-        "rounded relative bg-gohan-100",
+        "w-full rounded-moon-s-sm h-max flex flex-col items-center bg-gohan-100 p-4",
+        get_padding(@size),
         @class
       }>
-        <PullAside class={get_padding(@size)} left_grow>
+        <PullAside left_grow class="w-full flex gap-3 cursor-pointer">
           <:left>
             <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
-              <Heading class={"cursor-pointer items-center grow #{font_class(@size)}"}><#slot name="title" /></Heading>
+              <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
             </div>
           </:left>
           <:right>
             <div class={hidden: !@with_button}>
-              <LeftToRight>
+              <LeftToRight class="text-trunks-100">
                 <#slot name="header_controls" />
                 <div
                   :on-click={toggle_content(@id, @disable_open)}
                   id={@id <> "-arrow"}
                   class={
-                    "rotate-0": !@open_by_default,
+                    "transition-transform transition-200",
+                    "rotate-90": !@open_by_default,
                     "rotate-180": @open_by_default
                   }
                 >
-                  <ControlsChevronUp font_size="1.25rem" class="text-piccolo-100 cursor-pointer" />
+                  <ControlsChevronUp font_size="1.5rem" />
                 </div>
               </LeftToRight>
             </div>
           </:right>
         </PullAside>
         {#if @is_content_inside}
-          <div id={@id <> "-content"} class={get_padding(@size), hidden: !@open_by_default}>
+          <div
+            id={@id <> "-content"}
+            class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
+          >
             <#slot name="content" />
           </div>
         {/if}
@@ -61,7 +65,7 @@ defmodule Moon.Components.Accordion do
       {#if !@is_content_inside}
         <div
           id={@id <> "-content"}
-          class={get_padding(@size), "bg-transparent", hidden: !@open_by_default}
+          class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
         >
           <#slot name="content" />
         </div>
@@ -74,12 +78,12 @@ defmodule Moon.Components.Accordion do
     if !disable_open do
       JS.toggle(to: "#" <> id <> "-content")
       |> JS.remove_class(
-        "rotate-0",
-        to: "#" <> id <> "-arrow.rotate-0"
+        "rotate-90",
+        to: "#" <> id <> "-arrow.rotate-90"
       )
       |> JS.add_class(
-        "rotate-0",
-        to: "#" <> id <> "-arrow:not(.rotate-0)"
+        "rotate-90",
+        to: "#" <> id <> "-arrow:not(.rotate-90)"
       )
       |> JS.remove_class(
         "rotate-180",
@@ -94,19 +98,25 @@ defmodule Moon.Components.Accordion do
 
   defp get_padding(size) do
     case size do
-      "small" -> "p-1"
-      "large" -> "p-3"
       "xlarge" -> "p-4"
-      _ -> "p-2"
+      "large" -> "p-3"
+      "medium" -> "py-2 pr-2 pl-3"
+      _ -> "py-1 pr-1 pl-3"
+    end
+  end
+
+  def get_margin(size) do
+    case size do
+      "xlarge" -> "mt-4"
+      "large" -> "mt-3"
+      _ -> "mt-2"
     end
   end
 
   defp font_class(size) do
     case size do
-      "small" -> "uppercase text-moon-10"
-      "large" -> "text-moon-14"
       "xlarge" -> "text-moon-16"
-      _ -> "text-moon-12"
+      _ -> "text-moon-14"
     end
   end
 end

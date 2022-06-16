@@ -12,7 +12,7 @@ defmodule Moon.Components.Sidebar do
 
   def render(assigns) do
     ~F"""
-    <div class="flex shrink-0">
+    <aside class="flex flex-col flex-shrink-0 w-80">
       <div x-cloak class="flex items-center p-5">
         <!-- Short logo -->
         <#slot name="short_logo" />
@@ -31,7 +31,7 @@ defmodule Moon.Components.Sidebar do
           </div>
         </div>
       </div>
-    </div>
+    </aside>
     """
   end
 end

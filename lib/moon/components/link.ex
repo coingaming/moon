@@ -10,6 +10,8 @@ defmodule Moon.Components.Link do
   prop optional, :boolean
   prop active, :boolean
   prop class, :css_class
+  prop target, :string
+  prop rel, :string
   slot default
 
   def render(assigns) do
@@ -31,6 +33,8 @@ defmodule Moon.Components.Link do
       data-phx-link-state="push"
       data-moon-active={@active}
       href={@to}
+      target={@target}
+      rel={@rel}
     ><#slot /></a>
     """
   end
