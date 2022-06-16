@@ -26,8 +26,8 @@ defmodule Moon.Components.Chip do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 rounded relative active:scale-90 transition-all text-moon-14",
-        "hover:text-piccolo-100 hover:bg-piccolo-100 hover:bg-opacity-12 #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
+        "flex justify-center items-center rounded-moon-i-sm relative transition text-moon-14",
+        "hover:text-piccolo-100 hover:bg-piccolo-100/[.12] #{@class} #{active_btn_class(@active, @active_class, @inactive_class)}",
         get_padding(@size, @left_icon, @right_icon, @icon_only),
         get_bg_color(@active, @variant),
         "h-8 w-8": @size == "small" && !slot_assigned?(:default),
@@ -40,11 +40,10 @@ defmodule Moon.Components.Chip do
       :on-click={@on_click}
       {...phx_val_tag((@value && "click_value") || nil, @value)}
     >
-      <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon && !@icon_only} />
-      <Icon name={@icon_only} class={icon_class(@size)} :if={@icon_only} />
+      <Icon name={@left_icon} font_size="1.5rem" :if={@left_icon && !@icon_only} />
+      <Icon name={@icon_only} font_size="1.5rem" :if={@icon_only} />
       <#slot :if={!@icon_only} />
-      <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon && !@icon_only} />
-      <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded" />
+      <Icon name={@right_icon} font_size="1.5rem" :if={@right_icon && !@icon_only} />
     </button>
     """
   end
@@ -52,15 +51,15 @@ defmodule Moon.Components.Chip do
   defp get_padding(size, left_icon, right_icon, icon_only) do
     if size == "medium" do
       if icon_only do
-        "p-2"
+        "p-2 gap-2"
       else
-        "py-2 #{if left_icon, do: "pl-2", else: "pl-3"} #{if right_icon, do: "pr-2", else: "pr-3"}"
+        "py-2 gap-2 #{if left_icon, do: "pl-2", else: "pl-3"} #{if right_icon, do: "pr-2", else: "pr-3"}"
       end
     else
       if icon_only do
-        "p-1"
+        "p-1 gap-1"
       else
-        "py-1 #{if left_icon, do: "pl-1", else: "pl-2"} #{if right_icon, do: "pr-1", else: "pr-2"}"
+        "py-1 gap-1 #{if left_icon, do: "pl-1", else: "pl-2"} #{if right_icon, do: "pr-1", else: "pr-2"}"
       end
     end
   end
@@ -72,9 +71,6 @@ defmodule Moon.Components.Chip do
     key = String.to_atom("phx-value-#{name}")
     [{key, value}]
   end
-
-  defp icon_class("small"), do: "h-4 w-4"
-  defp icon_class("medium"), do: "h-6 w-6"
 
   defp active_btn_class(true, active_class, _),
     do: "text-piccolo-100 bg-opacity-12 #{active_class}"
