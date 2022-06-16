@@ -3,7 +3,6 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
   alias MoonWeb.Components.Version
@@ -57,7 +56,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 >
                   <:title>Components</:title>
                   <:content>
-                    <TopToDown class="p-4 text-moon-18">
+                    <div class="flex-grow flex flex-col gap-2 pl-8">
                       <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>
                       <SidebarLink route={Pages.Components.AvatarPage}>Avatar</SidebarLink>
                       <SidebarLink route={Pages.Components.BannerPage}>Banner</SidebarLink>
@@ -71,11 +70,13 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Charts</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Charts.GeoMapPage}>GeoMap</SidebarLink>
-                          <SidebarLink route={Pages.Components.Charts.LineChartPage}>LineChart</SidebarLink>
-                          <SidebarLink route={Pages.Components.Charts.PiePage}>Pie</SidebarLink>
-                          <SidebarLink route={Pages.Components.Charts.TablePage}>Table</SidebarLink>
-                          <SidebarLink route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Charts.GeoMapPage}>GeoMap</SidebarLink>
+                            <SidebarLink route={Pages.Components.Charts.LineChartPage}>LineChart</SidebarLink>
+                            <SidebarLink route={Pages.Components.Charts.PiePage}>Pie</SidebarLink>
+                            <SidebarLink route={Pages.Components.Charts.TablePage}>Table</SidebarLink>
+                            <SidebarLink route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -89,9 +90,11 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Datepicker</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Date.DatepickerPage}>Datepicker</SidebarLink>
-                          <SidebarLink route={Pages.Components.Date.SingleDatePage}>Single Date</SidebarLink>
-                          <SidebarLink route={Pages.Components.Date.RangeDatePage}>Range</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Date.DatepickerPage}>Datepicker</SidebarLink>
+                            <SidebarLink route={Pages.Components.Date.SingleDatePage}>Single Date</SidebarLink>
+                            <SidebarLink route={Pages.Components.Date.RangeDatePage}>Range</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -102,12 +105,14 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Dialog</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Dialog.ModalPage}>Dialog</SidebarLink>
-                          <SidebarLink route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
-                          <SidebarLink route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
-                          <SidebarLink route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
-                          <SidebarLink route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
-                          <SidebarLink route={Pages.Components.Dialog.PopoverPage}>Popover</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Dialog.ModalPage}>Dialog</SidebarLink>
+                            <SidebarLink route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
+                            <SidebarLink route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
+                            <SidebarLink route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
+                            <SidebarLink route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
+                            <SidebarLink route={Pages.Components.Dialog.PopoverPage}>Popover</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -125,8 +130,10 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Progress</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Progress.CircularPage}>Circular</SidebarLink>
-                          <SidebarLink route={Pages.Components.Progress.LinearPage}>Linear</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Progress.CircularPage}>Circular</SidebarLink>
+                            <SidebarLink route={Pages.Components.Progress.LinearPage}>Linear</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -140,10 +147,12 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Select</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Select.DropdownPage}>Dropdown</SidebarLink>
-                          <SidebarLink route={Pages.Components.Select.SelectPage}>Select</SidebarLink>
-                          <SidebarLink route={Pages.Components.Select.SingleSelectPage}>Single select</SidebarLink>
-                          <SidebarLink route={Pages.Components.Select.MultiSelectPage}>Multi select</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Select.DropdownPage}>Dropdown</SidebarLink>
+                            <SidebarLink route={Pages.Components.Select.SelectPage}>Select</SidebarLink>
+                            <SidebarLink route={Pages.Components.Select.SingleSelectPage}>Single select</SidebarLink>
+                            <SidebarLink route={Pages.Components.Select.MultiSelectPage}>Multi select</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -158,16 +167,18 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Text Input</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.TextInput.TextInputPage}>Text input</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.NumberPage}>Number *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.DatePage}>Date *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.TimePage}>Time *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.DateTimePage}>DateTime *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.EmailPage}>Email *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.PasswordPage}>Password</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.SearchPage}>Search *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.TelephonePage}>Telephone *</SidebarLink>
-                          <SidebarLink route={Pages.Components.TextInput.UrlPage}>Url *</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.TextInput.TextInputPage}>Text input</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.NumberPage}>Number *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.DatePage}>Date *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.TimePage}>Time *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.DateTimePage}>DateTime *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.EmailPage}>Email *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.PasswordPage}>Password</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.SearchPage}>Search *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.TelephonePage}>Telephone *</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.UrlPage}>Url *</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
 
@@ -182,12 +193,14 @@ defmodule MoonWeb.Components.LeftMenu do
                       >
                         <:title>Typography</:title>
                         <:content>
-                          <SidebarLink route={Pages.Components.Typography.CaptionPage}>Caption</SidebarLink>
-                          <SidebarLink route={Pages.Components.Typography.HeadingPage}>Heading</SidebarLink>
-                          <SidebarLink route={Pages.Components.Typography.TextPage}>Text</SidebarLink>
+                          <div class="flex-grow flex flex-col gap-2 pl-8">
+                            <SidebarLink route={Pages.Components.Typography.CaptionPage}>Caption</SidebarLink>
+                            <SidebarLink route={Pages.Components.Typography.HeadingPage}>Heading</SidebarLink>
+                            <SidebarLink route={Pages.Components.Typography.TextPage}>Text</SidebarLink>
+                          </div>
                         </:content>
                       </Accordion>
-                    </TopToDown>
+                    </div>
                   </:content>
                 </Accordion>
               </div>
