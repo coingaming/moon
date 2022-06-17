@@ -2,12 +2,11 @@ defmodule MoonWeb.Pages.MainPage do
   @moduledoc false
 
   use MoonWeb, :live_view
-  alias Moon.Components.Link
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.Facing.FacingReel
   alias MoonWeb.Components.Facing.CardArticle
+  alias MoonWeb.Components.Facing.SectionTitle
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.Label
 
   data breadcrumbs, :any,

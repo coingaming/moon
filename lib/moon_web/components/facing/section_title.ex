@@ -3,11 +3,16 @@ defmodule MoonWeb.Components.Facing.SectionTitle do
 
   use MoonWeb, :stateless_component
 
+  prop title, :string
+  prop description, :string
+  slot default
+
   def render(assigns) do
     ~F"""
-      <div className="flex flex-row items-start gap-16 overflow-x-auto reel">
-        <#slot/>
-      </div>
+    <div className="flex flex-col gap-6">
+      <h2 :if={@title} className="text-moon-32 font-medium">{@title}</h2>
+      <p :if={@description} className="text-moon-16">{@description}</p>
+    </div>
     """
   end
 end
