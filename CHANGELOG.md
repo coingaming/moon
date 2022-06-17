@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/coingaming/moon/compare/v2.12.0...v2.12.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* Toast didn't work because of wrong args for show/2 ([ac74abd](https://github.com/coingaming/moon/commit/ac74abd5cfa0da5198294e3ee202bfac69280366))
+
 # [2.12.0](https://github.com/coingaming/moon/compare/v2.11.10...v2.12.0) (2022-06-16)
 
 
