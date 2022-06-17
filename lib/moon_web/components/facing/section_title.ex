@@ -9,9 +9,9 @@ defmodule MoonWeb.Components.Facing.SectionTitle do
 
   def render(assigns) do
     ~F"""
-    <div className="flex flex-col gap-6">
-      <h2 :if={@title} className="text-moon-32 font-medium">{@title}</h2>
-      <p :if={@description} className="text-moon-16">{@description}</p>
+    <div class="flex flex-col gap-6">
+      <h2 :if={@title} class="text-moon-32 font-medium">{@title}</h2>
+      <p :if={@description} class="text-moon-16">{@description}</p>
     </div>
     """
   end
