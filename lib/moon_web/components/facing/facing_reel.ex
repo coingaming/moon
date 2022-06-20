@@ -7,9 +7,9 @@ defmodule MoonWeb.Components.Facing.FacingReel do
 
   def render(assigns) do
     ~F"""
-      <div class="flex flex-row items-start gap-16 overflow-x-auto reel">
-        <#slot/>
-      </div>
+    <div class="flex flex-row items-start gap-16 overflow-x-auto reel">
+      <#slot />
+    </div>
     """
   end
 end
