@@ -10,18 +10,6 @@ defmodule MoonWeb.Pages.MainPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
 
-  data breadcrumbs, :any,
-    default: [
-      %{
-        to: "#",
-        name: "Home"
-      },
-      %{
-        to: "/",
-        name: "Home"
-      }
-    ]
-
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
@@ -32,11 +20,11 @@ defmodule MoonWeb.Pages.MainPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
+    <Page theme_name={@theme_name} active_page={@active_page}>
+      <TopToDown class="relative" gap="gap-16">
         <div class="w-fit"><Label size="twoxsmall">Open Source</Label></div>
-        <div class="relative z-50 flex flex-col items-start gap-6">
-          <h1 class="text-moon-64 font-medium">Moon design system.</h1>
+        <div class="relative z-40 flex flex-col items-start gap-6">
+          <h1 class="text-moon-64 font-medium mt-10">Moon design system.</h1>
           <p class="text-moon-24 max-w-screen-sm">
             Moon is Yolo Group product design system that helps us maintain the
             integrity of their user experience and optimize design and development
@@ -44,7 +32,7 @@ defmodule MoonWeb.Pages.MainPage do
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-10">
+        <div className="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-50">
           <ForDesigners />
         </div>
 
