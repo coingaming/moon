@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.MainPage do
   alias MoonWeb.Components.Facing.CardArticle
   alias MoonWeb.Components.Facing.SectionTitle
   alias MoonWeb.Components.Facing.ForDesigners
+  alias MoonWeb.Components.Facing.ForDevelopers
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
 
@@ -34,6 +35,7 @@ defmodule MoonWeb.Pages.MainPage do
 
         <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-50">
           <ForDesigners />
+          <ForDevelopers />
         </div>
 
         <!-- UPDATES -->
