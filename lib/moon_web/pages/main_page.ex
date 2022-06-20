@@ -32,12 +32,12 @@ defmodule MoonWeb.Pages.MainPage do
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-50">
+        <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-50">
           <ForDesigners />
         </div>
 
         <!-- UPDATES -->
-        <div className="flex flex-col gap-12">
+        <div class="flex flex-col gap-12">
           <SectionTitle title="Updates." description="Explore our community features." />
           <FacingReel>
             <CardArticle
