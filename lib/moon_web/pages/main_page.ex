@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.MainPage do
   alias MoonWeb.Components.Facing.SectionTitle
   alias MoonWeb.Components.Facing.ForDesigners
   alias MoonWeb.Components.Facing.ForDevelopers
+  alias MoonWeb.Components.Facing.Future
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
 
@@ -73,6 +74,8 @@ defmodule MoonWeb.Pages.MainPage do
             </CardArticle>
           </FacingReel>
         </div>
+
+        <Future />
 
       </TopToDown>
     </Page>
