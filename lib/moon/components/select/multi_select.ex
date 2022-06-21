@@ -54,8 +54,6 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   prop size, :string
   prop prompt, :string
   prop disabled, :boolean
-  prop background_color_class, :string
-  prop text_color_class, :string
   prop selected_label_background_color, :string
   prop selected_label_text_color, :string
 
