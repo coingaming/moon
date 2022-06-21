@@ -13,11 +13,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <GithubIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a
-            href="https://github.com/coingaming/moon-design"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://github.com/coingaming/moon-design" target="_blank" rel="noreferrer">
             For developers.
           </a>
         </h2>
@@ -27,22 +23,30 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex bg-transparent">
         <a href="https://github.com/coingaming/moon-design" target="_blank" rel="noreferrer">
-            <Button variant="secondary">Github</Button>
+          <Button variant="secondary">Github</Button>
         </a>
         <a href="gettingStarted">
-            <Button variant="secondary">Getting Started</Button>
+          <Button variant="secondary">Getting Started</Button>
         </a>
         <a href="tokens">
-            <Button variant="secondary">Design Tokens</Button>
+          <Button variant="secondary">Design Tokens</Button>
         </a>
-        <a href="https://github.com/coingaming/moon-design/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts" target="_blank" rel="noreferrer">
-            <Button variant="secondary">Creating Themes</Button>
+        <a
+          href="https://github.com/coingaming/moon-design/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button variant="secondary">Creating Themes</Button>
         </a>
-        <a href="https://github.com/coingaming/moon-design/blob/develop/CONTRIBUTING.md" target="_blank" rel="noreferrer">
-            <Button variant="secondary">Contribution</Button>
+        <a
+          href="https://github.com/coingaming/moon-design/blob/develop/CONTRIBUTING.md"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button variant="secondary">Contribution</Button>
         </a>
         <a href="components/accordion">
-            <Button variant="secondary">Components</Button>
+          <Button variant="secondary">Components</Button>
         </a>
       </div>
     </div>
