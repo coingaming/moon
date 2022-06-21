@@ -11,17 +11,17 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   prop select_id, :string
   prop option, :any
   prop size, :string
-  prop background_color_class, :string, default: "bulma-100"
-  prop text_color_class, :string, default: "gohan-100"
-  prop disabled, :boolean, default: false
+  prop disabled, :boolean
+  prop selected_label_background_color, :string
+  prop selected_label_text_color, :string
 
   def render(assigns) do
     ~F"""
     {#if @option}
       <Label
         class={SelectHelpers.innerlabel_font_class(@size)}
-        background_color={@background_color_class}
-        color={@text_color_class}
+        background_color={@selected_label_background_color}
+        color={@selected_label_text_color}
       >
         {@option.label}
         <:right_icon>
@@ -53,7 +53,11 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   prop value, :list, default: []
   prop size, :string
   prop prompt, :string
-  prop disabled, :boolean, default: false
+  prop disabled, :boolean
+  prop background_color_class, :string
+  prop text_color_class, :string
+  prop selected_label_background_color, :string
+  prop selected_label_text_color, :string
 
   def render(assigns) do
     ~F"""
@@ -82,6 +86,8 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
               {=@select_id}
               {=@size}
               {=@disabled}
+              {=@selected_label_background_color}
+              {=@selected_label_text_color}
               option={SelectHelpers.get_option(@options, v)}
             />
           {/for}
@@ -120,7 +126,7 @@ defmodule Moon.Components.Select.MultiSelect do
   prop value, :any
   prop prompt, :string
   prop error, :string
-  prop disabled, :boolean
+  prop disabled, :boolean, default: false
   prop required, :boolean
   prop class, :string
   prop size, :string, values: ~w(small medium large xlarge), default: "medium"
@@ -128,6 +134,8 @@ defmodule Moon.Components.Select.MultiSelect do
   prop popover_class, :string
   prop field_border_class, :string, default: FieldBorder.get_default_states_class()
   prop field_border_color_class, :string
+  prop selected_label_background_color, :string, default: "bulma-100"
+  prop selected_label_text_color, :string, default: "gohan-100"
 
   data open, :boolean, default: false
 
@@ -157,6 +165,8 @@ defmodule Moon.Components.Select.MultiSelect do
                 {=@prompt}
                 {=@size}
                 {=@disabled}
+                {=@selected_label_background_color}
+                {=@selected_label_text_color}
               />
             </:left>
             <:right>
