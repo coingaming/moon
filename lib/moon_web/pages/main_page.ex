@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.MainPage do
   alias MoonWeb.Components.Facing.ForDevelopers
   alias MoonWeb.Components.Facing.Future
   alias MoonWeb.Components.Facing.Contributors
+  alias MoonWeb.Components.Facing.MoonEarth
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
 
@@ -35,13 +36,13 @@ defmodule MoonWeb.Pages.MainPage do
           </p>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 3xl:z-50">
+        <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 z-50">
           <ForDesigners />
           <ForDevelopers />
         </div>
 
         <!-- UPDATES -->
-        <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-12 z-40">
           <SectionTitle title="Updates." description="Explore our community features." />
           <FacingReel>
             <CardArticle
@@ -77,8 +78,8 @@ defmodule MoonWeb.Pages.MainPage do
         </div>
 
         <Future />
-
         <Contributors />
+        <MoonEarth />
       </TopToDown>
     </Page>
     """
