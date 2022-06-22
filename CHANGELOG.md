@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/coingaming/moon/compare/v2.12.1...v2.13.0) (2022-06-22)
+
+
+### Features
+
+* create the main/home page [MDS-133] ([#297](https://github.com/coingaming/moon/issues/297)) ([44da59c](https://github.com/coingaming/moon/commit/44da59cf6e3e87159f6fd99a22a5a88fa4de9b57))
+
 ## [2.12.1](https://github.com/coingaming/moon/compare/v2.12.0...v2.12.1) (2022-06-17)
 
 
