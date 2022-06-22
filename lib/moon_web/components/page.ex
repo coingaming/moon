@@ -24,7 +24,12 @@ defmodule MoonWeb.Components.Page do
 
       <div class="min-h-screen bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12 pb-6">
         <div class="flex flex-col grow max-w-screen-xl">
-          <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
+          <Breadcrumbs
+            :if={@breadcrumbs}
+            theme_name={@theme_name}
+            breadcrumbs={@breadcrumbs}
+            class="mb-2"
+          />
           <#slot />
           <Footer />
           <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />

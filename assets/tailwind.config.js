@@ -19,6 +19,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1800px',
+      },
       backgroundOpacity: {
         "12": "0.12",
       },
@@ -312,6 +315,8 @@ module.exports = {
       hover: "rgba(34, 34, 37, 0.12)",
       "primary-hover": "rgba(0, 0, 0, 0.08)",
       "slate-200": "rgb(226 232 240)",
+      "for-designers": "rgb(52 72 240)",
+      "for-developers": "rgb(149 241 213)"
     },
   },
   plugins: [
