@@ -3,9 +3,6 @@ defmodule MoonWeb.Pages.MainPage do
 
   use MoonWeb, :live_view
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Facing.FacingReel
-  alias MoonWeb.Components.Facing.CardArticle
-  alias MoonWeb.Components.Facing.SectionTitle
   alias MoonWeb.Components.Facing.ForDesigners
   alias MoonWeb.Components.Facing.ForDevelopers
   alias MoonWeb.Components.Facing.Updates
