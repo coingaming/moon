@@ -6,6 +6,9 @@ defmodule MoonWeb.Pages.Components.BannerPage do
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Components.Banner
+  alias Moon.Components.Button
 
   data breadcrumbs, :any,
     default: [
@@ -32,9 +35,30 @@ defmodule MoonWeb.Pages.Components.BannerPage do
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
         <Heading size={32}>Banner</Heading>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="banner_1">
+            <:example>
+              <Banner
+                description="Your email is not verified. Verify to enable withdrawals."
+                is_multiline={false}
+              >
+                <:link_slot>
+                  <Button variant="ghost">Resend verification link to email ›</Button>
+                </:link_slot>
+              </Banner>
+            </:example>
+
+            <:code>{banner_1_code()}</:code>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
-      Coming soon
+
     </Page>
+    """
+  end
+
+  def banner_1_code do
+    """
     """
   end
 end
