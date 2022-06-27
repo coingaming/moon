@@ -1,3 +1,10 @@
+## [2.13.2](https://github.com/coingaming/moon/compare/v2.13.1...v2.13.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* file input button full width ([#294](https://github.com/coingaming/moon/issues/294)) ([8ef9c86](https://github.com/coingaming/moon/commit/8ef9c86cd82a65ec702c3b76b5adb0ef2ebd5cc9))
+
 ## [2.13.1](https://github.com/coingaming/moon/compare/v2.13.0...v2.13.1) (2022-06-22)
 
 
