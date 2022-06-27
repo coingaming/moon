@@ -8,7 +8,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias Moon.Components.Field
   alias Moon.Components.Heading
   alias Moon.Components.Select.SingleSelect
-  alias Moon.Components.FieldLabel
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -51,7 +50,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :description => 'Options for the select'
       },
       %{
-        :name => 'prompt',
+        :name => 'label',
         :type => 'string',
         :required => 'false',
         :default => '-',
@@ -160,7 +159,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
             <:example>
               <Form for={@user_changeset} change="form_update" submit="form_submit">
                 <Field name={:role}>
-                  <FieldLabel>Permissions</FieldLabel>
                   <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
                 </Field>
               </Form>
@@ -172,13 +170,13 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           </ExampleAndCode>
 
           <ExampleAndCode
-            title="Single Select (prompt inside)"
+            title="Single Select (label inside)"
             id="single_select_with_options_as_prop_and_prompt_inside"
           >
             <:example>
               <Form for={@user_changeset} change="form_update" submit="form_submit">
                 <Field name={:role}>
-                  <SingleSelect id="user-roles-example-2" options={User.available_roles()} prompt="Select role" />
+                  <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
                 </Field>
               </Form>
             </:example>
@@ -198,7 +196,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   <SingleSelect
                     id="user-roles-example-3"
                     options={User.available_roles_with_left_icon()}
-                    prompt="Select role"
+                    label="Select role"
                   />
                 </Field>
               </Form>
@@ -219,7 +217,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   <SingleSelect
                     id="user-roles-example-5"
                     options={User.available_roles_with_left_icon_flag()}
-                    prompt="Select role"
+                    label="Select role"
                   />
                 </Field>
               </Form>
@@ -240,7 +238,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   <SingleSelect
                     id="user-roles-example-4"
                     options={User.available_roles_with_right_icon()}
-                    prompt="Select role"
+                    label="Select role"
                   />
                 </Field>
               </Form>
@@ -258,7 +256,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <div class="flex flex-col gap-4">
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
                   <Field name={:role}>
-                    <FieldLabel>Permissions</FieldLabel>
                     <SingleSelect
                       popover_class="pt-2"
                       id="user-roles-example-17"
@@ -272,7 +269,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-6"
                       options={User.available_roles()}
-                      prompt="Select role"
+                      label="Select role"
                       size="small"
                     />
                   </Field>
@@ -282,7 +279,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-7"
                       options={User.available_roles_with_left_icon()}
-                      prompt="Select role"
+                      label="Select role"
                       size="small"
                     />
                   </Field>
@@ -298,13 +295,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <div class="flex flex-col gap-4">
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
                   <Field name={:role}>
-                    <FieldLabel>Permissions</FieldLabel>
                     <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} />
                   </Field>
                 </Form>
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
                   <Field name={:role}>
-                    <SingleSelect id="user-roles-example-9" options={User.available_roles()} prompt="Select role" />
+                    <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Select role" />
                   </Field>
                 </Form>
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -312,7 +308,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-10"
                       options={User.available_roles_with_left_icon()}
-                      prompt="Select role"
+                      label="Select role"
                     />
                   </Field>
                 </Form>
@@ -327,7 +323,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <div class="flex flex-col gap-4">
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
                   <Field name={:role}>
-                    <FieldLabel>Permissions</FieldLabel>
                     <SingleSelect
                       popover_class="pt-2"
                       id="user-roles-example-11"
@@ -341,7 +336,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-12"
                       options={User.available_roles()}
-                      prompt="Select role"
+                      label="Select role"
                       size="large"
                     />
                   </Field>
@@ -351,7 +346,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-13"
                       options={User.available_roles_with_left_icon()}
-                      prompt="Select role"
+                      label="Select role"
                       size="large"
                     />
                   </Field>
@@ -367,7 +362,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <div class="flex flex-col gap-4">
                 <Form for={@user_changeset} change="form_update" submit="form_submit">
                   <Field name={:role}>
-                    <FieldLabel>Permissions</FieldLabel>
                     <SingleSelect
                       popover_class="pt-2"
                       id="user-roles-example-14"
@@ -381,7 +375,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-15"
                       options={User.available_roles()}
-                      prompt="Select role"
+                      label="Select role"
                       size="xlarge"
                     />
                   </Field>
@@ -391,7 +385,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                     <SingleSelect
                       id="user-roles-example-16"
                       options={User.available_roles_with_left_icon()}
-                      prompt="Select role"
+                      label="Select role"
                       size="xlarge"
                     />
                   </Field>
@@ -406,7 +400,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
             <:example>
               <Form for={@user_changeset} change="form_update" submit="form_submit">
                 <Field name={:role}>
-                  <FieldLabel>Permissions</FieldLabel>
                   <SingleSelect
                     popover_class="pt-2"
                     id="user-roles-example-disabled"
@@ -477,7 +470,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>
@@ -490,7 +482,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <SingleSelect id="user-roles-example-2" options={User.available_roles()} prompt="Select role" />
+        <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
       </Field>
     </Form>
     """
@@ -504,7 +496,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-3"
           options={User.available_roles_with_left_icon()}
-          prompt="Select role"
+          label="Select role"
         />
       </Field>
     </Form>
@@ -519,7 +511,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-4"
           options={User.available_roles_with_right_icon()}
-          prompt="Select role"
+          label="Select role"
         />
       </Field>
     </Form>
@@ -534,7 +526,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-3"
           options={User.available_roles_with_left_icon_flag()}
-          prompt="Select role"
+          label="Select role"
         />
       </Field>
     </Form>
@@ -547,7 +539,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect
           popover_class="pt-2"
           id="user-roles-example-17"
@@ -561,7 +552,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-6"
           options={User.available_roles()}
-          prompt="Select role"
+          label="Select role"
           size="small"
         />
       </Field>
@@ -571,7 +562,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-7"
           options={User.available_roles_with_left_icon()}
-          prompt="Select role"
+          label="Select role"
           size="small"
         />
       </Field>
@@ -585,13 +576,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} />
       </Field>
     </Form>
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <SingleSelect id="user-roles-example-9" options={User.available_roles()} prompt="Select role" />
+        <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Select role" />
       </Field>
     </Form>
     <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -599,7 +589,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-10"
           options={User.available_roles_with_left_icon()}
-          prompt="Select role"
+          label="Select role"
         />
       </Field>
     </Form>
@@ -612,7 +602,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect
           popover_class="pt-2"
           id="user-roles-example-11"
@@ -626,7 +615,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-12"
           options={User.available_roles()}
-          prompt="Select role"
+          label="Select role"
           size="large"
         />
       </Field>
@@ -636,7 +625,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-13"
           options={User.available_roles_with_left_icon()}
-          prompt="Select role"
+          label="Select role"
           size="large"
         />
       </Field>
@@ -650,7 +639,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect
           popover_class="pt-2"
           id="user-roles-example-14"
@@ -664,7 +652,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-15"
           options={User.available_roles()}
-          prompt="Select role"
+          label="Select role"
           size="xlarge"
         />
       </Field>
@@ -674,7 +662,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect
           id="user-roles-example-16"
           options={User.available_roles_with_left_icon()}
-          prompt="Select role"
+          label="Select role"
           size="xlarge"
         />
       </Field>
@@ -688,7 +676,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <FieldLabel>Permissions</FieldLabel>
         <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>

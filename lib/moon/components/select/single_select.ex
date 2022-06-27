@@ -7,14 +7,16 @@ defmodule Moon.Components.Select.SelectedValue.Container do
   alias Moon.Components.Select.Dropdown.Icon
 
   prop option, :any
-  prop prompt, :string
+  prop label, :string
   prop size, :string
   prop is_icon, :boolean, default: false
-  prop is_prompt, :boolean, default: false
+  prop is_label, :boolean, default: false
 
   def render(assigns) do
+    is_inner_label = assigns.is_label and assigns.size in ~w(large xlarge)
+
     ~F"""
-    {#if @is_icon or @is_prompt}
+    {#if is_inner_label or @is_icon}
       <div
         class={"grid grid-rows-1": @is_icon}
         style={get_style("grid-auto-flow": if(@is_icon, do: "column"))}
@@ -26,15 +28,17 @@ defmodule Moon.Components.Select.SelectedValue.Container do
             style="grid-row: span 3 / span 3;"
           />
         {/if}
-        <div
-          class={
-            "text-trunks-100",
-            SelectHelpers.innerlabel_font_class(@size)
-          }
-          style={get_style("grid-col": if(@is_icon, do: "span 2 / span 2"))}
-        >
-          {@prompt}
-        </div>
+        {#if is_inner_label}
+          <div
+            class={
+              "text-trunks-100",
+              SelectHelpers.innerlabel_font_class(@size)
+            }
+            style={get_style("grid-col": if(@is_icon, do: "span 2 / span 2"))}
+          >
+            {@label}
+          </div>
+        {/if}
         <div
           class={
             "text-bulma-100",
@@ -51,7 +55,7 @@ defmodule Moon.Components.Select.SelectedValue.Container do
     {#else}
       <div class={
         "text-bulma-100",
-        SelectHelpers.prompt_font_class(@size)
+        SelectHelpers.label_font_class(@size)
       }>
         {@option.label}
       </div>
@@ -69,12 +73,12 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
 
   prop select_id, :string
   prop option, :any
-  prop prompt, :string
+  prop label, :string
   prop size, :string
 
   def render(assigns) do
     is_icon = not is_nil(assigns.option[:left_icon])
-    is_prompt = not is_nil(assigns.prompt)
+    is_label = not is_nil(assigns.label)
 
     ~F"""
     {#if @option}
@@ -88,9 +92,9 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
         <Moon.Components.Select.SelectedValue.Container
           {=@option}
           {=@size}
-          {=@prompt}
+          {=@label}
           {=is_icon}
-          {=is_prompt}
+          {=is_label}
         />
       </div>
     {/if}
@@ -110,7 +114,7 @@ defmodule Moon.Components.Select.SingleSelect.Value do
   prop class, :any
   prop options, :any
   prop value, :any
-  prop prompt, :string
+  prop label, :string
   prop size, :string
 
   def render(assigns) do
@@ -120,15 +124,16 @@ defmodule Moon.Components.Select.SingleSelect.Value do
         {=@select_id}
         option={SelectHelpers.get_option(@options, @value)}
         {=@size}
-        {=@prompt}
+        {=@label}
       />
-    {#else}
+    {#elseif @size in ~w(large xlarge)}
       <div class={
         "text-trunks-100",
-        SelectHelpers.prompt_font_class(@size)
+        SelectHelpers.label_font_class(@size)
       }>
-        {@prompt}
+        {@label}
       </div>
+    {#else}
     {/if}
     """
   end
@@ -143,6 +148,7 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Autolayouts.PullAside
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
+  alias Moon.Components.FieldLabel
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
@@ -153,7 +159,6 @@ defmodule Moon.Components.Select.SingleSelect do
   prop label, :string
   prop options, :any, default: []
   prop value, :any
-  prop prompt, :string
   prop error, :string
   prop disabled, :boolean, default: false
   prop required, :boolean
@@ -170,6 +175,14 @@ defmodule Moon.Components.Select.SingleSelect do
 
   def render(assigns) do
     ~F"""
+    {#if @size not in ~w(large xlarge)}
+      <FieldLabel class={
+        "text-trunks-100",
+        SelectHelpers.label_font_class(@size)
+      }>
+        {@label}
+      </FieldLabel>
+    {/if}
     <InputContext {=assigns} :let={form: form, field: field}>
       <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
         {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
@@ -189,7 +202,7 @@ defmodule Moon.Components.Select.SingleSelect do
                 select_id={@id}
                 value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
                 {=@options}
-                {=@prompt}
+                {=@label}
                 {=@size}
               />
             </:left>
