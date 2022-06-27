@@ -1,3 +1,10 @@
+## [2.13.3](https://github.com/coingaming/moon/compare/v2.13.2...v2.13.3) (2022-06-27)
+
+
+### Bug Fixes
+
+* size behaviour like moon.io example ([#298](https://github.com/coingaming/moon/issues/298)) ([8eff470](https://github.com/coingaming/moon/commit/8eff4703570dfd5796c07184ab88e2662bfc95e2))
+
 ## [2.13.2](https://github.com/coingaming/moon/compare/v2.13.1...v2.13.2) (2022-06-27)
 
 
