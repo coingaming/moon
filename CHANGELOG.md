@@ -1,3 +1,24 @@
+## [2.13.3](https://github.com/coingaming/moon/compare/v2.13.2...v2.13.3) (2022-06-27)
+
+
+### Bug Fixes
+
+* size behaviour like moon.io example ([#298](https://github.com/coingaming/moon/issues/298)) ([8eff470](https://github.com/coingaming/moon/commit/8eff4703570dfd5796c07184ab88e2662bfc95e2))
+
+## [2.13.2](https://github.com/coingaming/moon/compare/v2.13.1...v2.13.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* file input button full width ([#294](https://github.com/coingaming/moon/issues/294)) ([8ef9c86](https://github.com/coingaming/moon/commit/8ef9c86cd82a65ec702c3b76b5adb0ef2ebd5cc9))
+
+## [2.13.1](https://github.com/coingaming/moon/compare/v2.13.0...v2.13.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* update version ([54eddc4](https://github.com/coingaming/moon/commit/54eddc4f2db265e2febe62f0f5b4e649c3131ac7))
+
 # [2.13.0](https://github.com/coingaming/moon/compare/v2.12.1...v2.13.0) (2022-06-22)
 
 

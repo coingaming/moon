@@ -56,7 +56,7 @@ defmodule Moon.Components.FileInput do
         <#slot name="default" />
       {/if}
       {#if !slot_assigned?(:default)}
-        <Button class="z-30">
+        <Button class="z-30" full_width>
           {@placeholder}
           <:right_icon_slot><IconUpload /></:right_icon_slot>
         </Button>
