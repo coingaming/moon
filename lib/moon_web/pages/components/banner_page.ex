@@ -83,7 +83,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
             <:code>{banner_4_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode id="banner_10" title="Single Line">
+          <ExampleAndCode id="banner_5" title="Single Line">
             <:example>
               <Banner
                 description="Your email is not verified. Verify to enable withdrawals."
@@ -95,7 +95,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
               </Banner>
             </:example>
 
-            <:code>{banner_10_code()}</:code>
+            <:code>{banner_5_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
@@ -141,8 +141,16 @@ defmodule MoonWeb.Pages.Components.BannerPage do
     """
   end
 
-  def banner_10_code do
+  def banner_5_code do
     """
+    <Banner
+      description="Your email is not verified. Verify to enable withdrawals."
+      is_multiline={false}
+    >
+      <:link_slot>
+        <Button variant="ghost">Resend verification link to email ›</Button>
+      </:link_slot>
+    </Banner>
     """
   end
 end
