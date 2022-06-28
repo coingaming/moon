@@ -37,8 +37,6 @@ defmodule MoonWeb.Pages.Components.BannerPage do
       <TopToDown>
         <Heading size={32}>Banner</Heading>
         <Context put={theme_class: @theme_name}>
-
-
           <ExampleAndCode id="banner_1" title="Default">
             <:example>
               <Banner title="Title here" description="Lorem ipsum dolor..." />
@@ -47,10 +45,9 @@ defmodule MoonWeb.Pages.Components.BannerPage do
             <:code>{banner_1_code()}</:code>
           </ExampleAndCode>
 
-
           <ExampleAndCode id="banner_2" title="Buttons">
             <:example>
-              <Banner title="Title here" description="Lorem ipsum dolor..." >
+              <Banner title="Title here" description="Lorem ipsum dolor...">
                 <:buttons_slot>
                   <Button variant="secondary">Discard</Button>
                   <Button>Confirm</Button>
@@ -63,7 +60,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
 
           <ExampleAndCode id="banner_3" title="Header Icon">
             <:example>
-              <Banner title="Title here" description="Lorem ipsum dolor..." >
+              <Banner title="Title here" description="Lorem ipsum dolor...">
                 <:icon_header_slot>
                   <ControlsClose />
                 </:icon_header_slot>
@@ -75,7 +72,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
 
           <ExampleAndCode id="banner_4" title="Mobile">
             <:example>
-              <Banner title="Title here" description="Lorem ipsum dolor..." is_mobile={true}>
+              <Banner title="Title here" description="Lorem ipsum dolor..." is_mobile>
                 <:buttons_slot>
                   <Button variant="secondary">Discard</Button>
                   <Button>Confirm</Button>
@@ -102,7 +99,6 @@ defmodule MoonWeb.Pages.Components.BannerPage do
           </ExampleAndCode>
         </Context>
       </TopToDown>
-
     </Page>
     """
   end

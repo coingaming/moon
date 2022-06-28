@@ -3,7 +3,6 @@ defmodule MoonComponents.Banner.Container do
 
   use Moon.StatelessComponent
 
-  prop is_multiline, :boolean, default: true
   prop is_mobile, :boolean, default: false
   prop has_buttons, :boolean, default: false
 
@@ -13,7 +12,7 @@ defmodule MoonComponents.Banner.Container do
     ~F"""
     <div class={
       "w-full bg-goten-100 rounded-moon-s-sm",
-      get_container_padding(@is_mobile, @is_multiline),
+      get_container_padding(@is_mobile),
       get_container_display(@has_buttons, @is_mobile)
     }>
       <#slot />
@@ -21,10 +20,11 @@ defmodule MoonComponents.Banner.Container do
     """
   end
 
-  defp get_container_padding(is_mobile, is_multiline) do
-    cond do
-      is_mobile -> "p-4"
-      true -> "p-6"
+  defp get_container_padding(is_mobile) do
+    if is_mobile do
+      "p-4"
+    else
+      "p-6"
     end
   end
 
@@ -126,22 +126,26 @@ defmodule Moon.Components.Banner do
 
   def render(assigns) do
     ~F"""
-    <Container  is_multiline={@is_multiline} is_mobile={@is_mobile} has_buttons={slot_assigned?(:buttons_slot)}>
+    <Container
+      is_multiline={@is_multiline}
+      is_mobile={@is_mobile}
+      has_buttons={slot_assigned?(:buttons_slot)}
+    >
       <Body :if={!@is_multiline} is_multiline={@is_multiline}>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
-        <BodyButtonContainer><#slot name="link_slot"/></BodyButtonContainer>
+        <BodyButtonContainer><#slot name="link_slot" /></BodyButtonContainer>
       </Body>
       <Body :if={@is_multiline} is_multiline={@is_multiline}>
         <div class="grid justify-end grid-cols-[4fr_1fr]">
           <div class="font-semibold">{@title}</div>
           <div :if={slot_assigned?(:icon_header_slot)} class="flex cursor-pointer justify-end">
-            <#slot name="icon_header_slot"/>
+            <#slot name="icon_header_slot" />
           </div>
         </div>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
       </Body>
       <BodyButtonContainer>
-        <#slot name="buttons_slot"/>
+        <#slot name="buttons_slot" />
       </BodyButtonContainer>
     </Container>
     """
