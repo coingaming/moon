@@ -126,10 +126,7 @@ defmodule Moon.Components.Banner do
 
   def render(assigns) do
     ~F"""
-    <Container
-      is_mobile={@is_mobile}
-      has_buttons={slot_assigned?(:buttons_slot)}
-    >
+    <Container is_mobile={@is_mobile} has_buttons={slot_assigned?(:buttons_slot)}>
       <Body :if={!@is_multiline} is_multiline={@is_multiline}>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
         <BodyButtonContainer><#slot name="link_slot" /></BodyButtonContainer>
