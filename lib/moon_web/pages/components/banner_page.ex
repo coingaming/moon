@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Components.Banner
   alias Moon.Components.Button
+  alias Moon.Icons.ControlsClose
 
   data breadcrumbs, :any,
     default: [
@@ -38,7 +39,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
         <Context put={theme_class: @theme_name}>
 
 
-          <ExampleAndCode id="banner_1">
+          <ExampleAndCode id="banner_1" title="Default">
             <:example>
               <Banner title="Title here" description="Lorem ipsum dolor..." />
             </:example>
@@ -46,7 +47,46 @@ defmodule MoonWeb.Pages.Components.BannerPage do
             <:code>{banner_1_code()}</:code>
           </ExampleAndCode>
 
-          <ExampleAndCode id="banner_10">
+
+          <ExampleAndCode id="banner_2" title="Buttons">
+            <:example>
+              <Banner title="Title here" description="Lorem ipsum dolor..." >
+                <:buttons_slot>
+                  <Button variant="secondary">Discard</Button>
+                  <Button>Confirm</Button>
+                </:buttons_slot>
+              </Banner>
+            </:example>
+
+            <:code>{banner_2_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode id="banner_3" title="Header Icon">
+            <:example>
+              <Banner title="Title here" description="Lorem ipsum dolor..." >
+                <:icon_header_slot>
+                  <ControlsClose />
+                </:icon_header_slot>
+              </Banner>
+            </:example>
+
+            <:code>{banner_3_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode id="banner_4" title="Mobile">
+            <:example>
+              <Banner title="Title here" description="Lorem ipsum dolor..." is_mobile={true}>
+                <:buttons_slot>
+                  <Button variant="secondary">Discard</Button>
+                  <Button>Confirm</Button>
+                </:buttons_slot>
+              </Banner>
+            </:example>
+
+            <:code>{banner_4_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode id="banner_10" title="Single Line">
             <:example>
               <Banner
                 description="Your email is not verified. Verify to enable withdrawals."
@@ -70,6 +110,38 @@ defmodule MoonWeb.Pages.Components.BannerPage do
   def banner_1_code do
     """
     <Banner title="Title here" description="Lorem ipsum dolor..." />
+    """
+  end
+
+  def banner_2_code do
+    """
+    <Banner title="Title here" description="Lorem ipsum dolor..." >
+      <:buttons_slot>
+        <Button variant="secondary">Discard</Button>
+        <Button>Confirm</Button>
+      </:buttons_slot>
+    </Banner>
+    """
+  end
+
+  def banner_3_code do
+    """
+    <Banner title="Title here" description="Lorem ipsum dolor..." >
+      <:icon_header_slot>
+        <ControlsClose />
+      </:icon_header_slot>
+    </Banner>
+    """
+  end
+
+  def banner_4_code do
+    """
+    <Banner title="Title here" description="Lorem ipsum dolor..." is_mobile={true}>
+      <:buttons_slot>
+        <Button variant="secondary">Discard</Button>
+        <Button>Confirm</Button>
+      </:buttons_slot>
+    </Banner>
     """
   end
 

@@ -134,7 +134,7 @@ defmodule Moon.Components.Banner do
       <Body :if={@is_multiline} is_multiline={@is_multiline}>
         <div class="grid justify-end grid-cols-[4fr_1fr]">
           <div class="font-semibold">{@title}</div>
-          <div :if={slot_assigned?(:icon_header_slot)}>
+          <div :if={slot_assigned?(:icon_header_slot)} class="flex cursor-pointer justify-end">
             <#slot name="icon_header_slot"/>
           </div>
         </div>
