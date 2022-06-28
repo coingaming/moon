@@ -23,9 +23,8 @@ defmodule MoonComponents.Banner.Container do
 
   defp get_container_padding(is_mobile, is_multiline) do
     cond do
-      is_multiline -> "p-6"
       is_mobile -> "p-4"
-      true -> "p-2"
+      true -> "p-6"
     end
   end
 
@@ -57,7 +56,7 @@ defmodule MoonComponents.Banner.Body do
 
   defp get_body_classes(is_multiline) do
     if is_multiline do
-      "grid grid-cols-[1fr_1fr]"
+      "grid grid-rows-[1fr_1fr]"
     else
       "flex gap-2"
     end
@@ -127,11 +126,23 @@ defmodule Moon.Components.Banner do
 
   def render(assigns) do
     ~F"""
-    <Container is_multiline={@is_multiline} is_mobile={@is_mobile} has_buttons={slot_assigned?(:buttons_slot)}>
-      <Body is_multiline={@is_multiline}>
+    <Container  is_multiline={@is_multiline} is_mobile={@is_mobile} has_buttons={slot_assigned?(:buttons_slot)}>
+      <Body :if={!@is_multiline} is_multiline={@is_multiline}>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
         <BodyButtonContainer><#slot name="link_slot"/></BodyButtonContainer>
       </Body>
+      <Body :if={@is_multiline} is_multiline={@is_multiline}>
+        <div class="grid justify-end grid-cols-[4fr_1fr]">
+          <div class="font-semibold">{@title}</div>
+          <div :if={slot_assigned?(:icon_header_slot)}>
+            <#slot name="icon_header_slot"/>
+          </div>
+        </div>
+        <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
+      </Body>
+      <BodyButtonContainer>
+        <#slot name="buttons_slot"/>
+      </BodyButtonContainer>
     </Container>
     """
   end

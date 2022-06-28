@@ -36,7 +36,17 @@ defmodule MoonWeb.Pages.Components.BannerPage do
       <TopToDown>
         <Heading size={32}>Banner</Heading>
         <Context put={theme_class: @theme_name}>
+
+
           <ExampleAndCode id="banner_1">
+            <:example>
+              <Banner title="Title here" description="Lorem ipsum dolor..." />
+            </:example>
+
+            <:code>{banner_1_code()}</:code>
+          </ExampleAndCode>
+
+          <ExampleAndCode id="banner_10">
             <:example>
               <Banner
                 description="Your email is not verified. Verify to enable withdrawals."
@@ -48,7 +58,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
               </Banner>
             </:example>
 
-            <:code>{banner_1_code()}</:code>
+            <:code>{banner_10_code()}</:code>
           </ExampleAndCode>
         </Context>
       </TopToDown>
@@ -58,6 +68,12 @@ defmodule MoonWeb.Pages.Components.BannerPage do
   end
 
   def banner_1_code do
+    """
+    <Banner title="Title here" description="Lorem ipsum dolor..." />
+    """
+  end
+
+  def banner_10_code do
     """
     """
   end
