@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/coingaming/moon/compare/v2.14.1...v2.15.0) (2022-06-29)
+
+
+### Features
+
+* added center of screen ([#300](https://github.com/coingaming/moon/issues/300)) ([6637137](https://github.com/coingaming/moon/commit/6637137d8d13cdde471cf6bfa30167b716256511))
+
 ## [2.14.1](https://github.com/coingaming/moon/compare/v2.14.0...v2.14.1) (2022-06-28)
 
 
