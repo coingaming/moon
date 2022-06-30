@@ -168,7 +168,7 @@ defmodule MoonWeb.Components.LeftMenu do
                         <:title>Text Input</:title>
                         <:content>
                           <div class="flex-grow flex flex-col gap-2 pl-8">
-                            <SidebarLink route={Pages.Components.TextInput.TextInputPage}>Text input</SidebarLink>
+                            <SidebarLink route={Pages.Components.TextInput.TextInputPage2}>Text input</SidebarLink>
                             <SidebarLink route={Pages.Components.TextInput.NumberPage}>Number *</SidebarLink>
                             <SidebarLink route={Pages.Components.TextInput.DatePage}>Date *</SidebarLink>
                             <SidebarLink route={Pages.Components.TextInput.TimePage}>Time *</SidebarLink>
