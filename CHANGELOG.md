@@ -1,3 +1,10 @@
+## [2.15.1](https://github.com/coingaming/moon/compare/v2.15.0...v2.15.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* added missing country flags ([#301](https://github.com/coingaming/moon/issues/301)) ([9159440](https://github.com/coingaming/moon/commit/915944034b6896e46ec31f7cbdabb68efaea66a7))
+
 # [2.15.0](https://github.com/coingaming/moon/compare/v2.14.1...v2.15.0) (2022-06-29)
 
 
