@@ -148,8 +148,9 @@ module.exports = {
           "100%": { transform: "rotate(360deg)" },
         },
       },
-    },
-    fontWeight: {
+
+
+      fontWeight: {
       normal: 400,
       semibold: 500,
     },
@@ -318,6 +319,8 @@ module.exports = {
       "for-designers": "rgb(52 72 240)",
       "for-developers": "rgb(149 241 213)"
     },
+    },
+    
   },
   plugins: [
     require("@tailwindcss/aspect-ratio"),
