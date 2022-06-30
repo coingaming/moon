@@ -11,6 +11,7 @@ defmodule Moon.Helpers.CountryFlags do
       AL
       AM
       AO
+      AQ
       AR
       AS
       AT
@@ -31,6 +32,7 @@ defmodule Moon.Helpers.CountryFlags do
       BM
       BN
       BO
+      BQ
       BR
       BS
       BT
@@ -66,6 +68,7 @@ defmodule Moon.Helpers.CountryFlags do
       EC
       EE
       EG
+      EH
       ER
       ES
       ET
