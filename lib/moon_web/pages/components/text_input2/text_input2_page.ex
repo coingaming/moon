@@ -36,13 +36,12 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <Heading size={56} class="mb-4">Text Input</Heading>
 
         <ExampleAndCode id="input_1" title="Default">
-            <:example>
-              <TextInput2 />
-            </:example>
+          <:example>
+            <TextInput2 />
+          </:example>
 
-            <:code>{text_input_code()}</:code>
-          </ExampleAndCode>
-
+          <:code>{text_input_code()}</:code>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """

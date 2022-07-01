@@ -30,6 +30,13 @@ defmodule Moon.Components.TextInput2 do
   prop disabled, :boolean
   prop label, :string
 
+  prop is_sharp_left_side, :boolean
+  prop is_sharp_right_side, :boolean
+  prop is_sharp_top_side, :boolean
+  prop is_sharp_bottom_side, :boolean
+  prop is_top_bottom_border_hidden, :boolean
+  prop is_side_border_hidden, :boolean
+
   slot label_slot
   slot hint_text_slot
   slot show_password_text
@@ -42,19 +49,33 @@ defmodule Moon.Components.TextInput2 do
 
   defp get_password_component(assigns) do
     ~F"""
-
+    
     """
   end
 
   defp get_input_inner_label_component(assigns) do
     ~F"""
-
+    
     """
   end
 
   defp get_text_input_basic_component(assigns) do
     ~F"""
-    <TextInputBasic />
+    <TextInputBasic
+      disabled={@disabled}
+      dir={@dir}
+      label={@label}
+      is_error={@is_error}
+      size={@size}
+      type={@type}
+      is_sharp_left_side={@is_sharp_left_side}
+      is_sharp_right_side={@is_sharp_right_side}
+      is_sharp_top_side={@is_sharp_top_side}
+      is_sharp_bottom_side={@is_sharp_bottom_side}
+      is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+      is_side_border_hidden={@is_side_border_hidden}
+      is_first={@is_first}
+    />
     """
   end
 end

@@ -21,4 +21,23 @@ defmodule Moon.Components.TextInput.Utils do
         "h-10 leading-10 rounded-moon-i-sm hover:rounded-moon-i-sm focus:rounded-moon-i-sm invalid:rounded-moon-i-sm"
     end
   end
+
+  def make_border(
+        is_side_border_hidden,
+        is_top_bottom_border_hidden,
+        is_first,
+        is_rtl,
+        error
+      ) do
+    cond do
+      error -> ""
+      is_side_border_hidden && is_rtl && is_first -> "input-lsb-hidden"
+      is_side_border_hidden && is_rtl -> "input-rsb-hidden"
+      is_side_border_hidden && is_first -> "input-rsb-hidden"
+      is_side_border_hidden -> "input-lsb-hidden"
+      is_top_bottom_border_hidden && is_first -> "input-bbb-hidden"
+      is_top_bottom_border_hidden -> "input-tbb-hidden"
+      true -> ""
+    end
+  end
 end
