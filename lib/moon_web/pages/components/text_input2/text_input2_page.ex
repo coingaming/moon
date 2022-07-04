@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
   alias MoonWeb.Components.Page
   alias Moon.Components.TextInput2
   alias Moon.Components.Heading
+  alias Moon.Autolayouts.LeftToRight
 
   data breadcrumbs, :any,
     default: [
@@ -35,6 +36,18 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
       <TopToDown>
         <Heading size={56} class="mb-4">Text Input</Heading>
 
+
+        <ExampleAndCode id="input_010" title="Label">
+          <:example>
+            <LeftToRight>
+              <TextInput2 label="medium" />
+              <TextInput2 size="large" label="large" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_010_code()}</:code>
+        </ExampleAndCode>
+
         <ExampleAndCode id="input_1" title="Default">
           <:example>
             <TextInput2 />
@@ -50,7 +63,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
             </TextInput2>
           </:example>
 
-          <:code>{text_input_2_code()}</:code>
+          <:code>{text_input_10_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
@@ -63,11 +76,18 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     """
   end
 
-  def text_input_2_code do
+  def text_input_10_code do
     """
     <TextInput2>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput2>
+    """
+  end
+
+  def text_input_010_code do
+    """
+    <TextInput2 label="medium" />
+    <TextInput2 size="large" label="large" />
     """
   end
 end

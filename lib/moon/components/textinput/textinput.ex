@@ -37,7 +37,6 @@ defmodule Moon.Components.TextInput2 do
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
 
-  slot label_slot
   slot hint_text_slot
   slot show_password_text
 
