@@ -77,12 +77,31 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           <:code>{text_input_010_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="input_1" title="Default">
+        <ExampleAndCode id="input_009" title="Date">
           <:example>
-            <TextInput2 />
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="date"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput2
+                type="date"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput2
+                type="date"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. 1234"
+              />
+            </LeftToRight>
           </:example>
 
-          <:code>{text_input_1_code()}</:code>
+          <:code>{text_input_009_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="input_10" title="Hint Text">
@@ -107,9 +126,49 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     """
   end
 
-  def text_input_1_code do
+  def text_input_010_code do
     """
-    <TextInput2 />
+    <TextInput2
+      type="number"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput2
+      type="number"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput2
+      type="number"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. 1234"
+    />
+    """
+  end
+
+  def text_input_009_code do
+    """
+    <TextInput2
+      type="date"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput2
+      type="date"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput2
+      type="date"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. 1234"
+    />
     """
   end
 
@@ -118,13 +177,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     <TextInput2>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput2>
-    """
-  end
-
-  def text_input_010_code do
-    """
-    <TextInput2 label="medium" />
-    <TextInput2 size="lg" label="large" />
     """
   end
 end
