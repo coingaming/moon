@@ -21,12 +21,13 @@ defmodule Moon.Components.TextInput.TextInputBasic do
       "text",
       "time",
       "url"
-    ]
+    ],
+    default: "text"
 
   prop placeholder, :string
   prop is_error, :boolean
   prop dir, :string, values: ["ltr", "rtl"], default: "ltr"
-  prop background_color, :string, values: Moon.colors()
+  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
   prop is_first, :boolean
   prop disabled, :boolean
   prop label, :string
@@ -62,6 +63,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         placeholder={@placeholder}
         required={@required}
         step={@step}
+        background_color={@background_color}
         is_sharp_left_side={@is_sharp_left_side}
         is_sharp_right_side={@is_sharp_right_side}
         is_sharp_top_side={@is_sharp_top_side}
