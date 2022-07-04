@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           <:code>{text_input_020_code()}</:code>
         </ExampleAndCode>
 
-        <Heading size={32} class="mb-4">Text Input Types</Heading>
+        <Heading size={32} class="mt-16 mb-4">Text Input Types</Heading>
 
         <ExampleAndCode id="input_010" title="Number">
           <:example>
@@ -84,25 +84,145 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
                 type="date"
                 size="md"
                 label="Medium (Default: md)"
-                placeholder="e.g. 1234"
+                placeholder="Placeholder"
               />
               <TextInput2
                 type="date"
                 size="lg"
                 label="Large (lg)"
-                placeholder="e.g. 1234"
+                placeholder="Placeholder"
               />
               <TextInput2
                 type="date"
                 size="xl"
                 label="Xlarge (xl)"
-                placeholder="e.g. 1234"
+                placeholder="Placeholder"
               />
             </LeftToRight>
           </:example>
 
           <:code>{text_input_009_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode id="input_008" title="Time">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="time"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput2
+                type="time"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Placeholder"
+              />
+              <TextInput2
+                type="time"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Placeholder"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_008_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_007" title="Date Time">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="datetime-local"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput2
+                type="datetime-local"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Placeholder"
+              />
+              <TextInput2
+                type="datetime-local"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Placeholder"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_007_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_006" title="Email">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                type="email"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_006_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_005" title="Password TODO">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              TODO
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_006_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_004" title="Search">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                type="email"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_004_code()}</:code>
+        </ExampleAndCode>
+
+
 
         <ExampleAndCode id="input_10" title="Hint Text">
           <:example>
@@ -155,20 +275,99 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
       type="date"
       size="md"
       label="Medium (Default: md)"
-      placeholder="e.g. 1234"
+      placeholder="Placeholder"
     />
     <TextInput2
       type="date"
       size="lg"
       label="Large (lg)"
-      placeholder="e.g. 1234"
+      placeholder="Placeholder"
     />
     <TextInput2
       type="date"
       size="xl"
       label="Xlarge (xl)"
-      placeholder="e.g. 1234"
+      placeholder="Placeholder"
     />
+    """
+  end
+
+  def text_input_008_code do
+    """
+    <TextInput2
+      type="time"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Placeholder"
+    />
+    <TextInput2
+      type="time"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Placeholder"
+    />
+    <TextInput2
+      type="time"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Placeholder"
+    />
+    """
+  end
+
+  def text_input_007_code do
+    """
+    <TextInput2
+      type="datetime-local"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Placeholder"
+    />
+    <TextInput2
+      type="datetime-local"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Placeholder"
+    />
+    <TextInput2
+      type="datetime-local"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Placeholder"
+    />
+    """
+  end
+
+  def text_input_006_code do
+    """
+    <TextInput2
+      type="email"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="email"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="email"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    """
+  end
+
+  def text_input_005_code do
+    """
+    """
+  end
+
+  def text_input_004_code do
+    """
     """
   end
 
