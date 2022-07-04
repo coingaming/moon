@@ -1,3 +1,10 @@
+## [2.15.2](https://github.com/coingaming/moon/compare/v2.15.1...v2.15.2) (2022-07-04)
+
+
+### Bug Fixes
+
+* Fix undefined colors from lab-light.css ([#302](https://github.com/coingaming/moon/issues/302)) ([33b3f6d](https://github.com/coingaming/moon/commit/33b3f6d492928372450421747161753d068d532e))
+
 ## [2.15.1](https://github.com/coingaming/moon/compare/v2.15.0...v2.15.1) (2022-06-30)
 
 
