@@ -49,13 +49,13 @@ defmodule Moon.Components.TextInput2 do
 
   defp get_password_component(assigns) do
     ~F"""
-    
+
     """
   end
 
   defp get_input_inner_label_component(assigns) do
     ~F"""
-    
+
     """
   end
 
@@ -75,7 +75,11 @@ defmodule Moon.Components.TextInput2 do
       is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
       is_side_border_hidden={@is_side_border_hidden}
       is_first={@is_first}
-    />
+    >
+      <:hint_text_slot>
+        <#slot name="hint_text_slot" />
+      </:hint_text_slot>
+    </TextInputBasic>
     """
   end
 end

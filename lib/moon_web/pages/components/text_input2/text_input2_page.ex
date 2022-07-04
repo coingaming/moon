@@ -40,16 +40,34 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
             <TextInput2 />
           </:example>
 
-          <:code>{text_input_code()}</:code>
+          <:code>{text_input_1_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_10" title="Hint Text">
+          <:example>
+            <TextInput2>
+              <:hint_text_slot>Informative message holder</:hint_text_slot>
+            </TextInput2>
+          </:example>
+
+          <:code>{text_input_2_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
     """
   end
 
-  def text_input_code do
+  def text_input_1_code do
     """
+    <TextInput2 />
+    """
+  end
 
+  def text_input_2_code do
+    """
+    <TextInput2>
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
     """
   end
 end

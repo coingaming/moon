@@ -4,6 +4,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   use Moon.StatelessComponent
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Input
+  alias Moon.Components.TextInput.HintText
 
   prop id, :string
   prop size, :string, values: ["md", "lg", "xl"]
@@ -64,6 +65,9 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         is_side_border_hidden={@is_side_border_hidden}
         is_first={@is_first}
       />
+      <HintText :if={slot_assigned?(:hint_text_slot)}>
+        <#slot name="hint_text_slot" />
+      </HintText>
     </Container>
     """
   end
