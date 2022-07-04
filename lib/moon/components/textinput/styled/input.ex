@@ -26,6 +26,11 @@ defmodule Moon.Components.TextInput.Input do
       "url"
     ]
 
+  prop disabled, :boolean
+  prop placeholder, :string
+  prop required, :boolean
+  prop step, :string, default: "1"
+
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
   prop is_sharp_top_side, :boolean
@@ -36,7 +41,16 @@ defmodule Moon.Components.TextInput.Input do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.TextInput class={
+    <Surface.Components.Form.TextInput
+    opts={
+      placeholder: @placeholder,
+      disabled: @disabled,
+      required: @required && !@disabled,
+      type: @type,
+      "data-lpignore": "true",
+      step: @step
+    }
+    class={
       "block w-full max-w-full py-0 px-4 m-0 appearance-none",
       "text-[1rem] text-bulma transition-shadow box-border relative z-[2]",
       "shadow-input hover:shadow-input-hov",

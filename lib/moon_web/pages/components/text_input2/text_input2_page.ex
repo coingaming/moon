@@ -36,12 +36,41 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
       <TopToDown>
         <Heading size={56} class="mb-4">Text Input</Heading>
 
-
-        <ExampleAndCode id="input_010" title="Label">
+        <ExampleAndCode id="input_020" title="Sizes">
           <:example>
-            <LeftToRight>
-              <TextInput2 label="medium" />
-              <TextInput2 size="large" label="large" />
+            <LeftToRight class="justify-between w-full">
+              <TextInput2 label="Medium (Default: md)" />
+              <TextInput2 size="lg" label="Large (lg)" />
+              <TextInput2 size="xl" label="Xlarge (xl)" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_020_code()}</:code>
+        </ExampleAndCode>
+
+        <Heading size={32} class="mb-4">Text Input Types</Heading>
+
+        <ExampleAndCode id="input_010" title="Number">
+          <:example>
+            <LeftToRight class="justify-between w-full">
+              <TextInput2
+                type="number"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput2
+                type="number"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput2
+                type="number"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. 1234"
+              />
             </LeftToRight>
           </:example>
 
@@ -70,6 +99,14 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     """
   end
 
+  def text_input_020_code do
+    """
+    <TextInput2 label="Medium (Default: md)" />
+    <TextInput2 size="lg" label="Large (lg)" />
+    <TextInput2 size="xl" label="Xlarge (xl)" />
+    """
+  end
+
   def text_input_1_code do
     """
     <TextInput2 />
@@ -87,7 +124,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
   def text_input_010_code do
     """
     <TextInput2 label="medium" />
-    <TextInput2 size="large" label="large" />
+    <TextInput2 size="lg" label="large" />
     """
   end
 end

@@ -2,7 +2,6 @@ defmodule Moon.Components.TextInput2 do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Components.FieldLabel
   alias Moon.Components.TextInput.TextInputBasic
 
   prop id, :string
@@ -29,6 +28,8 @@ defmodule Moon.Components.TextInput2 do
   prop is_first, :boolean
   prop disabled, :boolean
   prop label, :string
+  prop required, :boolean
+  prop step, :string, default: "1"
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -67,6 +68,9 @@ defmodule Moon.Components.TextInput2 do
       is_error={@is_error}
       size={@size}
       type={@type}
+      step={@step}
+      required={@required}
+      placeholder={@placeholder}
       is_sharp_left_side={@is_sharp_left_side}
       is_sharp_right_side={@is_sharp_right_side}
       is_sharp_top_side={@is_sharp_top_side}

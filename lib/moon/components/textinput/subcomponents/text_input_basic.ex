@@ -30,6 +30,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop is_first, :boolean
   prop disabled, :boolean
   prop label, :string
+  prop required, :boolean
+  prop step, :string, default: "1"
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -57,6 +59,9 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         type={@type}
         is_rtl={@dir == "rtl"}
         with_label={@label}
+        placeholder={@placeholder}
+        required={@required}
+        step={@step}
         is_sharp_left_side={@is_sharp_left_side}
         is_sharp_right_side={@is_sharp_right_side}
         is_sharp_top_side={@is_sharp_top_side}
