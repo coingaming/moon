@@ -155,7 +155,23 @@ module.exports = {
         md: "var(--box-shadow--default)",
         lg: "var(--box-shadow--lg)",
         xl: "var(--box-shadow--xl)",
-        border: "0 0 0 2px rgba(var(--color--piccolo-100)) inset"
+        border: "0 0 0 2px rgba(var(--color--piccolo-100)) inset",
+        inset: '0 0 0 1px rgb(var(--color--piccolo-100)) inset',
+        interactive: '0 0 0 2px rgb(var(--color--piccolo-100)) inset',
+        focus: `0 0 0 4px rgba(var(--color--piccolo-100), .13)`,
+        input: '0 0 0 var(--border-width) rgb(var(--color--beerus-100)) inset',
+        'input-hov':
+          '0 0 0 var(--border-i-width) rgb(var(--color--bulma-100) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--color--beerus-100)) inset',
+        'input-err': '0 0 0 var(--border-i-width) rgb(var(--color--chi-chi-100)) inset',
+        'input-focus': '0 0 0 var(--border-i-width) rgb(var(--color--piccolo-100)) inset',
+        'moon-sm':
+          '0 6px 6px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)',
+        'moon-md':
+          '0 12px 12px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)',
+        'moon-lg':
+          '0 8px 24px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)',
+        'moon-xl':
+          '0 32px 32px -8px rgba(0, 0, 0, 0.08), 0 0 32px -8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.2)',
       },
       // borderRadius: {
       //   sm: "var(--radius--small)",
@@ -327,20 +343,20 @@ module.exports = {
     plugin(({ addComponents }) => {
       addComponents({
         '.btn-primary': {
-          color: 'rgb(var(--goten))',
-          backgroundColor: `rgb(var(--piccolo))`,
+          color: 'rgb(var(--color--goten-100))',
+          backgroundColor: `rgb(var(--color--piccolo-100))`,
         },
         '.btn-secondary': {
-          color: 'rgb(var(--bulma))',
+          color: 'rgb(var(--color--bulma-100))',
           background: 'none',
-          boxShadow: `inset 0 0 0 1px rgb(var(--trunks)/1)`,
+          boxShadow: `inset 0 0 0 1px rgb(var(--color--trunks-100)/1)`,
           '&:hover': {
-            boxShadow: `inset 0 0 0 1px rgb(var(--bulma))`,
+            boxShadow: `inset 0 0 0 1px rgb(var(--color--bulma-100))`,
           },
         },
         '.btn-tertiary': {
-          color: 'rgb(var(--goten))',
-          backgroundColor: 'rgb(var(--hit))',
+          color: 'rgb(var(--color--goten-100))',
+          backgroundColor: 'rgb(var(--color--hit-100))',
         },
         '.anim-error': {
           transform: 'translate3d(0, 0, 0)',
@@ -348,7 +364,7 @@ module.exports = {
           perspective: '1000px',
         },
         '.anim-pulse': {
-          boxShadow: '0 0 0 0 rgb(var(--piccolo))',
+          boxShadow: '0 0 0 0 rgb(var(--color--piccolo-100))',
         },
         '.input-number-clear': {
           MozAppearance: 'textfield',

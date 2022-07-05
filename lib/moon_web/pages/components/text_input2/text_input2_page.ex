@@ -222,7 +222,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           <:code>{text_input_004_code()}</:code>
         </ExampleAndCode>
 
-
+        <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
 
         <ExampleAndCode id="input_10" title="Hint Text">
           <:example>
@@ -232,6 +232,66 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           </:example>
 
           <:code>{text_input_10_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_20" title="Disabled">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_20_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_30" title="Error">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" is_error/>
+              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" is_error/>
+              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_30_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_40" title="Readonly">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput2 size="lg" label="Large (lg)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput2 size="xl" label="Xlarge (xl)" value="Read only text" placeholder="Placeholder" readonly/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_40_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_50" title="Size RTL">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_50_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_60" title="Without label">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_60_code()}</:code>
         </ExampleAndCode>
       </TopToDown>
     </Page>
@@ -368,6 +428,24 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_004_code do
     """
+    <TextInput2
+      type="email"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="email"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="email"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
     """
   end
 
@@ -376,6 +454,46 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     <TextInput2>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput2>
+    """
+  end
+
+  def text_input_20_code do
+    """
+    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+    """
+  end
+
+  def text_input_30_code do
+    """
+    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" is_error/>
+    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" is_error/>
+    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error/>
+    """
+  end
+
+  def text_input_40_code do
+    """
+    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" readonly/>
+    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" readonly/>
+    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" readonly/>
+    """
+  end
+
+  def text_input_50_code do
+    """
+    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+    """
+  end
+
+  def text_input_60_code do
+    """
+    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
     """
   end
 end

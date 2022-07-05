@@ -6,9 +6,6 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.TextInput.Input
   alias Moon.Components.TextInput.HintText
 
-  prop id, :string
-  prop size, :string, values: ["md", "lg", "xl"]
-
   prop type, :string,
     values: [
       "date",
@@ -24,6 +21,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
     ],
     default: "text"
 
+  prop id, :string
+  prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
   prop is_error, :boolean
   prop dir, :string, values: ["ltr", "rtl"], default: "ltr"
@@ -33,6 +32,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop label, :string
   prop required, :boolean
   prop step, :string, default: "1"
+  prop readonly, :boolean
+  prop value, :string
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -58,10 +59,12 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         is_error={@is_error}
         size={@size}
         type={@type}
-        is_rtl={@dir == "rtl"}
+        dir={@dir}
         with_label={@label}
         placeholder={@placeholder}
         required={@required}
+        readonly={@readonly}
+        value={@value}
         step={@step}
         background_color={@background_color}
         is_sharp_left_side={@is_sharp_left_side}

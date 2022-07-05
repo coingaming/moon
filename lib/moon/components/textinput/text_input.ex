@@ -39,6 +39,8 @@ defmodule Moon.Components.TextInput2 do
   prop is_sharp_bottom_side, :boolean
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
+  prop readonly, :boolean
+  prop value, :string
 
   slot hint_text_slot
   slot show_password_text
@@ -71,6 +73,8 @@ defmodule Moon.Components.TextInput2 do
       step={@step}
       required={@required}
       placeholder={@placeholder}
+      readonly={@readonly}
+      value={@value}
       background_color={@background_color}
       is_sharp_left_side={@is_sharp_left_side}
       is_sharp_right_side={@is_sharp_right_side}
@@ -97,6 +101,8 @@ defmodule Moon.Components.TextInput2 do
       size={@size}
       type={@type}
       step={@step}
+      readonly={@readonly}
+      value={@value}
       required={@required}
       placeholder={@placeholder}
       background_color={@background_color}
