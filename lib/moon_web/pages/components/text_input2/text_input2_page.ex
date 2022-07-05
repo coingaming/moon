@@ -224,15 +224,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
 
-        <ExampleAndCode id="input_10" title="Hint Text">
-          <:example>
-            <TextInput2>
-              <:hint_text_slot>Informative message holder</:hint_text_slot>
-            </TextInput2>
-          </:example>
 
-          <:code>{text_input_10_code()}</:code>
-        </ExampleAndCode>
 
         <ExampleAndCode id="input_20" title="Disabled">
           <:example>
@@ -285,14 +277,51 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_60" title="Without label">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="lg" placeholder="Placeholder" dir="rtl"/>
+              <TextInput2 size="xl" placeholder="Placeholder" dir="rtl"/>
             </LeftToRight>
           </:example>
 
           <:code>{text_input_60_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode id="input_70" title="Hint Text">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 placeholder="Placeholder" label="Medium (Default: md)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+              <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+              <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_80" title="Input with background color">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+              <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+              <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput2>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
       </TopToDown>
     </Page>
     """
@@ -449,14 +478,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     """
   end
 
-  def text_input_10_code do
-    """
-    <TextInput2>
-      <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    """
-  end
-
   def text_input_20_code do
     """
     <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" disabled/>
@@ -491,9 +512,37 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_60_code do
     """
-    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="lg" placeholder="Placeholder" dir="rtl"/>
+    <TextInput2 size="xl" placeholder="Placeholder" dir="rtl"/>
+    """
+  end
+
+  def text_input_70_code do
+    """
+    <TextInput2 placeholder="Placeholder" label="Medium (Default: md)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
+    <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
+    <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
+    """
+  end
+
+  def text_input_80_code do
+    """
+    <TextInput2 placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
+    <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
+    <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput2>
     """
   end
 end
