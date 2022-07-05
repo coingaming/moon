@@ -3,6 +3,7 @@ defmodule Moon.Components.TextInput2 do
 
   use Moon.StatelessComponent
   alias Moon.Components.TextInput.TextInputBasic
+  alias Moon.Components.TextInput.TextInputInnerLabel
 
   prop id, :string
   prop size, :string, values: ["md", "lg", "xl"]
@@ -44,7 +45,11 @@ defmodule Moon.Components.TextInput2 do
 
   def render(assigns) do
     ~F"""
-    {get_text_input_basic_component(assigns)}
+    {#if @size == "xl"}
+      {get_input_inner_label_component(assigns)}
+    {#else}
+      {get_text_input_basic_component(assigns)}
+    {/if}
     """
   end
 
@@ -56,7 +61,29 @@ defmodule Moon.Components.TextInput2 do
 
   defp get_input_inner_label_component(assigns) do
     ~F"""
-
+    <TextInputInnerLabel
+      disabled={@disabled}
+      dir={@dir}
+      label={@label}
+      is_error={@is_error}
+      size={@size}
+      type={@type}
+      step={@step}
+      required={@required}
+      placeholder={@placeholder}
+      background_color={@background_color}
+      is_sharp_left_side={@is_sharp_left_side}
+      is_sharp_right_side={@is_sharp_right_side}
+      is_sharp_top_side={@is_sharp_top_side}
+      is_sharp_bottom_side={@is_sharp_bottom_side}
+      is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+      is_side_border_hidden={@is_side_border_hidden}
+      is_first={@is_first}
+    >
+      <:hint_text_slot>
+        <#slot name="hint_text_slot" />
+      </:hint_text_slot>
+    </TextInputInnerLabel>
     """
   end
 

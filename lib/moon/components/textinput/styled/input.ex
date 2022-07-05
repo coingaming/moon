@@ -7,7 +7,7 @@ defmodule Moon.Components.TextInput.Input do
 
   prop field, :atom
   prop is_error, :boolean, default: false
-  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
+  prop background_color, :string, values: Moon.colors()
   prop size, :string, values: ["md", "lg", "xl"]
   prop is_rtl, :boolean, default: false
   prop with_label, :boolean, default: false

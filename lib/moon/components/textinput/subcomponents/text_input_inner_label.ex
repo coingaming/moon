@@ -4,6 +4,8 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   use Moon.StatelessComponent
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Input
+  alias Moon.Components.TextInput.HintText
+  alias Moon.Components.TextInput.Utils
 
   prop id, :string
   prop size, :string, values: ["md", "lg", "xl"]
@@ -46,7 +48,15 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   def render(assigns) do
     ~F"""
     <Container disabled={@disabled} size={@size}>
-      <Input
+      <div
+        class={
+          "w-full max-w-full relative",
+          Utils.get_border_radius(@size),
+          "bg-transparent": !@background_color,
+          "bg-#{@background_color}": @background_color
+        }
+      >
+        <Input
           is_error={@is_error}
           size={@size}
           type={@type}
@@ -55,7 +65,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           placeholder={@placeholder}
           required={@required}
           step={@step}
-          background_color={@background_color}
           is_sharp_left_side={@is_sharp_left_side}
           is_sharp_right_side={@is_sharp_right_side}
           is_sharp_top_side={@is_sharp_top_side}
@@ -64,6 +73,22 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           is_side_border_hidden={@is_side_border_hidden}
           is_first={@is_first}
         />
+        <label
+          dir={@dir}
+          :if={@label}
+          class={
+            "absolute text-[0.75rem] leading-3 text-trunks-100 top-3 z-[1] transition-all ease-in-out duration-200",
+            "opacity-30 cursor-not-allowed": @disabled,
+            "right-4": @dir == "rtl",
+            "left-4": @dir != "rtl"
+          }
+        >
+          {@label}
+        </label>
+        </div>
+        <HintText :if={slot_assigned?(:hint_text_slot)}>
+          <#slot name="hint_text_slot" />
+        </HintText>
     </Container>
     """
   end

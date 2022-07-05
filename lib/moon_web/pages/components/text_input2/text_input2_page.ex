@@ -38,10 +38,10 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_020" title="Sizes">
           <:example>
-            <LeftToRight class="justify-between w-full">
-              <TextInput2 label="Medium (Default: md)" />
-              <TextInput2 size="lg" label="Large (lg)" />
-              <TextInput2 size="xl" label="Xlarge (xl)" />
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder"/>
+              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder"/>
+              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder"/>
             </LeftToRight>
           </:example>
 
@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_010" title="Number">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="number"
                 size="md"
@@ -79,7 +79,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_009" title="Date">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="date"
                 size="md"
@@ -106,7 +106,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_008" title="Time">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="time"
                 size="md"
@@ -133,7 +133,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_007" title="Date Time">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="datetime-local"
                 size="md"
@@ -160,7 +160,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_006" title="Email">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="email"
                 size="md"
@@ -187,7 +187,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_005" title="Password TODO">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               TODO
             </LeftToRight>
           </:example>
@@ -197,7 +197,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
         <ExampleAndCode id="input_004" title="Search">
           <:example>
-            <LeftToRight class="justify-between w-full">
+            <LeftToRight class="justify-between w-full items-end">
               <TextInput2
                 type="email"
                 size="md"
