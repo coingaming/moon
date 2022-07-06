@@ -63,6 +63,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           is_error={@is_error}
           background_color={@background_color}
           value={@password}
+          on_keyup="on_keyup"
+          input_password_id={"#{@id}_text_input_password"}
         />
 
         <ShowPassword toggle="toggle_password_visibility"
@@ -80,13 +82,11 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   end
 
   def handle_event("toggle_password_visibility", _, socket) do
-    IO.puts("****")
-    IO.puts(socket.assigns.password)
     {:noreply, assign(socket, password_shown: !socket.assigns.password_shown)}
   end
 
-  def handle_event("blur_value_changed", _, socket) do
-    {:noreply, assign(socket, password: !socket.assigns.password)}
+  def handle_event("on_keyup", params, socket) do
+    {:noreply, assign(socket, password: params["value"])}
   end
 
   defp get_text_input_xl(assigns) do

@@ -34,6 +34,8 @@ defmodule Moon.Components.TextInput.Input do
   prop readonly, :boolean
   prop value, :string
   prop id, :string
+  prop on_keyup, :string
+  prop input_password_id, :string
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -90,6 +92,7 @@ defmodule Moon.Components.TextInput.Input do
         "input-lg-dt-shared": @size == "lg"
       }
       id={"#{@id}_input"}
+      keyup={@on_keyup, target: "##{@input_password_id}"}
     />
     """
   end
