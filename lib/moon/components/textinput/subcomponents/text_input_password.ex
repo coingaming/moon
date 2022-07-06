@@ -30,6 +30,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop show_password_text, :string, default: "Show"
 
   data password_shown, :boolean, default: false
+  data password, :string, default: ""
 
   slot hint_text_slot
 
@@ -61,9 +62,13 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           type={get_type(@password_shown)}
           is_error={@is_error}
           background_color={@background_color}
+          value={@password}
         />
 
-        <ShowPassword toggle="toggle_password_visibility" is_rtl={is_rtl(@dir)} input_password_id={"#{@id}_text_input_password"}>
+        <ShowPassword toggle="toggle_password_visibility"
+          is_rtl={is_rtl(@dir)}
+          input_password_id={"#{@id}_text_input_password"}
+          password={@password}>
           {@show_password_text}
         </ShowPassword>
       </div>
