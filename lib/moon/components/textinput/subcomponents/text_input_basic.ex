@@ -43,7 +43,6 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop is_side_border_hidden, :boolean
 
   slot hint_text_slot
-  slot show_password_text
 
   def render(assigns) do
     ~F"""

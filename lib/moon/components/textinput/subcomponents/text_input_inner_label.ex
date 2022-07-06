@@ -44,7 +44,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   prop is_side_border_hidden, :boolean
 
   slot hint_text_slot
-  slot show_password_text
 
   def render(assigns) do
     ~F"""
@@ -88,10 +87,10 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
         >
           {@label}
         </label>
-        </div>
-        <HintText :if={slot_assigned?(:hint_text_slot)}>
-          <#slot name="hint_text_slot" />
-        </HintText>
+      </div>
+      <HintText :if={slot_assigned?(:hint_text_slot)}>
+        <#slot name="hint_text_slot" />
+      </HintText>
     </Container>
     """
   end

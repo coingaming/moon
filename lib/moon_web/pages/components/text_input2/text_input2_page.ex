@@ -185,14 +185,34 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           <:code>{text_input_006_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="input_005" title="Password TODO">
+        <ExampleAndCode id="input_005" title="Password">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              TODO
+              <TextInput2
+                id="txt_password_1"
+                type="password"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                id="txt_password_2"
+                type="password"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput2
+                id="txt_password_3"
+                type="password"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
             </LeftToRight>
           </:example>
 
-          <:code>{text_input_006_code()}</:code>
+          <:code>{text_input_005_code()}</:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="input_004" title="Search">
@@ -223,8 +243,6 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         </ExampleAndCode>
 
         <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
-
-
 
         <ExampleAndCode id="input_20" title="Disabled">
           <:example>
@@ -452,6 +470,24 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_005_code do
     """
+    <TextInput2
+      type="password"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="password"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput2
+      type="password"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
     """
   end
 
