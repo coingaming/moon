@@ -7,7 +7,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.TextInput.ShowPassword
-  alias Phoenix.LiveView.JS
 
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
@@ -31,7 +30,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop show_password_text, :string, default: "Show"
 
   data password_shown, :boolean, default: false
-  data password, :string, default: ""
+  data password, :string, default: "default value"
 
   slot hint_text_slot
 
@@ -64,10 +63,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           is_error={@is_error}
           background_color={@background_color}
           value={@password}
-          id={@id}
         />
 
-        <ShowPassword toggle={toggle2(@id)}
+        <ShowPassword toggle="toggle_password_visibility"
           is_rtl={is_rtl(@dir)}
           input_password_id={"#{@id}_text_input_password"}
         >
@@ -79,13 +77,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       </HintText>
     </Container>
     """
-  end
-
-  def toggle2(id) do
-    IO.puts("**** ----")
-    IO.puts(id)
-    IO.puts("##{id}_input")
-    JS.set_attribute({"type", "text"}, to: "##{id}_input")
   end
 
   def handle_event("toggle_password_visibility", _, socket) do
