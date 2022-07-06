@@ -1,4 +1,4 @@
-defmodule Moon.Components.TextInput.Input do
+defmodule Moon.Components.TextInput.Password do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -7,16 +7,8 @@ defmodule Moon.Components.TextInput.Input do
 
   prop type, :string,
     values: [
-      "date",
-      "datetime-local",
-      "email",
-      "number",
       "password",
-      "search",
-      "tel",
-      "text",
-      "time",
-      "url"
+      "text"
     ],
     default: "text"
 
@@ -33,6 +25,9 @@ defmodule Moon.Components.TextInput.Input do
   prop is_first, :boolean
   prop readonly, :boolean
   prop value, :string
+  prop id, :string
+  prop on_keyup, :string
+  prop input_password_id, :string
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -43,16 +38,16 @@ defmodule Moon.Components.TextInput.Input do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.TextInput
+    <Surface.Components.Form.PasswordInput
       opts={
         placeholder: @placeholder,
         disabled: @disabled,
         required: @required && !@disabled,
-        type: @type,
         "data-lpignore": "true",
         step: @step,
         readonly: @readonly,
-        dir: @dir
+        dir: @dir,
+        type: @type
       }
       value={@value}
       class={
@@ -80,7 +75,6 @@ defmodule Moon.Components.TextInput.Input do
           @is_sharp_bottom_side,
           @is_error
         ),
-        get_class_for_type(@type, @dir == "rtl"),
         "shadow-input-err hover:shadow-input-err focus:shadow-input-err": @is_error,
         "bg-#{@background_color}": @background_color,
         "bg-transparent": !@background_color,
@@ -88,20 +82,10 @@ defmodule Moon.Components.TextInput.Input do
         "input-xl pt-[1.125rem] input-xl-dt-label": @size == "xl" && @with_label,
         "input-lg-dt-shared": @size == "lg"
       }
+      id={"#{@id}_input"}
+      keyup={@on_keyup, target: "##{@input_password_id}"}
     />
     """
-  end
-
-  defp get_class_for_type(type, is_rtl) do
-    cond do
-      type == "number" -> "input-number-clear"
-      type == "date" || type == "datetime-local" -> "input-d"
-      type == "date" && is_rtl -> "input-d-rtl"
-      type == "time" -> "input-t"
-      type == "time" && is_rtl -> "input-t-rtl"
-      type == "datetime-local" && is_rtl -> "input-dt-local-rtl"
-      true -> ""
-    end
   end
 
   defp get_class_sides(

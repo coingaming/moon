@@ -3,7 +3,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
 
   use Moon.StatefulComponent
   alias Moon.Components.TextInput.Container
-  alias Moon.Components.TextInput.Input
+  alias Moon.Components.TextInput.Password
   alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.TextInput.ShowPassword
@@ -57,14 +57,15 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           Utils.get_border_radius(@size)
         }
       >
-        <Input
+        <Password
           size={@size}
-          type={get_type(@password_shown)}
           is_error={@is_error}
           background_color={@background_color}
           value={@password}
           on_keyup="on_keyup"
           input_password_id={"#{@id}_text_input_password"}
+          id={@id}
+          type={get_type(@password_shown)}
         />
 
         <ShowPassword toggle="toggle_password_visibility"
