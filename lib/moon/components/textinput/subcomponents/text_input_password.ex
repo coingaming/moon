@@ -7,6 +7,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.TextInput.ShowPassword
+  alias Phoenix.LiveView.JS
 
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
@@ -63,12 +64,13 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           is_error={@is_error}
           background_color={@background_color}
           value={@password}
+          id={@id}
         />
 
-        <ShowPassword toggle="toggle_password_visibility"
+        <ShowPassword toggle={toggle2(@id)}
           is_rtl={is_rtl(@dir)}
           input_password_id={"#{@id}_text_input_password"}
-          password={@password}>
+        >
           {@show_password_text}
         </ShowPassword>
       </div>
@@ -79,8 +81,21 @@ defmodule Moon.Components.TextInput.TextInputPassword do
     """
   end
 
+  def toggle2(id) do
+    IO.puts("**** ----")
+    IO.puts(id)
+    IO.puts("##{id}_input")
+    JS.set_attribute({"type", "text"}, to: "##{id}_input")
+  end
+
   def handle_event("toggle_password_visibility", _, socket) do
+    IO.puts("****")
+    IO.puts(socket.assigns.password)
     {:noreply, assign(socket, password_shown: !socket.assigns.password_shown)}
+  end
+
+  def handle_event("blur_value_changed", _, socket) do
+    {:noreply, assign(socket, password: !socket.assigns.password)}
   end
 
   defp get_text_input_xl(assigns) do

@@ -33,6 +33,7 @@ defmodule Moon.Components.TextInput.Input do
   prop is_first, :boolean
   prop readonly, :boolean
   prop value, :string
+  prop id, :string
 
   prop is_sharp_left_side, :boolean
   prop is_sharp_right_side, :boolean
@@ -52,9 +53,9 @@ defmodule Moon.Components.TextInput.Input do
         "data-lpignore": "true",
         step: @step,
         readonly: @readonly,
-        value: @value,
         dir: @dir
       }
+      value={@value}
       class={
         "block w-full max-w-full py-0 px-4 m-0 appearance-none",
         "text-[1rem] text-bulma transition-shadow box-border relative z-[2]",
@@ -88,6 +89,7 @@ defmodule Moon.Components.TextInput.Input do
         "input-xl pt-[1.125rem] input-xl-dt-label": @size == "xl" && @with_label,
         "input-lg-dt-shared": @size == "lg"
       }
+      id={"#{@id}_input"}
     />
     """
   end

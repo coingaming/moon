@@ -4,8 +4,7 @@ defmodule Moon.Components.TextInput.ShowPassword do
   use Moon.StatelessComponent
 
   prop input_password_id, :string
-  prop toggle, :string, default: "toggle_password_visibility"
-  prop password, :string
+  prop toggle, :event
 
   prop is_rtl, :boolean, default: false
 
@@ -19,7 +18,7 @@ defmodule Moon.Components.TextInput.ShowPassword do
         get_direction_style(@is_rtl)
       }
     >
-      <a role="alert" :on-click={@toggle, target: "##{@input_password_id}"} phx-value-password={@password}><#slot /></a>
+      <a role="alert" :on-click={@toggle}><#slot /></a>
     </div>
     """
   end
