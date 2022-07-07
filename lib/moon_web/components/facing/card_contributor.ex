@@ -11,7 +11,10 @@ defmodule MoonWeb.Components.Facing.CardContributor do
   def render(assigns) do
     ~F"""
     <div class="flex flex-col">
-      <div class={"relative rounded-moon-s-lg overflow-hidden bg-cover bg-center", get_dimensions(@variant)} style={"background-image: url('#{@image_src}')"}>
+      <div
+        class={"relative rounded-moon-s-lg overflow-hidden bg-cover bg-center", get_dimensions(@variant)}
+        style={"background-image: url('#{@image_src}')"}
+      >
         <p class="list-item absolute bottom-12 pb-2 left-full whitespace-nowrap text-goten-100 text-moon-24 transform origin-bottom-left -rotate-90 z-10 font-semibold">
           {@title}
         </p>
