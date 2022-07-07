@@ -41,6 +41,11 @@ defmodule Moon.Components.TextInput.Input do
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
 
+  prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
+  prop blur, :event
+
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.TextInput
@@ -88,6 +93,10 @@ defmodule Moon.Components.TextInput.Input do
         "input-xl pt-[1.125rem] input-xl-dt-label": @size == "xl" && @with_label,
         "input-lg-dt-shared": @size == "lg"
       }
+      focus={@focus}
+      keyup={@keyup}
+      keydown={@keydown}
+      blur={@blur}
     />
     """
   end

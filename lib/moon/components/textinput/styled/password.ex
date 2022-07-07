@@ -36,6 +36,11 @@ defmodule Moon.Components.TextInput.Password do
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
 
+  prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
+  prop blur, :event
+
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.PasswordInput
@@ -84,6 +89,9 @@ defmodule Moon.Components.TextInput.Password do
       }
       id={"#{@id}_input"}
       keyup={@on_keyup, target: "##{@input_password_id}"}
+      focus={@focus}
+      keydown={@keydown}
+      blur={@blur}
     />
     """
   end

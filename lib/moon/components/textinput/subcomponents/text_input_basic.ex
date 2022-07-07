@@ -42,6 +42,11 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
 
+  prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
+  prop blur, :event
+
   slot hint_text_slot
 
   def render(assigns) do
@@ -73,6 +78,10 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
         is_side_border_hidden={@is_side_border_hidden}
         is_first={@is_first}
+        focus={@focus}
+        keyup={@keyup}
+        keydown={@keydown}
+        blur={@blur}
       />
       <HintText :if={slot_assigned?(:hint_text_slot)}>
         <#slot name="hint_text_slot" />

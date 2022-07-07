@@ -43,6 +43,11 @@ defmodule Moon.Components.TextInput2 do
   prop readonly, :boolean
   prop value, :string
 
+  prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
+  prop blur, :event
+
   slot hint_text_slot
   slot show_password_text
 
@@ -80,6 +85,7 @@ defmodule Moon.Components.TextInput2 do
       is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
       is_side_border_hidden={@is_side_border_hidden}
       is_first={@is_first}
+
     >
       <:hint_text_slot>
         <#slot name="hint_text_slot" />

@@ -43,6 +43,11 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
 
+  prop focus, :event
+  prop keydown, :event
+  prop keyup, :event
+  prop blur, :event
+
   slot hint_text_slot
 
   def render(assigns) do
@@ -74,6 +79,10 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
           is_side_border_hidden={@is_side_border_hidden}
           is_first={@is_first}
+          focus={@focus}
+          keyup={@keyup}
+          keydown={@keydown}
+          blur={@blur}
         />
         <label
           dir={@dir}

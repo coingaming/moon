@@ -29,6 +29,10 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop is_side_border_hidden, :boolean
   prop show_password_text, :string, default: "Show"
 
+  prop focus, :event
+  prop keydown, :event
+  prop blur, :event
+
   data password_shown, :boolean, default: false
   data password, :string, default: "default value"
 
@@ -71,6 +75,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
         input_password_id={"#{@id}_text_input_password"}
         id={@id}
         type={get_type(@password_shown)}
+        focus={@focus}
+        keyup={@keyup}
+        blur={@blur}
       />
 
       <ShowPassword toggle="toggle_password_visibility"
@@ -105,6 +112,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
         id={@id}
         with_label={@label}
         type={get_type(@password_shown)}
+        focus={@focus}
+        keydown={@keydown}
+        blur={@blur}
       />
       <label
         class={
