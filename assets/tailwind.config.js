@@ -8,7 +8,7 @@ const withOpacityValue = (rgbColor) => {
     }
     return `rgb(var(${rgbColor}) / ${opacityValue})`;
   };
-}
+};
 
 module.exports = {
   content: [
@@ -20,10 +20,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        '3xl': '1800px',
+        "3xl": "1800px",
       },
       backgroundOpacity: {
-        "12": "0.12",
+        12: "0.12",
       },
       fontSize: {
         "moon-9": [
@@ -133,11 +133,16 @@ module.exports = {
         "moon-s-md": "var(--radius-s-md)",
         "moon-s-lg": "var(--radius-s-lg)",
       },
+      zIndex: {
+        1: "1",
+        5: "5",
+        10000: "10000",
+      },
       opacity: {
         disabled: "var(--opacity--disabled)",
       },
       boxShadow: {
-        "border": "0 0 0 2px rgba(var(--color--piccolo-100)) inset"
+        border: "0 0 0 2px rgba(var(--color--piccolo-100)) inset",
       },
       animation: {
         loader: "loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite",
@@ -170,153 +175,153 @@ module.exports = {
       transparent: "transparent",
       text: "var(--color-text)",
       background: "var(--color-background)",
-      "krillin-10": { 
-        DEFAULT: withOpacityValue("--color--krillin-10"), 
+      "krillin-10": {
+        DEFAULT: withOpacityValue("--color--krillin-10"),
       },
-      "krillin-60": { 
-        DEFAULT: withOpacityValue("--color--krillin-60") 
+      "krillin-60": {
+        DEFAULT: withOpacityValue("--color--krillin-60"),
       },
-      "krillin-100": { 
-        DEFAULT: withOpacityValue("--color--krillin-100") 
+      "krillin-100": {
+        DEFAULT: withOpacityValue("--color--krillin-100"),
       },
-      "chi-chi-10": { 
-        DEFAULT: withOpacityValue("--color--chi-chi-10") 
+      "chi-chi-10": {
+        DEFAULT: withOpacityValue("--color--chi-chi-10"),
       },
-      "chi-chi-60": { 
-        DEFAULT: withOpacityValue("--color--chi-chi-60") 
+      "chi-chi-60": {
+        DEFAULT: withOpacityValue("--color--chi-chi-60"),
       },
-      "chi-chi-100": { 
-        DEFAULT: withOpacityValue("--color--chi-chi-100") 
+      "chi-chi-100": {
+        DEFAULT: withOpacityValue("--color--chi-chi-100"),
       },
-      "roshi-10": { 
-        DEFAULT: withOpacityValue("--color--roshi-10") 
+      "roshi-10": {
+        DEFAULT: withOpacityValue("--color--roshi-10"),
       },
-      "roshi-60": { 
-        DEFAULT: withOpacityValue("--color--roshi-60") 
+      "roshi-60": {
+        DEFAULT: withOpacityValue("--color--roshi-60"),
       },
-      "roshi-100": { 
-        DEFAULT: withOpacityValue("--color--roshi-100") 
+      "roshi-100": {
+        DEFAULT: withOpacityValue("--color--roshi-100"),
       },
-      "dodoria-10": { 
-        DEFAULT: withOpacityValue("--color--dodoria-10") 
+      "dodoria-10": {
+        DEFAULT: withOpacityValue("--color--dodoria-10"),
       },
-      "dodoria-60": { 
-        DEFAULT: withOpacityValue("--color--dodoria-60") 
+      "dodoria-60": {
+        DEFAULT: withOpacityValue("--color--dodoria-60"),
       },
-      "dodoria-100": { 
-        DEFAULT: withOpacityValue("--color--dodoria-100") 
+      "dodoria-100": {
+        DEFAULT: withOpacityValue("--color--dodoria-100"),
       },
-      "cell-10": { 
-        DEFAULT: withOpacityValue("--color--cell-10") 
+      "cell-10": {
+        DEFAULT: withOpacityValue("--color--cell-10"),
       },
-      "cell-60": { 
-        DEFAULT: withOpacityValue("--color--cell-60") 
+      "cell-60": {
+        DEFAULT: withOpacityValue("--color--cell-60"),
       },
-      "cell-100": { 
-        DEFAULT: withOpacityValue("--color--cell-100") 
+      "cell-100": {
+        DEFAULT: withOpacityValue("--color--cell-100"),
       },
-      "raditz-10": { 
-        DEFAULT: withOpacityValue("--color--raditz-10") 
+      "raditz-10": {
+        DEFAULT: withOpacityValue("--color--raditz-10"),
       },
-      "raditz-60": { 
-        DEFAULT: withOpacityValue("--color--raditz-60") 
+      "raditz-60": {
+        DEFAULT: withOpacityValue("--color--raditz-60"),
       },
-      "raditz-100": { 
-        DEFAULT: withOpacityValue("--color--raditz-100") 
+      "raditz-100": {
+        DEFAULT: withOpacityValue("--color--raditz-100"),
       },
-      "whis-10": { 
-        DEFAULT: withOpacityValue("--color--whis-10") 
+      "whis-10": {
+        DEFAULT: withOpacityValue("--color--whis-10"),
       },
-      "whis-60": { 
-        DEFAULT: withOpacityValue("--color--whis-60") 
+      "whis-60": {
+        DEFAULT: withOpacityValue("--color--whis-60"),
       },
-      "whis-100": { 
-        DEFAULT: withOpacityValue("--color--whis-100") 
+      "whis-100": {
+        DEFAULT: withOpacityValue("--color--whis-100"),
       },
-      "frieza-10": { 
-        DEFAULT: withOpacityValue("--color--frieza-10") 
+      "frieza-10": {
+        DEFAULT: withOpacityValue("--color--frieza-10"),
       },
-      "frieza-60": { 
-        DEFAULT: withOpacityValue("--color--frieza-60") 
+      "frieza-60": {
+        DEFAULT: withOpacityValue("--color--frieza-60"),
       },
-      "frieza-100": { 
-        DEFAULT: withOpacityValue("--color--frieza-100") 
+      "frieza-100": {
+        DEFAULT: withOpacityValue("--color--frieza-100"),
       },
-      "nappa-10": { 
-        DEFAULT: withOpacityValue("--color--nappa-10") 
+      "nappa-10": {
+        DEFAULT: withOpacityValue("--color--nappa-10"),
       },
-      "nappa-60": { 
-        DEFAULT: withOpacityValue("--color--nappa-60") 
+      "nappa-60": {
+        DEFAULT: withOpacityValue("--color--nappa-60"),
       },
-      "nappa-100": { 
-        DEFAULT: withOpacityValue("--color--nappa-100") 
+      "nappa-100": {
+        DEFAULT: withOpacityValue("--color--nappa-100"),
       },
-      "piccolo-80": { 
-        DEFAULT: withOpacityValue("--color--piccolo-80") 
+      "piccolo-80": {
+        DEFAULT: withOpacityValue("--color--piccolo-80"),
       },
-      "piccolo-100": { 
-        DEFAULT: withOpacityValue("--color--piccolo-100") 
+      "piccolo-100": {
+        DEFAULT: withOpacityValue("--color--piccolo-100"),
       },
-      "piccolo-120": { 
-        DEFAULT: withOpacityValue("--color--piccolo-120") 
+      "piccolo-120": {
+        DEFAULT: withOpacityValue("--color--piccolo-120"),
       },
-      "hit-80": { 
-        DEFAULT: withOpacityValue("--color--hit-80") 
+      "hit-80": {
+        DEFAULT: withOpacityValue("--color--hit-80"),
       },
-      "hit-100": { 
-        DEFAULT: withOpacityValue("--color--hit-100") 
+      "hit-100": {
+        DEFAULT: withOpacityValue("--color--hit-100"),
       },
-      "hit-120": { 
-        DEFAULT: withOpacityValue("--color--hit-120") 
+      "hit-120": {
+        DEFAULT: withOpacityValue("--color--hit-120"),
       },
-      "goten-100": { 
-        DEFAULT: withOpacityValue("--color--goten-100") 
+      "goten-100": {
+        DEFAULT: withOpacityValue("--color--goten-100"),
       },
-      "goku-10": { 
-        DEFAULT: withOpacityValue("--color--goku-10") 
+      "goku-10": {
+        DEFAULT: withOpacityValue("--color--goku-10"),
       },
-      "goku-40": { 
-        DEFAULT: withOpacityValue("--color--goku-40") 
+      "goku-40": {
+        DEFAULT: withOpacityValue("--color--goku-40"),
       },
-      "goku-80": { 
-        DEFAULT: withOpacityValue("--color--goku-80") 
+      "goku-80": {
+        DEFAULT: withOpacityValue("--color--goku-80"),
       },
-      "goku-100": { 
-        DEFAULT: withOpacityValue("--color--goku-100") 
+      "goku-100": {
+        DEFAULT: withOpacityValue("--color--goku-100"),
       },
-      "goku-120": { 
-        DEFAULT: withOpacityValue("--color--goku-120") 
+      "goku-120": {
+        DEFAULT: withOpacityValue("--color--goku-120"),
       },
-      "gohan-10": { 
-        DEFAULT: withOpacityValue("--color--gohan-10") 
+      "gohan-10": {
+        DEFAULT: withOpacityValue("--color--gohan-10"),
       },
-      "gohan-40": { 
-        DEFAULT: withOpacityValue("--color--gohan-40") 
+      "gohan-40": {
+        DEFAULT: withOpacityValue("--color--gohan-40"),
       },
-      "gohan-80": { 
-        DEFAULT: withOpacityValue("--color--gohan-80") 
+      "gohan-80": {
+        DEFAULT: withOpacityValue("--color--gohan-80"),
       },
-      "gohan-100": { 
-        DEFAULT: withOpacityValue("--color--gohan-100") 
+      "gohan-100": {
+        DEFAULT: withOpacityValue("--color--gohan-100"),
       },
-      "gohan-120": { 
-        DEFAULT: withOpacityValue("--color--gohan-120") 
+      "gohan-120": {
+        DEFAULT: withOpacityValue("--color--gohan-120"),
       },
-      "beerus-100": { 
-        DEFAULT: withOpacityValue("--color--beerus-100") 
+      "beerus-100": {
+        DEFAULT: withOpacityValue("--color--beerus-100"),
       },
-      "bulma-100": { 
-        DEFAULT: withOpacityValue("--color--bulma-100") 
+      "bulma-100": {
+        DEFAULT: withOpacityValue("--color--bulma-100"),
       },
-      "trunks-100": { 
-        DEFAULT: withOpacityValue("--color--trunks-100") 
+      "trunks-100": {
+        DEFAULT: withOpacityValue("--color--trunks-100"),
       },
       black: "#000",
       hover: "rgba(34, 34, 37, 0.12)",
       "primary-hover": "rgba(0, 0, 0, 0.08)",
       "slate-200": "rgb(226 232 240)",
       "for-designers": "rgb(52 72 240)",
-      "for-developers": "rgb(149 241 213)"
+      "for-developers": "rgb(149 241 213)",
     },
   },
   plugins: [

@@ -7,7 +7,7 @@ import Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :moon, MoonWeb.Endpoint,
-  http: [port: 5002],
+  http: [port: 5003],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
