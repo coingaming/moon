@@ -92,6 +92,7 @@ defmodule Moon.Components.TextInput.Password do
       focus={@focus}
       keydown={@keydown}
       blur={@blur}
+      field={@field}
     />
     """
   end

@@ -97,6 +97,7 @@ defmodule Moon.Components.TextInput.Input do
       keyup={@keyup}
       keydown={@keydown}
       blur={@blur}
+      field={@field}
     />
     """
   end
