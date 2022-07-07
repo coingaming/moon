@@ -36,49 +36,95 @@ defmodule Moon.Components.TextInput.TextInputPassword do
 
   def render(assigns) do
     ~F"""
-    {get_text_input_normal(assigns)}
+    <Container disabled={@disabled} id={@id}>
+      {#if @size == "xl" }
+        {get_text_input_xl(assigns)}
+      {#else}
+        {get_text_input_normal(assigns)}
+      {/if}
+    </Container>
     """
   end
 
   defp get_text_input_normal(assigns) do
     ~F"""
-    <Container disabled={@disabled} id={@id}>
+    <label
+      dir={@dir}
+      :if={@label}
+      class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": @disabled}
+    >
+      {@label}
+    </label>
+    <div
+      id={"#{@id}_text_input_password"}
+      class={
+        "w-full max-w-full relative",
+        Utils.get_border_radius(@size)
+      }
+    >
+      <Password
+        size={@size}
+        is_error={@is_error}
+        background_color={@background_color}
+        value={@password}
+        on_keyup="on_keyup"
+        input_password_id={"#{@id}_text_input_password"}
+        id={@id}
+        type={get_type(@password_shown)}
+      />
+
+      <ShowPassword toggle="toggle_password_visibility"
+        is_rtl={is_rtl(@dir)}
+        input_password_id={"#{@id}_text_input_password"}
+      >
+        {@show_password_text}
+      </ShowPassword>
+    </div>
+    <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
+      <#slot name="hint_text_slot" />
+    </HintText>
+    """
+  end
+
+  defp get_text_input_xl(assigns) do
+    ~F"""
+    <div
+      id={"#{@id}_text_input_password"}
+      class={"w-full max-w-full relative",
+        Utils.get_border_radius(@size),
+        "bg-#{@background_color}": @background_color
+      }
+    >
+      <Password
+        size={@size}
+        is_error={@is_error}
+        background_color={@background_color}
+        value={@password}
+        on_keyup="on_keyup"
+        input_password_id={"#{@id}_text_input_password"}
+        id={@id}
+        with_label={@label}
+        type={get_type(@password_shown)}
+      />
       <label
-        dir={@dir}
-        :if={@label}
-        class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": @disabled}
+        class={
+          "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[1] transition-all",
+          "right-4": @dir == "rtl",
+          "left-4": @dir == "ltr"
+        }
       >
         {@label}
       </label>
-      <div
-        id={"#{@id}_text_input_password"}
-        class={
-          "w-full max-w-full relative",
-          Utils.get_border_radius(@size)
-        }
+      <ShowPassword toggle="toggle_password_visibility"
+        is_rtl={is_rtl(@dir)}
+        input_password_id={"#{@id}_text_input_password"}
       >
-        <Password
-          size={@size}
-          is_error={@is_error}
-          background_color={@background_color}
-          value={@password}
-          on_keyup="on_keyup"
-          input_password_id={"#{@id}_text_input_password"}
-          id={@id}
-          type={get_type(@password_shown)}
-        />
-
-        <ShowPassword toggle="toggle_password_visibility"
-          is_rtl={is_rtl(@dir)}
-          input_password_id={"#{@id}_text_input_password"}
-        >
-          {@show_password_text}
-        </ShowPassword>
-      </div>
-      <HintText :if={slot_assigned?(:hint_text_slot)}>
-        <#slot name="hint_text_slot" />
-      </HintText>
-    </Container>
+        {@show_password_text}
+      </ShowPassword>
+    </div>
+    <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
+      <#slot name="hint_text_slot" />
+    </HintText>
     """
   end
 
@@ -88,9 +134,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
 
   def handle_event("on_keyup", params, socket) do
     {:noreply, assign(socket, password: params["value"])}
-  end
-
-  defp get_text_input_xl(assigns) do
   end
 
   defp get_type(password_shown) do

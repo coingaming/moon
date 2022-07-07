@@ -193,21 +193,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
                 type="password"
                 size="md"
                 label="Medium (Default: md)"
-                placeholder="e.g. jake.weary@sportsbet.io"
               />
               <TextInput2
                 id="txt_password_2"
                 type="password"
                 size="lg"
                 label="Large (lg)"
-                placeholder="e.g. jake.weary@sportsbet.io"
               />
               <TextInput2
                 id="txt_password_3"
                 type="password"
                 size="xl"
                 label="Xlarge (xl)"
-                placeholder="e.g. jake.weary@sportsbet.io"
+                placeholder="Password"
               />
             </LeftToRight>
           </:example>
@@ -471,22 +469,22 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
   def text_input_005_code do
     """
     <TextInput2
+      id="txt_password_1"
       type="password"
       size="md"
       label="Medium (Default: md)"
-      placeholder="e.g. jake.weary@sportsbet.io"
     />
     <TextInput2
+      id="txt_password_2"
       type="password"
       size="lg"
       label="Large (lg)"
-      placeholder="e.g. jake.weary@sportsbet.io"
     />
     <TextInput2
+      id="txt_password_3"
       type="password"
       size="xl"
       label="Xlarge (xl)"
-      placeholder="e.g. jake.weary@sportsbet.io"
     />
     """
   end
