@@ -62,6 +62,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             focus={@focus}
             keydown={@keydown}
             blur={@blur}
+            placeholder={@placeholder}
           />
           <label
             class={
@@ -108,6 +109,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             type={get_type(@password_shown)}
             focus={@focus}
             blur={@blur}
+            placeholder={@placeholder}
           />
 
           <ShowPassword toggle="toggle_password_visibility"
