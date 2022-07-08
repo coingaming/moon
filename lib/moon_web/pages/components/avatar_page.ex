@@ -3,15 +3,12 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Avatar
   alias Moon.Components.Avatar.StatusOrigin
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -94,123 +91,89 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Avatar</Heading>
-
+      <ComponentPageDescription title="Avatar">
         <p>
-          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon-Components?node-id=60%3A20">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/avatar_page.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/components/avatar">React implementation</Link>
+          Avatars are used to represent an individual, a business, or a celestial being when they interact with any Coingaming brand. While they usually consist of an image, avatars are adaptable - letters or object icons may sometimes be used as fallbacks.
         </p>
-        Component for displaying user profile image or placeholder if no image
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Variants" id="avatar_1">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Avatar />
-                <Avatar name="JS" />
-                <Avatar image_url="https://www.fillmurray.com/200/200" />
-              </div>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Variants" id="avatar_1">
+          <:example>
+            <Avatar />
+            <Avatar name="JS" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" />
+          </:example>
 
-            <:code>{avatar_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{avatar_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Different colours" id="avatar_2">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Avatar />
-                <Avatar color="frieza-100" background_color="chi-chi-100" />
-                <Avatar color="gohan-100" background_color="krillin-100" />
-                <Avatar color="chi-chi-100" background_color="frieza-100" />
-              </div>
-            </:example>
+        <ExampleAndCode title="Different colours" id="avatar_2">
+          <:example>
+            <Avatar />
+            <Avatar color="frieza-100" background_color="chi-chi-100" />
+            <Avatar color="gohan-100" background_color="krillin-100" />
+            <Avatar color="chi-chi-100" background_color="frieza-100" />
+          </:example>
 
-            <:code>{avatar_2_code()}</:code>
-          </ExampleAndCode>
+          <:code>{avatar_2_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Different sizes" id="avatar_3">
-            <:example>
-              <TopToDown>
-                <div class="flex justify-around items-center w-full mb-4">
-                  <Avatar size="xsmall" />
-                  <Avatar size="small" />
-                  <Avatar />
-                  <Avatar size="large" />
-                  <Avatar size="xlarge" />
-                  <Avatar size="twoxlarge" />
-                </div>
-                <div class="flex justify-around items-center w-full mb-4">
-                  <Avatar name="JS" size="xsmall" />
-                  <Avatar name="JS" size="small" />
-                  <Avatar name="JS" />
-                  <Avatar name="JS" size="large" />
-                  <Avatar name="JS" size="xlarge" />
-                  <Avatar name="JS" size="twoxlarge" />
-                </div>
-                <div class="flex justify-around items-center w-full">
-                  <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-                  <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
-                  <Avatar image_url="https://www.fillmurray.com/200/200" />
-                  <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
-                  <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
-                  <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
-                </div>
-              </TopToDown>
-            </:example>
+        <ExampleAndCode title="Different sizes" id="avatar_3">
+          <:example>
+            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+              <Avatar size="xsmall" />
+              <Avatar size="small" />
+              <Avatar />
+              <Avatar size="large" />
+              <Avatar size="xlarge" />
+              <Avatar size="twoxlarge" />
+            </div>
+            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+              <Avatar name="JS" size="xsmall" />
+              <Avatar name="JS" size="small" />
+              <Avatar name="JS" />
+              <Avatar name="JS" size="large" />
+              <Avatar name="JS" size="xlarge" />
+              <Avatar name="JS" size="twoxlarge" />
+            </div>
+            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+              <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+              <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+            </div>
+          </:example>
 
-            <:code>{avatar_3_code()}</:code>
-          </ExampleAndCode>
+          <:code>{avatar_3_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Active status" id="avatar_4">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Avatar />
-                <Avatar is_status_active />
-                <Avatar image_url="https://www.fillmurray.com/200/200" />
-                <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
-              </div>
-            </:example>
+        <ExampleAndCode title="Active status" id="avatar_4">
+          <:example>
+            <Avatar />
+            <Avatar is_status_active />
+            <Avatar image_url="https://www.fillmurray.com/200/200" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
+          </:example>
 
-            <:code>{avatar_4_code()}</:code>
-          </ExampleAndCode>
+          <:code>{avatar_4_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Status origin" id="avatar_5">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
-                <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
-                <Avatar is_status_active />
-                <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
-              </div>
-            </:example>
+        <ExampleAndCode title="Status origin" id="avatar_5">
+          <:example>
+            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
+            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
+            <Avatar is_status_active />
+            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
+          </:example>
 
-            <:code>{avatar_5_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{avatar_5_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end
@@ -234,7 +197,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   def avatar_3_code do
     """
-    <div class="flex justify-around items-center w-full mb-4">
+    <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <Avatar size="xsmall" />
       <Avatar size="small" />
       <Avatar />
@@ -242,7 +205,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <Avatar size="xlarge" />
       <Avatar size="twoxlarge" />
     </div>
-    <div class="flex justify-around items-center w-full mb-4">
+    <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <Avatar name="JS" size="xsmall" />
       <Avatar name="JS" size="small" />
       <Avatar name="JS" />
@@ -250,7 +213,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <Avatar name="JS" size="xlarge" />
       <Avatar name="JS" size="twoxlarge" />
     </div>
-    <div class="flex justify-around items-center w-full">
+    <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
       <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
       <Avatar image_url="https://www.fillmurray.com/200/200" />

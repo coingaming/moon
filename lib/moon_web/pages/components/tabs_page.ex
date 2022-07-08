@@ -4,15 +4,12 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   require Logger
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data(tab_id, :string)
 
@@ -101,93 +98,44 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Tabs</Heading>
+      <ComponentPageDescription title="Tabs">
         <p>
-          A menu of items for users to move between sections of the application.
-
-          By default, tabs will provide an accessible skip link, and overflow with horizontal scrolling.
-
-          TabLink component provides the tab interaction.
+          Tabs
         </p>
+      </ComponentPageDescription>
 
-        <p class="mt-4">
-          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Components?node-id=60%3A16">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/tabs_page.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/components/tabs">React implementation</Link>
-        </p>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Default" id="tabs" class="mt-4">
+          <:example>
+            <Tabs>
+              <TabLink
+                active={@tab_id == "1"}
+                to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
+              >Link 1</TabLink>
+              <TabLink
+                active={@tab_id == "2"}
+                to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
+              >Link 2</TabLink>
+              <TabLink
+                active={@tab_id == "3"}
+                patch
+                to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
+              >Link 3 with url patch, no page reload</TabLink>
+              <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+            </Tabs>
+          </:example>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="tabs" class="mt-4">
-            <:example>
-              <Tabs>
-                <TabLink
-                  active={@tab_id == "1"}
-                  to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
-                >Link 1</TabLink>
-                <TabLink
-                  active={@tab_id == "2"}
-                  to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
-                >Link 2</TabLink>
-                <TabLink
-                  active={@tab_id == "3"}
-                  patch
-                  to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
-                >Link 3 with url patch, no page reload</TabLink>
-                <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
-              </Tabs>
-            </:example>
+          <:code>{get_example_code()}</:code>
 
-            <:code>{get_example_code()}</:code>
+          <:state>
+            @tab_id = {@tab_id}
+          </:state>
+        </ExampleAndCode>
+      </Context>
 
-            <:state>
-              @tab_id = {@tab_id}
-            </:state>
-          </ExampleAndCode>
-        </Context>
+      <PropsTable data={@props_info_array_tab} />
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Tab Props</div>
-          <Table items={@props_info_array_tab}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props</div>
-          <Table items={@props_info_array_tab_link}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array_tab_link} />
     </Page>
     """
   end

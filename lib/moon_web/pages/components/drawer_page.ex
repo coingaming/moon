@@ -3,15 +3,13 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Autolayouts.PullAside
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
   alias Moon.Components.Drawer
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -36,67 +34,67 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
       breadcrumbs={@breadcrumbs}
       class={"mr-64": @drawer_2_is_open}
     >
-      <TopToDown>
-        <Heading size={56} class="mb-4">Drawer</Heading>
+      <ComponentPageDescription title="Drawer">
+        <p>
+          Drawer
+        </p>
+      </ComponentPageDescription>
 
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=33587%3A15713">Figma design</Link>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Drawer on top right" id="drawer_1_example">
+          <:example>
+            <Button variant="primary" on_click="open_drawer_1">Open drawer</Button>
+            <Drawer class="w-64" :if={@drawer_1_is_open}>
+              <Drawer.Dialog close="close_drawer_1">
+                <:title>Title text</:title>
+                <:content>Content here</:content>
+                <:footer>
+                  <PullAside>
+                    <:left>
+                      <Button>Label</Button>
+                    </:left>
+                    <:right>
+                      <LeftToRight>
+                        <Button variant="tertiary">Label</Button>
+                        <Button variant="primary">Label</Button>
+                      </LeftToRight>
+                    </:right>
+                  </PullAside>
+                </:footer>
+              </Drawer.Dialog>
+            </Drawer>
+          </:example>
+          <:code>{get_example_1_code()}</:code>
+          <:state>{get_example_1_state(assigns)}</:state>
+        </ExampleAndCode>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Drawer on top right" id="drawer_1_example">
-            <:example>
-              <Button variant="primary" on_click="open_drawer_1">Open drawer</Button>
-              <Drawer class="w-64" :if={@drawer_1_is_open}>
-                <Drawer.Dialog close="close_drawer_1">
-                  <:title>Title text</:title>
-                  <:content>Content here</:content>
-                  <:footer>
-                    <PullAside>
-                      <:left>
-                        <Button>Label</Button>
-                      </:left>
-                      <:right>
-                        <LeftToRight>
-                          <Button variant="tertiary">Label</Button>
-                          <Button variant="primary">Label</Button>
-                        </LeftToRight>
-                      </:right>
-                    </PullAside>
-                  </:footer>
-                </Drawer.Dialog>
-              </Drawer>
-            </:example>
-            <:code>{get_example_1_code()}</:code>
-            <:state>{get_example_1_state(assigns)}</:state>
-          </ExampleAndCode>
-
-          <ExampleAndCode title="Drawer on right that moves content" id="drawer_2_example">
-            <:example>
-              <Button variant="primary" on_click="open_drawer_2">Open drawer</Button>
-              <Drawer class="w-64" :if={@drawer_2_is_open}>
-                <Drawer.Dialog close="close_drawer_2">
-                  <:title>Title text</:title>
-                  <:content>Content here</:content>
-                  <:footer>
-                    <PullAside>
-                      <:left>
-                        <Button>Label</Button>
-                      </:left>
-                      <:right>
-                        <LeftToRight>
-                          <Button variant="tertiary">Label</Button>
-                          <Button variant="primary">Label</Button>
-                        </LeftToRight>
-                      </:right>
-                    </PullAside>
-                  </:footer>
-                </Drawer.Dialog>
-              </Drawer>
-            </:example>
-            <:code>{get_example_2_code()}</:code>
-            <:state>{get_example_2_state(assigns)}</:state>
-          </ExampleAndCode>
-        </Context>
-      </TopToDown>
+        <ExampleAndCode title="Drawer on right that moves content" id="drawer_2_example">
+          <:example>
+            <Button variant="primary" on_click="open_drawer_2">Open drawer</Button>
+            <Drawer class="w-64" :if={@drawer_2_is_open}>
+              <Drawer.Dialog close="close_drawer_2">
+                <:title>Title text</:title>
+                <:content>Content here</:content>
+                <:footer>
+                  <PullAside>
+                    <:left>
+                      <Button>Label</Button>
+                    </:left>
+                    <:right>
+                      <LeftToRight>
+                        <Button variant="tertiary">Label</Button>
+                        <Button variant="primary">Label</Button>
+                      </LeftToRight>
+                    </:right>
+                  </PullAside>
+                </:footer>
+              </Drawer.Dialog>
+            </Drawer>
+          </:example>
+          <:code>{get_example_2_code()}</:code>
+          <:state>{get_example_2_state(assigns)}</:state>
+        </ExampleAndCode>
+      </Context>
     </Page>
     """
   end

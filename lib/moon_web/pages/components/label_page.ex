@@ -3,15 +3,13 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Label
-  alias Moon.Components.Heading
-  alias MoonWeb.Components.ExampleAndCode
-  alias MoonWeb.Components.Page
   alias Moon.Icons.GenericInfo
   alias Moon.Icons.ControlsClose
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -86,122 +84,106 @@ defmodule MoonWeb.Pages.Components.LabelPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown gap={4}>
-        <Heading size={56} class="mb-4">Label</Heading>
+      <ComponentPageDescription title="Label">
         <p>
-          Small count and labeling component.
+          Use tags to label, categorize, or organize items using keywords that describe them.
         </p>
+        <p>
+          Multiple or single tags can be used to categorize items.
+        </p>
+        <p>
+          Use short labels for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags.
+        </p>
+        <p>
+          Default text style: Uppercase
+        </p>
+        <p>
+          Border radius: Interactive
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Colours" id="label_1">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Label color="gohan-100" background_color="piccolo-100">
-                  Active
-                </Label>
-                <Label color="krillin-100" background_color="trunks-100">
-                  Active
-                </Label>
-                <Label color="bulma-100" background_color="dodoria-100">
-                  Active
-                </Label>
-              </div>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Colours" id="label_1">
+          <:example>
+            <Label color="gohan-100" background_color="piccolo-100">
+              Active
+            </Label>
+            <Label color="krillin-100" background_color="trunks-100">
+              Active
+            </Label>
+            <Label color="bulma-100" background_color="dodoria-100">
+              Active
+            </Label>
+          </:example>
 
-            <:code>{label_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{label_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Sizes" id="label_2">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Label size="xsmall">
-                  xsmall (default)
-                </Label>
-                <Label size="twoxsmall">
-                  twoxsmall
-                </Label>
-              </div>
-            </:example>
+        <ExampleAndCode title="Sizes" id="label_2">
+          <:example>
+            <Label size="xsmall">
+              xsmall (default)
+            </Label>
+            <Label size="twoxsmall">
+              twoxsmall
+            </Label>
+          </:example>
 
-            <:code>{label_2_code()}</:code>
-          </ExampleAndCode>
+          <:code>{label_2_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Label with Icons" id="label_3">
-            <:example>
-              <TopToDown gap={8}>
-                <div class="flex justify-around w-full items-center">
-                  <Label size="twoxsmall">
-                    <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
-                    Left Icon
-                  </Label>
-                  <Label size="twoxsmall">
-                    Right Icon
-                    <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
-                  </Label>
-                  <Label size="twoxsmall">
-                    Both Icons
-                    <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
-                    <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
-                  </Label>
-                </div>
-                <div class="flex justify-around w-full items-center">
-                  <Label>
-                    <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
-                    Left Icon
-                  </Label>
-                  <Label>
-                    Right Icon
-                    <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
-                  </Label>
-                  <Label>
-                    Both Icons
-                    <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
-                    <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
-                  </Label>
-                </div>
-              </TopToDown>
-            </:example>
+        <ExampleAndCode title="Label with Icons" id="label_3">
+          <:example>
+            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+              <Label size="twoxsmall">
+                <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                Left Icon
+              </Label>
+              <Label size="twoxsmall">
+                Right Icon
+                <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+              </Label>
+              <Label size="twoxsmall">
+                Both Icons
+                <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
+                <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
+              </Label>
+            </div>
+            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+              <Label>
+                <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                Left Icon
+              </Label>
+              <Label>
+                Right Icon
+                <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+              </Label>
+              <Label>
+                Both Icons
+                <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
+                <:right_icon><GenericInfo class="h-6 w-6" /></:right_icon>
+              </Label>
+            </div>
+          </:example>
 
-            <:code>{label_3_code()}</:code>
-          </ExampleAndCode>
+          <:code>{label_3_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Letter cases" id="label_4">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Label>
-                  Uppercase (default)
-                </Label>
-                <Label is_uppercase={false}>
-                  Lowercase
-                </Label>
-              </div>
-            </:example>
+        <ExampleAndCode title="Letter cases" id="label_4">
+          <:example>
+            <Label>
+              Uppercase (default)
+            </Label>
+            <Label is_uppercase={false}>
+              Lowercase
+            </Label>
+          </:example>
 
-            <:code>{label_4_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{label_4_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end
@@ -233,7 +215,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   def label_3_code do
     """
-      <div class="flex justify-around w-full items-center">
+      <div class="flex flex-wrap items-center justify-around gap-2 w-full">
         <Label size="twoxsmall">
           <:left_icon><ControlsClose class="h-3 w-3" /></:left_icon>
           Left Icon
@@ -248,7 +230,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
           <:right_icon><ControlsClose class="h-3 w-3" /></:right_icon>
         </Label>
       </div>
-      <div class="flex justify-around w-full items-center">
+      <div class="flex flex-wrap items-center justify-around gap-2 w-full">
         <Label>
           <:left_icon><GenericInfo class="h-6 w-6" /></:left_icon>
           Left Icon
