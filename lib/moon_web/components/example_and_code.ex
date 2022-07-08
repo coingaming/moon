@@ -23,12 +23,14 @@ defmodule MoonWeb.Components.ExampleAndCode do
       <div class="my-2 text-moon-14" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
-      <Context>
+      <Context get={theme_class: theme_class}>
         <div class={
           "p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm",
           "moon-design-dark hidden": @selected_button == "code"
         }>
-          <#slot name="example">Example not defined</#slot>
+          <div class={"w-full bg-transparent", theme_class}>
+            <#slot name="example">Example not defined</#slot>
+          </div>
         </div>
         <div class={
           "overflow-scroll",
