@@ -115,8 +115,7 @@ defmodule MoonWeb.Router do
       live "/components/tabs/:tab_id", MoonWeb.Pages.Components.TabsPage
       live "/components/table", MoonWeb.Pages.Components.TablePage
 
-      # live "/components/text-input/text-input", MoonWeb.Pages.Components.TextInput.TextInputPage
-      live "/components/text-input/text-input", MoonWeb.Pages.Components.TextInput.TextInputPage2
+      live "/components/text-input", MoonWeb.Pages.Components.TextInputPage
 
       live "/components/text-input/number", MoonWeb.Pages.Components.TextInput.NumberPage
       live "/components/text-input/date", MoonWeb.Pages.Components.TextInput.DatePage

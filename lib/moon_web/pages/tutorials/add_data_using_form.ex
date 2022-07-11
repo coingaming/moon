@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
   alias Moon.Components.Form
   alias Moon.Components.Link
   alias Moon.Components.Select
-  alias Moon.Components.TextInput
+  alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User

@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.Datepicker
   alias Moon.Components.Form
   alias Moon.Components.Popover
-  alias Moon.Components.TextInput
+  alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter
 
   data clicked_name, :string, default: ""

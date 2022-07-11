@@ -1,20 +1,19 @@
-defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
+defmodule MoonWeb.Pages.Components.TextInputPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Icons.IconMail
-  alias Moon.Assets.Icons.IconUser
   alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Button
-  alias Moon.Components.ErrorTag
-  alias Moon.Components.Field
-  alias Moon.Components.Form
-  alias Moon.Components.Heading
-  alias Moon.Components.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Components.TextInput
+  alias Moon.Components.Heading
+  alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.Form
+  alias Moon.Components.Button
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias Moon.Components.Field
+  alias Moon.Components.ErrorTag
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
@@ -106,54 +105,358 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Text Input</Heading>
 
-        <div>
-          The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
-        </div>
+        <ExampleAndCode id="input_020" title="Sizes">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder"/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder"/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder"/>
+            </LeftToRight>
+          </:example>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="example_1">
-            <:example>
-              <Form
-                for={@user_changeset}
-                change="register_form_update"
-                submit="register_form_submit"
-                autocomplete="off"
-              >
-                <TopToDown>
-                  <Field name={:username}>
-                    <TextInput label="Username" placeholder="Username">
-                      <:left_icon><IconUser /></:left_icon>
-                      <:right_icon>
-                        {#if String.length(@user_changeset.changes[:username] || @user.username || "") > 0}
-                          <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
-                        {/if}
-                      </:right_icon>
-                    </TextInput>
-                    <ErrorTag />
-                  </Field>
-                  <Field name={:email}>
-                    <TextInput
-                      label="Email"
-                      placeholder="Email"
-                      type="email"
-                      disabled={!get_has_valid_username(@user_changeset)}
-                    >
-                      <:left_icon><IconMail /></:left_icon>
-                    </TextInput>
-                    <ErrorTag />
-                  </Field>
-                  <div>
-                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                  </div>
-                </TopToDown>
-              </Form>
-            </:example>
+          <:code>{text_input_020_code()}</:code>
+        </ExampleAndCode>
 
-            <:code>{example_1_code()}</:code>
+        <Heading size={32} class="mt-16 mb-4">Text Input Types</Heading>
 
-            <:state>{example_1_state(assigns)}</:state>
-          </ExampleAndCode>
-        </Context>
+        <ExampleAndCode id="input_010" title="Number">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="number"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput
+                type="number"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. 1234"
+              />
+              <TextInput
+                type="number"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. 1234"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_010_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_009" title="Date">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="date"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="date"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="date"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Placeholder"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_009_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_008" title="Time">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="time"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="time"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="time"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Placeholder"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_008_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_007" title="Date Time">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="datetime-local"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="datetime-local"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Placeholder"
+              />
+              <TextInput
+                type="datetime-local"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Placeholder"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_007_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_006" title="Email">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput
+                type="email"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_006_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_005" title="Password">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                id="txt_password_1"
+                type="password"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Password"
+              />
+              <TextInput
+                id="txt_password_2"
+                type="password"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Password"
+              />
+              <TextInput
+                id="txt_password_3"
+                type="password"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Password"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_005_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_004" title="Search">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput
+                type="email"
+                size="lg"
+                label="Large (lg)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_004_code()}</:code>
+        </ExampleAndCode>
+
+        <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
+
+        <ExampleAndCode id="input_20" title="Disabled">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_20_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_30" title="Error">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_30_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_40" title="Readonly">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput size="lg" label="Large (lg)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput size="xl" label="Xlarge (xl)" value="Read only text" placeholder="Placeholder" readonly/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_40_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_50" title="Size RTL">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_50_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_60" title="Without label">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="lg" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="xl" placeholder="Placeholder" dir="rtl"/>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_60_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_70" title="Hint Text">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_80" title="Input with background color">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_90" title="Form example">
+          <:example>
+            <Form
+              for={@user_changeset}
+              change="register_form_update"
+              submit="register_form_submit"
+              autocomplete="off"
+            >
+              <TopToDown>
+                <Field name={:username}>
+                  <TextInput label="Username" placeholder="Username" />
+                  <ErrorTag />
+                </Field>
+                <Field name={:email}>
+                  <TextInput
+                    label="Email"
+                    placeholder="Email"
+                    type="email"
+                    disabled={!get_has_valid_username(@user_changeset)}
+                  />
+                  <ErrorTag />
+                </Field>
+                <Field name={:password}>
+                  <TextInput
+                    id="password"
+                    label="Password"
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <ErrorTag />
+                </Field>
+                <div>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </TopToDown>
+            </Form>
+          </:example>
+
+            <:code>{text_input_90_code()}</:code>
+
+            <:state>{text_input_90_state(assigns)}</:state>
+        </ExampleAndCode>
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
@@ -177,6 +480,298 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
         </div>
       </TopToDown>
     </Page>
+    """
+  end
+
+  def text_input_020_code do
+    """
+    <TextInput label="Medium (Default: md)" />
+    <TextInput size="lg" label="Large (lg)" />
+    <TextInput size="xl" label="Xlarge (xl)" />
+    """
+  end
+
+  def text_input_010_code do
+    """
+    <TextInput
+      type="number"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput
+      type="number"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. 1234"
+    />
+    <TextInput
+      type="number"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. 1234"
+    />
+    """
+  end
+
+  def text_input_009_code do
+    """
+    <TextInput
+      type="date"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="date"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="date"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Placeholder"
+    />
+    """
+  end
+
+  def text_input_008_code do
+    """
+    <TextInput
+      type="time"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="time"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="time"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Placeholder"
+    />
+    """
+  end
+
+  def text_input_007_code do
+    """
+    <TextInput
+      type="datetime-local"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="datetime-local"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Placeholder"
+    />
+    <TextInput
+      type="datetime-local"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Placeholder"
+    />
+    """
+  end
+
+  def text_input_006_code do
+    """
+    <TextInput
+      type="email"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput
+      type="email"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput
+      type="email"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    """
+  end
+
+  def text_input_005_code do
+    """
+    <TextInput
+      id="txt_password_1"
+      type="password"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="Password"
+    />
+    <TextInput
+      id="txt_password_2"
+      type="password"
+      size="lg"
+      label="Large (lg)"
+      placeholder="Password"
+    />
+    <TextInput
+      id="txt_password_3"
+      type="password"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="Password"
+    />
+    """
+  end
+
+  def text_input_004_code do
+    """
+    <TextInput
+      type="email"
+      size="md"
+      label="Medium (Default: md)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput
+      type="email"
+      size="lg"
+      label="Large (lg)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    <TextInput
+      type="email"
+      size="xl"
+      label="Xlarge (xl)"
+      placeholder="e.g. jake.weary@sportsbet.io"
+    />
+    """
+  end
+
+  def text_input_20_code do
+    """
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+    """
+  end
+
+  def text_input_30_code do
+    """
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+      <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    """
+  end
+
+  def text_input_40_code do
+    """
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" readonly/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" readonly/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" readonly/>
+    """
+  end
+
+  def text_input_50_code do
+    """
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+    """
+  end
+
+  def text_input_60_code do
+    """
+    <TextInput (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="lg" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="xl" placeholder="Placeholder" dir="rtl"/>
+    """
+  end
+
+  def text_input_70_code do
+    """
+    <TextInput placeholder="Placeholder" label="Medium (Default: md)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    """
+  end
+
+  def text_input_80_code do
+    """
+    <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+      <:hint_text_slot>Informative message holder</:hint_text_slot>
+    </TextInput>
+    """
+  end
+
+  def text_input_90_code do
+    """
+    <Form
+      for={@user_changeset}
+      change="register_form_update"
+      submit="register_form_submit"
+      autocomplete="off"
+    >
+      <TopToDown>
+        <Field name={:username}>
+          <TextInput label="Username" placeholder="Username" />
+          <ErrorTag />
+        </Field>
+        <Field name={:email}>
+          <TextInput
+            label="Email"
+            placeholder="Email"
+            type="email"
+            disabled={!get_has_valid_username(@user_changeset)}
+          />
+          <ErrorTag />
+        </Field>
+        <Field name={:password}>
+          <TextInput
+            id="password"
+            label="Password"
+            placeholder="Password"
+            type="password"
+          />
+          <ErrorTag />
+        </Field>
+        <div>
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
+      </TopToDown>
+    </Form>
+    """
+  end
+
+  def text_input_90_state(assigns) do
+    ~F"""
+    @user_changeset = {inspect(@user_changeset, pretty: true)}
+    @user = {inspect(@user, pretty: true)}
     """
   end
 
@@ -212,56 +807,5 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage do
       User.changeset(socket.assigns.user, params["user"]) |> Map.merge(%{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
-  end
-
-  def handle_event("clear_username", _, socket) do
-    user_changeset =
-      User.changeset(socket.assigns.user, %{
-        username: "",
-        email: socket.assigns.user_changeset.changes["email"]
-      })
-
-    {:noreply, assign(socket, user_changeset: user_changeset)}
-  end
-
-  def example_1_code do
-    """
-    <Form
-      for={@user_changeset}
-      change="register_form_update"
-      submit="register_form_submit"
-      autocomplete="off"
-    >
-      <TopToDown>
-        <Field name={:username}>
-          <TextInput label="Username" placeholder="Username">
-            <:left_icon><IconUser /></:left_icon>
-            <:right_icon>
-              {#if String.length(@username)> 0}
-                <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
-              {/if}
-            </:right_icon>
-          </TextInput>
-          <ErrorTag />
-        </Field>
-        <Field name={:email}>
-          <TextInput label="Email" placeholder="Email" type="email" disabled={!get_has_valid_username(@user_changeset)}>
-            <:left_icon><IconMail /></:left_icon>
-          </TextInput>
-          <ErrorTag />
-        </Field>
-        <div>
-          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-        </div>
-      </TopToDown>
-    </Form>
-    """
-  end
-
-  def example_1_state(assigns) do
-    ~F"""
-    @user_changeset = {inspect(@user_changeset, pretty: true)}
-    @user = {inspect(@user, pretty: true)}
-    """
   end
 end

@@ -2,7 +2,7 @@ defmodule Moon.Components.PasswordInput do
   @moduledoc false
 
   use Moon.StatefulComponent
-  alias Moon.Components.TextInput
+  alias Moon.Components.Deprecated.TextInput
 
   data hidden, :boolean, default: true
 
