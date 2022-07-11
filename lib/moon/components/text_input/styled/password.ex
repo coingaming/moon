@@ -56,6 +56,7 @@ defmodule Moon.Components.TextInput.Password do
       }
       value={@value}
       class={
+        "focus:ring-0 border-0",
         "block w-full max-w-full py-0 px-4 m-0 appearance-none",
         "text-[1rem] text-bulma transition-shadow box-border relative z-[2]",
         "shadow-input hover:shadow-input-hov",
