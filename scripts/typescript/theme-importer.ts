@@ -220,6 +220,14 @@ ${Object.keys(exObj.color)
   )
   .join("\n")}
 
+--radius-i-xs: 0.25rem; /* 4px */
+--radius-i-sm: 0.5rem; /* 8px */
+--radius-i-md: 0.75rem; /* 12px */
+--radius-s-xs: 0.25rem; /* 4px */
+--radius-s-sm: 0.5rem; /* 8px */
+--radius-s-md: 0.75rem; /* 12px */
+--radius-s-lg: 1rem; /* 16px */
+
 space: var(--base--space);
 font-size: var(--base--font-size);
 line-height: var(--base--line-height);
