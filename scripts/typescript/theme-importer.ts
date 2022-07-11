@@ -121,7 +121,6 @@ const writeTheme = (jsTheme: any, exThemePath: string) => {
 
 --border-style: ${s(exObj.border_style)};
 --border-width: ${s(exObj.border_width)}px;
---border-width: ${s(exObj.border_width)}px;
 --border-i-width: ${s(exObj.border_width_interactive)}px;
 --border: ${s(exObj.border)};
 --box-shadow: ${s(exObj.box_shadow)};
