@@ -67,20 +67,20 @@ defmodule Moon.Components.TextInput.Password do
         "input-dt-shared",
         "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
         Utils.get_size_styles(@size),
-        Utils.make_border(
-          @is_side_border_hidden,
-          @is_top_bottom_border_hidden,
-          @is_first,
-          @dir == "rtl",
-          @is_error
-        ),
-        get_class_sides(
-          @is_sharp_left_side,
-          @is_sharp_right_side,
-          @is_sharp_top_side,
-          @is_sharp_bottom_side,
-          @is_error
-        ),
+        "#{Utils.make_border_left(@is_side_border_hidden,
+        @is_first,
+        @dir == "rtl")}": !@is_error,
+        "#{Utils.make_border_right(@is_side_border_hidden,
+        @is_first,
+        @dir == "rtl")}": !@is_error,
+        "#{Utils.make_border_top_bottom(@is_top_bottom_border_hidden,
+        @is_first)}": !@is_error,
+        "#{get_class_left(@is_sharp_left_side,
+        @is_sharp_top_side,
+        @is_sharp_bottom_side)}": !@is_error,
+        "#{get_class_right(@is_sharp_right_side,
+        @is_sharp_top_side,
+        @is_sharp_bottom_side)}": !@is_error,
         "shadow-input-err hover:shadow-input-err focus:shadow-input-err": @is_error,
         "bg-#{@background_color}": @background_color,
         "bg-transparent": !@background_color,
@@ -98,18 +98,26 @@ defmodule Moon.Components.TextInput.Password do
     """
   end
 
-  defp get_class_sides(
+  defp get_class_left(
          is_sharp_left_side,
-         is_sharp_right_side,
          is_sharp_top_side,
-         is_sharp_bottom_side,
-         is_error
+         is_sharp_bottom_side
        ) do
     cond do
-      (is_sharp_left_side || is_sharp_top_side) && !is_error -> "rounded-tl-none"
-      (is_sharp_right_side || is_sharp_top_side) && !is_error -> "rounded-tr-none"
-      (is_sharp_left_side || is_sharp_bottom_side) && !is_error -> "rounded-bl-none"
-      (is_sharp_right_side || is_sharp_bottom_side) && !is_error -> "rounded-br-none"
+      is_sharp_left_side || is_sharp_top_side -> "rounded-tl-none"
+      is_sharp_left_side || is_sharp_bottom_side -> "rounded-bl-none"
+      true -> ""
+    end
+  end
+
+  defp get_class_right(
+         is_sharp_right_side,
+         is_sharp_top_side,
+         is_sharp_bottom_side
+       ) do
+    cond do
+      is_sharp_right_side || is_sharp_top_side -> "rounded-tr-none"
+      is_sharp_right_side || is_sharp_bottom_side -> "rounded-br-none"
       true -> ""
     end
   end

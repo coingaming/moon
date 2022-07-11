@@ -72,21 +72,27 @@ defmodule Moon.Components.TextInput.Input do
         "input-dt-shared",
         "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
         Utils.get_size_styles(@size),
-        Utils.make_border(
-          @is_side_border_hidden,
-          @is_top_bottom_border_hidden,
-          @is_first,
-          @dir == "rtl",
-          @is_error
-        ),
-        get_class_sides(
+        get_class_left(
           @is_sharp_left_side,
+          @is_sharp_top_side,
+          @is_sharp_bottom_side
+        ),
+        get_class_right(
           @is_sharp_right_side,
           @is_sharp_top_side,
-          @is_sharp_bottom_side,
-          @is_error
+          @is_sharp_bottom_side
         ),
-        get_class_for_type(@type, @dir == "rtl"),
+        get_class_for_date_type(@type, @dir == "rtl"),
+        get_class_for_time_type(@type, @dir == "rtl"),
+        "#{Utils.make_border_left(@is_side_border_hidden,
+        @is_first,
+        @dir == "rtl")}": !@is_error,
+        "#{Utils.make_border_right(@is_side_border_hidden,
+        @is_first,
+        @dir == "rtl")}": !@is_error,
+        "#{Utils.make_border_top_bottom(@is_top_bottom_border_hidden,
+        @is_first)}": !@is_error,
+        "input-number-clear": @type == "number",
         "shadow-input-err hover:shadow-input-err focus:shadow-input-err": @is_error,
         "bg-#{@background_color}": @background_color,
         "bg-transparent": !@background_color,
@@ -103,30 +109,43 @@ defmodule Moon.Components.TextInput.Input do
     """
   end
 
-  defp get_class_for_type(type, is_rtl) do
+  defp get_class_for_date_type(type, is_rtl) do
     cond do
-      type == "number" -> "input-number-clear"
       type == "date" || type == "datetime-local" -> "input-d"
       type == "date" && is_rtl -> "input-d-rtl"
-      type == "time" -> "input-t"
-      type == "time" && is_rtl -> "input-t-rtl"
       type == "datetime-local" && is_rtl -> "input-dt-local-rtl"
       true -> ""
     end
   end
 
-  defp get_class_sides(
+  defp get_class_for_time_type(type, is_rtl) do
+    cond do
+      type == "time" -> "input-t"
+      type == "time" && is_rtl -> "input-t-rtl"
+      true -> ""
+    end
+  end
+
+  defp get_class_left(
          is_sharp_left_side,
-         is_sharp_right_side,
          is_sharp_top_side,
-         is_sharp_bottom_side,
-         is_error
+         is_sharp_bottom_side
        ) do
     cond do
-      (is_sharp_left_side || is_sharp_top_side) && !is_error -> "rounded-tl-none"
-      (is_sharp_right_side || is_sharp_top_side) && !is_error -> "rounded-tr-none"
-      (is_sharp_left_side || is_sharp_bottom_side) && !is_error -> "rounded-bl-none"
-      (is_sharp_right_side || is_sharp_bottom_side) && !is_error -> "rounded-br-none"
+      is_sharp_left_side || is_sharp_top_side -> "rounded-tl-none"
+      is_sharp_left_side || is_sharp_bottom_side -> "rounded-bl-none"
+      true -> ""
+    end
+  end
+
+  defp get_class_right(
+         is_sharp_right_side,
+         is_sharp_top_side,
+         is_sharp_bottom_side
+       ) do
+    cond do
+      is_sharp_right_side || is_sharp_top_side -> "rounded-tr-none"
+      is_sharp_right_side || is_sharp_bottom_side -> "rounded-br-none"
       true -> ""
     end
   end
