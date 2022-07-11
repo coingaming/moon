@@ -10,6 +10,7 @@ defmodule Moon.Helpers.CountryFlags do
       AI
       AL
       AM
+      AN
       AO
       AQ
       AR
