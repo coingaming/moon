@@ -1,4 +1,4 @@
-defmodule Moon.Components.TextInput2 do
+defmodule Moon.Components.TextInput do
   @moduledoc false
 
   use Moon.StatelessComponent

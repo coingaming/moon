@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Components.TextInput2
+  alias Moon.Components.TextInput
   alias Moon.Components.Heading
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Form
@@ -108,9 +108,9 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_020" title="Sizes">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder"/>
-              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder"/>
-              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder"/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder"/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder"/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder"/>
             </LeftToRight>
           </:example>
 
@@ -122,19 +122,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_010" title="Number">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="number"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="e.g. 1234"
               />
-              <TextInput2
+              <TextInput
                 type="number"
                 size="lg"
                 label="Large (lg)"
                 placeholder="e.g. 1234"
               />
-              <TextInput2
+              <TextInput
                 type="number"
                 size="xl"
                 label="Xlarge (xl)"
@@ -149,19 +149,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_009" title="Date">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="date"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="date"
                 size="lg"
                 label="Large (lg)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="date"
                 size="xl"
                 label="Xlarge (xl)"
@@ -176,19 +176,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_008" title="Time">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="time"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="time"
                 size="lg"
                 label="Large (lg)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="time"
                 size="xl"
                 label="Xlarge (xl)"
@@ -203,19 +203,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_007" title="Date Time">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="datetime-local"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="datetime-local"
                 size="lg"
                 label="Large (lg)"
                 placeholder="Placeholder"
               />
-              <TextInput2
+              <TextInput
                 type="datetime-local"
                 size="xl"
                 label="Xlarge (xl)"
@@ -230,19 +230,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_006" title="Email">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="email"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput2
+              <TextInput
                 type="email"
                 size="lg"
                 label="Large (lg)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput2
+              <TextInput
                 type="email"
                 size="xl"
                 label="Xlarge (xl)"
@@ -257,21 +257,21 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_005" title="Password">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 id="txt_password_1"
                 type="password"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="Password"
               />
-              <TextInput2
+              <TextInput
                 id="txt_password_2"
                 type="password"
                 size="lg"
                 label="Large (lg)"
                 placeholder="Password"
               />
-              <TextInput2
+              <TextInput
                 id="txt_password_3"
                 type="password"
                 size="xl"
@@ -287,19 +287,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_004" title="Search">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2
+              <TextInput
                 type="email"
                 size="md"
                 label="Medium (Default: md)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput2
+              <TextInput
                 type="email"
                 size="lg"
                 label="Large (lg)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput2
+              <TextInput
                 type="email"
                 size="xl"
                 label="Xlarge (xl)"
@@ -316,9 +316,9 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_20" title="Disabled">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" disabled/>
-              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
-              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
             </LeftToRight>
           </:example>
 
@@ -328,15 +328,15 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_30" title="Error">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" is_error>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
+              </TextInput>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-                <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+              </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
+              </TextInput>
             </LeftToRight>
           </:example>
 
@@ -346,9 +346,9 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_40" title="Readonly">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" value="Read only text" placeholder="Placeholder" readonly/>
-              <TextInput2 size="lg" label="Large (lg)" value="Read only text" placeholder="Placeholder" readonly/>
-              <TextInput2 size="xl" label="Xlarge (xl)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput label="Medium (Default: md)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput size="lg" label="Large (lg)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput size="xl" label="Xlarge (xl)" value="Read only text" placeholder="Placeholder" readonly/>
             </LeftToRight>
           </:example>
 
@@ -358,9 +358,9 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_50" title="Size RTL">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
             </LeftToRight>
           </:example>
 
@@ -370,9 +370,9 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_60" title="Without label">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="lg" placeholder="Placeholder" dir="rtl"/>
-              <TextInput2 size="xl" placeholder="Placeholder" dir="rtl"/>
+              <TextInput placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="lg" placeholder="Placeholder" dir="rtl"/>
+              <TextInput size="xl" placeholder="Placeholder" dir="rtl"/>
             </LeftToRight>
           </:example>
 
@@ -382,15 +382,15 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_70" title="Hint Text">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 placeholder="Placeholder" label="Medium (Default: md)">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-              <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)">
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-              <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)">
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
+              </TextInput>
             </LeftToRight>
           </:example>
 
@@ -400,15 +400,15 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
         <ExampleAndCode id="input_80" title="Input with background color">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput2 placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-              <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
-              <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
-              </TextInput2>
+              </TextInput>
             </LeftToRight>
           </:example>
 
@@ -425,11 +425,11 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
             >
               <TopToDown>
                 <Field name={:username}>
-                  <TextInput2 label="Username" placeholder="Username" />
+                  <TextInput label="Username" placeholder="Username" />
                   <ErrorTag />
                 </Field>
                 <Field name={:email}>
-                  <TextInput2
+                  <TextInput
                     label="Email"
                     placeholder="Email"
                     type="email"
@@ -438,7 +438,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
                   <ErrorTag />
                 </Field>
                 <Field name={:password}>
-                  <TextInput2
+                  <TextInput
                     id="password"
                     label="Password"
                     placeholder="Password"
@@ -485,27 +485,27 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_020_code do
     """
-    <TextInput2 label="Medium (Default: md)" />
-    <TextInput2 size="lg" label="Large (lg)" />
-    <TextInput2 size="xl" label="Xlarge (xl)" />
+    <TextInput label="Medium (Default: md)" />
+    <TextInput size="lg" label="Large (lg)" />
+    <TextInput size="xl" label="Xlarge (xl)" />
     """
   end
 
   def text_input_010_code do
     """
-    <TextInput2
+    <TextInput
       type="number"
       size="md"
       label="Medium (Default: md)"
       placeholder="e.g. 1234"
     />
-    <TextInput2
+    <TextInput
       type="number"
       size="lg"
       label="Large (lg)"
       placeholder="e.g. 1234"
     />
-    <TextInput2
+    <TextInput
       type="number"
       size="xl"
       label="Xlarge (xl)"
@@ -516,19 +516,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_009_code do
     """
-    <TextInput2
+    <TextInput
       type="date"
       size="md"
       label="Medium (Default: md)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="date"
       size="lg"
       label="Large (lg)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="date"
       size="xl"
       label="Xlarge (xl)"
@@ -539,19 +539,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_008_code do
     """
-    <TextInput2
+    <TextInput
       type="time"
       size="md"
       label="Medium (Default: md)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="time"
       size="lg"
       label="Large (lg)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="time"
       size="xl"
       label="Xlarge (xl)"
@@ -562,19 +562,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_007_code do
     """
-    <TextInput2
+    <TextInput
       type="datetime-local"
       size="md"
       label="Medium (Default: md)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="datetime-local"
       size="lg"
       label="Large (lg)"
       placeholder="Placeholder"
     />
-    <TextInput2
+    <TextInput
       type="datetime-local"
       size="xl"
       label="Xlarge (xl)"
@@ -585,19 +585,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_006_code do
     """
-    <TextInput2
+    <TextInput
       type="email"
       size="md"
       label="Medium (Default: md)"
       placeholder="e.g. jake.weary@sportsbet.io"
     />
-    <TextInput2
+    <TextInput
       type="email"
       size="lg"
       label="Large (lg)"
       placeholder="e.g. jake.weary@sportsbet.io"
     />
-    <TextInput2
+    <TextInput
       type="email"
       size="xl"
       label="Xlarge (xl)"
@@ -608,21 +608,21 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_005_code do
     """
-    <TextInput2
+    <TextInput
       id="txt_password_1"
       type="password"
       size="md"
       label="Medium (Default: md)"
       placeholder="Password"
     />
-    <TextInput2
+    <TextInput
       id="txt_password_2"
       type="password"
       size="lg"
       label="Large (lg)"
       placeholder="Password"
     />
-    <TextInput2
+    <TextInput
       id="txt_password_3"
       type="password"
       size="xl"
@@ -634,19 +634,19 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_004_code do
     """
-    <TextInput2
+    <TextInput
       type="email"
       size="md"
       label="Medium (Default: md)"
       placeholder="e.g. jake.weary@sportsbet.io"
     />
-    <TextInput2
+    <TextInput
       type="email"
       size="lg"
       label="Large (lg)"
       placeholder="e.g. jake.weary@sportsbet.io"
     />
-    <TextInput2
+    <TextInput
       type="email"
       size="xl"
       label="Xlarge (xl)"
@@ -657,75 +657,75 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
 
   def text_input_20_code do
     """
-    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" disabled/>
-    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
-    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
     """
   end
 
   def text_input_30_code do
     """
-    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" is_error>
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
+    </TextInput>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-      <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+    </TextInput>
+      <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
+    </TextInput>
     """
   end
 
   def text_input_40_code do
     """
-    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" readonly/>
-    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" readonly/>
-    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" readonly/>
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" readonly/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" readonly/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" readonly/>
     """
   end
 
   def text_input_50_code do
     """
-    <TextInput2 label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
     """
   end
 
   def text_input_60_code do
     """
-    <TextInput2 (Default: md)" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="lg" placeholder="Placeholder" dir="rtl"/>
-    <TextInput2 size="xl" placeholder="Placeholder" dir="rtl"/>
+    <TextInput (Default: md)" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="lg" placeholder="Placeholder" dir="rtl"/>
+    <TextInput size="xl" placeholder="Placeholder" dir="rtl"/>
     """
   end
 
   def text_input_70_code do
     """
-    <TextInput2 placeholder="Placeholder" label="Medium (Default: md)">
+    <TextInput placeholder="Placeholder" label="Medium (Default: md)">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)">
+    </TextInput>
+    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)">
+    </TextInput>
+    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
+    </TextInput>
     """
   end
 
   def text_input_80_code do
     """
-    <TextInput2 placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+    <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    <TextInput2 size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+    </TextInput>
+    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
-    <TextInput2 size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+    </TextInput>
+    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
-    </TextInput2>
+    </TextInput>
     """
   end
 
@@ -739,11 +739,11 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
     >
       <TopToDown>
         <Field name={:username}>
-          <TextInput2 label="Username" placeholder="Username" />
+          <TextInput label="Username" placeholder="Username" />
           <ErrorTag />
         </Field>
         <Field name={:email}>
-          <TextInput2
+          <TextInput
             label="Email"
             placeholder="Email"
             type="email"
@@ -752,7 +752,7 @@ defmodule MoonWeb.Pages.Components.TextInput.TextInputPage2 do
           <ErrorTag />
         </Field>
         <Field name={:password}>
-          <TextInput2
+          <TextInput
             id="password"
             label="Password"
             placeholder="Password"
