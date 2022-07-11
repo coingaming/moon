@@ -117,16 +117,6 @@ defmodule MoonWeb.Router do
 
       live "/components/text-input", MoonWeb.Pages.Components.TextInputPage
 
-      live "/components/text-input/number", MoonWeb.Pages.Components.TextInput.NumberPage
-      live "/components/text-input/date", MoonWeb.Pages.Components.TextInput.DatePage
-      live "/components/text-input/time", MoonWeb.Pages.Components.TextInput.TimePage
-      live "/components/text-input/date-time", MoonWeb.Pages.Components.TextInput.DateTimePage
-      live "/components/text-input/email", MoonWeb.Pages.Components.TextInput.EmailPage
-      live "/components/text-input/password", MoonWeb.Pages.Components.TextInput.PasswordPage
-      live "/components/text-input/search", MoonWeb.Pages.Components.TextInput.SearchPage
-      live "/components/text-input/telephone", MoonWeb.Pages.Components.TextInput.TelephonePage
-      live "/components/text-input/url", MoonWeb.Pages.Components.TextInput.UrlPage
-
       live "/components/text-input-group", MoonWeb.Pages.Components.TextInputGroupPage
       live "/components/toast", MoonWeb.Pages.Components.ToastPage
       live "/components/tooltip", MoonWeb.Pages.Components.TooltipPage
