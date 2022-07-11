@@ -3,7 +3,8 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
 
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Autolayouts.{LeftToRight, TopToDown}
-  alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, Popover, TextInput}
+  alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, Popover}
+  alias Moon.Components.Deprecated.TextInput
 
   prop show_filter, :boolean, required: true
   prop search_text, :string, required: true

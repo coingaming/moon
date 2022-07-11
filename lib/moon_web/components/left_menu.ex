@@ -160,27 +160,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.TabsPage}>Tabs</SidebarLink>
                       <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
 
-                      <Accordion
-                        is_content_inside={false}
-                        id="left-menu-components-text"
-                        open_by_default={active_page_contains(@active_page, Pages.Components.TextInput)}
-                      >
-                        <:title>Text Input</:title>
-                        <:content>
-                          <div class="flex-grow flex flex-col gap-2 pl-8">
-                            <SidebarLink route={Pages.Components.TextInput.TextInputPage}>Text input</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.NumberPage}>Number *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.DatePage}>Date *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.TimePage}>Time *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.DateTimePage}>DateTime *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.EmailPage}>Email *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.PasswordPage}>Password</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.SearchPage}>Search *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.TelephonePage}>Telephone *</SidebarLink>
-                            <SidebarLink route={Pages.Components.TextInput.UrlPage}>Url *</SidebarLink>
-                          </div>
-                        </:content>
-                      </Accordion>
+                      <SidebarLink route={Pages.Components.TextInputPage}>Text input</SidebarLink>
 
                       <SidebarLink route={Pages.Components.TextInputGroupPage}>Text input group</SidebarLink>
                       <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
