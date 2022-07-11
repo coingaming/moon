@@ -11,8 +11,11 @@ console.log('Running Figma importer');
 // https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41
 
 // https://www.figma.com/developers/api
-// TODO this is really not secure, especially when project goes public
-const accessToken = '192730-97a241b4-a87d-4704-bd42-27ab884057b5';
+const accessToken = process.env.FIGMA_ACCESS_TOKEN;
+
+if (!accessToken) {
+  throw new Error("Please define FIGMA_ACCESS_TOKEN env value.");
+}
 
 type ThemeConf = {
   name: string;
