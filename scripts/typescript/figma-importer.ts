@@ -11,7 +11,6 @@ console.log('Running Figma importer');
 // https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41
 
 // https://www.figma.com/developers/api
-// TODO this is really not secure, especially when project goes public
 const accessToken = process.env.FIGMA_ACCESS_TOKEN;
 
 if (!accessToken) {
