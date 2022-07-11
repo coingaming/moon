@@ -1,3 +1,10 @@
+## [2.15.4](https://github.com/coingaming/moon/compare/v2.15.3...v2.15.4) (2022-07-11)
+
+
+### Bug Fixes
+
+* added partners ([#308](https://github.com/coingaming/moon/issues/308)) ([6d0839c](https://github.com/coingaming/moon/commit/6d0839c10d48946d10fba97be05712623ee76056))
+
 ## [2.15.3](https://github.com/coingaming/moon/compare/v2.15.2...v2.15.3) (2022-07-11)
 
 
