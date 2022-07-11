@@ -24,7 +24,6 @@
 
 --border-style: solid;
 --border-width: 1px;
---border-width: 1px;
 --border-i-width: 2px;
 --border: 1px solid;
 --box-shadow: 0px 2.4px 7.2px rgba(0, 0, 0, 0.18), 0px 12.8px 28.8px rgba(0, 0, 0, 0.22);
@@ -116,6 +115,14 @@
 --color--beerus-100: 82 27 129; /* #521b81 */
 --color--bulma-100: 255 255 255; /* #ffffff */
 --color--trunks-100: 161 142 180; /* #a18eb4 */
+
+--radius-i-xs: 0.25rem; /* 4px */
+--radius-i-sm: 0.5rem; /* 8px */
+--radius-i-md: 0.75rem; /* 12px */
+--radius-s-xs: 0.25rem; /* 4px */
+--radius-s-sm: 0.5rem; /* 8px */
+--radius-s-md: 0.75rem; /* 12px */
+--radius-s-lg: 1rem; /* 16px */
 
 space: var(--base--space);
 font-size: var(--base--font-size);

@@ -24,7 +24,6 @@
 
 --border-style: solid;
 --border-width: 1px;
---border-width: 1px;
 --border-i-width: 2px;
 --border: 1px solid;
 --box-shadow: 0px 0px 1px 0px #00000066, 0px 8px 24px -6px #00000029;
@@ -116,6 +115,14 @@
 --color--beerus-100: 218 223 226; /* #dadfe2 */
 --color--bulma-100: 1 9 19; /* #010913 */
 --color--trunks-100: 134 151 162; /* #8697a2 */
+
+--radius-i-xs: 0.25rem; /* 4px */
+--radius-i-sm: 0.5rem; /* 8px */
+--radius-i-md: 0.75rem; /* 12px */
+--radius-s-xs: 0.25rem; /* 4px */
+--radius-s-sm: 0.5rem; /* 8px */
+--radius-s-md: 0.75rem; /* 12px */
+--radius-s-lg: 1rem; /* 16px */
 
 space: var(--base--space);
 font-size: var(--base--font-size);
