@@ -26,6 +26,7 @@
 
   --border-style: Solid;
   --border-width: 1px;
+  --border-i-width: 2px;
   --border: 1px solid;
 
   --breakpoint--small: 640px;
