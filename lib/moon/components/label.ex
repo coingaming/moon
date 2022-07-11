@@ -3,9 +3,9 @@ defmodule Moon.Components.Label do
 
   use Moon.StatelessComponent
 
-  prop color, :string, default: "gohan-100", values: Moon.colors()
-  prop background_color, :string, default: "bulma-100", values: Moon.colors()
-  prop size, :string, default: "xsmall", values: ["twoxsmall", "xsmall"]
+  prop color, :css_class, default: "bg-gohan-100"
+  prop background_color, :css_class, default: "bg-bulma-100"
+  prop size, :string, default: "xsmall", values: ~w(twoxsmall xsmall)
   prop class, :string
   prop is_uppercase, :boolean, default: true
   prop border_radius_class, :string, default: "rounded-sm"
@@ -26,6 +26,8 @@ defmodule Moon.Components.Label do
       set_r_padding(@size, @right_icon),
       set_font_size(@size, @is_uppercase),
       "bg-#{@background_color} text-#{@color}",
+      @background_color,
+      @color,
       uppercase: @is_uppercase
     }>
       <span class={"items-center mr-1": @left_icon}>
