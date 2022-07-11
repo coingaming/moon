@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.Charts.GeoMapPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="GeoMap">
+      <ComponentPageDescription title="GeoMap Chart">
         <p>
           Coming soon...
         </p>

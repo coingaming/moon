@@ -3,8 +3,7 @@ defmodule MoonWeb.Pages.Components.Dialog.OverlayPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
+  alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.Page
 
   data breadcrumbs, :any,
@@ -30,10 +29,11 @@ defmodule MoonWeb.Pages.Components.Dialog.OverlayPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={32}>Dialog Overlay</Heading>
-      </TopToDown>
-      Coming soon
+      <ComponentPageDescription title="Dialog Overlay">
+        <p>
+          Coming soon...
+        </p>
+      </ComponentPageDescription>
     </Page>
     """
   end

@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.Charts.TablePage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="Table">
+      <ComponentPageDescription title="Table Chart">
         <p>
           Coming soon...
         </p>

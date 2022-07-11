@@ -82,7 +82,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="LinChart">
+      <ComponentPageDescription title="Line Chart">
         <p>
           Based on <Link to="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite</Link>
         </p>
