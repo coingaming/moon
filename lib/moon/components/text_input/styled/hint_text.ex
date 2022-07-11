@@ -3,16 +3,16 @@ defmodule Moon.Components.TextInput.HintText do
 
   use Moon.StatelessComponent
 
-  prop is_error, :boolean
+  prop is_error, :boolean, default: false
 
   slot default
 
   def render(assigns) do
     ~F"""
-    <p role="alert"
-      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @is_error, "text-trunks": !@is_error}>
+    <div role="alert"
+      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @is_error, "text-trunks-100": !@is_error}>
       <#slot />
-    </p>
+    </div>
     """
   end
 end

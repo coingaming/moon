@@ -119,6 +119,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             {@show_password_text}
           </ShowPassword>
         </div>
+        <div>
+        </div>
         <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
           <#slot name="hint_text_slot" />
         </HintText>

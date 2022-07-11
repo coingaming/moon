@@ -83,7 +83,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         keydown={@keydown}
         blur={@blur}
       />
-      <HintText :if={slot_assigned?(:hint_text_slot)}>
+      <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
         <#slot name="hint_text_slot" />
       </HintText>
     </Container>

@@ -97,7 +97,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           {@label}
         </label>
       </div>
-      <HintText :if={slot_assigned?(:hint_text_slot)}>
+      <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
         <#slot name="hint_text_slot" />
       </HintText>
     </Container>
