@@ -44,15 +44,14 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         :type => 'medium | large | xlarge',
         :required => '-',
         :default => 'medium',
-        :description =>
-          'TODO - Size variant (currently only medium | large, with large as default)'
+        :description => 'Size variant (currently only medium | large, with large as default)'
       },
       %{
         :name => 'label',
         :type => 'string',
         :required => 'true',
         :default => '-',
-        :description => 'TODO - Should be required for medium size only'
+        :description => 'Required for medium size only'
       },
       %{
         :name => 'placeholder',
@@ -87,8 +86,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         :type => '-',
         :required => '-',
         :default => '-',
-        :description =>
-          'TODO - Only for input type password. Text for toggle button: show/hide password'
+        :description => 'Only for input type password. Text for toggle button: show/hide password'
       },
       %{
         :name => 'background_color',
@@ -96,6 +94,13 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         :required => 'false',
         :default => '-',
         :description => 'Background color'
+      },
+      %{
+        :name => 'id',
+        :type => 'string',
+        :required => 'false | required (for password type)',
+        :default => '-',
+        :description => 'Unique id'
       }
     ]
 
