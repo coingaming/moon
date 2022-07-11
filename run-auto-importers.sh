@@ -23,7 +23,7 @@ cd $root_dir/scripts/typescript/
 
 
 cd $root_dir
-rm -rf lib/moon/assets
+rm -rf lib/moon/assets/crests lib/moon/assets/currencies lib/moon/assets/duotones lib/moon/assets/icons lib/moon/assets/logos lib/moon/assets/patterns
 mkdir -p lib/moon/assets/crests
 mkdir -p lib/moon/assets/currencies
 mkdir -p lib/moon/assets/duotones
