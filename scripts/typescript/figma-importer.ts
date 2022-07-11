@@ -28,6 +28,10 @@ const themes: ThemeConf[] = [
     name: 'lab',
     fileId: 'd5oitzaWXGiOuMjKDatC1W',
   },
+  {
+    name: 'partners',
+    fileId: 'aMBmdNX4cfv885xchXHIHo'
+  }
 ];
 
 const getFigmaObjTree = async (
@@ -274,11 +278,11 @@ ${fontFaceCss}
   --box-shadow--xl:  ${figmaConfig['light-box-shadow-xl']};
 
   ${colorIds
-    .map(
-      (x) => `
+      .map(
+        (x) => `
   --color--${x}: #${`${figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
-    )
-    .join('')}
+      )
+      .join('')}
 }
 `;
 
@@ -295,11 +299,11 @@ ${fontFaceCss}
   --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
 
   ${colorIds
-    .map(
-      (x) => `
+      .map(
+        (x) => `
   --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
-    )
-    .join('')}
+      )
+      .join('')}
 }
 `;
 
