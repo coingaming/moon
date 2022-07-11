@@ -41,10 +41,11 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   def render(assigns) do
     ~F"""
     <Container disabled={@disabled} id={@id}>
-      {#if @size == "xl" }
+      {#if @size == "xl"}
         <div
           id={"#{@id}_text_input_password"}
-          class={"w-full max-w-full relative",
+          class={
+            "w-full max-w-full relative",
             Utils.get_border_radius(@size),
             "bg-#{@background_color}": @background_color
           }
@@ -64,16 +65,15 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             blur={@blur}
             placeholder={@placeholder}
           />
-          <label
-            class={
-              "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[1] transition-all",
-              "right-4": @dir == "rtl",
-              "left-4": @dir == "ltr"
-            }
-          >
+          <label class={
+            "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[1] transition-all",
+            "right-4": @dir == "rtl",
+            "left-4": @dir == "ltr"
+          }>
             {@label}
           </label>
-          <ShowPassword toggle="toggle_password_visibility"
+          <ShowPassword
+            toggle="toggle_password_visibility"
             is_rtl={is_rtl(@dir)}
             input_password_id={"#{@id}_text_input_password"}
           >
@@ -112,7 +112,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             placeholder={@placeholder}
           />
 
-          <ShowPassword toggle="toggle_password_visibility"
+          <ShowPassword
+            toggle="toggle_password_visibility"
             is_rtl={is_rtl(@dir)}
             input_password_id={"#{@id}_text_input_password"}
           >

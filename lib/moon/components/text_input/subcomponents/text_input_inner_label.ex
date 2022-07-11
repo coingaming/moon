@@ -53,14 +53,12 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   def render(assigns) do
     ~F"""
     <Container disabled={@disabled} size={@size}>
-      <div
-        class={
-          "w-full max-w-full relative",
-          Utils.get_border_radius(@size),
-          "bg-transparent": !@background_color,
-          "bg-#{@background_color}": @background_color
-        }
-      >
+      <div class={
+        "w-full max-w-full relative",
+        Utils.get_border_radius(@size),
+        "bg-transparent": !@background_color,
+        "bg-#{@background_color}": @background_color
+      }>
         <Input
           is_error={@is_error}
           size={@size}

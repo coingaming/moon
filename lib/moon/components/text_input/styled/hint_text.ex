@@ -9,8 +9,10 @@ defmodule Moon.Components.TextInput.HintText do
 
   def render(assigns) do
     ~F"""
-    <div role="alert"
-      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @is_error, "text-trunks-100": !@is_error}>
+    <div
+      role="alert"
+      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @is_error, "text-trunks-100": !@is_error}
+    >
       <#slot />
     </div>
     """

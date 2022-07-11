@@ -13,11 +13,14 @@ defmodule Moon.Components.TextInput.Container do
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "w-full max-w-full relative z-0",
-      Utils.get_border_radius(@size),
-      "opacity-30 cursor-not-allowed": @disabled
-    } id={@id}>
+    <div
+      class={
+        "w-full max-w-full relative z-0",
+        Utils.get_border_radius(@size),
+        "opacity-30 cursor-not-allowed": @disabled
+      }
+      id={@id}
+    >
       <#slot />
     </div>
     """

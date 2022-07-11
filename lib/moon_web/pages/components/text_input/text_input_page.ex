@@ -108,9 +108,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_020" title="Sizes">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput label="Medium (Default: md)" placeholder="Placeholder"/>
-              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder"/>
-              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder"/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
             </LeftToRight>
           </:example>
 
@@ -122,24 +122,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_010" title="Number">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput
-                type="number"
-                size="md"
-                label="Medium (Default: md)"
-                placeholder="e.g. 1234"
-              />
-              <TextInput
-                type="number"
-                size="lg"
-                label="Large (lg)"
-                placeholder="e.g. 1234"
-              />
-              <TextInput
-                type="number"
-                size="xl"
-                label="Xlarge (xl)"
-                placeholder="e.g. 1234"
-              />
+              <TextInput type="number" size="md" label="Medium (Default: md)" placeholder="e.g. 1234" />
+              <TextInput type="number" size="lg" label="Large (lg)" placeholder="e.g. 1234" />
+              <TextInput type="number" size="xl" label="Xlarge (xl)" placeholder="e.g. 1234" />
             </LeftToRight>
           </:example>
 
@@ -149,24 +134,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_009" title="Date">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput
-                type="date"
-                size="md"
-                label="Medium (Default: md)"
-                placeholder="Placeholder"
-              />
-              <TextInput
-                type="date"
-                size="lg"
-                label="Large (lg)"
-                placeholder="Placeholder"
-              />
-              <TextInput
-                type="date"
-                size="xl"
-                label="Xlarge (xl)"
-                placeholder="Placeholder"
-              />
+              <TextInput type="date" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput type="date" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="date" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
             </LeftToRight>
           </:example>
 
@@ -176,24 +146,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_008" title="Time">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput
-                type="time"
-                size="md"
-                label="Medium (Default: md)"
-                placeholder="Placeholder"
-              />
-              <TextInput
-                type="time"
-                size="lg"
-                label="Large (lg)"
-                placeholder="Placeholder"
-              />
-              <TextInput
-                type="time"
-                size="xl"
-                label="Xlarge (xl)"
-                placeholder="Placeholder"
-              />
+              <TextInput type="time" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput type="time" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="time" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
             </LeftToRight>
           </:example>
 
@@ -209,18 +164,8 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                 label="Medium (Default: md)"
                 placeholder="Placeholder"
               />
-              <TextInput
-                type="datetime-local"
-                size="lg"
-                label="Large (lg)"
-                placeholder="Placeholder"
-              />
-              <TextInput
-                type="datetime-local"
-                size="xl"
-                label="Xlarge (xl)"
-                placeholder="Placeholder"
-              />
+              <TextInput type="datetime-local" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="datetime-local" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
             </LeftToRight>
           </:example>
 
@@ -236,12 +181,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                 label="Medium (Default: md)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput
-                type="email"
-                size="lg"
-                label="Large (lg)"
-                placeholder="e.g. jake.weary@sportsbet.io"
-              />
+              <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
               <TextInput
                 type="email"
                 size="xl"
@@ -293,12 +233,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                 label="Medium (Default: md)"
                 placeholder="e.g. jake.weary@sportsbet.io"
               />
-              <TextInput
-                type="email"
-                size="lg"
-                label="Large (lg)"
-                placeholder="e.g. jake.weary@sportsbet.io"
-              />
+              <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
               <TextInput
                 type="email"
                 size="xl"
@@ -316,9 +251,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_20" title="Disabled">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled/>
-              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled/>
-              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled />
             </LeftToRight>
           </:example>
 
@@ -334,7 +269,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
               <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
               </TextInput>
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
               </TextInput>
             </LeftToRight>
@@ -346,9 +281,26 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_40" title="Readonly">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput label="Medium (Default: md)" value="Read only text" placeholder="Placeholder" readonly/>
-              <TextInput size="lg" label="Large (lg)" value="Read only text" placeholder="Placeholder" readonly/>
-              <TextInput size="xl" label="Xlarge (xl)" value="Read only text" placeholder="Placeholder" readonly/>
+              <TextInput
+                label="Medium (Default: md)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
+              <TextInput
+                size="lg"
+                label="Large (lg)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
+              <TextInput
+                size="xl"
+                label="Xlarge (xl)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
             </LeftToRight>
           </:example>
 
@@ -358,9 +310,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_50" title="Size RTL">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl"/>
-              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl"/>
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl" />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl" />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl" />
             </LeftToRight>
           </:example>
 
@@ -370,9 +322,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_60" title="Without label">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput placeholder="Placeholder" dir="rtl"/>
-              <TextInput size="lg" placeholder="Placeholder" dir="rtl"/>
-              <TextInput size="xl" placeholder="Placeholder" dir="rtl"/>
+              <TextInput placeholder="Placeholder" dir="rtl" />
+              <TextInput size="lg" placeholder="Placeholder" dir="rtl" />
+              <TextInput size="xl" placeholder="Placeholder" dir="rtl" />
             </LeftToRight>
           </:example>
 
@@ -438,12 +390,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                   <ErrorTag />
                 </Field>
                 <Field name={:password}>
-                  <TextInput
-                    id="password"
-                    label="Password"
-                    placeholder="Password"
-                    type="password"
-                  />
+                  <TextInput id="password" label="Password" placeholder="Password" type="password" />
                   <ErrorTag />
                 </Field>
                 <div>
@@ -453,9 +400,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             </Form>
           </:example>
 
-            <:code>{text_input_90_code()}</:code>
+          <:code>{text_input_90_code()}</:code>
 
-            <:state>{text_input_90_state(assigns)}</:state>
+          <:state>{text_input_90_state(assigns)}</:state>
         </ExampleAndCode>
 
         <div>
