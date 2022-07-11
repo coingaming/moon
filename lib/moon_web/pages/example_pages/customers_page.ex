@@ -7,7 +7,8 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   alias Moon.Autolayouts.{ButtonsList, TopToDown}
   alias Moon.BackofficeComponents.Table
   alias Moon.Components.{Button, Chip, Divider, Heading}
-  alias Moon.Components.{Button, Form, TextInput}
+  alias Moon.Components.{Button, Form}
+  alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Components.Breadcrumbs
   alias MoonWeb.MockDB.{Segments, Users, Utils}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview

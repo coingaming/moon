@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Components.Form
   alias Moon.Components.Popover
-  alias Moon.Components.TextInput
+  alias Moon.Components.Deprecated.TextInput
 
   alias __MODULE__.SearchResults
 

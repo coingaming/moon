@@ -1,3 +1,24 @@
+## [2.15.5](https://github.com/coingaming/moon/compare/v2.15.4...v2.15.5) (2022-07-11)
+
+
+### Bug Fixes
+
+* align TextInput with React [MDS-141] ([#303](https://github.com/coingaming/moon/issues/303)) ([e04f27a](https://github.com/coingaming/moon/commit/e04f27ae3e2e5abad8f8204c8715860b6fdc23b6))
+
+## [2.15.4](https://github.com/coingaming/moon/compare/v2.15.3...v2.15.4) (2022-07-11)
+
+
+### Bug Fixes
+
+* added partners ([#308](https://github.com/coingaming/moon/issues/308)) ([6d0839c](https://github.com/coingaming/moon/commit/6d0839c10d48946d10fba97be05712623ee76056))
+
+## [2.15.3](https://github.com/coingaming/moon/compare/v2.15.2...v2.15.3) (2022-07-11)
+
+
+### Bug Fixes
+
+* support AN country flag ([#307](https://github.com/coingaming/moon/issues/307)) ([3417e75](https://github.com/coingaming/moon/commit/3417e752e3e1b66349d988a47ec73fa4fc35ce03))
+
 ## [2.15.2](https://github.com/coingaming/moon/compare/v2.15.1...v2.15.2) (2022-07-04)
 
 

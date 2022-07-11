@@ -11,8 +11,11 @@ console.log('Running Figma importer');
 // https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab-Templates?node-id=1%3A41
 
 // https://www.figma.com/developers/api
-// TODO this is really not secure, especially when project goes public
-const accessToken = '192730-97a241b4-a87d-4704-bd42-27ab884057b5';
+const accessToken = process.env.FIGMA_ACCESS_TOKEN;
+
+if (!accessToken) {
+  throw new Error("Please define FIGMA_ACCESS_TOKEN env value.");
+}
 
 type ThemeConf = {
   name: string;
@@ -25,6 +28,10 @@ const themes: ThemeConf[] = [
     name: 'lab',
     fileId: 'd5oitzaWXGiOuMjKDatC1W',
   },
+  {
+    name: 'partners',
+    fileId: 'aMBmdNX4cfv885xchXHIHo'
+  }
 ];
 
 const getFigmaObjTree = async (
@@ -271,11 +278,11 @@ ${fontFaceCss}
   --box-shadow--xl:  ${figmaConfig['light-box-shadow-xl']};
 
   ${colorIds
-    .map(
-      (x) => `
+      .map(
+        (x) => `
   --color--${x}: #${`${figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
-    )
-    .join('')}
+      )
+      .join('')}
 }
 `;
 
@@ -292,11 +299,11 @@ ${fontFaceCss}
   --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
 
   ${colorIds
-    .map(
-      (x) => `
+      .map(
+        (x) => `
   --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
-    )
-    .join('')}
+      )
+      .join('')}
 }
 `;
 

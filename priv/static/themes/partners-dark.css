@@ -18,21 +18,20 @@
   src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
 }
   
-.lab-dark {
+.partners-dark {
   
-  --base--space: 24px;
-  --base--font-size: 16;
+  --base--space: 16px;
+  --base--font-size: 14;
   --base--line-height: 20px;
 
   --border-style: Solid;
   --border-width: 1px;
-  --border-i-width: 2px;
   --border: 1px solid;
 
-  --breakpoint--small: 640px;
-  --breakpoint--medium: 768px;
-  --breakpoint--large: 1024px;
-  --breakpoint--xlarge: 1536px;
+  --breakpoint--small: 500px;
+  --breakpoint--medium: 800px;
+  --breakpoint--large: 1080px;
+  --breakpoint--xlarge: 1200px;
 
   --font-face--regular--font-family: Averta Std;
   --font-face--regular--font-style: normal;
@@ -49,7 +48,7 @@
   --font-face--semibold--src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
 
   --font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --font-size: 1536px;
+  --font-size: 1200px;
   --font-weight--normal: 400;
   --font-weight--semibold: 500;
 
@@ -58,21 +57,21 @@
 
   --opacity--disabled: 0.35;
 
-  --radius--small: border-radius: 0.25rem;;
-  --radius--medium: border-radius: 0.375rem;;
-  --radius--large: border-radius: 0.5rem;;
-  --radius--xlarge: border-radius: 0.75rem;;
-  --radius--full: border-radius: 9999px;;
-  --radius--default: border-radius: 0.375rem;;
+  --radius--small: 0.25rem;
+  --radius--medium: 0.5rem;
+  --radius--large: 0.75rem;
+  --radius--xlarge: 1rem;
+  --radius--full: 9999px;
+  --radius--default: 0.5rem;
 
-  --space--xsmall: 32px;
-  --space--small: 40px;
-  --space--default: 24px;
-  --space--medium: 48px;
-  --space--large: 64px;
-  --space--xlarge: 56px;
+  --space--xsmall: 4px;
+  --space--small: 8px;
+  --space--default: 16px;
+  --space--medium: 24px;
+  --space--large: 32px;
+  --space--xlarge: 40px;
 
-  --transition-duration--slow: 32%;
+  --transition-duration--slow: Piccolo 100;
   --transition-duration--default: 0;
 
   --z-index--carousel-control: 5;
@@ -91,53 +90,53 @@
   --color--background: var(--color--goku-100);
   
 
-  --box-shadow--sm:  0px 6px 6px -6px rgba(0, 0, 0, 0.64), 0px 0px 1px rgba(0, 0, 0, 0.56);;
+  --box-shadow--sm:  undefined;
   --box-shadow:  undefined;
   --box-shadow--md:  undefined;
   --box-shadow--default:  undefined;
-  --box-shadow--lg:  0px 24px 24px -6px rgba(0, 0, 0, 0.64), 0px 0px 1px rgba(0, 0, 0, 0.56);;
-  --box-shadow--xl:  0px 48px 48px -6px rgba(0, 0, 0, 0.88), 0px 0px 1px rgba(0, 0, 0, 0.72);;
+  --box-shadow--lg:  undefined;
+  --box-shadow--xl:  undefined;
 
   
   --color--krillin-100: #F5A300;
-  --color--krillin-60: #FFC95C;
+  --color--krillin-60: #undefined;
   --color--krillin-10: #FDF5E2;
   --color--chi-chi-100: #FF1F39;
-  --color--chi-chi-60: #FF5C6F;
+  --color--chi-chi-60: #undefined;
   --color--chi-chi-10: #FFEBED;
   --color--roshi-100: #0BC15A;
-  --color--roshi-60: #0DE76C;
+  --color--roshi-60: #undefined;
   --color--roshi-10: #DAFDE9;
   --color--dodoria-100: #DC3618;
-  --color--dodoria-60: #ED705A;
+  --color--dodoria-60: #undefined;
   --color--dodoria-10: #FCE4E0;
   --color--cell-100: #28697B;
-  --color--cell-60: #3791A9;
+  --color--cell-60: #undefined;
   --color--cell-10: #E0F0F5;
-  --color--raditz-100: #91673B;
-  --color--raditz-60: #C49A6E;
+  --color--raditz-100: #undefined;
+  --color--raditz-60: #undefined;
   --color--raditz-10: #F3EBE2;
   --color--whis-100: #0D53D3;
-  --color--whis-60: #3F7EF3;
+  --color--whis-60: #undefined;
   --color--whis-10: #E4ECF9;
   --color--frieza-100: #5C33CF;
-  --color--frieza-60: #8A67F4;
+  --color--frieza-60: #undefined;
   --color--frieza-10: #b6a3e9;
   --color--nappa-100: #A52755;
-  --color--nappa-60: #D75B88;
+  --color--nappa-60: #undefined;
   --color--nappa-10: #F9E7EE;
-  --color--piccolo-120: #080917;
-  --color--piccolo-100: #080917;
-  --color--piccolo-80: #080917;
-  --color--hit-120: #353c44;
-  --color--hit-100: #4c5159;
-  --color--hit-80: #62676d;
-  --color--beerus-100: #31373f;
-  --color--goku-120: #4c5159;
-  --color--goku-100: #353c44;
-  --color--gohan-120: #62676d;
-  --color--gohan-100: #080917;
+  --color--piccolo-120: #undefined;
+  --color--piccolo-100: #4E46B4;
+  --color--piccolo-80: #undefined;
+  --color--hit-120: #undefined;
+  --color--hit-100: #77777E;
+  --color--hit-80: #undefined;
+  --color--beerus-100: #E0E0E1;
+  --color--goku-120: #undefined;
+  --color--goku-100: #F5F5F6;
+  --color--gohan-120: #undefined;
+  --color--gohan-100: #FFFFFF;
   --color--goten-100: #FFFFFF;
-  --color--bulma-100: #FFFFFF;
-  --color--trunks-100: #8697a2;
+  --color--bulma-100: #222225;
+  --color--trunks-100: #77777E;
 }

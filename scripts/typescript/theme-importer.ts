@@ -121,6 +121,7 @@ const writeTheme = (jsTheme: any, exThemePath: string) => {
 
 --border-style: ${s(exObj.border_style)};
 --border-width: ${s(exObj.border_width)}px;
+--border-i-width: ${s(exObj.border_width_interactive)}px;
 --border: ${s(exObj.border)};
 --box-shadow: ${s(exObj.box_shadow)};
 
@@ -217,6 +218,14 @@ ${Object.keys(exObj.color)
       .join("\n")
   )
   .join("\n")}
+
+--radius-i-xs: 0.25rem; /* 4px */
+--radius-i-sm: 0.5rem; /* 8px */
+--radius-i-md: 0.75rem; /* 12px */
+--radius-s-xs: 0.25rem; /* 4px */
+--radius-s-sm: 0.5rem; /* 8px */
+--radius-s-md: 0.75rem; /* 12px */
+--radius-s-lg: 1rem; /* 16px */
 
 space: var(--base--space);
 font-size: var(--base--font-size);
