@@ -1,3 +1,10 @@
+## [2.15.5](https://github.com/coingaming/moon/compare/v2.15.4...v2.15.5) (2022-07-11)
+
+
+### Bug Fixes
+
+* align TextInput with React [MDS-141] ([#303](https://github.com/coingaming/moon/issues/303)) ([e04f27a](https://github.com/coingaming/moon/commit/e04f27ae3e2e5abad8f8204c8715860b6fdc23b6))
+
 ## [2.15.4](https://github.com/coingaming/moon/compare/v2.15.3...v2.15.4) (2022-07-11)
 
 
