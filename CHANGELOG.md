@@ -1,3 +1,10 @@
+## [2.15.6](https://github.com/coingaming/moon/compare/v2.15.5...v2.15.6) (2022-07-12)
+
+
+### Bug Fixes
+
+* Implement card v2 ([#311](https://github.com/coingaming/moon/issues/311)) ([523845c](https://github.com/coingaming/moon/commit/523845c3729c05c4244da8d0e317a2f40344a8ba))
+
 ## [2.15.5](https://github.com/coingaming/moon/compare/v2.15.4...v2.15.5) (2022-07-11)
 
 
