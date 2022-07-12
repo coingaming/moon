@@ -1,3 +1,10 @@
+## [2.15.7](https://github.com/coingaming/moon/compare/v2.15.6...v2.15.7) (2022-07-12)
+
+
+### Bug Fixes
+
+* improve card v2 ([e4539ce](https://github.com/coingaming/moon/commit/e4539cea6a033a7b9d2d40ee80ee47f214c7821e))
+
 ## [2.15.6](https://github.com/coingaming/moon/compare/v2.15.5...v2.15.6) (2022-07-12)
 
 
