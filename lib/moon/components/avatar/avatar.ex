@@ -9,15 +9,11 @@ defmodule Moon.Components.Avatar do
   prop name, :string
   prop color, :string, default: "gohan-100", values: Moon.colors()
   prop background_color, :string, default: "piccolo-100", values: Moon.colors()
-
-  prop size, :string,
-    default: "medium",
-    values: ["xsmall", "small", "medium", "large", "xlarge", "twoxlarge"]
-
-  prop class, :string
-
+  prop border_radius_class, :css_class, default: "rounded-sm"
+  prop is_uppercase, :boolean, default: true
+  prop size, :string, default: "medium", values: ~w(xsmall small medium large xlarge twoxlarge)
+  prop class, :css_class
   prop is_status_active, :boolean, default: false
-
   prop status_origin, :struct, default: %StatusOrigin{vertical: "bottom", horizontal: "right"}
 
   def style(assigns) do
@@ -28,8 +24,10 @@ defmodule Moon.Components.Avatar do
     ~F"""
     <div
       class={
-        "rounded-sm bg-cover justify-center flex font-semibold items-center
-               overflow-hidden uppercase relative #{@class}",
+        "bg-cover justify-center flex font-semibold items-center overflow-hidden relative",
+        @class,
+        @border_radius_class,
+        uppercase: @is_uppercase,
         "text-moon-12 h-6 w-6": @size == "xsmall",
         "text-moon-14 h-8 w-8": @size == "small",
         "text-moon-16 h-10 w-10": @size == "medium",

@@ -5,7 +5,7 @@ defmodule Moon.Components.Dropdown do
 
   alias Moon.Assets.Icons.IconZoom
   alias Moon.Components.Form
-  alias Moon.Components.TextInput
+  alias Moon.Components.Deprecated.TextInput
 
   prop(on_search_change, :event)
   prop(search_placeholder, :string)
