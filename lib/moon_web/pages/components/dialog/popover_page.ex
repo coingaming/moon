@@ -35,8 +35,6 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample
