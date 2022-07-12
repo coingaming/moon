@@ -3,11 +3,10 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.ProgressLinear
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -36,19 +35,21 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Linear Progress</Heading>
+      <ComponentPageDescription title="Linear Progress">
+        <p>
+          Linear Progress
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Progress Linear" id="progress_linear">
-            <:example>
-              <ProgressLinear value={30} />
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Progress Linear" id="progress_linear">
+          <:example>
+            <ProgressLinear value={30} />
+          </:example>
 
-            <:code>{example_code()}</:code>
-          </ExampleAndCode>
-        </Context>
-      </TopToDown>
+          <:code>{example_code()}</:code>
+        </ExampleAndCode>
+      </Context>
     </Page>
     """
   end

@@ -3,14 +3,11 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Carousel
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -71,63 +68,34 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Carousel</Heading>
-
+      <ComponentPageDescription title="Carousel">
         <p>
           An interactive extension of the Reel component to cycle through content.
         </p>
+      </ComponentPageDescription>
 
-        <p>
-          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=12083%3A426">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/carousel_page.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/components/accordion">React implementation</Link>
-        </p>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Default" id="carousel_1">
+          <:example>
+            <Carousel>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            </Carousel>
+          </:example>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="carousel_1">
-            <:example>
-              <div>
-                <Carousel>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                  <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-                </Carousel>
-              </div>
-            </:example>
+          <:code>{carousel_1_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-            <:code>{carousel_1_code()}</:code>
-          </ExampleAndCode>
-        </Context>
-
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

@@ -3,13 +3,11 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.Caption
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -70,83 +68,54 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Caption</Heading>
-
-        <div>
+      <ComponentPageDescription title="Caption">
+        <p>
           Component for presenting short info.
-        </div>
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Colors" id="example_1">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Caption>Defaul color is Bulma</Caption>
-                <Caption color_class="text-piccolo-100">Piccolo</Caption>
-                <Caption color_class="text-trunks-100">Trunks</Caption>
-                <Caption color_class="text-krillin-100">Krillin</Caption>
-              </div>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Colors" id="example_1">
+          <:example>
+            <Caption>Defaul color is Bulma</Caption>
+            <Caption color_class="text-piccolo-100">Piccolo</Caption>
+            <Caption color_class="text-trunks-100">Trunks</Caption>
+            <Caption color_class="text-krillin-100">Krillin</Caption>
+          </:example>
 
-            <:code>{example_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{example_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Text Align" id="example_2">
-            <:example>
-              <div class="flex justify-around w-full items-center">
-                <Caption>Text-align is not specified</Caption>
-                <Caption text_align_class="text-center">Centered text</Caption>
-                <Caption text_align_class="text-right">Right alignment</Caption>
-              </div>
-            </:example>
+        <ExampleAndCode title="Text Align" id="example_2">
+          <:example>
+            <Caption>Text-align is not specified</Caption>
+            <Caption text_align_class="text-center">Centered text</Caption>
+            <Caption text_align_class="text-right">Right alignment</Caption>
+          </:example>
 
-            <:code>{example_2_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{example_2_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end
 
   def example_1_code do
     """
-    <div class="flex justify-around w-full items-center">
-      <Caption>Defaul color is Bulma</Caption>
-      <Caption color_class="text-piccolo-100">Piccolo</Caption>
-      <Caption color_class="text-trunks-100">Trunks</Caption>
-      <Caption color_class="text-krillin-100">Krillin</Caption>
-    </div>
+    <Caption>Defaul color is Bulma</Caption>
+    <Caption color_class="text-piccolo-100">Piccolo</Caption>
+    <Caption color_class="text-trunks-100">Trunks</Caption>
+    <Caption color_class="text-krillin-100">Krillin</Caption>
     """
   end
 
   def example_2_code do
     """
-    <div class="flex justify-around w-full items-center">
-      <Caption>Text-align is not specified</Caption>
-      <Caption text_align_class="text-center">Centered text</Caption>
-      <Caption text_align_class="text-right">Right alignment</Caption>
-    </div>
+    <Caption>Text-align is not specified</Caption>
+    <Caption text_align_class="text-center">Centered text</Caption>
+    <Caption text_align_class="text-right">Right alignment</Caption>
     """
   end
 end

@@ -3,15 +3,13 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Autolayouts.PullAside
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
   alias Moon.Components.Dialog.Modal
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -34,38 +32,36 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Modal</Heading>
+      <ComponentPageDescription title="Modal">
+        <p>Modal</p>
+      </ComponentPageDescription>
 
-        <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=60%3A25">Figma design</Link>
-
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Modal" id="modal_1">
-            <:example>
-              <Button variant="primary" on_click="open_modal">Open modal</Button>
-              <Modal close="close_modal" :if={@modal_is_open}>
-                <:title>Title text</:title>
-                <:content>Content here</:content>
-                <:footer>
-                  <PullAside>
-                    <:left>
-                      <Button>Label</Button>
-                    </:left>
-                    <:right>
-                      <LeftToRight>
-                        <Button variant="tertiary">Label</Button>
-                        <Button variant="primary">Label</Button>
-                      </LeftToRight>
-                    </:right>
-                  </PullAside>
-                </:footer>
-              </Modal>
-            </:example>
-            <:code>{get_example_code_1()}</:code>
-            <:state>{get_state(assigns)}</:state>
-          </ExampleAndCode>
-        </Context>
-      </TopToDown>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Modal" id="modal_1">
+          <:example>
+            <Button variant="primary" on_click="open_modal">Open modal</Button>
+            <Modal close="close_modal" :if={@modal_is_open}>
+              <:title>Title text</:title>
+              <:content>Content here</:content>
+              <:footer>
+                <PullAside>
+                  <:left>
+                    <Button>Label</Button>
+                  </:left>
+                  <:right>
+                    <LeftToRight>
+                      <Button variant="tertiary">Label</Button>
+                      <Button variant="primary">Label</Button>
+                    </LeftToRight>
+                  </:right>
+                </PullAside>
+              </:footer>
+            </Modal>
+          </:example>
+          <:code>{get_example_code_1()}</:code>
+          <:state>{get_state(assigns)}</:state>
+        </ExampleAndCode>
+      </Context>
     </Page>
     """
   end

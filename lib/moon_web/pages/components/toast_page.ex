@@ -3,17 +3,14 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias Moon.Components.Toast
   alias Moon.Components.Toast.Message
   alias Moon.Components.ToastStack
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -114,111 +111,71 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Toast</Heading>
-
+      <ComponentPageDescription title="Toast">
         <p>
           Short, time-based messages that slide in and out of a page.
         </p>
-
         <p>
-          <Link to="https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=15488%3A332">Figma design</Link>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/toast.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/toolkit/toast">React implementation</Link>
+          Toasts can be shown on top of the page and automatically disappear after a timeout. You should use <code>ToastStack</code> component for it.
         </p>
+      </ComponentPageDescription>
 
-        <ToastStack id="toasts" />
+      <ToastStack id="toasts" />
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="toast_1">
-            <:example>
-              <Toast id="minimal" message="Hey! Your toast is ready." />
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Default" id="toast_1">
+          <:example>
+            <Toast id="minimal" message="Hey! Your toast is ready." />
+          </:example>
 
-            <:code>{toast_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{toast_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Appearing and disappearing" id="toast_2">
-            <:note>
-              Toasts can be shown on top of the page and automatically disappear after a timeout.
+        <ExampleAndCode title="Appearing and disappearing" id="toast_2">
+          <:example>
+            <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
 
-              You should use <code class="bg-goku-40">ToastStack</code> component for it.
-            </:note>
-            <:example>
-              <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
+            <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
+          </:example>
 
-              <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
-            </:example>
+          <:code>{toast_2_code()}</:code>
+        </ExampleAndCode>
 
-            <:code>{toast_2_code()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Variant" id="toast_3">
+          <:example>
+            <Toast
+              :for={toast <- variant_toasts()}
+              id={toast.id}
+              message={toast.message}
+              variant={toast.variant}
+            />
 
-          <ExampleAndCode title="Variant" id="toast_3">
-            <:note>
-              Use <code class="bg-goku-40">variant</code> prop.
-            </:note>
-            <:example>
-              <div class="flex flex-col items-start">
-                <Toast
-                  :for={toast <- variant_toasts()}
-                  id={toast.id}
-                  message={toast.message}
-                  variant={toast.variant}
-                />
-              </div>
+            <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
+          </:example>
 
-              <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
-            </:example>
+          <:code>{toast_3_code()}</:code>
+        </ExampleAndCode>
 
-            <:code>{toast_3_code()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Actions" id="toast_4">
+          <:example>
+            <Toast
+              :for={toast <- action_toasts()}
+              id={toast.id}
+              message={toast.message}
+              variant={toast.variant}
+              link_text={toast.link_text}
+              link_href={toast.link_href}
+              closeable={toast.closeable}
+            />
 
-          <ExampleAndCode title="Actions" id="toast_4">
-            <:note>
-              Use <code class="bg-goku-40">closeable</code> prop. Default value is true.
-              To display link use <code class="bg-goku-40">link_text</code> and <code class="bg-goku-40">link_href</code> props.
-            </:note>
-            <:example>
-              <div class="flex flex-col items-start">
-                <Toast
-                  :for={toast <- action_toasts()}
-                  id={toast.id}
-                  message={toast.message}
-                  variant={toast.variant}
-                  link_text={toast.link_text}
-                  link_href={toast.link_href}
-                  closeable={toast.closeable}
-                />
-              </div>
+            <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
+          </:example>
 
-              <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
-            </:example>
+          <:code>{toast_4_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-            <:code>{toast_4_code()}</:code>
-          </ExampleAndCode>
-        </Context>
-
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

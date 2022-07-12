@@ -3,18 +3,17 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
   alias Moon.Components.Checkbox
   alias Moon.Components.ErrorTag
   alias Moon.Components.Field
   alias Moon.Components.Form
-  alias Moon.Components.Heading
+  alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -70,114 +69,94 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Checkbox</Heading>
+      <ComponentPageDescription title="Checkbox">
+        <p>
+          Checkboxes are used as a list in our forms and signup pages so users can select options of their choice. Users are free to choose how many options to select, from zero to all of them.
+        </p>
+        <p>
+          As each checkbox is independent, this means that additional checkboxes do not affect any other selections… or planets.
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Checkbox" id="checkbox_1">
-            <:example>
-              <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <TopToDown>
-                  <Field name={:agrees_to_terms_of_service}>
-                    <Checkbox id="agrees_to_terms_of_service">
-                      I agree to terms and services.
-                    </Checkbox>
-                    <ErrorTag />
-                  </Field>
-                  <Field name={:agrees_to_marketing_emails}>
-                    <Checkbox
-                      id="agrees_to_marketing_emails"
-                      disabled={!get_agrees_to_terms_of_service(@user_changeset)}
-                    >
-                      I agree to receive bonus & marketing emails.
-                    </Checkbox>
-                    <ErrorTag />
-                  </Field>
-                  <div>
-                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                  </div>
-                </TopToDown>
-              </Form>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Checkbox" id="checkbox_1">
+          <:example>
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+              <TopToDown>
+                <Field name={:agrees_to_terms_of_service}>
+                  <Checkbox id="agrees_to_terms_of_service">
+                    I agree to terms and services.
+                  </Checkbox>
+                  <ErrorTag />
+                </Field>
+                <Field name={:agrees_to_marketing_emails}>
+                  <Checkbox
+                    id="agrees_to_marketing_emails"
+                    disabled={!get_agrees_to_terms_of_service(@user_changeset)}
+                  >
+                    I agree to receive bonus & marketing emails.
+                  </Checkbox>
+                  <ErrorTag />
+                </Field>
+                <div>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </TopToDown>
+            </Form>
+          </:example>
 
-            <:code>{checkbox_1_code()}</:code>
+          <:code>{checkbox_1_code()}</:code>
 
-            <:state>{checkbox_1_state(assigns)}</:state>
-          </ExampleAndCode>
+          <:state>{checkbox_1_state(assigns)}</:state>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="No Label" id="checkbox_2">
-            <:example>
-              <div class="here flex items-centered justify-items-center justify-evenly">
-                <Form for={@user_changeset2} change="register_form_update2">
-                  <TopToDown>
-                    <Field name={:agrees_to_terms_of_service}>
-                      <Checkbox id="agrees_to_terms_of_service" />
-                      <ErrorTag />
-                    </Field>
-                  </TopToDown>
-                </Form>
-              </div>
-            </:example>
+        <ExampleAndCode title="No Label" id="checkbox_2">
+          <:example>
+            <Form for={@user_changeset2} change="register_form_update2">
+              <TopToDown>
+                <Field name={:agrees_to_terms_of_service}>
+                  <Checkbox id="agrees_to_terms_of_service" />
+                  <ErrorTag />
+                </Field>
+              </TopToDown>
+            </Form>
+          </:example>
 
-            <:code>{checkbox_2_code()}</:code>
-          </ExampleAndCode>
+          <:code>{checkbox_2_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Disabled" id="checkbox_3">
-            <:example>
-              <div class="here flex items-centered justify-items-center justify-evenly">
-                <Form for={@user_changeset}>
-                  <TopToDown>
-                    <Field name={:agrees_to_terms_of_service}>
-                      <Checkbox id="agrees_to_terms_of_service" disabled>I agree to terms and services.</Checkbox>
-                      <ErrorTag />
-                    </Field>
-                  </TopToDown>
-                </Form>
-              </div>
-            </:example>
+        <ExampleAndCode title="Disabled" id="checkbox_3">
+          <:example>
+            <Form for={@user_changeset}>
+              <TopToDown>
+                <Field name={:agrees_to_terms_of_service}>
+                  <Checkbox id="agrees_to_terms_of_service" disabled>I agree to terms and services.</Checkbox>
+                  <ErrorTag />
+                </Field>
+              </TopToDown>
+            </Form>
+          </:example>
 
-            <:code>{checkbox_3_code()}</:code>
-          </ExampleAndCode>
+          <:code>{checkbox_3_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Readonly" id="checkbox_4">
-            <:example>
-              <div class="here flex items-centered justify-items-center justify-evenly">
-                <Form for={@user_changeset2} change="register_form_update2">
-                  <TopToDown>
-                    <Field name={:agrees_to_terms_of_service}>
-                      <Checkbox id="agrees_to_terms_of_service" readonly checked>I agree to terms and services.</Checkbox>
-                      <ErrorTag />
-                    </Field>
-                  </TopToDown>
-                </Form>
-              </div>
-            </:example>
+        <ExampleAndCode title="Readonly" id="checkbox_4">
+          <:example>
+            <Form for={@user_changeset2} change="register_form_update2">
+              <TopToDown>
+                <Field name={:agrees_to_terms_of_service}>
+                  <Checkbox id="agrees_to_terms_of_service" readonly checked>I agree to terms and services.</Checkbox>
+                  <ErrorTag />
+                </Field>
+              </TopToDown>
+            </Form>
+          </:example>
 
-            <:code>{checkbox_4_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{checkbox_4_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item}>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end
