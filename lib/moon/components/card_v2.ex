@@ -7,6 +7,9 @@ defmodule Moon.Components.CardV2 do
   prop class, :css_class
   prop background_color_class, :css_class, default: "bg-gohan-100"
   prop border_color_class, :css_class
+  prop top_class, :css_class
+  prop left_bottom_class, :css_class
+  prop right_bottom_class, :css_class
 
   slot top, required: true
   slot left_bottom
@@ -15,21 +18,24 @@ defmodule Moon.Components.CardV2 do
   def render(assigns) do
     ~F"""
     <div class={
-      "w-full grid grid-cols-2 gap-6 p-6",
+      "w-full grid grid-cols-2 gap-6 p-6 text-bulma-100",
       @class,
       @background_color_class,
       @border_color_class,
       @rounded
     }>
-      <div class="text-moon-18 text-bulma-100" style="grid-column-start: 1; grid-column-end: 3;">
+      <div class={@top_class} style="grid-column-start: 1; grid-column-end: 3;">
         <#slot name="top" />
       </div>
 
       <div class="flex justify-between" style="grid-column-start: 1; grid-column-end: 3;">
-        <div class="pt-4 text-moon-14 text-roshi-100">
+        <div class={
+          "pt-4",
+          @left_bottom_class
+        }>
           <#slot name="left_bottom" />
         </div>
-        <div class="text-moon-48 text-bulma-100" style="justify-self: end;">
+        <div class={@right_bottom_class} style="justify-self: end;">
           <#slot name="right_bottom" />
         </div>
       </div>
