@@ -81,7 +81,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
                 {#for card <- AddDataUsingForm.Card.cards()}
                   <CardV2>
                     <:top>
-                      {card.left_top}
+                      {card.top}
                     </:top>
 
                     <:left_bottom>
