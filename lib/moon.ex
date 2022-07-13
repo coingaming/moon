@@ -47,7 +47,7 @@ defmodule Moon do
     "bulma-100",
     "trunks-100",
     "goten-100",
-    "popo-100",
+    "popo-100"
   ]
 
   def colors do
