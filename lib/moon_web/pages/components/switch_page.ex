@@ -5,6 +5,9 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   alias Moon.Components.Switch
   alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Components.Field
+  alias Moon.Components.Form
+  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
@@ -54,11 +57,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     ]
 
   def mount(params, _session, socket) do
+    user_changeset =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: false,
+        agrees_to_marketing_emails: true
+      })
+
     socket =
       assign(socket,
+        user_changeset: user_changeset,
         theme_name: params["theme_name"] || "moon-design-light",
         active_page: __MODULE__,
-        first_switch_checked: false,
         small_switch_checked: false,
         medium_switch_checked: false,
         large_switch_checked: false,
@@ -83,15 +92,21 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </ComponentPageDescription>
 
       <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" class="mt-3" id="switch_1">
-          <:example>
-            <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
-          </:example>
+        <div id="first_switch">
+          <ExampleAndCode title="Form example" class="mt-3" id="switch_1">
+            <:example>
+              <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                <Field name={:agrees_to_terms_of_service}>
+                  <Switch />
+                </Field>
+              </Form>
+            </:example>
 
-          <:code>{switch_1_code()}</:code>
+            <:code>{switch_1_code()}</:code>
 
-          <:state>@checked = {@first_switch_checked}</:state>
-        </ExampleAndCode>
+            <:state>{switch_1_state(assigns)}</:state>
+          </ExampleAndCode>
+        </div>
 
         <ExampleAndCode title="Size" class="mt-3" id="switch_2">
           <:example>
@@ -150,9 +165,22 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
-  def handle_event("handle_first_switch", _, socket) do
-    socket = assign(socket, first_switch_checked: !socket.assigns.first_switch_checked)
-    {:noreply, socket}
+  def handle_event(
+        "register_form_update",
+        %{
+          "user" => params
+        },
+        socket
+      ) do
+    user_changeset = User.changeset(%User{}, params)
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("register_form_submit", _, socket) do
+    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event("handle_small_switch", _, socket) do
@@ -180,9 +208,37 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     {:noreply, socket}
   end
 
+  def switch_1_state(assigns) do
+    ~F"""
+    @user_changeset = {inspect(@user_changeset, pretty: true)}
+    """
+  end
+
   def switch_1_code do
     """
-      <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch />
+      </Field>
+    </Form>
+
+    def handle_event(
+          "register_form_update",
+          %{
+            "user" => params
+          },
+          socket
+        ) do
+      user_changeset = User.changeset(%User{}, params)
+
+      {:noreply, assign(socket, user_changeset: user_changeset)}
+    end
+
+    def handle_event("register_form_submit", _, socket) do
+      user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+
+      {:noreply, assign(socket, user_changeset: user_changeset)}
+    end
     """
   end
 
