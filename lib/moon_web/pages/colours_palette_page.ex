@@ -20,200 +20,200 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
     default: [
       %{
         :name => 'piccolo',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'hit',
-        :value => '100',
-      },
+        :value => '100'
+      }
     ]
 
   data border_colors_list, :list,
     default: [
       %{
         :name => 'beerus',
-        :value => '100',
-      },
+        :value => '100'
+      }
     ]
 
   data background_colors_list, :list,
     default: [
       %{
         :name => 'goku',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'gohan',
-        :value => '100',
-      },
+        :value => '100'
+      }
     ]
 
   data text_colors_list, :list,
     default: [
       %{
         :name => 'bulma',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'trunks',
-        :value => '100',
-      },
+        :value => '100'
+      }
     ]
 
   data forced_colors_list, :list,
     default: [
       %{
         :name => 'goten',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'popo',
-        :value => '100',
-      },
+        :value => '100'
+      }
     ]
 
   data krillin_colors_list, :list,
     default: [
       %{
         :name => 'krillin',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'krillin',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'krillin',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data chichi_colors_list, :list,
     default: [
       %{
         :name => 'chi-chi',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'chi-chi',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'chi-chi',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data roshi_colors_list, :list,
     default: [
       %{
         :name => 'roshi',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'roshi',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'roshi',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data dodoria_colors_list, :list,
     default: [
       %{
         :name => 'dodoria',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'dodoria',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'dodoria',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data cell_colors_list, :list,
     default: [
       %{
         :name => 'cell',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'cell',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'cell',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data raditz_colors_list, :list,
     default: [
       %{
         :name => 'raditz',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'raditz',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'raditz',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data whis_colors_list, :list,
     default: [
       %{
         :name => 'whis',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'whis',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'whis',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data frieza_colors_list, :list,
     default: [
       %{
         :name => 'frieza',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'frieza',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'frieza',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   data nappa_colors_list, :list,
     default: [
       %{
         :name => 'nappa',
-        :value => '100',
+        :value => '100'
       },
       %{
         :name => 'nappa',
-        :value => '60',
+        :value => '60'
       },
       %{
         :name => 'nappa',
-        :value => '10',
-      },
+        :value => '10'
+      }
     ]
 
   def mount(params, _session, socket) do
