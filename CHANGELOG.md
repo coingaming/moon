@@ -1,3 +1,10 @@
+## [2.15.8](https://github.com/coingaming/moon/compare/v2.15.7...v2.15.8) (2022-07-13)
+
+
+### Bug Fixes
+
+* Make the switch work with the Phoenix form and changeset ([#313](https://github.com/coingaming/moon/issues/313)) ([8fb7631](https://github.com/coingaming/moon/commit/8fb76318666b97ef036567255b90a0050a251dd7))
+
 ## [2.15.7](https://github.com/coingaming/moon/compare/v2.15.6...v2.15.7) (2022-07-12)
 
 
