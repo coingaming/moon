@@ -3,11 +3,11 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Helpers.CountryFlags
   alias Moon.CountryFlag
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PageSection
 
   data breadcrumbs, :any,
     default: [
@@ -32,25 +32,22 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Country Flags</Heading>
+      <ComponentPageDescription title="Country Flags">
+        <p>
+          Country Flags
+        </p>
+      </ComponentPageDescription>
 
-        <div class="p-6 bg-gohan-100 rounded">
-          <div
-            class="grid gap-4 overflow-hidden"
-            style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"
-          >
-            {#for country_flag_name <- CountryFlags.list_all()}
-              <div class="w-40 h-28 flex flex-col items-center">
-                <div class="flex grow justify-center items-center">
-                  <CountryFlag name={country_flag_name} class="h-8 w-8" />
-                </div>
-                <h3 class="text-moon-12 mx-2 mb-2 text-trunks-100" title={country_flag_name}>{country_flag_name}</h3>
-              </div>
-            {/for}
-          </div>
+      <PageSection>
+        <div class="flex flex-wrap gap-8 items-start bg-goku-100 p-4 rounded-moon-s-sm">
+          {#for country_flag_name <- CountryFlags.list_all()}
+            <div class="flex flex-col gap-2 items-center">
+              <CountryFlag name={country_flag_name} class="h-8 w-8" />
+              <p class="text-moon-10-caption uppercase text-trunks-100" title={country_flag_name}>{country_flag_name}</p>
+            </div>
+          {/for}
         </div>
-      </TopToDown>
+      </PageSection>
     </Page>
     """
   end
