@@ -60,6 +60,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>
                       <SidebarLink route={Pages.Components.AvatarPage}>Avatar</SidebarLink>
                       <SidebarLink route={Pages.Components.BannerPage}>Banner</SidebarLink>
+                      <SidebarLink route={Pages.Components.BreadcrumbPage}>Breadcrumb</SidebarLink>
                       <SidebarLink route={Pages.Components.ButtonPage}>Button</SidebarLink>
                       <SidebarLink route={Pages.Components.CarouselPage}>Carousel</SidebarLink>
 

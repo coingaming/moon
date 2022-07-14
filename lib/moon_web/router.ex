@@ -58,6 +58,7 @@ defmodule MoonWeb.Router do
       live "/components/accordion", MoonWeb.Pages.Components.AccordionPage
       live "/components/avatar", MoonWeb.Pages.Components.AvatarPage
       live "/components/banner", MoonWeb.Pages.Components.BannerPage
+      live "/components/breadcrumb", MoonWeb.Pages.Components.BreadcrumbPage
       live "/components/button", MoonWeb.Pages.Components.ButtonPage
       live "/components/calendar", MoonWeb.Pages.Components.CalendarPage
       live "/components/card", MoonWeb.Pages.Components.CardPage
