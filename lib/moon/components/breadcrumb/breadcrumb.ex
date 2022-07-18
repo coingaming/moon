@@ -3,28 +3,20 @@ defmodule Moon.Components.Breadcrumb do
 
   use Moon.StatefulComponent
 
+  alias Moon.Components.Breadcrumb.Collapsed
+  alias Moon.Components.Breadcrumb.Extended
+
   prop breadcrumbs, :list, default: []
-
-  data is_collapsed, :boolean, default: false
-
-  def update(assigns, socket) do
-    is_collapsed =
-      if Enum.count(assigns.breadcrumbs) > 4 do
-        true
-      else
-        false
-      end
-
-    IO.puts("****")
-    IO.inspect(is_collapsed)
-
-    socket = assign(socket, :is_collapsed, is_collapsed)
-    {:ok, socket}
-  end
 
   def render(assigns) do
     ~F"""
-    <div></div>
+    <div>
+      {#if Enum.count(@breadcrumbs) > 4 }
+        <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs}/>
+      {#else}
+        <Extended id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs}/>
+      {/if}
+    </div>
     """
   end
 end
