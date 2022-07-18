@@ -1,3 +1,10 @@
+## [2.15.10](https://github.com/coingaming/moon/compare/v2.15.9...v2.15.10) (2022-07-18)
+
+
+### Bug Fixes
+
+* Rename/cleanup lab theme tokens ([5466032](https://github.com/coingaming/moon/commit/5466032732fe82a54c3068de9c38ea342902e5e9))
+
 ## [2.15.9](https://github.com/coingaming/moon/compare/v2.15.8...v2.15.9) (2022-07-18)
 
 
