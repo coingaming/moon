@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   alias Moon.Components.Breadcrumb
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
+  alias Moon.Components.Breadcrumb.Crumb
 
   data breadcrumbs, :any,
     default: [
@@ -23,15 +24,24 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       }
     ]
 
-  data props_info_array, :list, default: []
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'breadcrumbs',
+        :type => 'list of Moon.Components.Breadcrumb.Crumb',
+        :required => 'false',
+        :default => '[]',
+        :description => 'Crumbs to display'
+      }
+    ]
 
   data breadcrumb_items_1, :list,
     default: [
-      %{
+      %Crumb{
         name: "Home",
         link: "/app/home"
       },
-      %{
+      %Crumb{
         name: "Corporate",
         link: "/app/corporate"
       }
@@ -39,23 +49,23 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
 
   data breadcrumb_items_2, :list,
     default: [
-      %{
+      %Crumb{
         name: "Home",
         link: "/app/home"
       },
-      %{
+      %Crumb{
         name: "Corporate",
         link: "/app/corporate"
       },
-      %{
+      %Crumb{
         name: "About",
         link: "/app/corporate/about"
       },
-      %{
+      %Crumb{
         name: "Jobs",
         link: "/app/corporate/about/jobs"
       },
-      %{
+      %Crumb{
         name: "Contact",
         link: "/app/corporate/about/jobs/contact"
       }
@@ -86,7 +96,6 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
             <:code>{breadcrumb_1_code()}</:code>
           </ExampleAndCode>
 
-
           <ExampleAndCode title="Collapsed" id="breadcrumb_2">
             <:example>
               <div class="flex justify-center items-center">
@@ -96,8 +105,28 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
 
             <:code>{breadcrumb_2_code()}</:code>
           </ExampleAndCode>
-
         </Context>
+
+        <div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """
@@ -107,11 +136,11 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
     """
     data breadcrumb_items_1, :list,
       default: [
-        %{
+        %Crumb{
           name: "Home",
           link: "/app/home"
         },
-        %{
+        %Crumb{
           name: "Corporate",
           link: "/app/corporate"
         }
@@ -125,23 +154,23 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
     """
     data breadcrumb_items_2, :list,
       default: [
-        %{
+        %Crumb{
           name: "Home",
           link: "/app/home"
         },
-        %{
+        %Crumb{
           name: "Corporate",
           link: "/app/corporate"
         },
-        %{
+        %Crumb{
           name: "About",
           link: "/app/corporate/about"
         },
-        %{
+        %Crumb{
           name: "Jobs",
           link: "/app/corporate/about/jobs"
         },
-        %{
+        %Crumb{
           name: "Contact",
           link: "/app/corporate/about/jobs/contact"
         }
