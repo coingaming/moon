@@ -76,23 +76,26 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         <Heading size={32}>Breadcrumb</Heading>
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="breadcrumb_1">
+          <ExampleAndCode title="Extended" id="breadcrumb_1">
             <:example>
-              <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
+              <div class="flex justify-center items-center py-1">
+                <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
+              </div>
             </:example>
 
             <:code>{breadcrumb_1_code()}</:code>
           </ExampleAndCode>
 
 
-          <ExampleAndCode title="Default" id="breadcrumb_2">
+          <ExampleAndCode title="Collapsed" id="breadcrumb_2">
             <:example>
-              <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
+              <div class="flex justify-center items-center">
+                <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
+              </div>
             </:example>
 
             <:code>{breadcrumb_2_code()}</:code>
           </ExampleAndCode>
-
 
         </Context>
       </TopToDown>

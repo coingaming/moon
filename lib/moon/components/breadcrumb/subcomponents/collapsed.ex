@@ -5,12 +5,12 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
 
   alias Moon.Icons.ArrowsRight
   alias Moon.Components.Button
+  alias Phoenix.LiveView.JS
 
   prop breadcrumbs, :list
 
   data shown_breadcrumbs, :list, default: []
   data collapsed_breadcrumbs, :list, default: []
-  data is_open, :boolean, default: false
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)
@@ -32,9 +32,6 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
         collapsed_breadcrumbs
       )
 
-    IO.puts("** -- **")
-    IO.inspect(socket)
-
     {:ok, socket}
   end
 
@@ -43,25 +40,22 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
     <nav aria-label="Breadcrumb">
       <ol class="flex flex-wrap gap-2 items-center text-moon-14">
         <li class="flex items-center gap-2 text-trunks-100">
-          <span :if={Enum.empty?(@shown_breadcrumbs)} class="text-trunks-100 transition-colors duration-200 hover:text-bulma-100">
-            {Enum.at(@shown_breadcrumbs, 0)}
+          <span class="text-trunks-100 transition-colors duration-200 hover:text-bulma-100">
+            <a href={Enum.at(@shown_breadcrumbs, 0).link}>{Enum.at(@shown_breadcrumbs, 0).name}</a>
           </span>
           <ArrowsRight class="rtl:rotate-180" />
         </li>
 
         <li class="relative">
-          <Button variant="ghost" right_icon="other3_dots_horizontal" on_click="toggle_collapsed" />
-          <ol :if={@is_open} class="absolute left-0 top-full bg-gohan p-1 mt-2 flex flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-10000 min-w-[12rem]">
+          <Button variant="ghost" right_icon="other3_dots_horizontal" on_click={JS.dispatch("moon:show-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})} />
+          <ol id={"#{@id}_flyout"} class="absolute hidden left-0 top-full bg-gohan-100 p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]">
             {#for crumb <- @collapsed_breadcrumbs}
               <li class="flex flex-col items-stretch text-bulma-100 text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-goku-100">
                 <a href={crumb.link}>{crumb.name}</a>
               </li>
             {/for}
           </ol>
-
         </li>
-
-
 
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
           <li class="flex items-center gap-2 text-trunks-100" :if={index > 0}>
@@ -79,10 +73,5 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
       </ol>
     </nav>
     """
-  end
-
-  def handle_event("toggle_collapsed", _, socket) do
-    IO.puts("****")
-    {:noreply, socket}
   end
 end

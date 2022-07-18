@@ -14,7 +14,7 @@ defmodule Moon.Components.Breadcrumb do
       {#if Enum.count(@breadcrumbs) > 4 }
         <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs}/>
       {#else}
-        <Extended id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs}/>
+        <Extended breadcrumbs={@breadcrumbs}/>
       {/if}
     </div>
     """
