@@ -45,13 +45,13 @@ defmodule MoonWeb.Router do
       live "/contribute", MoonWeb.Pages.ContributePage
       live "/colours-palette", MoonWeb.Pages.ColoursPalettePage
       live "/tokens", MoonWeb.Pages.TokensPage
-      live "/transform_svg_page", MoonWeb.Pages.TransformSvgPage
       live "/assets/crests", MoonWeb.Pages.Assets.CrestsPage
       live "/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage
       live "/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage
       live "/assets/icons", MoonWeb.Pages.Assets.IconsPage
       live "/icons", MoonWeb.Pages.IconsPage
       live "/country-flags", MoonWeb.Pages.CountryFlagsPage
+      live "/manifest", MoonWeb.Pages.ManifestPage
       live "/assets/logos", MoonWeb.Pages.Assets.LogosPage
       live "/assets/patterns", MoonWeb.Pages.Assets.PatternsPage
 

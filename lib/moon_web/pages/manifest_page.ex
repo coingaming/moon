@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.TransformSvgPage do
+defmodule MoonWeb.Pages.ManifestPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -10,8 +10,8 @@ defmodule MoonWeb.Pages.TransformSvgPage do
   data breadcrumbs, :any,
     default: [
       %{
-        to: "/transform-svg",
-        name: "Transform SVG"
+        to: "/manifest",
+        name: "Manifest"
       }
     ]
 
@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.TransformSvgPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={32}>Transform SVG</Heading>
+        <Heading size={32}>Manifest</Heading>
       </TopToDown>
       Coming soon
     </Page>

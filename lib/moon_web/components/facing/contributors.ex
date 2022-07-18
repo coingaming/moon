@@ -12,6 +12,11 @@ defmodule MoonWeb.Components.Facing.Contributors do
       <SectionTitle title="In the Spotlight." description="The team who design and develop Moon." />
       <FacingReel>
         <CardContributor
+          name="Margus Pärt"
+          title="Developer"
+          image_src="/moon/assets/images/facing/contributors/marguspart.jpeg"
+        />
+        <CardContributor
           variant="tiny"
           name="Dima Nikolaenko"
           title="Lead Product Designer"
@@ -24,17 +29,12 @@ defmodule MoonWeb.Components.Facing.Contributors do
           image_src="/moon/assets/images/facing/contributors/karlkallavus.png"
         />
         <CardContributor
+          variant="tiny"
           name="Dmytro Kireiev"
           title="Product Owner"
           image_src="/moon/assets/images/facing/contributors/dmytrokireiev.jpg"
         />
         <CardContributor
-          name="Margus Pärt"
-          title="Developer"
-          image_src="/moon/assets/images/facing/contributors/marguspart.jpeg"
-        />
-        <CardContributor
-          variant="tiny"
           name="Alexis Azanza"
           title="Developer"
           image_src="/moon/assets/images/facing/contributors/alexisazanza.png"
