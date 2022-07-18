@@ -1,3 +1,10 @@
+# [2.18.0](https://github.com/coingaming/moon/compare/v2.17.0...v2.18.0) (2022-07-18)
+
+
+### Features
+
+* add tokens page [MDS-162] ([#315](https://github.com/coingaming/moon/issues/315)) ([f433d12](https://github.com/coingaming/moon/commit/f433d1273e4909f9bf7edea79c0a507f30d84c15))
+
 # [2.17.0](https://github.com/coingaming/moon/compare/v2.16.1...v2.17.0) (2022-07-18)
 
 
