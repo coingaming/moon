@@ -94,12 +94,16 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <Context put={theme_class: @theme_name}>
         <ExampleAndCode title="Default" class="mt-3" id="switch_1">
           <:example>
-            <Switch checked={@first_switch_checked} on_change="handle_first_switch" />
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+              <Field name={:agrees_to_terms_of_service}>
+                <Switch />
+              </Field>
+            </Form>
           </:example>
 
           <:code>{switch_1_code()}</:code>
 
-          <:state>@checked = {@first_switch_checked}</:state>
+          <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
 
         <ExampleAndCode title="Size" class="mt-3" id="switch_2">
