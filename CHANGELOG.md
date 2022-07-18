@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/coingaming/moon/compare/v2.15.10...v2.16.0) (2022-07-18)
+
+
+### Features
+
+* Include assets to mix package ([4ac2470](https://github.com/coingaming/moon/commit/4ac2470a883e506583dd57850627c3f1f15928db))
+
 ## [2.15.10](https://github.com/coingaming/moon/compare/v2.15.9...v2.15.10) (2022-07-18)
 
 
