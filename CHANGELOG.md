@@ -1,3 +1,31 @@
+## [2.15.9](https://github.com/coingaming/moon/compare/v2.15.8...v2.15.9) (2022-07-18)
+
+
+### Bug Fixes
+
+* main page styles [MDS-157] ([#304](https://github.com/coingaming/moon/issues/304)) ([6e3bb8f](https://github.com/coingaming/moon/commit/6e3bb8f79103a88b10acffa757fd7b307501e235))
+
+## [2.15.8](https://github.com/coingaming/moon/compare/v2.15.7...v2.15.8) (2022-07-13)
+
+
+### Bug Fixes
+
+* Make the switch work with the Phoenix form and changeset ([#313](https://github.com/coingaming/moon/issues/313)) ([8fb7631](https://github.com/coingaming/moon/commit/8fb76318666b97ef036567255b90a0050a251dd7))
+
+## [2.15.7](https://github.com/coingaming/moon/compare/v2.15.6...v2.15.7) (2022-07-12)
+
+
+### Bug Fixes
+
+* improve card v2 ([e4539ce](https://github.com/coingaming/moon/commit/e4539cea6a033a7b9d2d40ee80ee47f214c7821e))
+
+## [2.15.6](https://github.com/coingaming/moon/compare/v2.15.5...v2.15.6) (2022-07-12)
+
+
+### Bug Fixes
+
+* Implement card v2 ([#311](https://github.com/coingaming/moon/issues/311)) ([523845c](https://github.com/coingaming/moon/commit/523845c3729c05c4244da8d0e317a2f40344a8ba))
+
 ## [2.15.5](https://github.com/coingaming/moon/compare/v2.15.4...v2.15.5) (2022-07-11)
 
 

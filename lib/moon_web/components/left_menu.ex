@@ -31,7 +31,6 @@ defmodule MoonWeb.Components.LeftMenu do
             </Link>
           </div>
         </:short_logo>
-
         <:menu>
           <nav class="flex flex-col grow gap-2">
             <Context put={active_page: @active_page, theme_name: @theme_name}>
@@ -49,6 +48,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
                   <SidebarLink route={Pages.IconsPage}>Icons</SidebarLink>
                   <SidebarLink route={Pages.CountryFlagsPage}>CountryFlags</SidebarLink>
+                  <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
                   <Accordion
                     is_content_inside={false}
                     id="left-menu-components"
@@ -62,7 +62,6 @@ defmodule MoonWeb.Components.LeftMenu do
                         <SidebarLink route={Pages.Components.BannerPage}>Banner</SidebarLink>
                         <SidebarLink route={Pages.Components.ButtonPage}>Button</SidebarLink>
                         <SidebarLink route={Pages.Components.CarouselPage}>Carousel</SidebarLink>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-select"
@@ -79,10 +78,8 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
-
                         <SidebarLink route={Pages.Components.CheckboxPage}>Checkbox</SidebarLink>
                         <SidebarLink route={Pages.Components.ChipPage}>Chip</SidebarLink>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-date"
@@ -97,7 +94,6 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-dialog"
@@ -115,14 +111,12 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
-
                         <SidebarLink route={Pages.Components.DrawerPage}>Drawer *</SidebarLink>
                         <SidebarLink route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
                         <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
                         <SidebarLink route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                         <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
                         <SidebarLink route={Pages.Components.PaginationPage}>Pagination</SidebarLink>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-progress"
@@ -136,10 +130,8 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
-
                         <SidebarLink route={Pages.Components.RadioButtonPage}>RadioButton</SidebarLink>
                         <SidebarLink route={Pages.Components.SearchPage}>Search</SidebarLink>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-select"
@@ -155,17 +147,13 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
-
                         <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
                         <SidebarLink route={Pages.Components.TabsPage}>Tabs</SidebarLink>
                         <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
-
                         <SidebarLink route={Pages.Components.TextInputPage}>Text input</SidebarLink>
-
                         <SidebarLink route={Pages.Components.TextInputGroupPage}>Text input group</SidebarLink>
                         <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                         <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
-
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-typography"
@@ -189,7 +177,7 @@ defmodule MoonWeb.Components.LeftMenu do
             </Context>
           </nav>
           <script>
-            window.addEventListener("phx:page-loading-stop", info => {
+                window.addEventListener("phx:page-loading-stop", info => {
               var activeLink = document.querySelectorAll('[data-moon-active]');
               if (activeLink[0]) {
                 activeLink[0].scrollIntoView();
