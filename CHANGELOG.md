@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/coingaming/moon/compare/v2.16.1...v2.17.0) (2022-07-18)
+
+
+### Features
+
+* add colors page [MDS-161] ([#314](https://github.com/coingaming/moon/issues/314)) ([0404311](https://github.com/coingaming/moon/commit/0404311866be97cc60bdd629fef30fb398c509a5))
+
 ## [2.16.1](https://github.com/coingaming/moon/compare/v2.16.0...v2.16.1) (2022-07-18)
 
 
