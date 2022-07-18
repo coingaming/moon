@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/coingaming/moon/compare/v2.16.0...v2.16.1) (2022-07-18)
+
+
+### Bug Fixes
+
+* components pages styles [MDS-159] ([#306](https://github.com/coingaming/moon/issues/306)) ([283b0ab](https://github.com/coingaming/moon/commit/283b0ab34660cb30df847b399c7fb0cb2387fe73))
+
 # [2.16.0](https://github.com/coingaming/moon/compare/v2.15.10...v2.16.0) (2022-07-18)
 
 
