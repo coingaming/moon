@@ -1,10 +1,9 @@
-import * as fs from 'fs';
-import fetch from 'node-fetch';
+import * as fs from "fs";
+import fetch from "node-fetch";
 
-const exportDir = '../../priv/static/themes/';
+const exportDir = "../../priv/static/themes/";
 
-console.log('Running Figma importer');
-
+console.log("Running Figma importer");
 
 // tutorial https://blog.prototypr.io/design-tokens-with-figma-aef25c42430f
 // figma tokens file https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1%3A7
@@ -25,23 +24,23 @@ type ThemeConf = {
 // configuration for themes
 const themes: ThemeConf[] = [
   {
-    name: 'lab',
-    fileId: 'd5oitzaWXGiOuMjKDatC1W',
+    name: "lab",
+    fileId: "d5oitzaWXGiOuMjKDatC1W",
   },
   {
-    name: 'partners',
-    fileId: 'aMBmdNX4cfv885xchXHIHo'
-  }
+    name: "partners",
+    fileId: "aMBmdNX4cfv885xchXHIHo",
+  },
 ];
 
 const getFigmaObjTree = async (
   figmaApiKey: string,
   figmaId: string
 ): Promise<any> => {
-  let result = await fetch('https://api.figma.com/v1/files/' + figmaId, {
-    method: 'GET',
+  let result = await fetch("https://api.figma.com/v1/files/" + figmaId, {
+    method: "GET",
     headers: {
-      'X-Figma-Token': figmaApiKey,
+      "X-Figma-Token": figmaApiKey,
     },
   });
   return await result.json();
@@ -85,78 +84,78 @@ const hexToRgb = (hex: string) => {
 };
 
 const colorIds = [
-  'krillin-100',
-  'krillin-60',
-  'krillin-10',
-  'chi-chi-100',
-  'chi-chi-60',
-  'chi-chi-10',
-  'roshi-100',
-  'roshi-60',
-  'roshi-10',
-  'dodoria-100',
-  'dodoria-60',
-  'dodoria-10',
-  'cell-100',
-  'cell-60',
-  'cell-10',
-  'raditz-100',
-  'raditz-60',
-  'raditz-10',
-  'whis-100',
-  'whis-60',
-  'whis-10',
-  'frieza-100',
-  'frieza-60',
-  'frieza-10',
-  'nappa-100',
-  'nappa-60',
-  'nappa-10',
-  'piccolo-100',
-  'hit-100',
-  'beerus-100',
-  'gohan-100',
-  'goten-100',
-  'goku-100',
-  'bulma-100',
-  'trunks-100',
+  "krillin-100",
+  "krillin-60",
+  "krillin-10",
+  "chi-chi-100",
+  "chi-chi-60",
+  "chi-chi-10",
+  "roshi-100",
+  "roshi-60",
+  "roshi-10",
+  "dodoria-100",
+  "dodoria-60",
+  "dodoria-10",
+  "cell-100",
+  "cell-60",
+  "cell-10",
+  "raditz-100",
+  "raditz-60",
+  "raditz-10",
+  "whis-100",
+  "whis-60",
+  "whis-10",
+  "frieza-100",
+  "frieza-60",
+  "frieza-10",
+  "nappa-100",
+  "nappa-60",
+  "nappa-10",
+  "piccolo-100",
+  "hit-100",
+  "beerus-100",
+  "gohan-100",
+  "goten-100",
+  "goku-100",
+  "bulma-100",
+  "trunks-100",
 ];
 
 const boxShadowIds = [
-  'box-shadow-sm',
-  'box-shadow-md',
-  'box-shadow-lg',
-  'box-shadow-xl',
+  "box-shadow-sm",
+  "box-shadow-md",
+  "box-shadow-lg",
+  "box-shadow-xl",
 ];
 
 const extractIds = [
-  'radius-i-xs',
-  'radius-i-sm',
-  'radius-i-md',
-  'radius-s-xs',
-  'radius-s-sm',
-  'radius-s-md',
-  'radius-s-lg',
-  'breakpoint-sm',
-  'breakpoint-md',
-  'breakpoint-lg',
-  'breakpoint-xl',
-  'breakpoint-2xl',
-  'border-width',
-  'border-i-width',
-  'space-xsmall',
-  'space-small',
-  'space-default',
-  'space-medium',
-  'space-large',
-  'space-xlarge',
-  'transition-slow',
-  'transition-default',
+  "radius-i-xs",
+  "radius-i-sm",
+  "radius-i-md",
+  "radius-s-xs",
+  "radius-s-sm",
+  "radius-s-md",
+  "radius-s-lg",
+  "breakpoint-sm",
+  "breakpoint-md",
+  "breakpoint-lg",
+  "breakpoint-xl",
+  "breakpoint-2xl",
+  "border-width",
+  "border-i-width",
+  "space-xsmall",
+  "space-small",
+  "space-default",
+  "space-medium",
+  "space-large",
+  "space-xlarge",
+  "transition-slow",
+  "transition-default",
   ...boxShadowIds.map((x) => `${x}`),
   ...boxShadowIds.map((x) => `dark-${x}`),
-  'opacity-disabled',
-  'font-family',
-  'font-size',
+  "opacity-disabled",
+  "font-family",
+  "font-size",
   ...colorIds.map((x) => `light-color-${x}`),
   ...colorIds.map((x) => `dark-color-${x}`),
 ];
@@ -202,34 +201,34 @@ themes.map(async (theme: ThemeConf) => {
   `;
 
   const sharedCssVarsAndValues = `
-  --base--font-size: ${figmaConfig['font-size']};
+  --base--font-size: ${figmaConfig["font-size"]};
   --base--line-height: 24px;
 
-  --border-width: ${figmaConfig['border-width']};
-  --border-i-width: ${figmaConfig['border-i-width']};
+  --border-width: ${figmaConfig["border-width"]};
+  --border-i-width: ${figmaConfig["border-i-width"]};
 
-  --breakpoint--sm: ${figmaConfig['breakpoint-sm']};
-  --breakpoint--md: ${figmaConfig['breakpoint-md']};
-  --breakpoint--lg: ${figmaConfig['breakpoint-lg']};
-  --breakpoint--xl: ${figmaConfig['breakpoint-xl']};
-  --breakpoint--2xl: ${figmaConfig['breakpoint-2xl']};
+  --breakpoint--sm: ${figmaConfig["breakpoint-sm"]};
+  --breakpoint--md: ${figmaConfig["breakpoint-md"]};
+  --breakpoint--lg: ${figmaConfig["breakpoint-lg"]};
+  --breakpoint--xl: ${figmaConfig["breakpoint-xl"]};
+  --breakpoint--2xl: ${figmaConfig["breakpoint-2xl"]};
 
-  --opacity--disabled: ${figmaConfig['opacity-disabled']};
+  --opacity--disabled: ${figmaConfig["opacity-disabled"]};
 
-  --radius-i-xs: ${figmaConfig['radius-i-xs']};
-  --radius-i-sm: ${figmaConfig['radius-i-sm']};
-  --radius-i-md: ${figmaConfig['radius-i-md']};
-  --radius-s-xs: ${figmaConfig['radius-s-xs']};
-  --radius-s-sm: ${figmaConfig['radius-s-sm']};
-  --radius-s-md: ${figmaConfig['radius-s-md']};
-  --radius-s-lg: ${figmaConfig['radius-s-lg']};
+  --radius-i-xs: ${figmaConfig["radius-i-xs"]};
+  --radius-i-sm: ${figmaConfig["radius-i-sm"]};
+  --radius-i-md: ${figmaConfig["radius-i-md"]};
+  --radius-s-xs: ${figmaConfig["radius-s-xs"]};
+  --radius-s-sm: ${figmaConfig["radius-s-sm"]};
+  --radius-s-md: ${figmaConfig["radius-s-md"]};
+  --radius-s-lg: ${figmaConfig["radius-s-lg"]};
 
-  --space--xsmall: ${figmaConfig['space-xsmall']};
-  --space--small: ${figmaConfig['space-small']};
-  --space--default: ${figmaConfig['space-default']};
-  --space--medium: ${figmaConfig['space-medium']};
-  --space--large: ${figmaConfig['space-large']};
-  --space--xlarge: ${figmaConfig['space-xlarge']};
+  --space--xsmall: ${figmaConfig["space-xsmall"]};
+  --space--small: ${figmaConfig["space-small"]};
+  --space--default: ${figmaConfig["space-default"]};
+  --space--medium: ${figmaConfig["space-medium"]};
+  --space--large: ${figmaConfig["space-large"]};
+  --space--xlarge: ${figmaConfig["space-xlarge"]};
 
   --transition-duration--slow: 0.4s;
   --transition-duration--default: 0.2s;
@@ -238,7 +237,7 @@ themes.map(async (theme: ThemeConf) => {
   --z-index--dialog: 10000;
   --z-index--toggle: 1;
 
-  font-family: ${figmaConfig['font-family']};
+  font-family: ${figmaConfig["font-family"]};
   font-weight: 400;
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
@@ -247,26 +246,28 @@ themes.map(async (theme: ThemeConf) => {
 
   --color--text: var(--color--bulma-100);
   --color--background: var(--color--gohan-100);
-  `
+  `;
 
   const lightThemeCss = `
 ${fontFaceCss}
 .${theme.name}-light {
   ${sharedCssVarsAndValues}
 
-  --box-shadow--sm:  ${figmaConfig['box-shadow-sm']}
-  --box-shadow:  ${figmaConfig['box-shadow-md']}
-  --box-shadow--md:  ${figmaConfig['box-shadow-md']}
-  --box-shadow--default:  ${figmaConfig['box-shadow-md']}
-  --box-shadow--lg:  ${figmaConfig['box-shadow-lg']}
-  --box-shadow--xl:  ${figmaConfig['box-shadow-xl']}
+  --box-shadow--sm:  ${figmaConfig["box-shadow-sm"]}
+  --box-shadow:  ${figmaConfig["box-shadow-md"]}
+  --box-shadow--md:  ${figmaConfig["box-shadow-md"]}
+  --box-shadow--default:  ${figmaConfig["box-shadow-md"]}
+  --box-shadow--lg:  ${figmaConfig["box-shadow-lg"]}
+  --box-shadow--xl:  ${figmaConfig["box-shadow-xl"]}
 
   ${colorIds
-      .map(
-        (x) => `
-  --color--${x}: ${hexToRgb('#' + figmaConfig[`light-color-${x}`])}; /* #${figmaConfig[`light-color-${x}`]} */`
-      )
-      .join('')}
+    .map(
+      (x) => `
+  --color--${x}: ${hexToRgb("#" + figmaConfig[`light-color-${x}`])}; /* #${
+        figmaConfig[`light-color-${x}`]
+      } */`
+    )
+    .join("")}
 }
 `;
 
@@ -275,19 +276,21 @@ ${fontFaceCss}
 .${theme.name}-dark {
   ${sharedCssVarsAndValues}
 
-  --box-shadow--sm:  ${figmaConfig['dark-box-shadow-sm']};
-  --box-shadow:  ${figmaConfig['dark-box-shadow-md']};
-  --box-shadow--md:  ${figmaConfig['dark-box-shadow-md']};
-  --box-shadow--default:  ${figmaConfig['dark-box-shadow-md']};
-  --box-shadow--lg:  ${figmaConfig['dark-box-shadow-lg']};
-  --box-shadow--xl:  ${figmaConfig['dark-box-shadow-xl']};
+  --box-shadow--sm:  ${figmaConfig["dark-box-shadow-sm"]};
+  --box-shadow:  ${figmaConfig["dark-box-shadow-md"]};
+  --box-shadow--md:  ${figmaConfig["dark-box-shadow-md"]};
+  --box-shadow--default:  ${figmaConfig["dark-box-shadow-md"]};
+  --box-shadow--lg:  ${figmaConfig["dark-box-shadow-lg"]};
+  --box-shadow--xl:  ${figmaConfig["dark-box-shadow-xl"]};
 
   ${colorIds
-      .map(
-        (x) => `
-  --color--${x}: #${`${figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]}`.replace("#", "")};`
-      )
-      .join('')}
+    .map(
+      (x) => `
+  --color--${x}: #${`${
+        figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]
+      }`.replace("#", "")};`
+    )
+    .join("")}
 }
 `;
 
