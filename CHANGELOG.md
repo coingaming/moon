@@ -1,3 +1,10 @@
+## [2.15.9](https://github.com/coingaming/moon/compare/v2.15.8...v2.15.9) (2022-07-18)
+
+
+### Bug Fixes
+
+* main page styles [MDS-157] ([#304](https://github.com/coingaming/moon/issues/304)) ([6e3bb8f](https://github.com/coingaming/moon/commit/6e3bb8f79103a88b10acffa757fd7b307501e235))
+
 ## [2.15.8](https://github.com/coingaming/moon/compare/v2.15.7...v2.15.8) (2022-07-13)
 
 
