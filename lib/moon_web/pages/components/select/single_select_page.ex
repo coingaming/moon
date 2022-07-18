@@ -3,16 +3,14 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Form
   alias Moon.Components.Field
-  alias Moon.Components.Heading
   alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -148,294 +146,268 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Single Select</Heading>
+      <ComponentPageDescription title="Single Select">
+        <p>
+          Single Select
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode
-            title="Single Select with options as prop"
-            id="single_select_with_options_as_prop"
-          >
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
-                </Field>
-              </Form>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode
+          title="Single Select with options as prop"
+          id="single_select_with_options_as_prop"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
+              </Field>
+            </Form>
+          </:example>
 
-            <:code>{code_for_single_select_with_options_as_prop()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop()}</:code>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
-          <ExampleAndCode
-            title="Single Select (label inside)"
-            id="single_select_with_options_as_prop_and_prompt_inside"
-          >
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
-                </Field>
-              </Form>
-            </:example>
+        <ExampleAndCode
+          title="Single Select (label inside)"
+          id="single_select_with_options_as_prop_and_prompt_inside"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
+              </Field>
+            </Form>
+          </:example>
 
-            <:code>{code_for_single_select_with_options_as_prop_and_prompt_inside()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop_and_prompt_inside()}</:code>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
-          <ExampleAndCode
-            title="Single Select (selected with left_icon)"
-            id="single_select_with_options_as_prop_and_left_icon"
-          >
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect
-                    id="user-roles-example-3"
-                    options={User.available_roles_with_left_icon()}
-                    label="Select role"
-                  />
-                </Field>
-              </Form>
-            </:example>
+        <ExampleAndCode
+          title="Single Select (selected with left_icon)"
+          id="single_select_with_options_as_prop_and_left_icon"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-3"
+                  options={User.available_roles_with_left_icon()}
+                  label="Select role"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-            <:code>{code_for_single_select_with_options_as_prop_and_left_icon()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop_and_left_icon()}</:code>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
-          <ExampleAndCode
-            title="Single Select (selected with left_icon `flag`)"
-            id="single_select_with_options_as_prop_and_left_icon_flag"
-          >
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect
-                    id="user-roles-example-5"
-                    options={User.available_roles_with_left_icon_flag()}
-                    label="Select role"
-                  />
-                </Field>
-              </Form>
-            </:example>
+        <ExampleAndCode
+          title="Single Select (selected with left_icon `flag`)"
+          id="single_select_with_options_as_prop_and_left_icon_flag"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-5"
+                  options={User.available_roles_with_left_icon_flag()}
+                  label="Select role"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-            <:code>{code_for_single_select_with_options_as_prop_and_left_icon_flag()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop_and_left_icon_flag()}</:code>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
-          <ExampleAndCode
-            title="Single Select (selected with right_icon)"
-            id="single_select_with_options_as_prop_and_right_icon"
-          >
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect
-                    id="user-roles-example-4"
-                    options={User.available_roles_with_right_icon()}
-                    label="Select role"
-                  />
-                </Field>
-              </Form>
-            </:example>
+        <ExampleAndCode
+          title="Single Select (selected with right_icon)"
+          id="single_select_with_options_as_prop_and_right_icon"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-4"
+                  options={User.available_roles_with_right_icon()}
+                  label="Select role"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-            <:code>{code_for_single_select_with_options_as_prop_and_right_icon()}</:code>
+          <:code>{code_for_single_select_with_options_as_prop_and_right_icon()}</:code>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
-          <Heading size={48} class="mb-4">Sizes</Heading>
+        <ExampleAndCode title="Small" id="single_select_sizes_small">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-17"
+                  options={User.available_roles()}
+                  size="small"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-6"
+                  options={User.available_roles()}
+                  label="Select role"
+                  size="small"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-7"
+                  options={User.available_roles_with_left_icon()}
+                  label="Select role"
+                  size="small"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-          <ExampleAndCode title="Small" id="single_select_sizes_small">
-            <:example>
-              <div class="flex flex-col gap-4">
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      popover_class="pt-2"
-                      id="user-roles-example-17"
-                      options={User.available_roles()}
-                      size="small"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-6"
-                      options={User.available_roles()}
-                      label="Select role"
-                      size="small"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-7"
-                      options={User.available_roles_with_left_icon()}
-                      label="Select role"
-                      size="small"
-                    />
-                  </Field>
-                </Form>
-              </div>
-            </:example>
+          <:code>{code_for_single_select_sizes_small()}</:code>
+        </ExampleAndCode>
 
-            <:code>{code_for_single_select_sizes_small()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Medium" id="single_select_sizes_medium">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Select role" />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-10"
+                  options={User.available_roles_with_left_icon()}
+                  label="Select role"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-          <ExampleAndCode title="Medium" id="single_select_sizes_medium">
-            <:example>
-              <div class="flex flex-col gap-4">
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Select role" />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-10"
-                      options={User.available_roles_with_left_icon()}
-                      label="Select role"
-                    />
-                  </Field>
-                </Form>
-              </div>
-            </:example>
+          <:code>{code_for_single_select_sizes_medium()}</:code>
+        </ExampleAndCode>
 
-            <:code>{code_for_single_select_sizes_medium()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Large" id="single_select_sizes_large">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-11"
+                  options={User.available_roles()}
+                  size="large"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-12"
+                  options={User.available_roles()}
+                  label="Select role"
+                  size="large"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-13"
+                  options={User.available_roles_with_left_icon()}
+                  label="Select role"
+                  size="large"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-          <ExampleAndCode title="Large" id="single_select_sizes_large">
-            <:example>
-              <div class="flex flex-col gap-4">
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      popover_class="pt-2"
-                      id="user-roles-example-11"
-                      options={User.available_roles()}
-                      size="large"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-12"
-                      options={User.available_roles()}
-                      label="Select role"
-                      size="large"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-13"
-                      options={User.available_roles_with_left_icon()}
-                      label="Select role"
-                      size="large"
-                    />
-                  </Field>
-                </Form>
-              </div>
-            </:example>
+          <:code>{code_for_single_select_sizes_large()}</:code>
+        </ExampleAndCode>
 
-            <:code>{code_for_single_select_sizes_large()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Xlarge" id="single_select_sizes_xlarge">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-14"
+                  options={User.available_roles()}
+                  size="xlarge"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-15"
+                  options={User.available_roles()}
+                  label="Select role"
+                  size="xlarge"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-16"
+                  options={User.available_roles_with_left_icon()}
+                  label="Select role"
+                  size="xlarge"
+                />
+              </Field>
+            </Form>
+          </:example>
 
-          <ExampleAndCode title="Xlarge" id="single_select_sizes_xlarge">
-            <:example>
-              <div class="flex flex-col gap-4">
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      popover_class="pt-2"
-                      id="user-roles-example-14"
-                      options={User.available_roles()}
-                      size="xlarge"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-15"
-                      options={User.available_roles()}
-                      label="Select role"
-                      size="xlarge"
-                    />
-                  </Field>
-                </Form>
-                <Form for={@user_changeset} change="form_update" submit="form_submit">
-                  <Field name={:role}>
-                    <SingleSelect
-                      id="user-roles-example-16"
-                      options={User.available_roles_with_left_icon()}
-                      label="Select role"
-                      size="xlarge"
-                    />
-                  </Field>
-                </Form>
-              </div>
-            </:example>
+          <:code>{code_for_single_select_sizes_xlarge()}</:code>
+        </ExampleAndCode>
 
-            <:code>{code_for_single_select_sizes_xlarge()}</:code>
-          </ExampleAndCode>
+        <ExampleAndCode title="Disabled" id="single_select_disabled">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-disabled"
+                  options={User.available_roles()}
+                  disabled
+                />
+              </Field>
+            </Form>
+          </:example>
 
-          <ExampleAndCode title="Disabled" id="single_select_disabled">
-            <:example>
-              <Form for={@user_changeset} change="form_update" submit="form_submit">
-                <Field name={:role}>
-                  <SingleSelect
-                    popover_class="pt-2"
-                    id="user-roles-example-disabled"
-                    options={User.available_roles()}
-                    disabled
-                  />
-                </Field>
-              </Form>
-            </:example>
+          <:code>{code_for_disabled()}</:code>
 
-            <:code>{code_for_disabled()}</:code>
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
+      </Context>
 
-            <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-          </ExampleAndCode>
-        </Context>
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

@@ -3,9 +3,8 @@ defmodule MoonWeb.Pages.Components.SearchPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -30,10 +29,11 @@ defmodule MoonWeb.Pages.Components.SearchPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={32}>Search</Heading>
-      </TopToDown>
-      Coming soon
+      <ComponentPageDescription title="Search">
+        <p>
+          Coming soon...
+        </p>
+      </ComponentPageDescription>
     </Page>
     """
   end

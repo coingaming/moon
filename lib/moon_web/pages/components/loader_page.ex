@@ -3,13 +3,11 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
+  alias Moon.Components.Loader
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Components.Loader
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -52,68 +50,51 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
   def render(assigns) do
     ~F"""
     <Page active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={32}>Loader</Heading>
+      <ComponentPageDescription title="Loader">
+        <p>
+          Fondly nicknamed “the launcher”, the Loader ensures users that progress is happening so they don't give up and leave the rocket page.
+        </p>
+        <p>
+          The Loader, along with a succinct message, is especially important after a user initiates an action that requires them to wait. This is so that they know there's no need to repeat what they've done.
+        </p>
+        <p>
+          Default colour: Hit
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="loader_1">
-            <:example>
-              <div class="flex gap-4 justify-center w-full items-center">
-                <Loader />
-              </div>
-            </:example>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode title="Default" id="loader_1">
+          <:example>
+            <Loader />
+          </:example>
 
-            <:code>{loader_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{loader_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Colors" id="loader_2">
-            <:example>
-              <div class="flex gap-4 justify-center w-full items-center">
-                <Loader color="hit-100" />
-                <Loader color="trunks-100" />
-                <Loader color="krillin-100" />
-              </div>
-            </:example>
+        <ExampleAndCode title="Colors" id="loader_2">
+          <:example>
+            <Loader color="hit-100" />
+            <Loader color="trunks-100" />
+            <Loader color="krillin-100" />
+          </:example>
 
-            <:code>{loader_2_code()}</:code>
-          </ExampleAndCode>
+          <:code>{loader_2_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Sizes" id="loader_3">
-            <:example>
-              <div class="flex gap-4 justify-center w-full items-center">
-                <Loader size="twoxsmall" />
-                <Loader size="xsmall" />
-                <Loader size="small" />
-                <Loader />
-                <Loader size="large" />
-              </div>
-            </:example>
+        <ExampleAndCode title="Sizes" id="loader_3">
+          <:example>
+            <Loader size="twoxsmall" />
+            <Loader size="xsmall" />
+            <Loader size="small" />
+            <Loader />
+            <Loader size="large" />
+          </:example>
 
-            <:code>{loader_3_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{loader_3_code()}</:code>
+        </ExampleAndCode>
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

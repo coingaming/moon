@@ -3,13 +3,11 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.LeftToRight
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.{Button, Heading, Tooltip}
+  alias Moon.Components.{Button, Tooltip}
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -84,45 +82,26 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Tooltip Component</Heading>
+      <ComponentPageDescription title="Tooltip">
+        <p>
+          Tooltip
+        </p>
+      </ComponentPageDescription>
 
-        <Context put={theme_class: @theme_name}>
-          {#for placement <- ["top", "right", "bottom", "left"]}
-            <ExampleAndCode title={placement} class="my-12" id={"tooltip_#{placement}"}>
-              <:example>
-                <LeftToRight>
-                  <Tooltip placement={placement} text={placement}>
-                    <Button variant="primary">Hover Me</Button>
-                  </Tooltip>
-                </LeftToRight>
-              </:example>
-              <:code>{tooltip_1_code(placement)}</:code>
-            </ExampleAndCode>
-          {/for}
-        </Context>
+      <Context put={theme_class: @theme_name}>
+        {#for placement <- ["top", "right", "bottom", "left"]}
+          <ExampleAndCode title={placement} id={"tooltip_#{placement}"}>
+            <:example>
+              <Tooltip placement={placement} text={placement}>
+                <Button variant="primary">Hover Me</Button>
+              </Tooltip>
+            </:example>
+            <:code>{tooltip_1_code(placement)}</:code>
+          </ExampleAndCode>
+        {/for}
+      </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end
