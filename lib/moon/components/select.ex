@@ -34,10 +34,10 @@ defmodule Moon.Components.Select do
     select = ~F"""
     <Surface.Components.Form.Select
       class={
-        "text-trunks-100 pr-3.5 rounded bg-no-repeat bg-goku-100 hover:bg-goku-120
+        "text-trunks-100 pr-3.5 bg-no-repeat bg-goku-100 hover:bg-goku-120
                hover:cursor-pointer focus:cursor-pointer border border-solid
                border-beerus-100 focus:text-bulma-100 disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none",
-        rounded: @rounded,
+        "rounded-moon-s-sm": @rounded,
         "#{@class}": true
       }
       field={@field}
@@ -49,7 +49,7 @@ defmodule Moon.Components.Select do
     ~F"""
     {#if @label}
       <FieldLabel text={@label}>
-        <div class="mt-2 relative">
+        <div class="relative mt-2">
           {select}
         </div>
       </FieldLabel>
