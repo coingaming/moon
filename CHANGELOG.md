@@ -1,3 +1,31 @@
+# [2.16.0](https://github.com/coingaming/moon/compare/v2.15.10...v2.16.0) (2022-07-18)
+
+
+### Features
+
+* Include assets to mix package ([4ac2470](https://github.com/coingaming/moon/commit/4ac2470a883e506583dd57850627c3f1f15928db))
+
+## [2.15.10](https://github.com/coingaming/moon/compare/v2.15.9...v2.15.10) (2022-07-18)
+
+
+### Bug Fixes
+
+* Rename/cleanup lab theme tokens ([5466032](https://github.com/coingaming/moon/commit/5466032732fe82a54c3068de9c38ea342902e5e9))
+
+## [2.15.9](https://github.com/coingaming/moon/compare/v2.15.8...v2.15.9) (2022-07-18)
+
+
+### Bug Fixes
+
+* main page styles [MDS-157] ([#304](https://github.com/coingaming/moon/issues/304)) ([6e3bb8f](https://github.com/coingaming/moon/commit/6e3bb8f79103a88b10acffa757fd7b307501e235))
+
+## [2.15.8](https://github.com/coingaming/moon/compare/v2.15.7...v2.15.8) (2022-07-13)
+
+
+### Bug Fixes
+
+* Make the switch work with the Phoenix form and changeset ([#313](https://github.com/coingaming/moon/issues/313)) ([8fb7631](https://github.com/coingaming/moon/commit/8fb76318666b97ef036567255b90a0050a251dd7))
+
 ## [2.15.7](https://github.com/coingaming/moon/compare/v2.15.6...v2.15.7) (2022-07-12)
 
 
