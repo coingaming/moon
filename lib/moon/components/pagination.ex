@@ -18,7 +18,7 @@ defmodule Moon.Components.PaginationButton do
     <Button
       size={@size}
       variant={if @page_number == @current_page_number, do: "primary", else: @variant}
-      class={"mx-2 font-semibold transition-none rounded-lg #{@class}"}
+      class={"mx-2 font-semibold transition-none rounded-moon-s-sm #{@class}"}
       on_click={@on_click}
       value_name="page"
       value={@page_number}

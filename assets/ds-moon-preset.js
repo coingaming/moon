@@ -1,5 +1,3 @@
-const plugin = require("tailwindcss/plugin");
-
 //as Variant of using rgba color with opacity
 const withOpacityValue = (rgbColor) => {
   return ({ opacityValue }) => {
@@ -13,12 +11,6 @@ const withOpacityValue = (rgbColor) => {
 module.exports = {
   theme: {
     extend: {
-      screens: {
-        "3xl": "1800px",
-      },
-      backgroundOpacity: {
-        12: "0.12",
-      },
       fontSize: {
         "moon-9": [
           "0.5625rem",
@@ -171,8 +163,8 @@ module.exports = {
       },
       colors: {
         transparent: "transparent",
-        text: "var(--color-text)",
-        background: "var(--color-background)",
+        text: "var(--color--text)",
+        background: "var(--color--background)",
         "krillin-10": {
           DEFAULT: withOpacityValue("--color--krillin-10"),
         },
@@ -317,168 +309,7 @@ module.exports = {
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",
         "primary-hover": "rgba(0, 0, 0, 0.08)",
-        "slate-200": "rgb(226 232 240)",
-        "for-designers": "rgb(52 72 240)",
-        "for-developers": "rgb(149 241 213)",
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/aspect-ratio"),
-    require("@tailwindcss/forms"),
-    plugin(({ addUtilities }) => {
-      addUtilities({});
-    }),
-    plugin(({ addComponents }) => {
-      addComponents({
-        ".btn-primary": {
-          color: "rgb(var(--color--goten-100))",
-          backgroundColor: `rgb(var(--color--piccolo-100))`,
-        },
-        ".btn-secondary": {
-          color: "rgb(var(--color--bulma-100))",
-          background: "none",
-          boxShadow: `inset 0 0 0 1px rgb(var(--color--trunks-100)/1)`,
-          "&:hover": {
-            boxShadow: `inset 0 0 0 1px rgb(var(--color--bulma-100))`,
-          },
-        },
-        ".btn-tertiary": {
-          color: "rgb(var(--color--goten-100))",
-          backgroundColor: "rgb(var(--color--hit-100))",
-        },
-        ".anim-error": {
-          transform: "translate3d(0, 0, 0)",
-          backfaceVisibility: "hidden",
-          perspective: "1000px",
-        },
-        ".anim-pulse": {
-          boxShadow: "0 0 0 0 rgb(var(--color--piccolo-100))",
-        },
-        ".input-number-clear": {
-          MozAppearance: "textfield",
-          "&::-webkit-inner-spin-button, &::-webkit-outer-spin-button": {
-            opacity: 0,
-          },
-        },
-        ".input-xl": {
-          "&:not(:focus):not([disabled])::placeholder": {
-            opacity: 0,
-          },
-          "&:not(:focus):not([disabled]):placeholder-shown + label": {
-            top: "50%",
-            marginTop: "-0.438rem",
-            fontSize: "1rem",
-            lineHeight: "1rem",
-          },
-        },
-        ".input-dt-shared": {
-          "&::-webkit-datetime-edit, &::-webkit-date-and-time-value": {
-            display: "block",
-            padding: 0,
-            height: "2.375rem",
-            lineHeight: "2.375rem",
-          },
-          "&::-webkit-date-and-time-value": {
-            paddingTop: "0.5rem",
-          },
-          "&::-webkit-calendar-picker-indicator": {
-            position: "absolute",
-          },
-        },
-        ".input-lg-dt-shared": {
-          "&::-webkit-datetime-edit": {
-            height: "2.875rem",
-            lineHeight: "2.875rem",
-          },
-          "&::-webkit-date-and-time-value": {
-            paddingTop: "0.625rem",
-          },
-        },
-        ".input-xl-dt-shared": {
-          "&::-webkit-datetime-edit": {
-            height: "3.5rem",
-            lineHeight: "3.5rem",
-          },
-          "&::-webkit-date-and-time-value": {
-            paddingTop: "1rem",
-          },
-        },
-        ".input-xl-dt-label": {
-          "&::-webkit-datetime-edit": {
-            height: "2.25rem",
-            lineHeight: "2.125rem",
-          },
-          "&::-webkit-date-and-time-value": {
-            paddingTop: 0,
-          },
-        },
-        ".input-d": {
-          "&::-webkit-calendar-picker-indicator": {
-            right: "0.875rem",
-          },
-        },
-        ".input-t": {
-          "&::-webkit-calendar-picker-indicator": {
-            right: "0.875rem",
-          },
-        },
-        ".input-d-rtl": {
-          //type === 'date' rtl
-          "&::-webkit-datetime-edit, &::-webkit-date-and-time-value": {
-            position: "absolute",
-            right: "0",
-          },
-          "&::-webkit-calendar-picker-indicator": {
-            left: "0.5rem",
-          },
-        },
-        ".input-t-rtl": {
-          //type === 'time' rtl
-          "&::-webkit-datetime-edit, &::-webkit-date-and-time-value": {
-            position: "absolute",
-            right: "0.5rem",
-          },
-          "&::-webkit-calendar-picker-indicator": {
-            left: "0.5rem",
-          },
-        },
-        ".input-dt-local-rtl": {
-          //type === 'datetime-local' rtl
-          "&::-webkit-datetime-edit, &::-webkit-date-and-time-value": {
-            position: "absolute",
-            right: "0",
-          },
-          "&::-webkit-calendar-picker-indicator": {
-            left: "0.5rem",
-          },
-        },
-        ".input-rsb-hidden": {
-          "&:not(:hover):not(:focus):not(:invalid)": {
-            clipPath: `inset(calc(var(--border-i-width) * -1) 0.125rem calc(var(--border-i-width) * -1) 0)`,
-          },
-        },
-        ".input-lsb-hidden": {
-          "&:not(:hover):not(:focus):not(:invalid)": {
-            clipPath: `inset(calc(var(--border-i-width) * -1) 0 calc(var(--border-i-width) * -1) 0.125rem)`,
-          },
-        },
-        ".input-tbb-hidden": {
-          "&:not(:hover):not(:focus):not(:invalid)": {
-            clipPath: `inset(0.125rem calc(var(--border-i-width) * -1) 0 calc(var(--border-i-width) * -1))`,
-          },
-        },
-        ".input-bbb-hidden": {
-          "&:not(:hover):not(:focus):not(:invalid)": {
-            clipPath: `inset(0 calc(var(--border-i-width) * -1) 0.125rem calc(var(--border-i-width) * -1))`,
-          },
-        },
-        ".brcrumb-li": {
-          "& a, & span": {
-            padding: "0.5rem",
-          },
-        },
-      });
-    }),
-  ],
 };
