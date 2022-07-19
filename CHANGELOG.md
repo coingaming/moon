@@ -1,3 +1,10 @@
+## [2.18.3](https://github.com/coingaming/moon/compare/v2.18.2...v2.18.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* add getting started page [MDS-173] ([#324](https://github.com/coingaming/moon/issues/324)) ([680196e](https://github.com/coingaming/moon/commit/680196e850d5ba258d909d2df3e172da8cc295da))
+
 ## [2.18.2](https://github.com/coingaming/moon/compare/v2.18.1...v2.18.2) (2022-07-19)
 
 
