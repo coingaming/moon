@@ -8,7 +8,7 @@ defmodule MoonWeb.Components.Version do
     ~F"""
     <div class="flex text-moon-14 text-trunks-100 gap-2">
       <LogoMoonDesignShort font_size="1.5rem" />
-      <p>Version <span class="font-semibold">2.4.3</span></p>
+      <p>Version <span class="font-semibold">22.0.0</span></p>
     </div>
     """
   end
