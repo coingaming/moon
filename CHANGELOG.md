@@ -1,3 +1,10 @@
+## [2.18.1](https://github.com/coingaming/moon/compare/v2.18.0...v2.18.1) (2022-07-19)
+
+
+### Bug Fixes
+
+* icons page [MDS-158] ([#316](https://github.com/coingaming/moon/issues/316)) ([65a6c8f](https://github.com/coingaming/moon/commit/65a6c8f6b49695f25fcb9ff538c6ad1cd12db0b4))
+
 # [2.18.0](https://github.com/coingaming/moon/compare/v2.17.0...v2.18.0) (2022-07-18)
 
 
