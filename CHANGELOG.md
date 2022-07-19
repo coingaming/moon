@@ -1,3 +1,10 @@
+## [2.18.2](https://github.com/coingaming/moon/compare/v2.18.1...v2.18.2) (2022-07-19)
+
+
+### Bug Fixes
+
+* country flags page [MDS-169] ([#317](https://github.com/coingaming/moon/issues/317)) ([8b77e8a](https://github.com/coingaming/moon/commit/8b77e8a297e0a697a5672922455005cace868b5f))
+
 ## [2.18.1](https://github.com/coingaming/moon/compare/v2.18.0...v2.18.1) (2022-07-19)
 
 
