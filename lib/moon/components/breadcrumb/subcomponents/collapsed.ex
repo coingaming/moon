@@ -47,8 +47,15 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
         </li>
 
         <li class="relative">
-          <Button variant="ghost" right_icon="other3_dots_horizontal" on_click={JS.dispatch("moon:show-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})} />
-          <ol id={"#{@id}_flyout"} class="absolute hidden left-0 top-full bg-gohan-100 p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]">
+          <Button
+            variant="ghost"
+            right_icon="other3_dots_horizontal"
+            on_click={JS.dispatch("moon:show-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+          />
+          <ol
+            id={"#{@id}_flyout"}
+            class="absolute hidden left-0 top-full bg-gohan-100 p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]"
+          >
             {#for crumb <- @collapsed_breadcrumbs}
               <li class="flex flex-col items-stretch text-bulma-100 text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-goku-100">
                 <a href={crumb.link}>{crumb.name}</a>
@@ -60,12 +67,10 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
           <li class="flex items-center gap-2 text-trunks-100" :if={index > 0}>
             <ArrowsRight />
-            <span
-              class={
-                "text-trunks-100 transition-colors duration-200 hover:text-bulma-100",
-                "text-bulma-100 font-medium": index == (Enum.count(@shown_breadcrumbs) - 1)
-              }
-            >
+            <span class={
+              "text-trunks-100 transition-colors duration-200 hover:text-bulma-100",
+              "text-bulma-100 font-medium": index == Enum.count(@shown_breadcrumbs) - 1
+            }>
               <a href={crumb.link}>{crumb.name}</a>
             </span>
           </li>

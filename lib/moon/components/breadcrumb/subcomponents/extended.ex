@@ -14,12 +14,10 @@ defmodule Moon.Components.Breadcrumb.Extended do
         {#for {crumb, index} <- Enum.with_index(@breadcrumbs)}
           <li class="flex items-center gap-2 text-trunks">
             <ArrowsRight class="rtl:rotate-180" :if={index != 0} />
-            <span
-              class={
-                "text-trunks transition-colors duration-200 hover:text-bulma",
-                "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1
-              }
-            >
+            <span class={
+              "text-trunks transition-colors duration-200 hover:text-bulma",
+              "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1
+            }>
               <a href={crumb.link}>{crumb.name}</a>
             </span>
           </li>

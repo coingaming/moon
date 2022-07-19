@@ -11,10 +11,10 @@ defmodule Moon.Components.Breadcrumb do
   def render(assigns) do
     ~F"""
     <div>
-      {#if Enum.count(@breadcrumbs) > 4 }
-        <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs}/>
+      {#if Enum.count(@breadcrumbs) > 4}
+        <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs} />
       {#else}
-        <Extended breadcrumbs={@breadcrumbs}/>
+        <Extended breadcrumbs={@breadcrumbs} />
       {/if}
     </div>
     """
