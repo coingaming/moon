@@ -3,12 +3,11 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias Moon.Components.LineChartCard
   alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -83,37 +82,30 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">LineChart</Heading>
-
+      <ComponentPageDescription title="Line Chart">
         <p>
-          <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/line_chart_page.ex">Sourcecode of this page</Link>
-          <Link to="https://moon.io/charts/lineChart">React implementation</Link>
+          Based on <Link to="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite</Link>
         </p>
+      </ComponentPageDescription>
 
-        <p>
-          Based on <a href="https://vega.github.io/vega-lite/" class="moon-link" target="_blank">Vega-Lite</a>
-        </p>
+      <Context put={theme_class: @theme_name}>
+        <ExampleAndCode layout="column" title="Default" id="line_chart_1">
+          <:example>
+            <LineChartCard
+              id="line-chart-card"
+              title="KPI Overview"
+              time_format="%d/%m"
+              {=@filters}
+              {=@select_options}
+              {=@values}
+            />
+          </:example>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode layout="column" id="line_chart_1">
-            <:example>
-              <LineChartCard
-                id="line-chart-card"
-                title="KPI Overview"
-                time_format="%d/%m"
-                {=@filters}
-                {=@select_options}
-                {=@values}
-              />
-            </:example>
+          <:code>{line_chard_1_code()}</:code>
 
-            <:code>{line_chard_1_code()}</:code>
-
-            <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
-          </ExampleAndCode>
-        </Context>
-      </TopToDown>
+          <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
+        </ExampleAndCode>
+      </Context>
     </Page>
     """
   end

@@ -158,7 +158,7 @@ module.exports = {
     "border-gohan-120",
     "border-beerus-100",
     "border-bulma-100",
-    "border-trunks-100"
+    "border-trunks-100",
   ],
   theme: {
     extend: {

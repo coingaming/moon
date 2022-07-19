@@ -35,14 +35,11 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   use MoonWeb, :live_view
 
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
-  alias Moon.Components.Link
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -125,66 +122,39 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <TopToDown>
-        <Heading size={56} class="mb-4">Popover Component</Heading>
+      <ComponentPageDescription title="Popover">
+        <p>Popover</p>
+      </ComponentPageDescription>
 
-        <p>
-          <Link to="https://www.figma.com/file/d5oitzaWXGiOuMjKDatC1W/Lab---Templates?node-id=1313%3A15085">Figma design</Link>
-          <Link
-            class="mb-4"
-            to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/popover_v2.ex"
-          >Sourcecode of this page</Link>
-        </p>
+      <Context put={theme_class: @theme_name}>
+        {#for placement <- [
+            "top-start",
+            "top",
+            "top-end",
+            "right-start",
+            "right",
+            "right-end",
+            "bottom-start",
+            "bottom",
+            "bottom-end",
+            "left-start",
+            "left",
+            "left-end"
+          ]}
+          <ExampleAndCode id={"popover_#{placement}"} title={"Placement: #{placement}"}>
+            <:example>
+              <LeftToRight>
+                <PopoverExample id={placement} placement={placement} />
+              </LeftToRight>
+            </:example>
+            <:code>
+              {get_popover_code(placement)}
+            </:code>
+          </ExampleAndCode>
+        {/for}
+      </Context>
 
-        <Context put={theme_class: @theme_name}>
-          {#for placement <- [
-              "top-start",
-              "top",
-              "top-end",
-              "right-start",
-              "right",
-              "right-end",
-              "bottom-start",
-              "bottom",
-              "bottom-end",
-              "left-start",
-              "left",
-              "left-end"
-            ]}
-            <ExampleAndCode id={"popover_#{placement}"} class="my-12" title={"Placement: #{placement}"}>
-              <:example>
-                <LeftToRight>
-                  <PopoverExample id={placement} placement={placement} />
-                </LeftToRight>
-              </:example>
-              <:code>
-                {get_popover_code(placement)}
-              </:code>
-            </ExampleAndCode>
-          {/for}
-        </Context>
-
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

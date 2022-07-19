@@ -51,14 +51,14 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def render(assigns) do
     ~F"""
-    <div>
+    <div class="fixed fixed bottom-4 right-4 z-50">
       <button
         :on-click="toggle_themes"
         type="button"
         aria-pressed="false"
-        class="bg-gohan-100 text-piccolo-100 hover:bg-gohan-120  fixed bottom-4 right-4 inline-flex shrink-0
+        class="bg-gohan-100 text-bulma-100 hover:bg-gohan-120 inline-flex shrink-0
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
-               duration-200 focus:outline-none z-40"
+               duration-200 shadow-md focus:outline-none"
       >
         <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>

@@ -11,14 +11,13 @@ defmodule MoonWeb.Components.Table.Table do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-col overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200" style="min-width: 100%;">
-        <thead class="bg-gray-50">
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-beerus-100">
+        <thead class="bg-goku-100">
           <tr>
             {#for col <- @cols}
               <th
-                class="px-4 py-3 text-left text-moon-12 font-semibold text-gray-500 uppercase tracking-wider"
-                style="min-width: 200px"
+                class="px-4 py-3 text-left text-moon-12 font-semibold text-trunks-100 uppercase"
                 data-testid={"sort-column-#{col.name}"}
               >
                 {col.label}
@@ -30,13 +29,13 @@ defmodule MoonWeb.Components.Table.Table do
           {#for {item, row_index} <- Enum.with_index(@items)}
             <tr
               data-testid={"row-#{row_index}"}
-              class={if rem(row_index, 2) == 0, do: "bg-white", else: "bg-gohan-100"}
+              class={if rem(row_index, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"}
             >
               {#for {_, col_index} <- Enum.with_index(@cols)}
                 <td
                   class={
-                    "px-4 py-4 whitespace-nowrap text-moon-14 text-left",
-                    "text-gray-900, font-semibold": col_index == 0
+                    "px-4 py-4 whitespace-nowrap text-moon-14 text-trunks-100 text-left",
+                    "text-bulma-100 font-semibold": col_index == 0
                   }
                   data-testid={"row-#{row_index}-col-#{col_index}"}
                 >

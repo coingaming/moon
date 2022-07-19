@@ -21,48 +21,40 @@ defmodule Moon.Components.Accordion do
 
   def render(assigns) do
     ~F"""
-    <div id={@id}>
-      <div class={
+    <div
+      id={@id}
+      class={
         "w-full rounded-moon-s-sm h-max flex flex-col items-center bg-gohan-100 p-4",
         get_padding(@size),
         @class
-      }>
-        <PullAside left_grow class="w-full flex gap-3 cursor-pointer">
-          <:left>
-            <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
-              <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
-            </div>
-          </:left>
-          <:right>
-            <div class={hidden: !@with_button}>
-              <LeftToRight class="text-trunks-100">
-                <#slot name="header_controls" />
-                <div
-                  :on-click={toggle_content(@id, @disable_open)}
-                  id={@id <> "-arrow"}
-                  class={
-                    "transition-transform transition-200",
-                    "rotate-90": !@open_by_default,
-                    "rotate-180": @open_by_default
-                  }
-                >
-                  <ControlsChevronUp font_size="1.5rem" />
-                </div>
-              </LeftToRight>
-            </div>
-          </:right>
-        </PullAside>
-        {#if @is_content_inside}
-          <div
-            id={@id <> "-content"}
-            class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
-          >
-            <#slot name="content" />
+      }
+    >
+      <PullAside left_grow class="w-full flex gap-3 cursor-pointer">
+        <:left>
+          <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
+            <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
           </div>
-        {/if}
-      </div>
-
-      {#if !@is_content_inside}
+        </:left>
+        <:right>
+          <div class={hidden: !@with_button}>
+            <LeftToRight class="text-trunks-100">
+              <#slot name="header_controls" />
+              <div
+                :on-click={toggle_content(@id, @disable_open)}
+                id={@id <> "-arrow"}
+                class={
+                  "transition-transform transition-200",
+                  "rotate-90": !@open_by_default,
+                  "rotate-180": @open_by_default
+                }
+              >
+                <ControlsChevronUp font_size="1.5rem" />
+              </div>
+            </LeftToRight>
+          </div>
+        </:right>
+      </PullAside>
+      {#if @is_content_inside}
         <div
           id={@id <> "-content"}
           class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
@@ -71,6 +63,15 @@ defmodule Moon.Components.Accordion do
         </div>
       {/if}
     </div>
+
+    {#if !@is_content_inside}
+      <div
+        id={@id <> "-content"}
+        class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
+      >
+        <#slot name="content" />
+      </div>
+    {/if}
     """
   end
 

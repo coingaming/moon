@@ -22,7 +22,7 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
           </a>
         </h2>
         <div class="3xl:absolute 3xl:top-6 3xl:right-6">
-          <ArrowsTopRight />
+          <ArrowsTopRight font_size="2rem" />
         </div>
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex moon-design-dark bg-transparent">

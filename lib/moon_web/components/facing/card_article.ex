@@ -17,18 +17,18 @@ defmodule MoonWeb.Components.Facing.CardArticle do
           "group relative flex flex-col justify-end pl-6 py-6 bg-goku-100 rounded-moon-s-lg",
           get_class(@variant)
         }>
-          <p class="list-item absolute top-10 left-10 transform -rotate-90 origin-bottom-left text-moon-16 font-medium">
+          <p class="list-item absolute top-10 left-10 transform -rotate-90 origin-bottom-left text-moon-16 font-semibold">
             <#slot name="section" />
           </p>
 
           <p
             :if={@author}
-            class="absolute top-0 right-6 transform -rotate-90 origin-bottom-right text-moon-16 font-medium"
+            class="absolute top-0 right-6 transform -rotate-90 origin-bottom-right text-moon-16 font-semibold"
           >
             <#slot name="author" />
           </p>
 
-          <p class="text-moon-24 font-medium">
+          <p class="text-moon-24 font-semibold">
             <#slot name="title" />
           </p>
         </div>
