@@ -1,3 +1,10 @@
+# [2.19.0](https://github.com/coingaming/moon/compare/v2.18.3...v2.19.0) (2022-07-20)
+
+
+### Features
+
+* create the Breadcrumb component [MDS-119] ([#323](https://github.com/coingaming/moon/issues/323)) ([1add5f2](https://github.com/coingaming/moon/commit/1add5f25e8edd9c9a54c4638be66638a10d6ce14))
+
 ## [2.18.3](https://github.com/coingaming/moon/compare/v2.18.2...v2.18.3) (2022-07-19)
 
 
