@@ -9,7 +9,6 @@ const withOpacityValue = (rgbColor) => {
 };
 
 module.exports = {
-  mode: 'jit',
   theme: {
     extend: {
       fontSize: {
