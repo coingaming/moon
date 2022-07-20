@@ -1,3 +1,10 @@
+## [2.20.1](https://github.com/coingaming/moon/compare/v2.20.0...v2.20.1) (2022-07-20)
+
+
+### Bug Fixes
+
+* check origin ([#326](https://github.com/coingaming/moon/issues/326)) ([9df6b2f](https://github.com/coingaming/moon/commit/9df6b2f200f8c059143afab83a37659034f5e158))
+
 # [2.20.0](https://github.com/coingaming/moon/compare/v2.19.0...v2.20.0) (2022-07-20)
 
 
