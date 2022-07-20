@@ -31,7 +31,7 @@ defmodule Moon.Components.FieldBorder do
 
   def get_default_class() do
     "w-full max-w-full leading-normal text-bulma-100 box-border
-    border border-solid rounded transition ease-in
+    border border-solid rounded-moon-s-sm transition ease-in
     placeholder-trunks-100 placeholder-opacity-100 no-scrollbar"
   end
 

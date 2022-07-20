@@ -9,7 +9,7 @@ defmodule Moon.Components.Avatar do
   prop name, :string
   prop color, :string, default: "gohan-100", values: Moon.colors()
   prop background_color, :string, default: "piccolo-100", values: Moon.colors()
-  prop border_radius_class, :css_class, default: "rounded-sm"
+  prop border_radius_class, :css_class, default: "rounded-moon-s-sm"
   prop is_uppercase, :boolean, default: true
   prop size, :string, default: "medium", values: ~w(xsmall small medium large xlarge twoxlarge)
   prop class, :css_class
