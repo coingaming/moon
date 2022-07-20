@@ -52,7 +52,7 @@ defmodule Moon.Components.Button do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 py-2 rounded relative active:scale-90 transition-all #{@class}",
+        "flex justify-center items-center gap-2 relative active:scale-90 transition-all #{@class}",
         "text-goten-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120":
           @variant in ["primary"],
         "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
@@ -71,6 +71,11 @@ defmodule Moon.Components.Button do
         "p-2": @size == "medium" && !slot_assigned?(:default),
         "p-3": @size == "large" && !slot_assigned?(:default),
         "p-4": @size == "xlarge" && !slot_assigned?(:default),
+        "rounded-moon-s-xs": @size == "xsmall",
+        "rounded-moon-s-sm": @size == "small",
+        "rounded-moon-s-sm": @size == "medium",
+        "rounded-moon-s-sm": @size == "large",
+        "rounded-moon-s-md": @size == "xlarge",
         "w-full": @full_width,
         "opacity-30": @disabled
       }
@@ -94,7 +99,14 @@ defmodule Moon.Components.Button do
       {#else}
         <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
       {/if}
-      <div class="bg-transparent hover:bg-primary-hover absolute inset-0 rounded" />
+      <div class={
+        "absolute inset-0 bg-transparent hover:bg-primary-hover",
+        "rounded-moon-s-xs": @size == "xsmall",
+        "rounded-moon-s-sm": @size == "small",
+        "rounded-moon-s-sm": @size == "medium",
+        "rounded-moon-s-sm": @size == "large",
+        "rounded-moon-s-md": @size == "xlarge"
+      } />
     </button>
     """
   end

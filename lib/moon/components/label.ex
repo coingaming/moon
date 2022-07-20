@@ -3,12 +3,11 @@ defmodule Moon.Components.Label do
 
   use Moon.StatelessComponent
 
-  prop color, :css_class, default: "bg-gohan-100"
+  prop color, :css_class, default: "text-goten-100"
   prop background_color, :css_class, default: "bg-bulma-100"
   prop size, :string, default: "xsmall", values: ~w(twoxsmall xsmall)
   prop class, :string
   prop is_uppercase, :boolean, default: true
-  prop border_radius_class, :string, default: "rounded-sm"
 
   slot default
   slot left_icon
@@ -17,8 +16,7 @@ defmodule Moon.Components.Label do
   def render(assigns) do
     ~F"""
     <span class={
-      "flex items-center align-middle",
-      @border_radius_class,
+      "flex items-center align-middle rounded-moon-s-xs",
       @class,
       set_letter_spacing(@size),
       set_y_padding(@size, @left_icon, @right_icon),

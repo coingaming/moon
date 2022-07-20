@@ -1,3 +1,31 @@
+# [2.20.0](https://github.com/coingaming/moon/compare/v2.19.0...v2.20.0) (2022-07-20)
+
+
+### Bug Fixes
+
+* Border radiuses for some components ([130e12f](https://github.com/coingaming/moon/commit/130e12fb75c27bbb48c27ba384b0092bbd13508e))
+* Setting mode to jit is not required in tw 3 ([01bdc70](https://github.com/coingaming/moon/commit/01bdc70c9666efb44587e367afeb74c9a6024a94))
+
+
+### Features
+
+* Leave only base classes in moon tailwind preset ([23d68f0](https://github.com/coingaming/moon/commit/23d68f0c3180d49859040ab779d5577beb3e45fd))
+* Remove tailwindcss/aspect-ratio plugin ([1e0eb1a](https://github.com/coingaming/moon/commit/1e0eb1a07f0bb7709c716aee928026f6b9f7065e))
+
+# [2.19.0](https://github.com/coingaming/moon/compare/v2.18.3...v2.19.0) (2022-07-20)
+
+
+### Features
+
+* create the Breadcrumb component [MDS-119] ([#323](https://github.com/coingaming/moon/issues/323)) ([1add5f2](https://github.com/coingaming/moon/commit/1add5f25e8edd9c9a54c4638be66638a10d6ce14))
+
+## [2.18.3](https://github.com/coingaming/moon/compare/v2.18.2...v2.18.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* add getting started page [MDS-173] ([#324](https://github.com/coingaming/moon/issues/324)) ([680196e](https://github.com/coingaming/moon/commit/680196e850d5ba258d909d2df3e172da8cc295da))
+
 ## [2.18.2](https://github.com/coingaming/moon/compare/v2.18.1...v2.18.2) (2022-07-19)
 
 
