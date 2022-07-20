@@ -12,6 +12,7 @@ config :moon, MoonWeb.Endpoint,
   http: [port: http_port],
   url: [host: "moon-surface.coingaming.io", port: http_port],
   check_origin: [
+    "//surface.moon.io",
     "//moon-surface.coingaming.io",
     "//localhost:5000",
     "//localhost"
