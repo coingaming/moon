@@ -12,6 +12,8 @@ defmodule MoonWeb.Pages.IconsPage do
   alias MoonWeb.Components.IconItem
   alias MoonWeb.Components.PageSection
 
+  data selected_icons, :list, default: []
+
   data breadcrumbs, :any,
     default: [
       %{
