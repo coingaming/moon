@@ -1,3 +1,17 @@
+# [2.20.0](https://github.com/coingaming/moon/compare/v2.19.0...v2.20.0) (2022-07-20)
+
+
+### Bug Fixes
+
+* Border radiuses for some components ([130e12f](https://github.com/coingaming/moon/commit/130e12fb75c27bbb48c27ba384b0092bbd13508e))
+* Setting mode to jit is not required in tw 3 ([01bdc70](https://github.com/coingaming/moon/commit/01bdc70c9666efb44587e367afeb74c9a6024a94))
+
+
+### Features
+
+* Leave only base classes in moon tailwind preset ([23d68f0](https://github.com/coingaming/moon/commit/23d68f0c3180d49859040ab779d5577beb3e45fd))
+* Remove tailwindcss/aspect-ratio plugin ([1e0eb1a](https://github.com/coingaming/moon/commit/1e0eb1a07f0bb7709c716aee928026f6b9f7065e))
+
 # [2.19.0](https://github.com/coingaming/moon/compare/v2.18.3...v2.19.0) (2022-07-20)
 
 
