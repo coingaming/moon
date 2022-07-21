@@ -23,13 +23,6 @@ defmodule MoonWeb.Pages.ManifestPage do
      )}
   end
 
-  def unmount(_params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: "moon-design-light"
-     )}
-  end
-
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
