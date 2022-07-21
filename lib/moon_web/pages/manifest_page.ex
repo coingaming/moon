@@ -18,21 +18,13 @@ defmodule MoonWeb.Pages.ManifestPage do
   def mount(_params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: "moon-design-dark",
        active_page: __MODULE__
-     )}
-  end
-
-  def unmount(_params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: "moon-design-light"
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page theme_name="moon-design-dark" active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <div class="relative">
         <div class="absolute z-10 left-0 top-0 text-bulma-100">
           <LogoMoonDesign height="1.5rem" width="6.5rem" />
