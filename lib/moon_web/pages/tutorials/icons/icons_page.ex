@@ -38,7 +38,7 @@ defmodule MoonWeb.Pages.IconsPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="Icons"/>
+      <ComponentPageDescription title="Icons" />
 
       <ExampleAndCode title="Sizes and colors" id="icons">
         <:example>
@@ -55,7 +55,10 @@ defmodule MoonWeb.Pages.IconsPage do
         Please select icons for Import.
       </p>
 
-      <PageSection title="Import code for selected icons (by attribute)" :if={!Enum.empty?(@selected_icons)}>
+      <PageSection
+        title="Import code for selected icons (by attribute)"
+        :if={!Enum.empty?(@selected_icons)}
+      >
         <IconsImportDisplay>
           {get_import_text_by_attribute(assigns, @selected_icons)}
         </IconsImportDisplay>
@@ -275,6 +278,7 @@ defmodule MoonWeb.Pages.IconsPage do
   end
 
   defp get_alias_string(names) do
+    # credo:disable-for-next-line Credo.Check.Consistency.SpaceInParentheses
     "alias Moon.Icons.{#{names}}"
   end
 

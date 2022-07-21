@@ -11,8 +11,7 @@ defmodule MoonWeb.Components.IconItem do
 
   def render(assigns) do
     ~F"""
-    <div
-      class="cursor-pointer rounded-moon-i-sm transition-colors hover:bg-piccolo-100/[.12] text-trunks-100 hover:text-piccolo-100">
+    <div class="cursor-pointer rounded-moon-i-sm transition-colors hover:bg-piccolo-100/[.12] text-trunks-100 hover:text-piccolo-100">
       <Icon name={@name} font_size="2rem" click={@click} value={@value} />
     </div>
     """
