@@ -1,3 +1,17 @@
+## [2.20.2](https://github.com/coingaming/moon/compare/v2.20.1...v2.20.2) (2022-07-20)
+
+
+### Bug Fixes
+
+* add how to contribute page [MDS-174] ([#325](https://github.com/coingaming/moon/issues/325)) ([98f52d2](https://github.com/coingaming/moon/commit/98f52d2c2f9f00abea5ce3e6d4dfd04b9fc91660))
+
+## [2.20.1](https://github.com/coingaming/moon/compare/v2.20.0...v2.20.1) (2022-07-20)
+
+
+### Bug Fixes
+
+* check origin ([#326](https://github.com/coingaming/moon/issues/326)) ([9df6b2f](https://github.com/coingaming/moon/commit/9df6b2f200f8c059143afab83a37659034f5e158))
+
 # [2.20.0](https://github.com/coingaming/moon/compare/v2.19.0...v2.20.0) (2022-07-20)
 
 
