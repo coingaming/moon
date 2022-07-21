@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.IconsPage do
   alias MoonWeb.Components.IconsBlock
   alias MoonWeb.Components.IconItem
   alias MoonWeb.Components.PageSection
+  alias MoonWeb.Pages.IconsPage.IconsImportDisplay
 
   data selected_icons, :list, default: []
 
@@ -37,11 +38,7 @@ defmodule MoonWeb.Pages.IconsPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="Icons">
-        <p>
-          Please select icons for Import.
-        </p>
-      </ComponentPageDescription>
+      <ComponentPageDescription title="Icons"/>
 
       <ExampleAndCode title="Sizes and colors" id="icons">
         <:example>
@@ -53,6 +50,22 @@ defmodule MoonWeb.Pages.IconsPage do
 
         <:code>{icons_code()}</:code>
       </ExampleAndCode>
+
+      <p>
+        Please select icons for Import.
+      </p>
+
+      <PageSection title="Import code for selected icons (by attribute)" :if={!Enum.empty?(@selected_icons)}>
+        <IconsImportDisplay>
+          {get_import_text_by_attribute(assigns, @selected_icons)}
+        </IconsImportDisplay>
+      </PageSection>
+
+      <PageSection title="Import code for selected icons (by name)" :if={!Enum.empty?(@selected_icons)}>
+        <IconsImportDisplay>
+          {get_import_text_by_name(assigns, @selected_icons)}
+        </IconsImportDisplay>
+      </PageSection>
 
       <PageSection title="Arrows">
         <IconsBlock>
@@ -233,7 +246,39 @@ defmodule MoonWeb.Pages.IconsPage do
       ) do
     selected_icons = Enum.concat(socket.assigns.selected_icons, [value])
     socket = socket |> assign(:selected_icons, selected_icons)
-    IO.inspect(socket.assigns)
     {:noreply, socket}
+  end
+
+  defp get_import_text_by_attribute(assigns, selected_icons) do
+    ~F"""
+    alias Moon.Icon
+
+    {#for icon <- selected_icons}{icon_string(icon)}{/for}
+    """
+  end
+
+  defp icon_string(name) do
+    """
+      <Icon name="#{name}" />
+    """
+  end
+
+  defp get_import_text_by_name(assigns, selected_icons) do
+    case_converted_list = Enum.map(selected_icons, fn i -> Macro.camelize(i) end)
+    import_name_string = Enum.join(case_converted_list, ", ")
+
+    ~F"""
+    {get_alias_string(import_name_string)}
+
+    {#for icon <- case_converted_list}{get_icon_tag(icon)}{/for}
+    """
+  end
+
+  defp get_alias_string(names) do
+    "alias Moon.Icons.{#{names}}"
+  end
+
+  defp get_icon_tag(name) do
+    "<#{name} />\n"
   end
 end
