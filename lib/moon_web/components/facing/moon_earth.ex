@@ -11,7 +11,7 @@ defmodule MoonWeb.Components.Facing.MoonEarth do
       </div>
 
       <div class="origin-top-left fixed w-5/12 top-[250px] -right-[500px]">
-        <img src="/moon/assets/images/facing/moon.png" alt="Moon">
+        <img src="/moon/assets/images/facing/moon.webp" alt="Moon">
       </div>
     </div>
     """
