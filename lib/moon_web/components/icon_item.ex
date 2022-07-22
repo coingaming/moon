@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.IconItem do
   def render(assigns) do
     ~F"""
     <Button variant="ghost" on_click={@click} value={@value} value_name="icon_value">
-      <Icon name={@name} font_size="2rem"  />
+      <Icon name={@name} font_size="2rem" />
     </Button>
     """
   end
