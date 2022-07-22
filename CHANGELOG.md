@@ -1,3 +1,10 @@
+# [2.21.0](https://github.com/coingaming/moon/compare/v2.20.2...v2.21.0) (2022-07-22)
+
+
+### Features
+
+* add manifest page [MDS-163] ([#328](https://github.com/coingaming/moon/issues/328)) ([7cd56be](https://github.com/coingaming/moon/commit/7cd56be8c9a0f556fd4135c5c4bdff870f29d93c))
+
 ## [2.20.2](https://github.com/coingaming/moon/compare/v2.20.1...v2.20.2) (2022-07-20)
 
 
