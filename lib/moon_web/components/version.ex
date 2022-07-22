@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Version do
   def render(assigns) do
     ~F"""
     <div class="flex text-moon-14 text-trunks-100 gap-2">
-      <LogoMoonDesignShort font_size="1.5rem" />
+      <LogoMoonDesignShort height="1.5rem" width="1.5rem" />
       <p>Version <span class="font-semibold">22.0.0</span></p>
     </div>
     """

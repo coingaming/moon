@@ -3,15 +3,13 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateful_component
 
+  alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
   alias MoonWeb.Components.Version
   alias MoonWeb.Pages
   alias Surface.Components.Context
-  alias __MODULE__.Link
-  alias Moon.Components.Link
   alias MoonWeb.Components.SidebarLink
-  alias MoonWeb.Components.LargeLogo
 
   prop theme_name, :any
   prop uri, :any
@@ -23,12 +21,12 @@ defmodule MoonWeb.Components.LeftMenu do
       <Sidebar background_color="bg-goku-100" open_width="20rem">
         <:short_logo>
           <div class="flex items-center h-10">
-            <Link
-              to="/"
+            <a
+              href="/"
               class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
             >
-              <LargeLogo />
-            </Link>
+              <LogoMoonDesign height="1.5rem" width="6.5rem" />
+            </a>
           </div>
         </:short_logo>
         <:menu>
@@ -36,9 +34,12 @@ defmodule MoonWeb.Components.LeftMenu do
             <Context put={active_page: @active_page, theme_name: @theme_name}>
               <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
                 <div class="flex items-center flex-shrink-0 pl-3">
-                  <Link to="/">
-                    <LargeLogo />
-                  </Link>
+                  <a
+                    href="/"
+                    class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+                  >
+                    <LogoMoonDesign height="1.5rem" width="6.5rem" />
+                  </a>
                 </div>
                 <div class="flex-grow flex flex-col gap-2">
                   <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
