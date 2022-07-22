@@ -11,6 +11,9 @@ defmodule MoonWeb.Pages.IconsPage do
   alias MoonWeb.Components.IconsBlock
   alias MoonWeb.Components.IconItem
   alias MoonWeb.Components.PageSection
+  alias MoonWeb.Pages.IconsPage.IconsImportDisplay
+
+  data selected_icons, :list, default: []
 
   data breadcrumbs, :any,
     default: [
@@ -35,11 +38,7 @@ defmodule MoonWeb.Pages.IconsPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="Icons">
-        <p>
-          Please select icons for Import.
-        </p>
-      </ComponentPageDescription>
+      <ComponentPageDescription title="Icons" />
 
       <ExampleAndCode title="Sizes and colors" id="icons">
         <:example>
@@ -52,10 +51,29 @@ defmodule MoonWeb.Pages.IconsPage do
         <:code>{icons_code()}</:code>
       </ExampleAndCode>
 
+      <p>
+        Please select icons for Import.
+      </p>
+
+      <PageSection
+        title="Import code for selected icons (by attribute)"
+        :if={!Enum.empty?(@selected_icons)}
+      >
+        <IconsImportDisplay>
+          {get_import_text_by_attribute(assigns, @selected_icons)}
+        </IconsImportDisplay>
+      </PageSection>
+
+      <PageSection title="Import code for selected icons (by name)" :if={!Enum.empty?(@selected_icons)}>
+        <IconsImportDisplay>
+          {get_import_text_by_name(assigns, @selected_icons)}
+        </IconsImportDisplay>
+      </PageSection>
+
       <PageSection title="Arrows">
         <IconsBlock>
           {#for icon_name <- Icons.list_arrows()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -63,7 +81,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Chart">
         <IconsBlock>
           {#for icon_name <- Icons.list_chart()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -71,7 +89,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Chat">
         <IconsBlock>
           {#for icon_name <- Icons.list_chat()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -79,7 +97,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Controls">
         <IconsBlock>
           {#for icon_name <- Icons.list_controls()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -87,7 +105,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Devices">
         <IconsBlock>
           {#for icon_name <- Icons.list_devices()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -95,7 +113,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Files">
         <IconsBlock>
           {#for icon_name <- Icons.list_files()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -103,7 +121,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Generic">
         <IconsBlock>
           {#for icon_name <- Icons.list_generic()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -111,7 +129,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Mail">
         <IconsBlock>
           {#for icon_name <- Icons.list_mail()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -119,7 +137,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Maps">
         <IconsBlock>
           {#for icon_name <- Icons.list_maps()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -127,7 +145,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Media">
         <IconsBlock>
           {#for icon_name <- Icons.list_media()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -135,7 +153,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Notifications">
         <IconsBlock>
           {#for icon_name <- Icons.list_notifications()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -143,7 +161,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Other">
         <IconsBlock>
           {#for icon_name <- Icons.list_other()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -151,7 +169,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Security">
         <IconsBlock>
           {#for icon_name <- Icons.list_security()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -159,7 +177,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Shop">
         <IconsBlock>
           {#for icon_name <- Icons.list_shop()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -167,7 +185,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Software">
         <IconsBlock>
           {#for icon_name <- Icons.list_software()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -175,7 +193,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Sport">
         <IconsBlock>
           {#for icon_name <- Icons.list_sport()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -183,7 +201,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Text">
         <IconsBlock>
           {#for icon_name <- Icons.list_text()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -191,7 +209,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Time">
         <IconsBlock>
           {#for icon_name <- Icons.list_time()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -199,7 +217,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Travel">
         <IconsBlock>
           {#for icon_name <- Icons.list_travel()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -207,7 +225,7 @@ defmodule MoonWeb.Pages.IconsPage do
       <PageSection title="Type">
         <IconsBlock>
           {#for icon_name <- Icons.list_type()}
-            <IconItem name={icon_name} />
+            <IconItem click="add_selected_icon" value={icon_name} name={icon_name} />
           {/for}
         </IconsBlock>
       </PageSection>
@@ -222,5 +240,49 @@ defmodule MoonWeb.Pages.IconsPage do
     <Icon name="files_copy" font_size="3rem" class="text-chi-chi-100" />
     <Icon name="files_copy" font_size="3rem" class="text-piccolo-100" />
     """
+  end
+
+  def handle_event(
+        "add_selected_icon",
+        %{"icon-value" => value},
+        socket
+      ) do
+    selected_icons = Enum.concat(socket.assigns.selected_icons, [value])
+    socket = socket |> assign(:selected_icons, selected_icons)
+    {:noreply, socket}
+  end
+
+  defp get_import_text_by_attribute(assigns, selected_icons) do
+    ~F"""
+    alias Moon.Icon
+
+    {#for icon <- selected_icons}{icon_string(icon)}{/for}
+    """
+  end
+
+  defp icon_string(name) do
+    """
+      <Icon name="#{name}" />
+    """
+  end
+
+  defp get_import_text_by_name(assigns, selected_icons) do
+    case_converted_list = Enum.map(selected_icons, fn i -> Macro.camelize(i) end)
+    import_name_string = Enum.join(case_converted_list, ", ")
+
+    ~F"""
+    {get_alias_string(import_name_string)}
+
+    {#for icon <- case_converted_list}{get_icon_tag(icon)}{/for}
+    """
+  end
+
+  defp get_alias_string(names) do
+    # credo:disable-for-next-line Credo.Check.Consistency.SpaceInParentheses
+    "alias Moon.Icons.{#{names}}"
+  end
+
+  defp get_icon_tag(name) do
+    "<#{name} />\n"
   end
 end
