@@ -2,6 +2,7 @@ defmodule MoonWeb.Components.IconItem do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Components.Button
 
   alias Moon.Icon
 
@@ -11,9 +12,9 @@ defmodule MoonWeb.Components.IconItem do
 
   def render(assigns) do
     ~F"""
-    <div class="cursor-pointer rounded-moon-i-sm transition-colors hover:bg-piccolo-100/[.12] text-trunks-100 hover:text-piccolo-100">
-      <Icon name={@name} font_size="2rem" click={@click} value={@value} />
-    </div>
+    <Button variant="ghost" on_click={@click} value={@value} value_name="icon_value">
+      <Icon name={@name} font_size="2rem"  />
+    </Button>
     """
   end
 end
