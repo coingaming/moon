@@ -1,3 +1,10 @@
+# [2.23.0](https://github.com/coingaming/moon/compare/v2.22.0...v2.23.0) (2022-07-22)
+
+
+### Features
+
+* add the import code sample for icons page [MDS-170] ([#330](https://github.com/coingaming/moon/issues/330)) ([feac957](https://github.com/coingaming/moon/commit/feac957be93a1365a0c9a3c76a6e2e8be838d4d1))
+
 # [2.22.0](https://github.com/coingaming/moon/compare/v2.21.0...v2.22.0) (2022-07-22)
 
 
