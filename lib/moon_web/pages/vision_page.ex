@@ -3,8 +3,6 @@ defmodule MoonWeb.Pages.VisionPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.VisionCard
 
