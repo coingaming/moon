@@ -1,3 +1,10 @@
+# [2.22.0](https://github.com/coingaming/moon/compare/v2.21.0...v2.22.0) (2022-07-22)
+
+
+### Features
+
+* add vision page [MDS-160] ([#329](https://github.com/coingaming/moon/issues/329)) ([754634d](https://github.com/coingaming/moon/commit/754634d41086ebcfda71da6951afce3e27534067))
+
 # [2.21.0](https://github.com/coingaming/moon/compare/v2.20.2...v2.21.0) (2022-07-22)
 
 
