@@ -20,7 +20,10 @@ defmodule Moon.Components.Checkbox do
       <Surface.Components.Form.Checkbox
         field={@field}
         click={!@readonly && @click}
-        class="z-10 absolute left-0 opacity-0 read-only:cursor-not-allowed read-only:select-none"
+        class={
+          "z-10 absolute left-0 opacity-0 cursor-pointer",
+          "cursor-not-allowed select-none": @readonly
+        }
         checked_value="true"
         unchecked_value="false"
         opts={disabled: @disabled, readonly: @readonly}
