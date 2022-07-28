@@ -10,6 +10,7 @@ defmodule MoonWeb.Components.Page do
   prop class, :css_class
   prop breadcrumbs, :any
   prop theme_name, :any, default: "moon-design-light"
+  prop main_content_theme_name, :any
   prop active_page, :any
   slot default
 
@@ -24,7 +25,7 @@ defmodule MoonWeb.Components.Page do
 
       <div class={
         "min-h-screen lg:ml-80 bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
-        @theme_name
+        get_main_content_theme_name(@theme_name, @main_content_theme_name)
       }>
         <div class="flex flex-col grow max-w-screen-xl">
           <Breadcrumbs :if={@breadcrumbs} theme_name={@theme_name} breadcrumbs={@breadcrumbs} />
@@ -37,5 +38,13 @@ defmodule MoonWeb.Components.Page do
       </div>
     </div>
     """
+  end
+
+  defp get_main_content_theme_name(theme_name, main_content_theme_name) do
+    if main_content_theme_name do
+      main_content_theme_name
+    else
+      theme_name
+    end
   end
 end
