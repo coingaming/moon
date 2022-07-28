@@ -1,3 +1,10 @@
+## [2.23.1](https://github.com/coingaming/moon/compare/v2.23.0...v2.23.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* add link to React [MDS-180] ([#333](https://github.com/coingaming/moon/issues/333)) ([009b883](https://github.com/coingaming/moon/commit/009b88394343dceccd3754dd24e148a640009d88))
+
 # [2.23.0](https://github.com/coingaming/moon/compare/v2.22.0...v2.23.0) (2022-07-22)
 
 
