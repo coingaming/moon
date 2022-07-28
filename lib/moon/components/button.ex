@@ -52,15 +52,13 @@ defmodule Moon.Components.Button do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 relative active:scale-90 transition-all #{@class}",
-        "text-goten-100 bg-piccolo-100 active:bg-piccolo-120 focus-within:bg-piccolo-120":
-          @variant in ["primary"],
+        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all #{@class}",
+        "text-goten-100 bg-piccolo-100": @variant in ["primary"],
         "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
           @variant in ["secondary"],
         "bg-hit-100 text-goten-100": @variant in ["tertiary"],
         "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
-        "text-trunks-100 hover:bg-hit-120 active:bg-hit-120 focus-within:bg-hit-120 hover:text-piccolo-80 active:text-piccolo-120 focus-within:text-piccolo-120":
-          @variant in ["link"],
+        "text-trunks-100 hover:bg-hit-120 hover:text-piccolo-80": @variant in ["link"],
         "text-moon-12 h-8 px-2": @size == "xsmall" && slot_assigned?(:default),
         "text-moon-14 h-8 px-3": @size == "small" && slot_assigned?(:default),
         "text-moon-14 h-10 px-4": @size == "medium" && slot_assigned?(:default),
@@ -99,14 +97,7 @@ defmodule Moon.Components.Button do
       {#else}
         <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
       {/if}
-      <div class={
-        "absolute inset-0 bg-transparent hover:bg-primary-hover",
-        "rounded-moon-s-xs": @size == "xsmall",
-        "rounded-moon-s-sm": @size == "small",
-        "rounded-moon-s-sm": @size == "medium",
-        "rounded-moon-s-sm": @size == "large",
-        "rounded-moon-s-md": @size == "xlarge"
-      } />
+      <div class="absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
     """
   end

@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.MainPage do
   alias MoonWeb.Components.Facing.Contributors
   alias MoonWeb.Components.Facing.MoonEarth
   alias Moon.Components.Label
+  alias Moon.Components.Button
 
   def mount(params, _session, socket) do
     {:ok,
@@ -31,6 +32,13 @@ defmodule MoonWeb.Pages.MainPage do
               Moon is Yolo Group product design system that helps us maintain the
               integrity of their user experience and optimize design and development
               resources.
+            </p>
+            <p class="flex items-center gap-2 text-moon-16 max-w-screen-sm font-semibold">
+              <span>Try out Moon DS for
+              </span>
+              <a href="https://moon.io/" target="_blank" rel="noreferrer">
+                <Button size="small">React</Button>
+              </a>
             </p>
           </div>
           <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 z-50">
