@@ -1,3 +1,10 @@
+## [2.23.2](https://github.com/coingaming/moon/compare/v2.23.1...v2.23.2) (2022-08-02)
+
+
+### Bug Fixes
+
+* add render helper component for surface ([#336](https://github.com/coingaming/moon/issues/336)) ([7a61f49](https://github.com/coingaming/moon/commit/7a61f497a96178acc4ac912f03b364a1bbc1fab2))
+
 ## [2.23.1](https://github.com/coingaming/moon/compare/v2.23.0...v2.23.1) (2022-07-28)
 
 
