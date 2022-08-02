@@ -138,13 +138,11 @@ defmodule Moon.Components.Select.Dropdown.Icon do
   slot default
 
   def render(assigns) do
-    [icon_module, icon_custom_props] = assigns.icon
-    default_props = SelectHelpers.get_default_props(icon_module)
-    use_props = Map.merge(default_props, icon_custom_props)
+    [module, props] = assigns.icon
 
     ~F"""
     <div class={@class} style={@style}>
-      {component(&icon_module.render/1, use_props)}
+      {Moon.RenderHelpers.render_component(module, props)}
     </div>
     """
   end

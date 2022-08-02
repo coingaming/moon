@@ -47,22 +47,6 @@ defmodule Moon.Components.Select.Helpers do
     Enum.find(options, fn option -> "#{option.value}" == "#{v}" end)
   end
 
-  def get_default_props(module) do
-    Enum.reduce(module.__props__(), %{}, fn
-      %{name: name, opts: opts, type: type}, acc ->
-        value = Keyword.get(opts, :values)
-
-        value =
-          if type == :string and not is_nil(value) do
-            Enum.join(value, " ")
-          else
-            value
-          end
-
-        Map.put(acc, name, value)
-    end)
-  end
-
   def get_active_border_color(class) do
     Regex.run(~r(\bfocus:border.*\b), class)
     |> List.first()
