@@ -1,3 +1,10 @@
+## [2.23.3](https://github.com/coingaming/moon/compare/v2.23.2...v2.23.3) (2022-08-02)
+
+
+### Bug Fixes
+
+* Fix reusability from other modules ([#337](https://github.com/coingaming/moon/issues/337)) ([abb8bc0](https://github.com/coingaming/moon/commit/abb8bc08fa55f3c015dc87988310f7c4ee05a1bb))
+
 ## [2.23.2](https://github.com/coingaming/moon/compare/v2.23.1...v2.23.2) (2022-08-02)
 
 
