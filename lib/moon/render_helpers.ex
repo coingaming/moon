@@ -1,4 +1,6 @@
 defmodule Moon.RenderHelpers do
+  @moduledoc false
+
   def get_default_props(module) do
     Enum.reduce(module.__props__(), %{}, fn
       %{name: name, opts: opts, type: type}, acc ->
