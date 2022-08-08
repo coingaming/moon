@@ -53,33 +53,7 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     ~F"""
-    {#if @size == "xl"}
-      <TextInputInnerLabel
-        disabled={@disabled}
-        dir={@dir}
-        label={@label}
-        is_error={@is_error}
-        size={@size}
-        type={@type}
-        step={@step}
-        required={@required}
-        placeholder={@placeholder}
-        readonly={@readonly}
-        value={@value}
-        background_color={@background_color}
-        is_sharp_left_side={@is_sharp_left_side}
-        is_sharp_right_side={@is_sharp_right_side}
-        is_sharp_top_side={@is_sharp_top_side}
-        is_sharp_bottom_side={@is_sharp_bottom_side}
-        is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
-        is_side_border_hidden={@is_side_border_hidden}
-        is_first={@is_first}
-      >
-        <:hint_text_slot>
-          <#slot name="hint_text_slot" />
-        </:hint_text_slot>
-      </TextInputInnerLabel>
-    {#elseif @type == "password"}
+    {#if @type == "password"}
       <TextInputPassword
         id={@id}
         disabled={@disabled}
@@ -105,6 +79,32 @@ defmodule Moon.Components.TextInput do
           <#slot name="hint_text_slot" />
         </:hint_text_slot>
       </TextInputPassword>
+    {#elseif @size == "xl"}
+      <TextInputInnerLabel
+        disabled={@disabled}
+        dir={@dir}
+        label={@label}
+        is_error={@is_error}
+        size={@size}
+        type={@type}
+        step={@step}
+        required={@required}
+        placeholder={@placeholder}
+        readonly={@readonly}
+        value={@value}
+        background_color={@background_color}
+        is_sharp_left_side={@is_sharp_left_side}
+        is_sharp_right_side={@is_sharp_right_side}
+        is_sharp_top_side={@is_sharp_top_side}
+        is_sharp_bottom_side={@is_sharp_bottom_side}
+        is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+        is_side_border_hidden={@is_side_border_hidden}
+        is_first={@is_first}
+      >
+        <:hint_text_slot>
+          <#slot name="hint_text_slot" />
+        </:hint_text_slot>
+      </TextInputInnerLabel>
     {#else}
       <TextInputBasic
         disabled={@disabled}
