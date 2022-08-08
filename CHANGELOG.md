@@ -1,3 +1,10 @@
+## [2.23.5](https://github.com/coingaming/moon/compare/v2.23.4...v2.23.5) (2022-08-08)
+
+
+### Bug Fixes
+
+* temporary hide menu items [MDS-186] ([#340](https://github.com/coingaming/moon/issues/340)) ([52fad75](https://github.com/coingaming/moon/commit/52fad758a36ccec6ff3bbe95c9f69448b0ff5c80))
+
 ## [2.23.4](https://github.com/coingaming/moon/compare/v2.23.3...v2.23.4) (2022-08-08)
 
 
