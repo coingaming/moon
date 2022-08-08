@@ -1,3 +1,10 @@
+## [2.23.4](https://github.com/coingaming/moon/compare/v2.23.3...v2.23.4) (2022-08-08)
+
+
+### Bug Fixes
+
+* Fix show password on xl textinput ([#338](https://github.com/coingaming/moon/issues/338)) ([71310e0](https://github.com/coingaming/moon/commit/71310e03fc40c0cc511ad93b210676c9a3f304bc))
+
 ## [2.23.3](https://github.com/coingaming/moon/compare/v2.23.2...v2.23.3) (2022-08-02)
 
 
