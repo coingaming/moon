@@ -21,6 +21,7 @@ defmodule MoonWeb.Components.Page do
         id="left-menu"
         theme_name={assigns.theme_name}
         active_page={assigns.active_page}
+        hide_items
       />
 
       <div class={

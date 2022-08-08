@@ -14,6 +14,7 @@ defmodule MoonWeb.Components.LeftMenu do
   prop theme_name, :any
   prop uri, :any
   prop active_page, :any
+  prop hide_items, :boolean
 
   def render(assigns) do
     ~F"""
@@ -43,8 +44,8 @@ defmodule MoonWeb.Components.LeftMenu do
                 </div>
                 <div class="flex-grow flex flex-col gap-2">
                   <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
-                  <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
-                  <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
+                  <SidebarLink :if={!@hide_items} route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
+                  <SidebarLink :if={!@hide_items} route={Pages.ContributePage}>How to contribute</SidebarLink>
                   <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
                   <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
                   <SidebarLink route={Pages.IconsPage}>Icons</SidebarLink>
@@ -72,11 +73,11 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:title>Charts</:title>
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
-                              <SidebarLink route={Pages.Components.Charts.GeoMapPage}>GeoMap</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Charts.GeoMapPage}>GeoMap</SidebarLink>
                               <SidebarLink route={Pages.Components.Charts.LineChartPage}>LineChart</SidebarLink>
-                              <SidebarLink route={Pages.Components.Charts.PiePage}>Pie</SidebarLink>
-                              <SidebarLink route={Pages.Components.Charts.TablePage}>Table</SidebarLink>
-                              <SidebarLink route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Charts.PiePage}>Pie</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Charts.TablePage}>Table</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Charts.VerticalBarPage}>Vertical Bar</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>
@@ -91,8 +92,8 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
                               <SidebarLink route={Pages.Components.Date.DatepickerPage}>Datepicker</SidebarLink>
-                              <SidebarLink route={Pages.Components.Date.SingleDatePage}>Single Date</SidebarLink>
-                              <SidebarLink route={Pages.Components.Date.RangeDatePage}>Range</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Date.SingleDatePage}>Single Date</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Date.RangeDatePage}>Range</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>
@@ -105,10 +106,10 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
                               <SidebarLink route={Pages.Components.Dialog.ModalPage}>Dialog</SidebarLink>
-                              <SidebarLink route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
-                              <SidebarLink route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
-                              <SidebarLink route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
-                              <SidebarLink route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
                               <SidebarLink route={Pages.Components.Dialog.PopoverPage}>Popover</SidebarLink>
                             </div>
                           </:content>
@@ -127,13 +128,13 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:title>Progress</:title>
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
-                              <SidebarLink route={Pages.Components.Progress.CircularPage}>Circular</SidebarLink>
+                              <SidebarLink :if={!@hide_items} route={Pages.Components.Progress.CircularPage}>Circular</SidebarLink>
                               <SidebarLink route={Pages.Components.Progress.LinearPage}>Linear</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>
                         <SidebarLink route={Pages.Components.RadioButtonPage}>RadioButton</SidebarLink>
-                        <SidebarLink route={Pages.Components.SearchPage}>Search</SidebarLink>
+                        <SidebarLink :if={!@hide_items} route={Pages.Components.SearchPage}>Search</SidebarLink>
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-select"
@@ -151,9 +152,9 @@ defmodule MoonWeb.Components.LeftMenu do
                         </Accordion>
                         <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
                         <SidebarLink route={Pages.Components.TabsPage}>Tabs</SidebarLink>
-                        <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
+                        <SidebarLink :if={!@hide_items} route={Pages.Components.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Components.TextInputPage}>Text input</SidebarLink>
-                        <SidebarLink route={Pages.Components.TextInputGroupPage}>Text input group</SidebarLink>
+                        <SidebarLink :if={!@hide_items} route={Pages.Components.TextInputGroupPage}>Text input group</SidebarLink>
                         <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                         <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
                         <Accordion
