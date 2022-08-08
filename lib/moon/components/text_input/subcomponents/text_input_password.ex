@@ -66,7 +66,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             placeholder={@placeholder}
           />
           <label class={
-            "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[1] transition-all",
+            "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[3] transition-all",
             "right-4": @dir == "rtl",
             "left-4": @dir == "ltr"
           }>
