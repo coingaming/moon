@@ -3,8 +3,6 @@ defmodule MoonWeb.Components.Breadcrumbs do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Assets.Icons.IconChevronRightRounded
-  alias Moon.Components.Link
   alias Moon.Components.Breadcrumb, as: BreadCrumbsComponent
 
   prop breadcrumbs, :any
