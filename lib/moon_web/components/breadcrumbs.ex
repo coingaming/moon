@@ -30,12 +30,11 @@ defmodule MoonWeb.Components.Breadcrumbs do
 
     with_home = Enum.concat(with_home, breadcrumbs)
 
-    with_home =
-      Enum.map(with_home, fn b ->
-        %{
-          link: b.to,
-          name: b.name
-        }
-      end)
+    Enum.map(with_home, fn b ->
+      %{
+        link: b.to,
+        name: b.name
+      }
+    end)
   end
 end
