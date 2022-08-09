@@ -1,3 +1,10 @@
+## [2.24.1](https://github.com/coingaming/moon/compare/v2.24.0...v2.24.1) (2022-08-09)
+
+
+### Bug Fixes
+
+* add dynamic version number [MDS-186] ([#343](https://github.com/coingaming/moon/issues/343)) ([8743e56](https://github.com/coingaming/moon/commit/8743e560f5545843f6a66e802a3349544f6361d1))
+
 # [2.24.0](https://github.com/coingaming/moon/compare/v2.23.5...v2.24.0) (2022-08-09)
 
 
