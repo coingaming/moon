@@ -7,10 +7,11 @@ defmodule Moon.Components.Breadcrumb do
   alias Moon.Components.Breadcrumb.Extended
 
   prop breadcrumbs, :list, default: []
+  prop class, :string, default: nil
 
   def render(assigns) do
     ~F"""
-    <div>
+    <div class={@class}>
       {#if Enum.count(@breadcrumbs) > 4}
         <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs} />
       {#else}

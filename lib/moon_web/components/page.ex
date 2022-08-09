@@ -28,7 +28,12 @@ defmodule MoonWeb.Components.Page do
         get_main_content_theme_name(@theme_name, @main_content_theme_name)
       }>
         <div class="flex flex-col grow max-w-screen-xl">
-          <Breadcrumbs :if={@breadcrumbs} theme_name={@theme_name} breadcrumbs={@breadcrumbs} />
+          <Breadcrumbs
+            class="pb-12"
+            :if={@breadcrumbs}
+            theme_name={@theme_name}
+            breadcrumbs={@breadcrumbs}
+          />
           <div class="flex flex-col gap-12 flex-1 relative overflow-y-auto focus:outline-none">
             <#slot />
           </div>

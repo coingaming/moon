@@ -5,26 +5,39 @@ defmodule MoonWeb.Components.Breadcrumbs do
 
   alias Moon.Assets.Icons.IconChevronRightRounded
   alias Moon.Components.Link
+  alias Moon.Components.Breadcrumb, as: BreadCrumbsComponent
 
   prop breadcrumbs, :any
   prop theme_name, :string, default: "lab-light"
   prop class, :string, default: nil
 
+  @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
-    <div class={"flex pb-12 gap-2 text-moon-12 #{@class}"}>
-      <Link to="/" class="text-trunks-100">
-        Home
-      </Link>
-      <div :for={breadcrumb <- @breadcrumbs}>
-        <div class="flex gap-2 items-center">
-          <div><IconChevronRightRounded /></div>
-          <Link to={"/#{@theme_name}#{breadcrumb.to}"}>
-            {breadcrumb.name}
-          </Link>
-        </div>
-      </div>
-    </div>
+    <BreadCrumbsComponent
+      class={@class}
+      id="page_crumbs"
+      breadcrumbs={get_formatted_crumbs_list(@breadcrumbs)}
+    />
     """
+  end
+
+  defp get_formatted_crumbs_list(breadcrumbs) do
+    with_home = [
+      %{
+        to: "/",
+        name: "Home"
+      }
+    ]
+
+    with_home = Enum.concat(with_home, breadcrumbs)
+
+    with_home =
+      Enum.map(with_home, fn b ->
+        %{
+          link: b.to,
+          name: b.name
+        }
+      end)
   end
 end
