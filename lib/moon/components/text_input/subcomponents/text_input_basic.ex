@@ -5,6 +5,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Input
   alias Moon.Components.TextInput.HintText
+  alias Moon.Components.ErrorTag
 
   prop type, :string,
     values: [
@@ -47,6 +48,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop keyup, :event
   prop blur, :event
 
+  prop use_error_tag, :boolean
+
   slot hint_text_slot
 
   def render(assigns) do
@@ -86,6 +89,9 @@ defmodule Moon.Components.TextInput.TextInputBasic do
       <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
         <#slot name="hint_text_slot" />
       </HintText>
+      <div class="inline-block mt-2 text-moon-12">
+        <ErrorTag :if={@use_error_tag && @is_error} />
+      </div>
     </Container>
     """
   end

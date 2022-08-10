@@ -101,6 +101,14 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         :required => 'false | required (for password type)',
         :default => '-',
         :description => 'Unique id'
+      },
+      %{
+        :name => 'use_error_tag',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description =>
+          'Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components'
       }
     ]
 
@@ -396,8 +404,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                     <ErrorTag />
                   </Field>
                   <Field name={:password}>
-                    <TextInput id="password" label="Password" placeholder="Password" type="password" />
-                    <ErrorTag />
+                    <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag />
                   </Field>
                   <div>
                     <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
@@ -706,13 +713,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
           <ErrorTag />
         </Field>
         <Field name={:password}>
-          <TextInput
-            id="password"
-            label="Password"
-            placeholder="Password"
-            type="password"
-          />
-          <ErrorTag />
+          <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag/>
         </Field>
         <div>
           <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
