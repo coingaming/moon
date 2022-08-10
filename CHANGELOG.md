@@ -1,3 +1,10 @@
+## [2.24.2](https://github.com/coingaming/moon/compare/v2.24.1...v2.24.2) (2022-08-10)
+
+
+### Bug Fixes
+
+* Use changeset if preset to set error state. Use error tag ([#344](https://github.com/coingaming/moon/issues/344)) ([6ade950](https://github.com/coingaming/moon/commit/6ade950efc9439b84addf1c2de0718ec00438c55))
+
 ## [2.24.1](https://github.com/coingaming/moon/compare/v2.24.0...v2.24.1) (2022-08-09)
 
 
