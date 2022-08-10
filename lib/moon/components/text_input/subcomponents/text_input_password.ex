@@ -7,6 +7,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.TextInput.ShowPassword
+  alias Moon.Components.ErrorTag
 
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
@@ -32,6 +33,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop focus, :event
   prop keydown, :event
   prop blur, :event
+
+  prop use_error_tag, :boolean
 
   data password_shown, :boolean, default: false
   data password, :string, default: ""
@@ -83,6 +86,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
         <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
           <#slot name="hint_text_slot" />
         </HintText>
+        <div class="inline-block mt-2 text-moon-12">
+          <ErrorTag :if={@use_error_tag && @is_error} />
+        </div>
       {#else}
         <label
           dir={@dir}
@@ -125,6 +131,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
         <HintText :if={slot_assigned?(:hint_text_slot)} is_error={@is_error}>
           <#slot name="hint_text_slot" />
         </HintText>
+        <div class="inline-block mt-2 text-moon-12">
+          <ErrorTag :if={@use_error_tag && @is_error} />
+        </div>
       {/if}
     </Container>
     """
