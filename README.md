@@ -30,12 +30,6 @@ If `./run-locally-dev.sh` is not working, try the following steps:
 3. Try running `iex -S mix phx.server`
 4. Stop the command above, then try running `./run-locally-dev.sh`
 
-# Security issues
-
-Please do not publish this project, as it contains following security issues
-
-1. Figma importer contains Figma API token (for secret files)
-
 # Preferences to consider when writing code
 
 In writing code try to remember following rules:
