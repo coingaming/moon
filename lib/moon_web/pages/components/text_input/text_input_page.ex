@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       %{
         :name => 'type',
         :type =>
-          'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
+          'date | datetime-local | email | number | password | search | tel | text | url | time | url',
         :required => 'false',
         :default => 'text',
         :description => 'Different types of input'
