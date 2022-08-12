@@ -1,3 +1,31 @@
+## [2.24.4](https://github.com/coingaming/moon/compare/v2.24.3...v2.24.4) (2022-08-11)
+
+
+### Bug Fixes
+
+* deploy ([4afb41a](https://github.com/coingaming/moon/commit/4afb41a972122d19b0dccd362405a07736b45d7d))
+
+## [2.24.3](https://github.com/coingaming/moon/compare/v2.24.2...v2.24.3) (2022-08-11)
+
+
+### Bug Fixes
+
+* version ([56715d0](https://github.com/coingaming/moon/commit/56715d0f546d02dfcc5b98b3551f406b655ea599))
+
+## [2.24.2](https://github.com/coingaming/moon/compare/v2.24.1...v2.24.2) (2022-08-10)
+
+
+### Bug Fixes
+
+* Use changeset if preset to set error state. Use error tag ([#344](https://github.com/coingaming/moon/issues/344)) ([6ade950](https://github.com/coingaming/moon/commit/6ade950efc9439b84addf1c2de0718ec00438c55))
+
+## [2.24.1](https://github.com/coingaming/moon/compare/v2.24.0...v2.24.1) (2022-08-09)
+
+
+### Bug Fixes
+
+* add dynamic version number [MDS-186] ([#343](https://github.com/coingaming/moon/issues/343)) ([8743e56](https://github.com/coingaming/moon/commit/8743e560f5545843f6a66e802a3349544f6361d1))
+
 # [2.24.0](https://github.com/coingaming/moon/compare/v2.23.5...v2.24.0) (2022-08-09)
 
 
