@@ -185,9 +185,16 @@ defmodule Moon.Components.Select.SingleSelect do
     {/if}
     <InputContext {=assigns} :let={form: form, field: field}>
       <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
-        {Phoenix.HTML.Form.select(form, field, SelectHelpers.get_formatted_options(@options),
+        {Phoenix.HTML.Form.select(
+          form,
+          field,
+          SelectHelpers.get_formatted_options(
+            @options,
+            SelectHelpers.get_normalized_value(form, field, false, value: @value)
+          ),
           class: "hidden",
-          id: @id
+          id: @id,
+          prompt: @label
         )}
         <FieldBorder
           states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}

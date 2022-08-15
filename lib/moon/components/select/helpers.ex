@@ -1,10 +1,17 @@
 defmodule Moon.Components.Select.Helpers do
   @moduledoc false
 
-  def get_formatted_options(options) do
-    Enum.map(options, fn option ->
-      {option.label, option.value}
-    end)
+  def get_formatted_options(options, current_value \\ "") do
+    formatted_options =
+      Enum.map(options, fn option ->
+        {option.label, option.value}
+      end)
+
+    if current_value == "" do
+      [{"", ""}] ++ formatted_options
+    else
+      formatted_options
+    end
   end
 
   # this is copy-paste and a bit modified from: https://github.com/phoenixframework/phoenix_html/blob/v3.2.0/lib/phoenix_html/form.ex#L1272
