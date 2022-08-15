@@ -2,9 +2,10 @@ defmodule Moon.Components.Select.Helpers do
   @moduledoc false
 
   def get_formatted_options(options, current_value \\ "") do
-    formatted_options = Enum.map(options, fn option ->
-      {option.label, option.value}
-    end)
+    formatted_options =
+      Enum.map(options, fn option ->
+        {option.label, option.value}
+      end)
 
     if current_value == "" do
       [{"", ""}] ++ formatted_options
