@@ -160,7 +160,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
+                <SingleSelect id="user-roles-example-1" options={User.available_roles()} />
               </Field>
             </Form>
           </:example>
