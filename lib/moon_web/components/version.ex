@@ -8,12 +8,8 @@ defmodule MoonWeb.Components.Version do
     ~F"""
     <div class="flex text-moon-14 text-trunks-100 gap-2">
       <LogoMoonDesignShort height="1.5rem" width="1.5rem" />
-      <p>Version <span class="font-semibold">{get_version()}</span></p>
+      <p>Version <span class="font-semibold">25.0.2</span></p>
     </div>
     """
-  end
-
-  def get_version() do
-    File.read!("VERSION")
   end
 end
