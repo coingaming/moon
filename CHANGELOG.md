@@ -1,3 +1,10 @@
+## [2.24.6](https://github.com/coingaming/moon/compare/v2.24.5...v2.24.6) (2022-08-15)
+
+
+### Bug Fixes
+
+* remove VERSION file reading [MDS-186] ([#348](https://github.com/coingaming/moon/issues/348)) ([e654940](https://github.com/coingaming/moon/commit/e6549409f2b4d30f3e83cc2697721d17b2ee63b9))
+
 ## [2.24.5](https://github.com/coingaming/moon/compare/v2.24.4...v2.24.5) (2022-08-12)
 
 
