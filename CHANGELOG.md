@@ -1,3 +1,10 @@
+## [2.24.8](https://github.com/coingaming/moon/compare/v2.24.7...v2.24.8) (2022-08-15)
+
+
+### Bug Fixes
+
+* when no value selected, does not force first value ([#350](https://github.com/coingaming/moon/issues/350)) ([5a7291e](https://github.com/coingaming/moon/commit/5a7291e05e8452aaaaa9c0fde2e94ec158a3eaf8))
+
 ## [2.24.7](https://github.com/coingaming/moon/compare/v2.24.6...v2.24.7) (2022-08-15)
 
 
