@@ -4,7 +4,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   use Moon.StatefulComponent
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Password
-  alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.TextInput.ShowPassword
   alias Moon.Components.ErrorTag
@@ -12,7 +11,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   data password_shown, :boolean, default: false
   data password, :string, default: ""
 
-  slot hint_text_slot
+  slot default
 
   def render(assigns) do
     ~F"""
@@ -57,9 +56,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               {show_password_text}
             </ShowPassword>
           </div>
-          <HintText :if={slot_assigned?(:hint_text_slot)} {=is_error}>
-            <#slot name="hint_text_slot" />
-          </HintText>
+          <#slot />
           <div class="inline-block mt-2 text-moon-12">
             <ErrorTag :if={use_error_tag && is_error} />
           </div>
@@ -93,13 +90,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               {show_password_text}
             </ShowPassword>
           </div>
-          <div>
-          </div>
-          <HintText :if={slot_assigned?(:hint_text_slot)} {=is_error}>
-            <#slot name="hint_text_slot" />
-          </HintText>
-          <div class="inline-block mt-2 text-moon-12">
-            <ErrorTag :if={use_error_tag && is_error} />
+          <#slot />
+          <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error} >
+            <ErrorTag />
           </div>
         {/if}
       </Container>

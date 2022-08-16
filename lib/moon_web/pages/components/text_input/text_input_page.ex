@@ -406,7 +406,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                   <Field name={:password}>
                     <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag />
                   </Field>
-                  <div>
+                  <div class="pt-4">
                     <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
                   </div>
                 </TopToDown>
@@ -715,7 +715,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <Field name={:password}>
           <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag/>
         </Field>
-        <div>
+        <div class="pt-4">
           <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
         </div>
       </TopToDown>

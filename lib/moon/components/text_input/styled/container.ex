@@ -20,9 +20,7 @@ defmodule Moon.Components.TextInput.Container do
         "opacity-30 cursor-not-allowed": @disabled
       }
       id={@id}
-    >
-      <#slot />
-    </div>
+    ><#slot /></div>
     """
   end
 end

@@ -56,14 +56,20 @@ defmodule Moon.Components.TextInput.Input do
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
           Utils.get_size_styles(size),
-          get_class_left(
+          get_class_top_left(
             is_sharp_left_side,
-            is_sharp_top_side,
+            is_sharp_top_side
+          ),
+          get_class_bottom_left(
+            is_sharp_left_side,
             is_sharp_bottom_side
           ),
-          get_class_right(
+          get_class_top_right(
             is_sharp_right_side,
-            is_sharp_top_side,
+            is_sharp_top_side
+          ),
+          get_class_bottom_right(
+            is_sharp_right_side,
             is_sharp_bottom_side
           ),
           get_class_for_date_type(type, dir == "rtl"),
@@ -110,25 +116,41 @@ defmodule Moon.Components.TextInput.Input do
     end
   end
 
-  defp get_class_left(
+  defp get_class_top_left(
          is_sharp_left_side,
-         is_sharp_top_side,
-         is_sharp_bottom_side
+         is_sharp_top_side
        ) do
     cond do
       is_sharp_left_side || is_sharp_top_side -> "rounded-tl-none"
+      true -> ""
+    end
+  end
+
+  defp get_class_bottom_left(
+         is_sharp_left_side,
+         is_sharp_bottom_side
+       ) do
+    cond do
       is_sharp_left_side || is_sharp_bottom_side -> "rounded-bl-none"
       true -> ""
     end
   end
 
-  defp get_class_right(
+  defp get_class_top_right(
          is_sharp_right_side,
-         is_sharp_top_side,
-         is_sharp_bottom_side
+         is_sharp_top_side
        ) do
     cond do
       is_sharp_right_side || is_sharp_top_side -> "rounded-tr-none"
+      true -> ""
+    end
+  end
+
+  defp get_class_bottom_right(
+         is_sharp_right_side,
+         is_sharp_bottom_side
+       ) do
+    cond do
       is_sharp_right_side || is_sharp_bottom_side -> "rounded-br-none"
       true -> ""
     end

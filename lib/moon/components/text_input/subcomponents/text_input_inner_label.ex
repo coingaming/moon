@@ -4,11 +4,10 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   use Moon.StatelessComponent
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Input
-  alias Moon.Components.TextInput.HintText
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.ErrorTag
 
-  slot hint_text_slot
+  slot default
 
   def render(assigns) do
     ~F"""
@@ -42,11 +41,9 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
             {label}
           </label>
         </div>
-        <HintText :if={slot_assigned?(:hint_text_slot)} {=is_error}>
-          <#slot name="hint_text_slot" />
-        </HintText>
-        <div class="inline-block mt-2 text-moon-12">
-          <ErrorTag :if={use_error_tag && is_error} />
+        <#slot />
+        <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
+          <ErrorTag />
         </div>
       </Container>
     </Context>

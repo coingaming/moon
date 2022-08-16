@@ -6,6 +6,7 @@ defmodule Moon.Components.TextInput do
   alias Moon.Components.TextInput.TextInputInnerLabel
   alias Moon.Components.TextInput.TextInputPassword
   alias Surface.Components.Form.Input.InputContext
+  alias Moon.Components.TextInput.HintText
 
   prop id, :string
   prop size, :string, values: ["md", "lg", "xl"]
@@ -88,21 +89,21 @@ defmodule Moon.Components.TextInput do
 
         {#if @type == "password"}
           <TextInputPassword id={@id}>
-            <:hint_text_slot>
+            <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
-            </:hint_text_slot>
+            </HintText>
           </TextInputPassword>
         {#elseif @size == "xl"}
           <TextInputInnerLabel>
-            <:hint_text_slot>
+            <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
-            </:hint_text_slot>
+            </HintText>
           </TextInputInnerLabel>
         {#else}
           <TextInputBasic>
-            <:hint_text_slot>
+            <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
-            </:hint_text_slot>
+            </HintText>
           </TextInputBasic>
         {/if}
 
