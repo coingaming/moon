@@ -52,6 +52,7 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
       get={Moon.Components.TextInputGroup, dir: dir}
       get={Moon.Components.TextInputGroup, orientation: orientation}
     >
+    {#if slot_assigned?(:hint_text_slot)}
       <TextInput
         {=@id}
         {=size}
@@ -78,10 +79,38 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
         is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
         is_side_border_hidden={get_is_side_border_hidden(orientation)}
       >
-      <:hint_text_slot :if={slot_assigned?(:hint_text_slot)}>
-        <slot name="hint_text_slot" />
-      </:hint_text_slot>
+        <:hint_text_slot>
+          <slot name="hint_text_slot" />
+        </:hint_text_slot>
       </TextInput>
+    {#else}
+      <TextInput
+        {=@id}
+        {=size}
+        {=dir}
+        {=@type}
+        {=@placeholder}
+        {=@is_error}
+        {=@background_color}
+        {=@is_first}
+        {=@disabled}
+        {=@label}
+        {=@required}
+        {=@step}
+        {=@readonly}
+        {=@value}
+        {=@focus}
+        {=@keydown}
+        {=@keyup}
+        {=@blur}
+        {=@show_password_text}
+        is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+        is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+        is_sharp_top_side={get_is_sharp_top_side(orientation)}
+        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+        is_side_border_hidden={get_is_side_border_hidden(orientation)}
+      />
+    {/if}
     </Context>
     """
   end

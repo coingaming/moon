@@ -50,36 +50,65 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
       get={Moon.Components.TextInputGroup, dir: dir}
       get={Moon.Components.TextInputGroup, orientation: orientation}
     >
-      <TextInput
-        {=@id}
-        {=size}
-        {=dir}
-        {=@type}
-        {=@placeholder}
-        {=@is_error}
-        {=@background_color}
-        {=@disabled}
-        {=@label}
-        {=@required}
-        {=@step}
-        {=@readonly}
-        {=@value}
-        {=@focus}
-        {=@keydown}
-        {=@keyup}
-        {=@blur}
-        {=@show_password_text}
-        is_first
-        is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
-        is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
-        is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
-        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
-        is_side_border_hidden={get_is_side_border_hidden(orientation)}
-      >
-        <:hint_text_slot>
-          <slot name="hint_text_slot" />
-        </:hint_text_slot>
-      </TextInput>
+      {#if slot_assigned?(:hint_text_slot)}
+        <TextInput
+          {=@id}
+          {=size}
+          {=dir}
+          {=@type}
+          {=@placeholder}
+          {=@is_error}
+          {=@background_color}
+          {=@disabled}
+          {=@label}
+          {=@required}
+          {=@step}
+          {=@readonly}
+          {=@value}
+          {=@focus}
+          {=@keydown}
+          {=@keyup}
+          {=@blur}
+          {=@show_password_text}
+          is_first
+          is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+          is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+          is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
+          is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+          is_side_border_hidden={get_is_side_border_hidden(orientation)}
+        >
+          <:hint_text_slot>
+            <slot name="hint_text_slot" />
+          </:hint_text_slot>
+        </TextInput>
+      {#else}
+        <TextInput
+          {=@id}
+          {=size}
+          {=dir}
+          {=@type}
+          {=@placeholder}
+          {=@is_error}
+          {=@background_color}
+          {=@disabled}
+          {=@label}
+          {=@required}
+          {=@step}
+          {=@readonly}
+          {=@value}
+          {=@focus}
+          {=@keydown}
+          {=@keyup}
+          {=@blur}
+          {=@show_password_text}
+          is_first
+          is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+          is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+          is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
+          is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+          is_side_border_hidden={get_is_side_border_hidden(orientation)}
+        />
+      {/if}
     </Context>
     """
   end
