@@ -49,13 +49,13 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
           <ExampleAndCode id="input_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-                <TextInputGroup :let={group_info: group_info}>
-                  <FirstInput placeholder="Country" group_info={group_info} />
-                  <SecondInput placeholder="Phone" group_info={group_info} />
+                <TextInputGroup>
+                  <FirstInput placeholder="Country" />
+                  <SecondInput placeholder="Phone" />
                 </TextInputGroup>
-                <TextInputGroup orientation="vertical" :let={group_info: group_info}>
-                  <FirstInput placeholder="Country" group_info={group_info} />
-                  <SecondInput placeholder="Phone" group_info={group_info} />
+                <TextInputGroup orientation="vertical" dir="rtl" >
+                  <FirstInput placeholder="Country" />
+                  <SecondInput placeholder="Phone" />
                 </TextInputGroup>
               </LeftToRight>
             </:example>

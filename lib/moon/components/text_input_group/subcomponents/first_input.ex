@@ -40,19 +40,22 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
 
   prop use_error_tag, :boolean
 
-  prop group_info, :any, required: true
-
   slot hint_text_slot
 
   def render(assigns) do
     ~F"""
-    <div>
+    <Context
+      get={Moon.Components.TextInputGroup, dir: dir}
+      get={Moon.Components.TextInputGroup, orientation: orientation}
+      get={Moon.Components.TextInputGroup, background_color: background_color}
+    >
+    --{orientation}--
     {#if slot_assigned?(:hint_text_slot)}
       <TextInput
         {=@id}
         size="xl"
-        dir={@group_info.dir}
-        background_color={@group_info.background_color}
+        {=dir}
+        {=background_color}
         {=@type}
         {=@placeholder}
         {=@is_error}
@@ -68,11 +71,11 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
         {=@blur}
         {=@show_password_text}
         is_first
-        is_sharp_right_side={get_is_sharp_right_side(@group_info.orientation, @group_info.dir)}
-        is_sharp_left_side={get_is_sharp_left_side(@group_info.orientation, @group_info.dir)}
-        is_sharp_bottom_side={get_is_sharp_bottom_side(@group_info.orientation)}
-        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@group_info.orientation)}
-        is_side_border_hidden={get_is_side_border_hidden(@group_info.orientation)}
+        is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+        is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+        is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
+        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+        is_side_border_hidden={get_is_side_border_hidden(orientation)}
       >
         <:hint_text_slot>
           <slot name="hint_text_slot" />
@@ -82,8 +85,8 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
       <TextInput
         {=@id}
         size="xl"
-        dir={@group_info.dir}
-        background_color={@group_info.background_color}
+        {=dir}
+        {=background_color}
         {=@type}
         {=@placeholder}
         {=@is_error}
@@ -99,14 +102,14 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
         {=@blur}
         {=@show_password_text}
         is_first
-        is_sharp_right_side={get_is_sharp_right_side(@group_info.orientation, @group_info.dir)}
-        is_sharp_left_side={get_is_sharp_left_side(@group_info.orientation, @group_info.dir)}
-        is_sharp_bottom_side={get_is_sharp_bottom_side(@group_info.orientation)}
-        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@group_info.orientation)}
-        is_side_border_hidden={get_is_side_border_hidden(@group_info.orientation)}
+        is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+        is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+        is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
+        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+        is_side_border_hidden={get_is_side_border_hidden(orientation)}
       />
     {/if}
-    </div>
+    </Context>
     """
   end
 

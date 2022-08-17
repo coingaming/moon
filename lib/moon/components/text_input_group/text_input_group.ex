@@ -16,14 +16,18 @@ defmodule Moon.Components.TextInputGroup do
 
   def render(assigns) do
     ~F"""
-    <Container>
-      <#slot name="first_input"
-        :args={group_info: %{orientation: @orientation, dir: @dir, background_color: @background_color}}
-      />
-      <#slot name="second_input"
-        :args={group_info: %{orientation: @orientation, dir: @dir, background_color: @background_color}}
-      />
-    </Container>
+    <Context
+      put={__MODULE__, orientation: @orientation}
+      put={__MODULE__, dir: @dir}
+      put={__MODULE__, background_color: @background_color}
+    >
+      **{@orientation}**
+      **{@dir}**
+      <Container>
+        <#slot name="first_input" />
+        <#slot name="second_input" />
+      </Container>
+    </Context>
     """
   end
 end
