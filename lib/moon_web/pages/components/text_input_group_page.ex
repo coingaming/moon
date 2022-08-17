@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
   alias Moon.Components.TextInputGroup
   alias Moon.Components.TextInputGroup.FirstInput
   alias Moon.Components.TextInputGroup.SecondInput
+  alias MoonWeb.Components.ComponentPageDescription
 
   data breadcrumbs, :any,
     default: [
@@ -36,22 +37,32 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-      <Heading size={56} class="mb-4">Text Input</Heading>
+        <Heading size={56} class="mb-4">Text Input Group</Heading>
+        <ComponentPageDescription>
+          <p>
+          !!! TextInput Group is supported only in size `xlarge`.
+          </p>
+        </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode id="input_020" title="Sizes">
-          <:example>
-            <LeftToRight class="justify-between w-full items-end">
-              <TextInputGroup>
-                <FirstInput />
-                <SecondInput />
-              </TextInputGroup>
-            </LeftToRight>
-          </:example>
 
-          <:code>{text_input_group_1_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <Context put={theme_class: @theme_name}>
+          <ExampleAndCode id="input_1" title="Default">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end">
+                <TextInputGroup :let={group_info: group_info}>
+                  <FirstInput placeholder="Country" group_info={group_info} />
+                  <SecondInput placeholder="Phone" group_info={group_info} />
+                </TextInputGroup>
+                <TextInputGroup orientation="vertical" :let={group_info: group_info}>
+                  <FirstInput placeholder="Country" group_info={group_info} />
+                  <SecondInput placeholder="Phone" group_info={group_info} />
+                </TextInputGroup>
+              </LeftToRight>
+            </:example>
+
+            <:code>{text_input_group_1_code()}</:code>
+          </ExampleAndCode>
+        </Context>
       </TopToDown>
     </Page>
     """

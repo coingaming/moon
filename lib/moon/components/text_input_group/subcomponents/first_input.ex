@@ -23,7 +23,6 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
 
   prop placeholder, :string
   prop is_error, :boolean
-  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
   prop disabled, :boolean
   prop label, :string
   prop required, :boolean
@@ -41,81 +40,78 @@ defmodule Moon.Components.TextInputGroup.FirstInput do
 
   prop use_error_tag, :boolean
 
+  prop group_info, :any, required: true
+
   slot hint_text_slot
 
   def render(assigns) do
     ~F"""
-    <Context
-      get={Moon.Components.TextInputGroup, size: size}
-      get={Moon.Components.TextInputGroup, dir: dir}
-      get={Moon.Components.TextInputGroup, orientation: orientation}
-    >
-      {#if slot_assigned?(:hint_text_slot)}
-        <TextInput
-          {=@id}
-          {=size}
-          {=dir}
-          {=@type}
-          {=@placeholder}
-          {=@is_error}
-          {=@background_color}
-          {=@disabled}
-          {=@label}
-          {=@required}
-          {=@step}
-          {=@readonly}
-          {=@value}
-          {=@focus}
-          {=@keydown}
-          {=@keyup}
-          {=@blur}
-          {=@show_password_text}
-          is_first
-          is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
-          is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
-          is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
-          is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
-          is_side_border_hidden={get_is_side_border_hidden(orientation)}
-        >
-          <:hint_text_slot>
-            <slot name="hint_text_slot" />
-          </:hint_text_slot>
-        </TextInput>
-      {#else}
-        <TextInput
-          {=@id}
-          {=size}
-          {=dir}
-          {=@type}
-          {=@placeholder}
-          {=@is_error}
-          {=@background_color}
-          {=@disabled}
-          {=@label}
-          {=@required}
-          {=@step}
-          {=@readonly}
-          {=@value}
-          {=@focus}
-          {=@keydown}
-          {=@keyup}
-          {=@blur}
-          {=@show_password_text}
-          is_first
-          is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
-          is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
-          is_sharp_bottom_side={get_is_sharp_bottom_side(orientation)}
-          is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
-          is_side_border_hidden={get_is_side_border_hidden(orientation)}
-        />
-      {/if}
-    </Context>
+    <div>
+    {#if slot_assigned?(:hint_text_slot)}
+      <TextInput
+        {=@id}
+        size="xl"
+        dir={@group_info.dir}
+        background_color={@group_info.background_color}
+        {=@type}
+        {=@placeholder}
+        {=@is_error}
+        {=@disabled}
+        {=@label}
+        {=@required}
+        {=@step}
+        {=@readonly}
+        {=@value}
+        {=@focus}
+        {=@keydown}
+        {=@keyup}
+        {=@blur}
+        {=@show_password_text}
+        is_first
+        is_sharp_right_side={get_is_sharp_right_side(@group_info.orientation, @group_info.dir)}
+        is_sharp_left_side={get_is_sharp_left_side(@group_info.orientation, @group_info.dir)}
+        is_sharp_bottom_side={get_is_sharp_bottom_side(@group_info.orientation)}
+        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@group_info.orientation)}
+        is_side_border_hidden={get_is_side_border_hidden(@group_info.orientation)}
+      >
+        <:hint_text_slot>
+          <slot name="hint_text_slot" />
+        </:hint_text_slot>
+      </TextInput>
+    {#else}
+      <TextInput
+        {=@id}
+        size="xl"
+        dir={@group_info.dir}
+        background_color={@group_info.background_color}
+        {=@type}
+        {=@placeholder}
+        {=@is_error}
+        {=@disabled}
+        {=@label}
+        {=@required}
+        {=@step}
+        {=@readonly}
+        {=@value}
+        {=@focus}
+        {=@keydown}
+        {=@keyup}
+        {=@blur}
+        {=@show_password_text}
+        is_first
+        is_sharp_right_side={get_is_sharp_right_side(@group_info.orientation, @group_info.dir)}
+        is_sharp_left_side={get_is_sharp_left_side(@group_info.orientation, @group_info.dir)}
+        is_sharp_bottom_side={get_is_sharp_bottom_side(@group_info.orientation)}
+        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@group_info.orientation)}
+        is_side_border_hidden={get_is_side_border_hidden(@group_info.orientation)}
+      />
+    {/if}
+    </div>
     """
   end
 
   defp get_is_sharp_right_side(orientation, dir) do
-    # orientation == "horizontal" && !is_rtl(dir)
-    true
+    orientation == "horizontal" && !is_rtl(dir)
   end
 
   defp get_is_sharp_left_side(orientation, dir) do

@@ -9,7 +9,7 @@ defmodule Moon.Components.TextInput do
   alias Moon.Components.TextInput.HintText
 
   prop id, :string
-  prop size, :string, values: ["md", "lg", "xl"]
+  prop size, :string, values: ["md", "lg", "xl"], default: "md"
 
   prop type, :string,
     values: [
