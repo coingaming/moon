@@ -46,7 +46,7 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
 
 
         <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="input_1" title="Default">
+          <ExampleAndCode id="group_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
 
@@ -64,6 +64,25 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
 
             <:code>{text_input_group_1_code()}</:code>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_6" title="RTL">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end">
+
+                <TextInputGroup dir="rtl">
+                  <FirstInput placeholder="Country" t_dir="rtl" />
+                  <SecondInput placeholder="Phone" t_dir="rtl"/>
+                </TextInputGroup>
+
+                <TextInputGroup orientation="vertical" dir="rtl">
+                  <FirstInput placeholder="Country" t_orientation="vertical" t_dir="rtl"/>
+                  <SecondInput placeholder="Phone" t_orientation="vertical" t_dir="rtl"/>
+                </TextInputGroup>
+              </LeftToRight>
+            </:example>
+
+            <:code>{text_input_group_6_code()}</:code>
+          </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
@@ -71,6 +90,11 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
   end
 
   defp text_input_group_1_code() do
+    """
+    """
+  end
+
+  defp text_input_group_6_code() do
     """
     """
   end
