@@ -9,10 +9,12 @@ defmodule Moon.Components.TextInputGroup do
     values: ["horizontal", "vertical"]
 
   prop dir, :string, default: "ltr", values: ["ltr", "rtl"]
-  prop background_color, :string, default: "bg-gohan-100", values: Moon.colors()
+  prop background_color, :string, default: "gohan-100", values: Moon.colors()
 
-  slot first_input, required: true, args: [:group_info]
-  slot second_input, required: true, args: [:group_info]
+  # todo make required
+  slot first_input, args: [:group_info]
+  # todo make required
+  slot second_input, args: [:group_info]
 
   def render(assigns) do
     ~F"""
@@ -21,8 +23,6 @@ defmodule Moon.Components.TextInputGroup do
       put={__MODULE__, dir: @dir}
       put={__MODULE__, background_color: @background_color}
     >
-      **{@orientation}**
-      **{@dir}**
       <Container>
         <#slot name="first_input" />
         <#slot name="second_input" />

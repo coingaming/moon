@@ -49,13 +49,15 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
           <ExampleAndCode id="input_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
+
                 <TextInputGroup>
                   <FirstInput placeholder="Country" />
                   <SecondInput placeholder="Phone" />
                 </TextInputGroup>
-                <TextInputGroup orientation="vertical" dir="rtl" >
-                  <FirstInput placeholder="Country" />
-                  <SecondInput placeholder="Phone" />
+
+                <TextInputGroup orientation="vertical" >
+                  <FirstInput placeholder="Country" t_orientation="vertical" />
+                  <SecondInput placeholder="Phone" t_orientation="vertical" />
                 </TextInputGroup>
               </LeftToRight>
             </:example>

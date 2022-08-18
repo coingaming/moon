@@ -74,6 +74,7 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, step: @step}
         put={__MODULE__, is_sharp_left_side: @is_sharp_left_side}
         put={__MODULE__, is_sharp_right_side: @is_sharp_right_side}
+        put={__MODULE__, is_sharp_bottom_side: @is_sharp_bottom_side}
         put={__MODULE__, is_sharp_top_side: @is_sharp_top_side}
         put={__MODULE__, is_top_bottom_border_hidden: @is_top_bottom_border_hidden}
         put={__MODULE__, is_side_border_hidden: @is_side_border_hidden}

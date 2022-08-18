@@ -21,7 +21,7 @@ defmodule Moon.Components.TextInputGroup.Container do
           get_display_for_orientation(orientation),
           get_radius_for_size(size),
           get_class_for_orientation(orientation, is_error),
-          background_color: background_color
+          "bg-#{background_color}": background_color
         }
       >
         <slot />
@@ -46,13 +46,13 @@ defmodule Moon.Components.TextInputGroup.Container do
     end
   end
 
-  defp get_class_for_orientation(is_error, orientation) do
+  defp get_class_for_orientation(orientation, is_error) do
     cond do
       orientation == "horizontal" && !is_error ->
-        "after:content-[''] after:absolute after:top-0 after:bottom-0 after:w-px after:left-1/2 after:translate-x-[-50%] after:bg-beerus after:x-[3] hover:after:hidden focus-within:after:hidden"
+        "after:content-[''] after:z-20 after:absolute after:top-0 after:bottom-0 after:w-px after:left-1/2 after:translate-x-[-50%] after:bg-beerus-100 after:x-[3] hover:after:hidden focus-within:after:hidden"
 
       !is_error ->
-        "after:content-[''] after:absolute after:top-1/2 after:bottom-0 after:w-full after:h-px after:left-0 after:translate-y-[-50%] after:bg-beerus after:x-[3] hover:after:hidden focus-within:after:hidden"
+        "after:content-[''] after:z-20 after:absolute after:top-1/2 after:bottom-0 after:w-full after:h-px after:left-0 after:translate-y-[-50%] after:bg-beerus-100 after:x-[3] hover:after:hidden focus-within:after:hidden"
 
       true ->
         ""
