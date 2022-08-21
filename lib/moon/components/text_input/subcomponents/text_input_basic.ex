@@ -23,6 +23,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
     default: "text"
 
   prop id, :string
+  prop field, :atom
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
   prop is_error, :boolean

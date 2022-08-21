@@ -9,6 +9,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   alias Moon.Components.TextInput.ShowPassword
   alias Moon.Components.ErrorTag
 
+  prop field, :atom
+  prop class, :css_class
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
   prop is_error, :boolean
@@ -22,12 +24,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop readonly, :boolean
   prop value, :string
 
-  prop is_sharp_left_side, :boolean
-  prop is_sharp_right_side, :boolean
-  prop is_sharp_top_side, :boolean
-  prop is_sharp_bottom_side, :boolean
-  prop is_top_bottom_border_hidden, :boolean
-  prop is_side_border_hidden, :boolean
   prop show_password_text, :string, default: "Show"
 
   prop focus, :event

@@ -24,6 +24,8 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
     default: "text"
 
   prop id, :string
+  prop class, :css_class
+  prop field, :atom
   prop size, :string, values: ["md", "lg", "xl"]
   prop placeholder, :string
   prop is_error, :boolean
@@ -43,7 +45,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   prop is_sharp_bottom_side, :boolean
   prop is_top_bottom_border_hidden, :boolean
   prop is_side_border_hidden, :boolean
-
   prop focus, :event
   prop keydown, :event
   prop keyup, :event
@@ -63,6 +64,8 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
         "bg-#{@background_color}": @background_color
       }>
         <Input
+          class={@class}
+          field={@field}
           is_error={@is_error}
           size={@size}
           type={@type}

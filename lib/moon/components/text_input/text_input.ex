@@ -8,6 +8,7 @@ defmodule Moon.Components.TextInput do
   alias Surface.Components.Form.Input.InputContext
 
   prop id, :string
+  prop field, :atom
   prop size, :string, values: ["md", "lg", "xl"]
 
   prop type, :string,
@@ -57,88 +58,97 @@ defmodule Moon.Components.TextInput do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      {#if @type == "password"}
-        <TextInputPassword
-          id={@id}
-          disabled={@disabled}
-          dir={@dir}
-          label={@label}
-          is_error={has_error(@is_error, form, field)}
-          size={@size}
-          step={@step}
-          required={@required}
-          placeholder={@placeholder}
-          readonly={@readonly}
-          value={@value}
-          background_color={@background_color}
-          is_sharp_left_side={@is_sharp_left_side}
-          is_sharp_right_side={@is_sharp_right_side}
-          is_sharp_top_side={@is_sharp_top_side}
-          is_sharp_bottom_side={@is_sharp_bottom_side}
-          is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
-          is_side_border_hidden={@is_side_border_hidden}
-          is_first={@is_first}
-          use_error_tag={@use_error_tag}
-        >
-          <:hint_text_slot>
-            <#slot name="hint_text_slot" />
-          </:hint_text_slot>
-        </TextInputPassword>
-      {#elseif @size == "xl"}
-        <TextInputInnerLabel
-          disabled={@disabled}
-          dir={@dir}
-          label={@label}
-          is_error={has_error(@is_error, form, field)}
-          size={@size}
-          type={@type}
-          step={@step}
-          required={@required}
-          placeholder={@placeholder}
-          readonly={@readonly}
-          value={@value}
-          background_color={@background_color}
-          is_sharp_left_side={@is_sharp_left_side}
-          is_sharp_right_side={@is_sharp_right_side}
-          is_sharp_top_side={@is_sharp_top_side}
-          is_sharp_bottom_side={@is_sharp_bottom_side}
-          is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
-          is_side_border_hidden={@is_side_border_hidden}
-          is_first={@is_first}
-          use_error_tag={@use_error_tag}
-        >
-          <:hint_text_slot>
-            <#slot name="hint_text_slot" />
-          </:hint_text_slot>
-        </TextInputInnerLabel>
-      {#else}
-        <TextInputBasic
-          disabled={@disabled}
-          dir={@dir}
-          label={@label}
-          is_error={has_error(@is_error, form, field)}
-          size={@size}
-          type={@type}
-          step={@step}
-          readonly={@readonly}
-          value={@value}
-          required={@required}
-          placeholder={@placeholder}
-          background_color={@background_color}
-          is_sharp_left_side={@is_sharp_left_side}
-          is_sharp_right_side={@is_sharp_right_side}
-          is_sharp_top_side={@is_sharp_top_side}
-          is_sharp_bottom_side={@is_sharp_bottom_side}
-          is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
-          is_side_border_hidden={@is_side_border_hidden}
-          is_first={@is_first}
-          use_error_tag={@use_error_tag}
-        >
-          <:hint_text_slot>
-            <#slot name="hint_text_slot" />
-          </:hint_text_slot>
-        </TextInputBasic>
-      {/if}
+      <Context get={Moon.Components.InputGroup, in_input_group: in_input_group, orientation: orientation}>
+        in_input_group: {in_input_group}<br />
+        orientation: {orientation}<br />
+        {#if @type == "password"}
+          <TextInputPassword
+            id={@id}
+            field={@field}
+            disabled={@disabled}
+            dir={@dir}
+            label={@label}
+            is_error={has_error(@is_error, form, field)}
+            size={@size}
+            step={@step}
+            required={@required}
+            placeholder={@placeholder}
+            readonly={@readonly}
+            value={@value}
+            background_color={@background_color}
+            is_sharp_left_side={@is_sharp_left_side}
+            is_sharp_right_side={@is_sharp_right_side}
+            is_sharp_top_side={@is_sharp_top_side}
+            is_sharp_bottom_side={@is_sharp_bottom_side}
+            is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+            is_side_border_hidden={@is_side_border_hidden}
+            class={"border-none"}
+            use_error_tag={@use_error_tag}
+          >
+            <:hint_text_slot>
+              <#slot name="hint_text_slot" />
+            </:hint_text_slot>
+          </TextInputPassword>
+        {#elseif @size == "xl"}
+          <TextInputInnerLabel
+            id={@id}
+            field={@field}
+            disabled={@disabled}
+            dir={@dir}
+            label={@label}
+            is_error={has_error(@is_error, form, field)}
+            size={@size}
+            type={@type}
+            step={@step}
+            required={@required}
+            placeholder={@placeholder}
+            readonly={@readonly}
+            value={@value}
+            background_color={@background_color}
+            is_sharp_left_side={@is_sharp_left_side}
+            is_sharp_right_side={@is_sharp_right_side}
+            is_sharp_top_side={@is_sharp_top_side}
+            is_sharp_bottom_side={@is_sharp_bottom_side}
+            is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+            is_side_border_hidden={@is_side_border_hidden}
+            is_first={@is_first}
+            use_error_tag={@use_error_tag}
+          >
+            <:hint_text_slot>
+              <#slot name="hint_text_slot" />
+            </:hint_text_slot>
+          </TextInputInnerLabel>
+        {#else}
+          <TextInputBasic
+            id={@id}
+            field={@field}
+            disabled={@disabled}
+            dir={@dir}
+            label={@label}
+            is_error={has_error(@is_error, form, field)}
+            size={@size}
+            type={@type}
+            step={@step}
+            readonly={@readonly}
+            value={@value}
+            required={@required}
+            placeholder={@placeholder}
+            background_color={@background_color}
+            is_sharp_left_side={@is_sharp_left_side}
+            is_sharp_right_side={@is_sharp_right_side}
+            is_sharp_top_side={@is_sharp_top_side}
+            is_sharp_bottom_side={@is_sharp_bottom_side}
+            is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
+            is_side_border_hidden={@is_side_border_hidden}
+            is_first={@is_first}
+            use_error_tag={@use_error_tag}
+          >
+            <:hint_text_slot>
+              <#slot name="hint_text_slot" />
+            </:hint_text_slot>
+          </TextInputBasic>
+        {/if}
+      </Context>
     </InputContext>
     """
   end
