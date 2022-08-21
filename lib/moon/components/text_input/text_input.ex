@@ -59,8 +59,8 @@ defmodule Moon.Components.TextInput do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       <Context get={Moon.Components.InputGroup, in_input_group: in_input_group, orientation: orientation}>
-        in_input_group: {in_input_group}<br />
-        orientation: {orientation}<br />
+        in_input_group: {in_input_group}<br>
+        orientation: {orientation}<br>
         {#if @type == "password"}
           <TextInputPassword
             id={@id}
@@ -82,7 +82,7 @@ defmodule Moon.Components.TextInput do
             is_sharp_bottom_side={@is_sharp_bottom_side}
             is_top_bottom_border_hidden={@is_top_bottom_border_hidden}
             is_side_border_hidden={@is_side_border_hidden}
-            class={"border-none"}
+            class="border-none"
             use_error_tag={@use_error_tag}
           >
             <:hint_text_slot>
