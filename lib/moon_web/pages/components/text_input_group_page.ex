@@ -12,6 +12,8 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
   alias Moon.Components.TextInputGroup.FirstInput
   alias Moon.Components.TextInputGroup.SecondInput
   alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias Moon.Components.Form
 
   data breadcrumbs, :any,
     default: [
@@ -26,10 +28,15 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
     ]
 
   def mount(params, _session, socket) do
+    user = %User{}
+    user_changeset = User.changeset(user, %{})
+
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__
+       active_page: __MODULE__,
+       user: user,
+       user_changeset: user_changeset
      )}
   end
 
@@ -83,10 +90,49 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
 
             <:code>{text_input_group_6_code()}</:code>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_10" title="With Field">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end">
+
+              <Form
+                for={@user_changeset}
+                change="register_form_update"
+                submit="register_form_submit"
+                autocomplete="off"
+              >
+                <TextInputGroup>
+                  <FirstInput placeholder="Username" field={:username} />
+                  <SecondInput placeholder="Password" id="password" type="password" field={:password} />
+                </TextInputGroup>
+
+              </Form>
+              </LeftToRight>
+            </:example>
+
+            <:code>{text_input_group_10_code()}</:code>
+          </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
     """
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
+  def handle_event("register_form_update", params, socket) do
+    user_changeset = User.changeset(socket.assigns.user, params["user"])
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("register_form_submit", params, socket) do
+    user_changeset =
+      User.changeset(socket.assigns.user, params["user"]) |> Map.merge(%{action: :insert})
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   defp text_input_group_1_code() do
@@ -95,6 +141,11 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
   end
 
   defp text_input_group_6_code() do
+    """
+    """
+  end
+
+  defp text_input_group_10_code() do
     """
     """
   end

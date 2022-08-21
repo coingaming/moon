@@ -57,8 +57,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             </ShowPassword>
           </div>
           <#slot />
-          <div class="inline-block mt-2 text-moon-12">
-            <ErrorTag :if={use_error_tag && is_error} />
+          <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
+            <ErrorTag />
           </div>
         {#else}
           <label

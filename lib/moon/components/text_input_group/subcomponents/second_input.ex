@@ -50,6 +50,8 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
 
   prop use_error_tag, :boolean
 
+  prop field, :atom
+
   slot hint_text_slot
 
   def render(assigns) do
@@ -61,69 +63,164 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
       get={Moon.Components.TextInputGroup, background_color: background_color}
     >
     {#if slot_assigned?(:hint_text_slot)}
-      <TextInput
-        {=@id}
-        size="xl"
-        {=@type}
-        {=@placeholder}
-        {=@is_error}
-        {=@is_first}
-        {=@disabled}
-        {=@label}
-        {=@required}
-        {=@step}
-        {=@readonly}
-        {=@value}
-        {=@focus}
-        {=@keydown}
-        {=@keyup}
-        {=@blur}
-        {=@show_password_text}
-
-        is_sharp_right_side={get_is_sharp_right_side(@t_orientation, @t_dir)}
-        is_sharp_left_side={get_is_sharp_left_side(@t_orientation, @t_dir)}
-        is_sharp_top_side={get_is_sharp_top_side(@t_orientation)}
-        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@t_orientation)}
-        is_side_border_hidden={get_is_side_border_hidden(@t_orientation)}
-
-        background_color={@t_background_color}
-        dir={@t_dir}
-      >
-        <:hint_text_slot>
-          <slot name="hint_text_slot" />
-        </:hint_text_slot>
-      </TextInput>
+      {get_input_with_hint(
+        assigns,
+        @id,
+        @type,
+        @placeholder,
+        @is_error,
+        @is_first,
+        @disabled,
+        @label,
+        @required,
+        @step,
+        @readonly,
+        @value,
+        @focus,
+        @keydown,
+        @keyup,
+        @blur,
+        @show_password_text,
+        @t_orientation,
+        @t_dir,
+        @t_background_color
+      )}
     {#else}
-      <TextInput
-        {=@id}
-        size="xl"
-        {=@type}
-        {=@placeholder}
-        {=@is_error}
-        {=@is_first}
-        {=@disabled}
-        {=@label}
-        {=@required}
-        {=@step}
-        {=@readonly}
-        {=@value}
-        {=@focus}
-        {=@keydown}
-        {=@keyup}
-        {=@blur}
-        {=@show_password_text}
-        is_sharp_right_side={get_is_sharp_right_side(@t_orientation, @t_dir)}
-        is_sharp_left_side={get_is_sharp_left_side(@t_orientation, @t_dir)}
-        is_sharp_top_side={get_is_sharp_top_side(@t_orientation)}
-        is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(@t_orientation)}
-        is_side_border_hidden={get_is_side_border_hidden(@t_orientation)}
-
-        background_color={@t_background_color}
-        dir={@t_dir}
-      />
+      {get_input(
+        assigns,
+        @id,
+        @type,
+        @placeholder,
+        @is_error,
+        @is_first,
+        @disabled,
+        @label,
+        @required,
+        @step,
+        @readonly,
+        @value,
+        @focus,
+        @keydown,
+        @keyup,
+        @blur,
+        @show_password_text,
+        @t_orientation,
+        @t_dir,
+        @t_background_color
+      )}
     {/if}
     </Context>
     </div>
+    """
+  end
+
+  defp get_input(
+         assigns,
+         id,
+         type,
+         placeholder,
+         is_error,
+         is_first,
+         disabled,
+         label,
+         required,
+         step,
+         readonly,
+         value,
+         focus,
+         keydown,
+         keyup,
+         blur,
+         show_password_text,
+         orientation,
+         dir,
+         background_color
+       ) do
+    ~F"""
+    <TextInput
+      {=id}
+      size="xl"
+      {=type}
+      {=placeholder}
+      {=is_error}
+      {=is_first}
+      {=disabled}
+      {=label}
+      {=required}
+      {=step}
+      {=readonly}
+      {=value}
+      {=focus}
+      {=keydown}
+      {=keyup}
+      {=blur}
+      {=show_password_text}
+      is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+      is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+      is_sharp_top_side={get_is_sharp_top_side(orientation)}
+      is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+      is_side_border_hidden={get_is_side_border_hidden(orientation)}
+
+      {=background_color}
+      {=dir}
+    />
+    """
+  end
+
+  defp get_input_with_hint(
+         assigns,
+         id,
+         type,
+         placeholder,
+         is_error,
+         is_first,
+         disabled,
+         label,
+         required,
+         step,
+         readonly,
+         value,
+         focus,
+         keydown,
+         keyup,
+         blur,
+         show_password_text,
+         orientation,
+         dir,
+         background_color
+       ) do
+    ~F"""
+    <TextInput
+      {=id}
+      size="xl"
+      {=type}
+      {=placeholder}
+      {=is_error}
+      {=is_first}
+      {=disabled}
+      {=label}
+      {=required}
+      {=step}
+      {=readonly}
+      {=value}
+      {=focus}
+      {=keydown}
+      {=keyup}
+      {=blur}
+      {=show_password_text}
+      is_sharp_right_side={get_is_sharp_right_side(orientation, dir)}
+      is_sharp_left_side={get_is_sharp_left_side(orientation, dir)}
+      is_sharp_top_side={get_is_sharp_top_side(orientation)}
+      is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
+      is_side_border_hidden={get_is_side_border_hidden(orientation)}
+
+      {=background_color}
+      {=dir}
+    >
+        <:hint_text_slot>
+          <slot name="hint_text_slot" />
+        </:hint_text_slot>
+    </TextInput>
     """
   end
 
