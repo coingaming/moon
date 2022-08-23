@@ -57,7 +57,7 @@ defmodule Moon.Components.TextInput do
 
   slot hint_text_slot
 
-  prop input_group_class, :string, default: ""
+  prop class, :string, default: ""
 
   def render(assigns) do
     ~F"""
@@ -96,7 +96,7 @@ defmodule Moon.Components.TextInput do
             </HintText>
           </TextInputPassword>
         {#elseif @size == "xl"}
-          <TextInputInnerLabel input_group_class={@input_group_class}>
+          <TextInputInnerLabel {=@class}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
