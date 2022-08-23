@@ -7,6 +7,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.ErrorTag
 
+  prop input_group_class, :string, default: ""
   slot default
 
   def render(assigns) do
@@ -19,10 +20,9 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
-      get={Moon.Components.InputGroup, input_group_class: input_group_class}
     >
 
-      <Container disabled={disabled} size={size} class={input_group_class}>
+      <Container disabled={disabled} size={size} class={@input_group_class}>
         <div class={
           "w-full max-w-full relative",
           Utils.get_border_radius(size),

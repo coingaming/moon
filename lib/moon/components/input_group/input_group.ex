@@ -11,7 +11,7 @@ defmodule Moon.Components.InputGroup do
   prop dir, :string, default: "ltr", values: ["ltr", "rtl"]
   prop background_color, :string, default: "gohan-100", values: Moon.colors()
 
-  slot default
+  slot default, args: [:input_group_class]
 
   def render(assigns) do
     ~F"""
@@ -19,12 +19,10 @@ defmodule Moon.Components.InputGroup do
       put={__MODULE__, orientation: @orientation}
       put={__MODULE__, dir: @dir}
       put={__MODULE__, background_color: @background_color}
-      put={__MODULE__, is_in_group: true}
-      put={__MODULE__, input_group_class: get_class_input_group(@orientation, @dir)}
-
+      put={__MODULE__, is_in_input_group: true}
     >
       <Container>
-        <#slot />
+        <#slot :args={input_group_class: get_class_input_group(@orientation, @dir)} />
       </Container>
     </Context>
     """
@@ -33,13 +31,20 @@ defmodule Moon.Components.InputGroup do
   defp get_class_input_group(orientation, dir) do
     cond do
       orientation == "horizontal" && dir == "ltr" ->
-        "first:[&*input]:rounded-tr-none first:[&*input]:rounded-br-none first:[&*input]:input-rsb-hidden last:[&*input]:rounded-tl-none last:[&*input]:rounded-bl-none last:[&*input]:input-lsb-hidden"
+        "
+        [&:first-child>div>input]:rounded-tr-none hover:[&:first-child>div>input]:rounded-moon-i-md
+        [&:first-child>div>input]:rounded-br-none hover:[&:first-child>div>input]:rounded-moon-i-md
+        [&:first-child>div>input]:input-rsb-hidden
+        [&:last-child>div>input]:rounded-tl-none hover:[&:last-child>div>input]:rounded-moon-i-md
+        [&:last-child>div>input]:rounded-bl-none hover:[&:last-child>div>input]:rounded-moon-i-md
+        [&:last-child>div>input]:input-lsb-hidden
+        "
 
       orientation == "horizontal" && dir == "rtl" ->
-        "first:[&*input]:rounded-tl-none first:[&*input]:rounded-bl-none first:[&*input]:input-lsb-hidden last:[&*input]:rounded-tr-none last:[&*input]:rounded-br-none last:[&*input]:input-rsb-hidden"
+        "first:[&>div>input]:rounded-tl-none first:[&>div>input]:rounded-bl-none first:[&>div>input]:input-lsb-hidden last:[&>div>input]:rounded-tr-none last:[&>div>input]:rounded-br-none last:[&>div>input]:input-rsb-hidden"
 
       orientation == "vertical" ->
-        "first:[&*input]:rounded-bl-none first:[&*input]:rounded-br-none first:[&*input]:input-bbb-hidden last:[&*input]:rounded-tl-none last:[&*input]:rounded-tr-none last:[&*input]:input-tbb-hidden"
+        "first:[&>div>input]:rounded-bl-none first:[&>div>input]:rounded-br-none first:[&>div>input]:input-bbb-hidden last:[&>div>input]:rounded-tl-none last:[&>div>input]:rounded-tr-none last:[&>div>input]:input-tbb-hidden"
 
       true ->
         ""

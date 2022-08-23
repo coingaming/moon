@@ -11,20 +11,18 @@ defmodule Moon.Components.InputGroup.Container do
       get={Moon.Components.InputGroup, orientation: orientation}
       get={Moon.Components.InputGroup, dir: dir}
       get={Moon.Components.InputGroup, background_color: background_color}
-      get={Moon.Components.TexInputGrouptInputGroup, is_error: is_error}
-      get={Moon.Components.InputGroup, size: size}
+      get={Moon.Components.InputGroup, is_error: is_error}
     >
       <div
         {=dir}
         class={
-          "flex border-none shadow-input relative",
+          "flex border-none shadow-input relative rounded-moon-i-md",
           get_display_for_orientation(orientation),
-          get_radius_for_size(size),
           get_class_for_orientation(orientation, is_error),
           "bg-#{background_color}": background_color
         }
       >
-        <slot />
+      <#slot />
       </div>
     </Context>
     """
@@ -35,14 +33,6 @@ defmodule Moon.Components.InputGroup.Container do
       "flex-row"
     else
       "flex-col"
-    end
-  end
-
-  defp get_radius_for_size(size) do
-    if size == "xl" do
-      "rounded-moon-i-md"
-    else
-      "rounded-moon-i-sm"
     end
   end
 

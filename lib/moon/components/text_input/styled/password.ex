@@ -63,7 +63,7 @@ defmodule Moon.Components.TextInput.Password do
           "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-          Utils.get_size_styles(size),
+          "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
           "#{Utils.make_side_border(is_side_border_hidden,
           is_first,
           dir == "rtl")}": !is_error,

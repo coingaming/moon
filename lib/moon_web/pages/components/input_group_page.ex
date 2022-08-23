@@ -55,14 +55,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
               <:example>
                 <LeftToRight class="items-center justify-around w-full items-end">
 
-                  <InputGroup>
-                    <TextInput size="xl" placeholder="Country" />
-                    <TextInput size="xl" placeholder="Phone" />
+                  <InputGroup :let={input_group_class: input_group_class}>
+                    <TextInput size="xl" placeholder="Country" {=input_group_class} />
+                    <TextInput size="xl" placeholder="Phone" {=input_group_class} />
                   </InputGroup>
 
-                  <InputGroup orientation="vertical">
-                    <TextInput size="xl" placeholder="Country" />
-                    <TextInput size="xl" placeholder="Phone" />
+                  <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
+                    <TextInput size="xl" placeholder="Country" {=input_group_class}/>
+                    <TextInput size="xl" placeholder="Phone" {=input_group_class}/>
                   </InputGroup>
                 </LeftToRight>
               </:example>

@@ -55,30 +55,11 @@ defmodule Moon.Components.TextInput.Input do
           "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-          Utils.get_size_styles(size),
-          get_class_top_left(
-            is_sharp_left_side,
-            is_sharp_top_side
-          ),
-          get_class_bottom_left(
-            is_sharp_left_side,
-            is_sharp_bottom_side
-          ),
-          get_class_top_right(
-            is_sharp_right_side,
-            is_sharp_top_side
-          ),
-          get_class_bottom_right(
-            is_sharp_right_side,
-            is_sharp_bottom_side
-          ),
+          "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
+
           get_class_for_date_type(type, dir == "rtl"),
           get_class_for_time_type(type, dir == "rtl"),
-          "#{Utils.make_side_border(is_side_border_hidden,
-          is_first,
-          dir == "rtl")}": !is_error,
-          "#{Utils.make_border_top_bottom(is_top_bottom_border_hidden,
-          is_first)}": !is_error,
+
           "input-number-clear": type == "number",
           "shadow-input-err hover:shadow-input-err focus:shadow-input-err": is_error,
           "bg-#{background_color}": background_color,
