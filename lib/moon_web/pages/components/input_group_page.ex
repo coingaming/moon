@@ -69,6 +69,25 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
               <:code>{input_group_1_code()}</:code>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_10" title="RTL">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end">
+
+                <InputGroup dir="rtl" :let={input_group_class: input_group_class}>
+                  <TextInput size="xl" placeholder="Country" class={input_group_class} dir="rtl" />
+                  <TextInput size="xl" placeholder="Phone" class={input_group_class} dir="rtl" />
+                </InputGroup>
+
+                <InputGroup dir="rtl" orientation="vertical" :let={input_group_class: input_group_class}>
+                  <TextInput size="xl" placeholder="Country" dir="rtl" class={input_group_class} />
+                  <TextInput size="xl" placeholder="Phone" dir="rtl" class={input_group_class} />
+                </InputGroup>
+              </LeftToRight>
+            </:example>
+
+            <:code>{input_group_10_code()}</:code>
+          </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
@@ -76,6 +95,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   end
 
   defp input_group_1_code() do
+    """
+    """
+  end
+
+  defp input_group_10_code() do
     """
     """
   end

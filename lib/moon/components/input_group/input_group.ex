@@ -41,10 +41,16 @@ defmodule Moon.Components.InputGroup do
         "
 
       orientation == "horizontal" && dir == "rtl" ->
-        "first:[&>div>input]:rounded-tl-none first:[&>div>input]:rounded-bl-none first:[&>div>input]:input-lsb-hidden last:[&>div>input]:rounded-tr-none last:[&>div>input]:rounded-br-none last:[&>div>input]:input-rsb-hidden"
+        "
+        [&:first-child>div>input]:rounded-tl-none hover:[&:first-child>div>input]:rounded-moon-i-md
+        [&:first-child>div>input]:rounded-bl-none hover:[&:first-child>div>input]:rounded-moon-i-md
+        [&:first-child>div>input]:input-lsb-hidden
+        [&:last-child>div>input]:rounded-tr-none hover:[&:last-child>div>input]:rounded-moon-i-md
+        [&:last-child>div>input]:rounded-br-none hover:[&:last-child>div>input]:rounded-moon-i-md
+        [&:last-child>div>input]:input-rsb-hidden"
 
       orientation == "vertical" ->
-        "first:[&>div>input]:rounded-bl-none first:[&>div>input]:rounded-br-none first:[&>div>input]:input-bbb-hidden last:[&>div>input]:rounded-tl-none last:[&>div>input]:rounded-tr-none last:[&>div>input]:input-tbb-hidden"
+        "[&:first-child>div>input]:rounded-bl-none [&:first-child>div>input]:rounded-br-none [&:first-child>div>input]:input-bbb-hidden [&:last-child>div>input]:rounded-tl-none [&:last-child>div>input]:rounded-tr-none [&:last-child>div>input]:input-tbb-hidden"
 
       true ->
         ""
