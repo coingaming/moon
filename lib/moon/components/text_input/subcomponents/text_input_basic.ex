@@ -6,6 +6,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.TextInput.Input
   alias Moon.Components.ErrorTag
 
+  prop class, :string, default: ""
   slot default
 
   def render(assigns) do
@@ -18,7 +19,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
     >
-      <Container {=disabled} {=size}>
+      <Container {=disabled} {=size} {=@class}>
         <label
           {=dir}
           :if={label}

@@ -11,6 +11,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   data password_shown, :boolean, default: false
   data password, :string, default: ""
 
+  prop class, :string, default: ""
   slot default
 
   def render(assigns) do
@@ -25,7 +26,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
       get={Moon.Components.TextInput, show_password_text: show_password_text}
     >
-      <Container {=disabled} {=@id}>
+      <Container {=disabled} {=@id} {=@class}>
         {#if size == "xl"}
           <div
             id={"#{@id}_text_input_password"}

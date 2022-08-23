@@ -88,6 +88,25 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
             <:code>{input_group_10_code()}</:code>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_100" title="Text type variants">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end">
+
+                <InputGroup :let={input_group_class: input_group_class}>
+                  <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+                  <TextInput size="xl" type="password" id="password1" placeholder="Password" class={input_group_class} />
+                </InputGroup>
+
+                <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
+                  <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+                  <TextInput size="xl" type="password" id="password2" placeholder="Password" class={input_group_class} />
+                </InputGroup>
+              </LeftToRight>
+            </:example>
+
+            <:code>{input_group_100_code()}</:code>
+          </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
@@ -100,6 +119,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   end
 
   defp input_group_10_code() do
+    """
+    """
+  end
+
+  defp input_group_100_code() do
     """
     """
   end

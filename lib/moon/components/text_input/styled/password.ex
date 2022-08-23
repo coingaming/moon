@@ -3,8 +3,6 @@ defmodule Moon.Components.TextInput.Password do
 
   use Moon.StatelessComponent
 
-  alias Moon.Components.TextInput.Utils
-
   prop id, :string
   prop value, :string
   prop on_keyup, :string
@@ -25,16 +23,8 @@ defmodule Moon.Components.TextInput.Password do
       get={Moon.Components.TextInput, required: required}
       get={Moon.Components.TextInput, readonly: readonly}
       get={Moon.Components.TextInput, dir: dir}
-      get={Moon.Components.TextInput, type: type}
       get={Moon.Components.TextInput, size: size}
-      get={Moon.Components.TextInput, is_top_bottom_border_hidden: is_top_bottom_border_hidden}
-      get={Moon.Components.TextInput, is_side_border_hidden: is_side_border_hidden}
-      get={Moon.Components.TextInput, is_first: is_first}
       get={Moon.Components.TextInput, is_error: is_error}
-      get={Moon.Components.TextInput, is_sharp_left_side: is_sharp_left_side}
-      get={Moon.Components.TextInput, is_sharp_right_side: is_sharp_right_side}
-      get={Moon.Components.TextInput, is_sharp_top_side: is_sharp_top_side}
-      get={Moon.Components.TextInput, is_sharp_bottom_side: is_sharp_bottom_side}
       get={Moon.Components.TextInput, background_color: background_color}
       get={Moon.Components.TextInput, focus: focus}
       get={Moon.Components.TextInput, keydown: keydown}
@@ -49,7 +39,7 @@ defmodule Moon.Components.TextInput.Password do
           "data-lpignore": "true",
           readonly: readonly,
           dir: dir,
-          type: type
+          type: @type
         }
         value={@value}
         class={
@@ -64,17 +54,6 @@ defmodule Moon.Components.TextInput.Password do
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
           "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
-          "#{Utils.make_side_border(is_side_border_hidden,
-          is_first,
-          dir == "rtl")}": !is_error,
-          "#{Utils.make_border_top_bottom(is_top_bottom_border_hidden,
-          is_first)}": !is_error,
-          "#{get_class_left(is_sharp_left_side,
-          is_sharp_top_side,
-          is_sharp_bottom_side)}": !is_error,
-          "#{get_class_right(is_sharp_right_side,
-          is_sharp_top_side,
-          is_sharp_bottom_side)}": !is_error,
           "shadow-input-err hover:shadow-input-err focus:shadow-input-err": is_error,
           "bg-#{background_color}": background_color,
           "bg-transparent": !background_color,
@@ -90,29 +69,5 @@ defmodule Moon.Components.TextInput.Password do
       />
     </Context>
     """
-  end
-
-  defp get_class_left(
-         is_sharp_left_side,
-         is_sharp_top_side,
-         is_sharp_bottom_side
-       ) do
-    cond do
-      is_sharp_left_side || is_sharp_top_side -> "rounded-tl-none"
-      is_sharp_left_side || is_sharp_bottom_side -> "rounded-bl-none"
-      true -> ""
-    end
-  end
-
-  defp get_class_right(
-         is_sharp_right_side,
-         is_sharp_top_side,
-         is_sharp_bottom_side
-       ) do
-    cond do
-      is_sharp_right_side || is_sharp_top_side -> "rounded-tr-none"
-      is_sharp_right_side || is_sharp_bottom_side -> "rounded-br-none"
-      true -> ""
-    end
   end
 end

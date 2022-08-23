@@ -90,7 +90,7 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, use_error_tag: @use_error_tag}
       >
         {#if @type == "password"}
-          <TextInputPassword id={@id}>
+          <TextInputPassword id={@id} {=@class}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
@@ -102,7 +102,7 @@ defmodule Moon.Components.TextInput do
             </HintText>
           </TextInputInnerLabel>
         {#else}
-          <TextInputBasic>
+          <TextInputBasic {=@class}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
