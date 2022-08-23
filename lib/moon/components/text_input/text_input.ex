@@ -86,8 +86,9 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, blur: @blur}
         put={__MODULE__, show_password_text: @show_password_text}
         put={__MODULE__, use_error_tag: @use_error_tag}
+        get={Moon.Components.InputGroup, input_group_class: input_group_class}
       >
-
+        <div>--{input_group_class}!!</div>
         {#if @type == "password"}
           <TextInputPassword id={@id}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>

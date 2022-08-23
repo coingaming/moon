@@ -19,8 +19,10 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
+      get={Moon.Components.InputGroup, input_group_class: input_group_class}
     >
-      <Container disabled={disabled} size={size}>
+
+      <Container disabled={disabled} size={size} class={input_group_class}>
         <div class={
           "w-full max-w-full relative",
           Utils.get_border_radius(size),
