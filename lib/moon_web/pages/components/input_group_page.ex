@@ -13,6 +13,8 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Components.Form
+  alias Moon.Components.Button
+  alias Moon.Components.Field
 
   data breadcrumbs, :any,
     default: [
@@ -37,6 +39,30 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
        user: user,
        user_changeset: user_changeset
      )}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
+  def handle_event("register_form_update", params, socket) do
+    user_changeset = User.changeset(socket.assigns.user, params["user"])
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("register_form_submit", params, socket) do
+    user_changeset =
+      User.changeset(socket.assigns.user, params["user"]) |> Map.merge(%{action: :insert})
+
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def input_group_1000_state(assigns) do
+    ~F"""
+    @user_changeset = {inspect(@user_changeset, pretty: true)}
+    @user = {inspect(@user, pretty: true)}
+    """
   end
 
   def render(assigns) do
@@ -107,6 +133,36 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
             <:code>{input_group_100_code()}</:code>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_1000" title="Form example">
+            <:example>
+              <TopToDown class="items-center">
+                <Form
+                  for={@user_changeset}
+                  change="register_form_update"
+                  submit="register_form_submit"
+                  autocomplete="off"
+                >
+                  <InputGroup :let={input_group_class: input_group_class} has_fields>
+                    <Field name={:email} class={input_group_class}>
+                      <TextInput size="xl" type="email" placeholder="Email"  />
+                    </Field>
+                    <Field name={:password} class={input_group_class}>
+                      <TextInput size="xl" type="password" id="password3" placeholder="Password"  />
+                    </Field>
+                  </InputGroup>
+
+                  <div class="pt-4 flex items-center justify-around">
+                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                  </div>
+                </Form>
+              </TopToDown>
+            </:example>
+
+            <:code>{input_group_1000_code()}</:code>
+
+            <:state>{input_group_1000_state(assigns)}</:state>
+          </ExampleAndCode>
         </Context>
       </TopToDown>
     </Page>
@@ -124,6 +180,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   end
 
   defp input_group_100_code() do
+    """
+    """
+  end
+
+  defp input_group_1000_code() do
     """
     """
   end
