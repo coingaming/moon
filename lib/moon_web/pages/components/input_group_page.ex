@@ -54,7 +54,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         :description => 'Background color of the container'
       },
       %{
-        :name => 'has_fields',
+        :name => '',
         :type => 'boolean',
         :required => 'false',
         :default => '-',
@@ -121,14 +121,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <ExampleAndCode id="group_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" placeholder="Country" class={input_group_class} />
-                  <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+                <InputGroup>
+                  <TextInput size="xl" placeholder="Country" />
+                  <TextInput size="xl" placeholder="Phone" />
                 </InputGroup>
 
-                <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" placeholder="Country" class={input_group_class} />
-                  <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+                <InputGroup orientation="vertical">
+                  <TextInput size="xl" placeholder="Country" />
+                  <TextInput size="xl" placeholder="Phone" />
                 </InputGroup>
               </LeftToRight>
             </:example>
@@ -139,14 +139,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <ExampleAndCode id="group_10" title="RTL">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup dir="rtl" :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" placeholder="Country" class={input_group_class} dir="rtl" />
-                  <TextInput size="xl" placeholder="Phone" class={input_group_class} dir="rtl" />
+                <InputGroup dir="rtl">
+                  <TextInput size="xl" placeholder="Country" dir="rtl" />
+                  <TextInput size="xl" placeholder="Phone" dir="rtl" />
                 </InputGroup>
 
-                <InputGroup dir="rtl" orientation="vertical" :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" placeholder="Country" dir="rtl" class={input_group_class} />
-                  <TextInput size="xl" placeholder="Phone" dir="rtl" class={input_group_class} />
+                <InputGroup dir="rtl" orientation="vertical">
+                  <TextInput size="xl" placeholder="Country" dir="rtl" />
+                  <TextInput size="xl" placeholder="Phone" dir="rtl" />
                 </InputGroup>
               </LeftToRight>
             </:example>
@@ -157,26 +157,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <ExampleAndCode id="group_100" title="Text type variants">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
-                  <TextInput
-                    size="xl"
-                    type="password"
-                    id="password1"
-                    placeholder="Password"
-                    class={input_group_class}
-                  />
+                <InputGroup>
+                  <TextInput size="xl" type="email" placeholder="Email" />
+                  <TextInput size="xl" type="password" id="password1" placeholder="Password" />
                 </InputGroup>
 
-                <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
-                  <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
-                  <TextInput
-                    size="xl"
-                    type="password"
-                    id="password2"
-                    placeholder="Password"
-                    class={input_group_class}
-                  />
+                <InputGroup orientation="vertical">
+                  <TextInput size="xl" type="email" placeholder="Email" />
+                  <TextInput size="xl" type="password" id="password2" placeholder="Password" />
                 </InputGroup>
               </LeftToRight>
             </:example>
@@ -193,11 +181,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
                   submit="register_form_submit"
                   autocomplete="off"
                 >
-                  <InputGroup :let={input_group_class: input_group_class} has_fields>
-                    <Field name={:email} class={input_group_class}>
+                  <InputGroup>
+                    <Field name={:email}>
                       <TextInput size="xl" type="email" placeholder="Email" />
                     </Field>
-                    <Field name={:password} class={input_group_class}>
+                    <Field name={:password}>
                       <TextInput size="xl" type="password" id="password3" placeholder="Password" />
                     </Field>
                   </InputGroup>
@@ -243,14 +231,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   defp input_group_1_code() do
     """
     <LeftToRight class="items-center justify-around w-full items-end">
-      <InputGroup :let={input_group_class: input_group_class}>
-        <TextInput size="xl" placeholder="Country" class={input_group_class} />
-        <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+      <InputGroup>
+        <TextInput size="xl" placeholder="Country"/>
+        <TextInput size="xl" placeholder="Phone"/>
       </InputGroup>
 
-      <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
-        <TextInput size="xl" placeholder="Country" class={input_group_class} />
-        <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+      <InputGroup orientation="vertical">
+        <TextInput size="xl" placeholder="Country"/>
+        <TextInput size="xl" placeholder="Phone"/>
       </InputGroup>
     </LeftToRight>
     """
@@ -259,14 +247,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   defp input_group_10_code() do
     """
     <LeftToRight class="items-center justify-around w-full items-end">
-      <InputGroup dir="rtl" :let={input_group_class: input_group_class}>
-        <TextInput size="xl" placeholder="Country" class={input_group_class} dir="rtl" />
-        <TextInput size="xl" placeholder="Phone" class={input_group_class} dir="rtl" />
+      <InputGroup dir="rtl">
+        <TextInput size="xl" placeholder="Country"  dir="rtl"/>
+        <TextInput size="xl" placeholder="Phone"  dir="rtl"/>
       </InputGroup>
 
-      <InputGroup dir="rtl" orientation="vertical" :let={input_group_class: input_group_class}>
-        <TextInput size="xl" placeholder="Country" dir="rtl" class={input_group_class} />
-        <TextInput size="xl" placeholder="Phone" dir="rtl" class={input_group_class} />
+      <InputGroup dir="rtl" orientation="vertical">
+        <TextInput size="xl" placeholder="Country" dir="rtl"/>
+        <TextInput size="xl" placeholder="Phone" dir="rtl"/>
       </InputGroup>
     </LeftToRight>
     """
@@ -275,25 +263,23 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   defp input_group_100_code() do
     """
     <LeftToRight class="items-center justify-around w-full items-end">
-      <InputGroup :let={input_group_class: input_group_class}>
-        <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+      <InputGroup>
+        <TextInput size="xl" type="email" placeholder="Email"/>
         <TextInput
           size="xl"
           type="password"
           id="password1"
           placeholder="Password"
-          class={input_group_class}
         />
       </InputGroup>
 
-      <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
-        <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+      <InputGroup orientation="vertical">
+        <TextInput size="xl" type="email" placeholder="Email"/>
         <TextInput
           size="xl"
           type="password"
           id="password2"
           placeholder="Password"
-          class={input_group_class}
         />
       </InputGroup>
     </LeftToRight>
@@ -309,11 +295,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         submit="register_form_submit"
         autocomplete="off"
       >
-        <InputGroup :let={input_group_class: input_group_class} has_fields>
-          <Field name={:email} class={input_group_class}>
+        <InputGroup  >
+          <Field name={:email} >
             <TextInput size="xl" type="email" placeholder="Email" />
           </Field>
-          <Field name={:password} class={input_group_class}>
+          <Field name={:password} >
             <TextInput size="xl" type="password" id="password3" placeholder="Password" />
           </Field>
         </InputGroup>
