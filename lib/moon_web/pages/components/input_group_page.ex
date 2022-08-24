@@ -180,21 +180,87 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
   defp input_group_1_code() do
     """
+    <LeftToRight class="items-center justify-around w-full items-end">
+      <InputGroup :let={input_group_class: input_group_class}>
+        <TextInput size="xl" placeholder="Country" class={input_group_class} />
+        <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+      </InputGroup>
+
+      <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
+        <TextInput size="xl" placeholder="Country" class={input_group_class} />
+        <TextInput size="xl" placeholder="Phone" class={input_group_class} />
+      </InputGroup>
+    </LeftToRight>
     """
   end
 
   defp input_group_10_code() do
     """
+    <LeftToRight class="items-center justify-around w-full items-end">
+      <InputGroup dir="rtl" :let={input_group_class: input_group_class}>
+        <TextInput size="xl" placeholder="Country" class={input_group_class} dir="rtl" />
+        <TextInput size="xl" placeholder="Phone" class={input_group_class} dir="rtl" />
+      </InputGroup>
+
+      <InputGroup dir="rtl" orientation="vertical" :let={input_group_class: input_group_class}>
+        <TextInput size="xl" placeholder="Country" dir="rtl" class={input_group_class} />
+        <TextInput size="xl" placeholder="Phone" dir="rtl" class={input_group_class} />
+      </InputGroup>
+    </LeftToRight>
     """
   end
 
   defp input_group_100_code() do
     """
+    <LeftToRight class="items-center justify-around w-full items-end">
+      <InputGroup :let={input_group_class: input_group_class}>
+        <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+        <TextInput
+          size="xl"
+          type="password"
+          id="password1"
+          placeholder="Password"
+          class={input_group_class}
+        />
+      </InputGroup>
+
+      <InputGroup orientation="vertical" :let={input_group_class: input_group_class}>
+        <TextInput size="xl" type="email" placeholder="Email" class={input_group_class} />
+        <TextInput
+          size="xl"
+          type="password"
+          id="password2"
+          placeholder="Password"
+          class={input_group_class}
+        />
+      </InputGroup>
+    </LeftToRight>
     """
   end
 
   defp input_group_1000_code() do
     """
+    <TopToDown class="items-center">
+      <Form
+        for={@user_changeset}
+        change="register_form_update"
+        submit="register_form_submit"
+        autocomplete="off"
+      >
+        <InputGroup :let={input_group_class: input_group_class} has_fields>
+          <Field name={:email} class={input_group_class}>
+            <TextInput size="xl" type="email" placeholder="Email" />
+          </Field>
+          <Field name={:password} class={input_group_class}>
+            <TextInput size="xl" type="password" id="password3" placeholder="Password" />
+          </Field>
+        </InputGroup>
+
+        <div class="pt-4 flex items-center justify-around">
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
+      </Form>
+    </TopToDown>
     """
   end
 end
