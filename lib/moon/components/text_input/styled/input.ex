@@ -3,8 +3,6 @@ defmodule Moon.Components.TextInput.Input do
 
   use Moon.StatelessComponent
 
-  alias Moon.Components.TextInput.Utils
-
   def render(assigns) do
     ~F"""
     <Context
@@ -17,13 +15,6 @@ defmodule Moon.Components.TextInput.Input do
       get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, value: value}
       get={Moon.Components.TextInput, size: size}
-      get={Moon.Components.TextInput, is_sharp_left_side: is_sharp_left_side}
-      get={Moon.Components.TextInput, is_sharp_top_side: is_sharp_top_side}
-      get={Moon.Components.TextInput, is_sharp_bottom_side: is_sharp_bottom_side}
-      get={Moon.Components.TextInput, is_sharp_right_side: is_sharp_right_side}
-      get={Moon.Components.TextInput, is_side_border_hidden: is_side_border_hidden}
-      get={Moon.Components.TextInput, is_first: is_first}
-      get={Moon.Components.TextInput, is_top_bottom_border_hidden: is_top_bottom_border_hidden}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, background_color: background_color}
       get={Moon.Components.TextInput, label: label}
@@ -88,46 +79,6 @@ defmodule Moon.Components.TextInput.Input do
     cond do
       type == "time" -> "input-t"
       type == "time" && is_rtl -> "input-t-rtl"
-      true -> ""
-    end
-  end
-
-  defp get_class_top_left(
-         is_sharp_left_side,
-         is_sharp_top_side
-       ) do
-    cond do
-      is_sharp_left_side || is_sharp_top_side -> "rounded-tl-none"
-      true -> ""
-    end
-  end
-
-  defp get_class_bottom_left(
-         is_sharp_left_side,
-         is_sharp_bottom_side
-       ) do
-    cond do
-      is_sharp_left_side || is_sharp_bottom_side -> "rounded-bl-none"
-      true -> ""
-    end
-  end
-
-  defp get_class_top_right(
-         is_sharp_right_side,
-         is_sharp_top_side
-       ) do
-    cond do
-      is_sharp_right_side || is_sharp_top_side -> "rounded-tr-none"
-      true -> ""
-    end
-  end
-
-  defp get_class_bottom_right(
-         is_sharp_right_side,
-         is_sharp_bottom_side
-       ) do
-    cond do
-      is_sharp_right_side || is_sharp_bottom_side -> "rounded-br-none"
       true -> ""
     end
   end
