@@ -15,6 +15,8 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias Moon.Components.Form
   alias Moon.Components.Button
   alias Moon.Components.Field
+  alias MoonWeb.Components.Table.Table
+  alias MoonWeb.Components.Table.Column
 
   data breadcrumbs, :any,
     default: [
@@ -25,6 +27,45 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
       %{
         to: "/components/input-group",
         name: "Input Group"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'orientation',
+        :type => 'vertical | horizontal',
+        :required => 'false',
+        :default => 'horizontal',
+        :description => ''
+      },
+      %{
+        :name => 'dir',
+        :type => 'ltr | rtl',
+        :required => 'false',
+        :default => 'ltr',
+        :description => 'Text direction (left to right or right to left)'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Background color of the container'
+      },
+      %{
+        :name => 'has_fields',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Whether the controls inside the group uses fields'
+      },
+      %{
+        :name => 'slot',
+        :type => 'slot',
+        :required => 'true',
+        :default => '-',
+        :description => 'Default slot'
       }
     ]
 
@@ -173,6 +214,27 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
             <:state>{input_group_1000_state(assigns)}</:state>
           </ExampleAndCode>
         </Context>
+
+        <div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Input Group Props</div>
+          <Table items={@props_info_array}>
+            <Column name="name" label="Name" :let={item: item} is_row_header>
+              {item.name}
+            </Column>
+            <Column name="type" label="Type" :let={item: item}>
+              {item.type}
+            </Column>
+            <Column name="required" label="Required" :let={item: item}>
+              {item.required}
+            </Column>
+            <Column name="default" label="Default" :let={item: item}>
+              {item.default}
+            </Column>
+            <Column name="description" label="Description" :let={item: item}>
+              {item.description}
+            </Column>
+          </Table>
+        </div>
       </TopToDown>
     </Page>
     """

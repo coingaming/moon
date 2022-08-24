@@ -12,7 +12,7 @@ defmodule Moon.Components.InputGroup do
   prop background_color, :string, default: "gohan-100", values: Moon.colors()
   prop has_fields, :boolean, default: false
 
-  slot default, args: [:input_group_class]
+  slot default, args: [:input_group_class], required: true
 
   def render(assigns) do
     ~F"""
