@@ -57,59 +57,59 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
   def render(assigns) do
     ~F"""
     <div>
-    <Context
-      get={Moon.Components.TextInputGroup, dir: dir}
-      get={Moon.Components.TextInputGroup, orientation: orientation}
-      get={Moon.Components.TextInputGroup, background_color: background_color}
-    >
-    {#if slot_assigned?(:hint_text_slot)}
-      {get_input_with_hint(
-        assigns,
-        @id,
-        @type,
-        @placeholder,
-        @is_error,
-        @is_first,
-        @disabled,
-        @label,
-        @required,
-        @step,
-        @readonly,
-        @value,
-        @focus,
-        @keydown,
-        @keyup,
-        @blur,
-        @show_password_text,
-        @t_orientation,
-        @t_dir,
-        @t_background_color
-      )}
-    {#else}
-      {get_input(
-        assigns,
-        @id,
-        @type,
-        @placeholder,
-        @is_error,
-        @is_first,
-        @disabled,
-        @label,
-        @required,
-        @step,
-        @readonly,
-        @value,
-        @focus,
-        @keydown,
-        @keyup,
-        @blur,
-        @show_password_text,
-        @t_orientation,
-        @t_dir,
-        @t_background_color
-      )}
-    {/if}
-    </Context>
+      <Context
+        get={Moon.Components.TextInputGroup, dir: dir}
+        get={Moon.Components.TextInputGroup, orientation: orientation}
+        get={Moon.Components.TextInputGroup, background_color: background_color}
+      >
+        {#if slot_assigned?(:hint_text_slot)}
+          {get_input_with_hint(
+            assigns,
+            @id,
+            @type,
+            @placeholder,
+            @is_error,
+            @is_first,
+            @disabled,
+            @label,
+            @required,
+            @step,
+            @readonly,
+            @value,
+            @focus,
+            @keydown,
+            @keyup,
+            @blur,
+            @show_password_text,
+            @t_orientation,
+            @t_dir,
+            @t_background_color
+          )}
+        {#else}
+          {get_input(
+            assigns,
+            @id,
+            @type,
+            @placeholder,
+            @is_error,
+            @is_first,
+            @disabled,
+            @label,
+            @required,
+            @step,
+            @readonly,
+            @value,
+            @focus,
+            @keydown,
+            @keyup,
+            @blur,
+            @show_password_text,
+            @t_orientation,
+            @t_dir,
+            @t_background_color
+          )}
+        {/if}
+      </Context>
     </div>
     """
   end
@@ -160,7 +160,6 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
       is_sharp_top_side={get_is_sharp_top_side(orientation)}
       is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
       is_side_border_hidden={get_is_side_border_hidden(orientation)}
-
       {=background_color}
       {=dir}
     />
@@ -213,13 +212,12 @@ defmodule Moon.Components.TextInputGroup.SecondInput do
       is_sharp_top_side={get_is_sharp_top_side(orientation)}
       is_top_bottom_border_hidden={get_is_top_bottom_border_hidden(orientation)}
       is_side_border_hidden={get_is_side_border_hidden(orientation)}
-
       {=background_color}
       {=dir}
     >
-        <:hint_text_slot>
-          <slot name="hint_text_slot" />
-        </:hint_text_slot>
+      <:hint_text_slot>
+        <slot name="hint_text_slot" />
+      </:hint_text_slot>
     </TextInput>
     """
   end

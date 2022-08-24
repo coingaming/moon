@@ -21,7 +21,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
       get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
     >
-
       <Container disabled={disabled} size={size} {=@class}>
         <div class={
           "w-full max-w-full relative",
@@ -29,7 +28,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           "bg-transparent": !background_color,
           "bg-#{background_color}": background_color
         }>
-          <Input/>
+          <Input />
           <label
             {=dir}
             :if={label}

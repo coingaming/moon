@@ -47,22 +47,20 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
         <Heading size={56} class="mb-4">Text Input Group</Heading>
         <ComponentPageDescription>
           <p>
-          !!! TextInput Group is supported only in size `xlarge`.
+            !!! TextInput Group is supported only in size `xlarge`.
           </p>
         </ComponentPageDescription>
-
 
         <Context put={theme_class: @theme_name}>
           <ExampleAndCode id="group_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-
                 <TextInputGroup>
                   <FirstInput placeholder="Country" />
                   <SecondInput placeholder="Phone" />
                 </TextInputGroup>
 
-                <TextInputGroup orientation="vertical" >
+                <TextInputGroup orientation="vertical">
                   <FirstInput placeholder="Country" t_orientation="vertical" />
                   <SecondInput placeholder="Phone" t_orientation="vertical" />
                 </TextInputGroup>
@@ -75,15 +73,14 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
           <ExampleAndCode id="group_6" title="RTL">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-
                 <TextInputGroup dir="rtl">
                   <FirstInput placeholder="Country" t_dir="rtl" />
-                  <SecondInput placeholder="Phone" t_dir="rtl"/>
+                  <SecondInput placeholder="Phone" t_dir="rtl" />
                 </TextInputGroup>
 
                 <TextInputGroup orientation="vertical" dir="rtl">
-                  <FirstInput placeholder="Country" t_orientation="vertical" t_dir="rtl"/>
-                  <SecondInput placeholder="Phone" t_orientation="vertical" t_dir="rtl"/>
+                  <FirstInput placeholder="Country" t_orientation="vertical" t_dir="rtl" />
+                  <SecondInput placeholder="Phone" t_orientation="vertical" t_dir="rtl" />
                 </TextInputGroup>
               </LeftToRight>
             </:example>
@@ -94,19 +91,17 @@ defmodule MoonWeb.Pages.Components.TextInputGroupPage do
           <ExampleAndCode id="group_10" title="With Field">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-
-              <Form
-                for={@user_changeset}
-                change="register_form_update"
-                submit="register_form_submit"
-                autocomplete="off"
-              >
-                <TextInputGroup>
-                  <FirstInput placeholder="Username" field={:username} />
-                  <SecondInput placeholder="Password" id="password" type="password" field={:password} />
-                </TextInputGroup>
-
-              </Form>
+                <Form
+                  for={@user_changeset}
+                  change="register_form_update"
+                  submit="register_form_submit"
+                  autocomplete="off"
+                >
+                  <TextInputGroup>
+                    <FirstInput placeholder="Username" field={:username} />
+                    <SecondInput placeholder="Password" id="password" type="password" field={:password} />
+                  </TextInputGroup>
+                </Form>
               </LeftToRight>
             </:example>
 

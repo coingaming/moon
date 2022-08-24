@@ -108,7 +108,6 @@ defmodule Moon.Components.TextInput do
             </HintText>
           </TextInputBasic>
         {/if}
-
       </Context>
     </InputContext>
     """

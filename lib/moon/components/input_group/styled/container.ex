@@ -22,7 +22,7 @@ defmodule Moon.Components.InputGroup.Container do
           "bg-#{background_color}": background_color
         }
       >
-      <#slot />
+        <#slot />
       </div>
     </Context>
     """
