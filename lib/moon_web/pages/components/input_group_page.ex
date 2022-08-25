@@ -15,8 +15,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias Moon.Components.Form
   alias Moon.Components.Button
   alias Moon.Components.Field
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -52,13 +51,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         :required => 'false',
         :default => '-',
         :description => 'Background color of the container'
-      },
-      %{
-        :name => '',
-        :type => 'boolean',
-        :required => 'false',
-        :default => '-',
-        :description => 'Whether the controls inside the group uses fields'
       },
       %{
         :name => 'slot',
@@ -203,26 +195,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           </ExampleAndCode>
         </Context>
 
-        <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Input Group Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type" :let={item: item}>
-              {item.type}
-            </Column>
-            <Column name="required" label="Required" :let={item: item}>
-              {item.required}
-            </Column>
-            <Column name="default" label="Default" :let={item: item}>
-              {item.default}
-            </Column>
-            <Column name="description" label="Description" :let={item: item}>
-              {item.description}
-            </Column>
-          </Table>
-        </div>
+        <PropsTable data={@props_info_array} />
       </TopToDown>
     </Page>
     """
