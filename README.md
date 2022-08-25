@@ -9,9 +9,7 @@
   </a>
 </p>
 
-https://moon-surface.coingaming.io/tutorials/process-description-and-team-interactions
-
-https://moon-surface.coingaming.io/tutorials/installation
+https://surface.moon.io/
 
 _Note: This project uses **[semantic-release](https://semantic-release.gitbook.io/semantic-release/)** and **[conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/)** spec, please use **[Commitizen](https://github.com/commitizen/cz-cli)**
 to write commit messages_
