@@ -173,11 +173,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
                   submit="register_form_submit"
                   autocomplete="off"
                 >
-                  <InputGroup>
-                    <Field name={:email}>
+                  <InputGroup :let={group_class_fields: group_class_fields}>
+                    <Field name={:email} class={group_class_fields}>
                       <TextInput size="xl" type="email" placeholder="Email" />
                     </Field>
-                    <Field name={:password}>
+                    <Field name={:password} class={group_class_fields}>
                       <TextInput size="xl" type="password" id="password3" placeholder="Password" />
                     </Field>
                   </InputGroup>
@@ -268,11 +268,11 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         submit="register_form_submit"
         autocomplete="off"
       >
-        <InputGroup  >
-          <Field name={:email} >
+        <InputGroup :let={group_class_fields: group_class_fields}>
+          <Field name={:email} class={group_class_fields}>
             <TextInput size="xl" type="email" placeholder="Email" />
           </Field>
-          <Field name={:password} >
+          <Field name={:password} class={group_class_fields}>
             <TextInput size="xl" type="password" id="password3" placeholder="Password" />
           </Field>
         </InputGroup>

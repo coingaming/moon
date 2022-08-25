@@ -90,19 +90,18 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, use_error_tag: @use_error_tag}
         get={Moon.Components.InputGroup, is_in_input_group: is_in_input_group}
         get={Moon.Components.InputGroup, group_class_plain: group_class_plain}
-        get={Moon.Components.InputGroup, group_class_fields: group_class_fields}
       >
         {#if @type == "password"}
           <TextInputPassword
             id={@id}
-            class={get_combined_class(is_in_input_group, @class, field, group_class_plain, group_class_fields)}
+            class={get_combined_class(is_in_input_group, @class, field, group_class_plain)}
           >
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
           </TextInputPassword>
         {#elseif @size == "xl"}
-          <TextInputInnerLabel class={get_combined_class(is_in_input_group, @class, field, group_class_plain, group_class_fields)}>
+          <TextInputInnerLabel class={get_combined_class(is_in_input_group, @class, field, group_class_plain)}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
@@ -119,11 +118,11 @@ defmodule Moon.Components.TextInput do
     """
   end
 
-  defp get_combined_class(is_in_input_group, class, field, group_class_plain, group_class_fields) do
-    cond do
-      is_in_input_group && field -> group_class_fields <> " " <> class
-      is_in_input_group && !field -> group_class_plain <> " " <> class
-      true -> class
+  defp get_combined_class(is_in_input_group, class, field, group_class_plain) do
+    if is_in_input_group && !field do
+      group_class_plain <> " " <> class
+    else
+      class
     end
   end
 

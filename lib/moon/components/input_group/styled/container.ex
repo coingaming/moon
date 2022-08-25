@@ -25,51 +25,12 @@ defmodule Moon.Components.InputGroup.Container do
         <Context
           put={Moon.Components.InputGroup, is_in_input_group: true}
           put={Moon.Components.InputGroup, group_class_plain: get_class_input_group_no_fields(orientation, dir)}
-          put={
-            Moon.Components.InputGroup,
-            group_class_fields: get_class_input_group_with_fields(orientation, dir)
-          }
         >
           <#slot />
         </Context>
       </div>
     </Context>
     """
-  end
-
-  defp get_class_input_group_with_fields(orientation, dir) do
-    cond do
-      orientation == "horizontal" && dir == "ltr" ->
-        "
-        [&:first-child>div>div>input]:rounded-tr-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:rounded-br-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:input-rsb-hidden
-        [&:last-child>div>div>input]:rounded-tl-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:rounded-bl-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:input-lsb-hidden
-        "
-
-      orientation == "horizontal" && dir == "rtl" ->
-        "
-        [&:first-child>div>div>input]:rounded-tl-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:rounded-bl-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:input-lsb-hidden
-        [&:last-child>div>div>input]:rounded-tr-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:rounded-br-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:input-rsb-hidden"
-
-      orientation == "vertical" ->
-        "
-        [&:first-child>div>div>input]:rounded-bl-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:rounded-br-none hover:[&:first-child>div>div>input]:rounded-moon-i-md
-        [&:first-child>div>div>input]:input-bbb-hidden
-        [&:last-child>div>div>input]:rounded-tl-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:rounded-tr-none hover:[&:last-child>div>div>input]:rounded-moon-i-md
-        [&:last-child>div>div>input]:input-tbb-hidden"
-
-      true ->
-        ""
-    end
   end
 
   defp get_class_input_group_no_fields(orientation, dir) do
