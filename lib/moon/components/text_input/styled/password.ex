@@ -4,6 +4,7 @@ defmodule Moon.Components.TextInput.Password do
   use Moon.StatelessComponent
 
   prop id, :string
+  prop field, :atom
   prop value, :string
   prop on_keyup, :string
   prop input_password_id, :string
@@ -63,6 +64,7 @@ defmodule Moon.Components.TextInput.Password do
         }
         id={"#{@id}_input"}
         keyup={@on_keyup, target: "##{@input_password_id}"}
+        {=@field}
         {=focus}
         {=keydown}
         {=blur}

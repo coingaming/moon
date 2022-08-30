@@ -11,6 +11,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   data password_shown, :boolean, default: false
   data password, :string, default: ""
 
+  prop field, :atom
   prop class, :string, default: ""
   slot default
 
@@ -37,6 +38,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             }
           >
             <Password
+              {=@id}
+              {=@field}
               value={@password}
               on_keyup="on_keyup"
               input_password_id={"#{@id}_text_input_password"}
@@ -77,6 +80,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             }
           >
             <Password
+              {=@id}
+              {=@field}
               value={@password}
               on_keyup="on_keyup"
               input_password_id={"#{@id}_text_input_password"}
