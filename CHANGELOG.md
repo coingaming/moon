@@ -1,3 +1,10 @@
+## [2.24.10](https://github.com/coingaming/moon/compare/v2.24.9...v2.24.10) (2022-08-31)
+
+
+### Bug Fixes
+
+* add pull_a_side class ([#363](https://github.com/coingaming/moon/issues/363)) ([aa03b26](https://github.com/coingaming/moon/commit/aa03b267d7478a79a71444294147e70749831f5a))
+
 ## [2.24.9](https://github.com/coingaming/moon/compare/v2.24.8...v2.24.9) (2022-08-15)
 
 
