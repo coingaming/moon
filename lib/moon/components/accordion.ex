@@ -12,9 +12,12 @@ defmodule Moon.Components.Accordion do
   prop class, :css_class
   prop open_by_default, :boolean, default: false
   prop is_content_inside, :boolean, default: true
+  prop is_content_overflow_hidden, :boolean, default: true
   prop with_button, :boolean, default: true
   prop disable_open, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
+  prop pull_a_side_class, :css_class
+
   slot title
   slot header_controls
   slot content
@@ -29,7 +32,7 @@ defmodule Moon.Components.Accordion do
         @class
       }
     >
-      <PullAside left_grow class="w-full flex gap-3 cursor-pointer">
+      <PullAside left_grow class={"w-full gap-3 cursor-pointer", @pull_a_side_class}>
         <:left>
           <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
             <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
@@ -57,7 +60,12 @@ defmodule Moon.Components.Accordion do
       {#if @is_content_inside}
         <div
           id={@id <> "-content"}
-          class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
+          class={
+            "w-full h-full",
+            get_margin(@size),
+            "overflow-hidden": @is_content_overflow_hidden,
+            hidden: !@open_by_default
+          }
         >
           <#slot name="content" />
         </div>
@@ -67,7 +75,12 @@ defmodule Moon.Components.Accordion do
     {#if !@is_content_inside}
       <div
         id={@id <> "-content"}
-        class={"overflow-hidden w-full h-full", get_margin(@size), hidden: !@open_by_default}
+        class={
+          "w-full h-full",
+          get_margin(@size),
+          "overflow-hidden": @is_content_overflow_hidden,
+          hidden: !@open_by_default
+        }
       >
         <#slot name="content" />
       </div>
