@@ -21,17 +21,32 @@ body {
 
 @layer components {
   .moon-input-group.horizontal > div:first-child input {
-    @apply rounded-tr-none rounded-br-none input-rsb-hidden bg-red-500;
+    @apply rounded-tr-none rounded-br-none input-rsb-hidden ;
   }
   .moon-input-group.horizontal > div:first-child input:hover {
     @apply rounded-moon-i-md rounded-moon-i-md;
   }
   .moon-input-group.horizontal > div:last-child input {
-    @apply rounded-tl-none rounded-bl-none input-lsb-hidden bg-blue-500;
+    @apply rounded-tl-none rounded-bl-none input-lsb-hidden ;
   }
   .moon-input-group.horizontal > div:last-child input:hover {
     @apply rounded-moon-i-md rounded-moon-i-md;
   }
+
+  .moon-input-group.horizontal.rtl > div:first-child input {
+    @apply rounded-tl-none rounded-bl-none input-lsb-hidden ;
+  }
+  .moon-input-group.horizontal.rtl > div:first-child input:hover {
+    @apply rounded-moon-i-md rounded-moon-i-md;
+  }
+  .moon-input-group.horizontal.rtl > div:last-child input {
+    @apply rounded-tl-none rounded-bl-none input-lsb-hidden ;
+  }
+  .moon-input-group.horizontal.rtl > div:last-child input:hover {
+    @apply rounded-moon-i-md rounded-moon-i-md;
+  }
+
+
   .moon-input-group.vertical > div:first-child input {
     @apply rounded-bl-none rounded-br-none input-bbb-hidden bg-green-500;
   }
