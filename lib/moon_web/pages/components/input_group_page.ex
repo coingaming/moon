@@ -13,7 +13,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Components.Form
-  alias Moon.Components.Button
   alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
@@ -36,20 +35,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         :required => 'false',
         :default => 'horizontal',
         :description => ''
-      },
-      %{
-        :name => 'dir',
-        :type => 'ltr | rtl',
-        :required => 'false',
-        :default => 'ltr',
-        :description => 'Text direction (left to right or right to left)'
-      },
-      %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'false',
-        :default => '-',
-        :description => 'Background color of the container'
       },
       %{
         :name => 'slot',

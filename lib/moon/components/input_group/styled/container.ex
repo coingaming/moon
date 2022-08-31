@@ -8,7 +8,7 @@ defmodule Moon.Components.InputGroup.Container do
 
   def render(assigns) do
     ~F"""
-    <div class={@orientation, "moon-input-group"}>
+    <div class={@orientation, "moon-input-group", flex: @orientation == "vertical"}>
       <#slot />
     </div>
     """
