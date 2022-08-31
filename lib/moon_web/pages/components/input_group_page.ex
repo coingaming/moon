@@ -13,8 +13,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Components.Form
-  alias Moon.Components.Button
-  alias Moon.Components.Field
   alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
@@ -37,20 +35,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         :required => 'false',
         :default => 'horizontal',
         :description => ''
-      },
-      %{
-        :name => 'dir',
-        :type => 'ltr | rtl',
-        :required => 'false',
-        :default => 'ltr',
-        :description => 'Text direction (left to right or right to left)'
-      },
-      %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'false',
-        :default => '-',
-        :description => 'Background color of the container'
       },
       %{
         :name => 'slot',
@@ -93,8 +77,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
   def input_group_1000_state(assigns) do
     ~F"""
-    @user_changeset = {inspect(@user_changeset, pretty: true)}
-    @user = {inspect(@user, pretty: true)}
+    {inspect(@user_changeset.changes, pretty: true)}
     """
   end
 
@@ -113,83 +96,23 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <ExampleAndCode id="group_1" title="Default">
             <:example>
               <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup>
-                  <TextInput size="xl" placeholder="Country" />
-                  <TextInput size="xl" placeholder="Phone" />
-                </InputGroup>
+                <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                  <InputGroup>
+                    <TextInput field={:country} size="xl" placeholder="Country" />
+                    <TextInput field={:phone} size="xl" placeholder="Phone" />
+                  </InputGroup>
+                </Form>
 
-                <InputGroup orientation="vertical">
-                  <TextInput size="xl" placeholder="Country" />
-                  <TextInput size="xl" placeholder="Phone" />
-                </InputGroup>
+                <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                  <InputGroup orientation="vertical">
+                    <TextInput field={:country} size="xl" placeholder="Country" />
+                    <TextInput field={:phone} size="xl" placeholder="Phone" />
+                  </InputGroup>
+                </Form>
               </LeftToRight>
             </:example>
 
             <:code>{input_group_1_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="group_10" title="RTL">
-            <:example>
-              <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup dir="rtl">
-                  <TextInput size="xl" placeholder="Country" dir="rtl" />
-                  <TextInput size="xl" placeholder="Phone" dir="rtl" />
-                </InputGroup>
-
-                <InputGroup dir="rtl" orientation="vertical">
-                  <TextInput size="xl" placeholder="Country" dir="rtl" />
-                  <TextInput size="xl" placeholder="Phone" dir="rtl" />
-                </InputGroup>
-              </LeftToRight>
-            </:example>
-
-            <:code>{input_group_10_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="group_100" title="Text type variants">
-            <:example>
-              <LeftToRight class="items-center justify-around w-full items-end">
-                <InputGroup>
-                  <TextInput size="xl" type="email" placeholder="Email" />
-                  <TextInput size="xl" type="password" id="password1" placeholder="Password" />
-                </InputGroup>
-
-                <InputGroup orientation="vertical">
-                  <TextInput size="xl" type="email" placeholder="Email" />
-                  <TextInput size="xl" type="password" id="password2" placeholder="Password" />
-                </InputGroup>
-              </LeftToRight>
-            </:example>
-
-            <:code>{input_group_100_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="group_1000" title="Form example">
-            <:example>
-              <TopToDown class="items-center">
-                <Form
-                  for={@user_changeset}
-                  change="register_form_update"
-                  submit="register_form_submit"
-                  autocomplete="off"
-                >
-                  <InputGroup :let={group_class_fields: group_class_fields}>
-                    <Field name={:email} class={group_class_fields}>
-                      <TextInput size="xl" type="email" placeholder="Email" />
-                    </Field>
-                    <Field name={:password} class={group_class_fields}>
-                      <TextInput size="xl" type="password" id="password3" placeholder="Password" />
-                    </Field>
-                  </InputGroup>
-
-                  <div class="pt-4 flex items-center justify-around">
-                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                  </div>
-                </Form>
-              </TopToDown>
-            </:example>
-
-            <:code>{input_group_1000_code()}</:code>
 
             <:state>{input_group_1000_state(assigns)}</:state>
           </ExampleAndCode>
@@ -214,74 +137,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
         <TextInput size="xl" placeholder="Phone"/>
       </InputGroup>
     </LeftToRight>
-    """
-  end
-
-  defp input_group_10_code() do
-    """
-    <LeftToRight class="items-center justify-around w-full items-end">
-      <InputGroup dir="rtl">
-        <TextInput size="xl" placeholder="Country"  dir="rtl"/>
-        <TextInput size="xl" placeholder="Phone"  dir="rtl"/>
-      </InputGroup>
-
-      <InputGroup dir="rtl" orientation="vertical">
-        <TextInput size="xl" placeholder="Country" dir="rtl"/>
-        <TextInput size="xl" placeholder="Phone" dir="rtl"/>
-      </InputGroup>
-    </LeftToRight>
-    """
-  end
-
-  defp input_group_100_code() do
-    """
-    <LeftToRight class="items-center justify-around w-full items-end">
-      <InputGroup>
-        <TextInput size="xl" type="email" placeholder="Email"/>
-        <TextInput
-          size="xl"
-          type="password"
-          id="password1"
-          placeholder="Password"
-        />
-      </InputGroup>
-
-      <InputGroup orientation="vertical">
-        <TextInput size="xl" type="email" placeholder="Email"/>
-        <TextInput
-          size="xl"
-          type="password"
-          id="password2"
-          placeholder="Password"
-        />
-      </InputGroup>
-    </LeftToRight>
-    """
-  end
-
-  defp input_group_1000_code() do
-    """
-    <TopToDown class="items-center">
-      <Form
-        for={@user_changeset}
-        change="register_form_update"
-        submit="register_form_submit"
-        autocomplete="off"
-      >
-        <InputGroup :let={group_class_fields: group_class_fields}>
-          <Field name={:email} class={group_class_fields}>
-            <TextInput size="xl" type="email" placeholder="Email" />
-          </Field>
-          <Field name={:password} class={group_class_fields}>
-            <TextInput size="xl" type="password" id="password3" placeholder="Password" />
-          </Field>
-        </InputGroup>
-
-        <div class="pt-4 flex items-center justify-around">
-          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-        </div>
-      </Form>
-    </TopToDown>
     """
   end
 end

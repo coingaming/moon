@@ -6,6 +6,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.TextInput.Input
   alias Moon.Components.ErrorTag
 
+  prop id, :string
+  prop field, :atom
   prop class, :string, default: ""
   slot default
 
@@ -27,7 +29,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         >
           {label}
         </label>
-        <Input />
+        <Input {=@id} {=@field} />
         <#slot />
         <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
           <ErrorTag />

@@ -8,6 +8,8 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   alias Moon.Components.ErrorTag
 
   prop class, :string, default: ""
+  prop id, :string
+  prop field, :atom
   slot default
 
   def render(assigns) do
@@ -28,7 +30,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           "bg-transparent": !background_color,
           "bg-#{background_color}": background_color
         }>
-          <Input />
+          <Input {=@id} {=@field} />
           <label
             {=dir}
             :if={label}

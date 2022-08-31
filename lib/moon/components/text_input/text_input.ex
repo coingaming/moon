@@ -9,6 +9,7 @@ defmodule Moon.Components.TextInput do
   alias Moon.Components.TextInput.HintText
 
   prop id, :string
+  prop field, :atom
   prop size, :string, values: ["md", "lg", "xl"], default: "md"
 
   prop type, :string,
@@ -93,7 +94,8 @@ defmodule Moon.Components.TextInput do
       >
         {#if @type == "password"}
           <TextInputPassword
-            id={@id}
+            {=@id}
+            {=@field}
             class={get_combined_class(is_in_input_group, @class, field, group_class_plain)}
           >
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
@@ -101,13 +103,17 @@ defmodule Moon.Components.TextInput do
             </HintText>
           </TextInputPassword>
         {#elseif @size == "xl"}
-          <TextInputInnerLabel class={get_combined_class(is_in_input_group, @class, field, group_class_plain)}>
+          <TextInputInnerLabel
+            {=@id}
+            {=@field}
+            class={get_combined_class(is_in_input_group, @class, field, group_class_plain)}
+          >
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>
           </TextInputInnerLabel>
         {#else}
-          <TextInputBasic {=@class}>
+          <TextInputBasic {=@id} {=@field} {=@class}>
             <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
               <#slot name="hint_text_slot" />
             </HintText>

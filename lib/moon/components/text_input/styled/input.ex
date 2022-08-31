@@ -3,6 +3,9 @@ defmodule Moon.Components.TextInput.Input do
 
   use Moon.StatelessComponent
 
+  prop id, :string
+  prop field, :atom
+
   def render(assigns) do
     ~F"""
     <Context
@@ -24,6 +27,8 @@ defmodule Moon.Components.TextInput.Input do
       get={Moon.Components.TextInput, blur: blur}
     >
       <Surface.Components.Form.TextInput
+        {=@id}
+        {=@field}
         opts={
           placeholder: placeholder,
           disabled: disabled,

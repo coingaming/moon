@@ -325,7 +325,7 @@ module.exports = {
           "& a, & span": {
             padding: "0.5rem",
           },
-        },
+        }
       });
     }),
   ],
