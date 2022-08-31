@@ -48,13 +48,13 @@ body {
 
 
   .moon-input-group.vertical > div:first-child input {
-    @apply rounded-bl-none rounded-br-none input-bbb-hidden bg-green-500;
+    @apply rounded-bl-none rounded-br-none input-bbb-hidden;
   }
   .moon-input-group.vertical > div:first-child input:hover {
     @apply rounded-moon-i-md;
   }
   .moon-input-group.vertical > div:last-child input {
-    @apply rounded-tl-none rounded-tr-none input-tbb-hidden bg-yellow-500;
+    @apply rounded-tl-none rounded-tr-none input-tbb-hidden;
   }
   .moon-input-group.vertical > div:last-child input:hover {
     @apply rounded-moon-i-md;
