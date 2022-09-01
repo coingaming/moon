@@ -13,6 +13,7 @@ defmodule Moon.Components.InputGroup.Container do
     <div class={
       "moon-input-group border-none shadow-input relative rounded-moon-i-md",
       @orientation,
+      "rtl-aware",
       get_class_for_orientation(@orientation, @is_error),
       "bg-#{@background_color}": @background_color
     }

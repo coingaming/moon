@@ -8,6 +8,7 @@ defmodule Moon.Components.TextInput.ShowPassword do
 
   slot default
 
+  # TODO
   def render(assigns) do
     ~F"""
     <div
@@ -15,8 +16,9 @@ defmodule Moon.Components.TextInput.ShowPassword do
       :on-click={@toggle, target: "##{@input_password_id}"}
       class={
         "text-moon-14 text-bulma absolute top-2/4 mt-[-0.75rem] z-[3] underline cursor-pointer",
-        "rtl:left-[0.938rem]",
-        "ltr:right-[0.938rem]"
+        "rtl:left-[0.938rem]", # buggy on beta TW, rtl: and ltr: (Show password when using <TopToDown> is broken)
+        "ltr:right-[0.938rem]", # buggy on beta TW, rtl: and ltr: (Show password when using <TopToDown> is broken)
+        "right-[0.938rem]"
       }
     >
       <#slot />
