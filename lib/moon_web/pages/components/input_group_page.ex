@@ -13,7 +13,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Components.Form
-  alias Moon.Components.Button
   alias MoonWeb.Components.PropsTable
   alias Moon.Autolayouts.TopToDown
 
