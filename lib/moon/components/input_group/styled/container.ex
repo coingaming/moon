@@ -16,8 +16,7 @@ defmodule Moon.Components.InputGroup.Container do
       "rtl-aware",
       get_class_for_orientation(@orientation, @is_error),
       "bg-#{@background_color}": @background_color
-    }
-    >
+    }>
       <#slot />
     </div>
     """

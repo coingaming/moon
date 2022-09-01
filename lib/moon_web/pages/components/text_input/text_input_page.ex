@@ -325,8 +325,8 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
             <:example>
               <LeftToRight class="justify-between w-full items-end" dir="rtl">
                 <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder"  />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder"  />
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
               </LeftToRight>
             </:example>
 
