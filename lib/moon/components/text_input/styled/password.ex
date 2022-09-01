@@ -23,7 +23,6 @@ defmodule Moon.Components.TextInput.Password do
       get={Moon.Components.TextInput, disabled: disabled}
       get={Moon.Components.TextInput, required: required}
       get={Moon.Components.TextInput, readonly: readonly}
-      get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, size: size}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, background_color: background_color}
@@ -39,7 +38,6 @@ defmodule Moon.Components.TextInput.Password do
           required: required && !disabled,
           "data-lpignore": "true",
           readonly: readonly,
-          dir: dir,
           type: @type
         }
         value={@value}

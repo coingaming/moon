@@ -116,6 +116,30 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
             <:state>{input_group_1000_state(assigns)}</:state>
           </ExampleAndCode>
+
+          <ExampleAndCode id="group_10" title="RTL">
+            <:example>
+              <LeftToRight class="items-center justify-around w-full items-end" dir="rtl">
+                <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                  <InputGroup>
+                    <TextInput field={:country} size="xl" placeholder="Country" />
+                    <TextInput field={:phone} size="xl" placeholder="Phone" />
+                  </InputGroup>
+                </Form>
+
+                <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                  <InputGroup orientation="vertical">
+                    <TextInput field={:country} size="xl" placeholder="Country" />
+                    <TextInput field={:phone} size="xl" placeholder="Phone" />
+                  </InputGroup>
+                </Form>
+              </LeftToRight>
+            </:example>
+
+            <:code>{input_group_10_code()}</:code>
+
+            <:state>{input_group_1000_state(assigns)}</:state>
+          </ExampleAndCode>
         </Context>
 
         <PropsTable data={@props_info_array} />
@@ -125,6 +149,22 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   end
 
   defp input_group_1_code() do
+    """
+    <LeftToRight class="items-center justify-around w-full items-end">
+      <InputGroup>
+        <TextInput size="xl" placeholder="Country"/>
+        <TextInput size="xl" placeholder="Phone"/>
+      </InputGroup>
+
+      <InputGroup orientation="vertical">
+        <TextInput size="xl" placeholder="Country"/>
+        <TextInput size="xl" placeholder="Phone"/>
+      </InputGroup>
+    </LeftToRight>
+    """
+  end
+
+  defp input_group_10_code() do
     """
     <LeftToRight class="items-center justify-around w-full items-end">
       <InputGroup>

@@ -323,10 +323,10 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
           <ExampleAndCode id="input_50" title="Size RTL">
             <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl" />
+              <LeftToRight class="justify-between w-full items-end" dir="rtl">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder"  />
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder"  />
               </LeftToRight>
             </:example>
 
@@ -335,10 +335,10 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
           <ExampleAndCode id="input_60" title="Without label">
             <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput placeholder="Placeholder" dir="rtl" />
-                <TextInput size="lg" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="xl" placeholder="Placeholder" dir="rtl" />
+              <LeftToRight class="justify-between w-full items-end" dir="rtl">
+                <TextInput placeholder="Placeholder" />
+                <TextInput size="lg" placeholder="Placeholder" />
+                <TextInput size="xl" placeholder="Placeholder" />
               </LeftToRight>
             </:example>
 

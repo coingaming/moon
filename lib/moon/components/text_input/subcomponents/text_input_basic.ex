@@ -16,14 +16,12 @@ defmodule Moon.Components.TextInput.TextInputBasic do
     <Context
       get={Moon.Components.TextInput, disabled: disabled}
       get={Moon.Components.TextInput, size: size}
-      get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
     >
       <Container {=disabled} {=size} {=@class}>
         <label
-          {=dir}
           :if={label}
           class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": disabled}
         >

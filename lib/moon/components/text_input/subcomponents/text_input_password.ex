@@ -22,7 +22,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       get={Moon.Components.TextInput, size: size}
       get={Moon.Components.TextInput, background_color: background_color}
       get={Moon.Components.TextInput, label: label}
-      get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
       get={Moon.Components.TextInput, show_password_text: show_password_text}
@@ -47,14 +46,13 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             />
             <label class={
               "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[3] transition-all",
-              "right-4": dir == "rtl",
-              "left-4": dir == "ltr"
+              "rtl:right-4",
+              "ltr:left-4"
             }>
               {label}
             </label>
             <ShowPassword
               toggle="toggle_password_visibility"
-              is_rtl={is_rtl(dir)}
               input_password_id={"#{@id}_text_input_password"}
             >
               {show_password_text}
@@ -66,7 +64,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
           </div>
         {#else}
           <label
-            {=dir}
             :if={label}
             class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": disabled}
           >
@@ -90,7 +87,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
 
             <ShowPassword
               toggle="toggle_password_visibility"
-              is_rtl={is_rtl(dir)}
               input_password_id={"#{@id}_text_input_password"}
             >
               {show_password_text}
@@ -120,9 +116,5 @@ defmodule Moon.Components.TextInput.TextInputPassword do
     else
       "password"
     end
-  end
-
-  defp is_rtl(dir) do
-    dir == "rtl"
   end
 end

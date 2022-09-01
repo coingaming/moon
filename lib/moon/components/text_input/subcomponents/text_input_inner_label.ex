@@ -20,7 +20,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
       get={Moon.Components.TextInput, background_color: background_color}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, label: label}
-      get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
     >
       <Container disabled={disabled} size={size} {=@class}>
@@ -32,13 +31,13 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
         }>
           <Input {=@id} {=@field} />
           <label
-            {=dir}
             :if={label}
             class={
               "absolute text-[0.75rem] leading-3 text-trunks-100 top-3 z-[1] transition-all ease-in-out duration-200",
+              "rtl:right-4",
+              "ltr:left-4",
               "opacity-30 cursor-not-allowed": disabled,
-              "right-4": dir == "rtl",
-              "left-4": dir != "rtl"
+
             }
           >
             {label}

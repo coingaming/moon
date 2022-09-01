@@ -29,7 +29,6 @@ defmodule Moon.Components.TextInput do
 
   prop placeholder, :string
   prop is_error, :boolean
-  prop dir, :string, values: ["ltr", "rtl"], default: "ltr"
   prop background_color, :string, values: Moon.colors(), default: "gohan-100"
   prop is_first, :boolean
   prop disabled, :boolean
@@ -68,7 +67,6 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, type: @type}
         put={__MODULE__, placeholder: @placeholder}
         put={__MODULE__, is_error: has_error(@is_error, form, field)}
-        put={__MODULE__, dir: @dir}
         put={__MODULE__, background_color: @background_color}
         put={__MODULE__, is_first: @is_first}
         put={__MODULE__, disabled: @disabled}

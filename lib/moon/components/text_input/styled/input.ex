@@ -15,7 +15,6 @@ defmodule Moon.Components.TextInput.Input do
       get={Moon.Components.TextInput, type: type}
       get={Moon.Components.TextInput, step: step}
       get={Moon.Components.TextInput, readonly: readonly}
-      get={Moon.Components.TextInput, dir: dir}
       get={Moon.Components.TextInput, value: value}
       get={Moon.Components.TextInput, size: size}
       get={Moon.Components.TextInput, is_error: is_error}
@@ -36,8 +35,7 @@ defmodule Moon.Components.TextInput.Input do
           type: type,
           "data-lpignore": "true",
           step: step,
-          readonly: readonly,
-          dir: dir
+          readonly: readonly
         }
         {=value}
         class={
@@ -52,8 +50,8 @@ defmodule Moon.Components.TextInput.Input do
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
           "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
-          get_class_for_date_type(type, dir == "rtl"),
-          get_class_for_time_type(type, dir == "rtl"),
+          get_class_for_date_type(type),
+          "ltr:input-t rtl:input-t-rtl": type == "time",
           "input-number-clear": type == "number",
           "shadow-input-err hover:shadow-input-err focus:shadow-input-err": is_error,
           "bg-#{background_color}": background_color,
@@ -71,19 +69,10 @@ defmodule Moon.Components.TextInput.Input do
     """
   end
 
-  defp get_class_for_date_type(type, is_rtl) do
+  defp get_class_for_date_type(type) do
     cond do
-      type == "date" || type == "datetime-local" -> "input-d"
-      type == "date" && is_rtl -> "input-d-rtl"
-      type == "datetime-local" && is_rtl -> "input-dt-local-rtl"
-      true -> ""
-    end
-  end
-
-  defp get_class_for_time_type(type, is_rtl) do
-    cond do
-      type == "time" -> "input-t"
-      type == "time" && is_rtl -> "input-t-rtl"
+      type == "date" -> "ltr:input-d rtl:input-d-rtl"
+      type == "datetime-local" -> "ltr:input-d rtl:input-dt-local-rtl"
       true -> ""
     end
   end
