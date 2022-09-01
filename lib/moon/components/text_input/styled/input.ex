@@ -2,6 +2,7 @@ defmodule Moon.Components.TextInput.Input do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Components.TextInput.Utils
 
   prop id, :string
   prop field, :atom
@@ -49,7 +50,7 @@ defmodule Moon.Components.TextInput.Input do
           "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-          "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
+          Utils.get_size_styles(size),
           get_class_for_date_type(type),
           "ltr:input-t rtl:input-t-rtl": type == "time",
           "input-number-clear": type == "number",

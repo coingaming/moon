@@ -2,6 +2,7 @@ defmodule Moon.Components.TextInput.Password do
   @moduledoc false
 
   use Moon.StatelessComponent
+  alias Moon.Components.TextInput.Utils
 
   prop id, :string
   prop field, :atom
@@ -52,7 +53,7 @@ defmodule Moon.Components.TextInput.Password do
           "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
           "input-dt-shared",
           "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-          "h-14 leading-[3.5rem] rounded-moon-i-md hover:rounded-moon-i-md focus:rounded-moon-i-md invalid:rounded-moon-i-md",
+          Utils.get_size_styles(size),
           "shadow-input-err hover:shadow-input-err focus:shadow-input-err": is_error,
           "bg-#{background_color}": background_color,
           "bg-transparent": !background_color,
