@@ -47,10 +47,10 @@ defmodule MoonWeb.Components.ExampleAndCode do
         </div>
       </Context>
       <div
-        class="p-4 flex flex-col bg-goku-100 text-moon-14 rounded-moon-s-sm"
+        class="grid gap-4 p-4 bg-goku-100 text-moon-14 rounded-moon-s-sm"
         :if={slot_assigned?(:state)}
       >
-        <div><Label size="medium" class="bg-piccolo-100 mb-3">State</Label></div>
+        <div><Label size="medium" class="bg-piccolo-100">State</Label></div>
         <pre class="break-all overflow-x-scroll text-trunks-100"><#slot name="state" /></pre>
       </div>
     </section>

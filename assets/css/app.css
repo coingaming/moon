@@ -20,6 +20,45 @@ body {
 }
 
 @layer components {
+  .moon-input-group.horizontal > div:first-child input {
+    @apply ltr:rounded-tr-none ltr:rounded-br-none ltr:input-rsb-hidden ;
+  }
+  .moon-input-group.horizontal > div:first-child input:hover {
+    @apply ltr:rounded-moon-i-md ltr:rounded-moon-i-md;
+  }
+  .moon-input-group.horizontal > div:last-child input {
+    @apply ltr:rounded-tl-none ltr:rounded-bl-none ltr:input-lsb-hidden ;
+  }
+  .moon-input-group.horizontal > div:last-child input:hover {
+    @apply ltr:rounded-moon-i-md ltr:rounded-moon-i-md;
+  }
+
+  .moon-input-group.horizontal.rtl-aware > div:first-child input {
+    @apply rtl:rounded-tl-none rtl:rounded-bl-none rtl:input-lsb-hidden;
+  }
+  .moon-input-group.horizontal.rtl-aware > div:first-child input:hover {
+    @apply rtl:rounded-moon-i-md rtl:rounded-moon-i-md;
+  }
+  .moon-input-group.horizontal.rtl-aware > div:last-child input {
+    @apply rtl:rounded-tr-none rtl:rounded-br-none rtl:input-rsb-hidden;
+  }
+  .moon-input-group.horizontal.rtl-aware > div:last-child input:hover {
+    @apply rtl:rounded-moon-i-md rtl:rounded-moon-i-md;
+  }
+
+
+  .moon-input-group.vertical > div:first-child input {
+    @apply rounded-bl-none rounded-br-none input-bbb-hidden;
+  }
+  .moon-input-group.vertical > div:first-child input:hover {
+    @apply rounded-moon-i-md;
+  }
+  .moon-input-group.vertical > div:last-child input {
+    @apply rounded-tl-none rounded-tr-none input-tbb-hidden;
+  }
+  .moon-input-group.vertical > div:last-child input:hover {
+    @apply rounded-moon-i-md;
+  }
   .carousel-item {
     scroll-snap-type: x;
     scroll-snap-align: start;

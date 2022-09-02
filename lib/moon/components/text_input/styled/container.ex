@@ -8,6 +8,7 @@ defmodule Moon.Components.TextInput.Container do
   prop id, :string
   prop disabled, :boolean, default: false
   prop size, :string, values: ["md", "lg", "xl"]
+  prop class, :string
 
   slot default
 
@@ -16,13 +17,12 @@ defmodule Moon.Components.TextInput.Container do
     <div
       class={
         "w-full max-w-full relative z-0",
+        @class,
         Utils.get_border_radius(@size),
         "opacity-30 cursor-not-allowed": @disabled
       }
       id={@id}
-    >
-      <#slot />
-    </div>
+    ><#slot /></div>
     """
   end
 end

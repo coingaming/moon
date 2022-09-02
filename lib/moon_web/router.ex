@@ -118,7 +118,7 @@ defmodule MoonWeb.Router do
 
       live "/components/text-input", MoonWeb.Pages.Components.TextInputPage
 
-      live "/components/text-input-group", MoonWeb.Pages.Components.TextInputGroupPage
+      live "/components/input-group", MoonWeb.Pages.Components.InputGroupPage
       live "/components/toast", MoonWeb.Pages.Components.ToastPage
       live "/components/tooltip", MoonWeb.Pages.Components.TooltipPage
 
