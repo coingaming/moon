@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       %{
         :name => 'type',
         :type =>
-          'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
+          'date | datetime-local | email | number | password | search | tel | text | url | time | url',
         :required => 'false',
         :default => 'text',
         :description => 'Different types of input'
@@ -323,10 +323,10 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
           <ExampleAndCode id="input_50" title="Size RTL">
             <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" dir="rtl" />
+              <LeftToRight class="justify-between w-full items-end" dir="rtl">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
               </LeftToRight>
             </:example>
 
@@ -335,10 +335,10 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
           <ExampleAndCode id="input_60" title="Without label">
             <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput placeholder="Placeholder" dir="rtl" />
-                <TextInput size="lg" placeholder="Placeholder" dir="rtl" />
-                <TextInput size="xl" placeholder="Placeholder" dir="rtl" />
+              <LeftToRight class="justify-between w-full items-end" dir="rtl">
+                <TextInput placeholder="Placeholder" />
+                <TextInput size="lg" placeholder="Placeholder" />
+                <TextInput size="xl" placeholder="Placeholder" />
               </LeftToRight>
             </:example>
 
@@ -406,7 +406,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                   <Field name={:password}>
                     <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag />
                   </Field>
-                  <div>
+                  <div class="pt-4">
                     <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
                   </div>
                 </TopToDown>
@@ -420,7 +420,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         </Context>
 
         <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
+          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Text Input Props</div>
           <Table items={@props_info_array}>
             <Column name="name" label="Name" :let={item: item} is_row_header>
               {item.name}
@@ -715,7 +715,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <Field name={:password}>
           <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag/>
         </Field>
-        <div>
+        <div class="pt-4">
           <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
         </div>
       </TopToDown>
