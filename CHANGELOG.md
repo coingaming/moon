@@ -1,3 +1,10 @@
+## [2.24.11](https://github.com/coingaming/moon/compare/v2.24.10...v2.24.11) (2022-09-06)
+
+
+### Bug Fixes
+
+* create the InputGroup component [MDS-188] ([#358](https://github.com/coingaming/moon/issues/358)) ([#365](https://github.com/coingaming/moon/issues/365)) ([11ebd3a](https://github.com/coingaming/moon/commit/11ebd3a95428c8e5f1f41b593190a83fef645917))
+
 ## [2.24.10](https://github.com/coingaming/moon/compare/v2.24.9...v2.24.10) (2022-08-31)
 
 
