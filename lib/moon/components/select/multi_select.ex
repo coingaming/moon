@@ -158,7 +158,7 @@ defmodule Moon.Components.Select.MultiSelect do
             <:left>
               <Labels
                 select_id={@id}
-                value={SelectHelpers.get_value(form, field, value: @value)}
+                value={SelectHelpers.get_normalized_value(form, field, true, value: @value)}
                 {=@options}
                 {=@prompt}
                 {=@size}
