@@ -17,6 +17,7 @@ defmodule Moon.Components.Toast do
   prop link_text, :string
   prop link_href, :string
   prop on_close, :event
+  prop background_color_class, :css_class, default: "bg-gohan-100"
 
   defmodule Message do
     @moduledoc false
@@ -27,16 +28,16 @@ defmodule Moon.Components.Toast do
   def render(assigns) do
     ~F"""
     <div
-      id={@id}
-      class="inline-flex items-center bg-gohan-100 rounded-lg shadow-xl pointer-events-auto p-4 mb-4"
+      {=@id}
+      class={
+        "inline-flex items-center rounded-lg shadow-xl pointer-events-auto p-4 mb-4",
+        @background_color_class
+      }
     >
       <div :if={@variant} class="shrink-0 mr-3">
         <IconError :if={@variant == "error"} class="block w-5 h-5" font_size="1.25rem" />
-
         <IconWarning :if={@variant == "warning"} class="block w-5 h-5" font_size="1.25rem" />
-
         <IconBannerInfo :if={@variant == "info"} class="block w-5 h-5" font_size="1.25rem" />
-
         <IconSnackbarSuccess :if={@variant == "success"} class="block w-5 h-5" font_size="1.25rem" />
       </div>
 
