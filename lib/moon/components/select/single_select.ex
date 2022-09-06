@@ -3,6 +3,7 @@ defmodule Moon.Components.Select.SelectedValue.Container do
 
   use Moon.StatelessComponent
 
+  alias Moon.Components.Label
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Moon.Components.Select.Dropdown.Icon
 
@@ -11,6 +12,8 @@ defmodule Moon.Components.Select.SelectedValue.Container do
   prop size, :string
   prop is_icon, :boolean, default: false
   prop is_label, :boolean, default: false
+  prop selected_label_background_color_class, :css_class
+  prop selected_label_text_color_class, :css_class
 
   def render(assigns) do
     is_inner_label = assigns.is_label and assigns.size in ~w(large xlarge)
@@ -39,26 +42,27 @@ defmodule Moon.Components.Select.SelectedValue.Container do
             {@label}
           </div>
         {/if}
-        <div
-          class={
-            "text-bulma-100",
-            SelectHelpers.label_font_class(@size)
-          }
-          style={get_style(
-            "grid-col": if(@is_icon, do: "span 2 / span 2"),
-            "grid-row": if(@is_icon, do: "span 2 / span 2")
-          )}
-        >
-          {@option.label}
+        <div style={get_style(
+          "grid-col": if(@is_icon, do: "span 2 / span 2"),
+          "grid-row": if(@is_icon, do: "span 2 / span 2")
+        )}>
+          <Label
+            class={SelectHelpers.label_font_class(@size)}
+            background_color={@selected_label_background_color_class}
+            color={@selected_label_text_color_class}
+          >
+            {@option.label}
+          </Label>
         </div>
       </div>
     {#else}
-      <div class={
-        "text-bulma-100",
-        SelectHelpers.label_font_class(@size)
-      }>
+      <Label
+        class={SelectHelpers.label_font_class(@size)}
+        background_color={@selected_label_background_color_class}
+        color={@selected_label_text_color_class}
+      >
         {@option.label}
-      </div>
+      </Label>
     {/if}
     """
   end
@@ -75,6 +79,8 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop option, :any
   prop label, :string
   prop size, :string
+  prop selected_label_background_color_class, :css_class
+  prop selected_label_text_color_class, :css_class
 
   def render(assigns) do
     is_icon = not is_nil(assigns.option[:left_icon])
@@ -93,6 +99,8 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
           {=@option}
           {=@size}
           {=@label}
+          {=@selected_label_background_color_class}
+          {=@selected_label_text_color_class}
           {=is_icon}
           {=is_label}
         />
@@ -116,6 +124,8 @@ defmodule Moon.Components.Select.SingleSelect.Value do
   prop value, :any
   prop label, :string
   prop size, :string
+  prop selected_label_background_color_class, :css_class
+  prop selected_label_text_color_class, :css_class
 
   def render(assigns) do
     ~F"""
@@ -125,6 +135,8 @@ defmodule Moon.Components.Select.SingleSelect.Value do
         option={SelectHelpers.get_option(@options, @value)}
         {=@size}
         {=@label}
+        {=@selected_label_background_color_class}
+        {=@selected_label_text_color_class}
       />
     {#elseif @size in ~w(large xlarge)}
       <div class={
@@ -168,6 +180,8 @@ defmodule Moon.Components.Select.SingleSelect do
   prop popover_class, :string
   prop field_border_class, :string, default: FieldBorder.get_default_states_class()
   prop field_border_color_class, :string
+  prop selected_label_background_color_class, :css_class
+  prop selected_label_text_color_class, :css_class, default: "text-bulma-100"
 
   data open, :boolean, default: false
 
@@ -211,6 +225,8 @@ defmodule Moon.Components.Select.SingleSelect do
                 {=@options}
                 {=@label}
                 {=@size}
+                {=@selected_label_background_color_class}
+                {=@selected_label_text_color_class}
               />
             </:left>
             <:right>
