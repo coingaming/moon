@@ -4,8 +4,8 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   use Moon.StatelessComponent
 
   prop size, :string, values: ~w(medium large), default: "medium"
-  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
-  prop active_background_color, :string, values: Moon.colors(), default: "primary-hover"
+  prop background_color, :string, values: Moon.colors(), default: "bg-gohan-100"
+  prop active_background_color, :string, values: Moon.colors(), default: "bg-goku-100"
   prop current, :boolean, default: false
   prop left_grow, :boolean, default: false
   prop right_grow, :boolean, default: false
@@ -17,10 +17,12 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   def render(assigns) do
     ~F"""
     <div class={
-      "relative rounded-moon-s-sm bg-#{@background_color} text-moon-14 text-bulma-100 leading-6 cursor-pointer hover:#{@active_background_color} flex gap-4 p-4",
+      "relative rounded-moon-s-sm text-moon-14 text-bulma-100 leading-6 cursor-pointer flex gap-4 p-4",
+      @background_color,
+      "hover:#{@active_background_color}",
       "py-2": @size == "medium",
       "py-3": @size == "large",
-      "bg-#{@active_background_color}": @current
+      "#{@active_background_color}": @current
     }>
       <div class={"flex items-center", grow: @left_grow} :if={slot_assigned?(:left_icon)}>
         <#slot name="left_icon" />

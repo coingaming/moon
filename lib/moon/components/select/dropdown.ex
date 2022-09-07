@@ -161,6 +161,9 @@ defmodule Moon.Components.Select.Dropdown do
   alias Surface.Components.Context
   alias Surface.Components.Form.Input.InputContext
 
+  alias Moon.Components.Form
+  alias Moon.Components.TextInput
+
   prop id, :string
   prop select_id, :string
   prop class, :css_class
@@ -168,6 +171,8 @@ defmodule Moon.Components.Select.Dropdown do
   prop value, :any
   prop is_multi, :boolean
   prop disabled, :boolean, default: false
+  prop on_search_change, :event
+  prop search_string, :string
 
   slot default
   slot option_filters
@@ -177,82 +182,93 @@ defmodule Moon.Components.Select.Dropdown do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      {#if !@select_id}
-        {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
-          class: "hidden",
-          id: @id,
-          disabled: @disabled
-        )}
-      {/if}
-      <ul
-        class={"z-10 py-1 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}
-        tabindex="-1"
-        role="listbox"
-        id={"#{@id}-ul-list"}
-      >
+      <div class={"z-10 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}>
+        {#if !@select_id}
+          {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
+            class: "hidden",
+            id: @id,
+            disabled: @disabled
+          )}
+        {/if}
+        {#if @on_search_change}
+          <Form
+            for={:search}
+            id={"#{@id}-search-form"}
+            change={@on_search_change}
+            submit={@on_search_change}
+          >
+            <TextInput key={:search_string} value={@search_string} class="bg-transparent! border-none!">
+              <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
+            </TextInput>
+          </Form>
+        {/if}
         {#if slot_assigned?(:option_filters)}
           <#slot name="option_filters" />
         {/if}
         {#if slot_assigned?(:options_tabs)}
           <#slot name="options_tabs" />
         {/if}
-        {#if @options && !slot_assigned?(:default)}
-          {#for option <- @options}
-            <Option
-              select_id={@select_id || @id}
-              select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
-              value={"#{option.value}"}
-              left_icon={option[:left_icon]}
-              right_icon={option[:right_icon]}
-              {=@is_multi}
-              :let={is_selected: is_selected}
-            >
-              {#if option[:left_icon] && option[:right_icon]}
-                <SingleLineItem current={is_selected}>
-                  <:left_icon>
-                    <Icon icon={option[:left_icon]} />
-                  </:left_icon>
-                  {option.label}
-                  <:right_icon>
-                    <Icon icon={option[:right_icon]} />
-                  </:right_icon>
-                </SingleLineItem>
-              {#elseif option[:left_icon]}
-                <SingleLineItem current={is_selected}>
-                  <:left_icon>
-                    <Icon icon={option[:left_icon]} />
-                  </:left_icon>
-                  {option.label}
-                </SingleLineItem>
-              {#elseif option[:right_icon]}
-                <SingleLineItem current={is_selected}>
-                  {option.label}
-                  <:right_icon>
-                    <Icon icon={option[:right_icon]} />
-                  </:right_icon>
-                </SingleLineItem>
-              {#else}
-                <SingleLineItem current={is_selected}>
-                  {option.label}
-                </SingleLineItem>
-              {/if}
-            </Option>
-          {/for}
-        {/if}
-        {#if slot_assigned?(:default)}
-          <Context put={
-            __MODULE__,
-            select_id: @select_id || @id,
-            select_value: SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value),
-            is_multi: @is_multi
-          }>
-            <#slot name="default" />
-          </Context>
-        {/if}
+        <ul tabindex="-1" role="listbox" id={"#{@id}-ul-list"} class="p-1 grid grid-cols-1 gap-1">
+          {#if @options && !slot_assigned?(:default)}
+            {#for option <- @options}
+              <Option
+                select_id={@select_id || @id}
+                select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
+                value={"#{option.value}"}
+                left_icon={option[:left_icon]}
+                right_icon={option[:right_icon]}
+                {=@is_multi}
+                :let={is_selected: is_selected}
+              >
+                {#if option[:left_icon] && option[:right_icon]}
+                  <SingleLineItem current={is_selected}>
+                    <:left_icon>
+                      <Icon icon={option[:left_icon]} />
+                    </:left_icon>
+                    {option.label}
+                    <:right_icon>
+                      <Icon icon={option[:right_icon]} />
+                    </:right_icon>
+                  </SingleLineItem>
+                {#elseif option[:left_icon]}
+                  <SingleLineItem current={is_selected}>
+                    <:left_icon>
+                      <Icon icon={option[:left_icon]} />
+                    </:left_icon>
+                    {option.label}
+                  </SingleLineItem>
+                {#elseif option[:right_icon]}
+                  <SingleLineItem current={is_selected}>
+                    {option.label}
+                    <:right_icon>
+                      <Icon icon={option[:right_icon]} />
+                    </:right_icon>
+                  </SingleLineItem>
+                {#else}
+                  <SingleLineItem current={is_selected}>
+                    {option.label}
+                  </SingleLineItem>
+                {/if}
+              </Option>
+            {/for}
+          {/if}
+          {#if slot_assigned?(:default)}
+            <Context put={
+              __MODULE__,
+              select_id: @select_id || @id,
+              select_value: SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value),
+              is_multi: @is_multi
+            }>
+              <#slot name="default" />
+            </Context>
+          {/if}
+        </ul>
         {#if slot_assigned?(:options_footer)}
-          <#slot name="options_footer" />
+          <div class="p-1">
+            <#slot name="options_footer" />
+          </div>
         {/if}
-      </ul>
+      </div>
     </InputContext>
     """
   end

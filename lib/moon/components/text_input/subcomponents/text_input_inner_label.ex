@@ -24,6 +24,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
     >
       <Container disabled={disabled} size={size} {=@class}>
         <div class={
+          @class,
           "w-full max-w-full relative",
           Utils.get_border_radius(size),
           "bg-transparent": !background_color,

@@ -25,6 +25,8 @@ defmodule Moon.Components.TextInput.Input do
       get={Moon.Components.TextInput, keyup: keyup}
       get={Moon.Components.TextInput, keydown: keydown}
       get={Moon.Components.TextInput, blur: blur}
+      get={Moon.Components.TextInput, has_left_icon: has_left_icon}
+      get={Moon.Components.TextInput, has_right_icon: has_right_icon}
     >
       <Surface.Components.Form.TextInput
         {=@id}
@@ -59,7 +61,9 @@ defmodule Moon.Components.TextInput.Input do
           "bg-transparent": !background_color,
           "input-xl-dt-shared": size == "xl",
           "input-xl pt-[1.125rem] input-xl-dt-label": size == "xl" && label,
-          "input-lg-dt-shared": size == "lg"
+          "input-lg-dt-shared": size == "lg",
+          "pl-12": has_left_icon,
+          "pr-12": has_right_icon
         }
         {=focus}
         {=keyup}
