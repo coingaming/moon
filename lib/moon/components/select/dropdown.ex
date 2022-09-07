@@ -197,7 +197,7 @@ defmodule Moon.Components.Select.Dropdown do
             change={@on_search_change}
             submit={@on_search_change}
           >
-            <TextInput key={:search_string} value={@search_string} class="bg-transparent! border-none!">
+            <TextInput key={:search_string} value={@search_string} class="bg-red-500">
               <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
             </TextInput>
           </Form>

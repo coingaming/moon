@@ -8,7 +8,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
 
   prop id, :string
   prop field, :atom
-  prop class, :string, default: ""
+  prop class, :css_class
   slot default
 
   def render(assigns) do
