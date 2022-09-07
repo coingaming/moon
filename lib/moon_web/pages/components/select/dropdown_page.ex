@@ -43,7 +43,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        radio_form_changeset: user_changeset,
        options: user_permissions,
        searched_options: user_permissions,
-       search_string: "fuuck",
+       search_string: "",
        radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
        tab_id: "1",
