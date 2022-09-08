@@ -1,3 +1,10 @@
+## [2.24.12](https://github.com/coingaming/moon/compare/v2.24.11...v2.24.12) (2022-09-08)
+
+
+### Bug Fixes
+
+* fix missing label on TextInput xl [MDS-217] ([#369](https://github.com/coingaming/moon/issues/369)) ([61a5c8f](https://github.com/coingaming/moon/commit/61a5c8fa8d0851d927ce1e4cc7ca3328325c5045))
+
 ## [2.24.11](https://github.com/coingaming/moon/compare/v2.24.10...v2.24.11) (2022-09-06)
 
 
