@@ -3,6 +3,7 @@ defmodule Moon.Components.Select.SelectedValue.Container do
 
   use Moon.StatelessComponent
 
+  alias Moon.Components.Label
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Moon.Components.Select.Dropdown.Icon
 
@@ -39,26 +40,27 @@ defmodule Moon.Components.Select.SelectedValue.Container do
             {@label}
           </div>
         {/if}
-        <div
-          class={
-            "text-bulma-100",
-            SelectHelpers.label_font_class(@size)
-          }
-          style={get_style(
-            "grid-col": if(@is_icon, do: "span 2 / span 2"),
-            "grid-row": if(@is_icon, do: "span 2 / span 2")
-          )}
-        >
-          {@option.label}
+        <div style={get_style(
+          "grid-col": if(@is_icon, do: "span 2 / span 2"),
+          "grid-row": if(@is_icon, do: "span 2 / span 2")
+        )}>
+          <Label
+            class={SelectHelpers.label_font_class(@size)}
+            background_color={@option[:bg]}
+            color={@option[:text]}
+          >
+            {@option.label}
+          </Label>
         </div>
       </div>
     {#else}
-      <div class={
-        "text-bulma-100",
-        SelectHelpers.label_font_class(@size)
-      }>
+      <Label
+        class={SelectHelpers.label_font_class(@size)}
+        background_color={@option[:bg]}
+        color={@option[:text]}
+      >
         {@option.label}
-      </div>
+      </Label>
     {/if}
     """
   end
