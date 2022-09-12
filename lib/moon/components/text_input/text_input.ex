@@ -113,7 +113,7 @@ defmodule Moon.Components.TextInput do
           <TextInputPassword
             {=@id}
             {=@field}
-            class={@class, get_combined_class(is_in_input_group, field, group_class_plain)}
+            class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
             {internal_render}
           </TextInputPassword>
@@ -121,7 +121,7 @@ defmodule Moon.Components.TextInput do
           <TextInputInnerLabel
             {=@id}
             {=@field}
-            class={@class, get_combined_class(is_in_input_group, field, group_class_plain)}
+            class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
             {internal_render}
           </TextInputInnerLabel>

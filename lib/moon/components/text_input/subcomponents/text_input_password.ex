@@ -12,7 +12,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   data password, :string, default: ""
 
   prop field, :atom
-  prop class, :string, default: ""
+  prop class, :css_class
   slot default
 
   def render(assigns) do

@@ -7,7 +7,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.ErrorTag
 
-  prop class, :string, default: ""
+  prop class, :css_class
   prop id, :string
   prop field, :atom
   slot default

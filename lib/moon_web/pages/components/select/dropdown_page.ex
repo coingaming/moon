@@ -32,6 +32,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       }
     ]
 
+  data search_string, :string, default: "ASD"
+
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
@@ -99,18 +101,19 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="With search and footer" id="dropdown-search-footer-example">
+        <ExampleAndCode title="With search and footer" id="random-id-98439">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
-                  id="dropdown-search-footer-example-user-permissions"
+                  id="random-id-38943"
                   options={@searched_options}
                   on_search_change="update_search"
                   search_string={@search_string}
                   is_multi
                 >
+                  {@search_string}
                   {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
@@ -273,10 +276,12 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def handle_event(
         "update_search",
-        %{"search" => %{"search_string" => search_string}},
+        params,
         socket
       ) do
-    IO.puts(search_string)
+    IO.puts("WTFFFF")
+    IO.puts(inspect(params))
+    search_string = "fuck"
     options = socket.assigns.options
 
     searched_options =

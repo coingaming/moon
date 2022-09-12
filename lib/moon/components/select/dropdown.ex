@@ -182,7 +182,7 @@ defmodule Moon.Components.Select.Dropdown do
   def render(assigns) do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
-      <div class={"z-10 rounded shadow-lg bg-gohan-100 focus:outline-none", @class}>
+      <div class={"z-10 rounded shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1", @class}>
         {#if !@select_id}
           {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
             class: "hidden",
@@ -197,7 +197,7 @@ defmodule Moon.Components.Select.Dropdown do
             change={@on_search_change}
             submit={@on_search_change}
           >
-            <TextInput key={:search_string} value={@search_string} class="bg-red-500">
+            <TextInput key={:search_string} value={@search_string} keyup={@on_search_change} class="bg-red-500">
               <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
             </TextInput>
           </Form>
@@ -208,7 +208,7 @@ defmodule Moon.Components.Select.Dropdown do
         {#if slot_assigned?(:options_tabs)}
           <#slot name="options_tabs" />
         {/if}
-        <ul tabindex="-1" role="listbox" id={"#{@id}-ul-list"} class="p-1 grid grid-cols-1 gap-1">
+        <ul tabindex="-1" role="listbox" id={"#{@id}-ul-list"} class="grid grid-cols-1 gap-1">
           {#if @options && !slot_assigned?(:default)}
             {#for option <- @options}
               <Option
