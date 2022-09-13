@@ -202,7 +202,6 @@ defmodule Moon.Components.Select.Dropdown do
             submit={@on_search_change}
           >
             <TextInput
-              key={:search_string}
               value={@search_string}
               keyup={@on_search_change}
               class="bg-red-500"
