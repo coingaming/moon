@@ -14,7 +14,6 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
-  alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
