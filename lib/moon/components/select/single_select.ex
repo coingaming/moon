@@ -10,8 +10,8 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias __MODULE__.Value
   alias Surface.Components.Form.Input.InputContext
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue
 
   prop field, :atom
   prop label, :string
@@ -53,12 +53,13 @@ defmodule Moon.Components.Select.SingleSelect do
         <FieldBorder click="toggle_open">
           <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
             <:left>
-              <Value
-                select_id={@id}
-                value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
-                {=@options}
-                {=@label}
+              <SelectedValue
+                :if={has_value(form, field, @value)}
                 {=@size}
+                {=@label}
+                {=@placeholder}
+                select_id={@id}
+                option={get_option_selected(form, field, @options, @value)}
               />
             </:left>
             <:right>
@@ -102,5 +103,20 @@ defmodule Moon.Components.Select.SingleSelect do
 
   defp has_error(form, field) do
     field && form && Keyword.has_key?(form.errors, field)
+  end
+
+  defp get_option_selected(form, field, options, value) do
+    normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
+
+    if normalized_value != "" do
+      SelectHelpers.get_option(options, normalized_value)
+    else
+      ""
+    end
+  end
+
+  defp has_value(form, field, value) do
+    normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
+    normalized_value != ""
   end
 end
