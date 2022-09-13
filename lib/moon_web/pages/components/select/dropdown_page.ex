@@ -14,7 +14,6 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.Tabs
   alias Moon.Components.Tabs.TabLink
-  alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
@@ -32,6 +31,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       }
     ]
 
+  data search_string, :string, default: "ASD"
+
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
@@ -42,7 +43,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        user_changeset: user_changeset,
        radio_form_changeset: user_changeset,
        options: user_permissions,
-       searchable_options: user_permissions,
+       searched_options: user_permissions,
+       search_string: "",
        radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
        tab_id: "1",
@@ -98,64 +100,44 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="With search" id="dropdown-search-example">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-search-example-user-permissions" is_multi options={@searchable_options}>
-                  <:option_filters>
-                    <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-                  </:option_filters>
-                  {#for option <- @searchable_options}
-                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                      <SingleLineItem current={is_selected}>
-                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                        {option.label}
-                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
-                      </SingleLineItem>
-                    </Dropdown.Option>
-                  {/for}
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown_search()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="With search and footer" id="dropdown-search-footer-example">
+        <ExampleAndCode title="With search and footer" id="random-id-98439">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
-                  id="dropdown-search-footer-example-user-permissions"
-                  options={@searchable_options}
+                  id="random-id-38943"
+                  available_options={@options}
+                  options={@searched_options}
+                  on_search_change="update_search"
+                  search_string={@search_string}
                   is_multi
                 >
-                  <:option_filters>
-                    <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-                  </:option_filters>
-                  {#for option <- @searchable_options}
+                  {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
-                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                        <:right_icon>
+                          <Checkbox
+                            id={"random-id-38943_#{option.value}"}
+                            field={:user_permissions_options_checked}
+                            checked={is_selected}
+                          />
+                        </:right_icon>
                       </SingleLineItem>
                     </Dropdown.Option>
                   {/for}
                   <:options_footer>
                     <Footer>
                       <:cancel>
-                        <Button variant="fill" size="small">Cancel</Button>
+                        <Button variant="secondary" size="small">Cancel</Button>
                       </:cancel>
                       <:clear>
-                        <Button variant="fill" size="small" on_click="clear_selections">Clear</Button>
+                        <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
                       </:clear>
                       <:confirm>
-                        <Button variant="fill" size="small">Confirm</Button>
+                        <Button variant="primary" size="small">Confirm</Button>
                       </:confirm>
                     </Footer>
                   </:options_footer>
@@ -197,8 +179,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-checkbox-example-user-permissions" options={@searchable_options} is_multi>
-                  {#for option <- @searchable_options}
+                <Dropdown
+                  id="dropdown-checkbox-example-user-permissions"
+                  available_options={@options}
+                  options={@searched_options}
+                  is_multi
+                >
+                  {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
@@ -298,28 +285,17 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   end
 
   def handle_event(
-        "apply_filter",
-        %{
-          "value" => value
-        },
+        "update_search",
+        %{"value" => search_string},
         socket
       ) do
     options = socket.assigns.options
 
-    filtered_options =
+    searched_options =
       options
-      |> Enum.filter(&String.contains?(String.downcase(&1.label), value))
-      |> case do
-        [] ->
-          options
+      |> Enum.filter(&String.contains?(String.downcase(&1.label), String.downcase(search_string)))
 
-        filters ->
-          filters
-      end
-
-    filtered_options = if value === "", do: options, else: filtered_options
-
-    {:noreply, assign(socket, searchable_options: filtered_options)}
+    {:noreply, assign(socket, searched_options: searched_options, search_string: search_string)}
   end
 
   def handle_event("clicked_tab", %{"item_id" => tab_id}, socket) do
@@ -334,48 +310,6 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <Dropdown id="dropdown-options-example-user-permissions" options={User.available_permissions()} is_multi />
       </Field>
     </Form>
-    """
-  end
-
-  def code_for_dropdown_search do
-    """
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:permission}>
-        <FieldLabel>Permissions</FieldLabel>
-        <Dropdown
-          id="dropdown-search-example-user-permissions"
-          options={@searchable_options}
-          is_multi>
-          <:option_filters>
-            <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-          </:option_filters>
-          {#for option <- @searchable_options}
-            <Dropdown.Option value={"option.value"} :let={is_selected: is_selected}>
-              <SingleLineItem current={is_selected}>
-                <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                {option.label}
-                <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
-              </SingleLineItem>
-            </Dropdown.Option>
-          {/for}
-        </Dropdown>
-      </Field>
-    </Form>
-
-
-    NOTE:
-      `<TextInput field={:option_filter} type="search" keyup="apply_filter" />`
-      1. field={:option_filter} field attribute with field name should be added.
-      2. keyup="apply_filter" an Options filter event should be applied to handle the Dropdown options search.
-
-      For example: in the above Dropdown with search we do have an TextInput with keyup="apply_filter" event.
-
-      ```
-      def handle_event("apply_filter", params, socket) do
-        ## Logic to filter Options ans assign to socket
-        {:noreply, assign(socket)}
-      end
-      ```
     """
   end
 

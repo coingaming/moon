@@ -8,7 +8,7 @@ defmodule Moon.Components.TextInput.Container do
   prop id, :string
   prop disabled, :boolean, default: false
   prop size, :string, values: ["md", "lg", "xl"]
-  prop class, :string
+  prop class, :css_class
 
   slot default
 

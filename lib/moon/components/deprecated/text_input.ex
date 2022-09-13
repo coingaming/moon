@@ -29,7 +29,7 @@ defmodule Moon.Components.Deprecated.TextInput do
   prop rounded, :boolean
   prop disabled, :boolean
   prop required, :boolean
-  prop class, :string
+  prop class, :css_class
   prop focus, :event
   prop keydown, :event
   prop keyup, :event

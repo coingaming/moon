@@ -11,6 +11,7 @@ defmodule Moon.Components.Form do
   prop(class, :string)
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
   prop(target, :any)
+  prop(trigger_action, :any)
   slot(default)
 
   def render(assigns) do
@@ -20,6 +21,7 @@ defmodule Moon.Components.Form do
       {=@submit}
       {=@change}
       {=@class}
+      {=@trigger_action}
       opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id, "phx-target": @target}
     >
       <#slot />
