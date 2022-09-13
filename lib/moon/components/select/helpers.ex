@@ -65,30 +65,21 @@ defmodule Moon.Components.Select.Helpers do
 
   def get_padding(size) do
     case size do
-      "small" -> "p-1 h-10 leading-3"
-      "medium" -> "p-2 h-12 leading-4"
-      "large" -> "p-3 h-14 leading-5"
-      "xlarge" -> "p-4 h-16 leading-6"
+      "md" -> "p-2 h-12 leading-4"
+      "lg" -> "p-3 h-14 leading-5"
+      "xl" -> "p-4 h-16 leading-6"
+      # TODO
+      _ -> ""
     end
   end
 
   def innerlabel_font_class(size) do
     case size do
-      "small" -> "uppercase text-moon-10"
-      "medium" -> "text-moon-12"
-      "large" -> "text-moon-14"
-      "xlarge" -> "text-moon-16"
+      "md" -> "text-moon-12"
+      "lg" -> "text-moon-14"
+      "xl" -> "text-moon-16"
+      # TODO
+      _ -> ""
     end
   end
-
-  def label_font_class(size) do
-    case size do
-      "small" -> "text-moon-12"
-      "medium" -> "text-moon-14"
-      "large" -> "text-moon-16"
-      "xlarge" -> "text-moon-18"
-    end
-  end
-
-  def prompt_font_class(size), do: label_font_class(size)
 end
