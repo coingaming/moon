@@ -185,7 +185,10 @@ defmodule Moon.Components.Select.Dropdown do
     <InputContext assigns={assigns} :let={form: form, field: field}>
       <div class={"z-10 rounded shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1", @class}>
         {#if !@select_id}
-          {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@available_options || @options),
+          {Phoenix.HTML.Form.multiple_select(
+            form,
+            field,
+            SelectHelpers.get_formatted_options(@available_options || @options),
             class: "hidden",
             id: @id,
             disabled: @disabled
@@ -198,7 +201,12 @@ defmodule Moon.Components.Select.Dropdown do
             change={@on_search_change}
             submit={@on_search_change}
           >
-            <TextInput key={:search_string} value={@search_string} keyup={@on_search_change} class="bg-red-500">
+            <TextInput
+              key={:search_string}
+              value={@search_string}
+              keyup={@on_search_change}
+              class="bg-red-500"
+            >
               <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
             </TextInput>
           </Form>

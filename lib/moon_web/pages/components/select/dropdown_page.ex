@@ -180,7 +180,12 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-checkbox-example-user-permissions" available_options={@options} options={@searched_options} is_multi>
+                <Dropdown
+                  id="dropdown-checkbox-example-user-permissions"
+                  available_options={@options}
+                  options={@searched_options}
+                  is_multi
+                >
                   {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
