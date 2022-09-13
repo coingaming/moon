@@ -1,3 +1,10 @@
+# [2.25.0](https://github.com/coingaming/moon/compare/v2.24.13...v2.25.0) (2022-09-13)
+
+
+### Features
+
+* Added placeholder_slot for SingleSelect ([bafd6ba](https://github.com/coingaming/moon/commit/bafd6bab8305edecc96639ef219511b0a0698f66))
+
 ## [2.24.13](https://github.com/coingaming/moon/compare/v2.24.12...v2.24.13) (2022-09-13)
 
 
