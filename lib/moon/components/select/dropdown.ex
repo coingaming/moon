@@ -167,6 +167,7 @@ defmodule Moon.Components.Select.Dropdown do
   prop id, :string
   prop select_id, :string
   prop class, :css_class
+  prop available_options, :any
   prop options, :any
   prop value, :any
   prop is_multi, :boolean
@@ -184,7 +185,7 @@ defmodule Moon.Components.Select.Dropdown do
     <InputContext assigns={assigns} :let={form: form, field: field}>
       <div class={"z-10 rounded shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1", @class}>
         {#if !@select_id}
-          {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
+          {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@available_options || @options),
             class: "hidden",
             id: @id,
             disabled: @disabled

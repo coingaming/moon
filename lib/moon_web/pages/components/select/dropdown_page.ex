@@ -108,18 +108,24 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <FieldLabel>Permissions</FieldLabel>
                 <Dropdown
                   id="random-id-38943"
+                  available_options={@options}
                   options={@searched_options}
                   on_search_change="update_search"
                   search_string={@search_string}
                   is_multi
                 >
-                  {@search_string}
                   {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
                         <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
                         {option.label}
-                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                        <:right_icon>
+                          <Checkbox
+                            id={"random-id-38943_#{option.value}"}
+                            field={:user_permissions_options_checked}
+                            checked={is_selected}
+                          />
+                        </:right_icon>
                       </SingleLineItem>
                     </Dropdown.Option>
                   {/for}
@@ -174,7 +180,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:permissions}>
                 <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-checkbox-example-user-permissions" options={@searched_options} is_multi>
+                <Dropdown id="dropdown-checkbox-example-user-permissions" available_options={@options} options={@searched_options} is_multi>
                   {#for option <- @searched_options}
                     <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
                       <SingleLineItem current={is_selected}>
@@ -276,12 +282,9 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def handle_event(
         "update_search",
-        params,
+        %{"value" => search_string},
         socket
       ) do
-    IO.puts("WTFFFF")
-    IO.puts(inspect(params))
-    search_string = "fuck"
     options = socket.assigns.options
 
     searched_options =
