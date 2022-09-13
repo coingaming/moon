@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias Moon.Icon
 
   data breadcrumbs, :any,
     default: [
@@ -160,7 +161,11 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-1" options={User.available_roles()} />
+                <SingleSelect id="user-roles-example-1" options={User.available_roles()}>
+                  <:placeholder_slot>
+                    <Icon name="controls-eye" /> Placeholder
+                  </:placeholder_slot>
+                </SingleSelect>
               </Field>
             </Form>
           </:example>

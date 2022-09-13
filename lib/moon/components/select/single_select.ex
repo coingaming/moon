@@ -174,6 +174,7 @@ defmodule Moon.Components.Select.SingleSelect do
   data open, :boolean, default: false
 
   slot default
+  slot placeholder_slot
 
   def render(assigns) do
     ~F"""
@@ -207,6 +208,9 @@ defmodule Moon.Components.Select.SingleSelect do
         >
           <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
             <:left>
+              {#if SelectHelpers.get_normalized_value(form, field, false, value: @value) == ""}
+                <#slot name="placeholder_slot" />
+              {/if}
               <Value
                 select_id={@id}
                 value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
