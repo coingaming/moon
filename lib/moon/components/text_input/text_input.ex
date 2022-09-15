@@ -60,18 +60,11 @@ defmodule Moon.Components.TextInput do
   slot right_icon_slot
   slot hint_text_slot
 
+  # <div class="absolute left-4 bottom-2 flex items-center text-trunks-100 z-50"></div>
+
+
   def render(assigns) do
     internal_render = ~F"""
-    {#if slot_assigned?(:left_icon_slot)}
-      <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100" style="z-index: 9999">
-        <#slot name="left_icon_slot" />
-      </div>
-    {/if}
-    {#if slot_assigned?(:right_icon_slot)}
-      <div class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100">
-        <#slot name="right_icon_slot" />
-      </div>
-    {/if}
     <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
       <#slot name="hint_text_slot" />
     </HintText>
@@ -115,6 +108,12 @@ defmodule Moon.Components.TextInput do
             {=@field}
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputPassword>
         {#elseif @size == "xl"}
@@ -123,10 +122,22 @@ defmodule Moon.Components.TextInput do
             {=@field}
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputInnerLabel>
         {#else}
           <TextInputBasic {=@id} {=@field} {=@class}>
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputBasic>
         {/if}

@@ -10,6 +10,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop field, :atom
   prop class, :css_class
   slot default
+  slot left_icon_slot
+  slot right_icon_slot
 
   def render(assigns) do
     ~F"""
@@ -29,10 +31,10 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         </label>
         <Input {=@id} {=@field} />
         <#slot />
-        <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
-          <ErrorTag />
-        </div>
       </Container>
+      <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
+        <ErrorTag />
+      </div>
     </Context>
     """
   end

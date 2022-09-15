@@ -9,11 +9,12 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias Moon.Components.TextInput
   alias Moon.Components.Heading
   alias Moon.Autolayouts.LeftToRight
+  alias Moon.Components.ErrorTag
+  alias Moon.Components.Field
   alias Moon.Components.Form
   alias Moon.Components.Button
+  alias Moon.Icon
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias Moon.Components.Field
-  alias Moon.Components.ErrorTag
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
@@ -125,6 +126,21 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                 <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
                 <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
                 <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+              </LeftToRight>
+
+              <LeftToRight class="justify-between w-full items-end">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
+                </TextInput>
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
+                </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
+                </TextInput>
               </LeftToRight>
             </:example>
 

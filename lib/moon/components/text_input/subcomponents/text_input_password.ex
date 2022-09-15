@@ -14,6 +14,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   prop field, :atom
   prop class, :css_class
   slot default
+  slot left_icon_slot
+  slot right_icon_slot
 
   def render(assigns) do
     ~F"""

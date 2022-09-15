@@ -11,6 +11,8 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   prop id, :string
   prop field, :atom
   slot default
+  slot left_icon_slot
+  slot right_icon_slot
 
   def render(assigns) do
     ~F"""
