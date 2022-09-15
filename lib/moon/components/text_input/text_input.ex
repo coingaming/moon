@@ -37,13 +37,6 @@ defmodule Moon.Components.TextInput do
   prop step, :string, default: "1"
   prop class, :css_class
 
-  prop is_sharp_left_side, :boolean
-  prop is_sharp_right_side, :boolean
-  prop is_sharp_top_side, :boolean
-  prop is_sharp_bottom_side, :boolean
-  prop is_top_bottom_border_hidden, :boolean
-  prop is_side_border_hidden, :boolean
-
   prop readonly, :boolean
   prop value, :string
 
@@ -59,9 +52,6 @@ defmodule Moon.Components.TextInput do
   slot left_icon_slot
   slot right_icon_slot
   slot hint_text_slot
-
-  # <div class="absolute left-4 bottom-2 flex items-center text-trunks-100 z-50"></div>
-
 
   def render(assigns) do
     internal_render = ~F"""
@@ -83,12 +73,6 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, label: @label}
         put={__MODULE__, required: @required}
         put={__MODULE__, step: @step}
-        put={__MODULE__, is_sharp_left_side: @is_sharp_left_side}
-        put={__MODULE__, is_sharp_right_side: @is_sharp_right_side}
-        put={__MODULE__, is_sharp_bottom_side: @is_sharp_bottom_side}
-        put={__MODULE__, is_sharp_top_side: @is_sharp_top_side}
-        put={__MODULE__, is_top_bottom_border_hidden: @is_top_bottom_border_hidden}
-        put={__MODULE__, is_side_border_hidden: @is_side_border_hidden}
         put={__MODULE__, readonly: @readonly}
         put={__MODULE__, value: @value}
         put={__MODULE__, focus: @focus}
