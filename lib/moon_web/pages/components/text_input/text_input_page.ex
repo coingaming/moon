@@ -137,17 +137,33 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
           <ExampleAndCode id="input_023" title="Icons">
             <:example>
               <TopToDown class="w-full">
-
                 <LeftToRight class="justify-between w-full items-end">
-                  <TextInput label="Medium (Default: md)" placeholder="Placeholder" type="password" id="txt_password_0_1">
+                  <TextInput
+                    label="Medium (Default: md)"
+                    placeholder="Placeholder"
+                    type="password"
+                    id="txt_password_0_1"
+                  >
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
                   </TextInput>
-                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" type="password" id="txt_password_0_2">
+                  <TextInput
+                    size="lg"
+                    label="Large (lg)"
+                    placeholder="Placeholder"
+                    type="password"
+                    id="txt_password_0_2"
+                  >
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
                   </TextInput>
-                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" type="password" id="txt_password_0_3">
+                  <TextInput
+                    size="xl"
+                    label="Xlarge (xl)"
+                    placeholder="Placeholder"
+                    type="password"
+                    id="txt_password_0_3"
+                  >
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
                   </TextInput>
@@ -185,9 +201,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                     <:hint_text_slot>Informative message holder</:hint_text_slot>
                   </TextInput>
                 </LeftToRight>
-
               </TopToDown>
-
             </:example>
 
             <:code>{text_input_023_code()}</:code>

@@ -34,7 +34,6 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         <div class={
           "absolute left-4 z-10 top-[55%]",
           "top-[43%]": (use_error_tag && is_error) || has_hint_text
-
         }><#slot name="left_icon_slot" /></div>
         <Input {=@id} {=@field} />
         <#slot />
@@ -42,7 +41,6 @@ defmodule Moon.Components.TextInput.TextInputBasic do
           "absolute right-4 z-10 top-[55%]",
           "top-[43%]": (use_error_tag && is_error) || has_hint_text
         }><#slot name="right_icon_slot" /></div>
-
       </Container>
       <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
         <ErrorTag />
