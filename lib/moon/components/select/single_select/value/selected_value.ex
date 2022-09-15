@@ -28,27 +28,23 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     is_inner_label = is_label and assigns.size != "xl"
 
     ~F"""
-    {#if has_value(@option)}
-      {#if is_inner_label or has_icons}
-      <div
-        class={"grid grid-rows-2": has_icons}
-        style={get_style(
-          "grid-auto-flow": if(has_icons, do: "column")
-        )}
-      >
+    <div class="mx-4 h-fit">
+      {#if has_value(@option)}
+        {#if is_inner_label or has_icons}
+        <div class={"grid grid-rows-2 grid-flow-col": has_icons}>
+            <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
+            <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
+            <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
+            <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
 
-          <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
-          <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
-          <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
-          <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
-
-        </div>
+          </div>
+        {#else}
+          <InnerLabelNoIconsContent label={@option.label} />
+        {/if}
       {#else}
-        <InnerLabelNoIconsContent label={@option.label} />
+        <NoInnerLabelNoIconsContent {=@placeholder} />
       {/if}
-    {#else}
-      <NoInnerLabelNoIconsContent {=@placeholder} />
-    {/if}
+    </div>
     """
   end
 

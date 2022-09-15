@@ -25,6 +25,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop popover_placement, :string, default: "bottom-start"
   prop popover_class, :string
   prop placeholder, :string
+  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
 
   data open, :boolean, default: false
 
@@ -50,8 +51,15 @@ defmodule Moon.Components.Select.SingleSelect do
           id: @id,
           prompt: @label
         )}
-        <FieldBorder click="toggle_open">
-          <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
+        <FieldBorder
+          click="toggle_open"
+          class={"w-full", "bg-#{@background_color}": @background_color}
+        >
+          <PullAside
+            class={
+              SelectHelpers.get_padding(@size),
+              get_disabled_class(@disabled)
+            }>
             <:left>
               <SelectedValue
                 :if={has_value(form, field, @value)}
