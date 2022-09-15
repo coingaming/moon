@@ -34,7 +34,7 @@ defmodule Moon.Components.Select.SingleSelect do
   def render(assigns) do
     ~F"""
     {#if @size != "xl"}
-      <FieldLabel class="text-trunks-100 text-moon-16 font-normal">
+      <FieldLabel class="block text-trunks-100 text-moon-16 font-normal mb-2">
         {@label}
       </FieldLabel>
     {/if}
