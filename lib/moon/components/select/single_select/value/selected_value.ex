@@ -7,6 +7,12 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   alias Moon.Components.Label
   alias Moon.Components.Select.Dropdown.Icon
   alias Moon.Components.Select.Helpers, as: SelectHelpers
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.NoInnerLabelNoIconsContent
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelNoIconsContent
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelContent
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.LeftIconContent
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.RightIconContent
 
   prop select_id, :string
   prop option, :any
@@ -21,38 +27,6 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     is_label = not is_nil(assigns.label)
     is_inner_label = is_label and assigns.size != "xl"
 
-    left_icon_content = ~F"""
-      <Icon
-        class="grid place-content-center pr-2"
-        icon={@option[:left_icon]}
-        style="grid-row: span 3 / span 3;"
-      />
-    """
-
-    inner_label_content = ~F"""
-      <div
-        class={
-          "text-trunks-100",
-          SelectHelpers.innerlabel_font_class(@size)
-        }
-        style={get_style("grid-col": if(has_left_icon, do: "span 2 / span 2"))}
-      >
-        {@label}
-      </div>
-    """
-
-    main_content = ~F"""
-    <div
-      class={
-        "text-bulma-100 text-moon-16",
-        "mt-[-4px]": has_icons and is_inner_label,
-        "col-[_span_3_/_span_2] row-[_span_3_/_span_2]": has_icons and !is_inner_label
-      }
-    >
-      {@option.label}
-    </div>
-    """
-
     ~F"""
     {#if has_value(@option)}
       {#if is_inner_label or has_icons}
@@ -62,29 +36,19 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
           "grid-auto-flow": if(has_icons, do: "column")
         )}
       >
-          {#if has_left_icon}
-            {left_icon_content}
-          {/if}
-          {#if is_inner_label}
-            {inner_label_content}
-          {/if}
 
-          {main_content}
+          <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
+          <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_left_icon}/>
+          <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
+          <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
+
         </div>
-      {#else} <!-- {#if is_inner_label or has_left_icon} -->
-        <Label
-          class="text-moon-14"
-          background_color={@option[:bg]}
-          color={@option[:text]}
-        >
-          {@option.label}
-        </Label>
-      {/if} <!-- {#if is_inner_label or has_left_icon} -->
-    {#else} <!-- {#if has_value(@option)} -->
-      <div class="text-trunks-100 text-moon-16">
-        {@placeholder}
-      </div>
-    {/if} <!-- {#if has_value(@option)} -->
+      {#else}
+        <InnerLabelNoIconsContent label={@option.label} />
+      {/if}
+    {#else}
+      <NoInnerLabelNoIconsContent {=@placeholder} />
+    {/if}
     """
   end
 
