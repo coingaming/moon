@@ -5,7 +5,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
   alias Moon.Components.Select.Helpers, as: SelectHelpers
 
   prop label, :string, default: ""
-  prop has_left_icon, :boolean
+  prop has_icons, :boolean
   prop size, :string
 
   def render(assigns) do
@@ -13,9 +13,10 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
     <div
       class={
         "text-trunks-100",
-        SelectHelpers.innerlabel_font_class(@size)
+        SelectHelpers.innerlabel_font_class(@size),
+        "col-[_span_2_/_span_2] row-[_span_2_/_span_2]": @has_icons
       }
-      style={get_style("grid-col": if(@has_left_icon, do: "span 2 / span 2"))}
+
     >
       {@label}
     </div>

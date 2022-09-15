@@ -38,7 +38,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
       >
 
           <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
-          <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_left_icon}/>
+          <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
           <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
           <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
 
