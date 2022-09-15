@@ -127,24 +127,70 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                 <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
                 <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
               </LeftToRight>
-
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder">
-                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
-                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
-                </TextInput>
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
-                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
-                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
-                </TextInput>
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
-                  <:left_icon_slot><Icon name="controls-eye" /></:left_icon_slot>
-                  <:right_icon_slot><Icon name="controls-close" /></:right_icon_slot>
-                </TextInput>
-              </LeftToRight>
             </:example>
 
             <:code>{text_input_020_code()}</:code>
+          </ExampleAndCode>
+
+          <Heading size={32} class="mt-16 mb-4">Text Input Icons</Heading>
+
+          <ExampleAndCode id="input_023" title="Icons">
+            <:example>
+              <TopToDown class="w-full">
+
+                <LeftToRight class="justify-between w-full items-end">
+                  <TextInput label="Medium (Default: md)" placeholder="Placeholder" type="password" id="txt_password_0_1">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" type="password" id="txt_password_0_2">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" type="password" id="txt_password_0_3">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                </LeftToRight>
+
+                <LeftToRight class="justify-between w-full items-end">
+                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  </TextInput>
+                </LeftToRight>
+
+                <LeftToRight class="justify-between w-full items-end">
+                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                    <:hint_text_slot>Informative message holder</:hint_text_slot>
+                  </TextInput>
+                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                    <:hint_text_slot>Informative message holder</:hint_text_slot>
+                  </TextInput>
+                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                    <:hint_text_slot>Informative message holder</:hint_text_slot>
+                  </TextInput>
+                </LeftToRight>
+
+              </TopToDown>
+
+            </:example>
+
+            <:code>{text_input_023_code()}</:code>
           </ExampleAndCode>
 
           <Heading size={32} class="mt-16 mb-4">Text Input Types</Heading>
@@ -465,6 +511,60 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     <TextInput label="Medium (Default: md)" />
     <TextInput size="lg" label="Large (lg)" />
     <TextInput size="xl" label="Xlarge (xl)" />
+    """
+  end
+
+  def text_input_023_code do
+    """
+    <TopToDown class="w-full">
+      <LeftToRight class="justify-between w-full items-end">
+        <TextInput label="Medium (Default: md)" placeholder="Placeholder" type="password" id="txt_password_0_1">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+        <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" type="password" id="txt_password_0_2">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+        <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" type="password" id="txt_password_0_3">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+      </LeftToRight>
+
+      <LeftToRight class="justify-between w-full items-end">
+        <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+        <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+        <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+        </TextInput>
+      </LeftToRight>
+
+      <LeftToRight class="justify-between w-full items-end">
+        <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+          <:hint_text_slot>Informative message holder</:hint_text_slot>
+        </TextInput>
+        <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+          <:hint_text_slot>Informative message holder</:hint_text_slot>
+        </TextInput>
+        <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+          <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+          <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+          <:hint_text_slot>Informative message holder</:hint_text_slot>
+        </TextInput>
+      </LeftToRight>
+    </TopToDown>
     """
   end
 

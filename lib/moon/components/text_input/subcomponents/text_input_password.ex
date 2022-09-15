@@ -27,6 +27,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
       get={Moon.Components.TextInput, show_password_text: show_password_text}
+      get={Moon.Components.TextInput, has_left_icon: has_left_icon}
     >
       <Container {=disabled} {=@id} {=@class}>
         {#if size == "xl"}
@@ -38,6 +39,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               "bg-#{background_color}": background_color
             }
           >
+            <div class="absolute top-[30%] left-4 z-10"><#slot name="left_icon_slot" /></div>
             <Password
               {=@id}
               {=@field}
@@ -47,12 +49,14 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               type={get_type(@password_shown)}
             />
             <label class={
-              "absolute text-[0.75rem] leading-3 text-trunks-199 top-3 z-[3] transition-all",
+              "absolute text-[0.75rem] leading-3 text-trunks-100 top-3 z-[3] transition-all",
               "rtl:right-4",
-              "ltr:left-4"
+              "ltr:left-4",
+              "pl-8": has_left_icon
             }>
               {label}
             </label>
+            <div class="absolute top-[30%] right-16 z-10"><#slot name="right_icon_slot" /></div>
             <ShowPassword
               toggle="toggle_password_visibility"
               input_password_id={"#{@id}_text_input_password"}
@@ -67,7 +71,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
         {#else}
           <label
             :if={label}
-            class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": disabled}
+            class={"block text-moon-16 text-bulma-100 pb-2", "opacity-30 cursor-not-allowed": disabled}
           >
             {label}
           </label>
@@ -78,6 +82,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               Utils.get_border_radius(size)
             }
           >
+            <div class="absolute top-[25%] left-4 z-10"><#slot name="left_icon_slot" /></div>
             <Password
               {=@id}
               {=@field}
@@ -86,7 +91,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               input_password_id={"#{@id}_text_input_password"}
               type={get_type(@password_shown)}
             />
-
+            <div class="absolute top-[25%] right-16 z-10"><#slot name="right_icon_slot" /></div>
             <ShowPassword
               toggle="toggle_password_visibility"
               input_password_id={"#{@id}_text_input_password"}

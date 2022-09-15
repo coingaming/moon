@@ -23,6 +23,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
+      get={Moon.Components.TextInput, has_left_icon: has_left_icon}
     >
       <Container disabled={disabled} size={size} {=@class}>
         <div class={
@@ -32,6 +33,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           "bg-transparent": !background_color,
           "bg-#{background_color}": background_color
         }>
+          <div class="absolute top-[30%] left-4 z-10"><#slot name="left_icon_slot" /></div>
           <Input {=@id} {=@field} />
           <label
             :if={label}
@@ -39,11 +41,13 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
               "absolute text-[0.75rem] leading-3 text-trunks-100 top-3 z-20 transition-all ease-in-out duration-200",
               "rtl:right-4",
               "ltr:left-4",
-              "opacity-30 cursor-not-allowed": disabled
+              "opacity-30 cursor-not-allowed": disabled,
+              "pl-8": has_left_icon
             }
           >
             {label}
           </label>
+          <div class="absolute top-[30%] right-4 z-10"><#slot name="right_icon_slot" /></div>
         </div>
         <#slot />
         <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>

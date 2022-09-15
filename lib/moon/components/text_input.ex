@@ -83,6 +83,7 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, use_error_tag: @use_error_tag}
         put={__MODULE__, has_left_icon: slot_assigned?(:left_icon_slot)}
         put={__MODULE__, has_right_icon: slot_assigned?(:right_icon_slot)}
+        put={__MODULE__, has_hint_text: slot_assigned?(:hint_text_slot)}
         get={Moon.Components.InputGroup, is_in_input_group: is_in_input_group}
         get={Moon.Components.InputGroup, group_class_plain: group_class_plain}
       >
@@ -96,7 +97,7 @@ defmodule Moon.Components.TextInput do
               <#slot name="left_icon_slot" />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot name="right_icon_slot" />
             </:right_icon_slot>
             {internal_render}
           </TextInputPassword>
@@ -110,7 +111,7 @@ defmodule Moon.Components.TextInput do
               <#slot name="left_icon_slot" />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot name="right_icon_slot" />
             </:right_icon_slot>
             {internal_render}
           </TextInputInnerLabel>
@@ -120,7 +121,7 @@ defmodule Moon.Components.TextInput do
               <#slot name="left_icon_slot" />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot name="right_icon_slot" />
             </:right_icon_slot>
             {internal_render}
           </TextInputBasic>
