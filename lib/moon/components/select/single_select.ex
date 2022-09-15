@@ -62,7 +62,6 @@ defmodule Moon.Components.Select.SingleSelect do
             }>
             <:left>
               <SelectedValue
-                :if={has_value(form, field, @value)}
                 {=@size}
                 {=@label}
                 {=@placeholder}

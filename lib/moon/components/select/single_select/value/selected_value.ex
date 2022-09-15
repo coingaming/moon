@@ -21,15 +21,16 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop size, :string
 
   def render(assigns) do
-    has_left_icon = not is_nil(assigns.option[:left_icon])
-    has_right_icon = not is_nil(assigns.option[:right_icon])
+    has_value = has_value(assigns.option)
+    has_left_icon = has_value && not is_nil(assigns.option[:left_icon])
+    has_right_icon = has_value && not is_nil(assigns.option[:right_icon])
     has_icons = has_left_icon or has_right_icon
     is_label = not is_nil(assigns.label)
     is_inner_label = is_label and assigns.size != "xl"
 
     ~F"""
     <div class="mx-4 h-fit">
-      {#if has_value(@option)}
+      {#if has_value}
         {#if is_inner_label or has_icons}
         <div class={"grid grid-rows-2 grid-flow-col": has_icons}>
             <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
@@ -49,6 +50,6 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   end
 
   defp has_value(option) do
-    option && option.label != nil && option.label != 0
+    not is_nil(option) and option != "" and option.label != nil and option.label != 0
   end
 end
