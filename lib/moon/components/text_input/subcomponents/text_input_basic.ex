@@ -10,6 +10,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   prop field, :atom
   prop class, :css_class
   slot default
+  slot left_icon_slot
+  slot right_icon_slot
 
   def render(assigns) do
     ~F"""
@@ -19,6 +21,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
+      get={Moon.Components.TextInput, has_hint_text: has_hint_text}
     >
       <Container {=disabled} {=size} {=@class}>
         <label
@@ -27,12 +30,21 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         >
           {label}
         </label>
+
+        <div class={
+          "absolute left-4 z-10 top-[55%]",
+          "top-[43%]": (use_error_tag && is_error) || has_hint_text
+        }><#slot name="left_icon_slot" /></div>
         <Input {=@id} {=@field} />
         <#slot />
-        <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
-          <ErrorTag />
-        </div>
+        <div class={
+          "absolute right-4 z-10 top-[55%]",
+          "top-[43%]": (use_error_tag && is_error) || has_hint_text
+        }><#slot name="right_icon_slot" /></div>
       </Container>
+      <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
+        <ErrorTag />
+      </div>
     </Context>
     """
   end

@@ -37,13 +37,6 @@ defmodule Moon.Components.TextInput do
   prop step, :string, default: "1"
   prop class, :css_class
 
-  prop is_sharp_left_side, :boolean
-  prop is_sharp_right_side, :boolean
-  prop is_sharp_top_side, :boolean
-  prop is_sharp_bottom_side, :boolean
-  prop is_top_bottom_border_hidden, :boolean
-  prop is_side_border_hidden, :boolean
-
   prop readonly, :boolean
   prop value, :string
 
@@ -62,16 +55,6 @@ defmodule Moon.Components.TextInput do
 
   def render(assigns) do
     internal_render = ~F"""
-    {#if slot_assigned?(:left_icon_slot)}
-      <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100" style="z-index: 9999">
-        <#slot name="left_icon_slot" />
-      </div>
-    {/if}
-    {#if slot_assigned?(:right_icon_slot)}
-      <div class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100">
-        <#slot name="right_icon_slot" />
-      </div>
-    {/if}
     <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
       <#slot name="hint_text_slot" />
     </HintText>
@@ -90,12 +73,6 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, label: @label}
         put={__MODULE__, required: @required}
         put={__MODULE__, step: @step}
-        put={__MODULE__, is_sharp_left_side: @is_sharp_left_side}
-        put={__MODULE__, is_sharp_right_side: @is_sharp_right_side}
-        put={__MODULE__, is_sharp_bottom_side: @is_sharp_bottom_side}
-        put={__MODULE__, is_sharp_top_side: @is_sharp_top_side}
-        put={__MODULE__, is_top_bottom_border_hidden: @is_top_bottom_border_hidden}
-        put={__MODULE__, is_side_border_hidden: @is_side_border_hidden}
         put={__MODULE__, readonly: @readonly}
         put={__MODULE__, value: @value}
         put={__MODULE__, focus: @focus}
@@ -106,6 +83,7 @@ defmodule Moon.Components.TextInput do
         put={__MODULE__, use_error_tag: @use_error_tag}
         put={__MODULE__, has_left_icon: slot_assigned?(:left_icon_slot)}
         put={__MODULE__, has_right_icon: slot_assigned?(:right_icon_slot)}
+        put={__MODULE__, has_hint_text: slot_assigned?(:hint_text_slot)}
         get={Moon.Components.InputGroup, is_in_input_group: is_in_input_group}
         get={Moon.Components.InputGroup, group_class_plain: group_class_plain}
       >
@@ -115,6 +93,12 @@ defmodule Moon.Components.TextInput do
             {=@field}
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="right_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputPassword>
         {#elseif @size == "xl"}
@@ -123,10 +107,22 @@ defmodule Moon.Components.TextInput do
             {=@field}
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="right_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputInnerLabel>
         {#else}
           <TextInputBasic {=@id} {=@field} {=@class}>
+            <:left_icon_slot>
+              <#slot name="left_icon_slot" />
+            </:left_icon_slot>
+            <:right_icon_slot>
+              <#slot name="right_icon_slot" />
+            </:right_icon_slot>
             {internal_render}
           </TextInputBasic>
         {/if}
