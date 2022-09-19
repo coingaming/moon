@@ -33,7 +33,6 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
           "bg-transparent": !background_color,
           "bg-#{background_color}": background_color
         }>
-
           <Input {=@id} {=@field} />
           <label
             :if={label}
@@ -53,11 +52,10 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
             Utils.get_height_by_size(size)
           }>
             <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
-              <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
-              <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+              <div class="justify-self-start"><#slot name="left_icon_slot" /></div>
+              <div class="justify-self-end"><#slot name="right_icon_slot" /></div>
             </div>
           </div>
-
         </div>
         <#slot />
         <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>

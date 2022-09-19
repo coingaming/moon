@@ -35,7 +35,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
           "w-full relative",
           Utils.get_height_by_size(size)
         }>
-          <div class={"w-full absolute top-0 left-0 bg-transparent"}>
+          <div class="w-full absolute top-0 left-0 bg-transparent">
             <Input {=@id} {=@field} />
           </div>
           <div class={
@@ -43,8 +43,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
             Utils.get_height_by_size(size)
           }>
             <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
-              <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
-              <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+              <div class="justify-self-start"><#slot name="left_icon_slot" /></div>
+              <div class="justify-self-end"><#slot name="right_icon_slot" /></div>
             </div>
           </div>
         </div>

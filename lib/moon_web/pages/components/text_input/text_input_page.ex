@@ -120,7 +120,6 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <Heading size={56} class="mb-4">Text Input</Heading>
 
         <Context put={theme_class: @theme_name}>
-          <!--
           <ExampleAndCode id="input_020" title="Sizes">
             <:example>
               <LeftToRight class="justify-between w-full items-end">
@@ -132,14 +131,12 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
             <:code>{text_input_020_code()}</:code>
           </ExampleAndCode>
-          -->
 
           <Heading size={32} class="mt-16 mb-4">Text Input Icons</Heading>
 
           <ExampleAndCode id="input_023" title="Icons">
             <:example>
               <TopToDown class="w-full">
-
                 <LeftToRight class="justify-between w-full items-end">
                   <TextInput
                     label="Medium (Default: md)"
@@ -204,7 +201,6 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                     <:hint_text_slot>Informative message holder</:hint_text_slot>
                   </TextInput>
                 </LeftToRight>
-
 
                 <LeftToRight class="justify-between w-full items-end">
                   <TextInput label="Medium (Default: md)" placeholder="Placeholder">
@@ -557,15 +553,32 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     """
     <TopToDown class="w-full">
       <LeftToRight class="justify-between w-full items-end">
-        <TextInput label="Medium (Default: md)" placeholder="Placeholder" type="password" id="txt_password_0_1">
+        <TextInput
+          label="Medium (Default: md)"
+          placeholder="Placeholder"
+          type="password"
+          id="txt_password_0_1"
+        >
           <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
           <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
         </TextInput>
-        <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" type="password" id="txt_password_0_2">
+        <TextInput
+          size="lg"
+          label="Large (lg)"
+          placeholder="Placeholder"
+          type="password"
+          id="txt_password_0_2"
+        >
           <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
           <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
         </TextInput>
-        <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" type="password" id="txt_password_0_3">
+        <TextInput
+          size="xl"
+          label="Xlarge (xl)"
+          placeholder="Placeholder"
+          type="password"
+          id="txt_password_0_3"
+        >
           <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
           <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
         </TextInput>

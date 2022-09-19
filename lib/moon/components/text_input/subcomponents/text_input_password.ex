@@ -39,7 +39,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               "bg-#{background_color}": background_color
             }
           >
-
             <Password
               {=@id}
               {=@field}
@@ -69,8 +68,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               Utils.get_height_by_size(size)
             }>
               <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
-                <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
-                <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+                <div class="justify-self-start"><#slot name="left_icon_slot" /></div>
+                <div class="justify-self-end"><#slot name="right_icon_slot" /></div>
               </div>
             </div>
           </div>
@@ -92,7 +91,6 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               Utils.get_border_radius(size)
             }
           >
-
             <Password
               {=@id}
               {=@field}
@@ -114,8 +112,8 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               Utils.get_height_by_size(size)
             }>
               <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
-                <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
-                <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+                <div class="justify-self-start"><#slot name="left_icon_slot" /></div>
+                <div class="justify-self-end"><#slot name="right_icon_slot" /></div>
               </div>
             </div>
           </div>
