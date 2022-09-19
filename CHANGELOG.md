@@ -1,3 +1,10 @@
+## [2.26.1](https://github.com/coingaming/moon/compare/v2.26.0...v2.26.1) (2022-09-19)
+
+
+### Bug Fixes
+
+* fix Icon support for TextInput [MDS-219] ([#375](https://github.com/coingaming/moon/issues/375)) ([42359e3](https://github.com/coingaming/moon/commit/42359e3a92d19ac942f3b6c2aaedecdbf85c2fae))
+
 # [2.26.0](https://github.com/coingaming/moon/compare/v2.25.0...v2.26.0) (2022-09-16)
 
 
