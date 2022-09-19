@@ -39,7 +39,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               "bg-#{background_color}": background_color
             }
           >
-            <div class="absolute top-[30%] left-4 z-10"><#slot name="left_icon_slot" /></div>
+
             <Password
               {=@id}
               {=@field}
@@ -56,13 +56,23 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             }>
               {label}
             </label>
-            <div class="absolute top-[30%] right-16 z-10"><#slot name="right_icon_slot" /></div>
+
             <ShowPassword
               toggle="toggle_password_visibility"
               input_password_id={"#{@id}_text_input_password"}
             >
               {show_password_text}
             </ShowPassword>
+
+            <div class={
+              "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
+              Utils.get_height_by_size(size)
+            }>
+              <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
+                <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
+                <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+              </div>
+            </div>
           </div>
           <#slot />
           <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
@@ -82,7 +92,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               Utils.get_border_radius(size)
             }
           >
-            <div class="absolute top-[25%] left-4 z-10"><#slot name="left_icon_slot" /></div>
+
             <Password
               {=@id}
               {=@field}
@@ -91,13 +101,23 @@ defmodule Moon.Components.TextInput.TextInputPassword do
               input_password_id={"#{@id}_text_input_password"}
               type={get_type(@password_shown)}
             />
-            <div class="absolute top-[25%] right-16 z-10"><#slot name="right_icon_slot" /></div>
+
             <ShowPassword
               toggle="toggle_password_visibility"
               input_password_id={"#{@id}_text_input_password"}
             >
               {show_password_text}
             </ShowPassword>
+
+            <div class={
+              "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
+              Utils.get_height_by_size(size)
+            }>
+              <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
+                <div class="justify-self-start"><#slot name="left_icon_slot"/></div>
+                <div class="justify-self-end"><#slot name="right_icon_slot"/></div>
+              </div>
+            </div>
           </div>
           <#slot />
           <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
