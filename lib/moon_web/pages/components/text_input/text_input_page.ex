@@ -120,6 +120,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <Heading size={56} class="mb-4">Text Input</Heading>
 
         <Context put={theme_class: @theme_name}>
+          <!--
           <ExampleAndCode id="input_020" title="Sizes">
             <:example>
               <LeftToRight class="justify-between w-full items-end">
@@ -131,12 +132,14 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
             <:code>{text_input_020_code()}</:code>
           </ExampleAndCode>
+          -->
 
           <Heading size={32} class="mt-16 mb-4">Text Input Icons</Heading>
 
           <ExampleAndCode id="input_023" title="Icons">
             <:example>
               <TopToDown class="w-full">
+
                 <LeftToRight class="justify-between w-full items-end">
                   <TextInput
                     label="Medium (Default: md)"
@@ -199,6 +202,28 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
                     <:hint_text_slot>Informative message holder</:hint_text_slot>
+                  </TextInput>
+                </LeftToRight>
+
+
+                <LeftToRight class="justify-between w-full items-end">
+                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot>
+                      <Button size="xsmall"><Icon name="controls-plus" /></Button>
+                    </:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot>
+                      <Button size="small"><Icon name="controls-plus" /></Button>
+                    </:right_icon_slot>
+                  </TextInput>
+                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                    <:right_icon_slot>
+                      <Button><Icon name="controls-plus" /></Button>
+                    </:right_icon_slot>
                   </TextInput>
                 </LeftToRight>
               </TopToDown>
