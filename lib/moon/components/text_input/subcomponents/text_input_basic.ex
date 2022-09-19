@@ -5,6 +5,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.TextInput.Container
   alias Moon.Components.TextInput.Input
   alias Moon.Components.ErrorTag
+  alias Moon.Components.TextInput.Utils
 
   prop id, :string
   prop field, :atom
@@ -21,7 +22,6 @@ defmodule Moon.Components.TextInput.TextInputBasic do
       get={Moon.Components.TextInput, label: label}
       get={Moon.Components.TextInput, is_error: is_error}
       get={Moon.Components.TextInput, use_error_tag: use_error_tag}
-      get={Moon.Components.TextInput, has_hint_text: has_hint_text}
     >
       <Container {=disabled} {=size} {=@class}>
         <label
@@ -32,16 +32,25 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         </label>
 
         <div class={
-          "absolute left-4 z-10 top-[55%]",
-          "top-[43%]": (use_error_tag && is_error) || has_hint_text
-        }><#slot name="left_icon_slot" /></div>
-        <Input {=@id} {=@field} />
+          "w-full relative",
+          Utils.get_height_by_size(size)
+        }>
+          <div class="w-full absolute top-0 left-0 bg-transparent">
+            <Input {=@id} {=@field} />
+          </div>
+          <div class={
+            "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none",
+            Utils.get_height_by_size(size)
+          }>
+            <div class="w-full h-full flex items-center justify-between px-4 bg-transparent pointer-events-none">
+              <div class="justify-self-start"><#slot name="left_icon_slot" /></div>
+              <div class="justify-self-end"><#slot name="right_icon_slot" /></div>
+            </div>
+          </div>
+        </div>
         <#slot />
-        <div class={
-          "absolute right-4 z-10 top-[55%]",
-          "top-[43%]": (use_error_tag && is_error) || has_hint_text
-        }><#slot name="right_icon_slot" /></div>
       </Container>
+
       <div class="inline-block mt-2 text-moon-12" :if={use_error_tag && is_error}>
         <ErrorTag />
       </div>
