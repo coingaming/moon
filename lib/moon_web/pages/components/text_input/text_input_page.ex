@@ -210,19 +210,19 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
                   <TextInput label="Medium (Default: md)" placeholder="Placeholder">
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot>
-                      <Button size="xsmall"><Icon name="controls-plus" /></Button>
+                      <Button size="xsmall">xsmall<Icon name="controls-plus" /></Button>
                     </:right_icon_slot>
                   </TextInput>
                   <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot>
-                      <Button size="small"><Icon name="controls-plus" /></Button>
+                      <Button size="small">small<Icon name="controls-plus" /></Button>
                     </:right_icon_slot>
                   </TextInput>
                   <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
                     <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
                     <:right_icon_slot>
-                      <Button><Icon name="controls-plus" /></Button>
+                      <Button>medium<Icon name="controls-plus" /></Button>
                     </:right_icon_slot>
                   </TextInput>
                 </LeftToRight>
