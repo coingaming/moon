@@ -29,12 +29,11 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     is_inner_label = is_label and assigns.size != "xl"
 
     ~F"""
-    <div class="mx-4 h-fit">
+    <div class="mx-4 h-fit relative flex items-center">
       {#if has_value}
         {#if is_inner_label or has_icons}
         <div class={
-          "absolute top-0",
-          "grid grid-rows-2 grid-flow-col": has_icons,
+          "flex flex-col w-full",
           "pl-12": has_left_icon,
           "pr-12": has_right_icon
         }>
@@ -42,12 +41,12 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
           <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
         </div>
 
-        <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center justify-between px-4 bg-transparent">
+        <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center justify-between bg-transparent">
           <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
           <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
         </div>
         {#else}
-          <InnerLabelNoIconsContent label={@option.label} />
+          <InnerLabelNoIconsContent label={@option.label} /> TEST
         {/if}
       {#else}
         <NoInnerLabelNoIconsContent {=@placeholder} />

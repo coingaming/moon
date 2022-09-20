@@ -150,6 +150,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <ComponentPageDescription title="Single Select" />
 
       <Context put={theme_class: @theme_name}>
+        <!--
         <ExampleAndCode
           title="Single Select with options as prop"
           id="single_select_with_options_as_prop"
@@ -183,7 +184,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
-
+        -->
         <ExampleAndCode
           title="Single Select (selected with left_icon)"
           id="single_select_with_options_as_prop_and_left_icon"
@@ -247,6 +248,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
+        <!--
         <ExampleAndCode title="Medium" id="single_select_sizes_medium">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -365,6 +367,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
+        -->
       </Context>
 
       <PropsTable data={@props_info_array} />
