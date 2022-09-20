@@ -1,3 +1,10 @@
+## [2.27.1](https://github.com/coingaming/moon/compare/v2.27.0...v2.27.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* label issues ([bf2dead](https://github.com/coingaming/moon/commit/bf2dead3aa217c68f96f1a0debb6e355d52193be))
+
 # [2.27.0](https://github.com/coingaming/moon/compare/v2.26.2...v2.27.0) (2022-09-20)
 
 
