@@ -1,3 +1,15 @@
+# [2.27.0](https://github.com/coingaming/moon/compare/v2.26.2...v2.27.0) (2022-09-20)
+
+
+### Bug Fixes
+
+* Fix for buttons on text input icons ([#378](https://github.com/coingaming/moon/issues/378)) ([f14a980](https://github.com/coingaming/moon/commit/f14a980ba13d02126cf5ab31ad93a43a9169d3a9))
+
+
+### Features
+
+* added render helper functions ([#377](https://github.com/coingaming/moon/issues/377)) ([070c43a](https://github.com/coingaming/moon/commit/070c43af94ec1b90615cf2020ee831f91865fa12))
+
 ## [2.26.2](https://github.com/coingaming/moon/compare/v2.26.1...v2.26.2) (2022-09-20)
 
 

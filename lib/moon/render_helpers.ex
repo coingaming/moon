@@ -23,4 +23,13 @@ defmodule Moon.RenderHelpers do
 
     Phoenix.LiveView.Helpers.component(&module.render/1, use_props)
   end
+
+  def render_live_component(module, custom_props) do
+    default_props = Moon.RenderHelpers.get_default_props(module)
+    use_props = Map.merge(default_props, custom_props)
+
+    assigns = Map.merge(use_props, %{module: module})
+
+    Phoenix.LiveView.Helpers.live_component(assigns)
+  end
 end
