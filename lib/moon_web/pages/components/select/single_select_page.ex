@@ -206,6 +206,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
+        <!--
         <ExampleAndCode
           title="Single Select (selected with left_icon `flag`)"
           id="single_select_with_options_as_prop_and_left_icon_flag"
@@ -223,6 +224,28 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           </:example>
 
           <:code>{code_for_single_select_with_options_as_prop_and_left_icon_flag()}</:code>
+
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
+        -->
+
+        <ExampleAndCode
+          title="Single Select (both icons)"
+          id="single_select_with_options_as_prop_and_both_icons"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-4_1"
+                  options={User.available_roles_with_left_icon_flag_and_right_icon()}
+                  label="Select role"
+                />
+              </Field>
+            </Form>
+          </:example>
+
+          <:code>{code_for_single_select_with_options_as_prop_and_both_icons()}</:code>
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
@@ -592,6 +615,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>
+    """
+  end
+
+  # TODO
+  defp code_for_single_select_with_options_as_prop_and_both_icons do
+    """
     """
   end
 end

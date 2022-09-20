@@ -11,8 +11,6 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelNoIconsContent
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelContent
-  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.LeftIconContent
-  alias Moon.Components.Select.SingleSelect.Value.SelectedValue.RightIconContent
 
   prop select_id, :string
   prop option, :any
@@ -29,24 +27,32 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     is_inner_label = is_label and assigns.size != "xl"
 
     ~F"""
-    <div class="mx-4 h-fit relative flex items-center">
+    <div class={
+      "h-fit relative flex",
+      "ml-4": !has_left_icon,
+      "mr-4": !has_right_icon
+    }>
       {#if has_value}
         {#if is_inner_label or has_icons}
         <div class={
-          "flex flex-col w-full",
-          "pl-12": has_left_icon,
-          "pr-12": has_right_icon
+          "flex flex-col w-full items-center",
+          "pl-8": has_left_icon,
+          "pr-8": has_right_icon
         }>
           <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
           <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
         </div>
 
-        <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center justify-between bg-transparent">
-          <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
-          <RightIconContent :if={has_right_icon} icon={@option[:right_icon]}/>
+        <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
+          <div class="justify-self-start ml-2">
+            <Icon icon={@option[:left_icon]} :if={has_left_icon} />
+          </div>
+          <div class="justify-self-end mr-2">
+            <Icon icon={@option[:right_icon]} :if={has_right_icon}/>
+          </div>
         </div>
         {#else}
-          <InnerLabelNoIconsContent label={@option.label} /> TEST
+          <InnerLabelNoIconsContent label={@option.label} />
         {/if}
       {#else}
         <NoInnerLabelNoIconsContent {=@placeholder} />

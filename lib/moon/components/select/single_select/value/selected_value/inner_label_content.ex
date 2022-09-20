@@ -12,12 +12,9 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
     ~F"""
     <div
       class={
-        "text-trunks-100",
-        SelectHelpers.innerlabel_font_class(@size),
-        "col-[_span_2_/_span_2] row-[_span_2_/_span_2]": @has_icons
-      }
-
-    >
+        "text-trunks-100 text-left h-full w-full",
+        SelectHelpers.innerlabel_font_class(@size)
+      }>
       {@label}
     </div>
     """

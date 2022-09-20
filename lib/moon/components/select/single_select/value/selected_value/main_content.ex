@@ -11,7 +11,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent do
     ~F"""
     <div
       class={
-        "text-bulma-100 text-moon-16"
+        "text-bulma-100 text-moon-16 text-left h-full w-full"
       }
     >
       {@label}
