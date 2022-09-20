@@ -6,7 +6,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Components.Heading
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.InputGroup
   alias Moon.Components.TextInput
@@ -86,8 +85,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Input Group</Heading>
-        <ComponentPageDescription>
+        <ComponentPageDescription title="Input Group">
           <p>
             !!! Input Group is supported only in size `xlarge`.
           </p>

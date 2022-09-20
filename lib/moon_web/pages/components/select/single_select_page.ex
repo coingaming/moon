@@ -147,11 +147,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
-      <ComponentPageDescription title="Single Select">
-        <p>
-          Single Select
-        </p>
-      </ComponentPageDescription>
+      <ComponentPageDescription title="Single Select" />
 
       <Context put={theme_class: @theme_name}>
         <ExampleAndCode

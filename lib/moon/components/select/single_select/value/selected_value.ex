@@ -32,7 +32,11 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     <div class="mx-4 h-fit">
       {#if has_value}
         {#if is_inner_label or has_icons}
-        <div class={"grid grid-rows-2 grid-flow-col": has_icons}>
+        <div class={
+          "grid grid-rows-2 grid-flow-col": has_icons,
+          "pl-12": has_left_icon,
+          "pr-12": has_right_icon
+        }>
             <LeftIconContent :if={has_left_icon} icon={@option[:left_icon]}/>
             <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
             <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
