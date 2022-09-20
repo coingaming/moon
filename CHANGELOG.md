@@ -1,3 +1,10 @@
+## [2.26.2](https://github.com/coingaming/moon/compare/v2.26.1...v2.26.2) (2022-09-20)
+
+
+### Bug Fixes
+
+* setted correct z-index value ([#376](https://github.com/coingaming/moon/issues/376)) ([ed7bffa](https://github.com/coingaming/moon/commit/ed7bffa41b1223ba1f01c0e9eb01a34ecaf1f65f))
+
 ## [2.26.1](https://github.com/coingaming/moon/compare/v2.26.0...v2.26.1) (2022-09-19)
 
 
