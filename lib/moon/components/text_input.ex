@@ -27,7 +27,7 @@ defmodule Moon.Components.TextInput do
     ],
     default: "text"
 
-  prop placeholder, :string
+  prop placeholder, :string, default: " "
   prop is_error, :boolean
   prop background_color, :string, values: Moon.colors(), default: "gohan-100"
   prop is_first, :boolean
