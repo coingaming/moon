@@ -150,7 +150,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <ComponentPageDescription title="Single Select" />
 
       <Context put={theme_class: @theme_name}>
-        <!--
+
         <ExampleAndCode
           title="Single Select with options as prop"
           id="single_select_with_options_as_prop"
@@ -184,7 +184,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
-        -->
+
         <ExampleAndCode
           title="Single Select (selected with left_icon)"
           id="single_select_with_options_as_prop_and_left_icon"
@@ -206,7 +206,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <!--
+
         <ExampleAndCode
           title="Single Select (selected with left_icon `flag`)"
           id="single_select_with_options_as_prop_and_left_icon_flag"
@@ -227,7 +227,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
-        -->
+
 
         <ExampleAndCode
           title="Single Select (both icons)"
@@ -271,7 +271,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <!--
+
         <ExampleAndCode title="Medium" id="single_select_sizes_medium">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -390,7 +390,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
-        -->
+
       </Context>
 
       <PropsTable data={@props_info_array} />
@@ -621,6 +621,14 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   # TODO
   defp code_for_single_select_with_options_as_prop_and_both_icons do
     """
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+    <Field name={:role}>
+      <SingleSelect
+        id="user-roles-example-4_1"
+        options={User.available_roles_with_left_icon_flag_and_right_icon()}
+        label="Select role"
+      />
+    </Field>
     """
   end
 end

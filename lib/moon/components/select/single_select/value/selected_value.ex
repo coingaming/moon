@@ -4,9 +4,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   use Moon.StatelessComponent
 
   alias Moon.Components.Select.SingleSelect.Dropdown.Icon
-  alias Moon.Components.Label
   alias Moon.Components.Select.Dropdown.Icon
-  alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.NoInnerLabelNoIconsContent
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelNoIconsContent
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent
