@@ -56,32 +56,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    user_changeset =
-      User.changeset(%User{}, %{
-        agrees_to_terms_of_service: false,
-        agrees_to_marketing_emails: true
-      })
-
-    socket =
-      assign(socket,
-        user_changeset: user_changeset,
-        theme_name: params["theme_name"] || "moon-design-light",
-        active_page: __MODULE__,
-        small_switch_checked: false,
-        medium_switch_checked: false,
-        large_switch_checked: false,
-        icons_switch_checked: false,
-        captions_switch_checked: false
-      )
-
-    {:ok, socket}
-  end
-
-  def handle_params(_params, uri, socket) do
-    {:noreply, assign(socket, uri: uri)}
-  end
-
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
@@ -210,6 +184,35 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
+  def mount(params, _session, socket) do
+    user = %User{}
+
+    user_changeset =
+      User.changeset(%User{}, %{
+        agrees_to_terms_of_service: true,
+        agrees_to_marketing_emails: true
+      })
+
+    socket =
+      assign(socket,
+        user_changeset: user_changeset,
+        theme_name: params["theme_name"] || "moon-design-light",
+        active_page: __MODULE__,
+        small_switch_checked: false,
+        medium_switch_checked: false,
+        large_switch_checked: false,
+        icons_switch_checked: false,
+        captions_switch_checked: false,
+        user: user
+      )
+
+    {:ok, socket}
+  end
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
   def handle_event(
         "register_form_update",
         %{
@@ -217,9 +220,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         },
         socket
       ) do
-    user_changeset = User.changeset(%User{}, params)
-    IO.inspect(params)
-
+    user_changeset = User.changeset(socket.assigns.user, params)
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 

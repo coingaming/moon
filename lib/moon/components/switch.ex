@@ -37,7 +37,10 @@ defmodule Moon.Components.Switch do
           }
           checked_value="true"
           unchecked_value="false"
-          opts={id: "#{@id}_checkbox"}
+          opts={
+            id: "#{@id}_checkbox",
+            checked: is_selected(@checked, form, field)
+          }
         />
         <button
           type="button"
@@ -97,10 +100,5 @@ defmodule Moon.Components.Switch do
 
   def is_selected(checked, form, field) do
     is_true(checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
-  end
-
-  def handle_event("toggle", _params, socket) do
-    IO.puts("**--**")
-    {:noreply, socket}
   end
 end
