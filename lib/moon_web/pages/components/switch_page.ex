@@ -34,13 +34,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         :description => 'Is switch checked/unchecked'
       },
       %{
-        :name => 'on_change',
-        :type => 'event',
-        :required => 'false',
-        :default => '-',
-        :description => 'Event that happens when you click on the switch'
-      },
-      %{
         :name => 'caption_unchecked',
         :type => 'string',
         :required => 'true',
@@ -75,22 +68,12 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
             </Form>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  size="medium"
-                  id="switch_2_2"
-                  checked={@medium_switch_checked}
-                  on_change="handle_medium_switch"
-                />
+                <Switch size="medium" id="switch_2_2" checked={@medium_switch_checked} />
               </Field>
             </Form>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  size="large"
-                  id="switch_2_3"
-                  checked={@large_switch_checked}
-                  on_change="handle_large_switch"
-                />
+                <Switch size="large" id="switch_2_3" checked={@large_switch_checked} />
               </Field>
             </Form>
           </:example>
@@ -104,35 +87,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  id="switch_3_1"
-                  checked={@icons_switch_checked}
-                  icons
-                  size="small"
-                  on_change="handle_icons_switch"
-                />
+                <Switch id="switch_3_1" checked={@icons_switch_checked} icons size="small" />
               </Field>
             </Form>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  id="switch_3_2"
-                  checked={@icons_switch_checked}
-                  icons
-                  size="medium"
-                  on_change="handle_icons_switch"
-                />
+                <Switch id="switch_3_2" checked={@icons_switch_checked} icons size="medium" />
               </Field>
             </Form>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  id="switch_3_3"
-                  checked={@icons_switch_checked}
-                  icons
-                  size="large"
-                  on_change="handle_icons_switch"
-                />
+                <Switch id="switch_3_3" checked={@icons_switch_checked} icons size="large" />
               </Field>
             </Form>
           </:example>
@@ -148,7 +113,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               <Field name={:agrees_to_terms_of_service}>
                 <Switch
                   checked={@captions_switch_checked}
-                  on_change="handle_captions_switch"
                   icons={false}
                   size="small"
                   caption_unchecked="AM"
@@ -161,7 +125,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               <Field name={:agrees_to_terms_of_service}>
                 <Switch
                   checked={@captions_switch_checked}
-                  on_change="handle_captions_switch"
                   icons
                   size="medium"
                   caption_unchecked="OFF"
@@ -174,7 +137,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               <Field name={:agrees_to_terms_of_service}>
                 <Switch
                   checked={@captions_switch_checked}
-                  on_change="handle_captions_switch"
                   icons
                   size="large"
                   caption_unchecked="Moon"
@@ -242,107 +204,113 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def handle_event("handle_small_switch", _, socket) do
-    socket = assign(socket, small_switch_checked: !socket.assigns.small_switch_checked)
-    {:noreply, socket}
-  end
-
-  def handle_event("handle_medium_switch", _, socket) do
-    socket = assign(socket, medium_switch_checked: !socket.assigns.medium_switch_checked)
-    {:noreply, socket}
-  end
-
-  def handle_event("handle_large_switch", _, socket) do
-    socket = assign(socket, large_switch_checked: !socket.assigns.large_switch_checked)
-    {:noreply, socket}
-  end
-
-  def handle_event("handle_icons_switch", _, socket) do
-    socket = assign(socket, icons_switch_checked: !socket.assigns.icons_switch_checked)
-    {:noreply, socket}
-  end
-
-  def handle_event("handle_captions_switch", _, socket) do
-    socket = assign(socket, captions_switch_checked: !socket.assigns.captions_switch_checked)
-    {:noreply, socket}
-  end
-
   def switch_1_state(assigns) do
     ~F"""
     @user_changeset = {inspect(@user_changeset, pretty: true)}
     """
   end
 
-  def switch_1_code do
+  def switch_2_code do
     """
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
-        <Switch />
+        <Switch size="small" id="switch_2_1" checked={@small_switch_checked} />
       </Field>
     </Form>
-
-    def handle_event(
-          "register_form_update",
-          %{
-            "user" => params
-          },
-          socket
-        ) do
-      user_changeset = User.changeset(%User{}, params)
-
-      {:noreply, assign(socket, user_changeset: user_changeset)}
-    end
-
-    def handle_event("register_form_submit", _, socket) do
-      user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
-
-      {:noreply, assign(socket, user_changeset: user_changeset)}
-    end
-    """
-  end
-
-  def switch_2_code do
-    """
-      <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
-      <Switch size="medium" checked={@medium_switch_checked} on_change="handle_medium_switch" />
-      <Switch size="large" checked={@large_switch_checked} on_change="handle_large_switch" />
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          size="medium"
+          id="switch_2_2"
+          checked={@medium_switch_checked}
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          size="large"
+          id="switch_2_3"
+          checked={@large_switch_checked}
+        />
+      </Field>
+    </Form>
     """
   end
 
   def switch_3_code do
     """
-      <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
-      <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
-      <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          id="switch_3_1"
+          checked={@icons_switch_checked}
+          icons
+          size="small"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          id="switch_3_2"
+          checked={@icons_switch_checked}
+          icons
+          size="medium"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          id="switch_3_3"
+          checked={@icons_switch_checked}
+          icons
+          size="large"
+        />
+      </Field>
+    </Form>
     """
   end
 
   def switch_4_code do
     """
-      <Switch
-        checked={@captions_switch_checked}
-        on_change="handle_captions_switch"
-        icons={false}
-        size="small"
-        caption_unchecked="AM"
-        caption_checked="PM"
-      />
-      <Switch
-        checked={@captions_switch_checked}
-        on_change="handle_captions_switch"
-        icons
-        size="medium"
-        caption_unchecked="OFF"
-        caption_checked="ON"
-      />
-      <Switch
-        checked={@captions_switch_checked}
-        on_change="handle_captions_switch"
-        icons
-        size="large"
-        caption_unchecked="Moon"
-        caption_checked="Sun"
-      />
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          checked={@captions_switch_checked}
+          icons={false}
+          size="small"
+          caption_unchecked="AM"
+          caption_checked="PM"
+          id="switch_4_1"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          checked={@captions_switch_checked}
+          icons
+          size="medium"
+          caption_unchecked="OFF"
+          caption_checked="ON"
+          id="switch_4_2"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch
+          checked={@captions_switch_checked}
+          icons
+          size="large"
+          caption_unchecked="Moon"
+          caption_checked="Sun"
+          id="switch_4_3"
+        />
+      </Field>
+    </Form>
     """
   end
 end
