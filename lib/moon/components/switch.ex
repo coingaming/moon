@@ -5,6 +5,7 @@ defmodule Moon.Components.Switch do
   alias Moon.Assets.Icon
   alias Moon.Components.Switch.Caption
   alias Surface.Components.Form.Input.InputContext
+  alias Phoenix.LiveView.JS
 
   @icons_sizes %{
     "small" => "0.75rem",
@@ -13,15 +14,11 @@ defmodule Moon.Components.Switch do
   }
 
   prop checked, :boolean, default: false
-  prop on_change, :event
   prop icons, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large"], default: "medium"
   prop action, :string, default: "Toggle Setting"
   prop caption_unchecked, :string
   prop caption_checked, :string
-  prop target, :string
-
-  prop field, :atom
 
   def render(assigns) do
     ~F"""
@@ -31,26 +28,17 @@ defmodule Moon.Components.Switch do
       "space-x-2": @size == "large"
     }>
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
-
-      <Surface.Components.Form.Checkbox
-        field={@field}
-        class={
-          "z-10 absolute left-0 opacity-0",
-          "w-8 h-4": @size == "small",
-          "w-10 h-5": @size == "medium",
-          "w-14 h-7": @size == "large"
-        }
-        checked_value="true"
-        unchecked_value="false"
-        :if={!@on_change}
-      />
-
       <InputContext assigns={assigns} :let={form: form, field: field}>
-        {Phoenix.HTML.Form.checkbox(
-          form,
-          field,
-          class: "hidden"
-        )}
+        <Surface.Components.Form.Checkbox
+          form={form}
+          field={field}
+          class={
+            "hidden"
+          }
+          checked_value="true"
+          unchecked_value="false"
+          opts={id: "#{@id}_checkbox"}
+        />
         <button
           type="button"
           aria-pressed="false"
@@ -62,8 +50,10 @@ defmodule Moon.Components.Switch do
             "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
             "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
           }
-          :on-click={@on_change}
-          phx-target={@target}
+          :on-click={JS.dispatch("moon:update-switch",
+            detail: %{checked: !is_selected(@checked, form, field)},
+            to: "##{@id}_checkbox"
+          )}
         >
           <span class="sr-only">{@action}</span>
 
@@ -107,5 +97,10 @@ defmodule Moon.Components.Switch do
 
   def is_selected(checked, form, field) do
     is_true(checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
+  end
+
+  def handle_event("toggle", _params, socket) do
+    IO.puts("**--**")
+    {:noreply, socket}
   end
 end

@@ -10,11 +10,11 @@ window.addEventListener("moon:update-select", (event) => {
   select.dispatchEvent(new Event("input", { bubbles: true }));
 });
 
-window.addEventListener("moon:update-switch-checkbox", (event) => {
-  var select = event.target;
+window.addEventListener("moon:update-switch", (event) => {
+  var checkbox = event.target;
   var detail = event.detail;
-
-  select.dispatchEvent(new Event("input", { bubbles: true }));
+  checkbox.checked = detail.checked;
+  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
 });
 
 window["moon:breadcumbs-close-handlers"] = {};

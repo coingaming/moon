@@ -92,6 +92,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </ComponentPageDescription>
 
       <Context put={theme_class: @theme_name}>
+        <!--
         <ExampleAndCode title="Default" class="mt-3" id="switch_1_sample">
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
@@ -105,15 +106,20 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
+        -->
 
         <ExampleAndCode title="Size" class="mt-3" id="switch_2_sample">
           <:example>
-            <Switch
-              size="small"
-              id="switch_2_1"
-              checked={@small_switch_checked}
-              on_change="handle_small_switch"
-            />
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+              <Field name={:agrees_to_terms_of_service}>
+                <Switch
+                  size="small"
+                  id="switch_2_1"
+                  checked={@small_switch_checked}
+                />
+              </Field>
+            </Form>
+            <!--
             <Switch
               size="medium"
               id="switch_2_2"
@@ -126,11 +132,15 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               checked={@large_switch_checked}
               on_change="handle_large_switch"
             />
+            -->
           </:example>
 
           <:code>{switch_2_code()}</:code>
+
+          <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
 
+        <!--
         <ExampleAndCode title="Icons" class="mt-3" id="switch_3_sample">
           <:example>
             <Switch
@@ -192,6 +202,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:code>{switch_4_code()}</:code>
         </ExampleAndCode>
+        -->
       </Context>
 
       <PropsTable data={@props_info_array} />
@@ -207,6 +218,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         socket
       ) do
     user_changeset = User.changeset(%User{}, params)
+    IO.inspect(params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
