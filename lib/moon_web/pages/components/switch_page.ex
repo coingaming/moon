@@ -70,11 +70,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch
-                  size="small"
-                  id="switch_2_1"
-                  checked={@small_switch_checked}
-                />
+                <Switch size="small" id="switch_2_1" checked={@small_switch_checked} />
               </Field>
             </Form>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
@@ -97,7 +93,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
                 />
               </Field>
             </Form>
-
           </:example>
 
           <:code>{switch_2_code()}</:code>
@@ -149,7 +144,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
         <ExampleAndCode title="Captions" class="mt-3" id="switch_4_sample">
           <:example>
-          <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
                 <Switch
                   checked={@captions_switch_checked}
@@ -194,7 +189,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
-
       </Context>
 
       <PropsTable data={@props_info_array} />
