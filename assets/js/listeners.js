@@ -7,9 +7,8 @@ window.addEventListener("moon:update-select", (event) => {
       option.selected = detail.selected;
     }
   }
-  var popover_closer = document.querySelectorAll("[data-popover-closer]")[0];
+  var popover_closer = document.querySelector("[data-popover-closer]");
   select.dispatchEvent(new Event("input", { bubbles: true }));
-  popover_closer.dispatchEvent(new Event("click"), { bubbles: true });
 });
 
 window.addEventListener("moon:update-switch", (event) => {

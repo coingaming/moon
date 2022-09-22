@@ -102,6 +102,10 @@ defmodule Moon.Components.Select.SingleSelect do
     end
   end
 
+  #
+  # Private methods
+  #
+
   defp get_disabled_class(disabled) do
     if disabled do
       "opacity-30 cursor-not-allowed"

@@ -25,7 +25,9 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
           selected: !@is_selected
         },
         to: "##{@select_id}"
-      )}
+      )
+      |> JS.push("close", target: "##{@select_id}")
+    }
     >
       <#slot :args={is_selected: @is_selected} />
     </li>

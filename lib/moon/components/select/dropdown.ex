@@ -24,6 +24,7 @@ defmodule Moon.Components.Select.Dropdown do
   prop disabled, :boolean, default: false
   prop on_search_change, :event
   prop search_string, :string
+  prop on_option_clicked, :event
 
   slot default
   slot option_filters
