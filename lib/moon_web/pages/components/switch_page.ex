@@ -92,11 +92,11 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       </ComponentPageDescription>
 
       <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" class="mt-3" id="switch_1">
+        <ExampleAndCode title="Default" class="mt-3" id="switch_1_sample">
           <:example>
             <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
               <Field name={:agrees_to_terms_of_service}>
-                <Switch />
+                <Switch id="switch_1" />
               </Field>
             </Form>
           </:example>
@@ -106,27 +106,60 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Size" class="mt-3" id="switch_2">
+        <ExampleAndCode title="Size" class="mt-3" id="switch_2_sample">
           <:example>
-            <Switch size="small" checked={@small_switch_checked} on_change="handle_small_switch" />
-            <Switch size="medium" checked={@medium_switch_checked} on_change="handle_medium_switch" />
-            <Switch size="large" checked={@large_switch_checked} on_change="handle_large_switch" />
+            <Switch
+              size="small"
+              id="switch_2_1"
+              checked={@small_switch_checked}
+              on_change="handle_small_switch"
+            />
+            <Switch
+              size="medium"
+              id="switch_2_2"
+              checked={@medium_switch_checked}
+              on_change="handle_medium_switch"
+            />
+            <Switch
+              size="large"
+              id="switch_2_3"
+              checked={@large_switch_checked}
+              on_change="handle_large_switch"
+            />
           </:example>
 
           <:code>{switch_2_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" class="mt-3" id="switch_3">
+        <ExampleAndCode title="Icons" class="mt-3" id="switch_3_sample">
           <:example>
-            <Switch checked={@icons_switch_checked} icons size="small" on_change="handle_icons_switch" />
-            <Switch checked={@icons_switch_checked} icons size="medium" on_change="handle_icons_switch" />
-            <Switch checked={@icons_switch_checked} icons size="large" on_change="handle_icons_switch" />
+            <Switch
+              id="switch_3_1"
+              checked={@icons_switch_checked}
+              icons
+              size="small"
+              on_change="handle_icons_switch"
+            />
+            <Switch
+              id="switch_3_2"
+              checked={@icons_switch_checked}
+              icons
+              size="medium"
+              on_change="handle_icons_switch"
+            />
+            <Switch
+              id="switch_3_3"
+              checked={@icons_switch_checked}
+              icons
+              size="large"
+              on_change="handle_icons_switch"
+            />
           </:example>
 
           <:code>{switch_3_code()}</:code>
         </ExampleAndCode>
 
-        <ExampleAndCode title="Captions" class="mt-3" id="switch_4">
+        <ExampleAndCode title="Captions" class="mt-3" id="switch_4_sample">
           <:example>
             <Switch
               checked={@captions_switch_checked}
@@ -135,6 +168,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               size="small"
               caption_unchecked="AM"
               caption_checked="PM"
+              id="switch_4_1"
             />
             <Switch
               checked={@captions_switch_checked}
@@ -143,6 +177,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               size="medium"
               caption_unchecked="OFF"
               caption_checked="ON"
+              id="switch_4_2"
             />
             <Switch
               checked={@captions_switch_checked}
@@ -151,6 +186,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
               size="large"
               caption_unchecked="Moon"
               caption_checked="Sun"
+              id="switch_4_3"
             />
           </:example>
 

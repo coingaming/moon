@@ -91,7 +91,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         {/for}
       </div>
       <div class={"fixed bottom-28 right-4", hidden: !@show_themes}>
-        <Switch icons checked={@dark_mode} on_change="toggle_dark_mode" />
+        <Switch id="theme_switcher" icons checked={@dark_mode} on_change="toggle_dark_mode" />
       </div>
     </div>
     """
