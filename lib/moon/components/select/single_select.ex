@@ -24,7 +24,7 @@ defmodule Moon.Components.Select.SelectedValue.Container do
       >
         {#if @is_icon}
           <Icon
-            class="grid place-content-center pr-2"
+            class="grid place-content-center pr-1"
             icon={@option[:left_icon]}
             style="grid-row: span 3 / span 3;"
           />
