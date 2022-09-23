@@ -1,7 +1,7 @@
 defmodule Moon.Components.Switch do
   @moduledoc false
 
-  use Moon.StatefulComponent
+  use Moon.StatelessComponent
   alias Moon.Assets.Icon
   alias Moon.Components.Switch.Caption
   alias Surface.Components.Form.Input.InputContext
@@ -13,6 +13,7 @@ defmodule Moon.Components.Switch do
     "large" => "1.5rem"
   }
 
+  prop id, :string, required: true
   prop checked, :boolean, default: false
   prop icons, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large"], default: "medium"
