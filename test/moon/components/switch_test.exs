@@ -9,7 +9,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch size={@size} checked={@checked} />
+          <Switch size={@size} checked={@checked} id="switch_1" />
           """
         end
 
@@ -24,7 +24,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch size={@size} checked={@checked} />
+          <Switch size={@size} checked={@checked} id="switch_1" />
           """
         end
 
@@ -39,7 +39,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch size={@size} checked={@checked} />
+          <Switch size={@size} checked={@checked} id="switch_1" />
           """
         end
 
@@ -54,7 +54,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch icons={@icons} />
+          <Switch icons={@icons} id="switch_1" />
           """
         end
 
@@ -69,7 +69,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch icons={@icons} />
+          <Switch icons={@icons} id="switch_1" />
           """
         end
 
@@ -84,7 +84,7 @@ defmodule Moon.Components.SwitchTest do
       html =
         render_surface do
           ~F"""
-          <Switch caption_unchecked={@caption_unchecked} caption_checked={@caption_checked} />
+          <Switch caption_unchecked={@caption_unchecked} caption_checked={@caption_checked} id="switch_1" />
           """
         end
 
