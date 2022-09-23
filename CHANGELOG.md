@@ -1,3 +1,10 @@
+## [2.27.2](https://github.com/coingaming/moon/compare/v2.27.1...v2.27.2) (2022-09-23)
+
+
+### Bug Fixes
+
+* make the Switch work with Form changesets [MDS-224] ([#381](https://github.com/coingaming/moon/issues/381)) ([8760d8e](https://github.com/coingaming/moon/commit/8760d8ef075ff6c84406d0a24f991f68a90643ab))
+
 ## [2.27.1](https://github.com/coingaming/moon/compare/v2.27.0...v2.27.1) (2022-09-20)
 
 
