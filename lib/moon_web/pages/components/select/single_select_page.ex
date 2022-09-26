@@ -168,56 +168,81 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode
-          title="Single Select (label inside)"
-          id="single_select_with_options_as_prop_and_prompt_inside"
-        >
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Role" placeholder="Select a role" />
-              </Field>
-            </Form>
-          </:example>
-
-          <:code>{code_for_single_select_with_options_as_prop_and_prompt_inside()}</:code>
-
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
-
-        <ExampleAndCode
-          title="Single Select (selected with left_icon)"
-          id="single_select_with_options_as_prop_and_left_icon"
-        >
+        <ExampleAndCode title="Sizes" id="single_select_sizes">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
                 <SingleSelect
-                  id="user-roles-example-3"
-                  options={User.available_roles_with_left_icon()}
-                  label="Role" placeholder="Select a role"
+                  id="user-roles-example-10-1"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-10-2"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="lg"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-10-3"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="xl"
                 />
               </Field>
             </Form>
           </:example>
 
-          <:code>{code_for_single_select_with_options_as_prop_and_left_icon()}</:code>
+          <:code>{code_for_single_select_sizes()}</:code>
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-
         <ExampleAndCode
-          title="Single Select (selected with left_icon `flag`)"
+          title="Left Icon"
           id="single_select_with_options_as_prop_and_left_icon_flag"
         >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
                 <SingleSelect
-                  id="user-roles-example-5"
+                  id="user-roles-example-5-1"
                   options={User.available_roles_with_left_icon_flag()}
-                  label="Role" placeholder="Select a role"
+                  label="Role"
+                  placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-5-2"
+                  options={User.available_roles_with_left_icon_flag()}
+                  label="Role"
+                  size="lg"
+                  placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-5-3"
+                  options={User.available_roles_with_left_icon_flag()}
+                  label="Role"
+                  size="xl"
+                  placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -273,44 +298,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
 
 
-        <ExampleAndCode title="Sizes" id="single_select_sizes">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect
-                  id="user-roles-example-10-1"
-                  options={User.available_roles_with_left_icon()}
-                  label="Role"
-                  placeholder="Select a role"
-                />
-              </Field>
-            </Form>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect
-                  id="user-roles-example-10-2"
-                  options={User.available_roles_with_left_icon()}
-                  label="Role"
-                  placeholder="Select a role"
-                />
-              </Field>
-            </Form>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect
-                  id="user-roles-example-10-3"
-                  options={User.available_roles_with_left_icon()}
-                  label="Role"
-                  placeholder="Select a role"
-                />
-              </Field>
-            </Form>
-          </:example>
 
-          <:code>{code_for_single_select_sizes()}</:code>
-
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
 
         <ExampleAndCode title="Disabled" id="single_select_disabled">
           <:example>
@@ -375,27 +363,39 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     """
   end
 
-  def code_for_single_select_with_options_as_prop_and_prompt_inside do
+  def code_for_single_select_sizes do
     """
     alias Moon.Components.Select.SingleSelect
 
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:role}>
-        <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
-      </Field>
-    </Form>
-    """
-  end
-
-  def code_for_single_select_with_options_as_prop_and_left_icon do
-    """
-    alias Moon.Components.Select.SingleSelect
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
-          id="user-roles-example-3"
-          options={User.available_roles_with_left_icon()}
-          label="Select role"
+          id="user-roles-example-10-1"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-10-2"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="lg"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-10-3"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="xl"
         />
       </Field>
     </Form>
@@ -420,47 +420,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   def code_for_single_select_with_options_as_prop_and_left_icon_flag do
     """
     alias Moon.Components.Select.SingleSelect
+
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
-          id="user-roles-example-3"
+          id="user-roles-example-5"
           options={User.available_roles_with_left_icon_flag()}
-          label="Select role"
-        />
-      </Field>
-    </Form>
-    """
-  end
-
-  def code_for_single_select_sizes do
-    """
-    alias Moon.Components.Select.SingleSelect
-
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:role}>
-        <SingleSelect
-          id="user-roles-example-10-1"
-          options={User.available_roles_with_left_icon()}
-          label="Role"
-          placeholder="Select a role"
-        />
-      </Field>
-    </Form>
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:role}>
-        <SingleSelect
-          id="user-roles-example-10-2"
-          options={User.available_roles_with_left_icon()}
-          label="Role"
-          placeholder="Select a role"
-        />
-      </Field>
-    </Form>
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <Field name={:role}>
-        <SingleSelect
-          id="user-roles-example-10-3"
-          options={User.available_roles_with_left_icon()}
           label="Role"
           placeholder="Select a role"
         />
