@@ -15,7 +15,6 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Select.SingleSelect.HintText
   alias Moon.Components.ErrorTag
 
-  prop field, :atom
   prop label, :string
   prop options, :any, default: []
   prop value, :any
@@ -61,14 +60,14 @@ defmodule Moon.Components.Select.SingleSelect do
           class={
             "w-full",
             "bg-#{@background_color}": @background_color,
-            "shadow-input-err hover:shadow-input-err focus:shadow-input-err": @is_error
+            "shadow-input-err hover:shadow-input-err focus:shadow-input-err":
+              has_error(@is_error, form, field)
           }
         >
-          <PullAside
-            class={
-              SelectHelpers.get_padding(@size),
-              get_disabled_class(@disabled)
-            }>
+          <PullAside class={
+            SelectHelpers.get_padding(@size),
+            get_disabled_class(@disabled)
+          }>
             <:left>
               <SelectedValue
                 {=@size}
@@ -87,8 +86,8 @@ defmodule Moon.Components.Select.SingleSelect do
           <TopToDown>
             <div
               class={
-                      "overflow-auto rounded-moon-i-md box-border border border-solid",
-                      "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+                "overflow-auto rounded-moon-i-md box-border border border-solid",
+                "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
               }
               style="min-height: 20px; max-height: 200px"
             >
@@ -98,13 +97,13 @@ defmodule Moon.Components.Select.SingleSelect do
         </:content>
       </Popover>
       <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
-          <#slot name="hint_text_slot" />
+        <#slot name="hint_text_slot" />
       </HintText>
       <div
         class="inline-block mt-2 text-moon-12"
-        :if={@use_error_tag && has_error(@is_error, form, @field)}
+        :if={@use_error_tag && has_error(@is_error, form, field)}
       >
-        <ErrorTag {=@field} />
+        <ErrorTag {=field} />
       </div>
     </InputContext>
     """
@@ -133,10 +132,6 @@ defmodule Moon.Components.Select.SingleSelect do
     end
   end
 
-  defp has_error(form, field) do
-    field && form && Keyword.has_key?(form.errors, field)
-  end
-
   defp get_option_selected(form, field, options, value) do
     normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
 
@@ -145,11 +140,6 @@ defmodule Moon.Components.Select.SingleSelect do
     else
       ""
     end
-  end
-
-  defp has_value(form, field, value) do
-    normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
-    normalized_value != ""
   end
 
   defp has_error(is_error, form, field) do

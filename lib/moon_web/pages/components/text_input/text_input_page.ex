@@ -118,7 +118,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-      <ComponentPageDescription title="Text Input"/>
+        <ComponentPageDescription title="Text Input" />
 
         <Context put={theme_class: @theme_name}>
           <ExampleAndCode id="input_020" title="Sizes">
@@ -901,6 +901,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def mount(params, _session, socket) do
     user = %User{}
+
     user_changeset = User.changeset(user, %{})
 
     {:ok,

@@ -9,8 +9,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
 
   def render(assigns) do
     ~F"""
-    <div
-      class="text-trunks-100 text-moon-12 text-left h-full w-full">
+    <div class="text-trunks-100 text-moon-12 text-left h-full w-full">
       {@label}
     </div>
     """

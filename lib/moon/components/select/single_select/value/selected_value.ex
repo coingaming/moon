@@ -32,23 +32,23 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     }>
       {#if has_value}
         {#if is_inner_label or has_icons}
-        <div class={
-          "flex flex-col w-full items-center text-moon-16",
-          "pl-8": has_left_icon,
-          "pr-8": has_right_icon
-        }>
-          <InnerLabelContent :if={is_inner_label} {=@size} label={@option.label} {=has_icons}/>
-          <MainContent label={@option.label} {=has_icons} {=is_inner_label}/>
-        </div>
+          <div class={
+            "flex flex-col w-full items-center text-moon-16",
+            "pl-8": has_left_icon,
+            "pr-8": has_right_icon
+          }>
+            <InnerLabelContent :if={is_inner_label} {=@size} {=@label} {=has_icons} />
+            <MainContent label={@option.label} {=has_icons} {=is_inner_label} />
+          </div>
 
-        <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
-          <div class="justify-self-start ml-2">
-            <Icon icon={@option[:left_icon]} :if={has_left_icon} />
+          <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
+            <div class="justify-self-start ml-2">
+              <Icon icon={@option[:left_icon]} :if={has_left_icon} />
+            </div>
+            <div class="justify-self-end mr-2">
+              <Icon icon={@option[:right_icon]} :if={has_right_icon} />
+            </div>
           </div>
-          <div class="justify-self-end mr-2">
-            <Icon icon={@option[:right_icon]} :if={has_right_icon}/>
-          </div>
-        </div>
         {#else}
           <InnerLabelNoIconsContent label={@option.label} />
         {/if}

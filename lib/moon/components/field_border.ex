@@ -17,7 +17,7 @@ defmodule Moon.Components.FieldBorder do
         get_default_class(),
         @states_class || get_default_states_class(),
         @class,
-        "#{get_error_class()}":  @is_error
+        "#{get_error_class()}": @is_error
       }
       :on-click={@click}
     >

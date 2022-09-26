@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
-  alias Moon.Icon
+  alias Moon.Components.Button
 
   data breadcrumbs, :any,
     default: [
@@ -128,13 +128,28 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     ]
 
   data latest_params, :any, default: nil
+  data latest_params2, :any, default: nil
 
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
+    gender_options = [
+      %{label: "Female", value: "female"},
+      %{label: "Male", value: "male"},
+      %{label: "Invalid choice", value: "invalid"},
+      %{label: "I identify as God and this is not important", value: "god", disabled: true}
+    ]
+
+    user_changeset2 = User.changeset(%User{}, %{})
+
+    user = %User{}
+
     {:ok,
      assign(socket,
+       user: user,
        user_changeset: user_changeset,
+       gender_options: gender_options,
+       user_changeset2: user_changeset2,
        theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__
      )}
@@ -150,15 +165,15 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <ComponentPageDescription title="Single Select" />
 
       <Context put={theme_class: @theme_name}>
-
-        <ExampleAndCode
-          title="Default"
-          id="single_select_default"
-        >
+        <ExampleAndCode title="Default" id="single_select_default">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-1" options={User.available_roles()} placeholder="Select a role" />
+                <SingleSelect
+                  id="user-roles-example-1"
+                  options={User.available_roles()}
+                  placeholder="Select a role"
+                />
               </Field>
             </Form>
           </:example>
@@ -209,10 +224,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode
-          title="Left Icon"
-          id="single_select_with_options_as_prop_and_left_icon_flag"
-        >
+        <ExampleAndCode title="Left Icon" id="single_select_with_options_as_prop_and_left_icon_flag">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
@@ -253,10 +265,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode
-          title="Right icon"
-          id="single_select_with_options_as_prop_and_right_icon"
-        >
+        <ExampleAndCode title="Right icon" id="single_select_with_options_as_prop_and_right_icon">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
@@ -297,10 +306,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode
-          title="Both icons"
-          id="single_select_with_options_as_prop_and_both_icons"
-        >
+        <ExampleAndCode title="Both icons" id="single_select_with_options_as_prop_and_both_icons">
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
@@ -398,7 +404,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   options={User.available_roles()}
                   label="Role"
                   placeholder="Select a role"
-                  >
+                >
                   <:hint_text_slot>Informative Message Handler</:hint_text_slot>
                 </SingleSelect>
               </Field>
@@ -412,7 +418,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   label="Role"
                   placeholder="Select a role"
                   size="lg"
-                  >
+                >
                   <:hint_text_slot>Informative Message Handler</:hint_text_slot>
                 </SingleSelect>
               </Field>
@@ -449,7 +455,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   label="Role"
                   is_error
                   placeholder="Select a role"
-                  >
+                >
                   <:hint_text_slot>Informative Message Handler</:hint_text_slot>
                 </SingleSelect>
               </Field>
@@ -464,7 +470,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   is_error
                   placeholder="Select a role"
                   size="lg"
-                  >
+                >
                   <:hint_text_slot>Informative Message Handler</:hint_text_slot>
                 </SingleSelect>
               </Field>
@@ -491,7 +497,29 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
+        <ExampleAndCode title="Use Error Tag" id="single_select_error_tag">
+          <:example>
+            <Form for={@user_changeset2} change="form_update2" submit="form_submit2">
+              <Field name={:gender}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-gender-example-error-tag-3"
+                  options={@gender_options}
+                  label="Gender"
+                  use_error_tag
+                  placeholder="Select gender"
+                />
+              </Field>
+              <div class="pt-4">
+                <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+              </div>
+            </Form>
+          </:example>
 
+          <:code>{code_for_error_tag()}</:code>
+
+          <:state>{select_state(assigns)}</:state>
+        </ExampleAndCode>
       </Context>
 
       <PropsTable data={@props_info_array} />
@@ -512,6 +540,18 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   end
 
   def handle_event(
+        "form_update2",
+        %{
+          "user" => user_params
+        },
+        socket
+      ) do
+    user_changeset2 = User.changeset(%User{}, user_params)
+
+    {:noreply, assign(socket, user_changeset2: user_changeset2, latest_params2: user_params)}
+  end
+
+  def handle_event(
         "form_submit",
         %{
           "user" => user_params
@@ -521,6 +561,25 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event(
+        "form_submit2",
+        %{
+          "user" => user_params
+        },
+        socket
+      ) do
+    user_changeset2 = User.changeset(%User{}, user_params) |> Map.merge(%{action: :insert})
+
+    {:noreply, assign(socket, user_changeset2: user_changeset2)}
+  end
+
+  def select_state(assigns) do
+    ~F"""
+    @user_changeset2 = {inspect(@user_changeset2, pretty: true)}
+    @user = {inspect(@user, pretty: true)}
+    """
   end
 
   def code_for_single_select_default do
@@ -785,6 +844,57 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   end
 
   def code_for_error do
+    """
+    alias Moon.Components.Select.SingleSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-error-1"
+          options={User.available_roles()}
+          label="Role"
+          is_error
+          placeholder="Select a role"
+          >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-error-2"
+          options={User.available_roles()}
+          label="Role"
+          is_error
+          placeholder="Select a role"
+          size="lg"
+          >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-error-3"
+          options={User.available_roles()}
+          label="Role"
+          is_error
+          placeholder="Select a role"
+          size="xl"
+        >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_error_tag do
     """
     alias Moon.Components.Select.SingleSelect
 
