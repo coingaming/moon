@@ -347,10 +347,37 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <Field name={:role}>
                 <SingleSelect
                   popover_class="pt-2"
-                  id="user-roles-example-disabled"
+                  id="user-roles-example-disabled-1"
                   options={User.available_roles()}
                   disabled
-                  label="Role" placeholder="Select a role"
+                  label="Role"
+                  placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-disabled-2"
+                  options={User.available_roles()}
+                  disabled
+                  label="Role"
+                  placeholder="Select a role"
+                  size="lg"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-disabled-3"
+                  options={User.available_roles()}
+                  disabled
+                  label="Role"
+                  placeholder="Select a role"
+                  size="xl"
                 />
               </Field>
             </Form>
@@ -566,7 +593,40 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-disabled-1"
+          options={User.available_roles()}
+          disabled
+          label="Role"
+          placeholder="Select a role"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-disabled-2"
+          options={User.available_roles()}
+          disabled
+          label="Role"
+          placeholder="Select a role"
+          size="lg"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-disabled-3"
+          options={User.available_roles()}
+          disabled
+          label="Role"
+          placeholder="Select a role"
+          size="xl"
+        />
       </Field>
     </Form>
     """
