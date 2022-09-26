@@ -63,6 +63,7 @@ defmodule Moon.Components.Select.Helpers do
     |> List.last()
   end
 
+  # TODO - remove
   def innerlabel_font_class(size) do
     case size do
       "small" -> "uppercase text-moon-10"
@@ -79,4 +80,17 @@ defmodule Moon.Components.Select.Helpers do
       _ -> "p-4 h-14 leading-6"
     end
   end
+
+  # TODO - remove
+  def label_font_class(size) do
+    case size do
+      "small" -> "text-moon-12"
+      "medium" -> "text-moon-14"
+      "large" -> "text-moon-16"
+      "xlarge" -> "text-moon-18"
+    end
+  end
+
+  # TODO - remove
+  def prompt_font_class(size), do: label_font_class(size)
 end

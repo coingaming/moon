@@ -3,8 +3,6 @@ defmodule Moon.Components.Select.Dropdown.Icon do
 
   use Moon.StatelessComponent
 
-  alias Moon.Components.Select.Helpers, as: SelectHelpers
-
   prop icon, :any
   prop class, :string, default: ""
   prop style, :string, default: ""
