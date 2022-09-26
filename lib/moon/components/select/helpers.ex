@@ -65,11 +65,9 @@ defmodule Moon.Components.Select.Helpers do
 
   def get_padding(size) do
     case size do
-      "md" -> "p-2 h-12 leading-4"
-      "lg" -> "p-3 h-14 leading-5"
-      "xl" -> "p-4 h-16 leading-6"
-      # TODO
-      _ -> ""
+      "md" -> "p-2 h-10 leading-4"
+      "lg" -> "p-3 h-12 leading-5"
+      _ -> "p-4 h-14 leading-6"
     end
   end
 end
