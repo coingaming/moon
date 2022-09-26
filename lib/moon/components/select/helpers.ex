@@ -63,6 +63,15 @@ defmodule Moon.Components.Select.Helpers do
     |> List.last()
   end
 
+  def innerlabel_font_class(size) do
+    case size do
+      "small" -> "uppercase text-moon-10"
+      "medium" -> "text-moon-12"
+      "large" -> "text-moon-14"
+      "xlarge" -> "text-moon-16"
+    end
+  end
+
   def get_padding(size) do
     case size do
       "md" -> "p-2 h-10 leading-4"

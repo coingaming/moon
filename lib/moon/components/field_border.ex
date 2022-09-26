@@ -26,6 +26,10 @@ defmodule Moon.Components.FieldBorder do
     """
   end
 
+  def get_default_border_color_class() do
+    "border-beerus-100"
+  end
+
   def get_default_class() do
     "
     border-0
