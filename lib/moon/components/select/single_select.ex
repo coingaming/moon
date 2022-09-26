@@ -58,7 +58,11 @@ defmodule Moon.Components.Select.SingleSelect do
         )}
         <FieldBorder
           click="toggle_open"
-          class={"w-full", "bg-#{@background_color}": @background_color}
+          class={
+            "w-full",
+            "bg-#{@background_color}": @background_color,
+            "shadow-input-err hover:shadow-input-err focus:shadow-input-err": @is_error
+          }
         >
           <PullAside
             class={
