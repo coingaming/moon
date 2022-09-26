@@ -22,7 +22,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     has_right_icon = has_value && not is_nil(assigns.option[:right_icon])
     has_icons = has_left_icon or has_right_icon
     is_label = not is_nil(assigns.label)
-    is_inner_label = is_label and assigns.size != "xl"
+    is_inner_label = is_label and assigns.size == "xl"
 
     ~F"""
     <div class={
