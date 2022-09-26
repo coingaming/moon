@@ -12,6 +12,8 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias Surface.Components.Form.Input.InputContext
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue
+  alias Moon.Components.Select.SingleSelect.HintText
+  alias Moon.Components.ErrorTag
 
   prop field, :atom
   prop label, :string
@@ -26,10 +28,13 @@ defmodule Moon.Components.Select.SingleSelect do
   prop popover_class, :string
   prop placeholder, :string
   prop background_color, :string, values: Moon.colors(), default: "gohan-100"
+  prop is_error, :boolean
+  prop use_error_tag, :boolean
 
   data open, :boolean, default: false
 
   slot default
+  slot hint_text_slot
 
   def render(assigns) do
     ~F"""
@@ -88,6 +93,15 @@ defmodule Moon.Components.Select.SingleSelect do
           </TopToDown>
         </:content>
       </Popover>
+      <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
+          <#slot name="hint_text_slot" />
+      </HintText>
+      <div
+        class="inline-block mt-2 text-moon-12"
+        :if={@use_error_tag && has_error(@is_error, form, @field)}
+      >
+        <ErrorTag {=@field} />
+      </div>
     </InputContext>
     """
   end
@@ -132,5 +146,9 @@ defmodule Moon.Components.Select.SingleSelect do
   defp has_value(form, field, value) do
     normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
     normalized_value != ""
+  end
+
+  defp has_error(is_error, form, field) do
+    is_error || (field && form && Keyword.has_key?(form.errors, field))
   end
 end

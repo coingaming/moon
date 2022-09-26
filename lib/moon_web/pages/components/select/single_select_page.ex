@@ -388,6 +388,58 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
+        <ExampleAndCode title="Hint text" id="single_select_hint_text">
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-hint-1"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                  >
+                  <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+                </SingleSelect>
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-hint-2"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="lg"
+                  >
+                  <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+                </SingleSelect>
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  popover_class="pt-2"
+                  id="user-roles-example-hint-3"
+                  options={User.available_roles()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="xl"
+                >
+                  <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+                </SingleSelect>
+              </Field>
+            </Form>
+          </:example>
+
+          <:code>{code_for_hint()}</:code>
+
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
+
+
+
       </Context>
 
       <PropsTable data={@props_info_array} />
@@ -627,6 +679,54 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           placeholder="Select a role"
           size="xl"
         />
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_hint do
+    """
+    alias Moon.Components.Select.SingleSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-hint-1"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-hint-2"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="lg"
+          >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-hint-3"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="xl"
+        >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
       </Field>
     </Form>
     """
