@@ -33,7 +33,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
       {#if has_value}
         {#if is_inner_label or has_icons}
         <div class={
-          "flex flex-col w-full items-center",
+          "flex flex-col w-full items-center text-moon-16",
           "pl-8": has_left_icon,
           "pr-8": has_right_icon
         }>

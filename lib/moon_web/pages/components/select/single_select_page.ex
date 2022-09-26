@@ -152,18 +152,18 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <Context put={theme_class: @theme_name}>
 
         <ExampleAndCode
-          title="Single Select with options as prop"
-          id="single_select_with_options_as_prop"
+          title="Default"
+          id="single_select_default"
         >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-1" options={User.available_roles()} label="Default" placeholder="Choose a gender" />
+                <SingleSelect id="user-roles-example-1" options={User.available_roles()} placeholder="Select a role" />
               </Field>
             </Form>
           </:example>
 
-          <:code>{code_for_single_select_with_options_as_prop()}</:code>
+          <:code>{code_for_single_select_default()}</:code>
 
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
@@ -228,6 +228,26 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
+        <ExampleAndCode
+          title="Single Select (selected with right_icon)"
+          id="single_select_with_options_as_prop_and_right_icon"
+        >
+          <:example>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-4"
+                  options={User.available_roles_with_right_icon()}
+                  label="Role" placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+          </:example>
+
+          <:code>{code_for_single_select_with_options_as_prop_and_right_icon()}</:code>
+
+          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+        </ExampleAndCode>
 
         <ExampleAndCode
           title="Single Select (both icons)"
@@ -250,26 +270,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
         </ExampleAndCode>
 
-        <ExampleAndCode
-          title="Single Select (selected with right_icon)"
-          id="single_select_with_options_as_prop_and_right_icon"
-        >
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:role}>
-                <SingleSelect
-                  id="user-roles-example-4"
-                  options={User.available_roles_with_right_icon()}
-                  label="Role" placeholder="Select a role"
-                />
-              </Field>
-            </Form>
-          </:example>
 
-          <:code>{code_for_single_select_with_options_as_prop_and_right_icon()}</:code>
-
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
-        </ExampleAndCode>
 
 
         <ExampleAndCode title="Sizes" id="single_select_sizes">
@@ -362,17 +363,13 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def code_for_single_select_with_options_as_prop do
+  def code_for_single_select_default do
     """
     alias Moon.Components.Select.SingleSelect
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
-        <SingleSelect id="user-roles-example-1" options={User.available_roles()}>
-          <:placeholder_slot>
-            <Icon name="controls-eye" /> Placeholder
-          </:placeholder_slot>
-        </SingleSelect>
+        <SingleSelect id="user-roles-example-1" options={User.available_roles()} placeholder="Select a role" />
       </Field>
     </Form>
     """
