@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       }
     ]
 
-  data search_string, :string, default: "ASD"
+  data search_string, :string, default: ""
 
   def mount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
@@ -315,41 +315,48 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def code_for_dropdown_search_footer do
     """
-      <Form for={@user_changeset} change="form_update" submit="form_submit">
-        <Field name={:permission}>
-          <FieldLabel>Permissions</FieldLabel>
-          <Dropdown
-            id="dropdown-search-footer-example-user-permissions"
-            options={@searchable_options}
-            is_multi>
-            <:option_filters>
-              <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-            </:option_filters>
-            {#for option <- @searchable_options}
-              <Dropdown.Option value="option.value" :let={is_selected: is_selected}>
-                <SingleLineItem current={is_selected}>
-                  <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                  {option.label}
-                  <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
-                </SingleLineItem>
-              </Dropdown.Option>
-            {/for}
-            <:options_footer>
-              <Footer>
-                <:cancel>
-                  <Button variant="fill" size="small">Cancel</Button>
-                </:cancel>
-                <:clear>
-                  <Button variant="fill" size="small">Clear</Button>
-                </:clear>
-                <:confirm>
-                  <Button variant="fill" size="small">Confirm</Button>
-                </:confirm>
-              </Footer>
-            </:options_footer>
-          </Dropdown>
-        </Field>
-      </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:permissions}>
+        <FieldLabel>Permissions</FieldLabel>
+        <Dropdown
+          id="random-id-38943"
+          available_options={@options}
+          options={@searched_options}
+          on_search_change="update_search"
+          search_string={@search_string}
+          is_multi
+        >
+          {#for option <- @searched_options}
+            <Dropdown.Option value={"\#{option.value}"} :let={is_selected: is_selected}>
+              <SingleLineItem current={is_selected}>
+                <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                {option.label}
+                <:right_icon>
+                  <Checkbox
+                    id={"random-id-38943_\#{option.value}"}
+                    field={:user_permissions_options_checked}
+                    checked={is_selected}
+                  />
+                </:right_icon>
+              </SingleLineItem>
+            </Dropdown.Option>
+          {/for}
+          <:options_footer>
+            <Footer>
+              <:cancel>
+                <Button variant="secondary" size="small">Cancel</Button>
+              </:cancel>
+              <:clear>
+                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+              </:clear>
+              <:confirm>
+                <Button variant="primary" size="small">Confirm</Button>
+              </:confirm>
+            </Footer>
+          </:options_footer>
+        </Dropdown>
+      </Field>
+    </Form>
     """
   end
 
