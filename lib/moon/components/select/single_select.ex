@@ -75,9 +75,12 @@ defmodule Moon.Components.Select.SingleSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <TopToDown class="rounded bg-gohan-100 min-w-[20px]">
+          <TopToDown>
             <div
-              class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
+              class={
+                      "overflow-auto rounded-moon-i-md box-border border border-solid",
+                      "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+              }
               style="min-height: 20px; max-height: 200px"
             >
               <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />

@@ -175,7 +175,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Select role" />
+                <SingleSelect id="user-roles-example-2" options={User.available_roles()} label="Role" placeholder="Select a role" />
               </Field>
             </Form>
           </:example>
@@ -195,7 +195,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-3"
                   options={User.available_roles_with_left_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -217,7 +217,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-5"
                   options={User.available_roles_with_left_icon_flag()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -239,7 +239,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-4_1"
                   options={User.available_roles_with_left_icon_flag_and_right_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -260,7 +260,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-4"
                   options={User.available_roles_with_right_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -276,12 +276,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} />
+                <SingleSelect popover_class="pt-2" id="user-roles-example-8" options={User.available_roles()} label="Role" placeholder="Select a role" />
               </Field>
             </Form>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
-                <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Select role" />
+                <SingleSelect id="user-roles-example-9" options={User.available_roles()} label="Role" placeholder="Select a role" />
               </Field>
             </Form>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
@@ -289,7 +289,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-10"
                   options={User.available_roles_with_left_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -307,6 +307,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   id="user-roles-example-11"
                   options={User.available_roles()}
                   size="lg"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -315,7 +316,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-12"
                   options={User.available_roles()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                   size="lg"
                 />
               </Field>
@@ -325,7 +326,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-13"
                   options={User.available_roles_with_left_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                   size="lg"
                 />
               </Field>
@@ -344,6 +345,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   id="user-roles-example-14"
                   options={User.available_roles()}
                   size="xl"
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
@@ -352,7 +354,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-15"
                   options={User.available_roles()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                   size="xl"
                 />
               </Field>
@@ -362,7 +364,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 <SingleSelect
                   id="user-roles-example-16"
                   options={User.available_roles_with_left_icon()}
-                  label="Select role"
+                  label="Role" placeholder="Select a role"
                   size="xl"
                 />
               </Field>
@@ -381,6 +383,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                   id="user-roles-example-disabled"
                   options={User.available_roles()}
                   disabled
+                  label="Role" placeholder="Select a role"
                 />
               </Field>
             </Form>
