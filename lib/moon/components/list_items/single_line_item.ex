@@ -17,11 +17,11 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   def render(assigns) do
     ~F"""
     <div class={
-      "relative rounded-moon-s-sm text-moon-14 text-bulma-100 leading-6 cursor-pointer flex gap-4 p-4",
+      "relative rounded-moon-s-sm text-moon-14 text-bulma-100 leading-6 cursor-pointer flex",
       @background_color,
       "hover:#{@active_background_color}",
-      "py-2": @size == "medium",
-      "py-3": @size == "large",
+      "gap-2 p-2 py-2": @size == "medium",
+      "gap-4 p-4 py-3": @size == "large",
       "#{@active_background_color}": @current
     }>
       <div class={"flex items-center", grow: @left_grow} :if={slot_assigned?(:left_icon)}>
