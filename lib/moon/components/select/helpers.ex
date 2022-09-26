@@ -72,14 +72,4 @@ defmodule Moon.Components.Select.Helpers do
       _ -> ""
     end
   end
-
-  def innerlabel_font_class(size) do
-    case size do
-      "md" -> "text-moon-12"
-      "lg" -> "text-moon-14"
-      "xl" -> "text-moon-16"
-      # TODO
-      _ -> ""
-    end
-  end
 end

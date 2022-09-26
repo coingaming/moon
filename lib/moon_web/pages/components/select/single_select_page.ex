@@ -298,16 +298,39 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         </ExampleAndCode>
 
         <ExampleAndCode
-          title="Single Select (both icons)"
+          title="Both icons"
           id="single_select_with_options_as_prop_and_both_icons"
         >
           <:example>
             <Form for={@user_changeset} change="form_update" submit="form_submit">
               <Field name={:role}>
                 <SingleSelect
-                  id="user-roles-example-4_1"
+                  id="user-roles-example-6-1"
                   options={User.available_roles_with_left_icon_flag_and_right_icon()}
-                  label="Role" placeholder="Select a role"
+                  label="Role"
+                  placeholder="Select a role"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-6-2"
+                  options={User.available_roles_with_left_icon_flag_and_right_icon()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="lg"
+                />
+              </Field>
+            </Form>
+            <Form for={@user_changeset} change="form_update" submit="form_submit">
+              <Field name={:role}>
+                <SingleSelect
+                  id="user-roles-example-6-3"
+                  options={User.available_roles_with_left_icon_flag_and_right_icon()}
+                  label="Role"
+                  placeholder="Select a role"
+                  size="xl"
                 />
               </Field>
             </Form>
@@ -498,6 +521,45 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     """
   end
 
+  defp code_for_single_select_with_options_as_prop_and_both_icons do
+    """
+    alias Moon.Components.Select.SingleSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-6-1"
+          options={User.available_roles_with_left_icon_flag_and_right_icon()}
+          label="Role"
+          placeholder="Select a role"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-6-2"
+          options={User.available_roles_with_left_icon_flag_and_right_icon()}
+          label="Role"
+          placeholder="Select a role"
+          size="lg"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-6-3"
+          options={User.available_roles_with_left_icon_flag_and_right_icon()}
+          label="Role"
+          placeholder="Select a role"
+          size="xl"
+        />
+      </Field>
+    </Form>
+    """
+  end
+
   def code_for_disabled do
     """
     alias Moon.Components.Select.SingleSelect
@@ -507,20 +569,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         <SingleSelect popover_class="pt-2" id="user-roles-example-1" options={User.available_roles()} />
       </Field>
     </Form>
-    """
-  end
-
-  # TODO
-  defp code_for_single_select_with_options_as_prop_and_both_icons do
-    """
-    <Form for={@user_changeset} change="form_update" submit="form_submit">
-    <Field name={:role}>
-      <SingleSelect
-        id="user-roles-example-4_1"
-        options={User.available_roles_with_left_icon_flag_and_right_icon()}
-        label="Select role"
-      />
-    </Field>
     """
   end
 end
