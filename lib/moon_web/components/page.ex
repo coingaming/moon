@@ -16,7 +16,7 @@ defmodule MoonWeb.Components.Page do
 
   def render(assigns) do
     ~F"""
-    <div role="main" class={"moon-design-light bg-goku-100 text-bulma-100 flex", @class}>
+    <div role="main" class={"bg-goku-100 text-bulma-100 flex", @class, @theme_name}>
       <MoonWeb.Components.LeftMenu
         id="left-menu"
         theme_name={assigns.theme_name}
@@ -26,7 +26,7 @@ defmodule MoonWeb.Components.Page do
 
       <div class={
         "min-h-screen lg:ml-80 bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
-        get_main_content_theme_name(@theme_name, @main_content_theme_name)
+        @theme_name
       }>
         <div class="flex flex-col grow max-w-screen-xl">
           <Breadcrumbs
@@ -44,13 +44,5 @@ defmodule MoonWeb.Components.Page do
       </div>
     </div>
     """
-  end
-
-  defp get_main_content_theme_name(theme_name, main_content_theme_name) do
-    if main_content_theme_name do
-      main_content_theme_name
-    else
-      theme_name
-    end
   end
 end
