@@ -24,10 +24,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__
-     )}
+     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
   end
 
   def handle_params(_params, uri, socket) do
@@ -270,6 +267,30 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
         <ExampleAndCode id="logo_20" class="mt-4">
           <:example>
+            <Logo name="logo_moneyball_io_full" font_size="10rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <Logo name="logo_moneyball_io_full" font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="logo_21" class="mt-4">
+          <:example>
+            <Logo name="logo_moneyball_io_short" font_size="10rem" />
+          </:example>
+
+          <:code>
+            <#CodePreview>
+              <Logo name="logo_moneyball_io_short" font_size="10rem" />
+            </#CodePreview>
+          </:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="logo_22" class="mt-4">
+          <:example>
             <Logo name="logo_moneyball" font_size="10rem" />
           </:example>
 
@@ -280,7 +301,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_21" class="mt-4">
+        <ExampleAndCode id="logo_23" class="mt-4">
           <:example>
             <Logo name="logo_moon_design_short" font_size="10rem" />
           </:example>
@@ -292,7 +313,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_22" class="mt-4">
+        <ExampleAndCode id="logo_24" class="mt-4">
           <:example>
             <Logo name="logo_moon_design" font_size="10rem" />
           </:example>
@@ -304,7 +325,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_23" class="mt-4">
+        <ExampleAndCode id="logo_25" class="mt-4">
           <:example>
             <Logo name="logo_paxful" font_size="10rem" />
           </:example>
@@ -316,7 +337,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_24" class="mt-4">
+        <ExampleAndCode id="logo_26" class="mt-4">
           <:example>
             <Logo name="logo_powered_by_hub88" font_size="10rem" />
           </:example>
@@ -328,7 +349,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_25" class="mt-4">
+        <ExampleAndCode id="logo_27" class="mt-4">
           <:example>
             <Logo name="logo_slots_full" font_size="10rem" />
           </:example>
@@ -340,7 +361,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_26" class="mt-4">
+        <ExampleAndCode id="logo_28" class="mt-4">
           <:example>
             <Logo name="logo_slots_short" font_size="10rem" />
           </:example>
@@ -352,7 +373,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_27" class="mt-4">
+        <ExampleAndCode id="logo_29" class="mt-4">
           <:example>
             <Logo name="logo_sportsbet_full" font_size="10rem" />
           </:example>
@@ -364,7 +385,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_28" class="mt-4">
+        <ExampleAndCode id="logo_30" class="mt-4">
           <:example>
             <Logo name="logo_sportsbet_short" font_size="10rem" />
           </:example>
@@ -376,7 +397,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_29" class="mt-4">
+        <ExampleAndCode id="logo_31" class="mt-4">
           <:example>
             <Logo name="logo_sportsbet_sponsor" font_size="10rem" />
           </:example>
@@ -388,7 +409,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_30" class="mt-4">
+        <ExampleAndCode id="logo_32" class="mt-4">
           <:example>
             <Logo name="logo_sportsbet" font_size="10rem" />
           </:example>
@@ -400,7 +421,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_31" class="mt-4">
+        <ExampleAndCode id="logo_33" class="mt-4">
           <:example>
             <Logo name="logo_utorg" font_size="10rem" />
           </:example>
@@ -412,7 +433,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           </:code>
         </ExampleAndCode>
 
-        <ExampleAndCode id="logo_32" class="mt-4">
+        <ExampleAndCode id="logo_34" class="mt-4">
           <:example>
             <Logo name="moon_pay" font_size="10rem" />
           </:example>

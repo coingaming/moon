@@ -76,7 +76,7 @@ const writeSvgFile = (iconType: string, file: string, contents: string) => {
   fs.writeFileSync(svgPath, svgNewContents);
 };
 
-['crests', 'currencies', 'duotones', 'icons', 'icons_new', 'logos', 'country_flags', 'patterns'].forEach((iconType: string) => {
+['crests', 'currencies', 'duotones', 'icons', 'icons_new', 'logos', 'patterns'].forEach((iconType: string) => {
   getFilesList(iconType).forEach((file) => {
     const contents = getContents(iconType, file);
     writeSvgFile(iconType, file.replace('.svg', ''), contents.toString());
