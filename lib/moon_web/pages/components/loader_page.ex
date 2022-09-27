@@ -62,37 +62,35 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" id="loader_1">
-          <:example>
-            <Loader />
-          </:example>
+      <ExampleAndCode title="Default" id="loader_1">
+        <:example>
+          <Loader />
+        </:example>
 
-          <:code>{loader_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{loader_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Colors" id="loader_2">
-          <:example>
-            <Loader color="hit-100" />
-            <Loader color="trunks-100" />
-            <Loader color="krillin-100" />
-          </:example>
+      <ExampleAndCode title="Colors" id="loader_2">
+        <:example>
+          <Loader color="hit-100" />
+          <Loader color="trunks-100" />
+          <Loader color="krillin-100" />
+        </:example>
 
-          <:code>{loader_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{loader_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="loader_3">
-          <:example>
-            <Loader size="twoxsmall" />
-            <Loader size="xsmall" />
-            <Loader size="small" />
-            <Loader />
-            <Loader size="large" />
-          </:example>
+      <ExampleAndCode title="Sizes" id="loader_3">
+        <:example>
+          <Loader size="twoxsmall" />
+          <Loader size="xsmall" />
+          <Loader size="small" />
+          <Loader />
+          <Loader size="large" />
+        </:example>
 
-          <:code>{loader_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{loader_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

@@ -38,63 +38,61 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Local upload" id="file_input_1">
-          <:example>
-            <Form id="upload-form-1" for={:example_form} change="upload_changed" submit="upload_submitted">
-              <TopToDown>
-                <FileInput
-                  conf={@uploads.some_picture_file}
-                  label="Upload your ID"
-                  placeholder="Choose a photo..."
-                  cancel_upload="cancel-upload"
-                />
-                <Button type="submit" variant="primary">Upload</Button>
-              </TopToDown>
-            </Form>
-          </:example>
-          <:code>{get_example_1_code()}</:code>
-          <:state>{get_example_1_state(assigns)}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="Local upload" id="file_input_1">
+        <:example>
+          <Form id="upload-form-1" for={:example_form} change="upload_changed" submit="upload_submitted">
+            <TopToDown>
+              <FileInput
+                conf={@uploads.some_picture_file}
+                label="Upload your ID"
+                placeholder="Choose a photo..."
+                cancel_upload="cancel-upload"
+              />
+              <Button type="submit" variant="primary">Upload</Button>
+            </TopToDown>
+          </Form>
+        </:example>
+        <:code>{get_example_1_code()}</:code>
+        <:state>{get_example_1_state(assigns)}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Upload directly from browser to S3" id="file_input_2">
-          <:example>
-            <Form
-              id="upload-form-2"
-              for={:example_form_for_s3}
-              change="upload_s3_changed"
-              submit="upload_s3_submitted"
-            >
-              <TopToDown>
-                <FileInput
-                  conf={@uploads.some_picture_file_for_s3}
-                  label="Upload your ID"
-                  placeholder="Choose a photo..."
-                  cancel_upload="cancel-upload"
-                />
-                <Button type="submit" variant="primary">Upload</Button>
-              </TopToDown>
-            </Form>
-          </:example>
-          <:code>{get_example_2_code()}</:code>
-          <:state>{get_example_2_state(assigns)}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="Upload directly from browser to S3" id="file_input_2">
+        <:example>
+          <Form
+            id="upload-form-2"
+            for={:example_form_for_s3}
+            change="upload_s3_changed"
+            submit="upload_s3_submitted"
+          >
+            <TopToDown>
+              <FileInput
+                conf={@uploads.some_picture_file_for_s3}
+                label="Upload your ID"
+                placeholder="Choose a photo..."
+                cancel_upload="cancel-upload"
+              />
+              <Button type="submit" variant="primary">Upload</Button>
+            </TopToDown>
+          </Form>
+        </:example>
+        <:code>{get_example_2_code()}</:code>
+        <:state>{get_example_2_state(assigns)}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Custom design instead of button" id="file_input_3">
-          <:example>
-            <Form id="upload-form-3" for={:example_form} change="upload_changed" submit="upload_submitted">
-              <TopToDown>
-                <FileInput conf={@uploads.some_picture_file} cancel_upload="cancel-upload">
-                  .oOo.
-                </FileInput>
-                <Button type="submit" variant="primary">Upload</Button>
-              </TopToDown>
-            </Form>
-          </:example>
-          <:code>{get_example_3_code()}</:code>
-          <:state>{get_example_1_state(assigns)}</:state>
-        </ExampleAndCode>
-      </Context>
+      <ExampleAndCode title="Custom design instead of button" id="file_input_3">
+        <:example>
+          <Form id="upload-form-3" for={:example_form} change="upload_changed" submit="upload_submitted">
+            <TopToDown>
+              <FileInput conf={@uploads.some_picture_file} cancel_upload="cancel-upload">
+                .oOo.
+              </FileInput>
+              <Button type="submit" variant="primary">Upload</Button>
+            </TopToDown>
+          </Form>
+        </:example>
+        <:code>{get_example_3_code()}</:code>
+        <:state>{get_example_1_state(assigns)}</:state>
+      </ExampleAndCode>
     </Page>
     """
   end

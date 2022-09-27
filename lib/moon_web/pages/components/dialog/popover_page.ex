@@ -126,33 +126,31 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
         <p>Popover</p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        {#for placement <- [
-            "top-start",
-            "top",
-            "top-end",
-            "right-start",
-            "right",
-            "right-end",
-            "bottom-start",
-            "bottom",
-            "bottom-end",
-            "left-start",
-            "left",
-            "left-end"
-          ]}
-          <ExampleAndCode id={"popover_#{placement}"} title={"Placement: #{placement}"}>
-            <:example>
-              <LeftToRight>
-                <PopoverExample id={placement} placement={placement} />
-              </LeftToRight>
-            </:example>
-            <:code>
-              {get_popover_code(placement)}
-            </:code>
-          </ExampleAndCode>
-        {/for}
-      </Context>
+      {#for placement <- [
+          "top-start",
+          "top",
+          "top-end",
+          "right-start",
+          "right",
+          "right-end",
+          "bottom-start",
+          "bottom",
+          "bottom-end",
+          "left-start",
+          "left",
+          "left-end"
+        ]}
+        <ExampleAndCode id={"popover_#{placement}"} title={"Placement: #{placement}"}>
+          <:example>
+            <LeftToRight>
+              <PopoverExample id={placement} placement={placement} />
+            </LeftToRight>
+          </:example>
+          <:code>
+            {get_popover_code(placement)}
+          </:code>
+        </ExampleAndCode>
+      {/for}
 
       <PropsTable data={@props_info_array} />
     </Page>

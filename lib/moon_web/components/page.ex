@@ -10,7 +10,6 @@ defmodule MoonWeb.Components.Page do
   prop class, :css_class
   prop breadcrumbs, :any
   prop theme_name, :any, default: "moon-design-light"
-  prop main_content_theme_name, :any
   prop active_page, :any
   slot default
 

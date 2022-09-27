@@ -63,173 +63,171 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <p>Dropdown</p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Options" id="dropdown-options-example">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-options-example-user-permissions" options={@options} is_multi />
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="Options" id="dropdown-options-example">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown id="dropdown-options-example-user-permissions" options={@options} is_multi />
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With icons" id="dropdown-icons-example">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-icons-example-user-permissions" is_multi options={@options}>
-                  {#for option <- @options}
-                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                      <SingleLineItem current={is_selected}>
-                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                        {option.label}
-                        <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
-                      </SingleLineItem>
-                    </Dropdown.Option>
-                  {/for}
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="With icons" id="dropdown-icons-example">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown id="dropdown-icons-example-user-permissions" is_multi options={@options}>
+                {#for option <- @options}
+                  <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                    <SingleLineItem current={is_selected}>
+                      <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                      {option.label}
+                      <:right_icon><Moon.Icons.ControlsPlus /></:right_icon>
+                    </SingleLineItem>
+                  </Dropdown.Option>
+                {/for}
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With search and footer" id="random-id-98439">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="random-id-38943"
-                  available_options={@options}
-                  options={@searched_options}
-                  on_search_change="update_search"
-                  search_string={@search_string}
-                  is_multi
-                >
-                  {#for option <- @searched_options}
-                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                      <SingleLineItem current={is_selected}>
-                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                        {option.label}
-                        <:right_icon>
-                          <Checkbox
-                            id={"random-id-38943_#{option.value}"}
-                            field={:user_permissions_options_checked}
-                            checked={is_selected}
-                          />
-                        </:right_icon>
-                      </SingleLineItem>
-                    </Dropdown.Option>
-                  {/for}
-                  <:options_footer>
-                    <Footer>
-                      <:cancel>
-                        <Button variant="secondary" size="small">Cancel</Button>
-                      </:cancel>
-                      <:clear>
-                        <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
-                      </:clear>
-                      <:confirm>
-                        <Button variant="primary" size="small">Confirm</Button>
-                      </:confirm>
-                    </Footer>
-                  </:options_footer>
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown_search_footer()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="With search and footer" id="random-id-98439">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown
+                id="random-id-38943"
+                available_options={@options}
+                options={@searched_options}
+                on_search_change="update_search"
+                search_string={@search_string}
+                is_multi
+              >
+                {#for option <- @searched_options}
+                  <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                    <SingleLineItem current={is_selected}>
+                      <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                      {option.label}
+                      <:right_icon>
+                        <Checkbox
+                          id={"random-id-38943_#{option.value}"}
+                          field={:user_permissions_options_checked}
+                          checked={is_selected}
+                        />
+                      </:right_icon>
+                    </SingleLineItem>
+                  </Dropdown.Option>
+                {/for}
+                <:options_footer>
+                  <Footer>
+                    <:cancel>
+                      <Button variant="secondary" size="small">Cancel</Button>
+                    </:cancel>
+                    <:clear>
+                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                    </:clear>
+                    <:confirm>
+                      <Button variant="primary" size="small">Confirm</Button>
+                    </:confirm>
+                  </Footer>
+                </:options_footer>
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_search_footer()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With radio button" id="dropdown-radio-example">
-          <:example>
-            <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options} is_multi>
-                  {#for option <- @radio_options}
-                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                      <SingleLineItem current={is_selected}>
-                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                        {option.label}
-                        <:right_icon>
-                          <RadioButton field={:user_options_selected} value={option.value} checked={is_selected} />
-                        </:right_icon>
-                      </SingleLineItem>
-                    </Dropdown.Option>
-                  {/for}
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown_radio_button()}</:code>
-          <:state>@radio_form_changeset = {inspect(@radio_form_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="With radio button" id="dropdown-radio-example">
+        <:example>
+          <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options} is_multi>
+                {#for option <- @radio_options}
+                  <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                    <SingleLineItem current={is_selected}>
+                      <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                      {option.label}
+                      <:right_icon>
+                        <RadioButton field={:user_options_selected} value={option.value} checked={is_selected} />
+                      </:right_icon>
+                    </SingleLineItem>
+                  </Dropdown.Option>
+                {/for}
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_radio_button()}</:code>
+        <:state>@radio_form_changeset = {inspect(@radio_form_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With checkbox" id="dropdown-checkbox-example">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown
-                  id="dropdown-checkbox-example-user-permissions"
-                  available_options={@options}
-                  options={@searched_options}
-                  is_multi
-                >
-                  {#for option <- @searched_options}
-                    <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                      <SingleLineItem current={is_selected}>
-                        <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                        {option.label}
-                        <:right_icon>
-                          <Checkbox
-                            id={"user_permissions_#{option.value}"}
-                            field={:user_permissions_options_checked}
-                            checked={is_selected}
-                          />
-                        </:right_icon>
-                      </SingleLineItem>
-                    </Dropdown.Option>
-                  {/for}
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown_checkbox()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
+      <ExampleAndCode title="With checkbox" id="dropdown-checkbox-example">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown
+                id="dropdown-checkbox-example-user-permissions"
+                available_options={@options}
+                options={@searched_options}
+                is_multi
+              >
+                {#for option <- @searched_options}
+                  <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
+                    <SingleLineItem current={is_selected}>
+                      <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
+                      {option.label}
+                      <:right_icon>
+                        <Checkbox
+                          id={"user_permissions_#{option.value}"}
+                          field={:user_permissions_options_checked}
+                          checked={is_selected}
+                        />
+                      </:right_icon>
+                    </SingleLineItem>
+                  </Dropdown.Option>
+                {/for}
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_checkbox()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With Tabs" id="dropdown-tabs-example">
-          <:example>
-            <Form for={@user_changeset} change="form_update" submit="form_submit">
-              <Field name={:permissions}>
-                <FieldLabel>Permissions</FieldLabel>
-                <Dropdown id="dropdown-tabs-example-user-permissions" options={@options} is_multi>
-                  <:options_tabs>
-                    <Tabs>
-                      <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
-                      <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
-                      <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
-                      <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
-                    </Tabs>
-                  </:options_tabs>
-                </Dropdown>
-              </Field>
-            </Form>
-          </:example>
-          <:code>{code_for_dropdown_tabs()}</:code>
-          <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
-        </ExampleAndCode>
-      </Context>
+      <ExampleAndCode title="With Tabs" id="dropdown-tabs-example">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown id="dropdown-tabs-example-user-permissions" options={@options} is_multi>
+                <:options_tabs>
+                  <Tabs>
+                    <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
+                    <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
+                    <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
+                    <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+                  </Tabs>
+                </:options_tabs>
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_tabs()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
     </Page>
     """
   end

@@ -104,34 +104,32 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" id="tabs" class="mt-4">
-          <:example>
-            <Tabs>
-              <TabLink
-                active={@tab_id == "1"}
-                to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
-              >Link 1</TabLink>
-              <TabLink
-                active={@tab_id == "2"}
-                to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
-              >Link 2</TabLink>
-              <TabLink
-                active={@tab_id == "3"}
-                patch
-                to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
-              >Link 3 with url patch, no page reload</TabLink>
-              <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
-            </Tabs>
-          </:example>
+      <ExampleAndCode title="Default" id="tabs" class="mt-4">
+        <:example>
+          <Tabs>
+            <TabLink
+              active={@tab_id == "1"}
+              to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
+            >Link 1</TabLink>
+            <TabLink
+              active={@tab_id == "2"}
+              to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
+            >Link 2</TabLink>
+            <TabLink
+              active={@tab_id == "3"}
+              patch
+              to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
+            >Link 3 with url patch, no page reload</TabLink>
+            <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
+          </Tabs>
+        </:example>
 
-          <:code>{get_example_code()}</:code>
+        <:code>{get_example_code()}</:code>
 
-          <:state>
-            @tab_id = {@tab_id}
-          </:state>
-        </ExampleAndCode>
-      </Context>
+        <:state>
+          @tab_id = {@tab_id}
+        </:state>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array_tab} />
 
