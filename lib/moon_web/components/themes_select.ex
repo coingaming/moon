@@ -16,6 +16,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
   prop active_page, :any
+  prop use_theme_switcher, :boolean, default: false
 
   data show_themes, :boolean, default: false
   data dark_mode, :boolean, default: false
@@ -63,7 +64,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>
 
-      <div class={"fixed bottom-16 right-4", hidden: !@show_themes}>
+      <div class={"fixed bottom-16 right-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
             :on-click="update_selected_theme"
@@ -90,7 +91,12 @@ defmodule MoonWeb.Components.ThemesSelect do
           </button>
         {/for}
       </div>
-      <div class={"fixed bottom-28 right-4", hidden: !@show_themes}>
+      <div class={
+        "fixed right-4",
+        hidden: !@show_themes,
+        "bottom-28": @use_theme_switcher,
+        "bottom-16": !@use_theme_switcher
+      }>
         <Switch id="theme_switcher" icons checked={@dark_mode} /> <!-- TODO, fix theme switcher -->
       </div>
     </div>
