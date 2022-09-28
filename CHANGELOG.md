@@ -1,3 +1,10 @@
+# [2.28.0](https://github.com/coingaming/moon/compare/v2.27.2...v2.28.0) (2022-09-28)
+
+
+### Features
+
+* add favicon [MDS-203] ([#388](https://github.com/coingaming/moon/issues/388)) ([05f0c26](https://github.com/coingaming/moon/commit/05f0c26e8867be9ad63739ede969b566613ebf21))
+
 ## [2.27.2](https://github.com/coingaming/moon/compare/v2.27.1...v2.27.2) (2022-09-23)
 
 
