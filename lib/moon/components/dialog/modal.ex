@@ -8,7 +8,7 @@ defmodule Moon.Components.Dialog.Modal.BackgroundCover do
     ~F"""
     <div
       :on-click={@close}
-      class="fixed inset-0 bg-black opacity-[.66] transition-opacity"
+      class="fixed inset-0 bg-black opacity-[.66] transition-opacity z-10"
       aria-hidden="true"
     />
     """
@@ -28,7 +28,8 @@ defmodule Moon.Components.Dialog.Modal.Panel do
     <div
       id={@id}
       testid={@testid}
-      class="inline-block align-bottom rounded overflow-hidden shadow-xl transform transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-20"
+      :on-click-away={@close}
+      class="inline-block align-bottom rounded overflow-hidden shadow-xl transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-30 relative"
     >
       <#slot />
     </div>
@@ -64,9 +65,9 @@ defmodule Moon.Components.Dialog.Modal do
       aria-modal="true"
     >
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <BackgroundCover close={@close} />
+        <BackgroundCover />
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <Panel id={"#{@id}-panel"} testid={"#{@testid}-panel"}>
+        <Panel id={"#{@id}-panel"} testid={"#{@testid}-panel"} close={@close}>
           <PullAside class="py-4 px-6">
             <:left>
               {#if slot_assigned?(:title)}
