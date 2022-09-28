@@ -36,12 +36,23 @@ defmodule Moon.Components.Popover do
 
     ~F"""
     <div
+      class={
+        "relative",
+        @class,
+        "inline-block": @inline_class
+      }
       data-testid={@testid}
     >
       <#slot />
-      {#if true}
-        <div class="origin-top-right fixed left-0 top-4 rounded-md shadow-lg" :on-click-away={@on_close}>
-          <#slot name="content" />
+      {#if @show}
+        {!-- This overlay is used to register click outside the `outer` wrapper --}
+        <div :on-click={@on_close} class="fixed inset-0 z-40" data-testid="close" />
+        <div class={"#{classes.outer} z-40"}>
+          {!-- This overlay is used to register click inside `outer` wrapper and outside `inner` wrapper --}
+          <div :on-click={@on_close} class="absolute inset-0" />
+          <div class={classes.inner}>
+            <#slot name="content" />
+          </div>
         </div>
       {/if}
     </div>
