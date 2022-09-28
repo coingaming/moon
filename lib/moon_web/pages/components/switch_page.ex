@@ -11,6 +11,8 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias Moon.Components.Button
+  alias Moon.Components.ErrorTag
 
   data breadcrumbs, :any,
     default: [
@@ -151,6 +153,25 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
           <:state>{switch_1_state(assigns)}</:state>
         </ExampleAndCode>
+
+        <ExampleAndCode title="Form example" class="mt-3" id="switch_5_sample">
+          <:example>
+            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+              <div class="text-moon-16 mb-3">Agrees to Terms of Service</div>
+              <Field name={:agrees_to_terms_of_service}>
+                <Switch checked={@captions_switch_checked} icons={false} size="small" id="switch_5_1" />
+                <ErrorTag />
+              </Field>
+              <div class="pt-4">
+                <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+              </div>
+            </Form>
+          </:example>
+
+          <:code>{switch_5_code()}</:code>
+
+          <:state>{switch_1_state(assigns)}</:state>
+        </ExampleAndCode>
       </Context>
 
       <PropsTable data={@props_info_array} />
@@ -164,7 +185,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     user_changeset =
       User.changeset(%User{}, %{
         agrees_to_terms_of_service: true,
-        agrees_to_marketing_emails: true
+        agrees_to_marketing_emails: false
       })
 
     socket =
@@ -198,8 +219,9 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
-  def handle_event("register_form_submit", _, socket) do
-    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+  def handle_event("register_form_submit", params, socket) do
+    user_changeset =
+      User.changeset(socket.assigns.user, params["user"]) |> Map.merge(%{action: :insert})
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
@@ -310,6 +332,21 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           id="switch_4_3"
         />
       </Field>
+    </Form>
+    """
+  end
+
+  def switch_5_code do
+    """
+    <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+      <div class="text-moon-16 mb-3">Agrees to Terms of Service</div>
+      <Field name={:agrees_to_terms_of_service}>
+        <Switch checked={@captions_switch_checked} icons={false} size="small" id="switch_5_1" />
+        <ErrorTag />
+      </Field>
+      <div class="pt-4">
+        <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+      </div>
     </Form>
     """
   end
