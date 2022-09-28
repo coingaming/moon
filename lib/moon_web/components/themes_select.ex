@@ -107,7 +107,7 @@ defmodule MoonWeb.Components.ThemesSelect do
       <div class={"fixed bottom-28 right-4", hidden: !@show_themes}>
         <Form for={@selected_theme_changeset} change="toggle_dark_mode">
           <Field name={:is_dark}>
-            <Switch id="theme_switcher" icons checked={@dark_mode} /> <!-- TODO, fix theme switcher -->
+            <Switch id="theme_switcher" icons checked={@dark_mode} />
           </Field>
         </Form>
       </div>
@@ -115,9 +115,9 @@ defmodule MoonWeb.Components.ThemesSelect do
     """
   end
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     selected_theme = %SelectedTheme{}
-    selected_theme_changeset = SelectedTheme.changeset(%SelectedTheme{}, %{})
+    selected_theme_changeset = SelectedTheme.changeset(selected_theme, %{})
 
     socket =
       assign(socket,
@@ -145,7 +145,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   end
 
   def handle_event("toggle_dark_mode", params, socket) do
-    %{active_page: active_page, dark_mode: dark_mode, theme_name: theme} = socket.assigns
+    %{active_page: active_page, theme_name: theme} = socket.assigns
     theme = String.replace(theme, ["-light", "-dark"], "")
 
     new_path =
