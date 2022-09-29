@@ -29,7 +29,7 @@ defmodule Moon.Components.Dialog.Modal.Panel do
       id={@id}
       testid={@testid}
       :on-click-away={@close}
-      class="inline-block align-bottom rounded shadow-xl transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-30 relative"
+      class="inline-block align-bottom rounded shadow-xl transition-all sm:align-middle sm:max-w-lg sm:w-full bg-gohan-100 z-40 relative overflow-hidden"
     >
       <#slot />
     </div>
