@@ -119,402 +119,400 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Text Input</Heading>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="input_020" title="Sizes">
-            <:example>
+        <ExampleAndCode id="input_020" title="Sizes">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_020_code()}</:code>
+        </ExampleAndCode>
+
+        <Heading size={32} class="mt-16 mb-4">Text Input Icons</Heading>
+
+        <ExampleAndCode id="input_023" title="Icons">
+          <:example>
+            <TopToDown class="w-full">
               <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+                <TextInput
+                  label="Medium (Default: md)"
+                  placeholder="Placeholder"
+                  type="password"
+                  id="txt_password_0_1"
+                >
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
+                <TextInput
+                  size="lg"
+                  label="Large (lg)"
+                  placeholder="Placeholder"
+                  type="password"
+                  id="txt_password_0_2"
+                >
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
+                <TextInput
+                  size="xl"
+                  label="Xlarge (xl)"
+                  placeholder="Placeholder"
+                  type="password"
+                  id="txt_password_0_3"
+                >
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
               </LeftToRight>
-            </:example>
 
-            <:code>{text_input_020_code()}</:code>
-          </ExampleAndCode>
+              <LeftToRight class="justify-between w-full items-end">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                </TextInput>
+              </LeftToRight>
 
-          <Heading size={32} class="mt-16 mb-4">Text Input Icons</Heading>
+              <LeftToRight class="justify-between w-full items-end">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  <:hint_text_slot>Informative message holder</:hint_text_slot>
+                </TextInput>
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  <:hint_text_slot>Informative message holder</:hint_text_slot>
+                </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
+                  <:hint_text_slot>Informative message holder</:hint_text_slot>
+                </TextInput>
+              </LeftToRight>
 
-          <ExampleAndCode id="input_023" title="Icons">
-            <:example>
-              <TopToDown class="w-full">
-                <LeftToRight class="justify-between w-full items-end">
+              <LeftToRight class="justify-between w-full items-end">
+                <TextInput label="Medium (Default: md)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot>
+                    <Button size="xsmall">xsmall<Icon name="controls-plus" /></Button>
+                  </:right_icon_slot>
+                </TextInput>
+                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot>
+                    <Button size="small">small<Icon name="controls-plus" /></Button>
+                  </:right_icon_slot>
+                </TextInput>
+                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
+                  <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
+                  <:right_icon_slot>
+                    <Button>medium<Icon name="controls-plus" /></Button>
+                  </:right_icon_slot>
+                </TextInput>
+              </LeftToRight>
+            </TopToDown>
+          </:example>
+
+          <:code>{text_input_023_code()}</:code>
+        </ExampleAndCode>
+
+        <Heading size={32} class="mt-16 mb-4">Text Input Types</Heading>
+
+        <ExampleAndCode id="input_010" title="Number">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput type="number" size="md" label="Medium (Default: md)" placeholder="e.g. 1234" />
+              <TextInput type="number" size="lg" label="Large (lg)" placeholder="e.g. 1234" />
+              <TextInput type="number" size="xl" label="Xlarge (xl)" placeholder="e.g. 1234" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_010_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_009" title="Date">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput type="date" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput type="date" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="date" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_009_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_008" title="Time">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput type="time" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput type="time" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="time" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_008_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_007" title="Date Time">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="datetime-local"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Placeholder"
+              />
+              <TextInput type="datetime-local" size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput type="datetime-local" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_007_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_006" title="Email">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
+              <TextInput
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_006_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_005" title="Password">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                id="txt_password_1"
+                type="password"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="Password"
+              />
+              <TextInput
+                id="txt_password_2"
+                type="password"
+                size="lg"
+                label="Large (lg)"
+                placeholder="Password"
+              />
+              <TextInput
+                id="txt_password_3"
+                type="password"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="Password"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_005_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_004" title="Search">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                type="email"
+                size="md"
+                label="Medium (Default: md)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+              <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
+              <TextInput
+                type="email"
+                size="xl"
+                label="Xlarge (xl)"
+                placeholder="e.g. jake.weary@sportsbet.io"
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_004_code()}</:code>
+        </ExampleAndCode>
+
+        <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
+
+        <ExampleAndCode id="input_20" title="Disabled">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_20_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_30" title="Error">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_30_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_40" title="Readonly">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput
+                label="Medium (Default: md)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
+              <TextInput
+                size="lg"
+                label="Large (lg)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
+              <TextInput
+                size="xl"
+                label="Xlarge (xl)"
+                value="Read only text"
+                placeholder="Placeholder"
+                readonly
+              />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_40_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_50" title="Size RTL">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end" dir="rtl">
+              <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
+              <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
+              <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_50_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_60" title="Without label">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end" dir="rtl">
+              <TextInput placeholder="Placeholder" />
+              <TextInput size="lg" placeholder="Placeholder" />
+              <TextInput size="xl" placeholder="Placeholder" />
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_60_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_70" title="Hint Text">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_80" title="Input with background color">
+          <:example>
+            <LeftToRight class="justify-between w-full items-end">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+                <:hint_text_slot>Informative message holder</:hint_text_slot>
+              </TextInput>
+            </LeftToRight>
+          </:example>
+
+          <:code>{text_input_70_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode id="input_90" title="Form example">
+          <:example>
+            <Form
+              for={@user_changeset}
+              change="register_form_update"
+              submit="register_form_submit"
+              autocomplete="off"
+            >
+              <TopToDown>
+                <Field name={:username}>
+                  <TextInput label="Username" placeholder="Username" />
+                  <ErrorTag />
+                </Field>
+                <Field name={:email}>
                   <TextInput
-                    label="Medium (Default: md)"
-                    placeholder="Placeholder"
-                    type="password"
-                    id="txt_password_0_1"
-                  >
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                  <TextInput
-                    size="lg"
-                    label="Large (lg)"
-                    placeholder="Placeholder"
-                    type="password"
-                    id="txt_password_0_2"
-                  >
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                  <TextInput
-                    size="xl"
-                    label="Xlarge (xl)"
-                    placeholder="Placeholder"
-                    type="password"
-                    id="txt_password_0_3"
-                  >
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                </LeftToRight>
-
-                <LeftToRight class="justify-between w-full items-end">
-                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                  </TextInput>
-                </LeftToRight>
-
-                <LeftToRight class="justify-between w-full items-end">
-                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                    <:hint_text_slot>Informative message holder</:hint_text_slot>
-                  </TextInput>
-                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                    <:hint_text_slot>Informative message holder</:hint_text_slot>
-                  </TextInput>
-                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot><Icon name="controls-clear" /></:right_icon_slot>
-                    <:hint_text_slot>Informative message holder</:hint_text_slot>
-                  </TextInput>
-                </LeftToRight>
-
-                <LeftToRight class="justify-between w-full items-end">
-                  <TextInput label="Medium (Default: md)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot>
-                      <Button size="xsmall">xsmall<Icon name="controls-plus" /></Button>
-                    </:right_icon_slot>
-                  </TextInput>
-                  <TextInput size="lg" label="Large (lg)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot>
-                      <Button size="small">small<Icon name="controls-plus" /></Button>
-                    </:right_icon_slot>
-                  </TextInput>
-                  <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder">
-                    <:left_icon_slot><Icon name="controls-collapse" /></:left_icon_slot>
-                    <:right_icon_slot>
-                      <Button>medium<Icon name="controls-plus" /></Button>
-                    </:right_icon_slot>
-                  </TextInput>
-                </LeftToRight>
+                    label="Email"
+                    placeholder="Email"
+                    type="email"
+                    disabled={!get_has_valid_username(@user_changeset)}
+                  />
+                  <ErrorTag />
+                </Field>
+                <Field name={:password}>
+                  <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag />
+                </Field>
+                <div class="pt-4">
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
               </TopToDown>
-            </:example>
+            </Form>
+          </:example>
 
-            <:code>{text_input_023_code()}</:code>
-          </ExampleAndCode>
+          <:code>{text_input_90_code()}</:code>
 
-          <Heading size={32} class="mt-16 mb-4">Text Input Types</Heading>
-
-          <ExampleAndCode id="input_010" title="Number">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput type="number" size="md" label="Medium (Default: md)" placeholder="e.g. 1234" />
-                <TextInput type="number" size="lg" label="Large (lg)" placeholder="e.g. 1234" />
-                <TextInput type="number" size="xl" label="Xlarge (xl)" placeholder="e.g. 1234" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_010_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_009" title="Date">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput type="date" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
-                <TextInput type="date" size="lg" label="Large (lg)" placeholder="Placeholder" />
-                <TextInput type="date" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_009_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_008" title="Time">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput type="time" size="md" label="Medium (Default: md)" placeholder="Placeholder" />
-                <TextInput type="time" size="lg" label="Large (lg)" placeholder="Placeholder" />
-                <TextInput type="time" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_008_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_007" title="Date Time">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput
-                  type="datetime-local"
-                  size="md"
-                  label="Medium (Default: md)"
-                  placeholder="Placeholder"
-                />
-                <TextInput type="datetime-local" size="lg" label="Large (lg)" placeholder="Placeholder" />
-                <TextInput type="datetime-local" size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_007_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_006" title="Email">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput
-                  type="email"
-                  size="md"
-                  label="Medium (Default: md)"
-                  placeholder="e.g. jake.weary@sportsbet.io"
-                />
-                <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
-                <TextInput
-                  type="email"
-                  size="xl"
-                  label="Xlarge (xl)"
-                  placeholder="e.g. jake.weary@sportsbet.io"
-                />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_006_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_005" title="Password">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput
-                  id="txt_password_1"
-                  type="password"
-                  size="md"
-                  label="Medium (Default: md)"
-                  placeholder="Password"
-                />
-                <TextInput
-                  id="txt_password_2"
-                  type="password"
-                  size="lg"
-                  label="Large (lg)"
-                  placeholder="Password"
-                />
-                <TextInput
-                  id="txt_password_3"
-                  type="password"
-                  size="xl"
-                  label="Xlarge (xl)"
-                  placeholder="Password"
-                />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_005_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_004" title="Search">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput
-                  type="email"
-                  size="md"
-                  label="Medium (Default: md)"
-                  placeholder="e.g. jake.weary@sportsbet.io"
-                />
-                <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
-                <TextInput
-                  type="email"
-                  size="xl"
-                  label="Xlarge (xl)"
-                  placeholder="e.g. jake.weary@sportsbet.io"
-                />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_004_code()}</:code>
-          </ExampleAndCode>
-
-          <Heading size={32} class="mt-16 mb-4">Text input attributes</Heading>
-
-          <ExampleAndCode id="input_20" title="Disabled">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" disabled />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" disabled />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" disabled />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_20_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_30" title="Error">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" is_error>
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" is_error>
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" is_error>
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_30_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_40" title="Readonly">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput
-                  label="Medium (Default: md)"
-                  value="Read only text"
-                  placeholder="Placeholder"
-                  readonly
-                />
-                <TextInput
-                  size="lg"
-                  label="Large (lg)"
-                  value="Read only text"
-                  placeholder="Placeholder"
-                  readonly
-                />
-                <TextInput
-                  size="xl"
-                  label="Xlarge (xl)"
-                  value="Read only text"
-                  placeholder="Placeholder"
-                  readonly
-                />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_40_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_50" title="Size RTL">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end" dir="rtl">
-                <TextInput label="Medium (Default: md)" placeholder="Placeholder" />
-                <TextInput size="lg" label="Large (lg)" placeholder="Placeholder" />
-                <TextInput size="xl" label="Xlarge (xl)" placeholder="Placeholder" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_50_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_60" title="Without label">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end" dir="rtl">
-                <TextInput placeholder="Placeholder" />
-                <TextInput size="lg" placeholder="Placeholder" />
-                <TextInput size="xl" placeholder="Placeholder" />
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_60_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_70" title="Hint Text">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput placeholder="Placeholder" label="Medium (Default: md)">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="lg" placeholder="Placeholder" label="Large (lg)">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_70_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_80" title="Input with background color">
-            <:example>
-              <LeftToRight class="justify-between w-full items-end">
-                <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-                <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
-                  <:hint_text_slot>Informative message holder</:hint_text_slot>
-                </TextInput>
-              </LeftToRight>
-            </:example>
-
-            <:code>{text_input_70_code()}</:code>
-          </ExampleAndCode>
-
-          <ExampleAndCode id="input_90" title="Form example">
-            <:example>
-              <Form
-                for={@user_changeset}
-                change="register_form_update"
-                submit="register_form_submit"
-                autocomplete="off"
-              >
-                <TopToDown>
-                  <Field name={:username}>
-                    <TextInput label="Username" placeholder="Username" />
-                    <ErrorTag />
-                  </Field>
-                  <Field name={:email}>
-                    <TextInput
-                      label="Email"
-                      placeholder="Email"
-                      type="email"
-                      disabled={!get_has_valid_username(@user_changeset)}
-                    />
-                    <ErrorTag />
-                  </Field>
-                  <Field name={:password}>
-                    <TextInput id="password" label="Password" placeholder="Password" type="password" use_error_tag />
-                  </Field>
-                  <div class="pt-4">
-                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                  </div>
-                </TopToDown>
-              </Form>
-            </:example>
-
-            <:code>{text_input_90_code()}</:code>
-
-            <:state>{text_input_90_state(assigns)}</:state>
-          </ExampleAndCode>
-        </Context>
+          <:state>{text_input_90_state(assigns)}</:state>
+        </ExampleAndCode>
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Text Input Props</div>

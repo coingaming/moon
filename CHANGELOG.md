@@ -1,3 +1,17 @@
+## [2.28.1](https://github.com/coingaming/moon/compare/v2.28.0...v2.28.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* theme switching should affect the entire page including the left menu [MDS-220] ([#384](https://github.com/coingaming/moon/issues/384)) ([e059378](https://github.com/coingaming/moon/commit/e059378a32efdbca5a9af950e019ea3b9ff9be16))
+
+# [2.28.0](https://github.com/coingaming/moon/compare/v2.27.2...v2.28.0) (2022-09-28)
+
+
+### Features
+
+* add favicon [MDS-203] ([#388](https://github.com/coingaming/moon/issues/388)) ([05f0c26](https://github.com/coingaming/moon/commit/05f0c26e8867be9ad63739ede969b566613ebf21))
+
 ## [2.27.2](https://github.com/coingaming/moon/compare/v2.27.1...v2.27.2) (2022-09-23)
 
 

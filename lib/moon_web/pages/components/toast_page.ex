@@ -122,58 +122,56 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ToastStack id="toasts" />
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" id="toast_1">
-          <:example>
-            <Toast id="minimal" message="Hey! Your toast is ready." />
-          </:example>
+      <ExampleAndCode title="Default" id="toast_1">
+        <:example>
+          <Toast id="minimal" message="Hey! Your toast is ready." />
+        </:example>
 
-          <:code>{toast_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{toast_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Appearing and disappearing" id="toast_2">
-          <:example>
-            <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
+      <ExampleAndCode title="Appearing and disappearing" id="toast_2">
+        <:example>
+          <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
 
-            <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
-          </:example>
+          <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
+        </:example>
 
-          <:code>{toast_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{toast_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Variant" id="toast_3">
-          <:example>
-            <Toast
-              :for={toast <- variant_toasts()}
-              id={toast.id}
-              message={toast.message}
-              variant={toast.variant}
-            />
+      <ExampleAndCode title="Variant" id="toast_3">
+        <:example>
+          <Toast
+            :for={toast <- variant_toasts()}
+            id={toast.id}
+            message={toast.message}
+            variant={toast.variant}
+          />
 
-            <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
-          </:example>
+          <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
+        </:example>
 
-          <:code>{toast_3_code()}</:code>
-        </ExampleAndCode>
+        <:code>{toast_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Actions" id="toast_4">
-          <:example>
-            <Toast
-              :for={toast <- action_toasts()}
-              id={toast.id}
-              message={toast.message}
-              variant={toast.variant}
-              link_text={toast.link_text}
-              link_href={toast.link_href}
-              closeable={toast.closeable}
-            />
+      <ExampleAndCode title="Actions" id="toast_4">
+        <:example>
+          <Toast
+            :for={toast <- action_toasts()}
+            id={toast.id}
+            message={toast.message}
+            variant={toast.variant}
+            link_text={toast.link_text}
+            link_href={toast.link_href}
+            closeable={toast.closeable}
+          />
 
-            <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
-          </:example>
+          <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
+        </:example>
 
-          <:code>{toast_4_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{toast_4_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

@@ -100,72 +100,70 @@ defmodule MoonWeb.Pages.Components.ChipPage do
         </div>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Sizes" id="chip_1">
-          <:example>
-            <Chip size="small">Small</Chip>
-            <Chip>Medium (default)</Chip>
-          </:example>
+      <ExampleAndCode title="Sizes" id="chip_1">
+        <:example>
+          <Chip size="small">Small</Chip>
+          <Chip>Medium (default)</Chip>
+        </:example>
 
-          <:code>{chip_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{chip_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Active State" id="chip_2">
-          <:example>
-            <Chip size="small" active>Small</Chip>
-            <Chip active is_stroke>Medium (default)</Chip>
-          </:example>
+      <ExampleAndCode title="Active State" id="chip_2">
+        <:example>
+          <Chip size="small" active>Small</Chip>
+          <Chip active is_stroke>Medium (default)</Chip>
+        </:example>
 
-          <:code>{chip_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{chip_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="IsStroke" id="chip_3">
-          <:example>
-            <Chip size="small" is_stroke>Stroke on Hover</Chip>
-            <Chip is_stroke>Stroke on Hover</Chip>
-          </:example>
+      <ExampleAndCode title="IsStroke" id="chip_3">
+        <:example>
+          <Chip size="small" is_stroke>Stroke on Hover</Chip>
+          <Chip is_stroke>Stroke on Hover</Chip>
+        </:example>
 
-          <:code>{chip_3_code()}</:code>
-        </ExampleAndCode>
+        <:code>{chip_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" id="chip_4">
-          <:example>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
-              <Chip size="small" right_icon="arrows_right">Right Icon</Chip>
-              <Chip size="small" left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-              <Chip size="small" icon_only="generic_settings" />
-            </div>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Chip left_icon="arrows_left">Left Icon</Chip>
-              <Chip right_icon="arrows_right">Right Icon</Chip>
-              <Chip left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
-              <Chip icon_only="generic_settings" />
-            </div>
-          </:example>
+      <ExampleAndCode title="Icons" id="chip_4">
+        <:example>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Chip size="small" left_icon="arrows_left">Left Icon</Chip>
+            <Chip size="small" right_icon="arrows_right">Right Icon</Chip>
+            <Chip size="small" left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
+            <Chip size="small" icon_only="generic_settings" />
+          </div>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Chip left_icon="arrows_left">Left Icon</Chip>
+            <Chip right_icon="arrows_right">Right Icon</Chip>
+            <Chip left_icon="arrows_left" right_icon="arrows_right">Both Icons</Chip>
+            <Chip icon_only="generic_settings" />
+          </div>
+        </:example>
 
-          <:code>{chip_4_code()}</:code>
-        </ExampleAndCode>
+        <:code>{chip_4_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Icons with isStroke" id="chip_5">
-          <:example>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Chip size="small" left_icon="arrows_left" is_stroke>Left Icon</Chip>
-              <Chip size="small" right_icon="arrows_right" is_stroke>Right Icon</Chip>
-              <Chip size="small" left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
-              <Chip size="small" icon_only="generic_settings" is_stroke />
-            </div>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Chip left_icon="arrows_left" is_stroke>Left Icon</Chip>
-              <Chip right_icon="arrows_right" is_stroke>Right Icon</Chip>
-              <Chip left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
-              <Chip icon_only="generic_settings" is_stroke />
-            </div>
-          </:example>
+      <ExampleAndCode title="Icons with isStroke" id="chip_5">
+        <:example>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Chip size="small" left_icon="arrows_left" is_stroke>Left Icon</Chip>
+            <Chip size="small" right_icon="arrows_right" is_stroke>Right Icon</Chip>
+            <Chip size="small" left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
+            <Chip size="small" icon_only="generic_settings" is_stroke />
+          </div>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Chip left_icon="arrows_left" is_stroke>Left Icon</Chip>
+            <Chip right_icon="arrows_right" is_stroke>Right Icon</Chip>
+            <Chip left_icon="arrows_left" right_icon="arrows_right" is_stroke>Both Icons</Chip>
+            <Chip icon_only="generic_settings" is_stroke />
+          </div>
+        </:example>
 
-          <:code>{chip_5_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{chip_5_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

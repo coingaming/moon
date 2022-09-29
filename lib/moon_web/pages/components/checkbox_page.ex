@@ -78,83 +78,81 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Checkbox" id="checkbox_1">
-          <:example>
-            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-              <TopToDown>
-                <Field name={:agrees_to_terms_of_service}>
-                  <Checkbox id="agrees_to_terms_of_service">
-                    I agree to terms and services.
-                  </Checkbox>
-                  <ErrorTag />
-                </Field>
-                <Field name={:agrees_to_marketing_emails}>
-                  <Checkbox
-                    id="agrees_to_marketing_emails"
-                    disabled={!get_agrees_to_terms_of_service(@user_changeset)}
-                  >
-                    I agree to receive bonus & marketing emails.
-                  </Checkbox>
-                  <ErrorTag />
-                </Field>
-                <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                </div>
-              </TopToDown>
-            </Form>
-          </:example>
+      <ExampleAndCode title="Checkbox" id="checkbox_1">
+        <:example>
+          <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+            <TopToDown>
+              <Field name={:agrees_to_terms_of_service}>
+                <Checkbox id="agrees_to_terms_of_service">
+                  I agree to terms and services.
+                </Checkbox>
+                <ErrorTag />
+              </Field>
+              <Field name={:agrees_to_marketing_emails}>
+                <Checkbox
+                  id="agrees_to_marketing_emails"
+                  disabled={!get_agrees_to_terms_of_service(@user_changeset)}
+                >
+                  I agree to receive bonus & marketing emails.
+                </Checkbox>
+                <ErrorTag />
+              </Field>
+              <div>
+                <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+              </div>
+            </TopToDown>
+          </Form>
+        </:example>
 
-          <:code>{checkbox_1_code()}</:code>
+        <:code>{checkbox_1_code()}</:code>
 
-          <:state>{checkbox_1_state(assigns)}</:state>
-        </ExampleAndCode>
+        <:state>{checkbox_1_state(assigns)}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="No Label" id="checkbox_2">
-          <:example>
-            <Form for={@user_changeset2} change="register_form_update2">
-              <TopToDown>
-                <Field name={:agrees_to_terms_of_service}>
-                  <Checkbox id="agrees_to_terms_of_service" />
-                  <ErrorTag />
-                </Field>
-              </TopToDown>
-            </Form>
-          </:example>
+      <ExampleAndCode title="No Label" id="checkbox_2">
+        <:example>
+          <Form for={@user_changeset2} change="register_form_update2">
+            <TopToDown>
+              <Field name={:agrees_to_terms_of_service}>
+                <Checkbox id="agrees_to_terms_of_service" />
+                <ErrorTag />
+              </Field>
+            </TopToDown>
+          </Form>
+        </:example>
 
-          <:code>{checkbox_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{checkbox_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="checkbox_3">
-          <:example>
-            <Form for={@user_changeset}>
-              <TopToDown>
-                <Field name={:agrees_to_terms_of_service}>
-                  <Checkbox id="agrees_to_terms_of_service" disabled>I agree to terms and services.</Checkbox>
-                  <ErrorTag />
-                </Field>
-              </TopToDown>
-            </Form>
-          </:example>
+      <ExampleAndCode title="Disabled" id="checkbox_3">
+        <:example>
+          <Form for={@user_changeset}>
+            <TopToDown>
+              <Field name={:agrees_to_terms_of_service}>
+                <Checkbox id="agrees_to_terms_of_service" disabled>I agree to terms and services.</Checkbox>
+                <ErrorTag />
+              </Field>
+            </TopToDown>
+          </Form>
+        </:example>
 
-          <:code>{checkbox_3_code()}</:code>
-        </ExampleAndCode>
+        <:code>{checkbox_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Readonly" id="checkbox_4">
-          <:example>
-            <Form for={@user_changeset2} change="register_form_update2">
-              <TopToDown>
-                <Field name={:agrees_to_terms_of_service}>
-                  <Checkbox id="agrees_to_terms_of_service" readonly checked>I agree to terms and services.</Checkbox>
-                  <ErrorTag />
-                </Field>
-              </TopToDown>
-            </Form>
-          </:example>
+      <ExampleAndCode title="Readonly" id="checkbox_4">
+        <:example>
+          <Form for={@user_changeset2} change="register_form_update2">
+            <TopToDown>
+              <Field name={:agrees_to_terms_of_service}>
+                <Checkbox id="agrees_to_terms_of_service" readonly checked>I agree to terms and services.</Checkbox>
+                <ErrorTag />
+              </Field>
+            </TopToDown>
+          </Form>
+        </:example>
 
-          <:code>{checkbox_4_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{checkbox_4_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

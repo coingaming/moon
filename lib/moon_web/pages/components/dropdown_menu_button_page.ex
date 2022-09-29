@@ -45,27 +45,25 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <TopToDown>
         <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="dropdown_menu_button_1">
-            <:example>
-              <div class="flex justify-center">
-                <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
-                  <IconMore />
+        <ExampleAndCode id="dropdown_menu_button_1">
+          <:example>
+            <div class="flex justify-center">
+              <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+                <IconMore />
 
-                  <:menu>
-                    <DropdownMenuItems>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Share</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuItems>
-                  </:menu>
-                </DropdownMenuButton>
-              </div>
-            </:example>
+                <:menu>
+                  <DropdownMenuItems>
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                    <DropdownMenuItem>Share</DropdownMenuItem>
+                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                  </DropdownMenuItems>
+                </:menu>
+              </DropdownMenuButton>
+            </div>
+          </:example>
 
-            <:code>{dropdown_menu_button_1_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{dropdown_menu_button_1_code()}</:code>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """
