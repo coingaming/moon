@@ -103,58 +103,56 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Sizes" id="heading_1">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading>Heading with default font size</Heading>
-              <Heading size={16}>Heading with font size 16</Heading>
-              <Heading size={18}>Heading with font size 18</Heading>
-              <Heading size={20}>Heading with font size 20</Heading>
-              <Heading size={24}>Heading with font size 24</Heading>
-              <Heading size={32}>Heading with font size 32</Heading>
-              <Heading size={48}>font size 48</Heading>
-              <Heading size={56}>font size 56</Heading>
-              <Heading size={64}>font size 64</Heading>
-              <Heading size={72}>font size 72</Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Sizes" id="heading_1">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading>Heading with default font size</Heading>
+            <Heading size={16}>Heading with font size 16</Heading>
+            <Heading size={18}>Heading with font size 18</Heading>
+            <Heading size={20}>Heading with font size 20</Heading>
+            <Heading size={24}>Heading with font size 24</Heading>
+            <Heading size={32}>Heading with font size 32</Heading>
+            <Heading size={48}>font size 48</Heading>
+            <Heading size={56}>font size 56</Heading>
+            <Heading size={64}>font size 64</Heading>
+            <Heading size={72}>font size 72</Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{heading_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Is regular" id="heading_2">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading size={24}>Heading with default font weight</Heading>
-              <Heading size={24} is_regular>
-                Heading with font-weight: regular
-              </Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Is regular" id="heading_2">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading size={24}>Heading with default font weight</Heading>
+            <Heading size={24} is_regular>
+              Heading with font-weight: regular
+            </Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{heading_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Color" id="heading_3">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading size={24}>Heading with default color</Heading>
-              <Heading size={24} color="trunks-100">
-                Heading with defined color
-              </Heading>
-              <Heading size={24} color="piccolo-100">
-                Heading with defined color
-              </Heading>
-              <Heading size={24} color="krillin-100">
-                Heading with defined color
-              </Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Color" id="heading_3">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading size={24}>Heading with default color</Heading>
+            <Heading size={24} color="trunks-100">
+              Heading with defined color
+            </Heading>
+            <Heading size={24} color="piccolo-100">
+              Heading with defined color
+            </Heading>
+            <Heading size={24} color="krillin-100">
+              Heading with defined color
+            </Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{heading_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

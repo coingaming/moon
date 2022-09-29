@@ -97,81 +97,79 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Variants" id="avatar_1">
-          <:example>
+      <ExampleAndCode title="Variants" id="avatar_1">
+        <:example>
+          <Avatar />
+          <Avatar name="JS" />
+          <Avatar image_url="https://www.fillmurray.com/200/200" />
+        </:example>
+
+        <:code>{avatar_1_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Different colours" id="avatar_2">
+        <:example>
+          <Avatar />
+          <Avatar color="frieza-100" background_color="chi-chi-100" />
+          <Avatar color="gohan-100" background_color="krillin-100" />
+          <Avatar color="chi-chi-100" background_color="frieza-100" />
+        </:example>
+
+        <:code>{avatar_2_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Different sizes" id="avatar_3">
+        <:example>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Avatar size="xsmall" />
+            <Avatar size="small" />
             <Avatar />
+            <Avatar size="large" />
+            <Avatar size="xlarge" />
+            <Avatar size="twoxlarge" />
+          </div>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Avatar name="JS" size="xsmall" />
+            <Avatar name="JS" size="small" />
             <Avatar name="JS" />
+            <Avatar name="JS" size="large" />
+            <Avatar name="JS" size="xlarge" />
+            <Avatar name="JS" size="twoxlarge" />
+          </div>
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
             <Avatar image_url="https://www.fillmurray.com/200/200" />
-          </:example>
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+          </div>
+        </:example>
 
-          <:code>{avatar_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{avatar_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Different colours" id="avatar_2">
-          <:example>
-            <Avatar />
-            <Avatar color="frieza-100" background_color="chi-chi-100" />
-            <Avatar color="gohan-100" background_color="krillin-100" />
-            <Avatar color="chi-chi-100" background_color="frieza-100" />
-          </:example>
+      <ExampleAndCode title="Active status" id="avatar_4">
+        <:example>
+          <Avatar />
+          <Avatar is_status_active />
+          <Avatar image_url="https://www.fillmurray.com/200/200" />
+          <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
+        </:example>
 
-          <:code>{avatar_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{avatar_4_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Different sizes" id="avatar_3">
-          <:example>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Avatar size="xsmall" />
-              <Avatar size="small" />
-              <Avatar />
-              <Avatar size="large" />
-              <Avatar size="xlarge" />
-              <Avatar size="twoxlarge" />
-            </div>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Avatar name="JS" size="xsmall" />
-              <Avatar name="JS" size="small" />
-              <Avatar name="JS" />
-              <Avatar name="JS" size="large" />
-              <Avatar name="JS" size="xlarge" />
-              <Avatar name="JS" size="twoxlarge" />
-            </div>
-            <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-              <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
-              <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
-            </div>
-          </:example>
+      <ExampleAndCode title="Status origin" id="avatar_5">
+        <:example>
+          <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
+          <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
+          <Avatar is_status_active />
+          <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
+        </:example>
 
-          <:code>{avatar_3_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Active status" id="avatar_4">
-          <:example>
-            <Avatar />
-            <Avatar is_status_active />
-            <Avatar image_url="https://www.fillmurray.com/200/200" />
-            <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
-          </:example>
-
-          <:code>{avatar_4_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Status origin" id="avatar_5">
-          <:example>
-            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
-            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
-            <Avatar is_status_active />
-            <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
-          </:example>
-
-          <:code>{avatar_5_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{avatar_5_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

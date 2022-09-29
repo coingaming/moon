@@ -89,43 +89,41 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Example" id="select_1">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+      <ExampleAndCode title="Example" id="select_1">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+          </Form>
+        </:example>
 
-          <:code>{select_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{select_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With Label" id="select_2">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+      <ExampleAndCode title="With Label" id="select_2">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+          </Form>
+        </:example>
 
-          <:code>{select_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{select_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="select_3">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select
-                disabled
-                label="Gender"
-                field={:gender}
-                options={@gender_options}
-                prompt="Please select gender"
-              />
-            </Form>
-          </:example>
+      <ExampleAndCode title="Disabled" id="select_3">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select
+              disabled
+              label="Gender"
+              field={:gender}
+              options={@gender_options}
+              prompt="Please select gender"
+            />
+          </Form>
+        </:example>
 
-          <:code>{select_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{select_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>
