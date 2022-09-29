@@ -709,7 +709,6 @@ defmodule Moon.Helpers.Icons do
       sport_badminton
       sport_baseball
       sport_basketball
-      sport_beach_volley
       sport_beach_volleyball
       sport_bombay
       sport_boxing
