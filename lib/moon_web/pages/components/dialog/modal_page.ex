@@ -42,7 +42,10 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
           <Modal close="close_modal" :if={@modal_is_open}>
             <:title>Title text</:title>
             <:content>
-              <SingleSelect id="permissions-1" options={MoonWeb.Pages.Tutorials.AddDataUsingForm.User.available_permissions_with_left_icon()} />
+              <SingleSelect
+                id="permissions-1"
+                options={MoonWeb.Pages.Tutorials.AddDataUsingForm.User.available_permissions_with_left_icon()}
+              />
             </:content>
             <:footer>
               <PullAside>
