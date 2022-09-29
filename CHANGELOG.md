@@ -1,3 +1,10 @@
+## [2.28.2](https://github.com/coingaming/moon/compare/v2.28.1...v2.28.2) (2022-09-29)
+
+
+### Bug Fixes
+
+* replace the checkbox with 2 radio buttons [MDS-224] ([#386](https://github.com/coingaming/moon/issues/386)) ([fccfca3](https://github.com/coingaming/moon/commit/fccfca3974bfb79cbb4b29b98ee44cc8c5187fbb))
+
 ## [2.28.1](https://github.com/coingaming/moon/compare/v2.28.0...v2.28.1) (2022-09-29)
 
 
