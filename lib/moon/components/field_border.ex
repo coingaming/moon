@@ -7,7 +7,7 @@ defmodule Moon.Components.FieldBorder do
   prop border_color_class, :string
   prop states_class, :string
   prop click, :event
-  prop is_error, :boolean
+  prop has_error, :boolean
   slot default
 
   def render(assigns) do
@@ -17,7 +17,7 @@ defmodule Moon.Components.FieldBorder do
         get_default_class(),
         @states_class || get_default_states_class(),
         @class,
-        "#{get_error_class()}": @is_error
+        "#{get_error_class()}": @has_error
       }
       :on-click={@click}
     >

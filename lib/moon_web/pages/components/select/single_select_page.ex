@@ -106,7 +106,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :description => 'Inform message under select'
       },
       %{
-        :name => 'is_error',
+        :name => 'has_error',
         :type => 'boolean',
         :required => 'false',
         :default => '-',
@@ -446,7 +446,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 id="user-roles-example-error-1"
                 options={User.available_roles()}
                 label="Role"
-                is_error
+                has_error
                 placeholder="Select a role"
               >
                 <:hint_text_slot>Informative Message Handler</:hint_text_slot>
@@ -460,7 +460,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 id="user-roles-example-error-2"
                 options={User.available_roles()}
                 label="Role"
-                is_error
+                has_error
                 placeholder="Select a role"
                 size="lg"
               >
@@ -475,7 +475,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
                 id="user-roles-example-error-3"
                 options={User.available_roles()}
                 label="Role"
-                is_error
+                has_error
                 placeholder="Select a role"
                 size="xl"
               >

@@ -24,7 +24,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop popover_class, :string
   prop placeholder, :string
   prop background_color, :string, values: Moon.colors(), default: "gohan-100"
-  prop is_error, :boolean
+  prop has_error, :boolean
   prop use_error_tag, :boolean
 
   data open, :boolean, default: false
@@ -55,10 +55,9 @@ defmodule Moon.Components.Select.SingleSelect do
           click="toggle_open"
           class={
             "w-full",
-            "bg-#{@background_color}": @background_color,
-            "shadow-input-err hover:shadow-input-err focus:shadow-input-err":
-              has_error(@is_error, form, field)
+            "bg-#{@background_color}": @background_color
           }
+          has_error={has_error(@has_error, form, field)}
         >
           <PullAside class={
             SelectHelpers.get_padding(@size),
@@ -92,12 +91,12 @@ defmodule Moon.Components.Select.SingleSelect do
           </TopToDown>
         </:content>
       </Popover>
-      <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
+      <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
         <#slot name="hint_text_slot" />
       </HintText>
       <div
         class="inline-block mt-2 text-moon-12"
-        :if={@use_error_tag && has_error(@is_error, form, field)}
+        :if={@use_error_tag && has_error(@has_error, form, field)}
       >
         <ErrorTag {=field} />
       </div>
@@ -138,7 +137,7 @@ defmodule Moon.Components.Select.SingleSelect do
     end
   end
 
-  defp has_error(is_error, form, field) do
-    is_error || (field && form && Keyword.has_key?(form.errors, field))
+  defp has_error(has_error, form, field) do
+    has_error || (field && form && Keyword.has_key?(form.errors, field))
   end
 end
