@@ -23,29 +23,25 @@ defmodule MoonWeb.Components.ExampleAndCode do
       <div class="my-2 text-moon-14" :if={slot_assigned?(:note)}>
         <p><#slot name="note" /></p>
       </div>
-      <Context get={theme_class: theme_class}>
-        <div class={
-          "p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm moon-design-light",
-          hidden: @selected_button == "code"
-        }>
-          <div class="bg-goku-100 w-full">
-            <!-- Do not remove this -->
-            <div class={"flex flex-wrap items-center justify-around gap-2 w-full", theme_class, "bg-transparent"}>
-              <#slot name="example">Example not defined</#slot>
-            </div>
+
+      <div class={
+        "p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm",
+        hidden: @selected_button == "code"
+      }>
+        <div class="bg-goku-100 w-full">
+          <!-- Do not remove this -->
+          <div class="flex flex-wrap items-center justify-around gap-2 w-full bg-transparent">
+            <#slot name="example">Example not defined</#slot>
           </div>
         </div>
-        <div class={
-          "overflow-scroll",
-          theme_class,
-          hidden: @selected_button == "preview"
-        }>
-          <pre class={
-            "moon-design-dark w-full bg-goku-100 overflow-scroll p-4 text-moon-14 text-bulma-100 rounded-moon-s-sm",
-            theme_class
-          }><#slot name="code">Example code not defined</#slot></pre>
-        </div>
-      </Context>
+      </div>
+      <div class={
+        "overflow-scroll",
+        hidden: @selected_button == "preview"
+      }>
+        <pre class="moon-design-dark w-full bg-goku-100 overflow-scroll p-4 text-moon-14 text-bulma-100 rounded-moon-s-sm"><#slot name="code">Example code not defined</#slot></pre>
+      </div>
+
       <div
         class="grid gap-4 p-4 bg-goku-100 text-moon-14 rounded-moon-s-sm"
         :if={slot_assigned?(:state)}

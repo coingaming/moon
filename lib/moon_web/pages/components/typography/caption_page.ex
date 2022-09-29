@@ -74,28 +74,26 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Colors" id="example_1">
-          <:example>
-            <Caption>Defaul color is Bulma</Caption>
-            <Caption color_class="text-piccolo-100">Piccolo</Caption>
-            <Caption color_class="text-trunks-100">Trunks</Caption>
-            <Caption color_class="text-krillin-100">Krillin</Caption>
-          </:example>
+      <ExampleAndCode title="Colors" id="example_1">
+        <:example>
+          <Caption>Defaul color is Bulma</Caption>
+          <Caption color_class="text-piccolo-100">Piccolo</Caption>
+          <Caption color_class="text-trunks-100">Trunks</Caption>
+          <Caption color_class="text-krillin-100">Krillin</Caption>
+        </:example>
 
-          <:code>{example_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{example_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Text Align" id="example_2">
-          <:example>
-            <Caption>Text-align is not specified</Caption>
-            <Caption text_align_class="text-center">Centered text</Caption>
-            <Caption text_align_class="text-right">Right alignment</Caption>
-          </:example>
+      <ExampleAndCode title="Text Align" id="example_2">
+        <:example>
+          <Caption>Text-align is not specified</Caption>
+          <Caption text_align_class="text-center">Centered text</Caption>
+          <Caption text_align_class="text-right">Right alignment</Caption>
+        </:example>
 
-          <:code>{example_2_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{example_2_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

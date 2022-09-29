@@ -1,3 +1,24 @@
+## [2.28.3](https://github.com/coingaming/moon/compare/v2.28.2...v2.28.3) (2022-09-29)
+
+
+### Bug Fixes
+
+* align the SingleSelect component with Figma [MDS-201] ([#370](https://github.com/coingaming/moon/issues/370)) ([50b7f57](https://github.com/coingaming/moon/commit/50b7f5732bf32e322eb4a695074636fdbed98bee))
+
+## [2.28.2](https://github.com/coingaming/moon/compare/v2.28.1...v2.28.2) (2022-09-29)
+
+
+### Bug Fixes
+
+* replace the checkbox with 2 radio buttons [MDS-224] ([#386](https://github.com/coingaming/moon/issues/386)) ([fccfca3](https://github.com/coingaming/moon/commit/fccfca3974bfb79cbb4b29b98ee44cc8c5187fbb))
+
+## [2.28.1](https://github.com/coingaming/moon/compare/v2.28.0...v2.28.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* theme switching should affect the entire page including the left menu [MDS-220] ([#384](https://github.com/coingaming/moon/issues/384)) ([e059378](https://github.com/coingaming/moon/commit/e059378a32efdbca5a9af950e019ea3b9ff9be16))
+
 # [2.28.0](https://github.com/coingaming/moon/compare/v2.27.2...v2.28.0) (2022-09-28)
 
 

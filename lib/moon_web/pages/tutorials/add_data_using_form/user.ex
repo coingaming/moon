@@ -78,6 +78,31 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     ]
   end
 
+  def available_roles_with_left_icon_flag_and_right_icon() do
+    [first, second, third] = Moon.Helpers.CountryFlags.list_all() |> Enum.take(3)
+
+    [
+      %{
+        value: 1,
+        label: "User",
+        left_icon: [Moon.CountryFlag, %{name: first}],
+        right_icon: [Moon.Icon, %{name: "generic_user"}]
+      },
+      %{
+        value: 2,
+        label: "Editor",
+        left_icon: [Moon.CountryFlag, %{name: second}],
+        right_icon: [Moon.Icon, %{name: "generic_edit"}]
+      },
+      %{
+        value: 3,
+        label: "Admin",
+        left_icon: [Moon.CountryFlag, %{name: third}],
+        right_icon: [Moon.Icon, %{name: "generic_star"}]
+      }
+    ]
+  end
+
   def changeset(user = %User{}, params \\ %{}) do
     user
     |> cast(params, @required_fields ++ @optional_fields)
