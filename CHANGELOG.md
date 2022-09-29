@@ -1,3 +1,10 @@
+## [2.28.3](https://github.com/coingaming/moon/compare/v2.28.2...v2.28.3) (2022-09-29)
+
+
+### Bug Fixes
+
+* align the SingleSelect component with Figma [MDS-201] ([#370](https://github.com/coingaming/moon/issues/370)) ([50b7f57](https://github.com/coingaming/moon/commit/50b7f5732bf32e322eb4a695074636fdbed98bee))
+
 ## [2.28.2](https://github.com/coingaming/moon/compare/v2.28.1...v2.28.2) (2022-09-29)
 
 
