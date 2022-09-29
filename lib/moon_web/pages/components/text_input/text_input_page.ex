@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Components.Page
   alias Moon.Components.TextInput
   alias Moon.Components.Heading
+  alias MoonWeb.Components.ComponentPageDescription
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.ErrorTag
   alias Moon.Components.Field
@@ -117,7 +118,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Text Input</Heading>
+        <ComponentPageDescription title="Text Input" />
 
         <ExampleAndCode id="input_020" title="Sizes">
           <:example>
@@ -898,6 +899,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def mount(params, _session, socket) do
     user = %User{}
+
     user_changeset = User.changeset(user, %{})
 
     {:ok,

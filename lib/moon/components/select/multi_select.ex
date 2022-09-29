@@ -65,13 +65,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
         style={get_style("grid-auto-flow": if(@prompt, do: "row"))}
       >
         {#if @prompt}
-          <div
-            class={
-              "text-trunks-100",
-              SelectHelpers.innerlabel_font_class(@size)
-            }
-            style="grid-col: span 2 / span 2;"
-          >
+          <div class="text-trunks-100 text-moon-14" style="grid-col: span 2 / span 2;">
             {@prompt}
           </div>
         {/if}
