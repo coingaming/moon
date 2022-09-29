@@ -110,50 +110,48 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
           The input component is used when you need to let users enter the text of some kind, such as their name or phone number etc.
         </div>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="example_1">
-            <:example>
-              <Form
-                for={@user_changeset}
-                change="register_form_update"
-                submit="register_form_submit"
-                autocomplete="off"
-              >
-                <TopToDown>
-                  <Field name={:username}>
-                    <TextInput label="Username" placeholder="Username">
-                      <:left_icon><IconUser /></:left_icon>
-                      <:right_icon>
-                        {#if String.length(@user_changeset.changes[:username] || @user.username || "") > 0}
-                          <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
-                        {/if}
-                      </:right_icon>
-                    </TextInput>
-                    <ErrorTag />
-                  </Field>
-                  <Field name={:email}>
-                    <TextInput
-                      label="Email"
-                      placeholder="Email"
-                      type="email"
-                      disabled={!get_has_valid_username(@user_changeset)}
-                    >
-                      <:left_icon><IconMail /></:left_icon>
-                    </TextInput>
-                    <ErrorTag />
-                  </Field>
-                  <div>
-                    <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
-                  </div>
-                </TopToDown>
-              </Form>
-            </:example>
+        <ExampleAndCode id="example_1">
+          <:example>
+            <Form
+              for={@user_changeset}
+              change="register_form_update"
+              submit="register_form_submit"
+              autocomplete="off"
+            >
+              <TopToDown>
+                <Field name={:username}>
+                  <TextInput label="Username" placeholder="Username">
+                    <:left_icon><IconUser /></:left_icon>
+                    <:right_icon>
+                      {#if String.length(@user_changeset.changes[:username] || @user.username || "") > 0}
+                        <Moon.Icons.ControlsClose class="pointer" click="clear_username" />
+                      {/if}
+                    </:right_icon>
+                  </TextInput>
+                  <ErrorTag />
+                </Field>
+                <Field name={:email}>
+                  <TextInput
+                    label="Email"
+                    placeholder="Email"
+                    type="email"
+                    disabled={!get_has_valid_username(@user_changeset)}
+                  >
+                    <:left_icon><IconMail /></:left_icon>
+                  </TextInput>
+                  <ErrorTag />
+                </Field>
+                <div>
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </TopToDown>
+            </Form>
+          </:example>
 
-            <:code>{example_1_code()}</:code>
+          <:code>{example_1_code()}</:code>
 
-            <:state>{example_1_state(assigns)}</:state>
-          </ExampleAndCode>
-        </Context>
+          <:state>{example_1_state(assigns)}</:state>
+        </ExampleAndCode>
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>

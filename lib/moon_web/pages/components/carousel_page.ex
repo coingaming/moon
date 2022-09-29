@@ -74,26 +74,24 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" id="carousel_1">
-          <:example>
-            <Carousel>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-              <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            </Carousel>
-          </:example>
+      <ExampleAndCode title="Default" id="carousel_1">
+        <:example>
+          <Carousel>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+          </Carousel>
+        </:example>
 
-          <:code>{carousel_1_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{carousel_1_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

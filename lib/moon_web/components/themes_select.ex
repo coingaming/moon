@@ -1,3 +1,22 @@
+defmodule MoonWeb.Components.ThemesSelect.SelectedTheme do
+  @moduledoc false
+
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  alias MoonWeb.Components.ThemesSelect.SelectedTheme
+
+  @optional_fields ~w(is_dark)a
+
+  schema "selected_themes" do
+    field(:is_dark, :boolean, default: false)
+  end
+
+  def changeset(selected_theme = %SelectedTheme{}, params \\ %{}) do
+    cast(selected_theme, params, @optional_fields)
+  end
+end
+
 defmodule MoonWeb.Components.ThemesSelect do
   @moduledoc false
 
@@ -12,13 +31,18 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoMoonDesignShort
   alias Moon.Components.Switch
   alias Moon.Icon
+  alias Moon.Components.Form
+  alias MoonWeb.Components.ThemesSelect.SelectedTheme
+  alias Moon.Components.Field
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
   prop active_page, :any
+  prop use_theme_switcher, :boolean, default: false
 
   data show_themes, :boolean, default: false
   data dark_mode, :boolean, default: false
+  data selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{})
 
   @available_themes [
     [key: "Aposta10", value: "aposta10", modes: true],
@@ -40,15 +64,6 @@ defmodule MoonWeb.Components.ThemesSelect do
     @available_themes
   end
 
-  def update(assigns, socket) do
-    socket =
-      socket
-      |> assign(assigns)
-      |> assign(dark_mode: String.contains?(assigns.theme_name, "dark"))
-
-    {:ok, socket}
-  end
-
   def render(assigns) do
     ~F"""
     <div class="fixed fixed bottom-4 right-4 z-50">
@@ -63,7 +78,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>
 
-      <div class={"fixed bottom-16 right-4", hidden: !@show_themes}>
+      <div class={"fixed bottom-16 right-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
             :on-click="update_selected_theme"
@@ -90,21 +105,61 @@ defmodule MoonWeb.Components.ThemesSelect do
           </button>
         {/for}
       </div>
-      <div class={"fixed bottom-28 right-4", hidden: !@show_themes}>
-        <Switch id="theme_switcher" icons checked={@dark_mode} /> <!-- TODO, fix theme switcher -->
+      <div class={
+        "fixed right-4",
+        hidden: !@show_themes,
+        "bottom-28": @use_theme_switcher,
+        "bottom-16": !@use_theme_switcher
+      }>
+        <Form for={@selected_theme_changeset} change="toggle_dark_mode">
+          <Field name={:is_dark}>
+            <Switch id="theme_switcher" icons checked={@dark_mode} />
+          </Field>
+        </Form>
       </div>
     </div>
     """
+  end
+
+  def mount(_params, _session, socket) do
+    selected_theme = %SelectedTheme{}
+    selected_theme_changeset = SelectedTheme.changeset(selected_theme, %{})
+
+    socket =
+      assign(socket,
+        selected_theme_changeset: selected_theme_changeset
+      )
+
+    {:ok, socket}
+  end
+
+  def update(assigns, socket) do
+    is_dark = String.contains?(assigns.theme_name, "dark")
+    selected_theme = %SelectedTheme{is_dark: is_dark}
+
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(dark_mode: is_dark)
+      |> assign(selected_theme: selected_theme)
+
+    {:ok, socket}
   end
 
   def handle_event("toggle_themes", _props, socket) do
     {:noreply, assign(socket, show_themes: !socket.assigns.show_themes)}
   end
 
-  def handle_event("toggle_dark_mode", _props, socket) do
-    %{active_page: active_page, dark_mode: dark_mode, theme_name: theme} = socket.assigns
+  def handle_event("toggle_dark_mode", params, socket) do
+    %{active_page: active_page, theme_name: theme} = socket.assigns
     theme = String.replace(theme, ["-light", "-dark"], "")
-    new_path = generate_path(socket, active_page, theme, !dark_mode)
+
+    new_path =
+      generate_path(socket, active_page, theme, params["selected_theme"]["is_dark"] == "true")
+
+    selected_theme_changeset = SelectedTheme.changeset(socket.assigns.selected_theme, params)
+    socket = assign(socket, selected_theme_changeset: selected_theme_changeset)
+
     {:noreply, redirect(socket, to: new_path)}
   end
 

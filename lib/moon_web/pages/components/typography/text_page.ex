@@ -103,60 +103,58 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode id="text_1" title="Default">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text>Text with default font size</Text>
-              <Text size={10}>Text with font size 10</Text>
-              <Text size={12}>Text with font size 12</Text>
-              <Text size={14}>Text with font size 14</Text>
-              <Text size={16}>Text with font size 16</Text>
-              <Text size={18}>Text with font size 18</Text>
-              <Text size={20}>Text with font size 20</Text>
-              <Text size={24}>Text with font size 24</Text>
-              <Text size={32}>Text with font size 32</Text>
-              <Text size={48}>font size 48</Text>
-              <Text size={56}>font size 56</Text>
-              <Text size={64}>font size 64</Text>
-              <Text size={72}>font size 72</Text>
-            </div>
-          </:example>
+      <ExampleAndCode id="text_1" title="Default">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text>Text with default font size</Text>
+            <Text size={10}>Text with font size 10</Text>
+            <Text size={12}>Text with font size 12</Text>
+            <Text size={14}>Text with font size 14</Text>
+            <Text size={16}>Text with font size 16</Text>
+            <Text size={18}>Text with font size 18</Text>
+            <Text size={20}>Text with font size 20</Text>
+            <Text size={24}>Text with font size 24</Text>
+            <Text size={32}>Text with font size 32</Text>
+            <Text size={48}>font size 48</Text>
+            <Text size={56}>font size 56</Text>
+            <Text size={64}>font size 64</Text>
+            <Text size={72}>font size 72</Text>
+          </div>
+        </:example>
 
-          <:code>{text_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{text_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode id="text_2" title="Bold">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text size={24}>Text with default font weight</Text>
-              <Text size={24} is_bold>
-                Text with font-weight: semibold
-              </Text>
-            </div>
-          </:example>
-          <:code>{text_2_code()}</:code>
-        </ExampleAndCode>
+      <ExampleAndCode id="text_2" title="Bold">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text size={24}>Text with default font weight</Text>
+            <Text size={24} is_bold>
+              Text with font-weight: semibold
+            </Text>
+          </div>
+        </:example>
+        <:code>{text_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode id="text_3" title="color">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text size={24}>Text with default color</Text>
-              <Text size={24} color="trunks-100">
-                Text with defined color
-              </Text>
-              <Text size={24} color="piccolo-100">
-                Text with defined color
-              </Text>
-              <Text size={24} color="krillin-100">
-                Text with defined color
-              </Text>
-            </div>
-          </:example>
+      <ExampleAndCode id="text_3" title="color">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text size={24}>Text with default color</Text>
+            <Text size={24} color="trunks-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="piccolo-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="krillin-100">
+              Text with defined color
+            </Text>
+          </div>
+        </:example>
 
-          <:code>{text_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{text_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

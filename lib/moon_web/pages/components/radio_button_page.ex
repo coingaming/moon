@@ -83,39 +83,37 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="RadioButton" id="radiobutton_1">
-          <:example>
-            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-              <TopToDown>
-                <Field name={:role}>
-                  <RadioButton id="role_admin" value={1}>
-                    Admin
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <Field name={:role}>
-                  <RadioButton id="role_editor" value={2}>
-                    Editor
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <Field name={:role}>
-                  <RadioButton id="role_user" value={3} disabled>
-                    User (disabled)
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
-                </div>
-              </TopToDown>
-            </Form>
-          </:example>
-          <:code>{radiobutton_1_code()}</:code>
-          <:state>{radiobutton_1_state(assigns)}</:state>
-        </ExampleAndCode>
-      </Context>
+      <ExampleAndCode title="RadioButton" id="radiobutton_1">
+        <:example>
+          <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+            <TopToDown>
+              <Field name={:role}>
+                <RadioButton id="role_admin" value={1}>
+                  Admin
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <Field name={:role}>
+                <RadioButton id="role_editor" value={2}>
+                  Editor
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <Field name={:role}>
+                <RadioButton id="role_user" value={3} disabled>
+                  User (disabled)
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <div>
+                <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
+              </div>
+            </TopToDown>
+          </Form>
+        </:example>
+        <:code>{radiobutton_1_code()}</:code>
+        <:state>{radiobutton_1_state(assigns)}</:state>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>
