@@ -85,27 +85,25 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       <TopToDown>
         <Heading size={32}>Breadcrumb</Heading>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Extended" id="breadcrumb_1">
-            <:example>
-              <div class="flex justify-center items-center py-1">
-                <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
-              </div>
-            </:example>
+        <ExampleAndCode title="Extended" id="breadcrumb_1">
+          <:example>
+            <div class="flex justify-center items-center py-1">
+              <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
+            </div>
+          </:example>
 
-            <:code>{breadcrumb_1_code()}</:code>
-          </ExampleAndCode>
+          <:code>{breadcrumb_1_code()}</:code>
+        </ExampleAndCode>
 
-          <ExampleAndCode title="Collapsed" id="breadcrumb_2">
-            <:example>
-              <div class="flex justify-center items-center">
-                <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
-              </div>
-            </:example>
+        <ExampleAndCode title="Collapsed" id="breadcrumb_2">
+          <:example>
+            <div class="flex justify-center items-center">
+              <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
+            </div>
+          </:example>
 
-            <:code>{breadcrumb_2_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{breadcrumb_2_code()}</:code>
+        </ExampleAndCode>
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>

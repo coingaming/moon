@@ -18,7 +18,10 @@ defmodule MoonWeb.Components.LeftMenu do
 
   def render(assigns) do
     ~F"""
-    <div class="hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col">
+    <div class={
+      "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col",
+      @theme_name
+    }>
       <Sidebar background_color="bg-goku-100" open_width="20rem">
         <:short_logo>
           <div class="flex items-center h-10">

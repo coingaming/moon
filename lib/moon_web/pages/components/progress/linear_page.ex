@@ -41,15 +41,13 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Progress Linear" id="progress_linear">
-          <:example>
-            <ProgressLinear value={30} />
-          </:example>
+      <ExampleAndCode title="Progress Linear" id="progress_linear">
+        <:example>
+          <ProgressLinear value={30} />
+        </:example>
 
-          <:code>{example_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{example_code()}</:code>
+      </ExampleAndCode>
     </Page>
     """
   end
