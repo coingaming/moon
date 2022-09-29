@@ -28,18 +28,18 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   data props_info_array, :list,
     default: [
       %{
-        :name => 'field',
-        :type => 'atom ',
+        :name => 'id',
+        :type => 'string ',
         :required => 'true',
         :default => '-',
-        :description => 'Field for the underlying phoenix select component'
+        :description => ''
       },
       %{
-        :name => 'size',
-        :type => '-',
+        :name => 'label',
+        :type => 'string',
         :required => 'false',
         :default => '-',
-        :description => 'TODO - size variant'
+        :description => ''
       },
       %{
         :name => 'options',
@@ -49,62 +49,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :description => 'Options for the select'
       },
       %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'false',
-        :default => '-',
-        :description => 'Placeholder text'
-      },
-      %{
-        :name => 'header',
-        :type => 'slot',
-        :required => 'false',
-        :default => '-',
-        :description => 'TODO - header element on the options popup'
-      },
-      %{
-        :name => 'footer',
-        :type => 'slot',
-        :required => 'false',
-        :default => '-',
-        :description => 'TODO - footer element on the options popup'
-      },
-      %{
-        :name => 'menu_width',
-        :type => 'number',
-        :required => 'false',
-        :default => '-',
-        :description => 'TODO - Minimum width of the popup menu containing options'
-      },
-      %{
-        :name => 'left',
-        :type => 'slot',
-        :required => 'false',
-        :default => '-',
-        :description => 'TODO - Left content for selected option'
-      },
-      %{
-        :name => 'hint',
-        :type => 'slot',
-        :required => 'false',
-        :default => '-',
-        :description => 'TODO - Inform message under select, can be used for error message'
-      },
-      %{
-        :name => 'items',
-        :type => 'slot',
-        :required => 'true',
-        :default => '-',
-        :description => 'Content template for displaying each of the options'
-      },
-      %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => '-',
-        :default => 'false',
-        :description => 'Whether the component is disabled'
-      },
-      %{
         :name => 'value',
         :type => 'any',
         :required => 'false',
@@ -112,18 +56,68 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :description => 'Default selected value'
       },
       %{
-        :name => 'on_select',
+        :name => 'disabled',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the component is disabled'
+      },
+      %{
+        :name => 'size',
+        :type => 'md | lg | xl',
+        :required => 'false',
+        :default => 'md',
+        :description => 'Size variant'
+      },
+      %{
+        :name => 'popover_placement',
+        :type =>
+          'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
+        :required => '-',
+        :default => 'bottom-start',
+        :description => 'Location of where the dropdown appears'
+      },
+      %{
+        :name => 'popover_class',
         :type => 'string',
         :required => 'false',
         :default => '-',
-        :description => 'Name of the event handler function when an option is clicked'
+        :description => 'Css class for the dropdown'
+      },
+      %{
+        :name => 'placeholder',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'String to display when there is no value selected'
+      },
+      %{
+        :name => 'background_color',
+        :type => 'string ',
+        :required => 'false',
+        :default => 'gohan-100',
+        :description => ''
+      },
+      %{
+        :name => 'hint_text_slot',
+        :type => 'slot',
+        :required => 'false',
+        :default => '-',
+        :description => 'Inform message under select'
       },
       %{
         :name => 'is_error',
         :type => 'boolean',
         :required => 'false',
         :default => '-',
-        :description => 'TODO - If the component is in error mode'
+        :description => 'If the component is in error mode'
+      },
+      %{
+        :name => 'use_error_tag',
+        :type => 'boolean',
+        :required => 'false',
+        :default => '-',
+        :description => 'Whether to use the built in ErrorTag in place of the hint slot'
       }
     ]
 

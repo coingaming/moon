@@ -18,10 +18,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop label, :string
   prop options, :any, default: []
   prop value, :any
-  prop error, :string
   prop disabled, :boolean, default: false
-  prop required, :boolean
-  prop class, :string
   prop size, :string, values: ~w(md lg xl), default: "md"
   prop popover_placement, :string, default: "bottom-start"
   prop popover_class, :string
@@ -32,7 +29,6 @@ defmodule Moon.Components.Select.SingleSelect do
 
   data open, :boolean, default: false
 
-  slot default
   slot hint_text_slot
 
   def render(assigns) do
