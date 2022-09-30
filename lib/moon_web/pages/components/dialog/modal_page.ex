@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
   alias Moon.Components.Dialog.Modal
+  alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -27,7 +28,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
       }
     ]
 
-  data modal_is_open, :boolean, default: false
+  data modal_is_open, :boolean, default: true
 
   def render(assigns) do
     ~F"""
@@ -35,13 +36,17 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
       <ComponentPageDescription title="Modal">
         <p>Modal</p>
       </ComponentPageDescription>
-
       <ExampleAndCode title="Modal" id="modal_1">
         <:example>
           <Button variant="primary" on_click="open_modal">Open modal</Button>
           <Modal close="close_modal" :if={@modal_is_open}>
             <:title>Title text</:title>
-            <:content>Content here</:content>
+            <:content>
+              <SingleSelect
+                id="permissions-1"
+                options={MoonWeb.Pages.Tutorials.AddDataUsingForm.User.available_permissions_with_left_icon()}
+              />
+            </:content>
             <:footer>
               <PullAside>
                 <:left>

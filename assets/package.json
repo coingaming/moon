@@ -15,6 +15,7 @@
     "tailwindcss": "^3.1.7"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "alpinejs": "^2.8.2"
   }
 }
