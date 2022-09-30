@@ -2,7 +2,7 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import Alpine from 'alpinejs'
-import { hooks } from './hooks'
+import hooks from './hooks'
 import "./listeners"
 import S3 from "./uploaders/s3"
 
