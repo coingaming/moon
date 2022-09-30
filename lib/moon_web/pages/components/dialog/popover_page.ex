@@ -159,10 +159,10 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   def get_popover_code(placement) do
     """
-      <Popover show={@show} placement={#{placement}} on_close="toogle_show">
-        <Chip on_click="toogle_show">Click Me</Chip>
-        <:content>...</:content>
-      </Popover>
+    <Popover show={@show} placement="#{placement}" on_close="toogle_show">
+      <Chip on_click="toogle_show">Click Me</Chip>
+      <:content>...</:content>
+    </Popover>
     """
   end
 end
