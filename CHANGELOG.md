@@ -1,3 +1,10 @@
+## [2.28.4](https://github.com/coingaming/moon/compare/v2.28.3...v2.28.4) (2022-09-30)
+
+
+### Bug Fixes
+
+* UI fixes for the Icons page [MDS-204] ([#391](https://github.com/coingaming/moon/issues/391)) ([544aeac](https://github.com/coingaming/moon/commit/544aeac03f54301fe12713aa60387054c184ea95))
+
 ## [2.28.3](https://github.com/coingaming/moon/compare/v2.28.2...v2.28.3) (2022-09-29)
 
 
