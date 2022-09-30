@@ -7,9 +7,7 @@ defmodule MoonWeb.Pages.IconsPage.CodeSnippet do
 
   def render(assigns) do
     ~F"""
-    <pre class="moon-design-dark w-full bg-goku-100 overflow-scroll p-4 text-moon-14 text-bulma-100 rounded-moon-s-sm">
-      <slot />
-    </pre>
+    <pre class="moon-design-dark w-full bg-goku-100 overflow-scroll p-4 text-moon-14 text-bulma-100 rounded-moon-s-sm h-fit whitespace-pre-line"><slot /></pre>
     """
   end
 end
