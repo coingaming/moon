@@ -4,7 +4,7 @@
     "deploy_js": "NODE_PATH=../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --minify ",
     "deploy": "NODE_PATH=./node_modules npm run deploy_css && npm run deploy_js",
     "watch_css": "NODE_PATH=./node_modules tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss --watch",
-    "watch_js": "NODE_PATH=../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
+    "watch_js": "NODE_PATH=../deps:./node_modules esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.4.0",
