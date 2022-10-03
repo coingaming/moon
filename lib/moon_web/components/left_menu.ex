@@ -47,7 +47,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 </div>
                 <div class="flex-grow flex flex-col gap-2">
                   <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
-                  <SidebarLink :if={!@hide_items} route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
+                  <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
                   <SidebarLink :if={!@hide_items} route={Pages.ContributePage}>How to contribute</SidebarLink>
                   <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
                   <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>

@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <GithubIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a href="https://github.com/coingaming/moon-design" target="_blank" rel="noreferrer">
+          <a href="/getting-started?role=I%27m%20a%20developer">
             For developers.
           </a>
         </h2>

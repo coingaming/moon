@@ -13,11 +13,7 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <FigmaIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a
-            href="https://www.figma.com/community/file/1002945721703152933"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="/getting-started">
             For designers.
           </a>
         </h2>

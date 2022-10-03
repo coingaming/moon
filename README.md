@@ -18,10 +18,13 @@ to write commit messages_
 
 If `./run-locally-dev.sh` is not working, try the following steps:
 
-1. Install [asdf](https://asdf-vm.com/)
+1. Install [asdf](https://asdf-vm.com/) and plugins
+   `asdf plugin add erlang`  
+   `asdf plugin add elixir`  
+   `asdf plugin add nodejs`
 2. Run `asdf install`. This will install all the tool versions specified in the _.tool_versions_ file
    Or you can install each tool version manually by typing:  
-   `asdf install erlang`  
+   `asdf install erlang`  # and follow https://github.com/asdf-vm/asdf-erlang#asdf-erlang on fail (e.g. `export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"`)
    `asdf install elixir`  
    `asdf install nodejs`
 
@@ -35,7 +38,8 @@ In writing code try to remember following rules:
 1. Code should be as short and simple as possible (less lines is better)
 2. Code should be as explicit as possible (and compiler should catch as many errors as possible)
 3. Use slots
-4. Run tests
+4. Add and run tests
+5. Create component's page in moon_web application with API described and state shown
 
 ```
 alias Moon.Components.TextInput
