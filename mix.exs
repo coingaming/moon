@@ -75,7 +75,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:surface, "~> 0.7"},
+      {:surface, "~> 0.7.0"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
 
@@ -86,7 +86,7 @@ defmodule Moon.MixProject do
 
       # dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:surface_formatter, "~> 0.7", only: [:dev, :test], runtime: false},
+      {:surface_formatter, "~> 0.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test], runtime: false}
     ])
