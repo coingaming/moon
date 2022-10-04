@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data breadcrumbs, :any,
     default: [
@@ -19,6 +20,88 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
       %{
         to: "/components/date/datepicker",
         name: "Datepicker"
+      }
+    ]
+
+  data props_info_array, :list,
+    default: [
+      %{
+        :name => 'with_time',
+        :type => 'boolean ',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether the datepicker includes time'
+      },
+      %{
+        :name => 'week_starts_on',
+        :type => '1 | 2 | 3 | 4 | 5 | 6 | 7',
+        :required => 'false',
+        :default => '1 (Monday)',
+        :description => 'Day of the week where the calendar starts'
+      },
+      %{
+        :name => 'start_date_field',
+        :type => 'atom',
+        :required => 'false',
+        :default => 'start_date',
+        :description => 'Field name for the start date'
+      },
+      %{
+        :name => 'end_date_field',
+        :type => 'atom',
+        :required => 'false',
+        :default => 'end_date',
+        :description => 'Field name for the end date'
+      },
+      %{
+        :name => 'button_class',
+        :type => 'css_class',
+        :required => 'false',
+        :default => '',
+        :description => 'Css class for the date button'
+      },
+      %{
+        :name => 'show_date_inputs',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Whether to display the text input fields'
+      },
+      %{
+        :name => 'ranges',
+        :type => 'list',
+        :required => 'false',
+        :default =>
+          'lastMonth | lastWeek | yesterday | thisWeek | thisMonth | last24hours | today',
+        :description => 'List of date ranges to choose from'
+      },
+      %{
+        :name => 'start_date',
+        :type => 'datetime',
+        :required => 'false',
+        :default => 'Timex.today()',
+        :description => 'Initial start date'
+      },
+      %{
+        :name => 'end_date',
+        :type => 'datetime',
+        :required => 'false',
+        :default => 'Timex.today()',
+        :description => 'Initial end date'
+      },
+      %{
+        :name => 'submit',
+        :type => 'event',
+        :required => 'false',
+        :default => 'update_dates',
+        :description => 'Event on date apply'
+      },
+      %{
+        :name => 'testid',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => ''
       }
     ]
 
@@ -160,6 +243,8 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
 
         <:code>{datepicker_4_code()}</:code>
       </ExampleAndCode>
+
+      <PropsTable data={@props_info_array} />
     </Page>
     """
   end

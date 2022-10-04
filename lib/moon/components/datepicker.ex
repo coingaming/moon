@@ -30,7 +30,7 @@ defmodule Moon.Components.Datepicker do
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
-  prop button_class, :string, default: ""
+  prop button_class, :css_class, default: ""
   prop show_date_inputs, :boolean, default: false
 
   prop ranges, :list,
