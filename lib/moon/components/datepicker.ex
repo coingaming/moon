@@ -8,6 +8,7 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month
+  alias Moon.Components.Datepicker.Month.FirstMonth
   alias Moon.Components.Popover
   alias Surface.Components.Form.DateInput
   alias Surface.Components.Form.DateTimeLocalInput
@@ -112,22 +113,13 @@ defmodule Moon.Components.Datepicker do
           <div class="flex flex-col pt-2 pl-3">
             <!-- Months -->
             <div class="flex grow space-x-6">
-              <!-- First Month -->
-              <div class="relative flex flex-col items-center">
-                <button type="button" class="absolute left-6" :on-click="shift_months" phx-value-months={-2}>
-                  <IconChevronLeft class="block" font_size="1rem" />
-                </button>
-
-                <div class="grow">
-                  <Month
-                    date={@left_panel_date}
-                    start_date={@internal_start_date}
-                    end_date={@internal_end_date}
-                    week_starts_on={@week_starts_on}
-                    on_click="select_date"
-                  />
-                </div>
-              </div>
+            <FirstMonth
+              date={@left_panel_date}
+              start_date={@internal_start_date}
+              end_date={@internal_end_date}
+              week_starts_on={@week_starts_on}
+              on_click="select_date"
+            />
 
               <!-- Second Month -->
               <div class="relative flex flex-col items-center">
