@@ -82,6 +82,7 @@ defmodule Moon.Components.Datepicker do
         right_icon="controls_chevron_down"
         active={@start_date && @end_date}
         testid={"#{@testid}-chip"}
+        button_type="button"
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Chip>
