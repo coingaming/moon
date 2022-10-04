@@ -8,9 +8,8 @@ defmodule Moon.Components.Datepicker do
   alias Moon.Components.Datepicker.Month.FirstMonth
   alias Moon.Components.Datepicker.Month.SecondMonth
   alias Moon.Components.Datepicker.Helpers
+  alias Moon.Components.Datepicker.DateInputs
   alias Moon.Components.Popover
-  alias Surface.Components.Form.DateInput
-  alias Surface.Components.Form.DateTimeLocalInput
 
   @default_label "Select Dates"
 
@@ -110,51 +109,14 @@ defmodule Moon.Components.Datepicker do
               "justify-between": @show_date_inputs,
               "justify-end": !@show_date_inputs
             }>
-              <div :if={@show_date_inputs} class="flex shrink-0 gap-x-2">
-                <DateTimeLocalInput
-                  :if={@with_time}
-                  field={@start_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy, --:--",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": Helpers.format_date(@internal_start_date, @with_time)
-                  }
-                />
-
-                <DateInput
-                  :if={!@with_time}
-                  field={@start_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": Helpers.format_date(@internal_start_date, @with_time)
-                  }
-                />
-
-                <DateTimeLocalInput
-                  :if={@with_time}
-                  field={@end_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy, --:--",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": Helpers.format_date(@internal_end_date, @with_time)
-                  }
-                />
-
-                <DateInput
-                  :if={!@with_time}
-                  field={@end_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": Helpers.format_date(@internal_end_date, @with_time)
-                  }
-                />
-              </div>
+              <DateInputs
+                :if={@show_date_inputs}
+                {=@with_time}
+                {=@start_date_field}
+                {=@end_date_field}
+                {=@internal_start_date}
+                {=@internal_end_date}
+              />
 
               <div class="flex shrink-0 gap-x-2">
                 <Button variant="tertiary" size="small" on_click="toggle_picker">
