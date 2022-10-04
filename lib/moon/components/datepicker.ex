@@ -3,11 +3,8 @@ defmodule Moon.Components.Datepicker do
 
   use Moon.StatefulComponent
 
-  alias Moon.Assets.Icons.IconChevronLeft
-  alias Moon.Assets.Icons.IconChevronRight
   alias Moon.Components.Button
   alias Moon.Components.Chip
-  alias Moon.Components.Datepicker.Month
   alias Moon.Components.Datepicker.Month.FirstMonth
   alias Moon.Components.Datepicker.Month.SecondMonth
   alias Moon.Components.Popover
