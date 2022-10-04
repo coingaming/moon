@@ -113,11 +113,25 @@ defmodule Moon.Components.Select.Dropdown do
                     </:left_icon>
                     {option.label}
                   </SingleLineItem>
-                {#elseif option[:right_icon]}
+                {#elseif option[:right_icon] || @with}
                   <SingleLineItem current={is_selected}>
                     {option.label}
                     <:right_icon>
-                      <Icon icon={option[:right_icon]} />
+                      <LeftToRight gap="gap-2">
+                        {#if option[:right_icon]}
+                          <Icon icon={option[:right_icon]} />
+                        {/if}
+                        {#if @with == "checkbox"}
+                          <Checkbox id={"#{@id}-#{option.value}"} field={:"#{@id}-#{option.value}"} checked={is_selected} />
+                        {/if}
+                        {#if @with == "radio"}
+                          <RadioButton
+                            id={"#{@id}-#{option.value}"}
+                            field={:"#{@id}-#{option.value}"}
+                            checked={is_selected}
+                          />
+                        {/if}
+                      </LeftToRight>
                     </:right_icon>
                   </SingleLineItem>
                 {#else}
