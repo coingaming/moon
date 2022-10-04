@@ -37,6 +37,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
     user_changeset = User.changeset(%User{})
 
     user_permissions = User.available_permissions()
+    user_permissions_with_left_icon = User.available_permissions_with_left_icon()
 
     {:ok,
      assign(socket,
@@ -44,6 +45,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        radio_form_changeset: user_changeset,
        options: user_permissions,
        searched_options: user_permissions,
+       options_with_left_icon: user_permissions_with_left_icon,
+       searched_options_with_left_icon: user_permissions_with_left_icon,
        search_string: "",
        radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
@@ -99,7 +102,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode title="With search and footer" id="random-id-98439">
+      <ExampleAndCode title="With search and footer (markup)" id="search_and_footer_markup">
         <:example>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
@@ -127,6 +130,41 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                     </SingleLineItem>
                   </Dropdown.Option>
                 {/for}
+                <:options_footer>
+                  <Footer>
+                    <:cancel>
+                      <Button variant="secondary" size="small">Cancel</Button>
+                    </:cancel>
+                    <:clear>
+                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                    </:clear>
+                    <:confirm>
+                      <Button variant="primary" size="small">Confirm</Button>
+                    </:confirm>
+                  </Footer>
+                </:options_footer>
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_search_footer()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="With search and footer (data)" id="search_and_footer_data">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <FieldLabel>Permissions</FieldLabel>
+              <Dropdown
+                id="search_and_footer_data_dropdown"
+                available_options={@options_with_left_icon}
+                options={@searched_options_with_left_icon}
+                on_search_change="update_search"
+                search_string={@search_string}
+                with="checkbox"
+                is_multi
+              >
                 <:options_footer>
                   <Footer>
                     <:cancel>
@@ -288,12 +326,22 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         socket
       ) do
     options = socket.assigns.options
+    options_with_left_icon = socket.assigns.options_with_left_icon
 
     searched_options =
       options
       |> Enum.filter(&String.contains?(String.downcase(&1.label), String.downcase(search_string)))
 
-    {:noreply, assign(socket, searched_options: searched_options, search_string: search_string)}
+    searched_options_with_left_icon =
+      options_with_left_icon
+      |> Enum.filter(&String.contains?(String.downcase(&1.label), String.downcase(search_string)))
+
+    {:noreply,
+     assign(socket,
+       searched_options: searched_options,
+       searched_options_with_left_icon: searched_options_with_left_icon,
+       search_string: search_string
+     )}
   end
 
   def handle_event("clicked_tab", %{"item_id" => tab_id}, socket) do

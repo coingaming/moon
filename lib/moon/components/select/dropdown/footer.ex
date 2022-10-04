@@ -12,7 +12,7 @@ defmodule Moon.Components.Select.Dropdown.Footer do
 
   def render(assigns) do
     ~F"""
-    <PullAside>
+    <PullAside class="gap-2">
       <:left>
         {#if slot_assigned?(:clear)}
           <#slot name="clear" />
