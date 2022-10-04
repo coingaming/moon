@@ -1,3 +1,10 @@
+## [2.28.6](https://github.com/coingaming/moon/compare/v2.28.5...v2.28.6) (2022-10-04)
+
+
+### Bug Fixes
+
+* fix the datepicker automatically submitting the form on button click [MDS-189] ([#395](https://github.com/coingaming/moon/issues/395)) ([9adf595](https://github.com/coingaming/moon/commit/9adf595a204aa1d23b78a635911f4ea1e829c5af))
+
 ## [2.28.5](https://github.com/coingaming/moon/compare/v2.28.4...v2.28.5) (2022-09-30)
 
 
