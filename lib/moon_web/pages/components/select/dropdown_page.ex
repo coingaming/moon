@@ -51,7 +51,8 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
        tab_id: "1",
-       active_page: __MODULE__
+       active_page: __MODULE__,
+       selected: []
      )}
   end
 
@@ -151,7 +152,53 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode title="With search and footer (data)" id="search_and_footer_data">
+      <ExampleAndCode
+        title="With search and footer (data + atom form)"
+        id="with_search_and_footer_data_changeset"
+      >
+        <:example>
+          <Form
+            id="search_and_footer_data_dropdown-for"
+            for={:selected_params}
+            change="update_selected"
+            submit="apply"
+          >
+            <Field name={:selected}>
+              <Dropdown
+                id="search_and_footer_data_dropdown-for-dropdown"
+                available_options={@options_with_left_icon}
+                options={@searched_options_with_left_icon}
+                value={@selected}
+                on_search_change="update_search"
+                search_string={@search_string}
+                with="checkbox"
+                is_multi
+              >
+                <:options_footer>
+                  <Footer>
+                    <:cancel>
+                      <Button variant="secondary" size="small">Cancel</Button>
+                    </:cancel>
+                    <:clear>
+                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                    </:clear>
+                    <:confirm>
+                      <Button variant="primary" size="small">Confirm</Button>
+                    </:confirm>
+                  </Footer>
+                </:options_footer>
+              </Dropdown>
+            </Field>
+          </Form>
+        </:example>
+        <:code>{code_for_dropdown_search_footer()}</:code>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+      </ExampleAndCode>
+
+      <ExampleAndCode
+        title="With search and footer (data + changeset form)"
+        id="with_search_and_footer_data_changeset"
+      >
         <:example>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
@@ -268,6 +315,12 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       </ExampleAndCode>
     </Page>
     """
+  end
+
+  def handle_event("update_selected", params, socket) do
+    %{"selected_params" => selected_params} = params
+    selected = selected_params["selected"] || []
+    {:noreply, assign(socket, selected: selected)}
   end
 
   def handle_event(
