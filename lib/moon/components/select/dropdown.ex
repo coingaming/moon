@@ -46,7 +46,6 @@ defmodule Moon.Components.Select.Dropdown do
             form,
             field,
             SelectHelpers.get_formatted_options(@available_options || @options),
-            class: "hidden",
             id: @id,
             disabled: @disabled,
             selected: @value
