@@ -3,14 +3,13 @@ defmodule Moon.Components.Datepicker do
 
   use Moon.StatefulComponent
 
-  alias Moon.Assets.Icons.IconChevronLeft
-  alias Moon.Assets.Icons.IconChevronRight
-  alias Moon.Components.Button
   alias Moon.Components.Chip
-  alias Moon.Components.Datepicker.Month
+  alias Moon.Components.Datepicker.Month.FirstMonth
+  alias Moon.Components.Datepicker.Month.SecondMonth
+  alias Moon.Components.Datepicker.Helpers
+  alias Moon.Components.Datepicker.DateInputs
+  alias Moon.Components.Datepicker.Buttons
   alias Moon.Components.Popover
-  alias Surface.Components.Form.DateInput
-  alias Surface.Components.Form.DateTimeLocalInput
 
   @default_label "Select Dates"
 
@@ -31,7 +30,7 @@ defmodule Moon.Components.Datepicker do
   prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
   prop start_date_field, :atom, default: :start_date
   prop end_date_field, :atom, default: :end_date
-  prop button_class, :string, default: ""
+  prop button_class, :css_class, default: ""
   prop show_date_inputs, :boolean, default: false
 
   prop ranges, :list,
@@ -50,30 +49,6 @@ defmodule Moon.Components.Datepicker do
   data temp_range, :string, default: nil
   data show, :boolean, default: false
 
-  # Handle date-input fields updates
-  def update(assigns, socket) do
-    socket = assign(socket, assigns)
-
-    socket =
-      case assigns do
-        %{start_date: start_date, end_date: end_date} ->
-          assign(
-            socket,
-            start_date: parse_date(start_date),
-            end_date: parse_date(end_date),
-            internal_start_date: parse_date(start_date),
-            internal_end_date: parse_date(end_date)
-          )
-
-        _ ->
-          # this is required, because if someone uses LiveView.send_update
-          # then start_date and end_date might be missing
-          socket
-      end
-
-    {:ok, socket}
-  end
-
   def render(assigns) do
     ~F"""
     <Popover show={@show} on_close="toggle_picker" testid={@testid}>
@@ -83,6 +58,7 @@ defmodule Moon.Components.Datepicker do
         right_icon="controls_chevron_down"
         active={@start_date && @end_date}
         testid={"#{@testid}-chip"}
+        button_type="button"
       >
         {button_label(@start_date, @end_date, @with_time, @selected_range)}
       </Chip>
@@ -112,39 +88,20 @@ defmodule Moon.Components.Datepicker do
           <div class="flex flex-col pt-2 pl-3">
             <!-- Months -->
             <div class="flex grow space-x-6">
-              <!-- First Month -->
-              <div class="relative flex flex-col items-center">
-                <button type="button" class="absolute left-6" :on-click="shift_months" phx-value-months={-2}>
-                  <IconChevronLeft class="block" font_size="1rem" />
-                </button>
-
-                <div class="grow">
-                  <Month
-                    date={@left_panel_date}
-                    start_date={@internal_start_date}
-                    end_date={@internal_end_date}
-                    week_starts_on={@week_starts_on}
-                    on_click="select_date"
-                  />
-                </div>
-              </div>
-
-              <!-- Second Month -->
-              <div class="relative flex flex-col items-center">
-                <button type="button" class="absolute right-6" :on-click="shift_months" phx-value-months={2}>
-                  <IconChevronRight class="block" font_size="1rem" />
-                </button>
-
-                <div class="grow">
-                  <Month
-                    date={Timex.shift(@left_panel_date, months: 1)}
-                    start_date={@internal_start_date}
-                    end_date={@internal_end_date}
-                    week_starts_on={@week_starts_on}
-                    on_click="select_date"
-                  />
-                </div>
-              </div>
+              <FirstMonth
+                date={@left_panel_date}
+                start_date={@internal_start_date}
+                end_date={@internal_end_date}
+                week_starts_on={@week_starts_on}
+                on_click="select_date"
+              />
+              <SecondMonth
+                date={Timex.shift(@left_panel_date, months: 1)}
+                start_date={@internal_start_date}
+                end_date={@internal_end_date}
+                week_starts_on={@week_starts_on}
+                on_click="select_date"
+              />
             </div>
 
             <div class={
@@ -152,71 +109,23 @@ defmodule Moon.Components.Datepicker do
               "justify-between": @show_date_inputs,
               "justify-end": !@show_date_inputs
             }>
-              <div :if={@show_date_inputs} class="flex shrink-0 gap-x-2">
-                <DateTimeLocalInput
-                  :if={@with_time}
-                  field={@start_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy, --:--",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@internal_start_date, @with_time)
-                  }
-                />
+              <DateInputs
+                :if={@show_date_inputs}
+                {=@with_time}
+                {=@start_date_field}
+                {=@end_date_field}
+                {=@internal_start_date}
+                {=@internal_end_date}
+              />
 
-                <DateInput
-                  :if={!@with_time}
-                  field={@start_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@internal_start_date, @with_time)
-                  }
-                />
-
-                <DateTimeLocalInput
-                  :if={@with_time}
-                  field={@end_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy, --:--",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@internal_end_date, @with_time)
-                  }
-                />
-
-                <DateInput
-                  :if={!@with_time}
-                  field={@end_date_field}
-                  class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
-                  opts={
-                    placeholder: "dd/mm/yyyy",
-                    "phx-hook": "Datepicker",
-                    "data-pending-val": format_date(@internal_end_date, @with_time)
-                  }
-                />
-              </div>
-
-              <div class="flex shrink-0 gap-x-2">
-                <Button variant="tertiary" size="small" on_click="toggle_picker">
-                  Discard
-                </Button>
-
-                <Button
-                  class="px-3 py-2 rounded"
-                  variant="primary"
-                  size="small"
-                  on_click={@submit || "update_dates"}
-                  values={
-                    start_date: format_date(@internal_start_date, @with_time),
-                    end_date: format_date(@internal_end_date, @with_time)
-                  }
-                  testid={"#{@testid}-apply"}
-                >
-                  Apply
-                </Button>
-              </div>
+              <Buttons
+                on_click={@submit || "update_dates"}
+                values={
+                  start_date: Helpers.format_date(@internal_start_date, @with_time),
+                  end_date: Helpers.format_date(@internal_end_date, @with_time)
+                }
+                testid={"#{@testid}-apply"}
+              />
             </div>
           </div>
         </div>
@@ -225,130 +134,33 @@ defmodule Moon.Components.Datepicker do
     """
   end
 
-  defp button_label(nil, _, _, _), do: @default_label
-  defp button_label(_, nil, _, _), do: @default_label
+  # Handle date-input fields updates
+  def update(assigns, socket) do
+    socket = assign(socket, assigns)
 
-  defp button_label(start_date, end_date, with_time, nil) do
-    date_format = "%0d/%0m/%Y"
-    date_format = if with_time, do: date_format <> ", %R", else: date_format
+    socket =
+      case assigns do
+        %{start_date: start_date, end_date: end_date} ->
+          assign(
+            socket,
+            start_date: Helpers.parse_date(start_date),
+            end_date: Helpers.parse_date(end_date),
+            internal_start_date: Helpers.parse_date(start_date),
+            internal_end_date: Helpers.parse_date(end_date)
+          )
 
-    start_date_formatted = Timex.format!(start_date, date_format, :strftime)
-    end_date_formatted = Timex.format!(end_date, date_format, :strftime)
+        _ ->
+          # this is required, because if someone uses LiveView.send_update
+          # then start_date and end_date might be missing
+          socket
+      end
 
-    "#{start_date_formatted}-#{end_date_formatted}"
+    {:ok, socket}
   end
-
-  defp button_label(_start_date, _end_date, _, range), do: range_label(range)
-
-  defp dates_from_range("lastMonth", _) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(months: -1)
-
-    {Timex.beginning_of_month(date), Timex.end_of_month(date)}
-  end
-
-  defp dates_from_range("thisMonth", _) do
-    date = Timex.now() |> truncate_date()
-    {Timex.beginning_of_month(date), Timex.end_of_month(date)}
-  end
-
-  defp dates_from_range("nextMonth", _) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(months: 1)
-
-    {Timex.beginning_of_month(date), Timex.end_of_month(date)}
-  end
-
-  defp dates_from_range("lastWeek", weekstart) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(weeks: -1)
-
-    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
-  end
-
-  defp dates_from_range("thisWeek", weekstart) do
-    date = Timex.now() |> truncate_date()
-    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
-  end
-
-  defp dates_from_range("nextWeek", weekstart) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(weeks: 1)
-
-    {Timex.beginning_of_week(date, weekstart), Timex.end_of_week(date, weekstart)}
-  end
-
-  defp dates_from_range("last24hours", _) do
-    date = Timex.now() |> truncate_date()
-    {Timex.shift(date, hours: -24), date}
-  end
-
-  defp dates_from_range("yesterday", _) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(days: -1)
-
-    {Timex.beginning_of_day(date), Timex.end_of_day(date)}
-  end
-
-  defp dates_from_range("today", _) do
-    date = Timex.now() |> truncate_date()
-    {Timex.beginning_of_day(date), Timex.end_of_day(date)}
-  end
-
-  defp dates_from_range("tomorrow", _) do
-    date =
-      Timex.now()
-      |> truncate_date()
-      |> Timex.shift(days: 1)
-
-    {Timex.beginning_of_day(date), Timex.end_of_day(date)}
-  end
-
-  defp range_label(range_name) when is_binary(range_name) do
-    @ranges[String.to_existing_atom(range_name)]
-  end
-
-  defp parse_date(""), do: nil
-
-  defp parse_date(date) when is_binary(date) do
-    case Timex.parse(date, "%Y-%0m-%0dT%R", :strftime) do
-      {:ok, datetime} ->
-        datetime
-
-      {:error, _} ->
-        {:ok, date} = Timex.parse(date, "%Y-%0m-%0d", :strftime)
-        date
-    end
-  end
-
-  defp parse_date(date), do: date
-
-  defp format_date(nil, _), do: nil
-  defp format_date(date, true), do: Timex.format!(date, "%Y-%0m-%0dT%R", :strftime)
-  defp format_date(date, false), do: Timex.format!(date, "%Y-%0m-%0d", :strftime)
-
-  defp truncate_date(date) do
-    date
-    |> Timex.to_naive_datetime()
-    |> NaiveDateTime.truncate(:second)
-  end
-
-  defp format_to_date(datetime, true), do: datetime
-  defp format_to_date(datetime, false), do: Timex.to_naive_datetime(datetime)
 
   def validate(start_date, end_date) do
-    parsed_start_date = parse_date(start_date)
-    parsed_end_date = parse_date(end_date)
+    parsed_start_date = Helpers.parse_date(start_date)
+    parsed_end_date = Helpers.parse_date(end_date)
 
     if parsed_start_date && parsed_end_date && Timex.after?(parsed_start_date, parsed_end_date) do
       {start_date, start_date}
@@ -388,7 +200,7 @@ defmodule Moon.Components.Datepicker do
   end
 
   def handle_event("select_range", %{"range" => range}, socket) do
-    {start_date, end_date} = dates_from_range(range, socket.assigns.week_starts_on)
+    {start_date, end_date} = Helpers.dates_from_range(range, socket.assigns.week_starts_on)
 
     socket =
       assign(socket,
@@ -417,8 +229,8 @@ defmodule Moon.Components.Datepicker do
 
     date =
       date
-      |> parse_date()
-      |> format_to_date(with_time)
+      |> Helpers.parse_date()
+      |> Helpers.format_to_date(with_time)
 
     {start_date, end_date} =
       if start_date && is_nil(end_date) && Timex.after?(date, start_date) do
@@ -469,5 +281,24 @@ defmodule Moon.Components.Datepicker do
 
   def close(id: id) do
     send_update(__MODULE__, id: id, show: false)
+  end
+
+  defp button_label(nil, _, _, _), do: @default_label
+  defp button_label(_, nil, _, _), do: @default_label
+
+  defp button_label(start_date, end_date, with_time, nil) do
+    date_format = "%0d/%0m/%Y"
+    date_format = if with_time, do: date_format <> ", %R", else: date_format
+
+    start_date_formatted = Timex.format!(start_date, date_format, :strftime)
+    end_date_formatted = Timex.format!(end_date, date_format, :strftime)
+
+    "#{start_date_formatted}-#{end_date_formatted}"
+  end
+
+  defp button_label(_start_date, _end_date, _, range), do: range_label(range)
+
+  defp range_label(range_name) when is_binary(range_name) do
+    @ranges[String.to_existing_atom(range_name)]
   end
 end
