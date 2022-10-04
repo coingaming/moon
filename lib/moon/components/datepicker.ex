@@ -3,12 +3,12 @@ defmodule Moon.Components.Datepicker do
 
   use Moon.StatefulComponent
 
-  alias Moon.Components.Button
   alias Moon.Components.Chip
   alias Moon.Components.Datepicker.Month.FirstMonth
   alias Moon.Components.Datepicker.Month.SecondMonth
   alias Moon.Components.Datepicker.Helpers
   alias Moon.Components.Datepicker.DateInputs
+  alias Moon.Components.Datepicker.Buttons
   alias Moon.Components.Popover
 
   @default_label "Select Dates"
@@ -118,25 +118,15 @@ defmodule Moon.Components.Datepicker do
                 {=@internal_end_date}
               />
 
-              <div class="flex shrink-0 gap-x-2">
-                <Button variant="tertiary" size="small" on_click="toggle_picker">
-                  Discard
-                </Button>
+              <Buttons
+                on_click={@submit || "update_dates"}
+                values={
+                  start_date: Helpers.format_date(@internal_start_date, @with_time),
+                  end_date: Helpers.format_date(@internal_end_date, @with_time)
+                }
+                testid={"#{@testid}-apply"}
+              />
 
-                <Button
-                  class="px-3 py-2 rounded"
-                  variant="primary"
-                  size="small"
-                  on_click={@submit || "update_dates"}
-                  values={
-                    start_date: Helpers.format_date(@internal_start_date, @with_time),
-                    end_date: Helpers.format_date(@internal_end_date, @with_time)
-                  }
-                  testid={"#{@testid}-apply"}
-                >
-                  Apply
-                </Button>
-              </div>
             </div>
           </div>
         </div>
