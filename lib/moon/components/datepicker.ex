@@ -126,7 +126,6 @@ defmodule Moon.Components.Datepicker do
                 }
                 testid={"#{@testid}-apply"}
               />
-
             </div>
           </div>
         </div>
