@@ -29,11 +29,9 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoSportsbetShort
   alias Moon.Assets.Logos.LogoMoonDesignShort
-  alias Moon.Components.Switch
   alias Moon.Icon
-  alias Moon.Components.Form
   alias MoonWeb.Components.ThemesSelect.SelectedTheme
-  alias Moon.Components.Field
+  alias MoonWeb.Components.ThemesSelect.ThemeSwitcher
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
@@ -105,18 +103,16 @@ defmodule MoonWeb.Components.ThemesSelect do
           </button>
         {/for}
       </div>
-      <div class={
-        "fixed right-4",
-        hidden: !@show_themes,
-        "bottom-28": @use_theme_switcher,
-        "bottom-16": !@use_theme_switcher
-      }>
-        <Form for={@selected_theme_changeset} change="toggle_dark_mode">
-          <Field name={:is_dark}>
-            <Switch id="theme_switcher" icons checked={@dark_mode} />
-          </Field>
-        </Form>
-      </div>
+
+      <ThemeSwitcher
+        {=@show_themes}
+        {=@use_theme_switcher}
+        {=@selected_theme_changeset}
+        {=@dark_mode}
+        on_theme_switch="toggle_dark_mode"
+      />
+
+
     </div>
     """
   end
