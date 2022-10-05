@@ -154,18 +154,18 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
       <ExampleAndCode
         title="With search and footer (data + atom form)"
-        id="with_search_and_footer_data_changeset"
+        id="with_search_and_footer_data_and_form_for_atom"
       >
         <:example>
           <Form
-            id="search_and_footer_data_dropdown-for"
+            id="with_search_and_footer_data_and_form_for_atom_form"
             for={:selected_params}
             change="update_selected"
             submit="apply"
           >
             <Field name={:selected}>
               <Dropdown
-                id="search_and_footer_data_dropdown-for-dropdown"
+                id="with_search_and_footer_data_and_form_for_atom_form_dropdown"
                 available_options={@options_with_left_icon}
                 options={@searched_options_with_left_icon}
                 value={@selected}
@@ -191,7 +191,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             </Field>
           </Form>
         </:example>
-        <:code>{code_for_dropdown_search_footer()}</:code>
+        <:code>{code_for_with_search_and_footer_data_and_form_for_atom_form_dropdown()}</:code>
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
       </ExampleAndCode>
 
@@ -229,7 +229,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             </Field>
           </Form>
         </:example>
-        <:code>{code_for_dropdown_search_footer()}</:code>
+        <:code>{code_for_dropdown_search_footer_and_data_and_form_changeset()}</:code>
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
       </ExampleAndCode>
 
@@ -440,6 +440,77 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
               </SingleLineItem>
             </Dropdown.Option>
           {/for}
+          <:options_footer>
+            <Footer>
+              <:cancel>
+                <Button variant="secondary" size="small">Cancel</Button>
+              </:cancel>
+              <:clear>
+                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+              </:clear>
+              <:confirm>
+                <Button variant="primary" size="small">Confirm</Button>
+              </:confirm>
+            </Footer>
+          </:options_footer>
+        </Dropdown>
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_with_search_and_footer_data_and_form_for_atom_form_dropdown do
+    """
+    <Form
+      id="with_search_and_footer_data_and_form_for_atom_form"
+      for={:selected_params}
+      change="update_selected"
+      submit="apply"
+    >
+      <Field name={:selected}>
+        <Dropdown
+          id="with_search_and_footer_data_and_form_for_atom_form_dropdown"
+          available_options={@options_with_left_icon}
+          options={@searched_options_with_left_icon}
+          value={@selected}
+          on_search_change="update_search"
+          search_string={@search_string}
+          with="checkbox"
+          is_multi
+        >
+          <:options_footer>
+            <Footer>
+              <:cancel>
+                <Button variant="secondary" size="small">Cancel</Button>
+              </:cancel>
+              <:clear>
+                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+              </:clear>
+              <:confirm>
+                <Button variant="primary" size="small">Confirm</Button>
+              </:confirm>
+            </Footer>
+          </:options_footer>
+        </Dropdown>
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_dropdown_search_footer_and_data_and_form_changeset do
+    """
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:permissions}>
+        <FieldLabel>Permissions</FieldLabel>
+        <Dropdown
+          id="search_and_footer_data_dropdown"
+          available_options={@options_with_left_icon}
+          options={@searched_options_with_left_icon}
+          on_search_change="update_search"
+          search_string={@search_string}
+          with="checkbox"
+          is_multi
+        >
           <:options_footer>
             <Footer>
               <:cancel>
