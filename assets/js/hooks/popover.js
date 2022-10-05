@@ -12,7 +12,7 @@ export default {
                 {
                     name: 'offset',
                     options: {
-                        offset: [8, 8],
+                        offset: [8, 0],
                     },
                 },
             ],
