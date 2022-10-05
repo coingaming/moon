@@ -1,22 +1,3 @@
-defmodule MoonWeb.Components.ThemesSelect.SelectedTheme do
-  @moduledoc false
-
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  alias MoonWeb.Components.ThemesSelect.SelectedTheme
-
-  @optional_fields ~w(is_dark)a
-
-  schema "selected_themes" do
-    field(:is_dark, :boolean, default: false)
-  end
-
-  def changeset(selected_theme = %SelectedTheme{}, params \\ %{}) do
-    cast(selected_theme, params, @optional_fields)
-  end
-end
-
 defmodule MoonWeb.Components.ThemesSelect do
   @moduledoc false
 
@@ -32,6 +13,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Icon
   alias MoonWeb.Components.ThemesSelect.SelectedTheme
   alias MoonWeb.Components.ThemesSelect.ThemeSwitcher
+  alias MoonWeb.Components.ThemesSelect.RtlSwitcher
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
@@ -105,6 +87,14 @@ defmodule MoonWeb.Components.ThemesSelect do
       </div>
 
       <ThemeSwitcher
+        {=@show_themes}
+        {=@use_theme_switcher}
+        {=@selected_theme_changeset}
+        {=@dark_mode}
+        on_theme_switch="toggle_dark_mode"
+      />
+
+      <RtlSwitcher
         {=@show_themes}
         {=@use_theme_switcher}
         {=@selected_theme_changeset}
