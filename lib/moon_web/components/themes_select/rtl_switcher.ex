@@ -24,7 +24,13 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
     }>
       <Form for={@selected_theme_changeset} change={@on_theme_switch}>
         <Field name={:is_dark}>
-          <Switch id="theme_switcher" icons checked={@dark_mode} />
+          <Switch
+            id="theme_switcher"
+            icon_name_off="text_left_align"
+            icon_name_on="text_right_align"
+            icons
+            checked={@dark_mode}
+          />
         </Field>
       </Form>
     </div>

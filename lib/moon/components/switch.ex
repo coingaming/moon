@@ -2,7 +2,7 @@ defmodule Moon.Components.Switch do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Assets.Icon
+  alias Moon.Icon
   alias Moon.Components.Switch.Caption
   alias Surface.Components.Form.Input.InputContext
   alias Phoenix.LiveView.JS
@@ -20,14 +20,19 @@ defmodule Moon.Components.Switch do
   prop action, :string, default: "Toggle Setting"
   prop caption_unchecked, :string
   prop caption_checked, :string
+  prop icon_name_off, :string, default: "other_moon"
+  prop icon_name_on, :string, default: "other_sun"
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "relative inline-flex items-center",
-      "space-x-1": @size != "large",
-      "space-x-2": @size == "large"
-    }>
+    <div
+      {=@id}
+      class={
+        "relative inline-flex items-center",
+        "space-x-1": @size != "large",
+        "space-x-2": @size == "large"
+      }
+    >
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
       <InputContext assigns={assigns} :let={form: form, field: field}>
         <Surface.Components.Form.RadioButton
@@ -72,8 +77,8 @@ defmodule Moon.Components.Switch do
           <span class="sr-only">{@action}</span>
 
           <div :if={@icons} class="absolute flex">
-            <Icon name="icon_moon" class="scale-90" font_size={icon_size(@size)} />
-            <Icon name="icon_sun" class="scale-90" font_size={icon_size(@size)} />
+            <Icon name={@icon_name_off} class="scale-90" font_size={icon_size(@size)} />
+            <Icon name={@icon_name_on} class="scale-90" font_size={icon_size(@size)} />
           </div>
 
           <span
