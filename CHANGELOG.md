@@ -1,3 +1,10 @@
+## [2.28.7](https://github.com/coingaming/moon/compare/v2.28.6...v2.28.7) (2022-10-06)
+
+
+### Bug Fixes
+
+* Fix popover and multiselect ([#392](https://github.com/coingaming/moon/issues/392)) ([ce4386b](https://github.com/coingaming/moon/commit/ce4386bf37245a58c9ad8aea4c875e2437ef1b94))
+
 ## [2.28.6](https://github.com/coingaming/moon/compare/v2.28.5...v2.28.6) (2022-10-04)
 
 
