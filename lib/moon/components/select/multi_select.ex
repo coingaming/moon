@@ -165,14 +165,9 @@ defmodule Moon.Components.Select.MultiSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <TopToDown class="rounded bg-gohan-100 min-w-[20px]">
-            <div
-              class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
-              style="min-height: 20px; max-height: 200px"
-            >
-              <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
-            </div>
-          </TopToDown>
+          <Popover.DefaultContent>
+            <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
+          </Popover.DefaultContent>
         </:content>
       </Popover>
     </InputContext>

@@ -1,4 +1,5 @@
 # https://www.figma.com/file/aMBmdNX4cfv885xchXHIHo/Partners---Components-%7BMDS%7D?node-id=23443%3A818
+
 defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
 
@@ -30,9 +31,8 @@ defmodule Moon.Components.Select.Dropdown do
   prop with, :string, default: nil, values: ["checkbox", "radio"]
 
   slot default
-  slot option_filters
-  slot options_footer
-  slot options_tabs
+  slot footer
+  slot header
 
   def render(assigns) do
     ~F"""
@@ -64,11 +64,8 @@ defmodule Moon.Components.Select.Dropdown do
             </TextInput>
           </Form>
         {/if}
-        {#if slot_assigned?(:option_filters)}
-          <#slot name="option_filters" />
-        {/if}
-        {#if slot_assigned?(:options_tabs)}
-          <#slot name="options_tabs" />
+        {#if slot_assigned?(:header)}
+          <#slot name="header" />
         {/if}
         <ul tabindex="-1" role="listbox" id={"#{@id}-ul-list"} class="grid grid-cols-1 gap-1">
           {#if @options && !slot_assigned?(:default)}
@@ -153,9 +150,9 @@ defmodule Moon.Components.Select.Dropdown do
             </Context>
           {/if}
         </ul>
-        {#if slot_assigned?(:options_footer)}
+        {#if slot_assigned?(:footer)}
           <div class="p-1">
-            <#slot name="options_footer" />
+            <#slot name="footer" />
           </div>
         {/if}
       </div>

@@ -1,3 +1,28 @@
+defmodule Moon.Components.Popover.DefaultContent do
+  @moduledoc false
+
+  use Moon.StatelessComponent
+  alias Moon.Autolayouts.TopToDown
+
+  slot default
+
+  def render(assigns) do
+    ~F"""
+    <div
+      class={
+        "overflow-auto rounded-moon-i-md box-border border border-solid",
+        "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+      }
+      style="min-height: 20px; max-height: 200px"
+    >
+      <TopToDown>
+        <slot name="default" />
+      </TopToDown>
+    </div>
+    """
+  end
+end
+
 defmodule Moon.Components.Popover do
   @moduledoc false
 

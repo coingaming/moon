@@ -1,3 +1,5 @@
+# Please use Popover and Dropdown instead. This file will be removed.
+
 defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
   use Moon.StatelessComponent
 
