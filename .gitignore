@@ -39,3 +39,7 @@ node_modules
 /js_deps
 *.log
 /.elixir_ls
+
+#iDEA
+*.iml
+/.idea

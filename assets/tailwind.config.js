@@ -177,6 +177,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/forms"),
+    require('tailwindcss-rtl'),
     plugin(({ addComponents }) => {
       addComponents({
         ".btn-primary": {
