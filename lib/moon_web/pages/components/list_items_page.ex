@@ -86,7 +86,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="List Item">
         <p>
           List Item

@@ -22,13 +22,14 @@ defmodule MoonWeb.Pages.Components.Charts.PiePage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Pie Chart">
         <p>
           Coming soon...

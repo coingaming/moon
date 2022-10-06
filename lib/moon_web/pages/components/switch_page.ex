@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Switch">
         <p>
           Switch
@@ -190,6 +190,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       assign(socket,
         user_changeset: user_changeset,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         small_switch_checked: false,
         medium_switch_checked: false,

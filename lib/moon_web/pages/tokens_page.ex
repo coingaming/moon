@@ -73,13 +73,14 @@ defmodule MoonWeb.Pages.TokensPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Tokens" image="/moon/assets/images/facing/tokens.webp">
         <p>Design tokens are <span class="font-semibold">all the values needed to construct and maintain a design system</span> — spacing, color, typography, object styles, animation, etc.</p>
         <p>These can represent anything defined by design: a color as a HEX value, an opacity as a number, an animation ease as Bezier coordinates.</p>

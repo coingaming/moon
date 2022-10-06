@@ -10,6 +10,7 @@ defmodule MoonWeb.Components.Page do
   prop class, :css_class
   prop breadcrumbs, :any
   prop theme_name, :any, default: "moon-design-light"
+  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
   prop active_page, :any
   slot default
 
@@ -38,7 +39,12 @@ defmodule MoonWeb.Components.Page do
             <#slot />
           </div>
           <Footer />
-          <ThemesSelect id="themes_select" theme_name={@theme_name} active_page={@active_page} />
+          <ThemesSelect
+            id="themes_select"
+            {=@theme_name}
+            {=@active_page}
+            {=@direction}
+          />
         </div>
       </div>
     </div>

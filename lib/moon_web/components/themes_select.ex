@@ -18,6 +18,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
+  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
   prop active_page, :any
   prop use_theme_switcher, :boolean, default: false
 

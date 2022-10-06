@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="File Input">
         <p>
           Uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads.html">https://hexdocs.pm/phoenix_live_view/uploads.html</Link>
@@ -101,6 +101,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         uploaded_files: []
       )

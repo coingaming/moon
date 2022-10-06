@@ -79,6 +79,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -89,7 +90,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Heading">
         <p>
           We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.

@@ -20,6 +20,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__,
        roles: ["I'm a designer", "I'm a developer"],
        selected_role: params["role"] || "I'm a designer",
@@ -29,7 +30,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <h1 class="text-moon-32 font-semibold">Getting started</h1>
       <div class="flex flex-row gap-2">
         <Switcher

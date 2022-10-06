@@ -19,13 +19,14 @@ defmodule MoonWeb.Pages.ContributePage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <h1 class="text-moon-32 font-semibold">How to contribute</h1>
       <PageSection title="First Section">
         <p class="text-moon-16">Lorem ipsum dolor sit amet</p>
