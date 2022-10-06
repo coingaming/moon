@@ -36,7 +36,7 @@ defmodule Moon.Components.Popover do
     <div phx-hook="Popover" data-testid={@testid} data-placement={@placement}>
       <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
-        <div class="fixed z-50 mt-4" role="tooltip" :on-click-away={@on_close}><#slot name="content" /></div>
+        <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot name="content" /></div>
       {/if}
     </div>
     """

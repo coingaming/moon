@@ -7,7 +7,15 @@ export default {
 
         tooltip && createPopper(trigger, tooltip, {
             placement: this.el.dataset.placement || 'bottom-start',
-            strategy: 'fixed'
+            strategy: 'fixed',
+            modifiers: [
+                {
+                    name: 'offset',
+                    options: {
+                        offset: [0, 8],
+                    },
+                },
+            ],
         });
     }
 }

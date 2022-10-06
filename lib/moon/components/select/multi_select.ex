@@ -143,9 +143,7 @@ defmodule Moon.Components.Select.MultiSelect do
         )}
         <FieldBorder
           states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
-          border_color_class={if @open,
-            do: SelectHelpers.get_active_border_color(@field_border_class),
-            else: @field_border_color_class}
+          border_color_class={@field_border_color_class}
           click="toggle_open"
         >
           <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
