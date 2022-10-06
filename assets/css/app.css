@@ -109,10 +109,6 @@ body {
   .radio-button-hover {
     background-color: rgba(0, 0, 0, 0.08)
   }
-
-  #theme_switcher #item path {
-    fill: #FFB319
-  }
 }
 
 @layer utilities {

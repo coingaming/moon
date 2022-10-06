@@ -22,6 +22,7 @@ defmodule Moon.Components.Switch do
   prop caption_checked, :string
   prop icon_name_off, :string, default: "other_moon"
   prop icon_name_on, :string, default: "other_sun"
+  prop class, :css_class, default: ""
 
   def render(assigns) do
     ~F"""
@@ -30,7 +31,8 @@ defmodule Moon.Components.Switch do
       class={
         "relative inline-flex items-center",
         "space-x-1": @size != "large",
-        "space-x-2": @size == "large"
+        "space-x-2": @size == "large",
+        "#{@class}": @class
       }
     >
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
