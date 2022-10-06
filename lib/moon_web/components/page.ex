@@ -16,7 +16,7 @@ defmodule MoonWeb.Components.Page do
 
   def render(assigns) do
     ~F"""
-    <div role="main" class={"bg-goku-100 text-bulma-100 flex", @class, @theme_name}>
+    <div role="main" class={"bg-goku-100 text-bulma-100 flex", @class, @theme_name} dir={@direction}>
       <MoonWeb.Components.LeftMenu
         id="left-menu"
         theme_name={assigns.theme_name}

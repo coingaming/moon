@@ -6,13 +6,16 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
   alias Moon.Components.Form
   alias Moon.Components.Switch
   alias Moon.Components.Field
-  alias MoonWeb.Components.ThemesSelect.SelectedTheme
+  alias MoonWeb.Components.ThemesSelect.SelectedDirection
 
   prop show_themes, :boolean, default: false
   prop use_theme_switcher, :boolean, default: false
-  prop selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{})
-  prop dark_mode, :boolean, default: false
-  prop on_theme_switch, :event
+
+  prop selected_direction_changeset, :any,
+    default: SelectedDirection.changeset(%SelectedDirection{}, %{})
+
+  prop is_rtl, :boolean, default: false
+  prop on_direction_switch, :event
 
   def render(assigns) do
     ~F"""
@@ -22,14 +25,14 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
       "bottom-36": @use_theme_switcher,
       "bottom-24": !@use_theme_switcher
     }>
-      <Form for={@selected_theme_changeset} change={@on_theme_switch}>
-        <Field name={:is_dark}>
+      <Form for={@selected_direction_changeset} change={@on_direction_switch}>
+        <Field name={:is_rtl}>
           <Switch
-            id="theme_switcher"
+            id="direction_switcher"
             icon_name_off="text_left_align"
             icon_name_on="text_right_align"
             icons
-            checked={@dark_mode}
+            checked={@is_rtl}
           />
         </Field>
       </Form>
