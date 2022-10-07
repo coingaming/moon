@@ -104,7 +104,6 @@ defmodule Moon.Components.Select.MultiSelect do
   use Moon.StatefulComponent
 
   alias Moon.Autolayouts.PullAside
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
