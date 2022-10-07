@@ -15,7 +15,7 @@ defmodule Moon.Components.Switcher do
         :for={item <- @items}
         class={
           "p-1.5 lg:ps-2.5 lg:pe-3.5 font-medium text-sm rounded-md",
-          "bg-white text-bulma-100": item == @selected_item,
+          "bg-gohan-100 text-bulma-100": item == @selected_item,
           "text-trunks-100": item != @selected_item
         }
         :on-click={@click}
