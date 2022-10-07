@@ -21,8 +21,8 @@ defmodule MoonWeb.Pages.GettingStartedPage do
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
-       roles: ["I'm a designer", "I'm a developer"],
-       selected_role: params["role"] || "I'm a designer"
+       roles: [designer_role(), developer_role()],
+       selected_role: params["role"] || designer_role()
      )}
   end
 
@@ -38,8 +38,8 @@ defmodule MoonWeb.Pages.GettingStartedPage do
           class="p-0.5 rounded-lg flex bg-beerus-100"
         />
       </div>
-      <ForDesigner :if={@selected_role == List.first(@roles)} />
-      <ForDeveloper :if={@selected_role != List.first(@roles)} />
+      <ForDesigner :if={@selected_role == designer_role()} />
+      <ForDeveloper :if={@selected_role == developer_role()} />
     </Page>
     """
   end
@@ -47,4 +47,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
   def handle_event("handle_role", %{"selected-item" => selected_role}, socket) do
     {:noreply, assign(socket, :selected_role, selected_role)}
   end
+
+  defp designer_role(), do: "I'm a designer"
+  defp developer_role(), do: "I'm a developer"
 end
