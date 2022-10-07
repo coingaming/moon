@@ -21,7 +21,6 @@ defmodule MoonWeb.Pages.GettingStartedPage do
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
-       roles: [designer_role(), developer_role()],
        selected_role: params["role"] || designer_role()
      )}
   end
@@ -32,7 +31,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
       <h1 class="text-moon-32 font-semibold">Getting started</h1>
       <div class="flex flex-row gap-2">
         <Switcher
-          items={@roles}
+          items={[designer_role(), developer_role()]}
           selected_item={@selected_role}
           click="handle_role"
           class="p-0.5 rounded-lg flex bg-beerus-100"
@@ -48,6 +47,6 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     {:noreply, assign(socket, :selected_role, selected_role)}
   end
 
-  defp designer_role(), do: "I'm a designer"
-  defp developer_role(), do: "I'm a developer"
+  def designer_role(), do: "I'm a designer"
+  def developer_role(), do: "I'm a developer"
 end

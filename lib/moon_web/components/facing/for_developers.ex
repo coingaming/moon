@@ -16,7 +16,10 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <GithubIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage, theme_name: @theme_name, role: "I'm a developer")}>
+          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage,
+            theme_name: @theme_name,
+            role: GettingStartedPage.developer_role()
+          )}>
             For developers.
           </a>
         </h2>
