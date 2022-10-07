@@ -90,9 +90,9 @@ defmodule Moon.Components.Switch do
               "w-3 h-3": @size == "small",
               "w-4 h-4": @size == "medium",
               "w-6 h-6": @size == "large",
-              "translate-x-3": @size == "small" and is_selected(@checked, form, field),
-              "translate-x-4": @size == "medium" and is_selected(@checked, form, field),
-              "translate-x-6": @size == "large" and is_selected(@checked, form, field)
+              "ltr:translate-x-3 rtl:-translate-x-3": @size == "small" and is_selected(@checked, form, field),
+              "ltr:translate-x-4 rtl:-translate-x-4": @size == "medium" and is_selected(@checked, form, field),
+              "ltr:translate-x-6 rtl:-translate-x-6": @size == "large" and is_selected(@checked, form, field)
             }
           />
         </button>

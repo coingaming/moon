@@ -207,7 +207,6 @@ defmodule MoonWeb.Components.ThemesSelect do
   end
 
   def handle_event("update_selected_theme", %{"value" => theme}, socket) do
-    IO.puts("**--3--**")
     %{active_page: active_page, dark_mode: dark_mode, is_rtl: is_rtl} = socket.assigns
     new_path = generate_path(socket, active_page, theme, dark_mode, is_rtl)
     {:noreply, redirect(socket, to: new_path)}
