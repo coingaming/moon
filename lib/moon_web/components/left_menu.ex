@@ -20,7 +20,7 @@ defmodule MoonWeb.Components.LeftMenu do
   def render(assigns) do
     ~F"""
     <div
-      phx-click={@click}
+      :on-click={@click}
       id="left-menu-container"
       class={
         "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",

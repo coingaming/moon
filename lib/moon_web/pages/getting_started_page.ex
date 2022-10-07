@@ -22,8 +22,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
        theme_name: params["theme_name"] || "moon-design-light",
        active_page: __MODULE__,
        roles: ["I'm a designer", "I'm a developer"],
-       selected_role: params["role"] || "I'm a designer",
-       socket: socket
+       selected_role: params["role"] || "I'm a designer"
      )}
   end
 
@@ -39,7 +38,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
           class="p-0.5 rounded-lg flex bg-beerus-100"
         />
       </div>
-      <ForDesigner :if={@selected_role == List.first(@roles)} socket={@socket} />
+      <ForDesigner :if={@selected_role == List.first(@roles)} />
       <ForDeveloper :if={@selected_role != List.first(@roles)} />
     </Page>
     """
