@@ -78,6 +78,9 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ]
 
   def mount(params, _session, socket) do
+    IO.puts("***")
+    IO.inspect(params)
+
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",

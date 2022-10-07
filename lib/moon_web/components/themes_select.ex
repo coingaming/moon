@@ -128,7 +128,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def update(assigns, socket) do
     is_dark = String.contains?(assigns.theme_name, "dark")
-    is_rtl = socket.assigns.is_rtl
+    is_rtl = assigns.direction == "rtl"
     selected_theme = %SelectedTheme{is_dark: is_dark}
     selected_direction = %SelectedDirection{is_rtl: is_rtl}
 
@@ -148,7 +148,13 @@ defmodule MoonWeb.Components.ThemesSelect do
   end
 
   def handle_event("toggle_dark_mode", params, socket) do
-    %{active_page: active_page, theme_name: theme, is_rtl: is_rtl} = socket.assigns
+    %{
+      active_page: active_page,
+      theme_name: theme,
+      is_rtl: is_rtl,
+      selected_direction_changeset: selected_direction_changeset
+    } = socket.assigns
+
     theme = String.replace(theme, ["-light", "-dark"], "")
 
     new_path =
@@ -165,15 +171,20 @@ defmodule MoonWeb.Components.ThemesSelect do
     socket =
       socket
       |> assign(selected_theme_changeset: selected_theme_changeset)
+      |> assign(selected_direction_changeset: selected_direction_changeset)
 
     {:noreply, redirect(socket, to: new_path)}
   end
 
   def handle_event("toggle_direction", params, socket) do
-    %{active_page: active_page, theme_name: theme, dark_mode: dark_mode} = socket.assigns
-    theme = String.replace(theme, ["-light", "-dark"], "")
+    %{
+      active_page: active_page,
+      theme_name: theme,
+      dark_mode: dark_mode,
+      selected_theme_changeset: selected_theme_changeset
+    } = socket.assigns
 
-    IO.puts("**--2--**")
+    theme = String.replace(theme, ["-light", "-dark"], "")
 
     new_path =
       generate_path(
@@ -189,10 +200,10 @@ defmodule MoonWeb.Components.ThemesSelect do
 
     socket =
       socket
+      |> assign(selected_theme_changeset: selected_theme_changeset)
       |> assign(selected_direction_changeset: selected_direction_changeset)
 
-    {:noreply, socket}
-    # {:noreply, redirect(socket, to: new_path)}
+    {:noreply, redirect(socket, to: new_path)}
   end
 
   def handle_event("update_selected_theme", %{"value" => theme}, socket) do
