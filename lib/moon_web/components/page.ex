@@ -25,7 +25,7 @@ defmodule MoonWeb.Components.Page do
       />
 
       <div class={
-        "min-h-screen lg:ml-80 bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
+        "min-h-screen lg:ms-80 bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
         @theme_name
       }>
         <div class="flex flex-col grow max-w-screen-xl">
