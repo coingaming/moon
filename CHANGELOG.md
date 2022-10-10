@@ -1,3 +1,10 @@
+# [2.29.0](https://github.com/coingaming/moon/compare/v2.28.7...v2.29.0) (2022-10-10)
+
+
+### Features
+
+* add RTL switcher to Elixir site [MDS-222] ([#400](https://github.com/coingaming/moon/issues/400)) ([1bd349d](https://github.com/coingaming/moon/commit/1bd349d7af143e86965990ce7616207fcb137339))
+
 ## [2.28.7](https://github.com/coingaming/moon/compare/v2.28.6...v2.28.7) (2022-10-06)
 
 
