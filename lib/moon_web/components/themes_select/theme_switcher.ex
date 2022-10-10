@@ -18,7 +18,7 @@ defmodule MoonWeb.Components.ThemesSelect.ThemeSwitcher do
   def render(assigns) do
     ~F"""
     <div class={
-      "fixed right-4",
+      "fixed ltr:right-4 rtl:left-4",
       hidden: !@show_themes,
       "bottom-28": @use_theme_switcher,
       "bottom-16": !@use_theme_switcher
