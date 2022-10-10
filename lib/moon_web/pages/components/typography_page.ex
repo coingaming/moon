@@ -21,7 +21,9 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Typography" />
+      <ComponentPageDescription title="Typography">
+        <p>Typography includes text, headings, and captions.</p>
+      </ComponentPageDescription>
     </Page>
     """
   end
