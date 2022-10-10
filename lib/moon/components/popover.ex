@@ -61,6 +61,7 @@ defmodule Moon.Components.Popover do
     <div phx-hook="Popover" data-testid={@testid} data-placement={@placement}>
       <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
+        <div :on-click={@on_close} class="fixed inset-0 z-40" data-testid="close" />
         <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot name="content" /></div>
       {/if}
     </div>
