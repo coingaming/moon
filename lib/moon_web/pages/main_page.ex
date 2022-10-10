@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.MainPage do
               </a>
             </p>
           </div>
-          <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 3xl:right-12 z-50">
+          <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-50">
             <ForDevelopers theme_name={@theme_name} />
             <ForDesigners theme_name={@theme_name} />
           </div>

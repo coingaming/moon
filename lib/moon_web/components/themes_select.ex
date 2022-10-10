@@ -52,7 +52,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed fixed bottom-4 right-4 z-50">
+    <div class="fixed fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
       <button
         :on-click="toggle_themes"
         type="button"
@@ -64,7 +64,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>
 
-      <div class={"fixed bottom-16 right-4", hidden: !@show_themes or !@use_theme_switcher}>
+      <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
             :on-click="update_selected_theme"

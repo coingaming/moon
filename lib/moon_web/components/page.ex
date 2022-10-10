@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Page do
   prop class, :css_class
   prop breadcrumbs, :any
   prop theme_name, :any, default: "moon-design-light"
-  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
+  prop direction, :any, values: ["ltr", "rtl"], default: "ltr"
   prop active_page, :any
   slot default
 
@@ -22,8 +22,9 @@ defmodule MoonWeb.Components.Page do
     <div role="main" class={"bg-goku-100 text-bulma-100 flex", @class, @theme_name} dir={@direction}>
       <LeftMenu
         id="left-menu"
-        theme_name={assigns.theme_name}
-        active_page={assigns.active_page}
+        theme_name={@theme_name}
+        direction={@direction}
+        active_page={@active_page}
         click={hide_left_menu()}
         hide_items
       />
