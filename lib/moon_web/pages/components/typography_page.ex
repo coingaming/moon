@@ -5,6 +5,7 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
 
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
 
   data breadcrumbs, :any,
     default: [
@@ -24,6 +25,14 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
       <ComponentPageDescription title="Typography">
         <p>Typography includes text, headings, and captions.</p>
       </ComponentPageDescription>
+
+      <ExampleAndCode id="text_1" title="Default">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+          </div>
+        </:example>
+      <:code>{get_example_1_code()}</:code>
+      </ExampleAndCode>
     </Page>
     """
   end
@@ -39,5 +48,11 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
+  end
+
+  def get_example_1_code() do
+    """
+
+    """
   end
 end
