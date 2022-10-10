@@ -39,12 +39,7 @@ defmodule MoonWeb.Components.Page do
             <#slot />
           </div>
           <Footer />
-          <ThemesSelect
-            id="themes_select"
-            {=@theme_name}
-            {=@active_page}
-            {=@direction}
-          />
+          <ThemesSelect id="themes_select" {=@theme_name} {=@active_page} {=@direction} />
         </div>
       </div>
     </div>

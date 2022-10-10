@@ -29,7 +29,10 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
   def render(assigns) do
     ~F"""
     <Page
-      {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}
+      {=@theme_name}
+      {=@active_page}
+      {=@breadcrumbs}
+      {=@direction}
       class={"mr-64": @drawer_2_is_open}
     >
       <ComponentPageDescription title="Drawer">
