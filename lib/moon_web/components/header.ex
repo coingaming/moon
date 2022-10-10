@@ -3,6 +3,8 @@ defmodule MoonWeb.Components.Header do
 
   use MoonWeb, :stateless_component
 
+  alias Moon.Assets.Logos.LogoMoonDesignShort
+
   prop click, :event
   slot default
 
@@ -15,7 +17,7 @@ defmodule MoonWeb.Components.Header do
           <img src={static_path(MoonWeb.Endpoint, "/svgs/moon_web/left_menu.svg")}>
         </button>
         <a href="/">
-          <img src={static_path(MoonWeb.Endpoint, "/svgs/moon_web/moon_logo.svg")}>
+          <LogoMoonDesignShort height="2em" width="2em" />
         </a>
       </div>
       <#slot />

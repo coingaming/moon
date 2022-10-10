@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.MainPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@direction}>
       <div class="relative z-5 flex flex-col gap-12">
-        <div class="self-start"><Label size="twoxsmall">Open Source</Label></div>
+        <div class="self-start"><Label size="twoxsmall" color="text-gohan-100">Open Source</Label></div>
         <div class="flex flex-col gap-16">
           <div class="relative z-50 flex flex-col items-start gap-6">
             <h1 class="text-moon-64 font-semibold">Moon design system.</h1>
