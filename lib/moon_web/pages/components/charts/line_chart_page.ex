@@ -63,6 +63,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         filters: filters,
         select_options: [

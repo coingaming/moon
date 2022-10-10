@@ -102,6 +102,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
