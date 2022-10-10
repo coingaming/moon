@@ -16,13 +16,14 @@ defmodule MoonWeb.Pages.MainPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page}>
+    <Page {=@theme_name} {=@active_page} {=@direction}>
       <div class="relative z-5 flex flex-col gap-12">
         <div class="self-start"><Label size="twoxsmall">Open Source</Label></div>
         <div class="flex flex-col gap-16">

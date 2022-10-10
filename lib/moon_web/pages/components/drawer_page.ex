@@ -29,9 +29,10 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
   def render(assigns) do
     ~F"""
     <Page
-      theme_name={@theme_name}
-      active_page={@active_page}
-      breadcrumbs={@breadcrumbs}
+      {=@theme_name}
+      {=@active_page}
+      {=@breadcrumbs}
+      {=@direction}
       class={"mr-64": @drawer_2_is_open}
     >
       <ComponentPageDescription title="Drawer">
@@ -101,6 +102,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end

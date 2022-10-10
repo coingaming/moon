@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="RadioButton">
         <p>
           Radio buttons are used to represent a group or category of choices whereby users can only select one option - the main difference from checkboxes that allow users to select multiple options.
@@ -130,6 +130,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
      assign(socket,
        user_changeset: user_changeset,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end

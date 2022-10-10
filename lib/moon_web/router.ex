@@ -35,7 +35,7 @@ defmodule MoonWeb.Router do
     end
   end
 
-  Enum.each(["/", "/:theme_name"], fn theme_path ->
+  Enum.each(["/", "/:theme_name", "/:theme_name/:direction"], fn theme_path ->
     scope theme_path do
       pipe_through :browser
 

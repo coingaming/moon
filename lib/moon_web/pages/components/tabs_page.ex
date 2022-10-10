@@ -87,6 +87,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
      assign(socket,
        tab_id: params["tab_id"] || "1",
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -97,7 +98,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Tabs">
         <p>
           Tabs

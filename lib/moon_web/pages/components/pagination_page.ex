@@ -100,6 +100,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         total_pages: 10,
         current_page_number: 6,
@@ -118,7 +119,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Pagination">
         <p>
           Pagination
