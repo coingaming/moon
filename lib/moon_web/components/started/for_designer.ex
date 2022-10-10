@@ -5,15 +5,16 @@ defmodule MoonWeb.Components.Started.ForDesigner do
 
   alias MoonWeb.Components.PageSection
 
-  prop socket, :any, required: true
-
   def render(assigns) do
     ~F"""
     <video controls controlsList="nodownload" preload="">
       <source src="https://s3.amazonaws.com/cdn.coingaming.io/videos/gettingStartedDesigners.mp4">
       Sorry, your browser doesn't support embedded videos.
     </video>
-    <PageSection title="Components usage" image={static_path(@socket, "/images/started/usage.webp")}>
+    <PageSection
+      title="Components usage"
+      image={static_path(MoonWeb.Endpoint, "/images/started/usage.webp")}
+    >
       <p class="text-trunks">
         Use search to find components, each component in the library has its own
         unique name, which corresponds to the name in the code.
@@ -31,7 +32,7 @@ defmodule MoonWeb.Components.Started.ForDesigner do
     </PageSection>
     <PageSection
       title="Colour convention and rules"
-      image={static_path(@socket, "/images/started/colourRules.webp")}
+      image={static_path(MoonWeb.Endpoint, "/images/started/colourRules.webp")}
     >
       <p class="text-trunks">What makes our color system different?</p>
       <p>For that, we made a decision to give our colours unique names.</p>
@@ -45,7 +46,7 @@ defmodule MoonWeb.Components.Started.ForDesigner do
     </PageSection>
     <PageSection
       title="Product colours"
-      image={static_path(@socket, "/images/started/productColours.webp")}
+      image={static_path(MoonWeb.Endpoint, "/images/started/productColours.webp")}
     >
       <p class="text-trunks">
         How to create your own custom colours based on the Moon colour
@@ -72,7 +73,10 @@ defmodule MoonWeb.Components.Started.ForDesigner do
         </li>
       </ul>
     </PageSection>
-    <PageSection title="Typography" image={static_path(@socket, "/images/started/typography.webp")}>
+    <PageSection
+      title="Typography"
+      image={static_path(MoonWeb.Endpoint, "/images/started/typography.webp")}
+    >
       <p class="text-trunks">
         Grid of font sizes for web and mobile devices used in components.
       </p>
@@ -94,7 +98,10 @@ defmodule MoonWeb.Components.Started.ForDesigner do
         </li>
       </ul>
     </PageSection>
-    <PageSection title="Product tokens" image={static_path(@socket, "/images/started/tokens.webp")}>
+    <PageSection
+      title="Product tokens"
+      image={static_path(MoonWeb.Endpoint, "/images/started/tokens.webp")}
+    >
       <p class="text-trunks">
         Design tokens are the collections of variables that customise Moon
         components for your product.

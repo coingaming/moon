@@ -26,13 +26,14 @@ defmodule MoonWeb.Pages.Components.BannerPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Banner">
         <p>
           Banners are used to show users important, succinct messages, or space alerts, that users should know about. They can interact or ignore banners at any time, as they are non-modal. What to take note of when using banners Only one banner should be shown at a time. Banners require user action in order to be dismissed. Messages should consist of no longer than one headline, one description sentence and one short call-to-action.

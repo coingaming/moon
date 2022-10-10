@@ -43,13 +43,14 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Loader">
         <p>
           Fondly nicknamed “the launcher”, the Loader ensures users that progress is happening so they don't give up and leave the rocket page.

@@ -1,22 +1,3 @@
-defmodule MoonWeb.Components.ThemesSelect.SelectedTheme do
-  @moduledoc false
-
-  use Ecto.Schema
-  import Ecto.Changeset
-
-  alias MoonWeb.Components.ThemesSelect.SelectedTheme
-
-  @optional_fields ~w(is_dark)a
-
-  schema "selected_themes" do
-    field(:is_dark, :boolean, default: false)
-  end
-
-  def changeset(selected_theme = %SelectedTheme{}, params \\ %{}) do
-    cast(selected_theme, params, @optional_fields)
-  end
-end
-
 defmodule MoonWeb.Components.ThemesSelect do
   @moduledoc false
 
@@ -29,20 +10,25 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoSportsbetShort
   alias Moon.Assets.Logos.LogoMoonDesignShort
-  alias Moon.Components.Switch
   alias Moon.Icon
-  alias Moon.Components.Form
   alias MoonWeb.Components.ThemesSelect.SelectedTheme
-  alias Moon.Components.Field
+  alias MoonWeb.Components.ThemesSelect.SelectedDirection
+  alias MoonWeb.Components.ThemesSelect.ThemeSwitcher
+  alias MoonWeb.Components.ThemesSelect.RtlSwitcher
 
   prop class, :string, default: nil
   prop theme_name, :any, default: "lab-light"
+  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
   prop active_page, :any
   prop use_theme_switcher, :boolean, default: false
 
   data show_themes, :boolean, default: false
   data dark_mode, :boolean, default: false
+  data is_rtl, :boolean, default: false
   data selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{})
+
+  data selected_direction_changeset, :any,
+    default: SelectedDirection.changeset(%SelectedDirection{}, %{})
 
   @available_themes [
     [key: "Aposta10", value: "aposta10", modes: true],
@@ -66,7 +52,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed fixed bottom-4 right-4 z-50">
+    <div class="fixed fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
       <button
         :on-click="toggle_themes"
         type="button"
@@ -78,7 +64,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
       </button>
 
-      <div class={"fixed bottom-16 right-4", hidden: !@show_themes or !@use_theme_switcher}>
+      <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
             :on-click="update_selected_theme"
@@ -105,29 +91,36 @@ defmodule MoonWeb.Components.ThemesSelect do
           </button>
         {/for}
       </div>
-      <div class={
-        "fixed right-4",
-        hidden: !@show_themes,
-        "bottom-28": @use_theme_switcher,
-        "bottom-16": !@use_theme_switcher
-      }>
-        <Form for={@selected_theme_changeset} change="toggle_dark_mode">
-          <Field name={:is_dark}>
-            <Switch id="theme_switcher" icons checked={@dark_mode} />
-          </Field>
-        </Form>
-      </div>
+
+      <RtlSwitcher
+        {=@show_themes}
+        {=@use_theme_switcher}
+        {=@selected_direction_changeset}
+        {=@is_rtl}
+        on_direction_switch="toggle_direction"
+      />
+
+      <ThemeSwitcher
+        {=@show_themes}
+        {=@use_theme_switcher}
+        {=@selected_theme_changeset}
+        {=@dark_mode}
+        on_theme_switch="toggle_dark_mode"
+      />
     </div>
     """
   end
 
   def mount(_params, _session, socket) do
     selected_theme = %SelectedTheme{}
+    selected_direction = %SelectedDirection{}
     selected_theme_changeset = SelectedTheme.changeset(selected_theme, %{})
+    selected_direction_changeset = SelectedDirection.changeset(selected_direction, %{})
 
     socket =
       assign(socket,
-        selected_theme_changeset: selected_theme_changeset
+        selected_theme_changeset: selected_theme_changeset,
+        selected_direction_changeset: selected_direction_changeset
       )
 
     {:ok, socket}
@@ -135,13 +128,17 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def update(assigns, socket) do
     is_dark = String.contains?(assigns.theme_name, "dark")
+    is_rtl = assigns.direction == "rtl"
     selected_theme = %SelectedTheme{is_dark: is_dark}
+    selected_direction = %SelectedDirection{is_rtl: is_rtl}
 
     socket =
       socket
       |> assign(assigns)
       |> assign(dark_mode: is_dark)
       |> assign(selected_theme: selected_theme)
+      |> assign(is_rtl: is_rtl)
+      |> assign(selected_direction: selected_direction)
 
     {:ok, socket}
   end
@@ -151,26 +148,73 @@ defmodule MoonWeb.Components.ThemesSelect do
   end
 
   def handle_event("toggle_dark_mode", params, socket) do
-    %{active_page: active_page, theme_name: theme} = socket.assigns
+    %{
+      active_page: active_page,
+      theme_name: theme,
+      is_rtl: is_rtl,
+      selected_direction_changeset: selected_direction_changeset
+    } = socket.assigns
+
     theme = String.replace(theme, ["-light", "-dark"], "")
 
     new_path =
-      generate_path(socket, active_page, theme, params["selected_theme"]["is_dark"] == "true")
+      generate_path(
+        socket,
+        active_page,
+        theme,
+        params["selected_theme"]["is_dark"] == "true",
+        is_rtl
+      )
 
     selected_theme_changeset = SelectedTheme.changeset(socket.assigns.selected_theme, params)
-    socket = assign(socket, selected_theme_changeset: selected_theme_changeset)
+
+    socket =
+      socket
+      |> assign(selected_theme_changeset: selected_theme_changeset)
+      |> assign(selected_direction_changeset: selected_direction_changeset)
+
+    {:noreply, redirect(socket, to: new_path)}
+  end
+
+  def handle_event("toggle_direction", params, socket) do
+    %{
+      active_page: active_page,
+      theme_name: theme,
+      dark_mode: dark_mode,
+      selected_theme_changeset: selected_theme_changeset
+    } = socket.assigns
+
+    theme = String.replace(theme, ["-light", "-dark"], "")
+
+    new_path =
+      generate_path(
+        socket,
+        active_page,
+        theme,
+        dark_mode,
+        params["selected_direction"]["is_rtl"] == "true"
+      )
+
+    selected_direction_changeset =
+      SelectedDirection.changeset(socket.assigns.selected_direction, params)
+
+    socket =
+      socket
+      |> assign(selected_theme_changeset: selected_theme_changeset)
+      |> assign(selected_direction_changeset: selected_direction_changeset)
 
     {:noreply, redirect(socket, to: new_path)}
   end
 
   def handle_event("update_selected_theme", %{"value" => theme}, socket) do
-    %{active_page: active_page, dark_mode: dark_mode} = socket.assigns
-    new_path = generate_path(socket, active_page, theme, dark_mode)
+    %{active_page: active_page, dark_mode: dark_mode, is_rtl: is_rtl} = socket.assigns
+    new_path = generate_path(socket, active_page, theme, dark_mode, is_rtl)
     {:noreply, redirect(socket, to: new_path)}
   end
 
-  defp generate_path(socket, active_page, theme, dark_mode) do
+  defp generate_path(socket, active_page, theme, dark_mode, is_rtl) do
     theme_name = "#{theme}-#{if dark_mode, do: "dark", else: "light"}"
-    Routes.live_path(socket, active_page, theme_name, %{})
+    direction = if is_rtl, do: "rtl", else: "ltr"
+    Routes.live_path(socket, active_page, theme_name, direction, %{})
   end
 end

@@ -50,6 +50,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        search_string: "",
        radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        tab_id: "1",
        active_page: __MODULE__,
        selected: []
@@ -62,7 +63,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Dropdown">
         <p>Dropdown</p>
       </ComponentPageDescription>
