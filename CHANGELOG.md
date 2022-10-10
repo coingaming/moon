@@ -1,3 +1,10 @@
+## [2.29.1](https://github.com/coingaming/moon/compare/v2.29.0...v2.29.1) (2022-10-10)
+
+
+### Bug Fixes
+
+* fix issues in RTL mode [MDS-222] ([#402](https://github.com/coingaming/moon/issues/402)) ([60f7181](https://github.com/coingaming/moon/commit/60f7181bdb2b49043890970d0213765a40eef25d))
+
 # [2.29.0](https://github.com/coingaming/moon/compare/v2.28.7...v2.29.0) (2022-10-10)
 
 
