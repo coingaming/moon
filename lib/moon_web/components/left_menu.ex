@@ -15,13 +15,19 @@ defmodule MoonWeb.Components.LeftMenu do
   prop uri, :any
   prop active_page, :any
   prop hide_items, :boolean
+  prop click, :event
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col",
-      @theme_name
-    }>
+    <div
+      :on-click={@click}
+      id="left-menu-container"
+      class={
+        "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",
+        @theme_name
+      }
+    >
+      <div class="fixed inset-0 bg-gray-600 bg-opacity-75 lg:hidden" />
       <Sidebar background_color="bg-goku-100" open_width="20rem">
         <:short_logo>
           <div class="flex items-center h-10">

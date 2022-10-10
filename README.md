@@ -40,6 +40,18 @@ In writing code try to remember following rules:
 3. Use slots
 4. Add and run tests
 5. Create component's page in moon_web application with API described and state shown
+6. Use following classes for TW-way styling:
+   - Use Moon classes for: (see ds-moon-preset.js for full list of variables, and themes/moon-design-*.css for values)
+     - font sizes
+     - border-radius - rounded-moon-{s - big elements, e.g cart, i - interactive, e.g button}
+     - shadows
+     - font-weight - only 2
+   - Use TailWind classes for following reasons
+     - transition
+     - breakpoints - @media
+   - And do not forget to use RTL features
+     - use rtl: and ltr: prefixes for according write-direction styles
+     - use ps & pe instead of pl & pr accordingly
 
 ```
 alias Moon.Components.TextInput
@@ -55,6 +67,7 @@ alias Moon.Assets.Icons.IconZoom
   </:right_icon>
 </TextInput>
 ```
+
 
 ```bash
 mix test
