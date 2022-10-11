@@ -122,6 +122,7 @@ defmodule MoonWeb.Router do
       live "/components/toast", MoonWeb.Pages.Components.ToastPage
       live "/components/tooltip", MoonWeb.Pages.Components.TooltipPage
 
+      live "/components/typography", MoonWeb.Pages.Components.TypographyPage
       live "/components/typography/caption", MoonWeb.Pages.Components.Typography.CaptionPage
       live "/components/typography/heading", MoonWeb.Pages.Components.Typography.HeadingPage
       live "/components/typography/text", MoonWeb.Pages.Components.Typography.TextPage

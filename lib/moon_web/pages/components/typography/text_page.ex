@@ -1,3 +1,4 @@
+# This component is deprecated, use /components/typography/ css classes
 defmodule MoonWeb.Pages.Components.Typography.TextPage do
   @moduledoc false
 
@@ -92,6 +93,19 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Text">
+        <p class="font-medium">
+          NB! The component is depricated. Please use our
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
+          built with Tailwind.
+        </p>
         <p>
           We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.
         </p>
