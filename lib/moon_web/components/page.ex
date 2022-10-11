@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Page do
   prop class, :css_class
   prop breadcrumbs, :any
   prop theme_name, :any, default: "moon-design-light"
-  prop direction, :any, values: ["ltr", "rtl"], default: "ltr"
+  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
   prop active_page, :any
   slot default
 
