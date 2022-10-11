@@ -28,11 +28,12 @@ defmodule Moon.Components.ToastStack do
   end
 
   def show(toast = %Message{}, id) do
-    toast = if toast.id do
-      toast
-    else
-      %{toast | id: generate_id()}
-    end
+    toast =
+      if toast.id do
+        toast
+      else
+        %{toast | id: generate_id()}
+      end
 
     send_update(__MODULE__, id: id, toast: toast)
   end
