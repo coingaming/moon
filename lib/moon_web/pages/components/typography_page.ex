@@ -44,7 +44,7 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
             <p class="text-moon-72 transition-colors">Size 72</p>
           </div>
         </:example>
-      <:code>{get_example_1_code()}</:code>
+        <:code>{get_example_1_code()}</:code>
       </ExampleAndCode>
 
       <ExampleAndCode id="text_2" title="Heading">

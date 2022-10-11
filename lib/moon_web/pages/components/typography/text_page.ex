@@ -95,10 +95,12 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
       <ComponentPageDescription title="Text">
         <p class="font-medium">
           NB! The component is depricated. Please use our
-            <a  href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage, theme_name: @theme_name)}
-              class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100">
-              new Typography
-            </a>
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage, theme_name: @theme_name)}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
           built with Tailwind.
         </p>
         <p>
