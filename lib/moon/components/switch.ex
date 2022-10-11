@@ -24,6 +24,7 @@ defmodule Moon.Components.Switch do
   prop icon_name_off, :string, default: "other_moon"
   prop icon_name_on, :string, default: "other_sun"
   prop class, :css_class, default: ""
+  prop on_click, :event
 
   def render(assigns) do
     ~F"""
@@ -35,6 +36,7 @@ defmodule Moon.Components.Switch do
         "space-x-2": @size == "large",
         "#{@class}": @class
       }
+      :on-click={@on_click}
     >
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
       <InputContext assigns={assigns} :let={form: form, field: field}>
@@ -69,7 +71,7 @@ defmodule Moon.Components.Switch do
             "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
             "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
           }
-          :on-click={JS.dispatch("moon:update-switch",
+          :on-click={!@on_click && JS.dispatch("moon:update-switch",
             detail: %{
               checked: !is_selected(@checked, form, @field || field),
               switch_id: @id
