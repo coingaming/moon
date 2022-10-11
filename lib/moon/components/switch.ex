@@ -14,6 +14,7 @@ defmodule Moon.Components.Switch do
   }
 
   prop id, :string, required: true
+  prop field, :atom, default: nil
   prop checked, :boolean, default: false
   prop icons, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large"], default: "medium"
@@ -44,7 +45,7 @@ defmodule Moon.Components.Switch do
           value="true"
           opts={
             id: "#{@id}_radio_true",
-            checked: is_selected(@checked, form, field)
+            checked: is_selected(@checked, form, @field || field)
           }
         />
         <Surface.Components.Form.RadioButton
@@ -54,7 +55,7 @@ defmodule Moon.Components.Switch do
           value="false"
           opts={
             id: "#{@id}_radio_false",
-            checked: !is_selected(@checked, form, field)
+            checked: !is_selected(@checked, form, @field || field)
           }
         />
         <button
@@ -70,7 +71,7 @@ defmodule Moon.Components.Switch do
           }
           :on-click={JS.dispatch("moon:update-switch",
             detail: %{
-              checked: !is_selected(@checked, form, field),
+              checked: !is_selected(@checked, form, @field || field),
               switch_id: @id
             },
             to: "##{@id}_radio_true"
@@ -90,10 +91,10 @@ defmodule Moon.Components.Switch do
               "w-3 h-3": @size == "small",
               "w-4 h-4": @size == "medium",
               "w-6 h-6": @size == "large",
-              "ltr:translate-x-3 rtl:-translate-x-3": @size == "small" and is_selected(@checked, form, field),
+              "ltr:translate-x-3 rtl:-translate-x-3": @size == "small" and is_selected(@checked, form, @field || field),
               "ltr:translate-x-4 rtl:-translate-x-4":
-                @size == "medium" and is_selected(@checked, form, field),
-              "ltr:translate-x-6 rtl:-translate-x-6": @size == "large" and is_selected(@checked, form, field)
+                @size == "medium" and is_selected(@checked, form, @field || field),
+              "ltr:translate-x-6 rtl:-translate-x-6": @size == "large" and is_selected(@checked, form, @field || field)
             }
           />
         </button>
@@ -102,7 +103,7 @@ defmodule Moon.Components.Switch do
           :if={@caption_checked}
           label={@caption_checked}
           size={@size}
-          active={is_selected(@checked, form, field)}
+          active={is_selected(@checked, form, @field || field)}
         />
       </InputContext>
     </div>

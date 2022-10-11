@@ -48,6 +48,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         :required => 'true',
         :default => '-',
         :description => 'Displayed text when checked'
+      },
+      %{
+        :name => 'field',
+        :type => 'atom',
+        :required => 'false',
+        :default => 'false',
+        :description => 'If not used in Field component, needs to be specified'
       }
     ]
 
@@ -63,19 +70,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       <ExampleAndCode title="Size" class="mt-3" id="switch_2_sample">
         <:example>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-            <Field name={:agrees_to_terms_of_service}>
-              <Switch size="small" id="switch_2_1" checked={@small_switch_checked} />
-            </Field>
+            <Switch field={:agrees_to_terms_of_service} size="small" id="switch_2_1" />
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-            <Field name={:agrees_to_terms_of_service}>
-              <Switch size="medium" id="switch_2_2" checked={@medium_switch_checked} />
-            </Field>
+              <Switch field={:agrees_to_terms_of_service} size="medium" id="switch_2_2" />
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-            <Field name={:agrees_to_terms_of_service}>
-              <Switch size="large" id="switch_2_3" checked={@large_switch_checked} />
-            </Field>
+            <Switch field={:agrees_to_terms_of_service} size="large" id="switch_2_3" />
           </Form>
         </:example>
 
