@@ -28,13 +28,17 @@ defmodule Moon.Components.ToastStack do
   end
 
   def show(toast = %Message{}, id) do
-    send_update(__MODULE__, id: id, toast: %{toast | id: generate_id()})
+    toast = if toast.id do
+      toast
+    else
+      %{toast | id: generate_id()}
+    end
+
+    send_update(__MODULE__, id: id, toast: toast)
   end
 
   def show(toasts, id) when is_list(toasts) do
-    Enum.each(toasts, fn toast ->
-      send_update(__MODULE__, id: id, toast: %{toast | id: generate_id()})
-    end)
+    Enum.each(toasts, fn toast -> show(toast, id) end)
   end
 
   def hide_toast(toast_id, stack_id) do
