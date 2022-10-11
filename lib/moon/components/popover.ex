@@ -13,7 +13,6 @@ defmodule Moon.Components.Popover.DefaultContent do
         "overflow-auto rounded-moon-i-md box-border border border-solid",
         "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl bg-gohan-100"
       }
-      style="min-height: 20px; max-height: 200px"
     >
       <TopToDown>
         <slot name="default" />
