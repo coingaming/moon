@@ -96,7 +96,10 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         <p class="font-medium">
           NB! The component is depricated. Please use our
           <a
-            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage, theme_name: @theme_name)}
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
             class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
           >
             new Typography
