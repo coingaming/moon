@@ -73,7 +73,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
             <Switch field={:agrees_to_terms_of_service} size="small" id="switch_2_1" />
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-              <Switch field={:agrees_to_terms_of_service} size="medium" id="switch_2_2" />
+            <Switch field={:agrees_to_terms_of_service} size="medium" id="switch_2_2" />
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Switch field={:agrees_to_terms_of_service} size="large" id="switch_2_3" />

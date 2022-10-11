@@ -8,12 +8,10 @@ defmodule Moon.Components.Popover.DefaultContent do
 
   def render(assigns) do
     ~F"""
-    <div
-      class={
-        "overflow-auto rounded-moon-i-md box-border border border-solid",
-        "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl bg-gohan-100"
-      }
-    >
+    <div class={
+      "overflow-auto rounded-moon-i-md box-border border border-solid",
+      "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl bg-gohan-100"
+    }>
       <TopToDown>
         <slot name="default" />
       </TopToDown>
