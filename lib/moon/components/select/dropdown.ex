@@ -39,7 +39,7 @@ defmodule Moon.Components.Select.Dropdown do
     ~F"""
     <InputContext assigns={assigns} :let={form: form, field: field}>
       <div class={
-        "z-10 rounded-moon-i-md shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1 overflow-hidden text-moon-16",
+        "z-10 rounded-moon-i-md shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1 text-moon-16",
         @class
       }>
         {#if !@select_id}
