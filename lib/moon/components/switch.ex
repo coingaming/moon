@@ -71,13 +71,14 @@ defmodule Moon.Components.Switch do
             "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
             "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
           }
-          :on-click={!@on_click && JS.dispatch("moon:update-switch",
-            detail: %{
-              checked: !is_selected(@checked, form, @field || field),
-              switch_id: @id
-            },
-            to: "##{@id}_radio_true"
-          )}
+          :on-click={!@on_click &&
+            JS.dispatch("moon:update-switch",
+              detail: %{
+                checked: !is_selected(@checked, form, @field || field),
+                switch_id: @id
+              },
+              to: "##{@id}_radio_true"
+            )}
         >
           <span class="sr-only">{@action}</span>
 
