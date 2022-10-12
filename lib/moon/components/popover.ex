@@ -13,7 +13,7 @@ defmodule Moon.Components.Popover.DefaultContent do
       "border-beerus-100 drop-shadow-2xl bg-gohan-100"
     }>
       <TopToDown>
-        <slot name="default" />
+        <#slot name="default" />
       </TopToDown>
     </div>
     """
