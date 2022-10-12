@@ -132,7 +132,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                     </SingleLineItem>
                   </Dropdown.Option>
                 {/for}
-                <:options_footer>
+                <:footer>
                   <Footer>
                     <:cancel>
                       <Button variant="secondary" size="small">Cancel</Button>
@@ -144,7 +144,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                       <Button variant="primary" size="small">Confirm</Button>
                     </:confirm>
                   </Footer>
-                </:options_footer>
+                </:footer>
               </Dropdown>
             </Field>
           </Form>
@@ -175,7 +175,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 with="checkbox"
                 is_multi
               >
-                <:options_footer>
+                <:footer>
                   <Footer>
                     <:cancel>
                       <Button variant="secondary" size="small">Cancel</Button>
@@ -187,7 +187,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                       <Button variant="primary" size="small">Confirm</Button>
                     </:confirm>
                   </Footer>
-                </:options_footer>
+                </:footer>
               </Dropdown>
             </Field>
           </Form>
@@ -213,7 +213,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 with="checkbox"
                 is_multi
               >
-                <:options_footer>
+                <:footer>
                   <Footer>
                     <:cancel>
                       <Button variant="secondary" size="small">Cancel</Button>
@@ -225,7 +225,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                       <Button variant="primary" size="small">Confirm</Button>
                     </:confirm>
                   </Footer>
-                </:options_footer>
+                </:footer>
               </Dropdown>
             </Field>
           </Form>
@@ -299,14 +299,14 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Field name={:permissions}>
               <FieldLabel>Permissions</FieldLabel>
               <Dropdown id="dropdown-tabs-example-user-permissions" options={@options} is_multi>
-                <:options_tabs>
+                <:header>
                   <Tabs>
                     <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
                     <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
                     <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
                     <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
                   </Tabs>
-                </:options_tabs>
+                </:header>
               </Dropdown>
             </Field>
           </Form>
@@ -441,7 +441,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
               </SingleLineItem>
             </Dropdown.Option>
           {/for}
-          <:options_footer>
+          <:footer>
             <Footer>
               <:cancel>
                 <Button variant="secondary" size="small">Cancel</Button>
@@ -453,7 +453,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Button variant="primary" size="small">Confirm</Button>
               </:confirm>
             </Footer>
-          </:options_footer>
+          </:footer>
         </Dropdown>
       </Field>
     </Form>
@@ -479,7 +479,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           with="checkbox"
           is_multi
         >
-          <:options_footer>
+          <:footer>
             <Footer>
               <:cancel>
                 <Button variant="secondary" size="small">Cancel</Button>
@@ -491,7 +491,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Button variant="primary" size="small">Confirm</Button>
               </:confirm>
             </Footer>
-          </:options_footer>
+          </:footer>
         </Dropdown>
       </Field>
     </Form>
@@ -512,7 +512,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           with="checkbox"
           is_multi
         >
-          <:options_footer>
+          <:footer>
             <Footer>
               <:cancel>
                 <Button variant="secondary" size="small">Cancel</Button>
@@ -524,7 +524,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <Button variant="primary" size="small">Confirm</Button>
               </:confirm>
             </Footer>
-          </:options_footer>
+          </:footer>
         </Dropdown>
       </Field>
     </Form>
@@ -594,14 +594,14 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         <Dropdown
           id="dropdown-tabs-example-user-permissions"
           options={@options}>
-          <:options_tabs>
+          <:header>
             <Tabs>
               <TabLink active={@tab_id == "1"} on_click="clicked_tab" item_id="1">Link 1</TabLink>
               <TabLink active={@tab_id == "2"} on_click="clicked_tab" item_id="2">Link 2</TabLink>
               <TabLink active={@tab_id == "3"} on_click="clicked_tab" item_id="3">Link 3</TabLink>
               <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
             </Tabs>
-          </:options_tabs>
+          </:header>
         </Dropdown>
       </Field>
     </Form>

@@ -14,6 +14,7 @@ defmodule Moon.Components.Switch do
   }
 
   prop id, :string, required: true
+  prop field, :atom, default: nil
   prop checked, :boolean, default: false
   prop icons, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large"], default: "medium"
@@ -23,6 +24,7 @@ defmodule Moon.Components.Switch do
   prop icon_name_off, :string, default: "other_moon"
   prop icon_name_on, :string, default: "other_sun"
   prop class, :css_class, default: ""
+  prop on_click, :event
 
   def render(assigns) do
     ~F"""
@@ -34,6 +36,7 @@ defmodule Moon.Components.Switch do
         "space-x-2": @size == "large",
         "#{@class}": @class
       }
+      :on-click={@on_click}
     >
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
       <InputContext assigns={assigns} :let={form: form, field: field}>
@@ -44,7 +47,7 @@ defmodule Moon.Components.Switch do
           value="true"
           opts={
             id: "#{@id}_radio_true",
-            checked: is_selected(@checked, form, field)
+            checked: is_selected(@checked, form, @field || field)
           }
         />
         <Surface.Components.Form.RadioButton
@@ -54,7 +57,7 @@ defmodule Moon.Components.Switch do
           value="false"
           opts={
             id: "#{@id}_radio_false",
-            checked: !is_selected(@checked, form, field)
+            checked: !is_selected(@checked, form, @field || field)
           }
         />
         <button
@@ -68,13 +71,14 @@ defmodule Moon.Components.Switch do
             "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
             "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
           }
-          :on-click={JS.dispatch("moon:update-switch",
-            detail: %{
-              checked: !is_selected(@checked, form, field),
-              switch_id: @id
-            },
-            to: "##{@id}_radio_true"
-          )}
+          :on-click={!@on_click &&
+            JS.dispatch("moon:update-switch",
+              detail: %{
+                checked: !is_selected(@checked, form, @field || field),
+                switch_id: @id
+              },
+              to: "##{@id}_radio_true"
+            )}
         >
           <span class="sr-only">{@action}</span>
 
@@ -90,10 +94,12 @@ defmodule Moon.Components.Switch do
               "w-3 h-3": @size == "small",
               "w-4 h-4": @size == "medium",
               "w-6 h-6": @size == "large",
-              "ltr:translate-x-3 rtl:-translate-x-3": @size == "small" and is_selected(@checked, form, field),
+              "ltr:translate-x-3 rtl:-translate-x-3":
+                @size == "small" and is_selected(@checked, form, @field || field),
               "ltr:translate-x-4 rtl:-translate-x-4":
-                @size == "medium" and is_selected(@checked, form, field),
-              "ltr:translate-x-6 rtl:-translate-x-6": @size == "large" and is_selected(@checked, form, field)
+                @size == "medium" and is_selected(@checked, form, @field || field),
+              "ltr:translate-x-6 rtl:-translate-x-6":
+                @size == "large" and is_selected(@checked, form, @field || field)
             }
           />
         </button>
@@ -102,7 +108,7 @@ defmodule Moon.Components.Switch do
           :if={@caption_checked}
           label={@caption_checked}
           size={@size}
-          active={is_selected(@checked, form, field)}
+          active={is_selected(@checked, form, @field || field)}
         />
       </InputContext>
     </div>

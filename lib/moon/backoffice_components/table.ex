@@ -1,3 +1,5 @@
+# Please use Backoffice Table, this file will be removed.
+
 defmodule Moon.BackofficeComponents.Table do
   @moduledoc false
 
