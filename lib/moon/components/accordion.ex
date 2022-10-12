@@ -19,7 +19,7 @@ defmodule Moon.Components.Accordion do
   prop pull_a_side_class, :css_class
 
   slot title
-  slot header_controls
+  slot header_content
   slot content
 
   def render(assigns) do
@@ -49,7 +49,7 @@ defmodule Moon.Components.Accordion do
         <:right>
           <div class={hidden: !@with_button}>
             <LeftToRight class="text-trunks-100">
-              <#slot name="header_controls" />
+              <#slot name="header_content" />
               <div
                 :on-click={toggle_content(@id, @disabled)}
                 id={@id <> "-arrow"}
