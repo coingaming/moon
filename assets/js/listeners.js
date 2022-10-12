@@ -24,6 +24,17 @@ window.addEventListener("moon:update-switch", (event) => {
   }
 });
 
+window.addEventListener("moon:update-accordion-aria", (event) => {
+  var accordion_id = event.detail.accordion_id;
+  var element = document.getElementById(accordion_id);
+  var ariaExpanded = element.getAttribute("aria-expanded");
+  if (ariaExpanded == "true") {
+    element.setAttribute("aria-expanded", "false");
+  } else {
+    element.setAttribute("aria-expanded", "true");
+  }
+});
+
 window["moon:breadcumbs-close-handlers"] = {};
 
 window.addEventListener("moon:show-collapsed-breadcrumbs", (event) => {

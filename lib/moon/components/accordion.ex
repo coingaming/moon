@@ -27,6 +27,7 @@ defmodule Moon.Components.Accordion do
     ~F"""
     <div
       id={@id}
+      aria-expanded={[(if @open_by_default, do: "true", else: "false")]}
       class={
         "w-full rounded-moon-s-sm h-max flex flex-col items-center p-4",
         @bg_color,
@@ -44,8 +45,10 @@ defmodule Moon.Components.Accordion do
         }
       >
         <:left>
-          <div :on-click={toggle_content(@id, @disabled)} class="flex items-center grow">
-            <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
+          <div :on-click={toggle_content(@id, @disabled)}
+            class="flex items-center grow"
+          >
+            <h3 class={"font-semibold", font_class(@size)} aria-level={3}><#slot name="title" /></h3>
           </div>
         </:left>
         <:right>
@@ -54,6 +57,7 @@ defmodule Moon.Components.Accordion do
               <#slot name="header_content" />
               <div
                 :on-click={toggle_content(@id, @disabled)}
+                aria-hidden="true"
                 id={@id <> "-arrow"}
                 class={
                   "transition-transform transition-200",
@@ -101,6 +105,13 @@ defmodule Moon.Components.Accordion do
   def toggle_content(id, disabled) do
     if !disabled do
       JS.toggle(to: "#" <> id <> "-content")
+      |> JS.dispatch(
+        "moon:update-accordion-aria",
+        detail: %{
+          accordion_id: id
+        },
+        to: "#" <> id
+      )
       |> JS.remove_class(
         "rotate-90",
         to: "#" <> id <> "-arrow.rotate-90"
