@@ -1,3 +1,10 @@
+## [2.29.2](https://github.com/coingaming/moon/compare/v2.29.1...v2.29.2) (2022-10-12)
+
+
+### Bug Fixes
+
+* dropdown content improvements and reusability ([#398](https://github.com/coingaming/moon/issues/398)) ([954b0df](https://github.com/coingaming/moon/commit/954b0df27d2a35a17616918568a3484be2748799))
+
 ## [2.29.1](https://github.com/coingaming/moon/compare/v2.29.0...v2.29.1) (2022-10-10)
 
 
