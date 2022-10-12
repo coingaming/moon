@@ -12,7 +12,6 @@ defmodule Moon.Components.Select.Dropdown do
   alias Surface.Components.Form.Input.InputContext
 
   alias Moon.Autolayouts.LeftToRight
-  alias Moon.Components.Form
   alias Moon.Components.Checkbox
   alias Moon.Components.RadioButton
   alias Moon.Components.TextInput
