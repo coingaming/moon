@@ -28,7 +28,8 @@ defmodule Moon.Components.Accordion do
     <div
       id={@id}
       class={
-        "w-full rounded-moon-s-sm h-max flex flex-col items-center p-4", @bg_color,
+        "w-full rounded-moon-s-sm h-max flex flex-col items-center p-4",
+        @bg_color,
         get_padding(@size),
         @class
       }

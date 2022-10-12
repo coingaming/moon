@@ -320,14 +320,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     <Accordion id="deposits-and-withdrawals-1">
       <:title>Deposit & Withdrawals</:title>
       <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
     """
@@ -338,14 +334,10 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     <Accordion id="deposits-and-withdrawals-2" open_by_default>
       <:title>Deposit & Withdrawals</:title>
       <:content>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
-        Content <br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
     """
@@ -353,193 +345,145 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_3_code() do
     """
-      <Accordion id="deposits-and-withdrawals-3" with_button={false}>
-        <:title>Deposit & Withdrawals</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="deposits-and-withdrawals-3" with_button={false}>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
   def get_example_4_code() do
     """
-      <Accordion id="deposits-and-withdrawals-4" disabled>
-        <:title>Deposit & Withdrawals</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="deposits-and-withdrawals-4" disabled>
+      <:title>Deposit & Withdrawals</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
   def get_example_5_code() do
     """
-      <Accordion id="basket-items" open_by_default is_content_inside={false}>
-        <:title>Basket Items</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="basket-items" open_by_default is_content_inside={false}>
+      <:title>Basket Items</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
   def get_example_6_code() do
     """
-      <Accordion id="customer-support">
-        <:title>Customer support</:title>
-        <:header_content>
-          <ChatChat class="w-6 h-6"/>
-          <ChatComment class="w-6 h-6" />
-          <ChatCommentAdd class="w-6 h-6" />
-          <ChatDoubleBubble class="w-6 h-6" />
-        </:header_content>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="customer-support">
+      <:title>Customer support</:title>
+      <:header_content>
+        <ChatChat class="w-6 h-6" />
+        <ChatComment class="w-6 h-6" />
+        <ChatCommentAdd class="w-6 h-6" />
+        <ChatDoubleBubble class="w-6 h-6" />
+      </:header_content>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
   def get_example_7_code() do
     """
-      <Accordion id="size-3" size="xlarge">
-        <:title>X Large</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-3" size="large">
-        <:title>Large</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-2">
-        <:title>Medium (Default)</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-1" size="small">
-        <:title>Small</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="size-4" size="xlarge">
+      <:title>X Large</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-3" size="large">
+      <:title>Large</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-2">
+      <:title>Medium (Default)</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-1" size="small">
+      <:title>Small</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
   def get_example_8_code() do
     """
-      <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
-        <:title>X Large</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-out-3" size="large" is_content_inside={false}>
-        <:title>Large</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-out-2" is_content_inside={false}>
-        <:title>Medium (Default)</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
-      <Accordion id="size-out-1" size="small" is_content_inside={false}>
-        <:title>Small</:title>
-        <:content>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-          Content <br>
-        </:content>
-      </Accordion>
+    <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
+      <:title>X Large</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-out-3" size="large" is_content_inside={false}>
+      <:title>Large</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-out-2" is_content_inside={false}>
+      <:title>Medium (Default)</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="size-out-1" size="small" is_content_inside={false}>
+      <:title>Small</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 
