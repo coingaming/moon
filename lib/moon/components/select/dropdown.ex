@@ -151,7 +151,8 @@ defmodule Moon.Components.Select.Dropdown do
               <Context put={
                 __MODULE__,
                 select_id: @select_id || @id,
-                select_value: SelectHelpers.get_normalized_value(form, @field || field, @is_multi, value: @value),
+                select_value:
+                  SelectHelpers.get_normalized_value(form, @field || field, @is_multi, value: @value),
                 is_multi: @is_multi
               }>
                 <#slot name="default" />

@@ -236,7 +236,12 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       <ExampleAndCode title="With radio button" id="dropdown-radio-example">
         <:example>
           <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
-            <Dropdown id="user-role" field={:role} options={User.available_roles_with_left_icon()} with="radio" />
+            <Dropdown
+              id="user-role"
+              field={:role}
+              options={User.available_roles_with_left_icon()}
+              with="radio"
+            />
           </Form>
         </:example>
         <:code>{code_for_dropdown_radio_button()}</:code>
