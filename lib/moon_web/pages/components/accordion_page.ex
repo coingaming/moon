@@ -187,14 +187,9 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           <Accordion id="basket-items" open_by_default is_content_inside={false}>
             <:title>Basket Items</:title>
             <:content>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
-              Content <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
         </:example>
