@@ -32,7 +32,12 @@ defmodule Moon.Components.Accordion do
         @class
       }
     >
-      <PullAside left_grow class={"w-full gap-3 cursor-pointer", @pull_a_side_class}>
+      <PullAside left_grow class={
+        "w-full gap-3",
+        "cursor-not-allowed opacity-30": @disabled,
+        "cursor-pointer": !@disabled,
+        "#{@pull_a_side_class}": @pull_a_side_class}
+      >
         <:left>
           <div :on-click={toggle_content(@id, @disabled)} class="flex items-center grow">
             <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
