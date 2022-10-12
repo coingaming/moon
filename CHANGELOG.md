@@ -1,3 +1,11 @@
+## [2.29.3](https://github.com/coingaming/moon/compare/v2.29.2...v2.29.3) (2022-10-12)
+
+
+### Bug Fixes
+
+* partners styles & version page [MDS-236] ([#405](https://github.com/coingaming/moon/issues/405)) ([3440620](https://github.com/coingaming/moon/commit/3440620001234db624c88cb7f325efc9bc35ecb8))
+* Provide fix for ToastStack not using Message.id ([#407](https://github.com/coingaming/moon/issues/407)) ([3f49f59](https://github.com/coingaming/moon/commit/3f49f594f71dc4cf43b25a4525598a5a47b83f05))
+
 ## [2.29.2](https://github.com/coingaming/moon/compare/v2.29.1...v2.29.2) (2022-10-12)
 
 
