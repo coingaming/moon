@@ -17,6 +17,7 @@ defmodule Moon.Components.Accordion do
   prop disabled, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
   prop pull_a_side_class, :css_class
+  prop bg_color, :css_class, default: "bg-gohan-100"
 
   slot title
   slot header_content
@@ -27,7 +28,7 @@ defmodule Moon.Components.Accordion do
     <div
       id={@id}
       class={
-        "w-full rounded-moon-s-sm h-max flex flex-col items-center bg-gohan-100 p-4",
+        "w-full rounded-moon-s-sm h-max flex flex-col items-center p-4", @bg_color,
         get_padding(@size),
         @class
       }

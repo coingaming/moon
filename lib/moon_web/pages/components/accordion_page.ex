@@ -286,6 +286,30 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <:code>{get_example_8_code()}</:code>
       </ExampleAndCode>
 
+      <ExampleAndCode title="With background" id="accordion-9">
+        <:example>
+          <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus-100">
+            <:title>Test accordion with backgound</:title>
+            <:content>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </:content>
+          </Accordion>
+          <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100">
+            <:title>Test accordion with backgound: content outside</:title>
+            <:content>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </:content>
+          </Accordion>
+        </:example>
+        <:code>{get_example_9_code()}</:code>
+      </ExampleAndCode>
+
       <PropsTable data={@props_info_array} />
     </Page>
     """
@@ -516,6 +540,29 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
           Content <br>
         </:content>
       </Accordion>
+    """
+  end
+
+  def get_example_9_code() do
+    """
+    <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus-100">
+      <:title>Test accordion with backgound</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
+    <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100">
+      <:title>Test accordion with backgound: content outside</:title>
+      <:content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </:content>
+    </Accordion>
     """
   end
 end
