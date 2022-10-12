@@ -27,7 +27,7 @@ defmodule Moon.Components.Accordion do
     ~F"""
     <div
       id={@id}
-      aria-expanded={[(if @open_by_default, do: "true", else: "false")]}
+      aria-expanded={[if(@open_by_default, do: "true", else: "false")]}
       class={
         "w-full rounded-moon-s-sm h-max flex flex-col items-center p-4",
         @bg_color,
@@ -45,9 +45,7 @@ defmodule Moon.Components.Accordion do
         }
       >
         <:left>
-          <div :on-click={toggle_content(@id, @disabled)}
-            class="flex items-center grow"
-          >
+          <div :on-click={toggle_content(@id, @disabled)} class="flex items-center grow">
             <h3 class={"font-semibold", font_class(@size)} aria-level={3}><#slot name="title" /></h3>
           </div>
         </:left>
