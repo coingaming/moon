@@ -1,3 +1,4 @@
+# This component is deprecated, use /components/typography/ css classes
 defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   @moduledoc false
 
@@ -72,6 +73,19 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       <ComponentPageDescription title="Caption">
         <p>
           Component for presenting short info.
+        </p>
+        <p class="font-medium">
+          NB! The component is depricated. Please use our
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
+          built with Tailwind.
         </p>
       </ComponentPageDescription>
 
