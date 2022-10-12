@@ -14,7 +14,7 @@ defmodule Moon.Components.Accordion do
   prop is_content_inside, :boolean, default: true
   prop is_content_overflow_hidden, :boolean, default: true
   prop with_button, :boolean, default: true
-  prop disable_open, :boolean, default: false
+  prop disabled, :boolean, default: false
   prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
   prop pull_a_side_class, :css_class
 
@@ -34,7 +34,7 @@ defmodule Moon.Components.Accordion do
     >
       <PullAside left_grow class={"w-full gap-3 cursor-pointer", @pull_a_side_class}>
         <:left>
-          <div :on-click={toggle_content(@id, @disable_open)} class="flex items-center grow">
+          <div :on-click={toggle_content(@id, @disabled)} class="flex items-center grow">
             <h3 class={"font-semibold", font_class(@size)}><#slot name="title" /></h3>
           </div>
         </:left>
@@ -43,7 +43,7 @@ defmodule Moon.Components.Accordion do
             <LeftToRight class="text-trunks-100">
               <#slot name="header_controls" />
               <div
-                :on-click={toggle_content(@id, @disable_open)}
+                :on-click={toggle_content(@id, @disabled)}
                 id={@id <> "-arrow"}
                 class={
                   "transition-transform transition-200",
@@ -88,8 +88,8 @@ defmodule Moon.Components.Accordion do
     """
   end
 
-  def toggle_content(id, disable_open) do
-    if !disable_open do
+  def toggle_content(id, disabled) do
+    if !disabled do
       JS.toggle(to: "#" <> id <> "-content")
       |> JS.remove_class(
         "rotate-90",

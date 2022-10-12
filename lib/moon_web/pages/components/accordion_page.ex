@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         :description => 'Show expand/collapse chevron'
       },
       %{
-        :name => 'disable_open',
+        :name => 'disabled',
         :type => 'boolean',
         :required => 'false',
         :default => 'false',
@@ -163,9 +163,9 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <:code>{get_example_3_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Disable open" id="accordion-4">
+      <ExampleAndCode title="Disabled" id="accordion-4">
         <:example>
-          <Accordion id="deposits-and-withdrawals-4" disable_open>
+          <Accordion id="deposits-and-withdrawals-4" disabled>
             <:title>Deposit & Withdrawals</:title>
             <:content>
               Content <br>
@@ -403,7 +403,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_4_code() do
     """
-      <Accordion id="deposits-and-withdrawals-4" disable_open>
+      <Accordion id="deposits-and-withdrawals-4" disabled>
         <:title>Deposit & Withdrawals</:title>
         <:content>
           Content <br>
