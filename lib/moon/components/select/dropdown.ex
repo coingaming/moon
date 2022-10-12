@@ -30,6 +30,7 @@ defmodule Moon.Components.Select.Dropdown do
   prop on_option_clicked, :event
   prop with, :string, default: nil, values: ["checkbox", "radio"]
   prop content_class, :css_class, default: "max-h-[300px] overflow-hidden overflow-y-scroll"
+  prop field, :atom
 
   slot default
   slot footer
@@ -43,27 +44,32 @@ defmodule Moon.Components.Select.Dropdown do
         @class
       }>
         {#if !@select_id}
-          {Phoenix.HTML.Form.multiple_select(
-            form,
-            field,
-            SelectHelpers.get_formatted_options(@available_options || @options),
-            id: @id,
-            class: "hidden",
-            disabled: @disabled,
-            selected: @value
-          )}
+          {#if @with == "radio"}
+            {Phoenix.HTML.Form.select(
+              form,
+              @field || field,
+              SelectHelpers.get_formatted_options(@available_options || @options),
+              id: @id,
+              class: "hidden",
+              disabled: @disabled,
+              selected: @value
+            )}
+          {#else}
+            {Phoenix.HTML.Form.multiple_select(
+              form,
+              @field || field,
+              SelectHelpers.get_formatted_options(@available_options || @options),
+              id: @id,
+              class: "hidden",
+              disabled: @disabled,
+              selected: @value
+            )}
+          {/if}
         {/if}
         {#if @on_search_change}
-          <Form
-            for={:search}
-            id={"#{@id}-search-form"}
-            change={@on_search_change}
-            submit={@on_search_change}
-          >
-            <TextInput field={:value} value={@search_string} keyup={@on_search_change} class="bg-red-500">
-              <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
-            </TextInput>
-          </Form>
+          <TextInput field={:value} value={@search_string} keyup={@on_search_change} class="bg-red-500">
+            <:left_icon_slot><Moon.Icon name="generic-search" /></:left_icon_slot>
+          </TextInput>
         {/if}
         {#if slot_assigned?(:header)}
           <#slot name="header" />
@@ -74,7 +80,7 @@ defmodule Moon.Components.Select.Dropdown do
               {#for option <- @options}
                 <Option
                   select_id={@select_id || @id}
-                  select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
+                  select_value={SelectHelpers.get_normalized_value(form, @field || field, @is_multi, value: @value)}
                   value={"#{option.value}"}
                   left_icon={option[:left_icon]}
                   right_icon={option[:right_icon]}
@@ -88,7 +94,7 @@ defmodule Moon.Components.Select.Dropdown do
                       </:left_icon>
                       {option.label}
                       <:right_icon>
-                        <LeftToRight gap="gap-2">
+                        <LeftToRight gap="gap-2 content-end">
                           {#if option[:right_icon]}
                             <Icon icon={option[:right_icon]} />
                           {/if}
@@ -98,7 +104,8 @@ defmodule Moon.Components.Select.Dropdown do
                           {#if @with == "radio"}
                             <RadioButton
                               id={"#{@id}-#{option.value}"}
-                              field={:"#{@id}-#{option.value}"}
+                              field={@field || field}
+                              value={option.value}
                               checked={is_selected}
                             />
                           {/if}
@@ -145,7 +152,7 @@ defmodule Moon.Components.Select.Dropdown do
               <Context put={
                 __MODULE__,
                 select_id: @select_id || @id,
-                select_value: SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value),
+                select_value: SelectHelpers.get_normalized_value(form, @field || field, @is_multi, value: @value),
                 is_multi: @is_multi
               }>
                 <#slot name="default" />

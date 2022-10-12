@@ -8,7 +8,6 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias Moon.Components.Form
   alias Moon.Components.Field
   alias Moon.Components.FieldLabel
-  alias Moon.Components.RadioButton
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Dropdown.Footer
   alias Moon.Components.ListItems.SingleLineItem
@@ -48,12 +47,12 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        options_with_left_icon: user_permissions_with_left_icon,
        searched_options_with_left_icon: user_permissions_with_left_icon,
        search_string: "",
-       radio_options: user_permissions,
        theme_name: params["theme_name"] || "moon-design-light",
        direction: params["direction"] || "ltr",
        tab_id: "1",
        active_page: __MODULE__,
-       selected: []
+       selected: [],
+       latest_params: nil
      )}
   end
 
@@ -205,7 +204,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
             <Field name={:permissions}>
               <FieldLabel>Permissions</FieldLabel>
               <Dropdown
-                id="search_and_footer_data_dropdown"
+                id="search_and_footer_data_for_changeset_dropdown"
                 available_options={@options_with_left_icon}
                 options={@searched_options_with_left_icon}
                 on_search_change="update_search"
@@ -237,26 +236,11 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
       <ExampleAndCode title="With radio button" id="dropdown-radio-example">
         <:example>
           <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
-            <Field name={:permissions}>
-              <FieldLabel>Permissions</FieldLabel>
-              <Dropdown id="dropdown-radio-example-user-permissions" options={@radio_options} is_multi>
-                {#for option <- @radio_options}
-                  <Dropdown.Option value={"#{option.value}"} :let={is_selected: is_selected}>
-                    <SingleLineItem current={is_selected}>
-                      <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                      {option.label}
-                      <:right_icon>
-                        <RadioButton field={:user_options_selected} value={option.value} checked={is_selected} />
-                      </:right_icon>
-                    </SingleLineItem>
-                  </Dropdown.Option>
-                {/for}
-              </Dropdown>
-            </Field>
+            <Dropdown id="user-role" field={:role} options={User.available_roles_with_left_icon()} with="radio" />
           </Form>
         </:example>
         <:code>{code_for_dropdown_radio_button()}</:code>
-        <:state>@radio_form_changeset = {inspect(@radio_form_changeset, pretty: true)}}</:state>
+        <:state>{state_for_dropdown_radio_button(assigns)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="With checkbox" id="dropdown-checkbox-example">
@@ -348,21 +332,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   end
 
   def handle_event("form_radio_update", params, socket) do
-    user_params = params["user"] || %{"permissions" => []}
-
-    last_selected_options =
-      if Map.has_key?(socket.assigns, :latest_params),
-        do: socket.assigns.latest_params,
-        else: %{"permissions" => []}
-
-    radio_drop_down_values =
-      MapSet.difference(
-        MapSet.new(user_params["permissions"]),
-        MapSet.new(last_selected_options["permissions"])
-      )
-
-    user_params = %{"permissions" => MapSet.to_list(radio_drop_down_values)}
-
+    user_params = params["user"] || %{"role" => nil}
     user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply, assign(socket, radio_form_changeset: user_changeset, latest_params: user_params)}
@@ -533,30 +503,16 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   def code_for_dropdown_radio_button do
     """
-      <Form for={@user_changeset} change="form_update" submit="form_submit">
-        <Field name={:permission}>
-          <FieldLabel>Permissions</FieldLabel>
-          <Dropdown
-            id="dropdown-radio-example-user-permissions"
-            options={@searchable_options}
-         >
-            <:option_filters>
-              <TextInput field={:option_filter} type="search" keyup="apply_filter" />
-            </:option_filters>
-            {#for option <- @searchable_options}
-              <Dropdown.Option value="option.value" :let={is_selected: is_selected}>
-                <SingleLineItem current={is_selected}>
-                  <:left_icon><Moon.Icons.ControlsPlus /></:left_icon>
-                  {option.label}
-                  <:right_icon>
-                    <RadioButton checked={is_selected} />
-                  </:right_icon>
-                </SingleLineItem>
-              </Dropdown.Option>
-            {/for}
-          </Dropdown>
-        </Field>
-      </Form>
+    <Form for={@radio_form_changeset} change="form_radio_update" submit="form_submit">
+      <Dropdown id="user-role" field={:role} options={User.available_roles_with_left_icon()} with="radio" />
+    </Form>
+    """
+  end
+
+  def state_for_dropdown_radio_button(assigns) do
+    """
+    @radio_form_changeset = #{inspect(assigns.radio_form_changeset, pretty: true)}
+    @latest_params = #{inspect(assigns.latest_params, pretty: true)}
     """
   end
 
