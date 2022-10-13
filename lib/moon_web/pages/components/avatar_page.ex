@@ -26,9 +26,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     default: [
       %{
         :name => 'size',
-        :type => 'xsmall | small | medium | large | xlarge | twoxlarge',
+        :type => 'xs | sm | md | lg | xl | 2xl',
         :required => 'false',
-        :default => 'medium',
+        :default => 'md',
         :description => 'Size for avatar'
       },
       %{
@@ -116,6 +116,16 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <:code>{avatar_1_code()}</:code>
       </ExampleAndCode>
 
+      <ExampleAndCode title="Rounded" id="avatar_1_1">
+        <:example>
+          <Avatar is_rounded />
+          <Avatar is_rounded name="JS" />
+          <Avatar is_rounded image_url="https://www.fillmurray.com/200/200" />
+        </:example>
+
+        <:code>{avatar_1_0_code()}</:code>
+      </ExampleAndCode>
+
       <ExampleAndCode title="Different colours" id="avatar_2">
         <:example>
           <Avatar />
@@ -130,28 +140,28 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <ExampleAndCode title="Different sizes" id="avatar_3">
         <:example>
           <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-            <Avatar size="xsmall" />
-            <Avatar size="small" />
+            <Avatar size="xs" />
+            <Avatar size="sm" />
             <Avatar />
-            <Avatar size="large" />
-            <Avatar size="xlarge" />
-            <Avatar size="twoxlarge" />
+            <Avatar size="lg" />
+            <Avatar size="xl" />
+            <Avatar size="2xl" />
           </div>
           <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-            <Avatar name="JS" size="xsmall" />
-            <Avatar name="JS" size="small" />
+            <Avatar name="JS" size="xs" />
+            <Avatar name="JS" size="sm" />
             <Avatar name="JS" />
-            <Avatar name="JS" size="large" />
-            <Avatar name="JS" size="xlarge" />
-            <Avatar name="JS" size="twoxlarge" />
+            <Avatar name="JS" size="lg" />
+            <Avatar name="JS" size="xl" />
+            <Avatar name="JS" size="2xl" />
           </div>
           <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-            <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-            <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="xs" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="sm" />
             <Avatar image_url="https://www.fillmurray.com/200/200" />
-            <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
-            <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
-            <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="lg" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="xl" />
+            <Avatar image_url="https://www.fillmurray.com/200/200" size="2xl" />
           </div>
         </:example>
 
@@ -193,9 +203,17 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   def avatar_1_code do
     """
-      <Avatar />
-      <Avatar name="JS" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" />
+    <Avatar />
+    <Avatar name="JS" />
+    <Avatar image_url="https://www.fillmurray.com/200/200" />
+    """
+  end
+
+  def avatar_1_0_code do
+    """
+    <Avatar />
+    <Avatar name="JS" />
+    <Avatar image_url="https://www.fillmurray.com/200/200" />
     """
   end
 
@@ -211,28 +229,28 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def avatar_3_code do
     """
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xsmall" />
-      <Avatar size="small" />
+      <Avatar size="xs" />
+      <Avatar size="sm" />
       <Avatar />
-      <Avatar size="large" />
-      <Avatar size="xlarge" />
-      <Avatar size="twoxlarge" />
+      <Avatar size="lg" />
+      <Avatar size="xl" />
+      <Avatar size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar name="JS" size="xsmall" />
-      <Avatar name="JS" size="small" />
+      <Avatar name="JS" size="xs" />
+      <Avatar name="JS" size="sm" />
       <Avatar name="JS" />
-      <Avatar name="JS" size="large" />
-      <Avatar name="JS" size="xlarge" />
-      <Avatar name="JS" size="twoxlarge" />
+      <Avatar name="JS" size="lg" />
+      <Avatar name="JS" size="xl" />
+      <Avatar name="JS" size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="xsmall" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="small" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xs" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="sm" />
       <Avatar image_url="https://www.fillmurray.com/200/200" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="large" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="xlarge" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" size="twoxlarge" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="lg" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="xl" />
+      <Avatar image_url="https://www.fillmurray.com/200/200" size="2xl" />
     </div>
     """
   end
