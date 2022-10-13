@@ -1,3 +1,10 @@
+## [2.29.5](https://github.com/coingaming/moon/compare/v2.29.4...v2.29.5) (2022-10-13)
+
+
+### Bug Fixes
+
+* align accordion with the react version [MDS-231] ([#410](https://github.com/coingaming/moon/issues/410)) ([bda7325](https://github.com/coingaming/moon/commit/bda73257b2a97e457ff27b667b96bcfb5dfcd846))
+
 ## [2.29.4](https://github.com/coingaming/moon/compare/v2.29.3...v2.29.4) (2022-10-13)
 
 
