@@ -8,15 +8,13 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
   alias MoonWeb.Components.Facing.FigmaIcon
   alias MoonWeb.Pages.GettingStartedPage
 
-  prop theme_name, :string, default: "moon-design-light"
-
   def render(assigns) do
     ~F"""
     <div class="moon-design-dark text-bulma-100 relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <FigmaIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage, theme_name: @theme_name)}>
+          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage)}>
             For designers.
           </a>
         </h2>

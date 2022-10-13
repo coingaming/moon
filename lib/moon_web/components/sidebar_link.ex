@@ -10,12 +10,12 @@ defmodule MoonWeb.Components.SidebarLink do
 
   def render(assigns) do
     ~F"""
-    <Context get={active_page: active_page, theme_name: theme_name, direction: direction}>
+    <Context get={active_page: active_page}>
       <a
         data-phx-link="patch"
         data-phx-link-state="push"
         data-moon-active={active_page == @route}
-        href={live_path(MoonWeb.Endpoint, @route, theme_name: theme_name, direction: direction)}
+        href={live_path(MoonWeb.Endpoint, @route)}
       >
         <Chip active={active_page == @route} variant="ghost">
           <#slot />

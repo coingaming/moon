@@ -143,10 +143,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
        user: user,
        user_changeset: user_changeset,
        gender_options: gender_options,
-       user_changeset2: user_changeset2,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset2: user_changeset2
      )}
   end
 

@@ -12,11 +12,9 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
 
   data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__,
        transactions: ExamplePages.TransactionsPage.get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
@@ -28,7 +26,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
       <div class="flex">
         <LeftMenu id="left-menu" />
         <div class="p-4 pt-8">
-          <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} />
+          <Breadcrumbs breadcrumbs={@breadcrumbs} />
           <Heading size={32} class="pt-4 pb-8">Marketing</Heading>
           <!-- <TransactionsList transactions={@transactions} /> -->
         </div>

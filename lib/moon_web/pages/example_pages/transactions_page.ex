@@ -77,11 +77,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         assign(socket, filter_options: filter_options)
       end
 
-    {:ok,
-     assign(apply_paging(socket),
-       theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__
-     ), layout: {MoonWeb.LayoutView, "clean.html"}}
+    {:ok, apply_paging(socket), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
   def render(assigns) do
@@ -92,7 +88,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         <LeftMenu id="left_menu" />
 
         <div class="px-14 py-6">
-          <Breadcrumbs theme_name={@theme_name} breadcrumbs={@breadcrumbs} class="mb-2" />
+          <Breadcrumbs breadcrumbs={@breadcrumbs} class="mb-2" />
           <Heading size={32}>Transactions</Heading>
           <TopToDown class="mt-6">
             <TransactionsFilters id="transaction_filters" {=@filter_options} />

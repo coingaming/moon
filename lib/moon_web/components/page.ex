@@ -9,6 +9,7 @@ defmodule MoonWeb.Components.Page do
   alias MoonWeb.Components.LeftMenu
   alias MoonWeb.Components.ThemesSelect
   alias Phoenix.LiveView.JS
+  alias Surface.Components.Context
 
   prop class, :css_class
   prop breadcrumbs, :any
@@ -23,9 +24,8 @@ defmodule MoonWeb.Components.Page do
       <LeftMenu
         id="left-menu"
         theme_name={@theme_name}
-        direction={@direction}
         active_page={@active_page}
-        click={hide_left_menu()}
+        click={hide_mobile_left_menu()}
         hide_items
       />
 
@@ -34,11 +34,10 @@ defmodule MoonWeb.Components.Page do
         @theme_name
       }>
         <div class="flex flex-col grow max-w-screen-xl">
-          <Header click={show_left_menu()}>
+          <Header click={show_mobile_left_menu()}>
             <Breadcrumbs
               class="pb-12 hidden lg:block"
               :if={@breadcrumbs}
-              theme_name={@theme_name}
               breadcrumbs={@breadcrumbs}
             />
           </Header>
@@ -46,18 +45,18 @@ defmodule MoonWeb.Components.Page do
             <#slot />
           </div>
           <Footer />
-          <ThemesSelect id="themes_select" {=@theme_name} {=@active_page} {=@direction} />
+          <ThemesSelect id="themes_select" {=@theme_name} {=@direction} />
         </div>
       </div>
     </div>
     """
   end
 
-  def show_left_menu(js \\ %JS{}) do
+  def show_mobile_left_menu(js \\ %JS{}) do
     JS.remove_class(js, "hidden", to: "#left-menu-container")
   end
 
-  def hide_left_menu(js \\ %JS{}) do
+  def hide_mobile_left_menu(js \\ %JS{}) do
     JS.add_class(js, "hidden", to: "#left-menu-container")
   end
 end

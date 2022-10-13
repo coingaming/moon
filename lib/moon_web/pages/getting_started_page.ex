@@ -8,6 +8,8 @@ defmodule MoonWeb.Pages.GettingStartedPage do
   alias MoonWeb.Components.Started.ForDeveloper
   alias MoonWeb.Components.Started.ForDesigner
 
+  require Logger
+
   data breadcrumbs, :any,
     default: [
       %{
@@ -16,13 +18,11 @@ defmodule MoonWeb.Pages.GettingStartedPage do
       }
     ]
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
+    Logger.info("premount with params: #{inspect(params)}")
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__,
-       selected_role: params["role"] || designer_role()
+       selected_role: (params["role"] == "developer") && developer_role() || designer_role()
      )}
   end
 
@@ -48,6 +48,6 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     {:noreply, assign(socket, :selected_role, selected_role)}
   end
 
-  def designer_role(), do: "I'm a designer"
-  def developer_role(), do: "I'm a developer"
+  defp designer_role(), do: "I'm a designer"
+  defp developer_role(), do: "I'm a developer"
 end

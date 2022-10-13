@@ -54,15 +54,6 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
-     )}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
@@ -77,10 +68,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
         <p class="font-medium">
           NB! The component is depricated. Please use our
           <a
-            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
-              theme_name: @theme_name,
-              direction: @direction
-            )}
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage)}
             class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
           >
             new Typography

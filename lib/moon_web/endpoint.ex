@@ -5,9 +5,10 @@ defmodule MoonWeb.Endpoint do
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
-    store: :cookie,
-    key: "_moon_key",
-    signing_salt: "brz+40r1"
+    store: PhoenixLiveSession,
+    pub_sub: Moon.PubSub,
+    key: "_moon_key_3",
+    signing_salt: "brz+40r12"
   ]
 
   socket "/socket", MoonWeb.UserSocket,

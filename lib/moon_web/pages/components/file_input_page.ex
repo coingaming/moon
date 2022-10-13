@@ -97,12 +97,9 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__,
         uploaded_files: []
       )
       |> allow_upload(:some_picture_file,

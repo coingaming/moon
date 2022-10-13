@@ -11,7 +11,8 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Surface.Components.Context
   alias MoonWeb.Components.SidebarLink
 
-  prop theme_name, :any
+  # , from_context: true
+  prop theme_name, :string
   prop direction, :string
   prop uri, :any
   prop active_page, :any
@@ -33,7 +34,7 @@ defmodule MoonWeb.Components.LeftMenu do
         <:short_logo>
           <div class="flex items-center h-10">
             <a
-              href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
+              href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage)}
               class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
             >
               <LogoMoonDesign height="1.5rem" width="6.5rem" />
@@ -42,11 +43,11 @@ defmodule MoonWeb.Components.LeftMenu do
         </:short_logo>
         <:menu>
           <nav class="flex flex-col grow gap-2">
-            <Context put={active_page: @active_page, theme_name: @theme_name, direction: @direction}>
+            <Context put={active_page: @active_page}>
               <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
                 <div class="flex items-center flex-shrink-0 pl-3">
                   <a
-                    href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
+                    href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage)}
                     class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
                   >
                     <LogoMoonDesign height="1.5rem" width="6.5rem" />

@@ -46,6 +46,8 @@ defmodule MoonWeb do
     quote do
       use Moon.LiveView, layout: {MoonWeb.LayoutView, "live.html"}
 
+      use Moon.Helpers.Sessioned
+
       unquote(view_helpers())
     end
   end
@@ -107,7 +109,7 @@ defmodule MoonWeb do
       alias MoonWeb.Router.Helpers, as: Routes
       import Routes, only: [static_path: 2]
 
-      def live_path(socket, view, props) do
+      def live_path(socket, view, props \\ %{}) do
         Routes.live_path(socket, view, props)
       end
     end

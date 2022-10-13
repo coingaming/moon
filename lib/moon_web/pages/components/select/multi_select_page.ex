@@ -129,15 +129,12 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
   data latest_params, :any, default: nil
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     {:ok,
      assign(socket,
-       user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset: user_changeset
      )}
   end
 

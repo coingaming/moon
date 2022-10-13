@@ -24,17 +24,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    socket =
-      assign(socket,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__,
-        show_options: false
-      )
-
-    {:ok, socket}
-  end
+  data show_options, :boolean, default: false
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

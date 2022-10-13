@@ -70,10 +70,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
     {:ok,
      assign(socket,
        gender_options: gender_options,
-       user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset: user_changeset
      )}
   end
 

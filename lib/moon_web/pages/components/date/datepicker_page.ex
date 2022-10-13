@@ -125,14 +125,11 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     end
   end
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
     data = %Contract{started_at: Timex.today()}
 
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__,
         changeset: Contract.changeset(data),
         time_changeset: Contract.changeset(%Contract{}),
         range_changeset: Contract.changeset(%Contract{}),

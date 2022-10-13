@@ -17,9 +17,8 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias MoonWeb.Components.ThemesSelect.RtlSwitcher
 
   prop class, :string, default: nil
-  prop theme_name, :any, default: "lab-light"
-  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
-  prop active_page, :any
+  prop theme_name, :string, default: "lab-light"
+  prop direction, :string, values!: ["ltr", "rtl"], default: "ltr"
   prop use_theme_switcher, :boolean, default: false
 
   data show_themes, :boolean, default: false
@@ -55,6 +54,8 @@ defmodule MoonWeb.Components.ThemesSelect do
     <div class="fixed fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
       <button
         :on-click="toggle_themes"
+        phx-click-away="hide_themes"
+        phx-target={@myself}
         type="button"
         aria-pressed="false"
         class="bg-gohan-100 text-bulma-100 hover:bg-gohan-120 inline-flex shrink-0
@@ -67,7 +68,7 @@ defmodule MoonWeb.Components.ThemesSelect do
       <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
-            :on-click="update_selected_theme"
+            :on-click={"update_selected_theme", target: :view_page}
             type="button"
             title={theme[:value]}
             value={theme[:value]}
@@ -97,7 +98,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         {=@use_theme_switcher}
         {=@selected_direction_changeset}
         {=@is_rtl}
-        on_direction_switch="toggle_direction"
+        on_direction_switch={"set_context_param", target: :live_view}
       />
 
       <ThemeSwitcher
@@ -105,7 +106,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         {=@use_theme_switcher}
         {=@selected_theme_changeset}
         {=@dark_mode}
-        on_theme_switch="toggle_dark_mode"
+        on_theme_switch={"set_context_param", target: :live_view}
       />
     </div>
     """
@@ -147,74 +148,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     {:noreply, assign(socket, show_themes: !socket.assigns.show_themes)}
   end
 
-  def handle_event("toggle_dark_mode", params, socket) do
-    %{
-      active_page: active_page,
-      theme_name: theme,
-      is_rtl: is_rtl,
-      selected_direction_changeset: selected_direction_changeset
-    } = socket.assigns
-
-    theme = String.replace(theme, ["-light", "-dark"], "")
-
-    new_path =
-      generate_path(
-        socket,
-        active_page,
-        theme,
-        params["selected_theme"]["is_dark"] == "true",
-        is_rtl
-      )
-
-    selected_theme_changeset = SelectedTheme.changeset(socket.assigns.selected_theme, params)
-
-    socket =
-      socket
-      |> assign(selected_theme_changeset: selected_theme_changeset)
-      |> assign(selected_direction_changeset: selected_direction_changeset)
-
-    {:noreply, redirect(socket, to: new_path)}
-  end
-
-  def handle_event("toggle_direction", params, socket) do
-    %{
-      active_page: active_page,
-      theme_name: theme,
-      dark_mode: dark_mode,
-      selected_theme_changeset: selected_theme_changeset
-    } = socket.assigns
-
-    theme = String.replace(theme, ["-light", "-dark"], "")
-
-    new_path =
-      generate_path(
-        socket,
-        active_page,
-        theme,
-        dark_mode,
-        params["selected_direction"]["is_rtl"] == "true"
-      )
-
-    selected_direction_changeset =
-      SelectedDirection.changeset(socket.assigns.selected_direction, params)
-
-    socket =
-      socket
-      |> assign(selected_theme_changeset: selected_theme_changeset)
-      |> assign(selected_direction_changeset: selected_direction_changeset)
-
-    {:noreply, redirect(socket, to: new_path)}
-  end
-
-  def handle_event("update_selected_theme", %{"value" => theme}, socket) do
-    %{active_page: active_page, dark_mode: dark_mode, is_rtl: is_rtl} = socket.assigns
-    new_path = generate_path(socket, active_page, theme, dark_mode, is_rtl)
-    {:noreply, redirect(socket, to: new_path)}
-  end
-
-  defp generate_path(socket, active_page, theme, dark_mode, is_rtl) do
-    theme_name = "#{theme}-#{if dark_mode, do: "dark", else: "light"}"
-    direction = if is_rtl, do: "rtl", else: "ltr"
-    Routes.live_path(socket, active_page, theme_name, direction, %{})
+  def handle_event("hide_themes", _props, socket) do
+    {:noreply, assign(socket, show_themes: false)}
   end
 end

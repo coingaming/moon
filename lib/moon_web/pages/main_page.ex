@@ -12,15 +12,6 @@ defmodule MoonWeb.Pages.MainPage do
   alias Moon.Components.Label
   alias Moon.Components.Button
 
-  def mount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
-     )}
-  end
-
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@direction}>
@@ -43,8 +34,8 @@ defmodule MoonWeb.Pages.MainPage do
             </p>
           </div>
           <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-50">
-            <ForDevelopers theme_name={@theme_name} />
-            <ForDesigners theme_name={@theme_name} />
+            <ForDevelopers />
+            <ForDesigners />
           </div>
           <Updates />
           <Future />

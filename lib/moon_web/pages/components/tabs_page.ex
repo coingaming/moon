@@ -82,13 +82,10 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
+  def premount(params, _session, socket) do
     {:ok,
      assign(socket,
-       tab_id: params["tab_id"] || "1",
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       tab_id: params["tab_id"] || "1"
      )}
   end
 
