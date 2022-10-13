@@ -9,7 +9,6 @@ defmodule Moon.Components.Avatar do
   prop name, :string
   prop color, :string, default: "bulma-100", values: Moon.colors()
   prop bg_color, :string, default: "gohan-100", values: Moon.colors()
-  prop border_radius_class, :css_class, default: "rounded-moon-s-sm"
   prop is_uppercase, :boolean, default: true
 
   prop size, :string, default: "md", values: ~w(xs sm md lg xl 2xl)
@@ -30,8 +29,8 @@ defmodule Moon.Components.Avatar do
         "bg-cover justify-center flex font-semibold items-center overflow-hidden relative",
         "bg-#{@bg_color}",
         "text-#{@color}",
+        set_border_radius(@size, @is_rounded),
         @class,
-        @border_radius_class,
         uppercase: @is_uppercase,
         "text-moon-12 h-6 w-6": @size == "xs",
         "text-moon-14 h-8 w-8": @size == "sm",
@@ -68,4 +67,20 @@ defmodule Moon.Components.Avatar do
   defp icon_class("lg"), do: "h-7 w-7"
   defp icon_class("xl"), do: "h-14 w-14"
   defp icon_class("2xl"), do: "h-16 w-16"
+
+  defp set_border_radius(size, is_rounded) do
+    cond do
+      is_rounded ->
+        "rounded-full"
+
+      size == "xs" ->
+        "rounded-moon-i-xs"
+
+      size == "2xl" ->
+        "rounded-moon-i-md"
+
+      true ->
+        "rounded-moon-i-sm"
+    end
+  end
 end

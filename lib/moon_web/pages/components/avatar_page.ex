@@ -211,9 +211,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   def avatar_1_0_code do
     """
-    <Avatar />
-    <Avatar name="JS" />
-    <Avatar image_url="https://www.fillmurray.com/200/200" />
+    <Avatar is_rounded />
+    <Avatar is_rounded name="JS" />
+    <Avatar is_rounded image_url="https://www.fillmurray.com/200/200" />
     """
   end
 
