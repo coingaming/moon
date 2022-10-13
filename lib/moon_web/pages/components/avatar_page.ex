@@ -25,39 +25,11 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   data props_info_array, :list,
     default: [
       %{
-        :name => 'size',
-        :type => 'xs | sm | md | lg | xl | 2xl',
-        :required => 'false',
-        :default => 'md',
-        :description => 'Size for avatar'
-      },
-      %{
-        :name => 'name',
+        :name => 'bg_color',
         :type => 'string',
         :required => 'false',
-        :default => '-',
-        :description => 'Capital letters of name'
-      },
-      %{
-        :name => 'image_url',
-        :type => 'string',
-        :required => 'false',
-        :default => '-',
-        :description => 'Path to the image'
-      },
-      %{
-        :name => 'status_origin',
-        :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
-        :required => 'false',
-        :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
-        :description => 'Position for status indication'
-      },
-      %{
-        :name => 'is_status_active',
-        :type => 'boolean',
-        :required => 'false',
-        :default => 'false',
-        :description => 'Active state for status indication'
+        :default => 'gohan-100',
+        :description => 'Background color'
       },
       %{
         :name => 'color',
@@ -67,11 +39,46 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :description => 'Text color'
       },
       %{
-        :name => 'background-color',
+        :name => 'image_url',
         :type => 'string',
         :required => 'false',
-        :default => 'gohan-100',
-        :description => 'Background color'
+        :default => '-',
+        :description => 'Path to the image'
+      },
+      %{
+        :name => 'is_rounded',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => ''
+      },
+      %{
+        :name => 'is_status_active',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Active state for status indication'
+      },
+      %{
+        :name => 'name',
+        :type => 'string',
+        :required => 'false',
+        :default => '-',
+        :description => 'Capital letters of name'
+      },
+      %{
+        :name => 'size',
+        :type => 'xs | sm | md | lg | xl | 2xl',
+        :required => 'false',
+        :default => 'md',
+        :description => 'Size for avatar'
+      },
+      %{
+        :name => 'status_origin',
+        :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
+        :required => 'false',
+        :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
+        :description => 'Position for status indication'
       }
     ]
 
@@ -137,7 +144,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <:code>{avatar_2_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Different sizes" id="avatar_3">
+      <ExampleAndCode title="Sizes" id="avatar_3">
         <:example>
           <div class="flex flex-wrap items-center justify-around gap-2 w-full">
             <Avatar size="xs" />
