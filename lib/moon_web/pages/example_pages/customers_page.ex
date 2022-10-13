@@ -130,11 +130,10 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
   #
   # Lifecycle methods
   #
-  def mount(_params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       socket
       |> assign(theme_name: "lab-light")
-      |> assign(active_page: __MODULE__)
 
     {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
   end

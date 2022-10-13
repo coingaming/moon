@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   data filter_options, :map, default: %{}
   data transactions, :list, default: []
 
-  def mount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       if socket.transport_pid != nil do
         original_transactions = get_transactions()

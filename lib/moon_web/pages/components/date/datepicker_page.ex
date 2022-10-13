@@ -125,7 +125,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
     end
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     data = %Contract{started_at: Timex.today()}
 
     socket =

@@ -159,7 +159,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     """
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
         agrees_to_terms_of_service: false,

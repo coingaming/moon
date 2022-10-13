@@ -10,17 +10,21 @@ defmodule Moon.Helpers.Sessioned do
       import PhoenixLiveSession, only: [put_session: 3, maybe_subscribe: 2]
 
       def mount(params, session, socket) do
-        socket = case Kernel.function_exported?(__MODULE__, :premount, 3)
-          && apply(__MODULE__, :premount, [params, session, socket]) do
-          {:ok, socket} -> socket
-          false -> socket
-        end |> assign(
-          theme_name: session["theme_name"] || "moon-design-light",
-          direction: session["direction"] || "ltr",
-          active_page: __MODULE__
-        ) |> maybe_subscribe(session)
+        socket =
+          socket
+          |> assign(
+            theme_name: session["theme_name"] || "moon-design-light",
+            direction: session["direction"] || "ltr",
+            active_page: __MODULE__
+          )
+          |> maybe_subscribe(session)
 
-        {:ok, socket}
+        {:ok,
+         case Kernel.function_exported?(__MODULE__, :postmount, 3) &&
+                apply(__MODULE__, :postmount, [params, session, socket]) do
+           {:ok, socket} -> socket
+           false -> socket
+         end}
       end
 
       def handle_event(

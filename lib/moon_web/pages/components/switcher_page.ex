@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       assign(socket,
         tabs: ~w(One Two Three),

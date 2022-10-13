@@ -74,11 +74,10 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   data show_page_options, :boolean, default: false
   data show_new_widget_panel, :boolean, default: false
 
-  def mount(params, _session, socket) do
+  def postmount(params, _session, socket) do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "lab-light",
-        active_page: __MODULE__,
         page_title: "Starter dashboard",
         page_tabs: ~w(Total Real Bonus),
         selected_tab: "Total",

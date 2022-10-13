@@ -178,7 +178,7 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
     """
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user = %User{}
     user_changeset = User.changeset(user, %{})
 

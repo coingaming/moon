@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
 
   data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     {:ok,
      assign(socket,
        transactions: ExamplePages.TransactionsPage.get_transactions()

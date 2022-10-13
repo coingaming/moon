@@ -82,11 +82,8 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       }
     ]
 
-  def premount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       tab_id: params["tab_id"] || "1"
-     )}
+  def postmount(params, _session, socket) do
+    {:ok, assign(socket, tab_id: params["tab_id"] || "1")}
   end
 
   def handle_params(params, uri, socket) do

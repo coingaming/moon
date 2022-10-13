@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user = %User{}
     user_changeset = User.changeset(user, %{})
 

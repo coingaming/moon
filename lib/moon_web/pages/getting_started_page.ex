@@ -18,11 +18,10 @@ defmodule MoonWeb.Pages.GettingStartedPage do
       }
     ]
 
-  def premount(params, _session, socket) do
-    Logger.info("premount with params: #{inspect(params)}")
+  def postmount(params, _session, socket) do
     {:ok,
      assign(socket,
-       selected_role: (params["role"] == "developer") && developer_role() || designer_role()
+       selected_role: (params["role"] == "developer" && developer_role()) || designer_role()
      )}
   end
 

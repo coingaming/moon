@@ -129,7 +129,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
 
   data latest_params, :any, default: nil
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     {:ok,

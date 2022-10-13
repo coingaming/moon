@@ -97,7 +97,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
     """
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       assign(socket,
         uploaded_files: []

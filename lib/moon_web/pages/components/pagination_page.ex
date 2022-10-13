@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       assign(socket,
         total_pages: 10,

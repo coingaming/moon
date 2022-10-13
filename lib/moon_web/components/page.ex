@@ -9,7 +9,6 @@ defmodule MoonWeb.Components.Page do
   alias MoonWeb.Components.LeftMenu
   alias MoonWeb.Components.ThemesSelect
   alias Phoenix.LiveView.JS
-  alias Surface.Components.Context
 
   prop class, :css_class
   prop breadcrumbs, :any
@@ -35,11 +34,7 @@ defmodule MoonWeb.Components.Page do
       }>
         <div class="flex flex-col grow max-w-screen-xl">
           <Header click={show_mobile_left_menu()}>
-            <Breadcrumbs
-              class="pb-12 hidden lg:block"
-              :if={@breadcrumbs}
-              breadcrumbs={@breadcrumbs}
-            />
+            <Breadcrumbs class="pb-12 hidden lg:block" :if={@breadcrumbs} breadcrumbs={@breadcrumbs} />
           </Header>
           <div class="flex flex-col gap-12 flex-1 relative overflow-y-auto focus:outline-none">
             <#slot />

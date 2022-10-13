@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     socket =
       assign(socket,
         events: generate_events()

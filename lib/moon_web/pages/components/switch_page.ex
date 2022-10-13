@@ -157,7 +157,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user = %User{}
 
     user_changeset =

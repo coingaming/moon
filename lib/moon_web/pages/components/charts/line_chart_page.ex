@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     filters = [
       %{
         label: "Active players",

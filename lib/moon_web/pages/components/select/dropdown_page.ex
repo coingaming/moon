@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   data search_string, :string, default: ""
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     user_permissions = User.available_permissions()

@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
       }
     ]
 
-  def mount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     gender_options = [
       [key: "Female", value: "female"],
       [key: "Male", value: "male"],

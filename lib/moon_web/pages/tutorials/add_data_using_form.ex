@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       }
     ]
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)
 
     gender_options = [

@@ -124,7 +124,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   data latest_params, :any, default: nil
   data latest_params2, :any, default: nil
 
-  def mount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     gender_options = [

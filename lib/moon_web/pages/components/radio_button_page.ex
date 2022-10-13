@@ -120,7 +120,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     """
   end
 
-  def premount(params, _session, socket) do
+  def postmount(_params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
         role: 1
