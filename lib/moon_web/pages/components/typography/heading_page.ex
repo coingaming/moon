@@ -1,3 +1,4 @@
+# This component is deprecated, use /components/typography/ css classes
 defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
   @moduledoc false
 
@@ -79,6 +80,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -89,8 +91,21 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Heading">
+        <p class="font-medium">
+          NB! The component is depricated. Please use our
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
+          built with Tailwind.
+        </p>
         <p>
           We have predefined font sizes: 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.
         </p>
@@ -103,58 +118,56 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Sizes" id="heading_1">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading>Heading with default font size</Heading>
-              <Heading size={16}>Heading with font size 16</Heading>
-              <Heading size={18}>Heading with font size 18</Heading>
-              <Heading size={20}>Heading with font size 20</Heading>
-              <Heading size={24}>Heading with font size 24</Heading>
-              <Heading size={32}>Heading with font size 32</Heading>
-              <Heading size={48}>font size 48</Heading>
-              <Heading size={56}>font size 56</Heading>
-              <Heading size={64}>font size 64</Heading>
-              <Heading size={72}>font size 72</Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Sizes" id="heading_1">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading>Heading with default font size</Heading>
+            <Heading size={16}>Heading with font size 16</Heading>
+            <Heading size={18}>Heading with font size 18</Heading>
+            <Heading size={20}>Heading with font size 20</Heading>
+            <Heading size={24}>Heading with font size 24</Heading>
+            <Heading size={32}>Heading with font size 32</Heading>
+            <Heading size={48}>font size 48</Heading>
+            <Heading size={56}>font size 56</Heading>
+            <Heading size={64}>font size 64</Heading>
+            <Heading size={72}>font size 72</Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{heading_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Is regular" id="heading_2">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading size={24}>Heading with default font weight</Heading>
-              <Heading size={24} is_regular>
-                Heading with font-weight: regular
-              </Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Is regular" id="heading_2">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading size={24}>Heading with default font weight</Heading>
+            <Heading size={24} is_regular>
+              Heading with font-weight: regular
+            </Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{heading_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Color" id="heading_3">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Heading size={24}>Heading with default color</Heading>
-              <Heading size={24} color="trunks-100">
-                Heading with defined color
-              </Heading>
-              <Heading size={24} color="piccolo-100">
-                Heading with defined color
-              </Heading>
-              <Heading size={24} color="krillin-100">
-                Heading with defined color
-              </Heading>
-            </div>
-          </:example>
+      <ExampleAndCode title="Color" id="heading_3">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Heading size={24}>Heading with default color</Heading>
+            <Heading size={24} color="trunks-100">
+              Heading with defined color
+            </Heading>
+            <Heading size={24} color="piccolo-100">
+              Heading with defined color
+            </Heading>
+            <Heading size={24} color="krillin-100">
+              Heading with defined color
+            </Heading>
+          </div>
+        </:example>
 
-          <:code>{heading_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{heading_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

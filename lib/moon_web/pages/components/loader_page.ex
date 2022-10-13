@@ -43,13 +43,14 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Loader">
         <p>
           Fondly nicknamed “the launcher”, the Loader ensures users that progress is happening so they don't give up and leave the rocket page.
@@ -62,37 +63,35 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" id="loader_1">
-          <:example>
-            <Loader />
-          </:example>
+      <ExampleAndCode title="Default" id="loader_1">
+        <:example>
+          <Loader />
+        </:example>
 
-          <:code>{loader_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{loader_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Colors" id="loader_2">
-          <:example>
-            <Loader color="hit-100" />
-            <Loader color="trunks-100" />
-            <Loader color="krillin-100" />
-          </:example>
+      <ExampleAndCode title="Colors" id="loader_2">
+        <:example>
+          <Loader color="hit-100" />
+          <Loader color="trunks-100" />
+          <Loader color="krillin-100" />
+        </:example>
 
-          <:code>{loader_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{loader_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="loader_3">
-          <:example>
-            <Loader size="twoxsmall" />
-            <Loader size="xsmall" />
-            <Loader size="small" />
-            <Loader />
-            <Loader size="large" />
-          </:example>
+      <ExampleAndCode title="Sizes" id="loader_3">
+        <:example>
+          <Loader size="twoxsmall" />
+          <Loader size="xsmall" />
+          <Loader size="small" />
+          <Loader />
+          <Loader size="large" />
+        </:example>
 
-          <:code>{loader_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{loader_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

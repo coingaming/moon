@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:agrees_to_terms_of_service, :boolean, default: true)
     field(:agrees_to_marketing_emails, :boolean, default: true)
     field(:permissions, {:array, :integer}, default: [1, 2])
-    field(:role, :integer, default: nil)
+    field(:role, :integer, default: 1)
   end
 
   def available_permissions() do
@@ -75,6 +75,31 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
       %{value: 1, label: "User", left_icon: [Moon.CountryFlag, %{name: first}]},
       %{value: 2, label: "Editor", left_icon: [Moon.CountryFlag, %{name: second}]},
       %{value: 3, label: "Admin", left_icon: [Moon.CountryFlag, %{name: third}]}
+    ]
+  end
+
+  def available_roles_with_left_icon_flag_and_right_icon() do
+    [first, second, third] = Moon.Helpers.CountryFlags.list_all() |> Enum.take(3)
+
+    [
+      %{
+        value: 1,
+        label: "User",
+        left_icon: [Moon.CountryFlag, %{name: first}],
+        right_icon: [Moon.Icon, %{name: "generic_user"}]
+      },
+      %{
+        value: 2,
+        label: "Editor",
+        left_icon: [Moon.CountryFlag, %{name: second}],
+        right_icon: [Moon.Icon, %{name: "generic_edit"}]
+      },
+      %{
+        value: 3,
+        label: "Admin",
+        left_icon: [Moon.CountryFlag, %{name: third}],
+        right_icon: [Moon.Icon, %{name: "generic_star"}]
+      }
     ]
   end
 

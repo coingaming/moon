@@ -24,7 +24,11 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def mount(params, _session, socket) do
     {:ok,
-     assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
+     assign(socket,
+       theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
+       active_page: __MODULE__
+     )}
   end
 
   def handle_params(_params, uri, socket) do
@@ -33,7 +37,7 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Crests</Heading>
 

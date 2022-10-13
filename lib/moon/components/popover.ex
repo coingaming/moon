@@ -1,3 +1,25 @@
+defmodule Moon.Components.Popover.DefaultContent do
+  @moduledoc false
+
+  use Moon.StatelessComponent
+  alias Moon.Autolayouts.TopToDown
+
+  slot default
+
+  def render(assigns) do
+    ~F"""
+    <div class={
+      "overflow-auto rounded-moon-i-md box-border border border-solid",
+      "border-beerus-100 drop-shadow-2xl bg-gohan-100"
+    }>
+      <TopToDown>
+        <#slot name="default" />
+      </TopToDown>
+    </div>
+    """
+  end
+end
+
 defmodule Moon.Components.Popover do
   @moduledoc false
 
@@ -32,102 +54,14 @@ defmodule Moon.Components.Popover do
   slot content, required: true
 
   def render(assigns) do
-    classes = wrapper_classes(assigns.placement)
-
     ~F"""
-    <div
-      class={
-        "relative",
-        @class,
-        "inline-block": @inline_class
-      }
-      data-testid={@testid}
-    >
-      <#slot />
+    <div phx-hook="Popover" data-testid={@testid} data-placement={@placement}>
+      <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
-        {!-- This overlay is used to register click outside the `outer` wrapper --}
+        <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot name="content" /></div>
         <div :on-click={@on_close} class="fixed inset-0 z-40" data-testid="close" />
-        <div class={"#{classes.outer} z-40"}>
-          {!-- This overlay is used to register click inside `outer` wrapper and outside `inner` wrapper --}
-          <div :on-click={@on_close} class="absolute inset-0" />
-          <div class={classes.inner}>
-            <#slot name="content" />
-          </div>
-        </div>
       {/if}
     </div>
     """
   end
-
-  defp wrapper_classes("top-start"),
-    do: %{
-      outer: "absolute top-0 left-0",
-      inner: "-translate-y-full pb-2"
-    }
-
-  defp wrapper_classes("top"),
-    do: %{
-      outer: "absolute left-0 top-0 right-0 flex flex-col items-center",
-      inner: "-translate-y-full pb-2"
-    }
-
-  defp wrapper_classes("top-end"),
-    do: %{
-      outer: "absolute top-0 right-0",
-      inner: "-translate-y-full pb-2"
-    }
-
-  defp wrapper_classes("right-start"),
-    do: %{
-      outer: "absolute left-0 top-0 right-0",
-      inner: "translate-x-full pl-2"
-    }
-
-  defp wrapper_classes("right"),
-    do: %{
-      outer: "absolute left-0 top-0 right-0",
-      inner: "translate-x-full -translate-y-1/2 pl-2"
-    }
-
-  defp wrapper_classes("right-end"),
-    do: %{
-      outer: "absolute left-0 bottom-0 right-0",
-      inner: "translate-x-full pl-2"
-    }
-
-  defp wrapper_classes("bottom-start"),
-    do: %{
-      outer: "absolute left-0 bottom-0",
-      inner: "translate-y-full pt-2"
-    }
-
-  defp wrapper_classes("bottom"),
-    do: %{
-      outer: "absolute left-0 bottom-0 right-0 flex flex-col items-center",
-      inner: "translate-y-full pt-2"
-    }
-
-  defp wrapper_classes("bottom-end"),
-    do: %{
-      outer: "absolute right-0 bottom-0",
-      inner: "translate-y-full pt-2"
-    }
-
-  defp wrapper_classes("left-start"),
-    do: %{
-      outer: "absolute left-0 top-0 right-0",
-      inner: "absolute -translate-x-full pr-2"
-    }
-
-  defp wrapper_classes("left"),
-    do: %{
-      outer: "absolute left-0 bottom-0 right-0",
-      inner: "absolute -translate-x-full -translate-y-1/2 pr-2"
-    }
-
-  defp wrapper_classes("left-end"),
-    do: %{
-      outer: "absolute left-0 bottom-0 right-0",
-      inner: "absolute -translate-x-full -translate-y-full pr-2"
-    }
 end

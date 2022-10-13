@@ -76,46 +76,44 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="RadioButton">
         <p>
           Radio buttons are used to represent a group or category of choices whereby users can only select one option - the main difference from checkboxes that allow users to select multiple options.
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="RadioButton" id="radiobutton_1">
-          <:example>
-            <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-              <TopToDown>
-                <Field name={:role}>
-                  <RadioButton id="role_admin" value={1}>
-                    Admin
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <Field name={:role}>
-                  <RadioButton id="role_editor" value={2}>
-                    Editor
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <Field name={:role}>
-                  <RadioButton id="role_user" value={3} disabled>
-                    User (disabled)
-                  </RadioButton>
-                  <ErrorTag />
-                </Field>
-                <div>
-                  <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
-                </div>
-              </TopToDown>
-            </Form>
-          </:example>
-          <:code>{radiobutton_1_code()}</:code>
-          <:state>{radiobutton_1_state(assigns)}</:state>
-        </ExampleAndCode>
-      </Context>
+      <ExampleAndCode title="RadioButton" id="radiobutton_1">
+        <:example>
+          <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+            <TopToDown>
+              <Field name={:role}>
+                <RadioButton id="role_admin" value={1}>
+                  Admin
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <Field name={:role}>
+                <RadioButton id="role_editor" value={2}>
+                  Editor
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <Field name={:role}>
+                <RadioButton id="role_user" value={3} disabled>
+                  User (disabled)
+                </RadioButton>
+                <ErrorTag />
+              </Field>
+              <div>
+                <Button type="submit" right_icon="arrows_right" variant="primary">Save</Button>
+              </div>
+            </TopToDown>
+          </Form>
+        </:example>
+        <:code>{radiobutton_1_code()}</:code>
+        <:state>{radiobutton_1_state(assigns)}</:state>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>
@@ -132,6 +130,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
      assign(socket,
        user_changeset: user_changeset,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end

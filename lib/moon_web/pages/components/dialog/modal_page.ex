@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
   alias Moon.Components.Dialog.Modal
+  alias Moon.Components.Select.SingleSelect
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -27,41 +28,43 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
       }
     ]
 
-  data modal_is_open, :boolean, default: false
+  data modal_is_open, :boolean, default: true
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Modal">
         <p>Modal</p>
       </ComponentPageDescription>
-
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Modal" id="modal_1">
-          <:example>
-            <Button variant="primary" on_click="open_modal">Open modal</Button>
-            <Modal close="close_modal" :if={@modal_is_open}>
-              <:title>Title text</:title>
-              <:content>Content here</:content>
-              <:footer>
-                <PullAside>
-                  <:left>
-                    <Button>Label</Button>
-                  </:left>
-                  <:right>
-                    <LeftToRight>
-                      <Button variant="tertiary">Label</Button>
-                      <Button variant="primary">Label</Button>
-                    </LeftToRight>
-                  </:right>
-                </PullAside>
-              </:footer>
-            </Modal>
-          </:example>
-          <:code>{get_example_code_1()}</:code>
-          <:state>{get_state(assigns)}</:state>
-        </ExampleAndCode>
-      </Context>
+      <ExampleAndCode title="Modal" id="modal_1">
+        <:example>
+          <Button variant="primary" on_click="open_modal">Open modal</Button>
+          <Modal close="close_modal" :if={@modal_is_open}>
+            <:title>Title text</:title>
+            <:content>
+              <SingleSelect
+                id="permissions-1"
+                options={MoonWeb.Pages.Tutorials.AddDataUsingForm.User.available_permissions_with_left_icon()}
+              />
+            </:content>
+            <:footer>
+              <PullAside>
+                <:left>
+                  <Button>Label</Button>
+                </:left>
+                <:right>
+                  <LeftToRight>
+                    <Button variant="tertiary">Label</Button>
+                    <Button variant="primary">Label</Button>
+                  </LeftToRight>
+                </:right>
+              </PullAside>
+            </:footer>
+          </Modal>
+        </:example>
+        <:code>{get_example_code_1()}</:code>
+        <:state>{get_state(assigns)}</:state>
+      </ExampleAndCode>
     </Page>
     """
   end
@@ -70,6 +73,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end

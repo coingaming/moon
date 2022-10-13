@@ -11,10 +11,28 @@ window.addEventListener("moon:update-select", (event) => {
 });
 
 window.addEventListener("moon:update-switch", (event) => {
-  var checkbox = event.target;
+  var radio_true = event.target;
   var detail = event.detail;
-  checkbox.checked = detail.checked;
-  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
+  var switch_id = detail.switch_id;
+  var radio_false = document.getElementById(switch_id + "_radio_false");
+  if (detail.checked) {
+    radio_true.checked = true;
+    radio_true.dispatchEvent(new Event("input", { bubbles: true }));
+  } else {
+    radio_false.checked = true;
+    radio_false.dispatchEvent(new Event("input", { bubbles: true }));
+  }
+});
+
+window.addEventListener("moon:update-accordion-aria", (event) => {
+  var accordion_id = event.detail.accordion_id;
+  var element = document.getElementById(accordion_id);
+  var ariaExpanded = element.getAttribute("aria-expanded");
+  if (ariaExpanded == "true") {
+    element.setAttribute("aria-expanded", "false");
+  } else {
+    element.setAttribute("aria-expanded", "true");
+  }
 });
 
 window["moon:breadcumbs-close-handlers"] = {};

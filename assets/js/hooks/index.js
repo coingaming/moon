@@ -1,5 +1,7 @@
-import { default as Datepicker } from './datepicker'
+import Datepicker from './datepicker'
+import Popover from './popover'
 
 export default {
-  Datepicker
+  Datepicker,
+  Popover
 }

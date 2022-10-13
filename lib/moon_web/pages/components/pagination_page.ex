@@ -100,6 +100,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         total_pages: 10,
         current_page_number: 6,
@@ -118,91 +119,89 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Pagination">
         <p>
           Pagination
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Default" layout="column" id="pagination_1">
-          <:example>
-            <Pagination
-              current_page_number={@current_page_number}
-              total_pages={@total_pages}
-              range_before={1}
-              range_after={2}
-              size="xsmall"
-              previous_button_label="Previous"
-              next_button_label="Next"
-              on_change="change_current_page"
-            />
-          </:example>
+      <ExampleAndCode title="Default" layout="column" id="pagination_1">
+        <:example>
+          <Pagination
+            current_page_number={@current_page_number}
+            total_pages={@total_pages}
+            range_before={1}
+            range_after={2}
+            size="xsmall"
+            previous_button_label="Previous"
+            next_button_label="Next"
+            on_change="change_current_page"
+          />
+        </:example>
 
-          <:code>{get_pagination_1_code()}</:code>
+        <:code>{get_pagination_1_code()}</:code>
 
-          <:state>@current_page_number = {@current_page_number}</:state>
-        </ExampleAndCode>
+        <:state>@current_page_number = {@current_page_number}</:state>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Size" layout="column" id="pagination_2">
-          <:state>
-            Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
-          </:state>
-          <:example>
-            <Pagination
-              size="xsmall"
-              current_page_number={@size_page_number}
-              total_pages={@total_pages}
-              on_change="change_size_page"
-            />
+      <ExampleAndCode title="Size" layout="column" id="pagination_2">
+        <:state>
+          Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
+        </:state>
+        <:example>
+          <Pagination
+            size="xsmall"
+            current_page_number={@size_page_number}
+            total_pages={@total_pages}
+            on_change="change_size_page"
+          />
 
-            <Pagination
-              size="small"
-              current_page_number={@size_page_number}
-              total_pages={@total_pages}
-              on_change="change_size_page"
-            />
+          <Pagination
+            size="small"
+            current_page_number={@size_page_number}
+            total_pages={@total_pages}
+            on_change="change_size_page"
+          />
 
-            <Pagination
-              size="medium"
-              current_page_number={@size_page_number}
-              total_pages={@total_pages}
-              on_change="change_size_page"
-            />
+          <Pagination
+            size="medium"
+            current_page_number={@size_page_number}
+            total_pages={@total_pages}
+            on_change="change_size_page"
+          />
 
-            <Pagination
-              size="large"
-              current_page_number={@size_page_number}
-              total_pages={@total_pages}
-              on_change="change_size_page"
-            />
-          </:example>
+          <Pagination
+            size="large"
+            current_page_number={@size_page_number}
+            total_pages={@total_pages}
+            on_change="change_size_page"
+          />
+        </:example>
 
-          <:code>{get_pagination_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{get_pagination_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Example with a side section" layout="column" id="pagination_3">
-          <:example>
-            <div class="flex flex-wrap items-center">
-              <div class="w-1/4 mb-4 text-moon-12">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
+      <ExampleAndCode title="Example with a side section" layout="column" id="pagination_3">
+        <:example>
+          <div class="flex flex-wrap items-center">
+            <div class="w-1/4 mb-4 text-moon-12">{side_text(@section_page_number, @section_per_page, @section_total_entries)}</div>
 
-              <div class="w-3/4">
-                <Pagination
-                  current_page_number={@section_page_number}
-                  total_pages={@total_pages}
-                  size="small"
-                  on_change="change_section_page"
-                />
-              </div>
+            <div class="w-3/4">
+              <Pagination
+                current_page_number={@section_page_number}
+                total_pages={@total_pages}
+                size="small"
+                on_change="change_section_page"
+              />
             </div>
-          </:example>
+          </div>
+        </:example>
 
-          <:code>{get_pagination_3_code()}</:code>
+        <:code>{get_pagination_3_code()}</:code>
 
-          <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
-        </ExampleAndCode>
-      </Context>
+        <:state>@page_number = {@section_page_number}<br>@per_page = {@section_per_page}<br>@total_entries = {@section_total_entries}</:state>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

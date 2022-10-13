@@ -63,6 +63,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         filters: filters,
         select_options: [
@@ -81,31 +82,29 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Line Chart">
         <p>
           Based on <Link to="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite</Link>
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode layout="column" title="Default" id="line_chart_1">
-          <:example>
-            <LineChartCard
-              id="line-chart-card"
-              title="KPI Overview"
-              time_format="%d/%m"
-              {=@filters}
-              {=@select_options}
-              {=@values}
-            />
-          </:example>
+      <ExampleAndCode layout="column" title="Default" id="line_chart_1">
+        <:example>
+          <LineChartCard
+            id="line-chart-card"
+            title="KPI Overview"
+            time_format="%d/%m"
+            {=@filters}
+            {=@select_options}
+            {=@values}
+          />
+        </:example>
 
-          <:code>{line_chard_1_code()}</:code>
+        <:code>{line_chard_1_code()}</:code>
 
-          <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
-        </ExampleAndCode>
-      </Context>
+        <:state>@filters = {inspect(@filters, pretty: true)}<br><br>@values = {inspect(@values, pretty: true)}</:state>
+      </ExampleAndCode>
     </Page>
     """
   end

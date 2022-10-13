@@ -71,6 +71,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -81,79 +82,77 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Button">
         <p>
           Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Variants" id="button1">
-          <:example>
-            <Button>Primary (default)</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="tertiary">Tertiary</Button>
-            <Button variant="ghost">Ghost</Button>
-          </:example>
+      <ExampleAndCode title="Variants" id="button1">
+        <:example>
+          <Button>Primary (default)</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="tertiary">Tertiary</Button>
+          <Button variant="ghost">Ghost</Button>
+        </:example>
 
-          <:code>{button_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{button_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Sizes" id="button2">
-          <:example>
-            <Button variant="primary" size="xsmall">xSmall</Button>
-            <Button variant="primary" size="small">Small</Button>
-            <Button variant="primary" size="medium">Medium (Default)</Button>
-            <Button variant="primary" size="large">Large</Button>
-            <Button variant="primary" size="xlarge">xLarge</Button>
-          </:example>
+      <ExampleAndCode title="Sizes" id="button2">
+        <:example>
+          <Button variant="primary" size="xsmall">xSmall</Button>
+          <Button variant="primary" size="small">Small</Button>
+          <Button variant="primary" size="medium">Medium (Default)</Button>
+          <Button variant="primary" size="large">Large</Button>
+          <Button variant="primary" size="xlarge">xLarge</Button>
+        </:example>
 
-          <:code>{button_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{button_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Icons" id="button3">
-          <:example>
-            <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-            <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-            <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-            <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-            <Button variant="primary" right_icon="generic_settings" size="large" />
-          </:example>
+      <ExampleAndCode title="Icons" id="button3">
+        <:example>
+          <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+          <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+          <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
+          <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
+          <Button variant="primary" right_icon="generic_settings" size="large" />
+        </:example>
 
-          <:code>{button_3_code()}</:code>
-        </ExampleAndCode>
+        <:code>{button_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Full width" id="button4">
-          <:example>
-            <Button variant="primary" full_width="true">
-              Full Width
-            </Button>
-          </:example>
+      <ExampleAndCode title="Full width" id="button4">
+        <:example>
+          <Button variant="primary" full_width="true">
+            Full Width
+          </Button>
+        </:example>
 
-          <:code>{button_4_code()}</:code>
-        </ExampleAndCode>
+        <:code>{button_4_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="button5">
-          <:example>
-            <Button variant="primary" disabled="true">
-              Disabled
-            </Button>
-          </:example>
+      <ExampleAndCode title="Disabled" id="button5">
+        <:example>
+          <Button variant="primary" disabled="true">
+            Disabled
+          </Button>
+        </:example>
 
-          <:code>{button_5_code()}</:code>
-        </ExampleAndCode>
+        <:code>{button_5_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Animation" id="button6">
-          <:example>
-            Coming soon...
-          </:example>
+      <ExampleAndCode title="Animation" id="button6">
+        <:example>
+          Coming soon...
+        </:example>
 
-          <:code>
-            Coming soon...
-          </:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>
+          Coming soon...
+        </:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

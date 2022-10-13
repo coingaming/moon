@@ -12,18 +12,28 @@ defmodule MoonWeb.Components.LeftMenu do
   alias MoonWeb.Components.SidebarLink
 
   prop theme_name, :any
+  prop direction, :string
   prop uri, :any
   prop active_page, :any
   prop hide_items, :boolean
+  prop click, :event
 
   def render(assigns) do
     ~F"""
-    <div class="hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col">
+    <div
+      :on-click={@click}
+      id="left-menu-container"
+      class={
+        "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",
+        @theme_name
+      }
+    >
+      <div class="fixed inset-0 bg-gray-600 bg-opacity-75 lg:hidden" />
       <Sidebar background_color="bg-goku-100" open_width="20rem">
         <:short_logo>
           <div class="flex items-center h-10">
             <a
-              href="/"
+              href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
               class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
             >
               <LogoMoonDesign height="1.5rem" width="6.5rem" />
@@ -32,11 +42,11 @@ defmodule MoonWeb.Components.LeftMenu do
         </:short_logo>
         <:menu>
           <nav class="flex flex-col grow gap-2">
-            <Context put={active_page: @active_page, theme_name: @theme_name}>
+            <Context put={active_page: @active_page, theme_name: @theme_name, direction: @direction}>
               <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
                 <div class="flex items-center flex-shrink-0 pl-3">
                   <a
-                    href="/"
+                    href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
                     class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
                   >
                     <LogoMoonDesign height="1.5rem" width="6.5rem" />
@@ -44,7 +54,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 </div>
                 <div class="flex-grow flex flex-col gap-2">
                   <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
-                  <SidebarLink :if={!@hide_items} route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
+                  <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
                   <SidebarLink :if={!@hide_items} route={Pages.ContributePage}>How to contribute</SidebarLink>
                   <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
                   <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
@@ -157,12 +167,13 @@ defmodule MoonWeb.Components.LeftMenu do
                         <SidebarLink route={Pages.Components.InputGroupPage}>Input group</SidebarLink>
                         <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                         <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
+                        <SidebarLink route={Pages.Components.TypographyPage}>Typography</SidebarLink>
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-typography"
                           open_by_default={active_page_contains(@active_page, Pages.Components.Typography)}
                         >
-                          <:title>Typography</:title>
+                          <:title>Typography (Deprecated)</:title>
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
                               <SidebarLink route={Pages.Components.Typography.CaptionPage}>Caption</SidebarLink>

@@ -12,6 +12,7 @@ defmodule Moon.Components.Chip do
   prop right_icon, :string
   prop on_click, :event
   prop value, :string
+  prop value_name, :string
   prop active, :boolean, default: false
   prop active_class, :string, default: ""
   prop inactive_class, :string, default: ""
@@ -20,6 +21,7 @@ defmodule Moon.Components.Chip do
   prop is_stroke, :boolean, default: false
   prop icon_only, :string
   prop variant, :string, values: ["default", "ghost"], default: "default"
+  prop button_type, :string, values: ["submit", "reset", "button"], default: "submit"
 
   def render(assigns) do
     ~F"""
@@ -38,7 +40,8 @@ defmodule Moon.Components.Chip do
       data-size={@size}
       data-testid={@testid}
       :on-click={@on_click}
-      {...phx_val_tag((@value && "click_value") || nil, @value)}
+      {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
+      type={@button_type}
     >
       <Icon name={@left_icon} font_size="1.5rem" :if={@left_icon && !@icon_only} />
       <Icon name={@icon_only} font_size="1.5rem" :if={@icon_only} />

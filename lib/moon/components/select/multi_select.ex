@@ -65,13 +65,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
         style={get_style("grid-auto-flow": if(@prompt, do: "row"))}
       >
         {#if @prompt}
-          <div
-            class={
-              "text-trunks-100",
-              SelectHelpers.innerlabel_font_class(@size)
-            }
-            style="grid-col: span 2 / span 2;"
-          >
+          <div class="text-trunks-100 text-moon-14" style="grid-col: span 2 / span 2;">
             {@prompt}
           </div>
         {/if}
@@ -110,7 +104,6 @@ defmodule Moon.Components.Select.MultiSelect do
   use Moon.StatefulComponent
 
   alias Moon.Autolayouts.PullAside
-  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
@@ -149,9 +142,7 @@ defmodule Moon.Components.Select.MultiSelect do
         )}
         <FieldBorder
           states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
-          border_color_class={if @open,
-            do: SelectHelpers.get_active_border_color(@field_border_class),
-            else: @field_border_color_class}
+          border_color_class={@field_border_color_class}
           click="toggle_open"
         >
           <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
@@ -173,14 +164,9 @@ defmodule Moon.Components.Select.MultiSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <TopToDown class="rounded bg-gohan-100 min-w-[20px]">
-            <div
-              class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
-              style="min-height: 20px; max-height: 200px"
-            >
-              <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
-            </div>
-          </TopToDown>
+          <Popover.DefaultContent>
+            <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
+          </Popover.DefaultContent>
         </:content>
       </Popover>
     </InputContext>

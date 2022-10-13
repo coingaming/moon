@@ -4,8 +4,9 @@ defmodule MoonWeb.Pages.GettingStartedPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.PageSection
-  alias MoonWeb.Components.CodeSnippet
+  alias Moon.Components.Switcher
+  alias MoonWeb.Components.Started.ForDeveloper
+  alias MoonWeb.Components.Started.ForDesigner
 
   data breadcrumbs, :any,
     default: [
@@ -19,29 +20,34 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__
+       direction: params["direction"] || "ltr",
+       active_page: __MODULE__,
+       selected_role: params["role"] || designer_role()
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <h1 class="text-moon-32 font-semibold">Getting started</h1>
-      <PageSection title="First Section">
-        <p class="text-moon-16">Lorem ipsum dolor sit amet</p>
-        <CodeSnippet>mix something</CodeSnippet>
-        <p class="text-moon-16">Lorem ipsum dolor sit amet</p>
-        <CodeSnippet>mix something.else</CodeSnippet>
-      </PageSection>
-      <PageSection title="Second Section">
-        <p class="text-moon-16">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed quam at augue varius accumsan id in sapien. Suspendisse maximus tortor at urna blandit, et varius nibh maximus. Suspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-        </p>
-        <CodeSnippet>iex -S mix phx.something</CodeSnippet>
-        <p class="text-moon-16">Lorem ipsum dolor sit amet</p>
-        <CodeSnippet>iex -S mix phx.another</CodeSnippet>
-      </PageSection>
+      <div class="flex flex-row gap-2">
+        <Switcher
+          items={[designer_role(), developer_role()]}
+          selected_item={@selected_role}
+          click="handle_role"
+          class="p-0.5 rounded-lg flex bg-beerus-100"
+        />
+      </div>
+      <ForDesigner :if={@selected_role == designer_role()} />
+      <ForDeveloper :if={@selected_role == developer_role()} />
     </Page>
     """
   end
+
+  def handle_event("handle_role", %{"selected-item" => selected_role}, socket) do
+    {:noreply, assign(socket, :selected_role, selected_role)}
+  end
+
+  def designer_role(), do: "I'm a designer"
+  def developer_role(), do: "I'm a developer"
 end

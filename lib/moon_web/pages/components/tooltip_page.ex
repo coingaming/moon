@@ -71,6 +71,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -81,25 +82,23 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Tooltip">
         <p>
           Tooltip
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        {#for placement <- ["top", "right", "bottom", "left"]}
-          <ExampleAndCode title={placement} id={"tooltip_#{placement}"}>
-            <:example>
-              <Tooltip placement={placement} text={placement}>
-                <Button variant="primary">Hover Me</Button>
-              </Tooltip>
-            </:example>
-            <:code>{tooltip_1_code(placement)}</:code>
-          </ExampleAndCode>
-        {/for}
-      </Context>
+      {#for placement <- ["top", "right", "bottom", "left"]}
+        <ExampleAndCode title={placement} id={"tooltip_#{placement}"}>
+          <:example>
+            <Tooltip placement={placement} text={placement}>
+              <Button variant="primary">Hover Me</Button>
+            </Tooltip>
+          </:example>
+          <:code>{tooltip_1_code(placement)}</:code>
+        </ExampleAndCode>
+      {/for}
 
       <PropsTable data={@props_info_array} />
     </Page>

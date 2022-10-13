@@ -220,13 +220,14 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Colours Palette" image="/moon/assets/images/facing/colors.webp">
         <p>Our design system is decentralized and built for multi-product purposes. Having different-color naming conventions and numbers etc... makes it harder to maintain it.</p>
         <p>For that, we made a decision to give our colours unique names.</p>

@@ -111,6 +111,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -121,38 +122,36 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Popover">
         <p>Popover</p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        {#for placement <- [
-            "top-start",
-            "top",
-            "top-end",
-            "right-start",
-            "right",
-            "right-end",
-            "bottom-start",
-            "bottom",
-            "bottom-end",
-            "left-start",
-            "left",
-            "left-end"
-          ]}
-          <ExampleAndCode id={"popover_#{placement}"} title={"Placement: #{placement}"}>
-            <:example>
-              <LeftToRight>
-                <PopoverExample id={placement} placement={placement} />
-              </LeftToRight>
-            </:example>
-            <:code>
-              {get_popover_code(placement)}
-            </:code>
-          </ExampleAndCode>
-        {/for}
-      </Context>
+      {#for placement <- [
+          "top-start",
+          "top",
+          "top-end",
+          "right-start",
+          "right",
+          "right-end",
+          "bottom-start",
+          "bottom",
+          "bottom-end",
+          "left-start",
+          "left",
+          "left-end"
+        ]}
+        <ExampleAndCode id={"popover_#{placement}"} title={"Placement: #{placement}"}>
+          <:example>
+            <LeftToRight>
+              <PopoverExample id={placement} placement={placement} />
+            </LeftToRight>
+          </:example>
+          <:code>
+            {get_popover_code(placement)}
+          </:code>
+        </ExampleAndCode>
+      {/for}
 
       <PropsTable data={@props_info_array} />
     </Page>
@@ -161,10 +160,10 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   def get_popover_code(placement) do
     """
-      <Popover show={@show} placement={#{placement}} on_close="toogle_show">
-        <Chip on_click="toogle_show">Click Me</Chip>
-        <:content>...</:content>
-      </Popover>
+    <Popover show={@show} placement="#{placement}" on_close="toogle_show">
+      <Chip on_click="toogle_show">Click Me</Chip>
+      <:content>...</:content>
+    </Popover>
     """
   end
 end

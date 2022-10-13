@@ -1,147 +1,3 @@
-defmodule Moon.Components.Select.SelectedValue.Container do
-  @moduledoc false
-
-  use Moon.StatelessComponent
-
-  alias Moon.Components.Label
-  alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias Moon.Components.Select.Dropdown.Icon
-
-  prop option, :any
-  prop label, :string
-  prop size, :string
-  prop is_icon, :boolean, default: false
-  prop is_label, :boolean, default: false
-
-  def render(assigns) do
-    is_inner_label = assigns.is_label and assigns.size in ~w(large xlarge)
-
-    ~F"""
-    {#if is_inner_label or @is_icon}
-      <div
-        class={"grid grid-rows-1": @is_icon}
-        style={get_style("grid-auto-flow": if(@is_icon, do: "column"))}
-      >
-        {#if @is_icon}
-          <Icon
-            class="grid place-content-center pr-1"
-            icon={@option[:left_icon]}
-            style="grid-row: span 3 / span 3;"
-          />
-        {/if}
-        {#if is_inner_label}
-          <div
-            class={
-              "text-trunks-100",
-              SelectHelpers.innerlabel_font_class(@size)
-            }
-            style={get_style("grid-col": if(@is_icon, do: "span 2 / span 2"))}
-          >
-            {@label}
-          </div>
-        {/if}
-        <div style={get_style(
-          "grid-col": if(@is_icon, do: "span 2 / span 2"),
-          "grid-row": if(@is_icon, do: "span 2 / span 2")
-        )}>
-          <Label
-            class={SelectHelpers.label_font_class(@size)}
-            background_color={@option[:bg]}
-            color={@option[:text]}
-          >
-            {@option.label}
-          </Label>
-        </div>
-      </div>
-    {#else}
-      <Label
-        class={SelectHelpers.label_font_class(@size)}
-        background_color={@option[:bg]}
-        color={@option[:text]}
-      >
-        {@option.label}
-      </Label>
-    {/if}
-    """
-  end
-end
-
-defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
-  @moduledoc false
-
-  use Moon.StatelessComponent
-
-  alias Phoenix.LiveView.JS
-
-  prop select_id, :string
-  prop option, :any
-  prop label, :string
-  prop size, :string
-
-  def render(assigns) do
-    is_icon = not is_nil(assigns.option[:left_icon])
-    is_label = not is_nil(assigns.label)
-
-    ~F"""
-    {#if @option}
-      <div
-        class="cursor-pointer"
-        :on-click={JS.dispatch("moon:update-select",
-          detail: %{value: @option.value, selected: false},
-          to: "##{@select_id}"
-        )}
-      >
-        <Moon.Components.Select.SelectedValue.Container
-          {=@option}
-          {=@size}
-          {=@label}
-          {=is_icon}
-          {=is_label}
-        />
-      </div>
-    {/if}
-    """
-  end
-end
-
-defmodule Moon.Components.Select.SingleSelect.Value do
-  @moduledoc false
-
-  use Moon.StatelessComponent
-
-  alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias __MODULE__.SelectedValue
-
-  prop select_id, :string
-  prop class, :any
-  prop options, :any
-  prop value, :any
-  prop label, :string
-  prop size, :string
-
-  def render(assigns) do
-    ~F"""
-    {#if @value && @value != ""}
-      <SelectedValue
-        {=@select_id}
-        option={SelectHelpers.get_option(@options, @value)}
-        {=@size}
-        {=@label}
-      />
-    {#elseif @size in ~w(large xlarge)}
-      <div class={
-        "text-trunks-100",
-        SelectHelpers.label_font_class(@size)
-      }>
-        {@label}
-      </div>
-    {#else}
-    {/if}
-    """
-  end
-end
-
-# https://www.figma.com/file/S3q1SkVngbwHuwpxHKCsgtJj/Moon---Components?node-id=22819%3A17501
 defmodule Moon.Components.Select.SingleSelect do
   @moduledoc false
 
@@ -154,35 +10,31 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias __MODULE__.Value
   alias Surface.Components.Form.Input.InputContext
+  alias Moon.Components.Select.SingleSelect.Value.SelectedValue
+  alias Moon.Components.Select.SingleSelect.HintText
+  alias Moon.Components.ErrorTag
 
-  prop field, :atom
   prop label, :string
   prop options, :any, default: []
   prop value, :any
-  prop error, :string
   prop disabled, :boolean, default: false
-  prop required, :boolean
-  prop class, :string
-  prop size, :string, values: ~w(small medium large xlarge), default: "medium"
+  prop size, :string, values: ~w(md lg xl), default: "md"
   prop popover_placement, :string, default: "bottom-start"
   prop popover_class, :string
-  prop field_border_class, :string, default: FieldBorder.get_default_states_class()
-  prop field_border_color_class, :string
+  prop placeholder, :string
+  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
+  prop has_error, :boolean
+  prop use_error_tag, :boolean
 
   data open, :boolean, default: false
 
-  slot default
-  slot placeholder_slot
+  slot hint_text_slot
 
   def render(assigns) do
     ~F"""
-    {#if @size not in ~w(large xlarge)}
-      <FieldLabel class={
-        "text-trunks-100",
-        SelectHelpers.label_font_class(@size)
-      }>
+    {#if @size != "xl"}
+      <FieldLabel class="block text-trunks-100 text-moon-16 font-normal mb-2">
         {@label}
       </FieldLabel>
     {/if}
@@ -200,23 +52,24 @@ defmodule Moon.Components.Select.SingleSelect do
           prompt: @label
         )}
         <FieldBorder
-          states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
-          border_color_class={if @open,
-            do: SelectHelpers.get_active_border_color(@field_border_class),
-            else: @field_border_color_class}
           click="toggle_open"
+          class={
+            "w-full",
+            "bg-#{@background_color}": @background_color
+          }
+          has_error={has_error(@has_error, form, field)}
         >
-          <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
+          <PullAside class={
+            SelectHelpers.get_padding(@size),
+            get_disabled_class(@disabled)
+          }>
             <:left>
-              {#if SelectHelpers.get_normalized_value(form, field, false, value: @value) == ""}
-                <#slot name="placeholder_slot" />
-              {/if}
-              <Value
-                select_id={@id}
-                value={SelectHelpers.get_normalized_value(form, field, false, value: @value)}
-                {=@options}
-                {=@label}
+              <SelectedValue
                 {=@size}
+                {=@label}
+                {=@placeholder}
+                select_id={@id}
+                option={get_option_selected(form, field, @options, @value)}
               />
             </:left>
             <:right>
@@ -225,9 +78,12 @@ defmodule Moon.Components.Select.SingleSelect do
           </PullAside>
         </FieldBorder>
         <:content>
-          <TopToDown class="rounded bg-gohan-100 min-w-[20px]">
+          <TopToDown>
             <div
-              class="overflow-y-scroll rounded box-border border border-solid border-beerus-100"
+              class={
+                "overflow-auto rounded-moon-i-md box-border border border-solid",
+                "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+              }
               style="min-height: 20px; max-height: 200px"
             >
               <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />
@@ -235,6 +91,15 @@ defmodule Moon.Components.Select.SingleSelect do
           </TopToDown>
         </:content>
       </Popover>
+      <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
+        <#slot name="hint_text_slot" />
+      </HintText>
+      <div
+        class="inline-block mt-2 text-moon-12"
+        :if={@use_error_tag && has_error(@has_error, form, field)}
+      >
+        <ErrorTag {=field} />
+      </div>
     </InputContext>
     """
   end
@@ -252,9 +117,27 @@ defmodule Moon.Components.Select.SingleSelect do
     end
   end
 
+  #
+  # Private methods
+  #
+
   defp get_disabled_class(disabled) do
     if disabled do
       "opacity-30 cursor-not-allowed"
     end
+  end
+
+  defp get_option_selected(form, field, options, value) do
+    normalized_value = SelectHelpers.get_normalized_value(form, field, false, value: value)
+
+    if normalized_value != "" do
+      SelectHelpers.get_option(options, normalized_value)
+    else
+      ""
+    end
+  end
+
+  defp has_error(has_error, form, field) do
+    has_error || (field && form && Keyword.has_key?(form.errors, field))
   end
 end

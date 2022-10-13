@@ -1,3 +1,102 @@
+## [2.29.5](https://github.com/coingaming/moon/compare/v2.29.4...v2.29.5) (2022-10-13)
+
+
+### Bug Fixes
+
+* align accordion with the react version [MDS-231] ([#410](https://github.com/coingaming/moon/issues/410)) ([bda7325](https://github.com/coingaming/moon/commit/bda73257b2a97e457ff27b667b96bcfb5dfcd846))
+
+## [2.29.4](https://github.com/coingaming/moon/compare/v2.29.3...v2.29.4) (2022-10-13)
+
+
+### Bug Fixes
+
+* radio button issues ([#409](https://github.com/coingaming/moon/issues/409)) ([0a5f6dd](https://github.com/coingaming/moon/commit/0a5f6dd20f565561c4bf6fe11776c242c2d50727))
+
+## [2.29.3](https://github.com/coingaming/moon/compare/v2.29.2...v2.29.3) (2022-10-12)
+
+
+### Bug Fixes
+
+* partners styles & version page [MDS-236] ([#405](https://github.com/coingaming/moon/issues/405)) ([3440620](https://github.com/coingaming/moon/commit/3440620001234db624c88cb7f325efc9bc35ecb8))
+* Provide fix for ToastStack not using Message.id ([#407](https://github.com/coingaming/moon/issues/407)) ([3f49f59](https://github.com/coingaming/moon/commit/3f49f594f71dc4cf43b25a4525598a5a47b83f05))
+
+## [2.29.2](https://github.com/coingaming/moon/compare/v2.29.1...v2.29.2) (2022-10-12)
+
+
+### Bug Fixes
+
+* dropdown content improvements and reusability ([#398](https://github.com/coingaming/moon/issues/398)) ([954b0df](https://github.com/coingaming/moon/commit/954b0df27d2a35a17616918568a3484be2748799))
+
+## [2.29.1](https://github.com/coingaming/moon/compare/v2.29.0...v2.29.1) (2022-10-10)
+
+
+### Bug Fixes
+
+* fix issues in RTL mode [MDS-222] ([#402](https://github.com/coingaming/moon/issues/402)) ([60f7181](https://github.com/coingaming/moon/commit/60f7181bdb2b49043890970d0213765a40eef25d))
+
+# [2.29.0](https://github.com/coingaming/moon/compare/v2.28.7...v2.29.0) (2022-10-10)
+
+
+### Features
+
+* add RTL switcher to Elixir site [MDS-222] ([#400](https://github.com/coingaming/moon/issues/400)) ([1bd349d](https://github.com/coingaming/moon/commit/1bd349d7af143e86965990ce7616207fcb137339))
+
+## [2.28.7](https://github.com/coingaming/moon/compare/v2.28.6...v2.28.7) (2022-10-06)
+
+
+### Bug Fixes
+
+* Fix popover and multiselect ([#392](https://github.com/coingaming/moon/issues/392)) ([ce4386b](https://github.com/coingaming/moon/commit/ce4386bf37245a58c9ad8aea4c875e2437ef1b94))
+
+## [2.28.6](https://github.com/coingaming/moon/compare/v2.28.5...v2.28.6) (2022-10-04)
+
+
+### Bug Fixes
+
+* fix the datepicker automatically submitting the form on button click [MDS-189] ([#395](https://github.com/coingaming/moon/issues/395)) ([9adf595](https://github.com/coingaming/moon/commit/9adf595a204aa1d23b78a635911f4ea1e829c5af))
+
+## [2.28.5](https://github.com/coingaming/moon/compare/v2.28.4...v2.28.5) (2022-09-30)
+
+
+### Bug Fixes
+
+* popover (Switch to Popper.js) ([#390](https://github.com/coingaming/moon/issues/390)) ([590b7bb](https://github.com/coingaming/moon/commit/590b7bba35aa04e18abb196207e47ebdff34475e))
+
+## [2.28.4](https://github.com/coingaming/moon/compare/v2.28.3...v2.28.4) (2022-09-30)
+
+
+### Bug Fixes
+
+* UI fixes for the Icons page [MDS-204] ([#391](https://github.com/coingaming/moon/issues/391)) ([544aeac](https://github.com/coingaming/moon/commit/544aeac03f54301fe12713aa60387054c184ea95))
+
+## [2.28.3](https://github.com/coingaming/moon/compare/v2.28.2...v2.28.3) (2022-09-29)
+
+
+### Bug Fixes
+
+* align the SingleSelect component with Figma [MDS-201] ([#370](https://github.com/coingaming/moon/issues/370)) ([50b7f57](https://github.com/coingaming/moon/commit/50b7f5732bf32e322eb4a695074636fdbed98bee))
+
+## [2.28.2](https://github.com/coingaming/moon/compare/v2.28.1...v2.28.2) (2022-09-29)
+
+
+### Bug Fixes
+
+* replace the checkbox with 2 radio buttons [MDS-224] ([#386](https://github.com/coingaming/moon/issues/386)) ([fccfca3](https://github.com/coingaming/moon/commit/fccfca3974bfb79cbb4b29b98ee44cc8c5187fbb))
+
+## [2.28.1](https://github.com/coingaming/moon/compare/v2.28.0...v2.28.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* theme switching should affect the entire page including the left menu [MDS-220] ([#384](https://github.com/coingaming/moon/issues/384)) ([e059378](https://github.com/coingaming/moon/commit/e059378a32efdbca5a9af950e019ea3b9ff9be16))
+
+# [2.28.0](https://github.com/coingaming/moon/compare/v2.27.2...v2.28.0) (2022-09-28)
+
+
+### Features
+
+* add favicon [MDS-203] ([#388](https://github.com/coingaming/moon/issues/388)) ([05f0c26](https://github.com/coingaming/moon/commit/05f0c26e8867be9ad63739ede969b566613ebf21))
+
 ## [2.27.2](https://github.com/coingaming/moon/compare/v2.27.1...v2.27.2) (2022-09-23)
 
 

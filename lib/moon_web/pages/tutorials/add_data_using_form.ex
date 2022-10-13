@@ -47,6 +47,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
       socket
       |> assign(
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         user_changeset: user_changeset,
         gender_options: gender_options,
@@ -63,7 +64,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <p>Moon Forms -> Surface Forms -> Phoenix LiveView forms -> HTML forms</p>
 

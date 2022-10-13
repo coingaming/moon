@@ -26,6 +26,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -36,7 +37,7 @@ defmodule MoonWeb.Pages.Components.LinkPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Link</Heading>
         <p>
@@ -45,27 +46,25 @@ defmodule MoonWeb.Pages.Components.LinkPage do
           <Link to="#">React implementation</Link>
         </p>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode id="link_1">
-            <:example>
-              <Link to="#">I'm a link</Link>
+        <ExampleAndCode id="link_1">
+          <:example>
+            <Link to="#">I'm a link</Link>
 
-              <Link to="#" secondary>
-                I'm a Secondary link
-              </Link>
+            <Link to="#" secondary>
+              I'm a Secondary link
+            </Link>
 
-              <Link to="#" optional>
-                I'm an Optional link
-              </Link>
+            <Link to="#" optional>
+              I'm an Optional link
+            </Link>
 
-              <Link to="#" disabled>
-                I'm a disabled link
-              </Link>
-            </:example>
+            <Link to="#" disabled>
+              I'm a disabled link
+            </Link>
+          </:example>
 
-            <:code>{link_1_code()}</:code>
-          </ExampleAndCode>
-        </Context>
+          <:code>{link_1_code()}</:code>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """

@@ -59,8 +59,8 @@ defmodule Moon.Components.SwitchTest do
         end
 
       assert html =~ "<button"
-      assert html =~ "icon-moon.svg"
-      assert html =~ "icon-sun.svg"
+      assert html =~ "other-moon.svg"
+      assert html =~ "other-sun.svg"
     end
 
     test "without icons" do
@@ -74,8 +74,8 @@ defmodule Moon.Components.SwitchTest do
         end
 
       assert html =~ "<button"
-      refute html =~ "icon-moon.svg"
-      refute html =~ "icon-sun.svg"
+      refute html =~ "other-moon.svg"
+      refute html =~ "other-sun.svg"
     end
 
     test "with captions" do

@@ -1,3 +1,4 @@
+# This component is deprecated, use /components/typography/ css classes
 defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   @moduledoc false
 
@@ -57,6 +58,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -67,35 +69,46 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Caption">
         <p>
           Component for presenting short info.
         </p>
+        <p class="font-medium">
+          NB! The component is depricated. Please use our
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
+          built with Tailwind.
+        </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Colors" id="example_1">
-          <:example>
-            <Caption>Defaul color is Bulma</Caption>
-            <Caption color_class="text-piccolo-100">Piccolo</Caption>
-            <Caption color_class="text-trunks-100">Trunks</Caption>
-            <Caption color_class="text-krillin-100">Krillin</Caption>
-          </:example>
+      <ExampleAndCode title="Colors" id="example_1">
+        <:example>
+          <Caption>Defaul color is Bulma</Caption>
+          <Caption color_class="text-piccolo-100">Piccolo</Caption>
+          <Caption color_class="text-trunks-100">Trunks</Caption>
+          <Caption color_class="text-krillin-100">Krillin</Caption>
+        </:example>
 
-          <:code>{example_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{example_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Text Align" id="example_2">
-          <:example>
-            <Caption>Text-align is not specified</Caption>
-            <Caption text_align_class="text-center">Centered text</Caption>
-            <Caption text_align_class="text-right">Right alignment</Caption>
-          </:example>
+      <ExampleAndCode title="Text Align" id="example_2">
+        <:example>
+          <Caption>Text-align is not specified</Caption>
+          <Caption text_align_class="text-center">Centered text</Caption>
+          <Caption text_align_class="text-right">Right alignment</Caption>
+        </:example>
 
-          <:code>{example_2_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{example_2_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

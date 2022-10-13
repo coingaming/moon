@@ -26,6 +26,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
     socket =
       assign(socket,
         theme_name: params["theme_name"] || "moon-design-light",
+        direction: params["direction"] || "ltr",
         active_page: __MODULE__,
         tabs: ~w(One Two Three),
         selected_tab: "One"
@@ -40,7 +41,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Switcher</Heading>
 
@@ -48,17 +49,15 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
           <Link to="https://github.com/coingaming/moon/blob/main/lib/moon_web/pages/components/switcher_page.ex">Sourcecode of this page</Link>
         </p>
 
-        <Context put={theme_class: @theme_name}>
-          <ExampleAndCode title="Default" id="switcher">
-            <:example>
-              <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
-            </:example>
+        <ExampleAndCode title="Default" id="switcher">
+          <:example>
+            <Switcher items={@tabs} selected_item={@selected_tab} click="tab_click" />
+          </:example>
 
-            <:code>{switcher_1_code()}</:code>
+          <:code>{switcher_1_code()}</:code>
 
-            <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
-          </ExampleAndCode>
-        </Context>
+          <:state>@tabs = {inspect(@tabs, pretty: true)}<br><br>@selected_tab = {@selected_tab}</:state>
+        </ExampleAndCode>
       </TopToDown>
     </Page>
     """

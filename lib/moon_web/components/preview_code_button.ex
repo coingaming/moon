@@ -12,8 +12,8 @@ defmodule MoonWeb.Components.PreviewCodeButton do
   def render(assigns) do
     ~F"""
     <div class="flex flex-row items-center justify-between">
-      <h3 class="text-moon-24 font-semibold">{@title}</h3>
-      <div class="flex bg-beerus-100 p-1 rounded place-content-center">
+      <a href={"#" <> get_as_anchor_id(@title)}><h3 id={get_as_anchor_id(@title)} class="text-moon-24 font-semibold">{@title}</h3></a>
+      <div class="flex bg-beerus-100 p-1 rounded place-content-center gap-1">
         <Button
           class={"px-2 #{if @selected_button == "preview", do: "bg-gohan-100"}"}
           on_click={@click}
@@ -40,5 +40,9 @@ defmodule MoonWeb.Components.PreviewCodeButton do
       </div>
     </div>
     """
+  end
+
+  def get_as_anchor_id(title) do
+    title |> String.replace(" ", "-")
   end
 end

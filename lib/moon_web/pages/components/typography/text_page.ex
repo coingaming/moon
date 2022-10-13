@@ -1,3 +1,4 @@
+# This component is deprecated, use /components/typography/ css classes
 defmodule MoonWeb.Pages.Components.Typography.TextPage do
   @moduledoc false
 
@@ -78,6 +79,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -89,8 +91,21 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Text">
+        <p class="font-medium">
+          NB! The component is depricated. Please use our
+          <a
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.TypographyPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+          >
+            new Typography
+          </a>
+          built with Tailwind.
+        </p>
         <p>
           We have predefined font sizes: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72. Line heights are calculated automatically based on font size.
         </p>
@@ -103,60 +118,58 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode id="text_1" title="Default">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text>Text with default font size</Text>
-              <Text size={10}>Text with font size 10</Text>
-              <Text size={12}>Text with font size 12</Text>
-              <Text size={14}>Text with font size 14</Text>
-              <Text size={16}>Text with font size 16</Text>
-              <Text size={18}>Text with font size 18</Text>
-              <Text size={20}>Text with font size 20</Text>
-              <Text size={24}>Text with font size 24</Text>
-              <Text size={32}>Text with font size 32</Text>
-              <Text size={48}>font size 48</Text>
-              <Text size={56}>font size 56</Text>
-              <Text size={64}>font size 64</Text>
-              <Text size={72}>font size 72</Text>
-            </div>
-          </:example>
+      <ExampleAndCode id="text_1" title="Default">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text>Text with default font size</Text>
+            <Text size={10}>Text with font size 10</Text>
+            <Text size={12}>Text with font size 12</Text>
+            <Text size={14}>Text with font size 14</Text>
+            <Text size={16}>Text with font size 16</Text>
+            <Text size={18}>Text with font size 18</Text>
+            <Text size={20}>Text with font size 20</Text>
+            <Text size={24}>Text with font size 24</Text>
+            <Text size={32}>Text with font size 32</Text>
+            <Text size={48}>font size 48</Text>
+            <Text size={56}>font size 56</Text>
+            <Text size={64}>font size 64</Text>
+            <Text size={72}>font size 72</Text>
+          </div>
+        </:example>
 
-          <:code>{text_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{text_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode id="text_2" title="Bold">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text size={24}>Text with default font weight</Text>
-              <Text size={24} is_bold>
-                Text with font-weight: semibold
-              </Text>
-            </div>
-          </:example>
-          <:code>{text_2_code()}</:code>
-        </ExampleAndCode>
+      <ExampleAndCode id="text_2" title="Bold">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text size={24}>Text with default font weight</Text>
+            <Text size={24} is_bold>
+              Text with font-weight: semibold
+            </Text>
+          </div>
+        </:example>
+        <:code>{text_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode id="text_3" title="color">
-          <:example>
-            <div class="flex flex-col gap-2 w-full">
-              <Text size={24}>Text with default color</Text>
-              <Text size={24} color="trunks-100">
-                Text with defined color
-              </Text>
-              <Text size={24} color="piccolo-100">
-                Text with defined color
-              </Text>
-              <Text size={24} color="krillin-100">
-                Text with defined color
-              </Text>
-            </div>
-          </:example>
+      <ExampleAndCode id="text_3" title="color">
+        <:example>
+          <div class="flex flex-col gap-2 w-full">
+            <Text size={24}>Text with default color</Text>
+            <Text size={24} color="trunks-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="piccolo-100">
+              Text with defined color
+            </Text>
+            <Text size={24} color="krillin-100">
+              Text with defined color
+            </Text>
+          </div>
+        </:example>
 
-          <:code>{text_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{text_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>

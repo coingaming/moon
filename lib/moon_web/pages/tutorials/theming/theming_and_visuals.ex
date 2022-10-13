@@ -25,6 +25,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
     {:ok,
      assign(socket,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -35,7 +36,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={32}>Theming and visuals</Heading>
         <Text>

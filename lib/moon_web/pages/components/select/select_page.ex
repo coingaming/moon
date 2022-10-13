@@ -72,6 +72,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
        gender_options: gender_options,
        user_changeset: user_changeset,
        theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
        active_page: __MODULE__
      )}
   end
@@ -82,50 +83,48 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Select">
         <p>
           A user-controlled menu of options for forms, navigation and more.
         </p>
       </ComponentPageDescription>
 
-      <Context put={theme_class: @theme_name}>
-        <ExampleAndCode title="Example" id="select_1">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+      <ExampleAndCode title="Example" id="select_1">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select field={:gender} options={@gender_options} prompt="Please select gender" />
+          </Form>
+        </:example>
 
-          <:code>{select_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{select_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="With Label" id="select_2">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
-            </Form>
-          </:example>
+      <ExampleAndCode title="With Label" id="select_2">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select label="Gender" field={:gender} options={@gender_options} prompt="Please select gender" />
+          </Form>
+        </:example>
 
-          <:code>{select_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{select_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Disabled" id="select_3">
-          <:example>
-            <Form for={@user_changeset}>
-              <Select
-                disabled
-                label="Gender"
-                field={:gender}
-                options={@gender_options}
-                prompt="Please select gender"
-              />
-            </Form>
-          </:example>
+      <ExampleAndCode title="Disabled" id="select_3">
+        <:example>
+          <Form for={@user_changeset}>
+            <Select
+              disabled
+              label="Gender"
+              field={:gender}
+              options={@gender_options}
+              prompt="Please select gender"
+            />
+          </Form>
+        </:example>
 
-          <:code>{select_3_code()}</:code>
-        </ExampleAndCode>
-      </Context>
+        <:code>{select_3_code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
     </Page>
