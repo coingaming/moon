@@ -35,7 +35,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :name => 'color',
         :type => 'string',
         :required => 'false',
-        :default => 'piccolo-100',
+        :default => 'bulma-100',
         :description => 'Text color'
       },
       %{
