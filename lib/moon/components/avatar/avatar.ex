@@ -7,8 +7,8 @@ defmodule Moon.Components.Avatar do
 
   prop image_url, :string
   prop name, :string
-  prop color, :string, default: "gohan-100", values: Moon.colors()
-  prop background_color, :string, default: "piccolo-100", values: Moon.colors()
+  prop color, :string, default: "bulma-100", values: Moon.colors()
+  prop bg_color, :string, default: "gohan-100", values: Moon.colors()
   prop border_radius_class, :css_class, default: "rounded-moon-s-sm"
   prop is_uppercase, :boolean, default: true
   prop size, :string, default: "medium", values: ~w(xsmall small medium large xlarge twoxlarge)
@@ -17,7 +17,7 @@ defmodule Moon.Components.Avatar do
   prop status_origin, :struct, default: %StatusOrigin{vertical: "bottom", horizontal: "right"}
 
   def style(assigns) do
-    "background-image: url(#{assigns.image_url}); color: var(--color--#{assigns.color}); background-color: var(--color--#{assigns.background_color});"
+    "background-image: url(#{assigns.image_url});"
   end
 
   def render(assigns) do
@@ -25,6 +25,8 @@ defmodule Moon.Components.Avatar do
     <div
       class={
         "bg-cover justify-center flex font-semibold items-center overflow-hidden relative",
+        "bg-#{@bg_color}",
+        "text-#{@color}",
         @class,
         @border_radius_class,
         uppercase: @is_uppercase,
