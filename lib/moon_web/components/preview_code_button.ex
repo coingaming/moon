@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
     ~F"""
     <div class="flex flex-row items-center justify-between">
       <a href={"#" <> get_as_anchor_id(@title)}><h3 id={get_as_anchor_id(@title)} class="text-moon-24 font-semibold">{@title}</h3></a>
-      <div class="flex bg-beerus-100 p-1 rounded place-content-center">
+      <div class="flex bg-beerus-100 p-1 rounded place-content-center gap-1">
         <Button
           class={"px-2 #{if @selected_button == "preview", do: "bg-gohan-100"}"}
           on_click={@click}

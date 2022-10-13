@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:agrees_to_terms_of_service, :boolean, default: true)
     field(:agrees_to_marketing_emails, :boolean, default: true)
     field(:permissions, {:array, :integer}, default: [1, 2])
-    field(:role, :integer, default: nil)
+    field(:role, :integer, default: 1)
   end
 
   def available_permissions() do
