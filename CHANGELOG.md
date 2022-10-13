@@ -1,3 +1,10 @@
+## [2.29.4](https://github.com/coingaming/moon/compare/v2.29.3...v2.29.4) (2022-10-13)
+
+
+### Bug Fixes
+
+* radio button issues ([#409](https://github.com/coingaming/moon/issues/409)) ([0a5f6dd](https://github.com/coingaming/moon/commit/0a5f6dd20f565561c4bf6fe11776c242c2d50727))
+
 ## [2.29.3](https://github.com/coingaming/moon/compare/v2.29.2...v2.29.3) (2022-10-12)
 
 
