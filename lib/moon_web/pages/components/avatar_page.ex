@@ -98,6 +98,14 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         </p>
       </ComponentPageDescription>
 
+      <ExampleAndCode title="Default" id="avatar_01">
+        <:example>
+          <Avatar />
+        </:example>
+
+        <:code>{avatar_01_code()}</:code>
+      </ExampleAndCode>
+
       <ExampleAndCode title="Variants" id="avatar_1">
         <:example>
           <Avatar />
@@ -174,6 +182,12 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
       <PropsTable data={@props_info_array} />
     </Page>
+    """
+  end
+
+  def avatar_01_code do
+    """
+    <Avatar />
     """
   end
 
