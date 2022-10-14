@@ -28,14 +28,14 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :name => 'bg_color',
         :type => 'string',
         :required => 'false',
-        :default => 'gohan-100',
+        :default => 'bg-gohan-100',
         :description => 'Background color'
       },
       %{
         :name => 'color',
         :type => 'string',
         :required => 'false',
-        :default => 'bulma-100',
+        :default => 'text-bulma-100',
         :description => 'Text color'
       },
       %{
