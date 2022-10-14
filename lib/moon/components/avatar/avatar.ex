@@ -43,7 +43,7 @@ defmodule Moon.Components.Avatar do
       data-size={@size}
     >
       <span :if={@name && !@image_url}>{@name}</span>
-      <Icon name="generic_user" class={icon_class(@size)} :if={!@name && !@image_url} />
+      <Icon name="generic_user" class={set_icon_dimensions(@size)} :if={!@name && !@image_url} />
       <div
         :if={@status_origin && @is_status_active}
         class={
@@ -61,12 +61,13 @@ defmodule Moon.Components.Avatar do
     """
   end
 
-  defp icon_class("xs"), do: "h-4 w-4"
-  defp icon_class("sm"), do: "h-5 w-5"
-  defp icon_class("md"), do: "h-6 w-6"
-  defp icon_class("lg"), do: "h-7 w-7"
-  defp icon_class("xl"), do: "h-14 w-14"
-  defp icon_class("2xl"), do: "h-16 w-16"
+  defp set_icon_dimensions(size) do
+    cond do
+      size == "xs" -> "w-4 h-4"
+      size == "2xl" -> "w-8 h-8"
+      true -> "w-6 h-6"
+    end
+  end
 
   defp set_border_radius(size, is_rounded) do
     cond do
