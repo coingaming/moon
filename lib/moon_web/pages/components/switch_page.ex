@@ -113,35 +113,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         <:example>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch
-                icons={false}
-                size="small"
-                caption_unchecked="AM"
-                caption_checked="PM"
-                id="switch_4_1"
-              />
+              <Switch icons={false} size="small" caption_unchecked="AM" caption_checked="PM" id="switch_4_1" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch
-                icons
-                size="medium"
-                caption_unchecked="OFF"
-                caption_checked="ON"
-                id="switch_4_2"
-              />
+              <Switch icons size="medium" caption_unchecked="OFF" caption_checked="ON" id="switch_4_2" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch
-                icons
-                size="large"
-                caption_unchecked="Moon"
-                caption_checked="Sun"
-                id="switch_4_3"
-              />
+              <Switch icons size="large" caption_unchecked="Moon" caption_checked="Sun" id="switch_4_3" />
             </Field>
           </Form>
         </:example>
