@@ -1,3 +1,10 @@
+## [2.29.6](https://github.com/coingaming/moon/compare/v2.29.5...v2.29.6) (2022-10-14)
+
+
+### Bug Fixes
+
+* update the avatar component and align with React version [MDS-232] ([#411](https://github.com/coingaming/moon/issues/411)) ([98c409c](https://github.com/coingaming/moon/commit/98c409c6340bffe316236e8e32b3eecb1a69e899))
+
 ## [2.29.5](https://github.com/coingaming/moon/compare/v2.29.4...v2.29.5) (2022-10-13)
 
 
