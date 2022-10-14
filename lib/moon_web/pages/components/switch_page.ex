@@ -89,17 +89,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         <:example>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch id="switch_3_1" checked={@icons_switch_checked} icons size="small" />
+              <Switch id="switch_3_1" icons size="small" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch id="switch_3_2" checked={@icons_switch_checked} icons size="medium" />
+              <Switch id="switch_3_2" icons size="medium" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
-              <Switch id="switch_3_3" checked={@icons_switch_checked} icons size="large" />
+              <Switch id="switch_3_3" icons size="large" />
             </Field>
           </Form>
         </:example>
@@ -114,7 +114,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
               <Switch
-                checked={@captions_switch_checked}
                 icons={false}
                 size="small"
                 caption_unchecked="AM"
@@ -126,7 +125,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
               <Switch
-                checked={@captions_switch_checked}
                 icons
                 size="medium"
                 caption_unchecked="OFF"
@@ -138,7 +136,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <Field name={:agrees_to_terms_of_service}>
               <Switch
-                checked={@captions_switch_checked}
                 icons
                 size="large"
                 caption_unchecked="Moon"
@@ -159,7 +156,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <div class="text-moon-16 mb-3">Agrees to Terms of Service</div>
             <Field name={:agrees_to_terms_of_service}>
-              <Switch checked={@captions_switch_checked} icons={false} size="small" id="switch_5_1" />
+              <Switch icons={false} size="small" id="switch_5_1" />
               <ErrorTag />
             </Field>
             <div class="pt-4">
@@ -264,32 +261,17 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
-        <Switch
-          id="switch_3_1"
-          checked={@icons_switch_checked}
-          icons
-          size="small"
-        />
+        <Switch id="switch_3_1" icons size="small" />
       </Field>
     </Form>
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
-        <Switch
-          id="switch_3_2"
-          checked={@icons_switch_checked}
-          icons
-          size="medium"
-        />
+        <Switch id="switch_3_2" icons size="medium" />
       </Field>
     </Form>
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
-        <Switch
-          id="switch_3_3"
-          checked={@icons_switch_checked}
-          icons
-          size="large"
-        />
+        <Switch id="switch_3_3" icons size="large" />
       </Field>
     </Form>
     """
@@ -300,7 +282,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
         <Switch
-          checked={@captions_switch_checked}
           icons={false}
           size="small"
           caption_unchecked="AM"
@@ -312,7 +293,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
         <Switch
-          checked={@captions_switch_checked}
           icons
           size="medium"
           caption_unchecked="OFF"
@@ -324,7 +304,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <Field name={:agrees_to_terms_of_service}>
         <Switch
-          checked={@captions_switch_checked}
           icons
           size="large"
           caption_unchecked="Moon"
@@ -341,7 +320,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
       <div class="text-moon-16 mb-3">Agrees to Terms of Service</div>
       <Field name={:agrees_to_terms_of_service}>
-        <Switch checked={@captions_switch_checked} icons={false} size="small" id="switch_5_1" />
+        <Switch icons={false} size="small" id="switch_5_1" />
         <ErrorTag />
       </Field>
       <div class="pt-4">
