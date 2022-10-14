@@ -136,9 +136,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <ExampleAndCode title="Different colours" id="avatar_2">
         <:example>
           <Avatar />
-          <Avatar color="frieza-100" bg_color="chi-chi-100" />
-          <Avatar color="gohan-100" bg_color="krillin-100" />
-          <Avatar color="chi-chi-100" bg_color="frieza-100" />
+          <Avatar color="text-frieza-100" bg_color="bg-chi-chi-100" />
+          <Avatar color="text-gohan-100" bg_color="bg-krillin-100" />
+          <Avatar color="text-chi-chi-100" bg_color="bg-frieza-100" />
         </:example>
 
         <:code>{avatar_2_code()}</:code>
@@ -227,9 +227,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def avatar_2_code do
     """
     <Avatar />
-    <Avatar color="frieza-100" bg_color="chi-chi-100" />
-    <Avatar color="gohan-100" bg_color="krillin-100" />
-    <Avatar color="chi-chi-100" bg_color="frieza-100" />
+    <Avatar color="text-frieza-100" bg_color="bg-chi-chi-100" />
+    <Avatar color="text-gohan-100" bg_color="bg-krillin-100" />
+    <Avatar color="text-chi-chi-100" bg_color="bg-frieza-100" />
     """
   end
 
@@ -264,28 +264,28 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
 
   def avatar_4_code do
     """
-      <Avatar />
-      <Avatar is_status_active />
-      <Avatar image_url="https://www.fillmurray.com/200/200" />
-      <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
+    <Avatar />
+    <Avatar is_status_active />
+    <Avatar image_url="https://www.fillmurray.com/200/200" />
+    <Avatar image_url="https://www.fillmurray.com/200/200" is_status_active />
     """
   end
 
   def avatar_5_code do
     """
-      <Avatar
-        is_status_active
-        status_origin={%StatusOrigin{ vertical: "top", horizontal: "right" }}
-      />
-      <Avatar
-        is_status_active
-        status_origin={%StatusOrigin{ vertical: "top", horizontal: "left" }}
-      />
-      <Avatar is_status_active />
-      <Avatar
-        is_status_active
-        status_origin={%StatusOrigin{ vertical: "bottom", horizontal: "left" }}
-      />
+    <Avatar
+      is_status_active
+      status_origin={%StatusOrigin{ vertical: "top", horizontal: "right" }}
+    />
+    <Avatar
+      is_status_active
+      status_origin={%StatusOrigin{ vertical: "top", horizontal: "left" }}
+    />
+    <Avatar is_status_active />
+    <Avatar
+      is_status_active
+      status_origin={%StatusOrigin{ vertical: "bottom", horizontal: "left" }}
+    />
     """
   end
 end

@@ -7,8 +7,8 @@ defmodule Moon.Components.Avatar do
 
   prop image_url, :string
   prop name, :string
-  prop color, :string, default: "bulma-100", values: Moon.colors()
-  prop bg_color, :string, default: "gohan-100", values: Moon.colors()
+  prop color, :css_class, default: "text-bulma-100"
+  prop bg_color, :css_class, default: "bg-gohan-100"
   prop is_uppercase, :boolean, default: true
 
   prop size, :string, default: "md", values: ~w(xs sm md lg xl 2xl)
@@ -27,8 +27,8 @@ defmodule Moon.Components.Avatar do
     <div
       class={
         "bg-cover justify-center flex font-semibold items-center overflow-hidden relative",
-        "bg-#{@bg_color}",
-        "text-#{@color}",
+        @bg_color,
+        @color,
         set_border_radius(@size, @is_rounded),
         @class,
         uppercase: @is_uppercase,
@@ -43,7 +43,7 @@ defmodule Moon.Components.Avatar do
       data-size={@size}
     >
       <span :if={@name && !@image_url}>{@name}</span>
-      <Icon name="generic_user" color={@color} class={icon_class(@size)} :if={!@name && !@image_url} />
+      <Icon name="generic_user" class={icon_class(@size)} :if={!@name && !@image_url} />
       <div
         :if={@status_origin && @is_status_active}
         class={
