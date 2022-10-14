@@ -1,3 +1,10 @@
+## [2.29.7](https://github.com/coingaming/moon/compare/v2.29.6...v2.29.7) (2022-10-14)
+
+
+### Bug Fixes
+
+* fixed switch documentation page ([b35962b](https://github.com/coingaming/moon/commit/b35962b8ab0d15b482e88a40a381b827fadbea53))
+
 ## [2.29.6](https://github.com/coingaming/moon/compare/v2.29.5...v2.29.6) (2022-10-14)
 
 
