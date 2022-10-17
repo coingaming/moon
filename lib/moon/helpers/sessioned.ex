@@ -3,8 +3,6 @@ defmodule Moon.Helpers.Sessioned do
     helper functions for operations with session & context stored values
   """
 
-  #  import Phoenix.LiveView, only: [assign: 2, assign: 3]
-
   defmacro __using__(_opts \\ []) do
     quote do
       import PhoenixLiveSession, only: [put_session: 3, maybe_subscribe: 2]
@@ -19,12 +17,12 @@ defmodule Moon.Helpers.Sessioned do
           )
           |> maybe_subscribe(session)
 
-        {:ok,
-         case Kernel.function_exported?(__MODULE__, :postmount, 3) &&
-                apply(__MODULE__, :postmount, [params, session, socket]) do
-           {:ok, socket} -> socket
-           false -> socket
-         end}
+          case Kernel.function_exported?(__MODULE__, :postmount, 3) do
+            true ->
+                apply(__MODULE__, :postmount, [params, session, socket])
+            false ->
+                {:ok, socket}
+         end
       end
 
       def handle_event(
