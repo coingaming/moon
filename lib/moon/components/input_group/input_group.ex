@@ -9,6 +9,7 @@ defmodule Moon.Components.InputGroup do
     values: ["horizontal", "vertical"]
 
   prop has_fields, :boolean, default: false
+  prop included_fields, :list
 
   slot default, required: true, args: [:group_class_fields]
 
