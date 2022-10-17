@@ -96,14 +96,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <:example>
             <LeftToRight class="items-center justify-around w-full items-end">
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup>
+                <InputGroup included_fields={[:country, :phone]}>
                   <TextInput field={:country} size="xl" placeholder="Country" />
                   <TextInput field={:phone} size="xl" placeholder="Phone" />
                 </InputGroup>
               </Form>
 
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup orientation="vertical">
+                <InputGroup orientation="vertical" included_fields={[:country, :phone]}>
                   <TextInput field={:country} size="xl" placeholder="Country" />
                   <TextInput field={:phone} size="xl" placeholder="Phone" />
                 </InputGroup>
@@ -120,14 +120,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <:example>
             <LeftToRight class="items-center justify-around w-full items-end" dir="rtl">
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup>
+                <InputGroup included_fields={[:country, :phone]}>
                   <TextInput field={:country} size="xl" placeholder="Country" />
                   <TextInput field={:phone} size="xl" placeholder="Phone" />
                 </InputGroup>
               </Form>
 
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup orientation="vertical">
+                <InputGroup orientation="vertical" included_fields={[:country, :phone]}>
                   <TextInput field={:country} size="xl" placeholder="Country" />
                   <TextInput field={:phone} size="xl" placeholder="Phone" />
                 </InputGroup>
@@ -144,14 +144,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <:example>
             <LeftToRight class="items-center justify-around w-full items-end">
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup>
+                <InputGroup included_fields={[:email, :password]}>
                   <TextInput field={:email} size="xl" placeholder="Email" type="email" />
                   <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password1" />
                 </InputGroup>
               </Form>
 
               <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
-                <InputGroup orientation="vertical">
+                <InputGroup orientation="vertical" included_fields={[:email, :password]}>
                   <TextInput field={:email} size="xl" placeholder="Email" type="email" />
                   <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password2" />
                 </InputGroup>

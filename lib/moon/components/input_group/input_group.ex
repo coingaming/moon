@@ -17,7 +17,19 @@ defmodule Moon.Components.InputGroup do
     ~F"""
     <Container orientation={@orientation}>
       <#slot />
+      <div>
+      </div>
     </Container>
     """
+  end
+
+  defp get_errors(form, fields) do
+    list =
+      for field <- fields do
+        Enum.at(Keyword.get_values(form.errors, field), 0)
+      end
+
+    IO.inspect(list)
+    list
   end
 end
