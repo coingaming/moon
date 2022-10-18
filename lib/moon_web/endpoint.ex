@@ -7,8 +7,8 @@ defmodule MoonWeb.Endpoint do
   @session_options [
     store: PhoenixLiveSession,
     pub_sub: Moon.PubSub,
-    key: "_moon_key_3",
-    signing_salt: "brz+40r12"
+    key: "_moon_key",
+    signing_salt: "brz+40r1"
   ]
 
   socket "/socket", MoonWeb.UserSocket,

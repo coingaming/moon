@@ -19,7 +19,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   prop class, :string, default: nil
   prop theme_name, :string, default: "lab-light"
   prop direction, :string, values!: ["ltr", "rtl"], default: "ltr"
-  prop use_theme_switcher, :boolean, default: false
+  prop use_theme_switcher, :boolean, default: true
 
   data show_themes, :boolean, default: false
   data dark_mode, :boolean, default: false
@@ -41,6 +41,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     # [key: "MissionsTool", value: "missions-tool", modes: true],
     # [key: "Moneyball", value: "moneyball", modes: true],
     [key: "Moon design", value: "moon-design", modes: true],
+    [key: "Partners", value: "partners", modes: true],
     [key: "Slots", value: "slots", modes: true],
     [key: "Sportsbet", value: "sportsbet", modes: true]
   ]
@@ -68,7 +69,7 @@ defmodule MoonWeb.Components.ThemesSelect do
       <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
         {#for theme <- available_themes()}
           <button
-            :on-click={"update_selected_theme", target: :view_page}
+            :on-click={"update_selected_theme", target: :live_view}
             type="button"
             title={theme[:value]}
             value={theme[:value]}
@@ -85,6 +86,8 @@ defmodule MoonWeb.Components.ThemesSelect do
             {#elseif theme[:value] == "moon-design"}
               <LogoMoonDesignShort />
             {#elseif theme[:value] == "slots"}
+              <LogoSlotsShort />
+            {#elseif theme[:value] == "partners"}
               <LogoSlotsShort />
             {#elseif theme[:value] == "sportsbet"}
               <LogoSportsbetShort />

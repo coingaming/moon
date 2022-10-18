@@ -10,19 +10,29 @@ defmodule Moon.Helpers.Sessioned do
       def mount(params, session, socket) do
         socket =
           socket
-          |> assign(
-            theme_name: session["theme_name"] || "moon-design-light",
-            direction: session["direction"] || "ltr",
-            active_page: __MODULE__
-          )
+          |> assign(active_page: __MODULE__)
           |> maybe_subscribe(session)
+          |> put_session_assigns(session)
 
-          case Kernel.function_exported?(__MODULE__, :postmount, 3) do
-            true ->
-                apply(__MODULE__, :postmount, [params, session, socket])
-            false ->
-                {:ok, socket}
-         end
+        case Kernel.function_exported?(__MODULE__, :postmount, 3) do
+          true ->
+            apply(__MODULE__, :postmount, [params, session, socket])
+
+          false ->
+            {:ok, socket}
+        end
+      end
+
+      def handle_info({:live_session_updated, session}, socket) do
+        {:noreply, put_session_assigns(socket, session)}
+      end
+
+      defp put_session_assigns(socket, session) do
+        socket
+        |> assign(
+          theme_name: session["theme_name"] || "moon-design-light",
+          direction: session["direction"] || "ltr"
+        )
       end
 
       def handle_event(
@@ -35,7 +45,7 @@ defmodule Moon.Helpers.Sessioned do
 
         {:noreply,
          socket
-         |> assign(:direction, direction)
+         |> redirect(to: live_path(socket, socket.assigns.active_page))
          |> put_session(:direction, direction)}
       end
 
@@ -52,7 +62,7 @@ defmodule Moon.Helpers.Sessioned do
 
         {:noreply,
          socket
-         |> assign(:theme_name, theme_name)
+         |> redirect(to: live_path(socket, socket.assigns.active_page))
          |> put_session(:theme_name, theme_name)}
       end
 
@@ -63,7 +73,7 @@ defmodule Moon.Helpers.Sessioned do
 
         {:noreply,
          socket
-         |> assign(:theme_name, theme_name)
+         |> redirect(to: live_path(socket, socket.assigns.active_page))
          |> put_session(:theme_name, theme_name)}
       end
     end
