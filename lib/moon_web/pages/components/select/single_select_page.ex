@@ -64,7 +64,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       },
       %{
         :name => 'size',
-        :type => 'md | lg | xl',
+        :type => 'sm | md | lg | xl',
         :required => 'false',
         :default => 'md',
         :description => 'Size variant'
