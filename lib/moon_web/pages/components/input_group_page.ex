@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias Moon.Components.Form
   alias MoonWeb.Components.PropsTable
   alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.Button
 
   data breadcrumbs, :any,
     default: [
@@ -164,6 +165,38 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <:state>{input_group_1000_state(assigns)}</:state>
         </ExampleAndCode>
 
+        <ExampleAndCode id="group_130" title="Form submission example">
+          <:example>
+            <LeftToRight class="items-center justify-around w-full items-end">
+              <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                <InputGroup included_fields={[:email, :password]}>
+                  <TextInput field={:email} size="xl" placeholder="Email" type="email" />
+                  <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password3_1" />
+                </InputGroup>
+
+                <div class="pt-4">
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </Form>
+
+              <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+                <InputGroup orientation="vertical" included_fields={[:email, :password]}>
+                  <TextInput field={:email} size="xl" placeholder="Email" type="email" />
+                  <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password3_2" />
+                </InputGroup>
+
+                <div class="pt-4">
+                  <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+                </div>
+              </Form>
+            </LeftToRight>
+          </:example>
+
+          <:code>{input_group_120_code()}</:code>
+
+          <:state>{input_group_1000_state(assigns)}</:state>
+        </ExampleAndCode>
+
         <PropsTable data={@props_info_array} />
       </TopToDown>
     </Page>
@@ -222,6 +255,26 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
       <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
         <InputGroup orientation="vertical">
+          <TextInput field={:email} size="xl" placeholder="Email" type="email" />
+          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password2" />
+        </InputGroup>
+      </Form>
+    </LeftToRight>
+    """
+  end
+
+  defp input_group_120_code() do
+    """
+    <LeftToRight class="items-center justify-around w-full items-end">
+      <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+        <InputGroup included_fields={[:email, :password]}>
+          <TextInput field={:email} size="xl" placeholder="Email" type="email" />
+          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password1" />
+        </InputGroup>
+      </Form>
+
+      <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
+        <InputGroup orientation="vertical" included_fields={[:email, :password]}>
           <TextInput field={:email} size="xl" placeholder="Email" type="email" />
           <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password2" />
         </InputGroup>
