@@ -14,7 +14,9 @@ defmodule Moon.Components.InputGroup.Container do
       "moon-input-group border-none shadow-input relative rounded-moon-i-md",
       @orientation,
       "rtl-aware",
-      get_class_for_orientation(@orientation, @is_error),
+      get_class_for_orientation(@orientation),
+      "after:bg-beerus-100": !@is_error,
+      "after:bg-chi-chi-100": @is_error,
       "bg-#{@background_color}": @background_color
     }>
       <#slot />
@@ -22,25 +24,22 @@ defmodule Moon.Components.InputGroup.Container do
     """
   end
 
-  defp get_class_for_orientation(orientation, is_error) do
+  defp get_class_for_orientation(orientation) do
     cond do
-      orientation == "horizontal" && !is_error ->
+      orientation == "horizontal" ->
         "
         flex
         after:content-[''] after:z-20 after:absolute after:top-0 after:bottom-0 after:w-px
-        after:left-1/2 after:translate-x-[-50%] after:bg-beerus-100 after:x-[3]
-        hover:after:hidden focus-within:after:hidden
-        "
-
-      !is_error ->
-        "
-        after:content-[''] after:z-20 after:absolute after:top-1/2 after:bottom-0 after:w-full after:h-px
-        after:left-0 after:translate-y-[-50%] after:bg-beerus-100 after:x-[3]
+        after:left-1/2 after:translate-x-[-50%] after:x-[3]
         hover:after:hidden focus-within:after:hidden
         "
 
       true ->
-        ""
+        "
+        after:content-[''] after:z-20 after:absolute after:top-1/2 after:bottom-0 after:w-full after:h-px
+        after:left-0 after:translate-y-[-50%] after:x-[3]
+        hover:after:hidden focus-within:after:hidden
+        "
     end
   end
 end
