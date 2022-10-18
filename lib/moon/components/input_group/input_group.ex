@@ -29,7 +29,10 @@ defmodule Moon.Components.InputGroup do
       <Container orientation={@orientation} is_error={has_error(form, @included_fields)}>
         <#slot />
       </Container>
-      <div class="inline-block mt-2 text-moon-12" :if={@use_error_tag && has_error(form, @included_fields)}>
+      <div
+        class="inline-block mt-2 text-moon-12"
+        :if={@use_error_tag && has_error(form, @included_fields)}
+      >
         <ErrorTag :for={item <- get_errors(form, @included_fields)} field={item.field} />
       </div>
     </InputContext>
