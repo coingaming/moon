@@ -269,15 +269,23 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
       <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
         <InputGroup included_fields={[:email, :password]}>
           <TextInput field={:email} size="xl" placeholder="Email" type="email" />
-          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password1" />
+          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password3_1" />
         </InputGroup>
+
+        <div class="pt-4">
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
       </Form>
 
       <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
         <InputGroup orientation="vertical" included_fields={[:email, :password]}>
           <TextInput field={:email} size="xl" placeholder="Email" type="email" />
-          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password2" />
+          <TextInput field={:password} size="xl" placeholder="Password" type="password" id="password3_2" />
         </InputGroup>
+
+        <div class="pt-4">
+          <Button type="submit" right_icon="arrows_right" variant="primary">Register</Button>
+        </div>
       </Form>
     </LeftToRight>
     """
