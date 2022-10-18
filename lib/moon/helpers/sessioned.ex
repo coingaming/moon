@@ -11,7 +11,7 @@ defmodule Moon.Helpers.Sessioned do
         socket =
           socket
           |> assign(active_page: __MODULE__)
-          |> maybe_subscribe(session)
+          |> maybe_subscribe_own(session)
           |> put_session_assigns(session)
 
         case Kernel.function_exported?(__MODULE__, :postmount, 3) do
@@ -33,6 +33,10 @@ defmodule Moon.Helpers.Sessioned do
           theme_name: session["theme_name"] || "moon-design-light",
           direction: session["direction"] || "ltr"
         )
+      end
+
+      defp maybe_subscribe_own(socket, session) do
+        (Map.has_key?(session, :__sid__) && maybe_subscribe(socket, session)) || socket
       end
 
       def handle_event(
