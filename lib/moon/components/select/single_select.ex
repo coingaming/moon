@@ -19,7 +19,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop options, :any, default: []
   prop value, :any
   prop disabled, :boolean, default: false
-  prop size, :string, values: ~w(md lg xl), default: "md"
+  prop size, :string, values: ~w(sm md lg xl), default: "md"
   prop popover_placement, :string, default: "bottom-start"
   prop popover_class, :string
   prop placeholder, :string
@@ -60,6 +60,7 @@ defmodule Moon.Components.Select.SingleSelect do
           has_error={has_error(@has_error, form, field)}
         >
           <PullAside class={
+            "leading-6",
             SelectHelpers.get_padding(@size),
             get_disabled_class(@disabled)
           }>

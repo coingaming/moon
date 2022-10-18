@@ -5,7 +5,6 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
 
   prop label, :string, default: ""
   prop has_icons, :boolean
-  prop size, :string
 
   def render(assigns) do
     ~F"""
