@@ -15,6 +15,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop label, :string, default: ""
   prop placeholder, :string, default: ""
   prop size, :string
+  prop class, :css_class, default: ""
 
   def render(assigns) do
     has_value = has_value(assigns.option)
@@ -26,7 +27,8 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
 
     ~F"""
     <div class={
-      "h-fit relative flex"
+      "h-fit relative flex",
+      @class
     }>
       {#if has_value}
         {#if is_inner_label or has_icons}

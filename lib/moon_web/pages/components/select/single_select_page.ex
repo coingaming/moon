@@ -118,6 +118,13 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :required => 'false',
         :default => '-',
         :description => 'Whether to use the built in ErrorTag in place of the hint slot'
+      },
+      %{
+        :name => 'selected_value_class',
+        :type => 'css_class',
+        :required => 'false',
+        :default => '-',
+        :description => 'Css class for the displayed selected value'
       }
     ]
 
