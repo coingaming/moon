@@ -25,17 +25,15 @@ defmodule Moon.Components.InputGroup.Container do
   end
 
   defp get_class_for_orientation(orientation) do
-    cond do
-      orientation == "horizontal" ->
-        "
+    if orientation == "horizontal" do
+      "
         flex
         after:content-[''] after:z-20 after:absolute after:top-0 after:bottom-0 after:w-px
         after:left-1/2 after:translate-x-[-50%] after:x-[3]
         hover:after:hidden focus-within:after:hidden
         "
-
-      true ->
-        "
+    else
+      "
         after:content-[''] after:z-20 after:absolute after:top-1/2 after:bottom-0 after:w-full after:h-px
         after:left-0 after:translate-y-[-50%] after:x-[3]
         hover:after:hidden focus-within:after:hidden
