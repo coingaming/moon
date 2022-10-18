@@ -33,18 +33,19 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
           <div class={
             "flex flex-col w-full items-center text-moon-16",
             "ps-6": has_left_icon,
+            "pe-2": has_left_icon && !has_right_icon,
             "pe-6": has_right_icon
           }>
-            <InnerLabelContent :if={is_inner_label} {=@size} {=@label} {=has_icons} />
+            <InnerLabelContent :if={is_inner_label} {=@label} {=has_icons} />
             <MainContent label={@option.label} {=has_icons} {=is_inner_label} />
           </div>
 
           <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
-            <div class="justify-self-start">
-              <Icon icon={@option[:left_icon]} :if={has_left_icon} />
+            <div class="justify-self-start items-center">
+              <Icon class="flex" icon={@option[:left_icon]} :if={has_left_icon} />
             </div>
-            <div class="justify-self-end me-2">
-              <Icon icon={@option[:right_icon]} :if={has_right_icon} />
+            <div class="justify-self-end me-2 items-center">
+              <Icon class="flex" icon={@option[:right_icon]} :if={has_right_icon} />
             </div>
           </div>
         {#else}
