@@ -41,9 +41,9 @@ defmodule Moon.Components.FieldBorder do
 
   def get_default_states_class() do
     "
-    rounded-moon-i-md hover:rounded-moon-i-md
-    focus:ring-0 focus:shadow-input-focus focus:outline-none focus:rounded-moon-i-md
-    invalid:rounded-moon-i-md
+    rounded-moon-i-sm hover:rounded-moon-i-sm
+    focus:ring-0 focus:shadow-input-focus focus:outline-none focus:rounded-moon-i-sm
+    invalid:rounded-moon-i-sm
     shadow-input hover:shadow-input-hov
     "
   end
