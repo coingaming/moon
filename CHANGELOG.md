@@ -1,3 +1,15 @@
+# [2.30.0](https://github.com/coingaming/moon/compare/v2.29.7...v2.30.0) (2022-10-19)
+
+
+### Bug Fixes
+
+* fix paddings and add size sm to single select [MDS-256] ([#416](https://github.com/coingaming/moon/issues/416)) ([14bb3fd](https://github.com/coingaming/moon/commit/14bb3fd6bfa3b685fb19a50e85cb4808134b89af))
+
+
+### Features
+
+* add the built in ErrorTag for InputGroup [MDS-251] ([#413](https://github.com/coingaming/moon/issues/413)) ([adecabc](https://github.com/coingaming/moon/commit/adecabce26f42a3d5d28b3ff833077ac421b8c59))
+
 ## [2.29.7](https://github.com/coingaming/moon/compare/v2.29.6...v2.29.7) (2022-10-14)
 
 
