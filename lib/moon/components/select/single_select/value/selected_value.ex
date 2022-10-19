@@ -15,21 +15,18 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop label, :string, default: ""
   prop placeholder, :string, default: ""
   prop size, :string
-  prop class, :css_class, default: ""
 
   def render(assigns) do
     has_value = has_value(assigns.option)
-    has_left_icon = has_value && not is_nil(assigns.option[:left_icon])
-    has_right_icon = has_value && not is_nil(assigns.option[:right_icon])
+    has_left_icon = has_value and not is_nil(assigns.option[:left_icon])
+    has_right_icon = has_value and not is_nil(assigns.option[:right_icon])
     has_icons = has_left_icon or has_right_icon
     is_label = not is_nil(assigns.label)
     is_inner_label = is_label and assigns.size == "xl"
+    has_option_style = has_value and not is_nil(assigns.option[:class])
 
     ~F"""
-    <div class={
-      "h-fit relative flex",
-      @class
-    }>
+    <div class="h-fit relative flex">
       {#if has_value}
         {#if is_inner_label or has_icons}
           <div class={
@@ -39,7 +36,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
             "pe-6": has_right_icon
           }>
             <InnerLabelContent :if={is_inner_label} {=@label} {=has_icons} />
-            <MainContent label={@option.label} {=has_icons} {=is_inner_label} />
+            <MainContent {=@option} {=@size} {=has_option_style} />
           </div>
 
           <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
@@ -51,7 +48,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
             </div>
           </div>
         {#else}
-          <InnerLabelNoIconsContent label={@option.label} />
+          <InnerLabelNoIconsContent {=@option} {=@size} {=has_option_style} />
         {/if}
       {#else}
         <NoInnerLabelNoIconsContent {=@placeholder} />

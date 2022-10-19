@@ -26,7 +26,6 @@ defmodule Moon.Components.Select.SingleSelect do
   prop background_color, :string, values: Moon.colors(), default: "gohan-100"
   prop has_error, :boolean
   prop use_error_tag, :boolean
-  prop selected_value_class, :css_class, default: ""
 
   data open, :boolean, default: false
 
@@ -67,7 +66,6 @@ defmodule Moon.Components.Select.SingleSelect do
           }>
             <:left>
               <SelectedValue
-                class={@selected_value_class}
                 {=@size}
                 {=@label}
                 {=@placeholder}
