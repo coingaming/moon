@@ -7,7 +7,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelNoIc
 
   def render(assigns) do
     ~F"""
-    <div class="text-bulma-100 text-moon-16 text-left h-full w-full">
+    <div class="text-bulma-100 text-moon-16 text-left h-full w-full pe-4">
       {@label}
     </div>
     """

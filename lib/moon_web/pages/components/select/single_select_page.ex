@@ -64,7 +64,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       },
       %{
         :name => 'size',
-        :type => 'md | lg | xl',
+        :type => 'sm | md | lg | xl',
         :required => 'false',
         :default => 'md',
         :description => 'Size variant'
@@ -118,6 +118,13 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :required => 'false',
         :default => '-',
         :description => 'Whether to use the built in ErrorTag in place of the hint slot'
+      },
+      %{
+        :name => 'selected_value_class',
+        :type => 'css_class',
+        :required => 'false',
+        :default => '-',
+        :description => 'Css class for the displayed selected value'
       }
     ]
 
@@ -182,6 +189,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
+                id="user-roles-example-10-0"
+                options={User.available_roles()}
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              />
+            </Field>
+          </Form>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
                 id="user-roles-example-10-1"
                 options={User.available_roles()}
                 label="Role"
@@ -220,6 +238,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
       <ExampleAndCode title="Left Icon" id="single_select_with_options_as_prop_and_left_icon_flag">
         <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                id="user-roles-example-5-0"
+                options={User.available_roles_with_left_icon_flag()}
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              />
+            </Field>
+          </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
@@ -264,6 +293,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
+                id="user-roles-example-4-0"
+                options={User.available_roles_with_right_icon()}
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              />
+            </Field>
+          </Form>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
                 id="user-roles-example-4-1"
                 options={User.available_roles_with_right_icon()}
                 label="Role"
@@ -305,6 +345,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
+                id="user-roles-example-6-0"
+                options={User.available_roles_with_left_icon_flag_and_right_icon()}
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              />
+            </Field>
+          </Form>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
                 id="user-roles-example-6-1"
                 options={User.available_roles_with_left_icon_flag_and_right_icon()}
                 label="Role"
@@ -343,6 +394,19 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
       <ExampleAndCode title="Disabled" id="single_select_disabled">
         <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                popover_class="pt-2"
+                id="user-roles-example-disabled-0"
+                options={User.available_roles()}
+                disabled
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              />
+            </Field>
+          </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
@@ -394,6 +458,20 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
             <Field name={:role}>
               <SingleSelect
                 popover_class="pt-2"
+                id="user-roles-example-hint-0"
+                options={User.available_roles()}
+                label="Role"
+                placeholder="Select a role"
+                size="sm"
+              >
+                <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+              </SingleSelect>
+            </Field>
+          </Form>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                popover_class="pt-2"
                 id="user-roles-example-hint-1"
                 options={User.available_roles()}
                 label="Role"
@@ -440,6 +518,21 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
 
       <ExampleAndCode title="Error" id="single_select_error">
         <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                popover_class="pt-2"
+                id="user-roles-example-error-0"
+                options={User.available_roles()}
+                label="Role"
+                has_error
+                placeholder="Select a role"
+                size="sm"
+              >
+                <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+              </SingleSelect>
+            </Field>
+          </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:role}>
               <SingleSelect
@@ -594,6 +687,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
+          id="user-roles-example-10-0"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
           id="user-roles-example-10-1"
           options={User.available_roles()}
           label="Role"
@@ -630,6 +734,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     """
     alias Moon.Components.Select.SingleSelect
 
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-5-0"
+          options={User.available_roles_with_left_icon_flag()}
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        />
+      </Field>
+    </Form>
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
@@ -672,6 +787,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
+          id="user-roles-example-4-0"
+          options={User.available_roles_with_right_icon()}
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
           id="user-roles-example-4-1"
           options={User.available_roles_with_right_icon()}
           label="Role"
@@ -711,6 +837,17 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
+          id="user-roles-example-6-0"
+          options={User.available_roles_with_left_icon_flag_and_right_icon()}
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
           id="user-roles-example-6-1"
           options={User.available_roles_with_left_icon_flag_and_right_icon()}
           label="Role"
@@ -747,6 +884,19 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     """
     alias Moon.Components.Select.SingleSelect
 
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
+          id="user-roles-example-disabled-0"
+          options={User.available_roles()}
+          disabled
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        />
+      </Field>
+    </Form>
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
@@ -796,11 +946,25 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <Field name={:role}>
         <SingleSelect
           popover_class="pt-2"
+          id="user-roles-example-hint-0"
+          options={User.available_roles()}
+          label="Role"
+          placeholder="Select a role"
+          size="sm"
+        >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
           id="user-roles-example-hint-1"
           options={User.available_roles()}
           label="Role"
           placeholder="Select a role"
-          >
+        >
           <:hint_text_slot>Informative Message Handler</:hint_text_slot>
         </SingleSelect>
       </Field>
@@ -814,7 +978,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           label="Role"
           placeholder="Select a role"
           size="lg"
-          >
+        >
           <:hint_text_slot>Informative Message Handler</:hint_text_slot>
         </SingleSelect>
       </Field>
@@ -844,12 +1008,27 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       <Field name={:role}>
         <SingleSelect
           popover_class="pt-2"
+          id="user-roles-example-error-0"
+          options={User.available_roles()}
+          label="Role"
+          has_error
+          placeholder="Select a role"
+          size="sm"
+        >
+          <:hint_text_slot>Informative Message Handler</:hint_text_slot>
+        </SingleSelect>
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          popover_class="pt-2"
           id="user-roles-example-error-1"
           options={User.available_roles()}
           label="Role"
-          is_error
+          has_error
           placeholder="Select a role"
-          >
+        >
           <:hint_text_slot>Informative Message Handler</:hint_text_slot>
         </SingleSelect>
       </Field>
@@ -861,10 +1040,10 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           id="user-roles-example-error-2"
           options={User.available_roles()}
           label="Role"
-          is_error
+          has_error
           placeholder="Select a role"
           size="lg"
-          >
+        >
           <:hint_text_slot>Informative Message Handler</:hint_text_slot>
         </SingleSelect>
       </Field>
@@ -876,7 +1055,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
           id="user-roles-example-error-3"
           options={User.available_roles()}
           label="Role"
-          is_error
+          has_error
           placeholder="Select a role"
           size="xl"
         >
