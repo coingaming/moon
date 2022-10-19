@@ -177,7 +177,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/forms"),
-    require('tailwindcss-rtl'),
+    require("tailwindcss-rtl"),
     plugin(({ addComponents }) => {
       addComponents({
         ".btn-primary": {
@@ -326,7 +326,7 @@ module.exports = {
           "& a, & span": {
             padding: "0.5rem",
           },
-        }
+        },
       });
     }),
   ],
