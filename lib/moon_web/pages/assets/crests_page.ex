@@ -22,15 +22,6 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
-     )}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end

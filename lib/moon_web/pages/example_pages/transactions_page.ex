@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
   data filter_options, :map, default: %{}
   data transactions, :list, default: []
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     socket =
       if socket.transport_pid != nil do
         original_transactions = get_transactions()
@@ -77,11 +77,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         assign(socket, filter_options: filter_options)
       end
 
-    {:ok,
-     assign(apply_paging(socket),
-       theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__
-     ), layout: {MoonWeb.LayoutView, "clean.html"}}
+    {:ok, apply_paging(socket), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
 
   def render(assigns) do

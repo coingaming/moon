@@ -159,7 +159,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
         agrees_to_terms_of_service: false,
@@ -175,10 +175,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
-       user_changeset2: user_changeset2,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset2: user_changeset2
      )}
   end
 

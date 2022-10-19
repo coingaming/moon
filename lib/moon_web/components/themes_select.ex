@@ -111,7 +111,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     """
   end
 
-  def mount(_params, _session, socket) do
+  def mount(socket) do
     selected_theme = %SelectedTheme{}
     selected_direction = %SelectedDirection{}
     selected_theme_changeset = SelectedTheme.changeset(selected_theme, %{})
@@ -173,7 +173,7 @@ defmodule MoonWeb.Components.ThemesSelect do
       |> assign(selected_theme_changeset: selected_theme_changeset)
       |> assign(selected_direction_changeset: selected_direction_changeset)
 
-    {:noreply, redirect(socket, to: new_path)}
+    {:noreply, push_redirect(socket, to: new_path)}
   end
 
   def handle_event("toggle_direction", params, socket) do
@@ -203,13 +203,13 @@ defmodule MoonWeb.Components.ThemesSelect do
       |> assign(selected_theme_changeset: selected_theme_changeset)
       |> assign(selected_direction_changeset: selected_direction_changeset)
 
-    {:noreply, redirect(socket, to: new_path)}
+    {:noreply, push_redirect(socket, to: new_path)}
   end
 
   def handle_event("update_selected_theme", %{"value" => theme}, socket) do
     %{active_page: active_page, dark_mode: dark_mode, is_rtl: is_rtl} = socket.assigns
     new_path = generate_path(socket, active_page, theme, dark_mode, is_rtl)
-    {:noreply, redirect(socket, to: new_path)}
+    {:noreply, push_redirect(socket, to: new_path)}
   end
 
   defp generate_path(socket, active_page, theme, dark_mode, is_rtl) do

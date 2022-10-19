@@ -12,11 +12,9 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
 
   data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       active_page: __MODULE__,
        transactions: ExamplePages.TransactionsPage.get_transactions()
      ), layout: {MoonWeb.LayoutView, "clean.html"}}
   end
