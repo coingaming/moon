@@ -118,13 +118,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :required => 'false',
         :default => '-',
         :description => 'Whether to use the built in ErrorTag in place of the hint slot'
-      },
-      %{
-        :name => 'selected_value_class',
-        :type => 'css_class',
-        :required => 'false',
-        :default => '-',
-        :description => 'Css class for the displayed selected value'
       }
     ]
 
@@ -180,6 +173,37 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         </:example>
 
         <:code>{code_for_single_select_default()}</:code>
+
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="With stylized value" id="single_select_stylized_value">
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                id="user-roles-example-11-0"
+                options={User.available_roles_with_style()}
+                label="Role"
+                placeholder="Select a role"
+                size="lg"
+              />
+            </Field>
+          </Form>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:role}>
+              <SingleSelect
+                id="user-roles-example-11-1"
+                options={User.available_roles_with_style()}
+                label="Role"
+                placeholder="Select a role"
+                size="xl"
+              />
+            </Field>
+          </Form>
+        </:example>
+
+        <:code>{code_for_single_select_stylized_value()}</:code>
 
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
       </ExampleAndCode>
@@ -675,6 +699,35 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect id="user-roles-example-1" options={User.available_roles()} placeholder="Select a role" />
+      </Field>
+    </Form>
+    """
+  end
+
+  def code_for_single_select_stylized_value do
+    """
+    alias Moon.Components.Select.SingleSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-11-0"
+          options={User.available_roles_with_style()}
+          label="Role"
+          placeholder="Select a role"
+          size="lg"
+        />
+      </Field>
+    </Form>
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <Field name={:role}>
+        <SingleSelect
+          id="user-roles-example-11-1"
+          options={User.available_roles_with_style()}
+          label="Role"
+          placeholder="Select a role"
+          size="xl"
+        />
       </Field>
     </Form>
     """

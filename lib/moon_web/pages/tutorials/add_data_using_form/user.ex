@@ -52,6 +52,16 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     ]
   end
 
+  def available_roles_with_style() do
+    default_class = "flex items-center align-middle rounded-moon-s-xs py-1 pl-2 pr-2"
+
+    [
+      %{class: "#{default_class} text-roshi-10 bg-roshi-100", value: 1, label: "User"},
+      %{class: "#{default_class} text-chi-chi-10 bg-chi-chi-60", value: 2, label: "Editor"},
+      %{class: "#{default_class} text-frieza-10 bg-frieza-60", value: 3, label: "Admin"}
+    ]
+  end
+
   def available_roles_with_left_icon() do
     [
       %{value: 1, label: "User", left_icon: [Moon.Icon, %{name: "generic_user"}]},

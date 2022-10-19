@@ -18,12 +18,12 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
 
   def render(assigns) do
     has_value = has_value(assigns.option)
-    has_left_icon = has_value and not is_nil(assigns.option[:left_icon])
-    has_right_icon = has_value and not is_nil(assigns.option[:right_icon])
+    has_left_icon = has_value && not is_nil(assigns.option[:left_icon])
+    has_right_icon = has_value && not is_nil(assigns.option[:right_icon])
+    has_option_style = has_value && not is_nil(assigns.option[:class])
     has_icons = has_left_icon or has_right_icon
     is_label = not is_nil(assigns.label)
     is_inner_label = is_label and assigns.size == "xl"
-    has_option_style = has_value and not is_nil(assigns.option[:class])
 
     ~F"""
     <div class="h-fit relative flex">
