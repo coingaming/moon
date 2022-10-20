@@ -1,3 +1,10 @@
+## [2.30.1](https://github.com/coingaming/moon/compare/v2.30.0...v2.30.1) (2022-10-20)
+
+
+### Bug Fixes
+
+* Remove chrome autofill overlay ([#419](https://github.com/coingaming/moon/issues/419)) ([a12bfee](https://github.com/coingaming/moon/commit/a12bfee08cd542f2a6e3109a909611cfd2ade22f))
+
 # [2.30.0](https://github.com/coingaming/moon/compare/v2.29.7...v2.30.0) (2022-10-19)
 
 
