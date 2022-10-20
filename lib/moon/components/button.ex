@@ -42,7 +42,7 @@ defmodule Moon.Components.Button do
 
   prop testid, :string
 
-  prop as, :string, values: ["a", "button"], default: "button"
+  prop animation, :string, values: ~w(progress success error pulse)
 
   slot default
   slot right_icon_slot
@@ -76,7 +76,9 @@ defmodule Moon.Components.Button do
         "rounded-moon-s-sm": @size == "large",
         "rounded-moon-s-md": @size == "xlarge",
         "w-full": @full_width,
-        "opacity-30": @disabled
+        "opacity-30": @disabled,
+        "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
+        "bg-chi-chi-100 text-goten-100 animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error": @animation == "error"
       }
       disabled={@disabled}
       type={@type}
