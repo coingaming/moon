@@ -3,6 +3,7 @@ defmodule Moon.Components.Button do
 
   use Moon.StatelessComponent
   alias Moon.Icon
+  alias Moon.Components.Loader
 
   prop id, :string
   prop href, :string
@@ -89,18 +90,27 @@ defmodule Moon.Components.Button do
       :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
-      {#if slot_assigned?(:left_icon_slot)}
-        <#slot name="left_icon_slot" />
-      {#else}
-        <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
-      {/if}
-      <#slot />
-      {#if slot_assigned?(:right_icon_slot)}
-        <#slot name="right_icon_slot" />
-      {#else}
-        <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
-      {/if}
-      <div class="absolute inset-0 bg-transparent hover:bg-primary-hover" />
+      <span :if={@animation in ["success", "progress"]} class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center">
+        {#if @animation == "progress"}
+          <Loader color="currentColor" size="xsmall" />
+        {#elseif @animation ==  "success"}
+          <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
+        {/if}
+      </span>
+      <span class={"opacity-0": @animation in ["success", "progress"]}>
+        {#if slot_assigned?(:left_icon_slot)}
+          <#slot name="left_icon_slot" />
+        {#else}
+          <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+        {/if}
+        <#slot />
+        {#if slot_assigned?(:right_icon_slot)}
+          <#slot name="right_icon_slot" />
+        {#else}
+          <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+        {/if}
+      </span>
+      <span class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
     """
   end
