@@ -79,7 +79,8 @@ defmodule Moon.Components.Button do
         "w-full": @full_width,
         "opacity-30": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chi-chi-100 text-goten-100 animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error": @animation == "error"
+        "bg-chi-chi-100 text-goten-100 animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+          @animation == "error"
       }
       disabled={@disabled}
       type={@type}
@@ -90,10 +91,13 @@ defmodule Moon.Components.Button do
       :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
-      <span :if={@animation in ["success", "progress"]} class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center">
+      <span
+        :if={@animation in ["success", "progress"]}
+        class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center"
+      >
         {#if @animation == "progress"}
           <Loader color="currentColor" size="xsmall" />
-        {#elseif @animation ==  "success"}
+        {#elseif @animation == "success"}
           <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
         {/if}
       </span>
