@@ -107,9 +107,7 @@ defmodule MoonWeb do
       alias MoonWeb.Router.Helpers, as: Routes
       import Routes, only: [static_path: 2]
 
-      def live_path(socket, view, props) do
-        Routes.live_path(socket, view, props)
-      end
+      import MoonWeb.Helpers.Routes
     end
   end
 

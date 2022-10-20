@@ -897,16 +897,13 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user = %User{}
 
     user_changeset = User.changeset(user, %{})
 
     {:ok,
      assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__,
        user: user,
        user_changeset: user_changeset
      )}

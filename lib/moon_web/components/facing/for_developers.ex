@@ -9,6 +9,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
   alias MoonWeb.Pages.GettingStartedPage
 
   prop theme_name, :string, default: "moon-design-light"
+  prop direction, :string, default: "ltr"
 
   def render(assigns) do
     ~F"""
@@ -18,6 +19,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
         <h2 class="text-moon-24 grow 3xl:grow-0">
           <a href={live_path(MoonWeb.Endpoint, GettingStartedPage,
             theme_name: @theme_name,
+            direction: @direction,
             role: GettingStartedPage.developer_role()
           )}>
             For developers.

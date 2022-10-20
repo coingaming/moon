@@ -70,17 +70,6 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    socket =
-      assign(socket,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__
-      )
-
-    {:ok, socket}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end

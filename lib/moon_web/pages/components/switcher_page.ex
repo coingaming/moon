@@ -22,12 +22,9 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
       }
     ]
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     socket =
       assign(socket,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__,
         tabs: ~w(One Two Three),
         selected_tab: "One"
       )

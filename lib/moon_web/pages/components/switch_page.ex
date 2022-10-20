@@ -157,7 +157,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user = %User{}
 
     user_changeset =
@@ -169,9 +169,6 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     socket =
       assign(socket,
         user_changeset: user_changeset,
-        theme_name: params["theme_name"] || "moon-design-light",
-        direction: params["direction"] || "ltr",
-        active_page: __MODULE__,
         small_switch_checked: false,
         medium_switch_checked: false,
         large_switch_checked: false,
