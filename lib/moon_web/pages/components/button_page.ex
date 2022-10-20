@@ -220,5 +220,11 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   end
 
   def button_6_code do
+    """
+    <Button animation="progress">Progress</Button>
+    <Button animation="success">Success</Button>
+    <Button animation="error">Error</Button>
+    <Button animation="pulse">Pulse</Button>
+    """
   end
 end
