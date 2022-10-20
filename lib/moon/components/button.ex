@@ -22,7 +22,6 @@ defmodule Moon.Components.Button do
   prop disabled, :boolean
   prop type, :string, default: "button"
   prop to, :string
-  prop as, :string
   prop active_class_name, :string
   prop active_style, :string
   prop exact, :boolean
@@ -42,6 +41,8 @@ defmodule Moon.Components.Button do
   prop right_icon, :string
 
   prop testid, :string
+
+  prop as, :string, values: ["a", "button"], default: "button"
 
   slot default
   slot right_icon_slot

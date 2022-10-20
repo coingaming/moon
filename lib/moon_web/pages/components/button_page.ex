@@ -89,9 +89,17 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </p>
       </ComponentPageDescription>
 
+      <ExampleAndCode title="Default" id="button0">
+        <:example>
+          <Button>Default</Button>
+        </:example>
+
+        <:code>{button_0_code()}</:code>
+      </ExampleAndCode>
+
       <ExampleAndCode title="Variants" id="button1">
         <:example>
-          <Button>Primary (default)</Button>
+          <Button>Primary is default</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="tertiary">Tertiary</Button>
           <Button variant="ghost">Ghost</Button>
@@ -156,6 +164,12 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <PropsTable data={@props_info_array} />
     </Page>
+    """
+  end
+
+  def button_0_code do
+    """
+    <Button>Default</Button>
     """
   end
 
