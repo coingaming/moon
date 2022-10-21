@@ -121,7 +121,6 @@ defmodule Moon.Components.Button do
             <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
           {/if}
         {/if}
-
       </span>
       <span class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
