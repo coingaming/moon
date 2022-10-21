@@ -101,7 +101,7 @@ defmodule Moon.Components.Button do
           <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
         {/if}
       </span>
-      <span class={"opacity-0": @animation in ["success", "progress"]}>
+      <span class={"flex justify-center items-center gap-2", "opacity-0": @animation in ["success", "progress"]}>
         {#if slot_assigned?(:left_icon_slot)}
           <#slot name="left_icon_slot" />
         {#else}
