@@ -117,11 +117,11 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <ExampleAndCode title="Sizes" id="button2">
         <:example>
-          <Button variant="primary" size="xsmall">xSmall</Button>
-          <Button variant="primary" size="small">Small</Button>
-          <Button variant="primary" size="medium">Medium (Default)</Button>
-          <Button variant="primary" size="large">Large</Button>
-          <Button variant="primary" size="xlarge">xLarge</Button>
+          <Button variant="primary" size="xs">xSmall</Button>
+          <Button variant="primary" size="sm">Small</Button>
+          <Button variant="primary" size="md">Medium (Default)</Button>
+          <Button variant="primary" size="lg">Large</Button>
+          <Button variant="primary" size="xl">xLarge</Button>
         </:example>
 
         <:code>{button_2_code()}</:code>
@@ -131,9 +131,9 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         <:example>
           <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
           <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-          <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-          <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-          <Button variant="primary" right_icon="generic_settings" size="large" />
+          <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
+          <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
+          <Button variant="primary" right_icon="generic_settings" size="lg" />
         </:example>
 
         <:code>{button_3_code()}</:code>
@@ -192,11 +192,11 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
   def button_2_code do
     """
-    <Button variant="primary" size="xsmall">xSmall</Button>
-    <Button variant="primary" size="small">Small</Button>
-    <Button variant="primary" size="medium">Medium (Default)</Button>
-    <Button variant="primary" size="large">Large</Button>
-    <Button variant="primary" size="xlarge">xLarge</Button>
+    <Button variant="primary" size="xs">xSmall</Button>
+    <Button variant="primary" size="sm">Small</Button>
+    <Button variant="primary" size="md">Medium (Default)</Button>
+    <Button variant="primary" size="lg">Large</Button>
+    <Button variant="primary" size="xl">xLarge</Button>
     """
   end
 
@@ -204,9 +204,9 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
     <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
     <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-    <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-    <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-    <Button variant="primary" right_icon="generic_settings" size="large" />
+    <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
+    <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
+    <Button variant="primary" right_icon="generic_settings" size="lg" />
     """
   end
 
