@@ -124,7 +124,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
           <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
           <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
           <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
-          <Button variant="primary" right_icon="generic_settings" size="lg" />
+          <Button variant="primary" icon_only="generic_settings" size="lg" />
         </:example>
 
         <:code>{button_3_code()}</:code>
@@ -197,7 +197,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
     <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
     <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
-    <Button variant="primary" right_icon="generic_settings" size="lg" />
+    <Button variant="primary" icon_only="generic_settings" size="lg" />
     """
   end
 
