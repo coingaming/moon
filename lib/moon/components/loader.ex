@@ -42,6 +42,7 @@ defmodule Moon.Components.Loader do
 
   # TODO
   # Replace the old size strings
+  # credo:disable-for-lines:14
   defp get_size_class_by_size(size) do
     case size do
       "twoxsmall" -> "w-4 h-4"
@@ -59,6 +60,7 @@ defmodule Moon.Components.Loader do
 
   # TODO
   # Replace the old size strings
+  # credo:disable-for-lines:14
   defp get_border_class_by_size(size) do
     case size do
       "twoxsmall" -> "border-2"
