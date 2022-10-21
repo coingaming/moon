@@ -130,6 +130,28 @@ module.exports = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        error: {
+          "10%, 90%": { transform: "translate3d(-1px, 0, 0)" },
+          "20%, 80%": { transform: "translate3d(2px, 0, 0)" },
+          "30%, 50%, 70%": { transform: "translate3d(-4px, 0, 0)" },
+          "40%, 60%": { transform: "translate3d(4px, 0, 0)" },
+        },
+        explode: {
+          "0%": { transform: "translate(-50%, -50%) scale(0)", opacity: 1 },
+          "50%": { transform: "translate(-50%, -50%) scale(1)", opacity: 0.4 },
+          "80%": { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
+          "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: 0 },
+        },
+        rotation: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        pulse2: {
+          "10%, 90%": { transform: "translate3d(-1px, 0, 0)" },
+          "0%": { transform: "scale(1)" },
+          "70%": { transform: "scale(1)", boxShadow: "0 0 0 30px transparent" },
+          "100%": { transform: "scale(1)", boxShadow: "0 0 0 0 transparent" },
+        },
       },
       fontWeight: {
         normal: 400,

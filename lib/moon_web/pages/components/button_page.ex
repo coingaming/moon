@@ -24,18 +24,25 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   data props_info_array, :list,
     default: [
       %{
-        :name => 'variant',
-        :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
+        :name => 'animation',
+        :type => 'progress | success | error | pulse',
         :required => 'false',
-        :default => 'primary',
-        :description => 'Visual/Logical variant of Button'
+        :default => '-',
+        :description => 'Animation of button'
       },
       %{
-        :name => 'size',
-        :type => 'xsmall | small | medium | large | xlarge',
+        :name => 'disabled',
+        :type => 'boolean',
         :required => 'false',
-        :default => 'medium',
-        :description => 'Size of Button'
+        :default => 'false',
+        :description => 'Disabled Button'
+      },
+      %{
+        :name => 'fullWidth',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Full width Button'
       },
       %{
         :name => 'left_icon',
@@ -52,18 +59,18 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         :description => 'Asset name for the right icon'
       },
       %{
-        :name => 'fullWidth',
-        :type => 'boolean',
+        :name => 'size',
+        :type => 'xs | sm | md | lg | xl',
         :required => 'false',
-        :default => 'false',
-        :description => 'Full width Button'
+        :default => 'md',
+        :description => 'Size of button'
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
+        :name => 'variant',
+        :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
         :required => 'false',
-        :default => 'false',
-        :description => 'Disabled Button'
+        :default => 'primary',
+        :description => 'Visual/Logical variant of button'
       }
     ]
 
@@ -80,9 +87,17 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         </p>
       </ComponentPageDescription>
 
+      <ExampleAndCode title="Default" id="button0">
+        <:example>
+          <Button>Default</Button>
+        </:example>
+
+        <:code>{button_0_code()}</:code>
+      </ExampleAndCode>
+
       <ExampleAndCode title="Variants" id="button1">
         <:example>
-          <Button>Primary (default)</Button>
+          <Button>Primary is default</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="tertiary">Tertiary</Button>
           <Button variant="ghost">Ghost</Button>
@@ -93,11 +108,11 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <ExampleAndCode title="Sizes" id="button2">
         <:example>
-          <Button variant="primary" size="xsmall">xSmall</Button>
-          <Button variant="primary" size="small">Small</Button>
-          <Button variant="primary" size="medium">Medium (Default)</Button>
-          <Button variant="primary" size="large">Large</Button>
-          <Button variant="primary" size="xlarge">xLarge</Button>
+          <Button variant="primary" size="xs">xSmall</Button>
+          <Button variant="primary" size="sm">Small</Button>
+          <Button variant="primary" size="md">Medium (Default)</Button>
+          <Button variant="primary" size="lg">Large</Button>
+          <Button variant="primary" size="xl">xLarge</Button>
         </:example>
 
         <:code>{button_2_code()}</:code>
@@ -107,9 +122,9 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         <:example>
           <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
           <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-          <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-          <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-          <Button variant="primary" right_icon="generic_settings" size="large" />
+          <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
+          <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
+          <Button variant="primary" right_icon="generic_settings" size="lg" />
         </:example>
 
         <:code>{button_3_code()}</:code>
@@ -137,12 +152,13 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
       <ExampleAndCode title="Animation" id="button6">
         <:example>
-          Coming soon...
+          <Button animation="progress">Progress</Button>
+          <Button animation="success">Success</Button>
+          <Button animation="error">Error</Button>
+          <Button animation="pulse">Pulse</Button>
         </:example>
 
-        <:code>
-          Coming soon...
-        </:code>
+        <:code>{button_6_code()}</:code>
       </ExampleAndCode>
 
       <PropsTable data={@props_info_array} />
@@ -150,32 +166,38 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
     """
   end
 
+  def button_0_code do
+    """
+    <Button>Default</Button>
+    """
+  end
+
   def button_1_code do
     """
-      <Button>Primary (default)</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="tertiary">Tertiary</Button>
-      <Button variant="ghost">Ghost</Button>
+    <Button>Primary (default)</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="tertiary">Tertiary</Button>
+    <Button variant="ghost">Ghost</Button>
     """
   end
 
   def button_2_code do
     """
-      <Button variant="primary" size="xsmall">xSmall</Button>
-      <Button variant="primary" size="small">Small</Button>
-      <Button variant="primary" size="medium">Medium (Default)</Button>
-      <Button variant="primary" size="large">Large</Button>
-      <Button variant="primary" size="xlarge">xLarge</Button>
+    <Button variant="primary" size="xs">xSmall</Button>
+    <Button variant="primary" size="sm">Small</Button>
+    <Button variant="primary" size="md">Medium (Default)</Button>
+    <Button variant="primary" size="lg">Large</Button>
+    <Button variant="primary" size="xl">xLarge</Button>
     """
   end
 
   def button_3_code do
     """
-      <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
-      <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
-      <Button variant="primary" left_icon="arrows_left" size="small">Left Icon</Button>
-      <Button variant="primary" right_icon="arrows_right" size="small">Right Icon</Button>
-      <Button variant="primary" right_icon="generic_settings" size="large" />
+    <Button left_icon="arrows_left" variant="primary">Left Icon</Button>
+    <Button right_icon="arrows_right" variant="primary">Right Icon</Button>
+    <Button variant="primary" left_icon="arrows_left" size="sm">Left Icon</Button>
+    <Button variant="primary" right_icon="arrows_right" size="sm">Right Icon</Button>
+    <Button variant="primary" right_icon="generic_settings" size="lg" />
     """
   end
 
@@ -189,9 +211,18 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
 
   def button_5_code do
     """
-      <Button variant="primary" disabled="true">
-        Disabled
-      </Button>
+    <Button variant="primary" disabled="true">
+      Disabled
+    </Button>
+    """
+  end
+
+  def button_6_code do
+    """
+    <Button animation="progress">Progress</Button>
+    <Button animation="success">Success</Button>
+    <Button animation="error">Error</Button>
+    <Button animation="pulse">Pulse</Button>
     """
   end
 end

@@ -18,7 +18,6 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           class={"px-2 #{if @selected_button == "preview", do: "bg-gohan-100"}"}
           on_click={@click}
           left_icon="controls_eye"
-          size="medium"
           value_name="selected-item"
           value="preview"
           variant="none"
@@ -30,7 +29,6 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           class={"px-2 #{if @selected_button == "code", do: "bg-gohan-100"}"}
           on_click={@click}
           left_icon="software_code"
-          size="medium"
           value_name="selected-item"
           value="code"
           variant="none"

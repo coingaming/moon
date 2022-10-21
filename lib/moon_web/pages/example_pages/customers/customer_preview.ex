@@ -26,7 +26,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
         <LeftToRight class="mb-4 flex-wrap">
           {#for tab <- ["overview", "rewards", "KPI", "cashier", "TXN", "comms", "fraud", "notes"]}
             <Button
-              size="small"
+              size="sm"
               on_click={"select_tab:#{tab}"}
               class={"rounded #{if tab == @active_tab, do: "bg-goku-100"}"}
             >

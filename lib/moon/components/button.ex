@@ -3,6 +3,7 @@ defmodule Moon.Components.Button do
 
   use Moon.StatelessComponent
   alias Moon.Icon
+  alias Moon.Components.Loader
 
   prop id, :string
   prop href, :string
@@ -13,7 +14,7 @@ defmodule Moon.Components.Button do
     values: ["primary", "secondary", "tertiary", "ghost", "none"],
     default: "primary"
 
-  prop size, :string, values: ["xsmall", "small", "medium", "large", "xlarge"], default: "medium"
+  prop size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md"
   prop full_width, :boolean
   prop progress, :boolean
   prop oops, :boolean
@@ -22,7 +23,6 @@ defmodule Moon.Components.Button do
   prop disabled, :boolean
   prop type, :string, default: "button"
   prop to, :string
-  prop as, :string
   prop active_class_name, :string
   prop active_style, :string
   prop exact, :boolean
@@ -43,6 +43,8 @@ defmodule Moon.Components.Button do
 
   prop testid, :string
 
+  prop animation, :string, values: ~w(progress success error pulse)
+
   slot default
   slot right_icon_slot
   slot left_icon_slot
@@ -59,23 +61,26 @@ defmodule Moon.Components.Button do
         "bg-hit-100 text-goten-100": @variant in ["tertiary"],
         "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
         "text-trunks-100 hover:bg-hit-120 hover:text-piccolo-80": @variant in ["link"],
-        "text-moon-12 h-8 px-2": @size == "xsmall" && slot_assigned?(:default),
-        "text-moon-14 h-8 px-3": @size == "small" && slot_assigned?(:default),
-        "text-moon-14 h-10 px-4": @size == "medium" && slot_assigned?(:default),
-        "text-moon-16 h-12 px-5": @size == "large" && slot_assigned?(:default),
-        "text-moon-16 h-14 px-6": @size == "xlarge" && slot_assigned?(:default),
-        "p-1": @size == "xsmall" && !slot_assigned?(:default),
-        "p-1": @size == "small" && !slot_assigned?(:default),
-        "p-2": @size == "medium" && !slot_assigned?(:default),
-        "p-3": @size == "large" && !slot_assigned?(:default),
-        "p-4": @size == "xlarge" && !slot_assigned?(:default),
-        "rounded-moon-s-xs": @size == "xsmall",
-        "rounded-moon-s-sm": @size == "small",
-        "rounded-moon-s-sm": @size == "medium",
-        "rounded-moon-s-sm": @size == "large",
-        "rounded-moon-s-md": @size == "xlarge",
+        "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
+        "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),
+        "text-moon-14 h-10 px-4": @size == "md" && slot_assigned?(:default),
+        "text-moon-16 h-12 px-5": @size == "lg" && slot_assigned?(:default),
+        "text-moon-16 h-14 px-6": @size == "xl" && slot_assigned?(:default),
+        "p-1": @size == "xs" && !slot_assigned?(:default),
+        "p-1": @size == "sm" && !slot_assigned?(:default),
+        "p-2": @size == "md" && !slot_assigned?(:default),
+        "p-3": @size == "lg" && !slot_assigned?(:default),
+        "p-4": @size == "xl" && !slot_assigned?(:default),
+        "rounded-moon-s-xs": @size == "xs",
+        "rounded-moon-s-sm": @size == "sm",
+        "rounded-moon-s-sm": @size == "md",
+        "rounded-moon-s-sm": @size == "lg",
+        "rounded-moon-s-md": @size == "xl",
         "w-full": @full_width,
-        "opacity-30": @disabled
+        "opacity-30": @disabled,
+        "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
+        "bg-chi-chi-100 text-goten-100 animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+          @animation == "error"
       }
       disabled={@disabled}
       type={@type}
@@ -86,18 +91,30 @@ defmodule Moon.Components.Button do
       :values={@values}
       {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
-      {#if slot_assigned?(:left_icon_slot)}
-        <#slot name="left_icon_slot" />
-      {#else}
-        <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
-      {/if}
-      <#slot />
-      {#if slot_assigned?(:right_icon_slot)}
-        <#slot name="right_icon_slot" />
-      {#else}
-        <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
-      {/if}
-      <div class="absolute inset-0 bg-transparent hover:bg-primary-hover" />
+      <span
+        :if={@animation in ["success", "progress"]}
+        class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center"
+      >
+        {#if @animation == "progress"}
+          <Loader color="currentColor" size="xs" />
+        {#elseif @animation == "success"}
+          <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
+        {/if}
+      </span>
+      <span class={"opacity-0": @animation in ["success", "progress"]}>
+        {#if slot_assigned?(:left_icon_slot)}
+          <#slot name="left_icon_slot" />
+        {#else}
+          <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+        {/if}
+        <#slot />
+        {#if slot_assigned?(:right_icon_slot)}
+          <#slot name="right_icon_slot" />
+        {#else}
+          <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+        {/if}
+      </span>
+      <span class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
     """
   end
@@ -110,9 +127,9 @@ defmodule Moon.Components.Button do
     [{key, value}]
   end
 
-  defp icon_class("xsmall"), do: "h-4 w-4"
-  defp icon_class("small"), do: "h-4 w-4"
-  defp icon_class("medium"), do: "h-6 w-6"
-  defp icon_class("large"), do: "h-6 w-6"
-  defp icon_class("xlarge"), do: "h-6 w-6"
+  defp icon_class("xs"), do: "h-4 w-4"
+  defp icon_class("sm"), do: "h-4 w-4"
+  defp icon_class("md"), do: "h-6 w-6"
+  defp icon_class("lg"), do: "h-6 w-6"
+  defp icon_class("xl"), do: "h-6 w-6"
 end

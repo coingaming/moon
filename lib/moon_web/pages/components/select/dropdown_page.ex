@@ -131,13 +131,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <:footer>
                   <Footer>
                     <:cancel>
-                      <Button variant="secondary" size="small">Cancel</Button>
+                      <Button variant="secondary" size="sm">Cancel</Button>
                     </:cancel>
                     <:clear>
-                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                      <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
                     </:clear>
                     <:confirm>
-                      <Button variant="primary" size="small">Confirm</Button>
+                      <Button variant="primary" size="sm">Confirm</Button>
                     </:confirm>
                   </Footer>
                 </:footer>
@@ -174,13 +174,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <:footer>
                   <Footer>
                     <:cancel>
-                      <Button variant="secondary" size="small">Cancel</Button>
+                      <Button variant="secondary" size="sm">Cancel</Button>
                     </:cancel>
                     <:clear>
-                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                      <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
                     </:clear>
                     <:confirm>
-                      <Button variant="primary" size="small">Confirm</Button>
+                      <Button variant="primary" size="sm">Confirm</Button>
                     </:confirm>
                   </Footer>
                 </:footer>
@@ -212,13 +212,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
                 <:footer>
                   <Footer>
                     <:cancel>
-                      <Button variant="secondary" size="small">Cancel</Button>
+                      <Button variant="secondary" size="sm">Cancel</Button>
                     </:cancel>
                     <:clear>
-                      <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                      <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
                     </:clear>
                     <:confirm>
-                      <Button variant="primary" size="small">Confirm</Button>
+                      <Button variant="primary" size="sm">Confirm</Button>
                     </:confirm>
                   </Footer>
                 </:footer>
@@ -416,13 +416,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:footer>
             <Footer>
               <:cancel>
-                <Button variant="secondary" size="small">Cancel</Button>
+                <Button variant="secondary" size="sm">Cancel</Button>
               </:cancel>
               <:clear>
-                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
               </:clear>
               <:confirm>
-                <Button variant="primary" size="small">Confirm</Button>
+                <Button variant="primary" size="sm">Confirm</Button>
               </:confirm>
             </Footer>
           </:footer>
@@ -454,13 +454,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:footer>
             <Footer>
               <:cancel>
-                <Button variant="secondary" size="small">Cancel</Button>
+                <Button variant="secondary" size="sm">Cancel</Button>
               </:cancel>
               <:clear>
-                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
               </:clear>
               <:confirm>
-                <Button variant="primary" size="small">Confirm</Button>
+                <Button variant="primary" size="sm">Confirm</Button>
               </:confirm>
             </Footer>
           </:footer>
@@ -487,13 +487,13 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           <:footer>
             <Footer>
               <:cancel>
-                <Button variant="secondary" size="small">Cancel</Button>
+                <Button variant="secondary" size="sm">Cancel</Button>
               </:cancel>
               <:clear>
-                <Button variant="ghost" size="small" on_click="clear_selections">Clear</Button>
+                <Button variant="ghost" size="sm" on_click="clear_selections">Clear</Button>
               </:clear>
               <:confirm>
-                <Button variant="primary" size="small">Confirm</Button>
+                <Button variant="primary" size="sm">Confirm</Button>
               </:confirm>
             </Footer>
           </:footer>
