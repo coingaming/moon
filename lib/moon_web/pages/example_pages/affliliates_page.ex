@@ -63,13 +63,12 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               </div>
               <Button
                 variant="danger"
-                size="medium"
                 class="flex-none rounded border-bulma-100 mt-2"
                 on_click="save_segment_form_cancel"
               >
                 Cancel
               </Button>
-              <Button type="submit" variant="primary" size="medium" class="flex-none mt-2 rounded">
+              <Button type="submit" variant="primary" class="flex-none mt-2 rounded">
                 <span class="px-2">Save</span>
               </Button>
             </Form>
@@ -92,7 +91,7 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
               {/if}
 
               <Divider orientation="vertical" />
-              <Button variant="danger" size="medium" on_click="clear_all_filters">Clear All</Button>
+              <Button variant="danger" on_click="clear_all_filters">Clear All</Button>
             </ButtonsList>
 
             <Table

@@ -17,7 +17,7 @@ defmodule Moon.Components.Calendar do
     ~F"""
     <div class="min-w-min">
       <div class="flex items-center mb-6">
-        <Button class="font-semibold rounded-lg" variant="tertiary" size="medium" on_click="set_today">
+        <Button class="font-semibold rounded-lg" variant="tertiary" on_click="set_today">
           Today
         </Button>
 
@@ -34,7 +34,7 @@ defmodule Moon.Components.Calendar do
         </div>
 
         <div class="grow text-right">
-          <Button class="font-semibold rounded-lg" variant="tertiary" size="medium" on_click="toggle_view">
+          <Button class="font-semibold rounded-lg" variant="tertiary" on_click="toggle_view">
             <span :if={@show_month}>
               Month
             </span>

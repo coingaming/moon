@@ -38,7 +38,7 @@ defmodule MoonWeb.Pages.MainPage do
               <span>Try out Moon DS for
               </span>
               <a href="https://moon.io/" target="_blank" rel="noreferrer">
-                <Button size="small">React</Button>
+                <Button size="sm">React</Button>
               </a>
             </p>
           </div>

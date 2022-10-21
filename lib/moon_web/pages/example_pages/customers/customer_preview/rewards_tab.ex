@@ -12,18 +12,18 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
     <div class="flex-1 h-full w-full">
       <div class="flex justify-between pt-6">
         <LeftToRight>
-          <Button size="small" right_icon="icon_chevron_down_rounded" class="rounded bg-goku-100 mr-4">
+          <Button size="sm" right_icon="icon_chevron_down_rounded" class="rounded bg-goku-100 mr-4">
             <Text size="14" class="capitalize text-gohan-80">Lifetime</Text>
           </Button>
 
-          <Button size="small" right_icon="icon_chevron_down_rounded" class="rounded bg-goku-100">
+          <Button size="sm" right_icon="icon_chevron_down_rounded" class="rounded bg-goku-100">
             <Text size="14" class="capitalize text-gohan-80">More Filters</Text>
           </Button>
         </LeftToRight>
 
         <LeftToRight>
           <Button
-            size="small"
+            size="sm"
             variant="primary"
             right_icon="icon_chevron_down_rounded"
             class="rounded bg-goku-100 mr-4"
@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.RewardsTab do
           </Button>
 
           <Button
-            size="small"
+            size="sm"
             variant="primary"
             right_icon="icon_chevron_down_rounded"
             class="rounded bg-goku-100"
