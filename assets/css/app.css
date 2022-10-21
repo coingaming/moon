@@ -46,7 +46,6 @@ body {
     @apply rtl:rounded-moon-i-md rtl:rounded-moon-i-md;
   }
 
-
   .moon-input-group.vertical > div:first-child input {
     @apply rounded-bl-none rounded-br-none input-bbb-hidden;
   }
@@ -144,4 +143,9 @@ input.date-icon-hidden[type="datetime-local"]::-webkit-inner-spin-button,
 input.date-icon-hidden[type="datetime-local"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
 }

@@ -120,7 +120,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     """
   end
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user_changeset =
       User.changeset(%User{}, %{
         role: 1
@@ -128,10 +128,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
 
     {:ok,
      assign(socket,
-       user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset: user_changeset
      )}
   end
 

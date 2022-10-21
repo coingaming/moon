@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
       }
     ]
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     gender_options = [
       [key: "Female", value: "female"],
       [key: "Male", value: "male"],
@@ -70,10 +70,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
     {:ok,
      assign(socket,
        gender_options: gender_options,
-       user_changeset: user_changeset,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset: user_changeset
      )}
   end
 

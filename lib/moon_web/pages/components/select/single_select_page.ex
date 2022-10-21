@@ -131,7 +131,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   data latest_params, :any, default: nil
   data latest_params2, :any, default: nil
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     gender_options = [
@@ -150,10 +150,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
        user: user,
        user_changeset: user_changeset,
        gender_options: gender_options,
-       user_changeset2: user_changeset2,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
+       user_changeset2: user_changeset2
      )}
   end
 

@@ -17,13 +17,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     ]
 
   def mount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__,
-       selected_role: params["role"] || designer_role()
-     )}
+    {:ok, assign(socket, selected_role: params["role"] || designer_role())}
   end
 
   def render(assigns) do

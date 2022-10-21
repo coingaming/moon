@@ -83,13 +83,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
     ]
 
   def mount(params, _session, socket) do
-    {:ok,
-     assign(socket,
-       tab_id: params["tab_id"] || "1",
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
-       active_page: __MODULE__
-     )}
+    {:ok, assign(socket, tab_id: params["tab_id"] || "1")}
   end
 
   def handle_params(params, uri, socket) do
@@ -110,16 +104,16 @@ defmodule MoonWeb.Pages.Components.TabsPage do
           <Tabs>
             <TabLink
               active={@tab_id == "1"}
-              to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name)}
+              to={live_path(@socket, __MODULE__, tab_id: "1", theme_name: @theme_name, direction: @direction)}
             >Link 1</TabLink>
             <TabLink
               active={@tab_id == "2"}
-              to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name)}
+              to={live_path(@socket, __MODULE__, tab_id: "2", theme_name: @theme_name, direction: @direction)}
             >Link 2</TabLink>
             <TabLink
               active={@tab_id == "3"}
               patch
-              to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name)}
+              to={live_path(@socket, __MODULE__, tab_id: "3", theme_name: @theme_name, direction: @direction)}
             >Link 3 with url patch, no page reload</TabLink>
             <TabLink active={@tab_id == "4"} on_click="clicked_tab" item_id="4">Link 4</TabLink>
           </Tabs>
@@ -146,7 +140,12 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       ) do
     {:noreply,
      redirect(socket,
-       to: live_path(socket, __MODULE__, tab_id: item_id, theme_name: socket.assigns.theme_name)
+       to:
+         live_path(socket, __MODULE__,
+           tab_id: item_id,
+           theme_name: socket.assigns.theme_name,
+           direction: socket.assigns.direction
+         )
      )}
   end
 

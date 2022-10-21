@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
 
   data search_string, :string, default: ""
 
-  def mount(params, _session, socket) do
+  def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})
 
     user_permissions = User.available_permissions()
@@ -47,10 +47,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
        options_with_left_icon: user_permissions_with_left_icon,
        searched_options_with_left_icon: user_permissions_with_left_icon,
        search_string: "",
-       theme_name: params["theme_name"] || "moon-design-light",
-       direction: params["direction"] || "ltr",
        tab_id: "1",
-       active_page: __MODULE__,
        selected: [],
        latest_params: nil
      )}
