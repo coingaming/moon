@@ -1,7 +1,7 @@
 defmodule MoonWeb.Components.PreviewCodeButton do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use MoonWeb, :stateless_component
 
   alias Moon.Components.Button
 
@@ -38,9 +38,5 @@ defmodule MoonWeb.Components.PreviewCodeButton do
       </div>
     </div>
     """
-  end
-
-  def get_as_anchor_id(title) do
-    title |> String.replace(" ", "-")
   end
 end

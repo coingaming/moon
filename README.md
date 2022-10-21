@@ -24,7 +24,7 @@ If `./run-locally-dev.sh` is not working, try the following steps:
    `asdf plugin add nodejs`
 2. Run `asdf install`. This will install all the tool versions specified in the _.tool_versions_ file
    Or you can install each tool version manually by typing:  
-   `asdf install erlang`  # and follow https://github.com/asdf-vm/asdf-erlang#asdf-erlang on fail (e.g. `export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"`)
+   `asdf install erlang`  # and follow https://github.com/asdf-vm/asdf-erlang#asdf-erlang on fail (e.g. `export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac"`)
    `asdf install elixir`  
    `asdf install nodejs`
 

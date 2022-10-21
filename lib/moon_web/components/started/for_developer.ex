@@ -6,21 +6,31 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
   alias MoonWeb.Components.CodeSnippet
   alias MoonWeb.Components.PageSection
 
+  data(theme_name, :string, from_context: :theme_name)
+  data(direction, :string, from_context: :direction)
+
   def render(assigns) do
     ~F"""
     <PageSection title="Requirements">
       <p>
-        Can be used for new and existing Phoenix project that uses LiveView 0.7.x
+        Can be used for new and existing Phoenix project that uses LiveView
       </p>
       <p>
-        Moon Surface components can be used from SLIM and EEX, but recommended new format is
+        Moon Surface components
+        <a
+          class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+          href={"#{live_path(MoonWeb.Endpoint, MoonWeb.Pages.PhoenixUsagePage, theme_name: @theme_name, direction: @direction)}"}
+        >
+          can be used from SLIM and EEX templates
+        </a>
+        , but recommended format is
         <a
           class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           href="https://surface-ui.org/"
           rel="nofollow"
           target="_blank"
         >
-          Surface
+          Surface v0.7.x
         </a>
         +
         <a

@@ -14,7 +14,7 @@ defmodule Moon.Components.Select.Dropdown.Icon do
 
     ~F"""
     <div class={@class} style={@style}>
-      {Moon.RenderHelpers.render_component(module, props)}
+      {Moon.Helpers.MoonRender.moon_component(module, props)}
     </div>
     """
   end
