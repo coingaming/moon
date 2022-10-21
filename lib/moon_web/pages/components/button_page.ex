@@ -24,18 +24,25 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   data props_info_array, :list,
     default: [
       %{
-        :name => 'variant',
-        :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
+        :name => 'animation',
+        :type => 'progress | success | error | pulse',
         :required => 'false',
-        :default => 'primary',
-        :description => 'Visual/Logical variant of Button'
+        :default => '-',
+        :description => 'Animation of button'
       },
       %{
-        :name => 'size',
-        :type => 'xsmall | small | medium | large | xlarge',
+        :name => 'disabled',
+        :type => 'boolean',
         :required => 'false',
-        :default => 'medium',
-        :description => 'Size of Button'
+        :default => 'false',
+        :description => 'Disabled Button'
+      },
+      %{
+        :name => 'fullWidth',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Full width Button'
       },
       %{
         :name => 'left_icon',
@@ -52,18 +59,18 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         :description => 'Asset name for the right icon'
       },
       %{
-        :name => 'fullWidth',
-        :type => 'boolean',
+        :name => 'size',
+        :type => 'xs | sm | md | lg | xl',
         :required => 'false',
-        :default => 'false',
-        :description => 'Full width Button'
+        :default => 'md',
+        :description => 'Size of button'
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
+        :name => 'variant',
+        :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
         :required => 'false',
-        :default => 'false',
-        :description => 'Disabled Button'
+        :default => 'primary',
+        :description => 'Visual/Logical variant of button'
       }
     ]
 
