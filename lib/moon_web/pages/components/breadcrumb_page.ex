@@ -71,23 +71,33 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       }
     ]
 
+  data breadcrumb_items_3, :list,
+    default: [
+      %Crumb{
+        name: "Home",
+        link: "/app/home"
+      },
+      %Crumb{
+        name: "Corporate",
+        link: "/app/corporate"
+      },
+      %Crumb{
+        name: "About",
+        link: "/app/corporate/about"
+      },
+      %Crumb{
+        name: "Jobs",
+        link: "/app/corporate/about/jobs"
+      }
+    ]
+
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={32}>Breadcrumb</Heading>
 
-        <ExampleAndCode title="Extended" id="breadcrumb_1">
-          <:example>
-            <div class="flex justify-center items-center py-1">
-              <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
-            </div>
-          </:example>
-
-          <:code>{breadcrumb_1_code()}</:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode title="Collapsed" id="breadcrumb_2">
+        <ExampleAndCode title="Five or more items" id="breadcrumbs_2">
           <:example>
             <div class="flex justify-center items-center">
               <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
@@ -95,6 +105,26 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
           </:example>
 
           <:code>{breadcrumb_2_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Four items" id="breadcrumbs_3">
+          <:example>
+            <div class="flex justify-center items-center py-1">
+              <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
+            </div>
+          </:example>
+
+          <:code>{breadcrumb_3_code()}</:code>
+        </ExampleAndCode>
+
+        <ExampleAndCode title="Two items" id="breadcrumbs_1">
+          <:example>
+            <div class="flex justify-center items-center py-1">
+              <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
+            </div>
+          </:example>
+
+          <:code>{breadcrumb_1_code()}</:code>
         </ExampleAndCode>
 
         <div>
@@ -166,7 +196,31 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         }
       ]
 
-    <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
+    <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
+    """
+  end
+
+  def breadcrumb_3_code do
+    """
+    data breadcrumb_items_3, :list,
+      default: [
+        %Crumb{
+          name: "Home",
+          link: "/app/home"
+        },
+        %Crumb{
+          name: "Corporate",
+          link: "/app/corporate"
+        },
+        %Crumb{
+          name: "About",
+          link: "/app/corporate/about"
+        },
+        %Crumb{
+          name: "Jobs",
+          link: "/app/corporate/about/jobs"
+        }
+      ]
     """
   end
 end
