@@ -1,3 +1,10 @@
+## [2.30.3](https://github.com/coingaming/moon/compare/v2.30.2...v2.30.3) (2022-10-23)
+
+
+### Bug Fixes
+
+* do some missed alignments with React button [MDS-255] ([#422](https://github.com/coingaming/moon/issues/422)) ([8364b7a](https://github.com/coingaming/moon/commit/8364b7aa58aa618d8d1849c11895cf5892ad1b9f))
+
 ## [2.30.2](https://github.com/coingaming/moon/compare/v2.30.1...v2.30.2) (2022-10-21)
 
 
