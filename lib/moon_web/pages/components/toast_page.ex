@@ -122,9 +122,9 @@ defmodule MoonWeb.Pages.Components.ToastPage do
 
       <ExampleAndCode title="Appearing and disappearing" id="toast_2">
         <:example>
-          <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="small">Show one toast</Button>
+          <Button variant="primary" on_click="show_one_toast" class="block mb-4" size="sm">Show one toast</Button>
 
-          <Button variant="primary" on_click="show_two_toasts" class="block" size="small">Show two toasts</Button>
+          <Button variant="primary" on_click="show_two_toasts" class="block" size="sm">Show two toasts</Button>
         </:example>
 
         <:code>{toast_2_code()}</:code>
@@ -139,7 +139,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             variant={toast.variant}
           />
 
-          <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="small">Show all</Button>
+          <Button variant="primary" on_click="show_variant_toasts" class="block mt-2" size="sm">Show all</Button>
         </:example>
 
         <:code>{toast_3_code()}</:code>
@@ -157,7 +157,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
             closeable={toast.closeable}
           />
 
-          <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="small">Show all</Button>
+          <Button variant="primary" on_click="show_action_toasts" class="block mt-2" size="sm">Show all</Button>
         </:example>
 
         <:code>{toast_4_code()}</:code>

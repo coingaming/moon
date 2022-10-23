@@ -40,6 +40,7 @@ defmodule Moon.Components.Button do
 
   prop left_icon, :string
   prop right_icon, :string
+  prop icon_only, :string
 
   prop testid, :string
 
@@ -48,6 +49,7 @@ defmodule Moon.Components.Button do
   slot default
   slot right_icon_slot
   slot left_icon_slot
+  slot icon_only_slot
 
   def render(assigns) do
     ~F"""
@@ -101,17 +103,23 @@ defmodule Moon.Components.Button do
           <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
         {/if}
       </span>
-      <span class={"opacity-0": @animation in ["success", "progress"]}>
-        {#if slot_assigned?(:left_icon_slot)}
-          <#slot name="left_icon_slot" />
+      <span class={"flex justify-center items-center gap-2", "opacity-0": @animation in ["success", "progress"]}>
+        {#if slot_assigned?(:icon_only_slot)}
+          <#slot name="icon_only_slot" />
+        {#elseif @icon_only != nil}
+          <Icon name={@icon_only} class={icon_class(@size)} :if={@icon_only} />
         {#else}
-          <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
-        {/if}
-        <#slot />
-        {#if slot_assigned?(:right_icon_slot)}
-          <#slot name="right_icon_slot" />
-        {#else}
-          <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+          {#if slot_assigned?(:left_icon_slot)}
+            <#slot name="left_icon_slot" />
+          {#else}
+            <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+          {/if}
+          <#slot />
+          {#if slot_assigned?(:right_icon_slot)}
+            <#slot name="right_icon_slot" />
+          {#else}
+            <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+          {/if}
         {/if}
       </span>
       <span class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
