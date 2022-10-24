@@ -1,3 +1,10 @@
+## [2.30.4](https://github.com/coingaming/moon/compare/v2.30.3...v2.30.4) (2022-10-24)
+
+
+### Bug Fixes
+
+* align Breadcrumb docs with React [MDS-254] ([#423](https://github.com/coingaming/moon/issues/423)) ([58f6a5f](https://github.com/coingaming/moon/commit/58f6a5fa1596ce51b047fc94530da1464bb3ba2d))
+
 ## [2.30.3](https://github.com/coingaming/moon/compare/v2.30.2...v2.30.3) (2022-10-23)
 
 
