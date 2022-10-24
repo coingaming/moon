@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/home"
       },
       %Crumb{
-        name: "Corporate",
+        name: "Current Page",
         link: "/app/corporate"
       }
     ]
@@ -66,7 +66,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/corporate/about/jobs"
       },
       %Crumb{
-        name: "Contact",
+        name: "Current Page",
         link: "/app/corporate/about/jobs/contact"
       }
     ]
@@ -86,7 +86,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/corporate/about"
       },
       %Crumb{
-        name: "Jobs",
+        name: "Current Page",
         link: "/app/corporate/about/jobs"
       }
     ]
@@ -94,7 +94,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   data breadcrumb_items_4, :list,
     default: [
       %Crumb{
-        name: "Home",
+        name: "Current Page",
         link: "/app/home"
       }
     ]
