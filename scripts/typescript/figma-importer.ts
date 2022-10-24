@@ -151,7 +151,7 @@ const extractIds = [
   "space-xlarge",
   "transition-slow",
   "transition-default",
-  ...boxShadowIds.map((x) => `${x}`),
+  ...boxShadowIds.map((x) => `light-${x}`),
   ...boxShadowIds.map((x) => `dark-${x}`),
   "opacity-disabled",
   "font-family",
@@ -172,11 +172,20 @@ const writeThemeFile = (name: string, content: string) => {
   fs.writeFileSync(`${exportDir}/${name}`, content);
 };
 
+const notifyIfSomeKeyMissing = (theme: ThemeConf, figmaConfig: any) => {
+  const missingIds = extractIds.filter(x => !figmaConfig[x]).sort();
+  if (missingIds.length > 0) {
+    console.error(theme, "Missing keys", missingIds);
+  }
+};
+
 themes.map(async (theme: ThemeConf) => {
   const conf = await getFigmaObjTree(accessToken, theme.fileId);
   const elements = getFlatChildren(conf.document.children);
 
   const figmaConfig = getFigmaConfig(elements);
+
+  notifyIfSomeKeyMissing(theme, figmaConfig);
 
   // console.log(figmaConfig);
 
@@ -253,12 +262,14 @@ ${fontFaceCss}
 .${theme.name}-light {
   ${sharedCssVarsAndValues}
 
-  --box-shadow--sm:  ${figmaConfig["box-shadow-sm"]}
-  --box-shadow:  ${figmaConfig["box-shadow-md"]}
-  --box-shadow--md:  ${figmaConfig["box-shadow-md"]}
-  --box-shadow--default:  ${figmaConfig["box-shadow-md"]}
-  --box-shadow--lg:  ${figmaConfig["box-shadow-lg"]}
-  --box-shadow--xl:  ${figmaConfig["box-shadow-xl"]}
+  ${boxShadowIds
+    .map(
+      (x) => `
+  --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["light-"+x]};`
+    )
+    .join("")}
+  --box-shadow:  ${figmaConfig["light-box-shadow-md"]};
+  --box-shadow--default:  ${figmaConfig["light-box-shadow-md"]};
 
   ${colorIds
     .map(
@@ -276,12 +287,15 @@ ${fontFaceCss}
 .${theme.name}-dark {
   ${sharedCssVarsAndValues}
 
-  --box-shadow--sm:  ${figmaConfig["dark-box-shadow-sm"]};
+  ${boxShadowIds
+    .map(
+      (x) => `
+      --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["dark-"+x]};
+      `
+    )
+    .join("")}
   --box-shadow:  ${figmaConfig["dark-box-shadow-md"]};
-  --box-shadow--md:  ${figmaConfig["dark-box-shadow-md"]};
   --box-shadow--default:  ${figmaConfig["dark-box-shadow-md"]};
-  --box-shadow--lg:  ${figmaConfig["dark-box-shadow-lg"]};
-  --box-shadow--xl:  ${figmaConfig["dark-box-shadow-xl"]};
 
   ${colorIds
     .map(

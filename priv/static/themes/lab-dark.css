@@ -67,12 +67,17 @@
   --color--background: var(--color--gohan-100);
   
 
-  --box-shadow--sm:  undefined;
+  
+      --box-shadow--sm: undefined;
+      
+      --box-shadow--md: undefined;
+      
+      --box-shadow--lg: undefined;
+      
+      --box-shadow--xl: undefined;
+      
   --box-shadow:  undefined;
-  --box-shadow--md:  undefined;
   --box-shadow--default:  undefined;
-  --box-shadow--lg:  undefined;
-  --box-shadow--xl:  undefined;
 
   
   --color--krillin-100: #F5A300;
