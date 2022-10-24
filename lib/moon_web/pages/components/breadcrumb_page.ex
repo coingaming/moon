@@ -145,7 +145,6 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
           <:code>{breadcrumb_4_code()}</:code>
         </ExampleAndCode>
 
-
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
           <Table items={@props_info_array}>
