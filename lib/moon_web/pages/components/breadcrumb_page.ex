@@ -91,6 +91,14 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       }
     ]
 
+  data breadcrumb_items_4, :list,
+    default: [
+      %Crumb{
+        name: "Home",
+        link: "/app/home"
+      }
+    ]
+
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
@@ -126,6 +134,17 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
 
           <:code>{breadcrumb_1_code()}</:code>
         </ExampleAndCode>
+
+        <ExampleAndCode title="One item" id="breadcrumbs_4">
+          <:example>
+            <div class="flex justify-center items-center py-1">
+              <Breadcrumb id="breadcrumb_4" breadcrumbs={@breadcrumb_items_4} />
+            </div>
+          </:example>
+
+          <:code>{breadcrumb_4_code()}</:code>
+        </ExampleAndCode>
+
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Props</div>
@@ -221,6 +240,20 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
           link: "/app/corporate/about/jobs"
         }
       ]
+    """
+  end
+
+  def breadcrumb_4_code do
+    """
+    data breadcrumb_items_4, :list,
+      default: [
+        %Crumb{
+          name: "Home",
+          link: "/app/home"
+        }
+      ]
+
+    <Breadcrumb id="breadcrumb_4" breadcrumbs={@breadcrumb_items_4} />
     """
   end
 end
