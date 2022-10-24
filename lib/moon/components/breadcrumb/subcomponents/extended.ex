@@ -16,7 +16,6 @@ defmodule Moon.Components.Breadcrumb.Extended do
             <ArrowsRight class="rtl:rotate-180" :if={index != 0} />
             <span class={
               "transition-colors duration-200 hover:text-bulma-100",
-              "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1,
               "text-bulma-100 font-medium": index == Enum.count(@breadcrumbs) - 1
             }>
               <a href={crumb.link}>{crumb.name}</a>
