@@ -260,7 +260,7 @@ themes.map(async (theme: ThemeConf) => {
   background-color: var(--color--background);
 
   --color--text: var(--color--bulma-100);
-  --color--background: var(--color--gohan-100);
+  --color--background: var(--color--goku-100);
   `;
 
   const lightThemeCss = `

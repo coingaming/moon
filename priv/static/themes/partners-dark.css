@@ -66,7 +66,7 @@
   background-color: var(--color--background);
 
   --color--text: var(--color--bulma-100);
-  --color--background: var(--color--gohan-100);
+  --color--background: var(--color--goku-100);
   
 
   
@@ -108,7 +108,7 @@
   --color--piccolo-100: #4E46B4;
   --color--hit-100: #77777E;
   --color--beerus-100: #E0E0E1;
-  --color--gohan-100: #F5F5F6;
+  --color--gohan-100: #FFFFFF;
   --color--goten-100: #FFFFFF;
   --color--goku-100: #F5F5F6;
   --color--bulma-100: #222225;
