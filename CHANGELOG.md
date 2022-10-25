@@ -1,3 +1,25 @@
+## [2.30.6](https://github.com/coingaming/moon/compare/v2.30.5...v2.30.6) (2022-10-25)
+
+
+### Bug Fixes
+
+* figma importer lists missing vars + fix partners theme ([#425](https://github.com/coingaming/moon/issues/425)) ([1e6fb98](https://github.com/coingaming/moon/commit/1e6fb9821eda56e92a12b3fb6656e71ae295039d))
+* Remove text on code preview button on mobile ([#428](https://github.com/coingaming/moon/issues/428)) ([527701c](https://github.com/coingaming/moon/commit/527701ceb98342e5600a850d54a8bbf30885bd44))
+
+## [2.30.5](https://github.com/coingaming/moon/compare/v2.30.4...v2.30.5) (2022-10-25)
+
+
+### Bug Fixes
+
+* Add testid to div containing ControlsClose in modal.ex ([#426](https://github.com/coingaming/moon/issues/426)) ([f425c2a](https://github.com/coingaming/moon/commit/f425c2a1343953cb4e7bddec5ccd3c7b96e91ff1))
+
+## [2.30.4](https://github.com/coingaming/moon/compare/v2.30.3...v2.30.4) (2022-10-24)
+
+
+### Bug Fixes
+
+* align Breadcrumb docs with React [MDS-254] ([#423](https://github.com/coingaming/moon/issues/423)) ([58f6a5f](https://github.com/coingaming/moon/commit/58f6a5fa1596ce51b047fc94530da1464bb3ba2d))
+
 ## [2.30.3](https://github.com/coingaming/moon/compare/v2.30.2...v2.30.3) (2022-10-23)
 
 
