@@ -1,3 +1,11 @@
+## [2.30.6](https://github.com/coingaming/moon/compare/v2.30.5...v2.30.6) (2022-10-25)
+
+
+### Bug Fixes
+
+* figma importer lists missing vars + fix partners theme ([#425](https://github.com/coingaming/moon/issues/425)) ([1e6fb98](https://github.com/coingaming/moon/commit/1e6fb9821eda56e92a12b3fb6656e71ae295039d))
+* Remove text on code preview button on mobile ([#428](https://github.com/coingaming/moon/issues/428)) ([527701c](https://github.com/coingaming/moon/commit/527701ceb98342e5600a850d54a8bbf30885bd44))
+
 ## [2.30.5](https://github.com/coingaming/moon/compare/v2.30.4...v2.30.5) (2022-10-25)
 
 
