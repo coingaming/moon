@@ -26,11 +26,11 @@
   --border-width: 1px;
   --border-i-width: undefined;
 
-  --breakpoint--sm: undefined;
-  --breakpoint--md: undefined;
-  --breakpoint--lg: undefined;
-  --breakpoint--xl: undefined;
-  --breakpoint--2xl: undefined;
+  --breakpoint--sm: 640px;
+  --breakpoint--md: 768px;
+  --breakpoint--lg: 1024px;
+  --breakpoint--xl: 1280px;
+  --breakpoint--2xl: 1536px;
 
   --opacity--disabled: 240ms;
 
@@ -68,16 +68,12 @@
   
 
   
-      --box-shadow--sm: undefined;
-      
-      --box-shadow--md: undefined;
-      
-      --box-shadow--lg: undefined;
-      
-      --box-shadow--xl: undefined;
-      
-  --box-shadow:  undefined;
-  --box-shadow--default:  undefined;
+  --box-shadow--sm: 0px 6px 6px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--md: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--lg: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--xl: 0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2);
+  --box-shadow:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--default:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
 
   
   --color--krillin-100: #F5A300;

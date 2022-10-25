@@ -26,11 +26,11 @@
   --border-width: 1px;
   --border-i-width: undefined;
 
-  --breakpoint--sm: undefined;
-  --breakpoint--md: undefined;
-  --breakpoint--lg: undefined;
-  --breakpoint--xl: undefined;
-  --breakpoint--2xl: undefined;
+  --breakpoint--sm: 640px;
+  --breakpoint--md: 768px;
+  --breakpoint--lg: 1024px;
+  --breakpoint--xl: 1280px;
+  --breakpoint--2xl: 1536px;
 
   --opacity--disabled: 240ms;
 

@@ -1,3 +1,7 @@
+// PLEASE ENSURE THAT YOU UPDATE ALL FIGMA FILES IF YOU MAKE CHANGES HERE
+// Also you need to run the importer to validate, that your changes work. 
+// TODO theme manager GUI for Moon 
+
 import * as fs from "fs";
 import fetch from "node-fetch";
 
@@ -129,6 +133,7 @@ const boxShadowIds = [
 ];
 
 const extractIds = [
+  "base-space",
   "radius-i-xs",
   "radius-i-sm",
   "radius-i-md",
@@ -141,6 +146,7 @@ const extractIds = [
   "breakpoint-lg",
   "breakpoint-xl",
   "breakpoint-2xl",
+  "border-style",
   "border-width",
   "border-i-width",
   "space-xsmall",
@@ -290,12 +296,11 @@ ${fontFaceCss}
   ${boxShadowIds
     .map(
       (x) => `
-      --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["dark-"+x]};
-      `
+  --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["dark-"+x] || figmaConfig["light-"+x]};`
     )
     .join("")}
-  --box-shadow:  ${figmaConfig["dark-box-shadow-md"]};
-  --box-shadow--default:  ${figmaConfig["dark-box-shadow-md"]};
+  --box-shadow:  ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
+  --box-shadow--default:  ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
 
   ${colorIds
     .map(
