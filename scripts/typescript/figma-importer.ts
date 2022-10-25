@@ -217,8 +217,10 @@ themes.map(async (theme: ThemeConf) => {
   --base--font-size: ${figmaConfig["font-size"]};
   --base--line-height: 24px;
 
-  --border-width: ${figmaConfig["border-width"]};
-  --border-i-width: ${figmaConfig["border-i-width"]};
+  --border-style: solid;
+  --border-width: ${figmaConfig["border-width"] || "1px"};
+  --border-i-width: ${figmaConfig["border-i-width" || "2px"]};
+  --border: 1px solid;
 
   --breakpoint--sm: ${figmaConfig["breakpoint-sm"]};
   --breakpoint--md: ${figmaConfig["breakpoint-md"]};
