@@ -1,3 +1,10 @@
+## [2.30.5](https://github.com/coingaming/moon/compare/v2.30.4...v2.30.5) (2022-10-25)
+
+
+### Bug Fixes
+
+* Add testid to div containing ControlsClose in modal.ex ([#426](https://github.com/coingaming/moon/issues/426)) ([f425c2a](https://github.com/coingaming/moon/commit/f425c2a1343953cb4e7bddec5ccd3c7b96e91ff1))
+
 ## [2.30.4](https://github.com/coingaming/moon/compare/v2.30.3...v2.30.4) (2022-10-24)
 
 
