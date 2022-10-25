@@ -20,11 +20,11 @@
   
 .partners-dark {
   
-  --base--font-size: 14;
+  --base--font-size: 16px;
   --base--line-height: 24px;
 
-  --border-width: 1px;
-  --border-i-width: undefined;
+  --border-width: 1px solid;
+  --border-i-width: 2px solid;
 
   --breakpoint--sm: 640px;
   --breakpoint--md: 768px;

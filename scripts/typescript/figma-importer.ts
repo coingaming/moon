@@ -133,7 +133,6 @@ const boxShadowIds = [
 ];
 
 const extractIds = [
-  "base-space",
   "radius-i-xs",
   "radius-i-sm",
   "radius-i-md",
@@ -146,7 +145,6 @@ const extractIds = [
   "breakpoint-lg",
   "breakpoint-xl",
   "breakpoint-2xl",
-  "border-style",
   "border-width",
   "border-i-width",
   "space-xsmall",
