@@ -23,8 +23,10 @@
   --base--font-size: 16;
   --base--line-height: 24px;
 
-  --border-width: 1px solid;
-  --border-i-width: 2px solid;
+  --border-style: solid;
+  --border-width: 1px; /* manual fix, because figma is broken */
+  --border-i-width: 2px; /* manual fix, because figma is broken */
+  --border: 1px solid;
 
   --breakpoint--sm: 640px;
   --breakpoint--md: 768px;
