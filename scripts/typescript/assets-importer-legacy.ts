@@ -255,17 +255,13 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
       <Heading size={56} class="mb-4">Crests</Heading>
       ${iconNames
@@ -320,17 +316,13 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
       <Heading size={56} class="mb-4">Currencies</Heading>
       ${iconNames
@@ -384,17 +376,13 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
       <Heading size={56} class="mb-4">Duotones</Heading>
       ${iconNames
@@ -447,17 +435,13 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Icons</Heading>
       
@@ -511,17 +495,13 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
       <Heading size={56} class="mb-4">Logos</Heading>
       ${iconNames
@@ -575,17 +555,13 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
       <Heading size={56} class="mb-4">Patterns</Heading>
       ${iconNames
