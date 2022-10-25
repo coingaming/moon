@@ -1,4 +1,5 @@
 
+
 @font-face {
   font-family: Averta Std;
   font-style: normal;
@@ -16,120 +17,98 @@
   font-weight: 500;
   src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
 }
-
+  
 .partners-dark {
---base--space: 16px;
---base--font-size: 16px;
---base--line-height: 20px;
+  
+  --base--font-size: 16px;
+  --base--line-height: 24px;
 
---border-style: solid;
---border-width: 1px;
---border-i-width: 2px;
---border: 1px solid;
---box-shadow: 0px 2.4px 7.2px rgba(0, 0, 0, 0.18), 0px 12.8px 28.8px rgba(0, 0, 0, 0.22);
+  --border-width: 1px solid;
+  --border-i-width: 2px solid;
 
---breakpoint--small: 500px;
---breakpoint--medium: 800px;
---breakpoint--large: 1080px;
---breakpoint--xlarge: 1200px;
+  --breakpoint--sm: 640px;
+  --breakpoint--md: 768px;
+  --breakpoint--lg: 1024px;
+  --breakpoint--xl: 1280px;
+  --breakpoint--2xl: 1536px;
 
---font-face--regular--font-family: Averta Std;
---font-face--regular--font-style: normal;
---font-face--regular--font-display: swap;
---font-face--regular--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
---font-face--regular--font-weight: 400;
---font-face--regular--src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
+  --opacity--disabled: 240ms;
 
---font-face--semibold--font-family: Averta Std;
---font-face--semibold--font-style: normal;
---font-face--semibold--font-display: swap;
---font-face--semibold--unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
---font-face--semibold--font-weight: 500;
---font-face--semibold--src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
-        
---font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
---font-size: 14;
---font-weight--normal: 400;
---font-weight--semibold: 500;
+  --radius-i-xs: 0.25rem;
+  --radius-i-sm: 0.5rem;
+  --radius-i-md: 0.75rem;
+  --radius-s-xs: 0.25rem;
+  --radius-s-sm: 0.5rem;
+  --radius-s-md: 0.75rem;
+  --radius-s-lg: 1rem;
 
---max-width--default: 1024;
---max-width--large: 1440;
+  --space--xsmall: 4px;
+  --space--small: 8px;
+  --space--default: 16px;
+  --space--medium: 24px;
+  --space--large: 32px;
+  --space--xlarge: 40px;
 
---opacity--disabled: 0.35;
+  --transition-duration--slow: 0.4s;
+  --transition-duration--default: 0.2s;
 
---radius--small: 4px;
---radius--default: 8px;
---radius--largest: 100px;
+  --z-index--carousel-control: 5;
+  --z-index--dialog: 10000;
+  --z-index--toggle: 1;
 
---space--xsmall: 4px;
---space--small: 8px;
---space--default: 16px;
---space--medium: 24px;
---space--large: 32px;
---space--xlarge: 40px;
+  font-family: Averta Std, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: var(--base--font-size);
+  line-height: var(--base--line-height);
+  color: var(--color--text);
+  background-color: var(--color--background);
 
---transition-duration--slow: 0.4s;
---transition-duration--default: 0.2s;
+  --color--text: var(--color--bulma-100);
+  --color--background: var(--color--gohan-100);
+  
 
---z-index--carousel-control: 5;
---z-index--dialog: 5;
---z-index--toggle: 1;
+  
+  --box-shadow--sm: 0px 6px 6px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--md: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--lg: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--xl: 0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2);
+  --box-shadow:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--default:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
 
---color--text: #FFFFFF;
---color--background: #232A33;
-        
---color--krillin-10: 255 228 173; /* #ffe4ad */
---color--krillin-100: 255 179 25; /* #ffb319 */
---color--chi-chi-10: 255 167 178; /* #ffa7b2 */
---color--chi-chi-100: 255 78 100; /* #ff4e64 */
---color--roshi-10: 182 243 208; /* #b6f3d0 */
---color--roshi-100: 12 214 100; /* #0cd664 */
---color--dodoria-10: 233 151 151; /* #e99797 */
---color--dodoria-100: 211 48 48; /* #d33030 */
---color--cell-10: 132 219 171; /* #84dbab */
---color--cell-100: 10 183 88; /* #0ab758 */
---color--raditz-10: 217 191 164; /* #d9bfa4 */
---color--raditz-100: 179 128 74; /* #b3804a */
---color--whis-10: 25 169 226; /* #19a9e2 */
---color--whis-100: 29 161 242; /* #1da1f2 */
---color--frieza-10: 182 163 233; /* #b6a3e9 */
---color--frieza-100: 92 51 207; /* #5c33cf */
---color--nappa-10: 184 170 167; /* #b8aaa7 */
---color--nappa-100: 114 85 80; /* #725550 */
---color--popo-100: 0 0 0; /* #000 */
---color--piccolo-80: 24 220 109; /* #18dc6d */
---color--piccolo-100: 12 207 97; /* #0ccf61 */
---color--piccolo-120: 2 192 84; /* #02c054 */
---color--hit-80: 69 74 84; /* #454a54 */
---color--hit-100: 57 62 71; /* #393e47 */
---color--hit-120: 45 49 57; /* #2d3139 */
---color--beerus-100: 49 55 63; /* #31373f */
---color--goku-10: 98 103 109; /* #62676d */
---color--goku-40: 76 81 89; /* #4c5159 */
---color--goku-80: 53 60 68; /* #353c44 */
---color--goku-100: 35 42 51; /* #232a33 */
---color--gohan-10: 140 144 149; /* #8c9095 */
---color--gohan-40: 95 100 106; /* #5f646a */
---color--gohan-80: 49 55 63; /* #31373f */
---color--gohan-100: 26 33 42; /* #1a212a */
---color--goten-100: 255 255 255; /* #ffffff */
---color--bulma-100: 255 255 255; /* #ffffff */
---color--trunks-100: 134 151 162; /* #8697a2 */
-
---radius-i-xs: 0.25rem; /* 4px */
---radius-i-sm: 0.5rem; /* 8px */
---radius-i-md: 0.75rem; /* 12px */
---radius-s-xs: 0.25rem; /* 4px */
---radius-s-sm: 0.5rem; /* 8px */
---radius-s-md: 0.75rem; /* 12px */
---radius-s-lg: 1rem; /* 16px */
-
-space: var(--base--space);
-font-size: var(--base--font-size);
-line-height: var(--base--line-height);
-color: var(--color--text);
-background-color: var(--color--background);
-font-family: var(--font-family);
-font-weight: var(--font-face--regular--font-weight);
+  
+  --color--krillin-100: #F5A300;
+  --color--krillin-60: #FFC95C;
+  --color--krillin-10: #FDF5E2;
+  --color--chi-chi-100: #FF1F39;
+  --color--chi-chi-60: #FF5C6F;
+  --color--chi-chi-10: #FFEBED;
+  --color--roshi-100: #0BC15A;
+  --color--roshi-60: #0DE76C;
+  --color--roshi-10: #DAFDE9;
+  --color--dodoria-100: #DC3618;
+  --color--dodoria-60: #ED705A;
+  --color--dodoria-10: #FCE4E0;
+  --color--cell-100: #28697B;
+  --color--cell-60: #3791A9;
+  --color--cell-10: #E0F0F5;
+  --color--raditz-100: #91673B;
+  --color--raditz-60: #C49A6E;
+  --color--raditz-10: #F3EBE2;
+  --color--whis-100: #0D53D3;
+  --color--whis-60: #3F7EF3;
+  --color--whis-10: #E4ECF9;
+  --color--frieza-100: #5C33CF;
+  --color--frieza-60: #8A67F4;
+  --color--frieza-10: #b6a3e9;
+  --color--nappa-100: #A52755;
+  --color--nappa-60: #D75B88;
+  --color--nappa-10: #F9E7EE;
+  --color--piccolo-100: #4E46B4;
+  --color--hit-100: #77777E;
+  --color--beerus-100: #E0E0E1;
+  --color--gohan-100: #FFFFFF;
+  --color--goten-100: #FFFFFF;
+  --color--goku-100: #F5F5F6;
+  --color--bulma-100: #222225;
+  --color--trunks-100: #77777E;
 }
-    
