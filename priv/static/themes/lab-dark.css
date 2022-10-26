@@ -79,39 +79,39 @@
   --box-shadow--default: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
 
   
-  --color--krillin-100: #F5A300;
-  --color--krillin-60: #FFC95C;
-  --color--krillin-10: #FDF5E2;
-  --color--chi-chi-100: #FF1F39;
-  --color--chi-chi-60: #FF5C6F;
-  --color--chi-chi-10: #FFEBED;
-  --color--roshi-100: #0BC15A;
-  --color--roshi-60: #0DE76C;
-  --color--roshi-10: #DAFDE9;
-  --color--dodoria-100: #DC3618;
-  --color--dodoria-60: #ED705A;
-  --color--dodoria-10: #FCE4E0;
-  --color--cell-100: #28697B;
-  --color--cell-60: #3791A9;
-  --color--cell-10: #E0F0F5;
-  --color--raditz-100: #91673B;
-  --color--raditz-60: #C49A6E;
-  --color--raditz-10: #F3EBE2;
-  --color--whis-100: #0D53D3;
-  --color--whis-60: #3F7EF3;
-  --color--whis-10: #E4ECF9;
-  --color--frieza-100: #5C33CF;
-  --color--frieza-60: #8A67F4;
-  --color--frieza-10: #F0ECFE;
-  --color--nappa-100: #A52755;
-  --color--nappa-60: #D75B88;
-  --color--nappa-10: #F9E7EE;
-  --color--piccolo-100: #4E46B4;
-  --color--hit-100: #0B0B0B;
-  --color--beerus-100: #1F1F1F;
-  --color--gohan-100: #1F1F1F;
-  --color--goten-100: #FFFFFF;
-  --color--goku-100: #0B0B0B;
-  --color--bulma-100: #FFFFFF;
-  --color--trunks-100: #999CA0;
+  --color--krillin-100: null; /* #F5A300 */
+  --color--krillin-60: null; /* #FFC95C */
+  --color--krillin-10: null; /* #FDF5E2 */
+  --color--chi-chi-100: null; /* #FF1F39 */
+  --color--chi-chi-60: null; /* #FF5C6F */
+  --color--chi-chi-10: null; /* #FFEBED */
+  --color--roshi-100: null; /* #0BC15A */
+  --color--roshi-60: null; /* #0DE76C */
+  --color--roshi-10: null; /* #DAFDE9 */
+  --color--dodoria-100: null; /* #DC3618 */
+  --color--dodoria-60: null; /* #ED705A */
+  --color--dodoria-10: null; /* #FCE4E0 */
+  --color--cell-100: null; /* #28697B */
+  --color--cell-60: null; /* #3791A9 */
+  --color--cell-10: null; /* #E0F0F5 */
+  --color--raditz-100: null; /* #91673B */
+  --color--raditz-60: null; /* #C49A6E */
+  --color--raditz-10: null; /* #F3EBE2 */
+  --color--whis-100: null; /* #0D53D3 */
+  --color--whis-60: null; /* #3F7EF3 */
+  --color--whis-10: null; /* #E4ECF9 */
+  --color--frieza-100: null; /* #5C33CF */
+  --color--frieza-60: null; /* #8A67F4 */
+  --color--frieza-10: null; /* #F0ECFE */
+  --color--nappa-100: null; /* #A52755 */
+  --color--nappa-60: null; /* #D75B88 */
+  --color--nappa-10: null; /* #F9E7EE */
+  --color--piccolo-100: 78 70 180; /* #4E46B4 */
+  --color--hit-100: 11 11 11; /* #0B0B0B */
+  --color--beerus-100: 31 31 31; /* #1F1F1F */
+  --color--gohan-100: 31 31 31; /* #1F1F1F */
+  --color--goten-100: 255 255 255; /* #FFFFFF */
+  --color--goku-100: 11 11 11; /* #0B0B0B */
+  --color--bulma-100: 255 255 255; /* #FFFFFF */
+  --color--trunks-100: 153 156 160; /* #999CA0 */
 }

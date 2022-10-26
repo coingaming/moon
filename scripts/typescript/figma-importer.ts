@@ -192,6 +192,7 @@ themes.map(async (theme: ThemeConf) => {
   notifyIfSomeKeyMissing(theme, figmaConfig);
 
   // console.log(figmaConfig);
+  console.log(figmaConfig);
 
   const fontFaceCss = `
 @font-face {
@@ -307,9 +308,9 @@ ${fontFaceCss}
   ${colorIds
     .map(
       (x) => `
-  --color--${x}: #${`${
+  --color--${x}: ${hexToRgb("#" + figmaConfig[`dark-color-${x}`])}; /* #${
         figmaConfig[`dark-color-${x}`] || figmaConfig[`light-color-${x}`]
-      }`.replace("#", "")};`
+      } */`
     )
     .join("")}
 }
