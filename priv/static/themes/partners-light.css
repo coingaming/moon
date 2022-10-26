@@ -67,9 +67,7 @@
   background-color: var(--color--background);
 
   --color--text: var(--color--bulma-100);
-  --color--background: var(--color--goku-100);
-  
-
+  --color--background: #F5F5F5;
   
   --box-shadow--sm: 0px 6px 6px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
   --box-shadow--md: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
@@ -111,7 +109,7 @@
   --color--beerus-100: 224 224 225; /* #E0E0E1 */
   --color--gohan-100: 255 255 255; /* #FFFFFF */
   --color--goten-100: 255 255 255; /* #FFFFFF */
-  --color--goku-100: 245 245 246; /* #F5F5F6 */
+  --color--goku-100: 255 255 255; /* #F5F5F6 */
   --color--bulma-100: 34 34 37; /* #222225 */
   --color--trunks-100: 119 119 126; /* #77777E */
 }
