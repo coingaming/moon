@@ -55,6 +55,7 @@ defmodule Moon.Components.Toast do
           class="inline-flex rounded-md hover:text-gray-500 focus:outline-none"
           :on-click={@on_close}
           phx-value-id={@id}
+          data-testid={"#{@id}-close-button"}
         >
           <span class="sr-only">Close</span>
           <IconErrorCircle class="w-5 h-5" font_size="1.25rem" color="trunks-100" />
