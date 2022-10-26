@@ -256,11 +256,11 @@ themes.map(async (theme: ThemeConf) => {
   font-weight: 400;
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
-  color: var(--color--text);
-  background-color: var(--color--goku-100);
+  color: rgba(var(--color--text));
+  background-color: rgba(var(--color--goku-100));
 
   --color--text: var(--color--bulma-100);
-  --color--background: var(--color--goku-100);
+  --color--background: rgba(var(--color--goku-100));
   `;
 
   const lightThemeCss = `
