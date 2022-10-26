@@ -5,7 +5,7 @@ console.log("Running assets importer");
 const rawDirIcons = "../../priv/static/svgs/icons_new";
 const exportDir = "../../lib/moon";
 
-const getFilesList = () => fs.readdirSync(`${rawDirIcons}`);
+const getFilesList = () => fs.readdirSync(`${rawDirIcons}`).filter(x => !x.includes(".gz"));
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -131,12 +131,12 @@ const writeAssetsDocumentationPage = (pageContent: string) => {
   if (!pageContent) {
     return console.error("no content");
   }
-  fs.writeFileSync(assetsDocDir + "icons_page.ex", pageContent);
+  fs.writeFileSync(assetsDocDir + "icons_page_full_list.ex", pageContent);
 };
 
 const generateAssetsDocumentationPageContent = (modules: string[]): string => {
   return `
-defmodule MoonWeb.Pages.IconsPage do
+defmodule MoonWeb.Pages.IconsPageFullList do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -155,17 +155,13 @@ defmodule MoonWeb.Pages.IconsPage do
       }
     ]
 
-  def mount(params, _session, socket) do
-    {:ok, assign(socket, theme_name: params["theme_name"] || "sportsbet-dark", active_page: __MODULE__)}
-  end
-
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
   end
 
   def render(assigns) do
     ~F"""
-    <Page theme_name={@theme_name} active_page={@active_page} breadcrumbs={@breadcrumbs}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Icons</Heading>
         
