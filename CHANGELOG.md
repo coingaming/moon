@@ -1,3 +1,10 @@
+## [2.30.8](https://github.com/coingaming/moon/compare/v2.30.7...v2.30.8) (2022-10-26)
+
+
+### Bug Fixes
+
+* Add testid to toast close button ([#431](https://github.com/coingaming/moon/issues/431)) ([bb2ea51](https://github.com/coingaming/moon/commit/bb2ea51517797ad1b15f093d4ee2ba74c7433f39))
+
 ## [2.30.7](https://github.com/coingaming/moon/compare/v2.30.6...v2.30.7) (2022-10-26)
 
 
