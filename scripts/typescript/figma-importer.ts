@@ -191,7 +191,6 @@ themes.map(async (theme: ThemeConf) => {
 
   notifyIfSomeKeyMissing(theme, figmaConfig);
 
-  // console.log(figmaConfig);
   console.log(figmaConfig);
 
   const fontFaceCss = `
