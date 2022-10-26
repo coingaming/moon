@@ -257,7 +257,7 @@ themes.map(async (theme: ThemeConf) => {
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
   color: var(--color--text);
-  background-color: var(--color--background);
+  background-color: var(--color--goku-100);
 
   --color--text: var(--color--bulma-100);
   --color--background: var(--color--goku-100);
@@ -275,8 +275,8 @@ ${fontFaceCss}
   --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["light-"+x]};`
     )
     .join("")}
-  --box-shadow:  ${figmaConfig["light-box-shadow-md"]};
-  --box-shadow--default:  ${figmaConfig["light-box-shadow-md"]};
+  --box-shadow: ${figmaConfig["light-box-shadow-md"]};
+  --box-shadow--default: ${figmaConfig["light-box-shadow-md"]};
 
   ${colorIds
     .map(
@@ -301,8 +301,8 @@ ${fontFaceCss}
   --${x.replace("box-shadow", "box-shadow-")}: ${figmaConfig["dark-"+x] || figmaConfig["light-"+x]};`
     )
     .join("")}
-  --box-shadow:  ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
-  --box-shadow--default:  ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
+  --box-shadow: ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
+  --box-shadow--default: ${figmaConfig["dark-box-shadow-md"] || figmaConfig["light-box-shadow-md"]};
 
   ${colorIds
     .map(

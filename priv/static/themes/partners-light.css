@@ -64,17 +64,19 @@
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
   color: var(--color--text);
-  background-color: var(--color--background);
+  background-color: var(--color--goku-100);
 
   --color--text: var(--color--bulma-100);
-  --color--background: #F5F5F5;
+  --color--background: var(--color--goku-100);
+  
+
   
   --box-shadow--sm: 0px 6px 6px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
   --box-shadow--md: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
   --box-shadow--lg: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
   --box-shadow--xl: 0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.2);
-  --box-shadow:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
-  --box-shadow--default:  0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+  --box-shadow--default: 0px 12px 12px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
 
   
   --color--krillin-100: 245 163 0; /* #F5A300 */
@@ -109,7 +111,7 @@
   --color--beerus-100: 224 224 225; /* #E0E0E1 */
   --color--gohan-100: 255 255 255; /* #FFFFFF */
   --color--goten-100: 255 255 255; /* #FFFFFF */
-  --color--goku-100: 255 255 255; /* #F5F5F6 */
+  --color--goku-100: 245 245 246; /* #F5F5F6 */
   --color--bulma-100: 34 34 37; /* #222225 */
   --color--trunks-100: 119 119 126; /* #77777E */
 }
