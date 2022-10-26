@@ -168,6 +168,7 @@ const getFigmaConfig = (elements: any[]): any => {
   return elements
     .filter((x: any) => extractIds.includes(x.name))
     .reduce((acc, curr) => {
+      if (acc[curr.name]) console.error("Duplicate key", curr.name, acc[curr.name], "=>", curr.characters.trim() );
       return { ...acc, [curr.name]: curr.characters.trim() };
     }, {});
 };
