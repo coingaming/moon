@@ -1,3 +1,10 @@
+## [2.30.7](https://github.com/coingaming/moon/compare/v2.30.6...v2.30.7) (2022-10-26)
+
+
+### Bug Fixes
+
+* Fix partners theme ([#430](https://github.com/coingaming/moon/issues/430)) ([ff8e22a](https://github.com/coingaming/moon/commit/ff8e22a6277178e3a84507643eb9144fd792ce1b))
+
 ## [2.30.6](https://github.com/coingaming/moon/compare/v2.30.5...v2.30.6) (2022-10-25)
 
 
