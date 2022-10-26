@@ -11,6 +11,7 @@ defmodule Moon.Components.Toast do
   alias Moon.Components.Link
 
   prop id, :string, required: true
+  prop testid, :string
   prop message, :string, required: true
   prop variant, :string, values: ~w(error warning info success)
   prop closeable, :boolean, default: true
@@ -55,6 +56,7 @@ defmodule Moon.Components.Toast do
           class="inline-flex rounded-md hover:text-gray-500 focus:outline-none"
           :on-click={@on_close}
           phx-value-id={@id}
+          data-testid={"#{@testid}-close-button"}
         >
           <span class="sr-only">Close</span>
           <IconErrorCircle class="w-5 h-5" font_size="1.25rem" color="trunks-100" />

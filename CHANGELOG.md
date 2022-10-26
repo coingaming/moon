@@ -1,3 +1,24 @@
+## [2.30.9](https://github.com/coingaming/moon/compare/v2.30.8...v2.30.9) (2022-10-26)
+
+
+### Bug Fixes
+
+* duplicate key warning ([#432](https://github.com/coingaming/moon/issues/432)) ([7fbf629](https://github.com/coingaming/moon/commit/7fbf629087077fa41cf6262bc7236d24fef6c685))
+
+## [2.30.8](https://github.com/coingaming/moon/compare/v2.30.7...v2.30.8) (2022-10-26)
+
+
+### Bug Fixes
+
+* Add testid to toast close button ([#431](https://github.com/coingaming/moon/issues/431)) ([bb2ea51](https://github.com/coingaming/moon/commit/bb2ea51517797ad1b15f093d4ee2ba74c7433f39))
+
+## [2.30.7](https://github.com/coingaming/moon/compare/v2.30.6...v2.30.7) (2022-10-26)
+
+
+### Bug Fixes
+
+* Fix partners theme ([#430](https://github.com/coingaming/moon/issues/430)) ([ff8e22a](https://github.com/coingaming/moon/commit/ff8e22a6277178e3a84507643eb9144fd792ce1b))
+
 ## [2.30.6](https://github.com/coingaming/moon/compare/v2.30.5...v2.30.6) (2022-10-25)
 
 
