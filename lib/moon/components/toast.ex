@@ -23,7 +23,13 @@ defmodule Moon.Components.Toast do
   defmodule Message do
     @moduledoc false
 
-    defstruct id: nil, message: nil, variant: nil, closeable: true, link_text: nil, link_href: nil
+    defstruct id: nil,
+              testid: nil,
+              message: nil,
+              variant: nil,
+              closeable: true,
+              link_text: nil,
+              link_href: nil
   end
 
   def render(assigns) do
