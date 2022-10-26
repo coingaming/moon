@@ -1,3 +1,10 @@
+## [2.30.10](https://github.com/coingaming/moon/compare/v2.30.9...v2.30.10) (2022-10-26)
+
+
+### Bug Fixes
+
+* Fix toast testid ([#434](https://github.com/coingaming/moon/issues/434)) ([a5a2b70](https://github.com/coingaming/moon/commit/a5a2b70ddcbc78a577342b30c6feff18ae9c1aee))
+
 ## [2.30.9](https://github.com/coingaming/moon/compare/v2.30.8...v2.30.9) (2022-10-26)
 
 
