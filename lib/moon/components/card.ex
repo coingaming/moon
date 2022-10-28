@@ -19,12 +19,12 @@ defmodule Moon.Components.Card do
         <Heading size={20}>{@title}</Heading>
 
         <div class="flex shrink-0 gap-2">
-          <#slot name="buttons" />
+          <#slot {@buttons} />
         </div>
       </div>
 
       <div class="mt-6 text-moon-14">
-        <#slot name="content" />
+        <#slot {@content} />
       </div>
     </div>
     """

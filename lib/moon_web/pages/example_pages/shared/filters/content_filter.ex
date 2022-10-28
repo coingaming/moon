@@ -7,6 +7,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
   alias Moon.Components.Chip
   alias MoonWeb.Pages.ExamplePages.Helpers
 
+  import Phoenix.LiveView, only: [send_update: 2]
+
   prop filter_name, :string, required: true
   prop all_items, :list, default: []
   prop active_items, :list
@@ -32,7 +34,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
         right_icon={@right_icon}
         active={is_open or length(@active_items) > 0}
       >
-        <#slot name="label">
+        <#slot {@label}>
           {"#{@filter_name} #{length(@active_items) |> Helpers.format_filter_count()}"}
         </#slot>
       </Chip>

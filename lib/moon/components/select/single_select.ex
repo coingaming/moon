@@ -95,7 +95,7 @@ defmodule Moon.Components.Select.SingleSelect do
         </:content>
       </Popover>
       <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
-        <#slot name="hint_text_slot" />
+        <#slot {@hint_text_slot} />
       </HintText>
       <div
         class="inline-block mt-2 text-moon-12"

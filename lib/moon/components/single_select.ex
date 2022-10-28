@@ -22,9 +22,9 @@ defmodule Moon.Components.SingleSelect do
   prop placeholder, :string, default: "Choose"
 
   # options={[%{label: 'Option 1', value: 1}]}
-  prop options, :list, required: true
+  prop options, :generator, required: true
   prop selected_option, :any
-  slot items, args: [item: ^options]
+  slot items, generator_prop: :options
 
   def render(assigns) do
     ~F"""
@@ -36,7 +36,7 @@ defmodule Moon.Components.SingleSelect do
         {=@selected_option}
         {=@size}
       >
-        <#slot name="items" :args={item: @selected_option} :if={@selected_option}>
+        <#slot {@items} generator_value={@selected_option} :if={@selected_option}>
           {@selected_option.label}
         </#slot>
       </SelectTrigger>
@@ -54,7 +54,7 @@ defmodule Moon.Components.SingleSelect do
             role="option"
             :on-click={select_option(@id, @on_select, @target, option.value)}
           >
-            <#slot name="items" :args={item: option}>
+            <#slot {@items, item: option} generator_value={option}>
               {option.label}
             </#slot>
           </li>

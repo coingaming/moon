@@ -20,17 +20,17 @@ defmodule Moon.Components.SlideOver do
       {!-- SlideOver Header --}
       <div class="flex items-center justify-between mb-6">
         <Heading size="20">
-          <#slot name="heading" />
+          <#slot {@heading} />
         </Heading>
         <div class="flex items-center">
-          <#slot name="options" />
+          <#slot {@options} />
           <div class="p-2 rounded bg-goku-100 cursor-pointer" :on-click={@on_close}>
             <IconCloseRounded font_size="1.5rem" />
           </div>
         </div>
       </div>
       {!-- SlideOver Content --}
-      <#slot name="content" />
+      <#slot {@content} />
     </div>
     """
   end

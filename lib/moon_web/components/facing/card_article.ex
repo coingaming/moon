@@ -18,18 +18,18 @@ defmodule MoonWeb.Components.Facing.CardArticle do
           get_class(@variant)
         }>
           <p class="list-item absolute top-10 left-10 transform -rotate-90 origin-bottom-left text-moon-16 font-semibold">
-            <#slot name="section" />
+            <#slot {@section} />
           </p>
 
           <p
             :if={@author}
             class="absolute top-0 right-6 transform -rotate-90 origin-bottom-right text-moon-16 font-semibold"
           >
-            <#slot name="author" />
+            <#slot {@author} />
           </p>
 
           <p class="text-moon-24 font-semibold">
-            <#slot name="title" />
+            <#slot {@title} />
           </p>
         </div>
       </a>

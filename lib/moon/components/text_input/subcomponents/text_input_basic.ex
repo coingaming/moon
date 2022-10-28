@@ -43,8 +43,8 @@ defmodule Moon.Components.TextInput.TextInputBasic do
             Utils.get_height_by_size(size)
           }>
             <div class="w-full h-full flex items-center justify-between px-4 bg-transparent">
-              <div class="justify-self-start pointer-events-auto"><#slot name="left_icon_slot" /></div>
-              <div class="justify-self-end pointer-events-auto"><#slot name="right_icon_slot" /></div>
+              <div class="justify-self-start pointer-events-auto"><#slot {@left_icon_slot} /></div>
+              <div class="justify-self-end pointer-events-auto"><#slot {@right_icon_slot} /></div>
             </div>
           </div>
         </div>

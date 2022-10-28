@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Table.Table do
   prop items, :list, required: true
 
   @doc "The list of columns defining the Grid"
-  slot cols, args: [item: ^items]
+  slot cols
 
   def render(assigns) do
     ~F"""
@@ -39,7 +39,7 @@ defmodule MoonWeb.Components.Table.Table do
                   }
                   data-testid={"row-#{row_index}-col-#{col_index}"}
                 >
-                  <#slot name="cols" index={col_index} :args={item: item} />
+                  <#slot {@cols} index={col_index} generator_value={item} />
                 </td>
               {/for}
             </tr>

@@ -56,7 +56,7 @@ defmodule Moon.Components.TextInput do
   def render(assigns) do
     internal_render = ~F"""
     <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
-      <#slot name="hint_text_slot" />
+      <#slot {@hint_text_slot} />
     </HintText>
     """
 
@@ -93,10 +93,10 @@ defmodule Moon.Components.TextInput do
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
             <:left_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot {@left_icon_slot} />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="right_icon_slot" />
+              <#slot {@right_icon_slot} />
             </:right_icon_slot>
             {internal_render}
           </TextInputPassword>
@@ -107,20 +107,20 @@ defmodule Moon.Components.TextInput do
             class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
           >
             <:left_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot {@left_icon_slot} />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="right_icon_slot" />
+              <#slot {@right_icon_slot} />
             </:right_icon_slot>
             {internal_render}
           </TextInputInnerLabel>
         {#else}
           <TextInputBasic {=@id} {=@field} {=@class}>
             <:left_icon_slot>
-              <#slot name="left_icon_slot" />
+              <#slot {@left_icon_slot} />
             </:left_icon_slot>
             <:right_icon_slot>
-              <#slot name="right_icon_slot" />
+              <#slot {@right_icon_slot} />
             </:right_icon_slot>
             {internal_render}
           </TextInputBasic>

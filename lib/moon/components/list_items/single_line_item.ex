@@ -27,13 +27,13 @@ defmodule Moon.Components.ListItems.SingleLineItem do
       "#{@active_background_color}": @current
     }>
       <div class={"flex items-center", grow: @left_grow} :if={slot_assigned?(:left_icon)}>
-        <#slot name="left_icon" />
+        <#slot {@left_icon} />
       </div>
       <div class="grow">
         <#slot />
       </div>
       <div class={"flex items-center", grow: @right_grow} :if={slot_assigned?(:right_icon)}>
-        <#slot name="right_icon" />
+        <#slot {@right_icon} />
       </div>
     </div>
     """

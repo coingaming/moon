@@ -38,7 +38,7 @@ defmodule Moon.Components.Select.Dropdown.Option do
         is_multi={@is_multi || is_multi}
         :let={is_selected: is_selected}
       >
-        <#slot :args={is_selected: is_selected} />
+        <#slot {@default, is_selected: is_selected} />
       </Renderer>
     </Context>
     """

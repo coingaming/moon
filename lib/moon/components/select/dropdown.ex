@@ -77,7 +77,7 @@ defmodule Moon.Components.Select.Dropdown do
           </TextInput>
         {/if}
         {#if slot_assigned?(:header)}
-          <#slot name="header" />
+          <#slot {@header} />
         {/if}
         <div class={@content_class}>
           <ul tabindex="-1" role="listbox" id={"#{@id}-ul-list"} class="grid grid-cols-1 gap-1">
@@ -161,14 +161,14 @@ defmodule Moon.Components.Select.Dropdown do
                   SelectHelpers.get_normalized_value(form, @field || field, @is_multi, value: @value),
                 is_multi: @is_multi
               }>
-                <#slot name="default" />
+                <#slot {@default} />
               </Context>
             {/if}
           </ul>
         </div>
         {#if slot_assigned?(:footer)}
           <div class="p-1">
-            <#slot name="footer" />
+            <#slot {@footer} />
           </div>
         {/if}
       </div>

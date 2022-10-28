@@ -145,13 +145,13 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
     >
       {#if length(@active_items) > 0}
         <Tooltip placement="top" text={tooltip_text}>
-          <#slot :args={
+          <#slot {@default, 
             is_open: @show_filter,
             toggle_filter: %{name: "toggle_filter", target: @myself}
           } />
         </Tooltip>
       {#else}
-        <#slot :args={
+        <#slot {@default, 
           is_open: @show_filter,
           toggle_filter: %{name: "toggle_filter", target: @myself}
         } />
