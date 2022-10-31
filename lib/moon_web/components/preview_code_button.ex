@@ -22,7 +22,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           value="preview"
           variant="none"
         >
-          Preview
+          <span class="hidden lg:inline">Preview</span>
         </Button>
 
         <Button
@@ -33,7 +33,7 @@ defmodule MoonWeb.Components.PreviewCodeButton do
           value="code"
           variant="none"
         >
-          Code
+          <span class="hidden lg:inline">Code</span>
         </Button>
       </div>
     </div>

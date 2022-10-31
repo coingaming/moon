@@ -1,3 +1,46 @@
+## [2.30.10](https://github.com/coingaming/moon/compare/v2.30.9...v2.30.10) (2022-10-26)
+
+
+### Bug Fixes
+
+* Fix toast testid ([#434](https://github.com/coingaming/moon/issues/434)) ([a5a2b70](https://github.com/coingaming/moon/commit/a5a2b70ddcbc78a577342b30c6feff18ae9c1aee))
+
+## [2.30.9](https://github.com/coingaming/moon/compare/v2.30.8...v2.30.9) (2022-10-26)
+
+
+### Bug Fixes
+
+* duplicate key warning ([#432](https://github.com/coingaming/moon/issues/432)) ([7fbf629](https://github.com/coingaming/moon/commit/7fbf629087077fa41cf6262bc7236d24fef6c685))
+
+## [2.30.8](https://github.com/coingaming/moon/compare/v2.30.7...v2.30.8) (2022-10-26)
+
+
+### Bug Fixes
+
+* Add testid to toast close button ([#431](https://github.com/coingaming/moon/issues/431)) ([bb2ea51](https://github.com/coingaming/moon/commit/bb2ea51517797ad1b15f093d4ee2ba74c7433f39))
+
+## [2.30.7](https://github.com/coingaming/moon/compare/v2.30.6...v2.30.7) (2022-10-26)
+
+
+### Bug Fixes
+
+* Fix partners theme ([#430](https://github.com/coingaming/moon/issues/430)) ([ff8e22a](https://github.com/coingaming/moon/commit/ff8e22a6277178e3a84507643eb9144fd792ce1b))
+
+## [2.30.6](https://github.com/coingaming/moon/compare/v2.30.5...v2.30.6) (2022-10-25)
+
+
+### Bug Fixes
+
+* figma importer lists missing vars + fix partners theme ([#425](https://github.com/coingaming/moon/issues/425)) ([1e6fb98](https://github.com/coingaming/moon/commit/1e6fb9821eda56e92a12b3fb6656e71ae295039d))
+* Remove text on code preview button on mobile ([#428](https://github.com/coingaming/moon/issues/428)) ([527701c](https://github.com/coingaming/moon/commit/527701ceb98342e5600a850d54a8bbf30885bd44))
+
+## [2.30.5](https://github.com/coingaming/moon/compare/v2.30.4...v2.30.5) (2022-10-25)
+
+
+### Bug Fixes
+
+* Add testid to div containing ControlsClose in modal.ex ([#426](https://github.com/coingaming/moon/issues/426)) ([f425c2a](https://github.com/coingaming/moon/commit/f425c2a1343953cb4e7bddec5ccd3c7b96e91ff1))
+
 ## [2.30.4](https://github.com/coingaming/moon/compare/v2.30.3...v2.30.4) (2022-10-24)
 
 

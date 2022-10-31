@@ -77,7 +77,7 @@ defmodule Moon.Components.Dialog.Modal do
               {/if}
             </:left>
             <:right>
-              <div :on-click={@close}><ControlsClose /></div>
+              <div :on-click={@close} data-testid={"#{@testid}-controls-close"}><ControlsClose /></div>
             </:right>
           </PullAside>
           <Divider />

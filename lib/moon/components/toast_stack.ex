@@ -16,6 +16,7 @@ defmodule Moon.Components.ToastStack do
       <Toast
         :for={{id, toast} <- @toasts}
         id={id}
+        testid={toast.testid || id}
         message={toast.message}
         variant={toast.variant}
         closeable={toast.closeable}

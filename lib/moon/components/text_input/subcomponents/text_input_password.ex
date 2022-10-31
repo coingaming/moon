@@ -35,8 +35,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             id={"#{@id}_text_input_password"}
             class={
               "w-full max-w-full relative",
+              background_color,
               Utils.get_border_radius(size),
-              "bg-#{background_color}": background_color
+              "bg-#{background_color}"
             }
           >
             <Password
