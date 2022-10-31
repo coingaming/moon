@@ -91,13 +91,14 @@ defmodule Moon.Components.Datepicker.Helpers do
   def parse_date(""), do: nil
 
   def parse_date(date) when is_binary(date) do
-    case Timex.parse(date, "%Y-%0m-%0dT%R", :strftime) do
-      {:ok, datetime} ->
-        datetime
+    is_date_time_string = String.contains?(date, ["T"])
 
-      {:error, _} ->
-        {:ok, date} = Timex.parse(date, "%Y-%0m-%0d", :strftime)
-        date
+    if is_date_time_string do
+      {:ok, datetime_result} = Timex.parse(date, "%Y-%0m-%0dT%R", :strftime)
+      datetime_result
+    else
+      {:ok, date_result} = Timex.parse(date, "%Y-%0m-%0d", :strftime)
+      date_result
     end
   end
 
