@@ -1,3 +1,10 @@
+## [2.30.11](https://github.com/coingaming/moon/compare/v2.30.10...v2.30.11) (2022-10-31)
+
+
+### Bug Fixes
+
+* fix 6 digit year being inputted on datepicker "date" type input ([#435](https://github.com/coingaming/moon/issues/435)) ([2ccdd46](https://github.com/coingaming/moon/commit/2ccdd46393938720964b2746cfc4e6bb5e2a2589))
+
 ## [2.30.10](https://github.com/coingaming/moon/compare/v2.30.9...v2.30.10) (2022-10-26)
 
 
