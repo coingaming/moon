@@ -134,38 +134,6 @@ defmodule Moon.Components.Datepicker do
     """
   end
 
-  # # Handle date-input fields updates
-  # def update(assigns, socket) do
-  #   socket = assign(socket, assigns)
-
-  #   # parsed_start_date = Helpers.parse_date(assigns.start_date)
-  #   # parsed_end_date = Helpers.parse_date(assigns.end_date)
-
-  #   # IO.puts("++PARSED++")
-  #   # IO.inspect(parsed_start_date)
-  #   # IO.inspect(parsed_end_date)
-  #   # IO.puts("++END+PARSED++")
-
-  #   socket =
-  #     case assigns do
-  #       %{start_date: start_date, end_date: end_date} ->
-  #         assign(
-  #           socket,
-  #           start_date: Helpers.parse_date(start_date),
-  #           end_date: Helpers.parse_date(end_date),
-  #           internal_start_date: Helpers.parse_date(start_date),
-  #           internal_end_date: Helpers.parse_date(end_date)
-  #         )
-
-  #       _ ->
-  #         # this is required, because if someone uses LiveView.send_update
-  #         # then start_date and end_date might be missing
-  #         socket
-  #     end
-
-  #   {:ok, socket}
-  # end
-
   # Handle date-input fields updates
   def update(assigns, socket) do
     socket = assign(socket, assigns)
