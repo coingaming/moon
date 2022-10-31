@@ -34,8 +34,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
         opts={
           placeholder: "dd/mm/yyyy",
           "phx-hook": "Datepicker",
-          "data-pending-val": Helpers.format_date(@internal_start_date, @with_time),
-          max: "9999-12-31"
+          "data-pending-val": Helpers.format_date(@internal_start_date, @with_time)
         }
       />
 
@@ -57,8 +56,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
         opts={
           placeholder: "dd/mm/yyyy",
           "phx-hook": "Datepicker",
-          "data-pending-val": Helpers.format_date(@internal_end_date, @with_time),
-          max: "9999-12-31"
+          "data-pending-val": Helpers.format_date(@internal_end_date, @with_time)
         }
       />
     </div>
