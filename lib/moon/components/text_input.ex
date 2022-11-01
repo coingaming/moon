@@ -2,14 +2,16 @@ defmodule Moon.Components.TextInput do
   @moduledoc false
 
   use Moon.StatelessComponent
+
+  alias Moon.Components.InputGroup
   alias Moon.Components.TextInput.TextInputBasic
   alias Moon.Components.TextInput.TextInputInnerLabel
   alias Moon.Components.TextInput.TextInputPassword
-  alias Surface.Components.Form.Input.InputContext
   alias Moon.Components.TextInput.HintText
+  alias Surface.Components.Context
 
   prop id, :string
-  prop field, :atom
+  prop field, :atom, from_context: :field
   prop size, :string, values: ["md", "lg", "xl"], default: "md"
 
   prop type, :string,
@@ -53,7 +55,13 @@ defmodule Moon.Components.TextInput do
   slot right_icon_slot
   slot hint_text_slot
 
+  data form, :form, from_context: {Surface.Components.Form, :form}
+  data is_in_input_group, :boolean, from_context: {InputGroup, :is_in_input_group}
+  data group_class_plain, :css_class, from_context: {InputGroup, :group_class_plain}
+
   def render(assigns) do
+    assigns = put_everything_to_context(assigns)
+
     internal_render = ~F"""
     <HintText :if={slot_assigned?(:hint_text_slot)} {=@is_error}>
       <#slot {@hint_text_slot} />
@@ -61,73 +69,62 @@ defmodule Moon.Components.TextInput do
     """
 
     ~F"""
-    <InputContext assigns={assigns} :let={form: form, field: field}>
-      <Context
-        put={__MODULE__, size: @size}
-        put={__MODULE__, type: @type}
-        put={__MODULE__, placeholder: @placeholder}
-        put={__MODULE__, is_error: has_error(@is_error, form, field)}
-        put={__MODULE__, background_color: @background_color}
-        put={__MODULE__, is_first: @is_first}
-        put={__MODULE__, disabled: @disabled}
-        put={__MODULE__, label: @label}
-        put={__MODULE__, required: @required}
-        put={__MODULE__, step: @step}
-        put={__MODULE__, readonly: @readonly}
-        put={__MODULE__, value: @value}
-        put={__MODULE__, focus: @focus}
-        put={__MODULE__, keydown: @keydown}
-        put={__MODULE__, keyup: @keyup}
-        put={__MODULE__, blur: @blur}
-        put={__MODULE__, show_password_text: @show_password_text}
-        put={__MODULE__, use_error_tag: @use_error_tag}
-        put={__MODULE__, has_left_icon: slot_assigned?(:left_icon_slot)}
-        put={__MODULE__, has_right_icon: slot_assigned?(:right_icon_slot)}
-        get={Moon.Components.InputGroup, is_in_input_group: is_in_input_group}
-        get={Moon.Components.InputGroup, group_class_plain: group_class_plain}
+    {#if @type == "password"}
+      <TextInputPassword
+        {=@id}
+        {=@field}
+        class={@class, "#{get_combined_class(@is_in_input_group, @field, @group_class_plain)}": true}
       >
-        {#if @type == "password"}
-          <TextInputPassword
-            {=@id}
-            {=@field}
-            class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
-          >
-            <:left_icon_slot>
-              <#slot {@left_icon_slot} />
-            </:left_icon_slot>
-            <:right_icon_slot>
-              <#slot {@right_icon_slot} />
-            </:right_icon_slot>
-            {internal_render}
-          </TextInputPassword>
-        {#elseif @size == "xl"}
-          <TextInputInnerLabel
-            {=@id}
-            {=@field}
-            class={@class, "#{get_combined_class(is_in_input_group, field, group_class_plain)}": true}
-          >
-            <:left_icon_slot>
-              <#slot {@left_icon_slot} />
-            </:left_icon_slot>
-            <:right_icon_slot>
-              <#slot {@right_icon_slot} />
-            </:right_icon_slot>
-            {internal_render}
-          </TextInputInnerLabel>
-        {#else}
-          <TextInputBasic {=@id} {=@field} {=@class}>
-            <:left_icon_slot>
-              <#slot {@left_icon_slot} />
-            </:left_icon_slot>
-            <:right_icon_slot>
-              <#slot {@right_icon_slot} />
-            </:right_icon_slot>
-            {internal_render}
-          </TextInputBasic>
-        {/if}
-      </Context>
-    </InputContext>
+        <:left_icon_slot>
+          <#slot {@left_icon_slot} />
+        </:left_icon_slot>
+        <:right_icon_slot>
+          <#slot {@right_icon_slot} />
+        </:right_icon_slot>
+        {internal_render}
+      </TextInputPassword>
+    {#elseif @size == "xl"}
+      <TextInputInnerLabel
+        {=@id}
+        {=@field}
+        class={@class, "#{get_combined_class(@is_in_input_group, @field, @group_class_plain)}": true}
+      >
+        <:left_icon_slot>
+          <#slot {@left_icon_slot} />
+        </:left_icon_slot>
+        <:right_icon_slot>
+          <#slot {@right_icon_slot} />
+        </:right_icon_slot>
+        {internal_render}
+      </TextInputInnerLabel>
+    {#else}
+      <TextInputBasic {=@id} {=@field} {=@class}>
+        <:left_icon_slot>
+          <#slot {@left_icon_slot} />
+        </:left_icon_slot>
+        <:right_icon_slot>
+          <#slot {@right_icon_slot} />
+        </:right_icon_slot>
+        {internal_render}
+      </TextInputBasic>
+    {/if}
     """
+  end
+
+  defp put_everything_to_context(assigns) do
+    assigns
+    |> Context.put(
+      __MODULE__,
+      assigns
+      |> Map.delete(:left_icon_slot)
+      |> Map.delete(:right_icon_slot)
+      |> Map.delete(:hint_text_slot)
+    )
+    |> Context.put(__MODULE__,
+      is_error: has_error(assigns[:is_error], assigns[:form], assigns[:field]),
+      has_left_icon: slot_assigned?(:left_icon_slot),
+      has_right_icon: slot_assigned?(:right_icon_slot)
+    )
   end
 
   defp get_combined_class(is_in_input_group, field, group_class_plain) do

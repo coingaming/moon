@@ -34,6 +34,6 @@ defmodule Moon.RenderHelpers do
 
     assigns = Map.merge(use_props, %{module: module})
 
-    Phoenix.LiveView.Helpers.live_component(assigns)
+    Phoenix.Component.live_component(assigns)
   end
 end

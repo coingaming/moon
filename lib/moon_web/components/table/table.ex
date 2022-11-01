@@ -39,7 +39,7 @@ defmodule MoonWeb.Components.Table.Table do
                   }
                   data-testid={"row-#{row_index}-col-#{col_index}"}
                 >
-                  <#slot {col} index={col_index} generator_value={item} />
+                  <#slot {col} generator_value={item} />
                 </td>
               {/for}
             </tr>

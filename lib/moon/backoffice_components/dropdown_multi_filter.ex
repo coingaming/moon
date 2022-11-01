@@ -116,7 +116,7 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
   prop func_query_options, :fun
   prop func_search_options, :fun
 
-  slot default, required: true, args: [:toggle_filter, :is_open]
+  slot default, required: true, arg: %{toggle_filter: :any, is_open: :boolean}
 
   def render(assigns) do
     tooltip_text =

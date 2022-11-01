@@ -2,45 +2,36 @@ defmodule Moon.Components.Select.Dropdown.Option do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Surface.Components.Context
   alias __MODULE__.Renderer
 
   prop class, :css_class
-  prop select_id, :string
-  prop value, :any
-  prop select_value, :any
-  prop is_multi, :boolean
+  prop select_id, :string, from_context: {Moon.Components.Select.Dropdown, :select_id}
+  prop value, :any, from_context: {Moon.Components.Select.Dropdown, :value}
+  prop select_value, :any, from_context: {Moon.Components.Select.Dropdown, :select_value}
+  prop is_multi, :boolean, from_context: {Moon.Components.Select.Dropdown, :is_multi}
   prop left_icon, :any
   prop right_icon, :any
 
-  slot default, args: [:is_selected]
+  slot default, arg: %{is_selected: :boolean}
 
   def render(assigns) do
     ~F"""
-    <Context get={
-      Moon.Components.Select.Dropdown,
-      select_id: select_id,
-      select_value: select_value,
-      value: value,
-      is_multi: is_multi
-    }>
-      <Renderer
-        is_selected={get_is_selected(%{
-          select_value: @select_value || select_value,
-          is_multi: @is_multi || is_multi,
-          value: @value || value
-        })}
-        {=@left_icon}
-        {=@right_icon}
-        select_id={@select_id || select_id}
-        value={@value || value}
-        select_value={@select_value || select_value}
-        is_multi={@is_multi || is_multi}
-        :let={is_selected: is_selected}
-      >
-        <#slot {@default, is_selected: is_selected} />
-      </Renderer>
-    </Context>
+    <Renderer
+      is_selected={get_is_selected(%{
+        select_value: @select_value,
+        is_multi: @is_multi,
+        value: @value
+      })}
+      {=@left_icon}
+      {=@right_icon}
+      {=@select_id}
+      {=@value}
+      {=@select_value}
+      {=@is_multi}
+      :let={is_selected: is_selected}
+    >
+      <#slot {@default, is_selected: is_selected} />
+    </Renderer>
     """
   end
 

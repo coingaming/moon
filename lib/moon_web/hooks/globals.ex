@@ -9,6 +9,11 @@ defmodule MoonWeb.Hooks.Globals do
      socket
      |> assign(:theme_name, params["theme_name"] || "moon-design-light")
      |> assign(:direction, params["direction"] || "ltr")
-     |> assign(:active_page, socket.view)}
+     |> assign(:active_page, socket.view)
+     |> Surface.Components.Context.put(
+       theme_name: params["theme_name"] || "moon-design-light",
+       direction: params["direction"] || "ltr",
+       active_page: socket.view
+     )}
   end
 end

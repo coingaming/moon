@@ -13,7 +13,7 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
   prop left_icon, :any
   prop right_icon, :any
 
-  slot default, args: [:is_selected]
+  slot default, arg: %{is_selected: :boolean}
 
   def render(assigns) do
     ~F"""

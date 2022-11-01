@@ -10,7 +10,6 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
-  alias Surface.Components.Form.Input.InputContext
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue
   alias Moon.Components.Select.SingleSelect.HintText
   alias Moon.Components.ErrorTag
@@ -29,6 +28,8 @@ defmodule Moon.Components.Select.SingleSelect do
   prop selected_value_class, :css_class, default: ""
 
   data open, :boolean, default: false
+  data form, :form, from_context: {Surface.Components.Form, :form}
+  data field, :atom, from_context: :field
 
   slot hint_text_slot
 
@@ -39,71 +40,69 @@ defmodule Moon.Components.Select.SingleSelect do
         {@label}
       </FieldLabel>
     {/if}
-    <InputContext {=assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
-        {Phoenix.HTML.Form.select(
-          form,
-          field,
-          SelectHelpers.get_formatted_options(
-            @options,
-            SelectHelpers.get_normalized_value(form, field, false, value: @value)
-          ),
-          class: "hidden",
-          id: @id,
-          prompt: @label
-        )}
-        <FieldBorder
-          click="toggle_open"
-          class={
-            "w-full",
-            "bg-#{@background_color}": @background_color
-          }
-          has_error={has_error(@has_error, form, field)}
-        >
-          <PullAside class={
-            "leading-6",
-            SelectHelpers.get_padding(@size),
-            get_disabled_class(@disabled)
-          }>
-            <:left>
-              <SelectedValue
-                class={@selected_value_class}
-                {=@size}
-                {=@label}
-                {=@placeholder}
-                select_id={@id}
-                option={get_option_selected(form, field, @options, @value)}
-              />
-            </:left>
-            <:right>
-              <Moon.Icons.ControlsChevronDown />
-            </:right>
-          </PullAside>
-        </FieldBorder>
-        <:content>
-          <TopToDown>
-            <div
-              class={
-                "overflow-auto rounded-moon-i-md box-border border border-solid",
-                "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
-              }
-              style="min-height: 20px; max-height: 200px"
-            >
-              <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />
-            </div>
-          </TopToDown>
-        </:content>
-      </Popover>
-      <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
-        <#slot {@hint_text_slot} />
-      </HintText>
-      <div
-        class="inline-block mt-2 text-moon-12"
-        :if={@use_error_tag && has_error(@has_error, form, field)}
+    <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+      {Phoenix.HTML.Form.select(
+        @form,
+        @field,
+        SelectHelpers.get_formatted_options(
+          @options,
+          SelectHelpers.get_normalized_value(@form, @field, false, value: @value)
+        ),
+        class: "hidden",
+        id: @id,
+        prompt: @label
+      )}
+      <FieldBorder
+        click="toggle_open"
+        class={
+          "w-full",
+          "bg-#{@background_color}": @background_color
+        }
+        has_error={has_error(@has_error, @form, @field)}
       >
-        <ErrorTag {=field} />
-      </div>
-    </InputContext>
+        <PullAside class={
+          "leading-6",
+          SelectHelpers.get_padding(@size),
+          get_disabled_class(@disabled)
+        }>
+          <:left>
+            <SelectedValue
+              class={@selected_value_class}
+              {=@size}
+              {=@label}
+              {=@placeholder}
+              select_id={@id}
+              option={get_option_selected(@form, @field, @options, @value)}
+            />
+          </:left>
+          <:right>
+            <Moon.Icons.ControlsChevronDown />
+          </:right>
+        </PullAside>
+      </FieldBorder>
+      <:content>
+        <TopToDown>
+          <div
+            class={
+              "overflow-auto rounded-moon-i-md box-border border border-solid",
+              "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+            }
+            style="min-height: 20px; max-height: 200px"
+          >
+            <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />
+          </div>
+        </TopToDown>
+      </:content>
+    </Popover>
+    <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
+      <#slot {@hint_text_slot} />
+    </HintText>
+    <div
+      class="inline-block mt-2 text-moon-12"
+      :if={@use_error_tag && has_error(@has_error, @form, @field)}
+    >
+      <ErrorTag {=@field} />
+    </div>
     """
   end
 
