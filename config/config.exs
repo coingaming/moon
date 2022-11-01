@@ -31,7 +31,8 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :surface, :components, [
-  {Surface.Components.Form.ErrorTag, default_translator: {MoonWeb.ErrorHelpers, :translate_error}},
+  {Surface.Components.Form.ErrorTag,
+   default_translator: {MoonWeb.ErrorHelpers, :translate_error}},
   {Moon.Components.Form, propagate_context_to_slots: true},
   {Moon.Components.Field, propagate_context_to_slots: true},
   {Moon.Components.TextInput, propagate_context_to_slots: true},
