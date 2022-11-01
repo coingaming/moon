@@ -12,6 +12,17 @@ npm install -g pnpm
 pnpm install
 pnpm run build
 
+cd $root_dir/scripts/typescript/
+yarn
+cd node_modules
+git clone git@github.com:coingaming/assets.git
+cd assets
+git reset --hard HEAD
+git pull
+npm install -g pnpm
+pnpm install
+pnpm run build
+
 
 cd $root_dir/scripts/typescript/
 ./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/moon-design/packages/assets/raw/currencies -o ./node_modules/moon-design/packages/assets/raw/currencies
