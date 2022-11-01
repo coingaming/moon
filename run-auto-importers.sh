@@ -42,7 +42,7 @@ mkdir -p assets/static/svgs/logos
 mkdir -p assets/static/svgs/patterns
 
 cd $root_dir/scripts/typescript/
-npx ts-node generate-svg-symbols.ts
+npx ts-node generate-svg-symbols-old.ts
 npx ts-node assets-importer-legacy.ts
 npx ts-node icons-importer.ts
 mv node_modules/moon-design moon-design
