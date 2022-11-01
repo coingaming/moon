@@ -4,10 +4,10 @@ defmodule MoonWeb.Components.Table.Table do
   use Moon.StatelessComponent
 
   @doc "The list of items to be rendered"
-  prop items, :list, required: true
+  prop items, :generator, required: true
 
   @doc "The list of columns defining the Grid"
-  slot cols
+  slot cols, generator_prop: :items
 
   def render(assigns) do
     ~F"""
@@ -31,7 +31,7 @@ defmodule MoonWeb.Components.Table.Table do
               data-testid={"row-#{row_index}"}
               class={if rem(row_index, 2) == 0, do: "bg-gohan-100", else: "bg-goku-100"}
             >
-              {#for {_, col_index} <- Enum.with_index(@cols)}
+              {#for {col, col_index} <- Enum.with_index(@cols)}
                 <td
                   class={
                     "px-4 py-4 whitespace-nowrap text-moon-14 text-left",
@@ -39,7 +39,7 @@ defmodule MoonWeb.Components.Table.Table do
                   }
                   data-testid={"row-#{row_index}-col-#{col_index}"}
                 >
-                  <#slot {@cols} index={col_index} generator_value={item} />
+                  <#slot {col} index={col_index} generator_value={item} />
                 </td>
               {/for}
             </tr>

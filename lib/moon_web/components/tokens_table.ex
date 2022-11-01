@@ -8,20 +8,19 @@ defmodule MoonWeb.Components.TokensTable do
 
   prop title, :string, default: "Props"
   prop data, :list
-  slot default
 
   def render(assigns) do
     ~F"""
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table items={@data}>
-        <Column name="property" label="Property" :let={item: item} is_row_header>
+      <Table items={item <- @data}>
+        <Column name="property" label="Property" is_row_header>
           {item.property}
         </Column>
-        <Column name="key" label="Class name" :let={item: item}>
+        <Column name="key" label="Class name">
           {item.key}
         </Column>
-        <Column name="value" label="Value" :let={item: item}>
+        <Column name="value" label="Value">
           {item.value}
         </Column>
       </Table>

@@ -14,20 +14,20 @@ defmodule MoonWeb.Components.PropsTable do
     ~F"""
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table items={@data}>
-        <Column name="name" label="Name" :let={item: item} is_row_header>
+      <Table items={item <- @data}>
+        <Column name="name" label="Name" is_row_header>
           {item.name}
         </Column>
-        <Column name="type" label="Type" :let={item: item}>
+        <Column name="type" label="Type">
           {item.type}
         </Column>
-        <Column name="required" label="Required" :let={item: item}>
+        <Column name="required" label="Required">
           {item.required}
         </Column>
-        <Column name="default" label="Default" :let={item: item}>
+        <Column name="default" label="Default">
           {item.default}
         </Column>
-        <Column name="description" label="Description" :let={item: item}>
+        <Column name="description" label="Description">
           {item.description}
         </Column>
       </Table>
