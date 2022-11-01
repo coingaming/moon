@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
     {:ok,
      assign(socket,
        transactions: ExamplePages.TransactionsPage.get_transactions()
-     ), layout: {MoonWeb.LayoutView, "clean.html"}}
+     ), layout: {MoonWeb.LayoutView, :clean}}
   end
 
   def render(assigns) do

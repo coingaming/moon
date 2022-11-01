@@ -21,7 +21,7 @@ defmodule Moon.RenderHelpers do
     default_props = Moon.RenderHelpers.get_default_props(module)
     use_props = Map.merge(default_props, custom_props)
 
-    Phoenix.LiveView.Helpers.component(&module.render/1, use_props)
+    Phoenix.LiveView.HTMLEngine.component(&module.render/1, use_props, {__ENV__.module, __ENV__.function, __ENV__.file, __ENV__.line})
   end
 
   def render_live_component(module, custom_props) do

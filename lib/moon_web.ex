@@ -44,7 +44,7 @@ defmodule MoonWeb do
 
   def live_view do
     quote do
-      use Moon.LiveView, layout: {MoonWeb.LayoutView, "live.html"}
+      use Moon.LiveView, layout: {MoonWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end

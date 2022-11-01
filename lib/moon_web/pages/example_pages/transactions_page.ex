@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
         assign(socket, filter_options: filter_options)
       end
 
-    {:ok, apply_paging(socket), layout: {MoonWeb.LayoutView, "clean.html"}}
+    {:ok, apply_paging(socket), layout: {MoonWeb.LayoutView, :clean}}
   end
 
   def render(assigns) do

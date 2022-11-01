@@ -103,7 +103,7 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
           ])
       )
 
-    {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
+    {:ok, socket, layout: {MoonWeb.LayoutView, :clean}}
   end
 
   def render(assigns) do

@@ -138,7 +138,7 @@ defmodule MoonWeb.Pages.ExamplePages.CustomersPage do
       |> assign(theme_name: "lab-light")
       |> assign(active_page: __MODULE__)
 
-    {:ok, socket, layout: {MoonWeb.LayoutView, "clean.html"}}
+    {:ok, socket, layout: {MoonWeb.LayoutView, :clean}}
   end
 
   def handle_params(params = %{"segment_id" => segment_id}, _uri, socket) do
