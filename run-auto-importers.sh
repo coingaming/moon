@@ -21,8 +21,10 @@ git reset --hard HEAD
 git pull
 npm install -g pnpm
 pnpm install
+cp $root_dir/.env .env
 pnpm run build
-
+export page=$(grep ICON_PAGE_NAME .env | cut -d '=' -f2)
+npm run figma --page=$page
 
 cd $root_dir/scripts/typescript/
 ./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/moon-design/packages/assets/raw/currencies -o ./node_modules/moon-design/packages/assets/raw/currencies
@@ -31,6 +33,7 @@ cd $root_dir/scripts/typescript/
 ./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/moon-design/packages/assets/raw/patterns -o ./node_modules/moon-design/packages/assets/raw/patterns
 ./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/moon-design/packages/assets/raw/crests -o ./node_modules/moon-design/packages/assets/raw/crests
 ./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/moon-design/packages/icons/raw/imported/ -o ./node_modules/moon-design/packages/icons/raw/imported/
+./node_modules/svgo/bin/svgo --config=./svgo.config.js -f ./node_modules/assets/svg/$page/ -o ./node_modules/assets/svg/$page/
 
 
 cd $root_dir
@@ -52,16 +55,16 @@ mkdir -p assets/static/svgs/icons_new
 mkdir -p assets/static/svgs/logos
 mkdir -p assets/static/svgs/patterns
 
-cd $root_dir/scripts/typescript/
-npx ts-node generate-svg-symbols-old.ts
-npx ts-node assets-importer-legacy.ts
-npx ts-node icons-importer.ts
-mv node_modules/moon-design moon-design
-npx ts-node theme-importer.ts
-mv moon-design node_modules/moon-design
-npx ts-node figma-importer.ts
-cd $root_dir
+# cd $root_dir/scripts/typescript/
+# npx ts-node generate-svg-symbols.ts
+# npx ts-node assets-importer-legacy.ts
+# npx ts-node icons-importer.ts
+# mv node_modules/moon-design moon-design
+# npx ts-node theme-importer.ts
+# mv moon-design node_modules/moon-design
+# npx ts-node figma-importer.ts
+# cd $root_dir
 
 
-bash run-formatters.sh
+# bash run-formatters.sh
 # mix phx.digest
