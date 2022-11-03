@@ -3,9 +3,9 @@ defmodule Moon.Autolayouts.TopToDown do
 
   use Moon.StatelessComponent
 
-  slot default
-  prop class, :string, default: nil
-  prop gap, :any, default: "gap-2"
+  slot(default)
+  prop(class, :string, default: nil)
+  prop(gap, :any, default: "gap-2")
 
   def render(assigns) do
     ~F"""

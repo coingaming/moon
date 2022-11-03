@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row d
 
   use MoonWeb, :stateless_component
 
-  slot col1, required: true
-  slot col2, required: true
+  slot(col1, required: true)
+  slot(col2, required: true)
 
   def render(assigns) do
     ~F"""
@@ -45,12 +45,12 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab do
   alias Moon.Components.{Accordion, Button, Divider, Text}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row
 
-  data show_account_details, :boolean, default: true
-  data show_security, :boolean, default: true
-  data show_wallets, :boolean, default: true
-  data wallets_active_tab, :string, default: "BTC · 156.45"
+  data(show_account_details, :boolean, default: true)
+  data(show_security, :boolean, default: true)
+  data(show_wallets, :boolean, default: true)
+  data(wallets_active_tab, :string, default: "BTC · 156.45")
 
-  prop customer, :map, required: true
+  prop(customer, :map, required: true)
 
   def render(assigns) do
     ~F"""

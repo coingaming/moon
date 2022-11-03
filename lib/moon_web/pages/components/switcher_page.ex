@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,6 +21,7 @@ defmodule MoonWeb.Pages.Components.SwitcherPage do
         name: "Switcher"
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     socket =

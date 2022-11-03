@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
 
   data(gender_options, :any)
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -24,8 +24,9 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
         name: "Select"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'field',
@@ -56,6 +57,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
         :description => 'Whether the component is disabled'
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     gender_options = [

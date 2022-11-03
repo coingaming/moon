@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -26,8 +26,9 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         name: "Checkbox"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'checked',
@@ -65,6 +66,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         :description => 'Label for the control'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

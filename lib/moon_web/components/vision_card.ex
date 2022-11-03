@@ -3,16 +3,16 @@ defmodule MoonWeb.Components.VisionCard do
 
   use MoonWeb, :stateless_component
 
-  prop header_image, :string
-  prop alt_header_image, :string
-  prop subtext, :string
-  prop inner_card_text, :string
-  prop name, :string
-  prop company, :string
-  prop user_image, :string
-  prop heading, :string
-  prop sub_heading, :string
-  prop supporting_text_items, :list
+  prop(header_image, :string)
+  prop(alt_header_image, :string)
+  prop(subtext, :string)
+  prop(inner_card_text, :string)
+  prop(name, :string)
+  prop(company, :string)
+  prop(user_image, :string)
+  prop(heading, :string)
+  prop(sub_heading, :string)
+  prop(supporting_text_items, :list)
 
   def render(assigns) do
     ~F"""

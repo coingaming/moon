@@ -4,8 +4,8 @@ defmodule Moon.Components.FileInput.ListOfFiles do
   use Moon.StatelessComponent
   alias Moon.Components.ProgressLinear
 
-  prop conf, :any
-  prop cancel_upload, :event
+  prop(conf, :any)
+  prop(cancel_upload, :event)
 
   def render(assigns) do
     ~F"""
@@ -40,12 +40,12 @@ defmodule Moon.Components.FileInput do
   alias Moon.Components.Button
   alias __MODULE__.ListOfFiles
 
-  prop label, :string
-  prop placeholder, :string, default: "Choose file..."
-  prop conf, :any
-  prop error, :boolean, default: false
-  prop cancel_upload, :event
-  slot default
+  prop(label, :string)
+  prop(placeholder, :string, default: "Choose file...")
+  prop(conf, :any)
+  prop(error, :boolean, default: false)
+  prop(cancel_upload, :event)
+  slot(default)
 
   def render(assigns) do
     ~F"""

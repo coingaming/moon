@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -23,8 +23,9 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         name: "List Items"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'default',
@@ -69,6 +70,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         :description => 'Element on the right'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

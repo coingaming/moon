@@ -4,24 +4,24 @@ defmodule Moon.Components.Chip do
   use Moon.StatelessComponent
   alias Moon.Icon
 
-  slot default
+  slot(default)
 
-  prop id, :string
-  prop class, :string
-  prop left_icon, :string
-  prop right_icon, :string
-  prop on_click, :event
-  prop value, :string
-  prop value_name, :string
-  prop active, :boolean, default: false
-  prop active_class, :string, default: ""
-  prop inactive_class, :string, default: ""
-  prop testid, :string
-  prop size, :string, values: ["small", "medium"], default: "medium"
-  prop is_stroke, :boolean, default: false
-  prop icon_only, :string
-  prop variant, :string, values: ["default", "ghost"], default: "default"
-  prop button_type, :string, values: ["submit", "reset", "button"], default: "submit"
+  prop(id, :string)
+  prop(class, :string)
+  prop(left_icon, :string)
+  prop(right_icon, :string)
+  prop(on_click, :event)
+  prop(value, :string)
+  prop(value_name, :string)
+  prop(active, :boolean, default: false)
+  prop(active_class, :string, default: "")
+  prop(inactive_class, :string, default: "")
+  prop(testid, :string)
+  prop(size, :string, values: ["small", "medium"], default: "medium")
+  prop(is_stroke, :boolean, default: false)
+  prop(icon_only, :string)
+  prop(variant, :string, values: ["default", "ghost"], default: "default")
+  prop(button_type, :string, values: ["submit", "reset", "button"], default: "submit")
 
   def render(assigns) do
     ~F"""

@@ -5,9 +5,9 @@ defmodule Moon.Components.Datepicker.Buttons do
 
   alias Moon.Components.Button
 
-  prop on_click, :event
-  prop values, :keyword, default: []
-  prop testid, :string
+  prop(on_click, :event)
+  prop(values, :keyword, default: [])
+  prop(testid, :string)
 
   def render(assigns) do
     ~F"""

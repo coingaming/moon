@@ -13,18 +13,18 @@ defmodule Moon.Components.SingleSelect do
   alias Moon.Components.SelectTrigger
   alias Phoenix.LiveView.JS
 
-  prop id, :string
-  prop on_select, :string
-  prop target, :string
-  prop size, :string, values: ~w(md lg xl), default: "md"
-  prop class, :string
-  prop trigger_class, :string
-  prop placeholder, :string, default: "Choose"
+  prop(id, :string)
+  prop(on_select, :string)
+  prop(target, :string)
+  prop(size, :string, values: ~w(md lg xl), default: "md")
+  prop(class, :string)
+  prop(trigger_class, :string)
+  prop(placeholder, :string, default: "Choose")
 
   # options={[%{label: 'Option 1', value: 1}]}
-  prop options, :generator, required: true
-  prop selected_option, :any
-  slot items, generator_prop: :options
+  prop(options, :generator, required: true)
+  prop(selected_option, :any)
+  slot(items, generator_prop: :options)
 
   def render(assigns) do
     ~F"""

@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -22,9 +22,10 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
         name: "Drawer"
       }
     ]
+  )
 
-  data drawer_1_is_open, :boolean, default: false
-  data drawer_2_is_open, :boolean, default: false
+  data(drawer_1_is_open, :boolean, default: false)
+  data(drawer_2_is_open, :boolean, default: false)
 
   def render(assigns) do
     ~F"""

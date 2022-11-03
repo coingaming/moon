@@ -14,24 +14,24 @@ defmodule Moon.Components.Select.SingleSelect do
   alias Moon.Components.Select.SingleSelect.HintText
   alias Moon.Components.ErrorTag
 
-  prop label, :string
-  prop options, :any, default: []
-  prop value, :any
-  prop disabled, :boolean, default: false
-  prop size, :string, values: ~w(sm md lg xl), default: "md"
-  prop popover_placement, :string, default: "bottom-start"
-  prop popover_class, :string
-  prop placeholder, :string
-  prop background_color, :string, values: Moon.colors(), default: "gohan-100"
-  prop has_error, :boolean
-  prop use_error_tag, :boolean
-  prop selected_value_class, :css_class, default: ""
+  prop(label, :string)
+  prop(options, :any, default: [])
+  prop(value, :any)
+  prop(disabled, :boolean, default: false)
+  prop(size, :string, values: ~w(sm md lg xl), default: "md")
+  prop(popover_placement, :string, default: "bottom-start")
+  prop(popover_class, :string)
+  prop(placeholder, :string)
+  prop(background_color, :string, values: Moon.colors(), default: "gohan-100")
+  prop(has_error, :boolean)
+  prop(use_error_tag, :boolean)
+  prop(selected_value_class, :css_class, default: "")
 
-  data open, :boolean, default: false
-  data form, :form, from_context: {Surface.Components.Form, :form}
-  data field, :atom, from_context: :field
+  data(open, :boolean, default: false)
+  data(form, :form, from_context: {Surface.Components.Form, :form})
+  data(field, :atom, from_context: :field)
 
-  slot hint_text_slot
+  slot(hint_text_slot)
 
   def render(assigns) do
     ~F"""

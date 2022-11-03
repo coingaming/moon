@@ -5,12 +5,12 @@ defmodule Moon.Components.TextInput.Container do
 
   alias Moon.Components.TextInput.Utils
 
-  prop id, :string
-  prop disabled, :boolean, default: false
-  prop size, :string, values: ["md", "lg", "xl"]
-  prop class, :css_class
+  prop(id, :string)
+  prop(disabled, :boolean, default: false)
+  prop(size, :string, values: ["md", "lg", "xl"])
+  prop(class, :css_class)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

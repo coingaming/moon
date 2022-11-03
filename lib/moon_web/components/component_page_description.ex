@@ -3,9 +3,9 @@ defmodule MoonWeb.Components.ComponentPageDescription do
 
   use MoonWeb, :stateless_component
 
-  prop title, :string
-  prop image, :string
-  slot default
+  prop(title, :string)
+  prop(image, :string)
+  slot(default)
 
   def render(assigns) do
     ~F"""

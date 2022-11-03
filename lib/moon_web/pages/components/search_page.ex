@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.SearchPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -17,6 +17,7 @@ defmodule MoonWeb.Pages.Components.SearchPage do
         name: "Search"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

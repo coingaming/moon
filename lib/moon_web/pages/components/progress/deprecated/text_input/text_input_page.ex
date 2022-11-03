@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -29,8 +29,9 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
         name: "Text Input"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'type',
@@ -99,6 +100,7 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
         :description => 'Background color'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

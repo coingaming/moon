@@ -11,11 +11,11 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter do
   @default_name "dropdown_filter"
   @default_label "Label"
 
-  prop label, :string, default: @default_label
-  prop name, :string, default: @default_name
-  prop active_options, :list, required: true
-  prop options, :list, required: true
-  prop disable_search, :boolean, default: true
+  prop(label, :string, default: @default_label)
+  prop(name, :string, default: @default_name)
+  prop(active_options, :list, required: true)
+  prop(options, :list, required: true)
+  prop(disable_search, :boolean, default: true)
 
   def render(assigns) do
     ~F"""

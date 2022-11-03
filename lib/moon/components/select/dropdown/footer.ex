@@ -6,9 +6,9 @@ defmodule Moon.Components.Select.Dropdown.Footer do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Autolayouts.PullAside
 
-  slot cancel
-  slot clear
-  slot confirm
+  slot(cancel)
+  slot(clear)
+  slot(confirm)
 
   def render(assigns) do
     ~F"""

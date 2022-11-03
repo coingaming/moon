@@ -4,14 +4,14 @@ defmodule Moon.Components.PaginationButton do
   use Moon.StatelessComponent
   alias Moon.Components.Button
 
-  prop size, :string, required: true
-  prop page_number, :integer, required: true
-  prop current_page_number, :integer, required: true
-  prop label, :string
-  prop variant, :string
-  prop disabled, :boolean, default: false
-  prop class, :string
-  prop on_click, :event
+  prop(size, :string, required: true)
+  prop(page_number, :integer, required: true)
+  prop(current_page_number, :integer, required: true)
+  prop(label, :string)
+  prop(variant, :string)
+  prop(disabled, :boolean, default: false)
+  prop(class, :string)
+  prop(on_click, :event)
 
   def render(assigns) do
     ~F"""
@@ -34,14 +34,14 @@ defmodule Moon.Components.Pagination do
   use Moon.StatelessComponent
   alias Moon.Components.PaginationButton
 
-  prop current_page_number, :integer, required: true
-  prop total_pages, :integer, required: true
-  prop range_before, :integer, default: 1
-  prop range_after, :integer, default: 1
-  prop size, :string, values: ["xsmall", "small", "medium", "large"], default: "xsmall"
-  prop previous_button_label, :string, default: "Previous"
-  prop next_button_label, :string, default: "Next"
-  prop on_change, :event
+  prop(current_page_number, :integer, required: true)
+  prop(total_pages, :integer, required: true)
+  prop(range_before, :integer, default: 1)
+  prop(range_after, :integer, default: 1)
+  prop(size, :string, values: ["xsmall", "small", "medium", "large"], default: "xsmall")
+  prop(previous_button_label, :string, default: "Previous")
+  prop(next_button_label, :string, default: "Next")
+  prop(on_change, :event)
 
   def render(assigns) do
     ~F"""

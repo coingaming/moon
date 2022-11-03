@@ -6,12 +6,12 @@ defmodule MoonWeb.Pages.ExamplePages.Components.LeaderboardWidget do
   alias Moon.Components.Card
   alias Moon.Components.IconButton
 
-  prop widget, :map, required: true
-  prop bar_bg_color, :string, default: "bg-roshi-100"
-  prop class, :string
-  prop edited, :boolean, default: false
-  prop on_refresh, :event
-  prop on_remove, :event
+  prop(widget, :map, required: true)
+  prop(bar_bg_color, :string, default: "bg-roshi-100")
+  prop(class, :string)
+  prop(edited, :boolean, default: false)
+  prop(on_refresh, :event)
+  prop(on_remove, :event)
 
   def render(assigns) do
     ~F"""

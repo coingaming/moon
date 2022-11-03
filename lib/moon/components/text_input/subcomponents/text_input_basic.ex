@@ -7,18 +7,18 @@ defmodule Moon.Components.TextInput.TextInputBasic do
   alias Moon.Components.ErrorTag
   alias Moon.Components.TextInput.Utils
 
-  prop id, :string
-  prop field, :atom
-  prop class, :css_class
-  slot default
-  slot left_icon_slot
-  slot right_icon_slot
+  prop(id, :string)
+  prop(field, :atom)
+  prop(class, :css_class)
+  slot(default)
+  slot(left_icon_slot)
+  slot(right_icon_slot)
 
-  data disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled}
-  data size, :string, from_context: {Moon.Components.TextInput, :size}
-  data label, :string, from_context: {Moon.Components.TextInput, :label}
-  data is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error}
-  data use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag}
+  data(disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled})
+  data(size, :string, from_context: {Moon.Components.TextInput, :size})
+  data(label, :string, from_context: {Moon.Components.TextInput, :label})
+  data(is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error})
+  data(use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag})
 
   def render(assigns) do
     ~F"""

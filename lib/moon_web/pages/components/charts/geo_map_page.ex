@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.Charts.GeoMapPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -17,6 +17,7 @@ defmodule MoonWeb.Pages.Components.Charts.GeoMapPage do
         name: "Geo Map"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

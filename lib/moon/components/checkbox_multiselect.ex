@@ -6,10 +6,10 @@ defmodule Moon.Components.CheckboxMultiselect do
   alias Moon.Components.Checkbox
   alias Moon.Components.ListItems.SingleLineItem
 
-  prop options, :list, required: true
-  prop values, :list, required: true
-  prop on_select, :event
-  prop testid, :string
+  prop(options, :list, required: true)
+  prop(values, :list, required: true)
+  prop(on_select, :event)
+  prop(testid, :string)
 
   def render(assigns) do
     ~F"""

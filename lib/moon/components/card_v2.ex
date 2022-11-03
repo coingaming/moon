@@ -3,17 +3,17 @@ defmodule Moon.Components.CardV2 do
 
   use Moon.StatelessComponent
 
-  prop rounded, :css_class, default: "rounded-md"
-  prop class, :css_class
-  prop background_color_class, :css_class, default: "bg-gohan-100"
-  prop border_color_class, :css_class
-  prop top_class, :css_class
-  prop left_bottom_class, :css_class
-  prop right_bottom_class, :css_class
+  prop(rounded, :css_class, default: "rounded-md")
+  prop(class, :css_class)
+  prop(background_color_class, :css_class, default: "bg-gohan-100")
+  prop(border_color_class, :css_class)
+  prop(top_class, :css_class)
+  prop(left_bottom_class, :css_class)
+  prop(right_bottom_class, :css_class)
 
-  slot top, required: true
-  slot left_bottom
-  slot right_bottom
+  slot(top, required: true)
+  slot(left_bottom)
+  slot(right_bottom)
 
   def render(assigns) do
     ~F"""

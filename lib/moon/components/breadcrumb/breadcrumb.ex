@@ -6,8 +6,8 @@ defmodule Moon.Components.Breadcrumb do
   alias Moon.Components.Breadcrumb.Collapsed
   alias Moon.Components.Breadcrumb.Extended
 
-  prop breadcrumbs, :list, default: []
-  prop class, :string, default: nil
+  prop(breadcrumbs, :list, default: [])
+  prop(class, :string, default: nil)
 
   def render(assigns) do
     ~F"""

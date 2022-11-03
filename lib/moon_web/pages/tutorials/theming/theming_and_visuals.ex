@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
   alias Moon.Components.Text
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,6 +20,7 @@ defmodule MoonWeb.Pages.Theming.ThemingAndVisuals do
         name: "Theming and Visuals"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

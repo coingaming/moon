@@ -8,10 +8,10 @@ defmodule Moon.Components.Calendar do
   alias Moon.Components.Calendar.Month
   alias Moon.Components.Calendar.Week
 
-  prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
-  prop events, :list, default: []
-  data date, :datetime, default: Timex.today()
-  data show_month, :boolean, default: true
+  prop(week_starts_on, :integer, default: 1, values: Enum.to_list(1..7))
+  prop(events, :list, default: [])
+  data(date, :datetime, default: Timex.today())
+  data(show_month, :boolean, default: true)
 
   def render(assigns) do
     ~F"""

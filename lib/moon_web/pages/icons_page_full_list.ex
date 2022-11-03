@@ -9,13 +9,14 @@ defmodule MoonWeb.Pages.IconsPageFullList do
   alias Moon.Icon
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/icons",
         name: "Icons"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

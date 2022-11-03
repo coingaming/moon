@@ -6,13 +6,14 @@ defmodule MoonWeb.Pages.VisionPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.VisionCard
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/vision",
         name: "Vision"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

@@ -4,32 +4,33 @@ defmodule Moon.Components.TextInput.Password do
   use Moon.StatelessComponent
   alias Moon.Components.TextInput.Utils
 
-  prop id, :string
-  prop field, :atom
-  prop value, :string
-  prop on_keyup, :string
-  prop input_password_id, :string
+  prop(id, :string)
+  prop(field, :atom)
+  prop(value, :string)
+  prop(on_keyup, :string)
+  prop(input_password_id, :string)
 
-  prop type, :string,
+  prop(type, :string,
     values: [
       "password",
       "text"
     ],
     default: "text"
+  )
 
-  data placeholder, :string, from_context: {Moon.Components.TextInput, :placeholder}
-  data disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled}
-  data required, :boolean, from_context: {Moon.Components.TextInput, :required}
-  data readonly, :boolean, from_context: {Moon.Components.TextInput, :readonly}
-  data size, :string, from_context: {Moon.Components.TextInput, :size}
-  data is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error}
-  data background_color, :string, from_context: {Moon.Components.TextInput, :background_color}
-  data label, :string, from_context: {Moon.Components.TextInput, :label}
-  data focus, :event, from_context: {Moon.Components.TextInput, :focus}
-  data keydown, :event, from_context: {Moon.Components.TextInput, :keydown}
-  data blur, :event, from_context: {Moon.Components.TextInput, :blur}
-  data has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon}
-  data has_right_icon, :boolean, from_context: {Moon.Components.TextInput, :has_right_icon}
+  data(placeholder, :string, from_context: {Moon.Components.TextInput, :placeholder})
+  data(disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled})
+  data(required, :boolean, from_context: {Moon.Components.TextInput, :required})
+  data(readonly, :boolean, from_context: {Moon.Components.TextInput, :readonly})
+  data(size, :string, from_context: {Moon.Components.TextInput, :size})
+  data(is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error})
+  data(background_color, :string, from_context: {Moon.Components.TextInput, :background_color})
+  data(label, :string, from_context: {Moon.Components.TextInput, :label})
+  data(focus, :event, from_context: {Moon.Components.TextInput, :focus})
+  data(keydown, :event, from_context: {Moon.Components.TextInput, :keydown})
+  data(blur, :event, from_context: {Moon.Components.TextInput, :blur})
+  data(has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon})
+  data(has_right_icon, :boolean, from_context: {Moon.Components.TextInput, :has_right_icon})
 
   def render(assigns) do
     ~F"""

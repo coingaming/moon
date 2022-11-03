@@ -15,23 +15,23 @@ defmodule MoonWeb.Pages.ExamplePages.AffiliatesPage do
   alias MoonWeb.Pages.ExamplePages.Shared.{LeftMenu, TopMenu}
   alias MoonWeb.Pages.ExamplePages.Shared.Filters.{CountryFilter, UsernameFilter}
 
-  data affiliates, :list, default: []
-  data active_affiliate, :map, default: %{id: nil}
+  data(affiliates, :list, default: [])
+  data(active_affiliate, :map, default: %{id: nil})
 
   # filters
-  data username_filter_values, :list, default: []
-  data country_filter_values, :list, default: []
+  data(username_filter_values, :list, default: [])
+  data(country_filter_values, :list, default: [])
 
   # table
-  data sort_by, :tuple, default: {nil, nil}
-  data page, :integer, default: 1
+  data(sort_by, :tuple, default: {nil, nil})
+  data(page, :integer, default: 1)
 
   # segment
-  data segment_id, :string, default: nil
-  data segment_title, :string, default: nil
+  data(segment_id, :string, default: nil)
+  data(segment_title, :string, default: nil)
 
   # ephimeral state
-  data save_segment_form, :map, default: nil
+  data(save_segment_form, :map, default: nil)
 
   def render(assigns) do
     ~F"""

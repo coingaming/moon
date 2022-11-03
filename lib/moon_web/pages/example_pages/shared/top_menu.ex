@@ -7,8 +7,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   alias Moon.Assets.Logos.LogoLabFull
   alias Moon.Components.IconButton
 
-  prop class, :string
-  prop reduced_opacity, :boolean, default: false
+  prop(class, :string)
+  prop(reduced_opacity, :boolean, default: false)
 
   def render(assigns) do
     ~F"""

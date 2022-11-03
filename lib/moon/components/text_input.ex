@@ -10,11 +10,11 @@ defmodule Moon.Components.TextInput do
   alias Moon.Components.TextInput.HintText
   alias Surface.Components.Context
 
-  prop id, :string
-  prop field, :atom, from_context: :field
-  prop size, :string, values: ["md", "lg", "xl"], default: "md"
+  prop(id, :string)
+  prop(field, :atom, from_context: :field)
+  prop(size, :string, values: ["md", "lg", "xl"], default: "md")
 
-  prop type, :string,
+  prop(type, :string,
     values: [
       "date",
       "datetime-local",
@@ -28,36 +28,37 @@ defmodule Moon.Components.TextInput do
       "url"
     ],
     default: "text"
+  )
 
-  prop placeholder, :string, default: " "
-  prop is_error, :boolean
-  prop background_color, :string, values: Moon.colors(), default: "bg-gohan-100"
-  prop is_first, :boolean
-  prop disabled, :boolean
-  prop label, :string
-  prop required, :boolean
-  prop step, :string, default: "1"
-  prop class, :css_class
+  prop(placeholder, :string, default: " ")
+  prop(is_error, :boolean)
+  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan-100")
+  prop(is_first, :boolean)
+  prop(disabled, :boolean)
+  prop(label, :string)
+  prop(required, :boolean)
+  prop(step, :string, default: "1")
+  prop(class, :css_class)
 
-  prop readonly, :boolean
-  prop value, :string
+  prop(readonly, :boolean)
+  prop(value, :string)
 
-  prop focus, :event
-  prop keydown, :event
-  prop keyup, :event
-  prop blur, :event
+  prop(focus, :event)
+  prop(keydown, :event)
+  prop(keyup, :event)
+  prop(blur, :event)
 
-  prop show_password_text, :string, default: "Show"
+  prop(show_password_text, :string, default: "Show")
 
-  prop use_error_tag, :boolean
+  prop(use_error_tag, :boolean)
 
-  slot left_icon_slot
-  slot right_icon_slot
-  slot hint_text_slot
+  slot(left_icon_slot)
+  slot(right_icon_slot)
+  slot(hint_text_slot)
 
-  data form, :form, from_context: {Surface.Components.Form, :form}
-  data is_in_input_group, :boolean, from_context: {InputGroup, :is_in_input_group}
-  data group_class_plain, :css_class, from_context: {InputGroup, :group_class_plain}
+  data(form, :form, from_context: {Surface.Components.Form, :form})
+  data(is_in_input_group, :boolean, from_context: {InputGroup, :is_in_input_group})
+  data(group_class_plain, :css_class, from_context: {InputGroup, :group_class_plain})
 
   def render(assigns) do
     assigns = put_everything_to_context(assigns)

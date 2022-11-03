@@ -10,8 +10,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search do
 
   alias __MODULE__.SearchResults
 
-  data search_active, :boolean, default: false
-  data search_map, :any, default: %{search_text: ""}
+  data(search_active, :boolean, default: false)
+  data(search_map, :any, default: %{search_text: ""})
 
   @spec render(any) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do

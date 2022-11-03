@@ -3,11 +3,11 @@ defmodule Moon.Components.Select.Dropdown.Icon do
 
   use Moon.StatelessComponent
 
-  prop icon, :any
-  prop class, :string, default: ""
-  prop style, :string, default: ""
+  prop(icon, :any)
+  prop(class, :string, default: "")
+  prop(style, :string, default: "")
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     [module, props] = assigns.icon

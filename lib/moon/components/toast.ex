@@ -10,15 +10,15 @@ defmodule Moon.Components.Toast do
   alias Moon.Assets.Icons.IconWarning
   alias Moon.Components.Link
 
-  prop id, :string, required: true
-  prop testid, :string
-  prop message, :string, required: true
-  prop variant, :string, values: ~w(error warning info success)
-  prop closeable, :boolean, default: true
-  prop link_text, :string
-  prop link_href, :string
-  prop on_close, :event
-  prop background_color_class, :css_class, default: "bg-gohan-100"
+  prop(id, :string, required: true)
+  prop(testid, :string)
+  prop(message, :string, required: true)
+  prop(variant, :string, values: ~w(error warning info success))
+  prop(closeable, :boolean, default: true)
+  prop(link_text, :string)
+  prop(link_href, :string)
+  prop(on_close, :event)
+  prop(background_color_class, :css_class, default: "bg-gohan-100")
 
   defmodule Message do
     @moduledoc false

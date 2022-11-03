@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,8 +21,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         name: "Avatar"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'bg_color',
@@ -81,6 +82,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :description => 'Position for status indication'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

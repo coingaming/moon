@@ -3,8 +3,8 @@ defmodule Moon.Autolayouts.ButtonsList do
 
   use Moon.StatelessComponent
 
-  slot default
-  prop class, :string
+  slot(default)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""

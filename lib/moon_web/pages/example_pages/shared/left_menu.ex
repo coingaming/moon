@@ -9,10 +9,10 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.LeftMenu do
   alias MoonWeb.MockDB.{Segments, Utils}
   alias Surface.Components.LiveRedirect
 
-  prop class, :string
-  prop reduced_opacity, :boolean, default: false
+  prop(class, :string)
+  prop(reduced_opacity, :boolean, default: false)
 
-  data segments, :any, default: []
+  data(segments, :any, default: [])
 
   def mount(assigns) do
     {:ok, assign(assigns, segments: get_segments())}

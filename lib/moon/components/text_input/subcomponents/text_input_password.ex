@@ -8,23 +8,25 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   alias Moon.Components.TextInput.ShowPassword
   alias Moon.Components.ErrorTag
 
-  data password_shown, :boolean, default: false
-  data password, :string, default: ""
+  data(password_shown, :boolean, default: false)
+  data(password, :string, default: "")
 
-  prop field, :atom
-  prop class, :css_class
-  slot default
-  slot left_icon_slot
-  slot right_icon_slot
+  prop(field, :atom)
+  prop(class, :css_class)
+  slot(default)
+  slot(left_icon_slot)
+  slot(right_icon_slot)
 
-  data disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled}
-  data size, :string, from_context: {Moon.Components.TextInput, :size}
-  data is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error}
-  data background_color, :string, from_context: {Moon.Components.TextInput, :background_color}
-  data label, :string, from_context: {Moon.Components.TextInput, :label}
-  data use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag}
-  data show_password_text, :string, from_context: {Moon.Components.TextInput, :show_password_text}
-  data has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon}
+  data(disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled})
+  data(size, :string, from_context: {Moon.Components.TextInput, :size})
+  data(is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error})
+  data(background_color, :string, from_context: {Moon.Components.TextInput, :background_color})
+  data(label, :string, from_context: {Moon.Components.TextInput, :label})
+  data(use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag})
+
+  data(show_password_text, :string, from_context: {Moon.Components.TextInput, :show_password_text})
+
+  data(has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon})
 
   def render(assigns) do
     ~F"""

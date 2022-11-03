@@ -5,7 +5,7 @@ defmodule Moon.Components.Breadcrumb.Extended do
 
   alias Moon.Icons.ArrowsRight
 
-  prop breadcrumbs, :list
+  prop(breadcrumbs, :list)
 
   def render(assigns) do
     ~F"""

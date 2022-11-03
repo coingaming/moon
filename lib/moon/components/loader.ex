@@ -3,8 +3,8 @@ defmodule Moon.Components.Loader do
 
   use Moon.StatelessComponent
 
-  prop size, :string, values: ["twoxsmall", "xsmall", "medium", "large"], default: "medium"
-  prop color, :string, default: "bulma-100", values: Moon.colors()
+  prop(size, :string, values: ["twoxsmall", "xsmall", "medium", "large"], default: "medium")
+  prop(color, :string, default: "bulma-100", values: Moon.colors())
 
   def render(assigns) do
     ~F"""

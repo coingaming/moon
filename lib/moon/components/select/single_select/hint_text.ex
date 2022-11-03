@@ -3,9 +3,9 @@ defmodule Moon.Components.Select.SingleSelect.HintText do
 
   use Moon.StatelessComponent
 
-  prop has_error, :boolean, default: false
+  prop(has_error, :boolean, default: false)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

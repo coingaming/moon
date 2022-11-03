@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         name: "Loader"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'color',
@@ -38,6 +39,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         :description => 'Size of Loader'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

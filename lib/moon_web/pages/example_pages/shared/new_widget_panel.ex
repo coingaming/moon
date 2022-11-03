@@ -7,9 +7,9 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.NewWidgetPanel do
   alias Moon.Components.IconButton
   alias Moon.Components.SlideOver
 
-  prop categories, :list, default: []
+  prop(categories, :list, default: [])
 
-  data active_category, :map, default: %{}
+  data(active_category, :map, default: %{})
 
   def update(assigns, socket) do
     socket =

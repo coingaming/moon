@@ -5,15 +5,15 @@ defmodule Moon.Components.RadioButton do
   alias Moon.Components.FieldLabel
   alias Surface.Components.Form.RadioButton
 
-  prop id, :string
-  prop field, :atom, from_context: :field
-  prop form, :form, from_context: {Surface.Components.Form, :form}
-  prop click, :event
-  prop checked, :boolean, default: false
-  prop disabled, :boolean
-  prop class, :string
-  prop value, :string
-  slot default
+  prop(id, :string)
+  prop(field, :atom, from_context: :field)
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
+  prop(click, :event)
+  prop(checked, :boolean, default: false)
+  prop(disabled, :boolean)
+  prop(class, :string)
+  prop(value, :string)
+  slot(default)
 
   def is_selected(current_value, value) do
     current_value == value

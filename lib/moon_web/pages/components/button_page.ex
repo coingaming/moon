@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         name: "Button"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'animation',
@@ -73,6 +74,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         :description => 'Visual/Logical variant of button'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

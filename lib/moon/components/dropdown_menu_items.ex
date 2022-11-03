@@ -3,10 +3,10 @@ defmodule Moon.Components.DropdownMenuItems do
 
   use Moon.StatelessComponent
 
-  slot default
-  prop width, :string, default: "60"
-  prop gap, :integer, default: 0
-  prop class, :string
+  slot(default)
+  prop(width, :string, default: "60")
+  prop(gap, :integer, default: 0)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""
@@ -22,7 +22,7 @@ defmodule Moon.Components.DropdownMenuItem do
 
   use Moon.StatelessComponent
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

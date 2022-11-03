@@ -5,8 +5,8 @@ defmodule MoonWeb.Components.Header do
 
   alias Moon.Assets.Logos.LogoMoonDesignShort
 
-  prop click, :event
-  slot default
+  prop(click, :event)
+  slot(default)
 
   def render(assigns) do
     ~F"""

@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -26,6 +26,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
         name: "Card"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

@@ -16,19 +16,20 @@ defmodule MoonWeb.Components.ThemesSelect do
   alias MoonWeb.Components.ThemesSelect.ThemeSwitcher
   alias MoonWeb.Components.ThemesSelect.RtlSwitcher
 
-  prop class, :string, default: nil
-  prop theme_name, :any, default: "lab-light"
-  prop direction, :string, values: ["ltr", "rtl"], default: "ltr"
-  prop active_page, :any
-  prop use_theme_switcher, :boolean, default: false
+  prop(class, :string, default: nil)
+  prop(theme_name, :any, default: "lab-light")
+  prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
+  prop(active_page, :any)
+  prop(use_theme_switcher, :boolean, default: false)
 
-  data show_themes, :boolean, default: false
-  data dark_mode, :boolean, default: false
-  data is_rtl, :boolean, default: false
-  data selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{})
+  data(show_themes, :boolean, default: false)
+  data(dark_mode, :boolean, default: false)
+  data(is_rtl, :boolean, default: false)
+  data(selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{}))
 
-  data selected_direction_changeset, :any,
+  data(selected_direction_changeset, :any,
     default: SelectedDirection.changeset(%SelectedDirection{}, %{})
+  )
 
   @available_themes [
     [key: "Aposta10", value: "aposta10", modes: true],

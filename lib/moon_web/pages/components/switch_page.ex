@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias Moon.Components.Button
   alias Moon.Components.ErrorTag
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -25,8 +25,9 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         name: "Switch"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'checked',
@@ -57,6 +58,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         :description => 'If not used in Field component, needs to be specified'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

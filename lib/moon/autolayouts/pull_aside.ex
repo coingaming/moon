@@ -3,11 +3,11 @@ defmodule Moon.Autolayouts.PullAside do
 
   use Moon.StatelessComponent
 
-  prop class, :css_class
-  prop left_grow, :boolean, default: false
-  prop right_grow, :boolean, default: false
-  slot left
-  slot right
+  prop(class, :css_class)
+  prop(left_grow, :boolean, default: false)
+  prop(right_grow, :boolean, default: false)
+  slot(left)
+  slot(right)
 
   def render(assigns) do
     ~F"""

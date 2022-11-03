@@ -7,11 +7,11 @@ defmodule Moon.Components.LineChartCard do
   alias Moon.Components.LineChart
   alias Moon.Components.Select
 
-  prop title, :string, required: true
-  prop select_options, :list, default: []
-  prop filters, :list, default: []
-  prop values, :list, default: []
-  prop time_format, :string, default: "%d/%m"
+  prop(title, :string, required: true)
+  prop(select_options, :list, default: [])
+  prop(filters, :list, default: [])
+  prop(values, :list, default: [])
+  prop(time_format, :string, default: "%d/%m")
 
   def render(assigns) do
     ~F"""

@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -22,8 +22,9 @@ defmodule MoonWeb.Pages.Components.LabelPage do
         name: "Label"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'size',
@@ -68,6 +69,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
         :description => 'Letter case'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

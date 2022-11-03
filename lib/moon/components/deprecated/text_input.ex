@@ -4,10 +4,10 @@ defmodule Moon.Components.Deprecated.TextInput do
   use Moon.StatelessComponent
   alias Moon.Components.FieldLabel
 
-  prop field, :atom
-  prop label, :string
+  prop(field, :atom)
+  prop(label, :string)
 
-  prop type, :string,
+  prop(type, :string,
     default: "text",
     values: [
       "date",
@@ -22,27 +22,28 @@ defmodule Moon.Components.Deprecated.TextInput do
       "time",
       "url"
     ]
+  )
 
-  prop value, :string
-  prop placeholder, :string
-  prop error, :string
-  prop rounded, :boolean
-  prop disabled, :boolean
-  prop required, :boolean
-  prop class, :css_class
-  prop focus, :event
-  prop keydown, :event
-  prop keyup, :event
-  prop blur, :event
-  prop step, :string, default: "1"
-  prop background_color, :string, values: Moon.colors(), default: "goku-100"
-  prop size, :string, values: ["medium", "large"], default: "large"
-  prop border_color_class, :string
-  prop states_class, :string
+  prop(value, :string)
+  prop(placeholder, :string)
+  prop(error, :string)
+  prop(rounded, :boolean)
+  prop(disabled, :boolean)
+  prop(required, :boolean)
+  prop(class, :css_class)
+  prop(focus, :event)
+  prop(keydown, :event)
+  prop(keyup, :event)
+  prop(blur, :event)
+  prop(step, :string, default: "1")
+  prop(background_color, :string, values: Moon.colors(), default: "goku-100")
+  prop(size, :string, values: ["medium", "large"], default: "large")
+  prop(border_color_class, :string)
+  prop(states_class, :string)
 
-  slot left_icon
-  slot right_icon
-  slot hint_text
+  slot(left_icon)
+  slot(right_icon)
+  slot(hint_text)
 
   def render(assigns) do
     text_input = ~F"""

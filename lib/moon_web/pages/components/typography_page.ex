@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExampleAndCode
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -18,6 +18,7 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
         name: "Typography"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

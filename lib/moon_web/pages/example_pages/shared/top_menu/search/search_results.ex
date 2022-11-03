@@ -8,8 +8,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu.Search.SearchResults do
   alias Moon.Components.Link
   alias Moon.Icon
 
-  prop search_text, :string
-  data search_results, :any
+  prop(search_text, :string)
+  data(search_results, :any)
 
   def mount(assigns) do
     {:ok, assign(assigns, search_results: get_search_results(""))}

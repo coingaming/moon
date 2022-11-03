@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.IconsPage.IconsImportDisplay do
 
   alias MoonWeb.Pages.IconsPage.CodeSnippet
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

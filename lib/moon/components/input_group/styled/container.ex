@@ -3,10 +3,10 @@ defmodule Moon.Components.InputGroup.Container do
 
   use Moon.StatelessComponent
 
-  prop orientation, :string
-  prop background_color, :string, default: "gohan-100", values: Moon.colors()
-  prop is_error, :boolean
-  slot default
+  prop(orientation, :string)
+  prop(background_color, :string, default: "gohan-100", values: Moon.colors())
+  prop(is_error, :boolean)
+  slot(default)
 
   def render(assigns) do
     ~F"""

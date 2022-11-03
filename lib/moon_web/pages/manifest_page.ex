@@ -7,13 +7,14 @@ defmodule MoonWeb.Pages.ManifestPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ManifestCard
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/manifest",
         name: "Manifest"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

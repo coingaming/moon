@@ -4,18 +4,18 @@ defmodule Moon.Components.DropdownMenuButton do
   use MoonWeb, :stateless_component
   alias Moon.Components.Popover
 
-  prop class, :string
-  prop title, :string
-  prop height, :integer, default: 10
-  prop width, :integer, default: 10
-  prop text_color, :string, default: "text-trunks-100"
-  prop hover_bg_color, :string, default: "bg-goku-120"
-  prop placement, :string, default: "bottom-end"
-  prop show, :boolean, default: false
-  prop on_toggle, :event, required: true
+  prop(class, :string)
+  prop(title, :string)
+  prop(height, :integer, default: 10)
+  prop(width, :integer, default: 10)
+  prop(text_color, :string, default: "text-trunks-100")
+  prop(hover_bg_color, :string, default: "bg-goku-120")
+  prop(placement, :string, default: "bottom-end")
+  prop(show, :boolean, default: false)
+  prop(on_toggle, :event, required: true)
 
-  slot default
-  slot menu
+  slot(default)
+  slot(menu)
 
   def render(assigns) do
     ~F"""

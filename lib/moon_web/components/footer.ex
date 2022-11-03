@@ -6,7 +6,7 @@ defmodule MoonWeb.Components.Footer do
   alias Moon.Assets.Logos.LogoMoonDesign
   alias Moon.Components.Link
 
-  data show_themes, :boolean, default: false
+  data(show_themes, :boolean, default: false)
 
   def render(assigns) do
     ~F"""

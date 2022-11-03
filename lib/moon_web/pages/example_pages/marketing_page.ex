@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.ExamplePages.MarketingPage do
   alias Shared.LeftMenu
   alias Shared.TopMenu
 
-  data breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}]
+  data(breadcrumbs, :any, default: [%{name: "Marketing", to: "/example-pages/marketing"}])
 
   def mount(_params, _session, socket) do
     {:ok,
