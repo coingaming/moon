@@ -7,13 +7,14 @@ defmodule MoonWeb.Pages.ContributePage do
   alias MoonWeb.Components.CodeSnippet
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/contribute",
         name: "How to contribute"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

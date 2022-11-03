@@ -7,11 +7,11 @@ defmodule Moon.Components.Datepicker.DateInputs do
   alias Surface.Components.Form.DateTimeLocalInput
   alias Moon.Components.Datepicker.Helpers
 
-  prop with_time, :boolean, default: false
-  prop internal_start_date, :datetime, default: Timex.today()
-  prop internal_end_date, :datetime, default: Timex.today()
-  prop start_date_field, :atom, default: :start_date
-  prop end_date_field, :atom, default: :end_date
+  prop(with_time, :boolean, default: false)
+  prop(internal_start_date, :datetime, default: Timex.today())
+  prop(internal_end_date, :datetime, default: Timex.today())
+  prop(start_date_field, :atom, default: :start_date)
+  prop(end_date_field, :atom, default: :end_date)
 
   def render(assigns) do
     ~F"""

@@ -3,9 +3,9 @@ defmodule Moon.Components.TextInput.HintText do
 
   use Moon.StatelessComponent
 
-  prop is_error, :boolean, default: false
+  prop(is_error, :boolean, default: false)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

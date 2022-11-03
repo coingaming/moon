@@ -8,7 +8,7 @@ defmodule Moon.Components.ToastStack do
 
   @default_duration 4000
 
-  data toasts, :keyword, default: Keyword.new()
+  data(toasts, :keyword, default: Keyword.new())
 
   def render(assigns) do
     ~F"""

@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
     ]
   )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'color',
@@ -75,6 +75,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         :description => 'TODO - Custom line height'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

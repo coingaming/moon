@@ -7,19 +7,19 @@ defmodule Moon.Components.IconButton do
 
   alias Moon.Icon
 
-  prop id, :string, default: nil
-  prop icon_name, :string, required: true
-  prop icon_size, :string, default: "1rem"
-  prop class, :string
-  prop title, :string
-  prop height, :integer, default: 10
-  prop width, :integer, default: 10
-  prop text_color, :string, default: "text-trunks-100"
-  prop hover_bg_color, :string, default: "bg-hit-120"
-  prop click, :event
-  prop value_name, :string
-  prop value, :any
-  prop type, :string, values!: ["button", "reset", "submit"], default: "submit"
+  prop(id, :string, default: nil)
+  prop(icon_name, :string, required: true)
+  prop(icon_size, :string, default: "1rem")
+  prop(class, :string)
+  prop(title, :string)
+  prop(height, :integer, default: 10)
+  prop(width, :integer, default: 10)
+  prop(text_color, :string, default: "text-trunks-100")
+  prop(hover_bg_color, :string, default: "bg-hit-120")
+  prop(click, :event)
+  prop(value_name, :string)
+  prop(value, :any)
+  prop(type, :string, values!: ["button", "reset", "submit"], default: "submit")
 
   def render(assigns) do
     ~F"""

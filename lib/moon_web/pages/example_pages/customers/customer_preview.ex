@@ -8,10 +8,10 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview do
   alias Moon.Components.{Button, Divider, SlideOver, Text}
   alias MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.{OverviewTab, RewardsTab}
 
-  data active_tab, :string, default: "overview"
+  data(active_tab, :string, default: "overview")
 
-  prop customer, :map, required: true
-  prop on_close, :event, required: true
+  prop(customer, :map, required: true)
+  prop(on_close, :event, required: true)
 
   def render(assigns) do
     ~F"""

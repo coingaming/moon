@@ -3,10 +3,10 @@ defmodule MoonWeb.Components.Facing.CardContributor do
 
   use MoonWeb, :stateless_component
 
-  prop variant, :string, values: ["default", "tiny", "tall"], default: "default"
-  prop name, :string, required: true
-  prop title, :string
-  prop image_src, :string, required: true
+  prop(variant, :string, values: ["default", "tiny", "tall"], default: "default")
+  prop(name, :string, required: true)
+  prop(title, :string)
+  prop(image_src, :string, required: true)
 
   def render(assigns) do
     ~F"""

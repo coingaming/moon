@@ -8,15 +8,16 @@ defmodule MoonWeb.Pages.TokensPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.TokensTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/tokens",
         name: "Tokens"
       }
     ]
+  )
 
-  data border_radius_array, :list,
+  data(border_radius_array, :list,
     default: [
       %{
         :property => 'Interactive radius XS',
@@ -54,8 +55,9 @@ defmodule MoonWeb.Pages.TokensPage do
         :value => '16px'
       }
     ]
+  )
 
-  data border_style_array, :list,
+  data(border_style_array, :list,
     default: [
       %{
         :property => 'Default',
@@ -68,6 +70,7 @@ defmodule MoonWeb.Pages.TokensPage do
         :value => '2px solid'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

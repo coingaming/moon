@@ -3,9 +3,9 @@ defmodule Moon.Components.Switch.Caption do
 
   use Moon.StatelessComponent
 
-  prop label, :string
-  prop size, :string, values: ["small", "medium", "large"], default: "medium"
-  prop active, :boolean
+  prop(label, :string)
+  prop(size, :string, values: ["small", "medium", "large"], default: "medium")
+  prop(active, :boolean)
 
   def render(assigns) do
     ~F"""

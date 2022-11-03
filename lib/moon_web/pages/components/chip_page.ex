@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.ChipPage do
         name: "Chip"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'size',
@@ -66,6 +67,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
         :description => 'Show stroke on hover/active'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

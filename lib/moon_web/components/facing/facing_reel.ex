@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.Facing.FacingReel do
 
   use MoonWeb, :stateless_component
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

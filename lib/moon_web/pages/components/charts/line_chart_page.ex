@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,6 +20,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
         name: "Line Chart"
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     filters = [

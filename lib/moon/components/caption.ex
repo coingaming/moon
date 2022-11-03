@@ -3,9 +3,9 @@ defmodule Moon.Components.Caption do
 
   use Moon.StatelessComponent
 
-  slot default
-  prop text_align_class, :string, default: "text-left"
-  prop color_class, :string, default: "text-bulma-100"
+  slot(default)
+  prop(text_align_class, :string, default: "text-left")
+  prop(color_class, :string, default: "text-bulma-100")
 
   def render(assigns) do
     ~F"""

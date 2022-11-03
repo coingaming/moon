@@ -3,13 +3,14 @@ defmodule Moon.Components.Divider do
 
   use Moon.StatelessComponent
 
-  prop class, :string
-  prop color, :string, default: "beerus-100"
-  prop height, :string, default: "full"
+  prop(class, :string)
+  prop(color, :string, default: "beerus-100")
+  prop(height, :string, default: "full")
 
-  prop orientation, :string,
+  prop(orientation, :string,
     values: ["vertical", "horizontal"],
     default: "horizontal"
+  )
 
   def render(assigns) do
     ~F"""

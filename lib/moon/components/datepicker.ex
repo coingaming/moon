@@ -26,28 +26,29 @@ defmodule Moon.Components.Datepicker do
     nextMonth: 'Next month'
   }
 
-  prop with_time, :boolean, default: false
-  prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
-  prop start_date_field, :atom, default: :start_date
-  prop end_date_field, :atom, default: :end_date
-  prop button_class, :css_class, default: ""
-  prop show_date_inputs, :boolean, default: false
+  prop(with_time, :boolean, default: false)
+  prop(week_starts_on, :integer, default: 1, values: Enum.to_list(1..7))
+  prop(start_date_field, :atom, default: :start_date)
+  prop(end_date_field, :atom, default: :end_date)
+  prop(button_class, :css_class, default: "")
+  prop(show_date_inputs, :boolean, default: false)
 
-  prop ranges, :list,
+  prop(ranges, :list,
     default: ~w(lastMonth lastWeek yesterday thisWeek thisMonth last24hours today)
+  )
 
-  prop start_date, :datetime
-  prop end_date, :datetime
-  prop submit, :event
-  prop testid, :string
+  prop(start_date, :datetime)
+  prop(end_date, :datetime)
+  prop(submit, :event)
+  prop(testid, :string)
 
   # Internal values
-  data internal_start_date, :datetime, default: Timex.today()
-  data internal_end_date, :datetime, default: Timex.today()
-  data left_panel_date, :datetime, default: Timex.today()
-  data selected_range, :string, default: "thisMonth"
-  data temp_range, :string, default: nil
-  data show, :boolean, default: false
+  data(internal_start_date, :datetime, default: Timex.today())
+  data(internal_end_date, :datetime, default: Timex.today())
+  data(left_panel_date, :datetime, default: Timex.today())
+  data(selected_range, :string, default: "thisMonth")
+  data(temp_range, :string, default: nil)
+  data(show, :boolean, default: false)
 
   def render(assigns) do
     ~F"""

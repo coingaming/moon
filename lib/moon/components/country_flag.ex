@@ -4,12 +4,12 @@ defmodule Moon.CountryFlag do
   use Moon.StatelessComponent
   alias Moon.Helpers.CountryFlags
 
-  prop name, :string, required: true, values: CountryFlags.list_all()
-  prop color, :string, values: Moon.colors()
-  prop background_color, :string, values: Moon.colors()
-  prop font_size, :string
-  prop click, :event
-  prop class, :string
+  prop(name, :string, required: true, values: CountryFlags.list_all())
+  prop(color, :string, values: Moon.colors())
+  prop(background_color, :string, values: Moon.colors())
+  prop(font_size, :string)
+  prop(click, :event)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""

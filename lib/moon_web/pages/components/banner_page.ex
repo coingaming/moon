@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,6 +21,7 @@ defmodule MoonWeb.Pages.Components.BannerPage do
         name: "Banner"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

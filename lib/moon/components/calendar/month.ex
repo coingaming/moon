@@ -4,9 +4,9 @@ defmodule Moon.Components.Calendar.Month do
   use Moon.StatelessComponent
   alias Moon.Components.Calendar.Day
 
-  prop date, :datetime, required: true
-  prop week_starts_on, :integer, default: 1
-  prop events, :list, default: []
+  prop(date, :datetime, required: true)
+  prop(week_starts_on, :integer, default: 1)
+  prop(events, :list, default: [])
 
   def render(assigns) do
     ~F"""

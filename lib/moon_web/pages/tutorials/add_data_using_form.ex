@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
     document_filename: nil
   }
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -31,6 +31,7 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm do
         name: "Add Data Using Form"
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{}, @default_user_map)

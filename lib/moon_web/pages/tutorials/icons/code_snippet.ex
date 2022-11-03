@@ -3,7 +3,7 @@ defmodule MoonWeb.Pages.IconsPage.CodeSnippet do
 
   use Moon.StatelessComponent
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

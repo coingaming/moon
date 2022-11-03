@@ -9,11 +9,11 @@ defmodule MoonWeb.Components.ThemesSelect.ThemeSwitcher do
   alias MoonWeb.Components.ThemesSelect.SelectedTheme
   alias Moon.Components.Switch
 
-  prop show_themes, :boolean, default: false
-  prop use_theme_switcher, :boolean, default: false
-  prop selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{})
-  prop dark_mode, :boolean, default: false
-  prop on_theme_switch, :event
+  prop(show_themes, :boolean, default: false)
+  prop(use_theme_switcher, :boolean, default: false)
+  prop(selected_theme_changeset, :any, default: SelectedTheme.changeset(%SelectedTheme{}, %{}))
+  prop(dark_mode, :boolean, default: false)
+  prop(on_theme_switch, :event)
 
   def render(assigns) do
     ~F"""

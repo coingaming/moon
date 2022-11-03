@@ -5,14 +5,14 @@ defmodule Moon.Assets.Crest do
 
   import Moon.Helpers.Assets, only: [asset_name_to_filename: 1]
 
-  prop name, :string
-  prop color, :string, values: Moon.colors()
-  prop height, :string
-  prop width, :string
-  prop font_size, :string
-  prop vertical_align, :string
-  prop click, :event
-  prop class, :string
+  prop(name, :string)
+  prop(color, :string, values: Moon.colors())
+  prop(height, :string)
+  prop(width, :string)
+  prop(font_size, :string)
+  prop(vertical_align, :string)
+  prop(click, :event)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""

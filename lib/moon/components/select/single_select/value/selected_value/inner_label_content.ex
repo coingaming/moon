@@ -3,8 +3,8 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelCont
 
   use Moon.StatelessComponent
 
-  prop label, :string, default: ""
-  prop has_icons, :boolean
+  prop(label, :string, default: "")
+  prop(has_icons, :boolean)
 
   def render(assigns) do
     ~F"""

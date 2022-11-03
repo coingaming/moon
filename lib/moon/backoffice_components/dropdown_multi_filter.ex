@@ -8,19 +8,19 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilterView do
   alias Moon.Components.{Button, CheckboxMultiselect, Divider, Form, Popover}
   alias Moon.Components.Deprecated.TextInput
 
-  prop show_filter, :boolean, required: true
-  prop search_text, :string, required: true
-  prop onscreen_options, :list, required: true
-  prop selected_options, :list, required: true
+  prop(show_filter, :boolean, required: true)
+  prop(search_text, :string, required: true)
+  prop(onscreen_options, :list, required: true)
+  prop(selected_options, :list, required: true)
 
-  prop on_apply, :event
-  prop on_discard, :event, required: true
-  prop on_clear, :event, required: true
-  prop on_search, :event
-  prop on_select, :event, required: true
-  prop on_close, :event, required: true
+  prop(on_apply, :event)
+  prop(on_discard, :event, required: true)
+  prop(on_clear, :event, required: true)
+  prop(on_search, :event)
+  prop(on_select, :event, required: true)
+  prop(on_close, :event, required: true)
 
-  slot default, required: true
+  slot(default, required: true)
 
   def render(assigns) do
     ~F"""
@@ -104,19 +104,19 @@ defmodule Moon.BackofficeComponents.DropdownMultiFilter do
   alias Moon.Components.Tooltip
   require Logger
 
-  data show_filter, :boolean, default: false
-  data search_text, :string, default: ""
-  data active_items, :list, default: []
-  data onscreen_options, :list, default: []
-  data selected_options, :list, default: []
+  data(show_filter, :boolean, default: false)
+  data(search_text, :string, default: "")
+  data(active_items, :list, default: [])
+  data(onscreen_options, :list, default: [])
+  data(selected_options, :list, default: [])
 
-  prop all_options, :list, default: []
-  prop active_values, :list, required: true
-  prop disable_search, :boolean, default: false
-  prop func_query_options, :fun
-  prop func_search_options, :fun
+  prop(all_options, :list, default: [])
+  prop(active_values, :list, required: true)
+  prop(disable_search, :boolean, default: false)
+  prop(func_query_options, :fun)
+  prop(func_search_options, :fun)
 
-  slot default, required: true, arg: %{toggle_filter: :any, is_open: :boolean}
+  slot(default, required: true, arg: %{toggle_filter: :any, is_open: :boolean})
 
   def render(assigns) do
     tooltip_text =

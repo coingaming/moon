@@ -6,11 +6,11 @@ defmodule Moon.Components.Datepicker.Month.FirstMonth do
   alias Moon.Components.Datepicker.Month
   alias Moon.Assets.Icons.IconChevronLeft
 
-  prop date, :datetime, default: Timex.today()
-  prop start_date, :datetime, default: Timex.today()
-  prop end_date, :datetime, default: Timex.today()
-  prop week_starts_on, :integer, default: 1, values: Enum.to_list(1..7)
-  prop on_click, :event
+  prop(date, :datetime, default: Timex.today())
+  prop(start_date, :datetime, default: Timex.today())
+  prop(end_date, :datetime, default: Timex.today())
+  prop(week_starts_on, :integer, default: 1, values: Enum.to_list(1..7))
+  prop(on_click, :event)
 
   def render(assigns) do
     ~F"""

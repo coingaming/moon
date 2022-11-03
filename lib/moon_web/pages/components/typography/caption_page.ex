@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,8 +21,9 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
         name: "Caption"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'color_class',
@@ -53,6 +54,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
         :description => 'TODO - Is regular font weight'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

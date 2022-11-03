@@ -3,11 +3,11 @@ defmodule MoonWeb.Components.Facing.CardArticle do
 
   use MoonWeb, :stateless_component
 
-  prop variant, :string, values: ["default", "tall", "wide"], default: "default"
-  prop href, :string
-  slot title
-  slot section
-  slot author
+  prop(variant, :string, values: ["default", "tall", "wide"], default: "default")
+  prop(href, :string)
+  slot(title)
+  slot(section)
+  slot(author)
 
   def render(assigns) do
     ~F"""

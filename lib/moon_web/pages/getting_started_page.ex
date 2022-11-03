@@ -8,13 +8,14 @@ defmodule MoonWeb.Pages.GettingStartedPage do
   alias MoonWeb.Components.Started.ForDeveloper
   alias MoonWeb.Components.Started.ForDesigner
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/getting-started",
         name: "Getting Started"
       }
     ]
+  )
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, selected_role: params["role"] || designer_role())}

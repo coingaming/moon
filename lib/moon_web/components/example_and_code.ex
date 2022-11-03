@@ -6,15 +6,15 @@ defmodule MoonWeb.Components.ExampleAndCode do
   alias Moon.Components.Label
   alias MoonWeb.Components.PreviewCodeButton
 
-  prop class, :string
-  prop layout, :string, default: "grid"
-  data buttons, :list, default: ["preview", "code"]
-  data selected_button, :string, default: "preview"
-  prop title, :string, default: ""
-  slot example
-  slot code
-  slot state
-  slot note
+  prop(class, :string)
+  prop(layout, :string, default: "grid")
+  data(buttons, :list, default: ["preview", "code"])
+  data(selected_button, :string, default: "preview")
+  prop(title, :string, default: "")
+  slot(example)
+  slot(code)
+  slot(state)
+  slot(note)
 
   def render(assigns) do
     ~F"""

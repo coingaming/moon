@@ -4,10 +4,10 @@ defmodule MoonWeb.Components.Table.Table do
   use Moon.StatelessComponent
 
   @doc "The list of items to be rendered"
-  prop items, :generator, required: true
+  prop(items, :generator, required: true)
 
   @doc "The list of columns defining the Grid"
-  slot cols, generator_prop: :items
+  slot(cols, generator_prop: :items)
 
   def render(assigns) do
     ~F"""

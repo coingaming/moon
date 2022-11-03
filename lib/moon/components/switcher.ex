@@ -3,10 +3,10 @@ defmodule Moon.Components.Switcher do
 
   use Moon.StatelessComponent
 
-  prop items, :list, default: []
-  prop selected_item, :string
-  prop click, :event, required: true
-  prop class, :string, default: "flex items-center p-1 border rounded gap-x-2 border-beerus-100"
+  prop(items, :list, default: [])
+  prop(selected_item, :string)
+  prop(click, :event, required: true)
+  prop(class, :string, default: "flex items-center p-1 border rounded gap-x-2 border-beerus-100")
 
   def render(assigns) do
     ~F"""

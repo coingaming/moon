@@ -10,8 +10,8 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.UsernameFilter do
 
   @default_name "username_filter"
 
-  prop name, :string, default: @default_name
-  prop active_values, :list, required: true
+  prop(name, :string, default: @default_name)
+  prop(active_values, :list, required: true)
 
   def render(assigns) do
     ~F"""

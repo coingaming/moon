@@ -7,10 +7,10 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
   alias Moon.Components.Button
   alias Phoenix.LiveView.JS
 
-  prop breadcrumbs, :list
+  prop(breadcrumbs, :list)
 
-  data shown_breadcrumbs, :list, default: []
-  data collapsed_breadcrumbs, :list, default: []
+  data(shown_breadcrumbs, :list, default: [])
+  data(collapsed_breadcrumbs, :list, default: [])
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)

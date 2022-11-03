@@ -3,9 +3,9 @@ defmodule MoonWeb.Components.ManifestCard do
 
   use MoonWeb, :stateless_component
 
-  prop title, :string
-  prop is_highlighted, :boolean
-  prop content_items, :list
+  prop(title, :string)
+  prop(is_highlighted, :boolean)
+  prop(content_items, :list)
 
   def render(assigns) do
     ~F"""

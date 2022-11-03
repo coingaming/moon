@@ -3,10 +3,10 @@ defmodule MoonWeb.Components.ColorsPalette do
 
   use MoonWeb, :stateless_component
 
-  prop title, :string
-  prop description, :string
-  prop colors, :list
-  slot default
+  prop(title, :string)
+  prop(description, :string)
+  prop(colors, :list)
+  slot(default)
 
   def render(assigns) do
     ~F"""

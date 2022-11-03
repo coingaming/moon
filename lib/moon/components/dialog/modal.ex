@@ -2,7 +2,7 @@ defmodule Moon.Components.Dialog.Modal.BackgroundCover do
   @moduledoc false
 
   use Moon.StatelessComponent
-  prop close, :event
+  prop(close, :event)
 
   def render(assigns) do
     ~F"""
@@ -18,10 +18,10 @@ end
 defmodule Moon.Components.Dialog.Modal.Panel do
   @moduledoc false
   use Moon.StatelessComponent
-  prop id, :string
-  prop testid, :string
-  prop close, :event
-  slot default
+  prop(id, :string)
+  prop(testid, :string)
+  prop(close, :event)
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -47,12 +47,12 @@ defmodule Moon.Components.Dialog.Modal do
   alias __MODULE__.BackgroundCover
   alias __MODULE__.Panel
 
-  prop id, :string
-  prop testid, :string
-  prop close, :event
-  slot title
-  slot content
-  slot footer
+  prop(id, :string)
+  prop(testid, :string)
+  prop(close, :event)
+  slot(title)
+  slot(content)
+  slot(footer)
 
   def render(assigns) do
     ~F"""

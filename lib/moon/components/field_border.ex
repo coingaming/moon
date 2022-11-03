@@ -3,12 +3,12 @@ defmodule Moon.Components.FieldBorder do
 
   use Moon.StatelessComponent
 
-  prop class, :css_class
-  prop border_color_class, :string
-  prop states_class, :string
-  prop click, :event
-  prop has_error, :boolean
-  slot default
+  prop(class, :css_class)
+  prop(border_color_class, :string)
+  prop(states_class, :string)
+  prop(click, :event)
+  prop(has_error, :boolean)
+  slot(default)
 
   def render(assigns) do
     ~F"""

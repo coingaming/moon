@@ -13,15 +13,16 @@ defmodule MoonWeb.Pages.IconsPage do
   alias MoonWeb.Components.PageSection
   alias MoonWeb.Pages.IconsPage.IconsImportDisplay
 
-  data selected_icons, :list, default: []
+  data(selected_icons, :list, default: [])
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/icons",
         name: "Icons"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

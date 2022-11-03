@@ -5,51 +5,52 @@ defmodule Moon.Components.Button do
   alias Moon.Icon
   alias Moon.Components.Loader
 
-  prop id, :string
-  prop href, :string
+  prop(id, :string)
+  prop(href, :string)
 
   # TODO, none variant was added so as not to break PreviewCodeButton component
   # Deprecate Link and None (they are not in Figma)
-  prop variant, :string,
+  prop(variant, :string,
     values: ["primary", "secondary", "tertiary", "ghost", "none"],
     default: "primary"
+  )
 
-  prop size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md"
-  prop full_width, :boolean
-  prop progress, :boolean
-  prop oops, :boolean
-  prop success, :boolean
-  prop pulse, :boolean
-  prop disabled, :boolean
-  prop type, :string, default: "button"
-  prop to, :string
-  prop active_class_name, :string
-  prop active_style, :string
-  prop exact, :boolean
-  prop string, :boolean
-  prop is_active, :boolean
-  prop location, :string
-  prop style, :string
-  prop class, :string
-  prop form, :string
+  prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md")
+  prop(full_width, :boolean)
+  prop(progress, :boolean)
+  prop(oops, :boolean)
+  prop(success, :boolean)
+  prop(pulse, :boolean)
+  prop(disabled, :boolean)
+  prop(type, :string, default: "button")
+  prop(to, :string)
+  prop(active_class_name, :string)
+  prop(active_style, :string)
+  prop(exact, :boolean)
+  prop(string, :boolean)
+  prop(is_active, :boolean)
+  prop(location, :string)
+  prop(style, :string)
+  prop(class, :string)
+  prop(form, :string)
 
-  prop on_click, :event
-  prop value_name, :string
-  prop value, :any
-  prop values, :keyword, default: []
+  prop(on_click, :event)
+  prop(value_name, :string)
+  prop(value, :any)
+  prop(values, :keyword, default: [])
 
-  prop left_icon, :string
-  prop right_icon, :string
-  prop icon_only, :string
+  prop(left_icon, :string)
+  prop(right_icon, :string)
+  prop(icon_only, :string)
 
-  prop testid, :string
+  prop(testid, :string)
 
-  prop animation, :string, values: ~w(progress success error pulse)
+  prop(animation, :string, values: ~w(progress success error pulse))
 
-  slot default
-  slot right_icon_slot
-  slot left_icon_slot
-  slot icon_only_slot
+  slot(default)
+  slot(right_icon_slot)
+  slot(left_icon_slot)
+  slot(icon_only_slot)
 
   def render(assigns) do
     ~F"""

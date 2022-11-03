@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         name: "Tooltip"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'children',
@@ -66,6 +67,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
         :description => 'TODO - Should Tooltip be shown persistently'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

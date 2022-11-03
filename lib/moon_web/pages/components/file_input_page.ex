@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
 
   alias __MODULE__.SimpleS3Upload
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -25,6 +25,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
         name: "File Input"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

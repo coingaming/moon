@@ -5,9 +5,9 @@ defmodule MoonWeb.Components.PreviewCodeButton do
 
   alias Moon.Components.Button
 
-  prop title, :string, default: ""
-  prop selected_button, :string, default: "preview"
-  prop click, :event, required: true
+  prop(title, :string, default: "")
+  prop(selected_button, :string, default: "preview")
+  prop(click, :event, required: true)
 
   def render(assigns) do
     ~F"""

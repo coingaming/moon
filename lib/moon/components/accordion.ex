@@ -8,20 +8,20 @@ defmodule Moon.Components.Accordion do
   alias Moon.Autolayouts.PullAside
   alias Moon.Icons.ControlsChevronUp
 
-  prop id, :string
-  prop class, :css_class
-  prop open_by_default, :boolean, default: false
-  prop is_content_inside, :boolean, default: true
-  prop is_content_overflow_hidden, :boolean, default: true
-  prop with_button, :boolean, default: true
-  prop disabled, :boolean, default: false
-  prop size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium"
-  prop pull_a_side_class, :css_class
-  prop bg_color, :css_class, default: "bg-gohan-100"
+  prop(id, :string)
+  prop(class, :css_class)
+  prop(open_by_default, :boolean, default: false)
+  prop(is_content_inside, :boolean, default: true)
+  prop(is_content_overflow_hidden, :boolean, default: true)
+  prop(with_button, :boolean, default: true)
+  prop(disabled, :boolean, default: false)
+  prop(size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium")
+  prop(pull_a_side_class, :css_class)
+  prop(bg_color, :css_class, default: "bg-gohan-100")
 
-  slot title
-  slot header_content
-  slot content
+  slot(title)
+  slot(header_content)
+  slot(content)
 
   def render(assigns) do
     ~F"""

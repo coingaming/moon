@@ -3,9 +3,9 @@ defmodule Moon.Components.Calendar.Day do
 
   use Moon.StatelessComponent
 
-  prop day, :datetime, required: true
-  prop text_color, :string
-  prop events, :list, default: []
+  prop(day, :datetime, required: true)
+  prop(text_color, :string)
+  prop(events, :list, default: [])
 
   def render(assigns) do
     ~F"""

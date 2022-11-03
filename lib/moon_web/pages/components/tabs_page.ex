@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
 
   data(tab_id, :string)
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -24,8 +24,9 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         name: "Tabs"
       }
     ]
+  )
 
-  data props_info_array_tab, :list,
+  data(props_info_array_tab, :list,
     default: [
       %{
         :name => 'default',
@@ -49,8 +50,9 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         :description => 'TODO - array of TabLink items'
       }
     ]
+  )
 
-  data props_info_array_tab_link, :list,
+  data(props_info_array_tab_link, :list,
     default: [
       %{
         :name => 'on_click',
@@ -81,6 +83,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
         :description => 'Link\'s destination'
       }
     ]
+  )
 
   def mount(params, _session, socket) do
     {:ok, assign(socket, tab_id: params["tab_id"] || "1")}

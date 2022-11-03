@@ -4,11 +4,11 @@ defmodule Moon.Components.LineChart do
   use Moon.StatelessComponent
   alias VegaLite, as: Vl
 
-  prop id, :string, required: true
-  prop width, :any, default: "container"
-  prop height, :integer, default: 300
-  prop values, :list, default: []
-  prop time_format, :string, default: "%d/%m"
+  prop(id, :string, required: true)
+  prop(width, :any, default: "container")
+  prop(height, :integer, default: 300)
+  prop(values, :list, default: [])
+  prop(time_format, :string, default: "%d/%m")
 
   def render(assigns) do
     ~F"""

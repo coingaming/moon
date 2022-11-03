@@ -10,12 +10,12 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.ListPagination do
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Divider
 
-  prop page, :number, required: true
-  prop page_count, :number, required: true
-  prop total_count, :number, required: true
+  prop(page, :number, required: true)
+  prop(page_count, :number, required: true)
+  prop(total_count, :number, required: true)
 
-  prop on_next_page, :event, required: true
-  prop on_prev_page, :event, required: true
+  prop(on_next_page, :event, required: true)
+  prop(on_prev_page, :event, required: true)
 
   def render(assigns) do
     ~F"""

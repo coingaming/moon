@@ -6,9 +6,9 @@ defmodule MoonWeb.Components.IconItem do
 
   alias Moon.Icon
 
-  prop name, :string
-  prop click, :event
-  prop value, :string
+  prop(name, :string)
+  prop(click, :event)
+  prop(value, :string)
 
   def render(assigns) do
     ~F"""

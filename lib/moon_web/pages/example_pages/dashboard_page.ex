@@ -50,29 +50,29 @@ defmodule MoonWeb.Pages.ExamplePages.DashboardPage do
   )
 
   # dashboard content
-  data page_title, :string
-  data page_metrics, :list, default: []
-  data page_widgets, :list, default: []
-  data temp_page_widgets, :list, default: []
-  data all_metrics, :list, default: []
-  data widget_categories, :list, default: []
+  data(page_title, :string)
+  data(page_metrics, :list, default: [])
+  data(page_widgets, :list, default: [])
+  data(temp_page_widgets, :list, default: [])
+  data(all_metrics, :list, default: [])
+  data(widget_categories, :list, default: [])
 
   # tabs
-  prop page_tabs, :list, default: []
-  data selected_tab, :string
+  prop(page_tabs, :list, default: [])
+  data(selected_tab, :string)
 
   # filters
-  prop all_currencies, :list, default: []
-  prop all_sites, :list, default: []
-  data currency_filter_values, :list, default: []
-  data site_filter_values, :list, default: []
-  data date_filter_values, :map, default: %{}
+  prop(all_currencies, :list, default: [])
+  prop(all_sites, :list, default: [])
+  data(currency_filter_values, :list, default: [])
+  data(site_filter_values, :list, default: [])
+  data(date_filter_values, :map, default: %{})
 
   # page state
-  data saved, :boolean, default: true
-  data edited, :boolean, default: false
-  data show_page_options, :boolean, default: false
-  data show_new_widget_panel, :boolean, default: false
+  data(saved, :boolean, default: true)
+  data(edited, :boolean, default: false)
+  data(show_page_options, :boolean, default: false)
+  data(show_new_widget_panel, :boolean, default: false)
 
   def mount(params, _session, socket) do
     socket =

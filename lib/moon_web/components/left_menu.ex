@@ -10,12 +10,12 @@ defmodule MoonWeb.Components.LeftMenu do
   alias MoonWeb.Pages
   alias MoonWeb.Components.SidebarLink
 
-  prop theme_name, :any
-  prop direction, :string
-  prop uri, :any
-  prop active_page, :any
-  prop hide_items, :boolean
-  prop click, :event
+  prop(theme_name, :any)
+  prop(direction, :string)
+  prop(uri, :any)
+  prop(active_page, :any)
+  prop(hide_items, :boolean)
+  prop(click, :event)
 
   def render(assigns) do
     ~F"""

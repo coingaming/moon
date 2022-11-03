@@ -5,12 +5,12 @@ defmodule MoonWeb.Components.SidebarLink do
 
   alias Moon.Components.Chip
 
-  prop route, :any
-  slot default
+  prop(route, :any)
+  slot(default)
 
-  data active_page, :string, from_context: :active_page
-  data theme_name, :string, from_context: :theme_name
-  data direction, :string, from_context: :direction
+  data(active_page, :string, from_context: :active_page)
+  data(theme_name, :string, from_context: :theme_name)
+  data(direction, :string, from_context: :direction)
 
   def render(assigns) do
     ~F"""

@@ -3,10 +3,10 @@ defmodule Moon.Components.TextInput.ShowPassword do
 
   use Moon.StatelessComponent
 
-  prop input_password_id, :string
-  prop toggle, :string, default: "toggle_password_visibility"
+  prop(input_password_id, :string)
+  prop(toggle, :string, default: "toggle_password_visibility")
 
-  slot default
+  slot(default)
 
   # TODO
   def render(assigns) do

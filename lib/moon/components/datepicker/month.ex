@@ -3,11 +3,11 @@ defmodule Moon.Components.Datepicker.Month do
 
   use Moon.StatelessComponent
 
-  prop date, :date, required: true
-  prop start_date, :date
-  prop end_date, :date
-  prop week_starts_on, :integer
-  prop on_click, :event
+  prop(date, :date, required: true)
+  prop(start_date, :date)
+  prop(end_date, :date)
+  prop(week_starts_on, :integer)
+  prop(on_click, :event)
 
   def render(assigns) do
     ~F"""

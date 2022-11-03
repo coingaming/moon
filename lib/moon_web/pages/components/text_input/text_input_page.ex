@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -30,8 +30,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         name: "Text Input"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'type',
@@ -113,6 +114,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
           'Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

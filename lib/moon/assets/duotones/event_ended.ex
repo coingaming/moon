@@ -3,13 +3,13 @@ defmodule Moon.Assets.Duotones.EventEnded do
 
   use Moon.StatelessComponent
 
-  prop color, :string, values: Moon.colors()
-  prop height, :string
-  prop width, :string
-  prop font_size, :string
-  prop vertical_align, :string
-  prop click, :event
-  prop class, :string
+  prop(color, :string, values: Moon.colors())
+  prop(height, :string)
+  prop(width, :string)
+  prop(font_size, :string)
+  prop(vertical_align, :string)
+  prop(click, :event)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""

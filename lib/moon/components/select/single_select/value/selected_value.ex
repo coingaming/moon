@@ -10,12 +10,12 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent
   alias Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelContent
 
-  prop select_id, :string
-  prop option, :any
-  prop label, :string, default: ""
-  prop placeholder, :string, default: ""
-  prop size, :string
-  prop class, :css_class, default: ""
+  prop(select_id, :string)
+  prop(option, :any)
+  prop(label, :string, default: "")
+  prop(placeholder, :string, default: "")
+  prop(size, :string)
+  prop(class, :css_class, default: "")
 
   def render(assigns) do
     has_value = has_value(assigns.option)

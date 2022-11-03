@@ -5,18 +5,18 @@ defmodule Moon.Components.Avatar do
   alias Moon.Icon
   alias Moon.Components.Avatar.StatusOrigin
 
-  prop image_url, :string
-  prop name, :string
-  prop color, :css_class, default: "text-bulma-100"
-  prop bg_color, :css_class, default: "bg-gohan-100"
-  prop is_uppercase, :boolean, default: true
+  prop(image_url, :string)
+  prop(name, :string)
+  prop(color, :css_class, default: "text-bulma-100")
+  prop(bg_color, :css_class, default: "bg-gohan-100")
+  prop(is_uppercase, :boolean, default: true)
 
-  prop size, :string, default: "md", values: ~w(xs sm md lg xl 2xl)
+  prop(size, :string, default: "md", values: ~w(xs sm md lg xl 2xl))
 
-  prop class, :css_class
-  prop is_status_active, :boolean, default: false
-  prop status_origin, :struct, default: %StatusOrigin{vertical: "bottom", horizontal: "right"}
-  prop is_rounded, :boolean, default: false
+  prop(class, :css_class)
+  prop(is_status_active, :boolean, default: false)
+  prop(status_origin, :struct, default: %StatusOrigin{vertical: "bottom", horizontal: "right"})
+  prop(is_rounded, :boolean, default: false)
 
   def style(assigns) do
     "background-image: url(#{assigns.image_url});"

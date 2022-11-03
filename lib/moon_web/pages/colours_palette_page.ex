@@ -8,15 +8,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   alias MoonWeb.Components.PageSection
   alias MoonWeb.Components.ColorsPalette
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/colours-palette",
         name: "Colours Palette"
       }
     ]
+  )
 
-  data accent_colors_list, :list,
+  data(accent_colors_list, :list,
     default: [
       %{
         :name => 'piccolo',
@@ -27,16 +28,18 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '100'
       }
     ]
+  )
 
-  data border_colors_list, :list,
+  data(border_colors_list, :list,
     default: [
       %{
         :name => 'beerus',
         :value => '100'
       }
     ]
+  )
 
-  data background_colors_list, :list,
+  data(background_colors_list, :list,
     default: [
       %{
         :name => 'goku',
@@ -47,8 +50,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '100'
       }
     ]
+  )
 
-  data text_colors_list, :list,
+  data(text_colors_list, :list,
     default: [
       %{
         :name => 'bulma',
@@ -59,8 +63,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '100'
       }
     ]
+  )
 
-  data forced_colors_list, :list,
+  data(forced_colors_list, :list,
     default: [
       %{
         :name => 'goten',
@@ -71,8 +76,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '100'
       }
     ]
+  )
 
-  data krillin_colors_list, :list,
+  data(krillin_colors_list, :list,
     default: [
       %{
         :name => 'krillin',
@@ -87,8 +93,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data chichi_colors_list, :list,
+  data(chichi_colors_list, :list,
     default: [
       %{
         :name => 'chi-chi',
@@ -103,8 +110,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data roshi_colors_list, :list,
+  data(roshi_colors_list, :list,
     default: [
       %{
         :name => 'roshi',
@@ -119,8 +127,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data dodoria_colors_list, :list,
+  data(dodoria_colors_list, :list,
     default: [
       %{
         :name => 'dodoria',
@@ -135,8 +144,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data cell_colors_list, :list,
+  data(cell_colors_list, :list,
     default: [
       %{
         :name => 'cell',
@@ -151,8 +161,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data raditz_colors_list, :list,
+  data(raditz_colors_list, :list,
     default: [
       %{
         :name => 'raditz',
@@ -167,8 +178,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data whis_colors_list, :list,
+  data(whis_colors_list, :list,
     default: [
       %{
         :name => 'whis',
@@ -183,8 +195,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data frieza_colors_list, :list,
+  data(frieza_colors_list, :list,
     default: [
       %{
         :name => 'frieza',
@@ -199,8 +212,9 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
-  data nappa_colors_list, :list,
+  data(nappa_colors_list, :list,
     default: [
       %{
         :name => 'nappa',
@@ -215,6 +229,7 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         :value => '10'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""
