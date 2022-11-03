@@ -11,7 +11,7 @@ defmodule Moon.Components.TextInput do
   alias Surface.Components.Context
 
   prop(id, :string)
-  prop(field, :atom, from_context: :field)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(size, :string, values: ["md", "lg", "xl"], default: "md")
 
   prop(type, :string,
