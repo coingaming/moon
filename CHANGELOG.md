@@ -1,3 +1,11 @@
+## [2.30.12](https://github.com/coingaming/moon/compare/v2.30.11...v2.30.12) (2022-11-03)
+
+
+### Bug Fixes
+
+* surface version upgrade - MDS 264 ([#436](https://github.com/coingaming/moon/issues/436)) ([ea13311](https://github.com/coingaming/moon/commit/ea1331100b00767c1c656f6e5d4c196407bd586b))
+* z-index ([#437](https://github.com/coingaming/moon/issues/437)) ([36de3dc](https://github.com/coingaming/moon/commit/36de3dc7f198f823d280cc3504497d9535a72edc))
+
 ## [2.30.11](https://github.com/coingaming/moon/compare/v2.30.10...v2.30.11) (2022-10-31)
 
 
