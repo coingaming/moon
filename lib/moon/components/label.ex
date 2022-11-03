@@ -29,12 +29,12 @@ defmodule Moon.Components.Label do
       uppercase: @is_uppercase
     }>
       <span class={"items-center mr-1": @left_icon}>
-        <#slot name="left_icon" />
+        <#slot {@left_icon} />
       </span>
       <#slot />
 
       <span class={"items-center ml-1": @right_icon}>
-        <#slot name="right_icon" />
+        <#slot {@right_icon} />
       </span>
     </span>
     """

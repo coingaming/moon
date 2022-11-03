@@ -3,10 +3,10 @@ defmodule Moon.Components.Checkbox do
 
   use Moon.StatelessComponent
   alias Moon.Components.FieldLabel
-  alias Surface.Components.Form.Input.InputContext
 
   prop(id, :string)
-  prop(field, :atom)
+  prop(field, :atom, from_context: :field)
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(click, :event)
   prop(checked, :boolean)
   prop(disabled, :boolean)
@@ -28,12 +28,10 @@ defmodule Moon.Components.Checkbox do
         unchecked_value="false"
         opts={disabled: @disabled, readonly: @readonly}
       />
-      <InputContext assigns={assigns} :let={form: form, field: field}>
-        {fake_checkbox(
-          assigns,
-          selected: is_true(@checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
-        )}
-      </InputContext>
+      {fake_checkbox(
+        assigns,
+        selected: is_true(@checked) || is_true(Phoenix.HTML.Form.input_value(@form, @field))
+      )}
 
       <FieldLabel field={@field} class="bg-rochi-100 pl-2"><#slot /></FieldLabel>
     </div>

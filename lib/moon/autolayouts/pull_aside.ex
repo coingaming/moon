@@ -14,12 +14,12 @@ defmodule Moon.Autolayouts.PullAside do
     <div class={"flex justify-between", @class}>
       <div class={"flex items-center", grow: @left_grow}>
         {#if slot_assigned?(:left)}
-          <#slot name="left" />
+          <#slot {@left} />
         {/if}
       </div>
       <div class={"flex items-center", grow: @right_grow}>
         {#if slot_assigned?(:right)}
-          <#slot name="right" />
+          <#slot {@right} />
         {/if}
       </div>
     </div>

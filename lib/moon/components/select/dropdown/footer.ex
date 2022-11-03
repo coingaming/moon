@@ -15,16 +15,16 @@ defmodule Moon.Components.Select.Dropdown.Footer do
     <PullAside class="gap-2">
       <:left>
         {#if slot_assigned?(:clear)}
-          <#slot name="clear" />
+          <#slot {@clear} />
         {/if}
       </:left>
       <:right>
         <LeftToRight>
           {#if slot_assigned?(:cancel)}
-            <#slot name="cancel" />
+            <#slot {@cancel} />
           {/if}
           {#if slot_assigned?(:confirm)}
-            <#slot name="confirm" />
+            <#slot {@confirm} />
           {/if}
         </LeftToRight>
       </:right>

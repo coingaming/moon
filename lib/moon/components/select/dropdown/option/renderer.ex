@@ -13,7 +13,7 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
   prop left_icon, :any
   prop right_icon, :any
 
-  slot default, args: [:is_selected]
+  slot default, arg: %{is_selected: :boolean}
 
   def render(assigns) do
     ~F"""
@@ -27,7 +27,7 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
         to: "##{@select_id}"
       )}
     >
-      <#slot :args={is_selected: @is_selected} />
+      <#slot {@default, is_selected: @is_selected} />
     </li>
     """
   end

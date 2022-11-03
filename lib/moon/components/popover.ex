@@ -13,7 +13,7 @@ defmodule Moon.Components.Popover.DefaultContent do
       "border-beerus-100 drop-shadow-2xl bg-gohan-100"
     }>
       <TopToDown>
-        <#slot name="default" />
+        <#slot {@default} />
       </TopToDown>
     </div>
     """
@@ -58,7 +58,7 @@ defmodule Moon.Components.Popover do
     <div phx-hook="Popover" data-testid={@testid} data-placement={@placement}>
       <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
-        <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot name="content" /></div>
+        <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot {@content} /></div>
         <div :on-click={@on_close} class="fixed inset-0 z-40" data-testid="close" />
       {/if}
     </div>

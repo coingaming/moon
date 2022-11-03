@@ -46,13 +46,13 @@ defmodule Moon.Components.Accordion do
       >
         <:left>
           <div :on-click={toggle_content(@id, @disabled)} class="flex items-center grow">
-            <h3 class={"font-semibold", font_class(@size)} aria-level={3}><#slot name="title" /></h3>
+            <h3 class={"font-semibold", font_class(@size)} aria-level={3}><#slot {@title} /></h3>
           </div>
         </:left>
         <:right>
           <div class={hidden: !@with_button}>
             <LeftToRight class="text-trunks-100">
-              <#slot name="header_content" />
+              <#slot {@header_content} />
               <div
                 :on-click={toggle_content(@id, @disabled)}
                 aria-hidden="true"
@@ -79,7 +79,7 @@ defmodule Moon.Components.Accordion do
             hidden: !@open_by_default
           }
         >
-          <#slot name="content" />
+          <#slot {@content} />
         </div>
       {/if}
     </div>
@@ -94,7 +94,7 @@ defmodule Moon.Components.Accordion do
           hidden: !@open_by_default
         }
       >
-        <#slot name="content" />
+        <#slot {@content} />
       </div>
     {/if}
     """

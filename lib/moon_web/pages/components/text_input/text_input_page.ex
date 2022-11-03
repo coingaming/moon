@@ -517,20 +517,20 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
         <div>
           <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Text Input Props</div>
-          <Table items={@props_info_array}>
-            <Column name="name" label="Name" :let={item: item} is_row_header>
+          <Table items={item <- @props_info_array}>
+            <Column name="name" label="Name" is_row_header>
               {item.name}
             </Column>
-            <Column name="type" label="Type" :let={item: item}>
+            <Column name="type" label="Type">
               {item.type}
             </Column>
-            <Column name="required" label="Required" :let={item: item}>
+            <Column name="required" label="Required">
               {item.required}
             </Column>
-            <Column name="default" label="Default" :let={item: item}>
+            <Column name="default" label="Default">
               {item.default}
             </Column>
-            <Column name="description" label="Description" :let={item: item}>
+            <Column name="description" label="Description">
               {item.description}
             </Column>
           </Table>

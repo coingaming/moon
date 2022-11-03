@@ -29,7 +29,7 @@ defmodule Moon.Components.DropdownMenuButton do
       </button>
 
       <:content>
-        <#slot name="menu" />
+        <#slot {@menu} />
       </:content>
     </Popover>
     """

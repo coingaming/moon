@@ -10,10 +10,10 @@ defmodule MoonWeb.Pages.ExamplePages.Customers.CustomerPreview.OverviewTab.Row d
     ~F"""
     <div class="flex my-5">
       <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
-        <#slot name="col1" />
+        <#slot {@col1} />
       </div>
       <div class="w-1/2 flex-none flex align-start items-center text-md text-gohan-40">
-        <#slot name="col2" />
+        <#slot {@col2} />
       </div>
     </div>
     """

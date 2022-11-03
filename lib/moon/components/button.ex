@@ -105,18 +105,18 @@ defmodule Moon.Components.Button do
       </span>
       <span class={"flex justify-center items-center gap-2", "opacity-0": @animation in ["success", "progress"]}>
         {#if slot_assigned?(:icon_only_slot)}
-          <#slot name="icon_only_slot" />
+          <#slot {@icon_only_slot} />
         {#elseif @icon_only != nil}
           <Icon name={@icon_only} class={icon_class(@size)} :if={@icon_only} />
         {#else}
           {#if slot_assigned?(:left_icon_slot)}
-            <#slot name="left_icon_slot" />
+            <#slot {@left_icon_slot} />
           {#else}
             <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
           {/if}
           <#slot />
           {#if slot_assigned?(:right_icon_slot)}
-            <#slot name="right_icon_slot" />
+            <#slot {@right_icon_slot} />
           {#else}
             <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
           {/if}

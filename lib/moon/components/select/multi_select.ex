@@ -109,9 +109,8 @@ defmodule Moon.Components.Select.MultiSelect do
   alias Moon.Components.Select.Dropdown
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias __MODULE__.Labels
-  alias Surface.Components.Form.Input.InputContext
 
-  prop field, :atom
+  prop field, :atom, from_context: :field
   prop label, :string
   prop options, :any, default: []
   prop value, :any
@@ -129,47 +128,46 @@ defmodule Moon.Components.Select.MultiSelect do
   prop selected_label_text_color_class, :css_class, default: "gohan-100"
 
   data open, :boolean, default: false
+  data form, :form, from_context: {Surface.Components.Form, :form}
 
   slot default
 
   def render(assigns) do
     ~F"""
-    <InputContext {=assigns} :let={form: form, field: field}>
-      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
-        {Phoenix.HTML.Form.multiple_select(form, field, SelectHelpers.get_formatted_options(@options),
-          class: "hidden",
-          id: @id
-        )}
-        <FieldBorder
-          states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
-          border_color_class={@field_border_color_class}
-          click="toggle_open"
-        >
-          <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
-            <:left>
-              <Labels
-                select_id={@id}
-                value={SelectHelpers.get_normalized_value(form, field, true, value: @value)}
-                {=@options}
-                {=@prompt}
-                {=@size}
-                {=@disabled}
-                {=@selected_label_background_color_class}
-                {=@selected_label_text_color_class}
-              />
-            </:left>
-            <:right>
-              <Moon.Icons.ControlsChevronDown />
-            </:right>
-          </PullAside>
-        </FieldBorder>
-        <:content>
-          <Popover.DefaultContent>
-            <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
-          </Popover.DefaultContent>
-        </:content>
-      </Popover>
-    </InputContext>
+    <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+      {Phoenix.HTML.Form.multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
+        class: "hidden",
+        id: @id
+      )}
+      <FieldBorder
+        states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
+        border_color_class={@field_border_color_class}
+        click="toggle_open"
+      >
+        <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
+          <:left>
+            <Labels
+              select_id={@id}
+              value={SelectHelpers.get_normalized_value(@form, @field, true, value: @value)}
+              {=@options}
+              {=@prompt}
+              {=@size}
+              {=@disabled}
+              {=@selected_label_background_color_class}
+              {=@selected_label_text_color_class}
+            />
+          </:left>
+          <:right>
+            <Moon.Icons.ControlsChevronDown />
+          </:right>
+        </PullAside>
+      </FieldBorder>
+      <:content>
+        <Popover.DefaultContent>
+          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
+        </Popover.DefaultContent>
+      </:content>
+    </Popover>
     """
   end
 

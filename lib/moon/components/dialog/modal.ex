@@ -72,7 +72,7 @@ defmodule Moon.Components.Dialog.Modal do
             <:left>
               {#if slot_assigned?(:title)}
                 <div class="text-moon-18 font-semibold">
-                  <#slot name="title" />
+                  <#slot {@title} />
                 </div>
               {/if}
             </:left>
@@ -83,13 +83,13 @@ defmodule Moon.Components.Dialog.Modal do
           <Divider />
           {#if slot_assigned?(:content)}
             <div class="text-left p-6">
-              <#slot name="content" />
+              <#slot {@content} />
             </div>
           {/if}
           <Divider />
           {#if slot_assigned?(:footer)}
             <div class="p-6">
-              <#slot name="footer" />
+              <#slot {@footer} />
             </div>
           {/if}
         </Panel>

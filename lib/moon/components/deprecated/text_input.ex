@@ -49,12 +49,12 @@ defmodule Moon.Components.Deprecated.TextInput do
     <div class="relative">
       {#if slot_assigned?(:left_icon)}
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100">
-          <#slot name="left_icon" />
+          <#slot {@left_icon} />
         </div>
       {/if}
       {#if slot_assigned?(:right_icon)}
         <div class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100">
-          <#slot name="right_icon" />
+          <#slot {@right_icon} />
         </div>
       {/if}
 
@@ -89,7 +89,7 @@ defmodule Moon.Components.Deprecated.TextInput do
 
       {#if slot_assigned?(:hint_text)}
         <div class="mt-2 ml-2 relative text-trunks-100">
-          <#slot name="hint_text" />
+          <#slot {@hint_text} />
         </div>
       {/if}
     </div>

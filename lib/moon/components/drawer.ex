@@ -20,7 +20,7 @@ defmodule Moon.Components.Drawer.Dialog do
         <:left>
           {#if slot_assigned?(:title)}
             <div class="text-moon-18 font-semibold">
-              <#slot name="title" />
+              <#slot {@title} />
             </div>
           {/if}
         </:left>
@@ -31,14 +31,14 @@ defmodule Moon.Components.Drawer.Dialog do
       <Divider />
       {#if slot_assigned?(:content)}
         <div class={"p-6 overflow-y-auto", dialog_content_height}>
-          <#slot name="content" />
+          <#slot {@content} />
         </div>
       {/if}
       {#if slot_assigned?(:footer)}
         <div class="absolute bottom-0 left-0 right-0 bg-gohan-100">
           <Divider />
           <div class="p-4">
-            <#slot name="footer" />
+            <#slot {@footer} />
           </div>
         </div>
       {/if}

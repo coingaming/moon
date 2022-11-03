@@ -129,19 +129,19 @@ defmodule Moon.Components.Banner do
     <Container is_mobile={@is_mobile} has_buttons={slot_assigned?(:buttons_slot)}>
       <Body :if={!@is_multiline} is_multiline={@is_multiline}>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
-        <BodyButtonContainer><#slot name="link_slot" /></BodyButtonContainer>
+        <BodyButtonContainer><#slot {@link_slot} /></BodyButtonContainer>
       </Body>
       <Body :if={@is_multiline} is_multiline={@is_multiline}>
         <div class="grid justify-end grid-cols-[4fr_1fr]">
           <div class="font-semibold">{@title}</div>
           <div :if={slot_assigned?(:icon_header_slot)} class="flex cursor-pointer justify-end">
-            <#slot name="icon_header_slot" />
+            <#slot {@icon_header_slot} />
           </div>
         </div>
         <BodyContent is_multiline={@is_multiline}>{@description}</BodyContent>
       </Body>
       <BodyButtonContainer>
-        <#slot name="buttons_slot" />
+        <#slot {@buttons_slot} />
       </BodyButtonContainer>
     </Container>
     """

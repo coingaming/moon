@@ -25,7 +25,7 @@ defmodule Moon.Components.CardV2 do
       @rounded
     }>
       <div class={@top_class} style="grid-column-start: 1; grid-column-end: 3;">
-        <#slot name="top" />
+        <#slot {@top} />
       </div>
 
       <div class="flex justify-between" style="grid-column-start: 1; grid-column-end: 3;">
@@ -33,10 +33,10 @@ defmodule Moon.Components.CardV2 do
           "pt-4",
           @left_bottom_class
         }>
-          <#slot name="left_bottom" />
+          <#slot {@left_bottom} />
         </div>
         <div class={@right_bottom_class} style="justify-self: end;">
-          <#slot name="right_bottom" />
+          <#slot {@right_bottom} />
         </div>
       </div>
     </div>

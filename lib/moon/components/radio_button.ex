@@ -4,10 +4,10 @@ defmodule Moon.Components.RadioButton do
   use Moon.StatelessComponent
   alias Moon.Components.FieldLabel
   alias Surface.Components.Form.RadioButton
-  alias Surface.Components.Form.Input.InputContext
 
   prop id, :string
-  prop field, :atom
+  prop field, :atom, from_context: :field
+  prop form, :form, from_context: {Surface.Components.Form, :form}
   prop click, :event
   prop checked, :boolean, default: false
   prop disabled, :boolean
@@ -31,18 +31,16 @@ defmodule Moon.Components.RadioButton do
           disabled: @disabled
         }
       />
-      <InputContext assigns={assigns} :let={form: form, field: field}>
-        <span class={
-          "radio-button-icon text-trunks-100 hover:bg-gray-transparent flex items-center justify-center rounded-full w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2 transition-[background-color] duration-[400ms]",
-          "hover:radio-button-hover",
-          get_before_pseudo_styles(),
-          get_after_pseudo_styles(),
-          get_checked_css(@checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)),
-          "opacity-[.35] cursor-not-allowed": @disabled
-          # "hover:brighten-[143] hover:bg-piccolo-100":
-          #   @checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)
-        } />
-      </InputContext>
+      <span class={
+        "radio-button-icon text-trunks-100 hover:bg-gray-transparent flex items-center justify-center rounded-full w-6 h-6 min-w-[24px] min-h-[24px] relative mr-1 z-2 transition-[background-color] duration-[400ms]",
+        "hover:radio-button-hover",
+        get_before_pseudo_styles(),
+        get_after_pseudo_styles(),
+        get_checked_css(@checked || is_selected(Phoenix.HTML.Form.input_value(@form, @field), @value)),
+        "opacity-[.35] cursor-not-allowed": @disabled
+        # "hover:brighten-[143] hover:bg-piccolo-100":
+        #   @checked || is_selected(Phoenix.HTML.Form.input_value(form, field), @value)
+      } />
       <span class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
         <#slot />
       </span>

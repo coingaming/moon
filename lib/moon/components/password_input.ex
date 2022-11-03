@@ -45,7 +45,7 @@ defmodule Moon.Components.PasswordInput do
         {=@size}
       >
         <:left_icon>
-          <#slot name="left_icon" />
+          <#slot {@left_icon} />
         </:left_icon>
         <:right_icon>
           <div style="font-size: 1.2em">

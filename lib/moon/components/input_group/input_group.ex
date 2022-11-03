@@ -9,7 +9,6 @@ defmodule Moon.Components.InputGroup do
 
   use Moon.StatelessComponent
   alias Moon.Components.InputGroup.Container
-  alias Surface.Components.Form.Input.InputContext
   alias Moon.Components.ErrorTag
   alias Moon.Components.InputGroup.Error
 
@@ -21,21 +20,21 @@ defmodule Moon.Components.InputGroup do
   prop included_fields, :list
   prop use_error_tag, :boolean, default: true
 
-  slot default, required: true, args: [:group_class_fields]
+  data form, :form, from_context: {Surface.Components.Form, :form}
+
+  slot default, required: true
 
   def render(assigns) do
     ~F"""
-    <InputContext {=assigns} :let={form: form}>
-      <Container orientation={@orientation} is_error={has_error(form, @included_fields)}>
-        <#slot />
-      </Container>
-      <div
-        class="inline-block mt-2 text-moon-12"
-        :if={@use_error_tag && has_error(form, @included_fields)}
-      >
-        <ErrorTag :for={item <- get_errors(form, @included_fields)} field={item.field} />
-      </div>
-    </InputContext>
+    <Container orientation={@orientation} is_error={has_error(@form, @included_fields)}>
+      <#slot />
+    </Container>
+    <div
+      class="inline-block mt-2 text-moon-12"
+      :if={@use_error_tag && has_error(@form, @included_fields)}
+    >
+      <ErrorTag :for={item <- get_errors(@form, @included_fields)} field={item.field} />
+    </div>
     """
   end
 
