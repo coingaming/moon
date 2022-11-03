@@ -6,11 +6,11 @@ defmodule Moon.Components.SlideOver do
   alias Moon.Assets.Icons.IconCloseRounded
   alias Moon.Components.Heading
 
-  prop on_close, :event, required: true
+  prop(on_close, :event, required: true)
 
-  slot heading
-  slot options
-  slot content, required: true
+  slot(heading)
+  slot(options)
+  slot(content, required: true)
 
   def render(assigns) do
     ~F"""

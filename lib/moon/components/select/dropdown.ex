@@ -15,25 +15,25 @@ defmodule Moon.Components.Select.Dropdown do
   alias Moon.Components.RadioButton
   alias Moon.Components.TextInput
 
-  prop id, :string
-  prop select_id, :string
-  prop class, :css_class
-  prop available_options, :any
-  prop options, :any
-  prop value, :any
-  prop is_multi, :boolean
-  prop disabled, :boolean, default: false
-  prop on_search_change, :event
-  prop search_string, :string
-  prop on_option_clicked, :event
-  prop with, :string, default: nil, values: ["checkbox", "radio"]
-  prop content_class, :css_class, default: "max-h-[300px] overflow-hidden overflow-y-scroll"
-  prop field, :atom
-  prop form, :atom
+  prop(id, :string)
+  prop(select_id, :string)
+  prop(class, :css_class)
+  prop(available_options, :any)
+  prop(options, :any)
+  prop(value, :any)
+  prop(is_multi, :boolean)
+  prop(disabled, :boolean, default: false)
+  prop(on_search_change, :event)
+  prop(search_string, :string)
+  prop(on_option_clicked, :event)
+  prop(with, :string, default: nil, values: ["checkbox", "radio"])
+  prop(content_class, :css_class, default: "max-h-[300px] overflow-hidden overflow-y-scroll")
+  prop(field, :atom)
+  prop(form, :atom)
 
-  slot default
-  slot footer
-  slot header
+  slot(default)
+  slot(footer)
+  slot(header)
 
   def render(assigns) do
     form = assigns[:form] || Context.get(assigns, Surface.Components.Form, :form)

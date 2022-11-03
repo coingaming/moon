@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -24,8 +24,9 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         name: "Multi Select"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'field',
@@ -126,8 +127,9 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         :description => 'TODO - If the component is in error mode'
       }
     ]
+  )
 
-  data latest_params, :any, default: nil
+  data(latest_params, :any, default: nil)
 
   def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})

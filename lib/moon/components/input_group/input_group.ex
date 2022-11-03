@@ -12,17 +12,18 @@ defmodule Moon.Components.InputGroup do
   alias Moon.Components.ErrorTag
   alias Moon.Components.InputGroup.Error
 
-  prop orientation, :string,
+  prop(orientation, :string,
     default: "horizontal",
     values: ["horizontal", "vertical"]
+  )
 
-  prop has_fields, :boolean, default: false
-  prop included_fields, :list
-  prop use_error_tag, :boolean, default: true
+  prop(has_fields, :boolean, default: false)
+  prop(included_fields, :list)
+  prop(use_error_tag, :boolean, default: true)
 
-  data form, :form, from_context: {Surface.Components.Form, :form}
+  data(form, :form, from_context: {Surface.Components.Form, :form})
 
-  slot default, required: true
+  slot(default, required: true)
 
   def render(assigns) do
     ~F"""

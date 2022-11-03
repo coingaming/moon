@@ -8,14 +8,15 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
   alias Moon.Components.Field
   alias MoonWeb.Components.ThemesSelect.SelectedDirection
 
-  prop show_themes, :boolean, default: false
-  prop use_theme_switcher, :boolean, default: false
+  prop(show_themes, :boolean, default: false)
+  prop(use_theme_switcher, :boolean, default: false)
 
-  prop selected_direction_changeset, :any,
+  prop(selected_direction_changeset, :any,
     default: SelectedDirection.changeset(%SelectedDirection{}, %{})
+  )
 
-  prop is_rtl, :boolean, default: false
-  prop on_direction_switch, :event
+  prop(is_rtl, :boolean, default: false)
+  prop(on_direction_switch, :event)
 
   def render(assigns) do
     ~F"""

@@ -3,8 +3,8 @@ defmodule Moon.Components.Calendar.Week do
 
   use Moon.StatelessComponent
 
-  prop date, :datetime, required: true
-  prop week_starts_on, :integer, default: 1
+  prop(date, :datetime, required: true)
+  prop(week_starts_on, :integer, default: 1)
 
   def render(assigns) do
     ~F"""

@@ -8,12 +8,12 @@ defmodule Moon.Components.Select.MultiSelect.Labels.SelectedLabel do
   alias Moon.Icons.ControlsClose
   alias Phoenix.LiveView.JS
 
-  prop select_id, :string
-  prop option, :any
-  prop size, :string
-  prop disabled, :boolean
-  prop selected_label_background_color_class, :css_class
-  prop selected_label_text_color_class, :css_class
+  prop(select_id, :string)
+  prop(option, :any)
+  prop(size, :string)
+  prop(disabled, :boolean)
+  prop(selected_label_background_color_class, :css_class)
+  prop(selected_label_text_color_class, :css_class)
 
   def render(assigns) do
     ~F"""
@@ -48,14 +48,14 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias __MODULE__.SelectedLabel
 
-  prop select_id, :string
-  prop options, :list, default: []
-  prop value, :list, default: []
-  prop size, :string
-  prop prompt, :string
-  prop disabled, :boolean
-  prop selected_label_background_color_class, :css_class
-  prop selected_label_text_color_class, :css_class
+  prop(select_id, :string)
+  prop(options, :list, default: [])
+  prop(value, :list, default: [])
+  prop(size, :string)
+  prop(prompt, :string)
+  prop(disabled, :boolean)
+  prop(selected_label_background_color_class, :css_class)
+  prop(selected_label_text_color_class, :css_class)
 
   def render(assigns) do
     ~F"""
@@ -110,27 +110,27 @@ defmodule Moon.Components.Select.MultiSelect do
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias __MODULE__.Labels
 
-  prop field, :atom, from_context: :field
-  prop label, :string
-  prop options, :any, default: []
-  prop value, :any
-  prop prompt, :string
-  prop error, :string
-  prop disabled, :boolean, default: false
-  prop required, :boolean
-  prop class, :string
-  prop size, :string, values: ~w(small medium large xlarge), default: "medium"
-  prop popover_placement, :string, default: "bottom-start"
-  prop popover_class, :string
-  prop field_border_class, :string, default: FieldBorder.get_default_states_class()
-  prop field_border_color_class, :string
-  prop selected_label_background_color_class, :css_class, default: "bulma-100"
-  prop selected_label_text_color_class, :css_class, default: "gohan-100"
+  prop(field, :atom, from_context: :field)
+  prop(label, :string)
+  prop(options, :any, default: [])
+  prop(value, :any)
+  prop(prompt, :string)
+  prop(error, :string)
+  prop(disabled, :boolean, default: false)
+  prop(required, :boolean)
+  prop(class, :string)
+  prop(size, :string, values: ~w(small medium large xlarge), default: "medium")
+  prop(popover_placement, :string, default: "bottom-start")
+  prop(popover_class, :string)
+  prop(field_border_class, :string, default: FieldBorder.get_default_states_class())
+  prop(field_border_color_class, :string)
+  prop(selected_label_background_color_class, :css_class, default: "bulma-100")
+  prop(selected_label_text_color_class, :css_class, default: "gohan-100")
 
-  data open, :boolean, default: false
-  data form, :form, from_context: {Surface.Components.Form, :form}
+  data(open, :boolean, default: false)
+  data(form, :form, from_context: {Surface.Components.Form, :form})
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""

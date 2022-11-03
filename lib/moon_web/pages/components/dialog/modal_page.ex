@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -27,8 +27,9 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
         name: "Modal"
       }
     ]
+  )
 
-  data modal_is_open, :boolean, default: true
+  data(modal_is_open, :boolean, default: true)
 
   def render(assigns) do
     ~F"""

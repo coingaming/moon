@@ -6,10 +6,10 @@ defmodule Moon.Components.Drawer.Dialog do
   alias Moon.Components.Divider
   alias Moon.Icons.ControlsClose
 
-  prop close, :event
-  slot title
-  slot content
-  slot footer
+  prop(close, :event)
+  slot(title)
+  slot(content)
+  slot(footer)
 
   def render(assigns) do
     dialog_content_height = if slot_assigned?(:footer), do: "h-5/6", else: "h-screen"
@@ -50,11 +50,11 @@ end
 defmodule Moon.Components.Drawer do
   @moduledoc false
   use Moon.StatelessComponent
-  prop id, :string
-  prop testid, :string
-  prop class, :css_class
-  prop close, :event
-  slot default
+  prop(id, :string)
+  prop(testid, :string)
+  prop(class, :css_class)
+  prop(close, :event)
+  slot(default)
 
   def render(assigns) do
     ~F"""

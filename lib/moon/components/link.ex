@@ -3,16 +3,16 @@ defmodule Moon.Components.Link do
 
   use Moon.StatelessComponent
 
-  prop id, :string, default: nil
-  prop to, :any
-  prop secondary, :boolean
-  prop disabled, :boolean
-  prop optional, :boolean
-  prop active, :boolean
-  prop class, :css_class
-  prop target, :string
-  prop rel, :string
-  slot default
+  prop(id, :string, default: nil)
+  prop(to, :any)
+  prop(secondary, :boolean)
+  prop(disabled, :boolean)
+  prop(optional, :boolean)
+  prop(active, :boolean)
+  prop(class, :css_class)
+  prop(target, :string)
+  prop(rel, :string)
+  slot(default)
 
   def render(assigns) do
     ~F"""

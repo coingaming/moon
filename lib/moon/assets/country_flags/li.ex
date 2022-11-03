@@ -3,11 +3,11 @@ defmodule Moon.Assets.CountryFlags.FlagLI do
 
   use Moon.StatelessComponent
 
-  prop color, :string, values: Moon.colors()
-  prop background_color, :string, values: Moon.colors()
-  prop font_size, :string
-  prop click, :event
-  prop class, :string
+  prop(color, :string, values: Moon.colors())
+  prop(background_color, :string, values: Moon.colors())
+  prop(font_size, :string)
+  prop(click, :event)
+  prop(class, :string)
 
   def render(assigns) do
     ~F"""

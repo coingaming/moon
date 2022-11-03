@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.ComponentPageDescription
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -29,8 +29,9 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
         name: "Multi Select"
       }
     ]
+  )
 
-  data search_string, :string, default: ""
+  data(search_string, :string, default: "")
 
   def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})

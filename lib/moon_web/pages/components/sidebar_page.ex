@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -25,6 +25,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         name: "Sidebar"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

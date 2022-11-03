@@ -3,10 +3,10 @@ defmodule MoonComponents.Banner.Container do
 
   use Moon.StatelessComponent
 
-  prop is_mobile, :boolean, default: false
-  prop has_buttons, :boolean, default: false
+  prop(is_mobile, :boolean, default: false)
+  prop(has_buttons, :boolean, default: false)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -42,9 +42,9 @@ defmodule MoonComponents.Banner.Body do
 
   use Moon.StatelessComponent
 
-  prop is_multiline, :boolean, default: true
+  prop(is_multiline, :boolean, default: true)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -68,9 +68,9 @@ defmodule MoonComponents.Banner.BodyContent do
 
   use Moon.StatelessComponent
 
-  prop is_multiline, :boolean, default: true
+  prop(is_multiline, :boolean, default: true)
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -94,7 +94,7 @@ defmodule MoonComponents.Banner.BodyButtonContainer do
 
   use Moon.StatelessComponent
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -115,14 +115,14 @@ defmodule Moon.Components.Banner do
   alias MoonComponents.Banner.BodyContent
   alias MoonComponents.Banner.BodyButtonContainer
 
-  prop description, :string, required: true
-  prop title, :string
-  prop is_multiline, :boolean, default: true
-  prop is_mobile, :boolean, default: false
+  prop(description, :string, required: true)
+  prop(title, :string)
+  prop(is_multiline, :boolean, default: true)
+  prop(is_mobile, :boolean, default: false)
 
-  slot icon_header_slot
-  slot buttons_slot
-  slot link_slot
+  slot(icon_header_slot)
+  slot(buttons_slot)
+  slot(link_slot)
 
   def render(assigns) do
     ~F"""

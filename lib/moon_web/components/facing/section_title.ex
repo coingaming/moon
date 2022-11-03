@@ -3,9 +3,9 @@ defmodule MoonWeb.Components.Facing.SectionTitle do
 
   use MoonWeb, :stateless_component
 
-  prop title, :string
-  prop description, :string
-  slot default
+  prop(title, :string)
+  prop(description, :string)
+  slot(default)
 
   def render(assigns) do
     ~F"""

@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   data(item_id, :string, default: "1")
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -23,8 +23,9 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         name: "Accordion"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'title',
@@ -76,6 +77,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         :description => 'Whether the content is displayed outside of the accordion header'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

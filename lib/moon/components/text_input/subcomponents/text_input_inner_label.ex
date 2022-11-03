@@ -7,20 +7,20 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
   alias Moon.Components.TextInput.Utils
   alias Moon.Components.ErrorTag
 
-  prop class, :css_class
-  prop id, :string
-  prop field, :atom
-  slot default
-  slot left_icon_slot
-  slot right_icon_slot
+  prop(class, :css_class)
+  prop(id, :string)
+  prop(field, :atom)
+  slot(default)
+  slot(left_icon_slot)
+  slot(right_icon_slot)
 
-  data disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled}
-  data size, :string, from_context: {Moon.Components.TextInput, :size}
-  data background_color, :string, from_context: {Moon.Components.TextInput, :background_color}
-  data is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error}
-  data label, :string, from_context: {Moon.Components.TextInput, :label}
-  data use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag}
-  data has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon}
+  data(disabled, :boolean, from_context: {Moon.Components.TextInput, :disabled})
+  data(size, :string, from_context: {Moon.Components.TextInput, :size})
+  data(background_color, :string, from_context: {Moon.Components.TextInput, :background_color})
+  data(is_error, :boolean, from_context: {Moon.Components.TextInput, :is_error})
+  data(label, :string, from_context: {Moon.Components.TextInput, :label})
+  data(use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag})
+  data(has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon})
 
   def render(assigns) do
     ~F"""

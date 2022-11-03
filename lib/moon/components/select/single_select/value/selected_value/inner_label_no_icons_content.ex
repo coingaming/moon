@@ -3,7 +3,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.InnerLabelNoIc
 
   use Moon.StatelessComponent
 
-  prop label, :string, default: ""
+  prop(label, :string, default: "")
 
   def render(assigns) do
     ~F"""

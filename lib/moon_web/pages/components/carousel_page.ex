@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
         name: "Carousel"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'space',
@@ -52,6 +53,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
         :description => 'TODO - Scroll to right button'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

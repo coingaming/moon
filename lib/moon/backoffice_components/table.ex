@@ -26,26 +26,26 @@ defmodule Moon.BackofficeComponents.Table do
   #   type: :brand | :date | :money_amount | :text | nil,
   #   sortable: true | false | nil
   # })
-  prop columns, :list, required: true
+  prop(columns, :list, required: true)
 
   # list(%{
   #   id: integer() | <<_::size>>,
   #   ...
   # })
-  prop items, :list, required: true
+  prop(items, :list, required: true)
 
   # {atom() | list(atom) | nil, :asc | :desc | nil}
-  prop sort_by, :tuple, default: {nil, nil}
+  prop(sort_by, :tuple, default: {nil, nil})
 
   # integer() | <<_::size>> | nil
-  prop active_item_id, :any
+  prop(active_item_id, :any)
 
   # Pagination data
-  prop page, :number, required: true
-  prop page_count, :number, required: true
-  prop total_count, :number, required: true
+  prop(page, :number, required: true)
+  prop(page_count, :number, required: true)
+  prop(total_count, :number, required: true)
 
-  slot active_item_popover
+  slot(active_item_popover)
 
   def render(assigns) do
     fields =

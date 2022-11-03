@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -23,6 +23,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
         name: "DropdownMenuButton"
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     socket =

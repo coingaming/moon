@@ -3,15 +3,15 @@ defmodule Moon.Components.Label do
 
   use Moon.StatelessComponent
 
-  prop color, :css_class, default: "text-goten-100"
-  prop background_color, :css_class, default: "bg-bulma-100"
-  prop size, :string, default: "xsmall", values: ~w(twoxsmall xsmall)
-  prop class, :string
-  prop is_uppercase, :boolean, default: true
+  prop(color, :css_class, default: "text-goten-100")
+  prop(background_color, :css_class, default: "bg-bulma-100")
+  prop(size, :string, default: "xsmall", values: ~w(twoxsmall xsmall))
+  prop(class, :string)
+  prop(is_uppercase, :boolean, default: true)
 
-  slot default
-  slot left_icon
-  slot right_icon
+  slot(default)
+  slot(left_icon)
+  slot(right_icon)
 
   def render(assigns) do
     ~F"""

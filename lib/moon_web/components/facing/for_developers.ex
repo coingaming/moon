@@ -8,8 +8,8 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
   alias MoonWeb.Components.Facing.GithubIcon
   alias MoonWeb.Pages.GettingStartedPage
 
-  prop theme_name, :string, default: "moon-design-light"
-  prop direction, :string, default: "ltr"
+  prop(theme_name, :string, default: "moon-design-light")
+  prop(direction, :string, default: "ltr")
 
   def render(assigns) do
     ~F"""

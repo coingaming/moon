@@ -3,12 +3,12 @@ defmodule Moon.Components.Sidebar do
 
   use Moon.StatelessComponent
 
-  slot full_logo
-  slot short_logo
-  slot menu
+  slot(full_logo)
+  slot(short_logo)
+  slot(menu)
 
-  prop open_width, :string, default: "14.5rem"
-  prop background_color, :string, default: ""
+  prop(open_width, :string, default: "14.5rem")
+  prop(background_color, :string, default: "")
 
   def render(assigns) do
     ~F"""

@@ -4,23 +4,23 @@ defmodule Moon.Components.PasswordInput do
   use Moon.StatefulComponent
   alias Moon.Components.Deprecated.TextInput
 
-  data hidden, :boolean, default: true
+  data(hidden, :boolean, default: true)
 
-  prop field, :atom
-  prop label, :string
-  prop value, :string
-  prop placeholder, :string
-  prop error, :string
-  prop rounded, :boolean
-  prop disabled, :boolean
-  prop required, :boolean
-  prop class, :string
-  prop focus, :event
-  prop blur, :event
-  prop background_color, :string, values: Moon.colors(), default: "goku-100"
-  prop size, :string, values: ["medium", "large"], default: "large"
+  prop(field, :atom)
+  prop(label, :string)
+  prop(value, :string)
+  prop(placeholder, :string)
+  prop(error, :string)
+  prop(rounded, :boolean)
+  prop(disabled, :boolean)
+  prop(required, :boolean)
+  prop(class, :string)
+  prop(focus, :event)
+  prop(blur, :event)
+  prop(background_color, :string, values: Moon.colors(), default: "goku-100")
+  prop(size, :string, values: ["medium", "large"], default: "large")
 
-  slot left_icon
+  slot(left_icon)
 
   def render(assigns) do
     # the reason for if else is left_icon,

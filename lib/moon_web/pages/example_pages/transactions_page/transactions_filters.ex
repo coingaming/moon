@@ -25,20 +25,20 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionsFilters do
   alias Moon.Components.Deprecated.TextInput
   alias MoonWeb.Pages.ExamplePages.TransactionsPage.TransactionFilter
 
-  data clicked_name, :string, default: ""
-  prop filter_options, :map
+  data(clicked_name, :string, default: "")
+  prop(filter_options, :map)
 
   @default_amount_range_value %{min: "", max: ""}
   @default_create_date_values %{
     start_date: Timex.beginning_of_week(Timex.today()),
     end_date: Timex.end_of_week(Timex.today())
   }
-  data amount_range_values, :map, default: @default_amount_range_value
-  data create_date_values, :map, default: @default_create_date_values
-  prop brand_filter_values, :list, default: []
-  prop currency_filter_values, :list, default: []
-  prop username_filter_values, :list, default: []
-  prop country_filter_values, :list, default: []
+  data(amount_range_values, :map, default: @default_amount_range_value)
+  data(create_date_values, :map, default: @default_create_date_values)
+  prop(brand_filter_values, :list, default: [])
+  prop(currency_filter_values, :list, default: [])
+  prop(username_filter_values, :list, default: [])
+  prop(country_filter_values, :list, default: [])
 
   def render(assigns) do
     ~F"""

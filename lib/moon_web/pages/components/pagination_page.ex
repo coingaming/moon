@@ -9,7 +9,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -20,8 +20,9 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         name: "Pagination"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'total_pages',
@@ -95,6 +96,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
         :description => 'TODO - Placeholder for "go to page" component'
       }
     ]
+  )
 
   def mount(_params, _session, socket) do
     socket =

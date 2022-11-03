@@ -4,16 +4,16 @@ defmodule Moon.Components.Select.Dropdown.Option.Renderer do
 
   alias Phoenix.LiveView.JS
 
-  prop class, :css_class
-  prop select_id, :string
-  prop value, :any
-  prop select_value, :any
-  prop is_multi, :boolean
-  prop is_selected, :boolean
-  prop left_icon, :any
-  prop right_icon, :any
+  prop(class, :css_class)
+  prop(select_id, :string)
+  prop(value, :any)
+  prop(select_value, :any)
+  prop(is_multi, :boolean)
+  prop(is_selected, :boolean)
+  prop(left_icon, :any)
+  prop(right_icon, :any)
 
-  slot default, arg: %{is_selected: :boolean}
+  slot(default, arg: %{is_selected: :boolean})
 
   def render(assigns) do
     ~F"""

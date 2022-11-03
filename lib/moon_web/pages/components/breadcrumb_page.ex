@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   alias MoonWeb.Components.Table.Column
   alias Moon.Components.Breadcrumb.Crumb
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -23,8 +23,9 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         name: "Breadcrumb"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'breadcrumbs',
@@ -34,8 +35,9 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         :description => 'Crumbs to display'
       }
     ]
+  )
 
-  data breadcrumb_items_1, :list,
+  data(breadcrumb_items_1, :list,
     default: [
       %Crumb{
         name: "Home",
@@ -46,8 +48,9 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/corporate"
       }
     ]
+  )
 
-  data breadcrumb_items_2, :list,
+  data(breadcrumb_items_2, :list,
     default: [
       %Crumb{
         name: "Home",
@@ -70,8 +73,9 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/corporate/about/jobs/contact"
       }
     ]
+  )
 
-  data breadcrumb_items_3, :list,
+  data(breadcrumb_items_3, :list,
     default: [
       %Crumb{
         name: "Home",
@@ -90,14 +94,16 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         link: "/app/corporate/about/jobs"
       }
     ]
+  )
 
-  data breadcrumb_items_4, :list,
+  data(breadcrumb_items_4, :list,
     default: [
       %Crumb{
         name: "Current Page",
         link: "/app/home"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

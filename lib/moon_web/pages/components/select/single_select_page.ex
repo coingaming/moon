@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   alias MoonWeb.Components.PropsTable
   alias Moon.Components.Button
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -24,8 +24,9 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         name: "Single Select"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'id',
@@ -127,9 +128,10 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :description => 'Css class for the displayed selected value'
       }
     ]
+  )
 
-  data latest_params, :any, default: nil
-  data latest_params2, :any, default: nil
+  data(latest_params, :any, default: nil)
+  data(latest_params2, :any, default: nil)
 
   def mount(_params, _session, socket) do
     user_changeset = User.changeset(%User{})

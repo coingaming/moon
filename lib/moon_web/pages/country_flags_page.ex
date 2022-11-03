@@ -9,13 +9,14 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PageSection
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "/country_flags",
         name: "CountryFlags"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

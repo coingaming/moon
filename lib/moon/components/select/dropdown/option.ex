@@ -4,15 +4,15 @@ defmodule Moon.Components.Select.Dropdown.Option do
   use Moon.StatelessComponent
   alias __MODULE__.Renderer
 
-  prop class, :css_class
-  prop select_id, :string, from_context: {Moon.Components.Select.Dropdown, :select_id}
-  prop value, :any, from_context: {Moon.Components.Select.Dropdown, :value}
-  prop select_value, :any
-  prop is_multi, :boolean, from_context: {Moon.Components.Select.Dropdown, :is_multi}
-  prop left_icon, :any
-  prop right_icon, :any
+  prop(class, :css_class)
+  prop(select_id, :string, from_context: {Moon.Components.Select.Dropdown, :select_id})
+  prop(value, :any, from_context: {Moon.Components.Select.Dropdown, :value})
+  prop(select_value, :any)
+  prop(is_multi, :boolean, from_context: {Moon.Components.Select.Dropdown, :is_multi})
+  prop(left_icon, :any)
+  prop(right_icon, :any)
 
-  slot default, arg: %{is_selected: :boolean}
+  slot(default, arg: %{is_selected: :boolean})
 
   def render(assigns) do
     select_value =

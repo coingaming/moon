@@ -3,14 +3,15 @@ defmodule Moon.Components.Tooltip do
 
   use Moon.StatelessComponent
 
-  prop clicked_text, :string, default: nil
-  prop text, :string, required: true
+  prop(clicked_text, :string, default: nil)
+  prop(text, :string, required: true)
 
-  prop placement, :string,
+  prop(placement, :string,
     values: ["top", "right", "bottom", "left"],
     required: true
+  )
 
-  slot default, required: true
+  slot(default, required: true)
 
   # TODO:
   # Right now the tooltip does not align properly for "left" and "right" placements.

@@ -5,14 +5,14 @@ defmodule Moon.Components.SelectTrigger do
   alias Moon.Icons.{ControlsChevronDown, ControlsChevronUp}
   alias Phoenix.LiveView.JS
 
-  prop id, :string
-  prop placeholder, :string, default: "Choose"
-  prop selected_option, :any
-  prop size, :string, values: ~w(md lg xl), default: "md"
-  prop state, :string, values: ~w(active error disabled)
-  prop class, :string
-  prop on_click, :event
-  slot default
+  prop(id, :string)
+  prop(placeholder, :string, default: "Choose")
+  prop(selected_option, :any)
+  prop(size, :string, values: ~w(md lg xl), default: "md")
+  prop(state, :string, values: ~w(active error disabled))
+  prop(class, :string)
+  prop(on_click, :event)
+  slot(default)
 
   def render(assigns) do
     ~F"""

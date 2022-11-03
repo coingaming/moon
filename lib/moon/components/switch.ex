@@ -12,19 +12,19 @@ defmodule Moon.Components.Switch do
     "large" => "1.5rem"
   }
 
-  prop id, :string, required: true
-  prop field, :atom, from_context: :field
-  prop form, :form, from_context: {Surface.Components.Form, :form}
-  prop checked, :boolean, default: false
-  prop icons, :boolean, default: false
-  prop size, :string, values: ["small", "medium", "large"], default: "medium"
-  prop action, :string, default: "Toggle Setting"
-  prop caption_unchecked, :string
-  prop caption_checked, :string
-  prop icon_name_off, :string, default: "other_moon"
-  prop icon_name_on, :string, default: "other_sun"
-  prop class, :css_class, default: ""
-  prop on_click, :event
+  prop(id, :string, required: true)
+  prop(field, :atom, from_context: :field)
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
+  prop(checked, :boolean, default: false)
+  prop(icons, :boolean, default: false)
+  prop(size, :string, values: ["small", "medium", "large"], default: "medium")
+  prop(action, :string, default: "Toggle Setting")
+  prop(caption_unchecked, :string)
+  prop(caption_checked, :string)
+  prop(icon_name_off, :string, default: "other_moon")
+  prop(icon_name_on, :string, default: "other_sun")
+  prop(class, :css_class, default: "")
+  prop(on_click, :event)
 
   def render(assigns) do
     ~F"""

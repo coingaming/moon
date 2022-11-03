@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
   alias Moon.Autolayouts.TopToDown
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -17,6 +17,7 @@ defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
         name: "Checkbox multiselct"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

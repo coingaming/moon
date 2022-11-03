@@ -4,7 +4,7 @@ defmodule Moon.Components.Popover.DefaultContent do
   use Moon.StatelessComponent
   alias Moon.Autolayouts.TopToDown
 
-  slot default
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -25,11 +25,11 @@ defmodule Moon.Components.Popover do
 
   use Moon.StatelessComponent
 
-  prop class, :css_class
-  prop inline_class, :boolean
-  prop show, :boolean
+  prop(class, :css_class)
+  prop(inline_class, :boolean)
+  prop(show, :boolean)
 
-  prop placement, :string,
+  prop(placement, :string,
     values: [
       "top-start",
       "top",
@@ -45,13 +45,14 @@ defmodule Moon.Components.Popover do
       "left-end"
     ],
     default: "bottom-start"
+  )
 
-  prop on_close, :event
+  prop(on_close, :event)
 
-  prop testid, :string
+  prop(testid, :string)
 
-  slot default, required: true
-  slot content, required: true
+  slot(default, required: true)
+  slot(content, required: true)
 
   def render(assigns) do
     ~F"""

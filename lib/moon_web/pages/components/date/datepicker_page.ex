@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -22,8 +22,9 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
         name: "Datepicker"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'with_time',
@@ -104,6 +105,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
         :description => ''
       }
     ]
+  )
 
   defmodule Contract do
     @moduledoc false

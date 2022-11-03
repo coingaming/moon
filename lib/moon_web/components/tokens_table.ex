@@ -6,8 +6,8 @@ defmodule MoonWeb.Components.TokensTable do
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
 
-  prop title, :string, default: "Props"
-  prop data, :list
+  prop(title, :string, default: "Props")
+  prop(data, :list)
 
   def render(assigns) do
     ~F"""

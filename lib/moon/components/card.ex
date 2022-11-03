@@ -5,12 +5,12 @@ defmodule Moon.Components.Card do
 
   alias Moon.Components.Heading
 
-  prop title, :string
-  prop class, :string
-  prop rounded, :boolean, default: true
+  prop(title, :string)
+  prop(class, :string)
+  prop(rounded, :boolean, default: true)
 
-  slot buttons
-  slot content, required: true
+  slot(buttons)
+  slot(content, required: true)
 
   def render(assigns) do
     ~F"""

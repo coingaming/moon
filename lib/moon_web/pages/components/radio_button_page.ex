@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -26,8 +26,9 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         name: "RadioButton"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'id',
@@ -73,6 +74,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         :description => 'Event handler'
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

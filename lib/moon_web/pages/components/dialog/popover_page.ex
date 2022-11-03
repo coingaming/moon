@@ -6,9 +6,9 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
   alias Moon.Components.Button
   alias Moon.Components.Popover
 
-  prop placement, :string, required: true
+  prop(placement, :string, required: true)
 
-  data show, :boolean, default: false
+  data(show, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -52,8 +52,9 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
         name: "Popover"
       }
     ]
+  )
 
-  data props_info_array, :list,
+  data(props_info_array, :list,
     default: [
       %{
         :name => 'content',
@@ -106,6 +107,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
         :description => 'TODO - max-width value of popover (px)'
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}

@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.Components.Dialog.FooterPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -17,6 +17,7 @@ defmodule MoonWeb.Pages.Components.Dialog.FooterPage do
         name: "Dialog Footer"
       }
     ]
+  )
 
   def render(assigns) do
     ~F"""

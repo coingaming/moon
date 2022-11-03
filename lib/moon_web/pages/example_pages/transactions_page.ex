@@ -45,17 +45,17 @@ defmodule MoonWeb.Pages.ExamplePages.TransactionsPage do
     "amount_range_filter" => :amount_range_values
   }
 
-  data breadcrumbs, :any, default: [%{name: "Transactions", to: "/example-pages/transactions"}]
+  data(breadcrumbs, :any, default: [%{name: "Transactions", to: "/example-pages/transactions"}])
 
-  data filters, :map, default: %{}
-  data segments, :list, default: []
-  data sort_by, :tuple, default: {nil, nil}
-  data page, :integer, default: 1
-  data page_count, :integer, default: @default_page_count
-  data total_count, :integer, default: 0
-  data active_transaction, :map, default: %{id: nil}
-  data filter_options, :map, default: %{}
-  data transactions, :list, default: []
+  data(filters, :map, default: %{})
+  data(segments, :list, default: [])
+  data(sort_by, :tuple, default: {nil, nil})
+  data(page, :integer, default: 1)
+  data(page_count, :integer, default: @default_page_count)
+  data(total_count, :integer, default: 0)
+  data(active_transaction, :map, default: %{id: nil})
+  data(filter_options, :map, default: %{})
+  data(transactions, :list, default: [])
 
   def mount(_params, _session, socket) do
     socket =

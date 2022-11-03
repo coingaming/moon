@@ -9,15 +9,15 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.Filters.ContentFilter do
 
   import Phoenix.LiveView, only: [send_update: 2]
 
-  prop filter_name, :string, required: true
-  prop all_items, :list, default: []
-  prop active_items, :list
+  prop(filter_name, :string, required: true)
+  prop(all_items, :list, default: [])
+  prop(active_items, :list)
 
-  prop chip_class, :string, default: "px-3"
-  prop left_icon, :string
-  prop right_icon, :string, default: "icon_chevron_down_rounded"
+  prop(chip_class, :string, default: "px-3")
+  prop(left_icon, :string)
+  prop(right_icon, :string, default: "icon_chevron_down_rounded")
 
-  slot label
+  slot(label)
 
   def render(assigns) do
     ~F"""
