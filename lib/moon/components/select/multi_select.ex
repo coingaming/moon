@@ -110,7 +110,8 @@ defmodule Moon.Components.Select.MultiSelect do
   alias Moon.Components.Select.Helpers, as: SelectHelpers
   alias __MODULE__.Labels
 
-  prop(field, :atom, from_context: :field)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(label, :string)
   prop(options, :any, default: [])
   prop(value, :any)
@@ -128,7 +129,6 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(selected_label_text_color_class, :css_class, default: "gohan-100")
 
   data(open, :boolean, default: false)
-  data(form, :form, from_context: {Surface.Components.Form, :form})
 
   slot(default)
 

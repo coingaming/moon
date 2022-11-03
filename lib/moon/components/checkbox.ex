@@ -5,7 +5,7 @@ defmodule Moon.Components.Checkbox do
   alias Moon.Components.FieldLabel
 
   prop(id, :string)
-  prop(field, :atom, from_context: :field)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(click, :event)
   prop(checked, :boolean)

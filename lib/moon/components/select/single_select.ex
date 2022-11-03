@@ -29,7 +29,7 @@ defmodule Moon.Components.Select.SingleSelect do
 
   data(open, :boolean, default: false)
   data(form, :form, from_context: {Surface.Components.Form, :form})
-  data(field, :atom, from_context: :field)
+  data(field, :atom, from_context: {Surface.Components.Form.Field, :field})
 
   slot(hint_text_slot)
 

@@ -28,17 +28,14 @@ defmodule Moon.Components.Select.Dropdown do
   prop(on_option_clicked, :event)
   prop(with, :string, default: nil, values: ["checkbox", "radio"])
   prop(content_class, :css_class, default: "max-h-[300px] overflow-hidden overflow-y-scroll")
-  prop(field, :atom)
-  prop(form, :atom)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
 
   slot(default)
   slot(footer)
   slot(header)
 
   def render(assigns) do
-    form = assigns[:form] || Context.get(assigns, Surface.Components.Form, :form)
-    field = assigns[:field] || Context.get(assigns, Surface.Components.Form.Field, :field)
-
     ~F"""
     <div class={
       "z-10 rounded-moon-i-md shadow-lg bg-gohan-100 focus:outline-none p-1 grid grid-cols-1 gap-1 text-moon-16",
@@ -47,8 +44,8 @@ defmodule Moon.Components.Select.Dropdown do
       {#if !@select_id}
         {#if @with == "radio"}
           {Phoenix.HTML.Form.select(
-            form,
-            field,
+            @form,
+            @field,
             SelectHelpers.get_formatted_options(@available_options || @options),
             id: @id,
             class: "hidden",
@@ -57,8 +54,8 @@ defmodule Moon.Components.Select.Dropdown do
           )}
         {#else}
           {Phoenix.HTML.Form.multiple_select(
-            form,
-            field,
+            @form,
+            @field,
             SelectHelpers.get_formatted_options(@available_options || @options),
             id: @id,
             class: "hidden",
@@ -87,7 +84,7 @@ defmodule Moon.Components.Select.Dropdown do
             {#for option <- @options}
               <Option
                 select_id={@select_id || @id}
-                select_value={SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value)}
+                select_value={SelectHelpers.get_normalized_value(@form, @field, @is_multi, value: @value)}
                 value={"#{option.value}"}
                 left_icon={option[:left_icon]}
                 right_icon={option[:right_icon]}
@@ -111,7 +108,7 @@ defmodule Moon.Components.Select.Dropdown do
                         {#if @with == "radio"}
                           <RadioButton
                             id={"#{@id}-#{option.value}"}
-                            field={field}
+                            field={@field}
                             value={option.value}
                             checked={is_selected}
                           />
@@ -161,7 +158,7 @@ defmodule Moon.Components.Select.Dropdown do
               context_put={
                 __MODULE__,
                 select_id: @select_id || @id,
-                select_value: SelectHelpers.get_normalized_value(form, field, @is_multi, value: @value),
+                select_value: SelectHelpers.get_normalized_value(@form, @field, @is_multi, value: @value),
                 is_multi: @is_multi
               }
             />

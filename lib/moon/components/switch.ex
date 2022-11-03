@@ -13,7 +13,7 @@ defmodule Moon.Components.Switch do
   }
 
   prop(id, :string, required: true)
-  prop(field, :atom, from_context: :field)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(checked, :boolean, default: false)
   prop(icons, :boolean, default: false)
