@@ -1,9 +1,13 @@
 import * as fs from "fs";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-console.log("Running svg importer");
+console.log("Running generate svg generate symbols");
 
-const rawDir = "node_modules/moon-design/packages/assets/raw/";
-const rawDirIcons = "node_modules/moon-design/packages/icons/raw/imported";
+const iconPageName = process.env.ICON_PAGE_NAME;
+
+const rawDir = "node_modules/moon-design/packages/assets/raw";
+const rawDirIcons = `node_modules/assets/svg/${iconPageName}`;
 const exportDir = "../../priv/static/svgs";
 
 const getFilesList = (iconType: string) => {
@@ -89,7 +93,7 @@ const writeSvgFile = (iconType: string, file: string, contents: string) => {
   "icons",
   "icons_new",
   "logos",
-  "country_flags",
+  // "country_flags", // TODO, why is this missing in moon-design/packages/assets/raw/country_flags
   "patterns",
 ].forEach((iconType: string) => {
   getFilesList(iconType).forEach((file) => {
