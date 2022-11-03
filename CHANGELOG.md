@@ -1,3 +1,10 @@
+## [2.30.14](https://github.com/coingaming/moon/compare/v2.30.13...v2.30.14) (2022-11-03)
+
+
+### Bug Fixes
+
+* fix formatter ([#440](https://github.com/coingaming/moon/issues/440)) ([0b48bc6](https://github.com/coingaming/moon/commit/0b48bc6cb168516cd38e2fa5dc0bd0c0c04c8aab))
+
 ## [2.30.13](https://github.com/coingaming/moon/compare/v2.30.12...v2.30.13) (2022-11-03)
 
 
