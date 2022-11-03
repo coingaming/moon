@@ -7,7 +7,7 @@ defmodule Moon.Components.Select.Dropdown.Option do
   prop class, :css_class
   prop select_id, :string, from_context: {Moon.Components.Select.Dropdown, :select_id}
   prop value, :any, from_context: {Moon.Components.Select.Dropdown, :value}
-  prop select_value, :any, from_context: {Moon.Components.Select.Dropdown, :select_value}
+  prop select_value, :any
   prop is_multi, :boolean, from_context: {Moon.Components.Select.Dropdown, :is_multi}
   prop left_icon, :any
   prop right_icon, :any
@@ -15,10 +15,14 @@ defmodule Moon.Components.Select.Dropdown.Option do
   slot default, arg: %{is_selected: :boolean}
 
   def render(assigns) do
+    select_value =
+      assigns[:select_value] ||
+        Context.get(assigns, Moon.Components.Select.Dropdown, :select_value)
+
     ~F"""
     <Renderer
       is_selected={get_is_selected(%{
-        select_value: @select_value,
+        select_value: select_value,
         is_multi: @is_multi,
         value: @value
       })}
@@ -26,8 +30,8 @@ defmodule Moon.Components.Select.Dropdown.Option do
       {=@right_icon}
       {=@select_id}
       {=@value}
-      {=@select_value}
       {=@is_multi}
+      select_value={select_value}
       :let={is_selected: is_selected}
     >
       <#slot {@default, is_selected: is_selected} />
