@@ -1,3 +1,10 @@
+## [2.30.15](https://github.com/coingaming/moon/compare/v2.30.14...v2.30.15) (2022-11-03)
+
+
+### Bug Fixes
+
+* [MDS-264]  :field context ([#441](https://github.com/coingaming/moon/issues/441)) ([c7d8654](https://github.com/coingaming/moon/commit/c7d86542556801a01f7831b04005ef03a3057e9c))
+
 ## [2.30.14](https://github.com/coingaming/moon/compare/v2.30.13...v2.30.14) (2022-11-03)
 
 
