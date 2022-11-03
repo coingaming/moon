@@ -15,7 +15,9 @@ defmodule Moon.Components.Select.Dropdown.Option do
   slot default, arg: %{is_selected: :boolean}
 
   def render(assigns) do
-    select_value = assigns[:select_value] || Context.get(assigns, Moon.Components.Select.Dropdown, :select_value)
+    select_value =
+      assigns[:select_value] ||
+        Context.get(assigns, Moon.Components.Select.Dropdown, :select_value)
 
     ~F"""
     <Renderer
