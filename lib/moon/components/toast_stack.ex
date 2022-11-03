@@ -12,7 +12,7 @@ defmodule Moon.Components.ToastStack do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed md:top-0 md:right-0 bottom-0 flex flex-col max-w-sm md:max-w-md p-4 items-end overflow-y-scroll overflow-x-hidden mx-auto">
+    <div class="fixed md:top-0 md:right-0 bottom-0 flex flex-col max-w-sm md:max-w-md p-4 items-end overflow-y-scroll overflow-x-hidden mx-auto z-50">
       <Toast
         :for={{id, toast} <- @toasts}
         id={id}

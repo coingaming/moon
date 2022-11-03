@@ -60,7 +60,7 @@ defmodule Moon.Components.Drawer do
     ~F"""
     <div
       id={@id}
-      class={"fixed top-0 right-0 bottom-0 bg-gohan-100 z-[999]", @class}
+      class={"fixed top-0 right-0 bottom-0 bg-gohan-100 z-40", @class}
       data-testid={@testid}
     >
       <#slot />
