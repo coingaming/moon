@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 32 32"  fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.25 4c-3.747.005-5.694.08-6.932 1.318C4 6.636 4 8.758 4 13v6c0 4.243 0 6.364 1.318 7.682C6.636 28 8.758 28 13 28h6c4.243 0 6.364 0 7.682-1.318C28 25.364 28 23.242 28 19v-6c0-4.243 0-6.364-1.318-7.682C25.364 4 23.242 4 19 4h-4.875v14.063h8.438v1.875H12.25V4Z" fill="currentColor"/>
+  </symbol>
+</svg>
+  

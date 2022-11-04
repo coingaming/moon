@@ -1,6 +1,6 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="item" viewBox="0 0 24 24"  fill="none">
-    <path d="M8.647 19.293A6.647 6.647 0 1 0 8.647 6a6.647 6.647 0 0 0 0 13.293ZM22 8.252a2.252 2.252 0 1 1-4.505 0 2.252 2.252 0 0 1 4.505 0Z" fill="currentColor"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 32 32"  fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.47 19.2c1.56 0 2.824-1.254 2.824-2.8 0-1.546-1.264-2.8-2.824-2.8-1.559 0-2.823 1.254-2.823 2.8 0 1.546 1.264 2.8 2.823 2.8Zm0 5.6c4.679 0 8.471-3.76 8.471-8.4 0-4.64-3.792-8.4-8.47-8.4C7.791 8 4 11.76 4 16.4c0 4.64 3.792 8.4 8.47 8.4Z" fill="currentColor"/><path d="M28 10.8c0 1.546-1.264 2.8-2.823 2.8-1.56 0-2.824-1.254-2.824-2.8 0-1.546 1.264-2.8 2.823-2.8C26.736 8 28 9.254 28 10.8Z" fill="currentColor"/>
   </symbol>
 </svg>
   
