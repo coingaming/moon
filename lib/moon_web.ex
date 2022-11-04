@@ -108,6 +108,7 @@ defmodule MoonWeb do
       import Routes, only: [static_path: 2]
 
       import MoonWeb.Helpers.Routes
+      import MoonWeb.Helpers.Html
     end
   end
 

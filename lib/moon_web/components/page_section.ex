@@ -14,7 +14,9 @@ defmodule MoonWeb.Components.PageSection do
         "flex flex-col w-full gap-6",
         "basis-1/2": @image
       }>
-        <h2 :if={@title} class="text-moon-24 font-medium">{@title}</h2>
+        <a :if={@title} href={"#" <> get_as_anchor_id(@title)}>
+          <h2 id={get_as_anchor_id(@title)} class="text-moon-24 font-medium">{@title}</h2>
+        </a>
         <div class="w-full flex flex-col gap-2 text-moon-16">
           <#slot />
         </div>

@@ -75,7 +75,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.CarouselPage}>Carousel</SidebarLink>
                       <Accordion
                         is_content_inside={false}
-                        id="left-menu-components-select"
+                        id="left-menu-components-charts"
                         open_by_default={active_page_contains(@active_page, Pages.Components.Charts)}
                       >
                         <:title>Charts</:title>

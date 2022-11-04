@@ -35,7 +35,7 @@ defmodule MoonWeb.Router do
     end
   end
 
-  live_session :default, on_mount: MoonWeb.Hooks.Globals do
+  live_session :default, on_mount: MoonWeb.Hooks.SetGlobalParams do
     Enum.each(["/", "/:theme_name/:direction"], fn theme_path ->
       scope theme_path do
         pipe_through(:browser)
@@ -145,6 +145,9 @@ defmodule MoonWeb.Router do
         live("/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage)
         live("/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage)
         live("/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage)
+
+        live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
+        live("/test/live", MoonWeb.Pages.Test.LivePage)
       end
     end)
   end

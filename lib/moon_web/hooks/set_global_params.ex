@@ -1,4 +1,4 @@
-defmodule MoonWeb.Hooks.Globals do
+defmodule MoonWeb.Hooks.SetGlobalParams do
   @moduledoc """
   Setting globals - site-wide params for (almost) all LiveViews
   """

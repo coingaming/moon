@@ -15,7 +15,7 @@ defmodule MoonWeb.Components.SidebarLink do
   def render(assigns) do
     ~F"""
     <a
-      data-phx-link="patch"
+      data-phx-link="redirect"
       data-phx-link-state="push"
       data-moon-active={@active_page == @route}
       href={live_path(MoonWeb.Endpoint, @route, theme_name: @theme_name, direction: @direction)}
