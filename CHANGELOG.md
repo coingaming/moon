@@ -1,3 +1,10 @@
+## [2.30.16](https://github.com/coingaming/moon/compare/v2.30.15...v2.30.16) (2022-11-04)
+
+
+### Bug Fixes
+
+* [MDS-248] rendering moon components outside surface templates ([#421](https://github.com/coingaming/moon/issues/421)) ([d764da2](https://github.com/coingaming/moon/commit/d764da2fed3aa188e9a7c7cbce525d69ea596b5c))
+
 ## [2.30.15](https://github.com/coingaming/moon/compare/v2.30.14...v2.30.15) (2022-11-03)
 
 
