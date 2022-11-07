@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.LogoSlotsShort do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/logos/logo-slots-short.svg#item" />
+      <use href="/moon/assets/svgs/logos/logo-slots-short.svg#item" />
     </svg>
     """
   end

@@ -16,7 +16,7 @@ defmodule Moon.Assets.Icons.IconErrorCircle do
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/svgs/icons/icon-error-circle.svg#item" />
+      <use href="/moon/assets/svgs/icons/icon-error-circle.svg#item" />
     </svg>
     """
   end

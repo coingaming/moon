@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconRipple do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-ripple.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-ripple.svg#item" />
     </svg>
     """
   end

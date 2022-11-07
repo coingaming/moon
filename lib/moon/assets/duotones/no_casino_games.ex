@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.NoCasinoGames do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/duotones/no-casino-games.svg#item" />
+      <use href="/moon/assets/svgs/duotones/no-casino-games.svg#item" />
     </svg>
     """
   end

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconCanadianDollar do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-canadian-dollar.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-canadian-dollar.svg#item" />
     </svg>
     """
   end

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconSouthKoreanWon do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-south-korean-won.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-south-korean-won.svg#item" />
     </svg>
     """
   end

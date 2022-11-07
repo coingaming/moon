@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconEthereum do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-ethereum.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-ethereum.svg#item" />
     </svg>
     """
   end

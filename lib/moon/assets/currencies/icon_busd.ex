@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconBusd do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-busd.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-busd.svg#item" />
     </svg>
     """
   end

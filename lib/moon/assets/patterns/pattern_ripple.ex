@@ -24,7 +24,7 @@ defmodule Moon.Assets.Patterns.PatternRipple do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/patterns/pattern-ripple.svg#item" />
+      <use href="/moon/assets/svgs/patterns/pattern-ripple.svg#item" />
     </svg>
     """
   end

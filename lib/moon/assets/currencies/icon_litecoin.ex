@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconLitecoin do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-litecoin.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-litecoin.svg#item" />
     </svg>
     """
   end

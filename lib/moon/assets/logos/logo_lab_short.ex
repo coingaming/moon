@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.LogoLabShort do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/logos/logo-lab-short.svg#item" />
+      <use href="/moon/assets/svgs/logos/logo-lab-short.svg#item" />
     </svg>
     """
   end

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.LogoBombayFull do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/logos/logo-bombay-full.svg#item" />
+      <use href="/moon/assets/svgs/logos/logo-bombay-full.svg#item" />
     </svg>
     """
   end

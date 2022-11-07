@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.NoNotification do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/duotones/no-notification.svg#item" />
+      <use href="/moon/assets/svgs/duotones/no-notification.svg#item" />
     </svg>
     """
   end

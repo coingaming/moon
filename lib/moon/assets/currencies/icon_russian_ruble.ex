@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconRussianRuble do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-russian-ruble.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-russian-ruble.svg#item" />
     </svg>
     """
   end

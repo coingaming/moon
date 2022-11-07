@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.LogoHub88Full do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/logos/logo-hub88-full.svg#item" />
+      <use href="/moon/assets/svgs/logos/logo-hub88-full.svg#item" />
     </svg>
     """
   end

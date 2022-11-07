@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconIndianRupee do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-indian-rupee.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-indian-rupee.svg#item" />
     </svg>
     """
   end

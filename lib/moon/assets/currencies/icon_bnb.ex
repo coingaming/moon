@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconBnb do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-bnb.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-bnb.svg#item" />
     </svg>
     """
   end

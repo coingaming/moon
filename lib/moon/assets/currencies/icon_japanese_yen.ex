@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconJapaneseYen do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-japanese-yen.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-japanese-yen.svg#item" />
     </svg>
     """
   end

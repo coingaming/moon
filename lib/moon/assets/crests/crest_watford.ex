@@ -24,7 +24,7 @@ defmodule Moon.Assets.Crests.CrestWatford do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/crests/crest-watford.svg#item" />
+      <use href="/moon/assets/svgs/crests/crest-watford.svg#item" />
     </svg>
     """
   end

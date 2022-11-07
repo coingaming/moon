@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.Trophy do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/duotones/trophy.svg#item" />
+      <use href="/moon/assets/svgs/duotones/trophy.svg#item" />
     </svg>
     """
   end

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconNewTaiwanDollar do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-new-taiwan-dollar.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-new-taiwan-dollar.svg#item" />
     </svg>
     """
   end

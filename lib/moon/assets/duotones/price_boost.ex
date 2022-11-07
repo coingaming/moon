@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.PriceBoost do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/duotones/price-boost.svg#item" />
+      <use href="/moon/assets/svgs/duotones/price-boost.svg#item" />
     </svg>
     """
   end

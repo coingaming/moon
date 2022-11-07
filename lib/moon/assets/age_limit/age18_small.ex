@@ -24,7 +24,7 @@ defmodule Moon.Assets.AgeLimit.Age18Small do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/age_limit/age18-small.svg#item" />
+      <use href="/moon/assets/svgs/age_limit/age18-small.svg#item" />
     </svg>
     """
   end

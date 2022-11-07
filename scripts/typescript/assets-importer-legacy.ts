@@ -89,7 +89,7 @@ const mapFileContentString = ({
       vertical_align: @vertical_align
     )}
   >
-    <use href={"/moon/svgs/${assetsFolder}/#{asset_name_to_filename(@name)}.svg#item"} />
+    <use href={"/moon/assets/svgs/${assetsFolder}/#{asset_name_to_filename(@name)}.svg#item"} />
   </svg>
 `;
 
@@ -99,7 +99,7 @@ const mapFileIconContentString = `
     :on-click={@click}
     style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
   >
-    <use href={"/moon/svgs/icons/#{asset_name_to_filename(@name)}.svg#item"} />
+    <use href={"/moon/assets/svgs/icons/#{asset_name_to_filename(@name)}.svg#item"} />
   </svg>
 `;
 
@@ -178,12 +178,12 @@ const createAssetComponentFile = ({
   const svgMap = {
     icon: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
-      <use href="/moon/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
+      <use href="/moon/assets/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
     </svg>
     `,
     default: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
+      <use href="/moon/assets/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
     </svg>
     `,
   };

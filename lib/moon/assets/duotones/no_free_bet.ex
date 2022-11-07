@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.NoFreeBet do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/duotones/no-free-bet.svg#item" />
+      <use href="/moon/assets/svgs/duotones/no-free-bet.svg#item" />
     </svg>
     """
   end

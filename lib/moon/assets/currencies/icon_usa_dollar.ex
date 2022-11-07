@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconUsaDollar do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/svgs/currencies/icon-usa-dollar.svg#item" />
+      <use href="/moon/assets/svgs/currencies/icon-usa-dollar.svg#item" />
     </svg>
     """
   end
