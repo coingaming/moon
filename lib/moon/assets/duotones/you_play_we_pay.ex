@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.YouPlayWePay do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/duotones/you-play-we-pay.svg#item" />
+      <use href="/moon/svgs/duotones/you-play-we-pay.svg#item" />
     </svg>
     """
   end

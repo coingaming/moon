@@ -24,7 +24,7 @@ defmodule Moon.Assets.Patterns.PatternPerspectiveDotted do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/patterns/PatternPerspectiveDotted.svg#item" />
+      <use href="/moon/svgs/patterns/pattern-perspective-dotted.svg#item" />
     </svg>
     """
   end

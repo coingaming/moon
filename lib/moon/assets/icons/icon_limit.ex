@@ -16,7 +16,7 @@ defmodule Moon.Assets.Icons.IconLimit do
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/assets/svgs/icons/icon-limit.svg#item" />
+      <use href="/moon/svgs/icons/icon-limit.svg#item" />
     </svg>
     """
   end

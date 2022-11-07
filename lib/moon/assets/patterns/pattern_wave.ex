@@ -24,7 +24,7 @@ defmodule Moon.Assets.Patterns.PatternWave do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/patterns/PatternWave.svg#item" />
+      <use href="/moon/svgs/patterns/pattern-wave.svg#item" />
     </svg>
     """
   end

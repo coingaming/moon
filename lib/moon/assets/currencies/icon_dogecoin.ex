@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconDogecoin do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/currencies/IconDogecoin.svg#item" />
+      <use href="/moon/svgs/currencies/icon-dogecoin.svg#item" />
     </svg>
     """
   end

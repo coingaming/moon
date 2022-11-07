@@ -24,7 +24,7 @@ defmodule Moon.Assets.Crests.CrestArsenal do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/crests/CrestArsenal.svg#item" />
+      <use href="/moon/svgs/crests/crest-arsenal.svg#item" />
     </svg>
     """
   end

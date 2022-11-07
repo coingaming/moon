@@ -89,7 +89,7 @@ const mapFileContentString = ({
       vertical_align: @vertical_align
     )}
   >
-    <use href={"/moon/assets/svgs/${assetsFolder}/#{asset_name_to_filename(@name)}.svg#item"} />
+    <use href={"/moon/svgs/${assetsFolder}/#{asset_name_to_filename(@name)}.svg#item"} />
   </svg>
 `;
 
@@ -99,7 +99,7 @@ const mapFileIconContentString = `
     :on-click={@click}
     style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
   >
-    <use href={"/moon/assets/svgs/icons/#{asset_name_to_filename(@name)}.svg#item"} />
+    <use href={"/moon/svgs/icons/#{asset_name_to_filename(@name)}.svg#item"} />
   </svg>
 `;
 
@@ -167,7 +167,7 @@ const createAssetComponentFile = ({
   file,
 }: CreateAssetsComponentFileProps) => {
   var fileToUse = file;
-  if (file.includes("icon_currency")) {
+  if (file.includes("icon-currency")) {
     fileToUse = file.toLowerCase();
   }
   const fileCamelCased = camelToDashSnakeCase(fileToUse);
@@ -178,12 +178,12 @@ const createAssetComponentFile = ({
   const svgMap = {
     icon: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
-      <use href="/moon/assets/svgs/${assetsFolder}/${file}.svg#item"></use>
+      <use href="/moon/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
     </svg>
     `,
     default: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/assets/svgs/${assetsFolder}/${file}.svg#item"></use>
+      <use href="/moon/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
     </svg>
     `,
   };
@@ -191,7 +191,9 @@ const createAssetComponentFile = ({
   fs.writeFileSync(
     newFilePath,
     `
-defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(file)} do
+defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(
+      fileCamelCased
+    )} do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -624,6 +626,7 @@ defmodule MoonWeb.Pages.Assets.AgeLimitPage do
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Assets.AgeLimit
 
   data breadcrumbs, :any,
     default: [

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconBrazilianReal do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/currencies/IconBrazilianReal.svg#item" />
+      <use href="/moon/svgs/currencies/icon-brazilian-real.svg#item" />
     </svg>
     """
   end

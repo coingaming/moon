@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.EventEnded do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/duotones/event-ended.svg#item" />
+      <use href="/moon/svgs/duotones/event-ended.svg#item" />
     </svg>
     """
   end

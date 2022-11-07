@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconSingaporeDollar do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/currencies/IconSingaporeDollar.svg#item" />
+      <use href="/moon/svgs/currencies/icon-singapore-dollar.svg#item" />
     </svg>
     """
   end

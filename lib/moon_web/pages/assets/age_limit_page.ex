@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Assets.AgeLimitPage do
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
+  alias Moon.Assets.AgeLimit
 
   data(breadcrumbs, :any,
     default: [

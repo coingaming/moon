@@ -71,7 +71,7 @@ npx ts-node icons-importer.ts
 mv node_modules/moon-design moon-design
 npx ts-node theme-importer.ts
 mv moon-design node_modules/moon-design
-# npx ts-node figma-importer.ts
+npx ts-node figma-importer.ts
 cd $root_dir
 rm $root_dir/scripts/typescript/.env
 

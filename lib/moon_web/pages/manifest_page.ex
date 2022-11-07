@@ -3,7 +3,7 @@ defmodule MoonWeb.Pages.ManifestPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Logos.LogoMoonDesign
+  alias Moon.Assets.Logos.LogoMoonDesignShort
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ManifestCard
 
@@ -21,7 +21,7 @@ defmodule MoonWeb.Pages.ManifestPage do
     <Page theme_name={@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <div class="relative">
         <div class="absolute z-10 left-0 top-0 text-bulma-100">
-          <LogoMoonDesign height="1.5rem" width="6.5rem" />
+          <LogoMoonDesignShort height="1.5rem" width="6.5rem" />
         </div>
         <div class="relative z-10 max-w-md">
           <img src="/moon/assets/images/facing/manifest_signature.svg" alt="">

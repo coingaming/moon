@@ -27,7 +27,7 @@ defmodule Moon.Assets.Pattern do
         vertical_align: @vertical_align
       )}
     >
-      <use href={"/moon/assets/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
+      <use href={"/moon/svgs/patterns/#{asset_name_to_filename(@name)}.svg#item"} />
     </svg>
     """
   end

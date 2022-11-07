@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.MoonPay do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/logos/MoonPay.svg#item" />
+      <use href="/moon/svgs/logos/moon-pay.svg#item" />
     </svg>
     """
   end

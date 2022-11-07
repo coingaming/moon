@@ -16,7 +16,7 @@ defmodule Moon.Assets.Icons.IconESportsESport do
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/assets/svgs/icons/icon-e-sports-e-sport.svg#item" />
+      <use href="/moon/svgs/icons/icon-e-sports-e-sport.svg#item" />
     </svg>
     """
   end

@@ -24,7 +24,7 @@ defmodule Moon.Assets.Logos.LogoBetaddaShort do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/logos/LogoBetaddaShort.svg#item" />
+      <use href="/moon/svgs/logos/logo-betadda-short.svg#item" />
     </svg>
     """
   end

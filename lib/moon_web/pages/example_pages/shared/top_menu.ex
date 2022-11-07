@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
   use MoonWeb, :stateful_component
 
   alias __MODULE__.Search
-  alias Moon.Assets.Logos.LogoLabFull
+  alias Moon.Assets.Logos.LogoLabShort
   alias Moon.Components.IconButton
 
   prop(class, :string)
@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.ExamplePages.Shared.TopMenu do
       "opacity-30": @reduced_opacity
     }>
       <div>
-        <LogoLabFull font_size="3.75rem" class="block h-5" />
+        <LogoLabShort font_size="3.75rem" class="block h-5" />
       </div>
 
       <div class="flex-1">

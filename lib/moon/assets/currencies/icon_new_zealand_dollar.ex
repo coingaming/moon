@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconNewZealandDollar do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/currencies/IconNewZealandDollar.svg#item" />
+      <use href="/moon/svgs/currencies/icon-new-zealand-dollar.svg#item" />
     </svg>
     """
   end

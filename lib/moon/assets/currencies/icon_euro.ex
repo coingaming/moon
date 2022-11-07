@@ -24,7 +24,7 @@ defmodule Moon.Assets.Currencies.IconEuro do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/currencies/IconEuro.svg#item" />
+      <use href="/moon/svgs/currencies/icon-euro.svg#item" />
     </svg>
     """
   end

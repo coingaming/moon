@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.NoData do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/duotones/no-data.svg#item" />
+      <use href="/moon/svgs/duotones/no-data.svg#item" />
     </svg>
     """
   end

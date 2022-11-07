@@ -24,7 +24,7 @@ defmodule Moon.Assets.Duotones.NoWithdrawals do
         vertical_align: @vertical_align
       )}
     >
-      <use href="/moon/assets/svgs/duotones/no-withdrawals.svg#item" />
+      <use href="/moon/svgs/duotones/no-withdrawals.svg#item" />
     </svg>
     """
   end
