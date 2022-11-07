@@ -2,11 +2,11 @@ import * as fs from "fs";
 
 console.log("Running assets importer");
 
-const rawDir = "./node_modules/moon-design/packages/assets/raw/";
-const exportDir = "../../lib/moon/assets/";
-
-const getFilesList = (iconType: string) =>
-  fs.readdirSync(`${rawDir}/${iconType}`);
+const rawDir = "./node_modules/assets/svg";
+// raw svgs for duotones and icons are not in the assets tool repo
+// but in moon-design repo
+const mdRawDir = "node_modules/moon-design/packages/assets/raw";
+const exportDir = "../../lib/moon/assets";
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -15,6 +15,14 @@ const toCamel = (s: string) => {
       .replace(/([-_])/gi, "")
       .replace(/([-_])/gi, "");
   });
+};
+
+const getFilesList = (iconType: string) => {
+  if (["duotones", "icons"].includes(iconType)) {
+    return fs.readdirSync(`${mdRawDir}/${toCamel(iconType)}`);
+  } else {
+    return fs.readdirSync(`${rawDir}/${toCamel(iconType)}`);
+  }
 };
 
 const caseInsensitiveCompare = (a: string, b: string) =>
@@ -148,12 +156,22 @@ type CreateAssetsComponentFileProps = {
   file: string;
 };
 
+const camelToDashSnakeCase = (str: string) =>
+  str.replace(/[A-Z]/g, (letter: string, index: number) => {
+    return index == 0 ? letter.toLowerCase() : "-" + letter.toLowerCase();
+  });
+
 const createAssetComponentFile = ({
   assetsFolder,
   iconType,
   file,
 }: CreateAssetsComponentFileProps) => {
-  const newFilePath = `${exportDir}/${assetsFolder}/${file
+  var fileToUse = file;
+  if (file.includes("icon_currency")) {
+    fileToUse = file.toLowerCase();
+  }
+  const fileCamelCased = camelToDashSnakeCase(fileToUse);
+  const newFilePath = `${exportDir}/${assetsFolder}/${fileCamelCased
     .replace(/-/g, "_")
     .toLowerCase()}.ex`;
 
@@ -188,33 +206,37 @@ end
   );
 };
 
-const singularMap = { currencies: "currency" };
+const singularMap = { currencies: "currency", age_limit: "age_limit" };
 
 const singularName = (pluralName: string) =>
   (singularMap as any)[pluralName] ||
   pluralName.substring(0, pluralName.length - 1);
 
-["crests", "currencies", "duotones", "icons", "logos", "patterns"].forEach(
-  (assetsFolder) => {
-    const files = getFilesList(assetsFolder);
+[
+  "age_limit",
+  "crests",
+  "currencies",
+  "duotones",
+  "icons",
+  "logos",
+  "patterns",
+].forEach((assetsFolder) => {
+  const files = getFilesList(assetsFolder);
 
-    console.log(files);
+  writeAssetsMapFile({
+    assetsFolder,
+    iconType: singularName(assetsFolder),
+    files,
+  });
 
-    writeAssetsMapFile({
+  files.map((file: string) => {
+    createAssetComponentFile({
       assetsFolder,
       iconType: singularName(assetsFolder),
-      files,
+      file: file.replace(".svg", ""),
     });
-
-    files.map((file: string) => {
-      createAssetComponentFile({
-        assetsFolder,
-        iconType: singularName(assetsFolder),
-        file: file.replace(".svg", ""),
-      });
-    });
-  }
-);
+  });
+});
 
 const assetsDocDir = "../../lib/moon_web/pages/assets/";
 
@@ -589,6 +611,66 @@ end
     `;
   }
 
+  if (type == "age_limit") {
+    return `
+defmodule MoonWeb.Pages.Assets.AgeLimitPage do
+  @moduledoc false
+
+  use MoonWeb, :live_view
+
+  alias Moon.Assets.Pattern
+  alias Moon.Autolayouts.TopToDown
+  alias Moon.Components.CodePreview
+  alias Moon.Components.Heading
+  alias MoonWeb.Components.ExampleAndCode
+  alias MoonWeb.Components.Page
+
+  data breadcrumbs, :any,
+    default: [
+      %{
+        to: "#",
+        name: "Age Limit"
+      },
+      %{
+        to: "/assets/age_limit",
+        name: "Age Limit"
+      }
+    ]
+
+  def handle_params(_params, uri, socket) do
+    {:noreply, assign(socket, uri: uri)}
+  end
+
+  def render(assigns) do
+    ~F"""
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
+      <TopToDown>
+      <Heading size={56} class="mb-4">Age Limit</Heading>
+      ${iconNames
+        .map(
+          (x: string, i: number) => `
+        <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
+          <#template slot="example">
+            <AgeLimit name="${x}" font_size="10rem" />
+          </#template>
+
+          <#template slot="code">
+            <#CodePreview>
+              <AgeLimit name="${x}" font_size="10rem" />
+            </#CodePreview>
+          </#template>
+        </ExampleAndCode>
+      `
+        )
+        .join("\n")}
+      </TopToDown>
+    </Page>
+    """
+  end
+end
+    `;
+  }
+
   console.log({ error: "unknown type", type });
   return "";
 };
@@ -602,9 +684,15 @@ const generateAssetsDocumentationPage = (type: string, files: string[]) => {
   writeAssetsDocumentationPage(type, pageContent);
 };
 
-["crests", "currencies", "duotones", "icons", "logos", "patterns"].forEach(
-  (assetsFolder: string) => {
-    const files = getFilesList(assetsFolder);
-    generateAssetsDocumentationPage(assetsFolder, files);
-  }
-);
+[
+  "age_limit",
+  "crests",
+  "currencies",
+  "duotones",
+  "icons",
+  "logos",
+  "patterns",
+].forEach((assetsFolder: string) => {
+  const files = getFilesList(assetsFolder);
+  generateAssetsDocumentationPage(assetsFolder, files);
+});

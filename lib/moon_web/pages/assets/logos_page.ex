@@ -1,3 +1,4 @@
+
 defmodule MoonWeb.Pages.Assets.LogosPage do
   @moduledoc false
 
@@ -10,7 +11,7 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
 
-  data(breadcrumbs, :any,
+  data breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,7 +22,6 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
         name: "Logos"
       }
     ]
-  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
@@ -31,417 +31,426 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-        <Heading size={56} class="mb-4">Logos</Heading>
-
+      <Heading size={56} class="mb-4">Logos</Heading>
+      
         <ExampleAndCode id="logo_1" class="mt-4">
-          <:example>
-            <Logo name="logo_aposta10_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoAposta10Full" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_aposta10_full" font_size="10rem" />
+              <Logo name="LogoAposta10Full" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_2" class="mt-4">
-          <:example>
-            <Logo name="logo_aposta10_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoAposta10Short" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_aposta10_short" font_size="10rem" />
+              <Logo name="LogoAposta10Short" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_3" class="mt-4">
-          <:example>
-            <Logo name="logo_betadda_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBetaddaFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_betadda_full" font_size="10rem" />
+              <Logo name="LogoBetaddaFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_4" class="mt-4">
-          <:example>
-            <Logo name="logo_betadda_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBetaddaShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_betadda_short" font_size="10rem" />
+              <Logo name="LogoBetaddaShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_5" class="mt-4">
-          <:example>
-            <Logo name="logo_bitcasino_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBitcasinoFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_bitcasino_full" font_size="10rem" />
+              <Logo name="LogoBitcasinoFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_6" class="mt-4">
-          <:example>
-            <Logo name="logo_bitcasino_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBitcasinoShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_bitcasino_short" font_size="10rem" />
+              <Logo name="LogoBitcasinoShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_7" class="mt-4">
-          <:example>
-            <Logo name="logo_bombay_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBombayFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_bombay_full" font_size="10rem" />
+              <Logo name="LogoBombayFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_8" class="mt-4">
-          <:example>
-            <Logo name="logo_bombay_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoBombayShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_bombay_short" font_size="10rem" />
+              <Logo name="LogoBombayShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_9" class="mt-4">
-          <:example>
-            <Logo name="logo_comms_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoCoingamingShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_comms_full" font_size="10rem" />
+              <Logo name="LogoCoingamingShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_10" class="mt-4">
-          <:example>
-            <Logo name="logo_comms_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoCoinsShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_comms_short" font_size="10rem" />
+              <Logo name="LogoCoinsShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_11" class="mt-4">
-          <:example>
-            <Logo name="logo_drop" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoCommsShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_drop" font_size="10rem" />
+              <Logo name="LogoCommsShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_12" class="mt-4">
-          <:example>
-            <Logo name="logo_hub88_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoHub88Full" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_hub88_full" font_size="10rem" />
+              <Logo name="LogoHub88Full" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_13" class="mt-4">
-          <:example>
-            <Logo name="logo_hub88_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoHub88Short" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_hub88_short" font_size="10rem" />
+              <Logo name="LogoHub88Short" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_14" class="mt-4">
-          <:example>
-            <Logo name="logo_lab_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoLabShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_lab_full" font_size="10rem" />
+              <Logo name="LogoLabShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_15" class="mt-4">
-          <:example>
-            <Logo name="logo_livecasino_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoLivecasinoFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_livecasino_full" font_size="10rem" />
+              <Logo name="LogoLivecasinoFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_16" class="mt-4">
-          <:example>
-            <Logo name="logo_livecasino_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoLivecasinoShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_livecasino_short" font_size="10rem" />
+              <Logo name="LogoLivecasinoShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_17" class="mt-4">
-          <:example>
-            <Logo name="logo_luckyslots_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoLuckyslotsFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_luckyslots_full" font_size="10rem" />
+              <Logo name="LogoLuckyslotsFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_18" class="mt-4">
-          <:example>
-            <Logo name="logo_luckyslots_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoLuckyslotsShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_luckyslots_short" font_size="10rem" />
+              <Logo name="LogoLuckyslotsShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_19" class="mt-4">
-          <:example>
-            <Logo name="logo_missions" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoMoneyballFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_missions" font_size="10rem" />
+              <Logo name="LogoMoneyballFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_20" class="mt-4">
-          <:example>
-            <Logo name="logo_moneyball_io_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoMoneyballShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_moneyball_io_full" font_size="10rem" />
+              <Logo name="LogoMoneyballShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_21" class="mt-4">
-          <:example>
-            <Logo name="logo_moneyball_io_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoMoonDesignShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_moneyball_io_short" font_size="10rem" />
+              <Logo name="LogoMoonDesignShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_22" class="mt-4">
-          <:example>
-            <Logo name="logo_moneyball" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoPartnersShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_moneyball" font_size="10rem" />
+              <Logo name="LogoPartnersShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_23" class="mt-4">
-          <:example>
-            <Logo name="logo_moon_design_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSbFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_moon_design_short" font_size="10rem" />
+              <Logo name="LogoSbFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_24" class="mt-4">
-          <:example>
-            <Logo name="logo_moon_design" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSlotsFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_moon_design" font_size="10rem" />
+              <Logo name="LogoSlotsFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_25" class="mt-4">
-          <:example>
-            <Logo name="logo_paxful" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSlotsShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_paxful" font_size="10rem" />
+              <Logo name="LogoSlotsShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_26" class="mt-4">
-          <:example>
-            <Logo name="logo_powered_by_hub88" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSportsbetFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_powered_by_hub88" font_size="10rem" />
+              <Logo name="LogoSportsbetFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_27" class="mt-4">
-          <:example>
-            <Logo name="logo_slots_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSportsbetFullNew" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_slots_full" font_size="10rem" />
+              <Logo name="LogoSportsbetFullNew" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_28" class="mt-4">
-          <:example>
-            <Logo name="logo_slots_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSportsbetShort" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_slots_short" font_size="10rem" />
+              <Logo name="LogoSportsbetShort" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_29" class="mt-4">
-          <:example>
-            <Logo name="logo_sportsbet_full" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSportsbetcanadaFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_sportsbet_full" font_size="10rem" />
+              <Logo name="LogoSportsbetcanadaFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_30" class="mt-4">
-          <:example>
-            <Logo name="logo_sportsbet_short" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoSportsbetmxFull" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_sportsbet_short" font_size="10rem" />
+              <Logo name="LogoSportsbetmxFull" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_31" class="mt-4">
-          <:example>
-            <Logo name="logo_sportsbet_sponsor" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="LogoUtorg" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_sportsbet_sponsor" font_size="10rem" />
+              <Logo name="LogoUtorg" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
+      
 
         <ExampleAndCode id="logo_32" class="mt-4">
-          <:example>
-            <Logo name="logo_sportsbet" font_size="10rem" />
-          </:example>
+          <#template slot="example">
+            <Logo name="MoonPay" font_size="10rem" />
+          </#template>
 
-          <:code>
+          <#template slot="code">
             <#CodePreview>
-              <Logo name="logo_sportsbet" font_size="10rem" />
+              <Logo name="MoonPay" font_size="10rem" />
             </#CodePreview>
-          </:code>
+          </#template>
         </ExampleAndCode>
-
-        <ExampleAndCode id="logo_33" class="mt-4">
-          <:example>
-            <Logo name="logo_utorg" font_size="10rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <Logo name="logo_utorg" font_size="10rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
-
-        <ExampleAndCode id="logo_34" class="mt-4">
-          <:example>
-            <Logo name="moon_pay" font_size="10rem" />
-          </:example>
-
-          <:code>
-            <#CodePreview>
-              <Logo name="moon_pay" font_size="10rem" />
-            </#CodePreview>
-          </:code>
-        </ExampleAndCode>
+      
       </TopToDown>
     </Page>
     """
   end
 end
+    
