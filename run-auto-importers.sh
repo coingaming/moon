@@ -75,5 +75,5 @@ mv moon-design node_modules/moon-design
 cd $root_dir
 rm $root_dir/scripts/typescript/.env
 
-# bash run-formatters.sh
+bash run-formatters.sh
 # mix phx.digest

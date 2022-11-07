@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Pages.Assets.IconsPage do
   @moduledoc false
 
@@ -10,7 +9,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
   alias Moon.Icon
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -21,6 +20,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
         name: "Icons"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={56} class="mb-4">Icons</Heading>
-      
+
         <div class="p-6 bg-gohan-100 rounded">
           <div
             class="grid gap-4 overflow-hidden"
@@ -47,10 +47,8 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
             {/for}
           </div>
         </div>
-
       </TopToDown>
     </Page>
     """
   end
 end
-    
