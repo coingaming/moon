@@ -1,3 +1,10 @@
+## [2.30.17](https://github.com/coingaming/moon/compare/v2.30.16...v2.30.17) (2022-11-08)
+
+
+### Bug Fixes
+
+* [MDS-270] minor site polish & code/preview switcher ([#443](https://github.com/coingaming/moon/issues/443)) ([99175e4](https://github.com/coingaming/moon/commit/99175e40902553af4b4b258fbf7422cf3e93117a))
+
 ## [2.30.16](https://github.com/coingaming/moon/compare/v2.30.15...v2.30.16) (2022-11-04)
 
 
