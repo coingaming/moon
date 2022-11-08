@@ -39,7 +39,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
         :description => 'Disabled Button'
       },
       %{
-        :name => 'fullWidth',
+        :name => 'full_width',
         :type => 'boolean',
         :required => 'false',
         :default => 'false',

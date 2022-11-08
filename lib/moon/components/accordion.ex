@@ -15,13 +15,19 @@ defmodule Moon.Components.Accordion do
   prop(is_content_overflow_hidden, :boolean, default: true)
   prop(with_button, :boolean, default: true)
   prop(disabled, :boolean, default: false)
-  prop(size, :string, values: ["small", "medium", "large", "xlarge"], default: "medium")
+
+  # we do add 2-letter sizes for consistence with Ract API, long sizes for backward compability & nice
+  prop(size, :string,
+    values!: ["small", "medium", "large", "xlarge", "sm", "md", "lg", "xl"],
+    default: "md"
+  )
+
   prop(pull_a_side_class, :css_class)
   prop(bg_color, :css_class, default: "bg-gohan-100")
 
-  slot(title)
+  slot(title, required: true)
   slot(header_content)
-  slot(content)
+  slot(content, required: true)
 
   def render(assigns) do
     ~F"""
@@ -132,8 +138,11 @@ defmodule Moon.Components.Accordion do
   defp get_padding(size) do
     case size do
       "xlarge" -> "p-4"
+      "xl" -> "p-4"
       "large" -> "p-3"
+      "lg" -> "p-3"
       "medium" -> "py-2 pr-2 pl-3"
+      "md" -> "py-2 pr-2 pl-3"
       _ -> "py-1 pr-1 pl-3"
     end
   end
@@ -141,7 +150,9 @@ defmodule Moon.Components.Accordion do
   def get_margin(size) do
     case size do
       "xlarge" -> "mt-4"
+      "xl" -> "mt-4"
       "large" -> "mt-3"
+      "lg" -> "mt-3"
       _ -> "mt-2"
     end
   end
@@ -149,6 +160,7 @@ defmodule Moon.Components.Accordion do
   defp font_class(size) do
     case size do
       "xlarge" -> "text-moon-16"
+      "xl" -> "text-moon-16"
       _ -> "text-moon-14"
     end
   end
