@@ -110,7 +110,21 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <Heading size={32}>Breadcrumb</Heading>
-
+        <div class="flex flex-col items-start gap-2 text-moon-16">
+          <p>
+            As users navigate through your website, they'll want to know where they are and how to get back to where
+            they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.
+          </p>
+          <p>B
+            readcrumbs are useful for navigation history but shouldn't be used for steps in a process including
+            steps in the future. For that, use the planned Steps component.
+          </p>
+          <p class="font-medium">Clearly present position</p>
+          <p>
+            Users may come to a given screen through different flows (such as an external link or search). So it's
+            important that they always know where in your structure they are.
+          </p>
+        </div>
         <ExampleAndCode title="Five or more items" id="breadcrumbs_2">
           <:example>
             <div class="flex justify-center items-center">
@@ -196,7 +210,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
 
   def breadcrumb_2_code do
     """
-    data breadcrumb_items_2, :list,
+    data breadcrumb_items, :list,
       default: [
         %Crumb{
           name: "Home",
@@ -220,7 +234,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
         }
       ]
 
-    <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
+    <Breadcrumb id="breadcrumb" breadcrumbs={@breadcrumb_items} />
     """
   end
 
