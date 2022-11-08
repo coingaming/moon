@@ -32,11 +32,18 @@ const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const getModuleName = (s: string) =>
-  capitalizeFirstLetter(toCamel(s))
+const getModuleName = (s: string) => {
+  var value = capitalizeFirstLetter(toCamel(s))
     .replace("IconLoyalty-0", "IconLoyalty0")
     .replace(".svg", "");
 
+  if (value.includes("IconCurrency")) {
+    var regex = /([A-Z]{1}[a-z]{2})\b/gi;
+    var value = value.replace(regex, (c) => c.toUpperCase());
+  }
+
+  return value;
+};
 const propsMap = {
   icon: `
     prop color, :string, values: Moon.colors
@@ -170,20 +177,20 @@ const createAssetComponentFile = ({
   if (file.includes("icon-currency")) {
     fileToUse = file.toLowerCase();
   }
-  const fileCamelCased = camelToDashSnakeCase(fileToUse);
-  const newFilePath = `${exportDir}/${assetsFolder}/${fileCamelCased
+  const dashSnakeCased = camelToDashSnakeCase(fileToUse);
+  const newFilePath = `${exportDir}/${assetsFolder}/${dashSnakeCased
     .replace(/-/g, "_")
     .toLowerCase()}.ex`;
 
   const svgMap = {
     icon: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}>
-      <use href="/moon/assets/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
+      <use href="/moon/assets/svgs/${assetsFolder}/${dashSnakeCased}.svg#item"></use>
     </svg>
     `,
     default: `
     <svg class={"moon-${iconType} #{@class} #{@click && "cursor-pointer"}"} :on-click={@click} style={get_style(color: @color, height: @height, width: @width, font_size: @font_size, vertical_align: @vertical_align)}>
-      <use href="/moon/assets/svgs/${assetsFolder}/${fileCamelCased}.svg#item"></use>
+      <use href="/moon/assets/svgs/${assetsFolder}/${dashSnakeCased}.svg#item"></use>
     </svg>
     `,
   };
@@ -192,7 +199,7 @@ const createAssetComponentFile = ({
     newFilePath,
     `
 defmodule Moon.Assets.${getModuleName(assetsFolder)}.${getModuleName(
-      fileCamelCased
+      dashSnakeCased
     )} do
   @moduledoc false
 
