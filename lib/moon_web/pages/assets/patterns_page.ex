@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Pages.Assets.PatternsPage do
   @moduledoc false
 
@@ -11,7 +10,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
 
-  data breadcrumbs, :any,
+  data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
@@ -22,6 +21,7 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
         name: "Patterns"
       }
     ]
+  )
 
   def handle_params(_params, uri, socket) do
     {:noreply, assign(socket, uri: uri)}
@@ -31,101 +31,93 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-      <Heading size={56} class="mb-4">Patterns</Heading>
-      
-        <ExampleAndCode id="pattern_1" class="mt-4">
-          <#template slot="example">
-            <Pattern name="PatternCircles" font_size="10rem" />
-          </#template>
+        <Heading size={56} class="mb-4">Patterns</Heading>
 
-          <#template slot="code">
+        <ExampleAndCode id="pattern_1" class="mt-4">
+          <:example>
+            <Pattern name="PatternCircles" font_size="10rem" />
+          </:example>
+
+          <:code>
             <#CodePreview>
               <Pattern name="PatternCircles" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_2" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternCrosses" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternCrosses" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_3" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternDotted" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternDotted" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_4" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternPerspectiveDotted" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternPerspectiveDotted" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_5" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternRipple" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternRipple" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_6" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternSpeed" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternSpeed" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
 
         <ExampleAndCode id="pattern_7" class="mt-4">
-          <#template slot="example">
+          <:example>
             <Pattern name="PatternWave" font_size="10rem" />
-          </#template>
+          </:example>
 
-          <#template slot="code">
+          <:code>
             <#CodePreview>
               <Pattern name="PatternWave" font_size="10rem" />
             </#CodePreview>
-          </#template>
+          </:code>
         </ExampleAndCode>
-      
       </TopToDown>
     </Page>
     """
   end
 end
-    
