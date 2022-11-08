@@ -620,13 +620,12 @@ defmodule MoonWeb.Pages.Assets.AgeLimitPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Assets.Pattern
+  alias Moon.Assets.AgeLimit
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.CodePreview
   alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias Moon.Assets.AgeLimit
 
   data breadcrumbs, :any,
     default: [
