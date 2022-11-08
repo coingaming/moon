@@ -66,14 +66,14 @@ mkdir -p assets/static/svgs/patterns
 cd $root_dir/scripts/typescript/
 cp $root_dir/.env $root_dir/scripts/typescript/.env
 npx ts-node generate-svg-symbols.ts
-npx ts-node assets-importer-legacy.ts
-npx ts-node icons-importer.ts
-mv node_modules/moon-design moon-design
-npx ts-node theme-importer.ts
-mv moon-design node_modules/moon-design
-npx ts-node figma-importer.ts
-cd $root_dir
-rm $root_dir/scripts/typescript/.env
+# npx ts-node assets-importer-legacy.ts
+# npx ts-node icons-importer.ts
+# mv node_modules/moon-design moon-design
+# npx ts-node theme-importer.ts
+# mv moon-design node_modules/moon-design
+# npx ts-node figma-importer.ts
+# cd $root_dir
+# rm $root_dir/scripts/typescript/.env
 
-bash run-formatters.sh
+# bash run-formatters.sh
 # mix phx.digest

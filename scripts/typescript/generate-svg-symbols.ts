@@ -95,6 +95,10 @@ const writeSvgFile = (iconType: string, file: string, contents: string) => {
     var svgPath = `${exportDir}/icons_new/${camelToDashSnakeCase(
       file
     ).toLowerCase()}.svg`;
+  } else if (iconType === "icons" && file.includes("currency")) {
+    var svgPath = `${exportDir}/${iconType}/${camelToDashSnakeCase(
+      file.toLowerCase()
+    )}.svg`;
   } else {
     var svgPath = `${exportDir}/${iconType}/${camelToDashSnakeCase(
       file
