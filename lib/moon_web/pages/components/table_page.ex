@@ -63,7 +63,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
               {model.name}
             </Column>
             <Column name="created_at" label="Created at" sortable>
-              {model.name}
+              <Datetime value={model.created_at} />
             </Column>
           </Table>
           {#if @selected}
@@ -189,7 +189,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
         {model.name}
       </Column>
       <Column name="created_at" label="Created at" sortable>
-        {model.name}
+        <DateTime value={model.created_at} />
       </Column>
     </Table>
     {#if @selected}

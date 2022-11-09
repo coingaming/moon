@@ -140,12 +140,6 @@ defmodule MoonWeb.Router do
 
         live("/tutorials/theming-and-visuals", MoonWeb.Pages.Theming.ThemingAndVisuals)
 
-        live("/example-pages/dashboard", MoonWeb.Pages.ExamplePages.DashboardPage)
-        live("/example-pages/transactions", MoonWeb.Pages.ExamplePages.TransactionsPage)
-        live("/example-pages/marketing", MoonWeb.Pages.ExamplePages.MarketingPage)
-        live("/example-pages/affiliates", MoonWeb.Pages.ExamplePages.AffiliatesPage)
-        live("/example-pages/customers", MoonWeb.Pages.ExamplePages.CustomersPage)
-
         live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
         live("/test/live", MoonWeb.Pages.Test.LivePage)
       end
