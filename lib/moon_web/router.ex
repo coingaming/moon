@@ -131,6 +131,8 @@ defmodule MoonWeb.Router do
         live("/components/typography/heading", MoonWeb.Pages.Components.Typography.HeadingPage)
         live("/components/typography/text", MoonWeb.Pages.Components.Typography.TextPage)
 
+        live("/components/menu_item", MoonWeb.Pages.Components.MenuItemPage)
+
         live("/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm)
         live("/tutorials/installation", MoonWeb.Pages.Tutorials.Installation)
 
