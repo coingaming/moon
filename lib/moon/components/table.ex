@@ -1,4 +1,6 @@
 defmodule Moon.Components.Table do
+  @moduledoc false
+
   use Surface.LiveComponent
 
   alias Moon.Components.Table.Paging

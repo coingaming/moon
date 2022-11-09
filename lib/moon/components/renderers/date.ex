@@ -1,4 +1,5 @@
 defmodule Moon.Components.Renderers.Date do
+  @moduledoc false
   use Surface.Component
 
   prop(value, :any)

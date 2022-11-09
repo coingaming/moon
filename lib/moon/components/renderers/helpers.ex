@@ -1,4 +1,6 @@
 defmodule Moon.Components.Renderers.Helpers do
+  @moduledoc false
+
   Moon.Components.Renderers.Datetime
 
   def datetime(value) do

@@ -1,4 +1,6 @@
 defmodule Moon.Components.Table.Column do
+  @moduledoc false
+
   use Surface.Component, slot: "cols"
 
   @doc "The title of the column"
