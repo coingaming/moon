@@ -163,6 +163,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink :if={!@hide_items} route={Pages.Components.TablePage}>Table</SidebarLink>
                       <SidebarLink route={Pages.Components.TextInputPage}>Text input</SidebarLink>
                       <SidebarLink route={Pages.Components.InputGroupPage}>Input group</SidebarLink>
+                      <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
                       <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                       <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
                       <SidebarLink route={Pages.Components.TypographyPage}>Typography</SidebarLink>
