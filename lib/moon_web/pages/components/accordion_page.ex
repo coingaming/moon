@@ -30,41 +30,41 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       %{
         :name => 'title',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Title of accordion'
       },
       %{
         :name => 'open_by_default',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Expanded/collapsed accordion by default'
       },
       %{
         :name => 'with_button',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'true',
         :description => 'Show expand/collapse chevron'
       },
       %{
         :name => 'disabled',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Disable expand/collapse accordion'
       },
       %{
         :name => 'content',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content to show inside of accordion'
       },
       %{
         :name => 'size',
-        :type => 'small | medium | large | xlarge',
+        :type => 'sm | md | lg | xl',
         :required => 'false',
         :default => 'medium',
         :description => 'Size variant of accordion'
@@ -197,8 +197,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
       <ExampleAndCode title="Sizes" id="accordion-7">
         <:example>
-          <Accordion id="size-4" size="xlarge">
-            <:title>X Large</:title>
+          <Accordion id="size-4" size="xl">
+            <:title>X Large (xl)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -206,8 +206,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="size-3" size="large">
-            <:title>Large</:title>
+          <Accordion id="size-3" size="lg">
+            <:title>Large (lg)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -216,7 +216,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             </:content>
           </Accordion>
           <Accordion id="size-2">
-            <:title>Medium (Default)</:title>
+            <:title>Medium default (md)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -224,8 +224,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="size-1" size="small">
-            <:title>Small</:title>
+          <Accordion id="size-1" size="sm">
+            <:title>Small (sm)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -233,14 +233,17 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
+          <p class="text-moon-14 text-trunks-100 pl-3 pr-3">
+            please note that also for sizes we do use explicit namings also - "xlarge", "large", "medium", "small"
+          </p>
         </:example>
         <:code>{get_example_7_code()}</:code>
       </ExampleAndCode>
 
       <ExampleAndCode title="Sizes: content outside" id="accordion-8">
         <:example>
-          <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
-            <:title>X Large</:title>
+          <Accordion id="size-out-4" size="xl" is_content_inside={false}>
+            <:title>X Large (xl)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -248,8 +251,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="size-out-3" size="large" is_content_inside={false}>
-            <:title>Large</:title>
+          <Accordion id="size-out-3" size="lg" is_content_inside={false}>
+            <:title>Large (lg)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -258,7 +261,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
             </:content>
           </Accordion>
           <Accordion id="size-out-2" is_content_inside={false}>
-            <:title>Medium (Default)</:title>
+            <:title>Medium default (md)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -266,8 +269,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="size-out-1" size="small" is_content_inside={false}>
-            <:title>Small</:title>
+          <Accordion id="size-out-1" size="sm" is_content_inside={false}>
+            <:title>Small (sm)</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -290,7 +293,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100">
+          <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100" is_content_inside={false}>
             <:title>Test accordion with backgound: content outside</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -400,8 +403,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_7_code() do
     """
-    <Accordion id="size-4" size="xlarge">
-      <:title>X Large</:title>
+    <Accordion id="size-4" size="xl">
+      <:title>X Large (xl)</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -409,8 +412,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
-    <Accordion id="size-3" size="large">
-      <:title>Large</:title>
+    <Accordion id="size-3" size="lg">
+      <:title>Large (lg)</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -419,7 +422,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       </:content>
     </Accordion>
     <Accordion id="size-2">
-      <:title>Medium (Default)</:title>
+      <:title>Medium is default (md)</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -427,8 +430,8 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
-    <Accordion id="size-1" size="small">
-      <:title>Small</:title>
+    <Accordion id="size-1" size="sm">
+      <:title>Small (sm)</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -441,7 +444,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_8_code() do
     """
-    <Accordion id="size-out-4" size="xlarge" is_content_inside={false}>
+    <Accordion id="size-out-4" size="xl" is_content_inside={false}>
       <:title>X Large</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -450,7 +453,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
-    <Accordion id="size-out-3" size="large" is_content_inside={false}>
+    <Accordion id="size-out-3" size="lg" is_content_inside={false}>
       <:title>Large</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -468,7 +471,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
-    <Accordion id="size-out-1" size="small" is_content_inside={false}>
+    <Accordion id="size-out-1" size="sm" is_content_inside={false}>
       <:title>Small</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

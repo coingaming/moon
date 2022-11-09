@@ -22,6 +22,7 @@ defmodule Moon.Components.Button do
   prop(success, :boolean)
   prop(pulse, :boolean)
   prop(disabled, :boolean)
+  prop(no_hover_bg, :boolean, default: false)
   prop(type, :string, default: "button")
   prop(to, :string)
   prop(active_class_name, :string)
@@ -31,7 +32,7 @@ defmodule Moon.Components.Button do
   prop(is_active, :boolean)
   prop(location, :string)
   prop(style, :string)
-  prop(class, :string)
+  prop(class, :css_class)
   prop(form, :string)
 
   prop(on_click, :event)
@@ -57,7 +58,8 @@ defmodule Moon.Components.Button do
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all #{@class}",
+        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all",
+        @class,
         "text-goten-100 bg-piccolo-100": @variant in ["primary"],
         "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
           @variant in ["secondary"],
@@ -123,7 +125,7 @@ defmodule Moon.Components.Button do
           {/if}
         {/if}
       </span>
-      <span class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
+      <span :if={!@no_hover_bg} class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
     """
   end
