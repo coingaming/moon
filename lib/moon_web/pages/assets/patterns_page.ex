@@ -35,84 +35,84 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
 
         <ExampleAndCode id="pattern_1" class="mt-4">
           <:example>
-            <Pattern name="PatternCircles" font_size="10rem" />
+            <Pattern name="pattern-circles" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternCircles" font_size="10rem" />
+              <Pattern name="pattern-circles" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_2" class="mt-4">
           <:example>
-            <Pattern name="PatternCrosses" font_size="10rem" />
+            <Pattern name="pattern-crosses" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternCrosses" font_size="10rem" />
+              <Pattern name="pattern-crosses" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_3" class="mt-4">
           <:example>
-            <Pattern name="PatternDotted" font_size="10rem" />
+            <Pattern name="pattern-dotted" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternDotted" font_size="10rem" />
+              <Pattern name="pattern-dotted" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_4" class="mt-4">
           <:example>
-            <Pattern name="PatternPerspectiveDotted" font_size="10rem" />
+            <Pattern name="pattern-perspective-dotted" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternPerspectiveDotted" font_size="10rem" />
+              <Pattern name="pattern-perspective-dotted" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_5" class="mt-4">
           <:example>
-            <Pattern name="PatternRipple" font_size="10rem" />
+            <Pattern name="pattern-ripple" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternRipple" font_size="10rem" />
+              <Pattern name="pattern-ripple" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_6" class="mt-4">
           <:example>
-            <Pattern name="PatternSpeed" font_size="10rem" />
+            <Pattern name="pattern-speed" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternSpeed" font_size="10rem" />
+              <Pattern name="pattern-speed" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_7" class="mt-4">
           <:example>
-            <Pattern name="PatternWave" font_size="10rem" />
+            <Pattern name="pattern-wave" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Pattern name="PatternWave" font_size="10rem" />
+              <Pattern name="pattern-wave" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

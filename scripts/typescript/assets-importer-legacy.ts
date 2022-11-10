@@ -18,10 +18,11 @@ const toCamel = (s: string) => {
 };
 
 const getFilesList = (iconType: string) => {
+  var folderName = toCamel(iconType);
   if (["duotones", "icons"].includes(iconType)) {
-    return fs.readdirSync(`${mdRawDir}/${toCamel(iconType)}`);
+    return fs.readdirSync(`${mdRawDir}/${folderName}`);
   } else {
-    return fs.readdirSync(`${rawDir}/${toCamel(iconType)}`);
+    return fs.readdirSync(`${rawDir}/${folderName}`);
   }
 };
 
@@ -300,12 +301,12 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
           (x: string, i: number) => `
         <ExampleAndCode id="crest_${i + 1}" class="mt-4">
           <#template slot="example">
-            <Crest name="${x}" font_size="10rem" />
+            <Crest name="${camelToDashSnakeCase(x)}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <Crest name="${x}" font_size="10rem" />
+              <Crest name="${camelToDashSnakeCase(x)}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -361,12 +362,12 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
           (x: string, i: number) => `
         <ExampleAndCode id="currency_${i + 1}" class="mt-4">
           <#template slot="example">
-            <Currency name="${x}" font_size="10rem" />
+            <Currency name="${camelToDashSnakeCase(x)}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <Currency name="${x}" font_size="10rem" />
+              <Currency name="${camelToDashSnakeCase(x)}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -421,12 +422,16 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
           (x: string, i: number) => `
         <ExampleAndCode id="duotone_${i + 1}"  class="mt-4">
           <#template slot="example">
-            <Duotone name="${x}" font_size="10rem" color="piccolo-100" />
+            <Duotone name="${camelToDashSnakeCase(
+              x
+            )}" font_size="10rem" color="piccolo-100" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <Duotone name="${x}" font_size="10rem" color="piccolo-100" />
+              <Duotone name="${camelToDashSnakeCase(
+                x
+              )}" font_size="10rem" color="piccolo-100" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -540,12 +545,12 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
           (x: string, i: number) => `
         <ExampleAndCode id="logo_${i + 1}" class="mt-4">
           <#template slot="example">
-            <Logo name="${x}" font_size="10rem" />
+            <Logo name="${camelToDashSnakeCase(x)}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <Logo name="${x}" font_size="10rem" />
+              <Logo name="${camelToDashSnakeCase(x)}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -600,12 +605,12 @@ defmodule MoonWeb.Pages.Assets.PatternsPage do
           (x: string, i: number) => `
         <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
           <#template slot="example">
-            <Pattern name="${x}" font_size="10rem" />
+            <Pattern name="${camelToDashSnakeCase(x)}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <Pattern name="${x}" font_size="10rem" />
+              <Pattern name="${camelToDashSnakeCase(x)}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -660,12 +665,12 @@ defmodule MoonWeb.Pages.Assets.AgeLimitPage do
           (x: string, i: number) => `
         <ExampleAndCode id="pattern_${i + 1}" class="mt-4">
           <#template slot="example">
-            <AgeLimit name="${x}" font_size="10rem" />
+            <AgeLimit name="${camelToDashSnakeCase(x)}" font_size="10rem" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
-              <AgeLimit name="${x}" font_size="10rem" />
+              <AgeLimit name="${camelToDashSnakeCase(x)}" font_size="10rem" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>

@@ -35,396 +35,396 @@ defmodule MoonWeb.Pages.Assets.CurrenciesPage do
 
         <ExampleAndCode id="currency_1" class="mt-4">
           <:example>
-            <Currency name="IconAustralianDollar" font_size="10rem" />
+            <Currency name="icon-australian-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconAustralianDollar" font_size="10rem" />
+              <Currency name="icon-australian-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_2" class="mt-4">
           <:example>
-            <Currency name="IconBitcoin" font_size="10rem" />
+            <Currency name="icon-bitcoin" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconBitcoin" font_size="10rem" />
+              <Currency name="icon-bitcoin" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_3" class="mt-4">
           <:example>
-            <Currency name="IconBnb" font_size="10rem" />
+            <Currency name="icon-bnb" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconBnb" font_size="10rem" />
+              <Currency name="icon-bnb" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_4" class="mt-4">
           <:example>
-            <Currency name="IconBrazilianReal" font_size="10rem" />
+            <Currency name="icon-brazilian-real" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconBrazilianReal" font_size="10rem" />
+              <Currency name="icon-brazilian-real" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_5" class="mt-4">
           <:example>
-            <Currency name="IconBusd" font_size="10rem" />
+            <Currency name="icon-busd" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconBusd" font_size="10rem" />
+              <Currency name="icon-busd" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_6" class="mt-4">
           <:example>
-            <Currency name="IconCanadianDollar" font_size="10rem" />
+            <Currency name="icon-canadian-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconCanadianDollar" font_size="10rem" />
+              <Currency name="icon-canadian-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_7" class="mt-4">
           <:example>
-            <Currency name="IconCardano" font_size="10rem" />
+            <Currency name="icon-cardano" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconCardano" font_size="10rem" />
+              <Currency name="icon-cardano" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_8" class="mt-4">
           <:example>
-            <Currency name="IconChilieanPeso" font_size="10rem" />
+            <Currency name="icon-chiliean-peso" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconChilieanPeso" font_size="10rem" />
+              <Currency name="icon-chiliean-peso" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_9" class="mt-4">
           <:example>
-            <Currency name="IconChineseYuan" font_size="10rem" />
+            <Currency name="icon-chinese-yuan" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconChineseYuan" font_size="10rem" />
+              <Currency name="icon-chinese-yuan" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_10" class="mt-4">
           <:example>
-            <Currency name="IconDanishKrone" font_size="10rem" />
+            <Currency name="icon-danish-krone" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconDanishKrone" font_size="10rem" />
+              <Currency name="icon-danish-krone" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_11" class="mt-4">
           <:example>
-            <Currency name="IconDogecoin" font_size="10rem" />
+            <Currency name="icon-dogecoin" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconDogecoin" font_size="10rem" />
+              <Currency name="icon-dogecoin" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_12" class="mt-4">
           <:example>
-            <Currency name="IconEthereum" font_size="10rem" />
+            <Currency name="icon-ethereum" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconEthereum" font_size="10rem" />
+              <Currency name="icon-ethereum" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_13" class="mt-4">
           <:example>
-            <Currency name="IconEuro" font_size="10rem" />
+            <Currency name="icon-euro" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconEuro" font_size="10rem" />
+              <Currency name="icon-euro" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_14" class="mt-4">
           <:example>
-            <Currency name="IconGbPoundSterling" font_size="10rem" />
+            <Currency name="icon-gb-pound-sterling" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconGbPoundSterling" font_size="10rem" />
+              <Currency name="icon-gb-pound-sterling" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_15" class="mt-4">
           <:example>
-            <Currency name="IconHongKongDollar" font_size="10rem" />
+            <Currency name="icon-hong-kong-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconHongKongDollar" font_size="10rem" />
+              <Currency name="icon-hong-kong-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_16" class="mt-4">
           <:example>
-            <Currency name="IconIcelandicKrona" font_size="10rem" />
+            <Currency name="icon-icelandic-krona" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconIcelandicKrona" font_size="10rem" />
+              <Currency name="icon-icelandic-krona" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_17" class="mt-4">
           <:example>
-            <Currency name="IconIndianRupee" font_size="10rem" />
+            <Currency name="icon-indian-rupee" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconIndianRupee" font_size="10rem" />
+              <Currency name="icon-indian-rupee" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_18" class="mt-4">
           <:example>
-            <Currency name="IconJapaneseYen" font_size="10rem" />
+            <Currency name="icon-japanese-yen" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconJapaneseYen" font_size="10rem" />
+              <Currency name="icon-japanese-yen" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_19" class="mt-4">
           <:example>
-            <Currency name="IconLitecoin" font_size="10rem" />
+            <Currency name="icon-litecoin" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconLitecoin" font_size="10rem" />
+              <Currency name="icon-litecoin" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_20" class="mt-4">
           <:example>
-            <Currency name="IconNewTaiwanDollar" font_size="10rem" />
+            <Currency name="icon-new-taiwan-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconNewTaiwanDollar" font_size="10rem" />
+              <Currency name="icon-new-taiwan-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_21" class="mt-4">
           <:example>
-            <Currency name="IconNewZealandDollar" font_size="10rem" />
+            <Currency name="icon-new-zealand-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconNewZealandDollar" font_size="10rem" />
+              <Currency name="icon-new-zealand-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_22" class="mt-4">
           <:example>
-            <Currency name="IconPolandZloty" font_size="10rem" />
+            <Currency name="icon-poland-zloty" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconPolandZloty" font_size="10rem" />
+              <Currency name="icon-poland-zloty" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_23" class="mt-4">
           <:example>
-            <Currency name="IconRipple" font_size="10rem" />
+            <Currency name="icon-ripple" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconRipple" font_size="10rem" />
+              <Currency name="icon-ripple" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_24" class="mt-4">
           <:example>
-            <Currency name="IconRussianRuble" font_size="10rem" />
+            <Currency name="icon-russian-ruble" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconRussianRuble" font_size="10rem" />
+              <Currency name="icon-russian-ruble" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_25" class="mt-4">
           <:example>
-            <Currency name="IconSingaporeDollar" font_size="10rem" />
+            <Currency name="icon-singapore-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconSingaporeDollar" font_size="10rem" />
+              <Currency name="icon-singapore-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_26" class="mt-4">
           <:example>
-            <Currency name="IconSoc" font_size="10rem" />
+            <Currency name="icon-soc" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconSoc" font_size="10rem" />
+              <Currency name="icon-soc" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_27" class="mt-4">
           <:example>
-            <Currency name="IconSouthKoreanWon" font_size="10rem" />
+            <Currency name="icon-south-korean-won" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconSouthKoreanWon" font_size="10rem" />
+              <Currency name="icon-south-korean-won" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_28" class="mt-4">
           <:example>
-            <Currency name="IconSwedishKrona" font_size="10rem" />
+            <Currency name="icon-swedish-krona" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconSwedishKrona" font_size="10rem" />
+              <Currency name="icon-swedish-krona" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_29" class="mt-4">
           <:example>
-            <Currency name="IconSwissFranc" font_size="10rem" />
+            <Currency name="icon-swiss-franc" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconSwissFranc" font_size="10rem" />
+              <Currency name="icon-swiss-franc" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_30" class="mt-4">
           <:example>
-            <Currency name="IconThaiBaht" font_size="10rem" />
+            <Currency name="icon-thai-baht" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconThaiBaht" font_size="10rem" />
+              <Currency name="icon-thai-baht" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_31" class="mt-4">
           <:example>
-            <Currency name="IconTron" font_size="10rem" />
+            <Currency name="icon-tron" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconTron" font_size="10rem" />
+              <Currency name="icon-tron" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_32" class="mt-4">
           <:example>
-            <Currency name="IconTurkishLira" font_size="10rem" />
+            <Currency name="icon-turkish-lira" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconTurkishLira" font_size="10rem" />
+              <Currency name="icon-turkish-lira" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="currency_33" class="mt-4">
           <:example>
-            <Currency name="IconUsaDollar" font_size="10rem" />
+            <Currency name="icon-usa-dollar" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Currency name="IconUsaDollar" font_size="10rem" />
+              <Currency name="icon-usa-dollar" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

@@ -35,60 +35,60 @@ defmodule MoonWeb.Pages.Assets.CrestsPage do
 
         <ExampleAndCode id="crest_1" class="mt-4">
           <:example>
-            <Crest name="CrestArsenal" font_size="10rem" />
+            <Crest name="crest-arsenal" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="CrestArsenal" font_size="10rem" />
+              <Crest name="crest-arsenal" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_2" class="mt-4">
           <:example>
-            <Crest name="CrestFlamengo" font_size="10rem" />
+            <Crest name="crest-flamengo" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="CrestFlamengo" font_size="10rem" />
+              <Crest name="crest-flamengo" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_3" class="mt-4">
           <:example>
-            <Crest name="CrestSaoPaulo" font_size="10rem" />
+            <Crest name="crest-sao-paulo" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="CrestSaoPaulo" font_size="10rem" />
+              <Crest name="crest-sao-paulo" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_4" class="mt-4">
           <:example>
-            <Crest name="CrestSouthampton" font_size="10rem" />
+            <Crest name="crest-southampton" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="CrestSouthampton" font_size="10rem" />
+              <Crest name="crest-southampton" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="crest_5" class="mt-4">
           <:example>
-            <Crest name="CrestWatford" font_size="10rem" />
+            <Crest name="crest-watford" font_size="10rem" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Crest name="CrestWatford" font_size="10rem" />
+              <Crest name="crest-watford" font_size="10rem" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
