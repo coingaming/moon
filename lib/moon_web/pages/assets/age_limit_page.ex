@@ -35,48 +35,48 @@ defmodule MoonWeb.Pages.Assets.AgeLimitPage do
 
         <ExampleAndCode id="pattern_1" class="mt-4">
           <:example>
-            <AgeLimit name="age18-big" font_size="10rem" />
+            <AgeLimit name="age18-big" class="text-[10rem]" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <AgeLimit name="age18-big" font_size="10rem" />
+              <AgeLimit name="age18-big" class="text-[10rem]" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_2" class="mt-4">
           <:example>
-            <AgeLimit name="age18-small" font_size="10rem" />
+            <AgeLimit name="age18-small" class="text-[10rem]" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <AgeLimit name="age18-small" font_size="10rem" />
+              <AgeLimit name="age18-small" class="text-[10rem]" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_3" class="mt-4">
           <:example>
-            <AgeLimit name="age21-big" font_size="10rem" />
+            <AgeLimit name="age21-big" class="text-[10rem]" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <AgeLimit name="age21-big" font_size="10rem" />
+              <AgeLimit name="age21-big" class="text-[10rem]" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
 
         <ExampleAndCode id="pattern_4" class="mt-4">
           <:example>
-            <AgeLimit name="age21-small" font_size="10rem" />
+            <AgeLimit name="age21-small" class="text-[10rem]" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <AgeLimit name="age21-small" font_size="10rem" />
+              <AgeLimit name="age21-small" class="text-[10rem]" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>
