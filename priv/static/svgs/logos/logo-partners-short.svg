@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 32 32"  fill="none">
+    <path opacity=".9" d="M12 12a8 8 0 1 1 8 8h-8v-8Z" fill="url(#a)"/><path d="M20 20a8 8 0 1 1-8-8h8v8Z" fill="url(#b)" style="mix-blend-mode:multiply"/><defs><radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-90 16 -4) scale(8.00001)"><stop stop-color="#3E6AB9"/><stop offset="1" stop-color="#0C0632"/></radialGradient><radialGradient id="b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(90 -4 16) scale(8.00001)"><stop stop-color="#4EC770"/><stop offset="1" stop-color="#2D944A"/></radialGradient></defs>
+  </symbol>
+</svg>
+  

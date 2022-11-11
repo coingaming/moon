@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.Footer do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Assets.Logos.LogoMoonDesign
+  alias MoonWeb.Components.LargeLogo
   alias Moon.Components.Link
 
   data(show_themes, :boolean, default: false)
@@ -12,7 +12,7 @@ defmodule MoonWeb.Components.Footer do
     ~F"""
     <footer class="relative z-10 flex gap-x-8 gap-y-6 pt-16 pb-6 flex-wrap items-center text-moon-16 text-bulma-100 justify-center md:justify-between">
       <div class="flex gap-x-8 gap-y-6 flex-wrap justify-center items-center">
-        <LogoMoonDesign height="1rem" width="69px" />
+        <LargeLogo height="1rem" width="69px" />
         <div class="flex gap-x-8 gap-y-4 flex-wrap justify-center items-center">
           <Link to="https://github.com/coingaming/moon" target="_blank" rel="noreferrer">
             GitHub

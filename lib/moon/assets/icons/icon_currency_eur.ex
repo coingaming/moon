@@ -16,7 +16,7 @@ defmodule Moon.Assets.Icons.IconCurrencyEUR do
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/assets/svgs/icons/icon-currency-EUR.svg#item" />
+      <use href="/moon/assets/svgs/icons/icon-currency-eur.svg#item" />
     </svg>
     """
   end

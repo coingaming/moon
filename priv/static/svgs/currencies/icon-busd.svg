@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="item" viewBox="0 0 24 24"  fill="none">
+    <g clip-path="url(#a)"><path d="M23.64 14.903c-1.602 6.428-8.114 10.34-14.544 8.738C2.669 22.038-1.244 15.527.359 9.098 1.962 2.67 8.473-1.244 14.902.36c6.43 1.603 10.342 8.115 8.739 14.544Z" fill="#F0B90B"/><path d="m12 4.5 1.858 1.903-4.679 4.68-1.858-1.86L12 4.5ZM14.82 7.32l1.86 1.904-7.5 7.5-1.86-1.858 7.5-7.545ZM6.358 10.142l1.858 1.903-1.858 1.858L4.5 12.045l1.858-1.903ZM17.642 10.142l1.858 1.903-7.5 7.5-1.858-1.858 7.5-7.545Z" fill="currentColor"/></g><defs><clipPath id="a"><path fill="currentColor" d="M0 0h24v24H0z"/></clipPath></defs>
+  </symbol>
+</svg>
+  

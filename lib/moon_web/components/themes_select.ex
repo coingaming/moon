@@ -5,7 +5,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   alias Moon.Assets.Logos.LogoAposta10Short
   alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoLabFull
+  alias Moon.Assets.Logos.LogoLabShort
   alias Moon.Assets.Logos.LogoLivecasinoShort
   alias Moon.Assets.Logos.LogoSlotsShort
   alias Moon.Assets.Logos.LogoSportsbetShort
@@ -81,7 +81,7 @@ defmodule MoonWeb.Components.ThemesSelect do
             {#elseif theme[:value] == "livecasino"}
               <LogoLivecasinoShort />
             {#elseif theme[:value] == "lab"}
-              <LogoLabFull />
+              <LogoLabShort />
             {#elseif theme[:value] == "moon-design"}
               <LogoMoonDesignShort />
             {#elseif theme[:value] == "slots"}

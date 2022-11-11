@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Logos.LogoMoonDesign
+  alias MoonWeb.Components.LargeLogo
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
   alias MoonWeb.Components.Version
@@ -35,7 +35,7 @@ defmodule MoonWeb.Components.LeftMenu do
               href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
               class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
             >
-              <LogoMoonDesign height="1.5rem" width="6.5rem" />
+              <LargeLogo height="1.5rem" width="6.5rem" />
             </a>
           </div>
         </:short_logo>
@@ -47,7 +47,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
                   class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
                 >
-                  <LogoMoonDesign height="1.5rem" width="6.5rem" />
+                  <LargeLogo height="1.5rem" width="6.5rem" />
                 </a>
               </div>
               <div class="flex-grow flex flex-col gap-2">

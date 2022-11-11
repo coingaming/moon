@@ -23,13 +23,17 @@ If `./run-locally-dev.sh` is not working, try the following steps:
    `asdf plugin add elixir`  
    `asdf plugin add nodejs`
 2. Run `asdf install`. This will install all the tool versions specified in the _.tool_versions_ file
-   Or you can install each tool version manually by typing:  
-   `asdf install erlang`  # and follow https://github.com/asdf-vm/asdf-erlang#asdf-erlang on fail (e.g. `export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac"`)
+   Or you can install each tool version manually by typing:
+   `asdf install erlang` # and follow https://github.com/asdf-vm/asdf-erlang#asdf-erlang on fail (e.g. `export KERL_CONFIGURE_OPTIONS="--without-wx --without-javac"`)
    `asdf install elixir`  
    `asdf install nodejs`
 
 3. Try running `iex -S mix phx.server`
 4. Stop the command above, then try running `./run-locally-dev.sh`
+
+# Running .run-auto-importers.sh
+
+This script imports figma assets and icons. You need to set the values in the .env file.
 
 # Preferences to consider when writing code
 
@@ -41,7 +45,7 @@ In writing code try to remember following rules:
 4. Add and run tests
 5. Create component's page in moon_web application with API described and state shown
 6. Use following classes for TW-way styling:
-   - Use Moon classes for: (see ds-moon-preset.js for full list of variables, and themes/moon-design-*.css for values)
+   - Use Moon classes for: (see ds-moon-preset.js for full list of variables, and themes/moon-design-\*.css for values)
      - font sizes
      - border-radius - rounded-moon-{s - big elements, e.g cart, i - interactive, e.g button}
      - shadows
@@ -67,7 +71,6 @@ alias Moon.Assets.Icons.IconZoom
   </:right_icon>
 </TextInput>
 ```
-
 
 ```bash
 mix test
