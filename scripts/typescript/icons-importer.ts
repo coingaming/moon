@@ -5,7 +5,8 @@ console.log("Running assets importer");
 const rawDirIcons = "../../priv/static/svgs/icons_new";
 const exportDir = "../../lib/moon";
 
-const getFilesList = () => fs.readdirSync(`${rawDirIcons}`).filter(x => !x.includes(".gz"));
+const getFilesList = () =>
+  fs.readdirSync(`${rawDirIcons}`).filter((x) => !x.includes(".gz"));
 
 const toCamel = (s: string) => {
   return s.replace(/([-_][a-z])/gi, ($1) => {
@@ -29,11 +30,15 @@ const getModuleName = (s: string) =>
     .replace(".svg", "");
 
 const propsMap = `
-  prop color, :string, values: Moon.colors
-  prop background_color, :string, values: Moon.colors
-  prop font_size, :string
   prop click, :event
   prop class, :string
+  
+  # All the other props below are deprecated!
+  # Please use only tailwind classes and the class prop
+  prop font_size, :string
+  prop color, :string, values: Moon.colors
+  prop background_color, :string, values: Moon.colors
+  
 `;
 
 const propsMapKeys = [

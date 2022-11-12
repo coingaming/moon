@@ -2,11 +2,14 @@ defmodule Moon.Icons.ArrowsCrossLines do
   @moduledoc false
   use Moon.StatelessComponent
 
-  prop(color, :string, values: Moon.colors())
-  prop(background_color, :string, values: Moon.colors())
-  prop(font_size, :string)
   prop(click, :event)
   prop(class, :string)
+
+  # All the other props below are deprecated!
+  # Please use only tailwind classes and the class prop
+  prop(font_size, :string)
+  prop(color, :string, values: Moon.colors())
+  prop(background_color, :string, values: Moon.colors())
 
   def render(assigns) do
     ~F"""
