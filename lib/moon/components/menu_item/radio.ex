@@ -3,7 +3,7 @@ defmodule Moon.Components.MenuItem.Radio do
 
   use Moon.StatelessComponent
 
-  prop(is_selected, :boolean, default: false)
+  prop(is_selected, :boolean, from_context: {Moon.Components.MenuItem, :is_selected})
 
   def render(assigns) do
     ~F"""

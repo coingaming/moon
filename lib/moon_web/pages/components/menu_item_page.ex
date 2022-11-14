@@ -15,7 +15,8 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
     ControlsChevronRight,
     GenericLoyalty,
     DevicesJoystick,
-    ControlsChevronDown
+    ControlsChevronDown,
+    ControlsChevronUp
   }
 
   data(breadcrumbs, :any,
@@ -34,21 +35,86 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'color',
+        :name => 'title',
         :type => 'string',
         :required => 'false',
-        :default => 'bulma-100',
-        :description => 'Colour of Loader'
+        :default => '-',
+        :description => 'Title of item, only if no slot is given'
       },
       %{
-        :name => 'size',
-        :type => 'twoxsmall | xsmall | small | medium | large',
+        :name => 'text',
+        :type => 'string',
         :required => 'false',
-        :default => 'medium',
-        :description => 'Size of Loader'
+        :default => '-',
+        :description => 'Some hint to be shown under the title'
+      },
+      %{
+        :name => 'is_active',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'To mark menu item as an active (bg only)'
+      },
+      %{
+        :name => 'is_selected',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Selected/checked/expanded if role is given'
+      },
+      %{
+        :name => 'role',
+        :type => 'checkbox | switch | radio',
+        :required => 'false',
+        :default => '-',
+        :description => 'Role to MenuItem acts as'
+      },
+      %{
+        :name => 'on_click',
+        :type => 'event',
+        :required => 'false',
+        :default => '-',
+        :description => 'Role-depending event handler'
+      },
+      %{
+        :name => 'width',
+        :type => 'css_class',
+        :required => 'false',
+        :default => 'w-full',
+        :description => 'Width of the item'
+      },
+      %{
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'false',
+        :default => '-',
+        :description => 'Additional CSS class(es) for the item'
+      },
+      %{
+        :name => 'as',
+        :type => 'a | button',
+        :required => 'false',
+        :default => 'button',
+        :description => 'HTML tag to be used to render item'
+      },
+      %{
+        :name => 'attrs',
+        :type => 'Map | List',
+        :required => 'false',
+        :default => '%{}',
+        :description => 'HTML attributes to be set for tag given by as'
       }
     ]
   )
+
+  data(selected0, :boolean, default: false)
+  data(selected1, :boolean, default: true)
+  data(selected2, :boolean, default: false)
+  data(selected3, :boolean, default: false)
+  data(selected4, :boolean, default: true)
+
+  data(expanded0, :boolean, default: false)
+  data(expanded1, :boolean, default: true)
 
   def render(assigns) do
     ~F"""
@@ -71,7 +137,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
       <ExampleAndCode title="As link" id="menu_2">
         <:example>
-          <MenuItem as={:a}>Menu item text</MenuItem>
+          <MenuItem as="a">Menu item text</MenuItem>
         </:example>
 
         <:code>{menu_item_2_code()}</:code>
@@ -117,13 +183,10 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       <ExampleAndCode title="Checkbox" id="menu_5">
         <:example>
           <div class="w-56">
-            <MenuItem>
-              <MenuItem.Checkbox />
-              <MenuItem.Title>Your value</MenuItem.Title>
-            </MenuItem>
+            <MenuItem role="checkbox" title="Your value" on_click="on_select1" is_selected={@selected1} />
           </div>
           <div class="w-56">
-            <MenuItem>
+            <MenuItem role="checkbox" on_click="on_select0" is_selected={@selected0}>
               <MenuItem.Title>Your value</MenuItem.Title>
               <MenuItem.Checkbox />
             </MenuItem>
@@ -132,11 +195,31 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         <:code>{menu_item_5_code()}</:code>
       </ExampleAndCode>
 
+      <ExampleAndCode title="Radio" id="menu_9">
+        <:example>
+          <div class="w-56">
+            <MenuItem role="radio" on_click="on_select3" is_selected={@selected3}>
+              <MenuItem.Radio />
+              <MenuItem.Title>Your value</MenuItem.Title>
+            </MenuItem>
+          </div>
+          <div class="w-56">
+            <MenuItem role="radio" on_click="on_select4" is_selected={@selected4}>
+              <MenuItem.Title>Your value</MenuItem.Title>
+              <MenuItem.Radio />
+            </MenuItem>
+          </div>
+        </:example>
+        <:code>{menu_item_9_code()}</:code>
+      </ExampleAndCode>
+
       <ExampleAndCode title="MultiTitle" id="menu_6">
         <:example>
           <div class="w-56">
             <MenuItem>
-              <ControlsChevronRight class="text-[1.5rem]" />
+              <span class="px-2">
+                <ControlsChevronRight class="text-[1.5rem]" />
+              </span>
               <MenuItem.MultiTitle title="Your value">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry
               </MenuItem.MultiTitle>
@@ -144,8 +227,10 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             </MenuItem>
           </div>
           <div class="w-56">
-            <MenuItem>
-              <ControlsChevronRight class="text-[1.5rem]" />
+            <MenuItem role="checkbox" on_click="on_select2" is_selected={@selected2}>
+              <span class="px-2">
+                <SportBadminton class="text-[1.5rem]" />
+              </span>
               <MenuItem.MultiTitle title="Your value">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry
               </MenuItem.MultiTitle>
@@ -160,7 +245,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         <:example>
           <div class="w-94 bg-gohan-100 flex flex-col gap-3 rounded-moon-s-lg p-6">
             <MenuItem is_active>
-              <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
+              <span class="bg-piccolo-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
                 <TravelAirplane class="text-2xl" color="#4E46B4" />
               </span>
               <MenuItem.MultiTitle title="Job Board" text="find your dream design job" />
@@ -205,36 +290,34 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             <MenuItem>Tokens</MenuItem>
             <MenuItem>Transform SVG</MenuItem>
             <MenuItem>Manifest</MenuItem>
-            <MenuItem>
-              Tailwind
-              <ControlsChevronDown />
-            </MenuItem>
-
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <MenuItem.Title>
-                Accordion</MenuItem.Title>
-            </MenuItem>
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <MenuItem.Title>
-                Avatar</MenuItem.Title>
-            </MenuItem>
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <MenuItem.Title>
-                Breadcrumb</MenuItem.Title>
-            </MenuItem>
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <MenuItem.Title>
-                Button</MenuItem.Title>
-            </MenuItem>
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <MenuItem.Title>
-                Checkbox</MenuItem.Title>
-            </MenuItem>
+            <MenuItem role="switch" is_selected={@expanded0} title="Tailwind" on_click="on_expand0" />
+            {#if @expanded0}
+              <MenuItem>
+                <span class="w-6" />
+                <MenuItem.Title>
+                  Accordion</MenuItem.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <MenuItem.Title>
+                  Avatar</MenuItem.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <MenuItem.Title>
+                  Breadcrumb</MenuItem.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <MenuItem.Title>
+                  Button</MenuItem.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <MenuItem.Title>
+                  Checkbox</MenuItem.Title>
+              </MenuItem>
+            {/if}
           </div>
           <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
             <MenuItem>
@@ -246,45 +329,49 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               </MenuItem.Title>
             </MenuItem>
             <MenuItem>
-              <ControlsChevronDown class="w-6" />
+              <span class="w-3" :on-click="on_expand1" :values={is_selected: !@expanded1}>
+                <ControlsChevronDown :if={!@expanded1} />
+                <ControlsChevronUp :if={@expanded1} />
+              </span>
+
               <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">CX</p>
               </span>
               <MenuItem.Title>
                 Customer...</MenuItem.Title>
             </MenuItem>
-
+            {#if @expanded1}
+              <MenuItem>
+                <span class="w-6" />
+                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                  <p class="leading-4 font-semibold text-moon-10">S</p>
+                </span>
+                <MenuItem.Title>Sub nested item</MenuItem.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                  <p class="leading-4 font-semibold text-moon-10">S</p>
+                </span>
+                <MenuItem.Title>Sub nested item</MenuItem.Title>
+              </MenuItem>
+            {/if}
             <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
-                <p class="leading-4 font-semibold text-moon-10">S</p>
-              </span>
-              <MenuItem.Title>Sub nested item</MenuItem.Title>
-            </MenuItem>
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="transparent" />
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
-                <p class="leading-4 font-semibold text-moon-10">S</p>
-              </span>
-              <MenuItem.Title>Sub nested item</MenuItem.Title>
-            </MenuItem>
-
-            <MenuItem>
-              <ControlsChevronDown class="w-6" color="trunks" />
+              <span class="w-3" />
               <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">CX</p>
               </span>
               <MenuItem.Title>Quality...</MenuItem.Title>
             </MenuItem>
             <MenuItem>
-              <ControlsChevronDown class="w-6" color="trunks" />
+              <span class="w-3" />
               <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <MenuItem.Title>Responsible...</MenuItem.Title>
             </MenuItem>
             <MenuItem>
-              <ControlsChevronDown class="w-6" color="trunks" />
+              <span class="w-3" />
               <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
@@ -300,21 +387,21 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
                 </MenuItem.Title>
               </MenuItem>
               <MenuItem>
-                <ControlsChevronDown class="w-6" color="trunks" />
+                <span class="w-3" />
                 <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
                 <MenuItem.Title>Customer...</MenuItem.Title>
               </MenuItem>
               <MenuItem>
-                <ControlsChevronDown class="w-6" color="trunks" />
+                <span class="w-3" />
                 <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">CX</p>
                 </span>
                 <MenuItem.Title>Quality...</MenuItem.Title>
               </MenuItem>
               <MenuItem>
-                <ControlsChevronDown class="w-6" color="trunks" />
+                <span class="w-3" />
                 <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
@@ -331,7 +418,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
                 </MenuItem.Title>
               </MenuItem>
               <MenuItem>
-                <ControlsChevronDown class="w-6" color="trunks" />
+                <span class="w-3" />
                 <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
@@ -389,18 +476,65 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
   defp menu_item_5_code() do
     """
-    <div class="w-56">
-      <MenuItem>
-        <MenuItem.Checkbox />
-        <MenuItem.Title>Your value</MenuItem.Title>
-      </MenuItem>
-    </div>
-    <div class="w-56">
-      <MenuItem>
-        <MenuItem.Title>Your value</MenuItem.Title>
-        <MenuItem.Checkbox />
-      </MenuItem>
-    </div>
+    data selected0, :boolean, default: false
+    data selected1, :boolean, default: true
+
+    def render(assigns) do
+      ~F\"""
+      <div class="w-56">
+        <MenuItem role="checkbox" on_click="on_select1" is_selected={@selected1}>
+          <MenuItem.Checkbox/>
+          <MenuItem.Title>Your value</MenuItem.Title>
+        </MenuItem>
+      </div>
+      <div class="w-56">
+        <MenuItem role="checkbox" on_click="on_select0" is_selected={@selected0}>
+          <MenuItem.Title>Your value</MenuItem.Title>
+          <MenuItem.Checkbox />
+        </MenuItem>
+      </div>
+      \"""
+    end
+
+    def handle_event("selected0, params, socket) do
+      {:noreply, assign(socket, :selected0, Map.has_key?(params, "is_selected"))}
+    end
+
+    def handle_event("selected1, params, socket) do
+      {:noreply, assign(socket, :selected1, Map.has_key?(params, "is_selected"))}
+    end
+    """
+  end
+
+  defp menu_item_9_code() do
+    """
+    data selected0, :boolean, default: false
+    data selected1, :boolean, default: true
+
+    def render(assigns) do
+      ~F\"""
+      <div class="w-56">
+        <MenuItem role="radio" on_click="on_select1"  is_selected={@selected1}>
+          <MenuItem.Radio />
+          <MenuItem.Title>Your value</MenuItem.Title>
+        </MenuItem>
+      </div>
+      <div class="w-56">
+        <MenuItem role="radio" on_click="on_select0" is_selected={@selected0}>
+          <MenuItem.Title>Your value</MenuItem.Title>
+          <MenuItem.Radio />
+        </MenuItem>
+      </div>
+      \"""
+    end
+
+    def handle_event("selected0, params, socket) do
+      {:noreply, assign(socket, :selected0, Map.has_key?(params, "is_selected"))}
+    end
+
+    def handle_event("selected1, params, socket) do
+      {:noreply, assign(socket, :selected1, Map.has_key?(params, "is_selected"))}
+    end
     """
   end
 
@@ -408,16 +542,20 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
     """
     <div class="w-56">
       <MenuItem>
-        <ControlsChevronRight class="text-[1.5rem]" />
+        <span class="px-2">
+          <ControlsChevronRight class="text-[1.5rem]" />
+        </span>
         <MenuItem.MultiTitle title="Your value">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry
         </MenuItem.MultiTitle>
-        <span class="text-moon-12 text-trunks">Meta</span>
+        <span class="text-moon-12 text-trunks-100">Meta</span>
       </MenuItem>
     </div>
     <div class="w-56">
       <MenuItem>
-        <ControlsChevronRight class="text-[1.5rem]" />
+        <span class="px-2">
+          <SportBadminton class="text-[1.5rem]" />
+        </span>
         <MenuItem.MultiTitle title="Your value">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry
         </MenuItem.MultiTitle>
@@ -425,8 +563,9 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       </MenuItem>
     </div>
 
-    # please note that text property is default when no slot is given, e.g. it equals
-    # <MenuItem.MultiTitle title="Your value" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry" />
+    # please note that text property is used when no slot is given, e.g. flowing lines are equal
+    # <MenuItem.MultiTitle title="Your value" text="Lorem Ipsum Dolor" />
+    # <MenuItem.MultiTitle title="Your value">Lorem Ipsum Dolor</MenuItem.MultiTitle>
     """
   end
 
@@ -434,7 +573,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
     """
     <div class="w-94 bg-gohan-100 flex flex-col gap-3 rounded-moon-s-lg p-6">
       <MenuItem is_active>
-        <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
+        <span class="bg-piccolo-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
           <TravelAirplane class="text-2xl" color="#4E46B4" />
         </span>
         <MenuItem.MultiTitle
@@ -476,6 +615,158 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
   defp menu_item_8_code() do
     """
+    <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+      <MenuItem>Vision</MenuItem>
+      <MenuItem>Getting started</MenuItem>
+      <MenuItem>How to contribute?</MenuItem>
+      <MenuItem>Colours palette</MenuItem>
+      <MenuItem>Tokens</MenuItem>
+      <MenuItem>Transform SVG</MenuItem>
+      <MenuItem>Manifest</MenuItem>
+      <MenuItem role="switch" is_selected={@expanded0} title="Tailwind" on_click="on_expand0"/>
+      {#if @expanded0}
+        <MenuItem>
+          <span class="w-6"/>
+          <MenuItem.Title>
+            Accordion</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6"/>
+          <MenuItem.Title>
+            Avatar</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6"/>
+          <MenuItem.Title>
+            Breadcrumb</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6"/>
+          <MenuItem.Title>
+            Button</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6"/>
+          <MenuItem.Title>
+            Checkbox</MenuItem.Title>
+        </MenuItem>
+      {/if}
+      </div>
+      <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+      <MenuItem>
+        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <p class="leading-4 font-semibold text-moon-10">B</p>
+        </span>
+        <MenuItem.Title>
+          <p class="leading-6 text-moon-14 font-semibold">Bitcasino</p>
+        </MenuItem.Title>
+      </MenuItem>
+      <MenuItem>
+        <span class="w-3" :on-click="on_expand1" :values={is_selected: !@expanded1}>
+          <ControlsChevronDown :if={!@expanded1}/>
+          <ControlsChevronUp :if={@expanded1} />
+        </span>
+
+        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <p class="leading-4 font-semibold text-moon-10">CX</p>
+        </span>
+        <MenuItem.Title>
+          Customer...</MenuItem.Title>
+      </MenuItem>
+      {#if @expanded1}
+        <MenuItem>
+          <span class="w-6"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">S</p>
+          </span>
+          <MenuItem.Title>Sub nested item</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">S</p>
+          </span>
+          <MenuItem.Title>Sub nested item</MenuItem.Title>
+        </MenuItem>
+      {/if}
+      <MenuItem>
+        <span class="w-3"/>
+        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <p class="leading-4 font-semibold text-moon-10">CX</p>
+        </span>
+        <MenuItem.Title>Quality...</MenuItem.Title>
+      </MenuItem>
+      <MenuItem>
+        <span class="w-3"/>
+        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <p class="leading-4 font-semibold text-moon-10">RG</p>
+        </span>
+        <MenuItem.Title>Responsible...</MenuItem.Title>
+      </MenuItem>
+      <MenuItem>
+        <span class="w-3"/>
+        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <p class="leading-4 font-semibold text-moon-10">RG</p>
+        </span>
+        <MenuItem.Title>Responsible...</MenuItem.Title>
+      </MenuItem>
+      <div class="flex flex-col gap-2 rounded-moon-s-lg">
+        <MenuItem>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">S</p>
+          </span>
+          <MenuItem.Title>
+            <p class="leading-6 text-moon-14 font-semibold">Sportsbet</p>
+          </MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-3"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">RG</p>
+          </span>
+          <MenuItem.Title>Customer...</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-3"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">CX</p>
+          </span>
+          <MenuItem.Title>Quality...</MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-3"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">RG</p>
+          </span>
+          <MenuItem.Title>Responsible...</MenuItem.Title>
+        </MenuItem>
+      </div>
+      <div class="flex flex-col gap-2 rounded-moon-s-lg">
+        <MenuItem>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">L</p>
+          </span>
+          <MenuItem.Title>
+            <p class="leading-6 text-moon-14 font-semibold">Livecasino</p>
+          </MenuItem.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-3"/>
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">RG</p>
+          </span>
+          <MenuItem.Title>Customer...</MenuItem.Title>
+        </MenuItem>
+      </div>
+    </div>
     """
+  end
+
+  def handle_event("on_select" <> number, params, socket) do
+    {:noreply, assign(socket, :"selected#{number}", Map.get(params, "is-selected") == "true")}
+  end
+
+  def handle_event("on_expand" <> number, params, socket) do
+    {:noreply, assign(socket, :"expanded#{number}", Map.get(params, "is-selected") == "true")}
   end
 end

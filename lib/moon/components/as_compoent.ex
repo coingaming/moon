@@ -6,17 +6,30 @@ defmodule Moon.Components.AsComponent do
   use Moon.StatelessComponent
 
   prop(class, :css_class)
-  prop(as, :atom, values!: [:a, :button], default: :button)
+
+  prop(as, :string, values!: ~w(a button), default: "button")
+
+  # for as="a" type only
   prop(href, :string)
+  # for as="button" only
+  prop(on_click, :event)
+  # for everything
+  prop(values, :list, default: [])
+
+  prop(role, :string)
+
+  prop(attrs, :map, default: %{})
+
+  prop(is_selected, :boolean, default: false)
 
   slot(default)
 
   def render(assigns) do
     ~F"""
-    {#if @as == :button}
-      <button {=@class}><#slot /></button>
-    {#elseif @as == :a}
-      <a {=@class} {=@href}><#slot /></a>
+    {#if @as == "button"}
+      <button {=@class} :on-click={@on_click} :values={@values} {=@role} {...@attrs}><#slot /></button>
+    {#elseif @as == "a"}
+      <a {=@class} {=@href} {...@attrs}><#slot /></a>
     {/if}
     """
   end
