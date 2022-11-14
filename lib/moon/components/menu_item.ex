@@ -3,7 +3,7 @@ defmodule Moon.Components.MenuItem do
   use Moon.StatelessComponent
 
   alias Moon.Components.AsComponent
-  alias Moon.Components.MenuItem, as: MI
+  alias __MODULE__
 
   prop(title, :string, required: true)
   prop(text, :string)
@@ -41,11 +41,11 @@ defmodule Moon.Components.MenuItem do
       values={is_selected: !@is_selected}
     >
       <#slot context_put={__MODULE__, is_selected: @is_selected}>
-        <MI.Title {=@title} :if={@title && !@text} />
-        <MI.MultiTitle {=@title} {=@text} :if={@text} />
-        <MI.Checkbox :if={@role == "checkbox"} />
-        <MI.Radio :if={@role == "radio"} />
-        <MI.Switch :if={@role == "switch"} />
+        <MenuItem.Title {=@title} :if={@title && !@text} />
+        <MenuItem.MultiTitle {=@title} {=@text} :if={@text} />
+        <MenuItem.Checkbox :if={@role == "checkbox"} />
+        <MenuItem.Radio :if={@role == "radio"} />
+        <MenuItem.Switch :if={@role == "switch"} />
       </#slot>
     </AsComponent>
     """
