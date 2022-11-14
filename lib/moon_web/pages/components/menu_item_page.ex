@@ -246,20 +246,20 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
           <div class="w-94 bg-gohan-100 flex flex-col gap-3 rounded-moon-s-lg p-6">
             <MenuItem is_active>
               <span class="bg-piccolo-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <TravelAirplane class="text-2xl" color="#4E46B4" />
+                <TravelAirplane class="text-2xl text-piccolo-100" />
               </span>
               <MenuItem.MultiTitle title="Job Board" text="find your dream design job" />
             </MenuItem>
             <MenuItem>
-              <span class="bg-[#3448F01F]/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <TravelBill class="text-2xl" color="#3448F0" />
+              <span class="bg-chi-chi-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <TravelBill class="text-2xl text-chi-chi-100" />
               </span>
               <MenuItem.MultiTitle title="Freelance Projects" text="An exclusive list for contract work" />
             </MenuItem>
             <hr class="w-80 border-px border-solid border-beerus left-6 top-40  self-stretch">
             <MenuItem>
-              <span class="bg-[#FFB3191F]/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <GenericLoyalty class="text-2xl" color="#FFB319" />
+              <span class="bg-raditz-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <GenericLoyalty class="text-2xl text-raditz-100" />
               </span>
               <MenuItem.MultiTitle
                 title="Want freelance design projects?"
@@ -267,8 +267,8 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               />
             </MenuItem>
             <MenuItem>
-              <span class="bg-[#FF4E641F]/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <DevicesJoystick class="text-2xl" color="#FF4E64" />
+              <span class="bg-frieza-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <DevicesJoystick class="text-2xl text-frieza-100" />
               </span>
               <MenuItem.MultiTitle
                 title="Personalized your profile with video"
