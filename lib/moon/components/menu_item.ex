@@ -3,7 +3,7 @@ defmodule Moon.Components.MenuItem do
   use Moon.StatelessComponent
 
   alias Moon.Components.AsComponent
-  alias __MODULE__
+  alias Moon.Components.Lego
 
   prop(title, :string, required: true)
   prop(text, :string)
@@ -40,12 +40,12 @@ defmodule Moon.Components.MenuItem do
       on_click={@on_click}
       values={is_selected: !@is_selected}
     >
-      <#slot context_put={__MODULE__, is_selected: @is_selected}>
-        <MenuItem.Title {=@title} :if={@title && !@text} />
-        <MenuItem.MultiTitle {=@title} {=@text} :if={@text} />
-        <MenuItem.Checkbox :if={@role == "checkbox"} />
-        <MenuItem.Radio :if={@role == "radio"} />
-        <MenuItem.Switch :if={@role == "switch"} />
+      <#slot context_put={Lego, is_selected: @is_selected}>
+        <Lego.Title {=@title} :if={@title && !@text} />
+        <Lego.MultiTitle {=@title} {=@text} :if={@text} />
+        <Lego.Checkbox :if={@role == "checkbox"} {=@is_selected} />
+        <Lego.Radio :if={@role == "radio"} {=@is_selected} />
+        <Lego.ChevronUpDown :if={@role == "switch"} {=@is_selected} />
       </#slot>
     </AsComponent>
     """

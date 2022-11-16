@@ -1,0 +1,1 @@
+"<button phx-value-is-selected=\"true\" class=\"flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14 focus:outline-none focus:shadow-focus cursor-pointer hover:bg-bulma-100/[0.04] transition w-full\">\nHello\n</button>"

@@ -1,4 +1,4 @@
-defmodule Moon.Components.MenuItem.Title do
+defmodule Moon.Components.Lego.Title do
   @moduledoc false
 
   use Moon.StatelessComponent
