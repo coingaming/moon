@@ -35,7 +35,7 @@ defmodule MoonWeb.Components.LeftMenu do
               href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
               class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
             >
-              <LargeLogo height="1.5rem" width="6.5rem" />
+              <LargeLogo class="h-6 w-[6rem]" />
             </a>
           </div>
         </:short_logo>
@@ -47,7 +47,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
                   class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
                 >
-                  <LargeLogo height="1.5rem" width="6.5rem" />
+                  <LargeLogo class="h-6 w-[6rem]" />
                 </a>
               </div>
               <div class="flex-grow flex flex-col gap-2">

@@ -3,11 +3,14 @@ defmodule Moon.Assets.Icons.IconCurrencyPKR do
 
   use Moon.StatelessComponent
 
+  prop(click, :event)
+  prop(class, :string)
+
+  # All the other props below are deprecated!
+  # Please use only tailwind classes and the class prop
   prop(color, :string, values: Moon.colors())
   prop(background_color, :string, values: Moon.colors())
   prop(font_size, :string)
-  prop(click, :event)
-  prop(class, :string)
 
   def render(assigns) do
     ~F"""
