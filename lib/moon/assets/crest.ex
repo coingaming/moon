@@ -20,7 +20,14 @@ defmodule Moon.Assets.Crest do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-crest #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-crest",
+        @class,
+        "text-#{@color}": @color,
+        "bg-#{@background_color}": @background_color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(
         color: @color,
