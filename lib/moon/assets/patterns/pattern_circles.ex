@@ -17,7 +17,13 @@ defmodule Moon.Assets.Patterns.PatternCircles do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-pattern #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-pattern",
+        @class,
+        "text-#{@color}": @color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(
         color: @color,

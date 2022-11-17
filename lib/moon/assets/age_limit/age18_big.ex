@@ -17,7 +17,13 @@ defmodule Moon.Assets.AgeLimit.Age18Big do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-age_limit #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-age_limit",
+        @class,
+        "text-#{@color}": @color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(
         color: @color,
