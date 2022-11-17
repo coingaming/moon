@@ -3,6 +3,7 @@ defmodule Moon.Components.CardV2 do
 
   use Moon.StatelessComponent
 
+  prop(testid, :string)
   prop(rounded, :css_class, default: "rounded-md")
   prop(class, :css_class)
   prop(background_color_class, :css_class, default: "bg-gohan-100")
@@ -17,18 +18,21 @@ defmodule Moon.Components.CardV2 do
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "w-full grid grid-cols-2 gap-6 p-6 text-bulma-100",
-      @class,
-      @background_color_class,
-      @border_color_class,
-      @rounded
-    }>
+    <div
+      data-testid={@testid}
+      class={
+        "w-full grid grid-cols-2 gap-6 p-6 text-bulma-100",
+        @class,
+        @background_color_class,
+        @border_color_class,
+        @rounded
+      }
+    >
       <div class={@top_class} style="grid-column-start: 1; grid-column-end: 3;">
         <#slot {@top} />
       </div>
 
-      <div class="flex justify-between" style="grid-column-start: 1; grid-column-end: 3;">
+      <div class="flex justify-between items-center" style="grid-column-start: 1; grid-column-end: 3;">
         <div class={
           "pt-4",
           @left_bottom_class
