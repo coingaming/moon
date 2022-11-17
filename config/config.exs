@@ -33,10 +33,15 @@ config :phoenix, :json_library, Jason
 config :surface, :components, [
   {Surface.Components.Form.ErrorTag,
    default_translator: {MoonWeb.ErrorHelpers, :translate_error}},
+  # lib part
   {Moon.Components.Form, propagate_context_to_slots: true},
   {Moon.Components.Field, propagate_context_to_slots: true},
   {Moon.Components.TextInput, propagate_context_to_slots: true},
-  {Moon.Components.Select.Dropdown, propagate_context_to_slots: true}
+  {Moon.Components.Select.Dropdown, propagate_context_to_slots: true},
+  {Moon.Components.MenuItem, propagate_context_to_slots: true},
+
+  # app part
+  {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]
 
 # Import environment specific config. This must remain at the bottom

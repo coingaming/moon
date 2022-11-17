@@ -12,7 +12,7 @@ defmodule Moon.Components.FileInput.ListOfFiles do
     <div>
       {#for entry <- @conf.entries}
         <div class="flex gap-2 bg-goku-100 p-2 rounded align-middle">
-          <div class="overflow-hidden" style="max-width: 50px">{live_img_preview(entry, style: "min-height: 100%; min-height: 100%;", class: "rounded")}</div>
+          <div class="overflow-hidden" style="max-width: 50px"><.live_img_preview entry={entry} width="100" /></div>
           <div class="w-full">{entry.client_name} ({get_size(entry.client_size)} KB)</div>
           <div style="width: 300px"><ProgressLinear value={entry.progress} /></div>
           <div><div :on-click={@cancel_upload} :values={ref: entry.ref} aria-label="cancel"><Moon.Icons.ControlsClose /></div></div>

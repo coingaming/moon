@@ -83,6 +83,7 @@ defmodule Moon.MixProject do
       {:excoveralls, "~> 0.10", only: :test},
       {:floki, ">= 0.27.0", only: :test},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:snapshy, "~> 0.3.0", only: :test},
 
       # dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},

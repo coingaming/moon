@@ -90,19 +90,19 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
           <Form for={@user_changeset} change="register_form_update" submit="register_form_submit">
             <TopToDown>
               <Field name={:role}>
-                <RadioButton id="role_admin" value={1}>
+                <RadioButton id="role_admin" value="1">
                   Admin
                 </RadioButton>
                 <ErrorTag />
               </Field>
               <Field name={:role}>
-                <RadioButton id="role_editor" value={2}>
+                <RadioButton id="role_editor" value="2">
                   Editor
                 </RadioButton>
                 <ErrorTag />
               </Field>
               <Field name={:role}>
-                <RadioButton id="role_user" value={3} disabled>
+                <RadioButton id="role_user" value="3" disabled>
                   User (disabled)
                 </RadioButton>
                 <ErrorTag />
@@ -145,6 +145,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         },
         socket
       ) do
+    IO.puts("FORM_CHANGED ############################ \n #{inspect(params)}")
     user_changeset = User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}

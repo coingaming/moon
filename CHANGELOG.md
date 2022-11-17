@@ -1,3 +1,10 @@
+## [2.31.1](https://github.com/coingaming/moon/compare/v2.31.0...v2.31.1) (2022-11-11)
+
+
+### Bug Fixes
+
+* update version file ([#445](https://github.com/coingaming/moon/issues/445)) ([00d77e6](https://github.com/coingaming/moon/commit/00d77e641256a1a5fdb230c28b99131d0461b969))
+
 # [2.31.0](https://github.com/coingaming/moon/compare/v2.30.17...v2.31.0) (2022-11-09)
 
 

@@ -30,7 +30,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
           rel="nofollow"
           target="_blank"
         >
-          Surface v0.7.x
+          Surface v0.9.x
         </a>
         +
         <a
