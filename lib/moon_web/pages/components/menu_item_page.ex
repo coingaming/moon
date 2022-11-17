@@ -116,6 +116,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
   data(expanded0, :boolean, default: false)
   data(expanded1, :boolean, default: true)
+  data(expanded2, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
@@ -372,12 +373,30 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               <Lego.Title>Responsible...</Lego.Title>
             </MenuItem>
             <MenuItem>
-              <span class="w-3" />
+              <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
+                <Lego.ChevronUpDown is_selected={@expanded2} />
+              </span>
               <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Responsible...</Lego.Title>
             </MenuItem>
+            {#if @expanded2}
+              <MenuItem>
+                <span class="w-6" />
+                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                  <p class="leading-4 font-semibold text-moon-10">S</p>
+                </span>
+                <Lego.Title>Sub nested item</Lego.Title>
+              </MenuItem>
+              <MenuItem>
+                <span class="w-6" />
+                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                  <p class="leading-4 font-semibold text-moon-10">S</p>
+                </span>
+                <Lego.Title>Sub nested item</Lego.Title>
+              </MenuItem>
+            {/if}
             <div class="flex flex-col gap-2 rounded-moon-s-lg">
               <MenuItem>
                 <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
@@ -705,12 +724,30 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         <Lego.Title>Responsible...</Lego.Title>
       </MenuItem>
       <MenuItem>
-        <span class="w-3"/>
+        <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
+          <Lego.ChevronUpDown is_selected={@expanded2}/>
+        </span>
         <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">RG</p>
         </span>
         <Lego.Title>Responsible...</Lego.Title>
       </MenuItem>
+      {#if @expanded2}
+        <MenuItem>
+          <span class="w-6" />
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">S</p>
+          </span>
+          <Lego.Title>Sub nested item</Lego.Title>
+        </MenuItem>
+        <MenuItem>
+          <span class="w-6" />
+          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <p class="leading-4 font-semibold text-moon-10">S</p>
+          </span>
+          <Lego.Title>Sub nested item</Lego.Title>
+        </MenuItem>
+      {/if}
       <div class="flex flex-col gap-2 rounded-moon-s-lg">
         <MenuItem>
           <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
