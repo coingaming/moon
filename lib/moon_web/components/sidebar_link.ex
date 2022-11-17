@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.SidebarLink do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Chip
+  alias Moon.Components.MenuItem
 
   prop(route, :any)
   slot(default)
@@ -14,16 +14,17 @@ defmodule MoonWeb.Components.SidebarLink do
 
   def render(assigns) do
     ~F"""
-    <a
-      data-phx-link="redirect"
-      data-phx-link-state="push"
-      data-moon-active={@active_page == @route}
+    <MenuItem
+      as="a"
+      attrs={
+        "data-phx-link": "redirect",
+        "data-phx-link-state": "push"
+      }
+      is_active={@active_page == @route}
       href={live_path(MoonWeb.Endpoint, @route, theme_name: @theme_name, direction: @direction)}
     >
-      <Chip active={@active_page == @route} variant="ghost">
-        <#slot />
-      </Chip>
-    </a>
+      <#slot />
+    </MenuItem>
     """
   end
 end
