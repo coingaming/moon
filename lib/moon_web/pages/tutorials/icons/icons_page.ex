@@ -35,10 +35,12 @@ defmodule MoonWeb.Pages.IconsPage do
 
       <ExampleAndCode title="Sizes and colors" id="icons">
         <:example>
-          <Icon name="files_copy" />
-          <Icon name="files_copy" class="text-moon-32" />
-          <Icon name="files_copy" class={"text-chi-chi-100", "text-moon-48"} />
-          <Icon name="files_copy" class={"text-piccolo-100", "text-moon-48"} />
+          <Icon name="files_copy" class="text-moon-24 text-chi-chi-100" />
+          <Icon name="files_copy" class="text-moon-24 text-trunks-100" />
+          <Icon name="files_copy" class="text-moon-32 text-roshi-100" />
+          <Icon name="files_copy" class="text-moon-32 text-piccolo-100" />
+          <Icon name="files_copy" class="text-moon-48 text-raditz-100" />
+          <Icon name="files_copy" class="text-moon-48 text-whis-100" />
         </:example>
 
         <:code>{icons_code()}</:code>
@@ -228,10 +230,12 @@ defmodule MoonWeb.Pages.IconsPage do
 
   def icons_code do
     """
-    <Icon name="files_copy" />
-    <Icon name="files_copy" class="text-2xl" />
-    <Icon name="files_copy" font_size="3rem" class="text-chi-chi-100 text-2xl" />
-    <Icon name="files_copy" font_size="3rem" class="text-piccolo-100 text-2xl" />
+    <Icon name="files_copy" class="text-moon-24 text-chi-chi-100" />
+    <Icon name="files_copy" class="text-moon-24 text-trunks-100" />
+    <Icon name="files_copy" class="text-moon-32 text-roshi-100" />
+    <Icon name="files_copy" class="text-moon-32 text-piccolo-100" />
+    <Icon name="files_copy" class="text-moon-48 text-raditz-100" />
+    <Icon name="files_copy" class="text-moon-48 text-whis-100" />
     """
   end
 
