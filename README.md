@@ -28,8 +28,10 @@ If `./run-locally-dev.sh` is not working, try the following steps:
    `asdf install elixir`  
    `asdf install nodejs`
 
-3. Try running `iex -S mix phx.server`
-4. Stop the command above, then try running `./run-locally-dev.sh`
+3. Install assets dependencies with `cd assets && npm i && cd -`
+4. Try running `iex -S mix phx.server`
+5. Stop the command above, then try running `./run-locally-dev.sh`
+6. If you do see error in ElixirLS extension "no elixir command found", you'll need to `cp .tool-versions ~`
 
 # Running .run-auto-importers.sh
 
