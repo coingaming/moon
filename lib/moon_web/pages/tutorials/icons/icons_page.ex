@@ -96,9 +96,6 @@ defmodule MoonWeb.Pages.IconsPage do
   end
 
   defp get_import_text_by_attribute(assigns, selected_icons) do
-    IO.puts("****")
-    IO.inspect(selected_icons)
-
     ~F"""
     alias Moon.Icon
 
@@ -113,7 +110,13 @@ defmodule MoonWeb.Pages.IconsPage do
   end
 
   defp get_import_text_by_name(assigns, selected_icons) do
-    "TEST"
+    case_converted_list = Enum.map(selected_icons, fn i -> Macro.camelize(i) end)
+    import_name_string = Enum.join(case_converted_list, ", ")
+
+    ~F"""
+    {get_alias_string(import_name_string)}
+    {#for icon <- case_converted_list}{get_icon_tag(icon)}{/for}
+    """
   end
 
   defp get_alias_string(names) do
