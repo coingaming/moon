@@ -3,7 +3,7 @@ defmodule Moon.Icons.ControlsChevronDown do
   use Moon.StatelessComponent
 
   prop(click, :event)
-  prop(class, :css_class)
+  prop(class, :string)
 
   # All the other props below are deprecated!
   # Please use only tailwind classes and the class prop
