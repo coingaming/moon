@@ -3,7 +3,7 @@ defmodule Moon.Icons.ControlsChevronDown do
   use Moon.StatelessComponent
 
   prop(click, :event)
-  prop(class, :css_class)
+  prop(class, :string)
 
   # All the other props below are deprecated!
   # Please use only tailwind classes and the class prop
@@ -14,7 +14,7 @@ defmodule Moon.Icons.ControlsChevronDown do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-icon", @class, "cursor-pointer": !!@click}
+      class={"moon-icon #{@class} #{@click && "cursor-pointer"}"}
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >

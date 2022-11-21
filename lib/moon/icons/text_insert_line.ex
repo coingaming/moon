@@ -1,4 +1,4 @@
-defmodule Moon.Icons.TypeDefault do
+defmodule Moon.Icons.TextInsertLine do
   @moduledoc false
   use Moon.StatelessComponent
 
@@ -18,7 +18,7 @@ defmodule Moon.Icons.TypeDefault do
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >
-      <use href="/moon/assets/svgs/icons_new/type-default.svg#item" />
+      <use href="/moon/assets/svgs/icons_new/text-insert-line.svg#item" />
     </svg>
     """
   end
