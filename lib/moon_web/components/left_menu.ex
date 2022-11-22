@@ -168,20 +168,6 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                       <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
                       <SidebarLink route={Pages.Components.TypographyPage}>Typography</SidebarLink>
-                      <Accordion
-                        is_content_inside={false}
-                        id="left-menu-components-typography"
-                        open_by_default={active_page_contains(@active_page, Pages.Components.Typography)}
-                      >
-                        <:title>Typography (Deprecated)</:title>
-                        <:content>
-                          <div class="flex-grow flex flex-col gap-2 pl-8">
-                            <SidebarLink route={Pages.Components.Typography.CaptionPage}>Caption</SidebarLink>
-                            <SidebarLink route={Pages.Components.Typography.HeadingPage}>Heading</SidebarLink>
-                            <SidebarLink route={Pages.Components.Typography.TextPage}>Text</SidebarLink>
-                          </div>
-                        </:content>
-                      </Accordion>
                     </div>
                   </:content>
                 </Accordion>
