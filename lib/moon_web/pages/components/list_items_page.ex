@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
         :name => 'background_color',
         :type => 'string',
         :required => 'false',
-        :default => 'gohan-100',
+        :default => 'gohan',
         :description => 'List item background color'
       },
       %{
@@ -87,10 +87,10 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
       <ExampleAndCode title="Medium size (default)" id="line_items_1">
         <:example>
-          <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
+          <TopToDown class="bg-goku py-6 px-4 w-56 mx-auto">
             <SingleLineItem>Single line item</SingleLineItem>
 
-            <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
+            <SingleLineItem background_color="goku">Single line item</SingleLineItem>
 
             <SingleLineItem current>
               <:left_icon><IconChartArea /></:left_icon>
@@ -120,10 +120,10 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
 
       <ExampleAndCode title="Large size" id="line_items_2">
         <:example>
-          <TopToDown class="bg-goku-100 py-6 px-4 w-56 mx-auto">
+          <TopToDown class="bg-goku py-6 px-4 w-56 mx-auto">
             <SingleLineItem size="lg">Single line item</SingleLineItem>
 
-            <SingleLineItem size="lg" background_color="goku-100">Single line item</SingleLineItem>
+            <SingleLineItem size="lg" background_color="goku">Single line item</SingleLineItem>
 
             <SingleLineItem size="lg" current>
               <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>
@@ -164,7 +164,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       <TopToDown>
         <SingleLineItem>Single line item</SingleLineItem>
 
-        <SingleLineItem background_color="goku-100">Single line item</SingleLineItem>
+        <SingleLineItem background_color="goku">Single line item</SingleLineItem>
 
         <SingleLineItem current>
           <:left_icon><IconChartArea /></:left_icon>
@@ -198,7 +198,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       <TopToDown>
         <SingleLineItem size="lg">Single line item</SingleLineItem>
 
-        <SingleLineItem size="lg" background_color="goku-100">Single line item</SingleLineItem>
+        <SingleLineItem size="lg" background_color="goku">Single line item</SingleLineItem>
 
         <SingleLineItem size="lg" current>
           <:left_icon><IconChartArea font_size="1.25rem" /></:left_icon>

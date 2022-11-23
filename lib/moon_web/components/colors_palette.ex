@@ -18,11 +18,9 @@ defmodule MoonWeb.Components.ColorsPalette do
     <div class="flex gap-4 items-start font-moon-16">
       {#for {color, index} <- Enum.with_index(@colors)}
         <div class="flex flex-col basis-1/2 lg:basis-40 gap-2 justify-center items-center" key={index}>
-          <div class={"w-full h-40 rounded-moon-s-sm border border-beerus bg-#{color[:name]}-#{color[:value]}"} />
+          <div class={"w-full h-40 rounded-moon-s-sm border border-beerus", color.bg_color} />
           <p>
-            {color[:name]}
-            <span :if={color[:value]}>
-              - {color[:value]}</span>
+            {color.name}
           </p>
         </div>
       {/for}

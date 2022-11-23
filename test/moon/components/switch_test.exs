@@ -14,7 +14,7 @@ defmodule Moon.Components.SwitchTest do
         end
 
       assert html =~ "<button"
-      assert html =~ "bg-piccolo-100"
+      assert html =~ "bg-piccolo"
       assert html =~ "translate-x-3"
     end
 

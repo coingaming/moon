@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
         :name => 'background_color',
         :type => 'string ',
         :required => 'false',
-        :default => 'gohan-100',
+        :default => 'gohan',
         :description => ''
       },
       %{

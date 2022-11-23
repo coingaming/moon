@@ -5,8 +5,8 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   use Moon.StatelessComponent
 
   prop(size, :string, values: ~w(md lg xl), default: "md")
-  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan-100")
-  prop(active_background_color, :string, values: Moon.colors(), default: "bg-goku-100")
+  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan")
+  prop(active_background_color, :string, values: Moon.colors(), default: "bg-goku")
   prop(current, :boolean, default: false)
   prop(left_grow, :boolean, default: false)
   prop(right_grow, :boolean, default: false)
@@ -18,7 +18,7 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   def render(assigns) do
     ~F"""
     <div class={
-      "relative rounded-moon-i-md text-moon-14 text-bulma-100 leading-6 cursor-pointer flex",
+      "relative rounded-moon-i-md text-moon-14 text-bulma leading-6 cursor-pointer flex",
       @background_color,
       "hover:#{@active_background_color}",
       "gap-2 p-2": @size == "md",

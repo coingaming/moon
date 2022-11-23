@@ -11,7 +11,7 @@ defmodule MoonComponents.Banner.Container do
   def render(assigns) do
     ~F"""
     <div class={
-      "w-full bg-goten-100 rounded-moon-s-sm",
+      "w-full bg-goten rounded-moon-s-sm",
       get_container_padding(@is_mobile),
       get_container_display(@has_buttons, @is_mobile)
     }>

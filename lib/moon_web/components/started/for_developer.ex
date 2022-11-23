@@ -18,14 +18,14 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <p>
         Moon Surface components
         <a
-          class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+          class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           href={"#{live_path(MoonWeb.Endpoint, MoonWeb.Pages.PhoenixUsagePage, theme_name: @theme_name, direction: @direction)}"}
         >
           can be used from SLIM and EEX templates
         </a>
         , but recommended format is
         <a
-          class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+          class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           href="https://surface-ui.org/"
           rel="nofollow"
           target="_blank"
@@ -34,7 +34,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         </a>
         +
         <a
-          class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+          class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           href="https://tailwindcss.com/docs/guides/phoenix"
           rel="nofollow"
           target="_blank"
@@ -43,7 +43,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         </a>
         +
         <a
-          class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+          class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           href="/"
         >
           Moon Surface Components
@@ -138,50 +138,50 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         'background': 'var(--color-background)',
         'krillin-10': 'var(--color--krillin-10)',
         'krillin-60': 'var(--color--krillin-60)',
-        'krillin-100': 'var(--color--krillin-100)',
+        'krillin': 'var(--color--krillin)',
         'chi-chi-10': 'var(--color--chi-chi-10)',
         'chi-chi-60': 'var(--color--chi-chi-60)',
-        'chi-chi-100': 'var(--color--chi-chi-100)',
+        'chi-chi': 'var(--color--chi-chi)',
         'roshi-10': 'var(--color--roshi-10)',
         'roshi-60': 'var(--color--roshi-60)',
-        'roshi-100': 'var(--color--roshi-100)',
+        'roshi': 'var(--color--roshi)',
         'dodoria-10': 'var(--color--dodoria-10)',
         'dodoria-60': 'var(--color--dodoria-60)',
-        'dodoria-100': 'var(--color--dodoria-100)',
+        'dodoria': 'var(--color--dodoria)',
         'cell-10': 'var(--color--cell-10)',
         'cell-60': 'var(--color--cell-60)',
-        'cell-100': 'var(--color--cell-100)',
+        'cell': 'var(--color--cell)',
         'raditz-10': 'var(--color--raditz-10)',
         'raditz-60': 'var(--color--raditz-60)',
-        'raditz-100': 'var(--color--raditz-100)',
+        'raditz': 'var(--color--raditz)',
         'whis-10': 'var(--color--whis-10)',
         'whis-60': 'var(--color--whis-60)',
-        'whis-100': 'var(--color--whis-100)',
+        'whis': 'var(--color--whis)',
         'frieza-10': 'var(--color--frieza-10)',
         'frieza-60': 'var(--color--frieza-60)',
-        'frieza-100': 'var(--color--frieza-100)',
+        'frieza': 'var(--color--frieza)',
         'nappa-10': 'var(--color--nappa-10)',
         'nappa-60': 'var(--color--nappa-60)',
-        'nappa-100': 'var(--color--nappa-100)',
+        'nappa': 'var(--color--nappa)',
         'piccolo-80': 'var(--color--piccolo-80)',
-        'piccolo-100': 'var(--color--piccolo-100)',
+        'piccolo': 'var(--color--piccolo)',
         'piccolo-120': 'var(--color--piccolo-120)',
         'hit-80': 'var(--color--hit-80)',
-        'hit-100': 'var(--color--hit-100)',
+        'hit': 'var(--color--hit)',
         'hit-120': 'var(--color--hit-120)',
-        'beerus-100': 'var(--color--beerus-100)',
+        'beerus': 'var(--color--beerus)',
         'goku-10': 'var(--color--goku-10)',
         'goku-40': 'var(--color--goku-40)',
         'goku-80': 'var(--color--goku-80)',
-        'goku-100': 'var(--color--goku-100)',
+        'goku': 'var(--color--goku)',
         'gohan-10': 'var(--color--gohan-10)',
         'gohan-40': 'var(--color--gohan-40)',
         'gohan-80': 'var(--color--gohan-80)',
-        'gohan-100': 'var(--color--gohan-100)',
-        'bulma-100': 'var(--color--bulma-100)',
-        'trunks-100': 'var(--color--trunks-100)',
-        'goten-100': 'var(--color--goten-100)',
-        'popo-100': 'var(--color--popo-100)',
+        'gohan': 'var(--color--gohan)',
+        'bulma': 'var(--color--bulma)',
+        'trunks': 'var(--color--trunks)',
+        'goten': 'var(--color--goten)',
+        'popo': 'var(--color--popo)',
         &#125;,
         &#125;,
         variants: &#123;&#125;,

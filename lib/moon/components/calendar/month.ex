@@ -14,21 +14,21 @@ defmodule Moon.Components.Calendar.Month do
       <Day
         :for={day <- previous_month_days(@date, @week_starts_on)}
         day={day}
-        text_color="text-trunks-100"
+        text_color="text-trunks"
         events={filtered_events(@events, day)}
       />
 
       <Day
         :for={day <- month_days(@date)}
         day={day}
-        text_color={if Timex.to_date(day) == Timex.today(), do: "text-piccolo-100"}
+        text_color={if Timex.to_date(day) == Timex.today(), do: "text-piccolo"}
         events={filtered_events(@events, day)}
       />
 
       <Day
         :for={day <- next_month_days(@date, @week_starts_on)}
         day={day}
-        text_color="text-trunks-100"
+        text_color="text-trunks"
         events={filtered_events(@events, day)}
       />
     </div>

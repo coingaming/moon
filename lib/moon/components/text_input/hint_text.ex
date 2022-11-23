@@ -11,7 +11,7 @@ defmodule Moon.Components.TextInput.HintText do
     ~F"""
     <div
       role="alert"
-      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @is_error, "text-trunks-100": !@is_error}
+      class={"inline-block mt-2 text-moon-12", "text-chi-chi": @is_error, "text-trunks": !@is_error}
     >
       <#slot />
     </div>

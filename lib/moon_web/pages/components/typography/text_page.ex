@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
               theme_name: @theme_name,
               direction: @direction
             )}
-            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+            class="text-piccolo transition-colors duration-200 hover:text-hit visited:text-hit"
           >
             new Typography
           </a>
@@ -149,13 +149,13 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
         <:example>
           <div class="flex flex-col gap-2 w-full">
             <Text size={24}>Text with default color</Text>
-            <Text size={24} color="trunks-100">
+            <Text size={24} color="trunks">
               Text with defined color
             </Text>
-            <Text size={24} color="piccolo-100">
+            <Text size={24} color="piccolo">
               Text with defined color
             </Text>
-            <Text size={24} color="krillin-100">
+            <Text size={24} color="krillin">
               Text with defined color
             </Text>
           </div>

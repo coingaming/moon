@@ -36,7 +36,7 @@ defmodule Moon.Components.RadioButton do
         class={"cursor-not-allowed": @disabled}
         is_selected={@checked || is_selected(Phoenix.HTML.Form.input_value(@form, @field), @value)}
       />
-      <span class={"bg-rochi-100 pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
+      <span class={"bg-rochi pl-2", "opacity-[.35] cursor-not-allowed": @disabled}>
         <#slot />
       </span>
     </FieldLabel>

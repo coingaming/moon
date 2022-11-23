@@ -64,7 +64,7 @@ defmodule Moon.Components.Switch do
         aria-pressed="false"
         class={
           "relative inline-flex shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none",
-          "bg-piccolo-100": is_selected(@checked, @form, @field),
+          "bg-piccolo": is_selected(@checked, @form, @field),
           "bg-hit-80": !is_selected(@checked, @form, @field),
           "border-2 w-7 focus:ring-1 focus:ring-offset-1": @size == "small",
           "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
@@ -89,7 +89,7 @@ defmodule Moon.Components.Switch do
         <span
           aria-hidden="true"
           class={
-            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goten-100 rounded-full shadow pointer-events-none ring-0",
+            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goten rounded-full shadow pointer-events-none ring-0",
             "w-3 h-3": @size == "small",
             "w-4 h-4": @size == "medium",
             "w-6 h-6": @size == "large",

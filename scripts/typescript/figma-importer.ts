@@ -88,41 +88,41 @@ const hexToRgb = (hex: string) => {
 };
 
 const colorIds = [
-  "krillin-100",
+  "krillin",
   "krillin-60",
   "krillin-10",
-  "chi-chi-100",
+  "chi-chi",
   "chi-chi-60",
   "chi-chi-10",
-  "roshi-100",
+  "roshi",
   "roshi-60",
   "roshi-10",
-  "dodoria-100",
+  "dodoria",
   "dodoria-60",
   "dodoria-10",
-  "cell-100",
+  "cell",
   "cell-60",
   "cell-10",
-  "raditz-100",
+  "raditz",
   "raditz-60",
   "raditz-10",
-  "whis-100",
+  "whis",
   "whis-60",
   "whis-10",
-  "frieza-100",
+  "frieza",
   "frieza-60",
   "frieza-10",
-  "nappa-100",
+  "nappa",
   "nappa-60",
   "nappa-10",
-  "piccolo-100",
-  "hit-100",
-  "beerus-100",
-  "gohan-100",
-  "goten-100",
-  "goku-100",
-  "bulma-100",
-  "trunks-100",
+  "piccolo",
+  "hit",
+  "beerus",
+  "gohan",
+  "goten",
+  "goku",
+  "bulma",
+  "trunks",
 ];
 
 const boxShadowIds = [
@@ -258,10 +258,10 @@ themes.map(async (theme: ThemeConf) => {
   font-size: var(--base--font-size);
   line-height: var(--base--line-height);
   color: rgba(var(--color--text));
-  background-color: rgba(var(--color--goku-100));
+  background-color: rgba(var(--color--goku));
 
-  --color--text: var(--color--bulma-100);
-  --color--background: rgba(var(--color--goku-100));
+  --color--text: var(--color--bulma);
+  --color--background: rgba(var(--color--goku));
   `;
 
   const lightThemeCss = `

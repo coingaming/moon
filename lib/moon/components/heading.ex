@@ -15,7 +15,7 @@ defmodule Moon.Components.Heading do
     <div
       id={@id}
       class={
-        "text-bulma-100 #{@class}",
+        "text-bulma #{@class}",
         "text-moon-10": @size == 10,
         "text-moon-12": @size == 12,
         "text-moon-14": @size == 14,

@@ -12,14 +12,14 @@ defmodule MoonWeb.Components.Page do
 
   prop(class, :css_class)
   prop(breadcrumbs, :any)
-  prop(theme_name, :any, default: "moon-design-light")
+  prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
   prop(active_page, :any)
   slot(default)
 
   def render(assigns) do
     ~F"""
-    <div role="main" class={"bg-goku-100 text-bulma-100 flex", @class, @theme_name} dir={@direction}>
+    <div role="main" class={"bg-goku text-bulma flex", @class, @theme_name} dir={@direction}>
       <LeftMenu
         id="left-menu"
         theme_name={@theme_name}
@@ -30,7 +30,7 @@ defmodule MoonWeb.Components.Page do
       />
 
       <div class={
-        "min-h-screen lg:ms-80 bg-gohan-100 flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
+        "min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
         @theme_name
       }>
         <div class="flex flex-col grow max-w-screen-xl">

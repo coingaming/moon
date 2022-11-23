@@ -14,7 +14,7 @@ defmodule Moon.Components.Card do
 
   def render(assigns) do
     ~F"""
-    <div class={"p-6 bg-gohan-100 #{@class}", rounded: @rounded}>
+    <div class={"p-6 bg-gohan #{@class}", rounded: @rounded}>
       <div class="flex items-center justify-between gap-4">
         <Heading size={20}>{@title}</Heading>
 

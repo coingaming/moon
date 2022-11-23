@@ -18,17 +18,17 @@ defmodule MoonWeb.Pages.VisionPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <h1 class="relative z-10 text-moon-72 font-semibold max-w-2xl text-bulma-100">
+      <h1 class="relative z-10 text-moon-72 font-semibold max-w-2xl text-bulma">
         Build the best products faster
       </h1>
       <div class="relative z-10 flex flex-col gap-6 max-w-2xl">
-        <h6 class="text-moon-16 uppercase text-trunks-100">M I S S I O N</h6>
-        <p class="text-moon-18 text-bulma-100">
+        <h6 class="text-moon-16 uppercase text-trunks">M I S S I O N</h6>
+        <p class="text-moon-18 text-bulma">
           Create a tool that will reduce the time spent on routine and provide an
           opportunity for inspiration and innovation
         </p>
       </div>
-      <div class="relative z-10 flex flex-col gap-16 text-bulma-100">
+      <div class="relative z-10 flex flex-col gap-16 text-bulma">
         <VisionCard
           header_image="/moon/assets/images/facing/vision/vision_front_card_header_text_1.png"
           alt_header_image="Efficiency, not consistency"

@@ -11,8 +11,8 @@ defmodule MoonWeb.Components.ManifestCard do
     ~F"""
     <div class={
       "moon-design-light flex flex-col gap-4 py-6 px-8 rounded-moon-s-lg",
-      "bg-frieza-100 text-goten-100": @is_highlighted,
-      "bg-gohan-100 text-bulma-100": !@is_highlighted
+      "bg-frieza text-goten": @is_highlighted,
+      "bg-gohan text-bulma": !@is_highlighted
     }>
       <h3 class="text-moon-24 font-semibold">{@title}</h3>
       <ul :if={@content_items} class="list-disc ml-6">

@@ -5,7 +5,7 @@ defmodule Moon.Components.Caption do
 
   slot(default)
   prop(text_align_class, :string, default: "text-left")
-  prop(color_class, :string, default: "text-bulma-100")
+  prop(color_class, :string, default: "text-bulma")
 
   def render(assigns) do
     ~F"""

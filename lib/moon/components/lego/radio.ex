@@ -15,8 +15,8 @@ defmodule Moon.Components.Lego.Radio do
         @class
       }>
         <span class={
-          (@is_selected && "scale-100") || "scale-0",
-          "h-2 w-2 rounded-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-piccolo-100 transition-transform"
+          (@is_selected && "scale") || "scale-0",
+          "h-2 w-2 rounded-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] bg-piccolo transition-transform"
         } />
       </span>
     </span>

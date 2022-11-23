@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
       <Button on_click="toggle_show" variant="primary">Click Me</Button>
 
       <:content>
-        <div class="w-64 h-24 flex items-center justify-around bg-gohan-100 border-2 border-gohan-100 z-50">
+        <div class="w-64 h-24 flex items-center justify-around bg-gohan border-2 border-gohan z-50">
           <div class="capitalize">{"#{@placement}"}</div>
         </div>
       </:content>

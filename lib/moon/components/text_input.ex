@@ -32,7 +32,7 @@ defmodule Moon.Components.TextInput do
 
   prop(placeholder, :string, default: " ")
   prop(is_error, :boolean)
-  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan-100")
+  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan")
   prop(is_first, :boolean)
   prop(disabled, :boolean)
   prop(label, :string)

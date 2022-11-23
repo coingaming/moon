@@ -51,9 +51,9 @@ defmodule MoonWeb.Pages.Components.CardPage do
                   icon_name="arrows_update"
                   height={8}
                   width={8}
-                  hover_bg_color="bg-goku-100"
+                  hover_bg_color="bg-goku"
                 />
-                <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
+                <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku" />
               </:buttons>
 
               <:content>
@@ -71,7 +71,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
               {#for card <- AddDataUsingForm.Card.cards()}
                 <CardV2
                   top_class="text-moon-18"
-                  left_bottom_class="text-moon-14 text-roshi-100"
+                  left_bottom_class="text-moon-14 text-roshi"
                   right_bottom_class="text-moon-48"
                 >
                   <:top>
@@ -80,7 +80,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
                   <:left_bottom>
                     <LeftToRight>
-                      <ArrowsTopRight class="h-5 w-5" color="bg-roshi-100" />
+                      <ArrowsTopRight class="h-5 w-5" color="bg-roshi" />
                       {card.left_bottom}
                     </LeftToRight>
                   </:left_bottom>
@@ -112,9 +112,9 @@ defmodule MoonWeb.Pages.Components.CardPage do
             icon_name="arrows_update"
             height={8}
             width={8}
-            hover_bg_color="bg-goku-100"
+            hover_bg_color="bg-goku"
           />
-          <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku-100" />
+          <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku" />
         </:buttons>
 
         <:content>
@@ -130,7 +130,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
       {#for card <- AddDataUsingForm.Card.cards()}
         <CardV2
           top_class="text-moon-18"
-          left_bottom_class="text-moon-14 text-roshi-100"
+          left_bottom_class="text-moon-14 text-roshi"
           right_bottom_class="text-moon-48"
         >
           <:top>
@@ -139,7 +139,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
 
           <:left_bottom>
             <LeftToRight>
-              <ArrowsTopRight class="h-5 w-5" color="bg-roshi-100" />
+              <ArrowsTopRight class="h-5 w-5" color="bg-roshi" />
               {card.left_bottom}
             </LeftToRight>
           </:left_bottom>

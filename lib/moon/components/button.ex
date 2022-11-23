@@ -60,12 +60,12 @@ defmodule Moon.Components.Button do
       class={
         "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all",
         @class,
-        "text-goten-100 bg-piccolo-100": @variant in ["primary"],
-        "border border-solid bg-transparent text-bulma-100 border-trunks-100 hover:border-bulma-100":
+        "text-goten bg-piccolo": @variant in ["primary"],
+        "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
           @variant in ["secondary"],
-        "bg-hit-100 text-goten-100": @variant in ["tertiary"],
-        "bg-none text-trunks-100 hover:text-bulma-100": @variant in ["ghost"],
-        "text-trunks-100 hover:bg-hit-120 hover:text-piccolo-80": @variant in ["link"],
+        "bg-hit text-goten": @variant in ["tertiary"],
+        "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
+        "text-trunks hover:bg-hit-120 hover:text-piccolo-80": @variant in ["link"],
         "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
         "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),
         "text-moon-14 h-10 px-4": @size == "md" && slot_assigned?(:default),
@@ -84,7 +84,7 @@ defmodule Moon.Components.Button do
         "w-full": @full_width,
         "opacity-30": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chi-chi-100 text-goten-100 animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+        "bg-chi-chi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
           @animation == "error"
       }
       disabled={@disabled}

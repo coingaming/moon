@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
 
         <Carousel class="mt-4 mb-8">
           <Link
-            class="w-10/12 overflow-hidden carousel-item mr-4 bg-gohan-100"
+            class="w-10/12 overflow-hidden carousel-item mr-4 bg-gohan"
             to="https://www.figma.com/file/WbVNWP2v4SKxuPvdTDUXCkD3/Assets?node-id=362%3A251"
           >
             <Heading size={24}>Icons</Heading>
@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Tutorials.Introduction do
 
         <Carousel class="mt-4 mb-8">
           <Link
-            class="w-10/12 overflow-hidden carousel-item mr-4 bg-gohan-100"
+            class="w-10/12 overflow-hidden carousel-item mr-4 bg-gohan"
             to="https://moon-surface.coingaming.io/sportsbet-dark/assets/icons"
           >
             <Heading size={24}>Elixir (Phoenix & Surface)</Heading>

@@ -81,10 +81,10 @@ body {
     @apply inline-block align-middle h-[1em] w-[1em];
   }
   .moon-duotone {
-    @apply inline-block align-middle text-piccolo-100;
+    @apply inline-block align-middle text-piccolo;
   }
   .moon-pattern {
-    @apply inline-block align-middle text-piccolo-100;
+    @apply inline-block align-middle text-piccolo;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -100,10 +100,10 @@ body {
     scroll-snap-align: start;
   }
   .radio-button-checked-outline {
-    box-shadow: inset 0 0 0 0.1rem var(--color--piccolo-100);   
+    box-shadow: inset 0 0 0 0.1rem var(--color--piccolo);   
   }  
   .radio-button-unchecked-outline {
-    box-shadow: inset 0 0 0 0.1rem var(--color--trunks-100);  
+    box-shadow: inset 0 0 0 0.1rem var(--color--trunks);  
   }
   .radio-button-hover {
     background-color: rgba(0, 0, 0, 0.08)

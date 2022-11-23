@@ -28,12 +28,12 @@ defmodule MoonWeb.Components.LeftMenu do
       }
     >
       <div class="fixed inset-0 bg-gray-600 bg-opacity-75 lg:hidden" />
-      <Sidebar background_color="bg-goku-100" open_width="20rem">
+      <Sidebar background_color="bg-goku" open_width="20rem">
         <:short_logo>
           <div class="flex items-center h-10">
             <a
               href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
-              class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+              class="text-bulma hover:text-bulma active:text-bulma focus:text-bulma"
             >
               <LargeLogo class="h-6 w-[6rem]" />
             </a>
@@ -45,7 +45,7 @@ defmodule MoonWeb.Components.LeftMenu do
               <div class="flex items-center flex-shrink-0 pl-3">
                 <a
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
-                  class="text-bulma-100 hover:text-bulma-100 active:text-bulma-100 focus:text-bulma-100"
+                  class="text-bulma hover:text-bulma active:text-bulma focus:text-bulma"
                 >
                   <LargeLogo class="h-6 w-[6rem]" />
                 </a>

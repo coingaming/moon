@@ -465,13 +465,13 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_80" title="Input with background color">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+              <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
               </TextInput>
-              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+              <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
               </TextInput>
-              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+              <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku">
                 <:hint_text_slot>Informative message holder</:hint_text_slot>
               </TextInput>
             </LeftToRight>
@@ -518,7 +518,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         </ExampleAndCode>
 
         <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">Text Input Props</div>
+          <div class="text-bulma items-center text-moon-20 font-normal my-4">Text Input Props</div>
           <Table items={item <- @props_info_array}>
             <Column name="name" label="Name" is_row_header>
               {item.name}
@@ -847,13 +847,13 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
 
   def text_input_80_code do
     """
-    <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku-100">
+    <TextInput placeholder="Placeholder" label="Medium (Default: md)" background_color="goku">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput>
-    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku-100">
+    <TextInput size="lg" placeholder="Placeholder" label="Large (lg)" background_color="goku">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput>
-    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku-100">
+    <TextInput size="xl" placeholder="Placeholder" label="XLarge (xl)" background_color="goku">
       <:hint_text_slot>Informative message holder</:hint_text_slot>
     </TextInput>
     """

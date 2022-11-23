@@ -163,17 +163,17 @@ module.exports = {
         md: "var(--box-shadow--default)",
         lg: "var(--box-shadow--lg)",
         xl: "var(--box-shadow--xl)",
-        border: "0 0 0 2px rgba(var(--color--piccolo-100)) inset",
-        inset: "0 0 0 1px rgb(var(--color--piccolo-100)) inset",
-        interactive: "0 0 0 2px rgb(var(--color--piccolo-100)) inset",
-        focus: `0 0 0 4px rgba(var(--color--piccolo-100), .13)`,
-        input: "0 0 0 var(--border-width) rgb(var(--color--beerus-100)) inset",
+        border: "0 0 0 2px rgba(var(--color--piccolo)) inset",
+        inset: "0 0 0 1px rgb(var(--color--piccolo)) inset",
+        interactive: "0 0 0 2px rgb(var(--color--piccolo)) inset",
+        focus: `0 0 0 4px rgba(var(--color--piccolo), .13)`,
+        input: "0 0 0 var(--border-width) rgb(var(--color--beerus)) inset",
         "input-hov":
-          "0 0 0 var(--border-i-width) rgb(var(--color--bulma-100) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--color--beerus-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--color--bulma) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--color--beerus)) inset",
         "input-err":
-          "0 0 0 var(--border-i-width) rgb(var(--color--chi-chi-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--color--chi-chi)) inset",
         "input-focus":
-          "0 0 0 var(--border-i-width) rgb(var(--color--piccolo-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--color--piccolo)) inset",
         "moon-sm":
           "0 6px 6px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)",
         "moon-md":
@@ -193,8 +193,8 @@ module.exports = {
         "krillin-60": {
           DEFAULT: withOpacityValue("--color--krillin-60"),
         },
-        "krillin-100": {
-          DEFAULT: withOpacityValue("--color--krillin-100"),
+        "krillin": {
+          DEFAULT: withOpacityValue("--color--krillin"),
         },
         "chi-chi-10": {
           DEFAULT: withOpacityValue("--color--chi-chi-10"),
@@ -202,8 +202,8 @@ module.exports = {
         "chi-chi-60": {
           DEFAULT: withOpacityValue("--color--chi-chi-60"),
         },
-        "chi-chi-100": {
-          DEFAULT: withOpacityValue("--color--chi-chi-100"),
+        "chi-chi": {
+          DEFAULT: withOpacityValue("--color--chi-chi"),
         },
         "roshi-10": {
           DEFAULT: withOpacityValue("--color--roshi-10"),
@@ -211,8 +211,8 @@ module.exports = {
         "roshi-60": {
           DEFAULT: withOpacityValue("--color--roshi-60"),
         },
-        "roshi-100": {
-          DEFAULT: withOpacityValue("--color--roshi-100"),
+        "roshi": {
+          DEFAULT: withOpacityValue("--color--roshi"),
         },
         "dodoria-10": {
           DEFAULT: withOpacityValue("--color--dodoria-10"),
@@ -220,8 +220,8 @@ module.exports = {
         "dodoria-60": {
           DEFAULT: withOpacityValue("--color--dodoria-60"),
         },
-        "dodoria-100": {
-          DEFAULT: withOpacityValue("--color--dodoria-100"),
+        "dodoria": {
+          DEFAULT: withOpacityValue("--color--dodoria"),
         },
         "cell-10": {
           DEFAULT: withOpacityValue("--color--cell-10"),
@@ -229,8 +229,8 @@ module.exports = {
         "cell-60": {
           DEFAULT: withOpacityValue("--color--cell-60"),
         },
-        "cell-100": {
-          DEFAULT: withOpacityValue("--color--cell-100"),
+        "cell": {
+          DEFAULT: withOpacityValue("--color--cell"),
         },
         "raditz-10": {
           DEFAULT: withOpacityValue("--color--raditz-10"),
@@ -238,8 +238,8 @@ module.exports = {
         "raditz-60": {
           DEFAULT: withOpacityValue("--color--raditz-60"),
         },
-        "raditz-100": {
-          DEFAULT: withOpacityValue("--color--raditz-100"),
+        "raditz": {
+          DEFAULT: withOpacityValue("--color--raditz"),
         },
         "whis-10": {
           DEFAULT: withOpacityValue("--color--whis-10"),
@@ -247,8 +247,8 @@ module.exports = {
         "whis-60": {
           DEFAULT: withOpacityValue("--color--whis-60"),
         },
-        "whis-100": {
-          DEFAULT: withOpacityValue("--color--whis-100"),
+        "whis": {
+          DEFAULT: withOpacityValue("--color--whis"),
         },
         "frieza-10": {
           DEFAULT: withOpacityValue("--color--frieza-10"),
@@ -256,8 +256,8 @@ module.exports = {
         "frieza-60": {
           DEFAULT: withOpacityValue("--color--frieza-60"),
         },
-        "frieza-100": {
-          DEFAULT: withOpacityValue("--color--frieza-100"),
+        "frieza": {
+          DEFAULT: withOpacityValue("--color--frieza"),
         },
         "nappa-10": {
           DEFAULT: withOpacityValue("--color--nappa-10"),
@@ -265,14 +265,14 @@ module.exports = {
         "nappa-60": {
           DEFAULT: withOpacityValue("--color--nappa-60"),
         },
-        "nappa-100": {
-          DEFAULT: withOpacityValue("--color--nappa-100"),
+        "nappa": {
+          DEFAULT: withOpacityValue("--color--nappa"),
         },
         "piccolo-80": {
           DEFAULT: withOpacityValue("--color--piccolo-80"),
         },
-        "piccolo-100": {
-          DEFAULT: withOpacityValue("--color--piccolo-100"),
+        "piccolo": {
+          DEFAULT: withOpacityValue("--color--piccolo"),
         },
         "piccolo-120": {
           DEFAULT: withOpacityValue("--color--piccolo-120"),
@@ -280,14 +280,14 @@ module.exports = {
         "hit-80": {
           DEFAULT: withOpacityValue("--color--hit-80"),
         },
-        "hit-100": {
-          DEFAULT: withOpacityValue("--color--hit-100"),
+        "hit": {
+          DEFAULT: withOpacityValue("--color--hit"),
         },
         "hit-120": {
           DEFAULT: withOpacityValue("--color--hit-120"),
         },
-        "goten-100": {
-          DEFAULT: withOpacityValue("--color--goten-100"),
+        "goten": {
+          DEFAULT: withOpacityValue("--color--goten"),
         },
         "goku-10": {
           DEFAULT: withOpacityValue("--color--goku-10"),
@@ -298,8 +298,8 @@ module.exports = {
         "goku-80": {
           DEFAULT: withOpacityValue("--color--goku-80"),
         },
-        "goku-100": {
-          DEFAULT: withOpacityValue("--color--goku-100"),
+        "goku": {
+          DEFAULT: withOpacityValue("--color--goku"),
         },
         "goku-120": {
           DEFAULT: withOpacityValue("--color--goku-120"),
@@ -313,20 +313,20 @@ module.exports = {
         "gohan-80": {
           DEFAULT: withOpacityValue("--color--gohan-80"),
         },
-        "gohan-100": {
-          DEFAULT: withOpacityValue("--color--gohan-100"),
+        "gohan": {
+          DEFAULT: withOpacityValue("--color--gohan"),
         },
         "gohan-120": {
           DEFAULT: withOpacityValue("--color--gohan-120"),
         },
-        "beerus-100": {
-          DEFAULT: withOpacityValue("--color--beerus-100"),
+        "beerus": {
+          DEFAULT: withOpacityValue("--color--beerus"),
         },
-        "bulma-100": {
-          DEFAULT: withOpacityValue("--color--bulma-100"),
+        "bulma": {
+          DEFAULT: withOpacityValue("--color--bulma"),
         },
-        "trunks-100": {
-          DEFAULT: withOpacityValue("--color--trunks-100"),
+        "trunks": {
+          DEFAULT: withOpacityValue("--color--trunks"),
         },
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",
