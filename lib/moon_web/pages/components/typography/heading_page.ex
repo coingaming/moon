@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         :name => 'color',
         :type => 'string',
         :required => 'false',
-        :default => 'text-bulma-100',
+        :default => 'text-bulma',
         :description => 'Heading color'
       },
       %{
@@ -92,7 +92,7 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
               theme_name: @theme_name,
               direction: @direction
             )}
-            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+            class="text-piccolo transition-colors duration-200 hover:text-hit visited:text-hit"
           >
             new Typography
           </a>
@@ -146,13 +146,13 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
         <:example>
           <div class="flex flex-col gap-2 w-full">
             <Heading size={24}>Heading with default color</Heading>
-            <Heading size={24} color="trunks-100">
+            <Heading size={24} color="trunks">
               Heading with defined color
             </Heading>
-            <Heading size={24} color="piccolo-100">
+            <Heading size={24} color="piccolo">
               Heading with defined color
             </Heading>
-            <Heading size={24} color="krillin-100">
+            <Heading size={24} color="krillin">
               Heading with defined color
             </Heading>
           </div>
@@ -193,13 +193,13 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
   def heading_3_code do
     """
       <Heading size=24>Heading with default color</Heading>
-      <Heading size=24 color="trunks-100">
+      <Heading size=24 color="trunks">
         Heading with defined color
       </Heading>
-      <Heading size=24 color="piccolo-100">
+      <Heading size=24 color="piccolo">
         Heading with defined color
       </Heading>
-      <Heading size=24 color="krillin-100">
+      <Heading size=24 color="krillin">
         Heading with defined color
       </Heading>
     """

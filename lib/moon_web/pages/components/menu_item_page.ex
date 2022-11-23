@@ -168,14 +168,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
           <div class="w-56">
             <MenuItem>
               <Lego.Title>Your value</Lego.Title>
-              <span class="text-moon-12 text-trunks-100">Meta</span>
+              <span class="text-moon-12 text-trunks">Meta</span>
             </MenuItem>
           </div>
           <div class="w-56">
             <MenuItem>
               <ControlsChevronRight class="text-[1.5rem]" />
               <Lego.Title>Your value</Lego.Title>
-              <span class="text-moon-12 text-trunks-100">Meta</span>
+              <span class="text-moon-12 text-trunks">Meta</span>
             </MenuItem>
           </div>
         </:example>
@@ -225,7 +225,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               <Lego.MultiTitle title="Your value">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry
               </Lego.MultiTitle>
-              <span class="text-moon-12 text-trunks-100">Meta</span>
+              <span class="text-moon-12 text-trunks">Meta</span>
             </MenuItem>
           </div>
           <div class="w-56">
@@ -245,23 +245,23 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
       <ExampleAndCode title="Multi Line Items" id="menu_7">
         <:example>
-          <div class="w-94 bg-gohan-100 flex flex-col gap-3 rounded-moon-s-lg p-6">
+          <div class="w-94 bg-gohan flex flex-col gap-3 rounded-moon-s-lg p-6">
             <MenuItem is_active>
-              <span class="bg-piccolo-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <TravelAirplane class="text-2xl text-piccolo-100" />
+              <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <TravelAirplane class="text-2xl text-piccolo" />
               </span>
               <Lego.MultiTitle title="Job Board" text="find your dream design job" />
             </MenuItem>
             <MenuItem>
-              <span class="bg-chi-chi-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <TravelBill class="text-2xl text-chi-chi-100" />
+              <span class="bg-chi-chi/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <TravelBill class="text-2xl text-chi-chi" />
               </span>
               <Lego.MultiTitle title="Freelance Projects" text="An exclusive list for contract work" />
             </MenuItem>
             <hr class="w-80 border-px border-solid border-beerus left-6 top-40  self-stretch">
             <MenuItem>
-              <span class="bg-raditz-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <GenericLoyalty class="text-2xl text-raditz-100" />
+              <span class="bg-raditz/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <GenericLoyalty class="text-2xl text-raditz" />
               </span>
               <Lego.MultiTitle
                 title="Want freelance design projects?"
@@ -269,8 +269,8 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               />
             </MenuItem>
             <MenuItem>
-              <span class="bg-frieza-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <DevicesJoystick class="text-2xl text-frieza-100" />
+              <span class="bg-frieza/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <DevicesJoystick class="text-2xl text-frieza" />
               </span>
               <Lego.MultiTitle
                 title="Personalized your profile with video"
@@ -284,7 +284,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
       <ExampleAndCode title="Expand collapse" id="menu_8">
         <:example>
-          <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+          <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
             <MenuItem>Vision</MenuItem>
             <MenuItem>Getting started</MenuItem>
             <MenuItem>How to contribute?</MenuItem>
@@ -321,9 +321,9 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               </MenuItem>
             {/if}
           </div>
-          <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+          <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
             <MenuItem>
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">B</p>
               </span>
               <Lego.Title>
@@ -336,7 +336,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
                 <ControlsChevronUp :if={@expanded1} />
               </span>
 
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">CX</p>
               </span>
               <Lego.Title>
@@ -345,14 +345,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             {#if @expanded1}
               <MenuItem>
                 <span class="w-6" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">S</p>
                 </span>
                 <Lego.Title>Sub nested item</Lego.Title>
               </MenuItem>
               <MenuItem>
                 <span class="w-6" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">S</p>
                 </span>
                 <Lego.Title>Sub nested item</Lego.Title>
@@ -360,14 +360,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             {/if}
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">CX</p>
               </span>
               <Lego.Title>Quality...</Lego.Title>
             </MenuItem>
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Responsible...</Lego.Title>
@@ -376,7 +376,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
                 <Lego.ChevronUpDown is_selected={@expanded2} />
               </span>
-              <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Responsible...</Lego.Title>
@@ -384,14 +384,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             {#if @expanded2}
               <MenuItem>
                 <span class="w-6" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">S</p>
                 </span>
                 <Lego.Title>Sub nested item</Lego.Title>
               </MenuItem>
               <MenuItem>
                 <span class="w-6" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">S</p>
                 </span>
                 <Lego.Title>Sub nested item</Lego.Title>
@@ -399,7 +399,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             {/if}
             <div class="flex flex-col gap-2 rounded-moon-s-lg">
               <MenuItem>
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">S</p>
                 </span>
                 <Lego.Title>
@@ -408,21 +408,21 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               </MenuItem>
               <MenuItem>
                 <span class="w-3" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
                 <Lego.Title>Customer...</Lego.Title>
               </MenuItem>
               <MenuItem>
                 <span class="w-3" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">CX</p>
                 </span>
                 <Lego.Title>Quality...</Lego.Title>
               </MenuItem>
               <MenuItem>
                 <span class="w-3" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
                 <Lego.Title>Responsible...</Lego.Title>
@@ -430,7 +430,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
             </div>
             <div class="flex flex-col gap-2 rounded-moon-s-lg">
               <MenuItem>
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">L</p>
                 </span>
                 <Lego.Title>
@@ -439,7 +439,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
               </MenuItem>
               <MenuItem>
                 <span class="w-3" />
-                <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+                <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                   <p class="leading-4 font-semibold text-moon-10">RG</p>
                 </span>
                 <Lego.Title>Customer...</Lego.Title>
@@ -481,14 +481,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
     <div class="w-56">
       <MenuItem>
         <Lego.Title>Your value</Lego.Title>
-        <span class="text-moon-12 text-trunks-100">Meta</span>
+        <span class="text-moon-12 text-trunks">Meta</span>
       </MenuItem>
     </div>
     <div class="w-56">
       <MenuItem>
         <ControlsChevronRight class="text-[1.5rem]" />
         <Lego.Title>Your value</Lego.Title>
-        <span class="text-moon-12 text-trunks-100">Meta</span>
+        <span class="text-moon-12 text-trunks">Meta</span>
       </MenuItem>
     </div>
     """
@@ -568,7 +568,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         <Lego.MultiTitle title="Your value">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry
         </Lego.MultiTitle>
-        <span class="text-moon-12 text-trunks-100">Meta</span>
+        <span class="text-moon-12 text-trunks">Meta</span>
       </MenuItem>
     </div>
     <div class="w-56">
@@ -591,9 +591,9 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
   defp menu_item_7_code() do
     """
-    <div class="w-94 bg-gohan-100 flex flex-col gap-3 rounded-moon-s-lg p-6">
+    <div class="w-94 bg-gohan flex flex-col gap-3 rounded-moon-s-lg p-6">
       <MenuItem is_active>
-        <span class="bg-piccolo-100/20 rounded-lg w-10 h-10 flex justify-center items-center">
+        <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
           <TravelAirplane class="text-2xl" color="#4E46B4" />
         </span>
         <Lego.MultiTitle
@@ -635,7 +635,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
 
   defp menu_item_8_code() do
     """
-    <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+    <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
       <MenuItem>Vision</MenuItem>
       <MenuItem>Getting started</MenuItem>
       <MenuItem>How to contribute?</MenuItem>
@@ -672,9 +672,9 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         </MenuItem>
       {/if}
       </div>
-      <div class="w-56 bg-gohan-100 flex flex-col gap-2 rounded-moon-s-lg p-4">
+      <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
       <MenuItem>
-        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+        <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">B</p>
         </span>
         <Lego.Title>
@@ -687,7 +687,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
           <ControlsChevronUp :if={@expanded1} />
         </span>
 
-        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+        <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">CX</p>
         </span>
         <Lego.Title>
@@ -696,14 +696,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       {#if @expanded1}
         <MenuItem>
           <span class="w-6"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">S</p>
           </span>
           <Lego.Title>Sub nested item</Lego.Title>
         </MenuItem>
         <MenuItem>
           <span class="w-6"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">S</p>
           </span>
           <Lego.Title>Sub nested item</Lego.Title>
@@ -711,14 +711,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       {/if}
       <MenuItem>
         <span class="w-3"/>
-        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+        <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">CX</p>
         </span>
         <Lego.Title>Quality...</Lego.Title>
       </MenuItem>
       <MenuItem>
         <span class="w-3"/>
-        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+        <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">RG</p>
         </span>
         <Lego.Title>Responsible...</Lego.Title>
@@ -727,7 +727,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
           <Lego.ChevronUpDown is_selected={@expanded2}/>
         </span>
-        <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+        <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
           <p class="leading-4 font-semibold text-moon-10">RG</p>
         </span>
         <Lego.Title>Responsible...</Lego.Title>
@@ -735,14 +735,14 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       {#if @expanded2}
         <MenuItem>
           <span class="w-6" />
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">S</p>
           </span>
           <Lego.Title>Sub nested item</Lego.Title>
         </MenuItem>
         <MenuItem>
           <span class="w-6" />
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">S</p>
           </span>
           <Lego.Title>Sub nested item</Lego.Title>
@@ -750,7 +750,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       {/if}
       <div class="flex flex-col gap-2 rounded-moon-s-lg">
         <MenuItem>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">S</p>
           </span>
           <Lego.Title>
@@ -759,21 +759,21 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         </MenuItem>
         <MenuItem>
           <span class="w-3"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">RG</p>
           </span>
           <Lego.Title>Customer...</Lego.Title>
         </MenuItem>
         <MenuItem>
           <span class="w-3"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">CX</p>
           </span>
           <Lego.Title>Quality...</Lego.Title>
         </MenuItem>
         <MenuItem>
           <span class="w-3"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">RG</p>
           </span>
           <Lego.Title>Responsible...</Lego.Title>
@@ -781,7 +781,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
       </div>
       <div class="flex flex-col gap-2 rounded-moon-s-lg">
         <MenuItem>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">L</p>
           </span>
           <Lego.Title>
@@ -790,7 +790,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         </MenuItem>
         <MenuItem>
           <span class="w-3"/>
-          <span class="bg-goku-100 w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">RG</p>
           </span>
           <Lego.Title>Customer...</Lego.Title>

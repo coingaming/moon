@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         :name => 'color',
         :type => 'string',
         :required => 'false',
-        :default => 'bulma-100',
+        :default => 'bulma',
         :description => 'Colour of Loader'
       },
       %{
@@ -66,9 +66,9 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
       <ExampleAndCode title="Colors" id="loader_2">
         <:example>
-          <Loader color="hit-100" />
-          <Loader color="trunks-100" />
-          <Loader color="krillin-100" />
+          <Loader color="hit" />
+          <Loader color="trunks" />
+          <Loader color="krillin" />
         </:example>
 
         <:code>{loader_2_code()}</:code>
@@ -99,9 +99,9 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
   def loader_2_code do
     """
-      <Loader color="hit-100"/>
-      <Loader color="trunks-100"/>
-      <Loader color="krillin-100"/>
+      <Loader color="hit"/>
+      <Loader color="trunks"/>
+      <Loader color="krillin"/>
     """
   end
 

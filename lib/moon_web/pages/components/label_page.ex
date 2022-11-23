@@ -98,13 +98,13 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
       <ExampleAndCode title="Colours" id="label_1">
         <:example>
-          <Label color="gohan-100" background_color="piccolo-100">
+          <Label color="gohan" background_color="piccolo">
             Active
           </Label>
-          <Label color="krillin-100" background_color="trunks-100">
+          <Label color="krillin" background_color="trunks">
             Active
           </Label>
-          <Label color="bulma-100" background_color="dodoria-100">
+          <Label color="bulma" background_color="dodoria">
             Active
           </Label>
         </:example>
@@ -182,13 +182,13 @@ defmodule MoonWeb.Pages.Components.LabelPage do
 
   def label_1_code do
     """
-      <Label color="gohan-100" background_color="piccolo-100">
+      <Label color="gohan" background_color="piccolo">
         Active
       </Label>
-      <Label color="krillin-100" background_color="trunks-100">
+      <Label color="krillin" background_color="trunks">
         Active
       </Label>
-      <Label color="bulma-100" background_color="dodoria-100">
+      <Label color="bulma" background_color="dodoria">
         Active
       </Label>
     """

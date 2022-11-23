@@ -37,8 +37,8 @@ defmodule MoonWeb.Pages.IconsPage do
         <:example>
           <Icon name="files_copy" />
           <Icon name="files_copy" class="text-moon-32" />
-          <Icon name="files_copy" class="text-chi-chi-100 text-moon-48" />
-          <Icon name="files_copy" class="text-piccolo-100 text-moon-48" />
+          <Icon name="files_copy" class="text-chi-chi text-moon-48" />
+          <Icon name="files_copy" class="text-piccolo text-moon-48" />
         </:example>
 
         <:code>{icons_code()}</:code>
@@ -230,8 +230,8 @@ defmodule MoonWeb.Pages.IconsPage do
     """
     <Icon name="files_copy" />
     <Icon name="files_copy" class="text-2xl" />
-    <Icon name="files_copy" font_size="3rem" class="text-chi-chi-100 text-2xl" />
-    <Icon name="files_copy" font_size="3rem" class="text-piccolo-100 text-2xl" />
+    <Icon name="files_copy" font_size="3rem" class="text-chi-chi text-2xl" />
+    <Icon name="files_copy" font_size="3rem" class="text-piccolo text-2xl" />
     """
   end
 

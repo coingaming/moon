@@ -18,7 +18,7 @@ defmodule Moon.Components.Toast do
   prop(link_text, :string)
   prop(link_href, :string)
   prop(on_close, :event)
-  prop(background_color_class, :css_class, default: "bg-gohan-100")
+  prop(background_color_class, :css_class, default: "bg-gohan")
 
   defmodule Message do
     @moduledoc false
@@ -65,7 +65,7 @@ defmodule Moon.Components.Toast do
           data-testid={"#{@testid}-close-button"}
         >
           <span class="sr-only">Close</span>
-          <IconErrorCircle class="w-5 h-5" font_size="1.25rem" color="trunks-100" />
+          <IconErrorCircle class="w-5 h-5" font_size="1.25rem" color="trunks" />
         </button>
       </div>
     </div>

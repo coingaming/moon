@@ -8,7 +8,7 @@ defmodule Moon.Components.DropdownMenuButton do
   prop(title, :string)
   prop(height, :integer, default: 10)
   prop(width, :integer, default: 10)
-  prop(text_color, :string, default: "text-trunks-100")
+  prop(text_color, :string, default: "text-trunks")
   prop(hover_bg_color, :string, default: "bg-goku-120")
   prop(placement, :string, default: "bottom-end")
   prop(show, :boolean, default: false)
@@ -21,7 +21,7 @@ defmodule Moon.Components.DropdownMenuButton do
     ~F"""
     <Popover {=@show} on_close={@on_toggle} {=@placement}>
       <button
-        class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks-100 hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
+        class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks hover:text-bulma #{@text_color} hover:#{@hover_bg_color} #{@class}"}
         title={@title}
         :on-click={@on_toggle}
       >

@@ -74,7 +74,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
               theme_name: @theme_name,
               direction: @direction
             )}
-            class="text-piccolo-100 transition-colors duration-200 hover:text-hit-100 visited:text-hit-100"
+            class="text-piccolo transition-colors duration-200 hover:text-hit visited:text-hit"
           >
             new Typography
           </a>
@@ -85,9 +85,9 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       <ExampleAndCode title="Colors" id="example_1">
         <:example>
           <Caption>Defaul color is Bulma</Caption>
-          <Caption color_class="text-piccolo-100">Piccolo</Caption>
-          <Caption color_class="text-trunks-100">Trunks</Caption>
-          <Caption color_class="text-krillin-100">Krillin</Caption>
+          <Caption color_class="text-piccolo">Piccolo</Caption>
+          <Caption color_class="text-trunks">Trunks</Caption>
+          <Caption color_class="text-krillin">Krillin</Caption>
         </:example>
 
         <:code>{example_1_code()}</:code>
@@ -111,9 +111,9 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   def example_1_code do
     """
     <Caption>Defaul color is Bulma</Caption>
-    <Caption color_class="text-piccolo-100">Piccolo</Caption>
-    <Caption color_class="text-trunks-100">Trunks</Caption>
-    <Caption color_class="text-krillin-100">Krillin</Caption>
+    <Caption color_class="text-piccolo">Piccolo</Caption>
+    <Caption color_class="text-trunks">Trunks</Caption>
+    <Caption color_class="text-krillin">Krillin</Caption>
     """
   end
 

@@ -12,8 +12,8 @@ defmodule Moon.Components.Lego do
     ~F"""
     <div class={
       "z-0 left-0 rounded-sm w-4 h-4 inline-block",
-      "border border-trunks-100": !@selected,
-      "border border-piccolo-100 bg-piccolo-100": @selected
+      "border border-trunks": !@selected,
+      "border border-piccolo bg-piccolo": @selected
     }>
       <div :if={@selected} style="padding-left: 2px; padding-top: 4px">
         <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">

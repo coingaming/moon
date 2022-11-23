@@ -20,12 +20,12 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(accent_colors_list, :list,
     default: [
       %{
-        :name => 'piccolo',
-        :value => '100'
+        :name => "piccolo",
+        :bg_color => "bg-piccolo"
       },
       %{
-        :name => 'hit',
-        :value => '100'
+        :name => "hit",
+        :bg_color => "bg-hit"
       }
     ]
   )
@@ -33,8 +33,8 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(border_colors_list, :list,
     default: [
       %{
-        :name => 'beerus',
-        :value => '100'
+        :name => "beerus",
+        :bg_color => "bg-beerus"
       }
     ]
   )
@@ -42,12 +42,12 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(background_colors_list, :list,
     default: [
       %{
-        :name => 'goku',
-        :value => '100'
+        :name => "goku",
+        :bg_color => "bg-goku"
       },
       %{
-        :name => 'gohan',
-        :value => '100'
+        :name => "gohan",
+        :bg_color => "bg-gohan"
       }
     ]
   )
@@ -55,12 +55,12 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(text_colors_list, :list,
     default: [
       %{
-        :name => 'bulma',
-        :value => '100'
+        :name => "bulma",
+        :bg_color => "bg-bulma"
       },
       %{
-        :name => 'trunks',
-        :value => '100'
+        :name => "trunks",
+        :bg_color => "bg-trunks"
       }
     ]
   )
@@ -68,12 +68,12 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(forced_colors_list, :list,
     default: [
       %{
-        :name => 'goten',
-        :value => '100'
+        :name => "goten",
+        :bg_color => "bg-goten"
       },
       %{
-        :name => 'popo',
-        :value => '100'
+        :name => "popo",
+        :bg_color => "bg-popo"
       }
     ]
   )
@@ -81,16 +81,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(krillin_colors_list, :list,
     default: [
       %{
-        :name => 'krillin',
-        :value => '100'
+        :name => "krillin",
+        :bg_color => "bg-krillin"
       },
       %{
-        :name => 'krillin',
-        :value => '60'
+        :name => "krillin-60",
+        :bg_color => "bg-krillin-60"
       },
       %{
-        :name => 'krillin',
-        :value => '10'
+        :name => "krillin-10",
+        :bg_color => "bg-krillin-10"
       }
     ]
   )
@@ -98,16 +98,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(chichi_colors_list, :list,
     default: [
       %{
-        :name => 'chi-chi',
-        :value => '100'
+        :name => "chi-chi",
+        :bg_color => "bg-chi-chi"
       },
       %{
-        :name => 'chi-chi',
-        :value => '60'
+        :name => "chi-chi-60",
+        :bg_color => "bg-chi-chi-60"
       },
       %{
-        :name => 'chi-chi',
-        :value => '10'
+        :name => "chi-chi-10",
+        :bg_color => "bg-chi-chi-10"
       }
     ]
   )
@@ -115,16 +115,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(roshi_colors_list, :list,
     default: [
       %{
-        :name => 'roshi',
-        :value => '100'
+        :name => "roshi",
+        :bg_color => "bg-roshi"
       },
       %{
-        :name => 'roshi',
-        :value => '60'
+        :name => "roshi-60",
+        :bg_color => "bg-roshi-60"
       },
       %{
-        :name => 'roshi',
-        :value => '10'
+        :name => "roshi-10",
+        :bg_color => "bg-roshi-10"
       }
     ]
   )
@@ -132,16 +132,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(dodoria_colors_list, :list,
     default: [
       %{
-        :name => 'dodoria',
-        :value => '100'
+        :name => "dodoria",
+        :bg_color => "bg-dodoria"
       },
       %{
-        :name => 'dodoria',
-        :value => '60'
+        :name => "dodoria-60",
+        :bg_color => "bg-dodoria-60"
       },
       %{
-        :name => 'dodoria',
-        :value => '10'
+        :name => "dodoria-10",
+        :bg_color => "bg-dodoria-10"
       }
     ]
   )
@@ -149,16 +149,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(cell_colors_list, :list,
     default: [
       %{
-        :name => 'cell',
-        :value => '100'
+        :name => "cell",
+        :bg_color => "bg-cell"
       },
       %{
-        :name => 'cell',
-        :value => '60'
+        :name => "cell-60",
+        :bg_color => "bg-cell-60"
       },
       %{
-        :name => 'cell',
-        :value => '10'
+        :name => "cell-10",
+        :bg_color => "bg-cell-10"
       }
     ]
   )
@@ -166,16 +166,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(raditz_colors_list, :list,
     default: [
       %{
-        :name => 'raditz',
-        :value => '100'
+        :name => "raditz",
+        :bg_color => "bg-raditz"
       },
       %{
-        :name => 'raditz',
-        :value => '60'
+        :name => "raditz-60",
+        :bg_color => "bg-raditz-60"
       },
       %{
-        :name => 'raditz',
-        :value => '10'
+        :name => "raditz-10",
+        :bg_color => "bg-raditz-10"
       }
     ]
   )
@@ -183,16 +183,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(whis_colors_list, :list,
     default: [
       %{
-        :name => 'whis',
-        :value => '100'
+        :name => "whis",
+        :bg_color => "bg-whis"
       },
       %{
-        :name => 'whis',
-        :value => '60'
+        :name => "whis-60",
+        :bg_color => "bg-whis-60"
       },
       %{
-        :name => 'whis',
-        :value => '10'
+        :name => "whis-10",
+        :bg_color => "bg-whis-10"
       }
     ]
   )
@@ -200,16 +200,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(frieza_colors_list, :list,
     default: [
       %{
-        :name => 'frieza',
-        :value => '100'
+        :name => "frieza",
+        :bg_color => "bg-frieza"
       },
       %{
-        :name => 'frieza',
-        :value => '60'
+        :name => "frieza-60",
+        :bg_color => "bg-frieza-60"
       },
       %{
-        :name => 'frieza',
-        :value => '10'
+        :name => "frieza-10",
+        :bg_color => "bg-frieza-10"
       }
     ]
   )
@@ -217,16 +217,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(nappa_colors_list, :list,
     default: [
       %{
-        :name => 'nappa',
-        :value => '100'
+        :name => "nappa",
+        :bg_color => "bg-nappa"
       },
       %{
-        :name => 'nappa',
-        :value => '60'
+        :name => "nappa-60",
+        :bg_color => "bg-nappa-60"
       },
       %{
-        :name => 'nappa',
-        :value => '10'
+        :name => "nappa-10",
+        :bg_color => "bg-nappa-10"
       }
     ]
   )
@@ -239,7 +239,7 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         <p>For that, we made a decision to give our colours unique names.</p>
         <p>Meet the <span class="font-semibold">Dragon Ball Z approach</span>.</p>
         <p>Each color name is assigned for specific purpose and for each product these values are different.</p>
-        <p>Please never use Hex values, they won't change if you need theme support.</p>
+        <p>Please never use Hex values, they won"t change if you need theme support.</p>
       </ComponentPageDescription>
 
       <PageSection title="Main colours">

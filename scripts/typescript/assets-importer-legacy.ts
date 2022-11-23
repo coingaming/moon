@@ -432,14 +432,14 @@ defmodule MoonWeb.Pages.Assets.DuotonesPage do
           <#template slot="example">
             <Duotone name="${camelToDashSnakeCase(
               x
-            )}" class="text-[10rem]" color="piccolo-100" />
+            )}" class="text-[10rem]" color="piccolo" />
           </#template>
 
           <#template slot="code">
             <#CodePreview>
               <Duotone name="${camelToDashSnakeCase(
                 x
-              )}" class="text-[10rem]" color="piccolo-100" />
+              )}" class="text-[10rem]" color="piccolo" />
             </#CodePreview>
           </#template>
         </ExampleAndCode>
@@ -489,7 +489,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Icons</Heading>
       
-        <div class="p-6 bg-gohan-100 rounded">
+        <div class="p-6 bg-gohan rounded">
           <div
             class="grid gap-4 overflow-hidden"
             style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"
@@ -499,7 +499,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
                 <div class="flex grow justify-center items-center">
                   <Icon name={icon_name} class="h-8 w-8" />
                 </div>
-                <h3 class="text-moon-12 mx-2 mb-2 text-trunks-100" title={icon_name}>{icon_name}</h3>
+                <h3 class="text-moon-12 mx-2 mb-2 text-trunks" title={icon_name}>{icon_name}</h3>
               </div>
             {/for}
           </div>

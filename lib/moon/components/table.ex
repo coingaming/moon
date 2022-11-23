@@ -31,12 +31,12 @@ defmodule Moon.Components.Table do
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
       <div class="w-full overflow-x-scroll">
-        <table class="text-sm border-collapse border-t border-beerus-100" style="min-width: 100%;">
+        <table class="text-sm border-collapse border-t border-beerus" style="min-width: 100%;">
           <thead>
             <tr>
               {#for col <- @cols}
                 <th
-                  class="border-r last:border-r-0 border-beerus-100 p-2 text-left text-trunks-100 font-normal"
+                  class="border-r last:border-r-0 border-beerus p-2 text-left text-trunks font-normal"
                   style="min-width: 200px"
                   :on-click={(col.sortable && @sorting_click) || nil}
                   :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort_dir)}
@@ -56,7 +56,7 @@ defmodule Moon.Components.Table do
               <tr
                 class={
                   "bg-goku-120": @selected == "#{item.id}",
-                  "bg-gohan-100": @selected != "#{item.id}" && rem(row_index, 2) == 0
+                  "bg-gohan": @selected != "#{item.id}" && rem(row_index, 2) == 0
                 }
                 }
                 :on-click={@row_click}
@@ -65,7 +65,7 @@ defmodule Moon.Components.Table do
               >
                 {#for {col, col_index} <- Enum.with_index(@cols)}
                   <td
-                    class="border-r last:border-r-0 border-beerus-100 p-2"
+                    class="border-r last:border-r-0 border-beerus p-2"
                     data-testid={"row-#{row_index}-col-#{col_index}"}
                   >
                     <#slot {col} generator_value={item} />

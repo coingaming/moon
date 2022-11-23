@@ -9,7 +9,7 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue.MainContent do
 
   def render(assigns) do
     ~F"""
-    <div class="text-bulma-100 text-moon-16 text-left h-full w-full">
+    <div class="text-bulma text-moon-16 text-left h-full w-full">
       {@label}
     </div>
     """

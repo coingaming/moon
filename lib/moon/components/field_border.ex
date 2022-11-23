@@ -27,15 +27,15 @@ defmodule Moon.Components.FieldBorder do
   end
 
   def get_default_border_color_class() do
-    "border-beerus-100"
+    "border-beerus"
   end
 
   def get_default_class() do
     "
     border-0
-    w-full max-w-full leading-normal text-bulma-100 box-border
+    w-full max-w-full leading-normal text-bulma box-border
     border border-solid rounded-moon-s-sm transition ease-in
-    placeholder-trunks-100 placeholder-opacity-100 no-scrollbar
+    placeholder-trunks placeholder-opacity no-scrollbar
     "
   end
 

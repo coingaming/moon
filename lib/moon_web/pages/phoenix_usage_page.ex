@@ -25,7 +25,7 @@ defmodule MoonWeb.Pages.PhoenixUsagePage do
           If you find a Moon component you want to use in your existing non-surface templates the recommended way
           is to replace the live views (or components) that will use the desired component with their Surface's counterparts. See
           <a
-            class="text-piccolo-100 font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+            class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
             href="https://surface-ui.org/usage_with_phoenix_templates"
             rel="nofollow"
             target="_blank"

@@ -45,7 +45,7 @@ defmodule Moon.Components.Calendar do
         </div>
       </div>
 
-      <div class="flex text-moon-12 text-center text-trunks-100">
+      <div class="flex text-moon-12 text-center text-trunks">
         <div :for={day_name <- days_names(@week_starts_on)} class="flex-1 py-3">
           {day_name}
         </div>

@@ -32,11 +32,11 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
       </ComponentPageDescription>
 
       <PageSection>
-        <div class="flex flex-wrap gap-8 items-start bg-goku-100 p-4 rounded-moon-s-sm">
+        <div class="flex flex-wrap gap-8 items-start bg-goku p-4 rounded-moon-s-sm">
           {#for country_flag_name <- CountryFlags.list_all()}
             <div class="flex flex-col gap-2 items-center">
               <CountryFlag name={country_flag_name} class="h-8 w-8" />
-              <p class="text-moon-10-caption uppercase text-trunks-100" title={country_flag_name}>{country_flag_name}</p>
+              <p class="text-moon-10-caption uppercase text-trunks" title={country_flag_name}>{country_flag_name}</p>
             </div>
           {/for}
         </div>

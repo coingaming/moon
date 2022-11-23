@@ -14,7 +14,7 @@ defmodule Moon.Components.IconButton do
   prop(title, :string)
   prop(height, :integer, default: 10)
   prop(width, :integer, default: 10)
-  prop(text_color, :string, default: "text-trunks-100")
+  prop(text_color, :string, default: "text-trunks")
   prop(hover_bg_color, :string, default: "bg-hit-120")
   prop(click, :event)
   prop(value_name, :string)
@@ -25,7 +25,7 @@ defmodule Moon.Components.IconButton do
     ~F"""
     <button
       {=@id}
-      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma-100 #{@text_color} hover:#{@hover_bg_color} #{@class}"}
+      class={"h-#{@height} w-#{@width} rounded flex items-center justify-center hover:text-bulma #{@text_color} hover:#{@hover_bg_color} #{@class}"}
       title={@title}
       :on-click={@click}
       {...phx_val_tag(@value_name, @value)}

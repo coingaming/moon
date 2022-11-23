@@ -10,8 +10,8 @@ defmodule Moon.Components.Lego.Checkbox do
     <span class="flex w-6 h-6 justify-center items-center">
       <div class={
         "z-0 left-0 rounded-sm w-4 h-4 inline-block",
-        "border border-trunks-100": !@is_selected,
-        "border border-piccolo-100 bg-piccolo-100": @is_selected
+        "border border-trunks": !@is_selected,
+        "border border-piccolo bg-piccolo": @is_selected
       }>
         <div :if={@is_selected} style="padding-left: 2px; padding-top: 4px">
           <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">

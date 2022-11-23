@@ -25,10 +25,10 @@ defmodule MoonWeb.Components.ExampleAndCode do
       </div>
 
       <div class={
-        "p-4 flex bg-goku-100 text-moon-14 rounded-moon-s-sm",
+        "p-4 flex bg-goku text-moon-14 rounded-moon-s-sm",
         hidden: @selected_button == "code"
       }>
-        <div class="bg-goku-100 w-full">
+        <div class="bg-goku w-full">
           <!-- Do not remove this -->
           <div class="flex flex-wrap items-center justify-around gap-2 w-full bg-transparent">
             <#slot {@example}>Example not defined</#slot>
@@ -39,15 +39,12 @@ defmodule MoonWeb.Components.ExampleAndCode do
         "overflow-scroll",
         hidden: @selected_button == "preview"
       }>
-        <pre class="moon-design-dark w-full bg-goku-100 overflow-scroll p-4 text-moon-14 text-bulma-100 rounded-moon-s-sm"><#slot {@code}>Example code not defined</#slot></pre>
+        <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot {@code}>Example code not defined</#slot></pre>
       </div>
 
-      <div
-        class="grid gap-4 p-4 bg-goku-100 text-moon-14 rounded-moon-s-sm"
-        :if={slot_assigned?(:state)}
-      >
-        <div><Label size="medium" class="bg-piccolo-100">State</Label></div>
-        <pre class="break-all overflow-x-scroll text-trunks-100"><#slot {@state} /></pre>
+      <div class="grid gap-4 p-4 bg-goku text-moon-14 rounded-moon-s-sm" :if={slot_assigned?(:state)}>
+        <div><Label size="medium" class="bg-piccolo">State</Label></div>
+        <pre class="break-all overflow-x-scroll text-trunks"><#slot {@state} /></pre>
       </div>
     </section>
     """

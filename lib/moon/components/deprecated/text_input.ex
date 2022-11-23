@@ -36,7 +36,7 @@ defmodule Moon.Components.Deprecated.TextInput do
   prop(keyup, :event)
   prop(blur, :event)
   prop(step, :string, default: "1")
-  prop(background_color, :string, values: Moon.colors(), default: "goku-100")
+  prop(background_color, :string, values: Moon.colors(), default: "goku")
   prop(size, :string, values: ["medium", "large"], default: "large")
   prop(border_color_class, :string)
   prop(states_class, :string)
@@ -49,12 +49,12 @@ defmodule Moon.Components.Deprecated.TextInput do
     text_input = ~F"""
     <div class="relative">
       {#if slot_assigned?(:left_icon)}
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks-100">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center text-trunks">
           <#slot {@left_icon} />
         </div>
       {/if}
       {#if slot_assigned?(:right_icon)}
-        <div class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks-100">
+        <div class="absolute inset-y-0 right-0 pr-4 flex items-center text-trunks">
           <#slot {@right_icon} />
         </div>
       {/if}
@@ -68,7 +68,7 @@ defmodule Moon.Components.Deprecated.TextInput do
           "h-12 text-moon-16 px-4": @size == "large",
           "pl-11": slot_assigned?(:left_icon),
           "pr-11": slot_assigned?(:right_icon),
-          "border-chi-chi-100": @error,
+          "border-chi-chi": @error,
           "#{@class}": true,
           "bg-#{@background_color}": true
         }
@@ -89,7 +89,7 @@ defmodule Moon.Components.Deprecated.TextInput do
       />
 
       {#if slot_assigned?(:hint_text)}
-        <div class="mt-2 ml-2 relative text-trunks-100">
+        <div class="mt-2 ml-2 relative text-trunks">
           <#slot {@hint_text} />
         </div>
       {/if}

@@ -11,7 +11,7 @@ defmodule Moon.Components.Select.SingleSelect.HintText do
     ~F"""
     <div
       role="alert"
-      class={"inline-block mt-2 text-moon-12", "text-chi-chi-100": @has_error, "text-trunks-100": !@has_error}
+      class={"inline-block mt-2 text-moon-12", "text-chi-chi": @has_error, "text-trunks": !@has_error}
     >
       <#slot />
     </div>

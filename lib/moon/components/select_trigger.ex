@@ -18,12 +18,12 @@ defmodule Moon.Components.SelectTrigger do
     ~F"""
     <button
       class={
-        "w-full text-left border border-solid rounded border-beerus-100 bg-gohan-100 flex items-center focus:border-piccolo-100 active:border-piccolo-100 #{@class}",
+        "w-full text-left border border-solid rounded border-beerus bg-gohan flex items-center focus:border-piccolo active:border-piccolo #{@class}",
         "text-moon-14 h-10 px-3": @size == "md",
         "text-moon-16 h-12 px-4": @size == "lg",
         "text-moon-16 h-14 px-4": @size == "xl",
-        "text-trunks-100": is_nil(@selected_option),
-        "text-bulma-100": !is_nil(@selected_option)
+        "text-trunks": is_nil(@selected_option),
+        "text-bulma": !is_nil(@selected_option)
       }
       :on-click={@on_click}
     >
@@ -36,11 +36,11 @@ defmodule Moon.Components.SelectTrigger do
       </div>
 
       <div id={"#{@id}-chevron-down"} class="items-center">
-        <ControlsChevronDown class="flex-shrink-0 w-6 h-6" color="bulma-100" />
+        <ControlsChevronDown class="flex-shrink-0 w-6 h-6" color="bulma" />
       </div>
 
       <div id={"#{@id}-chevron-up"} class="items-center" style="display: none;">
-        <ControlsChevronUp class="flex-shrink-0 w-6 h-6" color="bulma-100" />
+        <ControlsChevronUp class="flex-shrink-0 w-6 h-6" color="bulma" />
       </div>
     </button>
     """

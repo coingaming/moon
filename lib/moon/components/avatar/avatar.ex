@@ -7,8 +7,8 @@ defmodule Moon.Components.Avatar do
 
   prop(image_url, :string)
   prop(name, :string)
-  prop(color, :css_class, default: "text-bulma-100")
-  prop(bg_color, :css_class, default: "bg-gohan-100")
+  prop(color, :css_class, default: "text-bulma")
+  prop(bg_color, :css_class, default: "bg-gohan")
   prop(is_uppercase, :boolean, default: true)
 
   prop(size, :string, default: "md", values: ~w(xs sm md lg xl 2xl))
@@ -47,7 +47,7 @@ defmodule Moon.Components.Avatar do
       <div
         :if={@status_origin && @is_status_active}
         class={
-          "absolute border-solid color-beerus-100 rounded-full bg-roshi-100",
+          "absolute border-solid color-beerus rounded-full bg-roshi",
           "top-0": @status_origin.vertical == "top",
           "bottom-0": @status_origin.vertical == "bottom",
           "left-0": @status_origin.horizontal == "left",
