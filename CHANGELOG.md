@@ -1,3 +1,10 @@
+## [2.31.2](https://github.com/coingaming/moon/compare/v2.31.1...v2.31.2) (2022-11-23)
+
+
+### Bug Fixes
+
+* .env file fixes ([467cb24](https://github.com/coingaming/moon/commit/467cb2480a05547acf42e23e980f4e44199b1d2d))
+
 ## [2.31.1](https://github.com/coingaming/moon/compare/v2.31.0...v2.31.1) (2022-11-11)
 
 
