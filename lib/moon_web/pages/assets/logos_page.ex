@@ -275,12 +275,12 @@ defmodule MoonWeb.Pages.Assets.LogosPage do
 
         <ExampleAndCode id="logo_21" class="mt-4">
           <:example>
-            <Logo name="logo-moon-design-short" class="text-[10rem]" />
+            <Logo name="logo-theme-moon-short" class="text-[10rem]" />
           </:example>
 
           <:code>
             <#CodePreview>
-              <Logo name="logo-moon-design-short" class="text-[10rem]" />
+              <Logo name="logo-theme-moon-short" class="text-[10rem]" />
             </#CodePreview>
           </:code>
         </ExampleAndCode>

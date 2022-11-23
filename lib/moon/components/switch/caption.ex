@@ -14,8 +14,8 @@ defmodule Moon.Components.Switch.Caption do
       "text-moon-9": @size == "small",
       "text-moon-10": @size == "medium",
       "text-moon-12": @size == "large",
-      "text-bulma-100": @active,
-      "text-trunks-100": !@active
+      "text-bulma": @active,
+      "text-trunks": !@active
     }>
       {@label}
     </span>

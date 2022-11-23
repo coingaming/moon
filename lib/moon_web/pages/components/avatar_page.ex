@@ -29,14 +29,14 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :name => 'bg_color',
         :type => 'string',
         :required => 'false',
-        :default => 'bg-gohan-100',
+        :default => 'bg-gohan',
         :description => 'Background color'
       },
       %{
         :name => 'color',
         :type => 'string',
         :required => 'false',
-        :default => 'text-bulma-100',
+        :default => 'text-bulma',
         :description => 'Text color'
       },
       %{
@@ -129,9 +129,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <ExampleAndCode title="Different colours" id="avatar_2">
         <:example>
           <Avatar />
-          <Avatar color="text-frieza-100" bg_color="bg-chi-chi-100" />
-          <Avatar color="text-gohan-100" bg_color="bg-krillin-100" />
-          <Avatar color="text-chi-chi-100" bg_color="bg-frieza-100" />
+          <Avatar color="text-frieza" bg_color="bg-chi-chi" />
+          <Avatar color="text-gohan" bg_color="bg-krillin" />
+          <Avatar color="text-chi-chi" bg_color="bg-frieza" />
         </:example>
 
         <:code>{avatar_2_code()}</:code>
@@ -220,9 +220,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def avatar_2_code do
     """
     <Avatar />
-    <Avatar color="text-frieza-100" bg_color="bg-chi-chi-100" />
-    <Avatar color="text-gohan-100" bg_color="bg-krillin-100" />
-    <Avatar color="text-chi-chi-100" bg_color="bg-frieza-100" />
+    <Avatar color="text-frieza" bg_color="bg-chi-chi" />
+    <Avatar color="text-gohan" bg_color="bg-krillin" />
+    <Avatar color="text-chi-chi" bg_color="bg-frieza" />
     """
   end
 

@@ -22,7 +22,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop(popover_placement, :string, default: "bottom-start")
   prop(popover_class, :string)
   prop(placeholder, :string)
-  prop(background_color, :string, values: Moon.colors(), default: "gohan-100")
+  prop(background_color, :string, values: Moon.colors(), default: "gohan")
   prop(has_error, :boolean)
   prop(use_error_tag, :boolean)
   prop(selected_value_class, :css_class, default: "")
@@ -36,7 +36,7 @@ defmodule Moon.Components.Select.SingleSelect do
   def render(assigns) do
     ~F"""
     {#if @size != "xl"}
-      <FieldLabel class="block text-trunks-100 text-moon-16 font-normal mb-2">
+      <FieldLabel class="block text-trunks text-moon-16 font-normal mb-2">
         {@label}
       </FieldLabel>
     {/if}
@@ -85,7 +85,7 @@ defmodule Moon.Components.Select.SingleSelect do
           <div
             class={
               "overflow-auto rounded-moon-i-md box-border border border-solid",
-              "border-beerus-100 min-h-[20px] max-h-[200px] drop-shadow-2xl"
+              "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl"
             }
             style="min-height: 20px; max-height: 200px"
           >

@@ -233,7 +233,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <p class="text-moon-14 text-trunks-100 pl-3 pr-3">
+          <p class="text-moon-14 text-trunks pl-3 pr-3">
             please note that also for sizes we do use explicit namings also - "xlarge", "large", "medium", "small"
           </p>
         </:example>
@@ -284,7 +284,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
       <ExampleAndCode title="With background" id="accordion-9">
         <:example>
-          <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus-100">
+          <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus">
             <:title>Test accordion with backgound</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -293,7 +293,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </:content>
           </Accordion>
-          <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100" is_content_inside={false}>
+          <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus" is_content_inside={false}>
             <:title>Test accordion with backgound: content outside</:title>
             <:content>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -485,7 +485,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
 
   def get_example_9_code() do
     """
-    <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus-100">
+    <Accordion id="deposits-and-withdrawals-9-1" bg_color="bg-beerus">
       <:title>Test accordion with backgound</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -494,7 +494,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </:content>
     </Accordion>
-    <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus-100">
+    <Accordion id="deposits-and-withdrawals-9-2" bg_color="bg-beerus">
       <:title>Test accordion with backgound: content outside</:title>
       <:content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

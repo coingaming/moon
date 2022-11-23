@@ -8,12 +8,12 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
   alias MoonWeb.Components.Facing.GithubIcon
   alias MoonWeb.Pages.GettingStartedPage
 
-  prop(theme_name, :string, default: "moon-design-light")
+  prop(theme_name, :string, default: "theme-moon-light")
   prop(direction, :string, default: "ltr")
 
   def render(assigns) do
     ~F"""
-    <div class="moon-design-light text-bulma-100 relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-developers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-tl-none 3xl:absolute 3xl:top-96 ltr:3xl:right-0 rtl:3xl:left-0">
+    <div class="theme-moon-light text-bulma relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-developers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-tl-none 3xl:absolute 3xl:top-96 ltr:3xl:right-0 rtl:3xl:left-0">
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <GithubIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
@@ -30,7 +30,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
         </div>
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex bg-transparent">
-        <a href="https://github.com/coingaming/moon-design" target="_blank" rel="noreferrer">
+        <a href="https://github.com/coingaming/theme-moon" target="_blank" rel="noreferrer">
           <Button variant="secondary">Github</Button>
         </a>
         <a href="gettingStarted">
@@ -40,14 +40,14 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
           <Button variant="secondary">Design Tokens</Button>
         </a>
         <a
-          href="https://github.com/coingaming/moon-design/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
+          href="https://github.com/coingaming/theme-moon/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
           target="_blank"
           rel="noreferrer"
         >
           <Button variant="secondary">Creating Themes</Button>
         </a>
         <a
-          href="https://github.com/coingaming/moon-design/blob/develop/CONTRIBUTING.md"
+          href="https://github.com/coingaming/theme-moon/blob/develop/CONTRIBUTING.md"
           target="_blank"
           rel="noreferrer"
         >

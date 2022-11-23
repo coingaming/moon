@@ -69,9 +69,11 @@ npx ts-node generate-svg-symbols.ts
 npx ts-node assets-importer-legacy.ts
 npx ts-node icons-importer.ts
 mv node_modules/moon-design moon-design
-npx ts-node theme-importer.ts
+# themes are not imported any more from react. there is https://github.com/coingaming/moon-design/tree/develop/workspaces/themes/src now
+# npx ts-node theme-importer.ts
 mv moon-design node_modules/moon-design
-npx ts-node figma-importer.ts
+# themes are not imported any more from react. there is https://github.com/coingaming/moon-design/tree/develop/workspaces/themes/src now
+# npx ts-node figma-importer.ts
 cd $root_dir
 rm $root_dir/scripts/typescript/.env
 

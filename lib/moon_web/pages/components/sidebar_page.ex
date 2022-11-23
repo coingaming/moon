@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
             </p>
           </:note>
           <:example>
-            <Sidebar background_color="bg-gohan-100" open_width="14rem">
+            <Sidebar background_color="bg-gohan" open_width="14rem">
               <:short_logo>
                 <div class="flex items-center h-10">
                   <LogoBitcasinoShort font_size="2.1rem" />
@@ -76,15 +76,15 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
                 <nav class="mt-5">
                   <TopToDown>
                     <a href="#" class="flex items-center group">
-                      <IconSlots font_size="1.75rem" class="shrink-0 mr-3 transition scale-100 group-hover:scale-110" />
-                      <span class="group-hover:text-piccolo-100">Slots</span>
+                      <IconSlots font_size="1.75rem" class="shrink-0 mr-3 transition scale group-hover:scale-110" />
+                      <span class="group-hover:text-piccolo">Slots</span>
                     </a>
                     <a href="#" class="flex items-center group">
                       <IconSportsBaseBall
                         font_size="1.75rem"
-                        class="shrink-0 mr-3 transition scale-100 group-hover:scale-110"
+                        class="shrink-0 mr-3 transition scale group-hover:scale-110"
                       />
-                      <span class="group-hover:text-piccolo-100">Baseball</span>
+                      <span class="group-hover:text-piccolo">Baseball</span>
                     </a>
                   </TopToDown>
                 </nav>
@@ -108,7 +108,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       alias Moon.Assets.Logos.LogoBitcasinoFull
       alias Moon.Assets.Logos.LogoBitcasinoShort
 
-      <Sidebar background_color="bg-gohan-100" open_width="14rem">
+      <Sidebar background_color="bg-gohan" open_width="14rem">
         <template slot="short_logo">
           <div class="flex items-center h-10">
             <LogoBitcasinoShort font_size="2.1rem" />
@@ -125,12 +125,12 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
           <nav class="mt-5">
             <TopToDown>
               <a href="#" class="flex items-center group">
-                <IconSlots font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
-                <span class="group-hover:text-piccolo-100">Slots</span>
+                <IconSlots font_size="1.75rem" class="shrink-9 mr-3 transition scale group-hover:scale-110" />
+                <span class="group-hover:text-piccolo">Slots</span>
               </a>
               <a href="#" class="flex items-center group">
-                <IconSportsBaseBall font_size="1.75rem" class="shrink-9 mr-3 transition scale-100 group-hover:scale-110" />
-                <span class="group-hover:text-piccolo-100">Baseball</span>
+                <IconSportsBaseBall font_size="1.75rem" class="shrink-9 mr-3 transition scale group-hover:scale-110" />
+                <span class="group-hover:text-piccolo">Baseball</span>
               </a>
             </TopToDown>
           </nav>

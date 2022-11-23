@@ -8,12 +8,12 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
   alias MoonWeb.Components.Facing.FigmaIcon
   alias MoonWeb.Pages.GettingStartedPage
 
-  prop(theme_name, :string, default: "moon-design-light")
+  prop(theme_name, :string, default: "theme-moon-light")
   prop(direction, :string, default: "ltr")
 
   def render(assigns) do
     ~F"""
-    <div class="moon-design-dark text-bulma-100 relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">
+    <div class="theme-moon-dark text-bulma relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <FigmaIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
@@ -25,7 +25,7 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
           <ArrowsTopRight font_size="2rem" />
         </div>
       </div>
-      <div class="hidden flex-wrap gap-1 3xl:flex moon-design-dark bg-transparent">
+      <div class="hidden flex-wrap gap-1 3xl:flex theme-moon-dark bg-transparent">
         <a
           href="https://www.figma.com/community/file/1002945721703152933"
           target="_blank"

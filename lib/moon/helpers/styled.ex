@@ -42,7 +42,7 @@ defmodule Moon.Helpers.Styled do
     if String.starts_with?(y, "#") do
       "#{x}: #{y}"
     else
-      "#{x}: var(--color--#{y})"
+      "#{x}: var(--#{y})"
     end
   end
 end

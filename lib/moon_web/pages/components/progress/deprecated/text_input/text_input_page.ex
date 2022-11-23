@@ -156,7 +156,7 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
         </ExampleAndCode>
 
         <div>
-          <div class="text-bulma-100 items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
+          <div class="text-bulma items-center text-moon-20 font-normal my-4">TabLink Props Tabs</div>
           <Table items={item <- @props_info_array}>
             <Column name="name" label="Name" is_row_header>
               {item.name}

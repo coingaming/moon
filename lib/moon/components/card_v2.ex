@@ -5,7 +5,7 @@ defmodule Moon.Components.CardV2 do
 
   prop(rounded, :css_class, default: "rounded-md")
   prop(class, :css_class)
-  prop(background_color_class, :css_class, default: "bg-gohan-100")
+  prop(background_color_class, :css_class, default: "bg-gohan")
   prop(border_color_class, :css_class)
   prop(top_class, :css_class)
   prop(left_bottom_class, :css_class)
@@ -18,7 +18,7 @@ defmodule Moon.Components.CardV2 do
   def render(assigns) do
     ~F"""
     <div class={
-      "w-full grid grid-cols-2 gap-6 p-6 text-bulma-100",
+      "w-full grid grid-cols-2 gap-6 p-6 text-bulma",
       @class,
       @background_color_class,
       @border_color_class,

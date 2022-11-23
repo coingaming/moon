@@ -7,11 +7,11 @@ defmodule MoonWeb.Hooks.SetGlobalParams do
   def on_mount(:default, params, _session, socket) do
     {:cont,
      socket
-     |> assign(:theme_name, params["theme_name"] || "moon-design-light")
+     |> assign(:theme_name, params["theme_name"] || "theme-moon-light")
      |> assign(:direction, params["direction"] || "ltr")
      |> assign(:active_page, socket.view)
      |> Surface.Components.Context.put(
-       theme_name: params["theme_name"] || "moon-design-light",
+       theme_name: params["theme_name"] || "theme-moon-light",
        direction: params["direction"] || "ltr",
        active_page: socket.view
      )}

@@ -13,10 +13,10 @@ defmodule MoonWeb.Components.Facing.Future do
     >
       <div class="flex justify-between align-start">
         <div class="flex flex-col gap-6">
-          <h3 class="relative text-goten-100 text-moon-48 font-semibold z-1">
+          <h3 class="relative text-goten text-moon-48 font-semibold z-1">
             Want to contribute?
           </h3>
-          <p class="max-w-md relative text-moon-24 text-goten-100 z-1">
+          <p class="max-w-md relative text-moon-24 text-goten z-1">
             Start building with our HTML/CSS framework and rapidly go from
             prototype to production.
           </p>
@@ -24,7 +24,7 @@ defmodule MoonWeb.Components.Facing.Future do
         <div class="relative z-1 w-[196px] h-[151px]">
           <FutureIcon />
         </div>
-        <div class="relative text-goten-100 z-1">
+        <div class="relative text-goten z-1">
           <ArrowsTopRight font_size="2rem" />
         </div>
       </div>

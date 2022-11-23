@@ -4,7 +4,7 @@ defmodule Moon.Components.InputGroup.Container do
   use Moon.StatelessComponent
 
   prop(orientation, :string)
-  prop(background_color, :string, default: "gohan-100", values: Moon.colors())
+  prop(background_color, :string, default: "gohan", values: Moon.colors())
   prop(is_error, :boolean)
   slot(default)
 
@@ -15,8 +15,8 @@ defmodule Moon.Components.InputGroup.Container do
       @orientation,
       "rtl-aware",
       get_class_for_orientation(@orientation),
-      "after:bg-beerus-100": !@is_error,
-      "after:bg-chi-chi-100": @is_error,
+      "after:bg-beerus": !@is_error,
+      "after:bg-chi-chi": @is_error,
       "bg-#{@background_color}": @background_color
     }>
       <#slot />

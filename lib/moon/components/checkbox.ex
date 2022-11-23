@@ -32,7 +32,7 @@ defmodule Moon.Components.Checkbox do
       />
       <Checkbox is_selected={is_true(@checked) || is_true(Phoenix.HTML.Form.input_value(@form, @field))} />
 
-      <FieldLabel field={@field} class="bg-rochi-100 pl-2"><#slot /></FieldLabel>
+      <FieldLabel field={@field} class="bg-rochi pl-2"><#slot /></FieldLabel>
     </div>
     """
   end

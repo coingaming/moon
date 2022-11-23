@@ -16,7 +16,7 @@ defmodule Moon.Components.Datepicker.Month do
         {Timex.format!(@date, "%B %Y", :strftime)}
       </div>
 
-      <div class="flex mb-1 text-moon-12 font-semibold text-center text-trunks-100">
+      <div class="flex mb-1 text-moon-12 font-semibold text-center text-trunks">
         <div :for={ch <- days_letters(@week_starts_on)} class="flex items-center justify-center w-8 h-8">
           {ch}
         </div>
@@ -33,7 +33,7 @@ defmodule Moon.Components.Datepicker.Month do
           class={"cursor-pointer #{day_container_class(day, @start_date, @end_date, @week_starts_on)}"}
         >
           <div
-            class={"border border-transparent hover:border-trunks-100 rounded h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
+            class={"border border-transparent hover:border-trunks rounded h-8 w-8 flex items-center justify-center #{day_class(day, @start_date, @end_date)}"}
             :on-click={@on_click}
             phx-value-date={Timex.format!(day, "%Y-%0m-%0dT%R", :strftime)}
           >
@@ -81,7 +81,7 @@ defmodule Moon.Components.Datepicker.Month do
 
   defp day_container_class(day, start_date, nil, _) do
     if Timex.to_date(day) == Timex.to_date(start_date) do
-      "bg-goku-100 rounded"
+      "bg-goku rounded"
     end
   end
 
@@ -95,10 +95,10 @@ defmodule Moon.Components.Datepicker.Month do
         nil
 
       date_day == start_day ->
-        "bg-goku-100 rounded"
+        "bg-goku rounded"
 
       date_day == end_day ->
-        "bg-goku-100 rounded"
+        "bg-goku rounded"
 
       Timex.between?(day, start_date, end_date) ->
         week_start_class(day, week_starts_on)
@@ -110,9 +110,9 @@ defmodule Moon.Components.Datepicker.Month do
 
   defp week_start_class(day, week_starts_on) do
     cond do
-      Timex.weekday(day) == week_starts_on -> "bg-goku-100 rounded-l"
-      Timex.weekday(day) == week_starts_on + 6 -> "bg-goku-100 rounded-r"
-      true -> "bg-goku-100"
+      Timex.weekday(day) == week_starts_on -> "bg-goku rounded-l"
+      Timex.weekday(day) == week_starts_on + 6 -> "bg-goku rounded-r"
+      true -> "bg-goku"
     end
   end
 
@@ -120,7 +120,7 @@ defmodule Moon.Components.Datepicker.Month do
 
   defp day_class(day, start_date, end_date) do
     if Timex.to_date(day) in [Timex.to_date(start_date), Timex.to_date(end_date)],
-      do: "bg-piccolo-100 text-goten-100",
+      do: "bg-piccolo text-goten",
       else: nil
   end
 end

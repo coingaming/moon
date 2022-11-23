@@ -163,17 +163,17 @@ module.exports = {
         md: "var(--box-shadow--default)",
         lg: "var(--box-shadow--lg)",
         xl: "var(--box-shadow--xl)",
-        border: "0 0 0 2px rgba(var(--color--piccolo-100)) inset",
-        inset: "0 0 0 1px rgb(var(--color--piccolo-100)) inset",
-        interactive: "0 0 0 2px rgb(var(--color--piccolo-100)) inset",
-        focus: `0 0 0 4px rgba(var(--color--piccolo-100), .13)`,
-        input: "0 0 0 var(--border-width) rgb(var(--color--beerus-100)) inset",
+        border: "0 0 0 2px rgba(var(--piccolo)) inset",
+        inset: "0 0 0 1px rgb(var(--piccolo)) inset",
+        interactive: "0 0 0 2px rgb(var(--piccolo)) inset",
+        focus: `0 0 0 4px rgba(var(--piccolo), .13)`,
+        input: "0 0 0 var(--border-width) rgb(var(--beerus)) inset",
         "input-hov":
-          "0 0 0 var(--border-i-width) rgb(var(--color--bulma-100) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--color--beerus-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--bulma) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--beerus)) inset",
         "input-err":
-          "0 0 0 var(--border-i-width) rgb(var(--color--chi-chi-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--chi-chi)) inset",
         "input-focus":
-          "0 0 0 var(--border-i-width) rgb(var(--color--piccolo-100)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--piccolo)) inset",
         "moon-sm":
           "0 6px 6px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)",
         "moon-md":
@@ -185,148 +185,148 @@ module.exports = {
       },
       colors: {
         transparent: "transparent",
-        text: "var(--color--text)",
-        background: "var(--color--background)",
+        text: "var(--text)",
+        background: "var(--background)",
         "krillin-10": {
-          DEFAULT: withOpacityValue("--color--krillin-10"),
+          DEFAULT: withOpacityValue("--krillin-10"),
         },
         "krillin-60": {
-          DEFAULT: withOpacityValue("--color--krillin-60"),
+          DEFAULT: withOpacityValue("--krillin-60"),
         },
-        "krillin-100": {
-          DEFAULT: withOpacityValue("--color--krillin-100"),
+        "krillin": {
+          DEFAULT: withOpacityValue("--krillin"),
         },
         "chi-chi-10": {
-          DEFAULT: withOpacityValue("--color--chi-chi-10"),
+          DEFAULT: withOpacityValue("--chi-chi-10"),
         },
         "chi-chi-60": {
-          DEFAULT: withOpacityValue("--color--chi-chi-60"),
+          DEFAULT: withOpacityValue("--chi-chi-60"),
         },
-        "chi-chi-100": {
-          DEFAULT: withOpacityValue("--color--chi-chi-100"),
+        "chi-chi": {
+          DEFAULT: withOpacityValue("--chi-chi"),
         },
         "roshi-10": {
-          DEFAULT: withOpacityValue("--color--roshi-10"),
+          DEFAULT: withOpacityValue("--roshi-10"),
         },
         "roshi-60": {
-          DEFAULT: withOpacityValue("--color--roshi-60"),
+          DEFAULT: withOpacityValue("--roshi-60"),
         },
-        "roshi-100": {
-          DEFAULT: withOpacityValue("--color--roshi-100"),
+        "roshi": {
+          DEFAULT: withOpacityValue("--roshi"),
         },
         "dodoria-10": {
-          DEFAULT: withOpacityValue("--color--dodoria-10"),
+          DEFAULT: withOpacityValue("--dodoria-10"),
         },
         "dodoria-60": {
-          DEFAULT: withOpacityValue("--color--dodoria-60"),
+          DEFAULT: withOpacityValue("--dodoria-60"),
         },
-        "dodoria-100": {
-          DEFAULT: withOpacityValue("--color--dodoria-100"),
+        "dodoria": {
+          DEFAULT: withOpacityValue("--dodoria"),
         },
         "cell-10": {
-          DEFAULT: withOpacityValue("--color--cell-10"),
+          DEFAULT: withOpacityValue("--cell-10"),
         },
         "cell-60": {
-          DEFAULT: withOpacityValue("--color--cell-60"),
+          DEFAULT: withOpacityValue("--cell-60"),
         },
-        "cell-100": {
-          DEFAULT: withOpacityValue("--color--cell-100"),
+        "cell": {
+          DEFAULT: withOpacityValue("--cell"),
         },
         "raditz-10": {
-          DEFAULT: withOpacityValue("--color--raditz-10"),
+          DEFAULT: withOpacityValue("--raditz-10"),
         },
         "raditz-60": {
-          DEFAULT: withOpacityValue("--color--raditz-60"),
+          DEFAULT: withOpacityValue("--raditz-60"),
         },
-        "raditz-100": {
-          DEFAULT: withOpacityValue("--color--raditz-100"),
+        "raditz": {
+          DEFAULT: withOpacityValue("--raditz"),
         },
         "whis-10": {
-          DEFAULT: withOpacityValue("--color--whis-10"),
+          DEFAULT: withOpacityValue("--whis-10"),
         },
         "whis-60": {
-          DEFAULT: withOpacityValue("--color--whis-60"),
+          DEFAULT: withOpacityValue("--whis-60"),
         },
-        "whis-100": {
-          DEFAULT: withOpacityValue("--color--whis-100"),
+        "whis": {
+          DEFAULT: withOpacityValue("--whis"),
         },
         "frieza-10": {
-          DEFAULT: withOpacityValue("--color--frieza-10"),
+          DEFAULT: withOpacityValue("--frieza-10"),
         },
         "frieza-60": {
-          DEFAULT: withOpacityValue("--color--frieza-60"),
+          DEFAULT: withOpacityValue("--frieza-60"),
         },
-        "frieza-100": {
-          DEFAULT: withOpacityValue("--color--frieza-100"),
+        "frieza": {
+          DEFAULT: withOpacityValue("--frieza"),
         },
         "nappa-10": {
-          DEFAULT: withOpacityValue("--color--nappa-10"),
+          DEFAULT: withOpacityValue("--nappa-10"),
         },
         "nappa-60": {
-          DEFAULT: withOpacityValue("--color--nappa-60"),
+          DEFAULT: withOpacityValue("--nappa-60"),
         },
-        "nappa-100": {
-          DEFAULT: withOpacityValue("--color--nappa-100"),
+        "nappa": {
+          DEFAULT: withOpacityValue("--nappa"),
         },
         "piccolo-80": {
-          DEFAULT: withOpacityValue("--color--piccolo-80"),
+          DEFAULT: withOpacityValue("--piccolo-80"),
         },
-        "piccolo-100": {
-          DEFAULT: withOpacityValue("--color--piccolo-100"),
+        "piccolo": {
+          DEFAULT: withOpacityValue("--piccolo"),
         },
         "piccolo-120": {
-          DEFAULT: withOpacityValue("--color--piccolo-120"),
+          DEFAULT: withOpacityValue("--piccolo-120"),
         },
         "hit-80": {
-          DEFAULT: withOpacityValue("--color--hit-80"),
+          DEFAULT: withOpacityValue("--hit-80"),
         },
-        "hit-100": {
-          DEFAULT: withOpacityValue("--color--hit-100"),
+        "hit": {
+          DEFAULT: withOpacityValue("--hit"),
         },
         "hit-120": {
-          DEFAULT: withOpacityValue("--color--hit-120"),
+          DEFAULT: withOpacityValue("--hit-120"),
         },
-        "goten-100": {
-          DEFAULT: withOpacityValue("--color--goten-100"),
+        "goten": {
+          DEFAULT: withOpacityValue("--goten"),
         },
         "goku-10": {
-          DEFAULT: withOpacityValue("--color--goku-10"),
+          DEFAULT: withOpacityValue("--goku-10"),
         },
         "goku-40": {
-          DEFAULT: withOpacityValue("--color--goku-40"),
+          DEFAULT: withOpacityValue("--goku-40"),
         },
         "goku-80": {
-          DEFAULT: withOpacityValue("--color--goku-80"),
+          DEFAULT: withOpacityValue("--goku-80"),
         },
-        "goku-100": {
-          DEFAULT: withOpacityValue("--color--goku-100"),
+        "goku": {
+          DEFAULT: withOpacityValue("--goku"),
         },
         "goku-120": {
-          DEFAULT: withOpacityValue("--color--goku-120"),
+          DEFAULT: withOpacityValue("--goku-120"),
         },
         "gohan-10": {
-          DEFAULT: withOpacityValue("--color--gohan-10"),
+          DEFAULT: withOpacityValue("--gohan-10"),
         },
         "gohan-40": {
-          DEFAULT: withOpacityValue("--color--gohan-40"),
+          DEFAULT: withOpacityValue("--gohan-40"),
         },
         "gohan-80": {
-          DEFAULT: withOpacityValue("--color--gohan-80"),
+          DEFAULT: withOpacityValue("--gohan-80"),
         },
-        "gohan-100": {
-          DEFAULT: withOpacityValue("--color--gohan-100"),
+        "gohan": {
+          DEFAULT: withOpacityValue("--gohan"),
         },
         "gohan-120": {
-          DEFAULT: withOpacityValue("--color--gohan-120"),
+          DEFAULT: withOpacityValue("--gohan-120"),
         },
-        "beerus-100": {
-          DEFAULT: withOpacityValue("--color--beerus-100"),
+        "beerus": {
+          DEFAULT: withOpacityValue("--beerus"),
         },
-        "bulma-100": {
-          DEFAULT: withOpacityValue("--color--bulma-100"),
+        "bulma": {
+          DEFAULT: withOpacityValue("--bulma"),
         },
-        "trunks-100": {
-          DEFAULT: withOpacityValue("--color--trunks-100"),
+        "trunks": {
+          DEFAULT: withOpacityValue("--trunks"),
         },
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",

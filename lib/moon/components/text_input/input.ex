@@ -47,7 +47,7 @@ defmodule Moon.Components.TextInput.Input do
         "shadow-input hover:shadow-input-hov",
         "focus:shadow-input-focus focus:outline-none",
         "before:box-border after:box-border",
-        "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",
+        "placeholder:text-trunks placeholder:opacity placeholder:transition-opacity placeholder:delay-75",
         "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
         "input-dt-shared",
         "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",

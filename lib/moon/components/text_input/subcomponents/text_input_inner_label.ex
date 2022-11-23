@@ -36,7 +36,7 @@ defmodule Moon.Components.TextInput.TextInputInnerLabel do
         <label
           :if={@label}
           class={
-            "absolute text-moon-12 leading-3 text-trunks-100 top-3 z-20 transition-all ease-in-out duration-200 pointer-events-none",
+            "absolute text-moon-12 leading-3 text-trunks top-3 z-20 transition-all ease-in-out duration-200 pointer-events-none",
             "rtl:right-4",
             "ltr:left-4",
             "opacity-30 cursor-not-allowed": @disabled,

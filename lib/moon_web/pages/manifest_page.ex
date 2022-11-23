@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.ManifestPage do
     ~F"""
     <Page theme_name={@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <div class="relative">
-        <div class="absolute z-10 left-0 top-0 text-bulma-100">
+        <div class="absolute z-10 left-0 top-0 text-bulma">
           <LogoMoonDesignShort height="1.5rem" width="6.5rem" />
         </div>
         <div class="relative z-10 max-w-md">
@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.ManifestPage do
       </div>
       <div class="relative z-10 grow flex flex-row items-center gap-12">
         <div class="hidden md:block">
-          <h2 class="text-moon-72 font-semibold text-bulma-100">Why?</h2>
+          <h2 class="text-moon-72 font-semibold text-bulma">Why?</h2>
         </div>
         <div class="grid 2xl:grid-cols-3 xl:grid-cols-2 gap-6 relative">
           <div class="flex flex-col justify-start gap-6">

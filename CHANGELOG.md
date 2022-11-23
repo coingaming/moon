@@ -1,3 +1,10 @@
+## [2.31.3](https://github.com/coingaming/moon/compare/v2.31.2...v2.31.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* partners theme. unify class names with react ([#454](https://github.com/coingaming/moon/issues/454)) ([255e4b6](https://github.com/coingaming/moon/commit/255e4b68e5689c98b7fdab72b2d27edc5249d035))
+
 ## [2.31.2](https://github.com/coingaming/moon/compare/v2.31.1...v2.31.2) (2022-11-23)
 
 

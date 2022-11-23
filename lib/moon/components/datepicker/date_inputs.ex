@@ -19,7 +19,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
       <DateTimeLocalInput
         :if={@with_time}
         field={@start_date_field}
-        class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+        class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus"
         opts={
           placeholder: "dd/mm/yyyy, --:--",
           "phx-hook": "Datepicker",
@@ -30,7 +30,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
       <DateInput
         :if={!@with_time}
         field={@start_date_field}
-        class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+        class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus"
         opts={
           placeholder: "dd/mm/yyyy",
           "phx-hook": "Datepicker",
@@ -41,7 +41,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
       <DateTimeLocalInput
         :if={@with_time}
         field={@end_date_field}
-        class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus-100"
+        class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus"
         opts={
           placeholder: "dd/mm/yyyy, --:--",
           "phx-hook": "Datepicker",
@@ -52,7 +52,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
       <DateInput
         :if={!@with_time}
         field={@end_date_field}
-        class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus-100"
+        class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus"
         opts={
           placeholder: "dd/mm/yyyy",
           "phx-hook": "Datepicker",

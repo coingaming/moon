@@ -23,7 +23,7 @@ defmodule Moon.Components.Accordion do
   )
 
   prop(pull_a_side_class, :css_class)
-  prop(bg_color, :css_class, default: "bg-gohan-100")
+  prop(bg_color, :css_class, default: "bg-gohan")
 
   slot(title, required: true)
   slot(header_content)
@@ -57,7 +57,7 @@ defmodule Moon.Components.Accordion do
         </:left>
         <:right>
           <div class={hidden: !@with_button}>
-            <LeftToRight class="text-trunks-100">
+            <LeftToRight class="text-trunks">
               <#slot {@header_content} />
               <div
                 :on-click={toggle_content(@id, @disabled)}

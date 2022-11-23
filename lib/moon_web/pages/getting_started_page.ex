@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
           items={[designer_role(), developer_role()]}
           selected_item={@selected_role}
           click="handle_role"
-          class="p-0.5 rounded-lg flex bg-beerus-100"
+          class="p-0.5 rounded-lg flex bg-beerus"
         />
       </div>
       <ForDesigner :if={@selected_role == designer_role()} />

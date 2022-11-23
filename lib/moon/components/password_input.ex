@@ -17,7 +17,7 @@ defmodule Moon.Components.PasswordInput do
   prop(class, :string)
   prop(focus, :event)
   prop(blur, :event)
-  prop(background_color, :string, values: Moon.colors(), default: "goku-100")
+  prop(background_color, :string, values: Moon.colors(), default: "goku")
   prop(size, :string, values: ["medium", "large"], default: "large")
 
   slot(left_icon)

@@ -42,7 +42,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     # [key: "Hub88", value: "luckyslots", modes: false],
     # [key: "MissionsTool", value: "missions-tool", modes: true],
     # [key: "Moneyball", value: "moneyball", modes: true],
-    [key: "Moon design", value: "moon-design", modes: true],
+    [key: "Moon design", value: "theme-moon", modes: true],
     [key: "Slots", value: "slots", modes: true],
     [key: "Sportsbet", value: "sportsbet", modes: true]
   ]
@@ -58,11 +58,11 @@ defmodule MoonWeb.Components.ThemesSelect do
         :on-click="toggle_themes"
         type="button"
         aria-pressed="false"
-        class="bg-gohan-100 text-bulma-100 hover:bg-gohan-120 inline-flex shrink-0
+        class="bg-gohan text-bulma hover:bg-gohan-120 inline-flex shrink-0
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
                duration-200 shadow-md focus:outline-none"
       >
-        <Icon name="media_tuner" color="krillin-100" font_size="2rem" />
+        <Icon name="media_tuner" color="krillin" font_size="2rem" />
       </button>
 
       <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
@@ -72,7 +72,7 @@ defmodule MoonWeb.Components.ThemesSelect do
             type="button"
             title={theme[:value]}
             value={theme[:value]}
-            class="p-2 rounded-full ml-4 text-piccolo-100 bg-gohan-100 hover:bg-gohan-120 inline-flex items-center justify-center"
+            class="p-2 rounded-full ml-4 text-piccolo bg-gohan hover:bg-gohan-120 inline-flex items-center justify-center"
           >
             {#if theme[:value] == "aposta10"}
               <LogoAposta10Short />
@@ -82,7 +82,7 @@ defmodule MoonWeb.Components.ThemesSelect do
               <LogoLivecasinoShort />
             {#elseif theme[:value] == "lab"}
               <LogoLabShort />
-            {#elseif theme[:value] == "moon-design"}
+            {#elseif theme[:value] == "theme-moon"}
               <LogoMoonDesignShort />
             {#elseif theme[:value] == "slots"}
               <LogoSlotsShort />

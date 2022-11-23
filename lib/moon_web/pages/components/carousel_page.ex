@@ -71,16 +71,16 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
       <ExampleAndCode title="Default" id="carousel_1">
         <:example>
           <Carousel>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-            <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+            <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
           </Carousel>
         </:example>
 
@@ -95,16 +95,16 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   def carousel_1_code do
     """
       <Carousel>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
-        <div class="inline-block bg-gohan-100 p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
+        <div class="inline-block bg-gohan p-72 mr-5 scroll-snap-align-start">Item</div>
       </Carousel>
     """
   end

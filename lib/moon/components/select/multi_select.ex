@@ -65,7 +65,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
         style={get_style("grid-auto-flow": if(@prompt, do: "row"))}
       >
         {#if @prompt}
-          <div class="text-trunks-100 text-moon-14" style="grid-col: span 2 / span 2;">
+          <div class="text-trunks text-moon-14" style="grid-col: span 2 / span 2;">
             {@prompt}
           </div>
         {/if}
@@ -87,7 +87,7 @@ defmodule Moon.Components.Select.MultiSelect.Labels do
       </div>
     {#else}
       <div class={
-        "text-trunks-100",
+        "text-trunks",
         SelectHelpers.prompt_font_class(@size)
       }>
         {@prompt}
@@ -125,8 +125,8 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(popover_class, :string)
   prop(field_border_class, :string, default: FieldBorder.get_default_states_class())
   prop(field_border_color_class, :string)
-  prop(selected_label_background_color_class, :css_class, default: "bulma-100")
-  prop(selected_label_text_color_class, :css_class, default: "gohan-100")
+  prop(selected_label_background_color_class, :css_class, default: "bulma")
+  prop(selected_label_text_color_class, :css_class, default: "gohan")
 
   data(open, :boolean, default: false)
 
