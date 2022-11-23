@@ -24,7 +24,6 @@ defmodule Moon.Assets.Currency do
         "moon-currency",
         @class,
         "text-#{@color}": @color,
-        "bg-#{@background_color}": @background_color,
         "text-#{@font_size}": @font_size,
         "cursor-pointer": @click
       }

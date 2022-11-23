@@ -75,8 +75,8 @@
 --z-index--dialog: 5;
 --z-index--toggle: 1;
 
---color--text: #1A212A;
---color--background: #FFFFFF;
+--color--text: #000000;
+--color--background: #F4F5F6;
         
 --color--krillin-10: 255 228 173; /* #ffe4ad */
 --color--krillin-100: 255 179 25; /* #ffb319 */
@@ -96,25 +96,26 @@
 --color--frieza-100: 92 51 207; /* #5c33cf */
 --color--nappa-10: 184 170 167; /* #b8aaa7 */
 --color--nappa-100: 114 85 80; /* #725550 */
---color--popo-100: 0 0 0; /* #000 */
---color--piccolo-80: 24 220 109; /* #18dc6d */
---color--piccolo-100: 12 207 97; /* #0ccf61 */
---color--piccolo-120: 2 192 84; /* #02c054 */
---color--hit-80: 231 232 233; /* #e7e8e9 */
---color--hit-100: 223 224 226; /* #dfe0e2 */
---color--hit-120: 214 216 219; /* #d6d8db */
---color--beerus-100: 230 230 230; /* #e6e6e6 */
---color--goku-10: 206 212 217; /* #ced4d9 */
---color--goku-40: 224 227 230; /* #e0e3e6 */
---color--goku-80: 241 242 243; /* #f1f2f3 */
---color--goku-100: 255 255 255; /* #ffffff */
---color--gohan-10: 209 209 209; /* #d1d1d1 */
---color--gohan-40: 224 224 224; /* #e0e0e0 */
---color--gohan-80: 240 240 240; /* #f0f0f0 */
---color--gohan-100: 247 247 247; /* #f7f7f7 */
---color--goten-100: 255 255 255; /* #ffffff */
---color--bulma-100: 26 33 42; /* #1a212a */
---color--trunks-100: 96 118 128; /* #607680 */
+--color--popo-100: 0 0 0; /* #000000 */
+--color--piccolo-80: 98 190 109; /* #62BE6D */
+--color--piccolo-100: 73 179 86; /* #49B356 */
+--color--piccolo-120: 73 179 86; /* #49B356 */
+--color--hit-80: 247 247 247; /* #F7F7F7 */
+--color--hit-100: 247 247 247; /* #F7F7F7 */
+--color--hit-120: 247 247 247; /* #F7F7F7 */
+--color--beerus-100: 224 227 229; /* #E0E3E5 */
+--color--goku-10: 244 245 246; /* #F4F5F6 */
+--color--goku-40: 244 245 246; /* #F4F5F6 */
+--color--goku-80: 244 245 246; /* #F4F5F6 */
+--color--goku-100: 244 245 246; /* #F4F5F6 */
+--color--gohan-10: 255 255 255; /* #FFFFFF */
+--color--gohan-40: 255 255 255; /* #FFFFFF */
+--color--gohan-80: 255 255 255; /* #FFFFFF */
+--color--gohan-100: 255 255 255; /* #FFFFFF */
+--color--goten-100: 255 255 255; /* #FFFFFF */
+--color--bulma-100: 0 0 0; /* #000000 */
+--color--trunks-100: 99 113 123; /* #63717B */
+--color--ghost-100: null; /* #49B35652 */
 
 --radius-i-xs: 0.25rem; /* 4px */
 --radius-i-sm: 0.5rem; /* 8px */

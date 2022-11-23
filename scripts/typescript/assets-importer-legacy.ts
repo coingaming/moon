@@ -97,7 +97,6 @@ const mapFileContentString = ({
       "moon-${iconType}", 
       @class,      
       "text-#{@color}": @color,
-      "bg-#{@background_color}": @background_color,
       "text-#{@font_size}": @font_size,
       "cursor-pointer": @click
     }

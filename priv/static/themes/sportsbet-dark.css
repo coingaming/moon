@@ -76,7 +76,7 @@
 --z-index--toggle: 1;
 
 --color--text: #FFFFFF;
---color--background: #232A33;
+--color--background: #2C323A;
         
 --color--krillin-10: 255 228 173; /* #ffe4ad */
 --color--krillin-100: 255 179 25; /* #ffb319 */
@@ -96,25 +96,26 @@
 --color--frieza-100: 92 51 207; /* #5c33cf */
 --color--nappa-10: 184 170 167; /* #b8aaa7 */
 --color--nappa-100: 114 85 80; /* #725550 */
---color--popo-100: 0 0 0; /* #000 */
---color--piccolo-80: 24 220 109; /* #18dc6d */
---color--piccolo-100: 12 207 97; /* #0ccf61 */
---color--piccolo-120: 2 192 84; /* #02c054 */
---color--hit-80: 69 74 84; /* #454a54 */
---color--hit-100: 57 62 71; /* #393e47 */
---color--hit-120: 45 49 57; /* #2d3139 */
---color--beerus-100: 49 55 63; /* #31373f */
---color--goku-10: 98 103 109; /* #62676d */
---color--goku-40: 76 81 89; /* #4c5159 */
---color--goku-80: 53 60 68; /* #353c44 */
---color--goku-100: 35 42 51; /* #232a33 */
---color--gohan-10: 140 144 149; /* #8c9095 */
---color--gohan-40: 95 100 106; /* #5f646a */
---color--gohan-80: 49 55 63; /* #31373f */
---color--gohan-100: 26 33 42; /* #1a212a */
---color--goten-100: 255 255 255; /* #ffffff */
---color--bulma-100: 255 255 255; /* #ffffff */
---color--trunks-100: 134 151 162; /* #8697a2 */
+--color--popo-100: 0 0 0; /* #000000 */
+--color--piccolo-80: 98 190 109; /* #62BE6D */
+--color--piccolo-100: 73 179 86; /* #49B356 */
+--color--piccolo-120: 73 179 86; /* #49B356 */
+--color--hit-80: 76 81 90; /* #4C515A */
+--color--hit-100: 76 81 90; /* #4C515A */
+--color--hit-120: 76 81 90; /* #4C515A */
+--color--beerus-100: null; /* #FFFFFF1F */
+--color--goku-10: 44 50 58; /* #2C323A */
+--color--goku-40: 44 50 58; /* #2C323A */
+--color--goku-80: 44 50 58; /* #2C323A */
+--color--goku-100: 44 50 58; /* #2C323A */
+--color--gohan-10: 26 33 42; /* #1A212A */
+--color--gohan-40: 26 33 42; /* #1A212A */
+--color--gohan-80: 26 33 42; /* #1A212A */
+--color--gohan-100: 26 33 42; /* #1A212A */
+--color--goten-100: 255 255 255; /* #FFFFFF */
+--color--bulma-100: 255 255 255; /* #FFFFFF */
+--color--trunks-100: 141 157 168; /* #8D9DA8 */
+--color--ghost-100: null; /* #49B35652 */
 
 --radius-i-xs: 0.25rem; /* 4px */
 --radius-i-sm: 0.5rem; /* 8px */
