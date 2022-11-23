@@ -39,7 +39,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         "overflow-scroll",
         hidden: @selected_button == "preview"
       }>
-        <pre class="moon-design-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot {@code}>Example code not defined</#slot></pre>
+        <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot {@code}>Example code not defined</#slot></pre>
       </div>
 
       <div

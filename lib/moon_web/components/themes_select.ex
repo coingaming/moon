@@ -42,7 +42,7 @@ defmodule MoonWeb.Components.ThemesSelect do
     # [key: "Hub88", value: "luckyslots", modes: false],
     # [key: "MissionsTool", value: "missions-tool", modes: true],
     # [key: "Moneyball", value: "moneyball", modes: true],
-    [key: "Moon design", value: "moon-design", modes: true],
+    [key: "Moon design", value: "theme-moon", modes: true],
     [key: "Slots", value: "slots", modes: true],
     [key: "Sportsbet", value: "sportsbet", modes: true]
   ]
@@ -82,7 +82,7 @@ defmodule MoonWeb.Components.ThemesSelect do
               <LogoLivecasinoShort />
             {#elseif theme[:value] == "lab"}
               <LogoLabShort />
-            {#elseif theme[:value] == "moon-design"}
+            {#elseif theme[:value] == "theme-moon"}
               <LogoMoonDesignShort />
             {#elseif theme[:value] == "slots"}
               <LogoSlotsShort />

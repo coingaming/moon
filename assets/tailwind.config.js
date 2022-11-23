@@ -181,20 +181,20 @@ module.exports = {
     plugin(({ addComponents }) => {
       addComponents({
         ".btn-primary": {
-          color: "rgb(var(--color--goten))",
-          backgroundColor: `rgb(var(--color--piccolo))`,
+          color: "rgb(var(--goten))",
+          backgroundColor: `rgb(var(--piccolo))`,
         },
         ".btn-secondary": {
-          color: "rgb(var(--color--bulma))",
+          color: "rgb(var(--bulma))",
           background: "none",
-          boxShadow: `inset 0 0 0 1px rgb(var(--color--trunks)/1)`,
+          boxShadow: `inset 0 0 0 1px rgb(var(--trunks)/1)`,
           "&:hover": {
-            boxShadow: `inset 0 0 0 1px rgb(var(--color--bulma))`,
+            boxShadow: `inset 0 0 0 1px rgb(var(--bulma))`,
           },
         },
         ".btn-tertiary": {
-          color: "rgb(var(--color--goten))",
-          backgroundColor: "rgb(var(--color--hit))",
+          color: "rgb(var(--goten))",
+          backgroundColor: "rgb(var(--hit))",
         },
         ".anim-error": {
           transform: "translate3d(0, 0, 0)",
@@ -202,7 +202,7 @@ module.exports = {
           perspective: "1000px",
         },
         ".anim-pulse": {
-          boxShadow: "0 0 0 0 rgb(var(--color--piccolo))",
+          boxShadow: "0 0 0 0 rgb(var(--piccolo))",
         },
         ".input-number-clear": {
           MozAppearance: "textfield",

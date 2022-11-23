@@ -5,7 +5,7 @@ defmodule MoonWeb.Helpers.Routes do
 
   alias MoonWeb.Router.Helpers, as: Routes
 
-  @default_theme "moon-design-light"
+  @default_theme "theme-moon-light"
   @default_direction "ltr"
 
   def live_path(socket, view, props \\ [])
