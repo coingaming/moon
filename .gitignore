@@ -44,3 +44,6 @@ node_modules
 *.iml
 /.idea
 /.vscode
+
+# .env file for Figma tokens
+.env 
