@@ -646,7 +646,7 @@
 
 ### Features
 
-* create the Banner component [MDS] ([#299](https://github.com/coingaming/moon/issues/299)) ([1aaae27](https://github.com/coingaming/moon/commit/1aaae27668d9debfc9c9d643c26617be1dd07890))
+* create the Banner component [MDS-100] ([#299](https://github.com/coingaming/moon/issues/299)) ([1aaae27](https://github.com/coingaming/moon/commit/1aaae27668d9debfc9c9d643c26617be1dd07890))
 
 ## [2.13.3](https://github.com/coingaming/moon/compare/v2.13.2...v2.13.3) (2022-06-27)
 
