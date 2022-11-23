@@ -58,11 +58,7 @@ defmodule Moon.Components.Drawer do
 
   def render(assigns) do
     ~F"""
-    <div
-      id={@id}
-      class={"fixed top-0 right-0 bottom-0 bg-gohan z-40", @class}
-      data-testid={@testid}
-    >
+    <div id={@id} class={"fixed top-0 right-0 bottom-0 bg-gohan z-40", @class} data-testid={@testid}>
       <#slot />
     </div>
     """

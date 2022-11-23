@@ -22,10 +22,7 @@ defmodule Moon.Components.LineChartCard do
         </div>
 
         <div class="flex-none" :if={length(@select_options) > 0}>
-          <Select
-            options={@select_options}
-            class="pl-2 rounded-sm text-moon-12 text-trunks bg-goku"
-          />
+          <Select options={@select_options} class="pl-2 rounded-sm text-moon-12 text-trunks bg-goku" />
         </div>
 
         <button type="button" class="flex-none ml-3 p-2">

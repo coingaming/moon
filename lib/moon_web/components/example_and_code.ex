@@ -42,10 +42,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot {@code}>Example code not defined</#slot></pre>
       </div>
 
-      <div
-        class="grid gap-4 p-4 bg-goku text-moon-14 rounded-moon-s-sm"
-        :if={slot_assigned?(:state)}
-      >
+      <div class="grid gap-4 p-4 bg-goku text-moon-14 rounded-moon-s-sm" :if={slot_assigned?(:state)}>
         <div><Label size="medium" class="bg-piccolo">State</Label></div>
         <pre class="break-all overflow-x-scroll text-trunks"><#slot {@state} /></pre>
       </div>
