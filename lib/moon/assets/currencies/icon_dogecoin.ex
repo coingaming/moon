@@ -17,7 +17,13 @@ defmodule Moon.Assets.Currencies.IconDogecoin do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-currency #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-currency",
+        @class,
+        "text-#{@color}": @color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(
         color: @color,

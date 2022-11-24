@@ -17,7 +17,13 @@ defmodule Moon.Assets.Logos.LogoAposta10Full do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-logo #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-logo",
+        @class,
+        "text-#{@color}": @color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(
         color: @color,

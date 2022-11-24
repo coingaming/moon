@@ -4,7 +4,7 @@ defmodule Moon.Assets.Icons.IconMinus do
   use Moon.StatelessComponent
 
   prop(click, :event)
-  prop(class, :string)
+  prop(class, :css_class)
 
   # All the other props below are deprecated!
   # Please use only tailwind classes and the class prop
@@ -15,7 +15,14 @@ defmodule Moon.Assets.Icons.IconMinus do
   def render(assigns) do
     ~F"""
     <svg
-      class={"moon-icon #{@class} #{@click && "cursor-pointer"}"}
+      class={
+        "moon-icon",
+        @class,
+        "text-#{@color}": @color,
+        "bg-#{@background_color}": @background_color,
+        "text-#{@font_size}": @font_size,
+        "cursor-pointer": @click
+      }
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
     >

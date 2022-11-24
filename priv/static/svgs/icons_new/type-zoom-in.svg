@@ -1,6 +1,0 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="item" viewBox="0 0 32 32" stroke-width="1" fill="none">
-    <g filter="url(#a)"><path d="M19.412 13.604a5.844 5.844 0 1 1-11.687 0 5.844 5.844 0 0 1 11.687 0Z" fill="currentColor"/><path d="M13.568 19.448a5.844 5.844 0 1 0 0-11.687 5.844 5.844 0 0 0 0 11.687Z" stroke="currentColor"/><path d="M16.756 12.542H14.63v-2.125h-2.125v2.125H10.38v2.104h2.125v2.146h2.125v-2.146h2.125v-2.104ZM18.406 16.944l-1.503 1.503 5.793 5.792 1.502-1.502-5.792-5.793Z" fill="currentColor"/></g><defs><filter id="a" x="-2" y="0" width="36" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2"/><feGaussianBlur stdDeviation="1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4798_4681"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_4798_4681" result="shape"/></filter></defs>
-  </symbol>
-</svg>
-  

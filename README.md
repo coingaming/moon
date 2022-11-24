@@ -34,6 +34,8 @@ If `./run-locally-dev.sh` is not working, try the following steps:
 # Running .run-auto-importers.sh
 
 This script imports figma assets and icons. You need to set the values in the .env file.
+You also need read access to the assets tool repo https://github.com/coingaming/assets
+Kindly check if you can clone this repo, if not, ask YulianaYarema @yarema184
 
 # Preferences to consider when writing code
 
