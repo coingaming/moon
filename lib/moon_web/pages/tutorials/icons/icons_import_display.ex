@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.IconsPage.IconsImportDisplay do
     ~F"""
     <div class="overflow-scroll">
       <CodeSnippet>
-        <slot />
+        <#slot />
       </CodeSnippet>
     </div>
     """
