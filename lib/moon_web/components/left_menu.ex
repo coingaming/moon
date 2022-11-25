@@ -73,7 +73,8 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.BreadcrumbPage}>Breadcrumb</SidebarLink>
                       <SidebarLink route={Pages.Components.ButtonPage}>Button</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.CarouselPage}>Carousel</SidebarLink>
-                      <Accordion :if={!@hide_items}
+                      <Accordion
+                        :if={!@hide_items}
                         is_content_inside={false}
                         id="left-menu-components-charts"
                         open_by_default={active_page_contains(@active_page, Pages.Components.Charts)}
@@ -91,7 +92,8 @@ defmodule MoonWeb.Components.LeftMenu do
                       </Accordion>
                       <SidebarLink route={Pages.Components.CheckboxPage}>Checkbox</SidebarLink>
                       <SidebarLink route={Pages.Components.ChipPage}>Chip</SidebarLink>
-                      <Accordion :if={!@hide_items}
+                      <Accordion
+                        :if={!@hide_items}
                         is_content_inside={false}
                         id="left-menu-components-date"
                         open_by_default={active_page_contains(@active_page, Pages.Components.Date)}
@@ -105,7 +107,8 @@ defmodule MoonWeb.Components.LeftMenu do
                           </div>
                         </:content>
                       </Accordion>
-                      <Accordion :if={!@hide_items}
+                      <Accordion
+                        :if={!@hide_items}
                         is_content_inside={false}
                         id="left-menu-components-dialog"
                         open_by_default={active_page_contains(@active_page, Pages.Components.Dialog)}
