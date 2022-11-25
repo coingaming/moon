@@ -1,3 +1,10 @@
+## [2.31.4](https://github.com/coingaming/moon/compare/v2.31.3...v2.31.4) (2022-11-25)
+
+
+### Bug Fixes
+
+* Aligned components in Sidebar with React TW ([#456](https://github.com/coingaming/moon/issues/456)) ([90cf034](https://github.com/coingaming/moon/commit/90cf03418ce53d62103f1b717655a781115f230e))
+
 ## [2.31.3](https://github.com/coingaming/moon/compare/v2.31.2...v2.31.3) (2022-11-23)
 
 
