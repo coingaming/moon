@@ -41,7 +41,14 @@ defmodule MoonWeb.Pages.Components.TablePage do
         :type => 'generator',
         :required => 'true',
         :default => '-',
-        :description => 'Rows / data for the table'
+        :description => 'Rows / data for the table. Each row should have unique `id` key'
+      },
+      %{
+        :name => 'selected',
+        :type => 'list[string]',
+        :required => 'false',
+        :default => '[]',
+        :description => 'list of ids of selected rows.'
       },
       %{
         :name => 'is_cell_border',
@@ -52,10 +59,10 @@ defmodule MoonWeb.Pages.Components.TablePage do
       },
       %{
         :name => 'row_gap',
-        :type => '0 | 1 | 2 | 3 | 4',
+        :type => 'css_class',
         :required => 'false',
-        :default => '1',
-        :description => 'Gap between rows'
+        :default => 'border-spacing-y-1',
+        :description => 'Gap between rows, TW class'
       },
       %{
         :name => 'row_size',
@@ -70,6 +77,27 @@ defmodule MoonWeb.Pages.Components.TablePage do
         :required => 'false',
         :default => '-',
         :description => 'When row is clicked'
+      },
+      %{
+        :name => 'row_bg',
+        :type => 'css_class',
+        :required => 'false',
+        :default => 'bg-gohan',
+        :description => 'Regular row background, TW class'
+      },
+      %{
+        :name => 'selected_bg',
+        :type => 'css_class',
+        :required => 'false',
+        :default => 'bg-beerus',
+        :description => 'Selected row background, TW class'
+      },
+      %{
+        :name => 'hover_bg',
+        :type => 'css_class',
+        :required => 'false',
+        :default => '-',
+        :description => 'Hover row background, e.g. hover:bg-beerus'
       }
     ]
   )
@@ -129,7 +157,8 @@ defmodule MoonWeb.Pages.Components.TablePage do
 
       <ExampleAndCode title="Different row gaps" id="table_gaps">
         <:example>
-          {#for gap <- ~w(0 1 2 3 4)}
+          {#for gap <-
+              ~w(border-spacing-y-0 border-spacing-y-1 border-spacing-y-2 border-spacing-y-4 border-spacing-y-8)}
             <Table items={model <- @models_5 |> Enum.slice(0, 2)} row_gap={gap}>
               <Column name="id" label="ID">
                 {model.id}
@@ -374,7 +403,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
 
   def table_gaps_code do
     """
-    {#for gap <- ~w(0 1 2 3 4)}
+    {#for gap <- ~w(border-spacing-y-0 border-spacing-y-1 border-spacing-y-2 border-spacing-y-4 border-spacing-y-8)}
       <Table items={model <- @models_5 |> Enum.slice(0, 2)} row_gap={gap}>
         <Column name="id" label="ID">
           {model.id}

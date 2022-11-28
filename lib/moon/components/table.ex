@@ -21,9 +21,13 @@ defmodule Moon.Components.Table do
   prop(sorting_click, :event)
   prop(paging_info, :any)
 
-  prop(row_gap, :string, values!: ~w(0 1 2 3 4), default: "1")
+  prop(row_gap, :css_class, default: "border-spacing-y-1")
   prop(row_size, :string, values!: ~w(2xs xs sm md lg xl 2xl), default: "md")
   prop(is_cell_border, :boolean, default: false)
+
+  prop(row_bg, :css_class, default: "bg-gohan")
+  prop(selected_bg, :css_class, default: "bg-beerus")
+  prop(hover_bg, :css_class)
 
   @doc "The list of columns defining the Grid"
   slot(cols, generator_prop: :items)
@@ -36,7 +40,7 @@ defmodule Moon.Components.Table do
       {/if}
       <div class="w-full overflow-x-scroll">
         <table
-          class={"text-sm border-separate border-spacing-x-0 border-spacing-y-#{@row_gap} border-beerus"}
+          class={"text-sm border-separate border-spacing-x-0 border-beerus", @row_gap}
           style="min-width: 100%;"
         >
           <thead>
@@ -47,7 +51,8 @@ defmodule Moon.Components.Table do
                     "text-left font-medium",
                     col.width,
                     text_size_classes(@row_size),
-                    "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1
+                    "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
+                    "cursor-pointer": col.sortable && @sorting_click
                   }
                   style="min-width: 200px"
                   :on-click={(col.sortable && @sorting_click) || nil}
@@ -67,7 +72,8 @@ defmodule Moon.Components.Table do
             {#for {item, row_index} <- Enum.with_index(@items)}
               <tr
                 class={
-                  (("#{item.id}" in @selected || "#{item.id}" == @selected) && "bg-beerus") || "bg-gohan",
+                  (("#{item.id}" in @selected || "#{item.id}" == @selected) && @selected_bg) || @row_bg,
+                  @hover_bg,
                   "cursor-pointer": @row_click
                 }
                 :on-click={@row_click}

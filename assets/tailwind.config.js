@@ -159,11 +159,6 @@ module.exports = {
     "border-beerus",
     "border-bulma",
     "border-trunks",
-    "border-spacing-y-0",
-    "border-spacing-y-1",
-    "border-spacing-y-2",
-    "border-spacing-y-3",
-    "border-spacing-y-4",
   ],
   theme: {
     extend: {
