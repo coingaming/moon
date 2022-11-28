@@ -1,3 +1,10 @@
+## [2.31.5](https://github.com/coingaming/moon/compare/v2.31.4...v2.31.5) (2022-11-28)
+
+
+### Bug Fixes
+
+* Update app.css ([#458](https://github.com/coingaming/moon/issues/458)) ([be72006](https://github.com/coingaming/moon/commit/be7200612d9d0187ec2287fb6c4d80d96dacba32))
+
 ## [2.31.4](https://github.com/coingaming/moon/compare/v2.31.3...v2.31.4) (2022-11-25)
 
 
