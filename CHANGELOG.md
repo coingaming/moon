@@ -1,3 +1,10 @@
+## [2.31.7](https://github.com/coingaming/moon/compare/v2.31.6...v2.31.7) (2022-11-28)
+
+
+### Bug Fixes
+
+* chichi color to chi-chi ([#460](https://github.com/coingaming/moon/issues/460)) ([f91979b](https://github.com/coingaming/moon/commit/f91979b461cc206327e92dd73b6fda3bd464aa26))
+
 ## [2.31.6](https://github.com/coingaming/moon/compare/v2.31.5...v2.31.6) (2022-11-28)
 
 
