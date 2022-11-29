@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.IconsPageFullList do
+defmodule MoonWeb.Pages.Components.IconsPageFullList do
   @moduledoc false
 
   use MoonWeb, :live_view

@@ -23,7 +23,7 @@ defmodule MoonWeb.Components.LeftMenu do
       :on-click={@click}
       id="left-menu-container"
       class={
-        "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",
+        "fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",
         @theme_name
       }
     >
@@ -56,8 +56,6 @@ defmodule MoonWeb.Components.LeftMenu do
                 <SidebarLink :if={!@hide_items} route={Pages.ContributePage}>How to contribute</SidebarLink>
                 <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
                 <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
-                <SidebarLink route={Pages.IconsPage}>Icons</SidebarLink>
-                <SidebarLink route={Pages.CountryFlagsPage}>CountryFlags</SidebarLink>
                 <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
                 <Accordion
                   is_content_inside={false}
@@ -92,6 +90,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       </Accordion>
                       <SidebarLink route={Pages.Components.CheckboxPage}>Checkbox</SidebarLink>
                       <SidebarLink route={Pages.Components.ChipPage}>Chip</SidebarLink>
+                      <SidebarLink route={Pages.Components.CountryFlagsPage}>CountryFlags</SidebarLink>
                       <Accordion
                         :if={!@hide_items}
                         is_content_inside={false}
@@ -127,6 +126,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       </Accordion>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.DrawerPage}>Drawer *</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
+                      <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
@@ -164,10 +164,9 @@ defmodule MoonWeb.Components.LeftMenu do
                       </Accordion>
                       <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.TabsPage}>Tabs</SidebarLink>
-                      <SidebarLink :if={!@hide_items} route={Pages.Components.TablePage}>Table</SidebarLink>
-                      <SidebarLink route={Pages.Components.TextInputPage}>Text input</SidebarLink>
-                      <SidebarLink route={Pages.Components.InputGroupPage}>Input group</SidebarLink>
                       <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
+                      <SidebarLink route={Pages.Components.TextInputPage}>TextInput</SidebarLink>
+                      <SidebarLink route={Pages.Components.InputGroupPage}>TextInputGroup</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.ToastPage}>Toast</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
                       <SidebarLink route={Pages.Components.TypographyPage}>Typography</SidebarLink>
