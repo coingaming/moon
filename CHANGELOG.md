@@ -1,3 +1,10 @@
+## [2.31.9](https://github.com/coingaming/moon/compare/v2.31.8...v2.31.9) (2022-11-29)
+
+
+### Bug Fixes
+
+* bump surface version to 25.0.10 ([#462](https://github.com/coingaming/moon/issues/462)) ([68b8437](https://github.com/coingaming/moon/commit/68b843741b45e5c895a7044d6485e5fdef9f1fee))
+
 ## [2.31.8](https://github.com/coingaming/moon/compare/v2.31.7...v2.31.8) (2022-11-29)
 
 
