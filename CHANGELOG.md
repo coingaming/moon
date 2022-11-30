@@ -1,3 +1,10 @@
+## [2.31.10](https://github.com/coingaming/moon/compare/v2.31.9...v2.31.10) (2022-11-30)
+
+
+### Bug Fixes
+
+* [MDS-282] headless table ([#463](https://github.com/coingaming/moon/issues/463)) ([d355a39](https://github.com/coingaming/moon/commit/d355a3964c63475fff9acd2063369119dd113f90))
+
 ## [2.31.9](https://github.com/coingaming/moon/compare/v2.31.8...v2.31.9) (2022-11-29)
 
 
