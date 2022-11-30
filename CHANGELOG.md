@@ -1,3 +1,10 @@
+## [2.31.12](https://github.com/coingaming/moon/compare/v2.31.11...v2.31.12) (2022-11-30)
+
+
+### Bug Fixes
+
+* Additional alignment of menu items on sidebar with React TW ([#465](https://github.com/coingaming/moon/issues/465)) ([0683b7e](https://github.com/coingaming/moon/commit/0683b7e4d6d40781ed0976283980dd69551d756b))
+
 ## [2.31.11](https://github.com/coingaming/moon/compare/v2.31.10...v2.31.11) (2022-11-30)
 
 
