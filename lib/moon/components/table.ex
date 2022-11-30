@@ -9,7 +9,8 @@ defmodule Moon.Components.Table do
   @doc "Params from LiveView mount(params, session, socket) that must be passed on"
   prop(limit, :integer, default: 10)
   prop(offset, :integer, default: 0)
-  prop(selected, :list, default: [])
+  @doc "List of  selected ids, or just id, or [], or nil"
+  prop(selected, :any, default: [])
   prop(sort_key, :any)
   prop(sort_dir, :any, default: "ASC")
 
@@ -33,9 +34,12 @@ defmodule Moon.Components.Table do
   @doc "The list of columns defining the Grid"
   slot(cols, generator_prop: :items)
 
+  @doc "Just an id for a HTML container"
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
-    <div class="w-full grid gap-4">
+    <div class="w-full grid gap-4" {=@id}>
       {#if @paging_info}
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
@@ -69,7 +73,7 @@ defmodule Moon.Components.Table do
             {#for {item, row_index} <- Enum.with_index(@items)}
               <tr
                 class={
-                  (("#{item.id}" in @selected || "#{item.id}" == @selected) && @selected_bg) || @row_bg,
+                  (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
                   @hover_bg,
                   "cursor-pointer": @row_click
                 }
@@ -106,6 +110,9 @@ defmodule Moon.Components.Table do
       "ASC"
     end
   end
+
+  defp is_selected(id, selected) when is_list(selected), do: "#{id}" in selected
+  defp is_selected(id, selected), do: "#{id}" == "#{selected}"
 
   defp inter_cell_border() do
     "after:content-[\"\"] after:absolute after:w-px after:bg-beerus " <>

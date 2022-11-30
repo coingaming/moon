@@ -130,7 +130,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
 
       <ExampleAndCode title="Default" id="table_simple">
         <:example>
-          <Table items={model <- @models_5}>
+          <Table items={model <- @models_5} selected={nil}>
             <Column name="id" label="ID">
               {model.id}
             </Column>
