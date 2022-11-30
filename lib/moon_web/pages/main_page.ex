@@ -16,9 +16,9 @@ defmodule MoonWeb.Pages.MainPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@direction}>
       <div class="relative z-5 flex flex-col gap-12">
-        <div class="self-start"><Label size="twoxsmall" color="text-gohan">Open Source</Label></div>
+        <div class="self-start"><Label size="twoxsmall" color="text-gohan" class="font-medium">Open Source</Label></div>
         <div class="flex flex-col gap-16">
-          <div class="relative z-50 flex flex-col items-start gap-6">
+          <div class="relative z-40 flex flex-col items-start gap-6">
             <h1 class="text-moon-64 font-semibold">Moon design system.</h1>
             <p class="text-moon-24 max-w-screen-sm">
               Moon is Yolo Group product design system that helps us maintain the
@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.MainPage do
               </a>
             </p>
           </div>
-          <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-50">
+          <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-40">
             <ForDevelopers {=@theme_name} {=@direction} />
             <ForDesigners {=@theme_name} {=@direction} />
           </div>

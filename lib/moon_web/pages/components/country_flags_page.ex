@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.CountryFlagsPage do
+defmodule MoonWeb.Pages.Components.CountryFlagsPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -12,7 +12,11 @@ defmodule MoonWeb.Pages.CountryFlagsPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "/country_flags",
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/country_flags",
         name: "CountryFlags"
       }
     ]

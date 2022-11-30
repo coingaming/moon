@@ -51,8 +51,6 @@ defmodule MoonWeb.Router do
         live("/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage)
         live("/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage)
         live("/assets/icons", MoonWeb.Pages.Assets.IconsPage)
-        live("/icons", MoonWeb.Pages.IconsPage)
-        live("/country-flags", MoonWeb.Pages.CountryFlagsPage)
         live("/manifest", MoonWeb.Pages.ManifestPage)
         live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
         live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
@@ -74,6 +72,7 @@ defmodule MoonWeb.Router do
 
         live("/components/checkbox", MoonWeb.Pages.Components.CheckboxPage)
         live("/components/chip", MoonWeb.Pages.Components.ChipPage)
+        live("/components/country-flags", MoonWeb.Pages.Components.CountryFlagsPage)
 
         live("/components/date/datepicker", MoonWeb.Pages.Components.Date.DatepickerPage)
         live("/components/date/single-date", MoonWeb.Pages.Components.Date.SingleDatePage)
@@ -95,6 +94,7 @@ defmodule MoonWeb.Router do
 
         live("/components/drawer", MoonWeb.Pages.Components.DrawerPage)
         live("/components/file-input", MoonWeb.Pages.Components.FileInputPage)
+        live("/components/icons", MoonWeb.Pages.Components.IconsPage)
         live("/components/label", MoonWeb.Pages.Components.LabelPage)
         live("/components/link", MoonWeb.Pages.Components.LinkPage)
         live("/components/list_items", MoonWeb.Pages.Components.ListItemsPage)
