@@ -1,3 +1,10 @@
+## [2.31.11](https://github.com/coingaming/moon/compare/v2.31.10...v2.31.11) (2022-11-30)
+
+
+### Bug Fixes
+
+* [MDS-282] Table selected=nil fix ([#464](https://github.com/coingaming/moon/issues/464)) ([0247489](https://github.com/coingaming/moon/commit/02474893ce39674d0e5344cd67b0648d6598d9cf))
+
 ## [2.31.10](https://github.com/coingaming/moon/compare/v2.31.9...v2.31.10) (2022-11-30)
 
 
