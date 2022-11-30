@@ -40,10 +40,7 @@ defmodule Moon.Components.Table do
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
       <div class="w-full overflow-x-scroll">
-        <table
-          class={"text-sm border-separate border-spacing-x-0 border-beerus", @row_gap}
-          style="min-width: 100%;"
-        >
+        <table class={"text-sm border-separate border-spacing-x-0 border-beerus min-w-full", @row_gap}>
           <thead :if={!@is_headless}>
             <tr>
               {#for {col, col_index} <- Enum.with_index(@cols)}
@@ -55,7 +52,6 @@ defmodule Moon.Components.Table do
                     "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
                     "cursor-pointer": col.sortable && @sorting_click
                   }
-                  style="min-width: 200px"
                   :on-click={(col.sortable && @sorting_click) || nil}
                   :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort_dir)}
                   data-testid={"sort-column-#{col.name}"}
@@ -85,6 +81,7 @@ defmodule Moon.Components.Table do
                   <td
                     class={
                       "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
+                      col.width,
                       text_size_classes(@row_size),
                       "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1
                     }
