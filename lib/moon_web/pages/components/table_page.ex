@@ -55,7 +55,14 @@ defmodule MoonWeb.Pages.Components.TablePage do
         :type => 'boolean',
         :required => 'false',
         :default => 'false',
-        :description => 'Borders between cells in row'
+        :description => 'Has borders between cells in row'
+      },
+      %{
+        :name => 'is_headless',
+        :type => 'boolean',
+        :required => 'false',
+        :default => 'false',
+        :description => 'Does not have table/column headers'
       },
       %{
         :name => 'row_gap',
@@ -136,6 +143,23 @@ defmodule MoonWeb.Pages.Components.TablePage do
           </Table>
         </:example>
         <:code>{table_simple_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Headless" id="table_headless">
+        <:example>
+          <Table items={model <- @models_5} is_headless>
+            <Column name="id">
+              {model.id}
+            </Column>
+            <Column name="name">
+              {model.name}
+            </Column>
+            <Column name="created_at">
+              <Datetime value={model.created_at} />
+            </Column>
+          </Table>
+        </:example>
+        <:code>{table_headless_code()}</:code>
       </ExampleAndCode>
 
       <ExampleAndCode title="With cell borders" id="table_borders">
@@ -379,6 +403,22 @@ defmodule MoonWeb.Pages.Components.TablePage do
         {model.name}
       </Column>
       <Column name="created_at" label="Created at">
+        <Datetime value={model.created_at} />
+      </Column>
+    </Table>
+    """
+  end
+
+  def table_headless_code do
+    """
+    <Table items={model <- @models_5} is_headless>
+      <Column name="id">
+        {model.id}
+      </Column>
+      <Column name="name">
+        {model.name}
+      </Column>
+      <Column name="created_at">
         <Datetime value={model.created_at} />
       </Column>
     </Table>

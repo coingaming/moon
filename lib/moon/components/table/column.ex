@@ -7,5 +7,5 @@ defmodule Moon.Components.Table.Column do
   prop(name, :string)
   prop(label, :string)
   prop(sortable, :boolean, default: true)
-  prop(width, :css_class)
+  prop(width, :css_class, default: "min-w-[200px]")
 end
