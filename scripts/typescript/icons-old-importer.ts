@@ -156,7 +156,7 @@ const generateAssetsDocumentationPageContent = (
   modules: string[]
 ): string => {
   return `
-defmodule MoonWeb.Pages.IconsPage do
+defmodule MoonWeb.Pages.Components.IconsPage do
   @moduledoc false
 
   use MoonWeb, :live_view
