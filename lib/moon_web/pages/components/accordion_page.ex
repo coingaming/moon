@@ -65,14 +65,14 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       %{
         :name => 'size',
         :type => 'sm | md | lg | xl',
-        :required => 'false',
-        :default => 'medium',
+        :required => 'No',
+        :default => 'md',
         :description => 'Size variant of accordion'
       },
       %{
         :name => 'is_content_inside',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Whether the content is displayed outside of the accordion header'
       }
@@ -306,7 +306,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
         <:code>{get_example_9_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Accordion props" data={@props_info_array} />
     </Page>
     """
   end

@@ -9,12 +9,19 @@ defmodule MoonWeb.Components.ComponentPageDescription do
 
   def render(assigns) do
     ~F"""
-    <h1 class="text-moon-32 font-semibold">{@title}</h1>
-    <div class="flex flex-col lg:flex-row gap-2 lg:gap-4 justify-between items-start">
-      <div class="flex flex-col gap-2 max-w-screen-sm text-moon-16">
-        <#slot />
+    <div class="flex flex-col lg:flex-row gap-4">
+      <div class="flex flex-col gap-12 lg:basis-1/2">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-moon-32 font-medium">{@title}</h1>
+        </div>
+        <div class="flex flex-col items-start gap-2 text-moon-16">
+          <#slot />
+        </div>
       </div>
-      <div :if={@image} class="w-full max-w-md rounded-moon-s-sm overflow-hidden">
+      <div
+        :if={@image}
+        class="flex lg:basis-1/2 items-center justify-center h-80 rounded-moon-s-md overflow-hidden"
+      >
         <img src={@image} alt={@title}>
       </div>
     </div>

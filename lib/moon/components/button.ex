@@ -53,19 +53,21 @@ defmodule Moon.Components.Button do
   slot(left_icon_slot)
   slot(icon_only_slot)
 
+  prop(button_gap, :css_class, default: "gap-2")
+
   def render(assigns) do
     ~F"""
     <button
       id={@id}
       class={
-        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all",
+        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
         @class,
         "text-goten bg-piccolo": @variant in ["primary"],
         "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
           @variant in ["secondary"],
         "bg-hit text-goten": @variant in ["tertiary"],
         "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-        "text-trunks hover:bg-hit-120 hover:text-piccolo-80": @variant in ["link"],
+        "text-trunks hover:bg-hit hover:text-piccolo-80": @variant in ["link"],
         "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
         "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),
         "text-moon-14 h-10 px-4": @size == "md" && slot_assigned?(:default),
@@ -84,7 +86,7 @@ defmodule Moon.Components.Button do
         "w-full": @full_width,
         "opacity-30": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chi-chi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+        "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
           @animation == "error"
       }
       disabled={@disabled}
@@ -106,7 +108,11 @@ defmodule Moon.Components.Button do
           <Icon name="generic_check_alternative" color="currentColor" class={icon_class(@size)} />
         {/if}
       </span>
-      <span class={"flex justify-center items-center gap-2", "opacity-0": @animation in ["success", "progress"]}>
+      <span class={
+        "flex justify-center items-center",
+        @button_gap,
+        "opacity-0": @animation in ["success", "progress"]
+      }>
         {#if slot_assigned?(:icon_only_slot)}
           <#slot {@icon_only_slot} />
         {#elseif @icon_only != nil}

@@ -8,9 +8,9 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias Moon.Components.Breadcrumb
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
   alias Moon.Components.Breadcrumb.Crumb
+  alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.PropsTable
 
   data(breadcrumbs, :any,
     default: [
@@ -108,84 +108,60 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <TopToDown>
-        <Heading size={32}>Breadcrumb</Heading>
-        <div class="flex flex-col items-start gap-2 text-moon-16">
-          <p>
-            As users navigate through your website, they'll want to know where they are and how to get back to where
-            they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.
-          </p>
-          <p>B
-            readcrumbs are useful for navigation history but shouldn't be used for steps in a process including
-            steps in the future. For that, use the planned Steps component.
-          </p>
-          <p class="font-medium">Clearly present position</p>
-          <p>
-            Users may come to a given screen through different flows (such as an external link or search). So it's
-            important that they always know where in your structure they are.
-          </p>
-        </div>
-        <ExampleAndCode title="Five or more items" id="breadcrumbs_2">
-          <:example>
-            <div class="flex justify-center items-center">
-              <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
-            </div>
-          </:example>
+      <ComponentPageDescription title="Breadcrumb">
+        <p>
+          As users navigate through your website, they'll want to know where they are and how to get back to where
+          they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.
+        </p>
+        <p>Breadcrumbs are useful for navigation history but shouldn't be used for steps in a process including
+          steps in the future. For that, use the planned Steps component.
+        </p>
+        <p class="font-medium">Clearly present position</p>
+        <p>
+          Users may come to a given screen through different flows (such as an external link or search). So it's
+          important that they always know where in your structure they are.
+        </p>
+      </ComponentPageDescription>
+      <ExampleAndCode title="Five and more items" id="breadcrumbs_2">
+        <:example>
+          <div class="flex justify-center items-center">
+            <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
+          </div>
+        </:example>
 
-          <:code>{breadcrumb_2_code()}</:code>
-        </ExampleAndCode>
+        <:code>{breadcrumb_2_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Four items" id="breadcrumbs_3">
-          <:example>
-            <div class="flex justify-center items-center py-1">
-              <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
-            </div>
-          </:example>
+      <ExampleAndCode title="Four items" id="breadcrumbs_3">
+        <:example>
+          <div class="flex justify-center items-center py-1">
+            <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
+          </div>
+        </:example>
 
-          <:code>{breadcrumb_3_code()}</:code>
-        </ExampleAndCode>
+        <:code>{breadcrumb_3_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="Two items" id="breadcrumbs_1">
-          <:example>
-            <div class="flex justify-center items-center py-1">
-              <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
-            </div>
-          </:example>
+      <ExampleAndCode title="Two items" id="breadcrumbs_1">
+        <:example>
+          <div class="flex justify-center items-center py-1">
+            <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
+          </div>
+        </:example>
 
-          <:code>{breadcrumb_1_code()}</:code>
-        </ExampleAndCode>
+        <:code>{breadcrumb_1_code()}</:code>
+      </ExampleAndCode>
 
-        <ExampleAndCode title="One item" id="breadcrumbs_4">
-          <:example>
-            <div class="flex justify-center items-center py-1">
-              <Breadcrumb id="breadcrumb_4" breadcrumbs={@breadcrumb_items_4} />
-            </div>
-          </:example>
+      <ExampleAndCode title="One item" id="breadcrumbs_4">
+        <:example>
+          <div class="flex justify-center items-center py-1">
+            <Breadcrumb id="breadcrumb_4" breadcrumbs={@breadcrumb_items_4} />
+          </div>
+        </:example>
 
-          <:code>{breadcrumb_4_code()}</:code>
-        </ExampleAndCode>
-
-        <div>
-          <div class="text-bulma items-center text-moon-20 font-normal my-4">Props</div>
-          <Table items={item <- @props_info_array}>
-            <Column name="name" label="Name" is_row_header>
-              {item.name}
-            </Column>
-            <Column name="type" label="Type">
-              {item.type}
-            </Column>
-            <Column name="required" label="Required">
-              {item.required}
-            </Column>
-            <Column name="default" label="Default">
-              {item.default}
-            </Column>
-            <Column name="description" label="Description">
-              {item.description}
-            </Column>
-          </Table>
-        </div>
-      </TopToDown>
+        <:code>{breadcrumb_4_code()}</:code>
+      </ExampleAndCode>
+      <PropsTable title="Breadcrumb props" data={@props_info_array} />
     </Page>
     """
   end

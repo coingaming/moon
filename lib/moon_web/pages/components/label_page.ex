@@ -28,43 +28,43 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     default: [
       %{
         :name => 'size',
-        :type => 'xsmall | small | medium | large | xlarge',
-        :required => 'false',
-        :default => 'medium',
+        :type => 'xs | sm | md | lg | xl',
+        :required => 'No',
+        :default => 'md',
         :description => 'Size of Button'
       },
       %{
         :name => 'left_icon',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Asset name for the left icon'
       },
       %{
         :name => 'right_icon',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Asset name for the right icon'
       },
       %{
         :name => 'color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'gohan.100',
         :description => 'Asset name for the icon. Icon only and no text shown'
       },
       %{
         :name => 'background_color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'bulma.100',
         :description => 'Active state'
       },
       %{
         :name => 'is_uppercase',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'true',
         :description => 'Letter case'
       }
@@ -175,7 +175,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
         <:code>{label_4_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Label props" data={@props_info_array} />
     </Page>
     """
   end

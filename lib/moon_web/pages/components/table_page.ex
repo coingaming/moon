@@ -33,8 +33,8 @@ defmodule MoonWeb.Pages.Components.TablePage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Table">
-        <p>
-          Tables are used to show list of structured rows.
+        <p>Tables are great for presenting information with a clear, repeating structure. Our users are busy and may not want to read long sections of text. Breaking structured data into tables can help them scan it and find what they need to make informed decisions.</p>
+        <p>While tables present a clear structure, they are not good for designing layouts. Use them only when data you are presenting calls for a tabular structure, for example prices for various travel dates or multiple options for baggage.
         </p>
       </ComponentPageDescription>
 
@@ -83,7 +83,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
         <:code>{table_01_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Table props" data={@props_info_array} />
     </Page>
     """
   end
