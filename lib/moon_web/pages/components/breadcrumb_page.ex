@@ -3,8 +3,6 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
-  alias Moon.Components.Heading
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias Moon.Components.Breadcrumb
