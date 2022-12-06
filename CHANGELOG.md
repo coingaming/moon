@@ -1,3 +1,10 @@
+# [2.32.0](https://github.com/coingaming/moon/compare/v2.31.12...v2.32.0) (2022-12-06)
+
+
+### Features
+
+* Add custom formatting to date renderer ([#467](https://github.com/coingaming/moon/issues/467)) ([a64da4c](https://github.com/coingaming/moon/commit/a64da4c35b61dbbc549811693db9fd7c70670687))
+
 ## [2.31.12](https://github.com/coingaming/moon/compare/v2.31.11...v2.31.12) (2022-11-30)
 
 
