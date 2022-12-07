@@ -131,7 +131,6 @@ defmodule MoonWeb.Pages.Tutorials.Installation do
           'nappa-10': 'var(--nappa-10)',
           'nappa-60': 'var(--nappa-60)',
           'nappa': 'var(--nappa)',
-          'piccolo-80': 'var(--piccolo-80)',
           'piccolo': 'var(--piccolo)',
           'piccolo-120': 'var(--piccolo-120)',
           'hit-80': 'var(--hit-80)',

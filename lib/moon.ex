@@ -29,7 +29,6 @@ defmodule Moon do
     "nappa-10",
     "nappa-60",
     "nappa",
-    "piccolo-80",
     "piccolo",
     "piccolo-120",
     "hit-80",

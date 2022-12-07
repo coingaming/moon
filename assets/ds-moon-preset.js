@@ -268,9 +268,6 @@ module.exports = {
         "nappa": {
           DEFAULT: withOpacityValue("--nappa"),
         },
-        "piccolo-80": {
-          DEFAULT: withOpacityValue("--piccolo-80"),
-        },
         "piccolo": {
           DEFAULT: withOpacityValue("--piccolo"),
         },
