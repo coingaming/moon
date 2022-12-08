@@ -305,14 +305,27 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
             <Field name={:permissions}>
               <MultiSelect
                 id="user-permissions-example-search"
-                available_options={@options}
                 options={@searched_options}
                 prompt="Permission"
                 size="medium"
-                on_search_change="update_search"
-                {=@search_string}
-                with="checkbox"
-              />
+              >
+                <Moon.Autolayouts.TopToDown>
+                  <div class={
+                    "overflow-auto rounded-moon-i-md box-border border border-solid",
+                    "border-beerus w-36 min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
+                  }>
+                    <Moon.Components.Select.Dropdown
+                      id="user-permissions-example-search-dropdown"
+                      select_id="user-permissions-example-search"
+                      available_options={@options}
+                      options={@searched_options}
+                      on_search_change="update_search"
+                      with="checkbox"
+                      {=@search_string}
+                    />
+                  </div>
+                </Moon.Autolayouts.TopToDown>
+              </MultiSelect>
             </Field>
           </Form>
         </:example>

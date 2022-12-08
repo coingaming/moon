@@ -129,12 +129,6 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(selected_label_background_color_class, :css_class, default: "bulma")
   prop(selected_label_text_color_class, :css_class, default: "gohan")
 
-  prop(available_options, :any)
-  prop(on_search_change, :event)
-  prop(search_string, :string)
-  prop(with, :string, values: ~w(checkbox), default: nil)
-  prop(search_height, :css_class, default: "w-36")
-
   data(open, :boolean, default: false)
 
   slot(default)
@@ -156,7 +150,7 @@ defmodule Moon.Components.Select.MultiSelect do
             <Labels
               select_id={@id}
               value={SelectHelpers.get_normalized_value(@form, @field, true, value: @value)}
-              options={@available_options || @options}
+              {=@options}
               {=@prompt}
               {=@size}
               {=@disabled}
@@ -170,26 +164,25 @@ defmodule Moon.Components.Select.MultiSelect do
         </PullAside>
       </FieldBorder>
       <:content>
-        <TopToDown>
-          <div class={
-            "overflow-auto rounded-moon-i-md box-border border border-solid",
-            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
-            "#{@search_height}": not is_nil(@on_search_change)
-          }>
-            <Dropdown
-              class="w-auto"
-              id={"#{@id}-dropdown"}
-              select_id={@id}
-              {=@available_options}
-              {=@options}
-              {=@disabled}
-              {=@on_search_change}
-              {=@search_string}
-              {=@with}
-              is_multi
-            />
-          </div>
-        </TopToDown>
+        {#if slot_assigned?(:default)}
+          <#slot {@default} />
+        {#else}
+          <TopToDown>
+            <div class={
+              "overflow-auto rounded-moon-i-md box-border border border-solid",
+              "border-beerus w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
+            }>
+              <Dropdown
+                class="w-auto"
+                id={"#{@id}-dropdown"}
+                select_id={@id}
+                {=@options}
+                {=@disabled}
+                is_multi
+              />
+            </div>
+          </TopToDown>
+        {/if}
       </:content>
     </Popover>
     """

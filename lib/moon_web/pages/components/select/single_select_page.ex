@@ -610,14 +610,27 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <SingleSelect
                 popover_class="pt-2"
                 id="user-roles-example-search-0"
-                available_options={@options}
                 options={@searched_options}
                 label="Role"
                 placeholder="Select a role"
                 size="sm"
-                on_search_change="update_search"
-                {=@search_string}
-              />
+              >
+                <Moon.Autolayouts.TopToDown>
+                  <div class={
+                    "overflow-auto rounded-moon-i-md box-border border border-solid",
+                    "border-beerus w-36 min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
+                  }>
+                    <Moon.Components.Select.Dropdown
+                      id="user-roles-example-search-0-dropdown"
+                      select_id="user-roles-example-search-0"
+                      available_options={@options}
+                      options={@searched_options}
+                      on_search_change="update_search"
+                      {=@search_string}
+                    />
+                  </div>
+                </Moon.Autolayouts.TopToDown>
+              </SingleSelect>
             </Field>
           </Form>
         </:example>
