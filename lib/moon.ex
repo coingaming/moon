@@ -30,7 +30,6 @@ defmodule Moon do
     "nappa-60",
     "nappa",
     "piccolo",
-    "piccolo-120",
     "hit-80",
     "hit",
     "hit-120",

@@ -36,7 +36,7 @@ defmodule Moon.Components.Select do
       class={
         "text-trunks pr-3.5 bg-no-repeat bg-goku hover:bg-goku-120
                hover:cursor-pointer focus:cursor-pointer border border-solid
-               border-beerus focus:text-bulma disabled:cursor-not-allowed focus:border-piccolo-120 focus:outline-none",
+               border-beerus focus:text-bulma disabled:cursor-not-allowed focus:border-piccolo focus:outline-none",
         "rounded-moon-s-sm": @rounded,
         "#{@class}": true
       }

@@ -164,7 +164,6 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         'nappa-60': 'var(--nappa-60)',
         'nappa': 'var(--nappa)',
         'piccolo': 'var(--piccolo)',
-        'piccolo-120': 'var(--piccolo-120)',
         'hit-80': 'var(--hit-80)',
         'hit': 'var(--hit)',
         'hit-120': 'var(--hit-120)',

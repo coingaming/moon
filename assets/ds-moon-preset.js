@@ -271,9 +271,6 @@ module.exports = {
         "piccolo": {
           DEFAULT: withOpacityValue("--piccolo"),
         },
-        "piccolo-120": {
-          DEFAULT: withOpacityValue("--piccolo-120"),
-        },
         "hit-80": {
           DEFAULT: withOpacityValue("--hit-80"),
         },
