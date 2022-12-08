@@ -28,35 +28,35 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
         label: "Active players",
         data_key: "actives",
         value: "3,174",
-        color: "frieza.100",
+        color: "frieza",
         is_active: true
       },
       %{
         label: "Turnover",
         data_key: "turnover",
         value: "12,174.23",
-        color: "krillin.100",
+        color: "krillin",
         is_active: true
       },
       %{
         label: "GGR",
         data_key: "ggr",
         value: "12,174.23",
-        color: "roshi.100",
+        color: "roshi",
         is_active: false
       },
       %{
         label: "Bets",
         data_key: "bets",
         value: "3,174",
-        color: "whis.100",
+        color: "whis",
         is_active: true
       },
       %{
         label: "Margin",
         data_key: "margin",
         value: "5.38%",
-        color: "chiChi.100",
+        color: "chi-chi",
         is_active: false
       }
     ]

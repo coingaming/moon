@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.IconsPage do
+defmodule MoonWeb.Pages.Components.IconsPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -18,7 +18,11 @@ defmodule MoonWeb.Pages.IconsPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "/icons",
+        to: "#",
+        name: "Components"
+      },
+      %{
+        to: "/components/icons",
         name: "Icons"
       }
     ]

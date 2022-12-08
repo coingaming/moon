@@ -1,3 +1,66 @@
+# [2.32.0](https://github.com/coingaming/moon/compare/v2.31.12...v2.32.0) (2022-12-06)
+
+
+### Features
+
+* Add custom formatting to date renderer ([#467](https://github.com/coingaming/moon/issues/467)) ([a64da4c](https://github.com/coingaming/moon/commit/a64da4c35b61dbbc549811693db9fd7c70670687))
+
+## [2.31.12](https://github.com/coingaming/moon/compare/v2.31.11...v2.31.12) (2022-11-30)
+
+
+### Bug Fixes
+
+* Additional alignment of menu items on sidebar with React TW ([#465](https://github.com/coingaming/moon/issues/465)) ([0683b7e](https://github.com/coingaming/moon/commit/0683b7e4d6d40781ed0976283980dd69551d756b))
+
+## [2.31.11](https://github.com/coingaming/moon/compare/v2.31.10...v2.31.11) (2022-11-30)
+
+
+### Bug Fixes
+
+* [MDS-282] Table selected=nil fix ([#464](https://github.com/coingaming/moon/issues/464)) ([0247489](https://github.com/coingaming/moon/commit/02474893ce39674d0e5344cd67b0648d6598d9cf))
+
+## [2.31.10](https://github.com/coingaming/moon/compare/v2.31.9...v2.31.10) (2022-11-30)
+
+
+### Bug Fixes
+
+* [MDS-282] headless table ([#463](https://github.com/coingaming/moon/issues/463)) ([d355a39](https://github.com/coingaming/moon/commit/d355a3964c63475fff9acd2063369119dd113f90))
+
+## [2.31.9](https://github.com/coingaming/moon/compare/v2.31.8...v2.31.9) (2022-11-29)
+
+
+### Bug Fixes
+
+* bump surface version to 25.0.10 ([#462](https://github.com/coingaming/moon/issues/462)) ([68b8437](https://github.com/coingaming/moon/commit/68b843741b45e5c895a7044d6485e5fdef9f1fee))
+
+## [2.31.8](https://github.com/coingaming/moon/compare/v2.31.7...v2.31.8) (2022-11-29)
+
+
+### Bug Fixes
+
+* [MDS-282] Table ([#457](https://github.com/coingaming/moon/issues/457)) ([905fe53](https://github.com/coingaming/moon/commit/905fe534dfad5ceb0786f52d3c4fa62d77e067af))
+
+## [2.31.7](https://github.com/coingaming/moon/compare/v2.31.6...v2.31.7) (2022-11-28)
+
+
+### Bug Fixes
+
+* chichi color to chi-chi ([#460](https://github.com/coingaming/moon/issues/460)) ([f91979b](https://github.com/coingaming/moon/commit/f91979b461cc206327e92dd73b6fda3bd464aa26))
+
+## [2.31.6](https://github.com/coingaming/moon/compare/v2.31.5...v2.31.6) (2022-11-28)
+
+
+### Bug Fixes
+
+* chichi color to chi-chi ([#459](https://github.com/coingaming/moon/issues/459)) ([a592535](https://github.com/coingaming/moon/commit/a5925351427d68e31a2d5a7fbee083a2ad5b3fe1))
+
+## [2.31.5](https://github.com/coingaming/moon/compare/v2.31.4...v2.31.5) (2022-11-28)
+
+
+### Bug Fixes
+
+* Update app.css ([#458](https://github.com/coingaming/moon/issues/458)) ([be72006](https://github.com/coingaming/moon/commit/be7200612d9d0187ec2287fb6c4d80d96dacba32))
+
 ## [2.31.4](https://github.com/coingaming/moon/compare/v2.31.3...v2.31.4) (2022-11-25)
 
 

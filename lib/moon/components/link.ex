@@ -25,7 +25,7 @@ defmodule Moon.Components.Link do
           !@disabled and !@optional and !@secondary,
         "cursor-pointer": !@disabled,
         "cursor-not-allowed opacity-25": @disabled,
-        "text-piccolo": !@secondary && !@optional,
+        "text-bulma hover:underline focus:underline active:underline": !@secondary && !@optional,
         "text-trunks": @secondary,
         "text-trunks hover:text-piccolo-80 focus:text-bulma active:text-bulma": @optional
       }
