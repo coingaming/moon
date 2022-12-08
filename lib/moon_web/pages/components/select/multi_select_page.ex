@@ -132,11 +132,16 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   data(latest_params, :any, default: nil)
 
   def mount(_params, _session, socket) do
-    user_changeset = User.changeset(%User{})
+    user_changeset = User.changeset(%User{}, %{permissions: [1, 2], role: 1})
 
     {:ok,
      assign(socket,
-       user_changeset: user_changeset
+       user_changeset: user_changeset,
+       options: User.available_permissions(),
+       searched_options: User.available_permissions(),
+       options_with_left_icon: User.available_permissions_with_left_icon(),
+       searched_options_with_left_icon: User.available_permissions_with_left_icon(),
+       search_string: ""
      )}
   end
 
@@ -156,11 +161,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-1"
-                options={User.available_permissions()}
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-1" {=@options} />
             </Field>
           </Form>
         </:example>
@@ -177,11 +178,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         <:example>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
-              <MultiSelect
-                id="user-permissions-example-2"
-                options={User.available_permissions()}
-                prompt="Permission"
-              />
+              <MultiSelect id="user-permissions-example-2" {=@options} prompt="Permission" />
             </Field>
           </Form>
         </:example>
@@ -200,7 +197,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
             <Field name={:permissions}>
               <MultiSelect
                 id="user-permissions-example-3"
-                options={User.available_permissions_with_left_icon()}
+                options={@options_with_left_icon}
                 prompt="Permission"
               />
             </Field>
@@ -217,22 +214,12 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-4"
-                options={User.available_permissions()}
-                size="small"
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-4" {=@options} size="small" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
-              <MultiSelect
-                id="user-permissions-example-5"
-                options={User.available_permissions()}
-                prompt="Permission"
-                size="small"
-              />
+              <MultiSelect id="user-permissions-example-5" {=@options} prompt="Permission" size="small" />
             </Field>
           </Form>
         </:example>
@@ -245,22 +232,12 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-7"
-                options={User.available_permissions()}
-                size="medium"
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-7" {=@options} size="medium" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
-              <MultiSelect
-                id="user-permissions-example-8"
-                options={User.available_permissions()}
-                prompt="Permission"
-                size="medium"
-              />
+              <MultiSelect id="user-permissions-example-8" {=@options} prompt="Permission" size="medium" />
             </Field>
           </Form>
         </:example>
@@ -273,22 +250,12 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-10"
-                options={User.available_permissions()}
-                size="large"
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-10" {=@options} size="large" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
-              <MultiSelect
-                id="user-permissions-example-11"
-                options={User.available_permissions()}
-                prompt="Permission"
-                size="large"
-              />
+              <MultiSelect id="user-permissions-example-11" {=@options} prompt="Permission" size="large" />
             </Field>
           </Form>
         </:example>
@@ -301,22 +268,12 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-13"
-                options={User.available_permissions()}
-                size="xlarge"
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-13" {=@options} size="xlarge" />
             </Field>
           </Form>
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <Field name={:permissions}>
-              <MultiSelect
-                id="user-permissions-example-14"
-                options={User.available_permissions()}
-                prompt="Permission"
-                size="xlarge"
-              />
+              <MultiSelect id="user-permissions-example-14" {=@options} prompt="Permission" size="xlarge" />
             </Field>
           </Form>
         </:example>
@@ -329,17 +286,38 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
           <Form for={@user_changeset} change="form_update" submit="form_submit">
             <FieldLabel>Permissions</FieldLabel>
             <Field name={:permissions}>
-              <MultiSelect
-                popover_class="pt-2"
-                id="user-permissions-example-disabled"
-                options={User.available_permissions()}
-                disabled
-              />
+              <MultiSelect popover_class="pt-2" id="user-permissions-example-disabled" {=@options} disabled />
             </Field>
           </Form>
         </:example>
 
         <:code>{code_for_multi_select_disabled()}</:code>
+
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
+      </ExampleAndCode>
+
+      <ExampleAndCode
+        title="With search (data + changeset form)"
+        id="multi_select_with_options_as_prop_and_search"
+      >
+        <:example>
+          <Form for={@user_changeset} change="form_update" submit="form_submit">
+            <Field name={:permissions}>
+              <MultiSelect
+                id="user-permissions-example-search"
+                available_options={@options}
+                options={@searched_options}
+                prompt="Permission"
+                size="medium"
+                on_search_change="update_search"
+                {=@search_string}
+                with="checkbox"
+              />
+            </Field>
+          </Form>
+        </:example>
+
+        <:code>{code_for_multi_select_with_options_as_prop_and_search()}</:code>
 
         <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}<br><br>@latest_params = {inspect(@latest_params, pretty: true)}</:state>
       </ExampleAndCode>
@@ -370,6 +348,27 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     user_changeset = User.changeset(%User{}, user_params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("update_search", %{"value" => search_string}, socket) do
+    options = socket.assigns.options
+    options_with_left_icon = socket.assigns.options_with_left_icon
+
+    {:noreply,
+     assign(socket,
+       options: options,
+       searched_options: filtered_options(options, search_string),
+       options_with_left_icon: options_with_left_icon,
+       searched_options_with_left_icon: filtered_options(options_with_left_icon, search_string),
+       search_string: search_string
+     )}
+  end
+
+  def filtered_options(options, search_string) do
+    Enum.filter(
+      options,
+      &String.contains?(String.downcase(&1.label), String.downcase(search_string))
+    )
   end
 
   def code_for_multi_select_with_options_as_prop do
@@ -588,7 +587,24 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
         />
       </Field>
     </Form>
-    end
+    """
+  end
+
+  def code_for_multi_select_with_options_as_prop_and_search do
+    """
+    alias Moon.Components.Select.MultiSelect
+
+    <Form for={@user_changeset} change="form_update" submit="form_submit">
+      <FieldLabel>Permissions</FieldLabel>
+      <Field name={:permissions}>
+        <MultiSelect
+          popover_class="pt-2"
+          id="user-permissions-example-disabled"
+          options={User.available_permissions()}
+          disabled={true}
+        />
+      </Field>
+    </Form>
     """
   end
 end
