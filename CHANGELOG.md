@@ -1,3 +1,10 @@
+## [2.32.1](https://github.com/coingaming/moon/compare/v2.32.0...v2.32.1) (2022-12-08)
+
+
+### Bug Fixes
+
+* replaced ListItem with MenuItem ([11d73f0](https://github.com/coingaming/moon/commit/11d73f0aacf78d2d05ea2dee2921dfe898f79fcc))
+
 # [2.32.0](https://github.com/coingaming/moon/compare/v2.31.12...v2.32.0) (2022-12-06)
 
 
