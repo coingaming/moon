@@ -128,7 +128,6 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink :if={!@hide_items} route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
                       <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
-                      <SidebarLink :if={!@hide_items} route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
                       <SidebarLink route={Pages.Components.MenuItemPage}>MenuItem</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.PaginationPage}>Pagination</SidebarLink>
