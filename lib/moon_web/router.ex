@@ -97,7 +97,6 @@ defmodule MoonWeb.Router do
         live("/components/icons", MoonWeb.Pages.Components.IconsPage)
         live("/components/label", MoonWeb.Pages.Components.LabelPage)
         live("/components/link", MoonWeb.Pages.Components.LinkPage)
-        live("/components/list_items", MoonWeb.Pages.Components.ListItemsPage)
         live("/components/loader", MoonWeb.Pages.Components.LoaderPage)
         live("/components/pagination", MoonWeb.Pages.Components.PaginationPage)
 
