@@ -78,12 +78,12 @@ defmodule MoonWeb.Router do
         live("/components/date/single-date", MoonWeb.Pages.Components.Date.SingleDatePage)
         live("/components/date/range-date", MoonWeb.Pages.Components.Date.RangeDatePage)
 
-        live("/components/dialog/modal", MoonWeb.Pages.Components.Dialog.ModalPage)
+        live("/components/modal", MoonWeb.Pages.Components.ModalPage)
         live("/components/dialog/dialog-content", MoonWeb.Pages.Components.Dialog.ContentPage)
         live("/components/dialog/dialog-overlay", MoonWeb.Pages.Components.Dialog.OverlayPage)
         live("/components/dialog/dialog-header", MoonWeb.Pages.Components.Dialog.HeaderPage)
         live("/components/dialog/dialog-footer", MoonWeb.Pages.Components.Dialog.FooterPage)
-        live("/components/dialog/popover", MoonWeb.Pages.Components.Dialog.PopoverPage)
+        live("/components/popover", MoonWeb.Pages.Components.PopoverPage)
 
         live(
           "/components/checkbox-multiselect",

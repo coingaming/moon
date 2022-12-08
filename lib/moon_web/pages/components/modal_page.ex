@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
+defmodule MoonWeb.Pages.Components.ModalPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -19,23 +19,19 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
         name: "Components"
       },
       %{
-        to: "#",
-        name: "Dialog"
-      },
-      %{
-        to: "/components/dialog/modal",
+        to: "/components/modal",
         name: "Modal"
       }
     ]
   )
 
-  data(modal_is_open, :boolean, default: true)
+  data(modal_is_open, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Modal">
-        <p>Modal</p>
+        <p>A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.</p>
       </ComponentPageDescription>
       <ExampleAndCode title="Modal" id="modal_1">
         <:example>

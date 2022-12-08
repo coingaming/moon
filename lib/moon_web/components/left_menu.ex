@@ -115,12 +115,10 @@ defmodule MoonWeb.Components.LeftMenu do
                         <:title>Dialog</:title>
                         <:content>
                           <div class="flex-grow flex flex-col gap-2 pl-8">
-                            <SidebarLink route={Pages.Components.Dialog.ModalPage}>Dialog</SidebarLink>
                             <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.ContentPage}>Dialog Content</SidebarLink>
                             <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.OverlayPage}>Dialog Overlay</SidebarLink>
                             <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.HeaderPage}>Dialog Header</SidebarLink>
                             <SidebarLink :if={!@hide_items} route={Pages.Components.Dialog.FooterPage}>Dialog Footer</SidebarLink>
-                            <SidebarLink route={Pages.Components.Dialog.PopoverPage}>Popover</SidebarLink>
                           </div>
                         </:content>
                       </Accordion>
@@ -130,7 +128,9 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
                       <SidebarLink route={Pages.Components.MenuItemPage}>MenuItem</SidebarLink>
+                      <SidebarLink route={Pages.Components.ModalPage}>Modal</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.PaginationPage}>Pagination</SidebarLink>
+                      <SidebarLink route={Pages.Components.PopoverPage}>Popover</SidebarLink>
                       <Accordion
                         is_content_inside={false}
                         id="left-menu-components-progress"

@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
+defmodule MoonWeb.Pages.Components.PopoverPage.PopoverExample do
   @moduledoc false
 
   use MoonWeb, :stateful_component
@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
   end
 end
 
-defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
+defmodule MoonWeb.Pages.Components.PopoverPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -37,7 +37,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   alias Moon.Autolayouts.LeftToRight
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample
+  alias MoonWeb.Pages.Components.PopoverPage.PopoverExample
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
@@ -59,14 +59,14 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
       %{
         :name => 'content',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content of popover'
       },
       %{
         :name => 'default',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content of popover toggle element'
       },
@@ -117,7 +117,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Popover">
-        <p>Popover</p>
+        <p>Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.</p>
       </ComponentPageDescription>
 
       {#for placement <- [
