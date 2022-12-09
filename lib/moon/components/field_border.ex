@@ -14,7 +14,7 @@ defmodule Moon.Components.FieldBorder do
   def render(assigns) do
     ~F"""
     <div
-      {=@testid}
+      data-testid={@testid}
       class={
         get_default_class(),
         @states_class || get_default_states_class(),
