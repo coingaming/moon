@@ -300,7 +300,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
         <:code>{table_01_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Table props" data={@props_info_array} />
     </Page>
     """
   end

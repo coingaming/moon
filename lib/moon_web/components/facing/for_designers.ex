@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
 
   def render(assigns) do
     ~F"""
-    <div class="theme-moon-dark text-bulma relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">
+    <div class="z-20 theme-moon-dark text-bulma relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <FigmaIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
@@ -21,8 +21,10 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
             For designers.
           </a>
         </h2>
-        <div class="3xl:absolute 3xl:top-6 ltr:3xl:right-6 rtl:3xl:left-6">
-          <ArrowsTopRight font_size="2rem" />
+        <div class="3xl:absolute 3xl:top-6 ltr:3xl:right-6 rtl:3xl:left-6 cursor-pointer">
+          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage, theme_name: @theme_name, direction: @direction)}>
+            <ArrowsTopRight font_size="2rem" />
+          </a>
         </div>
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex theme-moon-dark bg-transparent">

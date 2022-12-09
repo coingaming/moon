@@ -41,7 +41,7 @@ defmodule MoonWeb.Components.LeftMenu do
         </:short_logo>
         <:menu>
           <nav class="flex flex-col grow gap-2">
-            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
+            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 soverflow-y-scroll">
               <div class="flex items-center flex-shrink-0 pl-3">
                 <a
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
