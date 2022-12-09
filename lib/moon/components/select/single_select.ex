@@ -54,6 +54,7 @@ defmodule Moon.Components.Select.SingleSelect do
         prompt: @label
       )}
       <FieldBorder
+        testid={"#{@id}-toggle_open"}
         click="toggle_open"
         class={
           "w-full",

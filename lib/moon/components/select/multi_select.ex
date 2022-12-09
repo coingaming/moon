@@ -141,6 +141,7 @@ defmodule Moon.Components.Select.MultiSelect do
         id: @id
       )}
       <FieldBorder
+        testid={"#{@id}-toggle_open"}
         states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
         border_color_class={@field_border_color_class}
         click="toggle_open"
