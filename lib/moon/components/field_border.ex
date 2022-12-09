@@ -3,6 +3,7 @@ defmodule Moon.Components.FieldBorder do
 
   use Moon.StatelessComponent
 
+  prop(testid, :string)
   prop(class, :css_class)
   prop(border_color_class, :string)
   prop(states_class, :string)
@@ -13,6 +14,7 @@ defmodule Moon.Components.FieldBorder do
   def render(assigns) do
     ~F"""
     <div
+      data-testid={@testid}
       class={
         get_default_class(),
         @states_class || get_default_states_class(),

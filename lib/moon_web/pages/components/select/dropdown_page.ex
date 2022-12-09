@@ -34,19 +34,16 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   data(search_string, :string, default: "")
 
   def mount(_params, _session, socket) do
-    user_changeset = User.changeset(%User{})
-
-    user_permissions = User.available_permissions()
-    user_permissions_with_left_icon = User.available_permissions_with_left_icon()
+    user_changeset = User.changeset(%User{}, %{permissions: [1, 2], role: 1})
 
     {:ok,
      assign(socket,
        user_changeset: user_changeset,
        radio_form_changeset: user_changeset,
-       options: user_permissions,
-       searched_options: user_permissions,
-       options_with_left_icon: user_permissions_with_left_icon,
-       searched_options_with_left_icon: user_permissions_with_left_icon,
+       options: User.available_permissions(),
+       searched_options: User.available_permissions(),
+       options_with_left_icon: User.available_permissions_with_left_icon(),
+       searched_options_with_left_icon: User.available_permissions_with_left_icon(),
        search_string: "",
        tab_id: "1",
        selected: [],
@@ -76,7 +73,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="With icons" id="dropdown-icons-example">
@@ -99,7 +96,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="With search and footer (markup)" id="search_and_footer_markup">
@@ -148,7 +145,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown_search_footer()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode
@@ -191,7 +188,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_with_search_and_footer_data_and_form_for_atom_form_dropdown()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode
@@ -229,7 +226,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown_search_footer_and_data_and_form_changeset()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="With radio button" id="dropdown-radio-example">
@@ -278,7 +275,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown_checkbox()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="With Tabs" id="dropdown-tabs-example">
@@ -300,7 +297,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
           </Form>
         </:example>
         <:code>{code_for_dropdown_tabs()}</:code>
-        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}}</:state>
+        <:state>@user_changeset = {inspect(@user_changeset, pretty: true)}</:state>
       </ExampleAndCode>
     </Page>
     """
