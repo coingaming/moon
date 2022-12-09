@@ -27,12 +27,17 @@ defmodule Moon.Components.Select.SingleSelect do
   prop(use_error_tag, :boolean)
   prop(selected_value_class, :css_class, default: "")
 
+  prop(searched_options, :any, default: nil)
+  prop(on_search_change, :event)
+  prop(search_string, :string, default: nil)
+  prop(with, :string, default: nil)
+  prop(search_min_width, :css_class, default: "w-36")
+
   data(open, :boolean, default: false)
   data(form, :form, from_context: {Surface.Components.Form, :form})
   data(field, :atom, from_context: {Surface.Components.Form.Field, :field})
 
   slot(hint_text_slot)
-  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -83,18 +88,24 @@ defmodule Moon.Components.Select.SingleSelect do
         </PullAside>
       </FieldBorder>
       <:content>
-        {#if slot_assigned?(:default)}
-          <#slot {@default} />
-        {#else}
-          <TopToDown>
-            <div class={
-              "overflow-auto rounded-moon-i-md box-border border border-solid",
-              "border-beerus w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
-            }>
-              <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} {=@disabled} />
-            </div>
-          </TopToDown>
-        {/if}
+        <TopToDown>
+          <div class={
+            "overflow-auto rounded-moon-i-md box-border border border-solid",
+            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
+            "#{@search_min_width}": not is_nil(@on_search_change)
+          }>
+            <Dropdown
+              id={"#{@id}-dropdown"}
+              select_id={@id}
+              available_options={@options}
+              options={@searched_options || @options}
+              {=@disabled}
+              {=@on_search_change}
+              {=@search_string}
+              {=@with}
+            />
+          </div>
+        </TopToDown>
       </:content>
     </Popover>
     <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>

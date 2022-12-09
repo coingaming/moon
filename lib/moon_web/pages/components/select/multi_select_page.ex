@@ -305,27 +305,14 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
             <Field name={:permissions}>
               <MultiSelect
                 id="user-permissions-example-search"
-                options={@searched_options}
+                {=@options}
+                {=@searched_options}
+                {=@search_string}
+                on_search_change="update_search"
+                with="checkbox"
                 prompt="Permission"
                 size="medium"
-              >
-                <Moon.Autolayouts.TopToDown>
-                  <div class={
-                    "overflow-auto rounded-moon-i-md box-border border border-solid",
-                    "border-beerus w-36 min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
-                  }>
-                    <Moon.Components.Select.Dropdown
-                      id="user-permissions-example-search-dropdown"
-                      select_id="user-permissions-example-search"
-                      available_options={@options}
-                      options={@searched_options}
-                      on_search_change="update_search"
-                      with="checkbox"
-                      {=@search_string}
-                    />
-                  </div>
-                </Moon.Autolayouts.TopToDown>
-              </MultiSelect>
+              />
             </Field>
           </Form>
         </:example>
@@ -608,13 +595,16 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
     alias Moon.Components.Select.MultiSelect
 
     <Form for={@user_changeset} change="form_update" submit="form_submit">
-      <FieldLabel>Permissions</FieldLabel>
       <Field name={:permissions}>
         <MultiSelect
-          popover_class="pt-2"
-          id="user-permissions-example-disabled"
-          options={User.available_permissions()}
-          disabled={true}
+          id="user-permissions-example-search"
+          {=@options}
+          {=@searched_options}
+          {=@search_string}
+          on_search_change="update_search"
+          with="checkbox"
+          prompt="Permission"
+          size="medium"
         />
       </Field>
     </Form>

@@ -129,6 +129,12 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(selected_label_background_color_class, :css_class, default: "bulma")
   prop(selected_label_text_color_class, :css_class, default: "gohan")
 
+  prop(searched_options, :any, default: nil)
+  prop(on_search_change, :event)
+  prop(search_string, :string, default: nil)
+  prop(with, :string, default: nil)
+  prop(search_min_width, :css_class, default: "w-36")
+
   data(open, :boolean, default: false)
 
   slot(default)
@@ -165,25 +171,26 @@ defmodule Moon.Components.Select.MultiSelect do
         </PullAside>
       </FieldBorder>
       <:content>
-        {#if slot_assigned?(:default)}
-          <#slot {@default} />
-        {#else}
-          <TopToDown>
-            <div class={
-              "overflow-auto rounded-moon-i-md box-border border border-solid",
-              "border-beerus w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
-            }>
-              <Dropdown
-                class="w-auto"
-                id={"#{@id}-dropdown"}
-                select_id={@id}
-                {=@options}
-                {=@disabled}
-                is_multi
-              />
-            </div>
-          </TopToDown>
-        {/if}
+        <TopToDown>
+          <div class={
+            "overflow-auto rounded-moon-i-md box-border border border-solid",
+            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
+            "#{@search_min_width}": not is_nil(@on_search_change)
+          }>
+            <Dropdown
+              class="w-auto"
+              id={"#{@id}-dropdown"}
+              select_id={@id}
+              available_options={@options}
+              options={@searched_options || @options}
+              {=@disabled}
+              {=@on_search_change}
+              {=@search_string}
+              {=@with}
+              is_multi
+            />
+          </div>
+        </TopToDown>
       </:content>
     </Popover>
     """

@@ -26,6 +26,12 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     ]
   )
 
+  # prop(searched_options, :any, default: nil)
+  # prop(on_search_change, :event)
+  # prop(search_string, :string, default: nil)
+  # prop(with, :string, default: nil)
+  # prop(search_min_width, :css_class, default: "w-36")
+
   data(props_info_array, :list,
     default: [
       %{
@@ -610,27 +616,14 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
               <SingleSelect
                 popover_class="pt-2"
                 id="user-roles-example-search-0"
-                options={@searched_options}
+                {=@options}
+                {=@searched_options}
+                {=@search_string}
+                on_search_change="update_search"
                 label="Role"
                 placeholder="Select a role"
                 size="sm"
-              >
-                <Moon.Autolayouts.TopToDown>
-                  <div class={
-                    "overflow-auto rounded-moon-i-md box-border border border-solid",
-                    "border-beerus w-36 min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl"
-                  }>
-                    <Moon.Components.Select.Dropdown
-                      id="user-roles-example-search-0-dropdown"
-                      select_id="user-roles-example-search-0"
-                      available_options={@options}
-                      options={@searched_options}
-                      on_search_change="update_search"
-                      {=@search_string}
-                    />
-                  </div>
-                </Moon.Autolayouts.TopToDown>
-              </SingleSelect>
+              />
             </Field>
           </Form>
         </:example>
@@ -1183,14 +1176,15 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     <Form for={@user_changeset} change="form_update" submit="form_submit">
       <Field name={:role}>
         <SingleSelect
+          popover_class="pt-2"
           id="user-roles-example-search-0"
-          available_options={@options}
-          options={@searched_options}
+          {=@options}
+          {=@searched_options}
+          {=@search_string}
+          on_search_change="update_search"
           label="Role"
           placeholder="Select a role"
           size="sm"
-          on_search_change="update_search"
-          {=@search_string}
         />
       </Field>
     </Form>
