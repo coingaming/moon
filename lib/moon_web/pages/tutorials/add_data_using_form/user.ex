@@ -20,8 +20,17 @@ defmodule MoonWeb.Pages.Tutorials.AddDataUsingForm.User do
     field(:document_filename)
     field(:agrees_to_terms_of_service, :boolean, default: true)
     field(:agrees_to_marketing_emails, :boolean, default: true)
-    field(:permissions, {:array, :integer}, default: [1, 2])
-    field(:role, :integer, default: 1)
+    field(:permissions, {:array, :integer})
+    field(:role, :integer)
+  end
+
+  def gender_options() do
+    [
+      %{label: "Female", value: "female"},
+      %{label: "Male", value: "male"},
+      %{label: "Invalid choice", value: "invalid"},
+      %{label: "I identify as God and this is not important", value: "god", disabled: true}
+    ]
   end
 
   def available_permissions() do

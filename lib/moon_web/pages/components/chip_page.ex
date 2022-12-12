@@ -26,43 +26,43 @@ defmodule MoonWeb.Pages.Components.ChipPage do
     default: [
       %{
         :name => 'size',
-        :type => 'xsmall | small | medium | large | xlarge',
-        :required => 'false',
-        :default => 'medium',
+        :type => 'xs | sm | md | lg | xl',
+        :required => 'No',
+        :default => 'md',
         :description => 'Size for chip'
       },
       %{
         :name => 'left_icon',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Asset name for the left icon'
       },
       %{
         :name => 'right_icon',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Asset name for the right icon'
       },
       %{
         :name => 'icon_only',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Asset name for the icon. Icon only and no text shown'
       },
       %{
         :name => 'active',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Active state'
       },
       %{
         :name => 'is_stroke',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Show stroke on hover/active'
       }
@@ -159,7 +159,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
         <:code>{chip_5_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Chip props" data={@props_info_array} />
     </Page>
     """
   end

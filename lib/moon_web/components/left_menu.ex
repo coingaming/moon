@@ -41,7 +41,7 @@ defmodule MoonWeb.Components.LeftMenu do
         </:short_logo>
         <:menu>
           <nav class="flex flex-col grow gap-2">
-            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
+            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 soverflow-y-scroll">
               <div class="flex items-center flex-shrink-0 pl-3">
                 <a
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
@@ -54,7 +54,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 <SidebarLink route={Pages.VisionPage}>Vision</SidebarLink>
                 <SidebarLink route={Pages.GettingStartedPage}>Getting Started</SidebarLink>
                 <SidebarLink :if={!@hide_items} route={Pages.ContributePage}>How to contribute</SidebarLink>
-                <SidebarLink route={Pages.ColoursPalettePage}>Colours Palette</SidebarLink>
+                <SidebarLink route={Pages.ColoursPalettePage}>Colours</SidebarLink>
                 <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
                 <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
                 <Accordion
@@ -128,7 +128,6 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink :if={!@hide_items} route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
                       <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
-                      <SidebarLink :if={!@hide_items} route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
                       <SidebarLink route={Pages.Components.MenuItemPage}>MenuItem</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.PaginationPage}>Pagination</SidebarLink>

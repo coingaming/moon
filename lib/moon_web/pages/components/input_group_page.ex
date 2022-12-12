@@ -196,7 +196,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
           <:state>{input_group_1000_state(assigns)}</:state>
         </ExampleAndCode>
 
-        <PropsTable data={@props_info_array} />
+        <PropsTable title="TextInpoutGroup props" data={@props_info_array} />
       </TopToDown>
     </Page>
     """

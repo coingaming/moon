@@ -44,7 +44,7 @@ defmodule MoonWeb.Router do
         live("/vision", MoonWeb.Pages.VisionPage)
         live("/getting-started", MoonWeb.Pages.GettingStartedPage)
         live("/contribute", MoonWeb.Pages.ContributePage)
-        live("/colours-palette", MoonWeb.Pages.ColoursPalettePage)
+        live("/colours", MoonWeb.Pages.ColoursPalettePage)
         live("/tokens", MoonWeb.Pages.TokensPage)
         live("/assets/age_limit", MoonWeb.Pages.Assets.AgeLimitPage)
         live("/assets/crests", MoonWeb.Pages.Assets.CrestsPage)
@@ -97,7 +97,6 @@ defmodule MoonWeb.Router do
         live("/components/icons", MoonWeb.Pages.Components.IconsPage)
         live("/components/label", MoonWeb.Pages.Components.LabelPage)
         live("/components/link", MoonWeb.Pages.Components.LinkPage)
-        live("/components/list_items", MoonWeb.Pages.Components.ListItemsPage)
         live("/components/loader", MoonWeb.Pages.Components.LoaderPage)
         live("/components/pagination", MoonWeb.Pages.Components.PaginationPage)
 

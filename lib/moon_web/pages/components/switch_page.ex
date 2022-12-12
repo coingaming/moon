@@ -32,28 +32,28 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
       %{
         :name => 'checked',
         :type => 'boolean ',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Is switch checked/unchecked'
       },
       %{
         :name => 'caption_unchecked',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Displayed text when unchecked'
       },
       %{
         :name => 'caption_checked',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Displayed text when checked'
       },
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'If not used in Field component, needs to be specified'
       }
@@ -65,7 +65,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Switch">
         <p>
-          Switch
+          Switch is a control that is used to quickly switch between two possible states. Switches are only used for these binary actions that occur immediately after the user “flips” the switch. They are commonly used for “on/off” switches.
         </p>
       </ComponentPageDescription>
 
@@ -154,7 +154,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
         <:state>{switch_1_state(assigns)}</:state>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Switch props" data={@props_info_array} />
     </Page>
     """
   end

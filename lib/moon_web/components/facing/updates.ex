@@ -9,7 +9,7 @@ defmodule MoonWeb.Components.Facing.Updates do
   def render(assigns) do
     ~F"""
     <!-- UPDATES -->
-    <div class="flex flex-col gap-12 z-40">
+    <div class="flex flex-col gap-12 z-20">
       <SectionTitle title="Updates." description="Explore our community features." />
       <FacingReel>
         <CardArticle

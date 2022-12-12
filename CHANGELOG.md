@@ -1,3 +1,17 @@
+## [2.32.2](https://github.com/coingaming/moon/compare/v2.32.1...v2.32.2) (2022-12-09)
+
+
+### Bug Fixes
+
+* [MDS-291] Align layout of component pages with React TW ([#466](https://github.com/coingaming/moon/issues/466)) ([cf98c25](https://github.com/coingaming/moon/commit/cf98c25b5e39760714f04ac3add12cb9a6130978))
+
+## [2.32.1](https://github.com/coingaming/moon/compare/v2.32.0...v2.32.1) (2022-12-08)
+
+
+### Bug Fixes
+
+* replaced ListItem with MenuItem ([11d73f0](https://github.com/coingaming/moon/commit/11d73f0aacf78d2d05ea2dee2921dfe898f79fcc))
+
 # [2.32.0](https://github.com/coingaming/moon/compare/v2.31.12...v2.32.0) (2022-12-06)
 
 

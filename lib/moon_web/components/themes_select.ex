@@ -58,7 +58,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         :on-click="toggle_themes"
         type="button"
         aria-pressed="false"
-        class="bg-gohan text-bulma hover:bg-gohan-120 inline-flex shrink-0
+        class="bg-goku text-bulma inline-flex shrink-0
                border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
                duration-200 shadow-md focus:outline-none"
       >
@@ -72,7 +72,7 @@ defmodule MoonWeb.Components.ThemesSelect do
             type="button"
             title={theme[:value]}
             value={theme[:value]}
-            class="p-2 rounded-full ml-4 text-piccolo bg-gohan hover:bg-gohan-120 inline-flex items-center justify-center"
+            class="p-2 rounded-full ml-4 text-piccolo bg-goku inline-flex items-center justify-center shadow-md"
           >
             {#if theme[:value] == "aposta10"}
               <LogoAposta10Short />
