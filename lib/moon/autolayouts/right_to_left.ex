@@ -1,4 +1,4 @@
-defmodule Moon.Autolayouts.LeftToRight do
+defmodule Moon.Autolayouts.RightToLeft do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -11,7 +11,7 @@ defmodule Moon.Autolayouts.LeftToRight do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex", @gap, @class, "items-center": @centered} {=@dir}>
+    <div class={"flex flex-row-reverse", @gap, @class, "items-center": @centered} {=@dir}>
       <#slot />
     </div>
     """
