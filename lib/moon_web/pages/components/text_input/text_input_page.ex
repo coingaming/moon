@@ -343,19 +343,9 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ExampleAndCode id="input_004" title="Search">
           <:example>
             <LeftToRight class="justify-between w-full items-end">
-              <TextInput
-                type="email"
-                size="md"
-                label="Medium (Default: md)"
-                placeholder="e.g. jake.weary@sportsbet.io"
-              />
-              <TextInput type="email" size="lg" label="Large (lg)" placeholder="e.g. jake.weary@sportsbet.io" />
-              <TextInput
-                type="email"
-                size="xl"
-                label="Xlarge (xl)"
-                placeholder="e.g. jake.weary@sportsbet.io"
-              />
+              <TextInput type="search" size="md" label="Medium (Default: md)" placeholder="e.g. happiness" />
+              <TextInput type="search" size="lg" label="Large (lg)" placeholder="e.g. health" />
+              <TextInput type="search" size="xl" label="Xlarge (xl)" placeholder="e.g. money" />
             </LeftToRight>
           </:example>
 
@@ -768,22 +758,22 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   def text_input_004_code do
     """
     <TextInput
-      type="email"
+      type="search"
       size="md"
       label="Medium (Default: md)"
-      placeholder="e.g. jake.weary@sportsbet.io"
+      placeholder="e.g. happiness"
     />
     <TextInput
-      type="email"
+      type="search"
       size="lg"
       label="Large (lg)"
-      placeholder="e.g. jake.weary@sportsbet.io"
+      placeholder="e.g. health"
     />
     <TextInput
-      type="email"
+      type="search"
       size="xl"
       label="Xlarge (xl)"
-      placeholder="e.g. jake.weary@sportsbet.io"
+      placeholder="e.g. money"
     />
     """
   end
