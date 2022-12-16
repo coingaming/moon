@@ -82,7 +82,10 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       {#else}
         <label
           :if={@label}
-          class={"block text-moon-16 text-bulma pb-2 pointer-events-none", "opacity-30 cursor-not-allowed": @disabled}
+          class={
+            "block text-moon-16 text-bulma pb-2 pointer-events-none",
+            "opacity-30 cursor-not-allowed": @disabled
+          }
         >
           {@label}
         </label>

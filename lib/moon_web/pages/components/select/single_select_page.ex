@@ -26,12 +26,6 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
     ]
   )
 
-  # prop(searched_options, :any, default: nil)
-  # prop(on_search_change, :event)
-  # prop(search_string, :string, default: nil)
-  # prop(with, :string, default: nil)
-  # prop(search_min_width, :css_class, default: "w-36")
-
   data(props_info_array, :list,
     default: [
       %{

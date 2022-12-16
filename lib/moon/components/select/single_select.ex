@@ -31,7 +31,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop(on_search_change, :event)
   prop(search_string, :string, default: nil)
   prop(with, :string, default: nil)
-  prop(search_min_width, :css_class, default: "w-36")
+  prop(search_min_width, :css_class, default: "min-w-[144px]")
 
   data(open, :boolean, default: false)
   data(form, :form, from_context: {Surface.Components.Form, :form})
