@@ -139,6 +139,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
                       <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
+                      <SidebarLink route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
                       <SidebarLink route={Pages.Components.MenuItemPage}>MenuItem</SidebarLink>
                       <SidebarLink route={Pages.Components.PaginationPage}>Pagination</SidebarLink>
