@@ -57,12 +57,26 @@ defmodule MoonWeb.Components.LeftMenu do
                 <SidebarLink route={Pages.ColoursPalettePage}>Colours</SidebarLink>
                 <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
                 <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
+                <div>
+                  <Accordion
+                    is_content_inside={false}
+                    id="left-menu-design"
+                    open_by_default={active_page_contains(@active_page, Pages.Design)}
+                  >
+                    <:title>Components v2</:title>
+                    <:content>
+                      <div class="flex-grow flex flex-col gap-2 pl-8">
+                        <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
+                      </div>
+                    </:content>
+                  </Accordion>
+                </div>
                 <Accordion
                   is_content_inside={false}
                   id="left-menu-components"
                   open_by_default={active_page_contains(@active_page, Pages.Components)}
                 >
-                  <:title>Components</:title>
+                  <:title>Components v1</:title>
                   <:content>
                     <div class="flex-grow flex flex-col gap-2 pl-8">
                       <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>
@@ -164,6 +178,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.TabsPage}>Tabs</SidebarLink>
                       <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
+                      <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                       <SidebarLink route={Pages.Components.TextInputPage}>TextInput</SidebarLink>
                       <SidebarLink route={Pages.Components.InputGroupPage}>TextInputGroup</SidebarLink>
                       <SidebarLink :if={!@hide_items} route={Pages.Components.ToastPage}>Toast</SidebarLink>
