@@ -31,12 +31,15 @@ defmodule Moon.Components.Table do
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
       <div class="w-full overflow-x-scroll">
-        <table class="text-sm border-collapse border-t border-beerus" style="min-width: 100%;">
+        <table class="border-collapse text-sm min-w-full">
           <thead>
             <tr>
               {#for col <- @cols}
                 <th
-                  class="border-r last:border-r-0 border-beerus p-2 text-left text-trunks font-normal"
+                  class={
+                    "p-2 text-left text-trunks font-normal",
+                    "cursor-pointer": col.sortable
+                  }
                   style="min-width: 200px"
                   :on-click={(col.sortable && @sorting_click) || nil}
                   :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort_dir)}
@@ -58,14 +61,13 @@ defmodule Moon.Components.Table do
                   "bg-goku-120": @selected == "#{item.id}",
                   "bg-gohan": @selected != "#{item.id}" && rem(row_index, 2) == 0
                 }
-                }
                 :on-click={@row_click}
                 :values={selected: item.id}
                 data-testid={"row-#{row_index}"}
               >
                 {#for {col, col_index} <- Enum.with_index(@cols)}
                   <td
-                    class="border-r last:border-r-0 border-beerus p-2"
+                    class={"p-4", "#{inter_cell_border()}": col_index < Enum.count(@cols) - 1}
                     data-testid={"row-#{row_index}-col-#{col_index}"}
                   >
                     <#slot {col} generator_value={item} />
@@ -80,7 +82,7 @@ defmodule Moon.Components.Table do
     """
   end
 
-  def toggle_sort_dir(sort_dir) do
+  defp toggle_sort_dir(sort_dir) do
     sort_dir = "#{sort_dir}"
 
     if sort_dir == "ASC" do
@@ -88,5 +90,10 @@ defmodule Moon.Components.Table do
     else
       "ASC"
     end
+  end
+
+  defp inter_cell_border() do
+    "after:content-[\"\"] after:absolute after:w-px after:bg-beerus " <>
+      "after:h-2/5 after:bottom-[30%] after:right-0 after:translate-x-[-50%] relative"
   end
 end
