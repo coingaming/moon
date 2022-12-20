@@ -1,6 +1,6 @@
-<h1 align="center" style="border-bottom: none;">M O O N</h1>
-<h3 align="center">Set of UI components built with Surface UI library</h3>
-<p align="center">
+# Moon Design System
+<h3 >Set of UI components built with Surface UI library</h3>
+<p>
   <a href="https://conventionalcommits.org">
     <img alt="Conventional Commits" src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg">
   </a>
@@ -9,12 +9,22 @@
   </a>
 </p>
 
-https://surface.moon.io/
+
+
+<img width="644" alt="Moon Design System" src="https://user-images.githubusercontent.com/232199/133601344-e63bd62f-dd0f-47a1-9d1e-b5cb065e5a90.png">
 
 _Note: This project uses **[semantic-release](https://semantic-release.gitbook.io/semantic-release/)** and **[conventional-commits](https://www.conventionalcommits.org/en/v1.0.0/)** spec, please use **[Commitizen](https://github.com/commitizen/cz-cli)**
 to write commit messages_
 
-# Troubleshooting setting up issues in Mac
+## Resources
+
+📖 [Documentation](https://moon.surface.io)
+
+## Setup
+
+Clone the repository: `git clone git@github.com:coingaming/moon.git`
+
+Start local development server by running `run-locally-dev.sh`
 
 If `./run-locally-dev.sh` is not working, try the following steps:
 
@@ -33,22 +43,30 @@ If `./run-locally-dev.sh` is not working, try the following steps:
 5. Stop the command above, then try running `./run-locally-dev.sh`
 6. If you do see error in ElixirLS extension "no elixir command found", you'll need to `cp .tool-versions ~`
 
-# Running .run-auto-importers.sh
+Install dependencies: `mix deps.get`
+
+To format your code, run `mix format` , `mix surface.format`
+
+## Running .run-auto-importers.sh
 
 This script imports figma assets and icons. You need to set the values in the .env file.
 You also need read access to the assets tool repo https://github.com/coingaming/assets
 Kindly check if you can clone this repo, if not, ask YulianaYarema @yarema184
 
-# Preferences to consider when writing code
+## Tests
+All newly added components must come with tests. In order to run the tests, run `mix test`
+
+## Preferences to consider when writing code
 
 In writing code try to remember following rules:
 
 1. Code should be as short and simple as possible (less lines is better)
 2. Code should be as explicit as possible (and compiler should catch as many errors as possible)
-3. Use slots
-4. Add and run tests
-5. Create component's page in moon_web application with API described and state shown
-6. Use following classes for TW-way styling:
+3. Moon Design System follows [headless design ](https://garden.mirahi.io/get-started-with-headless-design-systems/) approach - emphasis is on building smart, functional and reusable UI components.
+4. Use slots
+5. Add and run tests
+6. Create component's page in moon_web application with API described and state shown
+7. Use following classes for TW-way styling:
    - Use Moon classes for: (see ds-moon-preset.js for full list of variables, and themes/moon-design-\*.css for values)
      - font sizes
      - border-radius - rounded-moon-{s - big elements, e.g cart, i - interactive, e.g button}
