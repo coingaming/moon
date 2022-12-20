@@ -1,3 +1,10 @@
+## [2.32.4](https://github.com/coingaming/moon/compare/v2.32.3...v2.32.4) (2022-12-20)
+
+
+### Bug Fixes
+
+* small table alignings ([#480](https://github.com/coingaming/moon/issues/480)) ([acde8a2](https://github.com/coingaming/moon/commit/acde8a295a1c70e4691ba3a5aceeb5f5b9c7574a))
+
 ## [2.32.3](https://github.com/coingaming/moon/compare/v2.32.2...v2.32.3) (2022-12-13)
 
 
