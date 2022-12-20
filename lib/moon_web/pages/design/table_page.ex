@@ -32,77 +32,77 @@ defmodule MoonWeb.Pages.Design.TablePage do
       %{
         :name => 'cols',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'List of columns for the table'
       },
       %{
         :name => 'items',
         :type => 'generator',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Rows / data for the table. Each row should have unique `id` key'
       },
       %{
         :name => 'selected',
         :type => 'list[string]',
-        :required => 'false',
+        :required => 'No',
         :default => '[]',
         :description => 'list of ids of selected rows.'
       },
       %{
         :name => 'is_cell_border',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Has borders between cells in row'
       },
       %{
         :name => 'is_headless',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Does not have table/column headers'
       },
       %{
         :name => 'row_gap',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => 'border-spacing-y-1',
         :description => 'Gap between rows, TW class'
       },
       %{
         :name => 'row_size',
         :type => '2xs | xs | sm | md | lg | xl | 2xl',
-        :required => 'false',
+        :required => 'No',
         :default => 'md',
         :description => 'Text and padding sizes for rows'
       },
       %{
         :name => 'row_click',
         :type => 'event',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'When row is clicked'
       },
       %{
         :name => 'row_bg',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => 'bg-gohan',
         :description => 'Regular row background, TW class'
       },
       %{
         :name => 'selected_bg',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => 'bg-beerus',
         :description => 'Selected row background, TW class'
       },
       %{
         :name => 'hover_bg',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Hover row background, e.g. hover:bg-beerus'
       }

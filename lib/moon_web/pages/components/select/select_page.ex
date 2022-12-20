@@ -31,28 +31,28 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field name for underlying surface select component'
       },
       %{
         :name => 'label',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Label title'
       },
       %{
         :name => 'prompt',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Placeholder'
       },
       %{
         :name => 'disabled',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Whether the component is disabled'
       }

@@ -59,14 +59,14 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
       %{
         :name => 'content',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content of popover'
       },
       %{
         :name => 'default',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content of popover toggle element'
       },
@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
         :name => 'placement',
         :type =>
           'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
-        :required => 'false',
+        :required => 'No',
         :default => 'bottom-start',
         :description => 'TODO - Placement of popover'
       },

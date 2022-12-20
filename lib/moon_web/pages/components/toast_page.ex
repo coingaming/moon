@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
         :name => 'type',
         :type =>
           'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
-        :required => 'false',
+        :required => 'No',
         :default => 'text',
         :description => 'Different types of input'
       },
@@ -46,35 +46,35 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       %{
         :name => 'label',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'TODO - Should be required for medium size only'
       },
       %{
         :name => 'placeholder',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Placeholder for input'
       },
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field value for underlying phoenix text input component'
       },
       %{
         :name => 'hint_text',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Informative or error message under input'
       },
       %{
         :name => 'error',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Set error state for input'
       },
@@ -89,7 +89,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
       %{
         :name => 'background_color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Background color'
       }

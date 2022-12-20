@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       %{
         :name => 'default',
         :type => 'slot ',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content inside the tab'
       },
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       %{
         :name => 'on_click',
         :type => 'event ',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Event to happen when tab is clicked'
       },
@@ -78,7 +78,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       %{
         :name => 'to',
         :type => 'any',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Link\'s destination'
       }

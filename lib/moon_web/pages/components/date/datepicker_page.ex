@@ -29,49 +29,49 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
       %{
         :name => 'with_time',
         :type => 'boolean ',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Whether the datepicker includes time'
       },
       %{
         :name => 'week_starts_on',
         :type => '1 | 2 | 3 | 4 | 5 | 6 | 7',
-        :required => 'false',
+        :required => 'No',
         :default => '1 (Monday)',
         :description => 'Day of the week where the calendar starts'
       },
       %{
         :name => 'start_date_field',
         :type => 'atom',
-        :required => 'false',
+        :required => 'No',
         :default => 'start_date',
         :description => 'Field name for the start date'
       },
       %{
         :name => 'end_date_field',
         :type => 'atom',
-        :required => 'false',
+        :required => 'No',
         :default => 'end_date',
         :description => 'Field name for the end date'
       },
       %{
         :name => 'button_class',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => '',
         :description => 'Css class for the date button'
       },
       %{
         :name => 'show_date_inputs',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Whether to display the text input fields'
       },
       %{
         :name => 'ranges',
         :type => 'list',
-        :required => 'false',
+        :required => 'No',
         :default =>
           'lastMonth | lastWeek | yesterday | thisWeek | thisMonth | last24hours | today',
         :description => 'List of date ranges to choose from'
@@ -79,28 +79,28 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
       %{
         :name => 'start_date',
         :type => 'datetime',
-        :required => 'false',
+        :required => 'No',
         :default => 'Timex.today()',
         :description => 'Initial start date'
       },
       %{
         :name => 'end_date',
         :type => 'datetime',
-        :required => 'false',
+        :required => 'No',
         :default => 'Timex.today()',
         :description => 'Initial end date'
       },
       %{
         :name => 'submit',
         :type => 'event',
-        :required => 'false',
+        :required => 'No',
         :default => 'update_dates',
         :description => 'Event on date apply'
       },
       %{
         :name => 'testid',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => ''
       }

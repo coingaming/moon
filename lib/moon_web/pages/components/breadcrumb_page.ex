@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       %{
         :name => 'breadcrumbs',
         :type => 'list of Moon.Components.Breadcrumb.Crumb',
-        :required => 'false',
+        :required => 'No',
         :default => '[]',
         :description => 'Crumbs to display'
       }

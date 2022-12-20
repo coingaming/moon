@@ -27,14 +27,14 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       %{
         :name => 'children',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Component or element which Tooltip wraps around'
       },
       %{
         :name => 'text',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Textual content for Tooltip'
       },
@@ -55,7 +55,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       %{
         :name => 'placement',
         :type => 'top | bottom | left | right',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Where Tooltip will be shown'
       },
