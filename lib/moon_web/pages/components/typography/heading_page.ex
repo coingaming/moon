@@ -28,21 +28,21 @@ defmodule MoonWeb.Pages.Components.Typography.HeadingPage do
       %{
         :name => 'color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'text-bulma',
         :description => 'Heading color'
       },
       %{
         :name => 'size',
         :type => '16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
-        :required => 'false',
+        :required => 'No',
         :default => '16',
         :description => 'Heading size'
       },
       %{
         :name => 'is_regular',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Whether font weight is normal'
       },

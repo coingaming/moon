@@ -28,21 +28,21 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
       %{
         :name => 'color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Text color'
       },
       %{
         :name => 'size',
         :type => '9 | 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
-        :required => 'false',
+        :required => 'No',
         :default => '16',
         :description => 'TODO - Text size (support size 9)'
       },
       %{
         :name => 'is_bold',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Whether font weight is bold'
       },
