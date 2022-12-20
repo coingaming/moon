@@ -28,56 +28,56 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       %{
         :name => 'bg_color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'bg-gohan',
         :description => 'Background color'
       },
       %{
         :name => 'color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'text-bulma',
         :description => 'Text color'
       },
       %{
         :name => 'image_url',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Path to the image'
       },
       %{
         :name => 'is_rounded',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => ''
       },
       %{
         :name => 'is_status_active',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Active state for status indication'
       },
       %{
         :name => 'name',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Capital letters of name'
       },
       %{
         :name => 'size',
         :type => 'xs | sm | md | lg | xl | 2xl',
-        :required => 'false',
+        :required => 'No',
         :default => 'md',
         :description => 'Size for avatar'
       },
       %{
         :name => 'status_origin',
         :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
-        :required => 'false',
+        :required => 'No',
         :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
         :description => 'Position for status indication'
       }
@@ -190,7 +190,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <:code>{avatar_5_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Avatar props" data={@props_info_array} />
     </Page>
     """
   end

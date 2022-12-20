@@ -36,7 +36,7 @@ defmodule Moon.Components.Tabs.TabLink do
     {#if @patch}
       <LivePatch
         to={@to}
-        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo"}"}
         :if={@to}
       >
         <#slot />
@@ -44,7 +44,7 @@ defmodule Moon.Components.Tabs.TabLink do
     {#else}
       <Link
         to={@to}
-        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+        class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo"}"}
         :if={@to}
       >
         <#slot />
@@ -53,7 +53,7 @@ defmodule Moon.Components.Tabs.TabLink do
     <div
       :on-click={@on_click}
       phx-value-item_id={@item_id}
-      class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo-120"}"}
+      class={"inline-block p-1 text-center mr-5 #{@active && "border-b-2 border-piccolo"}"}
       :if={!@to}
     >
       <#slot />

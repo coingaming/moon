@@ -158,11 +158,6 @@ module.exports = {
         semibold: 500,
       },
       boxShadow: {
-        sm: "var(--box-shadow--sm)",
-        DEFAULT: "var(--box-shadow--default)",
-        md: "var(--box-shadow--default)",
-        lg: "var(--box-shadow--lg)",
-        xl: "var(--box-shadow--xl)",
         border: "0 0 0 2px rgba(var(--piccolo)) inset",
         inset: "0 0 0 1px rgb(var(--piccolo)) inset",
         interactive: "0 0 0 2px rgb(var(--piccolo)) inset",
@@ -202,8 +197,8 @@ module.exports = {
         "chi-chi-60": {
           DEFAULT: withOpacityValue("--chi-chi-60"),
         },
-        "chi-chi": {
-          DEFAULT: withOpacityValue("--chi-chi"),
+        "chichi": {
+          DEFAULT: withOpacityValue("--chichi"),
         },
         "roshi-10": {
           DEFAULT: withOpacityValue("--roshi-10"),
@@ -268,14 +263,8 @@ module.exports = {
         "nappa": {
           DEFAULT: withOpacityValue("--nappa"),
         },
-        "piccolo-80": {
-          DEFAULT: withOpacityValue("--piccolo-80"),
-        },
         "piccolo": {
           DEFAULT: withOpacityValue("--piccolo"),
-        },
-        "piccolo-120": {
-          DEFAULT: withOpacityValue("--piccolo-120"),
         },
         "hit-80": {
           DEFAULT: withOpacityValue("--hit-80"),

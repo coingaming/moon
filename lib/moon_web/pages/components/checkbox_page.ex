@@ -33,35 +33,35 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       %{
         :name => 'checked',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Preset value for checkbox state'
       },
       %{
         :name => 'disabled',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Checkbox disabled state'
       },
       %{
         :name => 'readonly',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => "Checkbox isn't disabled but its value can't be changed"
       },
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field name for the inner input form control'
       },
       %{
         :name => '#slot',
         :type => 'element',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Label for the control'
       }
@@ -141,7 +141,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         <:code>{checkbox_3_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Readonly" id="checkbox_4">
+      <ExampleAndCode title="ReadOnly" id="checkbox_4">
         <:example>
           <Form for={@user_changeset2} change="register_form_update2">
             <TopToDown>
@@ -156,7 +156,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
         <:code>{checkbox_4_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Checkbox props" data={@props_info_array} />
     </Page>
     """
   end

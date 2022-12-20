@@ -1,9 +1,9 @@
-defmodule Moon.Components.MenuItemTest do
+defmodule Moon.Design.MenuItemTest do
   use Snapshy
   use ExUnit.Case
   use Surface.LiveViewTest
 
-  alias Moon.Components.MenuItem
+  alias Moon.Design.MenuItem
   alias Moon.Components.Lego
   import MoonWeb.Helpers.Html
 

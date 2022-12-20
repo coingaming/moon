@@ -50,7 +50,7 @@ defmodule Moon.Components.TextInput.TextInputPassword do
             type={get_type(@password_shown)}
           />
           <label class={
-            "absolute text-[0.75rem] leading-3 text-trunks top-3 z-[3] transition-all",
+            "absolute text-[0.75rem] leading-3 text-trunks top-3 z-[3] transition-all pointer-events-none",
             "rtl:right-4",
             "ltr:left-4",
             "pl-8": @has_left_icon
@@ -82,7 +82,10 @@ defmodule Moon.Components.TextInput.TextInputPassword do
       {#else}
         <label
           :if={@label}
-          class={"block text-moon-16 text-bulma pb-2", "opacity-30 cursor-not-allowed": @disabled}
+          class={
+            "block text-moon-16 text-bulma pb-2 pointer-events-none",
+            "opacity-30 cursor-not-allowed": @disabled
+          }
         >
           {@label}
         </label>

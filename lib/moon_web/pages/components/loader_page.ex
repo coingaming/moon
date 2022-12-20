@@ -27,15 +27,15 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
       %{
         :name => 'color',
         :type => 'string',
-        :required => 'false',
-        :default => 'bulma',
+        :required => 'No',
+        :default => 'hit',
         :description => 'Colour of Loader'
       },
       %{
         :name => 'size',
-        :type => 'twoxsmall | xsmall | small | medium | large',
-        :required => 'false',
-        :default => 'medium',
+        :type => '2xs | xs | sm | md | lg',
+        :required => 'No',
+        :default => 'md',
         :description => 'Size of Loader'
       }
     ]
@@ -66,7 +66,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
 
       <ExampleAndCode title="Colors" id="loader_2">
         <:example>
-          <Loader color="hit" />
+          <Loader />
           <Loader color="trunks" />
           <Loader color="krillin" />
         </:example>
@@ -86,7 +86,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
         <:code>{loader_3_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="Loader props" data={@props_info_array} />
     </Page>
     """
   end

@@ -18,7 +18,7 @@ defmodule Moon.Components.InputGroup do
   )
 
   prop(has_fields, :boolean, default: false)
-  prop(included_fields, :list)
+  prop(included_fields, :list, default: [])
   prop(use_error_tag, :boolean, default: true)
 
   data(form, :form, from_context: {Surface.Components.Form, :form})

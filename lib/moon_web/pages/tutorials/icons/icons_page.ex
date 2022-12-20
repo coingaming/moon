@@ -35,7 +35,11 @@ defmodule MoonWeb.Pages.Components.IconsPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Icons" />
+      <ComponentPageDescription title="Icons">
+        <p>
+          Icons are used in other components and user interfaces.
+        </p>
+      </ComponentPageDescription>
 
       <ExampleAndCode title="Sizes and colors" id="icons">
         <:example>

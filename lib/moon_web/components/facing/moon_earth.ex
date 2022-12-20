@@ -6,7 +6,7 @@ defmodule MoonWeb.Components.Facing.MoonEarth do
   def render(assigns) do
     ~F"""
     <div>
-      <div class="origin-top-left fixed z-1 w-5/12 scale-[0.3] top-[300px] -right-[500px]">
+      <div class="origin-top-left fixed z-10 w-5/12 scale-[0.3] top-[300px] -right-[500px]">
         <img src="/moon/assets/images/facing/earth.png" alt="Earth">
       </div>
 

@@ -104,6 +104,7 @@ defmodule Moon.Components.Select.MultiSelect do
   use Moon.StatefulComponent
 
   alias Moon.Autolayouts.PullAside
+  alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
   alias Moon.Components.Popover
   alias Moon.Components.Select.Dropdown
@@ -128,6 +129,12 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(selected_label_background_color_class, :css_class, default: "bulma")
   prop(selected_label_text_color_class, :css_class, default: "gohan")
 
+  prop(searched_options, :any, default: nil)
+  prop(on_search_change, :event)
+  prop(search_string, :string, default: nil)
+  prop(with, :string, default: nil)
+  prop(search_min_width, :css_class, default: "min-w-[144px]")
+
   data(open, :boolean, default: false)
 
   slot(default)
@@ -140,6 +147,7 @@ defmodule Moon.Components.Select.MultiSelect do
         id: @id
       )}
       <FieldBorder
+        testid={"#{@id}-toggle_open"}
         states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
         border_color_class={@field_border_color_class}
         click="toggle_open"
@@ -163,9 +171,26 @@ defmodule Moon.Components.Select.MultiSelect do
         </PullAside>
       </FieldBorder>
       <:content>
-        <Popover.DefaultContent>
-          <Dropdown class="w-auto" id={"#{@id}-dropdown"} select_id={@id} {=@options} is_multi />
-        </Popover.DefaultContent>
+        <TopToDown>
+          <div class={
+            "overflow-auto rounded-moon-i-md box-border border border-solid",
+            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
+            "#{@search_min_width}": not is_nil(@on_search_change)
+          }>
+            <Dropdown
+              class="w-auto"
+              id={"#{@id}-dropdown"}
+              select_id={@id}
+              available_options={@options}
+              options={@searched_options || @options}
+              {=@disabled}
+              {=@on_search_change}
+              {=@search_string}
+              {=@with}
+              is_multi
+            />
+          </div>
+        </TopToDown>
       </:content>
     </Popover>
     """

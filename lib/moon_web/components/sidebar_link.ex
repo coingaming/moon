@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.SidebarLink do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.MenuItem
+  alias Moon.Design.MenuItem
 
   prop(route, :any)
   slot(default)
