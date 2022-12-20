@@ -50,7 +50,7 @@ defmodule Moon.Design.Table do
               {#for {col, col_index} <- Enum.with_index(@cols)}
                 <th
                   class={
-                    "text-left font-medium",
+                    "text-left font-medium whitespace-nowrap",
                     col.width,
                     text_size_classes(@row_size),
                     "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
@@ -61,10 +61,14 @@ defmodule Moon.Design.Table do
                   data-testid={"sort-column-#{col.name}"}
                 >
                   {col.label}
-                  {#if "#{@sort_key}" == "#{col.name}"}
-                    <Icon class="text-[1.5em]" name="arrows_up" :if={"#{@sort_dir}" == "ASC"} />
-                    <Icon class="text-[1.5em]" name="arrows_down" :if={"#{@sort_dir}" == "DESC"} />
-                  {/if}
+                  <Icon
+                    :if={"#{@sort_key}" == "#{col.name}"}
+                    class={
+                      "text-[1.5em] transition-transform transition-200",
+                      "rotate-180": @sort_dir != "ASC"
+                    }
+                    name="arrows_up"
+                  />
                 </th>
               {/for}
             </tr>

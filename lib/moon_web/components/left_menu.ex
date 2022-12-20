@@ -176,7 +176,6 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.SwitchPage}>Switch</SidebarLink>
                       <SidebarLink route={Pages.Components.TabsPage}>Tabs</SidebarLink>
                       <SidebarLink route={Pages.Components.TablePage}>Table</SidebarLink>
-                      <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                       <SidebarLink route={Pages.Components.TextInputPage}>TextInput</SidebarLink>
                       <SidebarLink route={Pages.Components.InputGroupPage}>TextInputGroup</SidebarLink>
                       <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
