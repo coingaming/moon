@@ -33,21 +33,21 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       %{
         :name => 'id',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Unique element\'s identifier'
       },
       %{
         :name => 'default',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Represent a caption for an item'
       },
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field name for underlying surface radio button component'
       },
@@ -61,7 +61,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       %{
         :name => 'checked',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description =>
           'A Boolean indicating whether or not this radio button is the default-selected item in the group'
@@ -69,7 +69,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       %{
         :name => 'click',
         :type => 'event',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Event handler'
       }
@@ -117,7 +117,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         <:state>{radiobutton_1_state(assigns)}</:state>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <PropsTable title="RadioButton props" data={@props_info_array} />
     </Page>
     """
   end

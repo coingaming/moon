@@ -44,7 +44,7 @@ defmodule MoonWeb.Router do
         live("/vision", MoonWeb.Pages.VisionPage)
         live("/getting-started", MoonWeb.Pages.GettingStartedPage)
         live("/contribute", MoonWeb.Pages.ContributePage)
-        live("/colours-palette", MoonWeb.Pages.ColoursPalettePage)
+        live("/colours", MoonWeb.Pages.ColoursPalettePage)
         live("/tokens", MoonWeb.Pages.TokensPage)
         live("/assets/age_limit", MoonWeb.Pages.Assets.AgeLimitPage)
         live("/assets/crests", MoonWeb.Pages.Assets.CrestsPage)
@@ -54,6 +54,9 @@ defmodule MoonWeb.Router do
         live("/manifest", MoonWeb.Pages.ManifestPage)
         live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
         live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
+
+        live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
+        live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
 
         live("/components/accordion", MoonWeb.Pages.Components.AccordionPage)
         live("/components/avatar", MoonWeb.Pages.Components.AvatarPage)
@@ -97,6 +100,7 @@ defmodule MoonWeb.Router do
         live("/components/icons", MoonWeb.Pages.Components.IconsPage)
         live("/components/label", MoonWeb.Pages.Components.LabelPage)
         live("/components/link", MoonWeb.Pages.Components.LinkPage)
+        live("/components/list_items", MoonWeb.Pages.Components.ListItemsPage)
         live("/components/loader", MoonWeb.Pages.Components.LoaderPage)
         live("/components/pagination", MoonWeb.Pages.Components.PaginationPage)
 
@@ -129,8 +133,6 @@ defmodule MoonWeb.Router do
         live("/components/typography/caption", MoonWeb.Pages.Components.Typography.CaptionPage)
         live("/components/typography/heading", MoonWeb.Pages.Components.Typography.HeadingPage)
         live("/components/typography/text", MoonWeb.Pages.Components.Typography.TextPage)
-
-        live("/components/menu_item", MoonWeb.Pages.Components.MenuItemPage)
 
         live("/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm)
         live("/tutorials/installation", MoonWeb.Pages.Tutorials.Installation)

@@ -1,4 +1,4 @@
-defmodule Moon.Components.MenuItem do
+defmodule Moon.Design.MenuItem do
   @moduledoc false
   use Moon.StatelessComponent
 

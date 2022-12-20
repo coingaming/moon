@@ -27,6 +27,12 @@ defmodule Moon.Components.Select.SingleSelect do
   prop(use_error_tag, :boolean)
   prop(selected_value_class, :css_class, default: "")
 
+  prop(searched_options, :any, default: nil)
+  prop(on_search_change, :event)
+  prop(search_string, :string, default: nil)
+  prop(with, :string, default: nil)
+  prop(search_min_width, :css_class, default: "min-w-[144px]")
+
   data(open, :boolean, default: false)
   data(form, :form, from_context: {Surface.Components.Form, :form})
   data(field, :atom, from_context: {Surface.Components.Form.Field, :field})
@@ -53,6 +59,7 @@ defmodule Moon.Components.Select.SingleSelect do
         prompt: @label
       )}
       <FieldBorder
+        testid={"#{@id}-toggle_open"}
         click="toggle_open"
         class={
           "w-full",
@@ -82,14 +89,21 @@ defmodule Moon.Components.Select.SingleSelect do
       </FieldBorder>
       <:content>
         <TopToDown>
-          <div
-            class={
-              "overflow-auto rounded-moon-i-md box-border border border-solid",
-              "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl"
-            }
-            style="min-height: 20px; max-height: 200px"
-          >
-            <Dropdown id={"#{@id}-dropdown"} select_id={@id} {=@options} disabled={@disabled} />
+          <div class={
+            "overflow-auto rounded-moon-i-md box-border border border-solid",
+            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
+            "#{@search_min_width}": not is_nil(@on_search_change)
+          }>
+            <Dropdown
+              id={"#{@id}-dropdown"}
+              select_id={@id}
+              available_options={@options}
+              options={@searched_options || @options}
+              {=@disabled}
+              {=@on_search_change}
+              {=@search_string}
+              {=@with}
+            />
           </div>
         </TopToDown>
       </:content>

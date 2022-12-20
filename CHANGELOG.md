@@ -1,3 +1,24 @@
+## [2.32.4](https://github.com/coingaming/moon/compare/v2.32.3...v2.32.4) (2022-12-20)
+
+
+### Bug Fixes
+
+* small table alignings ([#480](https://github.com/coingaming/moon/issues/480)) ([acde8a2](https://github.com/coingaming/moon/commit/acde8a295a1c70e4691ba3a5aceeb5f5b9c7574a))
+
+## [2.32.3](https://github.com/coingaming/moon/compare/v2.32.2...v2.32.3) (2022-12-13)
+
+
+### Bug Fixes
+
+* css issues for labels and remove piccolo-80 ([#468](https://github.com/coingaming/moon/issues/468)) ([4f1f60a](https://github.com/coingaming/moon/commit/4f1f60a9b7f6ed74ef830f71acf51101236e38cb))
+
+## [2.32.2](https://github.com/coingaming/moon/compare/v2.32.1...v2.32.2) (2022-12-09)
+
+
+### Bug Fixes
+
+* [MDS-291] Align layout of component pages with React TW ([#466](https://github.com/coingaming/moon/issues/466)) ([cf98c25](https://github.com/coingaming/moon/commit/cf98c25b5e39760714f04ac3add12cb9a6130978))
+
 ## [2.32.1](https://github.com/coingaming/moon/compare/v2.32.0...v2.32.1) (2022-12-08)
 
 
