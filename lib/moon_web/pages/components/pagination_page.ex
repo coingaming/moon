@@ -34,35 +34,35 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
       %{
         :name => 'range_before',
         :type => 'number',
-        :required => 'false',
+        :required => 'No',
         :default => '1',
         :description => 'Beginning of displayed range'
       },
       %{
         :name => 'range_after',
         :type => 'number',
-        :required => 'false',
+        :required => 'No',
         :default => '1',
         :description => 'End of displayed range'
       },
       %{
         :name => 'previous_button_label',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'Previous',
         :description => 'Label for "previous" button'
       },
       %{
         :name => 'next_button_label',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'Next',
         :description => 'Label for "next" button'
       },
       %{
         :name => 'on_change',
         :type => 'event',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description =>
           'The method to call when a page is clicked. Exposes the current page object as an argument.'

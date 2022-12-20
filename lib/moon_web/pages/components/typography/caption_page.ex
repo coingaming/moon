@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       %{
         :name => 'color_class',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Component or element which Tooltip wraps around'
       },
@@ -42,7 +42,7 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
       %{
         :name => 'text_align_class',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - Text alignment (this should be an enum set of values)'
       },
