@@ -55,6 +55,7 @@ defmodule MoonWeb.Router do
         live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
         live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
 
+        live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
 
         live("/components/accordion", MoonWeb.Pages.Components.AccordionPage)
@@ -99,6 +100,7 @@ defmodule MoonWeb.Router do
         live("/components/icons", MoonWeb.Pages.Components.IconsPage)
         live("/components/label", MoonWeb.Pages.Components.LabelPage)
         live("/components/link", MoonWeb.Pages.Components.LinkPage)
+        live("/components/list_items", MoonWeb.Pages.Components.ListItemsPage)
         live("/components/loader", MoonWeb.Pages.Components.LoaderPage)
         live("/components/pagination", MoonWeb.Pages.Components.PaginationPage)
 
@@ -131,8 +133,6 @@ defmodule MoonWeb.Router do
         live("/components/typography/caption", MoonWeb.Pages.Components.Typography.CaptionPage)
         live("/components/typography/heading", MoonWeb.Pages.Components.Typography.HeadingPage)
         live("/components/typography/text", MoonWeb.Pages.Components.Typography.TextPage)
-
-        live("/components/menu_item", MoonWeb.Pages.Components.MenuItemPage)
 
         live("/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm)
         live("/tutorials/installation", MoonWeb.Pages.Tutorials.Installation)

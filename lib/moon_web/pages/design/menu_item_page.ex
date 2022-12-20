@@ -1,8 +1,8 @@
-defmodule MoonWeb.Pages.Components.MenuItemPage do
+defmodule MoonWeb.Pages.Design.MenuItemPage do
   @moduledoc false
   use MoonWeb, :live_view
 
-  alias Moon.Components.MenuItem
+  alias Moon.Design.MenuItem
   alias Moon.Components.Lego
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.Components.MenuItemPage do
         name: "Components"
       },
       %{
-        to: "/components/menu",
+        to: "/components/v2/menu_item",
         name: "MenuItem"
       }
     ]
