@@ -38,7 +38,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         :name => 'type',
         :type =>
           'date | datetime-local | email | number | password | search | tel | text | url | time | url',
-        :required => 'false',
+        :required => 'No',
         :default => 'text',
         :description => 'Different types of input'
       },
@@ -52,35 +52,35 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       %{
         :name => 'label',
         :type => 'string',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Required for medium size only'
       },
       %{
         :name => 'placeholder',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Placeholder for input'
       },
       %{
         :name => 'field',
         :type => 'atom',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field value for underlying pheonix text input component'
       },
       %{
         :name => 'hint_text',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Informative or error message under input'
       },
       %{
         :name => 'error',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Set error state for input'
       },
@@ -94,21 +94,21 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
       %{
         :name => 'background_color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Background color'
       },
       %{
         :name => 'id',
         :type => 'string',
-        :required => 'false | required (for password type)',
+        :required => 'No | required (for password type)',
         :default => '-',
         :description => 'Unique id'
       },
       %{
         :name => 'use_error_tag',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description =>
           'Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components'

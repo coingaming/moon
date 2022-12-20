@@ -31,70 +31,70 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
       %{
         :name => 'field',
         :type => 'atom ',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Field for the underlying phoenix select component'
       },
       %{
         :name => 'size',
         :type => '-',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - size variant'
       },
       %{
         :name => 'options',
         :type => 'list',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Options for the select'
       },
       %{
         :name => 'prompt',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Placeholder text'
       },
       %{
         :name => 'header',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - header element on the options popup'
       },
       %{
         :name => 'footer',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - footer element on the options popup'
       },
       %{
         :name => 'menu_width',
         :type => 'number',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - Minimum width of the popup menu containing options'
       },
       %{
         :name => 'left',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - Left content for selected option'
       },
       %{
         :name => 'hint',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - Inform message under select, can be used for error message'
       },
       %{
         :name => 'items',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Content template for displaying each of the options'
       },
@@ -108,21 +108,21 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
       %{
         :name => 'value',
         :type => 'any',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Default selected value'
       },
       %{
         :name => 'on_select',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Name of the event handler function when an option is clicked'
       },
       %{
         :name => 'is_error',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'TODO - If the component is in error mode'
       }

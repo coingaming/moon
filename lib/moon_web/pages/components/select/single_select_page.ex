@@ -31,42 +31,42 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       %{
         :name => 'id',
         :type => 'string ',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => ''
       },
       %{
         :name => 'label',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => ''
       },
       %{
         :name => 'options',
         :type => 'list',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Options for the select'
       },
       %{
         :name => 'value',
         :type => 'any',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Default selected value'
       },
       %{
         :name => 'disabled',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => 'false',
         :description => 'Whether the component is disabled'
       },
       %{
         :name => 'size',
         :type => 'sm | md | lg | xl',
-        :required => 'false',
+        :required => 'No',
         :default => 'md',
         :description => 'Size variant'
       },
@@ -81,49 +81,49 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
       %{
         :name => 'popover_class',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Css class for the dropdown'
       },
       %{
         :name => 'placeholder',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'String to display when there is no value selected'
       },
       %{
         :name => 'background_color',
         :type => 'string ',
-        :required => 'false',
+        :required => 'No',
         :default => 'gohan',
         :description => ''
       },
       %{
         :name => 'hint_text_slot',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Inform message under select'
       },
       %{
         :name => 'has_error',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'If the component is in error mode'
       },
       %{
         :name => 'use_error_tag',
         :type => 'boolean',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Whether to use the built in ErrorTag in place of the hint slot'
       },
       %{
         :name => 'selected_value_class',
         :type => 'css_class',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Css class for the displayed selected value'
       }

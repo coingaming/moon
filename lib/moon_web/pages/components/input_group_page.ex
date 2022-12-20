@@ -34,14 +34,14 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
       %{
         :name => 'orientation',
         :type => 'vertical | horizontal',
-        :required => 'false',
+        :required => 'No',
         :default => 'horizontal',
         :description => ''
       },
       %{
         :name => 'slot',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'Default slot'
       }

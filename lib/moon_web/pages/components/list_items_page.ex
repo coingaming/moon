@@ -30,21 +30,21 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       %{
         :name => 'default',
         :type => 'slot',
-        :required => 'true',
+        :required => 'Yes',
         :default => '-',
         :description => 'List item subtext'
       },
       %{
         :name => 'size',
         :type => 'md | lg | xl',
-        :required => 'false',
+        :required => 'No',
         :default => 'md',
         :description => 'List item size'
       },
       %{
         :name => 'background_color',
         :type => 'string',
-        :required => 'false',
+        :required => 'No',
         :default => 'gohan',
         :description => 'List item background color'
       },
@@ -58,14 +58,14 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       %{
         :name => 'left_icon',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Element on the left'
       },
       %{
         :name => 'right_icon',
         :type => 'slot',
-        :required => 'false',
+        :required => 'No',
         :default => '-',
         :description => 'Element on the right'
       }
