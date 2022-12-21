@@ -59,8 +59,7 @@ defmodule MoonWeb.Pages.ContributePage do
           npm install
         </CodeSnippet>
         <p class="text-moon-16">Clone the repository:</p>
-        <CodeSnippet>git clone git@github.com:coingaming/assets.git
-        </CodeSnippet>
+        <CodeSnippet>git clone git@github.com:coingaming/assets.git</CodeSnippet>
         <CodeSnippet>cd assets
           git reset --hard HEAD
           git pull\nnpm install -g pnpm
