@@ -8,8 +8,6 @@ defmodule MoonWeb.Components.Facing.DeprecationWarning do
   prop(href, :string)
   prop(name, :string)
 
-  slot(default)
-
   def render(assigns) do
     ~F"""
     <p class="text-krillin font-medium">NB! The component will be deprecated soon.</p>
