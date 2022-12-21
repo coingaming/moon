@@ -54,12 +54,11 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <p>
         Create new Phoenix project (if needed) with LiveView enabled
       </p>
-      <CodeSnippet>
-        mix phx.new my_super_app --live
+      <CodeSnippet>mix phx.new my_super_app --live
         cd my_super_app
       </CodeSnippet>
       <p>Add Moon Library to mix.exs deps section:</p>
-      <CodeSnippet>{html_escape("# mix.exs\n{:moon, git: \"git@github.com:coingaming/moon.git\"}")}</CodeSnippet>
+      <CodeSnippet>{html_escape("# mix.exs{:moon, git: \"git@github.com:coingaming/moon.git\"}")}</CodeSnippet>
       <p>and fetch dependencies</p>
       <CodeSnippet>mix deps.get</CodeSnippet>
       <p>Initialize
@@ -70,8 +69,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <p>
         Add a Plug.Static plug to your endpoint.ex
       </p>
-      <CodeSnippet>
-        plug Plug.Static,
+      <CodeSnippet>plug Plug.Static,
         at: "/moon/assets",
         from: :moon,
         gzip: true,
@@ -79,8 +77,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         cache_control_for_etags: "public, max-age=86400"
       </CodeSnippet>
       <p>Include Moon Surface themes to your layout, e.g. root.html.heex</p>
-      <CodeSnippet>
-        &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-dark.css") %&gt;" /&gt;
+      <CodeSnippet>&lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-dark.css") %&gt;" /&gt;
         &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-light.css") %&gt;" /&gt;
       </CodeSnippet>
     </PageSection>
@@ -88,8 +85,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <p>
         Change assets/package.json to include "NODE_ENV=production" for deploy step (this purges un-needed CSS)
       </p>
-      <CodeSnippet>
-        "scripts": &#123;
+      <CodeSnippet>"scripts": &#123;
         "deploy_css": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css",
         "deploy_js": "NODE_PATH=../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --minify ",
         "deploy": "NODE_PATH=./node_modules npm run deploy_css && npm run deploy_js",
@@ -98,8 +94,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         &#125;,
       </CodeSnippet>
       <p>Ensure that you have required dependencies in assets/package.json</p>
-      <CodeSnippet>
-        "postcss-import": "^14.0.0",
+      <CodeSnippet>"postcss-import": "^14.0.0",
         "postcss-loader": "^4.1.0",
         "autoprefixer": "^10.2.1",
         "postcss": "^8.2.4",
@@ -109,8 +104,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
 
       <p>Create file assets/postcss.config.js
       </p>
-      <CodeSnippet>
-        module.exports = &#123;
+      <CodeSnippet>module.exports = &#123;
         plugins: &#123;
         tailwindcss: &#123;&#125;,
         autoprefixer: &#123;&#125;,
@@ -119,8 +113,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       </CodeSnippet>
 
       <p>Create file assets/tailwind.config.js</p>
-      <CodeSnippet>
-        module.exports = &#123;
+      <CodeSnippet>module.exports = &#123;
         mode: 'jit',
         purge: [
         '../lib/**/*.ex',

@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.CodeSnippet do
 
   def render(assigns) do
     ~F"""
-    <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><code><#slot /></code></pre>
+    <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm whitespace-pre-line"><code><#slot /></code></pre>
     """
   end
 end
