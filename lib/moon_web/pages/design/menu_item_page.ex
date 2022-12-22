@@ -121,7 +121,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="MenuItem">
+      <ComponentPageDescription is_aria_support title="MenuItem">
         <p>Menu items are used in such vertical menues and containers as Popovers, Sidebars, Drawers, Dialogs etc.</p>
         <p>
           Menu item row heights can vary based on the amount of content in each row. The content in each row is flexible.
