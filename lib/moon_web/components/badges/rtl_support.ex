@@ -1,4 +1,6 @@
 defmodule MoonWeb.Components.Badges.RTLSupport do
+  @moduledoc false
+
   use MoonWeb, :stateless_component
 
   alias Moon.Components.Label
