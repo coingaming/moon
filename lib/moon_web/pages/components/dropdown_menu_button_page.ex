@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/dropdown_menu_button",

@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.Components.CardPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/card",

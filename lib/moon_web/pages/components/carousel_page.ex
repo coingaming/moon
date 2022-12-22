@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/carousel",

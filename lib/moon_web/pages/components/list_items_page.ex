@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/list_items",

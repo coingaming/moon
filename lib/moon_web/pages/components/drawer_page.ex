@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/drawer",

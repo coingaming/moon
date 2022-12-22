@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/radio-button",
