@@ -3,19 +3,20 @@ defmodule MoonWeb.Components.ComponentPageDescription do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Label
+  alias MoonWeb.Components.Badges.Deprecated
+  alias MoonWeb.Components.Badges.InProgress
+  alias MoonWeb.Components.Badges.AriaSupport
+  alias MoonWeb.Components.Badges.RTLSupport
 
   prop(title, :string)
   prop(image, :string)
-  prop(is_aria_support, :boolean)
-  prop(is_rtl_support, :boolean)
-  prop(is_in_progress, :boolean)
-  prop(is_deprecated, :boolean)
 
-  prop(is_label_visible, :boolean, default: false)
+  prop(is_deprecated, :boolean, default: false)
+  prop(is_in_progress, :boolean, default: false)
+  prop(is_aria_support, :boolean, default: false)
+  prop(is_rtl_support, :boolean, default: false)
 
   slot(default)
-
 
   def render(assigns) do
     ~F"""
@@ -23,13 +24,12 @@ defmodule MoonWeb.Components.ComponentPageDescription do
       <div class="flex flex-col gap-12 lg:basis-1/2">
         <div class="flex flex-col gap-2">
           <h1 class="text-moon-32 font-medium">{@title}</h1>
-
           <div class="flex items-start gap-2">
-            <Label is_deprecated={@is_deprecated} size="2xs" background_color="bg-chiChi-60" color="text-popo" class="gap-1 select-none py-0 px-2 text-moon-9-caption uppercase font-medium h-4" >Deprecated</Label>
-            <Label is_in_progress={@is_in_progress} size="2xs" background_color="bg-krillin-60" color="text-popo" class="gap-1 select-none py-0 px-2 text-moon-9-caption uppercase font-medium h-4">In progress</Label>
-            <Label is_aria_support={@is_aria_support} size="2xs" background_color="bg-nappa" color="text-goten" class="gap-1 select-none py-0 px-2 text-moon-9-caption uppercase font-medium h-4">ARIA</Label>
-            <Label is_rtl_support={@is_rtl_support} size="2xs" background_color="bg-whis" color="text-goten" class="gap-1 select-none py-0 px-2 text-moon-9-caption uppercase font-medium h-4">RTL</Label>
-            </div>
+            <Deprecated :if={@is_deprecated} />
+            <InProgress :if={@is_in_progress} />
+            <AriaSupport :if={@is_aria_support} />
+            <RTLSupport :if={@is_rtl_support} />
+          </div>
         </div>
         <div class="flex flex-col items-start gap-2 text-moon-16">
           <#slot />
