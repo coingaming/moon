@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.CountryFlagsPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/country_flags",

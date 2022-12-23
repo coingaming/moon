@@ -11,7 +11,7 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/typography",
