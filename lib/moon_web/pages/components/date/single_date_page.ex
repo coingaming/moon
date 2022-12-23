@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Date.SingleDatePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Single Date Datepicker">
+      <ComponentPageDescription is_deprecated title="Single Date Datepicker">
         <p>
           Coming soon...
         </p>

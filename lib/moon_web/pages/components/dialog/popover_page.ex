@@ -116,7 +116,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Popover">
+      <ComponentPageDescription is_deprecated title="Popover">
         <p>Popover</p>
       </ComponentPageDescription>
 

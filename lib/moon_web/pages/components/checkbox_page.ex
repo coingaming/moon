@@ -71,7 +71,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Checkbox">
+      <ComponentPageDescription is_deprecated title="Checkbox">
         <p>
           Checkboxes are used as a list in our forms and signup pages so users can select options of their choice. Users are free to choose how many options to select, from zero to all of them.
         </p>

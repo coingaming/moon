@@ -152,7 +152,7 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Datepicker">
+      <ComponentPageDescription is_deprecated title="Datepicker">
         <p>
           Datepicker
         </p>

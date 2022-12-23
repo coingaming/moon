@@ -86,7 +86,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-        <ComponentPageDescription title="Input Group">
+        <ComponentPageDescription is_deprecated title="Input Group">
           <p>
             !!! Input Group is supported only in size `xlarge`.
           </p>

@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Table">
+      <ComponentPageDescription is_deprecated title="Table">
         <p>
           This component is already deprecated. Please use
           <a

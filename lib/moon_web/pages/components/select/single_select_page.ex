@@ -165,7 +165,7 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Single Select" />
+      <ComponentPageDescription is_deprecated title="Single Select" />
 
       <ExampleAndCode title="Default" id="single_select_default">
         <:example>

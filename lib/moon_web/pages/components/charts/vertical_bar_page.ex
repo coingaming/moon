@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Charts.VerticalBarPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Vartical Bar Chart">
+      <ComponentPageDescription is_deprecated title="Vartical Bar Chart">
         <p>
           Coming soon...
         </p>

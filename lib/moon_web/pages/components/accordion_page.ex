@@ -86,7 +86,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Accordion">
+      <ComponentPageDescription is_deprecated title="Accordion">
         <p>
           Like the accordion instrument, our accordion component reveals or
           hides associated sections of content. This is done through the use of

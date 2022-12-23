@@ -81,7 +81,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Line Chart">
+      <ComponentPageDescription is_deprecated title="Line Chart">
         <p>
           Based on <Link to="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite</Link>
         </p>

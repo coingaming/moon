@@ -79,7 +79,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="RadioButton">
+      <ComponentPageDescription is_deprecated title="RadioButton">
         <p>
           Radio buttons are used to represent a group or category of choices whereby users can only select one option - the main difference from checkboxes that allow users to select multiple options.
         </p>

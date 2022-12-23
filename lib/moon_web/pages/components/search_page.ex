@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.SearchPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Search">
+      <ComponentPageDescription is_deprecated title="Search">
         <p>
           Coming soon...
         </p>

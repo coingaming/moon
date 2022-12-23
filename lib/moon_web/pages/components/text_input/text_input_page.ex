@@ -120,7 +120,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-        <ComponentPageDescription title="Text Input" />
+        <ComponentPageDescription is_deprecated title="Text Input" />
         <p>
           Indeed, forms require input from all users, including astronauts. Text input fields help to gather both short and long-form information. The size of the text field should correspond to the length of information that's required.</p>
         <p>Text input fields can contain various rules to ensure the right information is obtained from users. Users should also be given prompts to guide them on what's needed, or if they've made an error while doing so.</p>

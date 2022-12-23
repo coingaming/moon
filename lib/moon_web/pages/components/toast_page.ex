@@ -103,7 +103,7 @@ defmodule MoonWeb.Pages.Components.ToastPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Toast">
+      <ComponentPageDescription is_deprecated title="Toast">
         <p>
           Short, time-based messages that slide in and out of a page.
         </p>

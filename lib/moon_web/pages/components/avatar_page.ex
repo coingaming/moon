@@ -92,7 +92,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Avatar">
+      <ComponentPageDescription is_deprecated title="Avatar">
         <p>
           Avatars are used to represent an individual, a business, or a celestial being when they interact with any Coingaming brand. While they usually consist of an image, avatars are adaptable - letters or object icons may sometimes be used as fallbacks.
         </p>

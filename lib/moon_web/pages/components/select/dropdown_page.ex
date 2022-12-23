@@ -58,7 +58,7 @@ defmodule MoonWeb.Pages.Components.Select.DropdownPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Dropdown">
+      <ComponentPageDescription is_deprecated title="Dropdown">
         <p>Dropdowns is a custom select component that allows users to make single or multiple selections.</p>
         <p>An option that's been selected can represent a corresponding value in forms or be used to filter/sort content.containers as Popovers, Sidebars, Drawers, Dialogs etc.</p>
       </ComponentPageDescription>

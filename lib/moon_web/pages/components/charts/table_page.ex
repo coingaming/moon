@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Charts.TablePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Table Chart">
+      <ComponentPageDescription is_deprecated title="Table Chart">
         <p>
           Coming soon...
         </p>

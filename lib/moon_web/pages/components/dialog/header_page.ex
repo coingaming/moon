@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Dialog.HeaderPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Dialog Header">
+      <ComponentPageDescription is_deprecated title="Dialog Header">
         <p>
           Coming soon...
         </p>

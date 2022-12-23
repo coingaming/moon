@@ -83,7 +83,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Button">
+      <ComponentPageDescription is_deprecated title="Button">
         <p>
           Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.
         </p>

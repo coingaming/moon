@@ -106,7 +106,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Breadcrumb">
+      <ComponentPageDescription is_deprecated title="Breadcrumb">
         <p>
           As users navigate through your website, they'll want to know where they are and how to get back to where
           they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.

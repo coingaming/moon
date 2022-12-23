@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Dialog.OverlayPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Dialog Overlay">
+      <ComponentPageDescription is_deprecated title="Dialog Overlay">
         <p>
           Coming soon...
         </p>

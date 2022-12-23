@@ -152,7 +152,7 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Multi Select">
+      <ComponentPageDescription is_deprecated title="Multi Select">
         <p>Multi Select</p>
       </ComponentPageDescription>
 

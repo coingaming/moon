@@ -62,7 +62,7 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Carousel">
+      <ComponentPageDescription is_deprecated title="Carousel">
         <p>
           An interactive extension of the Reel component to cycle through content.
         </p>

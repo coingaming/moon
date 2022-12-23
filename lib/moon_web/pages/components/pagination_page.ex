@@ -119,7 +119,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Pagination">
+      <ComponentPageDescription is_deprecated title="Pagination">
         <p>
           Pagination
         </p>

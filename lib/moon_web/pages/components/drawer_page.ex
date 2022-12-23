@@ -36,7 +36,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
       {=@direction}
       class={"mr-64": @drawer_2_is_open}
     >
-      <ComponentPageDescription title="Drawer">
+      <ComponentPageDescription is_deprecated title="Drawer">
         <p>
           Drawer
         </p>

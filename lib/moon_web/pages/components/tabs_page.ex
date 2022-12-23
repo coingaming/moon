@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tabs">
+      <ComponentPageDescription is_deprecated title="Tabs">
         <p>
           Tabs
         </p>

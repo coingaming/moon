@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Date.RangeDatePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Range Datepicker">
+      <ComponentPageDescription is_deprecated title="Range Datepicker">
         <p>
           Coming soon...
         </p>

@@ -76,7 +76,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tooltip">
+      <ComponentPageDescription is_deprecated title="Tooltip">
         <p>
           Tooltip
         </p>

@@ -44,7 +44,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Loader">
+      <ComponentPageDescription is_deprecated title="Loader">
         <p>
           Fondly nicknamed “the launcher”, the Loader ensures users that progress is happening so they don't give up and leave the rocket page.
         </p>

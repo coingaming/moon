@@ -83,7 +83,7 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Select">
+      <ComponentPageDescription is_deprecated title="Select">
         <p>
           A user-controlled menu of options for forms, navigation and more.
         </p>

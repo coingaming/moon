@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Linear Progress">
+      <ComponentPageDescription is_deprecated title="Linear Progress">
         <p>
           A progress indicator is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </p>

@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Modal">
+      <ComponentPageDescription is_deprecated title="Modal">
         <p>Modal</p>
       </ComponentPageDescription>
       <ExampleAndCode title="Modal" id="modal_1">

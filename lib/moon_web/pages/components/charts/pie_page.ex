@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Charts.PiePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Pie Chart">
+      <ComponentPageDescription is_deprecated title="Pie Chart">
         <p>
           Coming soon...
         </p>

@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Progress.CircularPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Circular Progress">
+      <ComponentPageDescription is_deprecated title="Circular Progress">
         <p>
           Coming soon...
         </p>

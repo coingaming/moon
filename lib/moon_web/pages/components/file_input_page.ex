@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="File Input">
+      <ComponentPageDescription is_deprecated title="File Input">
         <p>
           Uploads: <Link to="https://hexdocs.pm/phoenix_live_view/uploads.html">https://hexdocs.pm/phoenix_live_view/uploads.html</Link>
         </p>

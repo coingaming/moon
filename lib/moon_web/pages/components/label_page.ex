@@ -78,7 +78,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Label">
+      <ComponentPageDescription is_deprecated title="Label">
         <p>
           Use tags to label, categorize, or organize items using keywords that describe them.
         </p>

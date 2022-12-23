@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ContentPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Dialog Content">
+      <ComponentPageDescription is_deprecated title="Dialog Content">
         <p>
           Coming soon...
         </p>
