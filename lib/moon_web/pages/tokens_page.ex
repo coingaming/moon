@@ -86,9 +86,9 @@ defmodule MoonWeb.Pages.TokensPage do
               to="https://github.com/coingaming/moon/tree/main/priv/static/themes"
               target="_black"
               rel="noreferrer"
-              class="underline"
+              is_underline="underline"
             >theme template file</Link>.</li>
-          <li>Check the <Link to="/colours-palette" class="underline">guide for colours</Link>.</li>
+          <li>Check the <Link to="/colours-palette" is_underline="underline">guide for colours</Link>.</li>
           <li>Replace colour values one by one.</li>
           <li>Change the values to your product ones.</li>
           <li>Publish your changes.</li>
