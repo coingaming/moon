@@ -1,3 +1,10 @@
+## [2.33.1](https://github.com/coingaming/moon/compare/v2.33.0...v2.33.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* [MDS-317] add Tabs v2 component ([#488](https://github.com/coingaming/moon/issues/488)) ([38ccbf8](https://github.com/coingaming/moon/commit/38ccbf884fcd579dd8cc5812524509bfd1bc2836))
+
 # [2.33.0](https://github.com/coingaming/moon/compare/v2.32.4...v2.33.0) (2022-12-22)
 
 
