@@ -12,6 +12,8 @@ defmodule Moon.Components.Form do
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
   prop(target, :any)
   prop(trigger_action, :any)
+  prop(action, :any)
+  prop(method, :string)
   slot(default)
 
   def render(assigns) do
@@ -22,6 +24,8 @@ defmodule Moon.Components.Form do
       {=@change}
       {=@class}
       {=@trigger_action}
+      {=@action}
+      {=@method}
       opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id, "phx-target": @target}
     >
       <#slot />

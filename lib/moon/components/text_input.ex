@@ -70,21 +70,7 @@ defmodule Moon.Components.TextInput do
     """
 
     ~F"""
-    {#if @type == "password"}
-      <TextInputPassword
-        {=@id}
-        {=@field}
-        class={@class, "#{get_combined_class(@is_in_input_group, @field, @group_class_plain)}": true}
-      >
-        <:left_icon_slot>
-          <#slot {@left_icon_slot} />
-        </:left_icon_slot>
-        <:right_icon_slot>
-          <#slot {@right_icon_slot} />
-        </:right_icon_slot>
-        {internal_render}
-      </TextInputPassword>
-    {#elseif @size == "xl"}
+    {#if @size == "xl"}
       <TextInputInnerLabel
         {=@id}
         {=@field}
