@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(tab_id, :string)
 
@@ -97,9 +98,13 @@ defmodule MoonWeb.Pages.Components.TabsPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Tabs">
-        <p>
-          Tabs
-        </p>
+        <DeprecationWarning
+          name="Tabs"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TabsPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="tabs" class="mt-4">

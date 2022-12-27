@@ -39,7 +39,7 @@ config :surface, :components, [
   {Moon.Components.TextInput, propagate_context_to_slots: true},
   {Moon.Components.Select.Dropdown, propagate_context_to_slots: true},
   {Moon.Design.MenuItem, propagate_context_to_slots: true},
-
+  {Moon.Design.Tabs, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]

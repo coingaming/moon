@@ -5,11 +5,12 @@ defmodule MoonWeb.Components.PageSection do
 
   prop(title, :string)
   prop(image, :string)
+  prop(class, :css_class)
   slot(default)
 
   def render(assigns) do
     ~F"""
-    <section class="flex flex-col lg:flex-row gap-6">
+    <section class={@class, "flex flex-col lg:flex-row gap-6"}>
       <div class={
         "flex flex-col w-full gap-6",
         "basis-1/2": @image
