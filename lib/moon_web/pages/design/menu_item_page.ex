@@ -24,7 +24,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v2"
       },
       %{
         to: "/components/v2/menu_item",

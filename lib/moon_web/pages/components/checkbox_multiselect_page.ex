@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.CheckboxMultiselectPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/dropbox#checkbox-multiselct",

@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Components.SearchPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/search",

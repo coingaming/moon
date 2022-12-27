@@ -12,12 +12,13 @@ defmodule MoonWeb.Pages.Components.TablePage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/table",
@@ -33,18 +34,13 @@ defmodule MoonWeb.Pages.Components.TablePage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Table">
-        <p>
-          This component is already deprecated. Please use
-          <a
-            class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
-            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TablePage,
-              theme_name: @theme_name,
-              direction: @direction
-            )}
-          >
-            our new Table component
-          </a>
-        </p>
+        <DeprecationWarning
+          name="Table"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TablePage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="table_1">

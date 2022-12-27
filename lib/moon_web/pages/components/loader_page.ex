@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/loader",

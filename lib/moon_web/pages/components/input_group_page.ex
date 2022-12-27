@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/input-group",

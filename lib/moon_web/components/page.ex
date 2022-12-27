@@ -28,19 +28,18 @@ defmodule MoonWeb.Components.Page do
         click={hide_left_menu()}
         hide_items
       />
-      <Header click={show_left_menu()}>
-        <Breadcrumbs
-          class="pb-12 hidden lg:block"
-          :if={@breadcrumbs}
-          theme_name={@theme_name}
-          breadcrumbs={@breadcrumbs}
-        />
-      </Header>
+      <Header click={show_left_menu()} />
       <div class={
         "min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
         @theme_name
       }>
-        <div class="flex flex-col grow max-w-screen-xl pt-16">
+        <div class="flex flex-col grow max-w-screen-xl">
+          <Breadcrumbs
+            class="pb-12 hidden lg:block"
+            :if={@breadcrumbs}
+            theme_name={@theme_name}
+            breadcrumbs={@breadcrumbs}
+          />
           <div class="flex flex-col gap-12 flex-1 relative overflow-y-auto focus:outline-none">
             <#slot />
           </div>

@@ -12,6 +12,7 @@ defmodule Moon.Components.Link do
   prop(class, :css_class)
   prop(target, :string)
   prop(rel, :string)
+  prop(is_underline, :css_class, default: "no-underline")
   slot(default)
 
   def render(assigns) do
@@ -19,8 +20,9 @@ defmodule Moon.Components.Link do
     <a
       id={@id}
       class={
-        "inline-block p-0 border-none no-underline",
+        "inline-block p-0 border-none",
         @class,
+        @is_underline,
         "hover:text-piccolo focus:text-piccolo active:text-piccolo":
           !@disabled and !@optional and !@secondary,
         "cursor-pointer": !@disabled,

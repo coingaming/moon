@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/accordion",

@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/tabs",

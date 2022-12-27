@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     default: [
       %{
         to: "#",
-        name: "Components"
+        name: "Components v1"
       },
       %{
         to: "/components/switch",
