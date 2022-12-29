@@ -28,7 +28,7 @@ defmodule Moon.Design.Button.IconButton do
       "bg-hit text-goten": @variant in ["tertiary"],
       "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
       "rounded-moon-s-xs h-6 p-1": @size == "xs",
-      "rounded-moon-s-sm h-8 p-1": @size == "sm" ,
+      "rounded-moon-s-sm h-8 p-1": @size == "sm",
       "rounded-moon-s-sm h-10 p-2": @size == "md",
       "rounded-moon-s-sm h-12 p-3": @size == "lg",
       "rounded-moon-s-md h-14 p-4": @size == "xl",
@@ -51,7 +51,7 @@ defmodule Moon.Design.Button.IconButton do
         "flex justify-center items-center",
         "opacity-0": @animation in ["success", "progress"]
       }>
-          <Icon name={@icon_only} class={icon_class(@size)} />
+        <Icon name={@icon_only} class={icon_class(@size)} />
       </span>
     </button>
     """

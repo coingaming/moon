@@ -84,16 +84,16 @@ defmodule Moon.Design.Button.Button do
         "opacity-0": @animation in ["success", "progress"]
       }>
         <div>{#if slot_assigned?(:left_icon_slot)}
-          <#slot {@left_icon_slot} />
-        {#else}
-          <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
-        {/if}</div>
+            <#slot {@left_icon_slot} />
+          {#else}
+            <Icon name={@left_icon} class={icon_class(@size)} :if={@left_icon} />
+          {/if}</div>
         <div><#slot /></div>
         <div>{#if slot_assigned?(:right_icon_slot)}
-          <#slot {@right_icon_slot}/>
-        {#else}
-          <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
-        {/if}</div>
+            <#slot {@right_icon_slot} />
+          {#else}
+            <Icon name={@right_icon} class={icon_class(@size)} :if={@right_icon} />
+          {/if}</div>
       </span>
     </button>
     """
