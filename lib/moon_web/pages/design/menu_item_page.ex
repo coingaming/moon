@@ -450,7 +450,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
         <:code>{menu_item_8_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable title="MeniItem props" data={@props_info_array} />
+      <PropsTable title="MenuItem props" data={@props_info_array} />
     </Page>
     """
   end

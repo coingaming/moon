@@ -197,8 +197,8 @@ module.exports = {
         "chi-chi-60": {
           DEFAULT: withOpacityValue("--chi-chi-60"),
         },
-        "chichi": {
-          DEFAULT: withOpacityValue("--chichi"),
+        "chi-chi": {
+          DEFAULT: withOpacityValue("--chi-chi"),
         },
         "roshi-10": {
           DEFAULT: withOpacityValue("--roshi-10"),

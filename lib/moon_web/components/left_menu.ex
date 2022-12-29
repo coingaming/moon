@@ -66,6 +66,19 @@ defmodule MoonWeb.Components.LeftMenu do
                     <:title>Components v2</:title>
                     <:content>
                       <div class="flex-grow flex flex-col gap-2 pl-8">
+                        <Accordion
+                          is_content_inside={false}
+                          id="left-menu-components-dialog"
+                          open_by_default={active_page_contains(@active_page, Pages.Design.Button)}
+                        >
+                          <:title>Button</:title>
+                          <:content>
+                            <div class="flex-grow flex flex-col gap-2 pl-8">
+                              <SidebarLink route={Pages.Design.Button.ButtonPage}>Button</SidebarLink>
+                              <SidebarLink route={Pages.Design.Button.IconButtonPage}>IconButton</SidebarLink>
+                            </div>
+                          </:content>
+                        </Accordion>
                         <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>
