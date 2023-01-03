@@ -90,7 +90,7 @@ defmodule MoonWeb.Pages.Design.ButtonPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="Button">
+      <ComponentPageDescription is_in_progress is_rtl_support title="Button">
         <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
         <p>Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:</p>
         <ul class="list-disc ps-6">
@@ -208,8 +208,8 @@ defmodule MoonWeb.Pages.Design.ButtonPage do
 
   def button_3_code do
     """
-    <Button left_icon="generic_settings" variant="primary" size="xs">XS Button</Button>
-    <Button left_icon="generic_settings" variant="primary" size="sm">SM Button</Button>
+    <Button left_icon="generic_settings" variant="primary" button_gap="gap-1" size="xs">XS Button</Button>
+    <Button left_icon="generic_settings" variant="primary" button_gap="gap-1" size="sm">SM Button</Button>
     <Button left_icon="generic_settings" variant="primary" size="md">MD Button is default</Button>
     <Button left_icon="generic_settings" variant="primary" size="lg">LG Button</Button>
     <Button left_icon="generic_settings" variant="primary" size="xl">XL Button</Button>
