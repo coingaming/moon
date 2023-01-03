@@ -44,6 +44,10 @@ config :surface, :components, [
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]
 
+config :twix,
+  class_groups: [],
+  conflicting_class_groups: []
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

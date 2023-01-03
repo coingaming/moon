@@ -78,6 +78,7 @@ defmodule Moon.MixProject do
       {:surface, "~> 0.9.1"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
+      {:twix, "~> 0.3.0"},
 
       # test
       {:excoveralls, "~> 0.10", only: :test},

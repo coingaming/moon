@@ -2,8 +2,13 @@ defmodule Moon.Helpers.MergeClass do
   @moduledoc """
   Helper function for merging tailwind classes, can operate with Surface css_class datatype
   """
+  import Twix
 
   def merge(classes) do
+    flatten(classes) |> tw() |> String.split(" ")
+  end
+
+  def merge2(classes) do
     flatten(classes)
     # |> Enum.filter(fn x -> x != "" end)
     |> Enum.reduce(%{}, fn class, groups ->
