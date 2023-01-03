@@ -23,7 +23,7 @@ defmodule MoonWeb.Components.LeftMenu do
       :on-click={@click}
       id="left-menu-container"
       class={
-        "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000]",
+        "hidden fixed h-screen lg:flex lg:flex-shrink-0 w-80 flex-col z-[10000] top-0",
         @theme_name
       }
     >
@@ -41,7 +41,7 @@ defmodule MoonWeb.Components.LeftMenu do
         </:short_logo>
         <:menu>
           <nav class="flex flex-col grow gap-2">
-            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 soverflow-y-scroll">
+            <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
               <div class="flex items-center flex-shrink-0 pl-3">
                 <a
                   href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
@@ -66,6 +66,19 @@ defmodule MoonWeb.Components.LeftMenu do
                     <:title>Components v2</:title>
                     <:content>
                       <div class="flex-grow flex flex-col gap-2 pl-8">
+                        <Accordion
+                          is_content_inside={false}
+                          id="left-menu-components-dialog"
+                          open_by_default={active_page_contains(@active_page, Pages.Design)}
+                        >
+                          <:title>Button</:title>
+                          <:content>
+                            <div class="flex-grow flex flex-col gap-2 pl-8">
+                              <SidebarLink route={Pages.Design.ButtonPage}>Button</SidebarLink>
+                              <SidebarLink route={Pages.Design.Button.IconButtonPage}>IconButton</SidebarLink>
+                            </div>
+                          </:content>
+                        </Accordion>
                         <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>

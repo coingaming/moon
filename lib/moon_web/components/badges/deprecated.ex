@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Badges.Deprecated do
 
   def render(assigns) do
     ~F"""
-    <Badges title="Deprecated" color="text-popo" background_color="bg-chiChi-60" />
+    <Badges title="Deprecated" color="text-popo" background_color="bg-chi-chi-60" />
     """
   end
 end
