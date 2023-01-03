@@ -5,6 +5,8 @@ export default {
         const trigger = this.el.children[0];
         const tooltip = this.el.children[1];
 
+        console.log("OLOLLLOLLO")
+
         tooltip && createPopper(trigger, tooltip, {
             placement: this.el.dataset.placement || 'bottom-start',
             strategy: 'fixed',
