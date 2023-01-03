@@ -1,3 +1,10 @@
+## [2.34.1](https://github.com/coingaming/moon/compare/v2.34.0...v2.34.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* [MDS-317] disabling Tab & Pill,  adding mergeClass functionality ([#494](https://github.com/coingaming/moon/issues/494)) ([9d37ca3](https://github.com/coingaming/moon/commit/9d37ca373df7b02b2d23ec9c273cb5b1631e1c6e))
+
 # [2.34.0](https://github.com/coingaming/moon/compare/v2.33.1...v2.34.0) (2022-12-28)
 
 
