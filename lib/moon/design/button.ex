@@ -37,9 +37,9 @@ defmodule Moon.Design.Button do
         @class,
         Utils.get_button_size_classes(@size),
         "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
-        "#{Utils.get_right_icon_paddings(@size, @right_icon)}": @right_icon && !@full_width,
-        "#{Utils.get_left_icon_paddings(@size, @left_icon)}": @left_icon && !@full_width,
-        "#{Utils.get_full_width_padding(@size, @full_width)}": @full_width,
+        "#{Utils.get_right_icon_paddings(@size)}": @right_icon && !@full_width,
+        "#{Utils.get_left_icon_paddings(@size)}": @left_icon && !@full_width,
+        "#{Utils.get_full_width_padding(@size)}": @full_width,
         "text-goten bg-piccolo": @variant in ["primary"],
         "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
           @variant in ["secondary"],

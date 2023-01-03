@@ -17,27 +17,23 @@ defmodule Moon.Design.Button.Utils do
     end
   end
 
-  def get_right_icon_paddings(size, right_icon) do
-    if right_icon do
-      case size do
-        "xs" -> "ps-2 pe-1"
-        "sm" -> "ps-3 pe-1"
-        "md" -> "ps-4 pe-2"
-        "lg" -> "ps-4 pe-3"
-        "xl" -> "ps-6 pe-4"
-      end
+  def get_right_icon_paddings(size) do
+    case size do
+      "xs" -> "ps-2 pe-1"
+      "sm" -> "ps-3 pe-1"
+      "md" -> "ps-4 pe-2"
+      "lg" -> "ps-4 pe-3"
+      "xl" -> "ps-6 pe-4"
     end
   end
 
-  def get_left_icon_paddings(size, left_icon) do
-    if left_icon do
-      case size do
-        "xs" -> "ps-1 pe-2"
-        "sm" -> "ps-1 pe-3"
-        "md" -> "ps-2 pe-4"
-        "lg" -> "ps-3 pe-4"
-        "xl" -> "ps-4 pe-6"
-      end
+  def get_left_icon_paddings(size) do
+    case size do
+      "xs" -> "ps-1 pe-2"
+      "sm" -> "ps-1 pe-3"
+      "md" -> "ps-2 pe-4"
+      "lg" -> "ps-3 pe-4"
+      "xl" -> "ps-4 pe-6"
     end
   end
 
@@ -51,15 +47,13 @@ defmodule Moon.Design.Button.Utils do
     end
   end
 
-  def get_full_width_padding(size, full_width) do
-    if full_width do
-      case size do
-        "xs" -> "px-2"
-        "sm" -> "px-3"
-        "md" -> "px-4"
-        "lg" -> "px-4"
-        "xl" -> "px-6"
-      end
+  def get_full_width_padding(size) do
+    case size do
+      "xs" -> "px-2"
+      "sm" -> "px-3"
+      "md" -> "px-4"
+      "lg" -> "px-4"
+      "xl" -> "px-6"
     end
   end
 

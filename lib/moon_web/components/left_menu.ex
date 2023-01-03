@@ -75,7 +75,7 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
                               <SidebarLink route={Pages.Design.ButtonPage}>Button</SidebarLink>
-                              <SidebarLink route={Pages.Design.IconButtonPage}>IconButton</SidebarLink>
+                              <SidebarLink route={Pages.Design.Button.IconButtonPage}>IconButton</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>
