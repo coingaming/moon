@@ -3,6 +3,8 @@ defmodule Moon.Design.Tabs.Tab do
 
   use Surface.Component, slot: "tabs"
 
+  import Moon.Helpers.MergeClass, only: [merge: 1]
+
   # open API
   prop(disabled, :boolean, default: false)
   prop(class, :css_class)
@@ -26,16 +28,16 @@ defmodule Moon.Design.Tabs.Tab do
       {=@tabindex}
       aria-selected={@selected}
       {=@disabled}
-      class={
-        @class,
-        (@disabled && "cursor-default text-trunks") ||
-          "hover:after:origin-top-left hover:after:scale-100 hover:text-piccolo",
-        (@selected && @selected_class) || @unselected_class,
-        (@size === "sm" && "px-2 py-1 gap-1") || "py-2 px-3 gap-2",
+      class={merge([
         "focus:outline-none text-moon-14 font-semibold flex items-center justify-center cursor-pointer",
         "relative after:content-[\"\"] after:absolute after:left-0 after:bottom-0 after:w-full",
-        "after:h-[2px] after:bg-piccolo  after:transition-transform after:duration-300 after:origin-top-left after:scale-y-100"
-      }
+        "after:h-[2px] after:bg-piccolo  after:transition-transform after:duration-300 after:origin-top-left after:scale-y-100",
+        (@size === "sm" && "px-2 py-1 gap-1") || "py-2 px-3 gap-2",
+        (@selected && @selected_class) || @unselected_class,
+        (@disabled && "cursor-default text-trunks") ||
+          "hover:after:origin-top-left hover:after:scale-100 hover:text-piccolo",
+        @class
+      ])}
       :on-click={!@disabled && @on_change}
       :values={selected_index: @tabindex}
     ><#slot /></button>
