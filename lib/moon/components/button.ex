@@ -83,7 +83,7 @@ defmodule Moon.Components.Button do
         "rounded-moon-s-sm": @size == "md",
         "rounded-moon-s-sm": @size == "lg",
         "rounded-moon-s-md": @size == "xl",
-        "w-full": @full_width,
+        "w-full bg-hit": @full_width && slot_assigned?(:right_icon_slot),
         "opacity-30": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
         "bg-chi-chi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":

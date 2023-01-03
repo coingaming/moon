@@ -1,4 +1,4 @@
-defmodule Moon.Design.Button.IconButton do
+defmodule Moon.Design.IconButton do
   @moduledoc false
 
   use Moon.StatelessComponent

@@ -1,9 +1,9 @@
-defmodule MoonWeb.Pages.Design.Button.IconButtonPage do
+defmodule MoonWeb.Pages.Design.IconButtonPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
-  alias Moon.Design.Button.IconButton
+  alias Moon.Design.IconButton
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription

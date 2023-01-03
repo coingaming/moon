@@ -1,9 +1,9 @@
-defmodule MoonWeb.Pages.Design.Button.ButtonPage do
+defmodule MoonWeb.Pages.Design.ButtonPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
-  alias Moon.Design.Button.Button
+  alias Moon.Design.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -154,7 +154,13 @@ defmodule MoonWeb.Pages.Design.Button.ButtonPage do
           <Button right_icon="generic_settings" variant="primary" full_width="true">
             Full width
           </Button>
+
+          <Button left_icon="generic_settings" variant="primary" full_width="true">
+            Full width
+          </Button>
         </:example>
+
+
 
         <:code>{button_5_code()}</:code>
       </ExampleAndCode>
