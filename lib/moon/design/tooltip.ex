@@ -3,9 +3,6 @@ defmodule Moon.Design.Tooltip do
 
   use Moon.StatelessComponent
 
-  prop(clicked_text, :string, default: nil)
-  prop(text, :string, required: true)
-
   slot(default, required: true)
   slot(trigger, required: true)
 

@@ -31,8 +31,7 @@ defmodule Moon.Design.Tabs do
             --}
             <#slot
               {tab}
-              context_put:
-              {
+              context_put={
                 selected: "#{tabindex}" == "#{@selected_index}",
                 size: @size,
                 on_change: @on_change,

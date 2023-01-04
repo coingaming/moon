@@ -23,49 +23,60 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
     ]
   )
 
-  data(props_info_array, :list,
+  data(tooltip_props, :list,
     default: [
       %{
-        :name => 'children',
+        :name => 'default',
         :type => 'slot',
         :required => 'Yes',
         :default => '-',
-        :description => 'Component or element which Tooltip wraps around'
+        :description => 'Message shown in tooltip, see Tooltip.Content'
       },
       %{
-        :name => 'text',
-        :type => 'string',
+        :name => 'trigger',
+        :type => 'slot',
         :required => 'Yes',
         :default => '-',
-        :description => 'Textual content for Tooltip'
+        :description => 'Hover element, see Tooltip.Trigger'
+      }
+    ]
+  )
+
+  data(content_props, :list,
+    default: [
+      %{
+        :name => 'arrow',
+        :type => 'slot',
+        :required => 'No',
+        :default => '-',
+        :description => 'Arrow element, see Tooltip.Arrow'
       },
       %{
-        :name => 'icon',
-        :type => '-',
-        :required => '-',
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'No',
         :default => '-',
-        :description => 'Icon shown in the Tooltip'
+        :description => 'Classes for customization'
       },
       %{
-        :name => 'content',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Custom component shown in the Tooltip'
-      },
+        :name => 'position',
+        :type =>
+          'top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | right | left',
+        :required => 'No',
+        :default => 'top-center',
+        :description => 'Position of the tooltip'
+      }
+    ]
+  )
+
+  data(arrow_props, :list,
+    default: [
       %{
-        :name => 'placement',
-        :type => 'top | bottom | left | right',
-        :required => 'Yes',
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'No',
         :default => '-',
-        :description => 'Where Tooltip will be shown'
-      },
-      %{
-        :name => 'show',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Should Tooltip be shown persistently'
+        :description => 'Classes for customization'
       }
     ]
   )
@@ -77,7 +88,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tooltip" is_aria_support>
+      <ComponentPageDescription title="Tooltip" is_aria_support is_rtl_support is_in_progress>
         <p>
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.
         </p>
@@ -98,33 +109,183 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         <:code>{tooltip_1_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Placement" id="tooltip_placement">
+      <ExampleAndCode title="Position" id="tooltip_placement">
         <:example>
-          {#for placement <- ["top", "left", "right", "bottom"]}
+          {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
             <Tooltip>
               <Tooltip.Trigger>
                 <Button variant="secondary">{placement}</Button>
               </Tooltip.Trigger>
               <Tooltip.Content position={placement}>
-                I'm a tooltip content
+                I'm a {placement} tooltip
                 <Tooltip.Arrow />
               </Tooltip.Content>
             </Tooltip>
           {/for}
         </:example>
-        <:code>{tooltip_1_code()}</:code>
+        <:code>{tooltip_2_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable data={@props_info_array} />
+      <ExampleAndCode title="Without arrow" id="tooltip_no_arrow">
+        <:example>
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button variant="primary">Hover Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
+              I'm a tooltip without arrow
+            </Tooltip.Content>
+          </Tooltip>
+        </:example>
+        <:code>{tooltip_3_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Without shadow" id="tooltip_no_shadow">
+        <:example>
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button variant="primary">Hover Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content position="left" class="shadow-none drop-shadow-none">
+              <Tooltip.Arrow />
+              I'm a tooltip without shadow
+            </Tooltip.Content>
+          </Tooltip>
+        </:example>
+        <:code>{tooltip_4_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Customizations" id="tooltip_customizations">
+        <:example>
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button variant="secondary">Hover Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content class="bg-chi-chi/10">
+              <Tooltip.Arrow />
+              A bit opacity
+            </Tooltip.Content>
+          </Tooltip>
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button variant="secondary">Hover Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content class="text-moon-18 text-krillin font-medium">
+              <Tooltip.Arrow />
+              Custom font
+            </Tooltip.Content>
+          </Tooltip>
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button variant="secondary">Hover Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content class="bg-roshi/10 text-piccolo">
+              <Tooltip.Arrow />
+              Custom font & backgound
+            </Tooltip.Content>
+          </Tooltip>
+        </:example>
+        <:code>{tooltip_5_code()}</:code>
+      </ExampleAndCode>
+
+      <PropsTable title="Tooltip props" data={@tooltip_props} />
+      <PropsTable title="Tooltip.Content props" data={@content_props} />
+      <PropsTable title="Tooltip.Arrow props" data={@arrow_props} />
     </Page>
     """
   end
 
-  def tooltip_1_code(placement \\ "top") do
+  defp tooltip_1_code() do
     """
-      <Tooltip placement="#{placement}" text="#{placement}">
+    alias Moon.Design.Tooltip
+    alias Moon.Components.Button
+
+    ...
+
+    <Tooltip>
+      <Tooltip.Trigger>
         <Button variant="primary">Hover Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        I'm a tooltip content
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip>
+    """
+  end
+
+  defp tooltip_2_code() do
+    """
+    {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
+      <Tooltip>
+        <Tooltip.Trigger>
+          <Button variant="secondary">{placement}</Button>
+        </Tooltip.Trigger>
+        <Tooltip.Content position={placement}>
+          I'm a {placement} tooltip
+          <Tooltip.Arrow />
+        </Tooltip.Content>
       </Tooltip>
+    {/for}
+    """
+  end
+
+  defp tooltip_3_code() do
+    """
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Button variant="primary">Hover Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        I'm a tooltip without arrow
+      </Tooltip.Content>
+    </Tooltip>
+    """
+  end
+
+  defp tooltip_4_code() do
+    """
+        <Tooltip>
+          <Tooltip.Trigger>
+            <Button variant="primary">Hover Me</Button>
+          </Tooltip.Trigger>
+          <Tooltip.Content position="left" class="shadow-none drop-shadow-none">
+            <Tooltip.Arrow />
+            I'm a tooltip without shadow
+          </Tooltip.Content>
+        </Tooltip>
+    """
+  end
+
+  defp tooltip_5_code() do
+    """
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Button variant="secondary">Hover Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content class="bg-chi-chi/10">
+        <Tooltip.Arrow />
+        A bit opacity
+      </Tooltip.Content>
+    </Tooltip>
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Button variant="secondary">Hover Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content class="text-moon-18 text-krillin font-medium">
+        <Tooltip.Arrow />
+        Custom font
+      </Tooltip.Content>
+    </Tooltip>
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Button variant="secondary">Hover Me</Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content class="bg-roshi/10 text-piccolo">
+        <Tooltip.Arrow />
+        Custom font & backgound
+      </Tooltip.Content>
+    </Tooltip>
     """
   end
 end
