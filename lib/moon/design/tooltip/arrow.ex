@@ -14,7 +14,7 @@ defmodule Moon.Design.Tooltip.Arrow do
       "h-3 w-3  bg-gohan -rotate-45 shadow",
       @direction_class,
       @class
-      } />
+    } />
     """
   end
 end

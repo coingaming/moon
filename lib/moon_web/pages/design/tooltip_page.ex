@@ -77,7 +77,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tooltip">
+      <ComponentPageDescription title="Tooltip" is_aria_support>
         <p>
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.
         </p>
@@ -91,7 +91,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
             </Tooltip.Trigger>
             <Tooltip.Content>
               I'm a tooltip content
-              <Tooltip.Arrow/>
+              <Tooltip.Arrow />
             </Tooltip.Content>
           </Tooltip>
         </:example>
@@ -107,7 +107,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               </Tooltip.Trigger>
               <Tooltip.Content position={placement}>
                 I'm a tooltip content
-                <Tooltip.Arrow/>
+                <Tooltip.Arrow />
               </Tooltip.Content>
             </Tooltip>
           {/for}
