@@ -3,8 +3,6 @@ defmodule Moon.Design.Tabs do
 
   use Moon.StatelessComponent
 
-  alias Surface.Components.Context
-
   import Moon.Helpers.MoonRender, only: [moon: 1]
 
   prop(selected_index, :integer, default: 0)

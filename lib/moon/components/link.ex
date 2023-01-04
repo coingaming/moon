@@ -31,7 +31,7 @@ defmodule Moon.Components.Link do
         "text-trunks": @secondary,
         "text-trunks hover:text-piccolo focus:text-bulma active:text-bulma": @optional
       }
-      data-phx-link="patch"
+      data-phx-link="redirect"
       data-phx-link-state="push"
       data-moon-active={@active}
       href={@to}

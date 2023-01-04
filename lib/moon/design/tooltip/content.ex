@@ -29,11 +29,13 @@ defmodule Moon.Design.Tooltip.Content do
     <div class={
       "absolute left-0 right-0 z-30",
       (@position in ~w(bottom-start bottom-center bottom-end) && "bottom-0") || "top-0",
+      # TODO: fix shadow (bottom, left & right) and unmark no-shadow example as hidden
+      "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]",
       "flex flex-col items-center": !(@position in ~w(left right))
     }>
       {#case @position}
         {#match "top-" <> align}
-          <div class="-translate-y-full">
+          <div class="-translate-y-full ">
             <div class={content_class(@class, align)}>
               <#slot />
             </div>
@@ -87,7 +89,6 @@ defmodule Moon.Design.Tooltip.Content do
     merge([
       "p-3 rounded-moon-s-xs text-moon-12 text-bulma bg-gohan whitespace-nowrap",
       "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]",
-      "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]",
       [
         "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "end",
         "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "start"

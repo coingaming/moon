@@ -140,13 +140,13 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         <:code>{tooltip_3_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Without shadow" id="tooltip_no_shadow">
+      <ExampleAndCode class="hidden" title="Without shadow" id="tooltip_no_shadow">
         <:example>
           <Tooltip>
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
-            <Tooltip.Content position="left" class="shadow-none drop-shadow-none">
+            <Tooltip.Content position="top-center" class="shadow-none drop-shadow-none">
               <Tooltip.Arrow />
               I'm a tooltip without shadow
             </Tooltip.Content>

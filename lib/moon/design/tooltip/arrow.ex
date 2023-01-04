@@ -14,7 +14,6 @@ defmodule Moon.Design.Tooltip.Arrow do
     <div class={merge([
       "h-3 w-3  bg-gohan -rotate-45",
       "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]",
-      "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]",
       @parent_class,
       @class
     ])} />
