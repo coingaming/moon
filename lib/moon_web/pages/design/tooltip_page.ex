@@ -94,6 +94,21 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         </:example>
         <:code>{tooltip_1_code()}</:code>
       </ExampleAndCode>
+
+      <ExampleAndCode title="Placement" id="tooltip_placement">
+        <:example>
+          {#for placement <- ["top", "left", "right", "bottom"]}
+            <Tooltip>
+              <Tooltip.Trigger>
+                <Button variant="secondary">{placement}</Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content position={placement}>I'm a tooltip content</Tooltip.Content>
+            </Tooltip>
+          {/for}
+        </:example>
+        <:code>{tooltip_1_code()}</:code>
+      </ExampleAndCode>
+
       <PropsTable data={@props_info_array} />
     </Page>
     """

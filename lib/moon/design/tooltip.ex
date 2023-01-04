@@ -12,8 +12,8 @@ defmodule Moon.Design.Tooltip do
   def render(assigns) do
     ~F"""
     <div class="relative inline-block" x-data="{ tooltip: false, timeout: null }">
-      <#slot/>
-      <#slot {@trigger}/>
+      <#slot />
+      <#slot {@trigger} />
     </div>
     """
   end
