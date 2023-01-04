@@ -89,7 +89,10 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
-            <Tooltip.Content>I'm a tooltip content</Tooltip.Content>
+            <Tooltip.Content>
+              I'm a tooltip content
+              <Tooltip.Arrow/>
+            </Tooltip.Content>
           </Tooltip>
         </:example>
         <:code>{tooltip_1_code()}</:code>
@@ -102,7 +105,10 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               <Tooltip.Trigger>
                 <Button variant="secondary">{placement}</Button>
               </Tooltip.Trigger>
-              <Tooltip.Content position={placement}>I'm a tooltip content</Tooltip.Content>
+              <Tooltip.Content position={placement}>
+                I'm a tooltip content
+                <Tooltip.Arrow/>
+              </Tooltip.Content>
             </Tooltip>
           {/for}
         </:example>
