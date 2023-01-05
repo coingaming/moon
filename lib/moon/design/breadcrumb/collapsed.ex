@@ -46,16 +46,20 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
           <ArrowsRight class="rtl:rotate-180" />
         </li>
 
-        <li class="relative">
+        <li
+          class="relative"
+          phx-click-away={JS.dispatch("moon:close-breadcrumb-flyout", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+        >
           <IconButton
             variant="ghost"
-            icon_only="other3_dots_horizontal" size="xs"
-           on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
-           phx-click-away={JS.dispatch("moon:close-breadcrumb-flyout", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+            icon_only="other3_dots_horizontal"
+            size="xs"
+            on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
           />
           <ol
             id={"#{@id}_flyout"}
-            class="absolute hidden ltr:left-0 rtl:right-0 top-full bg-gohan p-1 mt-3 flex flex-col gap-2 shadow-moon-lg rounded-moon-s-md z-10000 min-w-[8.5rem]" >
+            class="absolute hidden ltr:left-0 rtl:right-0 top-full bg-gohan p-1 mt-3 flex flex-col gap-2 shadow-moon-lg rounded-moon-s-md z-10000 min-w-[8.5rem]"
+          >
             {#for crumb <- @collapsed_breadcrumbs}
               <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-goku">
                 <a href={crumb.link}>{crumb.name}</a>
@@ -79,5 +83,4 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
     </nav>
     """
   end
-
 end
