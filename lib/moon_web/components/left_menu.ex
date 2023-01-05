@@ -66,6 +66,7 @@ defmodule MoonWeb.Components.LeftMenu do
                     <:title>Components v2</:title>
                     <:content>
                       <div class="flex-grow flex flex-col gap-2 pl-8">
+                      <SidebarLink route={Pages.Design.BreadcrumbPage}>Breadcrumb</SidebarLink>
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-dialog"
