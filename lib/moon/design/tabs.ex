@@ -3,8 +3,6 @@ defmodule Moon.Design.Tabs do
 
   use Moon.StatelessComponent
 
-  alias Surface.Components.Context
-
   import Moon.Helpers.MoonRender, only: [moon: 1]
 
   prop(selected_index, :integer, default: 0)
@@ -29,14 +27,15 @@ defmodule Moon.Design.Tabs do
                 Map.merge(tab, %{selected: "#{tabindex}" == "#{@selected_index}", size: @size, on_change: @on_change, tabindex: "#{tabindex}"})
               instead bc context is expensive )))))
             --}
-            <Context put={
-              selected: "#{tabindex}" == "#{@selected_index}",
-              size: @size,
-              on_change: @on_change,
-              tabindex: "#{tabindex}"
-            }>
-              <#slot {tab} />
-            </Context>
+            <#slot
+              {tab}
+              context_put={
+                selected: "#{tabindex}" == "#{@selected_index}",
+                size: @size,
+                on_change: @on_change,
+                tabindex: "#{tabindex}"
+              }
+            />
           {/for}
         {#else}
           <.moon

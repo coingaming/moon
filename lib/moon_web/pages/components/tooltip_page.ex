@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -77,9 +78,13 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Tooltip">
-        <p>
-          Tooltip
-        </p>
+        <DeprecationWarning
+          name="Tooltip"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TooltipPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       {#for placement <- ["top", "right", "bottom", "left"]}
