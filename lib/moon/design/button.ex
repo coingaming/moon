@@ -18,6 +18,15 @@ defmodule Moon.Design.Button do
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
+  prop(no_hover_bg, :boolean, default: false)
+
+  prop(type, :string, default: "button")
+  prop(form, :string)
+  prop(testid, :string)
+  prop(on_click, :event)
+  prop(value_name, :string)
+  prop(value, :any)
+  prop(values, :keyword, default: [])
 
   prop(left_icon, :string)
   prop(right_icon, :string)
@@ -51,6 +60,14 @@ defmodule Moon.Design.Button do
         "bg-chi-chi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
           @animation == "error"
       }
+      disabled={@disabled}
+      type={@type}
+      form={@form}
+      data-size={@size}
+      data-testid={@testid}
+      :on-click={@on_click}
+      :values={@values}
+      {...phx_val_tag(@value_name || (@value && "click_value") || nil, @value)}
     >
       <span
         :if={@animation in ["success", "progress"]}
@@ -93,7 +110,17 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
+      <span :if={!@no_hover_bg} class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
     </button>
     """
   end
+
+  defp phx_val_tag(nil, _), do: []
+
+  defp phx_val_tag(name, value) do
+    # credo:disable-for-next-line Credo.Check.Warning.UnsafeToAtom
+    key = String.to_atom("phx-value-#{name}")
+    [{key, value}]
+  end
+
 end

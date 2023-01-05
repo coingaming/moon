@@ -17,6 +17,16 @@ defmodule Moon.Design.Button.Utils do
     end
   end
 
+  def get_icon_button_size_classes(size) do
+    case size do
+      "xs" -> "text-moon-12 rounded-moon-s-xs h-6 p-1"
+      "sm" -> "text-moon-14 rounded-moon-s-sm h-8 p-1"
+      "md" -> "text-moon-14 rounded-moon-s-sm h-10 p-2"
+      "lg" -> "text-moon-16 rounded-moon-s-sm h-12 p-3"
+      "xl" -> "text-moon-16 rounded-moon-s-md h-14 p-4"
+    end
+  end
+
   def get_right_icon_paddings(size) do
     case size do
       "xs" -> "ps-2 pe-1"
