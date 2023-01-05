@@ -35,7 +35,7 @@ defmodule Moon.Design.Tooltip.Content do
     }>
       {#case @position}
         {#match "top-" <> align}
-          <div class="-translate-y-full ">
+          <div class="-translate-y-full">
             <div class={content_class(@class, align)}>
               <#slot />
             </div>
