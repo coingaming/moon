@@ -55,6 +55,7 @@ defmodule MoonWeb.Router do
         live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
         live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
 
+        live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
         live("/components/v2/icon-button", MoonWeb.Pages.Design.Button.IconButtonPage)
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
