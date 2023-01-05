@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
     default: [
       %{
         :name => 'breadcrumbs',
-        :type => 'list of Moon.Components.Breadcrumb.Crumb',
+        :type => 'list of Moon.Design.Breadcrumb.Crumb',
         :required => 'No',
         :default => '[]',
         :description => 'Crumbs to display'
@@ -108,7 +108,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription is_in_progress is_rtl_support title="Breadcrumb">
         <p>
-        A list of links showing the location of the current page in the navigational hierarchy.
+          A list of links showing the location of the current page in the navigational hierarchy.
         </p>
       </ComponentPageDescription>
       <ExampleAndCode title="Five and more items" id="breadcrumbs_2">
@@ -161,11 +161,11 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       default: [
         %Crumb{
           name: "Home",
-          link: "/app/home"
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
           name: "Current Page",
-          link: "/app/corporate"
+          link: "/components/v2/breadcrumb"
         }
       ]
 
@@ -179,23 +179,23 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       default: [
         %Crumb{
           name: "Home",
-          link: "/app/home"
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
-          name: "Corporate",
-          link: "/app/corporate"
+          name: "Page 2",
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
-          name: "About",
-          link: "/app/corporate/about"
+          name: "Page 3",
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
-          name: "Jobs",
-          link: "/app/corporate/about/jobs"
+          name: "Page 4",
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
           name: "Current Page",
-          link: "/app/corporate/about/jobs/contact"
+          link: "/components/v2/breadcrumb"
         }
       ]
 
@@ -209,20 +209,20 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       default: [
         %Crumb{
           name: "Home",
-          link: "/app/home"
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
-          name: "Corporate",
-          link: "/app/corporate"
+          name: "Page 1",
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
-          name: "About",
-          link: "/app/corporate/about"
+          name: "Page 2",
+          link: "/components/v2/breadcrumb"
         },
         %Crumb{
           name: "Current Page",
-          link: "/app/corporate/about/jobs"
-        }
+          link: "/components/v2/breadcrumb"
+        }s
       ]
     """
   end
@@ -233,7 +233,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       default: [
         %Crumb{
           name: "Current Page",
-          link: "/app/home"
+          link: "/components/v2/breadcrumb"
         }
       ]
 

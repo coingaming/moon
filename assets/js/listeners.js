@@ -35,8 +35,6 @@ window.addEventListener("moon:update-accordion-aria", (event) => {
   }
 });
 
-//window["moon:breadcumbs-close-handlers"] = {};
-
 window.addEventListener("moon:toggle-collapsed-breadcrumbs", (event) => {
   var detail = event.detail;
   var breacrumb_flyout_id = detail.breacrumb_flyout_id;
@@ -47,40 +45,13 @@ window.addEventListener("moon:toggle-collapsed-breadcrumbs", (event) => {
     } else {
     element.classList.add("hidden");
     element.classList.remove("flex");}
-  
-
-  // var breacrumb_flyout_id_closer = (e) => {
-  //   if (!e.target.contains(element)) {
-  //     element.classList.add("hidden");
-  //     element.classList.remove("flex");
-
-  //     document.removeEventListener(
-  //       "click",
-  //       window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id]
-  //     );
-  //     delete window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id];
-  //   }
-  // };
-
-  // document.addEventListener("click", breacrumb_flyout_id_closer);
-
-  // window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id] =
-  //   breacrumb_flyout_id_closer;
 });
-
-// window.addEventListener("click", (e) => {
-//  var isClosest = e.target.closest(breacrumb_flyout_id);
-//   if (!isClosest && element.classList.contains("flex")) {
-//     element.classList.remove("flex");
-//   }
-// });
 
 window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
   var detail = event.detail;
   var breacrumb_flyout_id = detail.breacrumb_flyout_id;
   var element = document.getElementById(breacrumb_flyout_id);
-    if (!event.target.contains(element) && element.classList.contains("flex")) {
+    if (!event.target.element && element.classList.contains("flex")) {
     element.classList.remove("flex");
     element.classList.add("hidden");}
   });
-
