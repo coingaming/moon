@@ -122,5 +122,4 @@ defmodule Moon.Design.Button do
     key = String.to_atom("phx-value-#{name}")
     [{key, value}]
   end
-
 end
