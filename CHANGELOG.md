@@ -1,3 +1,10 @@
+## [2.34.2](https://github.com/coingaming/moon/compare/v2.34.1...v2.34.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* [MDS-271] Button v2 & IconButton v2 ([e9aa733](https://github.com/coingaming/moon/commit/e9aa73306af718ec918dfea57c2dfd2c4ea3568b))
+
 ## [2.34.1](https://github.com/coingaming/moon/compare/v2.34.0...v2.34.1) (2023-01-03)
 
 
