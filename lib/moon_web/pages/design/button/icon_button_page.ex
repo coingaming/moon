@@ -138,7 +138,7 @@ defmodule MoonWeb.Pages.Design.Button.IconButtonPage do
         <:code>{button_5_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable title="Button props" data={@props_info_array} />
+      <PropsTable title="IconButton props" data={@props_info_array} />
     </Page>
     """
   end
