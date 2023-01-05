@@ -33,7 +33,7 @@ defmodule Moon.Design.Button.IconButton do
       class={
         "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
         @class,
-        Utils.get_icon_button_size_classes(@size),
+        get_icon_button_size_classes(@size),
         "text-goten bg-piccolo": @variant in ["primary"],
         "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
           @variant in ["secondary"],
@@ -80,5 +80,15 @@ defmodule Moon.Design.Button.IconButton do
     # credo:disable-for-next-line Credo.Check.Warning.UnsafeToAtom
     key = String.to_atom("phx-value-#{name}")
     [{key, value}]
+  end
+
+  def get_icon_button_size_classes(size) do
+    case size do
+      "xs" -> "text-moon-12 rounded-moon-s-xs h-6 p-1"
+      "sm" -> "text-moon-14 rounded-moon-s-sm h-8 p-1"
+      "md" -> "text-moon-14 rounded-moon-s-sm h-10 p-2"
+      "lg" -> "text-moon-16 rounded-moon-s-sm h-12 p-3"
+      "xl" -> "text-moon-16 rounded-moon-s-md h-14 p-4"
+    end
   end
 end
