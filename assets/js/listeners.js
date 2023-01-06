@@ -35,30 +35,23 @@ window.addEventListener("moon:update-accordion-aria", (event) => {
   }
 });
 
-window["moon:breadcumbs-close-handlers"] = {};
-
-window.addEventListener("moon:show-collapsed-breadcrumbs", (event) => {
+window.addEventListener("moon:toggle-collapsed-breadcrumbs", (event) => {
   var detail = event.detail;
   var breacrumb_flyout_id = detail.breacrumb_flyout_id;
   var element = document.getElementById(breacrumb_flyout_id);
-  element.classList.add("flex");
-  element.classList.remove("hidden");
-
-  var breacrumb_flyout_id_closer = (e) => {
-    if (!e.target.contains(element)) {
+    if (element.classList.contains("hidden")) {
+      element.classList.add("flex");
+      element.classList.remove("hidden");
+    } else {
       element.classList.add("hidden");
-      element.classList.remove("flex");
-
-      document.removeEventListener(
-        "click",
-        window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id]
-      );
-      delete window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id];
-    }
-  };
-
-  document.addEventListener("click", breacrumb_flyout_id_closer);
-
-  window["moon:breadcumbs-close-handlers"][breacrumb_flyout_id] =
-    breacrumb_flyout_id_closer;
+      element.classList.remove("flex");}
 });
+
+window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
+  var detail = event.detail;
+  var breacrumb_flyout_id = detail.breacrumb_flyout_id;
+  var element = document.getElementById(breacrumb_flyout_id);
+    if (!event.target.element && element.classList.contains("flex")) {
+      element.classList.remove("flex");
+      element.classList.add("hidden");}
+  });
