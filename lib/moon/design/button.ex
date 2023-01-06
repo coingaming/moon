@@ -42,7 +42,7 @@ defmodule Moon.Design.Button do
     <button
       {=@as}
       class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
+        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold z-0",
         @class,
         Utils.get_button_size_classes(@size),
         "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
@@ -110,7 +110,7 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
-      <span :if={!@no_hover_bg} class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
+      <span class="-z-10 block absolute inset-0 transition-[background-color_0.2s_ease-in-out] bg-transparent hover:bg-bulma"/>
     </button>
     """
   end
