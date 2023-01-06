@@ -18,7 +18,7 @@ defmodule Moon.Design.Breadcrumb.Extended do
               "transition-colors duration-200 hover:text-bulma",
               "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1
             }>
-              <a href={crumb.link}>{crumb.name}</a>
+              <a href={crumb.link} aria-current="page">{crumb.name}</a>
             </span>
           </li>
         {/for}
