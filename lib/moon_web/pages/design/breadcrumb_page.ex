@@ -157,7 +157,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
 
   def breadcrumb_1_code do
     """
-    data breadcrumb_items_1, :list,
+    data(breadcrumb_items_1, :list,
       default: [
         %Crumb{
           name: "Home",
@@ -168,6 +168,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
           link: "/components/v2/breadcrumb"
         }
       ]
+    )
 
     <Breadcrumb id="breadcrumb_1" breadcrumbs={@breadcrumb_items_1} />
     """
@@ -175,7 +176,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
 
   def breadcrumb_2_code do
     """
-    data breadcrumb_items, :list,
+    data(breadcrumb_items_2, :list,
       default: [
         %Crumb{
           name: "Home",
@@ -198,14 +199,15 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
           link: "/components/v2/breadcrumb"
         }
       ]
+    )
 
-    <Breadcrumb id="breadcrumb" breadcrumbs={@breadcrumb_items} />
+    <Breadcrumb id="breadcrumb_2" breadcrumbs={@breadcrumb_items_2} />
     """
   end
 
   def breadcrumb_3_code do
     """
-    data breadcrumb_items_3, :list,
+      data(breadcrumb_items_3, :list,
       default: [
         %Crumb{
           name: "Home",
@@ -222,20 +224,24 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
         %Crumb{
           name: "Current Page",
           link: "/components/v2/breadcrumb"
-        }s
+        }
       ]
+    )
+
+    <Breadcrumb id="breadcrumb_3" breadcrumbs={@breadcrumb_items_3} />
     """
   end
 
   def breadcrumb_4_code do
     """
-    data breadcrumb_items_4, :list,
+    data(breadcrumb_items_4, :list,
       default: [
         %Crumb{
           name: "Current Page",
           link: "/components/v2/breadcrumb"
         }
       ]
+    )
 
     <Breadcrumb id="breadcrumb_4" breadcrumbs={@breadcrumb_items_4} />
     """

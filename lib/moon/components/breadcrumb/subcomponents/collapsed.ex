@@ -46,11 +46,14 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
           <ArrowsRight class="rtl:rotate-180" />
         </li>
 
-        <li class="relative">
+        <li
+          class="relative"
+          phx-click-away={JS.dispatch("moon:close-breadcrumb-flyout", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+        >
           <Button
             variant="ghost"
             right_icon="other3_dots_horizontal"
-            on_click={JS.dispatch("moon:show-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+            on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
           />
           <ol
             id={"#{@id}_flyout"}

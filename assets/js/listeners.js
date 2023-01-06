@@ -40,11 +40,11 @@ window.addEventListener("moon:toggle-collapsed-breadcrumbs", (event) => {
   var breacrumb_flyout_id = detail.breacrumb_flyout_id;
   var element = document.getElementById(breacrumb_flyout_id);
     if (element.classList.contains("hidden")) {
-    element.classList.add("flex");
-    element.classList.remove("hidden");
+      element.classList.add("flex");
+      element.classList.remove("hidden");
     } else {
-    element.classList.add("hidden");
-    element.classList.remove("flex");}
+      element.classList.add("hidden");
+      element.classList.remove("flex");}
 });
 
 window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
@@ -52,6 +52,6 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
   var breacrumb_flyout_id = detail.breacrumb_flyout_id;
   var element = document.getElementById(breacrumb_flyout_id);
     if (!event.target.element && element.classList.contains("flex")) {
-    element.classList.remove("flex");
-    element.classList.add("hidden");}
+      element.classList.remove("flex");
+      element.classList.add("hidden");}
   });
