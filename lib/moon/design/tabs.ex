@@ -19,8 +19,8 @@ defmodule Moon.Design.Tabs do
     ~F"""
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <div class="flex items-center justify-center gap-2" role="tablist" aria-orientation="horizontal">
-        {#if slot_assigned?(:tabs) && is_list(@tabs)}
-          {#for {tab, tabindex} <- Enum.with_index(@tabs)}
+        {#if slot_assigned?(:tabs)}
+          {#for {tab, tabindex} <- Enum.with_index(make_list(@tabs))}
             {!-- IO.puts "Here is tab content " <> inspect tab, structs: false, pretty: true --}
             {!--
               TODO: try to use
@@ -48,12 +48,15 @@ defmodule Moon.Design.Tabs do
           >{title}</.moon>
         {/if}
       </div>
-      {#if slot_assigned?(:panels) && is_list(@panels) && Enum.at(@panels, @selected_index)}
+      {#if slot_assigned?(:panels) && Enum.at(make_list(@panels), @selected_index)}
         <div role="tabpanel" tabindex={@selected_index} class="w-full">
-          <#slot {Enum.at(@panels, @selected_index)} />
+          <#slot {Enum.at(make_list(@panels), @selected_index)} />
         </div>
       {/if}
     </div>
     """
   end
+
+  defp make_list(l) when is_list(l), do: l
+  defp make_list(l), do: [l]
 end
