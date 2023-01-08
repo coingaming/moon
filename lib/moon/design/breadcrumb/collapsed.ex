@@ -41,7 +41,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
       <ol class="flex flex-wrap gap-2 items-center text-moon-14">
         <li class="flex items-center gap-2 text-trunks">
           <span class="text-trunks transition-colors duration-200 hover:text-bulma">
-            <a href={Enum.at(@shown_breadcrumbs, 0).link} aria-current="page">{Enum.at(@shown_breadcrumbs, 0).name}</a>
+            <a href={Enum.at(@shown_breadcrumbs, 0).link}>{Enum.at(@shown_breadcrumbs, 0).name}</a>
           </span>
           <ArrowsRight class="rtl:rotate-180" />
         </li>
@@ -62,7 +62,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
           >
             {#for crumb <- @collapsed_breadcrumbs}
               <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-goku">
-                <a href={crumb.link} aria-current="page">{crumb.name}</a>
+                <a href={crumb.link}>{crumb.name}</a>
               </li>
             {/for}
           </ol>
@@ -75,7 +75,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
               "text-trunks transition-colors duration-200 hover:text-bulma",
               "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1
             }>
-              <a href={crumb.link} aria-current="page">{crumb.name}</a>
+              <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>{crumb.name}</a>
             </span>
           </li>
         {/for}
