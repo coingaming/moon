@@ -80,6 +80,7 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
+                        <SidebarLink route={Pages.Design.LoaderPage}>Loader</SidebarLink>
                         <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>
