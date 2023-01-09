@@ -15,7 +15,6 @@ defmodule Moon.Design.Button.IconButton do
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
-  prop(no_hover_bg, :boolean, default: false)
 
   prop(icon_only, :string)
 
@@ -31,7 +30,7 @@ defmodule Moon.Design.Button.IconButton do
     ~F"""
     <button
       class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
+        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group",
         @class,
         get_icon_button_size_classes(@size),
         "text-goten bg-piccolo": @variant in ["primary"],
@@ -69,7 +68,7 @@ defmodule Moon.Design.Button.IconButton do
       }>
         <Icon name={@icon_only} class={Utils.icon_class(@size)} />
       </span>
-      <span :if={!@no_hover_bg} class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
+      <span class="block absolute inset-0 bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
     </button>
     """
   end

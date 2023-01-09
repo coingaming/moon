@@ -18,7 +18,6 @@ defmodule Moon.Design.Button do
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
-  prop(no_hover_bg, :boolean, default: false)
 
   prop(type, :string, default: "button")
   prop(form, :string)
@@ -42,7 +41,7 @@ defmodule Moon.Design.Button do
     <button
       {=@as}
       class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold z-0",
+        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
         @class,
         Utils.get_button_size_classes(@size),
         "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
@@ -110,7 +109,7 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
-      <span class="-z-10 block absolute inset-0 transition-[background-color_0.2s_ease-in-out] bg-transparent hover:bg-bulma/[.07]" />
+      <span class="block absolute inset-0 bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
     </button>
     """
   end
