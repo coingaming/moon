@@ -19,7 +19,6 @@ defmodule Moon.Design.Accordion do
   slot(content, required: true)
 
   def handle_event("on_change_default", _params = %{"value" => index}, socket) do
-    # IO.puts("ON_CHANGE_ACCORDION ############ params = #{inspect(_params, pretty: true)}")
     index = String.to_integer(index)
     list = socket.assigns[:expanded]
 

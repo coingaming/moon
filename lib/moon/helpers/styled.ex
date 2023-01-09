@@ -45,10 +45,4 @@ defmodule Moon.Helpers.Styled do
       "#{x}: var(--#{y})"
     end
   end
-
-  @doc "Function for creating random id attr for Surface components"
-  def rndid(), do: %{id: random_string(10)}
-
-  defp random_string(count),
-    do: for(_ <- 1..count, into: "", do: <<Enum.random('0123456789abcdefghjklmnopqrstuvwxyz')>>)
 end

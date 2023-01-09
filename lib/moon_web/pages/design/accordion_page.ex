@@ -108,7 +108,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         </p>
       </ComponentPageDescription>
 
-      <ExampleAndCode title="Default" id="accordion-1">
+      <ExampleAndCode title="Default" id="example-00">
         <:example>
           <Accordion id="accordion-default">
             <Accordion.Header>Lorem</Accordion.Header>
@@ -122,9 +122,9 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_1_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="One item open at a time and Disabled" {...rndid()}>
+      <ExampleAndCode title="One item open at a time and Disabled" id="example-01">
         <:example>
-          <Accordion {...rndid()} single_open>
+          <Accordion id="accordion-01" single_open>
             <Accordion.Header>Lorem</Accordion.Header>
             <Accordion.Content>{lorem()}</Accordion.Content>
             <Accordion.Header disabled>Disabled</Accordion.Header>
@@ -136,9 +136,9 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_2_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Content outside" {...rndid()}>
+      <ExampleAndCode title="Content outside" id="example-content-outside">
         <:example>
-          <Accordion {...rndid()} is_content_outside>
+          <Accordion id="accordion-02" is_content_outside>
             <Accordion.Header>Lorem</Accordion.Header>
             <Accordion.Content>{lorem()}</Accordion.Content>
             <Accordion.Header>Ipsum</Accordion.Header>
@@ -148,9 +148,9 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_3_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="With divider" {...rndid()}>
+      <ExampleAndCode title="With divider" id="example-divider">
         <:example>
-          <Accordion {...rndid()} single_open>
+          <Accordion id="accordion-03" single_open>
             <Accordion.Header class="border-b">Lorem</Accordion.Header>
             <Accordion.Content>{lorem()}</Accordion.Content>
           </Accordion>
@@ -158,10 +158,10 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_4_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Sizes" {...rndid()}>
+      <ExampleAndCode title="Sizes" id="example-sizes">
         <:example>
           {#for size <- ~w(xl lg md sm)}
-            <Accordion {...rndid()} item_size={size}>
+            <Accordion id={"accordion-sizes-#{size}"} item_size={size}>
               <Accordion.Header>Size is {size}</Accordion.Header>
               <Accordion.Content>{lorem()}</Accordion.Content>
             </Accordion>
@@ -170,10 +170,10 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_5_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Sizes content outside" {...rndid()}>
+      <ExampleAndCode title="Sizes content outside" id="example-sizes-outside">
         <:example>
           {#for size <- ~w(xl lg md sm)}
-            <Accordion {...rndid()} item_size={size} is_content_outside>
+            <Accordion id={"accordion-out-sizes-#{size}"} item_size={size} is_content_outside>
               <Accordion.Header>Size is {size}</Accordion.Header>
               <Accordion.Content>{lorem()}</Accordion.Content>
             </Accordion>
@@ -182,13 +182,13 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_6_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Custom backgounds" {...rndid()}>
+      <ExampleAndCode title="Custom backgounds" id="example-custom-bg">
         <:example>
-          <Accordion {...rndid()}>
+          <Accordion id="accordion-bg-in">
             <Accordion.Header class="bg-beerus">Content inside</Accordion.Header>
             <Accordion.Content class="bg-beerus">{lorem()}</Accordion.Content>
           </Accordion>
-          <Accordion {...rndid()} is_content_outside>
+          <Accordion id="accordion-bg-out" is_content_outside>
             <Accordion.Header class="bg-beerus">Content outside</Accordion.Header>
             <Accordion.Content>{lorem()}</Accordion.Content>
           </Accordion>
@@ -196,9 +196,9 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         <:code>{get_example_7_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="On change event" {...rndid()}>
+      <ExampleAndCode title="On change event" id="example-on-change">
         <:example>
-          <Accordion {...rndid()} on_change="accordioned" {=@expanded}>
+          <Accordion id="accordion-on-ch" on_change="accordioned" {=@expanded}>
             <Accordion.Header>Lorem</Accordion.Header>
             <Accordion.Content>{lorem()}</Accordion.Content>
             <Accordion.Header>Ipsum</Accordion.Header>
@@ -241,7 +241,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     alias Moon.Design.Accordion
     ...
 
-    <Accordion {...rndid()} single_open>
+    <Accordion id="accordion-sample" single_open>
       <Accordion.Header>Lorem</Accordion.Header>
       <Accordion.Content>{lorem()}</Accordion.Content>
       <Accordion.Header disabled>Disabled</Accordion.Header>
@@ -257,7 +257,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     alias Moon.Design.Accordion
     ...
 
-    <Accordion {...rndid()} is_content_outside>
+    <Accordion id="accordion-sample" is_content_outside>
       <Accordion.Header>Lorem</Accordion.Header>
       <Accordion.Content>{lorem()}</Accordion.Content>
       <Accordion.Header>Ipsum</Accordion.Header>
@@ -271,7 +271,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     alias Moon.Design.Accordion
     ...
 
-    <Accordion {...rndid()} single_open>
+    <Accordion id="accordion-sample" single_open>
       <Accordion.Header class="border-b">Lorem</Accordion.Header>
       <Accordion.Content>{lorem()}</Accordion.Content>
     </Accordion>
@@ -284,7 +284,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     ...
 
     {#for size <- ~w(xl lg md sm)}
-      <Accordion {...rndid()} item_size={size}>
+      <Accordion id="accordion-sample" item_size={size}>
         <Accordion.Header>Size is {size}</Accordion.Header>
         <Accordion.Content>{lorem()}</Accordion.Content>
       </Accordion>
@@ -298,7 +298,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     ...
 
     {#for size <- ~w(xl lg md sm)}
-      <Accordion {...rndid()} item_size={size} is_content_outside>
+      <Accordion id="accordion-sample" item_size={size} is_content_outside>
         <Accordion.Header>Size is {size}</Accordion.Header>
         <Accordion.Content>{lorem()}</Accordion.Content>
       </Accordion>
@@ -311,11 +311,11 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
     alias Moon.Design.Accordion
     ...
 
-    <Accordion {...rndid()}>
+    <Accordion id="accordion-sample">
       <Accordion.Header class="bg-beerus">Content inside</Accordion.Header>
       <Accordion.Content class="bg-beerus">{lorem()}</Accordion.Content>
     </Accordion>
-    <Accordion {...rndid()} is_content_outside>
+    <Accordion id="accordion-sample" is_content_outside>
       <Accordion.Header class="bg-beerus">Content outside</Accordion.Header>
       <Accordion.Content>{lorem()}</Accordion.Content>
     </Accordion>
@@ -337,7 +337,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
 
     def render(assigns) do
       ~F\"""
-      <Accordion {...rndid()} on_change="accordioned" {=@expanded}>
+      <Accordion id="accordion-sample" on_change="accordioned" {=@expanded}>
         <Accordion.Header>Lorem</Accordion.Header>
         <Accordion.Content>{lorem()}</Accordion.Content>
         <Accordion.Header>Ipsum</Accordion.Header>
