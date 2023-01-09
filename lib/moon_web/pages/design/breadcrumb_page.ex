@@ -106,7 +106,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_rtl_support title="Breadcrumb">
+      <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="Breadcrumb">
         <p>
           A list of links showing the location of the current page in the navigational hierarchy.
         </p>

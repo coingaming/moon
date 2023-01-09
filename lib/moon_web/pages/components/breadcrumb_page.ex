@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   alias Moon.Components.Breadcrumb.Crumb
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -107,6 +108,13 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Breadcrumb">
+        <DeprecationWarning
+          name="Breadcrumb"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.BreadcrumbPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
         <p>
           As users navigate through your website, they'll want to know where they are and how to get back to where
           they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.

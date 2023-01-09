@@ -75,7 +75,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
               "text-trunks transition-colors duration-200 hover:text-bulma",
               "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1
             }>
-              <a href={crumb.link}>{crumb.name}</a>
+              <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>{crumb.name}</a>
             </span>
           </li>
         {/for}
