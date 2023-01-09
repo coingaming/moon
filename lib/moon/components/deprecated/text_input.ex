@@ -68,7 +68,7 @@ defmodule Moon.Components.Deprecated.TextInput do
           "h-12 text-moon-16 px-4": @size == "large",
           "pl-11": slot_assigned?(:left_icon),
           "pr-11": slot_assigned?(:right_icon),
-          "border-chi-chi": @error,
+          "border-chichi": @error,
           "#{@class}": true,
           "bg-#{@background_color}": true
         }

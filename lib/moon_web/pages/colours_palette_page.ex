@@ -98,16 +98,16 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   data(chichi_colors_list, :list,
     default: [
       %{
-        :name => "chi-chi",
-        :bg_color => "bg-chi-chi"
+        :name => "chichi",
+        :bg_color => "bg-chichi"
       },
       %{
-        :name => "chi-chi-60",
-        :bg_color => "bg-chi-chi-60"
+        :name => "chichi-60",
+        :bg_color => "bg-chichi-60"
       },
       %{
-        :name => "chi-chi-10",
-        :bg_color => "bg-chi-chi-10"
+        :name => "chichi-10",
+        :bg_color => "bg-chichi-10"
       }
     ]
   )
