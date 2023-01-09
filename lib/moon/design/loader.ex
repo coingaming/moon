@@ -3,8 +3,11 @@ defmodule Moon.Design.Loader do
 
   use Moon.StatelessComponent
 
+  import Moon.Helpers.MergeClass
+
   prop(size, :string, values: ["2xs", "xs", "md", "lg"], default: "md")
   prop(color, :string, default: "hit", values: Moon.colors())
+  prop(class, :css_class)
 
   def render(assigns) do
     ~F"""
@@ -12,28 +15,27 @@ defmodule Moon.Design.Loader do
       "relative",
       get_size_class_by_size(@size)
     }>
-      <div class={
-        "box-border block absolute w-full h-full border-solid border-#{@color} rounded-[50%]",
-        "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
-        "animate-loader",
+      <div class={loader_class(@class),
+        "border-#{@color}",
+        "border-t-#{@color}",
         get_border_class_by_size(@size)
       } />
-      <div class={
-        "box-border block absolute w-full h-full border-solid border-#{@color} rounded-[50%]",
-        "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
-        "animate-loader animation-delay-minus-45",
+      <div class={loader_class(@class),
+        "border-#{@color}",
+        "border-t-#{@color}",
+        "animation-delay-minus-45",
         get_border_class_by_size(@size)
       } />
-      <div class={
-        "box-border block absolute w-full h-full border-solid border-#{@color} rounded-[50%]",
-        "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
-        "animate-loader animation-delay-minus-30",
+      <div class={loader_class(@class),
+        "border-#{@color}",
+        "border-t-#{@color}",
+        "animation-delay-minus-30",
         get_border_class_by_size(@size)
       } />
-      <div class={
-        "box-border block absolute w-full h-full border-solid border-#{@color} rounded-[50%]",
-        "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
-        "animate-loader animation-delay-minus-15",
+      <div class={loader_class(@class),
+        "border-#{@color}",
+        "border-t-#{@color}",
+        "animation-delay-minus-15",
         get_border_class_by_size(@size)
       } />
     </div>
@@ -58,5 +60,14 @@ defmodule Moon.Design.Loader do
       "md" -> "border-4"
       "lg" -> "border-4"
     end
+  end
+
+  defp loader_class(class) do
+    merge([
+      "box-border block absolute w-full h-full border-solid rounded-[50%]",
+        "border-r-transparent border-b-transparent border-l-transparent",
+        "animate-loader",
+      class
+    ])
   end
 end
