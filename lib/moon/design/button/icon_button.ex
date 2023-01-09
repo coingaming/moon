@@ -30,7 +30,7 @@ defmodule Moon.Design.Button.IconButton do
     ~F"""
     <button
       class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group",
+        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
         @class,
         get_icon_button_size_classes(@size),
         "text-goten bg-piccolo": @variant in ["primary"],
