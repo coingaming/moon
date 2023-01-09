@@ -110,7 +110,7 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
-      <span class="-z-10 block absolute inset-0 transition-[background-color_0.2s_ease-in-out] bg-transparent hover:bg-bulma/[.07]"/>
+      <span class="-z-10 block absolute inset-0 transition-[background-color_0.2s_ease-in-out] bg-transparent hover:bg-bulma/[.07]" />
     </button>
     """
   end
