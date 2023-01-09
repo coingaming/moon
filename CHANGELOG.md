@@ -1,3 +1,10 @@
+## [2.35.1](https://github.com/coingaming/moon/compare/v2.35.0...v2.35.1) (2023-01-09)
+
+
+### Bug Fixes
+
+* [MDS-331] Breadcrumb v2 ([#502](https://github.com/coingaming/moon/issues/502)) ([23251c3](https://github.com/coingaming/moon/commit/23251c3bfbbb67ad13b5d4214051fce54f42c745))
+
 # [2.35.0](https://github.com/coingaming/moon/compare/v2.34.2...v2.35.0) (2023-01-05)
 
 
