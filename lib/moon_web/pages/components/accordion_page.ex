@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(item_id, :string, default: "1")
 
