@@ -3,6 +3,7 @@ defmodule Moon.Design.Button do
 
   use Moon.StatelessComponent
 
+  alias Moon.Components.AsComponent
   alias Moon.Design.Button.Utils
   alias Moon.Icon
   alias Moon.Components.Loader
@@ -14,11 +15,11 @@ defmodule Moon.Design.Button do
 
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md")
   prop(as, :string, values!: ~w(a button), default: "button")
+  prop(href, :string)
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
-  prop(no_hover_bg, :boolean, default: false)
 
   prop(type, :string, default: "button")
   prop(form, :string)
@@ -39,10 +40,11 @@ defmodule Moon.Design.Button do
 
   def render(assigns) do
     ~F"""
-    <button
+    <AsComponent
       {=@as}
+      {=@href}
       class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
+        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
         @class,
         Utils.get_button_size_classes(@size),
         "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
@@ -110,8 +112,8 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
-      <span :if={!@no_hover_bg} class="block absolute inset-0 bg-transparent hover:bg-primary-hover" />
-    </button>
+      <span class="block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
+    </AsComponent>
     """
   end
 
