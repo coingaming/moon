@@ -129,9 +129,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <ExampleAndCode title="Different colours" id="avatar_2">
         <:example>
           <Avatar />
-          <Avatar color="text-frieza" bg_color="bg-chi-chi" />
+          <Avatar color="text-frieza" bg_color="bg-chichi" />
           <Avatar color="text-gohan" bg_color="bg-krillin" />
-          <Avatar color="text-chi-chi" bg_color="bg-frieza" />
+          <Avatar color="text-chichi" bg_color="bg-frieza" />
         </:example>
 
         <:code>{avatar_2_code()}</:code>
@@ -220,9 +220,9 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   def avatar_2_code do
     """
     <Avatar />
-    <Avatar color="text-frieza" bg_color="bg-chi-chi" />
+    <Avatar color="text-frieza" bg_color="bg-chichi" />
     <Avatar color="text-gohan" bg_color="bg-krillin" />
-    <Avatar color="text-chi-chi" bg_color="bg-frieza" />
+    <Avatar color="text-chichi" bg_color="bg-frieza" />
     """
   end
 

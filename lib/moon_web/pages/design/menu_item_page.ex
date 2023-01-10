@@ -253,8 +253,8 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
               <Lego.MultiTitle title="Job Board" text="find your dream design job" />
             </MenuItem>
             <MenuItem>
-              <span class="bg-chi-chi/20 rounded-lg w-10 h-10 flex justify-center items-center">
-                <TravelBill class="text-2xl text-chi-chi" />
+              <span class="bg-chichi/20 rounded-lg w-10 h-10 flex justify-center items-center">
+                <TravelBill class="text-2xl text-chichi" />
               </span>
               <Lego.MultiTitle title="Freelance Projects" text="An exclusive list for contract work" />
             </MenuItem>

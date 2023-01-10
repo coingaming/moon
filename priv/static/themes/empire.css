@@ -1,35 +1,35 @@
-:root.theme-livecasino-light,
-.theme-livecasino-light {
-  --piccolo: 222 13 62; /* #de0d3e */
-  --hit: 169 170 177; /* #a9aab1 */
-  --beerus: 229 233 240; /* #e5e9f0 */
+:root.theme-empire-light,
+.theme-empire-light {
+  --piccolo: 255 37 168; /* #ff25a8 */
+  --hit: 184 166 255; /* #b8a6ff */
+  --beerus: 229 228 234; /* #e5e4ea */
   --gohan: 255 255 255; /* #ffffff */
   --goten: 255 255 255; /* #ffffff */
-  --goku: 240 246 255; /* #f0f6ff */
-  --bulma: 15 22 31; /* #0f161f */
-  --trunks: 134 151 162; /* #8697a2 */
+  --goku: 240 238 245; /* #f0eef5 */
+  --bulma: 21 6 79; /* #15064f */
+  --trunks: 92 86 113; /* #5c5671 */
   --popo: 0 0 0; /* #000000 */
 
   /* support-colors  */
-  --krillin: 255 179 25; /* #ffb319 */
+  --krillin: 255 180 53; /* #ffb319 */
   --krillin-60: 255 198 82; /* #ffc652 */
-  --krillin-10: 255 217 141; /* #ffd98d */
+  --krillin-10: 255 217 14; /* #ffd98d */
 
-  --chichi: 255 78 100; /* #ff4e64 */
+  --chichi: 250 76 128; /* #ff4e64 */
   --chichi-60: 255 118 135; /* #ff7687 */
   --chichi-10: 255 150 163; /* #ff96a3 */
 
-  --roshi: 74 209 95; /* #4ad15f */
-  --roshi-60: 100 220 119; /* #64dc77 */
-  --roshi-10: 127 242 145; /* #7ff291 */
+  --roshi: 765 217 185; /* #4ad15f */
+  --roshi-60: 95 227 200; /* #64dc77 */
+  --roshi-10: 145 246 225; /* #7ff291 */
 
   --dodoria: 211 48 48; /* #d33030 */
   --dodoria-60: 219 78 78; /* #db4e4e */
   --dodoria-10: 240 103 103; /* #f06767 */
 
-  --cell: 149 241 213; /* #95f1d5 */
-  --cell-60: 162 250 223; /* #a2fadf */
-  --cell-10: 191 255 236; /* #bfffec */
+  --cell: 10 183 88; /* #0ab758 */
+  --cell-60: 98 227 156; /* #62e39c */
+  --cell-10: 168 249 205; /* #a8f9cd */
 
   --raditz: 179 128 74; /* #b3804a */
   --raditz-60: 193 145 93; /* #c1915d */
@@ -64,7 +64,7 @@
   --opacity-moon: 0.32;
 
   /* fonts */
-  --averta: 'Averta Std';
+  --fira: 'Fira Sans';
 
   /* box-shadow */
   --shadow-xs: 0px 4px 12px -6px rgb(0 0 0 / 0.06);
@@ -75,38 +75,38 @@
     0px 0px 32px -8px rgb(0 0 0 / 0.12), 0px 0px 1px rgb(0 0 0 / 0.2);
 }
 
-:root.theme-livecasino-dark,
-.theme-livecasino-dark {
-  --piccolo: 222 13 62; /* #de0d3e */
-  --hit: 103 105 126; /* #67697e */
-  --beerus: 50 53 72; /* #323548 */
-  --gohan: 25 29 51; /* #191d33 */
+:root.theme-empire-dark,
+.theme-empire-dark {
+  --piccolo: 255 37 168; /* #ff25a8 */
+  --hit: 184 166 255; /* #b8a6ff */
+  --beerus: 101 74 206; /* #654ace */
+  --gohan: 72 40 197; /* #4828c5 */
   --goten: 255 255 255; /* #ffffff */
-  --goku: 0 7 15; /* #00070f */
+  --goku: 21 6 79; /* #15064f */
   --bulma: 255 255 255; /* #ffffff */
-  --trunks: 134 151 162; /* #8697a2 */
+  --trunks: 200 190 238; /* #c8befe */
   --popo: 0 0 0; /* #000000 */
 
   /* support-colors  */
-  --krillin: 255 179 25; /* #ffb319 */
+  --krillin: 255 180 53; /* #ffb319 */
   --krillin-60: 255 198 82; /* #ffc652 */
-  --krillin-10: 255 217 141; /* #ffd98d */
+  --krillin-10: 255 217 14; /* #ffd98d */
 
-  --chichi: 255 78 100; /* #ff4e64 */
+  --chichi: 250 76 128; /* #ff4e64 */
   --chichi-60: 255 118 135; /* #ff7687 */
   --chichi-10: 255 150 163; /* #ff96a3 */
 
-  --roshi: 74 209 95; /* #4ad15f */
-  --roshi-60: 100 220 119; /* #64dc77 */
-  --roshi-10: 127 242 145; /* #7ff291 */
+  --roshi: 765 217 185; /* #4ad15f */
+  --roshi-60: 95 227 200; /* #64dc77 */
+  --roshi-10: 145 246 225; /* #7ff291 */
 
   --dodoria: 211 48 48; /* #d33030 */
   --dodoria-60: 219 78 78; /* #db4e4e */
   --dodoria-10: 240 103 103; /* #f06767 */
 
-  --cell: 149 241 213; /* #95f1d5 */
-  --cell-60: 162 250 223; /* #a2fadf */
-  --cell-10: 191 255 236; /* #bfffec */
+  --cell: 10 183 88; /* #0ab758 */
+  --cell-60: 98 227 156; /* #62e39c */
+  --cell-10: 168 249 205; /* #a8f9cd */
 
   --raditz: 179 128 74; /* #b3804a */
   --raditz-60: 193 145 93; /* #c1915d */
@@ -141,7 +141,7 @@
   --opacity-moon: 0.32;
 
   /* fonts */
-  --averta: 'Averta Std';
+  --fira: 'Fira Sans';
 
   /* box-shadow */
   --shadow-xs: 0px 4px 12px -6px rgb(0 0 0 / 0.64);

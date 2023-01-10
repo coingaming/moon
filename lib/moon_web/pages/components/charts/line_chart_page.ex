@@ -56,7 +56,7 @@ defmodule MoonWeb.Pages.Components.Charts.LineChartPage do
         label: "Margin",
         data_key: "margin",
         value: "5.38%",
-        color: "chi-chi",
+        color: "chichi",
         is_active: false
       }
     ]

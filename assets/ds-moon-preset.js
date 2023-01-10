@@ -1,12 +1,11 @@
 //as Variant of using rgba color with opacity
-const withOpacityValue = (rgbColor) => {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${rgbColor}))`;
-    }
-    return `rgb(var(${rgbColor}) / ${opacityValue})`;
-  };
-};
+//as Variant of using rgba color with opacity
+function withOpacityValue(rgbColor, opacityValue) {
+  if (opacityValue === undefined) {
+    return `rgb(var(${rgbColor}))`;
+  }
+  return `rgb(var(${rgbColor}) / ${opacityValue})`;
+}
 
 module.exports = {
   theme: {
@@ -166,7 +165,7 @@ module.exports = {
         "input-hov":
           "0 0 0 var(--border-i-width) rgb(var(--bulma) / 7%) inset, 0 0 0 var(--border-i-width) rgb(var(--beerus)) inset",
         "input-err":
-          "0 0 0 var(--border-i-width) rgb(var(--chi-chi)) inset",
+          "0 0 0 var(--border-i-width) rgb(var(--chichi)) inset",
         "input-focus":
           "0 0 0 var(--border-i-width) rgb(var(--piccolo)) inset",
         "moon-sm":
@@ -191,14 +190,14 @@ module.exports = {
         "krillin": {
           DEFAULT: withOpacityValue("--krillin"),
         },
-        "chi-chi-10": {
-          DEFAULT: withOpacityValue("--chi-chi-10"),
+        "chichi-10": {
+          DEFAULT: withOpacityValue("--chichi-10"),
         },
-        "chi-chi-60": {
-          DEFAULT: withOpacityValue("--chi-chi-60"),
+        "chichi-60": {
+          DEFAULT: withOpacityValue("--chichi-60"),
         },
-        "chi-chi": {
-          DEFAULT: withOpacityValue("--chi-chi"),
+        "chichi": {
+          DEFAULT: withOpacityValue("--chichi"),
         },
         "roshi-10": {
           DEFAULT: withOpacityValue("--roshi-10"),
@@ -316,6 +315,9 @@ module.exports = {
         },
         "trunks": {
           DEFAULT: withOpacityValue("--trunks"),
+        },
+        "popo": {
+          DEFAULT: withOpacityValue("--popo"),
         },
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",

@@ -129,14 +129,14 @@
 
 ### Bug Fixes
 
-* chichi color to chi-chi ([#460](https://github.com/coingaming/moon/issues/460)) ([f91979b](https://github.com/coingaming/moon/commit/f91979b461cc206327e92dd73b6fda3bd464aa26))
+* chichi color to chichi ([#460](https://github.com/coingaming/moon/issues/460)) ([f91979b](https://github.com/coingaming/moon/commit/f91979b461cc206327e92dd73b6fda3bd464aa26))
 
 ## [2.31.6](https://github.com/coingaming/moon/compare/v2.31.5...v2.31.6) (2022-11-28)
 
 
 ### Bug Fixes
 
-* chichi color to chi-chi ([#459](https://github.com/coingaming/moon/issues/459)) ([a592535](https://github.com/coingaming/moon/commit/a5925351427d68e31a2d5a7fbee083a2ad5b3fe1))
+* chichi color to chichi ([#459](https://github.com/coingaming/moon/issues/459)) ([a592535](https://github.com/coingaming/moon/commit/a5925351427d68e31a2d5a7fbee083a2ad5b3fe1))
 
 ## [2.31.5](https://github.com/coingaming/moon/compare/v2.31.4...v2.31.5) (2022-11-28)
 

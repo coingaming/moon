@@ -161,7 +161,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
-            <Tooltip.Content class="bg-chi-chi/10">
+            <Tooltip.Content class="bg-chichi/10">
               <Tooltip.Arrow />
               Custom background
             </Tooltip.Content>
@@ -263,7 +263,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
       <Tooltip.Trigger>
         <Button variant="secondary">Hover Me</Button>
       </Tooltip.Trigger>
-      <Tooltip.Content class="bg-chi-chi/10">
+      <Tooltip.Content class="bg-chichi/10">
         <Tooltip.Arrow />
         A bit opacity
       </Tooltip.Content>
