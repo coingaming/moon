@@ -70,6 +70,7 @@ npx ts-node assets-importer-legacy.ts
 npx ts-node icons-importer.ts
 mv node_modules/moon-design moon-design
 # themes are not imported any more from react. there is https://github.com/coingaming/moon-design/tree/develop/workspaces/themes/src now
+cp ../moon-design/workspaces/themes/src/*.css ../moon/priv/static/themes/
 # npx ts-node theme-importer.ts
 mv moon-design node_modules/moon-design
 # themes are not imported any more from react. there is https://github.com/coingaming/moon-design/tree/develop/workspaces/themes/src now

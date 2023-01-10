@@ -1,12 +1,11 @@
 //as Variant of using rgba color with opacity
-const withOpacityValue = (rgbColor) => {
-  return ({ opacityValue }) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${rgbColor}))`;
-    }
-    return `rgb(var(${rgbColor}) / ${opacityValue})`;
-  };
-};
+//as Variant of using rgba color with opacity
+function withOpacityValue(rgbColor, opacityValue) {
+  if (opacityValue === undefined) {
+    return `rgb(var(${rgbColor}))`;
+  }
+  return `rgb(var(${rgbColor}) / ${opacityValue})`;
+}
 
 module.exports = {
   theme: {
