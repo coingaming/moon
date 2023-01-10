@@ -1,3 +1,10 @@
+## [2.35.4](https://github.com/coingaming/moon/compare/v2.35.3...v2.35.4) (2023-01-10)
+
+
+### Bug Fixes
+
+* [MDS-271] Button v2 - hover  ([#504](https://github.com/coingaming/moon/issues/504)) ([b252425](https://github.com/coingaming/moon/commit/b252425a926eb3b108cd0797bb46bb63788288bb))
+
 ## [2.35.3](https://github.com/coingaming/moon/compare/v2.35.2...v2.35.3) (2023-01-10)
 
 
