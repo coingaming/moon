@@ -1,3 +1,10 @@
+## [2.35.2](https://github.com/coingaming/moon/compare/v2.35.1...v2.35.2) (2023-01-10)
+
+
+### Bug Fixes
+
+* [MDS-333] Accordion-v2 ([#506](https://github.com/coingaming/moon/issues/506)) ([921e1e4](https://github.com/coingaming/moon/commit/921e1e4858a42b2f5c03380b6ebcc76d84b5099a))
+
 ## [2.35.1](https://github.com/coingaming/moon/compare/v2.35.0...v2.35.1) (2023-01-09)
 
 
