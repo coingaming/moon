@@ -1,3 +1,10 @@
+## [2.35.3](https://github.com/coingaming/moon/compare/v2.35.2...v2.35.3) (2023-01-10)
+
+
+### Bug Fixes
+
+* [MDS-337] update & fix colours ([#507](https://github.com/coingaming/moon/issues/507)) ([85af35c](https://github.com/coingaming/moon/commit/85af35cb7af5b4137f855d164fe2fd68b9626448))
+
 ## [2.35.2](https://github.com/coingaming/moon/compare/v2.35.1...v2.35.2) (2023-01-10)
 
 
