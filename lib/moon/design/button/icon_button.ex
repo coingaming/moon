@@ -2,6 +2,8 @@ defmodule Moon.Design.Button.IconButton do
   @moduledoc false
 
   use Moon.StatelessComponent
+
+  alias Moon.Components.AsComponent
   alias Moon.Icon
   alias Moon.Components.Loader
   alias Moon.Design.Button.Utils
@@ -11,6 +13,8 @@ defmodule Moon.Design.Button.IconButton do
     default: "primary"
   )
 
+  prop(as, :string, values!: ~w(a button), default: "button")
+  prop(href, :string)
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md")
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
@@ -28,7 +32,9 @@ defmodule Moon.Design.Button.IconButton do
 
   def render(assigns) do
     ~F"""
-    <button
+    <AsComponent
+      {=@as}
+      {=@href}
       class={
         "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
         @class,
@@ -68,8 +74,8 @@ defmodule Moon.Design.Button.IconButton do
       }>
         <Icon name={@icon_only} class={Utils.icon_class(@size)} />
       </span>
-      <span class="block absolute inset-0 bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
-    </button>
+      <span class="block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
+    </AsComponent>
     """
   end
 
