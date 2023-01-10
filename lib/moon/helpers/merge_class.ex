@@ -7,10 +7,13 @@ defmodule Moon.Helpers.MergeClass do
     flatten(classes)
     # |> Enum.filter(fn x -> x != "" end)
     |> Enum.reduce(%{}, fn class, groups ->
-      # removing square brackets bc of "top-[-7px]"
-      group = Regex.replace(~r/\[.*\]$/, class, "")
-      # removing last value, e.g. "postion-top-1" => "position-top"
-      group = Regex.replace(~r/-[^-]*$/, group, "")
+      group =
+        class
+        # removing square brackets bc of "top-[-7px]"
+        |> String.replace(~r/\[.*\]$/, "")
+        # removing last value, e.g. "postion-top-1" => "position-top-"
+        |> String.replace(~r/-[^-]*$/, "-")
+
       Map.put(groups, group, class)
     end)
     |> Map.values()
@@ -27,4 +30,5 @@ defmodule Moon.Helpers.MergeClass do
 
   defp flatten(classes) when is_binary(classes), do: classes |> String.split(" ")
   defp flatten(nil), do: []
+  defp flatten(false), do: []
 end

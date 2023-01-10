@@ -28,4 +28,9 @@ defmodule Moon.Helpers.MergeClassTest do
     merged = merge(["top-[-300px]", "top-12"])
     assert merged == ["top-12"]
   end
+
+  test "flex & flex-1 are different groups" do
+    merged = merge(["flex", "flex-1"])
+    assert merged == ["flex", "flex-1"]
+  end
 end

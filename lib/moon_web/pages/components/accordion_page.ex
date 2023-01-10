@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(item_id, :string, default: "1")
 
@@ -87,16 +88,13 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Accordion">
-        <p>
-          Like the accordion instrument, our accordion component reveals or
-          hides associated sections of content. This is done through the use of
-          a vertically stacked list of headers.
-        </p>
-        <p>
-          Users can decide which sections to toggle, read and close as the
-          header titles will give them a high-level overview of the content
-          that's in the space.
-        </p>
+        <DeprecationWarning
+          name="Accordion"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AccordionPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="accordion-1">
