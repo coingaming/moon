@@ -66,7 +66,7 @@ defmodule Moon.MixProject do
     deps_override([
       {:phoenix, "~> 1.7.0-rc.1", override: true},
       {:phoenix_view, "~> 2.0.2"},
-      {:phoenix_live_view, "~> 0.18.1"},
+      {:phoenix_live_view, "~> 0.18.6"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_ecto, "~> 4.0"},
