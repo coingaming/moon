@@ -18,49 +18,42 @@ defmodule Moon.Design.Loader do
       <div class={
         merge([
           "box-border block absolute w-full h-full border-solid rounded-[50%]",
-          "border-r-transparent border-b-transparent border-l-transparent",
+          "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
           "animate-loader",
+          get_border_class_by_size(@size),
           @class
         ]),
-        "border-#{@color}",
-        "border-t-#{@color}",
-        get_border_class_by_size(@size)
+        "border-#{@color}"
       } />
       <div class={
         merge([
           "box-border block absolute w-full h-full border-solid rounded-[50%]",
-          "border-r-transparent border-b-transparent border-l-transparent",
-          "animate-loader",
-          "animation-delay-minus-45",
+          "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
+          "animate-loader animation-delay-minus-45",
+          get_border_class_by_size(@size),
           @class
         ]),
-        "border-#{@color}",
-        "border-t-#{@color}",
-        get_border_class_by_size(@size)
+        "border-#{@color}"
       } />
       <div class={
         merge([
           "box-border block absolute w-full h-full border-solid rounded-[50%]",
-          "border-r-transparent border-b-transparent border-l-transparent",
-          "animate-loader",
-          "animation-delay-minus-30",
+          "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
+          "animate-loader animation-delay-minus-30",
+          get_border_class_by_size(@size),
           @class
         ]),
-        "border-#{@color}",
-        "border-t-#{@color}",
-        get_border_class_by_size(@size)
+        "border-#{@color}"
       } />
       <div class={
         merge([
           "box-border block absolute w-full h-full border-solid rounded-[50%]",
-          "border-r-transparent border-b-transparent border-l-transparent",
-          "animate-loader",
-          "animation-delay-minus-15",
+          "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
+          "animate-loader animation-delay-minus-15",
+          get_border_class_by_size(@size),
           @class
         ]),
-        "border-#{@color}",
-        "border-t-#{@color}",
-        get_border_class_by_size(@size)
+        "border-#{@color}"
       } />
     </div>
     """
