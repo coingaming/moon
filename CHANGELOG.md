@@ -1,3 +1,10 @@
+## [2.35.6](https://github.com/coingaming/moon/compare/v2.35.5...v2.35.6) (2023-01-11)
+
+
+### Bug Fixes
+
+* Upgrade otp ([#508](https://github.com/coingaming/moon/issues/508)) ([c63185b](https://github.com/coingaming/moon/commit/c63185b5f3b89b05ae003b6e6bc84e27a1d5cd12))
+
 ## [2.35.5](https://github.com/coingaming/moon/compare/v2.35.4...v2.35.5) (2023-01-11)
 
 
