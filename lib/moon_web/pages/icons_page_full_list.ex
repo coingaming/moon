@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.IconsPageFullList do
 
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Heading
-  alias Moon.Helpers.Icons
+  alias MoonIcons.Helpers.Icons
   alias Moon.Icon
   alias MoonWeb.Components.Page
 

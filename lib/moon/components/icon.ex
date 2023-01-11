@@ -2,7 +2,7 @@ defmodule Moon.Icon do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Helpers.Icons
+  alias MoonIcons.Helpers.Icons
 
   prop(click, :event)
   prop(class, :css_class)
