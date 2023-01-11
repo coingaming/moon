@@ -12,7 +12,7 @@ defmodule Moon.MixProject do
       version: @version,
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -64,14 +64,15 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     deps_override([
-      {:phoenix, "~> 1.6"},
-      {:phoenix_live_view, "~> 0.18.1"},
+      {:phoenix, "~> 1.7.0-rc.1", override: true},
+      {:phoenix_view, "~> 2.0.2"},
+      {:phoenix_live_view, "0.18.3"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:faker, "~> 0.17"},
-      {:gettext, "~> 0.18"},
+      {:gettext, "~> 0.21"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},

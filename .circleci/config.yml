@@ -4,7 +4,7 @@ aliases:
 jobs:
   otp_release:
     docker:
-      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
     environment:
       MIX_ENV: prod
     steps:
@@ -20,9 +20,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v6-build-{{ checksum "mix.lock" }}-
-            - v6-build-
+            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v7-build-{{ checksum "mix.lock" }}-
+            - v7-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -45,7 +45,7 @@ jobs:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
-          key: v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
           paths:
             - .cache
             - deps
@@ -53,7 +53,7 @@ jobs:
             - ~/.mix
   check_code_quality:
     docker:
-      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
     environment:
       MIX_ENV: test
     steps:
@@ -69,9 +69,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v6-build-{{ checksum "mix.lock" }}-
-            - v6-build-
+            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v7-build-{{ checksum "mix.lock" }}-
+            - v7-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -94,7 +94,7 @@ jobs:
           command: mix test
   docker_image:
     docker:
-      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
     steps:
       - checkout
       - setup_remote_docker:
@@ -103,16 +103,16 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v6-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v6-build-{{ checksum "mix.lock" }}-
-            - v6-build-
+            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v7-build-{{ checksum "mix.lock" }}-
+            - v7-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
-      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
     steps:
       - checkout
       - setup_remote_docker:
@@ -135,7 +135,7 @@ jobs:
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
   release:
     docker:
-      - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
     environment:
       MIX_ENV: test
     resource_class: xlarge
