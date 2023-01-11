@@ -1,3 +1,10 @@
+## [2.35.5](https://github.com/coingaming/moon/compare/v2.35.4...v2.35.5) (2023-01-11)
+
+
+### Bug Fixes
+
+* rollback Link.phx-link ([#509](https://github.com/coingaming/moon/issues/509)) ([d34d3e5](https://github.com/coingaming/moon/commit/d34d3e5384e85c9cd8281d49fabdc85aa4d8051d))
+
 ## [2.35.4](https://github.com/coingaming/moon/compare/v2.35.3...v2.35.4) (2023-01-10)
 
 
