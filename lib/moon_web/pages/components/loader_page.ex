@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -45,6 +46,13 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Loader">
+        <DeprecationWarning
+          name="Loader"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.LoaderPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
         <p>
           Fondly nicknamed “the launcher”, the Loader ensures users that progress is happening so they don't give up and leave the rocket page.
         </p>

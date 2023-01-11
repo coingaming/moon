@@ -58,6 +58,7 @@ defmodule MoonWeb.Router do
         live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
         live("/components/v2/icon-button", MoonWeb.Pages.Design.Button.IconButtonPage)
+        live("/components/v2/loader", MoonWeb.Pages.Design.LoaderPage)
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
         live("/components/v2/tabs", MoonWeb.Pages.Design.TabsPage)
