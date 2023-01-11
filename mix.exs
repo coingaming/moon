@@ -72,7 +72,7 @@ defmodule Moon.MixProject do
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:faker, "~> 0.17"},
-      {:gettext, "~> 0.18"},
+      {:gettext, "~> 0.21"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
