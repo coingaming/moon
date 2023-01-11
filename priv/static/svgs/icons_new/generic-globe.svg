@@ -1,6 +1,0 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="item" viewBox="0 0 32 32" stroke-width="1" fill="none">
-    <path d="M25.5 16a9.5 9.5 0 0 1-9.5 9.5m9.5-9.5A9.5 9.5 0 0 0 16 6.5m9.5 9.5h-19m9.5 9.5A9.5 9.5 0 0 1 6.5 16m9.5 9.5v-19m0 19c2.915 0 5.278-4.253 5.278-9.5M16 25.5c-2.915 0-5.278-4.253-5.278-9.5M6.5 16A9.5 9.5 0 0 1 16 6.5m0 0c-2.915 0-5.278 4.253-5.278 9.5M16 6.5c2.915 0 5.278 4.253 5.278 9.5m0 0H10.722" stroke="currentColor"/>
-  </symbol>
-</svg>
-  
