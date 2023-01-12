@@ -21,7 +21,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
     ~F"""
     <section class={"flex flex-col gap-6", @class}>
       <PreviewCodeButton title={@title} selected_button={@selected_button} click="toggle" />
-      <div class="my-2 text-moon-14" :if={slot_assigned?(:note)}>
+      <div class="text-moon-16" :if={slot_assigned?(:note)}>
         <p><#slot {@note} /></p>
       </div>
 

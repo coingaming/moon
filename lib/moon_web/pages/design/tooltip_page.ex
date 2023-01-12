@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   use MoonWeb, :live_view
 
   alias Moon.Design.Tooltip
-  alias Moon.Components.Button
+  alias Moon.Design.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
