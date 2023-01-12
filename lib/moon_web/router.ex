@@ -54,6 +54,7 @@ defmodule MoonWeb.Router do
         live("/manifest", MoonWeb.Pages.ManifestPage)
         live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
         live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
+
         live("/components/v2/accordion/", MoonWeb.Pages.Design.AccordionPage)
         live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
@@ -61,6 +62,7 @@ defmodule MoonWeb.Router do
         live("/components/v2/loader", MoonWeb.Pages.Design.LoaderPage)
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
         live("/components/v2/modal", MoonWeb.Pages.Design.ModalPage)
+        live("/components/v2/popover", MoonWeb.Pages.Design.PopoverPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
         live("/components/v2/tabs", MoonWeb.Pages.Design.TabsPage)
         live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextareaPage)
