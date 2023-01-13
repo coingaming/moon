@@ -20,9 +20,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v7-build-{{ checksum "mix.lock" }}-
-            - v7-build-
+            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v8-build-{{ checksum "mix.lock" }}-
+            - v8-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -45,7 +45,7 @@ jobs:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
-          key: v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
           paths:
             - .cache
             - deps
@@ -69,9 +69,9 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v7-build-{{ checksum "mix.lock" }}-
-            - v7-build-
+            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v8-build-{{ checksum "mix.lock" }}-
+            - v8-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -103,9 +103,9 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v7-build-{{ checksum "mix.lock" }}-
-            - v7-build-
+            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+            - v8-build-{{ checksum "mix.lock" }}-
+            - v8-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
