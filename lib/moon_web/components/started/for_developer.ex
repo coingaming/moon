@@ -76,6 +76,12 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         only: ~w(css svgs),
         cache_control_for_etags: "public, max-age=86400"
       </CodeSnippet>
+      <CodeSnippet>plug Plug.Static,
+        at: "/moon_icons/",
+        from: :moon_icons,
+        gzip: true,
+        cache_control_for_etags: "public, max-age=86400"
+      </CodeSnippet>
       <p>Include Moon Surface themes to your layout, e.g. root.html.heex</p>
       <CodeSnippet>&lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-dark.css") %&gt;" /&gt;
         &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-light.css") %&gt;" /&gt;

@@ -3,7 +3,7 @@ defmodule MoonWeb.Pages.Components.IconsPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Helpers.Icons
+  alias MoonIcons.Helpers.Icons
   alias Moon.Icon
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription

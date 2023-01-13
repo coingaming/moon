@@ -20,9 +20,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v8-build-{{ checksum "mix.lock" }}-
-            - v8-build-
+            - v7-build-{{ checksum "mix.lock" }}
+            - v7-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -45,7 +44,7 @@ jobs:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
-          key: v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v7-build-{{ checksum "mix.lock" }}
           paths:
             - .cache
             - deps
@@ -69,9 +68,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v8-build-{{ checksum "mix.lock" }}-
-            - v8-build-
+            - v7-build-{{ checksum "mix.lock" }}
+            - v7-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -103,9 +101,8 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v8-build-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v8-build-{{ checksum "mix.lock" }}-
-            - v8-build-
+            - v7-build-{{ checksum "mix.lock" }}
+            - v7-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
@@ -143,8 +140,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-test-{{ checksum "mix.lock" }}-{{ .Revision }}
-            - v1-test-{{ checksum "mix.lock" }}-
+            - v1-test-{{ checksum "mix.lock" }}
             - v1-test-
       - run:
           name:       Hex auth
@@ -162,7 +158,7 @@ jobs:
           name:       Test
           command:    mix test
       - save_cache:
-          key: v1-test-{{ checksum "mix.lock" }}-{{ .Revision }}
+          key: v1-test-{{ checksum "mix.lock" }}
           paths:
             - deps
             - ~/.mix
