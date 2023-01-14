@@ -137,20 +137,20 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             </Popover.Panel>
           </Popover>
 
-          <Popover position="right">
+          <Popover>
             <Popover.Trigger>
               <Button>Right</Button>
             </Popover.Trigger>
-            <Popover.Panel>
+            <Popover.Panel position="right">
               <Position id="content_position_2" />
             </Popover.Panel>
           </Popover>
 
-          <Popover position="left">
+          <Popover>
             <Popover.Trigger>
               <Button>Left</Button>
             </Popover.Trigger>
-            <Popover.Panel>
+            <Popover.Panel  position="left">
               <Position id="content_position_3" />
             </Popover.Panel>
           </Popover>
@@ -198,7 +198,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             <Popover.Trigger>
               <Button>Toggle Popover</Button>
             </Popover.Trigger>
-            <Popover.Panel>
+            <Popover.Panel class="!w-96">
               <WithClose id="content_close" />
             </Popover.Panel>
           </Popover>
