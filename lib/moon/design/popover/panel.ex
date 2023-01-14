@@ -21,34 +21,38 @@ defmodule Moon.Design.Popover.Panel do
     default: "top-center"
   )
 
-  slot(default)
+  slot(default, required: true)
 
   def render(assigns) do
     ~F"""
-    <div class="w-72 z-[999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg overflow-y-auto focus:outline-none absolute">
+    <div class={
+      "absolute left-0 right-0 z-30",
+      (@position in ~w(bottom-start bottom-center bottom-end) && "bottom-0") || "top-0",
+      "flex flex-col items-center": !(@position in ~w(left right))
+    }>
       {#case @position}
         {#match "top-" <> align}
-          <div class="relative">
-            <div class={align}>
+          <div class="-translate-y-full py-2">
+            <div class={content_class(@class, align)}>
               <#slot />
             </div>
           </div>
         {#match "right"}
-          <div class="relative">
-            <div>
+          <div class="items-center translate-x-full -translate-y-1/3 px-2">
+            <div class={content_class(@class)}>
               <#slot />
             </div>
           </div>
         {#match "bottom-" <> align}
-          <div class="relative">
-            <div class={align}>
+          <div class="translate-y-full py-2">
+            <div class={content_class(@class, align)}>
               <#slot />
             </div>
           </div>
         {#match "left"}
-          <div class="relative">
+          <div class="absolute -translate-x-full -translate-y-1/3 px-2">
             <div class="flex items-center top-0 right-0">
-              <div>
+              <div class={content_class(@class)}>
                 <#slot />
               </div>
             </div>
@@ -57,13 +61,15 @@ defmodule Moon.Design.Popover.Panel do
     </div>
     """
   end
+
+  defp content_class(class, align \\ "center") do
+    merge([
+      "w-72 z-[999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+      [
+        "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "start",
+        "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "end"
+      ],
+      class
+    ])
+  end
 end
-
-# right
-# position: absolute; inset: 0px auto auto 0px; transform: translate3d(75px, -84px, 0px);
-
-# top
-# position: absolute; inset: auto auto 0px 0px; transform: translate3d(-116px, -48px, 0px);
-
-# left
-# position: absolute; inset: 0px 0px auto auto; transform: translate3d(-66px, -84px, 0px);
