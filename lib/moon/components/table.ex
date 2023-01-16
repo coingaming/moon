@@ -1,10 +1,12 @@
 defmodule Moon.Components.Table do
   @moduledoc false
 
-  use Surface.LiveComponent
+  use Moon.StatelessComponent
 
   alias Moon.Components.Table.Paging
   alias Moon.Icon
+
+  # import Moon.Helpers.MergeClass
 
   @doc "Params from LiveView mount(params, session, socket) that must be passed on"
   prop(limit, :integer, default: 10)
@@ -21,6 +23,13 @@ defmodule Moon.Components.Table do
   prop(sorting_click, :event)
   prop(paging_info, :any)
 
+  prop(class, :css_class)
+  prop(row_class, :css_class)
+  prop(id, :string)
+  prop(even_row_class, :css_class, default: "bg-gohan")
+
+  prop(has_no_cell_borders, :boolean, default: false)
+
   @doc "The list of columns defining the Grid"
   slot(cols, generator_prop: :items)
 
@@ -30,23 +39,23 @@ defmodule Moon.Components.Table do
       {#if @paging_info}
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
-      <div class="w-full overflow-x-scroll">
+      <div class={merge(["w-full overflow-x-scroll", @class])}>
         <table class="border-collapse text-sm min-w-full">
           <thead>
-            <tr>
+            <tr class="text-trunks">
               {#for col <- @cols}
                 <th
-                  class={
-                    "p-2 text-left text-trunks font-normal",
-                    "cursor-pointer": col.sortable
-                  }
-                  style="min-width: 200px"
+                  class={merge([
+                    "py-2 px-4 text-left font-normal",
+                    "cursor-pointer": col.name && col.sortable,
+                    "#{col.width}": true
+                  ])}
                   :on-click={(col.sortable && @sorting_click) || nil}
                   :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort_dir)}
                   data-testid={"sort-column-#{col.name}"}
                 >
                   {col.label}
-                  {#if "#{@sort_key}" == "#{col.name}"}
+                  {#if col.sortable && "#{@sort_key}" == "#{col.name}"}
                     <Icon class="text-[1.5em]" name="arrows_up" :if={"#{@sort_dir}" == "ASC"} />
                     <Icon class="text-[1.5em]" name="arrows_down" :if={"#{@sort_dir}" == "DESC"} />
                   {/if}
@@ -57,17 +66,22 @@ defmodule Moon.Components.Table do
           <tbody>
             {#for {item, row_index} <- Enum.with_index(@items)}
               <tr
-                class={
+                class={merge(
+                  "#{@even_row_class}": @selected != "#{item.id}" && rem(row_index, 2) == 0,
                   "bg-goku-120": @selected == "#{item.id}",
-                  "bg-gohan": @selected != "#{item.id}" && rem(row_index, 2) == 0
-                }
+                  "#{@row_class}": true
+                )}
                 :on-click={@row_click}
                 :values={selected: item.id}
                 data-testid={"row-#{row_index}"}
               >
                 {#for {col, col_index} <- Enum.with_index(@cols)}
                   <td
-                    class={"p-4", "#{inter_cell_border()}": col_index < Enum.count(@cols) - 1}
+                    class={merge([
+                      "p-4",
+                      "#{inter_cell_border()}": !@has_no_cell_borders && col_index < Enum.count(@cols) - 1,
+                      "#{col.width}": true
+                    ])}
                     data-testid={"row-#{row_index}-col-#{col_index}"}
                   >
                     <#slot {col} generator_value={item} />
