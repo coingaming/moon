@@ -5,6 +5,7 @@ defmodule Moon.StatefulComponent do
     quote do
       use Surface.LiveComponent
       import Moon.Helpers.Styled
+      import Moon.Helpers.MergeClass
     end
   end
 end

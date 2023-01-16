@@ -7,6 +7,7 @@ defmodule Moon.Components.Drawer.Dialog do
   alias Moon.Icons.ControlsClose
 
   prop(close, :event)
+  prop(has_no_divider, :boolean, default: false)
   slot(title)
   slot(content)
   slot(footer)
@@ -28,7 +29,7 @@ defmodule Moon.Components.Drawer.Dialog do
           <div :on-click={@close}><ControlsClose /></div>
         </:right>
       </PullAside>
-      <Divider />
+      <Divider :if={!@has_no_divider} />
       {#if slot_assigned?(:content)}
         <div class={"p-6 overflow-y-auto", dialog_content_height}>
           <#slot {@content} />
