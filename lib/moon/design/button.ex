@@ -20,7 +20,7 @@ defmodule Moon.Design.Button do
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
-  prop(class, :css_class)
+  prop(class, :css_class, default: "relative")
 
   prop(type, :string, default: "button")
   prop(form, :string)
@@ -42,10 +42,9 @@ defmodule Moon.Design.Button do
     <AsComponent
       {=@as}
       {=@href}
-      class={
+      class={merge([[
         "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
         "whitespace-nowrap select-none transition duration-200 active:scale-90",
-        @class,
         Utils.get_button_size_classes(@size),
         "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
         "#{Utils.get_right_icon_paddings(@size)}": @right_icon && !@full_width,
@@ -60,8 +59,9 @@ defmodule Moon.Design.Button do
         "opacity-30 cursor-not-allowed": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
         "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
-          @animation == "error"
-      }
+          @animation == "error"],
+        @class
+      ])}
       attrs={
         disabled: @disabled,
         type: @type,
