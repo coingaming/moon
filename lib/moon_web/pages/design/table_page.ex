@@ -15,6 +15,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
   alias Moon.Components.Lego
 
   alias Moon.Design.Form.Textarea
+  alias Moon.Design.Form.Addon.Btn
 
   data(breadcrumbs, :any,
     default: [
@@ -130,9 +131,9 @@ defmodule MoonWeb.Pages.Design.TablePage do
         </p>
       </ComponentPageDescription>
 
-      <ExampleAndCode title="Default" id="textarea_simple" class="hidden">
+      <ExampleAndCode title="Default" id="textarea_simple">
         <:example>
-          <Textarea />
+          <Textarea><Btn>Hit me!</Btn></Textarea>
         </:example>
         <:code />
       </ExampleAndCode>

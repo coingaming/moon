@@ -19,7 +19,7 @@ defmodule Moon.Design.Button do
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
-  prop(class, :css_class)
+  prop(class, :css_class, default: "relative")
 
   prop(type, :string, default: "button")
   prop(form, :string)
@@ -41,25 +41,27 @@ defmodule Moon.Design.Button do
     <AsComponent
       {=@as}
       {=@href}
-      class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
-        @class,
-        Utils.get_button_size_classes(@size),
-        "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
-        "#{Utils.get_right_icon_paddings(@size)}": @right_icon && !@full_width,
-        "#{Utils.get_left_icon_paddings(@size)}": @left_icon && !@full_width,
-        "#{Utils.get_full_width_padding(@size)}": @full_width,
-        "text-goten bg-piccolo": @variant in ["primary"],
-        "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
-          @variant in ["secondary"],
-        "bg-hit text-goten": @variant in ["tertiary"],
-        "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-        "w-full": @full_width,
-        "opacity-30": @disabled,
-        "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
-          @animation == "error"
-      }
+      class={merge([
+        [
+          "flex row justify-center items-center gap-2 overflow-hidden active:scale-90 transition-all font-semibold group z-0",
+          Utils.get_button_size_classes(@size),
+          "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
+          "#{Utils.get_right_icon_paddings(@size)}": @right_icon && !@full_width,
+          "#{Utils.get_left_icon_paddings(@size)}": @left_icon && !@full_width,
+          "#{Utils.get_full_width_padding(@size)}": @full_width,
+          "text-goten bg-piccolo": @variant in ["primary"],
+          "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
+            @variant in ["secondary"],
+          "bg-hit text-goten": @variant in ["tertiary"],
+          "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
+          "w-full": @full_width,
+          "opacity-30": @disabled,
+          "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
+          "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+            @animation == "error"
+        ],
+        @class
+      ])}
       attrs={
         disabled: @disabled,
         type: @type,
