@@ -35,7 +35,7 @@ defmodule Moon.Components.Table do
 
   def render(assigns) do
     ~F"""
-    <div class="w-full grid gap-4">
+    <div class="w-full grid gap-4" {=@id}>
       {#if @paging_info}
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
