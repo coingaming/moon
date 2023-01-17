@@ -3,6 +3,8 @@ defmodule Moon.Design.Form.Textarea do
 
   use Moon.StatelessComponent
 
+  alias Surface.Components.Form.TextArea
+
   slot(default)
 
   prop(class, :css_class)
@@ -10,7 +12,7 @@ defmodule Moon.Design.Form.Textarea do
 
   def render(assigns) do
     ~F"""
-    <textarea
+    <TextArea
       class={merge([
         "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan",
         "rounded-moon-s-sm placeholder:text-trunks outline outline-1 outline-offset-[-1px] outline-beerus",
@@ -19,7 +21,7 @@ defmodule Moon.Design.Form.Textarea do
         @class
       ])}
       {...@attrs}
-    ><#slot /></textarea>
+    />
     """
   end
 end
