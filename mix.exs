@@ -64,7 +64,7 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     deps_override([
-      {:phoenix, "~> 1.7.0-rc.1", override: true},
+      {:phoenix, "~> 1.6.15"},
       {:phoenix_view, "~> 2.0.2"},
       {:phoenix_live_view, "0.18.3"},
       {:phoenix_html, "~> 3.0"},
