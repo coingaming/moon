@@ -5,7 +5,7 @@ defmodule Moon.Design.Button.IconButton do
 
   alias Moon.Components.AsComponent
   alias Moon.Icon
-  alias Moon.Components.Loader
+  alias Moon.Design.Loader
   alias Moon.Design.Button.Utils
 
   prop(variant, :string,
@@ -35,6 +35,7 @@ defmodule Moon.Design.Button.IconButton do
       {=@href}
       class={
         "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
+        "select-none transition duration-200 active:scale-90",
         @class,
         get_icon_button_size_classes(@size),
         "text-goten bg-piccolo": @variant in ["primary"],
@@ -42,7 +43,7 @@ defmodule Moon.Design.Button.IconButton do
           @variant in ["secondary"],
         "bg-hit text-goten": @variant in ["tertiary"],
         "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-        "opacity-30": @disabled,
+        "opacity-30 cursor-not-allowed": @disabled,
         "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
         "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
           @animation == "error"
@@ -62,7 +63,7 @@ defmodule Moon.Design.Button.IconButton do
         class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center"
       >
         {#if @animation == "progress"}
-          <Loader color="currentColor" size="sm" />
+          <Loader color="currentColor" size={if @size == "xs", do: "2xs", else: "xs"} />
         {#elseif @animation == "success"}
           <Icon name="generic_check_alternative" color="currentColor" class={Utils.icon_class(@size)} />
         {/if}
