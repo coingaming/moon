@@ -19,7 +19,7 @@ defmodule Moon.Design.Button do
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
-  prop(class, :css_class, default: "relative")
+  prop(class, :css_class)
 
   prop(type, :string, default: "button")
   prop(form, :string)
@@ -43,7 +43,7 @@ defmodule Moon.Design.Button do
       {=@href}
       class={merge([
         [
-          "flex row justify-center items-center gap-2 overflow-hidden active:scale-90 transition-all font-semibold group z-0",
+          "relative flex row justify-center items-center gap-2 overflow-hidden active:scale-90 transition-all font-semibold group z-0",
           Utils.get_button_size_classes(@size),
           "#{Utils.get_no_icon_padding(@size)}": !@right_icon && !@left_icon,
           "#{Utils.get_right_icon_paddings(@size)}": @right_icon && !@full_width,

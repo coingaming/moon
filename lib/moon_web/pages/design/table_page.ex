@@ -131,7 +131,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
         </p>
       </ComponentPageDescription>
 
-      <ExampleAndCode title="Default" id="textarea_simple">
+      <ExampleAndCode title="Default" class="hidden" id="textarea_simple">
         <:example>
           <Textarea><Btn>Hit me!</Btn></Textarea>
         </:example>

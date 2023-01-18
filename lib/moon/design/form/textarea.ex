@@ -12,7 +12,7 @@ defmodule Moon.Design.Form.Textarea do
 
   def render(assigns) do
     ~F"""
-    <div class="relative">
+    <div class="relative w-full">
       <TextArea
         class={merge([
           "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan",
