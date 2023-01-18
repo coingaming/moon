@@ -77,7 +77,7 @@ defmodule Moon.Design.Button do
         class="flex absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] content-center justify-center"
       >
         {#if @animation == "progress"}
-          <Loader color="currentColor"  size={if @size == "xs", do: "2xs", else: "xs"} />
+          <Loader color="currentColor" size={if @size == "xs", do: "2xs", else: "xs"} />
         {#elseif @animation == "success"}
           <Icon name="generic_check_alternative" color="currentColor" class={Utils.icon_class(@size)} />
         {/if}
