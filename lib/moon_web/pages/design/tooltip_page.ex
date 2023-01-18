@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Default tooltip" id="tooltip_default">
         <:example>
-          <Tooltip>
+          <Tooltip id="tooltip_1">
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -109,10 +109,52 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         <:code>{tooltip_1_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Position" id="tooltip_placement">
+      <ExampleAndCode title="Clickable tooltip" id="tooltip_clickable">
+        <:example>
+          <Tooltip variant="clickable" id="tooltip_2">
+            <Tooltip.Trigger>
+              <Button variant="primary">Click Me</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content>
+              I'm a tooltip content
+              <Tooltip.Arrow />
+            </Tooltip.Content>
+          </Tooltip>
+        </:example>
+        <:code>{tooltip_1_code()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Clickable tooltip" id="tooltip_test">
+        <:example>
+          <Tooltip variant="clickable" id="tooltip_right">
+            <Tooltip.Trigger>
+              <Button variant="primary">Right</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content position="right">
+              I'm a tooltip content
+              <Tooltip.Arrow />
+            </Tooltip.Content>
+          </Tooltip>
+
+          <Tooltip variant="clickable" id="tooltip_left">
+            <Tooltip.Trigger>
+              <Button variant="primary">Left</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content position="left">
+              I'm a tooltip content
+              <Tooltip.Arrow />
+            </Tooltip.Content>
+          </Tooltip>
+        </:example>
+        <:code>{tooltip_1_code()}</:code>
+      </ExampleAndCode>
+
+
+
+    <!--  <ExampleAndCode title="Position" id="tooltip_placement">
         <:example>
           {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
-            <Tooltip>
+            <Tooltip id="tooltip_3">
               <Tooltip.Trigger>
                 <Button variant="secondary">{placement}</Button>
               </Tooltip.Trigger>
@@ -124,11 +166,11 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
           {/for}
         </:example>
         <:code>{tooltip_2_code()}</:code>
-      </ExampleAndCode>
+      </ExampleAndCode>-->
 
       <ExampleAndCode title="Without arrow" id="tooltip_no_arrow">
         <:example>
-          <Tooltip>
+          <Tooltip id="tooltip_4">
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -142,7 +184,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Without shadow" id="tooltip_no_shadow">
         <:example>
-          <Tooltip>
+          <Tooltip id="tooltip_5">
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -157,7 +199,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Customizations" id="tooltip_customizations">
         <:example>
-          <Tooltip>
+          <Tooltip id="tooltip_6">
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -166,7 +208,8 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               Custom background
             </Tooltip.Content>
           </Tooltip>
-          <Tooltip>
+
+          <Tooltip id="tooltip_7">
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -175,7 +218,8 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               Custom font
             </Tooltip.Content>
           </Tooltip>
-          <Tooltip>
+
+          <Tooltip id="tooltip_8">
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>

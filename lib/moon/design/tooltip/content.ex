@@ -50,7 +50,7 @@ defmodule Moon.Design.Tooltip.Content do
             </div>
           </div>
         {#match "right"}
-          <div class="flex items-center translate-x-full">
+          <div class="flex items-center ltr:translate-x-full rtl:translate-x-1/2">
             <div class="p-1 overflow-hidden">
               <#slot
                 {@arrow}
@@ -78,7 +78,7 @@ defmodule Moon.Design.Tooltip.Content do
             </div>
           </div>
         {#match "left"}
-          <div class="absolute -translate-x-full">
+          <div class="absolute ltr:-translate-x-full rtl:-translate-x-1/2">
             <div class="flex items-center top-0 right-0">
               <div class={content_class(@class, @has_no_shadow)}>
                 <#slot />
