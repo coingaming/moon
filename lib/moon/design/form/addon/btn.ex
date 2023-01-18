@@ -12,7 +12,9 @@ defmodule Moon.Design.Form.Addon.Btn do
 
   def render(assigns) do
     ~F"""
-    <Button {=@class} {...@attrs}><#slot /></Button>
+    <div {=@class}>
+      <Button {...@attrs}><#slot /></Button>
+    </div>
     """
   end
 end

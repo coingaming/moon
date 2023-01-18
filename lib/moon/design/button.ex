@@ -20,7 +20,7 @@ defmodule Moon.Design.Button do
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
-  prop(class, :css_class, default: "relative")
+  prop(class, :css_class)
 
   prop(type, :string, default: "button")
   prop(form, :string)
