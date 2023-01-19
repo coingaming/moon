@@ -38,7 +38,7 @@ defmodule Moon.Design.Popover.Panel do
             </div>
           </div>
         {#match "right"}
-          <div class="items-center translate-x-full -translate-y-1/3 px-2">
+          <div class="items-center ltr:translate-x-full -translate-y-1/3 rtl:translate-x-full px-2">
             <div class={content_class(@class)}>
               <#slot />
             </div>
@@ -50,7 +50,7 @@ defmodule Moon.Design.Popover.Panel do
             </div>
           </div>
         {#match "left"}
-          <div class="absolute -translate-x-full -translate-y-1/3 px-2">
+          <div class="absolute ltr:-translate-x-full rtr:translate-x-3/4 -translate-y-1/3 px-2">
             <div class="flex items-center top-0 right-0">
               <div class={content_class(@class)}>
                 <#slot />
