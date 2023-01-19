@@ -1,3 +1,10 @@
+## [2.35.8](https://github.com/coingaming/moon/compare/v2.35.7...v2.35.8) (2023-01-19)
+
+
+### Bug Fixes
+
+* [MDS-358] Textarea v2 ([ab10fb6](https://github.com/coingaming/moon/commit/ab10fb643a10b74480f3403a78111e60afcfbba9))
+
 ## [2.35.7](https://github.com/coingaming/moon/compare/v2.35.6...v2.35.7) (2023-01-18)
 
 
