@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
   use MoonWeb, :live_view
 
   alias Moon.Design.Form.Textarea
-  alias Moon.Design.Form.Addons.Btn
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExampleAndCode
