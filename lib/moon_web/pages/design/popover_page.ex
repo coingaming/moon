@@ -84,9 +84,9 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
 
       <PageSection title="Anatomy">
         <ComponentAnatomy>{"<Popover>
-                <Popover.Trigger>...</Popover.Trigger>
-                <Popover.Panel>...</Popover.Panel>
-                </Popover>"}
+                      <Popover.Trigger>...</Popover.Trigger>
+                      <Popover.Panel>...</Popover.Panel>
+                      </Popover>"}
         </ComponentAnatomy>
       </PageSection>
 
