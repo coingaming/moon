@@ -14,9 +14,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
   alias MoonWeb.Components.PropsTable
   alias Moon.Components.Lego
 
-  alias Moon.Design.Form.Textarea
-  alias Moon.Design.Form.Addon.Btn
-
   data(breadcrumbs, :any,
     default: [
       %{
@@ -130,13 +127,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
           for example prices for various travel dates or multiple options for baggage.
         </p>
       </ComponentPageDescription>
-
-      <ExampleAndCode title="Default" class="hidden" id="textarea_simple">
-        <:example>
-          <Textarea><Btn>Hit me!</Btn></Textarea>
-        </:example>
-        <:code />
-      </ExampleAndCode>
 
       <ExampleAndCode title="Default" id="table_simple">
         <:example>
