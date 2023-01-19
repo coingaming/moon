@@ -35,14 +35,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'position',
-        :type =>
-          'top-start | top-end | bottom-start | bottom-end | right-start | right-end | left-start | left-end | top | bottom | right | left',
-        :required => 'No',
-        :default => 'bottom',
-        :description => 'Set placement for popover'
-      },
-      %{
         :name => 'Render Props:',
         :type => '',
         :required => '',
@@ -50,7 +42,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         :description => ''
       },
       %{
-        :name => 'open',
+        :name => 'is_open',
         :type => 'boolean',
         :required => 'No',
         :default => '-',
@@ -62,32 +54,19 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   data(panel_info_array, :list,
     default: [
       %{
+        :name => 'position',
+        :type =>
+          'top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | right | left',
+        :required => 'No',
+        :default => 'top-center',
+        :description => 'Set placement for popover'
+      },
+      %{
         :name => 'class',
         :type => 'css_class',
         :required => 'No',
         :default => '-',
         :description => 'Tailwind classes for custom styles.'
-      },
-      %{
-        :name => 'Render Props:',
-        :type => '',
-        :required => '',
-        :default => '',
-        :description => ''
-      },
-      %{
-        :name => 'open',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Whether or not the popover is open.'
-      },
-      %{
-        :name => 'close',
-        :type => '()=>void',
-        :required => 'No',
-        :default => '-',
-        :description => 'Closes the popover.'
       }
     ]
   )
@@ -105,15 +84,15 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
 
       <PageSection title="Anatomy">
         <ComponentAnatomy>{"<Popover>
-               <Popover.Trigger>...</Popover.Trigger>
-               <Popover.Panel>...</Popover.Panel>
-               </Popover>"}
+                                             <Popover.Trigger>...</Popover.Trigger>
+                                             <Popover.Panel>...</Popover.Panel>
+                                             </Popover>"}
         </ComponentAnatomy>
       </PageSection>
 
-      <ExampleAndCode title="Default" id="popover_1">
+      <ExampleAndCode title="Default" id="default_example">
         <:example>
-          <Popover>
+          <Popover id="popover_id_1">
             <Popover.Trigger>
               <Button>Toggle Popover</Button>
             </Popover.Trigger>
@@ -125,10 +104,10 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <:code>{popover_1_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Position" id="popover_2">
+      <ExampleAndCode title="Position" id="position_example">
         <:note>{"The complete list of all possible positions is in the props table below."}</:note>
         <:example>
-          <Popover>
+          <Popover id="popover_id_2">
             <Popover.Trigger>
               <Button>Top</Button>
             </Popover.Trigger>
@@ -137,7 +116,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             </Popover.Panel>
           </Popover>
 
-          <Popover>
+          <Popover id="popover_id_3">
             <Popover.Trigger>
               <Button>Right</Button>
             </Popover.Trigger>
@@ -146,11 +125,11 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             </Popover.Panel>
           </Popover>
 
-          <Popover>
+          <Popover id="popover_id_4">
             <Popover.Trigger>
               <Button>Left</Button>
             </Popover.Trigger>
-            <Popover.Panel  position="left">
+            <Popover.Panel position="left">
               <Position id="content_position_3" />
             </Popover.Panel>
           </Popover>
@@ -158,9 +137,9 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <:code>{popover_2_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Trigger elements" id="popover_3">
+      <ExampleAndCode title="Trigger elements" id="trigger_elements_example">
         <:example>
-          <Popover>
+          <Popover id="popover_id_5">
             <Popover.Trigger>
               <Button>Button</Button>
             </Popover.Trigger>
@@ -169,7 +148,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             </Popover.Panel>
           </Popover>
 
-          <Popover>
+          <Popover id="popover_id_6">
             <Popover.Trigger>
               <IconButton icon_only="controls_chevron_down" variant="secondary" />
             </Popover.Trigger>
@@ -178,7 +157,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             </Popover.Panel>
           </Popover>
 
-          <Popover>
+          <Popover id="popover_id_7">
             <Popover.Trigger>
               <span class="text-moon-14 text-trunks cursor-pointer hover:text-piccolo">
                 Open popover
@@ -192,9 +171,9 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <:code>{popover_3_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="With close button" id="popover_4">
+      <ExampleAndCode title="With close button" id="close_button_example">
         <:example>
-          <Popover>
+          <Popover id="popover_id_8">
             <Popover.Trigger>
               <Button>Toggle Popover</Button>
             </Popover.Trigger>
@@ -214,21 +193,91 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
 
   defp popover_1_code() do
     """
+    <Popover id="popover_id_1">
+      <Popover.Trigger>
+        <Button>Toggle Popover</Button>
+      </Popover.Trigger>
+      <Popover.Panel>
+        <Default id="content_default" />
+      </Popover.Panel>
+    </Popover>
     """
   end
 
   defp popover_2_code() do
     """
+    <Popover id="popover_id_2">
+      <Popover.Trigger>
+        <Button>Top</Button>
+      </Popover.Trigger>
+      <Popover.Panel>
+        <Position id="content_position_1" />
+      </Popover.Panel>
+    </Popover>
+
+    <Popover id="popover_id_3">
+      <Popover.Trigger>
+        <Button>Right</Button>
+      </Popover.Trigger>
+      <Popover.Panel position="right">
+        <Position id="content_position_2" />
+      </Popover.Panel>
+    </Popover>
+
+    <Popover id="popover_id_4">
+      <Popover.Trigger>
+        <Button>Left</Button>
+      </Popover.Trigger>
+      <Popover.Panel  position="left">
+        <Position id="content_position_3" />
+      </Popover.Panel>
+    </Popover>
     """
   end
 
   defp popover_3_code() do
     """
+    <Popover id="popover_id_5">
+      <Popover.Trigger>
+        <Button>Button</Button>
+      </Popover.Trigger>
+      <Popover.Panel>
+        <TriggerElements id="content_elements_1" />
+      </Popover.Panel>
+    </Popover>
+
+    <Popover id="popover_id_6">
+      <Popover.Trigger>
+        <IconButton icon_only="controls_chevron_down" variant="secondary" />
+      </Popover.Trigger>
+      <Popover.Panel>
+        <TriggerElements id="content_elements_2" />
+      </Popover.Panel>
+    </Popover>
+
+    <Popover id="popover_id_7">
+      <Popover.Trigger>
+        <span class="text-moon-14 text-trunks cursor-pointer hover:text-piccolo">
+          Open popover
+        </span>
+      </Popover.Trigger>
+      <Popover.Panel>
+        <TriggerElements id="content_elements_3" />
+      </Popover.Panel>
+    </Popover>
     """
   end
 
   defp popover_4_code() do
     """
+    <Popover id="popover_id_8">
+      <Popover.Trigger>
+         <Button>Toggle Popover</Button>
+      </Popover.Trigger>
+      <Popover.Panel class="!w-96">
+       <WithClose id="content_close" />
+      </Popover.Panel>
+    </Popover>
     """
   end
 end

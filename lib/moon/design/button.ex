@@ -27,6 +27,7 @@ defmodule Moon.Design.Button do
   prop(testid, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
+  prop(close, :event)
 
   prop(left_icon, :string)
   prop(right_icon, :string)
@@ -69,6 +70,7 @@ defmodule Moon.Design.Button do
         disabled: @disabled,
         type: @type,
         form: @form,
+        close: @close,
         "data-size": @size,
         "data-testid": @testid,
         ":values": @values

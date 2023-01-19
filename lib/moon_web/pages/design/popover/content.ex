@@ -84,7 +84,7 @@ end
 defmodule MoonWeb.Pages.Design.Popover.Content.WithClose do
   @moduledoc false
 
-  use MoonWeb, :live_view
+  use Moon.StatefulComponent
 
   alias Moon.Design.Button
   alias Moon.Design.MenuItem
@@ -95,6 +95,8 @@ defmodule MoonWeb.Pages.Design.Popover.Content.WithClose do
     MediaTuner,
     MediaMegaphone
   }
+
+  prop(close_panel, :event)
 
   def render(assigns) do
     ~F"""
@@ -123,7 +125,7 @@ defmodule MoonWeb.Pages.Design.Popover.Content.WithClose do
           Your favourite games
         </Lego.MultiTitle>
       </MenuItem>
-      <Button>Close</Button>
+      <Button close="close_panel">Close</Button>
     </div>
     """
   end
