@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   use MoonWeb, :live_view
 
   alias Moon.Design.Tooltip
-  alias Moon.Components.Button
+  alias Moon.Design.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -96,7 +96,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Default tooltip" id="tooltip_default">
         <:example>
-          <Tooltip id="tooltip_1">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -112,7 +112,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
       <ExampleAndCode title="Position" id="tooltip_placement">
         <:example>
           {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
-            <Tooltip id={"tooltip-placement-#{placement}"}>
+            <Tooltip>
               <Tooltip.Trigger>
                 <Button variant="secondary">{placement}</Button>
               </Tooltip.Trigger>
@@ -128,7 +128,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Without arrow" id="tooltip_no_arrow">
         <:example>
-          <Tooltip id="tooltip_4">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -142,7 +142,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Without shadow" id="tooltip_no_shadow">
         <:example>
-          <Tooltip id="tooltip_5">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="primary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -157,7 +157,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
       <ExampleAndCode title="Customizations" id="tooltip_customizations">
         <:example>
-          <Tooltip id="tooltip_6">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -167,7 +167,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
             </Tooltip.Content>
           </Tooltip>
 
-          <Tooltip id="tooltip_7">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -177,7 +177,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
             </Tooltip.Content>
           </Tooltip>
 
-          <Tooltip id="tooltip_8">
+          <Tooltip>
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
             </Tooltip.Trigger>
@@ -200,7 +200,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   defp tooltip_1_code() do
     """
     alias Moon.Design.Tooltip
-    alias Moon.Components.Button
+    alias Moon.Design.Button
 
     ...
 
