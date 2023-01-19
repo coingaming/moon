@@ -81,6 +81,18 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
+                        <Accordion
+                          is_content_inside={false}
+                          id="left-menu-components-form"
+                          open_by_default={active_page_contains(@active_page, Pages.Design)}
+                        >
+                          <:title>Form</:title>
+                          <:content>
+                            <div class="flex-grow flex flex-col gap-2 pl-8">
+                              <SidebarLink route={Pages.Design.Form.TextareaPage}>Textarea</SidebarLink>
+                            </div>
+                          </:content>
+                        </Accordion>
                         <SidebarLink route={Pages.Design.LoaderPage}>Loader</SidebarLink>
                         <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>

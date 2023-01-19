@@ -1,4 +1,4 @@
-defmodule Moon.Design.Form.Addon.Btn do
+defmodule Moon.Design.Form.Addon.CornerButton do
   @moduledoc false
 
   use Moon.StatelessComponent, slot: "default"
