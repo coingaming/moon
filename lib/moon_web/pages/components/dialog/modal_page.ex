@@ -11,6 +11,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -35,8 +36,15 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Modal">
-        <p>Modal</p>
+        <DeprecationWarning
+          name="Modal"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ModalPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
+
       <ExampleAndCode title="Modal" id="modal_1">
         <:example>
           <Button variant="primary" on_click="open_modal">Open modal</Button>
