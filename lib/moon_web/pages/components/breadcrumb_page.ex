@@ -115,18 +115,6 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
             direction: @direction
           )}
         />
-        <p>
-          As users navigate through your website, they'll want to know where they are and how to get back to where
-          they were. Use breadcrumbs to show their history and enable them to go up the hierarchy back to the start.
-        </p>
-        <p>Breadcrumbs are useful for navigation history but shouldn't be used for steps in a process including
-          steps in the future. For that, use the planned Steps component.
-        </p>
-        <p class="font-medium">Clearly present position</p>
-        <p>
-          Users may come to a given screen through different flows (such as an external link or search). So it's
-          important that they always know where in your structure they are.
-        </p>
       </ComponentPageDescription>
       <ExampleAndCode title="Five and more items" id="breadcrumbs_2">
         <:example>

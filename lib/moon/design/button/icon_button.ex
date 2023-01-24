@@ -33,28 +33,30 @@ defmodule Moon.Design.Button.IconButton do
     <AsComponent
       {=@as}
       {=@href}
-      class={
-        "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
-        "select-none transition duration-200 active:scale-90",
-        @class,
-        get_icon_button_size_classes(@size),
-        "text-goten bg-piccolo": @variant in ["primary"],
-        "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
-          @variant in ["secondary"],
-        "bg-hit text-goten": @variant in ["tertiary"],
-        "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-        "opacity-30 cursor-not-allowed": @disabled,
-        "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
-          @animation == "error"
-      }
+      class={merge([
+        [
+          "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",
+          "select-none transition duration-200 active:scale-90",
+          get_icon_button_size_classes(@size),
+          "text-goten bg-piccolo": @variant in ["primary"],
+          "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
+            @variant in ["secondary"],
+          "bg-hit text-goten": @variant in ["tertiary"],
+          "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
+          "opacity-30 cursor-not-allowed": @disabled,
+          "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
+          "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+            @animation == "error"
+        ],
+        @class
+      ])}
+      on_click={@on_click}
       attrs={
         disabled: @disabled,
         type: @type,
         form: @form,
         "data-size": @size,
         "data-testid": @testid,
-        ":on-click": @on_click,
         ":values": @values
       }
     >

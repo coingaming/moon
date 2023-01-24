@@ -1,12 +1,18 @@
 defmodule Moon.Design.Modal.Backdrop do
   @moduledoc false
 
-  use Moon.StatelessComponent
-  prop(close, :event)
+  use Surface.Component, slot: "backdrop"
+
+  import Moon.Helpers.MergeClass
+
+  prop(class, :css_class)
 
   def render(assigns) do
     ~F"""
-    <div :on-click={@close} class="fixed inset-0 bg-popo opacity-[.4]" />
+    <div class={merge([
+      ["fixed inset-0 bg-popo opacity-[.6]"],
+      @class
+    ])} />
     """
   end
 end
