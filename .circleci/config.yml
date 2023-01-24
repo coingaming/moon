@@ -1,10 +1,14 @@
 version: 2.1
 aliases:
 
+references:
+  images:
+    elixir: &ELIXIR_IMAGE heathmont/elixir-ci:1.13.1-otp-24-alpine
+
 jobs:
   otp_release:
     docker:
-      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
+      - image: *ELIXIR_IMAGE
     environment:
       MIX_ENV: prod
     steps:
@@ -20,8 +24,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}
-            - v7-build-
+            - v9-build-{{ checksum "mix.lock" }}
+            - v9-build-
       - run:
           name: Update git submodules
           command: git submodule update --init --recursive
@@ -44,7 +48,7 @@ jobs:
           name: Build release
           command: scripts/deploy/build-release
       - save_cache:
-          key: v7-build-{{ checksum "mix.lock" }}
+          key: v9-build-{{ checksum "mix.lock" }}
           paths:
             - .cache
             - deps
@@ -52,7 +56,7 @@ jobs:
             - ~/.mix
   check_code_quality:
     docker:
-      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
+      - image: *ELIXIR_IMAGE
     environment:
       MIX_ENV: test
     steps:
@@ -68,8 +72,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}
-            - v7-build-
+            - v9-build-{{ checksum "mix.lock" }}
+            - v9-build-
       - run:
           command: git submodule update --init --recursive
       - run:
@@ -92,7 +96,7 @@ jobs:
           command: mix test
   docker_image:
     docker:
-      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
+      - image: *ELIXIR_IMAGE
     steps:
       - checkout
       - setup_remote_docker:
@@ -101,15 +105,15 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v7-build-{{ checksum "mix.lock" }}
-            - v7-build-
+            - v9-build-{{ checksum "mix.lock" }}
+            - v9-build-
       - run:
           name: Docker login
           command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
-      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
+      - image: *ELIXIR_IMAGE
     steps:
       - checkout
       - setup_remote_docker:
@@ -132,7 +136,7 @@ jobs:
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
   release:
     docker:
-      - image: heathmont/elixir-ci:1.14.0-otp-25-alpine
+      - image: *ELIXIR_IMAGE
     environment:
       MIX_ENV: test
     resource_class: xlarge
@@ -140,8 +144,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-test-{{ checksum "mix.lock" }}
-            - v1-test-
+            - v9-build-{{ checksum "mix.lock" }}
+            - v9-build-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -158,9 +162,10 @@ jobs:
           name:       Test
           command:    mix test
       - save_cache:
-          key: v1-test-{{ checksum "mix.lock" }}
+          key: v9-build-{{ checksum "mix.lock" }}
           paths:
             - deps
+            - _build
             - ~/.mix
       - run:
           name:       Semantic Release
