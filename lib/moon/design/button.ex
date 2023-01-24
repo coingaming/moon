@@ -26,7 +26,6 @@ defmodule Moon.Design.Button do
   prop(form, :string)
   prop(testid, :string)
   prop(on_click, :event)
-  prop(close, :event)
   prop(values, :keyword, default: [])
 
   prop(left_icon, :string)
