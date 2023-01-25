@@ -1,10 +1,9 @@
 defmodule Moon.Design.Accordion.Header do
   @moduledoc false
 
-  use Surface.Component, slot: "header"
+  use Moon.StatelessComponent, slot: "header"
 
   alias Moon.Icons.ControlsChevronDown
-  import Moon.Helpers.MergeClass
 
   # public API
   prop(class, :css_class)

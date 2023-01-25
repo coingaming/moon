@@ -1,7 +1,7 @@
 defmodule Moon.Design.Table.Column do
   @moduledoc false
 
-  use Surface.Component, slot: "cols"
+  use Moon.StatelessComponent, slot: "cols"
 
   @doc "The title of the column"
   prop(name, :string)

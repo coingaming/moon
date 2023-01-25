@@ -1,7 +1,7 @@
 defmodule Moon.Design.Table.Paging do
   @moduledoc false
 
-  use Surface.Component
+  use Moon.StatelessComponent
 
   alias Moon.Icons.ControlsChevronLeft
   alias Moon.Icons.ControlsChevronRight

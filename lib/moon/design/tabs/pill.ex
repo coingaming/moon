@@ -1,9 +1,7 @@
 defmodule Moon.Design.Tabs.Pill do
   @moduledoc false
 
-  use Surface.Component, slot: "tabs"
-
-  import Moon.Helpers.MergeClass, only: [merge: 1]
+  use Moon.StatelessComponent, slot: "tabs"
 
   # open API
   prop(disabled, :boolean, default: false)
