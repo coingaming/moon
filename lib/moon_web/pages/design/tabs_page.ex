@@ -117,6 +117,8 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   data(tab_id6, :integer, default: 0)
   data(tab_id7, :integer, default: 0)
   data(tab_id8, :integer, default: 0)
+  data(tab_id9, :integer, default: 0)
+  data(tab_id10, :integer, default: 0)
 
   def anatomy_code() do
     """
@@ -194,37 +196,62 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         <:state>@tab_id = {@tab_id2}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Sizes" id="sizes" class="mt-4">
+      <ExampleAndCode title="Default with Segments" id="segments-example" class="mt-4" example_class="bg-transparent border-beerus border">
         <:example>
-          <div className="flex justify-between w-full gap-10">
+          <div class="flex justify-between w-full gap-4 w-full">
             <Tabs
-              selected_index={@tab_id5}
-              on_change="clicked_tab5"
-              size="sm"
-              tab_titles={~w(Tab-sm Tab-sm Tab-sm)}
+              class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
+              selected_index={@tab_id9}
+              on_change="clicked_tab9"
+              tab_titles={~w(Segment Segment Segment)}
+              tab_module={Tabs.Segment}
             />
             <Tabs
-              selected_index={@tab_id6}
-              on_change="clicked_tab6"
-              size="md"
-              tab_titles={~w(Tab-md Tab-md Tab-md)}
+              class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
+              selected_index={@tab_id10}
+              size="sm"
+              on_change="clicked_tab10"
+              tab_titles={~w(Small Small Small)}
+              tab_module={Tabs.Segment}
             />
           </div>
-          <div className="flex justify-between w-full gap-10">
-            <Tabs
-              selected_index={@tab_id4}
-              on_change="clicked_tab4"
-              size="sm"
-              tab_titles={~w(Pill-sm Pill-sm Pill-sm)}
-              tab_module={Tabs.Pill}
-            />
-            <Tabs
-              selected_index={@tab_id3}
-              on_change="clicked_tab3"
-              size="md"
-              tab_titles={~w(Pill-md Pill-md Pill-md)}
-              tab_module={Tabs.Pill}
-            />
+        </:example>
+        <:code>{get_example_code9()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="Sizes" id="sizes" class="mt-4">
+        <:example>
+          <div class="flex flex-col gap-4 w-full">
+            <div class="flex justify-between w-full gap-4 w-full">
+              <Tabs
+                selected_index={@tab_id5}
+                on_change="clicked_tab5"
+                size="sm"
+                tab_titles={~w(Tab-sm Tab-sm Tab-sm)}
+              />
+              <Tabs
+                selected_index={@tab_id6}
+                on_change="clicked_tab6"
+                size="md"
+                tab_titles={~w(Tab-md Tab-md Tab-md)}
+              />
+            </div>
+            <div class="flex justify-between w-full gap-10">
+              <Tabs
+                selected_index={@tab_id4}
+                on_change="clicked_tab4"
+                size="sm"
+                tab_titles={~w(Pill-sm Pill-sm Pill-sm)}
+                tab_module={Tabs.Pill}
+              />
+              <Tabs
+                selected_index={@tab_id3}
+                on_change="clicked_tab3"
+                size="md"
+                tab_titles={~w(Pill-md Pill-md Pill-md)}
+                tab_module={Tabs.Pill}
+              />
+            </div>
           </div>
         </:example>
         <:code>{get_example_code3()}</:code>
@@ -297,7 +324,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
   defp get_example_code3() do
     """
-    <div className="flex justify-between w-full gap-10">
+    <div class="flex justify-between w-full gap-10">
       <Tabs
         selected_index={@tab_id5}
         on_change="clicked_tab5"
@@ -311,7 +338,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         tab_titles={~w(Tab-md Tab-md Tab-md)}
       />
     </div>
-    <div className="flex justify-between w-full gap-10">
+    <div class="flex justify-between w-full gap-10">
       <Tabs
         selected_index={@tab_id4}
         on_change="clicked_tab4"
@@ -325,6 +352,28 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         size="md"
         tab_titles={~w(Pill-md Pill-md Pill-md)}
         tab_module={Tabs.Pill}
+      />
+    </div>
+    """
+  end
+
+  defp get_example_code9() do
+    """
+    <div class="flex justify-between w-full gap-4 w-full">
+      <Tabs
+        class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
+        selected_index={@tab_id9}
+        on_change="clicked_tab9"
+        tab_titles={~w(Segment Segment Segment)}
+        tab_module={Tabs.Segment}
+      />
+      <Tabs
+        class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
+        selected_index={@tab_id10}
+        size="sm"
+        on_change="clicked_tab10"
+        tab_titles={~w(Small Small Small)}
+        tab_module={Tabs.Segment}
       />
     </div>
     """

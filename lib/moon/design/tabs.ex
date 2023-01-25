@@ -8,6 +8,7 @@ defmodule Moon.Design.Tabs do
   prop(selected_index, :integer, default: 0)
   prop(on_change, :event)
   prop(size, :string, values!: ~w(sm md), default: "md")
+  prop(class, :css_class)
 
   prop(tab_titles, :list, default: [])
   prop(tab_module, :atom, default: __MODULE__.Tab)
@@ -18,7 +19,7 @@ defmodule Moon.Design.Tabs do
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <div class="flex items-center justify-center gap-2" role="tablist" aria-orientation="horizontal">
+      <div class={merge(["flex items-center justify-center", @size == "sm" && "gap-1" || "gap-2", @class])} role="tablist" aria-orientation="horizontal">
         {#if slot_assigned?(:tabs)}
           {#for {tab, tabindex} <- Enum.with_index(make_list(@tabs))}
             {!-- IO.puts "Here is tab content " <> inspect tab, structs: false, pretty: true --}

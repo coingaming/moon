@@ -3,8 +3,6 @@ defmodule Moon.Design.Accordion do
 
   use Moon.StatefulComponent
 
-  import Moon.Helpers.MergeClass
-
   prop(class, :css_class)
   prop(disabled, :boolean, default: false)
 
