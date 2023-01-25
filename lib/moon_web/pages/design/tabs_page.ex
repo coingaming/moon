@@ -40,7 +40,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       %{
         :name => 'class',
         :type => 'css_class',
-        :required => '-',
+        :required => 'No',
         :default => '-',
         :description => 'additional css classes for the tab'
       },
@@ -62,6 +62,13 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         :required => 'No',
         :default => '-',
         :description => 'List of the tabs. Reffer to Moon.Design.Tabs.Tab module'
+      },
+      %{
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'No',
+        :default => '-',
+        :description => 'additional css classes for the tab'
       },
       %{
         :name => 'panels',
@@ -109,16 +116,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
     ]
   )
 
-  data(tab_id1, :integer, default: 0)
-  data(tab_id2, :integer, default: 0)
-  data(tab_id3, :integer, default: 0)
-  data(tab_id4, :integer, default: 0)
-  data(tab_id5, :integer, default: 0)
-  data(tab_id6, :integer, default: 0)
-  data(tab_id7, :integer, default: 0)
-  data(tab_id8, :integer, default: 0)
-  data(tab_id9, :integer, default: 0)
-  data(tab_id10, :integer, default: 0)
+  data(tab_id, :integer, default: 1)
 
   def anatomy_code() do
     """
@@ -153,7 +151,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         <pre>
           <code>
             <#Raw>
-              <Tabs selected_index={@tab_id} on_change="clicked_tab">
+              <Tabs id="tabs-ex-0">
                 <Tabs.Tab>First tab</Tabs.Tab>
                 <Tabs.Tab>Second tab</Tabs.Tab>
                 <Tabs.Tab>Third tab</Tabs.Tab>
@@ -168,7 +166,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
       <ExampleAndCode title="Default" id="tabs" class="mt-4">
         <:example>
-          <Tabs selected_index={@tab_id1} on_change="clicked_tab1">
+          <Tabs id="tabs-ex-1">
             <Tabs.Tab>First tab</Tabs.Tab>
             <Tabs.Tab>Second tab</Tabs.Tab>
             <Tabs.Tab>Third tab</Tabs.Tab>
@@ -178,12 +176,11 @@ defmodule MoonWeb.Pages.Design.TabsPage do
           </Tabs>
         </:example>
         <:code>{get_example_code1()}</:code>
-        <:state>@tab_id = {@tab_id1}</:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="Default with Pills" id="pills" class="mt-4">
         <:example>
-          <Tabs selected_index={@tab_id2} on_change="clicked_tab2">
+          <Tabs id="tabs-ex-2">
             <Tabs.Pill>First tab</Tabs.Pill>
             <Tabs.Pill>Second tab</Tabs.Pill>
             <Tabs.Pill>Third tab</Tabs.Pill>
@@ -193,64 +190,62 @@ defmodule MoonWeb.Pages.Design.TabsPage do
           </Tabs>
         </:example>
         <:code>{get_example_code2()}</:code>
-        <:state>@tab_id = {@tab_id2}</:state>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Default with Segments" id="segments-example" class="mt-4" example_class="bg-transparent border-beerus border">
+      <ExampleAndCode
+        title="Default with Segments"
+        id="segments-example"
+        class="mt-4"
+        example_class="bg-transparent border-beerus border"
+      >
         <:example>
           <div class="flex justify-between w-full gap-4 w-full">
             <Tabs
               class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
-              selected_index={@tab_id9}
-              on_change="clicked_tab9"
               tab_titles={~w(Segment Segment Segment)}
               tab_module={Tabs.Segment}
+              id="tabs-ex-9"
             />
             <Tabs
               class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
-              selected_index={@tab_id10}
               size="sm"
-              on_change="clicked_tab10"
               tab_titles={~w(Small Small Small)}
               tab_module={Tabs.Segment}
+              id="tabs-ex-10"
             />
           </div>
         </:example>
-        <:code>{get_example_code9()}</:code>
+        <:code>{get_example_code5()}</:code>
+      </ExampleAndCode>
+
+      <ExampleAndCode title="On change" id="on-change-ex" class="mt-4">
+        <:example>
+          <Tabs id="tabs-ex-11" selected_index={@tab_id} on_change="clicked_tab">
+            <Tabs.Tab>First tab</Tabs.Tab>
+            <Tabs.Tab>Second tab</Tabs.Tab>
+            <Tabs.Tab>Third tab</Tabs.Tab>
+            <Tabs.Panel>{lorem()}</Tabs.Panel>
+            <Tabs.Panel>{ipsum()}</Tabs.Panel>
+            <Tabs.Panel>{dolor()}</Tabs.Panel>
+          </Tabs>
+        </:example>
+        <:code>{get_example_code6()}</:code>
+        <:state>
+          @tab_id = {@tab_id}
+          # Please note - you'll have to handel selected_index by yourself when on_change is given
+        </:state>
       </ExampleAndCode>
 
       <ExampleAndCode title="Sizes" id="sizes" class="mt-4">
         <:example>
           <div class="flex flex-col gap-4 w-full">
             <div class="flex justify-between w-full gap-4 w-full">
-              <Tabs
-                selected_index={@tab_id5}
-                on_change="clicked_tab5"
-                size="sm"
-                tab_titles={~w(Tab-sm Tab-sm Tab-sm)}
-              />
-              <Tabs
-                selected_index={@tab_id6}
-                on_change="clicked_tab6"
-                size="md"
-                tab_titles={~w(Tab-md Tab-md Tab-md)}
-              />
+              <Tabs size="sm" tab_titles={~w(Tab-sm Tab-sm Tab-sm)} id="tabs-ex-5" />
+              <Tabs size="md" tab_titles={~w(Tab-md Tab-md Tab-md)} id="tabs-ex-6" />
             </div>
             <div class="flex justify-between w-full gap-10">
-              <Tabs
-                selected_index={@tab_id4}
-                on_change="clicked_tab4"
-                size="sm"
-                tab_titles={~w(Pill-sm Pill-sm Pill-sm)}
-                tab_module={Tabs.Pill}
-              />
-              <Tabs
-                selected_index={@tab_id3}
-                on_change="clicked_tab3"
-                size="md"
-                tab_titles={~w(Pill-md Pill-md Pill-md)}
-                tab_module={Tabs.Pill}
-              />
+              <Tabs size="sm" tab_titles={~w(Pill-sm Pill-sm Pill-sm)} tab_module={Tabs.Pill} id="tabs-ex-4" />
+              <Tabs size="md" tab_titles={~w(Pill-md Pill-md Pill-md)} tab_module={Tabs.Pill} id="tabs-ex-3" />
             </div>
           </div>
         </:example>
@@ -259,12 +254,12 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
       <ExampleAndCode title="Disabled and Custom selected" id="disabled" class="mt-4">
         <:example>
-          <Tabs selected_index={@tab_id7} on_change="clicked_tab7">
+          <Tabs id="tabs-ex-7">
             <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">First tab</Tabs.Tab>
             <Tabs.Tab disabled>Disabled tab</Tabs.Tab>
             <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">Third tab</Tabs.Tab>
           </Tabs>
-          <Tabs selected_index={@tab_id8} on_change="clicked_tab8">
+          <Tabs id="tabs-ex-8">
             <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Green pill</Tabs.Pill>
             <Tabs.Pill disabled>Disabled pill</Tabs.Pill>
             <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Third pill</Tabs.Pill>
@@ -275,13 +270,16 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
       <PropsTable title="Moon.Design.Tabs properties" data={@props_info_array_tabs} />
 
-      <PropsTable title="Moon.Design.Tabs.Tab properties" data={@props_info_array_tab} />
+      <PropsTable
+        title="Moon.Design.Tabs.{Tab, Pill, Segment} properties"
+        data={@props_info_array_tab}
+      />
     </Page>
     """
   end
 
-  def handle_event("clicked_tab" <> nr, %{"selected-index" => tab_id}, socket) do
-    {:noreply, assign(socket, "tab_id#{nr}": String.to_integer("#{tab_id}"))}
+  def handle_event("clicked_tab", %{"value" => tab_id}, socket) do
+    {:noreply, assign(socket, tab_id: String.to_integer("#{tab_id}"))}
   end
 
   defp get_example_code1() do
@@ -292,7 +290,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
     def render(assigns) do
       ~F\"""
-      <Tabs selected_index={@tab_id} on_change="clicked_tab">
+      <Tabs id="tabs-ex-0">
         <Tabs.Tab>First tab</Tabs.Tab>
         <Tabs.Tab>Second tab</Tabs.Tab>
         <Tabs.Tab>Third tab</Tabs.Tab>
@@ -302,16 +300,12 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       </Tabs>
       \"""
     end
-
-    def handle_event("clicked_tab", %{"selected-index" => tab_id}, socket) do
-      {:noreply, assign(socket, "tab_id": String.to_integer("\#{tab_id}"))}
-    end
     """
   end
 
   defp get_example_code2() do
     """
-    <Tabs selected_index={@tab_id2} on_change="clicked_tab2">
+    <Tabs id="tabs-ex-0">
       <Tabs.Pill>First tab</Tabs.Pill>
       <Tabs.Pill>Second tab</Tabs.Pill>
       <Tabs.Pill>Third tab</Tabs.Pill>
@@ -326,29 +320,25 @@ defmodule MoonWeb.Pages.Design.TabsPage do
     """
     <div class="flex justify-between w-full gap-10">
       <Tabs
-        selected_index={@tab_id5}
-        on_change="clicked_tab5"
+        id="tabs-ex-0"
         size="sm"
         tab_titles={~w(Tab-sm Tab-sm Tab-sm)}
       />
       <Tabs
-        selected_index={@tab_id6}
-        on_change="clicked_tab6"
+        id="tabs-ex-0"
         size="md"
         tab_titles={~w(Tab-md Tab-md Tab-md)}
       />
     </div>
     <div class="flex justify-between w-full gap-10">
       <Tabs
-        selected_index={@tab_id4}
-        on_change="clicked_tab4"
+        id="tabs-ex-0"
         size="sm"
         tab_titles={~w(Pill-sm Pill-sm Pill-sm)}
         tab_module={Tabs.Pill}
       />
       <Tabs
-        selected_index={@tab_id3}
-        on_change="clicked_tab3"
+        id="tabs-ex-0"
         size="md"
         tab_titles={~w(Pill-md Pill-md Pill-md)}
         tab_module={Tabs.Pill}
@@ -357,21 +347,34 @@ defmodule MoonWeb.Pages.Design.TabsPage do
     """
   end
 
-  defp get_example_code9() do
+  defp get_example_code4() do
+    """
+    <Tabs id="tabs-ex-1">
+      <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">First tab</Tabs.Tab>
+      <Tabs.Tab disabled>Disabled tab</Tabs.Tab>
+      <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">Third tab</Tabs.Tab>
+    </Tabs>
+    <Tabs id="tabs-ex-0">
+      <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Green pill</Tabs.Pill>
+      <Tabs.Pill disabled>Disabled pill</Tabs.Pill>
+      <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Third pill</Tabs.Pill>
+    </Tabs>
+    """
+  end
+
+  defp get_example_code5() do
     """
     <div class="flex justify-between w-full gap-4 w-full">
       <Tabs
+        id="tabs-ex-1"
         class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
-        selected_index={@tab_id9}
-        on_change="clicked_tab9"
         tab_titles={~w(Segment Segment Segment)}
         tab_module={Tabs.Segment}
       />
       <Tabs
+        id="tabs-ex-0"
         class="w-fit gap-1 p-1 bg-goku rounded-moon-s-sm"
-        selected_index={@tab_id10}
         size="sm"
-        on_change="clicked_tab10"
         tab_titles={~w(Small Small Small)}
         tab_module={Tabs.Segment}
       />
@@ -379,18 +382,26 @@ defmodule MoonWeb.Pages.Design.TabsPage do
     """
   end
 
-  defp get_example_code4() do
+  defp get_example_code6() do
     """
-    <Tabs selected_index={@tab_id7} on_change="clicked_tab7">
-      <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">First tab</Tabs.Tab>
-      <Tabs.Tab disabled>Disabled tab</Tabs.Tab>
-      <Tabs.Tab class="hover:text-hit after:bg-hit" selected_class="text-hit after:scale-x-100">Third tab</Tabs.Tab>
+    data(tab_id, :integer, default: 1)
+
+
+    def handle_event("clicked_tab", %{"selected-index" => tab_id}, socket) do
+      {:noreply, assign(socket, tab_id: String.to_integer("\#{tab_id}"))}
+    end
+
+    ...
+
+    <Tabs id="tabs-ex-11"  selected_index={@tab_id} on_change="clicked_tab">
+      <Tabs.Tab>First tab</Tabs.Tab>
+      <Tabs.Tab>Second tab</Tabs.Tab>
+      <Tabs.Tab>Third tab</Tabs.Tab>
+      <Tabs.Panel>{lorem()}</Tabs.Panel>
+      <Tabs.Panel>{ipsum()}</Tabs.Panel>
+      <Tabs.Panel>{dolor()}</Tabs.Panel>
     </Tabs>
-    <Tabs selected_index={@tab_id8} on_change="clicked_tab8">
-      <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Green pill</Tabs.Pill>
-      <Tabs.Pill disabled>Disabled pill</Tabs.Pill>
-      <Tabs.Pill class="hover:bg-hit/30" selected_class="bg-hit/30">Third pill</Tabs.Pill>
-    </Tabs>
+
     """
   end
 end

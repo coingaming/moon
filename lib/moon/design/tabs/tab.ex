@@ -39,7 +39,7 @@ defmodule Moon.Design.Tabs.Tab do
         @class
       ])}
       :on-click={!@disabled && @on_change}
-      :values={selected_index: @tabindex}
+      value={@tabindex}
     ><#slot /></button>
     """
   end

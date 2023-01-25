@@ -36,7 +36,7 @@ defmodule Moon.Design.Tabs.Pill do
         @class
       ])}
       :on-click={!@disabled && @on_change}
-      phx-value-selected-index={@tabindex}
+      value={@tabindex}
     ><#slot /></button>
     """
   end
