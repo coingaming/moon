@@ -134,7 +134,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tabs" is_in_progress>
+      <ComponentPageDescription title="Tabs" is_aria_support is_rtl_support>
         <p>Tabs to allow users to navigate easily between views within the same context.</p>
         <p>
           Each tab should contain content that is distinct from other tabs in a set for example,
