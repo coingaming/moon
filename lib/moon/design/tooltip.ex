@@ -3,14 +3,15 @@ defmodule Moon.Design.Tooltip do
 
   use Moon.StatelessComponent
 
-  prop(selected_index, :integer, default: 0)
+  prop(tabindex, :string, default: "0")
+  prop(class, :css_class)
 
   slot(default, required: true)
   slot(trigger, required: true)
 
   def render(assigns) do
     ~F"""
-    <div class="relative inline-block group focus:outline-none" tabindex={@selected_index}>
+    <div class={merge(["relative inline-block group focus:outline-none", @class])} {=@tabindex}>
       <div
         role="tooltip"
         class="hidden group-hover:block group-focus:block transition-opacity transition-200"
