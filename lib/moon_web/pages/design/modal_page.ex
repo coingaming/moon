@@ -12,7 +12,6 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   alias Moon.Design.Button
   alias Moon.Design.Modal
 
-  alias Moon.Icons.ControlsClose
   alias Moon.Autolayouts.PullAside
 
   import MoonWeb.Helpers.Lorem
@@ -30,7 +29,59 @@ defmodule MoonWeb.Pages.Design.ModalPage do
     ]
   )
 
+  data(modal_props, :list,
+    default: [
+      %{
+        :name => 'backdrop',
+        :type => 'slot',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Backdrop of Modal element, see Modal.Backdrop'
+      },
+      %{
+        :name => 'panel',
+        :type => 'slot',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Content of Modal element, see Modal.Panel'
+      },
+      %{
+        :name => 'is_open',
+        :type => 'boolean',
+        :required => 'No',
+        :default => 'false',
+        :description => 'Whether the Modal is open or not.'
+      },
+      %{
+        :name => 'on_close',
+        :type => 'event',
+        :required => 'No',
+        :default => '-',
+        :description => 'Handler for open/close of the element'
+      }
+    ]
+  )
+
   data(modal_panel_props, :list,
+    default: [
+      %{
+        :name => 'header',
+        :type => 'slot',
+        :required => 'No',
+        :default => '-',
+        :description => 'Header of Modal element, see Modal.Header'
+      },
+      %{
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Tailwind classes for customization of Panel.'
+      }
+    ]
+  )
+
+  data(modal_panel_header_props, :list,
     default: [
       %{
         :name => 'class',
@@ -38,6 +89,20 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         :required => 'Yes',
         :default => '-',
         :description => 'Tailwind classes for customization of Panel.'
+      },
+      %{
+        :name => 'has_divider',
+        :type => 'boolean',
+        :required => 'No',
+        :default => 'false',
+        :description => 'Whether the Modal header has divider.'
+      },
+      %{
+        :name => 'has_close',
+        :type => 'boolean',
+        :required => 'No',
+        :default => 'false',
+        :description => 'Whether the Modal header has "close" icon.'
       }
     ]
   )
@@ -99,14 +164,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
       <ExampleAndCode title="Default" id="default_modal">
         <:example>
           <Button on_click="open_modal_1">Open dialog</Button>
-          <Modal :if={@modal_1_is_open}>
+          <Modal is_open={@modal_1_is_open}>
             <Modal.Backdrop />
             <Modal.Panel>
-              <div class="p-4 border-b-2 border-beerus">
-                <h3 class="text-moon-18 text-bulma font-semibold">
-                  Payment successful
-                </h3>
-              </div>
+              <Modal.Header has_divider>Payment successful</Modal.Header>
               <div class="p-4">
                 <p class="text-moon-16 text-trunks">
                   {lorem_payment()}
@@ -129,14 +190,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
       <ExampleAndCode title="Example with big content" id="big_content">
         <:example>
           <Button on_click="open_modal_2">Open dialog</Button>
-          <Modal :if={@modal_2_is_open}>
+          <Modal is_open={@modal_2_is_open}>
             <Modal.Backdrop />
             <Modal.Panel>
-              <div class="p-4 border-b-2 border-beerus">
-                <h3 class="text-moon-18 text-bulma font-semibold">
-                  Payment successful
-                </h3>
-              </div>
+              <Modal.Header has_divider>Payment successful</Modal.Header>
               <div class="p-4">
                 <p class="text-moon-16 text-trunks">
                   {lorem_big_content()}
@@ -159,13 +216,11 @@ defmodule MoonWeb.Pages.Design.ModalPage do
       <ExampleAndCode title="Example with styled content" id="styled_content">
         <:example>
           <Button on_click="open_modal_3">Open dialog</Button>
-          <Modal :if={@modal_3_is_open}>
+          <Modal is_open={@modal_3_is_open} on_close="close_modal_3">
             <Modal.Backdrop />
             <Modal.Panel class="lg:max-w-md bg-roshi text-goten">
-              <span class="flex pt-5 pe-5 justify-end cursor-pointer">
-                <ControlsClose class="text-moon-24" click="close_modal_3" />
-              </span>
-              <div class="p-4 pt-11">
+              <Modal.Header has_close class="text-moon-24" />
+              <div class="p-4">
                 <div class="mt-2">
                   <h3 class="text-moon-24 text-goten font-semibold text-center">
                     Your payment has been successfully submitted.
@@ -185,17 +240,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
       <ExampleAndCode title="Example with select" id="with_select">
         <:example>
           <Button on_click="open_modal_4">Open dialog</Button>
-          <Modal :if={@modal_4_is_open}>
+          <Modal is_open={@modal_4_is_open} on_close="close_modal_4">
             <Modal.Backdrop />
             <Modal.Panel>
-              <div class="border-b-2 border-beerus pt-5 pb-4 px-6 flex justify-between">
-                <h3 class="text-moon-18 text-bulma font-semibold">
-                  Modal title
-                </h3>
-                <span class="cursor-pointer">
-                  <ControlsClose click="close_modal_4" />
-                </span>
-              </div>
+              <Modal.Header has_divider has_close>Modal title</Modal.Header>
               <div class="px-6 py-4 flex flex-col gap-3">
                 <Select label="Size" class="w-full" options={@size_options} prompt="Please select size" />
                 <Select label="Color" class="w-full" options={@color_options} prompt="Please select color" />
@@ -217,7 +265,9 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         <:state>{get_state_4(assigns)}</:state>
       </ExampleAndCode>
 
+      <PropsTable title="Modal props" data={@modal_props} />
       <PropsTable title="Modal.Panel" data={@modal_panel_props} />
+      <PropsTable title="Modal.Header" data={@modal_panel_header_props} />
       <PropsTable title="Modal.Backdrop" data={@modal_backdrop_props} />
     </Page>
     """
@@ -270,14 +320,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   def get_example_code_1() do
     """
     <Button on_click="open_modal_1">Open dialog</Button>
-    <Modal :if={@modal_1_is_open}>
+    <Modal is_open={@modal_1_is_open}>
       <Modal.Backdrop />
       <Modal.Panel>
-        <div class="p-4 border-b-2 border-beerus">
-          <h3 class="text-moon-18 text-bulma font-semibold">
-            Payment successful
-          </h3>
-        </div>
+        <Modal.Header has_divider>Payment successful</Modal.Header>
         <div class="p-4">
           <p class="text-moon-16 text-trunks">
             {lorem_payment()}
@@ -298,14 +344,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   def get_example_code_2() do
     """
     <Button on_click="open_modal_2">Open dialog</Button>
-    <Modal :if={@modal_2_is_open}>
+    <Modal is_open={@modal_2_is_open}>
       <Modal.Backdrop />
       <Modal.Panel>
-        <div class="p-4 border-b-2 border-beerus">
-          <h3 class="text-moon-18 text-bulma font-semibold">
-            ayment successful
-          </h3>
-        </div>
+        <Modal.Header has_divider>Payment successful</Modal.Header>
         <div class="p-4">
           <p class="text-moon-16 text-trunks">
             {lorem_big_content()}
@@ -326,13 +368,11 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   def get_example_code_3() do
     """
     <Button on_click="open_modal_3">Open dialog</Button>
-    <Modal :if={@modal_3_is_open}>
+    <Modal is_open={@modal_3_is_open} on_close="close_modal_3">
       <Modal.Backdrop />
       <Modal.Panel class="lg:max-w-md bg-roshi text-goten">
-        <span class="flex pt-5 pe-5 justify-end cursor-pointer">
-          <ControlsClose class="text-moon-24" click="close_modal_3" />
-        </span>
-        <div class="p-4 pt-11">
+        <Modal.Header has_close class="text-moon-24" />
+        <div class="p-4">
           <div class="mt-2">
             <h3 class="text-moon-24 text-goten font-semibold text-center">
               Your payment has been successfully submitted.
@@ -350,17 +390,10 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   def get_example_code_4() do
     """
     <Button on_click="open_modal_4">Open dialog</Button>
-    <Modal :if={@modal_4_is_open}>
+    <Modal is_open={@modal_4_is_open} on_close="close_modal_4">
       <Modal.Backdrop />
       <Modal.Panel>
-        <div class="border-b-2 border-beerus pt-5 pb-4 px-6 flex justify-between">
-          <h3 class="text-moon-18 text-bulma font-semibold">
-            Modal title
-          </h3>
-          <span class="cursor-pointer">
-            <ControlsClose click="close_modal_4" />
-          </span>
-        </div>
+        <Modal.Header has_divider has_close>Modal title</Modal.Header>
         <div class="px-6 py-4 flex flex-col gap-3">
           <Select label="Size" class="w-full" options={@size_options} prompt="Please select size" />
           <Select label="Color" class="w-full" options={@color_options} prompt="Please select color" />
