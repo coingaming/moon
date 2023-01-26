@@ -16,9 +16,7 @@ defmodule Moon.Design.Modal.Panel do
       "w-full max-w-sm inline-block transform rounded-xl bg-gohan align-middle shadow-moon-lg transition-all",
       @class
     ])}>
-      {#if slot_assigned?(:header)}
-        <#slot {@header} />
-      {/if}
+      <#slot {@header} />
       <#slot />
     </div>
     """
