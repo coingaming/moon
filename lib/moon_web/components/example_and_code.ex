@@ -7,6 +7,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
   alias MoonWeb.Components.PreviewCodeButton
 
   prop(class, :string)
+  prop(example_class, :css_class)
   prop(layout, :string, default: "grid")
   data(buttons, :list, default: ["preview", "code"])
   data(selected_button, :string, default: "preview")
@@ -24,15 +25,14 @@ defmodule MoonWeb.Components.ExampleAndCode do
         <p><#slot {@note} /></p>
       </div>
 
-      <div class={
-        "p-4 flex bg-goku text-moon-14 rounded-moon-s-sm",
+      <div class={merge([
+        "p-4 flex bg-goku text-moon-14 rounded-moon-s-sm w-full",
+        @example_class,
         hidden: @selected_button == "code"
-      }>
-        <div class="bg-goku w-full">
-          <!-- Do not remove this -->
-          <div class="flex flex-wrap items-center justify-around gap-2 w-full bg-transparent">
-            <#slot {@example}>Example not defined</#slot>
-          </div>
+      ])}>
+        <!-- Do not remove this -->
+        <div class="flex flex-wrap items-center justify-around gap-2 w-full bg-transparent">
+          <#slot {@example}>Example not defined</#slot>
         </div>
       </div>
       <div class={

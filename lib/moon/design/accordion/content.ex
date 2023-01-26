@@ -1,7 +1,7 @@
 defmodule Moon.Design.Accordion.Content do
   @moduledoc false
 
-  use Surface.Component, slot: "content"
+  use Moon.StatelessComponent, slot: "content"
 
   import Moon.Helpers.MergeClass
 

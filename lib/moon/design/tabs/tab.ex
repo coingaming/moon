@@ -1,9 +1,7 @@
 defmodule Moon.Design.Tabs.Tab do
   @moduledoc false
 
-  use Surface.Component, slot: "tabs"
-
-  import Moon.Helpers.MergeClass, only: [merge: 1]
+  use Moon.StatelessComponent, slot: "tabs"
 
   # open API
   prop(disabled, :boolean, default: false)
@@ -39,7 +37,7 @@ defmodule Moon.Design.Tabs.Tab do
         @class
       ])}
       :on-click={!@disabled && @on_change}
-      :values={selected_index: @tabindex}
+      value={@tabindex}
     ><#slot /></button>
     """
   end

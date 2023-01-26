@@ -1,4 +1,4 @@
-defmodule Moon.Design.Tabs.Pill do
+defmodule Moon.Design.Tabs.Segment do
   @moduledoc false
 
   use Moon.StatelessComponent, slot: "tabs"
@@ -27,10 +27,10 @@ defmodule Moon.Design.Tabs.Pill do
       aria-selected={@selected}
       {=@disabled}
       class={merge([
-        "focus:outline-none text-moon-14 text-bulma font-semibold flex items-center justify-center transition-colors cursor-pointer rounded-moon-i-sm",
+        "items-center justify-center whitespace-nowrap text-moon-14 text-bulma font-medium rounded-moon-i-sm transition-colors focus:outline-none",
         (@selected && @selected_class) || @unselected_class,
-        (@size === "sm" && "px-2 py-1 gap-1") || "py-2 px-3 gap-2",
-        (@disabled && "cursor-default text-trunks") || "hover:bg-gohan",
+        (@size === "sm" && "px-3 py-1") || "py-2 px-4",
+        (@disabled && "cursor-default text-trunks") || "cursor-pointer hover:bg-gohan",
         @class
       ])}
       :on-click={!@disabled && @on_change}
