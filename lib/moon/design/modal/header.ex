@@ -15,6 +15,7 @@ defmodule Moon.Design.Modal.Header do
   prop(has_divider, :boolean, default: false)
   prop(has_close, :boolean, default: false)
 
+  # Internal API
   prop(on_close, :event, from_context: :on_close)
 
   @spec render(map) :: Phoenix.LiveView.Rendered.t()

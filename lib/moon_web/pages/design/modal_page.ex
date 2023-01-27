@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         :type => 'boolean',
         :required => 'No',
         :default => 'false',
-        :description => 'Whether the Modal is open or not.'
+        :description => 'Whether the Modal is open or not'
       },
       %{
         :name => 'on_close',
@@ -72,11 +72,18 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         :description => 'Header of Modal element, see Modal.Header'
       },
       %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'No',
+        :default => '-',
+        :description => 'Content of Modal element'
+      },
+      %{
         :name => 'class',
         :type => 'css_class',
         :required => 'Yes',
         :default => '-',
-        :description => 'Tailwind classes for customization of Panel.'
+        :description => 'Tailwind classes for customization of Panel'
       }
     ]
   )
@@ -84,25 +91,39 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   data(modal_panel_header_props, :list,
     default: [
       %{
-        :name => 'class',
-        :type => 'css_class',
-        :required => 'Yes',
+        :name => 'default',
+        :type => 'slot',
+        :required => 'No',
         :default => '-',
-        :description => 'Tailwind classes for customization of Panel.'
+        :description => 'Holds title of Modal.Header'
+      },
+      %{
+        :name => 'title',
+        :type => 'string',
+        :required => 'No',
+        :default => '-',
+        :description => 'Title of Modal.Header'
       },
       %{
         :name => 'has_divider',
         :type => 'boolean',
         :required => 'No',
         :default => 'false',
-        :description => 'Whether the Modal header has divider.'
+        :description => 'Whether the Modal header has divider'
       },
       %{
         :name => 'has_close',
         :type => 'boolean',
         :required => 'No',
         :default => 'false',
-        :description => 'Whether the Modal header has "close" icon.'
+        :description => 'Whether the Modal header has "close" icon'
+      },
+      %{
+        :name => 'class',
+        :type => 'css_class',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Tailwind classes for customization of Panel'
       }
     ]
   )
@@ -114,7 +135,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         :type => 'css_class',
         :required => 'Yes',
         :default => '-',
-        :description => 'Tailwind classes for customization of Backdrop.'
+        :description => 'Tailwind classes for customization of Backdrop'
       }
     ]
   )
