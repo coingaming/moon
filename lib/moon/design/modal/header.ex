@@ -1,11 +1,9 @@
 defmodule Moon.Design.Modal.Header do
   @moduledoc false
 
-  use Surface.Component, slot: "header"
+  use Moon.StatelessComponent, slot: "header"
 
   alias Moon.Icons.ControlsClose
-
-  import Moon.Helpers.MergeClass
 
   prop(class, :css_class)
   prop(title, :string)

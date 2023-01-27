@@ -1,9 +1,7 @@
 defmodule Moon.Design.Modal.Panel do
   @moduledoc false
 
-  use Surface.Component, slot: "panel"
-
-  import Moon.Helpers.MergeClass
+  use Moon.StatelessComponent, slot: "panel"
 
   prop(class, :css_class)
 

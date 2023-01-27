@@ -1,9 +1,7 @@
 defmodule Moon.Design.Modal.Backdrop do
   @moduledoc false
 
-  use Surface.Component, slot: "backdrop"
-
-  import Moon.Helpers.MergeClass
+  use Moon.StatelessComponent, slot: "backdrop"
 
   prop(class, :css_class)
 
