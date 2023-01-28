@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tooltip" is_aria_support is_rtl_support is_in_progress>
+      <ComponentPageDescription title="Tooltip" is_aria_support is_rtl_support>
         <p>
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.
         </p>

@@ -29,78 +29,49 @@ defmodule Moon.Design.Tooltip.Content do
   def render(assigns) do
     ~F"""
     <div class={
-      "absolute left-0 right-0 z-30",
-      (@position in ~w(bottom-start bottom-center bottom-end) && "bottom-0") || "top-0",
+      "absolute flex items-center z-30",
       "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]": !@has_no_shadow,
-      "flex flex-col items-center": !(@position in ~w(left right))
+      "left-full rtl:flex-row-reverse": @position == "right",
+      "right-full ltr:flex-row-reverse": @position == "left",
+      "top-full left-0 right-0 flex-col": String.starts_with?(@position, "bottom"),
+      "bottom-full left-0 right-0 flex-col-reverse": String.starts_with?(@position, "top")
     }>
-      {#case @position}
-        {#match "top-" <> align}
-          <div class="-translate-y-full">
-            <div class={content_class(@class, @has_no_shadow, align)}>
-              <#slot />
-            </div>
-            <div class="w-full overflow-hidden">
-              <#slot
-                {@arrow}
-                context_put={parent_class: ["mx-auto -translate-y-1/2", @class], has_no_shadow: @has_no_shadow}
-              >
-                <div class="w-3 h-3 bg-transparent" />
-              </#slot>
-            </div>
-          </div>
-        {#match "right"}
-          <div class="absolute left-full flex items-center rtl:flex-row-reverse">
-            <div class="py-1 overflow-hidden">
-              <#slot
-                {@arrow}
-                context_put={parent_class: ["translate-x-1/2", @class], has_no_shadow: @has_no_shadow}
-              >
-                <div class="w-3 h-3 bg-transparent" />
-              </#slot>
-            </div>
-            <div class={content_class(@class, @has_no_shadow)}>
-              <#slot />
-            </div>
-          </div>
-        {#match "bottom-" <> align}
-          <div class="translate-y-full">
-            <div class="w-full overflow-hidden">
-              <#slot
-                {@arrow}
-                context_put={parent_class: ["mx-auto translate-y-1/2", @class], has_no_shadow: @has_no_shadow}
-              >
-                <div class="w-3 h-3 bg-transparent" />
-              </#slot>
-            </div>
-            <div class={content_class(@class, @has_no_shadow, align)}>
-              <#slot />
-            </div>
-          </div>
-        {#match "left"}
-          <div class="absolute right-full flex items-center rtl:flex-row-reverse">
-            <div class={content_class(@class, @has_no_shadow)}>
-              <#slot />
-            </div>
-            <div class="py-1 overflow-hidden">
-              <#slot
-                {@arrow}
-                context_put={parent_class: ["-translate-x-1/2", @class], has_no_shadow: @has_no_shadow}
-              >
-                <div class="w-3 h-3 bg-transparent" />
-              </#slot>
-            </div>
-          </div>
-      {/case}
+      <div class={"overflow-hidden", (@position in ~w(right left) && "py-1") || "px-1"}>
+        <#slot
+          {@arrow}
+          context_put={
+            parent_class: [
+              @class,
+              "translate-x-1/2": @position == "right",
+              "-translate-x-1/2": @position == "left",
+              "translate-y-1/2": String.starts_with?(@position, "bottom"),
+              "-translate-y-1/2": String.starts_with?(@position, "top")
+            ],
+            has_no_shadow: @has_no_shadow
+          }
+        >
+          <div class="w-3 h-3 bg-transparent" />
+        </#slot>
+      </div>
+      <div class={content_class(@class, @has_no_shadow, @position)}>
+        <#slot />
+      </div>
     </div>
     """
   end
 
-  defp content_class(class, has_no_shadow, align \\ "center") do
+  defp content_class(class, has_no_shadow, position) do
+    align =
+      case position do
+        "top-" <> a -> a
+        "bottom-" <> a -> a
+        _ -> "center"
+      end
+
     merge([
       "p-3 rounded-moon-s-xs text-moon-12 text-bulma bg-gohan whitespace-nowrap",
-      (has_no_shadow && "") || "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]",
       [
+        "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]": !has_no_shadow,
         "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "end",
         "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "start"
       ],

@@ -14,7 +14,7 @@ defmodule Moon.Design.Tooltip do
     <div class={merge(["relative inline-block group focus:outline-none", @class])} {=@tabindex}>
       <div
         role="tooltip"
-        class="hidden group-hover:block group-focus:block transition-opacity transition-200"
+        class="hidden group-hover:block group-focus:block transition-opacity duration-200"
       >
         <#slot />
       </div>
