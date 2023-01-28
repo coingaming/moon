@@ -79,7 +79,7 @@ defmodule Moon.MixProject do
       {:surface, "~> 0.9.1"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
-      {:moon_icons, git: "git@github.com:coingaming/moon-icons.git", branch: "main"},
+      {:moon_icons, "~> 0.1"},
 
       # test
       {:excoveralls, "~> 0.10", only: :test},

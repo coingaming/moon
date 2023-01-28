@@ -28,7 +28,6 @@ TAG="$2"
 
 if [ "$TAG" = "v${APP_VSN}" ]; then
   VERSION_TAG="${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}"
-  VERSION_TAG_BUILD="-t ${VERSION_TAG}"
 fi
 
 docker build \
