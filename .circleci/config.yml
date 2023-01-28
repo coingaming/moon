@@ -101,9 +101,8 @@ jobs:
           keys:
             - v9-build-{{ checksum "mix.lock" }}
             - v9-build-
-      - run:
-          name: Docker login
-          command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run: mix compile
+      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
