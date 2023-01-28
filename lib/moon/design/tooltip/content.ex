@@ -50,11 +50,11 @@ defmodule Moon.Design.Tooltip.Content do
             </div>
           </div>
         {#match "right"}
-          <div class="flex items-center ltr:translate-x-full rtl:translate-x-1/2">
-            <div class="p-1 overflow-hidden">
+          <div class="absolute left-full flex items-center rtl:flex-row-reverse">
+            <div class="py-1 overflow-hidden">
               <#slot
                 {@arrow}
-                context_put={parent_class: ["-translate-x-1/4", @class], has_no_shadow: @has_no_shadow}
+                context_put={parent_class: ["translate-x-1/2", @class], has_no_shadow: @has_no_shadow}
               >
                 <div class="w-3 h-3 bg-transparent" />
               </#slot>
@@ -78,19 +78,17 @@ defmodule Moon.Design.Tooltip.Content do
             </div>
           </div>
         {#match "left"}
-          <div class="absolute ltr:-translate-x-full rtl:-translate-x-1/2">
-            <div class="flex items-center top-0 right-0">
-              <div class={content_class(@class, @has_no_shadow)}>
-                <#slot />
-              </div>
-              <div class="py-1 overflow-hidden">
-                <#slot
-                  {@arrow}
-                  context_put={parent_class: ["-translate-x-1/2", @class], has_no_shadow: @has_no_shadow}
-                >
-                  <div class="w-3 h-3 bg-transparent" />
-                </#slot>
-              </div>
+          <div class="absolute right-full flex items-center rtl:flex-row-reverse">
+            <div class={content_class(@class, @has_no_shadow)}>
+              <#slot />
+            </div>
+            <div class="py-1 overflow-hidden">
+              <#slot
+                {@arrow}
+                context_put={parent_class: ["-translate-x-1/2", @class], has_no_shadow: @has_no_shadow}
+              >
+                <div class="w-3 h-3 bg-transparent" />
+              </#slot>
             </div>
           </div>
       {/case}
