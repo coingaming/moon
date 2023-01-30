@@ -1,3 +1,10 @@
+## [2.35.9](https://github.com/coingaming/moon/compare/v2.35.8...v2.35.9) (2023-01-30)
+
+
+### Bug Fixes
+
+* field errors ([#528](https://github.com/coingaming/moon/issues/528)) ([08e7406](https://github.com/coingaming/moon/commit/08e7406f88e902ecd18ad4529646e73caac4f3b6))
+
 ## [2.35.8](https://github.com/coingaming/moon/compare/v2.35.7...v2.35.8) (2023-01-19)
 
 
