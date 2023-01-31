@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.ComponentAnatomy do
 
   def render(assigns) do
     ~F"""
-    <pre class="flex w-full p-4 bg-goku rounded-moon-s-sm overflow-scroll text-moon-14 text-bulma whitespace-pre-line"><#slot /></pre>
+    <pre class="flex w-full p-4 bg-goku rounded-moon-s-sm overflow-scroll text-moon-14 text-bulma whitespace-pre-line"><code><#slot /></code></pre>
     """
   end
 end

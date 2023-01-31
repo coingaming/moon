@@ -18,14 +18,14 @@ defmodule Moon.Design.Popover do
       :on-click={@on_click || "toggle_open"}
       :on-click-away={@close || "close_panel"}
     >
+      <div class="inline-block" role="button">
+        <#slot {@trigger} />
+      </div>
       <div
         aria-expanded={[if(@is_open == false, do: "false", else: "true")]}
         class={"transition-opacity transition-200", hidden: @is_open == false}
       >
         <#slot />
-      </div>
-      <div class="inline-block" role="button">
-        <#slot {@trigger} />
       </div>
     </div>
     """
