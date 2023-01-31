@@ -68,7 +68,7 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
       <ExampleAndCode title="Default" id="snackbar_default">
         <:example>
           <Button variant="secondary" on_click="open_snackbar_1">Default</Button>
-          <Snackbar is_open={@snackbar_1_is_open} on_close="close_snackbar_1">
+          <Snackbar is_open={@snackbar_1_is_open}>
             <Snackbar.Content>
               <Snackbar.Message>Snackbar message</Snackbar.Message>
             </Snackbar.Content>
@@ -483,4 +483,93 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
     {:noreply, socket}
   end
 
+  def handle_event("open_snackbar_2", _params, socket) do
+    socket = assign(socket, snackbar_2_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_2", _params, socket) do
+    socket = assign(socket, snackbar_2_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_3", _params, socket) do
+    socket = assign(socket, snackbar_3_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_3", _params, socket) do
+    socket = assign(socket, snackbar_3_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_4", _params, socket) do
+    socket = assign(socket, snackbar_4_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_4", _params, socket) do
+    socket = assign(socket, snackbar_4_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_5", _params, socket) do
+    socket = assign(socket, snackbar_5_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_5", _params, socket) do
+    socket = assign(socket, snackbar_5_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_6", _params, socket) do
+    socket = assign(socket, snackbar_6_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_6", _params, socket) do
+    socket = assign(socket, snackbar_6_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_7", _params, socket) do
+    socket = assign(socket, snackbar_7_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_7", _params, socket) do
+    socket = assign(socket, snackbar_7_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_8", _params, socket) do
+    socket = assign(socket, snackbar_8_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_8", _params, socket) do
+    socket = assign(socket, snackbar_8_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_9", _params, socket) do
+    socket = assign(socket, snackbar_9_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_9", _params, socket) do
+    socket = assign(socket, snackbar_9_is_open: false)
+    {:noreply, socket}
+  end
+
+  def handle_event("open_snackbar_10", _params, socket) do
+    socket = assign(socket, snackbar_10_is_open: true)
+    {:noreply, socket}
+  end
+
+  def handle_event("close_snackbar_10", _params, socket) do
+    socket = assign(socket, snackbar_10_is_open: false)
+    {:noreply, socket}
+  end
 end

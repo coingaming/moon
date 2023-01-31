@@ -55,3 +55,8 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
       element.classList.remove("flex");
       element.classList.add("hidden");}
   });
+
+  window.addEventListener("moon:auto-close-snackbar", (event) => {
+    // var popupwin = window.open(?referece to the snackbar?);
+    setTimeout(function() { popupwin.close();}, 5000);
+  });
