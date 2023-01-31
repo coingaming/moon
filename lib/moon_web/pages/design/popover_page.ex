@@ -4,20 +4,17 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   use MoonWeb, :live_view
 
   alias MoonWeb.Pages.Design.Popover.TriggerElements
+
   alias Moon.Design.Popover
   alias Moon.Design.Button
   alias Moon.Design.Button.IconButton
+
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.PageSection
   alias MoonWeb.Components.ComponentAnatomy
-
-  alias MoonWeb.Pages.Design.Popover.Content.Default
-  alias MoonWeb.Pages.Design.Popover.Content.Position
-  alias MoonWeb.Pages.Design.Popover.Content.WithClose
-  alias MoonWeb.Pages.Design.Popover.Content.TriggerElements
 
   data(breadcrumbs, :any,
     default: [
