@@ -26,48 +26,25 @@ defmodule Moon.Design.Popover.Panel do
   def render(assigns) do
     ~F"""
     <div class={
-      "absolute left-0 right-0 z-30",
-      (@position in ~w(bottom-start bottom-center bottom-end) && "bottom-0") || "top-0",
-      "flex flex-col items-center": !(@position in ~w(left right))
+      "absolute flex items-center z-[9999999]",
+      "left-full -translate-y-1/3 px-2 rtl:flex-row-reverse": @position == "right",
+      "right-full -translate-y-1/3 px-2 ltr:flex-row-reverse": @position == "left",
+      "top-full left-0 right-0 pt-2 flex-col": String.starts_with?(@position, "bottom"),
+      "bottom-full left-0 right-0 pb-2 flex-col-reverse": String.starts_with?(@position, "top")
     }>
-      {#case @position}
-        {#match "top-" <> align}
-          <div class="-translate-y-full py-2">
-            <div class={content_class(@class, align)}>
-              <#slot />
-            </div>
-          </div>
-        {#match "right"}
-          <div class="items-center ltr:translate-x-full -translate-y-1/3 rtl:translate-x-full px-2">
-            <div class={content_class(@class)}>
-              <#slot />
-            </div>
-          </div>
-        {#match "bottom-" <> align}
-          <div class="translate-y-full py-2">
-            <div class={content_class(@class, align)}>
-              <#slot />
-            </div>
-          </div>
-        {#match "left"}
-          <div class="absolute ltr:-translate-x-full rtr:translate-x-3/4 -translate-y-1/3 px-2">
-            <div class="flex items-center top-0 right-0">
-              <div class={content_class(@class)}>
-                <#slot />
-              </div>
-            </div>
-          </div>
-      {/case}
+      <div class={content_class(@class)}>
+        <#slot />
+      </div>
     </div>
     """
   end
 
   defp content_class(class, align \\ "center") do
     merge([
-      "w-72 z-[999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+      "w-72 z-[9999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
       [
-        "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "start",
-        "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "end"
+        "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "end",
+        "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "start"
       ],
       class
     ])

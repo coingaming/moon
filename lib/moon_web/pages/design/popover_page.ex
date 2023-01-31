@@ -35,18 +35,25 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'Render Props:',
-        :type => '',
-        :required => '',
-        :default => '',
-        :description => ''
-      },
-      %{
         :name => 'is_open',
         :type => 'boolean',
         :required => 'No',
-        :default => '-',
+        :default => 'false',
         :description => 'Whether or not the popover is open.'
+      },
+      %{
+        :name => 'default',
+        :type => 'slot',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Content of Popover item, see Popover.Panel'
+      },
+      %{
+        :name => 'trigger',
+        :type => 'slot',
+        :required => 'Yes',
+        :default => '-',
+        :description => 'Trigger element of Popover item, see Popover.Trigger'
       }
     ]
   )
@@ -81,14 +88,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
       <ComponentPageDescription is_in_progress is_aria_support title="Popover">
         <p>Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.</p>
       </ComponentPageDescription>
-
-      <PageSection title="Anatomy">
-        <ComponentAnatomy>{"<Popover>
-                      <Popover.Trigger>...</Popover.Trigger>
-                      <Popover.Panel>...</Popover.Panel>
-                      </Popover>"}
-        </ComponentAnatomy>
-      </PageSection>
 
       <ExampleAndCode title="Default" id="default_example">
         <:example>
