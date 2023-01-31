@@ -18,7 +18,10 @@ defmodule Moon.Design.Tooltip do
       >
         <#slot />
       </div>
-      <div aria-describedby="tooltip" class="inline-block group-focus:ring-2">
+      <div
+        aria-describedby="tooltip"
+        class="inline-block group-focus:ring-2 group-focus:outline-none rounded-moon-s-sm"
+      >
         <#slot {@trigger} />
       </div>
     </div>
