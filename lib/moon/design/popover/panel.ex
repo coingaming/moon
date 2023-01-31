@@ -1,9 +1,7 @@
 defmodule Moon.Design.Popover.Panel do
   @moduledoc false
 
-  use Surface.Component, slot: "default"
-
-  import Moon.Helpers.MergeClass
+  use Moon.StatelessComponent, slot: "default"
 
   prop(class, :css_class)
 
@@ -27,8 +25,8 @@ defmodule Moon.Design.Popover.Panel do
     ~F"""
     <div class={
       "absolute flex items-center z-[9999999]",
-      "left-full -translate-y-1/3 px-2 rtl:flex-row-reverse": @position == "right",
-      "right-full -translate-y-1/3 px-2 ltr:flex-row-reverse": @position == "left",
+      "left-full -translate-y-1/2 px-2 rtl:flex-row-reverse": @position == "right",
+      "right-full -translate-y-1/2 px-2 ltr:flex-row-reverse": @position == "left",
       "top-full left-0 right-0 pt-2 flex-col": String.starts_with?(@position, "bottom"),
       "bottom-full left-0 right-0 pb-2 flex-col-reverse": String.starts_with?(@position, "top")
     }>
@@ -39,7 +37,14 @@ defmodule Moon.Design.Popover.Panel do
     """
   end
 
-  defp content_class(class, align \\ "center") do
+  defp content_class(class, position \\ "center") do
+    align =
+      case position do
+        "top-" <> a -> a
+        "bottom-" <> a -> a
+        _ -> "center"
+      end
+
     merge([
       "w-72 z-[9999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
       [

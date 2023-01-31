@@ -3,8 +3,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
 
   use MoonWeb, :live_view
 
-  alias MoonWeb.Pages.Design.Popover.TriggerElements
-
   alias Moon.Design.Popover
   alias Moon.Design.Button
   alias Moon.Design.Button.IconButton
@@ -13,8 +11,11 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.PropsTable
-  alias MoonWeb.Components.PageSection
-  alias MoonWeb.Components.ComponentAnatomy
+
+  alias MoonWeb.Pages.Design.Popover.Content.Default
+  alias MoonWeb.Pages.Design.Popover.Content.Position
+  alias MoonWeb.Pages.Design.Popover.Content.TriggerElements
+  alias MoonWeb.Pages.Design.Popover.Content.WithClose
 
   data(breadcrumbs, :any,
     default: [
@@ -85,7 +86,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
       <ComponentPageDescription is_in_progress is_aria_support title="Popover">
         <p>Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.</p>
       </ComponentPageDescription>
-
       <ExampleAndCode title="Default" id="default_example">
         <:example>
           <Popover id="popover_id_1">
@@ -99,7 +99,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         </:example>
         <:code>{popover_1_code()}</:code>
       </ExampleAndCode>
-
       <ExampleAndCode title="Position" id="position_example">
         <:note>{"The complete list of all possible positions is in the props table below."}</:note>
         <:example>
@@ -111,7 +110,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
               <Position id="content_position_1" />
             </Popover.Panel>
           </Popover>
-
           <Popover id="popover_id_3">
             <Popover.Trigger>
               <Button>Right</Button>
@@ -120,7 +118,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
               <Position id="content_position_2" />
             </Popover.Panel>
           </Popover>
-
           <Popover id="popover_id_4">
             <Popover.Trigger>
               <Button>Left</Button>
@@ -132,7 +129,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         </:example>
         <:code>{popover_2_code()}</:code>
       </ExampleAndCode>
-
       <ExampleAndCode title="Trigger elements" id="trigger_elements_example">
         <:example>
           <Popover id="popover_id_5">
@@ -143,7 +139,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
               <TriggerElements id="content_elements_1" />
             </Popover.Panel>
           </Popover>
-
           <Popover id="popover_id_6">
             <Popover.Trigger>
               <IconButton icon_only="controls_chevron_down" variant="secondary" />
@@ -152,7 +147,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
               <TriggerElements id="content_elements_2" />
             </Popover.Panel>
           </Popover>
-
           <Popover id="popover_id_7">
             <Popover.Trigger>
               <span class="text-moon-14 text-trunks cursor-pointer hover:text-piccolo">
@@ -166,7 +160,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         </:example>
         <:code>{popover_3_code()}</:code>
       </ExampleAndCode>
-
       <ExampleAndCode title="With close button" id="close_button_example">
         <:example>
           <Popover id="popover_id_8">
@@ -180,7 +173,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         </:example>
         <:code>{popover_4_code()}</:code>
       </ExampleAndCode>
-
       <PropsTable title="Popover props" data={@props_info_array} />
       <PropsTable title="Popover.Panel" data={@panel_info_array} />
     </Page>
@@ -210,7 +202,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <Position id="content_position_1" />
       </Popover.Panel>
     </Popover>
-
     <Popover id="popover_id_3">
       <Popover.Trigger>
         <Button>Right</Button>
@@ -219,7 +210,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <Position id="content_position_2" />
       </Popover.Panel>
     </Popover>
-
     <Popover id="popover_id_4">
       <Popover.Trigger>
         <Button>Left</Button>
@@ -241,7 +231,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <TriggerElements id="content_elements_1" />
       </Popover.Panel>
     </Popover>
-
     <Popover id="popover_id_6">
       <Popover.Trigger>
         <IconButton icon_only="controls_chevron_down" variant="secondary" />
@@ -250,7 +239,6 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         <TriggerElements id="content_elements_2" />
       </Popover.Panel>
     </Popover>
-
     <Popover id="popover_id_7">
       <Popover.Trigger>
         <span class="text-moon-14 text-trunks cursor-pointer hover:text-piccolo">
