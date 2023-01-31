@@ -6,7 +6,7 @@ references:
     elixir: &ELIXIR_IMAGE heathmont/elixir-ci:1.13.1-otp-24-alpine
 
 jobs:
-  otp_release:
+  prelease:
     docker:
       - image: *ELIXIR_IMAGE
     environment:
@@ -27,9 +27,6 @@ jobs:
             - v9-build-{{ checksum "mix.lock" }}
             - v9-build-
       - run:
-          name: Update git submodules
-          command: git submodule update --init --recursive
-      - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
@@ -46,15 +43,14 @@ jobs:
           command: mix assets.deploy
       - run:
           name: Build release
-          command: scripts/deploy/build-release
+          command: mix release
       - save_cache:
           key: v9-build-{{ checksum "mix.lock" }}
           paths:
-            - .cache
             - deps
             - _build
             - ~/.mix
-  check_code_quality:
+  test:
     docker:
       - image: *ELIXIR_IMAGE
     environment:
@@ -75,8 +71,6 @@ jobs:
             - v9-build-{{ checksum "mix.lock" }}
             - v9-build-
       - run:
-          command: git submodule update --init --recursive
-      - run:
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
           command: mix archive.install hex ex_env 0.3.1 --force
@@ -85,16 +79,16 @@ jobs:
       - run:
           command: mix assets.setup
       - run:
-          command: mix format --check-formatted
-      - run:
           command: mix compile --all-warnings --warnings-as-errors
       - run:
-          command: mix credo
+          command: mix format --check-formatted
       - run:
           command: mix surface.format --check-formatted
       - run:
+          command: mix credo
+      - run:
           command: mix test
-  docker_image:
+  dockerhub:
     docker:
       - image: *ELIXIR_IMAGE
     steps:
@@ -107,9 +101,8 @@ jobs:
           keys:
             - v9-build-{{ checksum "mix.lock" }}
             - v9-build-
-      - run:
-          name: Docker login
-          command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run: mix compile
+      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker:
@@ -134,7 +127,7 @@ jobs:
       - run:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
-  release:
+  semrelease:
     docker:
       - image: *ELIXIR_IMAGE
     environment:
@@ -176,20 +169,24 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - otp_release:
+      - prelease:
           context: global
-      - check_code_quality:
+      - test:
           context: global
-      - release:
+      - semrelease:
           context: global
-      - docker_image:
+          filters:
+            branches:
+              only: 
+                - main
+      - dockerhub:
           context: global
           filters:
             branches:
               only:
                 - main
           requires:
-            - otp_release
+            - prelease
       - deploy:
           context: global
           filters:
@@ -199,5 +196,5 @@ workflows:
             tags:
               only: /^v.*/
           requires:
-            - docker_image
+            - dockerhub
   

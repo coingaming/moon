@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-source "$(dirname "$0")/vars"
-
-set -e
-
-mix release
