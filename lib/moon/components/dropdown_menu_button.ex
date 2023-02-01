@@ -13,6 +13,7 @@ defmodule Moon.Components.DropdownMenuButton do
   prop(placement, :string, default: "bottom-end")
   prop(show, :boolean, default: false)
   prop(on_toggle, :event, required: true)
+  prop(testid, :string)
 
   slot(default)
   slot(menu)
@@ -24,6 +25,7 @@ defmodule Moon.Components.DropdownMenuButton do
         class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks hover:text-bulma #{@text_color} hover:#{@hover_bg_color} #{@class}"}
         title={@title}
         :on-click={@on_toggle}
+        data-testid={"#{@testid}-button"}
       >
         <#slot />
       </button>
