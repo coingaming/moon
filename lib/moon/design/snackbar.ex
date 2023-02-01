@@ -20,10 +20,9 @@ defmodule Moon.Design.Snackbar do
   slot(close)
 
   prop(is_open, :boolean, default: false)
-
   prop(class, :css_class)
+  prop(on_close, :event)
 
-  prop(animation, :string, values: ~w(slideInFromRight))
 
   def render(assigns) do
     ~F"""
@@ -43,7 +42,12 @@ defmodule Moon.Design.Snackbar do
       ])}>
         <#slot {@icon} />
         <#slot {@content} />
-        <#slot {@close} />
+        <#slot
+          {@close}
+          context_put={
+            on_close: @on_close
+          }
+        />
       </div>
     </div>
     """

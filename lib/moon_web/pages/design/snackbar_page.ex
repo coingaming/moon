@@ -68,10 +68,11 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
       <ExampleAndCode title="Default" id="snackbar_default">
         <:example>
           <Button variant="secondary" on_click="open_snackbar_1">Default</Button>
-          <Snackbar is_open={@snackbar_1_is_open}>
+          <Snackbar is_open={@snackbar_1_is_open} on_close="close_snackbar_1">
             <Snackbar.Content>
               <Snackbar.Message>Snackbar message</Snackbar.Message>
             </Snackbar.Content>
+            <Snackbar.Close />
           </Snackbar>
         </:example>
       </ExampleAndCode>
