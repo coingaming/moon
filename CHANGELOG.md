@@ -1,3 +1,10 @@
+## [2.35.10](https://github.com/coingaming/moon/compare/v2.35.9...v2.35.10) (2023-02-01)
+
+
+### Bug Fixes
+
+* [MDS-324] Tooltip with focus ([b161076](https://github.com/coingaming/moon/commit/b161076f38504fc27438837c161d52b04e6cd199))
+
 ## [2.35.9](https://github.com/coingaming/moon/compare/v2.35.8...v2.35.9) (2023-01-30)
 
 
