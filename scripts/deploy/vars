@@ -18,7 +18,7 @@ BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$BRANCH_NAME" == "main" ]; then
   ENV_NAME="live"
-  STACKS_BRACH="bitcasino-live"
+  STACKS_BRACH="moon-live"
 fi
 
 DOCKER_ORG=${DOCKER_ORG:-heathmont}
