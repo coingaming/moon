@@ -13,7 +13,6 @@ defmodule Moon.Components.DropdownMenuButton do
   prop(placement, :string, default: "bottom-end")
   prop(show, :boolean, default: false)
   prop(on_toggle, :event, required: true)
-
   prop(testid, :string)
 
   slot(default)
