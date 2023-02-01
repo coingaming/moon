@@ -15,8 +15,6 @@ defmodule Moon.Components.DropdownMenuButton do
   prop(on_toggle, :event, required: true)
   prop(testid, :string)
 
-  prop(testid, :string)
-
   slot(default)
   slot(menu)
 
