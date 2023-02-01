@@ -23,16 +23,18 @@ defmodule Moon.Design.Snackbar do
 
   prop(class, :css_class)
 
+  prop(animation, :string, values: ~w(slideInFromRight))
+
   def render(assigns) do
     ~F"""
     <div class={
       "z-[9999999] flex fixed w-[calc(100%-32px)] md:w-fit transition",
-      "top-4 ltr:left-4 rtl:right-4": @position == "top-left",
-      "justify-center top-4 left-4 right-4 md:m-auto": @position == "top-center",
-      "justify-end top-4 ltr:right-4 rtl:left-4": @position == "top-right",
-      "bottom-4 ltr:left-4 rtl:right-4": @position == "bottom-left",
-      "justify-center bottom-4 left-4 right-4 m-auto": @position == "bottom-center",
-      "justify-end bottom-4 ltr:right-4 rtl:left-4": @position == "bottom-right",
+      "top-4 animate-leftslide ltr:left-4 rtl:right-4": @position == "top-left",
+      "justify-center top-4 left-4 right-4 md:m-auto animate-topslide": @position == "top-center",
+      "justify-end top-4 animate-rightslide ltr:right-4 rtl:left-4": @position == "top-right",
+      "bottom-4 animate-leftslide ltr:left-4 rtl:right-4": @position == "bottom-left",
+      "justify-center bottom-4 left-4 right-4 m-auto animate-bottomslide": @position == "bottom-center",
+      "justify-end bottom-4 animate-rightslide ltr:right-4 rtl:left-4": @position == "bottom-right",
       hidden: @is_open == false
     }>
       <div class={merge([
