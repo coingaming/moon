@@ -44,6 +44,7 @@ config :surface, :components, [
   {Moon.Design.Accordion, propagate_context_to_slots: true},
   {Moon.Design.Modal, propagate_context_to_slots: true},
   {Moon.Design.Modal.Panel, propagate_context_to_slots: true},
+  {Moon.Design.Dropdown, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]

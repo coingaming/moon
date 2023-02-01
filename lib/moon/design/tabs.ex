@@ -3,8 +3,6 @@ defmodule Moon.Design.Tabs do
 
   use Moon.StatefulComponent
 
-  import Moon.Helpers.MoonRender, only: [moon: 1]
-
   prop(selected_index, :integer, default: 0)
   prop(on_change, :event)
   prop(size, :string, values!: ~w(sm md), default: "md")
