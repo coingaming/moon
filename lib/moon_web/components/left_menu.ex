@@ -71,7 +71,7 @@ defmodule MoonWeb.Components.LeftMenu do
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-button"
-                          open_by_default={active_page_contains(@active_page, Pages.Design)}
+                          open_by_default={active_page_contains(@active_page, Pages.Design.Button)}
                         >
                           <:title>Button</:title>
                           <:content>
@@ -84,7 +84,7 @@ defmodule MoonWeb.Components.LeftMenu do
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-form"
-                          open_by_default={active_page_contains(@active_page, Pages.Design)}
+                          open_by_default={active_page_contains(@active_page, Pages.Design.Form)}
                         >
                           <:title>Form</:title>
                           <:content>

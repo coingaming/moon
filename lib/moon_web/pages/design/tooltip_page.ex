@@ -4,7 +4,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   use MoonWeb, :live_view
 
   alias Moon.Design.Tooltip
-  alias Moon.Components.Button
+  alias Moon.Design.Button
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Tooltip" is_aria_support is_rtl_support is_in_progress>
+      <ComponentPageDescription title="Tooltip" is_aria_support is_rtl_support>
         <p>
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.
         </p>
@@ -166,6 +166,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               Custom background
             </Tooltip.Content>
           </Tooltip>
+
           <Tooltip>
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
@@ -175,6 +176,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
               Custom font
             </Tooltip.Content>
           </Tooltip>
+
           <Tooltip>
             <Tooltip.Trigger>
               <Button variant="secondary">Hover Me</Button>
@@ -198,7 +200,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   defp tooltip_1_code() do
     """
     alias Moon.Design.Tooltip
-    alias Moon.Components.Button
+    alias Moon.Design.Button
 
     ...
 
