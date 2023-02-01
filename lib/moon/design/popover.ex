@@ -6,6 +6,7 @@ defmodule Moon.Design.Popover do
   prop(on_click, :event)
   prop(close, :event)
   prop(is_open, :boolean, default: false)
+  prop(testid, :string)
 
   slot(default, required: true)
   slot(trigger, required: true)
@@ -24,6 +25,7 @@ defmodule Moon.Design.Popover do
       <div
         aria-expanded={[if(@is_open == false, do: "false", else: "true")]}
         class={"transition-opacity transition-200", hidden: @is_open == false}
+        data-testid={"#{@testid}-popover-panel"}
       >
         <#slot />
       </div>
@@ -32,11 +34,7 @@ defmodule Moon.Design.Popover do
   end
 
   def handle_event("toggle_open", _, socket) do
-    if socket.assigns[:is_open] == false do
-      {:noreply, assign(socket, is_open: true)}
-    else
-      {:noreply, assign(socket, is_open: false)}
-    end
+    {:noreply, assign(socket, is_open: !socket.assigns.is_open)}
   end
 
   def handle_event("close_panel", _, socket) do
