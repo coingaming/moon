@@ -24,8 +24,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v9-build-{{ checksum "mix.lock" }}
-            - v9-build-
+            - v10-build-{{ checksum "mix.lock" }}
+            - v10-build-
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -45,7 +45,7 @@ jobs:
           name: Build release
           command: mix release
       - save_cache:
-          key: v9-build-{{ checksum "mix.lock" }}
+          key: v10-build-{{ checksum "mix.lock" }}
           paths:
             - deps
             - _build
@@ -68,8 +68,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v9-build-{{ checksum "mix.lock" }}
-            - v9-build-
+            - v10-build-{{ checksum "mix.lock" }}
+            - v10-build-
       - run:
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
@@ -99,8 +99,8 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v9-build-{{ checksum "mix.lock" }}
-            - v9-build-
+            - v10-build-{{ checksum "mix.lock" }}
+            - v10-build-
       - run: mix compile
       - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
@@ -137,8 +137,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v9-build-{{ checksum "mix.lock" }}
-            - v9-build-
+            - v10-build-{{ checksum "mix.lock" }}
+            - v10-build-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -155,7 +155,7 @@ jobs:
           name:       Test
           command:    mix test
       - save_cache:
-          key: v9-build-{{ checksum "mix.lock" }}
+          key: v10-build-{{ checksum "mix.lock" }}
           paths:
             - deps
             - _build
