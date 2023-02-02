@@ -70,7 +70,6 @@ defmodule Moon.Design.Button do
         disabled: @disabled,
         type: @type,
         form: @form,
-        close: @close,
         "data-size": @size,
         "data-testid": @testid,
         ":values": @values

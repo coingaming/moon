@@ -23,21 +23,23 @@ defmodule Moon.Design.Popover.Panel do
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "absolute flex items-center z-[9999999]",
-      "left-full -translate-y-1/2 px-2 rtl:flex-row-reverse": @position == "right",
-      "right-full -translate-y-1/2 px-2 ltr:flex-row-reverse": @position == "left",
-      "top-full left-0 right-0 pt-2 flex-col": String.starts_with?(@position, "bottom"),
-      "bottom-full left-0 right-0 pb-2 flex-col-reverse": String.starts_with?(@position, "top")
-    }>
-      <div class={content_class(@class)}>
-        <#slot />
-      </div>
+    <div class={merge([
+      [
+        "absolute flex w-72 z-[9999999] overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+        alignment_class(@position),
+        "left-full -translate-y-1/2 mx-2 rtl:flex-row-reverse": @position == "right",
+        "right-full -translate-y-1/2 mx-2 ltr:flex-row-reverse": @position == "left",
+        "top-full mt-2 flex-col-reverse": String.starts_with?(@position, "bottom"),
+        "bottom-full mb-2 flex-col-reverse": String.starts_with?(@position, "top")
+      ],
+      @class
+    ])}>
+      <#slot />
     </div>
     """
   end
 
-  defp content_class(class, position \\ "center") do
+  defp alignment_class(position \\ "center") do
     align =
       case position do
         "top-" <> a -> a
@@ -46,12 +48,10 @@ defmodule Moon.Design.Popover.Panel do
       end
 
     merge([
-      "w-72 z-[9999999] p-1 rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
       [
-        "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "end",
-        "ltr:translate-x-1/3 rtl:-translate-x-1/3": align == "start"
-      ],
-      class
+        "ltr:left-0 rtl:right-0": align == "start",
+        "ltr:right-0 rtl:left-0": align == "end"
+      ]
     ])
   end
 end

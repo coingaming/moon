@@ -14,12 +14,12 @@ defmodule Moon.Design.Popover do
   def render(assigns) do
     ~F"""
     <div
-      class="relative inline-block"
+      class="relative"
       ,
       :on-click={@on_click || "toggle_open"}
       :on-click-away={@close || "close_panel"}
     >
-      <div class="inline-block" role="button">
+      <div role="button">
         <#slot {@trigger} />
       </div>
       <div
