@@ -8,15 +8,19 @@ defmodule Moon.Design.Popover.Panel do
   prop(position, :string,
     values!: [
       "top-start",
-      "top-center",
+      "top",
       "top-end",
       "bottom-start",
-      "bottom-center",
+      "bottom",
       "bottom-end",
+      "right-start",
       "right",
-      "left"
+      "right-end",
+      "left-start",
+      "left",
+      "left-end"
     ],
-    default: "top-center"
+    default: "top"
   )
 
   slot(default, required: true)
@@ -25,33 +29,24 @@ defmodule Moon.Design.Popover.Panel do
     ~F"""
     <div class={merge([
       [
-        "absolute flex w-72 z-[9999999] overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
-        alignment_class(@position),
-        "left-full -translate-y-1/2 mx-2 rtl:flex-row-reverse": @position == "right",
-        "right-full -translate-y-1/2 mx-2 ltr:flex-row-reverse": @position == "left",
-        "top-full mt-2 flex-col-reverse": String.starts_with?(@position, "bottom"),
-        "bottom-full mb-2 flex-col-reverse": String.starts_with?(@position, "top")
+        "absolute z-[9999999] overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+        "left-full top-1/2  ml-2 -translate-y-1/2": @position == "right",
+        "left-full top-0    ml-2": @position == "right-start",
+        "left-full bottom-0 ml-2": @position == "right-end",
+        "right-full top-1/2 mr-2 -translate-y-1/2": @position == "left",
+        "right-full top-0 mr-2": @position == "left-start",
+        "right-full bottom-0 mr-2": @position == "left-end",
+        "top-full left-1/2 mt-2 -translate-x-1/2": @position == "bottom",
+        "top-full left-0 mt-2": @position == "bottom-start",
+        "top-full right-0 mt-2": @position == "bottom-end",
+        "bottom-full left-1/2 mb-2 -translate-x-1/2": @position == "top",
+        "bottom-full left-0 mb-2": @position == "top-start",
+        "bottom-full right-0 mb-2": @position == "top-end"
       ],
       @class
     ])}>
       <#slot />
     </div>
     """
-  end
-
-  defp alignment_class(position \\ "center") do
-    align =
-      case position do
-        "top-" <> a -> a
-        "bottom-" <> a -> a
-        _ -> "center"
-      end
-
-    merge([
-      [
-        "ltr:left-0 rtl:right-0": align == "start",
-        "ltr:right-0 rtl:left-0": align == "end"
-      ]
-    ])
   end
 end

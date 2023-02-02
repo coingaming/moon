@@ -6,47 +6,40 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
   alias Moon.Design.Popover
   alias Moon.Design.Button
 
+  import MoonWeb.Helpers.Lorem
+
+  prop(placemets, :list,
+    default: [
+      "top-start",
+      "top",
+      "top-end",
+      "bottom-start",
+      "bottom",
+      "bottom-end",
+      "right-start",
+      "right",
+      "right-end",
+      "left-start",
+      "left",
+      "left-end"
+    ]
+  )
+
   def render(assigns) do
     ~F"""
-    <Popover id="popover_id_2">
-      <Popover.Trigger>
-        <Button>Top</Button>
-      </Popover.Trigger>
-      <Popover.Panel>
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
-    <Popover id="popover_id_3">
-      <Popover.Trigger>
-        <Button>Right</Button>
-      </Popover.Trigger>
-      <Popover.Panel position="right">
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
-    <Popover id="popover_id_4">
-      <Popover.Trigger>
-        <Button>Left</Button>
-      </Popover.Trigger>
-      <Popover.Panel position="left">
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
+    {#for placement <- @placemets}
+      <Popover id={"popover-ex-#{placement}"}>
+        <Popover.Trigger>
+          <Button variant="secondary">{placement}</Button>
+        </Popover.Trigger>
+        <Popover.Panel position={placement} class="w-[300px]">
+          <p class="p-4 text-moon-14">
+            I'm a {placement} popover
+          </p>
+          <p class="p-4 text-moon-14">{lorem()}</p>
+        </Popover.Panel>
+      </Popover>
+    {/for}
     """
   end
 
@@ -55,47 +48,38 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
     alias Moon.Design.Popover
     alias Moon.Design.Button
 
+    prop(placemets, :list, default: [
+      "top-start",
+      "top",
+      "top-end",
+      "bottom-start",
+      "bottom",
+      "bottom-end",
+      "right-start",
+      "right",
+      "right-end",
+      "left-start",
+      "left",
+      "left-end"
+    ])
+
     ...
 
-    <Popover id="popover_id_2">
-      <Popover.Trigger>
-        <Button>Top</Button>
-      </Popover.Trigger>
-      <Popover.Panel>
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
-    <Popover id="popover_id_3">
-      <Popover.Trigger>
-        <Button>Right</Button>
-      </Popover.Trigger>
-      <Popover.Panel position="right">
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
-    <Popover id="popover_id_4">
-      <Popover.Trigger>
-        <Button>Left</Button>
-      </Popover.Trigger>
-      <Popover.Panel position="left">
-        <p class="p-4 text-moon-14">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </p>
-      </Popover.Panel>
-    </Popover>
+    {#for placement <- @placemets}
+      <Popover id={"popover-ex-\#{placement}"}>
+        <Popover.Trigger>
+          <Button variant="secondary">{placement}</Button>
+        </Popover.Trigger>
+        <Popover.Panel position={placement} class="w-[300px]">
+          <p class="p-4 text-moon-14">
+            I'm a {placement} popover
+          </p>
+          <p class="p-4 text-moon-14">#{lorem()}</p>
+        </Popover.Panel>
+      </Popover>
+    {/for}
     """
   end
+
+  def note(), do: "The complete list of all possible positions is in the props table below."
 end
