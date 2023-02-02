@@ -175,26 +175,26 @@ workflows:
           context: global
       - semrelease:
           context: global
-          # filters:
-          #   branches:
-          #     only: 
-          #       - main
+          filters:
+            branches:
+              only: 
+                - main
       - dockerhub:
           context: global
-          # filters:
-          #   branches:
-          #     only:
-          #       - main
+          filters:
+            branches:
+              only:
+                - main
           requires:
             - prelease
       - deploy:
           context: global
-          # filters:
-          #   branches:
-          #     only: 
-          #       - main
-          #   tags:
-          #     only: /^v.*/
+          filters:
+            branches:
+              only: 
+                - main
+            tags:
+              only: /^v.*/
           requires:
             - dockerhub
   
