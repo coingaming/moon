@@ -1,4 +1,4 @@
-defmodule MoonWeb.Components.ComponentAnatomy do
+defmodule MoonWeb.Components.Anatomy do
   @moduledoc false
 
   use MoonWeb, :stateless_component

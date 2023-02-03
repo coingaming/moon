@@ -64,9 +64,9 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Default do
     alias Moon.Components.Lego
 
     alias Moon.Icons.{
-    GenericTrophy,
-    MediaTuner,
-    MediaMegaphone
+      GenericTrophy,
+      MediaTuner,
+      MediaMegaphone
     }
 
     ...

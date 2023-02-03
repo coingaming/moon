@@ -17,7 +17,7 @@ defmodule Moon.Design.Popover do
         <#slot {@trigger} />
       </div>
       <div
-        aria-expanded={[if(@is_open == false, do: "false", else: "true")]}
+        aria-expanded={(@is_open && "true") || "false"}
         class={"transition-opacity transition-200", hidden: @is_open == false}
         data-testid={"#{@testid}-popover-panel"}
       >
