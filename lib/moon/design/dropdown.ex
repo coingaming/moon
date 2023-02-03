@@ -17,7 +17,7 @@ defmodule Moon.Design.Dropdown do
   slot(option)
 
   def handle_event("on_change_default", params = %{"value" => value}, socket) do
-    IO.puts("ON_CHAGE_DEFAULT #{inspect params}")
+    IO.puts("ON_CHAGE_DEFAULT #{inspect(params)}")
     {:noreply, assign(socket, value: value)}
   end
 

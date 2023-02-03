@@ -105,9 +105,9 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
             <Dropdown.Trigger :let={value: value}>
               <Button variant="primary" class="w-96">{value || "Choose name..."}</Button>
             </Dropdown.Trigger>
-            <Dropdown.Option value="hi" title="First option"/>
-            <Dropdown.Option value="it's" title="Second option"/>
-            <Dropdown.Option value="me" title="Third option"/>
+            <Dropdown.Option value="hi" title="First option" />
+            <Dropdown.Option value="it's" title="Second option" />
+            <Dropdown.Option value="me" title="Third option" />
           </Dropdown>
         </:example>
         <:code>{dropdown_1_code()}</:code>
@@ -115,7 +115,10 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
       <ExampleAndCode title="Default dropdown" id="drop-example-02">
         <:example>
-          <Dropdown id="dropdown-02" option_titles={["Wade Cooper","Arlene Mccoy","Devon Webb","Tom Cook","Tanya Fox","Hellen Schmidt"]}>
+          <Dropdown
+            id="dropdown-02"
+            option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+          >
             <Dropdown.Trigger :let={value: value}>
               <Button variant="primary" class="w-96">{value || "Choose name..."}</Button>
             </Dropdown.Trigger>
