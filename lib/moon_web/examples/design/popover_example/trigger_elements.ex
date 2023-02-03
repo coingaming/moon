@@ -2,6 +2,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
   @moduledoc false
 
   use Moon.StatelessComponent
+  use MoonWeb, :example
 
   alias Moon.Design.Popover
   alias Moon.Design.Button

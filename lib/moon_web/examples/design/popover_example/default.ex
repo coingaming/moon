@@ -3,6 +3,8 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Default do
 
   use Moon.StatelessComponent
 
+  use MoonWeb, :example
+
   alias Moon.Design.Popover
   alias Moon.Design.Button
   alias Moon.Design.MenuItem

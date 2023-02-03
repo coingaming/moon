@@ -112,6 +112,10 @@ defmodule MoonWeb do
     end
   end
 
+  def example do
+
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """
