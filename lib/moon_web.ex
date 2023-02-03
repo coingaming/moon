@@ -113,7 +113,6 @@ defmodule MoonWeb do
   end
 
   def example do
-
   end
 
   @doc """

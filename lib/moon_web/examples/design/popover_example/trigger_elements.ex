@@ -15,7 +15,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
       <Popover.Trigger>
         <Button>Button</Button>
       </Popover.Trigger>
-      <Popover.Panel position="bottom">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
       <Popover.Trigger>
         <IconButton icon_only="controls_chevron_down" variant="secondary" />
       </Popover.Trigger>
-      <Popover.Panel position="bottom-end">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
@@ -37,7 +37,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
           Open popover
         </span>
       </Popover.Trigger>
-      <Popover.Panel position="bottom-start">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
@@ -59,7 +59,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
       <Popover.Trigger>
         <Button>Button</Button>
       </Popover.Trigger>
-      <Popover.Panel position="bottom">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
       <Popover.Trigger>
         <IconButton icon_only="controls_chevron_down" variant="secondary" />
       </Popover.Trigger>
-      <Popover.Panel position="bottom-end">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
@@ -81,7 +81,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
           Open popover
         </span>
       </Popover.Trigger>
-      <Popover.Panel position="bottom-start">
+      <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
         <MenuItem>Promotions</MenuItem>
         <MenuItem>Providers</MenuItem>
