@@ -70,9 +70,9 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
           %{
             :name => 'position',
             :type =>
-              'top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | right | left',
+              'top-start | top | top-end | bottom-start | bottom | bottom-end | right-start | right | right-end | left-start | left | left-end',
             :required => 'No',
-            :default => 'top-center',
+            :default => 'top',
             :description => 'Set placement for popover'
           },
           %{

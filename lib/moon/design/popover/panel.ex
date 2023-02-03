@@ -29,7 +29,7 @@ defmodule Moon.Design.Popover.Panel do
     ~F"""
     <div class={merge([
       [
-        "absolute z-[9999999] overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+        "absolute z-[9999999] w-72 overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
         "left-full top-1/2  ml-2 -translate-y-1/2": @position == "right",
         "left-full top-0    ml-2": @position == "right-start",
         "left-full bottom-0 ml-2": @position == "right-end",
