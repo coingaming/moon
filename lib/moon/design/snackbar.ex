@@ -37,7 +37,7 @@ defmodule Moon.Design.Snackbar do
       hidden: @is_open == false
     }>
       <div class={merge([
-        "flex w-fit max-w-xs items-center gap-4 p-4 bg-gohan shadow-moon-lg rounded-moon-s-sm",
+        "flex w-fit max-w-xs items-center gap-4 p-4 bg-gohan shadow-moon-lg rounded-moon-s-sm hidden first:block",
         @class
       ])}>
         <#slot {@icon} />
