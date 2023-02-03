@@ -34,12 +34,14 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Facing.DeprecationWarning
   alias Moon.Autolayouts.LeftToRight
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -117,7 +119,13 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Popover">
-        <p>Popover</p>
+        <DeprecationWarning
+          name="Popover"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.PopoverPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       {#for placement <- [

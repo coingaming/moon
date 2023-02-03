@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.Breadcrumbs do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Breadcrumb, as: BreadCrumbsComponent
+  alias Moon.Design.Breadcrumb, as: BreadCrumbsComponent
 
   prop(breadcrumbs, :any)
   prop(theme_name, :string, default: "lab-light")

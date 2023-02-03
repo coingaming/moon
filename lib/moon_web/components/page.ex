@@ -44,7 +44,7 @@ defmodule MoonWeb.Components.Page do
             theme_name={@theme_name}
             breadcrumbs={@breadcrumbs}
           />
-          <div class="flex flex-col gap-12 flex-1 relative overflow-y-auto focus:outline-none">
+          <div class="flex flex-col gap-12 flex-1 relative focus:outline-none">
             <#slot />
           </div>
           <Footer />
