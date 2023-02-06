@@ -49,7 +49,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.WithClose do
               Your favourite games
             </Lego.MultiTitle>
           </MenuItem>
-          <Button close="close_panel">Close</Button>
+          <Button on_click="close_panel">Close</Button>
         </div>
       </Popover.Panel>
     </Popover>

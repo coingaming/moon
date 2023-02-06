@@ -3,7 +3,7 @@ defmodule Moon.Components.Lego.Checkbox do
 
   use Moon.StatelessComponent
 
-  prop(is_selected, :boolean, from_context: {Moon.Components.Lego, :is_selected})
+  prop(is_selected, :boolean, from_context: :is_selected)
 
   def render(assigns) do
     ~F"""

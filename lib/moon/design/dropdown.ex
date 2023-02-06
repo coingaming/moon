@@ -16,9 +16,8 @@ defmodule Moon.Design.Dropdown do
   slot(trigger, required: true)
   slot(option)
 
-  def handle_event("on_change_default", params = %{"value" => value}, socket) do
-    IO.puts("ON_CHAGE_DEFAULT #{inspect(params)}")
-    {:noreply, assign(socket, value: value)}
+  def handle_event("on_change_default", %{"value" => value}, socket) do
+    {:noreply, assign(socket, value: value, is_open: false)}
   end
 
   def handle_event("on_trigger_default", _, socket) do
@@ -31,9 +30,9 @@ defmodule Moon.Design.Dropdown do
 
   def render(assigns) do
     ~F"""
-    <div class="relative">
+    <div class="relative" :on-click-away="close_me">
       <div class={merge([
-        "flex flex-col absolute w-full top-full z-5",
+        "flex flex-col absolute w-full top-full z-[99]",
         "p-1 my-2 rounded-moon-s-md box-border bg-gohan shadow-moon-lg overflow-y-auto focus:outline-none",
         (@is_open && "") || "hidden",
         @class
@@ -43,7 +42,7 @@ defmodule Moon.Design.Dropdown do
             <#slot
               {option}
               context_put={
-                selected: (option.value || "#{index}") == @value,
+                is_selected: Enum.member?(make_list(@value), (option.value || "#{index}")),
                 size: @size,
                 on_click: @on_change || %{name: "on_change_default", target: @myself},
                 value: index
@@ -54,7 +53,7 @@ defmodule Moon.Design.Dropdown do
           <.moon
             :for={title <- @option_titles}
             module={@option_module}
-            selected={title == @value}
+            is_selected={Enum.member?(make_list(@value), title)}
             {=@size}
             on_click={@on_change || %{name: "on_change_default", target: @myself}}
             value={title}
@@ -64,11 +63,10 @@ defmodule Moon.Design.Dropdown do
 
       <div
         :on-click={@on_trigger || %{name: "on_trigger_default", target: @myself}}
-        :on-click-away="close_me"
         aria-haspopup="true"
         aria-expanded={@is_open}
       >
-        <#slot {@trigger, value: @value} />
+        <#slot {@trigger, value: @value, is_open: @is_open} />
       </div>
     </div>
     """
