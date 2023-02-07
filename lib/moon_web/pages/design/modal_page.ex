@@ -176,7 +176,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_rtl_support title="Modal">
+      <ComponentPageDescription is_rtl_support title="Modal">
         <p>
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
         </p>
