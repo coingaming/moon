@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
   import MoonWeb.Helpers.Lorem
   import Moon.Helpers.Positions
 
-  prop(placemets, :list, default: position_list)
+  prop(placemets, :list, default: position_list())
 
   def render(assigns) do
     ~F"""
