@@ -9,23 +9,9 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
   alias Moon.Design.Button
 
   import MoonWeb.Helpers.Lorem
+  import Moon.Helpers.Positions
 
-  prop(placemets, :list,
-    default: [
-      "top",
-      "bottom",
-      "left",
-      "right",
-      "top-start",
-      "bottom-start",
-      "left-start",
-      "right-start",
-      "top-end",
-      "bottom-end",
-      "left-end",
-      "right-end"
-    ]
-  )
+  prop(placemets, :list, default: position_list)
 
   def render(assigns) do
     ~F"""

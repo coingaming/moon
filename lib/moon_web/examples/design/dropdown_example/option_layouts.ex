@@ -16,10 +16,13 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
   }
 
   data(values, :list, default: ["1", "4"])
+  data(is_open, :boolean, default: false)
 
+  # please note - only for checkbox list "countries", bc it have different behaviour
   def handle_event("on_change", %{"value" => value}, socket) do
     {:noreply,
      assign(socket,
+       is_open: true,
        values:
          (Enum.member?(socket.assigns.values, value) &&
             Enum.filter(socket.assigns.values, &(&1 != value))) || [value | socket.assigns.values]
@@ -77,7 +80,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
         </Dropdown.Option>
       </Dropdown>
 
-      <Dropdown id="dropdown-options-03" on_change="on_change" value={@values}>
+      <Dropdown id="dropdown-options-03" {=@is_open} on_change="on_change" value={@values}>
         <Dropdown.Trigger>
           <Chip>Select countries</Chip>
         </Dropdown.Trigger>
@@ -112,11 +115,15 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
 
   def code() do
     """
-    data(values, :list, default: ["1", "4"])
 
+    data(values, :list, default: ["1", "4"])
+    data(is_open, :boolean, default: false)
+
+    # please note - only for checkbox list "countries", bc it have a bit different behaviour
     def handle_event("on_change", %{"value" => value}, socket) do
       {:noreply,
        assign(socket,
+         is_open: true,
          values:
            (Enum.member?(socket.assigns.values, value) &&
               Enum.filter(socket.assigns.values, &(&1 != value))) || [value | socket.assigns.values]
@@ -174,7 +181,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
         </Dropdown.Option>
       </Dropdown>
 
-      <Dropdown id="dropdown-options-03" on_change="on_change" value={@values}>
+      <Dropdown id="dropdown-options-03" on_change="on_change" {=@is_open} value={@values}>
         <Dropdown.Trigger>
           <Chip>Select countries</Chip>
         </Dropdown.Trigger>
