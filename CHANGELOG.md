@@ -1,3 +1,10 @@
+## [2.35.11](https://github.com/coingaming/moon/compare/v2.35.10...v2.35.11) (2023-02-08)
+
+
+### Bug Fixes
+
+* MDS-338 Dropdown v2 wo Select ([c22f732](https://github.com/coingaming/moon/commit/c22f732b0c043aede0b9493a07cb73782893cc38))
+
 ## [2.35.10](https://github.com/coingaming/moon/compare/v2.35.9...v2.35.10) (2023-02-01)
 
 
