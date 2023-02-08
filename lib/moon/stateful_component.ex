@@ -6,6 +6,7 @@ defmodule Moon.StatefulComponent do
       use Surface.LiveComponent
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
+      import Moon.Helpers.MoonRender
     end
   end
 end

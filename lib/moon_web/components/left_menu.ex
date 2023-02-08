@@ -81,6 +81,7 @@ defmodule MoonWeb.Components.LeftMenu do
                             </div>
                           </:content>
                         </Accordion>
+                        <SidebarLink route={Pages.Design.DropdownPage}>Dropdown</SidebarLink>
                         <Accordion
                           is_content_inside={false}
                           id="left-menu-components-form"

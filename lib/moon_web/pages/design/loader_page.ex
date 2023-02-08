@@ -44,7 +44,7 @@ defmodule MoonWeb.Pages.Design.LoaderPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="Loader">
+      <ComponentPageDescription title="Loader">
         <p>
           Loaders provide a visual cue that an action is processing awaiting a course of change or a result.
         </p>

@@ -115,7 +115,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="Table">
+      <ComponentPageDescription title="Table">
         <p>
           Tables are great for presenting information with a clear, repeating structure.
           Our users are busy and may not want to read long sections of text. Breaking structured

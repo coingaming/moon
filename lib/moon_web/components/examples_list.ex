@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.ExamplesList do
     ~F"""
     {#for module <- @examples}
       <ExampleAndCode title={"#{module}" |> String.split(".") |> Enum.at(-1)} id={"example-#{module}"}>
-        <:example><.moon {=module} /></:example>
+        <:example><.moon {=module} id={"example-contents-#{module}"} /></:example>
         <:code>{(Kernel.function_exported?(module, :code, 0) && module.code()) || ""}</:code>
       </ExampleAndCode>
     {/for}

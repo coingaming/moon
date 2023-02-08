@@ -9,7 +9,7 @@ defmodule Moon.Components.Lego.ChevronUpDown do
   # alias Moon.Icons.ControlsChevronDown
   alias Moon.Components.Lego.TempControlsChevronDown
 
-  prop(is_selected, :boolean, from_context: {Moon.Components.Lego, :is_selected})
+  prop(is_selected, :boolean, from_context: :is_selected)
 
   def render(assigns) do
     ~F"""

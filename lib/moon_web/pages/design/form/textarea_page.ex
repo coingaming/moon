@@ -64,7 +64,7 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="Textarea">
+      <ComponentPageDescription title="Textarea">
         <p>
           A form control for editing multi-line text.
         </p>
