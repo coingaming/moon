@@ -3,12 +3,31 @@ defmodule Moon.Design.Form do
 
   use Moon.StatelessComponent
 
-  slot(default, required: true)
-  slot(trigger, required: true)
+  import Moon.Helpers.Form, only: [transfor: 1]
+
+  prop(id, :string)
+  prop(test_id, :string)
+  prop(for, :any)
+  prop(change, :event)
+  prop(submit, :event)
+  prop(class, :string)
+  prop(autocomplete, :string, default: "on", values: ["on", "off"])
+  prop(target, :any)
+  prop(trigger_action, :any)
+  slot(default)
 
   def render(assigns) do
     ~F"""
-    Under construction
+    <Surface.Components.Form
+      for={transfor(@for)}
+      {=@submit}
+      {=@change}
+      {=@class}
+      {=@trigger_action}
+      opts={autocomplete: @autocomplete, id: @id, "data-test-id": @test_id, "phx-target": @target}
+    >
+      <#slot />
+    </Surface.Components.Form>
     """
   end
 end
