@@ -50,6 +50,11 @@ jobs:
             - deps
             - _build
             - ~/.mix
+      - save_cache:
+          key: v10-prod-{{ .Revision }}
+          paths:
+            - _build
+
   test:
     docker:
       - image: *ELIXIR_IMAGE
@@ -99,9 +104,8 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v10-build-{{ checksum "mix.lock" }}
-            - v10-build-
-      - run: mix compile
+            - v10-prod-{{ .Revision }}
+            - v10-prod-
       - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:

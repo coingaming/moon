@@ -59,14 +59,15 @@ fi
 if [ -n "$ROBOT_NAME" ]; then
   git config user.name "$ROBOT_NAME"
 fi
-git checkout $STACKS_BRACH
+
+git checkout $SERVICE_NAME/$APP_VSN || git checkout -b $SERVICE_NAME/$APP_VSN  
 
 # update-image is shit - do not use it
 # scripts/update-image $STACK_NAME $SERVICE_NAME $IMAGE
-sed -E "s/(moon-surface:v)([0-9a-zA-Z.-]+)/moon-surface:v${APP_VSN}/g" docker-compose.design.yml
+# sed -E "s/(moon-surface:v)([0-9a-zA-Z.-]+)/moon-surface:v${APP_VSN}/g" docker-compose.design.yml
 sed -E "s/(moon-surface:v)([0-9a-zA-Z.-]+)/moon-surface:v${APP_VSN}/g" docker-compose.design.yml > docker-compose.design.yml.tmp
 mv docker-compose.design.yml.tmp docker-compose.design.yml
 git commit -am "upgraded $SERVICE_NAME to $TAG in $ENV_NAME"
 git tag $STACK_NAME-$TAG-$ENV_NAME
-git push origin $STACKS_BRACH && git push --tags
+git push --set-upstream origin $SERVICE_NAME/$APP_VSN && git push --tags
 
