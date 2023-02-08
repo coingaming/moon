@@ -1,0 +1,8 @@
+# ignore, it's just for some local images testing
+version: '3'
+
+services:
+  moon:
+    image: heathmont/moon-surface:v25.3.7
+    ports:
+      - 4000:80
