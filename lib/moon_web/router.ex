@@ -59,6 +59,8 @@ defmodule MoonWeb.Router do
         live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
         live("/components/v2/dropdown/", MoonWeb.Pages.Design.DropdownPage)
+        live("/components/v2/form/select", MoonWeb.Pages.Design.Form.SelectPage)
+        live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextareaPage)
         live("/components/v2/icon-button", MoonWeb.Pages.Design.Button.IconButtonPage)
         live("/components/v2/loader", MoonWeb.Pages.Design.LoaderPage)
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
@@ -67,7 +69,6 @@ defmodule MoonWeb.Router do
         live("/components/v2/snackbar", MoonWeb.Pages.Design.SnackbarPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
         live("/components/v2/tabs", MoonWeb.Pages.Design.TabsPage)
-        live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextareaPage)
         live("/components/v2/tooltip", MoonWeb.Pages.Design.TooltipPage)
 
         live("/components/accordion", MoonWeb.Pages.Components.AccordionPage)
