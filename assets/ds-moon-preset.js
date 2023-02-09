@@ -127,6 +127,7 @@ module.exports = {
         leftslide: "leftslide 0.2s ease-in-out",
         topslide: "topslide 0.2s ease-in-out",
         bottomslide: "bottomslide 0.2s ease-in-out",
+        fadeout: "fadeout 0.5s ease-in-out",
       },
       keyframes: {
         loader: {
@@ -171,6 +172,10 @@ module.exports = {
           "0%": { transform: "translateY(100%)" },
           "100%": { transform: "translateY(0%)"}
         },
+        fadeout: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 }
+         },
       },
       fontWeight: {
         normal: 400,

@@ -9,13 +9,9 @@ defmodule Moon.Design.Snackbar.Close do
 
   prop(class, :css_class)
 
-  # Internal API
-  prop(on_close, :event, from_context: :on_close)
-
   def render(assigns) do
     ~F"""
-    <button class={merge(["flex h-8 aspect-square items-center justify-center text-bulma text-moon-16", @class])}
-    :on-click={@on_close}>
+    <button class={merge(["flex h-8 aspect-square items-center justify-center text-bulma text-moon-16", @class])}>
       <ControlsClose />
     </button>
     """

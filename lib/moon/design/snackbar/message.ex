@@ -9,9 +9,9 @@ defmodule Moon.Design.Snackbar.Message do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["w-full text-moon-14 transition-colors text-bulma", @class])}>
+    <p class={merge(["w-full text-moon-14 transition-colors text-bulma", @class])}>
       <#slot />
-    </div>
+    </p>
     """
   end
 end

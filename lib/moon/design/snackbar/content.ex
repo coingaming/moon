@@ -8,9 +8,6 @@ defmodule Moon.Design.Snackbar.Content do
   slot(header)
   slot(message)
 
-  # Internal API
-  prop(on_close, :event, from_context: :on_close)
-
   def render(assigns) do
     ~F"""
     <div class="w-full">
