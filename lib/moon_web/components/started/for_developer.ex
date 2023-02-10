@@ -73,7 +73,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         at: "/moon/assets",
         from: :moon,
         gzip: true,
-        only: ~w(css svgs),
+        only: ~w(assets themes images svgs favicon.ico robots.txt),
         cache_control_for_etags: "public, max-age=86400"
       </CodeSnippet>
       <CodeSnippet>plug Plug.Static,
@@ -83,8 +83,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         cache_control_for_etags: "public, max-age=86400"
       </CodeSnippet>
       <p>Include Moon Surface themes to your layout, e.g. root.html.heex</p>
-      <CodeSnippet>&lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-dark.css") %&gt;" /&gt;
-        &lt;link rel="stylesheet" href="&lt;%= Routes.static_path(@conn, "/moon/assets/css/lab-light.css") %&gt;" /&gt;
+      <CodeSnippet>&lt;link rel="stylesheet" href=&#123;static_path(@conn, "/themes/moon.css")&#125; /&gt;
       </CodeSnippet>
     </PageSection>
     <PageSection title="Tailwind configuration">
@@ -100,24 +99,25 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         &#125;,
       </CodeSnippet>
       <p>Ensure that you have required dependencies in assets/package.json</p>
-      <CodeSnippet>"postcss-import": "^14.0.0",
-        "postcss-loader": "^4.1.0",
-        "autoprefixer": "^10.2.1",
-        "postcss": "^8.2.4",
+      <CodeSnippet>
+        "@tailwindcss/forms": "^0.4.0",
+        "autoprefixer": "^10.4.2",
+        "esbuild": "^0.13.9",
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
         "tailwindcss": "^3.1.7",
         "tailwindcss-rtl": "^0.9.0"
       </CodeSnippet>
-
       <p>Create file assets/postcss.config.js
       </p>
       <CodeSnippet>module.exports = &#123;
         plugins: &#123;
+        'postcss-import': &#123;&#125;,
         tailwindcss: &#123;&#125;,
         autoprefixer: &#123;&#125;,
         &#125;,
         &#125;
       </CodeSnippet>
-
       <p>Create file assets/tailwind.config.js</p>
       <CodeSnippet>module.exports = &#123;
         mode: 'jit',
@@ -126,73 +126,218 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         '../lib/**/*.heex',
         '../lib/**/*.eex',
         './js/**/*.js',
-        '../deps/moon/lib/moon/**/*.ex'
         ],
-        darkMode: false,
-        theme: &#123;
-        extend: &#123;&#125;,
-        colors: &#123;
-        'transparent': 'transparent',
-        'text': 'var(-text)',
-        'background': 'var(-background)',
-        'krillin-10': 'var(--krillin-10)',
-        'krillin-60': 'var(--krillin-60)',
-        'krillin': 'var(--krillin)',
-        'chichi-10': 'var(--chichi-10)',
-        'chichi-60': 'var(--chichi-60)',
-        'chichi': 'var(--chichi)',
-        'roshi-10': 'var(--roshi-10)',
-        'roshi-60': 'var(--roshi-60)',
-        'roshi': 'var(--roshi)',
-        'dodoria-10': 'var(--dodoria-10)',
-        'dodoria-60': 'var(--dodoria-60)',
-        'dodoria': 'var(--dodoria)',
-        'cell-10': 'var(--cell-10)',
-        'cell-60': 'var(--cell-60)',
-        'cell': 'var(--cell)',
-        'raditz-10': 'var(--raditz-10)',
-        'raditz-60': 'var(--raditz-60)',
-        'raditz': 'var(--raditz)',
-        'whis-10': 'var(--whis-10)',
-        'whis-60': 'var(--whis-60)',
-        'whis': 'var(--whis)',
-        'frieza-10': 'var(--frieza-10)',
-        'frieza-60': 'var(--frieza-60)',
-        'frieza': 'var(--frieza)',
-        'nappa-10': 'var(--nappa-10)',
-        'nappa-60': 'var(--nappa-60)',
-        'nappa': 'var(--nappa)',
-        'piccolo': 'var(--piccolo)',
-        'hit-80': 'var(--hit-80)',
-        'hit': 'var(--hit)',
-        'hit-120': 'var(--hit-120)',
-        'beerus': 'var(--beerus)',
-        'goku-10': 'var(--goku-10)',
-        'goku-40': 'var(--goku-40)',
-        'goku-80': 'var(--goku-80)',
-        'goku': 'var(--goku)',
-        'gohan-10': 'var(--gohan-10)',
-        'gohan-40': 'var(--gohan-40)',
-        'gohan-80': 'var(--gohan-80)',
-        'gohan': 'var(--gohan)',
-        'bulma': 'var(--bulma)',
-        'trunks': 'var(--trunks)',
-        'goten': 'var(--goten)',
-        'popo': 'var(--popo)',
-        &#125;,
-        &#125;,
-        variants: &#123;&#125;,
-        plugins: [require('tailwindcss-rtl')],
+        plugins: [
+        require('tailwindcss/forms'),
+        require('tailwindcss-rtl')],
         &#125;
       </CodeSnippet>
-
+    </PageSection>
+    <PageSection title="Themes package">
       <p>
-        Add postcss-loader into assets/webpack.config.js
+        Run:
       </p>
-      <CodeSnippet>use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],</CodeSnippet>
-      <PageSection title="Run project">
-      </PageSection>
+      <CodeSnippet>cp ../moon-design/workspaces/themes/src/*.css ../moon/priv/static/themes/
+      </CodeSnippet>
+      <p>This package contains all available themes as CSS files with configured tokens as CSS variables: main colours, support colours, border radius, border width, etc.</p>
+      <p>For theming, we use CSS variables as tokens for styling various aspects of the website differently, while still maintaining the overall look and feel. You can import a CSS file with a particular theme from the package. The name of the CSS file corresponds to the name of the theme for a particular brand. Each file contains the Light and Dark modes.</p>
+      <p>CSS variables are defined globally in the <code class="bg-goku px-2 rounded-moon-s-xs self-start">:root</code> element and also within the relevant class selector. Check your theme's CSS file for a proper class name. To switch between Light and Dark modes, you need to change classes. Usually, this main class has to be specified in a <code class="bg-goku px-2 rounded-moon-s-xs self-start">body</code> tag or the corresponding wrapper container.</p>
+      <CodeSnippet>{":root.theme-moon-light,
+          .theme-moon-light {
+            --piccolo: 78 70 180; /* #4e46b4 */
+            --hit: 64 166 159; /* #40a69f */
+            --beerus: 235 235 235; /* #ebebeb */
+            --gohan: 255 255 255; /* #ffffff */
+            --goten: 255 255 255; /* #ffffff */
+            --goku: 245 245 245; /* #f5f5f5 */
+            --bulma: 0 0 0; /* #000000 */
+            --trunks: 153 156 160; /* #999ca0 */
+            --popo: 0 0 0; /* #000000 */
+            --jiren: 78 70 180 / 0.12; /* #4e46b4 */
+            --heles: 0 0 0 / 0.04; /* #000000 */
+            --zeno: 0 0 0 / 0.56; /* #000000 */
+
+            /* support-colors  */
+            --krillin: 255 179 25; /* #ff9800 */
+            --krillin-60: 255 179 25 / 0.56; /* #ff9800 */
+            --krillin-10: 255 179 25 / 0.08; /* #ff9800 */
+
+            --chichi: 255 78 100; /* #ff4e64 */
+            --chichi-60: 255 78 100 / 0.56; /* #ff4e64 */
+            --chichi-10: 255 78 100 / 0.08; /* #ff4e64 */
+
+            --roshi: 46 125 50; /* #2e7d32 */
+            --roshi-60: 46 125 50 / 0.56; /* #2e7d32 */
+            --roshi-10: 46 125 50 / 0.08; /* #2e7d32 */
+
+            --dodoria: 211 48 48; /* #d33030 */
+            --dodoria-60: 211 48 48 / 0.56; /* #d33030 */
+            --dodoria-10: 211 48 48 / 0.08; /* #d33030 */
+
+            --cell: 149 241 213; /* #95f1d5 */
+            --cell-60: 149 241 213 / 0.56; /* #95f1d5 */
+            --cell-10: 149 241 213 / 0.08; /* #95f1d5 */
+
+            --raditz: 179 128 74; /* #b3804a */
+            --raditz-60: 179 128 74 / 0.56; /* #b3804a */
+            --raditz-10: 179 128 74 / 0.08; /* #b3804a */
+
+            --whis: 52 72 240; /* #3448f0 */
+            --whis-60: 52 72 240 / 0.56; /* #3448f0 */
+            --whis-10: 52 72 240 / 0.08; /* #3448f0 */
+
+            --frieza: 92 51 207; /* #5c33cf */
+            --frieza-60: 92 51 207 / 0.56; /* #5c33cf */
+            --frieza-10: 92 51 207 / 0.08; /* #5c33cf */
+
+            --nappa: 114 85 80; /* #725550 */
+            --nappa-60: 114 85 80 / 0.56; /* #725550 */
+            --nappa-10: 114 85 80 / 0.08; /* #725550 */
+
+            /* border-radius */
+            --radius-i-xs: 0.25rem; /* 4px */
+            --radius-i-sm: 0.5rem; /* 8px */
+            --radius-i-md: 0.75rem; /* 12px */
+            --radius-s-xs: 0.25rem; /* 4px */
+            --radius-s-sm: 0.5rem; /* 8px */
+            --radius-s-md: 0.75rem; /* 12px */
+            --radius-s-lg: 1rem; /* 16px */
+
+            /* border-width */
+            --border-width: 0.0625rem; /* 1px */
+            --border-i-width: 0.125rem; /* 2px */
+
+            /* opacity */
+            --opacity-moon: 0.32;
+
+            /* fonts */
+            --averta: 'Averta Std';
+
+            /* box-shadow */
+            --shadow-xs: 0 4px 12px -6px rgb(0 0 0 / 0.06);
+            --shadow-sm: 0 6px 6px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
+            --shadow-md: 0 12px 12px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
+            --shadow-xl: 0 32px 32px -8px rgb(0 0 0 / 0.08),
+              0 0 32px -8px rgb(0 0 0 / 0.12), 0 0 1px rgb(0 0 0 / 0.2);
+          }
+
+          :root.theme-moon-dark,
+          .theme-moon-dark {
+            --piccolo: 91 80 238; /* #5b50ee */
+            --hit: 64 166 159; /* #40a69f */
+            --beerus: 68 68 68; /* #444444 */
+            --gohan: 31 31 31; /* #1f1f1f */
+            --goten: 255 255 255; /* #ffffff */
+            --goku: 11 11 11; /* #0b0b0b */
+            --bulma: 255 255 255; /* #ffffff */
+            --trunks: 153 156 160; /* #999ca0 */
+            --popo: 0 0 0; /* #000000 */
+            --jiren: 91 80 238 / 0.32; /* #5b50ee */
+            --heles: 255 255 255 / 0.12; /* #ffffff */
+            --zeno: 0 0 0 / 0.56; /* #000000 */
+
+            /* support-colors  */
+            --krillin: 255 179 25; /* #ff9800 */
+            --krillin-60: 255 179 25 / 0.56; /* #ff9800 */
+            --krillin-10: 255 179 25 / 0.08; /* #ff9800 */
+
+            --chichi: 255 78 100; /* #ff4e64 */
+            --chichi-60: 255 78 100 / 0.56; /* #ff4e64 */
+            --chichi-10: 255 78 100 / 0.08; /* #ff4e64 */
+
+            --roshi: 46 125 50; /* #2e7d32 */
+            --roshi-60: 46 125 50 / 0.56; /* #2e7d32 */
+            --roshi-10: 46 125 50 / 0.08; /* #2e7d32 */
+
+            --dodoria: 211 48 48; /* #d33030 */
+            --dodoria-60: 211 48 48 / 0.56; /* #d33030 */
+            --dodoria-10: 211 48 48 / 0.08; /* #d33030 */
+
+            --cell: 149 241 213; /* #95f1d5 */
+            --cell-60: 149 241 213 / 0.56; /* #95f1d5 */
+            --cell-10: 149 241 213 / 0.08; /* #95f1d5 */
+
+            --raditz: 179 128 74; /* #b3804a */
+            --raditz-60: 179 128 74 / 0.56; /* #b3804a */
+            --raditz-10: 179 128 74 / 0.08; /* #b3804a */
+
+            --whis: 52 72 240; /* #3448f0 */
+            --whis-60: 52 72 240 / 0.56; /* #3448f0 */
+            --whis-10: 52 72 240 / 0.08; /* #3448f0 */
+
+            --frieza: 92 51 207; /* #5c33cf */
+            --frieza-60: 92 51 207 / 0.56; /* #5c33cf */
+            --frieza-10: 92 51 207 / 0.08; /* #5c33cf */
+
+            --nappa: 114 85 80; /* #725550 */
+            --nappa-60: 114 85 80 / 0.56; /* #725550 */
+            --nappa-10: 114 85 80 / 0.08; /* #725550 */
+
+            /* border-radius */
+            --radius-i-xs: 0.25rem; /* 4px */
+            --radius-i-sm: 0.5rem; /* 8px */
+            --radius-i-md: 0.75rem; /* 12px */
+            --radius-s-xs: 0.25rem; /* 4px */
+            --radius-s-sm: 0.5rem; /* 8px */
+            --radius-s-md: 0.75rem; /* 12px */
+            --radius-s-lg: 1rem; /* 16px */
+
+            /* border-width */
+            --border-width: 0.0625rem; /* 1px */
+            --border-i-width: 0.125rem; /* 2px */
+
+            /* opacity */
+            --opacity-moon: 0.32;
+
+            /* fonts */
+            --averta: 'Averta Std';
+
+            /* box-shadow */
+            --shadow-xs: 0 4px 12px -6px rgb(0 0 0 / 0.64);
+            --shadow-sm: 0 6px 6px -6px rgb(0 0 0 / 0.64), 0 0 1px rgb(0 0 0 / 0.56);
+            --shadow-md: 0 12px 12px -6px rgb(0 0 0 / 0.64), 0 0 1px rgb(0 0 0 / 0.56);
+            --shadow-lg: 0 24px 24px -6px rgb(0 0 0 / 0.64), 0 0 1px rgb(0 0 0 / 0.56);
+            --shadow-xl: 0 48px 48px -6px rgb(0 0 0 / 0.88), 0 0 1px rgb(0 0 0 / 0.72);
+          }
+          "}</CodeSnippet>
+    </PageSection>
+    <PageSection title="Run project">
       <CodeSnippet>mix phx.server</CodeSnippet>
+    </PageSection>
+    <PageSection title="Useful links">
+      <ul class="flex flex-col gap-1 list-disc list-inside">
+        <li>
+          <a
+            href="https://tailwindcss.com/docs/installation"
+            class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Installation: Tailwind CLI - Tailwind CSS
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://tailwindcss.com/docs/editor-setup"
+            class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Editor Setup - Tailwind CSS
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.npmjs.com/package/tailwindcss-rtl"
+            class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+            target="_blank"
+            rel="noreferrer"
+          >
+            npm: tailwindcss-rtl
+          </a>
+        </li>
+      </ul>
     </PageSection>
     """
   end
