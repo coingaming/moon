@@ -3,18 +3,14 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   use MoonWeb, :stateful_component
 
-  alias Moon.Assets.Logos.LogoAposta10Short
-  alias Moon.Assets.Logos.LogoBitcasinoShort
-  alias Moon.Assets.Logos.LogoLabShort
-  alias Moon.Assets.Logos.LogoLivecasinoShort
-  alias Moon.Assets.Logos.LogoSlotsShort
-  alias Moon.Assets.Logos.LogoSportsbetShort
-  alias Moon.Assets.Logos.LogoMoonDesignShort
-  alias Moon.Icon
+  alias Moon.Autolayouts.LeftToRight
   alias MoonWeb.Components.ThemesSelect.SelectedTheme
   alias MoonWeb.Components.ThemesSelect.SelectedDirection
   alias MoonWeb.Components.ThemesSelect.ThemeSwitcher
   alias MoonWeb.Components.ThemesSelect.RtlSwitcher
+
+  alias Moon.Design.Popover
+  alias Moon.Design.Button.IconButton
 
   prop(class, :string, default: nil)
   prop(theme_name, :any, default: "lab-light")
@@ -53,62 +49,43 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
-      <button
-        :on-click="toggle_themes"
-        type="button"
-        aria-pressed="false"
-        class="bg-goku text-bulma inline-flex shrink-0
-               border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out
-               duration-200 shadow-md focus:outline-none"
+    <div class="fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
+    <Popover id="settings-popover" >
+    <Popover.Trigger>
+      <IconButton icon_only="media_tuner"
+      class="shadow-moon-md rounded-full"
+      aria-label="Toggle site settings"
       >
-        <Icon name="media_tuner" color="krillin" font_size="2rem" />
-      </button>
-
-      <div class={"fixed bottom-16 ltr:right-4 rtl:left-4", hidden: !@show_themes or !@use_theme_switcher}>
-        {#for theme <- available_themes()}
-          <button
-            :on-click="update_selected_theme"
-            type="button"
-            title={theme[:value]}
-            value={theme[:value]}
-            class="p-2 rounded-full ml-4 text-piccolo bg-goku inline-flex items-center justify-center shadow-md"
-          >
-            {#if theme[:value] == "aposta10"}
-              <LogoAposta10Short />
-            {#elseif theme[:value] == "bitcasino"}
-              <LogoBitcasinoShort />
-            {#elseif theme[:value] == "livecasino"}
-              <LogoLivecasinoShort />
-            {#elseif theme[:value] == "lab"}
-              <LogoLabShort />
-            {#elseif theme[:value] == "theme-moon"}
-              <LogoMoonDesignShort />
-            {#elseif theme[:value] == "slots"}
-              <LogoSlotsShort />
-            {#elseif theme[:value] == "sportsbet"}
-              <LogoSportsbetShort />
-            {/if}
-          </button>
-        {/for}
-      </div>
-
-      <RtlSwitcher
+      </IconButton>
+    </Popover.Trigger>
+    <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
+      <div class="flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14 text-bulma focus:outline-none focus:shadow-focus hover:bg-bulma/[0.04] transition w-full cursor-default">
+      LeftToRight
+      <button>
+        <RtlSwitcher
         {=@show_themes}
         {=@use_theme_switcher}
         {=@selected_direction_changeset}
         {=@is_rtl}
         on_direction_switch="toggle_direction"
-      />
-
-      <ThemeSwitcher
-        {=@show_themes}
-        {=@use_theme_switcher}
-        {=@selected_theme_changeset}
-        {=@dark_mode}
-        on_theme_switch="toggle_dark_mode"
-      />
+        />
+        </button>
+      </div>
+      <div class="flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14 text-bulma focus:outline-none focus:shadow-focus hover:bg-bulma/[0.04] transition w-full cursor-default">
+      <button>
+        <ThemeSwitcher
+          {=@show_themes}
+          {=@use_theme_switcher}
+          {=@selected_theme_changeset}
+          {=@dark_mode}
+          on_theme_switch="toggle_dark_mode"
+          />
+          </button>
+      </div>
+    </Popover.Panel>
+    </Popover>
     </div>
+
     """
   end
 

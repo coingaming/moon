@@ -4,7 +4,7 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
   use Moon.StatelessComponent
 
   alias Moon.Components.Form
-  alias Moon.Components.Switch
+  alias Moon.Design.Switch
   alias Moon.Components.Field
   alias MoonWeb.Components.ThemesSelect.SelectedDirection
 
