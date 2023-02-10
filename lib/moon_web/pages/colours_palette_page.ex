@@ -78,6 +78,23 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
     ]
   )
 
+  data(hover_overlay_colors_list, :list,
+    default: [
+      %{
+        :name => "jiren",
+        :bg_color => "bg-jiren"
+      },
+      %{
+        :name => "heles",
+        :bg_color => "bg-heles"
+      },
+      %{
+        :name => "zeno",
+        :bg_color => "bg-zeno"
+      }
+    ]
+  )
+
   data(krillin_colors_list, :list,
     default: [
       %{
@@ -248,6 +265,7 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
         <ColorsPalette title="Background colours" colors={@background_colors_list} />
         <ColorsPalette title="Text and icon colours" colors={@text_colors_list} />
         <ColorsPalette title="Forced colours" colors={@forced_colors_list} />
+        <ColorsPalette title="Hover and overlay colours" colors={@hover_overlay_colors_list} />
       </PageSection>
 
       <PageSection title="Supportive colours">
