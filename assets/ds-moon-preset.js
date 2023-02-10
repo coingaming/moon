@@ -319,9 +319,19 @@ module.exports = {
         "popo": {
           DEFAULT: withOpacityValue("--popo"),
         },
+        "jiren": {
+          DEFAULT: withOpacityValue("--jiren"),
+        },
+        "heles": {
+          DEFAULT: withOpacityValue("--heles"),
+        },
+        "zeno": {
+          DEFAULT: withOpacityValue("--zeno"),
+        },
         black: "#000",
-        hover: "rgba(34, 34, 37, 0.12)",
-        "primary-hover": "rgba(0, 0, 0, 0.08)",
+        hover: "rgba(0, 0, 0, 0.04)",
+        "primary-hover": "rgba(0, 0, 0, 0.04)",
+        "secondary-hover": "rgba(78, 70, 180, 0.12)",
       },
     },
   },
