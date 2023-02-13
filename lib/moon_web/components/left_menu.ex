@@ -98,6 +98,7 @@ defmodule MoonWeb.Components.LeftMenu do
                         <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
                         <SidebarLink route={Pages.Design.ModalPage}>Modal</SidebarLink>
                         <SidebarLink route={Pages.Design.PopoverPage}>Popover</SidebarLink>
+                        <SidebarLink route={Pages.Design.SnackbarPage}>Snackbar</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>
                         <SidebarLink route={Pages.Design.TooltipPage}>Tooltip</SidebarLink>

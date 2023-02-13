@@ -123,6 +123,11 @@ module.exports = {
       },
       animation: {
         loader: "loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite",
+        rightslide: "rightslide 0.2s ease-in-out",
+        leftslide: "leftslide 0.2s ease-in-out",
+        topslide: "topslide 0.2s ease-in-out",
+        bottomslide: "bottomslide 0.2s ease-in-out",
+        fadeout: "fadeout 0.5s ease-in-out",
       },
       keyframes: {
         loader: {
@@ -151,6 +156,26 @@ module.exports = {
           "70%": { transform: "scale(1)", boxShadow: "0 0 0 30px transparent" },
           "100%": { transform: "scale(1)", boxShadow: "0 0 0 0 transparent" },
         },
+        rightslide: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)"}
+        },
+        leftslide: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)"}
+        },
+        topslide: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0%)"}
+        },
+        bottomslide: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%)"}
+        },
+        fadeout: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 }
+         },
       },
       fontWeight: {
         normal: 400,

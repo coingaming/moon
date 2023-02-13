@@ -32,7 +32,6 @@ defmodule Moon.Design.Popover do
   end
 
   def handle_event("close_panel", _, socket) do
-    socket = assign(socket, is_open: false)
-    {:noreply, socket}
+    {:noreply, assign(socket, is_open: false)}
   end
 end
