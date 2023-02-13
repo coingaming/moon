@@ -3,8 +3,6 @@ defmodule Moon.Design.Snackbar do
 
   use Moon.StatefulComponent
 
-  alias Phoenix.LiveView.JS
-
   prop(position, :string,
     values: [
       "top-left",
