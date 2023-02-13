@@ -15,8 +15,27 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Queue do
         <Button variant="secondary">Queue Snackbar</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
-        <Snackbar.Message>Number 1 Snackbar
-        </Snackbar.Message>
+        <Snackbar.Message>Number 1 Snackbar</Snackbar.Message>
+      </Snackbar.Content>
+      <Snackbar.Close />
+    </Snackbar>
+
+    <Snackbar id="snackbar_242" in_queue>
+      <Snackbar.Trigger>
+        <Button variant="secondary">Queue Snackbar</Button>
+      </Snackbar.Trigger>
+      <Snackbar.Content>
+        <Snackbar.Message>Number 2 Snackbar</Snackbar.Message>
+      </Snackbar.Content>
+      <Snackbar.Close />
+    </Snackbar>
+
+    <Snackbar id="snackbar_243" in_queue>
+      <Snackbar.Trigger>
+        <Button variant="secondary">Queue Snackbar</Button>
+      </Snackbar.Trigger>
+      <Snackbar.Content>
+        <Snackbar.Message>Number 3 Snackbar</Snackbar.Message>
       </Snackbar.Content>
       <Snackbar.Close />
     </Snackbar>

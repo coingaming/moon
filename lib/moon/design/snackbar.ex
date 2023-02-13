@@ -29,16 +29,12 @@ defmodule Moon.Design.Snackbar do
 
   prop(testid, :string)
 
-  def handle_event("toggle_open", _, socket) do
-    {:noreply, assign(socket, is_open: !socket.assigns.is_open)}
+  def handle_event("set_open", _, socket) do
+    {:noreply, assign(socket, is_open: true)}
   end
 
-  def on_click(id, _time) do
-    JS.add_class("hidden", to: ".moon-snackbar")
-    |> JS.remove_class("hidden", to: "##{id}")
-
-    # |> JS.add_class("hidden", to: "##{id}", time: time, transition: "animate-fadeout")
-    # |> JS.dispatch("moon:show-snackbar", detail: %{snackbar_id: "#{@id}", position: "#{@position}", timeout: @timeout})
+  def handle_event("set_close", _, socket) do
+    {:noreply, assign(socket, is_open: false)}
   end
 
   defp animate_class(position) do
@@ -55,7 +51,7 @@ defmodule Moon.Design.Snackbar do
   def render(assigns) do
     ~F"""
     <div>
-      <div :on-click="toggle_open">
+      <div :on-click="set_open">
         <#slot {@trigger} />
       </div>
       <div
@@ -84,7 +80,7 @@ defmodule Moon.Design.Snackbar do
           <#slot {@icon} />
           <#slot {@content} />
           {#if slot_assigned?(:close)}
-            <div :on-click="toggle_open">
+            <div :on-click="set_close">
               <#slot {@close} />
             </div>
           {/if}
