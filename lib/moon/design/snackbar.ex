@@ -24,7 +24,6 @@ defmodule Moon.Design.Snackbar do
 
   prop(is_open, :boolean, default: false)
   prop(class, :css_class)
-  prop(in_queue, :boolean, default: false)
   prop(timeout, :integer, default: 5000)
 
   prop(testid, :string)
@@ -69,7 +68,7 @@ defmodule Moon.Design.Snackbar do
           "justify-center bottom-4 left-4 right-4 m-auto": @position == "bottom-center",
           "justify-end bottom-4 right-4": @position == "bottom-right"
         ])}
-        id={@id}
+        id={"#{@id}-snack"}
         data-testid={"#{@testid}-snackbar"}
         aria-hidden={(@is_open && "true") || "false"}
       >

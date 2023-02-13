@@ -38,8 +38,7 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         SnackbarExample.Options,
         SnackbarExample.SemanticTypes,
         SnackbarExample.AutoClose,
-        SnackbarExample.Customization,
-        SnackbarExample.Queue
+        SnackbarExample.Customization
       ]} />
 
       <PropsTable
