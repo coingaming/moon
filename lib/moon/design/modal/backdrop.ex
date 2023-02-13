@@ -7,7 +7,7 @@ defmodule Moon.Design.Modal.Backdrop do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["fixed inset-0 bg-popo opacity-[.6]", @class])} />
+    <div class={merge(["fixed inset-0 bg-zeno", @class])} />
     """
   end
 end

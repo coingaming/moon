@@ -76,7 +76,7 @@ defmodule Moon.Design.Button.IconButton do
       }>
         <Icon name={@icon_only} class={Utils.icon_class(@size)} />
       </span>
-      <span class="block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-bulma/[.07]" />
+      <span class="block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-heles" />
     </AsComponent>
     """
   end

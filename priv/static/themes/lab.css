@@ -9,6 +9,9 @@
   --bulma: 32 36 38; /* #202426 */
   --trunks: 134 151 162; /* #8697a2 */
   --popo: 32 36 38; /* #202426 */
+  --jiren: 32 36 38 / 0.08; /* #ff25a8 */
+  --heles: 0 0 0 / 0.12; /* #000000 */
+  --zeno: 32 36 38 / 0.4; /* #ff25a8 */
 
   /* support-colors  */
   --krillin: 255 179 25; /* #ffb319 */
@@ -67,10 +70,10 @@
   --averta: 'Averta Std';
 
   /* box-shadow */
-  --shadow-xs: 0px 4px 12px -6px rgb(0 0 0 / 0.06);
+  --shadow-xs: 0 4px 12px -6px rgb(0 0 0 / 0.06);
   --shadow-sm: 0 6px 6px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
   --shadow-md: 0 12px 12px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 8px 24px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4);
-  --shadow-xl: 0px 32px 32px -8px rgb(0 0 0 / 0.08),
-    0px 0px 32px -8px rgb(0 0 0 / 0.12), 0px 0px 1px rgb(0 0 0 / 0.2);
+  --shadow-xl: 0 32px 32px -8px rgb(0 0 0 / 0.08),
+    0 0 32px -8px rgb(0 0 0 / 0.12), 0 0 1px rgb(0 0 0 / 0.2);
 }

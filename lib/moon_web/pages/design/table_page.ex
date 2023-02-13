@@ -104,7 +104,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
         :type => 'css_class',
         :required => 'No',
         :default => '-',
-        :description => 'Hover row background, e.g. hover:bg-beerus'
+        :description => 'Hover row background, e.g. hover:bg-heles'
       }
     ]
   )

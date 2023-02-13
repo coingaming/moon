@@ -344,6 +344,16 @@ module.exports = {
         "popo": {
           DEFAULT: withOpacityValue("--popo"),
         },
+        "jiren": {
+          DEFAULT: withOpacityValue("--jiren"),
+        },
+        "heles": {
+          DEFAULT: withOpacityValue("--heles"),
+        },
+        "zeno": {
+          DEFAULT: withOpacityValue("--zeno"),
+        },
+        // Legacy classes:
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",
         "primary-hover": "rgba(0, 0, 0, 0.08)",
