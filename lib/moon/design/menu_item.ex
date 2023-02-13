@@ -32,7 +32,7 @@ defmodule Moon.Design.MenuItem do
       {=@attrs}
       class={
         "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
-        "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-bulma/[0.04] transition",
+        "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
         @width,
         @class,
         "bg-bulma/[0.04]": @is_active || @is_selected
