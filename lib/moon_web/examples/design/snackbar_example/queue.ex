@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Queue do
 
   def render(assigns) do
     ~F"""
-    <Snackbar id="snackbar_24">
+    <Snackbar id="snackbar_24" in_queue>
       <Snackbar.Trigger>
         <Button variant="secondary">Queue Snackbar</Button>
       </Snackbar.Trigger>
@@ -30,6 +30,16 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Queue do
 
     ...
 
+    <Snackbar id="snackbar_24" in_queue>
+      <Snackbar.Trigger>
+        <Button variant="secondary">Queue Snackbar</Button>
+      </Snackbar.Trigger>
+      <Snackbar.Content>
+        <Snackbar.Message>Number 1 Snackbar
+        </Snackbar.Message>
+      </Snackbar.Content>
+      <Snackbar.Close />
+    </Snackbar>
     """
   end
 end

@@ -1,7 +1,7 @@
 defmodule Moon.Design.Snackbar do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
 
   alias Phoenix.LiveView.JS
 
@@ -24,31 +24,55 @@ defmodule Moon.Design.Snackbar do
 
   prop(is_open, :boolean, default: false)
   prop(class, :css_class)
-  prop(id, :string)
+  prop(in_queue, :boolean, default: false)
+  prop(timeout, :integer, default: 5000)
 
   prop(testid, :string)
+
+  def handle_event("toggle_open", _, socket) do
+    {:noreply, assign(socket, is_open: !socket.assigns.is_open)}
+  end
+
+  def on_click(id, _time) do
+    JS.add_class("hidden", to: ".moon-snackbar")
+    |> JS.remove_class("hidden", to: "##{id}")
+
+    # |> JS.add_class("hidden", to: "##{id}", time: time, transition: "animate-fadeout")
+    # |> JS.dispatch("moon:show-snackbar", detail: %{snackbar_id: "#{@id}", position: "#{@position}", timeout: @timeout})
+  end
+
+  defp animate_class(position) do
+    case position do
+      "top-left" -> "animate-leftslide"
+      "bottom-left" -> "animate-leftslide"
+      "top-center" -> "animate-topslide"
+      "bottom-center" -> "animate-bottomslide"
+      "top-right" -> "animate-rightslide"
+      "bottom-right" -> "animate-rightslide"
+    end
+  end
 
   def render(assigns) do
     ~F"""
     <div>
-      <div
-        role="button"
-        :on-click={JS.dispatch("moon:show-snackbar", detail: %{snackbar_id: "#{@id}", position: "#{@position}"})}
-      >
+      <div :on-click="toggle_open">
         <#slot {@trigger} />
       </div>
       <div
-        class={
+        phx-hook="Snackbar"
+        data-is_open={@is_open}
+        data-animate_class={animate_class(@position)}
+        data-timeout={@timeout}
+        class={merge([
           "z-[9999999] flex fixed w-[calc(100%-32px)] md:w-fit transition hidden",
           "moon-snackbar",
-          "top-4 animate-leftslide left-4": @position == "top-left",
-          "justify-center top-4 left-4 right-4 md:m-auto animate-topslide": @position == "top-center",
-          "justify-end top-4 animate-rightslide right-4": @position == "top-right",
-          "bottom-4 animate-leftslide left-4": @position == "bottom-left",
-          "justify-center bottom-4 left-4 right-4 m-auto animate-bottomslide":
-            @position == "bottom-center",
-          "justify-end bottom-4 animate-rightslide right-4": @position == "bottom-right"
-        }
+          "top-4 left-4": @position == "top-left",
+          "justify-center top-4 left-4 right-4 md:m-auto": @position == "top-center",
+          "justify-end top-4 right-4": @position == "top-right",
+          "bottom-4 left-4": @position == "bottom-left",
+          "justify-center bottom-4 left-4 right-4 m-auto": @position == "bottom-center",
+          "justify-end bottom-4 right-4": @position == "bottom-right"
+        ])}
         id={@id}
         data-testid={"#{@testid}-snackbar"}
         aria-hidden={(@is_open && "true") || "false"}
@@ -60,7 +84,7 @@ defmodule Moon.Design.Snackbar do
           <#slot {@icon} />
           <#slot {@content} />
           {#if slot_assigned?(:close)}
-            <div :on-click={JS.dispatch("moon:close-snackbar", detail: %{snackbar_id: "#{@id}", position: "#{@position}"})}>
+            <div :on-click="toggle_open">
               <#slot {@close} />
             </div>
           {/if}

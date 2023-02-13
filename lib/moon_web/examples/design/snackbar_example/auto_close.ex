@@ -5,35 +5,23 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
 
   use MoonWeb, :example
 
-  alias Phoenix.LiveView.JS
-
   alias Moon.Design.Snackbar
   alias Moon.Design.Button
 
   def render(assigns) do
     ~F"""
-    <Snackbar id="snackbar_16">
+    <Snackbar id="snackbar_16" timeout={1000}>
       <Snackbar.Trigger>
-        <Button
-          variant="secondary"
-          on_click={JS.dispatch("moon:show-snackbar",
-            detail: %{snackbar_id: "snackbar_16", position: "top-right", timeout: 1000}
-          )}
-        >Close after 1 sec</Button>
+        <Button variant="secondary">Close after 1 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
       </Snackbar.Content>
     </Snackbar>
 
-    <Snackbar id="snackbar_17">
+    <Snackbar id="snackbar_17" timeout={3000}>
       <Snackbar.Trigger>
-        <Button
-          variant="secondary"
-          on_click={JS.dispatch("moon:show-snackbar",
-            detail: %{snackbar_id: "snackbar_17", position: "top-right", timeout: 3000}
-          )}
-        >Close after 3 sec</Button>
+        <Button variant="secondary">Close after 3 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -44,25 +32,23 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
 
   def code() do
     """
-    alias Phoenix.LiveView.JS
-
     alias Moon.Design.Snackbar
     alias Moon.Design.Button
 
     ...
 
-    <Snackbar id="snackbar_16">
+    <Snackbar id="snackbar_16" timeout={1000}>
       <Snackbar.Trigger>
-        <Button variant="secondary" on_click={JS.dispatch("moon:show-snackbar", detail: %{snackbar_id: "snackbar_16", position: "top-right", timeout: 1000})}>Close after 1 sec</Button>
+        <Button variant="secondary">Close after 1 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
       </Snackbar.Content>
     </Snackbar>
 
-    <Snackbar id="snackbar_17">
+    <Snackbar id="snackbar_17" timeout={3000}>
       <Snackbar.Trigger>
-        <Button variant="secondary" on_click={JS.dispatch("moon:show-snackbar", detail: %{snackbar_id: "snackbar_17", position: "top-right", timeout: 3000})}>Close after 3 sec</Button>
+        <Button variant="secondary">Close after 3 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
