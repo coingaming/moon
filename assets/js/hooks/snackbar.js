@@ -8,7 +8,8 @@ const hideEl = (el) => {
     el.dataset.to_hide && clearTimeout(el.dataset.to_hide);
     el.classList.replace(el.dataset.animate_class, "animate-fadeout");
     setTimeout (() => el.classList.replace("animate-fadeout", "hidden"), 500);
-    if(queue.length) showEl(queue.shift())
+    if(queue.length) showEl(queue.shift());
+    pushEvent("toggle_open", {});
 }
 
 const showEl = (el) => {
