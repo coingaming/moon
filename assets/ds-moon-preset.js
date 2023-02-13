@@ -328,6 +328,7 @@ module.exports = {
         "zeno": {
           DEFAULT: withOpacityValue("--zeno"),
         },
+        // Legacy classes:
         black: "#000",
         hover: "rgba(34, 34, 37, 0.12)",
         "primary-hover": "rgba(0, 0, 0, 0.08)",
