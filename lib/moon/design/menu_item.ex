@@ -35,7 +35,7 @@ defmodule Moon.Design.MenuItem do
         "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
         @width,
         @class,
-        "bg-bulma/[0.04]": @is_active || @is_selected
+        "bg-heles": @is_active || @is_selected
       }
       on_click={@on_click}
       values={is_selected: !@is_selected}
