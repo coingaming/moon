@@ -45,7 +45,10 @@ defmodule Moon do
     "bulma",
     "trunks",
     "goten",
-    "popo"
+    "popo",
+    "jiren",
+    "heles",
+    "zeno"
   ]
 
   def colors do
