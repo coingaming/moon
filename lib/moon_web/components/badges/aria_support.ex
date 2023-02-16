@@ -3,11 +3,11 @@ defmodule MoonWeb.Components.Badges.AriaSupport do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Badges
+  alias Moon.Design.Tag
 
   def render(assigns) do
     ~F"""
-    <Badges title="ARIA" color="text-goten" background_color="bg-nappa" />
+    <Tag size="2xs" class="text-goten bg-nappa">Aria</Tag>
     """
   end
 end

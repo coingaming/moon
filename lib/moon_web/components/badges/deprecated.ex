@@ -3,11 +3,11 @@ defmodule MoonWeb.Components.Badges.Deprecated do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Badges
+  alias Moon.Design.Tag
 
   def render(assigns) do
     ~F"""
-    <Badges title="Deprecated" color="text-popo" background_color="bg-chichi-60" />
+    <Tag size="2xs" class="text-popo bg-chichi-60">Deprecated</Tag>
     """
   end
 end

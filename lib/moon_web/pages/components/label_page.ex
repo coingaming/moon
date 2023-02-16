@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -79,21 +80,13 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Label">
-        <p>
-          Use tags to label, categorize, or organize items using keywords that describe them.
-        </p>
-        <p>
-          Multiple or single tags can be used to categorize items.
-        </p>
-        <p>
-          Use short labels for easy scanning. Use two words only if necessary to describe the status and differentiate it from other tags.
-        </p>
-        <p>
-          Default text style: Uppercase
-        </p>
-        <p>
-          Border radius: Interactive
-        </p>
+        <DeprecationWarning
+          name="Tag"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TagPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Colours" id="label_1">

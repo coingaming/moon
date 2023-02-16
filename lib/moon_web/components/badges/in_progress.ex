@@ -3,11 +3,11 @@ defmodule MoonWeb.Components.Badges.InProgress do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Badges
+  alias Moon.Design.Tag
 
   def render(assigns) do
     ~F"""
-    <Badges title="In progress" color="text-popo" background_color="bg-krillin-60" />
+    <Tag size="2xs" class="text-popo bg-krillin">In progress</Tag>
     """
   end
 end

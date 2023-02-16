@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
 
   use Moon.StatefulComponent
 
-  alias Moon.Components.Label
+  alias Moon.Design.Tag
   alias MoonWeb.Components.PreviewCodeButton
 
   prop(class, :string)
@@ -46,7 +46,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
         class="theme-moon-dark grid gap-4 p-4 bg-goku text-moon-14 rounded-moon-s-sm"
         :if={slot_assigned?(:state)}
       >
-        <div><Label color="goten" background_color="piccolo" class="w-fit">State</Label></div>
+        <div><Tag class="text-goten bg-piccolo w-fit">State</Tag></div>
         <pre class="break-all overflow-x-scroll text-bulma"><#slot {@state} /></pre>
       </div>
     </section>

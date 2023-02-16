@@ -67,6 +67,7 @@ defmodule MoonWeb.Router do
         live("/components/v2/snackbar", MoonWeb.Pages.Design.SnackbarPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)
         live("/components/v2/tabs", MoonWeb.Pages.Design.TabsPage)
+        live("/components/v2/tag", MoonWeb.Pages.Design.TagPage)
         live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextareaPage)
         live("/components/v2/tooltip", MoonWeb.Pages.Design.TooltipPage)
 
