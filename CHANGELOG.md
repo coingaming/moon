@@ -1,3 +1,10 @@
+## [2.35.12](https://github.com/coingaming/moon/compare/v2.35.11...v2.35.12) (2023-02-17)
+
+
+### Bug Fixes
+
+* [MDS-375] Tag v2 ([#542](https://github.com/coingaming/moon/issues/542)) ([965d2fc](https://github.com/coingaming/moon/commit/965d2fc496a82c9fde4bb6c1f52451261f3aa7dd))
+
 ## [2.35.11](https://github.com/coingaming/moon/compare/v2.35.10...v2.35.11) (2023-02-08)
 
 
