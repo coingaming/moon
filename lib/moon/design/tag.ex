@@ -15,12 +15,15 @@ defmodule Moon.Design.Tag do
     ~F"""
     <div class={
       merge([
-        "flex items-center rounded-moon-i-xs select-none text-gohan bg-bulma",
-        set_letter_spacing(@size),
-        set_y_padding(@size, @left_icon, @right_icon),
-        set_start_padding(@size, @left_icon),
-        set_end_padding(@size, @right_icon),
-        set_font_size(@size, @is_uppercase),
+        [
+          "flex items-center rounded-moon-i-xs select-none text-gohan font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
+          "text-moon-9 py-0": @size == "2xs",
+          "text-moon-10 py-1": @size == "xs",
+          "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
+          "text-moon-12 tracking-0 font-regular": @size == "xs" && !@is_uppercase,
+          "ps-1": @left_icon,
+          "pe-1": @right_icon
+        ],
         @class
       ]),
       uppercase: @is_uppercase
@@ -40,57 +43,6 @@ defmodule Moon.Design.Tag do
     case size do
       "2xs" -> "text-moon-14 leading-none"
       _ -> "text-moon-16 leading-none"
-    end
-  end
-
-  defp set_letter_spacing(size) do
-    case size do
-      "2xs" -> "tracking-[0.5px]"
-      _ -> "tracking-[0.5px]"
-    end
-  end
-
-  defp set_y_padding(size, left_icon, right_icon) do
-    case size do
-      "2xs" ->
-        "py-0"
-
-      _ ->
-        "#{((right_icon || left_icon) && "py-1") || "py-1"}"
-    end
-  end
-
-  defp set_start_padding(size, left_icon) do
-    case size do
-      "2xs" ->
-        "#{(left_icon && "ps-1") || "ps-2"}"
-
-      _ ->
-        "#{(left_icon && "ps-1") || "ps-2"}"
-    end
-  end
-
-  defp set_end_padding(size, right_icon) do
-    case size do
-      "2xs" ->
-        "#{(right_icon && "pe-1") || "pe-2"}"
-
-      _ ->
-        "#{(right_icon && "pe-1") || "pe-2"}"
-    end
-  end
-
-  defp set_font_size(size, is_uppercase) do
-    if is_uppercase do
-      case size do
-        "2xs" -> "text-moon-9 font-medium"
-        _ -> "text-moon-10 font-medium"
-      end
-    else
-      case size do
-        "2xs" -> "text-moon-10 tracking-0"
-        _ -> "text-moon-12 tracking-0"
-      end
     end
   end
 end
