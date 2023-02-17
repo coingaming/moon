@@ -9,14 +9,15 @@ defmodule MoonWeb.Pages.MainPage do
   alias MoonWeb.Components.Facing.Future
   alias MoonWeb.Components.Facing.Contributors
   alias MoonWeb.Components.Facing.MoonEarth
-  alias Moon.Components.Label
-  alias Moon.Components.Button
+
+  alias Moon.Design.Tag
+  alias Moon.Design.Button
 
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@direction}>
       <div class="relative z-5 flex flex-col gap-12">
-        <div class="self-start"><Label size="twoxsmall" color="text-gohan" class="font-medium">Open Source</Label></div>
+        <div class="self-start"><Tag size="2xs">Open Source</Tag></div>
         <div class="flex flex-col gap-16">
           <div class="relative z-30 flex flex-col items-start gap-6">
             <h1 class="text-moon-64 font-semibold">Moon design system.</h1>

@@ -3,10 +3,7 @@ defmodule MoonWeb.Components.ComponentPageDescription do
 
   use MoonWeb, :stateless_component
 
-  alias MoonWeb.Components.Badges.Deprecated
-  alias MoonWeb.Components.Badges.InProgress
-  alias MoonWeb.Components.Badges.AriaSupport
-  alias MoonWeb.Components.Badges.RTLSupport
+  alias MoonWeb.Components.Badges
 
   prop(title, :string)
   prop(image, :string)
@@ -25,10 +22,10 @@ defmodule MoonWeb.Components.ComponentPageDescription do
         <div class="flex flex-col gap-2">
           <h1 class="text-moon-32 font-medium">{@title}</h1>
           <div class="flex items-start gap-2">
-            <Deprecated :if={@is_deprecated} />
-            <InProgress :if={@is_in_progress} />
-            <AriaSupport :if={@is_aria_support} />
-            <RTLSupport :if={@is_rtl_support} />
+            <Badges.Deprecated :if={@is_deprecated} />
+            <Badges.InProgress :if={@is_in_progress} />
+            <Badges.AriaSupport :if={@is_aria_support} />
+            <Badges.RTLSupport :if={@is_rtl_support} />
           </div>
         </div>
         <div class="flex flex-col items-start gap-2 text-moon-16">

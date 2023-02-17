@@ -3,11 +3,11 @@ defmodule MoonWeb.Components.Badges.RTLSupport do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Badges
+  alias Moon.Design.Tag
 
   def render(assigns) do
     ~F"""
-    <Badges title="RTL" color="text-goten" background_color="bg-whis" />
+    <Tag size="2xs" class="text-goten bg-whis">RTL</Tag>
     """
   end
 end
