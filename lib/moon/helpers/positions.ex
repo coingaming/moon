@@ -25,10 +25,16 @@ defmodule Moon.Helpers.Positions do
   def position_class("bottom"), do: "top-full left-1/2 mt-2 -translate-x-1/2"
   def position_class("bottom-end"), do: "top-full ltr:right-0 rtl:left-0 mt-2"
   def position_class("right-start"), do: "ltr:left-full rtl:right-full top-0 ltr:ml-2 rtl:mr-2"
-  def position_class("right"), do: "ltr:left-full rtl:right-full top-1/2  ltr:ml-2 rtl:mr-2 -translate-y-1/2"
+
+  def position_class("right"),
+    do: "ltr:left-full rtl:right-full top-1/2  ltr:ml-2 rtl:mr-2 -translate-y-1/2"
+
   def position_class("right-end"), do: "ltr:left-full rtl:right-full bottom-0 ltr:ml-2 rtl:mr-2"
   def position_class("left-start"), do: "ltr:right-full rtl:left-full top-0 ltr:mr-2 rtl:ml-2"
-  def position_class("left"), do: "ltr:right-full rtl:left-full top-1/2 ltr:mr-2 rtl:ml-2 -translate-y-1/2"
+
+  def position_class("left"),
+    do: "ltr:right-full rtl:left-full top-1/2 ltr:mr-2 rtl:ml-2 -translate-y-1/2"
+
   def position_class("left-end"), do: "ltr:right-full rtl:left-full bottom-0 ltr:mr-2 rtl:ml-2"
   def position_class(_), do: ""
 end

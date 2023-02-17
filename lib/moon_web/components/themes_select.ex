@@ -11,6 +11,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   alias Moon.Design.Popover
   alias Moon.Design.Button.IconButton
+  alias Moon.Design.MenuItem
 
   prop(class, :string, default: nil)
   prop(theme_name, :any, default: "lab-light")
@@ -49,43 +50,38 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   def render(assigns) do
     ~F"""
-    <div class="fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
-    <Popover id="settings-popover" >
-    <Popover.Trigger>
-      <IconButton icon_only="media_tuner"
-      class="shadow-moon-md rounded-full"
-      aria-label="Toggle site settings"
-      >
-      </IconButton>
-    </Popover.Trigger>
-    <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
-      <div class="flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14 text-bulma focus:outline-none focus:shadow-focus hover:bg-bulma/[0.04] transition w-full cursor-default">
-      LeftToRight
-      <button>
-        <RtlSwitcher
-        {=@show_themes}
-        {=@use_theme_switcher}
-        {=@selected_direction_changeset}
-        {=@is_rtl}
-        on_direction_switch="toggle_direction"
-        />
-        </button>
-      </div>
-      <div class="flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14 text-bulma focus:outline-none focus:shadow-focus hover:bg-bulma/[0.04] transition w-full cursor-default">
-      <button>
-        <ThemeSwitcher
-          {=@show_themes}
-          {=@use_theme_switcher}
-          {=@selected_theme_changeset}
-          {=@dark_mode}
-          on_theme_switch="toggle_dark_mode"
+    <Popover id="settings-popover" class="fixed bottom-4 ltr:right-4 rtl:left-4 z-50">
+      <Popover.Trigger>
+        <IconButton
+          icon_only="media_tuner"
+          class="shadow-moon-md rounded-full"
+          aria-label="Toggle site settings"
+        >
+        </IconButton>
+      </Popover.Trigger>
+      <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
+        <MenuItem class="cursor-default">
+          {(@is_rtl && "Right to left") || "Left to right"}
+          <RtlSwitcher
+            {=@show_themes}
+            {=@use_theme_switcher}
+            {=@selected_direction_changeset}
+            {=@is_rtl}
+            on_direction_switch="toggle_direction"
           />
-          </button>
-      </div>
-    </Popover.Panel>
+        </MenuItem>
+        <MenuItem class="cursor-default">
+          {(@dark_mode && "Dark mode") || "Light mode"}
+          <ThemeSwitcher
+            {=@show_themes}
+            {=@use_theme_switcher}
+            {=@selected_theme_changeset}
+            {=@dark_mode}
+            on_theme_switch="toggle_dark_mode"
+          />
+        </MenuItem>
+      </Popover.Panel>
     </Popover>
-    </div>
-
     """
   end
 
