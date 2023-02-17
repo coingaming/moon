@@ -1,10 +1,9 @@
-defmodule MoonWeb.Examples.Form.SelectExample.Default do
+defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
   @moduledoc false
 
   use Moon.StatelessComponent
 
   use MoonWeb, :example
-
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
@@ -22,9 +21,11 @@ defmodule MoonWeb.Examples.Form.SelectExample.Default do
 
   def render(assigns) do
     ~F"""
+    {#for size <- ~w(sm md lg)}
     <Form for={@user_changeset}>
       <Select field={:gender} options={@gender_options} prompt="Please select gender" />
     </Form>
+    {/for}
     """
   end
 

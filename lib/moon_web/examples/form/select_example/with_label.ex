@@ -1,10 +1,9 @@
-defmodule MoonWeb.Examples.Form.SelectExample.Default do
+defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
 
   use MoonWeb, :example
-
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
