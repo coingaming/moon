@@ -13,9 +13,9 @@ defmodule Moon.Components.Link do
   prop(target, :string)
   prop(rel, :string)
   prop(is_underline, :css_class, default: "no-underline")
+  prop(replace, :boolean, default: false)
+  prop(phx_link, :string, values!: ~w(redirect patch), default: "redirect")
   slot(default)
-
-  prop(phx_link, :string, values!: ~w(redirect patch), default: "patch")
 
   def render(assigns) do
     ~F"""
@@ -34,7 +34,7 @@ defmodule Moon.Components.Link do
         "text-trunks hover:text-piccolo focus:text-bulma active:text-bulma": @optional
       }
       data-phx-link={@phx_link}
-      data-phx-link-state="push"
+      data-phx-link-state={if @replace, do: "replace", else: "push"}
       data-moon-active={@active}
       href={@to}
       target={@target}
