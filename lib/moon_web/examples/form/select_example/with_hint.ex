@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
+defmodule MoonWeb.Examples.Form.SelectExample.WithHint do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -23,13 +23,11 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
 
   def render(assigns) do
     ~F"""
-    {#for size <- ~w(sm md lg xl)}
-      <Form for={@user_changeset} class="w-2/5">
-        <Field label={"Label for #{size}"} field={:gender}>
-          <Select {=size} field={:gender} options={@gender_options} />
-        </Field>
-      </Form>
-    {/for}
+    <Form for={@user_changeset} class="w-2/5">
+      <Field label="Gender" hint="Please select gender" field={:gender}>
+        <Select field={:gender} options={@gender_options} />
+      </Field>
+    </Form>
     """
   end
 
@@ -53,13 +51,11 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
 
     def render(assigns) do
       ~F\"""
-      {#for size <- ~w(sm md lg xl)}
-        <Form for={@user_changeset} class="w-2/5">
-          <Field label={"Label for \#{size}"} field={:gender}>
-            <Select {=size} field={:gender} options={@gender_options} />
-          </Field>
-        </Form>
-      {/for}
+      <Form for={@user_changeset} class="w-2/5">
+        <Field label="Gender" hint="Please select gender" field={:gender}>
+          <Select field={:gender} options={@gender_options} />
+        </Field>
+      </Form>
       \"""
     end
     """
