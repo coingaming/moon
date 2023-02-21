@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             :type => 'boolean',
             :required => 'No',
             :default => 'false',
-            :description => 'Whether or not the popover is open.'
+            :description => 'Whether or not the popover is open'
           },
           %{
             :name => 'default',
@@ -60,6 +60,13 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             :required => 'Yes',
             :default => '-',
             :description => 'Trigger element of Popover item, see Popover.Trigger'
+          },
+          %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for custom styles'
           }
         ]}
       />
@@ -80,7 +87,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
             :type => 'css_class',
             :required => 'No',
             :default => '-',
-            :description => 'Tailwind classes for custom styles.'
+            :description => 'Tailwind classes for custom styles'
           }
         ]}
       />

@@ -23,21 +23,12 @@ defmodule Moon.Design.Switch do
   prop(caption_checked, :string)
   prop(icon_name_off, :string, default: "other_moon")
   prop(icon_name_on, :string, default: "other_sun")
-  prop(class, :css_class, default: "")
+  prop(class, :css_class)
   prop(on_click, :event)
 
   def render(assigns) do
     ~F"""
-    <div
-      {=@id}
-      class={
-        "relative inline-flex items-center",
-        "space-x-1": @size != "large",
-        "space-x-2": @size == "large",
-        "#{@class}": @class
-      }
-      :on-click={@on_click}
-    >
+    <div {=@id} :on-click={@on_click}>
       <Caption :if={@caption_unchecked} label={@caption_unchecked} size={@size} active={!@checked} />
       <Surface.Components.Form.RadioButton
         {=@form}
@@ -63,12 +54,12 @@ defmodule Moon.Design.Switch do
         type="button"
         aria-pressed="false"
         class={
-          "relative inline-flex shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none bg-piccolo",
+          "relative inline-flex shrink-0 transition-colors duration-200 ease-in-out rounded-full cursor-pointer outline-none focus:outline-none",
           "bg-piccolo": is_selected(@checked, @form, @field),
           "bg-beerus": !is_selected(@checked, @form, @field),
-          "border-2 w-7 focus:ring-1 focus:ring-offset-1": @size == "small",
-          "border-4 w-11 focus:ring-2 focus:ring-offset-1": @size == "medium",
-          "border-4 border-black w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
+          "p-0.5 w-7": @size == "small",
+          "p-1 w-10 ": @size == "medium",
+          "p-1 w-14": @size == "large"
         }
         :on-click={!@on_click &&
           JS.dispatch("moon:update-switch",
@@ -81,15 +72,15 @@ defmodule Moon.Design.Switch do
       >
         <span class="sr-only">{@action}</span>
 
-        <div :if={@icons} class="absolute flex">
-          <Icon name={@icon_name_off} class="scale-90" font_size={icon_size(@size)} />
+        <div :if={@icons} class="absolute flex justify-center">
+          <Icon name={@icon_name_off} class="scale-90 text-goten" font_size={icon_size(@size)} />
           <Icon name={@icon_name_on} class="scale-90" font_size={icon_size(@size)} />
         </div>
 
         <span
           aria-hidden="true"
           class={
-            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goten rounded-full shadow-md pointer-events-none ring-0",
+            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goten rounded-full pointer-events-none",
             "w-3 h-3": @size == "small",
             "w-4 h-4": @size == "medium",
             "w-6 h-6": @size == "large",

@@ -20,24 +20,17 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
 
   def render(assigns) do
     ~F"""
-    <div class={
-      "fixed ltr:right-4 rtl:left-4",
-      hidden: !@show_themes,
-      "bottom-36": @use_theme_switcher,
-      "bottom-24": !@use_theme_switcher
-    }>
-      <Form for={@selected_direction_changeset} change={@on_direction_switch}>
-        <Field name={:is_rtl}>
-          <Switch
-            id="direction_switcher"
-            icon_name_off="text_left_align"
-            icon_name_on="text_right_align"
-            icons
-            checked={@is_rtl}
-          />
-        </Field>
-      </Form>
-    </div>
+    <Form for={@selected_direction_changeset} change={@on_direction_switch}>
+      <Field name={:is_rtl}>
+        <Switch
+          id="direction_switcher"
+          icon_name_off="text_right_align"
+          icon_name_on="text_left_align"
+          icons
+          checked={@is_rtl}
+        />
+      </Field>
+    </Form>
     """
   end
 end

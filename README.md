@@ -18,7 +18,7 @@ to write commit messages_
 
 ## Resources
 
-📖 [Documentation](https://moon.surface.io)
+📖 [Documentation](https://surface.moon.io/)
 
 ## Setup
 
