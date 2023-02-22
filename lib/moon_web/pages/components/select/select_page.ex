@@ -8,8 +8,8 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
-  alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(gender_options, :any)
 
@@ -83,11 +83,13 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Select">
-        <p>
-          A user-controlled menu of options for forms, navigation and more.
-        </p>
-      </ComponentPageDescription>
+      <DeprecationWarning
+        name="Select"
+        href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.SelectPage,
+          theme_name: @theme_name,
+          direction: @direction
+        )}
+      />
 
       <ExampleAndCode title="Example" id="select_1">
         <:example>
