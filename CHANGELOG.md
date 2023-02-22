@@ -1,3 +1,10 @@
+## [2.35.13](https://github.com/coingaming/moon/compare/v2.35.12...v2.35.13) (2023-02-22)
+
+
+### Bug Fixes
+
+* [MDS-374] Select v2 ([ba4827a](https://github.com/coingaming/moon/commit/ba4827a2e143012bb4ee9c2ed649d71b02dac65b))
+
 ## [2.35.12](https://github.com/coingaming/moon/compare/v2.35.11...v2.35.12) (2023-02-17)
 
 
