@@ -8,14 +8,19 @@ defmodule MoonWeb.Examples.Design.ChipExample.WithOnClick do
 
   alias Moon.Design.Chip
 
+  prop(chip_status, :string, default: "Click me!")
+
   def render(assigns) do
     ~F"""
-    <Chip on_click="on_click">Default</Chip>
+    <Chip on_click="on_click">{@chip_status}</Chip>
     """
   end
 
   def handle_event("on_click", _, socket) do
-    Logger.info("Chip clicked!")
+    socket =
+      socket
+      |> assign(:chip_status, "Chip clicked!")
+
     {:noreply, socket}
   end
 
@@ -23,9 +28,11 @@ defmodule MoonWeb.Examples.Design.ChipExample.WithOnClick do
     """
     alias Moon.Design.Chip
 
+    prop(chip_status, :string, default: "Click me!")
+
     ...
 
-    <Chip on_click="on_click">Default</Chip>
+    <Chip on_click="on_click">{@chip_status}</Chip>
     """
   end
 end
