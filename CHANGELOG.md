@@ -1,3 +1,10 @@
+## [2.35.14](https://github.com/coingaming/moon/compare/v2.35.13...v2.35.14) (2023-02-23)
+
+
+### Bug Fixes
+
+* [MDS-403] Chip v2 ([#549](https://github.com/coingaming/moon/issues/549)) ([d335dd6](https://github.com/coingaming/moon/commit/d335dd67bad8b11f956ee713e28c46476a0921cf))
+
 ## [2.35.13](https://github.com/coingaming/moon/compare/v2.35.12...v2.35.13) (2023-02-22)
 
 
