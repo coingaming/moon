@@ -7,12 +7,14 @@ defmodule Moon.Design.Tabs do
   prop(on_change, :event)
   prop(size, :string, values!: ~w(sm md), default: "md")
   prop(class, :css_class)
+  prop(tabpanel_class, :css_class, default: "justify-around gap-2")
 
   prop(tab_titles, :list, default: [])
   prop(tab_module, :atom, default: __MODULE__.Tab)
 
   slot(tabs)
   slot(panels)
+  slot(default)
 
   def handle_event("clicked_tab_default", %{"value" => tab_id}, socket) do
     {:noreply, assign(socket, selected_index: String.to_integer("#{tab_id}"))}
@@ -20,7 +22,8 @@ defmodule Moon.Design.Tabs do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-wrap items-center justify-around gap-2 w-full">
+    <div class={"flex flex-wrap items-center w-full", @tabpanel_class}>
+      <#slot />
       <div
         class={merge(["flex items-center justify-center", (@size == "sm" && "gap-1") || "gap-2", @class])}
         role="tablist"
