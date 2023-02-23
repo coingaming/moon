@@ -8,6 +8,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -77,21 +78,13 @@ defmodule MoonWeb.Pages.Components.ChipPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Chip">
-        <p>Chips are compact little units that represent actions, filters or choices. When shown, they allow users to prompt actions, filter games/content and choose options. We use three types of chips in the Moon:</p>
-        <div class="flex flex-col gap-2">
-          <p>
-            <span class="block font-semibold">Action chip</span>
-            Action chips prompt actions related to the game/content.
-          </p>
-          <p>
-            <span class="block font-semibold">Filter chip</span>
-            Filter chips let users sieve through large categories.
-          </p>
-          <p>
-            <span class="block font-semibold">Selection chip</span>
-            Selection chips allow users to select options that matter to them.
-          </p>
-        </div>
+        <DeprecationWarning
+          name="Chip"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ChipPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Sizes" id="chip_1">
