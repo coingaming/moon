@@ -7,6 +7,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -29,9 +30,13 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Linear Progress">
-        <p>
-          A progress indicator is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
-        </p>
+        <DeprecationWarning
+          name="Progress"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ProgressPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Progress Linear" id="progress_linear">
