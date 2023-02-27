@@ -3,6 +3,7 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateful_component
 
+  alias Moon.Design.CircularProgress
   alias MoonWeb.Components.LargeLogo
   alias Moon.Components.Accordion
   alias Moon.Components.Sidebar
@@ -82,6 +83,7 @@ defmodule MoonWeb.Components.LeftMenu do
                           </:content>
                         </Accordion>
                         <SidebarLink route={Pages.Design.ChipPage}>Chip</SidebarLink>
+                        <SidebarLink route={Pages.Design.CircularProgressPage}>CircularProgress</SidebarLink>
                         <SidebarLink route={Pages.Design.DropdownPage}>Dropdown</SidebarLink>
                         <Accordion
                           is_content_inside={false}
