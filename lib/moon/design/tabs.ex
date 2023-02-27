@@ -22,7 +22,10 @@ defmodule Moon.Design.Tabs do
 
   def render(assigns) do
     ~F"""
-    <div class={"flex flex-wrap items-center w-full", @tabpanel_class}>
+    <div class={merge([
+      "flex flex-wrap items-center w-full",
+      @tabpanel_class
+    ])}>
       <#slot />
       <div
         class={merge(["flex items-center justify-center", (@size == "sm" && "gap-1") || "gap-2", @class])}
