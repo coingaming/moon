@@ -1,3 +1,10 @@
+## [2.35.15](https://github.com/coingaming/moon/compare/v2.35.14...v2.35.15) (2023-02-27)
+
+
+### Bug Fixes
+
+* by default link redirects ([#548](https://github.com/coingaming/moon/issues/548)) ([f38e5b1](https://github.com/coingaming/moon/commit/f38e5b15758691fe18e0fad724e49b902fe77716))
+
 ## [2.35.14](https://github.com/coingaming/moon/compare/v2.35.13...v2.35.14) (2023-02-23)
 
 
