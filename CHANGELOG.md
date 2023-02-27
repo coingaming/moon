@@ -1,3 +1,10 @@
+## [2.35.16](https://github.com/coingaming/moon/compare/v2.35.15...v2.35.16) (2023-02-27)
+
+
+### Bug Fixes
+
+* table column sortable false by default ([#552](https://github.com/coingaming/moon/issues/552)) ([aeba70d](https://github.com/coingaming/moon/commit/aeba70d4a8f32f9cae1061e244a7edefd312d5c7))
+
 ## [2.35.15](https://github.com/coingaming/moon/compare/v2.35.14...v2.35.15) (2023-02-27)
 
 
