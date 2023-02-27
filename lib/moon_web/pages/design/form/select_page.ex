@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/select",
+        to: "/components/v2/form/select",
         name: "Select"
       }
     ]
