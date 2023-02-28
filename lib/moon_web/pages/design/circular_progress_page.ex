@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Design.CircularProgressPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="CircularProgress">
         <p>
-        A circular progress indicator is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.</p>
+          A circular progress indicator is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.</p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[

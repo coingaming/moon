@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Examples.Design.CircularProgressExample.Default do
   @moduledoc false
 
