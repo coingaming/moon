@@ -3,10 +3,11 @@ defmodule Moon.Components.Renderers.Datetime do
   use Surface.Component
 
   prop(value, :any)
+  prop(format, :string, default: "%b %d, %Y, %H:%M:%S")
 
   def render(assigns) do
     ~F"""
-    {@value && Timex.format!(@value, "%b %d, %Y, %H:%M:%S", :strftime)}
+    {@value && Timex.format!(@value, @format, :strftime)}
     """
   end
 end
