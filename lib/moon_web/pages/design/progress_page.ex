@@ -69,6 +69,20 @@ defmodule MoonWeb.Pages.Design.ProgressPage do
             :required => 'No',
             :default => '0',
             :description => 'Value of Progress in %'
+          },
+          %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for customization of Progress'
+          },
+          %{
+            :name => 'progress_class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for customization of progress indicator'
           }
         ]}
       />
