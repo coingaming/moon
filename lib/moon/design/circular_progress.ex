@@ -5,14 +5,17 @@ defmodule Moon.Design.CircularProgress do
 
   alias Moon.Design.CircularProgress.Path
 
-  prop(bg_color, :string, default: "border-trunks/[.24]")
+  prop(bg_color, :string, default: "trunks/[.24]")
   prop(progress_color, :string, default: "border-piccolo")
   prop(size, :string, values: ["2xs", "xs", "sm", "md", "lg"], default: "md")
   prop(value, :decimal, default: 0)
 
+  prop(dash_ratio, :number)
+  prop(path_radius, :number)
+
   def render(assigns) do
     ~F"""
-    <div class={merge([
+    <!--<div class={merge([
       "relative w-full h-full rounded-full",
       get_circular_size(@size)
     ])}>
@@ -30,29 +33,35 @@ defmodule Moon.Design.CircularProgress do
         ]),
         @progress_color
       } />
-    </div>
+    </div>-->
     <svg
-      width="10"
-      height="10"
+      style={get_style(width: "2.5rem", height: "2.5rem", vertical_align: "middle")}
       viewBox="0 0 10 10"
-      class={"relative", get_circular_size(@size)}
+      fontSize: {get_circular_size(@size)}
       aria-valuemin={0}
       aria-valuemax={100}
       role="progressbar"
     >
-      <Path/>
-      <Path/>
+      <path
+      style={get_style(fill_opacity: 0, stroke: "blue", stroke_width: "0.5")}
+      d="M 5,5
+      m 0,-4
+      a 4,4 0 1 1 0,8
+      a 4,4 0 1 1 0,-8"
+      >
+      </path>
+      <path/>
     </svg>
     """
   end
 
   def get_circular_size(size) do
     case size do
-      "2xs" -> "w-4 h-4"
-      "xs" -> "w-6 h-6"
-      "sm" -> "w-8 h-8"
-      "md" -> "w-10 h-10"
-      "lg" -> "w-12 h-12"
+      "2xs" -> "1rem"
+      "xs" -> "1.5rem"
+      "sm" -> "2rem"
+      "md" -> "2.5rem"
+      "lg" -> "3rem"
     end
   end
 
@@ -65,4 +74,15 @@ defmodule Moon.Design.CircularProgress do
       "lg" -> "border-2"
     end
   end
+
+
+  defp viewbox_width(), do: 100
+
+  defp viewbox_height(), do: 100
+
+  defp viewbox_center_x(), do: 50
+
+  defp viewbox_center_y(), do: 50
+
+  defp path_radius(), do: ({viewbox_height} - 2) / 2
 end
