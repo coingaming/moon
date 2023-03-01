@@ -1,3 +1,10 @@
+# [2.37.0](https://github.com/coingaming/moon/compare/v2.36.0...v2.37.0) (2023-03-01)
+
+
+### Features
+
+* bump moon version to v25.6.1([#555](https://github.com/coingaming/moon/issues/555)) ([7291afa](https://github.com/coingaming/moon/commit/7291afa2bdde9534f723f75211f695552fed7945))
+
 # [2.36.0](https://github.com/coingaming/moon/compare/v2.35.16...v2.36.0) (2023-03-01)
 
 
