@@ -1,3 +1,10 @@
+# [2.36.0](https://github.com/coingaming/moon/compare/v2.35.16...v2.36.0) (2023-03-01)
+
+
+### Features
+
+* Add format prop to datetime renderer ([#554](https://github.com/coingaming/moon/issues/554)) ([22aa60f](https://github.com/coingaming/moon/commit/22aa60f7931bc66f2a2bac1fd5d9712d5e0119bf))
+
 ## [2.35.16](https://github.com/coingaming/moon/compare/v2.35.15...v2.35.16) (2023-02-27)
 
 
