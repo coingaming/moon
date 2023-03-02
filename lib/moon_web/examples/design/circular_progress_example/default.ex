@@ -15,7 +15,9 @@ defmodule MoonWeb.Examples.Design.CircularProgressExample.Default do
   def code() do
     """
     alias Moon.Design.CircularProgress
+
     ...
+
     <CircularProgress />
     """
   end

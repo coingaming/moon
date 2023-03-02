@@ -59,7 +59,7 @@ defmodule MoonWeb.Pages.Design.CircularProgressPage do
             :name => 'size',
             :type => '2xs | xs | sm | md | lg',
             :required => 'No',
-            :default => '2xs',
+            :default => 'md',
             :description => 'Size of Progress'
           },
           %{
