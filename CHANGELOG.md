@@ -1,3 +1,10 @@
+## [2.38.2](https://github.com/coingaming/moon/compare/v2.38.1...v2.38.2) (2023-03-03)
+
+
+### Bug Fixes
+
+* [MDS-415] Circular progress v2 ([#557](https://github.com/coingaming/moon/issues/557)) ([bdbb6eb](https://github.com/coingaming/moon/commit/bdbb6ebfdf07c726d4fb49bb36faa0784354af8d))
+
 ## [2.38.1](https://github.com/coingaming/moon/compare/v2.38.0...v2.38.1) (2023-03-03)
 
 
