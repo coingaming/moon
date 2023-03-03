@@ -108,7 +108,8 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:title>Progress</:title>
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
-                              <SidebarLink route={Pages.Design.ProgressPage}>Progress</SidebarLink>
+                              <SidebarLink route={Pages.Design.ProgressPage}>Linear</SidebarLink>
+                              <SidebarLink route={Pages.Design.CircularProgressPage}>Circular</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>

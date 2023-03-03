@@ -8,18 +8,15 @@ defmodule Moon.Design.Progress do
   prop(size, :string, values: ["6xs", "5xs", "4xs", "3xs", "2xs"], default: "2xs")
   prop(value, :decimal, default: 0)
   prop(class, :css_class)
-  prop(progress_class, :css_class)
   prop(test_id, :string)
 
   def render(assigns) do
     ~F"""
     <div
       class={merge([
-        [
-          "w-full relative rounded-full overflow-hidden",
-          @bg_color,
-          get_size(@size)
-        ],
+        "w-full relative rounded-full overflow-hidden",
+        @bg_color,
+        get_size(@size),
         @class
       ])}
       aria-valuemin={0}
@@ -31,11 +28,8 @@ defmodule Moon.Design.Progress do
       <span
         style={"width: #{trunc(@value)}%"}
         class={merge([
-          [
-            "block absolute h-full rounded-full ltr:left-0 rtl:right-0 transition-all",
-            @progress_color
-          ],
-          @progress_class
+          "block absolute h-full rounded-full ltr:left-0 rtl:right-0 transition-all",
+          @progress_color
         ])}
       />
     </div>
