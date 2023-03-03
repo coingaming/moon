@@ -82,7 +82,6 @@ defmodule MoonWeb.Components.LeftMenu do
                           </:content>
                         </Accordion>
                         <SidebarLink route={Pages.Design.ChipPage}>Chip</SidebarLink>
-                        <SidebarLink route={Pages.Design.CircularProgressPage}>CircularProgress</SidebarLink>
                         <SidebarLink route={Pages.Design.DropdownPage}>Dropdown</SidebarLink>
                         <Accordion
                           is_content_inside={false}
@@ -109,7 +108,8 @@ defmodule MoonWeb.Components.LeftMenu do
                           <:title>Progress</:title>
                           <:content>
                             <div class="flex-grow flex flex-col gap-2 pl-8">
-                              <SidebarLink route={Pages.Design.ProgressPage}>Progress</SidebarLink>
+                              <SidebarLink route={Pages.Design.ProgressPage}>Linear</SidebarLink>
+                              <SidebarLink route={Pages.Design.CircularProgressPage}>Circular</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>
