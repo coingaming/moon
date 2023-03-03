@@ -1,3 +1,10 @@
+## [2.38.1](https://github.com/coingaming/moon/compare/v2.38.0...v2.38.1) (2023-03-03)
+
+
+### Bug Fixes
+
+* [MDS-414] Progress v2 ([#553](https://github.com/coingaming/moon/issues/553)) ([e81aca1](https://github.com/coingaming/moon/commit/e81aca1c7fd0f784e80ef5c11ca92bd684fdca37))
+
 # [2.38.0](https://github.com/coingaming/moon/compare/v2.37.0...v2.38.0) (2023-03-01)
 
 
