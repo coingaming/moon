@@ -8,11 +8,11 @@ defmodule MoonWeb.Examples.Design.CircularProgressExample.DifferentSizes do
 
   def render(assigns) do
     ~F"""
-    <CircularProgress size="2xs" />
-    <CircularProgress size="xs" />
-    <CircularProgress size="sm" />
-    <CircularProgress />
-    <CircularProgress size="lg" />
+    <CircularProgress size="2xs" value={75} />
+    <CircularProgress size="xs" value={75} />
+    <CircularProgress size="sm" value={75} />
+    <CircularProgress value={75} />
+    <CircularProgress size="lg" value={75} />
     """
   end
 
@@ -22,11 +22,11 @@ defmodule MoonWeb.Examples.Design.CircularProgressExample.DifferentSizes do
 
     ...
 
-    <CircularProgress size="2xs" />
-    <CircularProgress size="xs" />
-    <CircularProgress size="sm" />
-    <CircularProgress />
-    <CircularProgress size="lg" />
+    <CircularProgress size="2xs" value={75} />
+    <CircularProgress size="xs" value={75} />
+    <CircularProgress size="sm" value={75} />
+    <CircularProgress value={75} />
+    <CircularProgress size="lg" value={75} />
     """
   end
 end
