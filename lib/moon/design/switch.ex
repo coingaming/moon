@@ -3,15 +3,14 @@ defmodule Moon.Design.Switch do
 
   use Moon.StatelessComponent
 
-  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
-  prop(form, :form, from_context: {Surface.Components.Form, :form})
-  prop(checked, :boolean, default: false)
+  prop(is_switched, :boolean, default: false)
   prop(disabled, :boolean, default: false)
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
-  prop(on_click, :event)
+  prop(on_change, :event)
+  prop(test_id, :string)
 
   slot(on_icon)
   slot(off_icon)
@@ -28,18 +27,22 @@ defmodule Moon.Design.Switch do
           "w-7 h-4 p-0.5": @size == "2xs",
           "w-11 h-6 p-1": @size == "xs",
           "w-[3.75rem] h-8 p-1": @size == "sm",
-          "opacity-30 cursor-not-allowed select-none": @disabled
+          "opacity-30 cursor-not-allowed select-none": @disabled,
+          "bg-beerus": @is_switched == true
+          #replace with @off_bg_color
         ],
         @class
       ])}
+      data-testid={@test_id}
+      on_click={@on_change}
     >
       <span class="block relative h-full w-full">
         {#if slot_assigned?(:on_icon)}
           <span
             class={merge([
-              "z-1 absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 transition-opacity flex",
-              "text-goten",
-              get_icon_size(@size)
+              "z-1 absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 transition-opacity flex text-goten opacity-100",
+              get_icon_size(@size),
+              "opacity-0": @is_switched == true
             ])}
             aria-hidden="true"
           >
@@ -49,11 +52,12 @@ defmodule Moon.Design.Switch do
         {#if slot_assigned?(:off_icon)}
           <span
             class={merge([
-              "z-1 absolute ltr:right-0 rtl:left-0 top-1/2 -translate-y-1/2 transition-opacity flex",
-              "text-bulma",
-              get_icon_size(@size)
+              "z-1 absolute ltr:right-0 rtl:left-0 top-1/2 -translate-y-1/2 transition-opacity flex text-bulma opacity-0",
+              get_icon_size(@size),
+              "opacity-100": @is_switched == true
             ])}
             aria-hidden="true"
+
           >
             <#slot {@off_icon} />
           </span>
@@ -65,7 +69,8 @@ defmodule Moon.Design.Switch do
             "bg-goten transition-all",
             "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
             "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
-            "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-25px)]": @size == "sm"
+            "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-24px)]": @size == "sm",
+            "ltr:left-0 rtl:right-0": @is_switched == true
           ])}
         />
       </span>
@@ -79,13 +84,5 @@ defmodule Moon.Design.Switch do
       "xs" -> "text-moon-16 "
       "sm" -> "text-moon-24 "
     end
-  end
-
-  def is_true(val) do
-    Enum.member?([true, "true"], val)
-  end
-
-  def is_selected(checked, form, field) do
-    is_true(checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
   end
 end

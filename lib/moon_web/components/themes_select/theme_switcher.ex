@@ -18,7 +18,7 @@ defmodule MoonWeb.Components.ThemesSelect.ThemeSwitcher do
     ~F"""
     <Form for={@selected_theme_changeset} change={@on_theme_switch}>
       <Field name={:is_dark}>
-        <Switch id="theme_switcher" icons checked={@dark_mode} class="theme_switcher" />
+        <Switch size="xs" id="theme_switcher" icons checked={@dark_mode} class="theme_switcher" />
       </Field>
     </Form>
     """

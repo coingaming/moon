@@ -48,11 +48,53 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
         title="Switch props"
         data={[
           %{
-            :name => 'default',
+            :name => 'is_switched',
+            :type => 'boolean',
+            :required => 'No',
+            :default => 'false',
+            :description => 'Is switch checked/unchecked'
+          },
+          %{
+            :name => 'disabled',
+            :type => 'boolean',
+            :required => 'No',
+            :default => '-',
+            :description => 'Set disabled/not disabled switch'
+          },
+          %{
+            :name => 'on_bg_color',
+            :type => 'css_class',
+            :required => 'No',
+            :default => 'bg-piccolo',
+            :description => 'Tailwind class for custom on-state background color'
+          },
+          %{
+            :name => 'off_bg_color',
+            :type => 'css_class',
+            :required => 'No',
+            :default => 'bg-beerus',
+            :description => 'Tailwind class for custom off-state background color'
+          },
+          %{
+            :name => 'on_icon',
             :type => 'slot',
             :required => 'No',
             :default => '-',
-            :description => 'Chip content'
+            :description => 'Set icon for checked state'
+          },
+          %{
+            :name => 'off_icon',
+            :type => 'slot',
+            :required => 'No',
+            :default => '-',
+            :description => 'Set icon for unchecked state'
+          },
+          %{
+            :name => 'size',
+            :type => '2xs | xs | sm',
+            :required => 'No',
+            :default => 'sm',
+            :description => 'Size of switch'
           }
         ]}
       />
