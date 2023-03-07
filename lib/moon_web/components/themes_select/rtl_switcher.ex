@@ -23,6 +23,7 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
     <Form for={@selected_direction_changeset} change={@on_direction_switch}>
       <Field name={:is_rtl}>
         <Switch
+          size="xs"
           id="direction_switcher"
           icon_name_off="text_right_align"
           icon_name_on="text_left_align"
