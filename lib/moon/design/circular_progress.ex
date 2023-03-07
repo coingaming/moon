@@ -3,8 +3,8 @@ defmodule Moon.Design.CircularProgress do
 
   use Moon.StatelessComponent
 
-  prop(bg_color, :string, default: "stroke-trunks/[.24]")
-  prop(progress_color, :string, default: "stroke-piccolo")
+  prop(bg_color, :css_class, default: "stroke-trunks/[.24]")
+  prop(progress_color, :css_class, default: "stroke-piccolo")
   prop(size, :string, values: ["2xs", "xs", "sm", "md", "lg"], default: "md")
   prop(value, :decimal, default: 0)
   prop(test_id, :string)
