@@ -13,7 +13,6 @@ defmodule Moon.Design.Form.Switch do
 
   prop(on_change, :event)
 
-
   def render(assigns) do
     ~F"""
     <div>

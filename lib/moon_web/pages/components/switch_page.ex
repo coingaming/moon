@@ -65,13 +65,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Switch">
-      <DeprecationWarning
-      name="Switch"
-      href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.SwitchPage,
-        theme_name: @theme_name,
-        direction: @direction
-      )}
-    />
+        <DeprecationWarning
+          name="Switch"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.SwitchPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Size" class="mt-3" id="switch_2_sample">
