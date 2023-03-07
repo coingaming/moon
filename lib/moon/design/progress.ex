@@ -3,8 +3,8 @@ defmodule Moon.Design.Progress do
 
   use Moon.StatelessComponent
 
-  prop(bg_color, :string, default: "bg-trunks/[.24]")
-  prop(progress_color, :string, default: "bg-piccolo")
+  prop(bg_color, :css_class, default: "bg-trunks/[.24]")
+  prop(progress_color, :css_class, default: "bg-piccolo")
   prop(size, :string, values: ["6xs", "5xs", "4xs", "3xs", "2xs"], default: "2xs")
   prop(value, :decimal, default: 0)
   prop(class, :css_class)
