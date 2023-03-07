@@ -29,7 +29,7 @@ defmodule Moon.Design.Switch do
           "w-[3.75rem] h-8 p-1": @size == "sm",
           "opacity-30 cursor-not-allowed select-none": @disabled,
           "bg-beerus": @is_switched == true
-          #replace with @off_bg_color
+          # replace with @off_bg_color
         ],
         @class
       ])}
@@ -57,7 +57,6 @@ defmodule Moon.Design.Switch do
               "opacity-100": @is_switched == true
             ])}
             aria-hidden="true"
-
           >
             <#slot {@off_icon} />
           </span>
@@ -65,7 +64,7 @@ defmodule Moon.Design.Switch do
         <span
           aria-hidden="true"
           class={merge([
-            "z-5 absolute top-1/2 -translate-y-1/2 shadow-moon-sm pointer-events-none rounded-full",
+            "z-5 absolute top-1/2 -translate-y-1/2 translate-x-0 shadow-moon-sm pointer-events-none rounded-full",
             "bg-goten transition-all",
             "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
             "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
