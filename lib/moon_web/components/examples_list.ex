@@ -12,7 +12,15 @@ defmodule MoonWeb.Components.ExamplesList do
   def render(assigns) do
     ~F"""
     {#for module <- @examples}
-      <ExampleAndCode title={"#{module}" |> String.split(".") |> Enum.at(-1)} id={"example-#{module}"}>
+      <ExampleAndCode
+        title={"#{module}"
+        |> String.split(".")
+        |> Enum.at(-1)
+        |> String.replace(~r/([a-z])([A-Z])/, "\\1 \\2")
+        |> String.downcase()
+        |> String.capitalize()}
+        id={"example-#{module}"}
+      >
         <:example><.moon {=module} id={"example-contents-#{module}"} /></:example>
         <:code>{(Kernel.function_exported?(module, :code, 0) && module.code()) || ""}</:code>
       </ExampleAndCode>
