@@ -3,6 +3,9 @@ defmodule Moon.Design.Form.Switch do
 
   use Moon.StatefulComponent
 
+  alias Moon.Design.Switch
+  alias Phoenix.LiveView.JS
+
   prop(field, :atom)
   prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(checked, :boolean, default: false)
@@ -11,7 +14,7 @@ defmodule Moon.Design.Form.Switch do
   prop(value, :any)
   prop(class, :css_class)
 
-  prop(on_change, :event)
+
 
   def render(assigns) do
     ~F"""
@@ -36,6 +39,13 @@ defmodule Moon.Design.Form.Switch do
           checked: !is_selected(@checked, @form, @field)
         }
       />
+      <Switch on_click={JS.dispatch("moon:update-switch",
+        detail: %{
+          checked: !is_selected(@checked, @form, @field),
+          switch_id: @id
+        },
+        to: "##{@id}_radio_true"
+      )}/>
     </div>
     """
   end

@@ -159,11 +159,6 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
     socket =
       assign(socket,
         user_changeset: user_changeset,
-        small_switch_checked: false,
-        medium_switch_checked: false,
-        large_switch_checked: false,
-        icons_switch_checked: false,
-        captions_switch_checked: false,
         user: user
       )
 
