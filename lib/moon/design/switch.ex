@@ -9,7 +9,7 @@ defmodule Moon.Design.Switch do
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
-  prop(on_change, :event)
+  prop(on_click, :event)
   prop(test_id, :string)
 
   slot(on_icon)
@@ -34,7 +34,7 @@ defmodule Moon.Design.Switch do
         @class
       ])}
       data-testid={@test_id}
-      on_click={@on_change}
+      on_click={@on_click}
     >
       <span class="block relative h-full w-full">
         {#if slot_assigned?(:on_icon)}
