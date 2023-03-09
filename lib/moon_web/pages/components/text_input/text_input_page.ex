@@ -20,7 +20,6 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Components.Table.Column
   alias MoonWeb.Components.Facing.DeprecationWarning
 
-
   data(breadcrumbs, :any,
     default: [
       %{
@@ -122,7 +121,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-        <ComponentPageDescription title="Text Input" >
+        <ComponentPageDescription title="Text Input">
           <DeprecationWarning
             name="TextInput"
             href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.TextInputPage,
