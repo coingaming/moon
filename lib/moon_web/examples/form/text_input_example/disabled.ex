@@ -5,10 +5,7 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Disabled do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form.TextInput
-
-  prop(user_changeset, :any, default: User.changeset(%User{}))
 
   def render(assigns) do
     ~F"""
@@ -21,7 +18,14 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Disabled do
 
   def code() do
     """
+    alias Moon.Design.Form.TextInput
 
+    ...
+
+    <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+      <TextInput disabled placeholder="Disabled input" />
+      <TextInput readonly placeholder="Read-only input" />
+    </div>
     """
   end
 end

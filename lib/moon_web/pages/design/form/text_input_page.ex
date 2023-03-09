@@ -26,90 +26,6 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
     ]
   )
 
-  data(props_info_array, :list,
-    default: [
-      %{
-        :name => 'type',
-        :type =>
-          'date | datetime-local | email | number | password | search | tel | text | url | time | url',
-        :required => 'No',
-        :default => 'text',
-        :description => 'Different types of input'
-      },
-      %{
-        :name => 'size',
-        :type => 'medium | large | xlarge',
-        :required => '-',
-        :default => 'medium',
-        :description => 'Size variant (currently only medium | large, with large as default)'
-      },
-      %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Required for medium size only'
-      },
-      %{
-        :name => 'placeholder',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Placeholder for input'
-      },
-      %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field value for underlying pheonix text input component'
-      },
-      %{
-        :name => 'hint_text',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Informative or error message under input'
-      },
-      %{
-        :name => 'error',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Set error state for input'
-      },
-      %{
-        :name => 'show_password_text',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'Only for input type password. Text for toggle button: show/hide password'
-      },
-      %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Background color'
-      },
-      %{
-        :name => 'id',
-        :type => 'string',
-        :required => 'No | required (for password type)',
-        :default => '-',
-        :description => 'Unique id'
-      },
-      %{
-        :name => 'use_error_tag',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description =>
-          'Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components'
-      }
-    ]
-  )
-
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
@@ -156,6 +72,21 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
             :required => 'No',
             :default => '-',
             :description => 'Attr data-test_id for the DOM element'
+          },
+          %{
+            :name => 'type',
+            :type =>
+              'date | datetime-local | email | number | password | search | tel | text | url | time | url',
+            :required => 'No',
+            :default => 'text',
+            :description => 'Different types of input'
+          },
+          %{
+            :name => 'size',
+            :type => 'sm | md | lg | xl',
+            :required => '-',
+            :default => 'medium',
+            :description => 'Size variant (currently only medium | large, with large as default)'
           },
           %{
             :name => 'disabled',

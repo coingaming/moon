@@ -29,7 +29,27 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Types do
 
   def code() do
     """
+    alias Moon.Design.Form.TextInput
 
+    prop(types, :string,
+      default: [
+        ["date", "datetime-local", "email"],
+        ["number", "password", "search"],
+        ["tel", "time", "url"]
+      ]
+    )
+
+    ...
+
+    <div class="flex flex-col w-full gap-2">
+      {#for type_line <- @types}
+        <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+          {#for type <- type_line}
+            <TextInput {=type} placeholder={"Placeholder for \#{type}"} />
+          {/for}
+        </div>
+      {/for}
+    </div>
     """
   end
 end

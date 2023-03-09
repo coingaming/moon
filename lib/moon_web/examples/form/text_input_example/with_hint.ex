@@ -22,7 +22,18 @@ defmodule MoonWeb.Examples.Form.TextInputExample.WithHint do
 
   def code() do
     """
+    alias Moon.Design.Form.TextInput
+    alias Moon.Design.Form.Field
 
+    ...
+
+    <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+      {#for size <- ~w(sm md lg xl)}
+        <Field hint={"Hint for \#{size}"} field={:gender}>
+          <TextInput {=size} field={:gender} placeholder={"Placeholder for \#{size}"} />
+        </Field>
+      {/for}
+    </div>
     """
   end
 end

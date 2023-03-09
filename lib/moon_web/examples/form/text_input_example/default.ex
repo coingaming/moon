@@ -5,10 +5,7 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Default do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form.TextInput
-
-  prop(user_changeset, :any, default: User.changeset(%User{}))
 
   def render(assigns) do
     ~F"""
@@ -18,7 +15,11 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Default do
 
   def code() do
     """
+    alias Moon.Design.Form.TextInput
 
+    ...
+
+    <TextInput field={:username} />
     """
   end
 end
