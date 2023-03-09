@@ -1,3 +1,10 @@
+## [2.38.3](https://github.com/coingaming/moon/compare/v2.38.2...v2.38.3) (2023-03-09)
+
+
+### Bug Fixes
+
+* [MDS-376] TextInput v2 ([464eb23](https://github.com/coingaming/moon/commit/464eb23790a5a594a2eae275b5436deee28a7311))
+
 ## [2.38.2](https://github.com/coingaming/moon/compare/v2.38.1...v2.38.2) (2023-03-03)
 
 
