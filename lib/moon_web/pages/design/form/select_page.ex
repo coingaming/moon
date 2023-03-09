@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/select",
+        to: "/components/v2/form/select",
         name: "Select"
       }
     ]
@@ -41,43 +41,39 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.WithHint
       ]} />
 
-      <PropsTable data={[
-        %{
-          :name => 'field',
-          :type => 'atom',
-          :required => 'Yes',
-          :default => '-',
-          :description => 'Field name for underlying surface select component'
-        },
-        %{
-          :name => 'options',
-          :type => 'list',
-          :required => 'No',
-          :default => '[]',
-          :description => 'List of items to  be shown, %{:key, :value, :disabled}'
-        },
-        %{
-          :name => 'value',
-          :type => 'any',
-          :required => 'No',
-          :default => '[]',
-          :description => 'Selected value'
-        },
-        %{
-          :name => 'prompt',
-          :type => 'string',
-          :required => 'No',
-          :default => '-',
-          :description => 'Initial prompt in select when nothing is selected'
-        },
-        %{
-          :name => 'disabled',
-          :type => 'boolean',
-          :required => 'No',
-          :default => 'false',
-          :description => 'Whether the component is disabled'
-        }
-      ]} />
+      <PropsTable
+        title="Select props"
+        data={[
+          %{
+            :name => 'field',
+            :type => 'atom',
+            :required => 'Yes',
+            :default => '-',
+            :description => 'Field name for underlying surface select component'
+          },
+          %{
+            :name => 'options',
+            :type => 'list',
+            :required => 'No',
+            :default => '[]',
+            :description => 'List of items to  be shown, %{:key, :value, :disabled}'
+          },
+          %{
+            :name => 'value',
+            :type => 'any',
+            :required => 'No',
+            :default => '[]',
+            :description => 'Selected value'
+          },
+          %{
+            :name => 'disabled',
+            :type => 'boolean',
+            :required => 'No',
+            :default => 'false',
+            :description => 'Whether the component is disabled'
+          }
+        ]}
+      />
     </Page>
     """
   end

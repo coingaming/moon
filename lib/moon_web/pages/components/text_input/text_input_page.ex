@@ -18,6 +18,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias MoonWeb.Components.Table.Table
   alias MoonWeb.Components.Table.Column
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -120,10 +121,15 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
-        <ComponentPageDescription title="Text Input" />
-        <p>
-          Indeed, forms require input from all users, including astronauts. Text input fields help to gather both short and long-form information. The size of the text field should correspond to the length of information that's required.</p>
-        <p>Text input fields can contain various rules to ensure the right information is obtained from users. Users should also be given prompts to guide them on what's needed, or if they've made an error while doing so.</p>
+        <ComponentPageDescription title="Text Input">
+          <DeprecationWarning
+            name="TextInput"
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.TextInputPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+          />
+        </ComponentPageDescription>
 
         <ExampleAndCode id="input_020" title="Sizes">
           <:example>
