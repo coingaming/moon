@@ -14,11 +14,11 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Default do
 
   def code() do
     """
-    alias Moon.Design.Switch
+    alias Moon.Design.Form.Switch
 
     ...
 
-
+    <Switch id="switch_1" />
     """
   end
 end

@@ -6,19 +6,19 @@ defmodule MoonWeb.Examples.Design.SwitchExample.WithIcons do
 
   alias Moon.Icons.GenericCheckRounded
   alias Moon.Icons.GenericClose
-  alias Moon.Design.Switch
+  alias Moon.Design.Form.Switch
 
   def render(assigns) do
     ~F"""
-    <Switch size="2xs">
+    <Switch size="2xs" id="switch_12">
       <:on_icon><GenericCheckRounded /></:on_icon>
       <:off_icon><GenericClose /></:off_icon>
     </Switch>
-    <Switch size="xs">
+    <Switch size="xs" id="switch_13">
       <:on_icon><GenericCheckRounded /></:on_icon>
       <:off_icon><GenericClose /></:off_icon>
     </Switch>
-    <Switch>
+    <Switch id="switch_14">
       <:on_icon><GenericCheckRounded /></:on_icon>
       <:off_icon><GenericClose /></:off_icon>
     </Switch>
@@ -27,11 +27,24 @@ defmodule MoonWeb.Examples.Design.SwitchExample.WithIcons do
 
   def code() do
     """
-    alias Moon.Design.Switch
+    alias Moon.Icons.GenericCheckRounded
+    alias Moon.Icons.GenericClose
+    alias Moon.Design.Form.Switch
 
     ...
 
-
+    <Switch size="2xs" id="switch_12">
+      <:on_icon><GenericCheckRounded /></:on_icon>
+      <:off_icon><GenericClose /></:off_icon>
+    </Switch>
+    <Switch size="xs" id="switch_13">
+      <:on_icon><GenericCheckRounded /></:on_icon>
+      <:off_icon><GenericClose /></:off_icon>
+    </Switch>
+    <Switch id="switch_14">
+      <:on_icon><GenericCheckRounded /></:on_icon>
+      <:off_icon><GenericClose /></:off_icon>
+    </Switch>
     """
   end
 end

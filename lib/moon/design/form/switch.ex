@@ -4,48 +4,53 @@ defmodule Moon.Design.Form.Switch do
   use Moon.StatefulComponent
 
   alias Moon.Design.Switch
-  alias Phoenix.LiveView.JS
 
-  prop(field, :atom)
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-  prop(checked, :boolean, default: false)
 
+  prop(is_switched, :boolean, default: false)
   prop(options, :list, default: [])
   prop(value, :any)
+
+  prop(disabled, :boolean, default: false)
+  prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
+  prop(on_bg_color, :css_class, default: "bg-piccolo")
+  prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
+  prop(test_id, :string)
 
-
+  slot(on_icon)
+  slot(off_icon)
 
   def render(assigns) do
     ~F"""
     <div>
-      <Surface.Components.Form.RadioButton
+      <Surface.Components.Form.Checkbox
         {=@form}
         {=@field}
-        class="hidden"
-        value="true"
+        checked_value={@value}
+        unchecked_value={@value}
         opts={
-          id: "#{@id}_radio_true",
-          checked: is_selected(@checked, @form, @field)
+          is_switched: is_true(@is_switched)
         }
       />
-      <Surface.Components.Form.RadioButton
-        {=@form}
-        {=@field}
-        class="hidden"
-        value="false"
-        opts={
-          id: "#{@id}_radio_false",
-          checked: !is_selected(@checked, @form, @field)
-        }
-      />
-      <Switch on_click={JS.dispatch("moon:update-switch",
-        detail: %{
-          checked: !is_selected(@checked, @form, @field),
-          switch_id: @id
-        },
-        to: "##{@id}_radio_true"
-      )}/>
+      <Switch
+        {=@size}
+        {=@on_bg_color}
+        {=@off_bg_color}
+        {=@disabled}
+        {=@class}
+        {=@test_id}
+        on_change="toggle_switch"
+        is_switched={is_true(@is_switched) || is_true(Phoenix.HTML.Form.input_value(@form, @field))}
+      >
+        <:on_icon>
+          <#slot {@on_icon} />
+        </:on_icon>
+        <:off_icon>
+          <#slot {@off_icon} />
+        </:off_icon>
+      </Switch>
     </div>
     """
   end
@@ -54,7 +59,7 @@ defmodule Moon.Design.Form.Switch do
     Enum.member?([true, "true"], val)
   end
 
-  def is_selected(checked, form, field) do
-    is_true(checked) || is_true(Phoenix.HTML.Form.input_value(form, field))
+  def handle_event("toggle_switch", _params, socket) do
+    {:noreply, assign(socket, is_switched: !socket.assigns.is_switched)}
   end
 end
