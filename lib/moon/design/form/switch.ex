@@ -11,6 +11,7 @@ defmodule Moon.Design.Form.Switch do
   prop(is_switched, :boolean, default: false)
   prop(options, :list, default: [])
   prop(value, :any)
+  prop(name, :string)
 
   prop(disabled, :boolean, default: false)
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
@@ -25,14 +26,13 @@ defmodule Moon.Design.Form.Switch do
   def render(assigns) do
     ~F"""
     <div>
-      <Surface.Components.Form.Checkbox
-        {=@form}
-        {=@field}
-        checked_value={@value}
-        unchecked_value={@value}
-        opts={
-          is_switched: is_true(@is_switched)
-        }
+      <input
+        type="checkbox"
+        name={@name}
+        value={@value}
+        checked={@is_switched}
+        class="hidden"
+        :on-click="toggle_switch"
       />
       <Switch
         {=@size}

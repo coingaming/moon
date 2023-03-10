@@ -40,8 +40,8 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
         SwitchExample.Disabled,
         SwitchExample.WithIcons,
         SwitchExample.CustomBackground,
-        SwitchExample.UsingWithHtmlForms,
-        SwitchExample.CodeExamplesForFullCustomization
+        SwitchExample.UsingWithForms,
+        SwitchExample.CodeExampleForFullCustomization
       ]} />
 
       <PropsTable
