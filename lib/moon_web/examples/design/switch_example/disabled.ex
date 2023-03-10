@@ -4,22 +4,23 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Disabled do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Switch
+  alias Moon.Design.Form.Switch
 
   def render(assigns) do
     ~F"""
-    <Switch disabled />
-    <Switch disabled is_switched />
+    <Switch disabled id="switch_2" />
+    <Switch disabled is_switched id="switch_3" />
     """
   end
 
   def code() do
     """
-    alias Moon.Design.Switch
+    alias Moon.Design.Form.Switch
 
     ...
 
-
+    <Switch disabled id="switch_2" />
+    <Switch disabled is_switched id="switch_3" />
     """
   end
 end

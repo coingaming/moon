@@ -4,23 +4,25 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Switch
+  alias Moon.Design.Form.Switch
 
   def render(assigns) do
     ~F"""
-    <Switch size="2xs" />
-    <Switch size="xs" />
-    <Switch />
+    <Switch size="2xs" id="switch_8" />
+    <Switch size="xs" id="switch_9" />
+    <Switch id="switch_10" />
     """
   end
 
   def code() do
     """
-    alias Moon.Design.Switch
+    alias Moon.Design.Form.Switch
 
     ...
 
-
+    <Switch size="2xs" id="switch_8" />
+    <Switch size="xs" id="switch_9" />
+    <Switch id="switch_10" />
     """
   end
 end

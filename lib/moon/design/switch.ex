@@ -4,37 +4,39 @@ defmodule Moon.Design.Switch do
   use Moon.StatelessComponent
 
   prop(is_switched, :boolean, default: false)
-  prop(disabled, :boolean, default: false)
-  prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
-  prop(on_bg_color, :css_class, default: "bg-piccolo")
-  prop(off_bg_color, :css_class, default: "bg-beerus")
-  prop(class, :css_class)
-  prop(on_click, :event)
-  prop(test_id, :string)
+  prop(size, :string, from_context: {Moon.Design.Form.Switch, :size})
+  prop(on_bg_color, :css_class, from_context: {Moon.Design.Form.Switch, :on_bg_color})
+  prop(off_bg_color, :css_class, from_context: {Moon.Design.Form.Switch, :off_bg_color})
+  prop(disabled, :boolean, from_context: {Moon.Design.Form.Switch, :disabled})
+  prop(class, :css_class, from_context: {Moon.Design.Form.Switch, :class})
+  prop(test_id, :string, from_context: {Moon.Design.Form.Switch, :test_id})
 
-  slot(on_icon)
+  prop(on_change, :event)
+
   slot(off_icon)
+  slot(on_icon)
 
+  @spec render(map) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
     <button
       type="button"
       aria-pressed="false"
+      disabled={@disabled}
       class={merge([
         [
-          "block cursor-pointer rounded-full transition",
-          @on_bg_color,
+          "block rounded-full transition",
+          (@is_switched == false && @on_bg_color) || @off_bg_color,
           "w-7 h-4 p-0.5": @size == "2xs",
           "w-11 h-6 p-1": @size == "xs",
           "w-[3.75rem] h-8 p-1": @size == "sm",
-          "opacity-30 cursor-not-allowed select-none": @disabled,
-          "bg-beerus": @is_switched == true
-          # replace with @off_bg_color
+          "cursor-pointer": !@disabled,
+          "opacity-30 cursor-not-allowed select-none": @disabled
         ],
         @class
       ])}
       data-testid={@test_id}
-      on_click={@on_click}
+      :on-click={@on_change}
     >
       <span class="block relative h-full w-full">
         {#if slot_assigned?(:on_icon)}

@@ -3,8 +3,10 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
 
   use Moon.StatelessComponent
 
+  alias Moon.Icons.TextLeftAlign
+  alias Moon.Icons.TextRightAlign
   alias Moon.Components.Form
-  alias Moon.Design.Switch
+  alias Moon.Design.Form.Switch
   alias Moon.Components.Field
   alias MoonWeb.Components.ThemesSelect.SelectedDirection
 
@@ -22,14 +24,10 @@ defmodule MoonWeb.Components.ThemesSelect.RtlSwitcher do
     ~F"""
     <Form for={@selected_direction_changeset} change={@on_direction_switch}>
       <Field name={:is_rtl}>
-        <Switch
-          size="xs"
-          id="direction_switcher"
-          icon_name_off="text_right_align"
-          icon_name_on="text_left_align"
-          icons
-          checked={@is_rtl}
-        />
+        <Switch size="xs" id="direction_switcher" is_switched={!@is_rtl}>
+          <:on_icon><TextRightAlign /></:on_icon>
+          <:off_icon><TextLeftAlign /></:off_icon>
+        </Switch>
       </Field>
     </Form>
     """
