@@ -1,16 +1,15 @@
 defmodule Moon.Design.Switch do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
 
   prop(is_switched, :boolean, default: false)
-  prop(size, :string, from_context: {Moon.Design.Form.Switch, :size})
-  prop(on_bg_color, :css_class, from_context: {Moon.Design.Form.Switch, :on_bg_color})
-  prop(off_bg_color, :css_class, from_context: {Moon.Design.Form.Switch, :off_bg_color})
-  prop(disabled, :boolean, from_context: {Moon.Design.Form.Switch, :disabled})
-  prop(class, :css_class, from_context: {Moon.Design.Form.Switch, :class})
-  prop(test_id, :string, from_context: {Moon.Design.Form.Switch, :test_id})
-
+  prop(disabled, :boolean, default: false)
+  prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
+  prop(on_bg_color, :css_class, default: "bg-piccolo")
+  prop(off_bg_color, :css_class, default: "bg-beerus")
+  prop(class, :css_class)
+  prop(test_id, :string)
   prop(on_change, :event)
 
   slot(off_icon)
@@ -36,7 +35,7 @@ defmodule Moon.Design.Switch do
         @class
       ])}
       data-testid={@test_id}
-      :on-click={@on_change}
+      :on-click={@on_change || "toggle_switch"}
     >
       <span class="block relative h-full w-full">
         {#if slot_assigned?(:on_icon)}
@@ -85,5 +84,9 @@ defmodule Moon.Design.Switch do
       "xs" -> "text-moon-16 "
       "sm" -> "text-moon-24 "
     end
+  end
+
+  def handle_event("toggle_switch", _params, socket) do
+    {:noreply, assign(socket, is_switched: !socket.assigns.is_switched)}
   end
 end

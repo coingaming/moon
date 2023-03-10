@@ -109,7 +109,14 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
             :required => 'No',
             :default => '-',
             :description => 'The value used when using this component inside a form, if it is checked'
-          }
+          },
+          %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for customization'
+          },
         ]}
       />
     </Page>

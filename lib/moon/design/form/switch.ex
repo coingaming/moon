@@ -35,6 +35,7 @@ defmodule Moon.Design.Form.Switch do
         :on-click="toggle_switch"
       />
       <Switch
+        id={@id}
         {=@size}
         {=@on_bg_color}
         {=@off_bg_color}

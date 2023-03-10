@@ -6,7 +6,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.WithIcons do
 
   alias Moon.Icons.GenericCheckRounded
   alias Moon.Icons.GenericClose
-  alias Moon.Design.Form.Switch
+  alias Moon.Design.Switch
 
   def render(assigns) do
     ~F"""
@@ -29,7 +29,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.WithIcons do
     """
     alias Moon.Icons.GenericCheckRounded
     alias Moon.Icons.GenericClose
-    alias Moon.Design.Form.Switch
+    alias Moon.Design.Switch
 
     ...
 
