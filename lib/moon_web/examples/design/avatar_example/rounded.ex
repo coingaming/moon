@@ -8,9 +8,9 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Rounded do
 
   def render(assigns) do
     ~F"""
-    <Avatar />
-    <Avatar />
-    <Avatar />
+    <Avatar is_rounded />
+    <Avatar is_rounded name="md" />
+    <Avatar is_rounded image_url="https://picsum.photos/id/547/100" />
     """
   end
 
@@ -20,7 +20,9 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Rounded do
 
     ...
 
-
+    <Avatar is_rounded />
+    <Avatar is_rounded name="md" />
+    <Avatar is_rounded image_url="https://picsum.photos/id/547/100" />
     """
   end
 end

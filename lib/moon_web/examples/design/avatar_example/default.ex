@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Default do
 
     ...
 
-
+    <Avatar />
     """
   end
 end

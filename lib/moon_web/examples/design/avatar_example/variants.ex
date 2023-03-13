@@ -9,8 +9,8 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Variants do
   def render(assigns) do
     ~F"""
     <Avatar />
-    <Avatar />
-    <Avatar />
+    <Avatar name="md" />
+    <Avatar image_url="https://picsum.photos/id/547/100" />
     """
   end
 
@@ -20,7 +20,9 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Variants do
 
     ...
 
-
+    <Avatar />
+    <Avatar name="md" />
+    <Avatar image_url="https://picsum.photos/id/547/100" />
     """
   end
 end

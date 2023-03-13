@@ -9,8 +9,8 @@ defmodule MoonWeb.Examples.Design.AvatarExample.CustomColours do
   def render(assigns) do
     ~F"""
     <Avatar />
-    <Avatar />
-    <Avatar />
+    <Avatar color="text-goten" bg_color="bg-piccolo" />
+    <Avatar color="text-goten" bg_color="bg-chichi" />
     """
   end
 
@@ -20,7 +20,9 @@ defmodule MoonWeb.Examples.Design.AvatarExample.CustomColours do
 
     ...
 
-
+    <Avatar />
+    <Avatar color="text-goten" bg_color="bg-piccolo" />
+    <Avatar color="text-goten" bg_color="bg-chichi" />
     """
   end
 end
