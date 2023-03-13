@@ -41,6 +41,7 @@ defmodule Moon.Design.Avatar do
         @class
       ])}
       style={style(assigns)}
+      data-testid={@test_id}
     >
       <span :if={@name && !@image_url}>{@name}</span>
       <Icon name="generic_user" class={set_icon_size(@size)} :if={!@name && !@image_url} />
