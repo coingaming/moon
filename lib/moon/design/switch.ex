@@ -9,6 +9,7 @@ defmodule Moon.Design.Switch do
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
+  prop(switcher_class, :css_class)
   prop(test_id, :string)
   prop(on_change, :event)
 
@@ -65,12 +66,15 @@ defmodule Moon.Design.Switch do
         <span
           aria-hidden="true"
           class={merge([
-            "z-5 absolute top-1/2 -translate-y-1/2 translate-x-0 shadow-moon-sm pointer-events-none rounded-full",
-            "bg-goten transition-all",
-            "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
-            "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
-            "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-24px)]": @size == "sm",
-            "ltr:left-0 rtl:right-0": @is_switched == true
+            [
+              "z-5 absolute top-1/2 -translate-y-1/2 translate-x-0 shadow-moon-sm pointer-events-none rounded-full",
+              "bg-goten transition-all",
+              "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
+              "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
+              "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-24px)]": @size == "sm",
+              "ltr:left-0 rtl:right-0": @is_switched == true
+            ],
+            @switcher_class
           ])}
         />
       </span>

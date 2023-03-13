@@ -17,7 +17,6 @@ defmodule MoonWeb.Components.ThemesSelect do
   prop(theme_name, :any, default: "moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
   prop(active_page, :any)
-  prop(use_theme_switcher, :boolean, default: false)
 
   data(show_themes, :boolean, default: false)
   data(dark_mode, :boolean, default: false)

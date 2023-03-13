@@ -11,7 +11,7 @@ defmodule Moon.Design.Form.Switch do
   prop(is_switched, :boolean, default: false)
   prop(options, :list, default: [])
   prop(value, :any)
-  prop(name, :string)
+  prop(name, :string, required: true)
 
   prop(disabled, :boolean, default: false)
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")

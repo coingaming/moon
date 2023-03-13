@@ -117,6 +117,13 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
             :default => '-',
             :description => 'Tailwind classes for customization'
           },
+          %{
+            :name => 'switcher_class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for customization of switcher element'
+          }
         ]}
       />
     </Page>

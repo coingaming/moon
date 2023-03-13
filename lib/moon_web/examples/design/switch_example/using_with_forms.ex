@@ -14,7 +14,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.UsingWithForms do
     ~F"""
     <div>
       <Form for={@user_changeset}>
-        <Switch id="switch_11" />
+        <Switch name="notification" value="on" id="switch_11" />
       </Form>
     </div>
     """
@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.UsingWithForms do
     ...
 
     <Form for={@user_changeset}>
-        <Switch id="switch_11" />
+      <Switch name="notification" value="on" id="switch_11" />
     </Form>
     """
   end
