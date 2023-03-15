@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Facing.DeprecationWarning
   alias Moon.Autolayouts.PullAside
   alias Moon.Autolayouts.LeftToRight
   alias Moon.Components.Button
@@ -37,9 +38,13 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
       class={"mr-64": @drawer_2_is_open}
     >
       <ComponentPageDescription title="Drawer">
-        <p>
-          Drawer
-        </p>
+        <DeprecationWarning
+          name="Drawer"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.DrawerPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Drawer on top right" id="drawer_1_example">

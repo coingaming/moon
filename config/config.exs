@@ -52,6 +52,7 @@ config :surface, :components, [
   {Moon.Design.Form, propagate_context_to_slots: true},
   {Moon.Design.Form.Field, propagate_context_to_slots: true},
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
+  {Moon.Design.Drawer, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]
