@@ -36,6 +36,7 @@ defmodule Moon.Components.Toast do
     ~F"""
     <div
       {=@id}
+      data-testid={@testid}
       class={
         "inline-flex items-center rounded-lg shadow-xl pointer-events-auto p-4 mb-4",
         @background_color_class
