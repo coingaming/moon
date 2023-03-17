@@ -4,14 +4,12 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   require Logger
   use MoonWeb, :live_view
 
-  alias Surface.Components.Raw
+  alias MoonWeb.Components.Anatomy
   alias Moon.Design.Tabs
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
-  alias MoonWeb.Components.PageSection
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
-  alias MoonWeb.Components.CodeSnippet
 
   import MoonWeb.Helpers.Lorem
 
@@ -118,19 +116,6 @@ defmodule MoonWeb.Pages.Design.TabsPage do
 
   data(tab_id, :integer, default: 1)
 
-  def anatomy_code() do
-    """
-    <Tabs selected_index={@tab_id} on_change="clicked_tab">
-      <Tabs.Tab>First tab</Tabs.Tab>
-      <Tabs.Tab>Second tab</Tabs.Tab>
-      <Tabs.Tab>Third tab</Tabs.Tab>
-      <Tabs.Panel>{lorem()}</Tabs.Panel>
-      <Tabs.Panel>{ipsum()}</Tabs.Panel>
-      <Tabs.Panel>{dolor()}</Tabs.Panel>
-    </Tabs>
-    """
-  end
-
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
@@ -142,27 +127,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         </p>
       </ComponentPageDescription>
 
-      <PageSection title="Anatomy" class="hidden">
-        <p>Tabs are implemented vi Headless design, so can be easly customized. Headless design means folowing:
-        </p>
-        <CodeSnippet>
-          {anatomy_code()}
-        </CodeSnippet>
-        <pre>
-          <code>
-            <#Raw>
-              <Tabs id="tabs-ex-0">
-                <Tabs.Tab>First tab</Tabs.Tab>
-                <Tabs.Tab>Second tab</Tabs.Tab>
-                <Tabs.Tab>Third tab</Tabs.Tab>
-                <Tabs.Panel>{lorem()}</Tabs.Panel>
-                <Tabs.Panel>{ipsum()}</Tabs.Panel>
-                <Tabs.Panel>{dolor()}</Tabs.Panel>
-              </Tabs>
-            </#Raw>
-          </code>
-        </pre>
-      </PageSection>
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExampleAndCode title="Default" id="tabs" class="mt-4">
         <:example>
@@ -402,6 +367,19 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       <Tabs.Panel>{dolor()}</Tabs.Panel>
     </Tabs>
 
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Tabs>
+      <Tabs.Tab>...</Tabs.Tab>
+      <Tabs.Tab>...</Tabs.Tab>
+      <Tabs.Tab>...</Tabs.Tab>
+      <Tabs.Panel>...</Tabs.Panel>
+      <Tabs.Panel>...</Tabs.Panel>
+      <Tabs.Panel>...</Tabs.Panel>
+    </Tabs>
     """
   end
 end

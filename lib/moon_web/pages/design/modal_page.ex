@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
@@ -31,6 +32,8 @@ defmodule MoonWeb.Pages.Design.ModalPage do
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         ModalExample.Default,
@@ -154,6 +157,17 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         ]}
       />
     </Page>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Modal>
+      <Modal.Backdrop />
+      <Modal.Panel>
+        <Modal.Header>...</Modal.Header>
+      </Modal.Panel>
+    </Modal>
     """
   end
 end

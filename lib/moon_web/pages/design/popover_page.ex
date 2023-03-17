@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
@@ -29,6 +30,8 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
       <ComponentPageDescription is_aria_support is_rtl_support title="Popover">
         <p>Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.</p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         PopoverExample.Default,
@@ -92,6 +95,15 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         ]}
       />
     </Page>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Popover>
+      <Popover.Trigger>...</Popover.Trigger>
+      <Popover.Panel>...</Popover.Panel>
+    </Popover>
     """
   end
 end

@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
@@ -31,6 +32,8 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
           A type of alert which appears in a layer above other content, visually similar to a mobile or desktop push notification.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         SnackbarExample.Default,
@@ -183,6 +186,20 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         ]}
       />
     </Page>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Snackbar>
+      <Snackbar.Trigger>...</Snackbar.Trigger>
+      <Snackbar.Icon>...</Snackbar.Icon>
+      <Snackbar.Content>
+        <Snackbar.Header>...</Snackbar.Header>
+        <Snackbar.Message>...</Snackbar.Message>
+      </Snackbar.Content>
+      <Snackbar.Close />
+    </Snackbar>
     """
   end
 end

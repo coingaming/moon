@@ -2,6 +2,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
   @moduledoc false
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias Moon.Design.MenuItem
   alias Moon.Components.Lego
   alias MoonWeb.Components.ExampleAndCode
@@ -128,6 +129,8 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
           By default, each menu item row height is Medium(md) 40px for one line of content.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExampleAndCode title="Default" id="menu_1">
         <:example>
@@ -806,5 +809,11 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
 
   def handle_event("on_expand" <> number, params, socket) do
     {:noreply, assign(socket, :"expanded#{number}", Map.get(params, "is-selected") == "true")}
+  end
+
+  def component_anatomy do
+    """
+    <MenuItem>...</MenuItem>
+    """
   end
 end
