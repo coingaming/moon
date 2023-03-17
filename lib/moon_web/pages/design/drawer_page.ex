@@ -43,24 +43,65 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
         title="Drawer props"
         data={[
           %{
-            :name => 'default',
+            :name => 'is_open',
+            :type => 'boolean',
+            :required => 'No',
+            :default => 'false',
+            :description => 'Whether or not the Drawer is opened'
+          },
+          %{
+            :name => 'on_close',
+            :type => 'event',
+            :required => 'No',
+            :default => '-',
+            :description => 'Handler for open/close of the element'
+          },
+          %{
+            :name => 'panel',
+            :type => 'slot',
+            :required => 'Yes',
+            :default => '-',
+            :description => 'Content of Drawer element, see Drawer.Panel'
+          },
+          %{
+            :name => 'backdrop',
             :type => 'slot',
             :required => 'No',
             :default => '-',
-            :description => ''
+            :description => 'Backdrop of Drawer element, see Drawer.Backdrop'
           }
         ]}
       />
 
       <PropsTable
-        title="Panel props"
+        title="Drawer.Panel"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
+            :name => 'position',
+            :type => 'top | bottom | start | end',
+            :required => 'No',
+            :default => 'end',
+            :description => 'Drawer position on screen'
+          },
+          %{
+            :name => 'class',
+            :type => 'css_class',
             :required => 'No',
             :default => '-',
-            :description => ''
+            :description => 'Tailwind classes for custom styles'
+          }
+        ]}
+      />
+
+      <PropsTable
+        title="Drawer.Backdrop"
+        data={[
+          %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for custom styles'
           }
         ]}
       />

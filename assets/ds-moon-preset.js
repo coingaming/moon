@@ -128,6 +128,16 @@ module.exports = {
         topslide: "topslide 0.2s ease-in-out",
         bottomslide: "bottomslide 0.2s ease-in-out",
         fadeout: "fadeout 0.5s ease-in-out",
+        drawerenterright: "drawerenterright 0.3s ease-out",
+        drawerenterleft: "drawerenterleft 0.3s ease-out",
+        drawerentertop: "drawerentertop 0.3s ease-out",
+        drawerenterbottom: "drawerenterbottom 0.3s ease-out",
+        drawerleaveright: "drawerleaveright 0.2s ease-in",
+        drawerleaveleft: "drawerleaveleft 0.2s ease-in",
+        drawerleavetop: "drawerleavetop 0.2s ease-in",
+        drawerleavebottom: "drawerleavebottom 0.2s ease-in",
+        backdropenter: "backdropenter 0.3s ease-out",
+        backdropleave: "backdropleave 0.2s ease-in",
       },
       keyframes: {
         loader: {
@@ -176,7 +186,47 @@ module.exports = {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 }
          },
-      },
+         drawerenterright: {
+          "0%": {transform: "translateX(100%)",},
+          "100%": { transform: "translateX(0%)" }
+         },
+         drawerenterleft: {
+          "0%": {transform: "translateX(-100%)",},
+          "100%": { transform: "translateX(0%)" }
+         },
+         drawerentertop: {
+          "0%": {transform: "translateY(-100%)",},
+          "100%": { transform: "translateY(0%)" }
+         },
+         drawerenterbottom: {
+          "0%": {transform: "translateY(100%)",},
+          "100%": { transform: "translateY(0%)" }
+         },
+         drawerleaveright: {
+          "0%": {transform: "translateX(0%)",},
+          "100%": { transform: "translateX(100%)" }
+         },
+         drawerleaveleft: {
+          "0%": {transform: "translateX(0%)",},
+          "100%": { transform: "translateX(-100%)" }
+         },
+         drawerleavetop: {
+          "0%": {transform: "translateY(100%)",},
+          "100%": { transform: "translateY(0%)" }
+         },
+         drawerleavebottom: {
+          "0%": {transform: "translateY(-100%)",},
+          "100%": { transform: "translateY(0%)" }
+         },
+         backdropenter: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 100 }
+         },
+         backdropleave: {
+          "0%": { opacity: 100 },
+          "100%": { opacity: 0 }
+         },
+        },
       fontWeight: {
         normal: 400,
         semibold: 500,
