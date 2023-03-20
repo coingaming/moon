@@ -9,6 +9,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -93,9 +94,13 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Avatar">
-        <p>
-          Avatars are used to represent an individual, a business, or a celestial being when they interact with any Coingaming brand. While they usually consist of an image, avatars are adaptable - letters or object icons may sometimes be used as fallbacks.
-        </p>
+        <DeprecationWarning
+          name="Avatar"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AvatarPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="avatar_01">
