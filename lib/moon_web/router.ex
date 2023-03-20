@@ -45,6 +45,7 @@ defmodule MoonWeb.Router do
         live("/getting-started", MoonWeb.Pages.GettingStartedPage)
         live("/contribute", MoonWeb.Pages.ContributePage)
         live("/colours", MoonWeb.Pages.ColoursPalettePage)
+        live("/components", MoonWeb.Pages.ComponentsPage)
         live("/tokens", MoonWeb.Pages.TokensPage)
         live("/assets/age_limit", MoonWeb.Pages.Assets.AgeLimitPage)
         live("/assets/crests", MoonWeb.Pages.Assets.CrestsPage)
