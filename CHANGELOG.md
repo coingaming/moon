@@ -1,3 +1,10 @@
+## [2.38.4](https://github.com/coingaming/moon/compare/v2.38.3...v2.38.4) (2023-03-20)
+
+
+### Bug Fixes
+
+* [MDS-361] Modal v2 ([#565](https://github.com/coingaming/moon/issues/565)) ([3204152](https://github.com/coingaming/moon/commit/32041527356c7cedbb8aad9e529cf1d01a12e70c))
+
 ## [2.38.3](https://github.com/coingaming/moon/compare/v2.38.2...v2.38.3) (2023-03-09)
 
 
