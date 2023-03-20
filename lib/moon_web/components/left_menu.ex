@@ -104,7 +104,7 @@ defmodule MoonWeb.Components.LeftMenu do
                         <SidebarLink route={Pages.Design.PopoverPage}>Popover</SidebarLink>
                         <Accordion
                           is_content_inside={false}
-                          id="left-menu-components-progress"
+                          id="left-menu-design-progress"
                           open_by_default={active_page_contains(@active_page, Pages.Design.Progress)}
                         >
                           <:title>Progress</:title>
@@ -116,6 +116,7 @@ defmodule MoonWeb.Components.LeftMenu do
                           </:content>
                         </Accordion>
                         <SidebarLink route={Pages.Design.SnackbarPage}>Snackbar</SidebarLink>
+                        <SidebarLink route={Pages.Design.SwitchPage}>Switch</SidebarLink>
                         <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
                         <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>
                         <SidebarLink route={Pages.Design.TagPage}>Tag</SidebarLink>

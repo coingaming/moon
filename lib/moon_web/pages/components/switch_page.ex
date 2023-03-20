@@ -13,6 +13,7 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   alias MoonWeb.Components.PropsTable
   alias Moon.Components.Button
   alias Moon.Components.ErrorTag
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -64,9 +65,13 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Switch">
-        <p>
-          Switch is a control that is used to quickly switch between two possible states. Switches are only used for these binary actions that occur immediately after the user “flips” the switch. They are commonly used for “on/off” switches.
-        </p>
+        <DeprecationWarning
+          name="Switch"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.SwitchPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Size" class="mt-3" id="switch_2_sample">
