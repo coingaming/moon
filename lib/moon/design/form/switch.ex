@@ -26,14 +26,7 @@ defmodule Moon.Design.Form.Switch do
   def render(assigns) do
     ~F"""
     <div>
-      <input
-        type="checkbox"
-        name={@name}
-        value={@value}
-        checked={@is_switched}
-        class="hidden"
-        :on-click="toggle_switch"
-      />
+      <input type="checkbox" name={@name} value={@value} checked={@is_switched} class="hidden">
       <Switch
         id={@id}
         {=@size}
