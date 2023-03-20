@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
@@ -37,6 +38,8 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         <p>An option that's been selected can represent a corresponding value in forms or be used to filter/sort content.</p>
         <p>Based on Headless approach.</p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         DropdownExample.Default,
@@ -162,6 +165,14 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         ]}
       />
     </Page>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Dropdown option_titles={["...", "...", "..."]}>
+      <Dropdown.Trigger>...</Dropdown.Trigger>
+    </Dropdown>
     """
   end
 end

@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias Moon.Design.Tooltip
   alias Moon.Design.Button
   alias MoonWeb.Components.ExampleAndCode
@@ -93,6 +94,8 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExampleAndCode title="Default tooltip" id="tooltip_default">
         <:example>
@@ -286,6 +289,18 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
       <Tooltip.Content class="bg-roshi/10 text-piccolo">
         <Tooltip.Arrow />
         Custom font & backgound
+      </Tooltip.Content>
+    </Tooltip>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Tooltip>
+      <Tooltip.Trigger>...</Tooltip.Trigger>
+      <Tooltip.Content>
+        ...
+        <Tooltip.Arrow />
       </Tooltip.Content>
     </Tooltip>
     """

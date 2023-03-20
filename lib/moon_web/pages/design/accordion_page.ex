@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias Moon.Design.Accordion
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.ComponentPageDescription
@@ -107,6 +108,8 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
           each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExampleAndCode title="Default" id="example-00">
         <:example>
@@ -347,6 +350,19 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
       </Accordion>
       \"""
     end
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Accordion>
+      <Accordion.Header>...</Accordion.Header>
+      <Accordion.Content>...</Accordion.Content>
+      <Accordion.Header>...</Accordion.Header>
+      <Accordion.Content>...</Accordion.Content>
+      <Accordion.Header>...</Accordion.Header>
+      <Accordion.Content>...</Accordion.Content>
+    </Accordion>
     """
   end
 end
