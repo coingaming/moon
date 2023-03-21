@@ -3,8 +3,6 @@ defmodule Moon.Design.Drawer do
 
   use Moon.StatefulComponent
 
-  alias Phoenix.LiveView.JS
-
   data(is_open, :boolean, default: false)
 
   slot(panel, required: true)
@@ -23,7 +21,7 @@ defmodule Moon.Design.Drawer do
       <#slot
         {@panel}
         context_put={
-          on_close: %{name: {close_content(@id)}, target: @myself}
+          on_close: %{name: "close_drawer", target: @myself}
         }
       />
     </div>
@@ -45,16 +43,4 @@ defmodule Moon.Design.Drawer do
   def handle_event("close_drawer", _, socket) do
     {:noreply, assign(socket, is_open: false)}
   end
-
-  def close_content(id) do
-    JS.add_class(
-      "hidden",
-      to: "#" <> id,
-      transition: {"ease-out duration-500", "opacity-0", "hidden"},
-      time: 500
-    )
-
-  end
-
-
 end
