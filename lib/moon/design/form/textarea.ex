@@ -18,13 +18,12 @@ defmodule Moon.Design.Form.Textarea do
 
   def render(assigns) do
     ~F"""
-    <div class="relative w-full">
       <TextArea
         class={merge([
-          "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan",
-          "rounded-moon-s-sm placeholder:text-trunks outline outline-1 outline-offset-[-1px] outline-beerus",
-          "transition-all focus:outline-2 focus:outline-offset-[-2px] focus:outline-piccolo hover:outline-1",
-          "hover:outline-offset-[-1px] hover:outline-bulma/[0.12]",
+          "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan border-0",
+          "rounded-moon-s-sm placeholder:text-trunks transition-shadow",
+          "before:box-border after:box-border",
+          "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
           @disabled && "opacity-30 cursor-not-allowed",
           @class
         ])}
@@ -32,8 +31,6 @@ defmodule Moon.Design.Form.Textarea do
         {=@cols}
         opts={Map.merge(@attrs, %{disabled: @disabled, placeholder: @placeholder})}
       />
-      <#slot />
-    </div>
     """
   end
 end

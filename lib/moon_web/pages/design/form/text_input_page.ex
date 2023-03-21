@@ -83,10 +83,10 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
           },
           %{
             :name => 'size',
-            :type => 'sm | md | lg | xl',
+            :type => 'sm | md | lg',
             :required => '-',
-            :default => 'medium',
-            :description => 'Size variant (currently only medium | large, with large as default)'
+            :default => 'md',
+            :description => 'Size of input'
           },
           %{
             :name => 'disabled',
