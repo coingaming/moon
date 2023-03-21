@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
-  alias Moon.Design.Form.TextInput
+  alias Moon.Design.Form.Input
   alias Moon.Design.Form.Textarea
   alias Moon.Design.Form.Field
 
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
         <Select options={@gender_options} />
       </Field>
       <Field label="Label for textinput" hint="Hint for Textinput" field={:username}>
-        <TextInput />
+        <Input />
       </Field>
       <Field label="Label for Textarea" hint="Hint for Textarea" field={:email}>
         <Textarea />

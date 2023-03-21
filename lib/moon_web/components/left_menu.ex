@@ -94,7 +94,7 @@ defmodule MoonWeb.Components.LeftMenu do
                             <div class="flex-grow flex flex-col gap-2 pl-8">
                               <SidebarLink route={Pages.Design.Form.SelectPage}>Select</SidebarLink>
                               <SidebarLink route={Pages.Design.Form.TextareaPage}>Textarea</SidebarLink>
-                              <SidebarLink route={Pages.Design.Form.TextInputPage}>TextInput</SidebarLink>
+                              <SidebarLink route={Pages.Design.Form.InputPage}>Input</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>

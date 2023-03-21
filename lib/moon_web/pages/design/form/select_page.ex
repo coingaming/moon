@@ -34,7 +34,6 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        MoonWeb.Examples.Design.Form.Simple,
         SelectExample.Default,
         SelectExample.Sizes,
         SelectExample.WithLabel,

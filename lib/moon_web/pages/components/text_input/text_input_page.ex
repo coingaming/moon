@@ -124,7 +124,7 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
         <ComponentPageDescription title="Text Input">
           <DeprecationWarning
             name="TextInput"
-            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.TextInputPage,
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.InputPage,
               theme_name: @theme_name,
               direction: @direction
             )}

@@ -1,9 +1,9 @@
-defmodule MoonWeb.Examples.Form.TextInputExample.Types do
+defmodule MoonWeb.Examples.Form.InputExample.Types do
   @moduledoc false
 
   use Moon.StatelessComponent
   use MoonWeb, :example
-  alias Moon.Design.Form.TextInput
+  alias Moon.Design.Form.Input
 
   prop(types, :string,
     default: [
@@ -19,7 +19,7 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Types do
       {#for type_line <- @types}
         <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
           {#for type <- type_line}
-            <TextInput {=type} placeholder={"Placeholder for #{type}"} />
+            <Input {=type} placeholder={"Placeholder for #{type}"} />
           {/for}
         </div>
       {/for}
@@ -29,7 +29,7 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Types do
 
   def code() do
     """
-    alias Moon.Design.Form.TextInput
+    alias Moon.Design.Form.Input
 
     prop(types, :string,
       default: [
@@ -45,7 +45,7 @@ defmodule MoonWeb.Examples.Form.TextInputExample.Types do
       {#for type_line <- @types}
         <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
           {#for type <- type_line}
-            <TextInput {=type} placeholder={"Placeholder for \#{type}"} />
+            <Input {=type} placeholder={"Placeholder for \#{type}"} />
           {/for}
         </div>
       {/for}

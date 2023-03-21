@@ -1,4 +1,4 @@
-defmodule Moon.Design.Form.TextInput do
+defmodule Moon.Design.Form.Input do
   @moduledoc false
 
   use Moon.StatelessComponent
