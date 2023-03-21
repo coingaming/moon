@@ -12,11 +12,14 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
   alias Moon.Design.Form.Textarea
   alias Moon.Design.Form.Field
 
-  prop(user_changeset, :any, default: User.changeset(%User{
-    gender: "invalid",
-    username: "userName",
-    email: "my@e.mail"
-  }))
+  prop(user_changeset, :any,
+    default:
+      User.changeset(%User{
+        gender: "invalid",
+        username: "userName",
+        email: "my@e.mail"
+      })
+  )
 
   prop(gender_options, :list,
     default: [
@@ -47,5 +50,4 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
     """
     """
   end
-
 end

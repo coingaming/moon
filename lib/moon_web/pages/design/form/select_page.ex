@@ -78,7 +78,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
             :required => '-',
             :default => 'md',
             :description => 'Size of input'
-          },
+          }
         ]}
       />
     </Page>

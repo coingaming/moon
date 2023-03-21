@@ -54,7 +54,7 @@ defmodule Moon.Design.Form.Input do
       ])}
       {=@type}
       {=@placeholder}
-      value = {@value || input_value(@form, @field)}
+      value={@value || input_value(@form, @field)}
       {=@id}
       {=@disabled}
       {=@readonly}

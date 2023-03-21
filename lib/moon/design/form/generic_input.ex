@@ -31,7 +31,8 @@ defmodule Moon.Design.Form.GenericInput do
 
     assigns = assign(assigns, opts: opts)
 
-    ~F[{generic_input(assigns.type, @form, @field, @opts)}]
+    ~F[{generic_input(assigns.type, @form, @field, @opts)}
+]
   end
 
   # a copy of generic_input from Phoenix.HTML.Form bc it's also private
@@ -50,5 +51,4 @@ defmodule Moon.Design.Form.GenericInput do
 
   defp maybe_html_escape(nil), do: nil
   defp maybe_html_escape(value), do: Phoenix.HTML.html_escape(value)
-
 end
