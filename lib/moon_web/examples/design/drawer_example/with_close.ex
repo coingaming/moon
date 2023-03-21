@@ -8,15 +8,13 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithClose do
   alias Moon.Design.Drawer
   alias Moon.Design.Button
 
-  data(drawer_is_open, :boolean, default: false)
-
   def render(assigns) do
     ~F"""
     <div>
       <Button variant="secondary" on_click="open_drawer">
         Show Drawer with Close button
       </Button>
-      <Drawer is_open={@drawer_is_open} on_close="close_drawer">
+      <Drawer id="with_close_drawer">
         <Drawer.Panel>
           <div class="flex justify-between items-center p-3 border-b border-trunks">
             <p>Header</p>
@@ -29,13 +27,13 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithClose do
     """
   end
 
-  def handle_event("open_drawer", _params, socket) do
-    socket = assign(socket, drawer_is_open: true)
+  def handle_event("open_drawer", _, socket) do
+    Drawer.is_open("with_close_drawer")
     {:noreply, socket}
   end
 
-  def handle_event("close_drawer", _params, socket) do
-    socket = assign(socket, drawer_is_open: false)
+  def handle_event("close_drawer", _, socket) do
+    Drawer.is_closed("with_close_drawer")
     {:noreply, socket}
   end
 
