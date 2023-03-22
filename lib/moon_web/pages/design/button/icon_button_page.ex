@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Design.Button.IconButtonPage do
         name: "Components v2"
       },
       %{
-        to: "/components/v2/icon-button",
+        to: "/components/v2/icon_button",
         name: "IconButton"
       }
     ]
