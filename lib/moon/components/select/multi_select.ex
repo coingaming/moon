@@ -125,7 +125,7 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(popover_placement, :string, default: "bottom-start")
   prop(popover_class, :string)
   prop(field_border_class, :string, default: FieldBorder.get_default_states_class())
-  prop(field_border_color_class, :string)
+  prop(field_border_color_class, :string, values: Moon.colors(), default: "gohan")
   prop(selected_label_background_color_class, :css_class, default: "bulma")
   prop(selected_label_text_color_class, :css_class, default: "gohan")
 
@@ -148,11 +148,18 @@ defmodule Moon.Components.Select.MultiSelect do
       )}
       <FieldBorder
         testid={"#{@id}-toggle_open"}
-        states_class={if @disabled, do: FieldBorder.get_default_class(), else: @field_border_class}
-        border_color_class={@field_border_color_class}
         click="toggle_open"
+        states_class={@field_border_class}
+        class={
+          "w-full",
+          "bg-#{@field_border_color_class}": @field_border_color_class
+        }
       >
-        <PullAside class={"px-4", SelectHelpers.get_padding(@size), get_disabled_class(@disabled)}>
+        <PullAside class={
+          "leading-6",
+          SelectHelpers.get_padding(@size),
+          get_disabled_class(@disabled)
+        }>
           <:left>
             <Labels
               select_id={@id}
