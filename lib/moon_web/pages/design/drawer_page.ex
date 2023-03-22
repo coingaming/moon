@@ -10,8 +10,6 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
 
   alias MoonWeb.Examples.Design.DrawerExample
 
-  alias Phoenix.LiveView.JS
-
   data(breadcrumbs, :any,
     default: [
       %{
@@ -33,13 +31,6 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
           The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
         </p>
       </ComponentPageDescription>
-
-      <button id="test-button" class="border bg-blue-500" :on-click={open_content()}>button</button>
-      <div
-        id="test-div"
-        class={"border bg-red-500 hidden"}
-        :on-click-away={close_content()}
-      >div for testing</div>
 
       <ExamplesList examples={[
         DrawerExample.Default,
@@ -117,33 +108,4 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
     </Page>
     """
   end
-
-  def open_content(js \\ %JS{}) do
-    js
-
-    |> JS.remove_class(
-      "hidden",
-      to: "#test-div")
-
-
-  end
-
-  def close_content(js \\ %JS{}) do
-    js
-
-    |> JS.add_class(
-      "hidden",
-      to: "#test-div",
-      transition: {"ease-out duration-500", "opacity-0", "hidden"},
-      time: 500
-    )
-
-  end
-
-  # def hide_content(js, is_open) do
-  #   js
-  #   |> JS.add_class("bg-green-500", to: "#test-div")
-  #   |> JS.add_class("hidden", to: "#test-div")
-
-  # end
-  end
+end

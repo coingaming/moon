@@ -3,12 +3,24 @@ defmodule Moon.Design.Drawer do
 
   use Moon.StatefulComponent
 
+  alias Phoenix.LiveView.JS
+
   data(is_open, :boolean, default: false)
 
   slot(panel, required: true)
   slot(backdrop)
 
   prop(test_id, :string)
+
+  prop(position, :string,
+    values!: [
+      "top",
+      "bottom",
+      "start",
+      "end"
+    ],
+    default: "end"
+  )
 
   def render(assigns) do
     ~F"""
@@ -21,7 +33,8 @@ defmodule Moon.Design.Drawer do
       <#slot
         {@panel}
         context_put={
-          on_close: %{name: "close_drawer", target: @myself}
+          on_close: close_content(@position),
+          position: @position
         }
       />
     </div>
@@ -42,5 +55,49 @@ defmodule Moon.Design.Drawer do
 
   def handle_event("close_drawer", _, socket) do
     {:noreply, assign(socket, is_open: false)}
+  end
+
+  def close_content(position) do
+    case position do
+      "top" ->
+        JS.add_class(
+          "hidden",
+          transition:
+            {"ease-in duration-200 transition-transform", "-translate-y-full", "translate-y-0"},
+          time: 200
+        )
+      "bottom" ->
+        JS.add_class(
+          "hidden",
+          transition:
+            {"ease-in duration-200 transition-transform", "translate-y-full", "translate-y-0"},
+          time: 200
+        )
+      "start" ->
+        JS.add_class(
+          "hidden",
+          transition:
+            {"ease-in duration-200 transition-transform",
+             "ltr:-translate-x-full rtl:translate-x-full", "translate-x-0"},
+          time: 200
+        )
+      "end" ->
+        JS.add_class(
+          "hidden",
+          transition:
+            {"ease-in duration-200 transition-transform",
+             "ltr:translate-x-full rtl:-translate-x-full", "translate-x-0"},
+          time: 200
+        )
+    end
+
+  end
+
+  def close_backdrop() do
+    JS.add_class(
+      "hidden",
+      transition: {"ease-in duration-200", "opacity-100", "opacity-0"},
+      time: 200
+    )
   end
 end

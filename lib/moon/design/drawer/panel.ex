@@ -8,20 +8,11 @@ defmodule Moon.Design.Drawer.Panel do
 
   slot(default)
 
-  prop(position, :string,
-    values!: [
-      "top",
-      "bottom",
-      "start",
-      "end"
-    ],
-    default: "end"
-  )
-
   prop(class, :css_class)
 
   # inner API
   prop(on_close, :event, from_context: :on_close)
+  prop(position, :string, from_context: :position)
 
   def render(assigns) do
     ~F"""
