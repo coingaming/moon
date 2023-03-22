@@ -28,7 +28,7 @@ defmodule Moon.Design.Form.Switch do
       <Surface.Components.Form.Checkbox
         {=@field}
         {=@form}
-        class="hidden-"
+        class="hidden"
         opts={disabled: @disabled}
         value={@value}
       />
