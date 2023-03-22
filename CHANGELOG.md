@@ -1,3 +1,10 @@
+## [2.38.5](https://github.com/coingaming/moon/compare/v2.38.4...v2.38.5) (2023-03-22)
+
+
+### Bug Fixes
+
+* form components aligning ([dba1f26](https://github.com/coingaming/moon/commit/dba1f26e8b5c4654eb3f968fa541e1bee517c08d))
+
 ## [2.38.4](https://github.com/coingaming/moon/compare/v2.38.3...v2.38.4) (2023-03-20)
 
 
