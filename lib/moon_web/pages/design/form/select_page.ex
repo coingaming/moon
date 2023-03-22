@@ -71,6 +71,13 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
             :required => 'No',
             :default => 'false',
             :description => 'Whether the component is disabled'
+          },
+          %{
+            :name => 'size',
+            :type => 'sm | md | lg',
+            :required => '-',
+            :default => 'md',
+            :description => 'Size of input'
           }
         ]}
       />

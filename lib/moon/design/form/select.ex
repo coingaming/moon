@@ -8,7 +8,7 @@ defmodule Moon.Design.Form.Select do
   prop(value, :any)
   prop(disabled, :boolean)
 
-  prop(size, :string, values!: ~w(sm md lg xl), default: "md")
+  prop(size, :string, values!: ~w(sm md lg), default: "md")
   prop(class, :css_class)
   prop(prompt, :string)
 
@@ -16,13 +16,14 @@ defmodule Moon.Design.Form.Select do
     ~F"""
     <Surface.Components.Form.Select
       class={merge([
-        "text-trunks flex justify-between w-full bg-gohan border-beerus shadow-input duration-200 transition-shadow",
-        "hover:shadow-input-hov focus:shadow-input-focus focus:outline-none items-start text-ellipsis whitespace-nowrap overflow-hidden",
+        "text-trunks flex justify-between w-full bg-gohan border-0 duration-200 transition-shadow",
+        "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
+        "items-start text-ellipsis whitespace-nowrap overflow-hidden",
+        "py-0 px-4",
         [
-          "h-9  py-1 px-3 rounded-moon-i-xs text-moon-14": @size == "sm",
-          "h-10 py-2 px-3 rounded-moon-i-sm text-moon-16": @size == "md",
-          "h-12 py-3 px-4 rounded-moon-i-sm text-moon-16": @size == "lg",
-          "h-14 py-2 px-4 rounded-moon-i-md text-moon-16 leading-10": @size == "xl",
+          "h-8 leading-8 rounded-moon-i-xs": @size == "sm",
+          "h-10 leading-10 rounded-moon-i-sm": @size == "md",
+          "h-12 leading-[3rem] rounded-moon-i-sm": @size == "lg",
           "cursor-not-allowed opacity-30": @disabled
         ],
         @class

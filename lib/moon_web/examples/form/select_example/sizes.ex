@@ -22,7 +22,7 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
 
   def render(assigns) do
     ~F"""
-    {#for size <- ~w(sm md lg xl)}
+    {#for size <- ~w(sm md lg)}
       <Form for={@user_changeset} class="w-2/5">
         <Select {=size} field={:gender} options={@gender_options} />
       </Form>
@@ -49,7 +49,7 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
 
     def render(assigns) do
       ~F\"""
-      {#for size <- ~w(sm md lg xl)}
+      {#for size <- ~w(sm md lg)}
         <Form for={@user_changeset} class="w-2/5">
           <Select {=size} field={:gender} options={@gender_options} />
         </Form>

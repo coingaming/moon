@@ -1,11 +1,11 @@
-defmodule MoonWeb.Pages.Design.Form.TextInputPage do
+defmodule MoonWeb.Pages.Design.Form.InputPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.TextInputExample
+  alias MoonWeb.Examples.Form.InputExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 
@@ -20,8 +20,8 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/form/text_input",
-        name: "Text Input"
+        to: "/components/v2/form/input",
+        name: "Input"
       }
     ]
   )
@@ -29,21 +29,21 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Text Input" is_in_progress>
+      <ComponentPageDescription title="Input" is_in_progress>
         <p>Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.</p>
         <p>These types of input fields are used on their own, or in combination with other inputs such as number entry, date picker, etc.</p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        TextInputExample.Default,
-        TextInputExample.Disabled,
-        TextInputExample.Sizes,
-        TextInputExample.Types,
-        TextInputExample.WithLabel,
-        TextInputExample.WithHint
+        InputExample.Default,
+        InputExample.Disabled,
+        InputExample.Sizes,
+        InputExample.Types,
+        InputExample.WithLabel,
+        InputExample.WithHint
       ]} />
       <PropsTable
-        title="TextInput props"
+        title="Input props"
         data={[
           %{
             :name => 'field',
@@ -83,10 +83,10 @@ defmodule MoonWeb.Pages.Design.Form.TextInputPage do
           },
           %{
             :name => 'size',
-            :type => 'sm | md | lg | xl',
+            :type => 'sm | md | lg',
             :required => '-',
-            :default => 'medium',
-            :description => 'Size variant (currently only medium | large, with large as default)'
+            :default => 'md',
+            :description => 'Size of input'
           },
           %{
             :name => 'disabled',
