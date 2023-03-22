@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Switch id="switch_1" />
+    <Switch checked id="switch_1" />
     """
   end
 
@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Default do
 
     ...
 
-    <Switch id="switch_1" />
+    <Switch checked id="switch_1" />
     """
   end
 end

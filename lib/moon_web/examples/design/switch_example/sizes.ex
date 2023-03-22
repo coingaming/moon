@@ -9,7 +9,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
   def render(assigns) do
     ~F"""
     <Switch size="2xs" id="switch_8" />
-    <Switch size="xs" id="switch_9" />
+    <Switch checked size="xs" id="switch_9" />
     <Switch id="switch_10" />
     """
   end
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
     ...
 
     <Switch size="2xs" id="switch_8" />
-    <Switch size="xs" id="switch_9" />
+    <Switch checked size="xs" id="switch_9" />
     <Switch id="switch_10" />
     """
   end

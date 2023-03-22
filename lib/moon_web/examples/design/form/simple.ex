@@ -11,13 +11,16 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
   alias Moon.Design.Form.Input
   alias Moon.Design.Form.Textarea
   alias Moon.Design.Form.Field
+  alias Moon.Design.Form.Switch
 
   prop(user_changeset, :any,
     default:
       User.changeset(%User{
         gender: "invalid",
         username: "userName",
-        email: "my@e.mail"
+        email: "my@e.mail",
+        agrees_to_terms_of_service: false,
+        agrees_to_marketing_emails: true
       })
   )
 
@@ -41,6 +44,12 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
       </Field>
       <Field label="Label for Textarea" hint="Hint for Textarea" field={:email}>
         <Textarea />
+      </Field>
+      <Field label="I agree terma of service" field={:agrees_to_terms_of_service}>
+        <Switch id="test-form-switch" />
+      </Field>
+      <Field label="Marketing emails" field={:agrees_to_marketing_emails}>
+        <Surface.Components.Form.Checkbox />
       </Field>
     </Form>
     """

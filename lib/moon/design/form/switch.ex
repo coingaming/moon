@@ -8,12 +8,11 @@ defmodule Moon.Design.Form.Switch do
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
-  prop(is_switched, :boolean, default: false)
-  prop(options, :list, default: [])
-  prop(value, :any)
-  prop(name, :string, required: true)
+  prop(value, :boolean)
 
   prop(disabled, :boolean, default: false)
+  prop(readonly, :boolean, default: false)
+
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
@@ -26,9 +25,15 @@ defmodule Moon.Design.Form.Switch do
   def render(assigns) do
     ~F"""
     <div>
-      <input type="checkbox" name={@name} value={@value} checked={@is_switched} class="hidden">
+      <Surface.Components.Form.Checkbox
+        {=@field}
+        {=@form}
+        class="hidden-"
+        opts={disabled: @disabled}
+        value={@value}
+      />
       <Switch
-        id={@id}
+        id={"#{@id}-switch"}
         {=@size}
         {=@on_bg_color}
         {=@off_bg_color}
@@ -36,7 +41,7 @@ defmodule Moon.Design.Form.Switch do
         {=@class}
         {=@test_id}
         on_change="toggle_switch"
-        is_switched={is_true(@is_switched) || is_true(Phoenix.HTML.Form.input_value(@form, @field))}
+        checked={get_value(assigns)}
       >
         <:on_icon>
           <#slot {@on_icon} />
@@ -49,11 +54,12 @@ defmodule Moon.Design.Form.Switch do
     """
   end
 
-  def is_true(val) do
-    Enum.member?([true, "true"], val)
-  end
+  defp get_value(%{value: nil, form: form, field: field}),
+    do: Phoenix.HTML.Form.input_value(form, field)
+
+  defp get_value(%{value: value}), do: value
 
   def handle_event("toggle_switch", _params, socket) do
-    {:noreply, assign(socket, is_switched: !socket.assigns.is_switched)}
+    {:noreply, assign(socket, value: !get_value(socket.assigns))}
   end
 end
