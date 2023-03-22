@@ -38,6 +38,13 @@ defmodule MoonWeb.Pages.ComponentsPage do
           An accordion is a vertical stack of interactive headings used to toggle the display of further information; each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </ComponentsPageCard>
         <ComponentsPageCard
+        href="/components/v2/avatar"
+        image="/moon/assets/images/facing/components/avatar.png"
+        title="Avatar"
+      >
+      The Avatar component is typically used to display images, icons, or initials representing people or other entities.
+      </ComponentsPageCard>
+        <ComponentsPageCard
           href="/components/v2/breadcrumb"
           image="/moon/assets/images/facing/components/breadcrumb.png"
           title="Breadcrumb"
@@ -79,6 +86,14 @@ defmodule MoonWeb.Pages.ComponentsPage do
         >
           Moon DS provides a set of commonly used interface icons you can use in your project.
         </ComponentsPageCard>
+        <ComponentsPageCard
+          href="/components/v2/form/input"
+          image="/moon/assets/images/facing/components/input.png"
+          title="Input"
+        >
+          Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
+        </ComponentsPageCard>
+
         <ComponentsPageCard
           href="/components/v2/loader"
           image="/moon/assets/images/facing/components/loader.png"
@@ -169,13 +184,6 @@ defmodule MoonWeb.Pages.ComponentsPage do
           title="Textarea"
         >
           A form control for editing multi-line text.
-        </ComponentsPageCard>
-        <ComponentsPageCard
-          href="/components/v2/form/text_input"
-          image="/moon/assets/images/facing/components/input.png"
-          title="Text Input"
-        >
-          Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
         </ComponentsPageCard>
         <ComponentsPageCard
           href="/components/v2/tooltip"
