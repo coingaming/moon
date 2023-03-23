@@ -3,12 +3,9 @@ defmodule MoonWeb.Components.ComponetsPage.ComponentsPageCard do
 
   use MoonWeb, :stateless_component
 
-  prop(href, :string, required: true)
   prop(image, :string)
   prop(title, :string, required: true)
   slot(default, required: true)
-
-  prop(image_path, :string, default: "/moon/assets/images/facing/")
 
   prop(page, :atom)
   data(theme_name, :string, from_context: :theme_name)
