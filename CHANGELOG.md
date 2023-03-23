@@ -1,3 +1,10 @@
+## [2.38.8](https://github.com/coingaming/moon/compare/v2.38.7...v2.38.8) (2023-03-23)
+
+
+### Bug Fixes
+
+* [MDS-452] rtl & dark switches fix ([#572](https://github.com/coingaming/moon/issues/572)) ([805d758](https://github.com/coingaming/moon/commit/805d7589dbe6181077e7aa021925c98813c2207e))
+
 ## [2.38.7](https://github.com/coingaming/moon/compare/v2.38.6...v2.38.7) (2023-03-23)
 
 
