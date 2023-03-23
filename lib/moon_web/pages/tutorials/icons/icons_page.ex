@@ -35,9 +35,9 @@ defmodule MoonWeb.Pages.Components.IconsPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Icons">
+      <ComponentPageDescription title="Icons" image="/moon/assets/images/facing/components/icon.png">
         <p>
-          Icons are used in other components and user interfaces.
+          Moon DS provides a set of commonly used interface icons you can use in your project.
         </p>
       </ComponentPageDescription>
 

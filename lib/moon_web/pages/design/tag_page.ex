@@ -26,9 +26,12 @@ defmodule MoonWeb.Pages.Design.TagPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_rtl_support title="Tag">
-        <p>Tag represent a set of interactive keywords that help organize and categorize objects.</p>
-        <p>Tags can be added or removed from an object.</p>
+      <ComponentPageDescription
+        is_rtl_support
+        title="Tag"
+        image="/moon/assets/images/facing/components/tag.png"
+      >
+        <p>Tags represent a set of interactive keywords that help organise and categorise objects.</p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[

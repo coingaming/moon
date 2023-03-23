@@ -27,7 +27,12 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_aria_support is_rtl_support title="Popover">
+      <ComponentPageDescription
+        is_aria_support
+        is_rtl_support
+        title="Popover"
+        image="/moon/assets/images/facing/components/popover.png"
+      >
         <p>Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.</p>
       </ComponentPageDescription>
 

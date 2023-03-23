@@ -27,11 +27,15 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="Switch">
+      <ComponentPageDescription
+        is_in_progress
+        is_aria_support
+        is_rtl_support
+        title="Switch"
+        image="/moon/assets/images/facing/components/switch.png"
+      >
         <p>
           Switch is a control that is used to quickly switch between two possible states.</p>
-        <p>Switches are only used for these binary actions that occur immediately after the user “flips” the switch.</p>
-        <p>They are commonly used for “on/off” switches.</p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[

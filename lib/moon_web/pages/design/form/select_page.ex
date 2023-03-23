@@ -29,8 +29,16 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Select" is_in_progress is_rtl_support is_aria_support>
-        A browser-controlled menu of options for forms, navigation and more.
+      <ComponentPageDescription
+        title="Select"
+        is_in_progress
+        is_rtl_support
+        is_aria_support
+        image="/moon/assets/images/facing/components/select.png"
+      >
+        <p>
+          A form input used for selecting a value: when collapsed it shows the currently selected option and when expanded, it shows a scrollable list of predefined options for the user to choose from.
+        </p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[

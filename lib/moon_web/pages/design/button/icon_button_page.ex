@@ -69,15 +69,11 @@ defmodule MoonWeb.Pages.Design.Button.IconButtonPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="IconButton">
+      <ComponentPageDescription
+        title="IconButton"
+        image="/moon/assets/images/facing/components/icon_button.png"
+      >
         <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
-        <p>Buttons communicate actions that users can take. They are typically placed throughout your UI, in places like:</p>
-        <ul class="list-disc ps-6">
-          <li>Modal windows</li>
-          <li>Forms</li>
-          <li>Cards</li>
-          <li>Toolbars</li>
-        </ul>
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="button0">
