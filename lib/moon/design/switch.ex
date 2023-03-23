@@ -3,7 +3,7 @@ defmodule Moon.Design.Switch do
 
   use Moon.StatefulComponent
 
-  prop(is_switched, :boolean, default: false)
+  prop(checked, :boolean, default: false)
   prop(disabled, :boolean, default: false)
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
   prop(on_bg_color, :css_class, default: "bg-piccolo")
@@ -26,7 +26,7 @@ defmodule Moon.Design.Switch do
       class={merge([
         [
           "block rounded-full transition",
-          (@is_switched == false && @on_bg_color) || @off_bg_color,
+          (@checked && @on_bg_color) || @off_bg_color,
           "w-7 h-4 p-0.5": @size == "2xs",
           "w-11 h-6 p-1": @size == "xs",
           "w-[3.75rem] h-8 p-1": @size == "sm",
@@ -44,7 +44,7 @@ defmodule Moon.Design.Switch do
             class={merge([
               "z-1 absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 transition-opacity flex text-goten opacity-100",
               get_icon_size(@size),
-              "opacity-0": @is_switched == true
+              "opacity-0": !@checked
             ])}
             aria-hidden="true"
           >
@@ -56,7 +56,7 @@ defmodule Moon.Design.Switch do
             class={merge([
               "z-1 absolute ltr:right-0 rtl:left-0 top-1/2 -translate-y-1/2 transition-opacity flex text-bulma opacity-0",
               get_icon_size(@size),
-              "opacity-100": @is_switched == true
+              "opacity-100": !@checked
             ])}
             aria-hidden="true"
           >
@@ -72,7 +72,7 @@ defmodule Moon.Design.Switch do
               "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
               "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
               "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-24px)]": @size == "sm",
-              "ltr:left-0 rtl:right-0": @is_switched == true
+              "ltr:left-0 rtl:right-0": !@checked
             ],
             @switcher_class
           ])}
@@ -91,6 +91,6 @@ defmodule Moon.Design.Switch do
   end
 
   def handle_event("toggle_switch", _params, socket) do
-    {:noreply, assign(socket, is_switched: !socket.assigns.is_switched)}
+    {:noreply, assign(socket, checked: !socket.assigns.checked)}
   end
 end

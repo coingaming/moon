@@ -9,7 +9,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Disabled do
   def render(assigns) do
     ~F"""
     <Switch disabled id="switch_2" />
-    <Switch disabled is_switched id="switch_3" />
+    <Switch disabled checked id="switch_3" />
     """
   end
 
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Disabled do
     ...
 
     <Switch disabled id="switch_2" />
-    <Switch disabled is_switched id="switch_3" />
+    <Switch disabled checked id="switch_3" />
     """
   end
 end

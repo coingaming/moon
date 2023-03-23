@@ -48,7 +48,7 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
         title="Switch props"
         data={[
           %{
-            :name => 'is_switched',
+            :name => 'checked',
             :type => 'boolean',
             :required => 'No',
             :default => 'false',

@@ -38,14 +38,14 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
           <MenuItem as="a" class="cursor-default">
             {(@dark_mode && "Dark mode") || "Light mode"}
-            <Switch size="xs" id="theme_switcher" is_switched={!@dark_mode} on_change="toggle_dark_mode">
+            <Switch size="xs" id="theme_switcher" checked={@dark_mode} on_change="toggle_dark_mode">
               <:on_icon><OtherMoon /></:on_icon>
               <:off_icon><OtherSun /></:off_icon>
             </Switch>
           </MenuItem>
           <MenuItem as="a" class="cursor-default">
             {(@is_rtl && "RTL mode") || "LTR mode"}
-            <Switch size="xs" id="direction_switcher" is_switched={!@is_rtl} on_change="toggle_direction">
+            <Switch size="xs" id="direction_switcher" checked={@is_rtl} on_change="toggle_direction">
               <:on_icon><TextRightAlign /></:on_icon>
               <:off_icon><TextLeftAlign /></:off_icon>
             </Switch>
