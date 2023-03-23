@@ -94,9 +94,19 @@ defmodule MoonWeb.Pages.Design.ButtonPage do
         is_in_progress
         is_rtl_support
         title="Button"
-        image="/moon/assets/images/facing/components/button.png"
+        image="facing/components/button.png"
       >
         <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
+        <p>
+          Buttons communicate actions that users can take. They are typically
+          placed throughout your UI, in places like:
+        </p>
+        <ul class="list-disc ps-5">
+          <li>Modal windows</li>
+          <li>Forms</li>
+          <li>Cards</li>
+          <li>Toolbars</li>
+        </ul>
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" id="button0">

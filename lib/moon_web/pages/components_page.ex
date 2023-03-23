@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ComponentsPage do
   alias MoonWeb.Components.ComponetsPage.ComponentsPageCard
   alias MoonWeb.Components.ComponetsPage.ComponentsPageSection
   alias MoonWeb.Components.Page
+  alias MoonWeb.Pages
 
   data(breadcrumbs, :any,
     default: [
@@ -32,232 +33,151 @@ defmodule MoonWeb.Pages.ComponentsPage do
 
       <ComponentsPageSection title="Components">
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AccordionPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/accordion.png"
+          page={Pages.Design.AccordionPage}
+          image="facing/components/accordion.png"
           title="Accordion"
         >
           An accordion is a vertical stack of interactive headings used to toggle the display of further information; each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AvatarPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/avatar.png"
+          page={Pages.Design.AvatarPage}
+          image="facing/components/avatar.png"
           title="Avatar"
         >
           The Avatar component is typically used to display images, icons, or initials representing people or other entities.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.BreadcrumbPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/breadcrumb.png"
+          page={Pages.Design.BreadcrumbPage}
+          image="facing/components/breadcrumb.png"
           title="Breadcrumb"
         >
           A list of links showing the location of the current page in the navigational hierarchy.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ButtonPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/button.png"
+          page={Pages.Design.ButtonPage}
+          image="facing/components/button.png"
           title="Button"
         >
           Buttons allow users to take actions, and make choices, with a single tap.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Button.IconButtonPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/icon_button.png"
+          page={Pages.Design.Button.IconButtonPage}
+          image="facing/components/icon_button.png"
           title="IconButton"
         >
           Buttons allow users to take actions, and make choices, with a single tap.
         </ComponentsPageCard>
-        <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ChipPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/chip.png"
-          title="Chip"
-        >
+        <ComponentsPageCard page={Pages.Design.ChipPage} image="facing/components/chip.png" title="Chip">
           Chips help filter content, or trigger actions.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.DropdownPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/dropdown.png"
+          page={Pages.Design.DropdownPage}
+          image="facing/components/dropdown.png"
           title="Dropdown"
         >
           Dropdowns is a custom select component that allows users to make single or multiple selections.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Components.IconsPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/icon.png"
+          page={Pages.Components.IconsPage}
+          image="facing/components/icon.png"
           title="Icons"
         >
           Moon DS provides a set of commonly used interface icons you can use in your project.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.InputPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/input.png"
+          page={Pages.Design.Form.InputPage}
+          image="facing/components/input.png"
           title="Input"
         >
           Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
         </ComponentsPageCard>
 
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.LoaderPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/loader.png"
+          page={Pages.Design.LoaderPage}
+          image="facing/components/loader.png"
           title="Loader"
         >
           Loaders provide a visual cue that an action is processing awaiting a course of change or a result.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.MenuItemPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/menu_item.png"
+          page={Pages.Design.MenuItemPage}
+          image="facing/components/menu_item.png"
           title="MenuItem"
         >
           Menu items are used in such vertical menues and containers as Popovers, Sidebars, Drawers, Dialogs etc.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ModalPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/modal.png"
+          page={Pages.Design.ModalPage}
+          image="facing/components/modal.png"
           title="Modal"
         >
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.PopoverPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/popover.png"
+          page={Pages.Design.PopoverPage}
+          image="facing/components/popover.png"
           title="Popover"
         >
           Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.CircularProgressPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/circular_progress.png"
+          page={Pages.Design.CircularProgressPage}
+          image="facing/components/circular_progress.png"
           title="CircularProgress"
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ProgressPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/linear_progress.png"
+          page={Pages.Design.ProgressPage}
+          image="facing/components/linear_progress.png"
           title="Progress"
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.SelectPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/select.png"
+          page={Pages.Design.Form.SelectPage}
+          image="facing/components/select.png"
           title="Select"
         >
           A form input used for selecting a value: when collapsed it shows the currently selected option and when expanded, it shows a scrollable list of predefined options for the user to choose from.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.SnackbarPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/snackbar.png"
+          page={Pages.Design.SnackbarPage}
+          image="facing/components/snackbar.png"
           title="Snackbar"
         >
           The snackbar component is a non-disruptive message that appears on the interface to provide quick, at-a-glance feedback on the outcome of an action.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.SwitchPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/switch.png"
+          page={Pages.Design.SwitchPage}
+          image="facing/components/switch.png"
           title="Switch"
         >
           Switch is a control that is used to quickly switch between two possible states.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TablePage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/table.png"
+          page={Pages.Design.TablePage}
+          image="facing/components/table.png"
           title="Table"
         >
           A component for displaying large amounts of data in rows and columns.
         </ComponentsPageCard>
-        <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TabsPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/tabs.png"
-          title="Tabs"
-        >
+        <ComponentsPageCard page={Pages.Design.TabsPage} image="facing/components/tabs.png" title="Tabs">
           Tabs to allow users to navigate easily between views within the same context.
         </ComponentsPageCard>
-        <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TagPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/tag.png"
-          title="Tag"
-        >
+        <ComponentsPageCard page={Pages.Design.TagPage} image="facing/components/tag.png" title="Tag">
           Tags represent a set of interactive keywords that help organise and categorise objects.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.TextareaPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/textarea.png"
+          page={Pages.Design.Form.TextareaPage}
+          image="facing/components/textarea.png"
           title="Textarea"
         >
           A form control for editing multi-line text.
         </ComponentsPageCard>
         <ComponentsPageCard
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TooltipPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-          image="/moon/assets/images/facing/components/tooltip.png"
+          page={Pages.Design.TooltipPage}
+          image="facing/components/tooltip.png"
           title="Tooltip"
         >
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.

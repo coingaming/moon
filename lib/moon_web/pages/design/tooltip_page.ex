@@ -93,7 +93,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         title="Tooltip"
         is_aria_support
         is_rtl_support
-        image="/moon/assets/images/facing/components/tooltip.png"
+        image="facing/components/tooltip.png"
       >
         <p>
           A means of displaying a description or extra information about an element, usually on hover, but can also be on click or tap.

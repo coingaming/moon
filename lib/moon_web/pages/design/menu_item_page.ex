@@ -125,9 +125,14 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
       <ComponentPageDescription
         is_aria_support
         title="MenuItem"
-        image="/moon/assets/images/facing/components/menu_item.png"
+        image="facing/components/menu_item.png"
       >
         <p>Menu items are used in such vertical menues and containers as Popovers, Sidebars, Drawers, Dialogs etc.</p>
+        <p>
+          Menu item row heights can vary based on the amount of content in each
+          row. The content in each row is flexible. By default, each menu item
+          row height is Medium(md) 40px for one line of content.
+        </p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>

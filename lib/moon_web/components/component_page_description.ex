@@ -33,7 +33,7 @@ defmodule MoonWeb.Components.ComponentPageDescription do
         </div>
       </div>
       <div :if={@image} class="flex flex-col gap-12 lg:basis-1/2">
-        <img src={@image} alt={@title}>
+        <img src={"/moon/assets/images/#{@image}"} alt={@title}>
       </div>
     </div>
     """

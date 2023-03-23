@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
         is_in_progress
         is_rtl_support
         title="Avatar"
-        image="/moon/assets/images/facing/components/avatar.png"
+        image="facing/components/avatar.png"
       >
         <p>
           The Avatar component is typically used to display images, icons, or initials representing people or other entities.

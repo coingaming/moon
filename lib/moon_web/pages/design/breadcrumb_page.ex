@@ -110,7 +110,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
         is_aria_support
         is_rtl_support
         title="Breadcrumb"
-        image="/moon/assets/images/facing/components/breadcrumb.png"
+        image="facing/components/breadcrumb.png"
       >
         <p>
           A list of links showing the location of the current page in the navigational hierarchy.

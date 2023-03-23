@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         is_in_progress
         is_rtl_support
         is_aria_support
-        image="/moon/assets/images/facing/components/select.png"
+        image="facing/components/select.png"
       >
         <p>
           A form input used for selecting a value: when collapsed it shows the currently selected option and when expanded, it shows a scrollable list of predefined options for the user to choose from.

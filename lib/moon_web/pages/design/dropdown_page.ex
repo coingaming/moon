@@ -38,10 +38,14 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         is_aria_support
         is_rtl_support
         is_in_progress
-        image="/moon/assets/images/facing/components/dropdown.png"
+        image="facing/components/dropdown.png"
       >
         <p>
           Dropdowns is a custom select component that allows users to make single or multiple selections.</p>
+        <p>
+          An option that's been selected can represent a corresponding value in
+          forms or be used to filter/sort content.
+        </p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>

@@ -115,7 +115,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Table" image="/moon/assets/images/facing/components/table.png">
+      <ComponentPageDescription title="Table" image="facing/components/table.png">
         <p>
           A component for displaying large amounts of data in rows and columns.
         </p>

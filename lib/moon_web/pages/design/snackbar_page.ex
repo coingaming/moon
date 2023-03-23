@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         is_aria_support
         is_rtl_support
         title="Snackbar"
-        image="/moon/assets/images/facing/components/snackbar.png"
+        image="facing/components/snackbar.png"
       >
         <p>
           The snackbar component is a non-disruptive message that appears on the interface to provide quick, at-a-glance feedback on the outcome of an action.

@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Design.CircularProgressPage do
         is_aria_support
         is_rtl_support
         title="CircularProgress"
-        image="/moon/assets/images/facing/components/circular_progress.png"
+        image="facing/components/circular_progress.png"
       >
         <p>
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.</p>

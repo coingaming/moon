@@ -44,7 +44,7 @@ defmodule MoonWeb.Pages.Design.LoaderPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Loader" image="/moon/assets/images/facing/components/loader.png">
+      <ComponentPageDescription title="Loader" image="facing/components/loader.png">
         <p>
           Loaders provide a visual cue that an action is processing awaiting a course of change or a result.
         </p>

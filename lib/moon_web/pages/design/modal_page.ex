@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         is_in_progress
         is_rtl_support
         title="Modal"
-        image="/moon/assets/images/facing/components/modal.png"
+        image="facing/components/modal.png"
       >
         <p>
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.

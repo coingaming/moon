@@ -106,12 +106,11 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
         title="Accordion"
         is_aria_support
         is_rtl_support
-        image="/moon/assets/images/facing/components/accordion.png"
+        image="facing/components/accordion.png"
       >
         <p>
           An accordion is a vertical stack of interactive headings used to toggle the display of further information; each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </p>
-        <p>Based on Radix UI.</p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>

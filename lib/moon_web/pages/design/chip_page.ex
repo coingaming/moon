@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Design.ChipPage do
         is_in_progress
         is_rtl_support
         title="Chip"
-        image="/moon/assets/images/facing/components/chip.png"
+        image="facing/components/chip.png"
       >
         <p>
           Chips help filter content, or trigger actions.

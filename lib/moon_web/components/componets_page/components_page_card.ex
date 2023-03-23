@@ -3,18 +3,26 @@ defmodule MoonWeb.Components.ComponetsPage.ComponentsPageCard do
 
   use MoonWeb, :stateless_component
 
-  prop(href, :string)
+  prop(href, :string, required: true)
   prop(image, :string)
-  prop(title, :string)
-  slot(default)
+  prop(title, :string, required: true)
+  slot(default, required: true)
+
+  prop(image_path, :string, default: "/moon/assets/images/facing/")
+
+  prop(page, :atom)
+  data(theme_name, :string, from_context: :theme_name)
+  data(direction, :string, from_context: :direction)
 
   def render(assigns) do
     ~F"""
     <div>
-      <a href={@href}>
-        <div class="flex flex-col gap-4 border border-beerus rounded-moon-s-lg p-2 pb-6">
-          <img src={@image} alt={@title} width={408} height={224}>
-          <div class="flex flex-col gap-2 px-4">
+      <a href={live_path(MoonWeb.Endpoint, @page, theme_name: @theme_name, direction: @direction)}>
+        <div class="flex flex-col border border-beerus rounded-moon-s-lg p-2 pb-6">
+          <div :if={@image} class="pb-2">
+            <img src={"/moon/assets/images/#{@image}"} alt={@title} width={408} height={224}>
+          </div>
+          <div class="flex flex-col gap-2 pt-2 px-4">
             <h3 class="text-moon-20 font-medium">
               {@title}</h3>
             <p class="h-12 text-moon-16 text-ellipsis overflow-hidden">
