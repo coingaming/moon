@@ -1,3 +1,10 @@
+## [2.38.7](https://github.com/coingaming/moon/compare/v2.38.6...v2.38.7) (2023-03-23)
+
+
+### Bug Fixes
+
+* [MDS-425] Switch v2 some fixes ([#570](https://github.com/coingaming/moon/issues/570)) ([97a440d](https://github.com/coingaming/moon/commit/97a440d243ffb98e9fbc079859d6c9c4b8b61a55))
+
 ## [2.38.6](https://github.com/coingaming/moon/compare/v2.38.5...v2.38.6) (2023-03-22)
 
 
