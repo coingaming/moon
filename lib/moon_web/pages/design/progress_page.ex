@@ -26,9 +26,15 @@ defmodule MoonWeb.Pages.Design.ProgressPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="Progress">
+      <ComponentPageDescription
+        is_in_progress
+        is_aria_support
+        is_rtl_support
+        title="Progress"
+        image="facing/components/linear_progress.png"
+      >
         <p>
-          A progress indicator is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
+          A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </p>
       </ComponentPageDescription>
 

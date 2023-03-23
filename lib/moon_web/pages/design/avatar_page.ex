@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
         name: "Components v2"
       },
       %{
-        to: "/components/v2/chip",
+        to: "/components/v2/avatar",
         name: "Avatar"
       }
     ]
@@ -26,7 +26,12 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_rtl_support title="Avatar">
+      <ComponentPageDescription
+        is_in_progress
+        is_rtl_support
+        title="Avatar"
+        image="facing/components/avatar.png"
+      >
         <p>
           The Avatar component is typically used to display images, icons, or initials representing people or other entities.
         </p>

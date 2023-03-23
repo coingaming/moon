@@ -33,10 +33,19 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Dropdown" is_aria_support is_rtl_support is_in_progress>
-        <p>Dropdowns is a custom select component that allows users to make single or multiple selections (Multi select not supported currently).</p>
-        <p>An option that's been selected can represent a corresponding value in forms or be used to filter/sort content.</p>
-        <p>Based on Headless approach.</p>
+      <ComponentPageDescription
+        title="Dropdown"
+        is_aria_support
+        is_rtl_support
+        is_in_progress
+        image="facing/components/dropdown.png"
+      >
+        <p>
+          Dropdowns is a custom select component that allows users to make single or multiple selections.</p>
+        <p>
+          An option that's been selected can represent a corresponding value in
+          forms or be used to filter/sort content.
+        </p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>

@@ -251,7 +251,7 @@ defmodule MoonWeb.Pages.ColoursPalettePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Colours" image="/moon/assets/images/facing/colors.webp">
+      <ComponentPageDescription title="Colours" image="facing/colors.webp">
         <p>Our design system is decentralized and built for multi-product purposes. Having different-color naming conventions and numbers etc... makes it harder to maintain it.</p>
         <p>For that, we made a decision to give our colours unique names.</p>
         <p>Meet the <span class="font-semibold">Dragon Ball Z approach</span>.</p>

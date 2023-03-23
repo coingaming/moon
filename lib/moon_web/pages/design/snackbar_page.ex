@@ -27,9 +27,15 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="Snackbar">
+      <ComponentPageDescription
+        is_in_progress
+        is_aria_support
+        is_rtl_support
+        title="Snackbar"
+        image="facing/components/snackbar.png"
+      >
         <p>
-          A type of alert which appears in a layer above other content, visually similar to a mobile or desktop push notification.
+          The snackbar component is a non-disruptive message that appears on the interface to provide quick, at-a-glance feedback on the outcome of an action.
         </p>
       </ComponentPageDescription>
 

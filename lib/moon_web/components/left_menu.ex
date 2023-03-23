@@ -56,6 +56,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
                 <SidebarLink route={Pages.ColoursPalettePage}>Colours</SidebarLink>
                 <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
+                <SidebarLink route={Pages.ComponentsPage}>Components</SidebarLink>
                 <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
                 <div>
                   <Accordion
