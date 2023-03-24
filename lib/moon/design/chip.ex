@@ -12,13 +12,16 @@ defmodule Moon.Design.Chip do
   prop(is_stroke, :boolean, default: false)
   prop(size, :string, values: ["sm", "md"], default: "md")
   prop(variant, :string, values: ["default", "ghost"], default: "default")
-  prop(testid, :string)
   prop(on_click, :event)
   prop(class, :css_class)
+
+  prop(testid, :string)
+  prop(id, :string)
 
   def render(assigns) do
     ~F"""
     <button
+      {=@id}
       class={merge([
         [
           "z-0 overflow-hidden flex flex-row items-center text-moon-14 relative rounded-moon-i-sm cursor-pointer transition duration-200 space-between bg-gohan text-bulma hover:bg-jiren hover:text-piccolo",
@@ -32,7 +35,7 @@ defmodule Moon.Design.Chip do
         @class
       ])}
       :on-click={@on_click}
-      testid={@testid}
+      data-testid={@testid}
     >
       <#slot {@left_icon} />
       <#slot />

@@ -24,7 +24,6 @@ defmodule Moon.Design.Button do
 
   prop(type, :string, default: "button")
   prop(form, :string)
-  prop(testid, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
 
@@ -37,11 +36,15 @@ defmodule Moon.Design.Button do
 
   prop(button_gap, :css_class, default: "gap-2")
 
+  prop(id, :string)
+  prop(testid, :string)
+
   def render(assigns) do
     ~F"""
     <AsComponent
       {=@as}
       {=@href}
+      {=@id}
       class={merge([
         [
           "flex row justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold group z-0",

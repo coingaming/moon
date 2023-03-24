@@ -23,13 +23,16 @@ defmodule Moon.Design.MenuItem do
 
   slot(default)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
     <AsComponent
+      {=@id}
       {=@as}
       {=@href}
       {=@role}
-      {=@attrs}
       class={
         "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
         "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
@@ -39,6 +42,9 @@ defmodule Moon.Design.MenuItem do
       }
       on_click={@on_click}
       values={is_selected: !@is_selected}
+      attrs={
+        "data-testid": @testid
+      }
     >
       <#slot context_put={is_selected: @is_selected}>
         <Lego.Title {=@title} :if={@title && !@text} />

@@ -6,14 +6,17 @@ defmodule Moon.Design.Modal do
   slot(panel, required: true)
 
   prop(is_open, :boolean, default: false)
-  prop(test_id, :string)
   prop(on_close, :event)
+
+  prop(testid, :string)
+  prop(id, :string)
 
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
       class={"fixed inset-0 overflow-y-auto z-[9999999]", hidden: @is_open == false}
-      data-testid={@test_id}
+      data-testid={@testid}
     >
       <div class="flex min-h-full items-center justify-center p-4">
         <#slot {@backdrop} />

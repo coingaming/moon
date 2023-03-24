@@ -9,12 +9,19 @@ defmodule Moon.Design.Loader do
   prop(color, :string, default: "hit", values: Moon.colors())
   prop(class, :css_class)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
-    <div class={
-      "relative",
-      get_size_class_by_size(@size)
-    }>
+    <div
+      {=@id}
+      class={
+        "relative",
+        get_size_class_by_size(@size)
+      }
+      data-testid={@testid}
+    >
       <div class={
         merge([
           "box-border block absolute w-full h-full border-solid rounded-[50%]",

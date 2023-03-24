@@ -7,6 +7,8 @@ defmodule Moon.Design.Modal.Panel do
   slot(default)
   slot(header)
 
+  prop(testid, :string)
+
   # Internal API
   prop(on_close, :event, from_context: :on_close)
 
@@ -18,6 +20,7 @@ defmodule Moon.Design.Modal.Panel do
         @class
       ])}
       :on-click-away={@on_close}
+      data-testid={"#{@testid}-modal-panel"}
     >
       <#slot {@header} />
       <#slot />

@@ -14,9 +14,10 @@ defmodule Moon.Design.Avatar do
   prop(is_rounded, :boolean, default: false)
   prop(is_status_active, :boolean, default: false)
   prop(status_origin, :struct, default: %StatusOrigin{vertical: "bottom", horizontal: "right"})
-
   prop(class, :css_class)
-  prop(test_id, :string)
+
+  prop(testid, :string)
+  prop(id, :string)
 
   def style(assigns) do
     "background-image: url(#{assigns.image_url});"
@@ -25,6 +26,7 @@ defmodule Moon.Design.Avatar do
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
       class={merge([
         [
           "overflow-hidden uppercase font-medium flex items-center justify-center bg-cover relative",
@@ -41,7 +43,7 @@ defmodule Moon.Design.Avatar do
         @class
       ])}
       style={style(assigns)}
-      data-testid={@test_id}
+      data-testid={@testid}
     >
       <span :if={@name && !@image_url}>{@name}</span>
       <Icon name="generic_user" class={set_icon_size(@size)} :if={!@name && !@image_url} />
