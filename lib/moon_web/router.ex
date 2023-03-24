@@ -47,6 +47,7 @@ defmodule MoonWeb.Router do
         live("/colours", MoonWeb.Pages.ColoursPalettePage)
         live("/components", MoonWeb.Pages.ComponentsPage)
         live("/tokens", MoonWeb.Pages.TokensPage)
+        live("/typography", MoonWeb.Pages.TypographyPage)
         live("/assets/age_limit", MoonWeb.Pages.Assets.AgeLimitPage)
         live("/assets/crests", MoonWeb.Pages.Assets.CrestsPage)
         live("/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage)
@@ -149,11 +150,6 @@ defmodule MoonWeb.Router do
         live("/components/input-group", MoonWeb.Pages.Components.InputGroupPage)
         live("/components/toast", MoonWeb.Pages.Components.ToastPage)
         live("/components/tooltip", MoonWeb.Pages.Components.TooltipPage)
-
-        live("/components/typography", MoonWeb.Pages.Components.TypographyPage)
-        live("/components/typography/caption", MoonWeb.Pages.Components.Typography.CaptionPage)
-        live("/components/typography/heading", MoonWeb.Pages.Components.Typography.HeadingPage)
-        live("/components/typography/text", MoonWeb.Pages.Components.Typography.TextPage)
 
         live("/tutorials/add-data-using-form", MoonWeb.Pages.Tutorials.AddDataUsingForm)
         live("/tutorials/installation", MoonWeb.Pages.Tutorials.Installation)

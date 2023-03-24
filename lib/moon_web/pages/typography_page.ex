@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Components.TypographyPage do
+defmodule MoonWeb.Pages.TypographyPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -9,10 +9,6 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
 
   data(breadcrumbs, :any,
     default: [
-      %{
-        to: "#",
-        name: "Components v1"
-      },
       %{
         to: "/typography",
         name: "Typography"
@@ -82,6 +78,18 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
         </:example>
         <:code>{get_example_3_code()}</:code>
       </ExampleAndCode>
+
+      <ExampleAndCode id="text_4" title="Custom Colours">
+        <:example>
+          <div class="flex justify-around p-4 gap-2 w-full">
+            <p class="text-trunks">Trunks</p>
+            <p class="text-piccolo">Piccolo</p>
+            <p class="text-roshi">Roshi</p>
+            <p class="text-chichi">Chichi</p>
+          </div>
+        </:example>
+        <:code>{get_example_4_code()}</:code>
+      </ExampleAndCode>
     </Page>
     """
   end
@@ -139,6 +147,17 @@ defmodule MoonWeb.Pages.Components.TypographyPage do
       <span class="text-moon-10-caption uppercase transition-colors">
         Size 10
       </span>
+    </div>
+    """
+  end
+
+  def get_example_4_code() do
+    """
+    <div class="flex justify-around p-4 gap-2 w-full">
+      <p class="text-trunks">Trunks</p>
+      <p class="text-piccolo">Piccolo</p>
+      <p class="text-roshi">Roshi</p>
+      <p class="text-chichi">Chichi</p>
     </div>
     """
   end
