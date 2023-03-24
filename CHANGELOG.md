@@ -1,3 +1,11 @@
+## [2.38.10](https://github.com/coingaming/moon/compare/v2.38.9...v2.38.10) (2023-03-24)
+
+
+### Bug Fixes
+
+* Conditional paging controls ([a60fe9d](https://github.com/coingaming/moon/commit/a60fe9df331ab7d9bc7b479c27da6112f80a217a))
+* Conditional paging controls ([3a7e2d8](https://github.com/coingaming/moon/commit/3a7e2d8642a3e5699cc970b69f518d27a034615b))
+
 ## [2.38.9](https://github.com/coingaming/moon/compare/v2.38.8...v2.38.9) (2023-03-24)
 
 
