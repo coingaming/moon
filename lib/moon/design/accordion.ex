@@ -31,7 +31,7 @@ defmodule Moon.Design.Accordion do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["flex w-full gap-2 flex-col", @class])}>
+    <div class={merge(["flex w-full gap-2 flex-col", @class])} {=@id}>
       {#for {head, index} <- Enum.with_index(make_list(@header))}
         <div class="w-full">
           <#slot
