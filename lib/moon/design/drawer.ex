@@ -3,14 +3,10 @@ defmodule Moon.Design.Drawer do
 
   use Moon.StatefulComponent
 
-  alias Phoenix.LiveView.JS
-
   data(is_open, :boolean, default: false)
 
   slot(panel, required: true)
   slot(backdrop)
-
-  prop(test_id, :string)
 
   prop(position, :string,
     values!: [
@@ -22,18 +18,32 @@ defmodule Moon.Design.Drawer do
     default: "end"
   )
 
+  prop(test_id, :string)
+
+  defp animate_class(position) do
+    case position do
+      "top" -> "animate-drawerleavetop"
+      "bottom" -> "animate-drawerleavebottom"
+      "start" -> "animate-drawerleavestart"
+      "end" -> "animate-drawerleaveend"
+    end
+  end
+
   def render(assigns) do
     ~F"""
     <div
+      phx-hook="Drawer"
+      data-is_open={@is_open}
+      data-animate_class={animate_class(@position)}
       aria-expanded={(@is_open && "true") || "false"}
-      class={"fixed z-[99999] inset-0", hidden: @is_open == false}
+      class={"fixed z-[99999] inset-0", "moon-drawer", hidden: @is_open == false}
       data-testid={@test_id}
     >
       <#slot {@backdrop} />
       <#slot
         {@panel}
         context_put={
-          on_close: close_content(@position),
+          on_close: %{name: "close_drawer", target: @myself},
           position: @position
         }
       />
@@ -55,49 +65,5 @@ defmodule Moon.Design.Drawer do
 
   def handle_event("close_drawer", _, socket) do
     {:noreply, assign(socket, is_open: false)}
-  end
-
-  def close_content(position) do
-    case position do
-      "top" ->
-        JS.add_class(
-          "hidden",
-          transition:
-            {"ease-in duration-200 transition-transform", "-translate-y-full", "translate-y-0"},
-          time: 200
-        )
-      "bottom" ->
-        JS.add_class(
-          "hidden",
-          transition:
-            {"ease-in duration-200 transition-transform", "translate-y-full", "translate-y-0"},
-          time: 200
-        )
-      "start" ->
-        JS.add_class(
-          "hidden",
-          transition:
-            {"ease-in duration-200 transition-transform",
-             "ltr:-translate-x-full rtl:translate-x-full", "translate-x-0"},
-          time: 200
-        )
-      "end" ->
-        JS.add_class(
-          "hidden",
-          transition:
-            {"ease-in duration-200 transition-transform",
-             "ltr:translate-x-full rtl:-translate-x-full", "translate-x-0"},
-          time: 200
-        )
-    end
-
-  end
-
-  def close_backdrop() do
-    JS.add_class(
-      "hidden",
-      transition: {"ease-in duration-200", "opacity-100", "opacity-0"},
-      time: 200
-    )
   end
 end
