@@ -17,12 +17,14 @@ defmodule Moon.Components.Table.Paging do
       <div class="flex-1"><span class="font-bold">{@offset + 1}-{@offset + @paging_info.visible_count}</span> of {@paging_info.total_count}</div>
       <div class="flex-1 text-right">
         <span
+          :if={@offset >= @limit}
           class="cursor-pointer"
           :on-click={@paging_click}
           :values={offset: @offset - @limit}
           data-testid="previous-page"
         ><ControlsChevronLeft /></span>
         <span
+          :if={@offset + @paging_info.visible_count < @paging_info.total_count}
           class="cursor-pointer"
           :on-click={@paging_click}
           :values={offset: @offset + @limit}
