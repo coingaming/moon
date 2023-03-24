@@ -16,9 +16,13 @@ defmodule Moon.Design.Form.Textarea do
   prop(disabled, :boolean, default: false)
   prop(placeholder, :string, default: "")
 
+  prop(id, :string)
+  prop(testid, :string)
+
   def render(assigns) do
     ~F"""
     <TextArea
+      {=@id}
       class={merge([
         "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan border-0",
         "rounded-moon-s-sm placeholder:text-trunks transition-shadow",
@@ -29,7 +33,7 @@ defmodule Moon.Design.Form.Textarea do
       ])}
       {=@rows}
       {=@cols}
-      opts={Map.merge(@attrs, %{disabled: @disabled, placeholder: @placeholder})}
+      opts={Map.merge(@attrs, %{disabled: @disabled, placeholder: @placeholder, "data-testid": @testid})}
     />
     """
   end

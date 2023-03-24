@@ -24,7 +24,7 @@ defmodule Moon.Design.Form do
       {=@change}
       {=@class}
       {=@trigger_action}
-      opts={autocomplete: @autocomplete, id: @id, "data-test-id": @testid, "phx-target": @target}
+      opts={autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target}
     >
       <#slot />
     </Surface.Components.Form>

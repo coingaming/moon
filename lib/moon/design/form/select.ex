@@ -13,6 +13,7 @@ defmodule Moon.Design.Form.Select do
   prop(prompt, :string)
 
   prop(id, :string)
+  prop(testid, :string)
 
   def render(assigns) do
     ~F"""
@@ -33,7 +34,7 @@ defmodule Moon.Design.Form.Select do
       ])}
       field={@field}
       options={options_with_selected(@options, @value)}
-      opts={[prompt: @prompt, disabled: @disabled]}
+      opts={[prompt: @prompt, disabled: @disabled, "data-testid": @testid]}
     />
     """
   end
