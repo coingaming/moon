@@ -25,11 +25,11 @@ defmodule MoonWeb.Components.VisionCard do
           </p>
         </div>
         <div class="flex flex-col rounded-moon-s-md py-6 px-8 gap-6 bg-gohan">
-          <p class="text-moon-32">{@inner_card_text}</p>
+          <p class="text-moon-32 text-goten">{@inner_card_text}</p>
           <div class="flex items-center gap-2">
             <img src={@user_image} alt="Testimonial">
             <div class="flex flex-col">
-              <p class="text-moon-18">{@name}</p>
+              <p class="text-moon-18 text-goten">{@name}</p>
               <p class="text-moon-16 text-trunks">{@company}</p>
             </div>
           </div>

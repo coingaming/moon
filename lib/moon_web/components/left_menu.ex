@@ -56,6 +56,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 <SidebarLink route={Pages.ContributePage}>How to contribute</SidebarLink>
                 <SidebarLink route={Pages.ColoursPalettePage}>Colours</SidebarLink>
                 <SidebarLink route={Pages.TokensPage}>Tokens</SidebarLink>
+                <SidebarLink route={Pages.TypographyPage}>Typography</SidebarLink>
                 <SidebarLink route={Pages.ComponentsPage}>Components</SidebarLink>
                 <SidebarLink route={Pages.ManifestPage}>Manifest</SidebarLink>
                 <div>
@@ -234,7 +235,6 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Components.InputGroupPage}>TextInputGroup</SidebarLink>
                       <SidebarLink route={Pages.Components.ToastPage}>Toast</SidebarLink>
                       <SidebarLink route={Pages.Components.TooltipPage}>Tooltip</SidebarLink>
-                      <SidebarLink route={Pages.Components.TypographyPage}>Typography</SidebarLink>
                     </div>
                   </:content>
                 </Accordion>
