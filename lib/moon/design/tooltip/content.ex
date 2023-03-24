@@ -27,10 +27,12 @@ defmodule Moon.Design.Tooltip.Content do
   slot(arrow)
 
   prop(testid, :string)
+  prop(id, :string)
 
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
       class={
         "absolute flex items-center z-30",
         "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]": !@has_no_shadow,

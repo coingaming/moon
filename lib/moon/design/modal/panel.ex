@@ -7,6 +7,7 @@ defmodule Moon.Design.Modal.Panel do
   slot(default)
   slot(header)
 
+  prop(id, :string)
   prop(testid, :string)
 
   # Internal API
@@ -15,6 +16,7 @@ defmodule Moon.Design.Modal.Panel do
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
       class={merge([
         "w-full max-w-sm inline-block transform rounded-xl bg-gohan align-middle shadow-moon-lg transition-all",
         @class

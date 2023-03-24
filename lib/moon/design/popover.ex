@@ -14,7 +14,7 @@ defmodule Moon.Design.Popover do
 
   def render(assigns) do
     ~F"""
-    <div {=@id} class={@class} :on-click-away="close_panel">
+    <div {=@id} data-testid={@testid} class={@class} :on-click-away="close_panel">
       <div class="relative">
         <div role="button" :on-click={@on_click || "toggle_open"}>
           <#slot {@trigger} />
