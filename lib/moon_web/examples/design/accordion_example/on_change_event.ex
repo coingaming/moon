@@ -18,15 +18,15 @@ defmodule MoonWeb.Examples.Design.AccordionExample.OnChangeEvent do
     <div class="w-full">
       <Accordion id="on-change-accordion" on_change="accordioned" value={@color}>
         <Accordion.Item value="bg-krillin">
-          <Accordion.Header title="Krilin" class={@color} />
+          <Accordion.Header title="Krilin" class={@color, "transition-colors"} />
           <Accordion.Content class="bg-krillin/20">{lorem()}</Accordion.Content>
         </Accordion.Item>
         <Accordion.Item value="bg-roshi">
-          <Accordion.Header title="Roshi" class={@color} />
+          <Accordion.Header title="Roshi" class={@color, "transition-colors"} />
           <Accordion.Content class="bg-roshi/20">{ipsum()}</Accordion.Content>
         </Accordion.Item>
         <Accordion.Item value="bg-chichi">
-          <Accordion.Header title="Chichi" class={@color} />
+          <Accordion.Header title="Chichi" class={@color, "transition-colors"} />
           <Accordion.Content class="bg-chichi/20">{dolor()}</Accordion.Content>
         </Accordion.Item>
       </Accordion>
