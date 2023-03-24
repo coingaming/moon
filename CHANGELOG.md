@@ -1,3 +1,10 @@
+## [2.38.11](https://github.com/coingaming/moon/compare/v2.38.10...v2.38.11) (2023-03-24)
+
+
+### Bug Fixes
+
+* [MDS-457] Add id and testid to v2 components ([#580](https://github.com/coingaming/moon/issues/580)) ([8fb0693](https://github.com/coingaming/moon/commit/8fb0693a4bc8d23205ed85fb654feaf7677ceac2))
+
 ## [2.38.10](https://github.com/coingaming/moon/compare/v2.38.9...v2.38.10) (2023-03-24)
 
 
