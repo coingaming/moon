@@ -6,6 +6,8 @@ defmodule Moon.Design.Accordion.Header do
   alias Moon.Icons.ControlsChevronDown
 
   # public API
+  prop(id, :string)
+  prop(testid, :string)
   prop(class, :css_class)
   prop(title, :string)
   prop(disabled, :boolean)
@@ -23,6 +25,8 @@ defmodule Moon.Design.Accordion.Header do
     ~F"""
     <h3 class="w-full">
       <button
+        {=@id}
+        data-testid={@testid}
         type="button"
         aria-expanded={"#{@is_open}"}
         :on-click={@on_change}

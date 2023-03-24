@@ -4,8 +4,10 @@ defmodule Moon.Design.Tabs.Tab do
   use Moon.StatelessComponent, slot: "tabs"
 
   # open API
+  prop(id, :string)
   prop(disabled, :boolean, default: false)
   prop(class, :css_class)
+  prop(testid, :string)
 
   prop(unselected_class, :css_class, default: "after:scale-x-0 text-bulma")
   prop(selected_class, :css_class, default: "after:scale-x-100 text-piccolo")
@@ -21,6 +23,7 @@ defmodule Moon.Design.Tabs.Tab do
   def render(assigns) do
     ~F"""
     <button
+      {=@id}
       role="tab"
       type="button"
       {=@tabindex}
@@ -38,6 +41,7 @@ defmodule Moon.Design.Tabs.Tab do
       ])}
       :on-click={!@disabled && @on_change}
       value={@tabindex}
+      data-testid={@testid}
     ><#slot /></button>
     """
   end
