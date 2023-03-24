@@ -1,3 +1,10 @@
+## [2.38.9](https://github.com/coingaming/moon/compare/v2.38.8...v2.38.9) (2023-03-24)
+
+
+### Bug Fixes
+
+* improve usage from tests ([#578](https://github.com/coingaming/moon/issues/578)) ([6b54f22](https://github.com/coingaming/moon/commit/6b54f22f354a0729a272fbbeac08c8deec0f4169))
+
 ## [2.38.8](https://github.com/coingaming/moon/compare/v2.38.7...v2.38.8) (2023-03-23)
 
 
