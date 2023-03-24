@@ -37,9 +37,11 @@ defmodule Moon.Design.Table do
   @doc "Just an id for a HTML container"
   prop(id, :string)
 
+  prop(testid, :string)
+
   def render(assigns) do
     ~F"""
-    <div class="w-full grid gap-4" {=@id}>
+    <div class="w-full grid gap-4" {=@id} data-testid={@testid}>
       {#if @paging_info}
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
