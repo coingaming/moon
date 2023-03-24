@@ -5,6 +5,8 @@ defmodule Moon.Design.Accordion.Content do
 
   import Moon.Helpers.MergeClass
 
+  prop(id, :string)
+  prop(testid, :string)
   prop(class, :css_class)
 
   prop(size, :string, values!: ["sm", "md", "lg", "xl"], from_context: :size)
@@ -15,6 +17,8 @@ defmodule Moon.Design.Accordion.Content do
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
+      data-testid={@testid}
       role="region"
       class={merge([
         (@is_content_outside &&

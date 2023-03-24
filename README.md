@@ -1,5 +1,5 @@
 # Moon Design System
-<h3 >Set of UI components built with Surface UI library</h3>
+<h3 >Set of UI components built with Surface UI library and Tailwind CSS</h3>
 <p>
   <a href="https://conventionalcommits.org">
     <img alt="Conventional Commits" src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg">
