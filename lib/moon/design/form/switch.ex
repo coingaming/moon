@@ -17,7 +17,7 @@ defmodule Moon.Design.Form.Switch do
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
-  prop(test_id, :string)
+  prop(testid, :string)
 
   slot(on_icon)
   slot(off_icon)
@@ -39,7 +39,7 @@ defmodule Moon.Design.Form.Switch do
         {=@off_bg_color}
         {=@disabled}
         {=@class}
-        {=@test_id}
+        {=@testid}
         on_change="toggle_switch"
         checked={get_value(assigns)}
       >

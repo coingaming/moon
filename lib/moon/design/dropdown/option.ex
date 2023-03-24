@@ -14,9 +14,13 @@ defmodule Moon.Design.Dropdown.Option do
 
   slot(default)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
     <button
+      {=@id}
       :on-click={@on_click}
       {=@value}
       {=@disabled}
@@ -32,6 +36,7 @@ defmodule Moon.Design.Dropdown.Option do
         ],
         @class
       ])}
+      data-testid={@testid}
     >
       <#slot>{@title}</#slot>
     </button>

@@ -19,6 +19,8 @@ defmodule Moon.Design.Dropdown do
   slot(trigger, required: true)
   slot(option)
 
+  prop(testid, :string)
+
   def handle_event("on_change_default", %{"value" => value}, socket) do
     {:noreply, assign(socket, value: value, is_open: false)}
   end
@@ -33,14 +35,17 @@ defmodule Moon.Design.Dropdown do
 
   def render(assigns) do
     ~F"""
-    <div class="relative" :on-click-away="close_me">
-      <div class={merge([
-        "flex flex-col absolute z-[99]",
-        "p-1 rounded-moon-s-md box-border bg-gohan shadow-moon-lg overflow-y-auto focus:outline-none",
-        (@position && position_class(@position)) || "w-full top-full my-2",
-        @class,
-        hidden: !@is_open
-      ])}>
+    <div class="relative" :on-click-away="close_me" {=@id}>
+      <div
+        class={merge([
+          "flex flex-col absolute z-[99]",
+          "p-1 rounded-moon-s-md box-border bg-gohan shadow-moon-lg overflow-y-auto focus:outline-none",
+          (@position && position_class(@position)) || "w-full top-full my-2",
+          @class,
+          hidden: !@is_open
+        ])}
+        data-testid={@testid}
+      >
         {#if slot_assigned?(:option)}
           {#for {option, index} <- Enum.with_index(make_list(@option))}
             <#slot

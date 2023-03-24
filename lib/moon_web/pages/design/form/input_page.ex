@@ -70,11 +70,11 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
             :description => 'Id for the DOM element'
           },
           %{
-            :name => 'test_id',
+            :name => 'testid',
             :type => 'string',
             :required => 'No',
             :default => '-',
-            :description => 'Attr data-test_id for the DOM element'
+            :description => 'Attr data-testid for the DOM element'
           },
           %{
             :name => 'type',

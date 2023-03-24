@@ -7,19 +7,22 @@ defmodule Moon.Design.CircularProgress do
   prop(progress_color, :css_class, default: "stroke-piccolo")
   prop(size, :string, values: ["2xs", "xs", "sm", "md", "lg"], default: "md")
   prop(value, :decimal, default: 0)
-  prop(test_id, :string)
   prop(class, :css_class)
+
+  prop(testid, :string)
+  prop(id, :string)
 
   def render(assigns) do
     ~F"""
     <svg
+      {=@id}
       style={get_style(width: "1em", height: "1em", vertical_align: "middle")}
       viewBox={"0 0 #{viewbox_width()} #{viewbox_height()}"}
       font-size={get_circular_size(@size)}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={@value}
-      data-testid={@test_id}
+      data-testid={@testid}
       {=@class}
       role="progressbar"
     >

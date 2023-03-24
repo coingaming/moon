@@ -8,11 +8,14 @@ defmodule Moon.Design.Progress do
   prop(size, :string, values: ["6xs", "5xs", "4xs", "3xs", "2xs"], default: "2xs")
   prop(value, :decimal, default: 0)
   prop(class, :css_class)
-  prop(test_id, :string)
+
+  prop(testid, :string)
+  prop(id, :string)
 
   def render(assigns) do
     ~F"""
     <div
+      {=@id}
       class={merge([
         "w-full relative rounded-full overflow-hidden",
         @bg_color,
@@ -23,7 +26,7 @@ defmodule Moon.Design.Progress do
       aria-valuemax={100}
       aria-valuenow={@value}
       role="progressbar"
-      data-testid={@test_id}
+      data-testid={@testid}
     >
       <span
         style={"width: #{trunc(@value)}%"}

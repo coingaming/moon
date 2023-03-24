@@ -10,16 +10,18 @@ defmodule Moon.Design.Switch do
   prop(off_bg_color, :css_class, default: "bg-beerus")
   prop(class, :css_class)
   prop(switcher_class, :css_class)
-  prop(test_id, :string)
   prop(on_change, :event)
 
   slot(off_icon)
   slot(on_icon)
 
+  prop(testid, :string)
+
   @spec render(map) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
     <button
+      {=@id}
       type="button"
       aria-pressed="false"
       disabled={@disabled}
@@ -35,7 +37,7 @@ defmodule Moon.Design.Switch do
         ],
         @class
       ])}
-      data-testid={@test_id}
+      data-testid={@testid}
       :on-click={@on_change || "toggle_switch"}
     >
       <span class="block relative h-full w-full">

@@ -24,12 +24,23 @@ defmodule Moon.Components.AsComponent do
 
   slot(default)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
     {#if @as == "button"}
-      <button {=@class} :on-click={@on_click} :values={@values} {=@role} {...@attrs}><#slot /></button>
+      <button
+        {=@class}
+        :on-click={@on_click}
+        :values={@values}
+        {=@role}
+        {...@attrs}
+        {=@id}
+        data-testid={@testid}
+      ><#slot /></button>
     {#elseif @as == "a"}
-      <a {=@class} {=@href} {...@attrs}><#slot /></a>
+      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid}><#slot /></a>
     {/if}
     """
   end

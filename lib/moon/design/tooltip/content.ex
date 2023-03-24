@@ -26,16 +26,23 @@ defmodule Moon.Design.Tooltip.Content do
   slot(default, required: true)
   slot(arrow)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
-    <div class={
-      "absolute flex items-center z-30",
-      "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]": !@has_no_shadow,
-      "left-full rtl:flex-row-reverse": @position == "right",
-      "right-full ltr:flex-row-reverse": @position == "left",
-      "top-full left-0 right-0 flex-col": String.starts_with?(@position, "bottom"),
-      "bottom-full left-0 right-0 flex-col-reverse": String.starts_with?(@position, "top")
-    }>
+    <div
+      {=@id}
+      class={
+        "absolute flex items-center z-30",
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)]": !@has_no_shadow,
+        "left-full rtl:flex-row-reverse": @position == "right",
+        "right-full ltr:flex-row-reverse": @position == "left",
+        "top-full left-0 right-0 flex-col": String.starts_with?(@position, "bottom"),
+        "bottom-full left-0 right-0 flex-col-reverse": String.starts_with?(@position, "top")
+      }
+      data-testid={@testid}
+    >
       <div class={"overflow-hidden", (@position in ~w(right left) && "py-1") || "px-1"}>
         <#slot
           {@arrow}

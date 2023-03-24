@@ -10,9 +10,11 @@ defmodule Moon.Design.Breadcrumb do
   prop(class, :string, default: nil)
   prop(collapsible_crumbs, :integer, default: 4)
 
+  prop(testid, :string)
+
   def render(assigns) do
     ~F"""
-    <div class={@class}>
+    <div {=@id} class={@class} data-testid={@testid}>
       {#if Enum.count(@breadcrumbs) > @collapsible_crumbs}
         <Collapsed id={"#{@id}_inner_breadcrumb"} breadcrumbs={@breadcrumbs} />
       {#else}

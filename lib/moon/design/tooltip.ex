@@ -9,9 +9,17 @@ defmodule Moon.Design.Tooltip do
   slot(default, required: true)
   slot(trigger, required: true)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
-    <div class={merge(["relative inline-block group focus:outline-none", @class])} {=@tabindex}>
+    <div
+      {=@id}
+      class={merge(["relative inline-block group focus:outline-none", @class])}
+      {=@tabindex}
+      data-testid={@testid}
+    >
       <div
         role="tooltip"
         class="hidden group-hover:block group-focus:block transition-opacity duration-200"
