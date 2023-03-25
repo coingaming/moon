@@ -37,6 +37,7 @@ defmodule Moon.Design.Switch do
         ],
         @class
       ])}
+      value={"#{@checked}"}
       data-testid={@testid}
       :on-click={@on_change || "toggle_switch"}
     >

@@ -18,21 +18,19 @@ defmodule Moon.Design.Tag do
     ~F"""
     <div
       {=@id}
-      class={
-        merge([
-          [
-            "flex items-center rounded-moon-i-xs select-none text-gohan font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
-            "text-moon-9 py-0": @size == "2xs",
-            "text-moon-10 py-1": @size == "xs",
-            "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
-            "text-moon-12 tracking-0 font-regular": @size == "xs" && !@is_uppercase,
-            "ps-1": @left_icon,
-            "pe-1": @right_icon
-          ],
-          @class
-        ]),
-        uppercase: @is_uppercase
-      }
+      class={merge([
+        [
+          "flex items-center rounded-moon-i-xs select-none text-gohan font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
+          "text-moon-9 py-0": @size == "2xs",
+          "text-moon-10 py-1": @size == "xs",
+          "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
+          "text-moon-12 tracking-0 font-regular": @size == "xs" && !@is_uppercase,
+          "ps-1": @left_icon,
+          "pe-1": @right_icon,
+          uppercase: @is_uppercase
+        ],
+        @class
+      ])}
       data-testid={@testid}
     >
       <span class={icon_size(@size), "ltr:mr-1 rtl:ml-1": @left_icon}>
