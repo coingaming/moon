@@ -40,6 +40,7 @@ config :surface, :components, [
   {Moon.Components.Select.Dropdown, propagate_context_to_slots: true},
   {Moon.Design.MenuItem, propagate_context_to_slots: true},
   {Moon.Design.Tabs, propagate_context_to_slots: true},
+  {Moon.Design.Tabs.List, propagate_context_to_slots: true},
   {Moon.Design.Tooltip.Content, propagate_context_to_slots: true},
   {Moon.Design.Accordion, propagate_context_to_slots: true},
   {Moon.Design.Modal, propagate_context_to_slots: true},

@@ -3,6 +3,9 @@ defmodule Moon.Design.Accordion do
 
   use Moon.StatefulComponent
 
+  import Moon.Helpers.MakeList
+
+  prop(testid, :string)
   prop(class, :css_class)
   prop(disabled, :boolean, default: false)
 
@@ -56,7 +59,4 @@ defmodule Moon.Design.Accordion do
     </div>
     """
   end
-
-  defp make_list(l) when is_list(l), do: l
-  defp make_list(l), do: [l]
 end

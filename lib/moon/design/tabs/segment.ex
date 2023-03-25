@@ -4,8 +4,10 @@ defmodule Moon.Design.Tabs.Segment do
   use Moon.StatelessComponent, slot: "tabs"
 
   # open API
-  prop(disabled, :boolean, default: false)
+  prop(id, :string)
+  prop(testid, :string)
   prop(class, :css_class)
+  prop(disabled, :boolean, default: false)
 
   prop(unselected_class, :css_class, default: "")
   prop(selected_class, :css_class, default: "bg-gohan")
@@ -13,8 +15,8 @@ defmodule Moon.Design.Tabs.Segment do
   slot(default, required: true)
 
   # inner API
-  prop(tabindex, :string, from_context: :tabindex)
-  prop(selected, :boolean, from_context: :selected)
+  prop(tabindex, :integer, from_context: :tabindex)
+  prop(is_selected, :boolean, from_context: :is_selected)
   prop(size, :string, values!: ~w(sm md), from_context: :size)
   prop(on_change, :event, from_context: :on_change)
 
@@ -24,17 +26,19 @@ defmodule Moon.Design.Tabs.Segment do
       role="tab"
       type="button"
       {=@tabindex}
-      aria-selected={@selected}
+      aria-selected={"#{@is_selected}"}
       {=@disabled}
       class={merge([
         "items-center justify-center whitespace-nowrap text-moon-14 text-bulma font-medium rounded-moon-i-sm transition-colors focus:outline-none",
-        (@selected && @selected_class) || @unselected_class,
+        (@is_selected && @selected_class) || @unselected_class,
         (@size === "sm" && "px-3 py-1") || "py-2 px-4",
         (@disabled && "cursor-default text-trunks") || "cursor-pointer hover:bg-gohan",
         @class
       ])}
       :on-click={!@disabled && @on_change}
       value={@tabindex}
+      {=@id}
+      data-testid={@testid}
     ><#slot /></button>
     """
   end
