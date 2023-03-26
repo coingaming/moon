@@ -11,8 +11,6 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Examples.Design.TabsExample
 
-  import MoonWeb.Helpers.Lorem
-
   data(breadcrumbs, :any,
     default: [
       %{
