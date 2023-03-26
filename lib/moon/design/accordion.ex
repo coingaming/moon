@@ -3,7 +3,7 @@ defmodule Moon.Design.Accordion do
 
   use Moon.StatefulComponent
 
-  import MoonWeb.Helpers.Lorem
+  import Moon.Helpers.MakeList
 
   prop(testid, :string)
   prop(class, :css_class)
