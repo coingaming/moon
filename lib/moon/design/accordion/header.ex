@@ -10,14 +10,14 @@ defmodule Moon.Design.Accordion.Header do
   prop(testid, :string)
   prop(class, :css_class)
   prop(title, :string)
-  prop(disabled, :boolean)
+  prop(disabled, :boolean, from_context: :disabled)
 
   slot(default)
 
   # internal API
   prop(is_open, :boolean, from_context: :is_open)
   prop(size, :string, values!: ["sm", "md", "lg", "xl"], from_context: :size)
-  prop(index, :integer, from_context: :index)
+  prop(value, :integer, from_context: :value)
   prop(on_change, :event, from_context: :on_change)
   prop(is_content_outside, :boolean, from_context: :is_content_outside)
 
@@ -30,7 +30,7 @@ defmodule Moon.Design.Accordion.Header do
         type="button"
         aria-expanded={"#{@is_open}"}
         :on-click={@on_change}
-        value={@index}
+        {=@value}
         {=@disabled}
         class={merge([
           "justify-between flex items-center relative w-full rounded-moon-s-sm",
