@@ -1,3 +1,11 @@
+## [2.38.12](https://github.com/coingaming/moon/compare/v2.38.11...v2.38.12) (2023-03-27)
+
+
+### Bug Fixes
+
+* [MDS-458] Accordion refactored([#584](https://github.com/coingaming/moon/issues/584)) ([ab51c9f](https://github.com/coingaming/moon/commit/ab51c9ff7cdfd3358f214c398c7639950fb7b15f))
+* [MDS-459] Tabs refactored ([#585](https://github.com/coingaming/moon/issues/585)) ([2e3500b](https://github.com/coingaming/moon/commit/2e3500b27b4527fce3cc367f392e88c0b266c77f))
+
 ## [2.38.11](https://github.com/coingaming/moon/compare/v2.38.10...v2.38.11) (2023-03-24)
 
 
