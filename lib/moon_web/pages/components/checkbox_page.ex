@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
       <ComponentPageDescription title="Checkbox">
         <DeprecationWarning
           name="Checkbox"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.CheckboxPage,
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.CheckboxPage,
             theme_name: @theme_name,
             direction: @direction
           )}
