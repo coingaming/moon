@@ -12,13 +12,11 @@ defmodule Moon.Design.Form.Select do
   prop(class, :css_class)
   prop(prompt, :string)
 
-  prop(id, :string)
   prop(testid, :string)
 
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.Select
-      {=@id}
       class={merge([
         "text-trunks flex justify-between w-full bg-gohan border-0 duration-200 transition-shadow",
         "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",

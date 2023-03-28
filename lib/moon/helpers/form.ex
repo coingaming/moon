@@ -14,4 +14,10 @@ defmodule Moon.Helpers.Form do
       struct
     end
   end
+
+  @doc "function for getting value from assigns or form"
+  def get_value(%{value: nil, form: form, field: field}),
+    do: Phoenix.HTML.Form.input_value(form, field)
+
+  def get_value(%{value: value}), do: value
 end
