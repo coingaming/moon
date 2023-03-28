@@ -57,10 +57,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
           <div class="p-3">Drawer content</div>
         </Drawer.Panel>
       </Drawer>
-
     </div>
-
-
     """
   end
 
