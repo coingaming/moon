@@ -1,3 +1,10 @@
+## [2.38.13](https://github.com/coingaming/moon/compare/v2.38.12...v2.38.13) (2023-03-28)
+
+
+### Bug Fixes
+
+* [MDS-472] Checkbox v2 ([b17ee03](https://github.com/coingaming/moon/commit/b17ee03fe10c355592e3e8b460e283a0a0bea8d7))
+
 ## [2.38.12](https://github.com/coingaming/moon/compare/v2.38.11...v2.38.12) (2023-03-27)
 
 
