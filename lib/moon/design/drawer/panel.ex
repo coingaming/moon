@@ -1,12 +1,7 @@
 defmodule Moon.Design.Drawer.Panel do
   @moduledoc false
 
-  # TODO
-  # Add "drawer leave" animations.
-
   use Moon.StatelessComponent, slot: "panel"
-
-  alias Phoenix.LiveView.JS
 
   slot(default)
 
@@ -25,6 +20,9 @@ defmodule Moon.Design.Drawer.Panel do
     default: "end"
   )
 
+   # inner API
+   prop(on_close, :event, from_context: :on_close)
+
   def render(assigns) do
     ~F"""
     <div
@@ -41,7 +39,7 @@ defmodule Moon.Design.Drawer.Panel do
         ],
         @class
       ])}
-      :on-click={JS.dispatch("moon:close-drawer", detail: %{drawer_panel_id: "#{@id}-panel"})}
+      :on-click-away={@on_close}
       data-testid={@testid}
     >
       <#slot />
@@ -53,8 +51,8 @@ defmodule Moon.Design.Drawer.Panel do
     case position do
       "top" -> "animate-drawerentertop"
       "bottom" -> "animate-drawerenterbottom"
-      "start" -> "animate-drawerenterleft"
-      "end" -> "animate-drawerenterright"
+      "start" -> "ltr:animate-drawerenterleft rtl:animate-drawerenterright"
+      "end" -> "ltr:animate-drawerenterright rtl:animate-drawerenterleft"
     end
   end
 
@@ -62,8 +60,8 @@ defmodule Moon.Design.Drawer.Panel do
     case position do
       "top" -> "animate-drawerleavetop"
       "bottom" -> "animate-drawerleavebottom"
-      "start" -> "animate-drawerleaveleft"
-      "end" -> "animate-drawerleaveright"
+      "start" -> "ltr:animate-drawerleaveleft rtl:ltr:animate-drawerleaveright"
+      "end" -> "ltr:animate-drawerleaveright rtl:ltr:animate-drawerleaveleft"
     end
   end
 end

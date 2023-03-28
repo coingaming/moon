@@ -5,7 +5,7 @@ defmodule Moon.Design.Drawer do
 
   data(is_open, :boolean, default: false)
 
-  prop(is_closing, :boolean, default: false)
+  data(is_closing, :boolean, default: false)
 
   slot(panel, required: true)
   slot(backdrop)
@@ -18,12 +18,18 @@ defmodule Moon.Design.Drawer do
       {=@id}
       phx-hook="Drawer"
       data-is_open={@is_open}
+      data-is_closing={"#{@is_closing}"}
       aria-expanded={(@is_open && "true") || "false"}
       class="fixed z-[99999] inset-0 hidden"
       data-testid={@testid}
     >
       <#slot {@backdrop} />
-      <#slot {@panel} />
+      <#slot
+        {@panel}
+        context_put={
+          on_close: %{name: "start_closing_drawer", target: @myself}
+        }
+      />
     </div>
     """
   end
@@ -34,6 +40,10 @@ defmodule Moon.Design.Drawer do
 
   def closed(drawer_id) do
     send_update(__MODULE__, id: drawer_id, is_open: false)
+  end
+
+  def closing(drawer_id) do
+    send_update(__MODULE__, id: drawer_id, is_closing: true)
   end
 
   def handle_event("open_drawer", _, socket) do
