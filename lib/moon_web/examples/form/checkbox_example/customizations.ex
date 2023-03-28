@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Customizations do
 
   def render(assigns) do
     ~F"""
-    <div class="w-full flex flex-col lg:flex-row">
+    <div class="w-full flex flex-wrap items-center justify-around">
       <Checkbox selected_class="bg-krillin" is_selected={@is_selected0} on_click="on_click0" />
       <Checkbox class="rounded-none" is_selected={@is_selected1} on_click="on_click1" />
       <Checkbox unselected_class="shadow-krillin" is_selected={@is_selected2} on_click="on_click2" />
