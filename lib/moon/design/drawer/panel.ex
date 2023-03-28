@@ -20,8 +20,8 @@ defmodule Moon.Design.Drawer.Panel do
     default: "end"
   )
 
-   # inner API
-   prop(on_close, :event, from_context: :on_close)
+  # inner API
+  prop(on_close, :event, from_context: :on_close)
 
   def render(assigns) do
     ~F"""
@@ -60,8 +60,8 @@ defmodule Moon.Design.Drawer.Panel do
     case position do
       "top" -> "animate-drawerleavetop"
       "bottom" -> "animate-drawerleavebottom"
-      "start" -> "ltr:animate-drawerleaveleft rtl:ltr:animate-drawerleaveright"
-      "end" -> "ltr:animate-drawerleaveright rtl:ltr:animate-drawerleaveleft"
+      "start" -> "ltr:animate-drawerleaveleft rtl:animate-drawerleaveright"
+      "end" -> "ltr:animate-drawerleaveright rtl:animate-drawerleaveleft"
     end
   end
 end

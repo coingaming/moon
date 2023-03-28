@@ -186,6 +186,7 @@ module.exports = {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 }
          },
+        //  TODO: use {left/right/top/bottoms}lide instead of creating new ones
          drawerenterright: {
           "0%": {transform: "translateX(100%)",},
           "100%": { transform: "translateX(0%)" }
@@ -211,12 +212,12 @@ module.exports = {
           "100%": { transform: "translateX(-100%)" }
          },
          drawerleavetop: {
-          "0%": {transform: "translateY(100%)",},
-          "100%": { transform: "translateY(0%)" }
+          "0%": {transform: "translateY(0%)",},
+          "100%": { transform: "translateY(-100%)" }
          },
          drawerleavebottom: {
-          "0%": {transform: "translateY(-100%)",},
-          "100%": { transform: "translateY(0%)" }
+          "0%": {transform: "translateY(0%)",},
+          "100%": { transform: "translateY(100%)" }
          },
          backdropenter: {
           "0%": { opacity: 0 },

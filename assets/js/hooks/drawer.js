@@ -3,7 +3,6 @@ const isVisible = (el) => !el.classList.contains("hidden")
 export default {
 
     mounted() {
-        this.el.dataset.is_open === undefined || this.showElement();
         if (this.el.children.length > 1) {
             this.backdrop = this.el.children[0];
             this.panel = this.el.children[1];
@@ -27,16 +26,16 @@ export default {
         };
         setTimeout (() => {
             this.el.classList.add("hidden")
-            this.pushEventTo(this.el.parentNode, "close_drawer", {});
+            this.pushEventTo(this.el, "close_drawer", {});
         }, 200);
     },
     
     showElement() {
         this.el.classList.remove("hidden");
         this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
-            if (this.backdrop) {
-                this.backdrop.classList.add("animate-backdropenter");
-            }
-            },
+        if (this.backdrop) {
+            this.backdrop.classList.add("animate-backdropenter");
+        }
+    },
 };
       

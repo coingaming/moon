@@ -38,11 +38,7 @@ defmodule Moon.Design.Drawer do
     send_update(__MODULE__, id: drawer_id, is_open: true)
   end
 
-  def closed(drawer_id) do
-    send_update(__MODULE__, id: drawer_id, is_open: false)
-  end
-
-  def closing(drawer_id) do
+  def close(drawer_id) do
     send_update(__MODULE__, id: drawer_id, is_closing: true)
   end
 
@@ -55,6 +51,6 @@ defmodule Moon.Design.Drawer do
   end
 
   def handle_event("close_drawer", _, socket) do
-    {:noreply, assign(socket, is_open: false)}
+    {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
 end
