@@ -7,7 +7,7 @@ defmodule Moon.Design.Drawer.Backdrop do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["fixed inset-0 bg-zeno animate-backdropenter", @class])} />
+    <div class={merge(["fixed inset-0 bg-zeno", @class])} />
     """
   end
 end

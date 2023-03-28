@@ -1,30 +1,56 @@
-const isVisible = (el) => !el.classList.contains("hidden") && !el.classList.contains("animate-fadeout")
-
-const visibleElements = () => Array.from(document.getElementsByClassName('moon-drawer')).filter(isVisible)
+const isVisible = (el) => !el.classList.contains("hidden") 
 
 export default {
 
     mounted() {
-        this.el.dataset.is_open === undefined || this.showElement(this.el);
+        this.el.dataset.is_open === undefined || this.showElement();
     },
 
     updated() {
-        (this.el.dataset.is_open === undefined) || isVisible(this.el) || this.showElement(this.el);
+            
+        if (this.el.children.length > 1) {
+            this.backdrop = this.el.children[0];
+            this.panel = this.el.children[1];
+            console.log(this.backdrop)
+        } else {
+            this.panel = this.el.children[0];
+        }
+        (this.el.dataset.is_open === undefined) || isVisible(this.el) || this.showElement();
+
     },
 
-    hideElement(el) {
-        el.dataset.to_hide && clearTimeout(el.dataset.to_hide);
-        el.classList.replace(el.dataset.animate_class, "animate-fadeout");
+    hideElement() {
+        this.panel.classList.replace(this.panel.dataset.animate_enter_class, this.panel.dataset.animate_leave_class);
+        if (this.backdrop) {
+            this.backdrop.classList.replace("animate-backdropenter", "animate-backdropleave");
+        };
         setTimeout (() => {
-            el.classList.replace("animate-fadeout", "hidden")
-            this.pushEventTo(el.parentNode, "set_close", {});
-        }, 500);
+            this.el.classList.add("hidden")
+            this.pushEventTo(this.el.parentNode, "close_drawer", {});
+        }, 300);
     },
     
-    showElement(el) {
-        visibleElements().map(this.hideElement.bind(this));
-        el.classList.replace("hidden", el.dataset.animate_class);
-        el.dataset.to_hide = setTimeout(() => this.hideElement(el), el.dataset.timeout || 5000);
-    },
+    showElement() {
+        this.el.classList.remove("hidden");
+        this.panel.classList.add(this.panel.dataset.animate_enter_class);
+            if (this.backdrop) {
+                this.backdrop.classList.add("animate-backdropenter");
+            }
+            },
 };
+
   
+window.addEventListener("moon:close-drawer", (event) => {
+    
+    var detail = event.detail;
+    var drawer_panel_id = detail.drawer_panel_id;
+    var element = document.getElementById(drawer_panel_id);
+    var outsideClick = !element.contains(event.target);
+  
+   if (outsideClick) {
+    console.log("hurraaaa")
+    }
+    
+});
+
+      

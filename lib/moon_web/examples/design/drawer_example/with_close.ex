@@ -28,12 +28,12 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithClose do
   end
 
   def handle_event("open_drawer", _, socket) do
-    Drawer.is_open("with_close_drawer")
+    Drawer.open("with_close_drawer")
     {:noreply, socket}
   end
 
   def handle_event("close_drawer", _, socket) do
-    Drawer.is_closed("with_close_drawer")
+    Drawer.closed("with_close_drawer")
     {:noreply, socket}
   end
 

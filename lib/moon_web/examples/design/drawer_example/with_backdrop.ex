@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
   end
 
   def handle_event("open_drawer", _, socket) do
-    Drawer.is_open("backdrop_drawer")
+    Drawer.open("backdrop_drawer")
     {:noreply, socket}
   end
 

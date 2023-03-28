@@ -22,7 +22,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
   end
 
   def handle_event("open_drawer", _, socket) do
-    Drawer.is_open("default_drawer")
+    Drawer.open("default_drawer")
     {:noreply, socket}
   end
 

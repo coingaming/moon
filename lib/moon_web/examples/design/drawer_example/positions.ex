@@ -50,17 +50,17 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
   end
 
   def handle_event("open_start_drawer", _, socket) do
-    Drawer.is_open("start_drawer")
+    Drawer.open("start_drawer")
     {:noreply, socket}
   end
 
   def handle_event("open_top_drawer", _, socket) do
-    Drawer.is_open("top_drawer")
+    Drawer.open("top_drawer")
     {:noreply, socket}
   end
 
   def handle_event("open_bottom_drawer", _, socket) do
-    Drawer.is_open("bottom_drawer")
+    Drawer.open("bottom_drawer")
     {:noreply, socket}
   end
 
