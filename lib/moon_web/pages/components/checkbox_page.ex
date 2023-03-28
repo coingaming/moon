@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -72,12 +73,13 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Checkbox">
-        <p>
-          Checkboxes are used as a list in our forms and signup pages so users can select options of their choice. Users are free to choose how many options to select, from zero to all of them.
-        </p>
-        <p>
-          As each checkbox is independent, this means that additional checkboxes do not affect any other selections… or planets.
-        </p>
+        <DeprecationWarning
+          name="Checkbox"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.CheckboxPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Checkbox" id="checkbox_1">

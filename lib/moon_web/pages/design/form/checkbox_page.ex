@@ -1,11 +1,11 @@
-defmodule MoonWeb.Pages.Design.Form.InputPage do
+defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.InputExample
+  alias MoonWeb.Examples.Form.CheckboxExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 
@@ -20,8 +20,8 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/form/input",
-        name: "Input"
+        to: "/components/v2/form/checkbox",
+        name: "Checkbox"
       }
     ]
   )
@@ -29,32 +29,20 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        title="Input"
-        is_in_progress
-        is_rtl_support
-        image="facing/components/input.png"
-      >
-        <p>
-          Text input fields allow users to enter text and can be used
-          to collect user feedback or enter information in data entry forms.
-        </p>
-        <p>
-          These types of input fields are used on their own, or in combination
-          with other inputs such as number entry, date picker, etc.
-        </p>
+      <ComponentPageDescription title="Checkbox" is_in_progress image="facing/components/input.png">
+        <p>The checkbox is shown as a square box that is ticked (checked) when activated.</p>
+        <p>Checkboxes are used to let a user select one or more options of a limited number of choices.</p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        InputExample.Default,
-        InputExample.Disabled,
-        InputExample.Sizes,
-        InputExample.Types,
-        InputExample.WithLabel,
-        InputExample.WithHint
+        CheckboxExample.Default,
+        CheckboxExample.WithForm,
+        CheckboxExample.Disabled,
+        CheckboxExample.Readonly,
+        CheckboxExample.Customizations
       ]} />
       <PropsTable
-        title="Input props"
+        title="Checkbox props"
         data={[
           %{
             :name => 'field',
@@ -65,10 +53,10 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
           },
           %{
             :name => 'value',
-            :type => 'any',
+            :type => 'boolean',
             :required => 'No',
             :default => '-',
-            :description => 'Selected value'
+            :description => 'If checkbox is checked'
           },
           %{
             :name => 'id',
@@ -78,33 +66,32 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
             :description => 'Id for the DOM element'
           },
           %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          },
-          %{
-            :name => 'type',
-            :type =>
-              'date | datetime-local | email | number | password | search | tel | text | url | time | url',
-            :required => 'No',
-            :default => 'text',
-            :description => 'Different types of input'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md | lg',
-            :required => '-',
-            :default => 'md',
-            :description => 'Size of input'
-          },
-          %{
             :name => 'class',
             :type => 'css_class',
             :required => 'No',
             :default => '-',
             :description => 'Additional classes for tag'
+          },
+          %{
+            :name => 'selected_class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => 'bg-piccolo',
+            :description => 'Additional classes for tag when selected'
+          },
+          %{
+            :name => 'unselected_class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => 'shadow-truncs',
+            :description => 'Additional classes for tag when unselected'
+          },
+          %{
+            :name => 'testid',
+            :type => 'string',
+            :required => 'No',
+            :default => '-',
+            :description => 'Attr data-testid for the DOM element'
           },
           %{
             :name => 'disabled',

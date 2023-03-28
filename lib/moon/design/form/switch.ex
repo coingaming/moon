@@ -4,6 +4,7 @@ defmodule Moon.Design.Form.Switch do
   use Moon.StatefulComponent
 
   alias Moon.Design.Switch
+  import Moon.Helpers.Form, only: [get_value: 1]
 
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
@@ -28,16 +29,16 @@ defmodule Moon.Design.Form.Switch do
       <Surface.Components.Form.Checkbox
         {=@field}
         {=@form}
+        {=@value}
         class="hidden"
-        opts={disabled: @disabled}
-        value={@value}
+        opts={disabled: @disabled, readonly: @readonly}
       />
       <Switch
         id={"#{@id}-switch"}
         {=@size}
         {=@on_bg_color}
         {=@off_bg_color}
-        {=@disabled}
+        disabled={@disabled || @readonly}
         {=@class}
         {=@testid}
         on_change="toggle_switch"
@@ -53,11 +54,6 @@ defmodule Moon.Design.Form.Switch do
     </div>
     """
   end
-
-  defp get_value(%{value: nil, form: form, field: field}),
-    do: Phoenix.HTML.Form.input_value(form, field)
-
-  defp get_value(%{value: value}), do: value
 
   def handle_event("toggle_switch", _params, socket) do
     {:noreply, assign(socket, value: !get_value(socket.assigns))}

@@ -30,7 +30,6 @@ defmodule Moon.Design.Form.Input do
   prop(class, :css_class)
   prop(value, :string)
   prop(testid, :string)
-  prop(id, :string)
   prop(disabled, :boolean)
   prop(readonly, :boolean)
 
@@ -55,7 +54,6 @@ defmodule Moon.Design.Form.Input do
       {=@type}
       {=@placeholder}
       value={@value || input_value(@form, @field)}
-      {=@id}
       {=@disabled}
       {=@readonly}
       data-testid={@testid}

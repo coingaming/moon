@@ -60,6 +60,13 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
             :description => 'Field name for underlying surface select component'
           },
           %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Additional classes for tag'
+          },
+          %{
             :name => 'options',
             :type => 'list',
             :required => 'No',
