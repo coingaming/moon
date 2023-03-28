@@ -12,16 +12,18 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Customizations do
   prop(is_selected2, :boolean, default: false)
   prop(is_selected3, :boolean, default: false)
 
-  def handle_event("on_click" <> index, params, socket) do
+  def handle_event("on_click" <> index, _params, socket) do
     {:noreply, assign(socket, "is_selected#{index}": !socket.assigns[:"is_selected#{index}"])}
   end
 
   def render(assigns) do
     ~F"""
-    <Checkbox selected_class="bg-krillin" is_selected={@is_selected0} on_click="on_click0" />
-    <Checkbox class="rounded-none" is_selected={@is_selected1} on_click="on_click1" />
-    <Checkbox unselected_class="shadow-krillin" is_selected={@is_selected2} on_click="on_click2" />
-    <Checkbox class="text-krillin-60" is_selected={@is_selected3} on_click="on_click3" />
+    <div class="w-full flex flex-col lg:flex-row">
+      <Checkbox selected_class="bg-krillin" is_selected={@is_selected0} on_click="on_click0" />
+      <Checkbox class="rounded-none" is_selected={@is_selected1} on_click="on_click1" />
+      <Checkbox unselected_class="shadow-krillin" is_selected={@is_selected2} on_click="on_click2" />
+      <Checkbox class="text-krillin-60" is_selected={@is_selected3} on_click="on_click3" />
+    </div>
     """
   end
 

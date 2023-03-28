@@ -9,7 +9,7 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Default do
 
   prop(is_selected, :boolean, default: false)
 
-  def handle_event("on_click", params, socket) do
+  def handle_event("on_click", _params, socket) do
     {:noreply, assign(socket, is_selected: !socket.assigns.is_selected)}
   end
 
