@@ -23,7 +23,7 @@ export default {
         this.panel.classList.remove(...this.panel.dataset.animate_enter_class.split(" "));
         this.panel.classList.add(...this.panel.dataset.animate_leave_class.split(" "));
         if (this.backdrop) {
-            this.backdrop.classList.replace("animate-backdropenter", "animate-backdropleave");
+            this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave");
         };
         setTimeout (() => {
             this.el.classList.add("hidden")
@@ -35,7 +35,7 @@ export default {
         this.el.classList.remove("hidden");
         this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
         if (this.backdrop) {
-            this.backdrop.classList.add("animate-backdropenter");
+            this.backdrop.classList.add("animate-backdrop_enter");
         }
     },
 };

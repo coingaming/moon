@@ -123,21 +123,21 @@ module.exports = {
       },
       animation: {
         loader: "loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite",
-        rightslide: "rightslidein 0.2s ease-in-out",
-        leftslide: "leftslidein 0.2s ease-in-out",
-        topslide: "topslidein 0.2s ease-in-out",
-        bottomslide: "bottomslidein 0.2s ease-in-out",
+        rightslide: "rightslide 0.2s ease-in-out",
+        leftslide: "leftslide 0.2s ease-in-out",
+        topslide: "topslide 0.2s ease-in-out",
+        bottomslide: "bottomslide 0.2s ease-in-out",
         fadeout: "fadeout 0.5s ease-in-out",
-        drawerenterright: "rightslidein 0.3s ease-out",
-        drawerenterleft: "leftslidein 0.3s ease-out",
-        drawerentertop: "topslidein 0.3s ease-out",
-        drawerenterbottom: "bottomslidein 0.3s ease-out",
-        drawerleaveright: "rightslideout 0.2s ease-in",
-        drawerleaveleft: "leftslideout 0.2s ease-in",
-        drawerleavetop: "topslideout 0.2s ease-in",
-        drawerleavebottom: "bottomslideout 0.2s ease-in",
-        backdropenter: "fadein 0.3s ease-out",
-        backdropleave: "fadeout 0.2s ease-in",
+        drawer_enter_right: "rightslide 0.3s ease-out",
+        drawer_enter_left: "leftslide 0.3s ease-out",
+        drawer_enter_top: "topslide 0.3s ease-out",
+        drawer_enter_bottom: "bottomslide 0.3s ease-out",
+        drawer_leave_right: "rightslideout 0.2s ease-in",
+        drawer_leave_left: "leftslideout 0.2s ease-in",
+        drawer_leave_top: "topslideout 0.2s ease-in",
+        drawer_leave_bottom: "bottomslideout 0.2s ease-in",
+        backdrop_enter: "fadein 0.3s ease-out",
+        backdrop_leave: "fadeout 0.2s ease-in",
       },
       keyframes: {
         loader: {
@@ -166,47 +166,47 @@ module.exports = {
           "70%": { transform: "scale(1)", boxShadow: "0 0 0 30px transparent" },
           "100%": { transform: "scale(1)", boxShadow: "0 0 0 0 transparent" },
         },
-        rightslidein: {
+        rightslide: {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0%)"}
         },
-        leftslidein: {
+        leftslide: {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0%)"}
         },
-        topslidein: {
+        topslide: {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(0%)"}
         },
-        bottomslidein: {
+        bottomslide: {
           "0%": { transform: "translateY(100%)" },
           "100%": { transform: "translateY(0%)"}
         },
         rightslideout: {
           "0%": {transform: "translateX(0%)",},
           "100%": { transform: "translateX(100%)" }
-         },
-         leftslideout: {
-          "0%": {transform: "translateX(0%)",},
-          "100%": { transform: "translateX(-100%)" }
-         },
-         topslideout: {
-          "0%": {transform: "translateY(0%)",},
-          "100%": { transform: "translateY(-100%)" }
-         },
-         bottomslideout: {
-          "0%": {transform: "translateY(0%)",},
-          "100%": { transform: "translateY(100%)" }
-         },
+        },
+        leftslideout: {
+        "0%": {transform: "translateX(0%)",},
+        "100%": { transform: "translateX(-100%)" }
+        },
+        topslideout: {
+        "0%": {transform: "translateY(0%)",},
+        "100%": { transform: "translateY(-100%)" }
+        },
+        bottomslideout: {
+        "0%": {transform: "translateY(0%)",},
+        "100%": { transform: "translateY(100%)" }
+        },
         fadein: {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 }
-         },
+        },
         fadeout: {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 }
-         },
         },
+      },
       fontWeight: {
         normal: 400,
         semibold: 500,

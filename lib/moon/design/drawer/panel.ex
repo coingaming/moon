@@ -49,19 +49,19 @@ defmodule Moon.Design.Drawer.Panel do
 
   defp animate_enter_class(position) do
     case position do
-      "top" -> "animate-drawerentertop"
-      "bottom" -> "animate-drawerenterbottom"
-      "start" -> "ltr:animate-drawerenterleft rtl:animate-drawerenterright"
-      "end" -> "ltr:animate-drawerenterright rtl:animate-drawerenterleft"
+      "top" -> "animate-drawer_enter_top"
+      "bottom" -> "animate-drawer_enter_bottom"
+      "start" -> "ltr:animate-drawer_enter_left rtl:animate-drawer_enter_right"
+      "end" -> "ltr:animate-drawer_enter_right rtl:animate-drawer_enter_left"
     end
   end
 
   defp animate_leave_class(position) do
     case position do
-      "top" -> "animate-drawerleavetop"
-      "bottom" -> "animate-drawerleavebottom"
-      "start" -> "ltr:animate-drawerleaveleft rtl:animate-drawerleaveright"
-      "end" -> "ltr:animate-drawerleaveright rtl:animate-drawerleaveleft"
+      "top" -> "animate-drawer_leave_top"
+      "bottom" -> "animate-drawer_leave_bottom"
+      "start" -> "ltr:animate-drawer_leave_left rtl:animate-drawer_leave_right"
+      "end" -> "ltr:animate-drawer_leave_right rtl:animate-drawer_leave_left"
     end
   end
 end
