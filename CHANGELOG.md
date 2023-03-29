@@ -1,3 +1,10 @@
+## [2.38.14](https://github.com/coingaming/moon/compare/v2.38.13...v2.38.14) (2023-03-29)
+
+
+### Bug Fixes
+
+* [MDS-434] Drawer v2 ([#566](https://github.com/coingaming/moon/issues/566)) ([b59b15f](https://github.com/coingaming/moon/commit/b59b15f45f2dd8e360e0f64a7f752d240918d9f0))
+
 ## [2.38.13](https://github.com/coingaming/moon/compare/v2.38.12...v2.38.13) (2023-03-28)
 
 
