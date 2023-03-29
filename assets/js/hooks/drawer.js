@@ -1,5 +1,3 @@
-const isVisible = (el) => !el.classList.contains("hidden") 
-
 export default {
 
     mounted() {
@@ -9,13 +7,16 @@ export default {
         } else {
             this.panel = this.el.children[0];
         }
+        this.showElementIfNeeded();
     },
 
     updated() {
-        (this.el.dataset.is_open === undefined) || isVisible(this.el) || this.showElement();
-        if (this.el.dataset.is_closing === "true") {
-            this.hideElement()
-        }
+        this.showElementIfNeeded();
+        (this.el.dataset.is_closing === "true") && this.hideElement()
+    },
+
+    showElementIfNeeded() {
+        (this.el.dataset.is_open === undefined) || !this.el.classList.contains("hidden")  || this.showElement();
     },
 
     hideElement() {
