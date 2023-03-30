@@ -48,7 +48,15 @@ defmodule Moon.MixProject do
     [
       organization: "coingaming",
       licenses: ["UNLICENSED"],
-      files: ["lib", "assets", "priv/static/{assets,css,themes}", "mix.exs", "README.md", "CHANGELOG.md", "VERSION"],
+      files: [
+        "lib",
+        "assets",
+        "priv/static/{assets,css,themes}",
+        "mix.exs",
+        "README.md",
+        "CHANGELOG.md",
+        "VERSION"
+      ],
       links: %{
         "GitHub" => "https://github.com/coingaming/moon/tree/v#{@version}"
       }
