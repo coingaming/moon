@@ -187,16 +187,16 @@ module.exports = {
           "100%": { transform: "translateX(100%)" }
         },
         leftslideout: {
-        "0%": {transform: "translateX(0%)",},
-        "100%": { transform: "translateX(-100%)" }
+          "0%": {transform: "translateX(0%)",},
+          "100%": { transform: "translateX(-100%)" }
         },
         topslideout: {
-        "0%": {transform: "translateY(0%)",},
-        "100%": { transform: "translateY(-100%)" }
+          "0%": {transform: "translateY(0%)",},
+          "100%": { transform: "translateY(-100%)" }
         },
         bottomslideout: {
-        "0%": {transform: "translateY(0%)",},
-        "100%": { transform: "translateY(100%)" }
+          "0%": {transform: "translateY(0%)",},
+          "100%": { transform: "translateY(100%)" }
         },
         fadein: {
           "0%": { opacity: 0 },
