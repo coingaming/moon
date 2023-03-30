@@ -1,3 +1,10 @@
+## [2.38.15](https://github.com/coingaming/moon/compare/v2.38.14...v2.38.15) (2023-03-30)
+
+
+### Bug Fixes
+
+* skip embedding images ([d422c77](https://github.com/coingaming/moon/commit/d422c77a8d78d544ffcba6d6d9b828d9d3a4568a))
+
 ## [2.38.14](https://github.com/coingaming/moon/compare/v2.38.13...v2.38.14) (2023-03-29)
 
 
