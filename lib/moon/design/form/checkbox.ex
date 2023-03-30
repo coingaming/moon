@@ -17,7 +17,7 @@ defmodule Moon.Design.Form.Checkbox do
   prop(class, :string)
   prop(on_click, :event)
   prop(selected_class, :css_class, default: "bg-piccolo")
-  prop(unselected_class, :css_class, default: "shadow-truncs")
+  prop(unselected_class, :css_class, default: "shadow-trunks")
 
   def render(assigns) do
     ~F"""

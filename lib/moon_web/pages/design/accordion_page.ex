@@ -41,6 +41,7 @@ defmodule MoonWeb.Pages.Design.AccordionPage do
       <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
+        MoonWeb.Examples.FormExample.Registration,
         AccordionExample.Default,
         AccordionExample.OpenByDefault,
         AccordionExample.SingleOpen,

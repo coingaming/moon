@@ -10,6 +10,7 @@ defmodule Moon.Design.Form.Field do
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(label, :string)
   prop(hint, :string)
+  prop(has_no_error, :boolean)
 
   slot(default)
 
@@ -19,6 +20,7 @@ defmodule Moon.Design.Form.Field do
       <Field.Label :if={@label} {=@field} for={@field} {=@size} title={@label} />
       <#slot context_put={size: @size} />
       <Field.Hint :if={@hint} title={@hint} />
+      <Field.Error :if={!@has_no_error}/>
     </Surface.Components.Form.Field>
     """
   end
