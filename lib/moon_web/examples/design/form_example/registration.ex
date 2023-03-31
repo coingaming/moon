@@ -17,8 +17,6 @@ defmodule MoonWeb.Examples.FormExample.Registration do
 
   alias MoonWeb.Components.Anatomy
 
-
-
   prop(user_changeset, :any,
     default:
       User.changeset(%User{
@@ -60,7 +58,7 @@ defmodule MoonWeb.Examples.FormExample.Registration do
           Marketing emails
         </Label>
       </Field>
-      <Anatomy  title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
+      <Anatomy title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
   end
@@ -74,7 +72,6 @@ defmodule MoonWeb.Examples.FormExample.Registration do
     user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
-
 
   def code() do
     """

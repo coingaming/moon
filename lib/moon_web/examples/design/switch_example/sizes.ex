@@ -1,16 +1,29 @@
 defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
   use MoonWeb, :example
 
   alias Moon.Design.Switch
 
+  data(checked, :boolean, default: false)
+  data(checked1, :boolean, default: true)
+
+  def handle_event("toggle_switch", _params, socket) do
+    {:noreply, assign(socket, checked: !socket.assigns.checked)}
+  end
+
+  def handle_event("toggle_switch1", _params, socket) do
+    {:noreply, assign(socket, checked1: !socket.assigns.checked1)}
+  end
+
   def render(assigns) do
     ~F"""
-    <Switch size="2xs" id="switch_8" />
-    <Switch checked size="xs" id="switch_9" />
-    <Switch id="switch_10" />
+    <div class="w-full flex items-center justify-around">
+      <Switch size="2xs" {=@checked} on_change="toggle_switch" />
+      <Switch size="xs" checked={@checked1} on_change="toggle_switch1" />
+      <Switch {=@checked} on_change="toggle_switch" />
+    </div>
     """
   end
 
@@ -18,11 +31,21 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
     """
     alias Moon.Design.Switch
 
-    ...
+    data(checked, :boolean, default: false)
 
-    <Switch size="2xs" id="switch_8" />
-    <Switch checked size="xs" id="switch_9" />
-    <Switch id="switch_10" />
+    def handle_event("toggle_switch", _params, socket) do
+      {:noreply, assign(socket, checked: !socket.assigns.checked)}
+    end
+
+    def render(assigns) do
+      ~F\"""
+      <div class="w-full flex items-center justify-around">
+        <Switch size="2xs" {=@checked} on_change="toggle_switch"  />
+        <Switch size="xs" checked={@checked1} on_change="toggle_switch1"  />
+        <Switch {=@checked} on_change="toggle_switch"  />
+      </div>
+      \"""
+    end
     """
   end
 end

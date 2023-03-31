@@ -4,11 +4,10 @@ defmodule Moon.Design.Form.Checkbox do
   use Moon.StatelessComponent
 
   alias Moon.Lego.Checkbox
-  import Moon.Helpers.Form, only: [get_value: 1]
+  import Moon.Helpers.Form, only: [value_is_true: 2]
 
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-  prop(value, :boolean)
 
   prop(disabled, :boolean)
   prop(readonly, :boolean)
@@ -25,7 +24,6 @@ defmodule Moon.Design.Form.Checkbox do
       <Surface.Components.Form.Checkbox
         {=@field}
         {=@form}
-        {=@value}
         click={!@readonly && @on_click}
         class={
           "z-10 absolute left-0 opacity-0 cursor-pointer",
@@ -34,7 +32,7 @@ defmodule Moon.Design.Form.Checkbox do
         opts={disabled: @disabled, readonly: @readonly, "data-testid": @testid}
       />
       <Checkbox
-        is_selected={get_value(assigns)}
+        is_selected={value_is_true(@form, @field)}
         {=@class}
         {=@testid}
         {=@selected_class}

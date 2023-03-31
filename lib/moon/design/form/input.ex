@@ -3,7 +3,7 @@ defmodule Moon.Design.Form.Input do
 
   use Moon.StatelessComponent
 
-  import Phoenix.HTML.Form, only: [input_value: 2]
+  import Phoenix.HTML.Form
 
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   data(form, :form, from_context: {Surface.Components.Form, :form})
@@ -54,6 +54,8 @@ defmodule Moon.Design.Form.Input do
       {=@type}
       {=@placeholder}
       value={@value || input_value(@form, @field)}
+      id={input_id(@form, @field)}
+      name={input_name(@form, @field)}
       {=@disabled}
       {=@readonly}
       data-testid={@testid}

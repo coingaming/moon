@@ -11,6 +11,32 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
 
   alias MoonWeb.Examples.Design.SwitchExample
 
+  # TODO: move to example as soon as context will be propagated through moon helper
+  alias MoonWeb.Components.ExampleAndCode
+  alias Moon.Design.Switch
+
+  def handle_event("toggle_dark", _params, socket) do
+    is_dark = !String.contains?(socket.assigns.theme_name, "-dark")
+    theme = String.replace(socket.assigns.theme_name, ["-light", "-dark"], "")
+    {:noreply, assign(socket, theme_name: "#{theme}-#{(is_dark && "dark") || "light"}")}
+  end
+
+  defp dark_switch_code() do
+    """
+    alias Moon.Design.Switch
+
+    def handle_event("toggle_dark", _params, socket) do
+      is_dark = !String.contains?(socket.assigns.theme_name, "-dark")
+      theme = String.replace(socket.assigns.theme_name, ["-light", "-dark"], "")
+      {:noreply, assign(socket, theme_name: "\#{theme}-\#{is_dark && "dark" || "light"}")}
+    end
+
+    ...
+
+    <Switch checked={String.contains?(@theme_name, "-dark")} on_change="toggle_dark" />
+    """
+  end
+
   data(breadcrumbs, :any,
     default: [
       %{
@@ -44,6 +70,7 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
+        # MoonWeb.Examples.FormExample.Registration,
         SwitchExample.Default,
         SwitchExample.Sizes,
         SwitchExample.Disabled,
@@ -52,6 +79,14 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
         SwitchExample.UsingWithForms,
         SwitchExample.CodeExampleForFullCustomization
       ]} />
+
+      <ExampleAndCode title="On change" id="dark_switch">
+        <:example>
+          <Switch checked={String.contains?(@theme_name, "-dark")} on_change="toggle_dark" />
+        </:example>
+        <:code>{dark_switch_code()}</:code>
+        <:state>@is_dark = {String.contains?(@theme_name, "-dark")} # example works only in our site's context</:state>
+      </ExampleAndCode>
 
       <PropsTable
         title="Switch props"
@@ -111,13 +146,6 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
             :required => 'No',
             :default => '-',
             :description => 'The function to call when the switch is toggled'
-          },
-          %{
-            :name => 'value',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'The value used when using this component inside a form, if it is checked'
           },
           %{
             :name => 'class',
