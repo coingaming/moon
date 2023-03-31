@@ -29,6 +29,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
         is_in_progress
+        is_aria_support
         is_rtl_support
         title="Modal"
         image="facing/components/modal.png"
@@ -51,20 +52,6 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         title="Modal props"
         data={[
           %{
-            :name => 'backdrop',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Backdrop of Modal element, see Modal.Backdrop'
-          },
-          %{
-            :name => 'panel',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content of Modal element, see Modal.Panel'
-          },
-          %{
             :name => 'is_open',
             :type => 'boolean',
             :required => 'No',
@@ -77,6 +64,20 @@ defmodule MoonWeb.Pages.Design.ModalPage do
             :required => 'No',
             :default => '-',
             :description => 'Handler for open/close of the element'
+          },
+          %{
+            :name => 'backdrop',
+            :type => 'slot',
+            :required => 'Yes',
+            :default => '-',
+            :description => 'Backdrop of Modal element, see Modal.Backdrop'
+          },
+          %{
+            :name => 'panel',
+            :type => 'slot',
+            :required => 'Yes',
+            :default => '-',
+            :description => 'Content of Modal element, see Modal.Panel'
           }
         ]}
       />
@@ -85,59 +86,11 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         title="Modal.Panel"
         data={[
           %{
-            :name => 'header',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Header of Modal element, see Modal.Header'
-          },
-          %{
             :name => 'default',
             :type => 'slot',
             :required => 'No',
             :default => '-',
             :description => 'Content of Modal element'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Tailwind classes for customization of Panel'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Modal.Header"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Holds title of Modal.Header'
-          },
-          %{
-            :name => 'title',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title of Modal.Header'
-          },
-          %{
-            :name => 'has_divider',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the Modal header has divider'
-          },
-          %{
-            :name => 'has_close',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the Modal header has "close" icon'
           },
           %{
             :name => 'class',
@@ -169,9 +122,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
     """
     <Modal>
       <Modal.Backdrop />
-      <Modal.Panel>
-        <Modal.Header>...</Modal.Header>
-      </Modal.Panel>
+      <Modal.Panel />
     </Modal>
     """
   end

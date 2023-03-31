@@ -4,7 +4,6 @@ defmodule Moon.Design.Drawer do
   use Moon.StatefulComponent
 
   data(is_open, :boolean, default: false)
-
   data(is_closing, :boolean, default: false)
 
   slot(panel, required: true)

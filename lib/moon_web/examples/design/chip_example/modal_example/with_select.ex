@@ -5,13 +5,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
 
   use MoonWeb, :example
 
+  alias Moon.Icons.ControlsCloseSmall
   alias Moon.Design.Modal
   alias Moon.Design.Button
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
-
-  data(modal_is_open, :boolean, default: false)
 
   prop(size_options, :list,
     default: [
@@ -44,10 +43,16 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
     ~F"""
     <div>
       <Button on_click="open_modal">Open dialog</Button>
-      <Modal is_open={@modal_is_open} on_close="close_modal">
+      <Modal id="with_select_modal">
         <Modal.Backdrop />
         <Modal.Panel>
-          <Modal.Header has_divider has_close>Modal title</Modal.Header>
+          <div class="border-b-[0.063rem] border-beerus pt-5 pb-4 px-6 relative">
+            <h3 class="text-moon-18 text-bulma font-medium">Modal title</h3>
+            <span class="absolute top-5 right-5 cursor-pointer">
+              <ControlsCloseSmall class="text-moon-24" click="close_modal" />
+            </span>
+          </div>
+
           <div class="px-6 py-4 flex flex-col gap-3">
             <Form for={@user_changeset}>
               <Select field={:size} options={@size_options} prompt="Please select size" class="w-full" />
@@ -74,25 +79,24 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
     """
   end
 
-  def handle_event("open_modal", _params, socket) do
-    socket = assign(socket, modal_is_open: true)
+  def handle_event("open_modal", _, socket) do
+    Modal.open("with_select_modal")
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _params, socket) do
-    socket = assign(socket, modal_is_open: false)
+  def handle_event("close_modal", _, socket) do
+    Modal.close("with_select_modal")
     {:noreply, socket}
   end
 
   def code() do
     """
+    alias Moon.Icons.ControlsCloseSmall
     alias Moon.Design.Modal
     alias Moon.Design.Button
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
     alias Moon.Design.Form
     alias Moon.Design.Form.Select
-
-    data(modal_is_open, :boolean, default: false)
 
     prop(size_options, :list,
       default: [
@@ -121,47 +125,53 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
 
-    ...
+    def render(assigns) do
+      ~F\"""
+      <div>
+        <Button on_click="open_modal">Open dialog</Button>
+        <Modal id="with_select_modal">
+          <Modal.Backdrop />
+          <Modal.Panel>
+            <div class="border-b-[0.063rem] border-beerus pt-5 pb-4 px-6 relative">
+              <h3 class="text-moon-18 text-bulma font-medium">Modal title</h3>
+              <span class="absolute top-5 right-5 cursor-pointer" >
+                <ControlsCloseSmall class="text-moon-24" click="close_modal"/>
+              </span>
+            </div>
 
-    <div>
-      <Button on_click="open_modal">Open dialog</Button>
-      <Modal is_open={@modal_is_open} on_close="close_modal">
-        <Modal.Backdrop />
-        <Modal.Panel>
-          <Modal.Header has_divider has_close>Modal title</Modal.Header>
-          <div class="px-6 py-4 flex flex-col gap-3">
-            <Form for={@user_changeset}>
-              <Select field={:size} options={@size_options} prompt="Please select size" class="w-full" />
-            </Form>
-            <Form for={@user_changeset}>
-              <Select field={:color} options={@color_options} prompt="Please select color" class="w-full" />
-            </Form>
-            <Form for={@user_changeset}>
-              <Select
-                field={:material}
-                options={@material_options}
-                prompt="Please select material"
-                class="w-full"
-              />
-            </Form>
-          </div>
-          <div class="flex gap-2 p-4 justify-end pt-2">
-            <Button variant="secondary" on_click="close_modal">Cancel</Button>
-            <Button on_click="close_modal">Create</Button>
-          </div>
-        </Modal.Panel>
-      </Modal>
-    </div>
+            <div class="px-6 py-4 flex flex-col gap-3">
+              <Form for={@user_changeset}>
+                <Select field={:size} options={@size_options} prompt="Please select size" class="w-full" />
+              </Form>
+              <Form for={@user_changeset}>
+                <Select field={:color} options={@color_options} prompt="Please select color" class="w-full" />
+              </Form>
+              <Form for={@user_changeset}>
+                <Select
+                  field={:material}
+                  options={@material_options}
+                  prompt="Please select material"
+                  class="w-full"
+                />
+              </Form>
+            </div>
+            <div class="flex gap-2 p-4 justify-end pt-2">
+              <Button variant="secondary" on_click="close_modal">Cancel</Button>
+              <Button on_click="close_modal">Create</Button>
+            </div>
+          </Modal.Panel>
+        </Modal>
+      </div>
+      \"""
+    end
 
-    ...
-
-    def handle_event("open_modal", _params, socket) do
-      socket = assign(socket, modal_is_open: true)
+    def handle_event("open_modal", _, socket) do
+      Modal.open("with_select_modal")
       {:noreply, socket}
     end
 
-    def handle_event("close_modal", _params, socket) do
-      socket = assign(socket, modal_is_open: false)
+    def handle_event("close_modal", _, socket) do
+      Modal.close("with_select_modal")
       {:noreply, socket}
     end
     """
