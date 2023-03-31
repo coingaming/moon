@@ -42,9 +42,7 @@ defmodule Moon.Design.MenuItem do
       }
       on_click={@on_click}
       values={is_selected: !@is_selected}
-      attrs={
-        "data-testid": @testid
-      }
+      testid={@testid}
     >
       <#slot context_put={is_selected: @is_selected}>
         <Lego.Title {=@title} :if={@title && !@text} />
