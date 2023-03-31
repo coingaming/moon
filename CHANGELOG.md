@@ -1,3 +1,10 @@
+# [2.39.0](https://github.com/coingaming/moon/compare/v2.38.15...v2.39.0) (2023-03-31)
+
+
+### Features
+
+* Remove testid from AsComponent since it's passed in args ([#593](https://github.com/coingaming/moon/issues/593)) ([983f4fb](https://github.com/coingaming/moon/commit/983f4fbeef6d8a75612f76f5d501410810e2b073))
+
 ## [2.38.15](https://github.com/coingaming/moon/compare/v2.38.14...v2.38.15) (2023-03-30)
 
 
