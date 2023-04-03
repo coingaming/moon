@@ -2,11 +2,13 @@ defmodule Moon.Design.Modal do
   @moduledoc false
   use Moon.StatefulComponent
 
-  data(is_open, :boolean, default: false)
+  prop(is_open, :boolean, default: false)
   data(is_closing, :boolean, default: false)
 
   slot(backdrop, required: true)
   slot(panel, required: true)
+
+  prop(on_close, :event)
 
   prop(testid, :string)
 
@@ -26,7 +28,7 @@ defmodule Moon.Design.Modal do
         <#slot
           {@panel}
           context_put={
-            on_close: %{name: "start_closing_modal", target: @myself}
+            on_close: @on_close || %{name: "start_closing_modal", target: @myself}
           }
         />
       </div>
