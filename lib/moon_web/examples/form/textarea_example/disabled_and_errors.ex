@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.TextareaExample.Disabled do
+defmodule MoonWeb.Examples.Form.TextareaExample.DisabledAndErrorr do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -10,6 +10,7 @@ defmodule MoonWeb.Examples.Form.TextareaExample.Disabled do
   def render(assigns) do
     ~F"""
     <Textarea disabled placeholder="Disabled" />
+    <Textarea error placeholder="Error" />
     """
   end
 
@@ -20,6 +21,7 @@ defmodule MoonWeb.Examples.Form.TextareaExample.Disabled do
     ...
 
     <Textarea disabled placeholder="Disabled" />
+    <Textarea error placeholder="Error" />
     """
   end
 end

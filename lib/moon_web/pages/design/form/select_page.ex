@@ -45,7 +45,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.Default,
         SelectExample.Sizes,
         SelectExample.WithLabel,
-        SelectExample.Disabled,
+        SelectExample.DisabledAndError,
         SelectExample.WithHint
       ]} />
 

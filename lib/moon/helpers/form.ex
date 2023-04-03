@@ -1,6 +1,8 @@
 defmodule Moon.Helpers.Form do
   @moduledoc false
 
+  import Phoenix.HTML.Form, only: [input_value: 2]
+
   @doc "function for transformin struct|changeset|apply-result => changeset if possible"
   def transfor({:ok, data}), do: transfor(data)
   def transfor({:error, changeset}), do: transfor(changeset)
@@ -20,4 +22,10 @@ defmodule Moon.Helpers.Form do
     do: Phoenix.HTML.Form.input_value(form, field)
 
   def get_value(%{value: value}), do: value
+
+  def value_is_true(form, field), do: "#{input_value(form, field)}" == "true"
+
+  def has_error(form, field) do
+    Enum.count(Keyword.get_values(form.errors || [], field)) > 0
+  end
 end

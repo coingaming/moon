@@ -1,21 +1,22 @@
 defmodule Moon.Design.Switch do
   @moduledoc false
 
-  use Moon.StatefulComponent
+  use Moon.StatelessComponent
 
   prop(checked, :boolean, default: false)
   prop(disabled, :boolean, default: false)
   prop(size, :string, values: ["2xs", "xs", "sm"], default: "sm")
   prop(on_bg_color, :css_class, default: "bg-piccolo")
   prop(off_bg_color, :css_class, default: "bg-beerus")
-  prop(class, :css_class)
   prop(switcher_class, :css_class)
   prop(on_change, :event)
 
   slot(off_icon)
   slot(on_icon)
 
+  prop(id, :string)
   prop(testid, :string)
+  prop(class, :css_class)
 
   @spec render(map) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
@@ -23,7 +24,7 @@ defmodule Moon.Design.Switch do
     <button
       {=@id}
       type="button"
-      aria-pressed="false"
+      aria-pressed={"#{@checked}"}
       disabled={@disabled}
       class={merge([
         [
@@ -91,9 +92,5 @@ defmodule Moon.Design.Switch do
       "xs" -> "text-moon-16 "
       "sm" -> "text-moon-24 "
     end
-  end
-
-  def handle_event("toggle_switch", _params, socket) do
-    {:noreply, assign(socket, checked: !socket.assigns.checked)}
   end
 end

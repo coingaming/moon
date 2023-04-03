@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.InputExample.Disabled do
+defmodule MoonWeb.Examples.Form.InputExample.States do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -12,6 +12,7 @@ defmodule MoonWeb.Examples.Form.InputExample.Disabled do
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
       <Input disabled placeholder="Disabled input" />
       <Input readonly placeholder="Read-only input" />
+      <Input error placeholder="Invalid input" />
     </div>
     """
   end
@@ -25,6 +26,7 @@ defmodule MoonWeb.Examples.Form.InputExample.Disabled do
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
       <Input disabled placeholder="Disabled input" />
       <Input readonly placeholder="Read-only input" />
+      <Input error placeholder="Invalid input" />
     </div>
     """
   end

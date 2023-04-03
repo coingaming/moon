@@ -1,17 +1,22 @@
-defmodule MoonWeb.Examples.Design.Form.Simple do
+defmodule MoonWeb.Examples.Design.FormExample.Registration do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatefulComponent
 
   use MoonWeb, :example
 
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
+  alias Moon.Design.Form.Field.Label
   alias Moon.Design.Form.Select
   alias Moon.Design.Form.Input
   alias Moon.Design.Form.Textarea
   alias Moon.Design.Form.Field
   alias Moon.Design.Form.Switch
+  alias Moon.Design.Form.Checkbox
+  alias Moon.Design.Button
+
+  alias MoonWeb.Components.Anatomy
 
   prop(user_changeset, :any,
     default:
@@ -35,7 +40,7 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset}>
+    <Form for={@user_changeset} change="change" submit="submit">
       <Field label="Label for select" hint="Hint for Select" field={:gender}>
         <Select options={@gender_options} />
       </Field>
@@ -45,14 +50,32 @@ defmodule MoonWeb.Examples.Design.Form.Simple do
       <Field label="Label for Textarea" hint="Hint for Textarea" field={:email}>
         <Textarea />
       </Field>
-      <Field label="I agree terma of service" field={:agrees_to_terms_of_service}>
-        <Switch id="test-form-switch" />
+      <Field field={:agrees_to_terms_of_service}>
+        <Label size="sm">
+          <Switch />
+          I agree terms of service
+        </Label>
       </Field>
-      <Field label="Marketing emails" field={:agrees_to_marketing_emails}>
-        <Surface.Components.Form.Checkbox />
+      <Field field={:agrees_to_marketing_emails}>
+        <Label size="sm">
+          <Checkbox />
+          Marketing emails
+        </Label>
       </Field>
+      <Button type="submit">Submit</Button>
+      <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
+  end
+
+  def handle_event("change", %{"user" => params}, socket) do
+    user_changeset = User.changeset(%User{}, params)
+    {:noreply, assign(socket, user_changeset: user_changeset)}
+  end
+
+  def handle_event("submit", _, socket) do
+    user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
+    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def code() do

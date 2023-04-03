@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.Disabled do
+defmodule MoonWeb.Examples.Form.SelectExample.DisabledAndError do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -23,7 +23,10 @@ defmodule MoonWeb.Examples.Form.SelectExample.Disabled do
   def render(assigns) do
     ~F"""
     <Form for={@user_changeset}>
-      <Select disabled field={:gender} options={@gender_options} prompt="Please select gender" />
+      <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+        <Select disabled field={:gender} options={@gender_options} prompt="Please select gender" />
+        <Select error field={:gender} options={@gender_options} prompt="Please select gender" />
+      </div>
     </Form>
     """
   end
@@ -49,6 +52,7 @@ defmodule MoonWeb.Examples.Form.SelectExample.Disabled do
       ~F\"""
       <Form for={@user_changeset}>
         <Select disabled field={:gender} options={@gender_options} prompt="Please select gender" />
+        <Select error field={:gender} options={@gender_options} prompt="Please select gender" />
       </Form>
       \"""
     end

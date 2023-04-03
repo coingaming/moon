@@ -38,7 +38,7 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
 
       <ExamplesList examples={[
         TextareaExample.Default,
-        TextareaExample.Disabled,
+        TextareaExample.DisabledAndErrorr,
         TextareaExample.Colours
       ]} />
 

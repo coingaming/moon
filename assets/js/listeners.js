@@ -54,4 +54,10 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
     if (!event.target.element && element.classList.contains("flex")) {
       element.classList.remove("flex");
       element.classList.add("hidden");}
-  });
+});
+
+window.addEventListener("moon2:update-switch", (event) => {
+  let checkbox = event.target;
+  checkbox.checked = event.detail.checked;
+  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
+});

@@ -12,7 +12,7 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   prop(theme_name, :string, from_context: :theme_name)
   prop(direction, :string, values: ["ltr", "rtl"], from_context: :direction)
-  prop(active_page, :any, from_context: :direction)
+  prop(active_page, :any, from_context: :active_page)
 
   data(is_rtl, :boolean)
   data(is_dark, :boolean)
@@ -40,14 +40,14 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
           <MenuItem as="a" class="cursor-default">
             {(@is_dark && "Dark mode") || "Light mode"}
-            <Switch size="xs" id="dark_mode_switcher" checked={@is_dark} on_change="toggle_dark_mode">
+            <Switch size="xs" checked={@is_dark} on_change="toggle_dark_mode">
               <:on_icon><OtherMoon /></:on_icon>
               <:off_icon><OtherSun /></:off_icon>
             </Switch>
           </MenuItem>
           <MenuItem as="a" class="cursor-default">
             {(@is_rtl && "RTL mode") || "LTR mode"}
-            <Switch size="xs" id="direction_switcher" checked={@is_rtl} on_change="toggle_direction">
+            <Switch size="xs" checked={@is_rtl} on_change="toggle_direction">
               <:on_icon><TextRightAlign /></:on_icon>
               <:off_icon><TextLeftAlign /></:off_icon>
             </Switch>
@@ -68,12 +68,12 @@ defmodule MoonWeb.Components.ThemesSelect do
     {:noreply, redirect(socket, to: generate_path(socket.assigns))}
   end
 
-  defp generate_path(%{
-         active_page: active_page,
-         theme: theme,
-         is_rtl: is_rtl,
-         is_dark: is_dark
-       }) do
+  def generate_path(%{
+        active_page: active_page,
+        theme: theme,
+        is_rtl: is_rtl,
+        is_dark: is_dark
+      }) do
     theme_name = "#{theme}-#{if is_dark, do: "dark", else: "light"}"
     direction = if is_rtl, do: "rtl", else: "ltr"
     Routes.live_path(MoonWeb.Endpoint, active_page, theme_name, direction, %{})

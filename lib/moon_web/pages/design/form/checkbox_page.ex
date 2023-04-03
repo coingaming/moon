@@ -52,13 +52,6 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
             :description => 'Field name for underlying surface select component'
           },
           %{
-            :name => 'value',
-            :type => 'boolean',
-            :required => 'No',
-            :default => '-',
-            :description => 'If checkbox is checked'
-          },
-          %{
             :name => 'id',
             :type => 'string',
             :required => 'No',
