@@ -1,3 +1,10 @@
+## [2.39.1](https://github.com/coingaming/moon/compare/v2.39.0...v2.39.1) (2023-04-03)
+
+
+### Bug Fixes
+
+* [MDS-413] Fixed Modal v2, added animations ([#594](https://github.com/coingaming/moon/issues/594)) ([2f584ec](https://github.com/coingaming/moon/commit/2f584ec6afc756b2f3bfdbcb819a1a2816c6ec5f))
+
 # [2.39.0](https://github.com/coingaming/moon/compare/v2.38.15...v2.39.0) (2023-03-31)
 
 
