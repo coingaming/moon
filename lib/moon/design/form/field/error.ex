@@ -5,7 +5,7 @@ defmodule Moon.Design.Form.Field.Error do
 
   def render(assigns) do
     ~F"""
-    <div class="text-chichi">
+    <div class="text-chichi ps-4" role="alert">
       <Surface.Components.Form.ErrorTag />
     </div>
     """

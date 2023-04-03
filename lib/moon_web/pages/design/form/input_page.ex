@@ -46,8 +46,9 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
+        # MoonWeb.Examples.Design.FormExample.Registration,
         InputExample.Default,
-        InputExample.Disabled,
+        InputExample.States,
         InputExample.Sizes,
         InputExample.Types,
         InputExample.WithLabel,

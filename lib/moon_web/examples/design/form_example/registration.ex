@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.FormExample.Registration do
+defmodule MoonWeb.Examples.Design.FormExample.Registration do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -14,6 +14,7 @@ defmodule MoonWeb.Examples.FormExample.Registration do
   alias Moon.Design.Form.Field
   alias Moon.Design.Form.Switch
   alias Moon.Design.Form.Checkbox
+  alias Moon.Design.Button
 
   alias MoonWeb.Components.Anatomy
 
@@ -49,16 +50,20 @@ defmodule MoonWeb.Examples.FormExample.Registration do
       <Field label="Label for Textarea" hint="Hint for Textarea" field={:email}>
         <Textarea />
       </Field>
-      <Field label="I agree terma of service" field={:agrees_to_terms_of_service}>
-        <Switch id="test-form-switch" />
+      <Field field={:agrees_to_terms_of_service}>
+        <Label size="sm">
+          <Switch />
+          I agree terms of service
+        </Label>
       </Field>
       <Field field={:agrees_to_marketing_emails}>
-        <Label size="sm" class="relative">
+        <Label size="sm">
           <Checkbox />
           Marketing emails
         </Label>
       </Field>
-      <Anatomy title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
+      <Button type="submit">Submit</Button>
+      <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
   end

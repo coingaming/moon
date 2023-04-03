@@ -7,6 +7,8 @@ function withOpacityValue(rgbColor, opacityValue) {
   return `rgb(var(${rgbColor}) / ${opacityValue})`;
 }
 
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   theme: {
     extend: {
@@ -400,4 +402,31 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {},
+  },
+  plugins: [
+    plugin(function ({ addVariant }) {
+      for (let state of ['checked', 'selected', 'active', 'disabled']) {
+        addVariant(`moon-${state}`, [
+          `&[aria-${state}="true"]`,
+          `:where([aria-${state}="true"]) &`,
+        ]);
+        addVariant(`moon-not-${state}`, [
+          `&[aria-${state}="false"]`,
+          `:where([aria-${state}="false"]) &`,
+        ]);
+      }
+      addVariant(`moon-open`, [
+        `&[aria-open="true"]`,
+        `:where([aria-open="true"]) &`,
+        `&[data-state="open"]`,
+        `:where([data-state="open"]) &`,
+      ]);
+      addVariant(`moon-error`, [
+        `&[error]`,
+        `:where([error]) &`,
+      ]);
+    }),
+  ],  
 };
