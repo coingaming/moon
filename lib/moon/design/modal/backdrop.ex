@@ -5,9 +5,16 @@ defmodule Moon.Design.Modal.Backdrop do
 
   prop(class, :css_class)
 
+  prop(testid, :string)
+  prop(id, :string)
+
   def render(assigns) do
     ~F"""
-    <div class={merge(["fixed inset-0 bg-zeno", @class])} />
+    <div
+      {=@id}
+      class={merge(["fixed inset-0 bg-zeno", "moon-backdrop", @class])}
+      data-testid={@testid}
+    />
     """
   end
 end

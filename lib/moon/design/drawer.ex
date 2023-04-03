@@ -3,12 +3,13 @@ defmodule Moon.Design.Drawer do
 
   use Moon.StatefulComponent
 
-  data(is_open, :boolean, default: false)
-
+  prop(is_open, :boolean, default: false)
   data(is_closing, :boolean, default: false)
 
   slot(panel, required: true)
   slot(backdrop)
+
+  prop(on_close, :event)
 
   prop(testid, :string)
 
@@ -16,7 +17,7 @@ defmodule Moon.Design.Drawer do
     ~F"""
     <div
       {=@id}
-      phx-hook="Drawer"
+      phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
       aria-expanded={(@is_open && "true") || "false"}
@@ -27,7 +28,7 @@ defmodule Moon.Design.Drawer do
       <#slot
         {@panel}
         context_put={
-          on_close: %{name: "start_closing_drawer", target: @myself}
+          on_close: @on_close || %{name: "start_closing_drawer", target: @myself}
         }
       />
     </div>
@@ -42,7 +43,7 @@ defmodule Moon.Design.Drawer do
     send_update(__MODULE__, id: drawer_id, is_closing: true)
   end
 
-  def handle_event("open_drawer", _, socket) do
+  def handle_event("set_open", _, socket) do
     {:noreply, assign(socket, is_open: true)}
   end
 
@@ -50,7 +51,7 @@ defmodule Moon.Design.Drawer do
     {:noreply, assign(socket, is_closing: true)}
   end
 
-  def handle_event("close_drawer", _, socket) do
+  def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
 end

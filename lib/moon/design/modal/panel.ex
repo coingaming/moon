@@ -5,7 +5,6 @@ defmodule Moon.Design.Modal.Panel do
 
   prop(class, :css_class)
   slot(default)
-  slot(header)
 
   prop(id, :string)
   prop(testid, :string)
@@ -17,14 +16,16 @@ defmodule Moon.Design.Modal.Panel do
     ~F"""
     <div
       {=@id}
+      data-animate_enter_class="animate-modal_enter"
+      data-animate_leave_class="animate-modal_leave"
       class={merge([
         "w-full max-w-sm inline-block transform rounded-xl bg-gohan align-middle shadow-moon-lg transition-all",
+        "moon-panel",
         @class
       ])}
       :on-click-away={@on_close}
-      data-testid={"#{@testid}-modal-panel"}
+      data-testid={@testid}
     >
-      <#slot {@header} />
       <#slot />
     </div>
     """

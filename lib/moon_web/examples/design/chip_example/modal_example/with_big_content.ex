@@ -5,33 +5,30 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
 
   use MoonWeb, :example
 
-  alias Moon.Autolayouts.PullAside
   alias Moon.Design.Modal
   alias Moon.Design.Button
 
   import MoonWeb.Helpers.Lorem
 
-  data(modal_is_open, :boolean, default: false)
-
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
-      <Modal is_open={@modal_is_open} on_close="close_modal">
+      <Button on_click="set_open">Open dialog</Button>
+      <Modal id="big_content_modal">
         <Modal.Backdrop />
         <Modal.Panel>
-          <Modal.Header has_divider>Payment successful</Modal.Header>
+          <div class="p-4 border-b-2 border-beerus">
+            <h3 class="text-moon-18 text-bulma font-medium">
+              Payment successful
+            </h3>
+          </div>
           <div class="p-4">
             <p class="text-moon-16 text-trunks">
               {lorem_big_content()}
             </p>
           </div>
           <div class="p-4 border-t-2 border-beerus">
-            <PullAside>
-              <:left>
-                <Button on_click="close_modal">Got it, thanks!</Button>
-              </:left>
-            </PullAside>
+            <Button on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -39,60 +36,57 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
     """
   end
 
-  def handle_event("open_modal", _params, socket) do
-    socket = assign(socket, modal_is_open: true)
+  def handle_event("set_open", _, socket) do
+    Modal.open("big_content_modal")
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _params, socket) do
-    socket = assign(socket, modal_is_open: false)
+  def handle_event("set_close", _, socket) do
+    Modal.close("big_content_modal")
     {:noreply, socket}
   end
 
   def code() do
     """
-    alias Moon.Autolayouts.PullAside
     alias Moon.Design.Modal
     alias Moon.Design.Button
 
     import MoonWeb.Helpers.Lorem
 
-    data(modal_is_open, :boolean, default: false)
-
-    ...
-
+    def render(assigns) do
+    ~F\"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
-      <Modal is_open={@modal_is_open} on_close="close_modal">
+      <Button on_click="set_open">Open dialog</Button>
+      <Modal id="big_content_modal">
         <Modal.Backdrop />
         <Modal.Panel>
-          <Modal.Header has_divider>Payment successful</Modal.Header>
+          <div class="p-4 border-b-2 border-beerus">
+            <h3 class="text-moon-18 text-bulma font-medium">
+              Payment successful
+            </h3>
+          </div>
           <div class="p-4">
             <p class="text-moon-16 text-trunks">
               {lorem_big_content()}
             </p>
           </div>
           <div class="p-4 border-t-2 border-beerus">
-            <PullAside>
-              <:left>
-                <Button on_click="close_modal">Got it, thanks!</Button>
-              </:left>
-            </PullAside>
+            <Button on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
     </div>
-
-    ...
-
-    def handle_event("open_modal", _params, socket) do
-      socket = assign(socket, modal_is_open: true)
-      {:noreply, socket}
+    \"""
     end
 
-    def handle_event("close_modal", _params, socket) do
-      socket = assign(socket, modal_is_open: false)
-      {:noreply, socket}
+    def handle_event("set_open", _, socket) do
+    Modal.open("big_content_modal")
+    {:noreply, socket}
+    end
+
+    def handle_event("set_close", _, socket) do
+    Modal.close("big_content_modal")
+    {:noreply, socket}
     end
     """
   end

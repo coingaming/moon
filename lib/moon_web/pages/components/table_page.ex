@@ -73,12 +73,12 @@ defmodule MoonWeb.Pages.Components.TablePage do
           </Table>
           {#if @selected}
             <Drawer>
-              <Drawer.Dialog close="close_drawer">
+              <Drawer.Dialog close="set_close">
                 <:title>
                   Selected {@selected}
                 </:title>
                 <:footer>
-                  <Button on_click="close_drawer">Close</Button>
+                  <Button on_click="set_close">Close</Button>
                 </:footer>
               </Drawer.Dialog>
             </Drawer>
@@ -140,7 +140,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
     {:noreply, socket}
   end
 
-  def handle_event("close_drawer", _, socket) do
+  def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, selected: nil)}
   end
 
@@ -199,12 +199,12 @@ defmodule MoonWeb.Pages.Components.TablePage do
     </Table>
     {#if @selected}
       <Drawer>
-        <Drawer.Dialog close="close_drawer">
+        <Drawer.Dialog close="set_close">
           <:title>
             Selected {@selected}
           </:title>
           <:footer>
-            <Button on_click="close_drawer">Close</Button>
+            <Button on_click="set_close">Close</Button>
           </:footer>
         </Drawer.Dialog>
       </Drawer>

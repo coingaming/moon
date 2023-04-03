@@ -138,6 +138,8 @@ module.exports = {
         drawer_leave_bottom: "bottomslideout 0.2s ease-in",
         backdrop_enter: "fadein 0.3s ease-out",
         backdrop_leave: "fadeout 0.2s ease-in",
+        modal_enter: "modalfadein 0.3s ease-out",
+        modal_leave: "modalfadeout 0.2s ease-in",
       },
       keyframes: {
         loader: {
@@ -183,19 +185,19 @@ module.exports = {
           "100%": { transform: "translateY(0%)"}
         },
         rightslideout: {
-          "0%": {transform: "translateX(0%)",},
+          "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(100%)" }
         },
         leftslideout: {
-          "0%": {transform: "translateX(0%)",},
+          "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" }
         },
         topslideout: {
-          "0%": {transform: "translateY(0%)",},
+          "0%": { transform: "translateY(0%)" },
           "100%": { transform: "translateY(-100%)" }
         },
         bottomslideout: {
-          "0%": {transform: "translateY(0%)",},
+          "0%": { transform: "translateY(0%)" },
           "100%": { transform: "translateY(100%)" }
         },
         fadein: {
@@ -205,6 +207,14 @@ module.exports = {
         fadeout: {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 }
+        },
+        modalfadein: {
+          "0%": { opacity: 0, transform: "scale(.95)" },
+          "100%": { opacity: 1, transform: "scale(1)" }
+        },
+        modalfadeout: {
+          "0%": { opacity: 1 , transform: "scale(1)" },
+          "100%": { opacity: 0, transform: "scale(.95)" }
         },
       },
       fontWeight: {

@@ -47,8 +47,8 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
 
       <ExampleAndCode title="Modal" id="modal_1">
         <:example>
-          <Button variant="primary" on_click="open_modal">Open modal</Button>
-          <Modal close="close_modal" :if={@modal_is_open}>
+          <Button variant="primary" on_click="set_open">Open modal</Button>
+          <Modal close="set_close" :if={@modal_is_open}>
             <:title>Title text</:title>
             <:content>
               <SingleSelect
@@ -82,19 +82,19 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
     {:noreply, assign(socket, uri: uri)}
   end
 
-  def handle_event("open_modal", _params, socket) do
+  def handle_event("set_open", _params, socket) do
     socket = assign(socket, modal_is_open: true)
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _params, socket) do
+  def handle_event("set_close", _params, socket) do
     socket = assign(socket, modal_is_open: false)
     {:noreply, socket}
   end
 
   def get_example_code_1() do
     """
-    <Modal close="close_modal" :if={@modal_is_open}>
+    <Modal close="set_close" :if={@modal_is_open}>
       <:title>Title text</:title>
       <:content>Content here</:content>
       <:footer>
