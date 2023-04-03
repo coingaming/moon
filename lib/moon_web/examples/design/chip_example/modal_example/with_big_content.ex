@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
+      <Button on_click="set_open">Open dialog</Button>
       <Modal id="big_content_modal">
         <Modal.Backdrop />
         <Modal.Panel>
@@ -28,7 +28,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
             </p>
           </div>
           <div class="p-4 border-t-2 border-beerus">
-            <Button on_click="close_modal">Got it, thanks!</Button>
+            <Button on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -36,12 +36,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
     """
   end
 
-  def handle_event("open_modal", _, socket) do
+  def handle_event("set_open", _, socket) do
     Modal.open("big_content_modal")
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _, socket) do
+  def handle_event("set_close", _, socket) do
     Modal.close("big_content_modal")
     {:noreply, socket}
   end
@@ -56,7 +56,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
     def render(assigns) do
     ~F\"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
+      <Button on_click="set_open">Open dialog</Button>
       <Modal id="big_content_modal">
         <Modal.Backdrop />
         <Modal.Panel>
@@ -71,7 +71,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
             </p>
           </div>
           <div class="p-4 border-t-2 border-beerus">
-            <Button on_click="close_modal">Got it, thanks!</Button>
+            <Button on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -79,12 +79,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithBigContent do
     \"""
     end
 
-    def handle_event("open_modal", _, socket) do
+    def handle_event("set_open", _, socket) do
     Modal.open("big_content_modal")
     {:noreply, socket}
     end
 
-    def handle_event("close_modal", _, socket) do
+    def handle_event("set_close", _, socket) do
     Modal.close("big_content_modal")
     {:noreply, socket}
     end

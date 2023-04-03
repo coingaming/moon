@@ -10,7 +10,11 @@ defmodule Moon.Design.Drawer.Backdrop do
 
   def render(assigns) do
     ~F"""
-    <div {=@id} class={merge(["fixed inset-0 bg-zeno", @class])} data-testid={@testid} />
+    <div
+      {=@id}
+      class={merge(["fixed inset-0 bg-zeno", "moon-backdrop", @class])}
+      data-testid={@testid}
+    />
     """
   end
 end

@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
   def render(assigns) do
     ~F"""
     <div>
-      <Button variant="secondary" on_click="open_drawer">
+      <Button variant="secondary" on_click="set_open">
         Show Drawer with Backdrop
       </Button>
       <Drawer id="backdrop_drawer">
@@ -26,7 +26,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
     """
   end
 
-  def handle_event("open_drawer", _, socket) do
+  def handle_event("set_open", _, socket) do
     Drawer.open("backdrop_drawer")
     {:noreply, socket}
   end
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button variant="secondary" on_click="open_drawer">
+        <Button variant="secondary" on_click="set_open">
           Show Drawer with Backdrop
         </Button>
         <Drawer id="backdrop_drawer">
@@ -55,7 +55,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
       \"""
     end
 
-    def handle_event("open_drawer", _, socket) do
+    def handle_event("set_open", _, socket) do
       Drawer.open("backdrop_drawer")
       {:noreply, socket}
     end

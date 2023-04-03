@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
   def render(assigns) do
     ~F"""
     <div>
-      <Button variant="secondary" on_click="open_drawer">
+      <Button variant="secondary" on_click="set_open">
         Show default Drawer
       </Button>
       <Drawer id="default_drawer">
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
     """
   end
 
-  def handle_event("open_drawer", _, socket) do
+  def handle_event("set_open", _, socket) do
     Drawer.open("default_drawer")
     {:noreply, socket}
   end
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button variant="secondary" on_click="open_drawer">
+        <Button variant="secondary" on_click="set_open">
           Show default Drawer
         </Button>
         <Drawer id="default_drawer">
@@ -45,7 +45,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
       \"""
     end
 
-    def handle_event("open_drawer", _, socket) do
+    def handle_event("set_open", _, socket) do
       Drawer.open("default_drawer")
       {:noreply, socket}
     end

@@ -16,6 +16,8 @@ defmodule Moon.Design.Modal.Panel do
     ~F"""
     <div
       {=@id}
+      data-animate_enter_class="animate-modal_enter"
+      data-animate_leave_class="animate-modal_leave"
       class={merge([
         "w-full max-w-sm inline-block transform rounded-xl bg-gohan align-middle shadow-moon-lg transition-all",
         "moon-panel",

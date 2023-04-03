@@ -12,12 +12,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
+      <Button on_click="set_open">Open dialog</Button>
       <Modal id="styled_modal">
         <Modal.Backdrop />
         <Modal.Panel class="lg:max-w-md bg-roshi text-goten rounded-none">
           <span class="absolute top-5 right-5 cursor-pointer">
-            <ControlsClose class="text-moon-24" click="close_modal" />
+            <ControlsClose class="text-moon-24" click="set_close" />
           </span>
           <div class="p-4 pt-11">
             <div class="mt-2">
@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
             </div>
           </div>
           <div class="p-4 flex items-center justify-center">
-            <Button variant="secondary" on_click="close_modal">Got it, thanks!</Button>
+            <Button variant="secondary" on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -35,12 +35,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
     """
   end
 
-  def handle_event("open_modal", _, socket) do
+  def handle_event("set_open", _, socket) do
     Modal.open("styled_modal")
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _, socket) do
+  def handle_event("set_close", _, socket) do
     Modal.close("styled_modal")
     {:noreply, socket}
   end
@@ -54,12 +54,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button on_click="open_modal">Open dialog</Button>
+        <Button on_click="set_open">Open dialog</Button>
         <Modal id="styled_modal">
           <Modal.Backdrop />
           <Modal.Panel class="lg:max-w-md bg-roshi text-goten rounded-none">
             <span class="absolute top-5 right-5 cursor-pointer">
-              <ControlsClose class="text-moon-24" click="close_modal" />
+              <ControlsClose class="text-moon-24" click="set_close" />
             </span>
             <div class="p-4 pt-11">
               <div class="mt-2">
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
               </div>
             </div>
             <div class="p-4 flex items-center justify-center">
-              <Button variant="secondary" on_click="close_modal">Got it, thanks!</Button>
+              <Button variant="secondary" on_click="set_close">Got it, thanks!</Button>
             </div>
           </Modal.Panel>
         </Modal>
@@ -77,12 +77,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
       \"""
     end
 
-    def handle_event("open_modal", _, socket) do
+    def handle_event("set_open", _, socket) do
       Modal.open("styled_modal")
       {:noreply, socket}
     end
 
-    def handle_event("close_modal", _, socket) do
+    def handle_event("set_close", _, socket) do
       Modal.close("styled_modal")
       {:noreply, socket}
     end

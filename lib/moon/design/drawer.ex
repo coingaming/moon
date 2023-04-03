@@ -15,7 +15,7 @@ defmodule Moon.Design.Drawer do
     ~F"""
     <div
       {=@id}
-      phx-hook="Drawer"
+      phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
       aria-expanded={(@is_open && "true") || "false"}
@@ -41,7 +41,7 @@ defmodule Moon.Design.Drawer do
     send_update(__MODULE__, id: drawer_id, is_closing: true)
   end
 
-  def handle_event("open_drawer", _, socket) do
+  def handle_event("set_open", _, socket) do
     {:noreply, assign(socket, is_open: true)}
   end
 
@@ -49,7 +49,7 @@ defmodule Moon.Design.Drawer do
     {:noreply, assign(socket, is_closing: true)}
   end
 
-  def handle_event("close_drawer", _, socket) do
+  def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
 end

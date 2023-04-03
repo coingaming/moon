@@ -14,7 +14,7 @@ defmodule Moon.Design.Modal do
     ~F"""
     <div
       {=@id}
-      phx-hook="Modal"
+      phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
       aria-modal={(@is_open && "true") || "false"}
@@ -42,7 +42,7 @@ defmodule Moon.Design.Modal do
     send_update(__MODULE__, id: modal_id, is_closing: true)
   end
 
-  def handle_event("open_modal", _, socket) do
+  def handle_event("set_open", _, socket) do
     {:noreply, assign(socket, is_open: true)}
   end
 
@@ -50,7 +50,7 @@ defmodule Moon.Design.Modal do
     {:noreply, assign(socket, is_closing: true)}
   end
 
-  def handle_event("close_modal", _, socket) do
+  def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
 end

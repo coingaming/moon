@@ -42,14 +42,14 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="open_modal">Open dialog</Button>
+      <Button on_click="set_open">Open dialog</Button>
       <Modal id="with_select_modal">
         <Modal.Backdrop />
         <Modal.Panel>
           <div class="border-b-[0.063rem] border-beerus pt-5 pb-4 px-6 relative">
             <h3 class="text-moon-18 text-bulma font-medium">Modal title</h3>
             <span class="absolute top-5 right-5 cursor-pointer">
-              <ControlsCloseSmall class="text-moon-24" click="close_modal" />
+              <ControlsCloseSmall class="text-moon-24" click="set_close" />
             </span>
           </div>
 
@@ -70,8 +70,8 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
             </Form>
           </div>
           <div class="flex gap-2 p-4 justify-end pt-2">
-            <Button variant="secondary" on_click="close_modal">Cancel</Button>
-            <Button on_click="close_modal">Create</Button>
+            <Button variant="secondary" on_click="set_close">Cancel</Button>
+            <Button on_click="set_close">Create</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -79,12 +79,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
     """
   end
 
-  def handle_event("open_modal", _, socket) do
+  def handle_event("set_open", _, socket) do
     Modal.open("with_select_modal")
     {:noreply, socket}
   end
 
-  def handle_event("close_modal", _, socket) do
+  def handle_event("set_close", _, socket) do
     Modal.close("with_select_modal")
     {:noreply, socket}
   end
@@ -128,14 +128,14 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button on_click="open_modal">Open dialog</Button>
+        <Button on_click="set_open">Open dialog</Button>
         <Modal id="with_select_modal">
           <Modal.Backdrop />
           <Modal.Panel>
             <div class="border-b-[0.063rem] border-beerus pt-5 pb-4 px-6 relative">
               <h3 class="text-moon-18 text-bulma font-medium">Modal title</h3>
               <span class="absolute top-5 right-5 cursor-pointer" >
-                <ControlsCloseSmall class="text-moon-24" click="close_modal"/>
+                <ControlsCloseSmall class="text-moon-24" click="set_close"/>
               </span>
             </div>
 
@@ -156,8 +156,8 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
               </Form>
             </div>
             <div class="flex gap-2 p-4 justify-end pt-2">
-              <Button variant="secondary" on_click="close_modal">Cancel</Button>
-              <Button on_click="close_modal">Create</Button>
+              <Button variant="secondary" on_click="set_close">Cancel</Button>
+              <Button on_click="set_close">Create</Button>
             </div>
           </Modal.Panel>
         </Modal>
@@ -165,12 +165,12 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
       \"""
     end
 
-    def handle_event("open_modal", _, socket) do
+    def handle_event("set_open", _, socket) do
       Modal.open("with_select_modal")
       {:noreply, socket}
     end
 
-    def handle_event("close_modal", _, socket) do
+    def handle_event("set_close", _, socket) do
       Modal.close("with_select_modal")
       {:noreply, socket}
     end

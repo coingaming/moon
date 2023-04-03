@@ -131,7 +131,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
   def get_example_1_code() do
     """
     <Drawer class="w-64" :if={@drawer_is_open}>
-      <Drawer.Dialog close="close_drawer">
+      <Drawer.Dialog close="set_close">
         <:title>Title text</:title>
         <:content>Content here</:content>
         <:footer>
@@ -160,7 +160,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
     """
     <Page class={"mr-64": @drawer_2_is_open}>
       <Drawer class="w-64" :if={@drawer_is_open}>
-        <Drawer.Dialog close="close_drawer">
+        <Drawer.Dialog close="set_close">
           <:title>Title text</:title>
           <:content>Content here</:content>
           <:footer>

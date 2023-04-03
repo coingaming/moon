@@ -1,14 +1,11 @@
 export default {
 
     mounted() {
-        if (this.el.children.length > 1) {
-            this.backdrop = this.el.children[0];
-            this.panel = this.el.children[1];
-        } else {
-            this.panel = this.el.children[0];
-        }
+        this.backdrop = this.el.querySelector(".moon-backdrop");
+        this.panel = this.el.querySelector(".moon-panel");
         this.showElementIfNeeded();
     },
+
 
     updated() {
         this.showElementIfNeeded();
@@ -27,7 +24,8 @@ export default {
         };
         setTimeout (() => {
             this.el.classList.add("hidden")
-            this.pushEventTo(this.el, "close_drawer", {});
+            this.pushEventTo(this.el, "set_close", {});
+            document.body.style.overflow = "auto";
         }, 200);
     },
     
@@ -37,6 +35,7 @@ export default {
         if (this.backdrop) {
             this.backdrop.classList.add("animate-backdrop_enter");
         }
+        document.body.style.overflow = "hidden";
     },
 };
       
