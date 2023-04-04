@@ -1,3 +1,10 @@
+## [2.39.2](https://github.com/coingaming/moon/compare/v2.39.1...v2.39.2) (2023-04-04)
+
+
+### Bug Fixes
+
+* live_view dependency missprint fix ([#597](https://github.com/coingaming/moon/issues/597)) ([429c787](https://github.com/coingaming/moon/commit/429c787edd4822fc3d6cb7be6ffdeb4d1c07c704))
+
 ## [2.39.1](https://github.com/coingaming/moon/compare/v2.39.0...v2.39.1) (2023-04-03)
 
 
