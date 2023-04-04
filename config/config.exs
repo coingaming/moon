@@ -30,8 +30,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# this file cn be used by our package users, so ...
 import_config "surface.exs"
-config :surface, :components, []
+config :surface, :components, [
+  # put here configs that are not required by our users
+]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
