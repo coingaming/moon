@@ -1,3 +1,10 @@
+## [2.39.3](https://github.com/coingaming/moon/compare/v2.39.2...v2.39.3) (2023-04-04)
+
+
+### Bug Fixes
+
+* surface config propagating for moon users ([ec4641d](https://github.com/coingaming/moon/commit/ec4641dac53916c9e9f722160b44d7299705158b))
+
 ## [2.39.2](https://github.com/coingaming/moon/compare/v2.39.1...v2.39.2) (2023-04-04)
 
 
