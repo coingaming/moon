@@ -50,6 +50,7 @@ defmodule Moon.MixProject do
       licenses: ["UNLICENSED"],
       files: [
         "lib",
+        "config/surface.exs",
         "assets",
         "priv/static/{assets,css,themes}",
         "mix.exs",
