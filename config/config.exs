@@ -32,6 +32,7 @@ config :phoenix, :json_library, Jason
 
 # this file cn be used by our package users, so ...
 import_config "surface.exs"
+
 config :surface, :components, [
   # put here configs that are not required by our users
 ]
