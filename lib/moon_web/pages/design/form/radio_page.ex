@@ -1,11 +1,11 @@
-defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
+defmodule MoonWeb.Pages.Design.Form.RadioPage do
   @moduledoc false
 
   use MoonWeb, :live_view
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.CheckboxExample
+  alias MoonWeb.Examples.Form.RadioExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 
@@ -20,7 +20,7 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/form/checkbox",
+        to: "/components/v2/form/radio",
         name: "Checkbox"
       }
     ]
@@ -29,20 +29,19 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Checkbox" is_in_progress image="facing/components/checkbox.png">
-        <p>The checkbox is shown as a square box that is ticked (checked) when activated.</p>
-        <p>Checkboxes are used to let a user select one or more options of a limited number of choices.</p>
+      <ComponentPageDescription title="Radio" is_aria_support is_rtl image="facing/components/radio_button.png">
+        <p>Radio buttons are used to represent a group of choices whereby users can only select one option.</p>
+        <p>
+          The main difference between the radio button and the checkbox is, users are allowed to select single
+          options whereas in the checkbox you can have multiple options.
+        </p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        CheckboxExample.Default,
-        CheckboxExample.WithForm,
-        CheckboxExample.Disabled,
-        CheckboxExample.Readonly,
-        CheckboxExample.Customizations
+        RadioExample.Default,
       ]} />
       <PropsTable
-        title="Checkbox props"
+        title="Radio props"
         data={[
           %{
             :name => 'field',

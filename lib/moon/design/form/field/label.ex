@@ -3,9 +3,14 @@ defmodule Moon.Design.Form.Field.Label do
 
   use Moon.StatelessComponent
 
-  prop(field, :atom)
-  prop(for, :string)
+
+  prop(id, :string)
+  prop(testid, :string)
   prop(class, :css_class)
+
+  prop(field, :atom)
+  prop(form, :atom)
+  prop(for, :string)
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(title, :string)
   prop(disabled, :boolean, default: false)
@@ -15,7 +20,8 @@ defmodule Moon.Design.Form.Field.Label do
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.Label
-      field={@field}
+      {=@field}
+      {=@form}
       class={merge([
         [
           "pb-2 flex items-center gap-2 cursor-pointer",
@@ -24,7 +30,7 @@ defmodule Moon.Design.Form.Field.Label do
         ],
         @class
       ])}
-      opts={for: @for}
+      opts={for: @for, id: @id, "data-testid": @testid}
     >
       <#slot>{@title}</#slot>
     </Surface.Components.Form.Label>
