@@ -24,15 +24,9 @@ defmodule Moon.Design.Form.Radio do
 
   slot(option)
 
-
   def render(assigns) do
     ~F"""
-    <div
-      {=@id}
-      data-testid={@testid}
-      {=@class}
-      role="radiogroup"
-    >
+    <div {=@id} data-testid={@testid} {=@class} role="radiogroup">
       <Field {=@field}>
         {#if slot_assigned?(:option)}
           {#for {option, _index} <- Enum.with_index(make_list(@option))}
@@ -50,9 +44,10 @@ defmodule Moon.Design.Form.Radio do
             module={@option_module}
             {=@field}
             {=@form}
-            is_selected={value == get_value(assigns)}
+            is_selected={"#{value}" == "#{get_value(assigns)}"}
             on_click={@on_change}
-          ><Indicator/>{title}</.moon>
+            {=value}
+          ><Indicator is_selected={"#{value}" == "#{get_value(assigns)}"} />{title}</.moon>
         {/if}
       </Field>
     </div>

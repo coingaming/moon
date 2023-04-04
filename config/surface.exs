@@ -15,6 +15,7 @@ config :surface, :components, [
   {Moon.Design.Form, propagate_context_to_slots: true},
   {Moon.Design.Form.Field, propagate_context_to_slots: true},
   {Moon.Design.Form.Radio, propagate_context_to_slots: true},
+  {Moon.Design.Form.Radio.Option, propagate_context_to_slots: true},
   {Moon.Design.MenuItem, propagate_context_to_slots: true},
   {Moon.Design.Modal, propagate_context_to_slots: true},
   {Moon.Design.Modal.Panel, propagate_context_to_slots: true},

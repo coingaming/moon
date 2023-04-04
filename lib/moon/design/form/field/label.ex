@@ -3,17 +3,17 @@ defmodule Moon.Design.Form.Field.Label do
 
   use Moon.StatelessComponent
 
-
   prop(id, :string)
   prop(testid, :string)
   prop(class, :css_class)
 
   prop(field, :atom)
-  prop(form, :atom)
+  prop(form, :any)
   prop(for, :string)
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(title, :string)
   prop(disabled, :boolean, default: false)
+  prop(on_click, :event)
 
   slot(default)
 
@@ -30,7 +30,7 @@ defmodule Moon.Design.Form.Field.Label do
         ],
         @class
       ])}
-      opts={for: @for, id: @id, "data-testid": @testid}
+      opts={for: @for, id: @id, "data-testid": @testid, "phx-click": @on_click}
     >
       <#slot>{@title}</#slot>
     </Surface.Components.Form.Label>

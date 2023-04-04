@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.RadioExample.Default do
+defmodule MoonWeb.Examples.Form.RadioExample.ShortSyntax do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -7,7 +7,6 @@ defmodule MoonWeb.Examples.Form.RadioExample.Default do
 
   alias Moon.Design.Form
   alias Moon.Design.Form.Radio
-  alias Moon.Design.Form.Radio.{Option, Indicator}
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Button
 
@@ -24,18 +23,8 @@ defmodule MoonWeb.Examples.Form.RadioExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="changed" submit="submit">
-      <Radio field={:gender}>
-        <Option value="male">
-          <Indicator /> Male
-        </Option>
-        <Option value="female">
-          <Indicator /> Female
-        </Option>
-        <Option value="invalid">
-          <Indicator /> Invalid
-        </Option>
-      </Radio>
+    <Form id="short_form" for={@user_changeset} change="changed" submit="submit">
+      <Radio field={:gender} options={[male: "Male", female: "Female", invalid: "Invalid"]} />
       <Button type="submit">Submit</Button>
     </Form>
     """
@@ -45,7 +34,6 @@ defmodule MoonWeb.Examples.Form.RadioExample.Default do
     """
     alias Moon.Design.Form
     alias Moon.Design.Form.Radio
-    alias Moon.Design.Form.Radio.{Option, Indicator}
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
     alias Moon.Design.Button
 
@@ -63,17 +51,7 @@ defmodule MoonWeb.Examples.Form.RadioExample.Default do
     def render(assigns) do
       ~F\"""
       <Form for={@user_changeset} change="changed" submit="submit">
-        <Radio field={:gender}>
-          <Option value="male">
-            <Indicator /> Male
-          </Option>
-          <Option value="female">
-            <Indicator /> Female
-          </Option>
-          <Option value="invalid">
-            <Indicator /> Invalid
-          </Option>
-        </Radio>
+        <Radio field={:gender} options={[male: "Male", female: "Female", invalid: "Invalid"]} />
         <Button type="submit">Submit</Button>
       </Form>
       \"""

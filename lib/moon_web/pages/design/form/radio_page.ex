@@ -29,7 +29,12 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Radio" is_aria_support is_rtl image="facing/components/radio_button.png">
+      <ComponentPageDescription
+        title="Radio"
+        is_aria_support
+        is_rtl_support
+        image="facing/components/radio_button.png"
+      >
         <p>Radio buttons are used to represent a group of choices whereby users can only select one option.</p>
         <p>
           The main difference between the radio button and the checkbox is, users are allowed to select single
@@ -39,6 +44,7 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
 
       <ExamplesList examples={[
         RadioExample.Default,
+        RadioExample.ShortSyntax
       ]} />
       <PropsTable
         title="Radio props"
