@@ -40,11 +40,25 @@ defmodule MoonWeb.Pages.ComponentsPage do
           An accordion is a vertical stack of interactive headings used to toggle the display of further information; each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.AlertPage}
+          image="facing/components/alert.png"
+          title="Alert"
+        >
+          A way of informing the user of important changes in a prominent way.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.AvatarPage}
           image="facing/components/avatar.png"
           title="Avatar"
         >
           The Avatar component is typically used to display images, icons, or initials representing people or other entities.
+        </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.BottomSheetPage}
+          image="facing/components/bottom_sheet.png"
+          title="BottomSheet"
+        >
+          The bottom sheet component is a modified dialog that slides from the bottom of the screen, common pattern in mobile apps.
         </ComponentsPageCard>
         <ComponentsPageCard
           page={Pages.Design.BreadcrumbPage}
@@ -67,8 +81,22 @@ defmodule MoonWeb.Pages.ComponentsPage do
         >
           Buttons allow users to take actions, and make choices, with a single tap.
         </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.Form.CheckboxPage}
+          image="facing/components/checkbox.png"
+          title="Checkbox"
+        >
+          The checkbox is shown as a square box that is ticked (checked) when activated.
+        </ComponentsPageCard>
         <ComponentsPageCard page={Pages.Design.ChipPage} image="facing/components/chip.png" title="Chip">
           Chips help filter content, or trigger actions.
+        </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.DrawerPage}
+          image="facing/components/drawer.png"
+          title="Drawer"
+        >
+          The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
         </ComponentsPageCard>
         <ComponentsPageCard
           page={Pages.Design.DropdownPage}
