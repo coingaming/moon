@@ -9,7 +9,6 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.Anatomy
-
   alias Moon.Design.Tabs
 
   data(breadcrumbs, :any,

@@ -6,7 +6,7 @@ defmodule Moon.Design.Form.Field.Label do
   prop(id, :string)
   prop(testid, :string)
   prop(class, :css_class)
-  prop(attrs, :map)
+  prop(attrs, :map, default: %{})
 
   prop(field, :atom)
   prop(form, :any)
