@@ -23,7 +23,7 @@ defmodule Moon.Components.Checkbox do
         field={@field}
         click={!@readonly && @click}
         class={
-          "z-10 absolute left-0 opacity-0 cursor-pointer m-1",
+          "z-10 absolute left-0 opacity-0 cursor-pointer",
           "cursor-not-allowed select-none": @readonly
         }
         checked_value="true"
