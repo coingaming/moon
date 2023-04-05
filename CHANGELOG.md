@@ -1,3 +1,10 @@
+## [2.39.4](https://github.com/coingaming/moon/compare/v2.39.3...v2.39.4) (2023-04-05)
+
+
+### Bug Fixes
+
+* rollback Checkbox v1 fix ([#599](https://github.com/coingaming/moon/issues/599)) ([203c5a9](https://github.com/coingaming/moon/commit/203c5a90ebbfc5e3f16b69d2818d8a55972a68dc))
+
 ## [2.39.3](https://github.com/coingaming/moon/compare/v2.39.2...v2.39.3) (2023-04-04)
 
 
