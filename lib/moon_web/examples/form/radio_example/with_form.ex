@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.RadioExample.ShortSyntax do
+defmodule MoonWeb.Examples.Form.RadioExample.WithForm do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -23,7 +23,7 @@ defmodule MoonWeb.Examples.Form.RadioExample.ShortSyntax do
 
   def render(assigns) do
     ~F"""
-    <Form id="short_form" for={@user_changeset} change="changed" submit="submit">
+    <Form id="radio_short_form" for={@user_changeset} change="changed" submit="submit">
       <Radio field={:gender} options={[male: "Male", female: "Female", invalid: "Invalid"]} />
       <Button type="submit">Submit</Button>
     </Form>

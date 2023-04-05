@@ -3,7 +3,7 @@ defmodule Moon.Design.Form.Radio.Indicator do
 
   use Moon.StatelessComponent
 
-  alias Moon.Components.Lego.Radio
+  alias Moon.Lego.Radio
 
   prop(class, :css_class)
   prop(id, :string)

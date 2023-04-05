@@ -150,7 +150,6 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         },
         socket
       ) do
-    IO.puts("FORM_CHANGED ############################ \n #{inspect(params)}")
     user_changeset = User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}

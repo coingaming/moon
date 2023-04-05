@@ -16,6 +16,8 @@ defmodule Moon.Design.Form.Radio do
   prop(field, :atom)
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
+  prop(disabled, :boolean)
+
   prop(value, :string)
   prop(on_change, :event)
 
@@ -26,31 +28,31 @@ defmodule Moon.Design.Form.Radio do
 
   def render(assigns) do
     ~F"""
-    <div {=@id} data-testid={@testid} {=@class} role="radiogroup">
-      <Field {=@field}>
-        {#if slot_assigned?(:option)}
-          {#for {option, _index} <- Enum.with_index(make_list(@option))}
-            <#slot
-              {option}
-              context_put={
-                is_selected: option.value == get_value(assigns),
-                on_click: @on_change
-              }
-            />
-          {/for}
-        {#else}
-          <.moon
-            :for={{value, title} <- @options}
-            module={@option_module}
-            {=@field}
-            {=@form}
-            is_selected={"#{value}" == "#{get_value(assigns)}"}
-            on_click={@on_change}
-            {=value}
-          ><Indicator is_selected={"#{value}" == "#{get_value(assigns)}"} />{title}</.moon>
-        {/if}
-      </Field>
-    </div>
+    <Field {=@field} {=@id} {=@testid} {=@class} attrs={role: "radiogroup"}>
+      {#if slot_assigned?(:option)}
+        {#for {option, _index} <- Enum.with_index(make_list(@option))}
+          <#slot
+            {option}
+            context_put={
+              is_selected: option.value == get_value(assigns),
+              on_click: @on_change,
+              disabled: @disabled
+            }
+          />
+        {/for}
+      {#else}
+        <.moon
+          :for={{value, title} <- @options}
+          module={@option_module}
+          {=@field}
+          {=@form}
+          is_selected={"#{value}" == "#{get_value(assigns)}"}
+          on_click={@on_change}
+          {=value}
+          {=@disabled}
+        ><Indicator is_selected={"#{value}" == "#{get_value(assigns)}"} />{title}</.moon>
+      {/if}
+    </Field>
     """
   end
 end

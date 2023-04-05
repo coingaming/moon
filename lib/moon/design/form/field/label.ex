@@ -6,6 +6,7 @@ defmodule Moon.Design.Form.Field.Label do
   prop(id, :string)
   prop(testid, :string)
   prop(class, :css_class)
+  prop(attrs, :map)
 
   prop(field, :atom)
   prop(form, :any)
@@ -13,7 +14,9 @@ defmodule Moon.Design.Form.Field.Label do
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(title, :string)
   prop(disabled, :boolean, default: false)
+
   prop(on_click, :event)
+  prop(value, :string)
 
   slot(default)
 
@@ -30,7 +33,16 @@ defmodule Moon.Design.Form.Field.Label do
         ],
         @class
       ])}
-      opts={for: @for, id: @id, "data-testid": @testid, "phx-click": @on_click}
+      opts={Map.merge(
+        %{
+          for: @for,
+          id: @id,
+          "data-testid": @testid,
+          "phx-click": @on_click,
+          "phx-value-value": @value
+        },
+        @attrs
+      )}
     >
       <#slot>{@title}</#slot>
     </Surface.Components.Form.Label>

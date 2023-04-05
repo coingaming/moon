@@ -16,7 +16,7 @@ defmodule Moon.Design.Form.Radio.Option do
   prop(is_selected, :boolean, from_context: :is_selected)
 
   prop(value, :string)
-  prop(disabled, :boolean)
+  prop(disabled, :boolean, from_context: :disabled)
 
   slot(default)
 
@@ -27,7 +27,10 @@ defmodule Moon.Design.Form.Radio.Option do
       {=@field}
       {=@id}
       {=@testid}
-      class={merge(["flex gap-2 pb-0", ["opacity-30": @disabled], @class])}
+      {=@value}
+      class={merge(["flex gap-2 p-0", ["opacity-30": @disabled], @class])}
+      {=@on_click}
+      attrs={role: "radio", "aria-checked": "#{@is_selected}"}
     >
       <RadioButton
         {=@field}
