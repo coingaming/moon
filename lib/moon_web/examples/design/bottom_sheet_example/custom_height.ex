@@ -24,7 +24,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
             </BottomSheet.Title>
           </BottomSheet.Draghandle>
           <div class="p-2">
-            <!--<Table items={model <- @models_5} selected={nil}>
+            <Table items={model <- @models_5} selected={nil}>
               <Column name="id" label="ID">
                 {model.id}
               </Column>
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
               <Column name="created_at" label="Created at">
                 <Datetime value={model.created_at} />
               </Column>
-            </Table>-->
+            </Table>
           </div>
           <div class="p-2">
             <Button on_click="set_close" variant="ghost" full_width>
@@ -61,7 +61,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
     {:noreply, assign(socket, uri: uri)}
   end
 
-  def mount(_params, _session, socket) do
+  def mount(socket) do
     now = DateTime.utc_now()
 
     all_models =
