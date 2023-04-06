@@ -1,3 +1,10 @@
+# [2.40.0](https://github.com/coingaming/moon/compare/v2.39.4...v2.40.0) (2023-04-06)
+
+
+### Features
+
+* [MDS-480] Bottom sheet v2 ([#600](https://github.com/coingaming/moon/issues/600)) ([46fd0ec](https://github.com/coingaming/moon/commit/46fd0ecef989c0a51c835d8f12d22a83779e8a35))
+
 ## [2.39.4](https://github.com/coingaming/moon/compare/v2.39.3...v2.39.4) (2023-04-05)
 
 
