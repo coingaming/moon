@@ -9,13 +9,10 @@ defmodule Moon.Design.Form.Radio.Option do
   prop(testid, :string)
   prop(class, :css_class)
 
-  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
-  prop(form, :any, from_context: {Surface.Components.Form, :form})
-
   prop(on_click, :event, from_context: :on_click)
   prop(is_selected, :boolean, from_context: :is_selected)
 
-  prop(value, :string)
+  prop(value, :string, from_context: :value)
   prop(disabled, :boolean, from_context: :disabled)
 
   slot(default)
@@ -23,8 +20,6 @@ defmodule Moon.Design.Form.Radio.Option do
   def render(assigns) do
     ~F"""
     <Label
-      {=@form}
-      {=@field}
       {=@id}
       {=@testid}
       {=@value}
@@ -33,8 +28,6 @@ defmodule Moon.Design.Form.Radio.Option do
       attrs={role: "radio", "aria-checked": "#{@is_selected}"}
     >
       <RadioButton
-        {=@field}
-        {=@form}
         class="hidden"
         {=@value}
         opts={

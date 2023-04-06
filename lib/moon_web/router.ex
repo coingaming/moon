@@ -167,7 +167,6 @@ defmodule MoonWeb.Router do
         live("/tutorials/theming-and-visuals", MoonWeb.Pages.Theming.ThemingAndVisuals)
 
         live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
-        live("/test/live", MoonWeb.Pages.Test.LivePage)
       end
     end)
   end

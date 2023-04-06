@@ -5,21 +5,15 @@ defmodule MoonWeb.Examples.Form.TextareaExample.Default do
 
   use MoonWeb, :example
 
-  alias Moon.Design.Form.Textarea
-
   def render(assigns) do
     ~F"""
-    <Textarea />
+    <Moon.Design.Form.TextArea />
     """
   end
 
   def code() do
     """
-    alias Moon.Design.Form.Textarea
-
-    ...
-
-    <Textarea />
+    <Moon.Design.Form.TextArea />
     """
   end
 end

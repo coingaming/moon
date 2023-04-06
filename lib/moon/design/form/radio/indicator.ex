@@ -3,16 +3,10 @@ defmodule Moon.Design.Form.Radio.Indicator do
 
   use Moon.StatelessComponent
 
-  alias Moon.Lego.Radio
-
   prop(class, :css_class)
   prop(id, :string)
   prop(testid, :string)
   prop(is_selected, :boolean, from_context: :is_selected)
 
-  def render(assigns) do
-    ~F"""
-    <Radio {=@id} {=@testid} {=@class} {=@is_selected} />
-    """
-  end
+  defdelegate render(assigns), to: Moon.Lego.Radio
 end
