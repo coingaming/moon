@@ -1,6 +1,5 @@
-
- const addEvent = (() => {
-	if (document.addEventListener) {
+const addEvent = (() => {
+    if (document.addEventListener) {
 		return (el, type, fn) => {
 			if (el && el.nodeName || el === window) {
 				el.addEventListener(type, fn, false);
@@ -69,7 +68,7 @@ export default {
         const startPosition = {
             x: 0,
             y: 0
-         };
+        };
         
          let startedSwipe = false;
         
@@ -95,21 +94,14 @@ export default {
             const touch = event.changedTouches[0];
             const panelHeight = this.panel.offsetHeight;
             if (startedSwipe && touch.pageY <= panelHeight / 2) {
-                console.log("close panel");
                 (this.el.dataset.is_open === undefined);
                 startedSwipe = false;
             } else if (startedSwipe && touch.pageY > panelHeight / 2) {
-                console.log("open panel");
                 (this.el.dataset.is_open !== undefined);
                 startedSwipe = false;
             }
         });
-    },
-
-    
-
-    
-     
+    },     
 };
       
 

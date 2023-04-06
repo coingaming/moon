@@ -16,6 +16,8 @@ defmodule Moon.Design.BottomSheet do
     default: "md"
   )
 
+  prop(class, :css_class)
+
   slot(panel, required: true)
   slot(backdrop)
 
@@ -31,7 +33,7 @@ defmodule Moon.Design.BottomSheet do
       phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
-      class="fixed z-[99999] inset-0 hidden"
+      class={merge(["fixed z-[99999] inset-0 hidden", @class])}
       data-testid={@testid}
     >
       <#slot {@backdrop} />

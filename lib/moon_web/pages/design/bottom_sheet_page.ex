@@ -77,6 +77,13 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
               'The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value.'
           },
           %{
+            :name => 'class',
+            :type => 'css_class',
+            :required => 'No',
+            :default => '-',
+            :description => 'Tailwind classes for customization'
+          },
+          %{
             :name => 'panel',
             :type => 'slot',
             :required => 'Yes',
