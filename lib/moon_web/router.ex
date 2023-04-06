@@ -60,6 +60,7 @@ defmodule MoonWeb.Router do
         live("/components/v2/alert/", MoonWeb.Pages.Design.AlertPage)
         live("/components/v2/accordion/", MoonWeb.Pages.Design.AccordionPage)
         live("/components/v2/avatar/", MoonWeb.Pages.Design.AvatarPage)
+        live("/components/v2/bottomsheet/", MoonWeb.Pages.Design.BottomSheetPage)
         live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
         live("/components/v2/chip/", MoonWeb.Pages.Design.ChipPage)

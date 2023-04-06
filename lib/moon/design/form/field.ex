@@ -21,9 +21,9 @@ defmodule Moon.Design.Form.Field do
     ~F"""
     <Surface.Components.Form.Field name={@field} {=@class}>
       <Field.Label :if={@label} {=@size} title={@label} />
-      <#slot context_put={size: @size, error: has_error(@form, @field)} />
+      <#slot context_put={size: @size, error: !!@field && !!@form && has_error(@form, @field)} />
       <Field.Hint :if={@hint} title={@hint} />
-      <Field.Error :if={!@hide_errors && @field} />
+      <Field.Error :if={!@hide_errors && !!@field && !!@form} />
     </Surface.Components.Form.Field>
     """
   end
