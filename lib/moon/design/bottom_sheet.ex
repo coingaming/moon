@@ -4,7 +4,7 @@ defmodule Moon.Design.BottomSheet do
   use Moon.StatefulComponent
 
   prop(is_open, :boolean, default: false)
-  data(is_closing, :boolean, default: false)
+  prop(on_close, :event)
   prop(has_shadow, :boolean, default: false)
 
   prop(size, :string,
@@ -19,9 +19,10 @@ defmodule Moon.Design.BottomSheet do
   slot(panel, required: true)
   slot(backdrop)
 
-  prop(on_close, :event)
-
   prop(testid, :string)
+
+  # internal API
+  data(is_closing, :boolean, default: false)
 
   def render(assigns) do
     ~F"""

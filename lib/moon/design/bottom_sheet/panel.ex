@@ -3,9 +3,8 @@ defmodule Moon.Design.BottomSheet.Panel do
 
   use Moon.StatelessComponent, slot: "panel"
 
-  slot(default)
-  slot(title)
   slot(draghandle)
+  slot(default)
 
   prop(class, :css_class)
 
@@ -38,7 +37,6 @@ defmodule Moon.Design.BottomSheet.Panel do
       data-testid={@testid}
     >
       <#slot {@draghandle} />
-      <#slot {@title} />
       <#slot />
     </div>
     """

@@ -3,6 +3,8 @@ defmodule Moon.Design.BottomSheet.Backdrop do
 
   use Moon.StatelessComponent, slot: "backdrop"
 
+  alias Moon.Design.Modal.Backdrop
+
   prop(class, :css_class)
 
   prop(testid, :string)
@@ -10,11 +12,7 @@ defmodule Moon.Design.BottomSheet.Backdrop do
 
   def render(assigns) do
     ~F"""
-    <div
-      {=@id}
-      class={merge(["fixed inset-0 bg-zeno", "moon-backdrop", @class])}
-      data-testid={@testid}
-    />
+    <Backdrop {=@id} class={@class} testid={@testid} />
     """
   end
 end

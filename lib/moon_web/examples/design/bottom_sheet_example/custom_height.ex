@@ -11,6 +11,19 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
   alias Moon.Components.Table.Column
   alias Moon.Components.Renderers.Datetime
 
+  data(models, :list,
+    default:
+      Enum.map(1..5, fn x ->
+        %{
+          id: x,
+          first_name: "First Name #{x}",
+          last_name: "Last Name #{x}",
+          status: "Status #{x}",
+          created_at: DateTime.add(DateTime.utc_now(), -3600 + x)
+        }
+      end)
+  )
+
   def render(assigns) do
     ~F"""
     <div>
@@ -18,18 +31,22 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
       <BottomSheet id="custom_height_bottom_sheet">
         <BottomSheet.Backdrop />
         <BottomSheet.Panel class="h-[77%]">
-          <BottomSheet.Draghandle>
-            <BottomSheet.Title class="text-center">
-              I am gonna show you some data whether you like it or not!
-            </BottomSheet.Title>
-          </BottomSheet.Draghandle>
-          <div class="p-2">
-            <Table items={model <- @models_5} selected={nil}>
+          <BottomSheet.Draghandle />
+          <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
+            I am gonna show you some data whether you like it or not!</h3>
+          <div class="p-2 bg-goku mt-2">
+            <Table items={model <- @models} selected={nil}>
               <Column name="id" label="ID">
                 {model.id}
               </Column>
-              <Column name="name" label="Name">
-                {model.name}
+              <Column name="first_name" label="First Name">
+                {model.first_name}
+              </Column>
+              <Column name="last_name" label="Last Name">
+                {model.last_name}
+              </Column>
+              <Column name="status" label="Status">
+                {model.status}
               </Column>
               <Column name="created_at" label="Created at">
                 <Datetime value={model.created_at} />
@@ -57,48 +74,77 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
     {:noreply, socket}
   end
 
-  def handle_params(_params, uri, socket) do
-    {:noreply, assign(socket, uri: uri)}
-  end
-
-  def mount(socket) do
-    now = DateTime.utc_now()
-
-    all_models =
-      Enum.map(1..100, fn x ->
-        %{id: x, name: "Name #{x}", created_at: DateTime.add(now, -3600 + x)}
-      end)
-
-    socket =
-      assign(socket,
-        all_models: all_models,
-        models_5: all_models |> Enum.slice(0, 5),
-        limit: 10,
-        offset: 0,
-        selected: []
-      )
-      |> refresh_models()
-
-    {:ok, socket}
-  end
-
-  def refresh_models(socket) do
-    %{
-      limit: limit,
-      offset: offset,
-      all_models: all_models
-    } = socket.assigns
-
-    models =
-      all_models
-      |> Enum.slice(offset..(offset + limit - 1))
-
-    assign(socket, models: models)
-  end
-
   def code() do
     """
+    alias Moon.Design.Button
+    alias Moon.Design.BottomSheet
 
+    alias Moon.Design.Table
+    alias Moon.Components.Table.Column
+    alias Moon.Components.Renderers.Datetime
+
+    data(models, :list,
+      default:
+        Enum.map(1..5, fn x ->
+          %{
+            id: x,
+            first_name: "First Name \#{x}",
+            last_name: "Last Name \#{x}",
+            status: "Status \#{x}",
+            created_at: DateTime.add(DateTime.utc_now(), -3600 + x)
+          }
+        end)
+    )
+
+    def render(assigns) do
+      ~F\"""
+      <div>
+        <Button on_click="set_open">Initialize uncloaking</Button>
+        <BottomSheet id="custom_height_bottom_sheet">
+          <BottomSheet.Backdrop />
+          <BottomSheet.Panel class="h-[77%]">
+            <BottomSheet.Draghandle />
+            <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
+              I am gonna show you some data whether you like it or not!</h3>
+            <div class="p-2 bg-goku mt-2">
+              <Table items={model <- @models} selected={nil}>
+                <Column name="id" label="ID">
+                  {model.id}
+                </Column>
+                <Column name="first_name" label="First Name">
+                  {model.first_name}
+                </Column>
+                <Column name="last_name" label="Last Name">
+                  {model.last_name}
+                </Column>
+                <Column name="status" label="Status">
+                  {model.status}
+                </Column>
+                <Column name="created_at" label="Created at">
+                  <Datetime value={model.created_at} />
+                </Column>
+              </Table>
+            </div>
+            <div class="p-2">
+              <Button on_click="set_close" variant="ghost" full_width>
+                I don't wanna see this
+              </Button>
+            </div>
+          </BottomSheet.Panel>
+        </BottomSheet>
+      </div>
+      \"""
+    end
+
+    def handle_event("set_open", _, socket) do
+      BottomSheet.open("custom_height_bottom_sheet")
+      {:noreply, socket}
+    end
+
+    def handle_event("set_close", _, socket) do
+      BottomSheet.close("custom_height_bottom_sheet")
+      {:noreply, socket}
+    end
     """
   end
 end

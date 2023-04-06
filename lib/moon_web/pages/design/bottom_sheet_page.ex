@@ -51,79 +51,47 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
         title="BottomSheet props"
         data={[
           %{
-            :name => 'class',
-            :type => 'css_class',
+            :name => 'is_open',
+            :type => 'boolean',
             :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
+            :default => 'false',
+            :description => 'Whether the BottomSheet is open or not.'
           },
           %{
-            :name => 'default',
+            :name => 'on_close',
+            :type => 'event',
+            :required => 'No',
+            :default => '-',
+            :description => 'Called when the BottomSheet is dismissed.'
+          },
+          %{
+            :name => 'has_shadow',
+            :type => 'boolean',
+            :required => 'No',
+            :default => 'false',
+            :description => 'Whether the BottomSheet has a shadow or not.'
+          },
+          %{
+            :name => 'size',
+            :type => 'sm | md | lg',
+            :required => 'No',
+            :default => 'md',
+            :description =>
+              'The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value.'
+          },
+          %{
+            :name => 'panel',
+            :type => 'slot',
+            :required => 'Yes',
+            :default => '-',
+            :description => 'Panel of BottomSheet, see BottomSheet.Panel'
+          },
+          %{
+            :name => 'backdrop',
             :type => 'slot',
             :required => 'No',
             :default => '-',
-            :description => 'Defult content of Alert item'
-          },
-          %{
-            :name => 'title',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title of Alert item, see Alert.Title'
-          },
-          %{
-            :name => 'message',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message of Alert item, see Alert.Message'
-          },
-          %{
-            :name => 'close',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Close button slot of Alert item, see Alert.Close'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="BottomSheet.Draghandle props"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title of Alert item'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="BottomSheet.Title props"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message of Alert item'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
+            :description => 'Backdrop of BottomSheet, see BottomSheet.Backdrop'
           }
         ]}
       />
@@ -132,18 +100,38 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
         title="BottomSheet.Panel props"
         data={[
           %{
+            :name => 'draghandle',
+            :type => 'slot',
+            :required => 'No',
+            :default => '-',
+            :description => 'Draghandle of BottomSheet, see BottomSheet.Draghandle'
+          },
+          %{
+            :name => 'default',
+            :type => 'slot',
+            :required => 'No',
+            :default => '-',
+            :description => 'Content of BottomSheet'
+          },
+          %{
             :name => 'class',
             :type => 'css_class',
             :required => 'No',
             :default => '-',
             :description => 'Tailwind classes for customization'
-          },
+          }
+        ]}
+      />
+
+      <PropsTable
+        title="BottomSheet.Draghandle props"
+        data={[
           %{
-            :name => 'on_click',
-            :type => 'event',
+            :name => 'class',
+            :type => 'css_class',
             :required => 'No',
             :default => '-',
-            :description => 'Event to happen when close button is clicked'
+            :description => 'Tailwind classes for customization'
           }
         ]}
       />
@@ -157,13 +145,6 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
             :required => 'No',
             :default => '-',
             :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'on_click',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to happen when close button is clicked'
           }
         ]}
       />
@@ -176,9 +157,7 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
     <BottomSheet>
       <BottomSheet.Backdrop />
       <BottomSheet.Panel>
-        <BottomSheet.Draghandle>
-          <BottomSheet.Title>...</BottomSheet.Title>
-        </BottomSheet.Draghandle>
+        <BottomSheet.Draghandle />
       </BottomSheet.Panel>
     </BottomSheet>
     """
