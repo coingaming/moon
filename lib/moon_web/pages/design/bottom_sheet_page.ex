@@ -32,11 +32,8 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
         title="BottomSheet"
         image="facing/components/bottom_sheet.png"
       >
-        <p>
-          The bottom sheet component is a modified dialog that slides from the bottom of the screen, common pattern in mobile apps.</p>
-
-        <p>Bottom sheets can contain any anything so let your imagination fly.
-        </p>
+        <p>The bottom sheet component is a modified dialog that slides from the bottom of the screen, common pattern in mobile apps.</p>
+        <p>Bottom sheets can contain any anything so let your imagination fly.</p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>
