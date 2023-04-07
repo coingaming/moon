@@ -43,12 +43,17 @@ defmodule Moon.Helpers.MoonRender do
   def moon_live_component(module, props),
     do: moon_live_component(Map.put(props, :module, module))
 
-  defp get_render_function(module) do
+
+  def is_live(module) do
     %{kind: :component} = module.__live__()
-    &moon_live_component/1
+    true
   rescue
     [UndefinedFunctionError, MatchError] ->
-      &moon_component/1
+      false
+  end
+
+  defp get_render_function(module) do
+    if is_live(module),  do: &moon_live_component/1, else: &moon_component/1
   end
 
   @doc """

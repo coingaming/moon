@@ -4,12 +4,15 @@ defmodule Moon.Design.Form.Switch do
   use Moon.StatelessComponent
 
   alias Moon.Design.Switch
-  import Phoenix.HTML.Form, only: [input_id: 2]
+  # alias Phoenix.LiveView.JS
+  alias Moon.Design.Form.Field.Label
+
+  # import Phoenix.HTML.Form, only: [input_id: 2]
   import Moon.Helpers.Form, only: [value_is_true: 2]
-  alias Phoenix.LiveView.JS
 
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
+  prop(label, :string)
 
   prop(disabled, :boolean, default: false)
   prop(readonly, :boolean, default: false)
@@ -27,7 +30,7 @@ defmodule Moon.Design.Form.Switch do
 
   def render(assigns) do
     ~F"""
-    <div>
+    <Label {=@field} {=@form}>
       <Surface.Components.Form.Checkbox
         {=@field}
         {=@form}
@@ -42,7 +45,6 @@ defmodule Moon.Design.Form.Switch do
         {=@class}
         {=@testid}
         {=@id}
-        on_change={on_click(@form, @field)}
         checked={value_is_true(@form, @field)}
       >
         <:on_icon>
@@ -52,14 +54,15 @@ defmodule Moon.Design.Form.Switch do
           <#slot {@off_icon} />
         </:off_icon>
       </Switch>
-    </div>
+      {@label}
+    </Label>
     """
   end
 
-  defp on_click(form, field) do
-    JS.dispatch("moon2:update-switch",
-      detail: %{checked: !value_is_true(form, field)},
-      to: "##{input_id(form, field)}"
-    )
-  end
+  # defp on_click(form, field) do
+  #   JS.dispatch("moon2:update-switch",
+  #     detail: %{checked: !value_is_true(form, field)},
+  #     to: "##{input_id(form, field)}"
+  #   )
+  # end
 end

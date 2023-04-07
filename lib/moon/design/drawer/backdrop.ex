@@ -8,13 +8,5 @@ defmodule Moon.Design.Drawer.Backdrop do
   prop(testid, :string)
   prop(id, :string)
 
-  def render(assigns) do
-    ~F"""
-    <div
-      {=@id}
-      class={merge(["fixed inset-0 bg-zeno", "moon-backdrop", @class])}
-      data-testid={@testid}
-    />
-    """
-  end
+  defdelegate render(assigns), to: Moon.Design.Modal.Backdrop
 end

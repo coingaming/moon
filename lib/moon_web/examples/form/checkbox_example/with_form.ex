@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.WithForm do
 
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form
-  alias Moon.Design.Form.Field.Label
+  alias Moon.Design.Form.Field
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   prop(user_changeset, :any, default: User.changeset(%User{}))
@@ -19,10 +19,9 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.WithForm do
   def render(assigns) do
     ~F"""
     <Form for={@user_changeset} change="changed">
-      <Label size="sm" class="relative">
-        <Checkbox field={:agrees_to_terms_of_service} />
-        With label
-      </Label>
+      <Field field={:agrees_to_terms_of_service}>
+        <Checkbox label="With label" />
+      </Field>
     </Form>
     """
   end
@@ -31,7 +30,7 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.WithForm do
     """
     alias Moon.Design.Form.Checkbox
     alias Moon.Design.Form
-    alias Moon.Design.Form.Field.Label
+    alias Moon.Design.Form.Field
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
@@ -43,10 +42,9 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.WithForm do
     def render(assigns) do
       ~F\"""
       <Form for={@user_changeset} change="changed">
-        <Label size="sm">
-          <Checkbox field={:agrees_to_terms_of_service} />
-          With label
-        </Label>
+        <Field field={:agrees_to_terms_of_service}>
+          <Checkbox label="With label" />
+        </Field>
       </Form>
       \"""
     end

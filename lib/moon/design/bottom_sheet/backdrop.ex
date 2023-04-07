@@ -3,16 +3,9 @@ defmodule Moon.Design.BottomSheet.Backdrop do
 
   use Moon.StatelessComponent, slot: "backdrop"
 
-  alias Moon.Design.Modal.Backdrop
-
   prop(class, :css_class)
-
   prop(testid, :string)
   prop(id, :string)
 
-  def render(assigns) do
-    ~F"""
-    <Backdrop {=@id} class={@class} testid={@testid} />
-    """
-  end
+  defdelegate render(assigns), to: Moon.Design.Modal.Backdrop
 end

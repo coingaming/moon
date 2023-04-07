@@ -56,8 +56,8 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
       element.classList.add("hidden");}
 });
 
-window.addEventListener("moon2:update-switch", (event) => {
-  let checkbox = event.target;
-  checkbox.checked = event.detail.checked;
-  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
-});
+// window.addEventListener("moon2:update-switch", (event) => {
+//   let checkbox = event.target;
+//   checkbox.checked = event.detail.checked;
+//   checkbox.dispatchEvent(new Event("input", { bubbles: true }));
+// });

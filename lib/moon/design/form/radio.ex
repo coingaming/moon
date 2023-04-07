@@ -26,11 +26,15 @@ defmodule Moon.Design.Form.Radio do
   prop(option_module, :atom, default: __MODULE__.Option)
   prop(options, :keyword, default: [])
 
+  prop(hide_errors, :boolean)
+  prop(hint, :string)
+
   slot(option)
+  slot(default)
 
   def render(assigns) do
     ~F"""
-    <Field {=@field} {=@id} {=@testid} {=@class} attrs={role: "radiogroup"}>
+    <Field {=@field} {=@id} {=@testid} {=@class} {=@hide_errors} {=@hint} attrs={role: "radiogroup"}>
       {#if slot_assigned?(:option)}
         {#for option <- make_list(@option)}
           <#slot
@@ -52,6 +56,7 @@ defmodule Moon.Design.Form.Radio do
           {=@disabled}
         ><Indicator />{title}</Component>
       {/if}
+      <#slot />
     </Field>
     """
   end
