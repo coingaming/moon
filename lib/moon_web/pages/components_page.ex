@@ -197,9 +197,9 @@ defmodule MoonWeb.Pages.ComponentsPage do
           Tags represent a set of interactive keywords that help organise and categorise objects.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.Form.TextareaPage}
+          page={Pages.Design.Form.TextAreaPage}
           image="facing/components/textarea.png"
-          title="Textarea"
+          title="TextArea"
         >
           A form control for editing multi-line text.
         </ComponentsPageCard>

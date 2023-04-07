@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.TextareaExample.Default do
+defmodule MoonWeb.Examples.Form.TextAreaExample.Default do
   @moduledoc false
 
   use Moon.StatelessComponent

@@ -101,7 +101,7 @@ defmodule MoonWeb.Components.LeftMenu do
                               <SidebarLink route={Pages.Design.Form.InputPage}>Input</SidebarLink>
                               <SidebarLink route={Pages.Design.Form.RadioPage}>Radio</SidebarLink>
                               <SidebarLink route={Pages.Design.Form.SelectPage}>Select</SidebarLink>
-                              <SidebarLink route={Pages.Design.Form.TextareaPage}>Textarea</SidebarLink>
+                              <SidebarLink route={Pages.Design.Form.TextAreaPage}>TextArea</SidebarLink>
                             </div>
                           </:content>
                         </Accordion>

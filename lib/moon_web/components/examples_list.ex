@@ -4,7 +4,8 @@ defmodule MoonWeb.Components.ExamplesList do
   use Moon.StatelessComponent
 
   alias MoonWeb.Components.ExampleAndCode
-  alias Moon.Design.Dynamic
+
+  import Moon.Helpers.MoonRender, only: [moon: 1]
 
   prop(examples, :list, default: [])
 
@@ -12,7 +13,7 @@ defmodule MoonWeb.Components.ExamplesList do
     ~F"""
     {#for module <- @examples}
       <ExampleAndCode title={title(module)} id={"example-#{module}"}>
-        <:example><Dynamic {=module} id={"example-contents-#{module}"} /></:example>
+        <:example><.moon {=module} id={"example-contents-#{module}"} /></:example>
         <:code>{(Kernel.function_exported?(module, :code, 0) && module.code()) || ""}</:code>
       </ExampleAndCode>
     {/for}
@@ -21,10 +22,10 @@ defmodule MoonWeb.Components.ExamplesList do
 
   defp title(module) do
     "#{module}"
-        |> String.split(".")
-        |> Enum.at(-1)
-        |> String.replace(~r/([a-z])([A-Z])/, "\\1 \\2")
-        |> String.downcase()
-        |> String.capitalize()
+    |> String.split(".")
+    |> Enum.at(-1)
+    |> String.replace(~r/([a-z])([A-Z])/, "\\1 \\2")
+    |> String.downcase()
+    |> String.capitalize()
   end
 end

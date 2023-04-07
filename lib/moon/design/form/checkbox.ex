@@ -17,31 +17,34 @@ defmodule Moon.Design.Form.Checkbox do
   prop(testid, :string)
   prop(class, :string)
   prop(on_click, :event)
-  prop(selected_class, :css_class, default: "bg-piccolo")
-  prop(unselected_class, :css_class, default: "shadow-trunks")
 
   def render(assigns) do
     ~F"""
-    <Label size="sm" class="relative" {=@field} {=@form}>
-      <div class={"absolute top-1 ltr:left-1 rtl:right-1 inline-flex items-center select-none", @class, "opacity-disabled": @disabled}>
-        <Surface.Components.Form.Checkbox
-          {=@field}
-          {=@form}
-          click={!@readonly && @on_click}
-          class={
-            "z-10 absolute left-0 opacity-0 cursor-pointer",
-            "cursor-not-allowed select-none": @readonly || @disabled
-          }
-          opts={disabled: @disabled, readonly: @readonly, "data-testid": @testid}
-        />
-        <Checkbox
-          is_selected={value_is_true(@form, @field)}
-          {=@class}
-          {=@testid}
-          {=@selected_class}
-          {=@unselected_class}
-        />
-      </div>
+    <Label
+      size="sm"
+      class={
+        "relative inline-flex items-center select-none",
+        "opacity-disabled": @disabled,
+        "cursor-not-allowed select-none": @readonly || @disabled
+      }
+      {=@field}
+      {=@form}
+    >
+      <Surface.Components.Form.Checkbox
+        {=@field}
+        {=@form}
+        click={(!@readonly && !@disabled && @on_click) || nil}
+        class="opacity-0"
+        opts={disabled: @disabled || @readonly, readonly: @readonly}
+      />
+      <Checkbox
+        is_selected={value_is_true(@form, @field)}
+        class={merge([
+          "absolute top-1 ltr:left-0 rtl:right-0",
+          @class
+        ])}
+        {=@testid}
+      />
       {@label}
     </Label>
     """

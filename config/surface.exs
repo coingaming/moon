@@ -12,7 +12,6 @@ config :surface, :components, [
   {Moon.Design.Accordion.Item, propagate_context_to_slots: true},
   {Moon.Design.Drawer, propagate_context_to_slots: true},
   {Moon.Design.Dropdown, propagate_context_to_slots: true},
-  {Moon.Design.Dynamic, propagate_context_to_slots: false},
   {Moon.Design.Form, propagate_context_to_slots: true},
   {Moon.Design.Form.Field, propagate_context_to_slots: true},
   {Moon.Design.Form.Radio, propagate_context_to_slots: true},

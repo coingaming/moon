@@ -29,7 +29,12 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Checkbox" is_aria_support is_rtl_support image="facing/components/checkbox.png">
+      <ComponentPageDescription
+        title="Checkbox"
+        is_aria_support
+        is_rtl_support
+        image="facing/components/checkbox.png"
+      >
         <p>The checkbox is shown as a square box that is ticked (checked) when activated.</p>
         <p>Checkboxes are used to let a user select one or more options of a limited number of choices.</p>
       </ComponentPageDescription>
