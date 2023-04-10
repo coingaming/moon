@@ -10,6 +10,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Examples.Design.TabsExample
+  alias Moon.Design.Tabs
 
   data(breadcrumbs, :any,
     default: [
@@ -43,7 +44,14 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         </p>
       </ComponentPageDescription>
 
-      <Anatomy>{component_anatomy()}</Anatomy>
+      <Tabs id="anatomy-tabs" class="justify-between gap-6">
+        <h2 class="text-moon-24 font-medium">Anatomy</h2>
+        <Tabs.List tab_titles={["Long syntax", "Short syntax"]} />
+        <Tabs.Panels>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
+        </Tabs.Panels>
+      </Tabs>
 
       <ExamplesList examples={[
         TabsExample.Default,
@@ -152,7 +160,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
     """
   end
 
-  def component_anatomy do
+  def component_anatomy(:long) do
     """
     <Tabs>
       <Tabs.List>
@@ -160,6 +168,19 @@ defmodule MoonWeb.Pages.Design.TabsPage do
         <Tabs.Tab>...</Tabs.Tab>
         <Tabs.Tab>...</Tabs.Tab>
       </Tabs.List>
+      <Tabs.Panels>
+        <Tabs.Panel>...</Tabs.Panel>
+        <Tabs.Panel>...</Tabs.Panel>
+        <Tabs.Panel>...</Tabs.Panel>
+      </Tabs.Panels>
+    </Tabs>
+    """
+  end
+
+  def component_anatomy(:short) do
+    """
+    <Tabs>
+      <Tabs.List tab_titles={...}/>
       <Tabs.Panels>
         <Tabs.Panel>...</Tabs.Panel>
         <Tabs.Panel>...</Tabs.Panel>

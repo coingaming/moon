@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Design.Form.TextareaPage do
+defmodule MoonWeb.Pages.Design.Form.TextAreaPage do
   @moduledoc false
 
   use MoonWeb, :live_view
@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  alias MoonWeb.Examples.Form.TextareaExample
+  alias MoonWeb.Examples.Form.TextAreaExample
 
   data(breadcrumbs, :any,
     default: [
@@ -22,7 +22,7 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
       },
       %{
         to: "/components/v2/form/textarea",
-        name: "Textarea"
+        name: "TextArea"
       }
     ]
   )
@@ -30,20 +30,20 @@ defmodule MoonWeb.Pages.Design.Form.TextareaPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Textarea" image="facing/components/textarea.png">
+      <ComponentPageDescription title="TextArea" image="facing/components/textarea.png">
         <p>
           A form control for editing multi-line text.
         </p>
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        TextareaExample.Default,
-        TextareaExample.DisabledAndErrorr,
-        TextareaExample.Colours
+        TextAreaExample.Default,
+        TextAreaExample.DisabledAndErrorr,
+        TextAreaExample.Colours
       ]} />
 
       <PropsTable
-        title="Textarea props"
+        title="TextArea props"
         data={[
           %{
             :name => 'class',

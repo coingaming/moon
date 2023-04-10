@@ -1,4 +1,4 @@
-defmodule Moon.Design.Form.Textarea do
+defmodule Moon.Design.Form.TextArea do
   @moduledoc false
 
   use Moon.StatelessComponent

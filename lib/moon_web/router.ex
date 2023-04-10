@@ -69,8 +69,9 @@ defmodule MoonWeb.Router do
         live("/components/v2/dropdown/", MoonWeb.Pages.Design.DropdownPage)
         live("/components/v2/form/checkbox", MoonWeb.Pages.Design.Form.CheckboxPage)
         live("/components/v2/form/input", MoonWeb.Pages.Design.Form.InputPage)
+        live("/components/v2/form/radio", MoonWeb.Pages.Design.Form.RadioPage)
         live("/components/v2/form/select", MoonWeb.Pages.Design.Form.SelectPage)
-        live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextareaPage)
+        live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextAreaPage)
         live("/components/v2/icon_button", MoonWeb.Pages.Design.Button.IconButtonPage)
         live("/components/v2/loader", MoonWeb.Pages.Design.LoaderPage)
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
@@ -166,7 +167,6 @@ defmodule MoonWeb.Router do
         live("/tutorials/theming-and-visuals", MoonWeb.Pages.Theming.ThemingAndVisuals)
 
         live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
-        live("/test/live", MoonWeb.Pages.Test.LivePage)
       end
     end)
   end

@@ -3,6 +3,8 @@ defmodule Moon.Design.Tabs.List do
 
   use Moon.StatelessComponent, slot: "header"
 
+  alias Surface.Components.Dynamic.Component
+
   import Moon.Helpers.MakeList
 
   prop(id, :string)
@@ -40,14 +42,14 @@ defmodule Moon.Design.Tabs.List do
           />
         {/for}
       {#else}
-        <.moon
+        <Component
           :for={{title, tabindex} <- Enum.with_index(@tab_titles)}
           module={@tab_module}
           is_selected={tabindex == @selected}
           {=@size}
           {=tabindex}
           {=@on_change}
-        >{title}</.moon>
+        >{title}</Component>
       {/if}
     </div>
     """

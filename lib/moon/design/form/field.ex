@@ -9,13 +9,19 @@ defmodule Moon.Design.Form.Field do
 
   prop(form, :form, from_context: {Surface.Components.Form, :form})
   prop(field, :atom)
-  prop(class, :css_class)
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(label, :string)
   prop(hint, :string)
   prop(hide_errors, :boolean)
 
+  prop(attrs, :map)
+  prop(class, :css_class)
+  prop(id, :string)
+  prop(testid, :string)
+
   slot(default)
+
+  # opts={Map.merge(%{id: @id, "data-testid": @testid}, @attrs)}
 
   def render(assigns) do
     ~F"""

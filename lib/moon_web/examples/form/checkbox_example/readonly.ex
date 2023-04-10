@@ -5,9 +5,9 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
 
   use MoonWeb, :example
 
-  alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form
-  alias Moon.Design.Form.Field.Label
+  alias Moon.Design.Form.Checkbox
+  alias Moon.Design.Form.Field
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
   prop(user_changeset, :any,
@@ -29,29 +29,30 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
       change="changed"
       class="flex flex-wap gap-2 w-full items-center justify-around"
     >
-      <Label class="cursor-not-allowed" size="sm">
-        <Checkbox readonly field={:agrees_to_terms_of_service} />
-        Readonly checked
-      </Label>
-      <Label class="cursor-not-allowed" size="sm">
-        <Checkbox readonly field={:agrees_to_marketing_emails} />
-        Readonly unchecked
-      </Label>
+      <Field field={:agrees_to_terms_of_service}>
+        <Checkbox readonly label="Readonly checked" />
+      </Field>
+      <Field field={:agrees_to_marketing_emails}>
+        <Checkbox readonly label="Readonly unchecked" />
+      </Field>
     </Form>
     """
   end
 
   def code() do
     """
-    alias Moon.Design.Form.Checkbox
     alias Moon.Design.Form
-    alias Moon.Design.Form.Field.Label
+    alias Moon.Design.Form.Checkbox
+    alias Moon.Design.Form.Field
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
-    prop(user_changeset, :any, default: User.changeset(%User{
-      agrees_to_marketing_emails: false,
-      agrees_to_terms_of_service: true
-    }))
+    prop(user_changeset, :any,
+      default:
+        User.changeset(%User{
+          agrees_to_marketing_emails: false,
+          agrees_to_terms_of_service: true
+        })
+    )
 
     def handle_event("changed", %{"user" => params}, socket) do
       {:noreply, assign(socket, user_changeset: User.changeset(%User{}, params))}
@@ -59,15 +60,17 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
 
     def render(assigns) do
       ~F\"""
-      <Form for={@user_changeset} change="changed" class="flex flex-wap gap-2 w-full items-center justify-around">
-        <Label size="sm" class="relative">
-          <Checkbox readonly field={:agrees_to_terms_of_service} />
-          Readonly checked
-        </Label>
-        <Label size="sm" class="relative">
-          <Checkbox readonly field={:agrees_to_marketing_emails} />
-          Readonly unchecked
-        </Label>
+      <Form
+        for={@user_changeset}
+        change="changed"
+        class="flex flex-wap gap-2 w-full items-center justify-around"
+      >
+        <Field field={:agrees_to_terms_of_service}>
+          <Checkbox readonly label="Readonly checked" />
+        </Field>
+        <Field field={:agrees_to_marketing_emails}>
+          <Checkbox readonly label="Readonly unchecked" />
+        </Field>
       </Form>
       \"""
     end

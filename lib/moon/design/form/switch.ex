@@ -4,12 +4,14 @@ defmodule Moon.Design.Form.Switch do
   use Moon.StatelessComponent
 
   alias Moon.Design.Switch
+  alias Phoenix.LiveView.JS
+
   import Phoenix.HTML.Form, only: [input_id: 2]
   import Moon.Helpers.Form, only: [value_is_true: 2]
-  alias Phoenix.LiveView.JS
 
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
+  prop(label, :string)
 
   prop(disabled, :boolean, default: false)
   prop(readonly, :boolean, default: false)
@@ -52,6 +54,7 @@ defmodule Moon.Design.Form.Switch do
           <#slot {@off_icon} />
         </:off_icon>
       </Switch>
+      {@label}
     </div>
     """
   end
