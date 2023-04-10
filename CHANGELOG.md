@@ -1,3 +1,10 @@
+# [2.41.0](https://github.com/coingaming/moon/compare/v2.40.0...v2.41.0) (2023-04-10)
+
+
+### Features
+
+* Radio v2 component & some minor fixes ([0847f87](https://github.com/coingaming/moon/commit/0847f871a1d8556e0f50c802685b2aa795959402))
+
 # [2.40.0](https://github.com/coingaming/moon/compare/v2.39.4...v2.40.0) (2023-04-06)
 
 
