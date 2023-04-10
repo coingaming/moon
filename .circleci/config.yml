@@ -164,10 +164,6 @@ jobs:
             - deps
             - _build
             - ~/.mix
-      # TODO: remove this and move VERSION_PERSISTS=true to .env/other_env_vars when new elixir image will be deployed
-      - run:
-          name:       Semantic Release plugin update to 1.4.1
-          command:    npm update -g @heathmont/semantic-release-elixir-hex
       - run:
           name:       Semantic Release
           command:    VERSION_PERSISTS=true npx semantic-release --extends @heathmont/semantic-release-elixir-hex
