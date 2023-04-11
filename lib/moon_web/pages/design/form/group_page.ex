@@ -28,12 +28,10 @@ defmodule MoonWeb.Pages.Design.Form.GroupPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        is_in_progress
-        title="Group"
-        image="facing/components/...png"
-      >
-        <p></p>
+      <ComponentPageDescription is_rtl_support title="Group">
+        <p>
+          Combine different types of inputs into groups to save vertical space on your designs and also simplify form filling.
+        </p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>
@@ -41,41 +39,22 @@ defmodule MoonWeb.Pages.Design.Form.GroupPage do
       <ExamplesList examples={[
         GroupExample.Default,
         GroupExample.Horizontal,
+        GroupExample.Sizes,
+        GroupExample.States,
+        GroupExample.Variants
       ]} />
 
-      <PropsTable
-        title="Group props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_classs',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id of the component'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'data-testid attribute'
-          }
-        ]}
-      />
+      <PropsTable title="Group props" module={Moon.Design.Form.Group} />
     </Page>
     """
   end
 
   defp component_anatomy do
     """
-
+    <Group orientation="...">
+      <Input />
+      <Select />
+    </Group>
     """
   end
 end

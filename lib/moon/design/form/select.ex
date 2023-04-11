@@ -9,7 +9,7 @@ defmodule Moon.Design.Form.Select do
   prop(disabled, :boolean)
 
   prop(size, :string, values!: ~w(sm md lg), default: "md")
-  prop(class, :css_class)
+  prop(class, :css_class, from_context: :class)
   prop(prompt, :string)
 
   prop(id, :string)

@@ -31,7 +31,7 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
       <ComponentPageDescription
         is_in_progress
         title="<%= short %>"
-        image="facing/components/...png"
+        image="facing/components/<%= String.downcase(short) %>.png"
       >
         <p></p>
       </ComponentPageDescription>
@@ -42,32 +42,7 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
         <%= short %>Example.Default,
       ]} />
 
-      <PropsTable
-        title="<%= short %> props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_classs',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id of the component'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'data-testid attribute'
-          }
-        ]}
-      />
+      <PropsTable title="<%= short %> props" module={Moon.Design.<%= name %>} />
     </Page>
     """
   end
