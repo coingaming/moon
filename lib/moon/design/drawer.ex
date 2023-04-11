@@ -10,8 +10,10 @@ defmodule Moon.Design.Drawer do
   slot(backdrop)
 
   prop(on_close, :event)
+  prop(lg_persists, :boolean)
 
   prop(testid, :string)
+  prop(class, :css_class)
 
   def render(assigns) do
     ~F"""
@@ -20,8 +22,9 @@ defmodule Moon.Design.Drawer do
       phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-lg_persists={@lg_persists}
       aria-expanded={(@is_open && "true") || "false"}
-      class="fixed z-[99999] inset-0 hidden"
+      class={merge(["fixed z-[99999] inset-0 hidden", @class])}
       data-testid={@testid}
     >
       <#slot {@backdrop} />

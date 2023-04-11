@@ -1,7 +1,7 @@
 defmodule MoonWeb.Components.LeftMenu do
   @moduledoc false
 
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
   alias Moon.Icons.{
     GenericTrophy,
@@ -20,35 +20,18 @@ defmodule MoonWeb.Components.LeftMenu do
   alias MoonWeb.Pages
   alias MoonWeb.Components.SidebarLink
 
-  alias Moon.Design.Drawer.Backdrop
+  alias Moon.Design.Drawer
 
   prop(theme_name, :any)
   prop(direction, :string)
-  prop(uri, :any)
   prop(active_page, :any)
   prop(hide_items, :boolean)
-  prop(click, :event)
 
   def render(assigns) do
     ~F"""
-    <div
-      :on-click={@click}
-      phx-hook="Animation"
-      data-is_open={@is_open}
-      data-is_closing={"#{@is_closing}"}
-      class={
-        "hidden fixed lg:flex lg:flex-shrink-0 z-[10000] top-0",
-        @theme_name
-      }
-    >
-      <Backdrop class="lg:hidden" />
-
-      <div
-        data-animate_enter_class="ltr:animate-drawer_enter_left rtl:animate-drawer_enter_right"
-        data-animate_leave_class="ltr:animate-drawer_leave_left rtl:animate-drawer_leave_right"
-        class="fixed bg-goku w-80 inset-y-0 ltr:left-0 rtl:right-0 moon-panel"
-        :on-click-away="start_closing_drawer"
-      >
+    <Drawer lg_persists id="left-menu" class={"lg:flex lg:start-0 lg:inset-y-0 lg:w-80", @theme_name}>
+      <Drawer.Backdrop class="lg:hidden" />
+      <Drawer.Panel position="start" class="w-80">
         <nav class="flex flex-col grow gap-2">
           <div class="relative z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-10 pt-12 pb-6 px-5 lg:px-8 overflow-y-scroll">
             <div class="flex items-center flex-shrink-0 pl-3">
@@ -255,36 +238,8 @@ defmodule MoonWeb.Components.LeftMenu do
             <Version />
           </div>
         </nav>
-        <script>
-                window.addEventListener("phx:page-loading-stop", info => {
-              var activeLink = document.querySelectorAll('[data-moon-active]');
-              if (activeLink[0]) {
-                activeLink[0].scrollIntoView();
-              }
-            })
-          </script>
-      </div>
-    </div>
+      </Drawer.Panel>
+    </Drawer>
     """
-  end
-
-  def open("left-menu") do
-    send_update(__MODULE__, id: "left-menu", is_open: true)
-  end
-
-  def handle_event("set_open", _, socket) do
-    {:noreply, assign(socket, is_open: true)}
-  end
-
-  def handle_event("start_closing_drawer", _, socket) do
-    {:noreply, assign(socket, is_closing: true)}
-  end
-
-  def handle_event("set_close", _, socket) do
-    {:noreply, assign(socket, is_open: false, is_closing: false)}
-  end
-
-  def active_page_contains(active_page, module_path) do
-    String.contains?(to_string(active_page), to_string(module_path))
   end
 end

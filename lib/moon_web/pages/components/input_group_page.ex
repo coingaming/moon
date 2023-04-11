@@ -3,7 +3,9 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Autolayouts.TopToDown
+  # TODO: add this after rebase from main
+  # alias MoonWeb.Components.Facing.DeprecationWarning
+  # <DeprecationWarning name="Gropu" page={MoonWeb.Pages.Design.Form.GroupPage} />
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias Moon.Autolayouts.LeftToRight

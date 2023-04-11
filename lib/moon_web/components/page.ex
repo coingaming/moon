@@ -24,15 +24,8 @@ defmodule MoonWeb.Components.Page do
       class={"pt-16 lg:pt-0 bg-goku text-bulma flex", @class, @theme_name}
       dir={@direction}
     >
-      <LeftMenu
-        id="left-menu"
-        theme_name={@theme_name}
-        direction={@direction}
-        active_page={@active_page}
-        click={hide_left_menu()}
-        hide_items
-      />
-      <Header click={show_left_menu()} />
+      <LeftMenu theme_name={@theme_name} direction={@direction} active_page={@active_page} hide_items />
+      <Header id="page_header" />
       <div class={
         "min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
         @theme_name
