@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.Form.GroupExample.Default do
+defmodule MoonWeb.Examples.Design.Form.GroupExample.Horizontal do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -9,10 +9,10 @@ defmodule MoonWeb.Examples.Design.Form.GroupExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Group>
-      <Input />
-      <Input />
-      <Input />
+    <Group orientation="horizontal">
+      <Input placeholder="First" />
+      <Input placeholder="Second" />
+      <Input placeholder="Third" />
     </Group>
     """
   end

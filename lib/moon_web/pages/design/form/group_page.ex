@@ -40,6 +40,7 @@ defmodule MoonWeb.Pages.Design.Form.GroupPage do
 
       <ExamplesList examples={[
         GroupExample.Default,
+        GroupExample.Horizontal,
       ]} />
 
       <PropsTable
