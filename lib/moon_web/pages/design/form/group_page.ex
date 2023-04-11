@@ -28,7 +28,7 @@ defmodule MoonWeb.Pages.Design.Form.GroupPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_rtl_support title="Group">
+      <ComponentPageDescription is_rtl_support title="Group" image="facing/components/group.webp">
         <p>
           Combine different types of inputs into groups to save vertical space on your designs and also simplify form filling.
         </p>
