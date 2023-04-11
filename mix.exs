@@ -53,6 +53,7 @@ defmodule Moon.MixProject do
         "config/surface.exs",
         "assets",
         "priv/static/{assets,css,themes}",
+        "priv/templates",
         "mix.exs",
         "README.md",
         "CHANGELOG.md",

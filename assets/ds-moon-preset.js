@@ -427,6 +427,8 @@ module.exports = {
         `&[error]`,
         `:where([error]) &`,
       ]);
+      addVariant('not-last', '&:not(:last-child)');
+      addVariant('not-first', '&:not(:first-child)');
     }),
   ],  
 };

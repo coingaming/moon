@@ -56,6 +56,11 @@ Kindly check if you can clone this repo, if not, ask YulianaYarema @yarema184
 ## Tests
 All newly added components must come with tests. In order to run the tests, run `mix test`
 
+## Creating new component
+There is a mix task/generator for it. For creating new component `Moon.Design.Form.SomethingAwesome` use following command:
+`mix moon.gen.component Form.SomethingAwesome`
+It will create component, page and give instructions what to insert to router & left menu
+
 ## Preferences to consider when writing code
 
 In writing code try to remember following rules:
