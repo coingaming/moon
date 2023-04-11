@@ -33,13 +33,15 @@ defmodule Moon.Design.MenuItem do
       {=@as}
       {=@href}
       {=@role}
-      class={
-        "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
-        "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
-        @width,
-        @class,
-        "bg-heles": @is_active || @is_selected
-      }
+      class={merge([
+        [
+          "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
+          "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
+          @width,
+          "bg-heles": @is_active || @is_selected
+        ],
+        @class
+      ])}
       on_click={@on_click}
       values={is_selected: !@is_selected}
       testid={@testid}

@@ -16,6 +16,7 @@ defmodule MoonWeb.Components.SidebarLink do
     ~F"""
     <MenuItem
       as="a"
+      class="justify-start"
       attrs={
         "data-phx-link": "redirect",
         "data-phx-link-state": "push"
