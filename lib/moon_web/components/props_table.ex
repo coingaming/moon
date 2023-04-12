@@ -61,7 +61,7 @@ defmodule MoonWeb.Components.PropsTable do
            :default => "-",
            :description => prop[:doc] || "-"
          }
-      end))
+       end))
   end
 
   defp data_from_data(data) do
