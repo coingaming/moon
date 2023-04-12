@@ -79,8 +79,8 @@ defmodule Moon.Components.Table do
                   <td
                     class={merge([
                       "p-4",
-                      "#{inter_cell_border()}": !@has_no_cell_borders && col_index < Enum.count(@cols) - 1,
-                      "#{col.width}": true
+                      ["#{inter_cell_border()}": !@has_no_cell_borders && col_index < Enum.count(@cols) - 1],
+                      col.width
                     ])}
                     data-testid={"row-#{row_index}-col-#{col_index}"}
                   >
