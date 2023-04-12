@@ -43,10 +43,13 @@ defmodule Moon.Design.Accordion.Header do
         ])}
       >
         <#slot><span>{@title}</span></#slot>
-        <ControlsChevronDown class={merge([
-          ["text-trunks text-moon-16 transition-transform transition-200", "rotate-180": @is_open],
-          @icon_class
-        ])} />
+        <ControlsChevronDown class={
+          merge([
+            ["text-trunks text-moon-16 transition-200", "rotate-180": @is_open],
+            @icon_class
+          ]),
+          "transition-transform"
+        } />
       </button>
     </h3>
     """

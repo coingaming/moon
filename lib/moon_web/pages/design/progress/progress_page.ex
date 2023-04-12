@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Design.ProgressPage do
+defmodule MoonWeb.Pages.Design.Progress.LinearProgressPage do
   @moduledoc false
 
   use MoonWeb, :live_view

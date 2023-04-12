@@ -149,14 +149,14 @@ defmodule MoonWeb.Pages.ComponentsPage do
           Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.CircularProgressPage}
+          page={Pages.Design.Progress.CircularProgressPage}
           image="facing/components/circular_progress.png"
           title="CircularProgress"
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.ProgressPage}
+          page={Pages.Design.Progress.LinearProgressPage}
           image="facing/components/linear_progress.png"
           title="Progress"
         >
