@@ -47,8 +47,8 @@ defmodule Moon.Components.Table do
                 <th
                   class={merge([
                     "py-2 px-4 text-left font-normal",
-                    "cursor-pointer": col.name && col.sortable,
-                    "#{col.width}": true
+                    ["cursor-pointer": col.name && col.sortable],
+                    col.width
                   ])}
                   :on-click={(col.sortable && @sorting_click) || nil}
                   :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort_dir)}

@@ -6,13 +6,16 @@ defmodule MoonWeb.Pages.Design.TablePage do
   alias Moon.Components.Button
   alias Moon.Components.Drawer
   alias Moon.Design.Table
-  alias Moon.Components.Table.Column
+  alias Moon.Design.Table.Column
   alias Moon.Components.Renderers.Datetime
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias Moon.Components.Lego
+
+  alias MoonWeb.Components.ExamplesList
+  alias MoonWeb.Examples.Design.TableExample
 
   data(breadcrumbs, :any,
     default: [
@@ -23,88 +26,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
       %{
         to: "/components/table",
         name: "Table"
-      }
-    ]
-  )
-
-  data(props_info_array, :list,
-    default: [
-      %{
-        :name => 'cols',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'List of columns for the table'
-      },
-      %{
-        :name => 'items',
-        :type => 'generator',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Rows / data for the table. Each row should have unique `id` key'
-      },
-      %{
-        :name => 'selected',
-        :type => 'list[string]',
-        :required => 'No',
-        :default => '[]',
-        :description => 'list of ids of selected rows.'
-      },
-      %{
-        :name => 'is_cell_border',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Has borders between cells in row'
-      },
-      %{
-        :name => 'is_headless',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Does not have table/column headers'
-      },
-      %{
-        :name => 'row_gap',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'border-spacing-y-1',
-        :description => 'Gap between rows, TW class'
-      },
-      %{
-        :name => 'row_size',
-        :type => '2xs | xs | sm | md | lg | xl | 2xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Text and padding sizes for rows'
-      },
-      %{
-        :name => 'row_click',
-        :type => 'event',
-        :required => 'No',
-        :default => '-',
-        :description => 'When row is clicked'
-      },
-      %{
-        :name => 'row_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'bg-gohan',
-        :description => 'Regular row background, TW class'
-      },
-      %{
-        :name => 'selected_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'bg-beerus',
-        :description => 'Selected row background, TW class'
-      },
-      %{
-        :name => 'hover_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => '-',
-        :description => 'Hover row background, e.g. hover:bg-heles'
       }
     ]
   )
@@ -293,7 +214,12 @@ defmodule MoonWeb.Pages.Design.TablePage do
         <:code>{table_01_code()}</:code>
       </ExampleAndCode>
 
-      <PropsTable title="Table props" data={@props_info_array} />
+      <ExamplesList examples={[
+        TableExample.Responsive
+      ]} />
+
+      <PropsTable title="Table props" module={Table} />
+      <PropsTable title="Table.Column props" module={Table.Column} />
     </Page>
     """
   end
