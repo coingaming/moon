@@ -16,7 +16,7 @@ defmodule MoonWeb.Components.PropsTable do
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
       <Table
-        items={item <- (@module && data_from_module(@module)) || @data}
+        items={item <- (@module && data_from_module(@module)) || data_from_data(@data)}
         class="bg-goku p-4 rounded-moon-s-sm"
       >
         <Column name="name" label="Name" is_row_header>
@@ -61,6 +61,10 @@ defmodule MoonWeb.Components.PropsTable do
            :default => "-",
            :description => prop[:doc] || "-"
          }
-       end))
+      end))
+  end
+
+  defp data_from_data(data) do
+    Enum.with_index(data) |> Enum.map(fn {item, index} -> Map.merge(item, %{id: index}) end)
   end
 end
