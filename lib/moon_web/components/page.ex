@@ -18,7 +18,11 @@ defmodule MoonWeb.Components.Page do
 
   def render(assigns) do
     ~F"""
-    <div role="main" class={"layout bg-goku text-bulma flex", @class, @theme_name} dir={@direction}>
+    <div
+      role="main"
+      class={"pt-16 lg:pt-0 bg-goku text-bulma flex", @class, @theme_name}
+      dir={@direction}
+    >
       <LeftMenu theme_name={@theme_name} direction={@direction} active_page={@active_page} hide_items />
       <Header id="page_header" />
       <div class={

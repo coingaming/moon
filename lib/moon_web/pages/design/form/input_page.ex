@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "#",

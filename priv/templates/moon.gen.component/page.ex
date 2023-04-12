@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/v2/<%= path %>",

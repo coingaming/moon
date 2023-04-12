@@ -62,8 +62,9 @@ defmodule MoonWeb.Components.LeftMenu do
               Components
             </p>
             <div class="flex flex-col gap-1">
-              <SidebarLink route={Pages.Design.AlertPage}>Alert</SidebarLink>
               <SidebarLink route={Pages.Design.AccordionPage}>Accordion</SidebarLink>
+              <SidebarLink route={Pages.Design.AlertPage}>Alert</SidebarLink>
+              <SidebarLink route={Pages.Design.BottomSheetPage}>BottomSheet</SidebarLink>
               <SidebarLink route={Pages.Design.AvatarPage}>Avatar</SidebarLink>
               <SidebarLink route={Pages.Design.BreadcrumbPage}>Breadcrumb</SidebarLink>
 

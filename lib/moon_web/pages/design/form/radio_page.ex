@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "#",

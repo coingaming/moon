@@ -17,7 +17,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/v2/dropdown",
