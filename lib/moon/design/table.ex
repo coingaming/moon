@@ -69,9 +69,12 @@ defmodule Moon.Design.Table do
   @doc "data-testid attribute for a HTML container"
   prop(testid, :string)
 
+  @doc "additional classes for a HTML container"
+  prop(class, :css_class)
+
   def render(assigns) do
     ~F"""
-    <div class="w-full grid gap-4" {=@id} data-testid={@testid}>
+    <div class={merge(["w-full grid gap-4", @class])} {=@id} data-testid={@testid}>
       {#if @paging_info}
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}

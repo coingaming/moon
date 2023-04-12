@@ -3,8 +3,8 @@ defmodule MoonWeb.Components.PropsTable do
 
   use MoonWeb, :stateless_component
 
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias Moon.Design.Table
+  alias Moon.Design.Table.Column
 
   prop(title, :string, default: "Props")
   prop(data, :list)
@@ -15,7 +15,7 @@ defmodule MoonWeb.Components.PropsTable do
     ~F"""
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table items={item <- (@module && data_from_module(@module)) || @data}>
+      <Table items={item <- (@module && data_from_module(@module)) || @data} class="bg-goku p-4 rounded-moon-s-sm">
         <Column name="name" label="Name" is_row_header>
           {item.name}
         </Column>
@@ -37,9 +37,10 @@ defmodule MoonWeb.Components.PropsTable do
   end
 
   defp data_from_module(module) do
-    (module.__props__()
-     |> Enum.map(fn prop ->
+    (Enum.with_index(module.__props__())
+     |> Enum.map(fn {prop, index} ->
        %{
+          :id => index,
          :name => "#{prop[:name]}",
          :type => Keyword.get(prop[:opts], :values!, ["#{prop[:type]}"]) |> Enum.join(" | "),
          :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
@@ -47,9 +48,10 @@ defmodule MoonWeb.Components.PropsTable do
          :description => prop[:doc] || "-"
        }
      end)) ++
-      (module.__slots__()
-       |> Enum.map(fn prop ->
+      (Enum.with_index(module.__slots__())
+       |> Enum.map(fn {prop, index} ->
          %{
+          :id => index + 1000,
            :name => "#{prop[:name]}",
            :type => "slot",
            :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
