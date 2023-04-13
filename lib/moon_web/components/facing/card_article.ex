@@ -39,9 +39,9 @@ defmodule MoonWeb.Components.Facing.CardArticle do
 
   defp get_class(variant) do
     case variant do
-      "tall" -> "md:w-[18rem] md:h-[28rem] md:pe-9"
-      "wide" -> "md:w-[28rem] md:h-[18rem] md:pe-12"
-      _ -> "md:w-[24rem] md:h-[18rem] md:pe-12"
+      "tall" -> "md:w-72 md:h-[28rem] md:pe-9"
+      "wide" -> "md:w-[28rem] md:h-72 md:pe-12"
+      _ -> "md:w-96 md:h-72 md:pe-12"
     end
   end
 end

@@ -29,9 +29,9 @@ defmodule MoonWeb.Components.Facing.CardContributor do
 
   defp get_dimensions(variant) do
     case variant do
-      "tall" -> "md:w-[24rem] md:h-[28rem]"
-      "tiny" -> "md:w-[16rem] md:h-[20rem]"
-      _ -> "md:w-[24rem] md:h-[24rem]"
+      "tall" -> "md:w-96 md:h-[28rem]"
+      "tiny" -> "md:w-64 md:h-80"
+      _ -> "md:w-96 md:h-96"
     end
   end
 end

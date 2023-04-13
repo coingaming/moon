@@ -3,9 +3,6 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
 
   use MoonWeb, :live_view
 
-  # TODO: add this after rebase from main
-  # alias MoonWeb.Components.Facing.DeprecationWarning
-  # <DeprecationWarning name="Gropu" page={MoonWeb.Pages.Design.Form.GroupPage} />
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
   alias Moon.Autolayouts.LeftToRight
@@ -17,6 +14,7 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   alias MoonWeb.Components.PropsTable
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.Button
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -89,9 +87,13 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <TopToDown>
         <ComponentPageDescription title="Input Group">
-          <p>
-            !!! Input Group is supported only in size `xlarge`.
-          </p>
+          <DeprecationWarning
+            name="Group"
+            href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.GroupPage,
+              theme_name: @theme_name,
+              direction: @direction
+            )}
+          />
         </ComponentPageDescription>
 
         <ExampleAndCode id="group_1" title="Default">
