@@ -3,7 +3,7 @@ defmodule Moon.Design.Table.Column do
 
   use Moon.StatelessComponent, slot: "cols"
 
-  @doc "The used for sorting"
+  @doc "Is used for sorting"
   prop(name, :string)
   @doc "The title of the column"
   prop(label, :string)

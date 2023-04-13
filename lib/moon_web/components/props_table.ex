@@ -15,10 +15,7 @@ defmodule MoonWeb.Components.PropsTable do
     ~F"""
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table
-        items={item <- (@module && data_from_module(@module)) || data_from_data(@data)}
-        class="bg-goku p-4 rounded-moon-s-sm"
-      >
+      <Table items={item <- @data || data_from_module(@module)} class="p-4">
         <Column name="name" label="Name" is_row_header>
           {item.name}
         </Column>
@@ -40,10 +37,9 @@ defmodule MoonWeb.Components.PropsTable do
   end
 
   defp data_from_module(module) do
-    (Enum.with_index(module.__props__())
-     |> Enum.map(fn {prop, index} ->
+    (module.__props__()
+     |> Enum.map(fn prop ->
        %{
-         :id => index,
          :name => "#{prop[:name]}",
          :type => Keyword.get(prop[:opts], :values!, ["#{prop[:type]}"]) |> Enum.join(" | "),
          :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
@@ -51,10 +47,9 @@ defmodule MoonWeb.Components.PropsTable do
          :description => prop[:doc] || "-"
        }
      end)) ++
-      (Enum.with_index(module.__slots__())
-       |> Enum.map(fn {prop, index} ->
+      (module.__slots__()
+       |> Enum.map(fn prop ->
          %{
-           :id => index + 1000,
            :name => "#{prop[:name]}",
            :type => "slot",
            :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
@@ -62,9 +57,5 @@ defmodule MoonWeb.Components.PropsTable do
            :description => prop[:doc] || "-"
          }
        end))
-  end
-
-  defp data_from_data(data) do
-    Enum.with_index(data) |> Enum.map(fn {item, index} -> Map.merge(item, %{id: index}) end)
   end
 end
