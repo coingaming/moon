@@ -1,3 +1,10 @@
+## [2.41.1](https://github.com/coingaming/moon/compare/v2.41.0...v2.41.1) (2023-04-13)
+
+
+### Bug Fixes
+
+* [MDS-485] Update sidebar ([#603](https://github.com/coingaming/moon/issues/603)) ([65bbfb0](https://github.com/coingaming/moon/commit/65bbfb04432a591a4b56f508875b88872bfe9cac))
+
 # [2.41.0](https://github.com/coingaming/moon/compare/v2.40.0...v2.41.0) (2023-04-10)
 
 
