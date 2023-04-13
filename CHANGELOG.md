@@ -1,3 +1,10 @@
+## [2.41.3](https://github.com/coingaming/moon/compare/v2.41.2...v2.41.3) (2023-04-13)
+
+
+### Bug Fixes
+
+* Table v2 will sort items given if sort property is set ([#608](https://github.com/coingaming/moon/issues/608)) ([e2481c5](https://github.com/coingaming/moon/commit/e2481c5bce44cb27acfb8245e0a9f9d6a5ff8a9a))
+
 ## [2.41.2](https://github.com/coingaming/moon/compare/v2.41.1...v2.41.2) (2023-04-13)
 
 
