@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/v2/breadcrumb",

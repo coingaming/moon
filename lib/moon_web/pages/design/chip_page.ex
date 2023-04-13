@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Design.ChipPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/v2/chip",

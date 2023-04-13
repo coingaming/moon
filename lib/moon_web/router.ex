@@ -64,7 +64,12 @@ defmodule MoonWeb.Router do
         live("/components/v2/breadcrumb/", MoonWeb.Pages.Design.BreadcrumbPage)
         live("/components/v2/button/", MoonWeb.Pages.Design.ButtonPage)
         live("/components/v2/chip/", MoonWeb.Pages.Design.ChipPage)
-        live("/components/v2/circularprogress/", MoonWeb.Pages.Design.CircularProgressPage)
+
+        live(
+          "/components/v2/circularprogress/",
+          MoonWeb.Pages.Design.Progress.CircularProgressPage
+        )
+
         live("/components/v2/drawer/", MoonWeb.Pages.Design.DrawerPage)
         live("/components/v2/dropdown/", MoonWeb.Pages.Design.DropdownPage)
         live("/components/v2/form/checkbox", MoonWeb.Pages.Design.Form.CheckboxPage)
@@ -78,7 +83,7 @@ defmodule MoonWeb.Router do
         live("/components/v2/menu_item", MoonWeb.Pages.Design.MenuItemPage)
         live("/components/v2/modal", MoonWeb.Pages.Design.ModalPage)
         live("/components/v2/popover", MoonWeb.Pages.Design.PopoverPage)
-        live("/components/v2/progress", MoonWeb.Pages.Design.ProgressPage)
+        live("/components/v2/progress", MoonWeb.Pages.Design.Progress.LinearProgressPage)
         live("/components/v2/snackbar", MoonWeb.Pages.Design.SnackbarPage)
         live("/components/v2/switch", MoonWeb.Pages.Design.SwitchPage)
         live("/components/v2/table", MoonWeb.Pages.Design.TablePage)

@@ -17,6 +17,7 @@ export default {
     },
 
     hideElement() {
+        if(this.el.dataset.lg_persists !== undefined && document.body.clientWidth >= 1024) return;
         this.panel.classList.remove(...this.panel.dataset.animate_enter_class.split(" "));
         this.panel.classList.add(...this.panel.dataset.animate_leave_class.split(" "));
         if (this.backdrop) {

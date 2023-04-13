@@ -8,7 +8,6 @@ defmodule MoonWeb.Components.Page do
   alias MoonWeb.Components.Header
   alias MoonWeb.Components.LeftMenu
   alias MoonWeb.Components.ThemesSelect
-  alias Phoenix.LiveView.JS
 
   prop(class, :css_class)
   prop(breadcrumbs, :any)
@@ -24,17 +23,10 @@ defmodule MoonWeb.Components.Page do
       class={"pt-16 lg:pt-0 bg-goku text-bulma flex", @class, @theme_name}
       dir={@direction}
     >
-      <LeftMenu
-        id="left-menu"
-        theme_name={@theme_name}
-        direction={@direction}
-        active_page={@active_page}
-        click={hide_left_menu()}
-        hide_items
-      />
-      <Header click={show_left_menu()} />
+      <LeftMenu theme_name={@theme_name} direction={@direction} active_page={@active_page} hide_items />
+      <Header id="page_header" />
       <div class={
-        "min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col lg:rounded-tl-3xl lg:rounded-bl-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12",
+        "min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col ltr:lg:rounded-tl-3xl rtl:lg:rounded-tr-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12 lg:pb-52",
         @theme_name
       }>
         <div class="flex flex-col grow max-w-screen-xl">
@@ -53,13 +45,5 @@ defmodule MoonWeb.Components.Page do
       </div>
     </div>
     """
-  end
-
-  def show_left_menu(js \\ %JS{}) do
-    JS.remove_class(js, "hidden", to: "#left-menu-container")
-  end
-
-  def hide_left_menu(js \\ %JS{}) do
-    JS.add_class(js, "hidden", to: "#left-menu-container")
   end
 end

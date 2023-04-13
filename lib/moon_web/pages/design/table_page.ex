@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/table",

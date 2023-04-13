@@ -19,7 +19,7 @@ defmodule Moon.Design.Accordion do
   slot(item, required: true)
 
   def handle_event("on_change_default", _params = %{"value" => index}, socket) do
-    list = socket.assigns[:value]
+    list = make_list(socket.assigns[:value])
 
     {:noreply,
      assign(socket,
