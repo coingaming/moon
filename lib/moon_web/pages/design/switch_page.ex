@@ -70,7 +70,6 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        # MoonWeb.Examples.FormExample.Registration,
         SwitchExample.Default,
         SwitchExample.Sizes,
         SwitchExample.Disabled,

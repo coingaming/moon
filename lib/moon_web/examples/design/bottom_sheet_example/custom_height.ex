@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
   alias Moon.Design.BottomSheet
 
   alias Moon.Design.Table
-  alias Moon.Components.Table.Column
+  alias Moon.Design.Table.Column
   alias Moon.Components.Renderers.Datetime
 
   data(models, :list,

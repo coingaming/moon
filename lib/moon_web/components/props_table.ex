@@ -3,8 +3,8 @@ defmodule MoonWeb.Components.PropsTable do
 
   use MoonWeb, :stateless_component
 
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias Moon.Design.Table
+  alias Moon.Design.Table.Column
 
   prop(title, :string, default: "Props")
   prop(data, :list)
@@ -15,7 +15,7 @@ defmodule MoonWeb.Components.PropsTable do
     ~F"""
     <section class="flex flex-col gap-6">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table items={item <- (@module && data_from_module(@module)) || @data}>
+      <Table items={item <- @data || data_from_module(@module)} class="p-4">
         <Column name="name" label="Name" is_row_header>
           {item.name}
         </Column>
