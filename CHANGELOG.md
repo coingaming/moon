@@ -1,3 +1,10 @@
+## [2.41.2](https://github.com/coingaming/moon/compare/v2.41.1...v2.41.2) (2023-04-13)
+
+
+### Bug Fixes
+
+* responsive table example & some component fix ([#606](https://github.com/coingaming/moon/issues/606)) ([c5b6e3b](https://github.com/coingaming/moon/commit/c5b6e3b5837b773bfe235652230ab2b8b8313923))
+
 ## [2.41.1](https://github.com/coingaming/moon/compare/v2.41.0...v2.41.1) (2023-04-13)
 
 
