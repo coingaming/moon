@@ -10,8 +10,8 @@ defmodule Moon.Design.Table do
   @doc "List of  selected ids, or just id, or [], or nil"
   prop(selected, :any, default: [])
 
-  @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]"
-  prop(sort, :keyword)
+  @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
+  prop(sort, :keyword, default: [])
 
   @doc "The list of items to be rendered. If item does not have id - than index is used instead"
   prop(items, :generator, required: true)
@@ -105,7 +105,7 @@ defmodule Moon.Design.Table do
         </tr>
       </thead>
       <tbody>
-        {#for {item, row_index} <- Enum.with_index(add_index_as(@items))}
+        {#for {item, row_index} <- Enum.with_index(@items |> add_index_as |> sort_items(@sort))}
           <tr
             class={
               (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
@@ -137,7 +137,17 @@ defmodule Moon.Design.Table do
     """
   end
 
-  def toggle_sort_dir(sort_dir) do
+  @doc "sorts items by sort given"
+  def sort_items(items, sort) do
+    import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
+
+    reverse(sort)
+    |> reduce(items, fn {field, sort_dir}, list ->
+      sort_by(list, & &1[field], &if(sort_dir == "ASC", do: &1 < &2, else: &1 > &2))
+    end)
+  end
+
+  defp toggle_sort_dir(sort_dir) do
     if "#{sort_dir}" == "ASC" do
       "DESC"
     else

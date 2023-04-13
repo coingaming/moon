@@ -26,21 +26,7 @@ defmodule MoonWeb.Examples.Design.TableExample.Sorting do
         %{"sort-dir" => sort_dir, "sort-key" => sort_key},
         socket
       ) do
-    {:noreply, socket |> assign(sort: ["#{sort_key}": sort_dir]) |> sort_models()}
-  end
-
-  def update(assigns, socket) do
-    {:ok, socket |> assign(assigns) |> sort_models()}
-  end
-
-  defp sort_models(socket) do
-    [{field, sort_dir} | _] = socket.assigns.sort
-
-    assign(socket,
-      models:
-        socket.assigns.models
-        |> Enum.sort_by(& &1[field], &if(sort_dir == "ASC", do: &1 < &2, else: &1 > &2))
-    )
+    {:noreply, socket |> assign(sort: ["#{sort_key}": sort_dir])}
   end
 
   def render(assigns) do
@@ -89,21 +75,7 @@ defmodule MoonWeb.Examples.Design.TableExample.Sorting do
           %{"sort-dir" => sort_dir, "sort-key" => sort_key},
           socket
         ) do
-      {:noreply, socket |> assign(sort: ["\#{sort_key}": sort_dir]) |> sort_models()}
-    end
-
-    def update(assigns, socket) do
-      {:ok, socket |> assign(assigns) |> sort_models()}
-    end
-
-    defp sort_models(socket) do
-      [{field, sort_dir} | _] = socket.assigns.sort
-
-      assign(socket,
-        models:
-          socket.assigns.models
-          |> Enum.sort_by(& &1[field], &if(sort_dir == "ASC", do: &1 < &2, else: &1 > &2))
-      )
+      {:noreply, socket |> assign(sort: ["\#{sort_key}": sort_dir])}
     end
 
     def render(assigns) do
