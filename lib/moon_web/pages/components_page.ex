@@ -121,6 +121,14 @@ defmodule MoonWeb.Pages.ComponentsPage do
         </ComponentsPageCard>
 
         <ComponentsPageCard
+          page={Pages.Design.Form.GroupPage}
+          image="facing/components/group.png"
+          title="Group"
+        >
+          Combine different types of inputs into groups to save vertical space on your designs and also simplify form filling.
+        </ComponentsPageCard>
+
+        <ComponentsPageCard
           page={Pages.Design.LoaderPage}
           image="facing/components/loader.png"
           title="Loader"
@@ -162,6 +170,15 @@ defmodule MoonWeb.Pages.ComponentsPage do
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
+
+        <ComponentsPageCard
+          page={Pages.Design.Form.RadioPage}
+          image="facing/components/radio_button.png"
+          title="Radio"
+        >
+          Radio buttons are used to represent a group of choices whereby users can only select one option.
+        </ComponentsPageCard>
+
         <ComponentsPageCard
           page={Pages.Design.Form.SelectPage}
           image="facing/components/select.png"

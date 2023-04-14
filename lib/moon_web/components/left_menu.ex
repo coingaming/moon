@@ -107,6 +107,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 </Accordion.Item>
               </Accordion>
 
+              <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
               <SidebarLink route={Pages.Design.LoaderPage}>Loader</SidebarLink>
               <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
               <SidebarLink route={Pages.Design.ModalPage}>Modal</SidebarLink>
@@ -211,7 +212,6 @@ defmodule MoonWeb.Components.LeftMenu do
 
                       <SidebarLink route={Pages.Components.DrawerPage}>Drawer *</SidebarLink>
                       <SidebarLink route={Pages.Components.FileInputPage}>File Input *</SidebarLink>
-                      <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
                       <SidebarLink route={Pages.Components.LabelPage}>Label</SidebarLink>
                       <SidebarLink route={Pages.Components.ListItemsPage}>List items</SidebarLink>
                       <SidebarLink route={Pages.Components.LoaderPage}>Loader</SidebarLink>
