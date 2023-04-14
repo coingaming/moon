@@ -113,7 +113,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <IndentedCodeSnippet>{mix_exs_aliases()}</IndentedCodeSnippet>
       <p>Setup assets</p>
       <CodeSnippet>mix assets.setup</CodeSnippet>
-      <p>
+      <p class="overflow-x-auto">
         Add theme-related class (find it in imported theme CSS file) and direction
         related attribute to your root HTML component, e.g. body in
         lib/my_super_app_web/components/layouts/root.html.heex
