@@ -1,3 +1,10 @@
+## [2.41.4](https://github.com/coingaming/moon/compare/v2.41.3...v2.41.4) (2023-04-14)
+
+
+### Bug Fixes
+
+* deps versions changed and getting-started updated ([5255bdc](https://github.com/coingaming/moon/commit/5255bdca199183e82823e488445108442b687af4))
+
 ## [2.41.3](https://github.com/coingaming/moon/compare/v2.41.2...v2.41.3) (2023-04-13)
 
 
