@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.IndentedCodeSnippet do
 
   def render(assigns) do
     ~F"""
-    <pre class="theme-moon-dark w-full bg-goku overflow-scroll p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot /></pre>
+    <pre class="theme-moon-dark w-full bg-goku overflow-scroll overflow-x-auto p-4 text-moon-14 text-bulma rounded-moon-s-sm"><#slot /></pre>
     """
   end
 end

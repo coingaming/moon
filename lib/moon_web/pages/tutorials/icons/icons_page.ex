@@ -19,7 +19,7 @@ defmodule MoonWeb.Pages.Components.IconsPage do
     default: [
       %{
         to: "#",
-        name: "Components v1"
+        name: "Components"
       },
       %{
         to: "/components/icons",
