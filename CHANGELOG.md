@@ -1,3 +1,10 @@
+## [2.41.5](https://github.com/coingaming/moon/compare/v2.41.4...v2.41.5) (2023-04-14)
+
+
+### Bug Fixes
+
+* props table, icons page, manifest page, components page ([#609](https://github.com/coingaming/moon/issues/609)) ([be917e1](https://github.com/coingaming/moon/commit/be917e1a446c35435587d7857cdc84b4fec4d676))
+
 ## [2.41.4](https://github.com/coingaming/moon/compare/v2.41.3...v2.41.4) (2023-04-14)
 
 
