@@ -5,7 +5,7 @@ defmodule MoonWeb.Router do
     plug(:accepts, ["html"])
     plug(:fetch_session)
     plug(:fetch_live_flash)
-    plug(:put_root_layout, {MoonWeb.LayoutView, :root})
+    plug(:put_root_layout, {MoonWeb.Layouts, :root})
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
@@ -36,8 +36,8 @@ defmodule MoonWeb.Router do
   end
 
   live_session :default, on_mount: MoonWeb.Hooks.SetGlobalParams do
-    Enum.each(["/", "/:theme_name/:direction"], fn theme_path ->
-      scope theme_path do
+    # Enum.each(["/", "/:theme_name/:direction"], fn theme_path ->
+      # scope theme_path do
         pipe_through(:browser)
 
         live("/", MoonWeb.Pages.MainPage)
@@ -173,7 +173,7 @@ defmodule MoonWeb.Router do
         live("/tutorials/theming-and-visuals", MoonWeb.Pages.Theming.ThemingAndVisuals)
 
         live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
-      end
-    end)
+      # end
+    # end)
   end
 end

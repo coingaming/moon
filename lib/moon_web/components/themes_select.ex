@@ -79,6 +79,6 @@ defmodule MoonWeb.Components.ThemesSelect do
       }) do
     theme_name = "#{theme}-#{if is_dark, do: "dark", else: "light"}"
     direction = if is_rtl, do: "rtl", else: "ltr"
-    Routes.live_path(MoonWeb.Endpoint, active_page, theme_name, direction, %{})
+    live_path(MoonWeb.Endpoint, active_page, %{theme_name: theme_name, direction: direction})
   end
 end
