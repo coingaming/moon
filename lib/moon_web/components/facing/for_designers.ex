@@ -17,12 +17,12 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
       <div class="flex gap-6 align-center justify-between grow 3xl:flex-col 3xl:justify-end">
         <FigmaIcon />
         <h2 class="text-moon-24 grow 3xl:grow-0">
-          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage, theme_name: @theme_name, direction: @direction)}>
+          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage)}>
             For designers.
           </a>
         </h2>
         <div class="3xl:absolute 3xl:top-6 ltr:3xl:right-6 rtl:3xl:left-6 cursor-pointer">
-          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage, theme_name: @theme_name, direction: @direction)}>
+          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage)}>
             <ArrowsTopRight font_size="2rem" />
           </a>
         </div>

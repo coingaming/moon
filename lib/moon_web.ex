@@ -21,7 +21,8 @@ defmodule MoonWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: MoonWeb,
+      use Phoenix.Controller,
+        namespace: MoonWeb,
         formats: [:html, :json],
         layouts: [html: MoonWeb.Layouts]
 
