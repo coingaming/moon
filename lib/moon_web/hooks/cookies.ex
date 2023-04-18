@@ -6,13 +6,13 @@ defmodule MoonWeb.Hooks.Cookies do
   import Phoenix.LiveView, only: [attach_hook: 4, push_event: 3]
   import Surface.Components.Context, only: [put: 2]
 
-  def on_mount(:default, _params, session, socket) do
+  def on_mount(:default, params, session, socket) do
     {:cont,
      socket
      |> attach_hook(:set_global_params, :handle_event, &handle_event/3)
      |> assign(
-       theme_name: session["theme_name"] || "theme-moon-light",
-       direction: session["direction"] || "ltr",
+       theme_name: params["theme_name"] || session["theme_name"] || "theme-moon-light",
+       direction:  params["direction"] || session["direction"] || "ltr",
        active_page: socket.view
      )
      |> put(active_page: socket.view)}
