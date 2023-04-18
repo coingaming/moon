@@ -5,10 +5,7 @@ defmodule Moon.Components.Lego do
 
   use Moon.StatelessComponent
 
-  def render(assigns), do: ~F"
-"
-
-  def checkbox(assigns) do
+  def render(assigns) do
     ~F"""
     <div class={
       "z-0 left-0 rounded-sm w-4 h-4 inline-block",

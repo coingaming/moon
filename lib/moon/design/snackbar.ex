@@ -52,7 +52,6 @@ defmodule Moon.Design.Snackbar do
         <#slot {@trigger} />
       </div>
       <div
-        :hook
         data-is_open={@is_open}
         data-animate_class={animate_class(@position)}
         data-timeout={@timeout}
@@ -69,6 +68,7 @@ defmodule Moon.Design.Snackbar do
         id={"#{@id}-snack"}
         data-testid={"#{@testid}-snackbar"}
         aria-hidden={(@is_open && "true") || "false"}
+        :hook="default"
       >
         <div class={merge([
           "flex w-fit max-w-xs items-center gap-4 p-4 bg-gohan shadow-moon-lg rounded-moon-s-sm",
