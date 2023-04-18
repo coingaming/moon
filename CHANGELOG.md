@@ -1,3 +1,10 @@
+## [2.41.6](https://github.com/coingaming/moon/compare/v2.41.5...v2.41.6) (2023-04-18)
+
+
+### Bug Fixes
+
+* phoenix 1.7.2 in da house ([#612](https://github.com/coingaming/moon/issues/612)) ([5f6bad4](https://github.com/coingaming/moon/commit/5f6bad4fc8d8e3c3048a130ee6190d4dba1d4ac5))
+
 ## [2.41.5](https://github.com/coingaming/moon/compare/v2.41.4...v2.41.5) (2023-04-14)
 
 
