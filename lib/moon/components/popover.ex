@@ -56,7 +56,7 @@ defmodule Moon.Components.Popover do
 
   def render(assigns) do
     ~F"""
-    <div :hook={true} data-testid={@testid} data-placement={@placement}>
+    <div :hook="default" data-testid={@testid} data-placement={@placement}>
       <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
         <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot {@content} /></div>
