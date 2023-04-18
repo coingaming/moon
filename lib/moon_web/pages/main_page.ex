@@ -38,8 +38,8 @@ defmodule MoonWeb.Pages.MainPage do
             </p>
           </div>
           <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-30">
-            <ForDevelopers {=@theme_name} {=@direction} />
-            <ForDesigners {=@theme_name} {=@direction} />
+            <ForDevelopers />
+            <ForDesigners />
           </div>
           <Updates />
           <Future />
