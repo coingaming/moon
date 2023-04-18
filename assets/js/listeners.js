@@ -63,21 +63,3 @@ window.addEventListener("moon2:update-switch", (event) => {
 });
 
 
-// app-specific listeners
-window.addEventListener("phx:page-loading-stop", info => {
-  var activeLink = document.querySelectorAll('[data-moon-active]');
-  if (activeLink[0]) {
-    activeLink[0].scrollIntoView();
-  }
-})
-
-function setCookie(cname, cvalue) {
-  const d = new Date();
-  d.setFullYear(d.getFullYear() + 1);
-  let expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-window.addEventListener("phx:set-cookie", e => {
-  setCookie(e.detail.name, e.detail.value);
-})

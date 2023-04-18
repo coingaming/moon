@@ -21,16 +21,12 @@ defmodule MoonWeb.Components.LeftMenu do
 
   alias Moon.Design.Drawer
 
-  prop(active_page, :any)
+  prop(active_page, :module)
   prop(hide_items, :boolean)
 
   def render(assigns) do
     ~F"""
-    <Drawer
-      lg_persists
-      id="left-menu"
-      class="lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50"
-    >
+    <Drawer lg_persists id="left-menu" class="lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50">
       <Drawer.Backdrop class="lg:hidden" />
       <Drawer.Panel position="start" class="w-80 bg-goku shadow-moon-none">
         <nav

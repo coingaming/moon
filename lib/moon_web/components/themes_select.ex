@@ -27,14 +27,22 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
           <MenuItem as="a" class="cursor-default">
             {(String.contains?(@theme_name, "-dark") && "Dark mode") || "Light mode"}
-            <Switch size="xs" checked={String.contains?(@theme_name, "-dark")} on_change={"toggle_dark_mode", target: :live_view}>
+            <Switch
+              size="xs"
+              checked={String.contains?(@theme_name, "-dark")}
+              on_change={"toggle_dark_mode", target: :live_view}
+            >
               <:on_icon><OtherMoon /></:on_icon>
               <:off_icon><OtherSun /></:off_icon>
             </Switch>
           </MenuItem>
           <MenuItem as="a" class="cursor-default">
             {String.upcase(@direction)} mode
-            <Switch size="xs" checked={@direction == "rtl"} on_change={"toggle_direction", target: :live_view}>
+            <Switch
+              size="xs"
+              checked={@direction == "rtl"}
+              on_change={"toggle_direction", target: :live_view}
+            >
               <:on_icon><TextRightAlign /></:on_icon>
               <:off_icon><TextLeftAlign /></:off_icon>
             </Switch>

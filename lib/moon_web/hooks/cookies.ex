@@ -10,27 +10,33 @@ defmodule MoonWeb.Hooks.Cookies do
     {:cont,
      socket
      |> attach_hook(:set_global_params, :handle_event, &handle_event/3)
-     |> set_params(
+     |> assign(
        theme_name: session["theme_name"] || "theme-moon-light",
        direction: session["direction"] || "ltr",
        active_page: socket.view
-     )}
+     )
+     |> put(active_page: socket.view)}
   end
 
   def handle_event("toggle_dark_mode", %{"value" => is_dark}, socket) do
-    theme_name = String.replace(socket.assigns.theme_name, ["-light", "-dark"], "")
-      <> if is_dark == "true", do: "-dark", else: "-light"
-    {:halt, socket |> set_params(theme_name: theme_name) |> push_event("set-cookie", %{name: "theme_name", value: theme_name })}
+    theme_name =
+      String.replace(socket.assigns.theme_name, ["-light", "-dark"], "") <>
+        if is_dark == "true", do: "-dark", else: "-light"
+
+    {:halt,
+     socket
+     |> assign(theme_name: theme_name)
+     |> push_event("set-cookie", %{name: "theme_name", value: theme_name})}
   end
 
-  def handle_event("toggle_direction",  %{"value" => is_rtl}, socket) do
+  def handle_event("toggle_direction", %{"value" => is_rtl}, socket) do
     direction = if is_rtl == "true", do: "rtl", else: "ltr"
-    {:halt, socket |> set_params(direction: direction) |> push_event("set-cookie", %{name: "direction", value: direction })}
+
+    {:halt,
+     socket
+     |> assign(direction: direction)
+     |> push_event("set-cookie", %{name: "direction", value: direction})}
   end
 
   def handle_event(_, _, socket), do: {:cont, socket}
-
-  defp set_params(socket, values) do
-    socket |> assign(values) |> put(values)
-  end
 end

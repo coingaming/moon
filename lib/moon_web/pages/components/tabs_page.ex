@@ -100,10 +100,7 @@ defmodule MoonWeb.Pages.Components.TabsPage do
       <ComponentPageDescription title="Tabs">
         <DeprecationWarning
           name="Tabs"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TabsPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TabsPage)}
         />
       </ComponentPageDescription>
 

@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Page do
   prop(breadcrumbs, :any)
   prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
-  prop(active_page, :any)
+  prop(active_page, :module)
   slot(default)
 
   def render(assigns) do
@@ -27,11 +27,7 @@ defmodule MoonWeb.Components.Page do
       <Header id="page_header" />
       <div class="min-h-screen lg:ms-80 bg-gohan flex-1 w-0 flex flex-col ltr:lg:rounded-tl-3xl rtl:lg:rounded-tr-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12 lg:pb-52">
         <div class="flex flex-col grow max-w-screen-xl">
-          <Breadcrumbs
-            class="pb-12 hidden lg:block"
-            :if={@breadcrumbs}
-            breadcrumbs={@breadcrumbs}
-          />
+          <Breadcrumbs class="pb-12 hidden lg:block" :if={@breadcrumbs} breadcrumbs={@breadcrumbs} />
           <div class="flex flex-col gap-12 flex-1 relative focus:outline-none">
             <#slot />
           </div>
