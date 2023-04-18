@@ -213,7 +213,9 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       "postcss": "^8.4.5",
       "postcss-import": "^14.0.2",
       "tailwindcss": "^3.1.7",
-      "tailwindcss-rtl": "^0.9.0"
+      "tailwindcss-rtl": "^0.9.0",
+
+      "@popperjs/core": "^2.11.6"
     },
     """
   end
@@ -280,7 +282,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     defp aliases do
       [
         setup: ["deps.get", "cmd npm install --prefix assets"],
-        "assets.setup": ["cmd --cd assets npm i && cmd --cd deps/moon/assets npm i"],
+        "assets.setup": ["cmd --cd assets npm i"],
         "assets.clean": ["cmd --cd assets rm -rf node_modules"],
         "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
       ]

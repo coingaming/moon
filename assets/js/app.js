@@ -2,6 +2,7 @@ import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import hooks from './hooks'
+import _hooks from './_hooks'
 import "./listeners"
 import S3 from "./uploaders/s3"
 
@@ -15,7 +16,7 @@ let csrfToken = document
 
 let liveSocket = new LiveSocket('/live', Socket, {
   uploaders,
-  hooks,
+  hooks: {...hooks, ..._hooks},
   params: { _csrf_token: csrfToken }
 })
 

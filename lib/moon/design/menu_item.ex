@@ -5,7 +5,7 @@ defmodule Moon.Design.MenuItem do
   alias Moon.Components.AsComponent
   alias Moon.Components.Lego
 
-  prop(title, :string, required: true)
+  prop(title, :string)
   prop(text, :string)
 
   prop(is_active, :boolean, default: false)

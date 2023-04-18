@@ -16,7 +16,7 @@ defmodule MoonWeb.Components.PropsTable do
     <section class="flex flex-col gap-6 w-full overflow-x-auto">
       <div class="text-moon-24 font-semibold">{@title}</div>
       <Table items={item <- @data || data_from_module(@module)} class="p-4">
-        <Column name="name" label="Name" is_row_header>
+        <Column name="name" label="Name">
           {item.name}
         </Column>
         <Column name="type" label="Type">

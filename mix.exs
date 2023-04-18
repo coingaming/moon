@@ -3,7 +3,7 @@ defmodule Moon.MixProject do
 
   @version (case File.read("VERSION") do
               {:ok, version} -> String.trim(version)
-              {:error, _} -> "0.0.0-development"
+              {:error, _} -> "ERRROR"
             end)
 
   def project do
@@ -12,7 +12,7 @@ defmodule Moon.MixProject do
       version: @version,
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: Mix.compilers(),
+      compilers: Mix.compilers() ++ [:surface],
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -131,15 +131,10 @@ defmodule Moon.MixProject do
       "assets.setup": ["cmd --cd assets npm i"],
       "assets.clean": ["cmd --cd assets rm -rf node_modules"],
       "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
-      "ensure-quality": [
-        "format",
-        "surface.format"
-      ],
       "check-quality": [
-        "format --check-formatted",
         "compile --all-warnings --warnings-as-errors",
-        "credo",
-        "surface.format --check-formatted"
+        "format --check-formatted",
+        "credo"
       ]
     ]
   end

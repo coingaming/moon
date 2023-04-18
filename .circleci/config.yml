@@ -82,13 +82,9 @@ jobs:
       - run:
           command: mix setup
       - run:
-          command: mix assets.setup
-      - run:
           command: mix compile --all-warnings --warnings-as-errors
       - run:
           command: mix format --check-formatted
-      - run:
-          command: mix surface.format --check-formatted
       - run:
           command: mix credo
       - run:

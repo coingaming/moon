@@ -37,6 +37,10 @@ config :surface, :components, [
   # put here configs that are not required by our users
 ]
 
+config :surface, :compiler,
+  hooks_output_dir: "assets/js/_hooks",
+  css_output_file: "assets/css/_components.css"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

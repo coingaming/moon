@@ -52,7 +52,7 @@ defmodule Moon.Design.Snackbar do
         <#slot {@trigger} />
       </div>
       <div
-        phx-hook="Snackbar"
+        :hook={true}
         data-is_open={@is_open}
         data-animate_class={animate_class(@position)}
         data-timeout={@timeout}
