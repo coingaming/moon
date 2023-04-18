@@ -32,10 +32,7 @@ defmodule MoonWeb.Pages.Components.Progress.LinearPage do
       <ComponentPageDescription title="Linear Progress">
         <DeprecationWarning
           name="Progress"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Progress.LinearProgressPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Progress.LinearProgressPage)}
         />
       </ComponentPageDescription>
 

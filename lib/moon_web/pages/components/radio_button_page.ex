@@ -83,10 +83,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
       <ComponentPageDescription title="RadioButton">
         <DeprecationWarning
           name="Radio"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.RadioPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.RadioPage)}
         />
       </ComponentPageDescription>
 

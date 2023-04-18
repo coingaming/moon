@@ -1,7 +1,7 @@
 defmodule MoonWeb.Components.ThemesSelect do
   @moduledoc false
 
-  use MoonWeb, :stateful_component
+  use MoonWeb, :stateless_component
 
   alias Moon.Design.Popover
   alias Moon.Design.Button.IconButton
@@ -10,24 +10,8 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   alias Moon.Icons.{TextLeftAlign, TextRightAlign, OtherMoon, OtherSun}
 
-  prop(theme_name, :string, from_context: :theme_name)
-  prop(direction, :string, values: ["ltr", "rtl"], from_context: :direction)
-  prop(active_page, :any, from_context: :active_page)
-
-  data(is_rtl, :boolean)
-  data(is_dark, :boolean)
-  data(theme, :string)
-
-  def update(assigns, socket) do
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(
-       is_rtl: assigns.direction == "rtl",
-       is_dark: String.contains?(assigns.theme_name, "-dark"),
-       theme: String.replace(assigns.theme_name, ["-light", "-dark"], "")
-     )}
-  end
+  prop(theme_name, :string)
+  prop(direction, :string, values!: ["ltr", "rtl"])
 
   def render(assigns) do
     ~F"""
@@ -42,15 +26,23 @@ defmodule MoonWeb.Components.ThemesSelect do
         </Popover.Trigger>
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
           <MenuItem as="a" class="cursor-default">
-            {(@is_dark && "Dark mode") || "Light mode"}
-            <Switch size="xs" checked={@is_dark} on_change="toggle_dark_mode">
+            {(String.contains?(@theme_name, "-dark") && "Dark mode") || "Light mode"}
+            <Switch
+              size="xs"
+              checked={String.contains?(@theme_name, "-dark")}
+              on_change={"toggle_dark_mode", target: :live_view}
+            >
               <:on_icon><OtherMoon /></:on_icon>
               <:off_icon><OtherSun /></:off_icon>
             </Switch>
           </MenuItem>
           <MenuItem as="a" class="cursor-default">
-            {(@is_rtl && "RTL mode") || "LTR mode"}
-            <Switch size="xs" checked={@is_rtl} on_change="toggle_direction">
+            {String.upcase(@direction)} mode
+            <Switch
+              size="xs"
+              checked={@direction == "rtl"}
+              on_change={"toggle_direction", target: :live_view}
+            >
               <:on_icon><TextRightAlign /></:on_icon>
               <:off_icon><TextLeftAlign /></:off_icon>
             </Switch>
@@ -59,26 +51,5 @@ defmodule MoonWeb.Components.ThemesSelect do
       </Popover>
     </div>
     """
-  end
-
-  def handle_event("toggle_dark_mode", _params, socket) do
-    socket = assign(socket, :is_dark, !socket.assigns.is_dark)
-    {:noreply, redirect(socket, to: generate_path(socket.assigns))}
-  end
-
-  def handle_event("toggle_direction", _params, socket) do
-    socket = assign(socket, :is_rtl, !socket.assigns.is_rtl)
-    {:noreply, redirect(socket, to: generate_path(socket.assigns))}
-  end
-
-  def generate_path(%{
-        active_page: active_page,
-        theme: theme,
-        is_rtl: is_rtl,
-        is_dark: is_dark
-      }) do
-    theme_name = "#{theme}-#{if is_dark, do: "dark", else: "light"}"
-    direction = if is_rtl, do: "rtl", else: "ltr"
-    Routes.live_path(MoonWeb.Endpoint, active_page, theme_name, direction, %{})
   end
 end

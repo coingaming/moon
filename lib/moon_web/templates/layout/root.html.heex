@@ -4,29 +4,31 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Moon", suffix: " · Phoenix Framework" %>
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Moon" %>
+    </.live_title>
 
-    <link rel="stylesheet" href={static_path(@conn, "/themes/betadda.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/bitcasino.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/lab.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/livecasino.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/moon.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/partners.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/sportsbet.css")} />
-    <link rel="stylesheet" href={static_path(@conn, "/themes/tradeart.css")} />
+    <link rel="stylesheet" href={~p"/themes/betadda.css"} />
+    <link rel="stylesheet" href={~p"/themes/bitcasino.css"} />
+    <link rel="stylesheet" href={~p"/themes/lab.css"} />
+    <link rel="stylesheet" href={~p"/themes/livecasino.css"} />
+    <link rel="stylesheet" href={~p"/themes/moon.css"} />
+    <link rel="stylesheet" href={~p"/themes/partners.css"} />
+    <link rel="stylesheet" href={~p"/themes/sportsbet.css"} />
+    <link rel="stylesheet" href={~p"/themes/tradeart.css"} />
 
-    <link rel="stylesheet" href={static_path(@conn, "/assets/app.css")} />
+    <link rel="stylesheet" href={~p"/assets/app.css"} />
 
-    <link rel="apple-touch-icon" sizes="180x180" href={static_path(@conn, "/images/favs/apple-touch-icon.png")} />
-    <link rel="icon" type="image/png" sizes="32x32" href={static_path(@conn, "/images/favs/favicon-32x32.png")} />
-    <link rel="icon" type="image/png" sizes="16x16" href={static_path(@conn, "/images/favs/favicon-16x16.png")} />
-    <link rel="manifest" href={static_path(@conn, "/images/favs/site.webmanifest")} />
-    <link rel="mask-icon" href={static_path(@conn, "/images/favs/safari-pinned-tab.svg")} />
-    <link rel="shortcut icon" href={static_path(@conn, "/images/favs/favicon.ico")} />
-    <meta name="msapplication-config" content={static_path(@conn, "/images/favs/browserconfig.xml")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={~p"/images/favs/apple-touch-icon.png"} />
+    <link rel="icon" type="image/png" sizes="32x32" href={~p"/images/favs/favicon-32x32.png"} />
+    <link rel="icon" type="image/png" sizes="16x16" href={~p"/images/favs/favicon-16x16.png"} />
+    <link rel="manifest" href={~p"/images/favs/site.webmanifest"} />
+    <link rel="mask-icon" href={~p"/images/favs/safari-pinned-tab.svg"} />
+    <link rel="shortcut icon" href={~p"/images/favs/favicon.ico"} />
+    <meta name="msapplication-config" content={~p"/images/favs/browserconfig.xml"} />
 
-    <script defer type="text/javascript" src={static_path(@conn, "/assets/app.js")}></script>
+    <script defer type="text/javascript" src={~p"/assets/app.js"}></script>
 
   </head>
   <body>

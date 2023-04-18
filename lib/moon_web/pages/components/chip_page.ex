@@ -80,10 +80,7 @@ defmodule MoonWeb.Pages.Components.ChipPage do
       <ComponentPageDescription title="Chip">
         <DeprecationWarning
           name="Chip"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ChipPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ChipPage)}
         />
       </ComponentPageDescription>
 

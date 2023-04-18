@@ -9,9 +9,6 @@ defmodule MoonWeb.Components.Facing.DeprecationWarning do
   prop(name, :string)
   prop(page, :module)
 
-  prop(theme_name, :string, from_context: :theme_name)
-  prop(direction, :string, from_context: :direction)
-
   def render(assigns) do
     ~F"""
     <p class="text-krillin font-medium">NB! The component will be deprecated soon.</p>
@@ -25,10 +22,7 @@ defmodule MoonWeb.Components.Facing.DeprecationWarning do
     """
   end
 
-  defp page_href(%{page: page, theme_name: theme_name, direction: direction}) do
-    live_path(MoonWeb.Endpoint, page,
-      theme_name: theme_name,
-      direction: direction
-    )
+  defp page_href(%{page: page}) do
+    live_path(MoonWeb.Endpoint, page)
   end
 end

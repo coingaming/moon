@@ -38,10 +38,7 @@ defmodule MoonWeb.Pages.Components.Dialog.ModalPage do
       <ComponentPageDescription title="Modal">
         <DeprecationWarning
           name="Modal"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ModalPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ModalPage)}
         />
       </ComponentPageDescription>
 

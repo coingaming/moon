@@ -110,10 +110,7 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
       <ComponentPageDescription title="Breadcrumb">
         <DeprecationWarning
           name="Breadcrumb"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.BreadcrumbPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.BreadcrumbPage)}
         />
       </ComponentPageDescription>
       <ExampleAndCode title="Five and more items" id="breadcrumbs_2">

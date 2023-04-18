@@ -1,7 +1,6 @@
 import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
-import Alpine from 'alpinejs'
 import hooks from './hooks'
 import "./listeners"
 import S3 from "./uploaders/s3"
@@ -17,13 +16,6 @@ let csrfToken = document
 let liveSocket = new LiveSocket('/live', Socket, {
   uploaders,
   hooks,
-  dom: {
-    onBeforeElUpdated(from, to) {
-      if (from.__x) {
-        Alpine.clone(from.__x, to)
-      }
-    }
-  },
   params: { _csrf_token: csrfToken }
 })
 
@@ -37,3 +29,21 @@ liveSocket.connect()
 // >> liveSocket.enableProfiling();
 window.liveSocket = liveSocket
 
+// app-specific listeners
+window.addEventListener("phx:page-loading-stop", info => {
+  var activeLink = document.querySelectorAll('[data-moon-active]');
+  if (activeLink[0]) {
+    activeLink[0].scrollIntoView();
+  }
+})
+
+function setCookie(cname, cvalue) {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() + 1);
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+window.addEventListener("phx:set-cookie", e => {
+  setCookie(e.detail.name, e.detail.value);
+})

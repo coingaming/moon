@@ -83,10 +83,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       <ComponentPageDescription title="List Item">
         <DeprecationWarning
           name="MenuItem"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.MenuItemPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.MenuItemPage)}
         />
       </ComponentPageDescription>
       <ExampleAndCode title="Medium size (default)" id="line_items_1">

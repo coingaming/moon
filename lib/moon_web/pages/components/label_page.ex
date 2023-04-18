@@ -80,13 +80,7 @@ defmodule MoonWeb.Pages.Components.LabelPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Label">
-        <DeprecationWarning
-          name="Tag"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TagPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-        />
+        <DeprecationWarning name="Tag" href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TagPage)} />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Colours" id="label_1">
