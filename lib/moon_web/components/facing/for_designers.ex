@@ -8,9 +8,6 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
   alias MoonWeb.Components.Facing.FigmaIcon
   alias MoonWeb.Pages.GettingStartedPage
 
-  prop(theme_name, :string, default: "theme-moon-light")
-  prop(direction, :string, default: "ltr")
-
   def render(assigns) do
     ~F"""
     <div class="z-20 theme-moon-dark text-bulma relative flex grow p-6 gap-6 theme-tokens rounded-moon-s-lg bg-for-designers 3xl:flex-col 3xl:h-96 3xl:w-80 3xl:rounded-br-none 3xl:absolute 3xl:top-0 ltr:3xl:right-80 rtl:3xl:left-80">

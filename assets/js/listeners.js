@@ -56,6 +56,14 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
       element.classList.add("hidden");}
 });
 
+window.addEventListener("moon2:update-switch", (event) => {
+  let checkbox = event.target;
+  checkbox.checked = event.detail.checked;
+  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
+});
+
+
+// app-specific listeners
 window.addEventListener("phx:page-loading-stop", info => {
   var activeLink = document.querySelectorAll('[data-moon-active]');
   if (activeLink[0]) {
@@ -63,8 +71,13 @@ window.addEventListener("phx:page-loading-stop", info => {
   }
 })
 
-window.addEventListener("moon2:update-switch", (event) => {
-  let checkbox = event.target;
-  checkbox.checked = event.detail.checked;
-  checkbox.dispatchEvent(new Event("input", { bubbles: true }));
-});
+function setCookie(cname, cvalue) {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() + 1);
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+window.addEventListener("phx:set-cookie", e => {
+  setCookie(e.detail.name, e.detail.value);
+})

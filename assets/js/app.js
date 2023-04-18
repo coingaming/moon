@@ -1,7 +1,6 @@
 import 'phoenix_html'
 import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
-import Alpine from 'alpinejs'
 import hooks from './hooks'
 import "./listeners"
 import S3 from "./uploaders/s3"
@@ -17,13 +16,6 @@ let csrfToken = document
 let liveSocket = new LiveSocket('/live', Socket, {
   uploaders,
   hooks,
-  dom: {
-    onBeforeElUpdated(from, to) {
-      if (from.__x) {
-        Alpine.clone(from.__x, to)
-      }
-    }
-  },
   params: { _csrf_token: csrfToken }
 })
 

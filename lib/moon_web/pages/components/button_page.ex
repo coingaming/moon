@@ -87,10 +87,7 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
       <ComponentPageDescription title="Button">
         <DeprecationWarning
           name="Button"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ButtonPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.ButtonPage)}
         />
       </ComponentPageDescription>
 
