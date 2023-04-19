@@ -52,7 +52,7 @@ defmodule Moon.MixProject do
         "lib",
         "config/surface.exs",
         "assets",
-        "priv/static/{assets,css,themes}",
+        "priv/static/{themes,moon.js}",
         "priv/templates",
         "mix.exs",
         "README.md",
@@ -89,14 +89,15 @@ defmodule Moon.MixProject do
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
       {:moon_icons, "~> 0.1"},
+      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
 
       # test
       {:excoveralls, "~> 0.10", only: :test},
       {:floki, ">= 0.27.0", only: :test},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:snapshy, "~> 0.3.0", only: :test},
 
       # dev
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:surface_formatter, "~> 0.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
@@ -127,15 +128,20 @@ defmodule Moon.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "cmd npm install --prefix assets"],
-      "assets.setup": ["cmd --cd assets npm i"],
-      "assets.clean": ["cmd --cd assets rm -rf node_modules"],
-      "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
+      setup: ["deps.get", "assets.setup", "assets.build"],
+      "assets.setup": ["cmd --cd assets npm i", "esbuild.install --if-missing"],
+      "assets.build": ["cmd --cd assets npm run build", "esbuild default"],
+      "assets.deploy": [
+        "cmd --cd assets npm run deploy",
+        "NODE_ENV=production esbuild default --minify",
+        "phx.digest"
+      ],
       "check-quality": [
         "compile --all-warnings --warnings-as-errors",
         "format --check-formatted",
         "credo"
-      ]
+      ],
+      fromat: ["format"]
     ]
   end
 end

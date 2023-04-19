@@ -73,7 +73,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <CodeSnippet>mix deps.get</CodeSnippet>
       <p>Make sure your phoenix* dependenciesversions do not conflict with the same in moon library.</p>
 
-      <p>Add surface configurations to the project's confix.exs:</p>
+      <p>Add surface & esbuild configurations to the project's confix.exs:</p>
       <IndentedCodeSnippet>{config_exs_code()}</IndentedCodeSnippet>
 
       <p>Compile project and dependencies</p>
@@ -149,6 +149,19 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
 
     ...
     import_config "../deps/moon/config/surface.exs"
+
+    config :surface, :components, [
+      # put here your app configs for surface
+    ]
+
+    config :esbuild,
+      version: "0.16.4",
+      default: [
+        args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+        cd: Path.expand("../assets", __DIR__),
+        env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:./node_modules"}
+      ]
+
     """
   end
 
@@ -184,7 +197,14 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       feel free to copy and modify it
     */
     @import '../../deps/moon/priv/static/themes/moon.css';
+
+    /*
+      Not really required. Only few classes for components
+      are from there. All tailwing imports are already there,
+      so you can remove them from your own app.css
+    */
     @import '../../deps/moon/assets/css/app.css';
+
     """
   end
 
@@ -193,11 +213,9 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     # assets.package.json
 
     "scripts": {
-      "deploy_css": "NODE_ENV=production tailwindcss --postcss --minify -i css/app.css -o ../priv/static/assets/app.css",
-      "deploy_js": "NODE_PATH=../deps esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --minify ",
-      "deploy": "NODE_PATH=./node_modules npm run deploy_css && npm run deploy_js",
-      "watch_css": "NODE_PATH=./node_modules tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss --watch",
-      "watch_js": "NODE_PATH=../deps:./node_modules esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
+      "deploy": "NODE_ENV=production tailwindcss -i css/app.css -o ../priv/static/assets/app.css --postcss --minify",
+      "build": "tailwindcss -i css/app.css -o ../priv/static/assets/app.css --postcss",
+      "watch": "tailwindcss -i css/app.css -o ../priv/static/assets/app.css --postcss --watch"
     },
     """
   end
@@ -209,7 +227,6 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     "dependencies": {
       "@tailwindcss/forms": "^0.4.0",
       "autoprefixer": "^10.4.2",
-      "esbuild": "^0.13.9",
       "postcss": "^8.4.5",
       "postcss-import": "^14.0.2",
       "tailwindcss": "^3.1.7",
@@ -238,7 +255,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     """
     // assets/tailwind.config.js
 
-    const tailwind_config = require("../deps/moon/assets/tailwind.config.js")
+    const tailwind_config = require("../deps/moon/assets/tailwind.config.js");
 
     tailwind_config.content = [
       "../lib/**/*.ex",
@@ -250,7 +267,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       "../deps/moon/lib/**/*.heex",
       "../deps/moon/lib/**/*.eex",
       "../deps/moon/assets/js/**/*.js",
-    ]
+    ];
     module.exports = tailwind_config;
     """
   end
@@ -262,8 +279,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     ...
     import Hooks from "./_hooks"
 
-    // the next two imports should be added
-    import "../../deps/moon/assets/js/listeners"
+    // the next line should be added
     import MoonHooks from "../../deps/moon/assets/js/hooks"
 
     let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
@@ -281,10 +297,14 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     ...
     defp aliases do
       [
-        setup: ["deps.get", "cmd npm install --prefix assets"],
-        "assets.setup": ["cmd --cd assets npm i"],
-        "assets.clean": ["cmd --cd assets rm -rf node_modules"],
-        "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
+        setup: ["deps.get", "assets.setup", "assets.build"],
+        "assets.setup": ["cmd --cd assets npm i", "esbuild.install --if-missing"],
+        "assets.build": ["cmd --cd assets npm run build", "esbuild default"],
+        "assets.deploy": [
+          "cmd --cd assets npm run deploy",
+          "NODE_ENV=production esbuild default --minify",
+          "phx.digest"
+        ]
       ]
     end
     """
@@ -293,7 +313,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
   defp layout_modifications() do
     """
     <!-- lib/my_super_app_web/components/layouts/root.html.heex -->
-
+    <!-- class name should be taken from theme imported -->
     ...
     <body class="... theme-moon-light" dir="ltr">
     ...

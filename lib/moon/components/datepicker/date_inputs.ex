@@ -32,7 +32,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
         field={@start_date_field}
         class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus"
         opts={
-          :hook,
+          "phx-hook": "Datepicker",
           placeholder: "dd/mm/yyyy",
           "data-pending-val": Helpers.format_date(@internal_start_date, @with_time)
         }
@@ -43,7 +43,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
         field={@end_date_field}
         class="text-moon-12 rounded date-icon-hidden w-36 moon-text-input border-beerus"
         opts={
-          :hook,
+          "phx-hook": "Datepicker",
           placeholder: "dd/mm/yyyy, --:--",
           "data-pending-val": Helpers.format_date(@internal_end_date, @with_time)
         }
@@ -54,7 +54,7 @@ defmodule Moon.Components.Datepicker.DateInputs do
         field={@end_date_field}
         class="text-moon-12 rounded date-icon-hidden w-28 moon-text-input border-beerus"
         opts={
-          :hook,
+          "phx-hook": "Datepicker",
           placeholder: "dd/mm/yyyy",
           "data-pending-val": Helpers.format_date(@internal_end_date, @with_time)
         }

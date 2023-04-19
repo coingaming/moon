@@ -3,7 +3,6 @@ import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import hooks from './hooks'
 import _hooks from './_hooks'
-import "./listeners"
 import S3 from "./uploaders/s3"
 
 let uploaders = {
