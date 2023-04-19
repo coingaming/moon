@@ -34,7 +34,7 @@ jobs:
           command: mix setup
       - run:
           name: "Clean assets"
-          command: mix phx.digest.clean --all && mix assets.clean
+          command: mix assets.clean
       - run:
           name: "Install apps dependencies"
           command: mix assets.setup

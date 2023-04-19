@@ -131,6 +131,7 @@ defmodule Moon.MixProject do
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["cmd --cd assets npm i", "esbuild.install --if-missing"],
       "assets.build": ["cmd --cd assets npm run build", "esbuild default"],
+      "assets.clean": ["rm -rf assets/node_modules", "phx.digest.clean --all"],
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
         "NODE_ENV=production esbuild default --minify",

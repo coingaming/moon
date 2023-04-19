@@ -46,6 +46,3 @@ node_modules
 
 # .env file for Figma tokens
 .env 
-
-assets/js/_hooks/
-assets/css/_components.css
