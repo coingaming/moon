@@ -19,7 +19,6 @@ defmodule Moon.Components.AsComponent do
   prop(attrs, :map, default: %{})
   prop(is_selected, :boolean, default: false)
   prop(value, :integer)
-  prop(disabled, :boolean)
 
   slot(default)
 
