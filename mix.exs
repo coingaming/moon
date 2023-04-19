@@ -134,7 +134,7 @@ defmodule Moon.MixProject do
       "assets.clean": ["cmd rm -rf assets/node_modules", "phx.digest.clean --all"],
       "assets.deploy": [
         "cmd --cd assets npm run deploy",
-        "NODE_ENV=production esbuild default --minify",
+        "esbuild default --minify",
         "phx.digest"
       ],
       "check-quality": [
