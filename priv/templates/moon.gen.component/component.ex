@@ -3,11 +3,13 @@ defmodule Moon.Design.<%= name %> do
 
   use Moon.StatelessComponent
 
-  @doc "id attribute for DOM element"
+  @doc "Id attribute for DOM element"
   prop(id, :string)
-  @doc "data-testid attribute for DOM element"
+
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
-  @doc "additional Tailwind classes"
+
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
 
   @doc "Inner content of the component"

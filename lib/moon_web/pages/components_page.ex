@@ -150,6 +150,13 @@ defmodule MoonWeb.Pages.ComponentsPage do
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.PaginationPage}
+          image="facing/components/pagination.png"
+          title="Pagination"
+        >
+          Pagination is the process of splitting information over multiple pages instead of showing it all on a single page.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.PopoverPage}
           image="facing/components/popover.png"
           title="Popover"

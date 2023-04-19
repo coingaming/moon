@@ -6,7 +6,6 @@ defmodule Moon.Components.AsComponent do
   use Moon.StatelessComponent
 
   prop(class, :css_class)
-
   prop(as, :string, values!: ~w(a button), default: "button")
 
   # for as="a" type only
@@ -17,10 +16,10 @@ defmodule Moon.Components.AsComponent do
   prop(values, :list, default: [])
 
   prop(role, :string)
-
   prop(attrs, :map, default: %{})
-
   prop(is_selected, :boolean, default: false)
+  prop(value, :integer)
+  prop(disabled, :boolean)
 
   slot(default)
 
@@ -38,9 +37,10 @@ defmodule Moon.Components.AsComponent do
         {...@attrs}
         {=@id}
         data-testid={@testid}
+        {=@value}
       ><#slot /></button>
     {#elseif @as == "a"}
-      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid}><#slot /></a>
+      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid} {=@value}><#slot /></a>
     {/if}
     """
   end

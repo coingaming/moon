@@ -1,7 +1,7 @@
-defmodule Moon.Design.Pagination.NextButton do
+defmodule Moon.Design.Pagination.PrevButton do
   @moduledoc false
 
-  use Moon.StatelessComponent, slot: "next_button"
+  use Moon.StatelessComponent, slot: "prev_button"
 
   alias Moon.Design.Button
 
