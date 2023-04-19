@@ -128,7 +128,7 @@ defmodule Moon.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "assets.setup", "assets.build"],
+      setup: ["deps.get", "assets.setup", "compile", "assets.build"],
       "assets.setup": ["cmd --cd assets npm i", "esbuild.install --if-missing"],
       "assets.build": ["cmd --cd assets npm run build", "esbuild default"],
       "assets.clean": ["cmd rm -rf assets/node_modules", "phx.digest.clean --all"],

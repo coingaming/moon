@@ -30,19 +30,16 @@ jobs:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
-          name: Fetch dependencies
-          command: mix setup
-      - run:
-          name: "Clean assets"
           command: mix assets.clean
       - run:
-          name: "Install apps dependencies"
+          command: mix deps.get
+      - run:
           command: mix assets.setup
       - run:
-          name: "Build apps assets"
+          command: mix compile --all-warnings --warnings-as-errors
+      - run:
           command: mix assets.deploy
       - run:
-          name: Build release
           command: mix release
       - save_cache:
           key: v10-build-{{ checksum "mix.lock" }}
