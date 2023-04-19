@@ -80,10 +80,7 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
       <ComponentPageDescription title="Tooltip">
         <DeprecationWarning
           name="Tooltip"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TooltipPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TooltipPage)}
         />
       </ComponentPageDescription>
 

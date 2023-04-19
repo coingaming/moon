@@ -21,18 +21,12 @@ defmodule MoonWeb.Components.LeftMenu do
 
   alias Moon.Design.Drawer
 
-  prop(theme_name, :any)
-  prop(direction, :string)
-  prop(active_page, :any)
+  prop(active_page, :module)
   prop(hide_items, :boolean)
 
   def render(assigns) do
     ~F"""
-    <Drawer
-      lg_persists
-      id="left-menu"
-      class={"lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50", @theme_name}
-    >
+    <Drawer lg_persists id="left-menu" class="lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50">
       <Drawer.Backdrop class="lg:hidden" />
       <Drawer.Panel position="start" class="w-80 bg-goku shadow-moon-none">
         <nav
@@ -41,7 +35,7 @@ defmodule MoonWeb.Components.LeftMenu do
         >
           <div class="flex items-center flex-shrink-0 ps-3 text-bulma">
             <a
-              href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage, theme_name: @theme_name, direction: @direction)}
+              href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage)}
               class="text-bulma hover:text-bulma active:text-bulma focus:text-bulma"
             >
               <LargeLogo class="h-6 w-[6.5rem]" />

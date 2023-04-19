@@ -56,15 +56,10 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
       element.classList.add("hidden");}
 });
 
-window.addEventListener("phx:page-loading-stop", info => {
-  var activeLink = document.querySelectorAll('[data-moon-active]');
-  if (activeLink[0]) {
-    activeLink[0].scrollIntoView();
-  }
-})
-
 window.addEventListener("moon2:update-switch", (event) => {
   let checkbox = event.target;
   checkbox.checked = event.detail.checked;
   checkbox.dispatchEvent(new Event("input", { bubbles: true }));
 });
+
+

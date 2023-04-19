@@ -96,10 +96,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
       <ComponentPageDescription title="Avatar">
         <DeprecationWarning
           name="Avatar"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AvatarPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AvatarPage)}
         />
       </ComponentPageDescription>
 

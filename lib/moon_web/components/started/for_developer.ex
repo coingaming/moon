@@ -7,9 +7,6 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
   alias MoonWeb.Components.CodeSnippet
   alias MoonWeb.Components.PageSection
 
-  data(theme_name, :string, from_context: :theme_name)
-  data(direction, :string, from_context: :direction)
-
   def render(assigns) do
     ~F"""
     <PageSection title="Overview">
@@ -23,7 +20,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
         Moon Surface components
         <a
           class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
-          href={"#{live_path(MoonWeb.Endpoint, MoonWeb.Pages.PhoenixUsagePage, theme_name: @theme_name, direction: @direction)}"}
+          href={"#{live_path(MoonWeb.Endpoint, MoonWeb.Pages.PhoenixUsagePage)}"}
         >
           can be used from SLIM and EEX templates
         </a>
@@ -97,12 +94,11 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       <IndentedCodeSnippet>{plug_static_code()}</IndentedCodeSnippet>
       <p>Import Moon Surface css and themes to project's assets/app.css:</p>
       <IndentedCodeSnippet>{themes_import_code()}</IndentedCodeSnippet>
-      <p>
-        Create/change assets/package.json to include folowing scripts (or just copy one from deps/moon/assets/package.json)
-      </p>
+      <p>Copy assets/package.json from deps/moon folder, or take two sections from there:</p>
+      <p class="pl-4">scripts:</p>
       <IndentedCodeSnippet>{scripts_code()}</IndentedCodeSnippet>
-      <p>Ensure that you have required dependencies in assets/package.json</p>
-      <IndentedCodeSnippet>{devdependencies_code()}</IndentedCodeSnippet>
+      <p class="pl-4">dependencies:</p>
+      <IndentedCodeSnippet>{dependencies_code()}</IndentedCodeSnippet>
       <p>Create file assets/postcss.config.js</p>
       <IndentedCodeSnippet>{postcss_config_code()}</IndentedCodeSnippet>
       <p>Create file assets/tailwind.config.js</p>
@@ -206,11 +202,11 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     """
   end
 
-  defp devdependencies_code() do
+  defp dependencies_code() do
     """
     # assets.package.json
 
-    "devDependencies": {
+    "dependencies": {
       "@tailwindcss/forms": "^0.4.0",
       "autoprefixer": "^10.4.2",
       "esbuild": "^0.13.9",
@@ -284,7 +280,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
     defp aliases do
       [
         setup: ["deps.get", "cmd npm install --prefix assets"],
-        "assets.setup": ["cmd --cd assets npm i"],
+        "assets.setup": ["cmd --cd assets npm i && cmd --cd deps/moon/assets npm i"],
         "assets.clean": ["cmd --cd assets rm -rf node_modules"],
         "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"],
       ]

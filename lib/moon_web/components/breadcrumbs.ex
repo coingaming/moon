@@ -6,7 +6,6 @@ defmodule MoonWeb.Components.Breadcrumbs do
   alias Moon.Design.Breadcrumb, as: BreadCrumbsComponent
 
   prop(breadcrumbs, :any)
-  prop(theme_name, :string, default: "lab-light")
   prop(class, :string, default: nil)
 
   @spec render(any) :: Phoenix.LiveView.Rendered.t()

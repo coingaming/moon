@@ -38,7 +38,7 @@ defmodule Moon.Design.Switch do
         ],
         @class
       ])}
-      value={"#{@checked}"}
+      value={"#{!@checked}"}
       data-testid={@testid}
       :on-click={@on_change}
     >

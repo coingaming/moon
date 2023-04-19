@@ -36,10 +36,7 @@ defmodule MoonWeb.Pages.Components.TablePage do
       <ComponentPageDescription title="Table">
         <DeprecationWarning
           name="Table"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TablePage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.TablePage)}
         />
       </ComponentPageDescription>
 

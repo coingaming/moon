@@ -6,17 +6,14 @@
     "watch_css": "NODE_PATH=./node_modules tailwindcss --input=css/app.css --output=../priv/static/assets/app.css --postcss --watch",
     "watch_js": "NODE_PATH=../deps:./node_modules esbuild js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --sourcemap=inline --watch"
   },
-  "devDependencies": {
+  "dependencies": {
     "@tailwindcss/forms": "^0.4.0",
     "autoprefixer": "^10.4.2",
     "esbuild": "^0.13.9",
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
     "tailwindcss": "^3.1.7",
-    "tailwindcss-rtl": "^0.9.0"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "alpinejs": "^2.8.2"
+    "tailwindcss-rtl": "^0.9.0",
+    "@popperjs/core": "^2.11.6"
   }
 }
