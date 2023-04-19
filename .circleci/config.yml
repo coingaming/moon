@@ -30,13 +30,13 @@ jobs:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
-          command: mix assets.clean
-      - run:
           command: mix deps.get
       - run:
-          command: mix assets.setup
-      - run:
           command: mix compile --all-warnings --warnings-as-errors
+      - run:
+          command: mix assets.clean
+      - run:
+          command: mix assets.setup
       - run:
           command: mix assets.deploy
       - run:
