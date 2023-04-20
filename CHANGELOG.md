@@ -1,3 +1,10 @@
+## [2.42.1](https://github.com/coingaming/moon/compare/v2.42.0...v2.42.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* full usage of surface 0.9 ([879398e](https://github.com/coingaming/moon/commit/879398e6849646b60dfd11445fbe06b87e4757dc))
+
 # [2.42.0](https://github.com/coingaming/moon/compare/v2.41.6...v2.42.0) (2023-04-20)
 
 
