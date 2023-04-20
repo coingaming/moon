@@ -1,25 +1,3 @@
-defmodule Moon.Components.Popover.DefaultContent do
-  @moduledoc false
-
-  use Moon.StatelessComponent
-  alias Moon.Autolayouts.TopToDown
-
-  slot(default)
-
-  def render(assigns) do
-    ~F"""
-    <div class={
-      "overflow-auto rounded-moon-i-md box-border border border-solid",
-      "border-beerus drop-shadow-2xl bg-gohan"
-    }>
-      <TopToDown>
-        <#slot {@default} />
-      </TopToDown>
-    </div>
-    """
-  end
-end
-
 defmodule Moon.Components.Popover do
   @moduledoc false
 
@@ -56,7 +34,7 @@ defmodule Moon.Components.Popover do
 
   def render(assigns) do
     ~F"""
-    <div phx-hook="Popover" data-testid={@testid} data-placement={@placement}>
+    <div :hook="default" data-testid={@testid} data-placement={@placement}>
       <div aria-describedby="tooltip"><#slot /></div>
       {#if @show}
         <div class="fixed z-50" role="tooltip" :on-click-away={@on_close}><#slot {@content} /></div>

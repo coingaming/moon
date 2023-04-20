@@ -30,7 +30,6 @@ npm-debug.log
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
-!/priv/static/assets/hooks.js
 
 node_modules
 .DS_Store
@@ -47,3 +46,6 @@ node_modules
 
 # .env file for Figma tokens
 .env 
+
+assets/js/_hooks/
+assets/css/_components.css
