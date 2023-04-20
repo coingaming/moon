@@ -12,15 +12,6 @@ defmodule Moon.Design.Pagination do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
 
-  @doc "Previous button of Pagination component, see Pagination.PrevButton"
-  slot(prev_button, required: true)
-
-  @doc "Pages of Pagination component, see Pagination.Pages"
-  slot(pages, required: true)
-
-  @doc "Next button of Pagination component, see Pagination.NextButton"
-  slot(next_button, required: true)
-
   @doc "The value of current page"
   prop(value, :integer, default: 1)
 
@@ -32,6 +23,15 @@ defmodule Moon.Design.Pagination do
 
   @doc "Disabled state for the prev/next button when were reached the first/last page."
   prop(disabled, :boolean)
+
+  @doc "Previous button of Pagination component, see Pagination.PrevButton"
+  slot(prev_button, required: true)
+
+  @doc "Pages of Pagination component, see Pagination.Pages"
+  slot(pages, required: true)
+
+  @doc "Next button of Pagination component, see Pagination.NextButton"
+  slot(next_button, required: true)
 
   def render(assigns) do
     ~F"""

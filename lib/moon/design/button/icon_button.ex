@@ -55,11 +55,11 @@ defmodule Moon.Design.Button.IconButton do
       ])}
       on_click={@on_click}
       testid={@testid}
-      value={@value}
       attrs={
         disabled: @disabled,
         type: @type,
         form: @form,
+        value: @value,
         "data-size": @size,
         ":values": @values
       }

@@ -17,9 +17,6 @@ defmodule Moon.Design.Pagination.NextButton do
   @doc "Additional Tailwind classes for hover background"
   prop(hover_bg_class, :css_class)
 
-  @doc "Inner content of the component"
-  slot(default)
-
   @doc "Visual/Logical variant of button"
   prop(variant, :string,
     values: ["primary", "secondary", "tertiary", "ghost"],
@@ -29,9 +26,17 @@ defmodule Moon.Design.Pagination.NextButton do
   @doc "Size of button"
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "sm")
 
+  @doc "Inner content of the component"
+  slot(default)
+
   # inner API
+  @doc "Will be got from Pagination in most cases"
   prop(on_change, :event, from_context: :on_change)
+
+  @doc "Will be got from Pagination in most cases"
   prop(value, :integer, from_context: :value)
+
+  @doc "Will be got from Pagination in most cases"
   prop(disabled, :boolean, from_context: :disabled)
 
   def render(assigns) do

@@ -28,8 +28,13 @@ defmodule Moon.Design.Pagination.Pages do
   prop(selected_bg_color, :css_class, default: "bg-piccolo text-goten hover:bg-none")
 
   # internal API
+  @doc "Will be got from Pagination in most cases"
   prop(total_pages, :integer, from_context: :total_pages)
+
+  @doc "Will be got from Pagination in most cases"
   prop(on_change, :event, from_context: :on_change)
+
+  @doc "Will be got from Pagination in most cases"
   prop(value, :integer, from_context: :value)
 
   def generate_paging_button(%{
