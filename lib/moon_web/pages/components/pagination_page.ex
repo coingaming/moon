@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Facing.DeprecationWarning
   alias Moon.Components.Pagination
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -120,9 +121,13 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Pagination">
-        <p>
-          Pagination
-        </p>
+        <DeprecationWarning
+          name="Pagination"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.PaginationPage,
+            theme_name: @theme_name,
+            direction: @direction
+          )}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Default" layout="column" id="pagination_1">
