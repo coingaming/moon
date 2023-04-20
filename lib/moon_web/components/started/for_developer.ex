@@ -84,7 +84,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
           class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
           target="_blank"
           rel="noreferrer"
-        >here</a></p>
+        >here</a>. Please make sure that surface compiler is configured.</p>
       <CodeSnippet>mix surface.init</CodeSnippet>
     </PageSection>
     <PageSection title="Moon CSS/JS assets adding">
@@ -200,7 +200,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
 
     /*
       Not really required. Only few classes for components
-      are from there. All tailwing imports are already there,
+      are from there. All tailwind imports are already there,
       so you can remove them from your own app.css
       also can import _components.css instead
       @import '../../deps/moon/assets/css/_components.css';
