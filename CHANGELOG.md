@@ -1,3 +1,10 @@
+# [2.42.0](https://github.com/coingaming/moon/compare/v2.41.6...v2.42.0) (2023-04-20)
+
+
+### Features
+
+* Pagination v2 component ([1d052cb](https://github.com/coingaming/moon/commit/1d052cb891852410e64aa12a2fecca351b117b71))
+
 ## [2.41.6](https://github.com/coingaming/moon/compare/v2.41.5...v2.41.6) (2023-04-18)
 
 
