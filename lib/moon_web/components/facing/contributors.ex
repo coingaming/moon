@@ -9,7 +9,10 @@ defmodule MoonWeb.Components.Facing.Contributors do
   def render(assigns) do
     ~F"""
     <div class="flex flex-col gap-12 z-20">
-      <SectionTitle title="In the Spotlight." description="The people who design and develop Moon now are" />
+      <SectionTitle
+        title="In the Spotlight"
+        description="The people who design and develop Moon now are"
+      />
       <FacingReel>
         <CardContributor
           variant="tiny"
