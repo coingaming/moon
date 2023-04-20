@@ -11,11 +11,11 @@ defmodule MoonWeb.Components.Facing.Contributors do
     <div class="flex flex-col gap-12 z-20">
       <SectionTitle title="In the Spotlight." description="The team who design and develop Moon." />
       <FacingReel>
-        <CardContributor
+        <!--<CardContributor
           name="Margus Pärt"
           title="Developer"
           image_src="/moon/assets/images/facing/contributors/marguspart.jpeg"
-        />
+        />-->
         <CardContributor
           variant="tiny"
           name="Dima Nikolaenko"
