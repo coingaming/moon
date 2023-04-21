@@ -1,3 +1,10 @@
+## [2.42.2](https://github.com/coingaming/moon/compare/v2.42.1...v2.42.2) (2023-04-21)
+
+
+### Bug Fixes
+
+* spotlight ([24807c5](https://github.com/coingaming/moon/commit/24807c54e21789dc771eb11f607caea3c17f92fb))
+
 ## [2.42.1](https://github.com/coingaming/moon/compare/v2.42.0...v2.42.1) (2023-04-20)
 
 
