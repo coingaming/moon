@@ -74,8 +74,8 @@ defmodule Moon.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     deps_override([
-      {:phoenix, "> 1.6.15 and <= 1.7.2"},
-      {:phoenix_live_view, "> 0.18.3 and <= 0.18.16"},
+      {:phoenix, ">= 1.6.15"},
+      {:phoenix_live_view, "~> 0.18.3"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, "~> 0.7"},
       {:phoenix_ecto, "~> 4.0"},
@@ -85,7 +85,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:surface, "~> 0.9.1"},
+      {:surface, "> 0.9.1"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
       {:moon_icons, "~> 0.1"},
