@@ -8,7 +8,7 @@ defmodule Moon.Helpers.MoonRender do
 
   defp component(func, assigns, caller) do
     module =
-      if Code.ensure_compiled(TagEngine) && function_exported?(TagEngine, :components, 3) do
+      if Code.ensure_compiled(TagEngine) && function_exported?(TagEngine, :component, 3) do
         # phoenix_live_view 0.18.18
         TagEngine
       else
