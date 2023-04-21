@@ -1,3 +1,10 @@
+## [2.42.3](https://github.com/coingaming/moon/compare/v2.42.2...v2.42.3) (2023-04-21)
+
+
+### Bug Fixes
+
+* support for surface 0.10.0 and live_view 0.18.18 ([#617](https://github.com/coingaming/moon/issues/617)) ([78f6a8e](https://github.com/coingaming/moon/commit/78f6a8ebe565fb3f8133dc13f207528fa1b5491a))
+
 ## [2.42.2](https://github.com/coingaming/moon/compare/v2.42.1...v2.42.2) (2023-04-21)
 
 
