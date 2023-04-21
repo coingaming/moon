@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.Default do
+defmodule MoonWeb.Examples.Design.Form.SelectExample.Sizes do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -22,9 +22,11 @@ defmodule MoonWeb.Examples.Form.SelectExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset}>
-      <Select field={:gender} options={@gender_options} prompt="Please select gender" />
-    </Form>
+    {#for size <- ~w(sm md lg)}
+      <Form for={@user_changeset} class="w-2/5">
+        <Select {=size} field={:gender} options={@gender_options} />
+      </Form>
+    {/for}
     """
   end
 
@@ -47,9 +49,11 @@ defmodule MoonWeb.Examples.Form.SelectExample.Default do
 
     def render(assigns) do
       ~F\"""
-      <Form for={@user_changeset}>
-        <Select field={:gender} options={@gender_options} prompt="Please select gender" />
-      </Form>
+      {#for size <- ~w(sm md lg)}
+        <Form for={@user_changeset} class="w-2/5">
+          <Select {=size} field={:gender} options={@gender_options} />
+        </Form>
+      {/for}
       \"""
     end
     """

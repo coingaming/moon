@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.WithHint do
+defmodule MoonWeb.Examples.Design.Form.SelectExample.WithHint do
   @moduledoc false
 
   use Moon.StatelessComponent

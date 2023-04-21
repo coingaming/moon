@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
-  alias MoonWeb.Examples.Form.SelectExample
+  alias MoonWeb.Examples.Design.Form.SelectExample
 
   data(breadcrumbs, :any,
     default: [
@@ -46,55 +46,13 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.Sizes,
         SelectExample.WithLabel,
         SelectExample.DisabledAndError,
-        SelectExample.WithHint
+        SelectExample.WithHint,
+        SelectExample.MultipleChoices
       ]} />
 
       <PropsTable
         title="Select props"
-        data={[
-          %{
-            :name => 'field',
-            :type => 'atom',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Field name for underlying surface select component'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'options',
-            :type => 'list',
-            :required => 'No',
-            :default => '[]',
-            :description => 'List of items to  be shown, %{:key, :value, :disabled}'
-          },
-          %{
-            :name => 'value',
-            :type => 'any',
-            :required => 'No',
-            :default => '[]',
-            :description => 'Selected value'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is disabled'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md | lg',
-            :required => '-',
-            :default => 'md',
-            :description => 'Size of input'
-          }
-        ]}
+        module={Moon.Design.Form.Select}
       />
     </Page>
     """

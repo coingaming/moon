@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.InputExample.Types do
+defmodule MoonWeb.Examples.Design.Form.InputExample.Types do
   @moduledoc false
 
   use Moon.StatelessComponent

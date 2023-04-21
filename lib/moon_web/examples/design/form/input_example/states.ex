@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.InputExample.Sizes do
+defmodule MoonWeb.Examples.Design.Form.InputExample.States do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -10,9 +10,9 @@ defmodule MoonWeb.Examples.Form.InputExample.Sizes do
   def render(assigns) do
     ~F"""
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
-      {#for size <- ~w(sm md lg)}
-        <Input {=size} placeholder={"Placeholder for #{size}"} />
-      {/for}
+      <Input disabled placeholder="Disabled input" />
+      <Input readonly placeholder="Read-only input" />
+      <Input error placeholder="Invalid input" />
     </div>
     """
   end
@@ -24,9 +24,9 @@ defmodule MoonWeb.Examples.Form.InputExample.Sizes do
     ...
 
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
-      {#for size <- ~w(sm md lg)}
-        <Input {=size} placeholder={"Placeholder for \#{size}"} />
-      {/for}
+      <Input disabled placeholder="Disabled input" />
+      <Input readonly placeholder="Read-only input" />
+      <Input error placeholder="Invalid input" />
     </div>
     """
   end

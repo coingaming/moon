@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
+defmodule MoonWeb.Examples.Design.Form.SelectExample.DisabledAndError do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -8,7 +8,6 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
-  alias Moon.Design.Form.Field
 
   prop(gender_options, :list,
     default: [
@@ -23,13 +22,12 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
 
   def render(assigns) do
     ~F"""
-    {#for size <- ~w(sm md lg)}
-      <Form for={@user_changeset} class="w-2/5">
-        <Field label={"Label for #{size}"} field={:gender}>
-          <Select {=size} field={:gender} options={@gender_options} />
-        </Field>
-      </Form>
-    {/for}
+    <Form for={@user_changeset}>
+      <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+        <Select disabled field={:gender} options={@gender_options} prompt="Please select gender" />
+        <Select error field={:gender} options={@gender_options} prompt="Please select gender" />
+      </div>
+    </Form>
     """
   end
 
@@ -38,7 +36,6 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
     alias Moon.Design.Form
     alias Moon.Design.Form.Select
-    alias Moon.Design.Form.Field
 
     prop(gender_options, :list,
       default: [
@@ -53,13 +50,10 @@ defmodule MoonWeb.Examples.Form.SelectExample.WithLabel do
 
     def render(assigns) do
       ~F\"""
-      {#for size <- ~w(sm md lg)}
-        <Form for={@user_changeset} class="w-2/5">
-          <Field label={"Label for \#{size}"} field={:gender}>
-            <Select {=size} field={:gender} options={@gender_options} />
-          </Field>
-        </Form>
-      {/for}
+      <Form for={@user_changeset}>
+        <Select disabled field={:gender} options={@gender_options} prompt="Please select gender" />
+        <Select error field={:gender} options={@gender_options} prompt="Please select gender" />
+      </Form>
       \"""
     end
     """

@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.CheckboxExample
+  alias MoonWeb.Examples.Design.Form.CheckboxExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 

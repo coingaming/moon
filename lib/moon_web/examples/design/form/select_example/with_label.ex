@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
+defmodule MoonWeb.Examples.Design.Form.SelectExample.WithLabel do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -8,6 +8,7 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
+  alias Moon.Design.Form.Field
 
   prop(gender_options, :list,
     default: [
@@ -24,7 +25,9 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
     ~F"""
     {#for size <- ~w(sm md lg)}
       <Form for={@user_changeset} class="w-2/5">
-        <Select {=size} field={:gender} options={@gender_options} />
+        <Field label={"Label for #{size}"} field={:gender}>
+          <Select {=size} field={:gender} options={@gender_options} />
+        </Field>
       </Form>
     {/for}
     """
@@ -35,6 +38,7 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
     alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
     alias Moon.Design.Form
     alias Moon.Design.Form.Select
+    alias Moon.Design.Form.Field
 
     prop(gender_options, :list,
       default: [
@@ -51,7 +55,9 @@ defmodule MoonWeb.Examples.Form.SelectExample.Sizes do
       ~F\"""
       {#for size <- ~w(sm md lg)}
         <Form for={@user_changeset} class="w-2/5">
-          <Select {=size} field={:gender} options={@gender_options} />
+          <Field label={"Label for \#{size}"} field={:gender}>
+            <Select {=size} field={:gender} options={@gender_options} />
+          </Field>
         </Form>
       {/for}
       \"""

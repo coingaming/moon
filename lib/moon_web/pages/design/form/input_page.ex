@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.InputExample
+  alias MoonWeb.Examples.Design.Form.InputExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 

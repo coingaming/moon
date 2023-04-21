@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.CheckboxExample.Default do
+defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Default do
   @moduledoc false
 
   use Moon.StatefulComponent

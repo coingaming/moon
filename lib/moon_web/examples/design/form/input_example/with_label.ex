@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.InputExample.WithLabel do
+defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
   @moduledoc false
 
   use Moon.StatelessComponent

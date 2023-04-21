@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.TextAreaExample.Colours do
+defmodule MoonWeb.Examples.Design.Form.TextAreaExample.Colours do
   @moduledoc false
 
   use Moon.StatelessComponent

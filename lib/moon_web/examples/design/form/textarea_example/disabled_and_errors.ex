@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.TextAreaExample.DisabledAndErrorr do
+defmodule MoonWeb.Examples.Design.Form.TextAreaExample.DisabledAndErrorr do
   @moduledoc false
 
   use Moon.StatelessComponent

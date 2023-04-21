@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.RadioExample.Customizations do
+defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
   @moduledoc false
 
   use Moon.StatefulComponent

@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.RadioExample
+  alias MoonWeb.Examples.Design.Form.RadioExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.Anatomy

@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
+defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Disabled do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -30,10 +30,10 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
       class="flex flex-wap gap-2 w-full items-center justify-around"
     >
       <Field field={:agrees_to_terms_of_service}>
-        <Checkbox readonly label="Readonly checked" />
+        <Checkbox disabled label="Disabled checked" />
       </Field>
       <Field field={:agrees_to_marketing_emails}>
-        <Checkbox readonly label="Readonly unchecked" />
+        <Checkbox disabled label="Disabled unchecked" />
       </Field>
     </Form>
     """
@@ -66,10 +66,10 @@ defmodule MoonWeb.Examples.Form.CheckboxExample.Readonly do
         class="flex flex-wap gap-2 w-full items-center justify-around"
       >
         <Field field={:agrees_to_terms_of_service}>
-          <Checkbox readonly label="Readonly checked" />
+          <Checkbox disabled label="Disabled checked" />
         </Field>
         <Field field={:agrees_to_marketing_emails}>
-          <Checkbox readonly label="Readonly unchecked" />
+          <Checkbox disabled label="Disabled unchecked" />
         </Field>
       </Form>
       \"""

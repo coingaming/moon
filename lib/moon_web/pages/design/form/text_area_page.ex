@@ -8,7 +8,7 @@ defmodule MoonWeb.Pages.Design.Form.TextAreaPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
 
-  alias MoonWeb.Examples.Form.TextAreaExample
+  alias MoonWeb.Examples.Design.Form.TextAreaExample
 
   data(breadcrumbs, :any,
     default: [
