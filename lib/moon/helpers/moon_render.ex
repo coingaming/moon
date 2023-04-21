@@ -3,8 +3,21 @@ defmodule Moon.Helpers.MoonRender do
   Functions for rendering Moon components in HEEX/SLIM/... (not Surface) templates
   """
 
-  import Phoenix.LiveView.HTMLEngine, only: [component: 3]
+  alias Phoenix.LiveView.{TagEngine, HTMLEngine}
   import Phoenix.Component, only: [live_component: 1]
+
+  defp component(func, assigns, caller) do
+    module =
+      if Code.ensure_compiled(TagEngine) && function_exported?(TagEngine, :component, 3) do
+        # phoenix_live_view 0.18.18
+        TagEngine
+      else
+        # phoenix_live_view < 0.18.18
+        HTMLEngine
+      end
+
+    apply(module, :component, [func, assigns, caller])
+  end
 
   defp get_default_props(module) do
     Enum.reduce(module.__props__(), %{__context__: %{}}, fn

@@ -16,6 +16,18 @@ defmodule MoonWeb.Components.Facing.Contributors do
       <FacingReel>
         <CardContributor
           variant="tiny"
+          name="Egert Tamm"
+          title="Art Director"
+          image_src="/moon/assets/images/facing/contributors/etamm.webp"
+        />
+        <CardContributor
+          variant="tiny"
+          name="Dmytro Kireiev"
+          title="Product Owner"
+          image_src="/moon/assets/images/facing/contributors/dmytrokireiev.jpg"
+        />
+        <CardContributor
+          variant="tiny"
           name="Margus Pärt"
           title="Library author"
           image_src="/moon/assets/images/facing/contributors/mpart.jpeg"
@@ -25,12 +37,6 @@ defmodule MoonWeb.Components.Facing.Contributors do
           name="Sergey Semenov"
           title="Lead Developer"
           image_src="/moon/assets/images/facing/contributors/ssemenov.png"
-        />
-        <CardContributor
-          variant="tiny"
-          name="Dmytro Kireiev"
-          title="Product Owner"
-          image_src="/moon/assets/images/facing/contributors/dmytrokireiev.jpg"
         />
         <CardContributor
           variant="tiny"
