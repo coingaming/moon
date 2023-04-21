@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Facing.CardContributor do
     <div class="flex flex-col">
       <div
         class={
-          "relative relative w-72 h-96 rounded-moon-s-lg overflow-hidden bg-cover bg-center",
+          "relative relative w-72 h-96 rounded-moon-s-lg overflow-hidden bg-cover bg-center grayscale",
           get_dimensions(@variant)
         }
         style={"background-image: url('#{@image_src}')"}
