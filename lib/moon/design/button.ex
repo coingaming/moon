@@ -12,6 +12,7 @@ defmodule Moon.Design.Button do
     values: ["primary", "secondary", "tertiary", "ghost"],
     default: "primary"
   )
+
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md")
   prop(as, :string, values!: ~w(a button), default: "button")
   prop(href, :string)
@@ -66,16 +67,14 @@ defmodule Moon.Design.Button do
       ])}
       on_click={@on_click}
       testid={@testid}
-      attrs={
-        [
-          disabled: @disabled,
-          type: @type,
-          form: @form,
-          value: @value,
-          "data-size": @size,
-          ":values": @values
-        ] ++ @attrs
-      }
+      attrs={[
+        disabled: @disabled,
+        type: @type,
+        form: @form,
+        value: @value,
+        "data-size": @size,
+        ":values": @values
+      ] ++ @attrs}
     >
       <span
         :if={@animation in ["success", "progress"]}
