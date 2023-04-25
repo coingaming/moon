@@ -12,29 +12,29 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
 
   def render(assigns) do
     ~F"""
-    <Dropdown
-      class="w-72"
-      id="dropdown-trigger-01"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-01">
+      <Dropdown.Options
+        class="w-72"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger>
         <IconButton icon_only="controls_chevron_down" variant="secondary" />
       </Dropdown.Trigger>
     </Dropdown>
-    <Dropdown
-      id="dropdown-trigger-02"
-      class="w-72"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-02">
+      <Dropdown.Options
+        class="w-72"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger>
         <Button>Select name</Button>
       </Dropdown.Trigger>
     </Dropdown>
-    <Dropdown
-      id="dropdown-trigger-03"
-      class="w-auto"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-03">
+      <Dropdown.Options
+        class="w-auto"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger :let={is_open: is_open}>
         <Chip>
           Select name
@@ -47,29 +47,26 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
 
   def code() do
     """
-    <Dropdown
-      class="w-72"
-      id="dropdown-trigger-01"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-01">
+      <Dropdown.Options class="w-72"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger>
-        <IconButton icon_only="controls_chevron_down" variant="secondary"/>
+        <IconButton icon_only="controls_chevron_down" variant="secondary" />
       </Dropdown.Trigger>
     </Dropdown>
-    <Dropdown
-      id="dropdown-trigger-02"
-      class="w-72"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-02">
+      <Dropdown.Options class="w-72"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger>
         <Button>Select name</Button>
       </Dropdown.Trigger>
     </Dropdown>
-    <Dropdown
-      id="dropdown-trigger-03"
-      class="w-auto"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-trigger-03">
+      <Dropdown.Options class="w-auto"
+        titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+      />
       <Dropdown.Trigger :let={is_open: is_open}>
         <Chip>
           Select name
@@ -77,7 +74,6 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
         </Chip>
       </Dropdown.Trigger>
     </Dropdown>
-
     """
   end
 end

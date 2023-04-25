@@ -62,7 +62,12 @@ defmodule Moon.Design.Form.Select do
       {=@field}
       {=@id}
       options={options_with_selected(@options, @value)}
-      opts={%{prompt: @prompt, disabled: @disabled, "data-testid": @testid, error: @error || has_error(@form, @field)}}
+      opts={%{
+        prompt: @prompt,
+        disabled: @disabled,
+        "data-testid": @testid,
+        error: @error || has_error(@form, @field)
+      }}
     />
     """
   end

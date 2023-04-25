@@ -6,7 +6,6 @@ defmodule Moon.Design.Form.Input do
   import Phoenix.HTML.Form
   import Moon.Helpers.Form
 
-
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
