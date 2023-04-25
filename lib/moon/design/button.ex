@@ -12,32 +12,27 @@ defmodule Moon.Design.Button do
     values: ["primary", "secondary", "tertiary", "ghost"],
     default: "primary"
   )
-
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "md")
   prop(as, :string, values!: ~w(a button), default: "button")
-
   prop(href, :string)
   prop(full_width, :boolean)
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
-
   prop(type, :string, default: "button")
   prop(form, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
-
   prop(left_icon, :string)
   prop(right_icon, :string)
+  prop(button_gap, :css_class, default: "gap-2")
+  prop(id, :string)
+  prop(testid, :string)
+  prop(attrs, :keyword, default: [])
 
   slot(default)
   slot(right_icon_slot)
   slot(left_icon_slot)
-
-  prop(button_gap, :css_class, default: "gap-2")
-
-  prop(id, :string)
-  prop(testid, :string)
 
   def render(assigns) do
     ~F"""
@@ -70,11 +65,13 @@ defmodule Moon.Design.Button do
       on_click={@on_click}
       testid={@testid}
       attrs={
-        disabled: @disabled,
-        type: @type,
-        form: @form,
-        "data-size": @size,
-        ":values": @values
+        [
+          disabled: @disabled,
+          type: @type,
+          form: @form,
+          "data-size": @size,
+          ":values": @values
+        ] ++ @attrs
       }
     >
       <span
