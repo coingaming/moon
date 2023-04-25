@@ -67,13 +67,13 @@ defmodule Moon.Design.Button do
       ])}
       on_click={@on_click}
       testid={@testid}
+      {=@values}
       attrs={[
         disabled: @disabled,
         type: @type,
         form: @form,
         value: @value,
         "data-size": @size,
-        ":values": @values
       ] ++ @attrs}
     >
       <span
