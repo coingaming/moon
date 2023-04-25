@@ -24,7 +24,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.InForm do
     ~F"""
     <Form for={@user_changeset}>
       <Form.Field field={:gender}>
-        <Dropdown options={@gender_options} prompt="Please select gender" />
+        <Dropdown options={_o <- @gender_options} prompt="Please select gender" />
       </Form.Field>
     </Form>
     """

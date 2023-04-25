@@ -18,6 +18,7 @@ defmodule Moon.Design.Dropdown do
 
   slot(trigger, required: true)
   slot(option)
+  slot(default)
 
   prop(testid, :string)
 
@@ -68,6 +69,7 @@ defmodule Moon.Design.Dropdown do
             value={title}
           >{title}</.moon>
         {/if}
+        <#slot />
       </div>
 
       <div

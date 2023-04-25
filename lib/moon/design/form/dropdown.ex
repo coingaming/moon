@@ -9,6 +9,7 @@ defmodule Moon.Design.Form.Dropdown do
 
   import Moon.Helpers.MakeList, only: [make_list: 1]
   import Moon.Helpers.Form, only: [has_error: 2]
+  import Phoenix.HTML.Form, only: [input_id: 2]
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
@@ -16,7 +17,7 @@ defmodule Moon.Design.Form.Dropdown do
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
   @doc "... format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
-  prop(options, :list, default: [])
+  prop(options, :generator, required: true)
 
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
   prop(value, :any)
@@ -41,9 +42,12 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "if field does support multiselect, multiple attribute for select tag in HTML terms"
   prop(is_multiple, :boolean)
 
+  slot(default, generator_prop: :options)
+
   def render(assigns) do
     ~F"""
-    <div>
+    <Dropdown id={"#{@id || input_id(@form, @field)}-dropdown"}>
+      <Dropdown.Trigger>
       <Component
         module={(@is_multiple && Form.MultipleSelect) || Form.Select}
         class="hidden"
@@ -76,8 +80,13 @@ defmodule Moon.Design.Form.Dropdown do
         error={@error || has_error(@form, @field)}
         data-testid={@testid}
       />
-      <Dropdown />
-    </div>
+    </Dropdown.Trigger>
+      {#for option <- @options}
+        <Dropdown.Option value={option[:value]} disabled={option[:disabled]}>
+          <#slot {@default} generator_value={option}>{option[:key]}</#slot>
+        </Dropdown.Option>
+      {/for}
+    </Dropdown>
     """
   end
 
