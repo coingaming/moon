@@ -25,7 +25,9 @@ defmodule Moon.Helpers.Form do
 
   def value_is_true(form, field), do: "#{input_value(form, field)}" == "true"
 
-  def has_error(form, field) do
-    Enum.count(Keyword.get_values(form.errors || [], field)) > 0
+  def has_error(_form = %{errors: errors}, field) do
+    Enum.count(Keyword.get_values(errors || [], field)) > 0
   end
+
+  def has_error(_, _), do: false
 end

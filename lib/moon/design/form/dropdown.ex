@@ -1,10 +1,11 @@
-defmodule Moon.Design.Form.Select do
+defmodule Moon.Design.Form.Dropdown do
   @moduledoc false
 
   use Moon.StatelessComponent
 
   alias Surface.Components.Dynamic.Component
   alias Surface.Components.Form
+  alias Moon.Design.Dropdown
 
   import Moon.Helpers.MakeList, only: [make_list: 1]
   import Moon.Helpers.Form, only: [has_error: 2]
@@ -42,29 +43,46 @@ defmodule Moon.Design.Form.Select do
 
   def render(assigns) do
     ~F"""
-    <Component
-      module={(@is_multiple && Form.MultipleSelect) || Form.Select}
-      class={merge([
-        "text-trunks flex justify-between w-full bg-gohan border-0 duration-200 transition-shadow",
-        "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
-        "items-start text-ellipsis whitespace-nowrap overflow-hidden",
-        "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
-        "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-        [
-          "py-0 px-4": !@is_multiple,
-          "leading-8 rounded-moon-i-xs": @size == "sm",
-          "leading-10 rounded-moon-i-sm": @size == "md",
-          "leading-[3rem] rounded-moon-i-sm": @size == "lg",
-          "cursor-not-allowed opacity-30": @disabled
-        ],
-        @class
-      ])}
-      {=@field}
-      {=@id}
-      options={options_with_selected(@options, @value)}
-      opts={%{prompt: @prompt, disabled: @disabled, "data-testid": @testid, error: @error || has_error(@form, @field)}}
-    />
+    <div>
+      <Component
+        module={(@is_multiple && Form.MultipleSelect) || Form.Select}
+        class="hidden"
+        {=@field}
+        {=@id}
+        options={options_with_selected(@options, @value)}
+        opts={%{disabled: @disabled, "data-testid": @testid}}
+      />
+      <input
+        class={merge([
+          "focus:ring-0 border-0 py-0 px-4 m-0",
+          "block w-full max-w-full appearance-none text-[1rem] text-bulma transition-shadow box-border before:box-border after:box-border",
+          "relative z-[2] shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none bg-gohan h-10",
+          "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",
+          "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
+          "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
+          "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
+          [
+            "leading-8 rounded-moon-i-xs": @size == "sm",
+            "leading-10 rounded-moon-i-sm": @size == "md",
+            "leading-[3rem] rounded-moon-i-sm": @size == "lg",
+            "opacity-30": @disabled
+          ],
+          @class
+        ])}
+        type="text"
+        placeholder={@prompt}
+        value={make_value(@form, @field, @options)}
+        {=@disabled}
+        error={@error || has_error(@form, @field)}
+        data-testid={@testid}
+      />
+      <Dropdown />
+    </div>
     """
+  end
+
+  defp make_value(_form, value, _options) do
+    value
   end
 
   defp options_with_selected(options, value) do

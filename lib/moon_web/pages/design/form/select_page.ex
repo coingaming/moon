@@ -37,7 +37,9 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         image="facing/components/select.png"
       >
         <p>
-          A form input used for selecting a value: when collapsed it shows the currently selected option and when expanded, it shows a scrollable list of predefined options for the user to choose from.
+          A form input used for selecting a value: when collapsed it shows the currently selected option and when expanded,
+          it shows a scrollable list of predefined options for the user to choose from. Options are not styled here. For list with styled
+          options please use Dropdown component.
         </p>
       </ComponentPageDescription>
 
@@ -50,10 +52,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.MultipleChoices
       ]} />
 
-      <PropsTable
-        title="Select props"
-        module={Moon.Design.Form.Select}
-      />
+      <PropsTable title="Select props" module={Moon.Design.Form.Select} />
     </Page>
     """
   end
