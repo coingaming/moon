@@ -28,7 +28,7 @@ defmodule Moon.Design.Form.Input do
   )
 
   prop(placeholder, :string, default: "")
-  prop(class, :css_class)
+  prop(class, :css_class, from_context: :class)
   prop(value, :string)
   prop(id, :string)
   prop(testid, :string)

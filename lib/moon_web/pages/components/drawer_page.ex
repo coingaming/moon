@@ -38,13 +38,7 @@ defmodule MoonWeb.Pages.Components.DrawerPage do
       class={"mr-64": @drawer_2_is_open}
     >
       <ComponentPageDescription title="Drawer">
-        <DeprecationWarning
-          name="Drawer"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.DrawerPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
-        />
+        <DeprecationWarning name="Drawer" page={MoonWeb.Pages.Design.DrawerPage} />
       </ComponentPageDescription>
 
       <ExampleAndCode title="Drawer on top right" id="drawer_1_example">

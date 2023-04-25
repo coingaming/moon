@@ -15,12 +15,6 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
   alias MoonWeb.Components.ExampleAndCode
   alias Moon.Design.Switch
 
-  def handle_event("toggle_dark", _params, socket) do
-    is_dark = !String.contains?(socket.assigns.theme_name, "-dark")
-    theme = String.replace(socket.assigns.theme_name, ["-light", "-dark"], "")
-    {:noreply, assign(socket, theme_name: "#{theme}-#{(is_dark && "dark") || "light"}")}
-  end
-
   defp dark_switch_code() do
     """
     alias Moon.Design.Switch
@@ -41,7 +35,7 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/v2/switch",
@@ -70,7 +64,6 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        # MoonWeb.Examples.FormExample.Registration,
         SwitchExample.Default,
         SwitchExample.Sizes,
         SwitchExample.Disabled,
@@ -82,7 +75,10 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
 
       <ExampleAndCode title="On change" id="dark_switch">
         <:example>
-          <Switch checked={String.contains?(@theme_name, "-dark")} on_change="toggle_dark" />
+          <Switch
+            checked={String.contains?(@theme_name, "-dark")}
+            on_change={"toggle_dark_mode", target: :live_view}
+          />
         </:example>
         <:code>{dark_switch_code()}</:code>
         <:state>@is_dark = {String.contains?(@theme_name, "-dark")} # example works only in our site's context</:state>

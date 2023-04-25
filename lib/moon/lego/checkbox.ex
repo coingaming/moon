@@ -8,8 +8,6 @@ defmodule Moon.Lego.Checkbox do
   prop(class, :css_class)
   prop(is_selected, :boolean)
   prop(on_click, :event)
-  prop(selected_class, :css_class, default: "bg-piccolo")
-  prop(unselected_class, :css_class, default: "shadow-trunks")
 
   def render(assigns) do
     ~F"""
@@ -18,15 +16,12 @@ defmodule Moon.Lego.Checkbox do
       data-testid={@testid}
       :on-click={@on_click}
       aria-hidden="true"
+      aria-checked={"#{@is_selected}"}
       class={
         merge([
-          [
-            "flex w-4 h-4 items-center justify-center",
-            "transition-colors text-moon-16 rounded-moon-s-xs",
-            "peer-checked:shadow-none text-goten",
-            (@is_selected && [@selected_class, "shadow-none"]) || @unselected_class,
-            "absolute top-1 ltr:left-1 rtl:right-1": false
-          ],
+          "flex w-4 h-4 items-center justify-center text-moon-16",
+          "transition-colors rounded-moon-s-xs text-goten shadow-trunks",
+          "moon-checked:bg-piccolo moon-checked:shadow-none",
           @class
         ]),
         "shadow-[0_0_0_1px_inset]"

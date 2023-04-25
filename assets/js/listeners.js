@@ -61,3 +61,5 @@ window.addEventListener("moon2:update-switch", (event) => {
   checkbox.checked = event.detail.checked;
   checkbox.dispatchEvent(new Event("input", { bubbles: true }));
 });
+
+

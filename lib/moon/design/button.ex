@@ -19,10 +19,12 @@ defmodule Moon.Design.Button do
   prop(disabled, :boolean)
   prop(animation, :string, values: ~w(progress success error pulse))
   prop(class, :css_class)
+  prop(hover_bg_class, :css_class)
   prop(type, :string, default: "button")
   prop(form, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
+  prop(value, :integer)
   prop(left_icon, :string)
   prop(right_icon, :string)
   prop(button_gap, :css_class, default: "gap-2")
@@ -69,6 +71,7 @@ defmodule Moon.Design.Button do
           disabled: @disabled,
           type: @type,
           form: @form,
+          value: @value,
           "data-size": @size,
           ":values": @values
         ] ++ @attrs
@@ -115,7 +118,10 @@ defmodule Moon.Design.Button do
           />
         {/if}
       </span>
-      <span class="block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-heles" />
+      <span class={merge([
+        "block absolute inset-0 pointer-events-none bg-transparent transition-[background-color_0.2s_ease-in-out z-[-1] group-hover:bg-heles",
+        @hover_bg_class
+      ])} />
     </AsComponent>
     """
   end

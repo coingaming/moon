@@ -2,8 +2,9 @@ defmodule MoonWeb.Components.IconItem do
   @moduledoc false
 
   use Moon.StatelessComponent
-  alias Moon.Components.Chip
 
+  alias Moon.Design.Chip
+  alias Moon.Design.Tooltip
   alias Moon.Icon
 
   prop(name, :string)
@@ -12,9 +13,17 @@ defmodule MoonWeb.Components.IconItem do
 
   def render(assigns) do
     ~F"""
-    <Chip variant="ghost" on_click={@click} value={@value} value_name="icon_value">
-      <Icon name={@name} font_size="2rem" />
-    </Chip>
+    <Tooltip>
+      <Tooltip.Trigger>
+        <Chip variant="ghost" class="px-0 py-0 text-trunks h-8">
+          <Icon name={@name} font_size="2rem" />
+        </Chip>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        {@name}
+        <Tooltip.Arrow />
+      </Tooltip.Content>
+    </Tooltip>
     """
   end
 end

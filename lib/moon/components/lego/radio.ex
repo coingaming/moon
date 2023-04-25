@@ -5,14 +5,19 @@ defmodule Moon.Components.Lego.Radio do
 
   prop(is_selected, :boolean, from_context: :is_selected)
   prop(class, :css_class)
+  prop(id, :string)
+  prop(testid, :string)
 
   def render(assigns) do
     ~F"""
-    <span class="flex w-6 h-6 justify-center items-center">
+    <span class="flex w-6 h-6 justify-center items-center" {=@id} data-testid={@testid}>
       <span class={
-        "block relative w-4 h-4 rounded-full shadow-[0_0_0_1px_inset] ",
-        (@is_selected && "shadow-piccolo") || "shadow-trunks",
-        @class
+        merge([
+          "block relative w-4 h-4 rounded-full",
+          (@is_selected && "shadow-piccolo") || "shadow-trunks",
+          @class
+        ]),
+        "shadow-[0_0_0_1px_inset]"
       }>
         <span class={
           (@is_selected && "scale") || "scale-0",

@@ -1,25 +1,19 @@
-defmodule MoonWeb.Examples.Form.TextareaExample.Default do
+defmodule MoonWeb.Examples.Form.TextAreaExample.Default do
   @moduledoc false
 
   use Moon.StatelessComponent
 
   use MoonWeb, :example
 
-  alias Moon.Design.Form.Textarea
-
   def render(assigns) do
     ~F"""
-    <Textarea />
+    <Moon.Design.Form.TextArea />
     """
   end
 
   def code() do
     """
-    alias Moon.Design.Form.Textarea
-
-    ...
-
-    <Textarea />
+    <Moon.Design.Form.TextArea />
     """
   end
 end

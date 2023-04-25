@@ -40,11 +40,25 @@ defmodule MoonWeb.Pages.ComponentsPage do
           An accordion is a vertical stack of interactive headings used to toggle the display of further information; each item can be 'collapsed' with just a short label visible or 'expanded' to show the full content.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.AlertPage}
+          image="facing/components/alert.png"
+          title="Alert"
+        >
+          A way of informing the user of important changes in a prominent way.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.AvatarPage}
           image="facing/components/avatar.png"
           title="Avatar"
         >
           The Avatar component is typically used to display images, icons, or initials representing people or other entities.
+        </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.BottomSheetPage}
+          image="facing/components/bottom_sheet.png"
+          title="BottomSheet"
+        >
+          The bottom sheet component is a modified dialog that slides from the bottom of the screen, common pattern in mobile apps.
         </ComponentsPageCard>
         <ComponentsPageCard
           page={Pages.Design.BreadcrumbPage}
@@ -67,8 +81,22 @@ defmodule MoonWeb.Pages.ComponentsPage do
         >
           Buttons allow users to take actions, and make choices, with a single tap.
         </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.Form.CheckboxPage}
+          image="facing/components/checkbox.png"
+          title="Checkbox"
+        >
+          The checkbox is shown as a square box that is ticked (checked) when activated.
+        </ComponentsPageCard>
         <ComponentsPageCard page={Pages.Design.ChipPage} image="facing/components/chip.png" title="Chip">
           Chips help filter content, or trigger actions.
+        </ComponentsPageCard>
+        <ComponentsPageCard
+          page={Pages.Design.DrawerPage}
+          image="facing/components/drawer.png"
+          title="Drawer"
+        >
+          The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
         </ComponentsPageCard>
         <ComponentsPageCard
           page={Pages.Design.DropdownPage}
@@ -93,6 +121,14 @@ defmodule MoonWeb.Pages.ComponentsPage do
         </ComponentsPageCard>
 
         <ComponentsPageCard
+          page={Pages.Design.Form.GroupPage}
+          image="facing/components/group.png"
+          title="Group"
+        >
+          Combine different types of inputs into groups to save vertical space on your designs and also simplify form filling.
+        </ComponentsPageCard>
+
+        <ComponentsPageCard
           page={Pages.Design.LoaderPage}
           image="facing/components/loader.png"
           title="Loader"
@@ -114,6 +150,13 @@ defmodule MoonWeb.Pages.ComponentsPage do
           A modal is an interface element that appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.PaginationPage}
+          image="facing/components/pagination.png"
+          title="Pagination"
+        >
+          Pagination is the process of splitting information over multiple pages instead of showing it all on a single page.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.PopoverPage}
           image="facing/components/popover.png"
           title="Popover"
@@ -121,19 +164,28 @@ defmodule MoonWeb.Pages.ComponentsPage do
           Popovers are perfect for floating panels with arbitrary content like navigation menus, mobile menus and flyout menus.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.CircularProgressPage}
+          page={Pages.Design.Progress.CircularProgressPage}
           image="facing/components/circular_progress.png"
           title="CircularProgress"
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.ProgressPage}
+          page={Pages.Design.Progress.LinearProgressPage}
           image="facing/components/linear_progress.png"
           title="Progress"
         >
           A progress indicator (Circular and Linear) is a visual representation of a user's progress through a set of steps, guiding toward the completion of a specified process.
         </ComponentsPageCard>
+
+        <ComponentsPageCard
+          page={Pages.Design.Form.RadioPage}
+          image="facing/components/radio_button.png"
+          title="Radio"
+        >
+          Radio buttons are used to represent a group of choices whereby users can only select one option.
+        </ComponentsPageCard>
+
         <ComponentsPageCard
           page={Pages.Design.Form.SelectPage}
           image="facing/components/select.png"
@@ -169,9 +221,9 @@ defmodule MoonWeb.Pages.ComponentsPage do
           Tags represent a set of interactive keywords that help organise and categorise objects.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.Form.TextareaPage}
+          page={Pages.Design.Form.TextAreaPage}
           image="facing/components/textarea.png"
-          title="Textarea"
+          title="TextArea"
         >
           A form control for editing multi-line text.
         </ComponentsPageCard>

@@ -6,6 +6,7 @@ defmodule MoonWeb.Pages.ManifestPage do
   alias MoonWeb.Components.LargeLogo
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ManifestCard
+  alias MoonWeb.Components.Facing.SameDifferentSignature
 
   data(breadcrumbs, :any,
     default: [
@@ -19,18 +20,16 @@ defmodule MoonWeb.Pages.ManifestPage do
   def render(assigns) do
     ~F"""
     <Page theme_name={@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <div class="relative">
-        <div class="absolute z-10 left-0 top-0 text-bulma">
+      <div class="relative text-bulma">
+        <div class="absolute z-10 ltr:left-0 rtl:right-0 top-0">
           <LargeLogo class="h-6 w-[6.5rem]" />
         </div>
         <div class="relative z-10 max-w-md">
-          <img src="/moon/assets/images/facing/manifest_signature.svg" alt="">
+          <SameDifferentSignature />
         </div>
       </div>
-      <div class="relative z-10 grow flex flex-row items-center gap-12">
-        <div class="hidden md:block">
-          <h2 class="text-moon-72 font-semibold text-bulma">Why?</h2>
-        </div>
+      <div class="relative z-10 grow flex flex-col xl:flex-row gap-12">
+        <h2 class="xl:self-end text-moon-72 font-medium text-bulma">Why?</h2>
         <div class="grid 2xl:grid-cols-3 xl:grid-cols-2 gap-6 relative">
           <div class="flex flex-col justify-start gap-6">
             <ManifestCard
@@ -81,7 +80,7 @@ defmodule MoonWeb.Pages.ManifestPage do
           </div>
         </div>
       </div>
-      <div class="fixed top-0 right-0 w-[650px] 2xl:w-[892px] translate-x-1/3 -translate-y-1/3">
+      <div class="hidden xl:block fixed top-0 ltr:right-0 rtl:left-0 w-[650px] 2xl:w-[892px] ltr:translate-x-1/3 rtl:-translate-x-1/3 -translate-y-1/3">
         <img src="/moon/assets/images/facing/moon.webp" alt="Moon">
       </div>
     </Page>

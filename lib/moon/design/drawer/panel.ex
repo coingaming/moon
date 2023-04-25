@@ -33,7 +33,7 @@ defmodule Moon.Design.Drawer.Panel do
         [
           "fixed w-full bg-gohan text-bulma shadow-moon-xl",
           "moon-panel",
-          "top-0 ": @position == "top",
+          "top-0": @position == "top",
           "bottom-0": @position == "bottom",
           "inset-y-0 ltr:left-0 rtl:right-0 w-5/6 max-w-md ": @position == "start",
           "inset-y-0 ltr:right-0 rtl:left-0 w-5/6 max-w-md ": @position == "end"

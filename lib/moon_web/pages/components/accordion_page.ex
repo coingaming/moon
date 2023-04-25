@@ -90,10 +90,7 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
       <ComponentPageDescription title="Accordion">
         <DeprecationWarning
           name="Accordion"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AccordionPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.AccordionPage)}
         />
       </ComponentPageDescription>
 

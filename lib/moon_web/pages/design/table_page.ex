@@ -3,10 +3,8 @@ defmodule MoonWeb.Pages.Design.TablePage do
 
   use MoonWeb, :live_view
 
-  alias Moon.Components.Button
-  alias Moon.Components.Drawer
   alias Moon.Design.Table
-  alias Moon.Components.Table.Column
+  alias Moon.Design.Table.Column
   alias Moon.Components.Renderers.Datetime
   alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.Page
@@ -14,97 +12,18 @@ defmodule MoonWeb.Pages.Design.TablePage do
   alias MoonWeb.Components.PropsTable
   alias Moon.Components.Lego
 
+  alias MoonWeb.Components.ExamplesList
+  alias MoonWeb.Examples.Design.TableExample
+
   data(breadcrumbs, :any,
     default: [
       %{
         to: "#",
-        name: "Components v2"
+        name: "Components"
       },
       %{
         to: "/components/table",
         name: "Table"
-      }
-    ]
-  )
-
-  data(props_info_array, :list,
-    default: [
-      %{
-        :name => 'cols',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'List of columns for the table'
-      },
-      %{
-        :name => 'items',
-        :type => 'generator',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Rows / data for the table. Each row should have unique `id` key'
-      },
-      %{
-        :name => 'selected',
-        :type => 'list[string]',
-        :required => 'No',
-        :default => '[]',
-        :description => 'list of ids of selected rows.'
-      },
-      %{
-        :name => 'is_cell_border',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Has borders between cells in row'
-      },
-      %{
-        :name => 'is_headless',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Does not have table/column headers'
-      },
-      %{
-        :name => 'row_gap',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'border-spacing-y-1',
-        :description => 'Gap between rows, TW class'
-      },
-      %{
-        :name => 'row_size',
-        :type => '2xs | xs | sm | md | lg | xl | 2xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Text and padding sizes for rows'
-      },
-      %{
-        :name => 'row_click',
-        :type => 'event',
-        :required => 'No',
-        :default => '-',
-        :description => 'When row is clicked'
-      },
-      %{
-        :name => 'row_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'bg-gohan',
-        :description => 'Regular row background, TW class'
-      },
-      %{
-        :name => 'selected_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => 'bg-beerus',
-        :description => 'Selected row background, TW class'
-      },
-      %{
-        :name => 'hover_bg',
-        :type => 'css_class',
-        :required => 'No',
-        :default => '-',
-        :description => 'Hover row background, e.g. hover:bg-heles'
       }
     ]
   )
@@ -115,7 +34,7 @@ defmodule MoonWeb.Pages.Design.TablePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Table" image="facing/components/table.png">
+      <ComponentPageDescription title="Table" is_in_progress image="facing/components/table.png">
         <p>
           A component for displaying large amounts of data in rows and columns.
         </p>
@@ -248,52 +167,13 @@ defmodule MoonWeb.Pages.Design.TablePage do
         <:code>{table_checkbox_code()}</:code>
       </ExampleAndCode>
 
-      <ExampleAndCode title="Sorting and paging" id="table_1">
-        <:example>
-          <Table
-            sort_key={@sort_key}
-            sort_dir={@sort_dir}
-            limit={@limit}
-            offset={@offset}
-            paging_info={%{
-              total_count: 100,
-              visible_count: length(@models)
-            }}
-            {=@selected}
-            items={model <- @models}
-            row_click="single_row_click"
-            paging_click="handle_paging_click"
-            sorting_click="handle_sorting_click"
-            is_cell_border
-          >
-            <Column name="id" label="Label" sortable>
-              {model.id}
-            </Column>
-            <Column name="name" label="Name" sortable>
-              {model.name}
-            </Column>
-            <Column name="created_at" label="Created at" sortable>
-              <Datetime value={model.created_at} />
-            </Column>
-          </Table>
-          {#if Enum.count(@selected) > 0}
-            <Drawer>
-              <Drawer.Dialog close="set_close">
-                <:title>
-                  Selected {@selected}
-                </:title>
-                <:footer>
-                  <Button on_click="set_close">Close</Button>
-                </:footer>
-              </Drawer.Dialog>
-            </Drawer>
-          {/if}
-        </:example>
+      <ExamplesList examples={[
+        TableExample.Sorting,
+        TableExample.Responsive
+      ]} />
 
-        <:code>{table_01_code()}</:code>
-      </ExampleAndCode>
-
-      <PropsTable title="Table props" data={@props_info_array} />
+      <PropsTable title="Table props" module={Table} />
+      <PropsTable title="Table.Column props" module={Table.Column} />
     </Page>
     """
   end
@@ -314,8 +194,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
       assign(socket,
         all_models: all_models,
         models_5: all_models |> Enum.slice(0, 5),
-        sort_key: "name",
-        sort_dir: "ASC",
         limit: 10,
         offset: 0,
         selected: []
@@ -340,16 +218,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
     {:noreply, assign(socket, checked: checked)}
   end
 
-  def handle_event(
-        "handle_sorting_click",
-        %{"sort-dir" => sort_dir, "sort-key" => sort_key},
-        socket
-      ) do
-    socket = assign(socket, sort_dir: sort_dir, sort_key: sort_key)
-    socket = refresh_models(socket)
-    {:noreply, socket}
-  end
-
   def handle_event("handle_paging_click", %{"offset" => offset}, socket) do
     offset = String.to_integer(offset)
     socket = assign(socket, offset: offset)
@@ -365,22 +233,11 @@ defmodule MoonWeb.Pages.Design.TablePage do
     %{
       limit: limit,
       offset: offset,
-      all_models: all_models,
-      sort_key: sort_key,
-      sort_dir: sort_dir
+      all_models: all_models
     } = socket.assigns
 
     models =
       all_models
-      |> Enum.sort_by(fn x -> x[String.to_existing_atom(sort_key)] end, fn x, y ->
-        case sort_dir do
-          "ASC" ->
-            x < y
-
-          "DESC" ->
-            x > y
-        end
-      end)
       |> Enum.slice(offset..(offset + limit - 1))
 
     assign(socket, models: models)
@@ -531,49 +388,6 @@ defmodule MoonWeb.Pages.Design.TablePage do
 
       {:noreply, assign(socket, checked: checked)}
     end
-    """
-  end
-
-  def table_01_code do
-    """
-    <Table
-      id="example-table"
-      sort_key={@sort_key}
-      sort_dir={@sort_dir}
-      limit={@limit}
-      offset={@offset}
-      paging_info={%{
-        total_count: 100,
-        visible_count: length(@models)
-      }}
-      {=@selected}
-      items={model <- @models}
-      row_click="handle_row_click"
-      paging_click="handle_paging_click"
-      sorting_click="handle_sorting_click"
-    >
-      <Column name="id" label="Label" sortable>
-        {model.id}
-      </Column>
-      <Column name="name" label="Name" sortable>
-        {model.name}
-      </Column>
-      <Column name="created_at" label="Created at" sortable>
-        <DateTime value={model.created_at} />
-      </Column>
-    </Table>
-    {#if @selected}
-      <Drawer>
-        <Drawer.Dialog close="set_close">
-          <:title>
-            Selected {@selected}
-          </:title>
-          <:footer>
-            <Button on_click="set_close">Close</Button>
-          </:footer>
-        </Drawer.Dialog>
-      </Drawer>
-    {/if}
     """
   end
 end

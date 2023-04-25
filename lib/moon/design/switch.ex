@@ -38,9 +38,9 @@ defmodule Moon.Design.Switch do
         ],
         @class
       ])}
-      value={"#{@checked}"}
+      value={"#{!@checked}"}
       data-testid={@testid}
-      :on-click={@on_change || "toggle_switch"}
+      :on-click={@on_change}
     >
       <span class="block relative h-full w-full">
         {#if slot_assigned?(:on_icon)}

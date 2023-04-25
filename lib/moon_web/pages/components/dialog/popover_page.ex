@@ -121,10 +121,7 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
       <ComponentPageDescription title="Popover">
         <DeprecationWarning
           name="Popover"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.PopoverPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.PopoverPage)}
         />
       </ComponentPageDescription>
 

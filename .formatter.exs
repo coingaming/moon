@@ -1,4 +1,5 @@
 [
-  plugins: [Surface.Formatter.Plugin],
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+  import_deps: [:phoenix, :surface],
+  plugins: [Phoenix.LiveView.HTMLFormatter, Surface.Formatter.Plugin],
+  inputs: ["*.{heex,ex,exs}", "{config,lib,test}/**/*.{heex,ex,exs}", "{lib,test}/**/*.sface"]
 ]

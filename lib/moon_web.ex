@@ -17,36 +17,42 @@ defmodule MoonWeb do
   and import those modules here.
   """
 
+  def static_paths, do: ~w(assets fonts images themes favicon.ico robots.txt)
+
   def controller do
     quote do
-      use Phoenix.Controller, namespace: MoonWeb
+      use Phoenix.Controller,
+        namespace: MoonWeb,
+        formats: [:html, :json],
+        layouts: [html: MoonWeb.Layouts]
 
       import Plug.Conn
       import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
+
+      unquote(verified_routes())
     end
   end
 
-  def view do
+  def html do
     quote do
-      use Phoenix.View,
-        root: "lib/moon_web/templates",
-        namespace: MoonWeb
+      use Phoenix.Component
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
+        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
 
-      # Include shared imports and aliases for views
-      unquote(view_helpers())
+      # Include general helpers for rendering HTML
+      unquote(html_helpers())
     end
   end
 
   def live_view do
     quote do
-      use Moon.LiveView, layout: {MoonWeb.LayoutView, :live}
+      use Moon.LiveView,
+        layout: {MoonWeb.Layouts, :app}
 
-      unquote(view_helpers())
+      unquote(html_helpers())
     end
   end
 
@@ -54,7 +60,7 @@ defmodule MoonWeb do
     quote do
       use Moon.StatelessComponent
 
-      unquote(view_helpers())
+      unquote(html_helpers())
     end
   end
 
@@ -62,7 +68,7 @@ defmodule MoonWeb do
     quote do
       use Moon.StatefulComponent
 
-      unquote(view_helpers())
+      unquote(html_helpers())
     end
   end
 
@@ -70,13 +76,13 @@ defmodule MoonWeb do
     quote do
       use Phoenix.LiveComponent
 
-      unquote(view_helpers())
+      unquote(html_helpers())
     end
   end
 
   def router do
     quote do
-      use Phoenix.Router
+      use Phoenix.Router, helpers: true
 
       import Plug.Conn
       import Phoenix.Controller
@@ -91,28 +97,39 @@ defmodule MoonWeb do
     end
   end
 
-  defp view_helpers do
+  defp html_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      # use Phoenix.HTML
 
       # Import LiveView helpers (live_render, live_component, live_patch, etc)
       import Phoenix.LiveView.Helpers
 
       # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
+      import Phoenix.HTML
 
       import MoonWeb.ErrorHelpers
       import MoonWeb.Gettext
-      alias MoonWeb.Router.Helpers, as: Routes
-      import Routes, only: [static_path: 2]
+      import MoonWeb.Router.Helpers, only: [live_path: 2, live_path: 3]
+      # import Routes, only: [static_path: 2]
 
-      import MoonWeb.Helpers.Routes
       import MoonWeb.Helpers.Html
+
+      # Routes generation with the ~p sigil
+      unquote(verified_routes())
     end
   end
 
   def example do
+  end
+
+  defp verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: MoonWeb.Endpoint,
+        router: MoonWeb.Router,
+        statics: MoonWeb.static_paths()
+    end
   end
 
   @doc """

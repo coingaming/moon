@@ -30,19 +30,16 @@ jobs:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
-          name: Fetch dependencies
-          command: mix setup
+          command: mix deps.get
       - run:
-          name: "Clean assets"
-          command: mix phx.digest.clean --all && mix assets.clean
+          command: mix compile --all-warnings --warnings-as-errors
       - run:
-          name: "Install apps dependencies"
+          command: mix assets.clean
+      - run:
           command: mix assets.setup
       - run:
-          name: "Build apps assets"
           command: mix assets.deploy
       - run:
-          name: Build release
           command: mix release
       - save_cache:
           key: v10-build-{{ checksum "mix.lock" }}
@@ -82,13 +79,9 @@ jobs:
       - run:
           command: mix setup
       - run:
-          command: mix assets.setup
-      - run:
           command: mix compile --all-warnings --warnings-as-errors
       - run:
           command: mix format --check-formatted
-      - run:
-          command: mix surface.format --check-formatted
       - run:
           command: mix credo
       - run:
@@ -166,7 +159,7 @@ jobs:
             - ~/.mix
       - run:
           name:       Semantic Release
-          command:    npx semantic-release --extends @heathmont/semantic-release-elixir-hex
+          command:    VERSION_PERSISTS=true npx semantic-release --extends @heathmont/semantic-release-elixir-hex
   
 
 workflows:

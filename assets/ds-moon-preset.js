@@ -141,7 +141,7 @@ module.exports = {
         backdrop_enter: "fadein 0.3s ease-out",
         backdrop_leave: "fadeout 0.2s ease-in",
         modal_enter: "modalfadein 0.3s ease-out",
-        modal_leave: "modalfadeout 0.2s ease-in",
+        modal_leave: "modalfadeout 0.2s ease-in"
       },
       keyframes: {
         loader: {
@@ -427,6 +427,8 @@ module.exports = {
         `&[error]`,
         `:where([error]) &`,
       ]);
+      addVariant('not-last', '&:not(:last-child)');
+      addVariant('not-first', '&:not(:first-child)');
     }),
   ],  
 };

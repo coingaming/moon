@@ -48,10 +48,7 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
       <ComponentPageDescription title="Loader">
         <DeprecationWarning
           name="Loader"
-          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.LoaderPage,
-            theme_name: @theme_name,
-            direction: @direction
-          )}
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.LoaderPage)}
         />
       </ComponentPageDescription>
 

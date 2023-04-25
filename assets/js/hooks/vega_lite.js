@@ -1,6 +1,8 @@
 import * as vega from "vega"
 import vegaEmbed from "vega-embed"
 
+//TODO: not exported to anywhere, but used in Moon.Components.LineChart
+//      or remove either export in ./index.js and check assets/package.json
 const VegaLite = {
   mounted() {
     this.viewPromise = vegaEmbed(this.el, JSON.parse(this.el.dataset.spec), {

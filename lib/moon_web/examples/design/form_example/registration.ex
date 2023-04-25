@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.FormExample.Registration do
   alias Moon.Design.Form.Field.Label
   alias Moon.Design.Form.Select
   alias Moon.Design.Form.Input
-  alias Moon.Design.Form.Textarea
+  alias Moon.Design.Form.TextArea
   alias Moon.Design.Form.Field
   alias Moon.Design.Form.Switch
   alias Moon.Design.Form.Checkbox
@@ -47,8 +47,8 @@ defmodule MoonWeb.Examples.Design.FormExample.Registration do
       <Field label="Label for textinput" hint="Hint for Textinput" field={:username}>
         <Input />
       </Field>
-      <Field label="Label for Textarea" hint="Hint for Textarea" field={:email}>
-        <Textarea />
+      <Field label="Label for TextArea" hint="Hint for TextArea" field={:email}>
+        <TextArea />
       </Field>
       <Field field={:agrees_to_terms_of_service}>
         <Label size="sm">

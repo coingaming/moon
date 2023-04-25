@@ -1,3 +1,94 @@
+## [2.42.3](https://github.com/coingaming/moon/compare/v2.42.2...v2.42.3) (2023-04-21)
+
+
+### Bug Fixes
+
+* support for surface 0.10.0 and live_view 0.18.18 ([#617](https://github.com/coingaming/moon/issues/617)) ([78f6a8e](https://github.com/coingaming/moon/commit/78f6a8ebe565fb3f8133dc13f207528fa1b5491a))
+
+## [2.42.2](https://github.com/coingaming/moon/compare/v2.42.1...v2.42.2) (2023-04-21)
+
+
+### Bug Fixes
+
+* spotlight ([24807c5](https://github.com/coingaming/moon/commit/24807c54e21789dc771eb11f607caea3c17f92fb))
+
+## [2.42.1](https://github.com/coingaming/moon/compare/v2.42.0...v2.42.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* full usage of surface 0.9 ([879398e](https://github.com/coingaming/moon/commit/879398e6849646b60dfd11445fbe06b87e4757dc))
+
+# [2.42.0](https://github.com/coingaming/moon/compare/v2.41.6...v2.42.0) (2023-04-20)
+
+
+### Features
+
+* Pagination v2 component ([1d052cb](https://github.com/coingaming/moon/commit/1d052cb891852410e64aa12a2fecca351b117b71))
+
+## [2.41.6](https://github.com/coingaming/moon/compare/v2.41.5...v2.41.6) (2023-04-18)
+
+
+### Bug Fixes
+
+* phoenix 1.7.2 in da house ([#612](https://github.com/coingaming/moon/issues/612)) ([5f6bad4](https://github.com/coingaming/moon/commit/5f6bad4fc8d8e3c3048a130ee6190d4dba1d4ac5))
+
+## [2.41.5](https://github.com/coingaming/moon/compare/v2.41.4...v2.41.5) (2023-04-14)
+
+
+### Bug Fixes
+
+* props table, icons page, manifest page, components page ([#609](https://github.com/coingaming/moon/issues/609)) ([be917e1](https://github.com/coingaming/moon/commit/be917e1a446c35435587d7857cdc84b4fec4d676))
+
+## [2.41.4](https://github.com/coingaming/moon/compare/v2.41.3...v2.41.4) (2023-04-14)
+
+
+### Bug Fixes
+
+* deps versions changed and getting-started updated ([5255bdc](https://github.com/coingaming/moon/commit/5255bdca199183e82823e488445108442b687af4))
+
+## [2.41.3](https://github.com/coingaming/moon/compare/v2.41.2...v2.41.3) (2023-04-13)
+
+
+### Bug Fixes
+
+* Table v2 will sort items given if sort property is set ([#608](https://github.com/coingaming/moon/issues/608)) ([e2481c5](https://github.com/coingaming/moon/commit/e2481c5bce44cb27acfb8245e0a9f9d6a5ff8a9a))
+
+## [2.41.2](https://github.com/coingaming/moon/compare/v2.41.1...v2.41.2) (2023-04-13)
+
+
+### Bug Fixes
+
+* responsive table example & some component fix ([#606](https://github.com/coingaming/moon/issues/606)) ([c5b6e3b](https://github.com/coingaming/moon/commit/c5b6e3b5837b773bfe235652230ab2b8b8313923))
+
+## [2.41.1](https://github.com/coingaming/moon/compare/v2.41.0...v2.41.1) (2023-04-13)
+
+
+### Bug Fixes
+
+* [MDS-485] Update sidebar ([#603](https://github.com/coingaming/moon/issues/603)) ([65bbfb0](https://github.com/coingaming/moon/commit/65bbfb04432a591a4b56f508875b88872bfe9cac))
+
+# [2.41.0](https://github.com/coingaming/moon/compare/v2.40.0...v2.41.0) (2023-04-10)
+
+
+### Features
+
+* Radio v2 component & some minor fixes ([0847f87](https://github.com/coingaming/moon/commit/0847f871a1d8556e0f50c802685b2aa795959402))
+
+# [2.40.0](https://github.com/coingaming/moon/compare/v2.39.4...v2.40.0) (2023-04-06)
+
+
+### Features
+
+* [MDS-480] Bottom sheet v2 ([#600](https://github.com/coingaming/moon/issues/600)) ([46fd0ec](https://github.com/coingaming/moon/commit/46fd0ecef989c0a51c835d8f12d22a83779e8a35))
+
+## [2.39.4](https://github.com/coingaming/moon/compare/v2.39.3...v2.39.4) (2023-04-05)
+
+
+### Bug Fixes
+
+* rollback Checkbox v1 fix ([#599](https://github.com/coingaming/moon/issues/599)) ([203c5a9](https://github.com/coingaming/moon/commit/203c5a90ebbfc5e3f16b69d2818d8a55972a68dc))
+
 ## [2.39.3](https://github.com/coingaming/moon/compare/v2.39.2...v2.39.3) (2023-04-04)
 
 
@@ -215,7 +306,7 @@
 
 ### Bug Fixes
 
-* [MDS-358] Textarea v2 ([ab10fb6](https://github.com/coingaming/moon/commit/ab10fb643a10b74480f3403a78111e60afcfbba9))
+* [MDS-358] TextArea v2 ([ab10fb6](https://github.com/coingaming/moon/commit/ab10fb643a10b74480f3403a78111e60afcfbba9))
 
 ## [2.35.7](https://github.com/coingaming/moon/compare/v2.35.6...v2.35.7) (2023-01-18)
 

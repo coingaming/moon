@@ -1,0 +1,105 @@
+defmodule MoonWeb.Examples.Form.RadioExample.Customizations do
+  @moduledoc false
+
+  use Moon.StatefulComponent
+
+  use MoonWeb, :example
+
+  alias Moon.Design.Form.Radio
+  alias Moon.Design.Form.Radio.{Option, Indicator}
+
+  data(value1, :string, default: "first")
+  data(value2, :string, default: "second")
+  data(value3, :string, default: "")
+
+  def handle_event("changed" <> ind, %{"value" => value}, socket) do
+    {:noreply, assign(socket, "value#{ind}": value)}
+  end
+
+  def render(assigns) do
+    ~F"""
+    <div class="w-full flex flex-wrap items-center justify-around gap-4">
+      <Radio value={@value1} on_change="changed1" class="flex gap-4">
+        <Option value="first">
+          <Indicator /> Option 1
+        </Option>
+        <Option value="second">
+          <Indicator /> Option 2
+        </Option>
+      </Radio>
+
+      <Radio value={@value2} on_change="changed2">
+        <Option
+          value="first"
+          class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
+        >
+          Option 1 <Indicator />
+        </Option>
+        <Option
+          value="second"
+          class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
+        >
+          Option 2 <Indicator />
+        </Option>
+      </Radio>
+
+      <Radio value={@value3} on_change="changed3">
+        <Option value="first">
+          <Indicator class="border-chichi" /> Option 1
+        </Option>
+        <Option value="second">
+          <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Option 2
+        </Option>
+      </Radio>
+    </div>
+    """
+  end
+
+  def code() do
+    """
+    alias Moon.Design.Form.Radio
+    alias Moon.Design.Form.Radio.{Option, Indicator}
+
+    data(value1, :string, default: "first")
+    data(value2, :string, default: "second")
+    data(value3, :string, default: "")
+
+    def handle_event("changed" <> ind, %{"value" => value}, socket) do
+      {:noreply, assign(socket, "value\#{ind}": value)}
+    end
+
+    def render(assigns) do
+      ~F\"""
+      <div class="w-full flex flex-wrap items-center justify-around gap-4">
+        <Radio value={@value1} on_change="changed1" class="flex gap-4">
+          <Option value="first">
+            <Indicator /> Option 1
+          </Option>
+          <Option value="second">
+            <Indicator /> Option 2
+          </Option>
+        </Radio>
+
+        <Radio value={@value2} on_change="changed2">
+          <Option value="first" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+            Option 1 <Indicator />
+          </Option>
+          <Option value="second" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+            Option 2 <Indicator />
+          </Option>
+        </Radio>
+
+        <Radio value={@value3} on_change="changed3">
+          <Option value="first">
+            <Indicator class="border-chichi" /> Option 1
+          </Option>
+          <Option value="second">
+            <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Option 2
+          </Option>
+        </Radio>
+      </div>
+      \"""
+    end
+    """
+  end
+end

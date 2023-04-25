@@ -12,8 +12,8 @@ config :moon, MoonWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    npm: ["run", "watch_js", cd: Path.expand("../assets", __DIR__)],
-    npm: ["run", "watch_css", cd: Path.expand("../assets", __DIR__)]
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    npm: ["run", "watch", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # ## SSL Support
@@ -42,14 +42,13 @@ config :moon, MoonWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :moon, MoonWeb.Endpoint,
+  reloadable_compilers: [:elixir, :app, :surface],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/moon_web/(live|views|pages)/.*(ex)$",
-      ~r"lib/moon_web/templates/.*(eex)$",
-      ~r"lib/moon/components/.*(ex)$",
-      ~r"lib/moon/components_v2/.*(ex)$"
+      ~r"lib/moon_web/(live|views|pages|examples|components)/.*(ex|sface|js)$",
+      ~r"lib/moon_web/templates/.*(eex|sface)$",
+      ~r"lib/moon/(components|design|lego)/.*(ex|sface|js)$"
     ]
   ]
 

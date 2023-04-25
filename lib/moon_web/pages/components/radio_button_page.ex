@@ -14,6 +14,7 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Components.Facing.DeprecationWarning
 
   data(breadcrumbs, :any,
     default: [
@@ -80,9 +81,10 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="RadioButton">
-        <p>
-          Radio buttons are used to represent a group or category of choices whereby users can only select one option - the main difference from checkboxes that allow users to select multiple options.
-        </p>
+        <DeprecationWarning
+          name="Radio"
+          href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.Design.Form.RadioPage)}
+        />
       </ComponentPageDescription>
 
       <ExampleAndCode title="RadioButton" id="radiobutton_1">
@@ -145,7 +147,6 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
         },
         socket
       ) do
-    IO.puts("FORM_CHANGED ############################ \n #{inspect(params)}")
     user_changeset = User.changeset(%User{}, params)
 
     {:noreply, assign(socket, user_changeset: user_changeset)}
