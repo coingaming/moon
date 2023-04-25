@@ -1,21 +1,23 @@
 defmodule Moon.Design.Form.Dropdown do
-  @moduledoc false
+  @moduledoc "Totally styled dropdown component for the forms"
 
   use Moon.StatelessComponent
 
   alias Surface.Components.Dynamic.Component
   alias Surface.Components.Form
   alias Moon.Design.Dropdown
-  alias Moon.Lego
+
+  alias Moon.Design.Form.Checkbox
+  alias Moon.Design.Form.Radio
 
   import Moon.Helpers.MakeList, only: [make_list: 1]
   import Moon.Helpers.Form, only: [has_error: 2]
   import Phoenix.HTML.Form, only: [input_id: 2]
 
   @doc "Name of the field, usually should be taken from context"
-  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
+  prop(field, :atom, from_context: {Form.Field, :field})
   @doc "Form info, usually should be taken from context"
-  prop(form, :form, from_context: {Surface.Components.Form, :form})
+  prop(form, :form, from_context: {Form, :form})
 
   @doc "... format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
   prop(options, :generator, required: true)
@@ -43,6 +45,7 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "if field does support multiselect, `multiple` attribute for select tag in HTML terms"
   prop(is_multiple, :boolean)
 
+  @doc "Option for custom stylings - use it to put icons or anything you wish"
   slot(option, generator_prop: :options)
 
   def render(assigns) do
@@ -85,8 +88,19 @@ defmodule Moon.Design.Form.Dropdown do
       <Dropdown.Options>
         <#slot {@option} :for={option <- @options} generator_value={option}>
           <Dropdown.Option value={option[:value]} disabled={option[:disabled]}>
-            <Lego.Checkbox :if={@is_multiple} />
-            <Lego.Title>{option[:key]}</Lego.Title>
+            <Checkbox
+              checked_value={option[:value]}
+              :if={@is_multiple}
+              label={option[:key]}
+              disabled={option[:disabled]}
+              hidden_input={false}
+            />
+            <Radio.Button
+              value={option[:value]}
+              :if={!@is_multiple}
+              label={option[:key]}
+              disabled={option[:disabled]}
+            />
           </Dropdown.Option>
         </#slot>
       </Dropdown.Options>
@@ -99,13 +113,14 @@ defmodule Moon.Design.Form.Dropdown do
   end
 
   defp options_with_selected(options, value) do
-    Enum.map(options, fn row ->
-      [
-        key: row[:key],
-        value: row[:value],
-        selected: Enum.member?(make_list(value), row[:value]),
-        disabled: row[:disabled]
+    Enum.map(
+      options,
+      &[
+        key: &1[:key],
+        value: &1[:value],
+        selected: Enum.member?(make_list(value), &1[:value]),
+        disabled: &1[:disabled]
       ]
-    end)
+    )
   end
 end

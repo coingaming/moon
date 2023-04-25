@@ -1,10 +1,17 @@
 defmodule Moon.Design.Dropdown.Option do
-  @moduledoc false
+  @moduledoc "Single oprion for the dropdown component. Renders as a button"
 
   use Moon.StatelessComponent, slot: "option"
 
+  @doc "data-testid attribute for button"
+  prop(testid, :string)
+  @doc "id attribute for buttons"
+  prop(id, :string)
+  @doc "title to be shown when no default slot is given"
   prop(title, :string)
+  @doc "additional CSS classes for the button tag"
   prop(class, :css_class)
+  @doc "if the button is disabled"
   prop(disabled, :boolean)
 
   prop(on_click, :event, from_context: :on_click)
@@ -12,10 +19,8 @@ defmodule Moon.Design.Dropdown.Option do
   prop(is_selected, :boolean, from_context: :is_selected)
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
 
+  @doc "inner content of the option"
   slot(default)
-
-  prop(testid, :string)
-  prop(id, :string)
 
   def render(assigns) do
     ~F"""

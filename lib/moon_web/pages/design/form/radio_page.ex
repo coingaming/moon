@@ -61,142 +61,9 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
         RadioExample.Customizations
       ]} />
 
-      <PropsTable
-        title="Radio props"
-        data={[
-          %{
-            :name => 'field',
-            :type => 'atom',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Field name for underlying surface select component'
-          },
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id for the DOM element'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is disabled'
-          },
-          %{
-            :name => 'option',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Option elements'
-          },
-          %{
-            :name => 'options',
-            :type => 'keyword list',
-            :required => 'No',
-            :default => '-',
-            :description => 'list [value: "title"] of the options'
-          },
-          %{
-            :name => 'on_change',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to be fired when option is clicked. use it outside forms'
-          },
-          %{
-            :name => 'value',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Value of the selected Option'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Radio.Option props"
-        data={[
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id for the DOM element'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is disabled'
-          },
-          %{
-            :name => 'value',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Value of the Option'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Radio.Indicator props"
-        data={[
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id for the DOM element'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Form.Radio} />
+      <PropsTable module={Moon.Design.Form.Radio.Button} />
+      <PropsTable module={Moon.Design.Form.Radio.Indicator} />
     </Page>
     """
   end
@@ -204,12 +71,12 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
   defp component_anatomy(:long) do
     """
     <Radio value="..." on_change="...">
-      <Radio.Option value="...">
+      <Radio.Button value="...">
         <Radio.Indicator /> ...
-      </Radio.Option>
-      <Radio.Option value="...">
+      </Radio.Button>
+      <Radio.Button value="...">
         <Radio.Indicator /> ...
-      </Radio.Option>
+      </Radio.Button>
     </Radio>
     """
   end

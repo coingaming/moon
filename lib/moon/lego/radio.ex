@@ -1,12 +1,16 @@
 defmodule Moon.Lego.Radio do
-  @moduledoc false
+  @moduledoc "Radio round mark to be shown"
 
   use Moon.StatelessComponent
 
-  prop(is_selected, :boolean, from_context: :is_selected)
+  @doc "Additional CSS classes for the "
   prop(class, :css_class)
+  @doc "id attribute to be given to the HTML tag"
   prop(id, :string)
+  @doc "data-testid attribute value"
   prop(testid, :string)
+  @doc "If the mark should be checked "
+  prop(is_selected, :boolean, from_context: :is_selected)
 
   def render(assigns) do
     ~F"""

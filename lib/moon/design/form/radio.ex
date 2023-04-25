@@ -9,8 +9,6 @@ defmodule Moon.Design.Form.Radio do
   import Moon.Helpers.MakeList
   import Moon.Helpers.Form
 
-  alias __MODULE__.Indicator
-
   prop(id, :string)
   prop(testid, :string)
   prop(class, :css_class)
@@ -54,7 +52,8 @@ defmodule Moon.Design.Form.Radio do
           on_click={@on_change}
           {=value}
           {=@disabled}
-        ><Indicator />{title}</Component>
+          {=title}
+        />
       {/if}
       <#slot />
     </Field>

@@ -9,9 +9,9 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.ExamplesList
 
-  alias MoonWeb.Examples.Design.DropdownExample
+  alias Moon.Design.Tabs
 
-  import Moon.Helpers.Positions
+  alias MoonWeb.Examples.Design.DropdownExample
 
   data(breadcrumbs, :any,
     default: [
@@ -48,7 +48,15 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         </p>
       </ComponentPageDescription>
 
-      <Anatomy>{component_anatomy()}</Anatomy>
+      <Tabs id="anatomy-tabs" class="justify-between gap-6">
+        <h2 class="text-moon-24 font-medium">Anatomy</h2>
+        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Form"]} />
+        <Tabs.Panels>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:form)}</Anatomy></Tabs.Panel>
+        </Tabs.Panels>
+      </Tabs>
 
       <ExamplesList examples={[
         DropdownExample.Default,
@@ -59,130 +67,44 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.InForm
       ]} />
 
-      <PropsTable
-        title="Dropdown props"
-        data={[
-          %{
-            :name => 'option',
-            :type => 'slot',
-            :required => '-',
-            :default => '-',
-            :description => 'Message shown in Dropdown, see Dropdown.Option'
-          },
-          %{
-            :name => 'trigger',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Hover element, see Dropdown.Trigger'
-          },
-          %{
-            :name => 'option_titles',
-            :type => 'list',
-            :required => 'No',
-            :default => '[]',
-            :description => 'List of options when no slot given'
-          },
-          %{
-            :name => 'option_module',
-            :type => 'atom',
-            :required => 'No',
-            :default => 'Option',
-            :description => 'Module to render option_titles'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'CSS class for options container'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md | lg',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of options'
-          },
-          %{
-            :name => 'position',
-            :type => position_list() |> Enum.join(" | "),
-            :required => 'No',
-            :default => '-',
-            :description => 'Position of options list'
-          },
-          %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Visibility of options list'
-          },
-          %{
-            :name => 'on_change',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to be fired on item(s) select'
-          },
-          %{
-            :name => 'on_trigger',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to be fired on show/hide'
-          },
-          %{
-            :name => 'value',
-            :type => 'any',
-            :required => 'No',
-            :default => '-',
-            :description => 'Value specifies item(s) selected'
-          }
-        ]}
-      />
-      <PropsTable
-        title="Dropdown.Option props"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Content to be shown. In no is given - title is here'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Classes for customization'
-          },
-          %{
-            :name => 'title',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title to be shown instead of default slot'
-          },
-          %{
-            :name => 'value',
-            :type => 'any',
-            :required => 'No',
-            :default => '-',
-            :description => 'Value of the option'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Dropdown} />
+      <PropsTable module={Moon.Design.Dropdown.Options} />
+      <PropsTable module={Moon.Design.Dropdown.Trigger} />
+      <PropsTable module={Moon.Design.Dropdown.Option} />
+      <PropsTable module={Moon.Design.Form.Dropdown} />
     </Page>
     """
   end
 
-  def component_anatomy do
+  def component_anatomy(:short) do
     """
-    <Dropdown option_titles={["...", "...", "..."]}>
+    <Dropdown>
+      <Dropdown.Options titles={["...", "...", "..."]}>
       <Dropdown.Trigger>...</Dropdown.Trigger>
     </Dropdown>
+    """
+  end
+
+  def component_anatomy(:long) do
+    """
+    <Dropdown>
+      <Dropdown.Options>
+        <Dropdown.Option>...</Dropdown.Option>
+        <Dropdown.Option>...</Dropdown.Option>
+        <Dropdown.Option>...</Dropdown.Option>
+      </Dropdown.Options>
+      <Dropdown.Trigger>...</Dropdown.Trigger>
+    </Dropdown>
+    """
+  end
+
+  def component_anatomy(:form) do
+    """
+    <Form>
+      <Form.Field>
+        <Dropdown options={...} />
+      </Form.Field>
+    </Form>
     """
   end
 end

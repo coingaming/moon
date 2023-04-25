@@ -52,7 +52,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.MultipleChoices
       ]} />
 
-      <PropsTable title="Select props" module={Moon.Design.Form.Select} />
+      <PropsTable module={Moon.Design.Form.Select} />
     </Page>
     """
   end

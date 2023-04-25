@@ -13,8 +13,12 @@ defmodule MoonWeb.Components.PropsTable do
 
   def render(assigns) do
     ~F"""
-    <section class="flex flex-col gap-6 w-full overflow-x-auto">
-      <div class="text-moon-24 font-semibold">{@title}</div>
+    <section class="flex flex-col gap-2 w-full overflow-x-auto">
+      <div class="text-moon-24 font-semibold">{(@module && "#{@module} props") || @title}</div>
+      <div
+        :if={@module && function_exported?(@module, :__moduledoc__, 0) && @module.__moduledoc__()}
+        class="text-moon-14"
+      >{@module.__moduledoc__()}</div>
       <Table items={item <- @data || data_from_module(@module)} class="p-4">
         <Column name="name" label="Name">
           {item.name}

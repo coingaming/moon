@@ -1,17 +1,23 @@
 defmodule Moon.Design.Dropdown do
-  @moduledoc false
+  @moduledoc "Component for rendering dropdown info, mostly lists"
 
   use Moon.StatefulComponent
 
+  @doc "Value(s) of the options to be marked as selected"
   prop(value, :any)
+  @doc "Event that fired when trigger is clicked "
   prop(on_trigger, :event)
+  @doc "Put true here if you want dropdown to be shown by default"
   prop(is_open, :boolean)
 
   prop(class, :css_class)
 
+  @doc "data-testid attribute for HTML tag"
   prop(testid, :string)
 
+  @doc "slot for triggering the open/closing state"
   slot(trigger, required: true)
+  @doc "content to be showable"
   slot(default)
 
   def handle_event("on_change_default", %{"value" => value}, socket) do

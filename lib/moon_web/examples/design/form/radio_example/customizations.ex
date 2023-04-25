@@ -6,7 +6,7 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
   use MoonWeb, :example
 
   alias Moon.Design.Form.Radio
-  alias Moon.Design.Form.Radio.{Option, Indicator}
+  alias Moon.Design.Form.Radio.{Button, Indicator}
 
   data(value1, :string, default: "first")
   data(value2, :string, default: "second")
@@ -20,36 +20,36 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
     ~F"""
     <div class="w-full flex flex-wrap items-center justify-around gap-4">
       <Radio value={@value1} on_change="changed1" class="flex gap-4">
-        <Option value="first">
+        <Button value="first">
           <Indicator /> Option 1
-        </Option>
-        <Option value="second">
+        </Button>
+        <Button value="second">
           <Indicator /> Option 2
-        </Option>
+        </Button>
       </Radio>
 
       <Radio value={@value2} on_change="changed2">
-        <Option
+        <Button
           value="first"
           class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
         >
-          Option 1 <Indicator />
-        </Option>
-        <Option
+          Button 1 <Indicator />
+        </Button>
+        <Button
           value="second"
           class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
         >
-          Option 2 <Indicator />
-        </Option>
+          Button 2 <Indicator />
+        </Button>
       </Radio>
 
       <Radio value={@value3} on_change="changed3">
-        <Option value="first">
-          <Indicator class="border-chichi" /> Option 1
-        </Option>
-        <Option value="second">
-          <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Option 2
-        </Option>
+        <Button value="first">
+          <Indicator class="border-chichi" /> Button 1
+        </Button>
+        <Button value="second">
+          <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Button 2
+        </Button>
       </Radio>
     </div>
     """
@@ -58,7 +58,7 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
   def code() do
     """
     alias Moon.Design.Form.Radio
-    alias Moon.Design.Form.Radio.{Option, Indicator}
+    alias Moon.Design.Form.Radio.{Button, Indicator}
 
     data(value1, :string, default: "first")
     data(value2, :string, default: "second")
@@ -72,30 +72,30 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
       ~F\"""
       <div class="w-full flex flex-wrap items-center justify-around gap-4">
         <Radio value={@value1} on_change="changed1" class="flex gap-4">
-          <Option value="first">
-            <Indicator /> Option 1
-          </Option>
-          <Option value="second">
-            <Indicator /> Option 2
-          </Option>
+          <Button value="first">
+            <Indicator /> Button 1
+          </Button>
+          <Button value="second">
+            <Indicator /> Button 2
+          </Button>
         </Radio>
 
         <Radio value={@value2} on_change="changed2">
-          <Option value="first" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
-            Option 1 <Indicator />
-          </Option>
-          <Option value="second" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
-            Option 2 <Indicator />
-          </Option>
+          <Button value="first" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+            Button 1 <Indicator />
+          </Button>
+          <Button value="second" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+            Button 2 <Indicator />
+          </Button>
         </Radio>
 
         <Radio value={@value3} on_change="changed3">
-          <Option value="first">
-            <Indicator class="border-chichi" /> Option 1
-          </Option>
-          <Option value="second">
-            <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Option 2
-          </Option>
+          <Button value="first">
+            <Indicator class="border-chichi" /> Button 1
+          </Button>
+          <Button value="second">
+            <Indicator class="moon-checked:border-nappa after:bg-nappa" /> Button 2
+          </Button>
         </Radio>
       </div>
       \"""
