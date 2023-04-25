@@ -1,3 +1,10 @@
+## [2.42.4](https://github.com/coingaming/moon/compare/v2.42.3...v2.42.4) (2023-04-25)
+
+
+### Bug Fixes
+
+* add attrs support to button ([#619](https://github.com/coingaming/moon/issues/619)) ([0e9eb7d](https://github.com/coingaming/moon/commit/0e9eb7d15bd5c5173ca12426996b48e171be6ab3))
+
 ## [2.42.3](https://github.com/coingaming/moon/compare/v2.42.2...v2.42.3) (2023-04-21)
 
 
