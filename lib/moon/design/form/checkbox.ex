@@ -1,11 +1,13 @@
 defmodule Moon.Design.Form.Checkbox do
-  @moduledoc "Checkbox to be rendered on form. Label is the root component"
+  @moduledoc "Checkbox to be rendered on form. Label is the root component. For rebdering outside the from please use Moon.Lego.Checkbox"
 
   use Moon.StatelessComponent
 
   alias Moon.Lego.Checkbox
   alias Moon.Design.Form.Field.Label
-  import Moon.Helpers.Form, only: [value_is_true: 2]
+
+  import Phoenix.HTML.Form, only: [input_value: 2, input_name: 2]
+  import Moon.Helpers.MakeList
 
   @doc "Field name, surface-style"
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
@@ -37,6 +39,9 @@ defmodule Moon.Design.Form.Checkbox do
   @doc "The value to be sent when the checkbox is unchecked, defaults to \"false\"."
   prop(unchecked_value, :any, default: false)
 
+  @doc "Adding [] to the field name for support multiple checkboxes"
+  prop(is_multiple, :boolean)
+
   def render(assigns) do
     ~F"""
     <Label
@@ -58,10 +63,11 @@ defmodule Moon.Design.Form.Checkbox do
         {=@hidden_input}
         click={(!@readonly && !@disabled && @on_click) || nil}
         class="opacity-0"
-        opts={disabled: @disabled || @readonly, readonly: @readonly, "data-testid": @testid}
+        opts={[disabled: @disabled || @readonly, readonly: @readonly, "data-testid": @testid] ++
+          maybe_multiple_name(assigns)}
       />
       <Checkbox
-        is_selected={value_is_true(@form, @field)}
+        is_selected={is_selected(assigns)}
         class={merge([
           "absolute top-1 ltr:left-0 rtl:right-0",
           @class
@@ -71,4 +77,18 @@ defmodule Moon.Design.Form.Checkbox do
     </Label>
     """
   end
+
+  defp is_selected(%{form: form, field: field, checked_value: checked_value}) do
+    dbg({checked_value, input_value(form, field)})
+
+    input_value(form, field)
+    |> make_list
+    |> Enum.map(&"#{&1}")
+    |> Enum.member?("#{checked_value}")
+  end
+
+  defp maybe_multiple_name(%{form: form, field: field, is_multiple: true}),
+    do: [name: "#{input_name(form, field)}[]"]
+
+  defp maybe_multiple_name(_), do: []
 end

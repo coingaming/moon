@@ -4,6 +4,7 @@ defmodule Moon.Helpers.MakeList do
   import Enum, only: [with_index: 1, map: 2]
   import Map, only: [merge: 2]
 
+  def make_list(nil), do: []
   def make_list(l) when is_list(l), do: l
   def make_list(l), do: [l]
 

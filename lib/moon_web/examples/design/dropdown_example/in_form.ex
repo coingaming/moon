@@ -11,6 +11,8 @@ defmodule MoonWeb.Examples.Design.DropdownExample.InForm do
   alias Moon.Design.Dropdown.Option
   alias Moon.Lego
 
+  alias MoonWeb.Components.Anatomy
+
   prop(gender_options, :list,
     default: [
       [key: "Female", value: "female"],
@@ -41,7 +43,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.InForm do
 
   def render(assigns) do
     ~F"""
-    <div class="w-full flex flex-col lg:flex-row justify-between">
+    <div class="w-full flex flex-col lg:flex-col justify-between">
       <Form for={@changeset1} change="change1">
         <Form.Field field={:gender}>
           <Dropdown options={_o <- @gender_options} prompt="Please select gender" />
@@ -52,6 +54,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.InForm do
         <Form.Field field={:permissions}>
           <Dropdown options={_o <- @permissions} is_multiple />
         </Form.Field>
+        <Anatomy title={false}>@changeset2 = {inspect(@changeset2, pretty: true)}</Anatomy>
       </Form>
 
       <Form for={@changeset3} change="change3" id="user3">

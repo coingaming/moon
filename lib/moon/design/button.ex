@@ -73,7 +73,7 @@ defmodule Moon.Design.Button do
         type: @type,
         form: @form,
         value: @value,
-        "data-size": @size,
+        "data-size": @size
       ] ++ @attrs}
     >
       <span

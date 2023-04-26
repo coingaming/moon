@@ -28,6 +28,7 @@ defmodule Moon.Design.Dropdown.Option do
       {=@id}
       :on-click={@on_click}
       {=@value}
+      type="button"
       {=@disabled}
       class={merge([
         [

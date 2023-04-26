@@ -3,16 +3,14 @@ defmodule Moon.Design.Form.Dropdown do
 
   use Moon.StatelessComponent
 
-  alias Surface.Components.Dynamic.Component
   alias Surface.Components.Form
   alias Moon.Design.Dropdown
 
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form.Radio
 
-  import Moon.Helpers.MakeList, only: [make_list: 1]
   import Moon.Helpers.Form, only: [has_error: 2]
-  import Phoenix.HTML.Form, only: [input_id: 2]
+  import Phoenix.HTML.Form, only: [input_id: 2, input_value: 2]
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Form.Field, :field})
@@ -45,21 +43,13 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "if field does support multiselect, `multiple` attribute for select tag in HTML terms"
   prop(is_multiple, :boolean)
 
-  @doc "Option for custom stylings - use it to put icons or anything you wish"
+  @doc "Option for custom stylings - use it to put icons or anything else"
   slot(option, generator_prop: :options)
 
   def render(assigns) do
     ~F"""
     <Dropdown id={"#{@id || input_id(@form, @field)}-dropdown"}>
       <Dropdown.Trigger>
-        <Component
-          module={(@is_multiple && Form.MultipleSelect) || Form.Select}
-          class="hidden"
-          {=@field}
-          {=@id}
-          options={options_with_selected(@options, @value)}
-          opts={%{disabled: @disabled, "data-testid": @testid}}
-        />
         <input
           class={merge([
             "focus:ring-0 border-0 py-0 px-4 m-0",
@@ -79,7 +69,7 @@ defmodule Moon.Design.Form.Dropdown do
           ])}
           type="text"
           placeholder={@prompt}
-          value={make_value(@form, @field, @options)}
+          value={input_value(@form, @field)}
           {=@disabled}
           error={@error || has_error(@form, @field)}
           data-testid={@testid}
@@ -94,6 +84,7 @@ defmodule Moon.Design.Form.Dropdown do
               label={option[:key]}
               disabled={option[:disabled]}
               hidden_input={false}
+              is_multiple
             />
             <Radio.Button
               value={option[:value]}
@@ -106,21 +97,5 @@ defmodule Moon.Design.Form.Dropdown do
       </Dropdown.Options>
     </Dropdown>
     """
-  end
-
-  defp make_value(_form, value, _options) do
-    value
-  end
-
-  defp options_with_selected(options, value) do
-    Enum.map(
-      options,
-      &[
-        key: &1[:key],
-        value: &1[:value],
-        selected: Enum.member?(make_list(value), &1[:value]),
-        disabled: &1[:disabled]
-      ]
-    )
   end
 end

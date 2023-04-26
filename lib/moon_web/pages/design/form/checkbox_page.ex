@@ -47,6 +47,7 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
         CheckboxExample.Customizations
       ]} />
       <PropsTable module={Moon.Design.Form.Checkbox} />
+      <PropsTable module={Moon.Lego.Checkbox} />
     </Page>
     """
   end
