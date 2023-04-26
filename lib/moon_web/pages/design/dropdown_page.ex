@@ -63,8 +63,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.TriggerElements,
         DropdownExample.OptionLayouts,
         DropdownExample.Positions,
-        DropdownExample.Sizes,
-        DropdownExample.InForm
+        DropdownExample.Sizes
       ]} />
 
       <PropsTable module={Moon.Design.Dropdown} />
