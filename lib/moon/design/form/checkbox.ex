@@ -26,7 +26,7 @@ defmodule Moon.Design.Form.Checkbox do
   prop(testid, :string)
 
   @doc "class to be given to the visible checkbox"
-  prop(class, :string)
+  prop(class, :css_class)
   @doc "on_click event for the checkbox"
   prop(on_click, :event)
 
@@ -79,8 +79,6 @@ defmodule Moon.Design.Form.Checkbox do
   end
 
   defp is_selected(%{form: form, field: field, checked_value: checked_value}) do
-    dbg({checked_value, input_value(form, field)})
-
     input_value(form, field)
     |> make_list
     |> Enum.map(&"#{&1}")

@@ -78,20 +78,20 @@ defmodule Moon.Design.Form.Dropdown do
       <Dropdown.Options>
         <#slot {@option} :for={option <- @options} generator_value={option}>
           <Dropdown.Option value={option[:value]} disabled={option[:disabled]}>
-            <Checkbox
-              checked_value={option[:value]}
-              :if={@is_multiple}
-              label={option[:key]}
-              disabled={option[:disabled]}
-              hidden_input={false}
-              is_multiple
-            />
-            <Radio.Button
-              value={option[:value]}
-              :if={!@is_multiple}
-              label={option[:key]}
-              disabled={option[:disabled]}
-            />
+          <Checkbox
+            checked_value={option[:value]}
+            :if={@is_multiple}
+            label={option[:key]}
+            disabled={option[:disabled]}
+            hidden_input={false}
+            is_multiple
+          />
+          <Radio.Button
+            value={option[:value]}
+            :if={!@is_multiple}
+            label={option[:key]}
+            disabled={option[:disabled]}
+          />
           </Dropdown.Option>
         </#slot>
       </Dropdown.Options>

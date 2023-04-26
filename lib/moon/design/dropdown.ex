@@ -9,7 +9,7 @@ defmodule Moon.Design.Dropdown do
   prop(on_trigger, :event)
   @doc "Put true here if you want dropdown to be shown by default"
   prop(is_open, :boolean)
-
+  @doc "Addictional classes to be added to a dropdown"
   prop(class, :css_class)
 
   @doc "data-testid attribute for HTML tag"
