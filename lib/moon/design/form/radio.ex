@@ -27,7 +27,7 @@ defmodule Moon.Design.Form.Radio do
   @doc "list of options to be rendered when no option slot is given"
   prop(options, :keyword, default: [])
   @doc "module for rendering options"
-  prop(option_module, :atom, default: __MODULE__.Option)
+  prop(option_module, :atom, default: __MODULE__.Button)
 
   @doc "see Moon.Design.Field documentation"
   prop(hide_errors, :boolean)
@@ -62,7 +62,7 @@ defmodule Moon.Design.Form.Radio do
           {=value}
           is_selected={"#{@value}" == "#{value}"}
           {=@disabled}
-          {=title}
+          label={title}
         />
       {/if}
       <#slot />

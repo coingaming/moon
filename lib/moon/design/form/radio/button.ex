@@ -19,8 +19,9 @@ defmodule Moon.Design.Form.Radio.Button do
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   @doc "Form, surface-style"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-  @doc "Making the radio selected, use it outside the form"
-  prop(is_selected, :boolean)
+
+  @doc "Making the radio selected, use it outside the form. In most cases is set by Radio component"
+  prop(is_selected, :boolean, from_context: :is_selected)
 
   prop(on_click, :event, from_context: :on_click)
   prop(value, :string, from_context: :value)
@@ -48,8 +49,8 @@ defmodule Moon.Design.Form.Radio.Button do
           disabled: @disabled
         }
       />
-      <#slot context_put={is_selected: is_selected(assigns)}>
-        <Indicator is_selected={is_selected(assigns)} />
+      <#slot context_put={is_selected: @is_selected || is_selected(assigns)}>
+        <Indicator is_selected={@is_selected || is_selected(assigns)} />
         {@label}
       </#slot>
     </Label>
