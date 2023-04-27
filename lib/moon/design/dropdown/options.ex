@@ -10,11 +10,11 @@ defmodule Moon.Design.Dropdown.Options do
   prop(on_change, :event, from_context: :on_change)
   prop(is_open, :boolean, from_context: :is_open)
 
-  @doc "size of the options"
+  @doc "Size of the options"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
-  @doc "additional CSS classes for the div"
+  @doc "Additional CSS classes for the div"
   prop(class, :css_class)
-  @doc "specifies the position of the dropdown"
+  @doc "Specifies the position of the dropdown"
   prop(position, :string, values: position_list())
 
   @doc "List of the options. Used when no "

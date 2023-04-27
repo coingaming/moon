@@ -9,9 +9,9 @@ defmodule Moon.Design.Form.Radio.Button do
 
   import Phoenix.HTML.Form, only: [input_value: 2]
 
-  @doc "id to be given to the label tag"
+  @doc "Id to be given to the label tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
   @doc "Additional CSS classes for the label"
   prop(class, :css_class)

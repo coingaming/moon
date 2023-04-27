@@ -8,7 +8,7 @@ defmodule Moon.Design.Form.TextArea do
   slot(default)
 
   prop(class, :css_class)
-  @doc "attributes directly passed to textarea html tag. see Surface.Components.Form.TextArea"
+  @doc "Attributes directly passed to textarea html tag. see Surface.Components.Form.TextArea"
   prop(attrs, :map, default: %{})
 
   prop(rows, :string)

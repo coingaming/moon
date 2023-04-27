@@ -8,30 +8,30 @@ defmodule Moon.Design.Form.Radio do
 
   import Moon.Helpers.MakeList
 
-  @doc "id to be given to the label tag"
+  @doc "Id to be given to the label tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
   @doc "Additional CSS classes for the label"
   prop(class, :css_class)
   @doc "Field name, surface-style"
   prop(field, :atom)
-  @doc "well, disabled"
+  @doc "Well, disabled"
   prop(disabled, :boolean)
 
-  @doc "value of the selected option, use it outside the form"
+  @doc "Value of the selected option, use it outside the form"
   prop(value, :any)
   @doc "On-change event, will be propagated to underlying options"
   prop(on_change, :event)
 
-  @doc "list of options to be rendered when no option slot is given"
+  @doc "List of options to be rendered when no option slot is given"
   prop(options, :keyword, default: [])
-  @doc "module for rendering options"
+  @doc "Module for rendering options"
   prop(option_module, :atom, default: __MODULE__.Button)
 
-  @doc "see Moon.Design.Field documentation"
+  @doc "See Moon.Design.Field documentation"
   prop(hide_errors, :boolean)
-  @doc "see Moon.Design.Field documentation"
+  @doc "See Moon.Design.Field documentation"
   prop(hint, :string)
 
   @doc "List of options for Radiogroup "

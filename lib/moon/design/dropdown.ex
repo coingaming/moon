@@ -12,12 +12,12 @@ defmodule Moon.Design.Dropdown do
   @doc "Addictional classes to be added to a dropdown"
   prop(class, :css_class)
 
-  @doc "data-testid attribute for HTML tag"
+  @doc "Data-testid attribute for HTML tag"
   prop(testid, :string)
 
-  @doc "slot for triggering the open/closing state"
+  @doc "Slot for triggering the open/closing state"
   slot(trigger, required: true)
-  @doc "content to be showable"
+  @doc "Content to be showable"
   slot(default)
 
   def handle_event("on_change_default", %{"value" => value}, socket) do

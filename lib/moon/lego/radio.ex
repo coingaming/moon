@@ -5,9 +5,9 @@ defmodule Moon.Lego.Radio do
 
   @doc "Additional CSS classes for the "
   prop(class, :css_class)
-  @doc "id attribute to be given to the HTML tag"
+  @doc "Id attribute to be given to the HTML tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
   @doc "If the mark should be checked "
   prop(is_selected, :boolean, from_context: :is_selected)

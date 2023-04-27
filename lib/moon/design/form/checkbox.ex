@@ -13,21 +13,21 @@ defmodule Moon.Design.Form.Checkbox do
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   @doc "Form, surface-style"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-  @doc "label to be shown to user"
+  @doc "Label to be shown to user"
   prop(label, :string)
-  @doc "if the field is disabled"
+  @doc "If the field is disabled"
   prop(disabled, :boolean)
-  @doc "if the field is read-only"
+  @doc "If the field is read-only"
   prop(readonly, :boolean)
 
-  @doc "id to be given to the HTML tag"
+  @doc "Id to be given to the HTML tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
 
-  @doc "class to be given to the visible checkbox"
+  @doc "Class to be given to the visible checkbox"
   prop(class, :css_class)
-  @doc "on_click event for the checkbox"
+  @doc "On_click event for the checkbox"
   prop(on_click, :event)
 
   @doc "The value to be sent when the checkbox is checked. Defaults to \"true\""
@@ -39,7 +39,7 @@ defmodule Moon.Design.Form.Checkbox do
   @doc "The value to be sent when the checkbox is unchecked, defaults to \"false\"."
   prop(unchecked_value, :any, default: false)
 
-  @doc "Adding [] to the field name for support multiple checkboxes"
+  @doc "Adding [] to the field name for support multiple checkboxes with the same name"
   prop(is_multiple, :boolean)
 
   def render(assigns) do

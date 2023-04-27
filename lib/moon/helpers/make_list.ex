@@ -8,7 +8,7 @@ defmodule Moon.Helpers.MakeList do
   def make_list(l) when is_list(l), do: l
   def make_list(l), do: [l]
 
-  @doc "adds list index as key to the list-item map"
+  @doc "Adds list index as key to the list-item map"
   def add_index_as(list, key \\ :id) do
     with_index(list) |> map(fn {item, index} -> merge(%{key => index}, item) end)
   end

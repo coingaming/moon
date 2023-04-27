@@ -14,7 +14,7 @@ defmodule Moon.Design.Form.Select do
   @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
-  @doc "... format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
+  @doc "Options for select. Or list of keyword, either list of maps. Format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
   prop(options, :list, default: [])
 
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
@@ -24,20 +24,20 @@ defmodule Moon.Design.Form.Select do
 
   @doc "Common moon size property"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
-  @doc "additional classes for the <select> tag"
+  @doc "Additional classes for the <select> tag"
   prop(class, :css_class, from_context: :class)
   @doc "Some prompt to be shown on empty value"
   prop(prompt, :string)
 
-  @doc "id to be given to the select tag"
+  @doc "Id to be given to the select tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
 
-  @doc "some additional styling will be set to indicate field is iinvalid. generally should be set by Form.Field component"
+  @doc "Some additional styling will be set to indicate the field is invalid. Generally should be set by Form.Field component"
   prop(error, :boolean, from_context: :error)
 
-  @doc "if field does support multiselect, multiple attribute for select tag in HTML terms"
+  @doc "If field does support multiselect, multiple attribute for select tag in HTML terms"
   prop(is_multiple, :boolean)
 
   def render(assigns) do

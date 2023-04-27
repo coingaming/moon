@@ -27,20 +27,20 @@ defmodule Moon.Design.Form.Dropdown do
 
   @doc "Common moon size property"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
-  @doc "additional classes for the <select> tag"
+  @doc "Additional classes for the <select> tag"
   prop(class, :css_class, from_context: :class)
   @doc "Some prompt to be shown on empty value"
   prop(prompt, :string)
 
-  @doc "id to be given to the select tag"
+  @doc "Id to be given to the select tag"
   prop(id, :string)
-  @doc "data-testid attribute value"
+  @doc "Data-testid attribute value"
   prop(testid, :string)
 
-  @doc "some additional styling will be set to indicate field is iinvalid. generally should be set by Form.Field component"
+  @doc "Some additional styling will be set to indicate field is iinvalid. generally should be set by Form.Field component"
   prop(error, :boolean, from_context: :error)
 
-  @doc "if field does support multiselect, `multiple` attribute for select tag in HTML terms"
+  @doc "If field does support multiselect, `multiple` attribute for select tag in HTML terms"
   prop(is_multiple, :boolean)
 
   @doc "Option for custom stylings - use it to put icons or anything else"
