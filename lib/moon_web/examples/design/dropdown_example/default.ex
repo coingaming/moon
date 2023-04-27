@@ -9,10 +9,8 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Dropdown
-      id="dropdown-02"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-02">
+      <Dropdown.Options titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]} />
       <Dropdown.Trigger :let={value: value}>
         <Chip class="w-96">{value || "Choose name..."}</Chip>
       </Dropdown.Trigger>
@@ -22,12 +20,10 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Default do
 
   def code() do
     """
-    <Dropdown
-      id="dropdown-02"
-      option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-    >
+    <Dropdown id="dropdown-02">
+      <Dropdown.Options titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}/>
       <Dropdown.Trigger :let={value: value}>
-        <Button variant="primary" class="w-96">{value || "Choose name..."}</Button>
+        <Chip class="w-96">{value || "Choose name..."}</Chip>
       </Dropdown.Trigger>
     </Dropdown>
     """

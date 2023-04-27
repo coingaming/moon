@@ -31,7 +31,7 @@ defmodule Moon.Components.AsComponent do
         data-testid={@testid}
       ><#slot /></button>
     {#elseif @as == "a"}
-      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid}><#slot /></a>
+      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid} :values={@values}><#slot /></a>
     {/if}
     """
   end

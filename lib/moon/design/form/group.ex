@@ -5,11 +5,11 @@ defmodule Moon.Design.Form.Group do
 
   use Moon.StatelessComponent
 
-  @doc "id attribute for DOM element"
+  @doc "Id attribute for DOM element"
   prop(id, :string)
-  @doc "data-testid attribute for DOM element"
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
-  @doc "additional Tailwind classes"
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
   @doc "Group orientation"
   prop(orientation, :string, values!: ~w(horizontal vertical), default: "vertical")

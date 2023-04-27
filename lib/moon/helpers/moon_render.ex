@@ -36,7 +36,7 @@ defmodule Moon.Helpers.MoonRender do
 
   defp transform_slots(props), do: props
 
-  @doc "used for rendering stateless Moon componet"
+  @doc "Used for rendering stateless Moon componet"
   def moon_component(module, props) do
     component(
       &module.render/1,
@@ -48,7 +48,7 @@ defmodule Moon.Helpers.MoonRender do
   def moon_component(props = %{module: module}),
     do: moon_component(module, props |> Map.delete(:module))
 
-  @doc "used for rendering live (stateful) Moon componet"
+  @doc "Used for rendering live (stateful) Moon componet"
   def moon_live_component(props = %{module: module}) do
     get_default_props(module) |> Map.merge(transform_slots(props)) |> live_component()
   end

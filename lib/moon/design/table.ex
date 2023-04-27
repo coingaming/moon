@@ -22,28 +22,28 @@ defmodule Moon.Design.Table do
   @doc "Sorting stuff"
   prop(sorting_click, :event)
 
-  @doc "can be used to add any class to the table"
+  @doc "Can be used to add any class to the table"
   prop(row_gap, :css_class, default: "border-spacing-y-1")
 
-  @doc "size of the row. not a css class!"
+  @doc "Size of the row. not a css class!"
   prop(row_size, :string, values!: ~w(2xs xs sm md lg xl 2xl), default: "md")
 
-  @doc "if cell has border"
+  @doc "If cell has border"
   prop(is_cell_border, :boolean, default: false)
 
-  @doc "if table has column headers or not"
+  @doc "If table has column headers or not"
   prop(is_headless, :boolean, default: false)
 
-  @doc "can be used as an additional class for all the rows"
+  @doc "Can be used as an additional class for all the rows"
   prop(row_bg, :css_class, default: "bg-gohan")
 
-  @doc "can be used as an additional class for selected rows"
+  @doc "Can be used as an additional class for selected rows"
   prop(selected_bg, :css_class, default: "bg-beerus")
 
-  @doc "can be used as an additional class for header row"
+  @doc "Can be used as an additional class for header row"
   prop(header_row_class, :css_class)
 
-  @doc "can be used as an additional class for all rows. please use hover:... tailwind's format"
+  @doc "Can be used as an additional class for all rows. please use hover:... tailwind's format"
   prop(hover_bg, :css_class)
 
   @doc "The list of columns defining the Grid"
@@ -52,10 +52,10 @@ defmodule Moon.Design.Table do
   @doc "Just an id for a table tag"
   prop(id, :string)
 
-  @doc "data-testid attribute for a table tag"
+  @doc "Data-testid attribute for a table tag"
   prop(testid, :string)
 
-  @doc "additional classes for a table tag"
+  @doc "Additional classes for a table tag"
   prop(class, :css_class)
 
   def render(assigns) do
@@ -137,7 +137,7 @@ defmodule Moon.Design.Table do
     """
   end
 
-  @doc "sorts items by sort given"
+  @doc "Sorts items by sort given"
   def sort_items(items, sort) do
     import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
 

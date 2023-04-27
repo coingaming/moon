@@ -1,5 +1,5 @@
 defmodule Moon.Design.Form.Radio do
-  @moduledoc false
+  @moduledoc "Radio(group) component. For using both inside and outside the form"
 
   use Moon.StatelessComponent
 
@@ -7,29 +7,36 @@ defmodule Moon.Design.Form.Radio do
   alias Surface.Components.Dynamic.Component
 
   import Moon.Helpers.MakeList
-  import Moon.Helpers.Form
 
-  alias __MODULE__.Indicator
-
+  @doc "Id to be given to the label tag"
   prop(id, :string)
+  @doc "Data-testid attribute value"
   prop(testid, :string)
+  @doc "Additional CSS classes for the label"
   prop(class, :css_class)
-
+  @doc "Field name, surface-style"
   prop(field, :atom)
-  data(form, :form, from_context: {Surface.Components.Form, :form})
-
+  @doc "Well, disabled"
   prop(disabled, :boolean)
 
-  prop(value, :string)
+  @doc "Value of the selected option, use it outside the form"
+  prop(value, :any)
+  @doc "On-change event, will be propagated to underlying options"
   prop(on_change, :event)
 
-  prop(option_module, :atom, default: __MODULE__.Option)
+  @doc "List of options to be rendered when no option slot is given"
   prop(options, :keyword, default: [])
+  @doc "Module for rendering options"
+  prop(option_module, :atom, default: __MODULE__.Button)
 
+  @doc "See Moon.Design.Field documentation"
   prop(hide_errors, :boolean)
+  @doc "See Moon.Design.Field documentation"
   prop(hint, :string)
 
+  @doc "List of options for Radiogroup "
   slot(option)
+  @doc "Additional slot, here you able to add anything"
   slot(default)
 
   def render(assigns) do
@@ -40,7 +47,8 @@ defmodule Moon.Design.Form.Radio do
           <#slot
             {option}
             context_put={
-              is_selected: option.value == get_value(assigns),
+              value: option.value,
+              is_selected: "#{@value}" == "#{option.value}",
               on_click: @on_change,
               disabled: @disabled
             }
@@ -50,11 +58,12 @@ defmodule Moon.Design.Form.Radio do
         <Component
           :for={{value, title} <- @options}
           module={@option_module}
-          is_selected={"#{value}" == "#{get_value(assigns)}"}
           on_click={@on_change}
           {=value}
+          is_selected={"#{@value}" == "#{value}"}
           {=@disabled}
-        ><Indicator />{title}</Component>
+          label={title}
+        />
       {/if}
       <#slot />
     </Field>

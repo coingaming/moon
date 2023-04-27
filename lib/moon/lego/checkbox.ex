@@ -1,12 +1,17 @@
 defmodule Moon.Lego.Checkbox do
-  @moduledoc false
+  @moduledoc "Simple checkbox with or without selected mark to be used anywhere. Some SVG inside. Renders as a span"
 
   use Moon.StatelessComponent
 
+  @doc "Id to be given to the HTML tag"
   prop(id, :string)
+  @doc "Data-testid attribute value"
   prop(testid, :string)
+  @doc "Class to be given to the visible checkbox"
   prop(class, :css_class)
+  @doc "If the checkbox has selected mark"
   prop(is_selected, :boolean)
+  @doc "On_click event for the checkbox"
   prop(on_click, :event)
 
   def render(assigns) do

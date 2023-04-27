@@ -5,7 +5,7 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
 
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Form.CheckboxExample
+  alias MoonWeb.Examples.Design.Form.CheckboxExample
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 
@@ -46,67 +46,8 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
         CheckboxExample.Readonly,
         CheckboxExample.Customizations
       ]} />
-      <PropsTable
-        title="Checkbox props"
-        data={[
-          %{
-            :name => 'field',
-            :type => 'atom',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Field name for underlying surface select component'
-          },
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id for the DOM element'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'selected_class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => 'bg-piccolo',
-            :description => 'Additional classes for tag when selected'
-          },
-          %{
-            :name => 'unselected_class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => 'shadow-truncs',
-            :description => 'Additional classes for tag when unselected'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is disabled'
-          },
-          %{
-            :name => 'readonly',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is read-only'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Form.Checkbox} />
+      <PropsTable module={Moon.Lego.Checkbox} />
     </Page>
     """
   end

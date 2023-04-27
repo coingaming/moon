@@ -12,11 +12,11 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Positions do
   def render(assigns) do
     ~F"""
     {#for position <- position_list()}
-      <Dropdown
-        id={"drop-positions-#{position}"}
-        {=position}
-        option_titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
-      >
+      <Dropdown id={"drop-positions-#{position}"}>
+        <Dropdown.Options
+          {=position}
+          titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
+        />
         <Dropdown.Trigger>
           <Chip>{position}</Chip>
         </Dropdown.Trigger>
