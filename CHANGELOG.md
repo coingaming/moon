@@ -1,3 +1,10 @@
+## [2.42.5](https://github.com/coingaming/moon/compare/v2.42.4...v2.42.5) (2023-04-27)
+
+
+### Bug Fixes
+
+* is_multiple for Form.Select & Form.Checkbox and some minor code & docs improvements ([b2f8d68](https://github.com/coingaming/moon/commit/b2f8d68952a3818b060dae5da9c9c9121da0ccd6))
+
 ## [2.42.4](https://github.com/coingaming/moon/compare/v2.42.3...v2.42.4) (2023-04-25)
 
 
