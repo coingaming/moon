@@ -48,7 +48,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <SidebarLink route={Pages.ColoursPalettePage}><SoftwareSettings class="text-moon-24" />Colours</SidebarLink>
             <SidebarLink route={Pages.TokensPage}><SoftwarePuzzle class="text-moon-24" />Tokens</SidebarLink>
             <SidebarLink route={Pages.TypographyPage}><TextSize class="text-moon-24" />Typography</SidebarLink>
-            <SidebarLink route={Pages.ComponentsPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
+            <SidebarLink route={Pages.ComponentPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
             <SidebarLink route={Pages.ManifestPage}><GenericTrophy class="text-moon-24" />Manifest</SidebarLink>
           </div>
           <div class="flex flex-col gap-2">
