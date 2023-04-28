@@ -174,4 +174,7 @@ defmodule MoonWeb.Router do
 
     live("/usage_with_phoenix_templates", MoonWeb.Pages.PhoenixUsagePage)
   end
+
+  live("/example/:example/:direction/:theme_name", MoonWeb.Pages.ExamplePage)
+  live("/example/:example", MoonWeb.Pages.ExamplePage)
 end

@@ -10,6 +10,8 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
   alias Moon.Design.Form.Field
   alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
 
+  alias MoonWeb.Components.Anatomy
+
   prop(user_changeset, :any, default: User.changeset(%User{}))
 
   prop(permissions, :list,
@@ -38,6 +40,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
           is_multiple
         />
       </Field>
+      <Anatomy title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
   end
