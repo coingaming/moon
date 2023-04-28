@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.ModalPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

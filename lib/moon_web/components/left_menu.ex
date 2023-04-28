@@ -132,12 +132,11 @@ defmodule MoonWeb.Components.LeftMenu do
               <SidebarLink route={Pages.Design.TooltipPage}>Tooltip</SidebarLink>
 
               <Accordion
-                :if={!@hide_items}
                 id="left-menu-components"
                 value={(active_page_contains(@active_page, Pages.Components) && "0") || []}
               >
                 <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">Components v1</Accordion.Header>
+                  <Accordion.Header icon_class="text-moon-24">Old components</Accordion.Header>
                   <Accordion.Content>
                     <div class="flex-grow flex flex-col gap-2 pl-8">
                       <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>

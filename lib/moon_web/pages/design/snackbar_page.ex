@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

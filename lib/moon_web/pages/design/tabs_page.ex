@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{
