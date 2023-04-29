@@ -1,6 +1,6 @@
 defmodule Moon.Helpers.MoonRender do
   @moduledoc """
-  Functions for rendering Moon components in HEEX/SLIM/... (not Surface) templates
+  Functions for rendering Moon (or Surface, either LiveView) components in HEEX/SLIM/... (not Surface) templates
   """
 
   alias Phoenix.LiveView.{TagEngine, HTMLEngine}
@@ -8,7 +8,7 @@ defmodule Moon.Helpers.MoonRender do
 
   defp component(func, assigns, caller) do
     module =
-      if Code.ensure_compiled(TagEngine) && function_exported?(TagEngine, :component, 3) do
+      if function_exported?(TagEngine, :component, 3) do
         # phoenix_live_view 0.18.18
         TagEngine
       else
@@ -36,8 +36,8 @@ defmodule Moon.Helpers.MoonRender do
 
   defp transform_slots(props), do: props
 
-  @doc "Used for rendering stateless Moon componet"
-  def moon_component(module, props) do
+  @doc "Used for rendering stateless Surface componet"
+  def surface_component(module, props) do
     component(
       &module.render/1,
       get_default_props(module) |> Map.merge(transform_slots(props)),
@@ -45,16 +45,16 @@ defmodule Moon.Helpers.MoonRender do
     )
   end
 
-  def moon_component(props = %{module: module}),
-    do: moon_component(module, props |> Map.delete(:module))
+  def surface_component(props = %{module: module}),
+    do: surface_component(module, props |> Map.delete(:module))
 
-  @doc "Used for rendering live (stateful) Moon componet"
-  def moon_live_component(props = %{module: module}) do
+  @doc "Used for rendering live (stateful) Surface component"
+  def surface_live_component(props = %{module: module}) do
     get_default_props(module) |> Map.merge(transform_slots(props)) |> live_component()
   end
 
-  def moon_live_component(module, props),
-    do: moon_live_component(Map.put(props, :module, module))
+  def surface_live_component(module, props),
+    do: surface_live_component(Map.put(props, :module, module))
 
   def is_live(module) do
     %{kind: :component} = module.__live__()
@@ -65,7 +65,16 @@ defmodule Moon.Helpers.MoonRender do
   end
 
   defp get_render_function(module) do
-    if is_live(module), do: &moon_live_component/1, else: &moon_component/1
+    cond do
+      !function_exported?(module, :__props__, 0) ->
+        &live_component/1
+
+      is_live(module) ->
+        &surface_live_component/1
+
+      true ->
+        &surface_component/1
+    end
   end
 
   @doc """
