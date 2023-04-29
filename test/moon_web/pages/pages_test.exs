@@ -6,7 +6,7 @@ defmodule MoonWeb.Pages.PagesTest do
     |> Enum.each(fn route ->
       path = String.replace(route.path, ":theme_name", "lab-light")
 
-      unless(String.contains?(route.path, ":example")) do
+      unless String.contains?(route.path, ":example") do
         try do
           conn = get(conn, path)
           assert response(conn, 200)
