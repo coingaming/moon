@@ -6,9 +6,6 @@ defmodule Moon.Design.Form.Checkbox do
   alias Moon.Lego.Checkbox
   alias Moon.Design.Form.Field.Label
 
-  import Phoenix.HTML.Form, only: [input_value: 2, input_name: 2]
-  import Moon.Helpers.MakeList
-
   @doc "Field name, surface-style"
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   @doc "Form, surface-style"
@@ -63,8 +60,11 @@ defmodule Moon.Design.Form.Checkbox do
         {=@hidden_input}
         click={(!@readonly && !@disabled && @on_click) || nil}
         class="opacity-0"
-        opts={[disabled: @disabled || @readonly, readonly: @readonly, "data-testid": @testid] ++
-          maybe_multiple_name(assigns)}
+        opts={[
+          disabled: @disabled || @readonly,
+          readonly: @readonly,
+          "data-testid": @testid
+        ] ++ maybe_multiple_opts(assigns)}
       />
       <Checkbox
         is_selected={is_selected(assigns)}
@@ -78,15 +78,16 @@ defmodule Moon.Design.Form.Checkbox do
     """
   end
 
-  defp is_selected(%{form: form, field: field, checked_value: checked_value}) do
-    input_value(form, field)
-    |> make_list
-    |> Enum.map(&"#{&1}")
-    |> Enum.member?("#{checked_value}")
+  defp is_selected(%{form: form, field: field, checked_value: checked_value, is_multiple: true}) do
+    checked_value in (form[field].value || [])
   end
 
-  defp maybe_multiple_name(%{form: form, field: field, is_multiple: true}),
-    do: [name: "#{input_name(form, field)}[]"]
+  defp is_selected(%{form: form, field: field, checked_value: checked_value, is_multiple: false}) do
+    checked_value === form[field].value
+  end
 
-  defp maybe_multiple_name(_), do: []
+  defp maybe_multiple_opts(assigns = %{form: form, field: field, is_multiple: true}),
+    do: [name: form[field].name <> "[]", checked: is_selected(assigns)]
+
+  defp maybe_multiple_opts(_), do: []
 end

@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleLive do
     {:noreply, assign(socket, user: to_form(User.changeset(%User{}, params)))}
   end
 
-  attr :user, Phoenix.HTML.Form, default: to_form(User.changeset(%User{}))
+  attr :user, Phoenix.HTML.Form, default: to_form(User.changeset(%User{permissions: [1, 2, 3]}))
 
   attr :permissions, :list,
     default: [
@@ -32,7 +32,8 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleLive do
               type="checkbox"
               value={perm.value}
               name="user[permissions][]"
-              checked={perm.value in (@user.data.permissions || [])}
+              id={"user_permissions_#{perm.value}"}
+              checked={perm.value in (@user[:permissions].value || [])}
             />
             <%= perm.key %>
           </label>
