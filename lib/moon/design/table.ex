@@ -34,6 +34,9 @@ defmodule Moon.Design.Table do
   @doc "If table has column headers or not"
   prop(is_headless, :boolean, default: false)
 
+  @doc "If table is styled to present its rows in automatically alternating colours"
+  prop(is_zebra_style, :boolean, default: false)
+
   @doc "Can be used as an additional class for all the rows"
   prop(row_bg, :css_class, default: "bg-gohan")
 
@@ -42,6 +45,9 @@ defmodule Moon.Design.Table do
 
   @doc "Can be used as an additional class for header row"
   prop(header_row_class, :css_class)
+
+  @doc "Can be used as an additional class for even rows in zebra-style table"
+  prop(even_row_bg, :css_class, default: "bg-none")
 
   @doc "Can be used as an additional class for all rows. please use hover:... tailwind's format"
   prop(hover_bg, :css_class)
@@ -63,8 +69,11 @@ defmodule Moon.Design.Table do
     <table
       class={
         merge([
-          "text-sm border-spacing-x-0 border-beerus min-w-full bg-goku rounded-moon-s-sm",
-          @row_gap,
+          [
+            "text-sm border-spacing-x-0 border-beerus min-w-full bg-goku rounded-moon-s-sm",
+            @row_gap,
+            "border-spacing-y-0": @is_zebra_style
+          ],
           @class
         ]),
         "border-separate"
@@ -107,11 +116,12 @@ defmodule Moon.Design.Table do
       <tbody>
         {#for {item, row_index} <- Enum.with_index(@items |> add_index_as |> sort_items(@sort))}
           <tr
-            class={
+            class={merge([
               (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
               @hover_bg,
+              "#{@even_row_bg}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
-            }
+            ])}
             :on-click={@row_click}
             :values={selected: "#{item.id}"}
             data-testid={"row-#{row_index}"}

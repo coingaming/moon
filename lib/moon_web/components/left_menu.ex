@@ -48,7 +48,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <SidebarLink route={Pages.ColoursPalettePage}><SoftwareSettings class="text-moon-24" />Colours</SidebarLink>
             <SidebarLink route={Pages.TokensPage}><SoftwarePuzzle class="text-moon-24" />Tokens</SidebarLink>
             <SidebarLink route={Pages.TypographyPage}><TextSize class="text-moon-24" />Typography</SidebarLink>
-            <SidebarLink route={Pages.ComponentsPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
+            <SidebarLink route={Pages.ComponentPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
             <SidebarLink route={Pages.ManifestPage}><GenericTrophy class="text-moon-24" />Manifest</SidebarLink>
           </div>
           <div class="flex flex-col gap-2">
@@ -132,12 +132,11 @@ defmodule MoonWeb.Components.LeftMenu do
               <SidebarLink route={Pages.Design.TooltipPage}>Tooltip</SidebarLink>
 
               <Accordion
-                :if={!@hide_items}
                 id="left-menu-components"
                 value={(active_page_contains(@active_page, Pages.Components) && "0") || []}
               >
                 <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">Components v1</Accordion.Header>
+                  <Accordion.Header icon_class="text-moon-24">Old components</Accordion.Header>
                   <Accordion.Content>
                     <div class="flex-grow flex flex-col gap-2 pl-8">
                       <SidebarLink route={Pages.Components.AccordionPage}>Accordion</SidebarLink>

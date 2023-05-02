@@ -34,7 +34,7 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

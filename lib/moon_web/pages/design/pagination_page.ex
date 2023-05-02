@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Design.PaginationPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

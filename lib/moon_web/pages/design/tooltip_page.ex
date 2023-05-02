@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

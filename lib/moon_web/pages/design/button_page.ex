@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Design.ButtonPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

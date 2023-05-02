@@ -13,7 +13,7 @@ defmodule MoonWeb.Pages.Design.Form.TextAreaPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

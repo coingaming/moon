@@ -42,7 +42,7 @@ config :moon, MoonWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :moon, MoonWeb.Endpoint,
-  reloadable_compilers: [:elixir, :app, :surface],
+  reloadable_compilers: [:elixir, :app],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

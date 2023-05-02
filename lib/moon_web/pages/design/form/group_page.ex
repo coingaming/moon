@@ -15,8 +15,12 @@ defmodule MoonWeb.Pages.Design.Form.GroupPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
+      },
+      %{
+        to: "#",
+        name: "Form"
       },
       %{
         to: "/components/v2/form/group",

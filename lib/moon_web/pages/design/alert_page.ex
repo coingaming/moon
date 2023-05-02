@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.AlertPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

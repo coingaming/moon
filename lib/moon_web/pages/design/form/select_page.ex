@@ -12,7 +12,7 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{

@@ -14,7 +14,7 @@ defmodule MoonWeb.Pages.Design.Form.RadioPage do
   data(breadcrumbs, :any,
     default: [
       %{
-        to: "#",
+        to: "/components",
         name: "Components"
       },
       %{
