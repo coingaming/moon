@@ -47,7 +47,7 @@ defmodule Moon.Design.Table do
   prop(header_row_class, :css_class)
 
   @doc "Can be used as an additional class for even rows in zebra-style table"
-  prop(even_row_class, :css_class, default: "bg-none")
+  prop(even_row_bg, :css_class, default: "bg-none")
 
   @doc "Can be used as an additional class for all rows. please use hover:... tailwind's format"
   prop(hover_bg, :css_class)
@@ -119,7 +119,7 @@ defmodule Moon.Design.Table do
             class={merge([
               (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
               @hover_bg,
-              "#{@even_row_class}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
+              "#{@even_row_bg}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
             :on-click={@row_click}
