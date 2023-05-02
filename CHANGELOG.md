@@ -1,3 +1,10 @@
+## [2.42.6](https://github.com/coingaming/moon/compare/v2.42.5...v2.42.6) (2023-05-02)
+
+
+### Bug Fixes
+
+* [MDS-505] Add Zebra table, rework table examples (incl paging), breadcrumb fix, sidebar fix ([#621](https://github.com/coingaming/moon/issues/621)) ([58e2d67](https://github.com/coingaming/moon/commit/58e2d6704c90a78586303bb07ae90f7cc283de50))
+
 ## [2.42.5](https://github.com/coingaming/moon/compare/v2.42.4...v2.42.5) (2023-04-27)
 
 
