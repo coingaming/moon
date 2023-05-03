@@ -1,3 +1,10 @@
+## [2.42.7](https://github.com/coingaming/moon/compare/v2.42.6...v2.42.7) (2023-05-03)
+
+
+### Bug Fixes
+
+* removing import _components.css for the partners ([#623](https://github.com/coingaming/moon/issues/623)) ([a166092](https://github.com/coingaming/moon/commit/a1660922dcf78dedaec5414a1a04386c9633a4e1))
+
 ## [2.42.6](https://github.com/coingaming/moon/compare/v2.42.5...v2.42.6) (2023-05-02)
 
 
