@@ -5,7 +5,7 @@ Please do not add CSS here. Instead use Tailwind classes!
 */
 
 /* Import scoped CSS rules for components 
-   @import "./_components.css"; */
+   import "./_components.css"; */
 
 @tailwind base;
 @tailwind components;
