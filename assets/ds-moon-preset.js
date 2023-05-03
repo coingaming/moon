@@ -140,6 +140,7 @@ module.exports = {
         drawer_leave_bottom: "bottomslideout 0.2s ease-in",
         backdrop_enter: "fadein 0.3s ease-out",
         backdrop_leave: "fadeout 0.2s ease-in",
+        backdrop_leave_swipe: "fadeout 0.1s ease-in-out",
         modal_enter: "modalfadein 0.3s ease-out",
         modal_leave: "modalfadeout 0.2s ease-in"
       },

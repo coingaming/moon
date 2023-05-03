@@ -18,9 +18,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.LargeWithAllOptionalExtras 
       <BottomSheet size="lg" has_shadow id="bottom_sheet_extras">
         <BottomSheet.Backdrop />
         <BottomSheet.Panel>
-          <BottomSheet.Draghandle />
-          <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
-            Forgot password?</h3>
+          <BottomSheet.Header class="border-b-2 border-beerus">
+            <BottomSheet.DragHandle />
+            <h3 class="text-moon-18 text-bulma font-medium text-center pt-4">
+              Forgot password?</h3>
+          </BottomSheet.Header>
           <p class="p-2 text-trunks">
             If you change your password, you will be unable to withdraw for 48
             hours due to security reasons.
@@ -79,9 +81,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.LargeWithAllOptionalExtras 
         <BottomSheet size="lg" has_shadow id="bottom_sheet_extras">
           <BottomSheet.Backdrop />
           <BottomSheet.Panel>
-            <BottomSheet.Draghandle />
-            <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
-              Forgot password?</h3>
+            <BottomSheet.Header class="border-b-2 border-beerus">
+              <BottomSheet.DragHandle />
+              <h3 class="text-moon-18 text-bulma font-medium text-center pt-4">
+                Forgot password?</h3>
+            </BottomSheet.Header>
             <p class="p-2 text-trunks">
               If you change your password, you will be unable to withdraw for 48
               hours due to security reasons.
