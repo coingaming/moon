@@ -15,7 +15,7 @@ defmodule Moon.Design.Form.Dropdown do
   prop(form, :form, from_context: {Form, :form})
 
   @doc "... format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
-  prop(options, :generator, required: true)
+  prop(options, :list, required: true)
 
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
   prop(value, :any)
@@ -43,8 +43,8 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Should dropdown be open"
   prop(is_open, :boolean)
 
-  @doc "Option for custom stylings - use it to put icons or anything else"
-  slot(option, generator_prop: :options)
+  @doc "Option for custom stylings - use it to show icons or anything else"
+  slot(default)
 
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
   slot(trigger)
@@ -65,9 +65,9 @@ defmodule Moon.Design.Form.Dropdown do
           />
         </#slot>
       </:trigger>
-      <Dropdown.Options on_change={option_click()}>
-        <#slot {@option} :for={option <- @options} generator_value={option}>
-          <Dropdown.Option {=@size}>
+      <#slot {@default}>
+        <Dropdown.Options on_change={option_click()}>
+          <Dropdown.Option :for={option <- @options} {=@size}>
             <Checkbox
               checked_value={option[:value]}
               :if={@is_multiple}
@@ -85,8 +85,8 @@ defmodule Moon.Design.Form.Dropdown do
               {=@size}
             />
           </Dropdown.Option>
-        </#slot>
-      </Dropdown.Options>
+        </Dropdown.Options>
+      </#slot>
     </Dropdown>
     """
   end

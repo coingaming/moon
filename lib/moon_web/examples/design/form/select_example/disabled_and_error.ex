@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.DisabledAndError do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
 
@@ -33,7 +33,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.DisabledAndError do
 
   def code() do
     """
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Form
     alias Moon.Design.Form.Select
 

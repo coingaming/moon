@@ -5,17 +5,10 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Select do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
 
-  prop(gender_options, :list,
-    default: [
-      [key: "Female", value: "female"],
-      [key: "Male", value: "male"],
-      [key: "Invalid choice", value: "invalid"],
-      [key: "I identify as God and this is not important", value: "god", disabled: true]
-    ]
-  )
+  prop(gender_options, :list, default: User.gender_options())
 
   prop(changeset1, :any, default: User.changeset(%User{gender: nil}))
 
@@ -35,7 +28,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Select do
         change="change1"
       >
         <Form.Field field={:gender} label={"Size #{size}"} hint="Some hint here">
-          <Form.Dropdown {=size} options={_ <- @gender_options} prompt="Please select gender" />
+          <Form.Dropdown {=size} options={@gender_options} prompt="Please select gender" />
         </Form.Field>
       </Form>
     </div>
@@ -44,17 +37,10 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Select do
 
   def code() do
     """
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Form
 
-    prop(gender_options, :list,
-      default: [
-        [key: "Female", value: "female"],
-        [key: "Male", value: "male"],
-        [key: "Invalid choice", value: "invalid"],
-        [key: "I identify as God and this is not important", value: "god", disabled: true]
-      ]
-    )
+    prop(gender_options, :list, default: User.gender_options())
 
     prop(changeset1, :any, default: User.changeset(%User{gender: nil}))
 
@@ -74,7 +60,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Select do
           change="change1"
         >
           <Form.Field field={:gender} label={"Size \#{size}"} hint="Some hint here">
-            <Form.Dropdown {=size} options={_ <- @gender_options} prompt="Please select gender" />
+            <Form.Dropdown {=size} options={@gender_options} prompt="Please select gender" />
           </Form.Field>
         </Form>
       </div>

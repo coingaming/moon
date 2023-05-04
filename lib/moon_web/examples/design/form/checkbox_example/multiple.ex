@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form
   alias Moon.Design.Form.Field
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
 
   alias MoonWeb.Components.Anatomy
 
@@ -52,7 +52,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
     alias Moon.Design.Form.Checkbox
     alias Moon.Design.Form
     alias Moon.Design.Form.Field
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
 
     alias MoonWeb.Components.Anatomy
 

@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleLive do
 
   use Phoenix.LiveComponent
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
 
   def handle_event("changed", %{"user" => params}, socket) do
     {:noreply, assign(socket, user: to_form(User.changeset(%User{}, params)))}

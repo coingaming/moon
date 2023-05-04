@@ -14,8 +14,11 @@ defmodule Moon.Design.Dropdown.Option do
   @doc "If the button is disabled"
   prop(disabled, :boolean)
 
+  @doc "On click event, in most cases got from context"
   prop(on_click, :event, from_context: :on_click)
+  @doc "Value of the option, in most cases got from context"
   prop(value, :any, from_context: :value)
+  @doc "If the option is selected, in most cases got from context"
   prop(is_selected, :boolean, from_context: :is_selected)
   @doc "Text size & paddings for the option. Is set by Dropdown.Options in most cases"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)

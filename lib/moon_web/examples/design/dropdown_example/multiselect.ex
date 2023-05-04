@@ -5,18 +5,10 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Multiselect do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
 
-  prop(permissions, :list,
-    default: [
-      %{value: 1, key: "Read"},
-      %{value: 2, key: "Write"},
-      %{value: 3, key: "Update"},
-      %{value: 4, key: "Delete"},
-      %{value: 5, key: "Nuclear war", disabled: true}
-    ]
-  )
+  prop(permissions, :list, default: User.available_permissions())
 
   prop(changeset_sm, :any, default: User.changeset(%User{gender: nil}))
   prop(target_sm, :list)
@@ -57,7 +49,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Multiselect do
           <Form.Dropdown
             {=size}
             is_multiple
-            options={_ <- @permissions}
+            options={@permissions}
             prompt="Select permissions"
             is_open={assigns[:"target_#{size}"] === ["user", "permissions"]}
           />
@@ -69,18 +61,10 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Multiselect do
 
   def code() do
     """
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Form
 
-    prop(permissions, :list,
-      default: [
-        %{value: 1, key: "Read"},
-        %{value: 2, key: "Write"},
-        %{value: 3, key: "Update"},
-        %{value: 4, key: "Delete"},
-        %{value: 5, key: "Nuclear war", disabled: true}
-      ]
-    )
+    prop(permissions, :list, default: User.available_permissions())
 
     prop(changeset_sm, :any, default: User.changeset(%User{gender: nil}))
     prop(target_sm, :list)
