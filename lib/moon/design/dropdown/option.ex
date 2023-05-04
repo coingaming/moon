@@ -17,6 +17,7 @@ defmodule Moon.Design.Dropdown.Option do
   prop(on_click, :event, from_context: :on_click)
   prop(value, :any, from_context: :value)
   prop(is_selected, :boolean, from_context: :is_selected)
+  @doc "Text size & paddings for the option. Is set by Dropdown.Options in most cases"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
 
   @doc "Inner content of the option"
@@ -29,6 +30,7 @@ defmodule Moon.Design.Dropdown.Option do
       :on-click={@on_click}
       {=@value}
       type="button"
+      role="option"
       {=@disabled}
       class={merge([
         [

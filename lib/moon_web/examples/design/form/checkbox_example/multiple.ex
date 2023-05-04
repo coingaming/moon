@@ -25,7 +25,8 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
   )
 
   def handle_event("changed", value, socket) do
-    {:noreply, assign(socket, user_changeset: User.changeset(%User{}, Map.get(value, "user", %{})))}
+    {:noreply,
+     assign(socket, user_changeset: User.changeset(%User{}, Map.get(value, "user", %{})))}
   end
 
   def render(assigns) do
@@ -68,7 +69,8 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
     )
 
     def handle_event("changed", value, socket) do
-      {:noreply, assign(socket, user_changeset: User.changeset(%User{}, Map.get(value, "user", %{})))}
+      {:noreply,
+      assign(socket, user_changeset: User.changeset(%User{}, Map.get(value, "user", %{})))}
     end
 
     def render(assigns) do

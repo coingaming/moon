@@ -21,7 +21,9 @@ defmodule Moon.Design.Dropdown.Options do
   prop(titles, :list, default: [])
   prop(option_module, :atom, default: Moon.Design.Dropdown.Option)
 
+  @doc "Data-testid attribute for div"
   prop(testid, :string)
+  @doc "Id attribute for div"
   prop(id, :string)
 
   slot(option)

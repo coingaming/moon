@@ -3,7 +3,7 @@ defmodule Moon.Design.Form.Radio.Indicator do
 
   use Moon.StatelessComponent
 
-  @doc "Additional CSS classes for the "
+  @doc "Additional CSS classes for the mark"
   prop(class, :css_class)
   @doc "Id attribute to be given to the HTML tag"
   prop(id, :string)

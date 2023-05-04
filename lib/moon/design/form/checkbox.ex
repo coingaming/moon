@@ -39,10 +39,13 @@ defmodule Moon.Design.Form.Checkbox do
   @doc "Adding [] to the field name for support multiple checkboxes with the same name"
   prop(is_multiple, :boolean)
 
+  @doc "Size of the label"
+  prop(size, :string, values!: ~w(sm md lg), default: "md")
+
   def render(assigns) do
     ~F"""
     <Label
-      size="sm"
+      {=@size}
       class={
         "relative inline-flex items-center select-none",
         "opacity-disabled": @disabled,
@@ -82,8 +85,8 @@ defmodule Moon.Design.Form.Checkbox do
     checked_value in (form[field].value || [])
   end
 
-  defp is_selected(%{form: form, field: field, checked_value: checked_value, is_multiple: false}) do
-    checked_value === form[field].value
+  defp is_selected(%{form: form, field: field, checked_value: checked_value}) do
+    "#{checked_value}" === "#{form[field].value}"
   end
 
   defp maybe_multiple_opts(assigns = %{form: form, field: field, is_multiple: true}),
