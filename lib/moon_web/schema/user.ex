@@ -61,11 +61,11 @@ defmodule MoonWeb.Schema.User do
     ]
   end
 
-  def available_roles_with_left_icon() do
+  def available_roles_with_icon() do
     [
-      %{value: 1, key: "User", left_icon: [Moon.Icon, %{name: "generic_user"}]},
-      %{value: 2, key: "Editor", left_icon: [Moon.Icon, %{name: "generic_edit"}]},
-      %{value: 3, key: "Admin", left_icon: [Moon.Icon, %{name: "generic_star"}]}
+      %{value: 1, key: "User", icon: "generic_user"},
+      %{value: 2, key: "Editor", icon: "generic_edit"},
+      %{value: 3, key: "Admin", icon: "generic_star"}
     ]
   end
 

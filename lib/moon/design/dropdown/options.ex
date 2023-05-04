@@ -6,8 +6,11 @@ defmodule Moon.Design.Dropdown.Options do
   import Moon.Helpers.MakeList
   import Moon.Helpers.Positions
 
+  @doc "Value of the selected option(s)"
   prop(value, :any, from_context: :value)
+  @doc "On option click event, in most cases got from context"
   prop(on_change, :event, from_context: :on_change)
+  @doc "If the optionlist is open, got from context"
   prop(is_open, :boolean, from_context: :is_open)
 
   @doc "Size of the options"
