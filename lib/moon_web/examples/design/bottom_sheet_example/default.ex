@@ -15,7 +15,9 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
       </Button>
       <BottomSheet id="default_bottom_sheet">
         <BottomSheet.Panel>
-          <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
+          <BottomSheet.Header class="border-b-2 border-beerus">
+            <h3 class="text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
+          </BottomSheet.Header>
           <p class="p-4 text-trunks">
             I'm baby vaporware flexitarian scenester lyft activated charcoal
             tacos. Hashtag etsy literally irony yr 3 wolf moon PBR&B cred banjo
@@ -53,14 +55,16 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
     alias Moon.Design.BottomSheet
 
     def render(assigns) do
-      ~F/\"""
+      ~F\"""
       <div>
         <Button on_click="set_open">
           My mind is ready
         </Button>
         <BottomSheet id="default_bottom_sheet">
           <BottomSheet.Panel>
-            <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
+            <BottomSheet.Header class="border-b-2 border-beerus">
+              <h3 class="text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
+            </BottomSheet.Header>
             <p class="p-4 text-trunks">
               I'm baby vaporware flexitarian scenester lyft activated charcoal
               tacos. Hashtag etsy literally irony yr 3 wolf moon PBR&B cred banjo
@@ -79,7 +83,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
           </BottomSheet.Panel>
         </BottomSheet>
       </div>
-      /\"""
+      \"""
     end
 
     def handle_event("set_open", _, socket) do

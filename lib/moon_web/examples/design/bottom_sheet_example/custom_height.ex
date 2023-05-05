@@ -31,9 +31,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
       <BottomSheet id="custom_height_bottom_sheet">
         <BottomSheet.Backdrop />
         <BottomSheet.Panel class="h-[77%]">
-          <BottomSheet.Draghandle />
-          <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
-            I am gonna show you some data whether you like it or not!</h3>
+          <BottomSheet.Header class="border-b-2 border-beerus">
+            <BottomSheet.DragHandle />
+            <h3 class="text-moon-18 text-bulma font-medium text-center pt-4">
+              I am gonna show you some data whether you like it or not!</h3>
+          </BottomSheet.Header>
           <div class="p-2 bg-goku mt-2">
             <Table items={model <- @models} selected={nil}>
               <Column name="id" label="ID">
@@ -48,7 +50,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
               <Column name="status" label="Status">
                 {model.status}
               </Column>
-              <Column name="created_at" label="Created at">
+              <Column name="created_at" label="Created at" class="hidden sm:table-cell">
                 <Datetime value={model.created_at} />
               </Column>
             </Table>
@@ -80,7 +82,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
     alias Moon.Design.BottomSheet
 
     alias Moon.Design.Table
-    alias Moon.Components.Table.Column
+    alias Moon.Design.Table.Column
     alias Moon.Components.Renderers.Datetime
 
     data(models, :list,
@@ -88,9 +90,9 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
         Enum.map(1..5, fn x ->
           %{
             id: x,
-            first_name: "First Name \#{x}",
-            last_name: "Last Name \#{x}",
-            status: "Status \#{x}",
+            first_name: "First Name #\{x}",
+            last_name: "Last Name #\{x}",
+            status: "Status #\{x}",
             created_at: DateTime.add(DateTime.utc_now(), -3600 + x)
           }
         end)
@@ -103,9 +105,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
         <BottomSheet id="custom_height_bottom_sheet">
           <BottomSheet.Backdrop />
           <BottomSheet.Panel class="h-[77%]">
-            <BottomSheet.Draghandle />
-            <h3 class="p-4 border-b-2 border-beerus text-moon-18 text-bulma font-medium text-center mt-2">
-              I am gonna show you some data whether you like it or not!</h3>
+            <BottomSheet.Header class="border-b-2 border-beerus">
+              <BottomSheet.DragHandle />
+              <h3 class="text-moon-18 text-bulma font-medium text-center pt-4">
+                I am gonna show you some data whether you like it or not!</h3>
+            </BottomSheet.Header>
             <div class="p-2 bg-goku mt-2">
               <Table items={model <- @models} selected={nil}>
                 <Column name="id" label="ID">
@@ -120,7 +124,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomHeight do
                 <Column name="status" label="Status">
                   {model.status}
                 </Column>
-                <Column name="created_at" label="Created at">
+                <Column name="created_at" label="Created at" class="hidden sm:table-cell">
                   <Datetime value={model.created_at} />
                 </Column>
               </Table>

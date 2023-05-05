@@ -3,10 +3,16 @@ defmodule Moon.Design.BottomSheet do
 
   use Moon.StatefulComponent
 
+  @doc "Whether the BottomSheet is open or not"
   prop(is_open, :boolean, default: false)
+
+  @doc "Called when the BottomSheet is dismissed"
   prop(on_close, :event)
+
+  @doc "Whether the BottomSheet has a shadow or not"
   prop(has_shadow, :boolean, default: false)
 
+  @doc "The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value"
   prop(size, :string,
     values!: [
       "sm",
@@ -16,21 +22,27 @@ defmodule Moon.Design.BottomSheet do
     default: "md"
   )
 
+  @doc "Tailwind classes for customization"
   prop(class, :css_class)
 
-  slot(panel, required: true)
-  slot(backdrop)
-
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
 
+  @doc "Panel of BottomSheet, see BottomSheet.Panel"
+  slot(panel, required: true)
+
+  @doc "Backdrop of BottomSheet, see BottomSheet.Backdrop"
+  slot(backdrop)
+
   # internal API
+  @doc "Internal API, used for transition of the element"
   data(is_closing, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
     <div
       {=@id}
-      phx-hook="Animation"
+      phx-hook="Bottomsheet"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
       class={merge(["fixed z-[99999] inset-0 hidden", @class])}

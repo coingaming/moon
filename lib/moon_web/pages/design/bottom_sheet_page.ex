@@ -44,114 +44,11 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
         BottomSheetExample.CustomHeight
       ]} />
 
-      <PropsTable
-        title="BottomSheet props"
-        data={[
-          %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the BottomSheet is open or not.'
-          },
-          %{
-            :name => 'on_close',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Called when the BottomSheet is dismissed.'
-          },
-          %{
-            :name => 'has_shadow',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the BottomSheet has a shadow or not.'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md | lg',
-            :required => 'No',
-            :default => 'md',
-            :description =>
-              'The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value.'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'panel',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Panel of BottomSheet, see BottomSheet.Panel'
-          },
-          %{
-            :name => 'backdrop',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Backdrop of BottomSheet, see BottomSheet.Backdrop'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="BottomSheet.Panel props"
-        data={[
-          %{
-            :name => 'draghandle',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Draghandle of BottomSheet, see BottomSheet.Draghandle'
-          },
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Content of BottomSheet'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="BottomSheet.Draghandle props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="BottomSheet.Backdrop props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
+      <PropsTable title="Bottomsheet props" module={Moon.Design.BottomSheet} />
+      <PropsTable title="Bottomsheet.Panel props" module={Moon.Design.BottomSheet.Panel} />
+      <PropsTable title="Bottomsheet.Header props" module={Moon.Design.BottomSheet.Header} />
+      <PropsTable title="Bottomsheet.DragHandle props" module={Moon.Design.BottomSheet.DragHandle} />
+      <PropsTable title="Bottomsheet.Backdrop props" module={Moon.Design.BottomSheet.Backdrop} />
     </Page>
     """
   end
@@ -161,7 +58,9 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
     <BottomSheet>
       <BottomSheet.Backdrop />
       <BottomSheet.Panel>
-        <BottomSheet.Draghandle />
+        <BottomSheet.Header>
+          <BottomSheet.Draghandle />
+        </BottomSheet.Header>
       </BottomSheet.Panel>
     </BottomSheet>
     """
