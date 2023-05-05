@@ -17,6 +17,8 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     ]
   )
 
+  data(selected_role, :string)
+
   def mount(params, _session, socket) do
     {:ok, assign(socket, selected_role: params["role"] || designer_role())}
   end

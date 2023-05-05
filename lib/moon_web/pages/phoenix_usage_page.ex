@@ -45,8 +45,8 @@ defmodule MoonWeb.Pages.PhoenixUsagePage do
         <p>The same with LiveView only</p>
         <CodeSnippet>{liveview_code()}</CodeSnippet>
         <p>
-          Please note that moon_component function can render only stateless component. For stateful one you should use
-          moon_live_component function. And moon function can be used for both types of components.
+          Please note that surface_component function can render only stateless component. For stateful one you should use
+          surface_live_component function. And moon function can be used for both types of components.
         </p>
       </PageSection>
       <PageSection title="Context">
@@ -87,7 +87,7 @@ defmodule MoonWeb.Pages.PhoenixUsagePage do
           <.moon module={Button} variant="secondary">Secondary</.moon>
 
           # or, if you wish more explicit naming - use for stateless component
-          <.moon_component module={Button} variant="secondary">Secondary</.moon_component>
+          <.surface_component module={Button} variant="secondary">Secondary</.surface_component>
         ...
       \"""
     end

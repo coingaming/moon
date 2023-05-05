@@ -4,7 +4,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.MultipleChoices do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
 
   prop(user_changeset, :any, default: User.changeset(%User{}, %{permissions: [1, 2]}))
@@ -36,7 +36,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.MultipleChoices do
 
   def code() do
     """
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Form
 
     prop(user_changeset, :any, default: User.changeset(%User{}, %{permissions: [1, 2]}))

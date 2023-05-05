@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.FormExample.Registration do
 
   use MoonWeb, :example
 
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Field.Label
   alias Moon.Design.Form.Select

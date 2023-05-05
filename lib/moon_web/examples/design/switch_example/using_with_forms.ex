@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.UsingWithForms do
   alias Moon.Design.Form.Switch
   alias Moon.Design.Form
   alias Moon.Design.Form.Field
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
 
   prop(user_changeset, :any, default: User.changeset(%User{}))
 
@@ -33,7 +33,7 @@ defmodule MoonWeb.Examples.Design.SwitchExample.UsingWithForms do
     alias Moon.Design.Form.Switch
     alias Moon.Design.Form
     alias Moon.Design.Form.Field
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
 
