@@ -82,6 +82,44 @@ Problem with this option:
 In sake of clarity, we just have a plug, that sets is_mobile boolean for context.
 
 ```elixir
+defmodule Mobile do 
+  prop is_mobile, :boolean, from_context: :is_mobile
+  slot default
+  def render(assigns) do 
+    ~F"""
+    <div class="md:hidden bg-red-500" :if={@is_mobile}>
+      <#slot {@default} />
+    </div>
+    """
+  end
+end
+
+defmodule Desktop do  
+  prop is_mobile, :boolean, from_context: :is_mobile
+  slot default
+  def render(assigns) do 
+    ~F"""
+    <div class="hidden md:visible bg-green-500" :if={!@is_mobile}>
+      <#slot {@default} />
+    </div>
+    """
+  end
+end
+
+defmodule Example do 
+  slot default
+  def render(assigns) do 
+    ~F"""
+    <Mobile>
+      <#slot {@default} />
+    </Mobile>
+    <Desktop>
+      <#slot {@default} />
+    </Desktop>
+    """
+  end
+end
+
 defmodule HelloWeb.Plug.SetIsMobile do
   import Plug.Conn
 
@@ -125,4 +163,9 @@ Problem with this option:
 # Problems with the "Two options that we have"
 
 1. Both require "thinking" from developer. Shouln't Moon itself address these problems, so from developer perspective he can pass data to components and they just work?
+2. We could apply both ways like SoftMobile (css hide) and HardMobile (not renderd in HTML dom), but yet again, it introduces different usage and confusion.
 
+
+# Proposal
+
+...
