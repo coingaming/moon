@@ -49,6 +49,9 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
   slot(trigger)
 
+  @doc "Slot used for rendering single option. option[:key] will be used if not given"
+  slot(option)
+
   def render(assigns) do
     ~F"""
     <Dropdown id={dropdown_id(assigns)} {=@is_open}>
@@ -60,9 +63,9 @@ defmodule Moon.Design.Form.Dropdown do
             {=is_open}
             {=@error}
             {=@disabled}
-            value={select_value(assigns)}
+            value={select_value(assigns)[:key]}
             badge={select_badge(assigns)}
-          />
+          ><#slot {@option, option: select_value(assigns)}>{select_value(assigns)[:key] || @prompt}</#slot></Dropdown.Select>
         </#slot>
       </:trigger>
       <#slot {@default}>
@@ -71,19 +74,17 @@ defmodule Moon.Design.Form.Dropdown do
             <Checkbox
               checked_value={option[:value]}
               :if={@is_multiple}
-              label={option[:key]}
               disabled={option[:disabled]}
               {=@size}
               hidden_input={false}
               is_multiple
-            />
-            <Radio.Button
-              value={option[:value]}
-              :if={!@is_multiple}
-              label={option[:key]}
-              disabled={option[:disabled]}
-              {=@size}
-            />
+            >
+              <#slot {@option, option: option}>{option[:key]}</#slot>
+            </Checkbox>
+            <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
+              <Radio.Indicator />
+              <#slot {@option, option: option}>{option[:key]}</#slot>
+            </Radio.Button>
           </Dropdown.Option>
         </Dropdown.Options>
       </#slot>
@@ -98,13 +99,13 @@ defmodule Moon.Design.Form.Dropdown do
   defp select_value(%{is_multiple: true}), do: nil
 
   defp select_value(%{form: form, field: field, options: options}) do
-    (options |> Enum.find(&(&1[:value] == form[field].value)))[:key]
+    options |> Enum.find(&(&1[:value] == form[field].value))
   end
 
-  defp select_badge(%{is_multiple: true, form: form, field: field}),
-    do:
-      (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
-        nil
+  defp select_badge(%{is_multiple: true, form: form, field: field}) do
+    (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
+      nil
+  end
 
   defp select_badge(_), do: nil
 end

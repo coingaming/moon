@@ -4,6 +4,8 @@ defmodule Moon.Design.Dropdown.Select do
   alias Moon.Icon
   use Moon.StatelessComponent, slot: "trigger"
 
+  alias Phoenix.LiveView.JS
+
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
   @doc "Id attribute for html tag"
@@ -59,6 +61,7 @@ defmodule Moon.Design.Dropdown.Select do
           "h-4 px-0.5": @size == "sm",
           "h-6 px-1": @size != "sm"
         }
+        :on-click={JS.dispatch("moon2:clean-checkboxes")}
       >
         <span class={"px-0.5": @size == "sm", "px-1": @size != "sm"}>{@badge}</span>
         <Icon name="controls_close" class="text-gohan text-moon-12" />

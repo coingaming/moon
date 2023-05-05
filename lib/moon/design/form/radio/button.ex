@@ -31,7 +31,7 @@ defmodule Moon.Design.Form.Radio.Button do
   prop(label, :string)
   @doc "Size of the label"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
-  @doc "Inner content - put label here"
+  @doc "Inner content - put label & <Indicator/> here"
   slot(default)
 
   def render(assigns) do

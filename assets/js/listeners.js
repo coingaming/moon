@@ -62,4 +62,8 @@ window.addEventListener("moon2:update-switch", (event) => {
   checkbox.dispatchEvent(new Event("input", { bubbles: true }));
 });
 
-
+window.addEventListener("moon2:clean-checkboxes", (event) => {
+  let checkboxes = event.target.parentNode.parentNode.parentNode.querySelectorAll('input[type=checkbox]')
+  checkboxes.forEach(cb => cb.checked = false);
+  checkboxes[0].dispatchEvent(new Event("input", { bubbles: true }))
+});

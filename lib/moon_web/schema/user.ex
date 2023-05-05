@@ -4,8 +4,6 @@ defmodule MoonWeb.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias __MODULE__
-
   @required_fields ~w(name email gender username password)a
   @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role phone country)a
 
@@ -78,7 +76,7 @@ defmodule MoonWeb.Schema.User do
   end
 
   def available_roles_with_left_icon_flag() do
-    [first, second, third] = Moon.Helpers.CountryFlags.list_all() |> Enum.take(3)
+    [first, second, third | _] = Moon.Helpers.CountryFlags.list_all()
 
     [
       %{value: 1, key: "User", left_icon: [Moon.CountryFlag, %{name: first}]},
@@ -112,7 +110,7 @@ defmodule MoonWeb.Schema.User do
     ]
   end
 
-  def changeset(user = %User{}, params \\ %{}) do
+  def changeset(user = %__MODULE__{}, params \\ %{}) do
     user
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)

@@ -42,6 +42,9 @@ defmodule Moon.Design.Form.Checkbox do
   @doc "Size of the label"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
 
+  @doc "Inner content - put label here"
+  slot(default)
+
   def render(assigns) do
     ~F"""
     <Label
@@ -76,7 +79,7 @@ defmodule Moon.Design.Form.Checkbox do
           @class
         ])}
       />
-      {@label}
+      <#slot>{@label}</#slot>
     </Label>
     """
   end
