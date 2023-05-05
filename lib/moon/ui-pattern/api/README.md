@@ -73,9 +73,12 @@ And rendered HTML will be valid:
 </div>
 ```
 
-Problem with this option:
+Cons:
 1. Content is rendered twice (meaning bigger footprint on data load)
 2. A bit more complex syntax (and additional context for developer to remember)
+
+Pros:
+1. Event managment works as expected? (Imagine open and close for both Modal and BottomSheet)
 
 ## 2. HTML is generated only for current device
 
@@ -155,9 +158,10 @@ And rendered HTML will be valid:
 </div>
 ```
 
-Problem with this option:
+Cons:
 1. More problems #1. How to detect correct device on initial page load? (Only headers available, but not screen resolution?)
 2. More problems #2. How to resize on window resize? (Full page reload, roundtrip to server.)
+3. Event managment must be specific to device (sending event to non-existant component resolves as error.)
 
 
 # Problems with the "Two options that we have"
