@@ -7,7 +7,7 @@ defmodule Moon.UIPattern.Visibility.TabletAndDesktop do
 
   def render(assigns) do
     ~F"""
-    <div class={class()} :if={!@is_mobile}>>
+    <div class={class()} :if={!@is_mobile}>
       <#slot />
     </div>
     """
