@@ -14,6 +14,6 @@ defmodule Moon.UIPattern.Visibility.OnlyMobile do
   end
 
   def class do
-    "xl:hidden"
+    # "xl:hidden"
   end
 end
