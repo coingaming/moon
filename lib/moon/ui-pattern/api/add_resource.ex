@@ -2,8 +2,8 @@ defmodule Moon.UIPattern.API.AddResource do
   @moduledoc false
 
   use Moon.StatefulComponent
-  alias Moon.UIPattern.Visibility.VisibleMobile
-  alias Moon.UIPattern.Visibility.VisibleTabletAndDesktop
+  alias Moon.UIPattern.Visibility.OnlyMobile
+  alias Moon.UIPattern.Visibility.OnlyTabletAndDesktop
 
   alias Moon.Design.BottomSheet
   alias Moon.Design.Modal
@@ -19,7 +19,7 @@ defmodule Moon.UIPattern.API.AddResource do
   def render(assigns) do
     ~F"""
     <div id={@id} phx-hook="Animation">
-      <VisibleMobile>
+      <OnlyMobile>
         <BottomSheet is_open={@is_open} id={bottom_sheet_id(@id)} on_close={@close}>
           <BottomSheet.Panel class="p-4 grid gap-2">
             <#slot {@title} />
@@ -27,8 +27,8 @@ defmodule Moon.UIPattern.API.AddResource do
             <#slot {@footer} />
           </BottomSheet.Panel>
         </BottomSheet>
-      </VisibleMobile>
-      <VisibleTabletAndDesktop>
+      </OnlyMobile>
+      <OnlyTabletAndDesktop>
         <Modal is_open={@is_open} id={modal_id(@id)} on_close={@close}>
           <Modal.Backdrop />
           <Modal.Panel class="p-4 grid gap-2">
@@ -37,7 +37,7 @@ defmodule Moon.UIPattern.API.AddResource do
             <#slot {@footer} />
           </Modal.Panel>
         </Modal>
-      </VisibleTabletAndDesktop>
+      </OnlyTabletAndDesktop>
     </div>
     """
   end
