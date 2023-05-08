@@ -1,4 +1,7 @@
 defmodule MoonWeb.Plugs.SetIsMobile do
+  @moduledoc """
+  Depends on assets/js/set-is-mobile.js setIsMobile()
+  """
   import Plug.Conn
 
   def init(default), do: default
