@@ -30,7 +30,10 @@ defmodule MoonWeb.Pages.ResponsiveWebPage do
           <li>Application developer can use existing components for CSS rendering and HTML dom rendering.</li>
         </ul>
       </ComponentPageDescription>
-      <ExampleAndCode id="only-rendered-for-device" title="HTML rendered only for specific device">
+      <ExampleAndCode
+        id="only-rendered-for-device"
+        title="HTML rendered only for specific device (initial page load / page refresh)"
+      >
         <:example>
           <OnlyMobile>
             Only on Mobile (inspect HTML)
