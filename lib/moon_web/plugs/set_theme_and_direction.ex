@@ -1,4 +1,4 @@
-defmodule MoonWeb.Hooks.Plug.Cookies do
+defmodule MoonWeb.Plugs.SetThemeAndDirection do
   @moduledoc """
   Getting globals from cookie to session
   """

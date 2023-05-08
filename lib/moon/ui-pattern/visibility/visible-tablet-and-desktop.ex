@@ -1,4 +1,4 @@
-defmodule Moon.UIPattern.Visibility.TabletAndDesktop do
+defmodule Moon.UIPattern.Visibility.VisibleTabletAndDesktop do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -7,13 +7,13 @@ defmodule Moon.UIPattern.Visibility.TabletAndDesktop do
 
   def render(assigns) do
     ~F"""
-    <div class={class()} :if={!@is_mobile}>
-      <#slot />
+    <div class={class()}>
+      <#slot context_put={device_context: :tablet_and_desktop} />
     </div>
     """
   end
 
   def class do
-    # "hidden xl:visible"
+    "hidden xl:visible"
   end
 end

@@ -1,4 +1,4 @@
-defmodule Moon.UIPattern.Visibility.OnlyMobile do
+defmodule Moon.UIPattern.Visibility.OnlyTabletAndDesktop do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -8,8 +8,8 @@ defmodule Moon.UIPattern.Visibility.OnlyMobile do
 
   def render(assigns) do
     ~F"""
-    <div class={@class} :if={@is_mobile}>
-      <#slot context_put={device_context: :mobile} />
+    <div class={@class} :if={!@is_mobile}>
+      <#slot context_put={device_context: :tablet_and_desktop} />
     </div>
     """
   end

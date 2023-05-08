@@ -6,7 +6,7 @@ defmodule MoonWeb.Router do
     plug(:fetch_session)
     plug(:fetch_live_flash)
     plug(:put_root_layout, {MoonWeb.Layouts, :root})
-    plug(MoonWeb.Hooks.Plug.Cookies)
+    plug(MoonWeb.Plugs.SetThemeAndDirection)
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
   end
@@ -36,7 +36,7 @@ defmodule MoonWeb.Router do
     end
   end
 
-  live_session :default, on_mount: MoonWeb.Hooks.Cookies do
+  live_session :default, on_mount: MoonWeb.Hooks.SetGlobalParams do
     pipe_through(:browser)
 
     live("/", MoonWeb.Pages.MainPage)

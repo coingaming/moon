@@ -30,6 +30,10 @@ config :surface, :components, [
   {Moon.Design.BottomSheet, propagate_context_to_slots: true},
   {Moon.Design.Pagination, propagate_context_to_slots: true},
   {Moon.UIPattern.API.AddResource, propagate_context_to_slots: true},
+  {Moon.UIPattern.Visibility.VisibleMobile, propagate_context_to_slots: true},
+  {Moon.UIPattern.Visibility.VisibleTabletAndDesktop, propagate_context_to_slots: true},
+  {Moon.UIPattern.Visibility.OnlyMobile, propagate_context_to_slots: true},
+  {Moon.UIPattern.Visibility.OnlyTabletAndDesktop, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
