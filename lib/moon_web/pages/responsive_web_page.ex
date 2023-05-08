@@ -41,7 +41,10 @@ defmodule MoonWeb.Pages.ResponsiveWebPage do
         </:example>
         <:code>{only_rendered_for_device()}</:code>
       </ExampleAndCode>
-      <ExampleAndCode id="only-visible-for-device" title="HTML rendered for both devices, but CSS is used to hide HTML dom">
+      <ExampleAndCode
+        id="only-visible-for-device"
+        title="HTML rendered for both devices, but CSS is used to hide HTML dom"
+      >
         <:example>
           <VisibleMobile>
             Visible on Mobile, but in HTML for desktop also (inspect HTML)
