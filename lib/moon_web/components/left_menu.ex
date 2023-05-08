@@ -50,6 +50,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <SidebarLink route={Pages.TypographyPage}><TextSize class="text-moon-24" />Typography</SidebarLink>
             <SidebarLink route={Pages.ComponentPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
             <SidebarLink route={Pages.ManifestPage}><GenericTrophy class="text-moon-24" />Manifest</SidebarLink>
+            <SidebarLink route={Pages.ResponsiveWebPage}><GenericTrophy class="text-moon-24" />Responsive Web</SidebarLink>
           </div>
           <div class="flex flex-col gap-2">
             <p class="ps-2 text-moon-10-caption font-medium uppercase text-trunks">

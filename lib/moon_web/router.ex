@@ -4,6 +4,7 @@ defmodule MoonWeb.Router do
   pipeline :browser do
     plug(:accepts, ["html"])
     plug(:fetch_session)
+    plug(MoonWeb.Plugs.SetIsMobile)
     plug(:fetch_live_flash)
     plug(:put_root_layout, {MoonWeb.Layouts, :root})
     plug(MoonWeb.Plugs.SetThemeAndDirection)
@@ -36,7 +37,7 @@ defmodule MoonWeb.Router do
     end
   end
 
-  live_session :default, on_mount: MoonWeb.Hooks.SetGlobalParams do
+  live_session :default, on_mount: [MoonWeb.Hooks.SetIsMobile, MoonWeb.Hooks.SetGlobalParams] do
     pipe_through(:browser)
 
     live("/", MoonWeb.Pages.MainPage)
@@ -47,12 +48,13 @@ defmodule MoonWeb.Router do
     live("/components", MoonWeb.Pages.ComponentPage)
     live("/tokens", MoonWeb.Pages.TokensPage)
     live("/typography", MoonWeb.Pages.TypographyPage)
+    live("/manifest", MoonWeb.Pages.ManifestPage)
+    live("/responsive-web", MoonWeb.Pages.ResponsiveWebPage)
     live("/assets/age_limit", MoonWeb.Pages.Assets.AgeLimitPage)
     live("/assets/crests", MoonWeb.Pages.Assets.CrestsPage)
     live("/assets/currencies", MoonWeb.Pages.Assets.CurrenciesPage)
     live("/assets/duotones", MoonWeb.Pages.Assets.DuotonesPage)
     live("/assets/icons", MoonWeb.Pages.Assets.IconsPage)
-    live("/manifest", MoonWeb.Pages.ManifestPage)
     live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
     live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
 

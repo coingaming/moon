@@ -14,6 +14,6 @@ defmodule Moon.UIPattern.Visibility.VisibleTabletAndDesktop do
   end
 
   def class do
-    "hidden xl:visible"
+    "hidden lg:block"
   end
 end

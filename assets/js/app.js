@@ -5,6 +5,9 @@ import hooks from './hooks'
 import _hooks from './_hooks'
 import S3 from "./uploaders/s3"
 import setCookie from "./cookies/set-cookie"
+import setIsMobile from './set-is-mobile'
+
+setIsMobile()
 
 let uploaders = {
   S3
