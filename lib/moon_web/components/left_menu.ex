@@ -260,7 +260,7 @@ defmodule MoonWeb.Components.LeftMenu do
               </Accordion>
             </div>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-2 hidden">
             <p class="ps-2 text-moon-10-caption font-medium uppercase text-trunks">
               Responsive Web
             </p>
