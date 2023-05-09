@@ -22,45 +22,22 @@ const addEvent = (() => {
 	}
 })();
 
+import Animation from './animation'
+
 export default {
 
-    mounted() {
-        this.backdrop = this.el.querySelector(".moon-backdrop");
-        this.panel = this.el.querySelector(".moon-panel");
-        this.showElementIfNeeded();
-    },
+    ...Animation,
 
+    mounted() {
+        Animation.mounted.bind(this)();
+        this.dragHandle = this.el.querySelector(".moon-drag-handle");
+    },
 
     updated() {
-        this.showElementIfNeeded();
-        (this.el.dataset.is_closing === "true") && this.hideElement();
-        this.setupSwipePanel();
-    },
-
-    showElementIfNeeded() {
-        (this.el.dataset.is_open === undefined) || !this.el.classList.contains("hidden")  || this.showElement();
-    },
-
-    hideElement() {
-        this.panel.classList.remove(...this.panel.dataset.animate_enter_class.split(" "));
-        this.panel.classList.add(...this.panel.dataset.animate_leave_class.split(" "));
-        if (this.backdrop) {
-            this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave");
+        Animation.updated.bind(this)();
+        if (this.dragHandle) {
+            this.setupSwipePanel();
         };
-        setTimeout (() => {
-            this.el.classList.add("hidden")
-            this.pushEventTo(this.el, "set_close", {});
-            document.body.style.overflow = "auto";
-        }, 200);
-    },
-    
-    showElement() {
-        this.el.classList.remove("hidden");
-        this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
-        if (this.backdrop) {
-            this.backdrop.classList.add("animate-backdrop_enter");
-        }
-        document.body.style.overflow = "hidden";
     },
 
     setupSwipePanel() {
@@ -93,18 +70,23 @@ export default {
         addEvent(document.body, "touchend", event => {
             const touch = event.changedTouches[0];
             const panelHeight = this.panel.offsetHeight;
-            if (startedSwipe && touch.pageY <= panelHeight / 2) {
-                (this.el.dataset.is_open === undefined);
+            let position = Math.max(touch.pageY - startPosition.y, 0);
+            const endPosition = panelHeight - position ;
+            if (startedSwipe && endPosition <= panelHeight / 2) {
+                this.panel.classList.add("animate-backdrop_leave_swipe");
+                if (this.backdrop) {
+                    this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave_swipe");
+                };
+                setTimeout (() => {
+                    this.el.classList.add("hidden")
+                    this.pushEventTo(this.el, "set_close", {});
+                    document.body.style.overflow = "auto";
+                }, 100);
                 startedSwipe = false;
-            } else if (startedSwipe && touch.pageY > panelHeight / 2) {
-                (this.el.dataset.is_open !== undefined);
+            } else if (startedSwipe && endPosition > panelHeight / 2) {
+                this.panel.style.transform = `translate(0, 0)`;
                 startedSwipe = false;
             }
         });
     },     
 };
-      
-
-
-
-

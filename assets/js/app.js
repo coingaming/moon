@@ -27,7 +27,7 @@ let liveSocket = new LiveSocket('/live', Socket, {
 liveSocket.connect()
 
 // expose liveSocket on window for web console debug logs and latency simulation:
-// >> liveSocket.enableDebug()
+liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 // >> liveSocket.enableProfiling();

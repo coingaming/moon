@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.WithForm do
 
   alias Moon.Design.Form
   alias Moon.Design.Form.Radio
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Button
 
   prop(user_changeset, :any, default: User.changeset(%User{}))
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.WithForm do
     """
     alias Moon.Design.Form
     alias Moon.Design.Form.Radio
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Button
 
     prop(user_changeset, :any, default: User.changeset(%User{}))

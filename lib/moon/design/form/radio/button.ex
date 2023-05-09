@@ -29,7 +29,9 @@ defmodule Moon.Design.Form.Radio.Button do
 
   @doc "Label to be shown when no default slot is given"
   prop(label, :string)
-  @doc "Inner content - put label here"
+  @doc "Size of the label"
+  prop(size, :string, values!: ~w(sm md lg), default: "md")
+  @doc "Inner content - put label & <Indicator/> here"
   slot(default)
 
   def render(assigns) do
@@ -38,6 +40,7 @@ defmodule Moon.Design.Form.Radio.Button do
       {=@id}
       {=@testid}
       {=@value}
+      {=@size}
       class={merge(["flex gap-2 p-0", ["opacity-30": @disabled], @class])}
       {=@on_click}
       attrs={role: "radio", "aria-checked": "#{is_selected(assigns)}"}

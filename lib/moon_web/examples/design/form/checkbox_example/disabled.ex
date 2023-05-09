@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Disabled do
   alias Moon.Design.Form
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form.Field
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
 
   prop(user_changeset, :any,
     default:
@@ -44,7 +44,7 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Disabled do
     alias Moon.Design.Form
     alias Moon.Design.Form.Checkbox
     alias Moon.Design.Form.Field
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
 
     prop(user_changeset, :any,
       default:

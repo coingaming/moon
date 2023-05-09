@@ -1,3 +1,15 @@
+# [2.43.0](https://github.com/coingaming/moon/compare/v2.42.7...v2.43.0) (2023-05-05)
+
+
+### Bug Fixes
+
+* Added swiping to bottomsheet; created Header for Panel ([#624](https://github.com/coingaming/moon/issues/624)) ([e97e79d](https://github.com/coingaming/moon/commit/e97e79d39dd8dec5c0b71abcc3e3480162554bd7))
+
+
+### Features
+
+* add Form.Dropdown v2 component ([21ac562](https://github.com/coingaming/moon/commit/21ac5621f0c89105e84d4b03c33d5bed47c1847b))
+
 ## [2.42.7](https://github.com/coingaming/moon/compare/v2.42.6...v2.42.7) (2023-05-03)
 
 

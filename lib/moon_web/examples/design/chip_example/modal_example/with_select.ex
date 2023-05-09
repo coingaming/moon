@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
   alias Moon.Icons.ControlsCloseSmall
   alias Moon.Design.Modal
   alias Moon.Design.Button
-  alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+  alias MoonWeb.Schema.User
   alias Moon.Design.Form
   alias Moon.Design.Form.Select
 
@@ -94,7 +94,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
     alias Moon.Icons.ControlsCloseSmall
     alias Moon.Design.Modal
     alias Moon.Design.Button
-    alias MoonWeb.Pages.Tutorials.AddDataUsingForm.User
+    alias MoonWeb.Schema.User
     alias Moon.Design.Form
     alias Moon.Design.Form.Select
 
