@@ -4,7 +4,7 @@ defmodule Moon.Components.Drawer.Dialog do
 
   alias Moon.Autolayouts.PullAside
   alias Moon.Components.Divider
-  alias Moon.Icons.ControlsClose
+  alias Moon.Design.Button.IconButton
 
   prop(close, :event)
   prop(has_no_divider, :boolean, default: false)
@@ -26,7 +26,7 @@ defmodule Moon.Components.Drawer.Dialog do
           {/if}
         </:left>
         <:right>
-          <div :on-click={@close}><ControlsClose /></div>
+          <IconButton icon_only="controls_close" size="sm" variant="ghost" on_click={@close} />
         </:right>
       </PullAside>
       <Divider :if={!@has_no_divider} />
