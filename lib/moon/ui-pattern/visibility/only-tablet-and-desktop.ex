@@ -9,7 +9,7 @@ defmodule Moon.UIPattern.Visibility.OnlyTabletAndDesktop do
   def render(assigns) do
     ~F"""
     <div class={@class} :if={!@is_mobile}>
-      <#slot context_put={device_context: :tablet_and_desktop} />
+      <#slot />
     </div>
     """
   end

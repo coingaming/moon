@@ -8,7 +8,7 @@ defmodule Moon.UIPattern.Visibility.VisibleTabletAndDesktop do
   def render(assigns) do
     ~F"""
     <div class={class()}>
-      <#slot context_put={device_context: :tablet_and_desktop} />
+      <#slot />
     </div>
     """
   end
