@@ -39,6 +39,7 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
       <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
+        BottomSheetExample.Responsive,
         BottomSheetExample.Default,
         BottomSheetExample.LargeWithAllOptionalExtras,
         BottomSheetExample.CustomHeight
