@@ -13,11 +13,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
       <Button on_click="set_open">
         Modal
       </Button>
-      <BottomSheet id="modal_bottom_sheet" class="lg:items-center lg:justify-center">
+      <BottomSheet id="modal_bottom_sheet" class="lg:hidden lg:flex lg:items-center lg:justify-center">
         <BottomSheet.Backdrop />
-        <BottomSheet.Panel class="lg:max-w-sm lg:inline-block lg:rounded-xl lg:align-middle lg:shadow-moon-lg lg:bottom-auto lg:left-1/2 lg:top-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2">
+        <BottomSheet.Panel class="lg:max-w-sm lg:inline-block lg:rounded-xl lg:align-middle lg:shadow-moon-lg lg:bottom-auto">
           <BottomSheet.Header class="border-b-2 border-beerus">
-            <BottomSheet.DragHandle class="lg:hidden"/>
+            <BottomSheet.DragHandle class="lg:hidden" />
             <h3 class="text-moon-18 text-bulma font-medium">Do you think I'm Modal?</h3>
           </BottomSheet.Header>
           <p class="p-4 text-trunks">
@@ -54,26 +54,22 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
       ~F\"""
       <div>
         <Button on_click="set_open">
-          My mind is ready
+          Modal
         </Button>
-        <BottomSheet id="default_bottom_sheet">
-          <BottomSheet.Panel>
+        <BottomSheet id="modal_bottom_sheet" class="lg:hidden lg:flex lg:items-center lg:justify-center">
+          <BottomSheet.Backdrop />
+          <BottomSheet.Panel class="lg:max-w-sm lg:inline-block lg:rounded-xl lg:align-middle lg:shadow-moon-lg lg:bottom-auto">
             <BottomSheet.Header class="border-b-2 border-beerus">
-              <h3 class="text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
+              <BottomSheet.DragHandle class="lg:hidden"/>
+              <h3 class="text-moon-18 text-bulma font-medium">Do you think I'm Modal?</h3>
             </BottomSheet.Header>
             <p class="p-4 text-trunks">
-              I'm baby vaporware flexitarian scenester lyft activated charcoal
-              tacos. Hashtag etsy literally irony yr 3 wolf moon PBR&B cred banjo
-              lyft air plant edison bulb. Salvia next level pitchfork
-              single-origin coffee adaptogen. Neutra tilde sartorial Brooklyn
-              shaman schlitz. Roof party irony tattooed bicycle rights. Ethical
-              you probably haven't heard of them literally bespoke PBR&B. Tattooed
-              artisan twee, kinfolk kale chips taxidermy austin kitsch
-              williamsburg tousled ugh.
+              Well, i'm a BottomSheet that looks like Modal on large screens ( > 1024px).
+              So, just size down your window and see how i look like.
             </p>
             <div class="p-4">
               <Button size="lg" full_width on_click="set_close">
-                I'm honestly done
+                Got it!
               </Button>
             </div>
           </BottomSheet.Panel>
@@ -83,12 +79,12 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
     end
 
     def handle_event("set_open", _, socket) do
-      BottomSheet.open("default_bottom_sheet")
+      BottomSheet.open("modal_bottom_sheet")
       {:noreply, socket}
     end
 
     def handle_event("set_close", _, socket) do
-      BottomSheet.close("default_bottom_sheet")
+      BottomSheet.close("modal_bottom_sheet")
       {:noreply, socket}
     end
     """
