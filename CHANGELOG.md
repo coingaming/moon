@@ -1,3 +1,10 @@
+## [2.43.1](https://github.com/coingaming/moon/compare/v2.43.0...v2.43.1) (2023-05-13)
+
+
+### Bug Fixes
+
+* adding responsive bottom_sheet example ([7665a2f](https://github.com/coingaming/moon/commit/7665a2f9cb7ac70bc2db1c4fba989cc6ac051e89))
+
 # [2.43.0](https://github.com/coingaming/moon/compare/v2.42.7...v2.43.0) (2023-05-05)
 
 
