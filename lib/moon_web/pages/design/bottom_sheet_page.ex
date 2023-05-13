@@ -41,7 +41,8 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
       <ExamplesList examples={[
         BottomSheetExample.Default,
         BottomSheetExample.LargeWithAllOptionalExtras,
-        BottomSheetExample.CustomHeight
+        BottomSheetExample.CustomHeight,
+        BottomSheetExample.Responsive
       ]} />
 
       <PropsTable title="Bottomsheet props" module={Moon.Design.BottomSheet} />

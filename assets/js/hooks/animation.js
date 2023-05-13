@@ -24,14 +24,14 @@ export default {
             this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave");
         };
         setTimeout (() => {
-            this.el.classList.add("hidden")
+            this.el.classList.add("hidden", "lg:hidden")
             this.pushEventTo(this.el, "set_close", {});
             document.body.style.overflow = "auto";
         }, 200);
     },
     
     showElement() {
-        this.el.classList.remove("hidden");
+        this.el.classList.remove("hidden", "lg:hidden");
         this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
         if (this.backdrop) {
             this.backdrop.classList.add("animate-backdrop_enter");
