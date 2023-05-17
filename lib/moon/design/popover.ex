@@ -8,7 +8,7 @@ defmodule Moon.Design.Popover do
   prop(class, :css_class)
 
   slot(default, required: true)
-  slot(trigger, required: true)
+  slot(trigger)
 
   prop(testid, :string)
 
@@ -16,7 +16,7 @@ defmodule Moon.Design.Popover do
     ~F"""
     <div {=@id} data-testid={@testid} class={@class} :on-click-away="close_panel">
       <div class="relative">
-        <div role="button" :on-click={@on_click || "toggle_open"}>
+        <div :if={slot_assigned?(:trigger)} role="button" :on-click={@on_click || "toggle_open"}>
           <#slot {@trigger} />
         </div>
         <div
@@ -37,5 +37,13 @@ defmodule Moon.Design.Popover do
 
   def handle_event("close_panel", _, socket) do
     {:noreply, assign(socket, is_open: false)}
+  end
+
+  def open(id) do
+    send_update(__MODULE__, id: id, is_open: true)
+  end
+
+  def close(id) do
+    send_update(__MODULE__, id: id, is_open: false)
   end
 end
