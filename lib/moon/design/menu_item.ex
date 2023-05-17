@@ -21,6 +21,8 @@ defmodule Moon.Design.MenuItem do
   prop(href, :string)
   prop(attrs, :map, default: %{})
 
+  prop(value, :integer)
+
   slot(default)
 
   prop(testid, :string)
@@ -33,6 +35,7 @@ defmodule Moon.Design.MenuItem do
       {=@as}
       {=@href}
       {=@role}
+      {=@value}
       class={merge([
         [
           "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
