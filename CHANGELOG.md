@@ -1,3 +1,10 @@
+## [2.43.2](https://github.com/coingaming/moon/compare/v2.43.1...v2.43.2) (2023-05-17)
+
+
+### Bug Fixes
+
+* making Popover.Trigger optional ([#634](https://github.com/coingaming/moon/issues/634)) ([6b96546](https://github.com/coingaming/moon/commit/6b965466f51a3603b654c5c98361c721fbeddaf1))
+
 ## [2.43.1](https://github.com/coingaming/moon/compare/v2.43.0...v2.43.1) (2023-05-13)
 
 
