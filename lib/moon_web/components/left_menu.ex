@@ -79,6 +79,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 </Accordion.Item>
               </Accordion>
 
+              <SidebarLink route={Pages.Design.CarouselPage}>Carousel</SidebarLink>
               <SidebarLink route={Pages.Design.ChipPage}>Chip</SidebarLink>
               <SidebarLink route={Pages.Design.DrawerPage}>Drawer</SidebarLink>
               <SidebarLink route={Pages.Design.DropdownPage}>Dropdown</SidebarLink>

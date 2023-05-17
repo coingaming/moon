@@ -82,6 +82,13 @@ defmodule MoonWeb.Pages.ComponentPage do
           Buttons allow users to take actions, and make choices, with a single tap.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.CarouselPage}
+          image="facing/components/carousel.png"
+          title="Carousel"
+        >
+          Carousel is an effective way of displaying multiple images or content in a single space.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.Form.CheckboxPage}
           image="facing/components/checkbox.png"
           title="Checkbox"
