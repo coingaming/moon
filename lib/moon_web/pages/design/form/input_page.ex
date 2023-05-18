@@ -46,7 +46,6 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        # MoonWeb.Examples.Design.FormExample.Registration,
         InputExample.Default,
         InputExample.States,
         InputExample.Sizes,
@@ -54,75 +53,7 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
         InputExample.WithLabel,
         InputExample.WithHint
       ]} />
-      <PropsTable
-        title="Input props"
-        data={[
-          %{
-            :name => 'field',
-            :type => 'atom',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Field name for underlying surface select component'
-          },
-          %{
-            :name => 'value',
-            :type => 'any',
-            :required => 'No',
-            :default => '-',
-            :description => 'Selected value'
-          },
-          %{
-            :name => 'id',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Id for the DOM element'
-          },
-          %{
-            :name => 'testid',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Attr data-testid for the DOM element'
-          },
-          %{
-            :name => 'type',
-            :type =>
-              'date | datetime-local | email | number | password | search | tel | text | url | time | url',
-            :required => 'No',
-            :default => 'text',
-            :description => 'Different types of input'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md | lg',
-            :required => '-',
-            :default => 'md',
-            :description => 'Size of input'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for tag'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is disabled'
-          },
-          %{
-            :name => 'readonly',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the component is read-only'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Form.Input} />
     </Page>
     """
   end
