@@ -1,83 +1,103 @@
 export default {
+    // data() {
+    //     return {
+    //       delay: undefined,
+    //       autoSlideTimeout: null
+    //     };
+    //   },
 
     mounted() {
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
+        // console.log(this.items)
         this.itemCount = this.reel.querySelectorAll("li").length;
         this.leftArrow = this.el.querySelector(".moon-left-arrow");
         this.rightArrow = this.el.querySelector(".moon-right-arrow");
-        if (this.leftArrow) {
-            this.disableLeftArrow();
-          };
-        if (this.rightArrow) {
-            this.disableRightArrow();
-        };
         this.setupReelScroll();
-    //     const delay = this.el.dataset.autoslide_delay;
-    //     if (delay !== undefined) {
-    //         this.startAutoSlide();
-    //     }  
+        this.diableArrows();
+        // this.delay = parseInt(this.el.dataset.autoslide_delay, 10);
+        // if (!isNaN(this.delay)) {
+        //     this.startAutoSlide(this.delay);
+        //   }
     },
 
     updated() {
-        const activeItems = this.el.querySelectorAll(".active");
-        activeItems.forEach(item => {
+        this.scrollToActiveItem();
+        this.setupReelScroll();
+        // if (!isNaN(this.delay)) {
+        //     clearTimeout(this.autoSlideTimeout);
+        //     this.startAutoSlide(this.delay);
+        //   }
+    },
+        
+    scrollToActiveItem(toScroll = true) {
+        const item = this.el.querySelector(".active");
+        if (toScroll) {
             item.scrollIntoView({
                 behavior: 'smooth',
                 block: 'nearest',
                 inline: 'center'
             });
-            let value = parseInt(item.getAttribute("value"), 10);
-            this.disableLeftArrow();
-            this.disableRightArrow();
-        });
+        };
+        this.diableArrows();
+        
+        const indicator = this.el.querySelector(".moon-indicator");
+        console.log(indicator)
+    },
 
-        this.setupReelScroll();
-        // if (delay !== undefined) {
-        //     clearTimeout(this.autoSlideTimeout);
-        //     this.startAutoSlide();
-        // }
+    diableArrows() {
+        const item = this.el.querySelector(".active");
+        const value = parseInt(item.getAttribute("value"), 10);          
+        if (value === 0 && this.leftArrow) {
+            this.leftArrow.disabled = true; //TODO: enable button when needed
+        };
+        if (value === this.itemCount - 1 && this.rightArrow) {
+            this.rightArrow.disabled = true; //TODO: enable button when needed
+        };
     },
 
     setupReelScroll() {
-        const scrollPosition = this.reel.scrollLeft;
-        this.reel.addEventListener("scroll", (event) => {
+        this.reel.addEventListener("scroll", () => {
+            const scrollPosition = this.reel.scrollLeft;
             var totalWidth = 0;
             for (const item of this.items) {
                 totalWidth += item.offsetWidth;
-                if (totalWidth >= scrollPosition) {
+                console.log(totalWidth, scrollPosition, item.offsetWidth)
+                if (scrollPosition >= totalWidth) {
+                    this.items.forEach(i => i.classList.remove("active"));
+                    item.classList.add("active");
+                    // const value = parseInt(item.getAttribute("value"), 10);   
+                    // const newValue = (value + 1);
+                    // const newItem = this.el.querySelector(`[data-value="${newValue}"]`);
+                    // if (newItem) {
+                    //     newItem.classList.add("active");
+                    //   }
                     // item.classList.add("active");
-                    // this.items.classList.remove("active")
-
+                    // this.scrollToActiveItem(false);
                     break;
                 }
-            };
+            }
           });
 
-    },
-
-    disableLeftArrow() {
-        const activeItems = this.el.querySelectorAll(".active");
-            activeItems.forEach(item => {
-              const value = parseInt(item.getAttribute("value"), 10);          
-              if (value === 0) {
-                this.leftArrow.disabled = true;
-              }
-            });
-    },
-
-    disableRightArrow() {
-        const activeItems = this.el.querySelectorAll(".active");
-            activeItems.forEach(item => {
-                const value = parseInt(item.getAttribute("value"), 10);
-                if (value === this.itemCount - 1) {
-                this.rightArrow.disabled = true;
-                }
-            });
     },
     
     // startAutoSlide() {
     //     this.autoSlideTimeout = setTimeout(() => {
+    //         const activeItems = this.el.querySelectorAll(".active");
+    //         activeItems.forEach((item) => {
+    //           const value = parseInt(item.getAttribute("value"), 10);
+    //           const step = parseInt(this.el.dataset.step, 10);
+    //           const nextValue = (value + step) % activeItems.length;
+    //           activeItems[nextValue].scrollIntoView({
+    //             behavior: "smooth",
+    //             block: "nearest",
+    //             inline: "center",
+    //           });
+    //         });
+    //       }, this.delay);
+        
+    //     this.autoSlideTimeout = setTimeout(() => {
+    //         console.log(this.autoSlideTimeout)
     //         const activeItems = this.el.querySelectorAll(".active");
     //         activeItems.forEach(item => {
     //             const value = parseInt(item.getAttribute("value"), 10);
