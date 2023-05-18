@@ -50,7 +50,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
       <Tabs id="anatomy-tabs" class="justify-between gap-6">
         <h2 class="text-moon-24 font-medium">Anatomy</h2>
-        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Form"]} />
+        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Form"]} class="w-auto" />
         <Tabs.Panels>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
