@@ -24,7 +24,7 @@ defmodule Moon.Design.Tabs.List do
   def render(assigns) do
     ~F"""
     <div
-      class={merge(["flex items-center justify-center", (@size == "sm" && "gap-1") || "gap-2", @class])}
+      class={merge(["flex items-center justify-left w-full", (@size == "sm" && "gap-1") || "gap-2", @class])}
       role="tablist"
       aria-orientation="horizontal"
       {=@id}
