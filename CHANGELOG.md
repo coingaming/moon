@@ -1,3 +1,10 @@
+## [2.43.3](https://github.com/coingaming/moon/compare/v2.43.2...v2.43.3) (2023-05-18)
+
+
+### Bug Fixes
+
+* Tabs.Link component and center fix ([#636](https://github.com/coingaming/moon/issues/636)) ([c0e7c95](https://github.com/coingaming/moon/commit/c0e7c95aa2f7024543b6f10f2f1a88379d5ab0d1))
+
 ## [2.43.2](https://github.com/coingaming/moon/compare/v2.43.1...v2.43.2) (2023-05-17)
 
 
