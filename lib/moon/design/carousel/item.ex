@@ -27,6 +27,7 @@ defmodule Moon.Design.Carousel.Item do
     <li
       {=@id}
       {=@value}
+      data-value={@value}
       class={merge([
         [
           "snap-center flex bg-gohan rounded-moon-s-sm items-center justify-center",

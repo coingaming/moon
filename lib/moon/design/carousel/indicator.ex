@@ -39,12 +39,14 @@ defmodule Moon.Design.Carousel.Indicator do
       class={merge([
         [
           "w-2 h-2 mx-1 rounded-full",
+          "moon-indicator",
           (@is_active == true && @selected_bg_color) || @default_bg_color
         ],
         @class
       ])}
       {=@item_count}
       {=@value}
+      data-value={@value}
       :on-click={@on_change}
       data-testid={@testid}
     />
