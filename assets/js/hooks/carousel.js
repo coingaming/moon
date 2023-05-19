@@ -10,7 +10,7 @@ export default {
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
         // console.log(this.items)
-        this.itemCount = this.reel.querySelectorAll("li").length;
+        this.itemCount = this.items.length;
         this.leftArrow = this.el.querySelector(".moon-left-arrow");
         this.rightArrow = this.el.querySelector(".moon-right-arrow");
         this.setupReelScroll();
@@ -23,7 +23,7 @@ export default {
 
     updated() {
         this.scrollToActiveItem();
-        this.setupReelScroll();
+        // this.setupReelScroll();
         // if (!isNaN(this.delay)) {
         //     clearTimeout(this.autoSlideTimeout);
         //     this.startAutoSlide(this.delay);
@@ -58,14 +58,14 @@ export default {
 
     setupReelScroll() {
         this.reel.addEventListener("scroll", () => {
-            const scrollPosition = this.reel.scrollLeft;
+            const scrollPosition = this.reel.scrollLeft + this.reel.offsetWidth / 2;
             var totalWidth = 0;
             for (const item of this.items) {
                 totalWidth += item.offsetWidth;
-                console.log(totalWidth, scrollPosition, item.offsetWidth)
-                if (scrollPosition >= totalWidth) {
-                    this.items.forEach(i => i.classList.remove("active"));
-                    item.classList.add("active");
+                console.log('totalWidth', totalWidth, 'scrollPosition', scrollPosition, item.offsetWidth)
+                if (scrollPosition <= totalWidth) {
+                    this.items.forEach(i => i.classList.remove("active", "bg-chichi"));
+                    item.classList.add("active", "bg-chichi");
                     // const value = parseInt(item.getAttribute("value"), 10);   
                     // const newValue = (value + 1);
                     // const newItem = this.el.querySelector(`[data-value="${newValue}"]`);
