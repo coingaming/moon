@@ -18,9 +18,9 @@ defmodule MoonWeb.Examples.Design.TabsExample.Links do
     <div class="w-full">
       <Tabs id="tabs-ex-links">
         <Tabs.List>
-          <Tabs.Link href="fuck-off">First tab</Tabs.Link>
-          <Tabs.Link>Second tab</Tabs.Link>
-          <Tabs.Link>Third tab</Tabs.Link>
+          <Tabs.Link href="hello">First tab</Tabs.Link>
+          <Tabs.Link href="second">Second tab</Tabs.Link>
+          <Tabs.Link href="third">Third tab</Tabs.Link>
         </Tabs.List>
       </Tabs>
     </div>
