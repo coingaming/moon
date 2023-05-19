@@ -9,12 +9,12 @@ export default {
     mounted() {
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
-        // console.log(this.items)
+        this.indicators = this.el.querySelectorAll(".moon-indicator");
         this.itemCount = this.items.length;
         this.leftArrow = this.el.querySelector(".moon-left-arrow");
         this.rightArrow = this.el.querySelector(".moon-right-arrow");
         this.setupReelScroll();
-        this.diableArrows();
+        this.disableArrows();
         // this.delay = parseInt(this.el.dataset.autoslide_delay, 10);
         // if (!isNaN(this.delay)) {
         //     this.startAutoSlide(this.delay);
@@ -39,13 +39,13 @@ export default {
                 inline: 'center'
             });
         };
-        this.diableArrows();
+        this.disableArrows();
         
-        const indicator = this.el.querySelector(".moon-indicator");
-        console.log(indicator)
+        // const indicator = this.el.querySelector(".moon-indicator");
+        // console.log(indicator)
     },
 
-    diableArrows() {
+    disableArrows() {
         const item = this.el.querySelector(".active");
         const value = parseInt(item.getAttribute("value"), 10);          
         if (value === 0 && this.leftArrow) {
@@ -66,6 +66,11 @@ export default {
                 if (scrollPosition <= totalWidth) {
                     this.items.forEach(i => i.classList.remove("active", "bg-chichi"));
                     item.classList.add("active", "bg-chichi");
+                    this.disableArrows();
+
+                    // this.indicators.forEach(i => i.dataset.is_active = undefined);
+                    // indicator.dataset.is_active = "true";
+
                     // const value = parseInt(item.getAttribute("value"), 10);   
                     // const newValue = (value + 1);
                     // const newItem = this.el.querySelector(`[data-value="${newValue}"]`);

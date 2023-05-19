@@ -36,6 +36,7 @@ defmodule Moon.Design.Carousel.Indicator do
     <button
       {=@id}
       type="button"
+      data-is_active={@is_active}
       class={merge([
         [
           "w-2 h-2 mx-1 rounded-full",
@@ -46,7 +47,6 @@ defmodule Moon.Design.Carousel.Indicator do
       ])}
       {=@item_count}
       {=@value}
-      data-value={@value}
       :on-click={@on_change}
       data-testid={@testid}
     />
