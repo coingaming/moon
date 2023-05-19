@@ -10,7 +10,6 @@ defmodule MoonWeb.Examples.Design.TabsExample.Links do
   alias Moon.Design.Tabs
 
   def mount(socket) do
-    dbg(socket)
     {:ok, socket}
   end
 
