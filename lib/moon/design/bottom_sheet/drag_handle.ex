@@ -12,6 +12,13 @@ defmodule Moon.Design.BottomSheet.DragHandle do
   @doc "Id attribute for DOM element"
   prop(id, :string)
 
+  @doc """
+  Experimental: makes BottomSheet behave as Modal on some screen widths,
+  please reffer to https://tailwindcss.com/docs/screens
+  In most cases got from context
+  """
+  prop(as_modal_on, :string, values: ~w(sm md lg xl 2xl), from_context: :as_modal_on)
+
   def render(assigns) do
     ~F"""
     <div
@@ -21,6 +28,7 @@ defmodule Moon.Design.BottomSheet.DragHandle do
         "absolute left-1/2 transform -translate-x-1/2",
         "w-10 h-1 rounded bg-beerus",
         "moon-drag-handle",
+        ["#{@as_modal_on}:hidden": !!@as_modal_on],
         @class
       ])}
       data-testid={@testid}

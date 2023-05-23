@@ -28,6 +28,13 @@ defmodule Moon.Design.BottomSheet.Panel do
   @doc "Will be got from Bottomsheet in most cases"
   prop(size, :string, from_context: :size)
 
+  @doc """
+  Experimental: makes BottomSheet behave as Modal on some screen widths,
+  please reffer to https://tailwindcss.com/docs/screens
+  In most cases got from context
+  """
+  prop(as_modal_on, :string, values: ~w(sm md lg xl 2xl), from_context: :as_modal_on)
+
   def render(assigns) do
     ~F"""
     <div
@@ -43,6 +50,7 @@ defmodule Moon.Design.BottomSheet.Panel do
           "h-[64%]": @size == "md",
           "h-[88%]": @size == "lg"
         ],
+        modal_classes(@as_modal_on),
         @class
       ])}
       :on-click-away={@on_close}
@@ -52,5 +60,12 @@ defmodule Moon.Design.BottomSheet.Panel do
       <#slot />
     </div>
     """
+  end
+
+  defp modal_classes(nil), do: []
+
+  defp modal_classes(size) do
+    ~w(max-w-sm inline-block rounded-xl align-middle shadow-moon-lg bottom-auto)
+    |> Enum.map(&"#{size}:#{&1}")
   end
 end
