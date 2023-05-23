@@ -13,11 +13,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
       <Button on_click="set_open">
         Modal
       </Button>
-      <BottomSheet id="modal_bottom_sheet" class="lg:hidden lg:flex lg:items-center lg:justify-center">
+      <BottomSheet id="modal_bottom_sheet" as_modal_on="lg">
         <BottomSheet.Backdrop />
-        <BottomSheet.Panel class="lg:max-w-sm lg:inline-block lg:rounded-xl lg:align-middle lg:shadow-moon-lg lg:bottom-auto">
+        <BottomSheet.Panel>
           <BottomSheet.Header class="border-b-2 border-beerus">
-            <BottomSheet.DragHandle class="lg:hidden" />
+            <BottomSheet.DragHandle />
             <h3 class="text-moon-18 text-bulma font-medium">Do you think I'm Modal?</h3>
           </BottomSheet.Header>
           <p class="p-4 text-trunks">

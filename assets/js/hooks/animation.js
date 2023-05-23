@@ -1,5 +1,9 @@
 export default {
 
+    hiddenClasses() {
+        return ["sm", "md", "lg", "xl", "2xl"].map(size => `${size}:hidden`).concat(["hidden"]);
+    },
+
     mounted() {
         this.backdrop = this.el.querySelector(".moon-backdrop");
         this.panel = this.el.querySelector(".moon-panel");
@@ -24,14 +28,14 @@ export default {
             this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave");
         };
         setTimeout (() => {
-            this.el.classList.add("hidden", "lg:hidden")
+            this.el.classList.add(...this.hiddenClasses())
             this.pushEventTo(this.el, "set_close", {});
             document.body.style.overflow = "auto";
         }, 200);
     },
     
     showElement() {
-        this.el.classList.remove("hidden", "lg:hidden");
+        this.el.classList.remove(...this.hiddenClasses());
         this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
         if (this.backdrop) {
             this.backdrop.classList.add("animate-backdrop_enter");

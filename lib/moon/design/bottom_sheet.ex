@@ -28,6 +28,12 @@ defmodule Moon.Design.BottomSheet do
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
 
+  @doc """
+  Experimental: makes BottomSheet behave as Modal on some screen widths,
+  please reffer to https://tailwindcss.com/docs/screens
+  """
+  prop(as_modal_on, :string, values: ~w(sm md lg xl 2xl))
+
   @doc "Panel of BottomSheet, see BottomSheet.Panel"
   slot(panel, required: true)
 
@@ -45,7 +51,11 @@ defmodule Moon.Design.BottomSheet do
       phx-hook="Bottomsheet"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
-      class={merge(["fixed z-[99999] inset-0 hidden", @class])}
+      class={merge([
+        "fixed z-[99999] inset-0 hidden",
+        modal_classes(@as_modal_on),
+        @class
+      ])}
       data-testid={@testid}
     >
       <#slot {@backdrop} />
@@ -54,6 +64,7 @@ defmodule Moon.Design.BottomSheet do
         context_put={
           on_close: @on_close || %{name: "start_closing_bottom_sheet", target: @myself},
           has_shadow: @has_shadow,
+          as_modal_on: @as_modal_on,
           size: @size
         }
       />
@@ -79,5 +90,11 @@ defmodule Moon.Design.BottomSheet do
 
   def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
+  end
+
+  defp modal_classes(nil), do: []
+
+  defp modal_classes(size) do
+    ~w(hidden flex items-center justify-center) |> Enum.map(&"#{size}:#{&1}")
   end
 end
