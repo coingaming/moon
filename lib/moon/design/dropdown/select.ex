@@ -23,11 +23,13 @@ defmodule Moon.Design.Dropdown.Select do
   @doc "Some additional styling will be set to indicate field is iinvalid"
   prop(error, :boolean, from_context: :error)
   @doc "If the open indicator is active or not"
-  prop(is_open, :boolean)
+  prop(is_open, :boolean, from_context: :is_open)
   @doc "Site of the select"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "If the item should be marked as disabled"
   prop(disabled, :boolean)
+  @doc "Event that fired when trigger is clicked"
+  prop(on_click, :event, from_context: :on_trigger)
   @doc "Content of the button"
   slot(default)
 
@@ -37,6 +39,7 @@ defmodule Moon.Design.Dropdown.Select do
       {=@id}
       data-testid={@testid}
       type="button"
+      :on-click={@on_click}
       {=@error}
       {=@disabled}
       class={merge([

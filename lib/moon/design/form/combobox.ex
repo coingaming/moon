@@ -1,4 +1,4 @@
-defmodule Moon.Design.Form.Dropdown do
+defmodule Moon.Design.Form.Combobox do
   @moduledoc "Fully styled select component for the forms"
 
   use Moon.StatelessComponent
@@ -49,6 +49,9 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
   slot(trigger)
 
+  @doc "On key up event - use it for filter options"
+  prop(on_keyup, :event)
+
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
@@ -56,20 +59,17 @@ defmodule Moon.Design.Form.Dropdown do
     ~F"""
     <Dropdown id={dropdown_id(assigns)} {=@is_open}>
       <:trigger :let={is_open: is_open}>
-        <#slot {@trigger, is_open: is_open}>
-          <Dropdown.Select
+        <#slot {@trigger, is_open: is_open} context_put={on_keyup: @on_keyup}>
+          <Dropdown.Input
             {=@prompt}
             {=@size}
             {=is_open}
             {=@error}
             {=@disabled}
+            {=@on_keyup}
             value={select_value(assigns)[:key]}
             badge={select_badge(assigns)}
-          >
-            <#slot {@option, option: select_value(assigns)}>
-              {select_value(assigns)[:key] || @prompt}
-            </#slot>
-          </Dropdown.Select>
+          />
         </#slot>
       </:trigger>
       <#slot {@default}>

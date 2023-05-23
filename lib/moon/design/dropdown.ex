@@ -35,13 +35,10 @@ defmodule Moon.Design.Dropdown do
   def render(assigns) do
     ~F"""
     <div class={merge(["relative", @class])} :on-click-away="close_me" {=@id} data-testid={@testid}>
-      <div
-        :on-click={@on_trigger || %{name: "on_trigger_default", target: @myself}}
-        aria-haspopup="true"
-        aria-expanded={@is_open}
-      >
-        <#slot {@trigger, value: @value, is_open: @is_open} />
-      </div>
+      <#slot
+        {@trigger, value: @value, is_open: @is_open}
+        context_put={is_open: @is_open, on_trigger: @on_trigger || %{name: "on_trigger_default", target: @myself}}
+      />
       <#slot context_put={
         on_change: %{name: "on_change_default", target: @myself},
         is_open: @is_open,

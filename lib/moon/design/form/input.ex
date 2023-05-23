@@ -46,6 +46,11 @@ defmodule Moon.Design.Form.Input do
   prop(disabled, :boolean)
   @doc "Readonly - some additional classes and behaviour"
   prop(readonly, :boolean)
+  @doc "Autocomplete HTML attribute for the input, use \"off\" to disable"
+  prop(autocomplete, :string)
+  @doc "Keyword | Map of additional attributes for the input"
+  prop(opts, :any, default: %{})
+
   @doc "On change event for the input - again don't use it inside phoenix forms"
   prop(on_change, :event)
   @doc "On keyup event for the input"
@@ -83,6 +88,8 @@ defmodule Moon.Design.Form.Input do
       {=@readonly}
       error={@error || has_error(@form, @field)}
       data-testid={@testid}
+      {=@autocomplete}
+      {...@opts}
       :on-change={@on_change}
       :on-keyup={@on_keyup}
       :on-focus={@on_focus}

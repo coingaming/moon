@@ -1,12 +1,11 @@
-defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
+defmodule MoonWeb.Examples.Design.DropdownExample.CustomCombobox do
   @moduledoc false
 
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Form
-
-  alias MoonWeb.Schema.User
+  alias Moon.Design.Dropdown
+  alias Moon.Design.Form.Input
 
   prop(titles, :list,
     default: [
@@ -16,16 +15,14 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
       "Tom Cook",
       "Tanya Fox",
       "Hellen Schmidt"
-    ] |> Enum.map(&(%{key: &1, value: &1}))
+    ]
   )
-
-  prop(changeset1, :any, default: User.changeset(%User{name: nil}))
 
   prop(value, :string, default: "")
   prop(is_open, :boolean)
 
   defp titles_filtered(%{titles: titles, value: value}) do
-    Enum.filter(titles, &String.starts_with?(&1[:value], value))
+    Enum.filter(titles, &String.starts_with?(&1, value))
   end
 
   def handle_event("change_title", params = %{"value" => value}, socket) do
@@ -44,18 +41,12 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
   def render(assigns) do
     ~F"""
     <div class="w-full">
-      <div class="w-full flex flex-col lg:flex-row gap-2 justify-between">
-        <Form
-          id={"user_#{size}"}
-          :for={size <- ~w(md)}
-          class="w-full"
-          for={@changeset1}
-        >
-          <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here">
-            <Form.Combobox {=size} options={titles_filtered(assigns)} on_keyup="change_title" />
-          </Form.Field>
-        </Form>
-      </div>
+      <Dropdown id="dropdown-combo" {=@is_open}>
+        <Dropdown.Options titles={titles_filtered(assigns)} />
+        <Dropdown.Trigger :let={value: value}>
+          <Input value={value} on_keyup="change_title" on_focus="focus" on_blur="blur" />
+        </Dropdown.Trigger>
+      </Dropdown>
       <pre>titles = {inspect(titles_filtered(assigns))}</pre>
     </div>
     """

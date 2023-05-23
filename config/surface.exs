@@ -14,6 +14,7 @@ config :surface, :components, [
   {Moon.Design.Dropdown, propagate_context_to_slots: true},
   {Moon.Design.Dropdown.Options, propagate_context_to_slots: true},
   {Moon.Design.Form, propagate_context_to_slots: true},
+  {Moon.Design.Form.Combobox, propagate_context_to_slots: true},
   {Moon.Design.Form.Dropdown, propagate_context_to_slots: true},
   {Moon.Design.Form.Field, propagate_context_to_slots: true},
   {Moon.Design.Form.Group, propagate_context_to_slots: true},
