@@ -1,3 +1,10 @@
+## [2.43.5](https://github.com/coingaming/moon/compare/v2.43.4...v2.43.5) (2023-05-23)
+
+
+### Bug Fixes
+
+* adding BottomSheet.as_modal_on prop ([#638](https://github.com/coingaming/moon/issues/638)) ([0d28073](https://github.com/coingaming/moon/commit/0d28073d1a4952cf07d431b816fa6e984e7cb097))
+
 ## [2.43.4](https://github.com/coingaming/moon/compare/v2.43.3...v2.43.4) (2023-05-21)
 
 
