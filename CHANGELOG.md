@@ -1,3 +1,10 @@
+## [2.43.7](https://github.com/coingaming/moon/compare/v2.43.6...v2.43.7) (2023-05-24)
+
+
+### Bug Fixes
+
+* Components.Link add CSS class merge functionality ([#640](https://github.com/coingaming/moon/issues/640)) ([8527297](https://github.com/coingaming/moon/commit/852729792e3f5d9582ce0b4c24fedbdb77531a99))
+
 ## [2.43.6](https://github.com/coingaming/moon/compare/v2.43.5...v2.43.6) (2023-05-24)
 
 
