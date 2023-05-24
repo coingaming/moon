@@ -21,18 +21,20 @@ defmodule Moon.Components.Link do
     ~F"""
     <a
       id={@id}
-      class={
+      class={merge([
         "inline-block p-0 border-none",
-        @class,
         @is_underline,
-        "hover:text-piccolo focus:text-piccolo active:text-piccolo":
+        [
+          "hover:text-piccolo focus:text-piccolo active:text-piccolo":
           !@disabled and !@optional and !@secondary,
-        "cursor-pointer": !@disabled,
-        "cursor-not-allowed opacity-25": @disabled,
-        "text-bulma hover:underline focus:underline active:underline": !@secondary && !@optional,
-        "text-trunks": @secondary,
-        "text-trunks hover:text-piccolo focus:text-bulma active:text-bulma": @optional
-      }
+          "cursor-pointer": !@disabled,
+          "cursor-not-allowed opacity-25": @disabled,
+          "text-bulma hover:underline focus:underline active:underline": !@secondary && !@optional,
+          "text-trunks": @secondary,
+          "text-trunks hover:text-piccolo focus:text-bulma active:text-bulma": @optional
+        ],
+        @class,
+      ])}
       data-phx-link={@phx_link}
       data-phx-link-state={if @replace, do: "replace", else: "push"}
       data-moon-active={@active}
