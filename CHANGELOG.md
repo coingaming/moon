@@ -1,3 +1,10 @@
+## [2.43.6](https://github.com/coingaming/moon/compare/v2.43.5...v2.43.6) (2023-05-24)
+
+
+### Bug Fixes
+
+* Tailwind config for BottomSheet.as_modal_on property ([3ab0fce](https://github.com/coingaming/moon/commit/3ab0fce9a4bad505a7d9531c63d26901a4e066ea))
+
 ## [2.43.5](https://github.com/coingaming/moon/compare/v2.43.4...v2.43.5) (2023-05-23)
 
 
