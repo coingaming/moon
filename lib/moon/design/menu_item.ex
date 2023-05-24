@@ -42,6 +42,7 @@ defmodule Moon.Design.MenuItem do
         ],
         @class
       ])}
+      {=@attrs}
       on_click={@on_click}
       values={is_selected: !@is_selected}
       testid={@testid}
