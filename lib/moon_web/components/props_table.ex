@@ -53,7 +53,8 @@ defmodule MoonWeb.Components.PropsTable do
                ["#{prop[:type]}"])
             |> Enum.join(" | "),
           :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
-          :default => inspect(Keyword.get(prop[:opts], :default)) |> String.replace(~r/^nil$/, "-"),
+          :default =>
+            Keyword.get(prop[:opts], :default) |> inspect() |> String.replace(~r/^nil$/, "-"),
           :description => prop[:doc] || "-"
         }
       end)) ++

@@ -53,7 +53,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
         MenuItemExample.ExpandCollapse
       ]} />
 
-      <PropsTable module={Moon.Design.MenuItem}/>
+      <PropsTable module={Moon.Design.MenuItem} />
     </Page>
     """
   end
