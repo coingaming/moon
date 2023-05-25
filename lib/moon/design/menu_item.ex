@@ -11,7 +11,7 @@ defmodule Moon.Design.MenuItem do
   prop(id, :string)
   @doc "Any additional CSS classes for the DOM element"
   prop(class, :css_class)
-  @doc "Some tilte. If no default slot given - will add Lego.Title with this title"
+  @doc "Some title. If no default slot given - will add Lego.Title with this title"
   prop(title, :string)
   @doc "Some text. If no default slot given - will add Lego.MultiTitle with this text and title"
   prop(text, :string)
@@ -23,11 +23,11 @@ defmodule Moon.Design.MenuItem do
   prop(on_click, :event)
   @doc "Wenever add Checbox/Switch/Radio inside when no default slot is given"
   prop(role, :string, values: ~w(checkbox switch radio))
-  @doc "CSS class ofr width"
+  @doc "CSS class for width"
   prop(width, :css_class, default: "w-full")
   @doc "Which tag should be set for rendering"
   prop(as, :string, values!: ~w(a button), default: "button")
-  @doc "A href attribute when renderinng as a"
+  @doc "A href attribute when prop as=\"a\""
   prop(href, :string)
   @doc "Additional attributes set for the tag"
   prop(attrs, :map, default: %{})
