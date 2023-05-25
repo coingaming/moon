@@ -31,6 +31,7 @@ defmodule Moon.Design.Carousel.RightArrow do
       on_change={@on_change}
       testid={@testid}
       value={@value}
+      {=@id}
     >
       <#slot />
     </CarouselControl>

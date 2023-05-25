@@ -27,12 +27,12 @@ defmodule MoonWeb.Pages.Design.CarouselPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="Carousel" image="facing/components/carousel.png">
+      <!--Application<ComponentPageDescription is_in_progress title="Carousel" image="facing/components/carousel.png">
         <p>Carousel is an effective way of displaying multiple images or content in a single space.</p>
         <p>It not only helps in saving screen space, but also encourages visitors to focus on important website content and improves the overall visual appeal effectively.</p>
       </ComponentPageDescription>
 
-      <Anatomy>{component_anatomy()}</Anatomy>
+      <Anatomy>{component_anatomy()}</Anatomy>-->
 
       <ExamplesList examples={[
         CarouselExample.Default,

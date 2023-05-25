@@ -20,7 +20,7 @@ defmodule Moon.Design.Carousel.Indicator do
 
   # Internal API
   @doc "Will be got from Carousel in most cases"
-  prop(is_active, :boolean, from_context: :is_active)
+  prop(is_active, :boolean)
 
   @doc "Will be got from Carousel in most cases"
   prop(on_change, :event, from_context: :on_change)
@@ -36,12 +36,12 @@ defmodule Moon.Design.Carousel.Indicator do
     <button
       {=@id}
       type="button"
-      data-is_active={@is_active}
+      data-default_bg_color={@default_bg_color}
+      data-selected_bg_color={@selected_bg_color}
       class={merge([
         [
           "w-2 h-2 mx-1 rounded-full",
-          "moon-indicator",
-          (@is_active == true && @selected_bg_color) || @default_bg_color
+          "moon-indicator"
         ],
         @class
       ])}

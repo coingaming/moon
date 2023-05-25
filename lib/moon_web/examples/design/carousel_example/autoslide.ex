@@ -8,8 +8,6 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Autoslide do
 
   prop(item_count, :integer, default: 25)
 
-  prop(value, :integer, default: 0)
-
   defp get_items(item_count) do
     0..item_count
     |> Enum.to_list()
@@ -18,22 +16,12 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Autoslide do
   def render(assigns) do
     ~F"""
     <div class="relative w-full">
-      <Carousel
-        id="autoslide"
-        value={@value}
-        on_change="set_selected_index"
-        autoslide_delay={3000}
-        step={5}
-      >
+      <Carousel id="autoslide" autoslide_delay={3000} step={1}>
         <Carousel.Reel>
-          <Carousel.Item
-            class="w-80 h-48"
-            :for={item <- get_items(@item_count)}
-            value={item}
-            is_active={item == @value}
-          >
+          <Carousel.Item class="w-80 h-48" :for={item <- get_items(@item_count)}>
             {item}
           </Carousel.Item>
+          <Carousel.Indicator />
         </Carousel.Reel>
       </Carousel>
     </div>

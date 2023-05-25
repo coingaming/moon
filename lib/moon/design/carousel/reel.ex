@@ -45,7 +45,7 @@ defmodule Moon.Design.Carousel.Reel do
       {=@id}
       class={merge([
         [
-          "flex overflow-x-auto overflow-y-hidden h-auto gap-4",
+          "flex overflow-x-auto overflow-y-hidden h-auto hidden-scroll gap-4",
           "[-webkit-overflow-scrolling:touch] [scrollbar-width:none]",
           "[-ms-overflow-style:-ms-autohiding-scrollbar]",
           "[&>li]:list-none [&>li]:before:absolute [&>li]:before:content-[&quot;200B&quot;]",
@@ -80,7 +80,6 @@ defmodule Moon.Design.Carousel.Reel do
           context_put={
             on_change: @on_change,
             item_count: length(make_list(@item)),
-            is_active: index == @value,
             value: to_string(index)
           }
         />

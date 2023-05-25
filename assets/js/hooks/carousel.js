@@ -1,10 +1,4 @@
 export default {
-    // data() {
-    //     return {
-    //       delay: undefined,
-    //       autoSlideTimeout: null
-    //     };
-    //   },
 
     mounted() {
         this.reel = this.el.querySelector(".moon-reel");
@@ -13,108 +7,203 @@ export default {
         this.itemCount = this.items.length;
         this.leftArrow = this.el.querySelector(".moon-left-arrow");
         this.rightArrow = this.el.querySelector(".moon-right-arrow");
-        this.setupReelScroll();
-        this.disableArrows();
-        // this.delay = parseInt(this.el.dataset.autoslide_delay, 10);
-        // if (!isNaN(this.delay)) {
-        //     this.startAutoSlide(this.delay);
-        //   }
+        this.itemsArray = this.getArray("li", this.reel);
+        this.indicatorsArray = this.getArray(".moon-indicator", this.el);
+        this.setActiveItem();
+        this.initIntersectionObserver();
+        this.el.addEventListener("triggerLeftArrowClick", () => {
+            this.handleLeftArrowClick();
+        });
+        this.el.addEventListener("triggerRightArrowClick", () => {
+            this.handleRightArrowClick();
+        }); 
+        this.delay = parseInt(this.el.dataset.autoslide_delay, 10);
+        if (!isNaN(this.delay)) {
+            this.startAutoSlide(this.delay);
+          }
     },
-
+    
     updated() {
-        this.scrollToActiveItem();
-        // this.setupReelScroll();
+        this.scrollToIndex();
         // if (!isNaN(this.delay)) {
         //     clearTimeout(this.autoSlideTimeout);
         //     this.startAutoSlide(this.delay);
         //   }
     },
-        
-    scrollToActiveItem(toScroll = true) {
-        const item = this.el.querySelector(".active");
-        if (toScroll) {
-            item.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
+
+    setActiveItem() {
+        const value = parseInt(this.el.dataset.value, 10);
+        const lastIndex = this.itemsArray.length - 1;
+        const scrollToIndex = this.itemsArray.findIndex((item, index) => index === value);
+
+        if (scrollToIndex < lastIndex && scrollToIndex !== -1) {
+            this.itemsArray[scrollToIndex].scrollIntoView({
+                block: "nearest",
+                behavior: "smooth",
+                inline: "nearest",
+                boundary: this.reel,
             });
-        };
-        this.disableArrows();
-        
-        // const indicator = this.el.querySelector(".moon-indicator");
-        // console.log(indicator)
-    },
-
-    disableArrows() {
-        const item = this.el.querySelector(".active");
-        const value = parseInt(item.getAttribute("value"), 10);          
-        if (value === 0 && this.leftArrow) {
-            this.leftArrow.disabled = true; //TODO: enable button when needed
-        };
-        if (value === this.itemCount - 1 && this.rightArrow) {
-            this.rightArrow.disabled = true; //TODO: enable button when needed
-        };
-    },
-
-    setupReelScroll() {
-        this.reel.addEventListener("scroll", () => {
-            const scrollPosition = this.reel.scrollLeft + this.reel.offsetWidth / 2;
-            var totalWidth = 0;
-            for (const item of this.items) {
-                totalWidth += item.offsetWidth;
-                console.log('totalWidth', totalWidth, 'scrollPosition', scrollPosition, item.offsetWidth)
-                if (scrollPosition <= totalWidth) {
-                    this.items.forEach(i => i.classList.remove("active", "bg-chichi"));
-                    item.classList.add("active", "bg-chichi");
-                    this.disableArrows();
-
-                    // this.indicators.forEach(i => i.dataset.is_active = undefined);
-                    // indicator.dataset.is_active = "true";
-
-                    // const value = parseInt(item.getAttribute("value"), 10);   
-                    // const newValue = (value + 1);
-                    // const newItem = this.el.querySelector(`[data-value="${newValue}"]`);
-                    // if (newItem) {
-                    //     newItem.classList.add("active");
-                    //   }
-                    // item.classList.add("active");
-                    // this.scrollToActiveItem(false);
-                    break;
-                }
-            }
-          });
-
+        }
     },
     
-    // startAutoSlide() {
-    //     this.autoSlideTimeout = setTimeout(() => {
-    //         const activeItems = this.el.querySelectorAll(".active");
-    //         activeItems.forEach((item) => {
-    //           const value = parseInt(item.getAttribute("value"), 10);
-    //           const step = parseInt(this.el.dataset.step, 10);
-    //           const nextValue = (value + step) % activeItems.length;
-    //           activeItems[nextValue].scrollIntoView({
-    //             behavior: "smooth",
-    //             block: "nearest",
-    //             inline: "center",
-    //           });
-    //         });
-    //       }, this.delay);
+    handleLeftArrowClick() {
+        console.log("handleLeftArrowClick")
+        const firstVisibleIndex = this.findFirstVisibleIndex();
+        const step = parseInt(this.el.dataset.step, 10);
+        console.log(step)
+        const actualScrollForIndex = firstVisibleIndex < step 
+            ? 0 
+            : firstVisibleIndex - step;
+        const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
         
-    //     this.autoSlideTimeout = setTimeout(() => {
-    //         console.log(this.autoSlideTimeout)
-    //         const activeItems = this.el.querySelectorAll(".active");
-    //         activeItems.forEach(item => {
-    //             const value = parseInt(item.getAttribute("value"), 10);
-    //             const step = parseInt(this.el.dataset.step, 10)
-    //             const nextValue = (value + step) % activeItems.length;
-    //             activeItems[nextValue].scrollIntoView({
-    //                 behavior: 'smooth',
-    //                 block: 'nearest',
-    //                 inline: 'center'
-    //             });
-    //         });
-    //     }, this.el.dataset.autoslide_delay);
-    // }
-};
+            if (scrollToIndex !== -1) {
+                this.itemsArray[scrollToIndex].scrollIntoView({
+                  block: "nearest",
+                  inline: step === 1 ? "center" : "nearest",
+                  behavior: "smooth",
+                  boundary: this.reel,
+                });
+            }
+    },
 
+    handleRightArrowClick() {
+        console.log("handleRightArrowClick")
+        const lastVisibleIndex = this.findLastVisibleIndex();
+        const step = parseInt(this.el.dataset.step, 10);
+        const lastIndex = this.itemsArray.length - 1;
+        const actualScrollForIndex = lastIndex - lastVisibleIndex < step
+            ? lastIndex
+            : lastVisibleIndex + step;
+        const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
+        
+            if (scrollToIndex !== -1) {
+                this.itemsArray[scrollToIndex].scrollIntoView({
+                  block: "nearest",
+                  inline: step === 1 ? "center" : "nearest",
+                  behavior: "smooth",
+                  boundary: this.reel,
+                });
+            }
+    },
+    
+    scrollToIndex() {
+        const item = this.el.querySelector(".active");
+        const step = parseInt(this.el.dataset.step, 10);
+            if (item) {
+              item.scrollIntoView({
+                block: "nearest",
+                inline: step === 1 ? "center" : "nearest",
+                behavior: "smooth",
+                boundary: this.reel,
+              });
+            }
+    },
+
+    getArray(selector, element) {
+        const elements = Array.from(element.querySelectorAll(selector));
+        return elements;
+    },
+
+    initIntersectionObserver() {
+        const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                entry.intersectionRatio >= 0.75
+                ? this.processVisibleEntry(entry)
+                : this.processNotVisibleEntry(entry)
+              });
+              this.disableArrows();
+            },
+            {
+              root: this.reel,
+              threshold: 0.75,
+            }
+          );
+            this.items.forEach((item) => {
+                observer.observe(item);
+            });
+            return () =>
+            this.items.forEach((item) => {
+                observer.unobserve(item);
+            });
+    },
+
+    processVisibleEntry(entry) {
+        entry.target.setAttribute("visible", "true")
+        const itemIndex = this.itemsArray.indexOf(entry.target);
+        const indicator = this.indicatorsArray[itemIndex];
+
+        if (entry.target.getAttribute('visible') === 'true' && indicator) {
+            indicator.classList.remove(indicator.dataset.default_bg_color);
+            indicator.classList.add(indicator.dataset.selected_bg_color);
+            entry.target.classList.add("active");
+            };
+    },
+
+    processNotVisibleEntry(entry) {
+        entry.target.removeAttribute("visible")
+        const itemIndex = this.itemsArray.indexOf(entry.target);
+        const indicator = this.indicatorsArray[itemIndex];
+
+        if (entry.target.getAttribute('visible') !== 'true' && indicator) {
+            entry.target.classList.remove("active");
+            indicator.classList.add(indicator.dataset.default_bg_color);
+            indicator.classList.remove(indicator.dataset.selected_bg_color);
+        
+            };
+    },
+  
+  
+    findFirstVisibleIndex() {
+        return this.itemsArray.findIndex(item => item.getAttribute("visible") === "true");
+    },
+
+    findLastVisibleIndex() { 
+        const reversedIndex = this.itemsArray
+        // "reverse" mutates existing array, that"s why we copy it via "slice"
+          .slice()
+          .reverse()
+          .findIndex(item => item.getAttribute("visible") === "true");
+        const count = this.itemsArray.length - 1;
+        const finalIndex = reversedIndex >= 0 ? count - reversedIndex : reversedIndex;
+        return finalIndex;
+      },
+
+    disableArrows() {
+        const firstVisibleIndex = this.findFirstVisibleIndex();
+        const lastVisibleIndex = this.findLastVisibleIndex();
+      
+        if (firstVisibleIndex === 0 && this.leftArrow) {
+            this.leftArrow.disabled = true;
+        } else if (this.leftArrow) {
+            this.leftArrow.disabled = false;
+        };
+      
+        if (lastVisibleIndex === this.itemCount - 1 && this.rightArrow) {
+            this.rightArrow.disabled = true;
+        } else if (this.rightArrow) {
+            this.rightArrow.disabled = false;
+        };
+    },
+    
+    startAutoSlide() {
+        this.autoSlideTimeout = setInterval(() => {
+            const lastVisibleIndex = this.findLastVisibleIndex();
+            const step = parseInt(this.el.dataset.step, 10);
+            const lastIndex = this.itemsArray.length - 1;
+            const actualScrollForIndex = (lastVisibleIndex + step) % (lastIndex + 1);
+            let scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
+
+            if (scrollToIndex === lastIndex && this.itemsArray[lastVisibleIndex] === this.itemsArray[scrollToIndex]) {
+                scrollToIndex = 0; 
+            }
+
+            this.itemsArray[scrollToIndex].scrollIntoView({
+                block: "nearest",
+                inline: step === 1 ? "center" : "nearest",
+                behavior: "smooth",
+                boundary: this.reel,
+            });
+          }, this.delay);
+    }
+};
