@@ -20,6 +20,7 @@ defmodule Moon.Design.Tabs.List do
   prop(on_change, :event, from_context: :on_change)
 
   slot(tabs)
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -30,6 +31,7 @@ defmodule Moon.Design.Tabs.List do
       {=@id}
       data-testid={@testid}
     >
+      <#slot {@default} />
       {#if slot_assigned?(:tabs)}
         {#for {tab, tabindex} <- Enum.with_index(make_list(@tabs))}
           <#slot
