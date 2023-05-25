@@ -1,3 +1,10 @@
+## [2.43.8](https://github.com/coingaming/moon/compare/v2.43.7...v2.43.8) (2023-05-25)
+
+
+### Bug Fixes
+
+* MenuItem attrs usage ([db13f42](https://github.com/coingaming/moon/commit/db13f426260ec52b1f7de883e7199799696afda8))
+
 ## [2.43.7](https://github.com/coingaming/moon/compare/v2.43.6...v2.43.7) (2023-05-24)
 
 
