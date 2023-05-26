@@ -1,14 +1,3 @@
-const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
-const smoothScrollIntoView = require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
-
-let scrollIntoViewSmoothly;
-
-if (document && "scrollBehavior" in document.documentElement.style) {
-  scrollIntoViewSmoothly = scrollIntoView;
-} else {
-  scrollIntoViewSmoothly = smoothScrollIntoView;
-};
-  
 export default {
     mounted() {
         this.reel = this.el.querySelector(".moon-reel");
@@ -19,6 +8,7 @@ export default {
         this.rightArrow = this.el.querySelector(".moon-right-arrow");
         this.itemsArray = this.getArray("li", this.reel);
         this.indicatorsArray = this.getArray(".moon-indicator", this.el);
+        this.initScrolls();
         this.setActiveItem();
         this.initIntersectionObserver();
         this.el.addEventListener("triggerLeftArrowClick", () => {
@@ -43,7 +33,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === value);
 
         if (scrollToIndex < lastIndex && scrollToIndex !== -1) {
-            scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
+             this.scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                 block: "nearest",
                 behavior: "smooth",
                 inline: "nearest",
@@ -53,7 +43,16 @@ export default {
     },
 
     initScrolls() {
+        const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
+        const smoothScrollIntoView = require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
 
+        this. this.scrollIntoViewSmoothly;
+        
+        if (document && "scrollBehavior" in document.documentElement.style) {
+        this. this.scrollIntoViewSmoothly = scrollIntoView;
+        } else {
+        this. this.scrollIntoViewSmoothly = smoothScrollIntoView;
+        };
     },
     
     handleLeftArrowClick() {
@@ -65,7 +64,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
         
             if (scrollToIndex !== -1) {
-                scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
+                 this.scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                   block: "nearest",
                   inline: step === 1 ? "center" : "nearest",
                   behavior: "smooth",
@@ -84,7 +83,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
         
             if (scrollToIndex !== -1) {
-                scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
+                 this.scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                   block: "nearest",
                   inline: step === 1 ? "center" : "nearest",
                   behavior: "smooth",
@@ -97,7 +96,7 @@ export default {
         const item = this.el.querySelector(".active");
         const step = parseInt(this.el.dataset.step, 10);
             if (item) {
-              scrollIntoViewSmoothly(item, {
+               this.scrollIntoViewSmoothly(item, {
                 block: "nearest",
                 inline: step === 1 ? "center" : "nearest",
                 behavior: "smooth",
@@ -203,7 +202,7 @@ export default {
                 scrollToIndex = 0; 
             }
 
-            scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
+             this.scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                 block: "nearest",
                 inline: step === 1 ? "center" : "nearest",
                 behavior: "smooth",
