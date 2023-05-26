@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
 
   def render(assigns) do
     ~F"""
-    <Carousel class="w-80" id="indicators">
+    <Carousel class="w-80" id="indicators" value={1}>
       <Carousel.LeftArrow>
         <ControlsChevronLeft />
       </Carousel.LeftArrow>
@@ -47,7 +47,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
 
     ...
 
-    <Carousel class="w-80" id="indicators">
+    <Carousel class="w-80" id="indicators" value={1} >
       <Carousel.LeftArrow>
         <ControlsChevronLeft />
       </Carousel.LeftArrow>

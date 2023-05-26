@@ -10,15 +10,7 @@ if (document && 'scrollBehavior' in document.documentElement.style) {
 };
   
 export default {
-      data() {
-        return {
-          delay: undefined,
-          autoSlideTimeout: null
-        };
-      },
-
     mounted() {
-   
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
         this.indicators = this.el.querySelectorAll(".moon-indicator");
@@ -43,10 +35,6 @@ export default {
     
     updated() {
         this.scrollToIndex();
-        if (!isNaN(this.delay)) {
-            clearTimeout(this.autoSlideTimeout);
-            this.startAutoSlide(this.delay);
-          }
     },
 
     setActiveItem() {
@@ -65,10 +53,8 @@ export default {
     },
     
     handleLeftArrowClick() {
-        console.log("handleLeftArrowClick")
         const firstVisibleIndex = this.findFirstVisibleIndex();
         const step = parseInt(this.el.dataset.step, 10);
-        console.log(step)
         const actualScrollForIndex = firstVisibleIndex < step 
             ? 0 
             : firstVisibleIndex - step;
@@ -85,7 +71,6 @@ export default {
     },
 
     handleRightArrowClick() {
-        console.log("handleRightArrowClick")
         const lastVisibleIndex = this.findLastVisibleIndex();
         const step = parseInt(this.el.dataset.step, 10);
         const lastIndex = this.itemsArray.length - 1;
@@ -167,10 +152,8 @@ export default {
             entry.target.classList.remove("active");
             indicator.classList.add(indicator.dataset.default_bg_color);
             indicator.classList.remove(indicator.dataset.selected_bg_color);
-        
             };
     },
-  
   
     findFirstVisibleIndex() {
         return this.itemsArray.findIndex(item => item.getAttribute("visible") === "true");

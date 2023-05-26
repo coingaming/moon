@@ -47,7 +47,6 @@ defmodule MoonWeb.Examples.Design.CarouselExample.SelectIndex do
           <Carousel.Item class="w-80 h-48">
             4
           </Carousel.Item>
-          <Carousel.Indicator />
         </Carousel.Reel>
       </Carousel>
     </div>

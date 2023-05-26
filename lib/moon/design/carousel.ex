@@ -14,16 +14,11 @@ defmodule Moon.Design.Carousel do
   @doc "Index of selected item"
   prop(value, :integer, default: 0)
 
-  @doc "The number of carousel items"
-  prop(total_items, :integer)
-
   @doc "The function to call when reel is updated"
   prop(on_change, :event)
 
   @doc "Step of scroll"
   prop(step, :integer, default: 1)
-
-  prop(is_active, :boolean)
 
   @doc "Interval of auto sliding in milliseconds. No auto sliding if undefined"
   prop(autoslide_delay, :integer)
@@ -49,37 +44,27 @@ defmodule Moon.Design.Carousel do
       phx-hook="Carousel"
       data-autoslide_delay={@autoslide_delay}
       data-step={@step}
-      data-is_active={@is_active}
       data-value={@value}
     >
       <#slot />
       <#slot
         {@left_arrow}
         context_put={
-          on_change:
-            @on_change ||
-              JS.dispatch(
-                "triggerLeftArrowClick",
-                detail: %{}
-              )
+          on_change: @on_change || JS.dispatch("triggerLeftArrowClick", detail: %{})
         }
       />
       <#slot
         {@reel}
         context_put={
           value: @value,
+          autoslide_delay: @autoslide_delay,
           on_change: @on_change || %{name: "set_selected_index", target: @myself}
         }
       />
       <#slot
         {@right_arrow}
         context_put={
-          on_change:
-            @on_change ||
-              JS.dispatch(
-                "triggerRightArrowClick",
-                detail: %{}
-              )
+          on_change: @on_change || JS.dispatch("triggerRightArrowClick", detail: %{})
         }
       />
     </div>

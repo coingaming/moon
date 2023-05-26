@@ -45,10 +45,10 @@ defmodule Moon.Design.Carousel.Reel do
       {=@id}
       class={merge([
         [
-          "flex overflow-x-auto overflow-y-hidden h-auto hidden-scroll gap-4",
+          "flex overflow-x-auto overflow-y-hidden h-auto hidden-scroll gap-4 no-scrollbar",
           "[-webkit-overflow-scrolling:touch] [scrollbar-width:none]",
           "[-ms-overflow-style:-ms-autohiding-scrollbar]",
-          "[&>li]:list-none [&>li]:before:absolute [&>li]:before:content-[&quot;200B&quot;]",
+          "[&>li]:list-none before:absolute [&>li]:before:content-[&quot;200B&quot;]",
           "[&>*]:flex-[0_0_auto] [&>img]:h-full [&>img]:basis-auto [&>img]:w-auto",
           "snap-x rtl:flex-row-reverse",
           "moon-reel",
@@ -79,7 +79,6 @@ defmodule Moon.Design.Carousel.Reel do
           {@indicator}
           context_put={
             on_change: @on_change,
-            item_count: length(make_list(@item)),
             value: to_string(index)
           }
         />
