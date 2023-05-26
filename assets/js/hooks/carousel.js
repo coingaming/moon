@@ -1,6 +1,24 @@
+import scrollIntoView from 'scroll-into-view-if-needed';
+import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
+
+let scrollIntoViewSmoothly;
+
+if (document && 'scrollBehavior' in document.documentElement.style) {
+  scrollIntoViewSmoothly = scrollIntoView;
+} else {
+  scrollIntoViewSmoothly = smoothScrollIntoView;
+};
+  
 export default {
+      data() {
+        return {
+          delay: undefined,
+          autoSlideTimeout: null
+        };
+      },
 
     mounted() {
+   
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
         this.indicators = this.el.querySelectorAll(".moon-indicator");
@@ -25,10 +43,10 @@ export default {
     
     updated() {
         this.scrollToIndex();
-        // if (!isNaN(this.delay)) {
-        //     clearTimeout(this.autoSlideTimeout);
-        //     this.startAutoSlide(this.delay);
-        //   }
+        if (!isNaN(this.delay)) {
+            clearTimeout(this.autoSlideTimeout);
+            this.startAutoSlide(this.delay);
+          }
     },
 
     setActiveItem() {
@@ -37,7 +55,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === value);
 
         if (scrollToIndex < lastIndex && scrollToIndex !== -1) {
-            this.itemsArray[scrollToIndex].scrollIntoView({
+            scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                 block: "nearest",
                 behavior: "smooth",
                 inline: "nearest",
@@ -57,7 +75,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
         
             if (scrollToIndex !== -1) {
-                this.itemsArray[scrollToIndex].scrollIntoView({
+                scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                   block: "nearest",
                   inline: step === 1 ? "center" : "nearest",
                   behavior: "smooth",
@@ -77,7 +95,7 @@ export default {
         const scrollToIndex = this.itemsArray.findIndex((item, index) => index === actualScrollForIndex);
         
             if (scrollToIndex !== -1) {
-                this.itemsArray[scrollToIndex].scrollIntoView({
+                scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                   block: "nearest",
                   inline: step === 1 ? "center" : "nearest",
                   behavior: "smooth",
@@ -90,7 +108,7 @@ export default {
         const item = this.el.querySelector(".active");
         const step = parseInt(this.el.dataset.step, 10);
             if (item) {
-              item.scrollIntoView({
+              scrollIntoViewSmoothly(item, {
                 block: "nearest",
                 inline: step === 1 ? "center" : "nearest",
                 behavior: "smooth",
@@ -198,7 +216,7 @@ export default {
                 scrollToIndex = 0; 
             }
 
-            this.itemsArray[scrollToIndex].scrollIntoView({
+            scrollIntoViewSmoothly(this.itemsArray[scrollToIndex], {
                 block: "nearest",
                 inline: step === 1 ? "center" : "nearest",
                 behavior: "smooth",
