@@ -71,8 +71,7 @@ defmodule Moon.Design.Carousel do
     """
   end
 
-  def handle_event("set_selected_index", params = %{"value" => item}, socket) do
-    dbg(params)
+  def handle_event("set_selected_index", %{"value" => item}, socket) do
     new_value = String.to_integer(item)
     {:noreply, assign(socket, value: new_value)}
   end
