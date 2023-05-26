@@ -1,3 +1,6 @@
+const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
+const smoothScrollIntoView = require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
+
 export default {
     mounted() {
         this.reel = this.el.querySelector(".moon-reel");
@@ -43,15 +46,12 @@ export default {
     },
 
     initScrolls() {
-        const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
-        const smoothScrollIntoView = require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
-
-        this. this.scrollIntoViewSmoothly;
+        this.scrollIntoViewSmoothly;
         
         if (document && "scrollBehavior" in document.documentElement.style) {
-        this. this.scrollIntoViewSmoothly = scrollIntoView;
+        this.scrollIntoViewSmoothly = scrollIntoView;
         } else {
-        this. this.scrollIntoViewSmoothly = smoothScrollIntoView;
+        this.scrollIntoViewSmoothly = smoothScrollIntoView;
         };
     },
     
