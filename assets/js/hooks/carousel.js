@@ -1,9 +1,9 @@
-import scrollIntoView from 'scroll-into-view-if-needed';
-import smoothScrollIntoView from 'smooth-scroll-into-view-if-needed';
+import scrollIntoView from "scroll-into-view-if-needed";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 let scrollIntoViewSmoothly;
 
-if (document && 'scrollBehavior' in document.documentElement.style) {
+if (document && "scrollBehavior" in document.documentElement.style) {
   scrollIntoViewSmoothly = scrollIntoView;
 } else {
   scrollIntoViewSmoothly = smoothScrollIntoView;
@@ -136,7 +136,7 @@ export default {
         const itemIndex = this.itemsArray.indexOf(entry.target);
         const indicator = this.indicatorsArray[itemIndex];
 
-        if (entry.target.getAttribute('visible') === 'true' && indicator) {
+        if (entry.target.getAttribute("visible") === "true" && indicator) {
             indicator.classList.remove(indicator.dataset.default_bg_color);
             indicator.classList.add(indicator.dataset.selected_bg_color);
             entry.target.classList.add("active");
@@ -148,7 +148,7 @@ export default {
         const itemIndex = this.itemsArray.indexOf(entry.target);
         const indicator = this.indicatorsArray[itemIndex];
 
-        if (entry.target.getAttribute('visible') !== 'true' && indicator) {
+        if (entry.target.getAttribute("visible") !== "true" && indicator) {
             entry.target.classList.remove("active");
             indicator.classList.add(indicator.dataset.default_bg_color);
             indicator.classList.remove(indicator.dataset.selected_bg_color);
