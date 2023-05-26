@@ -1,5 +1,6 @@
-const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
-const smoothScrollIntoView = require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
+
+import scrollIntoView from "scroll-into-view-if-needed";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 export default {
     mounted() {
@@ -46,8 +47,6 @@ export default {
     },
 
     initScrolls() {
-        this.scrollIntoViewSmoothly;
-        
         if (document && "scrollBehavior" in document.documentElement.style) {
         this.scrollIntoViewSmoothly = scrollIntoView;
         } else {
