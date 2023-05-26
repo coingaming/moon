@@ -1,10 +1,6 @@
 import scrollIntoView from "scroll-into-view-if-needed";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
-scrollIntoView(() => {
-    smoothScrollIntoView();
-});
-
 let scrollIntoViewSmoothly;
 
 if (document && "scrollBehavior" in document.documentElement.style) {
@@ -15,6 +11,9 @@ if (document && "scrollBehavior" in document.documentElement.style) {
   
 export default {
     mounted() {
+        scrollIntoView(() => {
+            smoothScrollIntoView();
+        });
         this.reel = this.el.querySelector(".moon-reel");
         this.items = this.reel.querySelectorAll("li");
         this.indicators = this.el.querySelectorAll(".moon-indicator");
