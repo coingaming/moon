@@ -1,6 +1,10 @@
 import scrollIntoView from "scroll-into-view-if-needed";
 import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
+scrollIntoView(() => {
+    smoothScrollIntoView();
+});
+
 let scrollIntoViewSmoothly;
 
 if (document && "scrollBehavior" in document.documentElement.style) {
