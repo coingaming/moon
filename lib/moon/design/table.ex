@@ -26,7 +26,7 @@ defmodule Moon.Design.Table do
   prop(row_gap, :css_class, default: "border-spacing-y-1")
 
   @doc "Size of the row. not a css class!"
-  prop(row_size, :string, values!: ~w(2xs xs sm md lg xl 2xl), default: "md")
+  prop(row_size, :string, values!: ~w(xs sm md lg xl 2xl), default: "md")
 
   @doc "If cell has border"
   prop(is_cell_border, :boolean, default: false)
@@ -175,7 +175,6 @@ defmodule Moon.Design.Table do
 
   defp text_size_classes(row_size) do
     case row_size do
-      "2xs" -> "text-moon-10 py-0 px-2"
       "xs" -> "text-moon-12 py-1 px-2"
       "sm" -> "text-moon-14 py-1 px-3"
       "md" -> "text-moon-14 py-2 px-3"

@@ -10,15 +10,17 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Positions do
   def render(assigns) do
     ~F"""
     {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
-      <Tooltip>
-        <Tooltip.Trigger>
-          <Button variant="secondary">{placement}</Button>
-        </Tooltip.Trigger>
-        <Tooltip.Content position={placement}>
-          I'm a {placement} tooltip
-          <Tooltip.Arrow />
-        </Tooltip.Content>
-      </Tooltip>
+      <div class="w-1/3 md:w-1/5 flex justify-center">
+        <Tooltip>
+          <Tooltip.Trigger>
+            <Button variant="secondary">{placement}</Button>
+          </Tooltip.Trigger>
+          <Tooltip.Content position={placement}>
+            I'm a {placement} tooltip
+            <Tooltip.Arrow />
+          </Tooltip.Content>
+        </Tooltip>
+      </div>
     {/for}
     """
   end
