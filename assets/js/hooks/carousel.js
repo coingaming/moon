@@ -1,6 +1,5 @@
-const scrollIntoView = require("scroll-into-view-if-needed").scrollIntoView;
-const smoothScrollIntoView =
-    require("mooth-scroll-into-view-if-needed").smoothScrollIntoView;
+import scrollIntoView from "scroll-into-view-if-needed";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 export const THRESHOLD = 0.75;
 
