@@ -43,25 +43,31 @@ defmodule MoonWeb.Components.PropsTable do
   end
 
   defp data_from_module(module) do
-    (module.__props__()
-     |> Enum.map(fn prop ->
-       %{
-         :name => "#{prop[:name]}",
-         :type => Keyword.get(prop[:opts], :values!, ["#{prop[:type]}"]) |> Enum.join(" | "),
-         :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
-         :default => Keyword.get(prop[:opts], :default, "-"),
-         :description => prop[:doc] || "-"
-       }
-     end)) ++
-      (module.__slots__()
-       |> Enum.map(fn prop ->
-         %{
-           :name => "#{prop[:name]}",
-           :type => "slot",
-           :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
-           :default => "-",
-           :description => prop[:doc] || "-"
-         }
-       end))
+    ((module.__props__()
+      |> Enum.map(fn prop ->
+        %{
+          :name => "#{prop[:name]}",
+          :type =>
+            (Keyword.get(prop[:opts], :values!) ||
+               Keyword.get(prop[:opts], :values) ||
+               ["#{prop[:type]}"])
+            |> Enum.join(" | "),
+          :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
+          :default =>
+            Keyword.get(prop[:opts], :default) |> inspect() |> String.replace(~r/^nil$/, "-"),
+          :description => prop[:doc] || "-"
+        }
+      end)) ++
+       (module.__slots__()
+        |> Enum.map(fn prop ->
+          %{
+            :name => "#{prop[:name]}",
+            :type => "slot",
+            :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
+            :default => "-",
+            :description => prop[:doc] || "-"
+          }
+        end)))
+    |> Enum.filter(&(!String.starts_with?(&1[:description], "Experimental:")))
   end
 end

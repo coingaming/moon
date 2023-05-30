@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const { tailwindClasses } = require("./js/bottomsheet.config");
 
 //as Variant of using rgba color with opacity
 const withOpacityValue = (rgbColor) => {
@@ -129,7 +130,7 @@ module.exports = {
     "border-beerus",
     "border-bulma",
     "border-trunks",
-  ],
+  ].concat(tailwindClasses()),
   theme: {
     extend: {
       backgroundOpacity: {

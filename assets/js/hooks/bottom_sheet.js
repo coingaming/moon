@@ -78,7 +78,7 @@ export default {
                     this.backdrop.classList.replace("animate-backdrop_enter", "animate-backdrop_leave_swipe");
                 };
                 setTimeout (() => {
-                    this.el.classList.add("hidden", "lg:hidden")
+                    this.el.classList.add(...this.hiddenClasses())
                     this.pushEventTo(this.el, "set_close", {});
                     document.body.style.overflow = "auto";
                 }, 100);

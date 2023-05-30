@@ -1,3 +1,38 @@
+## [2.43.8](https://github.com/coingaming/moon/compare/v2.43.7...v2.43.8) (2023-05-25)
+
+
+### Bug Fixes
+
+* MenuItem attrs usage ([db13f42](https://github.com/coingaming/moon/commit/db13f426260ec52b1f7de883e7199799696afda8))
+
+## [2.43.7](https://github.com/coingaming/moon/compare/v2.43.6...v2.43.7) (2023-05-24)
+
+
+### Bug Fixes
+
+* Components.Link add CSS class merge functionality ([#640](https://github.com/coingaming/moon/issues/640)) ([8527297](https://github.com/coingaming/moon/commit/852729792e3f5d9582ce0b4c24fedbdb77531a99))
+
+## [2.43.6](https://github.com/coingaming/moon/compare/v2.43.5...v2.43.6) (2023-05-24)
+
+
+### Bug Fixes
+
+* Tailwind config for BottomSheet.as_modal_on property ([3ab0fce](https://github.com/coingaming/moon/commit/3ab0fce9a4bad505a7d9531c63d26901a4e066ea))
+
+## [2.43.5](https://github.com/coingaming/moon/compare/v2.43.4...v2.43.5) (2023-05-23)
+
+
+### Bug Fixes
+
+* adding BottomSheet.as_modal_on prop ([#638](https://github.com/coingaming/moon/issues/638)) ([0d28073](https://github.com/coingaming/moon/commit/0d28073d1a4952cf07d431b816fa6e984e7cb097))
+
+## [2.43.4](https://github.com/coingaming/moon/compare/v2.43.3...v2.43.4) (2023-05-21)
+
+
+### Bug Fixes
+
+* adding Tabs.Link ([#637](https://github.com/coingaming/moon/issues/637)) ([f2dca9b](https://github.com/coingaming/moon/commit/f2dca9b577533e50e2ca5dce68e4537d5a7bc62e))
+
 ## [2.43.3](https://github.com/coingaming/moon/compare/v2.43.2...v2.43.3) (2023-05-18)
 
 

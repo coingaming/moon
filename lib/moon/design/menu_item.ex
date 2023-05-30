@@ -5,26 +5,34 @@ defmodule Moon.Design.MenuItem do
   alias Moon.Components.AsComponent
   alias Moon.Components.Lego
 
-  prop(title, :string)
-  prop(text, :string)
-
-  prop(is_active, :boolean, default: false)
-
-  prop(is_selected, :boolean, default: false)
-  prop(on_click, :event)
-  prop(role, :string, values: ~w(checkbox switch radio))
-
-  prop(width, :css_class, default: "w-full")
-  prop(class, :css_class)
-
-  prop(as, :string, values!: ~w(a button), default: "button")
-  prop(href, :string)
-  prop(attrs, :map, default: %{})
-
-  slot(default)
-
+  @doc "Attribute data-testid for the tag"
   prop(testid, :string)
+  @doc "An id attribute for the slot"
   prop(id, :string)
+  @doc "Any additional CSS classes for the DOM element"
+  prop(class, :css_class)
+  @doc "Some title. If no default slot given - will add Lego.Title with this title"
+  prop(title, :string)
+  @doc "Some text. If no default slot given - will add Lego.MultiTitle with this text and title"
+  prop(text, :string)
+  @doc "Some additional classes will be added to indicate is active"
+  prop(is_active, :boolean, default: false)
+  @doc "Add this as is_selected value and also work for underlying checkbox/radio"
+  prop(is_selected, :boolean, default: false)
+  @doc "Well, on-click event handler"
+  prop(on_click, :event)
+  @doc "Wenever add Checbox/Switch/Radio inside when no default slot is given"
+  prop(role, :string, values: ~w(checkbox switch radio))
+  @doc "CSS class for width"
+  prop(width, :css_class, default: "w-full")
+  @doc "Which tag should be set for rendering"
+  prop(as, :string, values!: ~w(a button), default: "button")
+  @doc "A href attribute when prop as=\"a\""
+  prop(href, :string)
+  @doc "Additional attributes set for the tag"
+  prop(attrs, :map, default: %{})
+  @doc "Inner content of the component, some properties are ignored when set - see above"
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -42,6 +50,7 @@ defmodule Moon.Design.MenuItem do
         ],
         @class
       ])}
+      {=@attrs}
       on_click={@on_click}
       values={is_selected: !@is_selected}
       testid={@testid}
