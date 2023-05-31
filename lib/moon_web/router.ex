@@ -55,7 +55,6 @@ defmodule MoonWeb.Router do
     live("/manifest", MoonWeb.Pages.ManifestPage)
     live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
     live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
-    live("/404", MoonWeb.Pages.Page404)
 
     live("/components/v2/alert/", MoonWeb.Pages.Design.AlertPage)
     live("/components/v2/accordion/", MoonWeb.Pages.Design.AccordionPage)

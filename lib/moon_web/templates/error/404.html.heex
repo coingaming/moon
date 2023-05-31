@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Moon" %>
+    </.live_title>
+
+    <link rel="stylesheet" href={~p"/themes/moon.css"} />
+
+    <link rel="stylesheet" href={~p"/assets/app.css"} />
+
+    <link rel="apple-touch-icon" sizes="180x180" href={~p"/images/favs/apple-touch-icon.png"} />
+    <link rel="icon" type="image/png" sizes="32x32" href={~p"/images/favs/favicon-32x32.png"} />
+    <link rel="icon" type="image/png" sizes="16x16" href={~p"/images/favs/favicon-16x16.png"} />
+    <link rel="manifest" href={~p"/images/favs/site.webmanifest"} />
+    <link rel="mask-icon" href={~p"/images/favs/safari-pinned-tab.svg"} />
+    <link rel="shortcut icon" href={~p"/images/favs/favicon.ico"} />
+    <meta name="msapplication-config" content={~p"/images/favs/browserconfig.xml"} />
+
+    <script defer type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+  <body>
+    <main>
+      <div class="flex flex-col items-center min-h-full justify-center">
+        <img
+          class="mt-20"
+          src="/moon/assets/images/facing/404.png"
+          alt="Lost in space"
+          width={1280}
+        />
+        <div class="flex flex-col items-center gap-6">
+          <h1 class="text-moon-48 font-medium text-center">Lost in space</h1>
+          <p class="text-moon-24 text-center">
+            Huston, we have a problem. Moon not found.
+          </p>
+          <button
+            onclick="window.location.href = 'https://surface.moon.io';"
+            class="text-piccolo bg-transparent ring-1 ring-piccolo"
+            style="color: rgba(78, 70, 180, 1); border: 1px solid rgba(78, 70, 180, 1); font-size: .875rem; font-weight: 500; border-radius: 0.5rem; padding-right: 1rem; padding-left: 1rem; padding-top: 0.5rem; padding-bottom: 0.5rem; transition-duration: .2s;"
+            onmouseover="this.style.backgroundColor='rgba(0, 0, 0, 0.04)'"
+            onmouseout="this.style.backgroundColor='transparent'"
+            onmousedown="this.style.transform='scale(0.9)'"
+            onmouseup="this.style.transform='scale(1)'"
+          >
+            Go back to home
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
