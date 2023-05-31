@@ -1,3 +1,10 @@
+## [2.43.9](https://github.com/coingaming/moon/compare/v2.43.8...v2.43.9) (2023-05-31)
+
+
+### Bug Fixes
+
+* [MDS-533] Custom Error404 page ([#648](https://github.com/coingaming/moon/issues/648)) ([0ccbf2d](https://github.com/coingaming/moon/commit/0ccbf2df3d9bebcd79e98089ddc87dced1c33d2f))
+
 ## [2.43.8](https://github.com/coingaming/moon/compare/v2.43.7...v2.43.8) (2023-05-25)
 
 
