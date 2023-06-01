@@ -47,6 +47,13 @@ defmodule MoonWeb.Pages.ComponentPage do
           A way of informing the user of important changes in a prominent way.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.Form.AuthCodePage}
+          image="facing/components/auth_code.png"
+          title="AuthCode"
+        >
+          A one-time password (OTP) is an automatically generated numeric or alphanumeric string of characters that authenticates a user for a single transaction or login session.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.AvatarPage}
           image="facing/components/avatar.png"
           title="Avatar"

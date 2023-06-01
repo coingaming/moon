@@ -92,6 +92,7 @@ defmodule MoonWeb.Components.LeftMenu do
                   <Accordion.Header icon_class="text-moon-24">Form</Accordion.Header>
                   <Accordion.Content>
                     <div class="flex-grow flex flex-col gap-2 pl-8">
+                      <SidebarLink route={Pages.Design.Form.AuthCodePage}>AuthCode</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.CheckboxPage}>Checkbox</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.GroupPage}>Group</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.InputPage}>Input</SidebarLink>
