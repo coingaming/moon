@@ -1,3 +1,10 @@
+## [2.43.11](https://github.com/coingaming/moon/compare/v2.43.10...v2.43.11) (2023-06-02)
+
+
+### Bug Fixes
+
+* animation.js after-pageload scrolling fix ([0fb227f](https://github.com/coingaming/moon/commit/0fb227f712e8213bccd3e36e3dd5a9223a67ec0e))
+
 ## [2.43.10](https://github.com/coingaming/moon/compare/v2.43.9...v2.43.10) (2023-06-02)
 
 
