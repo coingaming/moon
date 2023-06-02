@@ -43,19 +43,22 @@ defmodule Moon.Design.Carousel.Reel do
     ~F"""
     <ul
       {=@id}
-      class={merge([
-        [
-          "flex overflow-x-auto overflow-y-hidden h-auto hidden-scroll gap-4 no-scrollbar",
-          "[-webkit-overflow-scrolling:touch] [scrollbar-width:none]",
-          "[-ms-overflow-style:-ms-autohiding-scrollbar]",
-          "[&>li]:list-none [&>li]:before:absolute [&>li]:before:content-[&quot;200B&quot;]",
-          "[&>*]:flex-[0_0_auto] [&>img]:h-full [&>img]:basis-auto [&>img]:w-auto",
-          "snap-x snap-mandatory rtl:flex-row-reverse",
-          "moon-reel",
-          "overflow-x-hidden": @autoslide_delay
-        ],
-        @class
-      ])}
+      class={[
+        merge([
+          [
+            "flex overflow-x-auto overflow-y-hidden h-auto hidden-scroll gap-4 no-scrollbar",
+            "[-webkit-overflow-scrolling:touch] [scrollbar-width:none]",
+            "[-ms-overflow-style:-ms-autohiding-scrollbar]",
+            "[&>li]:list-none [&>li]:before:absolute [&>li]:before:content-[&quot;200B&quot;]",
+            "[&>*]:flex-[0_0_auto] [&>img]:h-full [&>img]:basis-auto [&>img]:w-auto",
+            "snap-mandatory rtl:flex-row-reverse",
+            "moon-reel",
+            "overflow-x-hidden": @autoslide_delay
+          ],
+          @class
+        ]),
+        "snap-x"
+      ]}
       data-testid={@testid}
       step={@step}
     >
