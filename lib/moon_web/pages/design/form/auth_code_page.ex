@@ -39,7 +39,11 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
       <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
-        AuthCodeExample.Default
+        AuthCodeExample.Default,
+        AuthCodeExample.CustomLength,
+        AuthCodeExample.ErrorState,
+        AuthCodeExample.AllowedCharacters,
+        AuthCodeExample.Sizes
       ]} />
 
       <PropsTable title="AuthCode props" module={Moon.Design.Form.AuthCode} />

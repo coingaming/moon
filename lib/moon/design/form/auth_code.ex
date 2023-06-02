@@ -12,6 +12,23 @@ defmodule Moon.Design.Form.AuthCode do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
 
+  @doc "TBD"
+  prop(length, :integer, default: 6)
+
+  @doc "TBD"
+  prop(error, :boolean)
+
+  @doc "TBD"
+  prop(type, :string,
+    values: [
+      "number",
+      "text"
+    ]
+  )
+
+  @doc "TBD"
+  prop(size, :string, values!: ["sm", "md", "lg", "xl"], default: "lg")
+
   @doc "Inner content of the component"
   slot(input, required: true)
 
@@ -25,7 +42,15 @@ defmodule Moon.Design.Form.AuthCode do
       ])}
       data-testid={@testid}
     >
-      <#slot {@input} />
+      <#slot
+        {@input}
+        context_put={
+          length: @length,
+          error: @error,
+          type: @type,
+          size: @size
+        }
+      />
     </div>
     """
   end
