@@ -67,3 +67,6 @@ window.addEventListener("moon2:clean-checkboxes", (event) => {
   checkboxes.forEach(cb => cb.checked = false);
   checkboxes[0].dispatchEvent(new Event("input", { bubbles: true }))
 });
+
+// TODO: too dirty hack
+window.addEventListener("phx:page-loading-stop", _ => document.body.style.overflow = "auto")
