@@ -1,3 +1,10 @@
+## [2.43.10](https://github.com/coingaming/moon/compare/v2.43.9...v2.43.10) (2023-06-02)
+
+
+### Bug Fixes
+
+* icons fill via TW classes ([#649](https://github.com/coingaming/moon/issues/649)) ([0f85614](https://github.com/coingaming/moon/commit/0f8561431d67535e24d883b5cd4490e388888817))
+
 ## [2.43.9](https://github.com/coingaming/moon/compare/v2.43.8...v2.43.9) (2023-05-31)
 
 
