@@ -31,6 +31,8 @@ defmodule Moon.Design.MenuItem do
   prop(href, :string)
   @doc "Additional attributes set for the tag"
   prop(attrs, :map, default: %{})
+  @doc "Value atrribute if needs to be assigned"
+  prop(value, :integer)
   @doc "Inner content of the component, some properties are ignored when set - see above"
   slot(default)
 
@@ -41,6 +43,7 @@ defmodule Moon.Design.MenuItem do
       {=@as}
       {=@href}
       {=@role}
+      {=@value}
       class={merge([
         [
           "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",

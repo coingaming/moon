@@ -14,6 +14,7 @@ defmodule Moon.Components.AsComponent do
   prop(role, :string)
   prop(attrs, :map, default: %{})
   prop(is_selected, :boolean, default: false)
+  prop(value, :integer)
   slot(default)
   prop(testid, :string)
   prop(id, :string)
@@ -26,12 +27,13 @@ defmodule Moon.Components.AsComponent do
         :on-click={@on_click}
         :values={@values}
         {=@role}
+        {=@value}
         {...@attrs}
         {=@id}
         data-testid={@testid}
       ><#slot /></button>
     {#elseif @as == "a"}
-      <a {=@class} {=@href} {...@attrs} {=@id} data-testid={@testid} :values={@values}><#slot /></a>
+      <a {=@class} {=@href} {...@attrs} {=@id} {=@value} data-testid={@testid} :values={@values}><#slot /></a>
     {/if}
     """
   end

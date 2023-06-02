@@ -16,7 +16,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
   def render(assigns) do
     ~F"""
     {#for placement <- @placemets}
-      <div class="w-1/5 flex justify-center">
+      <div class="w-1/4 sm:w-1/5 flex justify-center">
         <Popover id={"popover-ex-#{placement}"}>
           <Popover.Trigger>
             <Button variant="secondary">{placement}</Button>

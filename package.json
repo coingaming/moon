@@ -11,5 +11,9 @@
     "README.md",
     "package.json",
     "priv/static/*"
-  ]
+  ],
+  "dependencies": {
+    "scroll-into-view-if-needed": "^3.0.10",
+    "smooth-scroll-into-view-if-needed": "^2.0.0"
+  }
 }
