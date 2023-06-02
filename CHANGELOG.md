@@ -1,3 +1,10 @@
+## [2.43.12](https://github.com/coingaming/moon/compare/v2.43.11...v2.43.12) (2023-06-02)
+
+
+### Bug Fixes
+
+* [MDS-519] Carousel v2 with intersection observer ([#644](https://github.com/coingaming/moon/issues/644)) ([f6dc77a](https://github.com/coingaming/moon/commit/f6dc77a50a7d6541cab8fd80940d8976c7a14e6a))
+
 ## [2.43.11](https://github.com/coingaming/moon/compare/v2.43.10...v2.43.11) (2023-06-02)
 
 
