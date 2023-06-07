@@ -26,9 +26,11 @@ defmodule Moon.Design.Dropdown.Input do
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "If the item should be marked as disabled"
   prop(disabled, :boolean)
-  @doc "Event that fired when trigger is clicked"
-  prop(on_trigger, :event, from_context: :on_trigger)
-  @doc "Actually - on_keyup event for the input, use it for filter options with new"
+  @doc "Dropdown closing action, only from context"
+  prop(close_me, :event, from_context: :close_me)
+  @doc "Dropdown opening action, only from context"
+  prop(open_me, :event, from_context: :open_me)
+  @doc "Actually - on_keyup event for the input, use it for filter options with new user input"
   prop(on_keyup, :event, from_context: :on_keyup)
 
   # TODO: implement functionality for the following attributes
@@ -46,8 +48,8 @@ defmodule Moon.Design.Dropdown.Input do
       {=@id}
       {=@testid}
       on_keyup={@on_keyup}
-      on_focus={@on_trigger}
-      on_blur={@on_trigger}
+      on_focus={@open_me}
+      on_blur={@close_me}
       {=@error}
       {=@disabled}
       autocomplete="off"

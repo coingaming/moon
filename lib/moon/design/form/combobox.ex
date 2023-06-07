@@ -1,5 +1,5 @@
 defmodule Moon.Design.Form.Combobox do
-  @moduledoc "Fully styled select component for the forms"
+  @moduledoc "Fully customized select component for the forms with input for filtering"
 
   use Moon.StatelessComponent
 
@@ -49,7 +49,7 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
   slot(trigger)
 
-  @doc "On key up event - use it for filter options"
+  @doc "On key up event for the input - use it for filter options outside the form"
   prop(on_keyup, :event)
 
   @doc "Slot used for rendering single option. option[:key] will be used if not given"

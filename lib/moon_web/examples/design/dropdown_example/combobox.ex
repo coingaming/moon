@@ -19,26 +19,27 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
     ] |> Enum.map(&(%{key: &1, value: &1}))
   )
 
-  prop(changeset1, :any, default: User.changeset(%User{name: nil}))
+  prop(changeset, :any, default: User.changeset(%User{name: nil}))
 
   prop(value, :string, default: "")
-  prop(is_open, :boolean)
+  prop(target, :list)
 
   defp titles_filtered(%{titles: titles, value: value}) do
     Enum.filter(titles, &String.starts_with?(&1[:value], value))
   end
 
-  def handle_event("change_title", params = %{"value" => value}, socket) do
-    dbg(params)
+  def handle_event("change_title", _params = %{"value" => value}, socket) do
     {:noreply, assign(socket, value: value)}
   end
 
-  def handle_event("focus", _, socket) do
-    {:noreply, assign(socket, is_open: true)}
-  end
-
-  def handle_event("blur", _, socket) do
-    {:noreply, assign(socket, is_open: false)}
+  def handle_event("changed", params, socket) do
+    dbg(params)
+    user = Map.get(params, "user", %{})
+    {:noreply, assign(socket,
+      changeset: User.changeset(%User{}, user),
+      value: Map.get(user, "name", ""),
+      target: params["_target"]
+    )}
   end
 
   def render(assigns) do
@@ -46,17 +47,19 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
     <div class="w-full">
       <div class="w-full flex flex-col lg:flex-row gap-2 justify-between">
         <Form
-          id={"user_#{size}"}
+          id={"user_combo_#{size}"}
           :for={size <- ~w(md)}
           class="w-full"
-          for={@changeset1}
+          for={@changeset}
+          change="changed"
         >
           <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here">
-            <Form.Combobox {=size} options={titles_filtered(assigns)} on_keyup="change_title" />
+            <Form.Combobox {=size} options={titles_filtered(assigns)} is_open={@target == ["user", "name"]} />
           </Form.Field>
         </Form>
       </div>
       <pre>titles = {inspect(titles_filtered(assigns))}</pre>
+      <pre>changeset = {inspect(@changeset, pretty: true)}</pre>
     </div>
     """
   end
