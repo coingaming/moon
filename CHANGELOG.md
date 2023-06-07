@@ -1,3 +1,10 @@
+## [2.43.13](https://github.com/coingaming/moon/compare/v2.43.12...v2.43.13) (2023-06-07)
+
+
+### Bug Fixes
+
+* Form.Select text color ([2f1a3c7](https://github.com/coingaming/moon/commit/2f1a3c7fed6e8ae60fc6e3cfbbe9a2a20288f40e))
+
 ## [2.43.12](https://github.com/coingaming/moon/compare/v2.43.11...v2.43.12) (2023-06-02)
 
 
