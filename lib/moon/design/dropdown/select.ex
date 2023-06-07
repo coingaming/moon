@@ -66,10 +66,10 @@ defmodule Moon.Design.Dropdown.Select do
         <span class={"px-0.5": @size == "sm", "px-1": @size != "sm"}>{@badge}</span>
         <Icon name="controls_close" class="text-gohan text-moon-12" />
       </span>
-      <span class={
+      <span class={merge([
         "overflow-hidden whitespace-nowrap text-trunks",
-        "text-bulma": !!@value || slot_assigned?(:default)
-      }>
+        "text-bulma": !!@value
+      ])}>
         <#slot>{@value || @prompt}</#slot>
       </span>
       <Icon
