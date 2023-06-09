@@ -3,11 +3,7 @@ defmodule Moon.Design.Dropdown.Input do
 
   use Moon.StatelessComponent, slot: "trigger"
 
-  # alias Moon.Icon
-  # alias Phoenix.LiveView.JS
-
   alias Moon.Design.Form.Input
-
 
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
@@ -31,7 +27,7 @@ defmodule Moon.Design.Dropdown.Input do
   @doc "Dropdown opening action, only from context"
   prop(open_me, :event, from_context: :open_me)
   @doc "Actually - on_keyup event for the input, use it for filter options with new user input"
-  prop(on_keyup, :event, from_context: :on_keyup)
+  prop(on_keyup, :event)
 
   # TODO: implement functionality for the following attributes
 
@@ -44,15 +40,15 @@ defmodule Moon.Design.Dropdown.Input do
     ~F"""
     <Input
       {=@value}
-      {=@size}
       {=@id}
       {=@testid}
+      {=@size}
       on_keyup={@on_keyup}
       on_focus={@open_me}
-      on_blur={@close_me}
       {=@error}
       {=@disabled}
       autocomplete="off"
+      class="moon-comboinput"
     />
     """
   end

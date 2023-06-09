@@ -59,7 +59,6 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       </Tabs>
 
       <ExamplesList examples={[
-        DropdownExample.Combobox,
         DropdownExample.Default,
         DropdownExample.TriggerElements,
         DropdownExample.OptionLayouts,
@@ -69,7 +68,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.SelectStates,
         DropdownExample.Multiselect,
         DropdownExample.CustomSelect,
-        DropdownExample.CustomCombobox
+        DropdownExample.Combobox
       ]} />
 
       <PropsTable module={Moon.Design.Dropdown} />
