@@ -26,7 +26,6 @@ defmodule MoonWeb.Examples.Design.DropdownExample.CustomCombobox do
   end
 
   def handle_event("change_title", params = %{"value" => value}, socket) do
-    dbg(params)
     {:noreply, assign(socket, value: value)}
   end
 

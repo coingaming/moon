@@ -77,6 +77,8 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       <PropsTable module={Moon.Design.Dropdown.Option} />
       <PropsTable module={Moon.Design.Form.Dropdown} />
       <PropsTable module={Moon.Design.Dropdown.Select} />
+      <PropsTable module={Moon.Design.Form.Combobox} />
+      <PropsTable module={Moon.Design.Dropdown.Input} />
     </Page>
     """
   end
