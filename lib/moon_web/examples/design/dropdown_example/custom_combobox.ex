@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.CustomCombobox do
     Enum.filter(titles, &String.starts_with?(&1, value))
   end
 
-  def handle_event("change_title", params = %{"value" => value}, socket) do
+  def handle_event("change_title", _p = %{"value" => value}, socket) do
     {:noreply, assign(socket, value: value)}
   end
 
