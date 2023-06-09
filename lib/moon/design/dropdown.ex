@@ -40,7 +40,13 @@ defmodule Moon.Design.Dropdown do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["relative", @class])} :on-click-away="close_me" {=@id} data-testid={@testid} phx-hook={@hook}>
+    <div
+      class={merge(["relative", @class])}
+      :on-click-away="close_me"
+      {=@id}
+      data-testid={@testid}
+      phx-hook={@hook}
+    >
       <#slot
         {@trigger, value: @value, is_open: @is_open}
         context_put={
