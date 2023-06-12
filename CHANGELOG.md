@@ -1,3 +1,10 @@
+## [2.44.1](https://github.com/coingaming/moon/compare/v2.44.0...v2.44.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* Extract cookie into module ([#645](https://github.com/coingaming/moon/issues/645)) ([3662a5c](https://github.com/coingaming/moon/commit/3662a5cef402fd061d3f414a149081d4d49b04b5))
+
 # [2.44.0](https://github.com/coingaming/moon/compare/v2.43.13...v2.44.0) (2023-06-12)
 
 
