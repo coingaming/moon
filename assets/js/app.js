@@ -4,6 +4,7 @@ import { LiveSocket } from 'phoenix_live_view'
 import hooks from './hooks'
 import _hooks from './_hooks'
 import S3 from "./uploaders/s3"
+import setCookie from './cookies/set-cookie'
 
 let uploaders = {
   S3
@@ -36,13 +37,6 @@ window.addEventListener("phx:page-loading-stop", info => {
     activeLink[0].scrollIntoView();
   }
 })
-
-function setCookie(cname, cvalue) {
-  const d = new Date();
-  d.setFullYear(d.getFullYear() + 1);
-  let expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
 
 window.addEventListener("phx:set-cookie", e => {
   setCookie(e.detail.name, e.detail.value);
