@@ -1,5 +1,5 @@
-defmodule Moon.Design.Form.Dropdown do
-  @moduledoc "Fully styled select component for the forms"
+defmodule Moon.Design.Form.Combobox do
+  @moduledoc "Fully customized select component for the forms with input for filtering"
 
   use Moon.StatelessComponent
 
@@ -19,7 +19,7 @@ defmodule Moon.Design.Form.Dropdown do
 
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
   prop(value, :any)
-  @doc "Well, disabled"
+  @doc "HTML disabled attribute for the input & some additional classes"
   prop(disabled, :boolean)
 
   @doc "Common moon size property"
@@ -34,7 +34,7 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Data-testid attribute value"
   prop(testid, :string)
 
-  @doc "Some additional styling will be set to indicate field is iinvalid"
+  @doc "Some additional styling will be set to indicate field is invalid"
   prop(error, :boolean, from_context: :error)
 
   @doc "If field does support multiselect, `multiple` attribute for select tag in HTML terms"
@@ -49,31 +49,33 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
   slot(trigger)
 
+  @doc "On key up event for the input - use it for filter options outside the form"
+  prop(on_keyup, :event)
+
+  @doc "Filtering value for the options"
+  prop(filter, :string)
+
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={dropdown_id(assigns)} {=@is_open}>
+    <Dropdown id={dropdown_id(assigns)} {=@is_open} hook="Combobox">
       <:trigger :let={is_open: is_open}>
-        <#slot {@trigger, is_open: is_open}>
-          <Dropdown.Select
+        <#slot {@trigger, is_open: is_open} context_put={on_keyup: @on_keyup}>
+          <Dropdown.Input
             {=@prompt}
             {=@size}
             {=is_open}
             {=@error}
             {=@disabled}
-            value={select_value(assigns)[:key]}
-            badge={select_badge(assigns)}
-          >
-            <#slot {@option, option: select_value(assigns)}>
-              {select_value(assigns)[:key] || @prompt}
-            </#slot>
-          </Dropdown.Select>
+            {=@on_keyup}
+            value={@filter}
+          />
         </#slot>
       </:trigger>
       <#slot {@default}>
-        <Dropdown.Options on_change={option_click()}>
+        <Dropdown.Options>
           <Dropdown.Option :for={option <- @options} {=@size}>
             <Checkbox
               checked_value={option[:value]}
@@ -86,7 +88,7 @@ defmodule Moon.Design.Form.Dropdown do
               <#slot {@option, option: option}>{option[:key]}</#slot>
             </Checkbox>
             <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
-              <Radio.Indicator />
+              <Radio.Indicator class="hidden" />
               <#slot {@option, option: option}>{option[:key]}</#slot>
             </Radio.Button>
           </Dropdown.Option>
@@ -97,19 +99,4 @@ defmodule Moon.Design.Form.Dropdown do
   end
 
   defp dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
-
-  defp option_click(), do: Phoenix.LiveView.JS.dispatch("moon-empty-event")
-
-  defp select_value(%{is_multiple: true}), do: nil
-
-  defp select_value(%{form: form, field: field, options: options}) do
-    options |> Enum.find(&(&1[:value] == form[field].value))
-  end
-
-  defp select_badge(%{is_multiple: true, form: form, field: field}) do
-    (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
-      nil
-  end
-
-  defp select_badge(_), do: nil
 end
