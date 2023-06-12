@@ -57,7 +57,6 @@ defmodule Moon.Design.Form.AuthCode.Input do
             "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",
             "moon-error:focus:ring-0 moon-error:text-chichi moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
             "invalid:text-chichi invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-            "moon-auth-input",
             [
               "leading-8 text-sm": @size == "sm",
               "leading-10 text-base": @size == "md",
