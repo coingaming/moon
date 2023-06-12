@@ -4,8 +4,8 @@ defmodule MoonWeb.Schema.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @required_fields ~w(name email gender username password)a
-  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role phone country)a
+  @required_fields ~w(name email gender username password authentication)a
+  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role phone country )a
 
   schema "users" do
     field(:username, :string, default: "johndoe")
@@ -20,6 +20,7 @@ defmodule MoonWeb.Schema.User do
     field(:agrees_to_marketing_emails, :boolean, default: true)
     field(:permissions, {:array, :integer})
     field(:role, :integer)
+    field(:authentication, :string)
   end
 
   def gender_options() do
@@ -115,6 +116,7 @@ defmodule MoonWeb.Schema.User do
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> validate_length(:username, min: 4)
+    |> validate_length(:authentication, min: 4)
     |> validate_inclusion(:password, ["password"],
       message: "sorry, correct password is 'verysecret123'"
     )

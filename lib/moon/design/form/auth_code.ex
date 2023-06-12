@@ -19,15 +19,25 @@ defmodule Moon.Design.Form.AuthCode do
   prop(error, :boolean)
 
   @doc "TBD"
-  prop(type, :string,
-    values: [
-      "number",
-      "text"
-    ]
-  )
+  prop(disabled, :boolean)
 
   @doc "TBD"
   prop(size, :string, values!: ["sm", "md", "lg", "xl"], default: "lg")
+
+  @doc "TBD"
+  prop(placeholder, :string, default: "")
+
+  @doc "TBD"
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
+
+  @doc "TBD"
+  prop(allowed_characters, :string,
+    values!: ["numeric", "alpha", "alphanumeric"],
+    default: "alphanumeric"
+  )
+
+  @doc "TBD"
+  prop(value, :string)
 
   @doc "Inner content of the component"
   slot(input, required: true)
@@ -36,6 +46,8 @@ defmodule Moon.Design.Form.AuthCode do
     ~F"""
     <div
       {=@id}
+      phx-hook="Authcode"
+      data-has_form={assigns[:form] != nil}
       class={merge([
         "flex flex-row justify-center gap-2",
         @class
@@ -47,8 +59,12 @@ defmodule Moon.Design.Form.AuthCode do
         context_put={
           length: @length,
           error: @error,
-          type: @type,
-          size: @size
+          size: @size,
+          placeholder: @placeholder,
+          allowed_characters: @allowed_characters,
+          value: @value,
+          disabled: @disabled,
+          id: "#{@id}-hidden"
         }
       />
     </div>

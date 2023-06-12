@@ -4,29 +4,25 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Default do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Form
-  alias Moon.Design.Form.Field
   alias Moon.Design.Form.AuthCode
-
-  alias MoonWeb.Schema.User
-
-  prop(user_changeset, :any, default: User.changeset(%User{}))
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset}>
-      <Field>
-        <AuthCode>
-          <AuthCode.Input />
-        </AuthCode>
-      </Field>
-    </Form>
+    <AuthCode id="default">
+      <AuthCode.Input />
+    </AuthCode>
     """
   end
 
   def code() do
     """
+    alias Moon.Design.Form.AuthCode
 
+    ...
+
+    <AuthCode id="default">
+      <AuthCode.Input />
+    </AuthCode>
     """
   end
 end

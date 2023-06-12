@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription is_in_progress title="AuthCode" image="facing/components/auth_code.png">
-        <p />
+        <p>A one-time password (OTP) is an automatically generated numeric or alphanumeric string of characters that authenticates a user for a single transaction or login session.</p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>
@@ -41,19 +41,25 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
       <ExamplesList examples={[
         AuthCodeExample.Default,
         AuthCodeExample.CustomLength,
-        AuthCodeExample.ErrorState,
         AuthCodeExample.AllowedCharacters,
-        AuthCodeExample.Sizes
+        AuthCodeExample.Placeholder,
+        AuthCodeExample.Sizes,
+        AuthCodeExample.ErrorState,
+        AuthCodeExample.DisabledState,
+        AuthCodeExample.WithForm
       ]} />
 
       <PropsTable title="AuthCode props" module={Moon.Design.Form.AuthCode} />
+      <PropsTable title="AuthCode.Input props" module={Moon.Design.Form.AuthCode.Input} />
     </Page>
     """
   end
 
   defp component_anatomy do
     """
-
+    <AuthCode>
+      <AuthCode.Input />
+    </AuthCode>
     """
   end
 end
