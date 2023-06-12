@@ -1,3 +1,10 @@
+# [2.44.0](https://github.com/coingaming/moon/compare/v2.43.13...v2.44.0) (2023-06-12)
+
+
+### Features
+
+* Combobox v2 alpha-version ([fecf6d6](https://github.com/coingaming/moon/commit/fecf6d684eede7f692c68ff0914ca7699a94a623))
+
 ## [2.43.13](https://github.com/coingaming/moon/compare/v2.43.12...v2.43.13) (2023-06-07)
 
 
