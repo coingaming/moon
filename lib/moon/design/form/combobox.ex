@@ -19,7 +19,7 @@ defmodule Moon.Design.Form.Combobox do
 
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
   prop(value, :any)
-  @doc "Well, disabled"
+  @doc "HTML disabled attribute for the input & some additional classes"
   prop(disabled, :boolean)
 
   @doc "Common moon size property"
@@ -34,7 +34,7 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Data-testid attribute value"
   prop(testid, :string)
 
-  @doc "Some additional styling will be set to indicate field is iinvalid"
+  @doc "Some additional styling will be set to indicate field is invalid"
   prop(error, :boolean, from_context: :error)
 
   @doc "If field does support multiselect, `multiple` attribute for select tag in HTML terms"

@@ -99,6 +99,13 @@ defmodule MoonWeb.Pages.ComponentPage do
           Chips help filter content, or trigger actions.
         </ComponentsPageCard>
         <ComponentsPageCard
+          page={Pages.Design.DropdownPage}
+          image="facing/components/dropdown.png"
+          title="Combobox"
+        >
+          An input that behaves similarly to a select, with the addition of a free text input to filter options.
+        </ComponentsPageCard>
+        <ComponentsPageCard
           page={Pages.Design.DrawerPage}
           image="facing/components/drawer.png"
           title="Drawer"
