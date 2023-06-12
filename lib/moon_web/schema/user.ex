@@ -5,7 +5,7 @@ defmodule MoonWeb.Schema.User do
   import Ecto.Changeset
 
   @required_fields ~w(name email gender username password authentication)a
-  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role phone country )a
+  @optional_fields ~w(document_filename agrees_to_marketing_emails agrees_to_terms_of_service permissions role phone country)a
 
   schema "users" do
     field(:username, :string, default: "johndoe")
