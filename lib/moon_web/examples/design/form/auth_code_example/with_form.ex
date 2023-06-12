@@ -22,7 +22,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
       submit="submit"
       class="flex flex-col gap-2 items-center"
     >
-      <Field field={:authentication} class="flex flex-col items-center">
+      <Field field={:authentication} class="flex flex-col ps-0">
         <AuthCode id="with_form">
           <AuthCode.Input />
         </AuthCode>

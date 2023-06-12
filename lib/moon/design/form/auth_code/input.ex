@@ -17,31 +17,31 @@ defmodule Moon.Design.Form.AuthCode.Input do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(size, :string, from_context: :size)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(disabled, :boolean, from_context: :disabled)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(placeholder, :string, from_context: :placeholder)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(length, :integer, from_context: :length)
 
-  @doc "TBD"
+  @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
 
-  @doc "TBD"
+  @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(error, :boolean, from_context: :error)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(allowed_characters, :string, from_context: :allowed_characters)
 
-  @doc "TBD"
+  @doc "Will be got from AuthCode in most cases"
   prop(value, :string, from_context: :value)
 
   def render(assigns) do
@@ -51,7 +51,7 @@ defmodule Moon.Design.Form.AuthCode.Input do
         class={[
           merge([
             "h-14 w-[2.875rem] rounded-xl border-0",
-            "m-0 appearance-none text-bulma box-border",
+            "m-0 py-3 appearance-none text-bulma box-border",
             "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
             "focus-visible::shadow-input-focus focus-visible::outline-none",
             "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",

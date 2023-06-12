@@ -9,6 +9,23 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.PropsTable
 
+  data(breadcrumbs, :any,
+    default: [
+      %{
+        to: "/components",
+        name: "Components"
+      },
+      %{
+        to: "#",
+        name: "Form"
+      },
+      %{
+        to: "/components/v2/form/input",
+        name: "Input"
+      }
+    ]
+  )
+
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>

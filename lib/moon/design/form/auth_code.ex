@@ -12,34 +12,34 @@ defmodule Moon.Design.Form.AuthCode do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
 
-  @doc "TBD"
+  @doc "Number of inputs for inserting single values"
   prop(length, :integer, default: 6)
 
-  @doc "TBD"
+  @doc "Puts element in error state"
   prop(error, :boolean)
 
-  @doc "TBD"
+  @doc "If true, disables whole AuthCode component"
   prop(disabled, :boolean)
 
-  @doc "TBD"
+  @doc "Specifies the size of input characters"
   prop(size, :string, values!: ["sm", "md", "lg", "xl"], default: "lg")
 
-  @doc "TBD"
+  @doc "Default placeholder for input elements"
   prop(placeholder, :string, default: "")
 
-  @doc "TBD"
+  @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
 
-  @doc "TBD"
+  @doc "Specifies the type of input characters"
   prop(allowed_characters, :string,
     values!: ["numeric", "alpha", "alphanumeric"],
     default: "alphanumeric"
   )
 
-  @doc "TBD"
+  @doc "Value of input field(s)"
   prop(value, :string)
 
-  @doc "Inner content of the component"
+  @doc "Input fields of AuthCode component"
   slot(input, required: true)
 
   def render(assigns) do

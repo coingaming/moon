@@ -6,7 +6,6 @@ export default {
         this.hiddenField = this.el.querySelector('input[type="hidden"]');
         this.inputValues = this.inputs.map((input) => input.value);
         this.form = this.el.dataset.has_form !== undefined;
-        console.log(this.form);
         this.handleOnChange();
         this.handleOnKeydown();
         this.handleOnPaste();
@@ -61,49 +60,6 @@ export default {
         });
     },
 
-    // handleOnPaste() {
-    //     this.inputs.forEach((input, index) => {
-    //         input.addEventListener("paste", (event) => {
-    //             const count = this.inputs.length - 1;
-    //             const lastInput = this.inputs[count];
-
-    //             const pastedValue = event.clipboardData.getData("Text");
-    //             const pattern = input.getAttribute("pattern");
-
-    //             let currentInput = index;
-
-    //             for (let i = 0; i < pastedValue.length; i++) {
-    //                 const pastedCharacter = pastedValue.charAt(i);
-    //                 const currentValue = this.inputs[currentInput].value;
-
-    //                 if (pastedCharacter.match(pattern)) {
-    //                     if (!currentValue && currentInput < this.inputs.length) {
-    //                         this.inputs[currentInput].value = pastedCharacter;
-    //                         currentInput++;
-    //                     }
-    //                 }
-
-    //                 if (currentInput >= this.inputs.length) {
-    //                     break;
-    //                 }
-    //             }
-
-    //             const nextInput = this.inputs[currentInput];
-
-    //             if (nextInput !== undefined) {
-    //                 nextInput.focus();
-    //             } else {
-    //                 lastInput.focus();
-    //             }
-
-    //             this.updateHiddenField();
-    //             event.dispatchEvent(new Event("input", { bubbles: true }));
-
-    //             event.preventDefault();
-    //         });
-    //     });
-    // },
-
     handleOnPaste() {
         this.inputs.forEach((input, index) => {
             input.addEventListener("paste", (event) => {
@@ -151,6 +107,5 @@ export default {
     updateHiddenField() {
         const inputValues = this.inputs.map((input) => input.value);
         this.hiddenField.value = inputValues.join("");
-        console.log("hidden value", this.hiddenField.value);
     },
 };
