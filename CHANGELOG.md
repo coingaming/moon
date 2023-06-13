@@ -1,3 +1,10 @@
+# [2.45.0](https://github.com/coingaming/moon/compare/v2.44.1...v2.45.0) (2023-06-13)
+
+
+### Features
+
+* [MDS-543] AuthCode v2 ([#652](https://github.com/coingaming/moon/issues/652)) ([45d0d54](https://github.com/coingaming/moon/commit/45d0d54cc0d23933cce17aae9c5c0e779a6ee66e))
+
 ## [2.44.1](https://github.com/coingaming/moon/compare/v2.44.0...v2.44.1) (2023-06-12)
 
 
