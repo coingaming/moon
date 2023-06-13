@@ -32,6 +32,7 @@ config :surface, :components, [
   {Moon.Design.Pagination, propagate_context_to_slots: true},
   {Moon.Design.Carousel.Reel, propagate_context_to_slots: true},
   {Moon.Design.Carousel, propagate_context_to_slots: true},
+  {Moon.Design.Form.AuthCode, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
