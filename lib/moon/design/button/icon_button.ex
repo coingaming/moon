@@ -26,7 +26,7 @@ defmodule Moon.Design.Button.IconButton do
   prop(form, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
-  prop(value, :integer)
+  prop(value, :string)
 
   prop(id, :string)
   prop(testid, :string)
@@ -55,13 +55,13 @@ defmodule Moon.Design.Button.IconButton do
       ])}
       on_click={@on_click}
       testid={@testid}
+      {=@values}
+      {=@value}
       attrs={
         disabled: @disabled,
         type: @type,
         form: @form,
-        value: @value,
-        "data-size": @size,
-        ":values": @values
+        "data-size": @size
       }
     >
       <span

@@ -25,7 +25,7 @@ defmodule Moon.Design.Button do
   prop(form, :string)
   prop(on_click, :event)
   prop(values, :keyword, default: [])
-  prop(value, :integer)
+  prop(value, :string)
   prop(left_icon, :string)
   prop(right_icon, :string)
   prop(button_gap, :css_class, default: "gap-2")
@@ -68,11 +68,11 @@ defmodule Moon.Design.Button do
       on_click={@on_click}
       testid={@testid}
       {=@values}
+      {=@value}
       attrs={[
         disabled: @disabled,
         type: @type,
         form: @form,
-        value: @value,
         "data-size": @size
       ] ++ @attrs}
     >
