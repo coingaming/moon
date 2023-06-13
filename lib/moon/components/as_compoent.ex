@@ -14,7 +14,7 @@ defmodule Moon.Components.AsComponent do
   prop(role, :string)
   prop(attrs, :map, default: %{})
   prop(is_selected, :boolean, default: false)
-  prop(value, :integer)
+  prop(value, :string)
   slot(default)
   prop(testid, :string)
   prop(id, :string)
