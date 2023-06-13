@@ -35,16 +35,16 @@ defmodule Moon.Design.Snackbar do
     {:noreply, assign(socket, is_open: false)}
   end
 
-  defp animate_class(position) do
-    case position do
-      "top-left" -> "animate-leftslide"
-      "bottom-left" -> "animate-leftslide"
-      "top-center" -> "animate-topslide"
-      "bottom-center" -> "animate-bottomslide"
-      "top-right" -> "animate-rightslide"
-      "bottom-right" -> "animate-rightslide"
-    end
-  end
+  @animate_class_map %{
+    "top-left" => "animate-leftslide",
+    "bottom-left" => "animate-leftslide",
+    "top-center" => "animate-topslide",
+    "bottom-center" => "animate-bottomslide",
+    "top-right" => "animate-rightslide",
+    "bottom-right" => "animate-rightslide"
+  }
+
+  defp animate_class(position), do: Map.get(@animate_class_map, position)
 
   def render(assigns) do
     ~F"""
