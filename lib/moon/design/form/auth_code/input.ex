@@ -49,24 +49,25 @@ defmodule Moon.Design.Form.AuthCode.Input do
     {#for index <- 0..(@length - 1)}
       <input
         class={[
-          merge([
-            "h-14 w-[2.875rem] rounded-xl border-0",
-            "m-0 py-3 appearance-none text-bulma box-border",
-            "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
-            "focus-visible::shadow-input-focus focus-visible::outline-none",
-            "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",
-            "moon-error:focus:ring-0 moon-error:text-chichi moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
-            "invalid:text-chichi invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-            [
-              "leading-8 text-sm": @size == "sm",
-              "leading-10 text-base": @size == "md",
-              "leading-12 text-lg": @size == "lg",
-              "leading-14 text-xl": @size == "xl",
-              "opacity-30 shadow-input focus:shadow-input hover:shadow-input cursor-not-allowed":
-                @disabled
-            ],
-            @class
-          ]),
+          merge(
+            input_classes(assigns) ++
+              [
+                "h-14 w-[2.875rem] rounded-xl",
+                "px-0",
+                "focus:ring-0",
+                "focus-visible::shadow-input-focus focus-visible::outline-none",
+                "moon-error:focus:ring-0 moon-error:text-chichi  ",
+                "invalid:text-chichi ",
+                [
+                  "text-sm": @size == "sm",
+                  "text-base": @size == "md",
+                  "text-lg": @size == "lg",
+                  "leading-[3.5rem] text-xl": @size == "xl",
+                  "shadow-input focus:shadow-input hover:shadow-input cursor-not-allowed": @disabled
+                ],
+                @class
+              ]
+          ),
           "text-center"
         ]}
         maxlength={1}

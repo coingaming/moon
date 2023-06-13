@@ -11,8 +11,6 @@ export default {
         this.handleOnPaste();
     },
 
-    updated() {},
-
     handleOnChange() {
         this.inputs.forEach((input, index) => {
             input.addEventListener("input", (event) => {
@@ -95,9 +93,9 @@ export default {
 
                 this.updateHiddenField();
 
-                this.inputs.forEach((input) => {
-                    input.dispatchEvent(new Event("input", { bubbles: true }));
-                });
+                this.hiddenField.dispatchEvent(
+                    new Event("input", { bubbles: true })
+                );
 
                 event.preventDefault();
             });
