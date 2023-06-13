@@ -55,7 +55,7 @@ defmodule Moon.Design.Snackbar do
       data-autoclose={@autoclose && "true"}
       data-timeout={@timeout}
       data-animate_class={animate_class(@position)}
-      :hook={true}
+      :hook="default"
     >
       {#if slot_assigned?(:trigger)}
         <div id={@id <> "-trigger"} data-testid={"#{@testid || @id}-trigger"} :on-click="set_open">
