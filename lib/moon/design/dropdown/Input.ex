@@ -3,7 +3,9 @@ defmodule Moon.Design.Dropdown.Input do
 
   use Moon.StatelessComponent, slot: "trigger"
 
-  alias Moon.Design.Form.Input
+  alias Moon.Icon
+
+  import Moon.Helpers.Form
 
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
@@ -13,7 +15,7 @@ defmodule Moon.Design.Dropdown.Input do
   prop(class, :css_class)
 
   @doc "Text to be shown when no value given"
-  prop(prompt, :string, default: "...")
+  prop(placeholder, :string)
   @doc "Value to be shown"
   prop(value, :string)
   @doc "Some additional styling will be set to indicate field is iinvalid"
@@ -22,12 +24,12 @@ defmodule Moon.Design.Dropdown.Input do
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "If the item should be marked as disabled"
   prop(disabled, :boolean)
-  @doc "Dropdown closing action, only from context"
-  prop(close_me, :event, from_context: :close_me)
   @doc "Dropdown opening action, only from context"
   prop(open_me, :event, from_context: :open_me)
   @doc "Actually - on_keyup event for the input, use it for filter options with new user input"
   prop(on_keyup, :event)
+  @doc "Event that fired when trigger is clicked"
+  prop(on_trigger, :event, from_context: :on_trigger)
 
   # TODO: implement functionality for the following attributes
 
@@ -38,18 +40,29 @@ defmodule Moon.Design.Dropdown.Input do
 
   def render(assigns) do
     ~F"""
-    <Input
-      {=@value}
-      {=@id}
-      {=@testid}
-      {=@size}
-      on_keyup={@on_keyup}
-      on_focus={@open_me}
-      {=@error}
-      {=@disabled}
-      autocomplete="off"
-      class="moon-comboinput"
-    />
+    <div class="relative w-full">
+      <input
+        {=@value}
+        {=@id}
+        {=@placeholder}
+        data-testid{@testid}
+        :on-keyup={@on_keyup}
+        :on-focus={@open_me}
+        {=@error}
+        {=@disabled}
+        autocomplete="off"
+        class={merge(input_classes(assigns) ++ ["moon-comboinput", @class])}
+      />
+      <Icon
+        name="controls_chevron_down"
+        class={
+          "transition-200 transition-transform cursor-pointer text-trunks text-moon-16",
+          "absolute right-4 top-1/2 translate-y-[-50%] z-[3]",
+          "rotate-180": @is_open
+        }
+        click={@on_trigger}
+      />
+    </div>
     """
   end
 end

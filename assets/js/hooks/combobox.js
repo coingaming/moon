@@ -7,8 +7,6 @@ export default {
   updated() {
     if (this.input === document.activeElement) {
       this.dropdown.classList.remove('hidden');
-    }else {
-      this.dropdown.classList.add('hidden');
     }
   }
 }

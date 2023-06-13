@@ -46,4 +46,12 @@ defmodule Moon.Helpers.Form do
       "opacity-30": disabled
     ]
   end
+
+  def dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
+
+  def select_value(%{is_multiple: true}), do: nil
+
+  def select_value(%{form: form, field: field, options: options}) do
+    options |> Enum.find(&(&1[:value] == form[field].value))
+  end
 end
