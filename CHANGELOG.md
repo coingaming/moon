@@ -1,3 +1,10 @@
+## [2.45.3](https://github.com/coingaming/moon/compare/v2.45.2...v2.45.3) (2023-06-14)
+
+
+### Bug Fixes
+
+* snackbar and add autoclose ([#659](https://github.com/coingaming/moon/issues/659)) ([d19b4fc](https://github.com/coingaming/moon/commit/d19b4fce9e3e5b43e5fe8f808d78398f7aae29f8))
+
 ## [2.45.2](https://github.com/coingaming/moon/compare/v2.45.1...v2.45.2) (2023-06-14)
 
 
