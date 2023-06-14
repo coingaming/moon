@@ -1,3 +1,10 @@
+## [2.45.1](https://github.com/coingaming/moon/compare/v2.45.0...v2.45.1) (2023-06-14)
+
+
+### Bug Fixes
+
+* some combobox fixes and improvements ([#658](https://github.com/coingaming/moon/issues/658)) ([9fe9e57](https://github.com/coingaming/moon/commit/9fe9e57a8d55a69e1e957161067a1ff08448d816))
+
 # [2.45.0](https://github.com/coingaming/moon/compare/v2.44.1...v2.45.0) (2023-06-13)
 
 
