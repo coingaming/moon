@@ -41,7 +41,7 @@ defmodule Moon.Design.Carousel do
       {=@id}
       class={merge(["relative w-full", @class])}
       data-testid={@testid}
-      phx-hook="Carousel"
+      :hook="default"
       data-autoslide_delay={@autoslide_delay}
       data-step={@step}
       data-value={@value}
