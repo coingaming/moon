@@ -19,6 +19,7 @@ defmodule Moon.Design.Tabs.Link do
   prop(is_selected, :boolean)
   prop(size, :string, values!: ~w(sm md), from_context: :size)
   prop(href, :string, required: true)
+  prop(attrs, :any)
 
   def render(assigns) do
     ~F"""
@@ -42,6 +43,7 @@ defmodule Moon.Design.Tabs.Link do
       {=@href}
       value={@tabindex}
       data-testid={@testid}
+      :attrs={@attrs}
     ><#slot /></a>
     """
   end
