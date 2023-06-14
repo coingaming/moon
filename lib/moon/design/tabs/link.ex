@@ -43,7 +43,7 @@ defmodule Moon.Design.Tabs.Link do
       {=@href}
       value={@tabindex}
       data-testid={@testid}
-      :attrs={@attrs}
+      {...@attrs}
     ><#slot /></a>
     """
   end
