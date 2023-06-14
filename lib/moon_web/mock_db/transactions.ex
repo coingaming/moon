@@ -64,9 +64,9 @@ defmodule MoonWeb.MockDB.Transactions do
 
     results =
       state.all
-      |> Enum.filter(&Enum.member?(users, &1.user))
       |> Enum.filter(fn txn ->
-        (Enum.empty?(sites) or Enum.member?(sites, txn.site)) and
+        Enum.member?(users, txn.user) and
+          (Enum.empty?(sites) or Enum.member?(sites, txn.site)) and
           (Enum.empty?(currencies) or Enum.member?(sites, txn.currency))
       end)
       |> Utils.take_page(offset, limit)

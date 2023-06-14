@@ -73,11 +73,11 @@ defmodule Moon.MixProject do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    deps_override([
+    [
       {:phoenix, ">= 1.6.15"},
-      {:phoenix_live_view, "~> 0.18.3"},
+      {:phoenix_live_view, ">= 0.18.3"},
       {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_dashboard, "~> 0.7"},
+      {:phoenix_live_dashboard, ">= 0.7.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:faker, "~> 0.17"},
@@ -102,22 +102,7 @@ defmodule Moon.MixProject do
       {:surface_formatter, "~> 0.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test], runtime: false}
-    ])
-  end
-
-  defp deps_override(deps, path \\ ".mix_override.exs") do
-    case Path.expand(path) do
-      "/.mix_override.exs" ->
-        deps
-
-      _ ->
-        if File.exists?(path) do
-          Code.require_file(path)
-          MixOverride.deps(deps)
-        else
-          deps_override(deps, Path.join("..", path))
-        end
-    end
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
