@@ -18,17 +18,12 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
         "Tanya Fox",
         "Hellen Schmidt"
       ]
-      |> Enum.map(&%{key: &1, value: &1})
+      |> Enum.map(&%{key: &1, value: String.downcase(&1)})
   )
 
   prop(changeset, :any, default: User.changeset(%User{name: nil}))
 
   prop(filter, :string, default: "")
-
-  defp titles_filtered(%{titles: titles, filter: filter}) do
-    import String
-    Enum.filter(titles, &starts_with?(downcase(&1[:value]), downcase(filter)))
-  end
 
   def handle_event("change_filter", _params = %{"value" => filter}, socket) do
     {:noreply, assign(socket, filter: filter)}
@@ -59,7 +54,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
             <Form.Combobox
               {=size}
               filter={@filter}
-              options={titles_filtered(assigns)}
+              options={Form.Combobox.filter_options(@titles, @filter)}
               on_keyup="change_filter"
             />
           </Form.Field>
@@ -85,17 +80,12 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
           "Tanya Fox",
           "Hellen Schmidt"
         ]
-        |> Enum.map(&%{key: &1, value: &1})
+        |> Enum.map(&%{key: &1, value: String.downcase(&1)})
     )
 
     prop(changeset, :any, default: User.changeset(%User{name: nil}))
 
     prop(filter, :string, default: "")
-
-    defp titles_filtered(%{titles: titles, filter: filter}) do
-      import String
-      Enum.filter(titles, &starts_with?(downcase(&1[:value]), downcase(filter)))
-    end
 
     def handle_event("change_filter", _params = %{"value" => filter}, socket) do
       {:noreply, assign(socket, filter: filter)}
@@ -126,7 +116,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
               <Form.Combobox
                 {=size}
                 filter={@filter}
-                options={titles_filtered(assigns)}
+                options={Form.Combobox.filter_options(@titles, @filter)}
                 on_keyup="change_filter"
               />
             </Form.Field>

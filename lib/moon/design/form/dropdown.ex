@@ -5,9 +5,10 @@ defmodule Moon.Design.Form.Dropdown do
 
   alias Surface.Components.Form
   alias Moon.Design.Dropdown
-
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form.Radio
+
+  import Moon.Helpers.Form
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Form.Field, :field})
@@ -96,15 +97,7 @@ defmodule Moon.Design.Form.Dropdown do
     """
   end
 
-  defp dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
-
   defp option_click(), do: Phoenix.LiveView.JS.dispatch("moon-empty-event")
-
-  defp select_value(%{is_multiple: true}), do: nil
-
-  defp select_value(%{form: form, field: field, options: options}) do
-    options |> Enum.find(&(&1[:value] == form[field].value))
-  end
 
   defp select_badge(%{is_multiple: true, form: form, field: field}) do
     (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||

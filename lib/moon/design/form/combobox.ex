@@ -5,9 +5,10 @@ defmodule Moon.Design.Form.Combobox do
 
   alias Surface.Components.Form
   alias Moon.Design.Dropdown
-
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form.Radio
+
+  import Moon.Helpers.Form
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Form.Field, :field})
@@ -27,7 +28,7 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Additional classes for the <select> tag"
   prop(class, :css_class, from_context: :class)
   @doc "Some prompt to be shown on empty value"
-  prop(prompt, :string, default: "...")
+  prop(prompt, :string)
 
   @doc "Id to be given to the select tag"
   prop(id, :string)
@@ -64,13 +65,13 @@ defmodule Moon.Design.Form.Combobox do
       <:trigger :let={is_open: is_open}>
         <#slot {@trigger, is_open: is_open} context_put={on_keyup: @on_keyup}>
           <Dropdown.Input
-            {=@prompt}
+            placeholder={@prompt}
             {=@size}
             {=is_open}
             {=@error}
             {=@disabled}
             {=@on_keyup}
-            value={@filter}
+            value={select_value(assigns)[:key] || @filter}
           />
         </#slot>
       </:trigger>
@@ -98,5 +99,12 @@ defmodule Moon.Design.Form.Combobox do
     """
   end
 
-  defp dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
+  @doc """
+  Default filtering function - just filter option[:key] to start with filter regardless case
+  Use own function if you need other filtering mechanisms or additional DB requests
+  """
+  def filter_options(options, filter) do
+    import String
+    Enum.filter(options, &starts_with?(downcase(&1[:key]), downcase(filter)))
+  end
 end
