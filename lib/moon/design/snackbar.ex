@@ -22,6 +22,7 @@ defmodule Moon.Design.Snackbar do
 
   prop(is_open, :boolean)
   prop(class, :css_class)
+  prop(outer_class, :css_class)
   prop(timeout, :integer, default: 5000)
   prop(autoclose, :boolean, default: true)
 
@@ -46,6 +47,17 @@ defmodule Moon.Design.Snackbar do
 
   defp animate_class(position), do: Map.get(@animate_class_map, position)
 
+  @position_class_map %{
+    "top-left" => "top-4 left-4",
+    "top-center" => "justify-center top-4 left-4 right-4 md:m-auto",
+    "top-right" => "justify-end top-4 right-4",
+    "bottom-left" => "bottom-4 left-4",
+    "bottom-center" => "justify-center bottom-4 left-4 right-4 m-auto",
+    "bottom-right" => "justify-end bottom-4 right-4"
+  }
+
+  defp position_class(position), do: Map.get(@position_class_map, position)
+
   def render(assigns) do
     ~F"""
     <div
@@ -55,6 +67,7 @@ defmodule Moon.Design.Snackbar do
       data-autoclose={@autoclose && "true"}
       data-timeout={@timeout}
       data-animate_class={animate_class(@position)}
+      data-snackbar="true"
       :hook="default"
     >
       {#if slot_assigned?(:trigger)}
@@ -66,12 +79,8 @@ defmodule Moon.Design.Snackbar do
         id={@id <> "-content"}
         class={merge([
           "z-[9999999] flex fixed w-[calc(100%-32px)] md:w-fit transition hidden",
-          "top-4 left-4": @position == "top-left",
-          "justify-center top-4 left-4 right-4 md:m-auto": @position == "top-center",
-          "justify-end top-4 right-4": @position == "top-right",
-          "bottom-4 left-4": @position == "bottom-left",
-          "justify-center bottom-4 left-4 right-4 m-auto": @position == "bottom-center",
-          "justify-end bottom-4 right-4": @position == "bottom-right"
+          position_class(@position),
+          @outer_class
         ])}
         data-testid={"#{@testid || @id}-content"}
         aria-hidden={(@is_open && "true") || "false"}
