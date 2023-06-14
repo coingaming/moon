@@ -1,3 +1,10 @@
+# [2.46.0](https://github.com/coingaming/moon/compare/v2.45.3...v2.46.0) (2023-06-14)
+
+
+### Features
+
+* phoenix_live_view v 0.19 & surface v0.11 ([#661](https://github.com/coingaming/moon/issues/661)) ([a5c71b0](https://github.com/coingaming/moon/commit/a5c71b023f3bea637c677824ddf955a72f9dfa63))
+
 ## [2.45.3](https://github.com/coingaming/moon/compare/v2.45.2...v2.45.3) (2023-06-14)
 
 
