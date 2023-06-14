@@ -1,3 +1,10 @@
+## [2.45.2](https://github.com/coingaming/moon/compare/v2.45.1...v2.45.2) (2023-06-14)
+
+
+### Bug Fixes
+
+* moving Carousel hook to surface format ([878e1d8](https://github.com/coingaming/moon/commit/878e1d8826cea2728e58c1df3edcf568d5ee3ad8))
+
 ## [2.45.1](https://github.com/coingaming/moon/compare/v2.45.0...v2.45.1) (2023-06-14)
 
 
