@@ -50,7 +50,7 @@ defmodule Moon.Components.FileInput do
   def render(assigns) do
     ~F"""
     <div class="relative">
-      <.live_file_input upload={@conf}, class="opacity-0 absolute top-0 right-0 h-full w-full z-30"/>
+      <.live_file_input upload={@conf} class="opacity-0 absolute top-0 right-0 h-full w-full z-30" />
       <span :if={@label} class="block mb-2">{@label}</span>
       {#if slot_assigned?(:default)}
         <#slot {@default} />
