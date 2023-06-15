@@ -1,3 +1,10 @@
+## [2.46.1](https://github.com/coingaming/moon/compare/v2.46.0...v2.46.1) (2023-06-15)
+
+
+### Bug Fixes
+
+* attrs to link.ex ([#663](https://github.com/coingaming/moon/issues/663)) ([4fb3541](https://github.com/coingaming/moon/commit/4fb3541ace9eb29b8c72882fd332c123b5c6a117))
+
 # [2.46.0](https://github.com/coingaming/moon/compare/v2.45.3...v2.46.0) (2023-06-14)
 
 
