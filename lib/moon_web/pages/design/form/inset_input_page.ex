@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Design.Form.InsetInputPage do
   require Logger
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.Page
@@ -56,12 +55,6 @@ defmodule MoonWeb.Pages.Design.Form.InsetInputPage do
 
       <PropsTable title="InsetInput props" module={Moon.Design.Form.Input} />
     </Page>
-    """
-  end
-
-  defp component_anatomy do
-    """
-
     """
   end
 end
