@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHint do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
+    <div class="flex flex-col lg:flex-row justify-around w-full gap-2">
       {#for size <- ~w(sm md lg)}
         <Form for={@user_changeset}>
           <Field hint={"Hint for #{size}"} field={:email}>

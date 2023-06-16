@@ -96,6 +96,7 @@ defmodule MoonWeb.Components.LeftMenu do
                       <SidebarLink route={Pages.Design.Form.CheckboxPage}>Checkbox</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.GroupPage}>Group</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.InputPage}>Input</SidebarLink>
+                      <SidebarLink route={Pages.Design.Form.InsetInputPage}>InsetInput</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.RadioPage}>Radio</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.SelectPage}>Select</SidebarLink>
                       <SidebarLink route={Pages.Design.Form.TextAreaPage}>TextArea</SidebarLink>

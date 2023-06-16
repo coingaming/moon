@@ -11,6 +11,8 @@ defmodule Moon.Design.Form.Group do
   prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(field_class, :css_class, from_context: :field_class)
   @doc "Group orientation"
   prop(orientation, :string, values!: ~w(horizontal vertical), default: "vertical")
 

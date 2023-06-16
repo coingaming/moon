@@ -18,8 +18,8 @@ defmodule MoonWeb.Examples.Design.Form.GroupExample.States do
       <Input disabled placeholder="Disabled" />
     </Group>
     <Group>
-      <Input readonly placeholder="Readonly" />
-      <Input readonly placeholder="Readonly" />
+      <Input readonly value="Readonly" />
+      <Input readonly value="Readonly" />
     </Group>
     """
   end
@@ -35,8 +35,8 @@ defmodule MoonWeb.Examples.Design.Form.GroupExample.States do
       <Input disabled placeholder={"Disabled"} />
     </Group>
     <Group>
-      <Input readonly placeholder={"Readonly"} />
-      <Input readonly placeholder={"Readonly"} />
+      <Input readonly value={"Readonly"} />
+      <Input readonly value={"Readonly"} />
     </Group>
     """
   end
