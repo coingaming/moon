@@ -1,3 +1,11 @@
+## [2.46.2](https://github.com/coingaming/moon/compare/v2.46.1...v2.46.2) (2023-06-16)
+
+
+### Bug Fixes
+
+* Tabs.Link default value for attriabutes ([601953f](https://github.com/coingaming/moon/commit/601953f70e30d17e87f9b77196f425e876329122))
+* Tabs.Link default value for attriabutes ([1b226e4](https://github.com/coingaming/moon/commit/1b226e4085f72d1d3e17f4992b405f41734ec6e2))
+
 ## [2.46.1](https://github.com/coingaming/moon/compare/v2.46.0...v2.46.1) (2023-06-15)
 
 
