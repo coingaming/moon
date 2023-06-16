@@ -19,7 +19,7 @@ defmodule Moon.Design.Tabs.Link do
   prop(is_selected, :boolean)
   prop(size, :string, values!: ~w(sm md), from_context: :size)
   prop(href, :string, required: true)
-  prop(attrs, :any)
+  prop(attrs, :any, default: %{})
 
   def render(assigns) do
     ~F"""
