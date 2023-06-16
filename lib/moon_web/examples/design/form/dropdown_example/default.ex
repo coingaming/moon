@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.DropdownExample.Select do
+defmodule MoonWeb.Examples.Design.Form.DropdownExample.Default do
   @moduledoc false
 
   use Moon.StatefulComponent

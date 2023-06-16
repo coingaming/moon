@@ -1,10 +1,10 @@
 defmodule Moon.Design.Dropdown.Select do
   @moduledoc "Element that triggers Dropdown component, renders as a button"
 
-  alias Moon.Icon
   use Moon.StatelessComponent, slot: "trigger"
 
-  alias Phoenix.LiveView.JS
+  alias Moon.Icon
+  alias Moon.Design.Dropdown.Badge
 
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
@@ -18,7 +18,7 @@ defmodule Moon.Design.Dropdown.Select do
   @doc "Value to be shown"
   prop(value, :string)
   @doc "Badge to show selected items count or smth else"
-  prop(badge, :string)
+  prop(badge, :integer)
 
   @doc "Some additional styling will be set to indicate field is iinvalid"
   prop(error, :boolean, from_context: :error)
@@ -57,18 +57,7 @@ defmodule Moon.Design.Dropdown.Select do
         @class
       ])}
     >
-      <span
-        :if={@badge}
-        class={
-          "flex-shrink-0 chip bg-bulma text-gohan flex items-center justify-center rounded-moon-s-xs cursor-pointer text-moon-12",
-          "h-4 px-0.5": @size == "sm",
-          "h-6 px-1": @size != "sm"
-        }
-        :on-click={JS.dispatch("moon2:clean-checkboxes")}
-      >
-        <span class={"px-0.5": @size == "sm", "px-1": @size != "sm"}>{@badge}</span>
-        <Icon name="controls_close" class="text-gohan text-moon-12" />
-      </span>
+      <Badge :if={@badge && @badge > 0} {=@size} count={@badge} />
       <span class={merge([
         "overflow-hidden whitespace-nowrap text-trunks",
         "text-bulma": !!@value

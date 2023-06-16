@@ -47,11 +47,19 @@ defmodule Moon.Helpers.Form do
     ]
   end
 
-  def dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
+  def dropdown_id(%{id: id}) when not is_nil(id), do: "#{id}-dropdown"
+  def dropdown_id(%{form: form, field: field}), do: "#{form[field].id}-dropdown"
 
   def select_value(%{is_multiple: true}), do: nil
 
   def select_value(%{form: form, field: field, options: options}) do
     options |> Enum.find(&(&1[:value] == form[field].value))
   end
+
+  def select_badge(%{is_multiple: true, form: form, field: field}) do
+    (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
+      nil
+  end
+
+  def select_badge(_), do: nil
 end

@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
+defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Combobox do
 
   prop(filter, :string, default: "")
 
-  def handle_event("change_filter", _params = %{"value" => filter}, socket) do
+  def handle_event("change_filter", %{"value" => filter}, socket) do
     {:noreply, assign(socket, filter: filter)}
   end
 

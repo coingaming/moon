@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Design.<%= name %>Page do
+defmodule MoonWeb.Pages.Design.Form.ComboboxPage do
   @moduledoc false
 
   require Logger
@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.PropsTable
 
-  alias MoonWeb.Examples.Design.<%= name %>Example
+  alias MoonWeb.Examples.Design.Form.ComboboxExample
 
   data(breadcrumbs, :any,
     default: [
@@ -19,8 +19,8 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
         name: "Components"
       },
       %{
-        to: "/components/v2/<%= path %>",
-        name: "<%= short %>"
+        to: "/components/v2/form/combobox",
+        name: "Combobox"
       }
     ]
   )
@@ -29,27 +29,34 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        is_in_progress
-        title="<%= short %>"
-        image="facing/components/<%= String.downcase(short) %>.png"
+        is_rtl_support
+        is_aria_support
+        title="Combobox"
+        image="facing/components/dropdown.png"
       >
-        <p></p>
+        <p>An input that behaves similarly to a dropdown, with the addition of a free text input to filter options.</p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
-        <%= short %>Example.Default,
+        ComboboxExample.Default,
+        ComboboxExample.Multiple
       ]} />
 
-      <PropsTable module={Moon.Design.<%= name %>} />
+      <PropsTable module={Moon.Design.Form.Combobox} />
+      <PropsTable module={Moon.Design.Dropdown.Input} />
     </Page>
     """
   end
 
   defp component_anatomy do
     """
-
+    <Form>
+      <Form.Field>
+        <Form.Combobox options={...} />
+      </Form.Field>
+    </Form>
     """
   end
 end
