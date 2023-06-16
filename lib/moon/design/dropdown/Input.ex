@@ -44,7 +44,7 @@ defmodule Moon.Design.Dropdown.Input do
         {=@value}
         {=@id}
         {=@placeholder}
-        data-testid{@testid}
+        data-testid={@testid}
         :on-keyup={@on_keyup}
         :on-focus={@open_me}
         {=@error}
@@ -61,7 +61,12 @@ defmodule Moon.Design.Dropdown.Input do
         }
         click={@on_trigger}
       />
-      <Badge :if={@badge && @badge > 0} {=@size} count={@badge} class="absolute rtl:right-3 ltr:left-3 top-1/2 translate-y-[-50%] z-[3]" />
+      <Badge
+        :if={@badge && @badge > 0}
+        {=@size}
+        count={@badge}
+        class="absolute rtl:right-3 ltr:left-3 top-1/2 translate-y-[-50%] z-[3]"
+      />
     </div>
     """
   end

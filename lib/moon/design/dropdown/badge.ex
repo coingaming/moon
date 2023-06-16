@@ -6,7 +6,6 @@ defmodule Moon.Design.Dropdown.Badge do
   alias Moon.Icon
   alias Phoenix.LiveView.JS
 
-
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
   @doc "Id attribute for html tag"

@@ -34,8 +34,7 @@ defmodule Moon.Design.Dropdown do
     {:noreply, assign(socket, is_open: false)}
   end
 
-  def handle_event("open_me", p, socket) do
-    dbg({"Open me", p})
+  def handle_event("open_me", _, socket) do
     {:noreply, assign(socket, is_open: true)}
   end
 
