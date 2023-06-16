@@ -31,20 +31,22 @@ defmodule Moon.Design.Form.Group do
       data-testid={@testid}
     >
       <#slot context_put={
-        class: [
-          (@orientation == "vertical" &&
-             [
-               "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error)input-bbb-hidden",
-               "not-first:rounded-tl-none not-first:rounded-tr-none not-first:not(:moon-error):input-tbb-hidden"
-             ]) ||
-            [
-              "flex-1 basis-1/2",
-              "not-last:rtl:rounded-bl-none not-last:rtl:rounded-tl-none not-last:rtl:not(:moon-error):input-lsb-hidden",
-              "not-last:ltr:rounded-br-none not-last:ltr:rounded-tr-none not-last:ltr:not(:moon-error):input-rsb-hidden",
-              "not-first:rtl:rounded-tr-none not-first:rtl:rounded-br-none not-first:rtl:not(:moon-error):input-rsb-hidden",
-              "not-first:ltr:rounded-tl-none not-first:ltr:rounded-bl-none not-first:ltr:not(:moon-error):input-lsb-hidden"
-            ]
-        ]
+        field_class:
+          merge([
+            (@orientation == "vertical" &&
+               [
+                 "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error)input-bbb-hidden",
+                 "not-first:rounded-tl-none not-first:rounded-tr-none not-first:not(:moon-error):input-tbb-hidden"
+               ]) ||
+              [
+                "flex-1 basis-1/2",
+                "not-last:rtl:rounded-bl-none not-last:rtl:rounded-tl-none not-last:rtl:not(:moon-error):input-lsb-hidden",
+                "not-last:ltr:rounded-br-none not-last:ltr:rounded-tr-none not-last:ltr:not(:moon-error):input-rsb-hidden",
+                "not-first:rtl:rounded-tr-none not-first:rtl:rounded-br-none not-first:rtl:not(:moon-error):input-rsb-hidden",
+                "not-first:ltr:rounded-tl-none not-first:ltr:rounded-bl-none not-first:ltr:not(:moon-error):input-lsb-hidden"
+              ] ++
+                [@field_class, @class]
+          ])
       } />
     </div>
     """
