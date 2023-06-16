@@ -1,3 +1,10 @@
+# [2.47.0](https://github.com/coingaming/moon/compare/v2.46.2...v2.47.0) (2023-06-16)
+
+
+### Features
+
+* Form.Combobox is_multiple ([7527aa2](https://github.com/coingaming/moon/commit/7527aa2f141bb8ccd7fceaef981610a7f8ed153a))
+
 ## [2.46.2](https://github.com/coingaming/moon/compare/v2.46.1...v2.46.2) (2023-06-16)
 
 
