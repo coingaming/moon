@@ -45,7 +45,7 @@ defmodule Moon.Design.Form.Group do
                 "not-first:rtl:rounded-tr-none not-first:rtl:rounded-br-none not-first:rtl:not(:moon-error):input-rsb-hidden",
                 "not-first:ltr:rounded-tl-none not-first:ltr:rounded-bl-none not-first:ltr:not(:moon-error):input-lsb-hidden"
               ] ++
-                [@field_class, @class]
+                [@field_class]
           ])
       } />
     </div>

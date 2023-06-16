@@ -7,19 +7,28 @@ defmodule Moon.Design.Form.Field do
 
   alias __MODULE__
 
+  @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
+  @doc "Field name, surface-style"
   prop(field, :atom)
-  prop(size, :string, values!: ~w(sm md lg xl), default: "md")
+  @doc "Input size"
+  prop(size, :string, values!: ~w(sm md lg), default: "md")
+  @doc "Label for input field"
   prop(label, :string)
+  @doc "Hint for input field"
   prop(hint, :string)
+  @doc "Whether error message is shown"
   prop(hide_errors, :boolean)
+  @doc "Additional Tailwind classes"
+  prop(class, :css_class)
+  @doc "Id attribute for DOM element"
+  prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
+  @doc "Inner content of the component"
+  slot(default)
 
   prop(attrs, :map)
-  prop(class, :css_class)
-  prop(id, :string)
-  prop(testid, :string)
-
-  slot(default)
 
   # opts={Map.merge(%{id: @id, "data-testid": @testid}, @attrs)}
 

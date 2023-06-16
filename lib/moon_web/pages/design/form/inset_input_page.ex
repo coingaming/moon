@@ -53,7 +53,8 @@ defmodule MoonWeb.Pages.Design.Form.InsetInputPage do
         InsetInputExample.Types
       ]} />
 
-      <PropsTable title="InsetInput props" module={Moon.Design.Form.Input} />
+      <PropsTable module={Moon.Design.Form.Input} />
+      <PropsTable module={Moon.Design.Form.InsetField} />
     </Page>
     """
   end

@@ -36,7 +36,7 @@ defmodule Moon.Design.Form.Input do
   prop(placeholder, :string, default: "")
   @doc "Additional classes for the <input> tag"
   prop(class, :css_class, from_context: :class)
-  @doc "Additional classes for the <input> tag in case of floating label"
+  @doc "Additional classes for the <input> tag in case of floating label or Group"
   prop(field_class, :css_class, from_context: :field_class)
   @doc "Value of the input, don't use it inside the forms"
   prop(value, :string)
@@ -67,7 +67,7 @@ defmodule Moon.Design.Form.Input do
   def render(assigns) do
     ~F"""
     <input
-      class={merge(input_classes(assigns) ++ [@field_class] ++ [@class])}
+      class={merge(input_classes(assigns) ++ [@field_class, @class])}
       {=@type}
       {=@placeholder}
       value={@value || input_value(@form, @field)}
