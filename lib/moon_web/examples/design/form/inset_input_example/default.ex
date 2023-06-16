@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
+defmodule MoonWeb.Examples.Design.Form.InsetInputExample.Default do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
 
   alias Moon.Design.Form
   alias Moon.Design.Form.Input
-  alias Moon.Design.Form.Field
+  alias Moon.Design.Form.InsetField
   alias MoonWeb.Schema.User
 
   prop(user_changeset, :any, default: User.changeset(%User{}))
@@ -18,15 +18,11 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-col lg:flex-row justify-around w-full gap-2">
-      {#for size <- ~w(sm md lg)}
-        <Form for={@user_changeset}>
-          <Field label={"Label for #{size}"} field={:email}>
-            <Input {=size} placeholder={"Placeholder for #{size}"} />
-          </Field>
-        </Form>
-      {/for}
-    </div>
+    <Form for={@user_changeset}>
+      <InsetField label="Label">
+        <Input placeholder="Placeholder" />
+      </InsetField>
+    </Form>
     """
   end
 
@@ -34,7 +30,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
     """
     alias Moon.Design.Form
     alias Moon.Design.Form.Input
-    alias Moon.Design.Form.Field
+    alias Moon.Design.Form.InsetField
     alias MoonWeb.Schema.User
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
@@ -45,15 +41,11 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithLabel do
 
     def render(assigns) do
       ~F\"""
-      <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
-        {#for size <- ~w(sm md lg)}
-          <Form for={@user_changeset}>
-            <Field label={"Label for \#{size}"} field={:email}>
-              <Input {=size} placeholder={"Placeholder for \#{size}"} />
-            </Field>
-          </Form>
-        {/for}
-      </div>
+      <Form for={@user_changeset}>
+        <InsetField label="Label">
+          <Input placeholder="Placeholder" />
+        </InsetField>
+      </Form>
       \"""
     end
     """

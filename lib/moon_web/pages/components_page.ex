@@ -133,10 +133,19 @@ defmodule MoonWeb.Pages.ComponentPage do
         >
           Moon DS provides a set of commonly used interface icons you can use in your project.
         </ComponentsPageCard>
+
         <ComponentsPageCard
           page={Pages.Design.Form.InputPage}
           image="facing/components/input.png"
           title="Input"
+        >
+          Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
+        </ComponentsPageCard>
+
+        <ComponentsPageCard
+          page={Pages.Design.Form.InsetInputPage}
+          image="facing/components/inset_input.png"
+          title="Insetnput"
         >
           Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
         </ComponentsPageCard>

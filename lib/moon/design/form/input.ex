@@ -13,7 +13,7 @@ defmodule Moon.Design.Form.Input do
   @doc "Common moon size property"
   prop(size, :string, values!: ["sm", "md", "lg"], default: "md")
 
-  @doc "Some additional styling will be set to indicate the field is invalid. Generally should be set by Form.Field component"
+  @doc "Some additional styling will be set to indicate the field is invalid. Generally should be set by Form.Field or Form.InsetField component"
   prop(error, :boolean, from_context: :error)
   @doc "HTML5 type of the input, please don't use checkbox or radio here"
   prop(type, :string,
@@ -36,16 +36,20 @@ defmodule Moon.Design.Form.Input do
   prop(placeholder, :string, default: "")
   @doc "Additional classes for the <input> tag"
   prop(class, :css_class, from_context: :class)
+  @doc "Additional classes for the <input> tag in case of floating label or Group"
+  prop(field_class, :css_class, from_context: :field_class)
   @doc "Value of the input, don't use it inside the forms"
   prop(value, :string)
   @doc "Id to be given to the input tag"
   prop(id, :string)
   @doc "Data-testid attribute value"
   prop(testid, :string)
-  @doc "HTML disabled attribute for the input & some additional classes"
-  prop(disabled, :boolean)
-  @doc "Readonly - some additional classes and behaviour"
-  prop(readonly, :boolean)
+
+  @doc "HTML disabled attribute for the input & some additional classes. Generally should be set by Form.Field or Form.InsetField component"
+  prop(disabled, :boolean, from_context: :disabled)
+
+  @doc "Readonly - some additional classes and behaviour. Generally should be set by Form.Field or Form.InsetField component"
+  prop(readonly, :boolean, from_context: :readonly)
   @doc "Autocomplete HTML attribute for the input, use \"off\" to disable"
   prop(autocomplete, :string)
   @doc "Keyword | Map of additional attributes for the input"
@@ -63,7 +67,7 @@ defmodule Moon.Design.Form.Input do
   def render(assigns) do
     ~F"""
     <input
-      class={merge(input_classes(assigns) ++ [@class])}
+      class={merge(input_classes(assigns) ++ [@field_class, @class])}
       {=@type}
       {=@placeholder}
       value={@value || input_value(@form, @field)}

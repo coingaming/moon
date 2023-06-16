@@ -78,6 +78,7 @@ defmodule MoonWeb.Router do
     live("/components/v2/form/dropdown", MoonWeb.Pages.Design.Form.DropdownPage)
     live("/components/v2/form/group", MoonWeb.Pages.Design.Form.GroupPage)
     live("/components/v2/form/input", MoonWeb.Pages.Design.Form.InputPage)
+    live("/components/v2/form/inset_input", MoonWeb.Pages.Design.Form.InsetInputPage)
     live("/components/v2/form/radio", MoonWeb.Pages.Design.Form.RadioPage)
     live("/components/v2/form/select", MoonWeb.Pages.Design.Form.SelectPage)
     live("/components/v2/form/textarea", MoonWeb.Pages.Design.Form.TextAreaPage)

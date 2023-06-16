@@ -1,13 +1,15 @@
-defmodule MoonWeb.Pages.Design.Form.InputPage do
+defmodule MoonWeb.Pages.Design.Form.InsetInputPage do
   @moduledoc false
 
+  require Logger
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Examples.Design.Form.InputExample
   alias MoonWeb.Components.ExamplesList
+  alias MoonWeb.Components.Page
   alias MoonWeb.Components.PropsTable
+
+  alias MoonWeb.Examples.Design.Form.InsetInputExample
 
   data(breadcrumbs, :any,
     default: [
@@ -20,8 +22,8 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
         name: "Form"
       },
       %{
-        to: "/components/v2/form/input",
-        name: "Input"
+        to: "/components/v2/form/inset_input",
+        name: "InsetInput"
       }
     ]
   )
@@ -30,10 +32,9 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        title="Input"
         is_in_progress
-        is_rtl_support
-        image="facing/components/input.png"
+        title="InsetInput"
+        image="facing/components/inset_input.png"
       >
         <p>
           Text input fields allow users to enter text and can be used
@@ -46,15 +47,14 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        InputExample.Default,
-        InputExample.States,
-        InputExample.Sizes,
-        InputExample.Types,
-        InputExample.WithLabel,
-        InputExample.WithHint
+        InsetInputExample.Default,
+        InsetInputExample.States,
+        InsetInputExample.CustomStyles,
+        InsetInputExample.Types
       ]} />
+
       <PropsTable module={Moon.Design.Form.Input} />
-      <PropsTable module={Moon.Design.Form.Field} />
+      <PropsTable module={Moon.Design.Form.InsetField} />
     </Page>
     """
   end

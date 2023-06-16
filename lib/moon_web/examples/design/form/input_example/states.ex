@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.States do
     ~F"""
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
       <Input disabled placeholder="Disabled input" />
-      <Input readonly placeholder="Read-only input" />
+      <Input readonly value="Read-only input" />
       <Input error placeholder="Invalid input" />
     </div>
     """
@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.States do
 
     <div class="flex flex-col lg:flex-row justify-around items-end w-full gap-2">
       <Input disabled placeholder="Disabled input" />
-      <Input readonly placeholder="Read-only input" />
+      <Input readonly value="Read-only input"/>
       <Input error placeholder="Invalid input" />
     </div>
     """
