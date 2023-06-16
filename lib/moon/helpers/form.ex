@@ -54,4 +54,11 @@ defmodule Moon.Helpers.Form do
   def select_value(%{form: form, field: field, options: options}) do
     options |> Enum.find(&(&1[:value] == form[field].value))
   end
+
+  def select_badge(%{is_multiple: true, form: form, field: field}) do
+    (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
+      nil
+  end
+
+  def select_badge(_), do: nil
 end

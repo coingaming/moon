@@ -71,6 +71,7 @@ defmodule Moon.Design.Form.Combobox do
             {=@error}
             {=@disabled}
             {=@on_keyup}
+            badge={select_badge(assigns)}
             value={select_value(assigns)[:key] || @filter}
           />
         </#slot>

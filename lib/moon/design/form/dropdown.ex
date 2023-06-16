@@ -98,11 +98,4 @@ defmodule Moon.Design.Form.Dropdown do
   end
 
   defp option_click(), do: Phoenix.LiveView.JS.dispatch("moon-empty-event")
-
-  defp select_badge(%{is_multiple: true, form: form, field: field}) do
-    (form[field].value && Enum.count(form[field].value) > 0 && Enum.count(form[field].value)) ||
-      nil
-  end
-
-  defp select_badge(_), do: nil
 end
