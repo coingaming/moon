@@ -1,3 +1,10 @@
+# [2.48.0](https://github.com/coingaming/moon/compare/v2.47.0...v2.48.0) (2023-06-16)
+
+
+### Features
+
+* [MDS-554] Inset Input v2 ([#664](https://github.com/coingaming/moon/issues/664)) ([aa4f1c1](https://github.com/coingaming/moon/commit/aa4f1c13583464b68f96e35d2b10152c0d108132))
+
 # [2.47.0](https://github.com/coingaming/moon/compare/v2.46.2...v2.47.0) (2023-06-16)
 
 
