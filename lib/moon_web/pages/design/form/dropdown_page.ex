@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Design.<%= name %>Page do
+defmodule MoonWeb.Pages.Design.Form.DropdownPage do
   @moduledoc false
 
   require Logger
@@ -10,7 +10,7 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.PropsTable
 
-  alias MoonWeb.Examples.Design.<%= name %>Example
+  alias MoonWeb.Examples.Design.Form.DropdownExample
 
   data(breadcrumbs, :any,
     default: [
@@ -19,8 +19,8 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
         name: "Components"
       },
       %{
-        to: "/components/v2/<%= path %>",
-        name: "<%= short %>"
+        to: "/components/v2/form/dropdown",
+        name: "Dropdown"
       }
     ]
   )
@@ -29,27 +29,36 @@ defmodule MoonWeb.Pages.Design.<%= name %>Page do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        is_in_progress
-        title="<%= short %>"
-        image="facing/components/<%= String.downcase(short) %>.png"
+        is_rtl_support
+        is_aria_support
+        title="Dropdown"
+        image="facing/components/dropdown.png"
       >
-        <p></p>
+        <p>A form component - list of options to be selected. Acts pretty close to select.</p>
       </ComponentPageDescription>
 
       <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
-        <%= short %>Example.Default,
+        DropdownExample.Default,
+        DropdownExample.States,
+        DropdownExample.Multiple,
+        DropdownExample.Custom
       ]} />
 
-      <PropsTable module={Moon.Design.<%= name %>} />
+      <PropsTable module={Moon.Design.Form.Dropdown} />
+      <PropsTable module={Moon.Design.Dropdown.Select} />
     </Page>
     """
   end
 
   defp component_anatomy do
     """
-
+    <Form>
+      <Form.Field>
+        <Form.Dropdown options={...} />
+      </Form.Field>
+    </Form>
     """
   end
 end

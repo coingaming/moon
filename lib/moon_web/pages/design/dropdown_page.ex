@@ -50,11 +50,10 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
       <Tabs id="anatomy-tabs" class="justify-between gap-6">
         <h2 class="text-moon-24 font-medium">Anatomy</h2>
-        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Form"]} class="w-auto" />
+        <Tabs.List tab_titles={["Long syntax", "Short syntax"]} class="w-auto" />
         <Tabs.Panels>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
-          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:form)}</Anatomy></Tabs.Panel>
         </Tabs.Panels>
       </Tabs>
 
@@ -63,23 +62,13 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.TriggerElements,
         DropdownExample.OptionLayouts,
         DropdownExample.Positions,
-        DropdownExample.Sizes,
-        DropdownExample.Select,
-        DropdownExample.SelectStates,
-        DropdownExample.Multiselect,
-        DropdownExample.CustomSelect,
-        DropdownExample.Combobox,
-        DropdownExample.ComboboxMultiple
+        DropdownExample.Sizes
       ]} />
 
       <PropsTable module={Moon.Design.Dropdown} />
       <PropsTable module={Moon.Design.Dropdown.Options} />
       <PropsTable module={Moon.Design.Dropdown.Trigger} />
       <PropsTable module={Moon.Design.Dropdown.Option} />
-      <PropsTable module={Moon.Design.Form.Dropdown} />
-      <PropsTable module={Moon.Design.Dropdown.Select} />
-      <PropsTable module={Moon.Design.Form.Combobox} />
-      <PropsTable module={Moon.Design.Dropdown.Input} />
     </Page>
     """
   end
@@ -103,16 +92,6 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       </Dropdown.Options>
       <Dropdown.Trigger>...</Dropdown.Trigger>
     </Dropdown>
-    """
-  end
-
-  def component_anatomy(:form) do
-    """
-    <Form>
-      <Form.Field>
-        <Dropdown options={...} />
-      </Form.Field>
-    </Form>
     """
   end
 end

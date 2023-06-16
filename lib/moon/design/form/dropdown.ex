@@ -64,11 +64,11 @@ defmodule Moon.Design.Form.Dropdown do
             {=is_open}
             {=@error}
             {=@disabled}
-            value={select_value(assigns)[:key]}
+            value={select_value(assigns) && select_value(assigns)[:key]}
             badge={select_badge(assigns)}
           >
             <#slot {@option, option: select_value(assigns)}>
-              {select_value(assigns)[:key] || @prompt}
+              {(select_value(assigns) && select_value(assigns)[:key]) || @prompt}
             </#slot>
           </Dropdown.Select>
         </#slot>

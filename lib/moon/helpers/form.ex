@@ -47,7 +47,8 @@ defmodule Moon.Helpers.Form do
     ]
   end
 
-  def dropdown_id(%{form: form, field: field, id: id}), do: "#{id || form[field].id}-dropdown"
+  def dropdown_id(%{id: id}) when not is_nil(id), do: "#{id}-dropdown"
+  def dropdown_id(%{form: form, field: field}), do: "#{form[field].id}-dropdown"
 
   def select_value(%{is_multiple: true}), do: nil
 
