@@ -1,5 +1,5 @@
 defmodule Moon.Design.Dropdown.Input do
-  @moduledoc "Element that triggers Dropdown component, renders as a button"
+  @moduledoc "Element that triggers Dropdown component, renders as a HTML input inside div with some addons"
 
   use Moon.StatelessComponent, slot: "trigger"
 
