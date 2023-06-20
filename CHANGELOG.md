@@ -1,3 +1,10 @@
+## [2.48.1](https://github.com/coingaming/moon/compare/v2.48.0...v2.48.1) (2023-06-20)
+
+
+### Bug Fixes
+
+* Datepicker example for dropdown component & some more corrections ([2b79af1](https://github.com/coingaming/moon/commit/2b79af191e2c1e03cd9783056f4e1220af197db4))
+
 # [2.48.0](https://github.com/coingaming/moon/compare/v2.47.0...v2.48.0) (2023-06-16)
 
 
