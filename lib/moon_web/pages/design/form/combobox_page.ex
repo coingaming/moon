@@ -29,6 +29,7 @@ defmodule MoonWeb.Pages.Design.Form.ComboboxPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
+        is_in_progress
         is_rtl_support
         is_aria_support
         title="Combobox"
