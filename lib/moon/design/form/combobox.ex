@@ -9,6 +9,7 @@ defmodule Moon.Design.Form.Combobox do
   alias Moon.Design.Form.Radio
 
   import Moon.Helpers.Form
+  import Enum, only: [map: 2, filter: 2, member?: 2]
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Form.Field, :field})
@@ -59,6 +60,15 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
+  defp hidden_selected_values(%{is_multiple: true, form: form, field: field, options: options}) do
+    option_values = options |> map(& &1[:value])
+    (form[field].value || []) |> filter(&(!member?(option_values, &1)))
+  end
+
+  defp hidden_selected_values(%{form: form, field: field, options: options}) do
+    (form[field].value in map(options, & &1[:value]) && nil) || form[field].value
+  end
+
   def render(assigns) do
     ~F"""
     <Dropdown id={dropdown_id(assigns)} {=@is_open} hook="Combobox">
@@ -78,6 +88,21 @@ defmodule Moon.Design.Form.Combobox do
       </:trigger>
       <#slot {@default}>
         <Dropdown.Options>
+          {#if @is_multiple}
+            <Surface.Components.Form.HiddenInput
+              :for={value <- hidden_selected_values(assigns)}
+              name={"#{@form[@field].name}[]"}
+              {=value}
+              class="hidden"
+            />
+          {#else}
+            <Surface.Components.Form.HiddenInput
+              :if={hidden_selected_values(assigns)}
+              name={"#{@form[@field].name}"}
+              value={hidden_selected_values(assigns)}
+              class="hidden"
+            />
+          {/if}
           <Dropdown.Option :for={option <- @options} {=@size}>
             <Checkbox
               checked_value={option[:value]}
