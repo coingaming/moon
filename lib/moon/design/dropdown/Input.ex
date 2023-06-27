@@ -3,8 +3,6 @@ defmodule Moon.Design.Dropdown.Input do
 
   use Moon.StatelessComponent, slot: "trigger"
 
-  import Moon.Helpers.Form
-
   @doc "Data-testid attribute for html tag"
   prop(testid, :string)
   @doc "Id attribute for html tag"

@@ -4,7 +4,6 @@ defmodule MoonWeb.Pages.Design.SearchPage do
   require Logger
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Components.Page
