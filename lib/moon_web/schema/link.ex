@@ -1,5 +1,5 @@
 defmodule MoonWeb.Schema.Link do
-  @doc "Some menu links listing to be used inside the site"
+  @moduledoc "Some menu links listing to be used inside the site"
 
   # TODO: add all pages here - Old Components and other accordions (except Form)
   def pages() do
