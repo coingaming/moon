@@ -129,6 +129,7 @@ defmodule MoonWeb.Components.LeftMenu do
                 </Accordion.Item>
               </Accordion>
 
+              <SidebarLink route={Pages.Design.SearchPage}>Search</SidebarLink>
               <SidebarLink route={Pages.Design.SnackbarPage}>Snackbar</SidebarLink>
               <SidebarLink route={Pages.Design.SwitchPage}>Switch</SidebarLink>
               <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>

@@ -47,6 +47,10 @@ defmodule Moon.Helpers.Form do
     ]
   end
 
+  def input_classes_light(_assigns) do
+    "w-full rounded-moon-s-sm border border-beerus py-2 px-3 focus:outline-none focus:ring-0"
+  end
+
   def dropdown_id(%{id: id}) when not is_nil(id), do: "#{id}-dropdown"
   def dropdown_id(%{form: form, field: field}), do: "#{form[field].id}-dropdown"
 
@@ -62,4 +66,13 @@ defmodule Moon.Helpers.Form do
   end
 
   def select_badge(_), do: nil
+
+  @doc """
+  Default filtering function - just filter option[:key] to start with filter regardless case
+  Use own function if you need other filtering mechanisms or additional DB requests
+  """
+  def filter_options(options, filter) do
+    import String, only: [starts_with?: 2, downcase: 1]
+    Enum.filter(options, &starts_with?(downcase(&1[:key]), downcase(filter)))
+  end
 end

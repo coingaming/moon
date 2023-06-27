@@ -7,6 +7,8 @@ defmodule Moon.Design.Form.Combobox do
   alias Moon.Design.Dropdown
   alias Moon.Design.Form.Checkbox
   alias Moon.Design.Form.Radio
+  alias Moon.Icon
+  alias Moon.Design.Dropdown.Badge
 
   import Moon.Helpers.Form
   import Enum, only: [map: 2, filter: 2, member?: 2]
@@ -71,9 +73,9 @@ defmodule Moon.Design.Form.Combobox do
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={dropdown_id(assigns)} {=@is_open} hook="Combobox">
-      <:trigger :let={is_open: is_open}>
-        <#slot {@trigger, is_open: is_open} context_put={on_keyup: @on_keyup}>
+    <Dropdown id={dropdown_id(assigns)} {=@is_open} hook="Combobox" {=@testid} {=@class}>
+      <:trigger :let={is_open: is_open, on_trigger: on_trigger}>
+        <#slot {@trigger, is_open: is_open, on_trigger: on_trigger} context_put={on_keyup: @on_keyup}>
           <Dropdown.Input
             placeholder={@prompt}
             {=@size}
@@ -81,9 +83,25 @@ defmodule Moon.Design.Form.Combobox do
             {=@error}
             {=@disabled}
             {=@on_keyup}
-            badge={select_badge(assigns)}
             value={(select_value(assigns) && select_value(assigns)[:key]) || @filter}
-          />
+            class={input_classes(assigns) ++ ["ps-[3rem]": select_badge(assigns)]}
+          >
+            <Icon
+              name="controls_chevron_down"
+              class={
+                "transition-200 transition-transform cursor-pointer text-trunks text-moon-16",
+                "absolute ltr:right-4 rtl:left-4 top-1/2 -translate-y-1/2 z-[3]",
+                "rotate-180": is_open
+              }
+              click={on_trigger}
+            />
+            <Badge
+              :if={select_badge(assigns)}
+              {=@size}
+              count={select_badge(assigns)}
+              class="absolute rtl:right-3 ltr:left-3 top-1/2 -translate-y-1/2 z-[3]"
+            />
+          </Dropdown.Input>
         </#slot>
       </:trigger>
       <#slot {@default}>
@@ -115,22 +133,15 @@ defmodule Moon.Design.Form.Combobox do
               <#slot {@option, option: option}>{option[:key]}</#slot>
             </Checkbox>
             <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
-              <Radio.Indicator class="hidden" />
-              <#slot {@option, option: option}>{option[:key]}</#slot>
+              <#slot {@option, option: option}>
+                <Radio.Indicator class="hidden" />
+                {option[:key]}
+              </#slot>
             </Radio.Button>
           </Dropdown.Option>
         </Dropdown.Options>
       </#slot>
     </Dropdown>
     """
-  end
-
-  @doc """
-  Default filtering function - just filter option[:key] to start with filter regardless case
-  Use own function if you need other filtering mechanisms or additional DB requests
-  """
-  def filter_options(options, filter) do
-    import String
-    Enum.filter(options, &starts_with?(downcase(&1[:key]), downcase(filter)))
   end
 end
