@@ -1,3 +1,10 @@
+## [2.49.2](https://github.com/coingaming/moon/compare/v2.49.1...v2.49.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* rtl support for search ([f056dac](https://github.com/coingaming/moon/commit/f056dacf2275279e9fe99ac2b78a08aa4aac57e1))
+
 ## [2.49.1](https://github.com/coingaming/moon/compare/v2.49.0...v2.49.1) (2023-06-28)
 
 
