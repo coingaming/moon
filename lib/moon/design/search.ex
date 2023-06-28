@@ -4,7 +4,7 @@ defmodule Moon.Design.Search do
   use Moon.StatelessComponent
 
   alias Moon.Design.Dropdown
-  alias Moon.Icon
+  alias __MODULE__
 
   import Moon.Helpers.Form, only: [input_classes_light: 1]
 
@@ -29,7 +29,7 @@ defmodule Moon.Design.Search do
   @doc "Filtering value for the options, appears in input"
   prop(filter, :string)
 
-  @doc "On key up event for the input - use it for filter options outside the form"
+  @doc "On key up event for the input - use it for filter options"
   prop(on_keyup, :event)
   @doc "Event that fires when smth is chosen from the dropdown menu"
   prop(on_change, :event)
@@ -61,21 +61,8 @@ defmodule Moon.Design.Search do
                 "rounded-bl-none rounded-br-none": is_open
               }
             >
-              <Icon
-                name="generic_search"
-                class={
-                  "w-6 h-6",
-                  "transition-200 transition-transform cursor-pointer text-trunks text-moon-16",
-                  "absolute ltr:left-3 rtl:right-3 top-1/2 -translate-y-1/2 z-[3]"
-                }
-              />
-              <button
-                class="cursor-pointer text-trunks text-moon-14 transition absolute right-4 top-1/2 transform -translate-y-1/2 z-[3]"
-                value=""
-                :on-click={@on_keyup}
-              >
-                Clear
-              </button>
+              <Search.Icon />
+              <Search.Button on_click={@on_keyup} />
             </Dropdown.Input>
           </#slot>
         </:trigger>
