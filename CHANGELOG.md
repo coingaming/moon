@@ -1,3 +1,15 @@
+# [2.49.0](https://github.com/coingaming/moon/compare/v2.48.1...v2.49.0) (2023-06-28)
+
+
+### Bug Fixes
+
+* editable table ([#669](https://github.com/coingaming/moon/issues/669)) ([303acee](https://github.com/coingaming/moon/commit/303acee5a4bc3e05de1d446739ae2ef464e200e2))
+
+
+### Features
+
+* Search component ([#668](https://github.com/coingaming/moon/issues/668)) ([605450b](https://github.com/coingaming/moon/commit/605450b9e6fb9fa41ab7340e4a065c395819ab63))
+
 ## [2.48.1](https://github.com/coingaming/moon/compare/v2.48.0...v2.48.1) (2023-06-20)
 
 
