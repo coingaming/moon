@@ -20,7 +20,7 @@ defmodule Moon.Design.Search.Button do
     ~F"""
     <button
       class={merge([
-        "cursor-pointer text-trunks text-moon-14 transition absolute right-4 top-1/2 transform -translate-y-1/2 z-[3]",
+        "cursor-pointer text-trunks text-moon-14 transition absolute ltr:right-4 rtl:left-4 top-1/2 transform -translate-y-1/2 z-[3]",
         @class
       ])}
       {=@value}
