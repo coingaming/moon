@@ -243,6 +243,8 @@ module.exports = {
           "0 0 0 var(--border-i-width) rgb(var(--chichi)) inset",
         "input-focus":
           "0 0 0 var(--border-i-width) rgb(var(--piccolo)) inset",
+        'input-cell-focus': 
+          '0 0 0 var(--border-width) rgb(var(--bulma)) inset',
         "moon-sm":
           "0 6px 6px -6px rgba(0, 0, 0, 0.16), 0 0 1px rgba(0, 0, 0, 0.4)",
         "moon-md":
