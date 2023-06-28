@@ -8,6 +8,8 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
 
   alias MoonWeb.Schema.User
 
+  import Moon.Helpers.Form, only: [filter_options: 2]
+
   prop(titles, :list,
     default:
       [
@@ -49,12 +51,13 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
           class="w-full"
           for={@changeset}
           change="changed"
+          submit="changed"
         >
           <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here">
             <Form.Combobox
               {=size}
               filter={@filter}
-              options={Form.Combobox.filter_options(@titles, @filter)}
+              options={filter_options(@titles, @filter)}
               on_keyup="change_filter"
             />
           </Form.Field>
@@ -69,6 +72,8 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
     alias Moon.Design.Form
 
     alias MoonWeb.Schema.User
+
+    import Moon.Helpers.Form, only: [filter_options: 2]
 
     prop(titles, :list,
       default:
@@ -116,7 +121,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
               <Form.Combobox
                 {=size}
                 filter={@filter}
-                options={Form.Combobox.filter_options(@titles, @filter)}
+                options={filter_options(@titles, @filter)}
                 on_keyup="change_filter"
               />
             </Form.Field>

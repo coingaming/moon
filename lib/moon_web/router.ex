@@ -89,6 +89,7 @@ defmodule MoonWeb.Router do
     live("/components/v2/pagination", MoonWeb.Pages.Design.PaginationPage)
     live("/components/v2/popover", MoonWeb.Pages.Design.PopoverPage)
     live("/components/v2/progress", MoonWeb.Pages.Design.Progress.LinearProgressPage)
+    live("/components/v2/search", MoonWeb.Pages.Design.SearchPage)
     live("/components/v2/snackbar", MoonWeb.Pages.Design.SnackbarPage)
     live("/components/v2/switch", MoonWeb.Pages.Design.SwitchPage)
     live("/components/v2/table", MoonWeb.Pages.Design.TablePage)

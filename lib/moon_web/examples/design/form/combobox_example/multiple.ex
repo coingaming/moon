@@ -8,6 +8,8 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
   alias MoonWeb.Schema.User
   alias Moon.Design.Form
 
+  import Moon.Helpers.Form, only: [filter_options: 2]
+
   prop(permissions, :list, default: User.available_permissions())
 
   prop(changeset_sm, :any, default: User.changeset(%User{gender: nil}))
@@ -52,6 +54,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
         class="w-full"
         for={assigns[:"changeset_#{size}"]}
         change={"change_#{size}"}
+        submit={"change_#{size}"}
       >
         <Form.Field field={:permissions} label={"Size #{size}"} hint="Some hint here">
           <Form.Combobox
@@ -59,7 +62,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
             is_multiple
             on_keyup={"change_filter_#{size}"}
             filter={assigns[:"filter_#{size}"]}
-            options={Form.Combobox.filter_options(@permissions, assigns[:"filter_#{size}"])}
+            options={filter_options(@permissions, assigns[:"filter_#{size}"])}
             prompt="Select permissions"
             is_open={assigns[:"target_#{size}"] === ["user", "permissions"]}
           />
@@ -73,6 +76,8 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
     """
     alias MoonWeb.Schema.User
     alias Moon.Design.Form
+
+    import Moon.Helpers.Form, only: [filter_options: 2]
 
     prop(permissions, :list, default: User.available_permissions())
 
@@ -125,7 +130,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
               is_multiple
               on_keyup={"change_filter_\#{size}"}
               filter={assigns[:"filter_\#{size}"]}
-              options={Form.Combobox.filter_options(@permissions, assigns[:"filter_\#{size}"])}
+              options={filter_options(@permissions, assigns[:"filter_\#{size}"])}
               prompt="Select permissions"
               is_open={assigns[:"target_\#{size}"] === ["user", "permissions"]}
             />

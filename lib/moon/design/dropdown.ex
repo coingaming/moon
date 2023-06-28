@@ -48,7 +48,12 @@ defmodule Moon.Design.Dropdown do
       phx-hook={@hook}
     >
       <#slot
-        {@trigger, value: @value, is_open: @is_open}
+        {
+          @trigger,
+          value: @value,
+          is_open: @is_open,
+          on_trigger: @on_trigger || %{name: "on_trigger_default", target: @myself}
+        }
         context_put={
           is_open: @is_open,
           on_trigger: @on_trigger || %{name: "on_trigger_default", target: @myself},

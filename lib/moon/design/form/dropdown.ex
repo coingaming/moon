@@ -28,7 +28,7 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Additional classes for the <select> tag"
   prop(class, :css_class, from_context: :class)
   @doc "Some prompt to be shown on empty value"
-  prop(prompt, :string, default: "...")
+  prop(prompt, :string)
 
   @doc "Id to be given to the select tag"
   prop(id, :string)
@@ -55,7 +55,7 @@ defmodule Moon.Design.Form.Dropdown do
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={dropdown_id(assigns)} {=@is_open}>
+    <Dropdown id={dropdown_id(assigns)} {=@is_open} {=@class} {=@testid}>
       <:trigger :let={is_open: is_open}>
         <#slot {@trigger, is_open: is_open}>
           <Dropdown.Select
