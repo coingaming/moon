@@ -1,3 +1,10 @@
+## [2.49.1](https://github.com/coingaming/moon/compare/v2.49.0...v2.49.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* some search refactoring ([#670](https://github.com/coingaming/moon/issues/670)) ([acdee89](https://github.com/coingaming/moon/commit/acdee89115f6d7373f4de0e8178d675513bd6afc))
+
 # [2.49.0](https://github.com/coingaming/moon/compare/v2.48.1...v2.49.0) (2023-06-28)
 
 
