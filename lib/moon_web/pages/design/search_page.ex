@@ -37,6 +37,8 @@ defmodule MoonWeb.Pages.Design.SearchPage do
       ]} />
 
       <PropsTable module={Moon.Design.Search} />
+      <PropsTable module={Moon.Design.Search.Icon} />
+      <PropsTable module={Moon.Design.Search.Button} />
     </Page>
     """
   end

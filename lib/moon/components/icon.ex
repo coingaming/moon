@@ -5,6 +5,7 @@ defmodule Moon.Icon do
   alias MoonIcons.Helpers.Icons
 
   prop(click, :event)
+  @doc "Additional classes for the <select> tag"
   prop(class, :css_class)
 
   # All the other props below are deprecated!
@@ -13,10 +14,16 @@ defmodule Moon.Icon do
   prop(color, :string, values: Moon.colors())
   prop(background_color, :string, values: Moon.colors())
   prop(font_size, :string)
+  @doc "Id HTML attribute"
+  prop(id, :string)
+  @doc "Data-testid attribute value"
+  prop(testid, :string)
 
   def render(assigns) do
     ~F"""
     <svg
+      {=@id}
+      data-testid={@testid}
       class={merge([
         "moon-icon fill-none",
         [
