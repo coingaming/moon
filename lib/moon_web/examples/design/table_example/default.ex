@@ -1,14 +1,14 @@
 defmodule MoonWeb.Examples.Design.TableExample.Default do
   @moduledoc false
 
-  use Moon.StatefulComponent
+  use Moon.StatelessComponent
   use MoonWeb, :example
 
   alias Moon.Design.Table
   alias Moon.Design.Table.Column
   alias Moon.Components.Renderers.Datetime
 
-  data(models, :list,
+  prop(models, :list,
     default:
       Enum.map(1..5, fn x ->
         %{

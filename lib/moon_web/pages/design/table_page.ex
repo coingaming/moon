@@ -46,11 +46,13 @@ defmodule MoonWeb.Pages.Design.TablePage do
         TableExample.Checkboxes,
         TableExample.Sorting,
         TableExample.WithPaging,
+        TableExample.Editable,
         TableExample.Responsive
       ]} />
 
       <PropsTable title="Table props" module={Table} />
       <PropsTable title="Table.Column props" module={Table.Column} />
+      <PropsTable module={Table.Input} />
     </Page>
     """
   end

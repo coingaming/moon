@@ -92,8 +92,7 @@ defmodule Moon.Design.Table do
                   "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
                   "cursor-pointer": col.sortable && @sorting_click
                 ],
-                col.width,
-                col.class
+                col.width
               ])}
               :on-click={(col.sortable && col.name && @sorting_click) || nil}
               :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])}
