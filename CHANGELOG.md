@@ -1,3 +1,10 @@
+## [2.49.3](https://github.com/coingaming/moon/compare/v2.49.2...v2.49.3) (2023-07-03)
+
+
+### Bug Fixes
+
+* Add testid to Dropdown.Trigger ([#671](https://github.com/coingaming/moon/issues/671)) ([be183fb](https://github.com/coingaming/moon/commit/be183fb8e86c99abacb244ef477af9a0e4d1e128))
+
 ## [2.49.2](https://github.com/coingaming/moon/compare/v2.49.1...v2.49.2) (2023-06-28)
 
 
