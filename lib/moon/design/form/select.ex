@@ -52,9 +52,9 @@ defmodule Moon.Design.Form.Select do
         "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
         [
           "py-0 px-4": !@is_multiple,
-          "leading-8 rounded-moon-i-xs": @size == "sm",
-          "leading-10 rounded-moon-i-sm": @size == "md",
-          "leading-[3rem] rounded-moon-i-sm": @size == "lg",
+          "h-8 leading-8 rounded-moon-i-xs": @size == "sm",
+          "h-10 leading-10 rounded-moon-i-sm": @size == "md",
+          "h-12 leading-[3rem] rounded-moon-i-sm": @size == "lg",
           "cursor-not-allowed opacity-30": @disabled
         ],
         @class
