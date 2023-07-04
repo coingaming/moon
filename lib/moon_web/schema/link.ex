@@ -1,7 +1,7 @@
 defmodule MoonWeb.Schema.Link do
   @moduledoc "Some menu links listing to be used inside the site"
 
-  # TODO: add all pages here - Old Components and other accordions (except Form)
+  # TODO: add Old Components pages if needed. Add Homepage.
   def pages() do
     [
       [MoonWeb.Pages.VisionPage, icon: "generic_loyalty"],
@@ -14,9 +14,11 @@ defmodule MoonWeb.Schema.Link do
       [MoonWeb.Pages.ManifestPage, icon: "generic_trophy"],
       MoonWeb.Pages.Design.AccordionPage,
       MoonWeb.Pages.Design.AlertPage,
-      MoonWeb.Pages.Design.BottomSheetPage,
       MoonWeb.Pages.Design.AvatarPage,
+      MoonWeb.Pages.Design.BottomSheetPage,
       MoonWeb.Pages.Design.BreadcrumbPage,
+      MoonWeb.Pages.Design.ButtonPage,
+      MoonWeb.Pages.Design.Button.IconButtonPage,
       MoonWeb.Pages.Design.CarouselPage,
       MoonWeb.Pages.Design.ChipPage,
       MoonWeb.Pages.Design.DrawerPage,
@@ -27,6 +29,8 @@ defmodule MoonWeb.Schema.Link do
       MoonWeb.Pages.Design.ModalPage,
       MoonWeb.Pages.Design.PaginationPage,
       MoonWeb.Pages.Design.PopoverPage,
+      MoonWeb.Pages.Design.Progress.LinearProgressPage,
+      MoonWeb.Pages.Design.Progress.CircularProgressPage,
       MoonWeb.Pages.Design.SearchPage,
       MoonWeb.Pages.Design.SnackbarPage,
       MoonWeb.Pages.Design.SwitchPage,

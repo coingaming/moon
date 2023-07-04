@@ -43,7 +43,7 @@ defmodule MoonWeb.Components.LeftMenu do
             </a>
           </div>
           <div>
-            <SearchButton id="moonweb-search"/>
+            <SearchButton id="moonweb-search" />
           </div>
           <div class="flex flex-col gap-1">
             <SidebarLink route={Pages.VisionPage}><GenericLoyalty class="text-moon-24" />Vision</SidebarLink>
@@ -62,8 +62,8 @@ defmodule MoonWeb.Components.LeftMenu do
             <div class="flex flex-col gap-1">
               <SidebarLink route={Pages.Design.AccordionPage}>Accordion</SidebarLink>
               <SidebarLink route={Pages.Design.AlertPage}>Alert</SidebarLink>
-              <SidebarLink route={Pages.Design.BottomSheetPage}>BottomSheet</SidebarLink>
               <SidebarLink route={Pages.Design.AvatarPage}>Avatar</SidebarLink>
+              <SidebarLink route={Pages.Design.BottomSheetPage}>BottomSheet</SidebarLink>
               <SidebarLink route={Pages.Design.BreadcrumbPage}>Breadcrumb</SidebarLink>
 
               <Accordion

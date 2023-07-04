@@ -21,8 +21,13 @@ defmodule MoonWeb.Components.SearchButton do
       {=@filter}
       on_keyup="change_filter"
       options={filter_options(@options, @filter)}
+      prompt="Search..."
     >
-    <Search.Button title="hello"/>
+      <:option :let={option: option}>
+        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
+          {option[:key]}
+        </a>
+      </:option>
     </Search>
     """
   end
