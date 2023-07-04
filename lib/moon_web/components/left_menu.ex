@@ -18,6 +18,7 @@ defmodule MoonWeb.Components.LeftMenu do
   alias Moon.Design.Accordion
   alias MoonWeb.Pages
   alias MoonWeb.Components.SidebarLink
+  alias MoonWeb.Components.SearchButton
 
   alias Moon.Design.Drawer
 
@@ -40,6 +41,9 @@ defmodule MoonWeb.Components.LeftMenu do
             >
               <LargeLogo class="h-6 w-[6.5rem]" />
             </a>
+          </div>
+          <div>
+            <SearchButton id="moonweb-search"/>
           </div>
           <div class="flex flex-col gap-1">
             <SidebarLink route={Pages.VisionPage}><GenericLoyalty class="text-moon-24" />Vision</SidebarLink>
