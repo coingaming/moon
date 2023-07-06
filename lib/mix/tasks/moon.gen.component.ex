@@ -55,7 +55,7 @@ defmodule Mix.Tasks.Moon.Gen.Component do
     context
   end
 
-  def print_shell_instructions(%{path: path, name: name, short: short}) do
+  def print_shell_instructions(%{path: path, name: name}) do
     Mix.shell().info("""
 
     Add the resource to your lib/moon_web/router.ex
@@ -63,10 +63,9 @@ defmodule Mix.Tasks.Moon.Gen.Component do
       live("/components/v2/#{path}", MoonWeb.Pages.Design.#{name}Page)
 
 
-    And folowing to your lib/moon_web/components/left_menu.ex
+    And following to your lib/moon_web/schema/link.ex
 
-      <SidebarLink route={Pages.Design.#{name}Page}>#{short}</SidebarLink>
-
+      MoonWeb.Pages.Design.#{name}Page
 
     """)
   end

@@ -17,7 +17,7 @@ defmodule MoonWeb.Schema.Link do
       MoonWeb.Pages.Design.AvatarPage,
       MoonWeb.Pages.Design.BottomSheetPage,
       MoonWeb.Pages.Design.BreadcrumbPage,
-      MoonWeb.Pages.Design.ButtonPage,
+      MoonWeb.Pages.Design.Button.ButtonPage,
       MoonWeb.Pages.Design.Button.IconButtonPage,
       MoonWeb.Pages.Design.CarouselPage,
       MoonWeb.Pages.Design.ChipPage,
@@ -58,6 +58,35 @@ defmodule MoonWeb.Schema.Link do
       page -> [page: page, key: page_to_title(page)]
     end)
   end
+
+  def menu() do
+    pages()
+    |> Enum.map(fn
+      [page | rest] ->
+        [{:page, page}, {:key, page_to_title(page)}, {:group, get_group(page)} | rest]
+
+      page ->
+        [page: page, key: page_to_title(page), group: get_group(page)]
+    end)
+
+    # |> Enum.group_by()
+  end
+
+  # TODO: Doesnt yet filter out the pages with subpages
+  defp get_group(page) do
+    page
+    |> to_string()
+    |> String.split(".")
+    |> Enum.at(4)
+  end
+
+  # defp get_group(page) do
+  #   page
+  #   |> to_string()
+  #   |> String.replace(~r/[a-zA-Z0-9]/, "")
+  #   |> String.length()
+
+  # end
 
   defp page_to_title(page) do
     page
