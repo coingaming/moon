@@ -38,31 +38,36 @@ defmodule MoonWeb.Components.LeftMenu do
             <SearchButton id="moonweb-search" />
           </div>
           <div class="flex flex-col gap-1">
-            <SidebarLink :for={menu_item <- @menu_items, menu_item[:icon] != nil} route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</SidebarLink>
+            {#for menu_item <- @menu_items, menu_item[:icon] != nil}
+              <SidebarLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</SidebarLink>
+            {/for}
           </div>
           <div class="flex flex-col gap-2">
             <p class="ps-2 text-moon-10-caption font-medium uppercase text-trunks">
               Components
             </p>
             <div class="flex flex-col gap-1">
-              <SidebarLink :for={menu_item <- @menu_items, menu_item[:icon] == nil} route={menu_item[:page]}>{menu_item[:key]}</SidebarLink>
-
-              <Accordion
-                :for={menu_item <- @menu_items}
-                id={"left-menu-components-#{menu_item[:page]}"}
-                value={(active_page_contains(@active_page, menu_item[:page]) && "0") || []}
-              >
-                <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">
-                    {menu_item[:group]}
-                  </Accordion.Header>
-                  <Accordion.Content>
-                    <div class="flex-grow flex flex-col gap-2 pl-8">
-                      <SidebarLink :for={menu_item <- @menu_items, menu_item[:icon] == nil} route={menu_item[:page]}>{menu_item[:key]}</SidebarLink>
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion>
+              {#for menu_item <- @menu_items, menu_item[:icon] == nil}
+                {#if menu_item[:children]}
+                  <Accordion
+                    id={"left-menu-design-#{menu_item[:key]}"}
+                    value={(active_page_contains(@active_page, menu_item[:key]) && "0") || []}
+                  >
+                    <Accordion.Item has_content_outside>
+                      <Accordion.Header icon_class="text-moon-24">{menu_item[:key]}</Accordion.Header>
+                      <Accordion.Content>
+                        <div class="flex-grow flex flex-col gap-2 pl-8">
+                          {#for child_menu_item <- menu_item[:children]}
+                            <SidebarLink route={child_menu_item[:page]}>{child_menu_item[:key]}</SidebarLink>
+                          {/for}
+                        </div>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                  </Accordion>
+                {#else}
+                  <SidebarLink route={menu_item[:page]}>{menu_item[:key]}</SidebarLink>
+                {/if}
+              {/for}
 
               <Accordion
                 id="left-menu-components"

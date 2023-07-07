@@ -68,13 +68,14 @@ defmodule MoonWeb.Schema.Link do
         group = get_group(item[:page])
         acc |> Map.put(group, (acc[group] || []) ++ [item])
     end)
-    |> Enum.map(fn({key, value}) ->
+    |> Enum.map(fn {key, value} ->
       if length(value) == 1 do
         List.first(value)
       else
         [key: group_to_title(key), children: value]
       end
     end)
+    |> Enum.sort_by(& &1[:key])
   end
 
   defp get_group(page) do
