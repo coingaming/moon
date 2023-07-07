@@ -51,6 +51,7 @@ defmodule MoonWeb.Schema.Link do
     ]
   end
 
+  @doc "returns flat list of pages - for search purposes"
   def titles() do
     pages()
     |> Enum.map(fn
@@ -59,39 +60,42 @@ defmodule MoonWeb.Schema.Link do
     end)
   end
 
+  @doc "returns structured list of pages - for menu"
   def menu() do
-    pages()
-    |> Enum.map(fn
-      [page | rest] ->
-        [{:page, page}, {:key, page_to_title(page)}, {:group, get_group(page)} | rest]
-
-      page ->
-        [page: page, key: page_to_title(page), group: get_group(page)]
+    titles()
+    |> Enum.reduce(%{}, fn
+      item, acc ->
+        group = get_group(item[:page])
+        acc |> Map.put(group, (acc[group] || []) ++ [item])
     end)
-
-    # |> Enum.group_by()
+    |> Enum.map(fn({key, value}) ->
+      if length(value) == 1 do
+        List.first(value)
+      else
+        [key: group_to_title(key), children: value]
+      end
+    end)
   end
 
-  # TODO: Doesnt yet filter out the pages with subpages
   defp get_group(page) do
     page
     |> to_string()
     |> String.split(".")
-    |> Enum.at(4)
+    |> Enum.slice(0..4)
+    |> Enum.join(".")
   end
-
-  # defp get_group(page) do
-  #   page
-  #   |> to_string()
-  #   |> String.replace(~r/[a-zA-Z0-9]/, "")
-  #   |> String.length()
-
-  # end
 
   defp page_to_title(page) do
     page
     |> to_string()
     |> String.replace(~r/.*\.([a-zA-Z]*)Page/, "\\1")
     |> String.replace(~r/([a-z])([A-Z])/, "\\1 \\2")
+  end
+
+  defp group_to_title(group) do
+    group
+    |> to_string()
+    |> String.split(".")
+    |> List.last()
   end
 end
