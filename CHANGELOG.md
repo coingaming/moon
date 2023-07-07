@@ -1,3 +1,10 @@
+## [2.49.5](https://github.com/coingaming/moon/compare/v2.49.4...v2.49.5) (2023-07-07)
+
+
+### Bug Fixes
+
+* [MDS-571] Implement search on site ([#675](https://github.com/coingaming/moon/issues/675)) ([5330693](https://github.com/coingaming/moon/commit/533069332b145a50f4df12d6f7410217fa05702e))
+
 ## [2.49.4](https://github.com/coingaming/moon/compare/v2.49.3...v2.49.4) (2023-07-07)
 
 
