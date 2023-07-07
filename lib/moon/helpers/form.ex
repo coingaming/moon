@@ -43,7 +43,7 @@ defmodule Moon.Helpers.Form do
       "h-8 leading-8 rounded-moon-i-xs": size == "sm",
       "h-10 leading-10 rounded-moon-i-sm": size == "md",
       "h-12 leading-[3rem] rounded-moon-i-sm": size == "lg",
-      "opacity-30": disabled
+      "opacity-60": disabled
     ]
   end
 

@@ -55,7 +55,7 @@ defmodule Moon.Design.Form.Select do
           "h-8 leading-8 rounded-moon-i-xs": @size == "sm",
           "h-10 leading-10 rounded-moon-i-sm": @size == "md",
           "h-12 leading-[3rem] rounded-moon-i-sm": @size == "lg",
-          "cursor-not-allowed opacity-30": @disabled
+          "cursor-not-allowed opacity-60": @disabled
         ],
         @class
       ])}

@@ -40,7 +40,7 @@ defmodule Moon.Design.Form.InsetField do
     <Surface.Components.Form.Field
       name={@field}
       class={merge([
-        ["relative rounded-moon-i-sm bg-gohan", "opacity-30 cursor-not-allowed": @disabled],
+        ["relative rounded-moon-i-sm bg-gohan", "opacity-60 cursor-not-allowed": @disabled],
         @class
       ])}
     >

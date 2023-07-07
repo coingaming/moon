@@ -37,7 +37,7 @@ defmodule Moon.Design.Accordion.Header do
           "justify-between flex items-center relative w-full rounded-moon-s-sm",
           "gap-1 flex-1 font-medium text-bulma text-start bg-gohan",
           get_size_class(@size),
-          (@disabled && "cursor-not-allowed opacity-30") || "cursor-pointer",
+          (@disabled && "cursor-not-allowed opacity-60") || "cursor-pointer",
           !@is_content_outside && @is_open && "rounded-b-none",
           @class
         ])}

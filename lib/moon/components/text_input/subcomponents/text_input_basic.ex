@@ -27,7 +27,7 @@ defmodule Moon.Components.TextInput.TextInputBasic do
         :if={@label}
         class={
           "block text-moon-16 text-bulma pb-2 pointer-events-none",
-          "opacity-30 cursor-not-allowed": @disabled
+          "opacity-60 cursor-not-allowed": @disabled
         }
       >
         {@label}
