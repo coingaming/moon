@@ -19,7 +19,7 @@ defmodule Moon.Components.TextInput.Container do
         "w-full max-w-full relative z-0",
         @class,
         Utils.get_border_radius(@size),
-        "opacity-30 cursor-not-allowed": @disabled
+        "opacity-60 cursor-not-allowed": @disabled
       }
       id={@id}
     ><#slot /></div>

@@ -41,7 +41,7 @@ defmodule Moon.Design.Form.Radio.Button do
       {=@testid}
       {=@value}
       {=@size}
-      class={merge(["flex gap-2 p-0", ["opacity-30": @disabled], @class])}
+      class={merge(["flex gap-2 p-0", ["opacity-60": @disabled], @class])}
       {=@on_click}
       attrs={role: "radio", "aria-checked": "#{is_selected(assigns)}"}
     >

@@ -40,7 +40,7 @@ defmodule Moon.Design.Dropdown.Option do
           "bg-transparent text-moon-14 text-bulma whitespace-nowrap flex",
           "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition w-full",
           "bg-heles": @is_selected,
-          "opacity-30 cursor-not-allowed": @disabled,
+          "opacity-60 cursor-not-allowed": @disabled,
           "h-12 p-3 rounded-moon-i-sm": @size == "lg",
           "h-8 py-1 px-2 rounded-moon-i-xs": @size == "sm",
           "h-10 py-2 px-3 rounded-moon-i-sm": @size == "md"

@@ -34,7 +34,7 @@ defmodule Moon.Design.Switch do
           "w-11 h-6 p-1": @size == "xs",
           "w-[3.75rem] h-8 p-1": @size == "sm",
           "cursor-pointer": !@disabled,
-          "opacity-30 cursor-not-allowed select-none": @disabled
+          "opacity-60 cursor-not-allowed select-none": @disabled
         ],
         @class
       ])}

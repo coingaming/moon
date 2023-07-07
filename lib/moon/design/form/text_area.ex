@@ -30,7 +30,7 @@ defmodule Moon.Design.Form.TextArea do
         "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
         "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
         "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
-        @disabled && "opacity-30 cursor-not-allowed",
+        @disabled && "opacity-60 cursor-not-allowed",
         @class
       ])}
       {=@rows}

@@ -45,7 +45,7 @@ defmodule Moon.Components.Accordion do
         left_grow
         class={
           "w-full gap-3",
-          "cursor-not-allowed opacity-30": @disabled,
+          "cursor-not-allowed opacity-60": @disabled,
           "cursor-pointer": !@disabled,
           "#{@pull_a_side_class}": @pull_a_side_class
         }

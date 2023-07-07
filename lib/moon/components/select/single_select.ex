@@ -139,7 +139,7 @@ defmodule Moon.Components.Select.SingleSelect do
 
   defp get_disabled_class(disabled) do
     if disabled do
-      "opacity-30 cursor-not-allowed"
+      "opacity-60 cursor-not-allowed"
     end
   end
 

@@ -14,7 +14,7 @@ defmodule Moon.Design.Form.InsetField.Hint do
     <div class={merge([
       [
         "inline-block mt-2 ps-4 text-moon-12 text-trunks",
-        "opacity-30 cursor-not-allowed": @disabled
+        "opacity-60 cursor-not-allowed": @disabled
       ],
       @class
     ])}>

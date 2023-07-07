@@ -29,7 +29,7 @@ defmodule Moon.Design.Form.Field.Label do
         [
           "flex items-center gap-2 cursor-pointer",
           (@size == "sm" && "text-moon-14") || "text-moon-16",
-          "text-bulma opacity-30 cursor-not-allowed": @disabled
+          "text-bulma opacity-60 cursor-not-allowed": @disabled
         ],
         @class
       ])}

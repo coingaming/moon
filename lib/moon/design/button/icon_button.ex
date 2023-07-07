@@ -46,7 +46,7 @@ defmodule Moon.Design.Button.IconButton do
             @variant in ["secondary"],
           "bg-hit text-goten": @variant in ["tertiary"],
           "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-          "opacity-30 cursor-not-allowed active:transform-none": @disabled,
+          "opacity-60 cursor-not-allowed active:transform-none": @disabled,
           "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
           "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
             @animation == "error"
