@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.Design.ButtonPage do
+defmodule MoonWeb.Pages.Design.Button.ButtonPage do
   @moduledoc false
 
   use MoonWeb, :live_view

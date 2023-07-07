@@ -3,26 +3,19 @@ defmodule MoonWeb.Components.LeftMenu do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Icons.{
-    GenericTrophy,
-    SoftwarePlate,
-    TextSize,
-    SoftwarePuzzle,
-    SoftwareSettings,
-    OtherLifebuoy,
-    OtherRocket,
-    GenericLoyalty
-  }
-
   alias MoonWeb.Components.LargeLogo
-  alias Moon.Design.Accordion
   alias MoonWeb.Pages
   alias MoonWeb.Components.SidebarLink
+  alias MoonWeb.Components.SearchButton
 
+  alias Moon.Design.Accordion
   alias Moon.Design.Drawer
+
+  alias Moon.Icon
 
   prop(active_page, :module)
   prop(hide_items, :boolean)
+  prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
 
   def render(assigns) do
     ~F"""
@@ -41,101 +34,40 @@ defmodule MoonWeb.Components.LeftMenu do
               <LargeLogo class="h-6 w-[6.5rem]" />
             </a>
           </div>
+          <div>
+            <SearchButton id="moonweb-search" />
+          </div>
           <div class="flex flex-col gap-1">
-            <SidebarLink route={Pages.VisionPage}><GenericLoyalty class="text-moon-24" />Vision</SidebarLink>
-            <SidebarLink route={Pages.GettingStartedPage}><OtherRocket class="text-moon-24" />Getting Started</SidebarLink>
-            <SidebarLink route={Pages.ContributePage}><OtherLifebuoy class="text-moon-24" />How to contribute</SidebarLink>
-            <SidebarLink route={Pages.ColoursPalettePage}><SoftwareSettings class="text-moon-24" />Colours</SidebarLink>
-            <SidebarLink route={Pages.TokensPage}><SoftwarePuzzle class="text-moon-24" />Tokens</SidebarLink>
-            <SidebarLink route={Pages.TypographyPage}><TextSize class="text-moon-24" />Typography</SidebarLink>
-            <SidebarLink route={Pages.ComponentPage}><SoftwarePlate class="text-moon-24" />Components</SidebarLink>
-            <SidebarLink route={Pages.ManifestPage}><GenericTrophy class="text-moon-24" />Manifest</SidebarLink>
+            {#for menu_item <- @menu_items, menu_item[:icon] != nil}
+              <SidebarLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</SidebarLink>
+            {/for}
           </div>
           <div class="flex flex-col gap-2">
             <p class="ps-2 text-moon-10-caption font-medium uppercase text-trunks">
               Components
             </p>
             <div class="flex flex-col gap-1">
-              <SidebarLink route={Pages.Design.AccordionPage}>Accordion</SidebarLink>
-              <SidebarLink route={Pages.Design.AlertPage}>Alert</SidebarLink>
-              <SidebarLink route={Pages.Design.BottomSheetPage}>BottomSheet</SidebarLink>
-              <SidebarLink route={Pages.Design.AvatarPage}>Avatar</SidebarLink>
-              <SidebarLink route={Pages.Design.BreadcrumbPage}>Breadcrumb</SidebarLink>
-
-              <Accordion
-                id="left-menu-components-button"
-                value={(active_page_contains(@active_page, Pages.Design.Button) && "0") || []}
-              >
-                <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">
-                    Button
-                  </Accordion.Header>
-                  <Accordion.Content>
-                    <div class="flex-grow flex flex-col gap-2 pl-8">
-                      <SidebarLink route={Pages.Design.ButtonPage}>Button</SidebarLink>
-                      <SidebarLink route={Pages.Design.Button.IconButtonPage}>IconButton</SidebarLink>
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion>
-
-              <SidebarLink route={Pages.Design.CarouselPage}>Carousel</SidebarLink>
-              <SidebarLink route={Pages.Design.ChipPage}>Chip</SidebarLink>
-              <SidebarLink route={Pages.Design.DrawerPage}>Drawer</SidebarLink>
-              <SidebarLink route={Pages.Design.DropdownPage}>Dropdown</SidebarLink>
-
-              <Accordion
-                id="left-menu-components-form"
-                value={(active_page_contains(@active_page, Pages.Design.Form) && "0") || []}
-              >
-                <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">Form</Accordion.Header>
-                  <Accordion.Content>
-                    <div class="flex-grow flex flex-col gap-2 pl-8">
-                      <SidebarLink route={Pages.Design.Form.AuthCodePage}>AuthCode</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.CheckboxPage}>Checkbox</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.ComboboxPage}>Combobox</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.DropdownPage}>Dropdown</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.GroupPage}>Group</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.InputPage}>Input</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.InsetInputPage}>InsetInput</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.RadioPage}>Radio</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.SelectPage}>Select</SidebarLink>
-                      <SidebarLink route={Pages.Design.Form.TextAreaPage}>TextArea</SidebarLink>
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion>
-
-              <SidebarLink route={Pages.Components.IconsPage}>Icons</SidebarLink>
-              <SidebarLink route={Pages.Design.LoaderPage}>Loader</SidebarLink>
-              <SidebarLink route={Pages.Design.MenuItemPage}>MenuItem</SidebarLink>
-              <SidebarLink route={Pages.Design.ModalPage}>Modal</SidebarLink>
-              <SidebarLink route={Pages.Design.PaginationPage}>Pagination</SidebarLink>
-              <SidebarLink route={Pages.Design.PopoverPage}>Popover</SidebarLink>
-
-              <Accordion
-                id="left-menu-design-progress"
-                value={(active_page_contains(@active_page, Pages.Design.Progress) && "0") || []}
-              >
-                <Accordion.Item has_content_outside>
-                  <Accordion.Header icon_class="text-moon-24">Progress</Accordion.Header>
-                  <Accordion.Content>
-                    <div class="flex-grow flex flex-col gap-2 pl-8">
-                      <SidebarLink route={Pages.Design.Progress.LinearProgressPage}>Linear</SidebarLink>
-                      <SidebarLink route={Pages.Design.Progress.CircularProgressPage}>Circular</SidebarLink>
-                    </div>
-                  </Accordion.Content>
-                </Accordion.Item>
-              </Accordion>
-
-              <SidebarLink route={Pages.Design.SearchPage}>Search</SidebarLink>
-              <SidebarLink route={Pages.Design.SnackbarPage}>Snackbar</SidebarLink>
-              <SidebarLink route={Pages.Design.SwitchPage}>Switch</SidebarLink>
-              <SidebarLink route={Pages.Design.TablePage}>Table</SidebarLink>
-              <SidebarLink route={Pages.Design.TabsPage}>Tabs</SidebarLink>
-              <SidebarLink route={Pages.Design.TagPage}>Tag</SidebarLink>
-              <SidebarLink route={Pages.Design.TooltipPage}>Tooltip</SidebarLink>
+              {#for menu_item <- @menu_items, menu_item[:icon] == nil}
+                {#if menu_item[:children]}
+                  <Accordion
+                    id={"left-menu-design-#{menu_item[:key]}"}
+                    value={(active_page_contains(@active_page, menu_item[:key]) && "0") || []}
+                  >
+                    <Accordion.Item has_content_outside>
+                      <Accordion.Header icon_class="text-moon-24">{menu_item[:key]}</Accordion.Header>
+                      <Accordion.Content>
+                        <div class="flex-grow flex flex-col gap-2 pl-8">
+                          {#for child_menu_item <- menu_item[:children]}
+                            <SidebarLink route={child_menu_item[:page]}>{child_menu_item[:key]}</SidebarLink>
+                          {/for}
+                        </div>
+                      </Accordion.Content>
+                    </Accordion.Item>
+                  </Accordion>
+                {#else}
+                  <SidebarLink route={menu_item[:page]}>{menu_item[:key]}</SidebarLink>
+                {/if}
+              {/for}
 
               <Accordion
                 id="left-menu-components"

@@ -75,7 +75,7 @@ defmodule MoonWeb.Pages.ComponentPage do
           A list of links showing the location of the current page in the navigational hierarchy.
         </ComponentsPageCard>
         <ComponentsPageCard
-          page={Pages.Design.ButtonPage}
+          page={Pages.Design.Button.ButtonPage}
           image="facing/components/button.png"
           title="Button"
         >

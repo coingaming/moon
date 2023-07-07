@@ -48,7 +48,10 @@ defmodule Moon.Helpers.Form do
   end
 
   def input_classes_light(_assigns) do
-    "w-full rounded-moon-s-sm border border-beerus py-2 px-3 focus:outline-none focus:ring-0"
+    [
+      "w-full rounded-moon-s-sm border border-beerus py-2 px-3 focus:outline-none focus:ring-0",
+      "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75"
+    ]
   end
 
   def dropdown_id(%{id: id}) when not is_nil(id), do: "#{id}-dropdown"

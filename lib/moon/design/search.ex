@@ -8,9 +8,9 @@ defmodule Moon.Design.Search do
 
   import Moon.Helpers.Form, only: [input_classes_light: 1]
 
-  @doc "... format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
+  @doc "... format: [%{key: shown_label, value: option_value, disabled: boolean}], disabled is optional"
   prop(options, :list, required: true)
-  @doc "Well, disabled"
+  @doc "Set disabled/non-disabled"
   prop(disabled, :boolean)
   @doc "Some prompt to be shown on empty value"
   prop(prompt, :string)
@@ -22,7 +22,7 @@ defmodule Moon.Design.Search do
   prop(class, :css_class, from_context: :class)
   @doc "Data-testid attribute value"
   prop(testid, :string)
-  @doc "Some additional styling will be set to indicate field is iinvalid"
+  @doc "Some additional styling will be set to indicate field is invalid"
   prop(error, :boolean, from_context: :error)
   @doc "Should dropdown be open"
   prop(is_open, :boolean)
@@ -67,7 +67,7 @@ defmodule Moon.Design.Search do
           </#slot>
         </:trigger>
         <#slot {@default}>
-          <Dropdown.Options {=@on_change} class="pt-0 mt-0 rounded-tl-none rounded-tr-none">
+          <Dropdown.Options {=@on_change} class="pt-0 p-0 mt-0 rounded-tl-none rounded-tr-none">
             <Dropdown.Option :for={option <- @options} {=@size} disabled={option[:disabled]}>
               <#slot {@option, option: option}>{option[:key]}</#slot>
             </Dropdown.Option>

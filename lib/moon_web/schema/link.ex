@@ -1,7 +1,7 @@
 defmodule MoonWeb.Schema.Link do
   @moduledoc "Some menu links listing to be used inside the site"
 
-  # TODO: add all pages here - Old Components and other accordions (except Form)
+  # TODO: add Old Components pages if needed. Add Homepage.
   def pages() do
     [
       [MoonWeb.Pages.VisionPage, icon: "generic_loyalty"],
@@ -14,9 +14,11 @@ defmodule MoonWeb.Schema.Link do
       [MoonWeb.Pages.ManifestPage, icon: "generic_trophy"],
       MoonWeb.Pages.Design.AccordionPage,
       MoonWeb.Pages.Design.AlertPage,
-      MoonWeb.Pages.Design.BottomSheetPage,
       MoonWeb.Pages.Design.AvatarPage,
+      MoonWeb.Pages.Design.BottomSheetPage,
       MoonWeb.Pages.Design.BreadcrumbPage,
+      MoonWeb.Pages.Design.Button.ButtonPage,
+      MoonWeb.Pages.Design.Button.IconButtonPage,
       MoonWeb.Pages.Design.CarouselPage,
       MoonWeb.Pages.Design.ChipPage,
       MoonWeb.Pages.Design.DrawerPage,
@@ -27,6 +29,8 @@ defmodule MoonWeb.Schema.Link do
       MoonWeb.Pages.Design.ModalPage,
       MoonWeb.Pages.Design.PaginationPage,
       MoonWeb.Pages.Design.PopoverPage,
+      MoonWeb.Pages.Design.Progress.LinearProgressPage,
+      MoonWeb.Pages.Design.Progress.CircularProgressPage,
       MoonWeb.Pages.Design.SearchPage,
       MoonWeb.Pages.Design.SnackbarPage,
       MoonWeb.Pages.Design.SwitchPage,
@@ -47,6 +51,7 @@ defmodule MoonWeb.Schema.Link do
     ]
   end
 
+  @doc "returns flat list of pages - for search purposes"
   def titles() do
     pages()
     |> Enum.map(fn
@@ -55,10 +60,43 @@ defmodule MoonWeb.Schema.Link do
     end)
   end
 
+  @doc "returns structured list of pages - for menu"
+  def menu() do
+    titles()
+    |> Enum.reduce(%{}, fn
+      item, acc ->
+        group = get_group(item[:page])
+        acc |> Map.put(group, (acc[group] || []) ++ [item])
+    end)
+    |> Enum.map(fn {key, value} ->
+      if length(value) == 1 do
+        List.first(value)
+      else
+        [key: group_to_title(key), children: value]
+      end
+    end)
+    |> Enum.sort_by(& &1[:key])
+  end
+
+  defp get_group(page) do
+    page
+    |> to_string()
+    |> String.split(".")
+    |> Enum.slice(0..4)
+    |> Enum.join(".")
+  end
+
   defp page_to_title(page) do
     page
     |> to_string()
     |> String.replace(~r/.*\.([a-zA-Z]*)Page/, "\\1")
     |> String.replace(~r/([a-z])([A-Z])/, "\\1 \\2")
+  end
+
+  defp group_to_title(group) do
+    group
+    |> to_string()
+    |> String.split(".")
+    |> List.last()
   end
 end
