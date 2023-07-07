@@ -1,3 +1,10 @@
+## [2.49.4](https://github.com/coingaming/moon/compare/v2.49.3...v2.49.4) (2023-07-07)
+
+
+### Bug Fixes
+
+* opacity-60 instead of opacity-30 ([#676](https://github.com/coingaming/moon/issues/676)) ([be4eaa7](https://github.com/coingaming/moon/commit/be4eaa7abcd2988c11408aaa1a979e71c4200370))
+
 ## [2.49.3](https://github.com/coingaming/moon/compare/v2.49.2...v2.49.3) (2023-07-03)
 
 
