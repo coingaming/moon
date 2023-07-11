@@ -29,6 +29,7 @@ config :surface, :components, [
   {Moon.Design.Modal, propagate_context_to_slots: true},
   {Moon.Design.Modal.Panel, propagate_context_to_slots: true},
   {Moon.Design.Pagination, propagate_context_to_slots: true},
+  {Moon.Design.Progress, propagate_context_to_slots: true},
   {Moon.Design.Search, propagate_context_to_slots: true},
   {Moon.Design.Snackbar, propagate_context_to_slots: true},
   {Moon.Design.Snackbar.Close, propagate_context_to_slots: true},

@@ -42,56 +42,12 @@ defmodule MoonWeb.Pages.Design.Progress.LinearProgressPage do
         ProgressExample.Default,
         ProgressExample.DifferentSizes,
         ProgressExample.DifferentValues,
-        ProgressExample.CustomColours
+        ProgressExample.CustomColours,
+        ProgressExample.ProgressWithPin
       ]} />
 
-      <PropsTable
-        title="Progress props"
-        data={[
-          %{
-            :name => 'bg_color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'bg-trunks/[.24]',
-            :description => 'Background colour'
-          },
-          %{
-            :name => 'progress_color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'bg-piccolo',
-            :description => 'Progress bar colour'
-          },
-          %{
-            :name => 'size',
-            :type => '6xs | 5xs | 4xs | 3xs | 2xs',
-            :required => 'No',
-            :default => '2xs',
-            :description => 'Size of Progress'
-          },
-          %{
-            :name => 'value',
-            :type => 'number',
-            :required => 'No',
-            :default => '0',
-            :description => 'Value of Progress in %'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization of Progress'
-          },
-          %{
-            :name => 'progress_class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization of progress indicator'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Progress} />
+      <PropsTable module={Moon.Design.Progress.Pin} />
     </Page>
     """
   end
