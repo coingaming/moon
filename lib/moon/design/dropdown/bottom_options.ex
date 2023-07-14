@@ -1,4 +1,4 @@
-defmodule Moon.Design.ResponsiveDropdown.Options do
+defmodule Moon.Design.Dropdown.BottomOptions do
   @moduledoc "Options list for the Dropdown component"
 
   # TODO: add panel position options, currently only bottom
@@ -6,14 +6,13 @@ defmodule Moon.Design.ResponsiveDropdown.Options do
   use Moon.StatelessComponent
 
   import Moon.Helpers.MakeList
-  import Moon.Helpers.Positions
 
   @doc "Value of the selected option(s)"
   prop(value, :any, from_context: :value)
   @doc "On option click event, in most cases got from context"
   prop(on_change, :event, from_context: :on_change)
-  @doc "On option click event, in most cases got from context"
-  prop(on_close, :event, from_context: :on_close)
+  @doc "Click event, in most cases got from context"
+  prop(on_close, :event, from_context: :close_me)
   @doc "If the optionlist is open, got from context"
   prop(is_open, :boolean, from_context: :is_open)
 
@@ -21,8 +20,6 @@ defmodule Moon.Design.ResponsiveDropdown.Options do
   prop(size, :string, values!: ~w(sm md lg), default: "md")
   @doc "Additional CSS classes for the div"
   prop(class, :css_class)
-  @doc "Specifies the position of the dropdown"
-  prop(position, :string, values: position_list())
 
   @doc "List of the options. Used when no "
   prop(titles, :list, default: [])

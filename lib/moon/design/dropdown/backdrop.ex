@@ -1,12 +1,16 @@
-defmodule Moon.Design.ResponsiveDropdown.Backdrop do
+defmodule Moon.Design.Dropdown.Backdrop do
   @moduledoc false
 
   use Moon.StatelessComponent, slot: "backdrop"
 
-  prop(class, :css_class)
+  alias Moon.Design.Modal.Backdrop
 
+  @doc "Data-testid attribute for html tag"
   prop(testid, :string)
+  @doc "Id attribute for html tag"
   prop(id, :string)
+  @doc "Additional CSS classes for the html tag"
+  prop(class, :css_class)
 
   @doc """
   Experimental: makes BottomSheet behave as Modal on some screen widths,
@@ -19,24 +23,12 @@ defmodule Moon.Design.ResponsiveDropdown.Backdrop do
 
   def render(assigns) do
     ~F"""
-    <div
-      :if={@as_dropdown_on}
+    <Backdrop
       {=@id}
-      class={merge([
-        "fixed inset-0 bg-zeno z-[99999]",
-        "moon-backdrop",
-        backdrop_classes(@as_dropdown_on),
-        hidden: !@is_open
-      ])}
-      data-testid={@testid}
+      :if={@as_dropdown_on}
+      class={merge(["z-[99999]", @as_dropdown_on && "#{@as_dropdown_on}:hidden", @class, hidden: !@is_open])}
+      testid={@testid}
     />
     """
-  end
-
-  defp backdrop_classes(nil), do: []
-
-  defp backdrop_classes(size) do
-    ~w(hidden)
-    |> Enum.map(&"#{size}:#{&1}")
   end
 end

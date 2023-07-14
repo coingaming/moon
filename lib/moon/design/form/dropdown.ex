@@ -1,6 +1,8 @@
 defmodule Moon.Design.Form.Dropdown do
   @moduledoc "Fully styled select component for the forms"
 
+  # TODO: Add bottom sheet and backdrop animations
+
   use Moon.StatelessComponent
 
   alias Surface.Components.Form
