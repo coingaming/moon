@@ -102,3 +102,12 @@ alias Moon.Assets.Icons.IconZoom
 ```bash
 mix test
 ```
+
+## Screenshots & tests at all
+1. https://github.com/mcrumm/elogram/blob/main/lib/elogram/server.ex#L31
+also some screenshot tests here - 
+https://stackoverflow.com/questions/58131559/how-to-take-a-screenshot-on-failure-using-hound-elixir
+https://github.com/HashNuke/hound - maybe too old
+
+https://elixirforum.com/t/wallaby-visit-produces-empty-screenshot/45268
+https://github.com/elixir-wallaby/wallaby#screenshots
