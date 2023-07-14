@@ -9,7 +9,9 @@ export default {
         this.panel = this.el.querySelector(".moon-panel");
         this.showElementIfNeeded();
         //some dirty hack to make page scroll working after phx-style links are clicked
-        window.addEventListener("phx:page-loading-stop", _ => document.body.style.overflow = "auto");
+        window.addEventListener("phx:navigate", _ => {
+            document.body.style.overflow = "auto";
+        });
     },
 
 
