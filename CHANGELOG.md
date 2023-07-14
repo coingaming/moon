@@ -1,3 +1,10 @@
+## [2.49.7](https://github.com/coingaming/moon/compare/v2.49.6...v2.49.7) (2023-07-14)
+
+
+### Bug Fixes
+
+* [MDS-595] Responsive dropdown ([#679](https://github.com/coingaming/moon/issues/679)) ([df2e226](https://github.com/coingaming/moon/commit/df2e226aacf9ef2d9f7e30965b73045ab070c0ba))
+
 ## [2.49.6](https://github.com/coingaming/moon/compare/v2.49.5...v2.49.6) (2023-07-11)
 
 
