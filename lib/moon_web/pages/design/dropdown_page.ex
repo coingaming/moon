@@ -50,10 +50,11 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
       <Tabs id="anatomy-tabs" class="justify-between gap-6">
         <h2 class="text-moon-24 font-medium">Anatomy</h2>
-        <Tabs.List tab_titles={["Long syntax", "Short syntax"]} class="w-auto" />
+        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Responsive layout"]} class="w-auto" />
         <Tabs.Panels>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:responsive)}</Anatomy></Tabs.Panel>
         </Tabs.Panels>
       </Tabs>
 
@@ -95,6 +96,20 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         <Dropdown.Option>...</Dropdown.Option>
       </Dropdown.Options>
       <Dropdown.Trigger>...</Dropdown.Trigger>
+    </Dropdown>
+    """
+  end
+
+  def component_anatomy(:responsive) do
+    """
+    <Dropdown>
+      <Dropdown.BottomOptions>
+        <Dropdown.Option>...</Dropdown.Option>
+        <Dropdown.Option>...</Dropdown.Option>
+        <Dropdown.Option>...</Dropdown.Option>
+      </Dropdown.Options>
+      <Dropdown.Trigger>...</Dropdown.Trigger>
+      <Dropdown.Backdrop/>
     </Dropdown>
     """
   end
