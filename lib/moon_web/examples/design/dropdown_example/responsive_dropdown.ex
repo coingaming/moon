@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.ResponsiveDropdown do
       <Dropdown id="responsive-dropdown" as_dropdown_on="md" on_close="set_close">
         <Dropdown.BottomOptions titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]} />
         <Dropdown.Trigger :let={value: value}>
-          <Chip class="w-96">{value || "Dropdown as bottom sheet on small screen"}
+          <Chip class="w-64">{value || "BottomSheet on small screen"}
           </Chip>
         </Dropdown.Trigger>
         <Dropdown.Backdrop />
@@ -38,7 +38,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.ResponsiveDropdown do
         <Dropdown id="responsive-dropdown" as_dropdown_on="md" on_close="set_close">
           <Dropdown.BottomOptions titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]} />
           <Dropdown.Trigger :let={value: value}>
-            <Chip class="w-96">{value || "Dropdown as bottom sheet on small screen"}
+            <Chip class="w-64">{value || "BottomSheet on small screen"}
             </Chip>
           </Dropdown.Trigger>
           <Dropdown.Backdrop />

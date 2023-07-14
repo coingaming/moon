@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
 
   def render(assigns) do
     ~F"""
-    <div class="w-full flex justify-around">
+    <div class="w-full flex flex-wrap  gap-2 justify-around">
       <Dropdown id="dropdown-options-01">
         <Dropdown.Trigger>
           <Chip>sort by</Chip>
@@ -52,9 +52,9 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
         </Dropdown.Options>
       </Dropdown>
 
-      <Dropdown id="dropdown-options-02" class="w-72">
+      <Dropdown id="dropdown-options-02" class="w-52">
         <Dropdown.Trigger>
-          <Chip>Select language</Chip>
+          <Chip class="w-52">Select language</Chip>
         </Dropdown.Trigger>
         <Dropdown.Options>
           <Dropdown.Option>
@@ -138,7 +138,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
 
     ...
 
-    <div class="w-full flex justify-around">
+    <div class="w-full flex flex-wrap  gap-2 justify-around">
       <Dropdown id="dropdown-options-01">
         <Dropdown.Trigger>
           <Chip>sort by</Chip>
@@ -159,8 +159,8 @@ defmodule MoonWeb.Examples.Design.DropdownExample.OptionLayouts do
         </Dropdown.Options>
       </Dropdown>
 
-      <Dropdown id="dropdown-options-02" class="w-72">
-        <Dropdown.Trigger>
+      <Dropdown id="dropdown-options-02" class="w-52">
+        <Dropdown.Trigger class="w-52">
           <Chip>Select language</Chip>
         </Dropdown.Trigger>
         <Dropdown.Options>
