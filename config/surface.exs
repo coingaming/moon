@@ -15,6 +15,7 @@ config :surface, :components, [
   {Moon.Design.Carousel.Reel, propagate_context_to_slots: true},
   {Moon.Design.Drawer, propagate_context_to_slots: true},
   {Moon.Design.Dropdown, propagate_context_to_slots: true},
+  {Moon.Design.Dropdown.BottomOptions, propagate_context_to_slots: true},
   {Moon.Design.Dropdown.Options, propagate_context_to_slots: true},
   {Moon.Design.Form, propagate_context_to_slots: true},
   {Moon.Design.Form.AuthCode, propagate_context_to_slots: true},

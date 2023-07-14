@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Default do
     <Dropdown id="dropdown-02">
       <Dropdown.Options titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]} />
       <Dropdown.Trigger :let={value: value}>
-        <Chip class="w-96">{value || "Choose name..."}</Chip>
+        <Chip class="w-64">{value || "Choose name..."}</Chip>
       </Dropdown.Trigger>
     </Dropdown>
     """
@@ -23,7 +23,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Default do
     <Dropdown id="dropdown-02">
       <Dropdown.Options titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}/>
       <Dropdown.Trigger :let={value: value}>
-        <Chip class="w-96">{value || "Choose name..."}</Chip>
+        <Chip class="w-64">{value || "Choose name..."}</Chip>
       </Dropdown.Trigger>
     </Dropdown>
     """
