@@ -1,3 +1,10 @@
+## [2.49.8](https://github.com/coingaming/moon/compare/v2.49.7...v2.49.8) (2023-07-14)
+
+
+### Bug Fixes
+
+* push_patch https://github.com/phoenixframework/phoenix_live_view/issues/2559 ([#680](https://github.com/coingaming/moon/issues/680)) ([4da1f1a](https://github.com/coingaming/moon/commit/4da1f1a2cdb3aabb83cab78fa2ffd74f214f8f8a))
+
 ## [2.49.7](https://github.com/coingaming/moon/compare/v2.49.6...v2.49.7) (2023-07-14)
 
 
