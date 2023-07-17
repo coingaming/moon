@@ -11,11 +11,11 @@ defmodule Moon.Design.Sidebar do
 
   def render(assigns) do
     ~F"""
-    <div>
-      <Drawer lg_persists id={@id <> "-drawer"} class={"lg:flex lg:start-0 lg:inset-y-0 lg:z-50", "lg:w-[280px]": !@is_collapsed}>
+    <div id={@id}>
+      <Drawer lg_persists is_open id={@id <> "-drawer"} class={"w-full lg:flex lg:start-0 lg:z-50 lg:right-[unset]", "lg:w-[280px]": !@is_collapsed}>
         <Drawer.Backdrop class="lg:hidden" />
-        <Drawer.Panel position="start" class={"h-screen bg-gohan shadow-moon-none w-auto sidebar-panel", "w-[280px]": !@is_collapsed}>
-          <div :on-click={@toggle_is_collapsed} class="rounded-full shadow-md absolute -right-3 top-6 bg-inherit w-6 h-6 cursor-pointer sidebar-panel-chevron">
+        <Drawer.Panel position="start" class={"sidebar-panel w-full lg:flex lg:start-0 lg:z-50 w-auto lg:right-[unset]", "lg:w-[280px]": !@is_collapsed}>
+          <div :on-click={@toggle_is_collapsed} class="rounded-full shadow-md -right-3 top-6 bg-inherit w-6 h-6 cursor-pointer sidebar-panel-chevron hidden z-[10001]">
             <div class="grid place-content-center	w-6 h-6">
               <Moon.Icon name="controls-chevron-left" class={"rotate-180": @is_collapsed} />
             </div>

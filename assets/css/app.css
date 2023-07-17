@@ -231,9 +231,8 @@ input:-webkit-autofill:focus {
   src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
 }
 
-.sidebar-panel .sidebar-panel-chevron {
-  display: none;
-}
-.sidebar-panel:hover .sidebar-panel-chevron {
-  display: block;
+@layer components {
+  .sidebar-panel:hover .sidebar-panel-chevron {
+    @apply lg:absolute lg:block;
+  }
 }
