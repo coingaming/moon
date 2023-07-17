@@ -23,7 +23,7 @@ defmodule Moon.Design.Sidebar do
         lg_persists
         is_open
         id={@id <> "-drawer"}
-        class={"w-full lg:flex lg:start-0 lg:z-50 lg:right-[unset]", "lg:w-[280px]": !@is_collapsed}
+        class={"lg:flex lg:start-0 lg:z-50 lg:right-[unset]", "lg:w-[280px]": !@is_collapsed}
       >
         <Drawer.Backdrop class="lg:hidden" />
         <Drawer.Panel
@@ -47,10 +47,10 @@ defmodule Moon.Design.Sidebar do
                 <#slot {@top, is_collapsed: @is_collapsed} />
               </div>
             </div>
-            <div class="grow overflow-y-auto">
+            <div class="grow">
               <#slot {@menu, is_collapsed: @is_collapsed} />
             </div>
-            <div class="grow-0 absolute left-0 bottom-0 right-0 p-4 bg-inherit">
+            <div class="grow-0 p-4 bg-inherit">
               <#slot {@bottom, is_collapsed: @is_collapsed} />
             </div>
           </nav>
