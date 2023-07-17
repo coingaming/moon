@@ -1,4 +1,10 @@
 defmodule Moon.Design.Sidebar do
+  @moduledoc """
+  Sidebar navigations help the user navigate through an application.
+
+  Vertically stacking navigation items is useful for fitting large menus.
+  """
+
   use Moon.StatefulComponent
 
   alias Moon.Design.Drawer
