@@ -9,10 +9,7 @@ defmodule Moon.Design.Tooltip.Trigger do
 
   def render(assigns) do
     ~F"""
-    <div
-      aria-describedby="tooltip"
-      class={merge([get_class(), @class])}
-    >
+    <div aria-describedby="tooltip" class={merge([get_class(), @class])}>
       <#slot />
     </div>
     """
