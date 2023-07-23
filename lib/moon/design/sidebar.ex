@@ -29,7 +29,7 @@ defmodule Moon.Design.Sidebar do
         <Drawer.Panel
           position="start"
           class={
-            "sidebar-panel w-full lg:flex lg:start-0 lg:z-50 w-auto lg:right-[unset]",
+            "sidebar-panel w-full lg:flex lg:start-0 lg:z-50 w-auto lg:right-[unset] p-4",
             "lg:w-[280px]": !@is_collapsed
           }
         >
@@ -42,15 +42,17 @@ defmodule Moon.Design.Sidebar do
             </div>
           </div>
           <nav aria-label="Sidebar" class="flex flex-col flex-grow gap-6">
-            <div class="grow-0 pt-6 pl-4 pr-4">
+            <div class="grow-0">
               <div class="flex gap-2">
                 <#slot {@top, is_collapsed: @is_collapsed} />
               </div>
             </div>
             <div class="grow">
-              <#slot {@menu, is_collapsed: @is_collapsed} />
+              <div class="grid gap-2">
+                <#slot {@menu, is_collapsed: @is_collapsed} />
+              </div>
             </div>
-            <div class="grow-0 p-4 bg-inherit">
+            <div class="grow-0 bg-inherit">
               <#slot {@bottom, is_collapsed: @is_collapsed} />
             </div>
           </nav>

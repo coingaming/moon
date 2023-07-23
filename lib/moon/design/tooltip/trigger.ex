@@ -19,6 +19,6 @@ defmodule Moon.Design.Tooltip.Trigger do
   end
 
   def get_class() do
-    "block group-focus:ring-2 group-focus:outline-none rounded-moon-s-sm"
+    "group-focus:ring-2 group-focus:outline-none rounded-moon-s-sm"
   end
 end
