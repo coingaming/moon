@@ -1,4 +1,4 @@
-defmodule Moon.Design.Sidebar do
+defmodule Moon.Components.Sidebar2 do
   @moduledoc """
   Sidebar navigations help the user navigate through an application.
 
