@@ -41,7 +41,7 @@ defmodule Moon.Components.Sidebar2 do
               <Moon.Icon name="controls-chevron-left" class={"rotate-180": @is_collapsed} />
             </div>
           </div>
-          <nav aria-label="Sidebar" class="flex flex-col flex-grow gap-6">
+          <nav aria-label="Sidebar" class="flex flex-col flex-grow gap-6 h-full">
             <div class="grow-0">
               <div class="flex gap-2">
                 <#slot {@top, is_collapsed: @is_collapsed} />
