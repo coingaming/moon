@@ -26,24 +26,26 @@ It's crucial to understand that the Moon Design System is a complex ecosystem co
 If you are an internal employee, please contact Dmytro Kireiev via the internal chats. He serves as the product owner of the project and will be more than willing to assist you.
 
 ## Structure
-Moon Surface has two distinct libraries:
 
-`Moon.Components` - our v1 set of (legacy) components, which is not being updated since autumn 2022. 
+The Moon Surface framework comprises two distinct libraries:
 
-`Moon.Design` - our new v2 set of headless components that we actively develop and support. 
+`Moon.Components` - this is our v1 set of legacy components, which has not received updates since autumn 2022.
 
-It is important to note that all v2 components under the `Moon.Design` namespace have significantly stricter requirements. For instance, these components must support all variants from the Figma Master file, provide comprehensive documentation and examples, and ensure their reusability in other projects.
+`Moon.Design` -  new v2 set of headless components that we actively develop and support.
+
+It is crucial to note that all v2 components under the `Moon.Design` namespace have significantly stricter requirements. For instance, these components must support all variants from the Figma Master file, provide comprehensive documentation and examples, and ensure their reusability in other projects.
 
 ## Documentation
 
-Each component within the Moon Design System is accompanied by a corresponding documentation page (located in `moon_web/pages/design`), where all
-component features shall be described with relevant examples and corresponding code snippets (examples located in `moon_web/examples/design`). Every example must be tested to ensure accuracy.
+Each component within the Moon Design System is accompanied by a corresponding documentation page (located in `moon_web/pages/design`), where all component features shall be described with relevant examples and corresponding code snippets (examples located in `moon_web/examples/design`).
+
+Every example must be tested to ensure accuracy.
 
 To include a property in the component's props table on the component page, each property should have a `@doc` attribute with a descriptive explanation.
 
 When creating an entirely new component, e.g `Moon.Design.Form.SomethingAwesome`, please use the following command:
 
-```
+```sh
 mix moon.gen.component Form.SomethingAwesome
 ```
 
