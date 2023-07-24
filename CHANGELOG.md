@@ -1,3 +1,10 @@
+## [2.49.9](https://github.com/coingaming/moon/compare/v2.49.8...v2.49.9) (2023-07-24)
+
+
+### Bug Fixes
+
+* exampl fix for liveview v0.19 ([#684](https://github.com/coingaming/moon/issues/684)) ([76672eb](https://github.com/coingaming/moon/commit/76672eb0d48e992fe829b8f174d8dd1635115783))
+
 ## [2.49.8](https://github.com/coingaming/moon/compare/v2.49.7...v2.49.8) (2023-07-14)
 
 
