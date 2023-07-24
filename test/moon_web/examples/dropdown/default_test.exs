@@ -1,7 +1,6 @@
 defmodule MoonWeb.Examples.Dropdown.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
-
   test "should open", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/DropdownExample.Default")
 
