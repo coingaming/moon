@@ -105,6 +105,16 @@ defmodule MoonWeb.Pages.ContributePage do
               Github repository
             </a>
           </li>
+          <li>
+            <a
+              href="https://github.com/coingaming/moon/blob/main//CONTRIBUTING.md"
+              class="text-piccolo font-medium transition-colors duration-200 hover:text-hit visited:text-hit"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contributing page
+            </a>
+          </li>
         </ul>
       </PageSection>
     </Page>
