@@ -192,7 +192,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           <h1>Drag and drop area</h1>
           <div>
             {#for entry <- @uploads.some_picture_file.entries}
-              {live_img_preview entry, style: "max-width: 200px; max-height: 200px;"}
+              <.live_img_preview entry={entry} style="max-width: 200px; max-height: 200px;" />
               <progress value={entry.progress} max="100">{entry.progress}</progress>
               <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
               {#for err <- upload_errors(@uploads.some_picture_file, entry)}
@@ -219,7 +219,7 @@ defmodule MoonWeb.Pages.Components.FileInputPage do
           <h1>Drag and drop area</h1>
           <div>
             {#for entry <- @uploads.some_picture_file_for_s3.entries}
-              {live_img_preview entry, style: "max-width: 200px; max-height: 200px;"}
+              <.live_img_preview entry={entry} style="max-width: 200px; max-height: 200px;" />
               <progress value={entry.progress} max="100">{entry.progress}</progress>
               <button phx-click="cancel-upload" phx-value-ref={entry.ref} aria-label="cancel">&times;</button>
               {#for err <- upload_errors(@uploads.some_picture_file_for_s3, entry)}
