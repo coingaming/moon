@@ -1,13 +1,11 @@
 defmodule MoonWeb.Examples.Dropdown.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
-  import Elogram.CaptureScreenshot
 
   test "should open", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/DropdownExample.Default")
 
     assert view
-           |> capture_screenshot(name: "default01.png")
            |> element("#dropdown-02 div[aria-haspopup=true]")
            |> render() =~ "Choose name..."
 

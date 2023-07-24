@@ -1,2 +1,1 @@
-Elogram.start([])
 ExUnit.start()
