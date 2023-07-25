@@ -37,7 +37,6 @@ config :surface, :components, [
   {Moon.Design.Tabs, propagate_context_to_slots: true},
   {Moon.Design.Tabs.List, propagate_context_to_slots: true},
   {Moon.Design.Tooltip.Content, propagate_context_to_slots: true},
-  {Moon.Components.Sidebar2, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
