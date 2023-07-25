@@ -1,3 +1,10 @@
+## [2.49.10](https://github.com/coingaming/moon/compare/v2.49.9...v2.49.10) (2023-07-25)
+
+
+### Bug Fixes
+
+* tooltip.trigger fix ([683c86a](https://github.com/coingaming/moon/commit/683c86a9f275b8d99e27bf9ced021768597ec2ae))
+
 ## [2.49.9](https://github.com/coingaming/moon/compare/v2.49.8...v2.49.9) (2023-07-24)
 
 
