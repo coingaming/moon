@@ -9,6 +9,8 @@ defmodule Moon.Design.BottomSheet do
   @doc "Called when the BottomSheet is dismissed"
   prop(on_close, :event)
 
+  data(is_closing_on_click_away, :boolean, default: false)
+
   @doc "Whether the BottomSheet has a shadow or not"
   prop(has_shadow, :boolean, default: false)
 
@@ -51,6 +53,7 @@ defmodule Moon.Design.BottomSheet do
       phx-hook="Bottomsheet"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-is_closing_on_click_away={"#{@is_closing_on_click_away}"}
       class={merge([
         "fixed z-[99999] inset-0 hidden",
         modal_classes(@as_modal_on),
@@ -62,7 +65,7 @@ defmodule Moon.Design.BottomSheet do
       <#slot
         {@panel}
         context_put={
-          on_close: @on_close || %{name: "start_closing_bottom_sheet", target: @myself},
+          on_close: @on_close || %{name: "start_closing_bottom_sheet_on_click_away", target: @myself},
           has_shadow: @has_shadow,
           as_modal_on: @as_modal_on,
           size: @size
@@ -84,8 +87,8 @@ defmodule Moon.Design.BottomSheet do
     {:noreply, assign(socket, is_open: true)}
   end
 
-  def handle_event("start_closing_bottom_sheet", _, socket) do
-    {:noreply, assign(socket, is_closing: true)}
+  def handle_event("start_closing_bottom_sheet_on_click_away", _, socket) do
+    {:noreply, assign(socket, is_closing_on_click_away: true)}
   end
 
   def handle_event("set_close", _, socket) do

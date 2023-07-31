@@ -4,6 +4,7 @@ defmodule Moon.Design.Modal do
 
   prop(is_open, :boolean, default: false)
   data(is_closing, :boolean, default: false)
+  data(is_closing_on_click_away, :boolean, default: false)
 
   slot(backdrop, required: true)
   slot(panel, required: true)
@@ -19,6 +20,7 @@ defmodule Moon.Design.Modal do
       phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-is_closing_on_click_away={"#{@is_closing_on_click_away}"}
       aria-modal={(@is_open && "true") || "false"}
       class="fixed inset-0 z-[99999] overflow-y-auto hidden"
       data-testid={@testid}
@@ -28,7 +30,7 @@ defmodule Moon.Design.Modal do
         <#slot
           {@panel}
           context_put={
-            on_close: @on_close || %{name: "start_closing_modal", target: @myself}
+            on_close: @on_close || %{name: "start_closing_modal_on_click_away", target: @myself}
           }
         />
       </div>
@@ -48,8 +50,8 @@ defmodule Moon.Design.Modal do
     {:noreply, assign(socket, is_open: true)}
   end
 
-  def handle_event("start_closing_modal", _, socket) do
-    {:noreply, assign(socket, is_closing: true)}
+  def handle_event("start_closing_modal_on_click_away", _, socket) do
+    {:noreply, assign(socket, is_closing_on_click_away: true)}
   end
 
   def handle_event("set_close", _, socket) do

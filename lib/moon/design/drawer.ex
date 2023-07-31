@@ -5,6 +5,7 @@ defmodule Moon.Design.Drawer do
 
   prop(is_open, :boolean, default: false)
   data(is_closing, :boolean, default: false)
+  data(is_closing_on_click_away, :boolean, default: false)
 
   slot(panel, required: true)
   slot(backdrop)
@@ -22,6 +23,7 @@ defmodule Moon.Design.Drawer do
       phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-is_closing_on_click_away={"#{@is_closing_on_click_away}"}
       data-lg_persists={@lg_persists}
       aria-expanded={(@is_open && "true") || "false"}
       class={merge(["fixed z-[99999] inset-0 hidden", @class])}
@@ -31,7 +33,7 @@ defmodule Moon.Design.Drawer do
       <#slot
         {@panel}
         context_put={
-          on_close: @on_close || %{name: "start_closing_drawer", target: @myself}
+          on_close: @on_close || %{name: "start_closing_drawer_on_click_away", target: @myself}
         }
       />
     </div>
@@ -50,8 +52,8 @@ defmodule Moon.Design.Drawer do
     {:noreply, assign(socket, is_open: true)}
   end
 
-  def handle_event("start_closing_drawer", _, socket) do
-    {:noreply, assign(socket, is_closing: true)}
+  def handle_event("start_closing_drawer_on_click_away", _, socket) do
+    {:noreply, assign(socket, is_closing_on_click_away: true)}
   end
 
   def handle_event("set_close", _, socket) do
