@@ -34,4 +34,6 @@ defmodule MoonWeb.Examples.Dropdown.DefaultTest do
 
     assert view |> element("#dropdown-02 div.hidden[role=listbox]") |> has_element?()
   end
+
+  # TODO: add screenshot test of default state, hover state, open state, selected state
 end
