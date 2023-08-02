@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
           </p>
           <div class="p-4">
             <Button size="lg" full_width on_click="set_close">
-              I'm honestly done
+              I am honestly done
             </Button>
           </div>
         </BottomSheet.Panel>

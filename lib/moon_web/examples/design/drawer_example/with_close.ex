@@ -11,14 +11,19 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithClose do
   def render(assigns) do
     ~F"""
     <div>
-      <Button variant="secondary" on_click="set_open">
+      <Button variant="secondary" on_click="set_open" id="with_close">
         Show Drawer with Close button
       </Button>
       <Drawer id="with_close_drawer">
         <Drawer.Panel>
           <div class="flex justify-between items-center p-3 border-b border-trunks">
             <p>Header</p>
-            <IconButton icon_only="controls_close_small" variant="ghost" on_click="set_close" />
+            <IconButton
+              icon_only="controls_close_small"
+              variant="ghost"
+              on_click="set_close"
+              id="close_drawer"
+            />
           </div>
           <div class="p-3">Drawer content</div>
         </Drawer.Panel>

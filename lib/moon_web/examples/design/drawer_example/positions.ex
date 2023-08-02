@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Button variant="secondary" on_click="open_start_drawer">
+      <Button variant="secondary" on_click="open_start_drawer" id="start">
         Show Drawer at start of screen
       </Button>
       <Drawer id="start_drawer">
@@ -22,7 +22,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
         </Drawer.Panel>
       </Drawer>
 
-      <Button variant="secondary" on_click="open_top_drawer">
+      <Button variant="secondary" on_click="open_top_drawer" id="top">
         Show Drawer at top of screen
       </Button>
       <Drawer id="top_drawer">
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
         </Drawer.Panel>
       </Drawer>
 
-      <Button variant="secondary" on_click="open_end_drawer">
+      <Button variant="secondary" on_click="open_end_drawer" id="end">
         Show Drawer at end of screen
       </Button>
       <Drawer id="end_drawer">
@@ -46,7 +46,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Positions do
         </Drawer.Panel>
       </Drawer>
 
-      <Button variant="secondary" on_click="open_bottom_drawer">
+      <Button variant="secondary" on_click="open_bottom_drawer" id="bottom">
         Show Drawer at bottom of screen
       </Button>
       <Drawer id="bottom_drawer">
