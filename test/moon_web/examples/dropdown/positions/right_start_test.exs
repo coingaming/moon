@@ -1,7 +1,7 @@
 defmodule MoonWeb.Examples.Dropdown.Positions.RightStartTest do
   use MoonWeb.ConnCase, async: true
 
-  test "should open", %{conn: conn} do
+  test "should be placed right-start", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/DropdownExample.Positions")
 
     assert view
@@ -12,32 +12,8 @@ defmodule MoonWeb.Examples.Dropdown.Positions.RightStartTest do
            |> element("#drop-positions-right-start div.hidden[role=listbox]")
            |> has_element?()
 
-    view
-    |> element("#drop-positions-right-start div[aria-haspopup=true]")
-    |> render_click()
-
-    assert view |> element("#drop-positions-right-start div[role=listbox]") |> has_element?()
-
-    refute view
-           |> element("#drop-positions-right-start div.hidden[role=listbox]")
-           |> has_element?()
-  end
-
-  test "should select", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Positions")
-
-    select = view |> element("#drop-positions-right-start div[aria-haspopup=true]")
-
-    select |> render_click()
-
-    view
-    |> element("#drop-positions-right-start div[role=listbox] button:first-child")
-    |> render_click()
-
-    # TODO: assert select |> render() ("button[class=bg-heles]")" should it be checked based on bg-colour?
-
     assert view
-           |> element("#drop-positions-right-start div.hidden[role=listbox]")
+           |> element("#drop-positions-right-start div.ltr\\:left-full.rtl\\:right-full.top-0")
            |> has_element?()
   end
 

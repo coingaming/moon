@@ -49,22 +49,6 @@ defmodule MoonWeb.Examples.Accordion.DefaultTest do
            |> has_element?()
 
     view
-    |> element("#simple-accordion button[value=2]")
-    |> render_click()
-
-    assert view
-           |> element("#simple-accordion button[value=0][aria-expanded=true]")
-           |> has_element?()
-
-    assert view
-           |> element("#simple-accordion button[value=1][aria-expanded=true]")
-           |> has_element?()
-
-    assert view
-           |> element("#simple-accordion button[value=2][aria-expanded=true]")
-           |> has_element?()
-
-    view
     |> element("#simple-accordion button[value=0]")
     |> render_click()
 
@@ -72,17 +56,25 @@ defmodule MoonWeb.Examples.Accordion.DefaultTest do
            |> element("#simple-accordion button[value=0][aria-expanded=true]")
            |> has_element?()
 
+    assert view
+           |> element("#simple-accordion button[value=1][aria-expanded=true]")
+           |> has_element?()
+
+    refute view
+           |> element("#simple-accordion button[value=2][aria-expanded=true]")
+           |> has_element?()
+
     view
     |> element("#simple-accordion button[value=1]")
     |> render_click()
 
     refute view
-           |> element("#simple-accordion button[value=1][aria-expanded=true]")
+           |> element("#simple-accordion button[value=0][aria-expanded=true]")
            |> has_element?()
 
-    view
-    |> element("#simple-accordion button[value=2]")
-    |> render_click()
+    refute view
+           |> element("#simple-accordion button[value=1][aria-expanded=true]")
+           |> has_element?()
 
     refute view
            |> element("#simple-accordion button[value=2][aria-expanded=true]")

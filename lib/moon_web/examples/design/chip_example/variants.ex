@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.ChipExample.Variants do
 
   def render(assigns) do
     ~F"""
-    <Chip variant="ghost">Ghost variant</Chip>
+    <Chip variant="ghost" testid="ghost">Ghost variant</Chip>
     <Chip>Default variant</Chip>
     """
   end

@@ -15,7 +15,9 @@ defmodule MoonWeb.Examples.BottomSheet.CustomHeightTest do
     assert view |> element("#custom_height_bottom_sheet div.moon-backdrop") |> has_element?()
     assert view |> element("#custom_height_bottom_sheet div.moon-drag-handle") |> has_element?()
 
-    # TODO: add height test if needed-> assert view |> element("#custom_height_bottom_sheet div.h-[77%]") |> has_element?()
+    assert view
+           |> element("#custom_height_bottom_sheet div[class~=\"h-[77%]\"]")
+           |> has_element?()
 
     button_to_close_bottomsheet = view |> element("button.bg-none[data-size=md]")
     assert button_to_close_bottomsheet |> render() =~ "I don&#39;t wanna see this"

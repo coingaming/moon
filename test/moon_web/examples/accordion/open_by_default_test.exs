@@ -1,7 +1,7 @@
 defmodule MoonWeb.Examples.Accordion.OpenByDefaultTest do
   use MoonWeb.ConnCase, async: true
 
-  test "should collapse and expand", %{conn: conn} do
+  test "should be open by default", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/AccordionExample.OpenByDefault")
 
     assert view

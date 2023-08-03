@@ -8,8 +8,8 @@ defmodule MoonWeb.Examples.Design.ChipExample.Sizes do
 
   def render(assigns) do
     ~F"""
-    <Chip size="sm">Small</Chip>
-    <Chip>Medium is default</Chip>
+    <Chip size="sm" testid="small">Small</Chip>
+    <Chip testid="medium">Medium is default</Chip>
     """
   end
 

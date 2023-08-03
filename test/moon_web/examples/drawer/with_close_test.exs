@@ -12,8 +12,7 @@ defmodule MoonWeb.Examples.Drawer.WithCloseTest do
     |> render_click()
 
     assert view |> element("div[id=with_close_drawer][data-is_open]") |> has_element?()
-    # TODO: replace with ltr:right-0 class?
-    assert view |> element("#with_close_drawer div.inset-y-0") |> has_element?()
+    assert view |> element("#with_close_drawer div.ltr\\:right-0.rtl\\:left-0") |> has_element?()
     assert view |> element("#with_close_drawer button[id=close_drawer]")
 
     view

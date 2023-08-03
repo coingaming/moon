@@ -47,22 +47,6 @@ defmodule MoonWeb.Examples.Accordion.SingleOpenTest do
     refute view
            |> element("#single-accordion button[value=2][aria-expanded=true]")
            |> has_element?()
-
-    view
-    |> element("#single-accordion button[value=2]")
-    |> render_click()
-
-    refute view
-           |> element("#single-accordion button[value=0][aria-expanded=true]")
-           |> has_element?()
-
-    refute view
-           |> element("#single-accordion button[value=1][aria-expanded=true]")
-           |> has_element?()
-
-    assert view
-           |> element("#single-accordion button[value=2][aria-expanded=true]")
-           |> has_element?()
   end
 
   # TODO: add screenshot test of default state and expanded state

@@ -8,10 +8,10 @@ defmodule MoonWeb.Examples.Design.ChipExample.IsStroke do
 
   def render(assigns) do
     ~F"""
-    <Chip is_stroke size="sm">
+    <Chip is_stroke size="sm" testid="stroke_sm">
       Stroke on hover
     </Chip>
-    <Chip is_stroke>Stroke on hover</Chip>
+    <Chip is_stroke testid="stroke_md">Stroke on hover</Chip>
     """
   end
 

@@ -12,8 +12,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
     |> render_click()
 
     assert view |> element("div[id=start_drawer][data-is_open]") |> has_element?()
-    # TODO: replace with ltr:left-0 class?
-    assert view |> element("#start_drawer div.inset-y-0") |> has_element?()
+    assert view |> element("#start_drawer div.ltr\\:left-0.rtl\\:right-0") |> has_element?()
 
     # TODO: add test case for closing the bottomsheet panel on-click-away
   end
@@ -45,8 +44,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
     |> render_click()
 
     assert view |> element("div[id=end_drawer][data-is_open]") |> has_element?()
-    # TODO: replace with ltr:right-0 class?
-    assert view |> element("#end_drawer div.inset-y-0") |> has_element?()
+    assert view |> element("#end_drawer div.ltr\\:right-0.rtl\\:left-0") |> has_element?()
 
     # TODO: add test case for closing the bottomsheet panel on-click-away
   end

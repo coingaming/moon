@@ -8,8 +8,8 @@ defmodule MoonWeb.Examples.Design.ChipExample.Active do
 
   def render(assigns) do
     ~F"""
-    <Chip is_active size="sm">Active</Chip>
-    <Chip is_active is_stroke>Active</Chip>
+    <Chip is_active size="sm" testid="active">Active</Chip>
+    <Chip is_active is_stroke testid="active_stroke">Active</Chip>
     """
   end
 

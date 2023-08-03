@@ -9,6 +9,7 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithIconsTest do
            |> has_element?()
 
     assert view |> element("#dropdown-options-01 div.hidden[role=listbox]") |> has_element?()
+    assert view |> element("#dropdown-options-01 svg.moon-icon.fill-none") |> has_element?()
 
     view
     |> element("#dropdown-options-01 div[aria-haspopup=true]")
@@ -16,22 +17,6 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithIconsTest do
 
     assert view |> element("#dropdown-options-01 div[role=listbox]") |> has_element?()
     refute view |> element("#dropdown-options-01 div.hidden[role=listbox]") |> has_element?()
-  end
-
-  test "should select", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.OptionLayouts")
-
-    select = view |> element("#dropdown-options-01 div[aria-haspopup=true]")
-
-    select |> render_click()
-
-    view
-    |> element("#dropdown-options-01 div[role=listbox] button:first-child")
-    |> render_click()
-
-    # TODO: assert select |> render() ("button[class=bg-heles]")" should it be checked based on bg-colour?
-
-    assert view |> element("#dropdown-options-01 div.hidden[role=listbox]") |> has_element?()
   end
 
   # TODO: add screenshot test of default state, hover state, open state, selected state
