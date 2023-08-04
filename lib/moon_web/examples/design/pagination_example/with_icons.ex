@@ -13,11 +13,11 @@ defmodule MoonWeb.Examples.Design.PaginationExample.WithIcons do
   def render(assigns) do
     ~F"""
     <Pagination id="with_buttons" total_pages={26} value={@current_page} on_change="set_current_page">
-      <Pagination.PrevButton>
+      <Pagination.PrevButton testid="prev_button">
         <ControlsChevronLeft class="text-moon-24 rtl:rotate-180" />
       </Pagination.PrevButton>
       <Pagination.Pages />
-      <Pagination.NextButton>
+      <Pagination.NextButton testid="next_button">
         <ControlsChevronRight class="text-moon-24 rtl:rotate-180" />
       </Pagination.NextButton>
     </Pagination>
