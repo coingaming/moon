@@ -20,9 +20,9 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Sizes do
   def render(assigns) do
     ~F"""
     <div class="w-full flex items-center justify-around">
-      <Switch size="2xs" {=@checked} on_change="toggle_switch" />
-      <Switch size="xs" checked={@checked1} on_change="toggle_switch1" />
-      <Switch {=@checked} on_change="toggle_switch" />
+      <Switch size="2xs" {=@checked} on_change="toggle_switch" testid="2xs" />
+      <Switch size="xs" checked={@checked1} on_change="toggle_switch1" testid="xs" />
+      <Switch {=@checked} on_change="toggle_switch" testid="default" />
     </div>
     """
   end

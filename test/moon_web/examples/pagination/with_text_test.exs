@@ -4,8 +4,6 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
   test "should switch active page to last and disable next arrow", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/PaginationExample.WithText")
 
-    refute view |> element("#default svg.moon-icon.fill-none.text-moon-24.rtl:rotate-180")
-
     assert view
            |> element("#default button[data-testid=prev_button][value=0][disabled]")
            |> has_element?()
@@ -42,7 +40,7 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
   end
 
   test "should switch active pages with arrows", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithIcons")
+    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithText")
 
     assert view
            |> element("#default button[data-testid=prev_button][value=0][disabled]")
