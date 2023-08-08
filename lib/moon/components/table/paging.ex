@@ -13,7 +13,7 @@ defmodule Moon.Components.Table.Paging do
 
   def render(assigns) do
     ~F"""
-    <div class="w-full flex">
+    <div class="w-full flex" data-testid="paging">
       <div class="flex-1"><span class="font-bold">{@offset + 1}-{@offset + @paging_info.visible_count}</span> of {@paging_info.total_count}</div>
       <div class="flex-1 text-right">
         <span
