@@ -10,7 +10,7 @@ defmodule Moon.Components.Table.Paging do
   prop(paging_click, :event)
   prop(limit, :integer, default: 10)
   prop(offset, :integer, default: 0)
-  prop(testid, :string)
+  prop(testid, :string, default: "paging")
 
   def render(assigns) do
     ~F"""
