@@ -10,10 +10,11 @@ defmodule Moon.Components.Table.Paging do
   prop(paging_click, :event)
   prop(limit, :integer, default: 10)
   prop(offset, :integer, default: 0)
+  prop(testid, :string, default: "paging")
 
   def render(assigns) do
     ~F"""
-    <div class="w-full flex">
+    <div class="w-full flex" data-testid={@testid}>
       <div class="flex-1"><span class="font-bold">{@offset + 1}-{@offset + @paging_info.visible_count}</span> of {@paging_info.total_count}</div>
       <div class="flex-1 text-right">
         <span
