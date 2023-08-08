@@ -87,7 +87,7 @@ defmodule Moon.Components.Button do
           "opacity-60": @disabled,
           "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
           "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
-          @animation == "error"
+            @animation == "error"
         ],
         @class
       ])}
