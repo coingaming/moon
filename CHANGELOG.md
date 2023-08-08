@@ -1,3 +1,10 @@
+## [2.50.1](https://github.com/coingaming/moon/compare/v2.50.0...v2.50.1) (2023-08-08)
+
+
+### Bug Fixes
+
+* Add data-testid to Moon.Components.Table.Paging ([#691](https://github.com/coingaming/moon/issues/691)) ([48a0fe0](https://github.com/coingaming/moon/commit/48a0fe0709cba52452da6cb1cdbfcab0e5d89f7d))
+
 # [2.50.0](https://github.com/coingaming/moon/compare/v2.49.10...v2.50.0) (2023-08-08)
 
 
