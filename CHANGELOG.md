@@ -1,3 +1,10 @@
+# [2.50.0](https://github.com/coingaming/moon/compare/v2.49.10...v2.50.0) (2023-08-08)
+
+
+### Features
+
+* support merging class for `button` component [#690](https://github.com/coingaming/moon/issues/690) ([2a0d63c](https://github.com/coingaming/moon/commit/2a0d63cd6fa4d0aa7680b24f5ca9880710eb7b72))
+
 ## [2.49.10](https://github.com/coingaming/moon/compare/v2.49.9...v2.49.10) (2023-07-25)
 
 
