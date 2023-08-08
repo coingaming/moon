@@ -59,36 +59,38 @@ defmodule Moon.Components.Button do
     ~F"""
     <button
       id={@id}
-      class={
-        "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
-        @class,
-        "text-goten bg-piccolo": @variant in ["primary"],
-        "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
-          @variant in ["secondary"],
-        "bg-hit text-goten": @variant in ["tertiary"],
-        "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
-        "text-trunks hover:bg-hit-120 hover:text-piccolo": @variant in ["link"],
-        "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
-        "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),
-        "text-moon-14 h-10 px-4": @size == "md" && slot_assigned?(:default),
-        "text-moon-16 h-12 px-5": @size == "lg" && slot_assigned?(:default),
-        "text-moon-16 h-14 px-6": @size == "xl" && slot_assigned?(:default),
-        "p-1": @size == "xs" && !slot_assigned?(:default),
-        "p-1": @size == "sm" && !slot_assigned?(:default),
-        "p-2": @size == "md" && !slot_assigned?(:default),
-        "p-3": @size == "lg" && !slot_assigned?(:default),
-        "p-4": @size == "xl" && !slot_assigned?(:default),
-        "rounded-moon-s-xs": @size == "xs",
-        "rounded-moon-s-sm": @size == "sm",
-        "rounded-moon-s-sm": @size == "md",
-        "rounded-moon-s-sm": @size == "lg",
-        "rounded-moon-s-md": @size == "xl",
-        "w-full bg-hit": @full_width && slot_assigned?(:right_icon_slot),
-        "opacity-60": @disabled,
-        "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
-        "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
-          @animation == "error"
-      }
+      class={merge([
+        [
+          "flex justify-center items-center gap-2 relative overflow-hidden active:scale-90 transition-all font-semibold",
+          "text-goten bg-piccolo": @variant in ["primary"],
+          "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
+            @variant in ["secondary"],
+          "bg-hit text-goten": @variant in ["tertiary"],
+          "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
+          "text-trunks hover:bg-hit-120 hover:text-piccolo": @variant in ["link"],
+          "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
+          "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),
+          "text-moon-14 h-10 px-4": @size == "md" && slot_assigned?(:default),
+          "text-moon-16 h-12 px-5": @size == "lg" && slot_assigned?(:default),
+          "text-moon-16 h-14 px-6": @size == "xl" && slot_assigned?(:default),
+          "p-1": @size == "xs" && !slot_assigned?(:default),
+          "p-1": @size == "sm" && !slot_assigned?(:default),
+          "p-2": @size == "md" && !slot_assigned?(:default),
+          "p-3": @size == "lg" && !slot_assigned?(:default),
+          "p-4": @size == "xl" && !slot_assigned?(:default),
+          "rounded-moon-s-xs": @size == "xs",
+          "rounded-moon-s-sm": @size == "sm",
+          "rounded-moon-s-sm": @size == "md",
+          "rounded-moon-s-sm": @size == "lg",
+          "rounded-moon-s-md": @size == "xl",
+          "w-full bg-hit": @full_width && slot_assigned?(:right_icon_slot),
+          "opacity-60": @disabled,
+          "anim-pulse animate-[pulse2_1.5s_infinite]": @animation == "pulse",
+          "bg-chichi text-goten animate-[error_0.82s_cubic-bezier(0.36,0.07,0.19,0.97)_1_both] anim-error":
+            @animation == "error"
+        ],
+        @class
+      ])}
       disabled={@disabled}
       type={@type}
       form={@form}
