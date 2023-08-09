@@ -23,7 +23,8 @@ defmodule Moon.Design.Form.Group do
     ~F"""
     <div
       class={merge([
-        "flex border-none bg-beerus rounded-moon-i-sm h-fit",
+        "moon-group",
+        "flex border-none bg-gohan rounded-moon-i-sm h-fit",
         (@orientation == "horizontal" && "flex-row") || "flex-col",
         @class
       ])}

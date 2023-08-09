@@ -33,6 +33,7 @@ defmodule Moon.Helpers.Form do
 
   def input_classes(%{size: size, disabled: disabled}) do
     [
+      "moon-input",
       "focus:ring-0 border-0 py-0 px-4 m-0",
       "block w-full max-w-full appearance-none text-[1rem] text-bulma transition-shadow box-border before:box-border after:box-border",
       "relative z-[2] shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none bg-gohan",
