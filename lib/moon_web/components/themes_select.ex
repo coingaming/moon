@@ -21,7 +21,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         class="fixed bottom-4 lg:bottom-20 ltr:right-4 rtl:left-4 lg:z-50 z-[9999]"
       >
         <Popover.Trigger>
-          <IconButton icon_only="media_tuner" class="shadow-moon-md rounded-full">
+          <IconButton icon_only="media_tuner" class="shadow-moon-md rounded-full rounded-moon-s-xx">
           </IconButton>
         </Popover.Trigger>
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">

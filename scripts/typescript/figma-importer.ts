@@ -196,21 +196,21 @@ themes.map(async (theme: ThemeConf) => {
 
   const fontFaceCss = `
 @font-face {
-  font-family: Averta Std;
+  font-family: DM Sans;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-weight: 400;
-  src: local("AvertaStd-Regular"), local("Averta Std Regular"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/regular.woff2) format("woff2");
+  src: local("DMSans-Regular"), local("DM Sans Regular"), url("/moon/assets/fonts/DMSans-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: Averta Std;
+  font-family: DM Sans;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-weight: 500;
-  src: local("AvertaStd-Semibold"), local("Averta Std Semibold"), url(https://sportsbet.io/sportsbet-io/files/fonts/averta-std/semibold.woff2) format("woff2");
+  src: local("DMSans-Semibold"), local("DM Sans Semibold"), url("/moon/assets/fonts/DMSans-Semibold.woff2") format("woff2");
 }
   `;
 

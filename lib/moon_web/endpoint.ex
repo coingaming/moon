@@ -25,7 +25,7 @@ defmodule MoonWeb.Endpoint do
     at: "/moon/assets/",
     from: :moon,
     gzip: true,
-    only: ~w(assets themes images svgs favicon.ico robots.txt),
+    only: ~w(assets themes images svgs favicon.ico robots.txt fonts),
     cache_control_for_etags: "public, max-age=86400"
   )
 
