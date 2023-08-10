@@ -52,7 +52,7 @@ defmodule Moon.MixProject do
         "lib",
         "config/surface.exs",
         "assets",
-        "priv/static/{themes,moon.js}",
+        "priv/static/{themes,fonts,moon.js}",
         "priv/templates",
         "mix.exs",
         "README.md",
