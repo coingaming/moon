@@ -1,3 +1,10 @@
+# [2.51.0](https://github.com/coingaming/moon/compare/v2.50.1...v2.51.0) (2023-08-10)
+
+
+### Features
+
+* [MDS-380] Add DM Sans font, fix text-size-adjust ([#693](https://github.com/coingaming/moon/issues/693)) ([8b24f71](https://github.com/coingaming/moon/commit/8b24f7104b56e1c6f3951e86deb0ad7d28664d5a))
+
 ## [2.50.1](https://github.com/coingaming/moon/compare/v2.50.0...v2.50.1) (2023-08-08)
 
 
