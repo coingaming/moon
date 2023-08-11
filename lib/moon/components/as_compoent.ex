@@ -4,9 +4,13 @@ defmodule Moon.Components.AsComponent do
   """
   use Moon.StatelessComponent
   prop(class, :css_class)
-  prop(as, :string, values!: ~w(a button), default: "button")
+  prop(as, :string, values!: ~w(a button div), default: "button")
   # for as="a" type only
   prop(href, :string)
+  # for as="a" type only
+  prop(target, :string)
+  # for as="a" type only
+  prop(rel, :string)
   # for as="button" only
   prop(on_click, :event)
   # for everything
@@ -18,6 +22,7 @@ defmodule Moon.Components.AsComponent do
   slot(default)
   prop(testid, :string)
   prop(id, :string)
+  prop(aria_label, :string)
 
   def render(assigns) do
     ~F"""
@@ -30,10 +35,23 @@ defmodule Moon.Components.AsComponent do
         {=@value}
         {...@attrs}
         {=@id}
+        aria-label={@aria_label}
         data-testid={@testid}
       ><#slot /></button>
     {#elseif @as == "a"}
-      <a {=@class} {=@href} {...@attrs} {=@id} {=@value} data-testid={@testid} :values={@values}><#slot /></a>
+      <a
+        {=@class}
+        {=@href}
+        {=@target}
+        {=@rel}
+        {...@attrs}
+        {=@id}
+        {=@value}
+        data-testid={@testid}
+        :values={@values}
+      ><#slot /></a>
+    {#elseif @as == "div"}
+      <div {=@class} {...@attrs} {=@id} {=@value} data-testid={@testid} :values={@values}><#slot /></div>
     {/if}
     """
   end

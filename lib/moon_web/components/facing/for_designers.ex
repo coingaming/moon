@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Button
+  alias Moon.Design.Button
   alias Moon.Icons.ArrowsTopRight
   alias MoonWeb.Components.Facing.FigmaIcon
   alias MoonWeb.Pages.GettingStartedPage
@@ -19,28 +19,25 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
           </a>
         </h2>
         <div class="3xl:absolute 3xl:top-6 ltr:3xl:right-6 rtl:3xl:left-6 cursor-pointer">
-          <a href={live_path(MoonWeb.Endpoint, GettingStartedPage)}>
+          <a
+            href={live_path(MoonWeb.Endpoint, GettingStartedPage)}
+            aria-label="Read more info for designers"
+          >
             <ArrowsTopRight font_size="2rem" />
           </a>
         </div>
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex theme-moon-dark bg-transparent">
-        <a
+        <Button
+          as="a"
+          variant="secondary"
           href="https://www.figma.com/community/file/1002945721703152933"
           target="_blank"
           rel="noreferrer"
-        >
-          <Button variant="secondary">Figma</Button>
-        </a>
-        <a href="gettingStarted">
-          <Button variant="secondary">Getting Started</Button>
-        </a>
-        <a href="typography">
-          <Button variant="secondary">Typography</Button>
-        </a>
-        <a href="colours">
-          <Button variant="secondary">Colour Convention</Button>
-        </a>
+        >Figma</Button>
+        <Button variant="secondary" as="a" href="/getting-started">Getting Started</Button>
+        <Button variant="secondary" as="a" href="/typography">Typography</Button>
+        <Button variant="secondary" as="a" href="/colours">Colour Convention</Button>
       </div>
     </div>
     """

@@ -9,7 +9,7 @@ defmodule MoonWeb.Components.Facing.Future do
     ~F"""
     <a
       href="/contribute"
-      class="group block relative p-6 md:px-14 md:py-8 rounded-moon-s-lg bg-[url('/moon/assets/images/facing/future_bg.png')] bg-cover z-20"
+      class="group block relative p-6 md:px-14 md:py-8 rounded-moon-s-lg bg-[url('/moon/assets/images/facing/future_bg.webp')] bg-cover z-20"
     >
       <div class="flex justify-between align-start">
         <div class="flex flex-col gap-6">

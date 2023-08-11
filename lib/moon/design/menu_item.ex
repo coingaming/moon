@@ -26,7 +26,7 @@ defmodule Moon.Design.MenuItem do
   @doc "CSS class for width"
   prop(width, :css_class, default: "w-full")
   @doc "Which tag should be set for rendering"
-  prop(as, :string, values!: ~w(a button), default: "button")
+  prop(as, :string, values!: ~w(a button div), default: "button")
   @doc "A href attribute when prop as=\"a\""
   prop(href, :string)
   @doc "Additional attributes set for the tag"

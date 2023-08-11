@@ -43,7 +43,7 @@ defmodule Moon.Design.Search do
 
   def render(assigns) do
     ~F"""
-    <div {=@id} class={merge(["w-full", @class])} data-testid={@testid}>
+    <div {=@id} class={merge(["w-full", @class])} data-testid={@testid} aria-label="Search">
       <Dropdown id={"#{@id}-dropdown"} {=@is_open} hook="Combobox">
         <:trigger :let={is_open: is_open}>
           <#slot {@trigger, is_open: is_open}>
