@@ -1,3 +1,10 @@
+## [2.51.1](https://github.com/coingaming/moon/compare/v2.51.0...v2.51.1) (2023-08-15)
+
+
+### Bug Fixes
+
+* [MDS-637] Main page accessibility, performance and SEO improvements ([#695](https://github.com/coingaming/moon/issues/695)) ([d91d8de](https://github.com/coingaming/moon/commit/d91d8de4c0d4cc179913003e03826bd764909fa5))
+
 # [2.51.0](https://github.com/coingaming/moon/compare/v2.50.1...v2.51.0) (2023-08-10)
 
 
