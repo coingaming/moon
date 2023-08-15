@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.AvatarExample.StatusOrigin do
+defmodule MoonWeb.Examples.Design.AvatarExample.Customization do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -9,21 +9,22 @@ defmodule MoonWeb.Examples.Design.AvatarExample.StatusOrigin do
 
   def render(assigns) do
     ~F"""
-    <Avatar>
+    <Avatar class="text-chichi">
       <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "top", horizontal: "right"} />
+    </Avatar>
+    <Avatar class="bg-piccolo text-goten">
+      <GenericUser class="text-moon-24" />
+    </Avatar>
+    <Avatar class="rounded-full rounded-moon-i-xx">
+      <GenericUser class="text-moon-24" />
     </Avatar>
     <Avatar>
       <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "top", horizontal: "left"} />
+      <Avatar.Status class="bg-chichi" />
     </Avatar>
     <Avatar>
       <GenericUser class="text-moon-24" />
-      <Avatar.Status />
-    </Avatar>
-    <Avatar>
-      <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "bottom", horizontal: "left"} />
+      <Avatar.Status class="border-chichi" />
     </Avatar>
     """
   end
@@ -35,21 +36,22 @@ defmodule MoonWeb.Examples.Design.AvatarExample.StatusOrigin do
 
     ...
 
-    <Avatar>
+    <Avatar class="text-chichi">
       <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "top", horizontal: "right"} />
+    </Avatar>
+    <Avatar class="bg-piccolo text-goten">
+      <GenericUser class="text-moon-24" />
+    </Avatar>
+    <Avatar class="rounded-full rounded-moon-i-xx">
+      <GenericUser class="text-moon-24" />
     </Avatar>
     <Avatar>
       <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "top", horizontal: "left"} />
+      <Avatar.Status class="bg-chichi" />
     </Avatar>
     <Avatar>
       <GenericUser class="text-moon-24" />
-      <Avatar.Status />
-    </Avatar>
-    <Avatar>
-      <GenericUser class="text-moon-24" />
-      <Avatar.Status position={vertical: "bottom", horizontal: "left"} />
+      <Avatar.Status class="border-chichi" />
     </Avatar>
     """
   end

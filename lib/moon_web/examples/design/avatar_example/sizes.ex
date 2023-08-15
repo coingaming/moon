@@ -4,66 +4,92 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Sizes do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
+  alias Moon.Icons.GenericUser
   alias Moon.Design.Avatar
 
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs" />
-      <Avatar size="sm" />
-      <Avatar />
-      <Avatar size="lg" />
-      <Avatar size="xl" />
-      <Avatar size="2xl" />
+      <Avatar size="xs">
+        <GenericUser class="text-moon-16" />
+      </Avatar>
+      <Avatar size="sm">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar>
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="lg">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="xl">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="2xl">
+        <GenericUser class="text-moon-32" />
+      </Avatar>
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar name="xs" size="xs" />
-      <Avatar name="sm" size="sm" />
-      <Avatar name="md" />
-      <Avatar name="lg" size="lg" />
-      <Avatar name="xl" size="xl" />
-      <Avatar name="2xl" size="2xl" />
+      <Avatar size="xs">xs</Avatar>
+      <Avatar size="sm">sm</Avatar>
+      <Avatar>md</Avatar>
+      <Avatar size="lg">lg</Avatar>
+      <Avatar size="xl">xl</Avatar>
+      <Avatar size="2xl">2xl</Avatar>
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xs" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="sm" />
-      <Avatar image_url="https://picsum.photos/id/547/100" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="lg" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xl" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="2xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="sm" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="lg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="2xl" />
     </div>
     """
   end
 
   def code() do
     """
+    alias Moon.Icons.GenericUser
     alias Moon.Design.Avatar
 
     ...
 
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs" />
-      <Avatar size="sm" />
-      <Avatar />
-      <Avatar size="lg" />
-      <Avatar size="xl" />
-      <Avatar size="2xl" />
+      <Avatar size="xs">
+        <GenericUser class="text-moon-16" />
+      </Avatar>
+      <Avatar size="sm">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar>
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="lg">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="xl">
+        <GenericUser class="text-moon-24" />
+      </Avatar>
+      <Avatar size="2xl">
+        <GenericUser class="text-moon-32" />
+      </Avatar>
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar name="xs" size="xs" />
-      <Avatar name="sm" size="sm" />
-      <Avatar name="md" />
-      <Avatar name="lg" size="lg" />
-      <Avatar name="xl" size="xl" />
-      <Avatar name="2xl" size="2xl" />
+      <Avatar size="xs">xs</Avatar>
+      <Avatar size="sm">sm</Avatar>
+      <Avatar>md</Avatar>
+      <Avatar size="lg">lg</Avatar>
+      <Avatar size="xl">xl</Avatar>
+      <Avatar size="2xl">2xl</Avatar>
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xs" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="sm" />
-      <Avatar image_url="https://picsum.photos/id/547/100" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="lg" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xl" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="2xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="sm" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="lg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="2xl" />
     </div>
     """
   end

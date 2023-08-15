@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
@@ -37,85 +38,28 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
         </p>
       </ComponentPageDescription>
 
+      <Anatomy>{component_anatomy()}</Anatomy>
+
       <ExamplesList examples={[
         AvatarExample.Default,
         AvatarExample.Variants,
-        AvatarExample.Rounded,
-        AvatarExample.CustomColours,
         AvatarExample.Sizes,
         AvatarExample.ActiveStatus,
-        AvatarExample.StatusOrigin
+        AvatarExample.StatusOrigin,
+        AvatarExample.Customization
       ]} />
 
-      <PropsTable
-        title="Avatar props"
-        data={[
-          %{
-            :name => 'bg_color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'bg-gohan',
-            :description => 'Background color'
-          },
-          %{
-            :name => 'color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'text-bulma',
-            :description => 'Text color'
-          },
-          %{
-            :name => 'image_url',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Path to the image'
-          },
-          %{
-            :name => 'is_rounded',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Rounded border radius'
-          },
-          %{
-            :name => 'is_status_active',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Active state for status indication'
-          },
-          %{
-            :name => 'name',
-            :type => 'string',
-            :required => 'No',
-            :default => '-',
-            :description => 'Capital letters of name'
-          },
-          %{
-            :name => 'size',
-            :type => 'xs | sm | md | lg | xl | 2xl',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of avatar'
-          },
-          %{
-            :name => 'status_origin',
-            :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
-            :required => 'No',
-            :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
-            :description => 'Position for status indicator'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_classs',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Avatar} />
+      <PropsTable module={Moon.Design.Avatar.Status} />
     </Page>
+    """
+  end
+
+  def component_anatomy do
+    """
+    <Avatar>...
+      <Avatar.Status />
+    </Avatar>
     """
   end
 end
