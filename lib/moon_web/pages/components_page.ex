@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ComponentPage do
+defmodule MoonWeb.Pages.ComponentsPage do
   @moduledoc false
 
   use MoonWeb, :live_view

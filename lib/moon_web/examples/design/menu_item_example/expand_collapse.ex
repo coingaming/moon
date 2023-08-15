@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         <MenuItem>Vision</MenuItem>
         <MenuItem>Getting started</MenuItem>
         <MenuItem>How to contribute?</MenuItem>
-        <MenuItem>Colours palette</MenuItem>
+        <MenuItem>Colours</MenuItem>
         <MenuItem>Tokens</MenuItem>
         <MenuItem>Transform SVG</MenuItem>
         <MenuItem>Manifest</MenuItem>
@@ -204,7 +204,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           <MenuItem>Vision</MenuItem>
           <MenuItem>Getting started</MenuItem>
           <MenuItem>How to contribute?</MenuItem>
-          <MenuItem>Colours palette</MenuItem>
+          <MenuItem>Colours</MenuItem>
           <MenuItem>Tokens</MenuItem>
           <MenuItem>Transform SVG</MenuItem>
           <MenuItem>Manifest</MenuItem>

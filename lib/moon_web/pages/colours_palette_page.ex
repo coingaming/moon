@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ColoursPalettePage do
+defmodule MoonWeb.Pages.ColoursPage do
   @moduledoc false
 
   use MoonWeb, :live_view

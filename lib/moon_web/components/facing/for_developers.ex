@@ -45,11 +45,13 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
         >Github</Button>
         <Button variant="secondary" as="a" href="/getting-started">Getting Started</Button>
         <Button variant="secondary" as="a" href="/tokens">Design Tokens</Button>
-        <!--
-          <Button variant="secondary" as="a" href="https://github.com/coingaming/theme-moon/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
+        <Button
+          variant="secondary"
+          as="a"
+          href="https://github.com/coingaming/moon/tree/main/priv/static/themes"
           target="_blank"
-          rel="noreferrer">Creating Themes</Button>
-       -->
+          rel="noreferrer"
+        >Creating Themes</Button>
         <Button
           variant="secondary"
           as="a"

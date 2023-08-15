@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.TokensPage do
               rel="noreferrer"
               is_underline="underline"
             >theme template file</Link>.</li>
-          <li>Check the <Link to="/colours-palette" is_underline="underline">guide for colours</Link>.</li>
+          <li>Check the <Link to="/colours" is_underline="underline">guide for colours</Link>.</li>
           <li>Replace colour values one by one.</li>
           <li>Change the values to your product ones.</li>
           <li>Publish your changes.</li>
