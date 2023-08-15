@@ -11,7 +11,7 @@ defmodule MoonWeb.Components.Facing.CardArticle do
 
   def render(assigns) do
     ~F"""
-    <div>
+    <li>
       <a target="_blank" href={@href}>
         <div class={
           "group relative w-72 h-96 flex flex-col justify-end p-6 bg-goku rounded-moon-s-lg",
@@ -33,7 +33,7 @@ defmodule MoonWeb.Components.Facing.CardArticle do
           </p>
         </div>
       </a>
-    </div>
+    </li>
     """
   end
 

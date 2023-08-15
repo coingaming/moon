@@ -10,7 +10,7 @@ defmodule MoonWeb.Components.Facing.CardContributor do
 
   def render(assigns) do
     ~F"""
-    <div class="flex flex-col">
+    <li class="flex flex-col">
       <div
         class={
           "relative relative w-72 h-96 rounded-moon-s-lg overflow-hidden bg-cover bg-center grayscale",
@@ -23,7 +23,7 @@ defmodule MoonWeb.Components.Facing.CardContributor do
         </p>
       </div>
       <p class="text-moon-24 mt-2 font-semibold">{@name}</p>
-    </div>
+    </li>
     """
   end
 

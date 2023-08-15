@@ -21,11 +21,14 @@ defmodule MoonWeb.Components.ThemesSelect do
         class="fixed bottom-4 lg:bottom-20 ltr:right-4 rtl:left-4 lg:z-50 z-[9999]"
       >
         <Popover.Trigger>
-          <IconButton icon_only="media_tuner" class="shadow-moon-md rounded-full rounded-moon-s-xx">
-          </IconButton>
+          <IconButton
+            icon_only="media_tuner"
+            class="shadow-moon-md rounded-full rounded-moon-s-xx"
+            aria_label="Toggle site settings"
+          />
         </Popover.Trigger>
         <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
-          <MenuItem as="a" class="cursor-default">
+          <MenuItem as="div" class="cursor-default">
             {(String.contains?(@theme_name, "-dark") && "Dark mode") || "Light mode"}
             <Switch
               size="xs"
@@ -36,7 +39,7 @@ defmodule MoonWeb.Components.ThemesSelect do
               <:off_icon><OtherSun /></:off_icon>
             </Switch>
           </MenuItem>
-          <MenuItem as="a" class="cursor-default">
+          <MenuItem as="div" class="cursor-default">
             {String.upcase(@direction)} mode
             <Switch
               size="xs"

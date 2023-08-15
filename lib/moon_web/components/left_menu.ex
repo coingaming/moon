@@ -30,6 +30,7 @@ defmodule MoonWeb.Components.LeftMenu do
             <a
               href={live_path(MoonWeb.Endpoint, MoonWeb.Pages.MainPage)}
               class="text-bulma hover:text-bulma active:text-bulma focus:text-bulma"
+              aria-label="Surface.moon.io main page"
             >
               <LargeLogo class="h-6 w-[6.5rem]" />
             </a>

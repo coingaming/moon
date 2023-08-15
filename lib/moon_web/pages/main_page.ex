@@ -32,9 +32,7 @@ defmodule MoonWeb.Pages.MainPage do
             <p class="flex items-center gap-2 text-moon-16 max-w-screen-sm font-semibold">
               <span>Try out Moon DS for
               </span>
-              <a href="https://moon.io/" target="_blank" rel="noreferrer">
-                <Button size="sm">React</Button>
-              </a>
+              <Button as="a" size="sm" href="https://moon.io/" target="_blank" rel="noreferrer">React</Button>
             </p>
           </div>
           <div class="flex flex-col lg:flex-row gap-4 3xl:fixed 3xl:top-12 ltr:3xl:right-12 rtl:3xl:left-12 z-30">

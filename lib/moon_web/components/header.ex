@@ -16,7 +16,7 @@ defmodule MoonWeb.Components.Header do
           <span class="sr-only">Open sidebar</span>
           <GenericMenu class="text-moon-32" />
         </button>
-        <a href="/">
+        <a href="/" aria-label="surface.moon.io main page">
           <LogoMoonDesignShort height="2em" width="2em" />
         </a>
       </div>

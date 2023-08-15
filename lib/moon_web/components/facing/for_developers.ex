@@ -3,7 +3,7 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Components.Button
+  alias Moon.Design.Button
   alias Moon.Icons.ArrowsTopRight
   alias MoonWeb.Components.Facing.GithubIcon
   alias MoonWeb.Pages.GettingStartedPage
@@ -23,42 +23,41 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
           </a>
         </h2>
         <div class="3xl:absolute 3xl:top-6 ltr:3xl:right-6 rtl:3xl:left-6 cursor-pointer">
-          <a href={live_path(
-            MoonWeb.Endpoint,
-            GettingStartedPage,
-            role: GettingStartedPage.developer_role()
-          )}>
+          <a
+            href={live_path(
+              MoonWeb.Endpoint,
+              GettingStartedPage,
+              role: GettingStartedPage.developer_role()
+            )}
+            aria-label="Read more info for developers"
+          >
             <ArrowsTopRight font_size="2rem" />
           </a>
         </div>
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex bg-transparent">
-        <a href="https://github.com/coingaming/theme-moon" target="_blank" rel="noreferrer">
-          <Button variant="secondary">Github</Button>
-        </a>
-        <a href="gettingStarted">
-          <Button variant="secondary">Getting Started</Button>
-        </a>
-        <a href="tokens">
-          <Button variant="secondary">Design Tokens</Button>
-        </a>
-        <a
-          href="https://github.com/coingaming/theme-moon/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
+        <Button
+          variant="secondary"
+          as="a"
+          href="https://github.com/coingaming/moon"
           target="_blank"
           rel="noreferrer"
-        >
-          <Button variant="secondary">Creating Themes</Button>
-        </a>
-        <a
-          href="https://github.com/coingaming/theme-moon/blob/develop/CONTRIBUTING.md"
+        >Github</Button>
+        <Button variant="secondary" as="a" href="/getting-started">Getting Started</Button>
+        <Button variant="secondary" as="a" href="/tokens">Design Tokens</Button>
+        <!--
+          <Button variant="secondary" as="a" href="https://github.com/coingaming/theme-moon/blob/develop/packages/themes/src/moonDesignDark/moonDesignDark.ts"
+          target="_blank"
+          rel="noreferrer">Creating Themes</Button>
+       -->
+        <Button
+          variant="secondary"
+          as="a"
+          href="https://github.com/coingaming/moon/blob/main/CONTRIBUTING.md"
           target="_blank"
           rel="noreferrer"
-        >
-          <Button variant="secondary">Contribution</Button>
-        </a>
-        <a href="components/accordion">
-          <Button variant="secondary">Components</Button>
-        </a>
+        >Contribution</Button>
+        <Button variant="secondary" as="a" href="/components">Components</Button>
       </div>
     </div>
     """
