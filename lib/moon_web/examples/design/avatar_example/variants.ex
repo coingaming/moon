@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Variants do
     ~F"""
     <Avatar />
     <Avatar name="md" />
-    <Avatar image_url="https://picsum.photos/id/547/100" />
+    <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
     """
   end
 
@@ -22,7 +22,7 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Variants do
 
     <Avatar />
     <Avatar name="md" />
-    <Avatar image_url="https://picsum.photos/id/547/100" />
+    <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
     """
   end
 end

@@ -8,9 +8,14 @@ defmodule MoonWeb.Examples.Design.AvatarExample.ActiveStatus do
 
   def render(assigns) do
     ~F"""
-    <Avatar is_status_active />
-    <Avatar name="md" is_status_active />
-    <Avatar image_url="https://picsum.photos/id/547/100" is_status_active />
+    <Avatar>
+      <Avatar.Status />
+    </Avatar>
+    <Avatar name="md">
+      <Avatar.Status /></Avatar>
+    <Avatar image_url="/moon/assets/images/facing/avatar.jpeg">
+      <Avatar.Status />
+    </Avatar>
     """
   end
 
@@ -20,9 +25,14 @@ defmodule MoonWeb.Examples.Design.AvatarExample.ActiveStatus do
 
     ...
 
-    <Avatar is_status_active />
-    <Avatar name="md" is_status_active />
-    <Avatar image_url="https://picsum.photos/id/547/100" is_status_active />
+    <Avatar>
+      <Avatar.Status />
+    </Avatar>
+    <Avatar name="md">
+      <Avatar.Status /></Avatar>
+    <Avatar image_url="/moon/assets/images/facing/avatar.jpeg">
+      <Avatar.Status />
+    </Avatar>
     """
   end
 end

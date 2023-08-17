@@ -10,6 +10,7 @@ config :surface, :components, [
   {Moon.Components.TextInput, propagate_context_to_slots: true},
   {Moon.Design.Accordion, propagate_context_to_slots: true},
   {Moon.Design.Accordion.Item, propagate_context_to_slots: true},
+  {Moon.Design.Avatar, propagate_context_to_slots: true},
   {Moon.Design.BottomSheet, propagate_context_to_slots: true},
   {Moon.Design.Carousel, propagate_context_to_slots: true},
   {Moon.Design.Carousel.Reel, propagate_context_to_slots: true},

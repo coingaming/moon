@@ -5,14 +5,21 @@ defmodule MoonWeb.Examples.Design.AvatarExample.StatusOrigin do
   use MoonWeb, :example
 
   alias Moon.Design.Avatar
-  alias Moon.Design.Avatar.StatusOrigin
 
   def render(assigns) do
     ~F"""
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
-    <Avatar is_status_active />
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
+    <Avatar>
+      <Avatar.Status position={vertical: "top", horizontal: "right"} />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status position={vertical: "top", horizontal: "left"} />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status position={vertical: "bottom", horizontal: "left"} />
+    </Avatar>
     """
   end
 
@@ -22,10 +29,18 @@ defmodule MoonWeb.Examples.Design.AvatarExample.StatusOrigin do
 
     ...
 
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "right"}} />
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "top", horizontal: "left"}} />
-    <Avatar is_status_active />
-    <Avatar is_status_active status_origin={%StatusOrigin{vertical: "bottom", horizontal: "left"}} />
+    <Avatar>
+      <Avatar.Status position={vertical: "top", horizontal: "right"} />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status position={vertical: "top", horizontal: "left"} />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status />
+    </Avatar>
+    <Avatar>
+      <Avatar.Status position={vertical: "bottom", horizontal: "left"} />
+    </Avatar>
     """
   end
 end

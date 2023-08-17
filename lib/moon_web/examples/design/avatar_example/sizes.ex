@@ -25,12 +25,12 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Sizes do
       <Avatar name="2xl" size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xs" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="sm" />
-      <Avatar image_url="https://picsum.photos/id/547/100" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="lg" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xl" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="2xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="sm" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="lg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="2xl" />
     </div>
     """
   end
@@ -58,12 +58,12 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Sizes do
       <Avatar name="2xl" size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xs" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="sm" />
-      <Avatar image_url="https://picsum.photos/id/547/100" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="lg" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="xl" />
-      <Avatar image_url="https://picsum.photos/id/547/100" size="2xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="sm" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="lg" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xl" />
+      <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="2xl" />
     </div>
     """
   end
