@@ -1,4 +1,4 @@
-defmodule MoonWeb.Pages.ContributePage do
+defmodule MoonWeb.Pages.HowToContributePage do
   @moduledoc false
 
   use MoonWeb, :live_view

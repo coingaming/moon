@@ -6,11 +6,11 @@ defmodule MoonWeb.Schema.Link do
     [
       [MoonWeb.Pages.VisionPage, icon: "generic_loyalty"],
       [MoonWeb.Pages.GettingStartedPage, icon: "other_rocket"],
-      [MoonWeb.Pages.ContributePage, icon: "other_lifebuoy"],
-      [MoonWeb.Pages.ColoursPalettePage, icon: "software_settings"],
+      [MoonWeb.Pages.HowToContributePage, icon: "other_lifebuoy"],
+      [MoonWeb.Pages.ColoursPage, icon: "software_settings"],
       [MoonWeb.Pages.TokensPage, icon: "software_puzzle"],
       [MoonWeb.Pages.TypographyPage, icon: "text_size"],
-      [MoonWeb.Pages.ComponentPage, icon: "software_plate"],
+      [MoonWeb.Pages.ComponentsPage, icon: "software_plate"],
       [MoonWeb.Pages.ManifestPage, icon: "generic_trophy"],
       MoonWeb.Pages.Design.AccordionPage,
       MoonWeb.Pages.Design.AlertPage,
@@ -62,20 +62,27 @@ defmodule MoonWeb.Schema.Link do
 
   @doc "returns structured list of pages - for menu"
   def menu() do
-    titles()
-    |> Enum.reduce(%{}, fn
-      item, acc ->
+    items = titles()
+
+    items_with_icon = Enum.filter(items, fn item -> item[:icon] != nil end)
+    items_without_icon = Enum.filter(items, fn item -> item[:icon] == nil end)
+
+    sorted_items_without_icon =
+      items_without_icon
+      |> Enum.reduce(%{}, fn item, acc ->
         group = get_group(item[:page])
-        acc |> Map.put(group, (acc[group] || []) ++ [item])
-    end)
-    |> Enum.map(fn {key, value} ->
-      if length(value) == 1 do
-        List.first(value)
-      else
-        [key: group_to_title(key), children: value]
-      end
-    end)
-    |> Enum.sort_by(& &1[:key])
+        acc |> Map.update(group, [item], &(&1 ++ [item]))
+      end)
+      |> Enum.map(fn {key, value} ->
+        if length(value) == 1 do
+          List.first(value)
+        else
+          [key: group_to_title(key), children: value]
+        end
+      end)
+      |> Enum.sort_by(& &1[:key])
+
+    sorted_items_without_icon ++ items_with_icon
   end
 
   defp get_group(page) do
