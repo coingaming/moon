@@ -3,8 +3,8 @@ defmodule MoonWeb.Pages.GettingStartedPage do
 
   use MoonWeb, :live_view
 
+  alias Moon.Design.Tabs
   alias MoonWeb.Components.Page
-  alias Moon.Components.Switcher
   alias MoonWeb.Components.Started.ForDeveloper
   alias MoonWeb.Components.Started.ForDesigner
 
@@ -17,32 +17,41 @@ defmodule MoonWeb.Pages.GettingStartedPage do
     ]
   )
 
-  data(selected_role, :string)
+  data(tab_index, :integer)
 
   def mount(params, _session, socket) do
-    {:ok, assign(socket, selected_role: params["role"] || designer_role())}
+    {:ok, assign(socket, tab_index: (params["role"] == developer_role() && 1) || 0)}
   end
 
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <h1 class="text-moon-32 font-semibold">Getting started</h1>
-      <div class="flex flex-row gap-2">
-        <Switcher
-          items={[designer_role(), developer_role()]}
-          selected_item={@selected_role}
-          click="handle_role"
-          class="p-0.5 rounded-lg flex bg-beerus"
-        />
-      </div>
-      <ForDesigner :if={@selected_role == designer_role()} />
-      <ForDeveloper :if={@selected_role == developer_role()} />
+      <Tabs
+        id="getting started"
+        class="justify-between gap-6"
+        selected={@tab_index}
+        on_change="handle_role"
+      >
+        <Tabs.List class="w-fit p-1 gap-1 bg-goku rounded-moon-s-md">
+          <Tabs.Segment>{designer_role()}</Tabs.Segment>
+          <Tabs.Segment>{developer_role()}</Tabs.Segment>
+        </Tabs.List>
+        <Tabs.Panels class="mt-6">
+          <Tabs.Panel>
+            <ForDesigner />
+          </Tabs.Panel>
+          <Tabs.Panel>
+            <ForDeveloper />
+          </Tabs.Panel>
+        </Tabs.Panels>
+      </Tabs>
     </Page>
     """
   end
 
-  def handle_event("handle_role", %{"selected-item" => selected_role}, socket) do
-    {:noreply, assign(socket, :selected_role, selected_role)}
+  def handle_event("handle_role", %{"value" => tab_index}, socket) do
+    {:noreply, assign(socket, tab_index: String.to_integer(tab_index))}
   end
 
   def designer_role(), do: "I'm a designer"
