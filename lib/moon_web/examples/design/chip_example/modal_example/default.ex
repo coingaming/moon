@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.Default do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="set_open">Open dialog</Button>
+      <Button on_click="set_open" testid="open-modal">Open dialog</Button>
       <Modal id="default_modal">
         <Modal.Backdrop />
         <Modal.Panel>
@@ -28,7 +28,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.Default do
             </p>
           </div>
           <div class="p-4 border-t-2 border-beerus">
-            <Button on_click="set_close">Got it, thanks!</Button>
+            <Button on_click="set_close" testid="close-modal">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>

@@ -97,7 +97,7 @@ defmodule Moon.Design.Pagination.Pages do
           ])}
           :on-click={@on_change}
           value={page}
-          aria-label={"page #{page}"}
+          aria-label={"page_#{page}"}
           tabindex={0}
         >
           {page}

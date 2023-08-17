@@ -42,7 +42,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="set_open">Open dialog</Button>
+      <Button on_click="set_open" testid="open-modal">Open dialog</Button>
       <Modal id="with_select_modal">
         <Modal.Backdrop />
         <Modal.Panel>
@@ -70,7 +70,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
             </Form>
           </div>
           <div class="flex gap-2 p-4 justify-end pt-2">
-            <Button variant="secondary" on_click="set_close">Cancel</Button>
+            <Button variant="secondary" on_click="set_close" testid="close-modal">Cancel</Button>
             <Button on_click="set_close">Create</Button>
           </div>
         </Modal.Panel>

@@ -30,6 +30,8 @@ defmodule Moon.Design.Accordion.Header do
         data-testid={@testid}
         type="button"
         aria-expanded={"#{@is_open}"}
+        is-content-outside={"#{@is_content_outside}"}
+        size={"#{@size}"}
         :on-click={@on_change}
         {=@value}
         {=@disabled}

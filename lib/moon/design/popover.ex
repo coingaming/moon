@@ -16,7 +16,12 @@ defmodule Moon.Design.Popover do
     ~F"""
     <div {=@id} data-testid={@testid} class={@class} :on-click-away="close_panel">
       <div class="relative">
-        <div :if={slot_assigned?(:trigger)} role="button" :on-click={@on_click || "toggle_open"}>
+        <div
+          :if={slot_assigned?(:trigger)}
+          role="button"
+          :on-click={@on_click || "toggle_open"}
+          data-testid={"#{@testid}-trigger"}
+        >
           <#slot {@trigger} />
         </div>
         <div

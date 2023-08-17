@@ -44,6 +44,7 @@ defmodule Moon.Design.Dropdown.Options do
       ])}
       {=@id}
       data-testid={@testid}
+      role="listbox"
     >
       {#if slot_assigned?(:option)}
         {#for {option, index} <- Enum.with_index(make_list(@option))}
