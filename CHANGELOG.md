@@ -1,3 +1,10 @@
+## [2.51.2](https://github.com/coingaming/moon/compare/v2.51.1...v2.51.2) (2023-08-17)
+
+
+### Bug Fixes
+
+* headless avatar & some more fixes ([4e8f2c1](https://github.com/coingaming/moon/commit/4e8f2c17a7547234879b0b8a9158b11bfa79f7dc))
+
 ## [2.51.1](https://github.com/coingaming/moon/compare/v2.51.0...v2.51.1) (2023-08-15)
 
 
