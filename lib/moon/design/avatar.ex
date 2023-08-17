@@ -3,10 +3,14 @@ defmodule Moon.Design.Avatar do
 
   use Moon.StatelessComponent
 
+  alias Moon.Icon
+
   @doc "Path to the image"
   prop(image_url, :string)
   @doc "Size of avatar"
   prop(size, :string, default: "md", values: ~w(xs sm md lg xl 2xl))
+  @doc "Capital letters of name"
+  prop(name, :string)
   @doc "Tailwind classes for customization"
   prop(class, :css_class)
   @doc "Data-testid attribute for DOM element"
@@ -45,7 +49,12 @@ defmodule Moon.Design.Avatar do
       style={style(assigns)}
       data-testid={@testid}
     >
-      <#slot />
+      {#if slot_assigned?(:default)}
+        <#slot />
+      {#else}
+        <span :if={@name && !@image_url}>{@name}</span>
+        <Icon name="generic_user" class={set_icon_size(@size)} :if={!@name && !@image_url} />
+      {/if}
       <#slot
         {@status}
         context_put={
@@ -54,6 +63,14 @@ defmodule Moon.Design.Avatar do
       />
     </div>
     """
+  end
+
+  defp set_icon_size(size) do
+    cond do
+      size == "xs" -> "text-moon-16"
+      size == "2xl" -> "text-moon-32"
+      true -> "text-moon-24"
+    end
   end
 
   defp set_border_radius(size) do

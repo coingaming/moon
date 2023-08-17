@@ -4,38 +4,25 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Sizes do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Icons.GenericUser
   alias Moon.Design.Avatar
 
   def render(assigns) do
     ~F"""
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs">
-        <GenericUser class="text-moon-16" />
-      </Avatar>
-      <Avatar size="sm">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar>
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="lg">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="xl">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="2xl">
-        <GenericUser class="text-moon-32" />
-      </Avatar>
+      <Avatar size="xs" />
+      <Avatar size="sm" />
+      <Avatar />
+      <Avatar size="lg" />
+      <Avatar size="xl" />
+      <Avatar size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs">xs</Avatar>
-      <Avatar size="sm">sm</Avatar>
-      <Avatar>md</Avatar>
-      <Avatar size="lg">lg</Avatar>
-      <Avatar size="xl">xl</Avatar>
-      <Avatar size="2xl">2xl</Avatar>
+      <Avatar name="xs" size="xs" />
+      <Avatar name="sm" size="sm" />
+      <Avatar name="md" />
+      <Avatar name="lg" size="lg" />
+      <Avatar name="xl" size="xl" />
+      <Avatar name="2xl" size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />
@@ -50,38 +37,25 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Sizes do
 
   def code() do
     """
-    alias Moon.Icons.GenericUser
     alias Moon.Design.Avatar
 
     ...
 
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs">
-        <GenericUser class="text-moon-16" />
-      </Avatar>
-      <Avatar size="sm">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar>
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="lg">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="xl">
-        <GenericUser class="text-moon-24" />
-      </Avatar>
-      <Avatar size="2xl">
-        <GenericUser class="text-moon-32" />
-      </Avatar>
+      <Avatar size="xs" />
+      <Avatar size="sm" />
+      <Avatar />
+      <Avatar size="lg" />
+      <Avatar size="xl" />
+      <Avatar size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
-      <Avatar size="xs">xs</Avatar>
-      <Avatar size="sm">sm</Avatar>
-      <Avatar>md</Avatar>
-      <Avatar size="lg">lg</Avatar>
-      <Avatar size="xl">xl</Avatar>
-      <Avatar size="2xl">2xl</Avatar>
+      <Avatar name="xs" size="xs" />
+      <Avatar name="sm" size="sm" />
+      <Avatar name="md" />
+      <Avatar name="lg" size="lg" />
+      <Avatar name="xl" size="xl" />
+      <Avatar name="2xl" size="2xl" />
     </div>
     <div class="flex flex-wrap items-center justify-around gap-2 w-full">
       <Avatar image_url="/moon/assets/images/facing/avatar.jpeg" size="xs" />

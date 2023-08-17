@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
 
   use MoonWeb, :live_view
 
+  alias Moon.Design.Tabs
   alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
@@ -38,7 +39,14 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
         </p>
       </ComponentPageDescription>
 
-      <Anatomy>{component_anatomy()}</Anatomy>
+      <Tabs id="anatomy-tabs" class="justify-between gap-6">
+        <h2 class="text-moon-24 font-medium">Anatomy</h2>
+        <Tabs.List tab_titles={["Short syntax", "Long syntax"]} class="w-auto" />
+        <Tabs.Panels>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
+        </Tabs.Panels>
+      </Tabs>
 
       <ExamplesList examples={[
         AvatarExample.Default,
@@ -55,9 +63,18 @@ defmodule MoonWeb.Pages.Design.AvatarPage do
     """
   end
 
-  def component_anatomy do
+  def component_anatomy(:long) do
     """
-    <Avatar>...
+    <Avatar>
+      <Icon name="..." />
+      <Avatar.Status />
+    </Avatar>
+    """
+  end
+
+  def component_anatomy(:short) do
+    """
+    <Avatar>
       <Avatar.Status />
     </Avatar>
     """
