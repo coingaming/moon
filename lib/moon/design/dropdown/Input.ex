@@ -9,6 +9,8 @@ defmodule Moon.Design.Dropdown.Input do
   prop(id, :string)
   @doc "Additional CSS classes for the html tag"
   prop(class, :css_class)
+  @doc "Additional classes for the <input> tag in case of floating label or Group"
+  prop(field_class, :css_class, from_context: :field_class)
 
   @doc "Text to be shown when no value given"
   prop(placeholder, :string)
@@ -45,7 +47,7 @@ defmodule Moon.Design.Dropdown.Input do
         {=@error}
         {=@disabled}
         autocomplete="off"
-        class={"moon-comboinput", @class}
+        class={"moon-comboinput", @field_class, @class}
       />
       <#slot />
     </div>

@@ -24,6 +24,8 @@ defmodule Moon.Design.Form.InsetField do
   prop(readonly, :boolean)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(field_class, :css_class, from_context: :field_class)
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
@@ -31,26 +33,25 @@ defmodule Moon.Design.Form.InsetField do
   @doc "Inner content of the component"
   slot(default)
 
-  prop(attrs, :map)
-
-  # opts={Map.merge(%{id: @id, "data-testid": @testid}, @attrs)}
-
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.Field
       name={@field}
       class={merge([
-        ["relative rounded-moon-i-sm bg-gohan", "opacity-60 cursor-not-allowed": @disabled],
-        @class
+        [
+          "relative rounded-moon-i-sm bg-gohan shadow-input",
+          "opacity-60 cursor-not-allowed": @disabled
+        ] ++
+          [@field_class, @class]
       ])}
     >
       <#slot context_put={
         field_class: [
-          "bg-transparent h-14 leading-[3.5rem] rounded-moon-i-sm",
-          "rtl:[&:not([disabled])]:[&:not([readonly])]:hover:rounded-moon-i-sm rtl:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-sm rtl:[&:not([disabled])]:[&:not([readonly])]:focus-visible:rounded-moon-i-sm rtl:invalid:rounded-moon-i-sm",
-          "ltr:[&:not([disabled])]:[&:not([readonly])]:hover:rounded-moon-i-sm ltr:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-sm ltr:[&:not([disabled])]:[&:not([readonly])]:focus-visible:rounded-moon-i-sm ltr:invalid:rounded-moon-i-sm",
+          "bg-transparent h-14 leading-[3.5rem]",
+          "shadow-none",
           "before:box-border after:box-border",
-          "input-xl-dt-shared input-xl pt-[1.125rem] input-xl-dt-label"
+          "input-xl-dt-shared input-xl pt-[1.125rem] input-xl-dt-label",
+          "rounded-moon-i-sm"
         ],
         disabled: @disabled,
         readonly: @readonly,

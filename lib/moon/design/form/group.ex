@@ -23,7 +23,8 @@ defmodule Moon.Design.Form.Group do
     ~F"""
     <div
       class={merge([
-        "flex border-none bg-beerus rounded-moon-i-sm h-fit",
+        "moon-group",
+        "flex border-none bg-gohan rounded-moon-i-sm h-fit",
         (@orientation == "horizontal" && "flex-row") || "flex-col",
         @class
       ])}
@@ -35,7 +36,7 @@ defmodule Moon.Design.Form.Group do
           merge([
             (@orientation == "vertical" &&
                [
-                 "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error)input-bbb-hidden",
+                 "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error):input-bbb-hidden",
                  "not-first:rounded-tl-none not-first:rounded-tr-none not-first:not(:moon-error):input-tbb-hidden"
                ]) ||
               [
