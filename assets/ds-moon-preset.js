@@ -439,13 +439,6 @@ module.exports = {
       ]);
       addVariant('not-last', '&:not(:last-child)');
       addVariant('not-first', '&:not(:first-child)');
-      
-      //TODO: create a selector to target moon-input within group of moon-group
-      // addVariant('not-last', '&:not(.moon-input:last-of-type)');
-      // addVariant('not-first', '&:not(.moon-input:first-of-type)');
-
-
-      
     }),
   ],  
 };
