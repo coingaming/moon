@@ -26,6 +26,8 @@ defmodule Moon.Design.Form.Select do
   prop(size, :string, values!: ~w(sm md lg), default: "md")
   @doc "Additional classes for the <select> tag"
   prop(class, :css_class, from_context: :class)
+  @doc "Additional classes for the <select> tag in case of floating label or Group"
+  prop(field_class, :css_class, from_context: :field_class)
   @doc "Some prompt to be shown on empty value"
   prop(prompt, :string)
 
@@ -57,6 +59,7 @@ defmodule Moon.Design.Form.Select do
           "h-12 leading-[3rem] rounded-moon-i-sm": @size == "lg",
           "cursor-not-allowed opacity-60": @disabled
         ],
+        @field_class,
         @class
       ])}
       {=@field}

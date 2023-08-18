@@ -33,10 +33,6 @@ defmodule Moon.Design.Form.InsetField do
   @doc "Inner content of the component"
   slot(default)
 
-  prop(attrs, :map)
-
-  # opts={Map.merge(%{id: @id, "data-testid": @testid}, @attrs)}
-
   def render(assigns) do
     ~F"""
     <Surface.Components.Form.Field
@@ -53,9 +49,9 @@ defmodule Moon.Design.Form.InsetField do
         field_class: [
           "bg-transparent h-14 leading-[3.5rem]",
           "shadow-none",
-          "rtl:[&:not([disabled])]:[&:not([readonly])]:hover:rounded-moon-i-sm rtl:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-sm rtl:[&:not([disabled])]:[&:not([readonly])]:focus-visible:rounded-moon-i-sm rtl:invalid:rounded-moon-i-sm",
-          "ltr:[&:not([disabled])]:[&:not([readonly])]:hover:rounded-moon-i-sm ltr:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-sm ltr:[&:not([disabled])]:[&:not([readonly])]:focus-visible:rounded-moon-i-sm ltr:invalid:rounded-moon-i-sm",
-          "input-xl-dt-shared input-xl pt-[1.125rem] input-xl-dt-label"
+          "before:box-border after:box-border",
+          "input-xl-dt-shared input-xl pt-[1.125rem] input-xl-dt-label",
+          "rounded-moon-i-sm"
         ],
         disabled: @disabled,
         readonly: @readonly,

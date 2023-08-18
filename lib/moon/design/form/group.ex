@@ -36,7 +36,7 @@ defmodule Moon.Design.Form.Group do
           merge([
             (@orientation == "vertical" &&
                [
-                 "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error)input-bbb-hidden",
+                 "not-last:rounded-bl-none not-last:rounded-br-none not-last:not(:moon-error):input-bbb-hidden",
                  "not-first:rounded-tl-none not-first:rounded-tr-none not-first:not(:moon-error):input-tbb-hidden"
                ]) ||
               [
