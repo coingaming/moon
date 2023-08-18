@@ -3,19 +3,27 @@ defmodule MoonWeb.Components.TokensTable do
 
   use MoonWeb, :stateless_component
 
-  alias MoonWeb.Components.Table.Table
-  alias MoonWeb.Components.Table.Column
+  alias Moon.Design.Table
+  alias Moon.Design.Table.Column
 
   prop(title, :string, default: "Props")
   prop(data, :list)
 
   def render(assigns) do
     ~F"""
-    <section class="flex flex-col gap-6">
+    <section class="flex flex-col gap-6 overflow-x-auto">
       <div class="text-moon-24 font-semibold">{@title}</div>
-      <Table items={item <- @data}>
-        <Column name="property" label="Property" is_row_header>
+      <Table
+        items={item <- @data}
+        header_row_class="bg-none"
+        class="bg-none"
+        row_bg="bg-goku whitespace-nowrap"
+      >
+        <Column name="property" label="Property">
           {item.property}
+        </Column>
+        <Column name="css" label="CSS variable">
+          {item.css}
         </Column>
         <Column name="key" label="Class name">
           {item.key}

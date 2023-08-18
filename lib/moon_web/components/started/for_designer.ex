@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Started.ForDesigner do
 
   def render(assigns) do
     ~F"""
-    <video controls controlsList="nodownload" preload="">
+    <video controls controlsList="nodownload" preload="" class="mb-12 rounded-moon-i-md w-full">
       <source src="https://s3.amazonaws.com/cdn.coingaming.io/videos/gettingStartedDesigners.mp4">
       Sorry, your browser doesn't support embedded videos.
     </video>
