@@ -1,3 +1,10 @@
+# [2.52.0](https://github.com/coingaming/moon/compare/v2.51.3...v2.52.0) (2023-08-18)
+
+
+### Features
+
+* inset input group added ([e1657fd](https://github.com/coingaming/moon/commit/e1657fde4073d09cdc1fa6d10ed9d849e7773ee6))
+
 ## [2.51.3](https://github.com/coingaming/moon/compare/v2.51.2...v2.51.3) (2023-08-18)
 
 
