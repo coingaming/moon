@@ -1,3 +1,10 @@
+## [2.51.3](https://github.com/coingaming/moon/compare/v2.51.2...v2.51.3) (2023-08-18)
+
+
+### Bug Fixes
+
+* [MDS-650] Tokens and Getting Started page v2 update ([#698](https://github.com/coingaming/moon/issues/698)) ([3e956a1](https://github.com/coingaming/moon/commit/3e956a1d5986c6fc95cb46959a4e225d4a584e4b))
+
 ## [2.51.2](https://github.com/coingaming/moon/compare/v2.51.1...v2.51.2) (2023-08-17)
 
 
