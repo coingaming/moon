@@ -1,3 +1,10 @@
+## [2.52.1](https://github.com/coingaming/moon/compare/v2.52.0...v2.52.1) (2023-08-21)
+
+
+### Bug Fixes
+
+* [MDS-638] Carousel arrows, icons page, accordion aria and alert props fix ([#699](https://github.com/coingaming/moon/issues/699)) ([97cc7a9](https://github.com/coingaming/moon/commit/97cc7a9e8166477dcc59a0636be5f7ce91bc9f5f))
+
 # [2.52.0](https://github.com/coingaming/moon/compare/v2.51.3...v2.52.0) (2023-08-18)
 
 
