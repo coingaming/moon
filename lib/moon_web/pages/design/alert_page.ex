@@ -28,7 +28,6 @@ defmodule MoonWeb.Pages.Design.AlertPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        is_in_progress
         is_aria_support
         is_rtl_support
         title="Alert"
@@ -51,106 +50,10 @@ defmodule MoonWeb.Pages.Design.AlertPage do
         AlertExample.Customization
       ]} />
 
-      <PropsTable
-        title="Alert props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Defult content of Alert item'
-          },
-          %{
-            :name => 'title',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title of Alert item, see Alert.Title'
-          },
-          %{
-            :name => 'message',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message of Alert item, see Alert.Message'
-          },
-          %{
-            :name => 'close',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Close button slot of Alert item, see Alert.Close'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Alert.Title props"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Title of Alert item'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Alert.Message props"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message of Alert item'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Alert.Close props"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
-          },
-          %{
-            :name => 'on_click',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to happen when close button is clicked'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Alert} />
+      <PropsTable module={Moon.Design.Alert.Title} />
+      <PropsTable module={Moon.Design.Alert.Message} />
+      <PropsTable module={Moon.Design.Alert.Close} />
     </Page>
     """
   end

@@ -28,10 +28,11 @@ defmodule Moon.Design.Carousel.LeftArrow do
     ~F"""
     <CarouselControl
       {=@id}
-      class={merge(["-left-3", "moon-left-arrow", @class])}
+      class={merge(["-left-4", "moon-left-arrow", @class])}
       on_change={@on_change}
       testid={@testid}
       value={@value}
+      aria_label="Scroll left"
     >
       <#slot />
     </CarouselControl>

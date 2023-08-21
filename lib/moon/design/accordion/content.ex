@@ -5,14 +5,20 @@ defmodule Moon.Design.Accordion.Content do
 
   import Moon.Helpers.MergeClass
 
+  @doc "Id attribute for DOM element"
   prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
-
-  prop(size, :string, values!: ["sm", "md", "lg", "xl"], from_context: :size)
-  prop(is_content_outside, :boolean, from_context: :is_content_outside)
-
+  @doc "Content of Accordion.Content"
   slot(default, required: true)
+
+  # Internal API
+  @doc "Will be got from Accordion in most cases"
+  prop(size, :string, values!: ["sm", "md", "lg", "xl"], from_context: :size)
+  @doc "Will be got from Accordion in most cases"
+  prop(is_content_outside, :boolean, from_context: :is_content_outside)
 
   def render(assigns) do
     ~F"""

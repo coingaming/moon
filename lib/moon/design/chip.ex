@@ -14,6 +14,7 @@ defmodule Moon.Design.Chip do
   prop(variant, :string, values: ["default", "ghost"], default: "default")
   prop(on_click, :event)
   prop(class, :css_class)
+  prop(aria_label, :string)
 
   prop(testid, :string)
   prop(id, :string)
@@ -36,6 +37,7 @@ defmodule Moon.Design.Chip do
       ])}
       :on-click={@on_click}
       data-testid={@testid}
+      aria-label={@aria_label}
     >
       <#slot {@left_icon} />
       <#slot />

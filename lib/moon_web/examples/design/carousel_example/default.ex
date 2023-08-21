@@ -4,8 +4,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Icons.ControlsChevronRight
-  alias Moon.Icons.ControlsChevronLeft
+  alias Moon.Icon
   alias Moon.Design.Carousel
 
   prop(item_count, :integer, default: 25)
@@ -20,7 +19,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
     <div class="relative w-full">
       <Carousel id="default" value={6} step={5}>
         <Carousel.LeftArrow>
-          <ControlsChevronLeft />
+          <Icon name="controls_chevron_left_small" class="text-moon-24" />
         </Carousel.LeftArrow>
         <Carousel.Reel>
           <Carousel.Item class="w-80 h-48" :for={item <- get_items(@item_count)}>
@@ -29,7 +28,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
           <Carousel.Indicator />
         </Carousel.Reel>
         <Carousel.RightArrow>
-          <ControlsChevronRight />
+          <Icon name="controls_chevron_right_small" class="text-moon-24" />
         </Carousel.RightArrow>
       </Carousel>
     </div>
@@ -38,8 +37,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
 
   def code() do
     """
-    alias Moon.Icons.ControlsChevronRight
-    alias Moon.Icons.ControlsChevronLeft
+    alias Moon.Icon
     alias Moon.Design.Carousel
 
     prop(item_count, :integer, default: 25)
@@ -54,7 +52,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
       <div class="relative w-full">
         <Carousel id="default" value={6} step={5}>
           <Carousel.LeftArrow>
-            <ControlsChevronLeft />
+            <Icon name="controls_chevron_left_small" class="text-moon-24" />
           </Carousel.LeftArrow>
           <Carousel.Reel>
             <Carousel.Item class="w-80 h-48" :for={item <- get_items(@item_count)}>
@@ -63,7 +61,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Default do
             <Carousel.Indicator />
           </Carousel.Reel>
           <Carousel.RightArrow>
-            <ControlsChevronRight />
+            <Icon name="controls_chevron_right_small" class="text-moon-24" />
           </Carousel.RightArrow>
         </Carousel>
       </div>
