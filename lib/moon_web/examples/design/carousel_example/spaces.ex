@@ -4,15 +4,14 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Spaces do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Icons.ControlsChevronRight
-  alias Moon.Icons.ControlsChevronLeft
   alias Moon.Design.Carousel
+  alias Moon.Icon
 
   def render(assigns) do
     ~F"""
     <Carousel id="spaces" step={2}>
       <Carousel.LeftArrow>
-        <ControlsChevronLeft />
+        <Icon name="controls_chevron_left_small" class="text-moon-24" />
       </Carousel.LeftArrow>
       <Carousel.Reel class="gap-10">
         <Carousel.Item class="w-80 h-48">
@@ -32,7 +31,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Spaces do
         </Carousel.Item>
       </Carousel.Reel>
       <Carousel.RightArrow>
-        <ControlsChevronRight />
+        <Icon name="controls_chevron_right_small" class="text-moon-24" />
       </Carousel.RightArrow>
     </Carousel>
     """
@@ -40,15 +39,14 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Spaces do
 
   def code() do
     """
-    alias Moon.Icons.ControlsChevronRight
-    alias Moon.Icons.ControlsChevronLeft
     alias Moon.Design.Carousel
+    alias Moon.Icon
 
     ...
 
     <Carousel id="spaces" step={2}>
       <Carousel.LeftArrow>
-        <ControlsChevronLeft />
+        <Icon name="controls_chevron_left_small" class="text-moon-24" />
       </Carousel.LeftArrow>
       <Carousel.Reel class="gap-10">
         <Carousel.Item class="w-80 h-48">
@@ -68,7 +66,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Spaces do
         </Carousel.Item>
       </Carousel.Reel>
       <Carousel.RightArrow>
-        <ControlsChevronRight />
+        <Icon name="controls_chevron_right_small" class="text-moon-24" />
       </Carousel.RightArrow>
     </Carousel>
     """

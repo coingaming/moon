@@ -15,8 +15,12 @@ defmodule MoonWeb.Components.IconItem do
     ~F"""
     <Tooltip>
       <Tooltip.Trigger>
-        <Chip variant="ghost" class="px-0 py-0 text-trunks h-8">
-          <Icon name={@name} font_size="2rem" />
+        <Chip
+          variant="ghost"
+          class="px-0 py-0 text-bulma w-10 flex items-center justify-center"
+          aria_label={@name}
+        >
+          <Icon name={@name} class="text-moon-24" />
         </Chip>
       </Tooltip.Trigger>
       <Tooltip.Content>

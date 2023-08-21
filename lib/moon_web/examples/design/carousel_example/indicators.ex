@@ -4,15 +4,14 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
   use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Icons.ControlsChevronRight
-  alias Moon.Icons.ControlsChevronLeft
   alias Moon.Design.Carousel
+  alias Moon.Icon
 
   def render(assigns) do
     ~F"""
     <Carousel class="w-80" id="indicators" value={1}>
       <Carousel.LeftArrow>
-        <ControlsChevronLeft />
+        <Icon name="controls_chevron_left_small" class="text-moon-24" />
       </Carousel.LeftArrow>
       <Carousel.Reel>
         <Carousel.Item class="w-80 h-48">
@@ -33,7 +32,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
         <Carousel.Indicator />
       </Carousel.Reel>
       <Carousel.RightArrow>
-        <ControlsChevronRight />
+        <Icon name="controls_chevron_right_small" class="text-moon-24" />
       </Carousel.RightArrow>
     </Carousel>
     """
@@ -41,15 +40,14 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
 
   def code() do
     """
-    alias Moon.Icons.ControlsChevronRight
-    alias Moon.Icons.ControlsChevronLeft
     alias Moon.Design.Carousel
+    alias Moon.Icon
 
     ...
 
-    <Carousel class="w-80" id="indicators" value={1} >
+    <Carousel class="w-80" id="indicators" value={1}>
       <Carousel.LeftArrow>
-        <ControlsChevronLeft />
+        <Icon name="controls_chevron_left_small" class="text-moon-24" />
       </Carousel.LeftArrow>
       <Carousel.Reel>
         <Carousel.Item class="w-80 h-48">
@@ -70,7 +68,7 @@ defmodule MoonWeb.Examples.Design.CarouselExample.Indicators do
         <Carousel.Indicator />
       </Carousel.Reel>
       <Carousel.RightArrow>
-        <ControlsChevronRight />
+        <Icon name="controls_chevron_right_small" class="text-moon-24" />
       </Carousel.RightArrow>
     </Carousel>
     """

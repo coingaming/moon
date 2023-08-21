@@ -5,17 +5,21 @@ defmodule Moon.Design.Accordion do
 
   import Moon.Helpers.MakeList
 
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
-  prop(disabled, :boolean, default: false)
-
+  @doc "Size of the item, header mostly"
   prop(item_size, :string, values!: ["sm", "md", "lg", "xl"], default: "md")
+  @doc "Content looks outside"
   prop(has_content_outside, :boolean, default: false)
-
+  @doc "Value (List of values) items to be open"
   prop(value, :any, default: [])
+  @doc "Handler for open/close of the item"
   prop(on_change, :event)
+  @doc "Close other items if true"
   prop(is_single_open, :boolean, default: false)
-
+  @doc "Accordion item, see Accordion.Item"
   slot(item, required: true)
 
   def handle_event("on_change_default", _params = %{"value" => index}, socket) do

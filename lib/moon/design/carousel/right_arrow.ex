@@ -27,11 +27,12 @@ defmodule Moon.Design.Carousel.RightArrow do
   def render(assigns) do
     ~F"""
     <CarouselControl
-      class={merge(["-right-3 left-auto", "moon-right-arrow", @class])}
+      class={merge(["-right-4 left-auto", "moon-right-arrow", @class])}
       on_change={@on_change}
       testid={@testid}
       value={@value}
       {=@id}
+      aria_label="Scroll right"
     >
       <#slot />
     </CarouselControl>
