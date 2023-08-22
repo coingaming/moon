@@ -12,6 +12,8 @@ defmodule Moon.Components.TextInput.Input do
   data(required, :boolean, from_context: {Moon.Components.TextInput, :required})
   data(type, :string, from_context: {Moon.Components.TextInput, :type})
   data(step, :string, from_context: {Moon.Components.TextInput, :step})
+  prop(min, :string, from_context: {Moon.Components.TextInput, :min})
+  prop(max, :string, from_context: {Moon.Components.TextInput, :max})
   data(readonly, :boolean, from_context: {Moon.Components.TextInput, :readonly})
   data(value, :string, from_context: {Moon.Components.TextInput, :value})
   data(size, :string, from_context: {Moon.Components.TextInput, :size})
@@ -37,6 +39,8 @@ defmodule Moon.Components.TextInput.Input do
         type: @type,
         "data-lpignore": "true",
         step: @step,
+        min: @min,
+        max: @max,
         readonly: @readonly
       }
       {=@value}
