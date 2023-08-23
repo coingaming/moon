@@ -39,6 +39,8 @@ defmodule Moon.Components.TextInput do
   prop(required, :boolean)
   prop(step, :string, default: "1")
   prop(class, :css_class)
+  prop(min, :string)
+  prop(max, :string)
 
   prop(readonly, :boolean)
   prop(value, :string)
