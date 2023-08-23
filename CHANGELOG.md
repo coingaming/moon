@@ -1,3 +1,10 @@
+# [2.53.0](https://github.com/coingaming/moon/compare/v2.52.1...v2.53.0) (2023-08-23)
+
+
+### Features
+
+* Add min and max to TextInput ([#700](https://github.com/coingaming/moon/issues/700)) ([4105aed](https://github.com/coingaming/moon/commit/4105aedab47baa8bea9c0f16d2516a281d427327))
+
 ## [2.52.1](https://github.com/coingaming/moon/compare/v2.52.0...v2.52.1) (2023-08-21)
 
 
