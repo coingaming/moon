@@ -1,3 +1,10 @@
+# [2.54.0](https://github.com/coingaming/moon/compare/v2.53.0...v2.54.0) (2023-08-24)
+
+
+### Features
+
+* Add month type support to TextInput ([#701](https://github.com/coingaming/moon/issues/701)) ([895889d](https://github.com/coingaming/moon/commit/895889d266ec1f3382d1e06197882ffce7f92144))
+
 # [2.53.0](https://github.com/coingaming/moon/compare/v2.52.1...v2.53.0) (2023-08-23)
 
 
