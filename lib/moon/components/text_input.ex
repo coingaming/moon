@@ -17,6 +17,7 @@ defmodule Moon.Components.TextInput do
   prop(type, :string,
     values: [
       "date",
+      "month",
       "datetime-local",
       "email",
       "number",

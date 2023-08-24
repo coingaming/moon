@@ -79,7 +79,7 @@ defmodule Moon.Components.TextInput.Input do
 
   defp get_class_for_date_type(type) do
     cond do
-      type == "date" -> "ltr:input-d rtl:input-d-rtl"
+      type in ["date", "month"] -> "ltr:input-d rtl:input-d-rtl"
       type == "datetime-local" -> "ltr:input-d rtl:input-dt-local-rtl"
       true -> ""
     end

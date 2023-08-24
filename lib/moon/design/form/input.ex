@@ -19,6 +19,7 @@ defmodule Moon.Design.Form.Input do
   prop(type, :string,
     values!: [
       "date",
+      "month",
       "datetime-local",
       "email",
       "number",
