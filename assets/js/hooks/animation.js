@@ -1,3 +1,13 @@
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+
 export default {
 
     hiddenClasses() {
@@ -14,14 +24,23 @@ export default {
         });
     },
 
-
     updated() {
         this.showElementIfNeeded();
-        (this.el.dataset.is_closing === "true") && this.hideElement()
+        this.hideElementIfNeeded();
     },
 
     showElementIfNeeded() {
         (this.el.dataset.is_open === undefined) || !this.el.classList.contains("hidden")  || this.showElement();
+    },
+
+    hideElementIfNeeded() {
+        if (this.el.dataset.is_closing === "true"){
+            if (getSelectionText()) {
+                this.pushEventTo(this.el, "stop_closing_bottom_sheet", {});
+            } else {
+                this.hideElement()
+            }
+        }
     },
 
     hideElement() {

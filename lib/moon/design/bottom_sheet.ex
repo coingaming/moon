@@ -88,6 +88,10 @@ defmodule Moon.Design.BottomSheet do
     {:noreply, assign(socket, is_closing: true)}
   end
 
+  def handle_event("stop_closing_bottom_sheet", _, socket) do
+    {:noreply, assign(socket, is_closing: false)}
+  end
+
   def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
