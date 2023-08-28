@@ -3,11 +3,15 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
 
   use Moon.StatefulComponent
 
-  alias Moon.Icons.ArrowsRight
+  alias Moon.Icon
   alias Moon.Design.Button.IconButton
   alias Phoenix.LiveView.JS
 
   prop(breadcrumbs, :list)
+
+  prop(divider, :string)
+  prop(collapsed_icon, :string)
+  prop(responsive_crumbs, :boolean)
 
   data(shown_breadcrumbs, :list, default: [])
   data(collapsed_breadcrumbs, :list, default: [])
@@ -40,10 +44,49 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
     <nav aria-label="Breadcrumb">
       <ol class="flex flex-wrap gap-2 items-center text-moon-14">
         <li class="flex items-center gap-2 text-trunks">
-          <span class="text-trunks transition-colors duration-200 hover:text-bulma">
-            <a href={Enum.at(@shown_breadcrumbs, 0).link}>{Enum.at(@shown_breadcrumbs, 0).name}</a>
-          </span>
-          <ArrowsRight class="rtl:rotate-180" />
+          {#if @responsive_crumbs}
+            <span class={
+              "transition-colors duration-200 hover:text-bulma",
+              "hidden block",
+              "sm:inline"
+            }>
+              <a href={Enum.at(@shown_breadcrumbs, 0).link}>
+                <Icon
+                  name={Enum.at(@shown_breadcrumbs, 0).icon}
+                  class="text-moon-24"
+                  :if={Map.has_key?(Enum.at(@shown_breadcrumbs, 0), :icon) && Enum.at(@shown_breadcrumbs, 0).icon != ""}
+                />
+                {#if Enum.at(@shown_breadcrumbs, 0).name}
+                  {Enum.at(@shown_breadcrumbs, 0).name}
+                {/if}
+              </a>
+            </span>
+            <span class={"sm:hidden", "inline block"}>
+              <a href={Enum.at(@shown_breadcrumbs, 0).link}>
+                <Icon
+                  name={Enum.at(@shown_breadcrumbs, 0).icon}
+                  class="text-moon-24"
+                  :if={Map.has_key?(Enum.at(@shown_breadcrumbs, 0), :icon) && Enum.at(@shown_breadcrumbs, 0).icon != ""}
+                />
+                {#if Enum.at(@shown_breadcrumbs, 0).name}
+                  {first_crumb_with_ellips(@shown_breadcrumbs)}
+                {/if}
+              </a>
+            </span>
+          {#else}
+            <span class="text-trunks transition-colors duration-200 hover:text-bulma">
+              <a href={Enum.at(@shown_breadcrumbs, 0).link}>
+                <Icon
+                  name={Enum.at(@shown_breadcrumbs, 0).icon}
+                  class="text-moon-24"
+                  :if={Map.has_key?(Enum.at(@shown_breadcrumbs, 0), :icon) && Enum.at(@shown_breadcrumbs, 0).icon != ""}
+                />
+                {#if Enum.at(@shown_breadcrumbs, 0).name}
+                  {Enum.at(@shown_breadcrumbs, 0).name}
+                {/if}</a>
+            </span>
+          {/if}
+          <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" />
         </li>
 
         <li
@@ -52,7 +95,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
         >
           <IconButton
             variant="ghost"
-            icon_only="other3_dots_horizontal"
+            icon_only={@collapsed_icon || "other3_dots_horizontal"}
             size="xs"
             on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
           />
@@ -62,7 +105,16 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
           >
             {#for crumb <- @collapsed_breadcrumbs}
               <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-heles">
-                <a href={crumb.link}>{crumb.name}</a>
+                <a href={crumb.link}>
+                  <Icon
+                    name={crumb.icon}
+                    class="text-moon-24"
+                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                  />
+                  {#if crumb.name}
+                    {crumb.name}
+                  {/if}
+                </a>
               </li>
             {/for}
           </ol>
@@ -70,17 +122,80 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
 
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
           <li class="flex items-center gap-2 text-trunks" :if={index > 0}>
-            <ArrowsRight />
-            <span class={
-              "text-trunks transition-colors duration-200 hover:text-bulma",
-              "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1
-            }>
-              <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>{crumb.name}</a>
-            </span>
+            <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" />
+            {#if @responsive_crumbs}
+              <span class={
+                "transition-colors duration-200 hover:text-bulma",
+                "hidden block",
+                "sm:inline",
+                "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1
+              }>
+                <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>
+                  <Icon
+                    name={crumb.icon}
+                    class="text-moon-24"
+                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                  />
+                  {#if crumb.name}
+                    {crumb.name}
+                  {/if}
+                </a>
+              </span>
+              <span class={"sm:hidden", "inline block"}>
+                <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>
+                  <Icon
+                    name={crumb.icon}
+                    class="text-moon-24"
+                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                  />
+                  {#if crumb.name}
+                    {name_with_ellips(crumb)}
+                  {/if}
+                </a>
+              </span>
+            {#else}
+              <span class={
+                "transition-colors duration-200 hover:text-bulma",
+                "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1
+              }>
+                <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>
+                  <Icon
+                    name={crumb.icon}
+                    class="text-moon-24"
+                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                  />
+                  {#if crumb.name}
+                    {crumb.name}
+                  {/if}
+                </a>
+              </span>
+            {/if}
           </li>
         {/for}
       </ol>
     </nav>
     """
+  end
+
+  def name_with_ellips(crumb) do
+    [first_word | _] = String.split(crumb.name)
+
+    if String.split(crumb.name) |> tl() != [] do
+      first_word <> "..."
+    else
+      first_word
+    end
+  end
+
+  def first_crumb_with_ellips(shown_breadcrumbs) do
+    breadcrumb = Enum.at(shown_breadcrumbs, 0).name
+
+    [first_word | _] = String.split(breadcrumb)
+
+    if String.split(breadcrumb) |> tl() != [] do
+      first_word <> "..."
+    else
+      first_word
+    end
   end
 end

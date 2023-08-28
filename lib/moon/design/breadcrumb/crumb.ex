@@ -1,5 +1,5 @@
 defmodule Moon.Design.Breadcrumb.Crumb do
   @moduledoc false
 
-  defstruct name: "", link: ""
+  defstruct name: "", link: "", icon: ""
 end

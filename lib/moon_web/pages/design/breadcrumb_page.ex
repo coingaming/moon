@@ -41,21 +41,12 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
         BreadcrumbExample.FiveAndMoreItems,
         BreadcrumbExample.FourItems,
         BreadcrumbExample.TwoItems,
-        BreadcrumbExample.OneItem
+        BreadcrumbExample.OneItem,
+        BreadcrumbExample.IconAsStartingItemAndCustomDivider,
+        BreadcrumbExample.ResponsiveItems
       ]} />
 
-      <PropsTable
-        title="Breadcrumb props"
-        data={[
-          %{
-            :name => 'breadcrumbs',
-            :type => 'list of Moon.Design.Breadcrumb.Crumb',
-            :required => 'No',
-            :default => '[]',
-            :description => 'Crumbs to display'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Breadcrumb} />
     </Page>
     """
   end
