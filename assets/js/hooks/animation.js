@@ -36,7 +36,7 @@ export default {
     hideElementIfNeeded() {
         if (this.el.dataset.is_closing === "true"){
             if (getSelectionText()) {
-                this.pushEventTo(this.el, "stop_closing_bottom_sheet", {});
+                this.pushEventTo(this.el, "stop_closing", {});
             } else {
                 this.hideElement()
             }
