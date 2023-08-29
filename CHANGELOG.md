@@ -1,3 +1,10 @@
+# [2.55.0](https://github.com/coingaming/moon/compare/v2.54.1...v2.55.0) (2023-08-29)
+
+
+### Features
+
+* [MDS-652] Adding responsive crumbs, custom divider and icon ([#702](https://github.com/coingaming/moon/issues/702)) ([462190e](https://github.com/coingaming/moon/commit/462190ecdf43f39113d6615ca573f28cc8ea01bf))
+
 ## [2.54.1](https://github.com/coingaming/moon/compare/v2.54.0...v2.54.1) (2023-08-29)
 
 
