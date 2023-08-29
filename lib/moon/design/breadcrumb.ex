@@ -19,8 +19,8 @@ defmodule Moon.Design.Breadcrumb do
   @doc "Name of custom icon used to expand collapsed breadcrumb items"
   prop(collapsed_icon, :string)
 
-  @doc "When enabled, breadcrumb items with multiple words are partially replaced with ellipsis (...) on smaller screens"
-  prop(responsive_crumbs, :boolean)
+  @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
+  prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
 
   def render(assigns) do
     ~F"""
@@ -31,10 +31,10 @@ defmodule Moon.Design.Breadcrumb do
           breadcrumbs={@breadcrumbs}
           {=@divider}
           {=@collapsed_icon}
-          {=@responsive_crumbs}
+          {=@responsive_crumbs_on}
         />
       {#else}
-        <Extended breadcrumbs={@breadcrumbs} {=@divider} {=@responsive_crumbs} />
+        <Extended breadcrumbs={@breadcrumbs} {=@divider} {=@responsive_crumbs_on} />
       {/if}
     </div>
     """

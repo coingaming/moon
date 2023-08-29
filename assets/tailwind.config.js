@@ -1,6 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 const { tailwindClassesBottomsheet } = require("./js/bottomsheet.config");
 const { tailwindClassesDropdown } = require("./js/dropdown.config");
+const { tailwindClassesBreadcrumb } = require("./js/breadcrumb.config"); 
 
 //as Variant of using rgba color with opacity
 const withOpacityValue = (rgbColor) => {
@@ -131,7 +132,7 @@ module.exports = {
     "border-beerus",
     "border-bulma",
     "border-trunks",
-  ].concat(tailwindClassesBottomsheet(), tailwindClassesDropdown()),
+  ].concat(tailwindClassesBottomsheet(), tailwindClassesDropdown(), tailwindClassesBreadcrumb()),
   theme: {
     extend: {
       backgroundOpacity: {

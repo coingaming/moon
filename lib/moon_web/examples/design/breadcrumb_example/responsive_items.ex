@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.ResponsiveItems do
   data(breadcrumb_items, :list,
     default: [
       %Crumb{
-        name: "Home",
+        name: "Home Page",
         link: "/components/v2/breadcrumb"
       },
       %Crumb{
@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.ResponsiveItems do
   def render(assigns) do
     ~F"""
     <div>
-      <Breadcrumb id="responsive_items" breadcrumbs={@breadcrumb_items} responsive_crumbs />
+      <Breadcrumb id="responsive_items" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="sm" />
     </div>
     """
   end
@@ -44,7 +44,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.ResponsiveItems do
     data(breadcrumb_items, :list,
       default: [
         %Crumb{
-          name: "Home",
+          name: "Home Page",
           link: "/components/v2/breadcrumb"
         },
         %Crumb{
@@ -65,7 +65,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.ResponsiveItems do
     def render(assigns) do
       ~F\"""
       <div>
-        <Breadcrumb id="responsive_items" breadcrumbs={@breadcrumb_items} responsive_crumbs />
+        <Breadcrumb id="responsive_items" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="sm" />
       </div>
       \"""
     end
