@@ -1,3 +1,10 @@
+## [2.54.1](https://github.com/coingaming/moon/compare/v2.54.0...v2.54.1) (2023-08-29)
+
+
+### Bug Fixes
+
+* Drawer, Modal & BottomSheet no-close on selected text ([#703](https://github.com/coingaming/moon/issues/703)) ([15dc52b](https://github.com/coingaming/moon/commit/15dc52bdd2c0259efd1af34bd597703d5425b697))
+
 # [2.54.0](https://github.com/coingaming/moon/compare/v2.53.0...v2.54.0) (2023-08-24)
 
 
