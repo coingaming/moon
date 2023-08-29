@@ -52,6 +52,10 @@ defmodule Moon.Design.Modal do
     {:noreply, assign(socket, is_closing: true)}
   end
 
+  def handle_event("stop_closingt", _, socket) do
+    {:noreply, assign(socket, is_closing: false)}
+  end
+
   def handle_event("set_close", _, socket) do
     {:noreply, assign(socket, is_open: false, is_closing: false)}
   end
