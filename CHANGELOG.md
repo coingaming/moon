@@ -1,3 +1,10 @@
+## [2.55.1](https://github.com/coingaming/moon/compare/v2.55.0...v2.55.1) (2023-09-06)
+
+
+### Bug Fixes
+
+* inset input fix for no-placeholder case ([#705](https://github.com/coingaming/moon/issues/705)) ([489b3f8](https://github.com/coingaming/moon/commit/489b3f8b7129fdd4064d8b76481bf1474aa97812))
+
 # [2.55.0](https://github.com/coingaming/moon/compare/v2.54.1...v2.55.0) (2023-08-29)
 
 
