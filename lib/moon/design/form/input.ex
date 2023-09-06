@@ -34,7 +34,7 @@ defmodule Moon.Design.Form.Input do
   )
 
   @doc "Text to be set as a HTML placeholder attribute - when input is empty"
-  prop(placeholder, :string, default: "")
+  prop(placeholder, :string, default: " ")
   @doc "Additional classes for the <input> tag"
   prop(class, :css_class, from_context: :class)
   @doc "Additional classes for the <input> tag in case of floating label or Group"
