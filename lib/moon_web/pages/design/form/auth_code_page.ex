@@ -40,17 +40,20 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
 
       <ExamplesList examples={[
         AuthCodeExample.Default,
-        AuthCodeExample.CustomLength,
         AuthCodeExample.AllowedCharacters,
-        AuthCodeExample.Placeholder,
-        AuthCodeExample.Sizes,
+        AuthCodeExample.CustomLength,
         AuthCodeExample.ErrorState,
         AuthCodeExample.DisabledState,
+        AuthCodeExample.HintMessage,
+        AuthCodeExample.Placeholder,
+        AuthCodeExample.Password,
+        AuthCodeExample.DifferentGaps,
         AuthCodeExample.WithForm
       ]} />
 
-      <PropsTable title="AuthCode props" module={Moon.Design.Form.AuthCode} />
-      <PropsTable title="AuthCode.Input props" module={Moon.Design.Form.AuthCode.Input} />
+      <PropsTable module={Moon.Design.Form.AuthCode} />
+      <PropsTable module={Moon.Design.Form.AuthCode.Input} />
+      <PropsTable module={Moon.Design.Form.AuthCode.Hint} />
     </Page>
     """
   end
@@ -59,6 +62,7 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
     """
     <AuthCode>
       <AuthCode.Input />
+      <AuthCode.Hint>...</AuthCode.Hint>
     </AuthCode>
     """
   end

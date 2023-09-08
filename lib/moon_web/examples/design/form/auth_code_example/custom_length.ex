@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.CustomLength do
 
   def render(assigns) do
     ~F"""
-    <AuthCode length={4} id="custom_length">
+    <AuthCode length={4}>
       <AuthCode.Input />
     </AuthCode>
     """
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.CustomLength do
 
     ...
 
-    <AuthCode length={4} id="custom_length">
+    <AuthCode length={4}>
       <AuthCode.Input />
     </AuthCode>
     """

@@ -22,8 +22,14 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
       submit="submit"
       class="flex flex-col gap-2 items-center"
     >
-      <Field field={:authentication} class="flex flex-col ps-0">
-        <AuthCode id="with_form">
+      <Field
+        field={:authentication}
+        hint="Hint message"
+        class="flex flex-col ps-0"
+        error_class="text-moon-12 self-center ps-0"
+        hint_class="text-moon-12 self-center ps-0"
+      >
+        <AuthCode>
           <AuthCode.Input />
         </AuthCode>
       </Field>
@@ -63,8 +69,14 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
         submit="submit"
         class="flex flex-col gap-2 items-center"
       >
-        <Field field={:authentication} class="flex flex-col ps-0">
-          <AuthCode id="with_form">
+        <Field
+          field={:authentication}
+          hint="Hint message"
+          class="flex flex-col ps-0"
+          error_class="text-moon-12 self-center ps-0"
+          hint_class="text-moon-12 self-center ps-0"
+        >
+          <AuthCode>
             <AuthCode.Input />
           </AuthCode>
         </Field>

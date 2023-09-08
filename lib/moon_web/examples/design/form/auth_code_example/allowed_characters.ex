@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.AllowedCharacters do
 
   def render(assigns) do
     ~F"""
-    <AuthCode allowed_characters="numeric" id="allowed_characters">
+    <AuthCode allowed_characters="numeric">
       <AuthCode.Input />
     </AuthCode>
     """
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.AllowedCharacters do
 
     ...
 
-    <AuthCode allowed_characters="numeric" id="allowed_characters">
+    <AuthCode allowed_characters="numeric">
       <AuthCode.Input />
     </AuthCode>
     """

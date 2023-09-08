@@ -84,7 +84,7 @@ defmodule Moon.Design.Form.Combobox do
             {=@disabled}
             {=@on_keyup}
             value={(select_value(assigns) && select_value(assigns)[:key]) || @filter}
-            class={input_classes(assigns) ++ ["ps-[3rem]": select_badge(assigns)]}
+            class={input_classes(assigns) ++ input_size_classes(assigns) ++ ["ps-[3rem]": select_badge(assigns)]}
           >
             <Icon
               name="controls_chevron_down"

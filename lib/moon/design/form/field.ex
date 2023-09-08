@@ -21,6 +21,10 @@ defmodule Moon.Design.Form.Field do
   prop(hide_errors, :boolean)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(error_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(hint_class, :css_class)
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
@@ -37,8 +41,8 @@ defmodule Moon.Design.Form.Field do
     <Surface.Components.Form.Field name={@field} {=@class}>
       <Field.Label :if={@label} {=@size} title={@label} />
       <#slot context_put={size: @size, error: !!@field && !!@form && has_error(@form, @field)} />
-      <Field.Hint :if={@hint} title={@hint} />
-      <Field.Error :if={!@hide_errors && !!@field && !!@form} />
+      <Field.Hint :if={@hint} title={@hint} class={@hint_class} />
+      <Field.Error :if={!@hide_errors && !!@field && !!@form} class={@error_class} />
     </Surface.Components.Form.Field>
     """
   end
