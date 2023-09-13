@@ -1,3 +1,10 @@
+## [2.55.2](https://github.com/coingaming/moon/compare/v2.55.1...v2.55.2) (2023-09-13)
+
+
+### Bug Fixes
+
+* Update partners.io and sportsbet theme, add pay.io theme ([#708](https://github.com/coingaming/moon/issues/708)) ([f04302e](https://github.com/coingaming/moon/commit/f04302e659e072c3e4721d372b426a9ae71700bf))
+
 ## [2.55.1](https://github.com/coingaming/moon/compare/v2.55.0...v2.55.1) (2023-09-06)
 
 
