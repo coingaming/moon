@@ -53,7 +53,8 @@ defmodule MoonWeb.Pages.Design.Button.ButtonPage do
         ButtonExample.Icons,
         ButtonExample.FullWidth,
         ButtonExample.Disabled,
-        ButtonExample.Animations
+        ButtonExample.Animations,
+        ButtonExample.MultiLine
       ]} />
 
       <PropsTable
