@@ -77,7 +77,7 @@ defmodule Moon.Design.Carousel.Reel do
       "flex absolute bottom-8 left-1/2 -translate-x-1/2 rtl:flex-row-reverse",
       @indicator_class
     ])}>
-      {#for {_, index} <- Enum.with_index(make_list(@item))}
+      {#for {_, index} <- Enum.with_index(make_list(@item) ++ make_list(@default))}
         <#slot
           {@indicator}
           context_put={
