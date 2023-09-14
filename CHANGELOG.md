@@ -1,3 +1,10 @@
+## [2.55.3](https://github.com/coingaming/moon/compare/v2.55.2...v2.55.3) (2023-09-14)
+
+
+### Bug Fixes
+
+* carousel indicators for default slot ([#709](https://github.com/coingaming/moon/issues/709)) ([ea2885f](https://github.com/coingaming/moon/commit/ea2885f43f25c9991b5280f03a50cc610d4fc5e7))
+
 ## [2.55.2](https://github.com/coingaming/moon/compare/v2.55.1...v2.55.2) (2023-09-13)
 
 
