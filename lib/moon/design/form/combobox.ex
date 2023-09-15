@@ -84,7 +84,12 @@ defmodule Moon.Design.Form.Combobox do
             {=@disabled}
             {=@on_keyup}
             value={(select_value(assigns) && select_value(assigns)[:key]) || @filter}
-            class={input_classes(assigns) ++ ["ps-[3rem]": select_badge(assigns)]}
+            class={
+              input_classes(assigns) ++
+                ["ps-11": select_badge(assigns) && @size == "sm"],
+              ["ps-[3.25rem]": select_badge(assigns) && @size == "md"],
+              ["ps-14": select_badge(assigns) && @size == "lg"]
+            }
           >
             <Icon
               name="controls_chevron_down"
@@ -99,7 +104,11 @@ defmodule Moon.Design.Form.Combobox do
               :if={select_badge(assigns)}
               {=@size}
               count={select_badge(assigns)}
-              class="absolute rtl:right-3 ltr:left-3 top-1/2 -translate-y-1/2 z-[3]"
+              class={
+                "absolute top-1/2 -translate-y-1/2 z-[3]",
+                "rtl:right-2 ltr:left-2": @size in ~w(sm md),
+                "rtl:right-3 ltr:left-3": @size == "lg"
+              }
             />
           </Dropdown.Input>
         </#slot>
