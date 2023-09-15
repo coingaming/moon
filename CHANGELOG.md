@@ -1,3 +1,10 @@
+## [2.55.5](https://github.com/coingaming/moon/compare/v2.55.4...v2.55.5) (2023-09-15)
+
+
+### Bug Fixes
+
+* [MDS-614] Align Combobox and Dropdown badge padding on multiple selections ([#707](https://github.com/coingaming/moon/issues/707)) ([8ce410c](https://github.com/coingaming/moon/commit/8ce410c787143a6ad012a4327e39c46461d76722))
+
 ## [2.55.4](https://github.com/coingaming/moon/compare/v2.55.3...v2.55.4) (2023-09-15)
 
 
