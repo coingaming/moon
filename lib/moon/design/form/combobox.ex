@@ -84,7 +84,9 @@ defmodule Moon.Design.Form.Combobox do
             {=@disabled}
             {=@on_keyup}
             value={(select_value(assigns) && select_value(assigns)[:key]) || @filter}
-            class={input_classes(assigns) ++ input_size_classes(assigns) ++ 
+            class={
+              input_classes(assigns) ++
+                input_size_classes(assigns) ++
                 ["ps-11": select_badge(assigns) && @size == "sm"],
               ["ps-[3.25rem]": select_badge(assigns) && @size == "md"],
               ["ps-14": select_badge(assigns) && @size == "lg"]
