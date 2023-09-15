@@ -1,3 +1,10 @@
+## [2.55.4](https://github.com/coingaming/moon/compare/v2.55.3...v2.55.4) (2023-09-15)
+
+
+### Bug Fixes
+
+* Add multi line button example ([#710](https://github.com/coingaming/moon/issues/710)) ([143e7c5](https://github.com/coingaming/moon/commit/143e7c54bd1ecdfd8f0fe6d3470fa781fafe736c))
+
 ## [2.55.3](https://github.com/coingaming/moon/compare/v2.55.2...v2.55.3) (2023-09-14)
 
 
