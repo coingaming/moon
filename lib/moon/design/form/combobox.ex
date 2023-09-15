@@ -106,7 +106,7 @@ defmodule Moon.Design.Form.Combobox do
               count={select_badge(assigns)}
               class={
                 "absolute top-1/2 -translate-y-1/2 z-[3]",
-                "rtl:right-2 ltr:left-2": @size == "sm" || "md",
+                "rtl:right-2 ltr:left-2": @size in ~w(sm md),
                 "rtl:right-3 ltr:left-3": @size == "lg"
               }
             />
