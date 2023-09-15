@@ -1,3 +1,10 @@
+## [2.55.7](https://github.com/coingaming/moon/compare/v2.55.6...v2.55.7) (2023-09-15)
+
+
+### Bug Fixes
+
+* AuthCode update as per latest design ([#706](https://github.com/coingaming/moon/issues/706)) ([5f1dfed](https://github.com/coingaming/moon/commit/5f1dfedb57abf5f38b9e9e5bcc5388dfcca1afde))
+
 ## [2.55.6](https://github.com/coingaming/moon/compare/v2.55.5...v2.55.6) (2023-09-15)
 
 
