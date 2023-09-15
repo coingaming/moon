@@ -1,3 +1,38 @@
+## [2.55.6](https://github.com/coingaming/moon/compare/v2.55.5...v2.55.6) (2023-09-15)
+
+
+### Bug Fixes
+
+* Fixing search bg color [MDS-680] ([#711](https://github.com/coingaming/moon/issues/711)) ([22974a6](https://github.com/coingaming/moon/commit/22974a672e1819bf4f96abc758e95640f309681b))
+
+## [2.55.5](https://github.com/coingaming/moon/compare/v2.55.4...v2.55.5) (2023-09-15)
+
+
+### Bug Fixes
+
+* [MDS-614] Align Combobox and Dropdown badge padding on multiple selections ([#707](https://github.com/coingaming/moon/issues/707)) ([8ce410c](https://github.com/coingaming/moon/commit/8ce410c787143a6ad012a4327e39c46461d76722))
+
+## [2.55.4](https://github.com/coingaming/moon/compare/v2.55.3...v2.55.4) (2023-09-15)
+
+
+### Bug Fixes
+
+* Add multi line button example ([#710](https://github.com/coingaming/moon/issues/710)) ([143e7c5](https://github.com/coingaming/moon/commit/143e7c54bd1ecdfd8f0fe6d3470fa781fafe736c))
+
+## [2.55.3](https://github.com/coingaming/moon/compare/v2.55.2...v2.55.3) (2023-09-14)
+
+
+### Bug Fixes
+
+* carousel indicators for default slot ([#709](https://github.com/coingaming/moon/issues/709)) ([ea2885f](https://github.com/coingaming/moon/commit/ea2885f43f25c9991b5280f03a50cc610d4fc5e7))
+
+## [2.55.2](https://github.com/coingaming/moon/compare/v2.55.1...v2.55.2) (2023-09-13)
+
+
+### Bug Fixes
+
+* Update partners.io and sportsbet theme, add pay.io theme ([#708](https://github.com/coingaming/moon/issues/708)) ([f04302e](https://github.com/coingaming/moon/commit/f04302e659e072c3e4721d372b426a9ae71700bf))
+
 ## [2.55.1](https://github.com/coingaming/moon/compare/v2.55.0...v2.55.1) (2023-09-06)
 
 
