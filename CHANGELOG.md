@@ -1,3 +1,10 @@
+## [2.55.8](https://github.com/coingaming/moon/compare/v2.55.7...v2.55.8) (2023-09-15)
+
+
+### Bug Fixes
+
+* formattings ([0fd7d44](https://github.com/coingaming/moon/commit/0fd7d441ad711a4996d8a4d555f5ea5b73f553b0))
+
 ## [2.55.7](https://github.com/coingaming/moon/compare/v2.55.6...v2.55.7) (2023-09-15)
 
 
