@@ -1,3 +1,10 @@
+## [2.55.6](https://github.com/coingaming/moon/compare/v2.55.5...v2.55.6) (2023-09-15)
+
+
+### Bug Fixes
+
+* Fixing search bg color [MDS-680] ([#711](https://github.com/coingaming/moon/issues/711)) ([22974a6](https://github.com/coingaming/moon/commit/22974a672e1819bf4f96abc758e95640f309681b))
+
 ## [2.55.5](https://github.com/coingaming/moon/compare/v2.55.4...v2.55.5) (2023-09-15)
 
 
