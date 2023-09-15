@@ -3,9 +3,11 @@ defmodule Moon.Design.Form.Field.Error do
 
   use Moon.StatelessComponent
 
+  prop(class, :css_class)
+
   def render(assigns) do
     ~F"""
-    <div class="text-chichi ps-4" role="alert">
+    <div class={merge(["text-chichi ps-4", @class])} role="alert">
       <Surface.Components.Form.ErrorTag />
     </div>
     """

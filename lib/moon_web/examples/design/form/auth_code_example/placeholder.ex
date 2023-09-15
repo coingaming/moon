@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Placeholder do
 
   def render(assigns) do
     ~F"""
-    <AuthCode placeholder="123456" id="placeholder">
+    <AuthCode placeholder="123456">
       <AuthCode.Input />
     </AuthCode>
     """
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Placeholder do
 
     ...
 
-    <AuthCode placeholder="123456" id="placeholder">
+    <AuthCode placeholder="123456">
       <AuthCode.Input />
     </AuthCode>
     """

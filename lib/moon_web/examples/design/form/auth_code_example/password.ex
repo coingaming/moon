@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Default do
+defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Password do
   @moduledoc false
 
   use Moon.StatelessComponent
@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Default do
 
   def render(assigns) do
     ~F"""
-    <AuthCode>
+    <AuthCode type="password">
       <AuthCode.Input />
     </AuthCode>
     """
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Default do
 
     ...
 
-    <AuthCode>
+    <AuthCode type="password" >
       <AuthCode.Input />
     </AuthCode>
     """

@@ -10,37 +10,26 @@ defmodule Moon.Design.Form.AuthCode.Input do
 
   @doc "Id attribute for DOM element"
   prop(id, :string, from_context: :id)
-
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
-
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-
-  @doc "Will be got from AuthCode in most cases"
-  prop(size, :string, from_context: :size)
-
   @doc "Will be got from AuthCode in most cases"
   prop(disabled, :boolean, from_context: :disabled)
-
   @doc "Will be got from AuthCode in most cases"
   prop(placeholder, :string, from_context: :placeholder)
-
+  @doc "Will be got from AuthCode in most cases"
+  prop(type, :string, from_context: :type)
   @doc "Will be got from AuthCode in most cases"
   prop(length, :integer, from_context: :length)
-
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
-
   @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-
   @doc "Will be got from AuthCode in most cases"
   prop(error, :boolean, from_context: :error)
-
   @doc "Will be got from AuthCode in most cases"
   prop(allowed_characters, :string, from_context: :allowed_characters)
-
   @doc "Will be got from AuthCode in most cases"
   prop(value, :string, from_context: :value)
 
@@ -52,17 +41,14 @@ defmodule Moon.Design.Form.AuthCode.Input do
           merge(
             input_classes(assigns) ++
               [
-                "h-14 w-[2.875rem] rounded-xl",
+                "h-[72px] w-full max-w-[48px] rounded-moon-i-sm text-moon-24",
                 "px-0",
                 "focus:ring-0",
                 "focus-visible::shadow-input-focus focus-visible::outline-none",
                 "moon-error:focus:ring-0 moon-error:text-chichi  ",
                 "invalid:text-chichi ",
+                "leading-[3.5rem] text-moon-24",
                 [
-                  "text-sm": @size == "sm",
-                  "text-base": @size == "md",
-                  "text-lg": @size == "lg",
-                  "leading-[3.5rem] text-xl": @size == "xl",
                   "shadow-input focus:shadow-input hover:shadow-input cursor-not-allowed": @disabled
                 ],
                 @class
@@ -71,6 +57,7 @@ defmodule Moon.Design.Form.AuthCode.Input do
           "text-center"
         ]}
         maxlength={1}
+        {=@type}
         autocomplete="off"
         placeholder={String.at(@placeholder, index)}
         data-testid={@testid}

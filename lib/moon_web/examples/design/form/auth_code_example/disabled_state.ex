@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.DisabledState do
 
   def render(assigns) do
     ~F"""
-    <AuthCode disabled id="disabled_state">
+    <AuthCode disabled>
       <AuthCode.Input />
     </AuthCode>
     """
@@ -20,7 +20,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.DisabledState do
 
     ...
 
-    <AuthCode disabled id="disabled_state">
+    <AuthCode disabled>
       <AuthCode.Input />
     </AuthCode>
     """
