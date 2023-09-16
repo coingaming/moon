@@ -27,7 +27,8 @@ defmodule Moon.Design.Carousel.Item do
 
   def render(assigns) do
     ~F"""
-    <li :if={!@is_hidden}
+    <li
+      :if={!@is_hidden}
       {=@id}
       {=@value}
       class={merge([
