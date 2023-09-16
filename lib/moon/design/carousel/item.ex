@@ -22,9 +22,12 @@ defmodule Moon.Design.Carousel.Item do
   @doc "Will be got from Carousel in most cases"
   prop(is_active, :boolean, from_context: :is_active)
 
+  @doc "Conditional displaying, bc of some bug with named slots in surface"
+  prop(is_hidden, :boolean, default: false)
+
   def render(assigns) do
     ~F"""
-    <li
+    <li :if={!@is_hidden}
       {=@id}
       {=@value}
       class={merge([
