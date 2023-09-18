@@ -1,3 +1,10 @@
+## [2.55.9](https://github.com/coingaming/moon/compare/v2.55.8...v2.55.9) (2023-09-18)
+
+
+### Bug Fixes
+
+* Carousel.Item is_hidden workaround ([#713](https://github.com/coingaming/moon/issues/713)) ([5c1eabd](https://github.com/coingaming/moon/commit/5c1eabd6fcdc250e179e7b5f43bf626bb3d21f43))
+
 ## [2.55.8](https://github.com/coingaming/moon/compare/v2.55.7...v2.55.8) (2023-09-15)
 
 
