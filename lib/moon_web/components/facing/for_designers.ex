@@ -30,14 +30,14 @@ defmodule MoonWeb.Components.Facing.ForDesigners do
       <div class="hidden flex-wrap gap-1 3xl:flex theme-moon-dark bg-transparent">
         <Button
           as="a"
-          variant="secondary"
+          variant="outline"
           href="https://www.figma.com/community/file/1002945721703152933"
           target="_blank"
           rel="noreferrer"
         >Figma</Button>
-        <Button variant="secondary" as="a" href="/getting-started">Getting Started</Button>
-        <Button variant="secondary" as="a" href="/typography">Typography</Button>
-        <Button variant="secondary" as="a" href="/colours">Colour Convention</Button>
+        <Button variant="outline" as="a" href="/getting-started">Getting Started</Button>
+        <Button variant="outline" as="a" href="/typography">Typography</Button>
+        <Button variant="outline" as="a" href="/colours">Colour Convention</Button>
       </div>
     </div>
     """

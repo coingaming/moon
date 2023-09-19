@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.WithoutArrow do
     ~F"""
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>
         I'm a tooltip without arrow
@@ -29,7 +29,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.WithoutArrow do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>
         I'm a tooltip without arrow

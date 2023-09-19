@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Default do
     ~F"""
     <Snackbar id="snackbar_default">
       <Snackbar.Trigger>
-        <Button variant="secondary">Default</Button>
+        <Button variant="outline">Default</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Default do
 
     <Snackbar id="snackbar_default">
       <Snackbar.Trigger>
-        <Button variant="secondary">Default</Button>
+        <Button variant="outline">Default</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>

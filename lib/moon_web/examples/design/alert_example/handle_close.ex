@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.AlertExample.HandleClose do
           <Alert.Close on_click="close_alert" />
         </Alert>
       {#else}
-        <Button variant="secondary" on_click="open_alert">
+        <Button variant="outline" on_click="open_alert">
           Show Alert
         </Button>
       {/if}
@@ -52,7 +52,7 @@ defmodule MoonWeb.Examples.Design.AlertExample.HandleClose do
           <Alert.Close on_click="close_alert" />
         </Alert>
       {#else}
-        <Button variant="secondary" on_click="open_alert">
+        <Button variant="outline" on_click="open_alert">
           Show Alert
         </Button>
       {/if}

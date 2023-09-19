@@ -8,9 +8,8 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Variants do
 
   def render(assigns) do
     ~F"""
-    <Button>Primary is default</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="tertiary">Tertiary</Button>
+    <Button>Fill is default</Button>
+    <Button variant="outline">Outline</Button>
     <Button variant="ghost">Ghost</Button>
     """
   end
@@ -21,9 +20,8 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Variants do
 
     ...
 
-    <Button>Primary is default</Button>
-    <Button variant="secondary">Secondary</Button>
-    <Button variant="tertiary">Tertiary</Button>
+    <Button>Fill is default</Button>
+    <Button variant="outline">Outline</Button>
     <Button variant="ghost">Ghost</Button>
     """
   end

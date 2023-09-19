@@ -19,7 +19,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
       <div class="w-1/4 sm:w-1/5 flex justify-center">
         <Popover id={"popover-ex-#{placement}"}>
           <Popover.Trigger>
-            <Button variant="secondary">{placement}</Button>
+            <Button variant="outline">{placement}</Button>
           </Popover.Trigger>
           <Popover.Panel position={placement}>
             <p class="p-4 text-moon-14">
@@ -58,7 +58,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.Position do
     {#for placement <- @placemets}
       <Popover id={"popover-ex-\#{placement}"}>
         <Popover.Trigger>
-          <Button variant="secondary">{placement}</Button>
+          <Button variant="outline">{placement}</Button>
         </Popover.Trigger>
         <Popover.Panel position={placement} class="w-[300px]">
           <p class="p-4 text-moon-14">

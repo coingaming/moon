@@ -9,11 +9,11 @@ defmodule Moon.Design.Button.Utils do
 
   def get_button_size_classes(size) do
     case size do
-      "xs" -> "text-moon-12 rounded-moon-s-xs h-6"
-      "sm" -> "text-moon-14 rounded-moon-s-sm h-8"
-      "md" -> "text-moon-14 rounded-moon-s-sm h-10"
-      "lg" -> "text-moon-16 rounded-moon-s-sm h-12"
-      "xl" -> "text-moon-16 rounded-moon-s-md h-14"
+      "xs" -> "text-moon-12 rounded-moon-s-xs h-6 gap-1"
+      "sm" -> "text-moon-14 rounded-moon-s-sm h-8 gap-1"
+      "md" -> "text-moon-14 rounded-moon-s-sm h-10 gap-2"
+      "lg" -> "text-moon-16 rounded-moon-s-sm h-12 gap-2"
+      "xl" -> "text-moon-16 rounded-moon-s-md h-14 gap-2"
     end
   end
 

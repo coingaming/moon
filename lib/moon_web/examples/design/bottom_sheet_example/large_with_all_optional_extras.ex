@@ -33,7 +33,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.LargeWithAllOptionalExtras 
             </Field>
           </div>
           <div class="p-2">
-            <Button on_click="set_close" variant="tertiary" size="lg" full_width="true">
+            <Button on_click="set_close" class="bg-hit text-goten" size="lg" full_width="true">
               Send
             </Button>
             <div class="p-2 mt-4 rounded-lg bg-goku">
@@ -96,7 +96,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.LargeWithAllOptionalExtras 
               </Field>
             </div>
             <div class="p-2">
-              <Button on_click="set_close" variant="tertiary" size="lg" full_width="true">
+              <Button on_click="set_close" class="bg-hit text-goten" size="lg" full_width="true">
                 Send
               </Button>
               <div class="p-2 mt-4 rounded-lg bg-goku">

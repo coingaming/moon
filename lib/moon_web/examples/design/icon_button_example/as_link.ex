@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.ButtonAsLinkHtmlElement do
 
   def render(assigns) do
     ~F"""
-    <IconButton icon_only="generic_settings" as="a" href="/components/v2/button" />
+    <IconButton icon="generic_settings" as="a" href="/components/v2/button" />
     """
   end
 
@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.ButtonAsLinkHtmlElement do
 
     ...
 
-    <IconButton icon_only="generic_settings" as="a" href="/components/v2/button" />
+    <IconButton icon="generic_settings" as="a" href="/components/v2/button" />
     """
   end
 end

@@ -14,7 +14,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
     ~F"""
     <Snackbar id="snackbar_7">
       <Snackbar.Trigger>
-        <Button variant="secondary">Multi Line</Button>
+        <Button variant="outline">Multi Line</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -24,7 +24,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_8">
       <Snackbar.Trigger>
-        <Button variant="secondary">With header</Button>
+        <Button variant="outline">With header</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Header>Info</Snackbar.Header>
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_9">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Close</Button>
+        <Button variant="outline">With Close</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -44,7 +44,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_10">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Icon</Button>
+        <Button variant="outline">With Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />
@@ -56,7 +56,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_11">
       <Snackbar.Trigger>
-        <Button variant="secondary">Multi Line with Icon</Button>
+        <Button variant="outline">Multi Line with Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_12">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Close and Icon</Button>
+        <Button variant="outline">With Close and Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />
@@ -93,7 +93,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_7">
       <Snackbar.Trigger>
-        <Button variant="secondary">Multi Line</Button>
+        <Button variant="outline">Multi Line</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -103,7 +103,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_8">
       <Snackbar.Trigger>
-        <Button variant="secondary">With header</Button>
+        <Button variant="outline">With header</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Header>Info</Snackbar.Header>
@@ -113,7 +113,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_9">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Close</Button>
+        <Button variant="outline">With Close</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -123,7 +123,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_10">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Icon</Button>
+        <Button variant="outline">With Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />
@@ -135,7 +135,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_11">
       <Snackbar.Trigger>
-        <Button variant="secondary">Multi Line with Icon</Button>
+        <Button variant="outline">Multi Line with Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />
@@ -148,7 +148,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Options do
 
     <Snackbar id="snackbar_12">
       <Snackbar.Trigger>
-        <Button variant="secondary">With Close and Icon</Button>
+        <Button variant="outline">With Close and Icon</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon>
         <GenericInfo />

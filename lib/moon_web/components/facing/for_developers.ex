@@ -37,29 +37,29 @@ defmodule MoonWeb.Components.Facing.ForDevelopers do
       </div>
       <div class="hidden flex-wrap gap-1 3xl:flex bg-transparent">
         <Button
-          variant="secondary"
+          variant="outline"
           as="a"
           href="https://github.com/coingaming/moon"
           target="_blank"
           rel="noreferrer"
         >Github</Button>
-        <Button variant="secondary" as="a" href="/getting-started">Getting Started</Button>
-        <Button variant="secondary" as="a" href="/tokens">Design Tokens</Button>
+        <Button variant="outline" as="a" href="/getting-started">Getting Started</Button>
+        <Button variant="outline" as="a" href="/tokens">Design Tokens</Button>
         <Button
-          variant="secondary"
+          variant="outline"
           as="a"
           href="https://github.com/coingaming/moon/tree/main/priv/static/themes"
           target="_blank"
           rel="noreferrer"
         >Creating Themes</Button>
         <Button
-          variant="secondary"
+          variant="outline"
           as="a"
           href="https://github.com/coingaming/moon/blob/main/CONTRIBUTING.md"
           target="_blank"
           rel="noreferrer"
         >Contribution</Button>
-        <Button variant="secondary" as="a" href="/components">Components</Button>
+        <Button variant="outline" as="a" href="/components">Components</Button>
       </div>
     </div>
     """

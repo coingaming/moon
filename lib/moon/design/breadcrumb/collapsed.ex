@@ -88,7 +88,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
         >
           <IconButton
             variant="ghost"
-            icon_only={@collapsed_icon || "other3_dots_horizontal"}
+            icon={@collapsed_icon || "other3_dots_horizontal"}
             size="xs"
             on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
           />

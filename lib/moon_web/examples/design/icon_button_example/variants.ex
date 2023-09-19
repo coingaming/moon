@@ -8,10 +8,9 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Variants do
 
   def render(assigns) do
     ~F"""
-    <IconButton icon_only="generic_settings" />
-    <IconButton icon_only="generic_settings" variant="secondary" />
-    <IconButton icon_only="generic_settings" variant="tertiary" />
-    <IconButton icon_only="generic_settings" variant="ghost" />
+    <IconButton icon="generic_settings" />
+    <IconButton icon="generic_settings" variant="outline" />
+    <IconButton icon="generic_settings" variant="ghost" />
     """
   end
 
@@ -21,10 +20,9 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Variants do
 
     ...
 
-    <IconButton icon_only="generic_settings" />
-    <IconButton icon_only="generic_settings" variant="secondary" />
-    <IconButton icon_only="generic_settings" variant="tertiary" />
-    <IconButton icon_only="generic_settings" variant="ghost" />
+    <IconButton icon="generic_settings" />
+    <IconButton icon="generic_settings" variant="outline" />
+    <IconButton icon="generic_settings" variant="ghost" />
     """
   end
 end

@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Disabled do
 
   def render(assigns) do
     ~F"""
-    <IconButton icon_only="generic_settings" disabled="true" />
+    <IconButton icon="generic_settings" disabled="true" />
     """
   end
 
@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Disabled do
 
     ...
 
-    <IconButton icon_only="generic_settings" disabled="true" />
+    <IconButton icon="generic_settings" disabled="true" />
     """
   end
 end

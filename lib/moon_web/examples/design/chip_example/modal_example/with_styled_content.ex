@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
             </div>
           </div>
           <div class="p-4 flex items-center justify-center">
-            <Button variant="secondary" on_click="set_close">Got it, thanks!</Button>
+            <Button variant="outline" on_click="set_close">Got it, thanks!</Button>
           </div>
         </Modal.Panel>
       </Modal>
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithStyledContent do
               </div>
             </div>
             <div class="p-4 flex items-center justify-center">
-              <Button variant="secondary" on_click="set_close">Got it, thanks!</Button>
+              <Button variant="outline" on_click="set_close">Got it, thanks!</Button>
             </div>
           </Modal.Panel>
         </Modal>

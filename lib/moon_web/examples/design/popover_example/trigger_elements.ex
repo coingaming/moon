@@ -23,7 +23,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
     </Popover>
     <Popover id="popover_id_6">
       <Popover.Trigger>
-        <IconButton icon_only="controls_chevron_down" variant="secondary" />
+        <IconButton icon="controls_chevron_down" variant="outline" />
       </Popover.Trigger>
       <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>
@@ -67,7 +67,7 @@ defmodule MoonWeb.Examples.Design.PopoverExample.TriggerElements do
     </Popover>
     <Popover id="popover_id_6">
       <Popover.Trigger>
-        <IconButton icon_only="controls_chevron_down" variant="secondary" />
+        <IconButton icon="controls_chevron_down" variant="outline" />
       </Popover.Trigger>
       <Popover.Panel>
         <MenuItem>Tournaments</MenuItem>

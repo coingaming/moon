@@ -8,10 +8,10 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Animation do
 
   def render(assigns) do
     ~F"""
-    <IconButton icon_only="generic_settings" animation="progress" />
-    <IconButton icon_only="generic_settings" animation="success" />
-    <IconButton icon_only="generic_settings" animation="error" />
-    <IconButton icon_only="generic_settings" animation="pulse" />
+    <IconButton icon="generic_settings" animation="progress" />
+    <IconButton icon="generic_settings" animation="success" />
+    <IconButton icon="generic_settings" animation="error" />
+    <IconButton icon="generic_settings" animation="pulse" />
     """
   end
 
@@ -21,10 +21,10 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Animation do
 
     ...
 
-    <IconButton icon_only="generic_settings" animation="progress" />
-    <IconButton icon_only="generic_settings" animation="success" />
-    <IconButton icon_only="generic_settings" animation="error" />
-    <IconButton icon_only="generic_settings" animation="pulse" />
+    <IconButton icon="generic_settings" animation="progress" />
+    <IconButton icon="generic_settings" animation="success" />
+    <IconButton icon="generic_settings" animation="error" />
+    <IconButton icon="generic_settings" animation="pulse" />
     """
   end
 end
