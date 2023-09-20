@@ -181,7 +181,7 @@ defmodule Moon.Components.Select.MultiSelect do
         <TopToDown>
           <div class={
             "overflow-auto rounded-moon-i-md box-border border border-solid",
-            "border-beerus min-w-full min-h-[20px] max-h-[200px] drop-shadow-2xl",
+            "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl",
             "#{@search_min_width}": not is_nil(@on_search_change)
           }>
             <Dropdown
