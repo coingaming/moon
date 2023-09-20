@@ -1,3 +1,10 @@
+# [2.56.0](https://github.com/coingaming/moon/compare/v2.55.9...v2.56.0) (2023-09-20)
+
+
+### Features
+
+* Update variants in Button and IconButton, incl additional examples [MDS-683] ([#715](https://github.com/coingaming/moon/issues/715)) ([d8ab1ff](https://github.com/coingaming/moon/commit/d8ab1ffca6fe9b66ab353d4a675ca4529e20c1f9))
+
 ## [2.55.9](https://github.com/coingaming/moon/compare/v2.55.8...v2.55.9) (2023-09-18)
 
 
