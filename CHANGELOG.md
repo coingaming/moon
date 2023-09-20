@@ -1,3 +1,10 @@
+## [2.56.1](https://github.com/coingaming/moon/compare/v2.56.0...v2.56.1) (2023-09-20)
+
+
+### Bug Fixes
+
+* min width of open dropdown ([1ce8522](https://github.com/coingaming/moon/commit/1ce85229ecb90754c2463d032b659721969785de))
+
 # [2.56.0](https://github.com/coingaming/moon/compare/v2.55.9...v2.56.0) (2023-09-20)
 
 
