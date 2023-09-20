@@ -135,23 +135,31 @@ defmodule Moon.Design.Button do
 
   defp content(assigns) do
     ~F"""
-    <Icon
-      name={@left_icon}
-      class={
-        Utils.icon_class(@size),
-        "#{Utils.left_icon_horizontal_position(@size)}": @full_width
-      }
-      :if={@left_icon}
-    />
+    {#if slot_assigned?(:left_icon_slot)}
+      <#slot {@left_icon_slot} />
+    {#else}
+      <Icon
+        name={@left_icon}
+        class={
+          Utils.icon_class(@size),
+          "#{Utils.left_icon_horizontal_position(@size)}": @full_width
+        }
+        :if={@left_icon}
+      />
+    {/if}
     <#slot />
-    <Icon
-      name={@right_icon}
-      class={
-        Utils.icon_class(@size),
-        "#{Utils.right_icon_horizontal_position(@size)}": @full_width
-      }
-      :if={@right_icon}
-    />
+    {#if slot_assigned?(:right_icon_slot)}
+      <#slot {@right_icon_slot} />
+    {#else}
+      <Icon
+        name={@right_icon}
+        class={
+          Utils.icon_class(@size),
+          "#{Utils.right_icon_horizontal_position(@size)}": @full_width
+        }
+        :if={@right_icon}
+      />
+    {/if}
     """
   end
 
