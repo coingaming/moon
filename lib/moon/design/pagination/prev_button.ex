@@ -20,7 +20,7 @@ defmodule Moon.Design.Pagination.PrevButton do
   @doc "Visual/Logical variant of button. Please use \"fill\", \"outline\", \"ghost\"  instead of \"primary\", \"secondary\", \"tertiary\" "
   prop(variant, :string,
     values: ["fill", "outline", "ghost", "primary", "secondary", "tertiary"],
-    default: "fill"
+    default: "outline"
   )
 
   @doc "Size of button"
