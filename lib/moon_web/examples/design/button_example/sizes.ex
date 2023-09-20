@@ -8,8 +8,8 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Sizes do
 
   def render(assigns) do
     ~F"""
-    <Button left_icon="generic_settings" button_gap="gap-1" size="xs">XS Button</Button>
-    <Button left_icon="generic_settings" button_gap="gap-1" size="sm">SM Button</Button>
+    <Button left_icon="generic_settings" size="xs">XS Button</Button>
+    <Button left_icon="generic_settings" size="sm">SM Button</Button>
     <Button left_icon="generic_settings" size="md">MD Button is default</Button>
     <Button left_icon="generic_settings" size="lg">LG Button</Button>
     <Button left_icon="generic_settings" size="xl">XL Button</Button>
@@ -22,8 +22,8 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Sizes do
 
     ...
 
-    <Button left_icon="generic_settings" button_gap="gap-1" size="xs">XS Button</Button>
-    <Button left_icon="generic_settings" button_gap="gap-1" size="sm">SM Button</Button>
+    <Button left_icon="generic_settings" size="xs">XS Button</Button>
+    <Button left_icon="generic_settings" size="sm">SM Button</Button>
     <Button left_icon="generic_settings" size="md">MD Button is default</Button>
     <Button left_icon="generic_settings" size="lg">LG Button</Button>
     <Button left_icon="generic_settings" size="xl">XL Button</Button>

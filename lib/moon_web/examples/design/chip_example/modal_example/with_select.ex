@@ -70,7 +70,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
             </Form>
           </div>
           <div class="flex gap-2 p-4 justify-end pt-2">
-            <Button variant="secondary" on_click="set_close" testid="close-modal">Cancel</Button>
+            <Button variant="outline" on_click="set_close" testid="close-modal">Cancel</Button>
             <Button on_click="set_close">Create</Button>
           </div>
         </Modal.Panel>
@@ -156,7 +156,7 @@ defmodule MoonWeb.Examples.Design.ModalExample.ExampleWithSelect do
               </Form>
             </div>
             <div class="flex gap-2 p-4 justify-end pt-2">
-              <Button variant="secondary" on_click="set_close">Cancel</Button>
+              <Button variant="outline" on_click="set_close">Cancel</Button>
               <Button on_click="set_close">Create</Button>
             </div>
           </Modal.Panel>

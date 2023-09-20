@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
         titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
       />
       <Dropdown.Trigger>
-        <IconButton icon_only="controls_chevron_down" variant="secondary" />
+        <IconButton icon="controls_chevron_down" variant="outline" />
       </Dropdown.Trigger>
     </Dropdown>
     <Dropdown id="dropdown-trigger-02">
@@ -52,7 +52,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
         titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
       />
       <Dropdown.Trigger>
-        <IconButton icon_only="controls_chevron_down" variant="secondary" />
+        <IconButton icon="controls_chevron_down" variant="outline" />
       </Dropdown.Trigger>
     </Dropdown>
     <Dropdown id="dropdown-trigger-02">

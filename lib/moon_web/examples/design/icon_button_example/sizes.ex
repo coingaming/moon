@@ -8,11 +8,11 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Sizes do
 
   def render(assigns) do
     ~F"""
-    <IconButton icon_only="generic_settings" size="xs" />
-    <IconButton icon_only="generic_settings" size="sm" />
-    <IconButton icon_only="generic_settings" size="md" />
-    <IconButton icon_only="generic_settings" size="lg" />
-    <IconButton icon_only="generic_settings" size="xl" />
+    <IconButton icon="generic_settings" size="xs" />
+    <IconButton icon="generic_settings" size="sm" />
+    <IconButton icon="generic_settings" size="md" />
+    <IconButton icon="generic_settings" size="lg" />
+    <IconButton icon="generic_settings" size="xl" />
     """
   end
 
@@ -22,11 +22,11 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Sizes do
 
     ...
 
-    <IconButton icon_only="generic_settings" size="xs" />
-    <IconButton icon_only="generic_settings" size="sm" />
-    <IconButton icon_only="generic_settings" size="md" />
-    <IconButton icon_only="generic_settings" size="lg" />
-    <IconButton icon_only="generic_settings" size="xl" />
+    <IconButton icon="generic_settings" size="xs" />
+    <IconButton icon="generic_settings" size="sm" />
+    <IconButton icon="generic_settings" size="md" />
+    <IconButton icon="generic_settings" size="lg" />
+    <IconButton icon="generic_settings" size="xl" />
     """
   end
 end

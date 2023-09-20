@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.ButtonExample.FullWidth do
 
   def render(assigns) do
     ~F"""
-    <Button right_icon="generic_settings" full_width="true">
+    <Button right_icon="generic_settings" full_width>
       Full width
     </Button>
     """

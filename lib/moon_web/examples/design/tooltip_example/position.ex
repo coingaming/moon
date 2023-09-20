@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Positions do
       <div class="w-1/3 md:w-1/5 flex justify-center">
         <Tooltip>
           <Tooltip.Trigger>
-            <Button variant="secondary">{placement}</Button>
+            <Button variant="outline">{placement}</Button>
           </Tooltip.Trigger>
           <Tooltip.Content position={placement}>
             I'm a {placement} tooltip
@@ -35,7 +35,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Positions do
     {#for placement <- ~w(top-start top-center top-end bottom-start bottom-center bottom-end right left)}
       <Tooltip>
         <Tooltip.Trigger>
-          <Button variant="secondary">{placement}</Button>
+          <Button variant="outline">{placement}</Button>
         </Tooltip.Trigger>
         <Tooltip.Content position={placement}>
           I'm a {placement} tooltip

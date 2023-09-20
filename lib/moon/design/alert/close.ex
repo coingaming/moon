@@ -20,7 +20,7 @@ defmodule Moon.Design.Alert.Close do
       size="xs"
       variant="ghost"
       class={merge(["absolute top:4 text-moon-16 text-bulma", @class])}
-      icon_only="controls_close"
+      icon="controls_close"
       on_click={@on_click}
       {=@id}
       {=@testid}

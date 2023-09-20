@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
     ~F"""
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="bg-chichi/10">
         <Tooltip.Arrow />
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="text-moon-18 text-krillin font-medium">
         <Tooltip.Arrow />
@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="bg-roshi/10 text-piccolo">
         <Tooltip.Arrow />
@@ -50,7 +50,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="bg-chichi/10">
         <Tooltip.Arrow />
@@ -60,7 +60,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="text-moon-18 text-krillin font-medium">
         <Tooltip.Arrow />
@@ -70,7 +70,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Customizations do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="secondary">Hover Me</Button>
+        <Button variant="outline">Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content class="bg-roshi/10 text-piccolo">
         <Tooltip.Arrow />

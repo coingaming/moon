@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.WithoutShadow do
     ~F"""
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content position="top-center" has_no_shadow>
         <Tooltip.Arrow />
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.WithoutShadow do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content position="top-center" has_no_shadow>
         <Tooltip.Arrow />
