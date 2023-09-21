@@ -439,6 +439,7 @@ module.exports = {
       ]);
       addVariant('not-last', '&:not(:last-child)');
       addVariant('not-first', '&:not(:first-child)');
+      addVariant('empty', '&:empty');
     }),
   ],  
 };
