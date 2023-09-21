@@ -19,6 +19,12 @@ defmodule MoonWeb.Examples.Design.ButtonExample.MultiLine do
     """
   end
 
+  def note() do
+    """
+    Multiline button exists in XL size only. Please copy and paste the code below to see the result.
+    """
+  end
+
   def code() do
     """
     alias Moon.Design.Button
