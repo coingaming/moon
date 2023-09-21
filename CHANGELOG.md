@@ -1,3 +1,10 @@
+## [2.56.2](https://github.com/coingaming/moon/compare/v2.56.1...v2.56.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* Add note option to ExamplesList ([#718](https://github.com/coingaming/moon/issues/718)) ([d9042cc](https://github.com/coingaming/moon/commit/d9042cc82b2f66534bb02316ae10140b52f704f6))
+
 ## [2.56.1](https://github.com/coingaming/moon/compare/v2.56.0...v2.56.1) (2023-09-20)
 
 
