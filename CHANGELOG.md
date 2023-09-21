@@ -1,3 +1,10 @@
+## [2.56.3](https://github.com/coingaming/moon/compare/v2.56.2...v2.56.3) (2023-09-21)
+
+
+### Bug Fixes
+
+* Table and Select example fixes ([#719](https://github.com/coingaming/moon/issues/719)) ([818f4c8](https://github.com/coingaming/moon/commit/818f4c87f4b91a002399400d7d629bbaffc1a258))
+
 ## [2.56.2](https://github.com/coingaming/moon/compare/v2.56.1...v2.56.2) (2023-09-21)
 
 
