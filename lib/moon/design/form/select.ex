@@ -39,7 +39,9 @@ defmodule Moon.Design.Form.Select do
   @doc "Some additional styling will be set to indicate the field is invalid. Generally should be set by Form.Field component"
   prop(error, :boolean, from_context: :error)
 
-  @doc "If field does support multiselect, multiple attribute for select tag in HTML terms"
+  @doc """
+  Experimental: If field does support multiselect, multiple attribute for select tag in HTML terms
+  """
   prop(is_multiple, :boolean)
 
   def render(assigns) do
