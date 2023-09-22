@@ -1,3 +1,10 @@
+## [2.57.1](https://github.com/coingaming/moon/compare/v2.57.0...v2.57.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* Add pagination example with page hrefs [MDS-615] ([#716](https://github.com/coingaming/moon/issues/716)) ([bba16ef](https://github.com/coingaming/moon/commit/bba16ef5b55743d547d41a018e211f492964b237))
+
 # [2.57.0](https://github.com/coingaming/moon/compare/v2.56.3...v2.57.0) (2023-09-22)
 
 
