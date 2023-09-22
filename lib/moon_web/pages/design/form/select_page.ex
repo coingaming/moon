@@ -48,8 +48,8 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
         SelectExample.Sizes,
         SelectExample.WithLabel,
         SelectExample.DisabledAndError,
-        SelectExample.WithHint,
-        SelectExample.MultipleChoices
+        SelectExample.WithHint
+        # SelectExample.MultipleChoices
       ]} />
 
       <PropsTable module={Moon.Design.Form.Select} />

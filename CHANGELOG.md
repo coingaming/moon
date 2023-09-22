@@ -1,3 +1,24 @@
+# [2.57.0](https://github.com/coingaming/moon/compare/v2.56.3...v2.57.0) (2023-09-22)
+
+
+### Features
+
+* Add new icons [MDS-658]([#720](https://github.com/coingaming/moon/issues/720)) ([eb3bb8f](https://github.com/coingaming/moon/commit/eb3bb8f806b8955d78344c20919e3d474e86884b))
+
+## [2.56.3](https://github.com/coingaming/moon/compare/v2.56.2...v2.56.3) (2023-09-21)
+
+
+### Bug Fixes
+
+* Table and Select example fixes ([#719](https://github.com/coingaming/moon/issues/719)) ([818f4c8](https://github.com/coingaming/moon/commit/818f4c87f4b91a002399400d7d629bbaffc1a258))
+
+## [2.56.2](https://github.com/coingaming/moon/compare/v2.56.1...v2.56.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* Add note option to ExamplesList ([#718](https://github.com/coingaming/moon/issues/718)) ([d9042cc](https://github.com/coingaming/moon/commit/d9042cc82b2f66534bb02316ae10140b52f704f6))
+
 ## [2.56.1](https://github.com/coingaming/moon/compare/v2.56.0...v2.56.1) (2023-09-20)
 
 
