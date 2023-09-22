@@ -1,3 +1,10 @@
+# [2.57.0](https://github.com/coingaming/moon/compare/v2.56.3...v2.57.0) (2023-09-22)
+
+
+### Features
+
+* Add new icons [MDS-658]([#720](https://github.com/coingaming/moon/issues/720)) ([eb3bb8f](https://github.com/coingaming/moon/commit/eb3bb8f806b8955d78344c20919e3d474e86884b))
+
 ## [2.56.3](https://github.com/coingaming/moon/compare/v2.56.2...v2.56.3) (2023-09-21)
 
 
