@@ -68,6 +68,10 @@ defmodule MoonWeb.Components.PropsTable do
             :description => prop[:doc] || "-"
           }
         end)))
-    |> Enum.filter(&(!String.starts_with?(&1[:description], "Experimental:")))
+    # |> Enum.filter(&(!String.starts_with?(&1[:description], "Experimental:")))
+    |> Enum.filter(fn item ->
+      !String.starts_with?(item[:description], "Experimental:") &&
+        !String.starts_with?(item[:description], "Deprecated:")
+    end)
   end
 end

@@ -40,8 +40,10 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
 
       <ExamplesList examples={[
         BottomSheetExample.Default,
-        BottomSheetExample.LargeWithAllOptionalExtras,
-        BottomSheetExample.CustomHeight,
+        BottomSheetExample.DifferentSizes,
+        BottomSheetExample.WithDraghandle,
+        BottomSheetExample.WithTitle,
+        BottomSheetExample.Customization,
         BottomSheetExample.Responsive
       ]} />
 
