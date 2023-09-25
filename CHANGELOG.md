@@ -1,3 +1,17 @@
+## [2.57.2](https://github.com/coingaming/moon/compare/v2.57.1...v2.57.2) (2023-09-25)
+
+
+### Bug Fixes
+
+* removing obsolette tailwind plugin ([8602f08](https://github.com/coingaming/moon/commit/8602f08771b72eb1eb5e0863b13e88acd0d453e9))
+
+## [2.57.1](https://github.com/coingaming/moon/compare/v2.57.0...v2.57.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* Add pagination example with page hrefs [MDS-615] ([#716](https://github.com/coingaming/moon/issues/716)) ([bba16ef](https://github.com/coingaming/moon/commit/bba16ef5b55743d547d41a018e211f492964b237))
+
 # [2.57.0](https://github.com/coingaming/moon/compare/v2.56.3...v2.57.0) (2023-09-22)
 
 

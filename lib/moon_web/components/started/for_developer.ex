@@ -174,7 +174,7 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       at: "/moon/assets",
       from: :moon,
       gzip: true,
-      only: ~w(assets themes images svgs favicon.ico robots.txt),
+      only: ~w(assets themes images fonts svgs favicon.ico robots.txt),
       cache_control_for_etags: "public, max-age=86400"
     )
 
@@ -233,7 +233,6 @@ defmodule MoonWeb.Components.Started.ForDeveloper do
       "postcss": "^8.4.5",
       "postcss-import": "^14.0.2",
       "tailwindcss": "^3.1.7",
-      "tailwindcss-rtl": "^0.9.0",
 
       "@popperjs/core": "^2.11.6"
     },
