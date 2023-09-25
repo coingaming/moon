@@ -10,19 +10,19 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="set_open">
-        Modal
+      <Button variant="outline" on_click="set_open">
+        Modal on large screens
       </Button>
       <BottomSheet id="modal_bottom_sheet" as_modal_on="lg">
         <BottomSheet.Backdrop />
-        <BottomSheet.Panel>
+        <BottomSheet.Panel class="px-0">
           <BottomSheet.Header class="border-b-2 border-beerus">
             <BottomSheet.DragHandle />
-            <h3 class="text-moon-18 text-bulma font-medium">Do you think I'm Modal?</h3>
+            <h3 class="text-moon-18 text-bulma font-medium text-center pt-2">Do you think I'm Modal?</h3>
           </BottomSheet.Header>
           <p class="p-4 text-trunks">
-            Well, i'm a BottomSheet that looks like Modal on large screens ( > 1024px).
-            So, just size down your window and see how i look like.
+            Well, I'm a BottomSheet that looks like Modal on large screens ( > 1024px).
+            Try resizing your window to see how I adapt.
           </p>
           <div class="p-4">
             <Button size="lg" full_width on_click="set_close">
@@ -53,19 +53,19 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Responsive do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button on_click="set_open">
-          Modal
+        <Button variant="outline" on_click="set_open">
+          Modal on large screens
         </Button>
-        <BottomSheet id="modal_bottom_sheet" class="lg:hidden lg:flex lg:items-center lg:justify-center">
+        <BottomSheet id="modal_bottom_sheet" as_modal_on="lg">
           <BottomSheet.Backdrop />
-          <BottomSheet.Panel class="lg:max-w-sm lg:inline-block lg:rounded-xl lg:align-middle lg:shadow-moon-lg lg:bottom-auto">
+          <BottomSheet.Panel class="px-0">
             <BottomSheet.Header class="border-b-2 border-beerus">
-              <BottomSheet.DragHandle class="lg:hidden"/>
-              <h3 class="text-moon-18 text-bulma font-medium">Do you think I'm Modal?</h3>
+              <BottomSheet.DragHandle />
+              <h3 class="text-moon-18 text-bulma font-medium text-center pt-2">Do you think I'm Modal?</h3>
             </BottomSheet.Header>
             <p class="p-4 text-trunks">
-              Well, i'm a BottomSheet that looks like Modal on large screens ( > 1024px).
-              So, just size down your window and see how i look like.
+              Well, I'm a BottomSheet that looks like Modal on large screens ( > 1024px).
+              Try resizing your window to see how I adapt.
             </p>
             <div class="p-4">
               <Button size="lg" full_width on_click="set_close">

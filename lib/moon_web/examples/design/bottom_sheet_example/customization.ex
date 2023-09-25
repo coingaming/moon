@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
+defmodule MoonWeb.Examples.Design.BottomSheetExample.Customization do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -11,10 +11,13 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
     ~F"""
     <div>
       <Button variant="outline" on_click="set_open">
-        Default Bottom Sheet
+        Customized Bottom Sheet
       </Button>
-      <BottomSheet id="default_bottom_sheet">
-        <BottomSheet.Panel>
+      <BottomSheet id="customized_bottom_sheet">
+        <BottomSheet.Panel class="bg-raditz pt-2 px-4 pb-4">
+          <BottomSheet.Header class="bg-none min-h-[10px]">
+            <BottomSheet.DragHandle class="bg-piccolo" />
+          </BottomSheet.Header>
           <div class="flex grow items-center justify-center bg-jiren text-piccolo">
             Bottom Sheet content
           </div>
@@ -26,12 +29,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
   end
 
   def handle_event("set_open", _, socket) do
-    BottomSheet.open("default_bottom_sheet")
-    {:noreply, socket}
-  end
-
-  def handle_event("set_close", _, socket) do
-    BottomSheet.close("default_bottom_sheet")
+    BottomSheet.open("customized_bottom_sheet")
     {:noreply, socket}
   end
 
@@ -44,10 +42,13 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
       ~F\"""
       <div>
         <Button variant="outline" on_click="set_open">
-          Default Bottom Sheet
+          Customized Bottom Sheet
         </Button>
-        <BottomSheet id="default_bottom_sheet">
-          <BottomSheet.Panel>
+        <BottomSheet id="customized_bottom_sheet">
+          <BottomSheet.Panel class="bg-raditz pt-2 px-4 pb-4">
+            <BottomSheet.Header class="bg-none min-h-[10px]">
+              <BottomSheet.DragHandle class="bg-piccolo" />
+            </BottomSheet.Header>
             <div class="flex grow items-center justify-center bg-jiren text-piccolo">
               Bottom Sheet content
             </div>
@@ -59,12 +60,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
     end
 
     def handle_event("set_open", _, socket) do
-      BottomSheet.open("default_bottom_sheet")
-      {:noreply, socket}
-    end
-
-    def handle_event("set_close", _, socket) do
-      BottomSheet.close("default_bottom_sheet")
+      BottomSheet.open("customized_bottom_sheet")
       {:noreply, socket}
     end
     """
