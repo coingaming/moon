@@ -1,3 +1,10 @@
+## [2.57.3](https://github.com/coingaming/moon/compare/v2.57.2...v2.57.3) (2023-09-25)
+
+
+### Bug Fixes
+
+* Fixes on Bottom Sheet, incl new examples ([#723](https://github.com/coingaming/moon/issues/723)) ([4b0829f](https://github.com/coingaming/moon/commit/4b0829fdf492074ac1c686252b2d09ab0252a102))
+
 ## [2.57.2](https://github.com/coingaming/moon/compare/v2.57.1...v2.57.2) (2023-09-25)
 
 
