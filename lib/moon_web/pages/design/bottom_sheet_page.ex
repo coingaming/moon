@@ -63,7 +63,9 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
       <BottomSheet.Panel>
         <BottomSheet.Header>
           <BottomSheet.Draghandle />
+          ...
         </BottomSheet.Header>
+        ...
       </BottomSheet.Panel>
     </BottomSheet>
     """
