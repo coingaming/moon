@@ -1,3 +1,10 @@
+## [2.57.4](https://github.com/coingaming/moon/compare/v2.57.3...v2.57.4) (2023-09-26)
+
+
+### Bug Fixes
+
+* Update support colours in Partners theme ([#724](https://github.com/coingaming/moon/issues/724)) ([b560a34](https://github.com/coingaming/moon/commit/b560a34e29347b293f2351bf253cbd03a2492741))
+
 ## [2.57.3](https://github.com/coingaming/moon/compare/v2.57.2...v2.57.3) (2023-09-25)
 
 
