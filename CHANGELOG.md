@@ -1,3 +1,10 @@
+## [2.57.5](https://github.com/coingaming/moon/compare/v2.57.4...v2.57.5) (2023-09-27)
+
+
+### Bug Fixes
+
+* merge_class function improvements ([#726](https://github.com/coingaming/moon/issues/726)) ([7ac0003](https://github.com/coingaming/moon/commit/7ac0003df5bc5b4a011f886d68683003e563e7b4))
+
 ## [2.57.4](https://github.com/coingaming/moon/compare/v2.57.3...v2.57.4) (2023-09-26)
 
 
