@@ -23,6 +23,8 @@ defmodule Moon.Design.Carousel do
   @doc "Interval of auto sliding in milliseconds. No auto sliding if undefined"
   prop(autoslide_delay, :integer)
 
+  prop(is_rtl, :boolean, default: false)
+
   @doc "Reel of Carousel component, see Carousel.Reel"
   slot(reel)
 
@@ -45,6 +47,7 @@ defmodule Moon.Design.Carousel do
       data-autoslide_delay={@autoslide_delay}
       data-step={@step}
       data-value={@value}
+      data-is_rtl={"#{@is_rtl}"}
     >
       <#slot />
       <#slot
