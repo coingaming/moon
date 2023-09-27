@@ -50,7 +50,7 @@ defmodule Moon.Design.Carousel do
       <#slot
         {@left_arrow}
         context_put={
-          value: @value - 1,
+          value: @value - @step,
           on_change: @on_change || JS.dispatch("triggerLeftArrowClick", detail: %{})
         }
       />
@@ -65,7 +65,7 @@ defmodule Moon.Design.Carousel do
       <#slot
         {@right_arrow}
         context_put={
-          value: @value + 1,
+          value: @value + @step,
           on_change: @on_change || JS.dispatch("triggerRightArrowClick", detail: %{})
         }
       />
