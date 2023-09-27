@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Design.CarouselPage do
         <p>It not only helps in saving screen space, but also encourages visitors to focus on important website content and improves the overall visual appeal effectively.</p>
       </ComponentPageDescription>
 
-      {!-- <Anatomy>{component_anatomy()}</Anatomy> --}
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         CarouselExample.Default,
