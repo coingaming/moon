@@ -5,16 +5,8 @@ defmodule Moon.Helpers.MergeClass do
 
   def merge(classes) do
     flatten(classes)
-    # |> Enum.filter(fn x -> x != "" end)
     |> Enum.reduce(%{}, fn class, groups ->
-      group =
-        class
-        # removing square brackets bc of "top-[-7px]"
-        |> String.replace(~r/\[.*\]$/, "")
-        # removing last value, e.g. "postion-top-1" => "position-top-"
-        |> String.replace(~r/-[^-]*$/, "-")
-
-      Map.put(groups, group, class)
+      Map.put(groups, group_name(class), class)
     end)
     |> Map.values()
   end
@@ -31,4 +23,18 @@ defmodule Moon.Helpers.MergeClass do
   defp flatten(classes) when is_binary(classes), do: classes |> String.split(" ")
   defp flatten(nil), do: []
   defp flatten(false), do: []
+
+  defp group_name(class) when class in ~w(absolute relative fixed static sticky),
+    do: "prop_position"
+
+  defp group_name(class) when class in ~w(block inline hidden flex grid),
+    do: "prop_display"
+
+  defp group_name(class) do
+    class
+    # removing square brackets bc of "top-[-7px]"
+    |> String.replace(~r/\[.*\]$/, "")
+    # removing last value, e.g. "postion-top-1" => "position-top-"
+    |> String.replace(~r/-[^-]*$/, "-")
+  end
 end

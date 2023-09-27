@@ -31,6 +31,11 @@ defmodule Moon.Helpers.MergeClassTest do
 
   test "flex & flex-1 are different groups" do
     merged = merge(["flex", "flex-1"])
-    assert merged == ["flex", "flex-1"]
+    assert merged == ["flex-1", "flex"]
+  end
+
+  test "positions should collapse" do
+    merged = merge(~w(absolute relative))
+    assert merged == ~w(relative)
   end
 end
