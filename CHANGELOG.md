@@ -1,3 +1,10 @@
+## [2.57.7](https://github.com/coingaming/moon/compare/v2.57.6...v2.57.7) (2023-09-28)
+
+
+### Bug Fixes
+
+* Fix Button animations for outline and ghost variants [MDS-713] ([#729](https://github.com/coingaming/moon/issues/729)) ([07232e3](https://github.com/coingaming/moon/commit/07232e32efcf2b73f16bfddf78aac3a8713c17fa))
+
 ## [2.57.6](https://github.com/coingaming/moon/compare/v2.57.5...v2.57.6) (2023-09-28)
 
 
