@@ -1,3 +1,10 @@
+## [2.57.6](https://github.com/coingaming/moon/compare/v2.57.5...v2.57.6) (2023-09-28)
+
+
+### Bug Fixes
+
+* carousel on_change event fix ([#727](https://github.com/coingaming/moon/issues/727)) ([2946217](https://github.com/coingaming/moon/commit/29462170effedbf65c2128584428ed195bec7f6e))
+
 ## [2.57.5](https://github.com/coingaming/moon/compare/v2.57.4...v2.57.5) (2023-09-27)
 
 
