@@ -28,7 +28,7 @@ defmodule Moon.Design.Carousel.LeftArrow do
     ~F"""
     <CarouselControl
       {=@id}
-      class={merge(["-left-4", "moon-left-arrow", @class])}
+      class={merge(["-start-4", "moon-left-arrow", @class])}
       on_change={@on_change}
       testid={@testid}
       value={@value}
