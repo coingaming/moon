@@ -8,7 +8,7 @@ defmodule Moon.Design.Button do
   alias Moon.Icon
   alias Moon.Design.Loader
 
-  @doc "Visual/Logical variant of button."
+  @doc "Visual/Logical variant of button"
   prop(variant, :string,
     values: ["fill", "outline", "ghost", "primary", "secondary", "tertiary"],
     default: "fill"
