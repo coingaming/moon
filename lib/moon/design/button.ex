@@ -123,7 +123,7 @@ defmodule Moon.Design.Button do
           size={if @size == "xs", do: "2xs", else: "xs"}
         />
       {#elseif @animation == "success"}
-        <Icon name="generic_check_alternative" color="currentColour" class={Utils.icon_class(@size)} />
+        <Icon name="generic_check_alternative" color="currentColor" class={Utils.icon_class(@size)} />
       {/if}
     </span>
     """
