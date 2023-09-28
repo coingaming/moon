@@ -9,17 +9,21 @@ defmodule Moon.Design.BottomSheet do
   @doc "Called when the BottomSheet is dismissed"
   prop(on_close, :event)
 
-  @doc "Whether the BottomSheet has a shadow or not"
+  @doc """
+  Deprecated: Whether the BottomSheet has a shadow or not
+  """
   prop(has_shadow, :boolean, default: false)
 
-  @doc "The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value"
+  @doc """
+  Deprecated: The size of the BottomSheet, sm, md, lg or custom pixel/percentage/rem value
+  """
   prop(size, :string,
     values!: [
       "sm",
       "md",
       "lg"
     ],
-    default: "md"
+    default: "sm"
   )
 
   @doc "Tailwind classes for customization"

@@ -24,8 +24,9 @@ defmodule MoonWeb.Components.ExampleAndCode do
       <div class="flex flex-row items-center justify-between">
         <div class="flex flex-row gap-2 w-full">
           <Tabs id={"#{@id}-example-and-code"} class="justify-between gap-6">
-            <h2 class="text-moon-24 font-semibold">{@title}</h2>
-            <Tabs.List class="w-fit p-1 gap-1 bg-goku rounded-moon-s-md">
+            <h2 class="text-moon-24 font-semibold order-1">{@title}</h2>
+            <p :if={slot_assigned?(:note)} class="text-moon-16 w-full order-3 empty:hidden"><#slot {@note} /></p>
+            <Tabs.List class="w-fit p-1 gap-1 bg-goku rounded-moon-s-md order-2">
               <Tabs.Segment class="flex flex-row gap-2">
                 <ControlsEye class="text-moon-24" />
                 <span class="hidden md:block">Preview</span>
@@ -35,7 +36,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
                 <span class="hidden md:block">Code</span>
               </Tabs.Segment>
             </Tabs.List>
-            <Tabs.Panels>
+            <Tabs.Panels class="order-4">
               <Tabs.Panel>
                 <div class={merge([
                   "p-4 flex bg-goku text-moon-14 rounded-moon-s-sm w-full",
@@ -56,9 +57,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
           </Tabs>
         </div>
       </div>
-      <div class="text-moon-16" :if={slot_assigned?(:note)}>
-        <p><#slot {@note} /></p>
-      </div>
+
       <div
         class="theme-moon-dark grid gap-4 p-4 bg-goku text-moon-14 rounded-moon-s-sm"
         :if={slot_assigned?(:state)}

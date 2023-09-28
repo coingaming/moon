@@ -22,10 +22,14 @@ defmodule Moon.Design.BottomSheet.Panel do
   @doc "Will be got from Bottomsheet in most cases"
   prop(on_close, :event, from_context: :on_close)
 
-  @doc "Will be got from Bottomsheet in most cases"
+  @doc """
+  Deprecated: Will be got from Bottomsheet in most cases
+  """
   prop(has_shadow, :boolean, from_context: :has_shadow)
 
-  @doc "Will be got from Bottomsheet in most cases"
+  @doc """
+  Deprecated: Will be got from Bottomsheet in most cases
+  """
   prop(size, :string, from_context: :size)
 
   @doc """
@@ -43,10 +47,11 @@ defmodule Moon.Design.BottomSheet.Panel do
       data-animate_leave_class="animate-drawer_leave_bottom"
       class={merge([
         [
-          "fixed w-full bottom-0 rounded-t-xl bg-gohan overflow-y-auto",
+          "absolute flex flex-col inset-x-0 bottom-0 rounded-t-moon-i-md bg-gohan p-2 h-1/3",
           "moon-panel",
+          "pt-1": slot_assigned?(:header),
           "shadow-moon-lg": @has_shadow,
-          "h-[32%]": @size == "sm",
+          "h-1/3": @size == "sm",
           "h-[64%]": @size == "md",
           "h-[88%]": @size == "lg"
         ],
@@ -65,7 +70,7 @@ defmodule Moon.Design.BottomSheet.Panel do
   defp modal_classes(nil), do: []
 
   defp modal_classes(size) do
-    ~w(max-w-sm inline-block rounded-xl align-middle shadow-moon-lg bottom-auto)
+    ~w(max-w-sm inline-block rounded-xl align-middle shadow-moon-lg bottom-auto inset-x-auto)
     |> Enum.map(&"#{size}:#{&1}")
   end
 end

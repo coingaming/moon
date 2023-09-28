@@ -15,7 +15,7 @@ defmodule MoonWeb.Examples.BottomSheet.ResponsiveTest do
     assert view |> element("#modal_bottom_sheet div.moon-backdrop") |> has_element?()
     assert view |> element("#modal_bottom_sheet div.moon-drag-handle") |> has_element?()
 
-    # TODO: test by position class-> assert view |> element("#modal_bottom_sheet div.lg:align-middle") |> has_element?()
+    assert view |> element("#modal_bottom_sheet div.lg\\:align-middle") |> has_element?()
 
     button_to_close_bottomsheet = view |> element("button[data-size=lg]")
     assert button_to_close_bottomsheet |> render() =~ "Got it!"

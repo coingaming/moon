@@ -14,7 +14,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
     ~F"""
     <Snackbar id="snackbar_13">
       <Snackbar.Trigger>
-        <Button variant="secondary">Success</Button>
+        <Button variant="outline">Success</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-roshi-10 text-roshi">
         <GenericInfo />
@@ -28,7 +28,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
 
     <Snackbar id="snackbar_14">
       <Snackbar.Trigger>
-        <Button variant="secondary">Warning</Button>
+        <Button variant="outline">Warning</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-krillin-10 text-krillin">
         <GenericInfo />
@@ -42,7 +42,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
 
     <Snackbar id="snackbar_15">
       <Snackbar.Trigger>
-        <Button variant="secondary">Error</Button>
+        <Button variant="outline">Error</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-chichi-10 text-chichi">
         <GenericInfo />
@@ -67,7 +67,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
 
     <Snackbar id="snackbar_13">
       <Snackbar.Trigger>
-        <Button variant="secondary">Success</Button>
+        <Button variant="outline">Success</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-roshi-10 text-roshi">
         <GenericInfo />
@@ -81,7 +81,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
 
     <Snackbar id="snackbar_14">
       <Snackbar.Trigger>
-        <Button variant="secondary">Warning</Button>
+        <Button variant="outline">Warning</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-krillin-10 text-krillin">
         <GenericInfo />
@@ -95,7 +95,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.SemanticTypes do
 
     <Snackbar id="snackbar_15">
       <Snackbar.Trigger>
-        <Button variant="secondary">Error</Button>
+        <Button variant="outline">Error</Button>
       </Snackbar.Trigger>
       <Snackbar.Icon class="bg-chichi-10 text-chichi">
         <GenericInfo />

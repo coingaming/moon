@@ -43,14 +43,14 @@ defmodule Moon.Design.Dropdown.Select do
       {=@error}
       {=@disabled}
       class={merge([
-        "flex items-center justify-between w-full bg-gohan border-beerus",
+        "flex items-center w-full bg-gohan border-beerus",
         "shadow-input hover:shadow-input-hov transition-shadow duration-200",
-        "focus:shadow-input-focus focus:outline-none py-0 px-4 m-0",
+        "focus:shadow-input-focus focus:outline-none py-0 pe-4 m-0",
         "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
         [
-          "h-8 leading-8 rounded-moon-i-xs text-moon-14": @size == "sm",
-          "h-10 leading-10 rounded-moon-i-sm text-moon-16": !(@size in ~w(sm lg)),
-          "h-12 leading-[3rem] rounded-moon-i-sm text-moon-16": @size == "lg",
+          "h-8 leading-8 rounded-moon-i-xs text-moon-14 ps-2": @size == "sm",
+          "h-10 leading-10 rounded-moon-i-sm text-moon-16 ps-2 ": !(@size in ~w(sm lg)),
+          "h-12 leading-[3rem] rounded-moon-i-sm text-moon-16 ps-3": @size == "lg",
           "opacity-60 outline-0 border-none cursor-not-allowed hover:shadow-input focus:shadow-input":
             @disabled
         ],
@@ -59,14 +59,14 @@ defmodule Moon.Design.Dropdown.Select do
     >
       <Badge :if={@badge && @badge > 0} {=@size} count={@badge} />
       <span class={merge([
-        "overflow-hidden whitespace-nowrap text-trunks",
+        "overflow-hidden whitespace-nowrap text-trunks ps-2",
         "text-bulma": !!@value
       ])}>
         <#slot>{@value || @prompt}</#slot>
       </span>
       <Icon
         name="controls_chevron_down"
-        class={"text-trunks flex-shrink-0 transition-transform", "rotate-180": @is_open}
+        class={"text-trunks flex-shrink-0 transition-transform ltr:ml-auto rtl:mr-auto", "rotate-180": @is_open}
       />
     </button>
     """

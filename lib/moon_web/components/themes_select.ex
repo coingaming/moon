@@ -22,7 +22,7 @@ defmodule MoonWeb.Components.ThemesSelect do
       >
         <Popover.Trigger>
           <IconButton
-            icon_only="media_tuner"
+            icon="media_tuner"
             class="shadow-moon-md rounded-full rounded-moon-s-xx"
             aria_label="Toggle site settings"
           />

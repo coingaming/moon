@@ -31,7 +31,7 @@ defmodule Moon.Helpers.Form do
 
   def has_error(_, _), do: false
 
-  def input_classes(%{size: size, disabled: disabled}) do
+  def input_classes(%{disabled: disabled}) do
     [
       "focus:ring-0 border-0 py-0 px-4 m-0",
       "block w-full max-w-full appearance-none text-[1rem] text-bulma transition-shadow box-border before:box-border after:box-border",
@@ -40,10 +40,15 @@ defmodule Moon.Helpers.Form do
       "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
       "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",
       "invalid:shadow-input-err invalid:hover:shadow-input-err invalid:focus:shadow-input-err",
+      "opacity-60": disabled
+    ]
+  end
+
+  def input_size_classes(%{size: size}) do
+    [
       "h-8 leading-8 rounded-moon-i-xs": size == "sm",
       "h-10 leading-10 rounded-moon-i-sm": size == "md",
-      "h-12 leading-[3rem] rounded-moon-i-sm": size == "lg",
-      "opacity-60": disabled
+      "h-12 leading-[3rem] rounded-moon-i-sm": size == "lg"
     ]
   end
 

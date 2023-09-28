@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Default do
     ~F"""
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>
         I'm a tooltip content
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.TooltipExample.Default do
 
     <Tooltip>
       <Tooltip.Trigger>
-        <Button variant="primary">Hover Me</Button>
+        <Button>Hover Me</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>
         I'm a tooltip content

@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
   def render(assigns) do
     ~F"""
     <div>
-      <Button variant="secondary" on_click="set_open">
+      <Button variant="outline" on_click="set_open">
         Show Drawer with Backdrop
       </Button>
       <Drawer id="backdrop_drawer">
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.WithBackdrop do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button variant="secondary" on_click="set_open">
+        <Button variant="outline" on_click="set_open">
           Show Drawer with Backdrop
         </Button>
         <Drawer id="backdrop_drawer">

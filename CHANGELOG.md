@@ -1,3 +1,143 @@
+## [2.57.6](https://github.com/coingaming/moon/compare/v2.57.5...v2.57.6) (2023-09-28)
+
+
+### Bug Fixes
+
+* carousel on_change event fix ([#727](https://github.com/coingaming/moon/issues/727)) ([2946217](https://github.com/coingaming/moon/commit/29462170effedbf65c2128584428ed195bec7f6e))
+
+## [2.57.5](https://github.com/coingaming/moon/compare/v2.57.4...v2.57.5) (2023-09-27)
+
+
+### Bug Fixes
+
+* merge_class function improvements ([#726](https://github.com/coingaming/moon/issues/726)) ([7ac0003](https://github.com/coingaming/moon/commit/7ac0003df5bc5b4a011f886d68683003e563e7b4))
+
+## [2.57.4](https://github.com/coingaming/moon/compare/v2.57.3...v2.57.4) (2023-09-26)
+
+
+### Bug Fixes
+
+* Update support colours in Partners theme ([#724](https://github.com/coingaming/moon/issues/724)) ([b560a34](https://github.com/coingaming/moon/commit/b560a34e29347b293f2351bf253cbd03a2492741))
+
+## [2.57.3](https://github.com/coingaming/moon/compare/v2.57.2...v2.57.3) (2023-09-25)
+
+
+### Bug Fixes
+
+* Fixes on Bottom Sheet, incl new examples ([#723](https://github.com/coingaming/moon/issues/723)) ([4b0829f](https://github.com/coingaming/moon/commit/4b0829fdf492074ac1c686252b2d09ab0252a102))
+
+## [2.57.2](https://github.com/coingaming/moon/compare/v2.57.1...v2.57.2) (2023-09-25)
+
+
+### Bug Fixes
+
+* removing obsolette tailwind plugin ([8602f08](https://github.com/coingaming/moon/commit/8602f08771b72eb1eb5e0863b13e88acd0d453e9))
+
+## [2.57.1](https://github.com/coingaming/moon/compare/v2.57.0...v2.57.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* Add pagination example with page hrefs [MDS-615] ([#716](https://github.com/coingaming/moon/issues/716)) ([bba16ef](https://github.com/coingaming/moon/commit/bba16ef5b55743d547d41a018e211f492964b237))
+
+# [2.57.0](https://github.com/coingaming/moon/compare/v2.56.3...v2.57.0) (2023-09-22)
+
+
+### Features
+
+* Add new icons [MDS-658]([#720](https://github.com/coingaming/moon/issues/720)) ([eb3bb8f](https://github.com/coingaming/moon/commit/eb3bb8f806b8955d78344c20919e3d474e86884b))
+
+## [2.56.3](https://github.com/coingaming/moon/compare/v2.56.2...v2.56.3) (2023-09-21)
+
+
+### Bug Fixes
+
+* Table and Select example fixes ([#719](https://github.com/coingaming/moon/issues/719)) ([818f4c8](https://github.com/coingaming/moon/commit/818f4c87f4b91a002399400d7d629bbaffc1a258))
+
+## [2.56.2](https://github.com/coingaming/moon/compare/v2.56.1...v2.56.2) (2023-09-21)
+
+
+### Bug Fixes
+
+* Add note option to ExamplesList ([#718](https://github.com/coingaming/moon/issues/718)) ([d9042cc](https://github.com/coingaming/moon/commit/d9042cc82b2f66534bb02316ae10140b52f704f6))
+
+## [2.56.1](https://github.com/coingaming/moon/compare/v2.56.0...v2.56.1) (2023-09-20)
+
+
+### Bug Fixes
+
+* min width of open dropdown ([1ce8522](https://github.com/coingaming/moon/commit/1ce85229ecb90754c2463d032b659721969785de))
+
+# [2.56.0](https://github.com/coingaming/moon/compare/v2.55.9...v2.56.0) (2023-09-20)
+
+
+### Features
+
+* Update variants in Button and IconButton, incl additional examples [MDS-683] ([#715](https://github.com/coingaming/moon/issues/715)) ([d8ab1ff](https://github.com/coingaming/moon/commit/d8ab1ffca6fe9b66ab353d4a675ca4529e20c1f9))
+
+## [2.55.9](https://github.com/coingaming/moon/compare/v2.55.8...v2.55.9) (2023-09-18)
+
+
+### Bug Fixes
+
+* Carousel.Item is_hidden workaround ([#713](https://github.com/coingaming/moon/issues/713)) ([5c1eabd](https://github.com/coingaming/moon/commit/5c1eabd6fcdc250e179e7b5f43bf626bb3d21f43))
+
+## [2.55.8](https://github.com/coingaming/moon/compare/v2.55.7...v2.55.8) (2023-09-15)
+
+
+### Bug Fixes
+
+* formattings ([0fd7d44](https://github.com/coingaming/moon/commit/0fd7d441ad711a4996d8a4d555f5ea5b73f553b0))
+
+## [2.55.7](https://github.com/coingaming/moon/compare/v2.55.6...v2.55.7) (2023-09-15)
+
+
+### Bug Fixes
+
+* AuthCode update as per latest design ([#706](https://github.com/coingaming/moon/issues/706)) ([5f1dfed](https://github.com/coingaming/moon/commit/5f1dfedb57abf5f38b9e9e5bcc5388dfcca1afde))
+
+## [2.55.6](https://github.com/coingaming/moon/compare/v2.55.5...v2.55.6) (2023-09-15)
+
+
+### Bug Fixes
+
+* Fixing search bg color [MDS-680] ([#711](https://github.com/coingaming/moon/issues/711)) ([22974a6](https://github.com/coingaming/moon/commit/22974a672e1819bf4f96abc758e95640f309681b))
+
+## [2.55.5](https://github.com/coingaming/moon/compare/v2.55.4...v2.55.5) (2023-09-15)
+
+
+### Bug Fixes
+
+* [MDS-614] Align Combobox and Dropdown badge padding on multiple selections ([#707](https://github.com/coingaming/moon/issues/707)) ([8ce410c](https://github.com/coingaming/moon/commit/8ce410c787143a6ad012a4327e39c46461d76722))
+
+## [2.55.4](https://github.com/coingaming/moon/compare/v2.55.3...v2.55.4) (2023-09-15)
+
+
+### Bug Fixes
+
+* Add multi line button example ([#710](https://github.com/coingaming/moon/issues/710)) ([143e7c5](https://github.com/coingaming/moon/commit/143e7c54bd1ecdfd8f0fe6d3470fa781fafe736c))
+
+## [2.55.3](https://github.com/coingaming/moon/compare/v2.55.2...v2.55.3) (2023-09-14)
+
+
+### Bug Fixes
+
+* carousel indicators for default slot ([#709](https://github.com/coingaming/moon/issues/709)) ([ea2885f](https://github.com/coingaming/moon/commit/ea2885f43f25c9991b5280f03a50cc610d4fc5e7))
+
+## [2.55.2](https://github.com/coingaming/moon/compare/v2.55.1...v2.55.2) (2023-09-13)
+
+
+### Bug Fixes
+
+* Update partners.io and sportsbet theme, add pay.io theme ([#708](https://github.com/coingaming/moon/issues/708)) ([f04302e](https://github.com/coingaming/moon/commit/f04302e659e072c3e4721d372b426a9ae71700bf))
+
+## [2.55.1](https://github.com/coingaming/moon/compare/v2.55.0...v2.55.1) (2023-09-06)
+
+
+### Bug Fixes
+
+* inset input fix for no-placeholder case ([#705](https://github.com/coingaming/moon/issues/705)) ([489b3f8](https://github.com/coingaming/moon/commit/489b3f8b7129fdd4064d8b76481bf1474aa97812))
+
 # [2.55.0](https://github.com/coingaming/moon/compare/v2.54.1...v2.55.0) (2023-08-29)
 
 

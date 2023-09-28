@@ -13,6 +13,7 @@ defmodule MoonWeb.Components.ExamplesList do
     ~F"""
     {#for module <- @examples}
       <ExampleAndCode title={title(module)} id={"example-#{module}"}>
+        <:note>{(Kernel.function_exported?(module, :note, 0) && module.note()) || ""}</:note>
         <:example><.moon {=module} id={"example-contents-#{module}"} /></:example>
         <:code>{(Kernel.function_exported?(module, :code, 0) && module.code()) || ""}</:code>
       </ExampleAndCode>

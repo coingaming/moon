@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
     ~F"""
     <Snackbar id="snackbar_16" timeout={1000}>
       <Snackbar.Trigger>
-        <Button variant="secondary">Close after 1 sec</Button>
+        <Button variant="outline">Close after 1 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
 
     <Snackbar id="snackbar_17" timeout={3000}>
       <Snackbar.Trigger>
-        <Button variant="secondary">Close after 3 sec</Button>
+        <Button variant="outline">Close after 3 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
 
     <Snackbar id="snackbar_16" timeout={1000}>
       <Snackbar.Trigger>
-        <Button variant="secondary">Close after 1 sec</Button>
+        <Button variant="outline">Close after 1 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>
@@ -48,7 +48,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.AutoClose do
 
     <Snackbar id="snackbar_17" timeout={3000}>
       <Snackbar.Trigger>
-        <Button variant="secondary">Close after 3 sec</Button>
+        <Button variant="outline">Close after 3 sec</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar message</Snackbar.Message>

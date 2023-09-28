@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
     ~F"""
     <Snackbar class="rounded-none" id="snackbar_18">
       <Snackbar.Trigger>
-        <Button variant="secondary">Border radius</Button>
+        <Button variant="outline">Border radius</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom border radius</Snackbar.Message>
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="bg-roshi" id="snackbar_19">
       <Snackbar.Trigger>
-        <Button variant="secondary">Background</Button>
+        <Button variant="outline">Background</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom background color</Snackbar.Message>
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="w-72" id="snackbar_20">
       <Snackbar.Trigger>
-        <Button variant="secondary">Width</Button>
+        <Button variant="outline">Width</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom width</Snackbar.Message>
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="theme-moon-light" id="snackbar_21">
       <Snackbar.Trigger>
-        <Button variant="secondary">Always light</Button>
+        <Button variant="outline">Always light</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Applying light theme</Snackbar.Message>
@@ -48,7 +48,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="theme-moon-dark" id="snackbar_22">
       <Snackbar.Trigger>
-        <Button variant="secondary">Always dark</Button>
+        <Button variant="outline">Always dark</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Applying dark theme</Snackbar.Message>
@@ -57,7 +57,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar id="snackbar_23">
       <Snackbar.Trigger>
-        <Button variant="secondary">Fonts</Button>
+        <Button variant="outline">Fonts</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message class="text-moon-24 text-chichi">Custom fonts</Snackbar.Message>
@@ -76,7 +76,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="rounded-none" id="snackbar_18">
       <Snackbar.Trigger>
-        <Button variant="secondary">Border radius</Button>
+        <Button variant="outline">Border radius</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom border radius</Snackbar.Message>
@@ -85,7 +85,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="bg-roshi" id="snackbar_19">
       <Snackbar.Trigger>
-        <Button variant="secondary">Background</Button>
+        <Button variant="outline">Background</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom background color</Snackbar.Message>
@@ -94,7 +94,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="w-72" id="snackbar_20">
       <Snackbar.Trigger>
-        <Button variant="secondary">Width</Button>
+        <Button variant="outline">Width</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Custom width</Snackbar.Message>
@@ -103,7 +103,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="theme-moon-light" id="snackbar_21">
       <Snackbar.Trigger>
-        <Button variant="secondary">Always light</Button>
+        <Button variant="outline">Always light</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Applying light theme</Snackbar.Message>
@@ -112,7 +112,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar class="theme-moon-dark" id="snackbar_22">
       <Snackbar.Trigger>
-        <Button variant="secondary">Always dark</Button>
+        <Button variant="outline">Always dark</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Applying dark theme</Snackbar.Message>
@@ -121,7 +121,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Customization do
 
     <Snackbar id="snackbar_23">
       <Snackbar.Trigger>
-        <Button variant="secondary">Fonts</Button>
+        <Button variant="outline">Fonts</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message class="text-moon-24 text-chichi">Custom fonts</Snackbar.Message>

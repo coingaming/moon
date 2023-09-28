@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
   def render(assigns) do
     ~F"""
     <div>
-      <Button variant="secondary" on_click="set_open">
+      <Button variant="outline" on_click="set_open">
         Show default Drawer
       </Button>
       <Drawer id="default_drawer">
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Design.DrawerExample.Default do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button variant="secondary" on_click="set_open">
+        <Button variant="outline" on_click="set_open">
           Show default Drawer
         </Button>
         <Drawer id="default_drawer">

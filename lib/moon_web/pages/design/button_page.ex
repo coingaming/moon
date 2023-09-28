@@ -53,70 +53,12 @@ defmodule MoonWeb.Pages.Design.Button.ButtonPage do
         ButtonExample.Icons,
         ButtonExample.FullWidth,
         ButtonExample.Disabled,
-        ButtonExample.Animations
+        ButtonExample.Animations,
+        ButtonExample.MultiLine,
+        ButtonExample.Customization
       ]} />
 
-      <PropsTable
-        title="Button props"
-        data={[
-          %{
-            :name => 'animation',
-            :type => 'progress | success | error | pulse',
-            :required => 'No',
-            :default => '-',
-            :description => 'Animation of button'
-          },
-          %{
-            :name => 'as',
-            :type => 'a | button',
-            :required => 'No',
-            :default => 'button',
-            :description => 'Rendered HTML element'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Disabled button'
-          },
-          %{
-            :name => 'full_width',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Full width button'
-          },
-          %{
-            :name => 'icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Icon'
-          },
-          %{
-            :name => 'size',
-            :type => 'xs | sm | md | lg | xl',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of button'
-          },
-          %{
-            :name => 'variant',
-            :type => 'primary | secondary | tertiary | ghost',
-            :required => 'No',
-            :default => 'primary',
-            :description => 'Visual/Logical variant of button'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional CSS class(es) for the item'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Button} />
     </Page>
     """
   end

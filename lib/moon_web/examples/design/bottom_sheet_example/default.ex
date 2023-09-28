@@ -10,30 +10,16 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="set_open">
-        My mind is ready
+      <Button variant="outline" on_click="set_open">
+        Default Bottom Sheet
       </Button>
       <BottomSheet id="default_bottom_sheet">
         <BottomSheet.Panel>
-          <BottomSheet.Header class="border-b-2 border-beerus">
-            <h3 class="text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
-          </BottomSheet.Header>
-          <p class="p-4 text-trunks">
-            I'm baby vaporware flexitarian scenester lyft activated charcoal
-            tacos. Hashtag etsy literally irony yr 3 wolf moon PBR&B cred banjo
-            lyft air plant edison bulb. Salvia next level pitchfork
-            single-origin coffee adaptogen. Neutra tilde sartorial Brooklyn
-            shaman schlitz. Roof party irony tattooed bicycle rights. Ethical
-            you probably haven't heard of them literally bespoke PBR&B. Tattooed
-            artisan twee, kinfolk kale chips taxidermy austin kitsch
-            williamsburg tousled ugh.
-          </p>
-          <div class="p-4">
-            <Button size="lg" full_width on_click="set_close">
-              I am honestly done
-            </Button>
+          <div class="flex grow items-center justify-center bg-jiren text-piccolo">
+            Bottom Sheet content
           </div>
         </BottomSheet.Panel>
+        <BottomSheet.Backdrop />
       </BottomSheet>
     </div>
     """
@@ -57,30 +43,16 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button on_click="set_open">
-          My mind is ready
+        <Button variant="outline" on_click="set_open">
+          Default Bottom Sheet
         </Button>
         <BottomSheet id="default_bottom_sheet">
           <BottomSheet.Panel>
-            <BottomSheet.Header class="border-b-2 border-beerus">
-              <h3 class="text-moon-18 text-bulma font-medium">Do you wear skinny jeans?</h3>
-            </BottomSheet.Header>
-            <p class="p-4 text-trunks">
-              I'm baby vaporware flexitarian scenester lyft activated charcoal
-              tacos. Hashtag etsy literally irony yr 3 wolf moon PBR&B cred banjo
-              lyft air plant edison bulb. Salvia next level pitchfork
-              single-origin coffee adaptogen. Neutra tilde sartorial Brooklyn
-              shaman schlitz. Roof party irony tattooed bicycle rights. Ethical
-              you probably haven't heard of them literally bespoke PBR&B. Tattooed
-              artisan twee, kinfolk kale chips taxidermy austin kitsch
-              williamsburg tousled ugh.
-            </p>
-            <div class="p-4">
-              <Button size="lg" full_width on_click="set_close">
-                I'm honestly done
-              </Button>
+            <div class="flex grow items-center justify-center bg-jiren text-piccolo">
+              Bottom Sheet content
             </div>
           </BottomSheet.Panel>
+          <BottomSheet.Backdrop />
         </BottomSheet>
       </div>
       \"""

@@ -12,6 +12,8 @@ defmodule MoonWeb.Pages.Design.PaginationPage do
 
   alias MoonWeb.Examples.Design.PaginationExample
 
+  alias MoonWeb.Components.ExampleAndCode
+
   data(breadcrumbs, :any,
     default: [
       %{
@@ -24,6 +26,12 @@ defmodule MoonWeb.Pages.Design.PaginationPage do
       }
     ]
   )
+
+  data(current_page, :integer)
+
+  def mount(params, _session, socket) do
+    {:ok, assign(socket, current_page: String.to_integer(params["page"] || "1"))}
+  end
 
   def render(assigns) do
     ~F"""
@@ -44,6 +52,13 @@ defmodule MoonWeb.Pages.Design.PaginationPage do
         PaginationExample.WithIcons,
         PaginationExample.WithText
       ]} />
+
+      <ExampleAndCode title="With page hrefs" id="with_hrefs">
+        <:example>
+          <PaginationExample.WithPageHrefs id="with_hrefs" {=@current_page} />
+        </:example>
+        <:code>{PaginationExample.WithPageHrefs.code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable title="Pagination props" module={Moon.Design.Pagination} />
       <PropsTable title="Pagination.PrevButton props" module={Moon.Design.Pagination.PrevButton} />

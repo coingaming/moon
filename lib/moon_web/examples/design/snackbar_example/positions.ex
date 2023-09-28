@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
     ~F"""
     <Snackbar position="top-left" id="snackbar_1">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top left</Button>
+        <Button variant="outline">Top left</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-left screen corner</Snackbar.Message>
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="top-center" id="snackbar_2">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top center</Button>
+        <Button variant="outline">Top center</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-center screen edge</Snackbar.Message>
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="top-right" id="snackbar_3">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top right</Button>
+        <Button variant="outline">Top right</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-right screen corner</Snackbar.Message>
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-left" id="snackbar_4">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom left</Button>
+        <Button variant="outline">Bottom left</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-left screen corner</Snackbar.Message>
@@ -48,7 +48,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-center" id="snackbar_5">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom center</Button>
+        <Button variant="outline">Bottom center</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-center screen edge</Snackbar.Message>
@@ -57,7 +57,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-right" id="snackbar_6">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom right</Button>
+        <Button variant="outline">Bottom right</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-right screen corner</Snackbar.Message>
@@ -75,7 +75,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="top-left" id="snackbar_1">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top left</Button>
+        <Button variant="outline">Top left</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-left screen corner</Snackbar.Message>
@@ -84,7 +84,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="top-center" id="snackbar_2">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top center</Button>
+        <Button variant="outline">Top center</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-center screen edge</Snackbar.Message>
@@ -93,7 +93,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="top-right" id="snackbar_3">
       <Snackbar.Trigger>
-        <Button variant="secondary">Top right</Button>
+        <Button variant="outline">Top right</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at top-right screen corner</Snackbar.Message>
@@ -102,7 +102,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-left" id="snackbar_4">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom left</Button>
+        <Button variant="outline">Bottom left</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-left screen corner</Snackbar.Message>
@@ -111,7 +111,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-center" id="snackbar_5">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom center</Button>
+        <Button variant="outline">Bottom center</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-center screen edge</Snackbar.Message>
@@ -120,7 +120,7 @@ defmodule MoonWeb.Examples.Design.SnackbarExample.Positions do
 
     <Snackbar position="bottom-right" id="snackbar_6">
       <Snackbar.Trigger>
-        <Button variant="secondary">Bottom right</Button>
+        <Button variant="outline">Bottom right</Button>
       </Snackbar.Trigger>
       <Snackbar.Content>
         <Snackbar.Message>Snackbar at bottom-right screen corner</Snackbar.Message>
