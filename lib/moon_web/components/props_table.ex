@@ -43,6 +43,7 @@ defmodule MoonWeb.Components.PropsTable do
   end
 
   defp data_from_module(module) do
+    # Button / IconButton variant property fix
     ((module.__props__()
       |> Enum.map(fn prop ->
         %{
@@ -51,7 +52,11 @@ defmodule MoonWeb.Components.PropsTable do
             (Keyword.get(prop[:opts], :values!) ||
                Keyword.get(prop[:opts], :values) ||
                ["#{prop[:type]}"])
-            |> Enum.join(" | "),
+            |> Enum.join(" | ")
+            |> String.replace(
+              "fill | outline | ghost | primary | secondary | tertiary",
+              "fill | outline | ghost"
+            ),
           :required => (Keyword.get(prop[:opts], :required, false) && "Yes") || "No",
           :default =>
             Keyword.get(prop[:opts], :default) |> inspect() |> String.replace(~r/^nil$/, "-"),
