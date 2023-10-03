@@ -10,7 +10,7 @@ defmodule Moon.Components.DropdownMenuItems do
 
   def render(assigns) do
     ~F"""
-    <div class={"px-1 py-2 rounded-lg bg-gohan shadow text-left w-#{@width} space-y-#{@gap} #{@class}"}>
+    <div class={"px-1 py-2 rounded-lg bg-goku shadow text-left w-#{@width} space-y-#{@gap} #{@class}"}>
       <#slot />
     </div>
     """
@@ -26,7 +26,7 @@ defmodule Moon.Components.DropdownMenuItem do
 
   def render(assigns) do
     ~F"""
-    <div class="p-3 text-moon-14 rounded cursor-pointer hover:bg-goku">
+    <div class="p-3 text-moon-14 rounded cursor-pointer hover:bg-gohan">
       <#slot />
     </div>
     """

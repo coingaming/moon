@@ -14,7 +14,7 @@ defmodule MoonWeb.Components.Facing.CardArticle do
     <li>
       <a target="_blank" href={@href}>
         <div class={
-          "group relative w-72 h-96 flex flex-col justify-end p-6 bg-goku rounded-moon-s-lg",
+          "group relative w-72 h-96 flex flex-col justify-end p-6 bg-gohan rounded-moon-s-lg",
           get_class(@variant)
         }>
           <p class="list-item absolute top-10 ltr:left-10 rtl:right-10 transform -rotate-90 origin-bottom-left text-moon-16 font-semibold">

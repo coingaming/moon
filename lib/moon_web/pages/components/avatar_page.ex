@@ -30,7 +30,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         :name => 'bg_color',
         :type => 'string',
         :required => 'No',
-        :default => 'bg-gohan',
+        :default => 'bg-goku',
         :description => 'Background color'
       },
       %{
@@ -132,7 +132,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
         <:example>
           <Avatar />
           <Avatar color="text-frieza" bg_color="bg-chichi" />
-          <Avatar color="text-gohan" bg_color="bg-krillin" />
+          <Avatar color="text-goku" bg_color="bg-krillin" />
           <Avatar color="text-chichi" bg_color="bg-frieza" />
         </:example>
 
@@ -223,7 +223,7 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
     """
     <Avatar />
     <Avatar color="text-frieza" bg_color="bg-chichi" />
-    <Avatar color="text-gohan" bg_color="bg-krillin" />
+    <Avatar color="text-goku" bg_color="bg-krillin" />
     <Avatar color="text-chichi" bg_color="bg-frieza" />
     """
   end

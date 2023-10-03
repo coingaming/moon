@@ -19,7 +19,7 @@ defmodule Moon.Design.Modal.Panel do
       data-animate_enter_class="animate-modal_enter"
       data-animate_leave_class="animate-modal_leave"
       class={merge([
-        "w-full max-w-sm inline-block transform rounded-xl bg-gohan align-middle shadow-moon-lg transition-all",
+        "w-full max-w-sm inline-block transform rounded-xl bg-goku align-middle shadow-moon-lg transition-all",
         "moon-panel",
         @class
       ])}

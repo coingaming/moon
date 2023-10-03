@@ -67,7 +67,7 @@ defmodule MoonWeb.Pages.Components.CalendarPage do
 
           <:state>@events = {inspect(@events, pretty: true)}</:state>
           <:note>
-            Use <code class="bg-goku-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
+            Use <code class="bg-gohan-40">week_starts_on</code> prop. The weekstart can between 1..7, where 1 means Monday. Default value is 1.
           </:note>
         </ExampleAndCode>
       </TopToDown>

@@ -35,7 +35,7 @@ defmodule Moon.Helpers.Form do
     [
       "focus:ring-0 border-0 py-0 px-4 m-0",
       "block w-full max-w-full appearance-none text-[1rem] text-bulma transition-shadow box-border before:box-border after:box-border",
-      "relative z-[2] shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none bg-gohan",
+      "relative z-[2] shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none bg-goku",
       "placeholder:text-trunks placeholder:opacity-100 placeholder:transition-opacity placeholder:delay-75",
       "read-only:outline-0 read-only:border-none read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
       "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",

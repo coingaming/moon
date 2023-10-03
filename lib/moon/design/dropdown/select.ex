@@ -43,7 +43,7 @@ defmodule Moon.Design.Dropdown.Select do
       {=@error}
       {=@disabled}
       class={merge([
-        "flex items-center w-full bg-gohan border-beerus",
+        "flex items-center w-full bg-goku border-beerus",
         "shadow-input hover:shadow-input-hov transition-shadow duration-200",
         "focus:shadow-input-focus focus:outline-none py-0 pe-4 m-0",
         "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",

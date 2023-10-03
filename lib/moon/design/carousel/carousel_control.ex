@@ -29,7 +29,7 @@ defmodule Moon.Design.Carousel.CarouselControl do
     <button
       {=@id}
       class={merge([
-        "max-sm:hidden align-middle shadow-moon-sm rounded-moon-i-sm bg-gohan text-bulma",
+        "max-sm:hidden align-middle shadow-moon-sm rounded-moon-i-sm bg-goku text-bulma",
         "h-8 w-8 font-medium",
         "leading-[0] no-underline cursor-pointer absolute top-1/2 -translate-y-1/2",
         "origin-[top_center] z-5 disabled:opacity-60 disabled:cursor-not-allowed",

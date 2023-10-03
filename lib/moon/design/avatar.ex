@@ -33,7 +33,7 @@ defmodule Moon.Design.Avatar do
       class={[
         merge([
           [
-            "overflow-hidden uppercase font-medium flex items-center justify-center relative text-bulma bg-gohan",
+            "overflow-hidden uppercase font-medium flex items-center justify-center relative text-bulma bg-goku",
             set_border_radius(@size),
             "text-moon-10-caption h-6 w-6": @size == "xs",
             "text-moon-12 h-8 w-8": @size == "sm",

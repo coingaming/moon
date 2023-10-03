@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Anatomy do
     ~F"""
     <PageSection {=@title}>
       <pre class={merge([
-        "flex w-full p-4 bg-goku rounded-moon-s-sm overflow-scroll text-moon-14 text-bulma",
+        "flex w-full p-4 bg-gohan rounded-moon-s-sm overflow-scroll text-moon-14 text-bulma",
         @class
       ])}><#slot /></pre>
     </PageSection>

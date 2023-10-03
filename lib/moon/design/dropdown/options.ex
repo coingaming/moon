@@ -37,7 +37,7 @@ defmodule Moon.Design.Dropdown.Options do
     <div
       class={merge([
         "flex flex-col absolute z-[99]",
-        "p-1 rounded-moon-s-md box-border bg-gohan shadow-moon-lg overflow-y-auto focus:outline-none",
+        "p-1 rounded-moon-s-md box-border bg-goku shadow-moon-lg overflow-y-auto focus:outline-none",
         (@position && position_class(@position)) || "w-full top-full my-2",
         @class,
         hidden: !@is_open

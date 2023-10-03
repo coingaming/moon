@@ -17,7 +17,7 @@ defmodule MoonWeb.Components.TokensTable do
         items={item <- @data}
         header_row_class="bg-none"
         class="bg-none"
-        row_bg="bg-goku whitespace-nowrap"
+        row_bg="bg-gohan whitespace-nowrap"
       >
         <Column name="property" label="Property">
           {item.property}

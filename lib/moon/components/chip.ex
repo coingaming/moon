@@ -79,11 +79,11 @@ defmodule Moon.Components.Chip do
     do: "text-piccolo bg-opacity-12 #{active_class}"
 
   defp active_btn_class(false, _, inactive_class),
-    do: "text-bulma bg-gohan #{inactive_class}"
+    do: "text-bulma bg-goku #{inactive_class}"
 
   defp get_bg_color(active, variant) do
     if variant == "default" do
-      if active, do: "bg-piccolo", else: "bg-gohan"
+      if active, do: "bg-piccolo", else: "bg-goku"
     else
       "bg-transparent"
     end

@@ -5,15 +5,15 @@ defmodule MoonWeb.Examples.Table.ClickableRowsTest do
     {:ok, view, _html} = live(conn, "/example/TableExample.ClickableRows")
 
     assert view
-           |> element("tr.bg-gohan[data-testid=row-0]")
+           |> element("tr.bg-goku[data-testid=row-0]")
            |> has_element?()
 
     assert view
-           |> element("tr.bg-gohan[data-testid=row-1]")
+           |> element("tr.bg-goku[data-testid=row-1]")
            |> has_element?()
 
     view
-    |> element("tr.bg-gohan[data-testid=row-0]")
+    |> element("tr.bg-goku[data-testid=row-0]")
     |> render_click()
 
     assert view
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Table.ClickableRowsTest do
            |> has_element?()
 
     assert view
-           |> element("tr.bg-gohan[data-testid=row-1]")
+           |> element("tr.bg-goku[data-testid=row-1]")
            |> has_element?()
   end
 

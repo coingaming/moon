@@ -8,7 +8,7 @@ defmodule Moon.Components.Tabs do
 
   def render(assigns) do
     ~F"""
-    <div class="border-b border-goku-40">
+    <div class="border-b border-gohan-40">
       <Reel>
         <#slot />
       </Reel>

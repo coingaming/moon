@@ -18,7 +18,7 @@ defmodule Moon.Design.Popover.Panel do
     <div
       {=@id}
       class={merge([
-        "absolute z-[9999999] w-72 overflow-y-auto rounded-moon-i-md box-border bg-gohan shadow-moon-lg",
+        "absolute z-[9999999] w-72 overflow-y-auto rounded-moon-i-md box-border bg-goku shadow-moon-lg",
         position_class(@position),
         @class
       ])}

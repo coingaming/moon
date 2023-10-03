@@ -27,7 +27,7 @@ defmodule MoonWeb.Components.ThemesSelect do
             aria_label="Toggle site settings"
           />
         </Popover.Trigger>
-        <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-gohan">
+        <Popover.Panel position="top-end" class="flex flex-col gap-1 p-3 bg-goku">
           <MenuItem as="div" class="cursor-default">
             {(String.contains?(@theme_name, "-dark") && "Dark mode") || "Light mode"}
             <Switch

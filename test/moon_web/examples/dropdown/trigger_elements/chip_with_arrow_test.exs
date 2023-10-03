@@ -9,7 +9,7 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.ChipWithArrowTest do
            |> has_element?()
 
     assert view |> element("#dropdown-trigger-03 div.hidden[role=listbox]") |> has_element?()
-    assert view |> element("#dropdown-trigger-03 button.bg-gohan") |> has_element?()
+    assert view |> element("#dropdown-trigger-03 button.bg-goku") |> has_element?()
     assert view |> element("#dropdown-trigger-03 svg.moon-icon") |> has_element?()
     refute view |> element("#dropdown-trigger-03 svg.moon-icon.rotate-180") |> has_element?()
 

@@ -42,7 +42,7 @@ defmodule Moon.Components.SingleSelect do
       </SelectTrigger>
 
       <ul
-        class="absolute z-10 w-full px-1 py-2 mt-2 space-y-1 overflow-auto rounded-lg shadow-lg bg-gohan max-h-56 focus:outline-none"
+        class="absolute z-10 w-full px-1 py-2 mt-2 space-y-1 overflow-auto rounded-lg shadow-lg bg-goku max-h-56 focus:outline-none"
         tabindex="-1"
         role="listbox"
         id={"#{@id}-listbox"}
@@ -50,7 +50,7 @@ defmodule Moon.Components.SingleSelect do
       >
         {#for option <- @options}
           <li
-            class="relative p-3 py-2 pl-3 text-moon-14 rounded-sm cursor-pointer text-bulma hover:bg-goku"
+            class="relative p-3 py-2 pl-3 text-moon-14 rounded-sm cursor-pointer text-bulma hover:bg-gohan"
             role="option"
             :on-click={select_option(@id, @on_select, @target, option.value)}
           >

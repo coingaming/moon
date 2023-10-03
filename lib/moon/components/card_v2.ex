@@ -5,7 +5,7 @@ defmodule Moon.Components.CardV2 do
 
   prop(rounded, :css_class, default: "rounded-md")
   prop(class, :css_class)
-  prop(background_color_class, :css_class, default: "bg-gohan")
+  prop(background_color_class, :css_class, default: "bg-goku")
   prop(border_color_class, :css_class)
   prop(top_class, :css_class)
   prop(left_bottom_class, :css_class)

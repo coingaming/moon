@@ -12,7 +12,7 @@ defmodule Moon.Components.Calendar.Week do
       class="grid gap-1"
       style="grid-template-columns: repeat(7, minmax(3rem, 1fr)); min-height: 75vh;"
     >
-      <div :for={day <- week_days(@date, @week_starts_on)} class="relative rounded-lg bg-gohan">
+      <div :for={day <- week_days(@date, @week_starts_on)} class="relative rounded-lg bg-goku">
         <div class={
           "absolute text-moon-10 md:text-moon-16 lg:text-moon-18 top-2 right-3",
           "text-piccolo": Timex.to_date(day) == Timex.today()
