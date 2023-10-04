@@ -1,3 +1,11 @@
+## [2.58.2](https://github.com/coingaming/moon/compare/v2.58.1...v2.58.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* Carousel update event ([#734](https://github.com/coingaming/moon/issues/734)) ([3f53f4f](https://github.com/coingaming/moon/commit/3f53f4f396d8702549c94332cd9f5fb5e58de987))
+* Modal handle_event fix ([#737](https://github.com/coingaming/moon/issues/737)) ([763aff6](https://github.com/coingaming/moon/commit/763aff6774f97c11bcba86b8d42bb07db97bf9cb))
+
 ## [2.58.1](https://github.com/coingaming/moon/compare/v2.58.0...v2.58.1) (2023-10-04)
 
 
