@@ -38,7 +38,7 @@ defmodule Moon.Parts.Chart.Field do
       ])}
       data-testid={@testid}
     >
-      <#slot context_put={min: @min, max: @max}/>
+      <#slot context_put={min: @min, max: @max} />
     </div>
     """
   end

@@ -37,7 +37,7 @@ defmodule Moon.Parts.Chart.Histo do
       <div
         :for={height <- @data}
         class={merge(["w-4 bg-krillin rounded-t-full", @color])}
-        style={"height: #{(height-@min) * 100.0 / (@max-@min)}%"}
+        style={"height: #{(height - @min) * 100.0 / (@max - @min)}%"}
       > </div>
     </div>
     """
