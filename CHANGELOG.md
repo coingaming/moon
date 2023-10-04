@@ -1,3 +1,10 @@
+# [2.58.0](https://github.com/coingaming/moon/compare/v2.57.7...v2.58.0) (2023-10-04)
+
+
+### Features
+
+* flip goku and gohan. Fix all components and docs [MDS-693] ([#732](https://github.com/coingaming/moon/issues/732)) ([a00ec99](https://github.com/coingaming/moon/commit/a00ec993cbc3f8031c97a2248265d3fdef0bd205))
+
 ## [2.57.7](https://github.com/coingaming/moon/compare/v2.57.6...v2.57.7) (2023-09-28)
 
 
