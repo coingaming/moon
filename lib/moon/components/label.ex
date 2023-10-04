@@ -3,7 +3,7 @@ defmodule Moon.Components.Label do
 
   use Moon.StatelessComponent
 
-  prop(color, :css_class, default: "text-goku")
+  prop(color, :css_class, default: "text-goten")
   prop(background_color, :css_class, default: "bg-bulma")
   prop(size, :string, default: "xsmall", values: ~w(twoxsmall xsmall))
   prop(class, :string)
