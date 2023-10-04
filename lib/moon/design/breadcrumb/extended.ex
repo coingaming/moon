@@ -3,7 +3,6 @@ defmodule Moon.Design.Breadcrumb.Extended do
 
   use Moon.StatelessComponent
 
-  alias Moon.Icon
   alias Moon.Design.Breadcrumb.Item
 
   prop(breadcrumbs, :list)

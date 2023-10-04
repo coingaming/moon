@@ -35,7 +35,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.Headless do
   def render(assigns) do
     ~F"""
     <div>
-      <Extended id="breadcrumb_headless" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
+      <Extended breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
         <Breadcrumb.Item
           class="text-chichi text-moon-32 hover:text-krillin gap-4 last:text-roshi"
           divider_class="text-moon-24 text-piccolo hover:text-piccolo"
