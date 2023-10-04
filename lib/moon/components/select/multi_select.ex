@@ -125,9 +125,9 @@ defmodule Moon.Components.Select.MultiSelect do
   prop(popover_placement, :string, default: "bottom-start")
   prop(popover_class, :string)
   prop(field_border_class, :string, default: FieldBorder.get_default_states_class())
-  prop(field_border_color_class, :string, values: Moon.colors(), default: "gohan")
+  prop(field_border_color_class, :string, values: Moon.colors(), default: "goku")
   prop(selected_label_background_color_class, :css_class, default: "bulma")
-  prop(selected_label_text_color_class, :css_class, default: "gohan")
+  prop(selected_label_text_color_class, :css_class, default: "goku")
 
   prop(searched_options, :any, default: nil)
   prop(on_search_change, :event)
