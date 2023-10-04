@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.Sizes.MediumTest do
   use MoonWeb.ConnCase, async: true
 
   test "option should be size md", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Sizes")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.Sizes")
 
     assert view
            |> element("#drop-sizes-md div[aria-haspopup=true]")

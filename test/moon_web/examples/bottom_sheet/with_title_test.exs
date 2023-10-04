@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.WithTitleTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Title BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.WithTitle")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.WithTitle")
 
     button_to_open_bottomsheet = view |> element("button[data-testid=open_title]")
     assert button_to_open_bottomsheet |> render() =~ "Bottom Sheet with Title"
@@ -15,7 +15,7 @@ defmodule MoonWeb.Examples.BottomSheet.WithTitleTest do
   end
 
   test "should open and close Title&Draghandle BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.WithTitle")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.WithTitle")
 
     button_to_open_bottomsheet = view |> element("button[data-testid=open_title_draghandle]")
     assert button_to_open_bottomsheet |> render() =~ "Bottom Sheet with Title and Draghandle"

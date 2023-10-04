@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.Positions.TopEndTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be placed top-end", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.Positions")
 
     assert view
            |> element("#drop-positions-top-end div[aria-haspopup=true]")

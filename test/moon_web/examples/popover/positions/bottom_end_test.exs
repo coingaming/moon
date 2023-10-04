@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Popover.Positions.BottomEndTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be bottom-end popover", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PopoverExample.Position")
+    {:ok, view, _html} = live(conn, "/example/Design.PopoverExample.Position")
 
     assert view
            |> element("#popover-ex-bottom-end div.hidden[aria-expanded=false]")

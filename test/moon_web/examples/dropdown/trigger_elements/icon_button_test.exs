@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.IconButtonTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have IconButton as trigger", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.TriggerElements")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.TriggerElements")
 
     assert view
            |> element("#dropdown-trigger-01 div[aria-haspopup=true]")

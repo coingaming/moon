@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Chip.ActiveTest do
   use MoonWeb.ConnCase, async: true
 
   test "active chip", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.Active")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.Active")
 
     assert view |> element("button.bg-jiren.text-piccolo[data-testid=active]") |> has_element?()
     refute view |> element("button.shadow-interactive[data-testid=active]") |> has_element?()
@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Chip.ActiveTest do
   end
 
   test "active chip with stroke", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.Active")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.Active")
 
     assert view
            |> element(

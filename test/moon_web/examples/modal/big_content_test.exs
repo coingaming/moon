@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Modal.BigContentTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Modal", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ModalExample.ExampleWithBigContent")
+    {:ok, view, _html} = live(conn, "/example/Design.ModalExample.ExampleWithBigContent")
 
     assert view |> element("button[data-testid=open-modal]") |> has_element?()
     assert view |> element("div.hidden[id=big_content_modal]") |> has_element?()

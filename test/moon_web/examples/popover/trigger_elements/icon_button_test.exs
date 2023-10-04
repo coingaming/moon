@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Popover.TriggerElements.IconButtonTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Popover", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PopoverExample.TriggerElements")
+    {:ok, view, _html} = live(conn, "/example/Design.PopoverExample.TriggerElements")
 
     assert view |> element("#popover_id_6 svg.h-6.w-6.moon-icon") |> has_element?()
     assert view |> element("#popover_id_6 div.hidden[aria-expanded=false]") |> has_element?()

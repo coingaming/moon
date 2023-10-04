@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
   use MoonWeb.ConnCase, async: true
 
   test "should change page with button", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TableExample.WithPaging")
+    {:ok, view, _html} = live(conn, "/example/Design.TableExample.WithPaging")
 
     assert view
            |> element("#with_buttons nav[aria-label=pagination]")
@@ -46,7 +46,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
   end
 
   test "should change page with arrows", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TableExample.WithPaging")
+    {:ok, view, _html} = live(conn, "/example/Design.TableExample.WithPaging")
 
     assert view
            |> element("#with_buttons button[disabled][value=0]")

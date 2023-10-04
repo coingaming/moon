@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Chip.IsStrokeTest do
   use MoonWeb.ConnCase, async: true
 
   test "small chip with stroke", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.IsStroke")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.IsStroke")
 
     assert view
            |> element(
@@ -14,7 +14,7 @@ defmodule MoonWeb.Examples.Chip.IsStrokeTest do
   end
 
   test "medium chip with stroke", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.IsStroke")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.IsStroke")
 
     refute view
            |> element(

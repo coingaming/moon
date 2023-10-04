@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.CustomizationTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.Customization")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.Customization")
 
     button_to_open_bottomsheet = view |> element("button[data-size=md]")
     assert button_to_open_bottomsheet |> render() =~ "Customized Bottom Sheet"

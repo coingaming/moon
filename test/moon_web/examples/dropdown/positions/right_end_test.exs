@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.Positions.RightEndTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be placed right-end", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.Positions")
 
     assert view
            |> element("#drop-positions-right-end div[aria-haspopup=true]")

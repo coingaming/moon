@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Chip.WithOnClickTest do
   use MoonWeb.ConnCase, async: true
 
   test "should change", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.WithOnClick")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.WithOnClick")
 
     chip = view |> element("button.bg-goku")
     assert chip |> render() =~ "Click me!"

@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.WithSelectTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Modal", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ModalExample.ExampleWithSelect")
+    {:ok, view, _html} = live(conn, "/example/Design.ModalExample.ExampleWithSelect")
 
     assert view |> element("button[data-testid=open-modal]") |> has_element?()
     assert view |> element("div.hidden[id=with_select_modal]") |> has_element?()

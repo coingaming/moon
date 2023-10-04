@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.ResponsiveTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.Responsive")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.Responsive")
 
     button_to_open_bottomsheet = view |> element("button[data-size=md]")
     assert button_to_open_bottomsheet |> render() =~ "Modal"

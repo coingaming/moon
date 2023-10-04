@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Chip.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "default chip classes", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.Default")
 
     assert view
            |> element(

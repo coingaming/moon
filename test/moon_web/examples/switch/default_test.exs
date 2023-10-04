@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Switch.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should switch", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SwitchExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.SwitchExample.Default")
 
     assert view
            |> element(

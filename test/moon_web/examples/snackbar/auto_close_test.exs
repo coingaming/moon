@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Snackbar.AutoCloseTest do
   use MoonWeb.ConnCase, async: true
 
   test "should after 1 sec", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SnackbarExample.AutoClose")
+    {:ok, view, _html} = live(conn, "/example/Design.SnackbarExample.AutoClose")
 
     assert view
            |> element(
@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Snackbar.AutoCloseTest do
   end
 
   test "should after 3 sec", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SnackbarExample.AutoClose")
+    {:ok, view, _html} = live(conn, "/example/Design.SnackbarExample.AutoClose")
 
     assert view
            |> element(

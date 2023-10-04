@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Switch.SizesTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be 2xs", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SwitchExample.Sizes")
+    {:ok, view, _html} = live(conn, "/example/Design.SwitchExample.Sizes")
 
     assert view
            |> element(
@@ -28,7 +28,7 @@ defmodule MoonWeb.Examples.Switch.SizesTest do
   end
 
   test "should be xs", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SwitchExample.Sizes")
+    {:ok, view, _html} = live(conn, "/example/Design.SwitchExample.Sizes")
 
     assert view
            |> element(
@@ -52,7 +52,7 @@ defmodule MoonWeb.Examples.Switch.SizesTest do
   end
 
   test "should be md", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SwitchExample.Sizes")
+    {:ok, view, _html} = live(conn, "/example/Design.SwitchExample.Sizes")
 
     assert view
            |> element(

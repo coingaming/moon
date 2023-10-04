@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Tabs.WithPillsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should switch have pill", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TabsExample.WithPills")
+    {:ok, view, _html} = live(conn, "/example/Design.TabsExample.WithPills")
 
     assert view
            |> element(
