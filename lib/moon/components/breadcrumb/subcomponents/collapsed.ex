@@ -57,10 +57,10 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
           />
           <ol
             id={"#{@id}_flyout"}
-            class="absolute hidden left-0 top-full bg-gohan p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]"
+            class="absolute hidden left-0 top-full bg-goku p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]"
           >
             {#for crumb <- @collapsed_breadcrumbs}
-              <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-goku">
+              <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-gohan">
                 <a href={crumb.link}>{crumb.name}</a>
               </li>
             {/for}

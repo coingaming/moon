@@ -26,7 +26,7 @@ defmodule Moon.Components.Table do
   prop(class, :css_class)
   prop(row_class, :css_class)
   prop(id, :string)
-  prop(even_row_class, :css_class, default: "bg-gohan")
+  prop(even_row_class, :css_class, default: "bg-goku")
 
   prop(has_no_cell_borders, :boolean, default: false)
 
@@ -68,7 +68,7 @@ defmodule Moon.Components.Table do
               <tr
                 class={merge(
                   "#{@even_row_class}": @selected != "#{item.id}" && rem(row_index, 2) == 0,
-                  "bg-goku-120": @selected == "#{item.id}",
+                  "bg-gohan-120": @selected == "#{item.id}",
                   "#{@row_class}": true
                 )}
                 :on-click={@row_click}

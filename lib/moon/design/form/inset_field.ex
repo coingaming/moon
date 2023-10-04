@@ -39,7 +39,7 @@ defmodule Moon.Design.Form.InsetField do
       name={@field}
       class={merge([
         [
-          "relative rounded-moon-i-sm bg-gohan shadow-input",
+          "relative rounded-moon-i-sm bg-goku shadow-input",
           "opacity-60 cursor-not-allowed": @disabled
         ] ++
           [@field_class, @class]

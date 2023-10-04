@@ -38,7 +38,7 @@ defmodule Moon.Design.Table do
   prop(is_zebra_style, :boolean, default: false)
 
   @doc "Can be used as an additional class for all the rows"
-  prop(row_bg, :css_class, default: "bg-gohan")
+  prop(row_bg, :css_class, default: "bg-goku")
 
   @doc "Can be used as an additional class for selected rows"
   prop(selected_bg, :css_class, default: "bg-beerus")
@@ -70,7 +70,7 @@ defmodule Moon.Design.Table do
       class={
         merge([
           [
-            "text-sm border-spacing-x-0 border-beerus min-w-full bg-goku rounded-moon-s-sm",
+            "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm",
             @row_gap,
             "border-spacing-y-0": @is_zebra_style
           ],

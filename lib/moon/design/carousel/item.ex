@@ -33,7 +33,7 @@ defmodule Moon.Design.Carousel.Item do
       {=@value}
       class={merge([
         [
-          "snap-center flex bg-gohan rounded-moon-s-sm items-center justify-center",
+          "snap-center flex bg-goku rounded-moon-s-sm items-center justify-center",
           active: @is_active
         ],
         @class

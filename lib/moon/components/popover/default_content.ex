@@ -10,7 +10,7 @@ defmodule Moon.Components.Popover.DefaultContent do
     ~F"""
     <div class={
       "overflow-auto rounded-moon-i-md box-border border border-solid",
-      "border-beerus drop-shadow-2xl bg-gohan"
+      "border-beerus drop-shadow-2xl bg-goku"
     }>
       <TopToDown>
         <#slot {@default} />

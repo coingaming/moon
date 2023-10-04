@@ -24,7 +24,7 @@ defmodule Moon.Design.Avatar.Status do
       class={[
         merge([
           [
-            "absolute border-goku rounded-full bg-roshi",
+            "absolute border-gohan rounded-full bg-roshi",
             "top-0": position.vertical == "top",
             "bottom-0": position.vertical == "bottom",
             "left-0": position.horizontal == "left",

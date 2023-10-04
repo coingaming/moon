@@ -9,7 +9,7 @@ defmodule Moon.Components.DropdownMenuButton do
   prop(height, :integer, default: 10)
   prop(width, :integer, default: 10)
   prop(text_color, :string, default: "text-trunks")
-  prop(hover_bg_color, :string, default: "bg-goku-120")
+  prop(hover_bg_color, :string, default: "bg-gohan-120")
   prop(placement, :string, default: "bottom-end")
   prop(show, :boolean, default: false)
   prop(on_toggle, :event, required: true)

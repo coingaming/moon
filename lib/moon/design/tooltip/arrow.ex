@@ -13,7 +13,7 @@ defmodule Moon.Design.Tooltip.Arrow do
   def render(assigns) do
     ~F"""
     <div class={merge([
-      "h-3 w-3  bg-gohan -rotate-45",
+      "h-3 w-3  bg-goku -rotate-45",
       (@has_no_shadow && "") || "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]",
       @parent_class,
       @class

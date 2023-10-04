@@ -4,12 +4,12 @@ defmodule MoonWeb.Examples.Chip.WithOnClickTest do
   test "should change", %{conn: conn} do
     {:ok, view, _html} = live(conn, "/example/ChipExample.WithOnClick")
 
-    chip = view |> element("button.bg-gohan")
+    chip = view |> element("button.bg-goku")
     assert chip |> render() =~ "Click me!"
 
     chip |> render_click()
 
-    chip = view |> element("button.bg-gohan")
+    chip = view |> element("button.bg-goku")
     assert chip |> render() =~ "Chip clicked!"
   end
 

@@ -43,11 +43,11 @@ defmodule MoonWeb.Pages.ColoursPage do
     default: [
       %{
         :name => "goku",
-        :bg_color => "bg-goku"
+        :bg_color => "bg-gohan"
       },
       %{
         :name => "gohan",
-        :bg_color => "bg-gohan"
+        :bg_color => "bg-goku"
       }
     ]
   )

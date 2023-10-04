@@ -15,14 +15,14 @@ defmodule Moon.Components.LineChartCard do
 
   def render(assigns) do
     ~F"""
-    <div class="bg-gohan p-6 rounded-sm">
+    <div class="bg-goku p-6 rounded-sm">
       <div class="flex items-center mt-0.5 mb-6">
         <div class="grow text-moon-20 text-bulma">
           {@title}
         </div>
 
         <div class="flex-none" :if={length(@select_options) > 0}>
-          <Select options={@select_options} class="pl-2 rounded-sm text-moon-12 text-trunks bg-goku" />
+          <Select options={@select_options} class="pl-2 rounded-sm text-moon-12 text-trunks bg-gohan" />
         </div>
 
         <button type="button" class="flex-none ml-3 p-2">
@@ -35,9 +35,9 @@ defmodule Moon.Components.LineChartCard do
           <button
             :for={filter <- @filters}
             class={
-              "p-3 font-normal text-left rounded-sm hover:bg-goku",
-              "bg-gohan": !filter.is_active,
-              "bg-goku": filter.is_active
+              "p-3 font-normal text-left rounded-sm hover:bg-gohan",
+              "bg-goku": !filter.is_active,
+              "bg-gohan": filter.is_active
             }
             style="min-width: 120px;"
             type="button"

@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Assets.IconsPage do
       <TopToDown>
         <Heading size={56} class="mb-4">Icons</Heading>
 
-        <div class="p-6 bg-gohan rounded">
+        <div class="p-6 bg-goku rounded">
           <div
             class="grid gap-4 overflow-hidden"
             style="grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));"

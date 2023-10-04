@@ -17,7 +17,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiLineItems do
   def render(assigns) do
     ~F"""
     <div class="flex justify-around w-full">
-      <div class="w-94 bg-gohan flex flex-col gap-3 rounded-moon-s-lg p-6">
+      <div class="w-94 bg-goku flex flex-col gap-3 rounded-moon-s-lg p-6">
         <MenuItem is_active>
           <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
             <TravelAirplane class="text-2xl text-piccolo" />
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiLineItems do
     ...
 
     <div class="flex justify-around w-full">
-      <div class="w-94 bg-gohan flex flex-col gap-3 rounded-moon-s-lg p-6">
+      <div class="w-94 bg-goku flex flex-col gap-3 rounded-moon-s-lg p-6">
         <MenuItem is_active>
           <span class="bg-piccolo/20 rounded-lg w-10 h-10 flex justify-center items-center">
             <TravelAirplane class="text-2xl text-piccolo" />

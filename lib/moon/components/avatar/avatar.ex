@@ -8,7 +8,7 @@ defmodule Moon.Components.Avatar do
   prop(image_url, :string)
   prop(name, :string)
   prop(color, :css_class, default: "text-bulma")
-  prop(bg_color, :css_class, default: "bg-gohan")
+  prop(bg_color, :css_class, default: "bg-goku")
   prop(is_uppercase, :boolean, default: true)
 
   prop(size, :string, default: "md", values: ~w(xs sm md lg xl 2xl))

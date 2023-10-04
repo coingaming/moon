@@ -5,8 +5,8 @@ defmodule Moon.Components.ListItems.SingleLineItem do
   use Moon.StatelessComponent
 
   prop(size, :string, values: ~w(md lg xl), default: "md")
-  prop(background_color, :string, values: Moon.colors(), default: "bg-gohan")
-  prop(active_background_color, :string, values: Moon.colors(), default: "bg-goku")
+  prop(background_color, :string, values: Moon.colors(), default: "bg-goku")
+  prop(active_background_color, :string, values: Moon.colors(), default: "bg-gohan")
   prop(current, :boolean, default: false)
   prop(left_grow, :boolean, default: false)
   prop(right_grow, :boolean, default: false)

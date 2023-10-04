@@ -18,7 +18,7 @@ defmodule Moon.Components.SelectTrigger do
     ~F"""
     <button
       class={
-        "w-full text-left border border-solid rounded border-beerus bg-gohan flex items-center focus:border-piccolo active:border-piccolo #{@class}",
+        "w-full text-left border border-solid rounded border-beerus bg-goku flex items-center focus:border-piccolo active:border-piccolo #{@class}",
         "text-moon-14 h-10 px-3": @size == "md",
         "text-moon-16 h-12 px-4": @size == "lg",
         "text-moon-16 h-14 px-4": @size == "xl",

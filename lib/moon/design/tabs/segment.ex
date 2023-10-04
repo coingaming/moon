@@ -10,7 +10,7 @@ defmodule Moon.Design.Tabs.Segment do
   prop(disabled, :boolean, default: false)
 
   prop(unselected_class, :css_class, default: "")
-  prop(selected_class, :css_class, default: "bg-gohan")
+  prop(selected_class, :css_class, default: "bg-goku")
 
   slot(default, required: true)
 
@@ -32,7 +32,7 @@ defmodule Moon.Design.Tabs.Segment do
         "items-center justify-center whitespace-nowrap text-moon-14 text-bulma font-medium rounded-moon-i-sm transition-colors focus:outline-none",
         (@is_selected && @selected_class) || @unselected_class,
         (@size === "sm" && "px-3 py-1") || "py-2 px-4",
-        (@disabled && "cursor-default text-trunks") || "cursor-pointer hover:bg-gohan",
+        (@disabled && "cursor-default text-trunks") || "cursor-pointer hover:bg-goku",
         @class
       ])}
       :on-click={!@disabled && @on_change}

@@ -51,9 +51,9 @@ defmodule MoonWeb.Pages.Components.CardPage do
                   icon_name="arrows_update"
                   height={8}
                   width={8}
-                  hover_bg_color="bg-goku"
+                  hover_bg_color="bg-gohan"
                 />
-                <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku" />
+                <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-gohan" />
               </:buttons>
 
               <:content>
@@ -112,9 +112,9 @@ defmodule MoonWeb.Pages.Components.CardPage do
             icon_name="arrows_update"
             height={8}
             width={8}
-            hover_bg_color="bg-goku"
+            hover_bg_color="bg-gohan"
           />
-          <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-goku" />
+          <IconButton icon_name="controls_expand" height={8} width={8} hover_bg_color="bg-gohan" />
         </:buttons>
 
         <:content>

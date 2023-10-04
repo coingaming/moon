@@ -33,7 +33,7 @@ defmodule MoonWeb.Pages.GettingStartedPage do
         selected={@tab_index}
         on_change="handle_role"
       >
-        <Tabs.List class="w-fit p-1 gap-1 bg-goku rounded-moon-s-md">
+        <Tabs.List class="w-fit p-1 gap-1 bg-gohan rounded-moon-s-md">
           <Tabs.Segment>{designer_role()}</Tabs.Segment>
           <Tabs.Segment>{developer_role()}</Tabs.Segment>
         </Tabs.List>

@@ -76,7 +76,7 @@ defmodule Moon.Design.Tooltip.Content do
       end
 
     merge([
-      "p-3 rounded-moon-s-xs text-moon-12 text-bulma bg-gohan whitespace-nowrap",
+      "p-3 rounded-moon-s-xs text-moon-12 text-bulma bg-goku whitespace-nowrap",
       [
         "shadow-[0_6px_6px_-6px_rgba(0,0,0,0.16)]": !has_no_shadow,
         "ltr:-translate-x-1/3 rtl:translate-x-1/3": align == "end",

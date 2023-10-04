@@ -20,7 +20,7 @@ defmodule Moon.Design.Tag do
       {=@id}
       class={merge([
         [
-          "flex items-center rounded-moon-i-xs select-none text-gohan font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
+          "flex items-center rounded-moon-i-xs select-none text-goku font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
           "text-moon-9 py-0": @size == "2xs",
           "text-moon-10 py-1": @size == "xs",
           "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
@@ -33,13 +33,9 @@ defmodule Moon.Design.Tag do
       ])}
       data-testid={@testid}
     >
-      <span class={icon_size(@size), "ltr:mr-1 rtl:ml-1": @left_icon}>
-        <#slot {@left_icon} />
-      </span>
+      <span class={icon_size(@size), "ltr:mr-1 rtl:ml-1": @left_icon}><#slot {@left_icon} /></span>
       <#slot />
-      <span class={icon_size(@size), "ltr:ml-1 rtl:mr-1": @right_icon}>
-        <#slot {@right_icon} />
-      </span>
+      <span class={icon_size(@size), "ltr:ml-1 rtl:mr-1": @right_icon}><#slot {@right_icon} /></span>
     </div>
     """
   end

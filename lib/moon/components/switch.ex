@@ -65,7 +65,7 @@ defmodule Moon.Components.Switch do
         class={
           "relative inline-flex shrink-0 transition-colors duration-200 ease-in-out border-transparent rounded-full cursor-pointer outline-none focus:outline-none bg-piccolo shadow-md",
           "bg-piccolo": is_selected(@checked, @form, @field),
-          "bg-goku": !is_selected(@checked, @form, @field),
+          "bg-gohan": !is_selected(@checked, @form, @field),
           "border-2 w-7 focus:ring-1 focus:ring-offset-1": @size == "small",
           "border-4 w-10 focus:ring-2 focus:ring-offset-1": @size == "medium",
           "border-4 w-14 focus:ring-2 focus:ring-offset-2": @size == "large"
@@ -89,7 +89,7 @@ defmodule Moon.Components.Switch do
         <span
           aria-hidden="true"
           class={
-            "inline-block transition duration-200 ease-in-out translate-x-0 bg-goku rounded-full shadow-md pointer-events-none ring-0 shadow-md",
+            "inline-block transition duration-200 ease-in-out translate-x-0 bg-gohan rounded-full shadow-md pointer-events-none ring-0 shadow-md",
             "w-3 h-3": @size == "small",
             "w-4 h-4": @size == "medium",
             "w-6 h-6": @size == "large",

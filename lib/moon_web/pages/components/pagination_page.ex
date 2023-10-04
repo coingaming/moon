@@ -151,7 +151,7 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
 
       <ExampleAndCode title="Size" layout="column" id="pagination_2">
         <:state>
-          Use <code class="bg-goku-40">size</code> prop. Default size is xsmall.
+          Use <code class="bg-gohan-40">size</code> prop. Default size is xsmall.
         </:state>
         <:example>
           <Pagination

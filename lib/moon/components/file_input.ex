@@ -11,7 +11,7 @@ defmodule Moon.Components.FileInput.ListOfFiles do
     ~F"""
     <div>
       {#for entry <- @conf.entries}
-        <div class="flex gap-2 bg-goku p-2 rounded align-middle">
+        <div class="flex gap-2 bg-gohan p-2 rounded align-middle">
           <div class="overflow-hidden" style="max-width: 50px"><.live_img_preview entry={entry} width="100" /></div>
           <div class="w-full">{entry.client_name} ({get_size(entry.client_size)} KB)</div>
           <div style="width: 300px"><ProgressLinear value={entry.progress} /></div>
