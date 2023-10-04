@@ -22,6 +22,9 @@ defmodule Moon.Design.Breadcrumb do
   @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
 
+  prop(list_item_class, :css_class)
+  prop(divider_class, :css_class)
+
   def render(assigns) do
     ~F"""
     <div class={@class} data-testid={@testid}>
@@ -34,7 +37,13 @@ defmodule Moon.Design.Breadcrumb do
           {=@responsive_crumbs_on}
         />
       {#else}
-        <Extended breadcrumbs={@breadcrumbs} {=@divider} {=@responsive_crumbs_on} />
+        <Extended
+          breadcrumbs={@breadcrumbs}
+          {=@divider}
+          {=@responsive_crumbs_on}
+          class={@list_item_class}
+          {=@divider_class}
+        />
       {/if}
     </div>
     """

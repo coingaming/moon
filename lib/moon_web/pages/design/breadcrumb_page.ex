@@ -38,6 +38,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
+        BreadcrumbExample.Headless,
         BreadcrumbExample.FiveAndMoreItems,
         BreadcrumbExample.FourItems,
         BreadcrumbExample.TwoItems,
