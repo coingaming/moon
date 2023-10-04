@@ -4,7 +4,7 @@ defmodule Moon.Components.InputGroup.Container do
   use Moon.StatelessComponent
 
   prop(orientation, :string)
-  prop(background_color, :string, default: "gohan", values: Moon.colors())
+  prop(background_color, :string, default: "goku", values: Moon.colors())
   prop(is_error, :boolean)
   slot(default)
 

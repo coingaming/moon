@@ -6,7 +6,7 @@ defmodule MoonWeb.Examples.Chip.DefaultTest do
 
     assert view
            |> element(
-             "button.bg-gohan.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo.h-10.gap-2.py-2.px-3"
+             "button.bg-goku.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo.h-10.gap-2.py-2.px-3"
            )
            |> has_element?()
   end

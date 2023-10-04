@@ -16,7 +16,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
   def render(assigns) do
     ~F"""
     <div class="flex justify-around w-full">
-      <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
+      <div class="w-56 bg-goku flex flex-col gap-2 rounded-moon-s-lg p-4">
         <MenuItem>Vision</MenuItem>
         <MenuItem>Getting started</MenuItem>
         <MenuItem>How to contribute?</MenuItem>
@@ -53,9 +53,9 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           </MenuItem>
         {/if}
       </div>
-      <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
+      <div class="w-56 bg-goku flex flex-col gap-2 rounded-moon-s-lg p-4">
         <MenuItem>
-          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">B</p>
           </span>
           <Lego.Title>
@@ -68,7 +68,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
             <ControlsChevronUp :if={@expanded1} />
           </span>
 
-          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">CX</p>
           </span>
           <Lego.Title>
@@ -77,14 +77,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         {#if @expanded1}
           <MenuItem>
             <span class="w-6" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">S</p>
             </span>
             <Lego.Title>Sub nested item</Lego.Title>
           </MenuItem>
           <MenuItem>
             <span class="w-6" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">S</p>
             </span>
             <Lego.Title>Sub nested item</Lego.Title>
@@ -92,14 +92,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         {/if}
         <MenuItem>
           <span class="w-3" />
-          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">CX</p>
           </span>
           <Lego.Title>Quality...</Lego.Title>
         </MenuItem>
         <MenuItem>
           <span class="w-3" />
-          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">RG</p>
           </span>
           <Lego.Title>Responsible...</Lego.Title>
@@ -108,7 +108,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
             <Lego.ChevronUpDown is_selected={@expanded2} />
           </span>
-          <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+          <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">RG</p>
           </span>
           <Lego.Title>Responsible...</Lego.Title>
@@ -116,14 +116,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         {#if @expanded2}
           <MenuItem>
             <span class="w-6" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">S</p>
             </span>
             <Lego.Title>Sub nested item</Lego.Title>
           </MenuItem>
           <MenuItem>
             <span class="w-6" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">S</p>
             </span>
             <Lego.Title>Sub nested item</Lego.Title>
@@ -131,7 +131,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         {/if}
         <div class="flex flex-col gap-2 rounded-moon-s-lg">
           <MenuItem>
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">S</p>
             </span>
             <Lego.Title>
@@ -140,21 +140,21 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           </MenuItem>
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">RG</p>
             </span>
             <Lego.Title>Customer...</Lego.Title>
           </MenuItem>
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">CX</p>
             </span>
             <Lego.Title>Quality...</Lego.Title>
           </MenuItem>
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">RG</p>
             </span>
             <Lego.Title>Responsible...</Lego.Title>
@@ -162,7 +162,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         </div>
         <div class="flex flex-col gap-2 rounded-moon-s-lg">
           <MenuItem>
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">L</p>
             </span>
             <Lego.Title>
@@ -171,7 +171,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           </MenuItem>
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">RG</p>
             </span>
             <Lego.Title>Customer...</Lego.Title>
@@ -200,7 +200,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
     def render(assigns) do
       ~F\"""
       <div class="flex justify-around w-full">
-        <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
+        <div class="w-56 bg-goku flex flex-col gap-2 rounded-moon-s-lg p-4">
           <MenuItem>Vision</MenuItem>
           <MenuItem>Getting started</MenuItem>
           <MenuItem>How to contribute?</MenuItem>
@@ -237,9 +237,9 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
             </MenuItem>
           {/if}
         </div>
-        <div class="w-56 bg-gohan flex flex-col gap-2 rounded-moon-s-lg p-4">
+        <div class="w-56 bg-goku flex flex-col gap-2 rounded-moon-s-lg p-4">
           <MenuItem>
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">B</p>
             </span>
             <Lego.Title>
@@ -252,7 +252,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
               <ControlsChevronUp :if={@expanded1} />
             </span>
 
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">CX</p>
             </span>
             <Lego.Title>
@@ -261,14 +261,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           {#if @expanded1}
             <MenuItem>
               <span class="w-6" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">S</p>
               </span>
               <Lego.Title>Sub nested item</Lego.Title>
             </MenuItem>
             <MenuItem>
               <span class="w-6" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">S</p>
               </span>
               <Lego.Title>Sub nested item</Lego.Title>
@@ -276,14 +276,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           {/if}
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">CX</p>
             </span>
             <Lego.Title>Quality...</Lego.Title>
           </MenuItem>
           <MenuItem>
             <span class="w-3" />
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">RG</p>
             </span>
             <Lego.Title>Responsible...</Lego.Title>
@@ -292,7 +292,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
             <span class="w-3" :on-click="on_expand2" :values={is_selected: !@expanded2}>
               <Lego.ChevronUpDown is_selected={@expanded2} />
             </span>
-            <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+            <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">RG</p>
             </span>
             <Lego.Title>Responsible...</Lego.Title>
@@ -300,14 +300,14 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           {#if @expanded2}
             <MenuItem>
               <span class="w-6" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">S</p>
               </span>
               <Lego.Title>Sub nested item</Lego.Title>
             </MenuItem>
             <MenuItem>
               <span class="w-6" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">S</p>
               </span>
               <Lego.Title>Sub nested item</Lego.Title>
@@ -315,7 +315,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           {/if}
           <div class="flex flex-col gap-2 rounded-moon-s-lg">
             <MenuItem>
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">S</p>
               </span>
               <Lego.Title>
@@ -324,21 +324,21 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
             </MenuItem>
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Customer...</Lego.Title>
             </MenuItem>
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">CX</p>
               </span>
               <Lego.Title>Quality...</Lego.Title>
             </MenuItem>
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Responsible...</Lego.Title>
@@ -346,7 +346,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           </div>
           <div class="flex flex-col gap-2 rounded-moon-s-lg">
             <MenuItem>
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">L</p>
               </span>
               <Lego.Title>
@@ -355,7 +355,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
             </MenuItem>
             <MenuItem>
               <span class="w-3" />
-              <span class="bg-goku w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
+              <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
                 <p class="leading-4 font-semibold text-moon-10">RG</p>
               </span>
               <Lego.Title>Customer...</Lego.Title>

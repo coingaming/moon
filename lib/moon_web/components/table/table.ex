@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.Table.Table do
     ~F"""
     <div class="overflow-x-auto text-bulma">
       <table class="min-w-full divide-y divide-beerus">
-        <thead class="bg-goku">
+        <thead class="bg-gohan">
           <tr>
             {#for col <- @cols}
               <th
@@ -29,7 +29,7 @@ defmodule MoonWeb.Components.Table.Table do
           {#for {item, row_index} <- Enum.with_index(@items)}
             <tr
               data-testid={"row-#{row_index}"}
-              class={if rem(row_index, 2) == 0, do: "bg-gohan", else: "bg-goku"}
+              class={if rem(row_index, 2) == 0, do: "bg-goku", else: "bg-gohan"}
             >
               {#for {col, col_index} <- Enum.with_index(@cols)}
                 <td

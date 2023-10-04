@@ -5,15 +5,15 @@ defmodule MoonWeb.Examples.Accordion.OnChangeEventTest do
     {:ok, view, _html} = live(conn, "/example/AccordionExample.OnChangeEvent")
 
     assert view
-           |> element("#on-change-accordion button.bg-gohan[value=bg-krillin]")
+           |> element("#on-change-accordion button.bg-goku[value=bg-krillin]")
            |> has_element?()
 
     assert view
-           |> element("#on-change-accordion button.bg-gohan[value=bg-roshi]")
+           |> element("#on-change-accordion button.bg-goku[value=bg-roshi]")
            |> has_element?()
 
     assert view
-           |> element("#on-change-accordion button.bg-gohan[value=bg-chichi]")
+           |> element("#on-change-accordion button.bg-goku[value=bg-chichi]")
            |> has_element?()
 
     view

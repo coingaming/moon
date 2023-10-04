@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Table.CheckboxesTest do
     {:ok, view, _html} = live(conn, "/example/TableExample.Checkboxes")
 
     assert view
-           |> element("tr.bg-gohan[data-testid=row-0]")
+           |> element("tr.bg-goku[data-testid=row-0]")
            |> has_element?()
 
     assert view
@@ -37,7 +37,7 @@ defmodule MoonWeb.Examples.Table.CheckboxesTest do
     |> render_click()
 
     assert view
-           |> element("tr.bg-gohan[data-testid=row-0]")
+           |> element("tr.bg-goku[data-testid=row-0]")
            |> has_element?()
 
     assert view

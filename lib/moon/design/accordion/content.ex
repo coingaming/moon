@@ -29,7 +29,7 @@ defmodule Moon.Design.Accordion.Content do
       class={merge([
         (@is_content_outside &&
            ["overflow-hidden w-full text-bulma text-moon-14", margins(@size)]) ||
-          "bg-gohan rounded-moon-s-sm rounded-t-none pb-2 ps-3 pe-2 pt-0 text-moon-14 overflow-hidden w-full text-bulma",
+          "bg-goku rounded-moon-s-sm rounded-t-none pb-2 ps-3 pe-2 pt-0 text-moon-14 overflow-hidden w-full text-bulma",
         @class
       ])}
     ><#slot /></div>

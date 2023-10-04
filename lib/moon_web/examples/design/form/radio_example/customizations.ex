@@ -31,13 +31,13 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
       <Radio value={@value2} on_change="changed2">
         <Button
           value="first"
-          class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
+          class="w-48 p-2 justify-between hover:bg-goku transition-colors rounded-moon-i-sm"
         >
           Button 1 <Indicator />
         </Button>
         <Button
           value="second"
-          class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm"
+          class="w-48 p-2 justify-between hover:bg-goku transition-colors rounded-moon-i-sm"
         >
           Button 2 <Indicator />
         </Button>
@@ -81,10 +81,10 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Customizations do
         </Radio>
 
         <Radio value={@value2} on_change="changed2">
-          <Button value="first" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+          <Button value="first" class="w-48 p-2 justify-between hover:bg-goku transition-colors rounded-moon-i-sm">
             Button 1 <Indicator />
           </Button>
-          <Button value="second" class="w-48 p-2 justify-between hover:bg-gohan transition-colors rounded-moon-i-sm">
+          <Button value="second" class="w-48 p-2 justify-between hover:bg-goku transition-colors rounded-moon-i-sm">
             Button 2 <Indicator />
           </Button>
         </Radio>

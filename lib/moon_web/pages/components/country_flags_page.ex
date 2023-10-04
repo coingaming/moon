@@ -36,7 +36,7 @@ defmodule MoonWeb.Pages.Components.CountryFlagsPage do
       </ComponentPageDescription>
 
       <PageSection>
-        <div class="flex flex-wrap gap-8 items-start bg-goku p-4 rounded-moon-s-sm">
+        <div class="flex flex-wrap gap-8 items-start bg-gohan p-4 rounded-moon-s-sm">
           {#for country_flag_name <- CountryFlags.list_all()}
             <div class="flex flex-col gap-2 items-center">
               <CountryFlag name={country_flag_name} class="h-8 w-8" />

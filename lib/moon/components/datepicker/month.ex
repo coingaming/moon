@@ -81,7 +81,7 @@ defmodule Moon.Components.Datepicker.Month do
 
   defp day_container_class(day, start_date, nil, _) do
     if Timex.to_date(day) == Timex.to_date(start_date) do
-      "bg-goku rounded"
+      "bg-gohan rounded"
     end
   end
 
@@ -95,10 +95,10 @@ defmodule Moon.Components.Datepicker.Month do
         nil
 
       date_day == start_day ->
-        "bg-goku rounded"
+        "bg-gohan rounded"
 
       date_day == end_day ->
-        "bg-goku rounded"
+        "bg-gohan rounded"
 
       Timex.between?(day, start_date, end_date) ->
         week_start_class(day, week_starts_on)
@@ -110,9 +110,9 @@ defmodule Moon.Components.Datepicker.Month do
 
   defp week_start_class(day, week_starts_on) do
     cond do
-      Timex.weekday(day) == week_starts_on -> "bg-goku rounded-l"
-      Timex.weekday(day) == week_starts_on + 6 -> "bg-goku rounded-r"
-      true -> "bg-goku"
+      Timex.weekday(day) == week_starts_on -> "bg-gohan rounded-l"
+      Timex.weekday(day) == week_starts_on + 6 -> "bg-gohan rounded-r"
+      true -> "bg-gohan"
     end
   end
 

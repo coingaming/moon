@@ -56,7 +56,7 @@ defmodule Moon.Design.Search do
               {=@on_keyup}
               value={@filter}
               class={
-                "ps-[2.5rem] bg-gohan hover:border-trunks",
+                "ps-[2.5rem] bg-goku hover:border-trunks",
                 input_classes_light(assigns),
                 "rounded-bl-none rounded-br-none": is_open
               }

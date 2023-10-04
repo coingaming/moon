@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Design.AccordionExample.OnChangeEvent do
   alias Moon.Design.Accordion
   import MoonWeb.Helpers.Lorem
 
-  data(color, :string, default: "bg-gohan")
+  data(color, :string, default: "bg-goku")
 
   def handle_event("accordioned", %{"value" => value}, socket) do
     {:noreply, assign(socket, color: value)}
@@ -39,7 +39,7 @@ defmodule MoonWeb.Examples.Design.AccordionExample.OnChangeEvent do
     alias Moon.Design.Accordion
     import MoonWeb.Helpers.Lorem
 
-    data(color, :string, default: "bg-gohan")
+    data(color, :string, default: "bg-goku")
 
     def handle_event("accordioned", %{"value" => value}, socket) do
       {:noreply, assign(socket, color: value)}

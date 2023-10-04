@@ -48,7 +48,7 @@ defmodule Moon.Design.Accordion.Header do
         {=@disabled}
         class={merge([
           "justify-between flex items-center relative w-full rounded-moon-s-sm",
-          "gap-1 flex-1 font-medium text-bulma text-start bg-gohan",
+          "gap-1 flex-1 font-medium text-bulma text-start bg-goku",
           get_size_class(@size),
           (@disabled && "cursor-not-allowed opacity-60") || "cursor-pointer",
           !@is_content_outside && @is_open && "rounded-b-none",

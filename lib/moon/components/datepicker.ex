@@ -66,7 +66,7 @@ defmodule Moon.Components.Datepicker do
 
       <:content>
         <div class={
-          "p-2 pr-3 origin-top-left absolute left-0 bg-gohan flex shadow-lg rounded text-moon-14 z-10 mt-2",
+          "p-2 pr-3 origin-top-left absolute left-0 bg-goku flex shadow-lg rounded text-moon-14 z-10 mt-2",
           hidden: !@show
         }>
           <!-- Ranges -->
@@ -74,8 +74,8 @@ defmodule Moon.Components.Datepicker do
             <div
               :for={range <- @ranges}
               class={
-                "py-2 px-3 hover:bg-goku rounded cursor-pointer",
-                "bg-goku": range == @selected_range
+                "py-2 px-3 hover:bg-gohan rounded cursor-pointer",
+                "bg-gohan": range == @selected_range
               }
               :on-click="select_range"
               phx-value-range={range}

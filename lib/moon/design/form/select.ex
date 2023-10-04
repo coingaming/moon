@@ -49,7 +49,7 @@ defmodule Moon.Design.Form.Select do
     <Component
       module={(@is_multiple && Form.MultipleSelect) || Form.Select}
       class={merge([
-        "text-trunks flex justify-between w-full bg-gohan border-0 duration-200 transition-shadow",
+        "text-trunks flex justify-between w-full bg-goku border-0 duration-200 transition-shadow",
         "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",
         "items-start text-ellipsis whitespace-nowrap overflow-hidden",
         "moon-error:shadow-input-err moon-error:hover:shadow-input-err moon-error:focus:shadow-input-err",

@@ -12,7 +12,7 @@ defmodule MoonWeb.Examples.Chip.VariantsTest do
 
     refute view
            |> element(
-             "button.bg-gohan.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo[data-testid=ghost]"
+             "button.bg-goku.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo[data-testid=ghost]"
            )
            |> has_element?()
   end

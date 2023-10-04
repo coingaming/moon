@@ -25,7 +25,7 @@ defmodule MoonWeb.Components.LeftMenu do
       class="lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50 inset-auto"
     >
       <Drawer.Backdrop class="lg:hidden" />
-      <Drawer.Panel position="start" class="w-80 bg-goku shadow-moon-none">
+      <Drawer.Panel position="start" class="w-80 bg-gohan shadow-moon-none">
         <nav
           aria-label="Sidebar"
           class="z-10 fixed top-0 h-screen w-80 flex flex-col flex-grow gap-6 pt-12 pb-20 px-5 lg:px-8 overflow-y-scroll"

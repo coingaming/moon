@@ -46,20 +46,20 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
         <ExampleAndCode id="sidebar_1">
           <:note>
             <p>
-              Wrap <code class="bg-goku-40">Sidebar</code> component inside layout with <code class="bg-goku-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
+              Wrap <code class="bg-gohan-40">Sidebar</code> component inside layout with <code class="bg-gohan-40">flex items-start h-screen overflow-hidden</code> classes on a parent div.
             </p>
             <p>
-              Use <code class="bg-goku-40">open_width</code> prop to define sidebar width in an open mode. Default value is <code class="bg-goku-40">"14.5rem"</code>
+              Use <code class="bg-gohan-40">open_width</code> prop to define sidebar width in an open mode. Default value is <code class="bg-gohan-40">"14.5rem"</code>
             </p>
             <p>
-              Use <code class="bg-goku-40">background_color</code> prop to define background color of the sidebar.
+              Use <code class="bg-gohan-40">background_color</code> prop to define background color of the sidebar.
             </p>
             <p>
-              Use slots <code class="bg-goku-40">short_logo, full_logo, menu</code> for sidebar parts.
+              Use slots <code class="bg-gohan-40">short_logo, full_logo, menu</code> for sidebar parts.
             </p>
           </:note>
           <:example>
-            <Sidebar background_color="bg-gohan" open_width="14rem">
+            <Sidebar background_color="bg-goku" open_width="14rem">
               <:short_logo>
                 <div class="flex items-center h-10">
                   <LogoBitcasinoShort font_size="2.1rem" />
@@ -108,7 +108,7 @@ defmodule MoonWeb.Pages.Components.SidebarPage do
       alias Moon.Assets.Logos.LogoBitcasinoFull
       alias Moon.Assets.Logos.LogoBitcasinoShort
 
-      <Sidebar background_color="bg-gohan" open_width="14rem">
+      <Sidebar background_color="bg-goku" open_width="14rem">
         <template slot="short_logo">
           <div class="flex items-center h-10">
             <LogoBitcasinoShort font_size="2.1rem" />

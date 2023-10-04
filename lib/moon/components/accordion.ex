@@ -23,7 +23,7 @@ defmodule Moon.Components.Accordion do
   )
 
   prop(pull_a_side_class, :css_class)
-  prop(bg_color, :css_class, default: "bg-gohan")
+  prop(bg_color, :css_class, default: "bg-goku")
 
   slot(title, required: true)
   slot(header_content)

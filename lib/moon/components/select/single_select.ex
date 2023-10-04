@@ -22,7 +22,7 @@ defmodule Moon.Components.Select.SingleSelect do
   prop(popover_placement, :string, default: "bottom-start")
   prop(popover_class, :string)
   prop(placeholder, :string)
-  prop(background_color, :string, values: Moon.colors(), default: "gohan")
+  prop(background_color, :string, values: Moon.colors(), default: "goku")
   prop(has_error, :boolean)
   prop(use_error_tag, :boolean)
   prop(selected_value_class, :css_class, default: "")

@@ -47,7 +47,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Datepicker do
         <Dropdown.Options class="w-auto p-1">
           <div class="w-full flex justify-between">
             <button
-              class="hover:bg-goku rounded-moon-i-sm py-1 w-6"
+              class="hover:bg-gohan rounded-moon-i-sm py-1 w-6"
               :on-click="change_month"
               value={add(@month, -30)}
             >
@@ -55,7 +55,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Datepicker do
             </button>
             <span class="py-1">{Enum.at(months(), @month.month)} {@month.year}</span>
             <button
-              class="hover:bg-goku rounded-moon-i-sm py-1 w-6"
+              class="hover:bg-gohan rounded-moon-i-sm py-1 w-6"
               :on-click="change_month"
               value={add(@month, 30)}
             >
@@ -64,7 +64,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Datepicker do
           </div>
           <div class="py-1 flex">
             {#for day <- ~w(m t w t f s s)}
-              <span class="w-6 bg-goku inline-block uppercase text-center text-trunks">{day}</span>
+              <span class="w-6 bg-gohan inline-block uppercase text-center text-trunks">{day}</span>
             {/for}
           </div>
           {#for week <- month_weeks(@month)}
@@ -72,7 +72,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Datepicker do
               {#for day <- week}
                 <button
                   class={merge([
-                    "w-6 hover:bg-goku rounded-moon-i-sm",
+                    "w-6 hover:bg-gohan rounded-moon-i-sm",
                     "font-medium": @value == day,
                     "text-trunks": day.month != @month.month,
                     "text-piccolo": day == Date.utc_today()
@@ -133,20 +133,20 @@ defmodule MoonWeb.Examples.Design.DropdownExample.Datepicker do
           </Dropdown.Trigger>
           <Dropdown.Options class="w-auto p-1">
             <div class="w-full flex justify-between">
-              <button class="hover:bg-goku rounded-moon-i-sm py-1 w-6" :on-click="change_month" value={add(@month, -30)}> {"<"} </button>
+              <button class="hover:bg-gohan rounded-moon-i-sm py-1 w-6" :on-click="change_month" value={add(@month, -30)}> {"<"} </button>
               <span class="py-1">{Enum.at(months(), @month.month)} {@month.year}</span>
-              <button class="hover:bg-goku rounded-moon-i-sm py-1 w-6" :on-click="change_month" value={add(@month, 30)}> {">"} </button>
+              <button class="hover:bg-gohan rounded-moon-i-sm py-1 w-6" :on-click="change_month" value={add(@month, 30)}> {">"} </button>
             </div>
             <div class="py-1 flex">
               {#for day <- ~w(m t w t f s s)}
-                <span class="w-6 bg-goku inline-block uppercase text-center">{day}</span>
+                <span class="w-6 bg-gohan inline-block uppercase text-center">{day}</span>
               {/for}
             </div>
             {#for week <- month_weeks(@month)}
               <div class="py-1 flex">
                 {#for day <- week}
                   <button class={
-                    "w-6 hover:bg-goku rounded-moon-i-sm",
+                    "w-6 hover:bg-gohan rounded-moon-i-sm",
                     "font-medium": @value == day,
                     "text-trunks": day.month != @month.month,
                     "text-piccolo": day == Date.utc_today()

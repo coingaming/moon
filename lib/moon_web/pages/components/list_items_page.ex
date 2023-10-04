@@ -88,7 +88,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       </ComponentPageDescription>
       <ExampleAndCode title="Medium size (default)" id="line_items_1">
         <:example>
-          <TopToDown class="bg-goku py-6 px-4 w-56 mx-auto">
+          <TopToDown class="bg-gohan py-6 px-4 w-56 mx-auto">
             <SingleLineItem>Single line item</SingleLineItem>
             <SingleLineItem background_color="goku">Single line item</SingleLineItem>
             <SingleLineItem current>
@@ -114,7 +114,7 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
       </ExampleAndCode>
       <ExampleAndCode title="Large size" id="line_items_2">
         <:example>
-          <TopToDown class="bg-goku py-6 px-4 w-56 mx-auto">
+          <TopToDown class="bg-gohan py-6 px-4 w-56 mx-auto">
             <SingleLineItem size="lg">Single line item</SingleLineItem>
             <SingleLineItem size="lg" background_color="goku">Single line item</SingleLineItem>
             <SingleLineItem size="lg" current>

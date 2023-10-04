@@ -18,7 +18,7 @@ defmodule Moon.Components.Toast do
   prop(link_text, :string)
   prop(link_href, :string)
   prop(on_close, :event)
-  prop(background_color_class, :css_class, default: "bg-gohan")
+  prop(background_color_class, :css_class, default: "bg-goku")
 
   defmodule Message do
     @moduledoc false

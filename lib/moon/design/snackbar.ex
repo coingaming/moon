@@ -86,7 +86,7 @@ defmodule Moon.Design.Snackbar do
         aria-hidden={(@is_open && "true") || "false"}
       >
         <div class={merge([
-          "flex w-fit max-w-xs items-center gap-4 p-4 bg-gohan shadow-moon-lg rounded-moon-s-sm",
+          "flex w-fit max-w-xs items-center gap-4 p-4 bg-goku shadow-moon-lg rounded-moon-s-sm",
           @class
         ])}>
           <#slot {@icon} />

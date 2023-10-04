@@ -24,7 +24,7 @@ defmodule Moon.Design.Alert do
       {=@id}
       role="alert"
       class={merge([
-        "relative flex justify-between w-full gap-x-3 gap-y-1 p-4 rounded-moon-s-sm bg-gohan",
+        "relative flex justify-between w-full gap-x-3 gap-y-1 p-4 rounded-moon-s-sm bg-goku",
         "text-moon-14 text-bulma",
         @class
       ])}

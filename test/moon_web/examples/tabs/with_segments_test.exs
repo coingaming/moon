@@ -6,7 +6,7 @@ defmodule MoonWeb.Examples.Tabs.WithSegmentsTest do
 
     assert view
            |> element(
-             "#tabs-with-segments button.bg-gohan.transition-colors.rounded-moon-i-sm[value=0][tabindex=0][role=tab][aria-selected=true]"
+             "#tabs-with-segments button.bg-goku.transition-colors.rounded-moon-i-sm[value=0][tabindex=0][role=tab][aria-selected=true]"
            )
            |> has_element?()
 
@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Tabs.WithSegmentsTest do
 
     refute view
            |> element(
-             "#tabs-with-segments button.bg-gohan.transition-colors.rounded-moon-i-sm[value=1][tabindex=1][role=tab]"
+             "#tabs-with-segments button.bg-goku.transition-colors.rounded-moon-i-sm[value=1][tabindex=1][role=tab]"
            )
            |> has_element?()
 
@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Tabs.WithSegmentsTest do
 
     refute view
            |> element(
-             "#tabs-with-segments button.bg-gohan.transition-colors.rounded-moon-i-sm[value=2][tabindex=2][role=tab]"
+             "#tabs-with-segments button.bg-goku.transition-colors.rounded-moon-i-sm[value=2][tabindex=2][role=tab]"
            )
            |> has_element?()
   end

@@ -24,7 +24,7 @@ defmodule Moon.Design.Form.TextArea do
     ~F"""
     <TextArea
       class={merge([
-        "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-gohan border-0",
+        "appearance-none resize-none w-full p-4 text-moon-16 text-bulma bg-goku border-0",
         "rounded-moon-s-sm placeholder:text-trunks transition-shadow",
         "before:box-border after:box-border",
         "shadow-input hover:shadow-input-hov focus:shadow-input-focus focus:outline-none focus:ring-0",

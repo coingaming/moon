@@ -23,14 +23,14 @@ defmodule Moon.Design.Dropdown.Badge do
       {=@id}
       data-testid={@testid}
       class={merge([
-        "flex-shrink-0 chip bg-bulma text-gohan flex items-center justify-center rounded-moon-s-xs cursor-pointer text-moon-12",
+        "flex-shrink-0 chip bg-bulma text-goku flex items-center justify-center rounded-moon-s-xs cursor-pointer text-moon-12",
         ["h-4 px-0.5": @size == "sm", "h-6 px-1": @size != "sm"],
         @class
       ])}
       :on-click={JS.dispatch("moon2:clean-checkboxes")}
     >
       <span class={"px-0.5": @size == "sm", "px-1": @size != "sm"}>{@count}</span>
-      <Icon name="controls_close" class="text-gohan text-moon-12" />
+      <Icon name="controls_close" class="text-goku text-moon-12" />
     </span>
     """
   end

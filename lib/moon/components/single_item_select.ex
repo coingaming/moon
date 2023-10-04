@@ -40,7 +40,7 @@ defmodule Moon.Components.SingeItemSelect do
 
   def render(assigns) do
     ~F"""
-    <div class={"bg-gohan shadow rounded-lg p-1 overflow-y-scroll #{@class}"} style={@style || ""}>
+    <div class={"bg-goku shadow rounded-lg p-1 overflow-y-scroll #{@class}"} style={@style || ""}>
       <#slot />
       <div :for={option <- @options}>
         <Item item_id={option.value} selected={@value == option.value} on_click={@on_change}>
