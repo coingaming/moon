@@ -191,7 +191,9 @@ defmodule Moon.Design.Table do
   end
 
   defp stream_data(%{items: items, sort: sort}) when is_list(items) do
-    Enum.with_index(items |> add_index_as |> sort_items(sort))
-    |> Enum.map(fn {item, key} -> {key, item} end)
+    items
+    |> add_index_as()
+    |> sort_items(sort)
+    |> Enum.with_index(&{&2, &1})
   end
 end
