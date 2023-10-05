@@ -1,3 +1,10 @@
+# [2.59.0](https://github.com/coingaming/moon/compare/v2.58.2...v2.59.0) (2023-10-05)
+
+
+### Features
+
+* Phoenix.Stream for Table component ([#739](https://github.com/coingaming/moon/issues/739)) ([e49ea8b](https://github.com/coingaming/moon/commit/e49ea8b55f5bf79b475cabb71fb1ff77a2ff8fbb))
+
 ## [2.58.2](https://github.com/coingaming/moon/compare/v2.58.1...v2.58.2) (2023-10-04)
 
 
