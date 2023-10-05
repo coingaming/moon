@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Accordion.OpenByDefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be open by default", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AccordionExample.OpenByDefault")
+    {:ok, view, _html} = live(conn, "/example/Design.AccordionExample.OpenByDefault")
 
     assert view
            |> element("#open-accordion button[value=0][aria-expanded=true]")

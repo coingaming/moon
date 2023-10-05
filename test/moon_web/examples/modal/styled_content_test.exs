@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Modal.StyledContentTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Modal", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ModalExample.ExampleWithStyledContent")
+    {:ok, view, _html} = live(conn, "/example/Design.ModalExample.ExampleWithStyledContent")
 
     assert view |> element("button.bg-piccolo") |> has_element?()
     assert view |> element("div.hidden[id=styled_modal]") |> has_element?()

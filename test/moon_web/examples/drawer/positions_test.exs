@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close start Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.Positions")
 
     assert view |> element("button[id=start]") |> has_element?()
     assert view |> element("div.hidden[id=start_drawer]") |> has_element?()
@@ -18,7 +18,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
   end
 
   test "should open and close top Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.Positions")
 
     assert view |> element("button[id=top]") |> has_element?()
     assert view |> element("div.hidden[id=top_drawer]") |> has_element?()
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
   end
 
   test "should open and close end Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.Positions")
 
     assert view |> element("button[id=end]") |> has_element?()
     assert view |> element("div.hidden[id=end_drawer]") |> has_element?()
@@ -50,7 +50,7 @@ defmodule MoonWeb.Examples.Drawer.PositionsTest do
   end
 
   test "should open and close bottom Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.Positions")
 
     assert view |> element("button[id=bottom]") |> has_element?()
     assert view |> element("div.hidden[id=bottom_drawer]") |> has_element?()

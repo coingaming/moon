@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Accordion.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should expand and collapse", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AccordionExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.AccordionExample.Default")
 
     refute view
            |> element("#simple-accordion button[value=0][aria-expanded=true]")

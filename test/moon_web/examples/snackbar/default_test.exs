@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Snackbar.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open top right snackbar", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SnackbarExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.SnackbarExample.Default")
 
     assert view
            |> element(

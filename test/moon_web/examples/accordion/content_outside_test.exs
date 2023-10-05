@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Accordion.ContentOutsideTest do
   use MoonWeb.ConnCase, async: true
 
   test "should contain example with content outside", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AccordionExample.ContentOutside")
+    {:ok, view, _html} = live(conn, "/example/Design.AccordionExample.ContentOutside")
 
     assert view
            |> element("#outside-accordion button[value=0][is-content-outside=true]")

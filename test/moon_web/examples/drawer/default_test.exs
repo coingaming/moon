@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Drawer.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.Default")
 
     button_to_open_drawer = view |> element("button[data-size=md]")
     assert button_to_open_drawer |> render() =~ "Show default Drawer"

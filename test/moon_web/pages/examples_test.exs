@@ -16,7 +16,7 @@ defmodule MoonWeb.Pages.ExamplesTest do
           MoonWeb.Router.Helpers.live_path(
             MoonWeb.Endpoint,
             MoonWeb.Pages.ExamplePage,
-            "#{example}" |> String.replace("Elixir.MoonWeb.Examples.Design.", "")
+            "#{example}" |> String.replace("Elixir.MoonWeb.Examples.", "")
           )
 
         try do

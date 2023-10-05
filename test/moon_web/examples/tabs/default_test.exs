@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Tabs.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should switch tab and panel", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TabsExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.TabsExample.Default")
 
     assert view
            |> element(

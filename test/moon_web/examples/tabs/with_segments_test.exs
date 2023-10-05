@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Tabs.WithSegmentsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have segments", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TabsExample.WithSegments")
+    {:ok, view, _html} = live(conn, "/example/Design.TabsExample.WithSegments")
 
     assert view
            |> element(

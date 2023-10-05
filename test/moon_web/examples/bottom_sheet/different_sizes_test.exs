@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.DifferentSizesTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Small BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.DifferentSizes")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.DifferentSizes")
 
     button_to_open_bottomsheet = view |> element("button[data-testid=open_small]")
     assert button_to_open_bottomsheet |> render() =~ "Small Bottom Sheet (default)"
@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.BottomSheet.DifferentSizesTest do
   end
 
   test "should open and close Medium BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.DifferentSizes")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.DifferentSizes")
 
     button_to_open_bottomsheet = view |> element("button[data-testid=open_medium]")
     assert button_to_open_bottomsheet |> render() =~ "Medium Bottom Sheet"
@@ -40,7 +40,7 @@ defmodule MoonWeb.Examples.BottomSheet.DifferentSizesTest do
   end
 
   test "should open and close Full BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.DifferentSizes")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.DifferentSizes")
 
     button_to_open_bottomsheet = view |> element("button[data-testid=open_full]")
     assert button_to_open_bottomsheet |> render() =~ "Fullscreen Bottom Sheet"

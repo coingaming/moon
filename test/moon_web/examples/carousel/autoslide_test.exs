@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Carousel.AutoslideTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have autoslide", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/CarouselExample.Autoslide")
+    {:ok, view, _html} = live(conn, "/example/Design.CarouselExample.Autoslide")
 
     refute view |> element("#autoslide button.moon-right-arrow") |> has_element?()
     refute view |> element("#autoslide button.moon-left-arrow") |> has_element?()

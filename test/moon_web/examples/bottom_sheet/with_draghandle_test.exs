@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.WithDraghandleTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.WithDraghandle")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.WithDraghandle")
 
     button_to_open_bottomsheet = view |> element("button[data-size=md]")
     assert button_to_open_bottomsheet |> render() =~ "Bottom Sheet with Draghandle"

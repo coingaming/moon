@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Table.ClickableRowsTest do
   use MoonWeb.ConnCase, async: true
 
   test "rows should be clickable", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TableExample.ClickableRows")
+    {:ok, view, _html} = live(conn, "/example/Design.TableExample.ClickableRows")
 
     assert view
            |> element("tr.bg-goku[data-testid=row-0]")
