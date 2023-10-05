@@ -13,7 +13,7 @@ defmodule Moon.Design.Table do
   @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
   prop(sort, :keyword, default: [])
 
-  @doc "The list of items to be rendered. If item does not have id - than index is used instead"
+  @doc "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   prop(items, :generator, required: true)
 
   @doc "Event that firset on row click"
@@ -64,6 +64,9 @@ defmodule Moon.Design.Table do
   @doc "Additional classes for a table tag"
   prop(class, :css_class)
 
+  @doc "Additional attributes for tbody tag"
+  prop(body_attrs, :map, default: %{})
+
   def render(assigns) do
     ~F"""
     <table
@@ -112,8 +115,8 @@ defmodule Moon.Design.Table do
           {/for}
         </tr>
       </thead>
-      <tbody>
-        {#for {item, row_index} <- Enum.with_index(@items |> add_index_as |> sort_items(@sort))}
+      <tbody {...@body_attrs}>
+        {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
               (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
@@ -181,5 +184,16 @@ defmodule Moon.Design.Table do
       "xl" -> "text-moon-14 py-4 px-3"
       "2xl" -> "text-moon-14 py-5 px-3"
     end
+  end
+
+  defp stream_data(%{items: stream = %Phoenix.LiveView.LiveStream{}}) do
+    stream
+  end
+
+  defp stream_data(%{items: items, sort: sort}) when is_list(items) do
+    items
+    |> add_index_as()
+    |> sort_items(sort)
+    |> Enum.with_index(&{&2, &1})
   end
 end
