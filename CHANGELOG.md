@@ -1,3 +1,10 @@
+# [2.60.0](https://github.com/coingaming/moon/compare/v2.59.0...v2.60.0) (2023-10-05)
+
+
+### Features
+
+* Chart v0 ([b9c771e](https://github.com/coingaming/moon/commit/b9c771e67c66916f73e8e8237642c361889dd799))
+
 # [2.59.0](https://github.com/coingaming/moon/compare/v2.58.2...v2.59.0) (2023-10-05)
 
 
