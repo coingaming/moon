@@ -22,7 +22,7 @@ defmodule Moon.Parts.Sidebar.Menu do
     ~F"""
     <div
       class={merge([
-        ["flex flex-col gap-2", "gap-4 h-full": @is_slim],
+        ["flex flex-col gap-2 h-full", "gap-4": @is_slim],
         @class
       ])}
       {=@id}

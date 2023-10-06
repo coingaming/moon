@@ -31,6 +31,8 @@ defmodule Moon.Parts.Sidebar do
   slot(menu)
   @doc "Default slot"
   slot(default)
+  @doc "Wide slot"
+  slot(wide)
 
   def render(assigns) do
     ~F"""
@@ -48,7 +50,7 @@ defmodule Moon.Parts.Sidebar do
             "bg-goku shadow-none border-e",
             "w-[22.5rem]": @variant in ["generic"],
             "w-[4.5rem]": @variant in ["slim"],
-            "w-[27.5rem]": @variant in ["wide"]
+            "w-[22rem] lg:w-[27.5rem]": @variant in ["wide"]
           ],
           @panel_class
         ])}
@@ -59,7 +61,8 @@ defmodule Moon.Parts.Sidebar do
             [
               "h-screen pt-6 pb-5 lg:pb-20 flex flex-col gap-6",
               "px-4 overflow-y-scroll": @variant in ["generic"],
-              "px-3 lg:overflow-visible overflow-y-scroll": @variant in ["slim"]
+              "px-3 lg:overflow-visible overflow-y-scroll": @variant in ["slim"],
+              "h-screen pt-0 pb-0 lg:pb-0": @variant in ["wide"]
             ],
             @menu_class
           ])}
@@ -76,6 +79,7 @@ defmodule Moon.Parts.Sidebar do
               is_slim: @variant in ["slim"]
             }
           />
+          <#slot {@wide} />
           <#slot />
         </nav>
       </Drawer.Panel>

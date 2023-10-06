@@ -44,6 +44,7 @@ config :surface, :components, [
   {Moon.Parts.Sidebar.Accordion, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar.MenuLink, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar.SlimMenuLink, propagate_context_to_slots: true},
+  {Moon.Parts.Sidebar.WideMenu, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
