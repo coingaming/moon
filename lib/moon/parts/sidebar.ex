@@ -55,7 +55,14 @@ defmodule Moon.Parts.Sidebar do
       >
         <nav
           aria-label="Sidebar"
-          class={merge(["h-screen px-4 pt-6 pb-20 flex flex-col gap-6 overflow-y-scroll"]), @menu_class}
+          class={merge([
+            [
+              "h-screen pt-6 pb-5 lg:pb-20 flex flex-col gap-6",
+              "px-4 overflow-y-scroll": @variant in ["generic"],
+              "px-3 lg:overflow-visible overflow-y-scroll": @variant in ["slim"]
+            ],
+            @menu_class
+          ])}
         >
           <#slot
             {@logo}

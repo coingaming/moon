@@ -20,12 +20,22 @@ defmodule Moon.Parts.Sidebar.Logo do
 
   def render(assigns) do
     ~F"""
-    <div class={merge(["flex items-center", @class])} {=@id} data-testid={@testid}>
+    <div
+      class={merge([
+        "flex",
+        [
+          "self-center": @is_slim
+        ],
+        @class
+      ])}
+      {=@id}
+      data-testid={@testid}
+    >
       <svg
         class={merge([
           [
             "moon-logo h-10 w-[6.5rem] text-bulma hover:text-bulma active:text-bulma focus:text-bulma cursor-pointer",
-            "h-10 w-10 self-center": @is_slim
+            "h-10 w-10": @is_slim
           ],
           @svg_class
         ])}

@@ -5,6 +5,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
   use MoonWeb, :example
 
   alias Moon.Design.Button
+  alias Moon.Design.Avatar
   alias Moon.Parts.Sidebar
   alias Moon.Icon
 
@@ -17,9 +18,19 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
       <Sidebar variant="slim" id="slim_sidebar">
         <Sidebar.Logo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
         <Sidebar.Menu>
-          {#for menu_item <- @menu_items, menu_item[:icon] != nil}
-            <Sidebar.SlimMenuLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} /></Sidebar.SlimMenuLink>
-          {/for}
+          <:top>
+            {#for menu_item <- @menu_items, menu_item[:icon] != nil}
+              <Sidebar.SlimMenuLink
+                route={menu_item[:page]}
+                icon_name={menu_item[:icon]}
+                tooltip_text={menu_item[:key]}
+              />
+            {/for}
+          </:top>
+          <:bottom>
+            <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
+            <Avatar class="rounded-full rounded-moon-i-xx bg-cell" name="ET" />
+          </:bottom>
         </Sidebar.Menu>
       </Sidebar>
     </div>

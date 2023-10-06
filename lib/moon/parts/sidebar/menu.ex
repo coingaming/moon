@@ -13,18 +13,36 @@ defmodule Moon.Parts.Sidebar.Menu do
   prop(is_slim, :boolean, from_context: :is_slim)
   @doc "Default slot"
   slot(default)
+  @doc "Top slot"
+  slot(top)
+  @doc "Bottom slot"
+  slot(bottom)
 
   def render(assigns) do
     ~F"""
     <div
       class={merge([
-        ["flex flex-col gap-2", "gap-4": @is_slim],
+        ["flex flex-col gap-2", "gap-4 h-full": @is_slim],
         @class
       ])}
       {=@id}
       data-testid={@testid}
     >
       <#slot />
+      <div class="flex flex-col flex-grow h-full justify-between">
+        <div class={merge([
+          ["flex flex-col gap-2", "gap-4": @is_slim],
+          @class
+        ])}>
+          <#slot {@top} />
+        </div>
+        <div class={merge([
+          ["flex flex-col gap-2 items-center", "gap-4": @is_slim],
+          @class
+        ])}>
+          <#slot {@bottom} />
+        </div>
+      </div>
     </div>
     """
   end
