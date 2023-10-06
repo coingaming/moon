@@ -40,6 +40,10 @@ config :surface, :components, [
   {Moon.Design.Tooltip.Content, propagate_context_to_slots: true},
   # parts part
   {Moon.Parts.Chart.Field, propagate_context_to_slots: true},
+  {Moon.Parts.Sidebar, propagate_context_to_slots: true},
+  {Moon.Parts.Sidebar.Accordion, propagate_context_to_slots: true},
+  {Moon.Parts.Sidebar.MenuLink, propagate_context_to_slots: true},
+  {Moon.Parts.Sidebar.SlimMenuLink, propagate_context_to_slots: true},
   # app part
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
