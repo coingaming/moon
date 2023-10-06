@@ -3,9 +3,7 @@ defmodule MoonWeb.Pages.Parts.SlimSidebarPage do
 
   use MoonWeb, :live_view
 
-  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.ComponentPageDescription
-  alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Examples.Parts.SidebarExample
@@ -29,9 +27,8 @@ defmodule MoonWeb.Pages.Parts.SlimSidebarPage do
 
   def render(assigns) do
     ~F"""
-    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription title="Sidebar examples">
-      </ComponentPageDescription>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction} hide_left_menu>
+      <ComponentPageDescription title="Sidebar examples" />
 
       <ExamplesList examples={[
         SidebarExample.Slim

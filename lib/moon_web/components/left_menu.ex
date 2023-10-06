@@ -16,13 +16,14 @@ defmodule MoonWeb.Components.LeftMenu do
   prop(active_page, :module)
   prop(hide_items, :boolean)
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
+  prop(is_hidden, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
     <Drawer
       lg_persists
       id="left-menu"
-      class="lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50 inset-auto"
+      class={"lg:flex lg:start-0 lg:inset-y-0 lg:w-80 lg:z-50 inset-auto", invisible: @is_hidden}
     >
       <Drawer.Backdrop class="lg:hidden" />
       <Drawer.Panel position="start" class="w-80 bg-gohan shadow-moon-none">

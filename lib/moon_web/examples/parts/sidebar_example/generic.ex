@@ -13,32 +13,34 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Generic do
 
   def render(assigns) do
     ~F"""
-    <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Generic Sidebar on small screens</Button>
-    <Sidebar id="generic_sidebar">
-      <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
-      <Sidebar.Menu>
-        <Sidebar.SectionTitle>Section 1 • Generic</Sidebar.SectionTitle>
-        <div class="flex flex-col gap-1">
-          {#for menu_item <- @menu_items, menu_item[:icon] != nil}
-            <Sidebar.MenuLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</Sidebar.MenuLink>
+    <div>
+      <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Generic Sidebar on small screens</Button>
+      <Sidebar id="generic_sidebar">
+        <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
+        <Sidebar.Menu>
+          <Sidebar.SectionTitle>Section 1 • Generic</Sidebar.SectionTitle>
+          <div class="flex flex-col gap-1">
+            {#for menu_item <- @menu_items, menu_item[:icon] != nil}
+              <Sidebar.MenuLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</Sidebar.MenuLink>
+            {/for}
+          </div>
+        </Sidebar.Menu>
+        <Sidebar.Menu>
+          <Sidebar.SectionTitle>Section 2 • Components</Sidebar.SectionTitle>
+          {#for menu_item <- @menu_items, menu_item[:icon] == nil}
+            {#if menu_item[:children]}
+              <Sidebar.Accordion id={"sidebar-#{menu_item[:key]}"} accordion_header={menu_item[:key]}>
+                {#for child_menu_item <- menu_item[:children]}
+                  <Sidebar.MenuLink route={menu_item[:page]}>{child_menu_item[:key]}</Sidebar.MenuLink>
+                {/for}
+              </Sidebar.Accordion>
+            {#else}
+              <Sidebar.MenuLink route={menu_item[:page]}>{menu_item[:key]}</Sidebar.MenuLink>
+            {/if}
           {/for}
-        </div>
-      </Sidebar.Menu>
-      <Sidebar.Menu>
-        <Sidebar.SectionTitle>Section 2 • Components</Sidebar.SectionTitle>
-        {#for menu_item <- @menu_items, menu_item[:icon] == nil}
-          {#if menu_item[:children]}
-            <Sidebar.Accordion id={"sidebar-#{menu_item[:key]}"} accordion_header={menu_item[:key]}>
-              {#for child_menu_item <- menu_item[:children]}
-                <Sidebar.MenuLink route={menu_item[:page]}>{child_menu_item[:key]}</Sidebar.MenuLink>
-              {/for}
-            </Sidebar.Accordion>
-          {#else}
-            <Sidebar.MenuLink route={menu_item[:page]}>{menu_item[:key]}</Sidebar.MenuLink>
-          {/if}
-        {/for}
-      </Sidebar.Menu>
-    </Sidebar>
+        </Sidebar.Menu>
+      </Sidebar>
+    </div>
     """
   end
 

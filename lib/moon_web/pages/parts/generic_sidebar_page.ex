@@ -29,7 +29,7 @@ defmodule MoonWeb.Pages.Parts.GenericSidebarPage do
 
   def render(assigns) do
     ~F"""
-    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction} hide_left_menu>
       <ComponentPageDescription title="Sidebar examples" />
 
       <Anatomy>{component_anatomy()}</Anatomy>
