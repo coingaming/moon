@@ -119,14 +119,17 @@ defmodule Moon.Design.Table do
         {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
-              (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
+              ((is_selected(item.id, @selected) || item[:is_selected]) && @selected_bg) || @row_bg,
               @hover_bg,
-              "#{@even_row_bg}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
+              "#{@even_row_bg}":
+                @is_zebra_style && !(is_selected(item.id, @selected) || item[:is_selected]) &&
+                  rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
             :on-click={@row_click}
-            :values={selected: "#{item.id}"}
+            :values={selected: "#{item.id}", domid: row_index}
             data-testid={"row-#{row_index}"}
+            id={(is_integer(row_index) && "row-#{row_index}") || row_index}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
