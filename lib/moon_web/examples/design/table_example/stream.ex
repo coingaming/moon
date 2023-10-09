@@ -25,7 +25,11 @@ defmodule MoonWeb.Examples.Design.TableExample.Stream do
   def render(assigns) do
     ~F"""
     <div>
-      <Table items={model <- @streams.models} selected={nil} body_attrs={%{"phx-update" => "stream"}}>
+      <Table
+        items={model <- @streams.models}
+        body_attrs={%{"phx-update" => "stream"}}
+        row_click="row_click"
+      >
         <Column name="id" label="ID">
           {model.id}
         </Column>
@@ -38,6 +42,14 @@ defmodule MoonWeb.Examples.Design.TableExample.Stream do
       </Table>
     </div>
     """
+  end
+
+  def handle_event("row_click", params, socket) do
+    data =
+      models()
+      |> Enum.map(&(("#{&1.id}" == params["selected"] && Map.put(&1, :is_selected, true)) || &1))
+
+    {:noreply, stream(socket, :models, data, reset: true)}
   end
 
   def code() do
@@ -80,6 +92,11 @@ defmodule MoonWeb.Examples.Design.TableExample.Stream do
       \"""
     end
 
+    def handle_event("row_click", params, socket) do
+      data = models()
+      |> Enum.map(&("\#{&1.id}" == params["selected"] && Map.put(&1, :is_selected, true) || &1))
+      {:noreply, stream(socket, :models, data, reset: true )}
+    end
     """
   end
 end
