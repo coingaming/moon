@@ -119,17 +119,16 @@ defmodule Moon.Design.Table do
         {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
-              ((is_selected(item.id, @selected) || item[:is_selected]) && @selected_bg) || @row_bg,
+              (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
               @hover_bg,
               "#{@even_row_bg}":
-                @is_zebra_style && !(is_selected(item.id, @selected) || item[:is_selected]) &&
-                  rem(row_index, 2) == 1,
+                @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
             :on-click={@row_click}
-            :values={selected: "#{item.id}", domid: row_index}
-            data-testid={"row-#{row_index}"}
-            id={(is_integer(row_index) && "#{@id}-row-#{row_index}") || row_index}
+            :values={selected: "#{item.id}", domid: dom_id(row_index, @id)}
+            data-testid={dom_id(row_index, @id)}
+            id={dom_id(row_index, @id)}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
@@ -170,6 +169,9 @@ defmodule Moon.Design.Table do
     end
   end
 
+  defp is_selected_item(item, selected),
+    do: item[:is_selected] || is_selected(item[:id], selected)
+
   defp is_selected(id, selected) when is_list(selected), do: "#{id}" in selected
   defp is_selected(id, selected), do: "#{id}" == "#{selected}"
 
@@ -199,4 +201,7 @@ defmodule Moon.Design.Table do
     |> sort_items(sort)
     |> Enum.with_index(&{&2, &1})
   end
+
+  defp dom_id(id, _) when is_binary(id), do: id
+  defp dom_id(id, id2), do: "#{id2}-row-#{id}"
 end
