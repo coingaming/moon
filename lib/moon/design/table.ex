@@ -130,7 +130,7 @@ defmodule Moon.Design.Table do
             ])}
             :on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
             :values={selected: "#{item.id}", domid: dom_id(row_index, @id)}
-            data-testid={dom_id(row_index, @id)}
+            data-testid={"row-#{row_index}"}
             id={dom_id(row_index, @id)}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
