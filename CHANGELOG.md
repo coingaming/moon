@@ -1,3 +1,10 @@
+# [2.61.0](https://github.com/coingaming/moon/compare/v2.60.1...v2.61.0) (2023-10-09)
+
+
+### Features
+
+* Create Sidebar template [MDS-732] ([#742](https://github.com/coingaming/moon/issues/742)) ([ff58590](https://github.com/coingaming/moon/commit/ff585901375b27615d597cb9e135289ad29c275b))
+
 ## [2.60.1](https://github.com/coingaming/moon/compare/v2.60.0...v2.60.1) (2023-10-09)
 
 
