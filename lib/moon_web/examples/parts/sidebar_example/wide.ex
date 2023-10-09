@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
         <Sidebar.WideMenu>
           <:slim>
             <Sidebar.Logo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
-            <Sidebar.Menu>
+            <Sidebar.Section>
               <:top>
                 {#for menu_item <- @menu_items, menu_item[:icon] != nil}
                   <Sidebar.SlimMenuLink
@@ -35,18 +35,18 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
                 <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
                 <Avatar class="rounded-full rounded-moon-i-xx bg-cell" name="ET" />
               </:bottom>
-            </Sidebar.Menu>
+            </Sidebar.Section>
           </:slim>
           <:generic>
-            <Sidebar.Menu>
+            <Sidebar.Section>
               <Sidebar.SectionTitle>Section 1 • Generic</Sidebar.SectionTitle>
               <div class="flex flex-col gap-1">
                 {#for menu_item <- @menu_items, menu_item[:icon] != nil}
                   <Sidebar.MenuLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</Sidebar.MenuLink>
                 {/for}
               </div>
-            </Sidebar.Menu>
-            <Sidebar.Menu>
+            </Sidebar.Section>
+            <Sidebar.Section>
               <Sidebar.SectionTitle>Section 2 • Components</Sidebar.SectionTitle>
               {#for menu_item <- @menu_items, menu_item[:icon] == nil}
                 {#if menu_item[:children]}
@@ -59,7 +59,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
                   <Sidebar.MenuLink route={menu_item[:page]}>{menu_item[:key]}</Sidebar.MenuLink>
                 {/if}
               {/for}
-            </Sidebar.Menu>
+            </Sidebar.Section>
           </:generic>
         </Sidebar.WideMenu>
       </Sidebar>

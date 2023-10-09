@@ -1,7 +1,7 @@
 defmodule Moon.Parts.Sidebar.WideMenu do
   @moduledoc false
 
-  use Moon.StatelessComponent, slot: "wide"
+  use Moon.StatelessComponent
 
   @doc "Id attribute for DOM element"
   prop(id, :string)

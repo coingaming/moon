@@ -5,6 +5,8 @@ defmodule Moon.Parts.Sidebar.MenuLink do
 
   alias Moon.Design.MenuItem
 
+  defstruct key: "", page: "", icon: "", children: []
+
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"

@@ -4,6 +4,7 @@ defmodule Moon.Parts.Sidebar do
   use Moon.StatelessComponent
 
   alias Moon.Design.Drawer
+  alias __MODULE__
 
   @doc "Variant of the sidebar"
   prop(variant, :string,
@@ -25,14 +26,14 @@ defmodule Moon.Parts.Sidebar do
   prop(panel_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(menu_class, :css_class)
+  @doc "List of sections to be redered when no default slot is given"
+  prop(sections, :list, default: [])
   @doc "Logo slot"
   slot(logo)
   @doc "Menu slot"
   slot(menu)
   @doc "Default slot"
   slot(default)
-  @doc "Wide slot"
-  slot(wide)
 
   def render(assigns) do
     ~F"""
@@ -73,14 +74,16 @@ defmodule Moon.Parts.Sidebar do
               is_slim: @variant in ["slim"]
             }
           />
-          <#slot
-            {@menu}
-            context_put={
-              is_slim: @variant in ["slim"]
-            }
-          />
-          <#slot {@wide} />
-          <#slot />
+          <#slot context_put={
+            is_slim: @variant in ["slim"]
+          }>
+            <Sidebar.Section
+              :for={section <- @sections}
+              title={section[:title]}
+              links={section[:links]}
+              is_slim={@variant in ["slim"]}
+            />
+          </#slot>
         </nav>
       </Drawer.Panel>
     </Drawer>
