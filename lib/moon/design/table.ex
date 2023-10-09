@@ -129,7 +129,7 @@ defmodule Moon.Design.Table do
             :on-click={@row_click}
             :values={selected: "#{item.id}", domid: row_index}
             data-testid={"row-#{row_index}"}
-            id={(is_integer(row_index) && "row-#{row_index}") || row_index}
+            id={(is_integer(row_index) && "#{@id}-row-#{row_index}") || row_index}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
