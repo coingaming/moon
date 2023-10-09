@@ -1,3 +1,10 @@
+## [2.60.1](https://github.com/coingaming/moon/compare/v2.60.0...v2.60.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* Table component select stream ([#743](https://github.com/coingaming/moon/issues/743)) ([96666fe](https://github.com/coingaming/moon/commit/96666fe273c1b47b0c0f1ffb830fac0aed3a5ded))
+
 # [2.60.0](https://github.com/coingaming/moon/compare/v2.59.0...v2.60.0) (2023-10-05)
 
 

@@ -19,6 +19,9 @@ defmodule Moon.Design.Table do
   @doc "Event that firset on row click"
   prop(row_click, :event)
 
+  @doc "Callback for generating on_click per row. row and row_id will bi given as parameters"
+  prop(row_click_cb, :any)
+
   @doc "Sorting stuff"
   prop(sorting_click, :event)
 
@@ -119,14 +122,16 @@ defmodule Moon.Design.Table do
         {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
-              (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
+              (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
               @hover_bg,
-              "#{@even_row_bg}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
+              "#{@even_row_bg}":
+                @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
-            :on-click={@row_click}
-            :values={selected: "#{item.id}"}
+            :on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
+            :values={selected: "#{item.id}", domid: dom_id(row_index, @id)}
             data-testid={"row-#{row_index}"}
+            id={dom_id(row_index, @id)}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
@@ -167,6 +172,9 @@ defmodule Moon.Design.Table do
     end
   end
 
+  defp is_selected_item(item, selected),
+    do: item[:is_selected] || is_selected(item[:id], selected)
+
   defp is_selected(id, selected) when is_list(selected), do: "#{id}" in selected
   defp is_selected(id, selected), do: "#{id}" == "#{selected}"
 
@@ -196,4 +204,7 @@ defmodule Moon.Design.Table do
     |> sort_items(sort)
     |> Enum.with_index(&{&2, &1})
   end
+
+  defp dom_id(id, _) when is_binary(id), do: id
+  defp dom_id(id, id2), do: "#{id2}-row-#{id}"
 end
