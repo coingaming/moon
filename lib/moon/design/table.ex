@@ -19,6 +19,9 @@ defmodule Moon.Design.Table do
   @doc "Event that firset on row click"
   prop(row_click, :event)
 
+  @doc "Callback for generating on_click per row. row and row_id will bi given as parameters"
+  prop(row_click_cb, :any)
+
   @doc "Sorting stuff"
   prop(sorting_click, :event)
 
@@ -125,7 +128,7 @@ defmodule Moon.Design.Table do
                 @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
-            :on-click={@row_click}
+            :on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
             :values={selected: "#{item.id}", domid: dom_id(row_index, @id)}
             data-testid={dom_id(row_index, @id)}
             id={dom_id(row_index, @id)}
