@@ -56,6 +56,10 @@ defmodule MoonWeb.Router do
     live("/assets/logos", MoonWeb.Pages.Assets.LogosPage)
     live("/assets/patterns", MoonWeb.Pages.Assets.PatternsPage)
 
+    live("/sidebar-examples/generic", MoonWeb.Pages.Parts.GenericSidebarPage)
+    live("/sidebar-examples/slim", MoonWeb.Pages.Parts.SlimSidebarPage)
+    live("/sidebar-examples/wide", MoonWeb.Pages.Parts.WideSidebarPage)
+
     live("/components/v2/alert/", MoonWeb.Pages.Design.AlertPage)
     live("/components/v2/accordion/", MoonWeb.Pages.Design.AccordionPage)
     live("/components/v2/avatar/", MoonWeb.Pages.Design.AvatarPage)

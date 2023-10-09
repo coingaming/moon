@@ -14,6 +14,7 @@ defmodule MoonWeb.Components.Page do
   prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
   prop(active_page, :module)
+  prop(hide_left_menu, :boolean, default: false)
   slot(default)
 
   def render(assigns) do
@@ -23,7 +24,7 @@ defmodule MoonWeb.Components.Page do
       class={"pt-16 lg:pt-0 bg-gohan text-bulma flex", @class, @theme_name}
       dir={@direction}
     >
-      <LeftMenu active_page={@active_page} hide_items />
+      <LeftMenu active_page={@active_page} hide_items is_hidden={@hide_left_menu} />
       <Header id="page_header" />
       <div class="min-h-screen lg:ms-80 bg-goku flex-1 w-0 flex flex-col ltr:lg:rounded-tl-3xl rtl:lg:rounded-tr-3xl px-5 xl:px-20 2xl:px-32 lg:pt-12 lg:pb-52">
         <div class="flex flex-col grow max-w-screen-xl">
