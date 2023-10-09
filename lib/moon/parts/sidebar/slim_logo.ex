@@ -1,7 +1,9 @@
-defmodule Moon.Parts.Sidebar.Logo do
+defmodule Moon.Parts.Sidebar.SlimLogo do
   @moduledoc false
 
   use Moon.StatelessComponent, slot: "logo"
+
+  alias Moon.Parts.Sidebar.Logo
 
   @doc "Id attribute for DOM element"
   prop(id, :string)
@@ -15,29 +17,17 @@ defmodule Moon.Parts.Sidebar.Logo do
   prop(on_click, :event)
   @doc "Source of the svg"
   prop(src, :string, required: true)
-  @doc "If is slim sidebar"
-  prop(is_slim, :boolean, from_context: :is_slim)
 
   def render(assigns) do
     ~F"""
-    <div
-      class={merge([
-        "flex",
-        @class
-      ])}
+    <Logo
       {=@id}
-      data-testid={@testid}
-    >
-      <svg
-        class={merge([
-          "moon-logo h-10 w-[6.5rem] text-bulma hover:text-bulma active:text-bulma focus:text-bulma cursor-pointer",
-          @svg_class
-        ])}
-        :on-click={@on_click}
-      >
-        <use href={@src} />
-      </svg>
-    </div>
+      {=@testid}
+      class={"self-center", @class}
+      svg_class={"w-10", @svg_class}
+      {=@on_click}
+      {=@src}
+    />
     """
   end
 end

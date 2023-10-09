@@ -33,7 +33,9 @@ defmodule Moon.Parts.Sidebar.MenuLink do
       ])}
       attrs={
         "data-phx-link": "redirect",
-        "data-phx-link-state": "push"
+        "data-phx-link-state": "push",
+        route: @route,
+        fake: "hello"
       }
       is_active={@active_page == @route}
       href={@route}

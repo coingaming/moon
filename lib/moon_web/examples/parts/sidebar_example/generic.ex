@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Generic do
             {#if menu_item[:children]}
               <Sidebar.Accordion id={"sidebar-#{menu_item[:key]}"} accordion_header={menu_item[:key]}>
                 {#for child_menu_item <- menu_item[:children]}
-                  <Sidebar.MenuLink route={menu_item[:page]}>{child_menu_item[:key]}</Sidebar.MenuLink>
+                  <Sidebar.MenuLink route={child_menu_item[:page]}>{child_menu_item[:key]}</Sidebar.MenuLink>
                 {/for}
               </Sidebar.Accordion>
             {#else}
@@ -47,10 +47,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Generic do
   def handle_event("open_sidebar", _, socket) do
     Moon.Design.Drawer.open("generic_sidebar")
     {:noreply, socket}
-  end
-
-  def active_page_contains(active_page, module_path) do
-    String.contains?(to_string(active_page), to_string(module_path))
   end
 
   def code() do

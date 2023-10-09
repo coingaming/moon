@@ -6,12 +6,6 @@ defmodule Moon.Parts.Sidebar do
   alias Moon.Design.Drawer
   alias __MODULE__
 
-  @doc "Variant of the sidebar"
-  prop(variant, :string,
-    values: ["generic", "slim", "wide"],
-    default: "generic"
-  )
-
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
@@ -30,8 +24,6 @@ defmodule Moon.Parts.Sidebar do
   prop(sections, :list, default: [])
   @doc "Logo slot"
   slot(logo)
-  @doc "Menu slot"
-  slot(menu)
   @doc "Default slot"
   slot(default)
 
@@ -46,43 +38,15 @@ defmodule Moon.Parts.Sidebar do
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
       <Drawer.Panel
         position="start"
-        class={merge([
-          [
-            "bg-goku shadow-none border-e",
-            "w-[22.5rem]": @variant in ["generic"],
-            "w-[4.5rem]": @variant in ["slim"],
-            "w-[22rem] lg:w-[27.5rem]": @variant in ["wide"]
-          ],
-          @panel_class
-        ])}
+        class={merge(["bg-goku shadow-none border-e", "w-[22.5rem]", @panel_class])}
       >
         <nav
           aria-label="Sidebar"
-          class={merge([
-            [
-              "h-screen pt-6 pb-5 lg:pb-20 flex flex-col gap-6",
-              "px-4 overflow-y-scroll": @variant in ["generic"],
-              "px-3 lg:overflow-visible overflow-y-scroll": @variant in ["slim"],
-              "h-screen pt-0 pb-0 lg:pb-0": @variant in ["wide"]
-            ],
-            @menu_class
-          ])}
+          class={merge(["h-screen pt-6 pb-5 lg:pb-20 flex flex-col gap-6 px-4 overflow-y-scroll", @menu_class])}
         >
-          <#slot
-            {@logo}
-            context_put={
-              is_slim: @variant in ["slim"]
-            }
-          />
-          <#slot context_put={
-            is_slim: @variant in ["slim"]
-          }>
-            <Sidebar.Section
-              :for={section <- @sections}
-              title={section[:title]}
-              links={section[:links]}
-              is_slim={@variant in ["slim"]}
-            />
+          <#slot {@logo} />
+          <#slot>
+            <Sidebar.Section :for={section <- @sections} title={section[:title]} links={section[:links]} />
           </#slot>
         </nav>
       </Drawer.Panel>

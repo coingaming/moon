@@ -36,4 +36,16 @@ defmodule MoonWeb.Pages.Parts.SlimSidebarPage do
     </Page>
     """
   end
+
+  def component_anatomy() do
+    """
+    <Sidebar.Slim>
+      <Sidebar.SlimLogo />
+      <Sidebar.SlimMenuLink>...</Sidebar.SlimMenuLink>
+      <:bottom>
+        <Sidebar.SlimMenuLink>...</Sidebar.SlimMenuLink>
+      </:bottom>
+    </Sidebar.Slim>
+    """
+  end
 end
