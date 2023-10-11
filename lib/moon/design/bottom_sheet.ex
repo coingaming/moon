@@ -48,6 +48,9 @@ defmodule Moon.Design.BottomSheet do
   @doc "Internal API, used for transition of the element"
   data(is_closing, :boolean, default: false)
 
+  @doc "Internal API, used for transition of the element"
+  data(is_opening, :boolean, default: false)
+
   def render(assigns) do
     ~F"""
     <div
@@ -55,6 +58,7 @@ defmodule Moon.Design.BottomSheet do
       phx-hook="Bottomsheet"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-is_opening={"#{@is_opening}"}
       class={merge([
         "fixed z-[99999] inset-0 hidden",
         modal_classes(@as_modal_on),
@@ -62,6 +66,7 @@ defmodule Moon.Design.BottomSheet do
       ])}
       data-testid={@testid}
     >
+    {#if @is_opening == true}
       <#slot {@backdrop} />
       <#slot
         {@panel}
@@ -72,17 +77,23 @@ defmodule Moon.Design.BottomSheet do
           size: @size
         }
       />
+      {/if}
     </div>
     """
   end
 
   def open(bottom_sheet_id) do
-    send_update(__MODULE__, id: bottom_sheet_id, is_open: true)
+    send_update(__MODULE__, id: bottom_sheet_id, is_opening: true)
   end
 
   def close(bottom_sheet_id) do
     send_update(__MODULE__, id: bottom_sheet_id, is_closing: true)
   end
+
+  def handle_event("start_opening_bottom_sheet", _, socket) do
+    {:noreply, assign(socket, is_opening: true)}
+  end
+
 
   def handle_event("set_open", _, socket) do
     {:noreply, assign(socket, is_open: true)}
@@ -97,7 +108,7 @@ defmodule Moon.Design.BottomSheet do
   end
 
   def handle_event("set_close", _, socket) do
-    {:noreply, assign(socket, is_open: false, is_closing: false)}
+    {:noreply, assign(socket, is_open: false, is_closing: false, is_opening: false)}
   end
 
   defp modal_classes(nil), do: []

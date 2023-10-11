@@ -15,6 +15,9 @@ defmodule Moon.Design.Drawer do
   prop(testid, :string)
   prop(class, :css_class)
 
+    @doc "Internal API, used for transition of the element"
+    data(is_opening, :boolean, default: false)
+
   def render(assigns) do
     ~F"""
     <div
@@ -22,11 +25,13 @@ defmodule Moon.Design.Drawer do
       phx-hook="Animation"
       data-is_open={@is_open}
       data-is_closing={"#{@is_closing}"}
+      data-is_opening={"#{@is_opening}"}
       data-lg_persists={@lg_persists}
       aria-expanded={(@is_open && "true") || "false"}
       class={merge(["fixed z-[99999] inset-0 hidden", @class])}
       data-testid={@testid}
     >
+    {#if @is_opening == true}
       <#slot {@backdrop} />
       <#slot
         {@panel}
@@ -34,16 +39,18 @@ defmodule Moon.Design.Drawer do
           on_close: @on_close || %{name: "start_closing_drawer", target: @myself}
         }
       />
+      {/if}
     </div>
+
     """
   end
 
   def open(drawer_id) do
-    send_update(__MODULE__, id: drawer_id, is_open: true)
+    send_update(__MODULE__, id: drawer_id, is_opening: true)
   end
 
   def close(drawer_id) do
-    send_update(__MODULE__, id: drawer_id, is_closing: true)
+    send_update(__MODULE__, id: drawer_id, is_closing: true, is_opening: false)
   end
 
   def handle_event("set_open", _, socket) do
@@ -59,6 +66,6 @@ defmodule Moon.Design.Drawer do
   end
 
   def handle_event("set_close", _, socket) do
-    {:noreply, assign(socket, is_open: false, is_closing: false)}
+    {:noreply, assign(socket, is_open: false, is_closing: false, is_opening: false)}
   end
 end

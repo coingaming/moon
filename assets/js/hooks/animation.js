@@ -25,12 +25,22 @@ export default {
     },
 
     updated() {
-        this.showElementIfNeeded();
+        // this.showElementIfNeeded();
         this.hideElementIfNeeded();
+        this.showElementInDOMIfNeeded();
     },
 
     showElementIfNeeded() {
         (this.el.dataset.is_open === undefined) || !this.el.classList.contains("hidden")  || this.showElement();
+    },
+
+    showElementInDOMIfNeeded() {
+        if (this.el.dataset.is_opening === "true" && this.el.classList.contains("hidden")) {
+            this.showElement();
+            console.log("showElementInDOMIfNeeded")
+        } else {
+            this.hideElement();
+        }
     },
 
     hideElementIfNeeded() {
@@ -54,10 +64,13 @@ export default {
             this.el.classList.add(...this.hiddenClasses())
             this.pushEventTo(this.el, "set_close", {});
             document.body.style.overflow = "auto";
+            this.panel. remove();
         }, 200);
+        console.log("hideElement")
     },
     
     showElement() {
+        this.el.dataset.is_open === "true";
         this.el.classList.remove(...this.hiddenClasses());
         this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
         if (this.backdrop) {
