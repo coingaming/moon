@@ -39,6 +39,7 @@ defmodule MoonWeb.Pages.Parts.GenericSidebarPage do
       ]} />
 
       <PropsTable module={Moon.Parts.Sidebar} />
+      <PropsTable module={Moon.Parts.Sidebar.BottomNavigation} />
       <PropsTable module={Moon.Parts.Sidebar.Logo} />
       <PropsTable module={Moon.Parts.Sidebar.Section} />
       <PropsTable module={Moon.Parts.Sidebar.Accordion} />

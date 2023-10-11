@@ -4,7 +4,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Button
   alias Moon.Design.Avatar
   alias Moon.Parts.Sidebar
 
@@ -14,7 +13,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   def render(assigns) do
     ~F"""
     <div>
-      <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Wide Sidebar on small screens</Button>
+      <Sidebar.BottomNavigation
+        src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+        href="#"
+        on_click="open_sidebar"
+      />
       <Sidebar.Wide id="wide_sidebar">
         <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
         <:slim_top>
@@ -59,7 +62,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   def code() do
     """
     alias Moon.Design.Button
-    alias Moon.Design.Avatar
     alias Moon.Parts.Sidebar
 
     prop(active_page, :any)
@@ -68,7 +70,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Wide Sidebar on small screens</Button>
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
         <Sidebar.Wide id="wide_sidebar">
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:slim_top>

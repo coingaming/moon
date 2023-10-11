@@ -4,7 +4,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Button
   alias Moon.Design.Avatar
   alias Moon.Parts.Sidebar
 
@@ -13,7 +12,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
   def render(assigns) do
     ~F"""
     <div>
-      <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Slim Sidebar on small screens</Button>
+      <Sidebar.BottomNavigation
+        src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+        href="#"
+        on_click="open_sidebar"
+      />
       <Sidebar.Slim id="slim_sidebar" links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
         <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
         <:bottom>
@@ -32,7 +35,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
 
   def code() do
     """
-    alias Moon.Design.Button
     alias Moon.Design.Avatar
     alias Moon.Parts.Sidebar
 
@@ -41,7 +43,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
     def render(assigns) do
       ~F\"""
       <div>
-        <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Slim Sidebar on small screens</Button>
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
         <Sidebar.Slim id="slim_sidebar" links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:bottom>
