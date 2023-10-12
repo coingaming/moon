@@ -1,3 +1,10 @@
+# [2.62.0](https://github.com/coingaming/moon/compare/v2.61.0...v2.62.0) (2023-10-12)
+
+
+### Features
+
+* adding SpaceGrotesk font ([#745](https://github.com/coingaming/moon/issues/745)) ([47066c1](https://github.com/coingaming/moon/commit/47066c14ea1056176e49fd312b0ea1b77d10c69f))
+
 # [2.61.0](https://github.com/coingaming/moon/compare/v2.60.1...v2.61.0) (2023-10-09)
 
 
