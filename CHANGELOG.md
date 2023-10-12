@@ -1,3 +1,10 @@
+## [2.62.1](https://github.com/coingaming/moon/compare/v2.62.0...v2.62.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* Parts.Sidebar create bottom navigation for small screens ([#744](https://github.com/coingaming/moon/issues/744)) ([0d28428](https://github.com/coingaming/moon/commit/0d2842893a97fd103f8209332e8389be2b1d0300))
+
 # [2.62.0](https://github.com/coingaming/moon/compare/v2.61.0...v2.62.0) (2023-10-12)
 
 
