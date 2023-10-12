@@ -30,6 +30,9 @@ defmodule Moon.Helpers.MergeClass do
   defp group_name(class) when class in ~w(block inline hidden flex grid),
     do: "prop_display"
 
+  defp group_name("font-" <> family) when family in ~w(averta dm-sans grotesk),
+    do: "prop_font_family"
+
   defp group_name(class) do
     class
     # removing square brackets bc of "top-[-7px]"
