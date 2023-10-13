@@ -32,17 +32,17 @@ defmodule Moon.Parts.Sidebar do
     <Drawer
       {=@id}
       lg_persists
-      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto", @class])}
+      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark", @class])}
       {=@testid}
     >
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
       <Drawer.Panel
         position="start"
-        class={merge(["bg-goku shadow-none border-e", "w-[22.5rem]", @panel_class])}
+        class={merge(["bg-goku shadow-none", "w-[22.5rem]", @panel_class])}
       >
         <nav
           aria-label="Sidebar"
-          class={merge(["h-screen pt-6 pb-5 lg:pb-20 flex flex-col gap-6 px-4 overflow-y-scroll", @menu_class])}
+          class={merge(["h-screen pt-6 pb-5 flex flex-col gap-6 px-4 overflow-y-scroll", @menu_class])}
         >
           <#slot {@logo} />
           <#slot>
