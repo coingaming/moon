@@ -1,3 +1,10 @@
+## [2.62.2](https://github.com/coingaming/moon/compare/v2.62.1...v2.62.2) (2023-10-13)
+
+
+### Bug Fixes
+
+* Parts.Sidebar theme fix ([#746](https://github.com/coingaming/moon/issues/746)) ([c8737ff](https://github.com/coingaming/moon/commit/c8737ff3c2d68bae928a700aa0e147ae6909c411))
+
 ## [2.62.1](https://github.com/coingaming/moon/compare/v2.62.0...v2.62.1) (2023-10-12)
 
 
