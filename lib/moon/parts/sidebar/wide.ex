@@ -47,7 +47,7 @@ defmodule Moon.Parts.Sidebar.Wide do
     <Drawer
       {=@id}
       lg_persists
-      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto", @class])}
+      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark", @class])}
       {=@testid}
     >
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
@@ -55,17 +55,20 @@ defmodule Moon.Parts.Sidebar.Wide do
         position="start"
         class={merge([
           [
-            "bg-goku shadow-none border-e",
+            "bg-goku shadow-none",
             "w-[22rem] lg:w-[27.5rem]"
           ],
           @panel_class
         ])}
       >
         <nav aria-label="Sidebar" class={merge(["h-full flex flex-row", @menu_class])}>
-          <div class={merge([
-            "flex flex-col w-[4.5rem] border-e h-full h-screen pt-6 pb-5 lg:pb-20 gap-6 px-3 lg:overflow-visible overflow-y-scroll",
-            @slim_nav_class
-          ])}>
+          <div class={[
+            merge([
+              "flex flex-col w-[4.5rem] border-e h-full h-screen pt-6 pb-5 gap-6 px-3 lg:overflow-visible overflow-y-scroll border-beerus",
+              @slim_nav_class
+            ]),
+            "border-e"
+          ]}>
             <#slot {@logo} />
             <div class={merge(["flex flex-col h-full justify-between", @slim_class])}>
               <div class={merge(["flex flex-col gap-4", @slim_top_class])}>
