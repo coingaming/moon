@@ -9,7 +9,6 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
   alias Moon.Design.Breadcrumb.Crumb
 
   alias Moon.Icon
-  alias Moon.Design.Button.IconButton
 
   alias Moon.Icon
 

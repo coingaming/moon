@@ -4,7 +4,6 @@ defmodule Moon.Design.Breadcrumb.ShownItems do
   use Moon.StatelessComponent, slot: "shown_items"
 
   alias Moon.Design.Breadcrumb.Item
-  alias Moon.Icon
 
   @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, from_context: :responsive_crumbs_on)
