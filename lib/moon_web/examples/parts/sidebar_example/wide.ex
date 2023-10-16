@@ -4,7 +4,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Avatar
+  alias Moon.Parts.Sidebar.Avatar
   alias Moon.Parts.Sidebar
 
   prop(active_page, :any)
@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
         </:slim_top>
         <:slim_bottom>
           <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
-          <Avatar class="rounded-full rounded-moon-i-xx bg-cell" name="ET" />
+          <Avatar name="ET" />
         </:slim_bottom>
         <:generic>
           <Sidebar.Section>
