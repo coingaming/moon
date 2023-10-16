@@ -5,16 +5,47 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
 
   alias Moon.Icon
   alias Moon.Design.Button.IconButton
-  alias Phoenix.LiveView.JS
 
+  alias Moon.Design.Breadcrumb.Item
+
+  alias Moon.Design.Dropdown
+
+  @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
-
+  @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string)
+  @doc "Name of custom icon used as a collapsed icon"
   prop(collapsed_icon, :string)
-  prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
 
+  @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
+  prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
+  @doc "Additional Tailwind classes"
+  prop(divider_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(collapsed_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(collapsed_item_class, :css_class)
+  @doc "Visual/Logical variant of collapsed icon button"
+  prop(variant, :string,
+    values: ["fill", "outline", "ghost"],
+    default: "ghost"
+  )
+
+  @doc "Size of collapsed icon button"
+  prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "xs")
+  @doc "List of shown crumbs - Moon.Design.Breadcrumb.Crumb"
   data(shown_breadcrumbs, :list, default: [])
+  @doc "List of collapsed crumbs - Moon.Design.Breadcrumb.Crumb"
   data(collapsed_breadcrumbs, :list, default: [])
+
+  @doc "Shown items slot"
+  slot(shown_items)
+  @doc "Collapsed items slot"
+  slot(collapsed_items)
+  @doc "First item slot"
+  slot(first_item)
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)
@@ -22,7 +53,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
     tail_breadcrumbs = Enum.take(assigns.breadcrumbs, -2)
 
     shown_breadcrumbs = Enum.concat([first_crumb], tail_breadcrumbs)
-    collapsed_breadcrumbs = Enum.slice(assigns.breadcrumbs, 1..(count - 2))
+    collapsed_breadcrumbs = Enum.slice(assigns.breadcrumbs, 1..(count - 3))
 
     socket =
       socket
@@ -42,153 +73,94 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   def render(assigns) do
     ~F"""
     <nav aria-label="Breadcrumb">
-      <ol class="flex flex-wrap gap-2 items-center text-moon-14">
-        <li class="flex items-center gap-2 text-trunks">
-          <span class={merge([
-            "transition-colors duration-200 hover:text-bulmas",
-            hidden: @responsive_crumbs_on,
-            "#{breadcrumb_classes(@responsive_crumbs_on)}": @responsive_crumbs_on
-          ])}>
-            <a href={Enum.at(@shown_breadcrumbs, 0).link}>
-              <Icon
-                name={Enum.at(@shown_breadcrumbs, 0).icon}
-                class="text-moon-24"
-                :if={Map.has_key?(Enum.at(@shown_breadcrumbs, 0), :icon) && Enum.at(@shown_breadcrumbs, 0).icon != ""}
-              />
-              {#if Enum.at(@shown_breadcrumbs, 0).name}
-                {Enum.at(@shown_breadcrumbs, 0).name}
-              {/if}
-            </a>
-          </span>
-          <span
-            :if={@responsive_crumbs_on}
-            class={merge([
-              "inline",
-              ellipsed_breadcrumb_classes(@responsive_crumbs_on)
-            ])}
-          >
-            <a href={Enum.at(@shown_breadcrumbs, 0).link}>
-              <Icon
-                name={Enum.at(@shown_breadcrumbs, 0).icon}
-                class="text-moon-24"
-                :if={Map.has_key?(Enum.at(@shown_breadcrumbs, 0), :icon) && Enum.at(@shown_breadcrumbs, 0).icon != ""}
-              />
-              {#if Enum.at(@shown_breadcrumbs, 0).name}
-                {first_crumb_with_ellips(@shown_breadcrumbs)}
-              {/if}
-            </a>
-          </span>
-
-          <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" />
-        </li>
-
-        <li
-          class="relative"
-          phx-click-away={JS.dispatch("moon:close-breadcrumb-flyout", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+      <ol class="flex flex-wrap items-center">
+        <#slot
+          {@first_item}
+          context_put={
+            value: 0,
+            responsive_crumbs_on: @responsive_crumbs_on,
+            href: Enum.at(@shown_breadcrumbs, 0).link,
+            title: Enum.at(@shown_breadcrumbs, 0).name,
+            icon: Enum.at(@shown_breadcrumbs, 0).icon
+          }
         >
-          <IconButton
-            variant="ghost"
-            icon={@collapsed_icon || "other3_dots_horizontal"}
-            size="xs"
-            on_click={JS.dispatch("moon:toggle-collapsed-breadcrumbs", detail: %{breacrumb_flyout_id: "#{@id}_flyout"})}
+          <Item
+            {=@divider}
+            {=@responsive_crumbs_on}
+            {=@divider_class}
+            {=@class}
+            first_shown_breadcrumb={Enum.at(@shown_breadcrumbs, 0)}
+            href={Enum.at(@shown_breadcrumbs, 0).link}
+            title={Enum.at(@shown_breadcrumbs, 0).name}
+            icon={Enum.at(@shown_breadcrumbs, 0).icon}
           />
-          <ol
-            id={"#{@id}_flyout"}
-            class="absolute hidden ltr:left-0 rtl:right-0 top-full bg-goku p-1 mt-3 flex flex-col gap-2 shadow-moon-lg rounded-moon-s-md z-10000 min-w-[8.5rem]"
-          >
-            {#for crumb <- @collapsed_breadcrumbs}
-              <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-heles">
+
+          <Icon
+            name={@divider || "arrows_right"}
+            class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @divider_class])}
+          />
+        </#slot>
+
+        <#slot
+          {@collapsed_items}
+          context_put={
+            responsive_crumbs_on: @responsive_crumbs_on
+          }
+        >
+          <Dropdown id={"#{@id}-collapsed-breadcrumbs"}>
+            <Dropdown.Options class={["min-w-[8.5rem] p-1", @collapsed_class]}>
+              {#for crumb <- @collapsed_breadcrumbs}
                 <a href={crumb.link}>
-                  <Icon
-                    name={crumb.icon}
-                    class="text-moon-24"
-                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                  />
-                  {#if crumb.name}
-                    {crumb.name}
-                  {/if}
+                  <Dropdown.Option class={["w-full p-2", @collapsed_item_class]}>
+                    <Icon
+                      name={crumb.icon}
+                      class="text-moon-24"
+                      :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                    />
+                    {#if crumb.name}
+                      {crumb.name}
+                    {/if}
+                  </Dropdown.Option>
                 </a>
-              </li>
-            {/for}
-          </ol>
-        </li>
+              {/for}
+            </Dropdown.Options>
+
+            <Dropdown.Trigger>
+              <IconButton
+                icon={@collapsed_icon || "other3_dots_horizontal"}
+                variant={@variant || "ghost"}
+                size={@size || "xs"}
+              />
+            </Dropdown.Trigger>
+          </Dropdown>
+        </#slot>
 
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
-          <li class="flex items-center gap-2 text-trunks" :if={index > 0}>
-            <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" />
-            <span class={merge([
-              "transition-colors duration-200 hover:text-bulma ",
-              "text-bulma font-medium": index == Enum.count(@shown_breadcrumbs) - 1,
-              hidden: @responsive_crumbs_on,
-              "#{breadcrumb_classes(@responsive_crumbs_on)}": @responsive_crumbs_on
-            ])}>
-              <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>
-                <Icon
-                  name={crumb.icon}
-                  class="text-moon-24"
-                  :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                />
-                {#if crumb.name}
-                  {crumb.name}
-                {/if}
-              </a>
-            </span>
-            <span
-              :if={@responsive_crumbs_on}
-              class={merge([
-                "inline",
-                ellipsed_breadcrumb_classes(@responsive_crumbs_on)
-              ])}
-            >
-              <a href={crumb.link} aria-current={index == Enum.count(@shown_breadcrumbs) - 1 && "page"}>
-                <Icon
-                  name={crumb.icon}
-                  class="text-moon-24"
-                  :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                />
-                {#if crumb.name}
-                  {name_with_ellips(crumb)}
-                {/if}
-              </a>
-            </span>
-          </li>
+          <#slot
+            {@shown_items, crumb: crumb}
+            context_put={
+              value: index,
+              responsive_crumbs_on: @responsive_crumbs_on,
+              title: crumb.name,
+              href: crumb.link,
+              icon: crumb.icon
+            }
+          >
+            <Item
+              :if={index > 0}
+              {=@divider}
+              {=@responsive_crumbs_on}
+              {=@divider_class}
+              {=@class}
+              value={index}
+              href={crumb.link}
+              title={crumb.name}
+              icon={Map.get(crumb, :icon)}
+            />
+          </#slot>
         {/for}
       </ol>
     </nav>
     """
-  end
-
-  def name_with_ellips(crumb) do
-    [first_word | _] = String.split(crumb.name)
-
-    if String.split(crumb.name) |> tl() != [] do
-      first_word <> "..."
-    else
-      first_word
-    end
-  end
-
-  def first_crumb_with_ellips(shown_breadcrumbs) do
-    breadcrumb = Enum.at(shown_breadcrumbs, 0).name
-
-    [first_word | _] = String.split(breadcrumb)
-
-    if String.split(breadcrumb) |> tl() != [] do
-      first_word <> "..."
-    else
-      first_word
-    end
-  end
-
-  defp breadcrumb_classes(nil), do: []
-
-  defp breadcrumb_classes(size) do
-    ~w(inline) |> Enum.map(&"#{size}:#{&1}")
-  end
-
-  defp ellipsed_breadcrumb_classes(nil), do: []
-
-  defp ellipsed_breadcrumb_classes(size) do
-    ~w(hidden) |> Enum.map(&"#{size}:#{&1}")
   end
 end

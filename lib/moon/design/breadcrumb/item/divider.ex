@@ -16,7 +16,7 @@ defmodule Moon.Design.Breadcrumb.Item.Divider do
     <Icon
       name={@divider || "arrows_right"}
       class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @class])}
-      :if={@value != 0}
+      :if={@value}
     />
     """
   end

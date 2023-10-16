@@ -14,6 +14,10 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.FiveAndMoreItems do
         link: "/components/v2/breadcrumb"
       },
       %Crumb{
+        name: "Page 1",
+        link: "/components/v2/breadcrumb"
+      },
+      %Crumb{
         name: "Page 2",
         link: "/components/v2/breadcrumb"
       },

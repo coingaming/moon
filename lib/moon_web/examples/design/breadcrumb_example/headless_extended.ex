@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.BreadcrumbExample.Headless do
+defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -37,11 +37,18 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.Headless do
     <div>
       <Extended breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
         <Breadcrumb.Item
-          class="text-chichi text-moon-32 hover:text-krillin gap-4 last:text-roshi"
+          class="text-chichi text-moon-32 hover:text-krillin last:text-roshi"
           divider_class="text-moon-24 text-piccolo hover:text-piccolo"
           :let={crumb: crumb}
           divider="controls_chevron_right"
-        ><Icon name={crumb.icon} :if={Map.has_key?(crumb, :icon) && crumb.icon != ""} />{crumb.name}</Breadcrumb.Item>
+        >
+          <Breadcrumb.Item.Divider
+            divider="arrows_chevron_right_double"
+            class="text-piccolo text-moon-24"
+          />
+          <Icon name={crumb.icon} :if={Map.has_key?(crumb, :icon) && crumb.icon != ""} />
+          {crumb.name}
+        </Breadcrumb.Item>
       </Extended>
     </div>
     """

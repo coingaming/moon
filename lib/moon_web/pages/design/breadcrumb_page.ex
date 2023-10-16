@@ -38,13 +38,14 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       </ComponentPageDescription>
 
       <ExamplesList examples={[
-        BreadcrumbExample.Headless,
         BreadcrumbExample.FiveAndMoreItems,
         BreadcrumbExample.FourItems,
         BreadcrumbExample.TwoItems,
         BreadcrumbExample.OneItem,
         BreadcrumbExample.IconAsStartingItemAndCustomDivider,
-        BreadcrumbExample.ResponsiveItems
+        BreadcrumbExample.ResponsiveItems,
+        BreadcrumbExample.HeadlessCollapsed,
+        BreadcrumbExample.HeadlessExtended
       ]} />
 
       <PropsTable module={Moon.Design.Breadcrumb} />

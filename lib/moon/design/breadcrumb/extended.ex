@@ -5,12 +5,18 @@ defmodule Moon.Design.Breadcrumb.Extended do
 
   alias Moon.Design.Breadcrumb.Item
 
+  @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
+  @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string)
-  prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
-  prop(divider_class, :css_class)
-  prop(class, :css_class)
 
+  @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
+  prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
+  @doc "Additional Tailwind classes"
+  prop(divider_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(class, :css_class)
+  @doc "Item slot"
   slot(item)
 
   def render(assigns) do
@@ -23,11 +29,11 @@ defmodule Moon.Design.Breadcrumb.Extended do
             context_put={
               value: index,
               responsive_crumbs_on: @responsive_crumbs_on,
-              title: crumb.name
+              title: crumb.name,
+              href: crumb.link
             }
           >
             <Item
-              {=@breadcrumbs}
               {=@divider}
               {=@responsive_crumbs_on}
               {=@divider_class}

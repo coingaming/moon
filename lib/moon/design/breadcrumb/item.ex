@@ -7,30 +7,27 @@ defmodule Moon.Design.Breadcrumb.Item do
 
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-
   @doc "Additional Tailwind classes"
   prop(divider_class, :css_class)
-
-  @doc "Will be got from Accordion in most cases"
-
+  @doc "Title of the crumb"
   prop(title, :string, from_context: :title)
-
-  prop(href, :string)
-
-  prop(icon, :string)
-
+  @doc "Link to the crumb"
+  prop(href, :string, from_context: :href)
+  @doc "Icon of the crumb"
+  prop(icon, :string, from_context: :icon)
+  @doc "Index of the item in the list of breadcrumbs"
   prop(value, :integer, from_context: :value)
-
-  prop(breadcrumbs, :list)
+  @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string)
+
+  @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, from_context: :responsive_crumbs_on)
+  @doc "If is the first shown breadcrumb"
+  prop(first_shown_breadcrumb, :boolean)
 
-  prop(name, :string, from_context: :name)
-
-  prop(has_icon, :boolean)
-
+  @doc "Default slot"
   slot(default)
-
+  @doc "Divider slot"
   slot(divider_slot)
 
   def render(assigns) do
@@ -39,11 +36,17 @@ defmodule Moon.Design.Breadcrumb.Item do
       "flex items-center text-trunks text-moon-14 last:text-bulma last:font-medium",
       @class
     ])}>
-      <#slot {@divider_slot}>
+      <#slot
+        {@divider_slot}
+        context_put={
+          value: @value != 0,
+          divider: @divider
+        }
+      >
         <Icon
           name={@divider || "arrows_right"}
           class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @divider_class])}
-          :if={@value != 0}
+          :if={@value != 0 && !@first_shown_breadcrumb}
         />
       </#slot>
       <span class={merge([
@@ -94,42 +97,3 @@ defmodule Moon.Design.Breadcrumb.Item do
     ~w(hidden) |> Enum.map(&"#{size}:#{&1}")
   end
 end
-
-# <li class="flex items-center gap-2 text-trunks">
-# <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" :if={index != 0} />
-# <span class={merge([
-#   "transition-colors duration-200 hover:text-bulma",
-#   "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1,
-#   hidden: @responsive_crumbs_on,
-#   "#{breadcrumb_classes(@responsive_crumbs_on)}": @responsive_crumbs_on
-# ])}>
-#   <a href={crumb.link} aria-current={index == Enum.count(@breadcrumbs) - 1 && "page"}>
-#     <Icon
-#       name={crumb.icon}
-#       class="text-moon-24"
-#       :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-#     />
-#     {#if crumb.name}
-#       {crumb.name}
-#     {/if}
-#   </a>
-# </span>
-# <span
-#   :if={@responsive_crumbs_on}
-#   class={merge([
-#     "inline",
-#     ellipsed_breadcrumb_classes(@responsive_crumbs_on)
-#   ])}
-# >
-#   <a href={crumb.link} aria-current={index == Enum.count(@breadcrumbs) - 1 && "page"}>
-#     <Icon
-#       name={crumb.icon}
-#       class="text-moon-24"
-#       :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-#     />
-#     {#if crumb.name}
-#       {name_with_ellips(crumb)}
-#     {/if}
-#   </a>
-# </span>
-# </li>
