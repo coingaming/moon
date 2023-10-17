@@ -38,4 +38,9 @@ defmodule Moon.Helpers.MergeClassTest do
     merged = merge(~w(absolute relative))
     assert merged == ~w(relative)
   end
+
+  test "background color should be overwritten" do
+    merged = merge(~w(bg-piccolo bg-chichi-10))
+    assert merged == ~w(bg-chichi-10)
+  end
 end
