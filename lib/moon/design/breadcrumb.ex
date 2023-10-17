@@ -3,8 +3,7 @@ defmodule Moon.Design.Breadcrumb do
 
   use Moon.StatefulComponent
 
-  alias Moon.Design.Breadcrumb.Collapsed
-  alias Moon.Design.Breadcrumb.Extended
+  alias Moon.Design.Breadcrumb
 
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
@@ -26,27 +25,80 @@ defmodule Moon.Design.Breadcrumb do
   @doc "Additional Tailwind classes"
   prop(divider_class, :css_class)
 
+  @doc "Items slot"
+  slot(item)
+
   def render(assigns) do
     ~F"""
     <div class={@class} data-testid={@testid}>
       {#if Enum.count(@breadcrumbs) > @collapsible_crumbs}
-        <Collapsed
+        <Breadcrumb.Collapsed
           id={"#{@id}_inner_breadcrumb"}
           breadcrumbs={@breadcrumbs}
           {=@divider}
           {=@collapsed_icon}
           {=@responsive_crumbs_on}
         >
-        </Collapsed>
+          <:item :let={crumb: crumb, index: index}>
+            <#slot
+              {@item, crumb: crumb, index: index}
+              context_put={
+                value: index,
+                responsive_crumbs_on: @responsive_crumbs_on,
+                title: crumb.name,
+                href: crumb.link,
+                divider: @divider,
+                divider_class: @divider_class,
+                icon: crumb.icon
+              }
+            >
+              <Breadcrumb.Item
+                {=@divider}
+                {=@responsive_crumbs_on}
+                {=@divider_class}
+                {=@class}
+                value={index}
+                href={crumb.link}
+                title={crumb.name}
+                icon={Map.get(crumb, :icon)}
+              />
+            </#slot>
+          </:item>
+        </Breadcrumb.Collapsed>
       {#else}
-        <Extended
+        <Breadcrumb.Extended
           breadcrumbs={@breadcrumbs}
           {=@divider}
           {=@responsive_crumbs_on}
           class={@list_item_class}
           {=@divider_class}
         >
-        </Extended>
+          <:item :let={crumb: crumb, index: index}>
+            <#slot
+              {@item, crumb: crumb, index: index}
+              context_put={
+                value: index,
+                responsive_crumbs_on: @responsive_crumbs_on,
+                title: crumb.name,
+                href: crumb.link,
+                divider: @divider,
+                divider_class: @divider_class,
+                icon: crumb.icon
+              }
+            >
+              <Breadcrumb.Item
+                {=@divider}
+                {=@responsive_crumbs_on}
+                {=@divider_class}
+                {=@class}
+                value={index}
+                href={crumb.link}
+                title={crumb.name}
+                icon={Map.get(crumb, :icon)}
+              />
+            </#slot>
+          </:item>
+        </Breadcrumb.Extended>
       {/if}
     </div>
     """

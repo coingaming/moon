@@ -25,7 +25,7 @@ defmodule Moon.Design.Breadcrumb.Extended do
       <ol class="flex flex-wrap items-center">
         {#for {crumb, index} <- Enum.with_index(@breadcrumbs)}
           <#slot
-            {@item, crumb: crumb}
+            {@item, crumb: crumb, index: index}
             context_put={
               value: index,
               responsive_crumbs_on: @responsive_crumbs_on,
