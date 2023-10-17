@@ -13,7 +13,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
   @doc "Name of custom icon used as a divider between breadcrumb items"
-  prop(divider, :string)
+  prop(divider, :string, default: "arrows_right")
   @doc "Name of custom icon used as a collapsed icon"
   prop(collapsed_icon, :string)
 
@@ -40,12 +40,10 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   @doc "List of collapsed crumbs - Moon.Design.Breadcrumb.Crumb"
   data(collapsed_breadcrumbs, :list, default: [])
 
-  @doc "Shown items slot"
-  slot(shown_items)
-  @doc "Collapsed items slot"
+  @doc "Items slot"
+  slot(item)
+  @doc "Collapsed items slot, e.g. dropdown"
   slot(collapsed_items)
-  @doc "First item slot"
-  slot(first_item)
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)
@@ -74,80 +72,20 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
     ~F"""
     <nav aria-label="Breadcrumb">
       <ol class="flex flex-wrap items-center">
-        <#slot
-          {@first_item}
-          context_put={
-            value: 0,
-            responsive_crumbs_on: @responsive_crumbs_on,
-            href: Enum.at(@shown_breadcrumbs, 0).link,
-            title: Enum.at(@shown_breadcrumbs, 0).name,
-            icon: Enum.at(@shown_breadcrumbs, 0).icon
-          }
-        >
-          <Item
-            {=@divider}
-            {=@responsive_crumbs_on}
-            {=@divider_class}
-            {=@class}
-            first_shown_breadcrumb={Enum.at(@shown_breadcrumbs, 0)}
-            href={Enum.at(@shown_breadcrumbs, 0).link}
-            title={Enum.at(@shown_breadcrumbs, 0).name}
-            icon={Enum.at(@shown_breadcrumbs, 0).icon}
-          />
-
-          <Icon
-            name={@divider || "arrows_right"}
-            class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @divider_class])}
-          />
-        </#slot>
-
-        <#slot
-          {@collapsed_items}
-          context_put={
-            responsive_crumbs_on: @responsive_crumbs_on
-          }
-        >
-          <Dropdown id={"#{@id}-collapsed-breadcrumbs"}>
-            <Dropdown.Options class={["min-w-[8.5rem] p-1", @collapsed_class]}>
-              {#for crumb <- @collapsed_breadcrumbs}
-                <a href={crumb.link}>
-                  <Dropdown.Option class={["w-full p-2", @collapsed_item_class]}>
-                    <Icon
-                      name={crumb.icon}
-                      class="text-moon-24"
-                      :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                    />
-                    {#if crumb.name}
-                      {crumb.name}
-                    {/if}
-                  </Dropdown.Option>
-                </a>
-              {/for}
-            </Dropdown.Options>
-
-            <Dropdown.Trigger>
-              <IconButton
-                icon={@collapsed_icon || "other3_dots_horizontal"}
-                variant={@variant || "ghost"}
-                size={@size || "xs"}
-              />
-            </Dropdown.Trigger>
-          </Dropdown>
-        </#slot>
-
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
           <#slot
-            {@shown_items, crumb: crumb}
+            {@item, crumb: crumb}
             context_put={
               value: index,
               responsive_crumbs_on: @responsive_crumbs_on,
               title: crumb.name,
               href: crumb.link,
+              divider: @divider,
+              divider_class: @divider_class,
               icon: crumb.icon
             }
           >
             <Item
-              :if={index > 0}
               {=@divider}
               {=@responsive_crumbs_on}
               {=@divider_class}
@@ -158,6 +96,46 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
               icon={Map.get(crumb, :icon)}
             />
           </#slot>
+          {#if index == 0}
+            <Icon
+              name={@divider}
+              class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @divider_class])}
+            />
+
+            <#slot
+              {@collapsed_items}
+              context_put={
+                responsive_crumbs_on: @responsive_crumbs_on
+              }
+            >
+              <Dropdown id={"#{@id}-collapsed-breadcrumbs"}>
+                <Dropdown.Options class={["min-w-[8.5rem] p-1", @collapsed_class]}>
+                  {#for crumb <- @collapsed_breadcrumbs}
+                    <a href={crumb.link}>
+                      <Dropdown.Option class={["w-full p-2", @collapsed_item_class]}>
+                        <Icon
+                          name={crumb.icon}
+                          class="text-moon-24"
+                          :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                        />
+                        {#if crumb.name}
+                          {crumb.name}
+                        {/if}
+                      </Dropdown.Option>
+                    </a>
+                  {/for}
+                </Dropdown.Options>
+
+                <Dropdown.Trigger>
+                  <IconButton
+                    icon={@collapsed_icon || "other3_dots_horizontal"}
+                    variant={@variant || "ghost"}
+                    size={@size || "xs"}
+                  />
+                </Dropdown.Trigger>
+              </Dropdown>
+            </#slot>
+          {/if}
         {/for}
       </ol>
     </nav>

@@ -8,7 +8,7 @@ defmodule Moon.Design.Breadcrumb.Item do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
   @doc "Additional Tailwind classes"
-  prop(divider_class, :css_class)
+  prop(divider_class, :css_class, from_context: :divider_class)
   @doc "Title of the crumb"
   prop(title, :string, from_context: :title)
   @doc "Link to the crumb"
@@ -18,12 +18,10 @@ defmodule Moon.Design.Breadcrumb.Item do
   @doc "Index of the item in the list of breadcrumbs"
   prop(value, :integer, from_context: :value)
   @doc "Name of custom icon used as a divider between breadcrumb items"
-  prop(divider, :string)
+  prop(divider, :string, from_context: :divider)
 
   @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, from_context: :responsive_crumbs_on)
-  @doc "If is the first shown breadcrumb"
-  prop(first_shown_breadcrumb, :boolean)
 
   @doc "Default slot"
   slot(default)
@@ -40,13 +38,13 @@ defmodule Moon.Design.Breadcrumb.Item do
         {@divider_slot}
         context_put={
           value: @value != 0,
-          divider: @divider
+          divider: @divider || "arrows_right"
         }
       >
         <Icon
           name={@divider || "arrows_right"}
           class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @divider_class])}
-          :if={@value != 0 && !@first_shown_breadcrumb}
+          :if={@value != 0}
         />
       </#slot>
       <span class={merge([

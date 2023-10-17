@@ -15,7 +15,7 @@ defmodule Moon.Design.Breadcrumb do
   @doc "Number of visible crumbs. Additional ones collapse for a streamlined view"
   prop(collapsible_crumbs, :integer, default: 4)
   @doc "Name of custom icon used as a divider between breadcrumb items"
-  prop(divider, :string)
+  prop(divider, :string, default: "arrows_right")
   @doc "Name of custom icon used as a collapsed icon"
   prop(collapsed_icon, :string)
 
@@ -25,8 +25,6 @@ defmodule Moon.Design.Breadcrumb do
   prop(list_item_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(divider_class, :css_class)
-
-  slot(item)
 
   def render(assigns) do
     ~F"""
@@ -38,25 +36,17 @@ defmodule Moon.Design.Breadcrumb do
           {=@divider}
           {=@collapsed_icon}
           {=@responsive_crumbs_on}
-        />
-      {#else}
-        <#slot
-          {@item}
-          context_put={
-            responsive_crumbs_on: @responsive_crumbs_on,
-            title: "title",
-            href: "link",
-            icon: "icon"
-          }
         >
-          <Extended
-            breadcrumbs={@breadcrumbs}
-            {=@divider}
-            {=@responsive_crumbs_on}
-            class={@list_item_class}
-            {=@divider_class}
-          />
-        </#slot>
+        </Collapsed>
+      {#else}
+        <Extended
+          breadcrumbs={@breadcrumbs}
+          {=@divider}
+          {=@responsive_crumbs_on}
+          class={@list_item_class}
+          {=@divider_class}
+        >
+        </Extended>
       {/if}
     </div>
     """

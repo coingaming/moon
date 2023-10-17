@@ -1,18 +1,13 @@
 defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
   @moduledoc false
 
-  use Moon.StatefulComponent
+  use Moon.StatelessComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Breadcrumb.Collapsed
   alias Moon.Design.Breadcrumb
   alias Moon.Design.Breadcrumb.Crumb
 
-  alias Moon.Icon
-
-  alias Moon.Icon
-
-  data(breadcrumb_items, :list,
+  prop(breadcrumb_items, :list,
     default: [
       %Crumb{
         link: "/components/v2/breadcrumb",
@@ -46,22 +41,17 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
 
   def render(assigns) do
     ~F"""
-    <div>
-      <Collapsed id="headless-collapsed" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
-        <Breadcrumb.FirstItem class="text-piccolo font-medium last:text-chichi">
-          <Icon name="arrows_chevron_right_double" class="rtl:rotate-180 mx-2 text-moon-24 text-piccolo" />
-        </Breadcrumb.FirstItem>
-        <Breadcrumb.ShownItems
-          class="text-piccolo font-medium last:text-chichi"
-          divider_class="text-moon-24 text-piccolo hover:text-piccolo"
-          :let={crumb: crumb}
-          divider="arrows_chevron_right_double"
-        >
-          <Icon name={crumb.icon} :if={Map.has_key?(crumb, :icon) && crumb.icon != ""} />
-          {crumb.name}
-        </Breadcrumb.ShownItems>
-      </Collapsed>
-    </div>
+    <Breadcrumb.Collapsed
+      divider="arrows_chevron_right_double"
+      divider_class="text-moon-24 text-piccolo hover:text-piccolo"
+      id="headless-collapsed"
+      breadcrumbs={@breadcrumb_items}
+      responsive_crumbs_on="md"
+    >
+      <Breadcrumb.Item class="text-piccolo font-medium last:text-chichi" :let={crumb: crumb}>
+        {crumb.name}
+      </Breadcrumb.Item>
+    </Breadcrumb.Collapsed>
     """
   end
 
