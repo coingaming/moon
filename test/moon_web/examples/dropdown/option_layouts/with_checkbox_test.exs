@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithCheckboxTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have checkboxes", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.OptionLayouts")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.OptionLayouts")
 
     assert view
            |> element("#dropdown-options-03 div[aria-haspopup=true]")

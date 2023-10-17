@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Accordion.SizesTest do
   use MoonWeb.ConnCase, async: true
 
   test "should contain Accordion items with all sizes", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AccordionExample.Sizes")
+    {:ok, view, _html} = live(conn, "/example/Design.AccordionExample.Sizes")
 
     assert view
            |> element("#accordion-sizes-xl button[value=0][size=xl]")

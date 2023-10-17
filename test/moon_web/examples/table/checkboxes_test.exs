@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Table.CheckboxesTest do
   use MoonWeb.ConnCase, async: true
 
   test "should check and uncheck", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TableExample.Checkboxes")
+    {:ok, view, _html} = live(conn, "/example/Design.TableExample.Checkboxes")
 
     assert view
            |> element("tr.bg-goku[data-testid=row-0]")

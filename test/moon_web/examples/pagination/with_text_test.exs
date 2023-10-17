@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
   use MoonWeb.ConnCase, async: true
 
   test "should switch active page to last and disable next arrow", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithText")
+    {:ok, view, _html} = live(conn, "/example/Design.PaginationExample.WithText")
 
     assert view
            |> element("#default button[data-testid=prev_button][value=0][disabled]")
@@ -40,7 +40,7 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
   end
 
   test "should switch active pages with arrows", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithText")
+    {:ok, view, _html} = live(conn, "/example/Design.PaginationExample.WithText")
 
     assert view
            |> element("#default button[data-testid=prev_button][value=0][disabled]")

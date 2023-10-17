@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Chip.VariantsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be ghost chip", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/ChipExample.Variants")
+    {:ok, view, _html} = live(conn, "/example/Design.ChipExample.Variants")
 
     assert view
            |> element(

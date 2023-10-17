@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Pagination.WithIconsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should switch active page to last and disable next arrow", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithIcons")
+    {:ok, view, _html} = live(conn, "/example/Design.PaginationExample.WithIcons")
 
     assert view |> element("#with_buttons svg.moon-icon.fill-none.text-moon-24.rtl:rotate-180")
 
@@ -42,7 +42,7 @@ defmodule MoonWeb.Examples.Pagination.WithIconsTest do
   end
 
   test "should switch active pages with arrows", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PaginationExample.WithIcons")
+    {:ok, view, _html} = live(conn, "/example/Design.PaginationExample.WithIcons")
 
     assert view
            |> element("#with_buttons button[data-testid=prev_button][value=0][disabled]")

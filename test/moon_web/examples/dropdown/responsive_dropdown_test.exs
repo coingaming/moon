@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.ResponsiveDropdownTest do
   use MoonWeb.ConnCase, async: true
 
   test "should act as bottomsheet on small screens", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.ResponsiveDropdown")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.ResponsiveDropdown")
 
     assert view
            |> element("#responsive-dropdown div[aria-haspopup=true]")

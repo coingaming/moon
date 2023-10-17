@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Table.SortingTest do
   use MoonWeb.ConnCase, async: true
 
   test "should sort", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/TableExample.Sorting")
+    {:ok, view, _html} = live(conn, "/example/Design.TableExample.Sorting")
 
     assert view
            |> element(

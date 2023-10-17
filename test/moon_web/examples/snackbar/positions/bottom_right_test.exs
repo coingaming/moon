@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Snackbar.Positions.BottomRightTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be top left snackbar", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/SnackbarExample.Positions")
+    {:ok, view, _html} = live(conn, "/example/Design.SnackbarExample.Positions")
 
     assert view
            |> element(

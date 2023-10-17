@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Popover.WithCloseTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Popover", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PopoverExample.WithClose")
+    {:ok, view, _html} = live(conn, "/example/Design.PopoverExample.WithClose")
 
     assert view |> element("#popover_id_8 div[data-testid=-trigger]")
     assert view |> element("#popover_id_8 div.hidden[aria-expanded=false]") |> has_element?()

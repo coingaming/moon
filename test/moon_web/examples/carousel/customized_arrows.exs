@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Carousel.CustomizedArrowsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have reel and customized arrows", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/CarouselExample.CustomizedArrows")
+    {:ok, view, _html} = live(conn, "/example/Design.CarouselExample.CustomizedArrows")
 
     refute view |> element("#customized_arrows button.moon-right-arrow") |> has_element?()
     refute view |> element("#customized_arrows button.moon-left-arrow") |> has_element?()

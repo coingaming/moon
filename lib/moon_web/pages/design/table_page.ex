@@ -5,10 +5,13 @@ defmodule MoonWeb.Pages.Design.TablePage do
 
   alias Moon.Design.Table
   alias MoonWeb.Components.Page
+  alias MoonWeb.Components.ExampleAndCode
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.PropsTable
   alias MoonWeb.Components.ExamplesList
   alias MoonWeb.Examples.Design.TableExample
+
+  # import Phoenix.Component, only: [live_render: 3]
 
   data(breadcrumbs, :any,
     default: [
@@ -49,6 +52,13 @@ defmodule MoonWeb.Pages.Design.TablePage do
         TableExample.Editable,
         TableExample.Responsive
       ]} />
+
+      <ExampleAndCode id="example-table-example-stream" title="Phoenix stream">
+        <:example>
+          <TableExample.Stream id="table-example-stream" container={{:div, class: "w-full"}} />
+        </:example>
+        <:code>{TableExample.Stream.code()}</:code>
+      </ExampleAndCode>
 
       <PropsTable title="Table props" module={Table} />
       <PropsTable title="Table.Column props" module={Table.Column} />

@@ -1,3 +1,60 @@
+## [2.62.2](https://github.com/coingaming/moon/compare/v2.62.1...v2.62.2) (2023-10-13)
+
+
+### Bug Fixes
+
+* Parts.Sidebar theme fix ([#746](https://github.com/coingaming/moon/issues/746)) ([c8737ff](https://github.com/coingaming/moon/commit/c8737ff3c2d68bae928a700aa0e147ae6909c411))
+
+## [2.62.1](https://github.com/coingaming/moon/compare/v2.62.0...v2.62.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* Parts.Sidebar create bottom navigation for small screens ([#744](https://github.com/coingaming/moon/issues/744)) ([0d28428](https://github.com/coingaming/moon/commit/0d2842893a97fd103f8209332e8389be2b1d0300))
+
+# [2.62.0](https://github.com/coingaming/moon/compare/v2.61.0...v2.62.0) (2023-10-12)
+
+
+### Features
+
+* adding SpaceGrotesk font ([#745](https://github.com/coingaming/moon/issues/745)) ([47066c1](https://github.com/coingaming/moon/commit/47066c14ea1056176e49fd312b0ea1b77d10c69f))
+
+# [2.61.0](https://github.com/coingaming/moon/compare/v2.60.1...v2.61.0) (2023-10-09)
+
+
+### Features
+
+* Create Sidebar template [MDS-732] ([#742](https://github.com/coingaming/moon/issues/742)) ([ff58590](https://github.com/coingaming/moon/commit/ff585901375b27615d597cb9e135289ad29c275b))
+
+## [2.60.1](https://github.com/coingaming/moon/compare/v2.60.0...v2.60.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* Table component select stream ([#743](https://github.com/coingaming/moon/issues/743)) ([96666fe](https://github.com/coingaming/moon/commit/96666fe273c1b47b0c0f1ffb830fac0aed3a5ded))
+
+# [2.60.0](https://github.com/coingaming/moon/compare/v2.59.0...v2.60.0) (2023-10-05)
+
+
+### Features
+
+* Chart v0 ([b9c771e](https://github.com/coingaming/moon/commit/b9c771e67c66916f73e8e8237642c361889dd799))
+
+# [2.59.0](https://github.com/coingaming/moon/compare/v2.58.2...v2.59.0) (2023-10-05)
+
+
+### Features
+
+* Phoenix.Stream for Table component ([#739](https://github.com/coingaming/moon/issues/739)) ([e49ea8b](https://github.com/coingaming/moon/commit/e49ea8b55f5bf79b475cabb71fb1ff77a2ff8fbb))
+
+## [2.58.2](https://github.com/coingaming/moon/compare/v2.58.1...v2.58.2) (2023-10-04)
+
+
+### Bug Fixes
+
+* Carousel update event ([#734](https://github.com/coingaming/moon/issues/734)) ([3f53f4f](https://github.com/coingaming/moon/commit/3f53f4f396d8702549c94332cd9f5fb5e58de987))
+* Modal handle_event fix ([#737](https://github.com/coingaming/moon/issues/737)) ([763aff6](https://github.com/coingaming/moon/commit/763aff6774f97c11bcba86b8d42bb07db97bf9cb))
+
 ## [2.58.1](https://github.com/coingaming/moon/compare/v2.58.0...v2.58.1) (2023-10-04)
 
 

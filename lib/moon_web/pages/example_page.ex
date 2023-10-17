@@ -12,8 +12,7 @@ defmodule MoonWeb.Pages.ExamplePage do
   def mount(params, _session, socket) do
     {:ok,
      assign(socket,
-       example_module:
-         String.to_existing_atom("Elixir.MoonWeb.Examples.Design." <> params["example"]),
+       example_module: String.to_existing_atom("Elixir.MoonWeb.Examples." <> params["example"]),
        direction: params["direction"] || "ltr",
        theme_name: params["theme_name"] || "theme-moon-light"
      )}

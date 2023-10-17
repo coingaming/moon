@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithIconsTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.OptionLayouts")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.OptionLayouts")
 
     assert view
            |> element("#dropdown-options-01 div[aria-haspopup=true]")

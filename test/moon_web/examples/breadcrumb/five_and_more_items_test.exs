@@ -4,7 +4,7 @@ defmodule MoonWeb.Examples.Breadcrumb.FiveAndMoreItemsTest do
   # TODO: fix test
 
   test "should open and close Breadcrumb panel", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BreadcrumbExample.FiveAndMoreItems")
+    {:ok, _view, _html} = live(conn, "/example/Design.BreadcrumbExample.FiveAndMoreItems")
 
     # assert view
     #        |> element("#breadcrumb_5 ol.hidden[id=breadcrumb_5_inner_breadcrumb_flyout]")

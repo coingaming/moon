@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Drawer.WithCloseTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close Drawer", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DrawerExample.WithClose")
+    {:ok, view, _html} = live(conn, "/example/Design.DrawerExample.WithClose")
 
     assert view |> element("button[id=with_close]")
     assert view |> element("div.hidden[id=with_close_drawer]") |> has_element?()

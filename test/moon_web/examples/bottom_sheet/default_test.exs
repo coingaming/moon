@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.BottomSheet.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open and close BottomSheet", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/BottomSheetExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.BottomSheetExample.Default")
 
     button_to_open_bottomsheet = view |> element("button[data-size=md]")
     assert button_to_open_bottomsheet |> render() =~ "Default Bottom Sheet"

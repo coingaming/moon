@@ -13,11 +13,14 @@ defmodule Moon.Design.Table do
   @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
   prop(sort, :keyword, default: [])
 
-  @doc "The list of items to be rendered. If item does not have id - than index is used instead"
+  @doc "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   prop(items, :generator, required: true)
 
   @doc "Event that firset on row click"
   prop(row_click, :event)
+
+  @doc "Callback for generating on_click per row. row and row_id will bi given as parameters"
+  prop(row_click_cb, :any)
 
   @doc "Sorting stuff"
   prop(sorting_click, :event)
@@ -63,6 +66,9 @@ defmodule Moon.Design.Table do
 
   @doc "Additional classes for a table tag"
   prop(class, :css_class)
+
+  @doc "Additional attributes for tbody tag"
+  prop(body_attrs, :map, default: %{})
 
   def render(assigns) do
     ~F"""
@@ -112,18 +118,20 @@ defmodule Moon.Design.Table do
           {/for}
         </tr>
       </thead>
-      <tbody>
-        {#for {item, row_index} <- Enum.with_index(@items |> add_index_as |> sort_items(@sort))}
+      <tbody {...@body_attrs}>
+        {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
-              (is_selected(item.id, @selected) && @selected_bg) || @row_bg,
+              (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
               @hover_bg,
-              "#{@even_row_bg}": @is_zebra_style && @selected != "#{item.id}" && rem(row_index, 2) == 1,
+              "#{@even_row_bg}":
+                @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
-            :on-click={@row_click}
-            :values={selected: "#{item.id}"}
+            :on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
+            :values={selected: "#{item.id}", domid: dom_id(row_index, @id)}
             data-testid={"row-#{row_index}"}
+            id={dom_id(row_index, @id)}
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
@@ -164,6 +172,9 @@ defmodule Moon.Design.Table do
     end
   end
 
+  defp is_selected_item(item, selected),
+    do: item[:is_selected] || is_selected(item[:id], selected)
+
   defp is_selected(id, selected) when is_list(selected), do: "#{id}" in selected
   defp is_selected(id, selected), do: "#{id}" == "#{selected}"
 
@@ -182,4 +193,18 @@ defmodule Moon.Design.Table do
       "2xl" -> "text-moon-14 py-5 px-3"
     end
   end
+
+  defp stream_data(%{items: stream = %Phoenix.LiveView.LiveStream{}}) do
+    stream
+  end
+
+  defp stream_data(%{items: items, sort: sort}) when is_list(items) do
+    items
+    |> add_index_as()
+    |> sort_items(sort)
+    |> Enum.with_index(&{&2, &1})
+  end
+
+  defp dom_id(id, _) when is_binary(id), do: id
+  defp dom_id(id, id2), do: "#{id2}-row-#{id}"
 end

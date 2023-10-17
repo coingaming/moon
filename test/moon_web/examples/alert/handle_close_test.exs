@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Alert.HandleCloseTest do
   use MoonWeb.ConnCase, async: true
 
   test "should close and open alert", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AlertExample.HandleClose")
+    {:ok, view, _html} = live(conn, "/example/Design.AlertExample.HandleClose")
 
     assert view |> element("div[role=alert] button[data-size=xs]") |> has_element?()
 

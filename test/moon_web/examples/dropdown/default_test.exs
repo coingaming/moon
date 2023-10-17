@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.DefaultTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.Default")
 
     assert view
            |> element("#dropdown-02 div[aria-haspopup=true]")
@@ -19,7 +19,7 @@ defmodule MoonWeb.Examples.Dropdown.DefaultTest do
   end
 
   test "should select", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.Default")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.Default")
 
     select = view |> element("#dropdown-02 div[aria-haspopup=true]")
     assert select |> render() =~ "Choose name..."

@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithRadioTest do
   use MoonWeb.ConnCase, async: true
 
   test "should open", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.OptionLayouts")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.OptionLayouts")
 
     assert view
            |> element("#dropdown-options-02 div[aria-haspopup=true]")
@@ -19,7 +19,7 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithRadioTest do
   end
 
   test "should have radio and should select", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/DropdownExample.OptionLayouts")
+    {:ok, view, _html} = live(conn, "/example/Design.DropdownExample.OptionLayouts")
 
     assert view |> element("#dropdown-options-02 span.shadow-trunks") |> has_element?()
     refute view |> element("#dropdown-options-02 span.shadow-piccolo") |> has_element?()

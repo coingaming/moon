@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Popover.Positions.TopTest do
   use MoonWeb.ConnCase, async: true
 
   test "should be top popover", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/PopoverExample.Position")
+    {:ok, view, _html} = live(conn, "/example/Design.PopoverExample.Position")
 
     assert view
            |> element("#popover-ex-top div.hidden[aria-expanded=false]")

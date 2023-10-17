@@ -30,11 +30,6 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
     {:noreply, socket}
   end
 
-  def handle_event("set_close", _, socket) do
-    BottomSheet.close("default_bottom_sheet")
-    {:noreply, socket}
-  end
-
   def code() do
     """
     alias Moon.Design.Button
@@ -60,11 +55,6 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Default do
 
     def handle_event("set_open", _, socket) do
       BottomSheet.open("default_bottom_sheet")
-      {:noreply, socket}
-    end
-
-    def handle_event("set_close", _, socket) do
-      BottomSheet.close("default_bottom_sheet")
       {:noreply, socket}
     end
     """

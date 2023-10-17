@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Accordion.OnChangeEventTest do
   use MoonWeb.ConnCase, async: true
 
   test "should change colour", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/AccordionExample.OnChangeEvent")
+    {:ok, view, _html} = live(conn, "/example/Design.AccordionExample.OnChangeEvent")
 
     assert view
            |> element("#on-change-accordion button.bg-goku[value=bg-krillin]")

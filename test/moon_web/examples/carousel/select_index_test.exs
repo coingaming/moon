@@ -2,7 +2,7 @@ defmodule MoonWeb.Examples.Carousel.SelectIndexTest do
   use MoonWeb.ConnCase, async: true
 
   test "should have buttons with index", %{conn: conn} do
-    {:ok, view, _html} = live(conn, "/example/CarouselExample.SelectIndex")
+    {:ok, view, _html} = live(conn, "/example/Design.CarouselExample.SelectIndex")
 
     assert view |> element("div.relative.w-80") |> has_element?()
     refute view |> element("#selected_index button.moon-right-arrow") |> has_element?()
