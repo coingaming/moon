@@ -33,6 +33,20 @@ defmodule MoonWeb.Pages.Parts.SlimSidebarPage do
       <ExamplesList examples={[
         SidebarExample.Slim
       ]} />
+
+      <Moon.Parts.Button>Button</Moon.Parts.Button>
+      <Moon.Parts.Button.Gray>Button</Moon.Parts.Button.Gray>
+      <Moon.Parts.Button.White>Button</Moon.Parts.Button.White>
+      <Moon.Parts.Button.Success>Button</Moon.Parts.Button.Success>
+      <Moon.Parts.Button.Warning>Button</Moon.Parts.Button.Warning>
+      <Moon.Parts.Button.Error>Button</Moon.Parts.Button.Error>
+
+      <Moon.Parts.IconButton icon="generic_settings" />
+      <Moon.Parts.IconButton.Gray icon="generic_settings" />
+      <Moon.Parts.IconButton.White icon="generic_settings" />
+      <Moon.Parts.IconButton.Success icon="generic_settings" />
+      <Moon.Parts.IconButton.Warning icon="generic_settings" />
+      <Moon.Parts.IconButton.Error icon="generic_settings" />
     </Page>
     """
   end
