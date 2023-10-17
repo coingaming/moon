@@ -55,7 +55,6 @@ defmodule Moon.Design.Breadcrumb do
             {=@responsive_crumbs_on}
             class={@list_item_class}
             {=@divider_class}
-            {=@class}
           />
         </#slot>
       {/if}
