@@ -3,8 +3,6 @@ defmodule Moon.Parts.Button.Error do
 
   use Moon.StatelessComponent
 
-  alias Moon.Design.Button
-
   @doc "Visual/Logical variant of button"
   prop(variant, :string,
     values: ["fill", "outline", "ghost"],
@@ -25,6 +23,8 @@ defmodule Moon.Parts.Button.Error do
   prop(animation, :string, values: ~w(progress success error pulse))
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Background tailwind class(es)"
+  prop(bg_class, :css_class, default: "bg-chichi-10 text-chichi")
   @doc "Additional Tailwind classes for hover background"
   prop(hover_bg_class, :css_class)
   @doc "Type attribute for DOM element"
@@ -60,36 +60,5 @@ defmodule Moon.Parts.Button.Error do
   @doc "Left icon slot"
   slot(left_icon_slot)
 
-  def render(assigns) do
-    ~F"""
-    <Button
-      {=@as}
-      {=@variant}
-      {=@size}
-      {=@full_width}
-      {=@disabled}
-      {=@animation}
-      {=@type}
-      {=@form}
-      {=@hover_bg_class}
-      {=@left_icon}
-      {=@right_icon}
-      {=@href}
-      {=@id}
-      {=@on_click}
-      {=@testid}
-      {=@aria_label}
-      {=@values}
-      {=@value}
-      {=@target}
-      {=@rel}
-      {=@attrs}
-      class={"rounded-moon-s-xx rounded-full bg-piccolcox bg-chichi-10 text-chichi", @class}
-    >
-      <#slot {@left_icon_slot} />
-      <#slot />
-      <#slot {@right_icon_slot} />
-    </Button>
-    """
-  end
+  defdelegate render(assigns), to: Moon.Parts.Button
 end

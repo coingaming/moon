@@ -25,6 +25,8 @@ defmodule Moon.Parts.Button do
   prop(animation, :string, values: ~w(progress success error pulse))
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Background tailwind class(es)"
+  prop(bg_class, :css_class, default: "bg-popo")
   @doc "Additional Tailwind classes for hover background"
   prop(hover_bg_class, :css_class)
   @doc "Type attribute for DOM element"
@@ -84,7 +86,7 @@ defmodule Moon.Parts.Button do
       {=@target}
       {=@rel}
       {=@attrs}
-      class={"rounded-moon-s-xx rounded-full bg-popo", @class}
+      class={"rounded-moon-s-xx rounded-full", @bg_class, @class}
     >
       <#slot {@left_icon_slot} />
       <#slot />
