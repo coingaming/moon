@@ -7,6 +7,11 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
   alias Moon.Design.Breadcrumb
   alias Moon.Design.Breadcrumb.Crumb
 
+  alias Moon.Icon
+
+  alias Moon.Design.Button.IconButton
+  alias Moon.Design.Dropdown
+
   prop(breadcrumb_items, :list,
     default: [
       %Crumb{
@@ -39,6 +44,11 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
     ]
   )
 
+  defp get_collapsed_breadcrumbs(breadcrumb_items) do
+    count = Enum.count(breadcrumb_items)
+    Enum.slice(breadcrumb_items, 1..(count - 3))
+  end
+
   def render(assigns) do
     ~F"""
     <Breadcrumb.Collapsed
@@ -48,9 +58,43 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
       breadcrumbs={@breadcrumb_items}
       responsive_crumbs_on="md"
     >
-      <Breadcrumb.Item class="text-piccolo font-medium last:text-chichi" :let={crumb: crumb}>
+      <Breadcrumb.Item
+        class="text-chichi text-moon-32 hover:text-krillin last:text-roshi"
+        divider_class="text-moon-24 text-piccolo hover:text-piccolo"
+        :let={crumb: crumb}
+        divider="controls_chevron_right"
+      >
+        <Breadcrumb.Item.Divider
+          divider="arrows_chevron_right_double"
+          class="text-piccolo text-moon-24"
+        />
+        <Icon name={crumb.icon} :if={Map.has_key?(crumb, :icon) && crumb.icon != ""} />
         {crumb.name}
       </Breadcrumb.Item>
+      <Breadcrumb.CollapsedItems id="headless-collapsed">
+        <Dropdown id="headless-collapsed-breadcrumbs">
+          <Dropdown.Options class="min-w-[8.5rem] p-1">
+            {#for crumb <- get_collapsed_breadcrumbs(@breadcrumb_items)}
+              <a href={crumb.link}>
+                <Dropdown.Option class="w-full p-2">
+                  <Icon
+                    name={crumb.icon}
+                    class="text-moon-24"
+                    :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                  />
+                  {#if crumb.name}
+                    {crumb.name}
+                  {/if}
+                </Dropdown.Option>
+              </a>
+            {/for}
+          </Dropdown.Options>
+
+          <Dropdown.Trigger>
+            <IconButton icon="other3_dots_horizontal" variant="outline" size="sm" />
+          </Dropdown.Trigger>
+        </Dropdown>
+      </Breadcrumb.CollapsedItems>
     </Breadcrumb.Collapsed>
     """
   end

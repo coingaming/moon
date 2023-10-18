@@ -4,7 +4,6 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Breadcrumb.Extended
   alias Moon.Design.Breadcrumb
   alias Moon.Design.Breadcrumb.Crumb
 
@@ -35,7 +34,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
   def render(assigns) do
     ~F"""
     <div>
-      <Extended breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
+      <Breadcrumb.Extended breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
         <Breadcrumb.Item
           class="text-chichi text-moon-32 hover:text-krillin last:text-roshi"
           divider_class="text-moon-24 text-piccolo hover:text-piccolo"
@@ -49,7 +48,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
           <Icon name={crumb.icon} :if={Map.has_key?(crumb, :icon) && crumb.icon != ""} />
           {crumb.name}
         </Breadcrumb.Item>
-      </Extended>
+      </Breadcrumb.Extended>
     </div>
     """
   end

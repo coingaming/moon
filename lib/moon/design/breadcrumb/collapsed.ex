@@ -4,11 +4,9 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   use Moon.StatefulComponent
 
   alias Moon.Icon
-  alias Moon.Design.Button.IconButton
 
   alias Moon.Design.Breadcrumb.Item
-
-  alias Moon.Design.Dropdown
+  alias Moon.Design.Breadcrumb.CollapsedItems
 
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
@@ -81,8 +79,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
               title: crumb.name,
               href: crumb.link,
               divider: @divider,
-              divider_class: @divider_class,
-              icon: crumb.icon
+              divider_class: @divider_class
             }
           >
             <Item
@@ -105,35 +102,10 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
             <#slot
               {@collapsed_items}
               context_put={
-                responsive_crumbs_on: @responsive_crumbs_on
+                collapsed_breadcrumbs: @collapsed_breadcrumbs
               }
             >
-              <Dropdown id={"#{@id}-collapsed-breadcrumbs"}>
-                <Dropdown.Options class={["min-w-[8.5rem] p-1", @collapsed_class]}>
-                  {#for crumb <- @collapsed_breadcrumbs}
-                    <a href={crumb.link}>
-                      <Dropdown.Option class={["w-full p-2", @collapsed_item_class]}>
-                        <Icon
-                          name={crumb.icon}
-                          class="text-moon-24"
-                          :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                        />
-                        {#if crumb.name}
-                          {crumb.name}
-                        {/if}
-                      </Dropdown.Option>
-                    </a>
-                  {/for}
-                </Dropdown.Options>
-
-                <Dropdown.Trigger>
-                  <IconButton
-                    icon={@collapsed_icon || "other3_dots_horizontal"}
-                    variant={@variant || "ghost"}
-                    size={@size || "xs"}
-                  />
-                </Dropdown.Trigger>
-              </Dropdown>
+              <CollapsedItems {=@id} {=@collapsed_breadcrumbs} {=@collapsed_icon} />
             </#slot>
           {/if}
         {/for}

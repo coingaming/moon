@@ -23,7 +23,7 @@ defmodule MoonWeb.Pages.MainPage do
         </Tag>
         <div class="flex flex-col gap-16">
           <div class="relative z-30 flex flex-col items-start gap-6">
-            <h1 class="text-moon-64 font-semibold">Moon design system.</h1>
+            <h1 class="text-moon-64 font-semibold py-9">Moon design system.</h1>
             <p class="text-moon-24 max-w-screen-sm">
               Moon is Yolo Group product design system that helps us maintain the
               integrity of their user experience and optimize design and development
