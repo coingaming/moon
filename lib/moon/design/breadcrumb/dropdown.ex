@@ -1,7 +1,7 @@
-defmodule Moon.Design.Breadcrumb.CollapsedItems do
+defmodule Moon.Design.Breadcrumb.Dropdown do
   @moduledoc false
 
-  use Moon.StatelessComponent, slot: "collapsed_items"
+  use Moon.StatelessComponent, slot: "dropdown"
 
   alias Moon.Design.Dropdown
   alias Moon.Icon
@@ -14,15 +14,9 @@ defmodule Moon.Design.Breadcrumb.CollapsedItems do
   @doc "Data-testid attribute for DOM element"
   prop(class, :css_class)
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
-  prop(collapsed_breadcrumbs, :list, from_context: :collapsed_breadcrumbs)
+  prop(items, :list, from_context: :items)
   @doc "Name of custom icon used as a collapsed icon"
-  prop(collapsed_icon, :string)
-  @doc "Title of the crumb"
-  prop(title, :string, from_context: :title)
-  @doc "Link to the crumb"
-  prop(href, :string, from_context: :href)
-  @doc "Icon of the crumb"
-  prop(icon, :string, from_context: :icon)
+  prop(icon, :string)
 
   @doc "Default slot"
   slot(default)
@@ -32,7 +26,7 @@ defmodule Moon.Design.Breadcrumb.CollapsedItems do
     <#slot>
       <Dropdown id={"#{@id}-collapsed-breadcrumbs"} {=@testid}>
         <Dropdown.Options class="min-w-[8.5rem] p-1">
-          {#for crumb <- @collapsed_breadcrumbs || []}
+          {#for crumb <- @items || []}
             <a href={crumb.link}>
               <Dropdown.Option class="w-full p-2">
                 <Icon
@@ -49,7 +43,7 @@ defmodule Moon.Design.Breadcrumb.CollapsedItems do
         </Dropdown.Options>
 
         <Dropdown.Trigger>
-          <IconButton icon={@collapsed_icon || "other3_dots_horizontal"} variant="ghost" size="xs" />
+          <IconButton icon={@icon || "other3_dots_horizontal"} variant="ghost" size="xs" />
         </Dropdown.Trigger>
       </Dropdown>
     </#slot>

@@ -74,7 +74,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
             {crumb.name}
           {/if}
         </Breadcrumb.Item>
-        <Breadcrumb.CollapsedItems id="headless-collapsed">
+        <Breadcrumb.Dropdown id="headless-collapsed">
           <Dropdown id="headless-collapsed-breadcrumbs">
             <Dropdown.Options class="min-w-[10rem] p-2 gap-1">
               {#for crumb <- get_collapsed_breadcrumbs(@breadcrumb_items)}
@@ -97,7 +97,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
               <IconButton icon="other3_dots_horizontal" variant="ghost" class="text-bulma" size="sm" />
             </Dropdown.Trigger>
           </Dropdown>
-        </Breadcrumb.CollapsedItems>
+        </Breadcrumb.Dropdown>
       </Breadcrumb.Collapsed>
     </div>
     """
@@ -175,7 +175,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
               {crumb.name}
             {/if}
           </Breadcrumb.Item>
-          <Breadcrumb.CollapsedItems id="headless-collapsed">
+          <Breadcrumb.Dropdown id="headless-collapsed">
             <Dropdown id="headless-collapsed-breadcrumbs">
               <Dropdown.Options class="min-w-[10rem] p-2 gap-1">
                 {#for crumb <- get_collapsed_breadcrumbs(@breadcrumb_items)}
@@ -198,7 +198,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
                 <IconButton icon="other3_dots_horizontal" variant="ghost" class="text-bulma" size="sm" />
               </Dropdown.Trigger>
             </Dropdown>
-          </Breadcrumb.CollapsedItems>
+          </Breadcrumb.Dropdown>
         </Breadcrumb.Collapsed>
       </div>
       /\"""

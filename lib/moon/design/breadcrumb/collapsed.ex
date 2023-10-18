@@ -6,7 +6,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   alias Moon.Icon
 
   alias Moon.Design.Breadcrumb.Item
-  alias Moon.Design.Breadcrumb.CollapsedItems
+  alias Moon.Design.Breadcrumb.Dropdown
 
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
@@ -15,7 +15,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string, default: "arrows_right")
   @doc "Name of custom icon used as a collapsed icon"
-  prop(collapsed_icon, :string)
+  prop(icon, :string)
 
   @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
@@ -27,12 +27,12 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   @doc "List of shown crumbs - Moon.Design.Breadcrumb.Crumb"
   data(shown_breadcrumbs, :list, default: [])
   @doc "List of collapsed crumbs - Moon.Design.Breadcrumb.Crumb"
-  data(collapsed_breadcrumbs, :list, default: [])
+  data(items, :list, default: [])
 
   @doc "Items slot"
   slot(item)
-  @doc "Collapsed items slot, e.g. dropdown"
-  slot(collapsed_items)
+  @doc "Dropdown slot for collapsed items"
+  slot(dropdown)
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)
@@ -40,7 +40,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
     tail_breadcrumbs = Enum.take(assigns.breadcrumbs, -2)
 
     shown_breadcrumbs = Enum.concat([first_crumb], tail_breadcrumbs)
-    collapsed_breadcrumbs = Enum.slice(assigns.breadcrumbs, 1..(count - 3))
+    items = Enum.slice(assigns.breadcrumbs, 1..(count - 3))
 
     socket =
       socket
@@ -50,8 +50,8 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
         shown_breadcrumbs
       )
       |> assign(
-        :collapsed_breadcrumbs,
-        collapsed_breadcrumbs
+        :items,
+        items
       )
 
     {:ok, socket}
@@ -91,12 +91,12 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
             />
 
             <#slot
-              {@collapsed_items}
+              {@dropdown}
               context_put={
-                collapsed_breadcrumbs: @collapsed_breadcrumbs
+                items: @items
               }
             >
-              <CollapsedItems {=@id} {=@collapsed_breadcrumbs} {=@collapsed_icon} />
+              <Dropdown {=@id} {=@items} {=@icon} />
             </#slot>
           {/if}
         {/for}
