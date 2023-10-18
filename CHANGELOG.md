@@ -1,3 +1,10 @@
+# [2.64.0](https://github.com/coingaming/moon/compare/v2.63.0...v2.64.0) (2023-10-18)
+
+
+### Features
+
+* headless Breadcrumb [MDS-715] ([#736](https://github.com/coingaming/moon/issues/736)) ([14a1e1a](https://github.com/coingaming/moon/commit/14a1e1a59e63de5535ead58b4d9189a967369117))
+
 # [2.63.0](https://github.com/coingaming/moon/compare/v2.62.2...v2.63.0) (2023-10-17)
 
 
