@@ -10,7 +10,7 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
   prop(breadcrumbs, :list)
 
   data(shown_breadcrumbs, :list, default: [])
-  data(collapsed_breadcrumbs, :list, default: [])
+  data(items, :list, default: [])
 
   def update(assigns, socket) do
     count = Enum.count(assigns.breadcrumbs)
@@ -18,7 +18,7 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
     tail_breadcrumbs = Enum.take(assigns.breadcrumbs, -2)
 
     shown_breadcrumbs = Enum.concat([first_crumb], tail_breadcrumbs)
-    collapsed_breadcrumbs = Enum.slice(assigns.breadcrumbs, 1..(count - 2))
+    items = Enum.slice(assigns.breadcrumbs, 1..(count - 2))
 
     socket =
       socket
@@ -28,8 +28,8 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
         shown_breadcrumbs
       )
       |> assign(
-        :collapsed_breadcrumbs,
-        collapsed_breadcrumbs
+        :items,
+        items
       )
 
     {:ok, socket}
@@ -59,7 +59,7 @@ defmodule Moon.Components.Breadcrumb.Collapsed do
             id={"#{@id}_flyout"}
             class="absolute hidden left-0 top-full bg-goku p-1 mt-2 flex-col gap-2 shadow-moon-xl rounded-moon-s-xs z-[10000] min-w-[12rem]"
           >
-            {#for crumb <- @collapsed_breadcrumbs}
+            {#for crumb <- @items}
               <li class="flex flex-col items-stretch text-bulma text-moon-14 brcrumb-li rounded-sm cursor-pointer hover:bg-gohan">
                 <a href={crumb.link}>{crumb.name}</a>
               </li>

@@ -3,80 +3,54 @@ defmodule Moon.Design.Breadcrumb.Extended do
 
   use Moon.StatelessComponent
 
-  alias Moon.Icon
+  alias Moon.Design.Breadcrumb.Item
 
+  @doc "Id of the component"
+  prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
+  @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
+  @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string)
+
+  @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
+  @doc "Additional Tailwind classes"
+  prop(divider_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(class, :css_class)
+  @doc "Item slot"
+  slot(item)
 
   def render(assigns) do
     ~F"""
-    <nav aria-label="Breadcrumb">
-      <ol class="flex flex-wrap gap-2 items-center text-moon-14">
+    <nav aria-label="Breadcrumb" {=@id} data-testid={@testid}>
+      <ol class="flex flex-wrap items-center">
         {#for {crumb, index} <- Enum.with_index(@breadcrumbs)}
-          <li class="flex items-center gap-2 text-trunks">
-            <Icon name={@divider || "arrows_right"} class="rtl:rotate-180" :if={index != 0} />
-            <span class={merge([
-              "transition-colors duration-200 hover:text-bulma",
-              "text-bulma font-medium": index == Enum.count(@breadcrumbs) - 1,
-              hidden: @responsive_crumbs_on,
-              "#{breadcrumb_classes(@responsive_crumbs_on)}": @responsive_crumbs_on
-            ])}>
-              <a href={crumb.link} aria-current={index == Enum.count(@breadcrumbs) - 1 && "page"}>
-                <Icon
-                  name={crumb.icon}
-                  class="text-moon-24"
-                  :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                />
-                {#if crumb.name}
-                  {crumb.name}
-                {/if}
-              </a>
-            </span>
-            <span
-              :if={@responsive_crumbs_on}
-              class={merge([
-                "inline",
-                ellipsed_breadcrumb_classes(@responsive_crumbs_on)
-              ])}
-            >
-              <a href={crumb.link} aria-current={index == Enum.count(@breadcrumbs) - 1 && "page"}>
-                <Icon
-                  name={crumb.icon}
-                  class="text-moon-24"
-                  :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-                />
-                {#if crumb.name}
-                  {name_with_ellips(crumb)}
-                {/if}
-              </a>
-            </span>
-          </li>
+          <#slot
+            {@item, crumb: crumb, index: index}
+            context_put={
+              value: index,
+              responsive_crumbs_on: @responsive_crumbs_on,
+              title: crumb.name,
+              href: crumb.link
+            }
+          >
+            <Item
+              {=@divider}
+              {=@responsive_crumbs_on}
+              {=@divider_class}
+              {=@class}
+              value={index}
+              href={crumb.link}
+              title={crumb.name}
+              icon={Map.get(crumb, :icon)}
+            />
+          </#slot>
         {/for}
       </ol>
     </nav>
     """
-  end
-
-  def name_with_ellips(crumb) do
-    [first_word | _] = String.split(crumb.name)
-
-    if String.split(crumb.name) |> tl() != [] do
-      first_word <> "..."
-    else
-      first_word
-    end
-  end
-
-  defp breadcrumb_classes(nil), do: []
-
-  defp breadcrumb_classes(size) do
-    ~w(inline) |> Enum.map(&"#{size}:#{&1}")
-  end
-
-  defp ellipsed_breadcrumb_classes(nil), do: []
-
-  defp ellipsed_breadcrumb_classes(size) do
-    ~w(hidden) |> Enum.map(&"#{size}:#{&1}")
   end
 end
