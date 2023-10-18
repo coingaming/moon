@@ -54,6 +54,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       </Tabs>
 
       <ExamplesList examples={[
+        TabsExample.Wizzard,
         TabsExample.Default,
         TabsExample.WithPills,
         TabsExample.WithSegments,
