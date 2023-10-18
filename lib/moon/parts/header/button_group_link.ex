@@ -3,58 +3,57 @@ defmodule Moon.Parts.Header.ButtonGroupLink do
 
   use Moon.StatelessComponent
 
-  alias Moon.Design.MenuItem
-  alias Moon.Icon
+  alias Moon.Design.Button.IconButton
   alias Moon.Design.Tooltip
-
-  prop(active, :boolean, default: false)
-  prop(tooltip_text, :string, default: "")
-  prop(is_collapsed, :boolean, default: false)
 
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Rendered HTML element"
+  prop(as, :string, values!: ~w(a button), default: "button")
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
   @doc "Additional Tailwind classes"
-  prop(icon_class, :css_class)
+  prop(trigger_class, :css_class)
+  @doc "Additional Tailwind classes"
+  prop(button_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(tooltip_class, :css_class)
+  @doc "Tooltip text"
+  prop(tooltip_text, :string, default: "")
   @doc "Route to redirect to"
   prop(route, :any)
   @doc "Icon name"
-  prop(icon_name, :any)
-  @doc "Active page"
-  data(active_page, :string, from_context: :active_page)
+  prop(icon, :string)
+  @doc "On click event"
+  prop(on_click, :event)
+  @doc "Href"
+  prop(href, :string)
+  @doc "Disabled"
+  prop(disabled, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
-    <Tooltip {=@id} {=@testid} class="self-center">
-      <Tooltip.Trigger class="rounded-moon-s-xx rounded-full h-12 w-12">
-        <MenuItem
-          as="a"
+    <Tooltip {=@id} {=@testid} class={merge(["self-center", @class])}>
+      <Tooltip.Trigger class={merge(["rounded-moon-s-xx rounded-full h-12 w-12", @trigger_class])}>
+        <IconButton
+          {=@as}
           class={merge([
-            [
-              "bg-goku text-bulma justify-start rounded-moon-i-xx border border-beerus rounded-full p-3 gap-3 h-12 w-12",
-              "bg-bulma": @active_page == @route
-            ],
-            @class
+            "bg-goku text-bulma rounded-moon-s-xx border border-beerus rounded-full h-12 w-12",
+            @button_class
           ])}
-          attrs={
-            "data-phx-link": "redirect",
-            "data-phx-link-state": "push"
-          }
-          is_active={@active_page == @route}
-          href={@route}
+          {=@on_click}
+          {=@href}
+          {=@icon}
+          {=@disabled}
         >
-          <Icon name={@icon_name} class={merge(["text-moon-24", @icon_class])} />
-        </MenuItem>
+        </IconButton>
       </Tooltip.Trigger>
       <Tooltip.Content
         position="bottom"
         class={merge(["bg-bulma text-goku z-[19999]", @tooltip_class])}
-      >{@tooltip_text}<Tooltip.Arrow class="mt-2" />
+      >{@tooltip_text}<Tooltip.Arrow class="mt-1" />
       </Tooltip.Content>
     </Tooltip>
     """
