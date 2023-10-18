@@ -5,6 +5,10 @@ defmodule Moon.Design.Breadcrumb.Item do
 
   alias Moon.Icon
 
+  @doc "Id of the component"
+  prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
   @doc "Additional Tailwind classes"
@@ -30,10 +34,14 @@ defmodule Moon.Design.Breadcrumb.Item do
 
   def render(assigns) do
     ~F"""
-    <li class={merge([
-      "flex items-center text-trunks text-moon-14 last:text-bulma last:font-medium",
-      @class
-    ])}>
+    <li
+      class={merge([
+        "flex items-center text-trunks text-moon-14 last:text-bulma last:font-medium",
+        @class
+      ])}
+      {=@id}
+      data-testid={@testid}
+    >
       <#slot
         {@divider_slot}
         context_put={
@@ -66,7 +74,9 @@ defmodule Moon.Design.Breadcrumb.Item do
       >
         <a href={@href}>
           <Icon name={@icon} class="text-moon-24" :if={@icon && @icon != ""} />
-          {name_with_ellips(@title)}
+          {#if @title && @title != ""}
+            {name_with_ellips(@title)}
+          {/if}
         </a>
       </span>
     </li>

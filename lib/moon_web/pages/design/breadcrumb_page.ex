@@ -44,11 +44,15 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
         BreadcrumbExample.OneItem,
         BreadcrumbExample.IconAsStartingItemAndCustomDivider,
         BreadcrumbExample.ResponsiveItems,
-        BreadcrumbExample.HeadlessCollapsed,
-        BreadcrumbExample.HeadlessExtended
+        BreadcrumbExample.HeadlessExtended,
+        BreadcrumbExample.HeadlessCollapsed
       ]} />
 
       <PropsTable module={Moon.Design.Breadcrumb} />
+      <PropsTable module={Moon.Design.Breadcrumb.Extended} />
+      <PropsTable module={Moon.Design.Breadcrumb.Collapsed} />
+      <PropsTable module={Moon.Design.Breadcrumb.Item} />
+      <PropsTable module={Moon.Design.Breadcrumb.CollapsedItems} />
     </Page>
     """
   end

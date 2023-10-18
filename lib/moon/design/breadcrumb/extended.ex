@@ -5,6 +5,10 @@ defmodule Moon.Design.Breadcrumb.Extended do
 
   alias Moon.Design.Breadcrumb.Item
 
+  @doc "Id of the component"
+  prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
   @doc "Name of custom icon used as a divider between breadcrumb items"
@@ -21,7 +25,7 @@ defmodule Moon.Design.Breadcrumb.Extended do
 
   def render(assigns) do
     ~F"""
-    <nav aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb" {=@id} data-testid={@testid}>
       <ol class="flex flex-wrap items-center">
         {#for {crumb, index} <- Enum.with_index(@breadcrumbs)}
           <#slot

@@ -10,19 +10,13 @@ defmodule Moon.Design.Breadcrumb.CollapsedItems do
   @doc "Id of the component"
   prop(id, :string, required: true)
   @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
+  @doc "Data-testid attribute for DOM element"
   prop(class, :css_class)
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(collapsed_breadcrumbs, :list, from_context: :collapsed_breadcrumbs)
-  @doc "Additional Tailwind classes"
-  prop(collapsed_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(collapsed_item_class, :css_class)
-  @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
+  @doc "Name of custom icon used as a collapsed icon"
   prop(collapsed_icon, :string)
-  @doc "Variant of collapsed icon button"
-  prop(variant, :string)
-  @doc "Size of collapsed icon button"
-  prop(size, :string)
   @doc "Title of the crumb"
   prop(title, :string, from_context: :title)
   @doc "Link to the crumb"
@@ -35,28 +29,30 @@ defmodule Moon.Design.Breadcrumb.CollapsedItems do
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={"#{@id}-collapsed-breadcrumbs"}>
-      <Dropdown.Options class="min-w-[8.5rem] p-1">
-        {#for crumb <- @collapsed_breadcrumbs || []}
-          <a href={crumb.link}>
-            <Dropdown.Option class="w-full p-2">
-              <Icon
-                name={crumb.icon}
-                class="text-moon-24"
-                :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
-              />
-              {#if crumb.name}
-                {crumb.name}
-              {/if}
-            </Dropdown.Option>
-          </a>
-        {/for}
-      </Dropdown.Options>
+    <#slot>
+      <Dropdown id={"#{@id}-collapsed-breadcrumbs"} {=@testid}>
+        <Dropdown.Options class="min-w-[8.5rem] p-1">
+          {#for crumb <- @collapsed_breadcrumbs || []}
+            <a href={crumb.link}>
+              <Dropdown.Option class="w-full p-2">
+                <Icon
+                  name={crumb.icon}
+                  class="text-moon-24"
+                  :if={Map.has_key?(crumb, :icon) && crumb.icon != ""}
+                />
+                {#if crumb.name}
+                  {crumb.name}
+                {/if}
+              </Dropdown.Option>
+            </a>
+          {/for}
+        </Dropdown.Options>
 
-      <Dropdown.Trigger>
-        <IconButton icon={@collapsed_icon || "other3_dots_horizontal"} variant="ghost" size="xs" />
-      </Dropdown.Trigger>
-    </Dropdown>
+        <Dropdown.Trigger>
+          <IconButton icon={@collapsed_icon || "other3_dots_horizontal"} variant="ghost" size="xs" />
+        </Dropdown.Trigger>
+      </Dropdown>
+    </#slot>
     """
   end
 end

@@ -38,6 +38,8 @@ defmodule Moon.Design.Breadcrumb do
           {=@divider}
           {=@collapsed_icon}
           {=@responsive_crumbs_on}
+          class={@list_item_class}
+          {=@divider_class}
         >
           <:item :let={crumb: crumb, index: index}>
             <#slot
@@ -82,8 +84,7 @@ defmodule Moon.Design.Breadcrumb do
                 title: crumb.name,
                 href: crumb.link,
                 divider: @divider,
-                divider_class: @divider_class,
-                icon: crumb.icon
+                divider_class: @divider_class
               }
             >
               <Breadcrumb.Item

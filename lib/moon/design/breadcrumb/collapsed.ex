@@ -8,6 +8,8 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   alias Moon.Design.Breadcrumb.Item
   alias Moon.Design.Breadcrumb.CollapsedItems
 
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(breadcrumbs, :list)
   @doc "Name of custom icon used as a divider between breadcrumb items"
@@ -21,18 +23,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   prop(divider_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(collapsed_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(collapsed_item_class, :css_class)
-  @doc "Visual/Logical variant of collapsed icon button"
-  prop(variant, :string,
-    values: ["fill", "outline", "ghost"],
-    default: "ghost"
-  )
 
-  @doc "Size of collapsed icon button"
-  prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "xs")
   @doc "List of shown crumbs - Moon.Design.Breadcrumb.Crumb"
   data(shown_breadcrumbs, :list, default: [])
   @doc "List of collapsed crumbs - Moon.Design.Breadcrumb.Crumb"
@@ -68,7 +59,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
 
   def render(assigns) do
     ~F"""
-    <nav aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb" data-testid={@testid}>
       <ol class="flex flex-wrap items-center">
         {#for {crumb, index} <- Enum.with_index(@shown_breadcrumbs)}
           <#slot
