@@ -7,7 +7,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Short do
   alias Moon.Parts.Sidebar
   alias Moon.Design.Button
 
-  prop(active_page, :any)
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
 
   def render(assigns) do

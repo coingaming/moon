@@ -1,3 +1,10 @@
+# [2.63.0](https://github.com/coingaming/moon/compare/v2.62.2...v2.63.0) (2023-10-17)
+
+
+### Features
+
+* Add Avatar and Buttons to Parts [MDS-749] ([#748](https://github.com/coingaming/moon/issues/748)) ([4293854](https://github.com/coingaming/moon/commit/42938547951ac646d609fe9e8c30b728b506fbc6))
+
 ## [2.62.2](https://github.com/coingaming/moon/compare/v2.62.1...v2.62.2) (2023-10-13)
 
 
