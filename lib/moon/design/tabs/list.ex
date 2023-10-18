@@ -38,7 +38,7 @@ defmodule Moon.Design.Tabs.List do
             {tab}
             context_put={
               is_selected: tabindex == @selected,
-              is_last: tabindex == make_list(@tabs) |> length(),
+              is_last: tabindex + 1 == make_list(@tabs) |> length(),
               size: @size,
               tabindex: tabindex
             }
@@ -50,7 +50,7 @@ defmodule Moon.Design.Tabs.List do
           module={@tab_module}
           is_selected={tabindex == @selected}
           {=@size}
-          is_last={tabindex == make_list(@tabs) |> length()}
+          is_last={tabindex + 1 == @tab_titles |> length()}
           {=tabindex}
           {=@on_change}
         >{title}</Component>
