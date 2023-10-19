@@ -1,3 +1,10 @@
+## [2.65.1](https://github.com/coingaming/moon/compare/v2.65.0...v2.65.1) (2023-10-19)
+
+
+### Bug Fixes
+
+* Add header example to examples folder ([#751](https://github.com/coingaming/moon/issues/751)) ([5f594da](https://github.com/coingaming/moon/commit/5f594da1deec2767afcdd9f37c405c0989582f75))
+
 # [2.65.0](https://github.com/coingaming/moon/compare/v2.64.0...v2.65.0) (2023-10-19)
 
 
