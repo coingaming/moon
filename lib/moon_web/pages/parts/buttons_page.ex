@@ -15,7 +15,7 @@ defmodule MoonWeb.Pages.Parts.ButtonsPage do
         name: "Templates"
       },
       %{
-        to: "/templates/button-examples",
+        to: "/button-examples",
         name: "Buttons"
       }
     ]
