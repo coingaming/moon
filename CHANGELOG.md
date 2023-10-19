@@ -1,3 +1,10 @@
+# [2.65.0](https://github.com/coingaming/moon/compare/v2.64.0...v2.65.0) (2023-10-19)
+
+
+### Features
+
+* Create Header template [MDS-757] ([#750](https://github.com/coingaming/moon/issues/750)) ([1e12627](https://github.com/coingaming/moon/commit/1e12627bfe214439acb577f4ce3c68c80bff8e9c))
+
 # [2.64.0](https://github.com/coingaming/moon/compare/v2.63.0...v2.64.0) (2023-10-18)
 
 
