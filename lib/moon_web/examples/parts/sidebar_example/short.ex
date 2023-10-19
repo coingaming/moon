@@ -13,9 +13,8 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Short do
     ~F"""
     <div>
       <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Generic Sidebar on small screens</Button>
-      <Sidebar
-        id="generic_sidebar"
-        sections={[
+      <Sidebar id="generic_sidebar">
+        <Sidebar.Generic sections={[
           %{
             title: "Section 1 • Generic",
             links: Enum.filter(@menu_items, &(&1[:icon] != nil))
@@ -24,9 +23,9 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Short do
             title: "Section 2 • Components",
             links: Enum.filter(@menu_items, &(&1[:icon] == nil))
           }
-        ]}
-      >
-        <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
+        ]}>
+          <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
+        </Sidebar.Generic>
       </Sidebar>
     </div>
     """

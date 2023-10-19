@@ -4,7 +4,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Parts.Sidebar.Avatar
   alias Moon.Parts.Sidebar
 
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
@@ -17,13 +16,15 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
         href="#"
         on_click="open_sidebar"
       />
-      <Sidebar.Slim id="slim_sidebar" links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
-        <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
-        <:bottom>
-          <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
-          <Avatar name="ET" />
-        </:bottom>
-      </Sidebar.Slim>
+      <Sidebar id="slim_sidebar">
+        <Sidebar.Slim links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
+          <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
+          <:bottom>
+            <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
+            <Sidebar.Avatar name="ET" />
+          </:bottom>
+        </Sidebar.Slim>
+      </Sidebar>
     </div>
     """
   end

@@ -3,7 +3,6 @@ defmodule Moon.Parts.Sidebar.Slim do
 
   use Moon.StatelessComponent
 
-  alias Moon.Design.Drawer
   alias Moon.Parts.Sidebar
 
   @doc "Id attribute for DOM element"
@@ -37,42 +36,34 @@ defmodule Moon.Parts.Sidebar.Slim do
 
   def render(assigns) do
     ~F"""
-    <Drawer
+    <nav
       {=@id}
-      lg_persists
-      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark", @class])}
-      {=@testid}
+      data-testid={@testid}
+      aria-label="Sidebar"
+      class={merge([
+        "w-[4.5rem]",
+        "h-screen pt-6 pb-5 flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
+        "flex flex-col h-full gap-4",
+        @class
+      ])}
     >
-      <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
-      <Drawer.Panel position="start" class={merge(["bg-goku shadow-none", "w-[4.5rem]", @panel_class])}>
-        <nav
-          aria-label="Sidebar"
-          class={merge([
-            "h-screen pt-6 pb-5 flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
-            @menu_class
-          ])}
-        >
-          <div class={merge(["flex flex-col h-full gap-4", @slim_nav_class])} {=@id} data-testid={@testid}>
-            <#slot {@logo} />
-            <div class={merge(["flex flex-col h-full justify-between", @slim_class])}>
-              <div class={merge(["flex flex-col gap-4", @slim_top_class])}>
-                <#slot>
-                  <Sidebar.SlimMenuLink
-                    :for={link <- @links}
-                    route={link[:page]}
-                    icon_name={link[:icon]}
-                    tooltip_text={link[:key]}
-                  />
-                </#slot>
-              </div>
-              <div class={merge(["flex flex-col gap-4 items-center", @slim_bottom_class])}>
-                <#slot {@bottom} />
-              </div>
-            </div>
-          </div>
-        </nav>
-      </Drawer.Panel>
-    </Drawer>
+      <#slot {@logo} />
+      <div class={merge(["flex flex-col h-full justify-between", @slim_class])}>
+        <div class={merge(["flex flex-col gap-4", @slim_top_class])}>
+          <#slot>
+            <Sidebar.SlimMenuLink
+              :for={link <- @links}
+              route={link[:page]}
+              icon_name={link[:icon]}
+              tooltip_text={link[:key]}
+            />
+          </#slot>
+        </div>
+        <div class={merge(["flex flex-col gap-4 items-center", @slim_bottom_class])}>
+          <#slot {@bottom} />
+        </div>
+      </div>
+    </nav>
     """
   end
 end

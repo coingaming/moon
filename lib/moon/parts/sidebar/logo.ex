@@ -17,6 +17,8 @@ defmodule Moon.Parts.Sidebar.Logo do
   prop(src, :string, required: true)
   @doc "If is slim sidebar"
   prop(is_slim, :boolean, from_context: :is_slim)
+  @doc "The default slot"
+  slot(default)
 
   def render(assigns) do
     ~F"""
@@ -28,15 +30,17 @@ defmodule Moon.Parts.Sidebar.Logo do
       {=@id}
       data-testid={@testid}
     >
-      <svg
-        class={merge([
-          "moon-logo h-10 w-[6.5rem] text-bulma hover:text-bulma active:text-bulma focus:text-bulma cursor-pointer",
-          @svg_class
-        ])}
-        :on-click={@on_click}
-      >
-        <use href={@src} />
-      </svg>
+      <#slot>
+        <svg
+          class={merge([
+            "moon-logo h-10 w-[6.5rem] text-bulma hover:text-bulma active:text-bulma focus:text-bulma cursor-pointer",
+            @svg_class
+          ])}
+          :on-click={@on_click}
+        >
+          <use href={@src} />
+        </svg>
+      </#slot>
     </div>
     """
   end
