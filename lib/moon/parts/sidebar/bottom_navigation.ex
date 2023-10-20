@@ -1,7 +1,7 @@
 defmodule Moon.Parts.Sidebar.BottomNavigation do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatelessComponent, slot: "button"
 
   alias Moon.Icon
   alias Moon.Design.Chip
@@ -34,6 +34,7 @@ defmodule Moon.Parts.Sidebar.BottomNavigation do
       data-testid={@testid}
       class={merge([
         "fixed bottom-12 z-[9999] justify-center lg:hidden items-center left-1/2 transform -translate-x-1/2 bg-bulma rounded-full flex flex-row p-1 gap-0 h-14 w-[6.5rem]",
+        "theme-moon-light",
         @class
       ])}
     >

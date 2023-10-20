@@ -13,6 +13,8 @@ defmodule Moon.Parts.Sidebar.Generic do
   prop(class, :css_class)
   @doc "List of sections to be redered when no default slot is given"
   prop(sections, :list, default: [])
+  @doc "aria-label HTTP attribute for nav"
+  prop(aria_label, :string, default: "Sidebar Generic")
   @doc "Logo slot"
   slot(logo)
   @doc "Default slot"
@@ -23,8 +25,8 @@ defmodule Moon.Parts.Sidebar.Generic do
     <nav
       {=@id}
       data-testid={@testid}
-      aria-label="Sidebar"
-      class={merge(["w-[22.5rem]", "h-screen pt-6 pb-5 flex flex-col gap-6 px-4 overflow-y-scroll", @class])}
+      aria-label={@aria_label}
+      class={merge(["w-[22.5rem]", "h-screen pt-6 pb-5 flex flex-col px-4 overflow-y-scroll", @class])}
     >
       <#slot {@logo} />
       <#slot>

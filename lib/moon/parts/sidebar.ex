@@ -15,8 +15,10 @@ defmodule Moon.Parts.Sidebar do
   prop(backdrop_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(panel_class, :css_class)
-  @doc "Default slot"
+  @doc "Default slot - for menus"
   slot(default)
+  @doc "Button slot - for button in the bottom"
+  slot(button)
 
   def render(assigns) do
     ~F"""
@@ -29,11 +31,12 @@ defmodule Moon.Parts.Sidebar do
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
       <Drawer.Panel
         position="start"
-        class={merge(["h-screen pt-6 pb-5 flex flex-row gap-6", "bg-goku shadow-none w-auto", @panel_class])}
+        class={merge(["h-screen pt-6 pb-5 flex flex-row gap-6", "bg-goku shadow-none w-auto rounded-moon-s-lg", @panel_class])}
       >
         <#slot />
       </Drawer.Panel>
     </Drawer>
+    <#slot {@button}/>
     """
   end
 end
