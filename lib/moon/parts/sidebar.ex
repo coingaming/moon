@@ -34,6 +34,8 @@ defmodule Moon.Parts.Sidebar do
         class={merge([
           "h-screen pt-6 pb-5 flex flex-row gap-6",
           "bg-goku shadow-none w-auto rounded-moon-s-lg",
+          "ltr:rounded-bl-none ltr:rounded-tl-none",
+          "rtl:rounded-br-none rtl:rounded-tr-none",
           @panel_class
         ])}
       >

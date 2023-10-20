@@ -5,15 +5,18 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   use MoonWeb, :example
 
   alias Moon.Parts.Sidebar
-  alias Moon.Design.Button
 
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
 
   def render(assigns) do
     ~F"""
     <div>
-      <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Generic Sidebar on small screens</Button>
       <Sidebar id="generic_sidebar">
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
         <Sidebar.Slim links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:bottom>

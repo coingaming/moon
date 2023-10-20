@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
   def render(assigns) do
     ~F"""
     <div>
-      <Sidebar id="slim_sidebar" panel_class="rounded-moon-s-none">
+      <Sidebar id="slim_sidebar">
         <Sidebar.BottomNavigation
           src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
           href="#"
