@@ -31,12 +31,16 @@ defmodule Moon.Parts.Sidebar do
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
       <Drawer.Panel
         position="start"
-        class={merge(["h-screen pt-6 pb-5 flex flex-row gap-6", "bg-goku shadow-none w-auto rounded-moon-s-lg", @panel_class])}
+        class={merge([
+          "h-screen pt-6 pb-5 flex flex-row gap-6",
+          "bg-goku shadow-none w-auto rounded-moon-s-lg",
+          @panel_class
+        ])}
       >
         <#slot />
       </Drawer.Panel>
     </Drawer>
-    <#slot {@button}/>
+    <#slot {@button} />
     """
   end
 end
