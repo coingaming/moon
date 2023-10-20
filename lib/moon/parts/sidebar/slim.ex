@@ -3,7 +3,6 @@ defmodule Moon.Parts.Sidebar.Slim do
 
   use Moon.StatelessComponent
 
-  alias Moon.Design.Drawer
   alias Moon.Parts.Sidebar
 
   @doc "Id attribute for DOM element"
@@ -13,21 +12,13 @@ defmodule Moon.Parts.Sidebar.Slim do
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
   @doc "Additional Tailwind classes"
-  prop(backdrop_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(panel_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(menu_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(slim_nav_class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(slim_class, :css_class)
-  @doc "Additional Tailwind classes"
   prop(slim_top_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(slim_bottom_class, :css_class)
   @doc "List of links to be rendered when no default slot is given"
   prop(links, :list, default: [])
+  @doc "aria-label HTTP attribute for nav"
+  prop(aria_label, :string, default: "Sidebar Slim")
   @doc "Default slot, menu"
   slot(default)
   @doc "Bottom slot, footer"
@@ -37,42 +28,32 @@ defmodule Moon.Parts.Sidebar.Slim do
 
   def render(assigns) do
     ~F"""
-    <Drawer
+    <nav
       {=@id}
-      lg_persists
-      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark", @class])}
-      {=@testid}
+      data-testid={@testid}
+      aria-label={@aria_label}
+      class={merge([
+        "w-[4.5rem]",
+        "h-screen flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
+        "h-full gap-4 justify-between",
+        @class
+      ])}
     >
-      <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
-      <Drawer.Panel position="start" class={merge(["bg-goku shadow-none", "w-[4.5rem]", @panel_class])}>
-        <nav
-          aria-label="Sidebar"
-          class={merge([
-            "h-screen pt-6 pb-5 flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
-            @menu_class
-          ])}
-        >
-          <div class={merge(["flex flex-col h-full gap-4", @slim_nav_class])} {=@id} data-testid={@testid}>
-            <#slot {@logo} />
-            <div class={merge(["flex flex-col h-full justify-between", @slim_class])}>
-              <div class={merge(["flex flex-col gap-4", @slim_top_class])}>
-                <#slot>
-                  <Sidebar.SlimMenuLink
-                    :for={link <- @links}
-                    route={link[:page]}
-                    icon_name={link[:icon]}
-                    tooltip_text={link[:key]}
-                  />
-                </#slot>
-              </div>
-              <div class={merge(["flex flex-col gap-4 items-center", @slim_bottom_class])}>
-                <#slot {@bottom} />
-              </div>
-            </div>
-          </div>
-        </nav>
-      </Drawer.Panel>
-    </Drawer>
+      <div class={merge(["flex flex-col gap-4", @slim_top_class])}>
+        <#slot {@logo} />
+        <#slot>
+          <Sidebar.SlimMenuLink
+            :for={link <- @links}
+            route={link[:page]}
+            icon_name={link[:icon]}
+            tooltip_text={link[:key]}
+          />
+        </#slot>
+      </div>
+      <div class={merge(["flex flex-col gap-4 items-center", @slim_bottom_class])}>
+        <#slot {@bottom} />
+      </div>
+    </nav>
     """
   end
 end
