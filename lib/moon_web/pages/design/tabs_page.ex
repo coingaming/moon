@@ -54,109 +54,23 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       </Tabs>
 
       <ExamplesList examples={[
-        TabsExample.Wizzard,
         TabsExample.Default,
         TabsExample.WithPills,
         TabsExample.WithSegments,
         TabsExample.Sizes,
-        TabsExample.CustomSelected
+        TabsExample.CustomSelected,
+        TabsExample.Wizard
       ]} />
 
-      <PropsTable
-        title="Moon.Design.Tabs.{Tab, Pill, Segment} properties"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot ',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content inside the tab'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'additional css classes for the tab'
-          },
-          %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Is tab disabled'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Moon.Design.Tabs properties"
-        data={[
-          %{
-            :name => 'default',
-            :type => 'slot ',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content near tablist'
-          },
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'additional css classes for the tab'
-          },
-          %{
-            :name => 'on_change',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to happen when non-disabled tab is clicked'
-          },
-          %{
-            :name => 'selected',
-            :type => 'integer',
-            :required => 'No',
-            :default => '0',
-            :description => 'Index of the selected tab'
-          }
-        ]}
-      />
-
-      <PropsTable
-        title="Moon.Design.Tabs.List properties"
-        data={[
-          %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional css classes for the tablist'
-          },
-          %{
-            :name => 'size',
-            :type => 'sm | md',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of tabs'
-          },
-          %{
-            :name => 'tab_titles',
-            :type => 'list',
-            :required => 'No',
-            :default => '[]',
-            :description =>
-              'List of tab titles. THe are rendered with tab_module. Only if no slot tabs assigned'
-          },
-          %{
-            :name => 'tab_module',
-            :type => 'atom',
-            :required => 'No',
-            :default => 'Moon.Design.Tabs.Tab',
-            :description => 'Module for rendering tabs from tab_titles'
-          }
-        ]}
-      />
+      <PropsTable module={Moon.Design.Tabs} />
+      <PropsTable module={Moon.Design.Tabs.List} />
+      <PropsTable module={Moon.Design.Tabs.Link} />
+      <PropsTable module={Moon.Design.Tabs.Pill} />
+      <PropsTable module={Moon.Design.Tabs.Segment} />
+      <PropsTable module={Moon.Design.Tabs.Step} />
+      <PropsTable module={Moon.Design.Tabs.Tab} />
+      <PropsTable module={Moon.Design.Tabs.Panels} />
+      <PropsTable module={Moon.Design.Tabs.Panel} />
     </Page>
     """
   end

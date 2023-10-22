@@ -7,19 +7,27 @@ defmodule Moon.Design.Tabs.List do
 
   import Moon.Helpers.MakeList
 
+  @doc "Id attribute for DOM element"
   prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Size of tabs"
   prop(size, :string, values!: ~w(sm md), default: "md")
-
+  @doc "Will be got from Tabs in most cases"
   prop(selected, :integer, from_context: :selected)
-
+  @doc "Value of the tab"
+  prop(value, :integer, from_context: :value)
+  @doc "List of tab titles. They are rendered with tab_module. Only if no slot tabs assigned"
   prop(tab_titles, :list, default: [])
+  @doc "List of tab titles. THe are rendered with tab_module. Only if no slot tabs assigned"
   prop(tab_module, :atom, default: Moon.Design.Tabs.Tab)
-
+  @doc "Event to happen when non-disabled tab is clicked"
   prop(on_change, :event, from_context: :on_change)
-
+  @doc "Tabs slot"
   slot(tabs)
+  @doc "Default slot"
   slot(default)
 
   def render(assigns) do
