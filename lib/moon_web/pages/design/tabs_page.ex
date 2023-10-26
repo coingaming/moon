@@ -67,7 +67,7 @@ defmodule MoonWeb.Pages.Design.TabsPage do
       <PropsTable module={Moon.Design.Tabs.Link} />
       <PropsTable module={Moon.Design.Tabs.Pill} />
       <PropsTable module={Moon.Design.Tabs.Segment} />
-      <PropsTable module={Moon.Design.Tabs.Step} />
+      <PropsTable module={Moon.Parts.Wizard.Step} />
       <PropsTable module={Moon.Design.Tabs.Tab} />
       <PropsTable module={Moon.Design.Tabs.Panels} />
       <PropsTable module={Moon.Design.Tabs.Panel} />
