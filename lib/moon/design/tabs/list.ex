@@ -29,6 +29,8 @@ defmodule Moon.Design.Tabs.List do
   slot(tabs)
   @doc "Default slot"
   slot(default)
+  @doc "Slot for redering tab title when tab_tiltles given"
+  slot(tab_title)
 
   def render(assigns) do
     ~F"""
@@ -61,7 +63,10 @@ defmodule Moon.Design.Tabs.List do
           is_last={tabindex + 1 == @tab_titles |> length()}
           {=tabindex}
           {=@on_change}
-        >{title}</Component>
+          is_completed={@selected > tabindex}
+        >
+          <#slot {@tab_title, title: title, tabindex: tabindex}>{title}</#slot>
+        </Component>
       {/if}
     </div>
     """

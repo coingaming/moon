@@ -6,6 +6,7 @@ defmodule Moon.Parts.ModalWizard do
   alias Moon.Design.Modal
 
   alias Moon.Parts.ModalWizard
+  alias Moon.Parts.Wizard
   alias Moon.Design.Tabs
 
   import MoonWeb.Helpers.Lorem
@@ -51,10 +52,10 @@ defmodule Moon.Parts.ModalWizard do
             <Tabs id="tabs-wizzard" class="flex-row">
               <Tabs.List
                 class="flex-col overflow-hidden items-left w-1/3 mt-[11.5rem] px-6"
-                tab_module={Tabs.Step}
+                tab_module={Wizard.Step}
                 selected={@selected}
               >
-                <Tabs.Step
+                <Wizard.Step
                   class="pb-[7.3rem]"
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
@@ -63,21 +64,27 @@ defmodule Moon.Parts.ModalWizard do
                 >
                   <span class="text-moon-14 text-bulma text-medium">First Step</span>
                   <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>
-                </Tabs.Step>
-                <Tabs.Step
+                </Wizard.Step>
+                <Wizard.Step
                   class="pb-[7.3rem]"
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
                   icon_bg_class="bg-goku"
                   is_completed={@completed > 1}
-                >Second Step</Tabs.Step>
-                <Tabs.Step
+                >
+                  <span class="text-moon-14 text-bulma text-medium">Second Step</span>
+                  <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>
+                </Wizard.Step>
+                <Wizard.Step
                   class="pb-[7.3rem]"
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
                   icon_bg_class="bg-goku"
                   is_completed={@completed > 2}
-                >Third Step</Tabs.Step>
+                >
+                  <span class="text-moon-14 text-bulma text-medium">Third Step</span>
+                  <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>
+                </Wizard.Step>
               </Tabs.List>
               <Tabs.Panels class="px-6 w-2/3 min-h-[33.5rem]" selected={@selected}>
                 <Tabs.Panel>{lorem()}</Tabs.Panel>

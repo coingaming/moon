@@ -48,6 +48,7 @@ config :surface, :components, [
   {Moon.Parts.Header, propagate_context_to_slots: true},
   {Moon.Parts.ModalWizard, propagate_context_to_slots: true},
   {Moon.Parts.ModalWizard.Panel, propagate_context_to_slots: true},
+  {Moon.Parts.Wizard, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar.Accordion, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar.MenuLink, propagate_context_to_slots: true},

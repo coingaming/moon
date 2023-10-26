@@ -33,9 +33,13 @@ defmodule Moon.Helpers.MergeClass do
   defp group_name("font-" <> family) when family in ~w(averta dm-sans grotesk),
     do: "prop_font_family"
 
-  defp group_name("bg-" <> _rest) do
-    "background"
-  end
+  defp group_name("border-" <> loc) when loc in ~w(t b l r x y s e),
+    do: "prop_border_width"
+
+  # defp group_name("border-" <> loc <> "-" <> _) when loc in ~c(t b l r x y s e),
+  #   do: "prop_border_width"
+
+  defp group_name("bg-" <> _rest), do: "prop_background"
 
   defp group_name(class) do
     class

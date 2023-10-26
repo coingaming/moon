@@ -7,6 +7,8 @@ defmodule MoonWeb.Examples.Design.TabsExample.Wizard do
   alias Moon.Design.Tabs
   alias Moon.Design.Button
 
+  alias Moon.Parts.Wizard
+
   import MoonWeb.Helpers.Lorem
 
   data(completed, :integer, default: 0)
@@ -17,13 +19,12 @@ defmodule MoonWeb.Examples.Design.TabsExample.Wizard do
     <div class="relative w-full">
       <Tabs id="tabs-wizzard" class="flex-row mb-10">
         <Tabs.List
-          class="flex-col w-1/4 overflow-hidden items-left mt-8"
-          tab_module={Tabs.Step}
+          class="flex flex-col overflow-hidden items-left w-1/3 mt-[11.5rem] px-6"
           selected={@selected}
         >
-          <Tabs.Step is_completed={@completed > 0}>First Step</Tabs.Step>
-          <Tabs.Step is_completed={@completed > 1}>Second Step</Tabs.Step>
-          <Tabs.Step is_completed={@completed > 2}>Third Step</Tabs.Step>
+          <Wizard.Step is_completed={@completed > 0}>First Step</Wizard.Step>
+          <Wizard.Step is_completed={@completed > 1}>Second Step</Wizard.Step>
+          <Wizard.Step is_completed={@completed > 2}>Third Step</Wizard.Step>
         </Tabs.List>
         <Tabs.Panels class="p-4 w-3/4 align-baseline" selected={@selected}>
           <Tabs.Panel>{lorem()}</Tabs.Panel>

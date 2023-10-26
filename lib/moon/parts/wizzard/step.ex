@@ -1,7 +1,9 @@
-defmodule Moon.Design.Tabs.Step do
+defmodule Moon.Parts.Wizard.Step do
   @moduledoc false
 
   use Moon.StatelessComponent, slot: "tabs"
+
+  defstruct title: "", text: ""
 
   # open API
   @doc "Id attribute for DOM element"
@@ -15,9 +17,9 @@ defmodule Moon.Design.Tabs.Step do
   @doc "Additional Tailwind classes for unselected tab"
   prop(unselected_class, :css_class, default: "text-beerus")
   @doc "Additional Tailwind classes for selected tab"
-  prop(selected_class, :css_class, default: "text-piccolo")
+  prop(selected_class, :css_class, default: "text-roshi")
   @doc "Additional Tailwind classes for step icon background"
-  prop(icon_bg_class, :css_class, default: "bg-gohan")
+  prop(icon_bg_class, :css_class, default: "bg-goku")
   @doc "Additional Tailwind classes for step line"
   prop(line_class, :css_class)
   @doc "Additional Tailwind classes for step title"
@@ -42,7 +44,7 @@ defmodule Moon.Design.Tabs.Step do
     <button
       {=@id}
       data-testid={@testid}
-      class={merge(["relative pb-10 ", @class])}
+      class={merge(["relative", @class])}
       role="tab"
       type="button"
       {=@tabindex}
@@ -53,14 +55,14 @@ defmodule Moon.Design.Tabs.Step do
     >
       <div
         class={merge([
-          ["absolute left-3 top-4 -ml-px mt-0.5 h-full w-0.5 bg-beerus", "bg-piccolo": @is_completed],
+          ["absolute left-3 top-4 -ml-px mt-0.5 h-full w-0.5 bg-beerus", "bg-roshi": @is_completed],
           @line_class
         ])}
         aria-hidden="true"
         :if={!@is_last}
       />
       <span class="group relative flex items-start">
-        <span class={merge(["flex items-center", @icon_bg_class])}>
+        <span class={merge(["flex items-center rounded-full", @icon_bg_class])}>
           {#if @is_selected}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +106,7 @@ defmodule Moon.Design.Tabs.Step do
             </svg>
           {/if}
         </span>
-        <span class={merge(["ml-4 flex min-w-0 flex-col", @title_class])}><#slot /></span>
+        <span class={merge(["ml-6 mb-6 gap-2 items-start flex min-w-0 flex-col", @title_class])}><#slot /></span>
       </span>
     </button>
     """
