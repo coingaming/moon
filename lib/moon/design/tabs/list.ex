@@ -50,7 +50,8 @@ defmodule Moon.Design.Tabs.List do
               is_selected: tabindex == @selected,
               is_last: tabindex + 1 == make_list(@tabs) |> length(),
               size: @size,
-              tabindex: tabindex
+              tabindex: tabindex,
+              selected: @selected
             }
           />
         {/for}
@@ -63,7 +64,7 @@ defmodule Moon.Design.Tabs.List do
           is_last={tabindex + 1 == @tab_titles |> length()}
           {=tabindex}
           {=@on_change}
-          is_completed={@selected > tabindex}
+          {=@selected}
         >
           <#slot {@tab_title, title: title, tabindex: tabindex}>{title}</#slot>
         </Component>

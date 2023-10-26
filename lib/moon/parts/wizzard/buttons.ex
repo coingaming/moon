@@ -5,12 +5,12 @@ defmodule Moon.Parts.Wizard.Buttons do
 
   alias Moon.Parts.Button
 
+  alias Moon.Parts.Wizard
+
   @doc "Id attribute for DOM element"
   prop(id, :string)
-  @doc "Additional Tailwind classes for external container"
+  @doc "Additional Tailwind classes for container"
   prop(class, :css_class)
-  @doc "Additional Tailwind classes for internal container"
-  prop(class2, :css_class)
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
 
@@ -31,37 +31,45 @@ defmodule Moon.Parts.Wizard.Buttons do
 
   def render(assigns) do
     ~F"""
-    <div {=@id} data-testid={@testid} class={merge(["absolute w-2/3 end-0 bottom-0 px-8", @class])}>
-      <div class={merge(["w-full flex justify-end gap-2 border-t border-beerus py-8", @class2])}>
-        <Button.White
-          :if={@on_cancel}
-          {=@values}
-          on_click={@on_cancel}
-          class="min-w-[7.5rem] justify-self-start"
-        >Cancel</Button.White>
+    <div
+      {=@id}
+      data-testid={@testid}
+      class={merge(["absolute w-2/3 end-0 bottom-0 px-8 flex justify-between", @class])}
+    >
+      <#slot>
+        <Wizard.ButtonsBlock>
+          <Button.White
+            :if={@on_cancel}
+            {=@values}
+            on_click={@on_cancel}
+            class="min-w-[7.5rem] justify-self-start"
+          >Cancel</Button.White>
+        </Wizard.ButtonsBlock>
 
-        <Button.White
-          :if={@on_prev}
-          {=@values}
-          on_click={@on_prev}
-          class="min-w-[7.5rem]"
-          disabled={@values[:selected] <= 0}
-        >Previous</Button.White>
+        <Wizard.ButtonsBlock class="justify-end">
+          <Button.White
+            :if={@on_prev}
+            {=@values}
+            on_click={@on_prev}
+            class="min-w-[7.5rem]"
+            disabled={@values[:selected] <= 0}
+          >Previous</Button.White>
 
-        <Button
-          :if={@on_next && @values[:selected] < @values[:total] - 1}
-          {=@values}
-          on_click={@on_next}
-          class="min-w-[7.5rem]"
-        >Next</Button>
+          <Button
+            :if={@on_next && @values[:selected] < @values[:total] - 1}
+            {=@values}
+            on_click={@on_next}
+            class="min-w-[7.5rem]"
+          >Next</Button>
 
-        <Button
-          :if={@on_save && @values[:selected] >= @values[:total] - 1}
-          {=@values}
-          on_click={@on_save}
-          class="min-w-[7.5rem]"
-        >Save</Button>
-      </div>
+          <Button
+            :if={@on_save && @values[:selected] >= @values[:total] - 1}
+            {=@values}
+            on_click={@on_save}
+            class="min-w-[7.5rem]"
+          >Save</Button>
+        </Wizard.ButtonsBlock>
+      </#slot>
     </div>
     """
   end

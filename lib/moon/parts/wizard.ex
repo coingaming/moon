@@ -32,13 +32,13 @@ defmodule Moon.Parts.Wizard do
   def render(assigns) do
     ~F"""
     <div class="relative w-full bg-bulma p-1 rounded-moon-s-lg">
-      <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row", @class} {=@selected}>
-        <#slot {@description} />
+      <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row items-stretch", @class} {=@selected}>
         <Tabs.List
-          class="flex-col overflow-hidden items-left w-1/3 px-6 theme-moon-dark"
+          class="flex-col overflow-x-hidden overflow-y-auto items-left w-1/3 pe-10 ps-8 theme-moon-dark"
           tab_module={Wizard.Step}
           tab_titles={@steps}
         >
+          <#slot {@description} />
           <:tab_title :let={tabindex: _index, title: %{title: title, text: text}}>
             <span class="text-moon-14 text-bulma font-medium">{title}</span>
             <p class="text-moon-14 text-bulma text-start lg:inline hidden">{text}</p>

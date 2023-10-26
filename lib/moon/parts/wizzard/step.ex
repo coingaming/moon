@@ -35,7 +35,7 @@ defmodule Moon.Parts.Wizard.Step do
   @doc "Will be got from Tabs in most cases"
   prop(on_change, :event, from_context: :on_change)
   @doc "Will be got from Tabs.List in most cases"
-  prop(is_completed, :boolean)
+  prop(selected, :integer, from_context: :selected)
   @doc "Will be got from Tabs.List in most cases"
   prop(is_last, :boolean, from_context: :is_last)
 
@@ -49,13 +49,16 @@ defmodule Moon.Parts.Wizard.Step do
       type="button"
       {=@tabindex}
       aria-selected={"#{@is_selected}"}
-      {=@disabled}
-      :on-click={!@disabled && @on_change}
+      disabled={@disabled || @tabindex > @selected + 1}
+      :on-click={!(@disabled || @tabindex > @selected + 1) && @on_change}
       value={@tabindex}
     >
       <div
         class={merge([
-          ["absolute left-3 top-4 -ml-px mt-0.5 h-full w-0.5 bg-beerus", "bg-roshi": @is_completed],
+          [
+            "absolute left-3 top-4 -ml-px mt-0.5 h-full w-0.5 bg-beerus",
+            "bg-roshi": @selected > @tabindex
+          ],
           @line_class
         ])}
         aria-hidden="true"
@@ -63,7 +66,7 @@ defmodule Moon.Parts.Wizard.Step do
       />
       <span class="group relative flex items-start">
         <span class={merge(["flex items-center rounded-full", @icon_bg_class])}>
-          {#if @is_selected}
+          {#if @selected == @tabindex}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -75,7 +78,7 @@ defmodule Moon.Parts.Wizard.Step do
               <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" stroke-width="2" />
               <circle cx="12" cy="12" r="3.5" fill="currentColor" stroke="currentColor" />
             </svg>
-          {#elseif @is_completed}
+          {#elseif @selected > @tabindex}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
