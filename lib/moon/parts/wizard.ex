@@ -14,12 +14,13 @@ defmodule Moon.Parts.Wizard do
   prop(selected, :integer, default: 0)
   @doc "List of steps, format: [%{title, text}]"
   prop(steps, :list, default: [])
+  @doc "Dark/Light theme switch"
+  prop(is_dark, :boolean, default: true)
 
   @doc "Next button click event"
   prop(on_next, :event)
   @doc "Previous button click event"
   prop(on_prev, :event)
-
   @doc "Description slot"
   slot(description)
 
@@ -31,10 +32,10 @@ defmodule Moon.Parts.Wizard do
 
   def render(assigns) do
     ~F"""
-    <div class="relative w-full bg-bulma p-1 rounded-moon-s-lg">
+    <div class={"relative w-full p-1 rounded-moon-s-lg", "bg-bulma": @is_dark}>
       <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row items-stretch", @class} {=@selected}>
         <Tabs.List
-          class="flex-col overflow-x-hidden overflow-y-auto items-left w-1/3 pe-10 ps-8 theme-moon-dark"
+          class={"flex-col overflow-x-hidden overflow-y-auto items-left w-1/3 pe-10 ps-8", "theme-moon-dark": @is_dark}
           tab_module={Wizard.Step}
           tab_titles={@steps}
         >
