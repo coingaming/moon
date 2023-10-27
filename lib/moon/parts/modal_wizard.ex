@@ -60,7 +60,6 @@ defmodule Moon.Parts.ModalWizard do
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
                   icon_bg_class="bg-goku"
-                  is_completed={@completed > 0}
                 >
                   <span class="text-moon-14 text-bulma text-medium">First Step</span>
                   <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>
@@ -70,7 +69,6 @@ defmodule Moon.Parts.ModalWizard do
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
                   icon_bg_class="bg-goku"
-                  is_completed={@completed > 1}
                 >
                   <span class="text-moon-14 text-bulma text-medium">Second Step</span>
                   <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>
@@ -80,7 +78,6 @@ defmodule Moon.Parts.ModalWizard do
                   title_class="gap-2 ml-6 items-start"
                   selected_class="text-roshi"
                   icon_bg_class="bg-goku"
-                  is_completed={@completed > 2}
                 >
                   <span class="text-moon-14 text-bulma text-medium">Third Step</span>
                   <p class="text-moon-14 text-bulma text-start lg:inline hidden">In order to make you available and match you with the right opportunities we need some additional informati.</p>

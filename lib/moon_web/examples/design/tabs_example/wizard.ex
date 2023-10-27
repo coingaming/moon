@@ -22,9 +22,9 @@ defmodule MoonWeb.Examples.Design.TabsExample.Wizard do
           class="flex flex-col overflow-hidden items-left w-1/3 mt-[11.5rem] px-6"
           selected={@selected}
         >
-          <Wizard.Step is_completed={@completed > 0}>First Step</Wizard.Step>
-          <Wizard.Step is_completed={@completed > 1}>Second Step</Wizard.Step>
-          <Wizard.Step is_completed={@completed > 2}>Third Step</Wizard.Step>
+          <Wizard.Step>First Step</Wizard.Step>
+          <Wizard.Step>Second Step</Wizard.Step>
+          <Wizard.Step>Third Step</Wizard.Step>
         </Tabs.List>
         <Tabs.Panels class="p-4 w-3/4 align-baseline" selected={@selected}>
           <Tabs.Panel>{lorem()}</Tabs.Panel>

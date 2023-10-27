@@ -29,20 +29,27 @@ defmodule Moon.Parts.Wizard do
 
   @doc "Slot for tab panels"
   slot(content)
+  @doc "Slot for custom step info rendering"
+  slot(step)
 
   def render(assigns) do
     ~F"""
-    <div class={"relative w-full p-1 rounded-moon-s-lg", "bg-bulma": @is_dark}>
+    <div class="relative w-full">
       <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row items-stretch", @class} {=@selected}>
         <Tabs.List
-          class={"flex-col overflow-x-hidden overflow-y-auto items-left w-1/3 pe-10 ps-8", "theme-moon-dark": @is_dark}
+          class={
+            "flex-col overflow-x-hidden overflow-y-auto items-left w-1/3 pe-10 ps-8",
+            "theme-moon-dark bg-goku": @is_dark
+          }
           tab_module={Wizard.Step}
           tab_titles={@steps}
         >
           <#slot {@description} />
-          <:tab_title :let={tabindex: _index, title: %{title: title, text: text}}>
-            <span class="text-moon-14 text-bulma font-medium">{title}</span>
-            <p class="text-moon-14 text-bulma text-start lg:inline hidden">{text}</p>
+          <:tab_title :let={tabindex: index, title: title}>
+            <#slot {@step, tabindex: index, title: title}>
+              <span class="text-moon-14 text-bulma font-medium">{title.title}</span>
+              <p class="text-moon-14 text-bulma text-start lg:inline hidden">{title.text}</p>
+            </#slot>
           </:tab_title>
         </Tabs.List>
         <:content>
