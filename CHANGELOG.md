@@ -1,3 +1,10 @@
+# [2.66.0](https://github.com/coingaming/moon/compare/v2.65.2...v2.66.0) (2023-10-27)
+
+
+### Features
+
+* Parts.{Wizard, Modal} components ([7119921](https://github.com/coingaming/moon/commit/7119921d1db4b27d0d1f2683ff974d7d5d36ee8e))
+
 ## [2.65.2](https://github.com/coingaming/moon/compare/v2.65.1...v2.65.2) (2023-10-20)
 
 
