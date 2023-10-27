@@ -1,5 +1,5 @@
-defmodule Moon.Design.Tabs.Panels do
-  @moduledoc false
+defmodule Moon.Parts.Wizard.Panels do
+  @moduledoc "Almost copy of Moon.Design.Tabs.Panels except few classes"
 
   use Moon.StatelessComponent, slot: "content"
 
@@ -7,21 +7,24 @@ defmodule Moon.Design.Tabs.Panels do
 
   @doc "Id attribute for DOM element"
   prop(id, :string)
-  @doc "Data-testid attribute for DOM element"
-  prop(testid, :string)
-  @doc "Additional Tailwind classes"
+  @doc "Additional Tailwind classes for container"
   prop(class, :css_class)
+  @doc "HTML data-testid attribute for container"
+  prop(testid, :string)
   @doc "Will be got from Tabs in most cases"
   prop(selected, :integer, from_context: :selected)
   @doc "Panels slot"
   slot(panels, required: true)
+
+  @doc "Additional buttons etc."
+  slot(default)
 
   def render(assigns) do
     ~F"""
     <div
       role="tabpanel"
       tabindex={@selected}
-      class={merge(["w-full", @class])}
+      class={merge(["p-6 pb-28 w-2/3 bg-goku rounded-moon-s-lg", @class])}
       {=@id}
       data-testid={@testid}
     >

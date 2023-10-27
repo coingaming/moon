@@ -4,21 +4,31 @@ defmodule Moon.Design.Tabs.Link do
   use Moon.StatelessComponent, slot: "tabs"
 
   # open API
+  @doc "Id attribute for DOM element"
   prop(id, :string)
+  @doc "If true, the tab is disabled"
   prop(disabled, :boolean, default: false)
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
-
+  @doc "Additional Tailwind classes for unselected tab"
   prop(unselected_class, :css_class, default: "after:scale-x-0 text-bulma")
+  @doc "Additional Tailwind classes for selected tab"
   prop(selected_class, :css_class, default: "after:scale-x-100 text-piccolo")
-
+  @doc "Content inside the tab"
   slot(default, required: true)
 
   # inner API
+  @doc "Will be got from Tabs.List in most cases"
   prop(tabindex, :integer, from_context: :tabindex)
+  @doc "If tab is selected"
   prop(is_selected, :boolean)
+  @doc "Will be got from Tabs.List in most cases"
   prop(size, :string, values!: ~w(sm md), from_context: :size)
+  @doc "Href for the link"
   prop(href, :string, required: true)
+  @doc "Attributes for the link"
   prop(attrs, :any, default: [])
 
   def render(assigns) do
