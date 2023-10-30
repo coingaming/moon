@@ -1,3 +1,3 @@
 <div>
-  <KycBackofficeWeb.Components.Sidebar id="my-test-sidebar" />
+  <#slot />
 </div>
