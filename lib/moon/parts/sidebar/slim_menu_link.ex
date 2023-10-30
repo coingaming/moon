@@ -25,8 +25,10 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
   prop(route, :any)
   @doc "Icon name"
   prop(icon_name, :any)
+  @doc "Additional attributes set for the tag a"
+  prop(attrs, :map, default: %{})
   @doc "Active page"
-  data(active_page, :string, from_context: :active_page)
+  prop(active_page, :string, from_context: :active_page)
 
   def render(assigns) do
     ~F"""
@@ -41,10 +43,13 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
             ],
             @class
           ])}
-          attrs={
-            "data-phx-link": "redirect",
-            "data-phx-link-state": "push"
-          }
+          attrs={Map.merge(
+            %{
+              "data-phx-link": "redirect",
+              "data-phx-link-state": "push"
+            },
+            @attrs
+          )}
           is_active={@active_page == @route}
           href={@route}
         >
