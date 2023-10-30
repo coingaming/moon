@@ -25,32 +25,32 @@ defmodule MoonWeb.Pages.Components.CarouselPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'space',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO'
+        :name => ~c"space",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO"
       },
       %{
-        :name => 'items',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Items to display inside carousel'
+        :name => ~c"items",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Items to display inside carousel"
       },
       %{
-        :name => 'scroll_to_left_button',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Scroll to left button'
+        :name => ~c"scroll_to_left_button",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Scroll to left button"
       },
       %{
-        :name => 'scroll_to_right_button',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Scroll to right button'
+        :name => ~c"scroll_to_right_button",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Scroll to right button"
       }
     ]
   )

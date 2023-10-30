@@ -35,17 +35,17 @@ defmodule MoonWeb.Pages.ManifestPage do
             <ManifestCard
               title="Consistent among different brands"
               content_items={[
-                'Same interaction and UI among different modules and sections (e.g. Cashier, Sidebar, Reg, Inputs etc)',
-                'Theming'
+                ~c"Same interaction and UI among different modules and sections (e.g. Cashier, Sidebar, Reg, Inputs etc)",
+                ~c"Theming"
               ]}
               is_highlighted
             />
             <ManifestCard
               title="Validating ideas/hypothesis for stakeholders"
               content_items={[
-                'You can build your own UI app (Rapid Proto) faster and not from scratch',
-                'Benefit for hackathons',
-                'Quality'
+                ~c"You can build your own UI app (Rapid Proto) faster and not from scratch",
+                ~c"Benefit for hackathons",
+                ~c"Quality"
               ]}
             />
           </div>
@@ -54,17 +54,17 @@ defmodule MoonWeb.Pages.ManifestPage do
               title="Reducing development costs"
               content_items={[
                 "Devs from different teams don't need to implement the elements provided by Moon DS",
-                'There will be less time spent on discussions/alignment between devs and design',
+                ~c"There will be less time spent on discussions/alignment between devs and design",
                 "Designers don't need to create new elements for every project/task",
-                'Well document components library',
-                'Avoiding mistakes and bugs'
+                ~c"Well document components library",
+                ~c"Avoiding mistakes and bugs"
               ]}
             />
             <ManifestCard
               title="Performance"
               content_items={[
-                'Best practices across different brands',
-                'Lightweight (Less code = more performance)'
+                ~c"Best practices across different brands",
+                ~c"Lightweight (Less code = more performance)"
               ]}
             />
           </div>
@@ -72,9 +72,9 @@ defmodule MoonWeb.Pages.ManifestPage do
             <ManifestCard
               title="Faster UI development"
               content_items={[
-                'One place for all UI components (Source of truth)',
-                'Consistent icons',
-                'Non-frontend developers could build nice UI with using Moon DS'
+                ~c"One place for all UI components (Source of truth)",
+                ~c"Consistent icons",
+                ~c"Non-frontend developers could build nice UI with using Moon DS"
               ]}
             />
           </div>

@@ -32,18 +32,18 @@ defmodule MoonWeb.Pages.Components.InputGroupPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'orientation',
-        :type => 'vertical | horizontal',
-        :required => 'No',
-        :default => 'horizontal',
-        :description => ''
+        :name => ~c"orientation",
+        :type => ~c"vertical | horizontal",
+        :required => ~c"No",
+        :default => ~c"horizontal",
+        :description => ~c""
       },
       %{
-        :name => 'slot',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Default slot'
+        :name => ~c"slot",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Default slot"
       }
     ]
   )

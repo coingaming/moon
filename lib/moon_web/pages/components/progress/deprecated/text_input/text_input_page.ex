@@ -34,70 +34,70 @@ defmodule MoonWeb.Pages.Components.TextInput.Deprecated.TextInputPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'type',
+        :name => ~c"type",
         :type =>
-          'date | datetime-local" | email | number | password | search | tel | text | url | time | url',
-        :required => 'No',
-        :default => 'text',
-        :description => 'Different types of input'
+          ~c"date | datetime-local\" | email | number | password | search | tel | text | url | time | url",
+        :required => ~c"No",
+        :default => ~c"text",
+        :description => ~c"Different types of input"
       },
       %{
-        :name => 'size',
-        :type => 'medium | large | xlarge',
-        :required => '-',
-        :default => 'medium',
+        :name => ~c"size",
+        :type => ~c"medium | large | xlarge",
+        :required => ~c"-",
+        :default => ~c"medium",
         :description =>
-          'TODO - Size variant (currently only medium | large, with large as default)'
+          ~c"TODO - Size variant (currently only medium | large, with large as default)"
       },
       %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'true',
-        :default => '-',
-        :description => 'TODO - Should be required for medium size only'
+        :name => ~c"label",
+        :type => ~c"string",
+        :required => ~c"true",
+        :default => ~c"-",
+        :description => ~c"TODO - Should be required for medium size only"
       },
       %{
-        :name => 'placeholder',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Placeholder for input'
+        :name => ~c"placeholder",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Placeholder for input"
       },
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'true',
-        :default => '-',
-        :description => 'Field value for underlying pheonix text input component'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"true",
+        :default => ~c"-",
+        :description => ~c"Field value for underlying pheonix text input component"
       },
       %{
-        :name => 'hint_text',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Informative or error message under input'
+        :name => ~c"hint_text",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Informative or error message under input"
       },
       %{
-        :name => 'error',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Set error state for input'
+        :name => ~c"error",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Set error state for input"
       },
       %{
-        :name => 'show_password_text',
-        :type => '-',
-        :required => '-',
-        :default => '-',
+        :name => ~c"show_password_text",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
         :description =>
-          'TODO - Only for input type password. Text for toggle button: show/hide password'
+          ~c"TODO - Only for input type password. Text for toggle button: show/hide password"
       },
       %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Background color'
+        :name => ~c"background_color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Background color"
       }
     ]
   )

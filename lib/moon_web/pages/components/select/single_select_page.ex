@@ -29,103 +29,103 @@ defmodule MoonWeb.Pages.Components.Select.SingleSelectPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'id',
-        :type => 'string ',
-        :required => 'Yes',
-        :default => '-',
-        :description => ''
+        :name => ~c"id",
+        :type => ~c"string ",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c""
       },
       %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => ''
+        :name => ~c"label",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c""
       },
       %{
-        :name => 'options',
-        :type => 'list',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Options for the select'
+        :name => ~c"options",
+        :type => ~c"list",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Options for the select"
       },
       %{
-        :name => 'value',
-        :type => 'any',
-        :required => 'No',
-        :default => '-',
-        :description => 'Default selected value'
+        :name => ~c"value",
+        :type => ~c"any",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Default selected value"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Whether the component is disabled'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Whether the component is disabled"
       },
       %{
-        :name => 'size',
-        :type => 'sm | md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size variant'
+        :name => ~c"size",
+        :type => ~c"sm | md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size variant"
       },
       %{
-        :name => 'popover_placement',
+        :name => ~c"popover_placement",
         :type =>
-          'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
-        :required => '-',
-        :default => 'bottom-start',
-        :description => 'Location of where the dropdown appears'
+          ~c"top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end",
+        :required => ~c"-",
+        :default => ~c"bottom-start",
+        :description => ~c"Location of where the dropdown appears"
       },
       %{
-        :name => 'popover_class',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Css class for the dropdown'
+        :name => ~c"popover_class",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Css class for the dropdown"
       },
       %{
-        :name => 'placeholder',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'String to display when there is no value selected'
+        :name => ~c"placeholder",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"String to display when there is no value selected"
       },
       %{
-        :name => 'background_color',
-        :type => 'string ',
-        :required => 'No',
-        :default => 'gohan',
-        :description => ''
+        :name => ~c"background_color",
+        :type => ~c"string ",
+        :required => ~c"No",
+        :default => ~c"gohan",
+        :description => ~c""
       },
       %{
-        :name => 'hint_text_slot',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Inform message under select'
+        :name => ~c"hint_text_slot",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Inform message under select"
       },
       %{
-        :name => 'has_error',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'If the component is in error mode'
+        :name => ~c"has_error",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"If the component is in error mode"
       },
       %{
-        :name => 'use_error_tag',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Whether to use the built in ErrorTag in place of the hint slot'
+        :name => ~c"use_error_tag",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Whether to use the built in ErrorTag in place of the hint slot"
       },
       %{
-        :name => 'selected_value_class',
-        :type => 'css_class',
-        :required => 'No',
-        :default => '-',
-        :description => 'Css class for the displayed selected value'
+        :name => ~c"selected_value_class",
+        :type => ~c"css_class",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Css class for the displayed selected value"
       }
     ]
   )

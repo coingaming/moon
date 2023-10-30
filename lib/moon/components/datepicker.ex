@@ -14,16 +14,16 @@ defmodule Moon.Components.Datepicker do
   @default_label "Select Dates"
 
   @ranges %{
-    lastMonth: 'Last month',
-    lastWeek: 'Last week',
-    last24hours: 'Last 24 hours',
-    yesterday: 'Yesterday',
-    today: 'Today',
-    tomorrow: 'Tomorrow',
-    thisWeek: 'This week',
-    nextWeek: 'Next week',
-    thisMonth: 'This month',
-    nextMonth: 'Next month'
+    lastMonth: ~c"Last month",
+    lastWeek: ~c"Last week",
+    last24hours: ~c"Last 24 hours",
+    yesterday: ~c"Yesterday",
+    today: ~c"Today",
+    tomorrow: ~c"Tomorrow",
+    thisWeek: ~c"This week",
+    nextWeek: ~c"Next week",
+    thisMonth: ~c"This month",
+    nextMonth: ~c"Next month"
   }
 
   prop(with_time, :boolean, default: false)

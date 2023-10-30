@@ -42,18 +42,18 @@ defmodule MoonWeb.Pages.Design.LoaderPage do
         title="Loader props"
         data={[
           %{
-            :name => 'color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'hit',
-            :description => 'Colour of loader'
+            :name => ~c"color",
+            :type => ~c"string",
+            :required => ~c"No",
+            :default => ~c"hit",
+            :description => ~c"Colour of loader"
           },
           %{
-            :name => 'size',
-            :type => '2xs | xs | sm | md | lg',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of loader'
+            :name => ~c"size",
+            :type => ~c"2xs | xs | sm | md | lg",
+            :required => ~c"No",
+            :default => ~c"md",
+            :description => ~c"Size of loader"
           }
         ]}
       />

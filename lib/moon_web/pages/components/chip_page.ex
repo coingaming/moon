@@ -26,46 +26,46 @@ defmodule MoonWeb.Pages.Components.ChipPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'size',
-        :type => 'xs | sm | md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size for chip'
+        :name => ~c"size",
+        :type => ~c"xs | sm | md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size for chip"
       },
       %{
-        :name => 'left_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the left icon'
+        :name => ~c"left_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the left icon"
       },
       %{
-        :name => 'right_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the right icon'
+        :name => ~c"right_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the right icon"
       },
       %{
-        :name => 'icon_only',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the icon. Icon only and no text shown'
+        :name => ~c"icon_only",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the icon. Icon only and no text shown"
       },
       %{
-        :name => 'active',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Active state'
+        :name => ~c"active",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Active state"
       },
       %{
-        :name => 'is_stroke',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Show stroke on hover/active'
+        :name => ~c"is_stroke",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Show stroke on hover/active"
       }
     ]
   )

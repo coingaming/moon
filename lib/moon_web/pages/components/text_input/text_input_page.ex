@@ -36,83 +36,84 @@ defmodule MoonWeb.Pages.Components.TextInputPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'type',
+        :name => ~c"type",
         :type =>
-          'date | datetime-local | email | number | password | search | tel | text | url | time | url',
-        :required => 'No',
-        :default => 'text',
-        :description => 'Different types of input'
+          ~c"date | datetime-local | email | number | password | search | tel | text | url | time | url",
+        :required => ~c"No",
+        :default => ~c"text",
+        :description => ~c"Different types of input"
       },
       %{
-        :name => 'size',
-        :type => 'medium | large | xlarge',
-        :required => '-',
-        :default => 'medium',
-        :description => 'Size variant (currently only medium | large, with large as default)'
+        :name => ~c"size",
+        :type => ~c"medium | large | xlarge",
+        :required => ~c"-",
+        :default => ~c"medium",
+        :description => ~c"Size variant (currently only medium | large, with large as default)"
       },
       %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Required for medium size only'
+        :name => ~c"label",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Required for medium size only"
       },
       %{
-        :name => 'placeholder',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Placeholder for input'
+        :name => ~c"placeholder",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Placeholder for input"
       },
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field value for underlying pheonix text input component'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Field value for underlying pheonix text input component"
       },
       %{
-        :name => 'hint_text',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Informative or error message under input'
+        :name => ~c"hint_text",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Informative or error message under input"
       },
       %{
-        :name => 'error',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Set error state for input'
+        :name => ~c"error",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Set error state for input"
       },
       %{
-        :name => 'show_password_text',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'Only for input type password. Text for toggle button: show/hide password'
-      },
-      %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Background color'
-      },
-      %{
-        :name => 'id',
-        :type => 'string',
-        :required => 'No | required (for password type)',
-        :default => '-',
-        :description => 'Unique id'
-      },
-      %{
-        :name => 'use_error_tag',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
+        :name => ~c"show_password_text",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
         :description =>
-          'Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components'
+          ~c"Only for input type password. Text for toggle button: show/hide password"
+      },
+      %{
+        :name => ~c"background_color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Background color"
+      },
+      %{
+        :name => ~c"id",
+        :type => ~c"string",
+        :required => ~c"No | required (for password type)",
+        :default => ~c"-",
+        :description => ~c"Unique id"
+      },
+      %{
+        :name => ~c"use_error_tag",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description =>
+          ~c"Whether to use ErrorTag in place of the Hint text to show error messages. Requires the component to be inside Form and Field components"
       }
     ]
   )

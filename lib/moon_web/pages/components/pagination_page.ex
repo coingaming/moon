@@ -26,75 +26,75 @@ defmodule MoonWeb.Pages.Components.PaginationPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'total_pages',
-        :type => 'number',
-        :required => 'true',
-        :default => '-',
-        :description => 'The total number of pages.'
+        :name => ~c"total_pages",
+        :type => ~c"number",
+        :required => ~c"true",
+        :default => ~c"-",
+        :description => ~c"The total number of pages."
       },
       %{
-        :name => 'range_before',
-        :type => 'number',
-        :required => 'No',
-        :default => '1',
-        :description => 'Beginning of displayed range'
+        :name => ~c"range_before",
+        :type => ~c"number",
+        :required => ~c"No",
+        :default => ~c"1",
+        :description => ~c"Beginning of displayed range"
       },
       %{
-        :name => 'range_after',
-        :type => 'number',
-        :required => 'No',
-        :default => '1',
-        :description => 'End of displayed range'
+        :name => ~c"range_after",
+        :type => ~c"number",
+        :required => ~c"No",
+        :default => ~c"1",
+        :description => ~c"End of displayed range"
       },
       %{
-        :name => 'previous_button_label',
-        :type => 'string',
-        :required => 'No',
-        :default => 'Previous',
-        :description => 'Label for "previous" button'
+        :name => ~c"previous_button_label",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"Previous",
+        :description => ~c"Label for \"previous\" button"
       },
       %{
-        :name => 'next_button_label',
-        :type => 'string',
-        :required => 'No',
-        :default => 'Next',
-        :description => 'Label for "next" button'
+        :name => ~c"next_button_label",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"Next",
+        :description => ~c"Label for \"next\" button"
       },
       %{
-        :name => 'on_change',
-        :type => 'event',
-        :required => 'No',
-        :default => '-',
+        :name => ~c"on_change",
+        :type => ~c"event",
+        :required => ~c"No",
+        :default => ~c"-",
         :description =>
-          'The method to call when a page is clicked. Exposes the current page object as an argument.'
+          ~c"The method to call when a page is clicked. Exposes the current page object as an argument."
       },
       %{
-        :name => 'current_page_number',
-        :type => 'number',
-        :required => 'true',
-        :default => '-',
-        :description => 'Current selected page'
+        :name => ~c"current_page_number",
+        :type => ~c"number",
+        :required => ~c"true",
+        :default => ~c"-",
+        :description => ~c"Current selected page"
       },
       %{
-        :name => 'page_size_section',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Placeholder for "page size" component'
+        :name => ~c"page_size_section",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Placeholder for \"page size\" component"
       },
       %{
-        :name => 'page_size_section',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Placeholder for "page size" component'
+        :name => ~c"page_size_section",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Placeholder for \"page size\" component"
       },
       %{
-        :name => 'go_to_page_section',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Placeholder for "go to page" component'
+        :name => ~c"go_to_page_section",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Placeholder for \"go to page\" component"
       }
     ]
   )

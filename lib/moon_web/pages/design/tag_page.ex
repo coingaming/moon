@@ -43,46 +43,46 @@ defmodule MoonWeb.Pages.Design.TagPage do
         title="Tag props"
         data={[
           %{
-            :name => 'size',
-            :type => '2xs | xs',
-            :required => 'No',
-            :default => 'xs',
-            :description => 'Size of tag'
+            :name => ~c"size",
+            :type => ~c"2xs | xs",
+            :required => ~c"No",
+            :default => ~c"xs",
+            :description => ~c"Size of tag"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization"
           },
           %{
-            :name => 'is_uppercase',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'true',
-            :description => 'Letter case'
+            :name => ~c"is_uppercase",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"true",
+            :description => ~c"Letter case"
           },
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tag content'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tag content"
           },
           %{
-            :name => 'left_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Left icon'
+            :name => ~c"left_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Left icon"
           },
           %{
-            :name => 'right_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Right icon'
+            :name => ~c"right_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Right icon"
           }
         ]}
       />

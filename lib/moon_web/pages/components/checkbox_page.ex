@@ -32,39 +32,39 @@ defmodule MoonWeb.Pages.Components.CheckboxPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'checked',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Preset value for checkbox state'
+        :name => ~c"checked",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Preset value for checkbox state"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Checkbox disabled state'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Checkbox disabled state"
       },
       %{
-        :name => 'readonly',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
+        :name => ~c"readonly",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
         :description => "Checkbox isn't disabled but its value can't be changed"
       },
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field name for the inner input form control'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Field name for the inner input form control"
       },
       %{
-        :name => '#slot',
-        :type => 'element',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Label for the control'
+        :name => ~c"#slot",
+        :type => ~c"element",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Label for the control"
       }
     ]
   )

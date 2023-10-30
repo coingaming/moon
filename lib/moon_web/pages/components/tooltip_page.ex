@@ -26,46 +26,46 @@ defmodule MoonWeb.Pages.Components.TooltipPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'children',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Component or element which Tooltip wraps around'
+        :name => ~c"children",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Component or element which Tooltip wraps around"
       },
       %{
-        :name => 'text',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Textual content for Tooltip'
+        :name => ~c"text",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Textual content for Tooltip"
       },
       %{
-        :name => 'icon',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'Icon shown in the Tooltip'
+        :name => ~c"icon",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"Icon shown in the Tooltip"
       },
       %{
-        :name => 'content',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Custom component shown in the Tooltip'
+        :name => ~c"content",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Custom component shown in the Tooltip"
       },
       %{
-        :name => 'placement',
-        :type => 'top | bottom | left | right',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Where Tooltip will be shown'
+        :name => ~c"placement",
+        :type => ~c"top | bottom | left | right",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Where Tooltip will be shown"
       },
       %{
-        :name => 'show',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Should Tooltip be shown persistently'
+        :name => ~c"show",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Should Tooltip be shown persistently"
       }
     ]
   )

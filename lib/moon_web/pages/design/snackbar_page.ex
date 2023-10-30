@@ -54,53 +54,53 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         title="Snackbar props"
         data={[
           %{
-            :name => 'trigger',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Clickable trigger element, see Snackbar.Trigger'
+            :name => ~c"trigger",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Clickable trigger element, see Snackbar.Trigger"
           },
           %{
-            :name => 'content',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Content of Snackbar item, see Snackbar.Content'
+            :name => ~c"content",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Content of Snackbar item, see Snackbar.Content"
           },
           %{
-            :name => 'icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Icon slot of Snackbar item, see Snackbar.Icon'
+            :name => ~c"icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Icon slot of Snackbar item, see Snackbar.Icon"
           },
           %{
-            :name => 'close',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Close button slot of Snackbar item, see Snackbar.Close'
+            :name => ~c"close",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Close button slot of Snackbar item, see Snackbar.Close"
           },
           %{
-            :name => 'position',
-            :type => 'top-left | top-center | top-right | bottom-left | bottom-center | bottom-right',
-            :required => 'No',
-            :default => 'top-right',
-            :description => 'Close button slot of Snackbar item, see Snackbar.Close'
+            :name => ~c"position",
+            :type => ~c"top-left | top-center | top-right | bottom-left | bottom-center | bottom-right",
+            :required => ~c"No",
+            :default => ~c"top-right",
+            :description => ~c"Close button slot of Snackbar item, see Snackbar.Close"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           },
           %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether or not the snackbar is open'
+            :name => ~c"is_open",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Whether or not the snackbar is open"
           }
         ]}
       />
@@ -109,25 +109,25 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         title="Snackbar.Content props"
         data={[
           %{
-            :name => 'header',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Header slot of Snackbar item, see Snackbar.Header'
+            :name => ~c"header",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Header slot of Snackbar item, see Snackbar.Header"
           },
           %{
-            :name => 'message',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message slot of Snackbar item, see Snackbar.Message'
+            :name => ~c"message",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Message slot of Snackbar item, see Snackbar.Message"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />
@@ -136,18 +136,18 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         title="Snackbar.Header props"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Header of Snackbar item'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Header of Snackbar item"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />
@@ -156,18 +156,18 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         title="Snackbar.Message props"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Message of Snackbar item'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Message of Snackbar item"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />
@@ -176,18 +176,18 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
         title="Snackbar.Icon props"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Icon slot of Snackbar item'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Icon slot of Snackbar item"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />

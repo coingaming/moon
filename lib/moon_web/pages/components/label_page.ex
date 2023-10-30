@@ -28,46 +28,46 @@ defmodule MoonWeb.Pages.Components.LabelPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'size',
-        :type => 'xs | sm | md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size of Button'
+        :name => ~c"size",
+        :type => ~c"xs | sm | md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size of Button"
       },
       %{
-        :name => 'left_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the left icon'
+        :name => ~c"left_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the left icon"
       },
       %{
-        :name => 'right_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the right icon'
+        :name => ~c"right_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the right icon"
       },
       %{
-        :name => 'color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'gohan.100',
-        :description => 'Asset name for the icon. Icon only and no text shown'
+        :name => ~c"color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"gohan.100",
+        :description => ~c"Asset name for the icon. Icon only and no text shown"
       },
       %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'bulma.100',
-        :description => 'Active state'
+        :name => ~c"background_color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"bulma.100",
+        :description => ~c"Active state"
       },
       %{
-        :name => 'is_uppercase',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'true',
-        :description => 'Letter case'
+        :name => ~c"is_uppercase",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"true",
+        :description => ~c"Letter case"
       }
     ]
   )

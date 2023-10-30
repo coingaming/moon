@@ -53,74 +53,74 @@ defmodule MoonWeb.Pages.Design.ChipPage do
         title="Chip props"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Chip content'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Chip content"
           },
           %{
-            :name => 'left_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Left icon'
+            :name => ~c"left_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Left icon"
           },
           %{
-            :name => 'right_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Right icon'
+            :name => ~c"right_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Right icon"
           },
           %{
-            :name => 'icon_only',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Icon without text'
+            :name => ~c"icon_only",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Icon without text"
           },
           %{
-            :name => 'size',
-            :type => 'sm | md',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of chip'
+            :name => ~c"size",
+            :type => ~c"sm | md",
+            :required => ~c"No",
+            :default => ~c"md",
+            :description => ~c"Size of chip"
           },
           %{
-            :name => 'is_active',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Active state'
+            :name => ~c"is_active",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Active state"
           },
           %{
-            :name => 'is_stroke',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Shows stroke on hover/active'
+            :name => ~c"is_stroke",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Shows stroke on hover/active"
           },
           %{
-            :name => 'variant',
-            :type => 'default | ghost',
-            :required => 'No',
-            :default => 'default',
-            :description => 'Visual/Logical variant of chip'
+            :name => ~c"variant",
+            :type => ~c"default | ghost",
+            :required => ~c"No",
+            :default => ~c"default",
+            :description => ~c"Visual/Logical variant of chip"
           },
           %{
-            :name => 'on_click',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Event to be fired on click'
+            :name => ~c"on_click",
+            :type => ~c"event",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Event to be fired on click"
           },
           %{
-            :name => 'class',
-            :type => 'css_classs',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
+            :name => ~c"class",
+            :type => ~c"css_classs",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization"
           }
         ]}
       />

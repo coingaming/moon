@@ -29,102 +29,102 @@ defmodule MoonWeb.Pages.Components.Select.MultiSelectPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'field',
-        :type => 'atom ',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field for the underlying phoenix select component'
+        :name => ~c"field",
+        :type => ~c"atom ",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Field for the underlying phoenix select component"
       },
       %{
-        :name => 'size',
-        :type => '-',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - size variant'
+        :name => ~c"size",
+        :type => ~c"-",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - size variant"
       },
       %{
-        :name => 'options',
-        :type => 'list',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Options for the select'
+        :name => ~c"options",
+        :type => ~c"list",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Options for the select"
       },
       %{
-        :name => 'prompt',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Placeholder text'
+        :name => ~c"prompt",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Placeholder text"
       },
       %{
-        :name => 'header',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - header element on the options popup'
+        :name => ~c"header",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - header element on the options popup"
       },
       %{
-        :name => 'footer',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - footer element on the options popup'
+        :name => ~c"footer",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - footer element on the options popup"
       },
       %{
-        :name => 'menu_width',
-        :type => 'number',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - Minimum width of the popup menu containing options'
+        :name => ~c"menu_width",
+        :type => ~c"number",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - Minimum width of the popup menu containing options"
       },
       %{
-        :name => 'left',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - Left content for selected option'
+        :name => ~c"left",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - Left content for selected option"
       },
       %{
-        :name => 'hint',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - Inform message under select, can be used for error message'
+        :name => ~c"hint",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - Inform message under select, can be used for error message"
       },
       %{
-        :name => 'items',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Content template for displaying each of the options'
+        :name => ~c"items",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Content template for displaying each of the options"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => '-',
-        :default => 'false',
-        :description => 'Whether the component is disabled'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"-",
+        :default => ~c"false",
+        :description => ~c"Whether the component is disabled"
       },
       %{
-        :name => 'value',
-        :type => 'any',
-        :required => 'No',
-        :default => '-',
-        :description => 'Default selected value'
+        :name => ~c"value",
+        :type => ~c"any",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Default selected value"
       },
       %{
-        :name => 'on_select',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Name of the event handler function when an option is clicked'
+        :name => ~c"on_select",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Name of the event handler function when an option is clicked"
       },
       %{
-        :name => 'is_error',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - If the component is in error mode'
+        :name => ~c"is_error",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - If the component is in error mode"
       }
     ]
   )

@@ -27,60 +27,60 @@ defmodule MoonWeb.Pages.Components.AvatarPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'bg_color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'bg-goku',
-        :description => 'Background color'
+        :name => ~c"bg_color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"bg-goku",
+        :description => ~c"Background color"
       },
       %{
-        :name => 'color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'text-bulma',
-        :description => 'Text color'
+        :name => ~c"color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"text-bulma",
+        :description => ~c"Text color"
       },
       %{
-        :name => 'image_url',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Path to the image'
+        :name => ~c"image_url",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Path to the image"
       },
       %{
-        :name => 'is_rounded',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => ''
+        :name => ~c"is_rounded",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c""
       },
       %{
-        :name => 'is_status_active',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Active state for status indication'
+        :name => ~c"is_status_active",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Active state for status indication"
       },
       %{
-        :name => 'name',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Capital letters of name'
+        :name => ~c"name",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Capital letters of name"
       },
       %{
-        :name => 'size',
-        :type => 'xs | sm | md | lg | xl | 2xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size for avatar'
+        :name => ~c"size",
+        :type => ~c"xs | sm | md | lg | xl | 2xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size for avatar"
       },
       %{
-        :name => 'status_origin',
-        :type => '%StatusOrigin{ vertical: top | bottom, horizontal: left | right }',
-        :required => 'No',
-        :default => '%StatusOrigin{vertical: "bottom", horizontal: "right"}',
-        :description => 'Position for status indication'
+        :name => ~c"status_origin",
+        :type => ~c"%StatusOrigin{ vertical: top | bottom, horizontal: left | right }",
+        :required => ~c"No",
+        :default => ~c"%StatusOrigin{vertical: \"bottom\", horizontal: \"right\"}",
+        :description => ~c"Position for status indication"
       }
     ]
   )
