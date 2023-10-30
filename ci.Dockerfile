@@ -1,4 +1,4 @@
-FROM alpine:3.18.2
+FROM heathmont/elixir-ci:1.15.6-otp-26-alpine
 RUN apk upgrade --no-cache && apk add --no-cache postgresql-client bash openssl libgcc libstdc++ ncurses-libs bash
 
 ARG APP_NAME
