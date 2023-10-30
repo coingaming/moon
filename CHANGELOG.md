@@ -1,3 +1,10 @@
+## [2.66.2](https://github.com/coingaming/moon/compare/v2.66.1...v2.66.2) (2023-10-30)
+
+
+### Bug Fixes
+
+* Remove ModalWizard from Parts ([#756](https://github.com/coingaming/moon/issues/756)) ([bc2d238](https://github.com/coingaming/moon/commit/bc2d238f2605bb59da894043e795fd4a4b6258c7))
+
 ## [2.66.1](https://github.com/coingaming/moon/compare/v2.66.0...v2.66.1) (2023-10-30)
 
 
