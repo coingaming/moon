@@ -26,18 +26,18 @@ defmodule MoonWeb.Pages.Components.LoaderPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'hit',
-        :description => 'Colour of Loader'
+        :name => ~c"color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"hit",
+        :description => ~c"Colour of Loader"
       },
       %{
-        :name => 'size',
-        :type => '2xs | xs | sm | md | lg',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size of Loader'
+        :name => ~c"size",
+        :type => ~c"2xs | xs | sm | md | lg",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size of Loader"
       }
     ]
   )

@@ -48,32 +48,32 @@ defmodule MoonWeb.Pages.Design.Progress.CircularProgressPage do
         title="CircularProgress props"
         data={[
           %{
-            :name => 'bg_color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'stroke-trunks/[.24]',
-            :description => 'Background colour'
+            :name => ~c"bg_color",
+            :type => ~c"string",
+            :required => ~c"No",
+            :default => ~c"stroke-trunks/[.24]",
+            :description => ~c"Background colour"
           },
           %{
-            :name => 'progress_color',
-            :type => 'string',
-            :required => 'No',
-            :default => 'stroke-piccolo',
-            :description => 'Progress bar colour'
+            :name => ~c"progress_color",
+            :type => ~c"string",
+            :required => ~c"No",
+            :default => ~c"stroke-piccolo",
+            :description => ~c"Progress bar colour"
           },
           %{
-            :name => 'size',
-            :type => '2xs | xs | sm | md | lg',
-            :required => 'No',
-            :default => 'md',
-            :description => 'Size of Progress'
+            :name => ~c"size",
+            :type => ~c"2xs | xs | sm | md | lg",
+            :required => ~c"No",
+            :default => ~c"md",
+            :description => ~c"Size of Progress"
           },
           %{
-            :name => 'value',
-            :type => 'number',
-            :required => 'No',
-            :default => '0',
-            :description => 'Value of Progress in %'
+            :name => ~c"value",
+            :type => ~c"number",
+            :required => ~c"No",
+            :default => ~c"0",
+            :description => ~c"Value of Progress in %"
           }
         ]}
       />

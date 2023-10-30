@@ -31,32 +31,32 @@ defmodule MoonWeb.Pages.Components.SwitchPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'checked',
-        :type => 'boolean ',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Is switch checked/unchecked'
+        :name => ~c"checked",
+        :type => ~c"boolean ",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Is switch checked/unchecked"
       },
       %{
-        :name => 'caption_unchecked',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Displayed text when unchecked'
+        :name => ~c"caption_unchecked",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Displayed text when unchecked"
       },
       %{
-        :name => 'caption_checked',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Displayed text when checked'
+        :name => ~c"caption_checked",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Displayed text when checked"
       },
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'No',
-        :default => 'false',
-        :description => 'If not used in Field component, needs to be specified'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"If not used in Field component, needs to be specified"
       }
     ]
   )

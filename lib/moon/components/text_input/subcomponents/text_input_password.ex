@@ -24,7 +24,9 @@ defmodule Moon.Components.TextInput.TextInputPassword do
   data(label, :string, from_context: {Moon.Components.TextInput, :label})
   data(use_error_tag, :boolean, from_context: {Moon.Components.TextInput, :use_error_tag})
 
-  data(show_password_text, :string, from_context: {Moon.Components.TextInput, :show_password_text})
+  data(show_password_text, :string,
+    from_context: {Moon.Components.TextInput, :show_password_text}
+  )
 
   data(has_left_icon, :boolean, from_context: {Moon.Components.TextInput, :has_left_icon})
 

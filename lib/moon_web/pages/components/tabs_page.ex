@@ -30,25 +30,25 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   data(props_info_array_tab, :list,
     default: [
       %{
-        :name => 'default',
-        :type => 'slot ',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Content inside the tab'
+        :name => ~c"default",
+        :type => ~c"slot ",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Content inside the tab"
       },
       %{
-        :name => 'size',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - size variant'
+        :name => ~c"size",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - size variant"
       },
       %{
-        :name => 'items',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - array of TabLink items'
+        :name => ~c"items",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - array of TabLink items"
       }
     ]
   )
@@ -56,32 +56,32 @@ defmodule MoonWeb.Pages.Components.TabsPage do
   data(props_info_array_tab_link, :list,
     default: [
       %{
-        :name => 'on_click',
-        :type => 'event ',
-        :required => 'No',
-        :default => '-',
-        :description => 'Event to happen when tab is clicked'
+        :name => ~c"on_click",
+        :type => ~c"event ",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Event to happen when tab is clicked"
       },
       %{
-        :name => 'element_left',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Left element'
+        :name => ~c"element_left",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Left element"
       },
       %{
-        :name => 'element_right',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Right element'
+        :name => ~c"element_right",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Right element"
       },
       %{
-        :name => 'to',
-        :type => 'any',
-        :required => 'No',
-        :default => '-',
-        :description => 'Link\'s destination'
+        :name => ~c"to",
+        :type => ~c"any",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Link's destination"
       }
     ]
   )

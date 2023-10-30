@@ -27,82 +27,82 @@ defmodule MoonWeb.Pages.Components.Date.DatepickerPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'with_time',
-        :type => 'boolean ',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Whether the datepicker includes time'
+        :name => ~c"with_time",
+        :type => ~c"boolean ",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Whether the datepicker includes time"
       },
       %{
-        :name => 'week_starts_on',
-        :type => '1 | 2 | 3 | 4 | 5 | 6 | 7',
-        :required => 'No',
-        :default => '1 (Monday)',
-        :description => 'Day of the week where the calendar starts'
+        :name => ~c"week_starts_on",
+        :type => ~c"1 | 2 | 3 | 4 | 5 | 6 | 7",
+        :required => ~c"No",
+        :default => ~c"1 (Monday)",
+        :description => ~c"Day of the week where the calendar starts"
       },
       %{
-        :name => 'start_date_field',
-        :type => 'atom',
-        :required => 'No',
-        :default => 'start_date',
-        :description => 'Field name for the start date'
+        :name => ~c"start_date_field",
+        :type => ~c"atom",
+        :required => ~c"No",
+        :default => ~c"start_date",
+        :description => ~c"Field name for the start date"
       },
       %{
-        :name => 'end_date_field',
-        :type => 'atom',
-        :required => 'No',
-        :default => 'end_date',
-        :description => 'Field name for the end date'
+        :name => ~c"end_date_field",
+        :type => ~c"atom",
+        :required => ~c"No",
+        :default => ~c"end_date",
+        :description => ~c"Field name for the end date"
       },
       %{
-        :name => 'button_class',
-        :type => 'css_class',
-        :required => 'No',
-        :default => '',
-        :description => 'Css class for the date button'
+        :name => ~c"button_class",
+        :type => ~c"css_class",
+        :required => ~c"No",
+        :default => ~c"",
+        :description => ~c"Css class for the date button"
       },
       %{
-        :name => 'show_date_inputs',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Whether to display the text input fields'
+        :name => ~c"show_date_inputs",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Whether to display the text input fields"
       },
       %{
-        :name => 'ranges',
-        :type => 'list',
-        :required => 'No',
+        :name => ~c"ranges",
+        :type => ~c"list",
+        :required => ~c"No",
         :default =>
-          'lastMonth | lastWeek | yesterday | thisWeek | thisMonth | last24hours | today',
-        :description => 'List of date ranges to choose from'
+          ~c"lastMonth | lastWeek | yesterday | thisWeek | thisMonth | last24hours | today",
+        :description => ~c"List of date ranges to choose from"
       },
       %{
-        :name => 'start_date',
-        :type => 'datetime',
-        :required => 'No',
-        :default => 'Timex.today()',
-        :description => 'Initial start date'
+        :name => ~c"start_date",
+        :type => ~c"datetime",
+        :required => ~c"No",
+        :default => ~c"Timex.today()",
+        :description => ~c"Initial start date"
       },
       %{
-        :name => 'end_date',
-        :type => 'datetime',
-        :required => 'No',
-        :default => 'Timex.today()',
-        :description => 'Initial end date'
+        :name => ~c"end_date",
+        :type => ~c"datetime",
+        :required => ~c"No",
+        :default => ~c"Timex.today()",
+        :description => ~c"Initial end date"
       },
       %{
-        :name => 'submit',
-        :type => 'event',
-        :required => 'No',
-        :default => 'update_dates',
-        :description => 'Event on date apply'
+        :name => ~c"submit",
+        :type => ~c"event",
+        :required => ~c"No",
+        :default => ~c"update_dates",
+        :description => ~c"Event on date apply"
       },
       %{
-        :name => 'testid',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => ''
+        :name => ~c"testid",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c""
       }
     ]
   )

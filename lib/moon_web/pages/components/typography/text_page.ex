@@ -26,53 +26,53 @@ defmodule MoonWeb.Pages.Components.Typography.TextPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'color',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Text color'
+        :name => ~c"color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Text color"
       },
       %{
-        :name => 'size',
-        :type => '9 | 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72',
-        :required => 'No',
-        :default => '16',
-        :description => 'TODO - Text size (support size 9)'
+        :name => ~c"size",
+        :type => ~c"9 | 10 | 12 | 14 | 16 | 18 | 20 | 24 | 32 | 48 | 56 | 64 | 72",
+        :required => ~c"No",
+        :default => ~c"16",
+        :description => ~c"TODO - Text size (support size 9)"
       },
       %{
-        :name => 'is_bold',
-        :type => 'boolean',
-        :required => 'No',
-        :default => '-',
-        :description => 'Whether font weight is bold'
+        :name => ~c"is_bold",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Whether font weight is bold"
       },
       %{
-        :name => 'text_align',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Alignment'
+        :name => ~c"text_align",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Alignment"
       },
       %{
-        :name => 'is_uppercase',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Whether text is uppercase'
+        :name => ~c"is_uppercase",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Whether text is uppercase"
       },
       %{
-        :name => 'is_underline',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Whether text is underlined'
+        :name => ~c"is_underline",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Whether text is underlined"
       },
       %{
-        :name => 'line_height',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Custom line height'
+        :name => ~c"line_height",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Custom line height"
       }
     ]
   )

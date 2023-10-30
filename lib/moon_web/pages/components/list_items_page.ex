@@ -29,46 +29,46 @@ defmodule MoonWeb.Pages.Components.ListItemsPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'default',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'List item subtext'
+        :name => ~c"default",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"List item subtext"
       },
       %{
-        :name => 'size',
-        :type => 'md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'List item size'
+        :name => ~c"size",
+        :type => ~c"md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"List item size"
       },
       %{
-        :name => 'background_color',
-        :type => 'string',
-        :required => 'No',
-        :default => 'gohan',
-        :description => 'List item background color'
+        :name => ~c"background_color",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"gohan",
+        :description => ~c"List item background color"
       },
       %{
-        :name => 'color',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - List item color'
+        :name => ~c"color",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - List item color"
       },
       %{
-        :name => 'left_icon',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Element on the left'
+        :name => ~c"left_icon",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Element on the left"
       },
       %{
-        :name => 'right_icon',
-        :type => 'slot',
-        :required => 'No',
-        :default => '-',
-        :description => 'Element on the right'
+        :name => ~c"right_icon",
+        :type => ~c"slot",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Element on the right"
       }
     ]
   )

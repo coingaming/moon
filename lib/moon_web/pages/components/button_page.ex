@@ -26,53 +26,54 @@ defmodule MoonWeb.Pages.Components.ButtonPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'animation',
-        :type => 'progress | success | error | pulse',
-        :required => 'No',
-        :default => '-',
-        :description => 'Animation of button'
+        :name => ~c"animation",
+        :type => ~c"progress | success | error | pulse",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Animation of button"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Disabled Button'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Disabled Button"
       },
       %{
-        :name => 'full_width',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Full width Button'
+        :name => ~c"full_width",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Full width Button"
       },
       %{
-        :name => 'left_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the left icon'
+        :name => ~c"left_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the left icon"
       },
       %{
-        :name => 'right_icon',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Asset name for the right icon'
+        :name => ~c"right_icon",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Asset name for the right icon"
       },
       %{
-        :name => 'size',
-        :type => 'xs | sm | md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size of button'
+        :name => ~c"size",
+        :type => ~c"xs | sm | md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size of button"
       },
       %{
-        :name => 'variant',
-        :type => 'primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)',
-        :required => 'No',
-        :default => 'primary',
-        :description => 'Visual/Logical variant of button'
+        :name => ~c"variant",
+        :type =>
+          ~c"primary | secondary | tertiary | ghost | link (deprecated) | none (deprecated)",
+        :required => ~c"No",
+        :default => ~c"primary",
+        :description => ~c"Visual/Logical variant of button"
       }
     ]
   )

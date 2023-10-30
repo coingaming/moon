@@ -29,32 +29,32 @@ defmodule MoonWeb.Pages.Components.Select.SelectPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field name for underlying surface select component'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Field name for underlying surface select component"
       },
       %{
-        :name => 'label',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Label title'
+        :name => ~c"label",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Label title"
       },
       %{
-        :name => 'prompt',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Placeholder'
+        :name => ~c"prompt",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Placeholder"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Whether the component is disabled'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Whether the component is disabled"
       }
     ]
   )

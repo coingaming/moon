@@ -49,32 +49,32 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         title="Popover props"
         data={[
           %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether or not the popover is open'
+            :name => ~c"is_open",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Whether or not the popover is open"
           },
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content of Popover item, see Popover.Panel'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Content of Popover item, see Popover.Panel"
           },
           %{
-            :name => 'trigger',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Trigger element of Popover item, see Popover.Trigger'
+            :name => ~c"trigger",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Trigger element of Popover item, see Popover.Trigger"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />
@@ -83,19 +83,19 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         title="Popover.Panel props"
         data={[
           %{
-            :name => 'position',
+            :name => ~c"position",
             :type =>
-              'top | bottom | left | right | top-start | bottom-start | left-start | right-start | top-end | bottom-end | left-end | right-end',
-            :required => 'No',
-            :default => 'top',
-            :description => 'Set placement for popover'
+              ~c"top | bottom | left | right | top-start | bottom-start | left-start | right-start | top-end | bottom-end | left-end | right-end",
+            :required => ~c"No",
+            :default => ~c"top",
+            :description => ~c"Set placement for popover"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />

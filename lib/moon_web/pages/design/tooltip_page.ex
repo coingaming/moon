@@ -53,18 +53,18 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         title="Tooltip props"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Message shown in tooltip, see Tooltip.Content'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Message shown in tooltip, see Tooltip.Content"
           },
           %{
-            :name => 'trigger',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Hover element, see Tooltip.Trigger'
+            :name => ~c"trigger",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Hover element, see Tooltip.Trigger"
           }
         ]}
       />
@@ -72,26 +72,26 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         title="Tooltip.Content props"
         data={[
           %{
-            :name => 'arrow',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Arrow element, see Tooltip.Arrow'
+            :name => ~c"arrow",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Arrow element, see Tooltip.Arrow"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Classes for customization'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Classes for customization"
           },
           %{
-            :name => 'position',
+            :name => ~c"position",
             :type =>
-              'top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | right | left',
-            :required => 'No',
-            :default => 'top-center',
-            :description => 'Position of the tooltip'
+              ~c"top-start | top-center | top-end | bottom-start | bottom-center | bottom-end | right | left",
+            :required => ~c"No",
+            :default => ~c"top-center",
+            :description => ~c"Position of the tooltip"
           }
         ]}
       />
@@ -99,11 +99,11 @@ defmodule MoonWeb.Pages.Design.TooltipPage do
         title="Tooltip.Arrow props"
         data={[
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Classes for customization'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Classes for customization"
           }
         ]}
       />

@@ -1,5 +1,5 @@
-FROM alpine:3.11.5
-RUN apk upgrade --no-cache && apk add --no-cache postgresql-client bash openssl libgcc libstdc++ ncurses-libs bash
+FROM alpine:3.18.2
+RUN apk upgrade --no-cache && apk add --no-cache postgresql-client bash openssl libgcc libstdc++ ncurses-libs bash libcrypto1.1
 
 ARG APP_NAME
 ARG MIX_ENV

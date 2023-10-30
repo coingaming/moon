@@ -52,32 +52,32 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         title="Modal props"
         data={[
           %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether the Modal is open or not'
+            :name => ~c"is_open",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Whether the Modal is open or not"
           },
           %{
-            :name => 'on_close',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Handler for open/close of the element'
+            :name => ~c"on_close",
+            :type => ~c"event",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Handler for open/close of the element"
           },
           %{
-            :name => 'backdrop',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Backdrop of Modal element, see Modal.Backdrop'
+            :name => ~c"backdrop",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Backdrop of Modal element, see Modal.Backdrop"
           },
           %{
-            :name => 'panel',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content of Modal element, see Modal.Panel'
+            :name => ~c"panel",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Content of Modal element, see Modal.Panel"
           }
         ]}
       />
@@ -86,18 +86,18 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         title="Modal.Panel"
         data={[
           %{
-            :name => 'default',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Content of Modal element'
+            :name => ~c"default",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Content of Modal element"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Tailwind classes for customization of Panel'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization of Panel"
           }
         ]}
       />
@@ -106,11 +106,11 @@ defmodule MoonWeb.Pages.Design.ModalPage do
         title="Modal.Backdrop"
         data={[
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Tailwind classes for customization of Backdrop'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization of Backdrop"
           }
         ]}
       />

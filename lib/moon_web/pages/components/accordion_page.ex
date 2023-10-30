@@ -29,53 +29,53 @@ defmodule MoonWeb.Pages.Components.AccordionPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'title',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Title of accordion'
+        :name => ~c"title",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Title of accordion"
       },
       %{
-        :name => 'open_by_default',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Expanded/collapsed accordion by default'
+        :name => ~c"open_by_default",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Expanded/collapsed accordion by default"
       },
       %{
-        :name => 'with_button',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'true',
-        :description => 'Show expand/collapse chevron'
+        :name => ~c"with_button",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"true",
+        :description => ~c"Show expand/collapse chevron"
       },
       %{
-        :name => 'disabled',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Disable expand/collapse accordion'
+        :name => ~c"disabled",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Disable expand/collapse accordion"
       },
       %{
-        :name => 'content',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Content to show inside of accordion'
+        :name => ~c"content",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Content to show inside of accordion"
       },
       %{
-        :name => 'size',
-        :type => 'sm | md | lg | xl',
-        :required => 'No',
-        :default => 'md',
-        :description => 'Size variant of accordion'
+        :name => ~c"size",
+        :type => ~c"sm | md | lg | xl",
+        :required => ~c"No",
+        :default => ~c"md",
+        :description => ~c"Size variant of accordion"
       },
       %{
-        :name => 'is_content_inside',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
-        :description => 'Whether the content is displayed outside of the accordion header'
+        :name => ~c"is_content_inside",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
+        :description => ~c"Whether the content is displayed outside of the accordion header"
       }
     ]
   )

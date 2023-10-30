@@ -20,46 +20,46 @@ defmodule MoonWeb.Pages.TokensPage do
   data(border_radius_array, :list,
     default: [
       %{
-        :property => 'XS interactive border radius',
-        :css => '--radius-i-xs',
-        :key => 'rounded-moon-i-xs',
-        :value => '4px'
+        :property => ~c"XS interactive border radius",
+        :css => ~c"--radius-i-xs",
+        :key => ~c"rounded-moon-i-xs",
+        :value => ~c"4px"
       },
       %{
-        :property => 'SM interactive border radius',
-        :css => '--radius-i-sm',
-        :key => 'rounded-moon-i-sm',
-        :value => '8px'
+        :property => ~c"SM interactive border radius",
+        :css => ~c"--radius-i-sm",
+        :key => ~c"rounded-moon-i-sm",
+        :value => ~c"8px"
       },
       %{
-        :property => 'MD interactive border radius',
-        :css => '--radius-i-md',
-        :key => 'rounded-moon-i-md',
-        :value => '12px'
+        :property => ~c"MD interactive border radius",
+        :css => ~c"--radius-i-md",
+        :key => ~c"rounded-moon-i-md",
+        :value => ~c"12px"
       },
       %{
-        :property => 'XS surface border radius',
-        :css => '--radius-s-xs',
-        :key => 'rounded-moon-s-xs',
-        :value => '4px'
+        :property => ~c"XS surface border radius",
+        :css => ~c"--radius-s-xs",
+        :key => ~c"rounded-moon-s-xs",
+        :value => ~c"4px"
       },
       %{
-        :property => 'SM surface border radius',
-        :css => '--radius-s-sm',
-        :key => 'rounded-moon-s-sm',
-        :value => '8px'
+        :property => ~c"SM surface border radius",
+        :css => ~c"--radius-s-sm",
+        :key => ~c"rounded-moon-s-sm",
+        :value => ~c"8px"
       },
       %{
-        :property => 'MD surface border radius',
-        :css => '--radius-s-md',
-        :key => 'rounded-moon-s-md',
-        :value => '12px'
+        :property => ~c"MD surface border radius",
+        :css => ~c"--radius-s-md",
+        :key => ~c"rounded-moon-s-md",
+        :value => ~c"12px"
       },
       %{
-        :property => 'LG surface border radius',
-        :css => '--radius-s-lg',
-        :key => 'rounded-moon-s-lg',
-        :value => '16px'
+        :property => ~c"LG surface border radius",
+        :css => ~c"--radius-s-lg",
+        :key => ~c"rounded-moon-s-lg",
+        :value => ~c"16px"
       }
     ]
   )
@@ -67,35 +67,35 @@ defmodule MoonWeb.Pages.TokensPage do
   data(box_shadow_style_array, :list,
     default: [
       %{
-        :property => 'XS box shadow',
-        :css => '--shadow-xs',
-        :key => 'shadow-moon-xs',
-        :value => '0 4px 12px -6px rgb(0 0 0 / 0.06)'
+        :property => ~c"XS box shadow",
+        :css => ~c"--shadow-xs",
+        :key => ~c"shadow-moon-xs",
+        :value => ~c"0 4px 12px -6px rgb(0 0 0 / 0.06)"
       },
       %{
-        :property => 'SM box shadow',
-        :css => '--shadow-sm',
-        :key => 'shadow-moon-sm',
-        :value => '0 6px 6px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)'
+        :property => ~c"SM box shadow",
+        :css => ~c"--shadow-sm",
+        :key => ~c"shadow-moon-sm",
+        :value => ~c"0 6px 6px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)"
       },
       %{
-        :property => 'MD box shadow',
-        :css => '--shadow-md',
-        :key => 'shadow-moon-md',
-        :value => '0 12px 12px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)'
+        :property => ~c"MD box shadow",
+        :css => ~c"--shadow-md",
+        :key => ~c"shadow-moon-md",
+        :value => ~c"0 12px 12px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)"
       },
       %{
-        :property => 'LG box shadow',
-        :css => '--shadow-lg',
-        :key => 'shadow-moon-lg',
-        :value => '0 8px 24px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)'
+        :property => ~c"LG box shadow",
+        :css => ~c"--shadow-lg",
+        :key => ~c"shadow-moon-lg",
+        :value => ~c"0 8px 24px -6px rgb(0 0 0 / 0.16), 0 0 1px rgb(0 0 0 / 0.4)"
       },
       %{
-        :property => 'XL box shadow',
-        :css => '--shadow-xl',
-        :key => 'shadow-moon-xl',
+        :property => ~c"XL box shadow",
+        :css => ~c"--shadow-xl",
+        :key => ~c"shadow-moon-xl",
         :value =>
-          '0 32px 32px -8px rgb(0 0 0 / 0.08), 0 0 32px -8px rgb(0 0 0 / 0.12), 0 0 1px rgb(0 0 0 / 0.2)'
+          ~c"0 32px 32px -8px rgb(0 0 0 / 0.08), 0 0 32px -8px rgb(0 0 0 / 0.12), 0 0 1px rgb(0 0 0 / 0.2)"
       }
     ]
   )
@@ -103,10 +103,10 @@ defmodule MoonWeb.Pages.TokensPage do
   data(opacity, :list,
     default: [
       %{
-        :property => 'Opacity',
-        :css => '--opacity-moon',
-        :key => 'opacity-moon',
-        :value => '0.6'
+        :property => ~c"Opacity",
+        :css => ~c"--opacity-moon",
+        :key => ~c"opacity-moon",
+        :value => ~c"0.6"
       }
     ]
   )

@@ -46,32 +46,32 @@ defmodule MoonWeb.Pages.Design.Form.TextAreaPage do
         title="TextArea props"
         data={[
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Additional classes for textarea tag'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Additional classes for textarea tag"
           },
           %{
-            :name => 'attrs',
-            :type => 'map',
-            :required => 'No',
-            :default => '%{}',
-            :description => 'Additional attributes for textarea tag'
+            :name => ~c"attrs",
+            :type => ~c"map",
+            :required => ~c"No",
+            :default => ~c"%{}",
+            :description => ~c"Additional attributes for textarea tag"
           },
           %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Disabling textarea'
+            :name => ~c"disabled",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Disabling textarea"
           },
           %{
-            :name => 'placeholder',
-            :type => 'string',
-            :required => 'No',
-            :default => '',
-            :description => 'Placeholder for the textarea'
+            :name => ~c"placeholder",
+            :type => ~c"string",
+            :required => ~c"No",
+            :default => ~c"",
+            :description => ~c"Placeholder for the textarea"
           }
         ]}
       />

@@ -3,6 +3,8 @@ version: '3'
 
 services:
   moon:
-    image: heathmont/moon-surface:v25.3.7
+    image: heathmont/moon-surface:v2.66.0
     ports:
       - 4000:80
+
+# docker run -i -p 4000:80  612aa2626997 /bin/bash

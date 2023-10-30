@@ -32,47 +32,47 @@ defmodule MoonWeb.Pages.Components.RadioButtonPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'id',
-        :type => 'string',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Unique element\'s identifier'
+        :name => ~c"id",
+        :type => ~c"string",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Unique element's identifier"
       },
       %{
-        :name => 'default',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Represent a caption for an item'
+        :name => ~c"default",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Represent a caption for an item"
       },
       %{
-        :name => 'field',
-        :type => 'atom',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Field name for underlying surface radio button component'
+        :name => ~c"field",
+        :type => ~c"atom",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Field name for underlying surface radio button component"
       },
       %{
-        :name => 'aria_label',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Defines a string value that labels the current element'
+        :name => ~c"aria_label",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Defines a string value that labels the current element"
       },
       %{
-        :name => 'checked',
-        :type => 'boolean',
-        :required => 'No',
-        :default => 'false',
+        :name => ~c"checked",
+        :type => ~c"boolean",
+        :required => ~c"No",
+        :default => ~c"false",
         :description =>
-          'A Boolean indicating whether or not this radio button is the default-selected item in the group'
+          ~c"A Boolean indicating whether or not this radio button is the default-selected item in the group"
       },
       %{
-        :name => 'click',
-        :type => 'event',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Event handler'
+        :name => ~c"click",
+        :type => ~c"event",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Event handler"
       }
     ]
   )

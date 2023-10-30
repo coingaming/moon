@@ -43,32 +43,32 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
         title="Drawer props"
         data={[
           %{
-            :name => 'is_open',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Whether or not the Drawer is opened'
+            :name => ~c"is_open",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Whether or not the Drawer is opened"
           },
           %{
-            :name => 'on_close',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'Handler for open/close of the element'
+            :name => ~c"on_close",
+            :type => ~c"event",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Handler for open/close of the element"
           },
           %{
-            :name => 'panel',
-            :type => 'slot',
-            :required => 'Yes',
-            :default => '-',
-            :description => 'Content of Drawer element, see Drawer.Panel'
+            :name => ~c"panel",
+            :type => ~c"slot",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Content of Drawer element, see Drawer.Panel"
           },
           %{
-            :name => 'backdrop',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Backdrop of Drawer element, see Drawer.Backdrop'
+            :name => ~c"backdrop",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Backdrop of Drawer element, see Drawer.Backdrop"
           }
         ]}
       />
@@ -77,18 +77,18 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
         title="Drawer.Panel"
         data={[
           %{
-            :name => 'position',
-            :type => 'top | bottom | start | end',
-            :required => 'No',
-            :default => 'end',
-            :description => 'Drawer position on screen'
+            :name => ~c"position",
+            :type => ~c"top | bottom | start | end",
+            :required => ~c"No",
+            :default => ~c"end",
+            :description => ~c"Drawer position on screen"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />
@@ -97,11 +97,11 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
         title="Drawer.Backdrop"
         data={[
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for custom styles'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for custom styles"
           }
         ]}
       />

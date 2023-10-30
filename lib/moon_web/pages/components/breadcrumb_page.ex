@@ -27,11 +27,11 @@ defmodule MoonWeb.Pages.Components.BreadcrumbPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'breadcrumbs',
-        :type => 'list of Moon.Components.Breadcrumb.Crumb',
-        :required => 'No',
-        :default => '[]',
-        :description => 'Crumbs to display'
+        :name => ~c"breadcrumbs",
+        :type => ~c"list of Moon.Components.Breadcrumb.Crumb",
+        :required => ~c"No",
+        :default => ~c"[]",
+        :description => ~c"Crumbs to display"
       }
     ]
   )

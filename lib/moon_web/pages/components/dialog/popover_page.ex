@@ -59,54 +59,54 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'content',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Content of popover'
+        :name => ~c"content",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Content of popover"
       },
       %{
-        :name => 'default',
-        :type => 'slot',
-        :required => 'Yes',
-        :default => '-',
-        :description => 'Content of popover toggle element'
+        :name => ~c"default",
+        :type => ~c"slot",
+        :required => ~c"Yes",
+        :default => ~c"-",
+        :description => ~c"Content of popover toggle element"
       },
       %{
-        :name => 'default_state',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Open/Closed popover by default'
+        :name => ~c"default_state",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Open/Closed popover by default"
       },
       %{
-        :name => 'close_on_click_outside',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Close popover if clicked outside'
+        :name => ~c"close_on_click_outside",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Close popover if clicked outside"
       },
       %{
-        :name => 'placement',
+        :name => ~c"placement",
         :type =>
-          'top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end',
-        :required => 'No',
-        :default => 'bottom-start',
-        :description => 'TODO - Placement of popover'
+          ~c"top-start | top | top-end | right-start | right | right-end | bottom-start | bottom | bottom-end | left-start | left | left-end",
+        :required => ~c"No",
+        :default => ~c"bottom-start",
+        :description => ~c"TODO - Placement of popover"
       },
       %{
-        :name => 'min_width',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - min-width value of popover (px)min-width value of popover (px)'
+        :name => ~c"min_width",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - min-width value of popover (px)min-width value of popover (px)"
       },
       %{
-        :name => 'max_width',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - max-width value of popover (px)'
+        :name => ~c"max_width",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - max-width value of popover (px)"
       }
     ]
   )

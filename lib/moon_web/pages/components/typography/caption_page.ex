@@ -26,32 +26,32 @@ defmodule MoonWeb.Pages.Components.Typography.CaptionPage do
   data(props_info_array, :list,
     default: [
       %{
-        :name => 'color_class',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'Component or element which Tooltip wraps around'
+        :name => ~c"color_class",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"Component or element which Tooltip wraps around"
       },
       %{
-        :name => 'default',
-        :type => 'slot',
-        :required => 'true',
-        :default => '-',
-        :description => 'Content for caption'
+        :name => ~c"default",
+        :type => ~c"slot",
+        :required => ~c"true",
+        :default => ~c"-",
+        :description => ~c"Content for caption"
       },
       %{
-        :name => 'text_align_class',
-        :type => 'string',
-        :required => 'No',
-        :default => '-',
-        :description => 'TODO - Text alignment (this should be an enum set of values)'
+        :name => ~c"text_align_class",
+        :type => ~c"string",
+        :required => ~c"No",
+        :default => ~c"-",
+        :description => ~c"TODO - Text alignment (this should be an enum set of values)"
       },
       %{
-        :name => 'is_regular',
-        :type => '-',
-        :required => '-',
-        :default => '-',
-        :description => 'TODO - Is regular font weight'
+        :name => ~c"is_regular",
+        :type => ~c"-",
+        :required => ~c"-",
+        :default => ~c"-",
+        :description => ~c"TODO - Is regular font weight"
       }
     ]
   )

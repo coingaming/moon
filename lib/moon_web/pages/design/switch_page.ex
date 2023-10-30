@@ -88,74 +88,74 @@ defmodule MoonWeb.Pages.Design.SwitchPage do
         title="Switch props"
         data={[
           %{
-            :name => 'checked',
-            :type => 'boolean',
-            :required => 'No',
-            :default => 'false',
-            :description => 'Is switch checked/unchecked'
+            :name => ~c"checked",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"false",
+            :description => ~c"Is switch checked/unchecked"
           },
           %{
-            :name => 'disabled',
-            :type => 'boolean',
-            :required => 'No',
-            :default => '-',
-            :description => 'Set disabled/not disabled switch'
+            :name => ~c"disabled",
+            :type => ~c"boolean",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Set disabled/not disabled switch"
           },
           %{
-            :name => 'on_bg_color',
-            :type => 'css_class',
-            :required => 'No',
-            :default => 'bg-piccolo',
-            :description => 'Tailwind class for custom on-state background color'
+            :name => ~c"on_bg_color",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"bg-piccolo",
+            :description => ~c"Tailwind class for custom on-state background color"
           },
           %{
-            :name => 'off_bg_color',
-            :type => 'css_class',
-            :required => 'No',
-            :default => 'bg-beerus',
-            :description => 'Tailwind class for custom off-state background color'
+            :name => ~c"off_bg_color",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"bg-beerus",
+            :description => ~c"Tailwind class for custom off-state background color"
           },
           %{
-            :name => 'on_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Set icon for checked state'
+            :name => ~c"on_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Set icon for checked state"
           },
           %{
-            :name => 'off_icon',
-            :type => 'slot',
-            :required => 'No',
-            :default => '-',
-            :description => 'Set icon for unchecked state'
+            :name => ~c"off_icon",
+            :type => ~c"slot",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Set icon for unchecked state"
           },
           %{
-            :name => 'size',
-            :type => '2xs | xs | sm',
-            :required => 'No',
-            :default => 'sm',
-            :description => 'Size of switch'
+            :name => ~c"size",
+            :type => ~c"2xs | xs | sm",
+            :required => ~c"No",
+            :default => ~c"sm",
+            :description => ~c"Size of switch"
           },
           %{
-            :name => 'on_change',
-            :type => 'event',
-            :required => 'No',
-            :default => '-',
-            :description => 'The function to call when the switch is toggled'
+            :name => ~c"on_change",
+            :type => ~c"event",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"The function to call when the switch is toggled"
           },
           %{
-            :name => 'class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization'
+            :name => ~c"class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization"
           },
           %{
-            :name => 'switcher_class',
-            :type => 'css_class',
-            :required => 'No',
-            :default => '-',
-            :description => 'Tailwind classes for customization of switcher element'
+            :name => ~c"switcher_class",
+            :type => ~c"css_class",
+            :required => ~c"No",
+            :default => ~c"-",
+            :description => ~c"Tailwind classes for customization of switcher element"
           }
         ]}
       />

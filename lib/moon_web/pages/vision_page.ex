@@ -40,10 +40,10 @@ defmodule MoonWeb.Pages.VisionPage do
           heading="Efficiency"
           sub_heading="A Design System ensures maximum returns on time spent on code and design, with minimal wasted energy, in order to achieve the same results."
           supporting_text_items={[
-            'It improves the approach, minimising time spent creating products from scratch so it can be better spent solving problems.',
-            'It improves code through iteration, which is cheaper than writing quality code from scratch on demand.',
-            'It eliminates the need to repeatedly communicate design decisions that are documented and implemented.',
-            'It frees teams up from maintaining their own code, which is often duplicated.'
+            ~c"It improves the approach, minimising time spent creating products from scratch so it can be better spent solving problems.",
+            ~c"It improves code through iteration, which is cheaper than writing quality code from scratch on demand.",
+            ~c"It eliminates the need to repeatedly communicate design decisions that are documented and implemented.",
+            ~c"It frees teams up from maintaining their own code, which is often duplicated."
           ]}
         />
         <VisionCard
@@ -57,7 +57,7 @@ defmodule MoonWeb.Pages.VisionPage do
           heading="Agility"
           sub_heading="A Design System facilitates a product's agility by preventing stagnation on topics already discussed, agreed upon, documented and implemented."
           supporting_text_items={[
-            'It shares the design and coding workload evenly between all team members.',
+            ~c"It shares the design and coding workload evenly between all team members.",
             "It allows us to create prototypes, experiments and launch MVPs in less time. This makes sure elements like consistency and accessibility aren't ignored in the initial product in order to meet launch times."
           ]}
         />
@@ -72,8 +72,8 @@ defmodule MoonWeb.Pages.VisionPage do
           heading="Quality"
           sub_heading="A Design System provides a systematic approach to managing code quality and design decisions."
           supporting_text_items={[
-            'Being in constant evolution through iterations means the quality of each component continues to improve over time, particularly in comparison to new components.',
-            'The fact it is a modular, closed and versioned system reduces the risk of losses to both code and design.',
+            ~c"Being in constant evolution through iterations means the quality of each component continues to improve over time, particularly in comparison to new components.",
+            ~c"The fact it is a modular, closed and versioned system reduces the risk of losses to both code and design.",
             "It's easily isolated in order to assess its quality and measure its external integration."
           ]}
         />
