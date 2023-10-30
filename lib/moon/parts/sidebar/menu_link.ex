@@ -38,7 +38,7 @@ defmodule Moon.Parts.Sidebar.MenuLink do
         %{
           "data-phx-link": "redirect",
           "data-phx-link-state": "push",
-          route: @route,
+          route: @route
         },
         @attrs
       )}
