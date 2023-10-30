@@ -1,14 +1,19 @@
 version: 2.1
 aliases:
+  docker_image: &docker_image
+    - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+    auth:
+      username: $DOCKER_USER
+      password: $DOCKER_PASS
 
 references:
   images:
     elixir: &ELIXIR_IMAGE heathmont/elixir-ci:1.13.1-otp-24-alpine
 
+
 jobs:
   prelease:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: *docker_image
     environment:
       MIX_ENV: prod
     steps:
@@ -54,8 +59,7 @@ jobs:
             - _build
 
   test:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: *docker_image
     environment:
       MIX_ENV: test
     steps:
@@ -89,8 +93,7 @@ jobs:
       - run:
           command: mix test
   dockerhub:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: *docker_image
     steps:
       - checkout
       - setup_remote_docker:
@@ -103,8 +106,7 @@ jobs:
             - v10-prod-
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: *docker_image
     steps:
       - checkout
       - setup_remote_docker:
@@ -126,8 +128,7 @@ jobs:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
   semrelease:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: *docker_image
     environment:
       MIX_ENV: test
     resource_class: xlarge
