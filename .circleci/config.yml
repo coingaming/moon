@@ -1,10 +1,10 @@
 version: 2.1
 aliases:
   elixir_image: &elixir_image
-    - image: heathmont/elixir-ci:1.13.1-otp-24-alpine
-      auth:
-        username: $DOCKER_USER 
-        password: $DOCKER_PASS
+    image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+    auth:
+      username: $DOCKER_USER 
+      password: $DOCKER_PASS
 
 jobs:
   prelease:
