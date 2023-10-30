@@ -12,6 +12,7 @@ jobs:
     environment:
       MIX_ENV: prod
     steps:
+      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - checkout
       - run:
           name: Check variables
@@ -19,7 +20,6 @@ jobs:
       - run:
           name: Setup robot SSH key
           command: echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot && chmod 600 $HOME/.ssh/id_rsa.robot && ssh-add $HOME/.ssh/id_rsa.robot
-      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Setup SSH config
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
