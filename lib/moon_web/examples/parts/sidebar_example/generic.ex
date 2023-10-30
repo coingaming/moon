@@ -13,12 +13,12 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Generic do
   def render(assigns) do
     ~F"""
     <div>
-      <Sidebar.BottomNavigation
-        src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
-        href="#"
-        on_click="open_sidebar"
-      />
       <Sidebar id="generic_sidebar">
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
         <Sidebar.Generic>
           <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
           <Sidebar.Section>

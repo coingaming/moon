@@ -1,3 +1,10 @@
+## [2.66.1](https://github.com/coingaming/moon/compare/v2.66.0...v2.66.1) (2023-10-30)
+
+
+### Bug Fixes
+
+* Parts.{Wizard, Sidebar} fixes ([#755](https://github.com/coingaming/moon/issues/755)) ([08c4e6f](https://github.com/coingaming/moon/commit/08c4e6f87f37bfd0f6d55caa69a09132ebcbb317))
+
 # [2.66.0](https://github.com/coingaming/moon/compare/v2.65.2...v2.66.0) (2023-10-27)
 
 

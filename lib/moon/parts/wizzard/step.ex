@@ -49,8 +49,8 @@ defmodule Moon.Parts.Wizard.Step do
       type="button"
       {=@tabindex}
       aria-selected={"#{@is_selected}"}
-      disabled={@disabled || @tabindex > @selected + 1}
-      :on-click={!(@disabled || @tabindex > @selected + 1) && @on_change}
+      disabled={@disabled || @tabindex > @selected}
+      :on-click={!(@disabled || @tabindex > @selected) && @on_change}
       value={@tabindex}
     >
       <div

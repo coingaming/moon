@@ -15,10 +15,13 @@ defmodule Moon.Parts.Sidebar.MenuLink do
   prop(class, :css_class)
   @doc "Route to redirect to"
   prop(route, :any)
+  @doc "Additional attributes set for the tag a"
+  prop(attrs, :map, default: %{})
+  @doc "Active page"
+  prop(active_page, :string, from_context: :active_page)
+
   @doc "Default slot"
   slot(default)
-  @doc "Active page"
-  data(active_page, :string, from_context: :active_page)
 
   def render(assigns) do
     ~F"""
@@ -31,12 +34,14 @@ defmodule Moon.Parts.Sidebar.MenuLink do
         ],
         @class
       ])}
-      attrs={
-        "data-phx-link": "redirect",
-        "data-phx-link-state": "push",
-        route: @route,
-        fake: "hello"
-      }
+      attrs={Map.merge(
+        %{
+          "data-phx-link": "redirect",
+          "data-phx-link-state": "push",
+          route: @route
+        },
+        @attrs
+      )}
       is_active={@active_page == @route}
       href={@route}
       {=@id}

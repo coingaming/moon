@@ -10,7 +10,6 @@ defmodule MoonWeb.Examples.Parts.ModalExample.Wizard do
   import MoonWeb.Helpers.Lorem
 
   data(selected, :integer, default: 0)
-  data(done, :boolean, default: false)
 
   data(steps, :list,
     default: [
@@ -60,12 +59,12 @@ defmodule MoonWeb.Examples.Parts.ModalExample.Wizard do
   end
 
   def handle_event("set_open", _, socket) do
-    Moon.Parts.Modal.open("modal_wizard")
+    Modal.open("modal_wizard")
     {:noreply, socket}
   end
 
   def handle_event("set_close", _, socket) do
-    Moon.Parts.Modal.close("modal_wizard")
+    Modal.close("modal_wizard")
     {:noreply, socket}
   end
 

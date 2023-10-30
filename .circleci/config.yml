@@ -1,14 +1,15 @@
 version: 2.1
 aliases:
-
-references:
-  images:
-    elixir: &ELIXIR_IMAGE heathmont/elixir-ci:1.13.1-otp-24-alpine
+  elixir_image: &elixir_image
+    image: heathmont/elixir-ci:1.13.1-otp-24-alpine
+    auth:
+      username: $DOCKER_USER 
+      password: $DOCKER_PASS
 
 jobs:
   prelease:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: 
+      - *elixir_image
     environment:
       MIX_ENV: prod
     steps:
@@ -53,8 +54,8 @@ jobs:
             - _build
 
   test:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: 
+      - *elixir_image
     environment:
       MIX_ENV: test
     steps:
@@ -87,8 +88,8 @@ jobs:
       - run:
           command: mix test
   dockerhub:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: 
+      - *elixir_image
     steps:
       - checkout
       - setup_remote_docker:
@@ -99,20 +100,19 @@ jobs:
           keys:
             - v10-prod-{{ .Revision }}
             - v10-prod-
-      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+      - run:
+          name: Docker login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: 
+      - *elixir_image
     steps:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
       - attach_workspace:
           at: ./
-      - run:
-          name: Docker login
-          command: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Setup robot SSH key
           command: |
@@ -125,8 +125,8 @@ jobs:
           name: Deploy
           command: scripts/deploy/stacks-deploy $CIRCLE_TAG
   semrelease:
-    docker:
-      - image: *ELIXIR_IMAGE
+    docker: 
+      - *elixir_image
     environment:
       MIX_ENV: test
     resource_class: xlarge
