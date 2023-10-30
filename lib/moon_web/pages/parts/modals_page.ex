@@ -23,11 +23,11 @@ defmodule MoonWeb.Pages.Parts.ModalsPage do
 
   def render(assigns) do
     ~F"""
-    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction} hide_left_menu>
+    <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription title="Modal examples" />
 
       <ExamplesList examples={[
-        ModalExample.ModalWizard
+        ModalExample.Wizard
       ]} />
     </Page>
     """

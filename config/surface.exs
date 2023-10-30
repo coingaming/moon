@@ -47,8 +47,6 @@ config :surface, :components, [
   {Moon.Parts.Chart.Field, propagate_context_to_slots: true},
   {Moon.Parts.Header, propagate_context_to_slots: true},
   {Moon.Parts.Modal, propagate_context_to_slots: true},
-  {Moon.Parts.ModalWizard, propagate_context_to_slots: true},
-  {Moon.Parts.ModalWizard.Panel, propagate_context_to_slots: true},
   {Moon.Parts.Wizard, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar, propagate_context_to_slots: true},
   {Moon.Parts.Sidebar.Accordion, propagate_context_to_slots: true},
