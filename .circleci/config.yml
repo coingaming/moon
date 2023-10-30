@@ -12,6 +12,7 @@ jobs:
     environment:
       MIX_ENV: prod
     steps:
+      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - checkout
       - run:
           name: Check variables
@@ -26,7 +27,6 @@ jobs:
           keys:
             - v10-build-{{ checksum "mix.lock" }}
             - v10-build-
-      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -59,6 +59,7 @@ jobs:
     environment:
       MIX_ENV: test
     steps:
+      - run: echo -e "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
       - checkout
       - run:
           name: Check variables
