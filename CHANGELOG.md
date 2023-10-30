@@ -1,3 +1,10 @@
+## [2.67.1](https://github.com/coingaming/moon/compare/v2.67.0...v2.67.1) (2023-10-30)
+
+
+### Bug Fixes
+
+* Elixir version bump ([#758](https://github.com/coingaming/moon/issues/758)) ([7d2b9fc](https://github.com/coingaming/moon/commit/7d2b9fc50fd1c056f56bade146a4d93f57cd68de))
+
 # [2.67.0](https://github.com/coingaming/moon/compare/v2.66.2...v2.67.0) (2023-10-30)
 
 
