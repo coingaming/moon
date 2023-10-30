@@ -100,9 +100,6 @@ jobs:
           keys:
             - v10-prod-{{ .Revision }}
             - v10-prod-
-      - run:
-          name: Docker login
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: scripts/deploy/docker-build-ci push $CIRCLE_TAG
   deploy:
     docker: 
