@@ -178,10 +178,10 @@ workflows:
                 - main
       - dockerhub:
           context: global
-          filters:
-            branches:
-              only:
-                - main
+          # filters:
+          #   branches:
+          #     only:
+          #       - main
           requires:
             - prelease
       - deploy:
