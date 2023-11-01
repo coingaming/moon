@@ -1,3 +1,10 @@
+## [2.68.1](https://github.com/coingaming/moon/compare/v2.68.0...v2.68.1) (2023-11-01)
+
+
+### Bug Fixes
+
+* BottomSheet jumping fix ([#760](https://github.com/coingaming/moon/issues/760)) ([dae959c](https://github.com/coingaming/moon/commit/dae959cf6de60051aef553983e54945bb3a12d6e))
+
 # [2.68.0](https://github.com/coingaming/moon/compare/v2.67.1...v2.68.0) (2023-11-01)
 
 
