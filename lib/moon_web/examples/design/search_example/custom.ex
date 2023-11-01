@@ -7,6 +7,8 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
 
   alias Moon.Design.Search
   alias Moon.Icon
+  alias Moon.Design.Dropdown
+
   import Moon.Helpers.Form, only: [filter_options: 2]
 
   prop(options, :list, default: MoonWeb.Schema.Link.titles())
@@ -22,13 +24,16 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
       id="custom-search"
       {=@filter}
       on_keyup="change_filter"
-      options={filter_options(@options, @filter)}
+      options={@options |> filter_options(@filter)}
     >
       <:option :let={option: option}>
-        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
+        <Dropdown.Link
+          href={live_path(MoonWeb.Endpoint, option[:page])}
+          class="h-10 py-2 px-3 rounded-moon-i-sm"
+        >
           <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
           {option[:key]}
-        </a>
+        </Dropdown.Link>
       </:option>
     </Search>
     """
@@ -38,6 +43,8 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
     """
     alias Moon.Design.Search
     alias Moon.Icon
+    alias Moon.Design.Dropdown
+
     import Moon.Helpers.Form, only: [filter_options: 2]
 
     prop(options, :list, default: MoonWeb.Schema.Link.titles())
@@ -53,13 +60,16 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
         id="custom-search"
         {=@filter}
         on_keyup="change_filter"
-        options={filter_options(@options, @filter)}
+        options={@options |> filter_options(@filter)}
       >
         <:option :let={option: option}>
-          <a href={live_path(MoonWeb.Endpoint, option[:page])}>
+          <Dropdown.Link
+            href={live_path(MoonWeb.Endpoint, option[:page])}
+            class="h-10 py-2 px-3 rounded-moon-i-sm"
+          >
             <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
             {option[:key]}
-          </a>
+          </Dropdown.Link>
         </:option>
       </Search>
       \"""

@@ -20,15 +20,13 @@ defmodule MoonWeb.Components.SearchButton do
       id="moon-search"
       {=@filter}
       on_keyup="change_filter"
-      options={filter_options(@options, @filter)}
+      options={@options |> page_to_href() |> filter_options(@filter)}
       prompt="Search..."
-    >
-      <:option :let={option: option}>
-        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
-          {option[:key]}
-        </a>
-      </:option>
-    </Search>
+    />
     """
+  end
+
+  defp page_to_href(options) do
+    options |> Enum.map(&Keyword.put(&1, :page, live_path(MoonWeb.Endpoint, &1[:page])))
   end
 end
