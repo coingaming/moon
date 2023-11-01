@@ -22,11 +22,13 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
       id="custom-search"
       {=@filter}
       on_keyup="change_filter"
-      options={filter_options(@options, @filter)}
+      options={@options |> filter_options(@filter)}
     >
       <:option :let={option: option}>
-        <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
-        {option[:key]}
+        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
+          <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
+          {option[:key]}
+        </a>
       </:option>
     </Search>
     """

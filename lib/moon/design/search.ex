@@ -76,16 +76,11 @@ defmodule Moon.Design.Search do
             {=@on_change}
             class="p-2 mt-0 rounded-tl-none rounded-tr-none"
           >
-            <Dropdown.Link
-              :for={option <- @options}
-              {=@size}
-              disabled={option[:disabled]}
-              href={option[:href]}
-              {=@target}
-              {=@rel}
-            >
-              <#slot {@option, option: option}>{option[:key]}</#slot>
-            </Dropdown.Link>
+            <#slot {@option, option: option} :for={option <- @options}>
+              <Dropdown.Link {=@size} disabled={option[:disabled]} href={option[:href]} {=@target} {=@rel}>
+                {option[:key]}
+              </Dropdown.Link>
+            </#slot>
           </Dropdown.Options>
         </#slot>
       </Dropdown>
