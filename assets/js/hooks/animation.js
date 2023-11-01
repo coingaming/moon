@@ -59,10 +59,13 @@ export default {
     
     showElement() {
         this.el.classList.remove(...this.hiddenClasses());
-        this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
-        if (this.backdrop) {
-            this.backdrop.classList.add("animate-backdrop_enter");
+        if(!this.was_open){
+            this.panel.classList.add(...this.panel.dataset.animate_enter_class.split(" "));
+            if (this.backdrop) {
+                this.backdrop.classList.add("animate-backdrop_enter");
+            }
         }
+        this.was_open = this.el.dataset.is_open !== undefined;
         document.body.style.overflow = "hidden";
     },
 };
