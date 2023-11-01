@@ -21,10 +21,8 @@ defmodule Moon.Design.Dropdown.Link do
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "Href for the option"
   prop(href, :string)
-  @doc "Target attribute for the option"
-  prop(target, :string)
-  @doc "Rel attribute for the option"
-  prop(rel, :string)
+  @doc "Additional attributes for the link"
+  prop(attrs, :map, default: %{})
 
   @doc "Inner content of the option"
   slot(default)
@@ -50,8 +48,7 @@ defmodule Moon.Design.Dropdown.Link do
       ])}
       data-testid={@testid}
       {=@href}
-      {=@target}
-      {=@rel}
+      {=@attrs}
     >
       <#slot>{@title}</#slot>
     </a>

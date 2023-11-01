@@ -32,10 +32,8 @@ defmodule Moon.Design.Search do
   prop(on_keyup, :event)
   @doc "Event that fires when smth is chosen from the dropdown menu"
   prop(on_change, :event)
-  @doc "Target attribute for the option"
-  prop(target, :string)
-  @doc "Rel attribute for the option"
-  prop(rel, :string)
+  @doc "Additional attributes for the option tag"
+  prop(attrs, :map, default: %{})
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
@@ -75,7 +73,7 @@ defmodule Moon.Design.Search do
             class="p-2 mt-0 rounded-tl-none rounded-tr-none"
           >
             <#slot {@option, option: option} :for={option <- @options}>
-              <Dropdown.Link {=@size} disabled={option[:disabled]} href={option[:page]} {=@target} {=@rel}>
+              <Dropdown.Link {=@size} disabled={option[:disabled]} href={option[:page]} {=@attrs}>
                 {option[:key]}
               </Dropdown.Link>
             </#slot>
