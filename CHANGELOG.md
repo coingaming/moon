@@ -1,3 +1,10 @@
+# [2.68.0](https://github.com/coingaming/moon/compare/v2.67.1...v2.68.0) (2023-11-01)
+
+
+### Features
+
+* Create Dropdown.Link for Search [MDS-714] ([#759](https://github.com/coingaming/moon/issues/759)) ([52a7641](https://github.com/coingaming/moon/commit/52a76414631c07f51b284464cfb37a4f4802743e))
+
 ## [2.67.1](https://github.com/coingaming/moon/compare/v2.67.0...v2.67.1) (2023-10-30)
 
 
