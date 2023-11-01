@@ -8,6 +8,7 @@ defmodule Moon.Design.Search do
 
   import Moon.Helpers.Form, only: [input_classes_light: 1]
 
+  # TODO: needs to be fixed
   @doc "... format: [%{key: shown_label, value: option_value, disabled: boolean}], disabled is optional"
   prop(options, :list, required: true)
   @doc "Set disabled/non-disabled"
@@ -33,7 +34,10 @@ defmodule Moon.Design.Search do
   prop(on_keyup, :event)
   @doc "Event that fires when smth is chosen from the dropdown menu"
   prop(on_change, :event)
-
+  @doc "Target attribute for the option"
+  prop(target, :string)
+  @doc "Rel attribute for the option"
+  prop(rel, :string)
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
@@ -67,10 +71,21 @@ defmodule Moon.Design.Search do
           </#slot>
         </:trigger>
         <#slot {@default}>
-          <Dropdown.Options {=@on_change} class="pt-0 p-0 mt-0 rounded-tl-none rounded-tr-none">
-            <Dropdown.Option :for={option <- @options} {=@size} disabled={option[:disabled]}>
+          <Dropdown.Options
+            option_module={Dropdown.Link}
+            {=@on_change}
+            class="p-2 mt-0 rounded-tl-none rounded-tr-none"
+          >
+            <Dropdown.Link
+              :for={option <- @options}
+              {=@size}
+              disabled={option[:disabled]}
+              href={option[:href]}
+              {=@target}
+              {=@rel}
+            >
               <#slot {@option, option: option}>{option[:key]}</#slot>
-            </Dropdown.Option>
+            </Dropdown.Link>
           </Dropdown.Options>
         </#slot>
       </Dropdown>

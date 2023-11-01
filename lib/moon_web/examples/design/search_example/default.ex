@@ -1,7 +1,7 @@
 defmodule MoonWeb.Examples.Design.SearchExample.Default do
   @moduledoc false
 
-  use Moon.StatefulComponent
+  use MoonWeb, :stateful_component
   use MoonWeb, :example
 
   alias Moon.Design.Search

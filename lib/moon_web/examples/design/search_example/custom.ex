@@ -25,10 +25,8 @@ defmodule MoonWeb.Examples.Design.SearchExample.Custom do
       options={filter_options(@options, @filter)}
     >
       <:option :let={option: option}>
-        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
-          <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
-          {option[:key]}
-        </a>
+        <Icon class="w-6 h-6" name={option[:icon]} :if={option[:icon]} />
+        {option[:key]}
       </:option>
     </Search>
     """

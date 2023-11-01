@@ -24,9 +24,7 @@ defmodule MoonWeb.Components.SearchButton do
       prompt="Search..."
     >
       <:option :let={option: option}>
-        <a href={live_path(MoonWeb.Endpoint, option[:page])}>
-          {option[:key]}
-        </a>
+        {option[:key]}
       </:option>
     </Search>
     """
