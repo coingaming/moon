@@ -8,8 +8,7 @@ defmodule Moon.Design.Search do
 
   import Moon.Helpers.Form, only: [input_classes_light: 1]
 
-  # TODO: needs to be fixed
-  @doc "... format: [%{key: shown_label, value: option_value, disabled: boolean}], disabled is optional"
+  @doc "... format: [page: Module.Name, key: \"Name\"]"
   prop(options, :list, required: true)
   @doc "Set disabled/non-disabled"
   prop(disabled, :boolean)
@@ -29,7 +28,6 @@ defmodule Moon.Design.Search do
   prop(is_open, :boolean)
   @doc "Filtering value for the options, appears in input"
   prop(filter, :string)
-
   @doc "On key up event for the input - use it for filter options"
   prop(on_keyup, :event)
   @doc "Event that fires when smth is chosen from the dropdown menu"
@@ -77,7 +75,7 @@ defmodule Moon.Design.Search do
             class="p-2 mt-0 rounded-tl-none rounded-tr-none"
           >
             <#slot {@option, option: option} :for={option <- @options}>
-              <Dropdown.Link {=@size} disabled={option[:disabled]} href={option[:href]} {=@target} {=@rel}>
+              <Dropdown.Link {=@size} disabled={option[:disabled]} href={option[:page]} {=@target} {=@rel}>
                 {option[:key]}
               </Dropdown.Link>
             </#slot>

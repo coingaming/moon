@@ -1,5 +1,5 @@
 defmodule Moon.Design.Dropdown.Link do
-  @moduledoc "Single oprion for the dropdown component. Renders as a button"
+  @moduledoc "Single option for the dropdown component. Renders as a link"
 
   use Moon.StatelessComponent, slot: "option"
 
