@@ -1,4 +1,3 @@
-
 defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
   @moduledoc false
 
