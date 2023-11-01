@@ -1,44 +1,3 @@
-defmodule MoonWeb.Examples.Design.BottomSheetExample.Custom do
-  @moduledoc false
-
-  use Ecto.Schema
-  import Ecto.Changeset
-  import MoonWeb.Gettext, only: [gettext: 1]
-
-  embedded_schema do
-    field(:date_from, :date)
-    field(:date_to, :date)
-  end
-
-  @required_params ~w(date_from date_to)a
-
-  def create_changeset(params) do
-    %__MODULE__{}
-    |> cast(params, @required_params)
-    |> validate_required(@required_params, message: gettext("can't be blank"))
-    |> validate_range()
-  end
-
-  defp validate_range(changeset) do
-    date_from = get_field(changeset, :date_from)
-    date_to = get_field(changeset, :date_to)
-
-    cond do
-      is_nil(date_from) or is_nil(date_to) ->
-        changeset
-
-      Timex.compare(date_from, date_to) == 1 ->
-        add_error(
-          changeset,
-          :date_to,
-          gettext("lower bound must be less than upper bound or equal")
-        )
-
-      true ->
-        changeset
-    end
-  end
-end
 
 defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
   @moduledoc false
@@ -51,7 +10,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
   alias Moon.Design.Button
   alias Moon.Design.Form
 
-  alias MoonWeb.Examples.Design.BottomSheetExample.Custom
+  alias MoonWeb.Schema.Dates
 
   prop(is_open, :boolean, default: false)
   data(changeset, :any)
@@ -76,7 +35,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
                 target={form_id}
               />
               <div class="grow pe-10 text-center font-semibold text-moon-16">
-                {"Custom date range"}
+                {"Dates date range"}
               </div>
             </div>
           </BottomSheet.Header>
@@ -106,7 +65,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
   end
 
   def mount(socket) do
-    changeset = Custom.create_changeset(%{})
+    changeset = Dates.create_changeset(%{})
     socket = assign(socket, changeset: changeset)
 
     {:ok, socket}
@@ -123,7 +82,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
   end
 
   def handle_event("update_selected", %{"custom" => params}, socket) do
-    changeset = Custom.create_changeset(params)
+    changeset = Dates.create_changeset(params)
 
     {:noreply, assign(socket, changeset: changeset)}
   end
