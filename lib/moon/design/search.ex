@@ -32,7 +32,7 @@ defmodule Moon.Design.Search do
   prop(on_keyup, :event)
   @doc "Event that fires when smth is chosen from the dropdown menu"
   prop(on_change, :event)
-  @doc "Additional attributes for the option tag"
+  @doc "Additional attributes for the option link"
   prop(attrs, :map, default: %{})
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)

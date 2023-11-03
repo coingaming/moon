@@ -38,7 +38,7 @@ defmodule Moon.Design.Dropdown.Option do
       class={merge([
         [
           "bg-transparent text-moon-14 text-bulma whitespace-nowrap flex",
-          "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition w-full",
+          "focus:outline-none focus:bg-heles cursor-pointer hover:bg-heles transition w-full",
           "bg-heles": @is_selected,
           "opacity-60 cursor-not-allowed": @disabled,
           "h-12 p-3 rounded-moon-i-sm": @size == "lg",

@@ -3,6 +3,8 @@ defmodule Moon.Design.Tag do
 
   use Moon.StatelessComponent
 
+  alias Moon.Design.Tag.Utils
+
   prop(size, :string, default: "xs", values: ~w(2xs xs))
   prop(class, :css_class)
   prop(is_uppercase, :boolean, default: true)
@@ -20,30 +22,29 @@ defmodule Moon.Design.Tag do
       {=@id}
       class={merge([
         [
-          "flex items-center rounded-moon-i-xs select-none text-goku font-medium bg-bulma tracking-[0.5px] ps-2 pe-2",
-          "text-moon-9 py-0": @size == "2xs",
-          "text-moon-10 py-1": @size == "xs",
+          "flex items-center rounded-moon-i-xs select-none text-goku font-medium bg-bulma tracking-[0.5px]",
+          Utils.get_icon_size(@size),
+          "gap-1": slot_assigned?(:right_icon) || slot_assigned?(:left_icon),
+          "text-moon-9 h-4 py-0 px-2": @size == "2xs",
+          "text-moon-10 h-6 py-1 px-2": @size == "xs",
           "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
           "text-moon-12 tracking-0 font-regular": @size == "xs" && !@is_uppercase,
-          "ps-1": @left_icon,
-          "pe-1": @right_icon,
+          "#{Utils.get_right_icon_paddings(@size)}":
+            slot_assigned?(:right_icon) && !slot_assigned?(:left_icon),
+          "#{Utils.get_left_icon_paddings(@size)}":
+            slot_assigned?(:left_icon) && !slot_assigned?(:right_icon),
+          "#{Utils.get_both_icon_paddings(@size)}":
+            slot_assigned?(:right_icon) && slot_assigned?(:left_icon),
           uppercase: @is_uppercase
         ],
         @class
       ])}
       data-testid={@testid}
     >
-      <span class={icon_size(@size), "ltr:mr-1 rtl:ml-1": @left_icon}><#slot {@left_icon} /></span>
+      <span class={Utils.get_icon_size(@size), "flex items-center"} :if={slot_assigned?(:left_icon)}><#slot {@left_icon} /></span>
       <#slot />
-      <span class={icon_size(@size), "ltr:ml-1 rtl:mr-1": @right_icon}><#slot {@right_icon} /></span>
+      <span class={Utils.get_icon_size(@size), "flex items-center"} :if={slot_assigned?(:right_icon)}><#slot {@right_icon} /></span>
     </div>
     """
-  end
-
-  defp icon_size(size) do
-    case size do
-      "2xs" -> "text-moon-14 leading-none"
-      _ -> "text-moon-16 leading-none"
-    end
   end
 end

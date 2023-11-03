@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Badges.InProgress do
 
   def render(assigns) do
     ~F"""
-    <Tag size="2xs" class="text-popo bg-krillin">In progress</Tag>
+    <Tag size="2xs" class="text-popo bg-krillin tracking-[1px]">In progress</Tag>
     """
   end
 end

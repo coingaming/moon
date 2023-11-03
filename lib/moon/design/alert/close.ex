@@ -19,7 +19,7 @@ defmodule Moon.Design.Alert.Close do
     <IconButton
       size="xs"
       variant="ghost"
-      class={merge(["absolute top:4 text-moon-16 text-bulma", @class])}
+      class={merge(["absolute top:4 text-moon-16 text-bulma end-4", @class])}
       icon="controls_close"
       on_click={@on_click}
       {=@id}

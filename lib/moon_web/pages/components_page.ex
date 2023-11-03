@@ -145,7 +145,7 @@ defmodule MoonWeb.Pages.ComponentsPage do
         <ComponentsPageCard
           page={Pages.Design.Form.InsetInputPage}
           image="facing/components/inset_input.png"
-          title="Insetnput"
+          title="InsetInput"
         >
           Text input fields allow users to enter text and can be used to collect user feedback or enter information in data entry forms.
         </ComponentsPageCard>

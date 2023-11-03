@@ -18,7 +18,7 @@ defmodule MoonWeb.Pages.MainPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@direction}>
       <div class="relative z-5 flex flex-col gap-12">
-        <Tag size="2xs" class="self-start">
+        <Tag size="2xs" class="self-start tracking-[1px]">
           Open Source
         </Tag>
         <div class="flex flex-col gap-16">

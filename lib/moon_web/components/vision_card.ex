@@ -17,14 +17,14 @@ defmodule MoonWeb.Components.VisionCard do
   def render(assigns) do
     ~F"""
     <div class="flex flex-col 2xl:flex-row items-center gap-8 2xl:gap-18 3xl:gap-36">
-      <div class="theme-moon-dark flex flex-col items-center bg-gohan rounded-moon-s-lg gap-14 p-2">
+      <div class="theme-moon-dark flex flex-col items-center bg-goku rounded-moon-s-lg gap-14 p-2">
         <div class="flex flex-col gap-14 max-w-lg items-end">
           <img src={@header_image} alt={@alt_header_image}>
           <p class="text-moon-16 max-w-md text-right text-trunks">
             {@subtext}
           </p>
         </div>
-        <div class="flex flex-col rounded-moon-s-md py-6 px-8 gap-6 bg-goku">
+        <div class="flex flex-col rounded-moon-s-md py-6 px-8 gap-6 bg-gohan">
           <p class="text-moon-32 text-goten">{@inner_card_text}</p>
           <div class="flex items-center gap-2">
             <img src={@user_image} alt="Testimonial">

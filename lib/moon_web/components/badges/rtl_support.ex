@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Badges.RTLSupport do
 
   def render(assigns) do
     ~F"""
-    <Tag size="2xs" class="text-goten bg-whis">RTL</Tag>
+    <Tag size="2xs" class="text-goten bg-whis tracking-[1px]">RTL</Tag>
     """
   end
 end

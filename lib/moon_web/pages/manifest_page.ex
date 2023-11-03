@@ -41,7 +41,7 @@ defmodule MoonWeb.Pages.ManifestPage do
               is_highlighted
             />
             <ManifestCard
-              title="Validating ideas/hypothesis for stakeholders"
+              title="Validating ideas/hypotheses for stakeholders"
               content_items={[
                 ~c"You can build your own UI app (Rapid Proto) faster and not from scratch",
                 ~c"Benefit for hackathons",
@@ -56,7 +56,7 @@ defmodule MoonWeb.Pages.ManifestPage do
                 "Devs from different teams don't need to implement the elements provided by Moon DS",
                 ~c"There will be less time spent on discussions/alignment between devs and design",
                 "Designers don't need to create new elements for every project/task",
-                ~c"Well document components library",
+                ~c"Well-documented components library",
                 ~c"Avoiding mistakes and bugs"
               ]}
             />
@@ -74,15 +74,17 @@ defmodule MoonWeb.Pages.ManifestPage do
               content_items={[
                 ~c"One place for all UI components (Source of truth)",
                 ~c"Consistent icons",
-                ~c"Non-frontend developers could build nice UI with using Moon DS"
+                ~c"Non-frontend developers could build nice UI using Moon DS"
               ]}
             />
           </div>
         </div>
       </div>
-      <div class="hidden xl:block fixed top-0 ltr:right-0 rtl:left-0 w-[650px] 2xl:w-[892px] ltr:translate-x-1/3 rtl:-translate-x-1/3 -translate-y-1/3">
-        <img src="/moon/assets/images/facing/moon.webp" alt="Moon">
-      </div>
+      <img
+        class="hidden xl:block fixed -top-56 -end-56 w-[650px] 2xl:-top-72 2xl:-end-72 2xl:w-[892px]"
+        src="/moon/assets/images/facing/moon.webp"
+        alt="Moon"
+      />
     </Page>
     """
   end

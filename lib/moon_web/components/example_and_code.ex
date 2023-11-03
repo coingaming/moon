@@ -36,7 +36,7 @@ defmodule MoonWeb.Components.ExampleAndCode do
                 <span class="hidden md:block">Code</span>
               </Tabs.Segment>
             </Tabs.List>
-            <Tabs.Panels class="order-4">
+            <Tabs.Panels class="order-4 focus:outline-none">
               <Tabs.Panel>
                 <div class={merge([
                   "p-4 flex bg-gohan text-moon-14 rounded-moon-s-sm w-full",

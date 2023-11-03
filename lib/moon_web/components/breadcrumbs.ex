@@ -12,6 +12,7 @@ defmodule MoonWeb.Components.Breadcrumbs do
   def render(assigns) do
     ~F"""
     <BreadCrumbsComponent
+      divider_class="text-moon-16"
       class={@class}
       id="page_crumbs"
       breadcrumbs={get_formatted_crumbs_list(@breadcrumbs)}

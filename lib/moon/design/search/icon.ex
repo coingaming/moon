@@ -23,7 +23,7 @@ defmodule Moon.Design.Search.Icon do
       class={merge([
         "w-6 h-6",
         "transition-200 transition-transform cursor-pointer text-trunks text-moon-16",
-        "absolute ltr:left-3 rtl:right-3 top-1/2 -translate-y-1/2 z-[3]",
+        "absolute start-3 top-1/2 -translate-y-1/2 z-[3]",
         @class
       ])}
     />
