@@ -1,3 +1,10 @@
+## [2.68.2](https://github.com/coingaming/moon/compare/v2.68.1...v2.68.2) (2023-11-03)
+
+
+### Bug Fixes
+
+* Site alignments, incl. Tag, Chip, Alert, Avatar, Search, Breadcrumbs improvements [MDS-777]([#761](https://github.com/coingaming/moon/issues/761)) ([a16501d](https://github.com/coingaming/moon/commit/a16501ded8f4cdf720b758cf7f0921e026d0ea89))
+
 ## [2.68.1](https://github.com/coingaming/moon/compare/v2.68.0...v2.68.1) (2023-11-01)
 
 
