@@ -27,8 +27,8 @@ defmodule Moon.Design.Avatar.Status do
             "absolute border-gohan rounded-full bg-roshi",
             "top-0": position.vertical == "top",
             "bottom-0": position.vertical == "bottom",
-            "left-0": position.horizontal == "left",
-            "right-0": position.horizontal == "right",
+            "start-0": position.horizontal == "left",
+            "end-0": position.horizontal == "right",
             "w-2 h-2": @size == "xs",
             "w-3 h-3": @size == "sm" || @size == "md",
             "w-4 h-4": @size == "lg" || @size == "xl" || @size == "2xl"

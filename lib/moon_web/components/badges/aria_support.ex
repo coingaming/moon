@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Badges.AriaSupport do
 
   def render(assigns) do
     ~F"""
-    <Tag size="2xs" class="text-goten bg-nappa">Aria</Tag>
+    <Tag size="2xs" class="text-goten bg-nappa tracking-[1px]">Aria</Tag>
     """
   end
 end

@@ -81,7 +81,7 @@ defmodule MoonWeb.Pages.TypographyPage do
 
       <ExampleAndCode id="text_4" title="Custom Colours">
         <:example>
-          <div class="flex justify-around p-4 gap-2 w-full">
+          <div class="flex justify-around gap-2 w-full">
             <p class="text-trunks">Trunks</p>
             <p class="text-piccolo">Piccolo</p>
             <p class="text-roshi">Roshi</p>

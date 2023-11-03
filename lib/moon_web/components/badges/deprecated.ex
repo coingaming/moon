@@ -7,7 +7,7 @@ defmodule MoonWeb.Components.Badges.Deprecated do
 
   def render(assigns) do
     ~F"""
-    <Tag size="2xs" class="text-popo bg-chichi-60">Deprecated</Tag>
+    <Tag size="2xs" class="text-popo bg-chichi-60 tracking-[1px]">Deprecated</Tag>
     """
   end
 end

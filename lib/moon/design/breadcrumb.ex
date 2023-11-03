@@ -58,7 +58,7 @@ defmodule Moon.Design.Breadcrumb do
                 {=@divider}
                 {=@responsive_crumbs_on}
                 {=@divider_class}
-                {=@class}
+                class={@list_item_class}
                 value={index}
                 href={crumb.link}
                 title={crumb.name}
@@ -91,7 +91,7 @@ defmodule Moon.Design.Breadcrumb do
                 {=@divider}
                 {=@responsive_crumbs_on}
                 {=@divider_class}
-                {=@class}
+                class={@list_item_class}
                 value={index}
                 href={crumb.link}
                 title={crumb.name}

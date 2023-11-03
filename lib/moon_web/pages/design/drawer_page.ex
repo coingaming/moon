@@ -3,6 +3,7 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.Anatomy
   alias MoonWeb.Components.Page
   alias MoonWeb.Components.ComponentPageDescription
   alias MoonWeb.Components.ExamplesList
@@ -31,6 +32,8 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
           The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
         </p>
       </ComponentPageDescription>
+
+      <Anatomy>{component_anatomy()}</Anatomy>
 
       <ExamplesList examples={[
         DrawerExample.Default,
@@ -106,6 +109,15 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
         ]}
       />
     </Page>
+    """
+  end
+
+  defp component_anatomy do
+    """
+    <Drawer>
+      <Drawer.Panel>...</Drawer.Panel>
+      </Drawer.Backdrop>
+    </Drawer>
     """
   end
 end

@@ -78,9 +78,11 @@ defmodule MoonWeb.Pages.VisionPage do
           ]}
         />
       </div>
-      <div class="fixed top-0 right-0 w-[650px] 2xl:w-[892px] translate-x-1/3 -translate-y-1/3">
-        <img src="/moon/assets/images/facing/moon.webp" alt="Moon">
-      </div>
+      <img
+        class="hidden xl:block fixed -top-56 -end-56 w-[650px] 2xl:-top-72 2xl:-end-72 2xl:w-[892px]"
+        src="/moon/assets/images/facing/moon.webp"
+        alt="Moon"
+      />
     </Page>
     """
   end
