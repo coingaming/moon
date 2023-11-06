@@ -46,7 +46,6 @@ defmodule Moon.MixProject do
 
   defp package do
     [
-      organization: "coingaming",
       licenses: ["UNLICENSED"],
       files: [
         "lib",
