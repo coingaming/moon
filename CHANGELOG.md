@@ -1,3 +1,10 @@
+## [2.68.3](https://github.com/coingaming/moon/compare/v2.68.2...v2.68.3) (2023-11-06)
+
+
+### Bug Fixes
+
+* trying to make hex.pm package public ([d3fe22c](https://github.com/coingaming/moon/commit/d3fe22ca20f358876880ed82d18f050f3480015a))
+
 ## [2.68.2](https://github.com/coingaming/moon/compare/v2.68.1...v2.68.2) (2023-11-03)
 
 
