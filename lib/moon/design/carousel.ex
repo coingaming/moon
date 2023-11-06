@@ -1,9 +1,9 @@
 defmodule Moon.Design.Carousel do
   @moduledoc false
 
-  use Moon.StatefulComponent
-
   alias Phoenix.LiveView.JS
+
+  use Moon.StatefulComponent
 
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
@@ -39,7 +39,7 @@ defmodule Moon.Design.Carousel do
     ~F"""
     <div
       {=@id}
-      class={merge(["relative w-full", @class])}
+      class={merge(["relative w-full ", @class])}
       data-testid={@testid}
       :hook="default"
       data-autoslide_delay={@autoslide_delay}

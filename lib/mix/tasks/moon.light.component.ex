@@ -1,0 +1,183 @@
+defmodule Mix.Tasks.Moon.Light.Component do
+  @shortdoc "Converts surface component to phoenix_live_view"
+
+  @moduledoc """
+  Generates a component and a compoinent page by component module name given
+
+      $ mix moon.live.component Form.MyModule
+
+  """
+
+  use Mix.Task
+  import Mix.Generator
+  import Moon.Helpers.Ast
+
+  import String, only: [replace: 3, downcase: 1, split: 2]
+  import Enum, only: [reverse: 1, join: 2]
+  import List, only: [last: 1]
+
+  alias Surface.Compiler.Parser
+
+  defstruct name: nil,
+            path: nil
+
+  @doc false
+  def run([name]) do
+    name
+    |> context()
+    |> add_module_info()
+    |> translate_ast()
+    # |> dbg()
+    |> copy_templates()
+    |> print_shell_instructions()
+  end
+
+  defp context(name) do
+    %{
+      name: name,
+      module: String.to_existing_atom("Elixir.Moon.Design.#{name}"),
+      path: name |> replace(~r/([a-z])([A-Z])/, "\\1_\\2") |> downcase() |> replace(".", "/"),
+      short: name |> split(".") |> last(),
+      config: %{
+        use_translates: %{
+          [:Moon, :StatelessComponent] => [:Moon, :Light, :Component],
+          [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
+        }
+      }
+    }
+  end
+
+  defp add_module_info(context = %{module: module}) do
+    Map.merge(
+      %{
+        aliases:
+          module.__env__().aliases()
+          |> Enum.reject(
+            &(&1 in [
+                {Mod, Module},
+                {Context, Surface.Components.Context},
+                {Raw, Surface.Components.Raw},
+                {Component, Surface.Components.Dynamic.Component},
+                {LiveComponent, Surface.Components.Dynamic.LiveComponent}
+              ])
+          ),
+        component_type: module.component_type(),
+        level: 0,
+        ast: module_ast(module)
+      },
+      context
+    )
+  end
+
+  defp translate_ast(c = %{module: module}) do
+    Map.put(
+      c,
+      :new_ast,
+      module
+      |> module_ast()
+      |> Macro.prewalk(fn
+        result = {:def, _, [{:render, _, _} | _]} -> translate_render(c, result)
+        result = {:sigil_F, _, _} -> translate_sigil(c, result)
+        result = {:prop, _meta, _options} -> translate_prop(c, result)
+        result = {:slot, _meta, _options} -> translate_prop(c, result)
+        result = {:@, _, [{:doc, _, [_text]}]} -> translate_doc(c, result)
+        result = {:use, _, [{:__aliases__, _, _alias}]} -> translate_use(c, result)
+        result = {:defmodule, _, [{:__aliases__, _, _alias}], _} -> translate_defmodule(c, result)
+        other -> other
+      end)
+      |> Macro.to_string()
+      |> dbg()
+    )
+  end
+
+  defp translate_render(%{component_type: Surface.LiveComponent, level: 0}, ast), do: ast
+
+  defp translate_render(%{component_type: Surface.Component, level: 0}, ast), do: ast
+
+  # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
+  # to {:attr, [line: 38], [:id, :string, [required: true]]}
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}), do: {:attr, meta, [name, type]}
+
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}),
+    do: {:attr, meta, [name, type, options]}
+
+  defp translate_prop(_, {:slot, meta, [{:default, _, nil}]}), do: {:slot, meta, [:inner_block]}
+  defp translate_prop(_, {:slot, meta, [{name, _, nil}]}), do: {:slot, meta, [name]}
+
+  defp translate_prop(_, {:slot, meta, [{:default, _, nil}, options]}),
+    do: {:slot, meta, [:inner_block, options]}
+
+  defp translate_prop(_, {:slot, meta, [{name, _, nil}, options]}),
+    do: {:slot, meta, [name, options]}
+
+  defp translate_doc(_, res = {:@, _, [{:doc, _, [_text]}]}) do
+    res
+  end
+
+  defp translate_use(
+         %{config: %{use_translates: use_translates}},
+         {:use, m1, [{:__aliases__, m2, alias}]}
+       ) do
+    {:use, m1, [{:__aliases__, m2, use_translates[alias]}]}
+  end
+
+  defp translate_use(
+         %{config: %{use_translates: use_translates}},
+         {:use, m1, [{:__aliases__, m2, alias}, options]}
+       ) do
+    {:use, m1, [{:__aliases__, m2, use_translates[alias]}, options]}
+  end
+
+  defp translate_defmodule(_, {:defmodule, m1, [{:__aliases__, m2, _alias = [:Moon | rest_aliases]}, options]}) do
+    {:defmodule, m1, [{:__aliases__, m2, [:Moon | [:Light | rest_aliases]]}, options]}
+  end
+
+  defp translate_sigil(%{module: module}, res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}) do
+    # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
+    Parser.parse!(string,
+      file: module.__info__(:compile)[:source] |> to_string(),
+      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+      caller: %{module: module},
+      checks: opts[:checks] || [],
+      warnings: opts[:warnings] || [],
+      column: Keyword.get(opts, :column, 1),
+      indentation: Keyword.get(opts, :indentation, 0)
+    )
+    |> Macro.prewalk(fn other -> other end)
+
+    # |> Macro.to_string()
+    # |> dbg()
+
+    res
+  end
+
+  defp pathes(%{path: _path}) do
+    [
+      # surface: "lib/moon/design/#{path}.ex",
+      # live_view: "lib/moon/light/#{path}.ex",
+      # tests_dir: "test/moon_web/examples/#{path}/",
+      # example_dir: "test/moon_web/examples/design/#{path}_example/"
+    ]
+  end
+
+  defp copy_templates(context) do
+    Enum.each(pathes(context), fn {template, file_path} ->
+      file_path |> split("/") |> reverse() |> tl() |> reverse() |> join("/") |> create_directory()
+
+      data =
+        EEx.eval_file(
+          "priv/templates/moon.light.component/#{template}.ex",
+          Enum.map(context, fn {key, value} -> {key, value} end)
+        )
+
+      create_file(file_path, data, force: false)
+    end)
+
+    context
+  end
+
+  def print_shell_instructions(%{path: _path, name: _name}) do
+    Mix.shell().info("""
+    """)
+  end
+end

@@ -9,6 +9,7 @@ defmodule Moon.StatefulComponent do
       import Moon.Helpers.MoonRender
 
       def __moduledoc__(), do: @moduledoc
+      def __env__(), do: __ENV__
     end
   end
 end
