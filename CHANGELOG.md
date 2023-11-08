@@ -1,3 +1,10 @@
+# [2.69.0](https://github.com/coingaming/moon/compare/v2.68.11...v2.69.0) (2023-11-08)
+
+
+### Features
+
+* Tails package for merge_class improvement [MDS-776] ([#767](https://github.com/coingaming/moon/issues/767)) ([d8956f4](https://github.com/coingaming/moon/commit/d8956f49246e6c52b622d0ef62805723bc9dbd63))
+
 ## [2.68.11](https://github.com/coingaming/moon/compare/v2.68.10...v2.68.11) (2023-11-08)
 
 
