@@ -25,8 +25,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v12-build-{{ checksum "mix.lock" }}
-            - v12-build-
+            - v13-build-{{ checksum "mix.lock" }}
+            - v13-build-
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -43,14 +43,13 @@ jobs:
       - run:
           command: mix release
       - save_cache:
-          key: v12-build-{{ checksum "mix.lock" }}
+          key: v13-build-{{ checksum "mix.lock" }}
           paths:
             - deps
             - _build
             - ~/.mix
-            - assets/node_modules
       - save_cache:
-          key: v12-prod-{{ .Revision }}
+          key: v13-prod-{{ .Revision }}
           paths:
             - _build
 
@@ -72,8 +71,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v12-build-{{ checksum "mix.lock" }}
-            - v12-build-
+            - v13-build-{{ checksum "mix.lock" }}
+            - v13-build-
       - run:
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
@@ -99,8 +98,8 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v12-prod-{{ .Revision }}
-            - v12-prod-
+            - v13-prod-{{ .Revision }}
+            - v13-prod-
       - run:
           name: Docker login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -135,23 +134,18 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v12-build-{{ checksum "mix.lock" }}
-            - v12-build-
+            - v13-node_modules-{{ checksum "package-lock.json" }}
+            - v13-node_modules-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
-          name:       Test
-          command:    mix test
-      - save_cache:
-          key: v12-build-{{ checksum "mix.lock" }}
-          paths:
-            - deps
-            - _build
-            - ~/.mix
-      - run:
           name:       Semantic Release
           command:    mix semantic.release
+      - save_cache:
+          key: v13-node_modules-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
   
 
 workflows:
@@ -170,6 +164,7 @@ workflows:
                 - main
           requires:
             - prelease
+            - test
       - dockerhub:
           context: global
           filters:
