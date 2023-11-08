@@ -1,3 +1,10 @@
+## [2.68.5](https://github.com/coingaming/moon/compare/v2.68.4...v2.68.5) (2023-11-08)
+
+
+### Bug Fixes
+
+* semrelease playing ([a3da238](https://github.com/coingaming/moon/commit/a3da238e88f3bf6e770434bc97433a885b08ed3c))
+
 ## [2.68.3](https://github.com/coingaming/moon/compare/v2.68.2...v2.68.3) (2023-11-06)
 
 
