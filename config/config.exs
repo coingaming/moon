@@ -48,12 +48,6 @@ config :esbuild,
     }
   ]
 
-config :tails, colors_file: Path.join(File.cwd!(), "assets/colors.json")
-
-config :tails,
-  variants:
-    ~w(moon-checked moon-selected moon-active moon-disabled moon-not-checked moon-not-selected moon-not-active moon-not-disabled moon-open moon-error not-last not-first empty)
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
