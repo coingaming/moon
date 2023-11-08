@@ -128,7 +128,8 @@ defmodule Moon.MixProject do
       ],
       fromat: ["format"],
       "semantic.release": [
-        "cmd --cd assets npx semantic-release --extends ../scripts/deploy/semantic-release.js"
+        "cmd npm i",
+        "cmd npx semantic-release --extends ./scripts/deploy/semantic-release.js"
       ]
     ]
   end
