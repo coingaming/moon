@@ -1,3 +1,10 @@
+## [2.68.9](https://github.com/coingaming/moon/compare/v2.68.8...v2.68.9) (2023-11-08)
+
+
+### Bug Fixes
+
+* ci configuration ([9ad2d43](https://github.com/coingaming/moon/commit/9ad2d43b113ce1f82cf34d3bbba90f08b48cf207))
+
 ## [2.68.8](https://github.com/coingaming/moon/compare/v2.68.7...v2.68.8) (2023-11-08)
 
 
