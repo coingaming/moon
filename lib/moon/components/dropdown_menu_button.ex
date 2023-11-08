@@ -1,7 +1,7 @@
 defmodule Moon.Components.DropdownMenuButton do
   @moduledoc false
 
-  use MoonWeb, :stateless_component
+  use Moon.StatelessComponent
   alias Moon.Components.Popover
 
   prop(class, :string)
