@@ -60,7 +60,8 @@ defmodule Moon.MixProject do
       ],
       links: %{
         "GitHub" => "https://github.com/coingaming/moon/tree/v#{@version}"
-      }
+      },
+      description: "Components-based design system written in elixir"
     ]
   end
 
