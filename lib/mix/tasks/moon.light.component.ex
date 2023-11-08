@@ -1,3 +1,12 @@
+defmodule Moon.Helpers.Alive do
+  @moduledoc false
+
+  def translate_template_node(other) do
+    dbg(other)
+  end
+end
+
+
 defmodule Mix.Tasks.Moon.Light.Component do
   @shortdoc "Converts surface component to phoenix_live_view"
 
@@ -39,10 +48,13 @@ defmodule Mix.Tasks.Moon.Light.Component do
       path: name |> replace(~r/([a-z])([A-Z])/, "\\1_\\2") |> downcase() |> replace(".", "/"),
       short: name |> split(".") |> last(),
       config: %{
-        use_translates: %{
-          [:Moon, :StatelessComponent] => [:Moon, :Light, :Component],
-          [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
-        }
+        use_translates: fn alias ->
+          %{
+            [:Moon, :StatelessComponent] => [:Moon, :Light, :Component],
+            [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
+          }[alias]
+        end,
+        defmodule_translates: fn [:Moon | others] -> [:Moon | [:Light | others]] end
       }
     }
   end
@@ -81,12 +93,12 @@ defmodule Mix.Tasks.Moon.Light.Component do
         result = {:prop, _meta, _options} -> translate_prop(c, result)
         result = {:slot, _meta, _options} -> translate_prop(c, result)
         result = {:@, _, [{:doc, _, [_text]}]} -> translate_doc(c, result)
-        result = {:use, _, [{:__aliases__, _, _alias}]} -> translate_use(c, result)
-        result = {:defmodule, _, [{:__aliases__, _, _alias}], _} -> translate_defmodule(c, result)
+        result = {:use, _, [{:__aliases__, _, _alias} | _]} -> translate_use_defmodule(c, result)
+        result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} -> translate_use_defmodule(c, result)
         other -> other
       end)
-      |> Macro.to_string()
-      |> dbg()
+      # |> Macro.to_string()
+      # |> dbg()
     )
   end
 
@@ -114,22 +126,11 @@ defmodule Mix.Tasks.Moon.Light.Component do
     res
   end
 
-  defp translate_use(
-         %{config: %{use_translates: use_translates}},
-         {:use, m1, [{:__aliases__, m2, alias}]}
-       ) do
-    {:use, m1, [{:__aliases__, m2, use_translates[alias]}]}
-  end
-
-  defp translate_use(
-         %{config: %{use_translates: use_translates}},
-         {:use, m1, [{:__aliases__, m2, alias}, options]}
-       ) do
-    {:use, m1, [{:__aliases__, m2, use_translates[alias]}, options]}
-  end
-
-  defp translate_defmodule(_, {:defmodule, m1, [{:__aliases__, m2, _alias = [:Moon | rest_aliases]}, options]}) do
-    {:defmodule, m1, [{:__aliases__, m2, [:Moon | [:Light | rest_aliases]]}, options]}
+  defp translate_use_defmodule(
+         %{config: config},
+         {type, m1, [{:__aliases__, m2, alias} | other]}
+       ) when type in [:use, :defmodule] do
+    {type, m1, [{:__aliases__, m2, config[:"#{type}_translates"].(alias)} | other]}
   end
 
   defp translate_sigil(%{module: module}, res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}) do
@@ -143,13 +144,33 @@ defmodule Mix.Tasks.Moon.Light.Component do
       column: Keyword.get(opts, :column, 1),
       indentation: Keyword.get(opts, :indentation, 0)
     )
-    |> Macro.prewalk(fn other -> other end)
+
+    _compile_meta = %Surface.Compiler.CompileMeta{
+      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+      file: module.__info__(:compile)[:source] |> to_string(),
+      caller: %{module: module},
+      checks: opts[:checks] || [],
+      variables: opts[:variables],
+      style: %{},
+      caller_spec: %{}
+    }
+
+    |> Macro.prewalk(&Moon.Helpers.Alive.translate_template_node/1)
 
     # |> Macro.to_string()
     # |> dbg()
 
     res
   end
+
+
+
+
+
+
+
+
+
 
   defp pathes(%{path: _path}) do
     [
