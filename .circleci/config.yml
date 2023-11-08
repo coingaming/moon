@@ -46,7 +46,7 @@ jobs:
           key: v13-build-{{ checksum "mix.lock" }}
           paths:
             - deps
-            - _build
+            - _build/prod
             - ~/.mix
       - save_cache:
           key: v13-prod-{{ .Revision }}
@@ -87,6 +87,12 @@ jobs:
           command: mix credo
       - run:
           command: mix test
+      - save_cache:
+          key: v13-build-{{ checksum "mix.lock" }}
+          paths:
+            - deps
+            - _build/test
+            - ~/.mix
   dockerhub:
     docker: 
       - *elixir_image
@@ -128,7 +134,7 @@ jobs:
     docker: 
       - *elixir_image
     environment:
-      MIX_ENV: prod
+      MIX_ENV: test
     resource_class: xlarge
     steps:
       - checkout
@@ -167,7 +173,6 @@ workflows:
               only: 
                 - main
           requires:
-            - prelease
             - test
       - dockerhub:
           context: global
