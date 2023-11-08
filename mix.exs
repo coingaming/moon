@@ -126,7 +126,10 @@ defmodule Moon.MixProject do
         "format --check-formatted",
         "credo"
       ],
-      fromat: ["format"]
+      fromat: ["format"],
+      "semantic.release": [
+        "cmd --cd assets npx semantic-release --extends ../scripts/deploy/semantic-release.js"
+      ]
     ]
   end
 end
