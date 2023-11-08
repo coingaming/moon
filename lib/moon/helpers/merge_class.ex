@@ -18,6 +18,16 @@ defmodule Moon.Helpers.MergeClass do
     Enum.join([p2 | [p1 | other]], ":")
   end
 
+  defp rename_class(class = "ltr:not-last" <> _) do
+    [p1 | [p2 | other]] = String.split(class, ":")
+    Enum.join([p2 | [p1 | other]], ":")
+  end
+
+  defp rename_class(class = "ltr:not-first" <> _) do
+    [p1 | [p2 | other]] = String.split(class, ":")
+    Enum.join([p2 | [p1 | other]], ":")
+  end
+
   defp rename_class(class), do: class
 
   # original functions
