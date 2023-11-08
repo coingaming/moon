@@ -138,7 +138,7 @@ module.exports = {
       backgroundOpacity: {
         12: "0.12",
       },
-       colors: require("./colors.json"),
+      colors: require("./colors.json"),
       screens: {
         "3xl": "1800px",
       },
