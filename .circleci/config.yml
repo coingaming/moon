@@ -25,8 +25,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v11-build-{{ checksum "mix.lock" }}
-            - v11-build-
+            - v12-build-{{ checksum "mix.lock" }}
+            - v12-build-
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -43,14 +43,14 @@ jobs:
       - run:
           command: mix release
       - save_cache:
-          key: v11-build-{{ checksum "mix.lock" }}
+          key: v12-build-{{ checksum "mix.lock" }}
           paths:
             - deps
             - _build
             - ~/.mix
             - assets/node_modules
       - save_cache:
-          key: v11-prod-{{ .Revision }}
+          key: v12-prod-{{ .Revision }}
           paths:
             - _build
 
@@ -72,8 +72,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v11-build-{{ checksum "mix.lock" }}
-            - v11-build-
+            - v12-build-{{ checksum "mix.lock" }}
+            - v12-build-
       - run:
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
@@ -99,8 +99,8 @@ jobs:
           at: ./
       - restore_cache:
           keys:
-            - v11-prod-{{ .Revision }}
-            - v11-prod-
+            - v12-prod-{{ .Revision }}
+            - v12-prod-
       - run:
           name: Docker login
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -135,8 +135,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v11-build-{{ checksum "mix.lock" }}
-            - v11-build-
+            - v12-build-{{ checksum "mix.lock" }}
+            - v12-build-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -153,7 +153,7 @@ jobs:
           name:       Test
           command:    mix test
       - save_cache:
-          key: v11-build-{{ checksum "mix.lock" }}
+          key: v12-build-{{ checksum "mix.lock" }}
           paths:
             - deps
             - _build
@@ -173,10 +173,12 @@ workflows:
           context: global
       - semrelease:
           context: global
-          filters:
-            branches:
-              only: 
-                - main
+          # filters:
+          #   branches:
+          #     only: 
+          #       - main
+          requires:
+            - prelease
       - dockerhub:
           context: global
           filters:
