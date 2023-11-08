@@ -22,10 +22,10 @@ defmodule Moon.Design.Pagination.Pages do
   prop(truncable_text_class, :css_class)
 
   @doc "Additional Tailwind classes for background color of page buttons in default state"
-  prop(default_bg_color, :css_class, default: "bg-none focus:bg-jiren hover:bg-jiren")
+  prop(default_bg_color, :css_class, default: "bg-transparent focus:bg-jiren hover:bg-jiren")
 
   @doc "Additional Tailwind classes for background color of page buttons in selected state"
-  prop(selected_bg_color, :css_class, default: "bg-piccolo text-goten hover:bg-none")
+  prop(selected_bg_color, :css_class, default: "bg-piccolo text-goten")
 
   # internal API
   @doc "Will be got from Pagination in most cases"

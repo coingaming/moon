@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Customization do
     </Button>
     <Button class="bg-krillin ps-4 pe-2">Icon inside<GenericSettings class="text-moon-32 text-whis" />
     </Button>
-    <Button class="rounded-moon-s-xx rounded-full">Rounded</Button>
+    <Button class="rounded-full">Rounded</Button>
     <Button full_width>
       Full width with custom size icon
       <ArrowsTopRight class="text-moon-16 absolute block top-1/2 translate-y-[-50%] ltr:right-3 rtl:left-3" />
@@ -31,7 +31,7 @@ defmodule MoonWeb.Examples.Design.ButtonExample.Customization do
     </Button>
     <Button class="bg-krillin ps-4 pe-2">Icon inside<GenericSettings class="text-moon-32 text-whis" />
     </Button>
-    <Button class="rounded-moon-s-xx rounded-full">Rounded</Button>
+    <Button class="rounded-full">Rounded</Button>
     <Button full_width>
       Full width with custom size icon
       <ArrowsTopRight class="text-moon-16 absolute block top-1/2 translate-y-[-50%] ltr:right-3 rtl:left-3" />

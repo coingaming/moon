@@ -22,22 +22,36 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Customizations do
       <Checkbox class="moon-checked:bg-krillin" is_selected={@is_selected0} on_click="on_click0" />
       <Checkbox class="rounded-none" is_selected={@is_selected1} on_click="on_click1" />
       <Checkbox class="shadow-krillin" is_selected={@is_selected2} on_click="on_click2" />
-      <Checkbox class="text-krillin-60" is_selected={@is_selected3} on_click="on_click3" />
+      <Checkbox
+        class="text-roshi moon-checked:bg-roshi-10"
+        is_selected={@is_selected3}
+        on_click="on_click3"
+      />
     </div>
     """
   end
 
   def code() do
     """
-    prop(is_selected, :boolean, default: true)
+    alias Moon.Lego.Checkbox
 
-    def handle_event("on_click", params, socket) do
-      {:noreply, assign(socket, checked: !socket.assigns.is_selected)}
+    prop(is_selected0, :boolean, default: false)
+    prop(is_selected1, :boolean, default: false)
+    prop(is_selected2, :boolean, default: false)
+    prop(is_selected3, :boolean, default: false)
+
+    def handle_event("on_click" <> index, _params, socket) do
+      {:noreply, assign(socket, "is_selected#\{index}": !socket.assigns[:"is_selected#\{index}"])}
     end
 
     def render(assigns) do
       ~F\"""
-      <Checkbox {=@is_selected} on_click="on_click" />
+      <div class="w-full flex flex-wrap items-center justify-around">
+        <Checkbox class="moon-checked:bg-krillin" is_selected={@is_selected0} on_click="on_click0" />
+        <Checkbox class="rounded-none" is_selected={@is_selected1} on_click="on_click1" />
+        <Checkbox class="shadow-krillin" is_selected={@is_selected2} on_click="on_click2" />
+        <Checkbox class="text-roshi moon-checked:bg-roshi-10" is_selected={@is_selected3} on_click="on_click3" />
+      </div>
       \"""
     end
     """

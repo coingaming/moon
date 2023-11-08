@@ -15,7 +15,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Customization do
       </Button>
       <BottomSheet id="customized_bottom_sheet">
         <BottomSheet.Panel class="bg-raditz pt-2 px-4 pb-4">
-          <BottomSheet.Header class="bg-none min-h-[10px]">
+          <BottomSheet.Header class="bg-transparent min-h-[10px]">
             <BottomSheet.DragHandle class="bg-piccolo" />
           </BottomSheet.Header>
           <div class="flex grow items-center justify-center bg-jiren text-piccolo">
@@ -46,7 +46,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Customization do
         </Button>
         <BottomSheet id="customized_bottom_sheet">
           <BottomSheet.Panel class="bg-raditz pt-2 px-4 pb-4">
-            <BottomSheet.Header class="bg-none min-h-[10px]">
+            <BottomSheet.Header class="bg-transparent min-h-[10px]">
               <BottomSheet.DragHandle class="bg-piccolo" />
             </BottomSheet.Header>
             <div class="flex grow items-center justify-center bg-jiren text-piccolo">

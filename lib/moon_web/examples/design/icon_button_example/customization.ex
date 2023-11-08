@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Customization do
     ~F"""
     <IconButton class="bg-roshi"><GenericSettings /></IconButton>
     <IconButton class="bg-krillin p-0"><GenericSettings class="text-moon-32 text-whis" /></IconButton>
-    <IconButton icon="generic_settings" class="rounded-moon-s-xx rounded-full" />
+    <IconButton icon="generic_settings" class="rounded-full" />
     """
   end
 
@@ -23,7 +23,7 @@ defmodule MoonWeb.Examples.Design.IconButtonExample.Customization do
 
     <IconButton class="bg-roshi"><GenericSettings /></IconButton>
     <IconButton class="bg-krillin p-0"><GenericSettings class="text-moon-32 text-whis" /></IconButton>
-    <IconButton icon="generic_settings" class="rounded-moon-s-xx rounded-full" />
+    <IconButton icon="generic_settings" class="rounded-full" />
     """
   end
 end

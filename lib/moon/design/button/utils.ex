@@ -95,7 +95,7 @@ defmodule Moon.Design.Button.Utils do
         variant in ["secondary", "outline"] && animation != "error",
       "border border-solid bg-transparent text-bulma border-chichi":
         variant in ["secondary", "outline"] && animation == "error",
-      "bg-none text-trunks hover:text-bulma": variant in ["ghost"] && animation != "error",
+      "bg-transparent text-trunks hover:text-bulma": variant in ["ghost"] && animation != "error",
       "opacity-60 cursor-not-allowed active:transform-none": disabled
     ]
   end

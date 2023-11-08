@@ -15,8 +15,8 @@ defmodule MoonWeb.Components.TokensTable do
       <div class="text-moon-24 font-semibold">{@title}</div>
       <Table
         items={item <- @data}
-        header_row_class="bg-none"
-        class="bg-none"
+        header_row_class="bg-transparent"
+        class="bg-transparent"
         row_bg="bg-gohan whitespace-nowrap"
       >
         <Column name="property" label="Property">

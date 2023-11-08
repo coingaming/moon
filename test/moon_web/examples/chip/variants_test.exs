@@ -6,7 +6,7 @@ defmodule MoonWeb.Examples.Chip.VariantsTest do
 
     assert view
            |> element(
-             "button.bg-none.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo[data-testid=ghost]"
+             "button.bg-transparent.text-bulma.hover\\:bg-jiren.hover\\:text-piccolo[data-testid=ghost]"
            )
            |> has_element?()
 

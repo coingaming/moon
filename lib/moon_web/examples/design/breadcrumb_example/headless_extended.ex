@@ -35,7 +35,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
     <div>
       <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
         <Breadcrumb.Item
-          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-regular last:hover:text-bulma"
+          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
           :let={crumb: crumb}
         >
           <Breadcrumb.Item.Divider
@@ -89,7 +89,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
       <div>
         <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
           <Breadcrumb.Item
-            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-regular last:hover:text-bulma"
+            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
             :let={crumb: crumb}
           >
             <Breadcrumb.Item.Divider

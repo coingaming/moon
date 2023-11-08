@@ -4,6 +4,31 @@ defmodule Moon.Helpers.MergeClass do
   """
 
   def merge(classes) do
+    classes
+    |> Tails.classes()
+    |> rename_classes()
+  end
+
+  def rename_classes(classes) do
+    classes
+    |> String.split(" ")
+    |> Enum.map(fn class -> rename_class(class) end)
+    |> Enum.join(" ")
+  end
+
+  def rename_class(class) do
+    if String.starts_with?(class, "after:moon-checked:") do
+      # [prefix | rest ] = String.split("after:moon-checked", ":")
+      # renamed_name = "moon-checked:after" <> Enum.join(":", rest)
+      # renamed_name
+      # temporary
+      class
+    else
+      class
+    end
+  end
+
+  def merge_original(classes) do
     flatten(classes)
     |> Enum.reduce(%{}, fn class, groups ->
       Map.put(groups, group_name(class), class)

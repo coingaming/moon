@@ -254,162 +254,163 @@ module.exports = {
         "moon-xl":
           "0 32px 32px -8px rgba(0, 0, 0, 0.08), 0 0 32px -8px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.2)",
       },
-      colors: {
-        transparent: "transparent",
-        text: "var(--text)",
-        background: "var(--background)",
-        "krillin-10": {
-          DEFAULT: withOpacityValue("--krillin-10"),
-        },
-        "krillin-60": {
-          DEFAULT: withOpacityValue("--krillin-60"),
-        },
-        "krillin": {
-          DEFAULT: withOpacityValue("--krillin"),
-        },
-        "chichi-10": {
-          DEFAULT: withOpacityValue("--chichi-10"),
-        },
-        "chichi-60": {
-          DEFAULT: withOpacityValue("--chichi-60"),
-        },
-        "chichi": {
-          DEFAULT: withOpacityValue("--chichi"),
-        },
-        "roshi-10": {
-          DEFAULT: withOpacityValue("--roshi-10"),
-        },
-        "roshi-60": {
-          DEFAULT: withOpacityValue("--roshi-60"),
-        },
-        "roshi": {
-          DEFAULT: withOpacityValue("--roshi"),
-        },
-        "dodoria-10": {
-          DEFAULT: withOpacityValue("--dodoria-10"),
-        },
-        "dodoria-60": {
-          DEFAULT: withOpacityValue("--dodoria-60"),
-        },
-        "dodoria": {
-          DEFAULT: withOpacityValue("--dodoria"),
-        },
-        "cell-10": {
-          DEFAULT: withOpacityValue("--cell-10"),
-        },
-        "cell-60": {
-          DEFAULT: withOpacityValue("--cell-60"),
-        },
-        "cell": {
-          DEFAULT: withOpacityValue("--cell"),
-        },
-        "raditz-10": {
-          DEFAULT: withOpacityValue("--raditz-10"),
-        },
-        "raditz-60": {
-          DEFAULT: withOpacityValue("--raditz-60"),
-        },
-        "raditz": {
-          DEFAULT: withOpacityValue("--raditz"),
-        },
-        "whis-10": {
-          DEFAULT: withOpacityValue("--whis-10"),
-        },
-        "whis-60": {
-          DEFAULT: withOpacityValue("--whis-60"),
-        },
-        "whis": {
-          DEFAULT: withOpacityValue("--whis"),
-        },
-        "frieza-10": {
-          DEFAULT: withOpacityValue("--frieza-10"),
-        },
-        "frieza-60": {
-          DEFAULT: withOpacityValue("--frieza-60"),
-        },
-        "frieza": {
-          DEFAULT: withOpacityValue("--frieza"),
-        },
-        "nappa-10": {
-          DEFAULT: withOpacityValue("--nappa-10"),
-        },
-        "nappa-60": {
-          DEFAULT: withOpacityValue("--nappa-60"),
-        },
-        "nappa": {
-          DEFAULT: withOpacityValue("--nappa"),
-        },
-        "piccolo": {
-          DEFAULT: withOpacityValue("--piccolo"),
-        },
-        "hit-80": {
-          DEFAULT: withOpacityValue("--hit-80"),
-        },
-        "hit": {
-          DEFAULT: withOpacityValue("--hit"),
-        },
-        "hit-120": {
-          DEFAULT: withOpacityValue("--hit-120"),
-        },
-        "goten": {
-          DEFAULT: withOpacityValue("--goten"),
-        },
-        "goku-10": {
-          DEFAULT: withOpacityValue("--goku-10"),
-        },
-        "goku-40": {
-          DEFAULT: withOpacityValue("--goku-40"),
-        },
-        "goku-80": {
-          DEFAULT: withOpacityValue("--goku-80"),
-        },
-        "goku": {
-          DEFAULT: withOpacityValue("--goku"),
-        },
-        "goku-120": {
-          DEFAULT: withOpacityValue("--goku-120"),
-        },
-        "gohan-10": {
-          DEFAULT: withOpacityValue("--gohan-10"),
-        },
-        "gohan-40": {
-          DEFAULT: withOpacityValue("--gohan-40"),
-        },
-        "gohan-80": {
-          DEFAULT: withOpacityValue("--gohan-80"),
-        },
-        "gohan": {
-          DEFAULT: withOpacityValue("--gohan"),
-        },
-        "gohan-120": {
-          DEFAULT: withOpacityValue("--gohan-120"),
-        },
-        "beerus": {
-          DEFAULT: withOpacityValue("--beerus"),
-        },
-        "bulma": {
-          DEFAULT: withOpacityValue("--bulma"),
-        },
-        "trunks": {
-          DEFAULT: withOpacityValue("--trunks"),
-        },
-        "popo": {
-          DEFAULT: withOpacityValue("--popo"),
-        },
-        "jiren": {
-          DEFAULT: withOpacityValue("--jiren"),
-        },
-        "heles": {
-          DEFAULT: withOpacityValue("--heles"),
-        },
-        "zeno": {
-          DEFAULT: withOpacityValue("--zeno"),
-        },
-        // Legacy classes:
-        black: "#000",
-        hover: "rgba(34, 34, 37, 0.12)",
-        "primary-hover": "rgba(0, 0, 0, 0.08)",
-      },
+        // colors: require("./colors.json"), 
+      // colors: {
+      //   transparent: "transparent",
+      //   text: "var(--text)",
+      //   background: "var(--background)",
+      //   "krillin-10": {
+      //     DEFAULT: withOpacityValue("--krillin-10"),
+      //   },
+      //   "krillin-60": {
+      //     DEFAULT: withOpacityValue("--krillin-60"),
+      //   },
+      //   "krillin": {
+      //     DEFAULT: withOpacityValue("--krillin"),
+      //   },
+      //   "chichi-10": {
+      //     DEFAULT: withOpacityValue("--chichi-10"),
+      //   },
+      //   "chichi-60": {
+      //     DEFAULT: withOpacityValue("--chichi-60"),
+      //   },
+      //   "chichi": {
+      //     DEFAULT: withOpacityValue("--chichi"),
+      //   },
+      //   "roshi-10": {
+      //     DEFAULT: withOpacityValue("--roshi-10"),
+      //   },
+      //   "roshi-60": {
+      //     DEFAULT: withOpacityValue("--roshi-60"),
+      //   },
+      //   "roshi": {
+      //     DEFAULT: withOpacityValue("--roshi"),
+      //   },
+      //   "dodoria-10": {
+      //     DEFAULT: withOpacityValue("--dodoria-10"),
+      //   },
+      //   "dodoria-60": {
+      //     DEFAULT: withOpacityValue("--dodoria-60"),
+      //   },
+      //   "dodoria": {
+      //     DEFAULT: withOpacityValue("--dodoria"),
+      //   },
+      //   "cell-10": {
+      //     DEFAULT: withOpacityValue("--cell-10"),
+      //   },
+      //   "cell-60": {
+      //     DEFAULT: withOpacityValue("--cell-60"),
+      //   },
+      //   "cell": {
+      //     DEFAULT: withOpacityValue("--cell"),
+      //   },
+      //   "raditz-10": {
+      //     DEFAULT: withOpacityValue("--raditz-10"),
+      //   },
+      //   "raditz-60": {
+      //     DEFAULT: withOpacityValue("--raditz-60"),
+      //   },
+      //   "raditz": {
+      //     DEFAULT: withOpacityValue("--raditz"),
+      //   },
+      //   "whis-10": {
+      //     DEFAULT: withOpacityValue("--whis-10"),
+      //   },
+      //   "whis-60": {
+      //     DEFAULT: withOpacityValue("--whis-60"),
+      //   },
+      //   "whis": {
+      //     DEFAULT: withOpacityValue("--whis"),
+      //   },
+      //   "frieza-10": {
+      //     DEFAULT: withOpacityValue("--frieza-10"),
+      //   },
+      //   "frieza-60": {
+      //     DEFAULT: withOpacityValue("--frieza-60"),
+      //   },
+      //   "frieza": {
+      //     DEFAULT: withOpacityValue("--frieza"),
+      //   },
+      //   "nappa-10": {
+      //     DEFAULT: withOpacityValue("--nappa-10"),
+      //   },
+      //   "nappa-60": {
+      //     DEFAULT: withOpacityValue("--nappa-60"),
+      //   },
+      //   "nappa": {
+      //     DEFAULT: withOpacityValue("--nappa"),
+      //   },
+      //   "piccolo": {
+      //     DEFAULT: withOpacityValue("--piccolo"),
+      //   },
+      //   "hit-80": {
+      //     DEFAULT: withOpacityValue("--hit-80"),
+      //   },
+      //   "hit": {
+      //     DEFAULT: withOpacityValue("--hit"),
+      //   },
+      //   "hit-120": {
+      //     DEFAULT: withOpacityValue("--hit-120"),
+      //   },
+      //   "goten": {
+      //     DEFAULT: withOpacityValue("--goten"),
+      //   },
+      //   "goku-10": {
+      //     DEFAULT: withOpacityValue("--goku-10"),
+      //   },
+      //   "goku-40": {
+      //     DEFAULT: withOpacityValue("--goku-40"),
+      //   },
+      //   "goku-80": {
+      //     DEFAULT: withOpacityValue("--goku-80"),
+      //   },
+      //   "goku": {
+      //     DEFAULT: withOpacityValue("--goku"),
+      //   },
+      //   "goku-120": {
+      //     DEFAULT: withOpacityValue("--goku-120"),
+      //   },
+      //   "gohan-10": {
+      //     DEFAULT: withOpacityValue("--gohan-10"),
+      //   },
+      //   "gohan-40": {
+      //     DEFAULT: withOpacityValue("--gohan-40"),
+      //   },
+      //   "gohan-80": {
+      //     DEFAULT: withOpacityValue("--gohan-80"),
+      //   },
+      //   "gohan": {
+      //     DEFAULT: withOpacityValue("--gohan"),
+      //   },
+      //   "gohan-120": {
+      //     DEFAULT: withOpacityValue("--gohan-120"),
+      //   },
+      //   "beerus": {
+      //     DEFAULT: withOpacityValue("--beerus"),
+      //   },
+      //   "bulma": {
+      //     DEFAULT: withOpacityValue("--bulma"),
+      //   },
+      //   "trunks": {
+      //     DEFAULT: withOpacityValue("--trunks"),
+      //   },
+      //   "popo": {
+      //     DEFAULT: withOpacityValue("--popo"),
+      //   },
+      //   "jiren": {
+      //     DEFAULT: withOpacityValue("--jiren"),
+      //   },
+      //   "heles": {
+      //     DEFAULT: withOpacityValue("--heles"),
+      //   },
+      //   "zeno": {
+      //     DEFAULT: withOpacityValue("--zeno"),
+      //   },
+      //   // Legacy classes:
+      //   black: "#000",
+      //   hover: "rgba(34, 34, 37, 0.12)",
+      //   "primary-hover": "rgba(0, 0, 0, 0.08)",
+      // },
     },
   },
   variants: {

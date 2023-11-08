@@ -57,7 +57,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
         responsive_crumbs_on="md"
       >
         <Breadcrumb.Item
-          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-regular last:hover:text-bulma"
+          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
           :let={crumb: crumb}
           divider="controls_chevron_right"
         >
@@ -158,7 +158,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
           responsive_crumbs_on="md"
         >
           <Breadcrumb.Item
-            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-regular last:hover:text-bulma"
+            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
             :let={crumb: crumb}
             divider="controls_chevron_right"
           >

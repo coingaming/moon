@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Customization do
     ~F"""
     <Avatar class="text-chichi" />
     <Avatar class="bg-piccolo text-goten" />
-    <Avatar class="rounded-full rounded-moon-i-xx" />
+    <Avatar class="rounded-full" />
     <Avatar>
       <Avatar.Status class="bg-chichi" />
     </Avatar>
@@ -28,7 +28,7 @@ defmodule MoonWeb.Examples.Design.AvatarExample.Customization do
 
     <Avatar class="text-chichi" />
     <Avatar class="bg-piccolo text-goten" />
-    <Avatar class="rounded-full rounded-moon-i-xx" />
+    <Avatar class="rounded-full" />
     <Avatar>
       <Avatar.Status class="bg-chichi" />
     </Avatar>
