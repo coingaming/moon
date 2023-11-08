@@ -127,7 +127,9 @@ defmodule Moon.MixProject do
         "credo"
       ],
       fromat: ["format"],
-      "semantic.release": ["cmd --cd assets npx semantic-release --extends ../scripts/deploy/semantic-release.js"]
+      "semantic.release": [
+        "cmd --cd assets npx semantic-release --extends ../scripts/deploy/semantic-release.js"
+      ]
     ]
   end
 end
