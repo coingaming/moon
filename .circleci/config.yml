@@ -128,7 +128,7 @@ jobs:
     docker: 
       - *elixir_image
     environment:
-      MIX_ENV: test
+      MIX_ENV: prod
     resource_class: xlarge
     steps:
       - checkout
@@ -136,6 +136,10 @@ jobs:
           keys:
             - v13-node_modules-{{ checksum "package-lock.json" }}
             - v13-node_modules-
+      - restore_cache:
+          keys:
+            - v13-build-{{ checksum "mix.lock" }}
+            - v13-build-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
