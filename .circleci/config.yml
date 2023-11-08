@@ -25,8 +25,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v13-build-{{ checksum "mix.lock" }}
-            - v13-build-
+            - v13-build_prod-{{ checksum "mix.lock" }}
+            - v13-build_prod-
       - run:
           name: Hex auth
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
@@ -43,10 +43,10 @@ jobs:
       - run:
           command: mix release
       - save_cache:
-          key: v13-build-{{ checksum "mix.lock" }}
+          key: v13-build_prod-{{ checksum "mix.lock" }}
           paths:
             - deps
-            - _build/prod
+            - _build
             - ~/.mix
       - save_cache:
           key: v13-prod-{{ .Revision }}
@@ -71,8 +71,8 @@ jobs:
           command: echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
       - restore_cache:
           keys:
-            - v13-build-{{ checksum "mix.lock" }}
-            - v13-build-
+            - v13-build_test-{{ checksum "mix.lock" }}
+            - v13-build_test-
       - run:
           command: mix hex.organization auth coingaming --key $HEX_API_KEY
       - run:
@@ -88,10 +88,10 @@ jobs:
       - run:
           command: mix test
       - save_cache:
-          key: v13-build-{{ checksum "mix.lock" }}
+          key: v13-build_test-{{ checksum "mix.lock" }}
           paths:
             - deps
-            - _build/test
+            - _build
             - ~/.mix
   dockerhub:
     docker: 
@@ -144,8 +144,8 @@ jobs:
             - v13-node_modules-
       - restore_cache:
           keys:
-            - v13-build-{{ checksum "mix.lock" }}
-            - v13-build-
+            - v13-build_test-{{ checksum "mix.lock" }}
+            - v13-build_test-
       - run:
           name:       Hex auth
           command:    mix hex.organization auth coingaming --key $HEX_API_KEY
