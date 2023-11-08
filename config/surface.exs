@@ -1,4 +1,4 @@
-import Config, only: [config: 3]
+import Config
 
 config :surface, :components, [
   {Surface.Components.Form.ErrorTag,
@@ -58,3 +58,9 @@ config :surface, :components, [
   {MoonWeb.Components.ExampleAndCode, propagate_context_to_slots: true},
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]
+
+config :tails, colors_file: Path.join(File.cwd!(), "assets/colors.json")
+
+config :tails,
+  variants:
+    ~w(moon-checked moon-selected moon-active moon-disabled moon-not-checked moon-not-selected moon-not-active moon-not-disabled moon-open moon-error not-last not-first empty)

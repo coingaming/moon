@@ -29,7 +29,7 @@ defmodule Moon.Parts.Sidebar.MenuLink do
       as="a"
       class={merge([
         [
-          "text-bulma justify-start hover:bg-gohan rounded-moon-i-xx rounded-full p-3 gap-3 h-12",
+          "text-bulma justify-start hover:bg-gohan rounded-full p-3 gap-3 h-12",
           "bg-gohan": @active_page == @route
         ],
         @class

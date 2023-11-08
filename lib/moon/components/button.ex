@@ -66,7 +66,7 @@ defmodule Moon.Components.Button do
           "border border-solid bg-transparent text-bulma border-trunks hover:border-bulma":
             @variant in ["secondary"],
           "bg-hit text-goten": @variant in ["tertiary"],
-          "bg-none text-trunks hover:text-bulma": @variant in ["ghost"],
+          "bg-transparent text-trunks hover:text-bulma": @variant in ["ghost"],
           "text-trunks hover:bg-hit-120 hover:text-piccolo": @variant in ["link"],
           "text-moon-12 h-8 px-2": @size == "xs" && slot_assigned?(:default),
           "text-moon-14 h-8 px-3": @size == "sm" && slot_assigned?(:default),

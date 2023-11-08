@@ -29,7 +29,7 @@ defmodule Moon.Parts.Sidebar.Accordion do
     ~F"""
     <Accordion {=@id} {=@testid} {=@value} {=@class}>
       <Accordion.Item has_content_outside>
-        <Accordion.Header class={merge(["font-normal hover:bg-gohan rounded-moon-s-xx rounded-full p-3 gap-3 h-12", @header_class])}>
+        <Accordion.Header class={merge(["font-normal hover:bg-gohan rounded-full p-3 gap-3 h-12", @header_class])}>
           <Icon
             class="w-6 h-6"
             name={@accordion_header_icon}

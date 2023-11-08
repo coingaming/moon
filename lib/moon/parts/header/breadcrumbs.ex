@@ -29,7 +29,7 @@ defmodule Moon.Parts.Header.Breadcrumbs do
       class={merge(["hidden lg:inline", @class])}
     >
       <Breadcrumb.Item
-        class={merge(["hover:text-bulma last:text-bulma last:font-regular", @item_class])}
+        class={merge(["hover:text-bulma last:text-bulma last:font-normal", @item_class])}
         :let={crumb: crumb}
       >
         <Breadcrumb.Item.Divider divider="controls_chevron_right_small" class="text-moon-20" />

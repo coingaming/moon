@@ -34,7 +34,7 @@ defmodule Moon.Parts.Button do
       {=@target}
       {=@rel}
       {=@attrs}
-      class={"rounded-moon-s-xx rounded-full", @bg_class, @class}
+      class={"rounded-full", @bg_class, @class}
     >
       <#slot {@left_icon_slot} />
       <#slot />

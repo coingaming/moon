@@ -27,8 +27,8 @@ defmodule Moon.Design.Tag do
           "gap-1": slot_assigned?(:right_icon) || slot_assigned?(:left_icon),
           "text-moon-9 h-4 py-0 px-2": @size == "2xs",
           "text-moon-10 h-6 py-1 px-2": @size == "xs",
-          "text-moon-10 tracking-0 font-regular": @size == "2xs" && !@is_uppercase,
-          "text-moon-12 tracking-0 font-regular": @size == "xs" && !@is_uppercase,
+          "text-moon-10 tracking-0 font-normal": @size == "2xs" && !@is_uppercase,
+          "text-moon-12 tracking-0 font-normal": @size == "xs" && !@is_uppercase,
           "#{Utils.get_right_icon_paddings(@size)}":
             slot_assigned?(:right_icon) && !slot_assigned?(:left_icon),
           "#{Utils.get_left_icon_paddings(@size)}":

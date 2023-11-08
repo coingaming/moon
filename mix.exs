@@ -88,6 +88,7 @@ defmodule Moon.MixProject do
       {:distillery, "~> 2.1"},
       {:moon_icons, "~> 0.1"},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      {:tails, "~> 0.1.7"},
 
       # test
       {:excoveralls, "~> 0.10", only: :test},

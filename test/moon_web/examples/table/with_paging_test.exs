@@ -13,7 +13,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     assert view
-           |> element("#[aria-label=pagination] button.bg-none[aria-label=page_2]")
+           |> element("#[aria-label=pagination] button.bg-transparent[aria-label=page_2]")
            |> has_element?()
 
     assert view
@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     view
-    |> element("#[aria-label=pagination] button.bg-none[aria-label=page_2]")
+    |> element("#[aria-label=pagination] button.bg-transparent[aria-label=page_2]")
     |> render_click()
 
     assert view
@@ -33,7 +33,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     assert view
-           |> element("#[aria-label=pagination] button.bg-none[aria-label=page_1]")
+           |> element("#[aria-label=pagination] button.bg-transparent[aria-label=page_1]")
            |> has_element?()
 
     refute view
@@ -49,23 +49,23 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
     {:ok, view, _html} = live(conn, "/example/Design.TableExample.WithPaging")
 
     assert view
-           |> element("#with_buttons button[disabled][value=0]")
+           |> element("#with_buttons button[disabled][value=0][data-testid=prev]")
            |> has_element?()
 
     assert view
-           |> element("#with_buttons button.bg-transparent[value=2]")
+           |> element("#with_buttons button.bg-transparent[value=2][data-testid=next]")
            |> has_element?()
 
     view
-    |> element("#with_buttons button.bg-transparent[value=2]")
+    |> element("#with_buttons button.bg-transparent[value=2][data-testid=next]")
     |> render_click()
 
     assert view
-           |> element("#with_buttons button.bg-transparent[value=1]")
+           |> element("#with_buttons button.bg-transparent[value=1][data-testid=prev]")
            |> has_element?()
 
     refute view
-           |> element("#with_buttons button.bg-transparent[disabled][value=1]")
+           |> element("#with_buttons button.bg-transparent[disabled][value=1][data-testid=prev]")
            |> has_element?()
 
     assert view
@@ -73,7 +73,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     assert view
-           |> element("#[aria-label=pagination] button.bg-none[aria-label=page_1]")
+           |> element("#[aria-label=pagination] button.bg-transparent[aria-label=page_1]")
            |> has_element?()
 
     refute view
@@ -85,7 +85,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     view
-    |> element("#with_buttons button.bg-transparent[value=1]")
+    |> element("#with_buttons button.bg-transparent[value=1][data-testid=prev]")
     |> render_click()
 
     assert view
@@ -93,7 +93,7 @@ defmodule MoonWeb.Examples.Table.WithPagingTest do
            |> has_element?()
 
     assert view
-           |> element("#[aria-label=pagination] button.bg-none[aria-label=page_2]")
+           |> element("#[aria-label=pagination] button.bg-transparent[aria-label=page_2]")
            |> has_element?()
 
     assert view

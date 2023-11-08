@@ -21,7 +21,7 @@ defmodule Moon.Parts.Sidebar.Avatar do
     <Avatar
       {=@id}
       {=@testid}
-      class={merge(["rounded-full rounded-moon-i-xx text-goku bg-cell overflow-visible", @class])}
+      class={merge(["rounded-full text-goku bg-cell overflow-visible", @class])}
       size="sm"
       {=@name}
     >

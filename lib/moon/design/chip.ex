@@ -48,7 +48,7 @@ defmodule Moon.Design.Chip do
             slot_assigned?(:left_icon) && !slot_assigned?(:right_icon),
           "#{Utils.get_no_icon_paddings(@size)}":
             !slot_assigned?(:right_icon) && !slot_assigned?(:left_icon) && !slot_assigned?(:icon_only),
-          "bg-none": @variant in ["ghost"],
+          "bg-transparent": @variant in ["ghost"],
           "bg-jiren text-piccolo": @is_active,
           "hover:shadow-interactive": @is_stroke,
           "shadow-interactive": @is_active && @is_stroke

@@ -25,11 +25,11 @@ defmodule MoonWeb.Examples.Design.TableExample.WithPaging do
         value={@current_page}
         on_change="handle_paging_click"
       >
-        <Pagination.PrevButton class="border-none">
+        <Pagination.PrevButton class="border-none" testid="prev">
           <ControlsChevronLeft class="text-moon-24 rtl:rotate-180" />
         </Pagination.PrevButton>
         <Pagination.Pages />
-        <Pagination.NextButton class="border-none">
+        <Pagination.NextButton class="border-none" testid="next">
           <ControlsChevronRight class="text-moon-24 rtl:rotate-180" />
         </Pagination.NextButton>
       </Pagination>

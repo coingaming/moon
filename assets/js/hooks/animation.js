@@ -54,6 +54,7 @@ export default {
             this.el.classList.add(...this.hiddenClasses())
             this.pushEventTo(this.el, "set_close", {});
             document.body.style.overflow = "auto";
+            this.was_open = false;
         }, 200);
     },
     

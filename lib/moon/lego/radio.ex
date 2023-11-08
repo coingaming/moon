@@ -20,7 +20,7 @@ defmodule Moon.Lego.Radio do
         "relative flex items-center justify-center w-4 h-4 aspect-square m-1 rounded-full border border-trunks transition-colors",
         "after:content-[\"\"] after:absolute after:w-0 after:h-0 after:rounded-full after:top-1/2 after:left-1/2",
         "after:-translate-y-1/2 after:transition-all after:-translate-x-1/2 after:bg-piccolo",
-        "moon-checked:after:w-2 moon-checked:after:h-2 moon-checked:border-piccoloo",
+        "moon-checked:after:w-2 moon-checked:after:h-2 moon-checked:border-piccolo",
         @class
       ])}
       {=@id}

@@ -29,7 +29,7 @@ defmodule Moon.Parts.Header.LeftButton do
       {=@testid}
       {=@as}
       class={merge([
-        "bg-goku text-bulma rounded-moon-s-xx border border-beerus rounded-full h-12 w-12 lg:hidden",
+        "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:hidden",
         @class
       ])}
       {=@href}

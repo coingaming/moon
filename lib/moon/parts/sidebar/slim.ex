@@ -34,7 +34,7 @@ defmodule Moon.Parts.Sidebar.Slim do
       aria-label={@aria_label}
       class={merge([
         "w-[4.5rem]",
-        "h-screen flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
+        "flex flex-col gap-6 px-3 lg:overflow-visible overflow-y-scroll",
         "h-full gap-4 justify-between",
         @class
       ])}

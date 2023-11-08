@@ -17,8 +17,11 @@ defmodule MoonWeb.Examples.Design.TabsExample.Wizard do
   def render(assigns) do
     ~F"""
     <div class="relative w-full">
-      <Tabs id="tabs-wizzard" class="flex-row mb-10">
-        <Tabs.List class="flex flex-col overflow-hidden items-left w-1/3 mt-10 px-6" selected={@selected}>
+      <Tabs id="tabs-wizzard" class="flex-row mb-10 flex-nowrap">
+        <Tabs.List
+          class="flex flex-col overflow-hidden items-start w-1/3 mt-10 px-6"
+          selected={@selected}
+        >
           <Wizard.Step>First Step</Wizard.Step>
           <Wizard.Step>Second Step</Wizard.Step>
           <Wizard.Step>Third Step</Wizard.Step>

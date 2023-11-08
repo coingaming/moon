@@ -36,11 +36,11 @@ defmodule Moon.Parts.Header.ButtonGroupLink do
   def render(assigns) do
     ~F"""
     <Tooltip {=@id} {=@testid} class={merge(["self-center", @class])}>
-      <Tooltip.Trigger class={merge(["rounded-moon-s-xx rounded-full h-12 w-12", @trigger_class])}>
+      <Tooltip.Trigger class={merge(["rounded-full h-12 w-12", @trigger_class])}>
         <IconButton
           {=@as}
           class={merge([
-            "bg-goku text-bulma rounded-moon-s-xx border border-beerus rounded-full h-12 w-12",
+            "bg-goku text-bulma border border-beerus rounded-full h-12 w-12",
             @button_class
           ])}
           {=@on_click}

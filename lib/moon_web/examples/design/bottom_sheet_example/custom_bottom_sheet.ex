@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
             <div id={"#{@id}-header"} class="flex flex-row items-center gap-4 p-2">
               <Button.IconButton
                 id={"#{@id}-header-button"}
-                class="bg-none"
+                class="bg-transparent"
                 icon="controls_chevron_left_small"
                 variant="none"
                 on_click="close"
@@ -49,12 +49,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
                 </Form.Field>
               </TopToDown>
             </Form>
-            <Button
-              id={"#{form_id}-confirm"}
-              type="submit"
-              class="rounded-full rounded-moon-s-xx"
-              on_click="apply"
-            >Apply</Button>
+            <Button id={"#{form_id}-confirm"} type="submit" class="rounded-full" on_click="apply">Apply</Button>
           </TopToDown>
         </BottomSheet.Panel>
         <BottomSheet.Backdrop />

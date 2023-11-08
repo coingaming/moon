@@ -40,7 +40,7 @@ defmodule Moon.Parts.Sidebar.BottomNavigation do
     >
       <a href={@href}>
         <Chip class={merge([
-          "bg-transparent h-12 w-12 px-2 py-2 justify-center items-center rounded-moon-i-xx rounded-full",
+          "bg-transparent h-12 w-12 px-2 py-2 justify-center items-center rounded-full",
           @button_class
         ])}>
           <svg class={merge([
@@ -53,7 +53,7 @@ defmodule Moon.Parts.Sidebar.BottomNavigation do
       </a>
       <Chip
         class={merge([
-          "bg-transparent h-12 w-12 px-2 py-2 justify-center items-center rounded-moon-i-xx rounded-full",
+          "bg-transparent h-12 w-12 px-2 py-2 justify-center items-center rounded-full",
           @button_class
         ])}
         {=@on_click}

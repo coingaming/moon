@@ -59,7 +59,7 @@ defmodule Moon.Design.BottomSheet do
         "fixed z-[99999] inset-0 hidden",
         modal_classes(@as_modal_on),
         @class
-      ])}
+      ]) <> " flex"}
       data-testid={@testid}
     >
       <#slot {@backdrop} />
@@ -103,6 +103,6 @@ defmodule Moon.Design.BottomSheet do
   defp modal_classes(nil), do: []
 
   defp modal_classes(size) do
-    ~w(hidden flex items-center justify-center) |> Enum.map(&"#{size}:#{&1}")
+    ~w(hidden items-center justify-center) |> Enum.map(&"#{size}:#{&1}")
   end
 end

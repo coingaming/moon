@@ -14,13 +14,13 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
 
     assert view |> element("#default nav[aria-label=pagination]") |> has_element?()
     assert view |> element("#default button.bg-piccolo[aria-label=page_1]") |> has_element?()
-    assert view |> element("#default button.bg-none[aria-label=page_2]") |> has_element?()
+    assert view |> element("#default button.bg-transparent[aria-label=page_2]") |> has_element?()
 
     view
-    |> element("#default button.bg-none[aria-label=page_11]")
+    |> element("#default button.bg-transparent[aria-label=page_11]")
     |> render_click()
 
-    assert view |> element("#default button.bg-none[aria-label=page_1]") |> has_element?()
+    assert view |> element("#default button.bg-transparent[aria-label=page_1]") |> has_element?()
 
     assert view
            |> element("#default button.bg-piccolo[aria-label=page_11]")
@@ -50,7 +50,7 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
     |> element("#default button[data-testid=next_button][value=2]")
     |> render_click()
 
-    assert view |> element("#default button.bg-none[aria-label=page_1]") |> has_element?()
+    assert view |> element("#default button.bg-transparent[aria-label=page_1]") |> has_element?()
     assert view |> element("#default button.bg-piccolo[aria-label=page_2]") |> has_element?()
 
     refute view
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Pagination.WithTextTest do
            |> element("#default button[data-testid=prev_button][value=0][disabled]")
            |> has_element?()
 
-    assert view |> element("#default button.bg-none[aria-label=page_2]") |> has_element?()
+    assert view |> element("#default button.bg-transparent[aria-label=page_2]") |> has_element?()
     assert view |> element("#default button.bg-piccolo[aria-label=page_1]") |> has_element?()
   end
 

@@ -50,7 +50,7 @@ defmodule Moon.Design.Table do
   prop(header_row_class, :css_class)
 
   @doc "Can be used as an additional class for even rows in zebra-style table"
-  prop(even_row_bg, :css_class, default: "bg-none")
+  prop(even_row_bg, :css_class, default: "bg-transparent")
 
   @doc "Can be used as an additional class for all rows. please use hover:... tailwind's format"
   prop(hover_bg, :css_class)

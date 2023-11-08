@@ -33,12 +33,12 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
   def render(assigns) do
     ~F"""
     <Tooltip {=@id} {=@testid} class="self-center">
-      <Tooltip.Trigger class="rounded-moon-s-xx rounded-full h-12 w-12">
+      <Tooltip.Trigger class="rounded-full h-12 w-12">
         <MenuItem
           as="a"
           class={merge([
             [
-              "bg-goku text-bulma justify-start rounded-moon-i-xx rounded-full p-3 gap-3 h-12 w-12",
+              "bg-goku text-bulma justify-start rounded-full p-3 gap-3 h-12 w-12",
               "bg-bulma": @active_page == @route
             ],
             @class

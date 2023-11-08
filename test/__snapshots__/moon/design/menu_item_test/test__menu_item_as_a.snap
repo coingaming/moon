@@ -1,1 +1,1 @@
-"<a phx-value-is-selected=\"true\" class=\"cursor-pointer focus:outline-none focus:shadow-focus gap-2 hover:bg-heles items-center justify-between p-2 bg-transparent flex rounded-moon-i-sm text-moon-14 transition w-full\">\nHello\n</a>"
+"<a phx-value-is-selected=\"true\" class=\"flex p-2 bg-transparent cursor-pointer transition items-center justify-between rounded-moon-i-sm gap-2 text-moon-14 w-full focus:outline-none focus:shadow-focus hover:bg-heles\">\nHello\n</a>"
