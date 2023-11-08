@@ -1,3 +1,10 @@
+## [2.68.6](https://github.com/coingaming/moon/compare/v2.68.5...v2.68.6) (2023-11-08)
+
+
+### Bug Fixes
+
+* adding package description ([fe09d8e](https://github.com/coingaming/moon/commit/fe09d8e3269c5df52e1aa63a05ba3cf128b39a8c))
+
 ## [2.68.5](https://github.com/coingaming/moon/compare/v2.68.4...v2.68.5) (2023-11-08)
 
 
