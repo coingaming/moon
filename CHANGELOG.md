@@ -1,3 +1,10 @@
+## [2.68.7](https://github.com/coingaming/moon/compare/v2.68.6...v2.68.7) (2023-11-08)
+
+
+### Bug Fixes
+
+* removing MoonWeb namespace from the package ([#766](https://github.com/coingaming/moon/issues/766)) ([42e8a96](https://github.com/coingaming/moon/commit/42e8a9610da998c6b3ab5a136f8d73d23570cf43))
+
 ## [2.68.6](https://github.com/coingaming/moon/compare/v2.68.5...v2.68.6) (2023-11-08)
 
 
