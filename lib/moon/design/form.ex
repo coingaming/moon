@@ -5,16 +5,31 @@ defmodule Moon.Design.Form do
 
   import Moon.Helpers.Form, only: [transfor: 1]
 
+  @doc "Id attribute for DOM element"
   prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Atom or changeset to inform the form data"
   prop(for, :any)
+  @doc "Triggered when the form is changed"
   prop(change, :event)
+  @doc "Triggered when the form is submitted"
   prop(submit, :event)
+  @doc "Additional Tailwind classes"
   prop(class, :string)
+  @doc "Whether autocomplete is enabled"
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
+  @doc "Target"
   prop(target, :any)
+
+  @doc "Trigger a standard form submit on DOM patch to the URL specified in the form's standard action
+  attribute.
+  This is useful to perform pre-final validation of a LiveView form submit before posting to a
+  controller route for operations that require Plug session mutation."
   prop(trigger_action, :any)
+  @doc "Whether label is on side of input field"
   prop(is_horizontal, :boolean, default: false)
+  @doc "Default slot"
   slot(default)
 
   def render(assigns) do
