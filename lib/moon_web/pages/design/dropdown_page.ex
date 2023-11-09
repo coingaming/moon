@@ -65,7 +65,8 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.Positions,
         DropdownExample.Sizes,
         DropdownExample.Datepicker,
-        DropdownExample.ResponsiveDropdown
+        DropdownExample.ResponsiveDropdown,
+        DropdownExample.WithHeaderAndFooter
       ]} />
 
       <PropsTable module={Moon.Design.Dropdown} />
@@ -74,6 +75,9 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       <PropsTable module={Moon.Design.Dropdown.Option} />
       <PropsTable module={Moon.Design.Dropdown.BottomOptions} />
       <PropsTable module={Moon.Design.Dropdown.Backdrop} />
+      <PropsTable module={Moon.Design.Dropdown.Header} />
+      <PropsTable module={Moon.Design.Dropdown.Footer} />
+      <PropsTable module={Moon.Design.Dropdown.CustomOption} />
     </Page>
     """
   end
