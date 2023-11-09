@@ -1,3 +1,10 @@
+## [2.69.1](https://github.com/coingaming/moon/compare/v2.69.0...v2.69.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* lib structure update ([2d7f4ba](https://github.com/coingaming/moon/commit/2d7f4ba93b4f1a2c38f9c52dd719730d2af0c3f6))
+
 # [2.69.0](https://github.com/coingaming/moon/compare/v2.68.11...v2.69.0) (2023-11-08)
 
 
