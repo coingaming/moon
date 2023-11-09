@@ -29,6 +29,9 @@ defmodule Moon.Design.Form.Field do
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
+  @doc "Whether label is on side of input field"
+  prop(is_horizontal, :boolean, from_context: :is_horizontal)
+
   @doc "Inner content of the component"
   slot(default)
 
@@ -38,7 +41,15 @@ defmodule Moon.Design.Form.Field do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.Field name={@field} {=@class}>
+    <Surface.Components.Form.Field
+      name={@field}
+      class={merge([
+        [
+          "flex flex-row gap-2": @is_horizontal
+        ],
+        @class
+      ])}
+    >
       <Field.Label :if={@label} {=@size} title={@label} />
       <#slot context_put={size: @size, error: !!@field && !!@form && has_error(@form, @field)} />
       <Field.Hint :if={@hint} title={@hint} class={@hint_class} />

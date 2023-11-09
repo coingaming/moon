@@ -14,6 +14,7 @@ defmodule Moon.Design.Form do
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
   prop(target, :any)
   prop(trigger_action, :any)
+  prop(is_horizontal, :boolean, default: false)
   slot(default)
 
   def render(assigns) do
@@ -26,7 +27,7 @@ defmodule Moon.Design.Form do
       {=@trigger_action}
       opts={autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target}
     >
-      <#slot />
+      <#slot context_put={is_horizontal: @is_horizontal} />
     </Surface.Components.Form>
     """
   end
