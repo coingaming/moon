@@ -6,7 +6,6 @@ defmodule Moon.Helpers.Alive do
   end
 end
 
-
 defmodule Mix.Tasks.Moon.Light.Component do
   @shortdoc "Converts surface component to phoenix_live_view"
 
@@ -88,14 +87,29 @@ defmodule Mix.Tasks.Moon.Light.Component do
       module
       |> module_ast()
       |> Macro.prewalk(fn
-        result = {:def, _, [{:render, _, _} | _]} -> translate_render(c, result)
-        result = {:sigil_F, _, _} -> translate_sigil(c, result)
-        result = {:prop, _meta, _options} -> translate_prop(c, result)
-        result = {:slot, _meta, _options} -> translate_prop(c, result)
-        result = {:@, _, [{:doc, _, [_text]}]} -> translate_doc(c, result)
-        result = {:use, _, [{:__aliases__, _, _alias} | _]} -> translate_use_defmodule(c, result)
-        result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} -> translate_use_defmodule(c, result)
-        other -> other
+        result = {:def, _, [{:render, _, _} | _]} ->
+          translate_render(c, result)
+
+        result = {:sigil_F, _, _} ->
+          translate_sigil(c, result)
+
+        result = {:prop, _meta, _options} ->
+          translate_prop(c, result)
+
+        result = {:slot, _meta, _options} ->
+          translate_prop(c, result)
+
+        result = {:@, _, [{:doc, _, [_text]}]} ->
+          translate_doc(c, result)
+
+        result = {:use, _, [{:__aliases__, _, _alias} | _]} ->
+          translate_use_defmodule(c, result)
+
+        result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} ->
+          translate_use_defmodule(c, result)
+
+        other ->
+          other
       end)
       # |> Macro.to_string()
       # |> dbg()
@@ -129,48 +143,41 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_use_defmodule(
          %{config: config},
          {type, m1, [{:__aliases__, m2, alias} | other]}
-       ) when type in [:use, :defmodule] do
+       )
+       when type in [:use, :defmodule] do
     {type, m1, [{:__aliases__, m2, config[:"#{type}_translates"].(alias)} | other]}
   end
 
   defp translate_sigil(%{module: module}, res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}) do
     # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
-    Parser.parse!(string,
-      file: module.__info__(:compile)[:source] |> to_string(),
-      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
-      caller: %{module: module},
-      checks: opts[:checks] || [],
-      warnings: opts[:warnings] || [],
-      column: Keyword.get(opts, :column, 1),
-      indentation: Keyword.get(opts, :indentation, 0)
-    )
 
-    _compile_meta = %Surface.Compiler.CompileMeta{
+    compile_meta = %Surface.Compiler.CompileMeta{
       line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
       file: module.__info__(:compile)[:source] |> to_string(),
-      caller: %{module: module},
+      caller: %{module: module, function: :render},
       checks: opts[:checks] || [],
       variables: opts[:variables],
       style: %{},
       caller_spec: %{}
     }
 
-    |> Macro.prewalk(&Moon.Helpers.Alive.translate_template_node/1)
+    Parser.parse!(string,
+      file: module.__info__(:compile)[:source] |> to_string(),
+      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+      caller: %{module: module, function: :render},
+      checks: opts[:checks] || [],
+      warnings: opts[:warnings] || [],
+      column: Keyword.get(opts, :column, 1),
+      indentation: Keyword.get(opts, :indentation, 0)
+    )
+    |> Surface.Compiler.to_ast(compile_meta)
+    # |> Macro.prewalk(&Moon.Helpers.Alive.translate_template_node/1)
 
     # |> Macro.to_string()
-    # |> dbg()
+    |> dbg()
 
     res
   end
-
-
-
-
-
-
-
-
-
 
   defp pathes(%{path: _path}) do
     [
