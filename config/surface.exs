@@ -59,7 +59,7 @@ config :surface, :components, [
   {MoonWeb.Components.SidebarLink, propagate_context_to_slots: false}
 ]
 
-config :tails, colors_file: Path.join(File.cwd!(), "assets/colors.json")
+config :tails, colors_file: Path.join(__ENV__.file, "../../assets/colors.json")
 
 config :tails,
   variants:
