@@ -1,3 +1,10 @@
+## [2.69.2](https://github.com/coingaming/moon/compare/v2.69.1...v2.69.2) (2023-11-09)
+
+
+### Bug Fixes
+
+* Tails config fixing ([2eeb0d8](https://github.com/coingaming/moon/commit/2eeb0d84b4adbb564caa9edbbd1be2c2390c7f26))
+
 ## [2.69.1](https://github.com/coingaming/moon/compare/v2.69.0...v2.69.1) (2023-11-09)
 
 
