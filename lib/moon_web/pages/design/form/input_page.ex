@@ -51,8 +51,10 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
         InputExample.Sizes,
         InputExample.Types,
         InputExample.WithLabel,
+        InputExample.WithHorizontalLabel,
         InputExample.WithHint
       ]} />
+      <PropsTable module={Moon.Design.Form} />
       <PropsTable module={Moon.Design.Form.Input} />
       <PropsTable module={Moon.Design.Form.Field} />
     </Page>

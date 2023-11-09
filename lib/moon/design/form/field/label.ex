@@ -14,6 +14,7 @@ defmodule Moon.Design.Form.Field.Label do
   prop(size, :string, values!: ~w(sm md lg xl), default: "md")
   prop(title, :string)
   prop(disabled, :boolean, default: false)
+  prop(is_horizontal, :boolean, from_context: :is_horizontal)
 
   prop(on_click, :event)
   prop(value, :string)
@@ -27,9 +28,10 @@ defmodule Moon.Design.Form.Field.Label do
       {=@form}
       class={merge([
         [
-          "flex items-center gap-2 cursor-pointer",
+          "flex items-center gap-2 cursor-pointer whitespace-nowrap",
           (@size == "sm" && "text-moon-14") || "text-moon-16",
-          "text-bulma opacity-60 cursor-not-allowed": @disabled
+          "text-bulma opacity-60 cursor-not-allowed": @disabled,
+          "font-medium": @is_horizontal
         ],
         @class
       ])}
