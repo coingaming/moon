@@ -1,3 +1,10 @@
+# [2.71.0](https://github.com/coingaming/moon/compare/v2.70.0...v2.71.0) (2023-11-09)
+
+
+### Features
+
+* Additional customisation of Dropdown for BO's [MDS-795] ([#769](https://github.com/coingaming/moon/issues/769)) ([0da8e8e](https://github.com/coingaming/moon/commit/0da8e8e8355107fe0d3d8469a80590cfe61f8529))
+
 # [2.70.0](https://github.com/coingaming/moon/compare/v2.69.2...v2.70.0) (2023-11-09)
 
 
