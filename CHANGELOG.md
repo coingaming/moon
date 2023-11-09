@@ -1,3 +1,10 @@
+# [2.70.0](https://github.com/coingaming/moon/compare/v2.69.2...v2.70.0) (2023-11-09)
+
+
+### Features
+
+* Add horizontal label option for input [MDS-787] ([#768](https://github.com/coingaming/moon/issues/768)) ([17cf297](https://github.com/coingaming/moon/commit/17cf2976ab39c834878e7dc7a314f7b38aee4f63))
+
 ## [2.69.2](https://github.com/coingaming/moon/compare/v2.69.1...v2.69.2) (2023-11-09)
 
 
