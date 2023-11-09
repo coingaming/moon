@@ -31,6 +31,8 @@ defmodule Moon.Design.Dropdown.Options do
 
   slot(option)
   slot(default)
+  slot(header)
+  slot(footer)
 
   def render(assigns) do
     ~F"""
@@ -40,12 +42,14 @@ defmodule Moon.Design.Dropdown.Options do
         "p-1 rounded-moon-s-md box-border bg-goku shadow-moon-lg overflow-y-auto focus:outline-none",
         (@position && position_class(@position)) || "w-full top-full my-2",
         @class,
-        hidden: !@is_open
+        hidden: !@is_open,
+        "p-0": slot_assigned?(:header) || slot_assigned?(:footer)
       ])}
       {=@id}
       data-testid={@testid}
       role="listbox"
     >
+      <#slot {@header} />
       {#if slot_assigned?(:option)}
         {#for {option, index} <- Enum.with_index(make_list(@option))}
           <#slot
@@ -69,6 +73,7 @@ defmodule Moon.Design.Dropdown.Options do
         >{title}</.moon>
       {/if}
       <#slot />
+      <#slot {@footer} />
     </div>
     """
   end
