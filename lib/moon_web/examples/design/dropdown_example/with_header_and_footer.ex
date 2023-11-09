@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.WithHeaderAndFooter do
         <Dropdown.CustomOption>
           <Icon name="mail_box" class="text-moon-24" />Option 3
         </Dropdown.CustomOption>
-        <Dropdown.CustomOption is_last>
+        <Dropdown.CustomOption has_bottom_divider>
           <Icon name="mail_box" class="text-moon-24" />Option 4
         </Dropdown.CustomOption>
         <Dropdown.CustomOption>
@@ -63,7 +63,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.WithHeaderAndFooter do
         <Dropdown.CustomOption>
           <Icon name="mail_box" class="text-moon-24" />Option 3
         </Dropdown.CustomOption>
-        <Dropdown.CustomOption is_last>
+        <Dropdown.CustomOption has_bottom_divider>
           <Icon name="mail_box" class="text-moon-24" />Option 4
         </Dropdown.CustomOption>
         <Dropdown.CustomOption>

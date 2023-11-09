@@ -23,7 +23,7 @@ defmodule Moon.Design.Dropdown.CustomOption do
   @doc "If the option is selected, in most cases got from context"
   prop(is_selected, :boolean, from_context: :is_selected)
   @doc "Adds section divider after the option"
-  prop(is_last, :boolean, default: false)
+  prop(has_bottom_divider, :boolean, default: false)
 
   @doc "Inner content of the option"
   slot(default)
@@ -40,7 +40,7 @@ defmodule Moon.Design.Dropdown.CustomOption do
       class={merge([
         [
           "px-4 gap-3 rounded-none",
-          "border-b border-beerus": @is_last
+          "border-b border-beerus": @has_bottom_divider
         ],
         @class
       ])}
