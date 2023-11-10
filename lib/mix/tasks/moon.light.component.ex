@@ -1,11 +1,3 @@
-defmodule Moon.Helpers.Alive do
-  @moduledoc false
-
-  def translate_template_node(other) do
-    dbg(other)
-  end
-end
-
 defmodule Mix.Tasks.Moon.Light.Component do
   @shortdoc "Converts surface component to phoenix_live_view"
 
@@ -23,6 +15,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
   import String, only: [replace: 3, downcase: 1, split: 2]
   import Enum, only: [reverse: 1, join: 2]
   import List, only: [last: 1]
+  import Moon.Helpers.Alive
 
   alias Surface.Compiler.Parser
 
@@ -170,7 +163,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
       column: Keyword.get(opts, :column, 1),
       indentation: Keyword.get(opts, :indentation, 0)
     )
-    |> Surface.Compiler.to_ast(compile_meta)
+    # |> Surface.Compiler.to_ast(compile_meta)
     # |> Macro.prewalk(&Moon.Helpers.Alive.translate_template_node/1)
 
     # |> Macro.to_string()
@@ -178,6 +171,39 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
     res
   end
+
+  defp translate_sigil(%{module: module}, res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}) do
+    line = meta[:line] + +if Keyword.has_key?(meta, :indentation), do: 1, else: 0
+    indentation = meta[:indentation] || 0
+    column = meta[:column] || 1
+
+    component_type = module.component_type()
+    state = %{
+      engine: opts[:engine] || Phoenix.LiveView.Engine,
+      depth: 0,
+      context_vars: %{count: 0, changed: []},
+      scope: []
+    }
+
+    string
+    |> Surface.Compiler.compile(
+      line,
+      %{module: module, function: {:render, 1}, file: module.__info__(:compile)[:source] |> to_string(), line: line, __struct__: Macro.Env},
+      module.__info__(:compile)[:source] |> to_string(),
+      checks: [no_undefined_assigns: component_type != nil],
+      indentation: indentation,
+      column: column
+    )
+    |> Surface.Compiler.EExEngine.to_token_sequence()
+    |> Surface.Compiler.EExEngine.generate_buffer(state.engine.init(opts), state)
+    # |> Surface.Compiler.EExEngine.translate(
+    #   debug: Enum.member?(opts, ?d),
+    #   file: module.__info__(:compile)[:source] |> to_string(),
+    #   line: line
+    # )
+    |> dbg()
+  end
+
 
   defp pathes(%{path: _path}) do
     [

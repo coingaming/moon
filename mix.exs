@@ -84,6 +84,7 @@ defmodule Moon.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
       {:surface, "> 0.9.1"},
+      # {:surface, path: "../surface", override: true},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
       {:moon_icons, "~> 0.1"},
