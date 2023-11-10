@@ -21,13 +21,14 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
       change="change"
       submit="submit"
       class="flex flex-col gap-2 items-center"
+      has_error_icon
     >
       <Field
         field={:authentication}
         hint="Hint message"
         class="flex flex-col ps-0"
-        error_class="text-moon-12 self-center ps-0"
-        hint_class="text-moon-12 self-center ps-0"
+        error_class="self-center"
+        hint_class="self-center"
       >
         <AuthCode>
           <AuthCode.Input />
@@ -68,13 +69,14 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
         change="change"
         submit="submit"
         class="flex flex-col gap-2 items-center"
+        has_error_icon
       >
         <Field
           field={:authentication}
           hint="Hint message"
           class="flex flex-col ps-0"
-          error_class="text-moon-12 self-center ps-0"
-          hint_class="text-moon-12 self-center ps-0"
+          error_class="self-center"
+          hint_class="self-center"
         >
           <AuthCode>
             <AuthCode.Input />

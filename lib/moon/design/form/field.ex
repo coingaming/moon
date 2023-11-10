@@ -7,9 +7,9 @@ defmodule Moon.Design.Form.Field do
 
   alias __MODULE__
 
-  @doc "Form info, usually should be taken from context"
+  @doc "Form, Surface-style"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
-  @doc "Field name, surface-style"
+  @doc "Field, Surface-style"
   prop(field, :atom)
   @doc "Input size"
   prop(size, :string, values!: ~w(sm md lg), default: "md")
@@ -31,6 +31,8 @@ defmodule Moon.Design.Form.Field do
   prop(testid, :string)
   @doc "Whether label is on side of input field"
   prop(is_horizontal, :boolean, from_context: :is_horizontal)
+  @doc "Whether error icon is shown"
+  prop(has_error_icon, :boolean, from_context: :has_error_icon)
 
   @doc "Inner content of the component"
   slot(default)
@@ -45,15 +47,23 @@ defmodule Moon.Design.Form.Field do
       name={@field}
       class={merge([
         [
-          "flex flex-row gap-2": @is_horizontal
+          "flex flex-row": @is_horizontal
         ],
         @class
       ])}
     >
       <Field.Label :if={@label} {=@size} title={@label} />
-      <#slot context_put={size: @size, error: !!@field && !!@form && has_error(@form, @field)} />
+      <#slot context_put={
+        size: @size,
+        has_error_icon: @has_error_icon,
+        error: !!@field && !!@form && has_error(@form, @field)
+      } />
       <Field.Hint :if={@hint} title={@hint} class={@hint_class} />
-      <Field.Error :if={!@hide_errors && !!@field && !!@form} class={@error_class} />
+      <Field.Error
+        :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
+        class={@error_class}
+        {=@has_error_icon}
+      />
     </Surface.Components.Form.Field>
     """
   end

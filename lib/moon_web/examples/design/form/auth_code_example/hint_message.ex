@@ -5,6 +5,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.HintMessage do
   use MoonWeb, :example
 
   alias Moon.Design.Form.AuthCode
+  alias Moon.Icon
 
   def render(assigns) do
     ~F"""
@@ -14,12 +15,22 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.HintMessage do
         <AuthCode.Hint>Hint message</AuthCode.Hint>
       </AuthCode>
     </div>
+    <div class="flex items-center flex-col">
+      <AuthCode>
+        <AuthCode.Input />
+        <AuthCode.Hint>
+          <Icon name="generic_info" />
+          Hint message with icon
+        </AuthCode.Hint>
+      </AuthCode>
+    </div>
     """
   end
 
   def code() do
     """
     alias Moon.Design.Form.AuthCode
+    alias Moon.Icon
 
     ...
 
@@ -27,6 +38,15 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.HintMessage do
       <AuthCode>
         <AuthCode.Input />
         <AuthCode.Hint>Hint message</AuthCode.Hint>
+      </AuthCode>
+    </div>
+    <div class="flex items-center flex-col">
+      <AuthCode>
+        <AuthCode.Input />
+        <AuthCode.Hint>
+          <Icon name="generic_info" />
+          Hint message with icon
+        </AuthCode.Hint>
       </AuthCode>
     </div>
     """
