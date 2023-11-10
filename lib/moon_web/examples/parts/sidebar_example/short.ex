@@ -5,14 +5,12 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Short do
   use MoonWeb, :example
 
   alias Moon.Parts.Sidebar
-  alias Moon.Design.Button
 
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
 
   def render(assigns) do
     ~F"""
     <div>
-      <Button left_icon="generic_menu" variant="outline" on_click="open_sidebar">Open Generic Sidebar on small screens</Button>
       <Sidebar id="generic_sidebar">
         <Sidebar.Generic sections={[
           %{
@@ -26,6 +24,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Short do
         ]}>
           <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
         </Sidebar.Generic>
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
       </Sidebar>
     </div>
     """

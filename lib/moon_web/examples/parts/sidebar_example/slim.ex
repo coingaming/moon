@@ -12,11 +12,6 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
     ~F"""
     <div>
       <Sidebar id="slim_sidebar">
-        <Sidebar.BottomNavigation
-          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
-          href="#"
-          on_click="open_sidebar"
-        />
         <Sidebar.Slim links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:bottom>
@@ -24,6 +19,11 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Slim do
             <Sidebar.Avatar name="ET" />
           </:bottom>
         </Sidebar.Slim>
+        <Sidebar.BottomNavigation
+          src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"
+          href="#"
+          on_click="open_sidebar"
+        />
       </Sidebar>
     </div>
     """
