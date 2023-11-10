@@ -29,6 +29,8 @@ defmodule Moon.Design.Form do
   prop(trigger_action, :any)
   @doc "Whether label is on side of input field"
   prop(is_horizontal, :boolean, default: false)
+  @doc "Whether error icon is shown"
+  prop(has_error_icon, :boolean, default: false)
   @doc "Default slot"
   slot(default)
 
@@ -42,7 +44,7 @@ defmodule Moon.Design.Form do
       {=@trigger_action}
       opts={autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target}
     >
-      <#slot context_put={is_horizontal: @is_horizontal} />
+      <#slot context_put={is_horizontal: @is_horizontal, has_error_icon: @has_error_icon} />
     </Surface.Components.Form>
     """
   end

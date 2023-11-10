@@ -3,17 +3,29 @@ defmodule Moon.Design.Form.Field.Hint do
 
   use Moon.StatelessComponent
 
+  @doc "Data-testid attribute for HTML tag"
+  prop(testid, :string)
+  @doc "Id attribute for HTML tag"
+  prop(id, :string)
+  @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Whether error icon is shown"
+  prop(has_error_icon, :boolean, default: false)
+  @doc "Hint text when default slot is not given"
   prop(title, :string)
-
+  @doc "Default slot"
   slot(default)
 
   def render(assigns) do
     ~F"""
-    <div class={merge([
-      "inline-block mt-2 ps-4 text-moon-12 text-trunks",
-      @class
-    ])}>
+    <div
+      data-testid={@testid}
+      {=@id}
+      class={merge([
+        "flex gap-1 items-center mt-2 text-moon-12 [&_svg]:text-moon-16",
+        @class
+      ])}
+    >
       <#slot><p>{@title}</p></#slot>
     </div>
     """

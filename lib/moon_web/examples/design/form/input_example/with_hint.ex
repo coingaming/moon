@@ -9,6 +9,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHint do
   alias Moon.Design.Form.Input
   alias Moon.Design.Form.Field
   alias MoonWeb.Schema.User
+  alias Moon.Icon
 
   prop(user_changeset, :any, default: User.changeset(%User{}))
 
@@ -26,6 +27,15 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHint do
           </Field>
         </Form>
       {/for}
+      <Form for={@user_changeset}>
+        <Field field={:email}>
+          <Input size="lg" placeholder="Placeholder" />
+          <Field.Hint>
+            <Icon name="generic_info" />
+            Hint with icon
+          </Field.Hint>
+        </Field>
+      </Form>
     </div>
     """
   end
@@ -36,6 +46,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHint do
     alias Moon.Design.Form.Input
     alias Moon.Design.Form.Field
     alias MoonWeb.Schema.User
+    alias Moon.Icon
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
 
@@ -53,6 +64,15 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHint do
             </Field>
           </Form>
         {/for}
+        <Form for={@user_changeset}>
+          <Field field={:email}>
+            <Input size="lg" placeholder="Placeholder" />
+            <Field.Hint>
+              <Icon name="generic_info" />
+              Hint with icon
+            </Field.Hint>
+          </Field>
+        </Form>
       </div>
       \"""
     end

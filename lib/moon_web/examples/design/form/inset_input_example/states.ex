@@ -8,6 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.InsetInputExample.States do
   alias Moon.Design.Form
   alias Moon.Design.Form.Input
   alias Moon.Design.Form.InsetField
+  alias Moon.Icon
 
   alias MoonWeb.Schema.User
 
@@ -26,9 +27,13 @@ defmodule MoonWeb.Examples.Design.Form.InsetInputExample.States do
         </InsetField>
       </Form>
       <Form for={@user_changeset} class="w-full">
-        <InsetField readonly label="Label" hint="Informative message holder">
+        <InsetField readonly label="Label">
           <Input value="Read-only input" />
         </InsetField>
+        <InsetField.Hint>
+          <Icon name="generic_info" />
+          Informative message holder with icon
+        </InsetField.Hint>
       </Form>
       <Form for={@user_changeset} class="w-full">
         <InsetField label="Label">
@@ -45,6 +50,7 @@ defmodule MoonWeb.Examples.Design.Form.InsetInputExample.States do
     alias Moon.Design.Form
     alias Moon.Design.Form.Input
     alias Moon.Design.Form.InsetField
+    alias Moon.Icon
 
     alias MoonWeb.Schema.User
 
@@ -63,9 +69,13 @@ defmodule MoonWeb.Examples.Design.Form.InsetInputExample.States do
           </InsetField>
         </Form>
         <Form for={@user_changeset} class="w-full">
-          <InsetField readonly label="Label" hint="Informative message holder">
+          <InsetField readonly label="Label">
             <Input value="Read-only input" />
           </InsetField>
+          <InsetField.Hint>
+            <Icon name="generic_info" />
+            Informative message holder with icon
+          </InsetField.Hint>
         </Form>
         <Form for={@user_changeset} class="w-full">
           <InsetField label="Label">
