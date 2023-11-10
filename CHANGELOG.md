@@ -1,3 +1,10 @@
+## [2.71.1](https://github.com/coingaming/moon/compare/v2.71.0...v2.71.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* Fixing sidebar template corners and divider ([#770](https://github.com/coingaming/moon/issues/770)) ([b4503a3](https://github.com/coingaming/moon/commit/b4503a3e4e9d105a4c4d711256592bb7794cf31d))
+
 # [2.71.0](https://github.com/coingaming/moon/compare/v2.70.0...v2.71.0) (2023-11-09)
 
 
