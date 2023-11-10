@@ -17,18 +17,18 @@ module.exports = {
       },
     ],
     [
+      "@semantic-release/git",
+      { 
+        "assets": ["CHANGELOG.md"],
+        "message": "chore(release): update ${nextRelease.version} changelog & version [skip ci]"
+      }
+    ],
+    [
       '@semantic-release/exec',
       {
         prepareCmd: 'echo ${nextRelease.version} > VERSION',
         publishCmd: 'mix hex.publish --yes',
       },
-    ],
-    [
-      "@semantic-release/git",
-      { 
-        "assets": ["CHANGELOG.md", "VERSION"],
-        "message": "chore(release): update ${nextRelease.version} changelog & version [skip ci]"
-      }
     ],
   ],
 };
