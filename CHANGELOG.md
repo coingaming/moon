@@ -1,3 +1,10 @@
+# [2.72.0](https://github.com/coingaming/moon/compare/v2.71.1...v2.72.0) (2023-11-10)
+
+
+### Features
+
+* Update Input hint and error text [MDS-797] ([#771](https://github.com/coingaming/moon/issues/771)) ([a7a62a7](https://github.com/coingaming/moon/commit/a7a62a75ea1f9bfe1fc54ddba118c6acd2f6920b))
+
 ## [2.71.1](https://github.com/coingaming/moon/compare/v2.71.0...v2.71.1) (2023-11-10)
 
 
