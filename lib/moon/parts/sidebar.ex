@@ -32,10 +32,10 @@ defmodule Moon.Parts.Sidebar do
       <Drawer.Panel
         position="start"
         class={merge([
-          "h-screen pt-6 pb-5 flex flex-row gap-6",
+          "h-screen flex flex-row",
           "bg-goku shadow-none w-auto rounded-moon-s-lg",
-          "ltr:rounded-bl-none ltr:rounded-tl-none",
-          "rtl:rounded-br-none rtl:rounded-tr-none",
+          "rounded-none",
+          "divide-x divide-beerus",
           @panel_class
         ])}
       >
