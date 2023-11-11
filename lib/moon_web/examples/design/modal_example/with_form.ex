@@ -17,8 +17,8 @@ defmodule MoonWeb.Examples.Design.ModalExample.WithForm do
     ~F"""
     <div>
       <Button on_click="open">Open</Button>
-      <Modal id="custom-date-selector" {=@is_open} class="z-50 overflow-auto p-2" size="md">
-        <Modal.Panel class="h-fit divide-y">
+      <Modal id="custom-date-selector" {=@is_open}>
+        <Modal.Panel class="h-fit divide-y p-2">
           <Form
             id={"#{assigns.id}-form"}
             for={@changeset}
