@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Design.BottomSheetExample.CustomBottomSheet do
+defmodule MoonWeb.Examples.Design.BottomSheetExample.WithForm do
   @moduledoc false
 
   use Moon.StatefulComponent
