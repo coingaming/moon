@@ -1,5 +1,4 @@
 defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
-
   use Moon.StatefulComponent
 
   alias Moon.Design.Tabs
