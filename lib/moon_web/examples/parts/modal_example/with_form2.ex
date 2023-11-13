@@ -5,36 +5,20 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   alias Moon.Design.Form
   alias Moon.Design.Form.{Field, Input, Dropdown, Checkbox}
   alias Moon.Parts.{Wizard, Modal}
+  alias Moon.Design.Button
 
-  defmodule Flow do
-    use Ecto.Schema
-    import Ecto.Changeset
+  alias MoonWeb.Schema.Flow
 
-    @primary_key false
-
-    @required_fields [:flow_name, :merchant_name, :provider_name]
-
-    embedded_schema do
-      field(:flow_name, :string)
-      field(:merchant_name, :string)
-      field(:provider_name, :string)
-      field(:verification_types, {:array, :string})
-    end
-
-    def changeset(params) do
-      changeset(%__MODULE__{}, params)
-    end
-
-    def changeset(form, params) do
-      form
-      |> cast(params, @required_fields)
-    end
-  end
+  prop(is_open, :boolean, default: false)
+  data(changeset, :any, default: Flow.changeset(%{}))
 
   def render(assigns) do
+    form_id = "#{assigns.id}-form"
+
     ~F"""
     <div>
-      <Modal id="modal_wizard" on_close="on_modal_close" class="p-1 bg-bulma">
+      <Button on_click="set_open">Open</Button>
+      <Modal id="modal_form" on_close="set_close" {=@is_open} class="p-1 bg-bulma">
         <Wizard id="tabs-wizard" {=@steps}>
           <:description>
             <div class="py-8 flex flex-col gap-4 w-full">
@@ -46,7 +30,14 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
           </:description>
           <Wizard.Panels>
             <Tabs.Panel>
-              <Form for={@form} is_horizontal change="on_form_change" target={@myself}>
+              <Form
+                id={form_id}
+                is_horizontal
+                change="on_form_change"
+                for={@changeset}
+                target={@myself}
+                submit="apply"
+              >
                 <Field class="flex justify-between" field={:flow_name} label="Flow name">
                   <Input size="lg" />
                 </Field>
@@ -76,12 +67,23 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     """
   end
 
-  def mount(socket) do
-    Moon.Parts.Modal.open("modal_wizard")
+  def handle_event("set_open", _, socket) do
+    Modal.open("modal_form")
+    {:noreply, assign(socket, is_open: true)}
+  end
 
+  def handle_event("set_close", _, socket) do
+    Modal.close("modal_form")
+    {:noreply, assign(socket, is_open: false)}
+  end
+
+  def mount(socket) do
     steps = list_flow_steps()
 
-    merchant_names = [%{key: "Merchant1", value: "Merchant1"}]
+    merchant_names = [
+      %{key: "Merchant1", value: "Merchant1"},
+      %{key: "Merchant2", value: "Merchant2"}
+    ]
 
     verification_types = list_verification_types()
 
@@ -90,7 +92,10 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
      |> assign(:steps, steps)
      |> assign(:merchant_names, merchant_names)
      |> assign(:provider_names, [])
-     |> assign(:get_merchants_response, [%{name: "Merchant1", providers: [%{name: "Provider1"}]}])
+     |> assign(:get_merchants_response, [
+       %{name: "Merchant1", providers: [%{name: "Provider1"}]},
+       %{name: "Merchant2", providers: [%{name: "Provider"}]}
+     ])
      |> assign(:verification_types, verification_types)
      |> assign(:form, Flow.changeset(%{}))}
   end
@@ -130,7 +135,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "flow_name"]} = params, socket) do
-    # Modal.open("modal_wizard")
+    # Modal.open("modal_form")
 
     flow_name = get_in(params, ["flow", "flow_name"])
     form = Flow.changeset(socket.assigns.form, %{flow_name: flow_name})
@@ -143,7 +148,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "merchant_name"]} = params, socket) do
-    # Modal.open("modal_wizard")
+    # Modal.open("modal_form")
 
     merchant_name = get_in(params, ["flow", "merchant_name"])
     provider_names = list_provider_names(socket.assigns.get_merchants_response, merchant_name)
@@ -153,12 +158,13 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       socket
       |> assign(:form, form)
       |> assign(:provider_names, provider_names)
+      |> assign(is_open: true)
 
     {:noreply, socket}
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "provider_name"]} = params, socket) do
-    # Modal.open("modal_wizard")
+    # Modal.open("modal_form")
 
     provider_name = get_in(params, ["flow", "provider_name"])
     form = Flow.changeset(socket.assigns.form, %{provider_name: provider_name})
@@ -166,6 +172,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
+      |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -175,7 +182,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
         %{"_target" => ["flow", "verification_types"]} = params,
         socket
       ) do
-    # Modal.open("modal_wizard")
+    # Modal.open("modal_form")
 
     verification_types = get_in(params, ["flow", "verification_types"])
     form = Flow.changeset(socket.assigns.form, %{verification_types: verification_types})
@@ -183,6 +190,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
+      |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -194,5 +202,20 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
 
     merchant.providers
     |> Enum.map(fn provider -> %{key: provider["name"], value: provider["name"]} end)
+  end
+
+  def handle_event("apply", _params, socket) do
+    changeset = Map.merge(socket.assigns.changeset, %{action: :insert})
+
+    socket =
+      if changeset.valid? do
+        params = %{value: "custom", dates: Ecto.Changeset.apply_changes(changeset)}
+        send(self(), {:updated_date_filter, params})
+        assign(socket, is_open: false)
+      else
+        assign(socket, is_open: true, changeset: changeset)
+      end
+
+    {:noreply, socket}
   end
 end

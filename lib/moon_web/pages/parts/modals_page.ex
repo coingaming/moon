@@ -27,11 +27,12 @@ defmodule MoonWeb.Pages.Parts.ModalsPage do
       <ComponentPageDescription title="Modal examples" />
 
       <ExamplesList examples={[
-        ModalExample.Wizard,
         ModalExample.Alert,
         ModalExample.Small,
         ModalExample.MediumWithLargeText,
-        ModalExample.Large
+        ModalExample.Large,
+        ModalExample.Wizard,
+        ModalExample.WithForm2
       ]} />
     </Page>
     """
