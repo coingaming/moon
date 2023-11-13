@@ -1,3 +1,10 @@
+## [2.72.1](https://github.com/coingaming/moon/compare/v2.72.0...v2.72.1) (2023-11-13)
+
+
+### Bug Fixes
+
+* adding back web-application library ([d260a69](https://github.com/coingaming/moon/commit/d260a69bc0e902f49576fb34d1fed939a0ac3544))
+
 # [2.72.0](https://github.com/coingaming/moon/compare/v2.71.1...v2.72.0) (2023-11-10)
 
 
