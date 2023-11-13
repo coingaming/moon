@@ -26,7 +26,7 @@ defmodule Moon.Parts.Modal do
 
   def render(assigns) do
     ~F"""
-    <Modal {=@id} {=@testid}>
+    <Modal {=@id} {=@testid} {=@on_close}>
       <Modal.Backdrop />
       <Modal.Panel class={
         "flex flex-col max-w-[68.5rem] min-h-[20rem] p-8 w-auto rounded-[1.25rem] bg-goku relative",
