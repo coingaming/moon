@@ -89,7 +89,7 @@ defmodule MoonWeb.Examples.Design.TabsExample.Wizard do
       <div class="relative w-full">
         <Tabs id="tabs-wizzard" class="flex-row mb-10">
           <Tabs.List
-            class="flex flex-col overflow-hidden items-left w-1/3 mt-10 px-6"
+            class="flex flex-col overflow-hidden items-start w-1/3 mt-10 px-6"
             selected={@selected}
           >
             <Wizard.Step>First Step</Wizard.Step>
