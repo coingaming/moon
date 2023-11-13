@@ -1,3 +1,10 @@
+## [2.72.2](https://github.com/coingaming/moon/compare/v2.72.1...v2.72.2) (2023-11-13)
+
+
+### Bug Fixes
+
+* add on_close event to Parts.Modal, class fix ([#773](https://github.com/coingaming/moon/issues/773)) ([e5b38b9](https://github.com/coingaming/moon/commit/e5b38b98b644f346f8cb33de8422d03041f9851a))
+
 ## [2.72.1](https://github.com/coingaming/moon/compare/v2.72.0...v2.72.1) (2023-11-13)
 
 
