@@ -46,7 +46,7 @@ defmodule Moon.MixProject do
     [
       licenses: ["MIT"],
       files: [
-        "lib/{moon,moon.ex}",
+        "lib",
         "config/surface.exs",
         "assets",
         "priv/static/{themes,fonts}",
