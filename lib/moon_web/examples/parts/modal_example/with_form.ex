@@ -4,7 +4,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Design.Modal
+  alias Moon.Parts.Modal
   alias Moon.Design.Button
   alias Moon.Design.Form
 
@@ -18,7 +18,6 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
     <div>
       <Button on_click="open">Open</Button>
       <Modal id="custom-date-selector" {=@is_open}>
-        <Modal.Panel class="h-fit divide-y p-2">
           <Form
             id={"#{assigns.id}-form"}
             for={@changeset}
@@ -34,8 +33,6 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
             </Form.Field>
             <Button type="submit" class="rounded-full">Apply</Button>
           </Form>
-        </Modal.Panel>
-        <Modal.Backdrop />
       </Modal>
     </div>
     """

@@ -10,7 +10,12 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   alias MoonWeb.Schema.Flow
 
   prop(is_open, :boolean, default: false)
+
   data(changeset, :any, default: Flow.changeset(%{}))
+  data(steps, :any)
+  data(verification_types, :any)
+  data(provider_names, :any)
+  data(merchant_names, :any)
 
   def render(assigns) do
     form_id = "#{assigns.id}-form"
@@ -65,16 +70,6 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       </Modal>
     </div>
     """
-  end
-
-  def handle_event("set_open", _, socket) do
-    Modal.open("modal_form")
-    {:noreply, assign(socket, is_open: true)}
-  end
-
-  def handle_event("set_close", _, socket) do
-    Modal.close("modal_form")
-    {:noreply, assign(socket, is_open: false)}
   end
 
   def mount(socket) do
@@ -134,6 +129,16 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     ]
   end
 
+  def handle_event("set_open", _, socket) do
+    Modal.open("modal_form")
+    {:noreply, socket}
+  end
+
+  def handle_event("set_close", _, socket) do
+    Modal.close("modal_form")
+    {:noreply, socket}
+  end
+
   def handle_event("on_form_change", %{"_target" => ["flow", "flow_name"]} = params, socket) do
     # Modal.open("modal_form")
 
@@ -150,6 +155,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   def handle_event("on_form_change", %{"_target" => ["flow", "merchant_name"]} = params, socket) do
     # Modal.open("modal_form")
 
+    # dbg(params)
+
     merchant_name = get_in(params, ["flow", "merchant_name"])
     provider_names = list_provider_names(socket.assigns.get_merchants_response, merchant_name)
     form = Flow.changeset(socket.assigns.form, %{merchant_name: merchant_name})
@@ -158,7 +165,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       socket
       |> assign(:form, form)
       |> assign(:provider_names, provider_names)
-      |> assign(is_open: true)
+      # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -172,7 +179,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
-      |> assign(is_open: true)
+      # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -190,18 +197,9 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
-      |> assign(is_open: true)
+      # |> assign(is_open: true)
 
     {:noreply, socket}
-  end
-
-  defp list_provider_names(get_merchants_response, merchant_name) do
-    merchant =
-      get_merchants_response
-      |> Enum.find(fn merchant -> merchant.name == merchant_name end)
-
-    merchant.providers
-    |> Enum.map(fn provider -> %{key: provider["name"], value: provider["name"]} end)
   end
 
   def handle_event("apply", _params, socket) do
@@ -217,5 +215,13 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       end
 
     {:noreply, socket}
+  end
+  defp list_provider_names(get_merchants_response, merchant_name) do
+    merchant =
+      get_merchants_response
+      |> Enum.find(fn merchant -> merchant.name == merchant_name end)
+
+    merchant.providers
+    |> Enum.map(fn provider -> %{key: provider["name"], value: provider["name"]} end)
   end
 end
