@@ -4,8 +4,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.Wizard do
   use Moon.StatefulComponent
   use MoonWeb, :example
 
-  alias Moon.Parts.{Wizard, Modal}
-  alias Moon.Design.{Tabs, Button}
+  alias Moon.Parts.{Wizard, Modal, Button}
+  alias Moon.Design.Tabs
 
   import MoonWeb.Helpers.Lorem
 
@@ -34,7 +34,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.Wizard do
   def render(assigns) do
     ~F"""
     <div>
-      <Button on_click="set_open">Open modal</Button>
+      <Button on_click="set_open">Open modal wizard (xl is default)</Button>
 
       <Modal id="modal_wizard" on_close="set_close" class="p-1 bg-bulma">
         <Wizard id="tabs-wizzard" {=@steps}>
