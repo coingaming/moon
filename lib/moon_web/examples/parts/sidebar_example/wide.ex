@@ -5,6 +5,7 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
   use MoonWeb, :example
 
   alias Moon.Parts.Sidebar
+  alias Moon.Parts.Avatar
 
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
 
@@ -16,7 +17,9 @@ defmodule MoonWeb.Examples.Parts.SidebarExample.Wide do
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:bottom>
             <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
-            <Sidebar.Avatar name="ET" />
+            <Avatar name="et">
+              <Avatar.Status />
+            </Avatar>
           </:bottom>
         </Sidebar.Slim>
 
