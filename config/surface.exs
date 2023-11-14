@@ -44,6 +44,7 @@ config :surface, :components, [
   {Moon.Design.Tabs.List, propagate_context_to_slots: true},
   {Moon.Design.Tooltip.Content, propagate_context_to_slots: true},
   # parts part
+  {Moon.Parts.Avatar, propagate_context_to_slots: true},
   {Moon.Parts.Chart.Field, propagate_context_to_slots: true},
   {Moon.Parts.Header, propagate_context_to_slots: true},
   {Moon.Parts.Modal, propagate_context_to_slots: true},
