@@ -1,3 +1,10 @@
+## [2.72.5](https://github.com/coingaming/moon/compare/v2.72.4...v2.72.5) (2023-11-14)
+
+
+### Bug Fixes
+
+* Site footer fix ([#775](https://github.com/coingaming/moon/issues/775)) ([4652c9e](https://github.com/coingaming/moon/commit/4652c9e8b809d423dcdb45f6f78ed3f6a8c62802))
+
 ## [2.72.4](https://github.com/coingaming/moon/compare/v2.72.3...v2.72.4) (2023-11-14)
 
 
