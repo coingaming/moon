@@ -18,21 +18,21 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
     <div>
       <Button on_click="open">Open</Button>
       <Modal id="custom-date-selector" {=@is_open}>
-          <Form
-            id={"#{assigns.id}-form"}
-            for={@changeset}
-            change="update_selected"
-            target={@myself}
-            submit="apply"
-          >
-            <Form.Field label="Start date" field={:date_from} class="flex flex-col gap-2">
-              <Form.Input size="lg" type="date" class="text-trunks" />
-            </Form.Field>
-            <Form.Field label="End date" field={:date_to} class="flex flex-col gap-2">
-              <Form.Input size="lg" type="date" class="text-trunks" />
-            </Form.Field>
-            <Button type="submit" class="rounded-full">Apply</Button>
-          </Form>
+        <Form
+          id={"#{assigns.id}-form"}
+          for={@changeset}
+          change="update_selected"
+          target={@myself}
+          submit="apply"
+        >
+          <Form.Field label="Start date" field={:date_from} class="flex flex-col gap-2">
+            <Form.Input size="lg" type="date" class="text-trunks" />
+          </Form.Field>
+          <Form.Field label="End date" field={:date_to} class="flex flex-col gap-2">
+            <Form.Input size="lg" type="date" class="text-trunks" />
+          </Form.Field>
+          <Button type="submit" class="rounded-full">Apply</Button>
+        </Form>
       </Modal>
     </div>
     """

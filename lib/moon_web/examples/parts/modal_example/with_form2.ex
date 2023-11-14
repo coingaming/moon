@@ -165,7 +165,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       socket
       |> assign(:form, form)
       |> assign(:provider_names, provider_names)
-      # |> assign(is_open: true)
+
+    # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -179,7 +180,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
-      # |> assign(is_open: true)
+
+    # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -197,7 +199,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     socket =
       socket
       |> assign(:form, form)
-      # |> assign(is_open: true)
+
+    # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -216,6 +219,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
 
     {:noreply, socket}
   end
+
   defp list_provider_names(get_merchants_response, merchant_name) do
     merchant =
       get_merchants_response
