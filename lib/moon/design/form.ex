@@ -11,6 +11,8 @@ defmodule Moon.Design.Form do
   prop(testid, :string)
   @doc "Atom or changeset to inform the form data"
   prop(for, :any)
+  @doc "The server side parameter in which all parameters will be gathered."
+  prop(as, :atom)
   @doc "Triggered when the form is changed"
   prop(change, :event)
   @doc "Triggered when the form is submitted"
@@ -38,6 +40,7 @@ defmodule Moon.Design.Form do
     ~F"""
     <Surface.Components.Form
       for={transfor(@for)}
+      {=@as}
       {=@submit}
       {=@change}
       {=@class}
