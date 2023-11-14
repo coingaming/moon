@@ -1,3 +1,10 @@
+# [2.73.0](https://github.com/coingaming/moon/compare/v2.72.5...v2.73.0) (2023-11-14)
+
+
+### Features
+
+* Add sizes to Parts.Modal [MDS-802] ([#776](https://github.com/coingaming/moon/issues/776)) ([d1ba003](https://github.com/coingaming/moon/commit/d1ba00320754cffc46a888e1cce9b3546768aba7))
+
 ## [2.72.5](https://github.com/coingaming/moon/compare/v2.72.4...v2.72.5) (2023-11-14)
 
 
