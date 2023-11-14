@@ -1,3 +1,10 @@
+## [2.72.4](https://github.com/coingaming/moon/compare/v2.72.3...v2.72.4) (2023-11-14)
+
+
+### Bug Fixes
+
+* Parts.Avatar fix [MDS-807] ([#774](https://github.com/coingaming/moon/issues/774)) ([bfb7fb2](https://github.com/coingaming/moon/commit/bfb7fb2b0c83ac3c46791fdfd5954bb5e027766a))
+
 ## [2.72.3](https://github.com/coingaming/moon/compare/v2.72.2...v2.72.3) (2023-11-14)
 
 
