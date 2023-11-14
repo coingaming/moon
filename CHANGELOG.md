@@ -1,3 +1,10 @@
+## [2.72.3](https://github.com/coingaming/moon/compare/v2.72.2...v2.72.3) (2023-11-14)
+
+
+### Bug Fixes
+
+* adding Design.Form :as property ([bc7e845](https://github.com/coingaming/moon/commit/bc7e845cca43f4c6b0feff701ce322ebd1d00552))
+
 ## [2.72.2](https://github.com/coingaming/moon/compare/v2.72.1...v2.72.2) (2023-11-13)
 
 
