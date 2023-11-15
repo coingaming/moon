@@ -1,3 +1,10 @@
+## [2.73.1](https://github.com/coingaming/moon/compare/v2.73.0...v2.73.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* Fix Avatar.Status classes ([#777](https://github.com/coingaming/moon/issues/777)) ([5c3779a](https://github.com/coingaming/moon/commit/5c3779a194b42452543dcb9acbcd9094307bda2d))
+
 # [2.73.0](https://github.com/coingaming/moon/compare/v2.72.5...v2.73.0) (2023-11-14)
 
 
