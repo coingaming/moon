@@ -18,7 +18,7 @@ defmodule Moon.Parts.Avatar.Status do
       {=@id}
       {=@testid}
       size="sm"
-      class={merge(["border-goku bg-cell z-10 -bottom-[0.125rem] -end-[0.125rem]", @class])}
+      class={merge(["border-goku bg-cell z-10 bottom-[-0.125rem] end-[-0.125rem]", @class])}
     />
     """
   end
