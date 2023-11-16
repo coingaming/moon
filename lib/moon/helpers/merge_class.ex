@@ -5,11 +5,20 @@ defmodule Moon.Helpers.MergeClass do
 
   def merge(classes) do
     classes
+    |> flatten()
+    |> Enum.reduce(%{}, fn class, groups ->
+      Map.put(groups, group_class(class), class)
+    end)
+    |> Map.values()
     |> Tails.classes()
     |> String.split(" ")
     |> Enum.map(&rename_class/1)
     |> Enum.join(" ")
   end
+
+  # dark/light theme crutches
+  def group_class("theme-moon-" <> _), do: "theme-name"
+  def group_class(other), do: other
 
   # tails crutches
 
