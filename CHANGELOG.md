@@ -1,3 +1,10 @@
+## [2.73.2](https://github.com/coingaming/moon/compare/v2.73.1...v2.73.2) (2023-11-16)
+
+
+### Bug Fixes
+
+* Fixes for Bottomsheet.Panel and Header [MDS-812] ([#778](https://github.com/coingaming/moon/issues/778)) ([d83831a](https://github.com/coingaming/moon/commit/d83831a64edb3b47834a48387282c597f9dce7d7))
+
 ## [2.73.1](https://github.com/coingaming/moon/compare/v2.73.0...v2.73.1) (2023-11-15)
 
 
