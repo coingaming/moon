@@ -47,9 +47,9 @@ defmodule Moon.Design.BottomSheet.Panel do
       data-animate_leave_class="animate-drawer_leave_bottom"
       class={merge([
         [
-          "absolute flex flex-col inset-x-0 bottom-0 rounded-t-moon-i-md bg-goku p-2 h-1/3",
+          "absolute flex flex-col inset-x-0 bottom-0 rounded-t-moon-i-md bg-goku p-2 h-1/3 overflow-auto",
           "moon-panel",
-          "pt-1": slot_assigned?(:header),
+          "pt-0": slot_assigned?(:header),
           "shadow-moon-lg": @has_shadow,
           "h-1/3": @size == "sm",
           "h-[64%]": @size == "md",
