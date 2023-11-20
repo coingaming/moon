@@ -21,7 +21,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHorizontalLabel do
     <div class="flex flex-col gap-2">
       {#for size <- ~w(sm md lg)}
         <Form for={@user_changeset} is_horizontal>
-          <Field label={"Label for #{size}"} field={:email}>
+          <Field label={"Label for #{size}"} field={:email} {=size}>
             <Input {=size} placeholder={"Placeholder for #{size}"} />
           </Field>
         </Form>
@@ -48,7 +48,7 @@ defmodule MoonWeb.Examples.Design.Form.InputExample.WithHorizontalLabel do
       <div class="flex flex-col gap-2">
         {#for size <- ~w(sm md lg)}
           <Form for={@user_changeset} is_horizontal>
-            <Field label={"Label for #\{size}"} field={:email}>
+            <Field label={"Label for #\{size}"} field={:email} {=size}>
               <Input {=size} placeholder={"Placeholder for #\{size}"} />
             </Field>
           </Form>

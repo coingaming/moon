@@ -41,11 +41,11 @@ defmodule Moon.Design.Form.Field.Label do
       {=@form}
       class={merge([
         [
-          "flex items-center gap-2 cursor-pointer whitespace-nowrap",
+          "flex gap-2 cursor-pointer whitespace-nowrap pb-2 items-center leading-normal",
           (@size == "sm" && "text-moon-14") || "text-moon-16",
           "text-bulma opacity-60 cursor-not-allowed": @disabled,
-          "font-medium pe-2": @is_horizontal,
-          "pb-2": !@is_horizontal
+          "font-medium pe-2 items-start pb-0": @is_horizontal,
+          "#{get_top_paddings(@size)}": @is_horizontal
         ],
         @class
       ])}
@@ -63,5 +63,13 @@ defmodule Moon.Design.Form.Field.Label do
       <#slot>{@title}</#slot>
     </Surface.Components.Form.Label>
     """
+  end
+
+  defp get_top_paddings(size) do
+    case size do
+      "sm" -> "pt-2"
+      "md" -> "pt-2"
+      _ -> "pt-2.5"
+    end
   end
 end

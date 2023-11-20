@@ -53,7 +53,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
           change="changed"
           submit="changed"
         >
-          <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here">
+          <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here" {=size}>
             <Form.Combobox
               {=size}
               filter={@filter}

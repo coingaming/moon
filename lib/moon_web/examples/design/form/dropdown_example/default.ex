@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.Form.DropdownExample.Default do
         for={@changeset1}
         change="change1"
       >
-        <Form.Field field={:gender} label={"Size #{size}"} hint="Some hint here">
+        <Form.Field field={:gender} label={"Size #{size}"} hint="Some hint here" {=size}>
           <Form.Dropdown {=size} options={@gender_options} prompt="Please select gender" />
         </Form.Field>
       </Form>
@@ -59,7 +59,7 @@ defmodule MoonWeb.Examples.Design.Form.DropdownExample.Default do
           for={@changeset1}
           change="change1"
         >
-          <Form.Field field={:gender} label={"Size \#{size}"} hint="Some hint here">
+          <Form.Field field={:gender} label={"Size \#{size}"} hint="Some hint here" {=size}>
             <Form.Dropdown {=size} options={@gender_options} prompt="Please select gender" />
           </Form.Field>
         </Form>
