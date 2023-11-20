@@ -23,9 +23,13 @@ defmodule Moon.Parts.Wizard.Buttons do
   @doc "Cancel button click event, button is appeared if set"
   prop(on_cancel, :event)
   @doc "Type attribute for DOM element"
-  prop(type, :string, default: "button")
+  prop(save_type, :string)
   @doc "Form attribute for DOM element"
-  prop(form, :string)
+  prop(save_form, :string)
+  @doc "Type attribute for DOM element"
+  prop(next_type, :string)
+  @doc "Form attribute for DOM element"
+  prop(next_form, :string)
 
   @doc "Values for a button to be sent on server by those events"
   prop(values, :map, from_context: :button_values)
@@ -62,6 +66,8 @@ defmodule Moon.Parts.Wizard.Buttons do
           <Button
             :if={@on_next && @values[:selected] < @values[:total] - 1}
             {=@values}
+            type={@next_type}
+            form={@next_form}
             on_click={@on_next}
             class="min-w-[7.5rem]"
           >Next</Button>
@@ -69,8 +75,8 @@ defmodule Moon.Parts.Wizard.Buttons do
           <Button
             :if={@on_save && @values[:selected] >= @values[:total] - 1}
             {=@values}
-            {=@type}
-            {=@form}
+            type={@save_type}
+            form={@save_form}
             on_click={@on_save}
             class="min-w-[7.5rem]"
           >Save</Button>
