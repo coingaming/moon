@@ -1,3 +1,10 @@
+## [2.73.3](https://github.com/coingaming/moon/compare/v2.73.2...v2.73.3) (2023-11-20)
+
+
+### Bug Fixes
+
+* Checkbox label style and error/hint horizontal placement fix [MDS-816] ([#782](https://github.com/coingaming/moon/issues/782)) ([fafcdd3](https://github.com/coingaming/moon/commit/fafcdd3455d0062c5fa6490d84bc261a0114dac0))
+
 ## [2.73.2](https://github.com/coingaming/moon/compare/v2.73.1...v2.73.2) (2023-11-16)
 
 
