@@ -53,17 +53,21 @@ defmodule Moon.Design.Form.Field do
       ])}
     >
       <Field.Label :if={@label} {=@size} title={@label} />
-      <#slot context_put={
-        size: @size,
-        has_error_icon: @has_error_icon,
-        error: !!@field && !!@form && has_error(@form, @field)
-      } />
-      <Field.Hint :if={@hint} title={@hint} class={@hint_class} />
-      <Field.Error
-        :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
-        class={@error_class}
-        {=@has_error_icon}
-      />
+      <div class="flex flex-col">
+        <#slot context_put={
+          size: @size,
+          has_error_icon: @has_error_icon,
+          error: !!@field && !!@form && has_error(@form, @field)
+        } />
+
+        <Field.Hint :if={@hint} title={@hint} class={@hint_class} />
+
+        <Field.Error
+          :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
+          class={@error_class}
+          {=@has_error_icon}
+        />
+      </div>
     </Surface.Components.Form.Field>
     """
   end

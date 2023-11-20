@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.WithLabel do
     ~F"""
     {#for size <- ~w(sm md lg)}
       <Form for={@user_changeset} class="w-2/5">
-        <Field label={"Label for #{size}"} field={:gender}>
+        <Field label={"Label for #{size}"} field={:gender} {=size}>
           <Select {=size} field={:gender} options={@gender_options} />
         </Field>
       </Form>
@@ -55,7 +55,7 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.WithLabel do
       ~F\"""
       {#for size <- ~w(sm md lg)}
         <Form for={@user_changeset} class="w-2/5">
-          <Field label={"Label for \#{size}"} field={:gender}>
+          <Field label={"Label for \#{size}"} field={:gender} {=size}>
             <Select {=size} field={:gender} options={@gender_options} />
           </Field>
         </Form>

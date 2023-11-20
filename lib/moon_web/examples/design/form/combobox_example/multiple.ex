@@ -56,7 +56,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
         change={"change_#{size}"}
         submit={"change_#{size}"}
       >
-        <Form.Field field={:permissions} label={"Size #{size}"} hint="Some hint here">
+        <Form.Field field={:permissions} label={"Size #{size}"} hint="Some hint here" {=size}>
           <Form.Combobox
             {=size}
             is_multiple
@@ -124,7 +124,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
           for={assigns[:"changeset_\#{size}"]}
           change={"change_\#{size}"}
         >
-          <Form.Field field={:permissions} label={"Size \#{size}"} hint="Some hint here">
+          <Form.Field field={:permissions} label={"Size \#{size}"} hint="Some hint here" {=size}>
             <Form.Combobox
               {=size}
               is_multiple

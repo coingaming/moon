@@ -24,6 +24,10 @@ defmodule Moon.Design.Form.Checkbox do
 
   @doc "Class to be given to the visible checkbox"
   prop(class, :css_class)
+
+  @doc "Additional Tailwind classes for checkbox label"
+  prop(checkbox_label_class, :css_class)
+
   @doc "On_click event for the checkbox"
   prop(on_click, :event)
 
@@ -49,11 +53,14 @@ defmodule Moon.Design.Form.Checkbox do
     ~F"""
     <Label
       {=@size}
-      class={
-        "relative inline-flex items-center select-none",
-        "opacity-disabled": @disabled,
-        "cursor-not-allowed select-none": @readonly || @disabled
-      }
+      class={merge([
+        [
+          "relative inline-flex items-center select-none font-normal pb-0 pt-0",
+          "opacity-disabled": @disabled,
+          "cursor-not-allowed select-none": @readonly || @disabled
+        ],
+        @checkbox_label_class
+      ])}
       {=@field}
       {=@form}
     >
