@@ -11,6 +11,8 @@ defmodule Moon.Design.Form.Field.Hint do
   prop(class, :css_class)
   @doc "Whether error icon is shown"
   prop(has_error_icon, :boolean, default: false)
+  @doc "Whether label is on side of input field"
+  prop(is_horizontal, :boolean, default: false)
   @doc "Hint text when default slot is not given"
   prop(title, :string)
   @doc "Default slot"
@@ -22,7 +24,10 @@ defmodule Moon.Design.Form.Field.Hint do
       data-testid={@testid}
       {=@id}
       class={merge([
-        "flex gap-1 items-center mt-2 text-moon-12 [&_svg]:text-moon-16",
+        [
+          "flex gap-1 items-center mt-2 text-moon-12 [&_svg]:text-moon-16",
+          "col-end-3": @is_horizontal
+        ],
         @class
       ])}
     >

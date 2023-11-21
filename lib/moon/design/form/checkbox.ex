@@ -55,7 +55,7 @@ defmodule Moon.Design.Form.Checkbox do
       {=@size}
       class={merge([
         [
-          "relative inline-flex items-center select-none font-normal pb-0 pt-0",
+          "relative inline-flex items-center select-none font-normal",
           "opacity-disabled": @disabled,
           "cursor-not-allowed select-none": @readonly || @disabled
         ],

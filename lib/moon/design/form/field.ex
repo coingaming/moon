@@ -47,27 +47,25 @@ defmodule Moon.Design.Form.Field do
       name={@field}
       class={merge([
         [
-          "flex flex-row": @is_horizontal
+          "grid grid-cols-2": @is_horizontal
         ],
         @class
       ])}
     >
       <Field.Label :if={@label} {=@size} title={@label} />
-      <div class="flex flex-col">
-        <#slot context_put={
-          size: @size,
-          has_error_icon: @has_error_icon,
-          error: !!@field && !!@form && has_error(@form, @field)
-        } />
-
-        <Field.Hint :if={@hint} title={@hint} class={@hint_class} />
-
-        <Field.Error
-          :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
-          class={@error_class}
-          {=@has_error_icon}
-        />
-      </div>
+      <#slot context_put={
+        size: @size,
+        has_error_icon: @has_error_icon,
+        error: !!@field && !!@form && has_error(@form, @field),
+        is_horizontal: @is_horizontal
+      } />
+      <Field.Hint :if={@hint} title={@hint} class={@hint_class} {=@is_horizontal} />
+      <Field.Error
+        :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
+        class={@error_class}
+        {=@has_error_icon}
+        {=@is_horizontal}
+      />
     </Surface.Components.Form.Field>
     """
   end
