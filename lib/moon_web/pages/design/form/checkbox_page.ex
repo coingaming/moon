@@ -45,7 +45,8 @@ defmodule MoonWeb.Pages.Design.Form.CheckboxPage do
         CheckboxExample.Disabled,
         CheckboxExample.Readonly,
         CheckboxExample.Customizations,
-        CheckboxExample.Multiple
+        CheckboxExample.Multiple,
+        CheckboxExample.MultipleWithHorizontalLabel
       ]} />
       <PropsTable module={Moon.Design.Form.Checkbox} />
       <PropsTable module={Moon.Lego.Checkbox} />
