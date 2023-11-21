@@ -41,7 +41,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.Wizard do
           <:description>
             <div class="py-8 flex flex-col gap-4 w-full">
               <h3 class="text-moon-24 text-bulma font-grotesk">Create new flow</h3>
-              <p class="text-moon-14 text-bulma hidden lg:inline">
+              <p class="text-moon-14 text-trunks hidden lg:inline">
                 In order to make you available and match you with the right opportunities we need some additional information first.
               </p>
             </div>

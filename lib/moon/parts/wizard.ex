@@ -48,7 +48,7 @@ defmodule Moon.Parts.Wizard do
           <:tab_title :let={tabindex: index, title: title}>
             <#slot {@step, tabindex: index, title: title}>
               <span class="text-moon-14 text-bulma font-medium">{title.title}</span>
-              <p class="text-moon-14 text-bulma text-start lg:inline hidden">{title.text}</p>
+              <p class="text-moon-14 text-trunks text-start lg:inline hidden">{title.text}</p>
             </#slot>
           </:tab_title>
         </Tabs.List>
