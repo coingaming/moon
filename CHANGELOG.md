@@ -1,3 +1,10 @@
+## [2.73.5](https://github.com/coingaming/moon/compare/v2.73.4...v2.73.5) (2023-11-21)
+
+
+### Bug Fixes
+
+* Fixing is_horizontal behaviour [MDS-816] ([#784](https://github.com/coingaming/moon/issues/784)) ([adde946](https://github.com/coingaming/moon/commit/adde94621e486a5947715472cbbe32b25f966bfa))
+
 ## [2.73.4](https://github.com/coingaming/moon/compare/v2.73.3...v2.73.4) (2023-11-20)
 
 
