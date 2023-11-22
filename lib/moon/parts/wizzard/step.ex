@@ -109,7 +109,7 @@ defmodule Moon.Parts.Wizard.Step do
             </svg>
           {/if}
         </span>
-        <span class={merge(["ml-6 mb-6 gap-2 items-start flex min-w-0 flex-col", @title_class])}><#slot /></span>
+        <span class={merge(["ml-6 mb-6 gap-2 items-start flex min-w-0 flex-col text-start", @title_class])}><#slot /></span>
       </span>
     </button>
     """

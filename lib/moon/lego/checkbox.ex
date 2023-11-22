@@ -26,7 +26,7 @@ defmodule Moon.Lego.Checkbox do
         merge([
           "flex w-4 h-4 items-center justify-center text-moon-16",
           "transition-colors rounded-moon-s-xs text-goten shadow-trunks",
-          "moon-checked:bg-piccolo moon-checked:shadow-none",
+          "moon-checked:bg-piccolo moon-checked:shadow-none cursor-pointer",
           @class
         ]),
         "shadow-[0_0_0_1px_inset]"

@@ -42,7 +42,7 @@ defmodule Moon.Parts.Wizard.Buttons do
             :if={@on_cancel}
             {=@values}
             on_click={@on_cancel}
-            class="min-w-[7.5rem] justify-self-start"
+            class="min-w-[7.5rem] justify-self-start lg:inline hidden"
           >Cancel</Button.White>
         </Wizard.ButtonsBlock>
 

@@ -1,7 +1,7 @@
 defmodule Moon.Parts.Header.LeftButton do
   @moduledoc false
 
-  use Moon.StatelessComponent, slot: "left_button"
+  use Moon.StatelessComponent
 
   alias Moon.Design.Button.IconButton
 
@@ -21,6 +21,8 @@ defmodule Moon.Parts.Header.LeftButton do
   prop(href, :string)
   @doc "Disabled"
   prop(disabled, :boolean, default: false)
+  @doc "Conditional displaying due to an issue with named slots in Surface"
+  prop(is_hidden, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
@@ -29,11 +31,12 @@ defmodule Moon.Parts.Header.LeftButton do
       {=@testid}
       {=@as}
       class={merge([
-        "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:hidden",
+        "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:hidden absolute top-4 start-4",
+        [hidden: @is_hidden],
         @class
       ])}
       {=@href}
-      icon={@icon || "other3_dots"}
+      icon={@icon || "controls_chevron_left_small"}
       {=@on_click}
       {=@disabled}
     />

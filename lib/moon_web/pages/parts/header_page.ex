@@ -27,9 +27,9 @@ defmodule MoonWeb.Pages.Parts.HeaderPage do
     ~F"""
     <div role="main" class={"pt-16 lg:pt-0 bg-gohan text-bulma flex", @theme_name} dir={@direction}>
       <Header>
+        <Header.Breadcrumbs id="header-breadcrumbs" breadcrumbs={@breadcrumb_items} />
         <Header.Title>Chat history</Header.Title>
         <Header.Description>Manage your team members and their account permissions here.</Header.Description>
-        <Header.Breadcrumbs id="header-breadcrumbs" breadcrumbs={@breadcrumb_items} />
         <Header.ButtonGroup>
           <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
           <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />

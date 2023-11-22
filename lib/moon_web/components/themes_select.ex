@@ -12,6 +12,8 @@ defmodule MoonWeb.Components.ThemesSelect do
 
   prop(theme_name, :string)
   prop(direction, :string, values!: ["ltr", "rtl"])
+  prop(trigger_class, :css_class)
+  prop(on_bg_color, :css_class)
 
   def render(assigns) do
     ~F"""
@@ -23,7 +25,7 @@ defmodule MoonWeb.Components.ThemesSelect do
         <Popover.Trigger>
           <IconButton
             icon="media_tuner"
-            class="shadow-moon-md rounded-full"
+            class={merge(["shadow-moon-md rounded-full", @trigger_class])}
             aria_label="Toggle site settings"
           />
         </Popover.Trigger>
@@ -31,6 +33,7 @@ defmodule MoonWeb.Components.ThemesSelect do
           <MenuItem as="div" class="cursor-default">
             {(String.contains?(@theme_name, "-dark") && "Dark mode") || "Light mode"}
             <Switch
+              {=@on_bg_color}
               size="xs"
               checked={String.contains?(@theme_name, "-dark")}
               on_change={"toggle_dark_mode", target: :live_view}
@@ -45,6 +48,7 @@ defmodule MoonWeb.Components.ThemesSelect do
               size="xs"
               checked={@direction == "rtl"}
               on_change={"toggle_direction", target: :live_view}
+              {=@on_bg_color}
             >
               <:on_icon><TextRightAlign /></:on_icon>
               <:off_icon><TextLeftAlign /></:off_icon>
