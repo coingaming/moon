@@ -130,18 +130,14 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   end
 
   def handle_event("set_open", _, socket) do
-    Modal.open("modal_form")
-    {:noreply, socket}
+    {:noreply, assign(socket, is_open: true)}
   end
 
   def handle_event("set_close", _, socket) do
-    Modal.close("modal_form")
-    {:noreply, socket}
+    {:noreply, assign(socket, is_open: false)}
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "flow_name"]} = params, socket) do
-    # Modal.open("modal_form")
-
     flow_name = get_in(params, ["flow", "flow_name"])
     form = Flow.changeset(socket.assigns.form, %{flow_name: flow_name})
 
@@ -153,10 +149,6 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "merchant_name"]} = params, socket) do
-    # Modal.open("modal_form")
-
-    # dbg(params)
-
     merchant_name = get_in(params, ["flow", "merchant_name"])
     provider_names = list_provider_names(socket.assigns.get_merchants_response, merchant_name)
     form = Flow.changeset(socket.assigns.form, %{merchant_name: merchant_name})
@@ -166,22 +158,16 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
       |> assign(:form, form)
       |> assign(:provider_names, provider_names)
 
-    # |> assign(is_open: true)
-
     {:noreply, socket}
   end
 
   def handle_event("on_form_change", %{"_target" => ["flow", "provider_name"]} = params, socket) do
-    # Modal.open("modal_form")
-
     provider_name = get_in(params, ["flow", "provider_name"])
     form = Flow.changeset(socket.assigns.form, %{provider_name: provider_name})
 
     socket =
       socket
       |> assign(:form, form)
-
-    # |> assign(is_open: true)
 
     {:noreply, socket}
   end
@@ -191,33 +177,15 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
         %{"_target" => ["flow", "verification_types"]} = params,
         socket
       ) do
-    # Modal.open("modal_form")
-
     verification_types = get_in(params, ["flow", "verification_types"])
     form = Flow.changeset(socket.assigns.form, %{verification_types: verification_types})
-
-    socket =
-      socket
-      |> assign(:form, form)
-
-    # |> assign(is_open: true)
-
-    {:noreply, socket}
+    {:noreply, socket |> assign(:form, form)}
   end
 
   def handle_event("apply", _params, socket) do
     changeset = Map.merge(socket.assigns.changeset, %{action: :insert})
 
-    socket =
-      if changeset.valid? do
-        params = %{value: "custom", dates: Ecto.Changeset.apply_changes(changeset)}
-        send(self(), {:updated_date_filter, params})
-        assign(socket, is_open: false)
-      else
-        assign(socket, is_open: true, changeset: changeset)
-      end
-
-    {:noreply, socket}
+    {:noreply, assign(socket, is_open: !changeset.valid?, changeset: changeset)}
   end
 
   defp list_provider_names(get_merchants_response, merchant_name) do

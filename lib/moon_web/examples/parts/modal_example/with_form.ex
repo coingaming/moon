@@ -46,12 +46,12 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
   end
 
   def handle_event("close", _params, socket) do
-    Moon.Design.Modal.close("custom-date-selector")
+    # Moon.Design.Modal.close("custom-date-selector")
     {:noreply, assign(socket, is_open: false)}
   end
 
   def handle_event("open", _params, socket) do
-    Moon.Design.Modal.open("custom-date-selector")
+    # Moon.Design.Modal.open("custom-date-selector")
     {:noreply, assign(socket, is_open: true)}
   end
 
@@ -66,8 +66,8 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm do
 
     socket =
       if changeset.valid? do
-        params = %{value: "custom", dates: Ecto.Changeset.apply_changes(changeset)}
-        send(self(), {:updated_date_filter, params})
+        # params = %{value: "custom", dates: Ecto.Changeset.apply_changes(changeset)}
+        # send(self(), {:updated_date_filter, params})
         assign(socket, is_open: false)
       else
         assign(socket, is_open: true, changeset: changeset)
