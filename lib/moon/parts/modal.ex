@@ -21,8 +21,6 @@ defmodule Moon.Parts.Modal do
   prop(on_close, :event)
   @doc "Size of the modal"
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "xl")
-  @doc "Whether the Modal is open or not"
-  prop(is_open, :boolean)
 
   @doc "Close button slot"
   slot(close_button)
