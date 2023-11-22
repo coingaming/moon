@@ -4,7 +4,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
   @moduledoc """
   Generates a component and a compoinent page by component module name given
 
-      $ mix moon.live.component Form.MyModule
+      $ mix moon.light.component Form.MyModule
 
   """
 
@@ -13,9 +13,8 @@ defmodule Mix.Tasks.Moon.Light.Component do
   import Moon.Helpers.Ast
 
   import String, only: [replace: 3, downcase: 1, split: 2]
-  import Enum, only: [reverse: 1, join: 2]
   import List, only: [last: 1]
-  import Moon.Helpers.LightCompiler
+  import Moon.Helpers.Tokens
 
   alias Surface.Compiler.Parser
 
@@ -27,8 +26,6 @@ defmodule Mix.Tasks.Moon.Light.Component do
     name
     |> context()
     |> add_module_info()
-    |> translate_ast()
-    # |> dbg()
     |> copy_templates()
     |> print_shell_instructions()
   end
@@ -46,7 +43,10 @@ defmodule Mix.Tasks.Moon.Light.Component do
             [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
           }[alias]
         end,
-        defmodule_translates: fn [:Moon | others] -> [:Moon | [:Light | others]] end
+        defmodule_translates: fn [:Moon | [:Design | others]] -> [:Moon | [:Light | others]] end,
+        path_translates: fn path ->
+          String.replace(path, "lib/moon/design/", "lib/moon/light/")
+        end
       }
     }
   end
@@ -66,46 +66,41 @@ defmodule Mix.Tasks.Moon.Light.Component do
               ])
           ),
         component_type: module.component_type(),
-        level: 0,
+        level: 0
       },
       context
     )
   end
 
   defp translate_ast(c = %{module: module}) do
-    Map.put(
-      c,
-      :new_ast,
-      module
-      |> module_ast()
-      |> Macro.prewalk(fn
-        result = {:def, _, [{:render, _, _} | _]} ->
-          translate_render(c, result)
+    module
+    |> module_ast()
+    |> Macro.prewalk(fn
+      result = {:def, _, [{:render, _, _} | _]} ->
+        translate_render(c, result)
 
-        result = {:sigil_F, _, _} ->
-          translate_sigil(c, result)
+      result = {:sigil_F, _, _} ->
+        translate_sigil(c, result)
 
-        result = {:prop, _meta, _options} ->
-          translate_prop(c, result)
+      result = {:prop, _meta, _options} ->
+        translate_prop(c, result)
 
-        result = {:slot, _meta, _options} ->
-          translate_prop(c, result)
+      result = {:slot, _meta, _options} ->
+        translate_prop(c, result)
 
-        result = {:@, _, [{:doc, _, [_text]}]} ->
-          translate_doc(c, result)
+      result = {:@, _, [{:doc, _, [_text]}]} ->
+        translate_doc(c, result)
 
-        result = {:use, _, [{:__aliases__, _, _alias} | _]} ->
-          translate_use_defmodule(c, result)
+      result = {:use, _, [{:__aliases__, _, _alias} | _]} ->
+        translate_use_defmodule(c, result)
 
-        result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} ->
-          translate_use_defmodule(c, result)
+      result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} ->
+        translate_use_defmodule(c, result)
 
-        other ->
-          other
-      end)
-      # |> Macro.to_string()
-      # |> dbg()
-    )
+      other ->
+        other
+    end)
+    |> Macro.to_string()
   end
 
   defp translate_render(%{component_type: Surface.LiveComponent, level: 0}, ast), do: ast
@@ -142,102 +137,39 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_sigil(
          context = %{module: module},
-         res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}
+         {:sigil_F, m1, [{:<<>>, meta, [string]}, opts]}
        ) do
     # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
 
-    compile_meta = %Surface.Compiler.CompileMeta{
-      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
-      file: module.__info__(:compile)[:source] |> to_string(),
-      caller: %{module: module, function: :render},
-      checks: opts[:checks] || [],
-      variables: opts[:variables],
-      style: %{},
-      caller_spec: %{}
-    }
+    result =
+      Parser.parse!(string,
+        file: module.__info__(:compile)[:source] |> to_string(),
+        line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+        caller: %{module: module, function: :render},
+        checks: opts[:checks] || [],
+        warnings: opts[:warnings] || [],
+        column: Keyword.get(opts, :column, 1),
+        indentation: Keyword.get(opts, :indentation, 0)
+      )
+      |> prewalk(context, fn
+        :text, text, context ->
+          {text, context}
 
-    Parser.parse!(string,
-      file: module.__info__(:compile)[:source] |> to_string(),
-      line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
-      caller: %{module: module, function: :render},
-      checks: opts[:checks] || [],
-      warnings: opts[:warnings] || [],
-      column: Keyword.get(opts, :column, 1),
-      indentation: Keyword.get(opts, :indentation, 0)
-    )
-    |> prewalk(context, fn
-      :text, text, context ->
-        {text, context}
+        _node_type, _node = {type, attributes, children, _node_meta}, context ->
+          {{type, attributes, children, %{}}, context}
+      end)
+      |> Tuple.to_list()
+      |> hd()
+      |> to_text()
 
-      node_type, _node = {type, attributes, children, _node_meta}, context ->
-        dbg({{type, attributes, children, %{}}, context})
-    end)
-    # |> dbg()
-
-    res
-  end
-
-  ## trueth copie, some code here for future needs
-  # defp translate_sigil(%{module: module}, res = {:sigil_F, _, [{:<<>>, meta, [string]}, opts]}) do
-  #   line = meta[:line] + +if Keyword.has_key?(meta, :indentation), do: 1, else: 0
-  #   indentation = meta[:indentation] || 0
-  #   column = meta[:column] || 1
-
-  #   component_type = module.component_type()
-
-  #   state = %{
-  #     engine: opts[:engine] || Phoenix.LiveView.Engine,
-  #     depth: 0,
-  #     context_vars: %{count: 0, changed: []},
-  #     scope: []
-  #   }
-
-  #   string
-  #   |> Surface.Compiler.compile(
-  #     line,
-  #     %{
-  #       module: module,
-  #       function: {:render, 1},
-  #       file: module.__info__(:compile)[:source] |> to_string(),
-  #       line: line,
-  #       __struct__: Macro.Env
-  #     },
-  #     module.__info__(:compile)[:source] |> to_string(),
-  #     checks: [no_undefined_assigns: component_type != nil],
-  #     indentation: indentation,
-  #     column: column
-  #   )
-  #   |> Surface.Compiler.EExEngine.to_token_sequence()
-  #   |> Surface.Compiler.EExEngine.generate_buffer(state.engine.init(opts), state)
-  #   # |> Surface.Compiler.EExEngine.translate(
-  #   #   debug: Enum.member?(opts, ?d),
-  #   #   file: module.__info__(:compile)[:source] |> to_string(),
-  #   #   line: line
-  #   # )
-  #   |> dbg()
-  # end
-
-  defp pathes(%{path: _path}) do
-    [
-      # surface: "lib/moon/design/#{path}.ex",
-      # live_view: "lib/moon/light/#{path}.ex",
-      # tests_dir: "test/moon_web/examples/#{path}/",
-      # example_dir: "test/moon_web/examples/design/#{path}_example/"
-    ]
+    {:sigil_F, m1, [{:<<>>, meta, [result]}, opts]}
   end
 
   defp copy_templates(context) do
-    Enum.each(pathes(context), fn {template, file_path} ->
-      file_path |> split("/") |> reverse() |> tl() |> reverse() |> join("/") |> create_directory()
-
-      data =
-        EEx.eval_file(
-          "priv/templates/moon.light.component/#{template}.ex",
-          Enum.map(context, fn {key, value} -> {key, value} end)
-        )
-
-      create_file(file_path, data, force: false)
-    end)
+    context.module.__info__(:compile)[:source]
+    |> to_string()
+    |> context.config.path_translates.()
+    |> create_file(translate_ast(context))
 
     context
   end

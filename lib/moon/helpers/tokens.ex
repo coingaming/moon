@@ -1,7 +1,6 @@
-defmodule Moon.Helpers.LightCompiler do
-  @moduledoc "Mostly copy of Surface.Compiler.to_ast/2 "
+defmodule Moon.Helpers.Tokens do
+  @moduledoc "Some helper functions to proceed with html <-> tokens"
 
-  alias Surface.AST
   require Logger
 
   @void_elements [
@@ -23,6 +22,7 @@ defmodule Moon.Helpers.LightCompiler do
     "wbr"
   ]
 
+  @doc "Mostly copy of Surface.Compiler.to_ast/2 "
   def prewalk(nodes, context, func) do
     {for node <- List.wrap(nodes),
          {result, context} = func.(node_type(node), node, context),
@@ -32,10 +32,40 @@ defmodule Moon.Helpers.LightCompiler do
            {children, _context} = children |> prewalk(context, func)
            {type, attributes, children, node_meta}
 
+         text when is_binary(text) ->
+           text
+
          other ->
            dbg(other)
        end
      end, context}
+  end
+
+  def to_text(nodes, context \\ %{}) do
+    nodes
+    |> List.wrap()
+    |> Enum.reduce("", fn
+      string, text when is_binary(string) ->
+        "#{text}#{string}"
+
+      {type, attributes, [], _meta}, text ->
+        "#{text}<#{type} #{attrs_to_text(attributes)}/>"
+
+      {type, attributes, children, _meta}, text ->
+        "#{text}<#{type} #{attrs_to_text(attributes)}>#{to_text(children, context)}</#{type}>"
+    end)
+  end
+
+  defp attrs_to_text(attrs) do
+    attrs
+    |> List.wrap()
+    |> Enum.map(fn
+      {:root, {:attribute_expr, expr, _m2}, _m1} -> "{#{expr}}"
+      {:root, expr, _m1} -> expr
+      {name, {:attribute_expr, expr, _m2}, _m1} -> "#{name}={#{expr}}"
+      {name, expr, _m1} -> "#{name}=\"#{expr}\""
+    end)
+    |> Enum.join(" ")
   end
 
   # Slots
