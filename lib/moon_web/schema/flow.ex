@@ -1,4 +1,6 @@
 defmodule MoonWeb.Schema.Flow do
+  @moduledoc false
+
   use Ecto.Schema
   import Ecto.Changeset
 

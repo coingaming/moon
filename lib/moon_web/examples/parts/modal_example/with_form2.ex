@@ -1,4 +1,6 @@
 defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
+  @moduledoc false
+
   use Moon.StatefulComponent
 
   alias Moon.Design.Tabs
@@ -137,7 +139,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     {:noreply, assign(socket, is_open: false)}
   end
 
-  def handle_event("on_form_change", %{"_target" => ["flow", "flow_name"]} = params, socket) do
+  def handle_event("on_form_change", params = %{"_target" => ["flow", "flow_name"]}, socket) do
     flow_name = get_in(params, ["flow", "flow_name"])
     form = Flow.changeset(socket.assigns.form, %{flow_name: flow_name})
 
@@ -148,7 +150,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     {:noreply, socket}
   end
 
-  def handle_event("on_form_change", %{"_target" => ["flow", "merchant_name"]} = params, socket) do
+  def handle_event("on_form_change", params = %{"_target" => ["flow", "merchant_name"]}, socket) do
     merchant_name = get_in(params, ["flow", "merchant_name"])
     provider_names = list_provider_names(socket.assigns.get_merchants_response, merchant_name)
     form = Flow.changeset(socket.assigns.form, %{merchant_name: merchant_name})
@@ -161,7 +163,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
     {:noreply, socket}
   end
 
-  def handle_event("on_form_change", %{"_target" => ["flow", "provider_name"]} = params, socket) do
+  def handle_event("on_form_change", params = %{"_target" => ["flow", "provider_name"]}, socket) do
     provider_name = get_in(params, ["flow", "provider_name"])
     form = Flow.changeset(socket.assigns.form, %{provider_name: provider_name})
 
@@ -174,7 +176,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
 
   def handle_event(
         "on_form_change",
-        %{"_target" => ["flow", "verification_types"]} = params,
+        params = %{"_target" => ["flow", "verification_types"]},
         socket
       ) do
     verification_types = get_in(params, ["flow", "verification_types"])
