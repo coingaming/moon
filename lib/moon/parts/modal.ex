@@ -20,6 +20,9 @@ defmodule Moon.Parts.Modal do
   prop(on_close, :event)
   @doc "Size of the modal"
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "xl")
+  @doc "Whether the Modal is open or not"
+  prop(is_open, :boolean)
+
   @doc "Close button slot"
   slot(close_button)
   @doc "Default slot for modal content"
@@ -27,7 +30,7 @@ defmodule Moon.Parts.Modal do
 
   def render(assigns) do
     ~F"""
-    <Modal {=@id} {=@testid} {=@on_close}>
+    <Modal {=@id} {=@testid} {=@on_close} {=@is_open}>
       <Modal.Backdrop />
       <Modal.Panel class={merge([
         [
