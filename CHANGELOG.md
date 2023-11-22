@@ -1,3 +1,10 @@
+## [2.73.6](https://github.com/coingaming/moon/compare/v2.73.5...v2.73.6) (2023-11-22)
+
+
+### Bug Fixes
+
+* Modal examples fix ([#772](https://github.com/coingaming/moon/issues/772)) ([28c6b86](https://github.com/coingaming/moon/commit/28c6b86a293df421bca9ab582eff90566f6c9f8b))
+
 ## [2.73.5](https://github.com/coingaming/moon/compare/v2.73.4...v2.73.5) (2023-11-21)
 
 
