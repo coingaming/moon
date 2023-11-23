@@ -12,7 +12,7 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Wide do
   def render(assigns) do
     ~F"""
     <div>
-      <Sidebar id="show_room_wide_sidebar" {=@light_theme}>
+      <Sidebar id="show_room_wide_sidebar"  class={"remove:theme-moon-dark theme-moon-light": @light_theme}>
         <Sidebar.Slim links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
           <:bottom>

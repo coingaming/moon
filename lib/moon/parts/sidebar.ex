@@ -3,8 +3,6 @@ defmodule Moon.Parts.Sidebar do
 
   use Moon.StatelessComponent
 
-  # TODO: remove "light_theme" prop when theme class merge is fixed
-
   alias Moon.Design.Drawer
 
   @doc "Id attribute for DOM element"
@@ -17,8 +15,6 @@ defmodule Moon.Parts.Sidebar do
   prop(backdrop_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(panel_class, :css_class)
-  @doc "Light theme"
-  prop(light_theme, :boolean, default: false)
   @doc "Default slot - for menus"
   slot(default)
   @doc "Button slot - for button in the bottom"
@@ -30,11 +26,7 @@ defmodule Moon.Parts.Sidebar do
       {=@id}
       lg_persists
       class={merge([
-        [
-          "lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto",
-          "theme-moon-dark": !@light_theme,
-          "theme-moon-light": @light_theme
-        ],
+        "lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark",
         @class
       ])}
       {=@testid}

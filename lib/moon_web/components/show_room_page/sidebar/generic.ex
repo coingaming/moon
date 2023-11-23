@@ -13,7 +13,10 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Generic do
   def render(assigns) do
     ~F"""
     <div>
-      <Sidebar id="show_room_generic_sidebar" {=@light_theme}>
+      <Sidebar
+        id="show_room_generic_sidebar"
+        class={"remove:theme-moon-dark theme-moon-light": @light_theme}
+      >
         <Sidebar.Generic>
           <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
           <Sidebar.Section>

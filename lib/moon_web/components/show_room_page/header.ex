@@ -37,7 +37,7 @@ defmodule MoonWeb.Components.ShowRoomPage.Header do
 
   def render(assigns) do
     ~F"""
-    <Header {=@light_theme}>
+    <Header class={"remove:theme-moon-dark theme-moon-light": @light_theme}>
       <Header.Breadcrumbs
         id="header-breadcrumbs"
         breadcrumbs={@breadcrumb_items}
