@@ -43,6 +43,7 @@ defmodule MoonWeb.Pages.Design.ChipPage do
         ChipExample.Sizes,
         ChipExample.Variants,
         ChipExample.Active,
+        ChipExample.Disabled,
         ChipExample.WithIcons,
         ChipExample.IsStroke,
         ChipExample.IsStrokeWithIcons,
