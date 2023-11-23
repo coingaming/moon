@@ -1,4 +1,4 @@
-defmodule MoonWeb.Components.ShowRoomPage.Header do
+defmodule MoonWeb.Components.ShowRoomPage.Header.WithTitle do
   @moduledoc false
 
   use MoonWeb, :stateful_component
@@ -24,11 +24,6 @@ defmodule MoonWeb.Components.ShowRoomPage.Header do
   )
 
   prop(title, :string)
-  prop(description, :string)
-
-  prop(has_breadcrumbs, :boolean, default: true)
-  prop(has_title, :boolean, default: true)
-  prop(has_description, :boolean, default: true)
   prop(has_button_group, :boolean, default: true)
   prop(has_left_button, :boolean, default: true)
   prop(has_right_button, :boolean, default: true)
@@ -38,22 +33,15 @@ defmodule MoonWeb.Components.ShowRoomPage.Header do
   def render(assigns) do
     ~F"""
     <Header class={"remove:theme-moon-dark theme-moon-light": @light_theme}>
-      <Header.Breadcrumbs
-        id="header-breadcrumbs"
-        breadcrumbs={@breadcrumb_items}
-        is_hidden={!@has_breadcrumbs}
-      />
-      <Header.Title is_hidden={!@has_title}>{@title}</Header.Title>
-      <Header.Description is_hidden={!@has_description}>{@description}</Header.Description>
-
-      <Header.ButtonGroup is_hidden={!@has_button_group}>
+      <Header.Title>{@title}</Header.Title>
+      <Header.Buttons is_hidden={!@has_button_group}>
         <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
         <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />
         <Header.ButtonGroupLink route="#" icon="arrows_sorting" tooltip_text="Tooltip text" />
         <Header.ButtonGroupLink route="#" icon="controls_eye" tooltip_text="Tooltip text" />
-      </Header.ButtonGroup>
-      <Header.LeftButton is_hidden={!@has_left_button} />
-      <Header.RightButton is_hidden={!@has_right_button} />
+        <Header.LeftButton is_hidden={!@has_left_button} />
+        <Header.RightButton is_hidden={!@has_right_button} />
+      </Header.Buttons>
     </Header>
     """
   end

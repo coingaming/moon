@@ -3,28 +3,28 @@ defmodule MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions do
 
   use MoonWeb, :stateless_component
 
-  alias Moon.Lego.Checkbox
-  alias Moon.Design.Form.Input
   alias MoonWeb.Components.ShowRoomPage.Wizard.Card
-
-  prop(is_selected1, :boolean, default: true)
-  prop(is_selected2, :boolean, default: true)
-  prop(is_selected3, :boolean, default: true)
-  prop(is_selected4, :boolean, default: true)
-  prop(is_selected0, :boolean, default: true)
+  alias Moon.Design.Tabs
+  alias MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions
 
   prop(has_breadcrumbs, :boolean, default: true)
-  prop(has_title, :boolean, default: true)
-  prop(has_description, :boolean, default: true)
   prop(has_button_group, :boolean, default: true)
   prop(has_left_button, :boolean, default: true)
   prop(has_right_button, :boolean, default: true)
 
+  prop(has_other_button_group, :boolean, default: true)
+  prop(has_other_left_button, :boolean, default: true)
+  prop(has_other_right_button, :boolean, default: true)
+
   prop(change_title, :event)
+  prop(change_default_title, :event)
   prop(change_description, :event)
+  prop(header_change, :event)
 
   prop(title, :string)
+  prop(default_title, :string)
   prop(description, :string)
+  prop(tab_index, :integer)
 
   def render(assigns) do
     ~F"""
@@ -32,60 +32,35 @@ defmodule MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions do
       <:title>Header customization playground</:title>
       <:description>Witness the adaptability of Moon's headers across different screen dimensions. Explore the options available and find the perfect fit for your BackOffice environment.</:description>
 
-      <div class="flex flex-col gap-2">
-        <span class="font-medium">Customize your view: replace title as you prefer</span>
-        <Input value={@title} on_keyup={@change_title} />
-      </div>
-
-      <div class="flex flex-col gap-2">
-        <span class="font-medium">Customize your view: replace description as you prefer</span>
-        <Input value={@description} on_keyup={@change_description} />
-      </div>
-
-      <div class="pb-4">
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_title}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_title", target: :live_view}
-          /> <span>has title</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_description}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_description", target: :live_view}
-          /> <span>has description</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_breadcrumbs}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_breadcrumbs", target: :live_view}
-          /> <span>has breadcrumbs</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_button_group}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_button_group", target: :live_view}
-          /> <span>has button group</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_left_button}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_left_button", target: :live_view}
-          /> <span>has left button on mobile view</span>
-        </div>
-        <div class="flex gap-2 items-center">
-          <Checkbox
-            is_selected={@has_right_button}
-            class="moon-checked:bg-roshi"
-            on_click={"toggle_right_button", target: :live_view}
-          /> <span>has right button on mobile view</span>
-        </div>
-      </div>
+      <Tabs id="header_options" class="pb-4" on_change={@header_change} selected={@tab_index}>
+        <Tabs.List>
+          <Tabs.Tab class="hover:text-roshi after:bg-roshi" selected_class="text-roshi after:scale-x-100">Header with all options</Tabs.Tab>
+          <Tabs.Tab class="hover:text-roshi after:bg-roshi" selected_class="text-roshi after:scale-x-100">Header with title only</Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panels>
+          <Tabs.Panel>
+            <HeaderOptions.Default
+              {=@has_breadcrumbs}
+              {=@has_button_group}
+              {=@has_left_button}
+              {=@has_right_button}
+              {=@change_default_title}
+              {=@change_description}
+              {=@default_title}
+              {=@description}
+            />
+          </Tabs.Panel>
+          <Tabs.Panel>
+            <HeaderOptions.TitleOnly
+              {=@has_other_button_group}
+              {=@has_other_left_button}
+              {=@has_other_right_button}
+              {=@change_title}
+              {=@title}
+            />
+          </Tabs.Panel>
+        </Tabs.Panels>
+      </Tabs>
     </Card>
     """
   end

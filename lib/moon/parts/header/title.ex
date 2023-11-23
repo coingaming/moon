@@ -1,7 +1,7 @@
 defmodule Moon.Parts.Header.Title do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatelessComponent, slot: "title"
 
   @doc "Id for DOM element"
   prop(id, :string)
@@ -9,13 +9,8 @@ defmodule Moon.Parts.Header.Title do
   prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-  @doc "Additional Tailwind classes"
-  prop(header_class, :css_class, from_context: :header_class)
-  @doc "Title only"
-  prop(title_only, :boolean, from_context: :title_only)
-  @doc "Conditional displaying due to an issue with named slots in Surface"
-  prop(is_hidden, :boolean, default: false)
-
+  @doc "Title"
+  prop(title, :string)
   @doc "Default slot"
   slot(default)
 
@@ -25,16 +20,11 @@ defmodule Moon.Parts.Header.Title do
       {=@id}
       data-testid={@testid}
       class={merge([
-        [
-          "text-bulma text-moon-32 font-grotesk mt-6",
-          "mb-0": @title_only,
-          "hidden mt-0": @is_hidden
-        ],
-        @header_class,
+        "w-full text-bulma text-moon-24 font-grotesk mt-2 lg:mt-0 px-4 py-4 lg:px-8 lg:not-first:pt-0 lg:py-7 self-center lg:text-start text-center leading-normal",
         @class
       ])}
     >
-      <#slot />
+      <#slot>{@title}</#slot>
     </h3>
     """
   end

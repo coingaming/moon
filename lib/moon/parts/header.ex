@@ -9,8 +9,14 @@ defmodule Moon.Parts.Header do
   prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-  @doc "Default slot for header content"
+  @doc "If only Title is given"
+  prop(title_only, :boolean)
+  @doc "Default slot"
   slot(default)
+  @doc "Buttons slot"
+  slot(buttons)
+  @doc "Title only slot"
+  slot(title)
 
   def render(assigns) do
     ~F"""
@@ -18,11 +24,18 @@ defmodule Moon.Parts.Header do
       {=@id}
       data-testid={@testid}
       class={merge([
-        "w-full sticky top-0 bg-goku px-4 pb-6 pt-[5.5rem] lg:p-8 min-h-[5rem] theme-moon-dark",
+        "w-full sticky top-0 bg-goku min-h-[5rem] theme-moon-dark flex flex-col",
         @class
       ])}
     >
       <#slot />
+      <#slot {@title} />
+      <#slot
+        {@buttons}
+        context_put={
+          title_only: slot_assigned?(:title) && !slot_assigned?(:default)
+        }
+      />
     </header>
     """
   end

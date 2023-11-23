@@ -19,15 +19,22 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
 
-  data(title, :string, default: "Unleash efficiency with BackOffice templates powered by Moon")
-  data(description, :string, default: "Let our Wizard navigate you through versatile options")
+  data(title, :string, default: "BackOffice templates")
+  data(default_title, :string, default: "BackOffice templates")
+
+  data(description, :string,
+    default:
+      "Unleash efficiency with BackOffice templates powered by Moon. Let our Wizard navigate you through versatile options"
+  )
 
   data(has_breadcrumbs, :boolean, default: true)
-  data(has_title, :boolean, default: true)
-  data(has_description, :boolean, default: true)
   data(has_button_group, :boolean, default: true)
   data(has_left_button, :boolean, default: true)
   data(has_right_button, :boolean, default: true)
+
+  data(has_other_button_group, :boolean, default: true)
+  data(has_other_left_button, :boolean, default: true)
+  data(has_other_right_button, :boolean, default: true)
 
   data(value, :string, values: ["slim", "generic", "wide"], default: "slim")
 
@@ -54,6 +61,9 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
     ]
   )
 
+  data(tab_index, :integer)
+  data(selected_header, :integer, default: 0)
+
   def render(assigns) do
     ~F"""
     <div role="main" class={"bg-gohan text-bulma flex", @theme_name} dir={@direction}>
@@ -71,18 +81,27 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
         "lg:ms-[27rem]": @value == "wide"
       ])}>
         <div class="flex flex-col">
-          <Header
-            id="show_room_header"
-            {=@title}
+          <Header.WithTitleAndDescription
+            :if={@selected_header == 0}
+            id="title_only_header"
+            default_title={@default_title}
             {=@description}
             {=@has_breadcrumbs}
-            {=@has_title}
-            {=@has_description}
             {=@has_button_group}
             {=@has_left_button}
             {=@has_right_button}
             light_theme={@light_header}
           />
+          <Header.WithTitle
+            :if={@selected_header == 1}
+            id="default_header"
+            title={@title}
+            has_button_group={@has_other_button_group}
+            has_left_button={@has_other_left_button}
+            has_right_button={@has_other_right_button}
+            light_theme={@light_header}
+          />
+
           <div class="mt-40 flex items-center justify-center">
             <Button on_click="set_open">Explore Moon Templates</Button>
             <Modal id="show-room-modal" on_close="set_close" class="p-1 bg-bulma" {=@is_open}>
@@ -99,15 +118,20 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
                   <Tabs.Panel><SidebarOptions {=@value} on_change="changed" /></Tabs.Panel>
                   <Tabs.Panel><HeaderOptions
                       change_title="change_title"
+                      change_default_title="change_default_title"
                       change_description="change_description"
-                      {=@title}
+                      header_change="handle_header_change"
+                      title={@title}
+                      default_title={@default_title}
                       {=@description}
-                      {=@has_title}
                       {=@has_breadcrumbs}
-                      {=@has_description}
                       {=@has_button_group}
                       {=@has_left_button}
                       {=@has_right_button}
+                      {=@has_other_button_group}
+                      {=@has_other_left_button}
+                      {=@has_other_right_button}
+                      tab_index={@selected_header}
                     /></Tabs.Panel>
                   <Tabs.Panel><ThemeOptions
                       {=@light_sidebar}
@@ -177,8 +201,34 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
     {:noreply, socket}
   end
 
+  def handle_event("toggle_other_button_group", _, socket) do
+    socket =
+      assign(socket, has_other_button_group: !socket.assigns.has_other_button_group, selected: 1)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("toggle_other_left_button", _, socket) do
+    socket =
+      assign(socket, has_other_left_button: !socket.assigns.has_other_left_button, selected: 1)
+
+    {:noreply, socket}
+  end
+
+  def handle_event("toggle_other_right_button", _, socket) do
+    socket =
+      assign(socket, has_other_right_button: !socket.assigns.has_other_right_button, selected: 1)
+
+    {:noreply, socket}
+  end
+
   def handle_event("change_title", %{"value" => title}, socket) do
     socket = assign(socket, title: title, selected: 1)
+    {:noreply, socket}
+  end
+
+  def handle_event("change_default_title", %{"value" => default_title}, socket) do
+    socket = assign(socket, default_title: default_title, selected: 1)
     {:noreply, socket}
   end
 
@@ -193,5 +243,9 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   def handle_event("change_description", %{"value" => description}, socket) do
     socket = assign(socket, description: description, selected: 1)
     {:noreply, socket}
+  end
+
+  def handle_event("handle_header_change", %{"value" => selected_header}, socket) do
+    {:noreply, assign(socket, selected_header: String.to_integer(selected_header), selected: 1)}
   end
 end
