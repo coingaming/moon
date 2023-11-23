@@ -1,3 +1,10 @@
+## [2.73.7](https://github.com/coingaming/moon/compare/v2.73.6...v2.73.7) (2023-11-23)
+
+
+### Bug Fixes
+
+* Disabled for Chip [MDS-832] ([#786](https://github.com/coingaming/moon/issues/786)) ([fccedaa](https://github.com/coingaming/moon/commit/fccedaa3ab6f447e3d0e05cbd14630af28a961b9))
+
 ## [2.73.6](https://github.com/coingaming/moon/compare/v2.73.5...v2.73.6) (2023-11-22)
 
 
