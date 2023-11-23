@@ -1,3 +1,10 @@
+## [2.73.8](https://github.com/coingaming/moon/compare/v2.73.7...v2.73.8) (2023-11-23)
+
+
+### Bug Fixes
+
+* update supportive colours [MDS-815] ([#787](https://github.com/coingaming/moon/issues/787)) ([55aebe1](https://github.com/coingaming/moon/commit/55aebe1ce1562aec4cee45c1e2842dc3f7857895))
+
 ## [2.73.7](https://github.com/coingaming/moon/compare/v2.73.6...v2.73.7) (2023-11-23)
 
 
