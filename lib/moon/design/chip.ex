@@ -23,6 +23,8 @@ defmodule Moon.Design.Chip do
   prop(class, :css_class)
   @doc "Aria label attribute for DOM element"
   prop(aria_label, :string)
+  @doc "Disabled chip"
+  prop(disabled, :boolean)
   @doc "Default slot"
   slot(default)
   @doc "Left icon slot"
@@ -36,6 +38,7 @@ defmodule Moon.Design.Chip do
     ~F"""
     <button
       {=@id}
+      disabled={@disabled}
       class={merge([
         [
           "z-0 overflow-hidden flex flex-row items-center text-moon-14",
@@ -51,7 +54,9 @@ defmodule Moon.Design.Chip do
           "bg-transparent": @variant in ["ghost"],
           "bg-jiren text-piccolo": @is_active,
           "hover:shadow-interactive": @is_stroke,
-          "shadow-interactive": @is_active && @is_stroke
+          "shadow-interactive": @is_active && @is_stroke,
+          "opacity-60 cursor-not-allowed hover:shadow-none hover:bg-goku hover:text-bulma": @disabled,
+          "hover:bg-transparent": @variant in ["ghost"] && @disabled
         ],
         @class
       ])}

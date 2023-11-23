@@ -7,7 +7,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.TriggerElements do
   alias Moon.Design.Dropdown
   alias Moon.Design.Button
   alias Moon.Design.Button.IconButton
-  alias Moon.Components.Chip
+  alias Moon.Design.Chip
   alias Moon.Icons.ControlsChevronDown
 
   def render(assigns) do
