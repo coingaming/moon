@@ -37,7 +37,7 @@ defmodule Moon.Parts.Header.TitleWithDescription do
       ])}
     >
       <h3 class={merge(["text-moon-32 text-bulma font-grotesk", @title_class])}>{@title}</h3>
-      <p class={merge(["text-moon-18 text-trunks", @description_class])}><#slot /></p>
+      <p class={merge(["text-moon-16 lg:text-moon-18 text-trunks", @description_class])}><#slot /></p>
     </div>
     """
   end
