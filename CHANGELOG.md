@@ -1,3 +1,10 @@
+## [2.74.1](https://github.com/coingaming/moon/compare/v2.74.0...v2.74.1) (2023-11-24)
+
+
+### Bug Fixes
+
+* Fixes for Breadcrumb and theme select [MDS-843] ([#789](https://github.com/coingaming/moon/issues/789)) ([43ba218](https://github.com/coingaming/moon/commit/43ba2186ef8dd6c804f9f1c8c38af586ff11b6d2))
+
 # [2.74.0](https://github.com/coingaming/moon/compare/v2.73.8...v2.74.0) (2023-11-24)
 
 
