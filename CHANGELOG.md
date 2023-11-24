@@ -1,3 +1,10 @@
+# [2.74.0](https://github.com/coingaming/moon/compare/v2.73.8...v2.74.0) (2023-11-24)
+
+
+### Features
+
+* Showroom page, incl template improvements [MDS-810] ([#785](https://github.com/coingaming/moon/issues/785)) ([0cfad02](https://github.com/coingaming/moon/commit/0cfad0207334d84d5050e2b87ca32a4a5f2841af))
+
 ## [2.73.8](https://github.com/coingaming/moon/compare/v2.73.7...v2.73.8) (2023-11-23)
 
 
