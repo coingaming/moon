@@ -1,4 +1,4 @@
-defmodule MoonWeb.Examples.Parts.HeaderExample.Default do
+defmodule MoonWeb.Examples.Parts.HeaderExample.TitleOnly do
   @moduledoc false
 
   use Moon.StatefulComponent
@@ -28,8 +28,7 @@ defmodule MoonWeb.Examples.Parts.HeaderExample.Default do
   def render(assigns) do
     ~F"""
     <Header>
-      <Header.Breadcrumbs id="header-breadcrumbs" breadcrumbs={@breadcrumb_items} />
-      <Header.TitleWithDescription title="Chat history">Manage your team members and their account permissions here.</Header.TitleWithDescription>
+      <Header.Title title="Chat history" />
       <Header.Buttons>
         <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
         <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />

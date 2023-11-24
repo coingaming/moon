@@ -1,7 +1,7 @@
 defmodule Moon.Parts.Header.Breadcrumbs do
   @moduledoc false
 
-  use Moon.StatelessComponent, slot: "breadcrumbs"
+  use Moon.StatelessComponent
 
   alias Moon.Design.Breadcrumb
   alias Moon.Icon
@@ -18,6 +18,8 @@ defmodule Moon.Parts.Header.Breadcrumbs do
   prop(icon_class, :css_class)
   @doc "Breadcrumbs list"
   prop(breadcrumbs, :list, default: [])
+  @doc "Conditional displaying due to an issue with named slots in Surface"
+  prop(is_hidden, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
@@ -26,7 +28,7 @@ defmodule Moon.Parts.Header.Breadcrumbs do
       {=@testid}
       {=@breadcrumbs}
       divider="controls_chevron_right"
-      class={merge(["hidden lg:inline", @class])}
+      class={merge(["hidden lg:inline px-8 pt-8 not-last:pb-6", ["lg:hidden": @is_hidden], @class])}
     >
       <Breadcrumb.Item
         class={merge(["hover:text-bulma last:text-bulma last:font-normal", @item_class])}

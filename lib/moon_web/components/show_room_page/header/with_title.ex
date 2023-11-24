@@ -1,9 +1,7 @@
-defmodule MoonWeb.Examples.Parts.HeaderExample.Default do
+defmodule MoonWeb.Components.ShowRoomPage.Header.WithTitle do
   @moduledoc false
 
-  use Moon.StatefulComponent
-
-  use MoonWeb, :example
+  use MoonWeb, :stateful_component
 
   alias Moon.Design.Breadcrumb.Crumb
   alias Moon.Parts.Header
@@ -25,18 +23,24 @@ defmodule MoonWeb.Examples.Parts.HeaderExample.Default do
     ]
   )
 
+  prop(title, :string)
+  prop(has_button_group, :boolean, default: true)
+  prop(has_left_button, :boolean, default: true)
+  prop(has_right_button, :boolean, default: true)
+
+  prop(light_theme, :boolean, default: false)
+
   def render(assigns) do
     ~F"""
-    <Header>
-      <Header.Breadcrumbs id="header-breadcrumbs" breadcrumbs={@breadcrumb_items} />
-      <Header.TitleWithDescription title="Chat history">Manage your team members and their account permissions here.</Header.TitleWithDescription>
-      <Header.Buttons>
+    <Header class={"remove:theme-moon-dark theme-moon-light": @light_theme}>
+      <Header.Title>{@title}</Header.Title>
+      <Header.Buttons is_hidden={!@has_button_group}>
         <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
         <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />
         <Header.ButtonGroupLink route="#" icon="arrows_sorting" tooltip_text="Tooltip text" />
         <Header.ButtonGroupLink route="#" icon="controls_eye" tooltip_text="Tooltip text" />
-        <Header.LeftButton />
-        <Header.RightButton />
+        <Header.LeftButton is_hidden={!@has_left_button} />
+        <Header.RightButton is_hidden={!@has_right_button} />
       </Header.Buttons>
     </Header>
     """

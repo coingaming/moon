@@ -13,7 +13,7 @@ defmodule Moon.Parts.Avatar do
     <Avatar
       {=@id}
       {=@testid}
-      class={merge(["rounded-full text-goku bg-cell overflow-visible", @class])}
+      class={merge(["rounded-full text-popo bg-cell overflow-visible", @class])}
       size="sm"
       {=@name}
       {=@image_url}
@@ -22,7 +22,7 @@ defmodule Moon.Parts.Avatar do
         <#slot />
       {#else}
         <span :if={@name && !@image_url}>{@name}</span>
-        <Icon name="generic_user" class="text-moon-24" :if={!@name && !@image_url} />
+        <Icon name="generic_user" class="text-moon-24 text-popo" :if={!@name && !@image_url} />
       {/if}
       <#slot {@status} />
     </Avatar>

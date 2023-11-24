@@ -64,6 +64,8 @@ defmodule MoonWeb.Router do
     live("/templates/button-examples", MoonWeb.Pages.Parts.ButtonsPage)
     live("/templates/modal-examples", MoonWeb.Pages.Parts.ModalsPage)
 
+    live("/show-room", MoonWeb.Pages.Parts.ShowRoomPage)
+
     live("/components/v2/alert/", MoonWeb.Pages.Design.AlertPage)
     live("/components/v2/accordion/", MoonWeb.Pages.Design.AccordionPage)
     live("/components/v2/avatar/", MoonWeb.Pages.Design.AvatarPage)

@@ -38,7 +38,7 @@ defmodule Moon.Parts.Wizard do
       <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row items-stretch", @class} {=@selected}>
         <Tabs.List
           class={
-            "flex-col overflow-x-hidden overflow-y-auto items-start w-1/3 pe-10 ps-8",
+            "flex-col overflow-x-hidden overflow-y-auto items-start w-1/3 pe-10 ps-8 rounded-moon-s-lg",
             "theme-moon-dark bg-goku": @is_dark
           }
           tab_module={Wizard.Step}

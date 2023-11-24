@@ -1,7 +1,7 @@
-defmodule Moon.Parts.Header.Description do
+defmodule Moon.Parts.Header.Buttons do
   @moduledoc false
 
-  use Moon.StatelessComponent
+  use Moon.StatelessComponent, slot: "buttons"
 
   @doc "Id attribute for DOM element"
   prop(id, :string)
@@ -11,18 +11,24 @@ defmodule Moon.Parts.Header.Description do
   prop(class, :css_class)
   @doc "Conditional displaying due to an issue with named slots in Surface"
   prop(is_hidden, :boolean, default: false)
+  @doc "Conditional displaying due to an issue with named slots in Surface"
+  prop(title_only, :boolean, from_context: :title_only)
   @doc "Default slot"
   slot(default)
 
   def render(assigns) do
     ~F"""
-    <p
+    <div
       {=@id}
       data-testid={@testid}
-      class={merge(["text-trunks text-moon-16 lg:text-moon-18 mt-4", ["hidden mt-0": @is_hidden], @class])}
+      class={merge([
+        "lg:gap-2 flex lg:justify-end absolute lg:top-8 lg:end-8 start-4 end-4 top-4",
+        ["lg:top-5": @title_only, "lg:hidden": @is_hidden],
+        @class
+      ])}
     >
       <#slot />
-    </p>
+    </div>
     """
   end
 end

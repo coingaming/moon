@@ -13,15 +13,14 @@ defmodule Moon.Parts.Modal do
   prop(class, :css_class)
   @doc "Data-testid attribute for DOM element"
   prop(testid, :string)
-
+  @doc "Is modal open"
+  prop(is_open, :boolean)
   @doc "Title of the modal"
   prop(title, :string)
   @doc "On close button is pressed event. Is used if no close_button slot is given"
   prop(on_close, :event)
   @doc "Size of the modal"
   prop(size, :string, values: ["xs", "sm", "md", "lg", "xl"], default: "xl")
-  @doc "Whether the Modal is open or not"
-  prop(is_open, :boolean)
 
   @doc "Close button slot"
   slot(close_button)
@@ -43,7 +42,7 @@ defmodule Moon.Parts.Modal do
         <#slot {@close_button}>
           <IconButton.White
             :if={@on_close}
-            class="absolute end-2 top-2 z-10"
+            class="absolute end-4 top-4 z-10"
             icon="controls_close_small"
             on_click={@on_close}
           />

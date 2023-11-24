@@ -40,15 +40,14 @@ defmodule Moon.Parts.Header.ButtonGroupLink do
         <IconButton
           {=@as}
           class={merge([
-            "bg-goku text-bulma border border-beerus rounded-full h-12 w-12",
+            "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:inline hidden",
             @button_class
           ])}
           {=@on_click}
           {=@href}
           {=@icon}
           {=@disabled}
-        >
-        </IconButton>
+        />
       </Tooltip.Trigger>
       <Tooltip.Content
         position="bottom"

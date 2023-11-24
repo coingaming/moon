@@ -25,7 +25,10 @@ defmodule Moon.Parts.Sidebar do
     <Drawer
       {=@id}
       lg_persists
-      class={merge(["lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark", @class])}
+      class={merge([
+        "lg:flex lg:start-0 lg:inset-y-0 lg:z-50 inset-auto theme-moon-dark",
+        @class
+      ])}
       {=@testid}
     >
       <Drawer.Backdrop class={merge(["lg:hidden", @backdrop_class])} />
