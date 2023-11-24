@@ -34,7 +34,9 @@ defmodule Moon.Parts.Header.Breadcrumbs do
         class={merge(["hover:text-bulma last:text-bulma last:font-normal", @item_class])}
         :let={crumb: crumb}
       >
-        <Breadcrumb.Item.Divider divider="controls_chevron_right_small" class="text-moon-20" />
+        <Breadcrumb.Item.Divider>
+          <Icon name="controls_chevron_right_small" class="rtl:rotate-180 mx-2 text-moon-20 text-trunks" />
+        </Breadcrumb.Item.Divider>
         <Icon
           name={crumb.icon}
           class={merge(["text-moon-20 mb-0.5", @icon_class])}

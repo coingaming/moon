@@ -3,21 +3,20 @@ defmodule Moon.Design.Breadcrumb.Item.Divider do
 
   use Moon.StatelessComponent, slot: "divider_slot"
 
-  alias Moon.Icon
-
+  @doc "Id attribute for DOM element"
+  prop(id, :string)
+  @doc "Data-testid attribute for DOM element"
+  prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
-
+  @doc "Index of the item in the list of breadcrumbs"
   prop(value, :integer, from_context: :value)
-  prop(divider, :string)
+  @doc "Default slot"
+  slot(default)
 
   def render(assigns) do
     ~F"""
-    <Icon
-      name={@divider || "arrows_right"}
-      class={merge(["rtl:rotate-180 mx-2 text-moon-14 text-trunks", @class])}
-      :if={@value}
-    />
+    <div :if={@value} {=@class} {=@id} data-testid={@testid}><#slot /></div>
     """
   end
 end

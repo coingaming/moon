@@ -53,6 +53,7 @@ defmodule MoonWeb.Pages.Design.BreadcrumbPage do
       <PropsTable module={Moon.Design.Breadcrumb.Collapsed} />
       <PropsTable module={Moon.Design.Breadcrumb.Item} />
       <PropsTable module={Moon.Design.Breadcrumb.Dropdown} />
+      <PropsTable module={Moon.Design.Breadcrumb.Item.Divider} />
     </Page>
     """
   end
