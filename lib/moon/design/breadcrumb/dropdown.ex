@@ -14,8 +14,6 @@ defmodule Moon.Design.Breadcrumb.Dropdown do
   prop(class, :css_class)
   @doc "List of crumbs to display - Moon.Design.Breadcrumb.Crumb"
   prop(items, :list, from_context: :items)
-  @doc "Name of custom icon used as a collapsed icon"
-  prop(icon, :string)
 
   @doc "Default slot"
   slot(default)
