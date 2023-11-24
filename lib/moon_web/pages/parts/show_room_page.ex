@@ -48,15 +48,16 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
     default: [
       %{
         title: "Sidebar selection",
-        text: ""
+        text: "Tailor your app with Moon's dynamic sidebar options."
       },
       %{
         title: "Header customization",
-        text: ""
+        text:
+          "Explore the header options and find the perfect fit for your BackOffice environment."
       },
       %{
         title: "Dark or light theme",
-        text: ""
+        text: "Select the theme that suits your preferences."
       }
     ]
   )
@@ -105,7 +106,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
           <div class="mt-40 flex items-center justify-center">
             <Button on_click="set_open">Explore Moon Templates</Button>
             <Modal id="show-room-modal" on_close="set_close" class="p-1 bg-bulma" {=@is_open}>
-              <Wizard id="tabs-wizzard" {=@steps} selected={@selected}>
+              <Wizard id="tabs-wizzard" {=@steps} selected={@selected} class="min-h-[39.5rem]">
                 <:description>
                   <div class="py-8 flex flex-col gap-4 w-full">
                     <h3 class="text-moon-24 text-bulma font-grotesk">Moon templates showcase</h3>
