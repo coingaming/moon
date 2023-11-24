@@ -36,7 +36,7 @@ defmodule Moon.Design.Breadcrumb.Item do
     ~F"""
     <li
       class={merge([
-        "flex items-center text-trunks text-moon-14 last:text-bulma last:font-medium",
+        "flex items-center text-trunks text-moon-14 last:text-bulma",
         @class
       ])}
       {=@id}

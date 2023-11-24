@@ -13,7 +13,7 @@ defmodule MoonWeb.Components.ThemesSelect do
   prop(theme_name, :string)
   prop(direction, :string, values!: ["ltr", "rtl"])
   prop(trigger_class, :css_class)
-  prop(on_bg_color, :css_class)
+  prop(on_bg_color, :css_class, default: "bg-piccolo")
 
   def render(assigns) do
     ~F"""

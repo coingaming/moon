@@ -5,7 +5,6 @@ defmodule Moon.Design.Breadcrumb.Dropdown do
 
   alias Moon.Design.Dropdown
   alias Moon.Icon
-  alias Moon.Design.Button.IconButton
 
   @doc "Id of the component"
   prop(id, :string, required: true)
@@ -43,7 +42,7 @@ defmodule Moon.Design.Breadcrumb.Dropdown do
         </Dropdown.Options>
 
         <Dropdown.Trigger>
-          <IconButton icon={@icon || "other3_dots_horizontal"} variant="ghost" size="xs" />
+          <div class="w-6 text-center text-trunks text-moon-14 cursor-pointer">...</div>
         </Dropdown.Trigger>
       </Dropdown>
     </#slot>

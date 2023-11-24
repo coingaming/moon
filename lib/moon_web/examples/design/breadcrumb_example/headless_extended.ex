@@ -33,15 +33,12 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
   def render(assigns) do
     ~F"""
     <div>
-      <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
+      <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items}>
         <Breadcrumb.Item
-          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
+          class="text-bulma hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
           :let={crumb: crumb}
         >
-          <Breadcrumb.Item.Divider
-            divider="controls_chevron_right_small"
-            class="text-bulma text-moon-24 mx-0"
-          />
+          <Breadcrumb.Item.Divider class="text-bulma px-2">/</Breadcrumb.Item.Divider>
           <Icon
             name={crumb.icon}
             class="text-moon-24"
@@ -87,15 +84,12 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessExtended do
     def render(assigns) do
       ~F\"""
       <div>
-        <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items} responsive_crumbs_on="md">
+        <Breadcrumb id="headless-extended" breadcrumbs={@breadcrumb_items}>
           <Breadcrumb.Item
-            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
+            class="text-bulma hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
             :let={crumb: crumb}
           >
-            <Breadcrumb.Item.Divider
-              divider="controls_chevron_right_small"
-              class="text-bulma text-moon-24 mx-0"
-            />
+            <Breadcrumb.Item.Divider class="text-bulma px-2">/</Breadcrumb.Item.Divider>
             <Icon
               name={crumb.icon}
               class="text-moon-24"

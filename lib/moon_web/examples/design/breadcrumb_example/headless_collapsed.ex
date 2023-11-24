@@ -51,20 +51,18 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
     <div>
       <Breadcrumb.Collapsed
         divider="arrows_chevron_right_double"
-        divider_class="text-bulma text-moon-24"
+        divider_class="text-bulma mt-0.5"
         id="headless-collapsed"
         breadcrumbs={@breadcrumb_items}
-        responsive_crumbs_on="md"
       >
         <Breadcrumb.Item
-          class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
+          class="text-bulma hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
           :let={crumb: crumb}
           divider="controls_chevron_right"
         >
-          <Breadcrumb.Item.Divider
-            divider="arrows_chevron_right_double"
-            class="text-bulma text-moon-24 mx-1"
-          />
+          <Breadcrumb.Item.Divider>
+            <Icon name="arrows_chevron_right_double" class="rtl:rotate-180 mx-2 text-moon-14 text-bulma" />
+          </Breadcrumb.Item.Divider>
           <Icon
             name={crumb.icon}
             class="text-moon-24"
@@ -94,7 +92,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
             </Dropdown.Options>
 
             <Dropdown.Trigger>
-              <IconButton icon="other3_dots_horizontal" variant="ghost" class="text-bulma" size="sm" />
+              <IconButton icon="other_frame" variant="ghost" class="text-bulma" size="xs" />
             </Dropdown.Trigger>
           </Dropdown>
         </Breadcrumb.Dropdown>
@@ -152,20 +150,18 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
       <div>
         <Breadcrumb.Collapsed
           divider="arrows_chevron_right_double"
-          divider_class="text-bulma text-moon-24"
+          divider_class="text-bulma mt-0.5"
           id="headless-collapsed"
           breadcrumbs={@breadcrumb_items}
-          responsive_crumbs_on="md"
         >
           <Breadcrumb.Item
-            class="text-bulma text-moon-16 hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
+            class="text-bulma hover:text-trunks last:text-piccolo last:font-normal last:hover:text-bulma"
             :let={crumb: crumb}
             divider="controls_chevron_right"
           >
-            <Breadcrumb.Item.Divider
-              divider="arrows_chevron_right_double"
-              class="text-bulma text-moon-24 mx-1"
-            />
+            <Breadcrumb.Item.Divider>
+              <Icon name="arrows_chevron_right_double" class="rtl:rotate-180 mx-2 text-moon-14 text-bulma" />
+            </Breadcrumb.Item.Divider>
             <Icon
               name={crumb.icon}
               class="text-moon-24"
@@ -195,7 +191,7 @@ defmodule MoonWeb.Examples.Design.BreadcrumbExample.HeadlessCollapsed do
               </Dropdown.Options>
 
               <Dropdown.Trigger>
-                <IconButton icon="other3_dots_horizontal" variant="ghost" class="text-bulma" size="sm" />
+                <IconButton icon="other_frame" variant="ghost" class="text-bulma" size="xs" />
               </Dropdown.Trigger>
             </Dropdown>
           </Breadcrumb.Dropdown>
