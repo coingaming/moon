@@ -14,8 +14,6 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
   prop(breadcrumbs, :list)
   @doc "Name of custom icon used as a divider between breadcrumb items"
   prop(divider, :string, default: "arrows_right")
-  @doc "Name of custom icon used as a collapsed icon"
-  prop(icon, :string)
 
   @doc "Screen size, where breadcrumb items with multiple words are partially replaced with ellipsis (...)"
   prop(responsive_crumbs_on, :string, values: ~w(sm md lg xl 2xl))
@@ -96,7 +94,7 @@ defmodule Moon.Design.Breadcrumb.Collapsed do
                 items: @items
               }
             >
-              <Dropdown {=@id} {=@items} {=@icon} />
+              <Dropdown {=@id} {=@items} />
             </#slot>
           {/if}
         {/for}
