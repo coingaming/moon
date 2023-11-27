@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.WithIcon do
   use MoonWeb, :example
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
+  alias Moon.Lego
 
   alias Moon.Icons.SportBadminton
 
@@ -29,7 +29,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.WithIcon do
   def code() do
     """
     alias Moon.Design.MenuItem
-    alias Moon.Components.Lego
+    alias Moon.Lego
 
     alias Moon.Icons.SportBadminton
 

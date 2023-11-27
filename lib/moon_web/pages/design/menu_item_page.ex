@@ -44,6 +44,7 @@ defmodule MoonWeb.Pages.Design.MenuItemPage do
       <ExamplesList examples={[
         MenuItemExample.Default,
         MenuItemExample.AsLink,
+        MenuItemExample.Sizes,
         MenuItemExample.WithIcon,
         MenuItemExample.WithMeta,
         MenuItemExample.Checkbox,

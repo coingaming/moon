@@ -5,9 +5,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
   use MoonWeb, :example
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
-
-  alias Moon.Icons.{ControlsChevronDown, ControlsChevronUp}
+  alias Moon.Lego
 
   data(expanded0, :boolean, default: false)
   data(expanded1, :boolean, default: true)
@@ -64,10 +62,8 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
         </MenuItem>
         <MenuItem>
           <span class="w-3" :on-click="on_expand1" :values={is_selected: !@expanded1}>
-            <ControlsChevronDown :if={!@expanded1} />
-            <ControlsChevronUp :if={@expanded1} />
+            <Lego.ChevronUpDown is_selected={@expanded1} />
           </span>
-
           <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
             <p class="leading-4 font-semibold text-moon-10">CX</p>
           </span>
@@ -189,9 +185,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
   def code() do
     """
     alias Moon.Design.MenuItem
-    alias Moon.Components.Lego
-
-    alias Moon.Icons.{ControlsChevronDown, ControlsChevronUp}
+    alias Moon.Lego
 
     data(expanded0, :boolean, default: false)
     data(expanded1, :boolean, default: true)
@@ -248,10 +242,8 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.ExpandCollapse do
           </MenuItem>
           <MenuItem>
             <span class="w-3" :on-click="on_expand1" :values={is_selected: !@expanded1}>
-              <ControlsChevronDown :if={!@expanded1} />
-              <ControlsChevronUp :if={@expanded1} />
+              <Lego.ChevronUpDown is_selected={@expanded1} />
             </span>
-
             <span class="bg-gohan w-6 h-6 top-2 left-2 rounded-full flex justify-center items-center">
               <p class="leading-4 font-semibold text-moon-10">CX</p>
             </span>

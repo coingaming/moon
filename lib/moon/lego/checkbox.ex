@@ -10,7 +10,7 @@ defmodule Moon.Lego.Checkbox do
   @doc "Class to be given to the visible checkbox"
   prop(class, :css_class)
   @doc "If the checkbox has selected mark"
-  prop(is_selected, :boolean)
+  prop(is_selected, :boolean, from_context: :is_selected)
   @doc "On_click event for the checkbox"
   prop(on_click, :event)
 
@@ -21,7 +21,7 @@ defmodule Moon.Lego.Checkbox do
       data-testid={@testid}
       :on-click={@on_click}
       aria-hidden="true"
-      aria-checked={"#{@is_selected}"}
+      aria-checked={(@is_selected && "true") || "false"}
       class={
         merge([
           "flex w-4 h-4 items-center justify-center text-moon-16",
@@ -33,16 +33,17 @@ defmodule Moon.Lego.Checkbox do
       }
     >
       <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 32 32"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
         class={"transition-opacity", "opacity-0": !@is_selected}
       >
         <path
-          d="M7 14.941L13.667 22 25 10"
+          d="M3.5 7.47059L6.83333 11L12.5 5"
           stroke="currentColor"
+          stroke-width="1.5"
           stroke-linecap="round"
           stroke-linejoin="round"
         />
