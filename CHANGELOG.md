@@ -1,3 +1,10 @@
+# [2.75.0](https://github.com/coingaming/moon/compare/v2.74.1...v2.75.0) (2023-11-27)
+
+
+### Features
+
+* Add "sm" variant for Tag [MDS-835] ([#790](https://github.com/coingaming/moon/issues/790)) ([de8812f](https://github.com/coingaming/moon/commit/de8812ffffc64b03d6db5b744d0b7e3e5d39931a))
+
 ## [2.74.1](https://github.com/coingaming/moon/compare/v2.74.0...v2.74.1) (2023-11-24)
 
 
