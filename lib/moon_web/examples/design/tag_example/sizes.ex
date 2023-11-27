@@ -11,6 +11,7 @@ defmodule MoonWeb.Examples.Design.TagExample.Sizes do
     ~F"""
     <Tag size="2xs">2xs size</Tag>
     <Tag>xs size</Tag>
+    <Tag size="sm">sm size</Tag>
     """
   end
 
@@ -22,6 +23,7 @@ defmodule MoonWeb.Examples.Design.TagExample.Sizes do
 
     <Tag size="2xs">2xs size</Tag>
     <Tag>xs size</Tag>
+    <Tag size="sm">sm size</Tag>
     """
   end
 end
