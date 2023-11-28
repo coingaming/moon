@@ -1,3 +1,10 @@
+# [2.76.0](https://github.com/coingaming/moon/compare/v2.75.0...v2.76.0) (2023-11-28)
+
+
+### Features
+
+* Add size variants for menu item [MDS-836] ([#791](https://github.com/coingaming/moon/issues/791)) ([b42bf70](https://github.com/coingaming/moon/commit/b42bf70f5ebcfbd2c02819a8764d67a78d549bfa))
+
 # [2.75.0](https://github.com/coingaming/moon/compare/v2.74.1...v2.75.0) (2023-11-27)
 
 
