@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.Radio do
   use MoonWeb, :example
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
+  alias Moon.Lego
 
   data(selected0, :boolean, default: false)
   data(selected1, :boolean, default: true)

@@ -4,7 +4,7 @@ defmodule Moon.Design.MenuItemTest do
   use Surface.LiveViewTest
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
+  alias Moon.Lego
   import MoonWeb.Helpers.Html
 
   describe "MenuItem" do

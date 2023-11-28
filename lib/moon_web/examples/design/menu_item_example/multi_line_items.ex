@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiLineItems do
   use MoonWeb, :example
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
+  alias Moon.Lego
 
   alias Moon.Icons.{
     TravelAirplane,
@@ -57,7 +57,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiLineItems do
   def code() do
     """
     alias Moon.Design.MenuItem
-    alias Moon.Components.Lego
+    alias Moon.Lego
 
     alias Moon.Icons.{
       TravelAirplane,

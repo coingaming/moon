@@ -3,7 +3,7 @@ defmodule Moon.Design.MenuItem do
   use Moon.StatelessComponent
 
   alias Moon.Components.AsComponent
-  alias Moon.Components.Lego
+  alias Moon.Lego
 
   @doc "Attribute data-testid for the tag"
   prop(testid, :string)
@@ -33,6 +33,8 @@ defmodule Moon.Design.MenuItem do
   prop(attrs, :map, default: %{})
   @doc "Value atrribute if needs to be assigned"
   prop(value, :integer)
+  @doc "Size of menu item"
+  prop(size, :string, values: ["md", "lg", "xl"], default: "md")
   @doc "Inner content of the component, some properties are ignored when set - see above"
   slot(default)
 
@@ -46,10 +48,13 @@ defmodule Moon.Design.MenuItem do
       {=@value}
       class={merge([
         [
-          "flex gap-2 justify-between items-center p-2 bg-transparent rounded-moon-i-sm text-moon-14",
+          "flex justify-between items-center bg-transparent rounded-moon-i-sm text-moon-14",
           "focus:outline-none focus:shadow-focus cursor-pointer hover:bg-heles transition",
           @width,
-          "bg-heles": @is_active || @is_selected
+          "bg-heles": @is_active || @is_selected,
+          "p-2 gap-2": @size == "md",
+          "p-3 gap-3": @size == "lg",
+          "p-4 gap-4": @size == "xl"
         ],
         @class
       ])}

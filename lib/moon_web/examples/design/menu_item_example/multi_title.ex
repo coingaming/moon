@@ -5,7 +5,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiTitle do
   use MoonWeb, :example
 
   alias Moon.Design.MenuItem
-  alias Moon.Components.Lego
+  alias Moon.Lego
 
   alias Moon.Icons.{SportBadminton, ControlsChevronRight}
 
@@ -47,7 +47,7 @@ defmodule MoonWeb.Examples.Design.MenuItemExample.MultiTitle do
   def code() do
     """
     alias Moon.Design.MenuItem
-    alias Moon.Components.Lego
+    alias Moon.Lego
 
     alias Moon.Icons.{SportBadminton, ControlsChevronRight}
 
