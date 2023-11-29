@@ -76,32 +76,35 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_ast(c = %{module: module}) do
     module
     |> module_ast()
-    |> Macro.prewalk(fn
-      result = {:def, _, [{:render, _, _} | _]} ->
-        translate_render(c, result)
+    |> Macro.prewalk(nil, fn
+      result = {:def, _, [{:render, _, _} | _]}, acc ->
+        {translate_render(c, result), acc}
 
-      result = {:sigil_F, _, _} ->
-        translate_sigil(c, result)
+      result = {:sigil_F, _, _}, acc ->
+        {translate_sigil(c, result), acc}
 
-      result = {:prop, _meta, _options} ->
-        translate_prop(c, result)
+      result = {:prop, _meta, _options}, acc ->
+        {translate_prop(c, result, acc), nil}
 
-      result = {:slot, _meta, _options} ->
-        translate_slot(c, result)
+      result = {:slot, _meta, _options}, acc ->
+        {translate_slot(c, result, acc), nil}
 
-      result = {:@, _, [{:doc, _, [_text]}]} ->
-        translate_doc(c, result)
+      result = {:@, _, [{:doc, _, [_text]}]}, _acc ->
+        {:skip, translate_doc(c, result)}
 
-      result = {:use, _, [{:__aliases__, _, _alias} | _]} ->
-        translate_use_defmodule(c, result)
+      result = {:use, _, [{:__aliases__, _, _alias} | _]}, acc ->
+        {translate_use_defmodule(c, result), acc}
 
-      result = {:defmodule, _, [{:__aliases__, _, _alias} | _]} ->
-        translate_use_defmodule(c, result)
+      result = {:defmodule, _, [{:__aliases__, _, _alias} | _]}, acc ->
+        {translate_use_defmodule(c, result), acc}
 
-      other ->
-        other
+      other, acc ->
+        {other, acc}
     end)
+    |> Tuple.to_list()
+    |> hd()
     |> Macro.to_string()
+    |> String.replace(":skip", "")
   end
 
   defp translate_render(%{component_type: Surface.LiveComponent, level: 0}, ast), do: ast
@@ -110,11 +113,13 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
-  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}),
-    do: {:attr, meta, [name, translate_prop_type(type)]}
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}, doc),
+    do: {:attr, meta, [name, translate_prop_type(type), [doc: "#{doc}"]]}
 
-  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}),
-    do: {:attr, meta, [name, translate_prop_type(type), translate_prop_options(options)]}
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}, doc),
+    do:
+      {:attr, meta,
+       [name, translate_prop_type(type), translate_prop_options(options) ++ [doc: "#{doc}"]]}
 
   defp translate_prop_type(type)
        when type in [:boolean, :integer, :float, :string, :atom, :list, :map, :global],
@@ -130,17 +135,17 @@ defmodule Mix.Tasks.Moon.Light.Component do
     end)
   end
 
-  defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}), do: {:slot, meta, [:inner_block]}
-  defp translate_slot(_, {:slot, meta, [{name, _, nil}]}), do: {:slot, meta, [name]}
+  defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}, doc), do: {:slot, meta, [:inner_block, [doc: doc]]}
+  defp translate_slot(_, {:slot, meta, [{name, _, nil}]}, doc), do: {:slot, meta, [name, [doc: doc]]}
 
-  defp translate_slot(_, {:slot, meta, [{:default, _, nil}, options]}),
-    do: {:slot, meta, [:inner_block, options]}
+  defp translate_slot(_, {:slot, meta, [{:default, _, nil}, options]}, doc),
+    do: {:slot, meta, [:inner_block, options ++ [doc: doc]]}
 
-  defp translate_slot(_, {:slot, meta, [{name, _, nil}, options]}),
-    do: {:slot, meta, [name, options]}
+  defp translate_slot(_, {:slot, meta, [{name, _, nil}, options]}, doc),
+    do: {:slot, meta, [name, options ++ [doc: doc]]}
 
-  defp translate_doc(_, res = {:@, _, [{:doc, _, [_text]}]}) do
-    res
+  defp translate_doc(_, _res = {:@, _, [{:doc, _, [text]}]}) do
+    text
   end
 
   defp translate_use_defmodule(
@@ -211,9 +216,17 @@ defmodule Mix.Tasks.Moon.Light.Component do
     do: {name, expr, meta}
 
   # TODO: translate each to data-value attribute
-  defp translate_attr({"values", value, meta}), do: {":values", value, meta}
-  defp translate_attr({":" <> name, expr, meta}), do: {:"phx-#{name}", expr, meta}
-  defp translate_attr({name, expr, meta}), do: {:"#{name}", expr, meta}
+  defp translate_attr({":values", value, meta}), do: {"values", translate_attr_value(value), meta}
+  defp translate_attr({":" <> name, value, meta}), do: {:"phx-#{name}", translate_attr_value(value), meta}
+  defp translate_attr({name, value, meta}), do: {:"#{name}", translate_attr_value(value), meta}
+
+  defp translate_attr_value(expr), do: expr
+  defp translate_attr_value({:attribute_expr, expr, meta}) do
+    case Code.string_to_quoted(expr) do
+      {:ok, _} -> {:attribute_expr, expr, meta}
+      {:error, _} -> {:attribute_expr, "[#{expr}]", meta}
+    end
+  end
 
   defp copy_templates(context) do
     context.module.__info__(:compile)[:source]

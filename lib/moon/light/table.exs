@@ -3,50 +3,99 @@ defmodule Moon.Light.Table do
   use Moon.Light.Component
   alias Moon.Icon
   import Moon.Helpers.MakeList, only: [add_index_as: 1]
-  @doc "List of  selected ids, or just id, or [], or nil"
-  attr(:selected, :any, default: [])
+  
+  attr(:selected, :any, default: [], doc: "List of  selected ids, or just id, or [], or nil")
+  
 
-  @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
-  attr(:sort, :any, default: [])
+  attr(:sort, :any,
+    default: [],
+    doc:
+      "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
+  )
 
-  @doc "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
-  attr(:items, :any, required: true)
-  @doc "Event that firset on row click"
-  attr(:row_click, :any)
-  @doc "Callback for generating on_click per row. row and row_id will bi given as parameters"
-  attr(:row_click_cb, :any)
-  @doc "Sorting stuff"
-  attr(:sorting_click, :any)
-  @doc "Can be used to add any class to the table"
-  attr(:row_gap, :any, default: "border-spacing-y-1")
-  @doc "Size of the row. not a css class!"
-  attr(:row_size, :string, values: ~w(xs sm md lg xl 2xl), default: "md")
-  @doc "If cell has border"
-  attr(:is_cell_border, :boolean, default: false)
-  @doc "If table has column headers or not"
-  attr(:is_headless, :boolean, default: false)
-  @doc "If table is styled to present its rows in automatically alternating colours"
-  attr(:is_zebra_style, :boolean, default: false)
-  @doc "Can be used as an additional class for all the rows"
-  attr(:row_bg, :any, default: "bg-goku")
-  @doc "Can be used as an additional class for selected rows"
-  attr(:selected_bg, :any, default: "bg-beerus")
-  @doc "Can be used as an additional class for header row"
-  attr(:header_row_class, :any)
-  @doc "Can be used as an additional class for even rows in zebra-style table"
-  attr(:even_row_bg, :any, default: "bg-transparent")
-  @doc "Can be used as an additional class for all rows. please use hover:... tailwind's format"
-  attr(:hover_bg, :any)
-  @doc "The list of columns defining the Grid"
-  slot(:cols, generator_prop: :items)
-  @doc "Just an id for a table tag"
-  attr(:id, :string)
-  @doc "Data-testid attribute for a table tag"
-  attr(:testid, :string)
-  @doc "Additional classes for a table tag"
-  attr(:class, :any)
-  @doc "Additional attributes for tbody tag"
-  attr(:body_attrs, :map, default: %{})
+  
+
+  attr(:items, :any,
+    required: true,
+    doc:
+      "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
+  )
+
+  
+  attr(:row_click, :any, doc: "Event that firset on row click")
+  
+
+  attr(:row_click_cb, :any,
+    doc: "Callback for generating on_click per row. row and row_id will bi given as parameters"
+  )
+
+  
+  attr(:sorting_click, :any, doc: "Sorting stuff")
+  
+
+  attr(:row_gap, :any,
+    default: "border-spacing-y-1",
+    doc: "Can be used to add any class to the table"
+  )
+
+  
+
+  attr(:row_size, :string,
+    values: ~w(xs sm md lg xl 2xl),
+    default: "md",
+    doc: "Size of the row. not a css class!"
+  )
+
+  
+  attr(:is_cell_border, :boolean, default: false, doc: "If cell has border")
+  
+  attr(:is_headless, :boolean, default: false, doc: "If table has column headers or not")
+  
+
+  attr(:is_zebra_style, :boolean,
+    default: false,
+    doc: "If table is styled to present its rows in automatically alternating colours"
+  )
+
+  
+
+  attr(:row_bg, :any,
+    default: "bg-goku",
+    doc: "Can be used as an additional class for all the rows"
+  )
+
+  
+
+  attr(:selected_bg, :any,
+    default: "bg-beerus",
+    doc: "Can be used as an additional class for selected rows"
+  )
+
+  
+  attr(:header_row_class, :any, doc: "Can be used as an additional class for header row")
+  
+
+  attr(:even_row_bg, :any,
+    default: "bg-transparent",
+    doc: "Can be used as an additional class for even rows in zebra-style table"
+  )
+
+  
+
+  attr(:hover_bg, :any,
+    doc: "Can be used as an additional class for all rows. please use hover:... tailwind's format"
+  )
+
+  
+  slot(:cols, generator_prop: :items, doc: "The list of columns defining the Grid")
+  
+  attr(:id, :string, doc: "Just an id for a table tag")
+  
+  attr(:testid, :string, doc: "Data-testid attribute for a table tag")
+  
+  attr(:class, :any, doc: "Additional classes for a table tag")
+  
+  attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
   def render(assigns) do
     ~H"""
@@ -72,7 +121,7 @@ defmodule Moon.Light.Table do
                   "cursor-pointer": col.sortable && @sorting_click
                 ],
                 col.width
-              ])} phx-on-click={(col.sortable && col.name && @sorting_click) || nil} :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])} data-testid={"sort-column-#{col.name}"}>
+              ])} phx-on-click={(col.sortable && col.name && @sorting_click) || nil} values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])} data-testid={"sort-column-#{col.name}"}>
               <%= col.label %>
               <Icon :if={col.name && col.sortable} class={
                   "text-[1.5em] transition-transform transition-200",
@@ -91,7 +140,7 @@ defmodule Moon.Light.Table do
               "#{@even_row_bg}":
                 @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
-            ])} phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click} :values={selected: "#{item.id}", domid: dom_id(row_index, @id)} data-testid={"row-#{row_index}"} id={dom_id(row_index, @id)}>
+            ])} phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click} values={selected: "#{item.id}", domid: dom_id(row_index, @id)} data-testid={"row-#{row_index}"} id={dom_id(row_index, @id)}>
             <%= for {col, col_index} <- Enum.with_index(@cols)  do %>
               <td class={merge([
                   "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
@@ -110,7 +159,8 @@ defmodule Moon.Light.Table do
     """
   end
 
-  @doc "Sorts items by sort given"
+  
+
   def sort_items(items, sort) do
     import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
 
