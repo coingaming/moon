@@ -135,8 +135,11 @@ defmodule Mix.Tasks.Moon.Light.Component do
     end)
   end
 
-  defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}, doc), do: {:slot, meta, [:inner_block, [doc: doc]]}
-  defp translate_slot(_, {:slot, meta, [{name, _, nil}]}, doc), do: {:slot, meta, [name, [doc: doc]]}
+  defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}, doc),
+    do: {:slot, meta, [:inner_block, [doc: doc]]}
+
+  defp translate_slot(_, {:slot, meta, [{name, _, nil}]}, doc),
+    do: {:slot, meta, [name, [doc: doc]]}
 
   defp translate_slot(_, {:slot, meta, [{:default, _, nil}, options]}, doc),
     do: {:slot, meta, [:inner_block, options ++ [doc: doc]]}
@@ -188,6 +191,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_node({:expr, expr, meta}), do: {:expr, expr, meta}
 
+  #TODO: context_put & children
   defp translate_node(
          {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}
        ) do
@@ -217,16 +221,20 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # TODO: translate each to data-value attribute
   defp translate_attr({":values", value, meta}), do: {"values", translate_attr_value(value), meta}
-  defp translate_attr({":" <> name, value, meta}), do: {:"phx-#{name}", translate_attr_value(value), meta}
+
+  defp translate_attr({":" <> name, value, meta}),
+    do: {:"phx-#{name}", translate_attr_value(value), meta}
+
   defp translate_attr({name, value, meta}), do: {:"#{name}", translate_attr_value(value), meta}
 
-  defp translate_attr_value(expr), do: expr
   defp translate_attr_value({:attribute_expr, expr, meta}) do
     case Code.string_to_quoted(expr) do
       {:ok, _} -> {:attribute_expr, expr, meta}
       {:error, _} -> {:attribute_expr, "[#{expr}]", meta}
     end
   end
+
+  defp translate_attr_value(expr), do: expr
 
   defp copy_templates(context) do
     context.module.__info__(:compile)[:source]
