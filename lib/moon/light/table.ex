@@ -50,8 +50,7 @@ defmodule Moon.Light.Table do
 
   def render(assigns) do
     ~H"""
-    <table
-      class={[
+    <table class={[
         merge([
           [
             "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm",
@@ -61,76 +60,46 @@ defmodule Moon.Light.Table do
           @class
         ]),
         "border-separate"
-      ]}
-      id={@id}
-      data-testid={@testid}
-    >
+      ]} id={@id} data-testid={@testid}>
       <thead :if={!@is_headless}>
         <tr class={@header_row_class}>
           <%= for {col, col_index} <- Enum.with_index(@cols) do %>
-            <th
-              class={
-                merge([
-                  "text-left font-medium whitespace-nowrap",
-                  text_size_classes(@row_size),
-                  [
-                    {:"#{inter_cell_border()}", @is_cell_border && col_index < Enum.count(@cols) - 1},
-                    "cursor-pointer": col.sortable && @sorting_click
-                  ],
-                  col.width
-                ])
-              }
-              phx-on-click={(col.sortable && col.name && @sorting_click) || nil}
-              phx-values={["sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])]}
-              data-testid={"sort-column-#{col.name}"}
-            >
+            <th class={merge([
+                "text-left font-medium whitespace-nowrap",
+                text_size_classes(@row_size),
+                [
+                  "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
+                  "cursor-pointer": col.sortable && @sorting_click
+                ],
+                col.width
+              ])} phx-on-click={(col.sortable && col.name && @sorting_click) || nil} phx-values={["sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])]} data-testid={"sort-column-#{col.name}"}>
               <%= col.label %>
-              <icon
-                :if={col.name && col.sortable}
-                class={[
+              <icon :if={col.name && col.sortable} class={[
                   "text-[1.5em] transition-transform transition-200",
                   "rotate-180": @sort[:"#{col.name}"] != "ASC",
                   "opacity-0": !@sort[:"#{col.name}"]
-                ]}
-                name="arrows_up"
-              />
+                ]} name="arrows_up"/>
             </th>
           <% end %>
         </tr>
       </thead>
-      <tbody {@body_attrs}>
+      <tbody phx-attrs={@body_attrs}>
         <%= for {row_index, item} <- stream_data(assigns) do %>
-          <tr
-            class={
-              merge([
-                (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
-                @hover_bg,
-                {:"#{@even_row_bg}",
-                 @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1},
-                "cursor-pointer": @row_click
-              ])
-            }
-            phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
-            phx-values={[selected: "#{item.id}", domid: dom_id(row_index, @id)]}
-            data-testid={"row-#{row_index}"}
-            id={dom_id(row_index, @id)}
-          >
+          <tr class={merge([
+              (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
+              @hover_bg,
+              "#{@even_row_bg}":
+                @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
+              "cursor-pointer": @row_click
+            ])} phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click} phx-values={[selected: "#{item.id}", domid: dom_id(row_index, @id)]} data-testid={"row-#{row_index}"} id={dom_id(row_index, @id)}>
             <%= for {col, col_index} <- Enum.with_index(@cols) do %>
-              <td
-                class={
-                  merge([
-                    "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
-                    col.width,
-                    text_size_classes(@row_size),
-                    [
-                      {:"#{inter_cell_border()}",
-                       @is_cell_border && col_index < Enum.count(@cols) - 1}
-                    ],
-                    col.class
-                  ])
-                }
-                data-testid={"row-#{row_index}-col-#{col_index}"}
-              >
+              <td class={merge([
+                  "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
+                  col.width,
+                  text_size_classes(@row_size),
+                  ["#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1],
+                  col.class
+                ])} data-testid={"row-#{row_index}-col-#{col_index}"}>
                 <%= render_slot(col) %>
               </td>
             <% end %>
