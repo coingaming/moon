@@ -54,10 +54,6 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
         title: "Header customization",
         text:
           "Explore the header options and find the perfect fit for your BackOffice environment."
-      },
-      %{
-        title: "Dark or light theme",
-        text: "Select the theme that suits your preferences."
       }
     ]
   )
@@ -103,20 +99,25 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
             light_theme={@light_header}
           />
 
-          <div class="mt-40 flex items-center justify-center">
+          <div class="mt-20 md:mt-40 flex items-center justify-center">
             <Button on_click="set_open">Explore Moon Templates</Button>
-            <Modal id="show-room-modal" on_close="set_close" class="p-1 bg-bulma" {=@is_open}>
-              <Wizard id="tabs-wizzard" {=@steps} selected={@selected} class="min-h-[39.5rem]">
+            <Modal id="show-room-modal" on_close="set_close" class="p-1 bg-bulma overflow-hidden" {=@is_open}>
+              <Wizard id="tabs-wizzard" {=@steps} selected={@selected} class="min-h-[39.5rem] max-h-[43.5rem]">
                 <:description>
                   <div class="py-8 flex flex-col gap-4 w-full">
-                    <h3 class="text-moon-24 text-bulma font-grotesk">Moon templates showcase</h3>
-                    <p class="text-moon-14 text-bulma hidden lg:inline">
+                    <h3 class="text-moon-24 text-bulma font-grotesk md:inline hidden">Moon templates showcase</h3>
+                    <p class="text-moon-14 text-bulma hidden md:inline">
                       Discover the versatility of Moon templates – explore their design and functionality across various screen sizes
                     </p>
                   </div>
                 </:description>
-                <Wizard.Panels class="overflow-auto">
-                  <Tabs.Panel><SidebarOptions {=@value} on_change="changed" /></Tabs.Panel>
+                <Wizard.Panels class="max-h-[39.5rem]">
+                  <Tabs.Panel><SidebarOptions
+                      {=@value}
+                      {=@light_sidebar}
+                      on_change="changed"
+                      toggle_sidebar_theme="toggle_sidebar_theme"
+                    /></Tabs.Panel>
                   <Tabs.Panel><HeaderOptions
                       change_title="change_title"
                       change_default_title="change_default_title"
@@ -133,11 +134,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
                       {=@has_other_left_button}
                       {=@has_other_right_button}
                       tab_index={@selected_header}
-                    /></Tabs.Panel>
-                  <Tabs.Panel><ThemeOptions
-                      {=@light_sidebar}
                       {=@light_header}
-                      toggle_sidebar_theme="toggle_sidebar_theme"
                       toggle_header_theme="toggle_header_theme"
                     /></Tabs.Panel>
                 </Wizard.Panels>
@@ -234,11 +231,11 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   end
 
   def handle_event("toggle_sidebar_theme", _, socket) do
-    {:noreply, assign(socket, light_sidebar: !socket.assigns.light_sidebar, selected: 2)}
+    {:noreply, assign(socket, light_sidebar: !socket.assigns.light_sidebar)}
   end
 
   def handle_event("toggle_header_theme", _, socket) do
-    {:noreply, assign(socket, light_header: !socket.assigns.light_header, selected: 2)}
+    {:noreply, assign(socket, light_header: !socket.assigns.light_header, selected: 1)}
   end
 
   def handle_event("change_description", %{"value" => description}, socket) do

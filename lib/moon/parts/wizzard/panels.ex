@@ -24,7 +24,7 @@ defmodule Moon.Parts.Wizard.Panels do
     <div
       role="tabpanel"
       tabindex={@selected}
-      class={merge(["p-6 pb-28 w-2/3 bg-goku rounded-moon-s-lg", @class])}
+      class={merge(["px-4 md:px-8 pt-6 md:pt-10 pb-6 pb-28 w-3/4 md:w-2/3 bg-goku rounded-moon-s-lg", @class])}
       {=@id}
       data-testid={@testid}
     >

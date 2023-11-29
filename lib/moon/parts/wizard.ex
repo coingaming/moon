@@ -35,10 +35,15 @@ defmodule Moon.Parts.Wizard do
   def render(assigns) do
     ~F"""
     <div class="relative w-full">
-      <Tabs id={"#{@id}-tabs"} testid={@testid} class={"flex-row items-stretch", @class} {=@selected}>
+      <Tabs
+        id={"#{@id}-tabs"}
+        testid={@testid}
+        class={"flex-row items-stretch flex-nowrap", @class}
+        {=@selected}
+      >
         <Tabs.List
           class={
-            "flex-col overflow-x-hidden overflow-y-auto items-start w-1/3 pe-10 ps-8 rounded-moon-s-lg",
+            "flex-col overflow-x-hidden overflow-y-auto items-center md:items-start w-1/4 md:w-1/3 pe-10 ps-8 rounded-moon-s-lg",
             "theme-moon-dark bg-goku": @is_dark
           }
           tab_module={Wizard.Step}
@@ -47,8 +52,8 @@ defmodule Moon.Parts.Wizard do
           <#slot {@description} />
           <:tab_title :let={tabindex: index, title: title}>
             <#slot {@step, tabindex: index, title: title}>
-              <span class="text-moon-14 text-bulma font-medium">{title.title}</span>
-              <p class="text-moon-14 text-trunks text-start lg:inline hidden">{title.text}</p>
+              <span class="text-moon-14 text-bulma font-medium md:inline hidden">{title.title}</span>
+              <p class="text-moon-14 text-trunks text-start md:inline hidden">{title.text}</p>
             </#slot>
           </:tab_title>
         </Tabs.List>

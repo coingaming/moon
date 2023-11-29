@@ -34,24 +34,24 @@ defmodule Moon.Parts.Wizard.Buttons do
     <div
       {=@id}
       data-testid={@testid}
-      class={merge(["absolute w-2/3 end-0 bottom-0 px-8 flex justify-between", @class])}
+      class={merge(["absolute w-3/4 md:w-2/3 end-0 bottom-0 px-4 md:px-8 flex justify-between", @class])}
     >
       <#slot>
-        <Wizard.ButtonsBlock>
+        <Wizard.ButtonsBlock class="md:inline hidden">
           <Button.White
             :if={@on_cancel}
             {=@values}
             on_click={@on_cancel}
-            class="min-w-[7.5rem] justify-self-start lg:inline hidden"
+            class="min-w-[7.5rem] justify-self-start"
           >Cancel</Button.White>
         </Wizard.ButtonsBlock>
 
-        <Wizard.ButtonsBlock class="justify-end">
+        <Wizard.ButtonsBlock class="justify-center md:justify-end">
           <Button.White
             :if={@on_prev}
             {=@values}
             on_click={@on_prev}
-            class="min-w-[7.5rem]"
+            class="min-w-[5.5rem] md:min-w-[7.5rem]"
             disabled={@values[:selected] <= 0}
           >Previous</Button.White>
 
@@ -59,14 +59,14 @@ defmodule Moon.Parts.Wizard.Buttons do
             :if={@on_next && @values[:selected] < @values[:total] - 1}
             {=@values}
             on_click={@on_next}
-            class="min-w-[7.5rem]"
+            class="min-w-[5.5rem] md:min-w-[7.5rem]"
           >Next</Button>
 
           <Button
             :if={@on_save && @values[:selected] >= @values[:total] - 1}
             {=@values}
             on_click={@on_save}
-            class="min-w-[7.5rem]"
+            class="min-w-[5.5rem] md:min-w-[7.5rem]"
           >Save</Button>
         </Wizard.ButtonsBlock>
       </#slot>

@@ -42,7 +42,7 @@ defmodule Moon.Parts.Modal do
         <#slot {@close_button}>
           <IconButton.White
             :if={@on_close}
-            class="absolute end-4 top-4 z-10"
+            class="absolute end-4 top-4 z-20"
             icon="controls_close_small"
             on_click={@on_close}
           />
