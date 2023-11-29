@@ -5,11 +5,11 @@ defmodule Moon.Light.Carousel do
   @doc "Data-testid attribute for DOM element"
   attr(:testid, :string)
   @doc "Additional Tailwind classes"
-  attr(:class, :css_class)
+  attr(:class, :any)
   @doc "Index of selected item"
   attr(:value, :integer, default: 0)
   @doc "The function to call when reel is updated"
-  attr(:on_change, :event)
+  attr(:on_change, :any)
   @doc "Step of scroll"
   attr(:step, :integer, default: 1)
   @doc "Interval of auto sliding in milliseconds. No auto sliding if undefined"
@@ -24,39 +24,21 @@ defmodule Moon.Light.Carousel do
   slot(:inner_block)
 
   def render(assigns) do
-    ~F"""
+    ~H"""
     <div
       id={@id}
       class={merge(["relative w-full ", @class])}
       data-testid={@testid}
-      :hook="default"
+      phx-hook="default"
       data-autoslide_delay={@autoslide_delay}
       data-step={@step}
       data-value={@value}
     >
-      <#slot />
-      <#slot
-        {@left_arrow}
-        context_put={
-          value: @value - @step,
-          on_change: @on_change || JS.dispatch("triggerLeftArrowClick", detail: %{})
-        }
-      />
-      <#slot
-        {@reel}
-        context_put={
-          value: @value,
-          autoslide_delay: @autoslide_delay,
-          on_change: @on_change || %{name: "set_selected_index", target: @myself}
-        }
-      />
-      <#slot
-        {@right_arrow}
-        context_put={
-          value: @value + @step,
-          on_change: @on_change || JS.dispatch("triggerRightArrowClick", detail: %{})
-        }
-      />
+      <%= 1..10 |> Enum.join(" ") %>
+      <%= render_slot(@inner_block) %>
+      <%= render_slot(@left_arrow) %>
+      <%= render_slot(@reel) %>
+      <%= render_slot(@right_arrow) %>
     </div>
     """
   end

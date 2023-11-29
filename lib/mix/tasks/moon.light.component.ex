@@ -46,6 +46,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         defmodule_translates: fn [:Moon | [:Design | others]] -> [:Moon | [:Light | others]] end,
         path_translates: fn path ->
           String.replace(path, "lib/moon/design/", "lib/moon/light/")
+          |> String.replace(".ex", ".exs")
         end
       }
     }
@@ -86,7 +87,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         translate_prop(c, result)
 
       result = {:slot, _meta, _options} ->
-        translate_prop(c, result)
+        translate_slot(c, result)
 
       result = {:@, _, [{:doc, _, [_text]}]} ->
         translate_doc(c, result)
@@ -109,18 +110,33 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
-  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}), do: {:attr, meta, [name, type]}
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}),
+    do: {:attr, meta, [name, translate_prop_type(type)]}
 
   defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}),
-    do: {:attr, meta, [name, type, options]}
+    do: {:attr, meta, [name, translate_prop_type(type), translate_prop_options(options)]}
 
-  defp translate_prop(_, {:slot, meta, [{:default, _, nil}]}), do: {:slot, meta, [:inner_block]}
-  defp translate_prop(_, {:slot, meta, [{name, _, nil}]}), do: {:slot, meta, [name]}
+  defp translate_prop_type(type)
+       when type in [:boolean, :integer, :float, :string, :atom, :list, :map, :global],
+       do: type
 
-  defp translate_prop(_, {:slot, meta, [{:default, _, nil}, options]}),
+  defp translate_prop_type(_), do: :any
+
+  defp translate_prop_options(options) do
+    options
+    |> Enum.map(fn
+      {:values!, v} -> {:values, v}
+      {k, v} when k in [:required, :default, :values, :examples] -> {k, v}
+    end)
+  end
+
+  defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}), do: {:slot, meta, [:inner_block]}
+  defp translate_slot(_, {:slot, meta, [{name, _, nil}]}), do: {:slot, meta, [name]}
+
+  defp translate_slot(_, {:slot, meta, [{:default, _, nil}, options]}),
     do: {:slot, meta, [:inner_block, options]}
 
-  defp translate_prop(_, {:slot, meta, [{name, _, nil}, options]}),
+  defp translate_slot(_, {:slot, meta, [{name, _, nil}, options]}),
     do: {:slot, meta, [name, options]}
 
   defp translate_doc(_, res = {:@, _, [{:doc, _, [_text]}]}) do
@@ -135,35 +151,68 @@ defmodule Mix.Tasks.Moon.Light.Component do
     {type, m1, [{:__aliases__, m2, config[:"#{type}_translates"].(alias)} | other]}
   end
 
-  defp translate_sigil(
-         context = %{module: module},
-         {:sigil_F, m1, [{:<<>>, meta, [string]}, opts]}
-       ) do
+  defp translate_sigil(context, {:sigil_F, m1, [{:<<>>, meta, [string]}, opts]}) do
     # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
 
     result =
-      Parser.parse!(string,
-        file: module.__info__(:compile)[:source] |> to_string(),
-        line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
-        caller: %{module: module, function: :render},
-        checks: opts[:checks] || [],
-        warnings: opts[:warnings] || [],
-        column: Keyword.get(opts, :column, 1),
-        indentation: Keyword.get(opts, :indentation, 0)
+      Parser.parse!(
+        string
+        # file: module.__info__(:compile)[:source] |> to_string(),
+        # line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+        # caller: %{module: module, function: :render},
+        # checks: opts[:checks] || [],
+        # warnings: opts[:warnings] || [],
+        # column: Keyword.get(opts, :column, 1),
+        # indentation: Keyword.get(opts, :indentation, 0)
       )
       |> prewalk(context, fn
-        :text, text, context ->
-          {text, context}
+        # :text, text, context ->
+        #   {text, context}
 
-        _node_type, _node = {type, attributes, children, _node_meta}, context ->
-          {{type, attributes, children, %{}}, context}
+        _node_type, node, context ->
+          {translate_node(node), context}
       end)
       |> Tuple.to_list()
       |> hd()
       |> to_text()
 
-    {:sigil_F, m1, [{:<<>>, meta, [result]}, opts]}
+    {:sigil_H, m1, [{:<<>>, meta, [result]}, opts]}
   end
+
+  defp translate_node(text) when is_binary(text), do: text
+
+  defp translate_node({:expr, expr, meta}), do: {:expr, expr, meta}
+
+  defp translate_node(
+         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}
+       ) do
+    {:expr, "render_slot(#{expr})", node_meta}
+  end
+
+  defp translate_node({"#slot", _, _children, node_meta}) do
+    {:expr, "render_slot(@inner_block)", node_meta}
+  end
+
+  defp translate_node({type, attributes, children, node_meta}) do
+    {type |> translate_type(), attributes |> List.wrap() |> Enum.map(&translate_attr/1), children,
+     node_meta}
+  end
+
+  defp translate_node(other), do: other
+
+  defp translate_type(type), do: type
+
+  # defp translate_attr({name, expr, meta}), do: dbg({name, expr, meta})
+
+  defp translate_attr({name, expr, meta}) when is_atom(name),
+    do: translate_attr({"#{name}", expr, meta})
+
+  defp translate_attr({name, expr, meta}) when name in ~w(root :let :if :for),
+    do: {name, expr, meta}
+
+  defp translate_attr({":values", value, meta}), do: {":values", value, meta}
+  defp translate_attr({":" <> name, expr, meta}), do: {:"phx-#{dbg(name)}", expr, meta}
+  defp translate_attr({name, expr, meta}), do: {:"#{dbg(name)}", expr, meta}
 
   defp copy_templates(context) do
     context.module.__info__(:compile)[:source]

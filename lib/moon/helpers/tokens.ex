@@ -35,6 +35,13 @@ defmodule Moon.Helpers.Tokens do
          text when is_binary(text) ->
            text
 
+         {:expr, expr, meta} ->
+           {:expr, expr, meta}
+
+         {:block, type, attributes, children, node_meta} ->
+           {children, _context} = children |> prewalk(context, func)
+           {:block, type, attributes, children, node_meta}
+
          other ->
            dbg(other)
        end
@@ -53,6 +60,12 @@ defmodule Moon.Helpers.Tokens do
 
       {type, attributes, children, _meta}, text ->
         "#{text}<#{type} #{attrs_to_text(attributes)}>#{to_text(children, context)}</#{type}>"
+
+      {:expr, expr, _meta}, text ->
+        "#{text}<%= #{expr} %>"
+
+      {:block, type, attributes, children, _meta}, text ->
+        "#{text}<%= #{type} #{attrs_to_text(attributes)} do %>#{to_text(children, context)}<% end %>"
     end)
   end
 
