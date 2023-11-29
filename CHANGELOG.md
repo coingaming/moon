@@ -1,3 +1,10 @@
+## [2.76.1](https://github.com/coingaming/moon/compare/v2.76.0...v2.76.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* Add autoclose prop to Dropdown [MDS-841] ([#792](https://github.com/coingaming/moon/issues/792)) ([a61187d](https://github.com/coingaming/moon/commit/a61187d880177a095fab0cd73b49cf8f99a8b50c))
+
 # [2.76.0](https://github.com/coingaming/moon/compare/v2.75.0...v2.76.0) (2023-11-28)
 
 
