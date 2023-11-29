@@ -17,6 +17,8 @@ defmodule Moon.Design.Dropdown do
   prop(class, :css_class)
   @doc "Data-testid attribute for HTML tag"
   prop(testid, :string)
+  @doc "Dropdown autoclose on click away"
+  prop(autoclose, :boolean, default: true)
 
   @doc "Attribute phx-hook. Used for dependant components"
   prop(hook, :string)
@@ -58,7 +60,7 @@ defmodule Moon.Design.Dropdown do
     ~F"""
     <div
       class={merge(["relative", @class])}
-      :on-click-away="close_me"
+      :on-click-away={(@autoclose && "close_me") || nil}
       {=@id}
       data-testid={@testid}
       phx-hook={@hook}
