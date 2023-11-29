@@ -14,7 +14,6 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   alias Moon.Design.Tabs
   alias MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions
   alias MoonWeb.Components.ShowRoomPage.Wizard.SidebarOptions
-  alias MoonWeb.Components.ShowRoomPage.Wizard.ThemeOptions
 
   prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
