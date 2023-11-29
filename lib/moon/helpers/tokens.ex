@@ -64,8 +64,11 @@ defmodule Moon.Helpers.Tokens do
       {:expr, expr, _meta}, text ->
         "#{text}<%= #{expr} %>"
 
-      {:block, type, attributes, children, _meta}, text ->
-        "#{text}<%= #{type} #{attrs_to_text(attributes)} do %>#{to_text(children, context)}<% end %>"
+      {:block, type, [{:root, {:attribute_expr, expr, _m2}, _m1} | other_attrs], children, _meta}, text ->
+        "#{text}<%= #{type} #{expr} #{attrs_to_text(other_attrs)} do %>#{to_text(children, context)}<% end %>"
+
+      # {:block, type, attributes, children, _meta}, text ->
+      #   "#{text}<%= #{type} #{attrs_to_text(attributes)} do %>#{to_text(children, context)}<% end %>"
     end)
   end
 

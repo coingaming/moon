@@ -111,3 +111,11 @@ https://github.com/HashNuke/hound - maybe too old
 
 https://elixirforum.com/t/wallaby-visit-produces-empty-screenshot/45268
 https://github.com/elixir-wallaby/wallaby#screenshots
+
+## Current task
+ - @doc attribute
+ - modules merging &  stateless components groupping
+ - aliases collecting
+ - getting info on used in template components to show them one way or another
+ - backward usage - Surface components do only call 
+ - :values attribute processing in template

@@ -73,7 +73,7 @@ defmodule Moon.MixProject do
   defp deps do
     [
       {:phoenix, ">= 1.6.15"},
-      {:phoenix_live_view, ">= 0.18.3"},
+      {:phoenix_live_view, ">= 0.20.1", override: true},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_dashboard, ">= 0.7.0"},
       {:phoenix_ecto, "~> 4.0"},

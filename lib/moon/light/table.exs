@@ -58,7 +58,7 @@ defmodule Moon.Light.Table do
             "border-spacing-y-0": @is_zebra_style
           ],
           @class
-        ]) <>
+        ]),
         "border-separate"
       } id={@id} data-testid={@testid}>
       <thead :if={!@is_headless}>
@@ -72,13 +72,13 @@ defmodule Moon.Light.Table do
                   "cursor-pointer": col.sortable && @sorting_click
                 ],
                 col.width
-              ])} phx-on-click={(col.sortable && col.name && @sorting_click) || nil} values={["sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])]} data-testid={"sort-column-#{col.name}"}>
+              ])} phx-on-click={(col.sortable && col.name && @sorting_click) || nil} :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])} data-testid={"sort-column-#{col.name}"}>
               <%= col.label %>
-              <icon :if={col.name && col.sortable} class={[
+              <Icon :if={col.name && col.sortable} class={
                   "text-[1.5em] transition-transform transition-200",
                   "rotate-180": @sort[:"#{col.name}"] != "ASC",
                   "opacity-0": !@sort[:"#{col.name}"]
-                ]} name="arrows_up"/>
+                } name="arrows_up"/>
             </th>
           <% end %>
         </tr>
@@ -91,7 +91,7 @@ defmodule Moon.Light.Table do
               "#{@even_row_bg}":
                 @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
-            ])} phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click} values={[selected: "#{item.id}", domid: dom_id(row_index, @id)]} data-testid={"row-#{row_index}"} id={dom_id(row_index, @id)}>
+            ])} phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click} :values={selected: "#{item.id}", domid: dom_id(row_index, @id)} data-testid={"row-#{row_index}"} id={dom_id(row_index, @id)}>
             <%= for {col, col_index} <- Enum.with_index(@cols)  do %>
               <td class={merge([
                   "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",

@@ -210,9 +210,10 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_attr({name, expr, meta}) when name in ~w(root :let :if :for),
     do: {name, expr, meta}
 
-  defp translate_attr({":values", value, meta}), do: {":values", value, meta}
-  defp translate_attr({":" <> name, expr, meta}), do: {:"phx-#{dbg(name)}", expr, meta}
-  defp translate_attr({name, expr, meta}), do: {:"#{dbg(name)}", expr, meta}
+  # TODO: translate each to data-value attribute
+  defp translate_attr({"values", value, meta}), do: {":values", value, meta}
+  defp translate_attr({":" <> name, expr, meta}), do: {:"phx-#{name}", expr, meta}
+  defp translate_attr({name, expr, meta}), do: {:"#{name}", expr, meta}
 
   defp copy_templates(context) do
     context.module.__info__(:compile)[:source]
