@@ -119,7 +119,6 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
         :if={@value == "generic"}
         light_theme={@light_sidebar}
         editable_menu_items={@editable_menu_items}
-        :let={editable_menu_item: editable_menu_item}
       />
       <Sidebar.Wide id="show_room_wide_sidebar" :if={@value == "wide"} light_theme={@light_sidebar} />
       <div class={merge([
@@ -205,7 +204,6 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
           <EditableTable
             id="show-room"
             editable_menu_items={@editable_menu_items}
-            :let={editable_menu_item: editable_menu_item}
             change_name="change_menu_item"
           />
         </div>
@@ -295,10 +293,13 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
     {:noreply, socket}
   end
 
-  def handle_event("change_menu_item", params = %{"value" => editable_menu_item}, socket) do
-    dbg(params)
-    socket = assign(socket, editable_menu_item: editable_menu_item)
-    {:noreply, socket}
+  def handle_event("change_menu_item", %{"value" =>value, "num" => num, "field" => field}, socket) do
+    {:noreply, assign(socket, editable_menu_items: socket.assigns.editable_menu_items
+      |> Enum.with_index()
+      |> Enum.map(fn {item, index} ->
+        "#{index}" == num && Map.put(item, :"#{field}", value) || item
+      end)
+    )}
   end
 
   def handle_event("toggle_sidebar_theme", _, socket) do

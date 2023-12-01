@@ -29,6 +29,9 @@ defmodule Moon.Design.Dropdown do
   """
   prop(as_dropdown_on, :string, values: ~w(sm md lg xl 2xl))
 
+  prop(side_values, :map, default: %{})
+
+
   @doc "Slot for triggering the open/closing state"
   slot(trigger, required: true)
   @doc "Content to be showable"
@@ -87,6 +90,7 @@ defmodule Moon.Design.Dropdown do
         }
       />
       <#slot context_put={
+        values: @side_values,
         on_change: %{name: "on_change_default", target: @myself},
         close_me: @on_close || %{name: "close_me", target: @myself},
         is_open: @is_open,

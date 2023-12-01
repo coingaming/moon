@@ -64,7 +64,10 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
         class="text-moon-18 text-bulma py-4 px-4 first:rounded-l-moon-s-none last:rounded-r-moon-s-none border-y-[0.5px] border-beerus font-dm-sans"
         width="text-moon-16 text-trunks py-4 px-4 font-normal h-16"
       >
-        <Table.Input value={editable_menu_item.link} />
+        <Table.Input value={editable_menu_item.link}
+          values={num: 0, field: :name}
+          on_keyup={@change_name}
+      />
       </Column>
       <Column
         name="created_at"
