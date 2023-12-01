@@ -1,3 +1,10 @@
+## [2.76.3](https://github.com/coingaming/moon/compare/v2.76.2...v2.76.3) (2023-12-01)
+
+
+### Bug Fixes
+
+* font-grotesk fix ([#795](https://github.com/coingaming/moon/issues/795)) ([65129ea](https://github.com/coingaming/moon/commit/65129ea3998ab764b5af9c6d98987c5babfd5e6a))
+
 ## [2.76.2](https://github.com/coingaming/moon/compare/v2.76.1...v2.76.2) (2023-11-29)
 
 
