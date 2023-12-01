@@ -8,6 +8,7 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Generic do
 
   prop(active_page, :any)
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
+  prop(editable_menu_items, :list, default: [])
   prop(light_theme, :boolean, default: false)
 
   def render(assigns) do
@@ -20,10 +21,10 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Generic do
         <Sidebar.Generic>
           <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
           <Sidebar.Section>
-            <Sidebar.SectionTitle>Section 1 • Generic</Sidebar.SectionTitle>
+            <Sidebar.SectionTitle>Section 1 • Editable</Sidebar.SectionTitle>
             <div class="flex flex-col gap-1">
-              {#for menu_item <- @menu_items, menu_item[:icon] != nil}
-                <Sidebar.MenuLink route={menu_item[:page]}><Icon class="w-6 h-6" name={menu_item[:icon]} />{menu_item[:key]}</Sidebar.MenuLink>
+              {#for editable_menu_item <- @editable_menu_items}
+                <Sidebar.MenuLink route={editable_menu_item.link}><Icon class="w-6 h-6" name={editable_menu_item.icon} />{editable_menu_item.name}</Sidebar.MenuLink>
               {/for}
             </div>
           </Sidebar.Section>

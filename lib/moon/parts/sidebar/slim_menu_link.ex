@@ -46,7 +46,8 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
           attrs={Map.merge(
             %{
               "data-phx-link": "redirect",
-              "data-phx-link-state": "push"
+              "data-phx-link-state": "push",
+              "aria-selected": false
             },
             @attrs
           )}

@@ -11,6 +11,8 @@ defmodule Moon.Parts.Header.Title do
   prop(class, :css_class)
   @doc "Title"
   prop(title, :string)
+  @doc "If is table header"
+  prop(is_table_header, :boolean, from_context: :is_table_header)
   @doc "Default slot"
   slot(default)
 
@@ -20,7 +22,10 @@ defmodule Moon.Parts.Header.Title do
       {=@id}
       data-testid={@testid}
       class={merge([
-        "w-full text-bulma text-moon-24 font-grotesk mt-2 lg:mt-0 px-4 py-4 lg:px-8 lg:not-first:pt-0 lg:py-7 self-center lg:text-start text-center leading-normal",
+        [
+          "w-full text-bulma text-moon-24 font-grotesk mt-2 md:mt-0 px-4 py-4 md:px-8 md:not-first:pt-0 md:py-7 self-center md:text-start text-center leading-normal",
+          "md:px-6 md:pt-6 md:pb-8": @is_table_header
+        ],
         @class
       ])}
     >

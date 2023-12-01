@@ -17,6 +17,8 @@ defmodule Moon.Design.Table.Input do
   @doc "If the item should be marked as disabled"
   prop(disabled, :boolean)
 
+  prop(values, :any, default: %{})
+
   @doc "Keyword | Map of additional attributes for the input"
   prop(opts, :any, default: %{})
 
@@ -57,6 +59,7 @@ defmodule Moon.Design.Table.Input do
       :on-focus={@on_focus}
       :on-blur={@on_blur}
       {...@opts}
+      :values={@values}
     />
     """
   end

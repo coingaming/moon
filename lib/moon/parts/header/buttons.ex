@@ -22,8 +22,8 @@ defmodule Moon.Parts.Header.Buttons do
       {=@id}
       data-testid={@testid}
       class={merge([
-        "lg:gap-2 flex lg:justify-end absolute lg:top-8 lg:end-8 start-4 end-4 top-4",
-        ["lg:top-5": @title_only, "lg:hidden": @is_hidden],
+        "md:gap-2 flex md:justify-end absolute md:top-8 md:end-8 start-4 end-4 top-4",
+        ["md:top-5": @title_only, "md:hidden": @is_hidden],
         @class
       ])}
     >

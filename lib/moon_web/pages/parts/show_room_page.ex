@@ -3,17 +3,20 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
 
   use MoonWeb, :live_view
 
+  alias MoonWeb.Components.ShowRoomPage.EditableTable
   alias MoonWeb.Components.ShowRoomPage.Header
   alias MoonWeb.Components.ShowRoomPage.Sidebar
   alias MoonWeb.Components.ThemesSelect
-  alias Moon.Parts.Button
   alias MoonWeb.Components.ShowRoomPage.Wizard
-  alias Moon.Parts.Modal
 
-  alias Moon.Parts.{Wizard, Modal, Button}
+  alias Moon.Parts.{Wizard, Button}
+  alias Moon.Parts.Modal
   alias Moon.Design.Tabs
   alias MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions
   alias MoonWeb.Components.ShowRoomPage.Wizard.SidebarOptions
+  alias MoonWeb.Components.ShowRoomPage.EditableTable
+  alias Moon.Parts.IconButton
+  alias Moon.Design.Tooltip
 
   prop(theme_name, :any, default: "theme-moon-light")
   prop(direction, :string, values: ["ltr", "rtl"], default: "ltr")
@@ -23,7 +26,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
 
   data(description, :string,
     default:
-      "Unleash efficiency with BackOffice templates powered by Moon. Let our Wizard navigate you through versatile options"
+      "Unleash efficiency with BackOffice templates powered by Moon. Open the wizard to try out versatile options"
   )
 
   data(has_breadcrumbs, :boolean, default: true)
@@ -35,7 +38,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   data(has_other_left_button, :boolean, default: true)
   data(has_other_right_button, :boolean, default: true)
 
-  data(value, :string, values: ["slim", "generic", "wide"], default: "slim")
+  data(value, :string, values: ["slim", "generic", "wide"], default: "generic")
 
   data(light_sidebar, :boolean, default: false)
   data(light_header, :boolean, default: true)
@@ -60,6 +63,53 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   data(tab_index, :integer)
   data(selected_header, :integer, default: 0)
 
+  data(editable_menu_items, :list,
+    default: [
+      %{
+        icon: "generic_loyalty",
+        name: "Vision",
+        link: "/show-room?vision"
+      },
+      %{
+        icon: "other_rocket",
+        name: "Getting Started",
+        link: "/show-room?getting-started"
+      },
+      %{
+        icon: "other_lifebuoy",
+        name: "How to contribute",
+        link: "link3"
+      },
+      %{
+        icon: "software_settings",
+        name: "Colours",
+        link: "link4"
+      },
+      %{
+        icon: "software_puzzle",
+        name: "Tokens",
+        link: "link5"
+      },
+      %{
+        icon: "text_size",
+        name: "Typography",
+        link: "link5"
+      },
+      %{
+        icon: "software_plate",
+        name: "Components",
+        link: "link5"
+      },
+      %{
+        icon: "generic_trophy",
+        name: "Manifest",
+        link: "link5"
+      }
+    ]
+  )
+
+  data(name, :string, default: "Vision")
+
   def render(assigns) do
     ~F"""
     <div role="main" class={"bg-gohan text-bulma flex", @theme_name} dir={@direction}>
@@ -68,6 +118,8 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
         id="show_room_generic_sidebar"
         :if={@value == "generic"}
         light_theme={@light_sidebar}
+        editable_menu_items={@editable_menu_items}
+        :let={editable_menu_item: editable_menu_item}
       />
       <Sidebar.Wide id="show_room_wide_sidebar" :if={@value == "wide"} light_theme={@light_sidebar} />
       <div class={merge([
@@ -98,8 +150,16 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
             light_theme={@light_header}
           />
 
-          <div class="mt-20 md:mt-40 flex items-center justify-center">
-            <Button on_click="set_open">Explore Moon Templates</Button>
+          <div>
+            <Tooltip class="fixed right-8 bottom-8 text-2xl">
+              <Tooltip.Trigger>
+                <IconButton class="text-2xl" size="xl" on_click="set_open" icon="controls_plus" /></Tooltip.Trigger>
+              <Tooltip.Content position="top-end">
+                Explore Moon templates
+                <Tooltip.Arrow />
+              </Tooltip.Content>
+            </Tooltip>
+
             <Modal id="show-room-modal" on_close="set_close" class="p-1 bg-bulma overflow-hidden" {=@is_open}>
               <Wizard id="tabs-wizzard" {=@steps} selected={@selected} class="min-h-[39.5rem] max-h-[43.5rem]">
                 <:description>
@@ -141,7 +201,13 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
               </Wizard>
             </Modal>
           </div>
-          <ThemesSelect {=@theme_name} {=@direction} on_bg_color="bg-roshi" trigger_class="bg-roshi" />
+
+          <EditableTable
+            id="show-room"
+            editable_menu_items={@editable_menu_items}
+            :let={editable_menu_item: editable_menu_item}
+            change_name="change_menu_item"
+          />
         </div>
       </div>
     </div>
@@ -226,6 +292,12 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
 
   def handle_event("change_default_title", %{"value" => default_title}, socket) do
     socket = assign(socket, default_title: default_title, selected: 1)
+    {:noreply, socket}
+  end
+
+  def handle_event("change_menu_item", params = %{"value" => editable_menu_item}, socket) do
+    dbg(params)
+    socket = assign(socket, editable_menu_item: editable_menu_item)
     {:noreply, socket}
   end
 
