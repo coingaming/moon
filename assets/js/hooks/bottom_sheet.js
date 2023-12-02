@@ -31,7 +31,6 @@ export default {
     mounted() {
         Animation.mounted.bind(this)();
         this.dragHandle = this.el.querySelector(" & > .moon-panel > .bottom_sheet_header > .moon-drag-handle")
-        console.log(this.dragHandle);
     },
 
     updated() {
