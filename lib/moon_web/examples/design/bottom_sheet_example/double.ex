@@ -23,6 +23,9 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.Double do
           </Button>
           <BottomSheet id="default_bottom_sheet2">
             <BottomSheet.Panel>
+              <BottomSheet.Header class="border-b-2 border-beerus">
+                <BottomSheet.DragHandle />
+              </BottomSheet.Header>
               <div class="flex grow items-center justify-center bg-jiren text-piccolo">
                 Bottom Sheet content2
               </div>
