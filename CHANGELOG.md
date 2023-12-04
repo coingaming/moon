@@ -1,3 +1,10 @@
+## [2.76.4](https://github.com/coingaming/moon/compare/v2.76.3...v2.76.4) (2023-12-04)
+
+
+### Bug Fixes
+
+* DragHandler fix for BottomSheet ([#796](https://github.com/coingaming/moon/issues/796)) ([6ef2d5c](https://github.com/coingaming/moon/commit/6ef2d5ce501887d4c7f25ab91842a0c21e2574c6))
+
 ## [2.76.3](https://github.com/coingaming/moon/compare/v2.76.2...v2.76.3) (2023-12-01)
 
 
