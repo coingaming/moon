@@ -28,9 +28,10 @@ defmodule Moon.Design.Dropdown do
   please reffer to https://tailwindcss.com/docs/screens
   """
   prop(as_dropdown_on, :string, values: ~w(sm md lg xl 2xl))
-
+  @doc "Additional values to be passed"
   prop(side_values, :map, default: %{})
-
+  @doc "Event fired when option is selected"
+  prop(on_change, :event)
 
   @doc "Slot for triggering the open/closing state"
   slot(trigger, required: true)
@@ -91,7 +92,7 @@ defmodule Moon.Design.Dropdown do
       />
       <#slot context_put={
         values: @side_values,
-        on_change: %{name: "on_change_default", target: @myself},
+        on_change: @on_change || %{name: "on_change_default", target: @myself},
         close_me: @on_close || %{name: "close_me", target: @myself},
         is_open: @is_open,
         value: @value,

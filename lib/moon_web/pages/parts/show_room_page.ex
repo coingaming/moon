@@ -6,10 +6,9 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   alias MoonWeb.Components.ShowRoomPage.EditableTable
   alias MoonWeb.Components.ShowRoomPage.Header
   alias MoonWeb.Components.ShowRoomPage.Sidebar
-  alias MoonWeb.Components.ThemesSelect
   alias MoonWeb.Components.ShowRoomPage.Wizard
 
-  alias Moon.Parts.{Wizard, Button}
+  alias Moon.Parts.Wizard
   alias Moon.Parts.Modal
   alias Moon.Design.Tabs
   alias MoonWeb.Components.ShowRoomPage.Wizard.HeaderOptions
@@ -150,7 +149,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
           />
 
           <div>
-            <Tooltip class="fixed right-8 bottom-8 text-2xl">
+            <Tooltip class="fixed right-8 bottom-8 text-2xl z-20">
               <Tooltip.Trigger>
                 <IconButton class="text-2xl" size="xl" on_click="set_open" icon="controls_plus" /></Tooltip.Trigger>
               <Tooltip.Content position="top-end">
@@ -205,6 +204,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
             id="show-room"
             editable_menu_items={@editable_menu_items}
             change_name="change_menu_item"
+            add_row="add_row"
           />
         </div>
       </div>
@@ -293,13 +293,31 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
     {:noreply, socket}
   end
 
-  def handle_event("change_menu_item", %{"value" =>value, "num" => num, "field" => field}, socket) do
-    {:noreply, assign(socket, editable_menu_items: socket.assigns.editable_menu_items
-      |> Enum.with_index()
-      |> Enum.map(fn {item, index} ->
-        "#{index}" == num && Map.put(item, :"#{field}", value) || item
-      end)
-    )}
+  def handle_event(
+        "change_menu_item",
+        params = %{"value" => value, "num" => num, "field" => field},
+        socket
+      ) do
+    dbg(params)
+
+    {:noreply,
+     assign(socket,
+       editable_menu_items:
+         socket.assigns.editable_menu_items
+         |> Enum.with_index()
+         |> Enum.map(fn {item, index} ->
+           ("#{index}" == num && Map.put(item, :"#{field}", value)) || item
+         end)
+     )}
+  end
+
+  def handle_event("add_row", _, socket) do
+    {:noreply,
+     assign(socket,
+       editable_menu_items:
+         socket.assigns.editable_menu_items ++
+           [%{icon: "generic_settings", name: "New Link", link: "/show-room?new_link"}]
+     )}
   end
 
   def handle_event("toggle_sidebar_theme", _, socket) do

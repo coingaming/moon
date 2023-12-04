@@ -19,6 +19,8 @@ defmodule Moon.Design.Dropdown.Options do
   prop(class, :css_class)
   @doc "Specifies the position of the dropdown"
   prop(position, :string, values: position_list())
+  @doc "Additional values to be passed"
+  prop(values, :map, from_context: :values)
 
   @doc "List of the options. Used when no "
   prop(titles, :list, default: [])
@@ -58,7 +60,8 @@ defmodule Moon.Design.Dropdown.Options do
               is_selected: Enum.member?(make_list(@value), option.value || "#{index}"),
               size: @size,
               on_click: @on_change,
-              value: index
+              value: index,
+              values: @values
             }
           />
         {/for}
@@ -70,6 +73,7 @@ defmodule Moon.Design.Dropdown.Options do
           {=@size}
           on_click={@on_change}
           value={title}
+          values={@values}
         >{title}</.moon>
       {/if}
       <#slot />

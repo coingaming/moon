@@ -12,9 +12,13 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
   alias Moon.Design.Dropdown
   alias Moon.Icon
 
+  alias Moon.Parts.Button
+
   prop(editable_menu_items, :list, default: [])
   prop(change_name, :event)
   prop(name, :string)
+  prop(add_row, :event)
+  prop(value, :string, default: "Choose icon...")
 
   def render(assigns) do
     ~F"""
@@ -32,7 +36,11 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
         class="text-moon-18 text-bulma py-4 px-4 first:rounded-l-moon-s-none last:rounded-r-moon-s-none border-y-[0.5px] border-beerus font-dm-sans"
         width="text-moon-16 text-trunks py-4 px-4 font-normal h-16"
       >
-        <Dropdown id={"menu-icons-#{editable_menu_item.icon}"} value={editable_menu_item.icon}>
+        <Dropdown
+          id={"menu-icons-#{editable_menu_item.icon}"}
+          side_values={num: 0, field: :icon}
+          on_change={@change_name}
+        >
           <Dropdown.Trigger :let={value: value}>
             {value || "Choose icon..."}
           </Dropdown.Trigger>
@@ -54,7 +62,7 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
       >
         <Table.Input
           value={editable_menu_item.name}
-          values={num: 0, field: :name}
+          side_values={num: 0, field: :name}
           on_keyup={@change_name}
         />
       </Column>
@@ -64,10 +72,11 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
         class="text-moon-18 text-bulma py-4 px-4 first:rounded-l-moon-s-none last:rounded-r-moon-s-none border-y-[0.5px] border-beerus font-dm-sans"
         width="text-moon-16 text-trunks py-4 px-4 font-normal h-16"
       >
-        <Table.Input value={editable_menu_item.link}
-          values={num: 0, field: :name}
+        <Table.Input
+          value={editable_menu_item.link}
+          side_values={num: 0, field: :link}
           on_keyup={@change_name}
-      />
+        />
       </Column>
       <Column
         name="created_at"
@@ -78,6 +87,7 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
         <Status active />
       </Column>
     </Table>
+    <Button.White class="w-fit ms-2 mt-2" on_click={@add_row}>+ Add menu item</Button.White>
     """
   end
 end

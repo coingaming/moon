@@ -22,9 +22,8 @@ defmodule Moon.Design.Dropdown.Option do
   prop(is_selected, :boolean, from_context: :is_selected)
   @doc "Text size & paddings for the option. Is set by Dropdown.Options in most cases"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
-
+  @doc "Additional values to be passed"
   prop(values, :map, from_context: :values)
-
   @doc "Inner content of the option"
   slot(default)
 

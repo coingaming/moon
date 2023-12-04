@@ -24,6 +24,8 @@ defmodule Moon.Design.Dropdown.CustomOption do
   prop(is_selected, :boolean, from_context: :is_selected)
   @doc "Adds section divider after the option"
   prop(has_bottom_divider, :boolean, default: false)
+  @doc "Additional values to be passed"
+  prop(values, :map, from_context: :values)
 
   @doc "Inner content of the option"
   slot(default)
@@ -36,6 +38,7 @@ defmodule Moon.Design.Dropdown.CustomOption do
       {=@value}
       {=@disabled}
       {=@is_selected}
+      values={@values}
       size="lg"
       class={merge([
         [
