@@ -38,7 +38,7 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
       >
         <Dropdown
           id={"menu-icons-#{editable_menu_item.icon}"}
-          side_values={num: 0, field: :icon}
+          side_values={num: editable_menu_item.id, field: :icon}
           on_change={@change_name}
         >
           <Dropdown.Trigger :let={value: value}>
@@ -62,7 +62,7 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
       >
         <Table.Input
           value={editable_menu_item.name}
-          side_values={num: 0, field: :name}
+          side_values={num: editable_menu_item.id, field: :name}
           on_keyup={@change_name}
         />
       </Column>
@@ -74,7 +74,7 @@ defmodule MoonWeb.Components.ShowRoomPage.EditableTable do
       >
         <Table.Input
           value={editable_menu_item.link}
-          side_values={num: 0, field: :link}
+          side_values={num: editable_menu_item.id, field: :link}
           on_keyup={@change_name}
         />
       </Column>
