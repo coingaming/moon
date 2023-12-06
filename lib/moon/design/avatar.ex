@@ -1,9 +1,10 @@
 defmodule Moon.Design.Avatar do
   @moduledoc false
 
+  use Moon.StatelessComponent
+
   alias Moon.Icon
 
-  use Moon.StatelessComponent
   use Moon.Design.Avatar.Properties
 
   def style(assigns) do
@@ -11,7 +12,6 @@ defmodule Moon.Design.Avatar do
   end
 
   def render(assigns) do
-    # dbg(assigns)
     ~F"""
     <div
       {=@id}

@@ -93,7 +93,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
           Map.put(
             acc,
             Enum.at(items, -1) |> to_string(),
-            [:"Elixir" | items] |> Enum.map(&to_string/1) |> Enum.join(".") |> String.to_atom()
+            [:"Elixir" | items] |> Enum.map_join(".", &to_string/1) |> String.to_atom()
           )
         end)
       )

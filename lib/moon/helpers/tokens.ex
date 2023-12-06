@@ -74,13 +74,12 @@ defmodule Moon.Helpers.Tokens do
   defp attrs_to_text(attrs) do
     attrs
     |> List.wrap()
-    |> Enum.map(fn
+    |> Enum.map_join(" ", fn
       {:root, {:attribute_expr, expr, _m2}, _m1} -> "{#{expr}}"
       {:root, expr, _m1} -> expr
       {name, {:attribute_expr, expr, _m2}, _m1} -> "#{name}={#{expr}}"
       {name, expr, _m1} -> "#{name}=\"#{expr}\""
     end)
-    |> Enum.join(" ")
   end
 
   # Slots
