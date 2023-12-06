@@ -7,9 +7,9 @@ defmodule Moon.StatelessComponent do
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
+      import Moon.Light
 
       def __moduledoc__(), do: @moduledoc
-      def __env__(), do: __ENV__
     end
   end
 end

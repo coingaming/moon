@@ -58,17 +58,6 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp add_module_info(context = %{module: module}) do
     Map.merge(
       %{
-        aliases:
-          module.__env__().aliases()
-          |> Enum.reject(
-            &(&1 in [
-                {Mod, Module},
-                {Context, Surface.Components.Context},
-                {Raw, Surface.Components.Raw},
-                {Component, Surface.Components.Dynamic.Component},
-                {LiveComponent, Surface.Components.Dynamic.LiveComponent}
-              ])
-          ),
         component_type: module.component_type(),
         level: 0
       },

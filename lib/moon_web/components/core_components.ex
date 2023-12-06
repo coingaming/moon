@@ -103,7 +103,7 @@ defmodule MoonWeb.Components.CoreComponents do
   attr :name, :string, required: true
   attr :class, :string, default: nil
 
-  def hero_icon(%{name: "hero-" <> _} = assigns) do
+  def hero_icon(assigns = %{name: "hero-" <> _}) do
     ~H"""
     <span class={[@name, @class]} />
     """
