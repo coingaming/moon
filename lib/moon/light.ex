@@ -1,9 +1,55 @@
-defmodule Moon.Light.Table do
+defmodule Moon.Light do
   @moduledoc false
-  use Moon.Light.Component
-  alias Moon.Icon
-  import Moon.Helpers.MakeList, only: [add_index_as: 1]
+  use Phoenix.Component
 
+  import Moon.Helpers.Styled
+  import Moon.Helpers.MergeClass
+  import Moon.Helpers.MakeList
+
+  attr(:click, :any, doc: "")
+  attr(:class, :any, doc: "Additional classes for the <select> tag")
+  attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all(), doc: "")
+  attr(:color, :string, values: Moon.colors(), doc: "")
+  attr(:background_color, :string, values: Moon.colors(), doc: "")
+  attr(:font_size, :string, doc: "")
+  attr(:id, :string, doc: "Id HTML attribute")
+  attr(:testid, :string, doc: "Data-testid attribute value")
+
+  def icon(assigns) do
+    ~H"""
+    <svg
+      id={@id}
+      data-testid={@testid}
+      class={
+        merge([
+          "moon-icon fill-none",
+          [
+            {:"text-#{@color}", @color},
+            {:"bg-#{@background_color}", @background_color},
+            {:"text-#{@font_size}", @font_size},
+            "cursor-pointer": @click
+          ],
+          @class
+        ])
+      }
+      phx-on-click={@click}
+      style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
+    >
+      <use href={"/moon_icons/svgs/icons_new/#{@name |> to_string() |> String.replace("_", "-")}.svg#item"} />
+    </svg>
+    """
+  end
+
+  @doc ~S"""
+  Renders a table with generic styling.
+
+  ## Examples
+
+      <.table id="users" rows={@users}>
+        <:col :let={user} label="id"><%= user.id %></:col>
+        <:col :let={user} label="username"><%= user.username %></:col>
+      </.table>
+  """
   attr(:selected, :any, default: [], doc: "List of  selected ids, or just id, or [], or nil")
 
   attr(:sort, :any,
@@ -77,7 +123,7 @@ defmodule Moon.Light.Table do
 
   attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
-  def render(assigns) do
+  def table(assigns) do
     ~H"""
     <table
       class={[
@@ -114,7 +160,7 @@ defmodule Moon.Light.Table do
               data-testid={"sort-column-#{col.name}"}
             >
               <%= col.label %>
-              <icon
+              <.icon
                 :if={col.name && col.sortable}
                 class={[
                   "text-[1.5em] transition-transform transition-200",
@@ -170,7 +216,7 @@ defmodule Moon.Light.Table do
     """
   end
 
-  def sort_items(items, sort) do
+  defp sort_items(items, sort) do
     import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
 
     reverse(sort)

@@ -77,7 +77,7 @@ defmodule Moon.Light.Table do
 
   attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
-  def render(assigns) do
+  def table(assigns) do
     ~H"""
     <table
       class={[
@@ -114,7 +114,7 @@ defmodule Moon.Light.Table do
               data-testid={"sort-column-#{col.name}"}
             >
               <%= col.label %>
-              <icon
+              <.icon
                 :if={col.name && col.sortable}
                 class={[
                   "text-[1.5em] transition-transform transition-200",

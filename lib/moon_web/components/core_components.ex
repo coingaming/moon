@@ -68,7 +68,7 @@ defmodule MoonWeb.Components.CoreComponents do
                   class="-m-3 flex-none p-3 opacity-20 hover:opacity-40"
                   aria-label="close"
                 >
-                  <.icon name="hero-x-mark-solid" class="h-5 w-5" />
+                  <.hero_icon name="hero-x-mark-solid" class="h-5 w-5" />
                 </button>
               </div>
               <div id={"#{@id}-content"}>
@@ -103,7 +103,7 @@ defmodule MoonWeb.Components.CoreComponents do
   attr :name, :string, required: true
   attr :class, :string, default: nil
 
-  def icon(%{name: "hero-" <> _} = assigns) do
+  def hero_icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
     """

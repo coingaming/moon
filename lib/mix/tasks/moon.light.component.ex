@@ -43,7 +43,12 @@ defmodule Mix.Tasks.Moon.Light.Component do
             [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
           }[alias]
         end,
-        defmodule_translates: fn [:Moon | [:Design | others]] -> [:Moon | [:Light | others]] end,
+        defmodule_translates: fn
+          [:Moon | [:Design | others]] -> [:Moon | [:Light | others]]
+        end,
+        module_translates: fn module ->
+          module |> to_string() |> String.replace("Moon.Design", "Moon.Light") |> String.to_atom()
+        end,
         path_translates: fn path ->
           String.replace(path, "lib/moon/design/", "lib/moon/light/")
           |> String.replace(".ex", ".exs")
@@ -89,6 +94,9 @@ defmodule Mix.Tasks.Moon.Light.Component do
       result = {:slot, _meta, _options}, acc ->
         {translate_slot(c, result, acc), nil}
 
+      result = {:@, _, [{:moduledoc, _, [_text]}]}, acc ->
+        {translate_module_doc(c, result), acc}
+
       result = {:@, _, [{:doc, _, [_text]}]}, _acc ->
         {:skip, translate_doc(c, result)}
 
@@ -103,13 +111,41 @@ defmodule Mix.Tasks.Moon.Light.Component do
     end)
     |> Tuple.to_list()
     |> hd()
-    |> Macro.to_string()
-    |> String.replace(":skip", "")
   end
 
-  defp translate_render(%{component_type: Surface.LiveComponent, level: 0}, ast), do: ast
+  defp merge_ast(
+         {:defmodule, m1,
+          [
+            aliases,
+            [
+              do: {:__block__, [], children}
+            ]
+          ]},
+         {:defmodule, _,
+          [
+            _aliases,
+            [
+              do: {:__block__, [], children2}
+            ]
+          ]}
+       ) do
+    {:defmodule, m1,
+     [
+       aliases,
+       [
+         do: {:__block__, [], children ++ children2}
+       ]
+     ]}
+  end
 
-  defp translate_render(%{component_type: Surface.Component, level: 0}, ast), do: ast
+  defp translate_render(%{component_type: Surface.LiveComponent}, ast), do: ast
+
+  defp translate_render(
+         %{component_type: Surface.Component, short: short},
+         {:def, m1, [{:render, m2, attrs} | children]}
+       ) do
+    {:def, m1, [{:"#{String.downcase(short)}", m2, attrs} | children]}
+  end
 
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
@@ -149,6 +185,21 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_doc(_, _res = {:@, _, [{:doc, _, [text]}]}) do
     text
+  end
+
+  defp translate_moduledoc(%{component_type: Surface.LiveComponent}, res), do: res
+
+  defp translate_moduledoc(
+         %{component_type: Surface.Component},
+         {:@, m1, [{:moduledoc, m2, [text]}]}
+       ),
+       do: {:@, m1, [{:doc, m2, [text]}]}
+
+  defp translate_use_defmodule(
+         %{component_type: Surface.Component},
+         {:use, _, _}
+       ) do
+    :skip
   end
 
   defp translate_use_defmodule(
@@ -191,7 +242,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_node({:expr, expr, meta}), do: {:expr, expr, meta}
 
-  #TODO: context_put & children
+  # TODO: context_put & children
   defp translate_node(
          {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}
        ) do
@@ -209,7 +260,16 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_node(other), do: other
 
-  defp translate_type(type), do: type
+  defp translate_type(type) do
+    cond do
+      String.match?(type, ~r/^[A-Z].*$/) ->
+        # TODO: correct aliases handing here
+        "." <> String.downcase(type)
+
+      true ->
+        type
+    end
+  end
 
   # defp translate_attr({name, expr, meta}), do: dbg({name, expr, meta})
 
@@ -236,13 +296,47 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_attr_value(expr), do: expr
 
-  defp copy_templates(context) do
-    context.module.__info__(:compile)[:source]
-    |> to_string()
-    |> context.config.path_translates.()
-    |> create_file(translate_ast(context))
+  defp copy_templates(context = %{component_type: Surface.LiveComponent}) do
+    context.module
+    |> context.config.module_translates.()
+    |> module_to_path()
+    |> create_file(translate_ast(context) |> Macro.to_string() |> String.replace(":skip", ""))
 
     context
+  end
+
+  defp copy_templates(context = %{component_type: Surface.Component}) do
+    target_module = context.module |> parent_module() |> context.config.module_translates.()
+
+    target_module
+    |> module_to_path()
+    |> create_file(
+      if target_module |> Code.ensure_compiled() do
+        target_module |> module_ast()
+      else
+        "priv/templates/moon.light.component/empty_module.ex"
+        |> EEx.eval_file(name: target_module)
+        |> Code.string_to_quoted!()
+      end
+      |> merge_ast(translate_ast(context))
+      |> Macro.to_string()
+      |> String.replace(":skip", "")
+    )
+
+    context
+  end
+
+  defp module_to_path(module) do
+    (module
+     |> to_string()
+     |> replace(~r/([a-z])([A-Z])/, "\\1_\\2")
+     |> downcase()
+     |> replace(".", "/")
+     |> replace("elixir/", "lib/")) <> ".exs"
+  end
+
+  defp parent_module(module) do
+    module |> to_string() |> String.replace(~r/\.[A-Za-z]*$/, "") |> String.to_atom()
   end
 
   def print_shell_instructions(%{path: _path, name: _name}) do
