@@ -308,7 +308,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
       aliases[type].component_type() == Surface.Component ->
         mod = aliases[type] |> parent_module() |> c.config.module_translates.()
 
-        if(function_exported?(mod, type |> String.downcase() |> String.to_atom(), 1)) do
+        if function_exported?(mod, type |> String.downcase() |> String.to_atom(), 1) do
           "#{(mod == c.config.module_translates.(c.module) && "") || mod}.#{type |> String.downcase()}"
         else
           ".moon module={#{type}}"
@@ -317,7 +317,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
       aliases[type].component_type() == Surface.LiveComponent ->
         mod = aliases[type] |> c.config.module_translates.()
 
-        if(function_exported?(mod, :render, 1)) do
+        if function_exported?(mod, :render, 1) do
           ".live_component module={#{mod}}"
         else
           ".moon module={#{type}}"
