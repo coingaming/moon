@@ -198,7 +198,7 @@ defmodule Moon.Light do
     """
   end
 
-  def sort_items(items, sort) do
+  defp sort_items(items, sort) do
     import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
 
     reverse(sort)
