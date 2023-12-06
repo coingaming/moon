@@ -17,6 +17,9 @@ defmodule Moon.Design.Form.Select do
   @doc "Options for select. Or list of keyword, either list of maps. Format: [%{key: shown_label, value: option_value, disabled: bool}], diisabled is optional"
   prop(options, :list, default: [])
 
+  @doc "Sorting direction for options. If not set, options will be sorted by value. Format: :asc | :desc"
+  prop(sorting_direction, :atom, default: nil)
+
   @doc "Selected option(s) value - do not use it inside the form, just for away-from-form components"
   prop(value, :any)
   @doc "Well, disabled"
@@ -66,7 +69,7 @@ defmodule Moon.Design.Form.Select do
       ])}
       {=@field}
       {=@id}
-      options={options_with_selected(@options, @value)}
+      options={options_with_selected(@options, @value, @sorting_direction)}
       opts={%{
         prompt: @prompt,
         disabled: @disabled,
@@ -77,8 +80,21 @@ defmodule Moon.Design.Form.Select do
     """
   end
 
-  defp options_with_selected(options, value) do
+  defp options_with_selected(options, value, nil) do
     Enum.map(options, fn row ->
+      [
+        key: row[:key],
+        value: row[:value],
+        selected: Enum.member?(make_list(value), row[:value]),
+        disabled: row[:disabled]
+      ]
+    end)
+  end
+
+  defp options_with_selected(options, value, sorting_direction) do
+    options
+    |> Enum.sort(sorting_direction)
+    |> Enum.map(fn row ->
       [
         key: row[:key],
         value: row[:value],
