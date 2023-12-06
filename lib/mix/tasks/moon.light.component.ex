@@ -49,10 +49,6 @@ defmodule Mix.Tasks.Moon.Light.Component do
         module_translates: fn module ->
           module |> to_string() |> String.replace("Moon.Design", "Moon.Light") |> String.to_atom()
         end,
-        path_translates: fn path ->
-          String.replace(path, "lib/moon/design/", "lib/moon/light/")
-          |> String.replace(".ex", ".exs")
-        end
       }
     }
   end
@@ -79,8 +75,36 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp translate_ast(c = %{module: module}) do
-    module
-    |> module_ast()
+    ast = module |> module_ast()
+
+    {_, aliases} =
+      ast
+      |> Macro.prewalk([], fn
+        result = {:alias, _, [{:__aliases__, _, a} | _]}, acc ->
+          {result, acc ++ [a]}
+
+        result = {:alias, _, [{{:., _, [{:__aliases__, _, root_part}, :{}]}, _, children}]},
+        acc ->
+          {result,
+           acc ++
+             (children |> Enum.map(fn {:__aliases__, _, sub_part} -> root_part ++ sub_part end))}
+
+        other, acc ->
+          {other, acc}
+      end)
+
+    c = Map.put(c, :aliases,
+      aliases
+      |> Enum.reduce(%{}, fn items, acc ->
+        Map.put(
+          acc,
+          Enum.at(items, -1) |> to_string(),
+          [ :Elixir | items] |> Enum.map(&to_string/1) |> Enum.join(".") |> String.to_atom()
+        )
+      end)
+    )
+
+    ast
     |> Macro.prewalk(nil, fn
       result = {:def, _, [{:render, _, _} | _]}, acc ->
         {translate_render(c, result), acc}
@@ -95,7 +119,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         {translate_slot(c, result, acc), nil}
 
       result = {:@, _, [{:moduledoc, _, [_text]}]}, acc ->
-        {translate_module_doc(c, result), acc}
+        {translate_moduledoc(c, result), acc}
 
       result = {:@, _, [{:doc, _, [_text]}]}, _acc ->
         {:skip, translate_doc(c, result)}
@@ -114,6 +138,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp merge_ast(
+         # TODO: sort children after merge for use, imports and aliases
          {:defmodule, m1,
           [
             aliases,
@@ -214,8 +239,8 @@ defmodule Mix.Tasks.Moon.Light.Component do
     # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
 
     result =
-      Parser.parse!(
-        string
+      string
+      |> Parser.parse!(
         # file: module.__info__(:compile)[:source] |> to_string(),
         # line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
         # caller: %{module: module, function: :render},
@@ -229,7 +254,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         #   {text, context}
 
         _node_type, node, context ->
-          {translate_node(node), context}
+          {translate_node(node, context), context}
       end)
       |> Tuple.to_list()
       |> hd()
@@ -238,36 +263,56 @@ defmodule Mix.Tasks.Moon.Light.Component do
     {:sigil_H, m1, [{:<<>>, meta, [result]}, opts]}
   end
 
-  defp translate_node(text) when is_binary(text), do: text
+  defp translate_node(text, _) when is_binary(text), do: text
 
-  defp translate_node({:expr, expr, meta}), do: {:expr, expr, meta}
+  defp translate_node({:expr, expr, meta}, _), do: {:expr, expr, meta}
 
   # TODO: context_put & children
   defp translate_node(
-         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}
+         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}, _
        ) do
     {:expr, "render_slot(#{expr})", node_meta}
   end
 
-  defp translate_node({"#slot", _, _children, node_meta}) do
+  defp translate_node({"#slot", _, _children, node_meta}, _) do
     {:expr, "render_slot(@inner_block)", node_meta}
   end
 
-  defp translate_node({type, attributes, children, node_meta}) do
-    {type |> translate_type(), attributes |> List.wrap() |> Enum.map(&translate_attr/1), children,
+  defp translate_node({type, attributes, children, node_meta}, c) do
+    {type |> translate_type(c), attributes |> List.wrap() |> Enum.map(&translate_attr/1), children,
      node_meta}
   end
 
-  defp translate_node(other), do: other
+  defp translate_node(other, _), do: other
 
-  defp translate_type(type) do
+  defp translate_type(type, c = %{aliases: aliases}) do
     cond do
-      String.match?(type, ~r/^[A-Z].*$/) ->
-        # TODO: correct aliases handing here
-        "." <> String.downcase(type)
-
-      true ->
+      !String.match?(type, ~r/^[A-Z].*$/) ->
         type
+
+      type == "Icon" -> ".icon"
+
+      aliases[type] === nil ->
+        # TODO: logging here
+        dbg(type)
+
+      aliases[type].component_type() == Surface.Component ->
+        mod = aliases[type] |> parent_module() |> c.config.module_translates.()
+
+        if(function_exported?(mod, type|> String.downcase() |> String.to_atom(), 1)) do
+          "#{mod == c.config.module_translates.(c.module) && "" || mod}.#{type|> String.downcase()}"
+        else
+          ".moon module={#{type}}"
+        end
+
+      aliases[type].component_type() == Surface.LiveComponent ->
+        mod = aliases[type] |> c.config.module_translates.()
+
+        if(function_exported?(mod, :render, 1)) do
+          ".live_component module={#{mod}}"
+        else
+          ".moon module={#{type}}"
+        end
     end
   end
 
@@ -311,12 +356,14 @@ defmodule Mix.Tasks.Moon.Light.Component do
     target_module
     |> module_to_path()
     |> create_file(
-      if target_module |> Code.ensure_compiled() do
-        target_module |> module_ast()
-      else
-        "priv/templates/moon.light.component/empty_module.ex"
-        |> EEx.eval_file(name: target_module)
-        |> Code.string_to_quoted!()
+      case target_module |> Code.ensure_compiled() do
+        {:module, _} ->
+          target_module |> module_ast()
+
+        {:error, :nofile} ->
+          "priv/templates/moon.light.component/empty_module.ex"
+          |> EEx.eval_file(name: target_module)
+          |> Code.string_to_quoted!()
       end
       |> merge_ast(translate_ast(context))
       |> Macro.to_string()
