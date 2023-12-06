@@ -1,10 +1,7 @@
 defmodule Moon.Light do
   @moduledoc false
-  use Phoenix.Component
-
-  import Moon.Helpers.Styled
-  import Moon.Helpers.MergeClass
-  import Moon.Helpers.MakeList
+  use Moon.Light.Component
+  import Moon.Helpers.MakeList, only: [add_index_as: 1]
 
   attr(:click, :any, doc: "")
   attr(:class, :any, doc: "Additional classes for the <select> tag")
@@ -40,16 +37,6 @@ defmodule Moon.Light do
     """
   end
 
-  @doc ~S"""
-  Renders a table with generic styling.
-
-  ## Examples
-
-      <.table id="users" rows={@users}>
-        <:col :let={user} label="id"><%= user.id %></:col>
-        <:col :let={user} label="username"><%= user.username %></:col>
-      </.table>
-  """
   attr(:selected, :any, default: [], doc: "List of  selected ids, or just id, or [], or nil")
 
   attr(:sort, :any,
@@ -84,7 +71,6 @@ defmodule Moon.Light do
   )
 
   attr(:is_cell_border, :boolean, default: false, doc: "If cell has border")
-
   attr(:is_headless, :boolean, default: false, doc: "If table has column headers or not")
 
   attr(:is_zebra_style, :boolean,
@@ -114,13 +100,9 @@ defmodule Moon.Light do
   )
 
   slot(:cols, generator_prop: :items, doc: "The list of columns defining the Grid")
-
   attr(:id, :string, doc: "Just an id for a table tag")
-
   attr(:testid, :string, doc: "Data-testid attribute for a table tag")
-
   attr(:class, :any, doc: "Additional classes for a table tag")
-
   attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
   def table(assigns) do
@@ -216,7 +198,7 @@ defmodule Moon.Light do
     """
   end
 
-  defp sort_items(items, sort) do
+  def sort_items(items, sort) do
     import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
 
     reverse(sort)

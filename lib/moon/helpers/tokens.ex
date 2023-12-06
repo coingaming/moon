@@ -43,6 +43,7 @@ defmodule Moon.Helpers.Tokens do
            {:block, type, attributes, children, node_meta}
 
          other ->
+           Logger.warning("Unknown tag: ")
            dbg(other)
        end
      end, context}

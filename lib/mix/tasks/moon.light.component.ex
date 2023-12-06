@@ -16,6 +16,8 @@ defmodule Mix.Tasks.Moon.Light.Component do
   import List, only: [last: 1]
   import Moon.Helpers.Tokens
 
+  require Logger
+
   alias Surface.Compiler.Parser
 
   defstruct name: nil,
@@ -48,7 +50,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         end,
         module_translates: fn module ->
           module |> to_string() |> String.replace("Moon.Design", "Moon.Light") |> String.to_atom()
-        end,
+        end
       }
     }
   end
@@ -93,16 +95,19 @@ defmodule Mix.Tasks.Moon.Light.Component do
           {other, acc}
       end)
 
-    c = Map.put(c, :aliases,
-      aliases
-      |> Enum.reduce(%{}, fn items, acc ->
-        Map.put(
-          acc,
-          Enum.at(items, -1) |> to_string(),
-          [ :Elixir | items] |> Enum.map(&to_string/1) |> Enum.join(".") |> String.to_atom()
-        )
-      end)
-    )
+    c =
+      Map.put(
+        c,
+        :aliases,
+        aliases
+        |> Enum.reduce(%{}, fn items, acc ->
+          Map.put(
+            acc,
+            Enum.at(items, -1) |> to_string(),
+            [:"Elixir" | items] |> Enum.map(&to_string/1) |> Enum.join(".") |> String.to_atom()
+          )
+        end)
+      )
 
     ast
     |> Macro.prewalk(nil, fn
@@ -158,7 +163,16 @@ defmodule Mix.Tasks.Moon.Light.Component do
      [
        aliases,
        [
-         do: {:__block__, [], children ++ children2}
+         do:
+           {:__block__, [],
+            (children ++ children2)
+            |> Enum.sort_by(fn
+              {:@, _, [{:moduledoc, _, _}]} -> 0
+              {:use, _, _} -> 1
+              {:alias, _, _} -> 2
+              {:import, _, _} -> 3
+              _ -> 100
+            end)}
        ]
      ]}
   end
@@ -175,12 +189,16 @@ defmodule Mix.Tasks.Moon.Light.Component do
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
   defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}, doc),
-    do: {:attr, meta, [name, translate_prop_type(type), [doc: "#{doc}"]]}
+    do: {:attr, meta, [name, translate_prop_type(type), (doc && [doc: doc]) || []]}
 
   defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}, doc),
     do:
       {:attr, meta,
-       [name, translate_prop_type(type), translate_prop_options(options) ++ [doc: "#{doc}"]]}
+       [
+         name,
+         translate_prop_type(type),
+         translate_prop_options(options) ++ ((doc && [doc: doc]) || [])
+       ]}
 
   defp translate_prop_type(type)
        when type in [:boolean, :integer, :float, :string, :atom, :list, :map, :global],
@@ -197,16 +215,16 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}, doc),
-    do: {:slot, meta, [:inner_block, [doc: doc]]}
+    do: {:slot, meta, [:inner_block, (doc && [doc: doc]) || []]}
 
   defp translate_slot(_, {:slot, meta, [{name, _, nil}]}, doc),
-    do: {:slot, meta, [name, [doc: doc]]}
+    do: {:slot, meta, [name, (doc && [doc: doc]) || []]}
 
   defp translate_slot(_, {:slot, meta, [{:default, _, nil}, options]}, doc),
-    do: {:slot, meta, [:inner_block, options ++ [doc: doc]]}
+    do: {:slot, meta, [:inner_block, options ++ ((doc && [doc: doc]) || [])]}
 
   defp translate_slot(_, {:slot, meta, [{name, _, nil}, options]}, doc),
-    do: {:slot, meta, [name, options ++ [doc: doc]]}
+    do: {:slot, meta, [name, options ++ ((doc && [doc: doc]) || [])]}
 
   defp translate_doc(_, _res = {:@, _, [{:doc, _, [text]}]}) do
     text
@@ -218,7 +236,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
          %{component_type: Surface.Component},
          {:@, m1, [{:moduledoc, m2, [text]}]}
        ),
-       do: {:@, m1, [{:doc, m2, [text]}]}
+       do: (text && {:@, m1, [{:doc, m2, [dbg(text)]}]}) || :skip
 
   defp translate_use_defmodule(
          %{component_type: Surface.Component},
@@ -269,7 +287,8 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # TODO: context_put & children
   defp translate_node(
-         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta}, _
+         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta},
+         _
        ) do
     {:expr, "render_slot(#{expr})", node_meta}
   end
@@ -279,8 +298,8 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp translate_node({type, attributes, children, node_meta}, c) do
-    {type |> translate_type(c), attributes |> List.wrap() |> Enum.map(&translate_attr/1), children,
-     node_meta}
+    {type |> translate_type(c), attributes |> List.wrap() |> Enum.map(&translate_attr/1),
+     children, node_meta}
   end
 
   defp translate_node(other, _), do: other
@@ -290,17 +309,18 @@ defmodule Mix.Tasks.Moon.Light.Component do
       !String.match?(type, ~r/^[A-Z].*$/) ->
         type
 
-      type == "Icon" -> ".icon"
+      type == "Icon" ->
+        ".icon"
 
       aliases[type] === nil ->
-        # TODO: logging here
+        Logger.warning("Unknown type: ", type)
         dbg(type)
 
       aliases[type].component_type() == Surface.Component ->
         mod = aliases[type] |> parent_module() |> c.config.module_translates.()
 
-        if(function_exported?(mod, type|> String.downcase() |> String.to_atom(), 1)) do
-          "#{mod == c.config.module_translates.(c.module) && "" || mod}.#{type|> String.downcase()}"
+        if(function_exported?(mod, type |> String.downcase() |> String.to_atom(), 1)) do
+          "#{(mod == c.config.module_translates.(c.module) && "") || mod}.#{type |> String.downcase()}"
         else
           ".moon module={#{type}}"
         end
@@ -325,7 +345,10 @@ defmodule Mix.Tasks.Moon.Light.Component do
     do: {name, expr, meta}
 
   # TODO: translate each to data-value attribute
-  defp translate_attr({":values", value, meta}), do: {"values", translate_attr_value(value), meta}
+  defp translate_attr({":values", value, meta}) do
+    Logger.warning(":value attr shoud be expanded: #{inspect(value)}")
+    {"values", translate_attr_value(value), meta}
+  end
 
   defp translate_attr({":" <> name, value, meta}),
     do: {:"phx-#{name}", translate_attr_value(value), meta}
@@ -345,7 +368,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
     context.module
     |> context.config.module_translates.()
     |> module_to_path()
-    |> create_file(translate_ast(context) |> Macro.to_string() |> String.replace(":skip", ""))
+    |> create_file(translate_ast(context) |> Macro.to_string() |> String.replace("  :skip\n", ""))
 
     context
   end
@@ -367,7 +390,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
       end
       |> merge_ast(translate_ast(context))
       |> Macro.to_string()
-      |> String.replace(":skip", "")
+      |> String.replace("  :skip\n", "")
     )
 
     context
