@@ -111,3 +111,18 @@ https://github.com/HashNuke/hound - maybe too old
 
 https://elixirforum.com/t/wallaby-visit-produces-empty-screenshot/45268
 https://github.com/elixir-wallaby/wallaby#screenshots
+
+## Current task
+ - -@doc attribute - to skip empty-
+ - -modules merging &  stateless components groupping- 
+ - -aliases collecting-
+ - -getting info on used in template components to show them one way or another-
+ - context & children (aka default values via slot_given? function) in slots!!!
+ - -logging instead of dbg o unknown cases-
+ - -sorting after module merge-
+ - blocker on re-converting already converted module
+
+canceled
+ - attr without parentness, maybe in formatter?
+ - backward usage - Surface components do only call 
+ - :values attribute processing in template

@@ -2,7 +2,7 @@ defmodule Mix.Tasks.Moon.Gen.Component do
   @shortdoc "Generates component and page"
 
   @moduledoc """
-  Generates a component and a compoinent page by component module name given
+  Generates a component and a component page by component module name given
 
       $ mix moon.gen.component Form.MyModule
 

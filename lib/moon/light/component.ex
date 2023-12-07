@@ -1,13 +1,12 @@
-defmodule Moon.StatefulComponent do
+defmodule Moon.Light.Component do
   @moduledoc false
 
   defmacro __using__(opts \\ []) do
     quote do
-      use Surface.LiveComponent, unquote(opts)
+      use Phoenix.Component, unquote(opts)
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
-      import Moon.Light
 
       def __moduledoc__(), do: @moduledoc
     end
