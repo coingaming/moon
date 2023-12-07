@@ -132,7 +132,6 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp merge_ast(
-         # TODO: sort children after merge for use, imports and aliases
          {:defmodule, m1,
           [
             aliases,
@@ -160,6 +159,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
               {:use, _, _} -> 1
               {:alias, _, _} -> 2
               {:import, _, _} -> 3
+              {:require, _, _} -> 4
               _ -> 100
             end)}
        ]
