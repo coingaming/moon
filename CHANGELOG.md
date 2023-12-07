@@ -1,3 +1,10 @@
+## [2.76.5](https://github.com/coingaming/moon/compare/v2.76.4...v2.76.5) (2023-12-07)
+
+
+### Bug Fixes
+
+* Mds 775 surface removing ([#798](https://github.com/coingaming/moon/issues/798)) ([1def385](https://github.com/coingaming/moon/commit/1def385e69517ef5c1019135bc65e717bdff7e69))
+
 ## [2.76.4](https://github.com/coingaming/moon/compare/v2.76.3...v2.76.4) (2023-12-04)
 
 
