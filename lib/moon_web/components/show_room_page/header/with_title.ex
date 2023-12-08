@@ -29,10 +29,11 @@ defmodule MoonWeb.Components.ShowRoomPage.Header.WithTitle do
   prop(has_right_button, :boolean, default: true)
 
   prop(light_theme, :boolean, default: false)
+  prop(is_table_header, :boolean, default: false)
 
   def render(assigns) do
     ~F"""
-    <Header class={"remove:theme-moon-dark theme-moon-light": @light_theme}>
+    <Header class={"remove:theme-moon-dark theme-moon-light": @light_theme} {=@is_table_header}>
       <Header.Title>{@title}</Header.Title>
       <Header.Buttons is_hidden={!@has_button_group}>
         <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />

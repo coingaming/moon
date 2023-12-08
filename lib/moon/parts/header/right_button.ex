@@ -31,7 +31,7 @@ defmodule Moon.Parts.Header.RightButton do
       {=@testid}
       {=@as}
       class={merge([
-        "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:hidden absolute top-0 end-0",
+        "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 md:hidden absolute top-0 end-0",
         [hidden: @is_hidden],
         @class
       ])}

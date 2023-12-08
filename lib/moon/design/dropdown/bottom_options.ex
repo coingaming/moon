@@ -21,6 +21,9 @@ defmodule Moon.Design.Dropdown.BottomOptions do
   @doc "Additional CSS classes for the div"
   prop(class, :css_class)
 
+  @doc "Additional values to be passed"
+  prop(values, :map, from_context: :values)
+
   @doc "List of the options. Used when no "
   prop(titles, :list, default: [])
   prop(option_module, :atom, default: Moon.Design.Dropdown.Option)
@@ -63,7 +66,8 @@ defmodule Moon.Design.Dropdown.BottomOptions do
               is_selected: Enum.member?(make_list(@value), option.value || "#{index}"),
               size: @size,
               on_click: @on_change,
-              value: index
+              value: index,
+              values: @values
             }
           />
         {/for}
@@ -75,7 +79,8 @@ defmodule Moon.Design.Dropdown.BottomOptions do
           {=@size}
           on_click={@on_change}
           value={title}
-        >{title}</.moon>
+          values={@values}
+        >{title |> to_string()}</.moon>
       {/if}
       <#slot />
     </div>

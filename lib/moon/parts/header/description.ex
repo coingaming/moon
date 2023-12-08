@@ -19,7 +19,7 @@ defmodule Moon.Parts.Header.Description do
     <p
       {=@id}
       data-testid={@testid}
-      class={merge(["text-trunks text-moon-16 lg:text-moon-18 mt-4", ["hidden mt-0": @is_hidden], @class])}
+      class={merge(["text-trunks text-moon-16 md:text-moon-18 mt-4", ["hidden mt-0": @is_hidden], @class])}
     >
       <#slot />
     </p>

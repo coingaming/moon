@@ -1,9 +1,10 @@
-defmodule Moon.Design.Dropdown.CustomOption do
+defmodule Moon.Design.Dropdown.IconOption do
   @moduledoc "Single oprion for the dropdown component. Renders as a button"
 
   use Moon.StatelessComponent, slot: "option"
 
   alias Moon.Design.Dropdown.Option
+  alias Moon.Icon
 
   @doc "Data-testid attribute for button"
   prop(testid, :string)
@@ -35,7 +36,7 @@ defmodule Moon.Design.Dropdown.CustomOption do
     <Option
       {=@id}
       {=@on_click}
-      {=@value}
+      value={@value.name}
       {=@disabled}
       {=@is_selected}
       values={@values}
@@ -49,7 +50,8 @@ defmodule Moon.Design.Dropdown.CustomOption do
       ])}
       {=@testid}
     >
-      <#slot>{@title}</#slot>
+      <Icon name={@value.icon} class="text-moon-24" />
+      {@value.name}
     </Option>
     """
   end

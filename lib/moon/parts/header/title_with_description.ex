@@ -29,15 +29,15 @@ defmodule Moon.Parts.Header.TitleWithDescription do
       data-testid={@testid}
       class={merge([
         [
-          "w-full text-bulma text-moon-24 font-grotesk p-4 lg:p-8 lg:not-first:pt-0 px-4 pb-6 pt-[5.5rem] flex flex-col gap-3",
+          "w-full text-bulma text-moon-24 p-4 md:p-8 md:not-first:pt-0 px-4 pb-6 pt-[5.5rem] flex flex-col gap-3",
           hidden: @is_hidden,
-          "lg:not-first:pt-8": @breadcrumbs_hidden
+          "md:not-first:pt-8": @breadcrumbs_hidden
         ],
         @class
       ])}
     >
       <h3 class={merge(["text-moon-32 text-bulma font-grotesk", @title_class])}>{@title}</h3>
-      <p class={merge(["text-moon-16 lg:text-moon-18 text-trunks", @description_class])}><#slot /></p>
+      <p class={merge(["text-moon-16 md:text-moon-18 text-trunks font-dm-sans", @description_class])}><#slot /></p>
     </div>
     """
   end

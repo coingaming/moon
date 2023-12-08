@@ -27,7 +27,7 @@ defmodule Moon.Parts.Sidebar.Generic do
       data-testid={@testid}
       aria-label={@aria_label}
       class={merge([
-        ["w-[22.5rem]", "h-screen pt-6 pb-5 flex flex-col px-4 overflow-y-scroll not-first:px-5"],
+        ["w-[22.5rem]", "h-screen pt-6 pb-5 flex flex-col px-4 overflow-y-scroll not-first:px-5 gap-6"],
         @class
       ])}
     >

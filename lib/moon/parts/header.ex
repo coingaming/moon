@@ -11,6 +11,8 @@ defmodule Moon.Parts.Header do
   prop(class, :css_class)
   @doc "If only Title is given"
   prop(title_only, :boolean)
+  @doc "If is table header"
+  prop(is_table_header, :boolean, default: false)
   @doc "Default slot"
   slot(default)
   @doc "Buttons slot"
@@ -24,12 +26,20 @@ defmodule Moon.Parts.Header do
       {=@id}
       data-testid={@testid}
       class={merge([
-        "w-full sticky top-0 bg-goku min-h-[5rem] theme-moon-dark flex flex-col",
+        [
+          "w-full sticky top-0 bg-goku min-h-[5rem] theme-moon-dark flex flex-col z-10",
+          "bg-transparent rounded-3xl": @is_table_header
+        ],
         @class
       ])}
     >
       <#slot />
-      <#slot {@title} />
+      <#slot
+        {@title}
+        context_put={
+          is_table_header: @is_table_header
+        }
+      />
       <#slot
         {@buttons}
         context_put={

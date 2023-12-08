@@ -40,7 +40,7 @@ defmodule Moon.Parts.Header.ButtonGroupLink do
         <IconButton
           {=@as}
           class={merge([
-            "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 lg:inline hidden",
+            "bg-goku text-bulma border border-beerus rounded-full h-12 w-12 md:inline hidden",
             @button_class
           ])}
           {=@on_click}

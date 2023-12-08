@@ -30,6 +30,11 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
   @doc "Active page"
   prop(active_page, :string, from_context: :active_page)
 
+  @doc "Some additional classes will be added to indicate is active"
+  prop(is_active, :boolean, default: false)
+  @doc "Add this as is_selected value and also work for underlying checkbox/radio"
+  prop(is_selected, :boolean, default: false)
+
   def render(assigns) do
     ~F"""
     <Tooltip {=@id} {=@testid} class="self-center">
@@ -39,18 +44,18 @@ defmodule Moon.Parts.Sidebar.SlimMenuLink do
           class={merge([
             [
               "bg-goku text-bulma justify-start rounded-full p-3 gap-3 h-12 w-12",
-              "bg-bulma": @active_page == @route
+              "bg-bulma text-goku hover:bg-bulma": @is_active || @is_selected
             ],
             @class
           ])}
           attrs={Map.merge(
             %{
               "data-phx-link": "redirect",
-              "data-phx-link-state": "push"
+              "data-phx-link-state": "push",
+              "aria-selected": false
             },
             @attrs
           )}
-          is_active={@active_page == @route}
           href={@route}
         >
           <Icon name={@icon_name} class={merge(["text-moon-24", @icon_class])} />
