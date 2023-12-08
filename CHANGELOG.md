@@ -1,3 +1,10 @@
+# [2.77.0](https://github.com/coingaming/moon/compare/v2.76.5...v2.77.0) (2023-12-08)
+
+
+### Features
+
+* Create editable menu for show_room [MDS-837] ([#799](https://github.com/coingaming/moon/issues/799)) ([e0bd183](https://github.com/coingaming/moon/commit/e0bd1830ebacb37e1863ebb8143a4dbd052a9fff))
+
 ## [2.76.5](https://github.com/coingaming/moon/compare/v2.76.4...v2.76.5) (2023-12-07)
 
 
