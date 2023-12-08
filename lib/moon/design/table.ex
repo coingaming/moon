@@ -73,17 +73,14 @@ defmodule Moon.Design.Table do
   def render(assigns) do
     ~F"""
     <table
-      class={
-        merge([
-          [
-            "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm",
-            @row_gap,
-            "border-spacing-y-0": @is_zebra_style
-          ],
-          @class
-        ]),
-        "border-separate"
-      }
+      class={merge([
+        [
+          "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm border-separate",
+          @row_gap,
+          "border-spacing-y-0": @is_zebra_style
+        ],
+        @class
+      ])}
       {=@id}
       data-testid={@testid}
     >

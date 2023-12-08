@@ -24,7 +24,7 @@ defmodule Moon.Design.BottomSheet.Header do
       {=@id}
       class={merge([
         [
-          "sticky top-0 z-10 bg-goku pt-1",
+          "sticky top-0 z-10 bg-goku pt-1 bottom_sheet_header",
           "min-h-[48px]": slot_assigned?(:drag_handle)
         ],
         @class

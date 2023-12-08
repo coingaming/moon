@@ -1,3 +1,17 @@
+## [2.76.5](https://github.com/coingaming/moon/compare/v2.76.4...v2.76.5) (2023-12-07)
+
+
+### Bug Fixes
+
+* Mds 775 surface removing ([#798](https://github.com/coingaming/moon/issues/798)) ([1def385](https://github.com/coingaming/moon/commit/1def385e69517ef5c1019135bc65e717bdff7e69))
+
+## [2.76.4](https://github.com/coingaming/moon/compare/v2.76.3...v2.76.4) (2023-12-04)
+
+
+### Bug Fixes
+
+* DragHandler fix for BottomSheet ([#796](https://github.com/coingaming/moon/issues/796)) ([6ef2d5c](https://github.com/coingaming/moon/commit/6ef2d5ce501887d4c7f25ab91842a0c21e2574c6))
+
 ## [2.76.3](https://github.com/coingaming/moon/compare/v2.76.2...v2.76.3) (2023-12-01)
 
 

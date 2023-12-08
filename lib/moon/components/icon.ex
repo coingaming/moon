@@ -5,7 +5,7 @@ defmodule Moon.Icon do
   alias MoonIcons.Helpers.Icons
 
   prop(click, :event)
-  @doc "Additional classes for the <select> tag"
+  @doc "Additional classes for the <svg> tag"
   prop(class, :css_class)
 
   # All the other props below are deprecated!

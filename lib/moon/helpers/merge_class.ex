@@ -7,8 +7,7 @@ defmodule Moon.Helpers.MergeClass do
     classes
     |> Tails.classes()
     |> String.split(" ")
-    |> Enum.map(&rename_class/1)
-    |> Enum.join(" ")
+    |> Enum.map_join(" ", &rename_class/1)
   end
 
   # tails crutches
