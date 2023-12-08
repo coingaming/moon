@@ -32,10 +32,11 @@ defmodule Moon.Parts.Sidebar.MenuLink do
     ~F"""
     <MenuItem
       as="a"
+      size="lg"
       class={merge([
         [
           "text-bulma justify-start hover:bg-gohan rounded-full h-12",
-          "bg-bulma text-goku": @active_page == @route || @is_selected
+          "bg-bulma text-goku hover:bg-bulma": @is_active || @is_selected
         ],
         @class
       ])}
@@ -47,11 +48,9 @@ defmodule Moon.Parts.Sidebar.MenuLink do
         },
         @attrs
       )}
-      is_active={@active_page == @route}
       href={@route}
       {=@id}
       {=@testid}
-      {=@is_selected}
       {=@value}
     >
       <#slot />

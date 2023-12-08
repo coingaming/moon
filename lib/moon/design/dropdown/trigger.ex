@@ -1,7 +1,7 @@
 defmodule Moon.Design.Dropdown.Trigger do
   @moduledoc "Element that triggers Dropdown component, renders with no HTML tag"
 
-  use Surface.Component, slot: "trigger"
+  use Moon.StatelessComponent, slot: "trigger"
 
   @doc "Title to be shown when no defaul slot given"
   prop(title, :string)
@@ -11,13 +11,21 @@ defmodule Moon.Design.Dropdown.Trigger do
   prop(on_click, :event, from_context: :on_trigger)
   @doc "Data-testid attribute for HTML tag"
   prop(testid, :string)
+  @doc "Additional Tailwind classes"
+  prop(class, :css_class)
 
   @doc "Inner content of the component"
   slot(default)
 
   def render(assigns) do
     ~F"""
-    <div :on-click={@on_click} data-testid={@testid} aria-haspopup="true" aria-expanded={@is_open}>
+    <div
+      :on-click={@on_click}
+      data-testid={@testid}
+      aria-haspopup="true"
+      aria-expanded={@is_open}
+      class={merge(["cursor-pointer", @class])}
+    >
       <#slot>{@title}</#slot>
     </div>
     """

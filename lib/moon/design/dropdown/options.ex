@@ -21,11 +21,10 @@ defmodule Moon.Design.Dropdown.Options do
   prop(position, :string, values: position_list())
   @doc "Additional values to be passed"
   prop(values, :map, from_context: :values)
-
-  @doc "List of the options. Used when no "
+  @doc "List of the options. Used when no option slot is given "
   prop(titles, :list, default: [])
+  @doc "Option module"
   prop(option_module, :atom, default: Moon.Design.Dropdown.Option)
-
   @doc "Data-testid attribute for div"
   prop(testid, :string)
   @doc "Id attribute for div"
@@ -74,7 +73,7 @@ defmodule Moon.Design.Dropdown.Options do
           on_click={@on_change}
           value={title}
           values={@values}
-        >{title}</.moon>
+        />
       {/if}
       <#slot />
       <#slot {@footer} />

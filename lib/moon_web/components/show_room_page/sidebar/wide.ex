@@ -5,9 +5,13 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Wide do
 
   alias Moon.Parts.Sidebar
   alias Moon.Parts.Avatar
+  alias Moon.Icon
 
   prop(menu_items, :list, default: MoonWeb.Schema.Link.menu())
   prop(light_theme, :boolean, default: false)
+  prop(editable_menu_items, :list, default: [])
+
+  prop(active_page, :any)
 
   def render(assigns) do
     ~F"""
@@ -16,27 +20,44 @@ defmodule MoonWeb.Components.ShowRoomPage.Sidebar.Wide do
         id="show_room_wide_sidebar"
         class={"remove:theme-moon-dark theme-moon-light": @light_theme}
       >
-        <Sidebar.Slim links={Enum.filter(@menu_items, &(&1[:icon] != nil))}>
+        <Sidebar.Slim>
           <Sidebar.SlimLogo src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item" />
+          {#for editable_menu_item <- @editable_menu_items}
+            <Sidebar.SlimMenuLink
+              route={editable_menu_item.link}
+              icon_name={editable_menu_item.icon}
+              tooltip_text={editable_menu_item.name}
+              is_active={@active_page == editable_menu_item.link |> String.split("?") |> Enum.at(-1)}
+            />
+          {/for}
           <:bottom>
-            <Sidebar.SlimMenuLink route="#" icon_name="generic_settings" tooltip_text="Settings" />
+            <Sidebar.SlimMenuLink
+              route="#"
+              icon_name="generic_settings"
+              tooltip_text="Settings"
+              is_active={@active_page == "#"}
+            />
             <Avatar name="md">
               <Avatar.Status />
             </Avatar>
           </:bottom>
         </Sidebar.Slim>
 
-        <Sidebar.Generic sections={[
-          %{
-            title: "Section 1 • Generic",
-            links: Enum.filter(@menu_items, &(&1[:icon] != nil))
-          },
-          %{
-            title: "Section 2 • Components",
-            links: Enum.filter(@menu_items, &(&1[:icon] == nil))
-          }
-        ]}>
+        <Sidebar.Generic>
           <Sidebar.Logo src="/moon/assets/svgs/moon_web/large_logo.svg#item" />
+          <Sidebar.Section>
+            <Sidebar.SectionTitle>Section 1 • Editable</Sidebar.SectionTitle>
+            <div class="flex flex-col gap-1">
+              {#for editable_menu_item <- @editable_menu_items}
+                <Sidebar.MenuLink
+                  is_active={@active_page == editable_menu_item.link |> String.split("?") |> Enum.at(-1)}
+                  route={editable_menu_item.link}
+                >
+                  <Icon class="w-6 h-6" name={editable_menu_item.icon} />{editable_menu_item.name}
+                </Sidebar.MenuLink>
+              {/for}
+            </div>
+          </Sidebar.Section>
         </Sidebar.Generic>
         <Sidebar.BottomNavigation
           src="/moon_icons/svgs/logos/logo-moon-design-short.svg#item"

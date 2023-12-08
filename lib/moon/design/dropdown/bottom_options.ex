@@ -80,7 +80,7 @@ defmodule Moon.Design.Dropdown.BottomOptions do
           on_click={@on_change}
           value={title}
           values={@values}
-        >{title}</.moon>
+        >{title |> to_string()}</.moon>
       {/if}
       <#slot />
     </div>
