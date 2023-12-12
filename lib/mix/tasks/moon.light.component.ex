@@ -408,11 +408,12 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
         {case Code.ensure_compiled(mod) do
            {:module, _} ->
-             if Keyword.has_key?(
-                  mod.__info__(:functions),
-                  type |> String.downcase() |> String.to_atom()
-                ) do
-               "#{(mod in [c.config.module_translates.(c.module), Moon.Light] && "") || mod}.#{type |> String.downcase()}"
+             func_name =
+               type |> String.split(".") |> Enum.at(-1) |> String.downcase() |> String.to_atom()
+
+             if Keyword.has_key?(mod.__info__(:functions), func_name) do
+               # TODO: add imports here
+               "#{(mod in [c.config.module_translates.(c.module), Moon.Light] && "") || mod}.#{func_name}"
              else
                ".moon module={#{type}}"
              end

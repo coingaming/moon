@@ -1,6 +1,8 @@
 defmodule Moon.Light.Table do
   @moduledoc "Some helper functions used in <.table /> component"
 
+  use Moon.Light.Component
+
   import Moon.Helpers.MakeList, only: [add_index_as: 1]
 
   def sort_items(items, sort) do
@@ -70,5 +72,57 @@ defmodule Moon.Light.Table do
 
   def dom_id(id, id2) do
     "#{id2}-row-#{id}"
+  end
+
+  @doc "Input styled to use inside the tables"
+  attr(:testid, :string, doc: "Data-testid attribute for html tag", default: nil)
+  attr(:id, :string, doc: "Id attribute for html tag", default: nil)
+  attr(:class, :any, doc: "Additional CSS classes for the html tag", default: nil)
+  attr(:placeholder, :string, doc: "Text to be shown when no value given", default: nil)
+  attr(:value, :string, doc: "Value to be shown", default: nil)
+  attr(:disabled, :boolean, doc: "If the item should be marked as disabled", default: nil)
+  attr(:side_values, :any, default: %{}, doc: "Additional values to be passed")
+  attr(:opts, :any, default: %{}, doc: "Keyword | Map of additional attributes for the input")
+  attr(:on_change, Event, doc: "On change event for the input", default: nil)
+  attr(:on_keyup, Event, doc: "On keyup event for the input", default: nil)
+  attr(:on_focus, Event, doc: "On focus event for the input", default: nil)
+  attr(:on_blur, Event, doc: "On blur event for the input", default: nil)
+
+  def input(assigns) do
+    ~H"""
+    <input
+      value={@value}
+      id={@id}
+      placeholder={@placeholder}
+      data-testid={@testid}
+      disabled={@disabled}
+      autocomplete="off"
+      class={
+        merge([
+          "block w-full max-w-full py-0 px-1 m-0 appearance-none text-bulma transition-shadow box-border relative z-[2]",
+          "bg-transparent hover:bg-heles focus:shadow-input-cell-focus focus:outline-none focus:bg-heles",
+          "focus-visible::shadow-input-cell-focus focus-visible::outline-none focus-visible::bg-heles rounded-moon-i-xs",
+          "rtl:[&:not([disabled])]:[&:not([readonly])]:[&:not([readonly])]:hover:rounded-moon-i-xs",
+          "rtl:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-xs rtl:invalid:rounded-moon-i-xs",
+          "ltr:[&:not([disabled])]:[&:not([readonly])]:hover:rounded-moon-i-xs ltr:[&:not([disabled])]:[&:not([readonly])]:focus:rounded-moon-i-xs",
+          "ltr:invalid:rounded-moon-i-xs before:box-border after:box-border placeholder:text-trunks placeholder:opacity-100",
+          "placeholder:transition-opacity placeholder:delay-75 read-only:outline-0 read-only:border-none",
+          "read-only:cursor-not-allowed read-only:hover:shadow-input read-only:focus:shadow-input",
+          "read-only:focus-visible:shadow-input input-dt-shared invalid:shadow-input-err invalid:hover:shadow-input-err",
+          "invalid:focus:shadow-input-err invalid:focus-visible:shadow-input-err",
+          @class
+        ])
+      }
+      phx-target={
+        [@on_change, @on_keyup, @on_focus, @on_blur] |> Enum.find(&(!!&1)) |> Map.get(:target, nil)
+      }
+      phx-change={@on_change && @on_change.name}
+      phx-keyup={@on_keyup && @on_keyup.name}
+      phx-focus={@on_focus && @on_focus.name}
+      phx-blur={@on_blur && @on_blur.name}
+      {@opts}
+      {data_values(@side_values)}
+    />
+    """
   end
 end
