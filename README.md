@@ -111,23 +111,3 @@ https://github.com/HashNuke/hound - maybe too old
 
 https://elixirforum.com/t/wallaby-visit-produces-empty-screenshot/45268
 https://github.com/elixir-wallaby/wallaby#screenshots
-
-## Current task
- - -@doc attribute -
- - -modules merging &  stateless components groupping- 
- - -aliases collecting-
- - -getting info on used in template components to show them one way or another-
- - -logging instead of dbg o unknown cases-
- - -sorting after module merge-
- - -:values attribute processing in template-
- - -event value in live-view's style-
- - blocker on re-converting already converted module
- - slot's context, attributes & children (aka default values via slot_given? function) in slots!!!
-
- - per-component plugin structure, e.g.
-    - -Table: items as a cycle `items={model <- @models}` and a param model as a let in slot `<:cols :let={model}>`-
-
-
-canceled
- - attr without parentness, maybe in formatter?
- - backward usage - Surface components do only call 
