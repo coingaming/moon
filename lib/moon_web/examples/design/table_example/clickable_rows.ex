@@ -21,15 +21,6 @@ defmodule MoonWeb.Examples.Design.TableExample.ClickableRows do
       end)
   )
 
-  def mount(_params, _session, socket) do
-    socket =
-      assign(socket,
-        selected: []
-      )
-
-    {:ok, socket}
-  end
-
   def render(assigns) do
     ~F"""
     <Table items={model <- @models} row_click="single_row_click" {=@selected}>

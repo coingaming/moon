@@ -24,15 +24,6 @@ defmodule MoonWeb.Examples.Design.TableExample.Checkboxes do
 
   data(checked, :list, default: [])
 
-  def mount(_params, _session, socket) do
-    socket =
-      assign(socket,
-        selected: []
-      )
-
-    {:ok, socket}
-  end
-
   def render(assigns) do
     ~F"""
     <Table items={model <- @models} selected={@checked}>
@@ -51,6 +42,8 @@ defmodule MoonWeb.Examples.Design.TableExample.Checkboxes do
     </Table>
     """
   end
+
+  def mount(socket), do: {:ok, assign(socket, checked: [])}
 
   def handle_event("checkbox_click", %{"id" => id}, socket) do
     checked =

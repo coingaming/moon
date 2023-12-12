@@ -60,7 +60,7 @@ defmodule Moon.Helpers.Tokens do
         "#{text}<#{type} #{attrs_to_text(attributes)}/>"
 
       {type, attributes, children, _meta}, text ->
-        "#{text}<#{type} #{attrs_to_text(attributes)}>#{to_text(children, context)}</#{type}>"
+        "#{text}<#{type} #{attrs_to_text(attributes)}>#{to_text(children, context)}</#{type |> String.split(" ") |> hd()}>"
 
       {:expr, expr, _meta}, text ->
         "#{text}<%= #{expr} %>"

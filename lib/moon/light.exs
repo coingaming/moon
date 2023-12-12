@@ -2,15 +2,14 @@ defmodule Moon.Light do
   @moduledoc false
   use Moon.Light.Component
   alias Moon.Icon
-  import Moon.Helpers.MakeList, only: [add_index_as: 1]
-  attr(:click, :any, doc: "")
-  attr(:class, :any, doc: "Additional classes for the <select> tag")
-  attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all(), doc: "")
-  attr(:color, :string, values: Moon.colors(), doc: "")
-  attr(:background_color, :string, values: Moon.colors(), doc: "")
-  attr(:font_size, :string, doc: "")
-  attr(:id, :string, doc: "Id HTML attribute")
-  attr(:testid, :string, doc: "Data-testid attribute value")
+  attr(:click, :any, default: nil)
+  attr(:class, :any, doc: "Additional classes for the <svg> tag", default: nil)
+  attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all())
+  attr(:color, :string, values: Moon.colors() ++ [nil], default: nil)
+  attr(:background_color, :string, values: Moon.colors() ++ [nil], default: nil)
+  attr(:font_size, :string, default: nil)
+  attr(:id, :string, doc: "Id HTML attribute", default: nil)
+  attr(:testid, :string, doc: "Data-testid attribute value", default: nil)
 
   def icon(assigns) do
     ~H"""
@@ -51,13 +50,14 @@ defmodule Moon.Light do
       "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   )
 
-  attr(:row_click, :any, doc: "Event that firset on row click")
+  attr(:row_click, Moon.Light.Sur.Event, doc: "Event that firset on row click", default: nil)
 
   attr(:row_click_cb, :any,
-    doc: "Callback for generating on_click per row. row and row_id will bi given as parameters"
+    doc: "Callback for generating on_click per row. row and row_id will bi given as parameters",
+    default: nil
   )
 
-  attr(:sorting_click, :any, doc: "Sorting stuff")
+  attr(:sorting_click, Moon.Light.Sur.Event, doc: "Sorting stuff", default: nil)
 
   attr(:row_gap, :any,
     default: "border-spacing-y-1",
@@ -88,7 +88,10 @@ defmodule Moon.Light do
     doc: "Can be used as an additional class for selected rows"
   )
 
-  attr(:header_row_class, :any, doc: "Can be used as an additional class for header row")
+  attr(:header_row_class, :any,
+    doc: "Can be used as an additional class for header row",
+    default: nil
+  )
 
   attr(:even_row_bg, :any,
     default: "bg-transparent",
@@ -96,29 +99,32 @@ defmodule Moon.Light do
   )
 
   attr(:hover_bg, :any,
-    doc: "Can be used as an additional class for all rows. please use hover:... tailwind's format"
+    doc:
+      "Can be used as an additional class for all rows. please use hover:... tailwind's format",
+    default: nil
   )
 
   slot(:cols, generator_prop: :items, doc: "The list of columns defining the Grid")
-  attr(:id, :string, doc: "Just an id for a table tag")
-  attr(:testid, :string, doc: "Data-testid attribute for a table tag")
-  attr(:class, :any, doc: "Additional classes for a table tag")
+  attr(:id, :string, doc: "Just an id for a table tag", default: nil)
+  attr(:testid, :string, doc: "Data-testid attribute for a table tag", default: nil)
+  attr(:class, :any, doc: "Additional classes for a table tag", default: nil)
   attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
   def table(assigns) do
+    import Moon.Light.Table.Helper
+
     ~H"""
     <table
-      class={[
+      class={
         merge([
           [
-            "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm",
+            "text-sm border-spacing-x-0 border-beerus min-w-full bg-gohan rounded-moon-s-sm border-separate",
             @row_gap,
             "border-spacing-y-0": @is_zebra_style
           ],
           @class
-        ]),
-        "border-separate"
-      ]}
+        ])
+      }
       id={@id}
       data-testid={@testid}
     >
@@ -132,22 +138,23 @@ defmodule Moon.Light do
                   text_size_classes(@row_size),
                   [
                     {:"#{inter_cell_border()}", @is_cell_border && col_index < Enum.count(@cols) - 1},
-                    "cursor-pointer": col.sortable && @sorting_click
+                    "cursor-pointer": col[:sortable] && @sorting_click
                   ],
-                  col.width
+                  col[:width]
                 ])
               }
-              phx-on-click={(col.sortable && col.name && @sorting_click) || nil}
-              values={["sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])]}
-              data-testid={"sort-column-#{col.name}"}
+              phx-click={col[:sortable] && col[:name] && @sorting_click && @sorting_click.name}
+              phx-target={col[:sortable] && col[:name] && @sorting_click && @sorting_click.target}
+              {data_values(["sort-key": col[:name], "sort-dir": toggle_sort_dir(@sort[:"#{col[:name]}"])])}
+              data-testid={"sort-column-#{col[:name]}"}
             >
-              <%= col.label %>
+              <%= col[:label] %>
               <.icon
-                :if={col.name && col.sortable}
+                :if={col[:name] && col[:sortable]}
                 class={[
                   "text-[1.5em] transition-transform transition-200",
-                  "rotate-180": @sort[:"#{col.name}"] != "ASC",
-                  "opacity-0": !@sort[:"#{col.name}"]
+                  "rotate-180": @sort[:"#{col[:name]}"] != "ASC",
+                  "opacity-0": !@sort[:"#{col[:name]}"]
                 ]}
                 name="arrows_up"
               />
@@ -155,7 +162,7 @@ defmodule Moon.Light do
           <% end %>
         </tr>
       </thead>
-      <tbody phx-attrs={@body_attrs}>
+      <tbody {@body_attrs}>
         <%= for {row_index, item} <- stream_data(assigns)  do %>
           <tr
             class={
@@ -167,8 +174,9 @@ defmodule Moon.Light do
                 "cursor-pointer": @row_click
               ])
             }
-            phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
-            values={[selected: "#{item.id}", domid: dom_id(row_index, @id)]}
+            phx-click={@row_click && @row_click.name}
+            phx-target={@row_click && @row_click.target}
+            {data_values([selected: "#{item.id}", domid: dom_id(row_index, @id)])}
             data-testid={"row-#{row_index}"}
             id={dom_id(row_index, @id)}
           >
@@ -177,18 +185,18 @@ defmodule Moon.Light do
                 class={
                   merge([
                     "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
-                    col.width,
+                    col[:width],
                     text_size_classes(@row_size),
                     [
                       {:"#{inter_cell_border()}",
                        @is_cell_border && col_index < Enum.count(@cols) - 1}
                     ],
-                    col.class
+                    col[:class]
                   ])
                 }
                 data-testid={"row-#{row_index}-col-#{col_index}"}
               >
-                <%= render_slot(col) %>
+                <%= render_slot(col, item) %>
               </td>
             <% end %>
           </tr>
@@ -199,71 +207,6 @@ defmodule Moon.Light do
   end
 
   def sort_items(items, sort) do
-    import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
-
-    reverse(sort)
-    |> reduce(items, fn {field, sort_dir}, list ->
-      sort_by(
-        list,
-        & &1[field],
-        &if sort_dir == "ASC" do
-          &1 < &2
-        else
-          &1 > &2
-        end
-      )
-    end)
-  end
-
-  defp toggle_sort_dir(sort_dir) do
-    if "#{sort_dir}" == "ASC" do
-      "DESC"
-    else
-      "ASC"
-    end
-  end
-
-  defp is_selected_item(item, selected) do
-    item[:is_selected] || is_selected(item[:id], selected)
-  end
-
-  defp is_selected(id, selected) when is_list(selected) do
-    "#{id}" in selected
-  end
-
-  defp is_selected(id, selected) do
-    "#{id}" == "#{selected}"
-  end
-
-  defp inter_cell_border() do
-    "after:content-[\"\"] after:absolute after:w-px after:bg-beerus " <>
-      "after:h-3/5 after:bottom-[20%] after:right-0 after:translate-x-[-50%] relative"
-  end
-
-  defp text_size_classes(row_size) do
-    case row_size do
-      "xs" -> "text-moon-12 py-1 px-2"
-      "sm" -> "text-moon-14 py-1 px-3"
-      "md" -> "text-moon-14 py-2 px-3"
-      "lg" -> "text-moon-14 py-3 px-3"
-      "xl" -> "text-moon-14 py-4 px-3"
-      "2xl" -> "text-moon-14 py-5 px-3"
-    end
-  end
-
-  defp stream_data(%{items: stream = %Phoenix.LiveView.LiveStream{}}) do
-    stream
-  end
-
-  defp stream_data(%{items: items, sort: sort}) when is_list(items) do
-    items |> add_index_as() |> sort_items(sort) |> Enum.with_index(&{&2, &1})
-  end
-
-  defp dom_id(id, _) when is_binary(id) do
-    id
-  end
-
-  defp dom_id(id, id2) do
-    "#{id2}-row-#{id}"
+    Moon.Light.Table.sort_items(items, sort)
   end
 end

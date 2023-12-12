@@ -7,7 +7,7 @@ defmodule Moon.StatefulComponent do
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
-      import Moon.Light
+      # import Moon.Light
 
       def __moduledoc__(), do: @moduledoc
     end
