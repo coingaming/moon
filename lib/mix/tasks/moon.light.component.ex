@@ -193,6 +193,9 @@ defmodule Mix.Tasks.Moon.Light.Component do
     {:def, m1, [{:"#{String.downcase(short)}", m2, attrs} | children]}
   end
 
+  defp translate_prop(_, {:prop, meta, [{name, _, nil}, :event]}, doc),
+    do: {:attr, meta, [name, Event, translate_prop_options([], doc)]}
+
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
   defp translate_prop(_, {macro_name, meta, [{name, _, nil}, type]}, doc)
@@ -318,7 +321,10 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp translate_node({type, attributes, children, node_meta}, c) do
-    {type |> translate_type(c), attributes |> List.wrap() |> Enum.map(&translate_attr/1),
+    {res_type, props} = translate_type(type, c)
+
+    {res_type,
+     attributes |> List.wrap() |> Enum.map(&translate_attr(&1, props)) |> List.flatten(),
      children, node_meta}
   end
 
@@ -340,77 +346,103 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_type(type, c = %{aliases: aliases}) do
     cond do
       !String.match?(type, ~r/^[A-Z].*$/) ->
-        type
+        {type, []}
 
       type == "Icon" ->
-        ".icon"
+        {".icon", Moon.Icon.__props__()}
 
       # TODO: named slot components
       get_alias(type, aliases) == Moon.Design.Table.Column ->
-        ":cols :let={model}"
+        {":cols :let={model}", Moon.Design.Table.Column.__props__()}
 
       get_alias(type, aliases) === nil ->
         Logger.warning("Unknown type: #{type}")
-        type
+        {type, []}
 
       get_alias(type, aliases).component_type() == Surface.Component ->
         mod = get_alias(type, aliases) |> parent_module() |> c.config.module_translates.()
 
-        case Code.ensure_compiled(mod) do
-          {:module, _} ->
-            if Keyword.has_key?(
-                 mod.__info__(:functions),
-                 type |> String.downcase() |> String.to_atom()
-               ) do
-              "#{(mod in [c.config.module_translates.(c.module), Moon.Light] && "") || mod}.#{type |> String.downcase()}"
-            else
-              ".moon module={#{type}}"
-            end
+        {case Code.ensure_compiled(mod) do
+           {:module, _} ->
+             if Keyword.has_key?(
+                  mod.__info__(:functions),
+                  type |> String.downcase() |> String.to_atom()
+                ) do
+               "#{(mod in [c.config.module_translates.(c.module), Moon.Light] && "") || mod}.#{type |> String.downcase()}"
+             else
+               ".moon module={#{type}}"
+             end
 
-          {:error, _} ->
-            ".moon module={#{type}}"
-        end
+           {:error, _} ->
+             ".moon module={#{type}}"
+         end, get_alias(type, aliases).__props__()}
 
       get_alias(type, aliases).component_type() == Surface.LiveComponent ->
         mod = get_alias(type, aliases) |> c.config.module_translates.()
 
-        case Code.ensure_compiled(mod) do
-          {:module, _} -> ".live_component module={#{mod}}"
-          {:error, _} -> ".moon module={#{type}}"
-        end
+        {case Code.ensure_compiled(mod) do
+           {:module, _} -> ".live_component module={#{mod}}"
+           {:error, _} -> ".moon module={#{type}}"
+         end, get_alias(type, aliases).__props__()}
     end
   end
 
   # defp translate_attr({name, expr, meta}), do: dbg({name, expr, meta})
 
-  defp translate_attr({name, expr, meta}) when is_atom(name),
-    do: translate_attr({"#{name}", expr, meta})
+  defp translate_attr({name, expr, meta}, node_props) when is_atom(name),
+    do: translate_attr({"#{name}", expr, meta}, node_props)
 
-  defp translate_attr({name, expr, meta}) when name in ~w(root :let :if :for),
+  defp translate_attr({name, expr, meta}, _) when name in ~w(root :let :if :for),
     do: {name, expr, meta}
 
-  defp translate_attr({":attrs", expr, meta}), do: {:root, expr, meta}
+  defp translate_attr({":attrs", expr, meta}, _), do: {:root, expr, meta}
 
   # TODO: translate each to data-value attribute
-  defp translate_attr({":values", {:attribute_expr, expr, m2}, m1}),
+  defp translate_attr({":values", {:attribute_expr, expr, m2}, m1}, _),
     do: {:root, {:attribute_expr, "data_values(#{expr})", m2}, m1}
 
-  defp translate_attr({":values", expr, m1}),
-    do: {:root, {:attribute_expr, "data_values(#{expr})", m1}, m1}
+  # defp translate_attr({":values", expr, m1}),
+  #   do: {:root, {:attribute_expr, "data_values(#{expr})", m1}, m1}
 
-  defp translate_attr({":" <> name, value, meta}),
-    do: {:"phx-#{name}", translate_attr_value(value), meta}
+  defp translate_attr({":on-" <> name, value, meta}, _) when is_binary(value) do
+    [
+      {:"phx-#{name}", value, meta},
+      {:"phx-target", {:attribute_expr, "@myself", meta}, meta}
+    ]
+  end
 
-  defp translate_attr({name, value, meta}), do: {:"#{name}", translate_attr_value(value), meta}
+  defp translate_attr({":on-" <> name, {:attribute_expr, expr, m2}, m1}, _) do
+    [
+      {:"phx-#{name}", {:attribute_expr, "(#{expr}) && (#{expr}).name", m2}, m2},
+      {:"phx-target", {:attribute_expr, "(#{expr}) && (#{expr}).target", m2}, m1}
+    ]
+  end
 
-  defp translate_attr_value({:attribute_expr, expr, meta}) do
-    case Code.string_to_quoted(expr) do
-      {:ok, _} -> {:attribute_expr, expr, meta}
-      {:error, _} -> {:attribute_expr, "[#{expr}]", meta}
+  # defp translate_attr({":" <> name, value, meta}),
+  #   do: {:"phx-#{name}", translate_attr_value(value), meta}
+
+  defp translate_attr({name, value, meta}, node_props) do
+    prop = node_props |> Enum.find(&("#{&1.name}" == "#{name}"))
+
+    if prop.type == :event && is_binary(value) do
+      {:"#{name}", {:attribute_expr, "%Event{name: \"#{value}\", target: @myself}", meta}, meta}
+    else
+      {:"#{name}", translate_attr_value(value), meta}
     end
   end
 
+  defp translate_attr_value({:attribute_expr, expr, meta}) do
+    {:attribute_expr, expr |> translate_attr_values(), meta}
+  end
+
   defp translate_attr_value(expr), do: expr
+
+  defp translate_attr_values(expr) do
+    case Code.string_to_quoted(expr) do
+      {:ok, _} -> expr
+      {:error, _} -> "[#{expr}]"
+    end
+  end
 
   defp copy_templates(context = %{component_type: Surface.LiveComponent}) do
     context.module

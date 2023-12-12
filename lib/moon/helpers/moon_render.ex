@@ -89,7 +89,7 @@ defmodule Moon.Helpers.MoonRender do
 
   def data_values(list \\ []) do
     Enum.map(list, fn {k, v} ->
-      {:"phx-value-#{k |> to_string() |> String.replace("-", "_")}", v}
+      {:"phx-value-#{k |> to_string()}", v}
     end)
   end
 end

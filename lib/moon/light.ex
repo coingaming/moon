@@ -50,14 +50,14 @@ defmodule Moon.Light do
       "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   )
 
-  attr(:row_click, :any, doc: "Event that firset on row click", default: nil)
+  attr(:row_click, Moon.Light.Sur.Event, doc: "Event that firset on row click", default: nil)
 
   attr(:row_click_cb, :any,
     doc: "Callback for generating on_click per row. row and row_id will bi given as parameters",
     default: nil
   )
 
-  attr(:sorting_click, :any, doc: "Sorting stuff", default: nil)
+  attr(:sorting_click, Moon.Light.Sur.Event, doc: "Sorting stuff", default: nil)
 
   attr(:row_gap, :any,
     default: "border-spacing-y-1",
@@ -148,7 +148,8 @@ defmodule Moon.Light do
                   col[:width]
                 ])
               }
-              phx-on-click={(col[:sortable] && col[:name] && @sorting_click) || nil}
+              phx-click={col[:sortable] && col[:name] && @sorting_click && @sorting_click.name}
+              phx-target={col[:sortable] && col[:name] && @sorting_click && @sorting_click.target}
               {data_values("sort-key": col[:name], "sort-dir": toggle_sort_dir(@sort[:"#{col[:name]}"]))}
               data-testid={"sort-column-#{col[:name]}"}
             >
@@ -178,8 +179,9 @@ defmodule Moon.Light do
                 "cursor-pointer": @row_click
               ])
             }
-            phx-on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
-            {data_values(selected: "#{item.id}", domid: dom_id(row_index, @id))}
+            phx-click={@row_click && @row_click.name}
+            phx-target={@row_click && @row_click.target}
+            {data_values([selected: "#{item.id}", domid: dom_id(row_index, @id)])}
             data-testid={"row-#{row_index}"}
             id={dom_id(row_index, @id)}
           >

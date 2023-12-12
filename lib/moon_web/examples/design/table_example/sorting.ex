@@ -21,14 +21,6 @@ defmodule MoonWeb.Examples.Design.TableExample.Sorting do
 
   prop(sort, :keyword, default: [name: "ASC"])
 
-  def handle_event(
-        "handle_sorting_click",
-        %{"sort-dir" => sort_dir, "sort-key" => sort_key},
-        socket
-      ) do
-    {:noreply, socket |> assign(sort: ["#{sort_key}": sort_dir])}
-  end
-
   def render(assigns) do
     ~F"""
     <Table {=@sort} items={model <- @models} sorting_click="handle_sorting_click" is_cell_border>
@@ -49,6 +41,14 @@ defmodule MoonWeb.Examples.Design.TableExample.Sorting do
       </Table.Column>
     </Table>
     """
+  end
+
+  def handle_event(
+        "handle_sorting_click",
+        %{"sort-dir" => sort_dir, "sort-key" => sort_key},
+        socket
+      ) do
+    {:noreply, socket |> assign(sort: ["#{sort_key}": sort_dir])}
   end
 
   def code() do

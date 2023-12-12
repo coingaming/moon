@@ -2,7 +2,6 @@ defmodule MoonWeb.Examples.Light.TableExample.ClickableRows do
   @moduledoc false
   use Moon.Light.LiveComponent
   use MoonWeb, :example
-
   alias Moon.Components.Renderers.Datetime
   attr(:selected, :list, default: [])
 
@@ -16,7 +15,11 @@ defmodule MoonWeb.Examples.Light.TableExample.ClickableRows do
   def render(assigns) do
     ~H"""
     <div>
-      <.table items={@models} row_click="single_row_click" selected={@selected}>
+      <.table
+        items={@models}
+        row_click={%Event{name: "single_row_click", target: @myself}}
+        selected={@selected}
+      >
         <:cols :let={model} name="id" label="ID">
           <%= model.id %>
         </:cols>
