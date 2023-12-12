@@ -321,14 +321,51 @@ defmodule Mix.Tasks.Moon.Light.Component do
   end
 
   defp translate_node({type, attributes, children, node_meta}, c) do
-    {res_type, props} = translate_type(type, c)
+    {res_type, source_type} = translate_type(type, c)
+
+    {attributes, children} = pre_translate_node(source_type, {type, attributes, children}, c)
 
     {res_type,
-     attributes |> List.wrap() |> Enum.map(&translate_attr(&1, props)) |> List.flatten(),
-     children, node_meta}
+     attributes
+     |> List.wrap()
+     |> Enum.map(&translate_attr(&1, source_type.__props__()))
+     |> List.flatten(), children, node_meta}
   end
 
   defp translate_node(other, _), do: other
+
+  defp pre_translate_node(Moon.Design.Table, {_, attributes, children}, c) do
+    {attributes, m_name} =
+      attributes
+      |> Enum.map(fn
+        {"items", {:attribute_expr, expr, m1}, m2} ->
+          [model, models] = expr |> String.split("<-") |> Enum.map(&String.trim/1)
+          {{"items", {:attribute_expr, models, m1}, m2}, model}
+
+        other ->
+          {other, nil}
+      end)
+      |> Enum.reduce({[], nil}, fn {node, model}, {nodes, cur_model} ->
+        {nodes ++ [node], cur_model || model}
+      end)
+
+    {attributes,
+     children
+     |> Enum.map(fn
+       {type2, attributes2, children2, meta} ->
+         {_, source_type} = translate_type(type2, c)
+
+         case source_type do
+           Moon.Design.Table.Column -> {":cols :let={#{m_name}}", attributes2, children2, meta}
+           _ -> {type2, attributes2, children2, meta}
+         end
+
+       other ->
+         other
+     end)}
+  end
+
+  defp pre_translate_node(_, {_, attributes, children}, _), do: {attributes, children}
 
   defp translate_slot_attr({"generator_value", {:attribute_expr, expr, _m2}, _m1}), do: expr
 
@@ -346,18 +383,25 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_type(type, c = %{aliases: aliases}) do
     cond do
       !String.match?(type, ~r/^[A-Z].*$/) ->
-        {type, []}
+        {type, %{__props__: []}}
 
       type == "Icon" ->
-        {".icon", Moon.Icon.__props__()}
+        {".icon", Moon.Icon}
 
-      # TODO: named slot components
-      get_alias(type, aliases) == Moon.Design.Table.Column ->
-        {":cols :let={model}", Moon.Design.Table.Column.__props__()}
+      # get_alias(type, aliases) == Moon.Design.Table.Column ->
+      #   {":cols :let={model}", Moon.Design.Table.Column}
 
       get_alias(type, aliases) === nil ->
         Logger.warning("Unknown type: #{type}")
-        {type, []}
+        {type, %{__props__: []}}
+
+      function_exported?(get_alias(type, aliases), :__slot_name__, 0) ->
+        # TODO: get subcompoent's render function
+        Logger.warning(
+          "Replacing #{get_alias(type, aliases)} with slot :#{get_alias(type, aliases).__slot_name__()}"
+        )
+
+        {":#{get_alias(type, aliases).__slot_name__()}", get_alias(type, aliases)}
 
       get_alias(type, aliases).component_type() == Surface.Component ->
         mod = get_alias(type, aliases) |> parent_module() |> c.config.module_translates.()
@@ -375,7 +419,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
            {:error, _} ->
              ".moon module={#{type}}"
-         end, get_alias(type, aliases).__props__()}
+         end, get_alias(type, aliases)}
 
       get_alias(type, aliases).component_type() == Surface.LiveComponent ->
         mod = get_alias(type, aliases) |> c.config.module_translates.()
@@ -383,7 +427,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
         {case Code.ensure_compiled(mod) do
            {:module, _} -> ".live_component module={#{mod}}"
            {:error, _} -> ".moon module={#{type}}"
-         end, get_alias(type, aliases).__props__()}
+         end, get_alias(type, aliases)}
     end
   end
 
@@ -424,7 +468,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_attr({name, value, meta}, node_props) do
     prop = node_props |> Enum.find(&("#{&1.name}" == "#{name}"))
 
-    if prop.type == :event && is_binary(value) do
+    if prop && prop.type == :event && is_binary(value) do
       {:"#{name}", {:attribute_expr, "%Event{name: \"#{value}\", target: @myself}", meta}, meta}
     else
       {:"#{name}", translate_attr_value(value), meta}

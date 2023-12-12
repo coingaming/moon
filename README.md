@@ -120,12 +120,12 @@ https://github.com/elixir-wallaby/wallaby#screenshots
  - -logging instead of dbg o unknown cases-
  - -sorting after module merge-
  - -:values attribute processing in template-
- - event value in live-view's style 
+ - -event value in live-view's style-
  - blocker on re-converting already converted module
  - slot's context, attributes & children (aka default values via slot_given? function) in slots!!!
 
  - per-component plugin structure, e.g.
-    - Table: items as a cycle `items={model <- @models>}` and a param model as a let in slot `<:cols :let={model}>`
+    - -Table: items as a cycle `items={model <- @models}` and a param model as a let in slot `<:cols :let={model}>`-
 
 
 canceled

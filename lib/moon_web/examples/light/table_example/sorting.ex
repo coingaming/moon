@@ -24,7 +24,7 @@ defmodule MoonWeb.Examples.Light.TableExample.Sorting do
       <.table
         sort={@sort}
         items={@models}
-        sorting_click={%Moon.Light.Sur.Event{name: "handle_sorting_click", target: @myself}}
+        sorting_click={%Event{name: "handle_sorting_click", target: @myself}}
         is_cell_border={true}
       >
         <:cols :let={model} name="id" label="ID" sortable={true}>
