@@ -111,7 +111,7 @@ defmodule Moon.Light do
   attr(:body_attrs, :map, default: %{}, doc: "Additional attributes for tbody tag")
 
   def table(assigns) do
-    import Moon.Light.Table
+    import Moon.Light.Table.Helper
 
     ~H"""
     <table

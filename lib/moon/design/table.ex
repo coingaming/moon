@@ -69,7 +69,7 @@ defmodule Moon.Design.Table do
   prop(body_attrs, :map, default: %{})
 
   def render(assigns) do
-    import Moon.Light.Table
+    import Moon.Light.Table.Helper
 
     ~F"""
     <table
@@ -153,6 +153,6 @@ defmodule Moon.Design.Table do
 
   @doc "Sorts items by sort given"
   def sort_items(items, sort) do
-    Moon.Light.Table.sort_items(items, sort)
+    Moon.Light.Table.Helper.sort_items(items, sort)
   end
 end
