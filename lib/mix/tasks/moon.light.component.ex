@@ -20,49 +20,64 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   alias Surface.Compiler.Parser
 
-  defstruct name: nil,
-            path: nil
+  defstruct name: nil
 
   @doc false
   def run([name]) do
     name
+    |> to_module()
     |> context()
-    |> add_module_info()
     |> copy_templates()
     |> print_shell_instructions()
   end
 
-  defp context(name) do
+  defp to_module(name, pathes \\ ~w(Design Moon)) do
+    Module.safe_concat([name | pathes] |> Enum.reverse())
+  rescue
+    ArgumentError ->
+      to_module(name, tl(pathes))
+  end
+
+  defp context(module) do
     %{
-      name: name,
-      module: String.to_existing_atom("Elixir.Moon.Design.#{name}"),
-      path: name |> replace(~r/([a-z])([A-Z])/, "\\1_\\2") |> downcase() |> replace(".", "/"),
-      short: name |> split(".") |> last(),
+      module: module,
+      short: module |> to_string() |> split(".") |> last(),
+      component_type: module.component_type(),
+      level: 0,
       config: %{
-        use_translates: fn alias ->
-          %{
-            [:Moon, :StatelessComponent] => [:Moon, :Light, :Component],
-            [:Moon, :StatefulComponent] => [:Moon, :Light, :LiveComponent]
-          }[alias]
+        use_translates: fn
+          [:Moon, :StatelessComponent] -> [:Moon, :Light, :Component]
+          [:Moon, :StatefulComponent] -> [:Moon, :Light, :LiveComponent]
+          other -> other
         end,
         defmodule_translates: fn
-          [:Moon | [:Design | others]] -> [:Moon | [:Light | others]]
+          [:Moon, :Design | others] -> [:Moon, :Light | others]
+          [:MoonWeb, :Examples, :Design | others] -> [:MoonWeb, :Examples, :Light | others]
         end,
-        module_translates: fn module ->
-          module |> to_string() |> String.replace("Moon.Design", "Moon.Light") |> String.to_atom()
+        module_translates: fn mod ->
+          [
+            :"Elixir"
+            | mod
+              |> to_string()
+              |> String.replace("Elixir.", "")
+              |> String.split(".")
+              |> Enum.map(&String.to_atom/1)
+              |> (fn
+                    [:Moon, :Design | others] ->
+                      [:Moon, :Light | others]
+
+                    [:MoonWeb, :Examples, :Design | others] ->
+                      [:MoonWeb, :Examples, :Light | others]
+
+                    other ->
+                      other
+                  end).()
+          ]
+          |> Enum.join(".")
+          |> String.to_atom()
         end
       }
     }
-  end
-
-  defp add_module_info(context = %{module: module}) do
-    Map.merge(
-      %{
-        component_type: module.component_type(),
-        level: 0
-      },
-      context
-    )
   end
 
   defp translate_ast(c = %{module: module}) do
@@ -107,6 +122,9 @@ defmodule Mix.Tasks.Moon.Light.Component do
         {translate_sigil(c, result), acc}
 
       result = {:prop, _meta, _options}, acc ->
+        {translate_prop(c, result, acc), nil}
+
+      result = {:data, _meta, _options}, acc ->
         {translate_prop(c, result, acc), nil}
 
       result = {:slot, _meta, _options}, acc ->
@@ -177,17 +195,19 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # translate {:prop, [line: 21], [{:step, [line: 21], nil}, :integer, [default: 1]]}
   # to {:attr, [line: 38], [:id, :string, [required: true]]}
-  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type]}, doc),
-    do: {:attr, meta, [name, translate_prop_type(type), (doc && [doc: doc]) || []]}
+  defp translate_prop(_, {macro_name, meta, [{name, _, nil}, type]}, doc)
+       when macro_name in [:prop, :data],
+       do: {:attr, meta, [name, translate_prop_type(type), translate_prop_options([], doc)]}
 
-  defp translate_prop(_, {:prop, meta, [{name, _, nil}, type, options]}, doc),
-    do:
-      {:attr, meta,
-       [
-         name,
-         translate_prop_type(type),
-         translate_prop_options(options) ++ ((doc && [doc: doc]) || [])
-       ]}
+  defp translate_prop(_, {macro_name, meta, [{name, _, nil}, type, options]}, doc)
+       when macro_name in [:prop, :data],
+       do:
+         {:attr, meta,
+          [
+            name,
+            translate_prop_type(type),
+            translate_prop_options(options, doc)
+          ]}
 
   defp translate_prop_type(type)
        when type in [:boolean, :integer, :float, :string, :atom, :list, :map, :global],
@@ -195,12 +215,15 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_prop_type(_), do: :any
 
-  defp translate_prop_options(options) do
-    options
-    |> Enum.map(fn
-      {:values!, v} -> {:values, v}
-      {k, v} when k in [:required, :default, :values, :examples] -> {k, v}
-    end)
+  defp translate_prop_options(options, doc) do
+    (options
+     |> Enum.map(fn
+       {:values!, v} -> {:values, v}
+       {k, v} when k in [:required, :default, :values, :examples] -> {k, v}
+     end)) ++
+      ((doc && [doc: doc]) || []) ++
+      (((Keyword.has_key?(options, :default) || Keyword.has_key?(options, :required)) && []) ||
+         [default: nil])
   end
 
   defp translate_slot(_, {:slot, meta, [{:default, _, nil}]}, doc),
@@ -276,14 +299,22 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   # TODO: context_put & children
   defp translate_node(
-         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | _], _children, node_meta},
+         {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | attrs], _children, node_meta},
          _
        ) do
-    {:expr, "render_slot(#{expr})", node_meta}
+    str =
+      [expr | attrs |> Enum.map(&translate_slot_attr/1) |> Enum.filter(&(!!&1))]
+      |> Enum.join(", ")
+
+    {:expr, "render_slot(#{str})", node_meta}
   end
 
-  defp translate_node({"#slot", _, _children, node_meta}, _) do
-    {:expr, "render_slot(@inner_block)", node_meta}
+  defp translate_node({"#slot", attrs, _children, node_meta}, _) do
+    str =
+      ["@inner_block" | attrs |> Enum.map(&translate_slot_attr/1) |> Enum.filter(&(!!&1))]
+      |> Enum.join(", ")
+
+    {:expr, "render_slot(#{str})", node_meta}
   end
 
   defp translate_node({type, attributes, children, node_meta}, c) do
@@ -293,6 +324,19 @@ defmodule Mix.Tasks.Moon.Light.Component do
 
   defp translate_node(other, _), do: other
 
+  defp translate_slot_attr({"generator_value", {:attribute_expr, expr, _m2}, _m1}), do: expr
+
+  defp translate_slot_attr(other) do
+    Logger.warning("Unknown slot attribute:")
+    dbg(other)
+    nil
+  end
+
+  defp get_alias(alias_, aliases) do
+    [key | other] = alias_ |> String.split(".")
+    [aliases[key] | other] |> Enum.join(".") |> String.to_atom()
+  end
+
   defp translate_type(type, c = %{aliases: aliases}) do
     cond do
       !String.match?(type, ~r/^[A-Z].*$/) ->
@@ -301,26 +345,38 @@ defmodule Mix.Tasks.Moon.Light.Component do
       type == "Icon" ->
         ".icon"
 
-      aliases[type] === nil ->
-        Logger.warning("Unknown type: ", type)
-        dbg(type)
+      # TODO: named slot components
+      get_alias(type, aliases) == Moon.Design.Table.Column ->
+        ":cols :let={model}"
 
-      aliases[type].component_type() == Surface.Component ->
-        mod = aliases[type] |> parent_module() |> c.config.module_translates.()
+      get_alias(type, aliases) === nil ->
+        Logger.warning("Unknown type: #{type}")
+        type
 
-        if function_exported?(mod, type |> String.downcase() |> String.to_atom(), 1) do
-          "#{(mod == c.config.module_translates.(c.module) && "") || mod}.#{type |> String.downcase()}"
-        else
-          ".moon module={#{type}}"
+      get_alias(type, aliases).component_type() == Surface.Component ->
+        mod = get_alias(type, aliases) |> parent_module() |> c.config.module_translates.()
+
+        case Code.ensure_compiled(mod) do
+          {:module, _} ->
+            if Keyword.has_key?(
+                 mod.__info__(:functions),
+                 type |> String.downcase() |> String.to_atom()
+               ) do
+              "#{(mod in [c.config.module_translates.(c.module), Moon.Light] && "") || mod}.#{type |> String.downcase()}"
+            else
+              ".moon module={#{type}}"
+            end
+
+          {:error, _} ->
+            ".moon module={#{type}}"
         end
 
-      aliases[type].component_type() == Surface.LiveComponent ->
-        mod = aliases[type] |> c.config.module_translates.()
+      get_alias(type, aliases).component_type() == Surface.LiveComponent ->
+        mod = get_alias(type, aliases) |> c.config.module_translates.()
 
-        if function_exported?(mod, :render, 1) do
-          ".live_component module={#{mod}}"
-        else
-          ".moon module={#{type}}"
+        case Code.ensure_compiled(mod) do
+          {:module, _} -> ".live_component module={#{mod}}"
+          {:error, _} -> ".moon module={#{type}}"
         end
     end
   end
@@ -333,11 +389,14 @@ defmodule Mix.Tasks.Moon.Light.Component do
   defp translate_attr({name, expr, meta}) when name in ~w(root :let :if :for),
     do: {name, expr, meta}
 
+  defp translate_attr({":attrs", expr, meta}), do: {:root, expr, meta}
+
   # TODO: translate each to data-value attribute
-  defp translate_attr({":values", value, meta}) do
-    Logger.warning(":value attr shoud be expanded: #{inspect(value)}")
-    {"values", translate_attr_value(value), meta}
-  end
+  defp translate_attr({":values", {:attribute_expr, expr, m2}, m1}),
+    do: {:root, {:attribute_expr, "data_values(#{expr})", m2}, m1}
+
+  defp translate_attr({":values", expr, m1}),
+    do: {:root, {:attribute_expr, "data_values(#{expr})", m1}, m1}
 
   defp translate_attr({":" <> name, value, meta}),
     do: {:"phx-#{name}", translate_attr_value(value), meta}
@@ -398,7 +457,7 @@ defmodule Mix.Tasks.Moon.Light.Component do
     module |> to_string() |> String.replace(~r/\.[A-Za-z]*$/, "") |> String.to_atom()
   end
 
-  def print_shell_instructions(%{path: _path, name: _name}) do
+  def print_shell_instructions(_) do
     Mix.shell().info("""
     """)
   end

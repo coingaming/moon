@@ -5,8 +5,6 @@ defmodule Moon.Design.Table do
 
   alias Moon.Icon
 
-  import Moon.Helpers.MakeList, only: [add_index_as: 1]
-
   @doc "List of  selected ids, or just id, or [], or nil"
   prop(selected, :any, default: [])
 
@@ -71,6 +69,8 @@ defmodule Moon.Design.Table do
   prop(body_attrs, :map, default: %{})
 
   def render(assigns) do
+    import Moon.Light.Table
+
     ~F"""
     <table
       class={merge([
@@ -93,21 +93,21 @@ defmodule Moon.Design.Table do
                 text_size_classes(@row_size),
                 [
                   "#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1,
-                  "cursor-pointer": col.sortable && @sorting_click
+                  "cursor-pointer": col[:sortable] && @sorting_click
                 ],
-                col.width
+                col[:width]
               ])}
-              :on-click={(col.sortable && col.name && @sorting_click) || nil}
-              :values={"sort-key": col.name, "sort-dir": toggle_sort_dir(@sort[:"#{col.name}"])}
-              data-testid={"sort-column-#{col.name}"}
+              :on-click={(col[:sortable] && col[:name] && @sorting_click) || nil}
+              :values={"sort-key": col[:name], "sort-dir": toggle_sort_dir(@sort[:"#{col[:name]}"])}
+              data-testid={"sort-column-#{col[:name]}"}
             >
-              {col.label}
+              {col[:label]}
               <Icon
-                :if={col.name && col.sortable}
+                :if={col[:name] && col[:sortable]}
                 class={
                   "text-[1.5em] transition-transform transition-200",
-                  "rotate-180": @sort[:"#{col.name}"] != "ASC",
-                  "opacity-0": !@sort[:"#{col.name}"]
+                  "rotate-180": @sort[:"#{col[:name]}"] != "ASC",
+                  "opacity-0": !@sort[:"#{col[:name]}"]
                 }
                 name="arrows_up"
               />
@@ -134,10 +134,10 @@ defmodule Moon.Design.Table do
               <td
                 class={merge([
                   "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
-                  col.width,
+                  col[:width],
                   text_size_classes(@row_size),
                   ["#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1],
-                  col.class
+                  col[:class]
                 ])}
                 data-testid={"row-#{row_index}-col-#{col_index}"}
               >
@@ -153,55 +153,6 @@ defmodule Moon.Design.Table do
 
   @doc "Sorts items by sort given"
   def sort_items(items, sort) do
-    import Enum, only: [reverse: 1, reduce: 3, sort_by: 3]
-
-    reverse(sort)
-    |> reduce(items, fn {field, sort_dir}, list ->
-      sort_by(list, & &1[field], &if(sort_dir == "ASC", do: &1 < &2, else: &1 > &2))
-    end)
+    Moon.Light.Table.sort_items(items, sort)
   end
-
-  defp toggle_sort_dir(sort_dir) do
-    if "#{sort_dir}" == "ASC" do
-      "DESC"
-    else
-      "ASC"
-    end
-  end
-
-  defp is_selected_item(item, selected),
-    do: item[:is_selected] || is_selected(item[:id], selected)
-
-  defp is_selected(id, selected) when is_list(selected), do: "#{id}" in selected
-  defp is_selected(id, selected), do: "#{id}" == "#{selected}"
-
-  defp inter_cell_border() do
-    "after:content-[\"\"] after:absolute after:w-px after:bg-beerus " <>
-      "after:h-3/5 after:bottom-[20%] after:right-0 after:translate-x-[-50%] relative"
-  end
-
-  defp text_size_classes(row_size) do
-    case row_size do
-      "xs" -> "text-moon-12 py-1 px-2"
-      "sm" -> "text-moon-14 py-1 px-3"
-      "md" -> "text-moon-14 py-2 px-3"
-      "lg" -> "text-moon-14 py-3 px-3"
-      "xl" -> "text-moon-14 py-4 px-3"
-      "2xl" -> "text-moon-14 py-5 px-3"
-    end
-  end
-
-  defp stream_data(%{items: stream = %Phoenix.LiveView.LiveStream{}}) do
-    stream
-  end
-
-  defp stream_data(%{items: items, sort: sort}) when is_list(items) do
-    items
-    |> add_index_as()
-    |> sort_items(sort)
-    |> Enum.with_index(&{&2, &1})
-  end
-
-  defp dom_id(id, _) when is_binary(id), do: id
-  defp dom_id(id, id2), do: "#{id2}-row-#{id}"
 end
