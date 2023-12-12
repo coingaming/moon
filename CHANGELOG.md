@@ -1,3 +1,10 @@
+# [2.78.0](https://github.com/coingaming/moon/compare/v2.77.0...v2.78.0) (2023-12-12)
+
+
+### Features
+
+* surface-> live_view for table component ([a6a4684](https://github.com/coingaming/moon/commit/a6a468423ce9b97c225f71c88e8b3813a067ea14))
+
 # [2.77.0](https://github.com/coingaming/moon/compare/v2.76.5...v2.77.0) (2023-12-08)
 
 
