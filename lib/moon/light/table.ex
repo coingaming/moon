@@ -1,9 +1,10 @@
 defmodule Moon.Light.Table do
-  @moduledoc "Some helper functions used in <.table /> component"
+  @moduledoc false
 
   use Moon.Light.Component
 
   defmodule Helper do
+    @moduledoc "Some helper functions used in <.table /> component"
     import Moon.Helpers.MakeList, only: [add_index_as: 1]
 
     def sort_items(items, sort) do
