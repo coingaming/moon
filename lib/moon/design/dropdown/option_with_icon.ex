@@ -28,7 +28,7 @@ defmodule Moon.Design.Dropdown.IconOption do
   @doc "Additional values to be passed"
   prop(values, :map, from_context: :values)
 
-  @doc "Inner content of the option"
+  @doc "Inner content of the option, unused"
   slot(default)
 
   def render(assigns) do
