@@ -1,4 +1,4 @@
-defmodule Moon.Helpers.Tokens do
+defmodule Moon.Convert.Tokens do
   @moduledoc "Some helper functions to proceed with html <-> tokens"
 
   require Logger

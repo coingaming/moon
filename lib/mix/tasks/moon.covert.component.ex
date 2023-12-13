@@ -1,0 +1,196 @@
+defmodule Mix.Tasks.Moon.Convert.Component do
+  @shortdoc "Converts surface component to phoenix_live_view"
+
+  @moduledoc """
+  Connverts component from surface to live_view format
+
+      $ mix moon.convert.component Form.MyModule
+
+  """
+
+  use Mix.Task
+  import Mix.Generator
+  import Moon.Convert.{Tokens, Ast, Module, Template}
+
+  import String, only: [replace: 3, downcase: 1, split: 2]
+  import List, only: [last: 1]
+
+  require Logger
+
+  alias Surface.Compiler.Parser
+
+  defstruct name: nil
+
+  @doc false
+  def run([name]) do
+    name
+    |> to_module()
+    |> context()
+    |> copy_templates()
+    |> print_shell_instructions()
+  end
+
+  defp to_module(name, pathes \\ ~w(Design Moon)) do
+    Module.safe_concat([name | pathes] |> Enum.reverse())
+  rescue
+    ArgumentError ->
+      to_module(name, tl(pathes))
+  end
+
+  defp context(module) do
+    %{
+      module: module,
+      short: module |> to_string() |> split(".") |> last(),
+      component_type: module.component_type(),
+      level: 0,
+      config: %{
+        use_translates: fn
+          [:Moon, :StatelessComponent] -> [:Moon, :Light, :Component]
+          [:Moon, :StatefulComponent] -> [:Moon, :Light, :LiveComponent]
+          other -> other
+        end,
+        defmodule_translates: fn
+          [:Moon, :Design | others] -> [:Moon, :Light | others]
+          [:MoonWeb, :Examples, :Design | others] -> [:MoonWeb, :Examples, :Light | others]
+        end,
+        module_translates: fn mod ->
+          [
+            :"Elixir"
+            | mod
+              |> to_string()
+              |> String.replace("Elixir.", "")
+              |> String.split(".")
+              |> Enum.map(&String.to_atom/1)
+              |> (fn
+                    [:Moon, :Design | others] ->
+                      [:Moon, :Light | others]
+
+                    [:MoonWeb, :Examples, :Design | others] ->
+                      [:MoonWeb, :Examples, :Light | others]
+
+                    other ->
+                      other
+                  end).()
+          ]
+          |> Enum.join(".")
+          |> String.to_atom()
+        end
+      }
+    }
+  end
+
+  defp translate_ast(c = %{module: module}) do
+    ast = module |> module_ast()
+
+    c = Map.put(c, :aliases, ast_aliases(ast))
+
+    ast
+    |> Macro.prewalk(nil, fn
+      result = {:def, _, [{:render, _, _} | _]}, acc ->
+        {translate_render(c, result), acc}
+
+      result = {:sigil_F, _, _}, acc ->
+        {translate_sigil(c, result), acc}
+
+      result = {:prop, _meta, _options}, acc ->
+        {translate_prop(c, result, acc), nil}
+
+      result = {:data, _meta, _options}, acc ->
+        {translate_prop(c, result, acc), nil}
+
+      result = {:slot, _meta, _options}, acc ->
+        {translate_slot(c, result, acc), nil}
+
+      result = {:@, _, [{:moduledoc, _, [_text]}]}, acc ->
+        {translate_moduledoc(c, result), acc}
+
+      result = {:@, _, [{:doc, _, [_text]}]}, _acc ->
+        {:skip, translate_doc(c, result)}
+
+      result = {:use, _, [{:__aliases__, _, _alias} | _]}, acc ->
+        {translate_use_defmodule(c, result), acc}
+
+      result = {:defmodule, _, [{:__aliases__, _, _alias} | _]}, acc ->
+        {translate_use_defmodule(c, result), acc}
+
+      other, acc ->
+        {other, acc}
+    end)
+    |> Tuple.to_list()
+    |> hd()
+  end
+
+  defp translate_sigil(context, {:sigil_F, m1, [{:<<>>, meta, [string]}, opts]}) do
+    # "copy of Surface.sigil_F macro & Surface.Compiler.compile"
+
+    result =
+      string
+      |> Parser.parse!(
+        # file: module.__info__(:compile)[:source] |> to_string(),
+        # line: meta[:line] + if(Keyword.has_key?(meta, :indentation), do: 1, else: 0),
+        # caller: %{module: module, function: :render},
+        # checks: opts[:checks] || [],
+        # warnings: opts[:warnings] || [],
+        # column: Keyword.get(opts, :column, 1),
+        # indentation: Keyword.get(opts, :indentation, 0)
+      )
+      |> prewalk(context, fn
+        # :text, text, context ->
+        #   {text, context}
+
+        _node_type, node, context ->
+          {translate_node(node, context), context}
+      end)
+      |> Tuple.to_list()
+      |> hd()
+      |> to_text()
+
+    {:sigil_H, m1, [{:<<>>, meta, [result]}, opts]}
+  end
+
+  defp copy_templates(context = %{component_type: Surface.LiveComponent}) do
+    context.module
+    |> context.config.module_translates.()
+    |> module_to_path()
+    |> create_file(translate_ast(context) |> Macro.to_string() |> String.replace("  :skip\n", ""))
+
+    context
+  end
+
+  defp copy_templates(context = %{component_type: Surface.Component}) do
+    target_module = context.module |> parent_module() |> context.config.module_translates.()
+
+    target_module
+    |> module_to_path()
+    |> create_file(
+      case target_module |> Code.ensure_compiled() do
+        {:module, _} ->
+          target_module |> module_ast()
+
+        {:error, :nofile} ->
+          "priv/templates/moon.convert.component/empty_module.ex"
+          |> EEx.eval_file(name: target_module)
+          |> Code.string_to_quoted!()
+      end
+      |> merge_ast(translate_ast(context))
+      |> Macro.to_string()
+      |> String.replace("  :skip\n", "")
+    )
+
+    context
+  end
+
+  defp module_to_path(module) do
+    (module
+     |> to_string()
+     |> replace(~r/([a-z])([A-Z])/, "\\1_\\2")
+     |> downcase()
+     |> replace(".", "/")
+     |> replace("elixir/", "lib/")) <> ".exs"
+  end
+
+  def print_shell_instructions(_) do
+    Mix.shell().info("""
+    """)
+  end
+end
