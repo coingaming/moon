@@ -1,3 +1,10 @@
+## [2.78.2](https://github.com/coingaming/moon/compare/v2.78.1...v2.78.2) (2023-12-13)
+
+
+### Bug Fixes
+
+* adding context to Dropdown.Options default slot ([#802](https://github.com/coingaming/moon/issues/802)) ([8fa3ad1](https://github.com/coingaming/moon/commit/8fa3ad146a671dfa69325a4c7eb5088e61336832))
+
 ## [2.78.1](https://github.com/coingaming/moon/compare/v2.78.0...v2.78.1) (2023-12-13)
 
 
