@@ -1,3 +1,10 @@
+## [2.78.1](https://github.com/coingaming/moon/compare/v2.78.0...v2.78.1) (2023-12-13)
+
+
+### Bug Fixes
+
+* Dropdown slot fix ([#801](https://github.com/coingaming/moon/issues/801)) ([2ac3594](https://github.com/coingaming/moon/commit/2ac35941b3f5c823f659e07f360ea794e74064d4))
+
 # [2.78.0](https://github.com/coingaming/moon/compare/v2.77.0...v2.78.0) (2023-12-12)
 
 
