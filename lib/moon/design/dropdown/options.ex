@@ -73,7 +73,7 @@ defmodule Moon.Design.Dropdown.Options do
           on_click={@on_change}
           value={title}
           values={@values}
-        />
+        >{title}</.moon>
       {/if}
       <#slot />
       <#slot {@footer} />
