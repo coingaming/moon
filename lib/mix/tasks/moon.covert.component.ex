@@ -82,7 +82,11 @@ defmodule Mix.Tasks.Moon.Convert.Component do
     context.module
     |> context.config.module_translates.()
     |> module_to_path()
-    |> create_file(surface_to_liveview(context) |> Macro.to_string() |> String.replace("  :skip\n", ""))
+    |> create_file(
+      surface_to_liveview(context)
+      |> Macro.to_string()
+      |> String.replace("  :skip\n", "")
+    )
 
     context
   end
