@@ -3,7 +3,7 @@ defmodule Moon.Convert do
 
   alias Surface.Compiler.Parser
 
-  def translate_ast(c = %{module: module}) do
+  def surface_to_liveview(c = %{module: module}) do
     import __MODULE__.{Ast, Module}
 
     ast = module |> module_ast()

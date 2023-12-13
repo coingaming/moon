@@ -82,7 +82,7 @@ defmodule Mix.Tasks.Moon.Convert.Component do
     context.module
     |> context.config.module_translates.()
     |> module_to_path()
-    |> create_file(translate_ast(context) |> Macro.to_string() |> String.replace("  :skip\n", ""))
+    |> create_file(surface_to_liveview(context) |> Macro.to_string() |> String.replace("  :skip\n", ""))
 
     context
   end
@@ -102,7 +102,7 @@ defmodule Mix.Tasks.Moon.Convert.Component do
           |> EEx.eval_file(name: target_module)
           |> Code.string_to_quoted!()
       end
-      |> merge_ast(translate_ast(context))
+      |> merge_ast(surface_to_liveview(context))
       |> Macro.to_string()
       |> String.replace("  :skip\n", "")
     )
