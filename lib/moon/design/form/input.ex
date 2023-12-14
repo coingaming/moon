@@ -68,7 +68,10 @@ defmodule Moon.Design.Form.Input do
   def render(assigns) do
     ~F"""
     <input
-      class={merge(input_classes(assigns) ++ input_size_classes(assigns) ++ [@field_class, @class])}
+      class={merge(
+        input_classes(assigns) ++
+          input_size_classes(assigns) ++ [@field_class, get_config(:default_class), @class]
+      )}
       {=@type}
       {=@placeholder}
       value={@value || input_value(@form, @field)}
