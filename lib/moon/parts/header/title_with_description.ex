@@ -13,8 +13,7 @@ defmodule Moon.Parts.Header.TitleWithDescription do
   prop(title_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(description_class, :css_class)
-  @doc "Conditional displaying due to an issue with named slots in Surface"
-  prop(is_hidden, :boolean, default: false)
+
   @doc "Conditional displaying due to an issue with named slots in Surface"
   prop(breadcrumbs_hidden, :boolean, default: false)
   @doc "Title"
@@ -30,7 +29,6 @@ defmodule Moon.Parts.Header.TitleWithDescription do
       class={merge([
         [
           "w-full text-bulma text-moon-24 p-4 md:p-8 md:not-first:pt-0 px-4 pb-6 pt-[5.5rem] flex flex-col gap-3",
-          hidden: @is_hidden,
           "md:not-first:pt-8": @breadcrumbs_hidden
         ],
         @class
