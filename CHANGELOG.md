@@ -1,3 +1,10 @@
+## [2.78.3](https://github.com/coingaming/moon/compare/v2.78.2...v2.78.3) (2023-12-14)
+
+
+### Bug Fixes
+
+* Show-room bug fixes [MDS-908] ([#804](https://github.com/coingaming/moon/issues/804)) ([0a370a2](https://github.com/coingaming/moon/commit/0a370a291a312e7877e3739f6e2fb54315bf513d))
+
 ## [2.78.2](https://github.com/coingaming/moon/compare/v2.78.1...v2.78.2) (2023-12-13)
 
 
