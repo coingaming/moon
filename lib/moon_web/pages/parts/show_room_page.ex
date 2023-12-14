@@ -24,8 +24,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
 
   data(description, :string,
     default:
-      "
-    Boost efficiency with BackOffice templates powered by Moon. Access diverse options via the bottom-right wizard, and customize your sidebar using the editable table below."
+      "Boost efficiency with BackOffice templates powered by Moon. Access diverse options via the bottom-right wizard, and customize your sidebar using the editable table below."
   )
 
   data(has_breadcrumbs, :boolean, default: true)
@@ -330,7 +329,7 @@ defmodule MoonWeb.Pages.Parts.ShowRoomPage do
   end
 
   def handle_event("toggle_sidebar_theme", _, socket) do
-    {:noreply, assign(socket, light_sidebar: !socket.assigns.light_sidebar)}
+    {:noreply, assign(socket, light_sidebar: !socket.assigns.light_sidebar, selected: 0)}
   end
 
   def handle_event("toggle_header_theme", _, socket) do
