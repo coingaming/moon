@@ -2,7 +2,7 @@ defmodule Mix.Tasks.Moon.Convert.Component do
   @shortdoc "Converts surface component to phoenix_live_view"
 
   @moduledoc """
-  Connverts component from surface to live_view format
+  Converts component from surface to live_view format
 
       $ mix moon.convert.component Form.MyModule
 
