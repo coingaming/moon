@@ -4,6 +4,6 @@
 import Config
 
 config :surface, :components, [
-  {Moon.Design.Form.Input, default_class: "hidden"},
-  {Moon.Design.Avatar, default_class: "hidden"}
+  # {Moon.Design.Form.Input, default_class: "hidden"},
+  # {Moon.Design.Avatar, default_class: "hidden"}
 ]
