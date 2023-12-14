@@ -1,3 +1,10 @@
+## [2.78.4](https://github.com/coingaming/moon/compare/v2.78.3...v2.78.4) (2023-12-14)
+
+
+### Bug Fixes
+
+* refactoring converter scripts ([#803](https://github.com/coingaming/moon/issues/803)) ([68bd825](https://github.com/coingaming/moon/commit/68bd825f282cd28a63496193582885ebcdebd7c6))
+
 ## [2.78.3](https://github.com/coingaming/moon/compare/v2.78.2...v2.78.3) (2023-12-14)
 
 
