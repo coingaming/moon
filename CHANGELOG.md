@@ -1,3 +1,10 @@
+## [2.79.1](https://github.com/coingaming/moon/compare/v2.79.0...v2.79.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* timezone error avoiding ([#807](https://github.com/coingaming/moon/issues/807)) ([da146ae](https://github.com/coingaming/moon/commit/da146ae0b3c376c4851e3d264caa211f8741357c))
+
 # [2.79.0](https://github.com/coingaming/moon/compare/v2.78.4...v2.79.0) (2023-12-15)
 
 
