@@ -10,7 +10,7 @@ defmodule MoonWeb.Examples.Light.TableExample.Checkboxes do
   attr(:models, :list,
     default:
       Enum.map(1..5, fn x ->
-        %{id: x, name: "Name #{x}", created_at: DateTime.add(DateTime.utc_now(), -3600 + x)}
+        %{id: x, name: "Name #{x}", created_at: DateTime.utc_now()}
       end)
   )
 

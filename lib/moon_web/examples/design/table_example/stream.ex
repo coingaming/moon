@@ -17,7 +17,7 @@ defmodule MoonWeb.Examples.Design.TableExample.Stream do
       %{
         id: x,
         name: "Name #{x}",
-        created_at: DateTime.add(DateTime.utc_now(), -3600 + x)
+        created_at: DateTime.utc_now()
       }
     end)
   end
@@ -69,7 +69,7 @@ defmodule MoonWeb.Examples.Design.TableExample.Stream do
         %{
           id: x,
           name: "Name \#{x}",
-          created_at: DateTime.add(DateTime.utc_now(), -3600 + x)
+          created_at: DateTime.utc_now()
         }
       end)
     end
