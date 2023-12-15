@@ -42,9 +42,9 @@ defmodule Moon.Design.Dropdown.Options do
         "flex flex-col absolute z-[99]",
         "p-1 rounded-moon-s-md box-border bg-goku shadow-moon-lg overflow-y-auto focus:outline-none",
         (@position && position_class(@position)) || "w-full top-full my-2",
-        @class,
-        hidden: !@is_open,
-        "p-0": slot_assigned?(:header) || slot_assigned?(:footer)
+        [hidden: !@is_open, "p-0": slot_assigned?(:header) || slot_assigned?(:footer)],
+        get_config(:default_class),
+        @class
       ])}
       {=@id}
       data-testid={@testid}

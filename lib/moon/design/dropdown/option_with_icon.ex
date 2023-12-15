@@ -46,6 +46,7 @@ defmodule Moon.Design.Dropdown.IconOption do
           "px-4 gap-3 rounded-none",
           "border-b border-beerus": @has_bottom_divider
         ],
+        get_config(:default_class),
         @class
       ])}
       {=@testid}

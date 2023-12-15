@@ -59,6 +59,7 @@ defmodule Moon.Design.Form.Checkbox do
           "opacity-disabled": @disabled,
           "cursor-not-allowed select-none": @readonly || @disabled
         ],
+        get_config(:default_label_class),
         @checkbox_label_class
       ])}
       {=@field}
@@ -83,6 +84,7 @@ defmodule Moon.Design.Form.Checkbox do
         is_selected={is_selected(assigns)}
         class={merge([
           "absolute top-1 ltr:left-0 rtl:right-0",
+          get_config(:default_class),
           @class
         ])}
       />

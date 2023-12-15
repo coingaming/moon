@@ -54,6 +54,7 @@ defmodule Moon.Design.Dropdown.Select do
           "opacity-60 outline-0 border-none cursor-not-allowed hover:shadow-input focus:shadow-input":
             @disabled
         ],
+        get_config(:default_class),
         @class
       ])}
     >
