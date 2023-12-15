@@ -62,6 +62,7 @@ defmodule Moon.Design.Form.Select do
           "cursor-not-allowed opacity-60": @disabled
         ],
         @field_class,
+        get_config(:default_class),
         @class
       ])}
       {=@field}

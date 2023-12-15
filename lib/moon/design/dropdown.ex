@@ -63,7 +63,7 @@ defmodule Moon.Design.Dropdown do
   def render(assigns) do
     ~F"""
     <div
-      class={merge(["relative", @class])}
+      class={merge(["relative", get_config(:default_class), @class])}
       :on-click-away={(@autoclose && "close_me") || nil}
       {=@id}
       data-testid={@testid}

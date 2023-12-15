@@ -27,6 +27,7 @@ defmodule Moon.Design.Avatar do
             "text-moon-16 h-14 w-14": @size == "xl",
             "text-moon-20 h-16 w-16": @size == "2xl"
           ],
+          get_config(:default_class),
           @class
         ]),
         "bg-cover"

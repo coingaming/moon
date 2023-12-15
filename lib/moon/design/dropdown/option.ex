@@ -47,6 +47,7 @@ defmodule Moon.Design.Dropdown.Option do
           "h-8 py-1 px-2 rounded-moon-i-xs": @size == "sm",
           "h-10 py-2 px-3 rounded-moon-i-sm": @size == "md"
         ],
+        get_config(:default_class),
         @class
       ])}
       data-testid={@testid}
