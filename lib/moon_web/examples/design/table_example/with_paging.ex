@@ -50,7 +50,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithPaging do
 
   def get_all_models() do
     Enum.map(1..102, fn x ->
-      %{id: x, name: "Name #{x}", created_at: DateTime.add(DateTime.utc_now(), -3600 + x)}
+      %{id: x, name: "Name #{x}", created_at: DateTime.utc_now()}
     end)
   end
 
@@ -125,7 +125,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithPaging do
 
     def get_all_models() do
       Enum.map(1..102, fn x ->
-        %{id: x, name: "Name #\{x}", created_at: DateTime.add(DateTime.utc_now(), -3600 + x)}
+        %{id: x, name: "Name #\{x}", created_at: DateTime.utc_now()}
       end)
     end
 
