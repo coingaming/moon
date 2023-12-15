@@ -1,3 +1,10 @@
+# [2.79.0](https://github.com/coingaming/moon/compare/v2.78.4...v2.79.0) (2023-12-15)
+
+
+### Features
+
+* some per-component default classes configuration ([3e011cd](https://github.com/coingaming/moon/commit/3e011cde16d626c2ed418c060f4aa4271cb1954d))
+
 ## [2.78.4](https://github.com/coingaming/moon/compare/v2.78.3...v2.78.4) (2023-12-14)
 
 
