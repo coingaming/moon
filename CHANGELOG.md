@@ -1,3 +1,10 @@
+## [2.79.2](https://github.com/coingaming/moon/compare/v2.79.1...v2.79.2) (2023-12-19)
+
+
+### Bug Fixes
+
+* some Form.Field attributes deprecating ([75e98db](https://github.com/coingaming/moon/commit/75e98db3f9f4d7b4db517785c8bb451f0d29b300))
+
 ## [2.79.1](https://github.com/coingaming/moon/compare/v2.79.0...v2.79.1) (2023-12-15)
 
 
