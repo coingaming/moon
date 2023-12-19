@@ -25,9 +25,9 @@ defmodule Moon.Design.Form.Field do
   prop(error_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(hint_class, :css_class)
-  @doc "Id attribute for DOM element"
+  @doc "Deprecated: id attribute for DOM element"
   prop(id, :string)
-  @doc "Data-testid attribute for DOM element"
+  @doc "Deprecated: data-testid attribute for DOM element"
   prop(testid, :string)
   @doc "Whether label is on side of input field"
   prop(is_horizontal, :boolean, from_context: :is_horizontal)
