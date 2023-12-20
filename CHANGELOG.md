@@ -1,3 +1,10 @@
+## [2.79.5](https://github.com/coingaming/moon/compare/v2.79.4...v2.79.5) (2023-12-20)
+
+
+### Bug Fixes
+
+* some path fixes ([cd7f3b5](https://github.com/coingaming/moon/commit/cd7f3b5f19b054be2a00e430321ef8025ffbefad))
+
 ## [2.79.4](https://github.com/coingaming/moon/compare/v2.79.3...v2.79.4) (2023-12-20)
 
 
