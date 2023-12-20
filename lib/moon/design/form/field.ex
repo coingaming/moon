@@ -25,9 +25,9 @@ defmodule Moon.Design.Form.Field do
   prop(error_class, :css_class)
   @doc "Additional Tailwind classes"
   prop(hint_class, :css_class)
-  @doc "Deprecated: id attribute for DOM element"
+  @doc "id attribute for DOM element"
   prop(id, :string)
-  @doc "Deprecated: data-testid attribute for DOM element"
+  @doc "data-testid attribute for DOM element"
   prop(testid, :string)
   @doc "Whether label is on side of input field"
   prop(is_horizontal, :boolean, from_context: :is_horizontal)
@@ -43,7 +43,7 @@ defmodule Moon.Design.Form.Field do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.Field
+    <Field.Field
       name={@field}
       class={merge([
         [
@@ -66,7 +66,7 @@ defmodule Moon.Design.Form.Field do
         {=@has_error_icon}
         {=@is_horizontal}
       />
-    </Surface.Components.Form.Field>
+    </Field.Field>
     """
   end
 end
