@@ -1,3 +1,10 @@
+## [2.79.3](https://github.com/coingaming/moon/compare/v2.79.2...v2.79.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* phx-feedback-for Form.Field ([#808](https://github.com/coingaming/moon/issues/808)) ([fa1b858](https://github.com/coingaming/moon/commit/fa1b8585564c03c1b4877adc346cf349704a5e0a))
+
 ## [2.79.2](https://github.com/coingaming/moon/compare/v2.79.1...v2.79.2) (2023-12-19)
 
 
