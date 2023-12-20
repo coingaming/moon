@@ -1,3 +1,10 @@
+## [2.79.4](https://github.com/coingaming/moon/compare/v2.79.3...v2.79.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* FileInput set correct z-index for cancel upload ([#809](https://github.com/coingaming/moon/issues/809)) ([4dac553](https://github.com/coingaming/moon/commit/4dac55325840b3816f56574ac61a2a35c96e6294))
+
 ## [2.79.3](https://github.com/coingaming/moon/compare/v2.79.2...v2.79.3) (2023-12-20)
 
 
