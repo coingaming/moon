@@ -149,10 +149,14 @@ defmodule Elixir.Moon.Light.Form do
       autocomplete={@autocomplete}
       {@opts}
       phx-change={@on_change && @on_change.name}
-      phx-target={Enum.find([@on_change, @on_keyup, @on_focus, @on_blur], fn e -> e && e.target end) |> Map.get(:target)}
       phx-keyup={@on_keyup && @on_keyup.name}
       phx-focus={@on_focus && @on_focus.name}
       phx-blur={@on_blur && @on_blur.name}
+      phx-target={
+        [@on_change, @on_keyup, @on_focus, @on_blur]
+        |> Enum.find(%{}, &(&1 && &1.target))
+        |> Map.get(:target)
+      }
     />
     """
   end
