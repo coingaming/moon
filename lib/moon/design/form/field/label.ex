@@ -12,10 +12,10 @@ defmodule Moon.Design.Form.Field.Label do
   @doc "Additional attributes"
   prop(attrs, :map, default: %{})
 
-  @doc "Field, Surface-style"
-  prop(field, :atom)
-  @doc "Form, Surface-style"
-  prop(form, :any)
+  @doc "Name of the field, usually should be taken from context"
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
+  @doc "Form info, usually should be taken from context"
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
   @doc "Atom or changeset to inform the form data"
   prop(for, :string)
   @doc "Common moon size property"
@@ -36,9 +36,12 @@ defmodule Moon.Design.Form.Field.Label do
 
   def render(assigns) do
     ~F"""
-    <Surface.Components.Form.Label
-      {=@field}
-      {=@form}
+    <label
+      for={@for || (@form && @field && Phoenix.HTML.Form.input_id(@form, @field))}
+      {=@id}
+      data-testid={@testid}
+      :on-click={@on_click}
+      phx-value-value={@value}
       class={merge([
         [
           "flex gap-2 cursor-pointer whitespace-nowrap pb-2 items-center leading-normal",
@@ -48,19 +51,10 @@ defmodule Moon.Design.Form.Field.Label do
         ],
         @class
       ])}
-      opts={Map.merge(
-        %{
-          for: @for,
-          id: @id,
-          "data-testid": @testid,
-          "phx-click": @on_click,
-          "phx-value-value": @value
-        },
-        @attrs
-      )}
+      {@attrs}
     >
       <#slot>{@title}</#slot>
-    </Surface.Components.Form.Label>
+    </label>
     """
   end
 end

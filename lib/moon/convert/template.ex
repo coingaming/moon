@@ -4,28 +4,50 @@ defmodule Moon.Convert.Template do
   require Logger
   import Moon.Convert.Ast
 
+  defp translate_slot(name, attrs, children) do
+    str =
+      [name | attrs |> Enum.map(&translate_slot_attr/1) |> Enum.filter(&(!!&1))]
+      |> Enum.join(", ")
+
+    case children do
+      [] ->
+        {:expr, "render_slot(#{str})", %{}}
+
+      [{:expr, expr, _}] ->
+        {:expr, "render_slot(#{str}) || #{expr}", %{}}
+
+      _ ->
+        # {#if slot_assigned?(@default)}\n    {render_slot(@default)}\n  {#else}\n    children  {/if}
+        {:block, "if",
+         [
+           {:root, {:attribute_expr, "has_slot?(#{name})", %{}}, %{}}
+         ],
+         [
+           {:block, :default, [],
+            [
+              "\n    ",
+              {:expr, "render_slot(#{str})", %{}},
+              "\n  "
+            ], %{}},
+           {:block, "else", [], children, %{}}
+         ], %{has_sub_blocks?: true}}
+    end
+  end
+
   def translate_node(text, _) when is_binary(text), do: text
 
   def translate_node({:expr, expr, meta}, _), do: {:expr, expr, meta}
 
   # TODO: context_put & children
   def translate_node(
-        {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | attrs], _children, node_meta},
+        {"#slot", [{:root, {:attribute_expr, expr, _m2}, _m1} | attrs], children, _m3},
         _
       ) do
-    str =
-      [expr | attrs |> Enum.map(&translate_slot_attr/1) |> Enum.filter(&(!!&1))]
-      |> Enum.join(", ")
-
-    {:expr, "render_slot(#{str})", node_meta}
+    translate_slot(expr, attrs, children)
   end
 
-  def translate_node({"#slot", attrs, _children, node_meta}, _) do
-    str =
-      ["@inner_block" | attrs |> Enum.map(&translate_slot_attr/1) |> Enum.filter(&(!!&1))]
-      |> Enum.join(", ")
-
-    {:expr, "render_slot(#{str})", node_meta}
+  def translate_node({"#slot", attrs, children, _}, _) do
+    translate_slot("@inner_block", attrs, children)
   end
 
   def translate_node({type, attributes, children, node_meta}, c) do
@@ -84,7 +106,10 @@ defmodule Moon.Convert.Template do
 
   defp get_alias(alias_, aliases) do
     [key | other] = alias_ |> String.split(".")
-    [aliases[key] | other] |> Enum.join(".") |> String.to_atom()
+
+    (((aliases[key] && [aliases[key]]) || ["Elixir", key]) ++ other)
+    |> Enum.join(".")
+    |> String.to_atom()
   end
 
   defp translate_type(type, c = %{aliases: aliases}) do

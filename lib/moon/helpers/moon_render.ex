@@ -88,8 +88,8 @@ defmodule Moon.Helpers.MoonRender do
   end
 
   def data_values(list \\ []) do
-    Enum.map(list, fn {k, v} ->
-      {:"phx-value-#{k |> to_string()}", v}
-    end)
+    Enum.map(list, fn {k, v} -> {:"phx-value-#{k}", v} end)
   end
+
+  def has_slot?(smth), do: !!dbg(smth)
 end

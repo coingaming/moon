@@ -14,7 +14,7 @@ defmodule Moon.Design.Form.Field.Field do
   @doc "The CSS class for the generated `<div>` element"
   prop class, :css_class
 
-  @doc "data-testid attribute for DOM element"
+  @doc "id attribute for DOM element"
   prop id, :string
 
   @doc "data-testid attribute for DOM element"

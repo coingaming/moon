@@ -64,6 +64,12 @@ defmodule Moon.Convert.Tokens do
       {:expr, expr, _meta}, text ->
         "#{text}<%= #{expr} %>"
 
+      {:block, :default, [], children, _meta}, text ->
+        "#{text}#{to_text(children, context)}"
+
+      {:block, "else", [], children, _meta}, text ->
+        "#{text}<% else %>#{to_text(children, context)}"
+
       {:block, type, [{:root, {:attribute_expr, expr, _m2}, _m1} | other_attrs], children, _meta},
       text ->
         "#{text}<%= #{type} #{expr} #{attrs_to_text(other_attrs)} do %>#{to_text(children, context)}<% end %>"
@@ -74,10 +80,24 @@ defmodule Moon.Convert.Tokens do
     attrs
     |> List.wrap()
     |> Enum.map_join(" ", fn
-      {:root, {:attribute_expr, expr, _m2}, _m1} -> "{#{expr}}"
-      {:root, expr, _m1} -> expr
-      {name, {:attribute_expr, expr, _m2}, _m1} -> "#{name}={#{expr}}"
-      {name, expr, _m1} -> "#{name}=\"#{expr}\""
+      {:root, {:attribute_expr, expr, _m2}, _m1} ->
+        "{#{expr}}"
+
+      {:root, expr, _m1} ->
+        expr
+
+      {"root", {:attribute_expr, expr, _m2}, _m1} ->
+        "{#{expr}}"
+
+      {"root", expr, _m1} ->
+        expr
+
+      {name, {:attribute_expr, expr, _m2}, _m1} ->
+        if "#{name}" == "root", do: dbg({name, expr})
+        "#{name}={#{expr}}"
+
+      {name, expr, _m1} ->
+        "#{name}=\"#{expr}\""
     end)
   end
 
