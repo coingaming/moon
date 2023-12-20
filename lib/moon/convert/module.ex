@@ -39,12 +39,16 @@ defmodule Moon.Convert.Module do
   def translate_prop_options(options, doc) do
     (options
      |> Enum.map(fn
-       {:values!, v} -> {:values, v}
+       {:values!, v} ->
+         {:values, v}
+
        {:from_context, _v} ->
-          Logger.warning("Attribute is taken from_context")
-          dbg(options)
-          nil
-       {k, v} when k in [:required, :default, :values, :examples] -> {k, v}
+         Logger.warning("Attribute is taken from_context")
+         dbg(options)
+         nil
+
+       {k, v} when k in [:required, :default, :values, :examples] ->
+         {k, v}
      end)
      |> Enum.filter(&(!!&1))) ++
       ((doc && [doc: doc]) || []) ++

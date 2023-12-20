@@ -2,7 +2,7 @@ defmodule Elixir.Moon.Light.Form.Field do
   @moduledoc false
   use Moon.Light.Component
   import Moon.Light
-  import Phoenix.HTML.Form, only: [input_name: 2]
+
   attr(:id, :string, doc: "Id attribute for HTML tag", default: nil)
   attr(:testid, :string, doc: "Data-testid attribute for HTML tag", default: nil)
   attr(:class, :any, doc: "Additional Tailwind classes", default: nil)

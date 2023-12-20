@@ -11,6 +11,8 @@ defmodule Moon.Light.Component do
       alias Moon.Light.Sur.Event
 
       def __moduledoc__(), do: @moduledoc
+
+      def get_config(name), do: nil
     end
   end
 end
