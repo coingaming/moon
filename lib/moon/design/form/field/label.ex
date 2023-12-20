@@ -51,7 +51,7 @@ defmodule Moon.Design.Form.Field.Label do
         ],
         @class
       ])}
-      {@attrs}
+      {...@attrs}
     >
       <#slot>{@title}</#slot>
     </label>

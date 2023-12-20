@@ -134,7 +134,8 @@ defmodule Elixir.Moon.Light.Form do
       class={
         merge(
           input_classes(assigns) ++
-            input_size_classes(assigns) ++ [@field_class, get_config(:default_class), @class]
+            input_size_classes(assigns) ++
+            [@field_class, get_config(:default_class), @class]
         )
       }
       type={@type}
