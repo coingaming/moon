@@ -25,6 +25,10 @@ defmodule Moon.Helpers.Form do
 
   def value_is_true(form, field), do: "#{input_value(form, field)}" == "true"
 
+  def has_error(%Phoenix.HTML.Form{source: source}, field) do
+    has_error(source, field)
+  end
+
   def has_error(_form = %{errors: errors}, field) do
     Enum.count(Keyword.get_values(errors || [], field)) > 0
   end
