@@ -15,7 +15,7 @@ defmodule Moon.Components.FileInput.ListOfFiles do
           <div class="overflow-hidden" style="max-width: 50px"><.live_img_preview entry={entry} width="100" /></div>
           <div class="w-full">{entry.client_name} ({get_size(entry.client_size)} KB)</div>
           <div style="width: 300px"><ProgressLinear value={entry.progress} /></div>
-          <div><div :on-click={@cancel_upload} :values={ref: entry.ref} aria-label="cancel"><Moon.Icons.ControlsClose /></div></div>
+          <div class="z-30"><div :on-click={@cancel_upload} :values={ref: entry.ref} aria-label="cancel"><Moon.Icons.ControlsClose /></div></div>
         </div>
         <div>
           {#for err <- upload_errors(@conf, entry)}
