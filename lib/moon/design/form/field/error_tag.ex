@@ -58,5 +58,4 @@ defmodule Moon.Design.Form.Field.ErrorTag do
       nil -> nil
     end
   end
-
 end
