@@ -11,6 +11,8 @@ defmodule Moon.Design.Form.Field.Error do
   prop(id, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "Form info, usually should be taken from context"
+  prop(form, :form, from_context: {Surface.Components.Form, :form})
   @doc "Whether error icon is shown"
   prop(has_error_icon, :boolean, default: false)
   @doc "Whether label is on side of input field"
@@ -35,8 +37,11 @@ defmodule Moon.Design.Form.Field.Error do
       <#slot>
         <Icon name="generic_info" :if={@has_error_icon} />
       </#slot>
-      <Surface.Components.Form.ErrorTag />
+      <Moon.Design.Form.Field.ErrorTag form={get_changeset(@form)} />
     </div>
     """
   end
+
+  defp get_changeset(%Phoenix.HTML.Form{source: source}), do: source
+  defp get_changeset(other), do: other
 end
