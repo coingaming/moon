@@ -1,3 +1,10 @@
+## [2.79.6](https://github.com/coingaming/moon/compare/v2.79.5...v2.79.6) (2023-12-21)
+
+
+### Bug Fixes
+
+* error messages back in forms ([#811](https://github.com/coingaming/moon/issues/811)) ([1aea6f3](https://github.com/coingaming/moon/commit/1aea6f34b7ccd2bd7bd767a066ae2fed797c8fa2))
+
 ## [2.79.5](https://github.com/coingaming/moon/compare/v2.79.4...v2.79.5) (2023-12-20)
 
 
