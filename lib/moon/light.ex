@@ -406,13 +406,15 @@ defmodule Moon.Light do
     ~H"""
     <div
       id={@id}
-      class={merge([
-        "relative",
-        "w-4 h-4": @size == "2xs",
-        "w-6 h-6": @size in ~w(xs sm),
-        "w-10 h-10": @size == "md",
-        "w-12 h-12": @size == "xl"
-      ])}
+      class={
+        merge([
+          "relative",
+          "w-4 h-4": @size == "2xs",
+          "w-6 h-6": @size in ~w(xs sm),
+          "w-10 h-10": @size == "md",
+          "w-12 h-12": @size == "xl"
+        ])
+      }
       data-testid={@testid}
     >
       <%= for cls <- [""] ++ ~w(animation-delay-minus-45 animation-delay-minus-30 animation-delay-minus-15) do %>
