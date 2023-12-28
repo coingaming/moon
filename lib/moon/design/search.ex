@@ -34,6 +34,8 @@ defmodule Moon.Design.Search do
   prop(on_change, :event)
   @doc "Additional attributes for the option link"
   prop(attrs, :map, default: %{})
+  @doc "Label to use in the beginning in case of no results"
+  prop(no_results_label, :string, default: "Search for")
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)
   @doc "Trigger element for the dropdown, default is Dropdown.Select"
@@ -77,6 +79,7 @@ defmodule Moon.Design.Search do
                 {option[:key]}
               </Dropdown.Link>
             </#slot>
+            <Search.NoResult label={@no_results_label} search={@filter} {=@size} :if={@options == []} />
           </Dropdown.Options>
         </#slot>
       </Dropdown>
