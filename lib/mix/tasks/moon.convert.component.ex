@@ -50,6 +50,7 @@ defmodule Mix.Tasks.Moon.Convert.Component do
         end,
         defmodule_translates: fn
           [:Moon, :Design | others] -> [:Moon, :Light | others]
+          [:Moon, :Lego | others] -> [:Moon, :Light, :Lego | others]
           [:MoonWeb, :Examples, :Design | others] -> [:MoonWeb, :Examples, :Light | others]
         end,
         module_translates: fn mod ->
@@ -63,6 +64,9 @@ defmodule Mix.Tasks.Moon.Convert.Component do
               |> (fn
                     [:Moon, :Design | others] ->
                       [:Moon, :Light | others]
+
+                    [:Moon, :Lego | others] ->
+                      [:Moon, :Light, :Lego | others]
 
                     [:MoonWeb, :Examples, :Design | others] ->
                       [:MoonWeb, :Examples, :Light | others]

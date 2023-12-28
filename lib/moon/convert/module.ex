@@ -2,13 +2,14 @@ defmodule Moon.Convert.Module do
   @moduledoc "Functions for converting AST surface -> live_view"
 
   require Logger
+
   def translate_render(%{component_type: Surface.LiveComponent}, ast), do: ast
 
   def translate_render(
         %{component_type: Surface.Component, short: short},
         {:def, m1, [{:render, m2, attrs} | children]}
       ) do
-    {:def, m1, [{:"#{String.downcase(short)}", m2, attrs} | children]}
+    {:def, m1, [{:"#{Macro.underscore(short)}", m2, attrs} | children]}
   end
 
   def translate_prop(_, {:prop, meta, [{name, _, nil}, :event]}, doc),

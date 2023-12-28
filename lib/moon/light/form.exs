@@ -1,12 +1,11 @@
 defmodule Elixir.Moon.Light.Form do
   @moduledoc false
   use Moon.Light.Component
-
   alias Phoenix.LiveView.JS
-
+  alias Moon.Lego.Checkbox
+  alias Moon.Design.Form.Field.Label
   import Moon.Helpers.Form
   import Moon.Helpers.MakeList, only: [make_list: 1]
-
   attr(:field, Phoenix.HTML.FormField, required: true)
   attr(:size, :string, values: ~w(sm md lg), default: "md", doc: "Input size")
   attr(:label, :string, doc: "Label for input field", default: nil)
@@ -401,6 +400,7 @@ defmodule Elixir.Moon.Light.Form do
         ])
       }
       field={@field}
+      form={@form}
     >
       <checkbox
         name={@field.name <> ((@is_multiple && "[]") || "")}

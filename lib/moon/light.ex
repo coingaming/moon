@@ -1,10 +1,19 @@
 defmodule Moon.Light do
   @moduledoc false
   use Moon.Light.Component
-  # import Moon.Helpers.Form, only: [transfor: 1]
+
+  alias Moon.Design.Button.Utils
+
+  import Moon.Helpers.MergeClass
+
   attr(:click, :any, default: nil)
   attr(:class, :any, doc: "Additional classes for the <svg> tag", default: nil)
-  attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all())
+
+  attr(:name, :string,
+    required: true,
+    values: MoonIcons.Helpers.Icons.list_all() ++ []
+  )
+
   attr(:color, :string, values: Moon.colors() ++ [nil], default: nil)
   attr(:background_color, :string, values: Moon.colors() ++ [nil], default: nil)
   attr(:font_size, :string, default: nil)
@@ -211,51 +220,232 @@ defmodule Moon.Light do
     """
   end
 
-  # attr(:id, :string, doc: "Id attribute for DOM element", default: nil)
-  # attr(:testid, :string, doc: "Data-testid attribute for DOM element", default: nil)
-  # attr(:for, :any, doc: "Atom or changeset to inform the form data", default: nil)
+  attr(:checked, :boolean, default: false)
+  attr(:disabled, :boolean, default: false)
+  attr(:size, :string, values: ["2xs", "xs", "sm"], default: "sm")
+  attr(:on_bg_color, :any, default: "bg-piccolo")
+  attr(:off_bg_color, :any, default: "bg-beerus")
+  attr(:switcher_class, :any, default: nil)
+  attr(:on_change, Event, default: nil)
+  slot(:off_icon, [])
+  slot(:on_icon, [])
+  attr(:id, :string, default: nil)
+  attr(:testid, :string, default: nil)
+  attr(:class, :any, default: nil)
 
-  # attr(:as, :atom,
-  #   doc: "The server side parameter in which all parameters will be gathered.",
-  #   default: nil
-  # )
+  def switch(assigns) do
+    ~H"""
+    <button
+      id={@id}
+      type="button"
+      aria-pressed={"#{@checked}"}
+      disabled={@disabled}
+      class={
+        merge([
+          [
+            "block rounded-full transition",
+            (@checked && @on_bg_color) || @off_bg_color,
+            "w-7 h-4 p-0.5": @size == "2xs",
+            "w-11 h-6 p-1": @size == "xs",
+            "w-[3.75rem] h-8 p-1": @size == "sm",
+            "cursor-pointer": !@disabled,
+            "opacity-60 cursor-not-allowed select-none": @disabled
+          ],
+          @class
+        ])
+      }
+      value={"#{!@checked}"}
+      data-testid={@testid}
+      phx-click={@on_change && @on_change.name}
+      phx-target={@on_change && @on_change.target}
+    >
+      <span class="block relative h-full w-full">
+        <%= if has_slot?(@on_icon)  do %>
+          <span
+            class={
+              merge([
+                "z-1 absolute ltr:left-0 rtl:right-0 top-1/2 -translate-y-1/2 transition-opacity flex text-goten opacity-100",
+                get_icon_size(@size),
+                "opacity-0": !@checked
+              ])
+            }
+            aria-hidden="true"
+          >
+            <%= render_slot(@on_icon) %>
+          </span>
+        <% end %>
+        <%= if has_slot?(@off_icon)  do %>
+          <span
+            class={
+              merge([
+                "z-1 absolute ltr:right-0 rtl:left-0 top-1/2 -translate-y-1/2 transition-opacity flex text-bulma opacity-0",
+                get_icon_size(@size),
+                "opacity-100": !@checked
+              ])
+            }
+            aria-hidden="true"
+          >
+            <%= render_slot(@off_icon) %>
+          </span>
+        <% end %>
+        <span
+          aria-hidden="true"
+          class={
+            merge([
+              [
+                "z-5 absolute top-1/2 -translate-y-1/2 translate-x-0 shadow-moon-sm pointer-events-none rounded-full",
+                "bg-goten transition-all",
+                "w-3 h-3 ltr:left-[calc(100%-12px)] rtl:right-[calc(100%-12px)]": @size == "2xs",
+                "w-4 h-4 ltr:left-[calc(100%-16px)] rtl:right-[calc(100%-16px)]": @size == "xs",
+                "w-6 h-6 ltr:left-[calc(100%-24px)] rtl:right-[calc(100%-24px)]": @size == "sm",
+                "ltr:left-0 rtl:right-0": !@checked
+              ],
+              @switcher_class
+            ])
+          }
+        />
+      </span>
+    </button>
+    """
+  end
 
-  # attr(:change, Event, doc: "Triggered when the form is changed", default: nil)
-  # attr(:submit, Event, doc: "Triggered when the form is submitted", default: nil)
-  # attr(:class, :string, doc: "Additional Tailwind classes", default: nil)
+  defp get_icon_size(size) do
+    case size do
+      "2xs" -> "text-moon-12 "
+      "xs" -> "text-moon-16 "
+      "sm" -> "text-moon-24 "
+    end
+  end
 
-  # attr(:autocomplete, :string,
-  #   default: "on",
-  #   values: ["on", "off"],
-  #   doc: "Whether autocomplete is enabled"
-  # )
+  attr(:variant, :string,
+    values: ["fill", "outline", "ghost"],
+    default: "fill",
+    doc: "Visual/Logical variant of button"
+  )
 
-  # attr(:target, :any, doc: "Target", default: nil)
+  attr(:size, :string,
+    values: ["xs", "sm", "md", "lg", "xl"],
+    default: "md",
+    doc: "Size of button"
+  )
 
-  # attr(:trigger_action, :any,
-  #   doc:
-  #     "Trigger a standard form submit on DOM patch to the URL specified in the form's standard action\n  attribute.\n  This is useful to perform pre-final validation of a LiveView form submit before posting to a\n  controller route for operations that require Plug session mutation.",
-  #   default: nil
-  # )
+  attr(:disabled, :boolean, doc: "Disabled button", default: nil)
+  attr(:class, :any, doc: "Additional Tailwind classes", default: nil)
+  attr(:type, :string, default: "button", doc: "Type attribute for DOM element")
+  attr(:on_click, Event, doc: "On click event", default: nil)
 
-  # attr(:is_horizontal, :boolean, default: false, doc: "Whether label is on side of input field")
-  # attr(:has_error_icon, :boolean, default: false, doc: "Whether error icon is shown")
-  # slot(:inner_block, doc: "Default slot")
+  attr(:values, :any,
+    default: [],
+    doc: "list of additional values to associate with the DOM element"
+  )
 
-  # def form(assigns) do
-  #   ~H"""
-  #   <.moon
-  #     module={Surface.Components.Form}
-  #     for={transfor(@for)}
-  #     as={@as}
-  #     submit={@submit}
-  #     change={@change}
-  #     class={@class}
-  #     trigger_action={@trigger_action}
-  #     opts={[autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target]}
-  #   >
-  #     <%= render_slot(@inner_block) %>
-  #   </.moon>
-  #   """
-  # end
+  attr(:value, :string, doc: "Value attribute for DOM element", default: nil)
+  attr(:id, :string, doc: "Id attribute for DOM element", default: nil)
+  attr(:testid, :string, doc: "Data-testid attribute for DOM element", default: nil)
+  attr(:attrs, :any, default: [], doc: "Additional attributes for DOM element")
+  attr(:aria_label, :string, doc: "Aria label attribute for DOM element", default: nil)
+  attr(:target, :string, doc: "Target attribute for DOM element", default: nil)
+  attr(:rel, :string, doc: "Rel attribute for DOM element", default: nil)
+  attr(:animation, :string, values: ~w(progress success error pulse) ++ [nil], default: nil)
+  slot(:inner_block, doc: "Inner content of the component")
+
+  def button(assigns) do
+    ~H"""
+    <button
+      id={@id}
+      class={
+        merge([
+          [
+            "flex row justify-center items-center relative overflow-hidden active:scale-90 transition-all duration-200 font-semibold group z-0",
+            "whitespace-nowrap select-none",
+            Utils.get_button_size_classes(@size),
+            Utils.variant_classes(assigns),
+            Utils.get_no_icon_padding(@size)
+          ],
+          @class
+        ])
+      }
+      phx-click={@on_click && @on_click.name}
+      phx-target={@on_click && @on_click.target}
+      testid={@testid}
+      aria_label={@aria_label}
+      values={@values}
+      value={@value}
+      target={@target}
+      rel={@rel}
+      data-size={@size}
+      type={@type}
+      {@attrs}
+    >
+      <.loader
+        :if={@animation == "progress"}
+        color={if @variant in ["primary", "fill", "tertiary"], do: "gohan", else: "trunks"}
+        size={if @size == "xs", do: "2xs", else: "xs"}
+      />
+      <.icon
+        :if={@animation == "success"}
+        name="generic_check_alternative"
+        color="currentColor"
+        class={Utils.icon_class(@size)}
+      />
+      <%= if !(@animation in ~w(progress success)) do %>
+        <%= render_slot(@inner_block) %>
+      <% end %>
+      <span class={merge(Utils.hover_overlay_classes(assigns) ++ [@hover_bg_class])} />
+    </button>
+    """
+  end
+
+  attr(:size, :string, values: ["2xs", "xs", "md", "lg"], default: "md")
+  attr(:color, :string, default: "hit", values: Moon.colors())
+  attr(:class, :any, default: nil)
+  attr(:testid, :string, default: nil)
+  attr(:id, :string, default: nil)
+
+  def loader(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      class={[
+        "relative",
+        get_size_class_by_size(@size)
+      ]}
+      data-testid={@testid}
+    >
+      <%= for cls <- [""] ++ ~w(animation-delay-minus-45 animation-delay-minus-30 animation-delay-minus-15) do %>
+        <div class={[
+          merge([
+            "box-border block absolute w-full h-full border-solid rounded-[50%]",
+            "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
+            "animate-loader",
+            cls,
+            get_border_class_by_size(@size),
+            @class
+          ]),
+          "border-#{@color}"
+        ]} />
+      <% end %>
+    </div>
+    """
+  end
+
+  defp get_size_class_by_size(size) do
+    case size do
+      "2xs" -> "w-4 h-4"
+      "xs" -> "w-6 h-6"
+      "sm" -> "w-8 h-8"
+      "md" -> "w-10 h-10"
+      "lg" -> "w-12 h-12"
+    end
+  end
+
+  defp get_border_class_by_size(size) do
+    case size do
+      "2xs" -> "border-2"
+      "xs" -> "border-2"
+      "sm" -> "border-4"
+      "md" -> "border-4"
+      "lg" -> "border-4"
+    end
+  end
 end

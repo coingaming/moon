@@ -141,7 +141,7 @@ defmodule Moon.Convert.Template do
         {case Code.ensure_compiled(mod) do
            {:module, _} ->
              func_name =
-               type |> String.split(".") |> Enum.at(-1) |> String.downcase() |> String.to_atom()
+               type |> String.split(".") |> Enum.at(-1) |> Macro.underscore() |> String.to_atom()
 
              if Keyword.has_key?(mod.__info__(:functions), func_name) do
                # TODO: add imports here
