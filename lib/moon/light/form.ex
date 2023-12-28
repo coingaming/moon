@@ -2,8 +2,6 @@ defmodule Elixir.Moon.Light.Form do
   @moduledoc false
   use Moon.Light.Component
 
-  alias Surface.Components.Form
-
   import Moon.Helpers.Form
   import Phoenix.HTML.Form, only: [input_name: 2, input_id: 2, input_value: 2]
   import Moon.Helpers.MakeList, only: [make_list: 1]
@@ -23,6 +21,7 @@ defmodule Elixir.Moon.Light.Form do
   attr(:has_error_icon, :boolean, doc: "Whether error icon is shown", default: nil)
   slot(:inner_block, doc: "Inner content of the component")
   attr(:attrs, :map, default: nil)
+  attr(:feedback_for, :string, default: nil)
 
   def field(assigns) do
     import Moon.Light.Form.Field
@@ -32,7 +31,7 @@ defmodule Elixir.Moon.Light.Form do
       class={merge([["grid grid-cols-2": @is_horizontal], @class])}
       id={@id}
       data-testid={@testid}
-      phx-feedback-for={@feedback_for || input_name(@form, @name)}
+      phx-feedback-for={@feedback_for || input_name(@form, @field)}
     >
       <.label :if={@label} size={@size} title={@label} />
       <%= render_slot(@inner_block) %>
@@ -208,8 +207,8 @@ defmodule Elixir.Moon.Light.Form do
 
   def select(assigns) do
     ~H"""
-    <.moon
-      module={(@is_multiple && Form.MultipleSelect) || Form.Select}
+    <select
+      multiple={@is_multiple}
       class={
         merge([
           "text-trunks flex justify-between w-full bg-goku border-0 duration-200 transition-shadow",
@@ -229,29 +228,22 @@ defmodule Elixir.Moon.Light.Form do
           @class
         ])
       }
-      field={@field}
-      id={@id}
-      options={options_with_selected(@options, @value)}
-      opts={
-        %{
-          prompt: @prompt,
-          disabled: @disabled,
-          "data-testid": @testid,
-          error: @error || has_error(@form, @field)
-        }
-      }
-    />
+      name={input_name(@form, @field)}
+      id={@id || input_id(@form, @field)}
+      prompt={@prompt}
+      disabled={@disabled}
+      data-testid={@testid}
+      error={@error || has_error(@form, @field)}
+    >
+      <option
+        :for={option <- @options}
+        value={option[:value]}
+        selected={Enum.member?(make_list(@value), option[:value])}
+        disabled={option[:disabled]}
+      >
+        <%= option[:key] %>
+      </option>
+    </select>
     """
-  end
-
-  defp options_with_selected(options, value) do
-    Enum.map(options, fn row ->
-      [
-        key: row[:key],
-        value: row[:value],
-        selected: Enum.member?(make_list(value), row[:value]),
-        disabled: row[:disabled]
-      ]
-    end)
   end
 end

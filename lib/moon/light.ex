@@ -1,7 +1,7 @@
 defmodule Moon.Light do
   @moduledoc false
   use Moon.Light.Component
-
+  import Moon.Helpers.Form, only: [transfor: 1]
   attr(:click, :any, default: nil)
   attr(:class, :any, doc: "Additional classes for the <svg> tag", default: nil)
   attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all())
@@ -105,9 +105,9 @@ defmodule Moon.Light do
   )
 
   slot(:cols, generator_prop: :items, doc: "The list of columns defining the Grid") do
-    attr :label, :string
-    attr :name, :string
-    attr :sortable, :boolean
+    attr(:label, :string)
+    attr(:name, :string)
+    attr(:sortable, :boolean)
   end
 
   attr(:id, :string, doc: "Just an id for a table tag", default: nil)
@@ -208,6 +208,54 @@ defmodule Moon.Light do
         <% end %>
       </tbody>
     </table>
+    """
+  end
+
+  attr(:id, :string, doc: "Id attribute for DOM element", default: nil)
+  attr(:testid, :string, doc: "Data-testid attribute for DOM element", default: nil)
+  attr(:for, :any, doc: "Atom or changeset to inform the form data", default: nil)
+
+  attr(:as, :atom,
+    doc: "The server side parameter in which all parameters will be gathered.",
+    default: nil
+  )
+
+  attr(:change, Event, doc: "Triggered when the form is changed", default: nil)
+  attr(:submit, Event, doc: "Triggered when the form is submitted", default: nil)
+  attr(:class, :string, doc: "Additional Tailwind classes", default: nil)
+
+  attr(:autocomplete, :string,
+    default: "on",
+    values: ["on", "off"],
+    doc: "Whether autocomplete is enabled"
+  )
+
+  attr(:target, :any, doc: "Target", default: nil)
+
+  attr(:trigger_action, :any,
+    doc:
+      "Trigger a standard form submit on DOM patch to the URL specified in the form's standard action\n  attribute.\n  This is useful to perform pre-final validation of a LiveView form submit before posting to a\n  controller route for operations that require Plug session mutation.",
+    default: nil
+  )
+
+  attr(:is_horizontal, :boolean, default: false, doc: "Whether label is on side of input field")
+  attr(:has_error_icon, :boolean, default: false, doc: "Whether error icon is shown")
+  slot(:inner_block, doc: "Default slot")
+
+  def form(assigns) do
+    ~H"""
+    <.moon
+      module={Surface.Components.Form}
+      for={transfor(@for)}
+      as={@as}
+      submit={@submit}
+      change={@change}
+      class={@class}
+      trigger_action={@trigger_action}
+      opts={[autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target]}
+    >
+      <%= render_slot(@inner_block) %>
+    </.moon>
     """
   end
 end
