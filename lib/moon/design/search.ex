@@ -82,8 +82,8 @@ defmodule Moon.Design.Search do
               </Dropdown.Link>
             </#slot>
             {!-- Use @options == [] to avoid any crash due type input using Enum.empty? --}
-            <#slot {@no_result}>
-              <Search.NoResult label={@no_results_label} search={@filter} {=@size} :if={@options == []} />
+            <#slot {@no_result, search: @filter, label: @no_results_label, size: @size} :if={@options == []}>
+              <Search.NoResult label={@no_results_label} search={@filter} {=@size} />
             </#slot>
           </Dropdown.Options>
         </#slot>
