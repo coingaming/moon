@@ -42,6 +42,8 @@ defmodule Moon.Design.Search do
   slot(trigger)
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
+  @doc "When no results are found - this slot will be rendered"
+  slot(no_result)
 
   def render(assigns) do
     ~F"""
@@ -80,7 +82,9 @@ defmodule Moon.Design.Search do
               </Dropdown.Link>
             </#slot>
             {!-- Use @options == [] to avoid any crash due type input using Enum.empty? --}
-            <Search.NoResult label={@no_results_label} search={@filter} {=@size} :if={@options == []} />
+            <#slot {@no_result}>
+              <Search.NoResult label={@no_results_label} search={@filter} {=@size} :if={@options == []} />
+            </#slot>
           </Dropdown.Options>
         </#slot>
       </Dropdown>

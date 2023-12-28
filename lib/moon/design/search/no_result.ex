@@ -1,7 +1,7 @@
 defmodule Moon.Design.Search.NoResult do
   @moduledoc "No Result Label for Search Component"
 
-  use Moon.StatelessComponent
+  use Moon.StatelessComponent, slot: "no_result"
 
   alias Moon.Design.Dropdown
 
