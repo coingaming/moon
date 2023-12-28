@@ -7,13 +7,7 @@ defmodule Elixir.Moon.Light.Form.Field do
   attr(:testid, :string, doc: "Data-testid attribute for HTML tag", default: nil)
   attr(:class, :any, doc: "Additional Tailwind classes", default: nil)
   attr(:attrs, :map, default: %{}, doc: "Additional attributes")
-
-  attr(:field, :atom,
-    doc: "Name of the field, usually should be taken from context",
-    default: nil
-  )
-
-  attr(:form, :any, doc: "Form info, usually should be taken from context", default: nil)
+  attr(:field, Phoenix.HTML.FormField, default: nil)
   attr(:for, :string, doc: "Atom or changeset to inform the form data", default: nil)
   attr(:size, :string, values: ~w(sm md lg xl), default: "md", doc: "Common moon size property")
   attr(:title, :string, doc: "Label for input field", default: nil)
@@ -26,7 +20,7 @@ defmodule Elixir.Moon.Light.Form.Field do
   def label(assigns) do
     ~H"""
     <label
-      for={@for || (@form && @field && Phoenix.HTML.Form.input_id(@form, @field))}
+      for={@for || (@field && @field.name)}
       id={@id}
       data-testid={@testid}
       phx-click={@on_click && @on_click.name}
@@ -87,6 +81,7 @@ defmodule Elixir.Moon.Light.Form.Field do
   attr(:class, :any, doc: "Additional Tailwind classes", default: nil)
   attr(:has_error_icon, :boolean, default: false, doc: "Whether error icon is shown")
   attr(:is_horizontal, :boolean, default: false, doc: "Whether label is on side of input field")
+  attr(:field, Phoenix.HTML.FormField, required: true)
   slot(:inner_block, doc: "Default slot")
 
   def error(assigns) do
@@ -110,8 +105,19 @@ defmodule Elixir.Moon.Light.Form.Field do
       <% else %>
         <.icon :if={@has_error_icon} name="generic_info" />
       <% end %>
-      <.moon module={Surface.Components.Form.ErrorTag} />
+      <span :for={error <- @field.errors}>
+        <%= translate_error().(error) %>
+      </span>
     </div>
     """
+  end
+
+  defp translate_error() do
+    &Surface.Components.Form.ErrorTag.translate_error/1
+    # TODO: fix for partners and get rid of surface
+    # case get_config(Surface.Components.Form.ErrorTag, :default_translator) do
+    # {module, function} -> &apply(module, function, [&1])
+    # nil -> &Surface.Components.Form.ErrorTag.translate_error/1
+    # end
   end
 end

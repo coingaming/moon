@@ -91,5 +91,6 @@ defmodule Moon.Helpers.MoonRender do
     Enum.map(list, fn {k, v} -> {:"phx-value-#{k}", v} end)
   end
 
+  def has_slot?([]), do: false
   def has_slot?(smth), do: !!dbg(smth)
 end

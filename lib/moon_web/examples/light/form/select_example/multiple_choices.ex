@@ -15,18 +15,22 @@ defmodule MoonWeb.Examples.Light.Form.SelectExample.MultipleChoices do
       %{value: 2, key: "Write"},
       %{value: 3, key: "Update"},
       %{value: 4, key: "Delete"},
-      %{value: 5, key: "Nuclear war", disabled: true}
+      %{value: 5, key: "Nuclear war", disabled: true},
+      %{value: 100, key: "Invalid"}
     ]
   )
 
   def render(assigns) do
     ~H"""
     <div>
-    <Moon.Light.form for={@user_changeset} change={%Event{name: "change", target: @myself}}>
-      <.field label="User permissions" field={:permissions}>
-        <.select field={:permissions} form={to_form(@user_changeset)} options={@permissions} />
-      </.field>
-    </Moon.Light.form>
+      <.form :let={form} for={@user_changeset} phx-change="change" phx-target={@myself}>
+        <.field label="User permissions" field={form[:permissions]}>
+          <.select is_multiple field={form[:permissions]} options={@permissions} />
+        </.field>
+        <pre>
+        <%= inspect(form[:permissions], pretty: true) %>
+      </pre>
+      </.form>
     </div>
     """
   end
@@ -35,5 +39,4 @@ defmodule MoonWeb.Examples.Light.Form.SelectExample.MultipleChoices do
     user_changeset = User.changeset(%User{}, params)
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
-
 end

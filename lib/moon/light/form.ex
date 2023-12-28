@@ -3,11 +3,9 @@ defmodule Elixir.Moon.Light.Form do
   use Moon.Light.Component
 
   import Moon.Helpers.Form
-  import Phoenix.HTML.Form, only: [input_name: 2, input_id: 2, input_value: 2]
   import Moon.Helpers.MakeList, only: [make_list: 1]
 
-  attr(:form, :any, doc: "Form, Surface-style", default: nil)
-  attr(:field, :atom, doc: "Field, Surface-style", default: nil)
+  attr(:field, Phoenix.HTML.FormField, required: true)
   attr(:size, :string, values: ~w(sm md lg), default: "md", doc: "Input size")
   attr(:label, :string, doc: "Label for input field", default: nil)
   attr(:hint, :string, doc: "Hint for input field", default: nil)
@@ -31,13 +29,14 @@ defmodule Elixir.Moon.Light.Form do
       class={merge([["grid grid-cols-2": @is_horizontal], @class])}
       id={@id}
       data-testid={@testid}
-      phx-feedback-for={@feedback_for || input_name(@form, @field)}
+      phx-feedback-for={@feedback_for || @field.name}
     >
-      <.label :if={@label} size={@size} title={@label} />
-      <%= render_slot(@inner_block) %>
+      <.label :if={@label} size={@size} title={@label} field={@field} />
+      <%= render_slot(@inner_block, @field) %>
       <.hint :if={@hint} title={@hint} class={@hint_class} is_horizontal={@is_horizontal} />
       <.error
-        :if={!@hide_errors && !!@field && !!@form && has_error(@form, @field)}
+        :if={!@hide_errors && @field.errors != []}
+        field={@field}
         class={@error_class}
         has_error_icon={@has_error_icon}
         is_horizontal={@is_horizontal}
@@ -46,12 +45,7 @@ defmodule Elixir.Moon.Light.Form do
     """
   end
 
-  attr(:field, :atom,
-    doc: "Name of the field, usually should be taken from context",
-    default: nil
-  )
-
-  attr(:form, :any, doc: "Form info, usually should be taken from context", default: nil)
+  attr(:field, Phoenix.HTML.FormField, default: nil)
 
   attr(:size, :string,
     values: ["sm", "md", "lg"],
@@ -139,12 +133,12 @@ defmodule Elixir.Moon.Light.Form do
       }
       type={@type}
       placeholder={@placeholder}
-      value={@value || input_value(@form, @field)}
-      id={@id || input_id(@form, @field)}
-      name={input_name(@form, @field)}
+      value={(@field && @field.value) || @value}
+      id={(@field && @field.id) || @id}
+      name={@field && @field.name}
+      error={(@field && length(@field.errors) > 0) || @error}
       disabled={@disabled}
       readonly={@readonly}
-      error={@error || has_error(@form, @field)}
       data-testid={@testid}
       autocomplete={@autocomplete}
       {@opts}
@@ -161,12 +155,7 @@ defmodule Elixir.Moon.Light.Form do
     """
   end
 
-  attr(:field, :atom,
-    doc: "Name of the field, usually should be taken from context",
-    default: nil
-  )
-
-  attr(:form, :any, doc: "Form info, usually should be taken from context", default: nil)
+  attr(:field, Phoenix.HTML.FormField, default: nil)
 
   attr(:options, :list,
     default: [],
@@ -228,17 +217,17 @@ defmodule Elixir.Moon.Light.Form do
           @class
         ])
       }
-      name={input_name(@form, @field)}
-      id={@id || input_id(@form, @field)}
+      name={@field && @field.name <> ((@is_multiple && "[]") || "")}
+      error={(@field && length(@field.errors) > 0) || @error}
+      id={(@field && @field.id) || @id}
       prompt={@prompt}
       disabled={@disabled}
       data-testid={@testid}
-      error={@error || has_error(@form, @field)}
     >
       <option
         :for={option <- @options}
         value={option[:value]}
-        selected={Enum.member?(make_list(@value), option[:value])}
+        selected={Enum.member?(make_list((@field && @field.value) || @value), option[:value])}
         disabled={option[:disabled]}
       >
         <%= option[:key] %>
