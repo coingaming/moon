@@ -406,46 +406,29 @@ defmodule Moon.Light do
     ~H"""
     <div
       id={@id}
-      class={[
+      class={merge([
         "relative",
-        get_size_class_by_size(@size)
-      ]}
+        "w-4 h-4": @size == "2xs",
+        "w-6 h-6": @size in ~w(xs sm),
+        "w-10 h-10": @size == "md",
+        "w-12 h-12": @size == "xl"
+      ])}
       data-testid={@testid}
     >
       <%= for cls <- [""] ++ ~w(animation-delay-minus-45 animation-delay-minus-30 animation-delay-minus-15) do %>
-        <div class={[
+        <div class={
           merge([
             "box-border block absolute w-full h-full border-solid rounded-[50%]",
             "border-t-#{@color} border-r-transparent border-b-transparent border-l-transparent",
             "animate-loader",
             cls,
-            get_border_class_by_size(@size),
+            (@size in ~w(2xs xs) && "border-2") || "border-4",
+            "border-#{@color}",
             @class
-          ]),
-          "border-#{@color}"
-        ]} />
+          ])
+        } />
       <% end %>
     </div>
     """
-  end
-
-  defp get_size_class_by_size(size) do
-    case size do
-      "2xs" -> "w-4 h-4"
-      "xs" -> "w-6 h-6"
-      "sm" -> "w-8 h-8"
-      "md" -> "w-10 h-10"
-      "lg" -> "w-12 h-12"
-    end
-  end
-
-  defp get_border_class_by_size(size) do
-    case size do
-      "2xs" -> "border-2"
-      "xs" -> "border-2"
-      "sm" -> "border-4"
-      "md" -> "border-4"
-      "lg" -> "border-4"
-    end
   end
 end
