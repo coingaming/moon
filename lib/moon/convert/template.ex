@@ -53,7 +53,8 @@ defmodule Moon.Convert.Template do
   def translate_node({type, attributes, children, node_meta}, c) do
     {res_type, source_type} = translate_type(type, c)
 
-    {attributes, children} = pre_translate_node(source_type, {type, attributes, children}, c)
+    {res_type, attributes, children} =
+      pre_translate_node(source_type, {res_type, attributes, children}, c)
 
     {res_type,
      attributes
@@ -64,7 +65,7 @@ defmodule Moon.Convert.Template do
 
   def translate_node(other, _), do: other
 
-  defp pre_translate_node(Moon.Design.Table, {_, attributes, children}, c) do
+  defp pre_translate_node(Moon.Design.Table, {res_type, attributes, children}, c) do
     {attributes, m_name} =
       attributes
       |> Enum.map(fn
@@ -79,7 +80,7 @@ defmodule Moon.Convert.Template do
         {nodes ++ [node], cur_model || model}
       end)
 
-    {attributes,
+    {res_type, attributes,
      children
      |> Enum.map(fn
        {type2, attributes2, children2, meta} ->
@@ -95,7 +96,74 @@ defmodule Moon.Convert.Template do
      end)}
   end
 
-  defp pre_translate_node(_, {_, attributes, children}, _), do: {attributes, children}
+  defp pre_translate_node(Moon.Design.Form, {_, attributes, children}, c) do
+    {".form",
+     [
+       {":let", {:attribute_expr, "form", %{}}, %{}}
+       | attributes
+         |> Enum.map(fn
+           {event, {:attribute_expr, expr, m1}, m2} when event in ~w(change submit) ->
+             [
+               {"phx-#{event}", {:attribute_expr, "Event.from(#{expr}).name", m1}, m2},
+               {"phx-target", {:attribute_expr, "Event.from(#{expr}).target", m1}, m2}
+             ]
+
+           {event, expr, m2} when event in ~w(change submit) and is_binary(expr) ->
+             [
+               {"phx-#{event}", expr, m2},
+               {"phx-target", {:attribute_expr, "@myself", m2}, m2}
+             ]
+
+           other ->
+             other
+         end)
+         |> List.flatten()
+     ],
+     children
+     |> Enum.map(fn
+       {type2, attributes2, children2, meta} ->
+         {_, source_type2} = translate_type(type2, c)
+
+         case source_type2 do
+           Moon.Design.Form.Field ->
+             {_, {_, f_name, _}, _} =
+               attributes2
+               |> Enum.find(fn
+                 {"field", {:attribute_expr, _, _}, _} -> true
+                 _ -> false
+               end)
+
+             {type2,
+              attributes2
+              |> Enum.map(fn
+                {"field", {:attribute_expr, expr, m1}, m2} ->
+                  {"field", {:attribute_expr, "form[#{expr}]", m1}, m2}
+
+                other ->
+                  other
+              end),
+              children2
+              |> Enum.map(fn
+                {type3, attributes3, children3, meta3} ->
+                  {type3,
+                   [{"field", {:attribute_expr, "form[#{f_name}]", %{}}, %{}} | attributes3],
+                   children3, meta3}
+
+                other ->
+                  other
+              end), meta}
+
+           _ ->
+             {type2, attributes2, children2, meta}
+         end
+
+       other ->
+         other
+     end)}
+  end
+
+  defp pre_translate_node(_, {res_type, attributes, children}, _),
+    do: {res_type, attributes, children}
 
   defp translate_slot_attr({"generator_value", {:attribute_expr, expr, _m2}, _m1}), do: expr
 
@@ -188,8 +256,8 @@ defmodule Moon.Convert.Template do
 
   defp translate_attr({":on-" <> name, {:attribute_expr, expr, m2}, m1}, _) do
     [
-      {:"phx-#{name}", {:attribute_expr, "(#{expr}) && (#{expr}).name", m2}, m2},
-      {:"phx-target", {:attribute_expr, "(#{expr}) && (#{expr}).target", m2}, m1}
+      {:"phx-#{name}", {:attribute_expr, "Event.from(#{expr}).name", m2}, m2},
+      {:"phx-target", {:attribute_expr, "Event.from(#{expr}).target", m2}, m1}
     ]
   end
 

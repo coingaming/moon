@@ -8,6 +8,7 @@ defmodule Moon.Light.LiveComponent do
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
       import Moon.Light
+      import Moon.Light.Sur
       alias Moon.Light.Sur.Event
 
       def __moduledoc__(), do: @moduledoc

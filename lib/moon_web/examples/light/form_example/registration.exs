@@ -4,11 +4,15 @@ defmodule MoonWeb.Examples.Light.FormExample.Registration do
   use MoonWeb, :example
   alias MoonWeb.Schema.User
   alias Moon.Design.Form
-
+  alias Moon.Design.Form.Field.Label
+  alias Moon.Design.Form.Select
+  alias Moon.Design.Form.Input
+  alias Moon.Design.Form.TextArea
+  alias Moon.Design.Form.Field
+  alias Moon.Design.Form.Switch
+  alias Moon.Design.Form.Checkbox
+  alias Moon.Design.Button
   alias MoonWeb.Components.Anatomy
-
-  import Moon.Light.Form
-  import Moon.Light.Form.Field, only: [label: 1]
 
   attr(:user_changeset, :any,
     default:
@@ -32,36 +36,49 @@ defmodule MoonWeb.Examples.Light.FormExample.Registration do
 
   def render(assigns) do
     ~H"""
-    <.moon
-      module={Form}
+    <.form
+      :let={form}
       for={@user_changeset}
-      change={%Event{name: "change", target: @myself}}
-      submit={%Event{name: "submit", target: @myself}}
+      phx-change="change"
+      phx-target={@myself}
+      phx-submit="submit"
     >
-      <.field label="Label for select" hint="Hint for Select" field={:gender}>
-        <.select options={@gender_options} />
-      </.field>
-      <.field label="Label for textinput" hint="Hint for Textinput" field={:username}>
-        <.input />
-      </.field>
-      <.field label="Label for TextArea" hint="Hint for TextArea" field={:email}>
-        <.text_area />
-      </.field>
-      <.field field={:agrees_to_terms_of_service}>
-        <.label size="sm">
-          <Moon.Light.Form.switch /> I agree terms of service
-        </.label>
-      </.field>
-      <.field field={:agrees_to_marketing_emails}>
-        <.label size="sm">
-          <.checkbox /> Marketing emails
-        </.label>
-      </.field>
+      <Elixir.Moon.Light.Form.field
+        label="Label for select"
+        hint="Hint for Select"
+        field={form[:gender]}
+      >
+        <Elixir.Moon.Light.Form.select field={form[:gender]} options={@gender_options} />
+      </Elixir.Moon.Light.Form.field>
+      <Elixir.Moon.Light.Form.field
+        label="Label for textinput"
+        hint="Hint for Textinput"
+        field={form[:username]}
+      >
+        <Elixir.Moon.Light.Form.input field={form[:username]} />
+      </Elixir.Moon.Light.Form.field>
+      <Elixir.Moon.Light.Form.field
+        label="Label for TextArea"
+        hint="Hint for TextArea"
+        field={form[:email]}
+      >
+        <Elixir.Moon.Light.Form.text_area field={form[:email]} />
+      </Elixir.Moon.Light.Form.field>
+      <Elixir.Moon.Light.Form.field field={form[:agrees_to_terms_of_service]}>
+        <Elixir.Moon.Light.Form.Field.label field={form[:agrees_to_terms_of_service]} size="sm">
+          <Elixir.Moon.Light.Form.switch /> I agree terms of service
+        </Elixir.Moon.Light.Form.Field.label>
+      </Elixir.Moon.Light.Form.field>
+      <Elixir.Moon.Light.Form.field field={form[:agrees_to_marketing_emails]}>
+        <Elixir.Moon.Light.Form.Field.label field={form[:agrees_to_marketing_emails]} size="sm">
+          <Elixir.Moon.Light.Form.checkbox /> Marketing emails
+        </Elixir.Moon.Light.Form.Field.label>
+      </Elixir.Moon.Light.Form.field>
       <.button type="submit">Submit</.button>
       <.moon module={Anatomy} class="theme-moon-dark" title={false}>
         @user_changeset = <%= inspect(@user_changeset, pretty: true) %>
       </.moon>
-    </.moon>
+    </.form>
     """
   end
 

@@ -23,8 +23,8 @@ defmodule Elixir.Moon.Light.Form.Field do
       for={@for || (@field && @field.name)}
       id={@id}
       data-testid={@testid}
-      phx-click={@on_click && @on_click.name}
-      phx-target={@on_click && @on_click.target}
+      phx-click={Event.from(@on_click).name}
+      phx-target={Event.from(@on_click).target}
       phx-value-value={@value}
       class={
         merge([

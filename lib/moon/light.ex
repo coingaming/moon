@@ -256,8 +256,8 @@ defmodule Moon.Light do
       }
       value={"#{!@checked}"}
       data-testid={@testid}
-      phx-click={@on_change && @on_change.name}
-      phx-target={@on_change && @on_change.target}
+      phx-click={Event.from(@on_change).name}
+      phx-target={Event.from(@on_change).target}
     >
       <span class="block relative h-full w-full">
         <%= if has_slot?(@on_icon)  do %>
@@ -391,7 +391,7 @@ defmodule Moon.Light do
       <%= if !(@animation in ~w(progress success)) do %>
         <%= render_slot(@inner_block) %>
       <% end %>
-      <span class={merge(Utils.hover_overlay_classes(assigns) ++ [@hover_bg_class])} />
+      <span class={merge(Utils.hover_overlay_classes(assigns))} />
     </button>
     """
   end

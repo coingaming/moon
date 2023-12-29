@@ -86,11 +86,4 @@ defmodule Moon.Helpers.MoonRender do
   def moon(props = %{module: module}) do
     get_render_function(module).(props)
   end
-
-  def data_values(list \\ []) do
-    Enum.map(list, fn {k, v} -> {:"phx-value-#{k}", v} end)
-  end
-
-  def has_slot?([]), do: false
-  def has_slot?(smth), do: !!dbg(smth)
 end

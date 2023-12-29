@@ -144,15 +144,11 @@ defmodule Elixir.Moon.Light.Form do
       data-testid={@testid}
       autocomplete={@autocomplete}
       {@opts}
-      phx-change={@on_change && @on_change.name}
-      phx-keyup={@on_keyup && @on_keyup.name}
-      phx-focus={@on_focus && @on_focus.name}
-      phx-blur={@on_blur && @on_blur.name}
-      phx-target={
-        [@on_change, @on_keyup, @on_focus, @on_blur]
-        |> Enum.find(%{}, &(&1 && &1.target))
-        |> Map.get(:target)
-      }
+      phx-change={Event.from(@on_change).name}
+      phx-keyup={Event.from(@on_keyup).name}
+      phx-focus={Event.from(@on_focus).name}
+      phx-blur={Event.from(@on_blur).name}
+      phx-target={[@on_change, @on_keyup, @on_focus, @on_blur] |> Event.find_target()}
     />
     """
   end
@@ -309,8 +305,6 @@ defmodule Elixir.Moon.Light.Form do
   slot(:off_icon, [])
 
   def switch(assigns) do
-    dbg({assigns.field, assigns.field.value})
-
     ~H"""
     <div>
       <checkbox
@@ -345,8 +339,7 @@ defmodule Elixir.Moon.Light.Form do
   end
 
   @doc "Checkbox to be rendered on form. Label is the root component. For rebdering outside the from please use Moon.Lego.Checkbox"
-  attr(:field, :atom, doc: "Field name, surface-style", default: nil)
-  attr(:form, :any, doc: "Form, surface-style", default: nil)
+  attr(:field, Phoenix.HTML.FormField, required: true)
   attr(:label, :string, doc: "Label to be shown to user", default: nil)
   attr(:disabled, :boolean, doc: "If the field is disabled", default: nil)
   attr(:readonly, :boolean, doc: "If the field is read-only", default: nil)
@@ -410,10 +403,10 @@ defmodule Elixir.Moon.Light.Form do
         readonnly={@readonly}
         disabled={@disabled || @readonly}
         data-testid={@testid}
-        checked={@field.value == @selected_value}
+        checked={@field.value == @checked_value}
       />
       <Elixir.Moon.Light.Lego.checkbox
-        is_selected={@field.value == @selected_value}
+        is_selected={@field.value == @checked_value}
         class={
           merge([
             "absolute top-1 ltr:left-0 rtl:right-0",
