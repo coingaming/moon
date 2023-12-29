@@ -76,8 +76,4 @@ defmodule MoonWeb.Examples.Light.FormExample.Registration do
     user_changeset = Map.merge(socket.assigns.user_changeset, %{action: :insert})
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end
-
-  def code() do
-    ""
-  end
 end
