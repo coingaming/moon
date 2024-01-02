@@ -27,7 +27,7 @@ defmodule Moon.Design.Dropdown.Select do
   @doc "Site of the select"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "If the item should be marked as disabled"
-  prop(disabled, :boolean)
+  prop(disabled, :boolean, from_context: :disabled)
   @doc "Event that fired when trigger is clicked"
   prop(on_click, :event, from_context: :on_trigger)
   @doc "Content of the button"
@@ -39,7 +39,7 @@ defmodule Moon.Design.Dropdown.Select do
       {=@id}
       data-testid={@testid}
       type="button"
-      :on-click={@on_click}
+      :on-click={!@disabled && @on_click}
       {=@error}
       {=@disabled}
       class={merge([

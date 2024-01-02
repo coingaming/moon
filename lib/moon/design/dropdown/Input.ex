@@ -21,7 +21,7 @@ defmodule Moon.Design.Dropdown.Input do
   @doc "Site of the select"
   prop(size, :string, values!: ~w(sm md lg), from_context: :size)
   @doc "If the item should be marked as disabled"
-  prop(disabled, :boolean)
+  prop(disabled, :boolean, from_context: :disabled)
   @doc "Dropdown opening action, only from context"
   prop(open_me, :event, from_context: :open_me)
   @doc "Actually - on_keyup event for the input, use it for filter options with new user input"
