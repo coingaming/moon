@@ -33,6 +33,8 @@ defmodule Moon.Design.Form do
   prop(is_horizontal, :boolean, default: false)
   @doc "Whether error icon is shown"
   prop(has_error_icon, :boolean, default: false)
+  @doc "Additional ttributes to be added to form tag"
+  prop(attrs, :map, default: %{})
   @doc "Default slot"
   slot(default)
 
@@ -45,7 +47,10 @@ defmodule Moon.Design.Form do
       {=@change}
       {=@class}
       {=@trigger_action}
-      opts={autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target}
+      opts={Map.merge(
+        %{autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target},
+        @attrs
+      )}
     >
       <#slot context_put={is_horizontal: @is_horizontal, has_error_icon: @has_error_icon} />
     </Surface.Components.Form>
