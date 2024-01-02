@@ -1,3 +1,10 @@
+## [2.79.7](https://github.com/coingaming/moon/compare/v2.79.6...v2.79.7) (2024-01-02)
+
+
+### Bug Fixes
+
+* Design.Form now has attrs property ([#815](https://github.com/coingaming/moon/issues/815)) ([2c14062](https://github.com/coingaming/moon/commit/2c14062025358fb639f6e953000a9c729abf42e9))
+
 ## [2.79.6](https://github.com/coingaming/moon/compare/v2.79.5...v2.79.6) (2023-12-21)
 
 
