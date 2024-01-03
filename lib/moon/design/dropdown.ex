@@ -19,7 +19,7 @@ defmodule Moon.Design.Dropdown do
   prop(testid, :string)
   @doc "Dropdown autoclose on click away"
   prop(autoclose, :boolean, default: true)
-  @doc "Well, disabled"
+  @doc "Disabled state for the dropdown"
   prop(disabled, :boolean)
 
   @doc "Attribute phx-hook. Used for dependant components"
