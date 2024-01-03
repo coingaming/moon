@@ -19,6 +19,8 @@ defmodule Moon.Design.Dropdown do
   prop(testid, :string)
   @doc "Dropdown autoclose on click away"
   prop(autoclose, :boolean, default: true)
+  @doc "Disabled state for the dropdown"
+  prop(disabled, :boolean)
 
   @doc "Attribute phx-hook. Used for dependant components"
   prop(hook, :string)
@@ -74,6 +76,7 @@ defmodule Moon.Design.Dropdown do
           @trigger,
           value: @value,
           is_open: @is_open,
+          disabled: @disabled,
           on_trigger: @on_trigger || %{name: "on_trigger_default", target: @myself}
         }
         context_put={
