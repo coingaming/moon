@@ -78,8 +78,7 @@ defmodule Moon.Convert.Template do
   defp translate_slot_attr({"generator_value", {:attribute_expr, expr, _m2}, _m1}), do: expr
 
   defp translate_slot_attr(other) do
-    Logger.warning("Unknown slot attribute:")
-    dbg(other)
+    Logger.warning("Unknown slot attribute: #{inspect(other)}")
     nil
   end
 
@@ -139,8 +138,6 @@ defmodule Moon.Convert.Template do
          end, get_alias(type, aliases)}
     end
   end
-
-  # defp translate_attr({name, expr, meta}), do: dbg({name, expr, meta})
 
   defp translate_attr({name, expr, meta}, node_props) when is_atom(name),
     do: translate_attr({"#{name}", expr, meta}, node_props)

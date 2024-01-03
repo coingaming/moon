@@ -68,7 +68,7 @@ defmodule Moon.Convert.Module do
         %{component_type: Surface.Component},
         {:@, m1, [{:moduledoc, m2, [text]}]}
       ),
-      do: (text && {:@, m1, [{:doc, m2, [dbg(text)]}]}) || :skip
+      do: (text && {:@, m1, [{:doc, m2, [text]}]}) || :skip
 
   def translate_use_defmodule(
         %{component_type: Surface.Component},
