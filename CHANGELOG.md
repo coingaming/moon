@@ -1,3 +1,10 @@
+## [2.79.8](https://github.com/coingaming/moon/compare/v2.79.7...v2.79.8) (2024-01-03)
+
+
+### Bug Fixes
+
+* disabled prop for Dropdown ([#816](https://github.com/coingaming/moon/issues/816)) ([1b1bfd2](https://github.com/coingaming/moon/commit/1b1bfd2fdf90d2cfbd33ce24695d3131ae9f63c3))
+
 ## [2.79.7](https://github.com/coingaming/moon/compare/v2.79.6...v2.79.7) (2024-01-02)
 
 
