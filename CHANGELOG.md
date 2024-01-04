@@ -1,3 +1,10 @@
+## [2.79.9](https://github.com/coingaming/moon/compare/v2.79.8...v2.79.9) (2024-01-04)
+
+
+### Bug Fixes
+
+* removing dbg() usage ([157d810](https://github.com/coingaming/moon/commit/157d810c995ec4c830521a8b217768a6064a7873))
+
 ## [2.79.8](https://github.com/coingaming/moon/compare/v2.79.7...v2.79.8) (2024-01-03)
 
 
