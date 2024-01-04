@@ -43,8 +43,7 @@ defmodule Moon.Convert.Tokens do
            {:block, type, attributes, children, node_meta}
 
          other ->
-           Logger.warning("Unknown tag: ")
-           dbg(other)
+           Logger.warning("Unknown tag: #{inspect(other)}")
        end
      end, context}
   end
