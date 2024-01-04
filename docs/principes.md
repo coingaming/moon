@@ -9,11 +9,11 @@ Here are some principes we're trying to use when developing moon. Why do we thin
 
 ## Programming rules:
 We do preffer and respect the following principes:
-Headless - as soon as we're using few techologies, we need to use headless approach, so sub-components structure & interactions are mostly predefined when creatig components for each technology.
+Headless - as soon as we're using few techologies (React, Phoenix & Flutter) we need to use headless approach, so API, subcomponents structure & interactions are mostly predefined when implemnting component for each technology.
 KISS & DRY - every time we do break them - we have to pay for it. list of cases can be provided.
 SOLID - as soon as it can be applied to surface/live_view components (no inheritance, etc.). bc of SOLID (and bc of headless) we're about to use ...
   - Compound Pattern - every component is a compound of subcomponents, easely replaceable and a bit customizable.
-  - we do preffer composition of existing components instead of creating new. Less components mean less support. Laziness is a one of the programmer's best quality
+  - we do preffer composition of existing components instead of creating new one. Less components mean less support. "Laziness is a one of the programmer's best quality" - tofind a qoute source
 Library development - gives us few more restrictions: 
   - Breaking Change - is something critical, would like to have a place for discussing it with connsumers before implemennting.
 
@@ -23,6 +23,11 @@ Library development - gives us few more restrictions:
 - ... by MoonDS team after that
 - ... and proposed for a review/discussion to our library consumers
 
+# Gitflow
+TODO: to describe
+
+# Taskflow
+TODO: to describe
 
 ## Namings
 For historical reasons - some parser/formatter issues - we do not use notation? for boolean properties. In most cases the are prefixed with is_/has_, e.g. `is_headless` or `has_head` instead of `headless?` 
