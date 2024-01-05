@@ -81,6 +81,7 @@ defmodule Moon.Design.Dropdown do
         }
         context_put={
           is_open: @is_open,
+          disabled: @disabled,
           on_trigger: @on_trigger || %{name: "on_trigger_default", target: @myself},
           open_me: %{name: "open_me", target: @myself},
           close_me: %{name: "close_me", target: @myself}

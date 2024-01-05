@@ -13,6 +13,8 @@ defmodule Moon.Design.Dropdown.Trigger do
   prop(testid, :string)
   @doc "Additional Tailwind classes"
   prop(class, :css_class)
+  @doc "If the item should be marked as disabled"
+  prop(disabled, :boolean, from_context: :disabled)
 
   @doc "Inner content of the component"
   slot(default)
@@ -20,11 +22,11 @@ defmodule Moon.Design.Dropdown.Trigger do
   def render(assigns) do
     ~F"""
     <div
-      :on-click={@on_click}
+      :on-click={!@disabled && @on_click || nil}
       data-testid={@testid}
       aria-haspopup="true"
       aria-expanded={@is_open}
-      class={merge(["cursor-pointer", @class])}
+      class={merge([["cursor-pointer": !@disabled], @class])}
     >
       <#slot>{@title}</#slot>
     </div>
