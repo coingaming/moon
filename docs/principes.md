@@ -1,5 +1,5 @@
 # Some principes
-Here are some principes we're trying to use when developing moon. Why do we think it's important? Well, in most cases bad principes lead to a bad architecture. Bad architecture leads to a buggy, unusable, unstable and ugly code. So, to be aware of that, let's discuss some points that seems to be important for me.
+Here are some principles we're trying to use when developing MoonDS. Why do we think it's important? Well, in most cases, bad principles lead to a bad architecture. Bad architecture leads to buggy, unusable, unstable, and ugly code. So, to be aware of that, let's discuss some points that seem to be important to us.
 
 
 ## Our main goals are:
@@ -9,11 +9,12 @@ Here are some principes we're trying to use when developing moon. Why do we thin
 
 ## Programming rules:
 We do preffer and respect the following principes:
+Design First - as soon as your design is compatible with our figma files - you'll have painless integration of our components in your project. As much design differs - as much problems you'll have when implementing it.
 Headless - as soon as we're using few techologies (React, Phoenix & Flutter) we need to use headless approach, so API, subcomponents structure & interactions are mostly predefined when implemnting component for each technology.
 KISS & DRY - every time we do break them - we have to pay for it. list of cases can be provided.
 SOLID - as soon as it can be applied to surface/live_view components (no inheritance, etc.). bc of SOLID (and bc of headless) we're about to use ...
   - Compound Pattern - every component is a compound of subcomponents, easely replaceable and a bit customizable.
-  - we do preffer composition of existing components instead of creating new one. Less components mean less support. "Laziness is a one of the programmer's best quality" - tofind a qoute source
+  - Component Composition is prefferable vs creating new one. Less components mean less support. "Laziness is a one of the programmer's best quality" - tofind a qoute's source
 Library development - gives us few more restrictions: 
   - Breaking Change - is something critical, would like to have a place for discussing it with connsumers before implemennting.
 
