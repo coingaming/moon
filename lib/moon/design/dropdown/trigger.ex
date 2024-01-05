@@ -22,7 +22,7 @@ defmodule Moon.Design.Dropdown.Trigger do
   def render(assigns) do
     ~F"""
     <div
-      :on-click={!@disabled && @on_click || nil}
+      :on-click={(!@disabled && @on_click) || nil}
       data-testid={@testid}
       aria-haspopup="true"
       aria-expanded={@is_open}
