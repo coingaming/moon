@@ -12,6 +12,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
   alias Moon.Design.Tabs
 
   alias MoonWeb.Examples.Design.DropdownExample
+  alias MoonWeb.Examples.Design.Form
 
   data(breadcrumbs, :any,
     default: [
@@ -50,10 +51,14 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
 
       <Tabs id="anatomy-tabs" class="justify-between gap-6">
         <h2 class="text-moon-24 font-medium">Anatomy</h2>
-        <Tabs.List tab_titles={["Long syntax", "Short syntax", "Responsive layout"]} class="w-auto" />
+        <Tabs.List
+          tab_titles={["Long syntax", "Short syntax", "Form", "Responsive layout"]}
+          class="w-auto"
+        />
         <Tabs.Panels>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:long)}</Anatomy></Tabs.Panel>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:short)}</Anatomy></Tabs.Panel>
+          <Tabs.Panel><Anatomy title={false}>{component_anatomy(:form)}</Anatomy></Tabs.Panel>
           <Tabs.Panel><Anatomy title={false}>{component_anatomy(:responsive)}</Anatomy></Tabs.Panel>
         </Tabs.Panels>
       </Tabs>
@@ -66,7 +71,11 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.Sizes,
         DropdownExample.Datepicker,
         DropdownExample.ResponsiveDropdown,
-        DropdownExample.WithHeaderAndFooter
+        DropdownExample.WithHeaderAndFooter,
+        Form.DropdownExample.Default,
+        Form.DropdownExample.States,
+        Form.DropdownExample.Multiple,
+        Form.DropdownExample.Custom
       ]} />
 
       <PropsTable module={Moon.Design.Dropdown} />
@@ -78,11 +87,13 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       <PropsTable module={Moon.Design.Dropdown.Header} />
       <PropsTable module={Moon.Design.Dropdown.Footer} />
       <PropsTable module={Moon.Design.Dropdown.CustomOption} />
+      <PropsTable module={Moon.Design.Form.Dropdown} />
+      <PropsTable module={Moon.Design.Dropdown.Select} />
     </Page>
     """
   end
 
-  def component_anatomy(:short) do
+  defp component_anatomy(:short) do
     """
     <Dropdown>
       <Dropdown.Options titles={["...", "...", "..."]}>
@@ -91,7 +102,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
     """
   end
 
-  def component_anatomy(:long) do
+  defp component_anatomy(:long) do
     """
     <Dropdown>
       <Dropdown.Options>
@@ -104,7 +115,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
     """
   end
 
-  def component_anatomy(:responsive) do
+  defp component_anatomy(:responsive) do
     """
     <Dropdown>
       <Dropdown.BottomOptions>
@@ -115,6 +126,16 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
       <Dropdown.Trigger>...</Dropdown.Trigger>
       <Dropdown.Backdrop/>
     </Dropdown>
+    """
+  end
+
+  defp component_anatomy(:form) do
+    """
+    <Form>
+      <Form.Field>
+        <Form.Dropdown options={...} />
+      </Form.Field>
+    </Form>
     """
   end
 end
