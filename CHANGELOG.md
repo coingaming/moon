@@ -1,3 +1,10 @@
+## [2.79.10](https://github.com/coingaming/moon/compare/v2.79.9...v2.79.10) (2024-01-08)
+
+
+### Bug Fixes
+
+* adding disabled to Dropdown.Trigger ([#818](https://github.com/coingaming/moon/issues/818)) ([10f02f9](https://github.com/coingaming/moon/commit/10f02f9e353254f8a230ffebdb63d015aefcf32f))
+
 ## [2.79.9](https://github.com/coingaming/moon/compare/v2.79.8...v2.79.9) (2024-01-04)
 
 
