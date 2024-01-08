@@ -1,3 +1,10 @@
+## [2.79.11](https://github.com/coingaming/moon/compare/v2.79.10...v2.79.11) (2024-01-08)
+
+
+### Bug Fixes
+
+* Moon.Design.Search w/o results ([#813](https://github.com/coingaming/moon/issues/813)) ([181c529](https://github.com/coingaming/moon/commit/181c529ceab91d6eceb301351fd54e61361f6801))
+
 ## [2.79.10](https://github.com/coingaming/moon/compare/v2.79.9...v2.79.10) (2024-01-08)
 
 
