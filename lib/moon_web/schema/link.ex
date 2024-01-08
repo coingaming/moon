@@ -41,7 +41,6 @@ defmodule MoonWeb.Schema.Link do
       MoonWeb.Pages.Design.Form.AuthCodePage,
       MoonWeb.Pages.Design.Form.CheckboxPage,
       MoonWeb.Pages.Design.Form.ComboboxPage,
-      MoonWeb.Pages.Design.Form.DropdownPage,
       MoonWeb.Pages.Design.Form.GroupPage,
       MoonWeb.Pages.Design.Form.InputPage,
       MoonWeb.Pages.Design.Form.InsetInputPage,

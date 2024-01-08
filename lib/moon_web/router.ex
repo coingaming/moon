@@ -85,7 +85,6 @@ defmodule MoonWeb.Router do
     live("/components/v2/form/auth_code", MoonWeb.Pages.Design.Form.AuthCodePage)
     live("/components/v2/form/checkbox", MoonWeb.Pages.Design.Form.CheckboxPage)
     live("/components/v2/form/combobox", MoonWeb.Pages.Design.Form.ComboboxPage)
-    live("/components/v2/form/dropdown", MoonWeb.Pages.Design.Form.DropdownPage)
     live("/components/v2/form/group", MoonWeb.Pages.Design.Form.GroupPage)
     live("/components/v2/form/input", MoonWeb.Pages.Design.Form.InputPage)
     live("/components/v2/form/inset_input", MoonWeb.Pages.Design.Form.InsetInputPage)
