@@ -1,8 +1,10 @@
-# Moon scaffold proposal
+# Moon-elixir scaffold proposal
+To provide a mix generator task that will create a compound component covering all CRUD operations for a given data type.
+
 
 ## Proposal reason
-Speed up frontend development. 
-Reduce the number of breaking changes. 
+Speed up frontend development for back-office-common CRUD operations. 
+Reduce the number of breaking changes, see details below.
 It closely aligns with Phoenix's development standards.
 
 ## Proposal workflow
@@ -14,11 +16,30 @@ It closely aligns with Phoenix's development standards.
 To create generator task  `moon.scaffold <Your.Data.Type.Module>` pretty close to `phx.gen...` mix task.
 `<Your.Data.Type.Module>` - is some kind of struct|ecto.schema
 
-Generator result - Compound component & it's subcomponents.
+Generator result - Compound component with all CRUD operations (+Table for list) & its subcomponents. 
+Behavior will be based on [this Figma design](https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0). 
+So, a table will be generated with sortable and filterable columns, corresponding to fields in the source struct. 
+Clicking on a row in the table will lead to a row card/form displayed alongside the table. 
+Additionally, a form should also be generated, containing the necessary fields. 
+An additional `Actions` component will be generated to encapsulate entity actions.
 
-Example:
+`Ecto.Schema` holds more information that can be helpful when generating forms/tables. Some selects for relations, checkboxes for boolean values, radio buttons for enums, etc., can appear here depending on the field datatype.
 
-Let's say we have some struct
+
+## Some remark about breaking changes avoiding:
+If the generator script is changed, everybody can run it to see the results compared to the committed changes. Therefore, consumers can choose whether the provided changes are needed, either in whole or in part. VCS will help.
+
+## Potential Drawbacks
+
+Flexibility is lacking. The entire component will not be as customizable as common Moon components because of the initial complexity.
+
+There are no auto-updates on these components, and I actually prefer it that way! A new generator run is required when some updates are delivered. But it will ignore or overwrite previous changes.
+
+
+## Example:
+Lot of elixir code below, nothing else.
+
+Let's say we have some struct. `Ecto.{Schema, Changeset}` should also be applicable here. Not sure about `Phoenix.Form`.
 ```elixir
 defmodule MoonWeb.Schema.Link do
   defstruct name: nil,
@@ -103,12 +124,3 @@ defmodule MoonWeb.Components.Link.Card do
   end
 end
 ```
-
-Some schema-specific information can be helpful when generating forms - some selects, checkboxes, etc. can appear here depending on datatype.
-
-After components are generated, they will have some default behavior. The Card will be open on row-click and closed on cancel. The Table will be sortable and filterable, etc.
-
-Behaviour will be based on https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0
-
-## Some remark about breaking changes avoiding:
-If the generator script is changed, everybody can run it to see the results comparing to the committed changes. So, consumers can choose if they do need the changes provided.
