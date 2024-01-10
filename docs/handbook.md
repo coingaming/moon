@@ -1,108 +1,48 @@
-# Moon (elixir?) developer's handbook proposal
+# Moon (Elixir) Developer's Handbook Proposal
+Version 0.0-cgpt-3
 
-version 0.0
+## Document Workflow
+	•	Review by MoonDS team
+	•	Proposal for review/discussion with library consumers
 
-### This document workflow
-- First should be reviewed with chatGPT.
-- ... by MoonDS team after that
-- ... and proposed for a review/discussion to our library consumers
+## Main Goal
+The main goal of this handbook is to establish a transparent and multi-technology design system for MoonDS, fostering a community both within and outside the company. This involves making frontend development easier for consumers and involving the community in feature discussions and implementation of the library.
 
+## Principles
+We follow these principles when developing MoonDS to ensure code quality and component understanding:
+	1.	Design First: Integration of our components is painless when the design aligns with our Figma files. Divergent designs result in more implementation difficulties for the consumer.
+	2.	Headless: MoonDS utilizes React, Phoenix, and Flutter, requiring a headless approach for predefined APIs, subcomponent structures, and interactions across technologies.
+	3.	KISS & DRY: Violating these principles leads to increased challenges and should be avoided. A list of specific cases can be provided.
+	4.	SOLID: While SOLID can't be fully applied to surface/live_view/react? components, we adopt the Compound Pattern, allowing easy replacement and customizations of components. Component composition is preferred over creating new components. Simplicity is valued in order to minimize support requirements.
+	5.	Library Development: We consider consumer feedback before implementing breaking changes and aim to support diverse architecture solutions. Examples are provided to assist consumers in their own implementations.
 
-## Our main goal:
-Transparent multi-technology design system and a consuming comunity around it, inside and outside company.
-So, we need to make:
-- frontend development easier for our consumers
-- library development transparent by involving comunity in feature discussion and/or implementing
-
-## Priciples:
-Here are some principles we're trying to use when developing MoonDS. Why do we think it's important? Well, in most cases, bad principles ->  bad architecture -> buggy, unusable, unstable, and ugly code. 
-Other side, understanding the principles we're using in Moon will help to understand our components.
-
-Design First - as soon as your design is compatible with our figma files - you'll have painless integration of our components in your project. As much design differs - as much pain consumer'll have when implementing it.
-Headless - as soon as we're using few techologies (React, Phoenix & Flutter) we need to use headless approach, so API, subcomponents structure & interactions are mostly predefined when implemnting component for each technology.
-KISS & DRY - every time we do break them - we have to pay for it. list of cases can be provided.
-SOLID - as soon as it can be applied to surface/live_view components (no inheritance, etc.). bc of SOLID (and bc of headless) we're about to use ...
-  - Compound Pattern - every component is a compound of subcomponents, easely replaceable and a bit customizable.
-  - Component Composition is prefferable vs creating new one. Less components mean less support. "Laziness is a one of the programmer's best quality" - tofind a qoute's source
-Library development - gives us few more restrictions: 
-  - Breaking Change - is something critical, would like to have a place for discussing it with connsumers before implemennting.
-  - we do not force our consumers to any architecture solution, trying to support their own ways instead, and also provide our examples somewhere
-
-
-
-## Some werid points to be improved (or not)
-Right now we're strictly connected to tailwind.
+## Areas for Improvement
+Currently, MoonDS relies heavily on Tailwind CSS, this point can be evaluated for potential enhancements.
 
 ## Gitflow
-checkout form main -> branch MDS-<JIRA_NR>-.... -> coding & test -> PR to main -> approvals & checks -> sqaush & merge
+The recommended Gitflow for MoonDS development is as follows:
+  0.  Find or create Jira Task 
+	1.	Pull the last the main branch.
+	2.	Checkout to a new branch with the format MDS-<JIRA_TASK_NR>-...
+	3.	Code and test on the branch
+	4.	Create a pull request (PR) to the main branch
+	5.	Obtain approvals and pass checks
+	6.	Squash and merge the branch into the main branch
 
-## Task-flow
-Jira Task -> Gitflow -> delivery (circle-ci + monitoring.heathmont.net for elixir)
+## Proposal Flow
+Proposals are initiated through GitHub issues, followed by synchronous or asynchronous discussions. Participants reach a conclusion, deciding whether to implement, investigate further, postpone, or reconsider the proposal in the future. Proposals may then proceed through the  GitFlow.
 
-## Proposal-flow
-GitHub issue -> sync/async discussion(s), initiated by topic starter -> some kind of conclusion (implement, investigate, forget, re-discuss it later) -> maybe Task-flow
-
-
-## Git hygiene
-Rebase is preferred over merge. 
-Atomic commits.
-Conventional commits, messages to be collected to CHANGELOG.md by ci
-No direct main branch pushes until you have rights & reason
+## Git Hygiene
+To maintain a clean Git history, rebase is preferred over merge. Atomic commits are encouraged, and conventional commit messages are collected by the CI system and added to CHANGELOG.md. Direct pushes to the main branch are prohibited unless authorized.
 
 ## Scrum
-Non-strict scrun, sprint duration is 1-month. We do use daily meetings and only one meeting - sprint review (+retro, sotimes a bit demo, no planning is there).
-
-## Elixir-specific points
-
-### Prefferable solutions
-KISS is the point. Some consumers do avoid using our components bc of extra difficulty. Even visual effetcs are not always a good reason for KISS breaking. Animation-hooked components in Elixir are good examples here.
-
-HTML/CSS solutions are preferred over Elixir, and JavaScript is considered the last option in general. For sure, we're not going to send mouse-move, hover and focus events to a server, should be processed on a client. Some kind of border is put here right now.
-
-### Adding new comonent layer
-... is painfull.
-Let's imagine #814 proposal implemented. additional layer
+We adopt a non-strict Scrum approach with one-month sprints. Daily meetings assist collaboration, and sprint reviews (including retro and demo sometimes) are conducted, without plannings.
 
 
+## Elixir-Specific Points
 
-### Namings
-For historical reasons - some parser/formatter issues - we do not use notation? for boolean properties. In most cases the are prefixed with is_/has_, e.g. `is_headless` or `has_head` instead of `headless?` 
+### Preferred Solutions
+The principle of KISS is highly regarded, even if it means sacrificing visual effects. HTML/CSS solutions are preferred over Elixir, and JavaScript is considered a last resort. And for sure we do not send mouse-move, hover or scroll events to the server.
 
-
-
-
-
-## Compound pattern
-
-... in general it gives us a lot of flexibility. Not for free, but by increasing complexity.
-
-What does it mean e.g. on form-field level:
-
-1. Full syntax
-```
-<Field>
-  <Field.Label>Label here</Field.Label>
-  <Form.Input/>
-  <Field.Hint>hint here</Field.Hint>
-  <Field.Error/>
-</Field>
-```
-This variant is fully customizable - elements sequence, presence, replacement, visual changes, icons in text and so on
-
-
-
-2. Short syntax
-```
-<Field label="Label here" hint="hint here" hide_errors>
-  <Form.Input/>
-</Field>
-```
-
-This code looks easier to read, but it's less flexible - no classes, icons, etc.
-
-3. Extra-short (only in components v1)
-```
-<Form.Input label="Label here" hint="hint here">
-```
-
-Code is not flexible, How would you customize the label or email here? And also - u can take an `<input>` only together wuth lot of other unecessary things, so it can be used only inside the form. we will need a separate input for other cases or realy dirty code inside (take a look at form components v1)
+### Naming Conventions
+To overcome parser/formatter issues, we avoid using the `?` notation for boolean properties. Instead, we prefix them with `is_` or `has_`, such as `is_headless` or `has_head`, as opposed to `headless?`.
