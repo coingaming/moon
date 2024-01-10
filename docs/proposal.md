@@ -1,40 +1,26 @@
 # Moon-elixir scaffold proposal
-To provide a mix generator task that will create a compound component covering all CRUD operations for a given data type.
 
+## Purpose of the Proposal
+The aim of this proposal is to expedite the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the back-office area. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
 
-## Proposal reason
-Speed up frontend development for back-office-common CRUD operations. 
-Reduce the number of breaking changes, see details below.
-It closely aligns with Phoenix's development standards.
+## Workflow of the Proposal
+The proposal should initially be discussed within the MoonDS team and then presented to our library consumers for review and discussion.
 
-## Proposal workflow
-- First should be discussed inside the MoonDS team 
-- ... and proposed for a review/discussion to our library consumers
+## Subject of the Proposal
+The proposal involves the creation of a mix generator task called `moon.scaffold <Your.Data.Type.Module>`, which closely resembles the existing `phx.gen...` mix task. 
+<Your.Data.Type.Module> refers to a specific struct or ecto.schema.
 
+The output of this generator task will be a compound component that encompasses all CRUD operations (including a table for listing) and its corresponding subcomponents. The generated table will have sortable and filterable columns, aligned with the fields in the original struct. Clicking on a row in the table will display a row card/form adjacent to the table. Additionally, a form with the necessary fields will be generated. An additional "Actions" component will encapsulate entity actions.
+Please refer to the actual Figma design files for details.
 
-## Subject
-To create generator task  `moon.scaffold <Your.Data.Type.Module>` pretty close to `phx.gen...` mix task.
-`<Your.Data.Type.Module>` - is some kind of struct|ecto.schema
+The `Ecto.Schema` provides additional information that can be utilized when generating forms/tables. Depending on the field data type, this may include select options for relations, checkboxes for boolean values, radio buttons for enums, etc.
 
-Generator result - Compound component with all CRUD operations (+Table for list) & its subcomponents. 
-Behavior will be based on [this Figma design](https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0). 
-So, a table will be generated with sortable and filterable columns, corresponding to fields in the source struct. 
-Clicking on a row in the table will lead to a row card/form displayed alongside the table. 
-Additionally, a form should also be generated, containing the necessary fields. 
-An additional `Actions` component will be generated to encapsulate entity actions.
-
-`Ecto.Schema` holds more information that can be helpful when generating forms/tables. Some selects for relations, checkboxes for boolean values, radio buttons for enums, etc., can appear here depending on the field datatype.
-
-
-## Some remark about breaking changes avoiding:
-If the generator script is changed, everybody can run it to see the results compared to the committed changes. Therefore, consumers can choose whether the provided changes are needed, either in whole or in part. VCS will help.
+## Considerations for Avoiding Breaking Changes
+Any modifications to the generator script can be run by everyone to compare the results with the committed changes. This allows consumers to decide whether they require the provided changes in their entirety or partially. Version control systems (VCS) can assist in this process.
 
 ## Potential Drawbacks
-
-Flexibility is lacking. The entire component will not be as customizable as common Moon components because of the initial complexity.
-
-There are no auto-updates on these components, and I actually prefer it that way! A new generator run is required when some updates are delivered. But it will ignore or overwrite previous changes.
-
+The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity.
+Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered, a new generator run is necessary. However, this process may override or disregard any previous changes.
 
 ## Example:
 Lot of elixir code below, nothing else.
