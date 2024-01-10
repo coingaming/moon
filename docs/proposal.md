@@ -1,15 +1,17 @@
-# Moon gen.scaffold proposal
+# Moon scaffold proposal
 
 ## Proposal reason
-Speed up frontend development. Reduce breaking changes number. Looks pretty close to phoenix's develoment standarts.
+Speed up frontend development. 
+Reduce the number of breaking changes. 
+It closely aligns with Phoenix's development standards.
 
 ## Proposal workflow
-- First should be discussedinside by MoonDS team 
+- First should be discussed inside the MoonDS team 
 - ... and proposed for a review/discussion to our library consumers
 
 
 ## Subject
-To create generator task  `moon.gen.scaffold <Your.Data.Type.Module>` pretty close to `phx.gen...` mix task.
+To create generator task  `moon.scaffold <Your.Data.Type.Module>` pretty close to `phx.gen...` mix task.
 `<Your.Data.Type.Module>` - is some kind of struct|ecto.schema
 
 Generator result - Compound component & it's subcomponents.
@@ -107,11 +109,11 @@ defmodule MoonWeb.Components.Link.Card do
 end
 ```
 
-Some schema-specific information can be helpful when generating forms - some selects, checkboxes, etc. can appear heer dependinng on datatype.
+Some schema-specific information can be helpful when generating forms - some selects, checkboxes, etc. can appear here depending on datatype.
 
-After components are generated they'll have some default behaviour - Card is open on row-click, closed on cancel. Table is sortable, filterable. etc. 
+After components are generated, they will have some default behavior. The Card will be open on row-click and closed on cancel. The Table will be sortable and filterable, etc.
 
-e.g. - https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0
+Behaviour will based on https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0
 
 ## Some remark about breaking changes avoiding:
-If generator script is changed - everybody can run it to see results coomparinng to committed changes. So, consumers can choose if they do need last changes.
+If the generator script is changed, everybody can run it to see the results comparing to the committed changes. So, consumers can choose if they do need the changes provided.
