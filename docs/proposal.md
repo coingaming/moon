@@ -18,7 +18,7 @@ Generator result - Compound component & it's subcomponents.
 
 Example:
 
-Let's say we have folowing struct
+Let's say we have some struct
 ```elixir
 defmodule MoonWeb.Schema.Link do
   defstruct name: nil,
@@ -48,9 +48,7 @@ defmodule MoonWeb.Components.Link do
 
   end
 end
-```
 
-```elixir
 defmodule MoonWeb.Components.Link.Table do
 ...
 
@@ -68,9 +66,7 @@ defmodule MoonWeb.Components.Link.Table do
 
   end
 end
-```
 
-```elixir
 defmodule MoonWeb.Components.Link.Form do
 ...
 
@@ -94,8 +90,7 @@ defmodule MoonWeb.Components.Link.Form do
 
   end
 end
-```
-```elixir
+
 defmodule MoonWeb.Components.Link.Card do
 ...
 
@@ -113,7 +108,7 @@ Some schema-specific information can be helpful when generating forms - some sel
 
 After components are generated, they will have some default behavior. The Card will be open on row-click and closed on cancel. The Table will be sortable and filterable, etc.
 
-Behaviour will based on https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0
+Behaviour will be based on https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=G8dRp4A3fQDy3KT4-0
 
 ## Some remark about breaking changes avoiding:
 If the generator script is changed, everybody can run it to see the results comparing to the committed changes. So, consumers can choose if they do need the changes provided.
