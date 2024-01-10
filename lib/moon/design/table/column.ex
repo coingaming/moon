@@ -9,7 +9,7 @@ defmodule Moon.Design.Table.Column do
   prop(label, :string)
   @doc "The is the column sortable"
   prop(sortable, :boolean, default: false)
-  @doc "Can be used for adding any class to both th & td tags"
+  @doc "Deprecated: Can be used for adding any class to both th & td tags"
   prop(width, :css_class)
   @doc "Simple additional css class, will be added to td tag only"
   prop(class, :css_class)

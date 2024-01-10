@@ -1,6 +1,10 @@
 defmodule MoonWeb.Schema.Link do
   @moduledoc "Some menu links listing to be used inside the site"
 
+  defstruct name: nil,
+            key: nil,
+            icon: nil
+
   # TODO: add Old Components pages if needed. Add Homepage.
   def pages() do
     [
