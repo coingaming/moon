@@ -24,13 +24,10 @@ https://www.figma.com/file/maDYymDYYORfKtrT1nq23n/Yolo-Bo's?type=design&node-id=
 
 The `Ecto.Schema` provides additional information that can be utilized when generating forms/tables. Depending on the field data type, this may include select options for relations, checkboxes for boolean values, radio buttons for enums, etc.
 
-## Considerations for Avoiding Breaking Changes
-Any modifications to the generator script can be run by everyone to compare the results with the committed changes. This allows consumers to decide whether they require the provided changes in their entirety or partially. 
-
 ## Potential Drawbacks
 The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity.
 
-Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implemnt them. So, changes will be definetly reviewed by consumer before being comitted. However, this process may override or disregard any previous changes.
+Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implemnt them. So, changes will be definetly reviewed by consumer before being comitted. Some kind of no-breaking-changes for free. However, this process may override or disregard any previous changes.
 
 ## Example:
 There are a lot of Surface templates and a bit of Elixir code below, nothing else.
