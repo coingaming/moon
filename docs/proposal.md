@@ -9,9 +9,10 @@ The proposal should initially be discussed within the MoonDS team and then prese
 
 ## Subject of the Proposal
 The proposal involves the creation of a mix generator task called `moon.scaffold <Your.Data.Type.Module>`, which closely resembles the existing `phx.gen...` mix task. 
-<Your.Data.Type.Module> refers to a specific struct or ecto.schema.
+<Your.Data.Type.Module> refers to a specific struct or Ecto.Schema.
 
-The output of this generator task will be a compound component that encompasses all CRUD operations (including a table for listing) and its corresponding subcomponents. The generated table will have sortable and filterable columns, aligned with the fields in the original struct. Clicking on a row in the table will display a row card/form adjacent to the table. Additionally, a form with the necessary fields will be generated. An additional "Actions" component will encapsulate entity actions.
+The output of this generator task will be a compound component that encompasses all CRUD operations (including a table for listing) and its corresponding subcomponents. The generated table will have sortable and filterable columns, aligned with the fields in the original struct. Clicking on a row in the table will display a row card/form adjacent to the table. Additionally, a form with the necessary fields will be generated. An additional "{Item|List}Actions" components will encapsulate entity/list actions.
+
 Please refer to the tables in the actual Figma design files for details:
 
 https://www.figma.com/file/sv4LnptKzx5JwgpIVcEenU/Partners.io?type=design&node-id=3135-10499&mode=design&t=YHzkQMOQ7U0VIvkD-0
@@ -24,11 +25,12 @@ https://www.figma.com/file/maDYymDYYORfKtrT1nq23n/Yolo-Bo's?type=design&node-id=
 The `Ecto.Schema` provides additional information that can be utilized when generating forms/tables. Depending on the field data type, this may include select options for relations, checkboxes for boolean values, radio buttons for enums, etc.
 
 ## Considerations for Avoiding Breaking Changes
-Any modifications to the generator script can be run by everyone to compare the results with the committed changes. This allows consumers to decide whether they require the provided changes in their entirety or partially. Version control systems (VCS) can assist in this process.
+Any modifications to the generator script can be run by everyone to compare the results with the committed changes. This allows consumers to decide whether they require the provided changes in their entirety or partially. 
 
 ## Potential Drawbacks
 The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity.
-Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered, a new generator run is necessary. However, this process may override or disregard any previous changes.
+
+Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implemnt them. So, changes will be definetly reviewed by consumer before being comitted. However, this process may override or disregard any previous changes.
 
 ## Example:
 There are a lot of Surface templates and a bit of Elixir code below, nothing else.
@@ -56,7 +58,8 @@ defmodule MoonWeb.Components.Link do
       <Link.Table items=... />
       <Link.Form for=.../>
       <Link.Card for=.../>
-      <Link.Actions>
+      <Link.ItemActions>
+      <Link.ListActions>
     </Moon.CRUD>
     """
   end
@@ -69,10 +72,10 @@ defmodule MoonWeb.Components.Link.Table do
 
   def render(assigns) do
     ~F"""
-    <Table items={model <- @items}>
-      <Table.Col name="name">{model.name}</Table.Col>
-      <Table.Col name="key">{model.key}</Table.Col>
-      <Table.Col name="icon">{model.icon}</Table.Col>
+    <Table items={item <- @items}>
+      <Table.Col name="name">{item.name}</Table.Col>
+      <Table.Col name="key">{item.key}</Table.Col>
+      <Table.Col name="icon">{item.icon}</Table.Col>
     </Table>
     """
   end
@@ -81,7 +84,7 @@ end
 defmodule MoonWeb.Components.Link.Form do
 ...
 
-  alias Moon.Design.Form
+  alias Moon.Design.{Form, Button}
 
   def render(assigns) do
 
@@ -96,6 +99,7 @@ defmodule MoonWeb.Components.Link.Form do
       <Form.Field field="icon">
         <Form.Input />
       </Form.Field>
+      <Button type="submit">Submit</Button>
     </Form>
     """
 
