@@ -1,15 +1,15 @@
 # Moon-elixir scaffold proposal
-version 0.1
+version 0.2
 
 ## Purpose of the Proposal
-The aim of this proposal is to expedite the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the back-office area. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
+The aim of this proposal is to streamline the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the back-office area. This will be achieved by implementing a `mix` generator task that facilitates instant prototyping. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
 
 ## Workflow of the Proposal
 The proposal should initially be discussed within the MoonDS team and then presented to our library consumers for review and discussion.
 
 ## Subject of the Proposal
-The proposal involves the creation of a mix generator task called `moon.scaffold <Your.Data.Type.Module>`, which closely resembles the existing `phx.gen...` mix task. 
-<Your.Data.Type.Module> refers to a specific struct or Ecto.Schema.
+The proposal involves the creation of a mix generator task called `moon.scaffold <Your.Data.Type.Module>`, which closely resembles the existing `phx.gen...` mix tasks.
+<Your.Data.Type.Module> refers to a specific struct or Ecto.Schema. Other datatypes processing can be added later as well. 
 
 The output of this generator task will be a compound component that encompasses all CRUD operations (including a table for listing) and its corresponding subcomponents. The generated table will have sortable and filterable columns, aligned with the fields in the original struct. Clicking on a row in the table will display a row card/form adjacent to the table. Additionally, a form with the necessary fields will be generated. An additional "{Item|List}Actions" components will encapsulate entity/list actions.
 
@@ -25,7 +25,7 @@ https://www.figma.com/file/maDYymDYYORfKtrT1nq23n/Yolo-Bo's?type=design&node-id=
 The `Ecto.Schema` provides additional information that can be utilized when generating forms/tables. Depending on the field data type, this may include select options for relations, checkboxes for boolean values, radio buttons for enums, etc.
 
 ## Potential Drawbacks
-The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity.
+The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity and due to Surface.Context usage deprecating. Anyway, inside BO Templates, flexibility is not a primary focus.
 
 Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implemnt them. So, changes will be definetly reviewed by consumer before being comitted. Some kind of no-breaking-changes for free. However, this process may override or disregard any previous changes.
 
