@@ -1,5 +1,5 @@
 # Moon-elixir scaffold proposal
-version 0.3
+version 0.4
 
 ## Purpose of the Proposal
 The aim of this proposal is to streamline the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the BO Templates area. This will be achieved by implementing a `mix` generator task that facilitates instant prototyping. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
@@ -8,7 +8,7 @@ The aim of this proposal is to streamline the frontend development process for c
 The proposal should initially be discussed within the MoonDS team and then presented to our library consumers for review and discussion.
 
 ## Subject of the Proposal
-The proposal involves the creation of a mix generator task called `moon.scaffold <Your.Data.Type.Module>`, which closely resembles the existing `phx.gen...` mix tasks.
+The proposal involves the creation of a generator task like `mix moon.scaffold <Your.Data.Type.Module>`, which closely resembles the Phoenix's `mix phx.gen...` tasks.
 <Your.Data.Type.Module> refers to a specific struct or Ecto.Schema. Other datatypes processing can be added later as well. 
 
 The output of this generator task will be a compound component that encompasses all CRUD operations (including a table for listing) and its corresponding subcomponents. The generated table will have sortable and filterable columns, aligned with the fields in the original struct. Clicking on a row in the table will display a row card/form adjacent to the table. Additionally, a form with the necessary fields will be generated. An additional "{Item|List}Actions" components will encapsulate entity/list actions.
