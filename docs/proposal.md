@@ -1,8 +1,8 @@
 # Moon-elixir scaffold proposal
-version 0.2
+version 0.3
 
 ## Purpose of the Proposal
-The aim of this proposal is to streamline the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the back-office area. This will be achieved by implementing a `mix` generator task that facilitates instant prototyping. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
+The aim of this proposal is to streamline the frontend development process for common CRUD (Create, Read, Update, Delete) operations in the BO Templates area. This will be achieved by implementing a `mix` generator task that facilitates instant prototyping. The intention is to minimize the occurrence of breaking changes while adhering to the development standards of Phoenix.
 
 ## Workflow of the Proposal
 The proposal should initially be discussed within the MoonDS team and then presented to our library consumers for review and discussion.
@@ -25,9 +25,10 @@ https://www.figma.com/file/maDYymDYYORfKtrT1nq23n/Yolo-Bo's?type=design&node-id=
 The `Ecto.Schema` provides additional information that can be utilized when generating forms/tables. Depending on the field data type, this may include select options for relations, checkboxes for boolean values, radio buttons for enums, etc.
 
 ## Potential Drawbacks
-The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity and due to Surface.Context usage deprecating. Anyway, inside BO Templates, flexibility is not a primary focus.
+The main drawback is a lack of flexibility. The generated component may not be as customizable as other standard Moon components due to its inherent complexity and the deprecation of Surface.Context usage. Anyway, flexibility is not a primary focus inside BO Templates.
 
-Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implemnt them. So, changes will be definetly reviewed by consumer before being comitted. Some kind of no-breaking-changes for free. However, this process may override or disregard any previous changes.
+Furthermore, these components do not receive automatic updates, which is intentional. When updates are delivered with a new moon package version, a new generator run is necessary to implement them. So, changes will definitely be reviewed by the consumer before being committed. It's a kind of no-breaking-changes for free. However, this process may override or disregard any previous changes.
+
 
 ## Example:
 There are a lot of Surface templates and a bit of Elixir code below, nothing else.
