@@ -30,6 +30,8 @@ defmodule Moon.Design.Dropdown.Input do
   prop(on_trigger, :event, from_context: :on_trigger)
   @doc "If the open indicator is active or not"
   prop(is_open, :boolean, from_context: :is_open)
+  @doc "Keyword | Map of additional attributes for the input"
+  prop(attrs, :any, default: %{})
 
   @doc "Some buttons and icons over the input"
   slot(default)
@@ -48,6 +50,7 @@ defmodule Moon.Design.Dropdown.Input do
         {=@disabled}
         autocomplete="off"
         class={"moon-comboinput", @field_class, @class}
+        {...@attrs}
       />
       <#slot />
     </div>
