@@ -38,11 +38,3 @@ To maintain a clean Git history, rebase is preferred over merge. Atomic commits 
 ## Scrum
 We adopt a non-strict Scrum approach with one-month sprints. Daily meetings assist collaboration, and sprint reviews (including retro and demo sometimes) are conducted, without plannings.
 
-
-## Elixir-Specific Points
-
-### Preferred Solutions
-The principle of KISS is highly regarded, even if it means sacrificing visual effects. HTML/CSS solutions are preferred over Elixir, and JavaScript is considered a last resort. And for sure we do not send mouse-move, hover or scroll events to the server.
-
-### Naming Conventions
-To overcome parser/formatter issues, we avoid using the `?` notation for boolean properties. Instead, we prefix them with `is_` or `has_`, such as `is_headless` or `has_head`, as opposed to `headless?`.
