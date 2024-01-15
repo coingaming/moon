@@ -1,3 +1,10 @@
+## [2.79.12](https://github.com/coingaming/moon/compare/v2.79.11...v2.79.12) (2024-01-15)
+
+
+### Bug Fixes
+
+* Dropdown.Input attrs attribute ([#821](https://github.com/coingaming/moon/issues/821)) ([ffdec65](https://github.com/coingaming/moon/commit/ffdec65aeb7ff585807b954fd06b39cfa36a4b41))
+
 ## [2.79.11](https://github.com/coingaming/moon/compare/v2.79.10...v2.79.11) (2024-01-08)
 
 
