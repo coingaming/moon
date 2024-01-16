@@ -1,3 +1,10 @@
+## [2.79.13](https://github.com/coingaming/moon/compare/v2.79.12...v2.79.13) (2024-01-16)
+
+
+### Bug Fixes
+
+* Combobox attrs attribute ([282a55e](https://github.com/coingaming/moon/commit/282a55e158df026069523884d21f610e76e5f6cb))
+
 ## [2.79.12](https://github.com/coingaming/moon/compare/v2.79.11...v2.79.12) (2024-01-15)
 
 
