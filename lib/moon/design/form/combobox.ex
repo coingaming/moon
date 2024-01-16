@@ -47,6 +47,9 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Should dropdown be open"
   prop(is_open, :boolean)
 
+  @doc "Keyword | Map of additional attributes for the input"
+  prop(attrs, :any, default: %{})
+
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)
 
@@ -78,6 +81,7 @@ defmodule Moon.Design.Form.Combobox do
         <#slot {@trigger, is_open: is_open, on_trigger: on_trigger} context_put={on_keyup: @on_keyup}>
           <Dropdown.Input
             placeholder={@prompt}
+            {=@attrs}
             {=@size}
             {=is_open}
             {=@error}
