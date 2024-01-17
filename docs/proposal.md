@@ -116,3 +116,14 @@ defmodule MoonWeb.Components.Link.Card do
   end
 end
 ```
+
+@gfrancischelli
+1. Flexibility: endless scroll vs pagination, filter type, search, table columns for relations, table colum format
+2. A soon as component is not ready right now, but is needed right now - providing new features should be painless, bc. there will be a lot of changes. IMHO generated code is a good point here.
+E.g.:
+  Providing new type of columns for existing data types - changes should be done in generated code. Who want - that use. Who does not want - uses old solution or own custom - let him live as he want.
+
+@ViniciusGaiaValente
+p1. alternative is previous comment by @gfrancischelli
+p2. flexibility is not an oficial point for BO Templeates. But I'm too old for this shit - flexibility will be a point anyway. No design flexibility, but functional flexibility i believe - filters & sorting for table, so on
+p3. that's one more flexibility point, thanks for mention
