@@ -12,10 +12,10 @@ defmodule Moon.Parts.Table do
   @doc "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   prop(items, :generator, required: true)
 
-  @doc "Event that firset on row click"
+  @doc "Event that fires on row click"
   prop(row_click, :event)
 
-  @doc "Callback for generating on_click per row. row and row_id will bi given as parameters"
+  @doc "Callback for generating on_click per row. row and row_id will be given as parameters"
   prop(row_click_cb, :any)
 
   @doc "Sorting stuff"
