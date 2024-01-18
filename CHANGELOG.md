@@ -1,3 +1,10 @@
+# [2.80.0](https://github.com/coingaming/moon/compare/v2.79.13...v2.80.0) (2024-01-18)
+
+
+### Features
+
+* Parts.Table component ([#822](https://github.com/coingaming/moon/issues/822)) ([5cc085d](https://github.com/coingaming/moon/commit/5cc085d02cde8d9e45f15727fe0b03a5d72f35c6))
+
 ## [2.79.13](https://github.com/coingaming/moon/compare/v2.79.12...v2.79.13) (2024-01-16)
 
 
