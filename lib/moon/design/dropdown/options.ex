@@ -29,6 +29,8 @@ defmodule Moon.Design.Dropdown.Options do
   prop(testid, :string)
   @doc "Id attribute for div"
   prop(id, :string)
+  @doc "Max visible options without scrolling"
+  prop(max_visible_options, :integer)
 
   slot(option)
   slot(default)
@@ -44,10 +46,12 @@ defmodule Moon.Design.Dropdown.Options do
         (@position && position_class(@position)) || "w-full top-full my-2",
         [hidden: !@is_open, "p-0": slot_assigned?(:header) || slot_assigned?(:footer)],
         get_config(:default_class),
+        get_max_h_classes(@max_visible_options, get_options(assigns), @size),
         @class
       ])}
       {=@id}
       data-testid={@testid}
+      data-options-length={get_options(assigns) |> length}
       role="listbox"
     >
       <#slot {@header} />
@@ -84,4 +88,68 @@ defmodule Moon.Design.Dropdown.Options do
     </div>
     """
   end
+
+  defp get_options(assigns), do: assigns[:option] || assigns[:titles]
+
+  defp get_max_h_classes(max_length, list, "sm") when is_list(list) and is_integer(max_length) do
+    if length(list) > max_length do
+      case max_length do
+        1 -> ~w(dropdown-options-scrollable max-h-8)
+        2 -> ~w(dropdown-options-scrollable max-h-16)
+        3 -> ~w(dropdown-options-scrollable max-h-24)
+        4 -> ~w(dropdown-options-scrollable max-h-32)
+        5 -> ~w(dropdown-options-scrollable max-h-40)
+        _ -> ~w(dropdown-options-scrollable max-h-48)
+      end
+    else
+      []
+    end
+  end
+
+  defp get_max_h_classes(max_length, list, "md") when is_list(list) and is_integer(max_length) do
+    if length(list) > max_length do
+      case max_length do
+        1 -> ~w(dropdown-options-scrollable max-h-10)
+        2 -> ~w(dropdown-options-scrollable max-h-20)
+        3 -> ~w(dropdown-options-scrollable max-h-30)
+        4 -> ~w(dropdown-options-scrollable max-h-40)
+        5 -> ~w(dropdown-options-scrollable max-h-50)
+        _ -> ~w(dropdown-options-scrollable max-h-60)
+      end
+    else
+      []
+    end
+  end
+
+  defp get_max_h_classes(max_length, list, "lg") when is_list(list) and is_integer(max_length) do
+    if length(list) > max_length do
+      case max_length do
+        1 -> ~w(dropdown-options-scrollable max-h-12)
+        2 -> ~w(dropdown-options-scrollable max-h-24)
+        3 -> ~w(dropdown-options-scrollable max-h-36)
+        4 -> ~w(dropdown-options-scrollable max-h-48)
+        5 -> ~w(dropdown-options-scrollable max-h-60)
+        _ -> ~w(dropdown-options-scrollable max-h-72)
+      end
+    else
+      []
+    end
+  end
+
+  defp get_max_h_classes(max_length, list, _) when is_list(list) and is_integer(max_length) do
+    if length(list) > max_length do
+      case max_length do
+        1 -> ~w(dropdown-options-scrollable max-h-10)
+        2 -> ~w(dropdown-options-scrollable max-h-20)
+        3 -> ~w(dropdown-options-scrollable max-h-30)
+        4 -> ~w(dropdown-options-scrollable max-h-40)
+        5 -> ~w(dropdown-options-scrollable max-h-50)
+        _ -> ~w(dropdown-options-scrollable max-h-60)
+      end
+    else
+      []
+    end
+  end
+
+  defp get_max_h_classes(_, _, _), do: []
 end
