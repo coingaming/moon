@@ -11,7 +11,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.LimitHeight do
     ~F"""
     <Dropdown id="dropdown-limit-height">
       <Dropdown.Options
-        max_visible_options={4}
+        max_visible_options={3}
         titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
       />
       <Dropdown.Trigger :let={value: value}>
@@ -25,7 +25,7 @@ defmodule MoonWeb.Examples.Design.DropdownExample.LimitHeight do
     """
       <Dropdown id="dropdown-limit-height">
         <Dropdown.Options
-          max_visible_options={4}
+          max_visible_options={3}
           titles={["Wade Cooper", "Arlene Mccoy", "Devon Webb", "Tom Cook", "Tanya Fox", "Hellen Schmidt"]}
         />
         <Dropdown.Trigger :let={value: value}>

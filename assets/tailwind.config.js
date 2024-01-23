@@ -309,11 +309,11 @@ module.exports = {
         },
         ".dropdown-options-scrollable": {
           overflowY: "scroll",
-          "::-webkit-scrollbar": {
+          "&::-webkit-scrollbar": {
             " -webkit-appearance": "none",
             width: "7px",
           },
-          "::-webkit-scrollbar-thumb": {
+          "&::-webkit-scrollbar-thumb": {
             borderRadius: "4px",
             backgroundColor: "rgba(var(--piccolo), .5)",
             " -webkit-box-shadow": "0 0 1px rgba(var(--piccolo), .5)",
