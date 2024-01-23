@@ -69,7 +69,7 @@ defmodule Moon.Design.Table do
   prop(body_attrs, :map, default: %{})
 
   @doc "Icon for sorting"
-  prop(sorting_icon, :string, default: "controls_chevron_up_small")
+  prop(sorting_icon, :string, default: "arrows_up")
 
   @doc "Icon color for sorting"
   prop(sorting_icon_color, :string)
