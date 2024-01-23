@@ -68,6 +68,9 @@ defmodule Moon.Design.Table do
   @doc "Additional attributes for tbody tag"
   prop(body_attrs, :map, default: %{})
 
+  @doc "Icon for sorting"
+  prop(sorting_icon, :string, default: "controls_chevron_up_small")
+
   def render(assigns) do
     import Moon.Light.Table.Helper
 
@@ -109,7 +112,7 @@ defmodule Moon.Design.Table do
                   "rotate-180": @sort[:"#{col[:name]}"] != "ASC",
                   "opacity-0": !@sort[:"#{col[:name]}"]
                 }
-                name="arrows_up"
+                name={@sorting_icon}
               />
             </th>
           {/for}
