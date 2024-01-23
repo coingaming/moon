@@ -72,7 +72,7 @@ defmodule Moon.Design.Table do
   prop(sorting_icon, :string, default: "controls_chevron_up_small")
 
   @doc "Icon color for sorting"
-  prop(sorting_icon_color, :string, default: "text-bulma")
+  prop(sorting_icon_color, :string)
 
   def render(assigns) do
     import Moon.Light.Table.Helper
