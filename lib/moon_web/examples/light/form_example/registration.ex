@@ -55,7 +55,7 @@ defmodule MoonWeb.Examples.Light.FormExample.Registration do
         </.field>
         <.field field={form[:agrees_to_marketing_emails]}>
           <.label field={form[:agrees_to_marketing_emails]} size="sm">
-            <Form.checkbox field={form[:agrees_to_terms_of_service]} /> Marketing emails
+            <Form.checkbox field={form[:agrees_to_marketing_emails]} /> Marketing emails
           </.label>
         </.field>
         <.button type="submit">Submit</.button>
@@ -67,7 +67,8 @@ defmodule MoonWeb.Examples.Light.FormExample.Registration do
     """
   end
 
-  def handle_event("change", %{"user" => params}, socket) do
+  def handle_event("change", p=%{"user" => params}, socket) do
+    dbg(p)
     user_changeset = User.changeset(%User{}, params)
     {:noreply, assign(socket, user_changeset: user_changeset)}
   end

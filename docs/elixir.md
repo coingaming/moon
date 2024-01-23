@@ -41,3 +41,11 @@ The principle of KISS is highly regarded, even if it means sacrificing visual ef
 
 ### Naming Conventions
 To overcome parser/formatter issues, we avoid using the `?` notation for boolean properties. Instead, we prefix them with `is_` or `has_`, such as `is_headless` or `has_head`, as opposed to `headless?`.
+
+### Namespaces
+Right now we have following namespaces (compoenent layers):
+- Moon.Components - "Old components", used by partners. deprecated
+- Moon.Design - Figma-compatible components, actually MoonnDS. used by partners, 8.io, platform, ...
+- Moon.Parts - BackOffice templates - one more layer of components, used by fraud
+- Moon.Lego - few atom-style components, internal usage mostly
+- Moon.Light - newly generated live_view components, nobody uses

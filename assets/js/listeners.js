@@ -58,9 +58,13 @@ window.addEventListener("moon:close-breadcrumb-flyout", (event) => {
 
 window.addEventListener("moon2:update-switch", (event) => {
   let checkbox = event.target;
+  console.log("moon2:update-switch", checkbox, event.detail.checked);
   checkbox.checked = event.detail.checked;
   checkbox.dispatchEvent(new Event("input", { bubbles: true }));
 });
+
+console.log("listeners are here");
+
 
 window.addEventListener("moon2:clean-checkboxes", (event) => {
   let checkboxes = event.target.parentNode.parentNode.parentNode.querySelectorAll('input[type=checkbox]')

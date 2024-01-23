@@ -285,9 +285,7 @@ defmodule Elixir.Moon.Light.Form do
       phx-focus={@on_focus}
       phx-blur={@on_blur}
       phx-target={@target}
-    >
-      <%= @field && @field.value || @value %>
-    </textarea>
+    ><%= @field && @field.value || @value %></textarea>
     """
   end
 
@@ -307,12 +305,14 @@ defmodule Elixir.Moon.Light.Form do
   def switch(assigns) do
     ~H"""
     <div>
-      <checkbox
+      <input
+        type="checkbox"
         name={@field.name}
         id={@field.id}
         class="hidden"
         disabled={@disabled}
         readonly={@readonly}
+        checked={@field.value}
       />
       <Moon.Light.switch
         size={@size}
@@ -395,12 +395,12 @@ defmodule Elixir.Moon.Light.Form do
       }
       field={@field}
     >
-      <checkbox
+      <input type="checkbox"
         name={@field.name <> ((@is_multiple && "[]") || "")}
         id={@id || @field.id}
         class="opacity-0"
         phx-click={(!@readonly && !@disabled && @on_click) || nil}
-        readonnly={@readonly}
+        readonly={@readonly}
         disabled={@disabled || @readonly}
         data-testid={@testid}
         checked={@field.value == @checked_value}
