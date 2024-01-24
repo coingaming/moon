@@ -93,28 +93,49 @@ defmodule Moon.Design.Dropdown.Options do
 
   defp get_max_h_classes(max_length, list, "sm") when is_list(list) and is_integer(max_length) do
     case max_length do
-      x when length(list) < x -> []
-      3 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-sm-3)
-      5 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-sm-5)
-      _ -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-sm-7)
+      x when length(list) < x ->
+        []
+
+      3 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-sm-3)
+
+      5 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-sm-5)
+
+      _ ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-sm-7)
     end
   end
 
   defp get_max_h_classes(max_length, list, "md") when is_list(list) and is_integer(max_length) do
     case max_length do
-      x when length(list) < x -> []
-      3 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-md-3)
-      5 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-md-5)
-      _ -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-md-7)
+      x when length(list) < x ->
+        []
+
+      3 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-md-3)
+
+      5 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-md-5)
+
+      _ ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-md-7)
     end
   end
 
   defp get_max_h_classes(max_length, list, "lg") when is_list(list) and is_integer(max_length) do
     case max_length do
-      x when length(list) < x -> []
-      3 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-lg-3)
-      5 -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-lg-5)
-      _ -> ~w(dropdown-options-scrollable overflow-y-scroll max-h-scrollable-dropdown-lg-7)
+      x when length(list) < x ->
+        []
+
+      3 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-lg-3)
+
+      5 ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-lg-5)
+
+      _ ->
+        ~w(dropdown-options-scrollable border-r-transparent border-r-4 overflow-y-scroll max-h-scrollable-dropdown-lg-7)
     end
   end
 

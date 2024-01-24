@@ -319,20 +319,16 @@ module.exports = {
           },
         },
         '.dropdown-options-scrollable': {
-          '&:hover': {
-            cursor: 'pointer'
-          },
           "&::-webkit-scrollbar": {
             " -webkit-appearance": "none",
-            width: 6,
-            paddingRight: 4,
+            width: "4px",
           },
           '&::-webkit-scrollbar-thumb': {
-            background: 'rgb(var(--trunks))',
-            borderRadius: '4px'
+            background: 'rgb(var(--beerus))',
+            borderRadius: '100vh'
           },
           '&::-webkit-scrollbar-thumb:active': {
-            background: 'rgb(var(--bulma))'
+            background: 'rgb(var(--trunks))'
           },
         },
         // "&": {
