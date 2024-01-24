@@ -154,6 +154,17 @@ module.exports = {
         "dm-sans":
           'var(--dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
       },
+      maxHeight: {
+        'scrollable-dropdown-sm-3': '6.5rem',
+        'scrollable-dropdown-sm-5': '10.5rem',
+        'scrollable-dropdown-sm-7': '14.5rem',
+        'scrollable-dropdown-md-3': '8rem',
+        'scrollable-dropdown-md-5': '13rem',
+        'scrollable-dropdown-md-7': '18rem',
+        'scrollable-dropdown-lg-3': '9.5rem',
+        'scrollable-dropdown-lg-5': '15.5rem',
+        'scrollable-dropdown-lg-7': '21.5rem',
+      }
     },
   },
   plugins: [
@@ -307,18 +318,34 @@ module.exports = {
             padding: "0.5rem",
           },
         },
-        ".dropdown-options-scrollable": {
-          overflowY: "scroll",
+        '.dropdown-options-scrollable': {
+          '&:hover': {
+            cursor: 'pointer'
+          },
           "&::-webkit-scrollbar": {
             " -webkit-appearance": "none",
-            width: "7px",
+            width: 6,
+            paddingRight: 4,
           },
-          "&::-webkit-scrollbar-thumb": {
-            borderRadius: "4px",
-            backgroundColor: "rgba(var(--piccolo), .5)",
-            " -webkit-box-shadow": "0 0 1px rgba(var(--piccolo), .5)",
+          '&::-webkit-scrollbar-thumb': {
+            background: 'rgb(var(--trunks))',
+            borderRadius: '4px'
+          },
+          '&::-webkit-scrollbar-thumb:active': {
+            background: 'rgb(var(--bulma))'
           },
         },
+        // "&": {
+        //   "::-webkit-scrollbar": {
+        //     " -webkit-appearance": "none",
+        //     width: "7px",
+        //   },
+        //   "::-webkit-scrollbar-thumb": {
+        //     borderRadius: "4px",
+        //     backgroundColor: "rgba(var(--piccolo), .5)",
+        //     " -webkit-box-shadow": "0 0 1px rgba(var(--piccolo), .5)",
+        //   },
+        // },
       });
     }),
   ],
