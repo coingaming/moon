@@ -6,7 +6,7 @@ export default {
         this.hiddenField = this.el.querySelector('input[type="hidden"]');
         this.inputValues = this.inputs.map((input) => input.value);
 
-        // TODO: add support forms with re-render on "phx-chage" event 
+        // TODO: add support forms with re-render on "phx-change" event 
         this.hasFocusJump = !!this.el.closest("form[phx-change]");
         
         this.handleOnChange();
