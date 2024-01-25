@@ -7,7 +7,7 @@ export default {
         this.inputValues = this.inputs.map((input) => input.value);
 
         // TODO: add support forms with re-render on "phx-change" event 
-        this.hasFocusJump = !!this.el.closest("form[phx-change]");
+        this.hasFocusJump = !this.el.closest("form[phx-change]");
         
         this.handleOnChange();
         this.handleOnKeydown();
@@ -23,11 +23,11 @@ export default {
 
                 if (value.length > 1) {
                     event.target.value = value.charAt(0);
-                    if (nextInput !== undefined && !this.hasFocusJump) {
+                    if (nextInput !== undefined && this.hasFocusJump) {
                         nextInput.focus();
                     }
                 } else if (value.match(new RegExp(pattern, "gi"))) {
-                    if (nextInput !== undefined && !this.hasFocusJump) {
+                    if (nextInput !== undefined && this.hasFocusJump) {
                         nextInput.focus();
                     }
                 } else {
@@ -45,7 +45,7 @@ export default {
             input.addEventListener("keydown", (event) => {
                 const prevInput = this.inputs[index - 1];
 
-                if (event.key === "Backspace" && !this.hasFocusJump) {
+                if (event.key === "Backspace" && this.hasFocusJump) {
                     if (input.value === "") {
                         if (prevInput !== undefined) {
                             prevInput.value = "";
