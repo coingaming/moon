@@ -5,7 +5,10 @@ export default {
         );
         this.hiddenField = this.el.querySelector('input[type="hidden"]');
         this.inputValues = this.inputs.map((input) => input.value);
-        this.form = this.el.dataset.has_form !== undefined;
+
+        // TODO: add support forms with re-render on "phx-chage" event 
+        this.hasFocusJump = !!this.el.closest("form[phx-change]");
+        
         this.handleOnChange();
         this.handleOnKeydown();
         this.handleOnPaste();
@@ -20,11 +23,11 @@ export default {
 
                 if (value.length > 1) {
                     event.target.value = value.charAt(0);
-                    if (nextInput !== undefined && !this.form) {
+                    if (nextInput !== undefined && !this.hasFocusJump) {
                         nextInput.focus();
                     }
                 } else if (value.match(new RegExp(pattern, "gi"))) {
-                    if (nextInput !== undefined && !this.form) {
+                    if (nextInput !== undefined && !this.hasFocusJump) {
                         nextInput.focus();
                     }
                 } else {
@@ -42,7 +45,7 @@ export default {
             input.addEventListener("keydown", (event) => {
                 const prevInput = this.inputs[index - 1];
 
-                if (event.key === "Backspace" && !this.form) {
+                if (event.key === "Backspace" && !this.hasFocusJump) {
                     if (input.value === "") {
                         if (prevInput !== undefined) {
                             prevInput.value = "";

@@ -3,6 +3,8 @@ defmodule Moon.Design.Form.AuthCode do
 
   use Moon.StatelessComponent
 
+  import Phoenix.HTML.Form
+
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
@@ -19,6 +21,8 @@ defmodule Moon.Design.Form.AuthCode do
   prop(placeholder, :string, default: " ")
   @doc "Form info, usually should be taken from context"
   prop(form, :form, from_context: {Surface.Components.Form, :form})
+  @doc "Name of the field, usually should be taken from context"
+  prop(field, :atom, from_context: {Surface.Components.Form.Field, :field})
   @doc "Specifies the type of input characters"
   prop(allowed_characters, :string,
     values!: ["numeric", "alpha", "alphanumeric"],
@@ -44,9 +48,8 @@ defmodule Moon.Design.Form.AuthCode do
   def render(assigns) do
     ~F"""
     <div
-      {=@id}
+      id={@id || input_id(@form, @field)}
       phx-hook="Authcode"
-      data-has_form={assigns[:form] != nil}
       class={merge([
         "flex gap-2",
         @class
