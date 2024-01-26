@@ -51,7 +51,11 @@ defmodule Moon.Design.Dropdown.Options do
       ])}
       {=@id}
       data-testid={@testid}
-      data-options-length={get_options(assigns) |> length}
+      data-moon-options-length={get_options(assigns) |> length}
+      data-moon-position={@position || "bottom"}
+      data-moon-position-classes={(@position || "bottom") |> position_class}
+      data-moon-reversed-position={(@position || "bottom") |> reverse_position_vertical}
+      data-moon-reversed-classes={(@position || "bottom") |> reverse_position_vertical |> position_class}
       role="listbox"
     >
       <#slot {@header} />

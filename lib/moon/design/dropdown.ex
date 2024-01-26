@@ -23,7 +23,7 @@ defmodule Moon.Design.Dropdown do
   prop(disabled, :boolean)
 
   @doc "Attribute phx-hook. Used for dependant components"
-  prop(hook, :string)
+  prop(hook, :string, default: "Dropdown")
 
   @doc """
   Experimental: makes BottomSheet behave as Modal on some screen widths,
@@ -69,6 +69,7 @@ defmodule Moon.Design.Dropdown do
       :on-click-away={(@autoclose && "close_me") || nil}
       {=@id}
       data-testid={@testid}
+      data-moon-open={@is_open && "true"}
       phx-hook={@hook}
     >
       <#slot
