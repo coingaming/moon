@@ -1,3 +1,10 @@
+## [2.80.2](https://github.com/coingaming/moon/compare/v2.80.1...v2.80.2) (2024-01-29)
+
+
+### Bug Fixes
+
+* Sorting icon for table update [MDS-971] ([#825](https://github.com/coingaming/moon/issues/825)) ([29b4446](https://github.com/coingaming/moon/commit/29b4446bf05f02ca6d6857559b3535550bf55549))
+
 ## [2.80.1](https://github.com/coingaming/moon/compare/v2.80.0...v2.80.1) (2024-01-29)
 
 
