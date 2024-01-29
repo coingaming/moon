@@ -20,7 +20,7 @@ defmodule Elixir.Moon.Light.Form.Field do
   def label(assigns) do
     ~H"""
     <label
-      for={@for || (@field && @field.name)}
+      for={@for || (@field && @field.id)}
       id={@id}
       data-testid={@testid}
       phx-click={Event.from(@on_click).name}

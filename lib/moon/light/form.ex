@@ -299,15 +299,33 @@ defmodule Elixir.Moon.Light.Form do
   attr(:class, :any, default: nil)
   attr(:testid, :string, default: nil)
   attr(:id, :string, default: nil)
+
+  attr(:checked_value, :any,
+    default: true,
+    doc: "The value to be sent when the checkbox is checked. Defaults to \"true\""
+  )
+
+  attr(:hidden_input, :boolean,
+    default: true,
+    doc:
+      "Controls if this function will generate a hidden input to submit the unchecked value or not, defaults to \"true\"."
+  )
+
+  attr(:unchecked_value, :any,
+    default: false,
+    doc: "The value to be sent when the checkbox is unchecked, defaults to \"false\"."
+  )
+
   slot(:on_icon, [])
   slot(:off_icon, [])
 
   def switch(assigns) do
     ~H"""
     <div>
+      <input :if={@hidden_input} type="hidden" value={"#{@unchecked_value}"} name={@field.name} />
       <input
         type="checkbox"
-        value="true"
+        value={"#{@checked_value}"}
         name={@field.name}
         id={@field.id}
         class="hidden"
@@ -396,8 +414,15 @@ defmodule Elixir.Moon.Light.Form do
       }
       field={@field}
     >
-      <input type="checkbox"
-        value="true"
+      <input
+        :if={@hidden_input}
+        type="hidden"
+        value={"#{@unchecked_value}"}
+        name={@field.name <> ((@is_multiple && "[]") || "")}
+      />
+      <input
+        type="checkbox"
+        value={"#{@checked_value}"}
         name={@field.name <> ((@is_multiple && "[]") || "")}
         id={@id || @field.id}
         class="opacity-0"
@@ -405,10 +430,10 @@ defmodule Elixir.Moon.Light.Form do
         readonly={@readonly}
         disabled={@disabled || @readonly}
         data-testid={@testid}
-        checked={@field.value == @checked_value}
+        checked={"#{@field.value}" == "#{@checked_value}"}
       />
       <Elixir.Moon.Light.Lego.checkbox
-        is_selected={@field.value == @checked_value}
+        is_selected={"#{@field.value}" == "#{@checked_value}"}
         class={
           merge([
             "absolute top-1 ltr:left-0 rtl:right-0",
