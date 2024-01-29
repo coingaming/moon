@@ -18,7 +18,6 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
     ~F"""
     <Form
       for={@user_changeset}
-      change="change"
       submit="submit"
       class="flex flex-col gap-2 items-center"
       has_error_icon
@@ -38,11 +37,6 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
       <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
-  end
-
-  def handle_event("change", %{"user" => params}, socket) do
-    user_changeset = User.changeset(%User{}, params)
-    {:noreply, assign(socket, user_changeset: user_changeset)}
   end
 
   def handle_event("submit", _, socket) do
@@ -66,7 +60,6 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
       ~F\"""
       <Form
         for={@user_changeset}
-        change="change"
         submit="submit"
         class="flex flex-col gap-2 items-center"
         has_error_icon
@@ -86,11 +79,6 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
         <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
       </Form>
       \"""
-    end
-
-    def handle_event("change", %{"user" => params}, socket) do
-      user_changeset = User.changeset(%User{}, params)
-      {:noreply, assign(socket, user_changeset: user_changeset)}
     end
 
     def handle_event("submit", _, socket) do
