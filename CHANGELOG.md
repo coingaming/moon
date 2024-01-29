@@ -1,3 +1,10 @@
+## [2.80.1](https://github.com/coingaming/moon/compare/v2.80.0...v2.80.1) (2024-01-29)
+
+
+### Bug Fixes
+
+* AuthCode component focus jump fix [#1](https://github.com/coingaming/moon/issues/1) ([#827](https://github.com/coingaming/moon/issues/827)) ([219373e](https://github.com/coingaming/moon/commit/219373e119e9f5fe00c3f1d35007da9d1562c1f5))
+
 # [2.80.0](https://github.com/coingaming/moon/compare/v2.79.13...v2.80.0) (2024-01-18)
 
 
