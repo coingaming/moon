@@ -10,8 +10,6 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleWithHorizontalLab
   alias Moon.Design.Form.Field
   alias MoonWeb.Schema.User
 
-  alias MoonWeb.Components.Anatomy
-
   prop(user_changeset, :any, default: User.changeset(%User{}))
 
   prop(permissions, :list,
@@ -45,7 +43,6 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleWithHorizontalLab
           />
         </div>
       </Field>
-      <Anatomy title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
     </Form>
     """
   end
@@ -56,8 +53,6 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleWithHorizontalLab
     alias Moon.Design.Form
     alias Moon.Design.Form.Field
     alias MoonWeb.Schema.User
-
-    alias MoonWeb.Components.Anatomy
 
     prop(user_changeset, :any, default: User.changeset(%User{}))
 
@@ -92,7 +87,6 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleWithHorizontalLab
             />
           </div>
         </Field>
-        <Anatomy title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
       </Form>
       \"""
     end
