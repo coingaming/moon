@@ -307,6 +307,7 @@ defmodule Elixir.Moon.Light.Form do
     <div>
       <input
         type="checkbox"
+        value="true"
         name={@field.name}
         id={@field.id}
         class="hidden"
@@ -396,6 +397,7 @@ defmodule Elixir.Moon.Light.Form do
       field={@field}
     >
       <input type="checkbox"
+        value="true"
         name={@field.name <> ((@is_multiple && "[]") || "")}
         id={@id || @field.id}
         class="opacity-0"
