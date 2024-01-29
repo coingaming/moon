@@ -68,5 +68,11 @@ defmodule Moon.Parts.Table do
   @doc "Additional attributes for tbody tag"
   prop(body_attrs, :map, default: %{})
 
+  @doc "Icon for sorting"
+  prop(sorting_icon, :string, default: "controls_chevron_up_small")
+
+  @doc "Icon color for sorting"
+  prop(sorting_icon_color, :string, default: "text-bulma")
+
   defdelegate render(assigns), to: Moon.Design.Table
 end
