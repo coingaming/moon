@@ -72,7 +72,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.Datepicker,
         DropdownExample.ResponsiveDropdown,
         DropdownExample.WithHeaderAndFooter,
-        Form.DropdownExample.Default,
+        Form.DropdownExample.WithForm,
         Form.DropdownExample.States,
         Form.DropdownExample.Multiple,
         Form.DropdownExample.Custom
