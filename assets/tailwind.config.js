@@ -1,7 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 const { tailwindClassesBottomsheet } = require("./js/bottomsheet.config");
 const { tailwindClassesDropdown } = require("./js/dropdown.config");
-const { tailwindClassesBreadcrumb } = require("./js/breadcrumb.config");
+const { tailwindClassesBreadcrumb } = require("./js/breadcrumb.config"); 
 
 //as Variant of using rgba color with opacity
 const withOpacityValue = (rgbColor) => {
@@ -132,11 +132,7 @@ module.exports = {
     "border-beerus",
     "border-bulma",
     "border-trunks",
-  ].concat(
-    tailwindClassesBottomsheet(),
-    tailwindClassesDropdown(),
-    tailwindClassesBreadcrumb()
-  ),
+  ].concat(tailwindClassesBottomsheet(), tailwindClassesDropdown(), tailwindClassesBreadcrumb()),
   theme: {
     extend: {
       backgroundOpacity: {
@@ -147,11 +143,10 @@ module.exports = {
         "3xl": "1800px",
       },
       fontFamily: {
-        grotesk:
-          'var(--grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+        grotesk: 'var(--grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
         averta:
           'var(--averta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-        "dm-sans":
+        'dm-sans':
           'var(--dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
       },
       maxHeight: {
@@ -331,17 +326,6 @@ module.exports = {
             background: "rgb(var(--trunks))",
           },
         },
-        // "&": {
-        //   "::-webkit-scrollbar": {
-        //     " -webkit-appearance": "none",
-        //     width: "7px",
-        //   },
-        //   "::-webkit-scrollbar-thumb": {
-        //     borderRadius: "4px",
-        //     backgroundColor: "rgba(var(--piccolo), .5)",
-        //     " -webkit-box-shadow": "0 0 1px rgba(var(--piccolo), .5)",
-        //   },
-        // },
       });
     }),
   ],

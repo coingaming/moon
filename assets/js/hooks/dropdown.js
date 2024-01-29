@@ -214,11 +214,13 @@ export default {
    * @private
    */
   addClasses(classes) {
-    this.moonDropdownElement().classList.add(...classes);
+    const elm = this.moonDropdownElement();
+    if (elm) elm.classList.add(...classes);
   },
 
   removeClasses(classes) {
-    this.moonDropdownElement().classList.remove(...classes);
+    const elm = this.moonDropdownElement();
+    if (elm) elm.classList.remove(...classes);
   },
 
   /**

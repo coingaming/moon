@@ -11,5 +11,5 @@ export default {
   Bottomsheet,
   Combobox,
   Authcode,
-  "Dropdown": Dropdown
+  Dropdown
 }
