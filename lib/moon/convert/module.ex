@@ -1,13 +1,15 @@
 defmodule Moon.Convert.Module do
   @moduledoc "Functions for converting AST surface -> live_view"
 
+  require Logger
+
   def translate_render(%{component_type: Surface.LiveComponent}, ast), do: ast
 
   def translate_render(
         %{component_type: Surface.Component, short: short},
         {:def, m1, [{:render, m2, attrs} | children]}
       ) do
-    {:def, m1, [{:"#{String.downcase(short)}", m2, attrs} | children]}
+    {:def, m1, [{:"#{Macro.underscore(short)}", m2, attrs} | children]}
   end
 
   def translate_prop(_, {:prop, meta, [{name, _, nil}, :event]}, doc),
@@ -38,9 +40,18 @@ defmodule Moon.Convert.Module do
   def translate_prop_options(options, doc) do
     (options
      |> Enum.map(fn
-       {:values!, v} -> {:values, v}
-       {k, v} when k in [:required, :default, :values, :examples] -> {k, v}
-     end)) ++
+       {:values!, v} ->
+         {:values, v}
+
+       {:from_context, _v} ->
+         Logger.warning("Attribute is taken from_context")
+         dbg(options)
+         nil
+
+       {k, v} when k in [:required, :default, :values, :examples] ->
+         {k, v}
+     end)
+     |> Enum.filter(&(!!&1))) ++
       ((doc && [doc: doc]) || []) ++
       (((Keyword.has_key?(options, :default) || Keyword.has_key?(options, :required)) && []) ||
          [default: nil])

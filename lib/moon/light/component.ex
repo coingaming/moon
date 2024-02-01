@@ -7,10 +7,12 @@ defmodule Moon.Light.Component do
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
-
+      import Moon.Light.Sur
       alias Moon.Light.Sur.Event
 
       def __moduledoc__(), do: @moduledoc
+
+      def get_config(name), do: nil
     end
   end
 end

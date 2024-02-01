@@ -58,12 +58,23 @@ defmodule Moon.Convert.Ast do
      ]}
   end
 
-  def ast_aliases(ast) do
+  def ast_aliases(ast, %{module: module}) do
     {_, aliases} =
       ast
       |> Macro.prewalk([], fn
         result = {:alias, _, [{:__aliases__, _, a} | _]}, acc ->
           {result, acc ++ [a]}
+
+        result = {:alias, _, [{:__MODULE__, _, _}]}, acc ->
+          {result,
+           acc ++
+             [
+               module
+               |> to_string()
+               |> String.replace("Elixir.", "")
+               |> String.split(".")
+               |> Enum.map(&String.to_atom/1)
+             ]}
 
         result = {:alias, _, [{{:., _, [{:__aliases__, _, root_part}, :{}]}, _, children}]},
         acc ->

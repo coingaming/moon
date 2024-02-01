@@ -8,7 +8,7 @@ defmodule Moon.Convert do
 
     ast = module |> module_ast()
 
-    c = Map.put(c, :aliases, ast_aliases(ast))
+    c = Map.put(c, :aliases, ast |> ast_aliases(c))
 
     ast
     |> Macro.prewalk(nil, fn

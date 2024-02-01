@@ -52,6 +52,6 @@ defmodule Moon do
   ]
 
   def colors do
-    @colors
+    @colors ++ ["currentColor"]
   end
 end
