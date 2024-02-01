@@ -1,3 +1,10 @@
+# [2.81.0](https://github.com/coingaming/moon/compare/v2.80.2...v2.81.0) (2024-02-01)
+
+
+### Features
+
+* LiveView native Form components & converter ([#810](https://github.com/coingaming/moon/issues/810)) ([3635fd1](https://github.com/coingaming/moon/commit/3635fd1726d716712b66659830717e807c7bd2b1))
+
 ## [2.80.2](https://github.com/coingaming/moon/compare/v2.80.1...v2.80.2) (2024-01-29)
 
 
