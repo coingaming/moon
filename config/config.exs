@@ -8,7 +8,7 @@
 import Config
 
 # Configures the endpoint
-config :moon, MoonWeb.Endpoint,
+config :moon_lite, MoonWeb.Endpoint,
   url: [host: "localhost"],
   static_url: [path: "/moon/assets"],
   secret_key_base: "QYBXKQhXTKhs/D4KK44Zm4d9brKEl88TxKWcI8BpdkYEXRMbne6uxElq9j+sP+Rh",
@@ -16,7 +16,7 @@ config :moon, MoonWeb.Endpoint,
   pubsub_server: Moon.PubSub,
   live_view: [signing_salt: "QAEMvs6P"]
 
-config :moon, :s3,
+config :moon_lite, :s3,
   bucket: System.get_env("AWS_BUCKET"),
   region: System.get_env("AWS_DEFAULT_REGION"),
   access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),

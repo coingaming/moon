@@ -8,7 +8,7 @@ http_port = String.to_integer(System.get_env("SERVICE_PORT") || "80")
 
 IO.puts("HTTP PORT #{http_port}")
 
-config :moon, MoonWeb.Endpoint,
+config :moon_lite, MoonWeb.Endpoint,
   http: [port: http_port],
   url: [host: "moon-surface.coingaming.io", port: http_port],
   check_origin: [

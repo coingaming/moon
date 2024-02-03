@@ -7,7 +7,7 @@ defmodule MoonWeb.Pages.ExamplesTest do
     statics: MoonWeb.static_paths()
 
   test "all examples open", %{conn: conn} do
-    with {:ok, list} <- :application.get_key(:moon, :modules) do
+    with {:ok, list} <- :application.get_key(:moon_lite, :modules) do
       list
       |> Enum.filter(&(&1 |> Module.split() |> Enum.take(2) == ~w|MoonWeb Examples|))
       |> Enum.filter(&(&1 != MoonWeb.Examples.Design.TableExample.Stream))

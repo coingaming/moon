@@ -8,7 +8,7 @@ defmodule Moon.MixProject do
 
   def project do
     [
-      app: :moon,
+      app: :moon_lite,
       version: @version,
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),

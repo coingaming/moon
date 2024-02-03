@@ -1,5 +1,5 @@
 defmodule MoonWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :moon
+  use Phoenix.Endpoint, otp_app: :moon_lite
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -23,7 +23,7 @@ defmodule MoonWeb.Endpoint do
   # when deploying your static files in production.
   plug(Plug.Static,
     at: "/moon/assets/",
-    from: :moon,
+    from: :moon_lite,
     gzip: true,
     only: ~w(assets themes images svgs favicon.ico robots.txt fonts),
     cache_control_for_etags: "public, max-age=86400"

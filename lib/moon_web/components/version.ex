@@ -13,5 +13,5 @@ defmodule MoonWeb.Components.Version do
     """
   end
 
-  defp version(), do: Application.spec(:moon, :vsn)
+  defp version(), do: Application.spec(:moon_lite, :vsn)
 end
