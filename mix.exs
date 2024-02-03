@@ -25,9 +25,9 @@ defmodule Moon.MixProject do
       ],
       package: package(),
       # docs
-      name: "Moon",
-      source_url: "https://github.com/coingaming/moon",
-      homepage_url: "https://github.com/coingaming/moon/tree/v#{@version}",
+      name: "Moon (Lite)",
+      source_url: "https://github.com/netoum/moon",
+      homepage_url: "https://github.com/netoum/moon/tree/v#{@version}",
       docs: [
         source_ref: "v#{@version}"
       ]
@@ -46,20 +46,17 @@ defmodule Moon.MixProject do
     [
       licenses: ["MIT"],
       files: [
-        "lib",
-        "config/surface.exs",
+        "lib/{moon,moon.ex}",
         "assets",
-        "priv/static/{themes,fonts}",
-        "priv/templates",
         "mix.exs",
         "README.md",
         "CHANGELOG.md",
         "VERSION"
       ],
       links: %{
-        "GitHub" => "https://github.com/coingaming/moon/tree/v#{@version}"
+        "GitHub" => "https://github.com/netoum/moon/tree/v#{@version}"
       },
-      description: "Components-based design system written in elixir"
+      description: "Fork of Moon Design System https://github.com/coingaming/moon"
     ]
   end
 
@@ -101,7 +98,7 @@ defmodule Moon.MixProject do
       {:surface_formatter, "~> 0.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test], runtime: false}
-    ]
+     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
