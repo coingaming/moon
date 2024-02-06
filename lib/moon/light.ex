@@ -2,18 +2,13 @@ defmodule Moon.Light do
   @moduledoc false
   use Moon.Light.Component
 
-  alias Moon.Design.Button.Utils
+  alias Moon.Design.Button.Utils, as: ButtonUtils
+  alias Moon.Design.Tag.Utils, as: TagUtils
 
   import Moon.Helpers.MergeClass
-
   attr(:click, :any, default: nil)
   attr(:class, :any, doc: "Additional classes for the <svg> tag", default: nil)
-
-  attr(:name, :string,
-    required: true,
-    values: MoonIcons.Helpers.Icons.list_all() ++ []
-  )
-
+  attr(:name, :string, required: true, values: MoonIcons.Helpers.Icons.list_all())
   attr(:color, :string, values: Moon.colors() ++ [nil], default: nil)
   attr(:background_color, :string, values: Moon.colors() ++ [nil], default: nil)
   attr(:font_size, :string, default: nil)
@@ -358,9 +353,9 @@ defmodule Moon.Light do
           [
             "flex row justify-center items-center relative overflow-hidden active:scale-90 transition-all duration-200 font-semibold group z-0",
             "whitespace-nowrap select-none",
-            Utils.get_button_size_classes(@size),
-            Utils.variant_classes(assigns),
-            Utils.get_no_icon_padding(@size)
+            ButtonUtils.get_button_size_classes(@size),
+            ButtonUtils.variant_classes(assigns),
+            ButtonUtils.get_no_icon_padding(@size)
           ],
           @class
         ])
@@ -386,12 +381,12 @@ defmodule Moon.Light do
         :if={@animation == "success"}
         name="generic_check_alternative"
         color="currentColor"
-        class={Utils.icon_class(@size)}
+        class={ButtonUtils.icon_class(@size)}
       />
       <%= if !(@animation in ~w(progress success)) do %>
         <%= render_slot(@inner_block) %>
       <% end %>
-      <span class={merge(Utils.hover_overlay_classes(assigns))} />
+      <span class={merge(ButtonUtils.hover_overlay_classes(assigns))} />
     </button>
     """
   end
@@ -430,6 +425,39 @@ defmodule Moon.Light do
           ])
         } />
       <% end %>
+    </div>
+    """
+  end
+
+  attr(:size, :string, default: "xs", values: ~w(2xs xs sm), doc: "Size of tag")
+  attr(:class, :any, doc: "Tailwind classes for customization", default: nil)
+  attr(:is_uppercase, :boolean, default: true, doc: "Letter case")
+  slot(:inner_block, doc: "Tag content")
+  slot(:left_icon, doc: "Left icon")
+  slot(:right_icon, doc: "Right icon")
+  attr(:testid, :string, doc: "Data-testid attribute for DOM element", default: nil)
+  attr(:id, :string, doc: "Id attribute for DOM element", default: nil)
+
+  def tag(assigns) do
+    ~H"""
+    <div id={@id} class={merge([
+        [
+          "flex items-center select-none text-goku font-semibold bg-bulma tracking-[0.5px]",
+          TagUtils.get_tag_size(@size),
+          "#{TagUtils.get_lowercase_font_size(@size)}": !@is_uppercase,
+          "#{TagUtils.get_right_icon_paddings(@size)}":
+            has_slot?(:right_icon) && !has_slot?(:left_icon),
+          "#{TagUtils.get_left_icon_paddings(@size)}":
+            has_slot?(:left_icon) && !has_slot?(:right_icon),
+          "#{TagUtils.get_both_icon_paddings(@size)}":
+            has_slot?(:right_icon) && has_slot?(:left_icon),
+          uppercase: @is_uppercase
+        ],
+        @class
+      ])} data-testid={@testid}>
+      <span class={[TagUtils.get_icon_size(@size), "flex items-center"]} :if={has_slot?(:left_icon)}><%= render_slot(@left_icon) %></span>
+      <%= render_slot(@inner_block) %>
+      <span class={[TagUtils.get_icon_size(@size), "flex items-center"]} :if={has_slot?(:right_icon)}><%= render_slot(@right_icon) %></span>
     </div>
     """
   end
