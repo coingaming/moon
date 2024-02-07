@@ -440,24 +440,34 @@ defmodule Moon.Light do
 
   def tag(assigns) do
     ~H"""
-    <div id={@id} class={merge([
-        [
-          "flex items-center select-none text-goku font-semibold bg-bulma tracking-[0.5px]",
-          TagUtils.get_tag_size(@size),
-          "#{TagUtils.get_lowercase_font_size(@size)}": !@is_uppercase,
-          "#{TagUtils.get_right_icon_paddings(@size)}":
-            has_slot?(:right_icon) && !has_slot?(:left_icon),
-          "#{TagUtils.get_left_icon_paddings(@size)}":
-            has_slot?(:left_icon) && !has_slot?(:right_icon),
-          "#{TagUtils.get_both_icon_paddings(@size)}":
-            has_slot?(:right_icon) && has_slot?(:left_icon),
-          uppercase: @is_uppercase
-        ],
-        @class
-      ])} data-testid={@testid}>
-      <span class={[TagUtils.get_icon_size(@size), "flex items-center"]} :if={has_slot?(:left_icon)}><%= render_slot(@left_icon) %></span>
+    <div
+      id={@id}
+      class={
+        merge([
+          [
+            "flex items-center select-none text-goku font-semibold bg-bulma tracking-[0.5px]",
+            TagUtils.get_tag_size(@size),
+            {:"#{TagUtils.get_lowercase_font_size(@size)}", !@is_uppercase},
+            {:"#{TagUtils.get_right_icon_paddings(@size)}",
+             has_slot?(:right_icon) && !has_slot?(:left_icon)},
+            {:"#{TagUtils.get_left_icon_paddings(@size)}",
+             has_slot?(:left_icon) && !has_slot?(:right_icon)},
+            {:"#{TagUtils.get_both_icon_paddings(@size)}",
+             has_slot?(:right_icon) && has_slot?(:left_icon)},
+            uppercase: @is_uppercase
+          ],
+          @class
+        ])
+      }
+      data-testid={@testid}
+    >
+      <span :if={has_slot?(:left_icon)} class={[TagUtils.get_icon_size(@size), "flex items-center"]}>
+        <%= render_slot(@left_icon) %>
+      </span>
       <%= render_slot(@inner_block) %>
-      <span class={[TagUtils.get_icon_size(@size), "flex items-center"]} :if={has_slot?(:right_icon)}><%= render_slot(@right_icon) %></span>
+      <span :if={has_slot?(:right_icon)} class={[TagUtils.get_icon_size(@size), "flex items-center"]}>
+        <%= render_slot(@right_icon) %>
+      </span>
     </div>
     """
   end

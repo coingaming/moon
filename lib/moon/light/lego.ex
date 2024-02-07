@@ -47,4 +47,29 @@ defmodule Elixir.Moon.Light.Lego do
     </span>
     """
   end
+
+  @doc "Radio round mark to be shown"
+  attr(:class, :any, doc: "Additional CSS classes for the ", default: nil)
+  attr(:id, :string, doc: "Id attribute to be given to the HTML tag", default: nil)
+  attr(:testid, :string, doc: "Data-testid attribute value", default: nil)
+  attr(:is_selected, :boolean, doc: "If the mark should be checked ", default: nil)
+
+  def radio(assigns) do
+    ~H"""
+    <span
+      aria-checked={(@is_selected && "true") || "false"}
+      class={
+        merge([
+          "relative flex items-center justify-center w-4 h-4 aspect-square m-1 rounded-full border border-trunks transition-colors",
+          "after:content-[\"\"] after:absolute after:w-0 after:h-0 after:rounded-full after:top-1/2 after:left-1/2",
+          "after:-translate-y-1/2 after:transition-all after:-translate-x-1/2 after:bg-piccolo",
+          "moon-checked:after:w-2 moon-checked:after:h-2 moon-checked:border-piccolo",
+          @class
+        ])
+      }
+      id={@id}
+      data-testid={@testid}
+    />
+    """
+  end
 end
