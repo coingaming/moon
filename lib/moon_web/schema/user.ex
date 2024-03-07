@@ -111,7 +111,7 @@ defmodule MoonWeb.Schema.User do
     ]
   end
 
-  def changeset(user = %__MODULE__{}, params) do
+  def changeset(user = %__MODULE__{}, params \\ %{}) do
     user
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
@@ -125,9 +125,5 @@ defmodule MoonWeb.Schema.User do
     |> validate_inclusion(:agrees_to_terms_of_service, [true],
       message: "please accept terms of service"
     )
-  end
-
-  def changeset(user = %__MODULE__{}) do
-    cast(user, %{}, @required_fields ++ @optional_fields)
   end
 end
