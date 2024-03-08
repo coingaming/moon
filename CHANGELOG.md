@@ -1,3 +1,10 @@
+## [2.81.2](https://github.com/coingaming/moon/compare/v2.81.1...v2.81.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* add Table sortable flag ([#833](https://github.com/coingaming/moon/issues/833)) ([131ed8d](https://github.com/coingaming/moon/commit/131ed8d204d51cbc879c3a99a893bd20256cb0c8))
+
 ## [2.81.1](https://github.com/coingaming/moon/compare/v2.81.0...v2.81.1) (2024-03-08)
 
 
