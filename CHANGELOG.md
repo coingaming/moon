@@ -1,3 +1,10 @@
+## [2.81.1](https://github.com/coingaming/moon/compare/v2.81.0...v2.81.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* form errors are hidden before submit ([#831](https://github.com/coingaming/moon/issues/831)) ([ef29ef7](https://github.com/coingaming/moon/commit/ef29ef71dbb3716986d585d3cf78f13f7ee26e0c))
+
 # [2.81.0](https://github.com/coingaming/moon/compare/v2.80.2...v2.81.0) (2024-02-01)
 
 

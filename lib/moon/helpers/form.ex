@@ -29,7 +29,7 @@ defmodule Moon.Helpers.Form do
     has_error(source, field)
   end
 
-  def has_error(_form = %{errors: errors}, field) do
+  def has_error(_form = %{errors: errors, action: action}, field) when not is_nil(action) do
     Enum.count(Keyword.get_values(errors || [], field)) > 0
   end
 
