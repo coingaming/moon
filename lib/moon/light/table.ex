@@ -12,15 +12,11 @@ defmodule Moon.Light.Table do
 
       reverse(sort)
       |> reduce(items, fn {field, sort_dir}, list ->
-        sort_by(
-          list,
-          & &1[field],
-          &if sort_dir == "ASC" do
-            &1 < &2
-          else
-            &1 > &2
-          end
-        )
+        case sort_dir do
+          "ASC" -> sort_by(list, &[&1[field]], :asc)
+          "DESC" -> sort_by(list, &[&1[field]], :desc)
+          _not_direction -> list
+        end
       end)
     end
 
@@ -64,8 +60,12 @@ defmodule Moon.Light.Table do
       stream
     end
 
-    def stream_data(%{items: items, sort: sort}) when is_list(items) do
+    def stream_data(%{items: items, sort: sort, sortable: true}) when is_list(items) do
       items |> add_index_as() |> sort_items(sort) |> Enum.with_index(&{&2, &1})
+    end
+
+    def stream_data(%{items: items}) when is_list(items) do
+      items |> add_index_as() |> Enum.with_index(&{&2, &1})
     end
 
     def dom_id(id, _) when is_binary(id) do

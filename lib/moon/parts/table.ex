@@ -9,6 +9,9 @@ defmodule Moon.Parts.Table do
   @doc "Sorting of the table, format [field:, \"ASC\"|\"DESC\"]. If given, component will sort given items before displaying"
   prop(sort, :keyword, default: [])
 
+  @doc "Flag to sort items locally, default: true"
+  prop(sortable, :boolean, default: true)
+
   @doc "The list of items to be rendered. If item does not have id - than index is used instead. Able to work with streams"
   prop(items, :generator, required: true)
 
