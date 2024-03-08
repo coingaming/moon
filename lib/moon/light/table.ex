@@ -14,9 +14,7 @@ defmodule Moon.Light.Table do
       |> reduce(items, fn {field, sort_dir}, list ->
         case sort_dir do
           "ASC" -> sort_by(list, &[&1[field]], :asc)
-
           "DESC" -> sort_by(list, &[&1[field]], :desc)
-
           _not_direction -> list
         end
       end)
