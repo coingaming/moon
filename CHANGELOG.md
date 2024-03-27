@@ -1,3 +1,10 @@
+## [2.81.3](https://github.com/coingaming/moon/compare/v2.81.2...v2.81.3) (2024-03-27)
+
+
+### Bug Fixes
+
+* commenting embed_sface ([#834](https://github.com/coingaming/moon/issues/834)) ([f9c49da](https://github.com/coingaming/moon/commit/f9c49da24b20e0ce08e83e12f782852c200d969c))
+
 ## [2.81.2](https://github.com/coingaming/moon/compare/v2.81.1...v2.81.2) (2024-03-08)
 
 
