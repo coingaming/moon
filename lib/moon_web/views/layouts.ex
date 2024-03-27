@@ -3,5 +3,4 @@ defmodule MoonWeb.Layouts do
   use MoonWeb, :html
 
   embed_templates("../templates/layout/*")
-  # embed_sface("../templates/layout/default.sface")
 end
