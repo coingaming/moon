@@ -1,3 +1,10 @@
+## [2.81.4](https://github.com/coingaming/moon/compare/v2.81.3...v2.81.4) (2024-04-03)
+
+
+### Bug Fixes
+
+* add action prop to Form component ([245ed2a](https://github.com/coingaming/moon/commit/245ed2a45561ccf2516d5a156b595e25c54655a8))
+
 ## [2.81.3](https://github.com/coingaming/moon/compare/v2.81.2...v2.81.3) (2024-03-27)
 
 
