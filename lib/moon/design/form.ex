@@ -23,6 +23,8 @@ defmodule Moon.Design.Form do
   prop(autocomplete, :string, default: "on", values: ["on", "off"])
   @doc "Target"
   prop(target, :any)
+  @doc "URL to where the form is submitted"
+  prop(action, :string)
 
   @doc "Trigger a standard form submit on DOM patch to the URL specified in the form's standard action
   attribute.
@@ -46,6 +48,7 @@ defmodule Moon.Design.Form do
       {=@submit}
       {=@change}
       {=@class}
+      {=@action}
       {=@trigger_action}
       opts={Map.merge(
         %{autocomplete: @autocomplete, id: @id, "data-testid": @testid, "phx-target": @target},
