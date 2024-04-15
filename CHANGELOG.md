@@ -1,3 +1,10 @@
+# [2.82.0](https://github.com/coingaming/moon/compare/v2.81.4...v2.82.0) (2024-04-15)
+
+
+### Features
+
+* Icons update [MDS-1088]  ([#837](https://github.com/coingaming/moon/issues/837)) ([09899fa](https://github.com/coingaming/moon/commit/09899fa61dc536121d8c08c818812a4bdfbacd49))
+
 ## [2.81.4](https://github.com/coingaming/moon/compare/v2.81.3...v2.81.4) (2024-04-03)
 
 
