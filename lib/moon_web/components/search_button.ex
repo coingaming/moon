@@ -18,29 +18,31 @@ defmodule MoonWeb.Components.SearchButton do
 
   def render(assigns) do
     ~F"""
-    <Search
-      id="moon-search"
-      {=@filter}
-      on_keyup="change_filter"
-      options={@options |> page_to_href() |> filter_options(@filter)}
-      class="focus:bg-heles"
-    >
-      <:trigger :let={is_open: is_open}>
-        <Dropdown.Input
-          placeholder="Search..."
-          on_keyup="change_filter"
-          value={@filter}
-          class={
-            "ps-[2.5rem] bg-goku hover:border-trunks h-10",
-            input_classes_light(assigns),
-            "rounded-bl-none rounded-br-none": is_open
-          }
-        >
-          <Search.Icon class="start-[9px] text-moon-24" />
-          <Search.Button on_click={@on_keyup} />
-        </Dropdown.Input>
-      </:trigger>
-    </Search>
+    <div>
+      <Search
+        id="moon-search"
+        {=@filter}
+        on_keyup="change_filter"
+        options={@options |> page_to_href() |> filter_options(@filter)}
+        class="focus:bg-heles"
+      >
+        <:trigger :let={is_open: is_open}>
+          <Dropdown.Input
+            placeholder="Search..."
+            on_keyup="change_filter"
+            value={@filter}
+            class={
+              "ps-[2.5rem] bg-goku hover:border-trunks h-10",
+              input_classes_light(assigns),
+              "rounded-bl-none rounded-br-none": is_open
+            }
+          >
+            <Search.Icon class="start-[9px] text-moon-24" />
+            <Search.Button on_click={@on_keyup} />
+          </Dropdown.Input>
+        </:trigger>
+      </Search>
+    </div>
     """
   end
 
