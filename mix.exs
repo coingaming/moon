@@ -83,7 +83,7 @@ defmodule Moon.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:vega_lite, "~> 0.1.0"},
-      {:surface, "> 0.9.1"},
+      {:surface, "0.11.0"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},
       {:moon_icons, "~> 0.1"},
