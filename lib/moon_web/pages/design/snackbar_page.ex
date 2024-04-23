@@ -101,6 +101,14 @@ defmodule MoonWeb.Pages.Design.SnackbarPage do
             :required => ~c"No",
             :default => ~c"false",
             :description => ~c"Whether or not the snackbar is open"
+          },
+          %{
+            :name => ~c"on_click_trigger",
+            :type => ~c"event",
+            :required => ~c"No",
+            :default => ~c"set_open",
+            :description =>
+              ~c"Handler for snackbar trigger click event, handled by the Snackbar itself by default"
           }
         ]}
       />

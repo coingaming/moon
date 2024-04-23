@@ -25,6 +25,7 @@ defmodule Moon.Design.Snackbar do
   prop(outer_class, :css_class)
   prop(timeout, :integer, default: 5000)
   prop(autoclose, :boolean, default: true)
+  prop(on_click_trigger, :event, default: "set_open")
 
   prop(testid, :string)
 
@@ -71,7 +72,11 @@ defmodule Moon.Design.Snackbar do
       :hook="default"
     >
       {#if slot_assigned?(:trigger)}
-        <div id={@id <> "-trigger"} data-testid={"#{@testid || @id}-trigger"} :on-click="set_open">
+        <div
+          id={@id <> "-trigger"}
+          data-testid={"#{@testid || @id}-trigger"}
+          :on-click={@on_click_trigger}
+        >
           <#slot {@trigger} />
         </div>
       {/if}
