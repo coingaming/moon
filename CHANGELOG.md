@@ -1,3 +1,10 @@
+# [2.83.0](https://github.com/coingaming/moon/compare/v2.82.0...v2.83.0) (2024-05-16)
+
+
+### Features
+
+* **Snackbar:** Add open/1 and close/1 functions to allow to control snackbar from code ([#839](https://github.com/coingaming/moon/issues/839)) ([550e721](https://github.com/coingaming/moon/commit/550e721fc628eb8ddb8e744c8e9e1df83de1a601))
+
 # [2.82.0](https://github.com/coingaming/moon/compare/v2.81.4...v2.82.0) (2024-04-15)
 
 
