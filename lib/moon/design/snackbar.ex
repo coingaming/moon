@@ -32,6 +32,10 @@ defmodule Moon.Design.Snackbar do
     send_update(__MODULE__, id: snackbar_id, is_open: true)
   end
 
+  def close(snackbar_id) do
+    send_update(__MODULE__, id: snackbar_id, is_open: false)
+  end
+
   def handle_event("set_open", _, socket) do
     {:noreply, assign(socket, is_open: true)}
   end
