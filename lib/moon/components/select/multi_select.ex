@@ -141,65 +141,67 @@ defmodule Moon.Components.Select.MultiSelect do
 
   def render(assigns) do
     ~F"""
-    <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
-      {Phoenix.HTML.Form.multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
-        class: "hidden",
-        id: @id
-      )}
-      <FieldBorder
-        testid={"#{@id}-toggle_open"}
-        click="toggle_open"
-        states_class={@field_border_class}
-        class={
-          "w-full",
-          "bg-#{@field_border_color_class}": @field_border_color_class
-        }
-      >
-        <PullAside class={
-          "leading-6",
-          SelectHelpers.get_padding(@size),
-          get_disabled_class(@disabled)
-        }>
-          <:left>
-            <Labels
-              select_id={@id}
-              value={SelectHelpers.get_normalized_value(@form, @field, true, value: @value)}
-              {=@options}
-              {=@prompt}
-              {=@size}
-              {=@disabled}
-              {=@selected_label_background_color_class}
-              {=@selected_label_text_color_class}
-            />
-          </:left>
-          <:right>
-            <Moon.Icons.ControlsChevronDown />
-          </:right>
-        </PullAside>
-      </FieldBorder>
-      <:content>
-        <TopToDown>
-          <div class={
-            "overflow-auto rounded-moon-i-md box-border border border-solid",
-            "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl",
-            "#{@search_min_width}": not is_nil(@on_search_change)
+    <div>
+      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+        {Phoenix.HTML.Form.multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
+          class: "hidden",
+          id: @id
+        )}
+        <FieldBorder
+          testid={"#{@id}-toggle_open"}
+          click="toggle_open"
+          states_class={@field_border_class}
+          class={
+            "w-full",
+            "bg-#{@field_border_color_class}": @field_border_color_class
+          }
+        >
+          <PullAside class={
+            "leading-6",
+            SelectHelpers.get_padding(@size),
+            get_disabled_class(@disabled)
           }>
-            <Dropdown
-              class="w-auto"
-              id={"#{@id}-dropdown"}
-              select_id={@id}
-              available_options={@options}
-              options={@searched_options || @options}
-              {=@disabled}
-              {=@on_search_change}
-              {=@search_string}
-              {=@with}
-              is_multi
-            />
-          </div>
-        </TopToDown>
-      </:content>
-    </Popover>
+            <:left>
+              <Labels
+                select_id={@id}
+                value={SelectHelpers.get_normalized_value(@form, @field, true, value: @value)}
+                {=@options}
+                {=@prompt}
+                {=@size}
+                {=@disabled}
+                {=@selected_label_background_color_class}
+                {=@selected_label_text_color_class}
+              />
+            </:left>
+            <:right>
+              <Moon.Icons.ControlsChevronDown />
+            </:right>
+          </PullAside>
+        </FieldBorder>
+        <:content>
+          <TopToDown>
+            <div class={
+              "overflow-auto rounded-moon-i-md box-border border border-solid",
+              "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl",
+              "#{@search_min_width}": not is_nil(@on_search_change)
+            }>
+              <Dropdown
+                class="w-auto"
+                id={"#{@id}-dropdown"}
+                select_id={@id}
+                available_options={@options}
+                options={@searched_options || @options}
+                {=@disabled}
+                {=@on_search_change}
+                {=@search_string}
+                {=@with}
+                is_multi
+              />
+            </div>
+          </TopToDown>
+        </:content>
+      </Popover>
+    </div>
     """
   end
 

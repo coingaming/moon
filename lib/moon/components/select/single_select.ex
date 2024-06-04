@@ -41,81 +41,83 @@ defmodule Moon.Components.Select.SingleSelect do
 
   def render(assigns) do
     ~F"""
-    {#if @size != "xl"}
-      <FieldLabel class="block text-trunks text-moon-16 font-normal mb-2">
-        {@label}
-      </FieldLabel>
-    {/if}
-    <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
-      {Phoenix.HTML.Form.select(
-        @form,
-        @field,
-        SelectHelpers.get_formatted_options(
-          @options,
-          SelectHelpers.get_normalized_value(@form, @field, false, value: @value)
-        ),
-        class: "hidden",
-        id: @id,
-        prompt: @label
-      )}
-      <FieldBorder
-        testid={"#{@id}-toggle_open"}
-        click="toggle_open"
-        class={
-          "w-full",
-          "bg-#{@background_color}": @background_color
-        }
-        has_error={has_error(@has_error, @form, @field)}
-      >
-        <PullAside class={
-          "leading-6",
-          SelectHelpers.get_padding(@size),
-          get_disabled_class(@disabled)
-        }>
-          <:left>
-            <SelectedValue
-              class={@selected_value_class}
-              {=@size}
-              {=@label}
-              {=@placeholder}
-              select_id={@id}
-              option={get_option_selected(@form, @field, @options, @value)}
-            />
-          </:left>
-          <:right>
-            <Moon.Icons.ControlsChevronDown />
-          </:right>
-        </PullAside>
-      </FieldBorder>
-      <:content>
-        <TopToDown>
-          <div class={
-            "overflow-auto rounded-moon-i-md box-border border border-solid",
-            "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl",
-            "#{@search_min_width}": not is_nil(@on_search_change)
+    <div>
+      {#if @size != "xl"}
+        <FieldLabel class="block text-trunks text-moon-16 font-normal mb-2">
+          {@label}
+        </FieldLabel>
+      {/if}
+      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+        {Phoenix.HTML.Form.select(
+          @form,
+          @field,
+          SelectHelpers.get_formatted_options(
+            @options,
+            SelectHelpers.get_normalized_value(@form, @field, false, value: @value)
+          ),
+          class: "hidden",
+          id: @id,
+          prompt: @label
+        )}
+        <FieldBorder
+          testid={"#{@id}-toggle_open"}
+          click="toggle_open"
+          class={
+            "w-full",
+            "bg-#{@background_color}": @background_color
+          }
+          has_error={has_error(@has_error, @form, @field)}
+        >
+          <PullAside class={
+            "leading-6",
+            SelectHelpers.get_padding(@size),
+            get_disabled_class(@disabled)
           }>
-            <Dropdown
-              id={"#{@id}-dropdown"}
-              select_id={@id}
-              available_options={@options}
-              options={@searched_options || @options}
-              {=@disabled}
-              {=@on_search_change}
-              {=@search_string}
-              {=@with}
-            />
-          </div>
-        </TopToDown>
-      </:content>
-    </Popover>
-    <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
-      <#slot {@hint_text_slot} />
-    </HintText>
-    <div
-      class="inline-block mt-2 text-moon-12"
-      :if={@use_error_tag && has_error(@has_error, @form, @field)}
-    >
-      <ErrorTag {=@field} />
+            <:left>
+              <SelectedValue
+                class={@selected_value_class}
+                {=@size}
+                {=@label}
+                {=@placeholder}
+                select_id={@id}
+                option={get_option_selected(@form, @field, @options, @value)}
+              />
+            </:left>
+            <:right>
+              <Moon.Icons.ControlsChevronDown />
+            </:right>
+          </PullAside>
+        </FieldBorder>
+        <:content>
+          <TopToDown>
+            <div class={
+              "overflow-auto rounded-moon-i-md box-border border border-solid",
+              "border-beerus min-h-[20px] max-h-[200px] drop-shadow-2xl",
+              "#{@search_min_width}": not is_nil(@on_search_change)
+            }>
+              <Dropdown
+                id={"#{@id}-dropdown"}
+                select_id={@id}
+                available_options={@options}
+                options={@searched_options || @options}
+                {=@disabled}
+                {=@on_search_change}
+                {=@search_string}
+                {=@with}
+              />
+            </div>
+          </TopToDown>
+        </:content>
+      </Popover>
+      <HintText :if={slot_assigned?(:hint_text_slot)} {=@has_error}>
+        <#slot {@hint_text_slot} />
+      </HintText>
+      <div
+        class="inline-block mt-2 text-moon-12"
+        :if={@use_error_tag && has_error(@has_error, @form, @field)}
+      >
+        <ErrorTag {=@field} />
+      </div>
     </div>
     """
   end
