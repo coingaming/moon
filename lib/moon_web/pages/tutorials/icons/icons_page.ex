@@ -14,6 +14,8 @@ defmodule MoonWeb.Pages.Components.IconsPage do
   alias MoonWeb.Pages.IconsPage.IconsImportDisplay
 
   data(selected_icons, :list, default: [])
+  data(case_converted_list, :list)
+  data(import_name_string, :string)
 
   data(breadcrumbs, :any,
     default: [
@@ -122,10 +124,12 @@ defmodule MoonWeb.Pages.Components.IconsPage do
   end
 
   defp get_import_text_by_attribute(assigns, selected_icons) do
+    assigns = assign(assigns, selected_icons: selected_icons)
+
     ~F"""
     alias Moon.Icon
 
-    {#for icon <- selected_icons}{icon_string(icon)}{/for}
+    {#for icon <- @selected_icons}{icon_string(icon)}{/for}
     """
   end
 
@@ -139,9 +143,15 @@ defmodule MoonWeb.Pages.Components.IconsPage do
     case_converted_list = Enum.map(selected_icons, fn i -> Macro.camelize(i) end)
     import_name_string = Enum.join(case_converted_list, ", ")
 
+    assigns =
+      assign(assigns,
+        case_converted_list: case_converted_list,
+        import_name_string: import_name_string
+      )
+
     ~F"""
-    {get_alias_string(import_name_string)}
-    {#for icon <- case_converted_list}{get_icon_tag(icon)}{/for}
+    {get_alias_string(@import_name_string)}
+    {#for icon <- @case_converted_list}{get_icon_tag(icon)}{/for}
     """
   end
 

@@ -62,6 +62,7 @@ defmodule Moon.Components.TextInput do
   data(form, :form, from_context: {Surface.Components.Form, :form})
   data(is_in_input_group, :boolean, from_context: {InputGroup, :is_in_input_group})
   data(group_class_plain, :css_class, from_context: {InputGroup, :group_class_plain})
+  data(internal_render, :any)
 
   def render(assigns) do
     assigns = put_everything_to_context(assigns)
@@ -71,6 +72,8 @@ defmodule Moon.Components.TextInput do
       <#slot {@hint_text_slot} />
     </HintText>
     """
+
+    assigns = assign(assigns, internal_render: internal_render)
 
     ~F"""
     {#if @type == "password"}
@@ -85,7 +88,7 @@ defmodule Moon.Components.TextInput do
         <:right_icon_slot>
           <#slot {@right_icon_slot} />
         </:right_icon_slot>
-        {internal_render}
+        {@internal_render}
       </TextInputPassword>
     {#elseif @size == "xl"}
       <TextInputInnerLabel
@@ -99,7 +102,7 @@ defmodule Moon.Components.TextInput do
         <:right_icon_slot>
           <#slot {@right_icon_slot} />
         </:right_icon_slot>
-        {internal_render}
+        {@internal_render}
       </TextInputInnerLabel>
     {#else}
       <TextInputBasic {=@id} {=@field} {=@class}>
@@ -109,7 +112,7 @@ defmodule Moon.Components.TextInput do
         <:right_icon_slot>
           <#slot {@right_icon_slot} />
         </:right_icon_slot>
-        {internal_render}
+        {@internal_render}
       </TextInputBasic>
     {/if}
     """

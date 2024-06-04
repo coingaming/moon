@@ -17,6 +17,13 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
   prop(size, :string)
   prop(class, :css_class, default: "")
 
+  data(has_value, :boolean)
+  data(has_left_icon, :boolean)
+  data(has_right_icon, :boolean)
+  data(has_icons, :boolean)
+  data(is_label, :boolean)
+  data(is_inner_label, :boolean)
+
   def render(assigns) do
     has_value = has_value(assigns.option)
     has_left_icon = has_value && not is_nil(assigns.option[:left_icon])
@@ -25,29 +32,39 @@ defmodule Moon.Components.Select.SingleSelect.Value.SelectedValue do
     is_label = not is_nil(assigns.label)
     is_inner_label = is_label and assigns.size == "xl"
 
+    assigns =
+      assign(assigns,
+        has_value: has_value,
+        has_left_icon: has_left_icon,
+        has_right_icon: has_right_icon,
+        has_icons: has_icons,
+        is_label: is_label,
+        is_inner_label: is_inner_label
+      )
+
     ~F"""
     <div class={
       "h-fit relative flex",
       @class
     }>
-      {#if has_value}
-        {#if is_inner_label or has_icons}
+      {#if @has_value}
+        {#if @is_inner_label or @has_icons}
           <div class={
             "flex flex-col w-full items-center text-moon-16",
-            "ps-6": has_left_icon,
-            "pe-2": has_left_icon && !has_right_icon,
-            "pe-6": has_right_icon
+            "ps-6": @has_left_icon,
+            "pe-2": @has_left_icon && !@has_right_icon,
+            "pe-6": @has_right_icon
           }>
-            <InnerLabelContent :if={is_inner_label} {=@label} {=has_icons} />
-            <MainContent label={@option.label} {=has_icons} {=is_inner_label} />
+            <InnerLabelContent :if={@is_inner_label} {=@label} {=@has_icons} />
+            <MainContent label={@option.label} {=@has_icons} {=@is_inner_label} />
           </div>
 
           <div class="absolute top-0 left-0 z-20 w-full h-full flex items-center bg-transparent justify-between">
             <div class="justify-self-start items-center">
-              <Icon class="flex" icon={@option[:left_icon]} :if={has_left_icon} />
+              <Icon class="flex" icon={@option[:left_icon]} :if={@has_left_icon} />
             </div>
             <div class="justify-self-end me-2 items-center">
-              <Icon class="flex" icon={@option[:right_icon]} :if={has_right_icon} />
+              <Icon class="flex" icon={@option[:right_icon]} :if={@has_right_icon} />
             </div>
           </div>
         {#else}

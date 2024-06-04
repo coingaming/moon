@@ -18,6 +18,8 @@ defmodule Moon.Design.Avatar.Status do
     default_position = %{vertical: "bottom", horizontal: "right"}
     position = Map.merge(default_position, assigns.position || %{})
 
+    assigns = assign(assigns, position: position)
+
     ~F"""
     <div
       {=@id}
@@ -25,10 +27,10 @@ defmodule Moon.Design.Avatar.Status do
         merge([
           [
             "absolute border-gohan rounded-full bg-roshi",
-            "top-0": position.vertical == "top",
-            "bottom-0": position.vertical == "bottom",
-            "start-0": position.horizontal == "left",
-            "end-0": position.horizontal == "right",
+            "top-0": @position.vertical == "top",
+            "bottom-0": @position.vertical == "bottom",
+            "start-0": @position.horizontal == "left",
+            "end-0": @position.horizontal == "right",
             "w-2 h-2": @size == "xs",
             "w-3 h-3": @size == "sm" || @size == "md",
             "w-4 h-4": @size == "lg" || @size == "xl" || @size == "2xl"

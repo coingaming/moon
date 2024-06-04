@@ -11,9 +11,12 @@ defmodule Moon.Components.Drawer.Dialog do
   slot(title)
   slot(content)
   slot(footer)
+  data(dialog_content_height, :css_class)
 
   def render(assigns) do
     dialog_content_height = if slot_assigned?(:footer), do: "h-5/6", else: "h-screen"
+
+    assigns = assign(assigns, dialog_content_height: dialog_content_height)
 
     ~F"""
     <div class="relative w-full h-full bg-goku">
@@ -31,7 +34,7 @@ defmodule Moon.Components.Drawer.Dialog do
       </PullAside>
       <Divider :if={!@has_no_divider} />
       {#if slot_assigned?(:content)}
-        <div class={"p-6 overflow-y-auto", dialog_content_height}>
+        <div class={"p-6 overflow-y-auto", @dialog_content_height}>
           <#slot {@content} />
         </div>
       {/if}
