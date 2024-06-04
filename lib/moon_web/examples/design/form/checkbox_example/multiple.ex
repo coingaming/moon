@@ -29,18 +29,20 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Multiple do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="changed">
-      <Field field={:permissions} label="Permissions list">
-        <Checkbox
-          :for={perm <- @permissions}
-          label={perm.key}
-          hidden_input={false}
-          checked_value={perm.value}
-          disabled={perm[:disabled]}
-          is_multiple
-        />
-      </Field>
-    </Form>
+    <div>
+      <Form for={@user_changeset} change="changed">
+        <Field field={:permissions} label="Permissions list">
+          <Checkbox
+            :for={perm <- @permissions}
+            label={perm.key}
+            hidden_input={false}
+            checked_value={perm.value}
+            disabled={perm[:disabled]}
+            is_multiple
+          />
+        </Field>
+      </Form>
+    </div>
     """
   end
 

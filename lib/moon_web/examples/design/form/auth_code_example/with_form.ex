@@ -16,26 +16,28 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
 
   def render(assigns) do
     ~F"""
-    <Form
-      for={@user_changeset}
-      submit="submit"
-      class="flex flex-col gap-2 items-center"
-      has_error_icon
-    >
-      <Field
-        field={:authentication}
-        hint="Hint message"
-        class="flex flex-col ps-0"
-        error_class="self-center"
-        hint_class="self-center"
+    <div>
+      <Form
+        for={@user_changeset}
+        submit="submit"
+        class="flex flex-col gap-2 items-center"
+        has_error_icon
       >
-        <AuthCode>
-          <AuthCode.Input />
-        </AuthCode>
-      </Field>
-      <Button class="w-[19.75rem]" type="submit">Send code</Button>
-      <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
-    </Form>
+        <Field
+          field={:authentication}
+          hint="Hint message"
+          class="flex flex-col ps-0"
+          error_class="self-center"
+          hint_class="self-center"
+        >
+          <AuthCode>
+            <AuthCode.Input />
+          </AuthCode>
+        </Field>
+        <Button class="w-[19.75rem]" type="submit">Send code</Button>
+        <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
+      </Form>
+    </div>
     """
   end
 

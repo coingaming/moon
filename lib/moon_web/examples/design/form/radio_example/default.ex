@@ -15,7 +15,9 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Radio {=@value} on_change="changed" options={first: "First option", second: "Second option"} />
+    <div>
+      <Radio {=@value} on_change="changed" options={first: "First option", second: "Second option"} />
+    </div>
     """
   end
 

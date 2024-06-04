@@ -23,17 +23,19 @@ defmodule MoonWeb.Examples.Design.TableExample.ClickableRows do
 
   def render(assigns) do
     ~F"""
-    <Table items={model <- @models} row_click="single_row_click" {=@selected}>
-      <Column name="id" label="ID">
-        {model.id}
-      </Column>
-      <Column name="name" label="First Name">
-        {model.name}
-      </Column>
-      <Column name="created_at" label="Created at">
-        <Datetime value={model.created_at} />
-      </Column>
-    </Table>
+    <div>
+      <Table items={model <- @models} row_click="single_row_click" {=@selected}>
+        <Column name="id" label="ID">
+          {model.id}
+        </Column>
+        <Column name="name" label="First Name">
+          {model.name}
+        </Column>
+        <Column name="created_at" label="Created at">
+          <Datetime value={model.created_at} />
+        </Column>
+      </Table>
+    </div>
     """
   end
 

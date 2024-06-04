@@ -17,12 +17,14 @@ defmodule MoonWeb.Examples.Design.SearchExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Search
-      id="default-search"
-      {=@filter}
-      on_keyup="change_filter"
-      options={@options |> page_to_href() |> filter_options(@filter)}
-    />
+    <div>
+      <Search
+        id="default-search"
+        {=@filter}
+        on_keyup="change_filter"
+        options={@options |> page_to_href() |> filter_options(@filter)}
+      />
+    </div>
     """
   end
 
