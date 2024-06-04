@@ -26,11 +26,13 @@ defmodule MoonWeb.Examples.Design.Form.SelectExample.MultipleChoices do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="change">
-      <Form.Field label="User permissions" field={:permissions}>
-        <Form.Select is_multiple options={@permissions} />
-      </Form.Field>
-    </Form>
+    <div>
+      <Form for={@user_changeset} change="change">
+        <Form.Field label="User permissions" field={:permissions}>
+          <Form.Select is_multiple options={@permissions} />
+        </Form.Field>
+      </Form>
+    </div>
     """
   end
 
