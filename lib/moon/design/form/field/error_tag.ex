@@ -43,12 +43,16 @@ defmodule Moon.Design.Form.Field.ErrorTag do
   """
   prop translator, :fun
 
+  data(translate_error, :any)
+
   def render(assigns) do
     translate_error = assigns.translator || translator_from_config() || (&translate_error/1)
     class = assigns.class || get_config(:default_class)
 
+    assigns = assign(assigns, translate_error: translate_error, class: class)
+
     ~F"""
-    <span :for={error <- Keyword.get_values(@form.errors || [], @field)} class={class}>{translate_error.(error)}</span>
+    <span :for={error <- Keyword.get_values(@form.errors || [], @field)} {=@class}>{@translate_error.(error)}</span>
     """
   end
 

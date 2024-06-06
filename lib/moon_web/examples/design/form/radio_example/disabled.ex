@@ -11,7 +11,9 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.Disabled do
 
   def render(assigns) do
     ~F"""
-    <Radio disabled {=@value} options={first: "First option", second: "Second option"} />
+    <div>
+      <Radio disabled {=@value} options={first: "First option", second: "Second option"} />
+    </div>
     """
   end
 

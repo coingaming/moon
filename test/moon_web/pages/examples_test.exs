@@ -9,8 +9,11 @@ defmodule MoonWeb.Pages.ExamplesTest do
   test "all examples open", %{conn: conn} do
     with {:ok, list} <- :application.get_key(:moon, :modules) do
       list
-      |> Enum.filter(&(&1 |> Module.split() |> Enum.take(2) == ~w|MoonWeb Examples|))
-      |> Enum.filter(&(&1 != MoonWeb.Examples.Design.TableExample.Stream))
+      |> Enum.filter(fn mod ->
+        prefix = Module.split(mod) |> Enum.take(2)
+
+        prefix == ~w|MoonWeb Examples| && mod != MoonWeb.Examples.Design.TableExample.Stream
+      end)
       |> Enum.each(fn example ->
         path =
           MoonWeb.Router.Helpers.live_path(

@@ -13,9 +13,11 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.WithForm do
 
   prop(is_open, :boolean, default: false)
   data(changeset, :any)
+  data(form_id, :string)
 
   def render(assigns) do
     form_id = "#{assigns.id}-form"
+    assigns = assign(assigns, form_id: form_id)
 
     ~F"""
     <div>
@@ -31,7 +33,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.WithForm do
                 icon="controls_chevron_left_small"
                 variant="none"
                 on_click="close"
-                target={form_id}
+                target={@form_id}
               />
               <div class="grow pe-10 text-center font-semibold text-moon-16">
                 {"Dates date range"}
@@ -39,7 +41,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.WithForm do
             </div>
           </BottomSheet.Header>
           <TopToDown gap="gap-4" class="px-6 pt-4 pb-4">
-            <Form id={form_id} for={@changeset} change="update_selected" target={@myself} submit="apply">
+            <Form id={@form_id} for={@changeset} change="update_selected" target={@myself} submit="apply">
               <TopToDown gap="gap-4">
                 <Form.Field label="label.start-date" field={:date_from} class="flex flex-col gap-2">
                   <Form.Input size="lg" type="date" class="text-trunks" />
@@ -49,7 +51,7 @@ defmodule MoonWeb.Examples.Design.BottomSheetExample.WithForm do
                 </Form.Field>
               </TopToDown>
             </Form>
-            <Button id={"#{form_id}-confirm"} type="submit" class="rounded-full" on_click="apply">Apply</Button>
+            <Button id={"#{@form_id}-confirm"} type="submit" class="rounded-full" on_click="apply">Apply</Button>
           </TopToDown>
         </BottomSheet.Panel>
         <BottomSheet.Backdrop />

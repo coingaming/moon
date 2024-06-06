@@ -32,104 +32,106 @@ defmodule Moon.Components.TextInput.TextInputPassword do
 
   def render(assigns) do
     ~F"""
-    <Container {=@disabled} {=@id} {=@class}>
-      {#if @size == "xl"}
-        <div
-          id={"#{@id}_text_input_password"}
-          class={
-            "w-full max-w-full relative",
-            @background_color,
-            Utils.get_border_radius(@size),
-            "bg-#{@background_color}"
-          }
-        >
-          <Password
-            {=@id}
-            {=@field}
-            value={@password}
-            on_keyup="on_keyup"
-            input_password_id={"#{@id}_text_input_password"}
-            type={get_type(@password_shown)}
-          />
-          <label class={
-            "absolute text-[0.75rem] leading-3 text-trunks top-3 z-[3] transition-all pointer-events-none",
-            "rtl:right-4",
-            "ltr:left-4",
-            "pl-8": @has_left_icon
-          }>
+    <div>
+      <Container {=@disabled} {=@id} {=@class}>
+        {#if @size == "xl"}
+          <div
+            id={"#{@id}_text_input_password"}
+            class={
+              "w-full max-w-full relative",
+              @background_color,
+              Utils.get_border_radius(@size),
+              "bg-#{@background_color}"
+            }
+          >
+            <Password
+              {=@id}
+              {=@field}
+              value={@password}
+              on_keyup="on_keyup"
+              input_password_id={"#{@id}_text_input_password"}
+              type={get_type(@password_shown)}
+            />
+            <label class={
+              "absolute text-[0.75rem] leading-3 text-trunks top-3 z-[3] transition-all pointer-events-none",
+              "rtl:right-4",
+              "ltr:left-4",
+              "pl-8": @has_left_icon
+            }>
+              {@label}
+            </label>
+
+            <ShowPassword
+              toggle="toggle_password_visibility"
+              input_password_id={"#{@id}_text_input_password"}
+            >
+              {@show_password_text}
+            </ShowPassword>
+
+            <div class={
+              "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
+              Utils.get_height_by_size(@size)
+            }>
+              <div class="w-full h-full flex items-center justify-between px-4 bg-transparent">
+                <div class="justify-self-start pointer-events-auto"><#slot {@left_icon_slot} /></div>
+                <div class="justify-self-end pointer-events-auto"><#slot {@right_icon_slot} /></div>
+              </div>
+            </div>
+          </div>
+          <#slot />
+          <div class="inline-block mt-2 text-moon-12" :if={@use_error_tag && @is_error}>
+            <ErrorTag {=@field} />
+          </div>
+        {#else}
+          <label
+            :if={@label}
+            class={
+              "block text-moon-16 text-bulma pb-2 pointer-events-none",
+              "opacity-60 cursor-not-allowed": @disabled
+            }
+          >
             {@label}
           </label>
-
-          <ShowPassword
-            toggle="toggle_password_visibility"
-            input_password_id={"#{@id}_text_input_password"}
+          <div
+            id={"#{@id}_text_input_password"}
+            class={
+              "w-full max-w-full relative",
+              Utils.get_border_radius(@size)
+            }
           >
-            {@show_password_text}
-          </ShowPassword>
+            <Password
+              {=@id}
+              {=@field}
+              value={@password}
+              on_keyup="on_keyup"
+              input_password_id={"#{@id}_text_input_password"}
+              type={get_type(@password_shown)}
+            />
 
-          <div class={
-            "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
-            Utils.get_height_by_size(@size)
-          }>
-            <div class="w-full h-full flex items-center justify-between px-4 bg-transparent">
-              <div class="justify-self-start pointer-events-auto"><#slot {@left_icon_slot} /></div>
-              <div class="justify-self-end pointer-events-auto"><#slot {@right_icon_slot} /></div>
+            <ShowPassword
+              toggle="toggle_password_visibility"
+              input_password_id={"#{@id}_text_input_password"}
+            >
+              {@show_password_text}
+            </ShowPassword>
+
+            <div class={
+              "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
+              Utils.get_height_by_size(@size)
+            }>
+              <div class="w-full h-full flex items-center justify-between px-4 bg-transparent">
+                <div class="justify-self-start pointer-events-auto"><#slot {@left_icon_slot} /></div>
+                <div class="justify-self-end pointer-events-auto"><#slot {@right_icon_slot} /></div>
+              </div>
             </div>
           </div>
-        </div>
-        <#slot />
-        <div class="inline-block mt-2 text-moon-12" :if={@use_error_tag && @is_error}>
-          <ErrorTag {=@field} />
-        </div>
-      {#else}
-        <label
-          :if={@label}
-          class={
-            "block text-moon-16 text-bulma pb-2 pointer-events-none",
-            "opacity-60 cursor-not-allowed": @disabled
-          }
-        >
-          {@label}
-        </label>
-        <div
-          id={"#{@id}_text_input_password"}
-          class={
-            "w-full max-w-full relative",
-            Utils.get_border_radius(@size)
-          }
-        >
-          <Password
-            {=@id}
-            {=@field}
-            value={@password}
-            on_keyup="on_keyup"
-            input_password_id={"#{@id}_text_input_password"}
-            type={get_type(@password_shown)}
-          />
-
-          <ShowPassword
-            toggle="toggle_password_visibility"
-            input_password_id={"#{@id}_text_input_password"}
-          >
-            {@show_password_text}
-          </ShowPassword>
-
-          <div class={
-            "w-full absolute top-0 left-0 z-20 bg-transparent pointer-events-none pr-12",
-            Utils.get_height_by_size(@size)
-          }>
-            <div class="w-full h-full flex items-center justify-between px-4 bg-transparent">
-              <div class="justify-self-start pointer-events-auto"><#slot {@left_icon_slot} /></div>
-              <div class="justify-self-end pointer-events-auto"><#slot {@right_icon_slot} /></div>
-            </div>
+          <#slot />
+          <div class="inline-block mt-2 text-moon-12" :if={@use_error_tag && @is_error}>
+            <ErrorTag {=@field} />
           </div>
-        </div>
-        <#slot />
-        <div class="inline-block mt-2 text-moon-12" :if={@use_error_tag && @is_error}>
-          <ErrorTag {=@field} />
-        </div>
-      {/if}
-    </Container>
+        {/if}
+      </Container>
+    </div>
     """
   end
 

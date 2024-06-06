@@ -21,17 +21,19 @@ defmodule MoonWeb.Examples.Design.TableExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Table items={model <- @models} selected={nil}>
-      <Column name="id" label="ID">
-        {model.id}
-      </Column>
-      <Column name="name" label="First Name">
-        {model.name}
-      </Column>
-      <Column name="created_at" label="Created at">
-        <Datetime value={model.created_at} />
-      </Column>
-    </Table>
+    <div>
+      <Table items={model <- @models} selected={nil}>
+        <Column name="id" label="ID">
+          {model.id}
+        </Column>
+        <Column name="name" label="First Name">
+          {model.name}
+        </Column>
+        <Column name="created_at" label="Created at">
+          <Datetime value={model.created_at} />
+        </Column>
+      </Table>
+    </div>
     """
   end
 

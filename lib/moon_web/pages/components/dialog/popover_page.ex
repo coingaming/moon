@@ -12,15 +12,17 @@ defmodule MoonWeb.Pages.Components.Dialog.PopoverPage.PopoverExample do
 
   def render(assigns) do
     ~F"""
-    <Popover show={@show} placement={@placement} on_close="toggle_show">
-      <Button on_click="toggle_show" variant="primary">Click Me</Button>
+    <div>
+      <Popover show={@show} placement={@placement} on_close="toggle_show">
+        <Button on_click="toggle_show" variant="primary">Click Me</Button>
 
-      <:content>
-        <div class="w-64 h-24 flex items-center justify-around bg-goku border-2 border-goku z-50">
-          <div class="capitalize">{"#{@placement}"}</div>
-        </div>
-      </:content>
-    </Popover>
+        <:content>
+          <div class="w-64 h-24 flex items-center justify-around bg-goku border-2 border-goku z-50">
+            <div class="capitalize">{"#{@placement}"}</div>
+          </div>
+        </:content>
+      </Popover>
+    </div>
     """
   end
 

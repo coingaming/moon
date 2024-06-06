@@ -19,17 +19,19 @@ defmodule MoonWeb.Examples.Design.TableExample.Editable do
 
   def render(assigns) do
     ~F"""
-    <Table items={model <- @models} selected={nil}>
-      <Table.Column name="id" label="ID">
-        <Table.Input value={model.id} />
-      </Table.Column>
-      <Table.Column name="name" label="First Name">
-        <Table.Input value={model.name} />
-      </Table.Column>
-      <Table.Column name="created_at" label="Created at">
-        <Table.Input value={Timex.format!(model.created_at, "%b %d, %Y, %H:%M:%S", :strftime)} />
-      </Table.Column>
-    </Table>
+    <div>
+      <Table items={model <- @models} selected={nil}>
+        <Table.Column name="id" label="ID">
+          <Table.Input value={model.id} />
+        </Table.Column>
+        <Table.Column name="name" label="First Name">
+          <Table.Input value={model.name} />
+        </Table.Column>
+        <Table.Column name="created_at" label="Created at">
+          <Table.Input value={Timex.format!(model.created_at, "%b %d, %Y, %H:%M:%S", :strftime)} />
+        </Table.Column>
+      </Table>
+    </div>
     """
   end
 

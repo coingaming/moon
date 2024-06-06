@@ -18,11 +18,13 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.WithForm do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="changed">
-      <Field field={:agrees_to_terms_of_service}>
-        <Checkbox label="With label" />
-      </Field>
-    </Form>
+    <div>
+      <Form for={@user_changeset} change="changed">
+        <Field field={:agrees_to_terms_of_service}>
+          <Checkbox label="With label" />
+        </Field>
+      </Form>
+    </div>
     """
   end
 

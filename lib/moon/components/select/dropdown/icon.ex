@@ -9,12 +9,16 @@ defmodule Moon.Components.Select.Dropdown.Icon do
 
   slot(default)
 
+  data(module, :any)
+  data(props, :any)
+
   def render(assigns) do
     [module, props] = assigns.icon
+    assigns = assign(assigns, module: module, props: props)
 
     ~F"""
     <div class={@class} style={@style}>
-      {Moon.Helpers.MoonRender.surface_component(module, props)}
+      {Moon.Helpers.MoonRender.surface_component(@module, @props)}
     </div>
     """
   end

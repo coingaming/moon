@@ -12,7 +12,9 @@ defmodule MoonWeb.Examples.Design.ChipExample.WithOnClick do
 
   def render(assigns) do
     ~F"""
-    <Chip on_click="on_click">{@chip_status}</Chip>
+    <div>
+      <Chip on_click="on_click">{@chip_status}</Chip>
+    </div>
     """
   end
 

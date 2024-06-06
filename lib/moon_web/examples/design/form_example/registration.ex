@@ -40,31 +40,33 @@ defmodule MoonWeb.Examples.Design.FormExample.Registration do
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="change" submit="submit">
-      <Field label="Label for select" hint="Hint for Select" field={:gender}>
-        <Select options={@gender_options} />
-      </Field>
-      <Field label="Label for textinput" hint="Hint for Textinput" field={:username}>
-        <Input />
-      </Field>
-      <Field label="Label for TextArea" hint="Hint for TextArea" field={:email}>
-        <TextArea />
-      </Field>
-      <Field field={:agrees_to_terms_of_service}>
-        <Label size="sm">
-          <Switch />
-          I agree terms of service
-        </Label>
-      </Field>
-      <Field field={:agrees_to_marketing_emails}>
-        <Label size="sm">
-          <Checkbox />
-          Marketing emails
-        </Label>
-      </Field>
-      <Button type="submit">Submit</Button>
-      <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
-    </Form>
+    <div>
+      <Form for={@user_changeset} change="change" submit="submit">
+        <Field label="Label for select" hint="Hint for Select" field={:gender}>
+          <Select options={@gender_options} />
+        </Field>
+        <Field label="Label for textinput" hint="Hint for Textinput" field={:username}>
+          <Input />
+        </Field>
+        <Field label="Label for TextArea" hint="Hint for TextArea" field={:email}>
+          <TextArea />
+        </Field>
+        <Field field={:agrees_to_terms_of_service}>
+          <Label size="sm">
+            <Switch />
+            I agree terms of service
+          </Label>
+        </Field>
+        <Field field={:agrees_to_marketing_emails}>
+          <Label size="sm">
+            <Checkbox />
+            Marketing emails
+          </Label>
+        </Field>
+        <Button type="submit">Submit</Button>
+        <Anatomy class="theme-moon-dark" title={false}>@user_changeset = {inspect(@user_changeset, pretty: true)}</Anatomy>
+      </Form>
+    </div>
     """
   end
 

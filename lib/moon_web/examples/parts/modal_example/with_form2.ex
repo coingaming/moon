@@ -18,9 +18,11 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
   data(verification_types, :any)
   data(provider_names, :any)
   data(merchant_names, :any)
+  data(form_id, :string)
 
   def render(assigns) do
     form_id = "#{assigns.id}-form"
+    assigns = assign(assigns, form_id: form_id)
 
     ~F"""
     <div>
@@ -38,7 +40,7 @@ defmodule MoonWeb.Examples.Parts.ModalExample.WithForm2 do
           <Wizard.Panels>
             <Tabs.Panel>
               <Form
-                id={form_id}
+                id={@form_id}
                 is_horizontal
                 change="on_form_change"
                 for={@changeset}

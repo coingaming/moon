@@ -27,17 +27,19 @@ defmodule MoonWeb.Examples.Parts.HeaderExample.TitleOnly do
 
   def render(assigns) do
     ~F"""
-    <Header>
-      <Header.Title title="Chat history" />
-      <Header.Buttons>
-        <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
-        <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />
-        <Header.ButtonGroupLink route="#" icon="arrows_sorting" tooltip_text="Tooltip text" />
-        <Header.ButtonGroupLink route="#" icon="controls_eye" tooltip_text="Tooltip text" />
-        <Header.LeftButton />
-        <Header.RightButton />
-      </Header.Buttons>
-    </Header>
+    <div>
+      <Header>
+        <Header.Title title="Chat history" />
+        <Header.Buttons>
+          <Header.ButtonGroupLink route="#" icon="generic_search" tooltip_text="Tooltip text" />
+          <Header.ButtonGroupLink route="#" icon="mail_filter" tooltip_text="Filters (⌘ + F)" />
+          <Header.ButtonGroupLink route="#" icon="arrows_sorting" tooltip_text="Tooltip text" />
+          <Header.ButtonGroupLink route="#" icon="controls_eye" tooltip_text="Tooltip text" />
+          <Header.LeftButton />
+          <Header.RightButton />
+        </Header.Buttons>
+      </Header>
+    </div>
     """
   end
 end

@@ -52,86 +52,88 @@ defmodule Moon.Components.Datepicker do
 
   def render(assigns) do
     ~F"""
-    <Popover show={@show} on_close="toggle_picker" testid={@testid}>
-      <Chip
-        class={@button_class}
-        on_click="toggle_picker"
-        right_icon="controls_chevron_down"
-        active={@start_date && @end_date}
-        testid={"#{@testid}-chip"}
-        button_type="button"
-      >
-        {button_label(@start_date, @end_date, @with_time, @selected_range)}
-      </Chip>
+    <div>
+      <Popover show={@show} on_close="toggle_picker" testid={@testid}>
+        <Chip
+          class={@button_class}
+          on_click="toggle_picker"
+          right_icon="controls_chevron_down"
+          active={@start_date && @end_date}
+          testid={"#{@testid}-chip"}
+          button_type="button"
+        >
+          {button_label(@start_date, @end_date, @with_time, @selected_range)}
+        </Chip>
 
-      <:content>
-        <div class={
-          "p-2 pr-3 origin-top-left absolute left-0 bg-goku flex shadow-lg rounded text-moon-14 z-10 mt-2",
-          hidden: !@show
-        }>
-          <!-- Ranges -->
-          <div :if={length(@ranges) > 0} class="space-y-0.5 w-48 mr-4">
-            <div
-              :for={range <- @ranges}
-              class={
-                "py-2 px-3 hover:bg-gohan rounded cursor-pointer",
-                "bg-gohan": range == @selected_range
-              }
-              :on-click="select_range"
-              phx-value-range={range}
-              data-testid={"#{@testid}-select-range-#{range}"}
-            >
-              {range_label(range)}
-            </div>
-          </div>
-
-          <!-- Content -->
-          <div class="flex flex-col pt-2 pl-3">
-            <!-- Months -->
-            <div class="flex grow space-x-6">
-              <FirstMonth
-                date={@left_panel_date}
-                start_date={@internal_start_date}
-                end_date={@internal_end_date}
-                week_starts_on={@week_starts_on}
-                on_click="select_date"
-              />
-              <SecondMonth
-                date={Timex.shift(@left_panel_date, months: 1)}
-                start_date={@internal_start_date}
-                end_date={@internal_end_date}
-                week_starts_on={@week_starts_on}
-                on_click="select_date"
-              />
-            </div>
-
-            <div class={
-              "flex items-center mt-6 gap-x-2",
-              "justify-between": @show_date_inputs,
-              "justify-end": !@show_date_inputs
-            }>
-              <DateInputs
-                :if={@show_date_inputs}
-                {=@with_time}
-                {=@start_date_field}
-                {=@end_date_field}
-                {=@internal_start_date}
-                {=@internal_end_date}
-              />
-
-              <Buttons
-                on_click={@submit || "update_dates"}
-                values={
-                  start_date: Helpers.format_date(@internal_start_date, @with_time),
-                  end_date: Helpers.format_date(@internal_end_date, @with_time)
+        <:content>
+          <div class={
+            "p-2 pr-3 origin-top-left absolute left-0 bg-goku flex shadow-lg rounded text-moon-14 z-10 mt-2",
+            hidden: !@show
+          }>
+            <!-- Ranges -->
+            <div :if={length(@ranges) > 0} class="space-y-0.5 w-48 mr-4">
+              <div
+                :for={range <- @ranges}
+                class={
+                  "py-2 px-3 hover:bg-gohan rounded cursor-pointer",
+                  "bg-gohan": range == @selected_range
                 }
-                testid={"#{@testid}-apply"}
-              />
+                :on-click="select_range"
+                phx-value-range={range}
+                data-testid={"#{@testid}-select-range-#{range}"}
+              >
+                {range_label(range)}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="flex flex-col pt-2 pl-3">
+              <!-- Months -->
+              <div class="flex grow space-x-6">
+                <FirstMonth
+                  date={@left_panel_date}
+                  start_date={@internal_start_date}
+                  end_date={@internal_end_date}
+                  week_starts_on={@week_starts_on}
+                  on_click="select_date"
+                />
+                <SecondMonth
+                  date={Timex.shift(@left_panel_date, months: 1)}
+                  start_date={@internal_start_date}
+                  end_date={@internal_end_date}
+                  week_starts_on={@week_starts_on}
+                  on_click="select_date"
+                />
+              </div>
+
+              <div class={
+                "flex items-center mt-6 gap-x-2",
+                "justify-between": @show_date_inputs,
+                "justify-end": !@show_date_inputs
+              }>
+                <DateInputs
+                  :if={@show_date_inputs}
+                  {=@with_time}
+                  {=@start_date_field}
+                  {=@end_date_field}
+                  {=@internal_start_date}
+                  {=@internal_end_date}
+                />
+
+                <Buttons
+                  on_click={@submit || "update_dates"}
+                  values={
+                    start_date: Helpers.format_date(@internal_start_date, @with_time),
+                    end_date: Helpers.format_date(@internal_end_date, @with_time)
+                  }
+                  testid={"#{@testid}-apply"}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </:content>
-    </Popover>
+        </:content>
+      </Popover>
+    </div>
     """
   end
 

@@ -29,21 +29,23 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.MultipleWithHorizontalLab
 
   def render(assigns) do
     ~F"""
-    <Form for={@user_changeset} change="changed">
-      <Field field={:permissions} is_horizontal>
-        <Field.Label class="items-start" title="Permissions list" />
-        <div class="grid grid-cols-2 gap-2">
-          <Checkbox
-            :for={perm <- @permissions}
-            label={perm.key}
-            hidden_input={false}
-            checked_value={perm.value}
-            disabled={perm[:disabled]}
-            is_multiple
-          />
-        </div>
-      </Field>
-    </Form>
+    <div>
+      <Form for={@user_changeset} change="changed">
+        <Field field={:permissions} is_horizontal>
+          <Field.Label class="items-start" title="Permissions list" />
+          <div class="grid grid-cols-2 gap-2">
+            <Checkbox
+              :for={perm <- @permissions}
+              label={perm.key}
+              hidden_input={false}
+              checked_value={perm.value}
+              disabled={perm[:disabled]}
+              is_multiple
+            />
+          </div>
+        </Field>
+      </Form>
+    </div>
     """
   end
 

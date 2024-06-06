@@ -23,10 +23,12 @@ defmodule MoonWeb.Examples.Design.Form.RadioExample.WithForm do
 
   def render(assigns) do
     ~F"""
-    <Form id="radio_short_form" for={@user_changeset} change="changed" submit="submit">
-      <Radio field={:gender} options={[male: "Male", female: "Female", invalid: "Invalid"]} />
-      <Button type="submit">Submit</Button>
-    </Form>
+    <div>
+      <Form id="radio_short_form" for={@user_changeset} change="changed" submit="submit">
+        <Radio field={:gender} options={[male: "Male", female: "Female", invalid: "Invalid"]} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    </div>
     """
   end
 

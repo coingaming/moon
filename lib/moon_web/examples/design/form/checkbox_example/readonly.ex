@@ -24,18 +24,20 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Readonly do
 
   def render(assigns) do
     ~F"""
-    <Form
-      for={@user_changeset}
-      change="changed"
-      class="flex flex-wap gap-2 w-full items-center justify-around"
-    >
-      <Field field={:agrees_to_terms_of_service}>
-        <Checkbox readonly label="Readonly checked" />
-      </Field>
-      <Field field={:agrees_to_marketing_emails}>
-        <Checkbox readonly label="Readonly unchecked" />
-      </Field>
-    </Form>
+    <div>
+      <Form
+        for={@user_changeset}
+        change="changed"
+        class="flex flex-wap gap-2 w-full items-center justify-around"
+      >
+        <Field field={:agrees_to_terms_of_service}>
+          <Checkbox readonly label="Readonly checked" />
+        </Field>
+        <Field field={:agrees_to_marketing_emails}>
+          <Checkbox readonly label="Readonly unchecked" />
+        </Field>
+      </Form>
+    </div>
     """
   end
 

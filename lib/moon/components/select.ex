@@ -20,6 +20,9 @@ defmodule Moon.Components.Select do
   prop(full_width, :boolean)
   prop(class, :string)
 
+  data(select, :any)
+  data(options_with_selected, :list)
+
   def render(assigns) do
     options_with_selected =
       Enum.map(assigns.options, fn row ->
@@ -31,6 +34,8 @@ defmodule Moon.Components.Select do
         ]
       end)
 
+    assigns = assign(assigns, options_with_selected: options_with_selected)
+
     select = ~F"""
     <Surface.Components.Form.Select
       class={
@@ -41,20 +46,22 @@ defmodule Moon.Components.Select do
         "#{@class}": true
       }
       field={@field}
-      options={options_with_selected}
+      options={@options_with_selected}
       opts={[prompt: @prompt, disabled: @disabled]}
     />
     """
+
+    assigns = assign(assigns, select: select)
 
     ~F"""
     {#if @label}
       <FieldLabel text={@label}>
         <div class="relative mt-2">
-          {select}
+          {@select}
         </div>
       </FieldLabel>
     {#else}
-      {select}
+      {@select}
     {/if}
     """
   end

@@ -41,6 +41,8 @@ defmodule Moon.Components.Deprecated.TextInput do
   prop(border_color_class, :string)
   prop(states_class, :string)
 
+  data(text_input, :any)
+
   slot(left_icon)
   slot(right_icon)
   slot(hint_text)
@@ -96,15 +98,17 @@ defmodule Moon.Components.Deprecated.TextInput do
     </div>
     """
 
+    assigns = assign(assigns, text_input: text_input)
+
     ~F"""
     {#if @label}
       <FieldLabel text={@label}>
         <div class="mt-2 relative">
-          {text_input}
+          {@text_input}
         </div>
       </FieldLabel>
     {#else}
-      {text_input}
+      {@text_input}
     {/if}
     """
   end

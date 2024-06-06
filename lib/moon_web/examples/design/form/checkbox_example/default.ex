@@ -15,7 +15,9 @@ defmodule MoonWeb.Examples.Design.Form.CheckboxExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Checkbox {=@is_selected} on_click="on_click" />
+    <div>
+      <Checkbox {=@is_selected} on_click="on_click" />
+    </div>
     """
   end
 

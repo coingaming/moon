@@ -26,20 +26,22 @@ defmodule MoonWeb.Examples.Design.TableExample.Checkboxes do
 
   def render(assigns) do
     ~F"""
-    <Table items={model <- @models} selected={@checked}>
-      <Column name="id" label="ID">
-        <span :on-click="checkbox_click" :values={id: model.id} class="flex cursor-pointer">
-          <Lego.Checkbox is_selected={"#{model.id}" in @checked} />
-          <Lego.Title title={model.id} />
-        </span>
-      </Column>
-      <Column name="name" label="Name">
-        {model.name}
-      </Column>
-      <Column name="created_at" label="Created at">
-        <Datetime value={model.created_at} />
-      </Column>
-    </Table>
+    <div>
+      <Table items={model <- @models} selected={@checked}>
+        <Column name="id" label="ID">
+          <span :on-click="checkbox_click" :values={id: model.id} class="flex cursor-pointer">
+            <Lego.Checkbox is_selected={"#{model.id}" in @checked} />
+            <Lego.Title title={model.id} />
+          </span>
+        </Column>
+        <Column name="name" label="Name">
+          {model.name}
+        </Column>
+        <Column name="created_at" label="Created at">
+          <Datetime value={model.created_at} />
+        </Column>
+      </Table>
+    </div>
     """
   end
 

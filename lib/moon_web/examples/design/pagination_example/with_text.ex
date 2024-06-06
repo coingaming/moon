@@ -10,19 +10,21 @@ defmodule MoonWeb.Examples.Design.PaginationExample.WithText do
 
   def render(assigns) do
     ~F"""
-    <Pagination id="default" total_pages={11} value={@current_page} on_change="set_current_page">
-      <Pagination.PrevButton
-        class="border-none font-normal"
-        hover_bg_class="group-hover:bg-transparent"
-        testid="prev_button"
-      >Previous</Pagination.PrevButton>
-      <Pagination.Pages />
-      <Pagination.NextButton
-        class="border-none font-normal"
-        hover_bg_class="group-hover:bg-transparent"
-        testid="next_button"
-      >Next</Pagination.NextButton>
-    </Pagination>
+    <div>
+      <Pagination id="default" total_pages={11} value={@current_page} on_change="set_current_page">
+        <Pagination.PrevButton
+          class="border-none font-normal"
+          hover_bg_class="group-hover:bg-transparent"
+          testid="prev_button"
+        >Previous</Pagination.PrevButton>
+        <Pagination.Pages />
+        <Pagination.NextButton
+          class="border-none font-normal"
+          hover_bg_class="group-hover:bg-transparent"
+          testid="next_button"
+        >Next</Pagination.NextButton>
+      </Pagination>
+    </div>
     """
   end
 

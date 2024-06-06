@@ -14,7 +14,9 @@ defmodule MoonWeb.Examples.Design.SwitchExample.Default do
 
   def render(assigns) do
     ~F"""
-    <Switch {=@checked} on_change="toggle_switch" />
+    <div>
+      <Switch {=@checked} on_change="toggle_switch" />
+    </div>
     """
   end
 
