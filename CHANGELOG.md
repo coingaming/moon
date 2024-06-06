@@ -1,3 +1,10 @@
+# [2.84.0](https://github.com/coingaming/moon/compare/v2.83.0...v2.84.0) (2024-06-06)
+
+
+### Features
+
+* bump phoenix_live_view and surface + fix issues caused by upgrade ([#840](https://github.com/coingaming/moon/issues/840)) ([6321367](https://github.com/coingaming/moon/commit/6321367f05cb330a42db4fcae9de7a530f381d55))
+
 # [2.83.0](https://github.com/coingaming/moon/compare/v2.82.0...v2.83.0) (2024-05-16)
 
 
