@@ -1,3 +1,10 @@
+# [2.85.0](https://github.com/coingaming/moon/compare/v2.84.0...v2.85.0) (2024-06-06)
+
+
+### Features
+
+* **Popover:** Add id prop to Moon.Components.Popover ([#841](https://github.com/coingaming/moon/issues/841)) ([1fceb50](https://github.com/coingaming/moon/commit/1fceb50d5e706e6dc87fcaaefe66eed543fd1896))
+
 # [2.84.0](https://github.com/coingaming/moon/compare/v2.83.0...v2.84.0) (2024-06-06)
 
 
