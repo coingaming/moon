@@ -49,6 +49,13 @@ defmodule MoonWeb.Pages.Design.PopoverPage do
         title="Popover props"
         data={[
           %{
+            :name => ~c"id",
+            :type => ~c"string",
+            :required => ~c"Yes",
+            :default => ~c"-",
+            :description => ~c"Unique element's identifier"
+          },
+          %{
             :name => ~c"is_open",
             :type => ~c"boolean",
             :required => ~c"No",
