@@ -53,7 +53,7 @@ defmodule Moon.Components.Datepicker do
   def render(assigns) do
     ~F"""
     <div>
-      <Popover show={@show} on_close="toggle_picker" testid={@testid}>
+      <Popover id={"#{@id}-popover"} show={@show} on_close="toggle_picker" testid={@testid}>
         <Chip
           class={@button_class}
           on_click="toggle_picker"
