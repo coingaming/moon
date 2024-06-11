@@ -44,10 +44,15 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
       <TopToDown>
         <Heading size={56} class="mb-4">DropdownMenuButton</Heading>
 
-        <ExampleAndCode id="dropdown_menu_button_1">
+        <ExampleAndCode id="dropdown_menu_button_example">
           <:example>
             <div class="flex justify-center">
-              <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+              <DropdownMenuButton
+                id="dropdown_menu_button_1"
+                show={@show_options}
+                placement="bottom-end"
+                on_toggle="toggle_options"
+              >
                 <IconMore />
 
                 <:menu>
@@ -74,7 +79,7 @@ defmodule MoonWeb.Pages.Components.DropdownMenuButtonPage do
 
   def dropdown_menu_button_1_code do
     """
-      <DropdownMenuButton show={@show_options} placement="bottom-end" on_toggle="toggle_options">
+      <DropdownMenuButton id="dropdown_menu_button" show={@show_options} placement="bottom-end" on_toggle="toggle_options">
         <IconMore />
 
         <:menu>
