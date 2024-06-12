@@ -51,7 +51,7 @@ defmodule Moon.Design.Carousel.Reel do
             "[-ms-overflow-style:-ms-autohiding-scrollbar]",
             "[&>li]:list-none [&>li]:before:absolute [&>li]:before:content-[&quot;200B&quot;]",
             "[&>*]:flex-[0_0_auto] [&>img]:h-full [&>img]:basis-auto [&>img]:w-auto",
-            "snap-mandatory rtl:flex-row-reverse",
+            "snap-mandatory",
             "moon-reel",
             "overflow-x-hidden": @autoslide_delay
           ],
@@ -74,7 +74,7 @@ defmodule Moon.Design.Carousel.Reel do
       <#slot />
     </ul>
     <div class={merge([
-      "flex absolute bottom-8 left-1/2 -translate-x-1/2 rtl:flex-row-reverse",
+      "flex absolute bottom-8 left-1/2 -translate-x-1/2",
       @indicator_class
     ])}>
       {#for {item, index} <- Enum.with_index(make_list(@item))}
