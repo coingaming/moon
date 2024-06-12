@@ -148,7 +148,18 @@ module.exports = {
           'var(--averta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
         'dm-sans':
           'var(--dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
-      }
+      },
+      maxHeight: {
+        "scrollable-dropdown-sm-3": "6.5rem",
+        "scrollable-dropdown-sm-5": "10.5rem",
+        "scrollable-dropdown-sm-7": "14.5rem",
+        "scrollable-dropdown-md-3": "8rem",
+        "scrollable-dropdown-md-5": "13rem",
+        "scrollable-dropdown-md-7": "18rem",
+        "scrollable-dropdown-lg-3": "9.5rem",
+        "scrollable-dropdown-lg-5": "15.5rem",
+        "scrollable-dropdown-lg-7": "21.5rem",
+      },
     },
   },
   plugins: [
@@ -300,6 +311,19 @@ module.exports = {
         ".brcrumb-li": {
           "& a, & span": {
             padding: "0.5rem",
+          },
+        },
+        ".dropdown-options-scrollable": {
+          "&::-webkit-scrollbar": {
+            " -webkit-appearance": "none",
+            width: "4px",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "rgb(var(--beerus))",
+            borderRadius: "100vh",
+          },
+          "&::-webkit-scrollbar-thumb:active": {
+            background: "rgb(var(--trunks))",
           },
         },
       });

@@ -44,6 +44,9 @@ defmodule Moon.Design.Form.Dropdown do
   @doc "Should dropdown be open"
   prop(is_open, :boolean)
 
+  @doc "Dropdown hooks"
+  prop(hook, :string, default: "Dropdown")
+
   @doc "Option for custom stylings - use it to show icons or anything else"
   slot(default)
 
@@ -55,7 +58,7 @@ defmodule Moon.Design.Form.Dropdown do
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={dropdown_id(assigns)} {=@is_open} {=@class} {=@testid}>
+    <Dropdown id={dropdown_id(assigns)} {=@is_open} {=@class} {=@testid} hook={@hook}>
       <:trigger :let={is_open: is_open}>
         <#slot {@trigger, is_open: is_open}>
           <Dropdown.Select

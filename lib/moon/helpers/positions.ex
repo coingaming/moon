@@ -33,8 +33,17 @@ defmodule Moon.Helpers.Positions do
   def position_class("left-start"), do: "ltr:right-full rtl:left-full top-0 ltr:mr-2 rtl:ml-2"
 
   def position_class("left"),
-    do: "ltr:right-full rtl:left-full top-1/2 ltr:mr-2 rtl:ml-2 -translate-y-1/2"
+    do: "ltr:right-full rtl:left-full top-1/2 :ltr:mr-2 rtl:ml-2 -translate-y-1/2"
 
   def position_class("left-end"), do: "ltr:right-full rtl:left-full bottom-0 ltr:mr-2 rtl:ml-2"
   def position_class(_), do: ""
+
+  @spec reverse_position_vertical(String.t()) :: String.t()
+  def reverse_position_vertical("top-start"), do: "bottom-start"
+  def reverse_position_vertical("top"), do: "bottom"
+  def reverse_position_vertical("top-end"), do: "bottom-end"
+  def reverse_position_vertical("bottom-start"), do: "top-start"
+  def reverse_position_vertical("bottom"), do: "top"
+  def reverse_position_vertical("bottom-end"), do: "top-end"
+  def reverse_position_vertical(p), do: p
 end

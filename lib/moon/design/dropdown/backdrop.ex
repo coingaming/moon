@@ -14,13 +14,14 @@ defmodule Moon.Design.Dropdown.Backdrop do
 
   @doc """
   Experimental: makes BottomSheet behave as Modal on some screen widths,
-  please reffer to https://tailwindcss.com/docs/screens
+  please refer to https://tailwindcss.com/docs/screens
   """
   prop(as_dropdown_on, :string, values: ~w(sm md lg xl 2xl), from_context: :as_dropdown_on)
 
-  @doc "If the optionlist is open, got from context"
+  @doc "If the options is open, got from context"
   prop(is_open, :boolean, from_context: :is_open)
 
+  @spec render(map()) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~F"""
     <Backdrop

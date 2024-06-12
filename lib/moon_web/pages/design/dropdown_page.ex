@@ -69,6 +69,7 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         DropdownExample.OptionLayouts,
         DropdownExample.Positions,
         DropdownExample.Sizes,
+        DropdownExample.LimitHeight,
         DropdownExample.Datepicker,
         DropdownExample.ResponsiveDropdown,
         DropdownExample.WithHeaderAndFooter,
