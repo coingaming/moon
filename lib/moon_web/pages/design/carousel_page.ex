@@ -40,7 +40,8 @@ defmodule MoonWeb.Pages.Design.CarouselPage do
         CarouselExample.Indicators,
         CarouselExample.Spaces,
         CarouselExample.SelectIndex,
-        CarouselExample.Autoslide
+        CarouselExample.Autoslide,
+        CarouselExample.RtlSupport
       ]} />
 
       <PropsTable title="Carousel props" module={Moon.Design.Carousel} />
