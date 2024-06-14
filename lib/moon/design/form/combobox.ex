@@ -62,6 +62,9 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Filtering value for the options"
   prop(filter, :string)
 
+  @doc "Label for the not found option"
+  prop(not_found_label, :string, default: "Nothing found.")
+
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
@@ -153,6 +156,9 @@ defmodule Moon.Design.Form.Combobox do
               </#slot>
             </Radio.Button>
           </Dropdown.Option>
+          {#if @filter && @options == [] && @not_found_label != ""}
+            <Moon.Design.Form.Combobox.NoResults {=@not_found_label} />
+          {/if}
         </Dropdown.Options>
       </#slot>
     </Dropdown>
