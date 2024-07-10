@@ -8,18 +8,16 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
   alias MoonWeb.Schema.User
   alias Moon.Design.Form
 
-  import Moon.Helpers.Form, only: [filter_options: 2]
-
   prop(permissions, :list, default: User.available_permissions())
 
   prop(changeset_sm, :any, default: User.changeset(%User{gender: nil}))
-  prop(target_sm, :list)
+  prop(target_sm, :list, default: [])
 
   prop(changeset_md, :any, default: User.changeset(%User{gender: nil}))
-  prop(target_md, :list)
+  prop(target_md, :list, default: [])
 
   prop(changeset_lg, :any, default: User.changeset(%User{gender: nil}))
-  prop(target_lg, :list)
+  prop(target_lg, :list, default: [])
 
   prop(filter_sm, :string, default: "")
   prop(filter_md, :string, default: "")
@@ -30,15 +28,11 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
   end
 
   def handle_event("change_" <> num, params, socket) do
-    changeset = User.changeset(%User{}, Map.get(params, "user", %{}))
+    changeset =
+      User.changeset(%User{}, Map.get(params, "user", socket.assigns["changeset_#{num}"]))
 
     {:noreply,
      socket
-     |> assign(
-       target_sm: [],
-       target_md: [],
-       target_lg: []
-     )
      |> assign(
        "changeset_#{num}": changeset,
        "target_#{num}": Map.get(params, "_target", [])
@@ -62,7 +56,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
             is_multiple
             on_keyup={"change_filter_#{size}"}
             filter={assigns[:"filter_#{size}"]}
-            options={filter_options(@permissions, assigns[:"filter_#{size}"])}
+            options={@permissions}
             prompt="Select permissions"
             is_open={assigns[:"target_#{size}"] === ["user", "permissions"]}
           />

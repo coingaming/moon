@@ -21,7 +21,7 @@ defmodule MoonWeb.Components.PropsTable do
         :if={@module && function_exported?(@module, :__moduledoc__, 0) && @module.__moduledoc__()}
         class="text-moon-14"
       >{@module.__moduledoc__()}</div>
-      <Table items={item <- @data || data_from_module(@module)} class="p-4">
+      <Table items={item <- @data || data_from_module(@module)} class="p-4" id={@module}>
         <Column name="name" label="Name">
           {item.name}
         </Column>
