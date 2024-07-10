@@ -65,13 +65,11 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
-  defp hidden_selected_values(%{is_multiple: true, form: form, field: field, options: options}) do
-    option_values = options |> map(& &1[:value])
-    (form[field].value || []) |> filter(&(!member?(option_values, &1)))
-  end
+  defp is_hidden(option, filter) do
+    import String, only: [starts_with?: 2, downcase: 1]
 
-  defp hidden_selected_values(%{form: form, field: field, options: options}) do
-    (form[field].value in map(options, & &1[:value]) && nil) || form[field].value
+    is_binary(filter) && String.length(filter) > 0 &&
+      !starts_with?(downcase(option[:key]), downcase(filter))
   end
 
   def render(assigns) do
@@ -120,22 +118,11 @@ defmodule Moon.Design.Form.Combobox do
       </:trigger>
       <#slot {@default}>
         <Dropdown.Options>
-          {#if @is_multiple}
-            <Surface.Components.Form.HiddenInput
-              :for={value <- hidden_selected_values(assigns)}
-              name={"#{@form[@field].name}[]"}
-              {=value}
-              class="hidden"
-            />
-          {#else}
-            <Surface.Components.Form.HiddenInput
-              :if={hidden_selected_values(assigns)}
-              name={"#{@form[@field].name}"}
-              value={hidden_selected_values(assigns)}
-              class="hidden"
-            />
-          {/if}
-          <Dropdown.Option :for={option <- @options} {=@size}>
+          <Dropdown.Option
+            :for={option <- @options}
+            {=@size}
+            class={(is_hidden(option, @filter) && "hidden") || ""}
+          >
             <Checkbox
               checked_value={option[:value]}
               :if={@is_multiple}

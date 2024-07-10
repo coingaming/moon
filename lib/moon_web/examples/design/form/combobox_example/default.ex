@@ -57,7 +57,7 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
             <Form.Combobox
               {=size}
               filter={@filter}
-              options={filter_options(@titles, @filter)}
+              options={@titles}
               on_keyup="change_filter"
             />
           </Form.Field>
