@@ -11,7 +11,6 @@ defmodule Moon.Design.Form.Combobox do
   alias Moon.Design.Dropdown.Badge
 
   import Moon.Helpers.Form
-  import Enum, only: [map: 2, filter: 2, member?: 2]
 
   @doc "Name of the field, usually should be taken from context"
   prop(field, :atom, from_context: {Form.Field, :field})

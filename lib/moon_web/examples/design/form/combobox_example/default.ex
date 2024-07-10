@@ -8,8 +8,6 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
 
   alias MoonWeb.Schema.User
 
-  import Moon.Helpers.Form, only: [filter_options: 2]
-
   prop(titles, :list,
     default:
       [
