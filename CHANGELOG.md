@@ -1,3 +1,10 @@
+## [2.85.1](https://github.com/coingaming/moon/compare/v2.85.0...v2.85.1) (2024-07-10)
+
+
+### Bug Fixes
+
+* fixing combobox behaviour when filtering ([#843](https://github.com/coingaming/moon/issues/843)) ([f11d84b](https://github.com/coingaming/moon/commit/f11d84b4268655210d8d9a43461c9fe37df9b8c4))
+
 # [2.85.0](https://github.com/coingaming/moon/compare/v2.84.0...v2.85.0) (2024-06-06)
 
 
