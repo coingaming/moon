@@ -4,6 +4,7 @@ defmodule Moon.Components.DropdownMenuButton do
   use Moon.StatelessComponent
   alias Moon.Components.Popover
 
+  prop(id, :string, required: true)
   prop(class, :string)
   prop(title, :string)
   prop(height, :integer, default: 10)
@@ -20,7 +21,7 @@ defmodule Moon.Components.DropdownMenuButton do
 
   def render(assigns) do
     ~F"""
-    <Popover {=@show} on_close={@on_toggle} {=@placement}>
+    <Popover {=@id} {=@show} on_close={@on_toggle} {=@placement}>
       <button
         class={"h-#{@height} w-#{@width} rounded flex items-center justify-center text-trunks hover:text-bulma #{@text_color} hover:#{@hover_bg_color} #{@class}"}
         title={@title}

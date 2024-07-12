@@ -142,7 +142,13 @@ defmodule Moon.Components.Select.MultiSelect do
   def render(assigns) do
     ~F"""
     <div>
-      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+      <Popover
+        id={"#{@id}-popover"}
+        placement={@popover_placement}
+        show={@open}
+        on_close="close"
+        class={@popover_class}
+      >
         {Phoenix.HTML.Form.multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id

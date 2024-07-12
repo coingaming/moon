@@ -47,7 +47,13 @@ defmodule Moon.Components.Select.SingleSelect do
           {@label}
         </FieldLabel>
       {/if}
-      <Popover placement={@popover_placement} show={@open} on_close="close" class={@popover_class}>
+      <Popover
+        id={"#{@id}-popover"}
+        placement={@popover_placement}
+        show={@open}
+        on_close="close"
+        class={@popover_class}
+      >
         {Phoenix.HTML.Form.select(
           @form,
           @field,

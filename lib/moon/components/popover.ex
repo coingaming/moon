@@ -27,7 +27,7 @@ defmodule Moon.Components.Popover do
 
   prop(on_close, :event)
 
-  prop(id, :string)
+  prop(id, :string, required: true)
   prop(testid, :string)
 
   slot(default, required: true)
