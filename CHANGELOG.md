@@ -1,3 +1,10 @@
+# [2.86.0](https://github.com/coingaming/moon/compare/v2.85.1...v2.86.0) (2024-07-12)
+
+
+### Features
+
+* use Popover id prop ([8fa7995](https://github.com/coingaming/moon/commit/8fa799527d693f6427965c5e94ef34399531f5c3))
+
 ## [2.85.1](https://github.com/coingaming/moon/compare/v2.85.0...v2.85.1) (2024-07-10)
 
 
