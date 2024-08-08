@@ -3,7 +3,7 @@ defmodule Moon.MixProject do
 
   @version (case File.read("VERSION") do
               {:ok, version} -> String.trim(version)
-              {:error, _} -> "ERRROR"
+              {:error, _} -> "ERROR"
             end)
 
   def project do
