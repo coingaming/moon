@@ -44,6 +44,15 @@ defmodule MoonWeb.Components.Footer do
             >
               LinkedIn
             </a>
+            <span>•</span>
+            <a
+              href="https://github.com/coingaming/moon/blob/main/COPYING"
+              class="hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              License
+            </a>
           </div>
 
           <p>
