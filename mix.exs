@@ -3,7 +3,7 @@ defmodule Moon.MixProject do
 
   @version (case File.read("VERSION") do
               {:ok, version} -> String.trim(version)
-              {:error, _} -> "ERRROR"
+              {:error, _} -> "ERROR"
             end)
 
   def project do
@@ -44,7 +44,7 @@ defmodule Moon.MixProject do
 
   defp package do
     [
-      licenses: ["MIT"],
+      licenses: ["GPL-3.0-only"],
       files: [
         "lib",
         "config/surface.exs",
