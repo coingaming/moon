@@ -44,7 +44,7 @@ defmodule Moon.MixProject do
 
   defp package do
     [
-      licenses: ["MIT"],
+      licenses: ["GPL-3.0-only"],
       files: [
         "lib",
         "config/surface.exs",
