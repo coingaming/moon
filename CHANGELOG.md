@@ -1,3 +1,10 @@
+## [2.86.1](https://github.com/coingaming/moon/compare/v2.86.0...v2.86.1) (2024-08-08)
+
+
+### Bug Fixes
+
+* update license to gpl ([#846](https://github.com/coingaming/moon/issues/846)) ([db7c6c3](https://github.com/coingaming/moon/commit/db7c6c3abb03cbe72204a492bcdf7eb37cc00c20))
+
 # [2.86.0](https://github.com/coingaming/moon/compare/v2.85.1...v2.86.0) (2024-07-12)
 
 
