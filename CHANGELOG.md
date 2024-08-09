@@ -1,3 +1,10 @@
+## [2.87.1](https://github.com/coingaming/moon/compare/v2.87.0...v2.87.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* update footer link ([#849](https://github.com/coingaming/moon/issues/849)) ([9bc465e](https://github.com/coingaming/moon/commit/9bc465ec4fde6b8de1d0c7edbb0bc7be9d2a5595))
+
 # [2.87.0](https://github.com/coingaming/moon/compare/v2.86.1...v2.87.0) (2024-08-09)
 
 
