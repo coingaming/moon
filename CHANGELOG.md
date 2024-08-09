@@ -1,3 +1,10 @@
+# [2.87.0](https://github.com/coingaming/moon/compare/v2.86.1...v2.87.0) (2024-08-09)
+
+
+### Features
+
+* Add license MIT ([#847](https://github.com/coingaming/moon/issues/847)) ([a2191ba](https://github.com/coingaming/moon/commit/a2191ba5c9994c8ec4f353edbb2c6e07eac01360))
+
 ## [2.86.1](https://github.com/coingaming/moon/compare/v2.86.0...v2.86.1) (2024-08-08)
 
 ### Bug Fixes
