@@ -46,7 +46,7 @@ defmodule MoonWeb.Components.Footer do
             </a>
             <span>•</span>
             <a
-              href="https://github.com/coingaming/moon/blob/main/COPYING"
+              href="https://github.com/coingaming/moon/blob/main/LICENSE"
               class="hover:underline"
               target="_blank"
               rel="noreferrer"
