@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.ErrorState do
 
   def render(assigns) do
     ~F"""
-    <AuthCode error>
+    <AuthCode error id="error-authcode">
       <AuthCode.Input />
     </AuthCode>
     """

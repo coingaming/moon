@@ -10,13 +10,13 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.HintMessage do
   def render(assigns) do
     ~F"""
     <div class="flex items-center flex-col">
-      <AuthCode>
+      <AuthCode id="hint-authcode-1">
         <AuthCode.Input />
         <AuthCode.Hint>Hint message</AuthCode.Hint>
       </AuthCode>
     </div>
     <div class="flex items-center flex-col">
-      <AuthCode>
+      <AuthCode id="hint-authcode-2">
         <AuthCode.Input />
         <AuthCode.Hint>
           <Icon name="generic_info" />
