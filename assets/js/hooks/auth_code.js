@@ -17,16 +17,22 @@ export default {
     handleOnChange() {
         this.inputs.forEach((input, index) => {
             input.addEventListener("input", (event) => {
-                const value = event.target.value;
-                const nextInput = this.inputs[index + 1];
+                const value = event.data || event.target.value;
                 const pattern = input.getAttribute("pattern");
 
                 if (value.length > 1) {
-                    event.target.value = value.charAt(0);
-                    if (nextInput !== undefined && this.hasFocusJump) {
-                        nextInput.focus();
+                    for(let i = index; i < this.inputs.length; i++) {
+                        const nextInput = this.inputs[i + 1];
+                        if (this.inputs[i] !== undefined) {
+                            this.inputs[i].value = value.charAt(i - index);
+                        }
+                        if (nextInput) {
+                            nextInput.focus();
+                        }
                     }
                 } else if (value.match(new RegExp(pattern, "gi"))) {
+
+                    const nextInput = this.inputs[index + 1];
                     if (nextInput !== undefined && this.hasFocusJump) {
                         nextInput.focus();
                     }

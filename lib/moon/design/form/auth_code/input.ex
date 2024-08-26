@@ -56,7 +56,7 @@ defmodule Moon.Design.Form.AuthCode.Input do
           ),
           "text-center"
         ]}
-        maxlength={1}
+        maxlength={@length}
         {=@type}
         autocomplete="off"
         placeholder={String.at(@placeholder, index)}
@@ -74,14 +74,14 @@ defmodule Moon.Design.Form.AuthCode.Input do
   end
 
   defp input_attributes("alpha") do
-    [type: "text", inputmode: "text", pattern: "[a-zA-Z]{1}"]
+    [type: "text", inputmode: "text", pattern: "[a-zA-Z]"]
   end
 
   defp input_attributes("alphanumeric") do
-    [type: "text", inputmode: "text", pattern: "[a-zA-Z0-9]{1}"]
+    [type: "text", inputmode: "text", pattern: "[a-zA-Z0-9]"]
   end
 
   defp input_attributes("numeric") do
-    [type: "tel", inputmode: "numeric", pattern: "[0-9]{1}", min: "0", max: "9"]
+    [type: "tel", inputmode: "numeric", pattern: "[0-9]", min: "0", max: "9"]
   end
 end
