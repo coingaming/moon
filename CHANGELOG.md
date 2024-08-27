@@ -1,3 +1,10 @@
+## [2.87.4](https://github.com/coingaming/moon/compare/v2.87.3...v2.87.4) (2024-08-27)
+
+
+### Bug Fixes
+
+* align documentation version with package version ([2bea405](https://github.com/coingaming/moon/commit/2bea405d6b608db647d16bdae6dc3743e59ebf5d))
+
 ## [2.87.3](https://github.com/coingaming/moon/compare/v2.87.2...v2.87.3) (2024-08-27)
 
 
