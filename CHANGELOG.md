@@ -1,3 +1,10 @@
+## [2.87.2](https://github.com/coingaming/moon/compare/v2.87.1...v2.87.2) (2024-08-27)
+
+
+### Bug Fixes
+
+* Fix authcode paste from device ([#853](https://github.com/coingaming/moon/issues/853)) ([b73d848](https://github.com/coingaming/moon/commit/b73d848230da1e8d170390834bc7d92622fea539)), closes [#850](https://github.com/coingaming/moon/issues/850)
+
 ## [2.87.1](https://github.com/coingaming/moon/compare/v2.87.0...v2.87.1) (2024-08-09)
 
 
