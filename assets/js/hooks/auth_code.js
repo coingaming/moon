@@ -6,9 +6,9 @@ export default {
         this.hiddenField = this.el.querySelector('input[type="hidden"]');
         this.inputValues = this.inputs.map((input) => input.value);
 
-        // TODO: add support forms with re-render on "phx-change" event 
+        // TODO: add support forms with re-render on "phx-change" event
         this.hasFocusJump = !this.el.closest("form[phx-change]");
-        
+
         this.handleOnChange();
         this.handleOnKeydown();
         this.handleOnPaste();
@@ -31,8 +31,11 @@ export default {
                         }
                     }
                 } else if (value.match(new RegExp(pattern, "gi"))) {
-
+                    const currentInput = this.inputs[index];
                     const nextInput = this.inputs[index + 1];
+                    if (currentInput !== undefined && currentInput.value.length > 1) {
+                      currentInput.value = currentInput.value.charAt(1);
+                    }
                     if (nextInput !== undefined && this.hasFocusJump) {
                         nextInput.focus();
                     }
