@@ -56,7 +56,7 @@ defmodule Moon.Design.Form.AuthCode.Input do
           ),
           "text-center"
         ]}
-        maxlength={1}
+        maxlength={@length}
         {=@type}
         autocomplete="off"
         placeholder={String.at(@placeholder, index)}

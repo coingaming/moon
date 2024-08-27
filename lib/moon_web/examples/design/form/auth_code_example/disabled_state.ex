@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.DisabledState do
 
   def render(assigns) do
     ~F"""
-    <AuthCode disabled>
+    <AuthCode disabled id="disabled-authcode">
       <AuthCode.Input />
     </AuthCode>
     """

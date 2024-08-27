@@ -30,7 +30,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.WithForm do
           error_class="self-center"
           hint_class="self-center"
         >
-          <AuthCode>
+          <AuthCode id="form-authcode">
             <AuthCode.Input />
           </AuthCode>
         </Field>

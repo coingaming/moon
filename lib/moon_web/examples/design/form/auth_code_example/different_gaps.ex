@@ -9,10 +9,10 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.DifferentGaps do
   def render(assigns) do
     ~F"""
     <div class="flex flex-col items-center gap-4">
-      <AuthCode>
+      <AuthCode id="different-gaps-authcode-1">
         <AuthCode.Input />
       </AuthCode>
-      <AuthCode class="gap-4">
+      <AuthCode class="gap-4" id="different-gaps-authcode-2">
         <AuthCode.Input />
       </AuthCode>
     </div>

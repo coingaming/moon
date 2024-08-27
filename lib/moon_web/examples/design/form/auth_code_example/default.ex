@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Default do
 
   def render(assigns) do
     ~F"""
-    <AuthCode>
+    <AuthCode id="default-authcode">
       <AuthCode.Input />
     </AuthCode>
     """

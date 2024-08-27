@@ -8,7 +8,7 @@ defmodule MoonWeb.Examples.Design.Form.AuthCodeExample.Password do
 
   def render(assigns) do
     ~F"""
-    <AuthCode type="password">
+    <AuthCode type="password" id="password-authcode">
       <AuthCode.Input />
     </AuthCode>
     """
