@@ -33,6 +33,7 @@ defmodule Moon.Design.Carousel.CarouselControl do
         "h-8 w-8 font-medium",
         "leading-[0] no-underline cursor-pointer absolute top-1/2 -translate-y-1/2",
         "origin-[top_center] z-5 disabled:opacity-60 disabled:cursor-not-allowed",
+        "rtl:hidden",
         @class
       ])}
       :on-click={@on_change}
