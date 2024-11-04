@@ -46,10 +46,12 @@ defmodule Moon.Design.Dropdown.BottomOptions do
     ~F"""
     <div
       class={merge([
-        "fixed inset-x-0 w-full z-[99999] bottom-0 rounded-t-xl shadow-moon-lg box-border bg-goku shadow-moon-lg overflow-y-auto focus:outline-none",
+        "fixed inset-x-0 w-full z-[99999] bottom-0 rounded-t-xl shadow-moon-lg box-border bg-goku shadow-moon-lg focus:outline-none overflow-hidden",
         dropdown_classes(@as_dropdown_on),
         @class,
-        hidden: !@is_open,
+        @is_open && "translate-y-0",
+        !@is_open && "translate-y-full",
+        "transition-transform duration-300 ease-in-out transform",
         "flex flex-col absolute z-[99] p-1 my-2 w-full top-full rounded-moon-s-md bottom-auto":
           !@as_dropdown_on
       ])}
