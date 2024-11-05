@@ -8,7 +8,11 @@ defmodule MoonWeb.Examples.Dropdown.Positions.TopStartTest do
            |> element("#drop-positions-top-start div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#drop-positions-top-start div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#drop-positions-top-start div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
 
     assert view
            |> element("#drop-positions-top-start div.ltr\\:left-0.rtl\\:right-0.bottom-full")

@@ -9,7 +9,9 @@ defmodule MoonWeb.Examples.Dropdown.Positions.BottomStartTest do
            |> has_element?()
 
     assert view
-           |> element("#drop-positions-bottom-start div.hidden[role=listbox]")
+           |> element(
+             "#drop-positions-bottom-start div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
            |> has_element?()
 
     assert view
