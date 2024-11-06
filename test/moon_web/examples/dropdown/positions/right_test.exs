@@ -8,7 +8,11 @@ defmodule MoonWeb.Examples.Dropdown.Positions.RightTest do
            |> element("#drop-positions-right div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#drop-positions-right div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#drop-positions-right div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
 
     assert view
            |> element("#drop-positions-right div.ltr\\:left-full.rtl\\:right-full")

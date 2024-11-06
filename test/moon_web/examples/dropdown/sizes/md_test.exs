@@ -8,7 +8,11 @@ defmodule MoonWeb.Examples.Dropdown.Sizes.MediumTest do
            |> element("#drop-sizes-md div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#drop-sizes-md div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#drop-sizes-md div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
 
     refute view |> element("#drop-sizes-md button.h-12.p-3.rounded-moon-i-sm") |> has_element?()
 

@@ -8,7 +8,9 @@ defmodule MoonWeb.Examples.Dropdown.ResponsiveDropdownTest do
            |> element("#responsive-dropdown div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#responsive-dropdown div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element("#responsive-dropdown div[role=listbox][class*=\"translate-y-full\"]")
+           |> has_element?()
 
     assert view
            |> element(

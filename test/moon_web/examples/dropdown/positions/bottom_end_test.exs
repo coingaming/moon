@@ -9,7 +9,9 @@ defmodule MoonWeb.Examples.Dropdown.Positions.BottomEndTest do
            |> has_element?()
 
     assert view
-           |> element("#drop-positions-bottom-end div.hidden[role=listbox]")
+           |> element(
+             "#drop-positions-bottom-end div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
            |> has_element?()
 
     assert view
