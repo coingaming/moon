@@ -1,3 +1,10 @@
+## [2.87.5](https://github.com/coingaming/moon/compare/v2.87.4...v2.87.5) (2024-11-06)
+
+
+### Bug Fixes
+
+* dropdown animation [MDS-1358] ([#855](https://github.com/coingaming/moon/issues/855)) ([7574777](https://github.com/coingaming/moon/commit/75747772314b6ba1e9154940b3225bc2881de5dc))
+
 ## [2.87.4](https://github.com/coingaming/moon/compare/v2.87.3...v2.87.4) (2024-08-27)
 
 
