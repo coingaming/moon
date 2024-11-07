@@ -41,7 +41,7 @@ export default {
     },
 
     setupSwipePanel() {
-        
+        if (this.swipePanelInitialized) return;
         const startPosition = {
             x: 0,
             y: 0
@@ -51,7 +51,7 @@ export default {
         
         addEvent(document.body, "touchstart", event => {
             const touch = event.targetTouches[0];
-            if ((this.el.dataset.is_open !== undefined)) {
+            if (this.el.dataset.is_open !== undefined) {
                 startPosition.x = touch.pageX;
                 startPosition.y = touch.pageY;
                 panelHeight = this.panel.offsetHeight;
@@ -88,5 +88,6 @@ export default {
                 startedSwipe = false;
             }
         });
-    },     
+        this.swipePanelInitialized = true;
+    }
 };
