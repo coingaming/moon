@@ -5,7 +5,6 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
   use MoonWeb, :example
 
   alias Moon.Design.Form
-
   alias MoonWeb.Schema.User
 
   prop(titles, :list,
@@ -24,9 +23,21 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
   prop(changeset, :any, default: User.changeset(%User{name: nil}))
 
   prop(filter, :string, default: "")
+  prop(is_open, :boolean, default: false)
 
   def handle_event("change_filter", %{"value" => filter}, socket) do
-    {:noreply, assign(socket, filter: filter)}
+    {:noreply,
+     socket
+     |> assign(filter: filter)
+     |> assign(is_open: true)}
+  end
+
+  def handle_event("focus", _params, socket) do
+    {:noreply, assign(socket, is_open: true)}
+  end
+
+  def handle_event("blur", _params, socket) do
+    {:noreply, assign(socket, is_open: false)}
   end
 
   def handle_event("changed", params, socket) do
@@ -35,7 +46,8 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
     {:noreply,
      assign(socket,
        changeset: User.changeset(%User{}, user),
-       filter: Map.get(user, "name", "")
+       filter: Map.get(user, "name", ""),
+       is_open: false
      )}
   end
 
@@ -52,7 +64,15 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Default do
           submit="changed"
         >
           <Form.Field field={:name} label={"Size #{size}"} hint="Some hint here" {=size}>
-            <Form.Combobox {=size} filter={@filter} options={@titles} on_keyup="change_filter" />
+            <Form.Combobox
+              {=size}
+              filter={@filter}
+              options={@titles}
+              on_keyup="change_filter"
+              on_focus="focus"
+              on_blur="blur"
+              is_open={@is_open}
+            />
           </Form.Field>
         </Form>
       </div>

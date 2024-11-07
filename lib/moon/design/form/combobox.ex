@@ -61,6 +61,9 @@ defmodule Moon.Design.Form.Combobox do
   @doc "Filtering value for the options"
   prop(filter, :string)
 
+  prop(on_focus, :event)
+  prop(on_blur, :event)
+
   @doc "Slot used for rendering single option. option[:key] will be used if not given"
   slot(option)
 
@@ -73,7 +76,7 @@ defmodule Moon.Design.Form.Combobox do
 
   def render(assigns) do
     ~F"""
-    <Dropdown id={dropdown_id(assigns)} {=@is_open} hook="Combobox" {=@testid} {=@class}>
+    <Dropdown id={dropdown_id(assigns)} {=@is_open} {=@testid} {=@class}>
       <:trigger :let={is_open: is_open, on_trigger: on_trigger}>
         <#slot {@trigger, is_open: is_open, on_trigger: on_trigger} context_put={on_keyup: @on_keyup}>
           <Dropdown.Input
@@ -84,6 +87,8 @@ defmodule Moon.Design.Form.Combobox do
             {=@error}
             {=@disabled}
             {=@on_keyup}
+            {=@on_focus}
+            {=@on_blur}
             value={(select_value(assigns) && select_value(assigns)[:key]) || @filter}
             class={
               input_classes(assigns) ++
@@ -118,26 +123,31 @@ defmodule Moon.Design.Form.Combobox do
       <#slot {@default}>
         <Dropdown.Options>
           <Dropdown.Option
+            id={gen_rand_id()}
             :for={option <- @options}
             {=@size}
             class={(is_hidden(option, @filter) && "hidden") || ""}
+            hook="Combobox"
           >
-            <Checkbox
-              checked_value={option[:value]}
-              :if={@is_multiple}
-              disabled={option[:disabled]}
-              {=@size}
-              hidden_input={false}
-              is_multiple
-            >
-              <#slot {@option, option: option}>{option[:key]}</#slot>
-            </Checkbox>
-            <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
-              <#slot {@option, option: option}>
-                <Radio.Indicator class="hidden" />
-                {option[:key]}
-              </#slot>
-            </Radio.Button>
+            <div class="flex w-full h-full">
+              <Checkbox
+                checked_value={option[:value]}
+                :if={@is_multiple}
+                disabled={option[:disabled]}
+                {=@size}
+                hidden_input={false}
+                is_multiple
+                checkbox_label_class="w-full flex pb-0 h-full items-start"
+              >
+                <div class="w-full text-start"><#slot {@option, option: option}>{option[:key]}</#slot></div>
+              </Checkbox>
+              <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
+                <#slot {@option, option: option}>
+                  <Radio.Indicator class="hidden" />
+                  {option[:key]}
+                </#slot>
+              </Radio.Button>
+            </div>
           </Dropdown.Option>
         </Dropdown.Options>
       </#slot>

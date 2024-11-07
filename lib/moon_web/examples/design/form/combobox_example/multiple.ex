@@ -12,30 +12,45 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
 
   prop(changeset_sm, :any, default: User.changeset(%User{gender: nil}))
   prop(target_sm, :list, default: [])
+  prop(is_open_sm, :boolean, default: false)
 
   prop(changeset_md, :any, default: User.changeset(%User{gender: nil}))
   prop(target_md, :list, default: [])
+  prop(is_open_md, :boolean, default: false)
 
   prop(changeset_lg, :any, default: User.changeset(%User{gender: nil}))
   prop(target_lg, :list, default: [])
+  prop(is_open_lg, :boolean, default: false)
 
   prop(filter_sm, :string, default: "")
   prop(filter_md, :string, default: "")
   prop(filter_lg, :string, default: "")
 
   def handle_event("change_filter_" <> num, %{"value" => filter}, socket) do
-    {:noreply, assign(socket, "filter_#{num}": filter)}
+    {:noreply,
+     socket
+     |> assign("filter_#{num}": filter)
+     |> assign("is_open_#{num}": true)}
+  end
+
+  def handle_event("focus_" <> num, _params, socket) do
+    {:noreply, assign(socket, "is_open_#{num}": true)}
+  end
+
+  def handle_event("blur_" <> num, _params, socket) do
+    {:noreply, assign(socket, "is_open_#{num}": false)}
   end
 
   def handle_event("change_" <> num, params, socket) do
     changeset =
-      User.changeset(%User{}, Map.get(params, "user", socket.assigns["changeset_#{num}"]))
+      User.changeset(%User{}, Map.get(params, "user", %{}))
 
     {:noreply,
      socket
      |> assign(
        "changeset_#{num}": changeset,
-       "target_#{num}": Map.get(params, "_target", [])
+       "target_#{num}": Map.get(params, "_target", []),
+       "is_open_#{num}": true
      )}
   end
 
@@ -55,10 +70,12 @@ defmodule MoonWeb.Examples.Design.Form.ComboboxExample.Multiple do
             {=size}
             is_multiple
             on_keyup={"change_filter_#{size}"}
+            on_focus={"focus_#{size}"}
+            on_blur={"blur_#{size}"}
             filter={assigns[:"filter_#{size}"]}
             options={@permissions}
             prompt="Select permissions"
-            is_open={assigns[:"target_#{size}"] === ["user", "permissions"]}
+            is_open={assigns[:"is_open_#{size}"]}
           />
         </Form.Field>
       </Form>
