@@ -8,14 +8,23 @@ defmodule MoonWeb.Examples.Dropdown.DefaultTest do
            |> element("#dropdown-02 div[aria-haspopup=true]")
            |> render() =~ "Choose name..."
 
-    assert view |> element("#dropdown-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element("#dropdown-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]")
+           |> has_element?()
 
     view
     |> element("#dropdown-02 div[aria-haspopup=true]")
     |> render_click()
 
-    assert view |> element("#dropdown-02 div[role=listbox]") |> has_element?()
-    refute view |> element("#dropdown-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-02 div[role=listbox][class*=\"max-h-96\"][class*=\"opacity-100\"]"
+           )
+           |> has_element?()
+
+    refute view
+           |> element("#dropdown-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]")
+           |> has_element?()
   end
 
   test "should select", %{conn: conn} do
@@ -32,7 +41,9 @@ defmodule MoonWeb.Examples.Dropdown.DefaultTest do
 
     assert select |> render() =~ "Wade Cooper"
 
-    assert view |> element("#dropdown-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element("#dropdown-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]")
+           |> has_element?()
   end
 
   # TODO: add screenshot test of default state, hover state, open state, selected state

@@ -8,7 +8,12 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.IconButtonTest do
            |> element("#dropdown-trigger-01 div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#dropdown-trigger-01 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-trigger-01 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
+
     assert view |> element("#dropdown-trigger-01 svg.h-6.w-6.moon-icon") |> has_element?()
   end
 

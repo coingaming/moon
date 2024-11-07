@@ -8,7 +8,12 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.ButtonTest do
            |> element("#dropdown-trigger-02 div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#dropdown-trigger-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-trigger-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
+
     assert view |> element("#dropdown-trigger-02 button.bg-piccolo") |> has_element?()
   end
 

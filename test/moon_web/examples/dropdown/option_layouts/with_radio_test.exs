@@ -8,14 +8,23 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithRadioTest do
            |> element("#dropdown-options-02 div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#dropdown-options-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-options-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
 
     view
     |> element("#dropdown-options-02 div[aria-haspopup=true]")
     |> render_click()
 
     assert view |> element("#dropdown-options-02 div[role=listbox]") |> has_element?()
-    refute view |> element("#dropdown-options-02 div.hidden[role=listbox]") |> has_element?()
+
+    refute view
+           |> element(
+             "#dropdown-options-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
   end
 
   test "should have radio and should select", %{conn: conn} do
@@ -34,7 +43,11 @@ defmodule MoonWeb.Examples.Dropdown.OptionLayouts.WithRadioTest do
 
     assert view |> element("#dropdown-options-02 span.shadow-piccolo") |> has_element?()
 
-    assert view |> element("#dropdown-options-02 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-options-02 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
   end
 
   # TODO: add screenshot test of default state, hover state, open state, selected state

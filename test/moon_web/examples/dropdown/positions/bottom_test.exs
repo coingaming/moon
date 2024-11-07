@@ -8,11 +8,15 @@ defmodule MoonWeb.Examples.Dropdown.Positions.BottomTest do
            |> element("#drop-positions-bottom div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#drop-positions-bottom div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#drop-positions-bottom div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
 
     assert view
            |> element(
-             "#drop-positions-bottom div.top-full[class~=\"left-1/2\", \"-translate-x-1/2\"]"
+             "#drop-positions-bottom div.top-full[class~=\"left-1/2\"][class~=\"-translate-x-1/2\"]"
            )
            |> has_element?()
   end

@@ -8,7 +8,12 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.ChipWithArrowTest do
            |> element("#dropdown-trigger-03 div[aria-haspopup=true]")
            |> has_element?()
 
-    assert view |> element("#dropdown-trigger-03 div.hidden[role=listbox]") |> has_element?()
+    assert view
+           |> element(
+             "#dropdown-trigger-03 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
+
     assert view |> element("#dropdown-trigger-03 button.bg-goku") |> has_element?()
     assert view |> element("#dropdown-trigger-03 svg.moon-icon") |> has_element?()
     refute view |> element("#dropdown-trigger-03 svg.moon-icon.rotate-180") |> has_element?()
@@ -18,7 +23,13 @@ defmodule MoonWeb.Examples.Dropdown.TriggerElements.ChipWithArrowTest do
     |> render_click()
 
     assert view |> element("#dropdown-trigger-03 div[role=listbox]") |> has_element?()
-    refute view |> element("#dropdown-trigger-03 div.hidden[role=listbox]") |> has_element?()
+
+    refute view
+           |> element(
+             "#dropdown-trigger-03 div[role=listbox][class*=\"max-h-0\"][class*=\"opacity-0\"]"
+           )
+           |> has_element?()
+
     assert view |> element("#dropdown-trigger-03 svg.moon-icon.rotate-180") |> has_element?()
   end
 
