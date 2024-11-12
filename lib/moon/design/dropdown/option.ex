@@ -14,6 +14,8 @@ defmodule Moon.Design.Dropdown.Option do
   @doc "If the button is disabled"
   prop(disabled, :boolean)
 
+  @doc "Attribute phx-hook. Used for dependant components"
+  prop(hook, :string)
   @doc "On click event, in most cases got from context"
   prop(on_click, :event, from_context: :on_click)
   @doc "Value of the option, in most cases got from context"
@@ -51,6 +53,7 @@ defmodule Moon.Design.Dropdown.Option do
         @class
       ])}
       data-testid={@testid}
+      phx-hook={@hook}
     >
       <#slot>{@title}</#slot>
     </button>

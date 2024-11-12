@@ -66,6 +66,12 @@ defmodule Moon.Helpers.Form do
   def dropdown_id(%{id: id}) when not is_nil(id), do: "#{id}-dropdown"
   def dropdown_id(%{form: form, field: field}), do: "#{form[field].id}-dropdown"
 
+  def gen_rand_id() do
+    :crypto.strong_rand_bytes(5)
+    |> Base.encode32(case: :lower)
+    |> String.replace(~r/=/, "")
+  end
+
   def select_value(%{is_multiple: true}), do: nil
 
   def select_value(%{form: form, field: field, options: options}) do

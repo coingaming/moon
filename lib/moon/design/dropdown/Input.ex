@@ -33,6 +33,9 @@ defmodule Moon.Design.Dropdown.Input do
   @doc "Keyword | Map of additional attributes for the input"
   prop(attrs, :any, default: %{})
 
+  prop(on_focus, :event)
+  prop(on_blur, :event)
+
   @doc "Some buttons and icons over the input"
   slot(default)
 
@@ -46,6 +49,8 @@ defmodule Moon.Design.Dropdown.Input do
         data-testid={@testid}
         :on-keyup={@on_keyup}
         :on-focus={@open_me}
+        {=@on_focus}
+        {=@on_blur}
         {=@error}
         {=@disabled}
         autocomplete="off"

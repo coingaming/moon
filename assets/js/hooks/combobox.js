@@ -1,7 +1,8 @@
 export default {
   mounted() {
-    this.input = this.el.querySelector('.moon-comboinput');
-    this.dropdown = this.el.children[1];
+    this.el.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
   },
 
   updated() {
