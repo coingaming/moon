@@ -1,3 +1,10 @@
+## [2.87.7](https://github.com/coingaming/moon/compare/v2.87.6...v2.87.7) (2024-11-12)
+
+
+### Bug Fixes
+
+* flickering on multiselect combobox [MDS-1352] ([#854](https://github.com/coingaming/moon/issues/854)) ([f540440](https://github.com/coingaming/moon/commit/f540440cd04d74828a3af33a7454f81c6217c330))
+
 ## [2.87.6](https://github.com/coingaming/moon/compare/v2.87.5...v2.87.6) (2024-11-12)
 
 
