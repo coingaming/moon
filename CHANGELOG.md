@@ -1,3 +1,10 @@
+## [2.87.6](https://github.com/coingaming/moon/compare/v2.87.5...v2.87.6) (2024-11-12)
+
+
+### Bug Fixes
+
+* closing bottomsheet multiple hook triggering [MDS-1369] ([#856](https://github.com/coingaming/moon/issues/856)) ([05614ed](https://github.com/coingaming/moon/commit/05614eda610d94377b63cfda46e923c19e1e72e9))
+
 ## [2.87.5](https://github.com/coingaming/moon/compare/v2.87.4...v2.87.5) (2024-11-06)
 
 
