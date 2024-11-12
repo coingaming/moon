@@ -1,3 +1,10 @@
+## [2.87.8](https://github.com/coingaming/moon/compare/v2.87.7...v2.87.8) (2024-11-12)
+
+
+### Bug Fixes
+
+* bump version to v2.87.5 ([#857](https://github.com/coingaming/moon/issues/857)) ([30cde52](https://github.com/coingaming/moon/commit/30cde5223cf1a20244bf56979b936962448c9027))
+
 ## [2.87.7](https://github.com/coingaming/moon/compare/v2.87.6...v2.87.7) (2024-11-12)
 
 
