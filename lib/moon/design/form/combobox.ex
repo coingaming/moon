@@ -126,10 +126,10 @@ defmodule Moon.Design.Form.Combobox do
             id={gen_rand_id()}
             :for={option <- @options}
             {=@size}
-            class={(is_hidden(option, @filter) && "hidden") || ""}
+            class={(is_hidden(option, @filter) && "hidden") || "p-0"}
             hook="Combobox"
           >
-            <div class="flex w-full h-full">
+            <div class="flex w-full h-full pl-2">
               <Checkbox
                 checked_value={option[:value]}
                 :if={@is_multiple}
@@ -137,9 +137,9 @@ defmodule Moon.Design.Form.Combobox do
                 {=@size}
                 hidden_input={false}
                 is_multiple
-                checkbox_label_class="w-full flex pb-0 h-full items-start"
+                checkbox_label_class="relative flex items-center gap-2 text-moon-16 w-full h-full [&>span]:mt-3"
               >
-                <div class="w-full text-start"><#slot {@option, option: option}>{option[:key]}</#slot></div>
+                <div class="w-full text-start pt-2"><#slot {@option, option: option}>{option[:key]}</#slot></div>
               </Checkbox>
               <Radio.Button value={option[:value]} :if={!@is_multiple} disabled={option[:disabled]} {=@size}>
                 <#slot {@option, option: option}>
