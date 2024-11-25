@@ -137,7 +137,7 @@ defmodule Moon.Design.Form.Combobox do
                 {=@size}
                 hidden_input={false}
                 is_multiple
-                checkbox_label_class="relative flex items-center gap-2 text-moon-16 w-full h-full [&>span]:mt-3"
+                checkbox_label_class="relative flex items-center gap-2 text-moon-16 w-full h-full [&>span]:relative [&>input]:absolute"
               >
                 <div class="w-full text-start pt-2"><#slot {@option, option: option}>{option[:key]}</#slot></div>
               </Checkbox>
