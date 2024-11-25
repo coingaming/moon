@@ -1,3 +1,10 @@
+## [2.87.10](https://github.com/coingaming/moon/compare/v2.87.9...v2.87.10) (2024-11-25)
+
+
+### Bug Fixes
+
+* combobox behaviour issues [MDS-1412] ([#859](https://github.com/coingaming/moon/issues/859)) ([1d92dc4](https://github.com/coingaming/moon/commit/1d92dc4ad40cbeca5caca6d38c54c43602b2945e))
+
 ## [2.87.9](https://github.com/coingaming/moon/compare/v2.87.8...v2.87.9) (2024-11-25)
 
 
