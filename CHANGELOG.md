@@ -1,3 +1,10 @@
+## [2.87.9](https://github.com/coingaming/moon/compare/v2.87.8...v2.87.9) (2024-11-25)
+
+
+### Bug Fixes
+
+* Combobox options are not fully clickable [MDS-1385] ([#858](https://github.com/coingaming/moon/issues/858)) ([a54defc](https://github.com/coingaming/moon/commit/a54defcb1bd741ac2cd5ee1d25a13d7a861a643d))
+
 ## [2.87.8](https://github.com/coingaming/moon/compare/v2.87.7...v2.87.8) (2024-11-12)
 
 
