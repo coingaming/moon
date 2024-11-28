@@ -1,3 +1,10 @@
+# [2.88.0](https://github.com/coingaming/moon/compare/v2.87.11...v2.88.0) (2024-11-28)
+
+
+### Features
+
+* update moon to v2.87.11 ([#861](https://github.com/coingaming/moon/issues/861)) ([4aaca3f](https://github.com/coingaming/moon/commit/4aaca3fdfed3f551418348efaf96c0a30f7cdcdf))
+
 ## [2.87.11](https://github.com/coingaming/moon/compare/v2.87.10...v2.87.11) (2024-11-28)
 
 
