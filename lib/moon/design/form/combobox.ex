@@ -68,10 +68,10 @@ defmodule Moon.Design.Form.Combobox do
   slot(option)
 
   defp is_hidden(option, filter) do
-    import String, only: [starts_with?: 2, downcase: 1]
+    import String, only: [contains?: 2, downcase: 1]
 
     is_binary(filter) && String.length(filter) > 0 &&
-      !starts_with?(downcase(option[:key]), downcase(filter))
+      !contains?(downcase(option[:key]), downcase(filter))
   end
 
   def render(assigns) do
