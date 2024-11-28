@@ -1,3 +1,10 @@
+## [2.87.11](https://github.com/coingaming/moon/compare/v2.87.10...v2.87.11) (2024-11-28)
+
+
+### Bug Fixes
+
+* **Combobox:** Use String.contains?/2 instead of String.starts_with?/2 for search ([#860](https://github.com/coingaming/moon/issues/860)) ([6ac7ec0](https://github.com/coingaming/moon/commit/6ac7ec02f604a0df74ded713529cc1b208cab0c8))
+
 ## [2.87.10](https://github.com/coingaming/moon/compare/v2.87.9...v2.87.10) (2024-11-25)
 
 
