@@ -1,3 +1,10 @@
+## [2.89.1](https://github.com/coingaming/moon/compare/v2.89.0...v2.89.1) (2024-11-29)
+
+
+### Bug Fixes
+
+* update moon_icons deps [MDS-1386] ([#863](https://github.com/coingaming/moon/issues/863)) ([5d0ecd5](https://github.com/coingaming/moon/commit/5d0ecd5a4d5583bd2594016982c32ee28f53d8cf))
+
 # [2.89.0](https://github.com/coingaming/moon/compare/v2.88.0...v2.89.0) (2024-11-29)
 
 
