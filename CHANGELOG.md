@@ -1,3 +1,10 @@
+# [2.89.0](https://github.com/coingaming/moon/compare/v2.88.0...v2.89.0) (2024-11-29)
+
+
+### Features
+
+* introduce new token system [MDS-1413] ([#862](https://github.com/coingaming/moon/issues/862)) ([8c31247](https://github.com/coingaming/moon/commit/8c3124744305f93a9c7e415aef773bd84f9fcb2a))
+
 # [2.88.0](https://github.com/coingaming/moon/compare/v2.87.11...v2.88.0) (2024-11-28)
 
 
