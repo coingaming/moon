@@ -1,3 +1,10 @@
+## [2.89.2](https://github.com/coingaming/moon/compare/v2.89.1...v2.89.2) (2024-12-20)
+
+
+### Bug Fixes
+
+* Form doesn't show an error [MDS-1384] ([#864](https://github.com/coingaming/moon/issues/864)) ([6fe489a](https://github.com/coingaming/moon/commit/6fe489a7944a78f299d63f581939baeee4982f37))
+
 ## [2.89.1](https://github.com/coingaming/moon/compare/v2.89.0...v2.89.1) (2024-11-29)
 
 
