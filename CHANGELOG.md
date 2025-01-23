@@ -1,3 +1,12 @@
+## [2.89.3](https://github.com/coingaming/moon/compare/v2.89.2...v2.89.3) (2025-01-23)
+
+
+### Bug Fixes
+
+* add data-moon-id to icon [MDS-1516] ([dc7b70d](https://github.com/coingaming/moon/commit/dc7b70d8d36b7b0c726b0361896983bc21018797))
+* add data-moon-id to icon [MDS-1516] ([a0e53bd](https://github.com/coingaming/moon/commit/a0e53bdd8e83561a7e5784cafb8829a668b37112))
+* update snapshots ([d525508](https://github.com/coingaming/moon/commit/d525508b63f6d3c79880e2f5b1d036970482fbd4))
+
 ## [2.89.2](https://github.com/coingaming/moon/compare/v2.89.1...v2.89.2) (2024-12-20)
 
 
