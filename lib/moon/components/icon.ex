@@ -36,6 +36,7 @@ defmodule Moon.Icon do
       ])}
       :on-click={@click}
       style={get_style(color: @color, background_color: @background_color, font_size: @font_size)}
+      data-moon-id="icon"
     >
       <use href={"/moon_icons/svgs/icons_new/#{icon_name_to_filename(@name)}.svg#item"} />
     </svg>
