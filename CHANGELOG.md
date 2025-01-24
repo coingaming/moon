@@ -1,3 +1,10 @@
+## [2.89.4](https://github.com/coingaming/moon/compare/v2.89.3...v2.89.4) (2025-01-24)
+
+
+### Bug Fixes
+
+* update moon-css ([68b4bab](https://github.com/coingaming/moon/commit/68b4babef33433961b406aade0bd302ce16e62dc))
+
 ## [2.89.3](https://github.com/coingaming/moon/compare/v2.89.2...v2.89.3) (2025-01-23)
 
 
