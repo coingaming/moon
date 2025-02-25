@@ -172,7 +172,7 @@ defmodule Moon.Design.Table do
       <tfooter class={@footer_class} :if={tfooter?(@footer_items)}>
         <tr
           :for={{row_index, item} <- stream_data(%{items: @footer_items})}
-          class={even_row_bg(@is_zebra_style, row_index, @even_row_bg) || @row_bg}
+          class={even_row_bg(@is_zebra_style, row_index, @even_row_bg, 0) || @row_bg}
           data-testid={"footer-row-#{row_index}"}
         >
           <td
@@ -199,8 +199,8 @@ defmodule Moon.Design.Table do
     end
   end
 
-  defp even_row_bg(is_zebra_style, row_index, even_row_bg) do
-    if is_zebra_style && rem(row_index, 2) == 1 do
+  defp even_row_bg(is_zebra_style, row_index, even_row_bg, factor \\ 1) do
+    if is_zebra_style && rem(row_index, 2) == factor do
       even_row_bg
     end
   end
