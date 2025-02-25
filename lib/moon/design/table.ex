@@ -3,6 +3,8 @@ defmodule Moon.Design.Table do
 
   use Moon.StatelessComponent
 
+  import Moon.Light.Table.Helper
+
   alias Moon.Icon
 
   @doc "List of  selected ids, or just id, or [], or nil"
@@ -77,8 +79,24 @@ defmodule Moon.Design.Table do
   @doc "Icon color for sorting"
   prop(sorting_icon_color, :string)
 
+  @doc "footer class"
+  prop(footer_class, :css_class)
+
+  @doc "The list of footer items to be rendered."
+  prop(footer_items, :generator)
+
+  @doc "The list of footers columns defining the footer grid"
+  slot(footer_cols, generator_prop: :footer_items)
+
+  data(footer_cols_count, :integer)
+
+  data(cols_count, :integer)
+
   def render(assigns) do
-    import Moon.Light.Table.Helper
+    cols_count = Enum.count(assigns[:cols] || [])
+    footer_cols_count = Enum.count(assigns[:footer_cols] || [])
+
+    assigns = assign(assigns, cols_count: cols_count, footer_cols_count: footer_cols_count)
 
     ~F"""
     <table
@@ -129,10 +147,10 @@ defmodule Moon.Design.Table do
         {#for {row_index, item} <- stream_data(assigns)}
           <tr
             class={merge([
-              (is_selected_item(item, @selected) && @selected_bg) || @row_bg,
+              selected_item_bg(item, @selected, @selected_bg) ||
+              even_row_bg(@is_zebra_style, row_index, @even_row_bg) ||
+              @row_bg,
               @hover_bg,
-              "#{@even_row_bg}":
-                @is_zebra_style && !is_selected_item(item, @selected) && rem(row_index, 2) == 1,
               "cursor-pointer": @row_click
             ])}
             :on-click={(@row_click_cb && @row_click_cb.(item, row_index)) || @row_click}
@@ -142,13 +160,7 @@ defmodule Moon.Design.Table do
           >
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
-                class={merge([
-                  "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
-                  col[:width],
-                  text_size_classes(@row_size),
-                  ["#{inter_cell_border()}": @is_cell_border && col_index < Enum.count(@cols) - 1],
-                  col[:class]
-                ])}
+                class={column_classes(col, col_index, @row_size, @is_cell_border, @cols_count)}
                 data-testid={"row-#{row_index}-col-#{col_index}"}
               >
                 <#slot {col} generator_value={item} />
@@ -157,8 +169,49 @@ defmodule Moon.Design.Table do
           </tr>
         {/for}
       </tbody>
+      <tfooter class={@footer_class} :if={tfooter?(@footer_items)}>
+        <tr
+          :for={{row_index, item} <- stream_data(%{items: @footer_items})}
+          class={even_row_bg(@is_zebra_style, row_index, @even_row_bg) || @row_bg}
+          data-testid={"footer-row-#{row_index}"}>
+          <td
+            :for={{col, col_index} <- Enum.with_index(@footer_cols)}
+            class={column_classes(col, col_index, @row_size, @is_cell_border, @footer_cols_count)}
+            colspan={col[:colspan]}
+            data-testid={"footer-row-#{row_index}-col-#{col_index}"}
+          >
+            <#slot {col} generator_value={item} />
+          </td>
+        </tr>
+      </tfooter>
     </table>
     """
+  end
+
+  defp tfooter?(footer_items) do
+    !(is_nil(footer_items) || footer_items == [])
+  end
+
+  defp selected_item_bg(item, selected, selected_bg) do
+    if is_selected_item(item, selected) do
+      selected_bg
+    end
+  end
+
+  defp even_row_bg(is_zebra_style, row_index, even_row_bg) do
+    if is_zebra_style && rem(row_index, 2) == 1  do
+      even_row_bg
+    end
+  end
+
+  defp column_classes(col, index, row_size, is_cell_border, cols_count) do
+    merge([
+      "first:rounded-l-moon-s-sm last:rounded-r-moon-s-sm",
+      text_size_classes(row_size),
+      ["#{inter_cell_border()}": is_cell_border && index < cols_count - 1],
+      col[:width],
+      col[:class]
+    ])
   end
 
   @doc "Sorts items by sort given"

@@ -50,8 +50,9 @@ defmodule MoonWeb.Pages.Design.TablePage do
         TableExample.Sorting,
         TableExample.WithPaging,
         TableExample.Editable,
-        TableExample.Responsive
-      ]} />
+        TableExample.Responsive,
+        TableExample.WithFooter
+        ]} />
 
       <ExampleAndCode id="example-table-example-stream" title="Phoenix stream">
         <:example>
