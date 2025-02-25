@@ -42,7 +42,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
         <FooterColumn>
           <b>{footer_item.name}</b>
         </FooterColumn>
-        <FooterColumn colspan={2}/>
+        <FooterColumn colspan={2} />
         <FooterColumn>
           {footer_item.counter_total}
         </FooterColumn>

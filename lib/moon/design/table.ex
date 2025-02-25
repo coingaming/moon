@@ -148,8 +148,8 @@ defmodule Moon.Design.Table do
           <tr
             class={merge([
               selected_item_bg(item, @selected, @selected_bg) ||
-              even_row_bg(@is_zebra_style, row_index, @even_row_bg) ||
-              @row_bg,
+                even_row_bg(@is_zebra_style, row_index, @even_row_bg) ||
+                @row_bg,
               @hover_bg,
               "cursor-pointer": @row_click
             ])}
@@ -173,7 +173,8 @@ defmodule Moon.Design.Table do
         <tr
           :for={{row_index, item} <- stream_data(%{items: @footer_items})}
           class={even_row_bg(@is_zebra_style, row_index, @even_row_bg) || @row_bg}
-          data-testid={"footer-row-#{row_index}"}>
+          data-testid={"footer-row-#{row_index}"}
+        >
           <td
             :for={{col, col_index} <- Enum.with_index(@footer_cols)}
             class={column_classes(col, col_index, @row_size, @is_cell_border, @footer_cols_count)}
@@ -199,7 +200,7 @@ defmodule Moon.Design.Table do
   end
 
   defp even_row_bg(is_zebra_style, row_index, even_row_bg) do
-    if is_zebra_style && rem(row_index, 2) == 1  do
+    if is_zebra_style && rem(row_index, 2) == 1 do
       even_row_bg
     end
   end
