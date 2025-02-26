@@ -1,3 +1,16 @@
+# [2.90.0](https://github.com/coingaming/moon/compare/v2.89.4...v2.90.0) (2025-02-26)
+
+
+### Bug Fixes
+
+* diff factor for tbody and tfooter in even row bg ([9af17d0](https://github.com/coingaming/moon/commit/9af17d0b33940db782ccf44d0d0d09d5887f2d93))
+* tests ([162813b](https://github.com/coingaming/moon/commit/162813b762266ddd812685d951f8455775b9b80c))
+
+
+### Features
+
+* design table footer ([8a86e9c](https://github.com/coingaming/moon/commit/8a86e9cf117a17b16e5558d116e7a245bcdff64e))
+
 ## [2.89.4](https://github.com/coingaming/moon/compare/v2.89.3...v2.89.4) (2025-01-24)
 
 
