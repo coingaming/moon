@@ -26,7 +26,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
   def render(assigns) do
     ~F"""
     <div>
-      <Table items={model <- @models} footer_items={footer_item <- @footer_items} selected={nil}>
+      <Table items={model <- @models} footer_items={footer_item <- @footer_items} selected={nil} footer_class="font-bold">
         <Column name="id" label="ID">
           {model.id}
         </Column>
@@ -40,7 +40,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
           {model.counter}
         </Column>
         <FooterColumn>
-          <b>{footer_item.name}</b>
+          {footer_item.name}
         </FooterColumn>
         <FooterColumn colspan={2} />
         <FooterColumn>
@@ -71,7 +71,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
 
     def render(assigns) do
       ~F\"""
-      <Table items={model <- @models} selected={nil}>
+      <Table items={model <- @models} selected={nil} footer_class="font-bold">
         <Column name="id" label="ID">
           {model.id}
         </Column>
@@ -85,7 +85,7 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
           {model.counter}
         </Column>
         <FooterColumn>
-          <b>{footer_item.name}</b>
+          {footer_item.name}
         </FooterColumn>
         <FooterColumn colspan={2}/>
         <FooterColumn>
