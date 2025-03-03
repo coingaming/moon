@@ -26,7 +26,12 @@ defmodule MoonWeb.Examples.Design.TableExample.WithFooter do
   def render(assigns) do
     ~F"""
     <div>
-      <Table items={model <- @models} footer_items={footer_item <- @footer_items} selected={nil} footer_class="font-bold">
+      <Table
+        items={model <- @models}
+        footer_items={footer_item <- @footer_items}
+        selected={nil}
+        footer_class="font-bold"
+      >
         <Column name="id" label="ID">
           {model.id}
         </Column>
