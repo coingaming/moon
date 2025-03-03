@@ -1,3 +1,10 @@
+## [2.90.2](https://github.com/coingaming/moon/compare/v2.90.1...v2.90.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* table with footer ([54b93c4](https://github.com/coingaming/moon/commit/54b93c41f0ceade6f61da1c2d8b69b7be79c403d))
+
 ## [2.90.1](https://github.com/coingaming/moon/compare/v2.90.0...v2.90.1) (2025-02-26)
 
 
