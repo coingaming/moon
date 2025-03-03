@@ -169,7 +169,7 @@ defmodule Moon.Design.Table do
           </tr>
         {/for}
       </tbody>
-      <tfooter class={@footer_class} :if={tfooter?(assigns[:footer_items])}>
+      <tfoot class={@footer_class} :if={tfooter?(assigns[:footer_items])}>
         <tr
           :for={{row_index, item} <- stream_data(%{items: @footer_items})}
           class={even_row_bg(@is_zebra_style, row_index, @even_row_bg, 0) || @row_bg}
@@ -184,7 +184,7 @@ defmodule Moon.Design.Table do
             <#slot {col} generator_value={item} />
           </td>
         </tr>
-      </tfooter>
+      </tfoot>
     </table>
     """
   end
