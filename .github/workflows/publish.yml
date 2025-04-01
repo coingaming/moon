@@ -1,0 +1,47 @@
+name: Publish to Hex
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      description:
+        default: "🤖 Components Update"
+        required: true
+        type: string
+
+# So only the latest run is executed. Used to avoid concurrency issues as Figma webhook can be spammy at times.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.6
+      - name: Setup Erlang/OTP
+        uses: erlef/setup-beam@v1.17.5
+        with:
+          otp-version: 26
+          elixir-version: 1.16.2
+      - name: Fetch dependencies
+        run: mix deps.get
+      - name: Bump package version
+        run: mix version.bump patch
+      - name: Build docs
+        run: mix docs
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "🤖 Update package version"
+          git push
+      - name: Publish to Hex
+        run: mix hex.publish --organization coingaming --yes
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}

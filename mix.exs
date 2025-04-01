@@ -10,7 +10,7 @@ defmodule Moon.MixProject do
     [
       app: :moon,
       version: @version,
-      elixir: "~> 1.11",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers() ++ [:surface],
       start_permanent: Mix.env() == :prod,
@@ -100,7 +100,7 @@ defmodule Moon.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:surface_formatter, "~> 0.7.0", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:ex_doc, ">= 0.0.0", only: [:dev, :test], runtime: false}
+      {:ex_doc, "~> 0.37", only: :dev, runtime: false}
     ]
   end
 

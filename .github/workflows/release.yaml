@@ -1,0 +1,243 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    tags: ['v*']
+    branches: [main]
+  pull_request:
+    branches: [main]
+  release:
+    types: [created]
+
+jobs:
+  prelease:
+    runs-on: ubuntu-22.04
+    env:
+      DOCKER_USER: ${{ secrets.DOCKER_USER }}
+      DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      MIX_ENV: prod
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate with Docker
+        run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+      - name: Run container
+        run: |
+          docker run --detach \
+            --name elixir_ci \
+            --volume ${{ github.workspace }}:/workspace \
+            --workdir /workspace \
+            heathmont/elixir-ci:1.18.1-otp-27-alpine
+
+      - name: Execute inside container
+        run: docker exec elixir_ci mix deps.get
+      - name: Check variables
+        run: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ROBOT_SSH_KEY }}" | base64 -d > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          echo -e "Host *\n  IdentityFile ~/.ssh/id_rsa\n  IdentitiesOnly yes" > ~/.ssh/config
+        shell: bash
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+            ~/.mix
+          key: v13-build_prod-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            v13-build_prod-
+
+      - name: Authenticate with Hex
+        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compile project
+        run: mix compile --all-warnings --warnings-as-errors
+
+      - name: Setup assets
+        run: |
+          mix assets.clean
+          mix assets.setup
+          mix assets.deploy
+
+      - name: Build release
+        run: mix release
+
+      - name: Restore build cache
+        uses: actions/cache@v3
+        with:
+          path: _build
+          key: v13-prod-${{ github.sha }}
+          restore-keys: |
+            v13-prod-      
+
+  test:
+    runs-on: ubuntu-22.04
+    env:
+      MIX_ENV: test
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate with Docker
+        run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+
+      - name: Run container
+        run: |
+          docker run --detach \
+            --name elixir_ci \
+            --volume ${{ github.workspace }}:/workspace \
+            --workdir /workspace \
+            heathmont/elixir-ci:1.18.1-otp-27-alpine
+
+      - name: Execute inside container
+        run: docker exec elixir_ci mix deps.get
+      - name: Check variables
+        run: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+            ~/.mix
+          key: v13-build_test-{{ checksum "mix.lock" }}
+          restore-keys: |
+            v13-build_test-
+          
+      - name: Authenticate with Hex
+        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compile project
+        run: mix compile --all-warnings --warnings-as-errors
+
+      - name: Check code formatting
+        run: mix format --check-formatted
+
+      - name: Run Credo (Linting)
+        run: mix credo
+
+      - name: Run tests
+        run: mix test
+
+      - name: Save test build cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+            ~/.mix
+          key: v13-build_test-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            v13-build_test-
+
+  dockerhub:
+    runs-on: ubuntu-22.04
+    needs: prelease
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to DockerHub
+        run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
+
+      - name: Restore build cache
+        uses: actions/cache@v3
+        with:
+          path: _build
+          key: v13-prod-${{ github.sha }}
+          restore-keys: |
+            v13-prod-
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push Docker image
+        run: scripts/deploy/docker-build-ci push $GITHUB_REF_NAME
+
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: dockerhub
+    if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          echo "${{ secrets.ROBOT_SSH_KEY }}" | base64 -d > $HOME/.ssh/id_rsa.robot
+          chmod 600 $HOME/.ssh/id_rsa.robot
+          ssh-add $HOME/.ssh/id_rsa.robot
+          echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+
+      - name: Set up deploy tool auth
+        run: echo "{\"user\":\"${{ secrets.DEPLOY_USER }}\", \"pass\":\"${{ secrets.DEPLOY_PASS }}\"}" > $HOME/.deploy_auth
+
+      - name: Deploy
+        run: scripts/deploy/stacks-deploy $GITHUB_REF_NAME
+
+  semrelease:
+    runs-on: ubuntu-22.04
+    needs: test
+    if: github.ref == 'refs/heads/main'  
+    env:
+      MIX_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: v13-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            v13-node_modules-
+
+      - name: Restore Elixir build cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+            ~/.mix
+          key: v13-build_test-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            v13-build_test-
+
+      - name: Hex auth
+        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
+      
+      - name: Run Semantic Release
+        run: mix semantic.release
+
+      - name: Save node_modules cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: v13-node_modules-${{ hashFiles('package-lock.json') }}
