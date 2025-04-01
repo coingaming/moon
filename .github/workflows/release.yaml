@@ -1,243 +1,100 @@
-name: CI/CD Pipeline
+name: Publish Docker Image and Bundles
 
 on:
   push:
-    tags: ['v*']
-    branches: [main]
-  pull_request:
-    branches: [main]
+    tags: [v*]
   release:
-    types: [created]
+    types: [published]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  TAG_VERSION: ""
+  IMAGE: ""
+  ROBOT_NAME: ${{ github.actor }}
+  ROBOT_EMAIL: ${{ github.actor }}@heathmont.net
 
 jobs:
-  prelease:
-    runs-on: ubuntu-22.04
-    env:
-      DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-      MIX_ENV: prod
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Checkout code
-        uses: actions/checkout@v4
+  publish:
+    runs-on: ubuntu-latest
+    outputs:
+      IMAGE: ${{ env.IMAGE }}
 
-      - name: Authenticate with Docker
-        run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-
-      - name: Run container
-        run: |
-          docker run --detach \
-            --name elixir_ci \
-            --volume ${{ github.workspace }}:/workspace \
-            --workdir /workspace \
-            heathmont/elixir-ci:1.18.1-otp-27-alpine
-
-      - name: Execute inside container
-        run: docker exec elixir_ci mix deps.get
-      - name: Check variables
-        run: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
-
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.ROBOT_SSH_KEY }}" | base64 -d > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-          echo -e "Host *\n  IdentityFile ~/.ssh/id_rsa\n  IdentitiesOnly yes" > ~/.ssh/config
-        shell: bash
-
-      - name: Restore dependencies cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            deps
-            _build
-            ~/.mix
-          key: v13-build_prod-${{ hashFiles('mix.lock') }}
-          restore-keys: |
-            v13-build_prod-
-
-      - name: Authenticate with Hex
-        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
-
-      - name: Install dependencies
-        run: mix deps.get
-
-      - name: Compile project
-        run: mix compile --all-warnings --warnings-as-errors
-
-      - name: Setup assets
-        run: |
-          mix assets.clean
-          mix assets.setup
-          mix assets.deploy
-
-      - name: Build release
-        run: mix release
-
-      - name: Restore build cache
-        uses: actions/cache@v3
-        with:
-          path: _build
-          key: v13-prod-${{ github.sha }}
-          restore-keys: |
-            v13-prod-      
-
-  test:
-    runs-on: ubuntu-22.04
-    env:
-      MIX_ENV: test
-    steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Authenticate with Docker
-        run: echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-
-      - name: Run container
-        run: |
-          docker run --detach \
-            --name elixir_ci \
-            --volume ${{ github.workspace }}:/workspace \
-            --workdir /workspace \
-            heathmont/elixir-ci:1.18.1-otp-27-alpine
-
-      - name: Execute inside container
-        run: docker exec elixir_ci mix deps.get
-      - name: Check variables
-        run: ./scripts/deploy/check-vars "in system" "ROBOT_SSH_KEY" "DOCKER_EMAIL" "DOCKER_ORG" "DOCKER_PASS" "DOCKER_USER" "HEX_API_KEY"
-
-      - name: Restore dependencies cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            deps
-            _build
-            ~/.mix
-          key: v13-build_test-{{ checksum "mix.lock" }}
-          restore-keys: |
-            v13-build_test-
-          
-      - name: Authenticate with Hex
-        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
-
-      - name: Install dependencies
-        run: mix deps.get
-
-      - name: Compile project
-        run: mix compile --all-warnings --warnings-as-errors
-
-      - name: Check code formatting
-        run: mix format --check-formatted
-
-      - name: Run Credo (Linting)
-        run: mix credo
-
-      - name: Run tests
-        run: mix test
-
-      - name: Save test build cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            deps
-            _build
-            ~/.mix
-          key: v13-build_test-${{ hashFiles('mix.lock') }}
-          restore-keys: |
-            v13-build_test-
-
-  dockerhub:
-    runs-on: ubuntu-22.04
-    needs: prelease
-    if: github.ref == 'refs/heads/main'
+    if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Log in to DockerHub
-        run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
-
-      - name: Restore build cache
-        uses: actions/cache@v3
-        with:
-          path: _build
-          key: v13-prod-${{ github.sha }}
-          restore-keys: |
-            v13-prod-
-
-      - name: Set up Docker Buildx
+      - name: Get tag version
+        id: get_version
+        run: echo "TAG_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      - name: Create Image Name
+        run: echo "IMAGE=heathmont/${{ github.event.repository.name }}:${{ env.TAG_VERSION }}" >> $GITHUB_ENV
+      - name: Set up Docker Build
         uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ env.IMAGE }}
+          no-cache: true
+          build-args: |
+            HEX_API_KEY=${{ secrets.HEX_ORGANIZATION_COINGAMING_KEY }}
+            SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
 
-      - name: Build and push Docker image
-        run: scripts/deploy/docker-build-ci push $GITHUB_REF_NAME
-
-
-  deploy:
-    runs-on: ubuntu-22.04
-    needs: dockerhub
-    if: startsWith(github.ref, 'refs/heads/main') || startsWith(github.ref, 'refs/tags/v')
+  deployment:
+    name: Update Stacks Docker Compose and trigger Deployment
+    runs-on: ubuntu-latest
+    needs: publish
     steps:
-      - name: Checkout code
+      - name: Checkout Stacks Repo
         uses: actions/checkout@v4
-
-      - name: Set up SSH key
+        with:
+          repository: coingaming/stacks
+          token: ${{ secrets.GH_TOKEN }}
+          ref: sportsbet-t2
+          path: stacks
+      - name: Update Docker Compose with New Image
+        working-directory: stacks
         run: |
-          echo "${{ secrets.ROBOT_SSH_KEY }}" | base64 -d > $HOME/.ssh/id_rsa.robot
-          chmod 600 $HOME/.ssh/id_rsa.robot
-          ssh-add $HOME/.ssh/id_rsa.robot
-          echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+          yq -i '.services.moon-surface.image = "${{ needs.publish.outputs.IMAGE }}"' docker-compose.moon.yml
 
-      - name: Set up deploy tool auth
-        run: echo "{\"user\":\"${{ secrets.DEPLOY_USER }}\", \"pass\":\"${{ secrets.DEPLOY_PASS }}\"}" > $HOME/.deploy_auth
+      - name: Commit and Push Changes to docker-compose file
+        working-directory: stacks
+        run: |
+          git config user.email "${{ env.ROBOT_EMAIL }}"
+          git config user.name "${{ env.ROBOT_NAME }}"
+          git commit -am "Updated Docker image to ${{ needs.publish.outputs.IMAGE }}"
+          git push origin sportsbet-t2
 
-      - name: Deploy
-        run: scripts/deploy/stacks-deploy $GITHUB_REF_NAME
+  t2_poll_deployment:
+    uses: coingaming/framework-workflows/.github/workflows/poll-stacks-deployment.yml@main
+    name: Wait until deployment is fully completed
+    needs:
+      - publish
+      - deployment
+    with:
+      ENV: t2
+      SERVICE_NAME: t2-moon_moon-surface
+      AWS_REGION: "eu-central-1"
+      DOCKER_IMAGE: ${{ needs.publish.outputs.IMAGE }}
+    secrets:
+      MONITORING_AUTH_TOKEN: ${{ secrets.MONITORING_AUTH_TOKEN }}
 
-  semrelease:
-    runs-on: ubuntu-22.04
-    needs: test
-    if: github.ref == 'refs/heads/main'  
-    env:
-      MIX_ENV: test
+  t2_e2e_tests:
+    runs-on: ubuntu-latest
+    name: Run E2E Tests
+    needs: t2_poll_deployment
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Restore node_modules cache
-        uses: actions/cache@v4
+      - name: Trigger E2E tests GHA
+        uses: convictional/trigger-workflow-and-wait@v1.6.5
         with:
-          path: node_modules
-          key: v13-node_modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            v13-node_modules-
-
-      - name: Restore Elixir build cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            deps
-            _build
-            ~/.mix
-          key: v13-build_test-${{ hashFiles('mix.lock') }}
-          restore-keys: |
-            v13-build_test-
-
-      - name: Hex auth
-        run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
-      
-      - name: Run Semantic Release
-        run: mix semantic.release
-
-      - name: Save node_modules cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: v13-node_modules-${{ hashFiles('package-lock.json') }}
+          owner: coingaming
+          repo: platform_e2e_tests
+          github_token: ${{ secrets.GH_TOKEN }}
+          workflow_file_name: e2e-tests.yml
+          client_payload: '{"tests-project": "moon", "tests-environment": "t2", "author": "${{ github.actor }}"}'
+          wait_interval: 30
