@@ -82,7 +82,7 @@ defmodule Moon.MixProject do
       {:gettext, "~> 0.21"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:vega_lite, "~> 0.1.0"},
+      {:vega_lite_convert, "~> 1.0.1"},
       {:surface, "~> 0.11.0"},
       {:timex, "~> 3.6"},
       {:distillery, "~> 2.1"},

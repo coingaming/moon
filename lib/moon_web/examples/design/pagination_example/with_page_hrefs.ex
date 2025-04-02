@@ -27,7 +27,7 @@ defmodule MoonWeb.Examples.Design.PaginationExample.WithPageHrefs do
   end
 
   def handle_event("set_current_page", %{"value" => page}, socket) do
-    {:noreply, push_redirect(socket, to: "/components/v2/pagination?page=#{page}")}
+    {:noreply, push_navigate(socket, to: "/components/v2/pagination?page=#{page}")}
   end
 
   def code() do

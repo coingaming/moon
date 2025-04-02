@@ -57,6 +57,6 @@ defmodule Moon.Components.LineChart do
       }
     )
     |> Vl.encode_field(:color, "category", type: :nominal)
-    |> VegaLite.Export.to_json()
+    |> VegaLite.Convert.to_json()
   end
 end
