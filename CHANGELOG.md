@@ -1,3 +1,14 @@
+## [2.90.3](https://github.com/coingaming/moon/compare/v2.90.2...v2.90.3) (2025-04-02)
+
+
+### Bug Fixes
+
+* Checkbox styling issue [MDS-1585] ([542c8c7](https://github.com/coingaming/moon/commit/542c8c7c44f3fc1c91bbb964f3972da6bf4370fc))
+* compile warnings ([7c3071e](https://github.com/coingaming/moon/commit/7c3071eeb49e7b16ab12d42ff206c114267ec997))
+* compile warnings ([2c3879d](https://github.com/coingaming/moon/commit/2c3879d88219bb8ef06937bda19c35163b2893b6))
+* npm dependencies ([dd385f6](https://github.com/coingaming/moon/commit/dd385f61db9494e39fca30925f3dd323e6c33ad9))
+* npm dependencies ([d98e061](https://github.com/coingaming/moon/commit/d98e061b0603a272b47e9d2023e8dfd54c68c555))
+
 ## [2.90.2](https://github.com/coingaming/moon/compare/v2.90.1...v2.90.2) (2025-03-10)
 
 
