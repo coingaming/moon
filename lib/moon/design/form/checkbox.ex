@@ -83,7 +83,7 @@ defmodule Moon.Design.Form.Checkbox do
       <Checkbox
         is_selected={is_selected(assigns)}
         class={merge([
-          "absolute top-1 ltr:left-0 rtl:right-0",
+          "absolute start-0",
           get_config(:default_class),
           @class
         ])}
