@@ -3,7 +3,7 @@ defmodule MoonWeb.Schema.Dates do
 
   use Ecto.Schema
   import Ecto.Changeset
-  use Gettext, backend: MoonWeb.Gettext
+  import MoonWeb.Gettext, only: [gettext: 1]
 
   embedded_schema do
     field(:date_from, :date)

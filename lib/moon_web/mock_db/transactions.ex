@@ -60,13 +60,7 @@ defmodule MoonWeb.MockDB.Transactions do
       pagination: %{offset: offset, limit: limit}
     } = args
 
-    user_filter = %{
-      id: user_filter[:id] || nil,
-      site: user_filter[:site] || nil,
-      country: user_filter[:country] || nil
-    }
-
-    users = Users.list(%{filter: user_filter, sort: nil})
+    users = Users.list(%{filter: user_filter})
 
     results =
       state.all

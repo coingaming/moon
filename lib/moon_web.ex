@@ -27,7 +27,7 @@ defmodule MoonWeb do
         layouts: [html: MoonWeb.Layouts]
 
       import Plug.Conn
-      use Gettext, backend: MoonWeb.Gettext
+      import MoonWeb.Gettext
       alias MoonWeb.Router.Helpers, as: Routes
 
       unquote(verified_routes())
@@ -95,7 +95,7 @@ defmodule MoonWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      use Gettext, backend: MoonWeb.Gettext
+      import MoonWeb.Gettext
     end
   end
 
@@ -111,7 +111,7 @@ defmodule MoonWeb do
       import Phoenix.HTML
 
       import MoonWeb.ErrorHelpers
-      use Gettext, backend: MoonWeb.Gettext
+      import MoonWeb.Gettext
       import MoonWeb.Router.Helpers, only: [live_path: 2, live_path: 3]
       # import Routes, only: [static_path: 2]
 
