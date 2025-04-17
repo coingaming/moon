@@ -10,6 +10,7 @@ defmodule Moon.Design.Table.FooterColumn do
   @doc "it makes a cell span over multiple columns"
   prop(colspan, :integer, default: 1)
 
-  @doc "Uses a custom column name instead of a column index for the data-testid attribute in a <td> within the <tfooter> tag."
-  prop(tf_custom_testid_prefix, :string)
+  @doc "Set custom data-testid in a <td> attribute within the <tfoot> tag. recieves row_id and column map
+   Example: fn row_id, col -> {col.label}-row-\#{row_id}\" end"
+  prop(data_testid, :fun, default: nil)
 end
