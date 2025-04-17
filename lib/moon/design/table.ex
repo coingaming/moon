@@ -111,7 +111,7 @@ defmodule Moon.Design.Table do
       {=@id}
       data-testid={@testid}
     >
-      <thead :if={!@is_headless}>
+      <thead :if={!@is_headless} {...if @testid, do: %{"data-testid" => "#{@testid}-head"}, else: %{}}>
         <tr class={@header_row_class}>
           {#for {col, col_index} <- Enum.with_index(@cols)}
             <th
@@ -171,7 +171,11 @@ defmodule Moon.Design.Table do
           </tr>
         {/for}
       </tbody>
-      <tfoot class={@footer_class} :if={tfooter?(assigns[:footer_items])}>
+      <tfoot
+        class={@footer_class}
+        :if={tfooter?(assigns[:footer_items])}
+        {...if @testid, do: %{"data-testid" => "#{@testid}-footer"}, else: %{}}
+      >
         <tr
           :for={{row_index, item} <- stream_data(%{items: @footer_items})}
           class={even_row_bg(@is_zebra_style, row_index, @even_row_bg, 0) || @row_bg}
