@@ -12,5 +12,5 @@ defmodule Moon.Design.Table.FooterColumn do
 
   @doc "Set custom data-testid in a <td> attribute within the <tfoot> tag. recieves row_id and column map
    Example: fn row_id, col -> {col.label}-row-\#{row_id}\" end"
-  prop(data_testid, :fun, default: nil)
+  prop(testid, :fun, default: nil)
 end

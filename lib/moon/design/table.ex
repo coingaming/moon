@@ -161,8 +161,8 @@ defmodule Moon.Design.Table do
             {#for {col, col_index} <- Enum.with_index(@cols)}
               <td
                 class={column_classes(col, col_index, @row_size, @is_cell_border, @cols_count)}
-                data-testid={if is_function(col[:data_testid]),
-                  do: col[:data_testid].(row_index, col),
+                data-testid={if is_function(col[:testid]),
+                  do: col[:testid].(row_index, col),
                   else: "row-#{row_index}-col-#{col_index}"}
               >
                 <#slot {col} generator_value={item} />
@@ -185,8 +185,8 @@ defmodule Moon.Design.Table do
             :for={{col, col_index} <- Enum.with_index(@footer_cols)}
             class={column_classes(col, col_index, @row_size, @is_cell_border, @footer_cols_count)}
             colspan={col[:colspan]}
-            data-testid={if is_function(col[:data_testid]),
-              do: col[:data_testid].(row_index, col),
+            data-testid={if is_function(col[:testid]),
+              do: col[:testid].(row_index, col),
               else: "footer-row-#{row_index}-col-#{col_index}"}
           >
             <#slot {col} generator_value={item} />
