@@ -38,7 +38,6 @@ defmodule MoonWeb.Pages.Design.DropdownPage do
         title="Dropdown"
         is_aria_support
         is_rtl_support
-        is_in_progress
         image="facing/components/dropdown.png"
       >
         <p>

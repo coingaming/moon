@@ -27,11 +27,7 @@ defmodule MoonWeb.Pages.Design.BottomSheetPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        is_in_progress
-        title="BottomSheet"
-        image="facing/components/bottom_sheet.png"
-      >
+      <ComponentPageDescription title="BottomSheet" image="facing/components/bottom_sheet.png">
         <p>The bottom sheet component is a modified dialog that slides from the bottom of the screen, common pattern in mobile apps.</p>
         <p>Bottom sheets can contain any anything so let your imagination fly.</p>
       </ComponentPageDescription>

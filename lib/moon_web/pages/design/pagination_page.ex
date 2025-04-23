@@ -37,7 +37,6 @@ defmodule MoonWeb.Pages.Design.PaginationPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        is_in_progress
         is_rtl_support
         title="Pagination"
         image="facing/components/pagination.png"

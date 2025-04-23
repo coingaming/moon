@@ -31,7 +31,6 @@ defmodule MoonWeb.Pages.Design.Form.SelectPage do
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
         title="Select"
-        is_in_progress
         is_rtl_support
         is_aria_support
         image="facing/components/select.png"
