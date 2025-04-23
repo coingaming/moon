@@ -27,12 +27,7 @@ defmodule MoonWeb.Pages.Design.SearchPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        is_in_progress
-        is_rtl_support
-        title="Search"
-        image="facing/components/search.png"
-      >
+      <ComponentPageDescription is_rtl_support title="Search" image="facing/components/search.png">
         <p>Search enables users to specify a word or a phrase to find relevant pieces of content without the use of navigation.</p>
       </ComponentPageDescription>
 

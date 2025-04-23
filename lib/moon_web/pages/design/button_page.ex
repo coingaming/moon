@@ -26,12 +26,7 @@ defmodule MoonWeb.Pages.Design.Button.ButtonPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        is_in_progress
-        is_rtl_support
-        title="Button"
-        image="facing/components/button.png"
-      >
+      <ComponentPageDescription is_rtl_support title="Button" image="facing/components/button.png">
         <p>Buttons allow users to take actions, and make choices, with a single tap.</p>
         <p>
           Buttons communicate actions that users can take. They are typically

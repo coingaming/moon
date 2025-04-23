@@ -32,7 +32,7 @@ defmodule MoonWeb.Pages.Design.Form.AuthCodePage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress title="AuthCode" image="facing/components/auth_code.png">
+      <ComponentPageDescription title="AuthCode" image="facing/components/auth_code.png">
         <p>A one-time password (OTP) is an automatically generated numeric or alphanumeric string of characters that authenticates a user for a single transaction or login session.</p>
       </ComponentPageDescription>
 

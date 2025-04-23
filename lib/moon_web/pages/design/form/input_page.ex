@@ -29,12 +29,7 @@ defmodule MoonWeb.Pages.Design.Form.InputPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        title="Input"
-        is_in_progress
-        is_rtl_support
-        image="facing/components/input.png"
-      >
+      <ComponentPageDescription title="Input" is_rtl_support image="facing/components/input.png">
         <p>
           Text input fields allow users to enter text and can be used
           to collect user feedback or enter information in data entry forms.

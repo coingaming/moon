@@ -28,7 +28,6 @@ defmodule MoonWeb.Pages.Design.ModalPage do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
       <ComponentPageDescription
-        is_in_progress
         is_aria_support
         is_rtl_support
         title="Modal"

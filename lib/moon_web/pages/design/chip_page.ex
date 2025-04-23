@@ -27,12 +27,7 @@ defmodule MoonWeb.Pages.Design.ChipPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription
-        is_in_progress
-        is_rtl_support
-        title="Chip"
-        image="facing/components/chip.png"
-      >
+      <ComponentPageDescription is_rtl_support title="Chip" image="facing/components/chip.png">
         <p>
           Chips help filter content, or trigger actions.
         </p>

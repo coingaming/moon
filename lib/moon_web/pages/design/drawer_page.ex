@@ -27,7 +27,7 @@ defmodule MoonWeb.Pages.Design.DrawerPage do
   def render(assigns) do
     ~F"""
     <Page {=@theme_name} {=@active_page} {=@breadcrumbs} {=@direction}>
-      <ComponentPageDescription is_in_progress is_aria_support is_rtl_support title="Drawer">
+      <ComponentPageDescription is_aria_support is_rtl_support title="Drawer">
         <p>
           The Drawer component is a panel that slides out from the edge of the screen. It can be useful when you need users to complete a task or view some details without leaving the current page.
         </p>
