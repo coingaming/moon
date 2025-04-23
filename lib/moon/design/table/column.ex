@@ -13,4 +13,8 @@ defmodule Moon.Design.Table.Column do
   prop(width, :css_class)
   @doc "Simple additional css class, will be added to td tag only"
   prop(class, :css_class)
+
+  @doc "Set custom data-testid in a <td> attribute within the <tbody> tag. recieves row_id and column map
+   Example: fn row_id, col -> {col.label}-row-\#{row_id}\" end"
+  prop(testid, :fun, default: nil)
 end
