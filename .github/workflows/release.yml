@@ -121,10 +121,8 @@ jobs:
             deps
             _build
             ~/.mix
-          key: v13-build_test-{{ checksum "mix.lock" }}
-          restore-keys: |
-            v13-build_test-
-          
+          key: v13-build_test-${{ hashFiles('mix.lock') }} 
+
       - name: Authenticate with Hex
         run: mix hex.organization auth coingaming --key "${{ secrets.HEX_API_KEY }}"
 
@@ -196,7 +194,9 @@ jobs:
           echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
 
       - name: Set up deploy tool auth
-        run: echo "{\"user\":\"${{ secrets.DEPLOY_USER }}\", \"pass\":\"${{ secrets.DEPLOY_PASS }}\"}" > $HOME/.deploy_auth
+        run: |
+          echo "{\"user\":\"${{ secrets.DEPLOY_USER }}\", \"pass\":\"${{ secrets.DEPLOY_PASS }}\"}" > $HOME/.deploy_auth
+          chmod 600 $HOME/.deploy_auth
 
       - name: Deploy
         run: scripts/deploy/stacks-deploy $GITHUB_REF_NAME
@@ -217,6 +217,7 @@ jobs:
           path: node_modules
           key: v13-node_modules-${{ hashFiles('package-lock.json') }}
           restore-keys: |
+            v13-node_modules-${{ github.ref }}
             v13-node_modules-
 
       - name: Restore Elixir build cache

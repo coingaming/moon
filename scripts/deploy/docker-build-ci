@@ -13,8 +13,8 @@ function usage {
     echo "Examples:"
     echo ""
     echo "   docker-build                    - Build the current git commit"
-    echo "   docker-build push \$CIRCLE_TAG   - Push and build the image in CI"
-    exit
+    echo "   docker-build push <version>      - Push and build the image with the specified version"
+  exit
 }
 
 if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
