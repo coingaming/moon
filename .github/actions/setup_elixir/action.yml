@@ -1,0 +1,25 @@
+name: Setup Elixir App
+
+runs:
+  using: "composite"
+  steps:
+    - uses: erlef/setup-elixir@v1
+      with:
+        elixir-version: '1.15'
+        otp-version: '26'
+
+    - uses: actions/cache@v4
+      with:
+        path: deps
+        key: ${{ runner.os }}-deps-${{ hashFiles('**/mix.lock') }}
+
+    - uses: actions/cache@v4
+      with:
+        path: _build
+        key: ${{ runner.os }}-build-${{ github.sha }}
+
+    - run: mix deps.get
+      shell: bash
+
+    - run: mix compile --warnings-as-errors
+      shell: bash
