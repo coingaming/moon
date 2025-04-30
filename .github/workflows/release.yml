@@ -62,6 +62,8 @@ jobs:
         run: mix hex.organization auth coingaming --key $HEX_API_KEY
 
       - name: Semantic Release
+        env:
+            MIX_ENV: test
         run: mix semantic.release
 
       - name: Save node_modules cache
