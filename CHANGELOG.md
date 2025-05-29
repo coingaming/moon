@@ -1,3 +1,10 @@
+## [2.91.3](https://github.com/coingaming/moon/compare/v2.91.2...v2.91.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* add datatest-id to Table ([b3319b3](https://github.com/coingaming/moon/commit/b3319b3dbd72885fd61b8abfd114605437462562))
+
 ## [2.91.2](https://github.com/coingaming/moon/compare/v2.91.1...v2.91.2) (2025-05-28)
 
 
