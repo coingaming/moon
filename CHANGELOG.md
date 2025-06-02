@@ -1,15 +1,9 @@
-## [2.91.1](https://github.com/coingaming/moon/compare/v2.91.0...v2.91.1) (2025-04-23)
+# [2.90.4](https://github.com/coingaming/moon/compare/v2.90.3...v2.90.4) (2025-05-29)
 
 
 ### Bug Fixes
 
-* update documentation to v2.90.3 ([6848a9e](https://github.com/coingaming/moon/commit/6848a9e8087555dc70e47741171fbf33516b2e27))
-
-# [2.91.0](https://github.com/coingaming/moon/compare/v2.90.3...v2.91.0) (2025-04-23)
-
-
-### Features
-
+* add datatest-id to Table ([b3319b3](https://github.com/coingaming/moon/commit/b3319b3dbd72885fd61b8abfd114605437462562))
 * (table) use custom column name in data-testid for <td> in <tbody> and <tfooter> ([34b8061](https://github.com/coingaming/moon/commit/34b80616ad1f0acdf6709d8bf3f65e367b39213e))
 * add custom data-testid prop in table columns ([520b325](https://github.com/coingaming/moon/commit/520b3255b55a521186b2e0849a7395be7e77628b))
 * data-testid for thead and tfoot ([00a1113](https://github.com/coingaming/moon/commit/00a1113675308b70a369c2b5abfce2ab6c5289d6))

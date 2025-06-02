@@ -18,6 +18,9 @@ defmodule Moon.Components.Table do
   @doc "The list of items to be rendered"
   prop(items, :generator, required: true)
 
+  @doc "Data-testid attribute for a table tag"
+  prop(testid, :string)
+
   prop(row_click, :event)
   prop(paging_click, :event)
   prop(sorting_click, :event)
@@ -40,8 +43,8 @@ defmodule Moon.Components.Table do
         <Paging paging_info={@paging_info} paging_click={@paging_click} limit={@limit} offset={@offset} />
       {/if}
       <div class={merge(["w-full overflow-x-scroll", @class])}>
-        <table class="border-collapse text-sm min-w-full">
-          <thead>
+        <table class="border-collapse text-sm min-w-full" data-testid={@testid}>
+          <thead data-testid={"#{@testid}-head"}>
             <tr class="text-trunks">
               {#for col <- @cols}
                 <th
