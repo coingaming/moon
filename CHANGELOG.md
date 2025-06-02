@@ -1,3 +1,10 @@
+# [2.91.0](https://github.com/coingaming/moon/compare/v2.90.4...v2.91.0) (2025-06-02)
+
+
+### Features
+
+* Adding a testid fun and body attrs: ([7d6b0c5](https://github.com/coingaming/moon/commit/7d6b0c5c9a6a8d7048dacb51ed9b28b8ff70a17a))
+
 # [2.90.4](https://github.com/coingaming/moon/compare/v2.90.3...v2.90.4) (2025-05-29)
 
 
