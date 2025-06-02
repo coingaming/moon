@@ -1,3 +1,10 @@
+## [2.91.1](https://github.com/coingaming/moon/compare/v2.91.0...v2.91.1) (2025-06-02)
+
+
+### Bug Fixes
+
+* add testid to Table Column, and Table ([338f373](https://github.com/coingaming/moon/commit/338f3732107131fd988a38a0e9fd98dc40f90f3c))
+
 # [2.91.0](https://github.com/coingaming/moon/compare/v2.90.4...v2.91.0) (2025-06-02)
 
 
