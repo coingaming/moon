@@ -5,14 +5,14 @@ source "$(dirname "$0")/vars"
 function usage {
     echo "docker-build is a tool to build and optionally push the Elixir app Docker image."
     echo ""
-    echo "Usage: ./docker_build.sh [push] [version]"
+    echo "Usage: ./docker_build [push] [version]"
     echo ""
     echo "push:    Push the image after successful build."
     echo "version: Optional version tag (e.g., v1.2.3)."
     echo ""
     echo "Examples:"
-    echo "   ./docker_build.sh                  - Build the image with current git hash"
-    echo "   ./docker_build.sh push v1.2.3      - Build and push with tag v1.2.3"
+    echo "   ./docker_build                  - Build the image with current git hash"
+    echo "   ./docker_build push v1.2.3      - Build and push with tag v1.2.3"
     exit
 }
 
