@@ -27,7 +27,7 @@ jobs:
           DOCKER_ORG: ${{ secrets.DOCKER_USER }}
           APP_VSN: ${{ github.ref_name }}
         run: |
-          ./scripts/docker_build.sh push $APP_VSN
+           scripts/deploy/docker-build push $APP_VSN
 
       - name: Setup robot SSH key
         run: |

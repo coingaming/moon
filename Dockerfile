@@ -47,6 +47,7 @@ RUN apk upgrade --no-cache && \
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 WORKDIR /opt/app
+EXPOSE 4000
 
 COPY _build ./_build
 

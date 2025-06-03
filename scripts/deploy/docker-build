@@ -26,7 +26,6 @@ BUILD_SHA=$(git rev-parse --short HEAD)
 TAG="$2"
 BASE_TAG="${DOCKER_ORG}/${SERVICE_NAME}"
 
-# Назначаем теги
 IMAGE_TAG="${BASE_TAG}:v${APP_VSN}-${BUILD_SHA}"
 LATEST_TAG="${BASE_TAG}:latest"
 
