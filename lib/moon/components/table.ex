@@ -21,6 +21,9 @@ defmodule Moon.Components.Table do
   @doc "Data-testid attribute for a table tag"
   prop(testid, :string)
 
+  @doc "Additional attributes for tbody tag"
+  prop(body_attrs, :map, default: %{})
+
   prop(row_click, :event)
   prop(paging_click, :event)
   prop(sorting_click, :event)
@@ -66,7 +69,7 @@ defmodule Moon.Components.Table do
               {/for}
             </tr>
           </thead>
-          <tbody>
+          <tbody {...@body_attrs}>
             {#for {item, row_index} <- Enum.with_index(@items)}
               <tr
                 class={merge(
@@ -85,7 +88,9 @@ defmodule Moon.Components.Table do
                       ["#{inter_cell_border()}": !@has_no_cell_borders && col_index < Enum.count(@cols) - 1],
                       col.width
                     ])}
-                    data-testid={"row-#{row_index}-col-#{col_index}"}
+                    data-testid={if is_function(col[:testid]),
+                      do: col[:testid].(row_index, col),
+                      else: "row-#{row_index}-col-#{col_index}"}
                   >
                     <#slot {col} generator_value={item} />
                   </td>
