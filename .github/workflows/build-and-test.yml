@@ -1,0 +1,42 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Elixir
+        uses: ./.github/actions/setup_elixir
+
+      - name: Run tests
+        run: mix test
+
+      - name: Read VERSION file and create tag
+        if: github.ref == 'refs/heads/main' && success()
+        run: |
+          TAG="v$(cat VERSION | tr -d '[:space:]')"
+          echo "Using tag: $TAG"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git fetch --tags
+
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists. Skipping."
+          else
+            git tag "$TAG"
+            git push origin "$TAG"
+            echo "Tag $TAG pushed."
+          fi

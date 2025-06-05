@@ -1,49 +1,73 @@
-name: build
+name: Release Docker Image
 
 on:
   push:
-    branches: 
-      - main
+    tags:
+      - 'v*'
 
 jobs:
-  tag-release:
+  release:
+    name: Build, Push Docker Image, and Deploy
     runs-on: ubuntu-latest
-    outputs:
-      release-version: ${{ steps.release-version.outputs.version }}
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Tag new release
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
         with:
-          node-version: 14
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASS }}
 
-      - name: Install Semantic Release, plugins and preset
-        working-directory: .
+      - name: Build and push docker image
+        env:
+          MIX_ENV: prod
+          APP_NAME: moon
+          SERVICE_NAME: moon
+          DOCKER_ORG: ${{ secrets.DOCKER_USER }}
+          APP_VSN: ${{ github.ref_name }}
         run: |
-          npm install -g \
-            semantic-release@18.0.0 \
-            conventional-changelog-conventionalcommits@4.6.1
+           scripts/deploy/docker-build push $APP_VSN
 
-      # - name: Run Sematic Release
-      #   working-directory: .
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: semantic-release --branches main
+      - name: Setup robot SSH key
+        run: |
+          echo "$ROBOT_SSH_KEY" | base64 -d > $HOME/.ssh/id_rsa.robot
+          chmod 600 $HOME/.ssh/id_rsa.robot
+          echo -e "Host *\n IdentityFile $HOME/.ssh/id_rsa.robot\n IdentitiesOnly yes" > $HOME/.ssh/config
+          eval "$(ssh-agent -s)" && ssh-add $HOME/.ssh/id_rsa.robot
 
-      # # Get new release version
-      # - name: Get release tag
-      #   id: release-tag
-      #   uses: WyriHaximus/github-action-get-previous-tag@v1.1
+      - name: Setup deploy tool auth
+        run: echo "{\"user\":\"$DEPLOY_USER\", \"pass\":\"$DEPLOY_PASS\"}" > $HOME/.deploy_auth
 
-      # - name: Get release version
-      #   id: release-version
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       core.setOutput(
-      #         'version',
-      #         '${{ steps.release-tag.outputs.tag }}'.slice(1)
-      #       )
+      - name: Deploy
+        run: ./scripts/deploy/stacks-deploy ${{ github.ref_name }}
+
+      - name: Restore node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: v13-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            v13-node_modules-
+
+      - name: Restore mix.lock cache
+        uses: actions/cache@v3
+        with:
+          path: _build
+          key: v13-build_test-${{ hashFiles('mix.lock') }}
+          restore-keys: |
+            v13-build_test-
+
+      - name: Hex auth
+        run: mix hex.organization auth coingaming --key $HEX_API_KEY
+
+      - name: Semantic Release
+        env:
+            MIX_ENV: test
+        run: mix semantic.release
+
+      - name: Save node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: v13-node_modules-${{ hashFiles('package-lock.json') }}

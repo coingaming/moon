@@ -3,38 +3,50 @@
 source "$(dirname "$0")/vars"
 
 function usage {
-    echo "docker-build is a tool to build elixir project docker image."
+    echo "docker-build is a tool to build and optionally push the Elixir app Docker image."
     echo ""
-    echo "Usage: docker-build"
+    echo "Usage: ./docker_build [push] [version]"
+    echo ""
+    echo "push:    Push the image after successful build."
+    echo "version: Optional version tag (e.g., v1.2.3)."
+    echo ""
+    echo "Examples:"
+    echo "   ./docker_build                  - Build the image with current git hash"
+    echo "   ./docker_build push v1.2.3      - Build and push with tag v1.2.3"
+    exit
 }
 
-if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+if [[ "$1" == "help" || "$1" == "--help" || "$1" == "-h" ]]; then
   usage
 fi
 
 set -e
 
-BUILD=`git rev-parse --short HEAD`
+BUILD_SHA=$(git rev-parse --short HEAD)
 TAG="$2"
+BASE_TAG="${DOCKER_ORG}/${SERVICE_NAME}"
+
+IMAGE_TAG="${BASE_TAG}:v${APP_VSN}-${BUILD_SHA}"
+LATEST_TAG="${BASE_TAG}:latest"
 
 if [ "$TAG" = "v${APP_VSN}" ]; then
-  VERSION_TAG="${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}"
-  VERSION_TAG_BUILD="-t ${VERSION_TAG}"
+  VERSION_TAG="${BASE_TAG}:${TAG}"
 fi
 
+echo "🔨 Building image..."
 docker build \
-    --build-arg MIX_ENV=$MIX_ENV \
-    --build-arg APP_NAME=$APP_NAME \
-    --build-arg SERVICE_NAME=$SERVICE_NAME \
-		--build-arg APP_VSN=$APP_VSN \
-		--build-arg GITHUB_SSH_KEY="$GITHUB_SSH_KEY" \
-		--build-arg HEX_API_KEY="$HEX_API_KEY" \
-		-t ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD} \
-    $VERSION_TAG_BUILD \
-		-t ${DOCKER_ORG}/${SERVICE_NAME}:latest .
+  --build-arg MIX_ENV=$MIX_ENV \
+  --build-arg APP_NAME=$APP_NAME \
+  -t $IMAGE_TAG \
+  -t $LATEST_TAG \
+  ${VERSION_TAG:+-t $VERSION_TAG} .
+
+echo "✅ Built: $IMAGE_TAG"
 
 if [ "$1" = "push" ]; then
-  docker push ${DOCKER_ORG}/${SERVICE_NAME}:v${APP_VSN}-${BUILD}
+  echo "🚀 Pushing..."
+  docker push $IMAGE_TAG
+  docker push $LATEST_TAG
   if [ -n "$VERSION_TAG" ]; then
     docker push $VERSION_TAG
   fi
