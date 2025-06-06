@@ -43,7 +43,7 @@ jobs:
         run: ./scripts/deploy/stacks-deploy ${{ github.ref_name }}
 
       - name: Restore node_modules cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: v13-node_modules-${{ hashFiles('package-lock.json') }}
@@ -51,7 +51,7 @@ jobs:
             v13-node_modules-
 
       - name: Restore mix.lock cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: _build
           key: v13-build_test-${{ hashFiles('mix.lock') }}
@@ -67,7 +67,7 @@ jobs:
         run: mix semantic.release
 
       - name: Save node_modules cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: v13-node_modules-${{ hashFiles('package-lock.json') }}
