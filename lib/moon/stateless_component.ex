@@ -4,6 +4,11 @@ defmodule Moon.StatelessComponent do
   defmacro __using__(opts \\ []) do
     quote do
       use Surface.Component, unquote(opts)
+      
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+      use PhoenixHTMLHelpers
+      
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender

@@ -2,7 +2,9 @@ defmodule Moon.Components.Select.SingleSelect do
   @moduledoc false
 
   use Moon.StatefulComponent
-
+  
+  use PhoenixHTMLHelpers
+  
   alias Moon.Autolayouts.PullAside
   alias Moon.Autolayouts.TopToDown
   alias Moon.Components.FieldBorder
@@ -54,7 +56,7 @@ defmodule Moon.Components.Select.SingleSelect do
         on_close="close"
         class={@popover_class}
       >
-        {Phoenix.HTML.Form.select(
+        {select(
           @form,
           @field,
           SelectHelpers.get_formatted_options(

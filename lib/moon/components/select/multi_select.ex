@@ -149,7 +149,7 @@ defmodule Moon.Components.Select.MultiSelect do
         on_close="close"
         class={@popover_class}
       >
-        {Phoenix.HTML.Form.multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
+        {multiple_select(@form, @field, SelectHelpers.get_formatted_options(@options),
           class: "hidden",
           id: @id
         )}

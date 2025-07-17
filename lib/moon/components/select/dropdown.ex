@@ -4,7 +4,7 @@ defmodule Moon.Components.Select.Dropdown do
   @moduledoc false
 
   use Moon.StatelessComponent
-
+  
   alias Moon.Components.ListItems.SingleLineItem
   alias Moon.Components.Select.Dropdown.Option
   alias Moon.Components.Select.Helpers, as: SelectHelpers
@@ -43,7 +43,7 @@ defmodule Moon.Components.Select.Dropdown do
     }>
       {#if !@select_id}
         {#if @with == "radio"}
-          {Phoenix.HTML.Form.select(
+          {select(
             @form,
             @field,
             SelectHelpers.get_formatted_options(@available_options || @options),
@@ -53,7 +53,7 @@ defmodule Moon.Components.Select.Dropdown do
             selected: @value
           )}
         {#else}
-          {Phoenix.HTML.Form.multiple_select(
+          {multiple_select(
             @form,
             @field,
             SelectHelpers.get_formatted_options(@available_options || @options),

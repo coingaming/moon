@@ -3,8 +3,6 @@ defmodule Moon.Design.Form.AuthCode do
 
   use Moon.StatelessComponent
 
-  import Phoenix.HTML.Form
-
   @doc "Id attribute for DOM element"
   prop(id, :string)
   @doc "Data-testid attribute for DOM element"
