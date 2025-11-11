@@ -113,7 +113,7 @@ defmodule Moon.Light do
     default: nil
   )
 
-  slot(:cols, generator_prop: :items, doc: "The list of columns defining the Grid") do
+  slot(:cols, doc: "The list of columns defining the Grid") do
     attr(:label, :string)
     attr(:name, :string)
     attr(:sortable, :boolean)

@@ -73,7 +73,7 @@ defmodule Moon.MixProject do
   defp deps do
     [
       {:phoenix, ">= 1.6.15"},
-      {:phoenix_live_view, "~> 0.20"},
+      {:phoenix_live_view, "~> 1.0.17"},
       {:phoenix_html, "~> 4.0"},
       {:phoenix_html_helpers, "~> 1.0"},
       {:phoenix_live_dashboard, ">= 0.7.0"},
@@ -94,7 +94,7 @@ defmodule Moon.MixProject do
 
       # test
       {:excoveralls, "~> 0.10", only: :test},
-      {:floki, ">= 0.27.0", only: :test},
+      {:floki, ">= 0.38.0", only: :test},
       {:snapshy, "~> 0.3.0", only: :test},
 
       # dev

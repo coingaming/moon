@@ -4,6 +4,7 @@ defmodule Moon.Light.Component do
   defmacro __using__(opts \\ []) do
     quote do
       use Phoenix.Component, unquote(opts)
+      
       import Moon.Helpers.Styled
       import Moon.Helpers.MergeClass
       import Moon.Helpers.MoonRender
