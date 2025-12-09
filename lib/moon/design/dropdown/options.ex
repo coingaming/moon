@@ -43,7 +43,7 @@ defmodule Moon.Design.Dropdown.Options do
         "p-1 rounded-moon-s-md box-border bg-goku shadow-moon-lg overflow-auto focus:outline-none",
         (@position && position_class(@position)) || "w-full top-full my-2",
         @is_open && "max-h-96 opacity-100 scale-100",
-        !@is_open && "max-h-0 opacity-0 scale-95",
+        !@is_open && "max-h-0 opacity-0 hidden scale-95",
         ["p-0": slot_assigned?(:header) || slot_assigned?(:footer)],
         "transition-all duration-300 ease-in-out transform",
         get_config(:default_class),
